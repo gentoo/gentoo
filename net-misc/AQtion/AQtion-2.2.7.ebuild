@@ -43,7 +43,11 @@ src_prepare() {
 	fi
 }
 
+src_compile() {
+	KDIR="${KERNEL_DIR}" linux-mod_src_compile
+}
+
 src_install() {
-	linux-mod_src_install
+	KDIR="${KERNEL_DIR}" linux-mod_src_install
 	dodoc "${DOCS[@]}"
 }

@@ -1,0 +1,24 @@
+From ac7bdc35ea376f938ad223b0156a04a2af6d2eff Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Fri, 28 Dec 2018 00:14:24 +0100
+Subject: [PATCH] * [exmpl]: update GLee.h to Mesa-18.3.1
+
+the include guards of system files changed
+---
+ src/examples/image_display/GLee.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/examples/image_display/GLee.h b/src/examples/image_display/GLee.h
+index 2edca003..01b19c68 100644
+--- a/src/examples/image_display/GLee.h
++++ b/src/examples/image_display/GLee.h
+@@ -61,7 +61,9 @@
+ 	#include <OpenGL/gl.h>
+ #else // GLX
+ 	#define __glext_h_  /* prevent glext.h from being included  */
++	#define __gl_glext_h_
+ 	#define __glxext_h_ /* prevent glxext.h from being included */
++	#define __glx_glxext_h_
+ 	#define GLX_GLXEXT_PROTOTYPES
+ 	#include <GL/gl.h>
+ 	#include <GL/glx.h>

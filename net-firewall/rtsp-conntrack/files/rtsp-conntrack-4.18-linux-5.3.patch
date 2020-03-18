@@ -1,0 +1,122 @@
+From 57394bcd68459d3c31cc605e538824a41ba490d9 Mon Sep 17 00:00:00 2001
+From: Seth Forshee <seth.forshee@canonical.com>
+Date: Fri, 30 Aug 2019 09:10:23 -0500
+Subject: [PATCH] Fix build with Linux 5.3
+
+In Linux 5.3 nf_ct_expect_related() gained a flags argument.
+Calls to this function are sprinkled throughout a couple of
+source files, so rather than adding a #if to each call site, add
+a wrapper which will use the appropriate prototype.
+
+Signed-off-by: Seth Forshee <seth.forshee@canonical.com>
+---
+ netfilter_helpers.h | 11 +++++++++++
+ nf_conntrack_rtsp.c |  5 ++---
+ nf_nat_rtsp.c       | 11 +++++------
+ 3 files changed, 18 insertions(+), 9 deletions(-)
+
+diff --git a/netfilter_helpers.h b/netfilter_helpers.h
+index 903f374..d8b8ce3 100644
+--- a/netfilter_helpers.h
++++ b/netfilter_helpers.h
+@@ -14,6 +14,8 @@
+ /* Only include these functions for kernel code. */
+ #ifdef __KERNEL__
+ 
++#include <net/netfilter/nf_conntrack_expect.h>
++
+ #include <linux/ctype.h>
+ #define iseol(c) ( (c) == '\r' || (c) == '\n' )
+ 
+@@ -128,6 +130,15 @@ nf_nextline(char* p, uint len, uint* poff, uint* plineoff, uint* plinelen)
+ }
+ #endif /* NF_NEED_NEXTLINE */
+ 
++static inline int rtsp_nf_ct_expect_related(struct nf_conntrack_expect *expect)
++{
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,3,0)
++	return nf_ct_expect_related(expect, 0);
++#else
++	return nf_ct_expect_related(expect);
++#endif
++}
++
+ #endif /* __KERNEL__ */
+ 
+ #endif /* _NETFILTER_HELPERS_H */
+diff --git a/nf_conntrack_rtsp.c b/nf_conntrack_rtsp.c
+index 8a2f182..300be0a 100644
+--- a/nf_conntrack_rtsp.c
++++ b/nf_conntrack_rtsp.c
+@@ -41,7 +41,6 @@
+ #include <net/tcp.h>
+ 
+ #include <net/netfilter/nf_conntrack.h>
+-#include <net/netfilter/nf_conntrack_expect.h>
+ #include <net/netfilter/nf_conntrack_helper.h>
+ #include "nf_conntrack_rtsp.h"
+ 
+@@ -396,8 +395,8 @@ help_out(struct sk_buff *skb, unsigned char *rb_ptr, unsigned int datalen,
+ 					  &expinfo, rtp_exp, rtcp_exp);
+ #endif
+ 		else {
+-			if (nf_ct_expect_related(rtp_exp) == 0) {
+-				if (rtcp_exp && nf_ct_expect_related(rtcp_exp) != 0) {
++			if (rtsp_nf_ct_expect_related(rtp_exp) == 0) {
++				if (rtcp_exp && rtsp_nf_ct_expect_related(rtcp_exp) != 0) {
+ 					nf_ct_unexpect_related(rtp_exp);
+ 					pr_info("nf_conntrack_expect_related failed for rtcp\n");
+ 					ret = NF_DROP;
+diff --git a/nf_nat_rtsp.c b/nf_nat_rtsp.c
+index 59ea4fd..02b46c5 100644
+--- a/nf_nat_rtsp.c
++++ b/nf_nat_rtsp.c
+@@ -46,7 +46,6 @@
+ #endif
+ #include <net/netfilter/nf_nat_helper.h>
+ #include "nf_conntrack_rtsp.h"
+-#include <net/netfilter/nf_conntrack_expect.h>
+ 
+ #include <linux/inet.h>
+ #include <linux/ctype.h>
+@@ -202,7 +201,7 @@ rtsp_mangle_tran(enum ip_conntrack_info ctinfo,
+ 	case pb_single:
+ 		for (loport = prtspexp->loport; loport != 0; loport++) { /* XXX: improper wrap? */
+ 			rtp_t->dst.u.udp.port = htons(loport);
+-			if (nf_ct_expect_related(rtp_exp) == 0) {
++			if (rtsp_nf_ct_expect_related(rtp_exp) == 0) {
+ 				pr_debug("using port %hu\n", loport);
+ 				break;
+ 			}
+@@ -215,12 +214,12 @@ rtsp_mangle_tran(enum ip_conntrack_info ctinfo,
+ 	case pb_range:
+ 		for (loport = prtspexp->loport; loport != 0; loport += 2) { /* XXX: improper wrap? */
+ 			rtp_t->dst.u.udp.port = htons(loport);
+-			if (nf_ct_expect_related(rtp_exp) != 0) {
++			if (rtsp_nf_ct_expect_related(rtp_exp) != 0) {
+ 				continue;
+ 			}
+ 			hiport = loport + 1;
+ 			rtcp_exp->tuple.dst.u.udp.port = htons(hiport);
+-			if (nf_ct_expect_related(rtcp_exp) != 0) {
++			if (rtsp_nf_ct_expect_related(rtcp_exp) != 0) {
+ 				nf_ct_unexpect_related(rtp_exp);
+ 				continue;
+ 			}
+@@ -243,14 +242,14 @@ rtsp_mangle_tran(enum ip_conntrack_info ctinfo,
+ 	case pb_discon:
+ 		for (loport = prtspexp->loport; loport != 0; loport++) { /* XXX: improper wrap? */
+ 			rtp_t->dst.u.udp.port = htons(loport);
+-			if (nf_ct_expect_related(rtp_exp) == 0) {
++			if (rtsp_nf_ct_expect_related(rtp_exp) == 0) {
+ 				pr_debug("using port %hu (1 of 2)\n", loport);
+ 				break;
+ 			}
+ 		}
+ 		for (hiport = prtspexp->hiport; hiport != 0; hiport++) { /* XXX: improper wrap? */
+ 			rtp_t->dst.u.udp.port = htons(hiport);
+-			if (nf_ct_expect_related(rtp_exp) == 0) {
++			if (rtsp_nf_ct_expect_related(rtp_exp) == 0) {
+ 				pr_debug("using port %hu (2 of 2)\n", hiport);
+ 				break;
+ 			}

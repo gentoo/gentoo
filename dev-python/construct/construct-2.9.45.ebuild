@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -19,7 +19,6 @@ RESTRICT="test"
 DEPEND="test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/scimath[${PYTHON_USEDEP}]' 'python2_7')
 	)"
 
 python_test() {

@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 if [[ ${PV} == 9999 ]] ; then
@@ -12,7 +13,7 @@ else
 	GIT_COMMIT="51379a041174ad953dc6ad437712f3b279f81919"
 	SRC_URI="https://github.com/ngtcp2/nghttp3/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~hppa"
 fi
 
 DESCRIPTION="HTTP/3 library written in C"
@@ -33,9 +34,9 @@ multilib_src_configure() {
 		-DENABLE_EXAMPLES=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_CUnit=$(usex !test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {
-	cmake-utils_src_make check
+	cmake_build check
 }

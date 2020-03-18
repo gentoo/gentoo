@@ -1,0 +1,42 @@
+https://github.com/xbmc/xbmc/pull/17000
+
+From bbfc36f06c191d3bdea19cacc498afb86bd25404 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Thu, 5 Dec 2019 14:49:50 -0500
+Subject: [PATCH] Add missing cassert includes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Without these includes, ‘assert’ was not declared in this scope errors
+occur.
+---
+ xbmc/profiles/dialogs/GUIDialogProfileSettings.cpp | 1 +
+ xbmc/windowing/GraphicContext.cpp                  | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/xbmc/profiles/dialogs/GUIDialogProfileSettings.cpp b/xbmc/profiles/dialogs/GUIDialogProfileSettings.cpp
+index 1303d894478c..aa85d95b3234 100644
+--- a/xbmc/profiles/dialogs/GUIDialogProfileSettings.cpp
++++ b/xbmc/profiles/dialogs/GUIDialogProfileSettings.cpp
+@@ -31,6 +31,7 @@
+ #include "utils/Variant.h"
+ #include "utils/log.h"
+ 
++#include <cassert>
+ #include <utility>
+ 
+ #define SETTING_PROFILE_NAME          "profile.name"
+diff --git a/xbmc/windowing/GraphicContext.cpp b/xbmc/windowing/GraphicContext.cpp
+index b47bafba57dc..75b333ea6daa 100644
+--- a/xbmc/windowing/GraphicContext.cpp
++++ b/xbmc/windowing/GraphicContext.cpp
+@@ -25,6 +25,8 @@
+ #include "settings/lib/Setting.h"
+ #include "utils/log.h"
+ 
++#include <cassert>
++
+ using namespace KODI::MESSAGING;
+ 
+ CGraphicContext::CGraphicContext(void) = default;

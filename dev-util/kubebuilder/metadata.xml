@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dan@danmolik.com</email>
+		<name>Dan Molik</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Building Kubernetes tools and APIs involves making a lot of decisions
+		and writing a lot of boilerplate.
+
+		In order to facilitate easily building Kubernetes APIs and tools using
+		the canonical approach, this framework provides a collection of
+		Kubernetes development tools to minimize toil.
+
+		Kubebuilder attempts to facilitate the following developer workflow for
+		building APIs
+
+		- Create a new project directory
+		- Create one or more resource APIs as CRDs and then add fields to the
+		resources
+		- Implement reconcile loops in controllers and watch additional resources
+		- Test by running against a cluster (self-installs CRDs and starts
+		controllers automatically)
+		- Update bootstrapped integration tests to test new fields and business
+		logic
+		- Build and publish a container from the provided Dockerfile
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/kubernetes-sigs/kubebuilder/releases</changelog>
+		<remote-id type="github">kubernetes-sigs/kubebuilder</remote-id>
+	</upstream>
+</pkgmetadata>

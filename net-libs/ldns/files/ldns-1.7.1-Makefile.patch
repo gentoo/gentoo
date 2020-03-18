@@ -1,0 +1,11 @@
+--- Makefile.in.orig	2019-09-29 15:17:24.728446345 +0200
++++ Makefile.in	2019-09-29 15:18:09.544008785 +0200
+@@ -301,7 +301,7 @@
+ 	$(COMP_LIB) -I./include/ldns $(LIBSSL_CPPFLAGS) $(PYTHON_CPPFLAGS) $(PYTHON_X_CFLAGS) -c $(pywrapdir)/ldns_wrapper.c -o $@
+ 
+ _ldns.la: ldns_wrapper.lo libldns.la 
+-	$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) $(PYTHON_CFLAGS) $(LDFLAGS) $(PYTHON_LDFLAGS) -module -version-info $(version_info) -no-undefined -o $@ ldns_wrapper.lo -rpath $(python_site) -L. -L.libs -lldns $(LIBS)
++	$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) $(PYTHON_CFLAGS) -module -version-info $(version_info) -no-undefined -o $@ ldns_wrapper.lo -rpath $(python_site) -L. -L.libs -lldns $(LDFLAGS) $(PYTHON_LDFLAGS) $(LIBS) 
+ 
+ $(p5_dns_ldns_dir)/Makefile: $(p5_dns_ldns_dir)/Makefile.PL
+ 	BUILDDIR=`pwd`; cd $(p5_dns_ldns_dir); LD_LIBRARY_PATH="$$BUILDDIR/.libs:$$LD_LIBRARY_PATH" DYLD_LIBRARY_PATH="$$BUILDDIR/.libs:$$DYLD_LIBRARY_PATH" $(PERL) Makefile.PL LIBS="-L$$BUILDDIR/.libs -lldns" INC="-I$$BUILDDIR"

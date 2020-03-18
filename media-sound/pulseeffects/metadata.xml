@@ -17,7 +17,7 @@
 		<flag name="rubberband">Enable usse of media-libs/rubberband for the pitch shifting FX</flag>
 	</use>
 	<longdescription lang="en">
-		Audio effects for Pulseaudio applications
+		GUI to manage audio effects for Pulseaudio applications, giving full control over the effects order to the user.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">wwmm/pulseeffects</remote-id>

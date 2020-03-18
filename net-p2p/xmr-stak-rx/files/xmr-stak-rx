@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms fo the GNU General Public License, v2
+# /etc/init.d/xmr-stak-rx
+name="xmr-stak-rx"
+description="Free RandomX miner"
+pidfile=/run/xmr-stak-rx.pid
+command=/usr/bin/xmr-stak-rx
+command_args="--cpu /etc/xmr-stak-rx/cpu.config --amd /etc/xmr-stak-rx/amd.config --nvidia /etc/xmr-stak-rx/nvidia.config -c /etc/xmr-stak-rx/main.config -C /etc/xmr-stak-rx/pools.txt"
+start_stop_daemon_args="--background --make-pidfile"
+
+start_pre() {
+	if [ ! -r /etc/xmr-stak-rx/main.config ]; then
+		eerror "/etc/xmr-stak-rx/main.config is missing."
+		errror "Run:"
+		eerror "/usr/bin/xmr-stak-rx --cpu /etc/xmr-stak-rx/cpu.config --amd /etc/xmr-stak-rx/amd.config --nvidia /etc/xmr-stak-rx/nvidia.config -c /etc/xmr-stak-rx/main.config -C /etc/xmr-stak-rx/pools.txt"
+		errror "xmr-stak-rx can now be terminated and this service can be started"
+		return 1
+	fi
+}
+
+depend() {
+	use dns net
+}

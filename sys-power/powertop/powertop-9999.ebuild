@@ -9,10 +9,8 @@ if [[ ${PV} == "9999" ]] ; then
 	GIT_ECLASS="git-r3"
 	SRC_URI=""
 else
-	SRC_URI="https://01.org/sites/default/files/downloads/${PN}-v${PV}.tar.gz"
+	SRC_URI="https://github.com/fenrus75/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
-	MY_P="${PN}-v${PV}"
-	S="${WORKDIR}/${MY_P}"
 fi
 
 inherit autotools ${GIT_ECLASS} linux-info
@@ -104,10 +102,8 @@ src_prepare() {
 	# Bug 599114
 	sed -i '1s|^|AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX_11])|' configure.ac || die
 
-	if [[ ${PV} == "9999" ]] ; then
-		chmod +x scripts/version || die "Failed to make 'scripts/version' executable"
-		scripts/version || die "Failed to extract version information"
-	fi
+	chmod +x scripts/version || die "Failed to make 'scripts/version' executable"
+	scripts/version || die "Failed to extract version information"
 
 	eautoreconf
 }

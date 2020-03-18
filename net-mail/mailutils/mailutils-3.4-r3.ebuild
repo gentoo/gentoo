@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,9 +12,9 @@ SRC_URI="mirror://gnu/mailutils/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ia64 ppc ppc64 ~s390 ~sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="berkdb bidi +clients emacs gdbm sasl guile ipv6 kerberos kyotocabinet \
-	ldap mysql nls pam postgres python servers ssl static-libs +threads tcpd \
+	ldap mysql nls pam postgres python servers split-usr ssl static-libs +threads tcpd \
 	tokyocabinet"
 
 RDEPEND="!mail-client/nmh
@@ -27,7 +27,7 @@ RDEPEND="!mail-client/nmh
 	virtual/mta
 	berkdb? ( sys-libs/db:= )
 	bidi? ( dev-libs/fribidi )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gdbm? ( sys-libs/gdbm )
 	guile? ( dev-scheme/guile:12/22 )
 	kerberos? ( virtual/krb5 )
@@ -35,7 +35,7 @@ RDEPEND="!mail-client/nmh
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
 	nls? ( sys-devel/gettext )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( virtual/gsasl )
@@ -56,8 +56,10 @@ pkg_setup() {
 src_prepare() {
 	# Disable bytecompilation of Python modules.
 	echo "#!/bin/sh" > build-aux/py-compile
-	eapply "${FILESDIR}/${P}-MH-testsuite.patch" \
-		"${FILESDIR}/${P}-fix-endianness.patch"
+	eapply \
+		"${FILESDIR}"/${P}-MH-testsuite.patch \
+		"${FILESDIR}"/${P}-fix-endianness.patch \
+		"${FILESDIR}"/${PN}-3.4-fno-common.patch
 	# add missing tests so that make check doesn't fail
 	cp "${FILESDIR}"/{hdr,nohdr,twomsg,weed}.at "${S}"/readmsg/tests || die
 	if use mysql; then
@@ -105,7 +107,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	insinto /etc
 	# bug 613112
@@ -127,10 +129,12 @@ src_install() {
 		newinitd "${FILESDIR}"/comsatd.initd comsatd
 	fi
 
-	dodoc AUTHORS ChangeLog NEWS README* THANKS TODO
-
 	# compatibility link
-	use clients && dosym /usr/bin/mail /bin/mail
+	if use clients && use split-usr; then
+		dosym ../usr/bin/mail /bin/mail
+	fi
 
-	use static-libs || find "${D}" -name "*.la" -delete
+	if ! use static-libs; then
+		find "${D}" -name "*.la" -delete || die
+	fi
 }

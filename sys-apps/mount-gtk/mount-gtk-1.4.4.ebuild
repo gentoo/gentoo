@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,5 +37,5 @@ src_prepare() {
 src_configure() {
 	# acinclude.m4 is broken and environment flags override these:
 	append-cxxflags -fexceptions -frtti -fsigned-char -fno-check-new -pthread
-	econf --docdir=/usr/share/doc/${PF}
+	econf
 }

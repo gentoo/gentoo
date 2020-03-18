@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://www.netlib.org/f2c/${PN}.zip -> ${P}.zip"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 BDEPEND="app-arch/unzip"
@@ -43,7 +43,7 @@ src_compile() {
 	emake -f makefile.u libf2c.so
 }
 
-src_install () {
+src_install() {
 	doheader f2c.h
 
 	dolib.so libf2c.so.2

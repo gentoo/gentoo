@@ -9,7 +9,7 @@ inherit autotools-multilib
 
 DESCRIPTION="library that provides direct access to the IEEE 1394 bus"
 HOMEPAGE="https://ieee1394.wiki.kernel.org/"
-SRC_URI="mirror://kernel/linux/libs/ieee1394/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/libs/ieee1394/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

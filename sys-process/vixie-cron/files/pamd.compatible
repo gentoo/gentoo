@@ -1,7 +1,0 @@
-#%PAM-1.0
-
-account required        pam_unix.so
-
-auth    required        pam_unix.so
-
-session optional        pam_limits.so

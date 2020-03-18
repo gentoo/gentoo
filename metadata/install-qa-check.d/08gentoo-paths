@@ -1,5 +1,8 @@
 # Check whether ebuilds are not installing new, non-Gentoo-ey paths.
 
+# QA check: validate Gentoo's filesystem layout policies
+# Maintainer: Portage team <dev-portage@gentoo.org>
+
 gentoo_path_check() {
 	# allowed path definitions
 	# ------------------------

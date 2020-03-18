@@ -12,6 +12,7 @@ DESCRIPTION="WSDL version 1.1 XML Compiler"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Log-Report-1.50.0

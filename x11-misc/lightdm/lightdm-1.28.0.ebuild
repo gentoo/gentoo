@@ -18,7 +18,7 @@ IUSE="audit +gnome +gtk +introspection qt5 vala"
 COMMON_DEPEND="
 	>=dev-libs/glib-2.44.0:2
 	dev-libs/libxml2
-	virtual/pam
+	sys-libs/pam
 	x11-libs/libX11
 	>=x11-libs/libxklavier-5
 	audit? ( sys-process/audit )

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,11 +10,12 @@ DIST_EXAMPLES=("samples/*")
 inherit wxwidgets virtualx perl-module
 
 DESCRIPTION="Perl bindings for wxGTK"
-HOMEPAGE="http://wxperl.sourceforge.net/ ${HOMEPAGE}"
+HOMEPAGE="http://wxperl.sourceforge.net/ https://metacpan.org/release/Wx"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Alien-wxWidgets-0.690.0-r1

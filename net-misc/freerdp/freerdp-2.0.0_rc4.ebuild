@@ -1,4 +1,4 @@
-# Copyright 2011-2019 Gentoo Authors
+# Copyright 2011-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,8 +8,9 @@ inherit cmake-utils
 if [[ ${PV} != 9999 ]]; then
 	MY_P=${P/_/-}
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
-	KEYWORDS="alpha amd64 arm arm64 ~ppc ~ppc64 x86"
+	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz
+		https://github.com/FreeRDP/FreeRDP/commit/6931f54fad12eaf46a72c5c02ac05da817ab6b94.patch -> freerdp-2.0.0-rc4-fix-NTLM-AvPair-lists.patch"
+	KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 x86"
 else
 	inherit git-r3
 	SRC_URI=""
@@ -22,6 +23,7 @@ HOMEPAGE="http://www.freerdp.com/"
 LICENSE="Apache-2.0"
 SLOT="0/2"
 IUSE="alsa +client cpu_flags_arm_neon cups debug doc ffmpeg gstreamer jpeg libav libressl openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -89,6 +91,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/2.0.0-rc4-libressl.patch
+	"${FILESDIR}"/2.0.0-rc4-bitmap-endian.patch
+	"${DISTDIR}"/freerdp-2.0.0-rc4-fix-NTLM-AvPair-lists.patch
 )
 
 src_configure() {

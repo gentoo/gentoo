@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,10 +34,10 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_configure() {
 	eqmake5 \
-		PREFIX="${EPREFIX%/}/usr" \
-		PLUGINSDIR="${EPREFIX%/}/usr/$(get_libdir)/${PN}/plugins" \
-		PRIVATEBINDIR="${EPREFIX%/}/usr/$(get_libdir)/${PN}/bin" \
-		PRIVATELIBDIR="${EPREFIX%/}/usr/$(get_libdir)/${PN}" \
+		PREFIX="${EPREFIX}/usr" \
+		PLUGINSDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/plugins" \
+		PRIVATEBINDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/bin" \
+		PRIVATELIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}" \
 		NO_UPDATE_CHECK=1 \
 		-r ${PN}.pro
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@taujhe.de</email>
+		<name>Jan Henke</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		This is a fun, new monospaced font that includes programming ligatures 
+		and is designed to enhance the modern look and feel of the Windows 
+		Terminal. 
+	</longdescription>
+	<upstream>
+		<remote-id type="github">microsoft/cascadia-code</remote-id>
+	</upstream>
+</pkgmetadata>

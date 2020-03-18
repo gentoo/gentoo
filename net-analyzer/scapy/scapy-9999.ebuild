@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1 git-r3 readme.gentoo-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
@@ -20,8 +20,8 @@ DOC_CONTENTS="
 Scapy has optional support for the following packages:
 
 	dev-python/cryptography
-	dev-python/gnuplot-py
 	dev-python/ipython
+	dev-python/matplotlib
 	dev-python/pyx
 	media-gfx/graphviz
 	net-analyzer/tcpreplay

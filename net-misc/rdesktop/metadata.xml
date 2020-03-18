@@ -9,7 +9,7 @@
 		An open source client for Windows NT Terminal Server and Windows 2000/2003 Terminal Services, capable of natively speaking Remote Desktop Protocol (RDP) in order to present the user's NT desktop. Unlike Citrix ICA, no server extensions are required.
 	</longdescription>
 	<use>
-		<flag name="kerberos">Enable CredSPP support + Kerberos authentication with <pkg>net-libs/libgssglue</pkg></flag>
+		<flag name="kerberos">Enable CredSPP support + Kerberos authentication</flag>
 		<flag name="pcsc-lite">Enable smartcard support with <pkg>sys-apps/pcsc-lite</pkg> driver</flag>
 		<flag name="xrandr">Enable XRandR window extension support</flag>
 	</use>

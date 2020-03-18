@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,8 +13,9 @@ SRC_URI="http://crm114.sourceforge.net/tarballs/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="examples mew mimencode nls normalizemime static test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	static? ( dev-libs/tre[static-libs] )

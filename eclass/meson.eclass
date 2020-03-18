@@ -1,4 +1,4 @@
-# Copyright 2017-2019 Gentoo Authors
+# Copyright 2017-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -50,8 +50,8 @@ EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-MESON_DEPEND=">=dev-util/meson-0.48.2
-	>=dev-util/ninja-1.7.2"
+MESON_DEPEND=">=dev-util/meson-0.51.2
+	>=dev-util/ninja-1.8.2"
 
 if [[ ${EAPI:-0} == [6] ]]; then
 	DEPEND=${MESON_DEPEND}
@@ -149,6 +149,9 @@ _meson_create_cross_file() {
 	# This may require adjustment based on CFLAGS
 	local cpu=${CHOST%%-*}
 
+	local needs_exe_wrapper=false
+	tc-is-cross-compiler && needs_exe_wrapper=true
+
 	cat > "${T}/meson.${CHOST}.${ABI}" <<-EOF
 	[binaries]
 	ar = $(_meson_env_array "$(tc-getAR)")
@@ -173,6 +176,7 @@ _meson_create_cross_file() {
 	objc_link_args = $(_meson_env_array "${OBJCFLAGS} ${LDFLAGS}")
 	objcpp_args = $(_meson_env_array "${OBJCXXFLAGS} ${CPPFLAGS}")
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
+	needs_exe_wrapper = ${needs_exe_wrapper}
 
 	[host_machine]
 	system = '${system}'

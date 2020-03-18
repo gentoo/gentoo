@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,6 @@ RDEPEND="
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/rosbridge_library[${PYTHON_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/rosauth[${PYTHON_USEDEP}]
-	dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
 	seccomp sonmp snmp static-libs test readline xml zsh-completion"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libbsd
 	>=dev-libs/libevent-2.0.5:=
@@ -60,7 +61,6 @@ src_configure() {
 		--with-privsep-chroot=/run/${PN} \
 		--with-lldpd-ctl-socket=/run/${PN}.socket \
 		--with-lldpd-pid-file=/run/${PN}.pid \
-		--docdir=/usr/share/doc/${PF} \
 		$(use_enable cdp) \
 		$(use_enable doc doxygen-man) \
 		$(use_enable doc doxygen-pdf) \

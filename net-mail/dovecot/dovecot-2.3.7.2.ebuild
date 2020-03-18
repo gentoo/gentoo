@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools eapi7-ver ssl-cert systemd user
+inherit autotools eapi7-ver ssl-cert systemd toolchain-funcs user
 
 MY_P="${P/_/.}"
 #MY_S="${PN}-ce-${PV}"
@@ -28,7 +28,7 @@ HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 ~sparc x86"
 
 IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite vpopmail"
 IUSE_DOVECOT_COMPRESS="bzip2 lzma lz4 zlib"
@@ -46,7 +46,7 @@ DEPEND="argon2? ( dev-libs/libsodium )
 	lzma? ( app-arch/xz-utils )
 	lz4? ( app-arch/lz4 )
 	mysql? ( dev-db/mysql-connector-c:0= )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:* !dev-db/postgresql[ldap,threads] )
 	selinux? ( sec-policy/selinux-dovecot )
 	solr? ( net-misc/curl dev-libs/expat )
@@ -133,7 +133,7 @@ src_configure() {
 		cd "../dovecot-${major_minor}-pigeonhole-${sieve_version}" || die "cd failed"
 		econf \
 			$( use_enable static-libs static ) \
-			--localstatedir="${EPREFIX%/}/var" \
+			--localstatedir="${EPREFIX}/var" \
 			--enable-shared \
 			--with-dovecot="${S}" \
 			$( use_with managesieve )
@@ -156,7 +156,7 @@ src_test() {
 	fi
 }
 
-src_install () {
+src_install() {
 	default
 
 	# insecure:

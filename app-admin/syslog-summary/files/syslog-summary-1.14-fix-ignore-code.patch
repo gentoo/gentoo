@@ -1,0 +1,12 @@
+diff --git a/syslog-summary b/syslog-summary
+index abf6381..65608cb 100755
+--- a/syslog-summary
++++ b/syslog-summary
+@@ -198,6 +198,7 @@ def summarize(filename, states):
+ 			if DEBUG:
+ 				print "Ignoring: %s" % line
+ 			line = file.readline()
++			continue
+ 		
+ 		date, rest = split_date(line)
+ 		if date:

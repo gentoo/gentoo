@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: autotools-multilib.eclass
@@ -26,7 +26,7 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-inherit autotools-utils eutils multilib-build multilib-minimal
+inherit autotools-utils eutils ltprune multilib-build multilib-minimal
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 

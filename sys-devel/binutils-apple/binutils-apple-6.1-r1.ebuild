@@ -24,6 +24,7 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 LICENSE="APSL-2"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE="lto test libcxx multitarget"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-devel/binutils-config
 	lto? ( sys-devel/llvm:* )
@@ -253,8 +254,8 @@ compile_ld64() {
 	einfo "building ${LD64}"
 	cd "${S}"/${LD64}/src
 	emake \
-		LTO=${ENABLE_LTO} \
-		|| die "emake failed for ld64"
+		LTO=${ENABLE_LTO}
+
 	use test && emake build_test
 }
 
@@ -278,16 +279,15 @@ compile_cctools() {
 		OFLAG="${CCTOOLS_OFLAG}" \
 		CXXLIB="${CXXLIB}" \
 		DSYMUTIL=": disabled: dsymutil" \
-		-j1 \
-		|| die "emake failed for the cctools"
+		-j1
+
 	cd "${S}"/${CCTOOLS}/as
 	emake \
 		BUILD_OBSOLETE_ARCH= \
 		RC_ProjectSourceVersion=${CCTOOLS_VERSION} \
 		RC_CFLAGS="-DASLIBEXECDIR=\"\\\"${EPREFIX}${LIBPATH}/\\\"\" ${CFLAGS}" \
 		OFLAG="${CCTOOLS_OFLAG}" \
-		DSYMUTIL=": disabled: dsymutil" \
-		|| die "emake failed for as"
+		DSYMUTIL=": disabled: dsymutil"
 }
 
 src_compile() {

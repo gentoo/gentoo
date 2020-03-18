@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="TOFU protection - display filter for RFC822 messages"
-HOMEPAGE="http://www.escape.de/~tolot/mutt/"
-SRC_URI="http://www.escape.de/~tolot/mutt/t-prot/downloads/${P}.tar.gz"
+HOMEPAGE="https://www.escape.de/~tolot/mutt/"
+SRC_URI="https://www.escape.de/~tolot/mutt/t-prot/downloads/${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"

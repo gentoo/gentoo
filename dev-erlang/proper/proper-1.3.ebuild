@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 
-DEPEND=">=dev-lang/erlang-17.1"
+DEPEND=">=dev-lang/erlang-17.1:="
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md THANKS )

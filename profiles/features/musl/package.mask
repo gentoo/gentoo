@@ -5,6 +5,7 @@ sys-libs/uclibc-ng
 sys-libs/glibc
 
 # We use eudev which is tested on both uclibc and musl
+=virtual/libudev-232-r1
 sys-apps/systemd
 sys-fs/udev
 

@@ -1,5 +1,30 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-12)
+# libcxxabi is the only supported option.  The support for libsupc++
+# is maintained for experts only.
+sys-libs/libcxx libcxxabi
+
+# Lars Wendler <polynomial-c@gentoo.org> (2019-12-23)
+# This release does no longer build with x11-libs/gtk+:2
+# and upstream has no intention to fix this.
+# https://bugs.gentoo.org/703592
+~www-client/seamonkey-2.49.5 force-gtk3
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-06)
+# Non-initramfs builds do not work with the default .config.  Force
+# the mask, so that users don't brick their systems.  If somebody wants
+# to avoid initramfs, he needs to use a custom .config and unforce
+# the flag.
+sys-kernel/vanilla-kernel initramfs
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-06)
+# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
+# distribution and rely on external providers lke libxcrypt.
+# Gentoo will follow the suit but today we are not ready.
+# Unmask at your risk. Bug #699422 tracks the effort.
+sys-libs/glibc crypt
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
@@ -16,19 +41,21 @@ sys-devel/gcc cxx
 # them is an experimental feature and needs testing.
 sys-libs/glibc static-libs
 
-# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Michał Górny <mgorny@gentoo.org> (2019-03-22)
 # Force building separate tinfo to maintain stable library API.  This
 # is backwards-compatible with packages linked to -lncurses, so neither
 # installed packages nor pre-built software should be negatively
 # affected.  On the other hand, disabling USE=tinfo is capable of
 # breaking installed packages.
 sys-libs/ncurses tinfo
+sys-libs/ncurses-compat tinfo
 
 # Mart Raudsepp <leio@gentoo.org> (2018-12-14)
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
 >gnome-base/nautilus-3.29 seccomp
+net-libs/webkit-gtk seccomp
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
@@ -43,10 +70,8 @@ sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
 # NP-Hardass <NP-Hardass@gentoo.org> (2017-04-10)
-# Always force patch on appropriate variant to ensure
-# similar experience when using app-emulation/wine-any
+# Always force patch on appropriate variant
 app-emulation/wine-staging staging
-app-emulation/wine-d3d9 d3d9
 
 # David Seifert <soap@gentoo.org> (2017-03-07)
 # Only ever use system ffmpeg, allow kodi bundled ffmpeg
@@ -86,11 +111,9 @@ app-shells/bash:0 readline
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
 dev-lang/python-exec python_targets_python2_7
-dev-lang/python-exec python_targets_python3_5
 dev-lang/python-exec python_targets_python3_6
 dev-lang/python-exec python_targets_python3_7
-dev-lang/python-exec python_targets_jython2_7
-dev-lang/python-exec python_targets_pypy
+dev-lang/python-exec python_targets_python3_8
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

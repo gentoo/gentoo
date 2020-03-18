@@ -10,7 +10,7 @@ else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit cmake-utils virtualx xdg
+inherit cmake virtualx xdg
 
 DESCRIPTION="A Qt IMAP e-mail client"
 HOMEPAGE="http://trojita.flaska.net/"
@@ -18,6 +18,7 @@ HOMEPAGE="http://trojita.flaska.net/"
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
 IUSE="+crypt +dbus debug +password pim +spell test +zlib"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="password? ( dbus )"
 
@@ -50,7 +51,7 @@ DEPEND="${RDEPEND}
 DOCS=( README LICENSE )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# the build system is taking a look at `git describe ... --dirty` and
 	# gentoo's modifications to CMakeLists.txt break these
@@ -71,9 +72,9 @@ src_configure() {
 		-DWITH_ZLIB=$(usex zlib)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	virtx cmake-utils_src_test
+	virtx cmake_src_test
 }

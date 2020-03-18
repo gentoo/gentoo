@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/320785
 
---- MIME_headers.c
-+++ MIME_headers.c
+--- a/MIME_headers.c
++++ b/MIME_headers.c
 @@ -2243,7 +2243,7 @@
  		{
  			if (MIMEH_DNORMAL) LOGGER_log("%s:%d:MIME_parse_contentlocation:DEBUG: filename = %s\n", FL, p);

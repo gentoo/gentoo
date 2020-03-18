@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # wxPython 4 supports python 2.7, but because it's going EOL soon and to ease
 # transition from wxPython 3.x, we make this package py3-only.
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 WX_GTK_VER="3.0-gtk3"
 
 inherit distutils-r1 multiprocessing virtualx wxwidgets
@@ -18,8 +18,9 @@ SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="wxWinLL-3"
 SLOT="4.0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE="test webkit"
+RESTRICT="!test? ( test )"
 
 # wxPython doesn't seem to be able to optionally disable features. webkit is
 # optionally patched out because it's so huge, but other elements are not,
@@ -85,5 +86,5 @@ python_install() {
 }
 
 python_test() {
-	virtx pytest -vv unittests || die "Test failed with ${EPYTHON}"
+	virtx pytest -vv unittests
 }

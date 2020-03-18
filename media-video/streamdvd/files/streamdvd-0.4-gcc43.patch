@@ -1,6 +1,6 @@
-diff -aur mplex.old/inputstrm.cpp mplex/inputstrm.cpp
---- mplex.old/inputstrm.cpp	2004-03-08 23:10:53.000000000 +0100
-+++ mplex/inputstrm.cpp	2008-07-07 23:28:19.000000000 +0200
+diff -aur a/mplex/inputstrm.cpp b/mplex/inputstrm.cpp
+--- a/mplex/inputstrm.cpp	2004-03-08 23:10:53.000000000 +0100
++++ b/mplex/inputstrm.cpp	2008-07-07 23:28:19.000000000 +0200
 @@ -23,6 +23,7 @@
  
  #include "config.h"
@@ -9,9 +9,9 @@ diff -aur mplex.old/inputstrm.cpp mplex/inputstrm.cpp
  
  #include "mjpeg_types.h"
  #include "fastintfns.h"
-diff -aur mplex.old/multiplexor.cpp mplex/multiplexor.cpp
---- mplex.old/multiplexor.cpp	2004-03-08 23:10:53.000000000 +0100
-+++ mplex/multiplexor.cpp	2008-07-07 23:28:19.000000000 +0200
+diff -aur a/mplex/multiplexor.cpp b/mplex/multiplexor.cpp
+--- a/mplex/multiplexor.cpp	2004-03-08 23:10:53.000000000 +0100
++++ b/mplex/multiplexor.cpp	2008-07-07 23:28:19.000000000 +0200
 @@ -22,6 +22,7 @@
  #include "config.h"
  #include <math.h>
@@ -20,9 +20,9 @@ diff -aur mplex.old/multiplexor.cpp mplex/multiplexor.cpp
  
  #include "mjpeg_types.h"
  #include "mjpeg_logging.h"
-diff -aur mplex.old/padstrm.cpp mplex/padstrm.cpp
---- mplex.old/padstrm.cpp	2004-03-08 23:10:53.000000000 +0100
-+++ mplex/padstrm.cpp	2008-07-07 23:28:19.000000000 +0200
+diff -aur a/mplex/padstrm.cpp b/mplex/padstrm.cpp
+--- a/mplex/padstrm.cpp	2004-03-08 23:10:53.000000000 +0100
++++ b/mplex/padstrm.cpp	2008-07-07 23:28:19.000000000 +0200
 @@ -25,6 +25,7 @@
  #endif
  
@@ -31,9 +31,9 @@ diff -aur mplex.old/padstrm.cpp mplex/padstrm.cpp
  
  
  
-diff -aur mplex.old/zalphastrm_in.cpp mplex/zalphastrm_in.cpp
---- mplex.old/zalphastrm_in.cpp	2004-03-08 23:10:53.000000000 +0100
-+++ mplex/zalphastrm_in.cpp	2008-07-07 23:28:19.000000000 +0200
+diff -aur a/mplex/zalphastrm_in.cpp b/mplex/zalphastrm_in.cpp
+--- a/mplex/zalphastrm_in.cpp	2004-03-08 23:10:53.000000000 +0100
++++ b/mplex/zalphastrm_in.cpp	2008-07-07 23:28:19.000000000 +0200
 @@ -23,6 +23,7 @@
  #include "config.h"
  #include <math.h>

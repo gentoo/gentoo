@@ -1,5 +1,5 @@
---- libhfs/os/unix.c-orig	1998-11-02 23:09:13.000000000 +0100
-+++ libhfs/os/unix.c	2004-12-13 14:39:28.099124272 +0100
+--- a/libhfs/os/unix.c
++++ b/libhfs/os/unix.c
 @@ -19,6 +19,11 @@
   * $Id$
   */

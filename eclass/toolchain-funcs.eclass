@@ -207,14 +207,13 @@ tc-cpp-is-true() {
 	local CONDITION=${1}
 	shift
 
-	local RESULT=$($(tc-getTARGET_CPP) "${@}" -P - <<-EOF 2>/dev/null
-			#if ${CONDITION}
-			true
-			#endif
-		EOF
-	)
-
-	[[ ${RESULT} == true ]]
+	$(tc-getTARGET_CPP) "${@}" -P - <<-EOF >/dev/null 2>&1
+		#if ${CONDITION}
+		true
+		#else
+		#error false
+		#endif
+	EOF
 }
 
 # @FUNCTION: tc-detect-is-softfloat

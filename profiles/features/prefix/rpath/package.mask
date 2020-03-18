@@ -1,0 +1,22 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Jeremy Olexa <darkside@gentoo.org> (2009-06-30)
+# The PAM auth system just will not work in Gentoo Prefix, instead the host auth
+# system should be used.
+sys-libs/pam
+sys-auth/pambase
+
+# Jeremy Olexa <darkside@gentoo.org> (2008-12-02)
+# Reported to work. However, you will need to package.provide some deps. 
+# See bug 248809 for more details.
+net-fs/openafs
+
+# Jeremy Olexa <darkside@gentoo.org> (2009-06-02)
+# If you have MacFuse or some other implementation of fuse installed, you can
+# probably use this by placing sys-fs/fuse in package.provided, bug 272210
+net-fs/curlftpfs
+
+# Fabian Groffen <grobian@gentoo.org> (2008-01-11)
+# Screws up things, see bug #204998
+<sys-devel/gcc-3.4.0

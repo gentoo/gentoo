@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="Library for using System.Drawing with mono"
 HOMEPAGE="http://www.mono-project.com"
@@ -40,12 +40,11 @@ PATCHES=(
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--disable-static \
 		$(usex cairo "" "--with-pango")
 }
 
-src_install () {
+src_install() {
 	default
 
 	dotnet_multilib_comply

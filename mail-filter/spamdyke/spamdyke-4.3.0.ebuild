@@ -41,25 +41,25 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable ssl tls) || die "econf failed"
+		$(use_enable ssl tls)
 	cd ../utils
-	econf || die "econf failed in utils"
+	econf
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" || die "emake failed"
+	emake CFLAGS="${CFLAGS}"
 	cd ../utils
-	emake CFLAGS="${CFLAGS}" || die "emake in utils died"
+	emake CFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	dobin ${PN} || die "Installing ${PN} binary failed"
+	dobin ${PN}
 	insinto /etc/${PN}
-	doins ${PN}.conf || die "Installing ${PN} configuration file failed"
+	doins ${PN}.conf
 	dodir /var/tmp/${PN}/graylist
 	fowners -R qmaild /var/tmp/${PN}/graylist
 	cd ../utils
-	dobin domain2path || die "Installing domain2path binary failed"
+	dobin domain2path
 	cd ../documentation
 	dodoc {Changelog,INSTALL,UPGRADING}.txt
 	dohtml FAQ.html \

@@ -6,12 +6,12 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="A lightweight and flexible command-line JSON processor"
-HOMEPAGE="https://stedolan.github.com/jq/"
+HOMEPAGE="https://stedolan.github.io/jq/"
 SRC_URI="https://github.com/stedolan/jq/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="MIT CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x64-macos"
 IUSE="oniguruma static-libs"
 
 ONIGURUMA_MINPV='>=dev-libs/oniguruma-6.1.3' # Keep this in sync with bundled modules/oniguruma/
@@ -58,6 +58,16 @@ src_configure() {
 		$(use_with oniguruma oniguruma yes)
 	)
 	econf "${econfargs[@]}"
+}
+
+src_test() {
+	if ! emake check; then
+		if [[ -r test-suite.log ]]; then
+			eerror "Tests failed, outputting testsuite log"
+			cat test-suite.log
+		fi
+		die "Tests failed"
+	fi
 }
 
 src_install() {

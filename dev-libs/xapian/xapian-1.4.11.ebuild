@@ -65,9 +65,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	# bug #573466
-	dosym xapian-config /usr/bin/xapian-config-1.3
-
 	if use doc; then
 		rm -rf "${D}/usr/share/doc/xapian-core-${PV}" || die
 	fi

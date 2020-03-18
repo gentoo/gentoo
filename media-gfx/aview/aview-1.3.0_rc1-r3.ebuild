@@ -1,23 +1,24 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit base
+inherit autotools
 
 MY_P=${P/_/}
-S=${WORKDIR}/${MY_P/rc*/}
+
 DESCRIPTION="An ASCII Image Viewer"
-SRC_URI="mirror://sourceforge/aa-project/${MY_P}.tar.gz"
 HOMEPAGE="http://aa-project.sourceforge.net/aview/"
+SRC_URI="mirror://sourceforge/aa-project/${MY_P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
-IUSE=""
 
-DEPEND=">=media-libs/aalib-1.4_rc4"
+DEPEND="media-libs/aalib:="
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${MY_P/rc*/}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-asciiview.patch
@@ -25,18 +26,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	base_src_prepare
-
-	sed -i -e 's:#include <malloc.h>:#include <stdlib.h>:g' "${S}"/*.c || die
-}
-
-src_compile() {
-	make aview
-}
-
-src_install() {
-	dobin aview asciiview
-
-	doman *.1
-	dodoc ANNOUNCE ChangeLog README TODO
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
 }

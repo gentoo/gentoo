@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>slis@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription>
     SCOOP (Scalable COncurrent Operations in Python) is a distributed task module
     allowing concurrent parallel programming on various environments, from

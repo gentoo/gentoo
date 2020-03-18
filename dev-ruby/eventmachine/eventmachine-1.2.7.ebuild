@@ -74,7 +74,7 @@ each_ruby_compile() {
 	for extdir in ext ext/fastfilereader; do
 		pushd $extdir
 		# both extensions use C++, so use the CXXFLAGS not the CFLAGS
-		emake V=1 CFLAGS="${CXXFLAGS} -fPIC" archflag="${LDFLAGS}" || die "emake failed for ${extdir}"
+		emake V=1 CFLAGS="${CXXFLAGS} -fPIC" archflag="${LDFLAGS}"
 		popd
 		cp $extdir/*.so lib/ || die "Unable to copy extensions for ${extdir}"
 	done
@@ -88,5 +88,5 @@ all_ruby_install() {
 	all_fakegem_install
 
 	insinto /usr/share/doc/${PF}/
-	doins -r examples || die "Failed to install examples"
+	doins -r examples
 }

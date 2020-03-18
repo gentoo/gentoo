@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Set metrics of all IPv4 routes attached to a given network interface at once"
 HOMEPAGE="http://0pointer.de/lennart/projects/ifmetric/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://0pointer.de/lennart/projects/ifmetric/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,18 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: figure out htf to make python.eclass work
 
 EAPI="5"
 
-inherit eutils multilib
+inherit eutils ltprune multilib
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/urjtag/git"
 	inherit git-r3 autotools
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="mirror://sourceforge/urjtag/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+	KEYWORDS="amd64 ppc sparc x86"
 fi
 
 DESCRIPTION="Tool for communicating over JTAG with flash chips, CPUs, and many more"

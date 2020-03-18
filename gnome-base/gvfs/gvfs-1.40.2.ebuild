@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,7 @@ LICENSE="LGPL-2+"
 SLOT="0"
 
 IUSE="afp archive bluray cdda elogind fuse google gnome-keyring gnome-online-accounts gphoto2 +http ios mtp nfs policykit samba systemd test +udev udisks zeroconf"
+RESTRICT="!test? ( test )"
 # elogind/systemd only relevant to udisks (in v1.38.1)
 REQUIRED_USE="
 	?? ( elogind systemd )
@@ -21,7 +22,7 @@ REQUIRED_USE="
 	mtp? ( udev )
 	udisks? ( udev )
 "
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 RDEPEND="
 	>=dev-libs/glib-2.57.2:2
@@ -34,8 +35,8 @@ RDEPEND="
 	http? (
 		dev-libs/libxml2:2
 		>=net-libs/libsoup-2.58.0:2.4 )
-	zeroconf? ( >=net-dns/avahi-0.6 )
-	udev? ( >=virtual/libgudev-147:= )
+	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
+	udev? ( >=dev-libs/libgudev-147:= )
 	fuse? ( >=sys-fs/fuse-2.8.0:0 )
 	udisks? ( >=sys-fs/udisks-1.97:2 )
 	systemd? ( >=sys-apps/systemd-206:0= )

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ghc-package.eclass
@@ -22,14 +22,20 @@ esac
 # @DESCRIPTION:
 # returns the name of the ghc executable
 ghc-getghc() {
-	type -P ${HC:-ghc}
+	if ! type -P ${HC:-ghc}; then
+		ewarn "ghc not found"
+		type -P false
+	fi
 }
 
 # @FUNCTION: ghc-getghcpkg
 # @DESCRIPTION:
 # Internal function determines returns the name of the ghc-pkg executable
 ghc-getghcpkg() {
-	type -P ${HC_PKG:-ghc-pkg}
+	if ! type -P ${HC_PKG:-ghc-pkg}; then
+		ewarn "ghc-pkg not found"
+		type -P false
+	fi
 }
 
 # @FUNCTION: ghc-getghcpkgbin

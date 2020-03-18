@@ -17,7 +17,7 @@ IUSE="emacs examples +ocamlopt"
 RDEPEND=">=sys-devel/binutils-2.17:*
 	>=sys-devel/gcc-2.95.3:*
 	>=dev-lang/ocaml-3.10[ocamlopt?]
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 DEPEND="${RDEPEND}
 	app-text/dos2unix
 	dev-util/omake"

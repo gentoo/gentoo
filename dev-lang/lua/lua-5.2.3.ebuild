@@ -11,7 +11,7 @@ SRC_URI="http://www.lua.org/ftp/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="5.2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-linux"
 IUSE="+deprecated emacs readline static"
 
 RDEPEND="readline? ( sys-libs/readline:0= )
@@ -86,13 +86,12 @@ src_compile() {
 			LUA_LIBS="${mylibs}" \
 			LIB_LIBS="${liblibs}" \
 			V=$(get_version_component_range 1-2) \
-			gentoo_all || die "emake failed"
+			gentoo_all
 }
 
 src_install() {
 	emake INSTALL_TOP="${ED}/usr" INSTALL_LIB="${ED}/usr/$(get_libdir)" \
-			V=${SLOT} gentoo_install \
-	|| die "emake install gentoo_install failed"
+			V=${SLOT} gentoo_install
 
 	dodoc README
 	dohtml doc/*.html doc/*.png doc/*.css doc/*.gif

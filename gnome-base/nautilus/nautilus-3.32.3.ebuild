@@ -12,7 +12,7 @@ LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 IUSE="gnome +gstreamer gtk-doc +introspection packagekit +previewer seccomp selinux sendto"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.58.1:2
@@ -35,7 +35,8 @@ RDEPEND="${COMMON_DEPEND}
 	seccomp? ( >=sys-apps/bubblewrap-0.3.1 )
 	sendto? ( !<gnome-extra/nautilus-sendto-3.0.1 )
 	gstreamer? ( !<media-video/totem-3.31.91[nautilus] )
-"
+	>=app-misc/tracker-miners-2.0:=
+" # uses org.freedesktop.Tracker.Miner.Files gsettings schema from tracker-miners
 DEPEND="${COMMON_DEPEND}
 	media-libs/fontconfig
 "

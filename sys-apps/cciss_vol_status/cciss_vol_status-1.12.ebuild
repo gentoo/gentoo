@@ -14,7 +14,7 @@ RDEPEND=""
 DEPEND=""
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Install failed."
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog NEWS README
 	exeinto /etc/cron.hourly
 	newexe "${FILESDIR}/cciss_vol_status.cron2" cciss_vol_status

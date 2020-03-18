@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,12 +11,12 @@ inherit haskell-cabal pax-utils
 
 DESCRIPTION="A documentation-generation tool for Haskell libraries"
 HOMEPAGE="http://www.haskell.org/haddock/"
-#SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+#SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 SRC_URI="http://code.haskell.org/~slyfox/snapshots/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RESTRICT=test # many test depends are not keyworded yet

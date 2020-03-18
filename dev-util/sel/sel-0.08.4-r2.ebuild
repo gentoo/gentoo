@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ RDEPEND="sys-libs/ncurses:0="
 
 DOCS=( "help.txt" README.GER whatsnew )
 
-src_prepare () {
+src_prepare() {
 	default
 	sed -i \
 		-e "s:/usr/local/share/sel/help\.txt:/usr/share/sel/help\.txt:" \
@@ -28,7 +28,7 @@ src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDLIBS="-lncurses"
 }
 
-src_install () {
+src_install() {
 	dobin "${PN}"
 	doman "${PN}.1"
 	einstalldocs

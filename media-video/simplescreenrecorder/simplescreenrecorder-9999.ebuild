@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib flag-o-matic xdg
 
 if [[ ${PV} = 9999 ]]; then
@@ -73,8 +74,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# required because xdg.eclass overrides default cmake-utils_src_prepare
-	cmake-utils_src_prepare
+	# required because xdg.eclass overrides default cmake_src_prepare
+	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -105,7 +106,7 @@ multilib_src_configure() {
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_preinst() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,9 +29,12 @@ S=${WORKDIR}/${MY_PN}-${PV}/${MY_PN}
 PATCHES=( "${FILESDIR}"/${PN}-noman.patch )
 
 src_prepare() {
-	sed -i -e 's/-geom /-geometry /' GrabImage || die "sed failed."
-	sed -i -e 's/install -s -m /install -m /' Makefile || die "sed failed."
+	sed -i -e 's/-geom /-geometry /' GrabImage || die
+	sed -i -e 's/install -s -m /install -m /' Makefile || die
 	default
+
+	pushd "${WORKDIR}"/${MY_PN}-${PV} || die
+	eapply "${FILESDIR}"/${P}-gcc-10.patch
 }
 
 src_compile() {

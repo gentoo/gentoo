@@ -6,7 +6,7 @@ EAPI=5
 inherit xorg-2
 
 DESCRIPTION="list fonts served by X font server"
-KEYWORDS="amd64 arm ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libFS"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,9 +10,9 @@ DESCRIPTION="Backtracking YACC - modified from Berkeley YACC"
 HOMEPAGE="http://www.siber.com/btyacc"
 SRC_URI="http://www.siber.com/btyacc/${MY_P}.tar.gz"
 
-LICENSE="freedist"
+LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-fbsd ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos ~x86-macos"
 
 S="${WORKDIR}"
 

@@ -29,7 +29,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 src_compile() {
 	export GOPATH=${S}
 	cd "${S}"/src/${EGO_PN}/cmd/${PN/kvm/driver-kvm} || die
-	emake build || die
+	emake build
 }
 
 src_install() {

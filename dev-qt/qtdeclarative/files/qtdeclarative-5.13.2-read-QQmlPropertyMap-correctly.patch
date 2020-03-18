@@ -1,0 +1,92 @@
+From bcbc3c9cec1f7d7bb8c9d5f5ea94eb5c81ec2853 Mon Sep 17 00:00:00 2001
+From: Fabian Kosmale <fabian.kosmale@qt.io>
+Date: Wed, 30 Oct 2019 10:15:23 +0100
+Subject: [PATCH] QQmlProperty: handle reads of QQmlPropertyMap correctly
+
+Fixes: QTBUG-79614
+Change-Id: Iaf84c0178dc88072a367da2b42b09554b85c7d57
+Reviewed-by: Simon Hausmann <simon.hausmann@qt.io>
+---
+ src/qml/qml/qqmlproperty.cpp                     | 12 +++++++++---
+ tests/auto/qml/qqmlproperty/tst_qqmlproperty.cpp | 21 +++++++++++++++++++++
+ 2 files changed, 30 insertions(+), 3 deletions(-)
+
+diff --git a/src/qml/qml/qqmlproperty.cpp b/src/qml/qml/qqmlproperty.cpp
+index c8166695bad..a394ed1ad9a 100644
+--- a/src/qml/qml/qqmlproperty.cpp
++++ b/src/qml/qml/qqmlproperty.cpp
+@@ -63,6 +63,7 @@
+ #include <private/qqmlvaluetypewrapper_p.h>
+ #include <QtCore/qdebug.h>
+ #include <cmath>
++#include <QtQml/QQmlPropertyMap>
+ 
+ Q_DECLARE_METATYPE(QList<int>)
+ Q_DECLARE_METATYPE(QList<qreal>)
+@@ -331,10 +332,15 @@ void QQmlPropertyPrivate::initProperty(QObject *obj, const QString &name)
+ 
+                 return;
+             } else {
+-                if (!property->isQObject())
+-                    return; // Not an object property
++                if (!property->isQObject()) {
++                    if (auto asPropertyMap = qobject_cast<QQmlPropertyMap*>(currentObject))
++                        currentObject = asPropertyMap->value(path.at(ii).toString()).value<QObject*>();
++                    else
++                        return; // Not an object property, and not a property map
++                } else {
++                    property->readProperty(currentObject, &currentObject);
++                }
+ 
+-                property->readProperty(currentObject, &currentObject);
+                 if (!currentObject) return; // No value
+ 
+             }
+diff --git a/tests/auto/qml/qqmlproperty/tst_qqmlproperty.cpp b/tests/auto/qml/qqmlproperty/tst_qqmlproperty.cpp
+index 27e06c6f674..ed213cd01aa 100644
+--- a/tests/auto/qml/qqmlproperty/tst_qqmlproperty.cpp
++++ b/tests/auto/qml/qqmlproperty/tst_qqmlproperty.cpp
+@@ -37,6 +37,7 @@
+ #include <QtCore/qdir.h>
+ #include <QtCore/private/qobject_p.h>
+ #include "../../shared/util.h"
++#include <QtQml/QQmlPropertyMap>
+ 
+ #include <QDebug>
+ class MyQmlObject : public QObject
+@@ -149,6 +150,8 @@ private slots:
+     void floatToStringPrecision();
+ 
+     void copy();
++
++    void nestedQQmlPropertyMap();
+ private:
+     QQmlEngine engine;
+ };
+@@ -2106,6 +2109,24 @@ void tst_qqmlproperty::initTestCase()
+     qmlRegisterType<MyContainer>("Test",1,0,"MyContainer");
+ }
+ 
++void tst_qqmlproperty::nestedQQmlPropertyMap()
++{
++    QQmlPropertyMap mainPropertyMap;
++    QQmlPropertyMap nestedPropertyMap;
++    QQmlPropertyMap deeplyNestedPropertyMap;
++
++    mainPropertyMap.insert("nesting1", QVariant::fromValue(&nestedPropertyMap));
++    nestedPropertyMap.insert("value", 42);
++    nestedPropertyMap.insert("nesting2", QVariant::fromValue(&deeplyNestedPropertyMap));
++    deeplyNestedPropertyMap.insert("value", "success");
++
++    QQmlProperty value{&mainPropertyMap, "nesting1.value"};
++    QCOMPARE(value.read().toInt(), 42);
++
++    QQmlProperty success{&mainPropertyMap, "nesting1.nesting2.value"};
++    QCOMPARE(success.read().toString(), QLatin1String("success"));
++}
++
+ QTEST_MAIN(tst_qqmlproperty)
+ 
+ #include "tst_qqmlproperty.moc"
+-- 
+2.16.3

@@ -1,9 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_5 python3_6 python3_7 )
+PYTHON_COMPAT=( python3_6 python3_7 )
 inherit distutils-r1
 
 DESCRIPTION="A protocol neutral RPC library that supports JSON-RPC and zmq."

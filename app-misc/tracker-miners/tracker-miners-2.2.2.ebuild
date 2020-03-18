@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 systemd xdg
 
@@ -16,7 +16,7 @@ IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg libav +pdf +playlist ra
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg/libav
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # tracker-2.1.7 currently always depends on ICU (theoretically could be libunistring instead); so choose ICU over enca always here for the time being (ICU is preferred)
 RDEPEND="
@@ -35,7 +35,7 @@ RDEPEND="
 	xmp? ( >=media-libs/exempi-2.1.0:= )
 	raw? ( media-libs/gexiv2 )
 	>=dev-libs/icu-4.8.1.2:=
-	cue? ( media-libs/libcue )
+	cue? ( media-libs/libcue:= )
 	exif? ( >=media-libs/libexif-0.6 )
 	gsf? ( >=gnome-extra/libgsf-1.14.24:= )
 	xps? ( app-text/libgxps )
@@ -140,4 +140,14 @@ src_configure() {
 src_test() {
 	export GSETTINGS_BACKEND="dconf" # Tests require dconf and explicitly check for it (env_reset set it to "memory")
 	dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
 }

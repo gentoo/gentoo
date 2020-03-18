@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/${
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
-KEYWORDS="amd64 arm arm64 ppc64 x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 arm arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="+clang +libfuzzer +profile +sanitize test +xray elibc_glibc"
 # FIXME: libfuzzer does not enable all its necessary dependencies
 REQUIRED_USE="libfuzzer? ( || ( sanitize xray ) )"
@@ -44,6 +44,11 @@ S=${WORKDIR}/${MY_P}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
+
+python_check_deps() {
+	use test || return 0
+	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
 
 check_space() {
 	if use test; then

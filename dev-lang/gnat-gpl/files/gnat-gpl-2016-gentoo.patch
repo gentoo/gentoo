@@ -1,5 +1,5 @@
---- patch/09_all_default-ssp.patch.old	2017-01-08 16:14:09.377755019 +0100
-+++ patch/09_all_default-ssp.patch	2017-01-08 16:15:48.792764201 +0100
+--- a/patch/09_all_default-ssp.patch	2017-01-08 16:14:09.377755019 +0100
++++ b/patch/09_all_default-ssp.patch	2017-01-08 16:15:48.792764201 +0100
 @@ -78,14 +78,14 @@
   optimizing. The default value is 32.
  --- a/gcc/cp/lang-specs.h
@@ -37,8 +37,8 @@
         %{!fsyntax-only:%(invoke_as)}}}}", 0, 0, 1},
     {"-",
      "%{!E:%e-E or -x required when input is from standard input}\
---- gcc-4.9-gpl-2016-src/gcc/ada/osint.adb.old	2017-03-10 21:58:02.600710156 +0100
-+++ gcc-4.9-gpl-2016-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
+--- a/gcc-4.9-gpl-2016-src/gcc/ada/osint.adb	2017-03-10 21:58:02.600710156 +0100
++++ b/gcc-4.9-gpl-2016-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
 @@ -2229,14 +2229,11 @@
        for J in Start_Of_Prefix .. Name_Len - Prog'Length + 1 loop
           if Name_Buffer (J .. J + Prog'Length - 1) = Prog then

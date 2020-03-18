@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,8 +17,10 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="
-	dev-python/flask[${PYTHON_USEDEP}]
-	dev-python/pygit2[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/flask[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygit2[${PYTHON_MULTI_USEDEP}]
+	')
 	net-libs/nodejs
 	${PYTHON_DEPS}
 	"

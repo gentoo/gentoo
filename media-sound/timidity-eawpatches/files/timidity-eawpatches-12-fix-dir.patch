@@ -1,0 +1,9 @@
+--- a/linuxconfig/timidity.cfg
++++ b/linuxconfig/timidity.cfg
+@@ -1,5 +1,5 @@
+ #on my debian: /usr/local/share/timidity/timidity.cfg
+-dir /home/user/eawpats/
++dir /usr/share/timidity/eawpatches
+ source gravis.cfg
+ source gsdrums.cfg
+ source gssfx.cfg

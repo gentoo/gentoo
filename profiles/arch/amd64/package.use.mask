@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,41 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
+# media-libs/cudnn is keyworded on amd64
+sci-physics/root -cudnn
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
+# Encrypted Media Extensions (eme-free) can be disabled on amd64
+www-client/firefox -eme-free
+
+# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
+# dev-util/sysprof-capture is keyworded on amd64
+x11-wm/mutter -sysprof
+dev-libs/gjs -sysprof
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Vulkan is available on amd64.
+dev-qt/qtdeclarative -vulkan
+dev-qt/qtgui -vulkan
+dev-qt/qtwayland -vulkan
+
+# James Le Cuirot <chewi@gentoo.org> (2019-12-10)
+# The JIT feature only works on amd64 and x86.
+app-emulation/aranym -jit
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
+# dev-python/pandas is keyworded for amd64
+sys-block/fio -python -gnuplot
+
+# Craig Andrews <candrews@gentoo.org> (2019-10-08)
+# net-misc/quiche is available on this arch
+net-misc/curl -quiche
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on amd64
+sys-firmware/seabios -debug
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
 # upstream provides docs and tools for tier-1 arches
@@ -67,11 +102,6 @@ net-analyzer/testssl -bundled-openssl -kerberos
 # Unmask libheif support where media-libs/libheif is keyworded
 media-gfx/imagemagick -heif
 
-# Ben Kohler <bkohler@gentoo.org> (2018-08-23)
-# Unmask iwd support where net-wireless/iwd is keyworded
-net-misc/connman -iwd
-net-misc/networkmanager -iwd
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-08-23)
 # Dependency sys-cluster/ceph is keyworded for amd64
 net-fs/samba -ceph
@@ -91,8 +121,6 @@ media-video/mpv -vulkan
 
 # Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
 # media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
-app-emulation/wine-any -vkd3d -vulkan
-app-emulation/wine-d3d9 -vkd3d -vulkan
 app-emulation/wine-staging -vkd3d -vulkan
 app-emulation/wine-vanilla -vkd3d -vulkan
 
@@ -103,15 +131,15 @@ sys-boot/grub -libzfs
 
 # Amy Liffey <amynka@gentoo.org> (2017-09-19)
 # [cuda] is unmasked in this profiles.
-media-libs/opencv -contrib_xfeatures2d
+media-libs/opencv -contribxfeatures2d
 
 # David Seifert <soap@gentoo.org> (2017-05-20)
 # cpyrit-cuda does not support GCC 4.9 or later
 net-wireless/pyrit cuda
 
 # Rick Farina <zerochaos@gentoo.org> (2017-05-11)
-# nexpose and openvas work on amd64
-net-analyzer/metasploit -nexpose -openvas
+# nexpose work on amd64
+net-analyzer/metasploit -nexpose
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # dev-libs/libmaxminddb is keyworded on amd64
@@ -196,7 +224,7 @@ net-im/telepathy-connection-managers -steam
 
 # Mike Frysinger <vapier@gentoo.org> (2014-08-04)
 # Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer_spi -satamv
+sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64
@@ -232,10 +260,8 @@ sys-apps/hwloc -gl
 
 # Michał Górny <mgorny@gentoo.org> (2013-07-22)
 # Meaningless on amd64 (it controls the 32-bit x86 JIT).
-dev-python/pypy cpu_flags_x86_sse2
-dev-python/pypy-bin cpu_flags_x86_sse2
-dev-python/pypy3 cpu_flags_x86_sse2
-dev-python/pypy3-bin cpu_flags_x86_sse2
+dev-python/pypy-exe cpu_flags_x86_sse2
+dev-python/pypy3-exe cpu_flags_x86_sse2
 
 # Christoph Junghans <junghans@gentoo.org> (2012-12-26)
 # cuda works on x86/amd64 (masked in base)
@@ -274,8 +300,8 @@ dev-qt/qtdeclarative -jit
 dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
 
-# Robin H. Johnson <robbat2@gentoo.org> (2011-07-10)
-# PPS should work on all arches, but only keyworded on amd64/x86
+# Robin H. Johnson <robbat2@gentoo.org> (2011-07-10), updated 2019-12-06
+# PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
 # Tim Harder <radhermit@gentoo.org> (2011-02-13)

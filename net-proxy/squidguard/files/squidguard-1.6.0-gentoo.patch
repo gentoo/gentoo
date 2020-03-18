@@ -1,0 +1,33 @@
+--- squidGuard-1.6.orig/Makefile.in	2020-01-09 18:36:44.000000000 +0000
++++ squidGuard-1.6/Makefile.in	2020-01-10 13:02:14.000000000 +0000
+@@ -43,7 +43,7 @@
+ # Dependencies for installing
+ #	
+ 
+-install:	install-build install-conf
++install:	install-build
+ 
+ install-conf:
+ 	@echo Installing configuration file  ;
+--- squidGuard-1.6.orig/src/Makefile.in	2020-01-03 12:05:39.000000000 +0000
++++ squidGuard-1.6/src/Makefile.in	2020-01-10 13:02:14.000000000 +0000
+@@ -110,6 +110,8 @@
+ 	mv -f y.tab.c y.tab.c.bison
+ 	mv -f y.tab.h y.tab.h.bison
+ 
++sg.y sg.l:
++
+ #
+ # Dependencies for installing
+ #
+@@ -122,8 +124,8 @@
+ 
+ install.bin:: squidGuard
+ 	@echo making $@ in `basename \`pwd\``
+-	@$(MKDIR) $(bindir) $(logdir) $(cfgdir)
+-	$(INSTALL_PROGRAM) squidGuard $(bindir)/squidGuard
++	@$(MKDIR) "$(DESTDIR)"/$(bindir) "$(DESTDIR)"/$(logdir) "$(DESTDIR)"/$(cfgdir)
++	$(INSTALL_PROGRAM) squidGuard "$(DESTDIR)"/$(bindir)/squidGuard
+ 
+ uninstall.bin::
+ 	@echo making $@ in `basename \`pwd\``

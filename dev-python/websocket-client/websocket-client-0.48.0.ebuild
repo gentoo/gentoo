@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
 inherit distutils-r1
 
@@ -17,10 +17,10 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86 ~x64-macos"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' pypy python2_7 )
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

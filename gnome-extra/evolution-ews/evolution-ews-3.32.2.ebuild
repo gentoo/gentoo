@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
@@ -20,6 +20,7 @@ RDEPEND="
 	>=dev-libs/libmspack-0.4
 	dev-libs/libxml2:2
 	>=gnome-extra/evolution-data-server-${PV}-r1:0=
+	<gnome-extra/evolution-data-server-3.33
 	>=mail-client/evolution-${PV}:2.0
 	>=net-libs/libsoup-2.58:2.4
 	>=x11-libs/gtk+-3.10:3

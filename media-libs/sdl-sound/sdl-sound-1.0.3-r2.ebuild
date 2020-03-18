@@ -13,7 +13,7 @@ SRC_URI="https://icculus.org/${MY_PN}/downloads/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 sparc x86 ~x64-macos"
 IUSE="flac mikmod modplug mp3 mpeg physfs speex static-libs vorbis"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ MY_GENTOO_AGDA_STDLIB_V="${PV}.${MY_UPSTREAM_AGDA_STDLIB_V}"
 
 DESCRIPTION="A dependently typed functional programming language and proof assistant"
 HOMEPAGE="http://wiki.portal.chalmers.se/agda/"
-SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
@@ -63,10 +63,10 @@ RDEPEND=">=dev-haskell/boxes-0.1.3:=[profile?] <dev-haskell/boxes-0.2:=[profile?
 		>=dev-haskell/uulib-0.9.20:=[profile?] )
 "
 RDEPEND+="
-		emacs? ( app-emacs/haskell-mode
-			virtual/emacs )
+		emacs? ( >=app-editors/emacs-23.1:*
+			app-emacs/haskell-mode )
 "
-PDEPEND="stdlib? ( =sci-mathematics/agda-stdlib-${MY_GENTOO_AGDA_STDLIB_V} )"
+PDEPEND="stdlib? ( ~sci-mathematics/agda-stdlib-${MY_GENTOO_AGDA_STDLIB_V} )"
 DEPEND="${RDEPEND}
 	dev-haskell/alex
 	>=dev-haskell/cabal-1.22.2.0

@@ -19,9 +19,6 @@
 		- command "cd mountpoint/username:password@computer_or_ip" allows you to access "computer_or_ip" as user "username" with password "password" (this is insecure, but usefull)
 		- the program is multithreaded, so simultaneous access to a file/share is possible
 	</longdescription>
-	<use>
-		<flag name="gnome">Use the <pkg>gnome-base/gnome-keyring</pkg> for password management.</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">smbnetfs</remote-id>
 	</upstream>

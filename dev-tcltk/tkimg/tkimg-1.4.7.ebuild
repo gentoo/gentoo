@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/1.4/${PN}%20${PV}/${MYP}.tar.gz
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc test static-libs"
 
 RDEPEND="
@@ -75,15 +75,15 @@ src_install() {
 	# Make library links
 	for l in "${ED}"/usr/lib*/Img*/*tcl*.so; do
 		bl=$(basename $l)
-		dosym Img1.4/${bl} /usr/$(get_libdir)/${bl}
+		dosym Img${PV}/${bl} /usr/$(get_libdir)/${bl}
 	done
 
 	dodoc ChangeLog README Reorganization.Notes.txt changes ANNOUNCE
 
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins demo.tcl
-		insinto /usr/share/doc/${PF}/html
-		doins -r doc/*
+		docompress -x usr/share/doc/${PF}/demo.tcl
+		dodoc demo.tcl
+		docinto html
+		dodoc -r doc/*
 	fi
 }

@@ -4,8 +4,10 @@
 EAPI=7
 
 COMMIT="317b1e70a87224c94cac85955a3d666a43527812"
-KDE_HANDBOOK="optional"
-inherit kde5
+ECM_HANDBOOK="optional"
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm kde.org
 
 DESCRIPTION="The japanese warehouse keeper game"
 HOMEPAGE="https://cgit.kde.org/ksokoban.git"
@@ -16,17 +18,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtwidgets)
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 DEPEND="${RDEPEND}
-	$(add_frameworks_dep kiconthemes)
+	>=kde-frameworks/kiconthemes-${KFMIN}:5
 "
 
 S="${WORKDIR}/${PN}-${COMMIT}"

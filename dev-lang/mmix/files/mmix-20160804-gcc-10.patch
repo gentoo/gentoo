@@ -1,0 +1,24 @@
+gcc-10 defaults to -fno-common. Causes linker errors for
+duplicate 'buffer' definition.
+--- a/mmix-config.w
++++ b/mmix-config.w
+@@ -357,7 +357,7 @@ print error messages.
+ 
+ @<Global variables@>=
+ FILE *config_file; /* input comes from here */
+-char buffer[BUF_SIZE]; /* input lines go here */
++static char buffer[BUF_SIZE]; /* input lines go here */
+ char token[BUF_SIZE]; /* and tokens are copied to here */
+ char *buf_pointer=buffer; /* this is our current position */
+ bool token_prescanned; /* does |token| contain the next token already? */
+--- a/mmmix.w
++++ b/mmmix.w
+@@ -115,7 +115,7 @@ and \Hex{fedcba9876543210} into location \Hex{0123456789b0}.
+ octa cur_loc;
+ octa cur_dat;
+ bool new_chunk;
+-char buffer[BUF_SIZE];
++static char buffer[BUF_SIZE];
+ FILE *prog_file;
+ 
+ @ @<Input a rudimentary hexadecimal file@>=

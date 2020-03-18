@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -72,7 +72,7 @@ for i in ${TL_CORE_EXTRA_SRC_MODULES}; do
 done
 SRC_URI="${SRC_URI} )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="cjk X doc source tk +luajittex xetex"
 
 TEXMF_PATH=/usr/share/texmf-dist
@@ -83,11 +83,9 @@ MODULAR_X_DEPEND="X? (
 	)"
 
 COMMON_DEPEND="${MODULAR_X_DEPEND}
-	!dev-tex/luatex
 	sys-libs/zlib
 	>=media-libs/libpng-1.2.43-r2:0=
 	media-libs/gd[png]
-	>=app-text/poppler-0.58.0:=
 	>=x11-libs/cairo-1.12
 	>=x11-libs/pixman-0.18
 	dev-libs/zziplib
@@ -96,12 +94,12 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	dev-libs/mpfr:0=
 	xetex? (
 		>=media-libs/harfbuzz-1.4.5[icu,graphite]
-		>=dev-libs/icu-50:=
 		>=app-text/teckit-2.5.3
 		media-libs/fontconfig
 		media-gfx/graphite2
 	)
 	media-libs/freetype:2
+	>=dev-libs/icu-50:=
 	>=dev-libs/kpathsea-6.2.3
 	cjk? ( >=dev-libs/ptexenc-1.3.7 )
 	>=app-text/poppler-0.76.1:="

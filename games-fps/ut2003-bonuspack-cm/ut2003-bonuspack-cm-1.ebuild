@@ -1,18 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit games
 
-IUSE=""
+inherit games unpacker
+
 DESCRIPTION="Community Bonus Pack for UT2003"
 HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2003"
-SRC_URI="https://ut.rushbase.net/beyondunreal/mods/cbp2003.zip"
+SRC_URI="https://downloads.unrealadmin.org/UT2003/BonusPack/cbp2003.zip"
 
 LICENSE="ut2003"
 SLOT="1"
 KEYWORDS="~x86"
-RESTRICT="mirror strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="games-fps/ut2003"
 DEPEND="${RDEPEND}
@@ -24,7 +24,7 @@ dir=${GAMES_PREFIX_OPT}/ut2003
 Ddir=${D}/${dir}
 
 src_unpack() {
-	unzip -qq "${DISTDIR}"/${A} || die
+	unpack_zip "${DISTDIR}"/${A}
 }
 
 src_install() {

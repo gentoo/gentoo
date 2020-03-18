@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.11 )
 	test? ( >=dev-util/cppunit-1.13.0 )"
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}"/${PN}-${MY_PV}
 
 DOCS=(AUTHORS ChangeLog NEWS )

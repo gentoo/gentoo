@@ -5,22 +5,21 @@ EAPI=5
 
 inherit toolchain-funcs multilib eutils
 
-RESTRICT="installsources"
 DESCRIPTION="Make replacement"
 HOMEPAGE="http://projects.camlcity.org/projects/omake.html"
 SRC_URI="http://download.camlcity.org/download/${P}.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc fam ncurses +ocamlopt readline"
+RESTRICT="installsources !ocamlopt? ( strip )"
+
 DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	ncurses? ( >=sys-libs/ncurses-5.3:0= )
 	fam? ( virtual/fam )
 	readline? ( >=sys-libs/readline-4.3:0= )"
 RDEPEND="${DEPEND}"
-
-RESTRICT="!ocamlopt? ( strip )"
 
 src_prepare() {
 	epatch \

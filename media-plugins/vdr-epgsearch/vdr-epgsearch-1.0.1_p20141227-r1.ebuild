@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ case ${P#*_} in
 		;;
 esac
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+conflictcheckonly +epgsearchonly l10n_de pcre +quicksearch tre"
@@ -36,6 +36,7 @@ DEPEND="media-video/vdr
 	pcre? ( dev-libs/libpcre )
 	tre? ( dev-libs/tre )"
 RDEPEND="${DEPEND}"
+QA_FLAGS_IGNORED="usr/lib/vdr/plugins/libvdr-.* usr/lib64/vdr/plugins/libvdr-.* usr/bin/createcats"
 
 src_prepare() {
 	# make detection in vdr-plugin-2.eclass for new Makefile handling happy
@@ -45,7 +46,7 @@ src_prepare() {
 	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nn_NO,pl_PL,pt_PT,ro_RO,ru_RU,sl_SI,sv_SE,tr_TR}.po || die "cannot remove .po files"
 
 	local PATCHES=(
-		"${FILESDIR}/vdr-epgsearch-1.0.1_beta5_makefile.diff"
+		"${FILESDIR}/vdr-epgsearch-1.x.makefile.patch"
 		"${FILESDIR}/fix-manpage-generation.diff"
 		)
 

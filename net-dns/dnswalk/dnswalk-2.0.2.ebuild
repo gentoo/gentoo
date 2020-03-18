@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="dnswalk is a DNS database debugger"
 HOMEPAGE="https://sourceforge.net/projects/dnswalk/"
@@ -13,16 +13,14 @@ KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 RDEPEND=">=dev-perl/Net-DNS-0.12"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
-src_prepare() {
-	sed -i 's:#!/usr/contrib/bin/perl:#!'"${EPREFIX}"'/usr/bin/perl:' dnswalk
-}
+PATCHES=( "${FILESDIR}"/${PN}-2.0.2-portable-shebang.patch )
 
-src_install () {
+src_install() {
 	dobin dnswalk
 
-	dodoc CHANGES README TODO \
-		do-dnswalk makereports sendreports rfc1912.txt dnswalk.errors
+	einstalldocs
+	dodoc do-dnswalk makereports sendreports rfc1912.txt dnswalk.errors
 	doman dnswalk.1
 }

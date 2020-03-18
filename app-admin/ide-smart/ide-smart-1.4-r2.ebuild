@@ -19,7 +19,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin ide-smart || die
+	dobin ide-smart
 	doman ide-smart.8
 	dodoc README
 }

@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="music">Install music files</flag>
-	</use>
 	<upstream>
 		<remote-id type="google-code">endgame-singularity</remote-id>
 	</upstream>

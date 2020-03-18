@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
 KEYWORDS=""
 IUSE="cpu_flags_x86_sse2 static-libs test"
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	cmake-utils_src_prepare

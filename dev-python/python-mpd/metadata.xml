@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>python@gentoo.org</email>
-    <name>Python</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="pypi">python-mpd</remote-id>
-    <remote-id type="github">Mic92/python-mpd2</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">python-mpd</remote-id>
+		<remote-id type="github">Mic92/python-mpd2</remote-id>
+	</upstream>
+	<use>
+		<flag name="twisted">Enable twisted support</flag>
+	</use>
 </pkgmetadata>

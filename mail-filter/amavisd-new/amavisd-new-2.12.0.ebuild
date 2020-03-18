@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit systemd user
 
 DESCRIPTION="High-performance interface between the MTA and content checkers"
 HOMEPAGE="https://gitlab.com/amavis/amavis"
-SRC_URI="${HOMEPAGE}/-/archive/v${PV}/amavis-v${PV}.tar.bz2"
+SRC_URI="https://gitlab.com/amavis/amavis/-/archive/v${PV}/amavis-v${PV}.tar.bz2"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"

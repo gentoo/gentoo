@@ -16,3 +16,10 @@ sys-fs/e2fsprogs nls
 # as a fail-only stub in musl. breaks horribly if enabled.
 # bash: xmalloc: locale.c:81: cannot allocate 18 bytes (0 bytes allocated)
 app-shells/bash mem-scramble
+
+# lto builds are known to cause an OOM issue during build.
+mail-client/thunderbird lto
+www-client/firefox lto
+
+# static linking works with musl
+app-shells/mksh -static

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Mass IP port scanner"
 HOMEPAGE="https://github.com/robertdavidgraham/masscan"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/robertdavidgraham/masscan/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="AGPL-3"
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="net-libs/libpcap"
 
-src_prepare(){
+src_prepare() {
 	default
 
 	sed -i \

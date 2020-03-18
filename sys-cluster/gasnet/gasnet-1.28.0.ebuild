@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm"
 IUSE="mpi test threads"
+RESTRICT="!test? ( test )"
 
 DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"

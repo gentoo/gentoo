@@ -1,5 +1,43 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-03-15)
+# Mask USE=libtesseract, app-text/tesseract is not keyworded
+# Mask USE=dav1d, media-libs/dav1d is not keyworded
+# Mask USE=libaribb24, media-libs/aribb24 is not keyworded
+media-video/ffmpeg dav1d libaribb24 libtesseract
+
+# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
+# Mask until app-text/gspell is keyworded
+mail-client/evolution spell
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Joonas Niilola <juippis@gentoo.org> (2020-02-08)
+# Dependency not keyworded on this arch.
+dev-libs/dbus-c++ ecore
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
+
+# David Seifert <soap@gentoo.org> (2020-01-26)
+# media-libs/libkate is not keyworded on ia64 anymore
+media-sound/vorbis-tools kate
+
+# Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
+# dev-libs/criterion is not keyworded yet
+app-admin/syslog-ng test
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-07)
+# app-emulation/xen-tools is not keyworded on ia64.
+sys-boot/grub grub_platforms_xen grub_platforms_xen-32 grub_platforms_xen-pvh
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
+# dev-util/google-perftools is not keyworded yet
+sys-block/fio tcmalloc
 
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # media-video/pipewire is not keyworded yet
@@ -28,10 +66,6 @@ media-sound/lame debug
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-07-25)
 # USE=server does not compile and needs upstream fix: bug #662040
 >=sys-devel/gdb-8.1 server
-
-# Joonas Niilola <juippis@gentoo.org> (2018-06-17)
-# Optional dependency not available for this arch
-dev-libs/efl vlc
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-06)
 # Needs sys-apps/fakechroot which isn't keyworded
@@ -102,12 +136,12 @@ app-shells/bash-completion test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # Pulls in dev-db/redis which is not keyworded on ia64.
-dev-python/pyzor test
+mail-filter/pyzor test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # dev-python/gevent requires dev-python/greenlet which has not been ported to
 # ia64 (bug #538510)
-dev-python/pyzor gevent
+mail-filter/pyzor gevent
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-10)
 # media-libs/libilbc has not been ported to ia64, bug #610546
@@ -212,10 +246,6 @@ net-misc/spice-gtk smartcard webdav
 # dev-lang/luajit lacks ia64 keyword, bug #551540
 dev-libs/libpeas lua
 
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
-dev-libs/efl physics sdl
-
 # Alexis Ballier <aballier@gentoo.org> (2015-02-11)
 # Missing ffmpeg deps, bug #510340
 media-video/ffmpeg gme ssh
@@ -316,7 +346,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Raúl Porcel <armin76@gentoo.org> (2011-11-05)
 # jit not supported on ia64

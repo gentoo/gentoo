@@ -23,6 +23,7 @@ that has found extensive use in the scientific community.
 This package installs the reference FORTRAN 77 implementation from Netlib.
   </longdescription>
   <use>
+    <flag name="deprecated">Also build deprecated functions</flag>
     <flag name="lapacke">Build LAPACKE</flag>
     <flag name="eselect-ldso">Enable runtime library switching by
     eselect and ld.so.</flag>

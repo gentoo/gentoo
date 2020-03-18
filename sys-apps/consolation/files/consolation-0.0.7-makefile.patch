@@ -1,0 +1,25 @@
+diff --git a/Makefile.am b/Makefile.am
+index c577a9a..8a0e07f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,7 +5,7 @@ CLEANFILES = consolation.service
+ 
+ all: consolation.8 consolation.service
+ 
+-consolation.8: README src/shared.c $(top_srcdir)/configure.ac
++consolation.8: src/consolation-recursive README src/shared.c $(top_srcdir)/configure.ac
+ 	help2man --no-info --source=Debian --section=8 --include=README \
+ 	src/consolation \
+ 	| sed -e 's,\\fB,.TP\n\\fB,g' > consolation.8.new   \
+diff --git a/configure.ac b/configure.ac
+index 10bf054..25bdebc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,6 +5,7 @@ AC_INIT([consolation], [0.0.7])
+ AC_CONFIG_AUX_DIR(config)
+ 
+ AM_INIT_AUTOMAKE([1.11 foreign no-dist-gzip dist-xz])
++AM_EXTRA_RECURSIVE_TARGETS([src/consolation])
+ AM_CONFIG_HEADER(src/config.h)
+ 
+ # Check for programs

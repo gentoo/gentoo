@@ -1,0 +1,100 @@
+--- a/tpserv/tpserv.c
++++ b/tpserv/tpserv.c
+@@ -55,7 +55,7 @@
+ 	return v1 > v2 ? v1 : v2;
+ }
+ 
+-static void log(int level, int pid, char *format, ...)
++static void hunt_log(int level, int pid, char *format, ...)
+ {
+ 	char buf[BUFSIZE];
+ 	va_list va;
+@@ -93,21 +93,21 @@
+ {
+ 	if (verbose <= 1)
+ 		return;
+-	log(LOG_DEBUG, pid, "read  %4d bytes %s", len, print_connection(from_addr, to_addr));
++	hunt_log(LOG_DEBUG, pid, "read  %4d bytes %s", len, print_connection(from_addr, to_addr));
+ }
+ 
+ static void print_write(int pid, struct sockaddr_in *from_addr, struct sockaddr_in *to_addr, int len)
+ {
+ 	if (verbose <= 1)
+ 		return;
+-	log(LOG_DEBUG, pid, "write %4d bytes %s", len, print_connection(from_addr, to_addr));
++	hunt_log(LOG_DEBUG, pid, "write %4d bytes %s", len, print_connection(from_addr, to_addr));
+ }
+ 
+ static void print_connect(int pid, struct sockaddr_in *from_addr, struct sockaddr_in *to_addr)
+ {
+ 	if (!verbose)
+ 		return;
+-	log(LOG_DEBUG, pid, "connect          %s", print_connection(from_addr, to_addr));
++	hunt_log(LOG_DEBUG, pid, "connect          %s", print_connection(from_addr, to_addr));
+ 
+ }
+ 
+@@ -115,7 +115,7 @@
+ {
+ 	if (!verbose)
+ 		return;
+-	log(LOG_DEBUG, pid, "disconnect       %s", print_connection(from_addr, to_addr));
++	hunt_log(LOG_DEBUG, pid, "disconnect       %s", print_connection(from_addr, to_addr));
+ }
+ 
+ #if 0
+@@ -154,17 +154,17 @@
+ 	int fd_remote;
+ 	
+ 	if ((fd_remote = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+-		log(LOG_ERR, pid, "socket failed %d:%s\n", errno, strerror(errno));
++		hunt_log(LOG_ERR, pid, "socket failed %d:%s\n", errno, strerror(errno));
+ 		exit(1);
+ 	}
+ 	to_addr_len = sizeof(*to_addr);
+ 	if (connect(fd_remote, to_addr, to_addr_len) < 0) {
+-		log(LOG_ERR, pid, "failed to connect to remote addr\n");
++		hunt_log(LOG_ERR, pid, "failed to connect to remote addr\n");
+ 		exit(1);
+ 	}
+ 	local_addr_len = sizeof(local_addr);
+ 	if (getsockname(fd_remote, (struct sockaddr *) &local_addr, &local_addr_len) < 0) {
+-		log(LOG_ERR, pid, "getpeername failed %d:%s\n", errno, strerror(errno));
++		hunt_log(LOG_ERR, pid, "getpeername failed %d:%s\n", errno, strerror(errno));
+ 		exit(1);
+ 	}
+ 
+@@ -214,13 +214,13 @@
+ 	to_addr_len = sizeof(to_addr);
+ 	memset(&to_addr, 0, sizeof(to_addr));
+ 	if (getsockname(fd, (struct sockaddr *) &to_addr, &to_addr_len) < 0) {
+-		log(LOG_ERR, pid, "getsockname failed %d:%s\n", errno, strerror(errno));
++		hunt_log(LOG_ERR, pid, "getsockname failed %d:%s\n", errno, strerror(errno));
+ 		exit(1);
+ 	}
+ 	from_addr_len = sizeof(from_addr);
+ 	memset(&from_addr, 0, sizeof(from_addr));
+ 	if (getpeername(fd, (struct sockaddr *) &from_addr, &from_addr_len) < 0) {
+-		log(LOG_ERR, pid, "getpeername failed %d:%s\n", errno, strerror(errno));
++		hunt_log(LOG_ERR, pid, "getpeername failed %d:%s\n", errno, strerror(errno));
+ 		exit(1);
+ 	}
+ 	print_connect(pid, &from_addr, &to_addr);
+@@ -328,7 +328,7 @@
+ 		openlog(prog_name, LOG_PID, LOG_DAEMON);
+ 	}
+ 	if (verbose)
+-		log(LOG_DEBUG, getpid(), "ready");
++		hunt_log(LOG_DEBUG, getpid(), "ready");
+ 
+ 	for (;;) {
+ 		clilen = sizeof(cliaddr);
+@@ -336,7 +336,7 @@
+ 			clifd = accept(lfd, (struct sockaddr *) &cliaddr, &clilen);
+ 		} while (clifd < 0 && errno == EINTR);
+ 		if (clifd < 0) {
+-			log(LOG_ERR, getpid(), "accept failed %d:%s", errno, strerror(errno));
++			hunt_log(LOG_ERR, getpid(), "accept failed %d:%s", errno, strerror(errno));
+ 			exit(1);
+ 		}
+ 		if ((child_pid = fork()) == 0) {

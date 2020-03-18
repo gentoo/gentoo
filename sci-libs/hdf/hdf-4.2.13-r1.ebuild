@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 FORTRAN_NEEDED=fortran
 
-inherit fortran-2 toolchain-funcs autotools flag-o-matic
+inherit fortran-2 toolchain-funcs autotools flag-o-matic ltprune
 
 MYP=${P/_p/-patch}
 
@@ -17,6 +17,7 @@ SLOT="0"
 LICENSE="NCSA-HDF"
 KEYWORDS="amd64 ia64 ppc -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples fortran szip static-libs test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( szip )"
 
 RDEPEND="

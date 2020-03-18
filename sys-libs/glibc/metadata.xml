@@ -8,12 +8,14 @@
 <use>
  <flag name="cet">Enable Intel Control-flow Enforcement Technology (needs binutils 2.29 and gcc 8)</flag>
  <flag name="compile-locales">build *all* locales in src_install; this is generally meant for stage building only as it ignores /etc/locale.gen file and can be pretty slow</flag>
+ <flag name="crypt">build and install libcrypt and crypt.h</flag>
  <flag name="debug">When USE=hardened, allow fortify/stack violations to dump core (SIGABRT) and not kill self (SIGKILL)</flag>
  <flag name="gd">build memusage and memusagestat tools</flag>
  <flag name="multiarch">enable optimizations for multiple CPU architectures (detected at runtime)</flag>
  <flag name="nscd">Build, and enable support for, the Name Service Cache Daemon</flag>
  <flag name="rpc">Enable obsolete RPC/NIS layers</flag>
  <flag name="ssp">protect stack of glibc internals</flag>
+ <flag name="static-pie">Enable static PIE support (runtime files for -static-pie gcc option).</flag>
  <flag name="suid">Make internal pt_chown helper setuid -- not needed if using Linux and have /dev/pts mounted with gid=5</flag>
  <flag name="systemtap">enable systemtap static probe points</flag>
 </use>

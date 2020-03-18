@@ -1,0 +1,172 @@
+commit a0d8bcde5ab5329d11be8cd89c407e6aa0db83a4
+Author: Fumiaki Kinoshita <fumiexcel@gmail.com>
+Date:   Tue Apr 30 18:37:40 2019 +0900
+
+    Support GHC 8.8
+
+diff --git a/Text/JSON.hs b/Text/JSON.hs
+index f2e2618..6f80949 100644
+--- a/Text/JSON.hs
++++ b/Text/JSON.hs
+@@ -37,7 +37,7 @@ module Text.JSON (
+     -- ** Instance helpers
+   , makeObj, valFromObj
+   , JSKey(..), encJSDict, decJSDict
+-  
++
+   ) where
+ 
+ import Text.JSON.Types
+@@ -60,7 +60,7 @@ import qualified Data.Text as T
+ 
+ ------------------------------------------------------------------------
+ 
+--- | Decode a String representing a JSON value 
++-- | Decode a String representing a JSON value
+ -- (either an object, array, bool, number, null)
+ --
+ -- This is a superset of JSON, as types other than
+@@ -137,7 +137,9 @@ instance MonadPlus Result where
+ 
+ instance Monad Result where
+   return x      = Ok x
++#if !MIN_VERSION_base(4,13,0)
+   fail x        = Error x
++#endif
+   Ok a >>= f    = f a
+   Error x >>= _ = Error x
+ 
+@@ -199,7 +201,7 @@ instance JSON Ordering where
+   showJSON = encJSString show
+   readJSON = decJSString "Ordering" readOrd
+     where
+-     readOrd x = 
++     readOrd x =
+        case x of
+          "LT" -> return Prelude.LT
+          "EQ" -> return Prelude.EQ
+@@ -460,7 +462,7 @@ instance JSKey Int where
+ instance JSKey String where
+   toJSKey   = id
+   fromJSKey = Just
+-  
++
+ -- | Encode an association list as 'JSObject' value.
+ encJSDict :: (JSKey a, JSON b) => [(a,b)] -> JSValue
+ encJSDict v = makeObj [ (toJSKey x, showJSON y) | (x,y) <- v ]
+@@ -477,5 +479,3 @@ decJSDict l (JSObject o) = mapM rd (fromJSObject o)
+                                     "unable to read dict; invalid object key")
+ 
+ decJSDict l _ = mkError ("readJSON{"++l ++ "}: unable to read dict; expected JSON object")
+-
+-
+diff --git a/Text/JSON/String.hs b/Text/JSON/String.hs
+index 51463cd..67fdca8 100644
+--- a/Text/JSON/String.hs
++++ b/Text/JSON/String.hs
+@@ -1,7 +1,8 @@
++{-# LANGUAGE CPP #-}
+ -- | Basic support for working with JSON values.
+ 
+-module Text.JSON.String 
+-     ( 
++module Text.JSON.String
++     (
+        -- * Parsing
+        --
+        GetJSON
+@@ -35,6 +36,7 @@ import Text.JSON.Types (JSValue(..),
+                         JSObject, toJSObject, fromJSObject)
+ 
+ import Control.Monad (liftM, ap)
++import qualified Control.Monad.Fail as Fail
+ import Control.Applicative((<$>))
+ import qualified Control.Applicative as A
+ import Data.Char (isSpace, isDigit, digitToInt)
+@@ -52,9 +54,14 @@ instance A.Applicative GetJSON where
+   pure  = return
+   (<*>) = ap
+ 
++instance Fail.MonadFail GetJSON where
++  fail x          = GetJSON (\_ -> Left x)
++
+ instance Monad GetJSON where
+   return x        = GetJSON (\s -> Right (x,s))
+-  fail x          = GetJSON (\_ -> Left x)
++#if !MIN_VERSION_base(4,13,0)
++  fail = Fail.fail
++#endif
+   GetJSON m >>= f = GetJSON (\s -> case m s of
+                                      Left err -> Left err
+                                      Right (a,s1) -> un (f a) s1)
+@@ -93,7 +100,7 @@ tryJSNull k = do
+   xs <- getInput
+   case xs of
+     'n':'u':'l':'l':xs1 -> setInput xs1 >> return JSNull
+-    _ -> k 
++    _ -> k
+ 
+ -- | Read the JSON Bool type
+ readJSBool :: GetJSON JSValue
+@@ -111,8 +118,8 @@ readJSString = do
+   case x of
+        '"' : cs -> parse [] cs
+        _        -> fail $ "Malformed JSON: expecting string: " ++ context x
+- where 
+-  parse rs cs = 
++ where
++  parse rs cs =
+     case cs of
+       '\\' : c : ds -> esc rs c ds
+       '"'  : ds     -> do setInput ds
+@@ -153,22 +160,22 @@ readJSRational = do
+     '-' : ds -> negate <$> pos ds
+     _        -> pos cs
+ 
+-  where 
++  where
+    pos []     = fail $ "Unable to parse JSON Rational: " ++ context []
+    pos (c:cs) =
+      case c of
+        '0' -> frac 0 cs
+-       _ 
++       _
+         | not (isDigit c) -> fail $ "Unable to parse JSON Rational: " ++ context cs
+         | otherwise -> readDigits (digitToIntI c) cs
+ 
+    readDigits acc [] = frac (fromInteger acc) []
+    readDigits acc (x:xs)
+-    | isDigit x = let acc' = 10*acc + digitToIntI x in 
++    | isDigit x = let acc' = 10*acc + digitToIntI x in
+                       acc' `seq` readDigits acc' xs
+     | otherwise = frac (fromInteger acc) (x:xs)
+ 
+-   frac n ('.' : ds) = 
++   frac n ('.' : ds) =
+        case span isDigit ds of
+          ([],_) -> setInput ds >> return n
+          (as,bs) -> let x = read as :: Integer
+@@ -320,15 +327,15 @@ showJSRational :: Rational -> ShowS
+ showJSRational r = showJSRational' False r
+ 
+ showJSRational' :: Bool -> Rational -> ShowS
+-showJSRational' asFloat r 
++showJSRational' asFloat r
+  | denominator r == 1      = shows $ numerator r
+  | isInfinite x || isNaN x = showJSNull
+  | asFloat                 = shows xf
+  | otherwise               = shows x
+- where 
++ where
+    x :: Double
+    x = realToFrac r
+-   
++
+    xf :: Float
+    xf = realToFrac r
+ 
+@@ -382,4 +389,3 @@ encJSString jss ss = go (fromJSString jss)
+       | x < '\x1000' -> 'u' : '0' : hexxs
+       | otherwise    -> 'u' : hexxs
+       where hexxs = showHex (fromEnum x) xs
+-

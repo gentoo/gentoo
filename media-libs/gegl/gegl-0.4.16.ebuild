@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -24,7 +24,8 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3+ LGPL-3 )"
 SLOT="0.4"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection lcms lensfun libav openexr pdf raw sdl svg test tiff umfpack vala v4l webp zlib"
+IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg introspection lcms lensfun libav openexr pdf raw sdl svg test tiff umfpack vala v4l webp zlib"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	svg? ( cairo )
 	vala? ( introspection )
@@ -112,7 +113,6 @@ src_configure() {
 		--disable-docs
 		# never enable altering of CFLAGS via profile option
 		--disable-profile
-		--disable-silent-rules
 		#  - Parameter --disable-workshop disables any use of Lua, effectivly
 		--disable-workshop
 		--program-suffix=-${SLOT}

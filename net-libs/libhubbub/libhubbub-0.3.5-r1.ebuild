@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~m68k-mint"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libparserutils-0.2.1-r1

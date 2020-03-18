@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@
+ 
+ 	# run icon-naming-utils
+ 	for d in $$DESTDIR/usr/share/icons/Tangerine/*; do \
+-	    (cd $$d; for c in *; do /usr/lib/icon-naming-utils/icon-name-mapping -c $$c; done); \
++	    (cd $$d; for c in *; do /usr/libexec/icon-name-mapping -c $$c; done); \
+ 	done
+ 
+ 	# install mo files

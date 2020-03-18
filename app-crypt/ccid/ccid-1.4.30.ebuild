@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs udev
 
 DESCRIPTION="CCID free software driver"
-HOMEPAGE="https://ccid.apdu.fr/"
+HOMEPAGE="https://ccid.apdu.fr https://github.com/LudovicRousseau/CCID"
 SRC_URI="https://ccid.apdu.fr/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"

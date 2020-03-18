@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=GlimmerHMM
 
@@ -13,27 +13,22 @@ SRC_URI="ftp://ftp.cbcb.umd.edu/pub/software/glimmerhmm/${MY_P}-${PV}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-IUSE=""
 KEYWORDS="amd64 x86"
 
-src_unpack() {
-	unpack ${A}
-	mv GlimmerHMM ${P}
-}
+S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	sed \
-		-e 's|\(my $scriptdir=\)$FindBin::Bin|\1"/usr/libexec/'${PN}'/training_utils"|' \
-		-e 's|\(use lib\) $FindBin::Bin|\1 "/usr/share/'${PN}'/lib"|' \
-		-i "${S}/train/trainGlimmerHMM" || die
+PATCHES=(
+	"${FILESDIR}"/${PV}-gentoo.patch
+	"${FILESDIR}"/${PN}-3.0.1-fix-data-path.patch
+)
 
-	epatch "${FILESDIR}"/${PV}-gentoo.patch
+src_configure() {
 	tc-export CC CXX
 }
 
 src_compile() {
-	emake -C "${S}/sources"
-	emake -C "${S}/train"
+	emake -C sources
+	emake -C train
 }
 
 src_install() {
@@ -41,8 +36,10 @@ src_install() {
 
 	insinto /usr/share/${PN}/lib
 	doins train/*.pm
+
 	insinto /usr/share/${PN}/models
-	doins -r trained_dir/*
+	doins -r trained_dir/.
+
 	exeinto /usr/libexec/${PN}/training_utils
 	doexe train/{build{1,2,-icm,-icm-noframe},erfapp,falsecomp,findsites,karlin,score,score{2,ATG,ATG2,STOP,STOP2},splicescore}
 

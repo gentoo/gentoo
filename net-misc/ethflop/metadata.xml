@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		ethflop is a DOS TSR that emulates a floppy disk drive.
+		The emulated (virtual) floppy disk is, in fact, stored on a Linux server as a floppy image.
+		All the communication between ethflop (the TSR) and ethflopd (the Linux daemon) is exchanged over raw Ethernet.
+		No need for any network configuration - the DOS PC only needs to have some kind of Ethernet adapter
+		(physical or emulated, for example through PLIP) and a suitable packet driver.
+		The Linux server and the DOS PC must be connected to a common Ethernet segment (same LAN).
+	</longdescription>
+	<use>
+		<flag name="tsr">Build the TSR program for DOS, which acts as a client.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">ethflop</remote-id>
+	</upstream>
+</pkgmetadata>

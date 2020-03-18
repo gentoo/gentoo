@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="A number of classes and functions for programming GTK+ programs using C++"
 HOMEPAGE="http://cxx-gtk-utils.sourceforge.net/"
@@ -30,8 +30,6 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_with gtk) \
 		$(use_enable static-libs static) \
-		--docdir=/usr/share/doc/${PF} \
-		--htmldir=/usr/share/doc/${PF}/html \
 		--without-guile
 }
 

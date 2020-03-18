@@ -1,19 +1,21 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit check-reqs cuda toolchain-funcs unpacker versionator
+inherit check-reqs cuda eutils toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1-2)
 
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
 SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/prod/local_installers/cuda_${PV}_linux-run -> cuda_${PV}_linux.run"
+
 SLOT="0/${PV}"
 LICENSE="NVIDIA-CUDA"
 KEYWORDS="-* ~amd64 ~amd64-linux"
 IUSE="debugger doc eclipse profiler"
+RESTRICT="bindist mirror"
 
 DEPEND=""
 RDEPEND="${DEPEND}

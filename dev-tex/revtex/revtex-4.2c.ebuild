@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://mirrors.ctan.org/macros/latex/contrib/revtex.zip -> ${P}.zip"
 
 LICENSE="LPPL-1.3c"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND=">=dev-texlive/texlive-latex-2012"
 DEPEND="${RDEPEND}
@@ -24,13 +24,13 @@ S="${WORKDIR}/${PN}"
 
 TEXMF=/usr/share/texmf-site
 
-src_prepare(){
+src_prepare() {
 	default
 	find "${S}" -name '*4-1*' -delete || die
 	find "${S}" -name reftest4-2.tex -delete || die
 }
 
-src_compile(){
+src_compile() {
 	cd "${S}/source" || die
 
 	for name in *.dtx; do

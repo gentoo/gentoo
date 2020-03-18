@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-gtk-im-module-dir="${EPREFIX%/}"/usr/$(get_libdir)/gtk-2.0/$(pkg-config gtk+-2.0 --variable=gtk_binary_version)/immodules
+	econf --with-gtk-im-module-dir="${EPREFIX}"/usr/$(get_libdir)/gtk-2.0/$(pkg-config gtk+-2.0 --variable=gtk_binary_version)/immodules
 }
 
 src_install() {

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A Qt-based interface to system statistics"
 HOMEPAGE="https://lxqt.org/"

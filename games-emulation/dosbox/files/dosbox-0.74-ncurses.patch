@@ -1,0 +1,72 @@
+https://sourceforge.net/p/dosbox/patches/286/
+
+--- a/configure.ac	2019-11-12 17:55:51.000000000 +0000
++++ b/configure.ac	2020-01-02 21:26:27.551856431 +0000
+@@ -235,36 +235,38 @@
+ #Features to enable/disable
+ AH_TEMPLATE(C_DEBUG,[Define to 1 to enable internal debugger, requires libcurses])
+ AH_TEMPLATE(C_HEAVY_DEBUG,[Define to 1 to enable heavy debugging, also have to enable C_DEBUG])
+-AC_ARG_ENABLE(debug,AC_HELP_STRING([--enable-debug],[Enable debug mode]),[
+-   AC_CHECK_HEADER(curses.h,have_curses_h=yes,)
+-   AC_CHECK_LIB(curses, initscr, have_curses_lib=yes, , )
+-   AC_CHECK_LIB(ncurses, initscr, have_ncurses_lib=yes, , )
+-   AC_CHECK_LIB(pdcurses, initscr, have_pdcurses_lib=yes, , )
++AC_ARG_ENABLE(debug,AC_HELP_STRING([--enable-debug],[Enable debug mode]),,enable_debug=no)
++AC_MSG_CHECKING(whether debug will be enabled)
++  
++if test x$enable_debug = xno; then
++  AC_MSG_RESULT(no)
++else
++  AC_MSG_RESULT(yes)
+ 
+-   if test x$enable_debug = xno; then
+-     AC_MSG_RESULT([Debugger not enabled])
+-   elif test x$have_ncurses_lib = xyes -a x$have_curses_h = xyes ; then
+-     LIBS="$LIBS -lncurses"
+-     AC_DEFINE(C_DEBUG,1)
+-     if test x$enable_debug = xheavy ; then 
+-       AC_DEFINE(C_HEAVY_DEBUG,1)
+-     fi
+-   elif test x$have_curses_lib = xyes -a x$have_curses_h = xyes ; then
+-     LIBS="$LIBS -lcurses"
+-     AC_DEFINE(C_DEBUG,1)
+-     if test x$enable_debug = xheavy ; then 
+-       AC_DEFINE(C_HEAVY_DEBUG,1)
+-     fi
+-   elif test x$have_pdcurses_lib = xyes -a x$have_curses_h = xyes ; then
+-     LIBS="$LIBS -lpdcurses"
+-     AC_DEFINE(C_DEBUG,1)
+-     if test x$enable_debug = xheavy ; then 
+-       AC_DEFINE(C_HEAVY_DEBUG,1)
+-     fi
+-   else 
+-     AC_MSG_ERROR([Can't find curses, which is required for debug mode])
+-   fi
+-],)
++  PKG_CHECK_MODULES(NCURSES, ncurses, [
++    LIBS="$LIBS $NCURSES_LIBS"; CFLAGS="$CFLAGS $NCURSES_CFLAGS"
++  ], [
++    AC_CHECK_HEADER(curses.h,have_curses_h=yes,)
++    AC_CHECK_LIB(curses, initscr, have_curses_lib=yes, , )
++    AC_CHECK_LIB(ncurses, initscr, have_ncurses_lib=yes, , )
++    AC_CHECK_LIB(pdcurses, initscr, have_pdcurses_lib=yes, , )
++
++    if test x$have_ncurses_lib = xyes -a x$have_curses_h = xyes ; then
++      LIBS="$LIBS -lncurses"
++    elif test x$have_curses_lib = xyes -a x$have_curses_h = xyes ; then
++      LIBS="$LIBS -lcurses"
++    elif test x$have_pdcurses_lib = xyes -a x$have_curses_h = xyes ; then
++      LIBS="$LIBS -lpdcurses"
++    else 
++      AC_MSG_ERROR([Can't find curses, which is required for debug mode])
++    fi
++  ])
++
++  AC_DEFINE(C_DEBUG,1)
++  if test x$enable_debug = xheavy; then 
++    AC_DEFINE(C_HEAVY_DEBUG,1)
++  fi
++fi
+ 
+ AH_TEMPLATE(C_CORE_INLINE,[Define to 1 to use inlined memory functions in cpu core])
+ AC_ARG_ENABLE(core-inline,AC_HELP_STRING([--disable-core-inline],[Disable inlined memory handling in CPU Core]),,enable_core_inline=yes)

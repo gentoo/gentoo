@@ -1,5 +1,5 @@
---- tag.c.orig	Fri Apr 18 18:14:33 2003
-+++ tag.c	Mon Sep 26 22:29:24 2005
+--- a/tag.c
++++ b/tag.c
 @@ -714,9 +714,12 @@
  
    frame = id3_tag_findframe(tag, ID3_FRAME_TRACK, 0);

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
 
 inherit toolchain-funcs distutils-r1 flag-o-matic autotools
@@ -14,11 +14,10 @@ HOMEPAGE="http://www.aircrack-ng.org"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/aircrack-ng/aircrack-ng.git"
-	KEYWORDS=""
 else
 	MY_PV=${PV/_/-}
 	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
@@ -99,6 +98,7 @@ src_install() {
 
 	# we don't need aircrack-ng's oui updater, we have our own
 	rm "${ED}"/usr/sbin/airodump-ng-oui-update
+	find "${D}" -xtype f -name '*.la' -delete || die
 }
 
 pkg_postinst() {

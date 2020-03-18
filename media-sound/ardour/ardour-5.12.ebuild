@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,12 +15,12 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="mirror://gentoo/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
 LICENSE="GPL-2"
-SLOT="6"
+SLOT="5"
 IUSE="altivec doc jack cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
@@ -75,7 +75,7 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-src_prepare(){
+src_prepare() {
 	eapply_user
 	if ! [[ ${PV} == *9999* ]]; then
 		eapply "${FILESDIR}"/${PN}-4.x-revision-naming.patch
@@ -127,7 +127,7 @@ src_install() {
 	mv ${PN}.1 ${PN}${SLOT}.1
 	doman ${PN}${SLOT}.1
 	newicon "${S}/gtk2_ardour/resources/Ardour-icon_48px.png" ${PN}${SLOT}.png
-	make_desktop_entry ardour6 ardour6 ardour6 AudioVideo
+	make_desktop_entry ardour5 ardour5 ardour5 AudioVideo
 }
 
 pkg_postinst() {

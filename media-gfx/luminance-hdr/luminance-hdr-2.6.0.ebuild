@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils toolchain-funcs flag-o-matic xdg-utils
+inherit cmake toolchain-funcs flag-o-matic xdg-utils
 
 DESCRIPTION="Graphical user interface that provides a workflow for HDR imaging"
 HOMEPAGE="http://qtpfsgui.sourceforge.net https://github.com/LuminanceHDR/LuminanceHDR"
@@ -11,8 +11,9 @@ SRC_URI="mirror://sourceforge/qtpfsgui/${P/_/.}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cpu_flags_x86_sse2 fits openmp test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -69,10 +70,10 @@ pkg_pretend() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package fits CFITSIO)
+		$(cmake_use_find_package fits CFITSIO)
 		-DUSE_OPENMP="$(usex openmp)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

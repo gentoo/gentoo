@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Vorbis encoder addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/audioencoder.vorbis"
@@ -29,15 +29,15 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
-	media-libs/libogg
-	media-libs/libvorbis
+	>=media-libs/libogg-1.3.4
+	>=media-libs/libvorbis-1.3.6
 	"
 
 RDEPEND="
 	${DEPEND}
 	"
 
-src_prepare(){
+src_prepare() {
 	[ -d depends ] && rm -rf depends || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

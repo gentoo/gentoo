@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=(python2_7 python3_5 python3_6)
+PYTHON_COMPAT=(python3_6)
 inherit python-single-r1 vim-plugin
 
 DESCRIPTION="vim plugin: Support EditorConfig files "
@@ -17,10 +17,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	dev-python/editorconfig-core-py[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/editorconfig-core-py[${PYTHON_MULTI_USEDEP}]
+	')
 	|| (
-		app-editors/vim[python,${PYTHON_USEDEP}]
-		app-editors/gvim[python,${PYTHON_USEDEP}]
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"
 

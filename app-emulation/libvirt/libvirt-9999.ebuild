@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
+inherit autotools out-of-source bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]]; then
 	SLOT="0"
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -25,7 +25,7 @@ LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
 	iscsi-direct +libvirtd lvm libssh lxc +macvtap nfs nls numa openvz
-	parted pcap phyp policykit +qemu rbd sasl selinux +udev +vepa
+	parted pcap policykit +qemu rbd sasl selinux +udev +vepa
 	virtualbox virt-network wireshark-plugins xen zfs
 "
 
@@ -50,6 +50,7 @@ RDEPEND="
 	acct-user/qemu
 	policykit? ( acct-group/libvirt )
 	app-misc/scrub
+	>=dev-libs/glib-2.48.0
 	dev-libs/libgcrypt:0
 	dev-libs/libnl:3
 	>=dev-libs/libxml2-2.7.6
@@ -60,7 +61,6 @@ RDEPEND="
 	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
-	!sys-apps/systemd[-cgroup-hybrid(+)]
 	>=sys-apps/util-linux-2.17
 	sys-devel/gettext
 	sys-libs/ncurses:0=
@@ -77,6 +77,7 @@ RDEPEND="
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
+	lxc? ( !sys-apps/systemd[-cgroup-hybrid(+)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -120,12 +121,12 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-libs/libxslt
 	dev-perl/XML-XPath
+	dev-python/docutils
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.7.0-do-not-use-sysconf.patch
-	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-5.2.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-6.0.0-do-not-use-sysconf.patch
+	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 )
 
 pkg_setup() {
@@ -216,20 +217,6 @@ src_prepare() {
 
 	default
 
-	if [[ ${PV} = *9999* ]]; then
-		# Reinitialize submodules as this is required for gnulib's bootstrap
-		git submodule init
-		# git checkouts require bootstrapping to create the configure script.
-		# Additionally the submodules must be cloned to the right locations
-		# bug #377279
-		./bootstrap || die "bootstrap failed"
-		(
-		    git submodule status .gnulib | awk '{ print $1 }'
-		    git hash-object bootstrap.conf
-		    git ls-tree -d HEAD gnulib/local | awk '{ print $3 }'
-		) >.git-module-status
-	fi
-
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
@@ -238,7 +225,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+my_src_configure() {
 	local myeconfargs=(
 		$(use_with apparmor)
 		$(use_with apparmor apparmor-profiles)
@@ -264,7 +251,6 @@ src_configure() {
 		$(use_with openvz)
 		$(use_with parted storage-disk)
 		$(use_with pcap libpcap)
-		$(use_with phyp)
 		$(use_with policykit polkit)
 		$(use_with qemu)
 		$(use_with qemu yajl)
@@ -294,6 +280,8 @@ src_configure() {
 		--disable-werror
 
 		--localstatedir=/var
+		--with-runstatedir=/run
+		--enable-dependency-tracking
 	)
 
 	if use virtualbox && has_version app-emulation/virtualbox-ose; then
@@ -303,17 +291,9 @@ src_configure() {
 	fi
 
 	econf "${myeconfargs[@]}"
-
-	if [[ ${PV} = *9999* ]]; then
-		# Restore gnulib's config.sub and config.guess
-		# bug #377279
-		(cd .gnulib && git reset --hard > /dev/null)
-	fi
 }
 
-src_test() {
-	cd "${BUILD_DIR}"
-
+my_src_test() {
 	# remove problematic tests, bug #591416, bug #591418
 	sed -i -e 's#commandtest$(EXEEXT) # #' \
 		-e 's#virfirewalltest$(EXEEXT) # #' \
@@ -322,10 +302,10 @@ src_test() {
 		tests/Makefile
 
 	export VIR_TEST_DEBUG=1
-	HOME="${T}" emake check || die "tests failed"
+	HOME="${T}" emake check
 }
 
-src_install() {
+my_src_install() {
 	emake DESTDIR="${D}" \
 		SYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)" install
 
@@ -335,6 +315,10 @@ src_install() {
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
+	rm -rf "${D}"/run
+
+	newbashcomp "${S}/tools/bash-completion/vsh" virsh
+	bashcomp_alias virsh virt-admin
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
@@ -344,16 +328,13 @@ src_install() {
 
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
-	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init-r4" libvirt-guests || die
-	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
-	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
+	newinitd "${S}/libvirtd.init" libvirtd
+	newinitd "${FILESDIR}/libvirt-guests.init-r4" libvirt-guests
+	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd
+	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd
 
-	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
-	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
-
-	newbashcomp "${S}/tools/bash-completion/vsh" virsh
-	bashcomp_alias virsh virt-admin
+	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd
+	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 git-r3
 
@@ -14,6 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -49,8 +50,8 @@ RDEPEND="
 PATCHES=(
 	# Fix Gentoo support
 	# https://code.launchpad.net/~gilles-dartiguelongue/cloud-init/+git/cloud-init/+merge/358777
-	"${FILESDIR}"/${PN}-18.4-fix-packages-module.patch
-	"${FILESDIR}"/${PN}-18.4-gentoo-support-upstream-templates.patch
+	"${FILESDIR}/${PN}-18.4-fix-packages-module.patch"
+	"${FILESDIR}/${PN}-19.4-gentoo-support-upstream-templates.patch"
 	"${FILESDIR}"/18.4-fix-filename-for-storing-locale.patch
 	"${FILESDIR}"/18.4-fix-update_package_sources-function.patch
 	"${FILESDIR}"/18.4-add-support-for-package_upgrade.patch

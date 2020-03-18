@@ -46,7 +46,7 @@ src_install() {
 
 	rm -f man/man1/logtalk_backend_select.1
 	rm -f man/man1/logtalk_version_select.1
-	doman man/man1/*.1 || die "Failed to install man pages"
+	doman man/man1/*.1
 
 	# Integration symlinks
 	dosym /usr/share/${P}/integration/logtalk_user_setup.sh \

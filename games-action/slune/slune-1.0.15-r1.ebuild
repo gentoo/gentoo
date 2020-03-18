@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2-utils python-utils-r1 distutils-r1 games
+inherit gnome2-utils distutils-r1 games
 
 DESCRIPTION="A 3D action game with multiplayer mode and amazing graphics"
 HOMEPAGE="http://oomadness.tuxfamily.org/en/slune/"

@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Flightradar24 data sharing software"
+name="Flightradar24 feed daemon"
+pidfile="/run/${RC_SVCNAME}.pid"
+retry="TERM/10"
+dev_shm_path="/dev/shm"
+stopsig="SIGTERM"
+
+command="/usr/bin/fr24feed"
+command_args="--monitor-file=${dev_shm_path}/${RC_SVCNAME}.txt --write-pid=${pidfile} ${FR24FEED_OPTS}"
+command_background="true"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	if [ ! -d "${dev_shm_path}" ]; then
+		eerror "A mounted ${dev_shm_path} is needed in order to run fr24feed!'"
+		return 1
+	fi
+}

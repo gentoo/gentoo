@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -20,10 +20,6 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-08-15)
 # media-libs/libsidplay:2 appears to be broken, bug #660288
 media-video/vlc sid
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-12)
-# Requires not yet stable dev-qt/qtpositioning:5
-sci-astronomy/stellarium gps
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
 # Requires not yet stable dependencies

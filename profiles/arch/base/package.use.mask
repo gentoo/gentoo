@@ -1,5 +1,34 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
+# dev-util/sysprof not keyworded on most arches yet
+x11-wm/mutter sysprof
+dev-libs/gjs sysprof
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Vulkan support is only available on few selected arches atm.
+# Mask everywhere, unmask where appropriate.
+dev-qt/qtdeclarative vulkan
+dev-qt/qtgui vulkan
+dev-qt/qtwayland vulkan
+
+# dev-python/pandas is only keyworded for amd64 & x86
+sys-block/fio python gnuplot
+
+# Craig Andrews <candrews@gentoo.org> (2019-10-08)
+# net-libs/quiche is not available on all arches
+# Track addition arch keywording of quiche at:
+# https://bugs.gentoo.org/694320
+net-misc/curl quiche
+
+# Craig Andrews <candrews@gentoo.org> (2019-10-08)
+# net-libs/nghttp3 net-libs/ngtcp2[ssl] are not available on all arches
+net-misc/curl nghttp3
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# Moved from arch/powerpc/ppc64 as it applies to most architectures.
+sys-firmware/seabios debug
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
 # upstream tarballs for tier-2 arches do not ship docs
@@ -45,11 +74,6 @@ net-analyzer/testssl bundled-openssl kerberos
 # Requires media-libs/libheif which is only keyworded for amd64 and x86
 media-gfx/imagemagick heif
 
-# Ben Kohler <bkohler@gentoo.org> (2018-08-23)
-# Mask iwd support until net-wireless/iwd is keyworded
-net-misc/connman iwd
-net-misc/networkmanager iwd
-
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst only has support for assembling bootloader on some arches
 dev-util/catalyst system-bootloader
@@ -61,8 +85,6 @@ media-video/mpv vulkan
 
 # Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
 # media-libs/vulkan-loader and app-emulation/vkd3d are not available everywhere
-app-emulation/wine-any vkd3d vulkan
-app-emulation/wine-d3d9 vkd3d vulkan
 app-emulation/wine-staging vkd3d vulkan
 app-emulation/wine-vanilla vkd3d vulkan
 
@@ -78,11 +100,11 @@ app-laptop/pbbuttonsd macbook
 
 # Amy Liffey <amynka@gentoo.org> (2017-09-19)
 # Requires [cuda] which is masked in most of the profiles.
-media-libs/opencv contrib_xfeatures2d
+media-libs/opencv contribxfeatures2d
 
 # Rick Farina <zerochaos@gentoo.org> (2017-05-11)
 # the needed deps are amd64/x86 only
-net-analyzer/metasploit nexpose openvas
+net-analyzer/metasploit nexpose
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # dev-libs/libmaxminddb is only keyworded on amd64 and x86 at the moment
@@ -176,7 +198,7 @@ games-board/stockfish armv7
 
 # Mike Frysinger <vapier@gentoo.org> (2014-08-04)
 # Mask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom atahpt nic3com nicnatsemi nicrealtek rayer_spi satamv
+sys-apps/flashrom atahpt nic3com nicnatsemi nicrealtek rayer-spi satamv
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64

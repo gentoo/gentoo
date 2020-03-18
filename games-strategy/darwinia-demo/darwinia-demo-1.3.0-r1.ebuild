@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ LICENSE="Introversion"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
-RESTRICT="mirror strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	media-libs/libsdl[abi_x86_32(-)]

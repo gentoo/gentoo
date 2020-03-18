@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,7 +47,7 @@ src_configure() {
 
 pkg_preinst() {
 	# Change path to GeoIP bases in config
-	sed -e s':/usr/local:/usr:' -i "${ED%/}"/etc/goaccess/goaccess.conf || die "sed failed for goaccess.conf"
+	sed -e s':/usr/local:/usr:' -i "${ED}"/etc/goaccess/goaccess.conf || die "sed failed for goaccess.conf"
 }
 
 pkg_postinst() {

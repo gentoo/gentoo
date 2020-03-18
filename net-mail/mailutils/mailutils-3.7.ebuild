@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 inherit autotools elisp-common eutils flag-o-matic python-single-r1 toolchain-funcs
 
@@ -14,7 +14,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="berkdb bidi +clients emacs gdbm sasl guile ipv6 kerberos kyotocabinet \
-	ldap mysql nls pam postgres python servers ssl static-libs +threads tcpd \
+	ldap mysql nls pam postgres python servers split-usr ssl static-libs +threads tcpd \
 	tokyocabinet"
 
 RDEPEND="!mail-client/nmh
@@ -27,7 +27,7 @@ RDEPEND="!mail-client/nmh
 	virtual/mta
 	berkdb? ( sys-libs/db:= )
 	bidi? ( dev-libs/fribidi )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gdbm? ( sys-libs/gdbm )
 	guile? ( dev-scheme/guile:12/2.2-1 )
 	kerberos? ( virtual/krb5 )
@@ -35,7 +35,7 @@ RDEPEND="!mail-client/nmh
 	ldap? ( net-nds/openldap )
 	mysql? ( dev-db/mysql-connector-c )
 	nls? ( sys-devel/gettext )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( virtual/gsasl )
@@ -51,8 +51,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	servers? ( tcpd ldap )"
 
 DOCS=( ABOUT-NLS AUTHORS COPYING COPYING.LESSER ChangeLog INSTALL NEWS README THANKS TODO )
-PATCHES=( "${FILESDIR}/${PN}-3.5-add-include.patch" \
-	"${FILESDIR}/${PN}-3.6-underlinking.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-add-include.patch
+	"${FILESDIR}"/${PN}-3.6-underlinking.patch
+	"${FILESDIR}"/${PN}-3.8-fno-common.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -105,7 +108,6 @@ src_configure() {
 
 src_install() {
 	default
-	emake DESTDIR="${D}" install
 
 	insinto /etc
 	# bug 613112
@@ -128,7 +130,11 @@ src_install() {
 	fi
 
 	# compatibility link
-	use clients && dosym /usr/bin/mail /bin/mail
+	if use clients && use split-usr; then
+		dosym ../usr/bin/mail /bin/mail
+	fi
 
-	use static-libs || find "${D}" -name "*.la" -delete
+	if ! use static-libs; then
+		find "${D}" -name "*.la" -delete || die
+	fi
 }

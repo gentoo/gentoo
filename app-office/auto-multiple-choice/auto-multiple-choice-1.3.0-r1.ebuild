@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs perl-functions latex-package
 
@@ -21,7 +21,7 @@ for lala in ${LANGS}; do
 	IUSE="${IUSE} l10n_${lala}"
 done
 
-CDEPEND="
+COMMON_DEPEND="
 	app-text/texlive[dvi2tty,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,publishers]
 	app-text/poppler:=
 	dev-perl/XML-LibXML
@@ -30,12 +30,12 @@ CDEPEND="
 	l10n_fr? ( app-text/texlive[l10n_fr] )
 	l10n_ja? ( app-text/texlive[l10n_ja] )
 "
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	app-text/dblatex
 	app-text/docbook-xml-simple-dtd:*
 	app-text/docbook-xsl-stylesheets
 "
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	app-text/pdftk
 	dev-lang/perl:=
 	dev-perl/Glib-Object-Introspection

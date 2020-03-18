@@ -46,11 +46,11 @@ src_unpack() {
 
 src_install() {
 	insinto "${dir}"
-	doins -r * || die "doins * failed"
+	doins -r *
 
 	rm "${D}/${dir}/"/{lindedicated,LinLegends,*.so.0}
 	exeinto "${dir}"
-	doexe lindedicated LinLegends *.so.0 || die "doexe failed"
+	doexe lindedicated LinLegends *.so.0
 
 	make_wrapper ${PN} "./LinLegends" "${dir}" "${dir}"
 	if use dedicated ; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -57,17 +57,17 @@ src_compile() {
 		# USBLIB_TYPE=HIDAPI
 		# USBLIB_TYPE=HIDAPI_HIDRAW
 		# USBLIB_TYPE=HIDDATA
-		emake OS=linux USBLIB_TYPE=HIDAPI blink1-tool || die "emake blink1-tool failed"
+		emake OS=linux USBLIB_TYPE=HIDAPI blink1-tool
 		popd &>/dev/null
 	fi
 	if use mini-tool; then
 		pushd commandline/blink1-mini-tool &>/dev/null
-		emake OS=linux blink1-mini-tool || die "emake blink1-mini-tool failed"
+		emake OS=linux blink1-mini-tool
 		popd &>/dev/null
 	fi
 	if use server; then
 		pushd commandline &>/dev/null
-		emake OS=linux blink1-tiny-server || die "emake blink1-tiny-server failed"
+		emake OS=linux blink1-tiny-server
 		popd &>/dev/null
 	fi
 }
@@ -81,9 +81,8 @@ src_install() {
 			dodoc docs/{blink1-tool.md,blink1-tool-tips.md,blink1-hid-commands.md,blink1-mk2-tricks.md}
 		fi
 		if use examples; then
-			insinto /usr/share/doc/"${PF}"/examples
-			doins commandline/scripts/{README.md,blink1-*.sh}
-			docompress -x /usr/share/doc/"${PF}"/examples
+			docinto /usr/share/doc/"${PF}"/examples
+			dodoc commandline/scripts/{README.md,blink1-*.sh}
 		fi
 		dobin commandline/blink1-tool
 	fi

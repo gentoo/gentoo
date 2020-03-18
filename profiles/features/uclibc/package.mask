@@ -5,6 +5,9 @@ sys-libs/musl
 sys-libs/glibc
 sys-libs/pam
 
+# Version 8.31 is broken on uclibc, but not 8.30 or 8.32
+~sys-apps/coreutils-8.31
+
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
 sys-fs/udev

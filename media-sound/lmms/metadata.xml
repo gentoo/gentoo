@@ -16,7 +16,7 @@
 	<use>
 		<flag name="libgig">Enables GIG player plugin.</flag>
 		<flag name="fluidsynth">Enables Fluidsynth MIDI software synthesis plugin.</flag>
-		<flag name="soundio">Enalbes libsoundio support.</flag>
+		<flag name="soundio">Enables libsoundio support.</flag>
 		<flag name="stk">Enables STK Mallet plugin.</flag>
 		<flag name="vst">Enables the VeSTige plugin to run VST plugins through Wine.</flag>
 	</use>

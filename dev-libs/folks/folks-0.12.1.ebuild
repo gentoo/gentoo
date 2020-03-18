@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Folks"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/25" # subslot = libfolks soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 
 IUSE="bluetooth eds +telepathy test tracker utils"
 REQUIRED_USE="bluetooth? ( eds )"
@@ -26,7 +26,9 @@ DEPEND="
 	>=dev-libs/gobject-introspection-1.54:=
 	telepathy? ( >=net-libs/telepathy-glib-0.19.9[vala] )
 	tracker? ( app-misc/tracker:0/2.0 )
-	eds? ( >=gnome-extra/evolution-data-server-3.13.90:=[vala] )
+	eds? ( >=gnome-extra/evolution-data-server-3.13.90:=[vala]
+		<gnome-extra/evolution-data-server-3.33
+	)
 	dev-libs/libxml2:2
 	utils? ( sys-libs/readline:0= )
 "

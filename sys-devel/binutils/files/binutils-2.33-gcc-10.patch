@@ -1,0 +1,39 @@
+binutils: drop redundant 'program_name' definition
+
+https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=commitdiff;h=0b398d69acde3377dfbbeb8a4cfe87ae8c8562fa
+--- a/binutils/coffdump.c
++++ b/binutils/coffdump.c
+@@ -456,8 +456,6 @@ coff_dump (struct coff_ofile *ptr)
+     dump_coff_section (ptr->sections + i);
+ }
+ 
+-char * program_name;
+-
+ static void
+ show_usage (FILE *file, int status)
+ {
+--- a/binutils/srconv.c
++++ b/binutils/srconv.c
+@@ -1687,8 +1687,6 @@ prescan (struct coff_ofile *otree)
+     }
+ }
+ 
+-char *program_name;
+-
+ ATTRIBUTE_NORETURN static void
+ show_usage (FILE *ffile, int status)
+ {
+--- a/binutils/sysdump.c
++++ b/binutils/sysdump.c
+@@ -633,8 +633,6 @@ module (void)
+     }
+ }
+ 
+-char *program_name;
+-
+ ATTRIBUTE_NORETURN static void
+ show_usage (FILE *ffile, int status)
+ {
+-- 
+2.25.0
+

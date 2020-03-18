@@ -19,8 +19,6 @@ Totem is movie player for the GNOME desktop. It features a playlist, fullscreen 
 	<use>
 		<flag name="lirc">Enable support for controlling Totem with a remote control
 			using <pkg>app-misc/lirc</pkg></flag>
-		<flag name="nautilus">Enable the nautilus extension</flag>
 		<flag name="python">Build <pkg>dev-lang/python</pkg> using plugins (dbusservice for notifications and MPRIS control, interactive python console and opensubtitles lookup)</flag>
-		<flag name="vala">Build the rotation plugin, which allows videos to be rotated if they are in the wrong orientation</flag>
 	</use>
 </pkgmetadata>

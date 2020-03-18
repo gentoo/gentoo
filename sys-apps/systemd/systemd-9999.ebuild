@@ -1,4 +1,4 @@
-# Copyright 2011-2019 Gentoo Authors
+# Copyright 2011-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,23 +7,28 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
+	if [[ ${PV} == *.* ]]; then
+		MY_PN=systemd-stable
+	else
+		MY_PN=systemd
+	fi
 	MY_PV=${PV/_/-}
-	MY_P=${PN}-${MY_PV}
+	MY_P=${MY_PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
-	SRC_URI="https://github.com/systemd/systemd/archive/v${MY_PV}/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python{3_5,3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev
+inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi http idn importd +kmod +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux split-usr +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi http idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -32,11 +37,10 @@ MINKV="3.11"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
-	!<sys-libs/glibc-2.16
 	acl? ( sys-apps/acl:0= )
 	apparmor? ( sys-libs/libapparmor:0= )
 	audit? ( >=sys-process/audit-2:0= )
-	cryptsetup? ( >=sys-fs/cryptsetup-1.6:0= )
+	cryptsetup? ( >=sys-fs/cryptsetup-2.0.1:0= )
 	curl? ( net-misc/curl:0= )
 	dns-over-tls? ( >=net-libs/gnutls-3.5.3:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
@@ -54,8 +58,10 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
 	nat? ( net-firewall/iptables:0= )
-	pam? ( virtual/pam:=[${MULTILIB_USEDEP}] )
+	pam? ( sys-libs/pam:=[${MULTILIB_USEDEP}] )
+	pkcs11? ( app-crypt/p11-kit:0= )
 	pcre? ( dev-libs/libpcre2 )
+	pwquality? ( dev-libs/libpwquality:0= )
 	qrcode? ( media-gfx/qrencode:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
 	selinux? ( sys-libs/libselinux:0= )
@@ -100,7 +106,6 @@ RDEPEND="${COMMON_DEPEND}
 		sys-apps/coreutils[kill(-)]
 	) )
 	!sys-auth/nss-myhostname
-	!<sys-kernel/dracut-044
 	!sys-fs/eudev
 	!sys-fs/udev
 "
@@ -128,6 +133,10 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 "
 
+python_check_deps() {
+	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
+}
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if use test && has pid-sandbox ${FEATURES}; then
@@ -140,7 +149,7 @@ pkg_pretend() {
 			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
 			~TIMERFD ~TMPFS_XATTR ~UNIX
 			~CRYPTO_HMAC ~CRYPTO_SHA256 ~CRYPTO_USER_API_HASH
-			~!FW_LOADER_USER_HELPER_FALLBACK ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
+			~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
 			~!SYSFS_DEPRECATED_V2"
 
 		use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
@@ -236,13 +245,14 @@ multilib_src_configure() {
 		-Dbashcompletiondir="$(get_bashcompdir)"
 		# make sure we get /bin:/sbin in PATH
 		-Dsplit-usr=$(usex split-usr true false)
+		-Dsplit-bin=true
 		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
+		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
 		# Avoid infinite exec recursion, bug 642724
 		-Dtelinit-path="${EPREFIX}/lib/sysvinit/telinit"
 		# no deps
-		-Defi=$(meson_multilib)
 		-Dima=true
 		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
 		# Optional components/dependencies
@@ -266,8 +276,10 @@ multilib_src_configure() {
 		-Dxz=$(meson_use lzma)
 		-Dlibiptc=$(meson_multilib_native_use nat)
 		-Dpam=$(meson_use pam)
+		-Dp11kit=$(meson_multilib_native_use pkcs11)
 		-Dpcre2=$(meson_multilib_native_use pcre)
 		-Dpolkit=$(meson_multilib_native_use policykit)
+		-Dpwquality=$(meson_multilib_native_use pwquality)
 		-Dqrencode=$(meson_multilib_native_use qrcode)
 		-Dseccomp=$(meson_multilib_native_use seccomp)
 		-Dselinux=$(meson_multilib_native_use selinux)
@@ -299,6 +311,10 @@ multilib_src_configure() {
 		-Dtimesyncd=$(meson_multilib)
 		-Dtmpfiles=$(meson_multilib)
 		-Dvconsole=$(meson_multilib)
+
+		# static-libs
+		-Dstatic-libsystemd=$(usex static-libs true false)
+		-Dstatic-libudev=$(usex static-libs true false)
 	)
 
 	meson_src_configure "${myconf[@]}"
@@ -361,6 +377,8 @@ multilib_src_install_all() {
 		dosym ../../../lib/systemd/systemd /usr/lib/systemd/systemd
 		dosym ../../../lib/systemd/systemd-shutdown /usr/lib/systemd/systemd-shutdown
 	fi
+
+	gen_usr_ldscript -a systemd udev
 }
 
 migrate_locale() {

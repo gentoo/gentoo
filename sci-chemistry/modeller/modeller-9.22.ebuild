@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,12 +36,12 @@ pkg_setup() {
 	esac
 }
 
-python_prepare_all(){
+python_prepare_all() {
 	sed "s:i386-intel8:${EXECTYPE}:g" -i src/swig/setup.py || die
 	distutils-r1_python_prepare_all
 }
 
-python_compile(){
+python_compile() {
 	cd src/swig || die
 	swig -python -keyword -nodefaultctor -nodefaultdtor -noproxy modeller.i || die
 	distutils-r1_python_compile
@@ -52,7 +52,7 @@ python_install() {
 	distutils-r1_python_install
 }
 
-python_install_all(){
+python_install_all() {
 	cd "${S}" || die
 	sed \
 		-e "/^EXECUTABLE_TYPE/s:xxx:${EXECTYPE}:g" \

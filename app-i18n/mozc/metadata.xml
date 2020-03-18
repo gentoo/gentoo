@@ -15,8 +15,8 @@
 	<use>
 		<flag name="fcitx4">Enable support for <pkg>app-i18n/fcitx</pkg> 4</flag>
 		<flag name="gui">Install graphical user interface tool (mozc_tool)</flag>
-		<flag name="handwriting-tegaki">Use handwriting recognition model from <pkg>app-i18n/tegaki-zinnia-japanese</pkg></flag>
-		<flag name="handwriting-tomoe">Use handwriting recognition model from <pkg>app-i18n/zinnia-tomoe</pkg></flag>
+		<flag name="handwriting-tegaki">Use handwriting recognition model from <pkg>app-i18n/tegaki-zinnia-japanese</pkg> by default</flag>
+		<flag name="handwriting-tomoe">Use handwriting recognition model from <pkg>app-i18n/zinnia-tomoe</pkg> by default</flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="renderer">Enable native candidate window</flag>
 	</use>

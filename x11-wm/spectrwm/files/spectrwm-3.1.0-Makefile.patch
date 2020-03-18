@@ -1,5 +1,5 @@
---- a/Makefile	2017-10-03 20:36:39.000000000 +0200
-+++ b/Makefile	2017-11-13 20:53:33.341995465 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -9,16 +9,16 @@
  LIBVERSION      = $(shell .  $(CURDIR)/../lib/shlib_version; echo $$major.$$minor)
  LIBMAJORVERSION = $(shell .  $(CURDIR)/../lib/shlib_version; echo $$major)

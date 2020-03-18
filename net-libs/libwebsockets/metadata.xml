@@ -5,10 +5,6 @@
 		<email>jaco@uls.co.za</email>
 		<name>Jaco Kroon</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>yuchen.xie@live.com</email>
-		<name>Yuchen Xie</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>

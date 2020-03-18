@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit vim-plugin python-r1 python-utils-r1
+inherit vim-plugin python-r1
 
 # Commit Date: Sun Oct 15 20:51:54 2017 +0200
 COMMIT="77924398bd594e238766153cec97ace62650f082"

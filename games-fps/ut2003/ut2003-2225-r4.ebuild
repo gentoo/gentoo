@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ LICENSE="ut2003"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="dedicated"
-RESTRICT="strip"
+RESTRICT="bindist strip"
 
 RDEPEND="
 	games-fps/ut2003-data

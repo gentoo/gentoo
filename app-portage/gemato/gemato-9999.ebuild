@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-# pyblake2 & pysha3 are broken with pypy3
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy3 )
 PYTHON_REQ_USE='threads(+)'
+
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Stand-alone Manifest generation & verification tool"
@@ -19,21 +20,14 @@ KEYWORDS=""
 IUSE="+blake2 bzip2 +gpg lzma sha3 test tools"
 RESTRICT="!test? ( test )"
 
-MODULE_RDEPEND="
+RDEPEND="
 	blake2? ( $(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_5} pypy{,3}) )
 	bzip2? ( $(python_gen_cond_dep 'dev-python/bz2file[${PYTHON_USEDEP}]' python2_7 pypy) )
 	gpg? ( app-crypt/gnupg )
 	lzma? ( $(python_gen_cond_dep 'dev-python/backports-lzma[${PYTHON_USEDEP}]' python2_7 pypy) )
-	sha3? ( $(python_gen_cond_dep 'dev-python/pysha3[${PYTHON_USEDEP}]' python{2_7,3_5} pypy{,3}) )"
+	sha3? ( $(python_gen_cond_dep 'dev-python/pysha3[${PYTHON_USEDEP}]' python{2_7,3_5} pypy) )"
 
-RDEPEND="${MODULE_RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND=">=dev-python/setuptools-34[${PYTHON_USEDEP}]
-	test? ( ${MODULE_RDEPEND} )"
-
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
 
 python_install_all() {
 	distutils-r1_python_install_all

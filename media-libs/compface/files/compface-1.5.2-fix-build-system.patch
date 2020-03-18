@@ -1,0 +1,28 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,10 +1,10 @@
+ prefix          = @prefix@
+ exec_prefix     = @exec_prefix@
+ srcdir          = @srcdir@
+-BINDIR		= @bindir@
+-LIBDIR		= @libdir@
+-MANDIR		= @mandir@
+-INCLUDEDIR	= @includedir@
++BINDIR		= $(DESTDIR)/@bindir@
++LIBDIR		= $(DESTDIR)/@libdir@
++MANDIR		= $(DESTDIR)/@mandir@
++INCLUDEDIR	= $(DESTDIR)/@includedir@
+ 
+ @SET_MAKE@
+ 
+@@ -77,10 +77,8 @@
+ 		$(INSTALL_PROGRAM) -d $(BINDIR) $(LIBDIR) $(MAN1DIR) $(MAN3DIR) $(INCLUDEDIR)
+ 		$(INSTALL_PROGRAM) $(srcdir)/$(NAMEEXE) $(EXECUTABLE) 
+ 		-chmod 0755 $(EXECUTABLE)
+-		-strip $(EXECUTABLE)
+ 		$(INSTALL_PROGRAM) $(srcdir)/$(UNNAMEEXE) $(UNEXECUTABLE)
+ 		-chmod 0755 $(UNEXECUTABLE)
+-		-strip $(UNEXECUTABLE)
+ 		$(INSTALL_DATA) $(srcdir)/$(NAME).1 $(MAN1DIR)/$(NAME).1
+ 		cd $(MAN1DIR) && $(RM) ./$(UNNAME).1 && $(LN_S) $(NAME).1 $(UNNAME).1
+ 		$(INSTALL_DATA) $(srcdir)/$(NAME).3 $(MAN3DIR)/$(NAME).3

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ RESTRICT="test"
 # sys-apps/util-linux is required for libuuid
 RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	!elibc_glibc? ( sys-libs/argp-standalone )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
 	georeplication? ( ${PYTHON_DEPS} )
 	infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* )
@@ -102,8 +102,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
-		--disable-silent-rules \
 		--disable-fusermount \
 		$(use_enable debug) \
 		$(use_enable bd-xlator) \
@@ -122,7 +120,6 @@ src_configure() {
 		$(use libtirpc || echo --without-libtirpc) \
 		$(use ipv6 && echo --with-ipv6-default) \
 		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--localstatedir="${EPREFIX}"/var
 }
 

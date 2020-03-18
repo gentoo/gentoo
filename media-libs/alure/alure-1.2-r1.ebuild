@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="The OpenAL Utility Toolkit"
 HOMEPAGE="https://kcat.strangesoft.net/alure.html"
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/${P}-include-unistd.patch" )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e "/DESTINATION/s:doc/alure:doc/${PF}:" CMakeLists.txt || die
 }
@@ -46,5 +46,5 @@ src_configure() {
 		-DVORBIS=$(usex vorbis)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

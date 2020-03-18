@@ -1,0 +1,79 @@
+From 093571938a6c31706f918b011335b8ab30602336 Mon Sep 17 00:00:00 2001
+From: Andrew Borodin <aborodin@vmail.ru>
+Date: Sat, 23 Nov 2019 17:41:58 +0300
+Subject: [PATCH] Ticket #4035: fix compile failure on OS X 10.9.
+
+Fix duplication of menu_map definition.
+
+Move menu_map definition to lib/widget/menu.c.
+
+Signed-off-by: Andrew Borodin <aborodin@vmail.ru>
+---
+ lib/widget/menu.c      | 2 +-
+ lib/widget/menu.h      | 2 ++
+ src/keybind-defaults.c | 3 +--
+ src/keybind-defaults.h | 1 -
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lib/widget/menu.c b/lib/widget/menu.c
+index b7476b62b..68ae6f6ce 100644
+--- a/lib/widget/menu.c
++++ b/lib/widget/menu.c
+@@ -46,7 +46,7 @@
+ 
+ /*** global variables ****************************************************************************/
+ 
+-const global_keymap_t *menu_map;
++const global_keymap_t *menu_map = NULL;
+ 
+ /*** file scope macro definitions ****************************************************************/
+ 
+diff --git a/lib/widget/menu.h b/lib/widget/menu.h
+index c522a16c8..fad6fa639 100644
+--- a/lib/widget/menu.h
++++ b/lib/widget/menu.h
+@@ -39,6 +39,8 @@ typedef struct WMenuBar
+ 
+ /*** global variables defined in .c file *********************************************************/
+ 
++extern const global_keymap_t *menu_map;
++
+ /*** declarations of public functions ************************************************************/
+ 
+ menu_entry_t *menu_entry_create (const char *name, long command);
+diff --git a/src/keybind-defaults.c b/src/keybind-defaults.c
+index 10ba341ee..0ba4840df 100644
+--- a/src/keybind-defaults.c
++++ b/src/keybind-defaults.c
+@@ -28,7 +28,7 @@
+ #include <config.h>
+ 
+ #include "lib/global.h"
+-#include "lib/widget.h"         /* dialog_map, input_map, listbox_map */
++#include "lib/widget.h"         /* dialog_map, input_map, listbox_map, menu_map */
+ 
+ #include "keybind-defaults.h"
+ 
+@@ -56,7 +56,6 @@ GArray *diff_keymap = NULL;
+ const global_keymap_t *main_map = NULL;
+ const global_keymap_t *main_x_map = NULL;
+ const global_keymap_t *panel_map = NULL;
+-const global_keymap_t *menu_map = NULL;
+ const global_keymap_t *tree_map = NULL;
+ const global_keymap_t *help_map = NULL;
+ 
+diff --git a/src/keybind-defaults.h b/src/keybind-defaults.h
+index edb05c67f..6b7266589 100644
+--- a/src/keybind-defaults.h
++++ b/src/keybind-defaults.h
+@@ -35,7 +35,6 @@ extern GArray *diff_keymap;
+ extern const global_keymap_t *main_map;
+ extern const global_keymap_t *main_x_map;
+ extern const global_keymap_t *panel_map;
+-extern const global_keymap_t *menu_map;
+ extern const global_keymap_t *tree_map;
+ extern const global_keymap_t *help_map;
+ 
+-- 
+2.25.0
+

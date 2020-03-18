@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -41,7 +41,7 @@ src_prepare() {
 	fi
 }
 
-src_test(){
+src_test() {
 	VIRTUALX_COMMAND="java-pkg-2_src_test" virtualmake
 }
 
@@ -51,7 +51,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r icons images htmldocs language templates plugins security.default csvconfig.txt.default
 
-	dodoc README*.TXT || die
+	dodoc README*.TXT
 
 	# By default the config dir is ${HOME}/jxplorer
 	java-pkg_dolauncher ${PN} \

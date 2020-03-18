@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
-inherit autotools flag-o-matic eutils
+inherit autotools flag-o-matic eutils toolchain-funcs
 
 DESCRIPTION="Free Win64 runtime and import library definitions"
 HOMEPAGE="http://mingw-w64.sourceforge.net/"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Database access from Haskell"
 HOMEPAGE="http://hackage.haskell.org/package/hsql"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
 "
 
-pkg_postinst () {
+pkg_postinst() {
 	ghc-package_pkg_postinst
 
 	elog "You will probably want to emerge one or more HSQL backend."

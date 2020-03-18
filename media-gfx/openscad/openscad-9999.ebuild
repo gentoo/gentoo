@@ -36,7 +36,7 @@ DEPEND="
 	media-libs/harfbuzz
 	sci-mathematics/cgal:=
 	>=x11-libs/qscintilla-2.9.4:=[qt5(+)]
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 RDEPEND="${DEPEND}"
 

@@ -1,0 +1,27 @@
+From 55fa0fb287e7fb7cee336cac0a6c1a94e505dc84 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Wed, 19 Feb 2020 13:18:18 +0100
+Subject: [PATCH] Fix compiling with GCC 10
+
+* GCC 10 defaults to `-fno-common`.
+
+Bug: https://bugs.gentoo.org/706728
+---
+ src/fr-application.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/fr-application.c b/src/fr-application.c
+index c148c4f9..00ebe552 100644
+--- a/src/fr-application.c
++++ b/src/fr-application.c
+@@ -42,7 +42,6 @@
+ #define SERVICE_TIMEOUT 10
+ 
+ 
+-gint                ForceDirectoryCreation;
+ static char       **remaining_args;
+ static char        *arg_add_to = NULL;
+ static int          arg_add = FALSE;
+-- 
+2.25.1
+

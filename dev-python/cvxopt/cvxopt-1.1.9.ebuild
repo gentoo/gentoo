@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 toolchain-funcs
 
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )"
 
-python_prepare_all(){
+python_prepare_all() {
 	pkg_libs() {
 		$(tc-getPKG_CONFIG) --libs-only-l $* | \
 			sed -e 's:[ ]-l*\(pthread\|m\)\([ ]\|$\)::g' -e 's:[ ]*$::' | \

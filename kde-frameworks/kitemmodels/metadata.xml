@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="qml">Enable QML support via <pkg>dev-qt/qtdeclarative</pkg></flag>
+	</use>
 </pkgmetadata>

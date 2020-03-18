@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ahodesuka/ahoviewer/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnutls +gstreamer libsecret +rar +ssl +zip"
 
 DEPEND="

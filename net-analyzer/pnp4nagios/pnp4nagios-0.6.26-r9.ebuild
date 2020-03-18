@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ REQUIRED_USE="^^ ( icinga nagios )"
 DEPEND="
 	dev-lang/php:*[filter,gd,json,simplexml,xml,zlib]
 	net-analyzer/rrdtool[graph,perl]
-	icinga? ( || ( net-analyzer/icinga2 net-analyzer/icinga ) )
+	icinga? ( net-analyzer/icinga2 )
 	nagios? ( net-analyzer/nagios-core )"
 
 # A list of modules used in our Apache config file.

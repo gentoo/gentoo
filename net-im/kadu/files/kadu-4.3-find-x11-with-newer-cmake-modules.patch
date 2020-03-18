@@ -1,0 +1,48 @@
+diff -ruN kadu-4.3/kadu-core/CMakeLists.txt my/kadu-core/CMakeLists.txt
+--- kadu-4.3/kadu-core/CMakeLists.txt	2017-01-24 22:36:21.000000000 +0100
++++ my/kadu-core/CMakeLists.txt	2019-11-22 02:05:51.381540018 +0100
+@@ -111,7 +111,7 @@
+ list (APPEND ADDITIONAL_LIBKADU_LIBRARIES ${LibArchive_LIBRARIES})
+ 
+ if (UNIX AND NOT APPLE)
+-	find_package (X11 REQUIRED COMPONENTS X11 Xutil Xfixes)
++	find_package (X11 REQUIRED COMPONENTS Xutil Xfixes)
+ 	if (X11_FOUND AND X11_Xutil_FOUND AND X11_Xfixes_FOUND)
+ 		message (STATUS "Found required X11 libraries: ${X11_X11_LIB};${X11_Xfixes_LIB}")
+ 	else ()
+diff -ruN kadu-4.3/plugins/idle/CMakeLists.txt my/plugins/idle/CMakeLists.txt
+--- kadu-4.3/plugins/idle/CMakeLists.txt	2017-01-24 22:36:22.000000000 +0100
++++ my/plugins/idle/CMakeLists.txt	2019-11-22 02:06:57.503381610 +0100
+@@ -15,7 +15,7 @@
+ )
+ 
+ if (UNIX AND NOT APPLE)
+-	find_package (X11 REQUIRED COMPONENTS X11 Xutil Xscreensaver)
++	find_package (X11 REQUIRED COMPONENTS Xutil Xscreensaver)
+ 	if (X11_Xscreensaver_FOUND)
+ 		message (STATUS "Found required X11 libraries: ${X11_X11_LIB};${X11_Xscreensaver_LIB}")
+ 	else ()
+diff -ruN kadu-4.3/plugins/pcspeaker/CMakeLists.txt my/plugins/pcspeaker/CMakeLists.txt
+--- kadu-4.3/plugins/pcspeaker/CMakeLists.txt	2017-01-24 22:36:22.000000000 +0100
++++ my/plugins/pcspeaker/CMakeLists.txt	2019-11-22 02:07:45.315719788 +0100
+@@ -15,7 +15,7 @@
+ set (LIBRARIES "")
+ 
+ if (UNIX AND NOT APPLE)
+-	find_package (X11 REQUIRED COMPONENTS X11)
++	find_package (X11 REQUIRED)
+ 	if (NOT X11_FOUND)
+ 		message (SEND_ERROR "Could NOT find X11")
+ 	endif ()
+diff -ruN kadu-4.3/plugins/screenshot/CMakeLists.txt my/plugins/screenshot/CMakeLists.txt
+--- kadu-4.3/plugins/screenshot/CMakeLists.txt	2017-01-24 22:36:22.000000000 +0100
++++ my/plugins/screenshot/CMakeLists.txt	2019-11-22 02:07:54.323972436 +0100
+@@ -30,7 +30,7 @@
+ 
+ if (UNIX AND NOT APPLE)
+ 	set (PLUGIN_ADDITIONAL_QT_MODULES X11Extras)
+-	find_package (X11 REQUIRED COMPONENTS X11 Xext Xshape)
++	find_package (X11 REQUIRED COMPONENTS Xext Xshape)
+ 	if (X11_Xshape_FOUND)
+ 		message (STATUS "Found required X11 libraries: ${X11_X11_LIB};${X11_Xext_LIB}")
+ 	else ()

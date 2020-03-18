@@ -1,0 +1,44 @@
+From 5b215853ed4b438b5b2d4ac3e56d5f0d19e145d9 Mon Sep 17 00:00:00 2001
+From: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date: Mon, 23 Sep 2019 14:12:12 -0700
+Subject: [PATCH] Fix compilation error with gfio
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Commit 36833fb04 replaced many usages of strncpy with snprintf.
+But there is one place where new arguments were added but the function
+name has not been changed. It leads to the following compilation error:
+
+gclient.c:333:2: error: too many arguments to function ‘strncpy’
+  333 |  strncpy(message, sizeof(message), "%s", status_message);
+      |  ^~~~~~~
+In file included from /usr/include/features.h:450,
+                 from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdlib.h:25,
+                 from gclient.c:1:
+/usr/include/bits/string_fortified.h:103:1: note: declared here
+  103 | __NTH (strncpy (char *__restrict __dest, const char *__restrict __src,
+      | ^~~~~
+
+Signed-off-by: Anatol Pomozov <anatol.pomozov@gmail.com>
+---
+ gclient.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gclient.c b/gclient.c
+index 64324177..d8dc62d2 100644
+--- a/gclient.c
++++ b/gclient.c
+@@ -330,7 +330,7 @@ static void gfio_update_thread_status_all(struct gui *ui, char *status_message,
+ 	static char message[100];
+ 	const char *m = message;
+ 
+-	strncpy(message, sizeof(message), "%s", status_message);
++	snprintf(message, sizeof(message), "%s", status_message);
+ 	gtk_progress_bar_set_text(GTK_PROGRESS_BAR(ui->thread_status_pb), m);
+ 	gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(ui->thread_status_pb), perc / 100.0);
+ 	gtk_widget_queue_draw(ui->window);
+-- 
+2.24.0
+

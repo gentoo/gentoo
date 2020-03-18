@@ -1,0 +1,12 @@
+diff --git a/src/buildtools/config/common.pri b/src/buildtools/config/common.pri
+index 97d3953..dd3d222 100644
+--- a/src/buildtools/config/common.pri
++++ b/src/buildtools/config/common.pri
+@@ -25,6 +25,7 @@ gn_args += \
+     v8_use_external_startup_data=false \
+     toolkit_views=false \
+     treat_warnings_as_errors=false \
++    fatal_linker_warnings=false \
+     safe_browsing_mode=0 \
+     optimize_webui=false \
+     forbid_non_component_debug_builds=false

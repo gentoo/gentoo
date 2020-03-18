@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs git-2
+inherit eutils toolchain-funcs git-r3
 
 DESCRIPTION="OpenBSD fork of calmwm, a clean and lightweight window manager"
 HOMEPAGE="https://www.openbsd.org/cgi-bin/cvsweb/xenocara/app/cwm/

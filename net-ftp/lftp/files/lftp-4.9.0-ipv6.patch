@@ -1,0 +1,18 @@
+--- a/src/ftpclass.cc
++++ b/src/ftpclass.cc
+@@ -848,6 +848,7 @@ Ftp::pasv_state_t Ftp::Handle_EPSV_CEPR()
+       conn->data_sa.in.sin_port=htons(port);
+       conn->data_sa.sa.sa_family=AF_INET;
+    }
++#if INET6
+    // V6 / AF_INET6
+    else if (proto == 2)
+    {
+@@ -855,6 +856,7 @@ Ftp::pasv_state_t Ftp::Handle_EPSV_CEPR()
+       conn->data_sa.in6.sin6_port=htons(port);
+       conn->data_sa.sa.sa_family=AF_INET6;
+    }
++#endif
+    else
+    {
+       Disconnect("unsupported address family");

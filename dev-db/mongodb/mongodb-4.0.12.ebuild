@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,8 +20,9 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="debug kerberos libressl lto mms-agent ssl test +tools"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-arch/snappy-1.1.3
 	>=dev-cpp/yaml-cpp-0.5.3:=
@@ -41,7 +42,7 @@ DEPEND="${RDEPEND}
 	$(python_gen_any_dep '
 		dev-python/cheetah[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		virtual/python-typing[${PYTHON_USEDEP}]
+		dev-python/typing[${PYTHON_USEDEP}]
 	')
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
@@ -54,6 +55,7 @@ PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.6.1-fix-scons.patch"
 	"${FILESDIR}/${PN}-4.0.0-no-compass.patch"
+	"${FILESDIR}/${PN}-4.0.12-boost-1.71-cxxabi-include.patch"
 )
 
 S="${WORKDIR}/${MY_P}"

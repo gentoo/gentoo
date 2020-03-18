@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ipv6?"
 inherit distutils-r1
 
@@ -15,12 +15,11 @@ LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="ipv6 test"
+RESTRICT="!test? ( test )"
 
 # >=python-3.3 comes with the built-in ipaddress module
 RDEPEND="dev-python/authres[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/ipaddr-2.1.10[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/pydns:2[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/pydns:3[${PYTHON_USEDEP}]' 'python3*')"
+	dev-python/pydns:3[${PYTHON_USEDEP}]"
 
 DEPEND="test? ( ${RDEPEND}
 	dev-python/pyyaml[${PYTHON_USEDEP}] )"

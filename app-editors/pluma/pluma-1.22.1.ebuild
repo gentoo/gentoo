@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,7 +40,7 @@ COMMON_DEPEND="dev-libs/atk
 	virtual/libintl
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
 	spell? (
-		>=app-text/enchant-1.6
+		>=app-text/enchant-1.6:=
 		>=app-text/iso-codes-0.35
 	)
 	!!app-editors/mate-text-editor"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,21 +7,20 @@ EAPI=5
 
 GTK_MAJ_VER="2"
 
-MY_PV="${PV%.*}"
-MY_P="${PN}-${MY_PV}"
+MY_P="${PN}-${PV%.*}"
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Binding to the Gtk+ graphical user interface library"
 HOMEPAGE="http://projects.haskell.org/gtk2hs/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${MY_PV}/${MY_P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="${GTK_MAJ_VER}/${PV}"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="+fmode-binary +gio"
 
 RDEPEND="fmode-binary? ( >=dev-haskell/glib-0.12.5.4:0=[profile?] <dev-haskell/glib-0.13:0=[profile?]

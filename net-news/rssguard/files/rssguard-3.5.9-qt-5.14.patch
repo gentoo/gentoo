@@ -1,0 +1,10 @@
+--- a/src/gui/messagepreviewer.cpp	2019-06-04 13:16:48.000000000 +0200
++++ b/src/gui/messagepreviewer.cpp	2020-01-05 17:26:13.405430006 +0100
+@@ -9,6 +9,7 @@
+ #include "network-web/webfactory.h"
+ #include "services/abstract/serviceroot.h"
+ 
++#include <QKeyEvent>
+ #include <QScrollBar>
+ #include <QToolBar>
+ #include <QToolTip>

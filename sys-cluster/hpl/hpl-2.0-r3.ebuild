@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
-inherit eutils multilib
+inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters"
 HOMEPAGE="http://www.netlib.org/benchmark/hpl/"

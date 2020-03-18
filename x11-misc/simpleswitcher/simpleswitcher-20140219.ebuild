@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 SSHASH="cbc89a71a61fd2d164c3fdc3ef4d3fa809c1741a"
 DESCRIPTION="lightweight EWMH window switcher with features and looks of dmenu"
 HOMEPAGE="https://github.com/seanpringle/simpleswitcher"
-SRC_URI="${HOMEPAGE}/archive/${SSHASH}.tar.gz -> ${P}-${SSHASH}.tar.gz"
+SRC_URI="https://github.com/seanpringle/simpleswitcher/archive/${SSHASH}.tar.gz -> ${P}-${SSHASH}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

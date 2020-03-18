@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -26,7 +26,7 @@ IUSE=""
 
 ruby_add_bdepend "doc? ( >=dev-ruby/yard-0.5.3 )"
 
-ruby_add_rdepend ">=dev-ruby/listen-1.3.1:1 !!<dev-ruby/haml-3.1 !!<dev-ruby/sass-3.2.19-r1:0 !!<dev-ruby/sass-3.3.14-r1:3.3"
+ruby_add_rdepend ">=dev-ruby/listen-1.3.1:1"
 
 # tests could use `less` if we had it
 

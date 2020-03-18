@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">aranym/aranym</remote-id>
+	</upstream>
+	<use>
+		<flag name="clipboard">Enable bidirectional clipboard transfer between the host and FreeMiNT</flag>
+		<flag name="jit">Build Just-In-Time compiler variant with increased performance</flag>
+		<flag name="lilo">Enable support for directly booting kernels such as Linux</flag>
+		<flag name="osmesa">Allow images to be rendered in memory using the host CPU</flag>
+		<flag name="pmmu">Build full PMMU variant, required for running mainline Linux</flag>
+		<flag name="standard">Build standard (no JIT or PMMU) variant</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+Only set -Werror - which among other things prevents xrootd-4.8.3 from being
+compiled with gcc-9 - either in debug mode or when explicitly requested.
+Backport of the change made upstream in 4.10.
+--- a/cmake/XRootDOSDefs.cmake
++++ b/cmake/XRootDOSDefs.cmake
+@@ -26,7 +26,15 @@
+ #-------------------------------------------------------------------------------
+ if( CMAKE_COMPILER_IS_GNUCXX )
+   set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x" )
+-  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror" )
++  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra" )
++  #-----------------------------------------------------------------------------
++  # Set -Werror only for Debug (or undefined) build type or if we have been
++  # explicitly asked to do so
++  #-----------------------------------------------------------------------------
++  if( ( CMAKE_BUILD_TYPE STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}" STREQUAL ""
++        OR FORCE_WERROR ) )
++    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror" )
++  endif()
+   set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-parameter" )
+   # gcc 4.1 is retarded
+   execute_process( COMMAND ${CMAKE_C_COMPILER} -dumpversion

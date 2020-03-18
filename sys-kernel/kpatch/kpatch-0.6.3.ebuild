@@ -19,6 +19,7 @@ HOMEPAGE="https://github.com/dynup/kpatch"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+kpatch-build +kpatch kmod doc contrib test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-crypt/pesign

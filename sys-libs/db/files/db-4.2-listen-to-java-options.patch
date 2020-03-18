@@ -1,5 +1,5 @@
---- dist/configure.ac	2005-09-23 21:01:26.000000000 +0200
-+++ dist/configure.ac	2005-09-23 20:59:20.000000000 +0200
+--- a/dist/configure.ac
++++ b/dist/configure.ac
 @@ -385,6 +385,7 @@
          # A classpath that includes . is needed to check for Java
  	CLASSPATH=".:$CLASSPATH"

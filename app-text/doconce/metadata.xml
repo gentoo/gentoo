@@ -1,10 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>grozin@gentoo.org</email>
-    <name>Andrey Grozin</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
     DocOnce is a modestly tagged (Markdown-like) markup language targeting scientific reports,
     software documentation, books, blog posts, and slides involving much math and code in the text.

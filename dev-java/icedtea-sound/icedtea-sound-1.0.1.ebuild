@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 IUSE="+doc test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEP="
 	>=virtual/jdk-1.6.0

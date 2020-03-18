@@ -18,7 +18,7 @@ LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RESTRICT="mirror fetch strip"
+RESTRICT="bindist mirror fetch strip"
 
 BDEPEND="dev-util/patchelf"
 COMMON="app-eselect/eselect-opencl

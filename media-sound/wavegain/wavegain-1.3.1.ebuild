@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -14,17 +14,15 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S=${WORKDIR}/${P/wavegain/WaveGain}
 
-src_compile(){
+src_compile() {
 	$(tc-getCC) ${LDFLAGS} ${CFLAGS} *.c -o ${PN} \
 		-DHAVE_CONFIG_H -lm || die "build failed"
 }
 
-src_install(){
+src_install() {
 	dobin ${PN}
 }

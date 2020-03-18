@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 systemd virtualx
+inherit gnome2 systemd
 
 DESCRIPTION="Rygel is an open source UPnP/DLNA MediaServer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Rygel"
@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1+ CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="X +introspection +sqlite tracker test transcode"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2
@@ -23,8 +24,8 @@ RDEPEND="
 	media-libs/gst-plugins-base:1.0
 	>=media-libs/libmediaart-0.7:2.0
 	media-plugins/gst-plugins-soup:1.0
-	>=net-libs/gssdp-0.14.15
-	>=net-libs/gupnp-0.20.14
+	>=net-libs/gssdp-0.14.15:0/3
+	>=net-libs/gupnp-0.20.14:0/4
 	>=net-libs/gupnp-av-0.12.8
 	>=net-libs/libsoup-2.44:2.4
 	>=sys-apps/util-linux-2.20

@@ -1,0 +1,22 @@
+--- a/nvidia-settings-@PV@/src/gtk+-2.x/ctkvdpau.c
++++ b/nvidia-settings-@PV@/src/gtk+-2.x/ctkvdpau.c
+@@ -103,6 +103,8 @@
+ const gchar* __video_mixer_attribute_help =
+ "This shows the video mixer attributes and any applicable ranges.";
+ 
++struct VDPAUDeviceImpl VDPAUDeviceFunctions;
++
+ static int queryOutputSurface(CtkVDPAU *ctk_vdpau, VdpDevice device,
+                               VdpGetProcAddress *getProcAddress);
+ 
+--- a/nvidia-settings-@PV@/src/gtk+-2.x/ctkvdpau.h
++++ b/nvidia-settings-@PV@/src/gtk+-2.x/ctkvdpau.h
+@@ -46,7 +46,7 @@
+     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VDPAU, CtkVDPAUClass))
+ 
+ 
+-struct VDPAUDeviceImpl {
++extern struct VDPAUDeviceImpl {
+ 
+     VdpGetErrorString *GetErrorString;
+     VdpGetProcAddress *GetProcAddress;

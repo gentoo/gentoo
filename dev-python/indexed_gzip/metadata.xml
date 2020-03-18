@@ -18,6 +18,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">pauldmccarthy/indexed_gzip</remote-id>
-		<remote-id type="pypi">indexed-gzip"</remote-id>
+		<remote-id type="pypi">indexed-gzip</remote-id>
 	</upstream>
 </pkgmetadata>

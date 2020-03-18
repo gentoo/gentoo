@@ -47,6 +47,19 @@ index 8f1077d..4dd3845 100644
  
  noinst_PROGRAMS = introspect operation_reference img_cmp
  
+diff --git a/tests/buffer/Makefile.am b/tests/buffer/Makefile.am
+index d62ce71..0a4df53 100644
+--- a/tests/buffer/Makefile.am
++++ b/tests/buffer/Makefile.am
+@@ -30,7 +30,7 @@ AM_CFLAGS = $(DEP_CFLAGS) $(BABL_CFLAGS)
+ 
+ buffer_test_LDADD = 						\
+ 	$(top_builddir)/gegl/libgegl-$(GEGL_API_VERSION).la	\
+-	$(DEP_LIBS) $(BABL_LIBS)
++	$(DEP_LIBS) $(BABL_LIBS) $(MATH_LIB)
+ 
+ 
+ # Our custom target rules
 -- 
 2.12.2
 

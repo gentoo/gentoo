@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit python-single-r1
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
@@ -22,7 +22,7 @@ SLOT="0/0.15" # based on SONAME of liborcus.so
 IUSE="python +spreadsheet-model static-libs tools"
 
 RDEPEND="
-	dev-libs/boost:=
+	dev-libs/boost:=[zlib(+)]
 	sys-libs/zlib
 	python? ( ${PYTHON_DEPS} )
 	spreadsheet-model? ( >=dev-libs/libixion-0.15.0:= )
@@ -39,19 +39,21 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	[[ ${PV} == 9999 ]] && eautoreconf
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
-	econf \
-		--disable-werror \
-		$(use_enable python) \
-		$(use_enable spreadsheet-model) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		--disable-werror
+		$(use_enable python)
+		$(use_enable spreadsheet-model)
+		$(use_enable static-libs static)
 		$(use_with tools)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }

@@ -1,0 +1,25 @@
+From a3e4150d6df690ea083a74f2e66894dc2af0cd9e Mon Sep 17 00:00:00 2001
+From: QuantumEntangledAndy <sheepchaan@gmail.com>
+Date: Sat, 8 Jun 2019 10:10:10 +0700
+Subject: [PATCH] Fix for boost versions less than 1.66
+
+---
+ libs/fscp/include/fscp/server.hpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/libs/fscp/include/fscp/server.hpp b/libs/fscp/include/fscp/server.hpp
+index 2b18a595..1f4b30ee 100644
+--- a/libs/fscp/include/fscp/server.hpp
++++ b/libs/fscp/include/fscp/server.hpp
+@@ -288,7 +288,11 @@ namespace fscp
+ 			 */
+ 			boost::asio::io_service& get_io_service()
+ 			{
++#if BOOST_ASIO_VERSION >= 101200 // Boost 1.66+
+ 				return reinterpret_cast<boost::asio::io_context&>(get_socket().get_executor().context());
++#else
++				return get_socket().get_io_service();
++#endif
+ 			}
+ 
+ 			/**

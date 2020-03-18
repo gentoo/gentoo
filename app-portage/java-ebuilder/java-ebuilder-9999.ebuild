@@ -1,13 +1,13 @@
-# Copyright 2016-2017 Gentoo Foundation
+# Copyright 2016-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 if [[ ${PV} == 9999 ]]; then
 	ECLASS="git-r3"
-	EGIT_REPO_URI="https://github.com/gentoo/${PN}.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
 else
-	SRC_URI="https://github.com/gentoo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://gitweb.gentoo.org/proj/java-ebuilder.git/snapshot/${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
@@ -31,18 +31,23 @@ JAVA_ADDRES_DIRS="src/main/resources"
 
 MAIN_CLASS="org.gentoo.java.ebuilder.Main"
 
-java_prepare() {
-	eapply_user
+src_prepare() {
+	default
+
 	local base_dir="target/classes/"
+
 	[[ ! -d "${base_dir}" ]] &&mkdir -p "${base_dir}META-INF"
 	echo "Manifest-Version: 1.0
 Main-Class: ${MAIN_CLASS}" \
 		>> "${base_dir}META-INF/MANIFEST.MF"
+
+	hprefixify scripts/{{tree,meta}.sh,movl} java-ebuilder.conf
 }
 
-src_prepare() {
-	eapply_user
-	hprefixify scripts/{{tree,meta}.sh,movl} java-ebuilder.conf
+src_compile() {
+	java-pkg-simple_src_compile
+
+	jar uf ${JAVA_JAR_FILENAME} -C ${JAVA_ADDRES_DIRS} usage.txt || die "Failed to add resources"
 }
 
 src_install() {
@@ -52,6 +57,7 @@ src_install() {
 	insinto /var/lib/${PN}
 	doins -r maven
 	dodir /var/lib/${PN}/{poms,cache}
+	keepdir /var/lib/${PN}/{poms,cache}
 
 	dodoc README maven.conf
 

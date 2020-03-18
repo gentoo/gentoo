@@ -5,4 +5,7 @@
 	<email>games@gentoo.org</email>
 	<name>Gentoo Games Project</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">tnalpgge/rank-amateur-cowsay</remote-id>
+</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Jason Zaman
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bazel.eclass
@@ -193,7 +193,7 @@ bazel_load_distfiles() {
 		elif [[ ${rename} -eq 1 ]]; then
 			# Make sure the distfile is used
 			if [[ "${A}" == *"${word}"* ]]; then
-				echo "Copying ${file} to bazel distdir as ${word}"
+				echo "Copying ${word} to bazel distdir as ${file}"
 				ln -s "${DISTDIR}/${word}" "${T}/bazel-distdir/${file}" || die
 			fi
 			rename=0

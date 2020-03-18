@@ -13,7 +13,7 @@ SRC_URI="http://dl.suckless.org/wmii/${MY_P}.tbz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 CDEPEND="

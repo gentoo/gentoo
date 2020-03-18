@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/usbguard-daemon"
+command_args="-k -c /etc/usbguard/usbguard-daemon.conf"
+command_background="true"
+pidfile="/run/usbguard.pid"
+
+depend() {
+    need udev localmount
+}

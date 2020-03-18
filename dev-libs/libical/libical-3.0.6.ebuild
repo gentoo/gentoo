@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
-inherit cmake-utils python-any-r1 vala
+PYTHON_COMPAT=( python3_{6,7} )
+VALA_USE_DEPEND="vapigen"
+inherit cmake python-any-r1 vala
 
 DESCRIPTION="An implementation of basic iCAL protocols"
 HOMEPAGE="https://github.com/libical/libical"
@@ -12,27 +13,28 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0/3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="berkdb doc examples introspection static-libs test vala"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 
 BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
+	introspection? ( dev-libs/gobject-introspection )
 	test? ( ${PYTHON_DEPS} )
-"
-DEPEND="
-	dev-libs/icu:=
-	berkdb? ( sys-libs/db:= )
-	introspection? (
-		dev-libs/glib:2
-		dev-libs/gobject-introspection:=
-		dev-libs/libxml2:2
-	)
 	vala? ( $(vala_depend) )
 "
-RDEPEND="${DEPEND}
+COMMON_DEPEND="
+	dev-libs/icu:=
+	berkdb? ( sys-libs/db:= )
+	introspection? ( dev-libs/glib:2 )
+"
+DEPEND="${COMMON_DEPEND}
+	introspection? ( dev-libs/libxml2:2 )
+"
+RDEPEND="${COMMON_DEPEND}
 	sys-libs/timezone-data
 "
 
@@ -51,14 +53,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	use examples || cmake_comment_add_subdirectory examples
 	use vala && vala_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package berkdb BDB)
+		$(cmake_use_find_package berkdb BDB)
 		-DICAL_BUILD_DOCS=$(usex doc)
 		-DICAL_GLIB=$(usex introspection)
 		-DGOBJECT_INTROSPECTION=$(usex introspection)
@@ -66,12 +68,18 @@ src_configure() {
 		-DLIBICAL_BUILD_TESTING=$(usex test)
 		-DICAL_GLIB_VAPI=$(usex vala)
 	)
-	cmake-utils_src_configure
+	if use vala; then
+		mycmakeargs+=(
+			-DVALAC="${VALAC}"
+			-DVAPIGEN="${VAPIGEN}"
+		)
+	fi
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	use doc && cmake-utils_src_compile docs
+	cmake_src_compile
+	use doc && cmake_src_compile docs
 }
 
 src_test() {
@@ -79,13 +87,13 @@ src_test() {
 		-E "(icalrecurtest|icalrecurtest-r)" # bug 660282
 	)
 
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
 	use doc && HTML_DOCS=( "${BUILD_DIR}"/apidocs/html/. )
 
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use examples; then
 		rm examples/CMakeLists.txt || die

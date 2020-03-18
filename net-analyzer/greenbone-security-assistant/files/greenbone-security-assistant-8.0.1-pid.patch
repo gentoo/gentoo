@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -222,7 +222,7 @@ if (NOT DATADIR)
+ endif (NOT DATADIR)
+ 
+ if (NOT GSAD_PID_DIR)
+-  set (GSAD_PID_DIR "${LOCALSTATEDIR}/run")
++  set (GSAD_PID_DIR "/run")
+ endif (NOT GSAD_PID_DIR)
+ 
+ set (OPENVAS_STATE_DIR "${LOCALSTATEDIR}/lib/openvas")

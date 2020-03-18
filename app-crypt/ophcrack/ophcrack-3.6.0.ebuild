@@ -30,9 +30,9 @@ src_configure() {
 
 	myconf="${myconf} $(use_enable debug) --disable-gui"
 
-	econf ${myconf} || die "Failed to compile"
+	econf ${myconf}
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "Installation failed."
+	emake install DESTDIR="${D}"
 }

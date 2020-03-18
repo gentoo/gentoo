@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ src_prepare() {
 	tc-export CXX
 }
 
-src_install () {
+src_install() {
 	dobin bookmarksync
 	if use perl ; then
 		dobin tools/bookmarksync.pl
@@ -38,6 +38,6 @@ src_install () {
 	dodoc README TODO DEVELOPERS
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	use perl && ewarn "You will need to modify bookmarksync.pl before use"
 }

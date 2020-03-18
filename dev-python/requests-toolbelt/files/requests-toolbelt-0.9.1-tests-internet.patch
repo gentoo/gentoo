@@ -1,0 +1,28 @@
+diff --git a/tests/test_multipart_encoder.py b/tests/test_multipart_encoder.py
+index 575f54c..73a880e 100644
+--- a/tests/test_multipart_encoder.py
++++ b/tests/test_multipart_encoder.py
+@@ -94,6 +94,7 @@ class TestFileFromURLWrapper(unittest.TestCase):
+         s = requests.Session()
+         self.recorder = get_betamax(s)
+ 
++    @unittest.skip("test requires internet access")
+     def test_read_file(self):
+         url = ('https://stxnext.com/static/img/logo.830ebe551641.svg')
+         with self.recorder.use_cassette(
+@@ -110,6 +111,7 @@ class TestFileFromURLWrapper(unittest.TestCase):
+             assert chunk == b'ww.w3.org/'
+             assert self.instance.len == 5147
+ 
++    @unittest.skip("test requires internet access")
+     def test_no_content_length_header(self):
+         url = (
+             'https://api.github.com/repos/sigmavirus24/github3.py/releases/'
+@@ -191,6 +193,7 @@ class TestMultipartEncoder(unittest.TestCase):
+             m = MultipartEncoder([('field', 'foo'), ('file', fd)])
+             assert m.read() is not None
+ 
++    @unittest.skip("test requires internet access")
+     def test_reads_file_from_url_wrapper(self):
+         s = requests.Session()
+         recorder = get_betamax(s)

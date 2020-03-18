@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
 IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise kerberos selinux test"
+RESTRICT="!test? ( test )"
 
 # Pinned to db:4.8 as it is the current stable, can change to a later db version < 6 when they stabilize.
 # The --with-db-inc line in econf will need to be updated as well when changing db version.
@@ -89,12 +90,12 @@ src_compile() {
 	fi
 }
 
-src_test () {
+src_test() {
 	# -j1 is a temporary workaround for bug #605432
 	emake -j1 check
 }
 
-src_install () {
+src_install() {
 	# -j1 is a temporary workaround for bug #605432
 	emake -j1 DESTDIR="${D}" install
 

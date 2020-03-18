@@ -1,0 +1,406 @@
+From 1bbd0a24bb072c470d5bd93be2010b86b7a80382 Mon Sep 17 00:00:00 2001
+From: James Simmons <jsimmons@infradead.org>
+Date: Thu, 21 Nov 2019 14:17:47 -0500
+Subject: [PATCH] LU-12822 uapi: properly pack data structures
+
+Linux UAPI headers use the gcc attributre __packed__ to ensure
+that the data structures are the exact same size on all platforms.
+This comes at the cost of potential misaligned accesses to these
+data structures which at best cost performance and at worst cause
+a bus error on some platforms. To detect potential misaligned
+access starting with gcc version 9 a new compile flags was
+introduced which is now impacting builds with Lustre.
+
+Examining the build failures shows most of the problems are due to
+packed data structures in the Lustre UAPI header containing
+unpacked data structure fields. Packing those missed structures
+resolved many of the build issues. The second problem is that the
+lustre utilities tend to cast some of its UAPI data structure.
+A good example is struct lov_user_md being cast to
+struct lov_user_md_v3. To ensure this is properly handled with
+packed data structures we need to use the __may_alias__ compiler
+attribute. The one exception is struct statx which is defined out
+side of Lustre and its unpacked. This requires extra special
+handling in user land code due to the described issues in this
+comment.
+
+Fixing this problem exposed an incorrect wiretest for
+struct update_op
+
+Last problem address is the use of __swabXXp() on packed data
+structure fields. Because of the potential alignment issues we
+have to use __swabXX() functions instead.
+
+Change-Id: I149c55d3361e893bd890f9c5e9c77c15f81acc1b
+Signed-off-by: James Simmons <jsimmons@infradead.org>
+---
+ lustre/include/uapi/linux/lustre/lustre_idl.h |  6 +--
+ .../include/uapi/linux/lustre/lustre_user.h   | 14 +++---
+ lustre/ptlrpc/wiretest.c                      |  2 +-
+ lustre/utils/liblustreapi.c                   | 50 +++++++++----------
+ lustre/utils/liblustreapi_layout.c            | 36 ++++++-------
+ 5 files changed, 54 insertions(+), 54 deletions(-)
+
+diff --git a/lustre/include/uapi/linux/lustre/lustre_idl.h b/lustre/include/uapi/linux/lustre/lustre_idl.h
+index db941b24b1..123d73d339 100644
+--- a/lustre/include/uapi/linux/lustre/lustre_idl.h
++++ b/lustre/include/uapi/linux/lustre/lustre_idl.h
+@@ -2738,12 +2738,12 @@ struct llog_rec_hdr {
+ 	__u32	lrh_index;
+ 	__u32	lrh_type;
+ 	__u32	lrh_id;
+-};
++} __attribute__((packed));
+ 
+ struct llog_rec_tail {
+ 	__u32	lrt_len;
+ 	__u32	lrt_index;
+-};
++} __attribute__((packed));
+ 
+ /* Where data follow just after header */
+ #define REC_DATA(ptr)						\
+@@ -3551,7 +3551,7 @@ struct update_op {
+ 	__u16		uop_type;
+ 	__u16		uop_param_count;
+ 	__u16		uop_params_off[0];
+-};
++} __attribute__((packed));
+ 
+ struct update_ops {
+ 	struct update_op	uops_op[0];
+diff --git a/lustre/include/uapi/linux/lustre/lustre_user.h b/lustre/include/uapi/linux/lustre/lustre_user.h
+index bec8c97880..440854d175 100644
+--- a/lustre/include/uapi/linux/lustre/lustre_user.h
++++ b/lustre/include/uapi/linux/lustre/lustre_user.h
+@@ -324,7 +324,7 @@ struct lu_fid {
+ 	 * used.
+ 	 **/
+ 	__u32 f_ver;
+-};
++} __attribute__((packed));
+ 
+ static inline bool fid_is_zero(const struct lu_fid *fid)
+ {
+@@ -502,7 +502,7 @@ struct ost_id {
+ 		} oi;
+ 		struct lu_fid oi_fid;
+ 	};
+-};
++} __attribute__((packed));
+ 
+ #define DOSTID "%#llx:%llu"
+ #define POSTID(oi) ((unsigned long long)ostid_seq(oi)), \
+@@ -792,7 +792,7 @@ struct lov_user_md_v3 {           /* LOV EA user data (host-endian) */
+ 	};
+ 	char  lmm_pool_name[LOV_MAXPOOLNAME + 1]; /* pool name */
+ 	struct lov_user_ost_data_v1 lmm_objects[0]; /* per-stripe data */
+-} __attribute__((packed));
++} __attribute__((packed, __may_alias__));
+ 
+ struct lov_foreign_md {
+ 	__u32 lfm_magic;	/* magic number = LOV_MAGIC_FOREIGN */
+@@ -800,7 +800,7 @@ struct lov_foreign_md {
+ 	__u32 lfm_type;		/* type, see LU_FOREIGN_TYPE_ */
+ 	__u32 lfm_flags;	/* flags, type specific */
+ 	char lfm_value[];
+-};
++} __attribute__((packed));
+ 
+ #define foreign_size(lfm) (((struct lov_foreign_md *)lfm)->lfm_length + \
+ 			   offsetof(struct lov_foreign_md, lfm_value))
+@@ -818,7 +818,7 @@ struct lov_foreign_md {
+ struct lu_extent {
+ 	__u64	e_start;
+ 	__u64	e_end;
+-};
++} __attribute__((packed));
+ 
+ #define DEXT "[%#llx, %#llx)"
+ #define PEXT(ext) (unsigned long long)(ext)->e_start, (unsigned long long)(ext)->e_end
+@@ -979,7 +979,7 @@ struct lmv_user_mds_data {
+ 	struct lu_fid	lum_fid;
+ 	__u32		lum_padding;
+ 	__u32		lum_mds;
+-};
++} __attribute__((packed, __may_alias__));
+ 
+ enum lmv_hash_type {
+ 	LMV_HASH_TYPE_UNKNOWN	= 0,	/* 0 is reserved for testing purpose */
+@@ -1631,7 +1631,7 @@ struct changelog_rec {
+ 		__u32		cr_markerflags; /**< CL_MARK flags */
+ 	};
+ 	struct lu_fid		cr_pfid;        /**< parent fid */
+-};
++} __attribute__ ((packed));
+ 
+ /* Changelog extension for RENAME. */
+ struct changelog_ext_rename {
+diff --git a/lustre/ptlrpc/wiretest.c b/lustre/ptlrpc/wiretest.c
+index 3056a0bb7c..c2ce845050 100644
+--- a/lustre/ptlrpc/wiretest.c
++++ b/lustre/ptlrpc/wiretest.c
+@@ -5444,7 +5444,7 @@ void lustre_assert_wire_constants(void)
+ 		 (long long)(int)sizeof(((struct update_params *)0)->up_params));
+ 
+ 	/* Checks for struct update_op */
+-	LASSERTF((int)sizeof(struct update_op) == 24, "found %lld\n",
++	LASSERTF((int)sizeof(struct update_op) == 20, "found %lld\n",
+ 		 (long long)(int)sizeof(struct update_op));
+ 	LASSERTF((int)offsetof(struct update_op, uop_fid) == 0, "found %lld\n",
+ 		 (long long)(int)offsetof(struct update_op, uop_fid));
+diff --git a/lustre/utils/liblustreapi.c b/lustre/utils/liblustreapi.c
+index 754536f117..0669a876f0 100644
+--- a/lustre/utils/liblustreapi.c
++++ b/lustre/utils/liblustreapi.c
+@@ -2154,12 +2154,12 @@ static int llapi_semantic_traverse(char *path, int size, DIR *parent,
+ 		strcat(path, dent->d_name);
+ 
+ 		if (dent->d_type == DT_UNKNOWN) {
+-			lstatx_t *stx = &param->fp_lmd->lmd_stx;
++			lstatx_t stx = param->fp_lmd->lmd_stx;
+ 
+ 			rc = get_lmd_info(path, d, NULL, param->fp_lmd,
+ 					  param->fp_lum_size, GET_LMD_INFO);
+ 			if (rc == 0)
+-				dent->d_type = IFTODT(stx->stx_mode);
++				dent->d_type = IFTODT(stx.stx_mode);
+ 			else if (ret == 0)
+ 				ret = rc;
+ 
+@@ -3985,7 +3985,7 @@ int llapi_file_lookup(int dirfd, const char *name)
+  *
+  * If 0 is returned, we need to do another RPC to the OSTs to obtain the
+  * updated timestamps. */
+-static int find_time_check(lstatx_t *stx, struct find_param *param, int mds)
++static int find_time_check(struct statx *stx, struct find_param *param, int mds)
+ {
+ 	int rc = 1;
+ 	int rc2;
+@@ -4039,13 +4039,13 @@ static int check_obd_match(struct find_param *param)
+ 	struct lov_user_ost_data_v1 *objects;
+ 	struct lov_comp_md_v1 *comp_v1 = NULL;
+ 	struct lov_user_md_v1 *v1 = &param->fp_lmd->lmd_lmm;
+-	lstatx_t *stx = &param->fp_lmd->lmd_stx;
++	lstatx_t stx = param->fp_lmd->lmd_stx;
+ 	int i, j, k, count = 1;
+ 
+ 	if (param->fp_obd_uuid && param->fp_obd_index == OBD_NOT_FOUND)
+ 		return 0;
+ 
+-	if (!S_ISREG(stx->stx_mode))
++	if (!S_ISREG(stx.stx_mode))
+ 		return 0;
+ 
+ 	/* exclude foreign */
+@@ -4358,7 +4358,7 @@ static int find_check_pool(struct find_param *param)
+ 
+ static int find_check_comp_options(struct find_param *param)
+ {
+-	lstatx_t *stx = &param->fp_lmd->lmd_stx;
++	lstatx_t stx = param->fp_lmd->lmd_stx;
+ 	struct lov_comp_md_v1 *comp_v1, *forged_v1 = NULL;
+ 	struct lov_user_md_v1 *v1 = &param->fp_lmd->lmd_lmm;
+ 	struct lov_comp_md_entry_v1 *entry;
+@@ -4376,7 +4376,7 @@ static int find_check_comp_options(struct find_param *param)
+ 		comp_v1 = forged_v1;
+ 		comp_v1->lcm_entry_count = 1;
+ 		entry = &comp_v1->lcm_entries[0];
+-		entry->lcme_flags = S_ISDIR(stx->stx_mode) ? 0 : LCME_FL_INIT;
++		entry->lcme_flags = S_ISDIR(stx.stx_mode) ? 0 : LCME_FL_INIT;
+ 		entry->lcme_extent.e_start = 0;
+ 		entry->lcme_extent.e_end = LUSTRE_EOF;
+ 	}
+@@ -4504,7 +4504,7 @@ static int cb_find_init(char *path, DIR *parent, DIR **dirp,
+ 	struct find_param *param = (struct find_param *)data;
+ 	DIR *dir = dirp == NULL ? NULL : *dirp;
+ 	int decision = 1; /* 1 is accepted; -1 is rejected. */
+-	lstatx_t *stx = &param->fp_lmd->lmd_stx;
++	struct statx stx = param->fp_lmd->lmd_stx;
+ 	int lustre_fs = 1;
+ 	int checked_type = 0;
+ 	int ret = 0;
+@@ -4594,7 +4594,7 @@ static int cb_find_init(char *path, DIR *parent, DIR **dirp,
+ 			if (dir != NULL) {
+ 				ret = llapi_file_fget_mdtidx(dirfd(dir),
+ 						     &param->fp_file_mdt_index);
+-			} else if (S_ISREG(stx->stx_mode)) {
++			} else if (S_ISREG(stx.stx_mode)) {
+ 				/* FIXME: we could get the MDT index from the
+ 				 * file's FID in lmd->lmd_lmm.lmm_oi without
+ 				 * opening the file, once we are sure that
+@@ -4628,7 +4628,7 @@ static int cb_find_init(char *path, DIR *parent, DIR **dirp,
+ 	}
+ 
+ 	if (param->fp_type && !checked_type) {
+-		if ((stx->stx_mode & S_IFMT) == param->fp_type) {
++		if ((stx.stx_mode & S_IFMT) == param->fp_type) {
+ 			if (param->fp_exclude_type)
+ 				goto decided;
+ 		} else {
+@@ -4640,8 +4640,8 @@ static int cb_find_init(char *path, DIR *parent, DIR **dirp,
+         /* Prepare odb. */
+ 	if (param->fp_obd_uuid || param->fp_mdt_uuid) {
+ 		if (lustre_fs && param->fp_got_uuids &&
+-		    param->fp_dev != makedev(stx->stx_dev_major,
+-					     stx->stx_dev_minor)) {
++		    param->fp_dev != makedev(stx.stx_dev_major,
++					     stx.stx_dev_minor)) {
+ 			/* A lustre/lustre mount point is crossed. */
+ 			param->fp_got_uuids = 0;
+ 			param->fp_obds_printed = 0;
+@@ -4655,8 +4655,8 @@ static int cb_find_init(char *path, DIR *parent, DIR **dirp,
+ 			if (ret)
+ 				goto out;
+ 
+-			param->fp_dev = makedev(stx->stx_dev_major,
+-						stx->stx_dev_minor);
++			param->fp_dev = makedev(stx.stx_dev_major,
++						stx.stx_dev_minor);
+ 		} else if (!lustre_fs && param->fp_got_uuids) {
+ 			/* A lustre/non-lustre mount point is crossed. */
+ 			param->fp_got_uuids = 0;
+@@ -4758,7 +4758,7 @@ static int cb_find_init(char *path, DIR *parent, DIR **dirp,
+ 
+ obd_matches:
+ 	if (param->fp_check_uid) {
+-		if (stx->stx_uid == param->fp_uid) {
++		if (stx.stx_uid == param->fp_uid) {
+ 			if (param->fp_exclude_uid)
+ 				goto decided;
+ 		} else {
+@@ -4768,7 +4768,7 @@ obd_matches:
+ 	}
+ 
+ 	if (param->fp_check_gid) {
+-		if (stx->stx_gid == param->fp_gid) {
++		if (stx.stx_gid == param->fp_gid) {
+ 			if (param->fp_exclude_gid)
+ 				goto decided;
+ 		} else {
+@@ -4823,23 +4823,23 @@ obd_matches:
+                 int for_mds;
+ 
+ 		for_mds = lustre_fs ?
+-			(S_ISREG(stx->stx_mode) && stripe_count) : 0;
+-		decision = find_time_check(stx, param, for_mds);
++			(S_ISREG(stx.stx_mode) && stripe_count) : 0;
++		decision = find_time_check(&stx, param, for_mds);
+ 		if (decision == -1)
+ 			goto decided;
+ 	}
+ 
+ 	flags = param->fp_lmd->lmd_flags;
+ 	if (param->fp_check_size &&
+-	    ((S_ISREG(stx->stx_mode) && stripe_count) ||
+-	      S_ISDIR(stx->stx_mode)) &&
++	    ((S_ISREG(stx.stx_mode) && stripe_count) ||
++	      S_ISDIR(stx.stx_mode)) &&
+ 	    !(flags & OBD_MD_FLSIZE ||
+ 	      (param->fp_lazy && flags & OBD_MD_FLLAZYSIZE)))
+ 		decision = 0;
+ 
+ 	if (param->fp_check_blocks &&
+-	    ((S_ISREG(stx->stx_mode) && stripe_count) ||
+-	      S_ISDIR(stx->stx_mode)) &&
++	    ((S_ISREG(stx.stx_mode) && stripe_count) ||
++	      S_ISDIR(stx.stx_mode)) &&
+ 	    !(flags & OBD_MD_FLBLOCKS ||
+ 	      (param->fp_lazy && flags & OBD_MD_FLLAZYBLOCKS)))
+ 		decision = 0;
+@@ -4884,13 +4884,13 @@ obd_matches:
+ 
+ 		convert_lmd_statx(param->fp_lmd, &st, true);
+ 		/* Check the time on osc. */
+-		decision = find_time_check(stx, param, 0);
++		decision = find_time_check(&stx, param, 0);
+ 		if (decision == -1)
+ 			goto decided;
+ 	}
+ 
+ 	if (param->fp_check_size) {
+-		decision = find_value_cmp(stx->stx_size, param->fp_size,
++		decision = find_value_cmp(stx.stx_size, param->fp_size,
+ 					  param->fp_size_sign,
+ 					  param->fp_exclude_size,
+ 					  param->fp_size_units, 0);
+@@ -4899,7 +4899,7 @@ obd_matches:
+ 	}
+ 
+ 	if (param->fp_check_blocks) { /* convert st_blocks to bytes */
+-		decision = find_value_cmp(stx->stx_blocks * 512,
++		decision = find_value_cmp(stx.stx_blocks * 512,
+ 					  param->fp_blocks,
+ 					  param->fp_blocks_sign,
+ 					  param->fp_exclude_blocks,
+diff --git a/lustre/utils/liblustreapi_layout.c b/lustre/utils/liblustreapi_layout.c
+index e47b303798..720fae814d 100644
+--- a/lustre/utils/liblustreapi_layout.c
++++ b/lustre/utils/liblustreapi_layout.c
+@@ -135,11 +135,11 @@ llapi_layout_swab_lov_user_md(struct lov_user_md *lum, int lum_size)
+ 		comp_v1 = (struct lov_comp_md_v1 *)lum;
+ 
+ 	if (comp_v1 != NULL) {
+-		__swab32s(&comp_v1->lcm_magic);
+-		__swab32s(&comp_v1->lcm_size);
+-		__swab32s(&comp_v1->lcm_layout_gen);
+-		__swab16s(&comp_v1->lcm_flags);
+-		__swab16s(&comp_v1->lcm_entry_count);
++		comp_v1->lcm_magic = __swab32(comp_v1->lcm_magic);
++		comp_v1->lcm_size = __swab32(comp_v1->lcm_size);
++		comp_v1->lcm_layout_gen = __swab32(comp_v1->lcm_layout_gen);
++		comp_v1->lcm_flags = __swab16(comp_v1->lcm_flags);
++		comp_v1->lcm_entry_count = __swab16(comp_v1->lcm_entry_count);
+ 		ent_count = comp_v1->lcm_entry_count;
+ 	} else {
+ 		ent_count = 1;
+@@ -148,13 +148,13 @@ llapi_layout_swab_lov_user_md(struct lov_user_md *lum, int lum_size)
+ 	for (i = 0; i < ent_count; i++) {
+ 		if (comp_v1 != NULL) {
+ 			ent = &comp_v1->lcm_entries[i];
+-			__swab32s(&ent->lcme_id);
+-			__swab32s(&ent->lcme_flags);
+-			__swab64s(&ent->lcme_timestamp);
+-			__swab64s(&ent->lcme_extent.e_start);
+-			__swab64s(&ent->lcme_extent.e_end);
+-			__swab32s(&ent->lcme_offset);
+-			__swab32s(&ent->lcme_size);
++			ent->lcme_id = __swab32(ent->lcme_id);
++			ent->lcme_flags = __swab32(ent->lcme_flags);
++			ent->lcme_timestamp = __swab64(ent->lcme_timestamp);
++			ent->lcme_extent.e_start = __swab64(ent->lcme_extent.e_start);
++			ent->lcme_extent.e_end = __swab64(ent->lcme_extent.e_end);
++			ent->lcme_offset = __swab32(ent->lcme_offset);
++			ent->lcme_size = __swab32(ent->lcme_size);
+ 
+ 			lum = (struct lov_user_md *)((char *)comp_v1 +
+ 					ent->lcme_offset);
+@@ -162,11 +162,11 @@ llapi_layout_swab_lov_user_md(struct lov_user_md *lum, int lum_size)
+ 		}
+ 		obj_count = llapi_layout_objects_in_lum(lum, lum_size);
+ 
+-		__swab32s(&lum->lmm_magic);
+-		__swab32s(&lum->lmm_pattern);
+-		__swab32s(&lum->lmm_stripe_size);
+-		__swab16s(&lum->lmm_stripe_count);
+-		__swab16s(&lum->lmm_stripe_offset);
++		lum->lmm_magic = __swab32(lum->lmm_magic);
++		lum->lmm_pattern = __swab32(lum->lmm_pattern);
++		lum->lmm_stripe_size = __swab32(lum->lmm_stripe_size);
++		lum->lmm_stripe_count = __swab16(lum->lmm_stripe_count);
++		lum->lmm_stripe_offset = __swab16(lum->lmm_stripe_offset);
+ 
+ 		if (lum->lmm_magic != LOV_MAGIC_V1) {
+ 			struct lov_user_md_v3 *v3;
+@@ -177,7 +177,7 @@ llapi_layout_swab_lov_user_md(struct lov_user_md *lum, int lum_size)
+ 		}
+ 
+ 		for (j = 0; j < obj_count; j++)
+-			__swab32s(&lod[j].l_ost_idx);
++			lod[j].l_ost_idx = __swab32(lod[j].l_ost_idx);
+ 	}
+ }
+ 
+-- 
+2.24.0
+

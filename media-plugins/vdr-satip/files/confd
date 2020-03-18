@@ -1,24 +1,46 @@
 # /etc/conf.d/vdr.satip:
 
-#Configuration:
+# Configuration:
 
-#The plugin accepts a "--devices" (-d) command-line parameter defaulting
-#to one. This parameter defines how many simultaneous transponders can
-#be received, if there are available SAT>IP tuners.
+# The plugin accepts a "--devices" (-d) command-line parameter defaulting
+# to one. This parameter defines how many simultaneous transponders can
+# be received, if there are available SAT>IP tuners.
 
-#The plugin accepts also a "--server" (-s) command-line parameter, that
-#can be used to manually configure static SAT>IP servers if autodetection
-#via UPnP somehow can't be used. The parameter string is a semicolon
-#separated list of "<ipaddress>|<model>|<description>" entries. The model
-#consists of a DVB system (DVBS2,DVBT2,DVBT,DVBC) and number of available
-#frontends separated by a hyphen:
+# The plugin accepts also a "--server" (-s) command-line parameter, that
+# can be used to manually configure static SAT>IP servers if autodetection
+# via UPnP somehow can't be used. The parameter string is a semicolon
+# separated list of "<ipaddress>|<model>|<description>" entries. The model
+# consists of a DVB system (DVBS2,DVBT2,DVBT,DVBC) and number of available
+# frontends separated by a hyphen:
 
-#vdr -P 'satip -s <ipaddress>|<model>|<description>;...'
-#vdr -P 'satip -s 192.168.0.1|DVBS2-2,DVBT2-2|Octo1'
-#vdr -P 'satip -s 192.168.0.1|DVBS2-4|Octo1;192.168.0.2|DVBT2-4|Octo2'
+#   vdr -P 'satip -s <ipaddress>|<model>|<description>;...'
+#   vdr -P 'satip -s 192.168.0.1|DVBS2-2,DVBT2-2|Octo1'
+#   vdr -P 'satip -s 192.168.0.1|DVBS2-4|Octo1;192.168.0.2|DVBT2-4|Octo2'
+
+# Some SAT>IP tuners need quirks, which the plugin tries to autodetect.
+# Check vdr log for lines like "SATIP: Adding server" what devices are found
+# and added.
+# If this autodetection is not enough, quirks can be overridden with a hexadecimal
+# number behind the description:
+
+#   vdr -P 'satip -s 192.168.0.1|DVBS2-2,DVBT2-2|EXIP414:0x40'
+
+# available quirks:
+#   eSatipQuirkSessionId  = 0x01   fix a session id bug
+#   eSatipQuirkPlayPids   = 0x02   fix a play (add/delpids) parameter bug
+#   eSatipQuirkForceLock  = 0x04   fix a frontend locking bug
+#   eSatipQuirkRtpOverTcp = 0x08   support for RTP over TCP
+#   eSatipQuirkCiXpmt     = 0x10   support the X_PMT protocol extension
+#   eSatipQuirkCiTnr      = 0x20   support the TNR protocol extension
+#   eSatipQuirkForcePilot = 0x40   fix not-supported auto-detection of pilot tones
+#
+# the quirks parameter must be the summary of the single quirks needed
+
+# Warning: specify <description> always without spaces - the gentoo vdr framework
+# will break parameters 
 
 # no default parameters
 # uncomment the next line and add your personal settings,
 # depend on the infos from ahead
-#
-#_EXTRAOPTS""
+
+#_EXTRAOPTS="-d 2 -s 192.168.0.1|DVBS2-2|Octo1"

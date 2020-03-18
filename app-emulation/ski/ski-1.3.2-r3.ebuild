@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,9 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	dev-util/gperf"
 
+# games-sports/ski and app-emulation/ski both install 'ski' binary, bug #653110
+RDEPEND="${RDEPEND} !!games-sports/ski"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-syscall-linux-includes.patch
 	"${FILESDIR}"/${P}-remove-hayes.patch
@@ -35,10 +38,15 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ncurses-config.patch
 	"${FILESDIR}"/${P}-prototypes.patch
 	"${FILESDIR}"/${P}-glibc-2.28.patch
+	"${FILESDIR}"/${P}-gcc-10.patch #707144
 )
 
 src_prepare() {
 	default
+
+	if has_version ">=sys-libs/binutils-libs-2.34"; then
+		eapply "${FILESDIR}"/${PN}-1.3.2-binutils-2.34.patch
+	fi
 
 	rm -rf libltdl src/ltdl.[ch] macros/ltdl.m4
 

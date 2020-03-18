@@ -1,0 +1,10 @@
+--- a/src/sound-pulse.c
++++ b/src/sound-pulse.c
+@@ -21,6 +21,7 @@
+ 
+ #include <poll.h>
+ #include <pulse/pulseaudio.h>
++#include "int_box.h"
+ 
+ #ifndef PA_CHECK_VERSION
+ #define PA_CHECK_VERSION(a,b,c) (0)

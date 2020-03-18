@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,7 @@ LICENSE="GPL-3 Apache-2.0 BSD GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+debug geoip"
-RESTRICT="mirror"
+RESTRICT="mirror test"
 
 BDEPEND=">=dev-lang/mono-4.2"
 
@@ -156,7 +156,7 @@ pkg_config() {
 	cert-sync --quiet "${EROOT}"/etc/ssl/certs/ca-certificates.crt
 	eend $?
 
-	if [[ -n ${ROOT%/} ]]; then
+	if [[ -n ${ROOT} ]]; then
 		echo
 		ewarn "Mono's cert-sync cannot write to your ROOT system so you must manually"
 		ewarn "copy the certificates from ${BROOT}/usr/share/.mono to ${EROOT}/usr/share/.mono."

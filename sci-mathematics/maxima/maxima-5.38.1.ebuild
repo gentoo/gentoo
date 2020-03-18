@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -35,7 +35,7 @@ RDEPEND="!app-emacs/imaxima
 	X? ( x11-misc/xdg-utils
 		 sci-visualization/gnuplot[gd]
 		 tk? ( dev-lang/tk:0 ) )
-	emacs? ( virtual/emacs
+	emacs? ( >=app-editors/emacs-23.1:*
 		virtual/latex-base
 		app-emacs/auctex
 		app-text/ghostscript-gpl

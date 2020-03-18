@@ -1,0 +1,19 @@
+--- dahdi-tools-3.1.0/Makefile.am.o	2020-01-09 12:23:37.943059915 +0200
++++ dahdi-tools-3.1.0/Makefile.am	2020-01-09 12:23:58.863036654 +0200
+@@ -1,7 +1,7 @@
+ ACLOCAL_AMFLAGS	= -I m4
+ 
+ LEGACY_MAKE	= \
+-	 $(MAKE) -f $(srcdir)/Makefile.legacy \
++	 +$(MAKE) -f $(srcdir)/Makefile.legacy \
+ 		top_srcdir=$(top_srcdir) \
+ 		srcdir=$(srcdir)
+ 
+@@ -131,7 +131,6 @@
+ 	install -m644 init.conf.sample $(DESTDIR)$(dahdiconfdir)/init.conf
+ 	install -m644 blacklist.sample $(DESTDIR)$(sysconfdir)/modprobe.d/dahdi-blacklist.conf
+ 	install -m644 modprobe.conf.sample $(DESTDIR)$(sysconfdir)/modprobe.d/dahdi.conf
+-	$(LEGACY_MAKE) config
+ 
+ dahdiconfdir	= @sysconfdir@/dahdi
+ dahdiconf_DATA	= \

@@ -9,6 +9,9 @@
     <email>cjk@gentoo.org</email>
     <name>Cjk</name>
   </maintainer>
+  <use>
+    <flag name="debug">Enable debugging (including logging of input of RIME input methods)</flag>
+  </use>
   <upstream>
     <maintainer>
       <email>chen.sst@gmail.com</email>

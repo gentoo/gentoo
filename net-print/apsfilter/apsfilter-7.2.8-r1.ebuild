@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ EAPI=4
 DESCRIPTION="Apsfilter Prints So Fine, It Leads To Extraordinary Results"
 HOMEPAGE="http://www.apsfilter.org"
 SRC_URI="http://www.apsfilter.org/download/${P}.tar.bz2"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ppc sparc x86"
 IUSE="cups"
 SLOT="0"
 LICENSE="GPL-2"
@@ -33,7 +33,7 @@ src_configure() {
 		--docdir=/usr/share/doc/${PF} --sysconfdir=/etc ${myconf} || die
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dosym /usr/share/apsfilter/SETUP /usr/bin/apsfilter
 	use cups && \

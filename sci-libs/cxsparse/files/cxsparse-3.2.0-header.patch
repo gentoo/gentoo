@@ -1,0 +1,17 @@
+diff --git a/CXSparse/Include/cs.h b/CXSparse/Include/cs.h
+index a47ee115..dbdf3017 100644
+--- a/Include/cs.h
++++ b/Include/cs.h
+@@ -43,9 +43,9 @@ extern "C" {
+ #endif
+ 
+ #define CS_VER 3                    /* CXSparse Version */
+-#define CS_SUBVER 1
+-#define CS_SUBSUB 9
+-#define CS_DATE "May 4, 2016"       /* CXSparse release date */
++#define CS_SUBVER 2
++#define CS_SUBSUB 0
++#define CS_DATE "Sept 12, 2017"       /* CSparse release date */
+ #define CS_COPYRIGHT "Copyright (c) Timothy A. Davis, 2006-2016"
+ #define CXSPARSE
+ 

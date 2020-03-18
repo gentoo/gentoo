@@ -59,6 +59,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" BINDIR="${ED}/usr/bin" install || die
+	emake DESTDIR="${D}" BINDIR="${ED}/usr/bin" install
 	dodoc CHANGES CREDITS README.architecture TODO
 }

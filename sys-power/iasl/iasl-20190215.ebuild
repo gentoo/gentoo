@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic
+inherit eutils toolchain-funcs flag-o-matic
 
 MY_PN=acpica-unix
 MY_P="${MY_PN}-${PV}"
@@ -15,8 +15,9 @@ SRC_URI="http://www.acpica.org/sites/acpica/files/${MY_P}.tar.gz
 
 LICENSE="iASL"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="sys-devel/bison
 	sys-devel/flex"
@@ -98,7 +99,7 @@ src_install() {
 }
 
 aslts_test() {
-	export	ASL="${S}"/generate/unix/bin/iasl \
+	export ASL="${S}"/generate/unix/bin/iasl \
 		acpibin="${S}"/generate/unix/bin/acpibin \
 		acpiexec="${S}"/generate/unix/bin/acpiexec \
 		ASLTSDIR="${WORKDIR}/${MY_TESTS_P}"/tests/aslts

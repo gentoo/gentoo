@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,12 @@ inherit haskell-cabal
 
 DESCRIPTION="Conversion between markup formats"
 HOMEPAGE="http://johnmacfarlane.net/pandoc"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="embed_data_files +http-conduit"
+IUSE="embed-data-files +http-conduit"
 
 RESTRICT=test # missing files
 
@@ -48,7 +48,7 @@ RDEPEND=">=dev-haskell/aeson-0.7:=[profile?] <dev-haskell/aeson-0.8:=[profile?]
 	>=dev-haskell/zip-archive-0.1.3.3:=[profile?] <dev-haskell/zip-archive-0.3:=[profile?]
 	>=dev-haskell/zlib-0.5:=[profile?] <dev-haskell/zlib-0.6:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
-	embed_data_files? ( dev-haskell/hsb2hs )
+	embed-data-files? ( dev-haskell/hsb2hs )
 	http-conduit? ( >=dev-haskell/http-conduit-1.9:=[profile?] <dev-haskell/http-conduit-2.2:=[profile?]
 			>=dev-haskell/http-types-0.8:=[profile?] <dev-haskell/http-types-0.9:=[profile?] )
 "
@@ -77,6 +77,6 @@ src_prepare() {
 
 src_configure() {
 	haskell-cabal_src_configure \
-		$(cabal_flag embed_data_files embed_data_files) \
+		$(cabal_flag embed-data-files embed_data_files) \
 		$(cabal_flag http-conduit http-conduit)
 }

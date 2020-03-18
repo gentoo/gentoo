@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -90,6 +90,11 @@ src_configure() {
 	echo "CONFIG_EAP=y" >> ${CONFIG}
 	echo "CONFIG_ERP=y" >> ${CONFIG}
 	echo "CONFIG_EAP_MD5=y" >> ${CONFIG}
+	echo "CONFIG_SAE=y" >> ${CONFIG}
+	echo "CONFIG_OWE=y" >> ${CONFIG}
+	echo "CONFIG_DPP=y" >> ${CONFIG}
+	echo "CONFIG_SUITEB=y" >> ${CONFIG}
+	echo "CONFIG_SUITEB192=y" >> ${CONFIG}
 
 	if use internal-tls && ! use libressl; then
 		echo "CONFIG_TLS=internal" >> ${CONFIG}

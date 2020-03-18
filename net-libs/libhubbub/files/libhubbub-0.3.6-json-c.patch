@@ -1,0 +1,24 @@
+diff -u -rb libhubbub-0.3.6/test.o/tokeniser2.c libhubbub-0.3.6/test/tokeniser2.c
+--- libhubbub-0.3.6/test.o/tokeniser2.c	2019-06-26 22:39:57.000000000 +0200
++++ libhubbub-0.3.6/test/tokeniser2.c	2019-11-06 13:09:02.321068038 +0200
+@@ -48,7 +48,7 @@
+ 	}
+ 
+ 	json = json_object_from_file(argv[1]);
+-	assert(!is_error(json));
++	assert(json);
+ 
+ 	assert(strcmp((char *) ((json_object_get_object(json)->head)->k),
+ 			"tests") == 0);
+diff -u -rb libhubbub-0.3.6/test.o/tokeniser3.c libhubbub-0.3.6/test/tokeniser3.c
+--- libhubbub-0.3.6/test.o/tokeniser3.c	2019-06-26 22:39:57.000000000 +0200
++++ libhubbub-0.3.6/test/tokeniser3.c	2019-11-06 13:13:03.162538564 +0200
+@@ -46,7 +46,7 @@
+ 	}
+ 
+ 	json = json_object_from_file(argv[1]);
+-	assert(!is_error(json));
++	assert(json);
+ 
+ 	assert(strcmp((char *) ((json_object_get_object(json)->head)->k),
+ 			"tests") == 0);

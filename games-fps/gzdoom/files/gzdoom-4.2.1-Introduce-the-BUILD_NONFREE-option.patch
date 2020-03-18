@@ -9,14 +9,13 @@ and game_support.pk3) if they so desire.
  CMakeLists.txt | 9 +++++++--
  1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7860358ef..23d317f42 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -404,10 +404,15 @@ add_subdirectory( libraries/lzma )
- add_subdirectory( tools )
- add_subdirectory( libraries/dumb )
- add_subdirectory( libraries/gdtoa )
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-10-20 15:16:08.000000000 +0100
++++ b/CMakeLists.txt	2019-10-24 21:27:58.104006569 +0100
+@@ -444,10 +444,15 @@
+ add_subdirectory( libraries/wildmidi )
+ add_subdirectory( libraries/oplsynth )
+ add_subdirectory( libraries/zmusic )
 +
  add_subdirectory( wadsrc )
 -add_subdirectory( wadsrc_bm )

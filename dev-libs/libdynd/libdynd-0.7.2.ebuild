@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="cuda doc fftw mkl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/c-blosc:0=

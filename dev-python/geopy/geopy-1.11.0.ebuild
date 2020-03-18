@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -12,6 +12,7 @@ HOMEPAGE="http://www.geopy.org/ https://github.com/geopy/geopy"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 IUSE="test doc timezone yahoo"
+RESTRICT="!test? ( test )"
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,8 +26,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		 dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/nose-cover3[${PYTHON_USEDEP}]
 		dev-python/pylint[${PYTHON_USEDEP}] )
-	doc? ( $(python_gen_cond_dep 'dev-python/sphinx[${PYTHON_USEDEP}]' python2_7)
-		>=dev-python/python-docs-2.7.6-r1:2.7 )"
+	doc? ( >=dev-python/python-docs-2.7.6-r1:2.7 )"
 
 REQUIRED_USE="test? ( yahoo timezone )"
 

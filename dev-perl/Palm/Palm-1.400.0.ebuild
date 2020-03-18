@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Read & write Palm OS databases (both PDB and PRC)"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="test examples"
+RESTRICT="!test? ( test )"
 
 # Palm::Raw -> Palm-PDB
 RDEPEND="

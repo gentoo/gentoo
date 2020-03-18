@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/419395
 
---- engine/src/animation.c
-+++ engine/src/animation.c
+--- a/engine/src/animation.c
++++ b/engine/src/animation.c
 @@ -7,7 +7,7 @@
  #include "animation.h"
  

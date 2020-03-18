@@ -1,0 +1,29 @@
+From 163073ab9527cdaa33d77a713b8e46ff462a2b5c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tam=C3=A1s=20Feh=C3=A9rv=C3=A1ri?=
+ <geever@users.sourceforge.net>
+Date: Sat, 3 Aug 2019 15:21:05 +0200
+Subject: [PATCH] * {{Bug|5739}} MiniXML (mxml) 3.x compatibility
+
+---
+ src/common/xml.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/common/xml.cpp b/src/common/xml.cpp
+index 7aeceb3a29..5a66ccc887 100644
+--- a/src/common/xml.cpp
++++ b/src/common/xml.cpp
+@@ -509,8 +509,13 @@ static mxml_type_t mxml_ufo_type_cb (xmlNode_t* node)
+ 	/* You can lookup attributes and/or use the
+ 	 * element name, hierarchy, etc... */
+ 	const char* type = mxmlElementGetAttr(node, "type");
+-	if (type == nullptr)
++	if (type == nullptr) {
++#ifdef MXML_MAJOR_VERSION
++		type = mxmlGetElement(node);
++#else
+ 		type = node->value.element.name;
++#endif
++	}
+ 
+ 	if (Q_streq(type, "int"))
+ 		return MXML_INTEGER;

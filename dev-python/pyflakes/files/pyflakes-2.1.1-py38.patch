@@ -1,0 +1,42 @@
+commit 1911c203a13826d2eb03d582d60874b91e36f4fc
+Author: Batuhan Taşkaya <47358913+isidentical@users.noreply.github.com>
+Date:   Sun Nov 3 22:51:27 2019 +0300
+
+    Allow continue inside finally in 3.8+ (#476)
+
+diff --git a/pyflakes/checker.py b/pyflakes/checker.py
+index eca2002..c8ccf56 100644
+--- a/pyflakes/checker.py
++++ b/pyflakes/checker.py
+@@ -1738,7 +1738,7 @@ class Checker(object):
+                 break
+             # Handle Try/TryFinally difference in Python < and >= 3.3
+             if hasattr(n, 'finalbody') and isinstance(node, ast.Continue):
+-                if n_child in n.finalbody:
++                if n_child in n.finalbody and not PY38_PLUS:
+                     self.report(messages.ContinueInFinally, node)
+                     return
+         if isinstance(node, ast.Continue):
+diff --git a/pyflakes/test/test_other.py b/pyflakes/test/test_other.py
+index df2f790..282accb 100644
+--- a/pyflakes/test/test_other.py
++++ b/pyflakes/test/test_other.py
+@@ -493,8 +493,10 @@ class Test(TestCase):
+                     continue
+         ''')
+ 
++    @skipIf(version_info > (3, 8), "Python <= 3.8 only")
+     def test_continueInFinally(self):
+         # 'continue' inside 'finally' is a special syntax error
++        # that is removed in 3.8
+         self.flakes('''
+         while True:
+             try:
+@@ -2003,6 +2005,7 @@ class TestAsyncStatements(TestCase):
+         ''', m.BreakOutsideLoop)
+ 
+     @skipIf(version_info < (3, 5), 'new in Python 3.5')
++    @skipIf(version_info > (3, 8), "Python <= 3.8 only")
+     def test_continueInAsyncForFinally(self):
+         self.flakes('''
+         async def read_data(db):

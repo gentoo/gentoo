@@ -16,7 +16,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8afa31e87a8f1d425054
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gmp iconv python readline +shared static-libs static-pic syslog"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
@@ -30,6 +30,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	${ADA_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}-src
+
+pkg_setup() {
+	python-single-r1_pkg_setup
+	ada_pkg_setup
+}
 
 src_compile() {
 	build () {

@@ -11,11 +11,11 @@ inherit haskell-cabal
 
 DESCRIPTION="A small compatibility shim for dev-haskell/transformers"
 HOMEPAGE="https://github.com/ekmett/transformers-compat/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-lang/ghc-7.4.1:=

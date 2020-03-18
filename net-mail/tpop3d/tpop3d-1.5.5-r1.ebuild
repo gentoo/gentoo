@@ -21,7 +21,7 @@ RDEPEND="sha1?		( >=dev-libs/openssl-0.9.6:0= )
 	mysql?		( dev-db/mysql-connector-c:0= )
 	postgres?	( dev-db/postgresql[server] )
 	perl?		( >=dev-lang/perl-5.6.1 )
-	pam?		( virtual/pam
+	pam?		( sys-libs/pam
 				  >=net-mail/mailbase-0.00-r8 )
 	tcpd?		( >=sys-apps/tcp-wrappers-7.6 )"
 

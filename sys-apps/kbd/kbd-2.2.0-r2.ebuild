@@ -21,12 +21,13 @@ HOMEPAGE="http://kbd-project.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls pam test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/gzip
 	pam? (
 		!app-misc/vlock
-		virtual/pam
+		sys-libs/pam
 	)
 "
 DEPEND="${RDEPEND}"

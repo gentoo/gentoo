@@ -22,10 +22,6 @@ dev-libs/libelf
 # Fails to compile, and not worth fixing, bug #379723
 =sys-devel/gcc-4.3.6*
 
-# Fabian Groffen <grobian@gentoo.org> (2009-11-29)
-# segfaults during compilation, bug #294479
-=virtual/emacs-23
-
 # Fabian Groffen <grobian@gentoo.org> (2007-01-21)
 # doesn't understand arguments on Solaris
 =dev-vcs/cvs-1.12.12*

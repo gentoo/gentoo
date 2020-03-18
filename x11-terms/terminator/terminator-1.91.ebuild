@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit gnome2 distutils-r1 virtualx
+inherit eutils gnome2 distutils-r1 virtualx
 
 DESCRIPTION="Multiple GNOME terminals in one window"
 HOMEPAGE="https://launchpad.net/terminator/"

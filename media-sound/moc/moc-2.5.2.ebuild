@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="http://ftp.daper.net/pub/soft/moc/stable/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE="aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modplug musepack
 	oss sid sndfile speex timidity tremor +unicode vorbis wavpack"
 
@@ -46,7 +46,6 @@ S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	local myconf=(
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable debug)
 		$(use_enable cache)
 		$(use_with oss)

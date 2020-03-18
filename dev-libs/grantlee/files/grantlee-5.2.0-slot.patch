@@ -1,0 +1,67 @@
+From 0bf2a3f667a958b3cc7859cc2fe60ca8a7ccac08 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 30 Nov 2019 11:55:33 +0100
+Subject: [PATCH] Install headers to a custom location to permit slotting
+
+That was previously necessary with Qt4 version, let's keep it while
+Qt6 is around the corner.
+
+Amended with target_include_directories fix by jospezial.
+
+---
+ templates/lib/CMakeLists.txt    | 5 +++--
+ textdocument/lib/CMakeLists.txt | 5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/templates/lib/CMakeLists.txt b/templates/lib/CMakeLists.txt
+index 5058481..3ef29a4 100644
+--- a/templates/lib/CMakeLists.txt
++++ b/templates/lib/CMakeLists.txt
+@@ -101,6 +101,7 @@ if (Qt5Qml_FOUND)
+ 
+   target_sources(Grantlee_Templates PRIVATE ${scriptabletags_SRCS})
+   target_include_directories(Grantlee_Templates PRIVATE ../scriptabletags)
++  target_include_directories(Grantlee_Templates INTERFACE "$<INSTALL_INTERFACE:include/grantlee5>")
+   target_link_libraries(Grantlee_Templates
+     PRIVATE Qt5::Qml
+   )
+@@ -152,10 +153,10 @@ install(FILES
+   token.h
+   util.h
+   variable.h
+-  DESTINATION include/grantlee COMPONENT Templates
++  DESTINATION include/grantlee5/grantlee COMPONENT Templates
+ )
+ 
+ install(FILES
+   grantlee_templates.h
+-  DESTINATION include COMPONENT Templates
++  DESTINATION include/grantlee5 COMPONENT Templates
+ )
+diff --git a/textdocument/lib/CMakeLists.txt b/textdocument/lib/CMakeLists.txt
+index 2c5a96f..c42d32a 100644
+--- a/textdocument/lib/CMakeLists.txt
++++ b/textdocument/lib/CMakeLists.txt
+@@ -34,6 +34,7 @@ if (CMAKE_GENERATOR MATCHES "Visual Studio")
+       )
+   endforeach()
+ endif()
++target_include_directories(Grantlee_TextDocument INTERFACE "$<INSTALL_INTERFACE:include/grantlee5>")
+ 
+ target_link_libraries(Grantlee_TextDocument
+   PUBLIC Qt5::Gui
+@@ -59,10 +60,10 @@ install(FILES
+   texthtmlbuilder.h
+   mediawikimarkupbuilder.h
+   ${CMAKE_CURRENT_BINARY_DIR}/grantlee_textdocument_export.h
+-  DESTINATION include/grantlee COMPONENT TextDocument
++  DESTINATION include/grantlee5/grantlee COMPONENT TextDocument
+ )
+ 
+ install(FILES
+   grantlee_textdocument.h
+-  DESTINATION include COMPONENT TextDocument
++  DESTINATION include/grantlee5 COMPONENT TextDocument
+ )
+-- 
+2.24.0

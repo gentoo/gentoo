@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ inherit python-r1 gnome2-utils meson xdg-utils
 DESCRIPTION="Modern music player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lollypop"
 SRC_URI="https://gitlab.gnome.org/World/${PN}/uploads/${HASH}/${P}.tar.xz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -20,7 +20,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 DEPEND="${PYTHON_DEPS}
 	dev-libs/appstream-glib[introspection]
 	dev-libs/glib:2
-	dev-libs/gobject-introspection[cairo]
+	dev-libs/gobject-introspection[cairo(+)]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	gnome-base/gnome-common

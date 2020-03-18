@@ -11,7 +11,7 @@ SRC_URI="https://github.com/pragha-music-player/${PN}/releases/download/v${PV}/$
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cdda +glyr grilo +keybinder koel lastfm libnotify mtp +peas +playlist rygel soup +udev"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3=
@@ -35,7 +35,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3=
 	playlist? ( >=dev-libs/totem-pl-parser-2.26:= )
 	rygel? ( >=net-misc/rygel-0.26 )
 	soup? ( >=net-libs/libsoup-2.38:= )
-	udev? ( virtual/libgudev:= )"
+	udev? ( dev-libs/libgudev:= )"
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0"
 DEPEND="${COMMON_DEPEND}

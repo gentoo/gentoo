@@ -1,0 +1,10 @@
+--- R-3.6.2-orig/doc/manual/Makefile.in	2019-03-29 10:02:40.000000000 +1100
++++ R-3.6.2/doc/manual/Makefile.in	2020-01-13 22:17:31.324967094 +1100
+@@ -345,7 +345,6 @@
+ 	@$(ECHO) "installing R info pages ..."
+ 	@for f in $(OBJECTS_INFO:.info=.info*); do \
+ 	  $(INSTALL_DATA) $${f} "$(DESTDIR)$(infodir)"; \
+-	  $(R_GZIPCMD) -f "$(DESTDIR)$(infodir)/$${f}"; \
+ 	done
+ 	@$(ECHO) "updating '$(infodir)/dir' ..."
+ 	@for f in $(OBJECTS_INFO); do \

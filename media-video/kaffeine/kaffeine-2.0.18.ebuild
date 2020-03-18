@@ -3,17 +3,21 @@
 
 EAPI=7
 
-KDE_HANDBOOK="optional"
-inherit kde5
+ECM_HANDBOOK="optional"
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="amd64 x86"
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Media player with digital TV support by KDE"
 HOMEPAGE="https://userbase.kde.org/Kaffeine"
+
 LICENSE="GPL-2+ handbook? ( FDL-1.3 )"
+SLOT="5"
 IUSE="dvb"
 
 BDEPEND="
@@ -21,23 +25,23 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kdbusaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kwindowsystem)
-	$(add_frameworks_dep kxmlgui)
-	$(add_frameworks_dep solid)
-	$(add_qt_dep qtdbus)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtsql 'sqlite')
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtx11extras)
-	$(add_qt_dep qtxml)
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtsql-${QTMIN}:5[sqlite]
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/kdbusaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	>=kde-frameworks/solid-${KFMIN}:5
 	media-video/vlc[X]
 	x11-libs/libXScrnSaver
 	dvb? ( media-libs/libv4l )
@@ -50,8 +54,8 @@ src_configure() {
 	# tools working on $HOME directory for a local git checkout
 	local mycmakeargs=(
 		-DBUILD_TOOLS=OFF
-		$(cmake-utils_use_find_package dvb Libdvbv5)
+		$(cmake_use_find_package dvb Libdvbv5)
 	)
 
-	kde5_src_configure
+	ecm_src_configure
 }

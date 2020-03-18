@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -52,11 +52,11 @@ src_configure() {
 		-DGeant4VMC_BUILD_EXAMPLES="$(usex test)"
 		-DGeant4VMC_INSTALL_EXAMPLES="$(usex examples)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc ; then
 		local dirs=(
 			source
@@ -83,7 +83,7 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use doc && local HTML_DOCS=(doc/.)
 	einstalldocs
 }

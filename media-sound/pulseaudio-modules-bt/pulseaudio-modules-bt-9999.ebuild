@@ -10,7 +10,11 @@ HOMEPAGE="https://github.com/EHfive/pulseaudio-modules-bt"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/EHfive/${PN}"
 
-LICENSE="LGPL-2.1"
+# Ensure it is synced with major pulseaudio version
+# https://github.com/EHfive/pulseaudio-modules-bt/issues/83
+EGIT_OVERRIDE_COMMIT_PULSEAUDIO_PULSEAUDIO="v13.0"
+
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
@@ -23,7 +27,7 @@ DEPEND="
 	>=net-wireless/bluez-5
 	>=sys-apps/dbus-1.0.0
 	>=net-misc/ofono-1.13
-	media-sound/pulseaudio[-bluetooth]
+	>=media-sound/pulseaudio-13[-bluetooth]
 "
 # Ordinarily media-libs/libldac should be in DEPEND too, but for now upstream repo is using a ldac submodule instead.
 

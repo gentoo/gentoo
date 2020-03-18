@@ -1,29 +1,27 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="https://rybczak.net/ncmpcpp/"
-SRC_URI="${HOMEPAGE}stable/${P}.tar.bz2"
+SRC_URI="https://rybczak.net/ncmpcpp/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86"
-IUSE="clock curl outputs taglib unicode visualizer"
+IUSE="clock curl outputs taglib visualizer"
 
 RDEPEND="
 	!dev-libs/boost:0/1.57.0
 	>=media-libs/libmpdclient-2.1
+	dev-libs/boost:=[icu]
 	dev-libs/boost:=[nls,threads]
-	sys-libs/ncurses:=[unicode?]
+	dev-libs/icu:=
+	sys-libs/ncurses:=[unicode]
 	sys-libs/readline:*
 	curl? ( net-misc/curl )
 	taglib? ( media-libs/taglib )
-	unicode? (
-		dev-libs/boost:=[icu]
-		dev-libs/icu:=
-	)
 	visualizer? ( sci-libs/fftw:3.0= )
 "
 DEPEND="
@@ -42,12 +40,11 @@ src_configure() {
 	econf \
 		$(use_enable clock) \
 		$(use_enable outputs) \
-		$(use_enable unicode) \
 		$(use_enable visualizer) \
 		$(use_with curl) \
 		$(use_with taglib) \
 		$(use_with visualizer fftw) \
-		--docdir=/usr/share/doc/${PF}
+		--enable-unicode
 }
 
 src_install() {

@@ -1,0 +1,20 @@
+Replace obsolete stime() function with clock_settime()
+bug 708802
+
+
+Suggested-by: Manuel Reimer <manuel.reimer@gmx.de>
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 2020 Feb 10 )
+diff -Naur vdr-2.4.1.orig/eit.c vdr-2.4.1/eit.c
+--- vdr-2.4.1.orig/eit.c	2020-02-10 21:25:03.594761113 +0100
++++ vdr-2.4.1/eit.c	2020-02-10 21:26:32.443761113 +0100
+@@ -391,7 +391,9 @@
+   if (abs(diff) > MAX_TIME_DIFF) {
+      mutex.Lock();
+      if (abs(diff) > MAX_ADJ_DIFF) {
+-        if (stime(&dvbtim) == 0)
++        timespec ts = {};
++        ts.tv_sec = dvbtim;
++        if (clock_settime(CLOCK_REALTIME, &ts) == 0)
+            isyslog("system time changed from %s (%ld) to %s (%ld)", *TimeToString(loctim), loctim, *TimeToString(dvbtim), dvbtim);
+         else
+            esyslog("ERROR while setting system time: %m");

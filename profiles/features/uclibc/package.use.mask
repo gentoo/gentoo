@@ -22,3 +22,6 @@ dev-util/geany-plugins gtkspell
 # 'append-libs', but xfsdump's build system doesn't honor $LIBS.
 # So this is the best way for now.  See 570548.
 sys-fs/xfsdump nls
+
+# static linking works with uClibc
+app-shells/mksh -static

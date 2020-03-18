@@ -1,0 +1,49 @@
+From 3a496f89064de85af04ce101918c2ec5cebf7846 Mon Sep 17 00:00:00 2001
+From: Harald Judt <h.judt@gmx.at>
+Date: Fri, 8 Nov 2019 10:35:02 +0100
+Subject: Fix CLANG and LLVM libraries not found
+
+This commit gets the build working again here on Gentoo.
+
+Adding LLVM_LIBRARY_DIRS fixes the CLANG libs not found error.
+
+Adding llvm_map_components_to_libnames fixes LLMV not found error.
+---
+ CMakeLists.txt | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 99dbe4b..f93b9b3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,6 +39,15 @@ target_include_directories(c2ffi PUBLIC
+   ${LLVM_INCLUDE_DIRS}
+   ${SOURCE_ROOT}/src/include
+   )
++target_link_directories(c2ffi PUBLIC
++  ${LLVM_LIBRARY_DIRS}
++)
++message(STATUS "LLVM_LIBRARY_DIRS=${LLVM_LIBRARY_DIRS}")
++
++llvm_map_components_to_libnames(llvm_libs core support mcparser bitreader profiledata)
++
++message(STATUS "llvm_libs=${llvm_libs}")
++
+ target_link_libraries(c2ffi PUBLIC
+   clangFrontendTool
+   clangFrontend
+@@ -64,10 +73,9 @@ target_link_libraries(c2ffi PUBLIC
+   clangIndex
+   clangToolingCore
+   clangTooling
++  ${llvm_libs}
+   )
+ 
+-llvm_config(c2ffi USE_SHARED core support mcparser bitreader profiledata)
+-
+ set(APP_BIN_DIR "${CMAKE_BINARY_DIR}/bin")
+ set_target_properties(c2ffi PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${APP_BIN_DIR}"
+-- 
+2.23.0
+

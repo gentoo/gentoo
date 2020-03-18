@@ -20,7 +20,7 @@ SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="nls qt5"
+IUSE="gtk nls"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -32,8 +32,8 @@ DEPEND="
 	>=x11-libs/cairo-1.2.6
 	>=x11-libs/pango-1.8.0
 	virtual/freedesktop-icon-theme
-	!qt5? ( x11-libs/gtk+:2 )
-	qt5? (
+	gtk? ( x11-libs/gtk+:2 )
+	!gtk? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
@@ -63,12 +63,14 @@ src_configure() {
 	# Building without D-Bus is *unsupported* and a USE-flag
 	# will not be added due to the bug reports that will result.
 	# Bugs #197894, #199069, #207330, #208606
-	econf \
-		--disable-valgrind \
-		--enable-dbus \
-		$(use_enable nls) \
-		$(use_enable !qt5 gtk) \
-		$(use_enable qt5 qt)
+	local myeconfargs=(
+		--disable-valgrind
+		--enable-dbus
+		$(use_enable gtk gtk)
+		$(use_enable !gtk qt)
+		$(use_enable nls)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

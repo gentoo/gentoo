@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 CMAKE_REMOVE_MODULES_LIST="${CMAKE_REMOVE_MODULES_LIST} FindXcm FindCUPS"
-inherit cmake-utils flag-o-matic
+inherit cmake-utils flag-o-matic xdg
 
 DESCRIPTION="Colour management system allowing to share settings across apps and services"
 HOMEPAGE="https://www.oyranos.org/"
@@ -70,11 +70,11 @@ RESTRICT="test"
 
 src_prepare() {
 	# remove bundled libs
-	rm -r libxcm openicc yajl || die
+	rm -r libxcm openicc || die
 	cmake-utils_src_prepare
 }
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 		-DUSE_SYSTEM_ELEKTRA=ON

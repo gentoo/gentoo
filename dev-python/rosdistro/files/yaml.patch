@@ -1,0 +1,252 @@
+Index: rosdistro-0.8.0/scripts/rosdistro_convert
+===================================================================
+--- rosdistro-0.8.0.orig/scripts/rosdistro_convert
++++ rosdistro-0.8.0/scripts/rosdistro_convert
+@@ -58,7 +58,7 @@ def get_targets():
+     url = BASE_SRC_URL + '/releases/targets.yaml'
+     print('Load "%s"' % url)
+     yaml_str = load_url(url)
+-    data = yaml.load(yaml_str)
++    data = yaml.safe_load(yaml_str)
+     targets = {}
+     for d in data:
+         targets[d.keys()[0]] = d.values()[0]
+@@ -69,13 +69,13 @@ def convert_release(dist_name, targets):
+     url = BASE_SRC_URL + '/releases/%s.yaml' % dist_name
+     print('Load "%s"' % url)
+     yaml_str = load_url(url)
+-    input_ = yaml.load(yaml_str)
++    input_ = yaml.safe_load(yaml_str)
+ 
+     # improve conversion performance by reusing results from last run
+     last_dist = None
+     if os.path.exists(dist_name + '/release.yaml'):
+         with open(dist_name + '/release.yaml', 'r') as f:
+-            last_data = yaml.load(f.read())
++            last_data = yaml.safe_load(f.read())
+             last_dist = ReleaseFile(dist_name, last_data)
+ 
+     output = {}
+@@ -162,7 +162,7 @@ def convert_source(dist_name):
+     url = BASE_SRC_URL + '/releases/%s-devel.yaml' % dist_name
+     print('Load "%s"' % url)
+     yaml_str = load_url(url)
+-    input_ = yaml.load(yaml_str)
++    input_ = yaml.safe_load(yaml_str)
+ 
+     output = {}
+     output['type'] = 'source'
+@@ -207,7 +207,7 @@ def convert_doc(dist_name):
+         if filename.endswith('.rosinstall'):
+             name = os.path.splitext(os.path.basename(filename))[0]
+             with open(os.path.join(doc_base, filename)) as f:
+-                data = yaml.load(f)
++                data = yaml.safe_load(f)
+             if name.endswith('_depends'):
+                 rosinstall_depends[name] = data
+             else:
+Index: rosdistro-0.8.0/scripts/rosdistro_migrate_to_rep_141
+===================================================================
+--- rosdistro-0.8.0.orig/scripts/rosdistro_migrate_to_rep_141
++++ rosdistro-0.8.0/scripts/rosdistro_migrate_to_rep_141
+@@ -18,7 +18,7 @@ import yaml
+ 
+ 
+ def migrate(index_yaml):
+-    data = yaml.load(open(index_yaml, 'r'))
++    data = yaml.safe_load(open(index_yaml, 'r'))
+     assert data['type'] == 'index'
+     assert data['version'] == 1
+     data['version'] = 2
+@@ -75,7 +75,7 @@ def generate_repos_url(repos_url, doc_ur
+     data['repositories'] = {}
+ 
+     # migrate release stuff
+-    release_data = yaml.load(open(release_url, 'r'))
++    release_data = yaml.safe_load(open(release_url, 'r'))
+     assert release_data['type'] == 'release'
+     assert release_data['version'] == 1
+ 
+@@ -100,7 +100,7 @@ def generate_repos_url(repos_url, doc_ur
+         data['repositories'][repo_name] = repo_data
+ 
+     # migrate doc stuff
+-    doc_data = yaml.load(open(doc_url, 'r'))
++    doc_data = yaml.safe_load(open(doc_url, 'r'))
+     assert doc_data['type'] == 'doc'
+     assert doc_data['version'] == 1
+ 
+@@ -111,7 +111,7 @@ def generate_repos_url(repos_url, doc_ur
+         data['repositories'][repo_name]['doc'] = get_dict_parts(doc_repo_data, ['type', 'url', 'version'])
+ 
+     # migrate source stuff
+-    source_data = yaml.load(open(source_url, 'r'))
++    source_data = yaml.safe_load(open(source_url, 'r'))
+     assert source_data['type'] == 'source'
+     assert source_data['version'] == 1
+ 
+@@ -137,10 +137,10 @@ def update_cache(index_yaml, distro_name
+     if not isinstance(yaml_str, str):
+         yaml_str = yaml_str.decode('utf-8')
+     f.close()
+-    cache_data = yaml.load(yaml_str)
++    cache_data = yaml.safe_load(yaml_str)
+ 
+     del cache_data['release_file']
+-    distribution_data = yaml.load(open(os.path.join(base, distribution_file), 'r'))
++    distribution_data = yaml.safe_load(open(os.path.join(base, distribution_file), 'r'))
+     cache_data['distribution_file'] = distribution_data
+ 
+     cache_data['release_package_xmls'] = cache_data['package_xmls']
+Index: rosdistro-0.8.0/scripts/rosdistro_migrate_to_rep_143
+===================================================================
+--- rosdistro-0.8.0.orig/scripts/rosdistro_migrate_to_rep_143
++++ rosdistro-0.8.0/scripts/rosdistro_migrate_to_rep_143
+@@ -10,7 +10,7 @@ import yaml
+ 
+ 
+ def migrate(index_yaml):
+-    data = yaml.load(open(index_yaml, 'r'))
++    data = yaml.safe_load(open(index_yaml, 'r'))
+     assert data['type'] == 'index'
+     assert data['version'] == 2
+     data['version'] = 3
+Index: rosdistro-0.8.0/src/rosdistro/develdistro.py
+===================================================================
+--- rosdistro-0.8.0.orig/src/rosdistro/develdistro.py
++++ rosdistro-0.8.0/src/rosdistro/develdistro.py
+@@ -8,7 +8,7 @@ import yaml
+ class DevelDistro:
+     def __init__(self, name):
+         url = urlopen('https://raw.github.com/ros/rosdistro/master/releases/{0}-devel.yaml'.format(name))
+-        distro = yaml.load(url.read())['repositories']
++        distro = yaml.safe_load(url.read())['repositories']
+         self.repositories = {}
+         for name, data in distro.iteritems():
+             repo = DevelDistroRepo(name, data)
+Index: rosdistro-0.8.0/src/rosdistro/legacy.py
+===================================================================
+--- rosdistro-0.8.0.orig/src/rosdistro/legacy.py
++++ rosdistro-0.8.0/src/rosdistro/legacy.py
+@@ -122,7 +122,7 @@ def get_release_cache(index, dist_name):
+         f.close()
+     else:
+         raise NotImplementedError('The url of the cache must end with either ".yaml" or ".yaml.gz"')
+-    data = yaml.load(yaml_str)
++    data = yaml.safe_load(yaml_str)
+     return ReleaseCache(dist_name, data)
+ 
+ 
+Index: rosdistro-0.8.0/src/rosdistro/rosdistro.py
+===================================================================
+--- rosdistro-0.8.0.orig/src/rosdistro/rosdistro.py
++++ rosdistro-0.8.0/src/rosdistro/rosdistro.py
+@@ -161,7 +161,7 @@ class RosDistroFile:
+ 
+         # parse ros distro file
+         distro_url = urlopen('https://raw.github.com/ros/rosdistro/master/releases/%s.yaml' % name)
+-        distro = yaml.load(distro_url.read())['repositories']
++        distro = yaml.safe_load(distro_url.read())['repositories']
+ 
+         # loop over all repo's
+         for repo_name, data in distro.iteritems():
+@@ -338,7 +338,7 @@ class RosDependencies:
+ 
+             tar = tarfile.open(fh.name, 'r')
+         data = tar.extractfile(self.file_name)
+-        deps = yaml.load(data.read())
++        deps = yaml.safe_load(data.read())
+         if not deps \
+            or 'cache_version' not in deps \
+            or deps['cache_version'] != CACHE_VERSION \
+Index: rosdistro-0.8.0/test/test_distribution.py
+===================================================================
+--- rosdistro-0.8.0.orig/test/test_distribution.py
++++ rosdistro-0.8.0/test/test_distribution.py
+@@ -12,7 +12,7 @@ FILES_DIR = os.path.normpath(os.path.joi
+ def test_distribution_file():
+     url = 'file://' + FILES_DIR + '/foo/distribution.yaml'
+     yaml_str = load_url(url)
+-    data = yaml.load(yaml_str)
++    data = yaml.safe_load(yaml_str)
+     dist_file = DistributionFile('foo', data)
+     _validate_dist_file(dist_file)
+ 
+Index: rosdistro-0.8.0/test/test_doc.py
+===================================================================
+--- rosdistro-0.8.0.orig/test/test_doc.py
++++ rosdistro-0.8.0/test/test_doc.py
+@@ -12,7 +12,7 @@ FILES_DIR = os.path.normpath(os.path.joi
+ def test_doc_file():
+     url = 'file://' + FILES_DIR + '/foo/distribution.yaml'
+     yaml_str = load_url(url)
+-    data = yaml.load(yaml_str)
++    data = yaml.safe_load(yaml_str)
+     doc_file = DocFile('foo', data)
+     _validate_doc_file(doc_file)
+ 
+Index: rosdistro-0.8.0/test/test_doc_build.py
+===================================================================
+--- rosdistro-0.8.0.orig/test/test_doc_build.py
++++ rosdistro-0.8.0/test/test_doc_build.py
+@@ -12,7 +12,7 @@ FILES_DIR = os.path.normpath(os.path.joi
+ def test_doc_build_file():
+     url = 'file://' + FILES_DIR + '/foo/doc-build.yaml'
+     yaml_str = load_url(url)
+-    data = yaml.load(yaml_str)
++    data = yaml.safe_load(yaml_str)
+     DocBuildFile('foo', data)
+ 
+ 
+Index: rosdistro-0.8.0/test/test_release.py
+===================================================================
+--- rosdistro-0.8.0.orig/test/test_release.py
++++ rosdistro-0.8.0/test/test_release.py
+@@ -12,7 +12,7 @@ FILES_DIR = os.path.normpath(os.path.joi
+ def test_release_file():
+     url = 'file://' + FILES_DIR + '/foo/distribution.yaml'
+     yaml_str = load_url(url)
+-    data = yaml.load(yaml_str)
++    data = yaml.safe_load(yaml_str)
+     rel_file = ReleaseFile('foo', data)
+     _validate_rel_file(rel_file)
+ 
+Index: rosdistro-0.8.0/test/test_release_build.py
+===================================================================
+--- rosdistro-0.8.0.orig/test/test_release_build.py
++++ rosdistro-0.8.0/test/test_release_build.py
+@@ -12,7 +12,7 @@ FILES_DIR = os.path.normpath(os.path.joi
+ def test_release_build_file():
+     url = 'file://' + FILES_DIR + '/foo/release-build.yaml'
+     yaml_str = load_url(url)
+-    data = yaml.load(yaml_str)
++    data = yaml.safe_load(yaml_str)
+     ReleaseBuildFile('foo', data)
+ 
+ 
+Index: rosdistro-0.8.0/test/test_source.py
+===================================================================
+--- rosdistro-0.8.0.orig/test/test_source.py
++++ rosdistro-0.8.0/test/test_source.py
+@@ -12,7 +12,7 @@ FILES_DIR = os.path.normpath(os.path.joi
+ def test_source_file():
+     url = 'file://' + FILES_DIR + '/foo/distribution.yaml'
+     yaml_str = load_url(url)
+-    data = yaml.load(yaml_str)
++    data = yaml.safe_load(yaml_str)
+     src_file = SourceFile('foo', data)
+     _validate_src_file(src_file)
+ 
+Index: rosdistro-0.8.0/test/test_source_build.py
+===================================================================
+--- rosdistro-0.8.0.orig/test/test_source_build.py
++++ rosdistro-0.8.0/test/test_source_build.py
+@@ -12,7 +12,7 @@ FILES_DIR = os.path.normpath(os.path.joi
+ def test_source_build_file():
+     url = 'file://' + FILES_DIR + '/foo/source-build.yaml'
+     yaml_str = load_url(url)
+-    data = yaml.load(yaml_str)
++    data = yaml.safe_load(yaml_str)
+     SourceBuildFile('foo', data)
+ 
+ 

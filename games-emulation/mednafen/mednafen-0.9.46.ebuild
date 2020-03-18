@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://mednafen.github.io/releases/files/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa altivec cjk debugger jack nls pax_kernel"
+IUSE="alsa altivec cjk debugger jack nls"
 
 RDEPEND="
 	dev-libs/libcdio
@@ -108,8 +108,5 @@ src_configure() {
 src_install() {
 	default
 	dodoc Documentation/cheats.txt
-
-	if use pax_kernel; then
-		pax-mark m "${ED%/}"/usr/bin/mednafen || die
-	fi
+	pax-mark m "${ED}"usr/bin/mednafen
 }

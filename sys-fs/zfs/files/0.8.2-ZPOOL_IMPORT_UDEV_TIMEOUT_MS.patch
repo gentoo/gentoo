@@ -1,0 +1,93 @@
+From 803884217f9b9b5fb235d7c5e78a809d271f6387 Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@gentoo.org>
+Date: Wed, 9 Oct 2019 12:16:12 -0700
+Subject: [PATCH] Implement ZPOOL_IMPORT_UDEV_TIMEOUT_MS
+
+Since 0.7.0, zpool import would unconditionally block on udev for 30
+seconds. This introduced a regression in initramfs environments that
+lack udev (particularly mdev based environments), yet use a zfs userland
+tools intended for the system that had been built against udev. Gentoo's
+genkernel is the main example, although custom user initramfs
+environments would be similarly impacted unless special builds of the
+ZFS userland utilities were done for them.  Such environments already
+have their own mechanisms for blocking until device nodes are ready
+(such as genkernel's scandelay parameter), so it is unnecessary for
+zpool import to block on a non-existent udev until a timeout is reached
+inside of them.
+
+Rather than trying to intelligently determine whether udev is available
+on the system to avoid unnecessarily blocking in such environments, it
+seems best to just allow the environment to override the timeout.  I
+propose that we add an environment variable called
+ZPOOL_IMPORT_UDEV_TIMEOUT_MS. Setting it to 0 would restore the 0.6.x
+behavior that was more desirable in mdev based initramfs environments.
+This allows the system user land utilities to be reused when building
+mdev-based initramfs archives.
+
+Reviewed-by: Igor Kozhukhov <igor@dilos.org>
+Reviewed-by: Jorgen Lundman <lundman@lundman.net>
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Reviewed-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+Signed-off-by: Richard Yao <ryao@gentoo.org>
+Closes #9436
+---
+ lib/libzutil/os/linux/zutil_import_os.c | 11 ++++++++++-
+ man/man8/zpool.8                        |  6 ++++++
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/lib/libzutil/zutil_import.c b/lib/libzutil/zutil_import.c
+index 811eae397c9..e51004edc68 100644
+--- a/lib/libzutil/zutil_import.c
++++ b/lib/libzutil/zutil_import.c
+@@ -53,6 +53,7 @@
+ #include <libgen.h>
+ #include <stddef.h>
+ #include <stdlib.h>
++#include <stdio.h>
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+@@ -181,17 +182,25 @@ zpool_open_func(void *arg)
+ 	if (rn->rn_labelpaths) {
+ 		char *path = NULL;
+ 		char *devid = NULL;
++		char *env = NULL;
+ 		rdsk_node_t *slice;
+ 		avl_index_t where;
++		int timeout;
+ 		int error;
+ 
+ 		if (label_paths(rn->rn_hdl, rn->rn_config, &path, &devid))
+ 			return;
+ 
++		env = getenv("ZPOOL_IMPORT_UDEV_TIMEOUT_MS");
++		if ((env == NULL) || sscanf(env, "%d", &timeout) != 1 ||
++		    timeout < 0) {
++			timeout = DISK_LABEL_WAIT;
++		}
++
+ 		/*
+ 		 * Allow devlinks to stabilize so all paths are available.
+ 		 */
+-		zpool_label_disk_wait(rn->rn_name, DISK_LABEL_WAIT);
++		zpool_label_disk_wait(rn->rn_name, timeout);
+ 
+ 		if (path != NULL) {
+ 			slice = zutil_alloc(hdl, sizeof (rdsk_node_t));
+diff --git a/man/man8/zpool.8 b/man/man8/zpool.8
+index 467d2411d40..df30b7ca05c 100644
+--- a/man/man8/zpool.8
++++ b/man/man8/zpool.8
+@@ -2813,6 +2813,12 @@ Similar to the
+ option in
+ .Nm zpool import .
+ .El
++.Bl -tag -width "ZPOOL_IMPORT_UDEV_TIMEOUT_MS"
++.It Ev ZPOOL_IMPORT_UDEV_TIMEOUT_MS
++The maximum time in milliseconds that
++.Nm zpool import
++will wait for an expected device to be available.
++.El
+ .Bl -tag -width "ZPOOL_VDEV_NAME_GUID"
+ .It Ev ZPOOL_VDEV_NAME_GUID
+ Cause

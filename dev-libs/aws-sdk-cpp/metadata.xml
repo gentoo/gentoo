@@ -4,161 +4,374 @@
 	<maintainer type="person">
 		<email>amit.prakash.ambasta@gmail.com</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>yamakuzure@gmx.net</email>
+		<name>Sven Eden</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<longdescription>
+		The AWS SDK for C++ provides a modern C++ version C++ 11 or later interface for Amazon Web Services AWS.
+		It is meant to be performant and fully functioning with low- and high-level SDKs, while minimizing
+		dependencies and providing platform portability Windows, OSX, Linux, and mobile.
+
+		AWS SDK for C++ is in now in General Availability and recommended for production use. We invite our
+		customers to join the development efforts by submitting pull requests and sending us feedback and ideas
+		via GitHub Issues.
+	</longdescription>
 	<use>
-		<flag name="aws_targets_access-management">SDK Support for AWS access-management</flag>
-		<flag name="aws_targets_acm">SDK Support for AWS acm</flag>
-		<flag name="aws_targets_acm-pca">SDK Support for AWS acm-pca</flag>
-		<flag name="aws_targets_alexaforbusiness">SDK Support for AWS alexaforbusiness</flag>
-		<flag name="aws_targets_apigateway">SDK Support for AWS apigateway</flag>
-		<flag name="aws_targets_application-autoscaling">SDK Support for AWS application-autoscaling</flag>
-		<flag name="aws_targets_appstream">SDK Support for AWS appstream</flag>
-		<flag name="aws_targets_appsync">SDK Support for AWS appsync</flag>
-		<flag name="aws_targets_athena">SDK Support for AWS athena</flag>
-		<flag name="aws_targets_autoscaling">SDK Support for AWS autoscaling</flag>
-		<flag name="aws_targets_autoscaling-plans">SDK Support for AWS autoscaling-plans</flag>
-		<flag name="aws_targets_AWSMigrationHub">SDK Support for AWS AWSMigrationHub</flag>
-		<flag name="aws_targets_batch">SDK Support for AWS batch</flag>
-		<flag name="aws_targets_budgets">SDK Support for AWS budgets</flag>
-		<flag name="aws_targets_ce">SDK Support for AWS ce</flag>
-		<flag name="aws_targets_cloud9">SDK Support for AWS cloud9</flag>
-		<flag name="aws_targets_clouddirectory">SDK Support for AWS clouddirectory</flag>
-		<flag name="aws_targets_cloudformation">SDK Support for AWS cloudformation</flag>
-		<flag name="aws_targets_cloudfront">SDK Support for AWS cloudfront</flag>
-		<flag name="aws_targets_cloudhsm">SDK Support for AWS cloudhsm</flag>
-		<flag name="aws_targets_cloudhsmv2">SDK Support for AWS cloudhsmv2</flag>
-		<flag name="aws_targets_cloudsearch">SDK Support for AWS cloudsearch</flag>
-		<flag name="aws_targets_cloudsearchdomain">SDK Support for AWS cloudsearchdomain</flag>
-		<flag name="aws_targets_cloudtrail">SDK Support for AWS cloudtrail</flag>
-		<flag name="aws_targets_codebuild">SDK Support for AWS codebuild</flag>
-		<flag name="aws_targets_codecommit">SDK Support for AWS codecommit</flag>
-		<flag name="aws_targets_codedeploy">SDK Support for AWS codedeploy</flag>
-		<flag name="aws_targets_codepipeline">SDK Support for AWS codepipeline</flag>
-		<flag name="aws_targets_codestar">SDK Support for AWS codestar</flag>
-		<flag name="aws_targets_cognito-identity">SDK Support for AWS cognito-identity</flag>
-		<flag name="aws_targets_cognito-idp">SDK Support for AWS cognito-idp</flag>
-		<flag name="aws_targets_cognito-sync">SDK Support for AWS cognito-sync</flag>
-		<flag name="aws_targets_comprehend">SDK Support for AWS comprehend</flag>
-		<flag name="aws_targets_config">SDK Support for AWS config</flag>
-		<flag name="aws_targets_connect">SDK Support for AWS connect</flag>
-		<flag name="aws_targets_core">SDK Support for AWS core</flag>
-		<flag name="aws_targets_cur">SDK Support for AWS cur</flag>
-		<flag name="aws_targets_datapipeline">SDK Support for AWS datapipeline</flag>
-		<flag name="aws_targets_dax">SDK Support for AWS dax</flag>
-		<flag name="aws_targets_devicefarm">SDK Support for AWS devicefarm</flag>
-		<flag name="aws_targets_directconnect">SDK Support for AWS directconnect</flag>
-		<flag name="aws_targets_discovery">SDK Support for AWS discovery</flag>
-		<flag name="aws_targets_dms">SDK Support for AWS dms</flag>
-		<flag name="aws_targets_ds">SDK Support for AWS ds</flag>
-		<flag name="aws_targets_dynamodb">SDK Support for AWS dynamodb</flag>
-		<flag name="aws_targets_dynamodbstreams">SDK Support for AWS dynamodbstreams</flag>
-		<flag name="aws_targets_ec2">SDK Support for AWS ec2</flag>
-		<flag name="aws_targets_ecr">SDK Support for AWS ecr</flag>
-		<flag name="aws_targets_ecs">SDK Support for AWS ecs</flag>
-		<flag name="aws_targets_eks">SDK Support for AWS eks</flag>
-		<flag name="aws_targets_elasticache">SDK Support for AWS elasticache</flag>
-		<flag name="aws_targets_elasticbeanstalk">SDK Support for AWS elasticbeanstalk</flag>
-		<flag name="aws_targets_elasticfilesystem">SDK Support for AWS elasticfilesystem</flag>
-		<flag name="aws_targets_elasticloadbalancing">SDK Support for AWS elasticloadbalancing</flag>
-		<flag name="aws_targets_elasticloadbalancingv2">SDK Support for AWS elasticloadbalancingv2</flag>
-		<flag name="aws_targets_elasticmapreduce">SDK Support for AWS elasticmapreduce</flag>
-		<flag name="aws_targets_elastictranscoder">SDK Support for AWS elastictranscoder</flag>
-		<flag name="aws_targets_email">SDK Support for AWS email</flag>
-		<flag name="aws_targets_es">SDK Support for AWS es</flag>
-		<flag name="aws_targets_events">SDK Support for AWS events</flag>
-		<flag name="aws_targets_firehose">SDK Support for AWS firehose</flag>
-		<flag name="aws_targets_fms">SDK Support for AWS fms</flag>
-		<flag name="aws_targets_gamelift">SDK Support for AWS gamelift</flag>
-		<flag name="aws_targets_glacier">SDK Support for AWS glacier</flag>
-		<flag name="aws_targets_glue">SDK Support for AWS glue</flag>
-		<flag name="aws_targets_greengrass">SDK Support for AWS greengrass</flag>
-		<flag name="aws_targets_guardduty">SDK Support for AWS guardduty</flag>
-		<flag name="aws_targets_health">SDK Support for AWS health</flag>
-		<flag name="aws_targets_iam">SDK Support for AWS iam</flag>
-		<flag name="aws_targets_identity-management">SDK Support for AWS identity-management</flag>
-		<flag name="aws_targets_importexport">SDK Support for AWS importexport</flag>
-		<flag name="aws_targets_inspector">SDK Support for AWS inspector</flag>
-		<flag name="aws_targets_iot">SDK Support for AWS iot</flag>
-		<flag name="aws_targets_iot1click-devices">SDK Support for AWS iot1click-devices</flag>
-		<flag name="aws_targets_iot1click-projects">SDK Support for AWS iot1click-projects</flag>
-		<flag name="aws_targets_iotanalytics">SDK Support for AWS iotanalytics</flag>
-		<flag name="aws_targets_iot-data">SDK Support for AWS iot-data</flag>
-		<flag name="aws_targets_iot-jobs-data">SDK Support for AWS iot-jobs-data</flag>
-		<flag name="aws_targets_kinesis">SDK Support for AWS kinesis</flag>
-		<flag name="aws_targets_kinesisanalytics">SDK Support for AWS kinesisanalytics</flag>
-		<flag name="aws_targets_kinesisvideo">SDK Support for AWS kinesisvideo</flag>
-		<flag name="aws_targets_kinesis-video-archived-media">SDK Support for AWS kinesis-video-archived-media</flag>
-		<flag name="aws_targets_kinesis-video-media">SDK Support for AWS kinesis-video-media</flag>
-		<flag name="aws_targets_kms">SDK Support for AWS kms</flag>
-		<flag name="aws_targets_lambda">SDK Support for AWS lambda</flag>
-		<flag name="aws_targets_lex">SDK Support for AWS lex</flag>
-		<flag name="aws_targets_lex-models">SDK Support for AWS lex-models</flag>
-		<flag name="aws_targets_lightsail">SDK Support for AWS lightsail</flag>
-		<flag name="aws_targets_logs">SDK Support for AWS logs</flag>
-		<flag name="aws_targets_machinelearning">SDK Support for AWS machinelearning</flag>
-		<flag name="aws_targets_macie">SDK Support for AWS macie</flag>
-		<flag name="aws_targets_marketplacecommerceanalytics">SDK Support for AWS marketplacecommerceanalytics</flag>
-		<flag name="aws_targets_marketplace-entitlement">SDK Support for AWS marketplace-entitlement</flag>
-		<flag name="aws_targets_mediaconvert">SDK Support for AWS mediaconvert</flag>
-		<flag name="aws_targets_medialive">SDK Support for AWS medialive</flag>
-		<flag name="aws_targets_mediapackage">SDK Support for AWS mediapackage</flag>
-		<flag name="aws_targets_mediastore">SDK Support for AWS mediastore</flag>
-		<flag name="aws_targets_mediastore-data">SDK Support for AWS mediastore-data</flag>
-		<flag name="aws_targets_mediatailor">SDK Support for AWS mediatailor</flag>
-		<flag name="aws_targets_meteringmarketplace">SDK Support for AWS meteringmarketplace</flag>
-		<flag name="aws_targets_mobile">SDK Support for AWS mobile</flag>
-		<flag name="aws_targets_mobileanalytics">SDK Support for AWS mobileanalytics</flag>
-		<flag name="aws_targets_monitoring">SDK Support for AWS monitoring</flag>
-		<flag name="aws_targets_mq">SDK Support for AWS mq</flag>
-		<flag name="aws_targets_mturk-requester">SDK Support for AWS mturk-requester</flag>
-		<flag name="aws_targets_neptune">SDK Support for AWS neptune</flag>
-		<flag name="aws_targets_opsworks">SDK Support for AWS opsworks</flag>
-		<flag name="aws_targets_opsworkscm">SDK Support for AWS opsworkscm</flag>
-		<flag name="aws_targets_organizations">SDK Support for AWS organizations</flag>
-		<flag name="aws_targets_pi">SDK Support for AWS pi</flag>
-		<flag name="aws_targets_pinpoint">SDK Support for AWS pinpoint</flag>
-		<flag name="aws_targets_polly">SDK Support for AWS polly</flag>
-		<flag name="aws_targets_pricing">SDK Support for AWS pricing</flag>
-		<flag name="aws_targets_queues">SDK Support for AWS queues</flag>
-		<flag name="aws_targets_rds">SDK Support for AWS rds</flag>
-		<flag name="aws_targets_redshift">SDK Support for AWS redshift</flag>
-		<flag name="aws_targets_rekognition">SDK Support for AWS rekognition</flag>
-		<flag name="aws_targets_resource-groups">SDK Support for AWS resource-groups</flag>
-		<flag name="aws_targets_resourcegroupstaggingapi">SDK Support for AWS resourcegroupstaggingapi</flag>
-		<flag name="aws_targets_route53">SDK Support for AWS route53</flag>
-		<flag name="aws_targets_route53domains">SDK Support for AWS route53domains</flag>
-		<flag name="aws_targets_s3">SDK Support for AWS s3</flag>
-		<flag name="aws_targets_s3-encryption">SDK Support for AWS s3-encryption</flag>
-		<flag name="aws_targets_sagemaker">SDK Support for AWS sagemaker</flag>
-		<flag name="aws_targets_sagemaker-runtime">SDK Support for AWS sagemaker-runtime</flag>
-		<flag name="aws_targets_sdb">SDK Support for AWS sdb</flag>
-		<flag name="aws_targets_secretsmanager">SDK Support for AWS secretsmanager</flag>
-		<flag name="aws_targets_serverlessrepo">SDK Support for AWS serverlessrepo</flag>
-		<flag name="aws_targets_servicecatalog">SDK Support for AWS servicecatalog</flag>
-		<flag name="aws_targets_servicediscovery">SDK Support for AWS servicediscovery</flag>
-		<flag name="aws_targets_shield">SDK Support for AWS shield</flag>
-		<flag name="aws_targets_sms">SDK Support for AWS sms</flag>
-		<flag name="aws_targets_snowball">SDK Support for AWS snowball</flag>
-		<flag name="aws_targets_sns">SDK Support for AWS sns</flag>
-		<flag name="aws_targets_sqs">SDK Support for AWS sqs</flag>
-		<flag name="aws_targets_ssm">SDK Support for AWS ssm</flag>
-		<flag name="aws_targets_states">SDK Support for AWS states</flag>
-		<flag name="aws_targets_storagegateway">SDK Support for AWS storagegateway</flag>
-		<flag name="aws_targets_sts">SDK Support for AWS sts</flag>
-		<flag name="aws_targets_support">SDK Support for AWS support</flag>
-		<flag name="aws_targets_swf">SDK Support for AWS swf</flag>
-		<flag name="aws_targets_text-to-speech">SDK Support for AWS text-to-speech</flag>
-		<flag name="aws_targets_transcribe">SDK Support for AWS transcribe</flag>
-		<flag name="aws_targets_transfer">SDK Support for AWS transfer</flag>
-		<flag name="aws_targets_translate">SDK Support for AWS translate</flag>
-		<flag name="aws_targets_waf">SDK Support for AWS waf</flag>
-		<flag name="aws_targets_waf-regional">SDK Support for AWS waf-regional</flag>
-		<flag name="aws_targets_workdocs">SDK Support for AWS workdocs</flag>
-		<flag name="aws_targets_workmail">SDK Support for AWS workmail</flag>
-		<flag name="aws_targets_workspaces">SDK Support for AWS workspaces</flag>
-		<flag name="aws_targets_xray">SDK Support for AWS xray</flag>
+		<flag name="http">Enable http support via curl</flag>
+		<flag name="rtti">Flag to enable/disable rtti within the library</flag>
+		<flag name="unity-build">
+			Build using a single unified .cpp file for each service library.
+			Reduces the size of static library binaries
+		</flag>
+
+		<flag name="access-management">
+			AWS Access Management, a meta-flag that enables:
+			AWS Certificate Manager (ACM): Provision, manage, and deploy SSL/TLS certificates on AWS managed
+				resources.
+			Identity and Access Management (IAM): A web service for securely controlling access to AWS
+				services.
+			Resource Access Manager (RAM): Customers who operate multiple accounts can create resources
+				centrally and use AWS RAM to share them with all of their accounts to reduce operational
+				overhead.
+			Also enables acm-pca, identity-management and sts (Security Token Service).
+		</flag>
+		<flag name="apigateway">
+			Create and deploy your own REST and WebSocket APIs at any scale.
+			Also enables apigatewaymanagementapi and apigatewayv2.
+		</flag>
+		<flag name="backup">AWS Backup is a fully managed backup service</flag>
+		<flag name="batch">Run batch computing workloads on the AWS Cloud</flag>
+		<flag name="budgets">
+			Use AWS Budgets to plan service usage, service costs, and instance reservations.
+			Also enables the following related modules:
+			AWS Cost Explorer (CE)     : Programmatically query cost and usage data.
+			Cost and Usage Report (CUR): Programmatically create, query, and delete AWS Cost and Usage
+				report definitions.
+		</flag>
+		<flag name="chime">Amazon Chime, a secure, real-time, unified communications service.</flag>
+		<flag name="cloud-desktop">
+			AWS end user computing services.
+			AppStream 2.0: Fully managed, secure application streaming service.
+			WorkDocs     : Fully managed, secure enterprise storage and sharing service.
+			WorkLink     : Fully managed, cloud-based service that enables secure, one-click access to
+				internal websites and web apps from mobile devices.
+			WorkMail     : Managed email and calendaring service.
+			WorkSpaces   : Cloud-based desktop experience for end users.
+		</flag>
+		<flag name="cloud-dev">
+			Enables in-cloud developer tools:
+			Cloud9      : Cloud-based integrated development environment IDE to write, run, and debug code.
+			CodeBuild   : Managed build service that compiles, runs unit tests and produces artifacts.
+			CodeCommit  : Privately store and manage Git repositories in the AWS cloud.
+			CodeDeploy  : Automate the deployment and updating of applications.
+			CodePipeline: Continuous delivery service to model, visualize, and automate the steps required
+				to release software.
+			CodeStar    : Quickly develop, build, and deploy applications on AWS.
+			Queues      : Simple queue class. Allows standard queue operations top, delete, and push. Also
+				has higher level, asynchronous interface with callbacks.
+			X-Ray       : Provides request tracing, exception collection, and profiling capabilities.
+		</flag>
+		<flag name="cloud-media">
+			AWS Media modules for transforming, converting, delivering and streaming media.
+			Elastic Transcoder     : Convert media files stored in Amazon S3 into media files in the formats
+				required by consumer playback devices.
+			Elemental Media Connect: Secure and flexible transport service for live video.
+			Elemental Media Convert: Format and compress offline video content for delivery to televisions
+				or connected devices.
+			Elemental Media Live   : Video service that allows easy and reliable creation of live outputs
+				for broadcast and streaming delivery.
+			Elemental Media Package: Just-in-time video packaging and origination service. (Includes
+				mediapackage-vod)
+			Elemental Media Store  : Video origination and storage service.Manage video assets as objects in
+				containers to build dependable, cloud-based media workflows. (Includes mediastore-data)
+			Elemental Media Tailor : Personalization and monetization service that allows scalable server-
+				side ad insertion.
+		</flag>
+		<flag name="cloud-mobile">
+			AWS Mobile modules for handling mobile application management and delivery.
+			Amplify    : Comprehensive set of SDKs, libraries, tools, and documentation for client app
+				development.
+			AppSync    : Enterprise level, fully managed GraphQL service with real-time data synchronization
+				and offline programming features.
+			Device Farm: Test iOS, Android and Fire OS apps on real, physical phones and tablets that are
+				hosted by AWS.
+			PinPoint   : Engage customers by sending them email, SMS and voice messages, and push
+				notifications. (Includes pinpoint-email and sms-voice)
+			SNS        : Amazon Simple Notification Service, see USE flag sns.
+			Also enables mobile and mobileanalytics.
+		</flag>
+		<flag name="cloudformation">
+			Create and provision AWS infrastructure deployments predictably and repeatedly. Use a template
+			file to create and delete a collection of resources together as a single unit (a stack).
+		</flag>
+		<flag name="cloudfront">
+			Delivers static and dynamic web content through a worldwide network of edge locations that
+			provide low latency and high performance.
+		</flag>
+		<flag name="cloudhsm">
+			Secure cryptographic key storage by providing managed hardware security modules in the AWS
+			Cloud.
+			Also enables cloudhsmv2.
+		</flag>
+		<flag name="cloudsearch">
+			Fully managed service in the cloud to set up, manage, and scale a search solution for websites.
+			Also enables cloudsearchdomain.
+		</flag>
+		<flag name="cloudwatch">
+			Amazon CloudWatch monitors Amazon Web Services (AWS) resources and the applications run on AWS
+			in real time.
+			The following modules besides monitoring are also enabled:
+			Application Insights: Monitor .NET and SQL Server applications.
+			App Mesh            : Monitor and control microservices running on AWS.
+			CloudTrail          : Monitor AWS deployments in the cloud by getting a history of AWS API
+				calls, including API calls made via the AWS Management Console, the AWS SDKs, the
+				command line tools, and higher-level AWS services.
+			GuardDuty           : Continuous security monitoring service.
+			Health              : Provides personalized information about events that can affect the AWS
+				infrastructure, guides through scheduled changes, and accelerates the troubleshooting of
+				issues that affect AWS resources and accounts.
+			Inspector           : A security vulnerability assessment service that helps improve the
+				security and compliance of
+			AWS resources.
+			Logs                : Monitor, store, and access log files from Amazon EC2 instances, AWS
+				CloudTrail, or other sources.
+		</flag>
+		<flag name="cognito">
+			Create unique identities, authenticate these identities with identity providers and save mobile
+			user data in the AWS Cloud.
+			Enables cognito-identity, cognito-idp and cognito-sync
+		</flag>
+		<flag name="config">
+			Provides a detailed view of the resources associated with your AWS account, including how they
+			are configured, how they are related to one another, and how the configurations and their
+			relationships have changed over time.
+		</flag>
+		<flag name="dlm">
+			Amazon Data Lifecycle Manager (DLM):
+			Manage the lifecycle of AWS resources. Create lifecycle policies to automate operations on
+			specified resources.
+		</flag>
+		<flag name="ec2">
+			Amazon Elastic Compute Cloud (EC2) is a web service that provides resizeable computing capacity.
+			This flag also enables the following modules:
+			Auto Scaling       : Set up dynamic and predictive scaling for scalable AWS resources. Also
+				enables autoscaling-plans and application-autoscaling.
+			Elastic File System: EFS provides file storage for Amazon EC2 instances.
+
+		</flag>
+		<flag name="ecr">
+			Amazon Elastic Container Registry (ECR) is a fully managed Docker container registry.
+		</flag>
+		<flag name="ecs">
+			Amazon Elastic Container Service (ECS) is a highly scalable, fast, container management service.
+		</flag>
+		<flag name="eks">
+			Amazon Elastic Kubernetes Service (EKS) is a managed service to run Kubernetes on AWS without own Kubernetes clusters.
+		</flag>
+		<flag name="elasticache">
+			Set up, manage, and scale distributed in-memory cache environments in the AWS Cloud
+		</flag>
+		<flag name="elasticbeanstalk">Quickly deploy and manage applications in the AWS Cloud.</flag>
+		<flag name="elasticloadbalancing">
+			Automatically distribute incoming application traffic across multiple targets, such as EC2
+			instances.
+			Also enables elasticloadbalancingv2.
+		</flag>
+		<flag name="elasticmapreduce">
+			Amazon Elastic MapReduce (EMR) processes large amounts of data efficiently using Hadoop
+			processing combined with several AWS products.
+		</flag>
+		<flag name="email">
+			Amazon Simple Email Service (Amazon SES):
+			An email platform to send and receive email using ones own email addresses and domains.
+			See: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html
+		</flag>
+		<flag name="es">
+			Amazon Elasticsearch Configuration Service (ES) is an API to create, configure, and manage
+			Elasticsearch domains.
+		</flag>
+		<flag name="events">
+			Serverless event bus service to connect applications with data from a variety of sources.
+			Also enables eventbridge.
+		</flag>
+		<flag name="fsx">Amazon FSx is a fully managed service to launch and use shared file storage.</flag>
+		<flag name="globalaccelerator">
+			AWS Global Accelerator is a network layer service for accelerators to improve availability and
+			performance for internet applications used by a global audience.
+		</flag>
+		<flag name="iot">AWS IoT
+			This is a meta-flag for all Internet of Things modules provided by the SDK:
+			iot           : enables secure, bi-directional communication between Internet-connected things
+				(such as sensors, actuators, embedded devices, or smart appliances) and the AWS Cloud
+				over MQTT and HTTP.
+			greengrass    : Extends AWS onto physical devices so they can act locally on the data they
+				generate.
+			iot1click     : A service for simple devices to trigger AWS Lambda functions that execute a
+				specific action.
+			iotanalytics  : Provides advanced data analysis for AWS IoT.
+			iotevents     : Monitor equipment or device fleets for failures or changes in operation, and
+				trigger actions when such events occur.
+			iotthingsgraph: Integrated set of tools that enable developers to build IoT applications using
+				devices and services that use different data representation standards and communication protocols.
+			Also enables iot1click-devices, iot1click-projects, iot-data, iotevents-data and iot-jobs-data.
+		</flag>
+		<flag name="kinesis">
+			Amazon Kinesis
+			Collect, process, and analyze video and data streams in real time. The following modules besides
+			kinesis are enabled:
+			firehose                    : Load data streams into AWS data stores.
+			kinesisanalytics            : Process and analyze streaming data using SQL or Java. (Also
+				enables kinesisanalyticsv2)
+			kinesisvideo                : Capture, process, and store video streams for analytics and
+				machine learning.
+			Additionally kinesis-video-archived-media and kinesis-video-media are enabled.
+		</flag>
+		<flag name="kms">
+			AWS Key Management Service (KMS)
+			An encryption and key management service scaled for the cloud.
+		</flag>
+		<flag name="lex">
+			Amazon Lex is an AWS service for building conversational interfaces into applications using
+			voice and text.
+			Also enables lex-models.
+		</flag>
+		<flag name="lambda">AWS Lambda: Run code without provisioning or managing servers.</flag>
+		<flag name="license-manager">
+			Streamlines the process of bringing software vendor licenses to the cloud.
+		</flag>
+		<flag name="lightsail">
+			The easiest way to get started with AWS for developers who just need virtual private servers
+		</flag>
+		<flag name="machinelearning">
+			The algorithms of Amazon Machine Learning create machine learning (ML) models by finding
+			patterns in existing data. The service uses these models to process new data and generate
+			predictions for application.
+		</flag>
+		<flag name="macie">
+			A security service that uses machine learning to automatically discover, classify, and protect
+			sensitive data in AWS.
+		</flag>
+		<flag name="managedblockchain">
+			Create and manage scalable blockchain networks using popular open source frameworks. Currently,
+			Managed Blockchain supports the Hyperledger Fabric open source framework.
+		</flag>
+		<flag name="marketplace">
+			AWS Marketplace is an online store where you can buy or sell software that runs on Amazon Web
+			Services (AWS).
+			Marketplace support consists of the marketplacecommerceanalytics module plus:
+			Marketplace Entitlement Service: A contract verification feature that AWS Marketplace sellers
+				can use to verify the amount of the sellers product (for example, end user licenses or
+				storage, data, or compute capacity) the customer has purchased.
+			Marketplace Metering Service   : A pricing and metering feature that AWS Marketplace sellers can
+				use to directly charge for their software along one of four dimensions: users, data,
+				bandwidth, or hosts.
+			Also enables pricing.
+		</flag>
+		<flag name="organizations">
+			Account management service that to consolidate multiple AWS accounts into an organization to be
+			centrally managed.
+		</flag>
+		<flag name="opsworks">
+			AWS OpsWorks is a simple and flexible way to create and manage stacks and applications.
+			Also enables opsworkscm.
+		</flag>
+		<flag name="other">
+			This is a meta-flag for rarely needed modules that in themselves need not much build time. If
+			you would like to have any of the following modules to have their own USE flag, please open a
+			bug report and it will most probably get one.
+			The modules are:
+			AWSMigrationHub, alexaforbusiness, clouddirectory, comprehend, comprehendmedical, connect,
+			datapipeline, datasync, directconnect, discovery, dms, docdb, ds, dynamodb, gamelift, glue,
+			groundstation, importexport, kafka, lakeformation, mq, mturk-requester, neptune, quicksight,
+			redshift, robomaker, sdb, service-quotas, servicecatalog, servicediscovery, signer, sms,
+			snowball, ssm, states, storagegateway, support and swf.
+		</flag>
+		<flag name="personalize">
+			Real-time personalization and recommendations, based on the same technology used at Amazon.com.
+			Also enables personalize-events and personalize-runtime.
+		</flag>
+		<flag name="polly">
+			Amazon Polly
+			A Text-to-Speech (TTS) cloud service that converts text into lifelike speech.
+			Also enables text-to-speech.
+		</flag>
+		<flag name="queues">
+			AWS Queues is a simple queue class.
+			Allows standard queue operations top, delete, and push. Also has higher level, asynchronous
+			interface with callbacks.
+		</flag>
+		<flag name="rds">
+			Amazon Relational Database Service (RDS) is a web service to set up, operate, and scale a
+			relational database in the cloud.
+			Also enables pi (Performance Insights) and rds-data.
+		</flag>
+		<flag name="route53">
+			AWS Route 53 is a highly available and scalable Domain Name System (DNS) web service.
+			Also enables route53domains and route53resolver.
+		</flag>
+		<flag name="rekognition">Add image and video analysis to applications.</flag>
+		<flag name="resource-groups">
+			AWS Resource Groups and Tag Editor
+			Organize AWS resources into groups, tag resources using virtually any criteria, and manage,
+			monitor, and automate tasks on grouped resources.
+			Also enables resourcegroupstaggingapi. (Resource Groups Tagging API)
+		</flag>
+		<flag name="s3">
+			Amazon Simple Storage Service Storage for the internet.
+			Additionally to the s3 module, the following modules are activated:
+			Athena           : Interactive query service to analyze data in Amazon S3 using standard SQL.
+			Glacier          : Storage solution for cold data.
+			Transfer for SFTP: Transfer files directly into and out of Amazon S3 using SFTP.
+			Also enables s3-encryption, s3control and transfer.
+		</flag>
+		<flag name="sagemaker">
+			Amazon SageMaker
+			Fully managed machine learning service. With Amazon SageMaker, data scientists and developers
+			can quickly and easily build and train machine learning models, and then directly deploy them
+			into a production-ready hosted environment.
+			Also enables sagemaker-runtime.
+		</flag>
+		<flag name="secretsmanager">
+			Encrypt, store, and retrieve credentials for databases and other services.
+		</flag>
+		<flag name="securityhub">Provides a comprehensive view of the security state of AWS resources.</flag>
+		<flag name="serverlessrepo">
+			AWS Serverless Application Repository
+			Enables teams, organizations, and individual developers to find, deploy, publish, share, store,
+			and easily assemble serverless architectures.
+		</flag>
+		<flag name="shield">AWS Shield, protection against DDoS attacks</flag>
+		<flag name="sns">
+			Amazon Simple Notification Service (SNS) is a web service that enables applications, end-users,
+			and devices to instantly send and receive notifications from the cloud.
+		</flag>
+		<flag name="sqs">
+			Amazon Simple Queue Service (SQS): Fully managed message queuing service that makes it easy to
+			decouple and scale microservices, distributed systems, and serverless applications.
+		</flag>
+		<flag name="textract">
+			Amazon Textract to add document text detection and analysis to applications.
+		</flag>
+		<flag name="transcribe">
+			A transcription services for audio files. It uses advanced machine learning technologies to
+			recognize spoken words and transcribe them into text.
+			Also enables transcribestreaming.
+		</flag>
+		<flag name="translate">
+			A neural machine translation service for translating text to and from English across a breadth
+			of supported languages.
+		</flag>
+		<flag name="waf">
+			The Web Application Firewall (WAF) can monitor web requests that are forwarded to Amazon
+			CloudFront distributions or an Application Load Balancer. Can also be used to block or allow
+			requests based on conditions such as the IP addresses that requests originate from or values in
+			the requests.
+			Also enables fms and waf-regional.
+		</flag>
 	</use>
 </pkgmetadata>

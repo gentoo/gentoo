@@ -1,26 +1,24 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-# google{test,mock} version
-GV="1.8.0"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="A personal finance manager"
 HOMEPAGE="http://www.gnucash.org/"
-SRC_URI="https://github.com/Gnucash/${PN}/releases/download/${PV}/${P}.tar.bz2
-	https://github.com/google/googletest/archive/release-${GV}.tar.gz -> gtest-${GV}.tar.gz"
+SRC_URI="https://github.com/Gnucash/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 IUSE="aqbanking chipcard debug doc examples gnome-keyring +gui mysql nls ofx
-	  postgres python quotes -register2 sqlite"
+	  postgres python quotes -register2 sqlite test"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	chipcard? ( aqbanking )
 	python? ( ${PYTHON_REQUIRED_USE} )"
@@ -70,12 +68,12 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	~dev-cpp/gtest-${GV}
 	>=sys-devel/gettext-0.19.6
 	dev-lang/perl
 	dev-perl/XML-Parser
 	sys-devel/libtool
 	virtual/pkgconfig
+	test? ( >=dev-cpp/gtest-1.8.0 )
 "
 
 PDEPEND="doc? (
@@ -104,8 +102,6 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		-DGMOCK_ROOT="${WORKDIR}"/googletest-release-${GV}/googlemock
-		-DGTEST_ROOT="${WORKDIR}"/googletest-release-${GV}/googletest
 		# Disable fallback to guile-2.0
 		-DCMAKE_DISABLE_FIND_PACKAGE_GUILE2=ON
 		-DCOMPILE_GSCHEMAS=OFF
@@ -125,6 +121,26 @@ src_test() {
 	if use python ; then
 		cp common/test-core/unittest_support.py \
 		   "${BUILD_DIR}"/common/test-core/ || die
+	fi
+
+	LOCALE_TESTS=
+	if type locale >/dev/null 2>&1; then
+		MY_LOCALES="$(locale -a)"
+		if [[ "${MY_LOCALES}" != *en_US* ||
+				"${MY_LOCALES}" != *en_GB* ||
+				"${MY_LOCALES}" != *fr_FR* ]] ; then
+			ewarn "Missing one or more of en_US, en_GB, or fr_FR locales."
+		else
+			LOCALE_TESTS=true
+		fi
+	else
+		ewarn "'locale' not found."
+	fi
+
+	if [[ ! ${LOCALE_TESTS} ]]; then
+		ewarn "Disabling test-qof and test-gnc-numeric."
+		echo 'set(CTEST_CUSTOM_TESTS_IGNORE test-qof test-gnc-numeric)' \
+			> "${BUILD_DIR}"/CTestCustom.cmake || die
 	fi
 
 	cd "${BUILD_DIR}" || die

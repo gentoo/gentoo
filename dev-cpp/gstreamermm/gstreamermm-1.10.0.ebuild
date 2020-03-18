@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ LICENSE="LGPL-2.1"
 SLOT="1.0/1"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=media-libs/gstreamer-${PV}:1.0

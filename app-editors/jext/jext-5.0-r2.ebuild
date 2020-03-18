@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -46,7 +46,7 @@ src_compile() {
 		-Dclasspath="$(java-pkg_getjars jython-2.7,jgoodies-looks-1.2,gnu-regexp-1)"
 }
 
-src_install () {
+src_install() {
 	java-pkg_newjar lib/${P}.jar
 	java-pkg_dojar lib/dawn*.jar
 

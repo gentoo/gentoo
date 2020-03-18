@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		A Linux application for the Logitech Spotlight.
+		Features: A configurable desktop spotlight,
+		configure color, opacity, cursor and the center dot,
+		multiple screen support.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/jahnf/Projecteur/issues</bugs-to>
+		<remote-id type="github">jahnf/Projecteur</remote-id>
+	</upstream>
+</pkgmetadata>

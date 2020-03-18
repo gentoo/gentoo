@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="IBM BSD openafs-krb5-a APSL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="api bitmap-later debug doc fuse kauth kerberos +modules +namei
 ncurses perl +pthreaded-ubik +supergroups tsm ubik-read-while-write"
@@ -53,7 +53,7 @@ DEPEND="
 		app-text/docbook-xml-dtd:4.3
 	)
 	fuse? ( sys-fs/fuse:0= )
-	kauth? ( virtual/pam )
+	kauth? ( sys-libs/pam )
 	kerberos? ( virtual/krb5 )
 	ncurses? ( sys-libs/ncurses:0= )"
 RDEPEND="${DEPEND}"

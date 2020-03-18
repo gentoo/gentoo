@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,9 +51,7 @@ src_configure() {
 	fi
 	# appends lib to localstatedir automatically
 	econf \
-		--libdir=/usr/$(get_libdir) \
 		--localstatedir=/var \
-		--disable-dependency-tracking \
 		--disable-fatal-warnings \
 		$(use_with acl) \
 		--without-cs-quorum \
@@ -68,9 +66,9 @@ src_configure() {
 src_install() {
 	default
 	rm -rf "${D}"/var/run "${D}"/etc/init.d
-	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 	if has_version "<sys-cluster/corosync-2.0"; then
 		insinto /etc/corosync/service.d
-		newins "${FILESDIR}/${PN}.service" ${PN} || die
+		newins "${FILESDIR}/${PN}.service" ${PN}
 	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gog"
 REQUIRED_USE="^^ ( cdinstall gog )"
-RESTRICT="binchecks mirror gog? ( fetch )"
+RESTRICT="binchecks bindist mirror gog? ( fetch )"
 
 RDEPEND="games-rpg/arx-libertatis"
 DEPEND="app-arch/innoextract

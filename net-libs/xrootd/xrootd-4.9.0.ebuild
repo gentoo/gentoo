@@ -15,6 +15,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples fuse http kerberos python readline rbd ssl test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	!<sci-physics/root-5.32[xrootd]
@@ -41,7 +42,10 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-PATCHES=( "${FILESDIR}"/xrootd-4.8.3-crc32.patch )
+PATCHES=(
+	"${FILESDIR}"/xrootd-4.8.3-crc32.patch
+	"${FILESDIR}"/${PN}-4.8.3-Werror_only_Debug.patch
+)
 
 # xrootd plugins are not intended to be linked with,
 # they are to be loaded at runtime by xrootd,

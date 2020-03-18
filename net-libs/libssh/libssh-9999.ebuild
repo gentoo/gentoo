@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
@@ -13,7 +14,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 else
 	SRC_URI="https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2.1"
@@ -21,8 +22,11 @@ SLOT="0/4" # subslot = soname major version
 IUSE="debug doc examples gcrypt gssapi libressl mbedtls pcap server +sftp static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
 
-REQUIRED_USE="?? ( gcrypt mbedtls ) test? ( static-libs )"
+REQUIRED_USE="?? ( gcrypt mbedtls )"
 
+BDEPEND="
+	doc? ( app-doc/doxygen[dot] )
+"
 RDEPEND="
 	!gcrypt? (
 		!mbedtls? (
@@ -36,7 +40,6 @@ RDEPEND="
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )
 	test? ( >=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}] )
 "
 
@@ -44,8 +47,10 @@ DOCS=( AUTHORS README ChangeLog )
 
 PATCHES=( "${FILESDIR}/${PN}-0.8.0-tests.patch" )
 
+RESTRICT+=" !test? ( test )"
+
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# just install the examples, do not compile them
 	cmake_comment_add_subdirectory examples
@@ -77,24 +82,26 @@ multilib_src_configure() {
 		-DWITH_PCAP="$(usex pcap)"
 		-DWITH_SERVER="$(usex server)"
 		-DWITH_SFTP="$(usex sftp)"
-		-DWITH_STATIC_LIB="$(usex static-libs)"
+		-DBUILD_STATIC_LIB="$(usex static-libs)"
 		-DUNIT_TESTING="$(usex test)"
 		-DWITH_ZLIB="$(usex zlib)"
 	)
 
 	multilib_is_native_abi || mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
-	multilib_is_native_abi && use doc && cmake-utils_src_compile docs
+	cmake_src_compile
+	multilib_is_native_abi && use doc && cmake_src_compile docs
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	multilib_is_native_abi && use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+
+	use static-libs && dolib.a src/libssh.a
 
 	# compatibility symlink until all consumers have been updated
 	# to no longer use libssh_threads.so

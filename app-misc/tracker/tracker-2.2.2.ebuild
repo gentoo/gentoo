@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
+VALA_MIN_API_VERSION="0.40"
 
-inherit bash-completion-r1 gnome.org linux-info meson python-any-r1 systemd vala xdg
+inherit bash-completion-r1 gnome.org gnome2-utils linux-info meson python-any-r1 systemd vala xdg
 
 DESCRIPTION="A tagging metadata database, search tool and indexer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
@@ -13,7 +14,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/2.0"
 IUSE="gtk-doc +miners networkmanager stemmer"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 #RESTRICT="!test? ( test )"
 
 PV_SERIES=$(ver_cut 1-2)
@@ -89,4 +90,14 @@ src_configure() {
 
 src_test() {
 	dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
 }

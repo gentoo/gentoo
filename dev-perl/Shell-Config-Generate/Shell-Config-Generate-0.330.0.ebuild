@@ -12,6 +12,7 @@ DESCRIPTION="Portably generate config for any shell"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-perl/Shell-Guess"
 DEPEND="${RDEPEND}

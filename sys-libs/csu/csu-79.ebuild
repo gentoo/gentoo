@@ -32,7 +32,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake USRLIBDIR="${EPREFIX}"/lib || die
+	emake USRLIBDIR="${EPREFIX}"/lib
 }
 
 src_install() {
@@ -40,5 +40,5 @@ src_install() {
 		USRLIBDIR="${EPREFIX}"/lib \
 		LOCLIBDIR="${EPREFIX}"/lib \
 		DSTROOT="${D}" \
-		install || die
+		install
 }

@@ -12,6 +12,7 @@ DESCRIPTION="Facility for creating read-only scalars, arrays, hashes"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-perl/Module-Build-Tiny-0.35.0

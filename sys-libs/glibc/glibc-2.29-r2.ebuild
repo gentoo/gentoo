@@ -1,17 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-any-r1 prefix eutils eapi7-ver toolchain-funcs flag-o-matic gnuconfig usr-ldscript \
+inherit python-any-r1 prefix eutils eapi7-ver toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-RESTRICT="strip" # Strip ourself #46186
 SLOT="2.2"
 
 EMULTILIB_PKG="true"
@@ -20,7 +19,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
 
@@ -61,6 +60,28 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
+# Note [Disable automatic stripping]
+# Disabling automatic stripping for a few reasons:
+# - portage's attempt to strip breaks non-native binaries at least on
+#   arm: bug #697428
+# - portage's attempt to strip libpthread.so.0 breaks gdb thread
+#   enumeration: bug #697910. This is quite subtle:
+#   * gdb uses glibc's libthread_db-1.0.so to enumerate threads.
+#   * libthread_db-1.0.so needs access to libpthread.so.0 local symbols
+#     via 'ps_pglobal_lookup' symbol defined in gdb.
+#   * 'ps_pglobal_lookup' uses '.symtab' section table to resolve all
+#     known symbols in 'libpthread.so.0'. Specifically 'nptl_version'
+#     (unexported) is used to sanity check compatibility before enabling
+#     debugging.
+#     Also see https://sourceware.org/gdb/wiki/FAQ#GDB_does_not_see_any_threads_besides_the_one_in_which_crash_occurred.3B_or_SIGTRAP_kills_my_program_when_I_set_a_breakpoint
+#   * normal 'strip' command trims '.symtab'
+#   Thus our main goal here is to prevent 'libpthread.so.0' from
+#   losing it's '.symtab' entries.
+# As Gentoo's strip does not allow us to pass less aggressive stripping
+# options and does not check the machine target we disable stripping
+# entirely.
+RESTRICT="strip !test? ( test )"
+
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,
 # and that gcc already contains the hardened patches.
@@ -77,17 +98,12 @@ DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
-	!<sys-devel/make-4
 	doc? ( sys-apps/texinfo )
 	test? ( >=net-dns/libidn2-2.0.5 )
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
-	!sys-kernel/ps3-sources
-	!sys-libs/nss-db
 "
 
 if [[ ${CATEGORY} == cross-* ]] ; then
@@ -1095,7 +1111,7 @@ src_configure() {
 }
 
 do_src_compile() {
-	emake -C "$(builddir nptl)" || die "make nptl for ${ABI} failed"
+	emake -C "$(builddir nptl)"
 }
 
 src_compile() {
@@ -1148,7 +1164,7 @@ glibc_do_src_install() {
 	local builddir=$(builddir nptl)
 	cd "${builddir}"
 
-	emake install_root="${D}$(build_eprefix)$(alt_prefix)" install || die
+	emake install_root="${D}$(build_eprefix)$(alt_prefix)" install
 
 	# This version (2.26) provides some compatibility libraries for the NIS/NIS+ support
 	# which come without headers etc. Only needed for binary packages since the
@@ -1343,23 +1359,6 @@ glibc_headers_install() {
 	dosym usr/include $(alt_prefix)/sys-include
 }
 
-src_strip() {
-	# gdb is lame and requires some debugging information to remain in
-	# libpthread, so we need to strip it by hand.  libthread_db makes no
-	# sense stripped as it is only used when debugging.
-	local pthread=$(has splitdebug ${FEATURES} && echo "libthread_db" || echo "lib{pthread,thread_db}")
-	env \
-		-uRESTRICT \
-		CHOST=${CTARGET} \
-		STRIP_MASK="/*/{,tls/}${pthread}*" \
-		prepallstrip
-	# if user has stripping enabled and does not have split debug turned on,
-	# then leave the debugging sections in libpthread.
-	if ! has nostrip ${FEATURES} && ! has splitdebug ${FEATURES} ; then
-		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"$(alt_prefix)/*/libpthread-*.so
-	fi
-}
-
 src_install() {
 	if just_headers ; then
 		export ABI=default
@@ -1368,7 +1367,6 @@ src_install() {
 	fi
 
 	foreach_abi glibc_do_src_install
-	src_strip
 }
 
 # Simple test to make sure our new glibc isn't completely broken.
@@ -1436,10 +1434,6 @@ pkg_postinst() {
 	fi
 
 	if ! is_crosscompile && [[ ${ROOT} == "/" ]] ; then
-		# Reload init ... if in a chroot or a diff init package, ignore
-		# errors from this step #253697
-		/sbin/telinit U 2>/dev/null
-
 		use compile-locales || run_locale_gen "${EROOT}"
 	fi
 

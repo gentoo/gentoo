@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit desktop flag-o-matic gnome2-utils
+inherit desktop flag-o-matic gnome2-utils toolchain-funcs
 
 DESCRIPTION="Multi-platform Atari 2600 VCS Emulator"
 HOMEPAGE="https://stella-emu.github.io"

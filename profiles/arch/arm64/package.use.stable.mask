@@ -1,5 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Craig Andrews <candrews@gentoo.org> (2019-11-26)
+# net-libs/quiche is an early HTTP/3 implementation
+# not yet ready for everyone.
+net-misc/curl quiche
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is keyworded ~arm64
+sys-firmware/seabios debug
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-09-14)
 # media-video/pipewire is not stable yet
@@ -31,7 +40,7 @@ virtual/notification-daemon gnome
 
 # Aaron Bauman <bman@gentoo.org> (2019-05-15)
 # packages for these USE flags fail tests
-media-libs/opencv contrib_cvv contrib_hdf contrib_sfm glog gstreamer
+media-libs/opencv contribcvv contribhdf contribsfm glog gstreamer
 
 # Mart Raudsepp <leio@gentoo.org> (2019-01-18)
 # Respective x11-drivers/ not tested and stable yet
@@ -62,10 +71,6 @@ app-doc/doxygen clang doxysearch doc
 # virtual/opengl and media-libs/freeglut not stable yet
 media-libs/libwebp opengl
 
-# Mart Raudsepp <leio@gentoo.org> (2018-05-06)
-# No media-libs/freeglut and co stable yet
-media-libs/jasper opengl
-
 # Mart Raudsepp <leio@gentoo.org> (2018-05-04)
 # sci-libs/mpir fails tests, bug 640424
 dev-python/gmpy mpir
@@ -79,7 +84,7 @@ dev-python/urllib3 test
 app-admin/syslog-ng spoof-source
 app-portage/layman cvs subversion test
 app-text/xmlto latex
-dev-libs/apr-util freetds odbc
+dev-libs/apr-util odbc
 sys-apps/man-pages l10n_fr
 sys-apps/systemd qrcode
 sys-auth/pambase pam_krb5 pam_ssh passwdqc

@@ -19,7 +19,7 @@ else
 	MY_PV="${PV}-${JUMBO}"
 	MY_P="john-${MY_PV}"
 	SRC_URI="https://www.openwall.com/john/k/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 	S="${WORKDIR}/${MY_P}"
 fi
 

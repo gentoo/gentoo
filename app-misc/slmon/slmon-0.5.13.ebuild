@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,13 +29,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--disable-dependency-tracking \
-		$(use_enable debug)
+	econf $(use_enable debug)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog README slmonrc TODO
 	dohtml *.html
 }

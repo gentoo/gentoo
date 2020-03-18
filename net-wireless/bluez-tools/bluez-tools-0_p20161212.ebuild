@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ DOCS=( AUTHORS README )
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-src_prepare () {
+src_prepare() {
 	eautoreconf
 	default_src_prepare
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="optimize test"
+RESTRICT="!test? ( test )"
 DOC_CONTENTS="To get sks running, first build the database,
 start the database, import atleast one key, then
 run a cleandb. See the sks man page for more information

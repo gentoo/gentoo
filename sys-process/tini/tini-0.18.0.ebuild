@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/krallin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="+args +static"
 
 src_prepare() {
@@ -52,8 +52,8 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	if use static; then
-		mv "${ED%/}"/usr/bin/{${PN}-static,${PN}} || die
+		mv "${ED}"/usr/bin/{${PN}-static,${PN}} || die
 	else
-		rm "${ED%/}"/usr/bin/${PN}-static || die
+		rm "${ED}"/usr/bin/${PN}-static || die
 	fi
 }

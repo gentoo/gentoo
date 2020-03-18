@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,15 +14,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=media-video/vdr-1.7.34"
+RDEPEND="media-video/vdr"
 DEPEND="${RDEPEND}"
 
-VDR_RCADDON_FILE="${FILESDIR}/rc-addon.sh-0.2.0"
+VDR_RCADDON_FILE="${FILESDIR}/rc-addon.sh"
 
 src_install() {
 	vdr-plugin-2_src_install
 
-	cd "${S}"/config
+	cd "${S}"/config || die "Can't enter source folder"
 
 	insinto /usr/share/vdr/radio
 	doins mpegstill/rtext*
@@ -31,7 +31,4 @@ src_install() {
 
 	exeinto /usr/share/vdr/radio
 	doexe scripts/radioinfo*
-
-	diropts -m 755 -o vdr -g vdr
-	keepdir "/var/cache/vdr-radio"
 }

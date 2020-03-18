@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -22,6 +22,7 @@ DEPEND="app-arch/tar
 RDEPEND=">=virtual/jdk-1.5
 	>=dev-java/ant-core-1.6.5
 	dev-java/swt:3.7[cairo]
+	sys-libs/ncurses-compat:5[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
 "
 
@@ -45,11 +46,11 @@ pkg_setup() {
 	enewgroup android
 }
 
-src_prepare(){
+src_prepare() {
 	rm -rf tools/lib/x86*
 }
 
-src_install(){
+src_install() {
 	dodoc tools/NOTICE.txt "SDK Readme.txt"
 	rm -f tools/NOTICE.txt "SDK Readme.txt"
 

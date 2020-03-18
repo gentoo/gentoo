@@ -27,11 +27,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable nls) || die "Error: econf failed!"
+	econf $(use_enable nls)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Error: install failed!"
+	emake DESTDIR="${D}" install
 	dodoc ChangeLog README
 }
 

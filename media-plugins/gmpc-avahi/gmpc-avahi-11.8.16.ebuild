@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="This plugin discovers avahi enabled mpd servers"
 HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_AVAHI"
@@ -12,19 +12,25 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="nls"
 
-RDEPEND=">=media-sound/gmpc-${PV}
-	dev-libs/libxml2
-	net-dns/avahi[dbus]"
-DEPEND="${RDEPEND}
+RDEPEND="
+	>=media-sound/gmpc-${PV}
+	dev-libs/libxml2:2
+	net-dns/avahi:=[dbus]"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	nls? ( dev-util/intltool
-		sys-devel/gettext )"
+	nls? (
+		dev-util/intltool
+		sys-devel/gettext
+	)"
 
 src_configure() {
 	econf $(use_enable nls)
 }
 
-src_install () {
+src_install() {
 	default
-	find "${ED}" -name "*.la" -exec rm {} + || die
+
+	# plugins only
+	find "${D}" -name '*.la' -delete || die
 }

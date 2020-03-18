@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Shell script analysis tool"
 HOMEPAGE="https://www.shellcheck.net/"
-SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
@@ -24,7 +24,7 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	>=dev-haskell/diff-0.2.0:=[profile?]
 	>=dev-haskell/mtl-2.2.1:=[profile?]
 	>=dev-haskell/parsec-3.0:=[profile?]
-	>=dev-haskell/quickcheck-2.7.4:2=[template_haskell,profile?]
+	>=dev-haskell/quickcheck-2.7.4:2=[template-haskell,profile?]
 	dev-haskell/regex-tdfa:=[profile?]
 	>=dev-lang/ghc-8.0.1:=
 "

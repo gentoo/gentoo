@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools eapi7-ver ssl-cert systemd user versionator
+inherit autotools eapi7-ver ssl-cert systemd toolchain-funcs user versionator
 
 MY_P="${P/_/.}"
 major_minor="$(ver_cut 1-2)"
@@ -43,7 +43,7 @@ DEPEND="bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
 	lz4? ( app-arch/lz4 )
 	mysql? ( dev-db/mysql-connector-c:0= )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:* !dev-db/postgresql[ldap,threads] )
 	selinux? ( sec-policy/selinux-dovecot )
 	solr? ( net-misc/curl dev-libs/expat )
@@ -152,7 +152,7 @@ src_test() {
 	fi
 }
 
-src_install () {
+src_install() {
 	default
 
 	# insecure:

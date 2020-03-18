@@ -9,7 +9,7 @@ HOMEPAGE="http://www.x86.no/cavezofphear/"
 SRC_URI="mirror://gentoo/phear-${PV}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-5:0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools xdg
 
 DESCRIPTION="A collection of data files to add support for chemical MIME types"
-HOMEPAGE="http://chemical-mime.sourceforge.net/"
+HOMEPAGE="https://github.com/dleidert/chemical-mime"
 SRC_URI="mirror://sourceforge/${PN/-data/}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
@@ -41,9 +41,5 @@ src_prepare() {
 }
 
 src_configure() {
-	local myeconfargs=(
-		--disable-update-database
-		--htmldir=/usr/share/doc/${PF}/html
-		)
-	econf ${myeconfargs[@]}
+	econf --disable-update-database
 }

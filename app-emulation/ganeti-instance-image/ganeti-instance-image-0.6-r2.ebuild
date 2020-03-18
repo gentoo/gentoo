@@ -16,7 +16,7 @@ HOMEPAGE="http://code.osuosl.org/projects/ganeti-image"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -39,7 +39,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${D}" install
 
 	rm -rf "${D}"/usr/share/doc/${PN}
 	dodoc README.markdown NEWS ChangeLog

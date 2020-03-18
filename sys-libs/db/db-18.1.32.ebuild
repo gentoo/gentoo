@@ -16,6 +16,8 @@ else
 	MY_P=${PN}-${MY_PV}
 fi
 
+RESTRICT="!test? ( test )"
+
 S_BASE="${WORKDIR}/${MY_P}"
 S="${S_BASE}/dist"
 DESCRIPTION="Oracle Berkeley DB"
@@ -28,7 +30,7 @@ done
 
 LICENSE="AGPL-3"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="doc java cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
@@ -51,7 +53,7 @@ PATCHES=(
 
 	# use the includes from the prefix
 	"${FILESDIR}"/${PN}-6.2.32-jni-check-prefix-first.patch
-	"${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/${PN}-4.2-listen-to-java-options.patch
 
 	# sqlite configure call has an extra leading ..
 	# upstreamed:5.2.36, missing in 5.3.x/6.x

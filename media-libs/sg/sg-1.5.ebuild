@@ -1,57 +1,52 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=true
-
-inherit autotools-utils multilib
+inherit autotools
 
 DESCRIPTION="Socket Graphics tool for displaying polygons"
 HOMEPAGE="http://fetk.org/codes/sg/index.html"
 SRC_URI="http://www.fetk.org/codes/download/${P}.tar.gz"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-LICENSE="GPL-2"
-IUSE="doc static-libs"
+IUSE="doc"
 
 RDEPEND="
 	dev-libs/maloc
+	media-libs/mesa[X(+)]
 	virtual/glu
+	x11-libs/libGLw
 	x11-libs/libXaw
-	x11-libs/motif
-	|| (
-		( media-libs/mesa[X(+)] x11-libs/libGLw )
-		media-libs/opengl-apple
-		)"
-DEPEND="
-	${RDEPEND}
+	x11-libs/motif"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? (
-		media-gfx/graphviz
 		app-doc/doxygen
-		)"
+		media-gfx/graphviz
+	)"
 
 S="${WORKDIR}"/${PN}
 
 PATCHES=(
 	"${FILESDIR}"/1.4-opengl.patch
 	"${FILESDIR}"/1.4-doc.patch
-	)
+	"${FILESDIR}"/1.4-AC_CONFIG_HEADERS.patch
+)
 
 src_prepare() {
-	rm src/{gl,glu,glw} -rf || die
-	sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.ac || die
-	autotools-utils_src_prepare
+	default
+	rm -r src/{gl,glu,glw} || die
+
+	eautoreconf
 }
 
 src_configure() {
-	local sg_include
-	local sg_lib
-	local myeconfargs
+	local sg_include="${EPREFIX}"/usr/include
+	local sg_lib="${EPREFIX}"/usr/$(get_libdir)
 
-	sg_include="${EPREFIX}"/usr/include
-	sg_lib="${EPREFIX}"/usr/$(get_libdir)
 	export FETK_LIBRARY="${sg_lib}"
 	export FETK_MOTIF_LIBRARY="${sg_lib}"
 	export FETK_GL_LIBRARY="${sg_lib}"
@@ -63,13 +58,19 @@ src_configure() {
 	export FETK_GL_INCLUDE="${sg_include}"/GL
 	export FETK_MOTIF_INCLUDE="${sg_include}"
 
-	use doc || myeconfargs+=( --with-doxygen= --with-dot= )
+	econf \
+		--disable-static \
+		--disable-triplet \
+		--enable-glforce \
+		--enable-gluforce \
+		--enable-glwforce \
+		--with-doxygen=$(usex doc "${BROOT}"/usr/bin/doxygen "") \
+		--with-dot=$(usex doc "${BROOT}"/usr/bin/dot "")
+}
 
-	myeconfargs+=( --enable-glforce --enable-gluforce --enable-glwforce )
+src_install() {
+	default
 
-	myeconfargs+=(
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
-		--disable-triplet
-	)
-	autotools-utils_src_configure
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXImage Image Viewer - GPicView replacement"
 HOMEPAGE="https://lxqt.org/"

@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # jython depends on java-config, so don't add it or things will break
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1
 
@@ -16,6 +16,7 @@ LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 

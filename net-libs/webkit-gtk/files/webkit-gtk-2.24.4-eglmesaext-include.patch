@@ -1,0 +1,10 @@
+--- webkitgtk-2.24.4.orig/Source/WebKit/UIProcess/gtk/WaylandCompositor.cpp	2019-08-26 17:55:46.000000000 +0300
++++ webkitgtk-2.24.4.orig/Source/WebKit/UIProcess/gtk/WaylandCompositor.cpp	2019-11-04 23:33:44.146933810 +0300
+@@ -31,6 +31,7 @@ 
+ #include "WebKitWaylandServerProtocol.h"
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include <WebCore/GLContext.h>
+ #include <WebCore/PlatformDisplayWayland.h>
+ #include <WebCore/Region.h>

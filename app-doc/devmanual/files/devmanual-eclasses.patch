@@ -1,0 +1,20 @@
+The offline version doesn't generate eclass manpages.
+Add a dummy file, otherwise internal links would be broken.
+
+--- /dev/null
++++ b/eclass-reference/text.xml
+@@ -0,0 +1,14 @@
++<?xml version="1.0"?>
++<guide self="eclass-reference/">
++<chapter>
++<title>Eclass Reference</title>
++<body>
++
++<note>
++The offline version of the devmanual does not include the documentation for the
++eclasses. If you need it, emerge <c>app-doc/eclass-manpages</c>.
++</note>
++
++</body>
++</chapter>
++</guide>

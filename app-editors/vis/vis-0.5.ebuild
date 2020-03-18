@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/vis-v${PV}.tar
 	test? ( https://github.com/martanne/vis-test/releases/download/v${MY_PTV}/vis-test-${MY_PTV}.tar.gz -> vis-test-${MY_PTV}.tar.gz )"
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="+ncurses selinux test tre"
+RESTRICT="!test? ( test )"
 
 #Note: vis is reported to also work with NetBSD curses
 #TODO: >=dev-lang/lua-5.2 (needed for syntax highlighting and settings)
@@ -42,15 +43,15 @@ src_prepare() {
 
 src_configure() {
 	./configure \
-		--prefix="${EROOT}usr" \
-		--docdir="${EROOT}usr/share/doc/${PF}" \
+		--prefix="${EPREFIX}"/usr \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable ncurses curses) \
 		$(use_enable selinux) \
 		$(use_enable tre) || die
 }
 
 update_symlinks() {
-	einfo "Calling eselect vi update --if-unset…"
+	einfo "Calling eselect vi update --if-unset"
 	eselect vi update --if-unset
 }
 

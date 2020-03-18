@@ -24,9 +24,11 @@ IUSE="abi_x86_32 abi_x86_64 custom-cflags"
 QA_EXECSTACK="usr/*/lib*efi.a:* usr/*/crt*.o"
 RESTRICT="strip"
 
+PATCHES=( "${FILESDIR}"/${PN}-3.0.9-fix-clang-build.patch )
+
 src_prepare() {
-	sed -i -e "s/-Werror//" Make.defaults || die
 	default
+	sed -i -e "s/-Werror//" Make.defaults || die
 }
 
 efimake() {

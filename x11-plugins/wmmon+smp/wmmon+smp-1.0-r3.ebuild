@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,9 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/wmmon.app/wmmon"
 
-PATCHES=( "${FILESDIR}"/${P}-list.patch )
+PATCHES=( "${FILESDIR}"/${P}-list.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	)
 
 src_prepare() {
 	tc-export CC
@@ -36,7 +38,7 @@ src_prepare() {
 	default
 }
 
-src_install () {
+src_install() {
 	newbin wmmon wmmon+smp
 	dodoc ../README
 }

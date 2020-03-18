@@ -1,0 +1,25 @@
+From 28eeb5e4a5d92ff913e3956550bff56f615c97df Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sat, 21 Dec 2019 15:17:56 +0100
+Subject: [PATCH] Fix build against ncurses with separate tinfo lib
+
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index ed83221..bae1180 100755
+--- a/configure
++++ b/configure
+@@ -469,7 +469,7 @@ int main(void) {
+ }
+ EOF
+ 	if $XCC _curses.c -o _curses -lcurses 2>&3; then
+-		LIB_CURSES=-lcurses
++		LIB_CURSES="-lcurses -ltinfo"
+ 	fi
+ 	rm -f _curses.c _curses
+ fi
+-- 
+2.24.1
+

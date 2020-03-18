@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,7 @@ SLOT="0"
 LICENSE="GPL-3"
 
 IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libindicate +libnotify litehtml networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
@@ -78,7 +79,7 @@ COMMONDEPEND="
 	)
 	smime? ( >=app-crypt/gpgme-1.0.0 )
 	spam-report? ( >=net-misc/curl-7.9.7 )
-	spell? ( >=app-text/enchant-1.0.0:= )
+	spell? ( >=app-text/enchant-1.0.0:0= )
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
@@ -105,7 +106,12 @@ RDEPEND="${COMMONDEPEND}
 	rss? (
 		dev-libs/libxml2
 		net-misc/curl
-	)"
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libetpan_pkgconfig.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

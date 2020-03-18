@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>hd_brummy@gentoo.org</email>
+		<name>Joerg Bornkessel</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>martin.dummer@gmx.net</email>
+		<name>Martin Dummer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
@@ -8,25 +20,18 @@
 	<use>
 		<flag name="alternatechannel">Use alternate channel on record</flag>
 		<flag name="bidi">fribidi support, for languages, written from right to left</flag>
-		<flag name="ddepgentry">remove duplicate EPG entries</flag>
-		<flag name="dvlvidprefer">controls video-dir choice on recording</flag>
+		<flag name="demoplugins">Install demo and example plugins coming with vanilla vdr</flag>
 		<flag name="graphtft">support for vdr-graphtft plugin up from version 0.1.7</flag>
 		<flag name="html">Install HTML documentation</flag>
-		<flag name="jumpplay">Enables automatic jumping over cut marks while watching a recording</flag>
-		<flag name="jumpingseconds">skip seconds in played records</flag>
-		<flag name="kbd">enable keyboard support as remote device</flag>
+		<flag name="keyboard">enable keyboard support as remote device</flag>
 		<flag name="mainmenuhooks">Allows to replace main menu entries by some special plugins (like epgsearch, extrecmenu, ...)</flag>
 		<flag name="menuorg">Enables support for the <pkg>media-plugins/vdr-menuorg</pkg></flag>
 		<flag name="menuselection">adds support for menu hotkeys of double digits</flag>
 		<flag name="naludump">Removes NALU fill data from h.264-Streams of TS files</flag>
-		<flag name="permashift">permanent timeshift by recording live TV on hard disk, need plugin <pkg>media-plugins/vdr-permashift</pkg></flag>
-		<flag name="permashift_v1">permanent timeshift by recording live TV on RAM, need plugin &gt;=mediaplugins/vdr-permashift-1</flag>
+		<flag name="permashift">permanent timeshift by recording live TV into RAM, need plugin <pkg>media-plugins/vdr-permashift</pkg></flag>
 		<flag name="pinplugin">Support for <pkg>media-plugins/vdr-pin</pkg></flag>
 		<flag name="resumereset">rreset resume of EOF</flag>
-		<flag name="rotor">Enable support for plugin vdr-rotor for dish-positioner.</flag>
 		<flag name="ttxtsubs">support for <pkg>media-plugins/vdr-ttxtsubs</pkg></flag>
-		<flag name="vasarajanauloja">replacement for the liemikuutio patch, adds some nice must haves features</flag>
-		<flag name="wareagleicon">Replace original icon set in menu</flag>
-		<flag name="yaepg">Enables support for the vdr-yaepg plugin</flag>
+		<flag name="verbose">enable full output on compile</flag>
 	</use>
 </pkgmetadata>

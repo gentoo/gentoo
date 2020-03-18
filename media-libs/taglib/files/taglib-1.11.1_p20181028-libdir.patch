@@ -1,0 +1,25 @@
+From cd9e6b750206417f155574c78d2551242a779a97 Mon Sep 17 00:00:00 2001
+From: jiblime <47689567+jiblime@users.noreply.github.com>
+Date: Sat, 19 Oct 2019 15:12:03 -0700
+Subject: [PATCH] Changed libdir/includedir variables to change based on a
+ user's system and match syntax
+
+---
+ taglib-config.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/taglib-config.cmake b/taglib-config.cmake
+index 2a5c19f90..e613fa226 100644
+--- a/taglib-config.cmake
++++ b/taglib-config.cmake
+@@ -16,8 +16,8 @@ EOH
+ 
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=${exec_prefix}/lib
+-includedir=${prefix}/include
++libdir=@LIB_INSTALL_DIR@
++includedir=@INCLUDE_INSTALL_DIR@
+ 
+ flags=""
+ 

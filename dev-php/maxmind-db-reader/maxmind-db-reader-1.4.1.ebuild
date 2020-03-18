@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,7 +15,7 @@ USE_PHP="php5-6 php7-1 php7-2 php7-3"
 inherit php-ext-source-r3
 
 DESCRIPTION="PHP reader for the MaxMind database format"
-HOMEPAGE="https://github.com/maxmind/${MY_PN}"
+HOMEPAGE="https://github.com/maxmind/MaxMind-DB-Reader-php"
 SRC_URI="https://github.com/maxmind/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 DEPEND="extension? ( dev-libs/libmaxminddb )"
 RDEPEND="${DEPEND}"
 
-src_prepare(){
+src_prepare() {
 	# We need to call eapply_user ourselves, because it may be skipped
 	# if either the "extension" USE flag is not set, or if the user's
 	# PHP_TARGETS is essentially empty. In the latter case, the eclass
@@ -70,7 +70,7 @@ src_test() {
 	use extension && php-ext-source-r3_src_test
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog "${PN} has been installed in /usr/share/php/MaxMind/Db/."
 	elog "To use it in a script, require('MaxMind/Db/autoload.php'),"
 	elog "and then most of the examples in the documentation should"

@@ -1,8 +1,8 @@
 https://bugs.gentoo.org/650876
 
---- libtool-2.4.6/build-aux/ltmain.sh
-+++ libtool-2.4.6/build-aux/ltmain.sh
-@@ -7079,6 +7079,16 @@
+--- a/build-aux/ltmain.sh
++++ b/build-aux/ltmain.sh
+@@ -7127,6 +7127,16 @@
  	    *" $arg "*) ;;
  	    * ) func_append new_inherited_linker_flags " $arg" ;;
  	esac

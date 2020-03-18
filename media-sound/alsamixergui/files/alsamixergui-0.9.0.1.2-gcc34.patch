@@ -1,5 +1,5 @@
---- src/alsamixer.cxx
-+++ src/alsamixer.cxx
+--- a/src/alsamixer.cxx
++++ b/src/alsamixer.cxx
 @@ -654,7 +654,7 @@
        if (joined) {
  #ifdef ALSAMIXER_GUI

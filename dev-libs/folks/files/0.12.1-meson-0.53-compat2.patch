@@ -1,0 +1,31 @@
+From f8a59fb6bf12be06595c94d0b00afed4e1d2f1ee Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 23 Feb 2020 19:28:51 +0200
+Subject: [PATCH] meson: Conditionalize dbusmock check to tests being built
+
+---
+ meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 74320634..64f28d2b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -131,12 +131,14 @@ endif
+ if bluez_backend_enabled
+   libebook_dep = dependency('libebook-1.2', version: '>=' + min_eds_version)
+   # Needed for the BlueZ tests
++  if get_option('test')
+   pymod = import('python')
+   py_installation = pymod.find_installation('python3',
+     modules: [
+       'dbusmock',
+     ],
+   )
++  endif
+ endif
+ 
+ if import_tool_enabled
+-- 
+2.20.1
+

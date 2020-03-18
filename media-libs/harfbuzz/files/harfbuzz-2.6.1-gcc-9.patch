@@ -1,0 +1,14 @@
+Fix build failure on gcc-9. It's a slightly less invasive
+version of upstream's commit 2dce85ed06a8cc7ca
+("[icu] Remove HB_ICU_STMT (#1993)")
+--- a/src/hb-icu.cc
++++ b/src/hb-icu.cc
+@@ -53,7 +53,7 @@
+ 
+ /* ICU doesn't do-while(0) around their statements.  Ugh!
+  * https://unicode-org.atlassian.net/browse/CLDR-13027 */
+-#define HB_ICU_STMT(S) do { S } while (0)
++#define HB_ICU_STMT(S) do { S; } while (0)
+ 
+ hb_script_t
+ hb_icu_script_to_script (UScriptCode script)

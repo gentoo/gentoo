@@ -11,7 +11,7 @@ SRC_URI="https://savannah.nongnu.org/download/quilt/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris"
+KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris"
 IUSE="emacs graphviz elibc_Darwin elibc_SunOS"
 
 RDEPEND="sys-apps/ed
@@ -44,7 +44,7 @@ src_configure() {
 }
 
 src_install() {
-	emake BUILD_ROOT="${D}" install || die "make install failed"
+	emake BUILD_ROOT="${D}" install
 
 	rm -rf "${ED}"usr/share/doc/${P}
 	dodoc AUTHORS TODO "doc/README" "doc/README.MAIL" "doc/quilt.pdf"

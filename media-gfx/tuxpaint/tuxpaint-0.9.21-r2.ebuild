@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,7 +54,7 @@ src_compile() {
 		$(use nls && echo ENABLE_GETTEXT=1)
 }
 
-src_install () {
+src_install() {
 	emake -j1 PKG_ROOT="${D}" \
 		$(use nls && echo ENABLE_GETTEXT=1) install
 

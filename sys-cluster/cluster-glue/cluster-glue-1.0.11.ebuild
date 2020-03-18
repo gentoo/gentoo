@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,8 +54,6 @@ src_configure() {
 		$(use_enable libnet) \
 		$(use_enable static-libs static) \
 		--disable-fatal-warnings \
-		--disable-dependency-tracking \
-		--docdir=/usr/share/doc/${PF} \
 		--localstatedir=/var \
 		--with-ocf-root=/usr/$(get_libdir)/ocf \
 		${myopts} \
@@ -78,7 +76,7 @@ src_install() {
 	sed -i \
 		-e "s:%libdir%:$(get_libdir):" \
 		"${T}/heartbeat-logd.init" || die
-# 	newinitd "${T}/heartbeat-logd.init" heartbeat-logd || die
+# 	newinitd "${T}/heartbeat-logd.init" heartbeat-logd
 	rm "${D}"/etc/init.d/logd
 
 	use static-libs || find "${D}" -type f -name "*.la" -delete

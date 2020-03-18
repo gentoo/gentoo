@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-any-r1 prefix eutils toolchain-funcs flag-o-matic gnuconfig usr-ldscript \
+inherit python-any-r1 prefix eutils toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
@@ -19,7 +19,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 	KEYWORDS=""
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
@@ -29,12 +29,12 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=14
+PATCH_VER=16
 
 SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps cet compile-locales custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -61,6 +61,26 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
+# Note [Disable automatic stripping]
+# Disabling automatic stripping for a few reasons:
+# - portage's attempt to strip breaks non-native binaries at least on
+#   arm: bug #697428
+# - portage's attempt to strip libpthread.so.0 breaks gdb thread
+#   enumeration: bug #697910. This is quite subtle:
+#   * gdb uses glibc's libthread_db-1.0.so to enumerate threads.
+#   * libthread_db-1.0.so needs access to libpthread.so.0 local symbols
+#     via 'ps_pglobal_lookup' symbol defined in gdb.
+#   * 'ps_pglobal_lookup' uses '.symtab' section table to resolve all
+#     known symbols in 'libpthread.so.0'. Specifically 'nptl_version'
+#     (unexported) is used to sanity check compatibility before enabling
+#     debugging.
+#     Also see https://sourceware.org/gdb/wiki/FAQ#GDB_does_not_see_any_threads_besides_the_one_in_which_crash_occurred.3B_or_SIGTRAP_kills_my_program_when_I_set_a_breakpoint
+#   * normal 'strip' command trims '.symtab'
+#   Thus our main goal here is to prevent 'libpthread.so.0' from
+#   losing it's '.symtab' entries.
+# As Gentoo's strip does not allow us to pass less aggressive stripping
+# options and does not check the machine target we strip selectively.
+
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,
 # and that gcc already contains the hardened patches.
@@ -68,13 +88,11 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
-	!<sys-devel/make-4
 	doc? ( sys-apps/texinfo )
 "
 COMMON_DEPEND="
+	gd? ( media-libs/gd:2= )
 	nscd? ( selinux? (
 		audit? ( sys-process/audit )
 		caps? ( sys-libs/libcap )
@@ -88,9 +106,9 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
-	!sys-kernel/ps3-sources
-	!sys-libs/nss-db
 "
+
+RESTRICT="!test? ( test )"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
 	BDEPEND+=" !headers-only? (
@@ -181,7 +199,7 @@ do_compile_test() {
 	rm -f glibc-test*
 	printf '%b' "$*" > glibc-test.c
 
-	nonfatal emake -s glibc-test
+	nonfatal emake glibc-test
 	ret=$?
 
 	popd >/dev/null
@@ -229,7 +247,7 @@ setup_target_flags() {
 			# We could change main to _start and pass -nostdlib here so that we
 			# only test the gcc code compilation.  Or we could do a compile and
 			# then look for the symbol via scanelf.
-			if ! do_compile_test "" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
+			if ! do_compile_test "" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n'; then
 				local t=${CTARGET_OPT:-${CTARGET}}
 				t=${t%%-*}
 				filter-flags '-march=*'
@@ -239,10 +257,9 @@ setup_target_flags() {
 		;;
 		amd64)
 			# -march needed for #185404 #199334
-			# Note: This test only matters when the x86 ABI is enabled, so we could
-			# optimize a bit and elide it.
 			# TODO: See cross-compile issues listed above for x86.
-			if ! do_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
+			[[ ${ABI} == x86 ]] &&
+			if ! do_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n'; then
 				local t=${CTARGET_OPT:-${CTARGET}}
 				t=${t%%-*}
 				# Normally the target is x86_64-xxx, so turn that into the -march that
@@ -252,7 +269,7 @@ setup_target_flags() {
 				# ugly, ugly, ugly.  ugly.
 				CFLAGS_x86=$(CFLAGS=${CFLAGS_x86} filter-flags '-march=*'; echo "${CFLAGS}")
 				export CFLAGS_x86="${CFLAGS_x86} -march=${t}"
-				einfo "Auto adding -march=${t} to CFLAGS_x86 #185404"
+				einfo "Auto adding -march=${t} to CFLAGS_x86 #185404 (ABI=${ABI})"
 			fi
 		;;
 		mips)
@@ -851,7 +868,11 @@ glibc_do_configure() {
 			myconf+=( --enable-stack-protector=no )
 			;;
 		*)
-			myconf+=( --enable-stack-protector=$(usex ssp all no) )
+			# Use '=strong' instead of '=all' to protect only functions
+			# worth protecting from stack smashes.
+			# '=all' is also known to have a problem in IFUNC resolution
+			# tests: https://sourceware.org/PR25680, bug #712356.
+			myconf+=( --enable-stack-protector=$(usex ssp strong no) )
 			;;
 	esac
 	myconf+=( --enable-stackguard-randomization )
@@ -911,7 +932,7 @@ glibc_do_configure() {
 		--host=${CTARGET_OPT:-${CTARGET}}
 		$(use_enable profile)
 		$(use_with gd)
-		--with-headers=$(alt_build_headers)
+		--with-headers=$(build_eprefix)$(alt_build_headers)
 		--prefix="$(host_eprefix)/usr"
 		--sysconfdir="$(host_eprefix)/etc"
 		--localstatedir="$(host_eprefix)/var"
@@ -921,7 +942,9 @@ glibc_do_configure() {
 		--libexecdir='$(libdir)'/misc/glibc
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
+		$(use_enable crypt)
 		$(use_multiarch || echo --disable-multi-arch)
+		$(use_enable static-pie)
 		$(use_enable systemtap)
 		$(use_enable nscd)
 		${EXTRA_ECONF}
@@ -1065,7 +1088,7 @@ glibc_headers_configure() {
 		--enable-bind-now
 		--build=${CBUILD_OPT:-${CBUILD}}
 		--host=${CTARGET_OPT:-${CTARGET}}
-		--with-headers=$(alt_build_headers)
+		--with-headers=$(build_eprefix)$(alt_build_headers)
 		--prefix="$(host_eprefix)/usr"
 		${EXTRA_ECONF}
 	)
@@ -1116,7 +1139,11 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir nptl)"
-	emake check
+	# disable tests:
+	# - tests-container:
+	#     sandbox does not understand unshare() and prevents
+	#     writes to /proc/
+	emake check tests-container=
 }
 
 do_src_test() {
@@ -1158,8 +1185,10 @@ run_locale_gen() {
 		locale_list="${root}/usr/share/i18n/SUPPORTED"
 	fi
 
-	locale-gen ${inplace} --jobs $(makeopts_jobs) --config "${locale_list}" \
+	set -- locale-gen ${inplace} --jobs $(makeopts_jobs) --config "${locale_list}" \
 		--destdir "${root}"
+	echo "$@"
+	"$@"
 
 	popd >/dev/null
 }
@@ -1181,10 +1210,12 @@ glibc_do_src_install() {
 	# '#define VERSION "2.26.90"' -> '2.26.90'
 	local upstream_pv=$(sed -n -r 's/#define VERSION "(.*)"/\1/p' "${S}"/version.h)
 
-	# gdb is lame and requires some debugging information to remain in
-	# libpthread.  libthread_db makes no sense stripped as it is only used when debugging.
+	# Avoid stripping binaries not targeted by ${CHOST}. Or else
+	# ${CHOST}-strip would break binaries build for ${CTARGET}.
+	is_crosscompile && dostrip -x /
+	# gdb thread introspection relies on local libpthreas symbols. stripping breaks it
+	# See Note [Disable automatic stripping]
 	dostrip -x $(alt_libdir)/libpthread-${upstream_pv}.so
-	dostrip -x $(alt_libdir)/libthread_db-1.0.so
 
 	if [[ -e ${ED}/$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
 		# Move versioned .a file out of libdir to evade portage QA checks

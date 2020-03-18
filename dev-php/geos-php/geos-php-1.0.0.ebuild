@@ -23,6 +23,7 @@ SRC_URI="https://git.osgeo.org/gitea/geos/php-geos/archive/${PV}.tar.gz -> ${P}.
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sci-libs/geos[-php(-)]"
 DEPEND="sci-libs/geos[-php(-)] test? ( dev-php/phpunit )"

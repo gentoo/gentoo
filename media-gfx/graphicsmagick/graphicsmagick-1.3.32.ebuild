@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EHG_REPO_URI="http://hg.code.sf.net/p/${PN}/code"
 else
 	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
-	KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg lcms lzma modules openmp
@@ -31,7 +31,7 @@ RDEPEND="dev-libs/libltdl:0
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
 	postscript? ( app-text/ghostscript-gpl )
 	svg? ( dev-libs/libxml2 )

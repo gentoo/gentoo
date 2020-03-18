@@ -1,0 +1,13 @@
+diff --git a/fmpz_mat/doc/fmpz_mat.txt b/fmpz_mat/doc/fmpz_mat.txt
+index 2f07624..d741899 100644
+--- a/fmpz_mat/doc/fmpz_mat.txt
++++ b/fmpz_mat/doc/fmpz_mat.txt
+@@ -1114,7 +1114,7 @@ void fmpz_mat_gram(fmpz_mat_t B, const fmpz_mat_t A)
+ 
+     Sets \code{B} to the Gram matrix of the $m$-dimensional lattice \code{L} in 
+     $n$-dimensional Euclidean space $R^n$ spanned by the rows of
+-    the $m$ × $n$ matrix \code{A}. Dimensions must be compatible.
++    the $m \times n$ matrix \code{A}. Dimensions must be compatible.
+     \code{A} and \code{B} are allowed to be the same object if \code{A} is a 
+     square matrix.
+ 

@@ -19,7 +19,7 @@ IUSE="debug doc static-libs"
 RDEPEND="
 	virtual/jpeg:=
 	>=media-libs/tiff-3.9.1:0
-	sci-libs/proj
+	sci-libs/proj:=
 	sys-libs/zlib"
 
 DEPEND="${RDEPEND}

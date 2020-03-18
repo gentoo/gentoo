@@ -1,0 +1,28 @@
+diff -Naur a/tools/cross-wine32.in b/tools/cross-wine32.in
+--- a/tools/cross-wine32.in	2019-09-25 13:25:24.000000000 +0100
++++ b/tools/cross-wine32.in	2019-09-30 23:05:00.121344967 +0100
+@@ -5,8 +5,8 @@
+ pkgconfig = '@PKG_CONFIG@'
+ 
+ [properties]
+-c_args = ['-m32']
+-c_link_args = ['-m32', '-mwindows']
++c_args = @CFLAGS@ + ['-m32']
++c_link_args = @LDFLAGS@ + ['-m32', '-mwindows']
+ needs_exe_wrapper = true
+ 
+ [host_machine]
+diff -Naur a/tools/cross-wine64.in b/tools/cross-wine64.in
+--- a/tools/cross-wine64.in	2019-09-25 13:25:24.000000000 +0100
++++ b/tools/cross-wine64.in	2019-09-30 23:04:57.340283350 +0100
+@@ -5,8 +5,8 @@
+ pkgconfig = '@PKG_CONFIG@'
+ 
+ [properties]
+-c_args = ['-m64']
+-c_link_args = ['-m64', '-mwindows']
++c_args = @CFLAGS@ + ['-m64']
++c_link_args = @LDFLAGS@ + ['-m64', '-mwindows']
+ needs_exe_wrapper = true
+ 
+ [host_machine]

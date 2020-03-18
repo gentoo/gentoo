@@ -28,6 +28,8 @@ export WANT_JAVA_CONFIG="2"
 # Prefix variables are only available for EAPI>=3
 has "${EAPI:-0}" 0 1 2 && ED="${D}" EPREFIX= EROOT="${ROOT}"
 
+has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
+
 # @VARIABLE: JAVA_PKG_E_DEPEND
 # @INTERNAL
 # @DESCRIPTION:
@@ -2729,10 +2731,13 @@ java-pkg_jar-list() {
 java-pkg_verify-classes() {
 	#$(find ${D} -type f -name '*.jar' -o -name '*.class')
 
-	local version_verify="/usr/bin/class-version-verify.py"
+	local version_verify_1="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/class-version-verify.py"
+	local version_verify_2="${EPREFIX}/usr/libexec/javatoolkit/class-version-verify.py"
 
-	if [[ ! -x "${version_verify}" ]]; then
-		version_verify="/usr/$(get_libdir)/javatoolkit/bin/class-version-verify.py"
+	if [[ -x "${version_verify_1}" ]]; then
+		local version_verify=${version_verify_1}
+	else
+		local version_verify=${version_verify_2}
 	fi
 
 	if [[ ! -x "${version_verify}" ]]; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -89,7 +89,6 @@ multilib_src_configure() {
 	fi
 
 	c="${c} --sysconfdir=${EPREFIX}/etc/${PN}"
-	c="${c} --docdir=${EPREFIX}/usr/share/doc/${PF}"
 
 	export MPICHLIB_CFLAGS="${CFLAGS}"
 	export MPICHLIB_CPPFLAGS="${CPPFLAGS}"

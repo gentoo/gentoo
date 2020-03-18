@@ -1,0 +1,40 @@
+From 9cf1f97cef04fed81c2407f7207795d7592ccb96 Mon Sep 17 00:00:00 2001
+From: Joachim Nilsson <troglobit@gmail.com>
+Date: Fri, 6 Dec 2019 18:19:05 +0100
+Subject: [PATCH] Fix nasty parallel build problem reported by Gentoo and
+ Westermo
+
+Independently of each other both the Gentoo project and Westermo found
+an issue with massively parallel builds on monster-core-machines.  At
+Westermo there are 40 core Xeon monsters that stumble when building
+sysklogd.
+
+The Gentoo bug report is here:
+
+    https://bugs.gentoo.org/701894
+
+The problem stems from strlcat.c and strlcpy.c being used for both
+the libcompat convenience library built for libsyslog and als for
+syslogd when the system does not have either of the APIs in libc,
+i.e. most Linux systems with GLIBC or musl libc.
+
+I can either rewrite the Makefile.am files to handle dependencies
+better, or we just disable parallel build like this patch. There's
+too few source files to gain anything from parallel build anyway.
+
+Signed-off-by: Joachim Nilsson <troglobit@gmail.com>
+---
+ Makefile.am | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index c4cc80f..7e2b854 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -46,3 +46,6 @@ release: distcheck
+ # Workaround for systemd unit file duing distcheck
+ DISTCHECK_CONFIGURE_FLAGS = --with-systemd=$$dc_install_base/$(systemd) --with-klogd
+ 
++# Disable parallel build in top Makefile, we might otherwise get a very
++# bizarre build problem with strlcpy.o in libcompat and for syslogd.
++.NOTPARALLEL:

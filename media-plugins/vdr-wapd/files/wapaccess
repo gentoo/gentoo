@@ -1,5 +1,0 @@
-# To create a new ''wapaccess'' file with a new user simply type: 
-#     wappasswd username password >> /etc/vdr/plugins/wapd/wapaccess
-  
-# To delete a user from ''wapaccess'' use your favourite text editor 
-# and remove the line ''username:passwordhash''.

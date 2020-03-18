@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ DEPEND="x11-libs/libX11
 	x11-libs/libXrender
 	x11-libs/libXcursor
 	imlib? ( media-libs/imlib2[X] )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	doc? ( app-text/asciidoc )"
 RDEPEND="${DEPEND}"
 

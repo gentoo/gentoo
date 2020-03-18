@@ -1,0 +1,31 @@
+--- a/src/BNFC/Backend/Haskell/CFtoAbstract.hs
++++ b/src/BNFC/Backend/Haskell/CFtoAbstract.hs
+@@ -25,2 +25,4 @@ import BNFC.Backend.Haskell.Utils (catToType, catvars)
+ import Text.PrettyPrint
++import Prelude hiding ((<>))
++
+ 
+--- a/src/BNFC/Backend/Haskell/CFtoPrinter.hs
++++ b/src/BNFC/Backend/Haskell/CFtoPrinter.hs
+@@ -29,2 +29,3 @@ import Data.Maybe (fromJust)
+ import Text.PrettyPrint
++import Prelude hiding ((<>))
+ 
+--- a/src/BNFC/Backend/Haskell/CFtoTemplate.hs
++++ b/src/BNFC/Backend/Haskell/CFtoTemplate.hs
+@@ -25,2 +25,3 @@ import BNFC.CF
+ import BNFC.PrettyPrint
++import Prelude hiding ((<>))
+ 
+--- a/src/BNFC/Backend/Haskell/Utils.hs
++++ b/src/BNFC/Backend/Haskell/Utils.hs
+@@ -10,2 +10,3 @@ import BNFC.CF (Cat(..), identCat, normCat)
+ import BNFC.Utils (mkNames, NameStyle(..))
++import Prelude hiding ((<>))
+ 
+--- a/src/BNFC/PrettyPrint.hs
++++ b/src/BNFC/PrettyPrint.hs
+@@ -10,2 +10,3 @@ module BNFC.PrettyPrint
+ import Text.PrettyPrint
++import Prelude hiding ((<>))
+ 

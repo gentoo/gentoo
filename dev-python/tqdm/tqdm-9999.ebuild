@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/tqdm/tqdm"
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Add a progress meter to your loops in a second"
@@ -20,20 +20,28 @@ HOMEPAGE="https://github.com/tqdm/tqdm"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="examples test"
+IUSE="examples"
 
-# Uses pkg_resources
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
-"
+BDEPEND="${RDEPEND}"
+
+distutils_enable_tests nose
+
+python_prepare_all() {
+	sed -r \
+		-e "s:'nose'(,[[:space:]]*|)::" \
+		-e "s:'flake8'(,[[:space:]]*|)::" \
+		-e "s:'coverage'(,[[:space:]]*|)::" \
+		-i setup.py
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	# tests_main.py requires the package to be installed
 	distutils_install_for_testing
 	# Skip unpredictable performance tests
-	nosetests tqdm -v -I 'tests_perf.py' \
+	nosetests tqdm -v --ignore 'tests_perf.py' \
 		|| die "tests failed with ${EPYTHON}"
 }
 

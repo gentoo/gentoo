@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>monsieurp@gentoo.org</email>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription>Calcurse is a text-based personal organizer which helps keeping
 track of events and everyday tasks. It contains a calendar, a 'todo' list, and
 puts your appointments in order. The user interface is configurable, and one can

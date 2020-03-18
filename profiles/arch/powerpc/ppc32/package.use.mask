@@ -1,9 +1,37 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
+# USE=bpf depends on sys-devel/clang which is not keyworded on ppc.
+media-tv/v4l-utils bpf
+
+# Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
+# Mask until net-analyzer/icinga2 is keyworded
+net-analyzer/pnp4nagios icinga
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Jaco Kroon <jaco@uls.co.za> (2019-11-28)
+# Unfortunately net-libs/bcg729 isn't available for ppc
+net-libs/pjproject g729
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on ppc
+sys-firmware/seabios -debug
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-15)
-# sys-cluster/hpx, sci-libs/silo, sci-visualization/visit not keyworded
-sci-libs/libgeodecomp hpx silo visit
+# sys-cluster/hpx, sci-libs/silo not keyworded
+sci-libs/libgeodecomp hpx silo
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not keyworded

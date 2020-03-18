@@ -1,9 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Intel Montara 855GM CRT out auxiliary driver"
 HOMEPAGE="http://i855crt.sourceforge.net/"
@@ -12,30 +12,31 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
 
-DEPEND="
+RDEPEND="
 	x11-libs/libX11
-	x11-libs/libXv
-"
-RDEPEND="${DEPEND}"
+	x11-libs/libXv"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-i915support.diff
+	"${FILESDIR}"/${PN}-0.4-makefile.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-i915support.diff
-
-	# respect CC, fix underlinking
-	sed -i Makefile \
-		-e 's|gcc|$(CC)|g;/LDFLAGS/{s|$| -lX11|g};s|-lXext||g' \
-		|| die
-	export LIBS="-lX11"
-	tc-export CC
+	default
 
 	# upstream ships it with the binary, we want to make sure we compile it
 	emake clean
+}
+
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
 	dobin i855crt
 	insinto /etc
 	doins i855crt.conf
+	einstalldocs
 }

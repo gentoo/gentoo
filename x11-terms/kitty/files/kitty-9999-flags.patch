@@ -1,24 +1,27 @@
---- kitty-9999/setup.py	2019-07-16 18:04:24.052780940 -0500
-+++ kitty-9999/setup.py	2019-07-16 18:05:54.564383192 -0500
-@@ -202,7 +202,7 @@
-     df = '-g3'
+Respect user CFLAGS.
+
+--- a/setup.py
++++ b/setup.py
+@@ -236,7 +236,7 @@
      if ccver >= (5, 0):
          df += ' -Og'
+         float_conversion = '-Wfloat-conversion'
+     fortify_source = '-D_FORTIFY_SOURCE=2'
 -    optimize = df if debug or sanitize else '-O3'
 +    optimize = ''
      sanitize_args = get_sanitize_args(cc, ccver) if sanitize else set()
-     cppflags = os.environ.get(
+     cppflags_ = os.environ.get(
          'OVERRIDE_CPPFLAGS', '-D{}DEBUG'.format('' if debug else 'N'),
-@@ -213,7 +213,7 @@
+@@ -217,7 +217,7 @@
      cflags = os.environ.get(
          'OVERRIDE_CFLAGS', (
-             '-Wextra -Wno-missing-field-initializers -Wall -Wstrict-prototypes -std=c11'
+             '-Wextra {} -Wno-missing-field-initializers -Wall -Wstrict-prototypes -std=c11'
 -            ' -pedantic-errors -Werror {} {} -fwrapv {} {} -pipe {} -fvisibility=hidden'
 +            ' -pedantic-errors {} {} -fwrapv {} {} {} -fvisibility=hidden'
          ).format(
+             float_conversion, std,
              optimize,
-             ' '.join(sanitize_args),
-@@ -227,7 +227,7 @@
+@@ -232,7 +232,7 @@
      )
      ldflags = os.environ.get(
          'OVERRIDE_LDFLAGS',
@@ -27,7 +30,7 @@
      )
      ldflags = shlex.split(ldflags)
      ldflags.append('-shared')
-@@ -606,20 +606,17 @@
+@@ -614,7 +614,7 @@
  
  
  def build_launcher(args, launcher_dir='.', bundle_type='source'):
@@ -36,11 +39,7 @@
      cppflags = []
      libs = []
      if args.profile or args.sanitize:
-         if args.sanitize:
--            cflags.append('-g3')
-             cflags.extend(get_sanitize_args(env.cc, env.ccver))
-             libs += ['-lasan'] if env.cc == 'gcc' and not is_macos else []
-         else:
+@@ -626,8 +626,6 @@
              cflags.append('-g')
          if args.profile:
              libs.append('-lprofiler')

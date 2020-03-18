@@ -1,0 +1,39 @@
+From eeecf286efb312709e43341eaadc64eb006bc6bf Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 27 Oct 2019 22:05:58 +0100
+Subject: [PATCH] Add suffix "-0.4" to installed programs
+
+---
+ bin/meson.build   | 2 +-
+ tools/meson.build | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bin/meson.build b/bin/meson.build
+index 4daf6cb..b77b692 100644
+--- a/bin/meson.build
++++ b/bin/meson.build
+@@ -42,7 +42,7 @@ if libspiro.found()
+   gegl_deps += [ libspiro, ]
+ endif
+ 
+-gegl_bin = executable('gegl',
++gegl_bin = executable('gegl-0.4',
+   gegl_sources,
+   include_directories: [ rootInclude, geglInclude, ],
+   dependencies: gegl_deps,
+diff --git a/tools/meson.build b/tools/meson.build
+index 43c5495..c1b0d63 100644
+--- a/tools/meson.build
++++ b/tools/meson.build
+@@ -19,7 +19,7 @@ detect_opencl = executable(
+   install: false,
+ )
+ gegl_imgcmp = executable(
+-  'gegl-imgcmp',
++  'gegl-imgcmp-0.4',
+   'gegl-imgcmp.c',
+   include_directories: [ rootInclude, geglInclude, ],
+   dependencies: [ tools_deps, ],
+-- 
+2.23.0
+

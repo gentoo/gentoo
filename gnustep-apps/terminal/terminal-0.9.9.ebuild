@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit gnustep-2
 
@@ -12,9 +12,6 @@ HOMEPAGE="http://www.nongnu.org/terminal/"
 SRC_URI="https://savannah.nongnu.org/download/gap/${P/t/T}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
-
-RDEPEND="!<x11-terms/terminal-0.6.0" #376257
-DEPEND="${RDEPEND}"

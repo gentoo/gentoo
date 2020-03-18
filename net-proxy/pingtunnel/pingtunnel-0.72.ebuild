@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/PingTunnel
 
-src_prepare(){
+src_prepare() {
 	epatch "${FILESDIR}"/${P}_makefile.patch
 }
 

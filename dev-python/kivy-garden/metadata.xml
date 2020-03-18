@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>slis@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription>
     Tool to manage the installation, removal of flowers at https://github.com/kivy-garden/ 
     They are a set of user maintained widgets, extensions, tools for kivy(http://kivy.org) framework.

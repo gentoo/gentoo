@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,7 +42,7 @@ DEPEND="
 	app-text/docbook-xsl-stylesheets
 	sys-devel/bison
 	dev-libs/libxslt
-	|| ( dev-util/glib-utils <dev-libs/glib-2.56.2:2 )
+	|| ( dev-util/glib-utils dev-libs/glib:2 )
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig

@@ -52,8 +52,8 @@ java_prepare() {
 src_install() {
 	java-pkg_dojar build/looks.jar
 
-	dodoc RELEASE-NOTES.txt || die
-	dohtml README.html || die
+	dodoc RELEASE-NOTES.txt
+	dohtml README.html
 	use doc && java-pkg_dojavadoc build/docs/api
 	use source && java-pkg_dosrc src/core/com
 	use examples && java-pkg_doexamples src/demo

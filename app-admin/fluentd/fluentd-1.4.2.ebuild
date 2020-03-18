@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -35,6 +35,9 @@ all_ruby_prepare() {
 		-e '/tzinfo-data/d' \
 		-e '/dig_rb/d' \
 		"${PN}".gemspec || die "'sed failed"
+
+	# Avoid test dependency on unpackaged oj
+	rm -f test/test_event_time.rb || die
 }
 
 all_ruby_install() {

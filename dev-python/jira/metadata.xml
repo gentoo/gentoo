@@ -13,8 +13,6 @@
     <remote-id type="github">pycontribs/jira</remote-id>
   </upstream>
   <use>
-    <flag name="filemagic">Include filemagic support (for identifying uploaded filetypes)</flag>
-    <flag name="ipython">Include Interactive Python (IPython)</flag>
     <flag name="jirashell">Include dependencies for jirashell (ipython, oauthlib)</flag>
     <flag name="kerberos">Support Kerberos authentication</flag>
     <flag name="oauth">Support OAuth authentication</flag>

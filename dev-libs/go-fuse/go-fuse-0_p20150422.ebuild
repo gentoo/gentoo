@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils
+inherit eutils vcs-clean
 
 GO_PN=github.com/hanwen/${PN}
 EGIT_COMMIT="ffed29ec8b88f61c1b8954134cc48ef03bb26ce1"
 
-HOMEPAGE="https://${GO_PN}"
+HOMEPAGE="https://github.com/hanwen/go-fuse"
 DESCRIPTION="FUSE bindings for Go"
 SRC_URI="https://${GO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 

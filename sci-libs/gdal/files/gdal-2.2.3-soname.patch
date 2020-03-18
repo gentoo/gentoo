@@ -3,8 +3,8 @@ Set SONAME and unbreak compilation on Darwin
 Author: Fabian Groffen <grobian@gentoo.org>
 Author: Dennis Schridde <devurandom@gmx.net>
 
---- old/GDALmake.opt.in.orig	2008-02-02 18:25:48.000000000 -0800
-+++ new/GDALmake.opt.in	2008-02-02 18:54:53.000000000 -0800
+--- a/GDALmake.opt.in	2008-02-02 18:25:48.000000000 -0800
++++ b/GDALmake.opt.in	2008-02-02 18:54:53.000000000 -0800
 @@ -97,6 +97,14 @@
  GDAL_SLIB	=	$(GDAL_ROOT)/libgdal.$(SO_EXT)
  GDAL_SLIB_LINK	=	-L$(GDAL_ROOT) -lgdal
@@ -20,8 +20,8 @@ Author: Dennis Schridde <devurandom@gmx.net>
  # Mac OS X Framework definition
  MACOSX_FRAMEWORK = @MACOSX_FRAMEWORK@
  
---- gdal-2.0.3.old/GNUmakefile
-+++ gdal-2.0.3/GNUmakefile
+--- a/GNUmakefile
++++ b/GNUmakefile
 @@ -208,7 +208,7 @@ else
  
  ifeq ($(HAVE_LD_SHARED),yes)

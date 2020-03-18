@@ -10,7 +10,7 @@ SRC_URI="https://github.com/downloads/keplerproject/luafilesystem/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND=">=dev-lang/lua-5.1"
@@ -27,7 +27,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake PREFIX="${ED}usr" install || die
-	dodoc README || die
-	dohtml doc/us/* || die
+	emake PREFIX="${ED}usr" install
+	dodoc README
+	dohtml doc/us/*
 }

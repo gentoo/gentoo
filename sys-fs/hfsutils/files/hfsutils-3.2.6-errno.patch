@@ -1,6 +1,5 @@
-diff -ruN hfsutils.orig/tclhfs.c hfsutils-3.2.6/tclhfs.c
---- hfsutils.orig/tclhfs.c	2003-03-31 17:34:55.000000000 +0200
-+++ hfsutils-3.2.6/tclhfs.c	2003-03-31 17:39:51.000000000 +0200
+--- a/tclhfs.c
++++ b/tclhfs.c
 @@ -43,8 +43,7 @@
  # include "charset.h"
  # include "suid.h"

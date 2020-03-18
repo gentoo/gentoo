@@ -8,7 +8,6 @@
 	<use>
 		<flag name="cue">Enable CUE sheet support</flag>
 		<flag name="dvda">Enable DVD-Audio support</flag>
-		<flag name="gui">Enable support for GUI tools</flag>
 		<flag name="twolame">Enable twolame support (MPEG Audio Layer 2 encoder)</flag>
 	</use>
 	<upstream>

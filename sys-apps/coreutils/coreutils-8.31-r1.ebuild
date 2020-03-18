@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit eutils flag-o-matic python-any-r1 toolchain-funcs
 
@@ -16,8 +16,9 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~x86-linux"
 IUSE="acl caps gmp hostname kill multicall nls selinux +split-usr static test vanilla xattr"
+RESTRICT="!test? ( test )"
 
 LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	caps? ( sys-libs/libcap )
@@ -34,7 +35,6 @@ DEPEND="${RDEPEND}
 		dev-perl/Expect
 		dev-util/strace
 		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/pyinotify[${PYTHON_USEDEP}]')
 	)"
 RDEPEND+="
 	hostname? ( !sys-apps/net-tools[hostname] )

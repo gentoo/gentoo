@@ -6,7 +6,7 @@
     <name>Matthew Thode</name>
   </maintainer>
   <longdescription lang="en">
-    An openstack meta package to allow for easier installation of openstack.
+    An openstack meta package to allow for easier installation of openstack services.
   </longdescription>
   <use>
     <flag name="keystone">Installs Openstack Keystone</flag>

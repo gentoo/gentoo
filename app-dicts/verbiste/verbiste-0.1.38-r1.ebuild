@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils gnome2-utils fdo-mime
+inherit eutils gnome2-utils fdo-mime ltprune
 
 DESCRIPTION="French conjugation system"
 HOMEPAGE="http://sarrazip.com/dev/verbiste.html"

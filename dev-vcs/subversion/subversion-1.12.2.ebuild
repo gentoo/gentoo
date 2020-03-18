@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 elisp-common flag-o-matic java-pkg-opt-2 libtool multilib perl-module ruby-single xdg-utils
+inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 flag-o-matic java-pkg-opt-2 libtool ltprune multilib perl-module ruby-single toolchain-funcs xdg-utils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
@@ -21,8 +21,9 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Subversion GPL-2"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="apache2 berkdb ctypes-python debug doc +dso extras gnome-keyring +http java kwallet nls perl python ruby sasl test vim-syntax"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	app-arch/bzip2
@@ -183,11 +184,11 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--libdir="${EPREFIX%/}/usr/$(get_libdir)"
+		--libdir="${EPREFIX}/usr/$(get_libdir)"
 		$(use_with apache2 apache-libexecdir)
 		$(use_with apache2 apxs "${EPREFIX}"/usr/bin/apxs)
-		$(use_with berkdb berkeley-db "db.h:${EPREFIX%/}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}")
-		$(use_with ctypes-python ctypesgen "${EPREFIX%/}/usr")
+		$(use_with berkdb berkeley-db "db.h:${EPREFIX}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}")
+		$(use_with ctypes-python ctypesgen "${EPREFIX}/usr")
 		$(use_enable dso runtime-module-search)
 		$(use_with gnome-keyring)
 		$(use_enable java javahl)
@@ -196,8 +197,8 @@ src_configure() {
 		$(use_enable nls)
 		$(use_with sasl)
 		$(use_with http serf)
-		--with-apr="${EPREFIX%/}/usr/bin/apr-1-config"
-		--with-apr-util="${EPREFIX%/}/usr/bin/apu-1-config"
+		--with-apr="${EPREFIX}/usr/bin/apr-1-config"
+		--with-apr-util="${EPREFIX}/usr/bin/apu-1-config"
 		--disable-experimental-libtool
 		--without-jikes
 		--disable-mod-activation
@@ -260,8 +261,8 @@ src_configure() {
 	fi
 
 	# allow overriding Python include directory
-	ac_cv_path_RUBY=$(usex ruby "${EPREFIX%/}/usr/bin/ruby${RB_VER}" "none") \
-	ac_cv_path_RDOC=$(usex ruby "${EPREFIX%/}/usr/bin/rdoc${RB_VER}" "none") \
+	ac_cv_path_RUBY=$(usex ruby "${EPREFIX}/usr/bin/ruby${RB_VER}" "none") \
+	ac_cv_path_RDOC=$(usex ruby "${EPREFIX}/usr/bin/rdoc${RB_VER}" "none") \
 	ac_cv_python_includes='-I$(PYTHON_INCLUDEDIR)' \
 	econf "${myconf[@]}"
 }

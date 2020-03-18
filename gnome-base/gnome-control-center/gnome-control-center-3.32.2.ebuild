@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit gnome.org gnome2-utils meson xdg
+inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
@@ -11,12 +12,13 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="2"
-IUSE="+bluetooth +cups debug elogind flickr +gnome-online-accounts +ibus input_devices_wacom kerberos networkmanager systemd v4l wayland"
+IUSE="+bluetooth +cups debug elogind flickr +gnome-online-accounts +ibus input_devices_wacom kerberos networkmanager systemd test v4l wayland"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	flickr? ( gnome-online-accounts )
 	^^ ( elogind systemd )
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime, but needs testing if handled gracefully enough
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ia64 ~ppc ~ppc64 x86"
 
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # display panel requires colord and gnome-settings-daemon[colord]
@@ -49,7 +51,7 @@ COMMON_DEPEND="
 	v4l? (
 		>=media-video/cheese-3.28.0 )
 	ibus? ( >=app-i18n/ibus-1.5.2 )
-	wayland? ( virtual/libgudev )
+	wayland? ( dev-libs/libgudev )
 	networkmanager? (
 		>=gnome-extra/nm-applet-1.8.0
 		>=net-misc/networkmanager-1.10.0:=[modemmanager]
@@ -115,6 +117,9 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	test? ( $(python_gen_any_dep '
+		dev-python/dbusmock[${PYTHON_USEDEP}]
+	') )
 "
 
 PATCHES=(
@@ -123,7 +128,25 @@ PATCHES=(
 	# https://bugzilla.gnome.org/686840, 697478, 700145
 	# Fix some absolute paths to be appropriate for Gentoo
 	"${WORKDIR}"/patches/
+
+	"${FILESDIR}"/${PN}-3.32.2-fix-gcc10-fno-common.patch # fixed in 3.35.90
 )
+
+python_check_deps() {
+	use test && \
+		has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	xdg_src_prepare
+	# Mark python tests with shebang executable, so that meson will launch them directly, instead
+	# of via its own python-single-r1 version, which might not match what we get from python_check_deps
+	chmod a+x tests/network/test-network-panel.py tests/datetime/test-datetime.py || die
+}
 
 src_configure() {
 	local emesonargs=(

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,12 +11,13 @@ inherit haskell-cabal
 
 DESCRIPTION="Lenses, Folds and Traversals"
 HOMEPAGE="https://github.com/ekmett/lens/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="benchmark-uniplate dump-splices +inlining j old-inline-pragmas safe +test-doctests +test-templates +trustworthy"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/base-orphans-0.3:=[profile?] <dev-haskell/base-orphans-1:=[profile?]
 	>=dev-haskell/bifunctors-5:=[profile?] <dev-haskell/bifunctors-6:=[profile?]

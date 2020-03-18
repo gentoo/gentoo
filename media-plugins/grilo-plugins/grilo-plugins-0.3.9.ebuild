@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit gnome.org meson xdg
 
@@ -11,8 +11,9 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="daap chromaprint flickr freebox gnome-online-accounts lua test thetvdb tracker upnp-av +youtube"
+RESTRICT="!test? ( test )"
 
 # GOA is only optionally used by flickr and lua-factory plugins (checked at v0.3.8)
 # json-glib used by tmdb and lua; tmdb currently non-optional
@@ -21,7 +22,7 @@ RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=media-libs/grilo-0.3.8:${SLOT}=[network,playlist]
 	freebox? (
-		net-dns/avahi )
+		net-dns/avahi[dbus] )
 	>=dev-libs/gom-0.3.2-r1
 	chromaprint? (
 		media-libs/gstreamer:1.0

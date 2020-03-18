@@ -416,7 +416,6 @@ just_headers() {
 glibc_banner() {
 	local b="Gentoo ${PVR}"
 	[[ -n ${SNAP_VER} ]] && b+=" snapshot ${SNAP_VER}"
-	[[ -n ${BRANCH_UPDATE} ]] && b+=" branch ${BRANCH_UPDATE}"
 	[[ -n ${PATCH_VER} ]] && ! use vanilla && b+=" p${PATCH_VER}"
 	echo "${b}"
 }
@@ -516,7 +515,7 @@ toolchain-glibc_pkg_pretend() {
 		if has_version ">${CATEGORY}/${P}-r10000" ; then
 			eerror "Sanity check to keep you from breaking your system:"
 			eerror " Downgrading glibc is not supported and a sure way to destruction"
-			die "aborting to save your system"
+			[[ ${I_ALLOW_TO_BREAK_MY_SYSTEM} = yes ]] || die "Aborting to save your system."
 		fi
 
 		if ! glibc_run_test '#include <pwd.h>\nint main(){return getpwuid(0)==0;}\n'
@@ -740,17 +739,6 @@ toolchain-glibc_src_unpack() {
 }
 
 toolchain-glibc_src_prepare() {
-	# XXX: We should do the branchupdate, before extracting the manpages and
-	# infopages else it does not help much (mtimes change if there is a change
-	# to them with branchupdate)
-	if [[ -n ${BRANCH_UPDATE} ]] ; then
-		epatch "${DISTDIR}"/glibc-${RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
-
-		# Snapshot date patch
-		einfo "Patching version to display snapshot date ..."
-		sed -i -e "s:\(#define RELEASE\).*:\1 \"${BRANCH_UPDATE}\":" version.h
-	fi
-
 	# tag, glibc is it
 	if ! version_is_at_least 2.17 ; then
 		[[ -e csu/Banner ]] && die "need new banner location"
@@ -1395,23 +1383,6 @@ toolchain-glibc_headers_install() {
 	dosym usr/include $(alt_prefix)/sys-include
 }
 
-src_strip() {
-	# gdb is lame and requires some debugging information to remain in
-	# libpthread, so we need to strip it by hand.  libthread_db makes no
-	# sense stripped as it is only used when debugging.
-	local pthread=$(has splitdebug ${FEATURES} && echo "libthread_db" || echo "lib{pthread,thread_db}")
-	env \
-		-uRESTRICT \
-		CHOST=${CTARGET} \
-		STRIP_MASK="/*/{,tls/}${pthread}*" \
-		prepallstrip
-	# if user has stripping enabled and does not have split debug turned on,
-	# then leave the debugging sections in libpthread.
-	if ! has nostrip ${FEATURES} && ! has splitdebug ${FEATURES} ; then
-		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"/*/libpthread-*.so
-	fi
-}
-
 toolchain-glibc_src_install() {
 	if just_headers ; then
 		export ABI=default
@@ -1420,7 +1391,6 @@ toolchain-glibc_src_install() {
 	fi
 
 	foreach_abi toolchain-glibc_do_src_install
-	src_strip
 }
 
 # Simple test to make sure our new glibc isn't completely broken.

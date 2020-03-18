@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README"
@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/ahoward/fattr"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 each_ruby_test() {
@@ -26,6 +26,5 @@ each_ruby_test() {
 all_ruby_install() {
 	all_fakegem_install
 
-	insinto /usr/share/doc/${PF}
-	doins -r samples
+	dodoc -r samples
 }

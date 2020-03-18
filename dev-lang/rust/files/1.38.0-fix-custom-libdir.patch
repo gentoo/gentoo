@@ -1,0 +1,90 @@
+From 8553cc0681db7fb6b58b25bb3fbd520604a0cc3a Mon Sep 17 00:00:00 2001
+From: O01eg <o01eg@yandex.ru>
+Date: Wed, 7 Aug 2019 23:37:55 +0300
+Subject: [PATCH] Fix double resolving custom libdir
+
+---
+ src/bootstrap/builder.rs | 20 +++++++++++++-------
+ src/bootstrap/dist.rs    | 13 +++++++++----
+ 2 files changed, 22 insertions(+), 11 deletions(-)
+
+diff --git a/src/bootstrap/builder.rs b/src/bootstrap/builder.rs
+index 5a75497173eb..06ccdd8e7f0f 100644
+--- a/src/bootstrap/builder.rs
++++ b/src/bootstrap/builder.rs
+@@ -627,13 +627,7 @@ impl<'a> Builder<'a> {
+             }
+ 
+             fn run(self, builder: &Builder<'_>) -> Interned<PathBuf> {
+-                let compiler = self.compiler;
+-                let config = &builder.build.config;
+-                let lib = if compiler.stage >= 1 && config.libdir_relative().is_some() {
+-                    builder.build.config.libdir_relative().unwrap()
+-                } else {
+-                    Path::new("lib")
+-                };
++                let lib = builder.sysroot_libdir_relative(self.compiler);
+                 let sysroot = builder
+                     .sysroot(self.compiler)
+                     .join(lib)
+@@ -687,6 +681,18 @@ impl<'a> Builder<'a> {
+         }
+     }
+ 
++    /// Returns the compiler's relative libdir where the standard library and other artifacts are
++    /// found for a compiler's sysroot.
++    ///
++    /// For example this returns `lib` on Unix and Windows.
++    pub fn sysroot_libdir_relative(&self, compiler: Compiler) -> &Path {
++        match self.config.libdir_relative() {
++            Some(relative_libdir) if compiler.stage >= 1
++                => relative_libdir,
++            _ => Path::new("lib")
++        }
++    }
++
+     /// Adds the compiler's directory of dynamic libraries to `cmd`'s dynamic
+     /// library lookup path.
+     pub fn add_rustc_lib_path(&self, compiler: Compiler, cmd: &mut Command) {
+diff --git a/src/bootstrap/dist.rs b/src/bootstrap/dist.rs
+index bd012a887c26..213ceb194a81 100644
+--- a/src/bootstrap/dist.rs
++++ b/src/bootstrap/dist.rs
+@@ -469,7 +469,6 @@ impl Step for Rustc {
+         fn prepare_image(builder: &Builder<'_>, compiler: Compiler, image: &Path) {
+             let host = compiler.host;
+             let src = builder.sysroot(compiler);
+-            let libdir = builder.rustc_libdir(compiler);
+ 
+             // Copy rustc/rustdoc binaries
+             t!(fs::create_dir_all(image.join("bin")));
+@@ -481,11 +480,14 @@ impl Step for Rustc {
+ 
+             // Copy runtime DLLs needed by the compiler
+             if libdir_relative.to_str() != Some("bin") {
++                let libdir = builder.rustc_libdir(compiler);
+                 for entry in builder.read_dir(&libdir) {
+                     let name = entry.file_name();
+                     if let Some(s) = name.to_str() {
+                         if is_dylib(s) {
+-                            builder.install(&entry.path(), &image.join(&libdir_relative), 0o644);
++                            // Don't use custom libdir here because ^lib/ will be resolved again
++                            // with installer
++                            builder.install(&entry.path(), &image.join("lib"), 0o644);
+                         }
+                     }
+                 }
+@@ -493,8 +495,11 @@ impl Step for Rustc {
+ 
+             // Copy over the codegen backends
+             let backends_src = builder.sysroot_codegen_backends(compiler);
+-            let backends_rel = backends_src.strip_prefix(&src).unwrap();
+-            let backends_dst = image.join(&backends_rel);
++            let backends_rel = backends_src.strip_prefix(&src).unwrap()
++                .strip_prefix(builder.sysroot_libdir_relative(compiler)).unwrap();
++            // Don't use custom libdir here because ^lib/ will be resolved again with installer
++            let backends_dst = image.join("lib").join(&backends_rel);
++
+             t!(fs::create_dir_all(&backends_dst));
+             builder.cp_r(&backends_src, &backends_dst);
+ 

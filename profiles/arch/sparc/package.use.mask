@@ -1,5 +1,33 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-20)
+# Mask as dev-lang/spidermonkey:0 does not work on sparc, bug #710204
+net-libs/libproxy spidermonkey
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Joonas Niilola <juippis@gentoo.org> (2020-02-08)
+# Dependency not keyworded on this arch.
+dev-libs/dbus-c++ ecore
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Matt Turner <mattst88@gentoo.org> (2019-12-01)
+# Fails to build, bug #676060
+dev-libs/openssl asm
+
+# Eugene Bright <eugene@bright.gdn> (2019-09-09)
+# Missing keyword on dev-embedded/libjaylink
+sys-apps/flashrom jlink-spi
 
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # media-video/pipewire is not keyworded yet
@@ -64,7 +92,7 @@ media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=redis that is masked in this profile.
-dev-python/pyzor test
+mail-filter/pyzor test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
@@ -194,10 +222,6 @@ gnome-base/gvfs nfs
 # dev-lua/lgi lacks sparc keyword, bug #551540
 dev-libs/libpeas lua
 
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
-dev-libs/efl physics sdl
-
 # Alexis Ballier <aballier@gentoo.org> (2015-02-11)
 # Missing ffmpeg deps, bug #510340
 media-video/ffmpeg x265
@@ -317,7 +341,7 @@ x11-misc/xscreensaver new-login
 
 # Pacho Ramos <pacho@gentoo.org> (2012-05-07)
 # libhid is not keyworded
-app-misc/lcdproc hid lcd_devices_mdm166a
+app-misc/lcdproc lcd_devices_mdm166a
 
 # Anthony G. Basile <blueness@gentoo.org> (2011-12-21)
 # Mask the vde flag on tinc because net-misc/vde is not
@@ -326,7 +350,7 @@ net-vpn/tinc vde
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond

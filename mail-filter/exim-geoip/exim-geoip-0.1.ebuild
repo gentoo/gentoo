@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic ltprune
 
 DESCRIPTION="This is an IPv4 and IPv6 capable GeoIP dlfunc library for Exim"
 HOMEPAGE="http://dist.epipe.com/exim/"
@@ -18,12 +18,12 @@ DEPEND="dev-libs/geoip
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/exim-geoipv6-dlfunc-${PV}"
 
-src_configure()	{
+src_configure() {
 	append-cppflags "-I/usr/include/exim"
 	econf
 }
 
-src_install()	{
+src_install() {
 	default
 	prune_libtool_files --all
 }

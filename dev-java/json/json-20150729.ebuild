@@ -29,5 +29,5 @@ java_prepare() {
 
 src_install() {
 	java-pkg-simple_src_install
-	dodoc README || die
+	dodoc README
 }

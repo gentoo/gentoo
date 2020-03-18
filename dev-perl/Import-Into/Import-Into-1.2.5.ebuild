@@ -12,6 +12,7 @@ DESCRIPTION="Import packages into other packages"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86 ~ppc-aix ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/Module-Runtime

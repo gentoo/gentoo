@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,11 +11,11 @@ SRC_URI="mirror://gnu/gforth/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
+KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
 IUSE="emacs"
 
 DEPEND="dev-libs/ffcall
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}"
 
 SITEFILE="50${PN}-gentoo.el"
@@ -31,7 +31,7 @@ src_configure() {
 
 src_compile() {
 	# Parallel make breaks here
-	emake -j1 || die "emake failed"
+	emake -j1
 }
 
 src_install() {

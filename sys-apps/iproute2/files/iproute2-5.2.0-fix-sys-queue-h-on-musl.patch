@@ -1,0 +1,83 @@
+From 33267017faf1a188d1286f5c423454a060517e39 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Fri, 26 Jul 2019 22:01:05 +0100
+Subject: iproute2: devlink: port from sys/queue.h to list.h
+
+sys/queue.h does not exist on linux-musl targets and fails build as:
+
+    devlink.c:28:10: fatal error: sys/queue.h: No such file or directory
+       28 | #include <sys/queue.h>
+          |          ^~~~~~~~~~~~~
+
+The change ports to list.h API and drops dependency of 'sys/queue.h'.
+The API maps one-to-one.
+
+Build-tested on linux-musl and linux-glibc.
+
+Bug: https://bugs.gentoo.org/690486
+CC: Stephen Hemminger <stephen@networkplumber.org>
+CC: netdev@vger.kernel.org
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+Signed-off-by: Stephen Hemminger <stephen@networkplumber.org>
+---
+ devlink/devlink.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/devlink/devlink.c b/devlink/devlink.c
+index bb023c0c..0ea401ae 100644
+--- a/devlink/devlink.c
++++ b/devlink/devlink.c
+@@ -25,7 +25,6 @@
+ #include <linux/devlink.h>
+ #include <libmnl/libmnl.h>
+ #include <netinet/ether.h>
+-#include <sys/queue.h>
+ 
+ #include "SNAPSHOT.h"
+ #include "list.h"
+@@ -5981,13 +5980,13 @@ static int fmsg_value_show(struct dl *dl, int type, struct nlattr *nl_data)
+ 
+ struct nest_qentry {
+ 	int attr_type;
+-	TAILQ_ENTRY(nest_qentry) nest_entries;
++	struct list_head nest_entries;
+ };
+ 
+ struct fmsg_cb_data {
+ 	struct dl *dl;
+ 	uint8_t value_type;
+-	TAILQ_HEAD(, nest_qentry) qhead;
++	struct list_head qhead;
+ };
+ 
+ static int cmd_fmsg_nest_queue(struct fmsg_cb_data *fmsg_data,
+@@ -6001,13 +6000,13 @@ static int cmd_fmsg_nest_queue(struct fmsg_cb_data *fmsg_data,
+ 			return -ENOMEM;
+ 
+ 		entry->attr_type = *attr_value;
+-		TAILQ_INSERT_HEAD(&fmsg_data->qhead, entry, nest_entries);
++		list_add(&fmsg_data->qhead, &entry->nest_entries);
+ 	} else {
+-		if (TAILQ_EMPTY(&fmsg_data->qhead))
++		if (list_empty(&fmsg_data->qhead))
+ 			return MNL_CB_ERROR;
+-		entry = TAILQ_FIRST(&fmsg_data->qhead);
++		entry = list_first_entry(&fmsg_data->qhead, struct nest_qentry, nest_entries);
+ 		*attr_value = entry->attr_type;
+-		TAILQ_REMOVE(&fmsg_data->qhead, entry, nest_entries);
++		list_del(&entry->nest_entries);
+ 		free(entry);
+ 	}
+ 	return MNL_CB_OK;
+@@ -6116,7 +6115,7 @@ static int cmd_health_object_common(struct dl *dl, uint8_t cmd, uint16_t flags)
+ 		return err;
+ 
+ 	data.dl = dl;
+-	TAILQ_INIT(&data.qhead);
++	INIT_LIST_HEAD(&data.qhead);
+ 	err = _mnlg_socket_sndrcv(dl->nlg, nlh, cmd_fmsg_object_cb, &data);
+ 	return err;
+ }
+-- 
+cgit 1.2-0.3.lf.el7
+

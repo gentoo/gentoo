@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,12 +11,14 @@ SRC_URI="mirror://sourceforge/bio-bwa/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 KEYWORDS="~amd64 ~x86 ~x64-macos"
 
 RDEPEND="dev-lang/perl"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.7.15-Makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.15-Makefile.patch
+	"${FILESDIR}"/${PN}-0.7.16a-gcc-10.patch
+)
 DOCS=( NEWS.md README-alt.md README.md )
 
 src_configure() {

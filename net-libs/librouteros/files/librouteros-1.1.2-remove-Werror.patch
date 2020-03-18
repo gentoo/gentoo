@@ -1,0 +1,11 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,7 +1,7 @@
+ AUTOMAKE_OPTIONS = foreign no-dependencies
+ 
+ if COMPILER_IS_GCC
+-AM_CFLAGS = -Wall -Werror
++AM_CFLAGS = -Wall
+ if BUILD_WITH_DEBUG
+ AM_CFLAGS += -Wextra -g -O0
+ endif

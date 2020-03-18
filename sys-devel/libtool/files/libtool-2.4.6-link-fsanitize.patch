@@ -13,15 +13,10 @@ linker to allow trivial use of the clang address sanitizer.
 
 Signed-off-by: Jeremy Huddleston Sequoia <jeremyhu@macports.org>
 Copyright-paperwork-exempt: Yes
----
- build-aux/ltmain.in | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/build-aux/ltmain.in b/build-aux/ltmain.in
-index 1cbe875..2a5aaad 100644
 --- a/build-aux/ltmain.in
 +++ b/build-aux/ltmain.in
-@@ -5382,10 +5382,11 @@ func_mode_link ()
+@@ -5362,10 +5362,11 @@
        # -O*, -g*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
        # -specs=*             GCC specs files
        # -stdlib=*            select c++ std lib with clang
@@ -34,13 +29,9 @@ index 1cbe875..2a5aaad 100644
          func_quote_for_eval "$arg"
  	arg=$func_quote_for_eval_result
          func_append compile_command " $arg"
-
-patch the generated file too to keep help2man from generating man pages
-https://bugs.gentoo.org/556512
-
 --- a/build-aux/ltmain.sh
 +++ b/build-aux/ltmain.sh
-@@ -5382,10 +5382,11 @@ func_mode_link ()
+@@ -7274,10 +7274,11 @@
        # -O*, -g*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
        # -specs=*             GCC specs files
        # -stdlib=*            select c++ std lib with clang
@@ -53,6 +44,3 @@ https://bugs.gentoo.org/556512
          func_quote_for_eval "$arg"
  	arg=$func_quote_for_eval_result
          func_append compile_command " $arg"
--- 
-2.6.2
-

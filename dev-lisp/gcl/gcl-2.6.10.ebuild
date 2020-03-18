@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE="+ansi athena emacs +readline tk X"
 # See bug #205803
 RESTRICT="strip"
 
-RDEPEND="emacs? ( virtual/emacs )
+RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	readline? ( sys-libs/readline:= )
 	athena? ( x11-libs/libXaw )
 	>=dev-libs/gmp-4.1:=

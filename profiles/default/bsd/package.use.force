@@ -1,3 +1,0 @@
-# Javier Villavicencio <the_paya@gentoo.org> (2009-01-22)
-# Otherwise useless tar.
-app-arch/libarchive bzip2 zlib lzma

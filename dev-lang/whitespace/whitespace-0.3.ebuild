@@ -28,6 +28,6 @@ src_prepare() {
 src_install() {
 	cabal_src_install
 
-	dohtml docs/tutorial.html || die "dohtml failed"
-	use examples && { dodoc -r examples || die "dodoc failed"; }
+	dohtml docs/tutorial.html
+	use examples && dodoc -r examples
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -34,14 +34,14 @@ HOMEPAGE="https://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-solaris"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	( >=sys-libs/db-3.2:= <sys-libs/db-6:= )
 	dev-libs/libpcre
 	idn? ( net-dns/libidn:= net-dns/libidn2:= )
 	perl? ( dev-lang/perl:= )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -487,11 +487,10 @@ src_configure() {
 
 src_compile() {
 	emake CC="$(tc-getCC)" HOSTCC="$(tc-getBUILD_CC)" \
-		AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" FULLECHO='' \
-		|| die "make failed"
+		AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" FULLECHO=''
 }
 
-src_install () {
+src_install() {
 	cd "${S}"/build-exim-gentoo || die
 	dosbin exim
 	if use X; then

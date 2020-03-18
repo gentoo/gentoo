@@ -1,0 +1,216 @@
+Only in b: .openssh-7_8_P1-hpn-AES-CTR-14.16.diff.un~
+Only in b: .openssh-7_8_P1-hpn-DynWinNoneSwitch-14.16.diff.un~
+diff -ru a/openssh-7_8_P1-hpn-AES-CTR-14.16.diff b/openssh-7_8_P1-hpn-AES-CTR-14.16.diff
+--- a/openssh-7_8_P1-hpn-AES-CTR-14.16.diff	2019-10-10 13:48:31.513603947 -0700
++++ b/openssh-7_8_P1-hpn-AES-CTR-14.16.diff	2019-10-10 13:50:15.012495676 -0700
+@@ -17,8 +17,8 @@
+  	canohost.o channels.o cipher.o cipher-aes.o cipher-aesctr.o \
+ -	cipher-ctr.o cleanup.o \
+ +	cipher-ctr.o cleanup.o cipher-ctr-mt.o \
+- 	compat.o crc32.o fatal.o hostfile.o \
+- 	log.o match.o moduli.o nchan.o packet.o opacket.o \
++ 	compat.o fatal.o hostfile.o \
++ 	log.o match.o moduli.o nchan.o packet.o \
+  	readpass.o ttymodes.o xmalloc.o addrmatch.o \
+ diff --git a/cipher-ctr-mt.c b/cipher-ctr-mt.c
+ new file mode 100644
+@@ -998,7 +998,7 @@
+ +		 * so we repoint the define to the multithreaded evp. To start the threads we
+ +		 * then force a rekey
+ +		 */
+-+		const void *cc = ssh_packet_get_send_context(active_state);
+++		const void *cc = ssh_packet_get_send_context(ssh);
+ +		
+ +		/* only do this for the ctr cipher. otherwise gcm mode breaks. Don't know why though */
+ +		if (strstr(cipher_ctx_name(cc), "ctr")) {
+@@ -1028,7 +1028,7 @@
+ +		 * so we repoint the define to the multithreaded evp. To start the threads we
+ +		 * then force a rekey
+ +		 */
+-+		const void *cc = ssh_packet_get_send_context(active_state);
+++		const void *cc = ssh_packet_get_send_context(ssh);
+ +		
+ +		/* only rekey if necessary. If we don't do this gcm mode cipher breaks */
+ +		if (strstr(cipher_ctx_name(cc), "ctr")) {
+diff -ru a/openssh-7_8_P1-hpn-DynWinNoneSwitch-14.16.diff b/openssh-7_8_P1-hpn-DynWinNoneSwitch-14.16.diff
+--- a/openssh-7_8_P1-hpn-DynWinNoneSwitch-14.16.diff	2019-10-10 13:47:54.801642144 -0700
++++ b/openssh-7_8_P1-hpn-DynWinNoneSwitch-14.16.diff	2019-10-10 15:58:05.085803333 -0700
+@@ -162,24 +162,24 @@
+  }
+  
+ +static int
+-+channel_tcpwinsz(void)
+++channel_tcpwinsz(struct ssh *ssh)
+ +{
+ +	u_int32_t tcpwinsz = 0;
+ +	socklen_t optsz = sizeof(tcpwinsz);
+ +	int ret = -1;
+ +
+ +	/* if we aren't on a socket return 128KB */
+-+	if (!packet_connection_is_on_socket())
+++	if (!ssh_packet_connection_is_on_socket(ssh))
+ +		return 128 * 1024;
+ +
+-+	ret = getsockopt(packet_get_connection_in(),
+++	ret = getsockopt(ssh_packet_get_connection_in(ssh),
+ +			 SOL_SOCKET, SO_RCVBUF, &tcpwinsz, &optsz);
+ +	/* return no more than SSHBUF_SIZE_MAX (currently 256MB) */
+ +	if ((ret == 0) && tcpwinsz > SSHBUF_SIZE_MAX)
+ +		tcpwinsz = SSHBUF_SIZE_MAX;
+ +
+ +	debug2("tcpwinsz: tcp connection %d, Receive window: %d",
+-+	       packet_get_connection_in(), tcpwinsz);
+++	       ssh_packet_get_connection_in(ssh), tcpwinsz);
+ +	return tcpwinsz;
+ +}
+ +
+@@ -191,7 +191,7 @@
+  	    c->local_window < c->local_window_max/2) &&
+  	    c->local_consumed > 0) {
+ +		u_int addition = 0;
+-+		u_int32_t tcpwinsz = channel_tcpwinsz();
+++		u_int32_t tcpwinsz = channel_tcpwinsz(ssh);
+ +		/* adjust max window size if we are in a dynamic environment */
+ +		if (c->dynamic_window && (tcpwinsz > c->local_window_max)) {
+ +			/* grow the window somewhat aggressively to maintain pressure */
+@@ -409,18 +409,10 @@
+ index dcf35e6..da4ced0 100644
+ --- a/packet.c
+ +++ b/packet.c
+-@@ -920,6 +920,24 @@ ssh_set_newkeys(struct ssh *ssh, int mode)
++@@ -920,6 +920,16 @@ ssh_set_newkeys(struct ssh *ssh, int mode)
+  	return 0;
+  }
+  
+-+/* this supports the forced rekeying required for the NONE cipher */
+-+int rekey_requested = 0;
+-+void
+-+packet_request_rekeying(void)
+-+{
+-+	rekey_requested = 1;
+-+}
+-+
+ +/* used to determine if pre or post auth when rekeying for aes-ctr
+ + * and none cipher switch */
+ +int
+@@ -434,20 +426,6 @@
+  #define MAX_PACKETS	(1U<<31)
+  static int
+  ssh_packet_need_rekeying(struct ssh *ssh, u_int outbound_packet_len)
+-@@ -946,6 +964,13 @@ ssh_packet_need_rekeying(struct ssh *ssh, u_int outbound_packet_len)
+- 	if (state->p_send.packets == 0 && state->p_read.packets == 0)
+- 		return 0;
+- 
+-+	/* used to force rekeying when called for by the none
+-+         * cipher switch methods -cjr */
+-+        if (rekey_requested == 1) {
+-+                rekey_requested = 0;
+-+                return 1;
+-+        }
+-+
+- 	/* Time-based rekeying */
+- 	if (state->rekey_interval != 0 &&
+- 	    (int64_t)state->rekey_time + state->rekey_interval <= monotime())
+ diff --git a/packet.h b/packet.h
+ index 170203c..f4d9df2 100644
+ --- a/packet.h
+@@ -476,9 +454,9 @@
+  /* Format of the configuration file:
+  
+ @@ -166,6 +167,8 @@ typedef enum {
+- 	oHashKnownHosts,
+  	oTunnel, oTunnelDevice,
+  	oLocalCommand, oPermitLocalCommand, oRemoteCommand,
++ 	oDisableMTAES,
+ +	oTcpRcvBufPoll, oTcpRcvBuf, oHPNDisabled, oHPNBufferSize,
+ +	oNoneEnabled, oNoneSwitch,
+  	oVisualHostKey,
+@@ -615,9 +593,9 @@
+  	int	ip_qos_bulk;		/* IP ToS/DSCP/class for bulk traffic */
+  	SyslogFacility log_facility;	/* Facility for system logging. */
+ @@ -111,7 +115,10 @@ typedef struct {
+- 
+  	int	enable_ssh_keysign;
+  	int64_t rekey_limit;
++ 	int     disable_multithreaded; /*disable multithreaded aes-ctr*/
+ +	int     none_switch;    /* Use none cipher */
+ +	int     none_enabled;   /* Allow none to be used */
+  	int	rekey_interval;
+@@ -633,7 +611,7 @@
+  	off_t i, statbytes;
+  	size_t amt, nr;
+  	int fd = -1, haderr, indx;
+--	char *last, *name, buf[2048], encname[PATH_MAX];
++-	char *last, *name, buf[PATH_MAX + 128], encname[PATH_MAX];
+ +	char *last, *name, buf[16384], encname[PATH_MAX];
+  	int len;
+  
+@@ -673,9 +651,9 @@
+  	/* Portable-specific options */
+  	if (options->use_pam == -1)
+ @@ -391,6 +400,43 @@ fill_default_server_options(ServerOptions *options)
+- 	}
+- 	if (options->permit_tun == -1)
+  		options->permit_tun = SSH_TUNMODE_NO;
++ 	if (options->disable_multithreaded == -1)
++ 		options->disable_multithreaded = 0;
+ +	if (options->none_enabled == -1)
+ +		options->none_enabled = 0;
+ +	if (options->hpn_disabled == -1)
+@@ -1092,7 +1070,7 @@
+  	xxx_host = host;
+  	xxx_hostaddr = hostaddr;
+  
+-@@ -412,6 +423,28 @@ ssh_userauth2(const char *local_user, const char *server_user, char *host,
++@@ -412,6 +423,27 @@ ssh_userauth2(const char *local_user, const char *server_user, char *host,
+  
+  	if (!authctxt.success)
+  		fatal("Authentication failed.");
+@@ -1108,7 +1086,7 @@
+ +			memcpy(&myproposal, &myproposal_default, sizeof(myproposal));
+ +			myproposal[PROPOSAL_ENC_ALGS_STOC] = "none";
+ +			myproposal[PROPOSAL_ENC_ALGS_CTOS] = "none";
+-+			kex_prop2buf(active_state->kex->my, myproposal);
+++			kex_prop2buf(ssh->kex->my, myproposal);
+ +			packet_request_rekeying();
+ +			fprintf(stderr, "WARNING: ENABLED NONE CIPHER\n");
+ +		} else {
+@@ -1117,23 +1095,13 @@
+ +			fprintf(stderr, "NONE cipher switch disabled when a TTY is allocated\n");
+ +		}
+ +	}
+-+
+- 	debug("Authentication succeeded (%s).", authctxt.method->name);
+- }
+  
++ #ifdef WITH_OPENSSL
++ 	if (options.disable_multithreaded == 0) {
+ diff --git a/sshd.c b/sshd.c
+ index a738c3a..b32dbe0 100644
+ --- a/sshd.c
+ +++ b/sshd.c
+-@@ -373,7 +373,7 @@ sshd_exchange_identification(struct ssh *ssh, int sock_in, int sock_out)
+- 	char remote_version[256];	/* Must be at least as big as buf. */
+- 
+- 	xasprintf(&server_version_string, "SSH-%d.%d-%.100s%s%s\r\n",
+--	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION,
+-+	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_RELEASE,
+- 	    *options.version_addendum == '\0' ? "" : " ",
+- 	    options.version_addendum);
+- 
+ @@ -1037,6 +1037,8 @@ listen_on_addrs(struct listenaddr *la)
+  	int ret, listen_sock;
+  	struct addrinfo *ai;
+@@ -1217,11 +1185,10 @@
+ index f1bbf00..21a70c2 100644
+ --- a/version.h
+ +++ b/version.h
+-@@ -3,4 +3,6 @@
++@@ -3,4 +3,5 @@
+  #define SSH_VERSION	"OpenSSH_7.8"
+  
+  #define SSH_PORTABLE	"p1"
+ -#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
+-+#define SSH_HPN         "-hpn14v16"
+ +#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE SSH_HPN
+ + 

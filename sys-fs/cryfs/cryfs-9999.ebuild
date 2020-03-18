@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils flag-o-matic linux-info python-any-r1
+PYTHON_COMPAT=( python3_{6,7} )
+inherit cmake flag-o-matic linux-info python-any-r1
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -25,6 +25,7 @@ HOMEPAGE="https://www.cryfs.org/"
 LICENSE="LGPL-3 MIT Boost-1.0"
 SLOT="0"
 IUSE="custom-optimization debug libressl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/boost-1.65.1:=
@@ -45,7 +46,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# don't install compressed manpage
 	cmake_comment_add_subdirectory doc
@@ -53,6 +54,10 @@ src_prepare() {
 	# remove tests that require internet access to comply with Gentoo policy
 	sed -e "/CurlHttpClientTest.cpp/d" -e "/FakeHttpClientTest.cpp/d" \
 		-i test/cpp-utils/CMakeLists.txt || die
+
+	# /dev/fuse access denied
+	sed -e "/CliTest_IntegrityCheck/d" \
+		-i test/cryfs-cli/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -64,20 +69,17 @@ src_configure() {
 	)
 	use custom-optimization || append-flags -O3
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	local TMPDIR="${T}"
-	addread /dev/fuse
-	addwrite /dev/fuse
 	local tests_failed=()
 
-	for i in gitversion cpp-utils parallelaccessstore blockstore blobstore fspp cryfs cryfs-cli ; do
+	# fspp fuse tests hang, bug # 699044
+	for i in gitversion cpp-utils parallelaccessstore blockstore blobstore cryfs cryfs-cli ; do
 		"${BUILD_DIR}"/test/${i}/${i}-test || tests_failed+=( "${i}" )
 	done
-
-	adddeny /dev/fuse
 
 	if [[ -n ${tests_failed[@]} ]] ; then
 		eerror "The following tests failed:"

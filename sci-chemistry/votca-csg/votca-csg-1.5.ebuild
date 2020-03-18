@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ SLOT="0"
 RDEPEND="
 	~sci-libs/votca-tools-${PV}
 	>=dev-cpp/eigen-3.3
-	gromacs? ( sci-chemistry/gromacs:= )
+	gromacs? ( <sci-chemistry/gromacs-2020:= )
 	hdf5? ( sci-libs/hdf5 )
 	dev-lang/perl
 	app-shells/bash:*"

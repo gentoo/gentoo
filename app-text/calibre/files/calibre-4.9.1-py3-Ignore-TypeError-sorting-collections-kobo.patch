@@ -1,0 +1,63 @@
+From 6f947d88d323bb08bb6e076d442662aa281fe197 Mon Sep 17 00:00:00 2001
+From: Zac Medico <zmedico@gentoo.org>
+Date: Sun, 9 Feb 2020 12:16:04 -0800
+Subject: [PATCH] py3: Ignore TypeError when sorting device collections for
+ kobo driver
+
+https://github.com/kovidgoyal/calibre/pull/1098
+
+Use the same approach as the usbms driver when cmp raises a
+TypeError (see a8deb4b1f8dfb768a32b95b1540be32d5d6e871e).
+
+This should suppress the following error which was reported for
+python3 and not python2:
+
+Traceback (most recent call last):
+  File "/usr/lib64/calibre/calibre/gui2/device.py", line 90, in run
+    self.result = self.func(*self.args, **self.kwargs)
+  File "/usr/lib64/calibre/calibre/gui2/device.py", line 543, in _sync_booklists
+    self.device.sync_booklists(booklists, end_session=False)
+  File "/usr/lib64/calibre/calibre/devices/kobo/driver.py", line 970, in sync_booklists
+    self.update_device_database_collections(blist, collections, oncard)
+  File "/usr/lib64/calibre/calibre/devices/kobo/driver.py", line 2398, in update_device_database_collections
+    collections = booklists.get_collections(collections_attributes) if bookshelf_attribute else None
+  File "/usr/lib64/calibre/calibre/devices/kobo/books.py", line 314, in get_collections
+    books = sorted(itervalues(lpaths), key=cmp_to_key(none_cmp))
+  File "/usr/lib64/calibre/calibre/devices/kobo/books.py", line 307, in none_cmp
+    c = cmp(x, y)
+  File "/usr/lib64/calibre/polyglot/builtins.py", line 106, in cmp
+    return (a > b) - (a < b)
+TypeError: '>' not supported between instances of 'float' and 'str'
+
+See: https://bugs.gentoo.org/708742
+---
+ src/calibre/devices/kobo/books.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/calibre/devices/kobo/books.py b/src/calibre/devices/kobo/books.py
+index f725751d00..fc1dee6b7e 100644
+--- a/src/calibre/devices/kobo/books.py
++++ b/src/calibre/devices/kobo/books.py
+@@ -304,11 +304,17 @@ class KTCollectionsBookList(CollectionsBookList):
+                 return -1
+             if isinstance(x, string_or_bytes) and isinstance(y, string_or_bytes):
+                 x, y = sort_key(force_unicode(x)), sort_key(force_unicode(y))
+-            c = cmp(x, y)
++            try:
++                c = cmp(x, y)
++            except TypeError:
++                c = 0
+             if c != 0:
+                 return c
+             # same as above -- no sort_key needed here
+-            return cmp(xx[2], yy[2])
++            try:
++                return cmp(xx[2], yy[2])
++            except TypeError:
++                return 0
+ 
+         for category, lpaths in iteritems(collections):
+             books = sorted(itervalues(lpaths), key=cmp_to_key(none_cmp))
+-- 
+2.24.1
+

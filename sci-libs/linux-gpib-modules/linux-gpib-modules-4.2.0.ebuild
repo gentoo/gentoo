@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ PATCHES=(
 
 S=${WORKDIR}/linux-gpib-kernel-${PV}
 
-pkg_setup () {
+pkg_setup() {
 	linux-mod_pkg_setup
 
 	if kernel_is -lt 2 6 8; then
@@ -45,7 +45,7 @@ src_unpack() {
 	unpack "${WORKDIR}/linux-gpib-${PV}/linux-gpib-kernel-${PV}.tar.gz"
 }
 
-src_prepare () {
+src_prepare() {
 	default
 	eautoreconf
 }
@@ -78,11 +78,11 @@ src_install() {
 	dodoc ChangeLog AUTHORS README* NEWS
 }
 
-pkg_preinst () {
+pkg_preinst() {
 	linux-mod_pkg_preinst
 	enewgroup gpib
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	linux-mod_pkg_postinst
 }

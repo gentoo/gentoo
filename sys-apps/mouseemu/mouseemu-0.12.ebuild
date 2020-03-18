@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Emulates scrollwheel, right- & left-click for one-button mice/touchpads"
 HOMEPAGE="http://geekounet.org/powerbook/"
-SRC_URI="mirror://gentoo/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

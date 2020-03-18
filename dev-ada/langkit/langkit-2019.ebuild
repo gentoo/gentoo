@@ -16,8 +16,9 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8f8a31e87a8f1c967d31
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,7 +55,7 @@ src_compile() {
 	sed -i -e "s:${D}::g" sc.1 || die
 }
 
-src_install () {
+src_install() {
 	dodir /usr/bin
 	dodir /usr/$(get_libdir)/sc
 	dodir /usr/share/man/man1

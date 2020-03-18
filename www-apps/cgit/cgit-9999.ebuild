@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=5
 
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit webapp eutils multilib user toolchain-funcs git-2
+inherit webapp eutils multilib user toolchain-funcs git-r3
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/openssl:0
 	virtual/httpd-cgi
 	highlight? ( || ( dev-python/pygments app-text/highlight ) )
-	lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) )
+	lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua:0 ) )
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken
 DEPEND="${RDEPEND}
@@ -36,13 +36,11 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	webapp_pkg_setup
-	enewuser "${PN}"
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
 src_prepare() {
-	git submodule init || die
-	git submodule update || die
-
 	echo "prefix = ${EPREFIX}/usr" >> cgit.conf
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf
 	echo "CGIT_SCRIPT_PATH = ${MY_CGIBINDIR}" >> cgit.conf

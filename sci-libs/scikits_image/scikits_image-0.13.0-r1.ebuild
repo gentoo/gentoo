@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 eutils virtualx
 
@@ -18,6 +18,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc freeimage pyamg test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/matplotlib[${PYTHON_USEDEP}]
@@ -44,7 +45,7 @@ python_test() {
 	echo "backend : Agg" > matplotlibrc || die
 	#echo "backend.qt4 : PyQt4" >> matplotlibrc || die
 	#echo "backend.qt4 : PySide" >> matplotlibrc || die
-	MPLCONFIGDIR=. virtx nosetests --exe -v skimage || die
+	MPLCONFIGDIR=. virtx nosetests --exe -v skimage
 }
 
 pkg_postinst() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc-10.patch )
 S=${WORKDIR}/${P}/src
 
 src_install() {

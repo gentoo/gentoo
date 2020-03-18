@@ -12,6 +12,7 @@ DESCRIPTION="Faster implementation of HTTP::Headers"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/HTTP-Date

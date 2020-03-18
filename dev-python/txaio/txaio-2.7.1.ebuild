@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -14,11 +14,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
-	$(python_gen_cond_dep '>=dev-python/trollius-2.0[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep '>=dev-python/futures-3.0.3[${PYTHON_USEDEP}]' python2_7)
-"
 DEPEND="app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]

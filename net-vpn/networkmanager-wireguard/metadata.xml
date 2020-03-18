@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		This project is a VPN Plugin for NetworkManager that handles client-side WireGuard connections.
+		It is based on the OpenVPN Plugin and was started as a Bachelor's Thesis at SBA Research.
+	</longdescription>
+	<use>
+		<flag name="glib">Enable libnm-glib compatibility.</flag>
+	</use>
+</pkgmetadata>

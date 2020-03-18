@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,12 +11,12 @@ inherit haskell-cabal
 
 DESCRIPTION="A Minimalistic Text Based Status Bar"
 HOMEPAGE="http://xmobar.org"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa dbus inotify mpd mpris timezone wifi with_conduit with_uvmeter xft xpm"
+IUSE="alsa dbus inotify mpd mpris timezone wifi conduit uvmeter xft xpm"
 
 RDEPEND=">=dev-haskell/http-4000.2.4:=
 	>=dev-haskell/mtl-2.1:= <dev-haskell/mtl-2.3:=
@@ -38,7 +38,7 @@ RDEPEND=">=dev-haskell/http-4000.2.4:=
 	timezone? ( >=dev-haskell/timezone-olson-0.1:= <dev-haskell/timezone-olson-0.2:=
 			>=dev-haskell/timezone-series-0.1:= <dev-haskell/timezone-series-0.2:= )
 	wifi? ( net-wireless/wireless-tools )
-	with_conduit? ( dev-haskell/http-conduit:=
+	conduit? ( dev-haskell/http-conduit:=
 			dev-haskell/http-types:= )
 	xft? ( >=dev-haskell/x11-xft-0.2:= <dev-haskell/x11-xft-0.4:= )
 	xpm? ( x11-libs/libXpm )
@@ -73,7 +73,7 @@ src_configure() {
 	haskell-cabal_src_configure \
 		--flag=-all_extensions \
 		$(cabal_flag alsa with_alsa) \
-		$(cabal_flag with_conduit with_conduit) \
+		$(cabal_flag conduit with_conduit) \
 		$(cabal_flag timezone with_datezone) \
 		$(cabal_flag dbus with_dbus) \
 		$(cabal_flag inotify with_inotify) \
@@ -82,7 +82,7 @@ src_configure() {
 		$(cabal_flag mpris with_mpris) \
 		--flag=with_threaded \
 		--flag=with_utf8 \
-		$(cabal_flag with_uvmeter with_uvmeter) \
+		$(cabal_flag uvmeter with_uvmeter) \
 		$(cabal_flag xft with_xft) \
 		$(cabal_flag xpm with_xpm)
 }

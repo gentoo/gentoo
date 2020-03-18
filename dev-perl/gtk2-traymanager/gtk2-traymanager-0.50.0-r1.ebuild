@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ MODULE_VERSION=0.05
 inherit perl-module
 
 DESCRIPTION="Perl bindings for EggTrayManager"
-HOMEPAGE="http://gtk2-perl.sf.net/ ${HOMEPAGE}"
+HOMEPAGE="http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-TrayManager"
 
 SLOT="0"
 LICENSE="LGPL-2"

@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-inherit cmake-utils python-single-r1
+PYTHON_COMPAT=( python3_6 )
+inherit cmake python-single-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -24,7 +24,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	dev-lang/swig
-	doc? ( app-doc/doxygen[latex] )
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
 "
 RDEPEND="${PYTHON_DEPS}
 	media-libs/freeglut
@@ -35,7 +42,7 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package doc Doxygen)
+		$(cmake_use_find_package doc Doxygen)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

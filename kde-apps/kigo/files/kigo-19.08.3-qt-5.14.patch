@@ -1,0 +1,24 @@
+From 56480c9c752722f6eaf9fd0fe6798a473a09d978 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Wed, 30 Oct 2019 13:33:33 +0100
+Subject: Make it compile against qt5.15, This enum is unused
+
+---
+ src/gui/graphicsview/gameview.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gui/graphicsview/gameview.cpp b/src/gui/graphicsview/gameview.cpp
+index 603ff70..12ef2bf 100644
+--- a/src/gui/graphicsview/gameview.cpp
++++ b/src/gui/graphicsview/gameview.cpp
+@@ -33,7 +33,7 @@ GameView::GameView(GameScene *scene, QWidget *parent)
+     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+     setFrameStyle(QFrame::NoFrame);
+-    setOptimizationFlags(QGraphicsView::DontClipPainter |
++    setOptimizationFlags(
+                          QGraphicsView::DontSavePainterState |
+                          QGraphicsView::DontAdjustForAntialiasing);
+ 
+-- 
+cgit v1.1

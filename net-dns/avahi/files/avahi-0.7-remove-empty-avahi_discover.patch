@@ -1,0 +1,77 @@
+From ffb19d8f3c7f1fe4f31f79f8601dd3079730401b Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Fri, 27 Apr 2018 09:01:13 +0100
+Subject: [PATCH] Remove empty avahi_discover Python module
+
+The avahi-discover tool no longer has any code outside its main
+executable, so it does not need to install library modules. Its only
+library code was avahi_discover.SimpleGladeApp, which was removed
+in 2009.
+
+Signed-off-by: Simon McVittie <smcv@debian.org>
+---
+ avahi-python/avahi-discover/Makefile.am |  6 ------
+ avahi-python/avahi-discover/__init__.py | 18 ------------------
+ 2 files changed, 24 deletions(-)
+ delete mode 100755 avahi-python/avahi-discover/__init__.py
+
+diff --git a/avahi-python/avahi-discover/Makefile.am b/avahi-python/avahi-discover/Makefile.am
+index 5fc4b25f..bb4d7172 100644
+--- a/avahi-python/avahi-discover/Makefile.am
++++ b/avahi-python/avahi-discover/Makefile.am
+@@ -18,7 +18,6 @@
+ AM_CFLAGS=-I$(top_srcdir)
+ 
+ EXTRA_DIST = \
+-	__init__.py \
+ 	avahi-discover.py \
+ 	avahi-discover.desktop.in.in
+ 
+@@ -31,15 +30,11 @@ pythonscripts =
+ desktopdir = $(datadir)/applications
+ desktop_DATA =
+ 
+-avahi_discoverdir = $(pythondir)/avahi_discover
+-avahi_discover_PYTHON =
+-
+ if HAVE_GDBM
+ pythonscripts += \
+ 	avahi-discover
+ desktop_DATA += avahi-discover.desktop
+ @INTLTOOL_DESKTOP_RULE@
+-avahi_discover_PYTHON += __init__.py
+ endif
+ 
+ if HAVE_DBM
+@@ -47,7 +42,6 @@ pythonscripts += \
+ 	avahi-discover
+ desktop_DATA += avahi-discover.desktop
+ @INTLTOOL_DESKTOP_RULE@
+-avahi_discover_PYTHON += __init__.py
+ endif
+ 
+ avahi-discover.desktop.in: avahi-discover.desktop.in.in
+diff --git a/avahi-python/avahi-discover/__init__.py b/avahi-python/avahi-discover/__init__.py
+deleted file mode 100755
+index 6f3ec7f9..00000000
+--- a/avahi-python/avahi-discover/__init__.py
++++ /dev/null
+@@ -1,18 +0,0 @@
+-#!@PYTHON@
+-# -*-python-*-
+-# This file is part of avahi.
+-#
+-# avahi is free software; you can redistribute it and/or modify it
+-# under the terms of the GNU Lesser General Public License as
+-# published by the Free Software Foundation; either version 2 of the
+-# License, or (at your option) any later version.
+-#
+-# avahi is distributed in the hope that it will be useful, but WITHOUT
+-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+-# or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
+-# License for more details.
+-#
+-# You should have received a copy of the GNU Lesser General Public
+-# License along with avahi; if not, write to the Free Software
+-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+-# USA.

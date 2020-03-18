@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit multilib autotools python-r1 eutils
+inherit multilib autotools ltprune python-r1 eutils
 
 DESCRIPTION="A standards compliant, fast, light-weight, extensible window manager"
 HOMEPAGE="http://openbox.org/"
@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz
 	branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
 fi
 
 LICENSE="GPL-2"
@@ -62,7 +62,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
 		$(use_enable nls) \

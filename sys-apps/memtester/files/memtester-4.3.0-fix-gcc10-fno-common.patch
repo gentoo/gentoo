@@ -1,0 +1,31 @@
+--- a/tests.c
++++ b/tests.c
+@@ -27,6 +27,9 @@
+ #define PROGRESSOFTEN 2500
+ #define ONE 0x00000001L
+ 
++union mword8_type mword8;
++union mword16_type mword16;
++
+ /* Function definitions. */
+ 
+ int compare_regions(ulv *bufa, ulv *bufb, size_t count) {
+--- a/types.h
++++ b/types.h
+@@ -25,12 +25,12 @@
+     int (*fp)();
+ };
+ 
+-union {
++union mword8_type {
+     unsigned char bytes[UL_LEN/8];
+     ul val;
+-} mword8;
++};
+ 
+-union {
++union mword16_type {
+     unsigned short u16s[UL_LEN/16];
+     ul val;
+-} mword16;
++};

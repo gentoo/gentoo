@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="AirTraf 802.11b Wireless traffic sniffer"
 LICENSE="GPL-2"
 HOMEPAGE="http://www.elixar.com/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://www.elixar.com/${P}.tar.gz"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
@@ -43,11 +43,10 @@ src_compile() {
 		CXX=$(tc-getCXX) \
 		CFLAGS="${CFLAGS}" \
 		CXXFLAGS="${CXXFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		|| die
+		LDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin src/airtraf
 	dodoc Authors COMPATIBILITY docs/airtraf_doc.html
 }

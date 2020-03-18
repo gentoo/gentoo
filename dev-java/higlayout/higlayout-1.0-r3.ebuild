@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java Swing layout manager that's powerful and easy to use"
 HOMEPAGE="http://www.autel.cz/dmi/tutorial.html"
-SRC_URI="mirror://gentoo/HIGLayout${PV}.zip -> ${P}.zip"
+SRC_URI="mirror://gentoo/${P}.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 inherit user
@@ -8,7 +8,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @MAINTAINER:
 # PostgreSQL <pgsql-bugs@gentoo.org>
 # @AUTHOR: Aaron W. Swenson <titanofold@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: An eclass for PostgreSQL-related packages
 # @DESCRIPTION:
 # This eclass provides common utility functions that many
@@ -18,7 +18,7 @@ EXPORT_FUNCTIONS pkg_setup
 
 
 case ${EAPI:-0} in
-	5|6) ;;
+	5|6|7) ;;
 	*) die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 

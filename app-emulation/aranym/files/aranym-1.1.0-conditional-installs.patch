@@ -1,0 +1,93 @@
+From 944ae098635d8bd4320b2acafc5746448e241db6 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Wed, 4 Dec 2019 23:31:04 +0000
+Subject: [PATCH] Reuse icon file and install normal/JIT/MMU files
+ conditionally
+
+---
+ Makefile.am                | 19 ++++++++++---------
+ contrib/aranym-jit.desktop |  2 +-
+ contrib/aranym-mmu.desktop |  2 +-
+ doc/Makefile.am            |  8 +++++++-
+ 4 files changed, 19 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 9fbc64b6..9dc7b71b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -79,18 +79,19 @@ install-data-local:
+ 	for s in 32 48; do \
+ 		$(mkinstalldirs) "${DESTDIR}${datadir}/icons/hicolor/$${s}x$${s}/apps/"; \
+ 		$(INSTALL_DATA) $(top_srcdir)/contrib/icon-$${s}.png "${DESTDIR}${datadir}/icons/hicolor/$${s}x$${s}/apps/aranym.png"; \
+-		$(INSTALL_DATA) $(top_srcdir)/contrib/icon-$${s}.png "${DESTDIR}${datadir}/icons/hicolor/$${s}x$${s}/apps/aranym-jit.png"; \
+-		$(INSTALL_DATA) $(top_srcdir)/contrib/icon-$${s}.png "${DESTDIR}${datadir}/icons/hicolor/$${s}x$${s}/apps/aranym-mmu.png"; \
+ 	done
+ 	$(mkinstalldirs) "${DESTDIR}${datadir}/pixmaps"
+-	rm -f "${DESTDIR}${datadir}/pixmaps/aranym"*.png
+-	ln -s ../icons/hicolor/32x32/apps/aranym.png "${DESTDIR}${datadir}/pixmaps/aranym.png"
+-	ln -s ../icons/hicolor/32x32/apps/aranym.png "${DESTDIR}${datadir}/pixmaps/aranym-jit.png"
+-	ln -s ../icons/hicolor/32x32/apps/aranym.png "${DESTDIR}${datadir}/pixmaps/aranym-mmu.png"
++	ln -sf ../icons/hicolor/32x32/apps/aranym.png "${DESTDIR}${datadir}/pixmaps/aranym.png"
+ 	$(mkinstalldirs) "${DESTDIR}${datadir}/applications"
+-	for name in aranym aranym-jit aranym-mmu; do \
+-		$(INSTALL_DATA) "$(top_srcdir)/contrib/$${name}.desktop" "${DESTDIR}${datadir}/applications/$${name}.desktop"; \
+-	done
++if USE_JIT
++	$(INSTALL_DATA) "$(top_srcdir)/contrib/aranym-jit.desktop" "${DESTDIR}${datadir}/applications/aranym-jit.desktop"
++else
++if FULLMMU
++	$(INSTALL_DATA) "$(top_srcdir)/contrib/aranym-mmu.desktop" "${DESTDIR}${datadir}/applications/aranym-mmu.desktop"
++else
++	$(INSTALL_DATA) "$(top_srcdir)/contrib/aranym.desktop" "${DESTDIR}${datadir}/applications/aranym.desktop"
++endif
++endif
+ 
+ uninstall-local:
+ 	rm -f $(DESTDIR)$(docdir)/changelog
+diff --git a/contrib/aranym-jit.desktop b/contrib/aranym-jit.desktop
+index 1ca2c55a..5a4ee582 100644
+--- a/contrib/aranym-jit.desktop
++++ b/contrib/aranym-jit.desktop
+@@ -3,7 +3,7 @@ Encoding=UTF-8
+ Name=ARAnyM JIT
+ Comment=Virtual Machine with JIT CPU compiler for max speed
+ Exec=aranym-jit
+-Icon=aranym-jit
++Icon=aranym
+ Terminal=false
+ Type=Application
+ Categories=System;Emulator;
+diff --git a/contrib/aranym-mmu.desktop b/contrib/aranym-mmu.desktop
+index 610d0e52..2b841f23 100644
+--- a/contrib/aranym-mmu.desktop
++++ b/contrib/aranym-mmu.desktop
+@@ -3,7 +3,7 @@ Encoding=UTF-8
+ Name=ARAnyM MMU
+ Comment=Virtual Machine with MMU for FreeMiNT and Linux-m68k
+ Exec=aranym-mmu
+-Icon=aranym-mmu
++Icon=aranym
+ Terminal=false
+ Type=Application
+ Categories=System;Emulator;
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 3f466ef8..f0a0688e 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,6 +1,12 @@
+ man1dir = $(mandir)/man1
+ 
+-man1_MANS = aranym.1 aranym-mmu.1 aranym-jit.1
++man1_MANS = aranym.1
++if USE_JIT
++man1_MANS += aranym-jit.1
++endif
++if FULLMMU
++man1_MANS += aranym-mmu.1
++endif
+ if NEED_ARATAPIF
+ man1_MANS += aratapif.1
+ endif
+-- 
+2.24.0
+

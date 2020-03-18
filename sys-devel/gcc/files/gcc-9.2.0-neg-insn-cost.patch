@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/707958
+https://gcc.gnu.org/PR88879
+
+Subject: [PATCH] sel-sched: allow negative insn priority (PR 88879)
+From: Alexander Monakov <amonakov@ispras.ru>
+
+	PR rtl-optimization/88879
+	* sel-sched.c (sel_target_adjust_priority): Remove assert.
+
+From-SVN: r271039
+---
+ gcc/ChangeLog   | 5 +++++
+ gcc/sel-sched.c | 2 --
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+--- a/gcc/sel-sched.c
++++ b/gcc/sel-sched.c
+@@ -3331,8 +3331,6 @@ sel_target_adjust_priority (expr_t expr)
+   else
+     new_priority = priority;
+ 
+-  gcc_assert (new_priority >= 0);
+-
+   /* If the priority has changed, adjust EXPR_PRIORITY_ADJ accordingly.  */
+   EXPR_PRIORITY_ADJ (expr) = new_priority - EXPR_PRIORITY (expr);
+ 
+-- 
+2.25.0
+

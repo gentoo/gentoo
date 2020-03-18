@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,6 +17,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2020-03-04)
+# Small number of packages which need new stables
+# app-misc/gramps needs newer media-libs/gexiv2 bug 711784
+# dev-python/pyqrcode needs newer dev-python/pypng
+# sys-cluser/ceph needs new cherrypy
+app-misc/gramps python_single_target_python3_7
+dev-python/pyqrcode python_targets_python3_7
+sys-cluster/ceph python_targets_python3_7
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
+# net-libs/quiche is an early HTTP/3 implementation
+# not yet ready for everyone.
+net-misc/curl quiche
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
 # media-video/pipewire is not stable yet
 dev-libs/weston pipewire
@@ -28,7 +42,7 @@ x11-wm/mutter screencast
 # Brian Evans <grknight@gentoo.org> (2019-05-22)
 # Allow python-exec to install all targets
 # Ack by mgorny
-dev-lang/python-exec -python_targets_python3_7
+dev-lang/python-exec -python_targets_python3_7 -python_targets_python3_8
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
 # dev-db/oracle-instantclient ain't stable
@@ -36,21 +50,11 @@ dev-qt/qtsql oci8
 
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
-media-libs/opencv contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d gflags glog tesseract
-
-# Brian Evans <grknight@gentoo.org> (2018-12-06)
-# Unmask argon2 for php
-dev-lang/php -argon2
+media-libs/opencv contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d gflags glog tesseract
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
 app-admin/sudo -sssd
-
-# Mart Raudsepp <leio@gentoo.org> (2018-11-01)
-# net-wireless/iwd not stable yet
-net-misc/networkmanager iwd
-# Ben Kohler <bkohler@gentoo.org> (2019-05-22)
-net-misc/connman iwd
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-09-15)
 # the dependency is unstable
@@ -73,7 +77,7 @@ sci-libs/gdal oracle
 
 # NP-Hardass <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
-virtual/wine d3d9 staging
+virtual/wine staging
 
 # Tim Harder <radhermit@gentoo.org> (2017-09-11)
 # Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
@@ -86,7 +90,7 @@ sci-geosciences/qgis oracle
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-26)
 # Stable mask some fabrics (bug #525534)
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Brian Evans <grknight@gentoo.org> (2017-01-17)
 # Stable mask groonga on mariadb as I don't know how stable
@@ -101,5 +105,4 @@ gnustep-base/gnustep-make libobjc2
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy
 dev-lang/python-exec -python_targets_pypy3

@@ -1,8 +1,8 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit python-any-r1
 
 DESCRIPTION="BLAS-like Library Instantiation Software Framework"
@@ -27,7 +27,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-blas-provider.patch"
 )
 
-src_configure () {
+src_configure() {
 	local BLIS_FLAGS=()
 	local confname
 	# determine flags
@@ -67,11 +67,11 @@ src_compile() {
 			   default
 }
 
-src_test () {
+src_test() {
 	emake check
 }
 
-src_install () {
+src_install() {
 	default
 	use doc && dodoc README.md docs/*.md
 

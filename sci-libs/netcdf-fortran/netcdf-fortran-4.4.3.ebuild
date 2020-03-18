@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 FORTRAN_STANDARD="77 90"
 
-inherit autotools eutils fortran-2
+inherit autotools eutils fortran-2 ltprune
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
 HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"

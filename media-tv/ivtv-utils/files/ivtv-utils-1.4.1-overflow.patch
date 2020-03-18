@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/339405
 
---- utils/cx25840ctl/cx25840ctl.c
-+++ utils/cx25840ctl/cx25840ctl.c
+--- a/utils/cx25840ctl/cx25840ctl.c
++++ b/utils/cx25840ctl/cx25840ctl.c
 @@ -57,7 +57,7 @@
  		return 0;
  	}
@@ -20,8 +20,8 @@ http://bugs.gentoo.org/339405
  	if ((fp = fopen(sysfile, "r")) != NULL)
  	{
  		fgets(name, sizeof(name), fp);
---- utils/ivtv-ctl.c
-+++ utils/ivtv-ctl.c
+--- a/utils/ivtv-ctl.c
++++ b/utils/ivtv-ctl.c
 @@ -358,7 +358,7 @@
  	__u32 reset = 0;
  	int new_debug_level, gdebug_level;
@@ -49,8 +49,8 @@ http://bugs.gentoo.org/339405
  		if (dowrite(buf, "/sys/module/ivtv/parameters/debug") == 0) {
  			printf(" set debug level: ");
  			print_debug_mask(new_debug_level);
---- utils/v4l2-ctl.cpp
-+++ utils/v4l2-ctl.cpp
+--- a/utils/v4l2-ctl.cpp
++++ b/utils/v4l2-ctl.cpp
 @@ -416,7 +416,7 @@
  {
  	char buf[10];

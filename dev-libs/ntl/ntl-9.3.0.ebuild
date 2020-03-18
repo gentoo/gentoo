@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/gmp:=
 	>=dev-libs/gf2x-0.9"
@@ -73,7 +74,7 @@ src_install() {
 	fi
 }
 
-src_test(){
+src_test() {
 	# the current ebuild need static library to run tests
 	emake ntl.a
 

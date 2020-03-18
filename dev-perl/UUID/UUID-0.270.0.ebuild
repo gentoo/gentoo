@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for using UUID interfaces as defined in e2fsprogs"
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE=""
 
 # Note: UUID appears to link against a bunch of different UUID

@@ -1,0 +1,67 @@
+commit 5e510f6a6ed24b98d143e5baeb156a8901bf3faa
+Author: Ryan Scott <ryan.gl.scott@gmail.com>
+Date:   Mon Dec 10 15:12:47 2018 -0500
+
+    Allow building with template-haskell-2.15.0.0
+
+diff --git a/src/TH/ReifySimple.hs b/src/TH/ReifySimple.hs
+index d179829..70b929e 100644
+--- a/src/TH/ReifySimple.hs
++++ b/src/TH/ReifySimple.hs
+@@ -233,18 +233,24 @@ infoToDataFamily info = case info of
+         Just $ DataFamily name (map tyVarBndrName tvs) (map go insts)
+     _ -> Nothing
+   where
+-#if MIN_VERSION_template_haskell(2,11,0)
+-    go (NewtypeInstD preds name params _kind con _deriving) =
++#if MIN_VERSION_template_haskell(2,15,0)
++    go (NewtypeInstD preds _ lhs _kind con _deriving)
++      | ConT name:params <- unAppsT lhs
++#elif MIN_VERSION_template_haskell(2,11,0)
++    go (NewtypeInstD preds name params _kind con _deriving)
+ #else
+-    go (NewtypeInstD preds name params       con _deriving) =
++    go (NewtypeInstD preds name params       con _deriving)
+ #endif
+-        DataInst name preds params (conToDataCons con)
+-#if MIN_VERSION_template_haskell(2,11,0)
+-    go (DataInstD preds name params _kind cons _deriving) =
++      = DataInst name preds params (conToDataCons con)
++#if MIN_VERSION_template_haskell(2,15,0)
++    go (DataInstD preds _ lhs _kind cons _deriving)
++      | ConT name:params <- unAppsT lhs
++#elif MIN_VERSION_template_haskell(2,11,0)
++    go (DataInstD preds name params _kind cons _deriving)
+ #else
+-    go (DataInstD preds name params       cons _deriving) =
++    go (DataInstD preds name params       cons _deriving)
+ #endif
+-        DataInst name preds params (concatMap conToDataCons cons)
++      = DataInst name preds params (concatMap conToDataCons cons)
+     go info' = error $
+         "Unexpected instance in FamilyI in infoToDataInsts:\n" ++ pprint info'
+ 
+@@ -263,8 +269,23 @@ infoToTypeFamily info = case info of
+ #endif
+     _ -> Nothing
+   where
++#if MIN_VERSION_template_haskell(2,15,0)
++    goEqn _ (TySynEqn _ lhs ty)
++      | ConT name:params <- unAppsT lhs
++      = TypeInst name params ty
++      | otherwise
++      = error $ "Unexpected type family instance head: " ++ pprint lhs
++#else
+     goEqn name (TySynEqn params ty) = TypeInst name params ty
++#endif
++
++#if MIN_VERSION_template_haskell(2,15,0)
++    go (TySynInstD (TySynEqn _ lhs ty))
++      | ConT name:params <- unAppsT lhs
++      = TypeInst name params ty
++#else
+     go (TySynInstD name (TySynEqn params ty)) = TypeInst name params ty
++#endif
+     go info' = error $
+         "Unexpected instance in FamilyI in infoToTypeInsts:\n" ++ pprint info'
+ 

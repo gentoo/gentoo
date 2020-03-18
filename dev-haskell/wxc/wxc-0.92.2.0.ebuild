@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ inherit haskell-cabal multilib versionator wxwidgets
 
 DESCRIPTION="wxHaskell C++ wrapper"
 HOMEPAGE="https://wiki.haskell.org/WxHaskell"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="wxWinLL-3.1"
 SLOT="${WX_GTK_VER}/${PV}"

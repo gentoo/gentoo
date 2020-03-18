@@ -22,7 +22,7 @@ else
 	SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
 		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-solaris"
 	fi
 fi
 
@@ -36,9 +36,12 @@ DEPEND="
 	sys-libs/zlib:=
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
-		dev-libs/cyrus-sasl
+		sasl? (
+			dev-libs/cyrus-sasl
+			net-nds/openldap[sasl]
+		)
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	sssd? ( sys-auth/sssd[sudo] )
@@ -140,8 +143,7 @@ src_configure() {
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
 		--with-rundir="${EPREFIX}"/run/sudo
-		$(use_with secure-path secure-path ${SECURE_PATH})
-		--with-secure-path="${SECURE_PATH}"
+		$(use_with secure-path secure-path "${SECURE_PATH}")
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit
 		--without-opie
@@ -183,6 +185,14 @@ src_install() {
 		# tls_{checkpeer,cacertfile,cacertdir,randfile,ciphers,cert,key}
 		EOF
 
+		if use sasl ; then
+			cat <<-EOF >> "${T}"/ldap.conf.sudo
+
+			# SASL directives: use_sasl, sasl_mech, sasl_auth_id
+			# sasl_secprops, rootuse_sasl, rootsasl_auth_id, krb5_ccname
+			EOF
+		fi
+
 		insinto /etc
 		doins "${T}"/ldap.conf.sudo
 		fperms 0440 /etc/ldap.conf.sudo
@@ -200,6 +210,8 @@ src_install() {
 	# Don't install into /run as that is a tmpfs most of the time
 	# (bug #504854)
 	rm -rf "${ED}"/run
+
+	find "${ED}" -type f -name "*.la" -delete || die #697812
 }
 
 pkg_postinst() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,13 +12,13 @@ SRC_URI="https://matt.ucc.asn.au/dropbear/releases/${P}.tar.bz2
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="bsdpty minimal multicall pam +shadow static +syslog zlib"
 
 LIB_DEPEND="zlib? ( sys-libs/zlib[static-libs(+)] )
 	dev-libs/libtommath[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 RDEPEND+=" pam? ( >=sys-auth/pambase-20080219.1 )"

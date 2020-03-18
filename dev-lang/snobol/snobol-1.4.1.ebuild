@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ MY_P="${PN}4-${PV}"
 
 DESCRIPTION="Phil Budne's port of Macro SNOBOL4 in C, for modern machines"
 HOMEPAGE="http://www.snobol4.org/csnobol4/"
-SRC_URI="mirror://snobol4/${MY_P}.tar.gz"
+SRC_URI="ftp://ftp.snobol4.org/snobol/old/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -35,9 +35,9 @@ src_prepare() {
 }
 
 src_configure() {
-	./configure --prefix="${EPREFIX%/}/usr" \
-		--snolibdir="${EPREFIX%/}/usr/lib/snobol4" \
-		--mandir="${EPREFIX%/}/usr/share/man" \
+	./configure --prefix="${EPREFIX}/usr" \
+		--snolibdir="${EPREFIX}/usr/lib/snobol4" \
+		--mandir="${EPREFIX}/usr/share/man" \
 		--add-cflags="${CFLAGS}"
 }
 

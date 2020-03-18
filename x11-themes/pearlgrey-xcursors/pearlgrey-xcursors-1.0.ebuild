@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-MY_PN=${PN/-xcursors/}
+MY_PN="${PN/-xcursors/}"
+
 DESCRIPTION="A simple crispy white-grey xcursor theme"
 HOMEPAGE="http://www.kde-look.org/content/show.php/PearlGrey?content=11313"
 SRC_URI="http://www.kde-look.org/CONTENT/content-files/11313-${MY_PN}-${PV}.tar.gz"
@@ -11,16 +12,12 @@ SRC_URI="http://www.kde-look.org/CONTENT/content-files/11313-${MY_PN}-${PV}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
 	insinto /usr/share/cursors/xorg-x11/${MY_PN}
-	doins -r ${MY_PN}/cursors || die "doins failed"
+	doins -r ${MY_PN}/cursors
 }
 
 pkg_postinst() {
@@ -32,7 +29,7 @@ pkg_postinst() {
 	elog "Xcursor.size: 48"
 	elog
 	elog "Also, to globally use this set of mouse cursors edit the file:"
-	elog "    /usr/share/cursors/xorg-x11/default/index.theme"
+	elog "    ${EROOT}/usr/share/cursors/xorg-x11/default/index.theme"
 	elog "and change the line:"
 	elog "    Inherits=[current setting]"
 	elog "to"
@@ -40,6 +37,7 @@ pkg_postinst() {
 	elog
 	elog "Note this will be overruled by a user's ~/.Xdefaults file."
 	elog
+
 	ewarn "If you experience flickering, try setting the following line in"
 	ewarn "the Device section of your xorg.conf file:"
 	ewarn "    Option  \"HWCursor\"  \"false\""

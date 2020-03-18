@@ -1,0 +1,50 @@
+--- a/Makefile
++++ b/Makefile
+@@ -28,13 +28,13 @@
+ STATIC=
+ CC=gcc
+ 
+-CFLAGS+=-g -Wall -DETHERS='"$(ETHERS)"'
++CFLAGS+=-Wall -DETHERS='"$(ETHERS)"'
+ 
+ OBJS=ethers.o ipguard.o packet.o system.o
+ 
+ .c.o:
+ 	@echo Compiling $*.c
+-	@$(CC) -c $(CFLAGS) $(INCLUDES) $(DEFINES) $<
++	$(CC) -c $(CFLAGS) $(INCLUDES) $(DEFINES) $<
+ 
+ all:	start $(NAME)
+ 
+@@ -47,7 +47,7 @@
+ 
+ $(NAME): $(OBJS)
+ 	@echo Linking $@
+-	@$(CC) -o $@ $(OBJS) $(LIBS) $(STATIC)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS) $(STATIC)
+ 
+ clean:
+ 	@echo Cleaning OBJS
+@@ -58,16 +58,16 @@
+ 	@rm -f $(NAME)
+ 
+ install: all
+-	mkdir -p -m 755 $(PREFIX)/sbin
+-	install -s -m 755 $(NAME) $(PREFIX)/sbin/$(NAME)
+-	mkdir -p -m 755 $(PREFIX)/man/man8
+-	install -m 644 doc/$(NAME).8 $(PREFIX)/man/man8/$(NAME).8
++	mkdir -p -m 755 ${D}$(PREFIX)/sbin
++	install -m 755 $(NAME) ${D}$(PREFIX)/sbin/$(NAME)
++	mkdir -p -m 755 ${D}$(PREFIX)/share/man/man8
++	install -m 644 doc/$(NAME).8 ${D}$(PREFIX)/share/man/man8/$(NAME).8
+ 
+ uninstall: deinstall
+ 
+ deinstall:
+-	rm -f $(PREFIX)/man/man8/$(NAME).8
+-	rm -f $(PREFIX)/sbin/$(NAME)
++	rm -f ${D}$(PREFIX)/share/man/man8/$(NAME).8
++	rm -f ${D}$(PREFIX)/sbin/$(NAME)
+ 
+ ethers.o: ipguard.h
+ ipguard.o: ipguard.h

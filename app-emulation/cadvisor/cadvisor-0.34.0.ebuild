@@ -12,7 +12,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Analyzes resource usage and performance characteristics of running containers"
 HOMEPAGE="https://github.com/google/cadvisor"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
 IUSE=""
 
@@ -30,6 +30,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME
 	pushd "src/${EGO_PN}"
 	GO_FLAGS="-v -work -x" VERBOSE="true" GOPATH="${S}:$(get_golibdir_gopath)" emake build
 	popd || die

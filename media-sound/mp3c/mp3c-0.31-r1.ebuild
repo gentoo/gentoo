@@ -1,37 +1,38 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils
-
-IUSE="mp3 vorbis"
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="console based mp3 ripper, with cddb support"
 HOMEPAGE="http://wspse.de/WSPse/Linux-MP3c.php3"
 SRC_URI="ftp://ftp.wspse.de/pub/linux/wspse/${P}.tar.bz2"
 
-RDEPEND="mp3? ( media-sound/lame
-	>=media-sound/mp3info-0.8.4-r1 )
-	virtual/cdrtools
-	vorbis? ( media-sound/vorbis-tools )"
-
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
+IUSE="mp3 vorbis"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${PN}-buffer.patch"
+DEPEND="sys-libs/ncurses:0="
+RDEPEND="
+	${DEPEND}
+	virtual/cdrtools
+	mp3? (
+		media-sound/lame
+		media-sound/mp3info
+	)
+	vorbis? ( media-sound/vorbis-tools )"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-buffer.patch )
+
+src_configure() {
+	append-libs $($(tc-getPKG_CONFIG) --libs ncurses)
+	econf $(use_enable vorbis oggdefaults)
 }
 
-src_compile() {
-	econf $(use_enable vorbis oggdefaults) || die "econf failed !"
-	emake || die "emake failed!"
-}
-
-src_install () {
-	make DESTDIR="${D}" install || die
-	dodoc AUTHORS *README BUGS CDDB_HOWTO ChangeLog FAQ NEWS OTHERS TODO
+src_install() {
+	default
+	dodoc BATCH.README CDDB_HOWTO OTHERS
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,14 +12,21 @@ SRC_URI="https://bitbucket.org/eigen/eigen/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MPL-2.0"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="altivec c++11 cpu_flags_arm_neon cuda debug doc openmp test" #zvector vsx
 RESTRICT="!test? ( test )"
 
 RDEPEND="!dev-cpp/eigen:0"
 DEPEND="
 	cuda? ( dev-util/nvidia-cuda-toolkit )
-	doc? ( app-doc/doxygen[dot,latex] )
+	doc? (
+		app-doc/doxygen[dot]
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
 	test? (
 		dev-libs/gmp:0
 		dev-libs/mpfr:0

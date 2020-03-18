@@ -13,11 +13,11 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_P="x264-snapshot-$(ver_cut 3)-2245"
 	SRC_URI="https://download.videolan.org/pub/videolan/x264/snapshots/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	S="${WORKDIR}/${MY_P}"
 fi
 
-SLOT="0/157" # SONAME
+SLOT="0/159" # SONAME
 
 LICENSE="GPL-2"
 IUSE="altivec +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"

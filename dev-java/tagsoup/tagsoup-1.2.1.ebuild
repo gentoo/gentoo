@@ -34,8 +34,8 @@ src_install() {
 	java-pkg_newjar dist/lib/${PN}-1.2.jar ${PN}.jar
 	java-pkg_dolauncher
 
-	doman ${PN}.1 || die
-	dodoc CHANGES README TODO || die
+	doman ${PN}.1
+	dodoc CHANGES README TODO
 
 	use doc && java-pkg_dojavadoc docs/api
 	use source && java-pkg_dosrc src/{java,templates}/*

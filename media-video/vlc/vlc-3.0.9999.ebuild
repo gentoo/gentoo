@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2000-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86"
 fi
 inherit autotools flag-o-matic toolchain-funcs virtualx xdg
 
@@ -29,15 +29,16 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
-IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast
+IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
 	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate
 	libass libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc
 	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
-	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio
-	+qt5 rdp run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl
-	svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
-	wayland +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	nfs ogg omxil optimisememory opus png postproc projectm pulseaudio +qt5 rdp
+	run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib
+	theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X
+	x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx
+	cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -81,7 +82,7 @@ RDEPEND="
 		>=dev-libs/protobuf-2.5.0:=
 		>=net-libs/libmicrodns-0.0.9:=
 	)
-	dav1d? ( media-libs/dav1d )
+	dav1d? ( media-libs/dav1d:= )
 	dbus? ( sys-apps/dbus )
 	dc1394? (
 		media-libs/libdc1394:2
@@ -90,8 +91,8 @@ RDEPEND="
 	dts? ( media-libs/libdca )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:= )
 	dvd? (
-		>=media-libs/libdvdnav-4.9
-		>=media-libs/libdvdread-4.9
+		>=media-libs/libdvdnav-4.9:0=
+		>=media-libs/libdvdread-4.9:0=
 	)
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
@@ -150,7 +151,6 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg )
-	opencv? ( media-libs/opencv:= )
 	opus? ( >=media-libs/opus-1.0.3 )
 	png? ( media-libs/libpng:0= )
 	postproc? ( libav? ( media-libs/libpostproc ) )
@@ -241,7 +241,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	xdg_src_prepare # bug 608256
 
-	has_version '>=net-libs/libupnp-1.8.0' && \
+	has_version 'net-libs/libupnp:1.8' && \
 		eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
@@ -273,7 +273,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--disable-aa
-		--disable-dependency-tracking
 		--disable-optimizations
 		--disable-rpath
 		--disable-update-check
@@ -283,7 +282,6 @@ src_configure() {
 		--enable-vlc
 		$(use_enable a52)
 		$(use_enable alsa)
-		$(use_enable altivec)
 		$(use_enable aom)
 		$(use_enable archive)
 		$(use_enable aribsub)
@@ -294,6 +292,8 @@ src_configure() {
 		$(use_enable chromaprint)
 		$(use_enable chromecast)
 		$(use_enable chromecast microdns)
+		$(use_enable cpu_flags_arm_neon neon)
+		$(use_enable cpu_flags_ppc_altivec altivec)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable dav1d)
@@ -345,11 +345,9 @@ src_configure() {
 		$(use_enable mtp)
 		$(use_enable musepack mpc)
 		$(use_enable ncurses)
-		$(use_enable neon)
 		$(use_enable ogg)
 		$(use_enable omxil)
 		$(use_enable omxil omxil-vout)
-		$(use_enable opencv)
 		$(use_enable optimisememory optimize-memory)
 		$(use_enable opus)
 		$(use_enable png)
@@ -394,7 +392,7 @@ src_configure() {
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
 		$(use_enable !zvbi telx)
-		--with-kde-solid=/usr/share/solid/actions
+		--with-kde-solid="${EPREFIX}"/usr/share/solid/actions
 		--disable-asdcp
 		--disable-coverage
 		--disable-cprof
@@ -410,6 +408,7 @@ src_configure() {
 		--disable-merge-ffmpeg
 		--disable-mfx
 		--disable-mmal
+		--disable-opencv
 		--disable-opensles
 		--disable-oss
 		--disable-rpi-omxil
@@ -446,7 +445,7 @@ src_configure() {
 	fi
 
 	if use truetype || use projectm; then
-		local dejavu="/usr/share/fonts/dejavu/"
+		local dejavu="${EPREFIX}/usr/share/fonts/dejavu/"
 		myeconfargs+=(
 			--with-default-font=${dejavu}/DejaVuSans.ttf
 			--with-default-font-family=Sans

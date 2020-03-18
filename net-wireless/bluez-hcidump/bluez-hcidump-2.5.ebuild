@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Bluetooth HCI packet analyzer"
 HOMEPAGE="http://www.bluez.org/"
-SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>rafaelmartins@gentoo.org</email>
-		<name>Rafael G. Martins</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		mercurial-server gives your developers remote read/write access to
 		centralized Mercurial repositories using SSH public key authentication; it

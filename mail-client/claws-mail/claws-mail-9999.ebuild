@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -79,7 +79,7 @@ COMMONDEPEND="
 	)
 	smime? ( >=app-crypt/gpgme-1.0.0 )
 	spam-report? ( >=net-misc/curl-7.9.7 )
-	spell? ( >=app-text/enchant-1.0.0:= )
+	spell? ( >=app-text/enchant-2.0.0:2= )
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
@@ -106,7 +106,12 @@ RDEPEND="${COMMONDEPEND}
 	rss? (
 		dev-libs/libxml2
 		net-misc/curl
-	)"
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -211,18 +216,10 @@ src_install() {
 	rm -f "${ED}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
 
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
 pkg_postinst() {
 	ewarn "When upgrading from version 3.9.0 or below some changes have happened:"
 	ewarn "- There are no individual plugins in mail-client/claws-mail-* anymore, but they are integrated mostly controlled through USE flags"
 	ewarn "- Plugins with no special dependencies are just built and can be loaded through the interface"
 	ewarn "- The gtkhtml2 and trayicon plugins have been dropped entirely"
 	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }

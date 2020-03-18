@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 KV_min=2.6.39
 
-inherit autotools linux-info multilib multilib-minimal
+inherit autotools linux-info multilib multilib-minimal toolchain-funcs
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/gentoo/eudev.git"
@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/gentoo/eudev"
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
 IUSE="+hwdb +kmod introspection rule-generator selinux static-libs test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.20
 	introspection? ( >=dev-libs/gobject-introspection-1.38 )

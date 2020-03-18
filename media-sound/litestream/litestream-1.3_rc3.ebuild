@@ -1,40 +1,31 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs
-
-MY_P=${P/_rc/RC}
+inherit toolchain-funcs
 
 DESCRIPTION="Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server"
 HOMEPAGE="http://www.litestream.org/"
-SRC_URI="http://litestream.org/litestream/${MY_P}.tar.gz"
+SRC_URI="http://litestream.org/litestream/${P/_rc/RC}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc sparc x86"
-IUSE=""
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${P/_rc/RC}"
+PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	sed -i -e 's:CFLAGS = :CFLAGS = ${OPTFLAGS} :; s:-g::' \
-		Makefile || die "sed failed"
-}
-
-src_compile() {
-	append-flags "-DNO_VARARGS"
-	emake CC=$(tc-getCC) OPTFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" || die
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
-	dobin litestream literestream || die "dobin failed"
+	dobin litestream literestream
 	newbin source litestream-source
 	newbin server litestream-server
 	newbin client litestream-client
 
-	dodoc ABOUT ACKNOWLEDGEMENTS BUGS CHANGELOG CONTACT FILES MAKEITGO README
+	einstalldocs
+	dodoc ABOUT ACKNOWLEDGEMENTS CONTACT FILES MAKEITGO
 }

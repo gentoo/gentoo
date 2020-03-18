@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.1"
 WX_GTK_VER=3.0
 
-inherit autotools desktop eapi7-ver python-single-r1 wxwidgets xdg
+inherit autotools desktop eapi7-ver python-single-r1 toolchain-funcs wxwidgets xdg
 
 MY_PM=${PN}$(ver_cut 1-2 ${PV})
 MY_PM=${MY_PM/.}
@@ -25,7 +25,12 @@ IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openm
 
 RDEPEND="${PYTHON_DEPS}
 	>=app-admin/eselect-1.2
-	dev-python/numpy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		|| (
+			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		)
+	')
 	media-libs/libprojectm
 	sci-libs/gdal
 	sys-libs/gdbm
@@ -147,23 +152,23 @@ src_configure() {
 		setup-wxwidgets
 	fi
 
-	addwrite "${EPREFIX%/}/dev/dri/renderD128"
+	addwrite "${EPREFIX}/dev/dri/renderD128"
 
 	local myeconfargs=(
 		--enable-shared
 		--disable-w11
 		--without-opendwg
 		--with-regex
-		--with-gdal="${EPREFIX%/}/usr/bin/gdal-config"
-		--with-proj-includes="${EPREFIX%/}/usr/include/libprojectM"
-		--with-proj-libs="${EPREFIX%/}/usr/$(get_libdir)"
-		--with-proj-share="${EPREFIX%/}/usr/share/proj/"
+		--with-gdal="${EPREFIX}/usr/bin/gdal-config"
+		--with-proj-includes="${EPREFIX}/usr/include/libprojectM"
+		--with-proj-libs="${EPREFIX}/usr/$(get_libdir)"
+		--with-proj-share="${EPREFIX}/usr/share/proj/"
 		$(use_with cxx)
 		$(use_with tiff)
 		$(use_with png)
 		$(use_with postgres)
 		$(use_with mysql)
-		$(use_with mysql mysql-includes "${EPREFIX%/}/usr/include/mysql")
+		$(use_with mysql mysql-includes "${EPREFIX}/usr/include/mysql")
 		$(use_with sqlite)
 		$(use_with opengl)
 		$(use_with odbc)
@@ -172,16 +177,16 @@ src_configure() {
 		$(use_with lapack)
 		$(use_with X cairo)
 		$(use_with truetype freetype)
-		$(use_with truetype freetype-includes "${EPREFIX%/}/usr/include/freetype2")
+		$(use_with truetype freetype-includes "${EPREFIX}/usr/include/freetype2")
 		$(use_with nls)
 		$(use_with readline)
 		$(use_with threads pthread)
 		$(use_with openmp)
 		$(use_with opencl)
-		$(use_with liblas liblas "${EPREFIX%/}/usr/bin/liblas-config")
+		$(use_with liblas liblas "${EPREFIX}/usr/bin/liblas-config")
 		$(use_with X wxwidgets "${WX_CONFIG}")
-		$(use_with netcdf netcdf "${EPREFIX%/}/usr/bin/nc-config")
-		$(use_with geos geos "${EPREFIX%/}/usr/bin/geos-config")
+		$(use_with netcdf netcdf "${EPREFIX}/usr/bin/nc-config")
+		$(use_with geos geos "${EPREFIX}/usr/bin/geos-config")
 		$(use_with X x)
 	)
 	econf "${myeconfargs[@]}"
@@ -241,7 +246,7 @@ src_install() {
 
 	# get proper fonts path for fontcap
 	sed -i \
-		-e "s|${D}/usr/${MY_PM}|${EPREFIX%/}/usr/$(get_libdir)/${MY_PM}|" \
+		-e "s|${D}/usr/${MY_PM}|${EPREFIX}/usr/$(get_libdir)/${MY_PM}|" \
 		"${D}/usr/$(get_libdir)/${MY_PM}/etc/fontcap" || die
 
 	# set proper python interpreter

@@ -1,0 +1,115 @@
+From 1378280398ef9f5cd45f5542ae2945b9a360b132 Mon Sep 17 00:00:00 2001
+From: Doug Nazar <nazard@nazar.ca>
+Date: Sun, 17 Nov 2019 14:31:33 -0500
+Subject: [PATCH] Ensure consistent struct stat definition
+
+Although 2fbc62e2a13fc ("Fix include order between config.h and stat.h")
+reorganized those files that were already including config.h, not all
+files were including config.h.
+
+Fixes at least stack smashing crashes in mountd on 32-bit systems.
+
+Signed-off-by: Doug Nazar <nazard@nazar.ca>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ support/junction/junction.c | 4 ++++
+ support/misc/file.c         | 4 ++++
+ support/misc/mountpoint.c   | 4 ++++
+ support/nfs/cacheio.c       | 4 ++++
+ utils/mount/fstab.c         | 4 ++++
+ utils/nfsdcld/legacy.c      | 4 ++++
+ 6 files changed, 24 insertions(+)
+
+diff --git a/support/junction/junction.c b/support/junction/junction.c
+index ab6caa6..41cce26 100644
+--- a/support/junction/junction.c
++++ b/support/junction/junction.c
+@@ -23,6 +23,10 @@
+  *	http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+diff --git a/support/misc/file.c b/support/misc/file.c
+index e7c3819..06f6bb2 100644
+--- a/support/misc/file.c
++++ b/support/misc/file.c
+@@ -18,6 +18,10 @@
+  * along with nfs-utils.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
+ #include <sys/stat.h>
+ 
+ #include <string.h>
+diff --git a/support/misc/mountpoint.c b/support/misc/mountpoint.c
+index c6217f2..14d6731 100644
+--- a/support/misc/mountpoint.c
++++ b/support/misc/mountpoint.c
+@@ -3,6 +3,10 @@
+  * check if a given path is a mountpoint 
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
+ #include <string.h>
+ #include "xcommon.h"
+ #include <sys/stat.h>
+diff --git a/support/nfs/cacheio.c b/support/nfs/cacheio.c
+index 9dc4cf1..7c4cf37 100644
+--- a/support/nfs/cacheio.c
++++ b/support/nfs/cacheio.c
+@@ -15,6 +15,10 @@
+  *
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
+ #include <nfslib.h>
+ #include <stdio.h>
+ #include <stdio_ext.h>
+diff --git a/utils/mount/fstab.c b/utils/mount/fstab.c
+index eedbdda..8b0aaf1 100644
+--- a/utils/mount/fstab.c
++++ b/utils/mount/fstab.c
+@@ -7,6 +7,10 @@
+  * - Moved code to nfs-utils/support/nfs from util-linux/mount.
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
+ #include <errno.h>
+ #include <stdio.h>
+ #include <fcntl.h>
+diff --git a/utils/nfsdcld/legacy.c b/utils/nfsdcld/legacy.c
+index 07f477a..3c6bea6 100644
+--- a/utils/nfsdcld/legacy.c
++++ b/utils/nfsdcld/legacy.c
+@@ -15,6 +15,10 @@
+  * Boston, MA 02110-1301, USA.
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
+ #include <stdio.h>
+ #include <dirent.h>
+ #include <string.h>
+-- 
+1.8.3.1
+

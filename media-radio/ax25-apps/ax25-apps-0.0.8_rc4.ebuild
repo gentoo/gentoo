@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,6 +26,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	epatch "$FILESDIR"/$PN-0.8.4-tinfo.patch
+	epatch "$FILESDIR"/$PN-0.0.8-fno-common.patch
 	eautoreconf
 }
 

@@ -12,6 +12,7 @@ DESCRIPTION="Local delivery of RFC2822 message format and headers"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp

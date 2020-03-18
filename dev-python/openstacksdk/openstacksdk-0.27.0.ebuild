@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -31,8 +31,6 @@ RDEPEND="${CDEPEND}
 	>=dev-python/munch-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
 	>=dev-python/jmespath-0.9.0[${PYTHON_USEDEP}]
-	virtual/python-ipaddress[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.11[${PYTHON_USEDEP}]
 	>=dev-python/netifaces-0.10.4[${PYTHON_USEDEP}]
 	>=dev-python/dogpile-cache-0.6.2[${PYTHON_USEDEP}]

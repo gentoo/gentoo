@@ -1,4 +1,0 @@
-# /etc/conf.d/cgconfig: config file for /etc/init.d/cgconfig
-
-# Configuration file location
-#CONFIG_FILE=/etc/cgroup/cgconfig.conf

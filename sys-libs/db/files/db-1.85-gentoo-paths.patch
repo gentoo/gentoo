@@ -1,5 +1,5 @@
---- PORT/linux/Makefile
-+++ PORT/linux/Makefile
+--- a/PORT/linux/Makefile
++++ b/PORT/linux/Makefile
 @@ -1,12 +1,12 @@
  #	@(#)Makefile	8.9 (Berkeley) 7/14/94
  

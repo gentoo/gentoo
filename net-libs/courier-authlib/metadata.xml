@@ -4,9 +4,6 @@
   <maintainer type="person">
     <email>hanno@gentoo.org</email>
   </maintainer>
-  <use>
-    <flag name="vpopmail">Enable vpopmail support</flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">courier</remote-id>
   </upstream>

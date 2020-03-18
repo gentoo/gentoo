@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils qmake-utils
+inherit cmake qmake-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="https://userbase.kde.org/QCA"
@@ -11,9 +11,10 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 
-IUSE="botan debug doc examples gcrypt gpg libressl logger nss pkcs11 sasl softstore +ssl test"
+IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 sasl softstore +ssl test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	doc? ( app-doc/doxygen )
@@ -25,15 +26,11 @@ RDEPEND="
 	gpg? ( app-crypt/gnupg )
 	nss? ( dev-libs/nss )
 	pkcs11? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		dev-libs/openssl:0
 		dev-libs/pkcs11-helper
 	)
 	sasl? ( dev-libs/cyrus-sasl:2 )
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( >=dev-libs/openssl-1.0.1:0= )
 "
 DEPEND="${RDEPEND}
 	test? (
@@ -63,16 +60,16 @@ src_configure() {
 		$(qca_plugin_use ssl ossl)
 		-DBUILD_TESTS=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	local -x QCA_PLUGIN_PATH="${BUILD_DIR}/lib/qca"
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use doc; then
 		pushd "${BUILD_DIR}" >/dev/null || die

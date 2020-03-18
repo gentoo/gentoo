@@ -1,0 +1,62 @@
+From 61cc715240d2d3f9511ca88043a3e9797c11482f Mon Sep 17 00:00:00 2001
+From: Richard Levitte <levitte@openssl.org>
+Date: Thu, 3 Oct 2019 08:28:31 +0200
+Subject: [PATCH] Define AESNI_ASM if AESNI assembler is included, and use it
+
+Because we have cases where basic assembler support isn't present, but
+AESNI asssembler support is, we need a separate macro that indicates
+that, and use it.
+
+Reviewed-by: Tomas Mraz <tmraz@fedoraproject.org>
+Reviewed-by: Paul Dale <paul.dale@oracle.com>
+(Merged from https://github.com/openssl/openssl/pull/10080)
+---
+ Configure                          | 1 +
+ crypto/evp/e_aes_cbc_hmac_sha1.c   | 2 +-
+ crypto/evp/e_aes_cbc_hmac_sha256.c | 4 ++--
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/Configure b/Configure
+index 811bee81f54..f498ac2f81b 100755
+--- a/Configure
++++ b/Configure
+@@ -1376,6 +1376,7 @@ unless ($disabled{asm}) {
+     }
+     if ($target{aes_asm_src}) {
+         push @{$config{lib_defines}}, "AES_ASM" if ($target{aes_asm_src} =~ m/\baes-/);;
++        push @{$config{lib_defines}}, "AESNI_ASM" if ($target{aes_asm_src} =~ m/\baesni-/);;
+         # aes-ctr.fake is not a real file, only indication that assembler
+         # module implements AES_ctr32_encrypt...
+         push @{$config{lib_defines}}, "AES_CTR_ASM" if ($target{aes_asm_src} =~ s/\s*aes-ctr\.fake//);
+diff --git a/crypto/evp/e_aes_cbc_hmac_sha1.c b/crypto/evp/e_aes_cbc_hmac_sha1.c
+index c9f5969162c..27c36b46e7a 100644
+--- a/crypto/evp/e_aes_cbc_hmac_sha1.c
++++ b/crypto/evp/e_aes_cbc_hmac_sha1.c
+@@ -33,7 +33,7 @@ typedef struct {
+ 
+ #define NO_PAYLOAD_LENGTH       ((size_t)-1)
+ 
+-#if     defined(AES_ASM) &&     ( \
++#if     defined(AESNI_ASM) &&     ( \
+         defined(__x86_64)       || defined(__x86_64__)  || \
+         defined(_M_AMD64)       || defined(_M_X64)      )
+ 
+diff --git a/crypto/evp/e_aes_cbc_hmac_sha256.c b/crypto/evp/e_aes_cbc_hmac_sha256.c
+index d5178313ae3..cc622b6faa8 100644
+--- a/crypto/evp/e_aes_cbc_hmac_sha256.c
++++ b/crypto/evp/e_aes_cbc_hmac_sha256.c
+@@ -34,7 +34,7 @@ typedef struct {
+ 
+ # define NO_PAYLOAD_LENGTH       ((size_t)-1)
+ 
+-#if     defined(AES_ASM) &&     ( \
++#if     defined(AESNI_ASM) &&   ( \
+         defined(__x86_64)       || defined(__x86_64__)  || \
+         defined(_M_AMD64)       || defined(_M_X64)      )
+ 
+@@ -947,4 +947,4 @@ const EVP_CIPHER *EVP_aes_256_cbc_hmac_sha256(void)
+ {
+     return NULL;
+ }
+-#endif
++#endif  /* AESNI_ASM */

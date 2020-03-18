@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit cmake-utils python-single-r1 xdg-utils
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
 	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
@@ -39,7 +39,7 @@ RDEPEND="
 	lua? ( dev-lang/lua:0[deprecated] )
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
-	php? ( >=dev-lang/php-7.0:* )
+	php? ( >=dev-lang/php-7.0:*[embed] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( || ( dev-lang/ruby:2.6 dev-lang/ruby:2.5 dev-lang/ruby:2.4 ) )
 	ssl? ( net-libs/gnutls )
@@ -51,6 +51,7 @@ DEPEND="${RDEPEND}
 "
 
 BDEPEND="
+	virtual/pkgconfig
 	doc? ( >=dev-ruby/asciidoctor-1.5.4 )
 	man? ( >=dev-ruby/asciidoctor-1.5.4 )
 	nls? ( >=sys-devel/gettext-0.15 )
@@ -135,13 +136,21 @@ src_configure() {
 		-DENABLE_XFER=$(usex xfer)
 	)
 
+	if use python; then
+		python_is_python3 || mycmakeargs+=( -DENABLE_PYTHON2=ON )
+	fi
+
 	cmake-utils_src_configure
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
 	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
+	xdg_desktop_database_update
 	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }

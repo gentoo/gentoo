@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="amd64 arm ~ppc x86 ~m68k-mint"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/libparserutils-0.2.1-r1[static-libs?,${MULTILIB_USEDEP}]
 	!net-libs/hubbub"

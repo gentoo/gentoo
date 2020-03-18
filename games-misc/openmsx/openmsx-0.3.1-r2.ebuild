@@ -23,11 +23,11 @@ pkg_setup() {
 }
 
 src_compile() {
-	emake _V= bundle || die
+	emake _V= bundle
 }
 
 src_install() {
 	insinto "/usr/share/games/openttd/gm/${P}"
-	doins ${P}/{*.mid,openmsx.obm} || die
-	dodoc ${P}/{changelog.txt,readme.txt} || die
+	doins ${P}/{*.mid,openmsx.obm}
+	dodoc ${P}/{changelog.txt,readme.txt}
 }

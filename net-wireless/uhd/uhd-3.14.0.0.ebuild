@@ -20,6 +20,7 @@ LICENSE="GPL-3"
 SLOT="0/$(get_version_component_range 1).$(get_version_component_range 2)"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="b100 b200 doc e300 examples mpmd octoclock n230 test usb usrp1 usrp2 +utils x300"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 			b100? ( usb )
 			b200? ( usb )

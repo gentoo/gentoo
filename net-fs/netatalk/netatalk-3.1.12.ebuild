@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(ver_cut 1-3)/${P}.tar.bz2"
 
 LICENSE="GPL-2 BSD"
 SLOT="0/18.0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~ppc ~ppc64 x86"
 IUSE="acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf"
 
 CDEPEND="
@@ -33,7 +33,7 @@ CDEPEND="
 	dbus? ( sys-apps/dbus dev-libs/dbus-glib )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	tracker? ( app-misc/tracker )
@@ -107,7 +107,6 @@ src_configure() {
 		--with-libevent-lib=/usr/$(get_libdir)
 		--with-bdb=/usr
 		--with-uams-path=/usr/$(get_libdir)/${PN}
-		--disable-silent-rules
 		--with-init-style=gentoo-openrc
 		--without-libevent
 		--without-tdb

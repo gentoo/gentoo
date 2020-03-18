@@ -1,0 +1,42 @@
+From 7afd5aa65fdabaa4583f6e1a84936eb9bdd33c65 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Tue, 21 Jan 2020 23:10:46 +0000
+Subject: [PATCH] tftp-hpa: fix build failure against gcc-10
+
+On gcc-10 (and gcc-9 -fno-common) build fails as:
+
+```
+x86_64-pc-linux-gnu-gcc -Wl,-O1 -Wl,--as-needed -Wl,--hash-style=gnu tftp.o main.o ../common/libcommon.a -lreadline -liberty   -o tftp
+ld: main.o:(.bss+0x40):
+  multiple definition of `toplevel'; tftp.o:(.bss+0x100): first defined here
+collect2: error: ld returned 1 exit status
+make[1]: *** [Makefile:12: tftp] Error 1
+```
+
+gcc-10 will change the default from -fcommon to fno-common:
+https://gcc.gnu.org/PR85678.
+
+The error also happens if CFLAGS=-fno-common passed explicitly.
+
+Bug: https://bugs.gentoo.org/705834
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ tftp/tftp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tftp/tftp.c b/tftp/tftp.c
+index d15da22..d067f96 100644
+--- a/tftp/tftp.c
++++ b/tftp/tftp.c
+@@ -48,7 +48,7 @@ extern int maxtimeout;
+ #define PKTSIZE    SEGSIZE+4
+ char ackbuf[PKTSIZE];
+ int timeout;
+-sigjmp_buf toplevel;
++extern sigjmp_buf toplevel;
+ sigjmp_buf timeoutbuf;
+ 
+ static void nak(int, const char *);
+-- 
+2.25.0
+

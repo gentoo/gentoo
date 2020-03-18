@@ -7,11 +7,11 @@ DESCRIPTION="A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windo
 HOMEPAGE="https://www.geekbench.com"
 SRC_URI="https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz"
 
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="geekbench"
 SLOT="4"
 
-RESTRICT="bindist fetch mirror strip"
+RESTRICT="bindist mirror"
 
 S="${WORKDIR}/Geekbench-${PV}-Linux"
 

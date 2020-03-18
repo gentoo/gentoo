@@ -1,0 +1,186 @@
+.TH TRAYER 1 "Feb 14, 2005" "FVWM\-Crystal"
+.SH NAME
+trayer \- a lightweight GTK2\-based systray for UNIX desktop
+.SH SYNOPSIS
+.B trayer \-h
+.br
+.B trayer \-v
+.br
+.B trayer
+.\"
+.RB [\| \-\-edge
+.RI \| left \||\| right \||\| top \||\| bottom \||\| none \|]
+.\"
+.RB [\| \-\-align
+.RI \| left \||\| right \||\| center \|]
+.\"
+.RB [\| \-\-margin
+.RI \| <size> \|]
+.\"
+.RB [\| \-\-widthtype
+.RI \| request \||\| pixel \||\| percent
+.RI \|]
+.\"
+.RB [\| \-\-width
+.RI \| <size> \|]
+.\"
+.RB [\| \-\-heighttype
+.RI \| <pixel> \|]
+.\"
+.RB [\| \-\-height
+.RI \| <size> \|]
+.\"
+.RB [\| \-\-SetDockType
+.RI \| true \||\| false \|]
+.\"
+.RB [\| \-\-SetPartialStrut
+.RI \| true \||\| false \|]
+.\"
+.RB [\| \-\-transparent
+.RI \| true \||\| false \|]
+.\"
+.RB [\| \-\-alpha
+.RI \| <value> \|]
+.\"
+.RB [\| \-\-tint
+.RI \| <color> \|]
+.\"
+.RB [\| \-\-distance
+.RI \| <length> \|]
+.\"
+.RB [\| \-\-expand
+.RI \| true \||\| false \|]
+.\"
+.RB [\| \-\-padding
+.RI \| <size> \|]
+.\"
+.SH DESCRIPTION
+.B trayer
+is small program designed to provide system tray similar to these in
+.B GNOME
+/
+.B KDE
+desktop environments for window managers which does not
+support that function. It is similar to other applications such as
+.B peksystray
+and \fBdocker\fP.
+.PP
+System tray is a place, where many applications put their icons, so they are
+always visible. Such icons may present status of an application and allow user
+to control the program.
+.PP
+\fBtrayer\fP code was extracted from \fBfbpanel\fP application, you can find more
+about it on its homepage: http://fbpanel.sourceforge.net/.
+.SH OPTIONS
+This programs follow the usual GNU command line syntax, with long
+options starting with two dashes (`-').
+A summary of options is included below.
+.TP
+.B \-h
+Show summary of options and exit.
+
+.TP
+.B \-v
+Show version of program and exit.
+
+.TP
+\fB\-\-edge\fP \fIleft\fP\||\|\fIright\fP\||\|\fItop\fP\||\|\fIbottom\fP\||\|\fInone\fP
+Specifies a screen edge to use.
+
+.TP
+\fB\-\-align\fP \fIleft\fP\||\|\fIcenter\fP\||\|\fIright\fP
+Specifies an align of the icons.
+
+.TP
+\fB\-\-margin\fP \fI<size>\fP
+Specifies length of margin (in pixels)
+
+.TP
+\fB\-\-widthtype\fB \fIrequest\fP\||\|\fIpixel\fP\||\|\fIpercent\fP
+Specifies method of calculating trayer's window width:
+.RS
+.TP
+\fIrequest\fP
+Follow application icons' size, so trayer may shrink or expand dynamically.
+
+.TP
+\fIpixel\fP
+Set a fixed size, given with \fB\-\-width\fP option in pixels.
+
+.TP
+\fIpercent\fP
+Set a fixed size, given with \fB\-\-width\fP option in percentage of a lenght of screen edge.
+.RE
+
+.TP
+\fB\-\-width\fP \fI<size>\fP
+Width of trayer's window. Ignored when \fB\-\-widthtype\fP is set to \fIrequest\fP.
+
+.TP
+\fB\-\-heighttype\fP \fIrequest\fP\||\|\fIpixel\fP\||\|\fIpercent\fP
+Specifies method of calculating trayer's window height:
+.RS
+.TP
+\fIrequest\fP
+Follow application icons' size, so trayer may shrink or expand dynamically.
+
+.TP
+\fIpixel\fP
+Set a fixed size, given with \fB\-\-height\fP option in pixels.
+
+.TP
+\fIpercent\fP
+Set a fixed size, given with \fB\-\-height\fP option in percentage of a lenght of screen edge.
+.RE
+
+.TP
+\fB\-\-height\fP \fI<size>\fP
+Height of trayer's window. Ignored when \fB\-\-heighttype\fP is set to \fIrequest\fP.
+
+.TP
+\fB\-\-SetDockType\fP \fItrue\fP\||\|\fIfalse\fP
+Identify panel window type as dock.
+
+.TP
+\fB\-\-SetPartialStrut\fP \fItrue\fP\||\|\fIfalse\fP
+Reserve panel space so that it will not be covered by maximized windows.
+
+.TP
+\fB\-\-transparent\fP \fItrue\fP\||\|\fIfalse\fP
+Use transparency.
+
+.TP
+\fB\-\-alpha\fP \fI<value>\fP
+Percentage of transparency (0 \- nontransparent, 256 \- fully transparent)
+
+.TP
+\fB\-\-tint\fP \fI<color>\fP
+Color used to tint transparent background. Color is given as a 24-bit C hexadecimal integer, for example: 0xff0000 is red, 0xff8800 is orange and 0x00ff00 is green.
+
+.TP
+\fB\-\-distance\fP \fI<length>\fP
+Specifies distance between trayer's window and screen edge (in pixels)
+
+.TP
+\fB\-\-expand\fP \fItrue\fP\||\|\fIfalse\fP
+Specifies whether trayer may accomodate extra space when there is too much
+icons.
+
+.TP
+\fB\-\-padding\fP \fI<size>\fP
+Extra space between icons and trayer window's border.
+
+.SH SEE ALSO
+.BR fbpanel (1)
+.SH AUTHORS
+Anatoly Asviyan <aanatoly@users.sf.net> \- fbpanel
+.br
+Rafal Bisingier <ravbc@man.poznan.pl>
+.br
+Maciej Delmanowski <harnir@users.berlios.de>
+.br
+Grzegorz Nieweglowski <hoppke@dobremiasto.net>
+.br
+Thomas Rydzynski
+.PP
+This manual page was written by Tomasz Melcer <liori@interia.pl>.

@@ -12,7 +12,7 @@ DESCRIPTION="Prometheus exporter for consul metrics"
 HOMEPAGE="https://github.com/prometheus/consul_exporter"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 

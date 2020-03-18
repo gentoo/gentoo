@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/711902
+
+--- intercal-0.31-orig/src/perpet.c
++++ intercal-0.31/src/perpet.c
+@@ -85,7 +85,7 @@
+ /* function created by yacc */
+ extern int yyparse(void);
+ 
+-int yydebug;
++extern int yydebug;
+ 
+ /* compilation options */
+ bool compile_only; 	/* just compile into C, don't run the linker */

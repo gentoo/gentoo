@@ -18,6 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="bazaar git test"
+RESTRICT="!test? ( test )"
 
 DEPEND=">=dev-vcs/subversion-1.0.9"
 RDEPEND="${DEPEND}

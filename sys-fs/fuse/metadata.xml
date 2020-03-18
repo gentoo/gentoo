@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>radhermit@gentoo.org</email>
-    <name>Tim Harder</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:fuse:fuse</remote-id>
-    <remote-id type="github">libfuse/libfuse</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>bman@gentoo.org</email>
+		<name>Aaron BaumanM</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:fuse:fuse</remote-id>
+		<remote-id type="github">libfuse/libfuse</remote-id>
+	</upstream>
 </pkgmetadata>

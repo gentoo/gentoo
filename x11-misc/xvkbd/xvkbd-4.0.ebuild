@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="virtual keyboard for X window system"
 HOMEPAGE="http://t-sato.in.coocan.jp/xvkbd/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://t-sato.in.coocan.jp/xvkbd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,6 +27,7 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0-destdir.patch
+	"${FILESDIR}"/${PN}-4.0-fno-common.patch
 )
 
 src_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc ipv6 kernel_linux test tools"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 		dev-libs/libxml2:2=
@@ -44,7 +45,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DDOC_INSTALL_DIR="${EPREFIX}/usr/share/doc/${P}"
 		-DENABLE_HTML_DOCS=$(usex doc)
 		-DENABLE_IPV6=$(usex ipv6)

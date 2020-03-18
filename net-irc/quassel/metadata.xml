@@ -30,10 +30,6 @@
 		<flag name="oxygen">
 			Support the Oxygen icon set that was the default for KDE4.
 		</flag>
-		<flag name="phonon">
-			Build client with phonon backend support. This enables sound
-			playback in client.
-		</flag>
 		<flag name="server">
 			Build the server binary. If this USE flag is disabled, the
 			'core' server binary for quassel is not built, and cannot be

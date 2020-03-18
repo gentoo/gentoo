@@ -12,6 +12,7 @@ DESCRIPTION="Perl interface to the libusb-1.0 API"
 
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/libusb:1

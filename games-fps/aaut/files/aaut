@@ -1,5 +1,0 @@
-#!/bin/sh
-[ -z "${AAOPTS}" ] && AAOPTS="-width 150 -height 70"
-SDL_VIDEODRIVER="aalib"
-export AAOPTS SDL_VIDEODRIVER
-exec ut "$@"

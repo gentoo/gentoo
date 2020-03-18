@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -6,9 +6,10 @@
 
 # SECTION: Unmask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-11-17)
-# media-sound/audacious is keyworded on amd64
--audacious
+# Michał Górny <mgorny@gentoo.org> (2019-11-13)
+# Python 3.8 has reasonably keyworded packages here.
+-python_targets_python3_8
+-python_single_target_python3_8
 
 # Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 works on amd64
@@ -41,8 +42,6 @@
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is keyworded on this arch.
--python_targets_pypy
--python_single_target_pypy
 -python_targets_pypy3
 -python_single_target_pypy3
 
@@ -70,11 +69,6 @@
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-21)
 # IPMI is only implemented for x86, amd64 and ia64
 -ipmi
-
-# Ralph Sennhauser <sera@gentoo.org> (2012-07-31)
-# Keyworded on amd64
--python_targets_jython2_7
--python_single_target_jython2_7
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2012-03-05)
 # Unmask, works with v4l2, #350211
@@ -123,6 +117,7 @@
 -video_cards_i915
 -video_cards_i965
 -video_cards_intel
+-video_cards_iris
 -video_cards_nvidia
 -video_cards_siliconmotion
 -video_cards_vesa

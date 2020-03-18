@@ -1,0 +1,15 @@
+diff --git a/test_path.py b/test_path.py
+index 2a7ddb8..cc7a58f 100644
+--- a/test_path.py
++++ b/test_path.py
+@@ -420,6 +420,10 @@ class TestScratchDir:
+         platform.system() == 'Windows' and path.PY3,
+         reason="Can't write latin characters. See #133",
+     )
++    @pytest.mark.xfail(
++        path.PY2,
++        reason="Broken on python 2.7",
++    )
+     def test_listdir_other_encoding(self, tmpdir):
+         """
+         Some filesystems allow non-character sequences in path names.

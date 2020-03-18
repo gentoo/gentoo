@@ -23,11 +23,15 @@ src_install() {
 	dobin album
 	doman album.1
 	dodoc License.txt CHANGELOG
-	use doc && dohtml -r Docs/*
+
+	if use doc ; then
+		docinto html
+		dodoc -r Docs/.
+	fi
 
 	dodir /usr/share/album
 	insinto /usr/share/album
-	cd ..
+	cd .. || die
 	doins -r lang
 	use themes && doins -r Themes
 	use plugins && doins -r plugins

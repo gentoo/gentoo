@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,7 @@ BDEPEND="virtual/pkgconfig"
 DOCS=( CHANGES CREDITS INSTALL KNOWN_ISSUES LICENSE.txt README RELNOTES TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-allowTLS.patch
+	"${FILESDIR}"/${P}-gcc-10.patch
 )
 
 if [[ ${PV} == *9999 ]] ; then
@@ -39,10 +40,10 @@ src_prepare() {
 
 src_compile() {
 	use static && append-ldflags -static
-	emake CC="$(tc-getCC)" || die
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	emake install prefix="${EPREFIX}"/usr DESTDIR="${D}" || die
+	emake install prefix="${EPREFIX}"/usr DESTDIR="${D}"
 	einstalldocs
 }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>rafaelmartins@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
     LuaDoc is a documentation generator tool for Lua source code.
     It parses the declarations and documentation comments in a set of Lua

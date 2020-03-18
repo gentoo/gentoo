@@ -32,6 +32,6 @@ src_prepare() {
 }
 
 src_compile() {
-	emake || die
+	emake
 	gzip -9 wqy-unibit.pcf || die
 }

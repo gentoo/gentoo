@@ -12,7 +12,7 @@ SRC_URI="https://github.com/keplerproject/luafilesystem/archive/v${MY_PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 x86"
 IUSE="luajit"
 
 RDEPEND="

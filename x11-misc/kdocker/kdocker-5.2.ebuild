@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit bash-completion-r1 gnome2-utils qmake-utils
+inherit bash-completion-r1 qmake-utils xdg
 
 MY_P=KDocker-${PV}
 DESCRIPTION="Helper to dock any application into the system tray"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/user-none/KDocker/archive/${PV}.tar.gz -> ${MY_P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -28,6 +28,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS BUGS ChangeLog CREDITS README.md TODO )
+
+PATCHES=(
+	"${FILESDIR}"/qt-5.14.patch
+)
 
 S=${WORKDIR}/${MY_P}
 
@@ -45,12 +49,4 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

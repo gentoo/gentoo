@@ -7,7 +7,7 @@ DESCRIPTION="Makes the color of your computer's display adapt to the time of the
 HOMEPAGE="https://justgetflux.com/"
 SRC_URI="https://justgetflux.com/linux/${PN}12.tgz -> ${PN}12-${PV}.tar.gz"
 
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 LICENSE="f.lux"
 SLOT="0"
 

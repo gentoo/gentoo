@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils dotnet flag-o-matic
+inherit eutils dotnet flag-o-matic ltprune
 
 DESCRIPTION="Library for using System.Drawing with mono"
 HOMEPAGE="http://www.mono-project.com"
@@ -42,9 +42,9 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing
-	econf 	--disable-dependency-tracking		\
-		--disable-static			\
-		--with-cairo=system			\
+	econf \
+		--disable-static \
+		--with-cairo=system \
 		$(use !cairo && printf %s --with-pango)
 }
 
@@ -52,7 +52,7 @@ src_compile() {
 	emake "$@"
 }
 
-src_install () {
+src_install() {
 	emake -j1 DESTDIR="${D}" "$@" install #nowarn
 	dotnet_multilib_comply
 	local commondoc=( AUTHORS ChangeLog README TODO )

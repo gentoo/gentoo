@@ -1,0 +1,22 @@
+--- a/plugins/vnc/vinagre-vnc-connection.c
++++ b/plugins/vnc/vinagre-vnc-connection.c
+@@ -27,6 +27,8 @@
+ #include "vinagre-vnc-connection.h"
+ #include "vinagre-vala.h"
+ 
++gboolean scaling_command_line;
++
+ struct _VinagreVncConnectionPrivate
+ {
+   gchar    *desktop_name;
+--- a/plugins/vnc/vinagre-vnc-connection.h
++++ b/plugins/vnc/vinagre-vnc-connection.h
+@@ -26,7 +26,7 @@
+ 
+ G_BEGIN_DECLS
+ 
+-gboolean scaling_command_line;
++extern gboolean scaling_command_line;
+ 
+ #define VINAGRE_TYPE_VNC_CONNECTION             (vinagre_vnc_connection_get_type ())
+ #define VINAGRE_VNC_CONNECTION(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), VINAGRE_TYPE_VNC_CONNECTION, VinagreVncConnection))

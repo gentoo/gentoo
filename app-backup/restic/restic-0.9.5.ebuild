@@ -10,7 +10,7 @@ HOMEPAGE="https://restic.github.io/"
 SRC_URI="https://github.com/restic/restic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 EGO_PN="github.com/restic/restic"
 
-LICENSE="BSD-2"
+LICENSE="Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
@@ -32,12 +32,12 @@ src_compile() {
 		-o restic ${EGO_PN}/cmd/restic
 	)
 
-	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
+	GO111MODULE=off GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
 		go build "${mygoargs[@]}" || die
 }
 
 src_test() {
-	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
+	GO111MODULE=off GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
 		go test -timeout 30m -v -work -x ${EGO_PN}/cmd/... ${EGO_PN}/internal/... || die
 }
 

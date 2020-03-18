@@ -9,4 +9,10 @@
 	<email>sound@gentoo.org</email>
 	<name>Gentoo Sound project</name>
 </maintainer>
+<use>
+	<flag name="voices">Install synthetic voices</flag>
+</use>
+<upstream>
+	<remote-id type="github">festvox/flite</remote-id>
+</upstream>
 </pkgmetadata>

@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="HTML Include System by Ulli Meybohm"
 HOMEPAGE="http://www.meybohm.de/"
-SRC_URI="mirror://gentoo/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

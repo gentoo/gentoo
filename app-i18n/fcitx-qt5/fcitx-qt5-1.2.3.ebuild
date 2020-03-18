@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2014-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit cmake-utils
 
@@ -24,6 +24,8 @@ SLOT="4"
 KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 IUSE=""
 
+BDEPEND="kde-frameworks/extra-cmake-modules:5
+	virtual/pkgconfig"
 # Private headers of dev-qt/qtgui:5 used.
 RDEPEND=">=app-i18n/fcitx-4.2.9:4
 	dev-qt/qtcore:5
@@ -33,8 +35,6 @@ RDEPEND=">=app-i18n/fcitx-4.2.9:4
 	virtual/libintl
 	x11-libs/libxkbcommon"
 DEPEND="${RDEPEND}
-	dev-qt/qtconcurrent:5
-	kde-frameworks/extra-cmake-modules:5
-	virtual/pkgconfig"
+	dev-qt/qtconcurrent:5"
 
 DOCS=()

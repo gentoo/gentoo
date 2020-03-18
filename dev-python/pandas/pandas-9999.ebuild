@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="manual"
 inherit distutils-r1 eutils flag-o-matic git-r3 virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
-HOMEPAGE="http://pandas.pydata.org/"
+HOMEPAGE="https://pandas.pydata.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/pydata/pandas.git"
 
@@ -19,6 +19,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS=""
 IUSE="doc full-support minimal test X"
+RESTRICT="!test? ( test )"
 
 RECOMMENDED_DEPEND="
 	dev-python/bottleneck[${PYTHON_USEDEP}]
@@ -28,7 +29,6 @@ OPTIONAL_DEPEND="
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/blosc[${PYTHON_USEDEP}]
 	dev-python/boto[${PYTHON_USEDEP}]
-	>=dev-python/google-api-python-client-1.2.0[$(python_gen_usedep python2_7 pypy)]
 	|| (
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
@@ -41,7 +41,6 @@ OPTIONAL_DEPEND="
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
-	dev-python/python-gflags[$(python_gen_usedep python2_7 pypy)]
 	dev-python/rpy[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
@@ -51,10 +50,7 @@ OPTIONAL_DEPEND="
 	dev-python/xlwt[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
 	X? (
-		|| (
-			dev-python/PyQt5[${PYTHON_USEDEP}]
-			dev-python/pygtk[$(python_gen_usedep python2_7)]
-		)
+		dev-python/PyQt5[${PYTHON_USEDEP}]
 		|| (
 			x11-misc/xclip
 			x11-misc/xsel
@@ -127,7 +123,7 @@ python_compile_all() {
 	if use doc; then
 		cd "${BUILD_DIR}"/lib || die
 		cp -ar "${S}"/doc . && cd doc || die
-		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html || die
+		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html
 	fi
 }
 

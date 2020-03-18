@@ -1,0 +1,22 @@
+--- a/src/linux/syscall-linux.c
++++ b/src/linux/syscall-linux.c
+@@ -538,7 +538,7 @@ pid_t cons_pid = -1;
+ static int cfd = -1;
+ BOOL trace_syscalls;
+ char *consLog = NULL;
+-extern BOOL noConsole;
++BOOL noConsole;
+ extern BOOL userint;
+ static struct termios sane_ttyIos;
+ 
+--- a/src/platform.c
++++ b/src/platform.c
+@@ -29,7 +29,7 @@
+ #include "platform.h"
+ #include "state.h"
+ 
+-BOOL autoAlloc, noConsole;
++extern BOOL autoAlloc, noConsole;
+ extern char *consLog;
+ extern unsigned va_len, pa_len, rid_len, key_len;
+ extern unsigned mips;

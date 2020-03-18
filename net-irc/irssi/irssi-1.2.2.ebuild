@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,13 +16,12 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV/_/-}/${MY_P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="otr +perl selinux socks5 +proxy libressl"
 
 COMMON_DEPEND="
 	sys-libs/ncurses:0=
 	>=dev-libs/glib-2.6.0
-	!net-irc/irssi-otr
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( >=dev-libs/libressl-2.7.4:= )
 	otr? ( >=dev-libs/libgcrypt-1.2.0:0=
@@ -36,8 +35,7 @@ DEPEND="
 
 RDEPEND="
 	${COMMON_DEPEND}
-	selinux? ( sec-policy/selinux-irc )
-	perl? ( !net-im/silc-client )"
+	selinux? ( sec-policy/selinux-irc )"
 
 RESTRICT="test"
 
@@ -61,5 +59,5 @@ src_configure() {
 src_install() {
 	default
 	use perl && perl_delete_localpod
-	rm -f "${ED}"/usr/$(get_libdir)/irssi/modules/*.{a,la}
+	rm -f "${ED}"/usr/$(get_libdir)/irssi/modules/*.{a,la} || die
 }

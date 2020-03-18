@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,5 +18,6 @@ IUSE=""
 RESTRICT="binchecks strip test"
 
 S="${WORKDIR}/${MY_P}"
+FONT_S="${S}"
 FONT_SUFFIX="ttf"
 FONT_CONF=( "${FILESDIR}"/62-crosextra-caladea.conf )

@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}"
 src_install() {
 	default
 
-	dodir /usr/bin || die
+	dodir /usr/bin
 	mv "${D}"/usr/{games,bin}/sm || die
 	sed -i 's|Exec=/usr/games/sm||' "${D}"/usr/share/applications/sm.desktop || die
 }

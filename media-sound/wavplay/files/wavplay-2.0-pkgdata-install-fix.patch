@@ -1,0 +1,9 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,6 +1,5 @@
+ # src/Makefile.am for z9basic
+ 
+-dist_pkgdata_DATA = wavplay.1
+ 
+ man1_MANS = wavplay.1
+ 

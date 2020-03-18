@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,8 +53,7 @@ src_configure() {
 		--without-kytea
 		--without-libstemmer
 		--disable-arrow
-		--with-log-path="${EROOT%/}/var/log/${PN}.log"
-		--docdir="${EROOT%/}/usr/share/doc/${P}"
+		--with-log-path="${EPREFIX}"/var/log/${PN}.log
 		--without-ruby
 		--with-shared-onigmo
 		--with-onigmo=system

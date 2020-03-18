@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools toolchain-funcs eutils java-pkg-opt-2 java-ant-2
+inherit autotools toolchain-funcs eutils java-pkg-opt-2 java-ant-2 ltprune
 
 MYP="Healpix_${PV}"
 MYPF=${MYP}_2015Oct08
@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 # might add fortran in the future if requested
 IUSE="cxx doc idl java openmp static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=sci-libs/cfitsio-3

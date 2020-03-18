@@ -15,7 +15,7 @@ SRC_URI_TESTING=Testing/${PV:0:4}
 [[ ${PV/_beta} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
 [[ ${PV/_pre} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
 [[ ${PV/_rc} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
-SRC_URI="mirror://kernel/linux/utils/boot/syslinux/${SRC_URI_DIR}/${P/_/-}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/boot/syslinux/${SRC_URI_DIR}/${P/_/-}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

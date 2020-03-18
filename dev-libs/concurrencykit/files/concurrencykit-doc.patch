@@ -1,0 +1,24 @@
+diff --git a/doc/Makefile.in b/doc/Makefile.in
+index cbad704..f476925 100644
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -1,7 +1,7 @@
+ .PHONY: clean install uninstall
+ 
+ MANDIR=@MANDIR@
+-GZIP=@GZIP@
++GZIP=/bin/echo
+ GZIP_SUFFIX=.3@GZIP_SUFFIX@
+ BUILD_DIR=@BUILD_DIR@
+ SRC_DIR=@SRC_DIR@
+@@ -206,7 +206,9 @@ refcheck:
+ 
+ install:
+ 	mkdir -p $(DESTDIR)/$(MANDIR)/man3 || exit
+-	cp *$(GZIP_SUFFIX) $(DESTDIR)/$(MANDIR)/man3 || exit
++	for target in $(OBJECTS); do	\
++		cp -v $$target $(DESTDIR)/$(MANDIR)/man3/$$target.3 || exit; \
++	done
+ 
+ uninstall:
+ 	for target in $(OBJECTS); do 			  \

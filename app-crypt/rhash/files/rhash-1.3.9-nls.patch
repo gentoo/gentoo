@@ -1,0 +1,22 @@
+From a165520d3f63e976dd3b842c2fbb05f05f1029a8 Mon Sep 17 00:00:00 2001
+From: Aleksey <rhash.admin@gmail.com>
+Date: Sun, 15 Dec 2019 03:35:09 +0300
+Subject: [PATCH] i18n: fix a string in uk.po by adding newline
+
+---
+ po/uk.po | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/po/uk.po b/po/uk.po
+index 959e47a..d6c0b1d 100644
+--- a/po/uk.po
++++ b/po/uk.po
+@@ -234,7 +234,7 @@ msgstr "Перевірити хеш-файли, вказані у командн
+ 
+ #: parse_cmdline.c:91
+ msgid "Update the specified hash file.\n"
+-msgstr "Оновити вказаний хеш-файл"
++msgstr "Оновити вказаний хеш-файл.\n"
+ 
+ #: parse_cmdline.c:92
+ msgid "Rename files by inserting crc32 sum into name.\n"

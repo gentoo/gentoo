@@ -8,7 +8,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: syntax highlighting for perl module Template-Toolkit"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=830"
 LICENSE="vim"
-KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE=""
 
 VIM_PLUGIN_HELPTEXT=\

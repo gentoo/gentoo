@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf916831e87a8f1d4250b5
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
@@ -28,11 +28,11 @@ S="${WORKDIR}"/${MYP}-src
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
-src_configure () {
+src_configure() {
 	econf --prefix="${D}"/usr
 }
 
-src_compile () {
+src_compile() {
 	build () {
 		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
 			-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
@@ -55,7 +55,7 @@ src_test() {
 	grep -q DIFF xmlada.testLog && die
 }
 
-src_install () {
+src_install() {
 	build () {
 		gprinstall -XLIBRARY_TYPE=$1 -f -p -XBUILD=Production \
 			-XPROCESSORS=$(makeopts_jobs) --prefix="${D}"/usr \

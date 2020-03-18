@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ IUSE=""
 
 DEPEND="app-arch/unzip
 	app-admin/chrpath"
-RDEPEND="sys-libs/ncurses:5"
+RDEPEND="sys-libs/ncurses-compat:5"
 
 S=${WORKDIR}
 

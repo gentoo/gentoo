@@ -1,0 +1,26 @@
+diff --git a/keyring/tests/test_multiprocess.py b/keyring/tests/test_multiprocess.py
+index 49af222..8fdd1a3 100644
+--- a/keyring/tests/test_multiprocess.py
++++ b/keyring/tests/test_multiprocess.py
+@@ -11,6 +11,11 @@ def subprocess_get():
+     keyring.get_password('test_app', 'test_user')
+ 
+ 
++pytestmark = pytest.mark.xfail(
++    platform.system() == 'Linux', reason="#410: keyring discovery fails intermittently"
++)
++
++
+ def test_multiprocess_get():
+     proc1 = multiprocessing.Process(target=subprocess_get)
+     proc1.start()
+@@ -23,9 +28,6 @@ def test_multiprocess_get():
+     sys.version_info < (3, 8) and platform.system() == 'Darwin',
+     reason="#281: Prior to 3.8, multiprocess invocation fails",
+ )
+-@pytest.mark.xfail(
+-    platform.system() == 'Linux', reason="#410: tests fail intermittently"
+-)
+ def test_multiprocess_get_after_native_get():
+     keyring.get_password('test_app', 'test_user')
+     test_multiprocess_get()

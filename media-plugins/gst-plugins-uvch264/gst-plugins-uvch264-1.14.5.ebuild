@@ -7,11 +7,11 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
 DESCRIPTION="UVC compliant H264 encoding cameras plugin for GStreamer"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	virtual/libgudev:=[${MULTILIB_USEDEP}]
+	dev-libs/libgudev:=[${MULTILIB_USEDEP}]
 	virtual/libusb:1[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"

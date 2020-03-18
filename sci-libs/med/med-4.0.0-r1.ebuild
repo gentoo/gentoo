@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools flag-o-matic fortran-2 python-single-r1
 
@@ -65,7 +65,6 @@ src_configure() {
 		--disable-api23
 		--disable-installtest
 		--disable-static
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		--with-hdf5="${EPREFIX}"/usr
 		--with-hdf5-lib="${EPREFIX}"/usr/$(get_libdir)
 		$(use_enable fortran)

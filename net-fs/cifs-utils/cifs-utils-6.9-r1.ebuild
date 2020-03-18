@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ RDEPEND="
 		virtual/krb5
 	)
 	caps? ( sys-libs/libcap-ng )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 "
 DEPEND="${RDEPEND}"
 PDEPEND="

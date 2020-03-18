@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<use>
+		<flag name="config-file">Enable config file support</flag>
+		<flag name="doc">Build documentation and man pages (requires <pkg>app-text/asciidoc</pkg>)</flag>
+		<flag name="drm">Enable support for using drm for vsync</flag>
+		<flag name="opengl">Enable features that require opengl (opengl backend, and opengl vsync methods)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">yshui/picom</remote-id>
+	</upstream>
+</pkgmetadata>

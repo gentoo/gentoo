@@ -17,6 +17,7 @@
     <flag name="arb">Add support for arb (<pkg>sci-mathematics/arb</pkg>)</flag>
     <flag name="benchmarks">Build benchmarks</flag>    
     <flag name="boost">Add support for boost integers(<pkg>dev-libs/boost</pkg>)</flag>
+    <flag name="ecm">Add support for ECM integer factorization library (<pkg>sci-mathematics/gmp-ecm</pkg>)</flag>
     <flag name="flint">Add support for (<pkg>sci-mathematics/flint</pkg>)</flag>
     <flag name="llvm">Build with LLVM</flag>
     <flag name="mpc">Add support for multiprecision complex arithmetic(<pkg>dev-libs/mpc</pkg>)</flag>    

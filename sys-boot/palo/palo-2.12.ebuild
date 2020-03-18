@@ -10,7 +10,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/deller/${PN}.git/snapsh
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~hppa"
+KEYWORDS="-* hppa"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.00-toolchain.patch

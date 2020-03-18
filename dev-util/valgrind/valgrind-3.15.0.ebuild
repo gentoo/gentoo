@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,11 +11,11 @@ SLOT="0"
 IUSE="mpi"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://sourceware.org/git/${PN}.git/"
+	EGIT_REPO_URI="https://sourceware.org/git/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="ftp://sourceware.org/pub/valgrind/${P}.tar.bz2"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
+	KEYWORDS="-* amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
 fi
 
 DEPEND="mpi? ( virtual/mpi )"
@@ -30,6 +30,8 @@ src_prepare() {
 
 	# Respect CFLAGS, LDFLAGS
 	eapply "${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
+
+	eapply "${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# upstream doesn't support this, but we don't build with

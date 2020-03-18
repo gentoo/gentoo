@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,11 +26,11 @@ CONFIG_CHECK="ACPI"
 MODULE_NAMES="acpi_call(misc:${S})"
 BUILD_TARGETS="default"
 
-src_prepare(){
+src_prepare() {
 	epatch "${FILESDIR}/${P}-linux-3.17.patch"
 }
 
-src_compile(){
+src_compile() {
 	BUILD_PARAMS="KDIR=${KV_OUT_DIR} M=${S}"
 	linux-mod_src_compile
 }

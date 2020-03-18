@@ -10,7 +10,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 # If you want to be picky, we should require that PHP be built with at

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ src_compile() {
 	:
 }
 
-src_install(){
+src_install() {
 	emake DESTDIR="${ED}" install
 
 	bzr_install() {
@@ -57,7 +57,7 @@ src_install(){
 	fi
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog "${PN} supports the following VCS: ${VCS_DEPEND}"
 	elog "	dev-vcs/bzr"
 	elog "This ebuild just ensures at least one is installed!"

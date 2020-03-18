@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -59,11 +59,11 @@ src_configure() {
 	else
 		mycmakeargs+=( -DWITH_G4ROOT=no )
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc; then
 		cd packages
 		doxygen || die
@@ -76,7 +76,7 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use doc && local HTML_DOCS=( doc/html/. )
 	einstalldocs
 }

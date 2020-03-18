@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>prefix@gentoo.org</email>
+		<name>Gentoo Prefix</name>
+	</maintainer>
+	<use>
+		<flag name="man">Install the manpages</flag>
+	</use>
+	<longdescription lang="en">
+		/usr/include headers provided by XNU on macOS (Darwin) systems
+	</longdescription>
+</pkgmetadata>

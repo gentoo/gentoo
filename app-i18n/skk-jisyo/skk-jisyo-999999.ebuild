@@ -28,7 +28,7 @@ DEPEND="${RUBY_DEPS}
 	)"
 RDEPEND=""
 
-DOCS=( ChangeLog{,.{1..3}} committers.txt edict_doc.txt zipcode/README.ja )
+DOCS=( ChangeLog{,.{1..3}} committers.txt edict_doc.txt )
 
 SKKTOOLS_DIR="${EPREFIX}/usr/share/skktools/convert2skk"
 
@@ -78,4 +78,8 @@ src_compile() {
 src_install() {
 	insinto /usr/share/skk
 	doins {,zipcode/}${MY_PN}.*
+
+	einstalldocs
+	docinto zipcode
+	dodoc zipcode/README.md
 }

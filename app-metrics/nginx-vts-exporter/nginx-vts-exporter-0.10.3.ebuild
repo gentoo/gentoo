@@ -12,7 +12,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Nginx virtual host traffic stats exporter for Prometheus"
 HOMEPAGE="https://github.com/hnlq715/nginx-vts-exporter"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0 BSD"
 SLOT="0"
 IUSE=""
 

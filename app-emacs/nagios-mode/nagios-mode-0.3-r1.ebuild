@@ -11,7 +11,7 @@ SRC_URI="http://michael.orlitzky.com/code/releases/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 
 SITEFILE="50${PN}-gentoo.el"
 DOCS="ChangeLog README test_suite.cfg"

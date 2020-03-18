@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,13 @@ inherit haskell-cabal
 
 DESCRIPTION="Securely store session data in a client-side cookie"
 HOMEPAGE="https://github.com/yesodweb/clientsession/tree/master"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/base64-bytestring-0.1.1.1:=[profile?]
 	>=dev-haskell/cereal-0.3:=[profile?]

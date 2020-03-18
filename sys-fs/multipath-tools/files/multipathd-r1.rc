@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/sbin/multipathd"
+pidfile="/run/multipathd.pid"
+start_stop_daemon_args="--wait 1000"
+
+depend() {
+	need localmount
+	after modules
+}

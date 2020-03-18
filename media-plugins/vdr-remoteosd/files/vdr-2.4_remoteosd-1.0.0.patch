@@ -1,0 +1,38 @@
+compile fix for >=vdr-2.3.1 
+suggested by MatthiasK on vdr-portal.de
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 25 Dec 2019 )
+diff -Naur remoteosd-1.0.0.orig/menu.c remoteosd-1.0.0/menu.c
+--- remoteosd-1.0.0.orig/menu.c	2019-12-25 21:59:10.907492713 +0100
++++ remoteosd-1.0.0/menu.c	2019-12-25 22:01:09.717492713 +0100
+@@ -69,7 +69,8 @@
+ 	}
+ 
+ 	if (RemoteOsdSetup.tuneServer) {
+-		cChannel *channel = Channels.GetByNumber(cDevice::CurrentChannel());
++		LOCK_CHANNELS_READ;
++		const cChannel *channel = Channels->GetByNumber(cDevice::CurrentChannel());
+ 		CmdCHAN(channel);
+ 	}
+ 
+@@ -98,7 +99,7 @@
+ 	return cmd.responseCode;
+ }
+ 
+-bool cRemoteOsdMenu::CmdCHAN(cChannel *Channel) {
++bool cRemoteOsdMenu::CmdCHAN(const cChannel *Channel) {
+ 	SvdrpCommand_v1_0 cmd;
+ 	cmd.command = cString::sprintf("CHAN %s\r\n", *Channel->GetChannelID().ToString());
+ 	cmd.handle = svdrp.handle;
+diff -Naur remoteosd-1.0.0.orig/menu.h remoteosd-1.0.0/menu.h
+--- remoteosd-1.0.0.orig/menu.h	2019-12-25 21:59:10.906492713 +0100
++++ remoteosd-1.0.0/menu.h	2019-12-25 22:01:37.733492713 +0100
+@@ -27,7 +27,7 @@
+ 		bool			isEmpty;
+ 		bool			plugOsd;
+ 
+-		bool CmdCHAN(cChannel *Channel);
++		bool CmdCHAN(const cChannel *Channel);
+ 		bool CmdHITK(const char *Key);
+ 		bool CmdLSTO();
+ 		bool CmdOSDT();

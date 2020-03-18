@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 MY_P="Yarock_${PV}_Sources"
 DESCRIPTION="Qt-based music player"
@@ -49,5 +49,5 @@ src_configure() {
 		-DENABLE_VLC=$(usex vlc)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

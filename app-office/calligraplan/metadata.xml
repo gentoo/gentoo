@@ -13,6 +13,5 @@
 		<flag name="activities">Enable kactivities support</flag>
 		<flag name="holidays">Enable <pkg>kde-frameworks/kholidays</pkg> integration</flag>
 		<flag name="kwallet">Enable access to encrypted OpenDocument files with <pkg>kde-frameworks/kwallet</pkg> storage</flag>
-		<flag name="pim">Enable support for KDE PIM resources integration</flag>
 	</use>
 </pkgmetadata>

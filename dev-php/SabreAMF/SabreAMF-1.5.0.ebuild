@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -22,8 +22,8 @@ src_install() {
 	doins -r lib/${PN}/* "${FILESDIR}/autoload.php"
 	einstalldocs
 	if use examples ; then
-		insinto /usr/share/doc/${P}/examples
+		docinto examples
 		docompress -x /usr/share/doc/${P}/examples
-		doins examples/*
+		dodoc examples/*
 	fi
 }

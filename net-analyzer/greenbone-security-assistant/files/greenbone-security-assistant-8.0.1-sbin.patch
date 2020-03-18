@@ -1,0 +1,12 @@
+--- a/gsad/src/CMakeLists.txt	2019-07-21 23:07:38.375683800 +0300
++++ a/gsad/src/CMakeLists.txt	2019-07-21 23:08:17.301651451 +0300
+@@ -175,7 +175,7 @@
+ ## Install
+ 
+ install (TARGETS gsad
+-         RUNTIME DESTINATION ${SBINDIR}
++         RUNTIME DESTINATION ${BINDIR}
+          LIBRARY DESTINATION ${LIBDIR}
+          ARCHIVE DESTINATION ${LIBDIR}/static)
+ 
+

@@ -13,13 +13,14 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/devel/${PN}/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="mirror://kernel/software/devel/${PN}/dist/${P}.tar.xz"
+	SRC_URI="https://www.kernel.org/pub/software/devel/${PN}/dist/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="gtk llvm test xml"
+RESTRICT="!test? ( test )"
 
 RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	llvm? ( >=sys-devel/llvm-3.0 )

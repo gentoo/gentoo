@@ -5,10 +5,6 @@
     <email>vincent.hardy.be@gmail.com</email>
   </maintainer>
   <maintainer type="project">
-    <email>crypto@gentoo.org</email>
-    <name>Crypto</name>
-  </maintainer>
-  <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>

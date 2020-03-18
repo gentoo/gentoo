@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="boehm-gc cxx test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="boehm-gc? ( dev-libs/boehm-gc )
 	cxx? ( sys-libs/libcxx )"

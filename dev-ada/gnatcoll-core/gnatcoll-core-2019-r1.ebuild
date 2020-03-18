@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8ae231e87a8f1d425052
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="

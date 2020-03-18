@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit python-single-r1 cmake-utils xdg-utils
+inherit python-single-r1 cmake-utils virtualx xdg-utils
 
 DESCRIPTION="A simple interface for working with TeX documents"
 HOMEPAGE="http://tug.org/texworks/"
@@ -34,6 +34,8 @@ BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${PN}-release-${PV}
 
+RESTRICT="!test? ( test )"
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
@@ -41,7 +43,7 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-Wno-dev
-		-DPREFER_BUNDLED_SYNCTEX=OFF
+		-DPREFER_BUNDLED_SYNCTEX=ON
 		-DWITH_LUA=$(usex lua ON OFF)
 		-DWITH_PYTHON=$(usex python ON OFF)
 		-DTeXworks_PLUGIN_DIR="/usr/$(get_libdir)/texworks"
@@ -51,6 +53,10 @@ src_configure() {
 		-DBUILD_SHARED_PLUGINS=ON
 	)
 	cmake-utils_src_configure
+}
+
+src_test() {
+	virtx default_src_test
 }
 
 pkg_postinst() {

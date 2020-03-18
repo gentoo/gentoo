@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_P=${P/_rc/-rc}
-inherit cmake-utils flag-o-matic toolchain-funcs xdg-utils
+inherit cmake flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="https://www.rawtherapee.com/"
@@ -58,7 +58,7 @@ src_configure() {
 		-DCACHE_NAME_SUFFIX=""
 		-DWITH_SYSTEM_KLT="off"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

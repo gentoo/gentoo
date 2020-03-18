@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>xdch47@posteo.de</email>
-		<name>Felix Neumärker</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>nemunaire@nemunai.re</email>
 		<name>Pierre-Olivier Mercier</name>
 	</maintainer>
@@ -16,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">go-gitea/gitea</remote-id>
 	</upstream>
+	<use>
+		<flag name="acct">User and group management via acct-*/git packages</flag>
+	</use>
 </pkgmetadata>

@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<use>
-		<flag name="cli">Enable command line interface</flag>
-		<flag name="egl">Enable EGL support</flag>
-		<flag name="system-snappy">Link dynamic against app-arch/snappy</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">apitrace/apitrace</remote-id>
 	</upstream>

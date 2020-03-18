@@ -1,0 +1,15 @@
+[Unit]
+Description=ipset service
+Before=network-pre.target iptables.service ip6tables.service firewalld.service
+Wants=network-pre.target
+ConditionFileNotEmpty=/var/lib/ipset/rules-save
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/ipset -exist -file /var/lib/ipset/rules-save restore
+ExecReload=/usr/sbin/ipset -exist -file /var/lib/ipset/rules-save restore
+ExecStop=/usr/sbin/ipset -file /var/lib/ipset/rules-save save
+
+[Install]
+WantedBy=multi-user.target

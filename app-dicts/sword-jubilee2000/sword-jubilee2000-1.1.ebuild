@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="English Jubilee 2000 Bible"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Jubilee2000"
 LICENSE="free-noncomm"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

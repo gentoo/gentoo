@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/platform/bindings/v8_set_return_value.h b/third_party/blink/renderer/platform/bindings/v8_set_return_value.h
+index 07cae22..7871f55 100644
+--- a/third_party/blink/renderer/platform/bindings/v8_set_return_value.h
++++ b/third_party/blink/renderer/platform/bindings/v8_set_return_value.h
+@@ -51,7 +51,7 @@ void V8SetReturnValue(const CallbackInfo& info, const v8::Local<S> value) {
+ 
+ // nullptr
+ template <typename CallbackInfo>
+-void V8SetReturnValue(const CallbackInfo& info, nullptr_t) {
++void V8SetReturnValue(const CallbackInfo& info, std::nullptr_t) {
+   info.GetReturnValue().SetNull();
+ }
+ 

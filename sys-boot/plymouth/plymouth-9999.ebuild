@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug gdm +gtk +libkms +pango static-libs"
+IUSE="debug gdm +gtk +libkms +pango static-libs +udev"
 
 CDEPEND="
 	>=media-libs/libpng-1.2.16:=
@@ -41,7 +41,7 @@ DEPEND="${CDEPEND}
 "
 # Block due bug #383067
 RDEPEND="${CDEPEND}
-	virtual/udev
+	udev? ( virtual/udev )
 	!<sys-kernel/dracut-0.37-r3
 "
 
@@ -75,6 +75,7 @@ src_configure() {
 		$(use_enable libkms drm)
 		$(use_enable pango)
 		$(use_enable gdm gdm-transition)
+		$(use_with udev)
 	)
 	econf "${myconf[@]}"
 }

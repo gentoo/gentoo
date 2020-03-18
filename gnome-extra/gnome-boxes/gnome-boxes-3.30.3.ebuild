@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 VALA_MIN_API_VERSION="0.36"
 # 0.46 has problems with spice-client-glib-2.0.vapi exposing a bad constructor
-VALA_MAX_API_VERSION="0.44"
+# 0.40 and 0.44 have problems with gdk modifier types, for which we have patch in 3.32 bump
+VALA_MAX_API_VERSION="0.36"
 
 inherit gnome.org gnome2-utils linux-info meson readme.gentoo-r1 vala xdg
 
@@ -29,6 +30,7 @@ COMMON_DEPEND="
 	>=dev-libs/gobject-introspection-1.54:=
 	>=x11-libs/gtk+-3.22.20:3[introspection]
 	>=net-libs/gtk-vnc-0.8.0-r1[gtk3(+)]
+	>=dev-libs/libgudev-165:=
 	>=sys-libs/libosinfo-1.1.0
 	app-crypt/libsecret
 	>=net-libs/libsoup-2.44:2.4
@@ -38,7 +40,6 @@ COMMON_DEPEND="
 	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir]
 	app-misc/tracker:0/2.0
 	net-libs/webkit-gtk:4
-	>=virtual/libgudev-165:=
 	rdp? ( net-misc/freerdp:= )
 "
 DEPEND="${COMMON_DEPEND}

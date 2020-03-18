@@ -16,6 +16,7 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 IUSE="aufs bash-completion debug doc preload server test test-programs"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-cpp/gtest

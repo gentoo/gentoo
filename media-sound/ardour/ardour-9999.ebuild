@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="mirror://gentoo/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
@@ -75,7 +75,7 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-src_prepare(){
+src_prepare() {
 	eapply_user
 	if ! [[ ${PV} == *9999* ]]; then
 		eapply "${FILESDIR}"/${PN}-4.x-revision-naming.patch

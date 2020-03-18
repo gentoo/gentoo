@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -13,6 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk hunspell nls test mecab"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=net-misc/curl-7.20.0
 	>=dev-libs/glib-2.31
@@ -48,7 +49,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 	find "${D}" -name '*.la' -delete
 
 	dodoc AUTHORS README

@@ -5,8 +5,7 @@
     <email>x11@gentoo.org</email>
     <name>X11</name>
   </maintainer>
-  <longdescription>Driver for Wacom tablets and drawing devices (friendly fork of linuxwacom)</longdescription>
   <upstream>
-    <remote-id type="sourceforge">linuxwacom</remote-id>
+    <remote-id type="github">linuxwacom/xf86-input-wacom</remote-id>
   </upstream>
 </pkgmetadata>

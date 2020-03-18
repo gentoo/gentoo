@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,7 @@ S="${WORKDIR}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-20110420-makefile.patch
 	"${FILESDIR}"/${PN}-20131017-format-security.patch
+	"${FILESDIR}"/${PN}-20160804-gcc-10.patch
 )
 
 src_compile() {
@@ -41,8 +42,5 @@ src_install() {
 	dobin ${PN} ${PN}al m${PN} mmotype abstime
 	dodoc README ${PN}.1
 
-	if use doc ; then
-		insinto /usr/share/doc/${PF}
-		doins *.ps
-	fi
+	use doc && dodoc *.ps
 }

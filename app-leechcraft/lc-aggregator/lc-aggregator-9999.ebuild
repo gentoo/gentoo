@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 
 REQUIRED_USE="|| ( mysql sqlite postgres )"
 
-pkg_postinst(){
+pkg_postinst() {
 	if use mysql; then
 		ewarn "Support for MySQL databases is experimental and is more likely"
 		ewarn "to contain bugs or mishandle your data than other storage"

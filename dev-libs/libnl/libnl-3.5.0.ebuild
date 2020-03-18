@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
 inherit distutils-r1 libtool multilib-minimal
 
@@ -74,8 +75,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable utils cli) \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
-		$(use_enable threads) \
-		--disable-silent-rules
+		$(use_enable threads)
 }
 
 multilib_src_compile() {

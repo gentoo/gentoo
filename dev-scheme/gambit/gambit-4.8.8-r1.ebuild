@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 RDEPEND="ssl? ( dev-libs/openssl:0 )"
 DEPEND="
 	${RDEPEND}
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 
 SITEFILE="50gambit-gentoo.el"
@@ -29,9 +29,9 @@ S="${WORKDIR}/${MY_P}" #-devel
 IUSE="emacs ssl static"
 
 src_configure() {
-	econf $(use_enable !static shared) \
+	econf \
+		$(use_enable !static shared) \
 		$(use_enable ssl openssl) \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--enable-gnu-gcc-specific-options \
 		--enable-gnu-gcc-no-strict-aliasing \
 		--enable-single-host \

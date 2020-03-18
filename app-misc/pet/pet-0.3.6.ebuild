@@ -3,8 +3,7 @@
 
 EAPI=7
 
-EGO_VENDOR=(
-	"github.com/BurntSushi/toml v0.3.0"
+EGO_VENDOR=( "github.com/BurntSushi/toml v0.3.0"
 	"github.com/briandowns/spinner 48dbb65d7bd5c74ab50d53d04c949f20e3d14944"
 	"github.com/chzyer/readline 2972be24d48e78746da79ba8e24e8b488c9880de"
 	"github.com/fatih/color v1.7.0"
@@ -24,8 +23,7 @@ EGO_VENDOR=(
 	"golang.org/x/oauth2 1e0a3fa8ba9a5c9eb35c271780101fdaf1b205d7 github.com/golang/oauth2"
 	"golang.org/x/sys 9527bec2660bd847c050fda93a0f0c6dee0800bb github.com/golang/sys"
 	"github.com/google/go-querystring 53e6ce116135b80d037921a7fdd5138cf32d7a8a"
-	"google.golang.org/appengine v1.0.0 github.com/golang/appengine"
-)
+	"google.golang.org/appengine v1.0.0 github.com/golang/appengine" )
 
 EGO_PN="github.com/knqyf263/${PN}"
 
@@ -36,24 +34,25 @@ HOMEPAGE="https://github.com/knqyf263/pet"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="zsh-completion"
 
 RDEPEND="zsh-completion? ( app-shells/zsh-completions )"
-S=${WORKDIR}/${P}/src/${EGO_PN}
+
+S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_compile() {
 	export -n GOCACHE XDG_CACHE_HOME
 	GOPATH="${WORKDIR}/${P}" GO111MODULE=on \
-		go build -mod=vendor -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
+		go build -mod=vendor -v -work -x "${EGO_BUILD_FLAGS}" "${EGO_PN}" || die
 }
 
 src_install() {
 	dobin pet
 
-	if use zsh-completion; then
+	if use zsh-completion ; then
 		insinto /usr/share/zsh/site-functions
 		doins misc/completions/zsh/_pet
 	fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,6 @@ RDEPEND="
 	dev-libs/nss
 	dev-python/dbus-python
 	dev-python/pygobject:3
-	gnome-base/gconf
 	libnotify? ( x11-libs/libnotify )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
@@ -33,6 +32,7 @@ RDEPEND="
 	|| ( media-sound/pulseaudio media-sound/apulse )
 	systray? ( gnome-extra/gnome-integration-spotify )
 	x11-libs/gtk+:2
+	app-accessibility/at-spi2-atk
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 "

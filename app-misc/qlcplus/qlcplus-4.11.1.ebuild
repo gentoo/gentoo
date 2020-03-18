@@ -12,7 +12,9 @@ SRC_URI="https://github.com/mcallegari/${PN}/archive/QLC+_${PV}.tar.gz -> ${P}.t
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	|| ( dev-embedded/libftdi:1 dev-embedded/libftdi:0 )

@@ -1,7 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
+
+inherit epatch
 
 DESCRIPTION="Use your machine as a bluetooh keyboard/mouse"
 HOMEPAGE="http://anselm.hoffmeister.be/computer/hidclient/"
@@ -19,6 +21,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-glibc-2.30.patch
 	sed -i 's#gcc#$(CC)#' Makefile
 	sed -i 's#-O2#$(CFLAGS) $(LDFLAGS)#' Makefile
 }

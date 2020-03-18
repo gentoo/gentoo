@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 DESCRIPTION="A meta-package for installing all EMBASSY packages (EMBOSS add-ons)"
 HOMEPAGE="http://emboss.sourceforge.net/embassy/"
 
-LICENSE+=" freedist"
+LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 

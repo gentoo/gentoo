@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit vdr-plugin-2
+inherit toolchain-funcs vdr-plugin-2
 
 GENTOO_VDR_CONDITIONAL=yes
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 IUSE="bluray caps dbus fbcon jpeg libextractor nls opengl +vdr vdpau +X +xine xinerama"
 

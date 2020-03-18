@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit python-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://www.mpagano.com/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc sparc x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

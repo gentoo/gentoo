@@ -1,0 +1,64 @@
+diff --git a/sassc.py b/sassc.py
+deleted file mode 100644
+index 2415342..0000000
+--- a/sassc.py
++++ /dev/null
+@@ -1,15 +0,0 @@
+-import warnings
+-
+-import pysassc
+-
+-
+-def main(*args, **kwargs):
+-    warnings.warn(
+-        'The `sassc` entrypoint is deprecated, please use `pysassc`',
+-        FutureWarning,
+-    ),
+-    return pysassc.main(*args, **kwargs)
+-
+-
+-if __name__ == '__main__':
+-    exit(main())
+diff --git a/sasstests.py b/sasstests.py
+index 1f40a97..7547ab3 100644
+--- a/sasstests.py
++++ b/sasstests.py
+@@ -24,7 +24,6 @@ from werkzeug.wrappers import Response
+ 
+ import pysassc
+ import sass
+-import sassc
+ from sassutils._compat import collections_abc
+ from sassutils.builder import Manifest, build_directory
+ from sassutils.wsgi import SassMiddleware
+@@ -976,7 +975,7 @@ class SasscTestCase(BaseTestCase):
+ 
+     def test_sassc_stdout(self):
+         with pytest.warns(FutureWarning) as warninfo:
+-            exit_code = sassc.main(
++            exit_code = pysassc.main(
+                 ['sassc', 'test/a.scss'],
+                 self.out, self.err,
+             )
+diff --git a/setup.py b/setup.py
+index e2a0c85..5905162 100644
+--- a/setup.py
++++ b/setup.py
+@@ -218,7 +218,7 @@ setup(
+     version=version(),
+     ext_modules=[sass_extension],
+     packages=['sassutils'],
+-    py_modules=['pysassc', 'sass', 'sassc', 'sasstests'],
++    py_modules=['pysassc', 'sass', 'sasstests'],
+     package_data={
+         '': [
+             'README.rst',
+@@ -239,8 +239,6 @@ setup(
+         ],
+         'console_scripts': [
+             ['pysassc = pysassc:main'],
+-            # TODO: remove `sassc` entry (#134)
+-            ['sassc = sassc:main'],
+         ],
+     },
+     install_requires=['six'],

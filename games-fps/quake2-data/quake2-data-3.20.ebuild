@@ -10,7 +10,7 @@ SRC_URI="mirror://idsoftware/quake2/q2-${PV}-x86-full-ctf.exe"
 
 LICENSE="Q2EULA"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="videos"
 
 DEPEND="app-arch/unzip"

@@ -5,6 +5,9 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<use>
+		<flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
+	</use>
 	<longdescription lang="en">
 		Terminal email client with Vim-style keybindings, git awareness and other advanced features.
 	</longdescription>

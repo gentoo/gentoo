@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt5-build.eclass
@@ -643,6 +643,9 @@ qt5_base_configure() {
 		# enable in respective modules to avoid poisoning QT.global_private.enabled_features
 		-no-gui -no-widgets
 
+		# QTBUG-76521, default will change to zstd in Qt6
+		$([[ ${QT5_MINOR_VERSION} -ge 13 ]] && echo -no-zstd)
+
 		# module-specific options
 		"${myconf[@]}"
 	)
@@ -816,7 +819,7 @@ qt5_regenerate_global_configs() {
 		-execdir cat '{}' + | sort -u > "${T}"/gentoo-qconfig.h
 
 	[[ -s ${T}/gentoo-qconfig.h ]] || ewarn "Generated gentoo-qconfig.h is empty"
-	mv -f "${T}"/gentoo-qconfig.h "${ROOT%/}${QT5_HEADERDIR}"/Gentoo/gentoo-qconfig.h \
+	cp "${T}"/gentoo-qconfig.h "${ROOT%/}${QT5_HEADERDIR}"/Gentoo/gentoo-qconfig.h \
 		|| eerror "Failed to install new gentoo-qconfig.h"
 
 	einfo "Updating QT_CONFIG in qconfig.pri"

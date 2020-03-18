@@ -5,10 +5,6 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>eva@gentoo.org</email>
-		<name>Gilles Dartiguelongue</name>
-	</maintainer>
 	<use>
 		<flag name="gdm">Enables smooth transition to GDM</flag>
 		<flag name="libkms">Provides abstraction to the DRM drivers (intel,

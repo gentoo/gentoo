@@ -5,12 +5,12 @@ EAPI=7
 inherit sgml-catalog-r1
 
 DESCRIPTION="DTDs for the HyperText Markup Language 4.01"
-HOMEPAGE="http://www.w3.org/TR/html401/"
-SRC_URI="http://www.w3.org/TR/html401/html40.tgz"
+HOMEPAGE="https://www.w3.org/TR/html401/"
+SRC_URI="https://www.w3.org/TR/1999/REC-html401-19991224/html40.tgz"
 
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 S=${WORKDIR}

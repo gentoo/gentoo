@@ -2,15 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ck+gentoo@bl4ckb0x.de</email>
+		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription>
-		transWhat is a WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 2.
+		transWhat is a WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3.
+		It can be used for accessing WhatsApp through a XMPP Transport on clients side.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/stv0g/transwhat/issues</bugs-to>

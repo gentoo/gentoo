@@ -13,8 +13,9 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="ipv6 libressl mbedtls test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/gdbm
 	mbedtls? ( net-libs/mbedtls:= )"
@@ -29,7 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gauche.m4.patch
 	"${FILESDIR}"/${PN}-ext-ldflags.patch
 	"${FILESDIR}"/${PN}-xz-info.patch
-	"${FILESDIR}"/${PN}-rfc.tls.patch
+	"${FILESDIR}"/${P}-rfc.tls.patch
 )
 DOCS=( AUTHORS ChangeLog HACKING README )
 

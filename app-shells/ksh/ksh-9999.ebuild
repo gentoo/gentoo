@@ -24,6 +24,19 @@ SLOT="0"
 
 RDEPEND="!app-shells/pdksh"
 
+src_test() {
+	# https://bugs.gentoo.org/702570
+	addwrite /proc/self
+	local cmd=(
+		meson test
+		-C "${BUILD_DIR}"
+		--num-processes "$(makeopts_jobs ${NINJAOPTS:-${MAKEOPTS}})"
+	)
+	echo "${cmd[@]}" >&2
+	# https://github.com/att/ast/issues/1392
+	env -u T "${cmd[@]}" || die
+}
+
 src_install() {
 	meson_src_install
 	dodir /bin

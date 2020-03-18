@@ -1,0 +1,32 @@
+From 094580f207b5ba9f44e9af00834f9c93f06fb440 Mon Sep 17 00:00:00 2001
+From: Dan Goodliffe <dan@randomdan.homeip.net>
+Date: Thu, 27 Feb 2020 18:04:21 +0000
+Subject: [PATCH] Use LIBGIT2_VER_MINOR for version test
+
+Addresses compatibility with libgit2-0.99
+---
+ src/application.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/application.cpp b/src/application.cpp
+index c52fb574..81fcd121 100644
+--- a/src/application.cpp
++++ b/src/application.cpp
+@@ -56,7 +56,7 @@ Application::Application(int &argc, char **argv)
+ 
+ 
+     #ifdef WITH_LIBGIT2
+-        #if LIBGIT2_SOVERSION >= 22
++        #if LIBGIT2_VER_MINOR >= 22
+             git_libgit2_init();
+         #else
+             git_threads_init();
+@@ -67,7 +67,7 @@ Application::Application(int &argc, char **argv)
+ Application::~Application()
+ {
+     #ifdef WITH_LIBGIT2
+-        #if LIBGIT2_SOVERSION >= 22
++        #if LIBGIT2_VER_MINOR >= 22
+             git_libgit2_shutdown();
+         #else
+             git_threads_shutdown();

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQt system integration plugin for Qt"
 HOMEPAGE="https://lxqt.org/"

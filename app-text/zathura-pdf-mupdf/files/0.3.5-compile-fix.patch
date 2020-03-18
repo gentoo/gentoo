@@ -1,0 +1,11 @@
+--- a/zathura-pdf-mupdf/search.c	2019-09-12 11:29:21.527194069 +0200
++++ b/zathura-pdf-mupdf/search.c	2019-09-12 11:30:11.648675352 +0200
+@@ -39,7 +39,7 @@
+     mupdf_page_extract_text(mupdf_document, mupdf_page);
+   }
+ 
+-  fz_quad* hit_bbox = fz_malloc_array(mupdf_page->ctx, N_SEARCH_RESULTS, fz_quad);
++  fz_quad* hit_bbox = fz_malloc_array(mupdf_page->ctx, N_SEARCH_RESULTS, sizeof(fz_quad));
+   int num_results = fz_search_stext_page(mupdf_page->ctx, mupdf_page->text,
+       text, hit_bbox, N_SEARCH_RESULTS);
+ 

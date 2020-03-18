@@ -1,0 +1,17 @@
+--- a/test/test_LocaleMatcher.py
++++ b/test/test_LocaleMatcher.py
+@@ -21,11 +21,13 @@
+ # DEALINGS IN THE SOFTWARE.
+ # ====================================================================
+ 
+-import sys, os, six
++import sys, os, six, pytest
+ 
+ from unittest import TestCase, main
+ from icu import *
+ 
++@pytest.mark.skipif(ICU_VERSION < '65.0',
++                    reason='ICU too old for LocaleMatcher support')
+ class TestLocaleMatcher(TestCase):
+ 
+     def testSetSupportedLocales(self):

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">python-xmp-toolkit</remote-id>
+    <remote-id type="github">python-xmp-toolkit/python-xmp-toolkit</remote-id>
+  </upstream>
+</pkgmetadata>

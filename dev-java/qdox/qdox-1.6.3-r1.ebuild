@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Parser for extracting class/interface/method definitions"
 HOMEPAGE="https://github.com/codehaus/qdox"
-SRC_URI="mirror://gentoo/${P}-sources.jar -> ${P}.jar"
+SRC_URI="mirror://gentoo/${P}.jar"
 
 KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 SLOT="1.6"

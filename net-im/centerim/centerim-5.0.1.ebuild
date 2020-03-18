@@ -10,7 +10,7 @@ SRC_URI="http://www.centerim.org/download/cim5/${MY_P}.tar.gz"
 HOMEPAGE="http://www.centerim.org/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE="debug nls"
 
 DEPEND=">=sys-libs/ncurses-5.2:=

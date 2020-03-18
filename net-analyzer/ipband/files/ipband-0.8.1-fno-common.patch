@@ -1,0 +1,113 @@
+--- a/ipband.h
++++ b/ipband.h
+@@ -174,40 +174,40 @@
+ extern char pcap_version[];
+ 
+ /* Internal use */
+-int    isig_m; 			/* Interupt flag for capture loop */
+-int    preload_m;		/* Subnets are preloaded flag */
+-char   *pcapdev_m;		/* Device to listen to */
+-pcap_t *pcapfile_m;		/* Pcap input file descriptor */
+-int    pcapoffset_m;		/* IP header offset */
+-time_t started_m;		/* Time when we started */
++extern int    isig_m; 			/* Interupt flag for capture loop */
++extern int    preload_m;		/* Subnets are preloaded flag */
++extern char   *pcapdev_m;		/* Device to listen to */
++extern pcap_t *pcapfile_m;		/* Pcap input file descriptor */
++extern int    pcapoffset_m;		/* IP header offset */
++extern time_t started_m;		/* Time when we started */
+ 
+-ll_srvc_t *ll_tcp_cache;	/* Resolved tcp services cache */
+-ll_srvc_t *ll_udp_cache;	/* Resolved udp services cache */
++extern ll_srvc_t *ll_tcp_cache;	/* Resolved tcp services cache */
++extern ll_srvc_t *ll_udp_cache;	/* Resolved udp services cache */
+ 
+ 
+ /* Variables holding option values */
+-int    debug_m; 		/* Debug option */
+-int    do_html;			/* Generate HTML output */
+-char   *filtercmd_m;		/* Pcap filter string */
+-char   *repfname_m; 		/* Subnet report output file */
+-char   *htmlfname_m; 		/* HTML report output file */
+-char   *htmltitle_m;		/* HTML Title */
+-int    mask_m;			/* Network aggregation mask bits */
+-int    cycle_m;			/* Number of sec to average data */
+-int    rcycle_m;		/* How long in sec bandwidth
+-				   threshold may be exceeded */
+-float  thresh_m;		/* Bandwidth threshold in kBps */
+-int    fork_m;			/* Fork flag */
+-int    top_m;			/* No of top connections in report */
+-char   *config_m;		/* Config file name */
+-char   *mailto_m;		/* E-mail address for reporting */
+-char   *mailfoot_m;		/* Footer file for e-mail report */
+-char   *mtastring_m;		/* MTA command string */
+-int    report_aggr_m;		/* Flag to report aggr exceed time */
+-int    promisc_m;		/* Use promiscious mode? */
+-int    *iplist_m;		/* List of local networks */
+-int    niplist_m;		/* Number of local networks */
+-int    lenadj_m;		/* IP packet length adjustment in bytes */
++extern int    debug_m; 		/* Debug option */
++extern int    do_html;			/* Generate HTML output */
++extern char   *filtercmd_m;		/* Pcap filter string */
++extern char   *repfname_m; 		/* Subnet report output file */
++extern char   *htmlfname_m; 		/* HTML report output file */
++extern char   *htmltitle_m;		/* HTML Title */
++extern int    mask_m;			/* Network aggregation mask bits */
++extern int    cycle_m;			/* Number of sec to average data */
++extern int    rcycle_m;		/* How long in sec bandwidth
++ 							   threshold may be exceeded */
++extern float  thresh_m;		/* Bandwidth threshold in kBps */
++extern int    fork_m;			/* Fork flag */
++extern int    top_m;			/* No of top connections in report */
++extern char   *config_m;		/* Config file name */
++extern char   *mailto_m;		/* E-mail address for reporting */
++extern char   *mailfoot_m;		/* Footer file for e-mail report */
++extern char   *mtastring_m;		/* MTA command string */
++extern int    report_aggr_m;		/* Flag to report aggr exceed time */
++extern int    promisc_m;		/* Use promiscious mode? */
++extern int    *iplist_m;		/* List of local networks */
++extern int    niplist_m;		/* Number of local networks */
++extern int    lenadj_m;		/* IP packet length adjustment in bytes */
+ 
+ 
+ /*
+--- a/main.c
++++ b/main.c
+@@ -26,6 +26,37 @@
+ 
+ #include "ipband.h" 
+ 
++/* Internal use */
++int    isig_m; 			/* Interupt flag for capture loop */
++int    preload_m;		/* Subnets are preloaded flag */
++char   *pcapdev_m;		/* Device to listen to */
++pcap_t *pcapfile_m;		/* Pcap input file descriptor */
++int    pcapoffset_m;		/* IP header offset */
++time_t started_m;		/* Time when we started */
++
++/* Variables holding option values */
++int    debug_m; 		/* Debug option */
++int    do_html;			/* Generate HTML output */
++char   *filtercmd_m;		/* Pcap filter string */
++char   *repfname_m; 		/* Subnet report output file */
++char   *htmlfname_m; 		/* HTML report output file */
++char   *htmltitle_m;		/* HTML Title */
++int    mask_m;			/* Network aggregation mask bits */
++int    cycle_m;			/* Number of sec to average data */
++int    rcycle_m;		/* How long in sec bandwidth
++ 							   threshold may be exceeded */
++float  thresh_m;		/* Bandwidth threshold in kBps */
++int    fork_m;			/* Fork flag */
++int    top_m;			/* No of top connections in report */
++char   *config_m;		/* Config file name */
++char   *mailto_m;		/* E-mail address for reporting */
++char   *mailfoot_m;		/* Footer file for e-mail report */
++char   *mtastring_m;		/* MTA command string */
++int    report_aggr_m;		/* Flag to report aggr exceed time */
++int    promisc_m;		/* Use promiscious mode? */
++int    *iplist_m;		/* List of local networks */
++int    niplist_m;		/* Number of local networks */
++int    lenadj_m;		/* IP packet length adjustment in bytes */
+ 
+ /* Initialize here and not in set_defaults() in case the latter called
+    _after_ the structures are created */

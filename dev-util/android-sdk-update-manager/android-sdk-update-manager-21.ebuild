@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -46,11 +46,11 @@ pkg_setup() {
 	enewgroup android
 }
 
-src_prepare(){
+src_prepare() {
 	rm -rf tools/lib/x86*
 }
 
-src_install(){
+src_install() {
 	dodoc tools/NOTICE.txt "SDK Readme.txt"
 	rm -f tools/NOTICE.txt "SDK Readme.txt"
 
@@ -60,8 +60,8 @@ src_install(){
 	# Maybe this is needed for the tools directory too.
 	dodir "${ANDROID_SDK_DIR}"/{add-ons,docs,platforms,temp}
 
-	fowners root:android "${ANDROID_SDK_DIR}"/{,add-ons,docs,platforms,temp,tools} || die
-	fperms 0775 "${ANDROID_SDK_DIR}"/{,add-ons,docs,platforms,temp,tools} || die
+	fowners root:android "${ANDROID_SDK_DIR}"/{,add-ons,docs,platforms,temp,tools}
+	fperms 0775 "${ANDROID_SDK_DIR}"/{,add-ons,docs,platforms,temp,tools}
 
 	echo "PATH=\"${EPREFIX}${ANDROID_SDK_DIR}/tools:${EPREFIX}${ANDROID_SDK_DIR}/platform-tools\"" > "${T}/80${PN}" || die
 

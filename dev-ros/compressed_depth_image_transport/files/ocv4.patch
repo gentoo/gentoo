@@ -1,0 +1,13 @@
+Index: compressed_depth_image_transport/src/codec.cpp
+===================================================================
+--- compressed_depth_image_transport.orig/src/codec.cpp
++++ compressed_depth_image_transport/src/codec.cpp
+@@ -135,7 +135,7 @@ sensor_msgs::Image::Ptr decodeCompressed
+       // Decode raw image
+       try
+       {
+-        cv_ptr->image = cv::imdecode(imageData, CV_LOAD_IMAGE_UNCHANGED);
++        cv_ptr->image = cv::imdecode(imageData, cv::IMREAD_UNCHANGED);
+       }
+       catch (cv::Exception& e)
+       {

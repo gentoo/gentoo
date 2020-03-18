@@ -14,12 +14,14 @@ if [[ ${PV} == *999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="https://github.com/pwmt/girara/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 arm x86"
 fi
 
 LICENSE="ZLIB"
 SLOT="0"
 IUSE="doc libnotify test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/glib:2
 	 dev-libs/json-c

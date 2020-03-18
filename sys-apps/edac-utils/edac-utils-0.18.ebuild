@@ -1,13 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="Userspace helper for Linux kernel EDAC drivers"
 HOMEPAGE="https://github.com/grondo/edac-utils"
 SRC_URI="https://github.com/grondo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64"

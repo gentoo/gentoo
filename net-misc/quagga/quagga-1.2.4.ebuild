@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CLASSLESS_BGP_PATCH=ht-20040304-classless-bgp.patch
 
-inherit autotools eutils flag-o-matic multilib pam readme.gentoo-r1 systemd tmpfiles user
+inherit autotools eutils flag-o-matic multilib pam readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="A free routing daemon replacing Zebra supporting RIP, OSPF and BGP"
 HOMEPAGE="https://www.quagga.net/"
@@ -14,11 +14,14 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ppc ~s390 sparc x86"
 
 IUSE="bgpclassless caps fpm doc elibc_glibc ipv6 multipath nhrpd ospfapi pam protobuf +readline snmp tcp-zebra test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	acct-group/quagga
+	acct-user/quagga
 	caps? ( sys-libs/libcap )
 	nhrpd? ( net-dns/c-ares:0= )
 	protobuf? ( dev-libs/protobuf-c:0= )
@@ -47,11 +50,6 @@ starting one of the daemons.
 You can pass additional options to the daemon by setting the EXTRA_OPTS
 variable in their respective file in /etc/conf.d"
 
-pkg_setup() {
-	enewgroup quagga
-	enewuser quagga -1 -1 /var/empty quagga
-}
-
 src_prepare() {
 	# Classless prefixes for BGP
 	# http://hasso.linux.ee/doku.php/english:network:quagga
@@ -63,7 +61,8 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing
+	# -fcommon is added as a workaround for bug #707422
+	append-flags -fno-strict-aliasing -fcommon
 
 	# do not build PDF docs
 	export ac_cv_prog_PDFLATEX=no
@@ -102,7 +101,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 	readme.gentoo_create_doc
 
 	keepdir /etc/quagga

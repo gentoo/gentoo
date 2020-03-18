@@ -4,8 +4,8 @@ that it violates the cheesy version grep.
 
 http://bugs.gentoo.org/198182
 
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -3573,6 +3573,6 @@
        :
      else

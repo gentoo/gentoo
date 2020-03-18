@@ -10,7 +10,7 @@ SRC_URI="https://sites.google.com/site/e3editor/Home/${MY_P}.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 RESTRICT="strip"
 
 BDEPEND=">=dev-lang/nasm-2.09.04"

@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="app config script spec"
 
 DESCRIPTION="Common code, such as validators and mixins"
 HOMEPAGE="https://github.com/rapid7/metasploit-model"
-SRC_URI="mirror://rubygems/${P}.gem"
+SRC_URI="https://rubygems.org/gems/${P}.gem"
 
 LICENSE="BSD"
 SLOT="$(ver_cut 1-2)"

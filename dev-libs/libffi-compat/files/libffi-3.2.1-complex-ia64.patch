@@ -1,0 +1,41 @@
+ia64: fix small struct handling (missing complex type entry)
+
+commit 6e8a4460833594d5af1b4539178025da0077df19
+added FFI_TYPE_COMPLEX value type (comes after FFI_TYPE_POINTER)
+
+ia64 ffi_closure_unix reiles on the ordering of
+types as ia64 has ia64-specific FFI types:
+small struct and others.
+
+As a result all tests handling small structs broke.
+
+The change fixes dispatch table by ignoring FFI_TYPE_COMPLEX.
+This has positive effect of unbreaking most tests:
+
+                 === libffi Summary ===
+ 
+-# of expected passes            1595
+-# of unexpected failures        295
++# of expected passes            1930
++# of unexpected failures        10
+ # of unsupported tests          30
+
+Bug: https://bugs.gentoo.org/634190
+--- a/src/ia64/unix.S
++++ b/src/ia64/unix.S
+@@ -529,6 +529,7 @@ ffi_closure_unix:
+ 	data8	@pcrel(.Lst_int64)		// FFI_TYPE_SINT64
+ 	data8	@pcrel(.Lst_void)		// FFI_TYPE_STRUCT
+ 	data8	@pcrel(.Lst_int64)		// FFI_TYPE_POINTER
++	data8	@pcrel(.Lst_void)		// FFI_TYPE_COMPLEX (not implemented)
+ 	data8 	@pcrel(.Lst_small_struct)	// FFI_IA64_TYPE_SMALL_STRUCT
+ 	data8	@pcrel(.Lst_hfa_float)		// FFI_IA64_TYPE_HFA_FLOAT
+ 	data8	@pcrel(.Lst_hfa_double)		// FFI_IA64_TYPE_HFA_DOUBLE
+@@ -550,6 +551,7 @@ ffi_closure_unix:
+ 	data8	@pcrel(.Lld_int)		// FFI_TYPE_SINT64
+ 	data8	@pcrel(.Lld_void)		// FFI_TYPE_STRUCT
+ 	data8	@pcrel(.Lld_int)		// FFI_TYPE_POINTER
++	data8	@pcrel(.Lld_void)		// FFI_TYPE_COMPLEX (not implemented)
+ 	data8 	@pcrel(.Lld_small_struct)	// FFI_IA64_TYPE_SMALL_STRUCT
+ 	data8	@pcrel(.Lld_hfa_float)		// FFI_IA64_TYPE_HFA_FLOAT
+ 	data8	@pcrel(.Lld_hfa_double)		// FFI_IA64_TYPE_HFA_DOUBLE

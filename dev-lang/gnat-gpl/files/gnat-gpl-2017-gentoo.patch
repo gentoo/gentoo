@@ -1,5 +1,5 @@
---- patch/13_all_default-ssp-fix.patch.old	2017-06-14 11:29:28.997183865 +0200
-+++ patch/13_all_default-ssp-fix.patch	2017-06-14 12:24:15.042271863 +0200
+--- a/patch/13_all_default-ssp-fix.patch	2017-06-14 11:29:28.997183865 +0200
++++ b/patch/13_all_default-ssp-fix.patch	2017-06-14 12:24:15.042271863 +0200
 @@ -39,9 +39,9 @@
    %{!fsyntax-only:%{S:%W{o*}%{!o*:-o %b.s}}}\
    %{fsyntax-only:-o %j} %{-param*}\
@@ -12,8 +12,8 @@
  --- a/gcc/params.def	2016-03-30 09:47:40.000000000 +0200
  +++ b/gcc/params.def	2016-09-19 12:56:58.443179039 +0200
  @@ -673,7 +673,7 @@ DEFPARAM (PARAM_INTEGER_SHARE_LIMIT,
---- gcc-6-gpl-2017-src/gcc/ada/osint.adb.old	2017-03-10 21:58:02.600710156 +0100
-+++ gcc-6-gpl-2017-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
+--- a/gcc-6-gpl-2017-src/gcc/ada/osint.adb	2017-03-10 21:58:02.600710156 +0100
++++ b/gcc-6-gpl-2017-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
 @@ -2229,14 +2229,11 @@
        for J in Start_Of_Prefix .. Name_Len - Prog'Length + 1 loop
           if Name_Buffer (J .. J + Prog'Length - 1) = Prog then
@@ -30,8 +30,8 @@
        --  Create the new program name
  
        return new String'
---- gcc-6-gpl-2017-src/libgcc/config/i386/linux-unwind.h.old	2017-12-07 20:57:02.737224515 +0100
-+++ gcc-6-gpl-2017-src/libgcc/config/i386/linux-unwind.h	2017-12-07 21:01:59.431929926 +0100
+--- a/gcc-6-gpl-2017-src/libgcc/config/i386/linux-unwind.h	2017-12-07 20:57:02.737224515 +0100
++++ b/gcc-6-gpl-2017-src/libgcc/config/i386/linux-unwind.h	2017-12-07 21:01:59.431929926 +0100
 @@ -58,7 +58,7 @@
    if (*(unsigned char *)(pc+0) == 0x48
        && *(unsigned long long *)(pc+1) == RT_SIGRETURN_SYSCALL)
@@ -50,8 +50,8 @@
        } *rt_ = context->cfa;
        /* The void * cast is necessary to avoid an aliasing warning.
           The aliasing warning is correct, but should not be a problem
---- gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_stoptheworld_linux_libcdep.cc.old	2017-12-07 22:05:30.512328872 +0100
-+++ gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_stoptheworld_linux_libcdep.cc	2017-12-07 22:05:53.104950070 +0100
+--- a/gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_stoptheworld_linux_libcdep.cc	2017-12-07 22:05:30.512328872 +0100
++++ b/gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_stoptheworld_linux_libcdep.cc	2017-12-07 22:05:53.104950070 +0100
 @@ -267,7 +267,7 @@
  
    // Alternate stack for signal handling.
@@ -61,8 +61,8 @@
    internal_memset(&handler_stack, 0, sizeof(handler_stack));
    handler_stack.ss_sp = handler_stack_memory.data();
    handler_stack.ss_size = kHandlerStackSize;
---- gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_linux.cc.old	2017-12-07 22:09:04.912731275 +0100
-+++ gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_linux.cc	2017-12-07 22:10:03.150754764 +0100
+--- a/gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_linux.cc	2017-12-07 22:09:04.912731275 +0100
++++ b/gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_linux.cc	2017-12-07 22:10:03.150754764 +0100
 @@ -546,8 +546,7 @@
  }
  #endif
@@ -73,8 +73,8 @@
    return internal_syscall(SYSCALL(sigaltstack), (uptr)ss, (uptr)oss);
  }
  
---- gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_linux.h.old	2017-12-07 22:10:10.109638062 +0100
-+++ gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_linux.h	2017-12-07 22:10:30.991287828 +0100
+--- a/gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_linux.h	2017-12-07 22:10:10.109638062 +0100
++++ b/gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_linux.h	2017-12-07 22:10:30.991287828 +0100
 @@ -28,8 +28,7 @@
  
  // Syscall wrappers.
@@ -85,8 +85,8 @@
  uptr internal_sigprocmask(int how, __sanitizer_sigset_t *set,
      __sanitizer_sigset_t *oldset);
  void internal_sigfillset(__sanitizer_sigset_t *set);
---- gcc-6-gpl-2017-src/libsanitizer/tsan/tsan_platform_linux.cc.old	2017-12-07 22:15:09.626608907 +0100
-+++ gcc-6-gpl-2017-src/libsanitizer/tsan/tsan_platform_linux.cc	2017-12-07 22:15:28.825286145 +0100
+--- a/gcc-6-gpl-2017-src/libsanitizer/tsan/tsan_platform_linux.cc	2017-12-07 22:15:09.626608907 +0100
++++ b/gcc-6-gpl-2017-src/libsanitizer/tsan/tsan_platform_linux.cc	2017-12-07 22:15:28.825286145 +0100
 @@ -291,7 +291,7 @@
  int ExtractResolvFDs(void *state, int *fds, int nfd) {
  #if SANITIZER_LINUX

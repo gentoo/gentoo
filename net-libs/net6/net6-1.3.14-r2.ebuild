@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib
+inherit eutils flag-o-matic ltprune multilib
 
 DESCRIPTION="Network access framework for IPv4/IPv6 written in C++"
 HOMEPAGE="http://gobby.0x539.de/"

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils libtool user
+inherit eutils libtool ltprune user
 
 DESCRIPTION="An Embeddable Fulltext Search Engine"
 HOMEPAGE="http://groonga.org/"
@@ -49,8 +49,7 @@ src_configure() {
 		--without-pcre \
 		--without-kytea \
 		--without-libstemmer \
-		--with-log-path="${EROOT}var/log/${PN}.log" \
-		--docdir="${EROOT}usr/share/doc/${P}" \
+		--with-log-path="${EPREFIX}"/var/log/${PN}.log \
 		--without-ruby \
 		$(use_enable abort) \
 		$(use_enable benchmark) \

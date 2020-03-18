@@ -1,20 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools distutils-r1 linux-info libtool eutils versionator
+inherit autotools distutils-r1 linux-info libtool ltprune eutils versionator
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
-SRC_URI="mirror://kernel/linux/utils/${PN}/v$(get_version_component_range 1-2)/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/${PN}/v$(get_version_component_range 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
 CRYPTO_BACKENDS="+gcrypt kernel nettle openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility
@@ -34,12 +34,12 @@ LIB_DEPEND="dev-libs/libgpg-error[static-libs(+)]
 	)
 	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
 	sys-fs/lvm2[static-libs(+)]
-	udev? ( virtual/libudev[static-libs(+)] )"
+	udev? ( virtual/libudev[static-libs(-)] )"
 # We have to always depend on ${LIB_DEPEND} rather than put behind
 # !static? () because we provide a shared library which links against
 # these other packages. #414665
 RDEPEND="static-libs? ( ${LIB_DEPEND} )
-	${LIB_DEPEND//\[static-libs\(+\)\]}
+	${LIB_DEPEND//\[static-libs\([+-]\)\]}
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

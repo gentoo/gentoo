@@ -5,6 +5,10 @@
 		<email>eva@gentoo.org</email>
 		<name>Gilles Dartiguelongue</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
 	<use>
 		<flag name="dmi">Use <pkg>sys-apps/dmidecode</pkg> to read firmware data</flag>
 	</use>

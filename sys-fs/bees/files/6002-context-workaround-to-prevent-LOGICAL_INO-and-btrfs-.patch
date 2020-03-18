@@ -1,0 +1,95 @@
+From f731ea8016c570243c783adef96681b535d9c927 Mon Sep 17 00:00:00 2001
+From: Zygo Blaxell <bees@furryterror.org>
+Date: Tue, 19 Nov 2019 16:01:31 -0500
+Subject: [PATCH 2/2] context: workaround to prevent LOGICAL_INO and btrfs
+ balance from running concurrently
+
+This avoids some kernel bugs.  One of them is fixed in 5.3.4 and later:
+
+	efad8a853a "Btrfs: fix use-after-free when using the tree modification log"
+
+There are apparently others in current kernels, so for now just put bees
+on pause until the balance is done.
+
+At some point we may want to provide an option to disable this
+workaround; however, running bees and balance at the same time makes
+neither particularly fast, so maybe we'll just leave it this way.
+
+Signed-off-by: Zygo Blaxell <bees@furryterror.org>
+---
+ src/bees-context.cc | 31 +++++++++++++++++++++++++++++++
+ src/bees.h          |  4 ++++
+ 2 files changed, 35 insertions(+)
+
+diff --git a/src/bees-context.cc b/src/bees-context.cc
+index 4e0a43e..0665019 100644
+--- a/src/bees-context.cc
++++ b/src/bees-context.cc
+@@ -760,11 +760,42 @@ BeesResolveAddrResult::BeesResolveAddrResult()
+ {
+ }
+ 
++void
++BeesContext::wait_for_balance()
++{
++	Timer balance_timer;
++	BEESNOTE("WORKAROUND: waiting for balance to stop");
++	while (true) {
++		btrfs_ioctl_balance_args args;
++		memset_zero<btrfs_ioctl_balance_args>(&args);
++		const int ret = ioctl(root_fd(), BTRFS_IOC_BALANCE_PROGRESS, &args);
++		if (ret < 0) {
++			// Either can't get balance status or not running, exit either way
++			break;
++		}
++
++		if (!(args.state & BTRFS_BALANCE_STATE_RUNNING)) {
++			// Balance not running, doesn't matter if paused or cancelled
++			break;
++		}
++
++		BEESLOGDEBUG("WORKAROUND: Waiting " << balance_timer << "s for balance to stop");
++		sleep(BEES_BALANCE_POLL_INTERVAL);
++	}
++}
++
+ BeesResolveAddrResult
+ BeesContext::resolve_addr_uncached(BeesAddress addr)
+ {
+ 	THROW_CHECK1(invalid_argument, addr, !addr.is_magic());
+ 	THROW_CHECK0(invalid_argument, !!root_fd());
++
++	// Is there a bug where resolve and balance cause a crash (BUG_ON at fs/btrfs/ctree.c:1227)?
++	// Apparently yes, and more than one.
++	// Wait for the balance to finish before we run LOGICAL_INO
++	wait_for_balance();
++
++	// Time how long this takes
+ 	Timer resolve_timer;
+ 
+ 	// There is no performance benefit if we restrict the buffer size.
+diff --git a/src/bees.h b/src/bees.h
+index da87d88..5c9375c 100644
+--- a/src/bees.h
++++ b/src/bees.h
+@@ -114,6 +114,9 @@ const size_t BEES_TRANSID_FACTOR = 10;
+ // The actual limit in LOGICAL_INO seems to be 2730, but let's leave a little headroom
+ const size_t BEES_MAX_EXTENT_REF_COUNT = 2560;
+ 
++// Wait this long for a balance to stop
++const double BEES_BALANCE_POLL_INTERVAL = 60.0;
++
+ // Flags
+ const int FLAGS_OPEN_COMMON   = O_NOFOLLOW | O_NONBLOCK | O_CLOEXEC | O_NOATIME | O_LARGEFILE | O_NOCTTY;
+ const int FLAGS_OPEN_DIR      = FLAGS_OPEN_COMMON | O_RDONLY | O_DIRECTORY;
+@@ -708,6 +711,7 @@ class BeesContext : public enable_shared_from_this<BeesContext> {
+ 	void set_root_fd(Fd fd);
+ 
+ 	BeesResolveAddrResult resolve_addr_uncached(BeesAddress addr);
++	void wait_for_balance();
+ 
+ 	BeesFileRange scan_one_extent(const BeesFileRange &bfr, const Extent &e);
+ 	void rewrite_file_range(const BeesFileRange &bfr);
+-- 
+2.23.0
+

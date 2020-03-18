@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription>Simple validation tool for tinydns-data zonefiles. Also able to
-filter file(s) from errors, not allowed zones and not allowed record types.</longdescription>
+<maintainer type="person">
+  <email>mjo@gentoo.org</email>
+  <name>Michael Orlitzky</name>
+</maintainer>
+<longdescription>
+  Simple validation tool for tinydns-data zonefiles. Also able to
+  filter file(s) from errors, not allowed zones and not allowed record types.
+</longdescription>
 </pkgmetadata>

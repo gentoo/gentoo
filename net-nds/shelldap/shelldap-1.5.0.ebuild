@@ -24,6 +24,7 @@ RDEPEND="dev-perl/Algorithm-Diff
 	dev-perl/TermReadKey
 	readline? ( dev-perl/Term-ReadLine-Gnu )
 	dev-perl/Term-Shell
+	dev-perl/Tie-IxHash
 	dev-perl/YAML-Syck
 	virtual/perl-Data-Dumper
 	virtual/perl-File-Temp

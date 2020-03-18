@@ -5,7 +5,4 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="classic">Enable classic mode plugin, requires <pkg>kde-frameworks/khtml</pkg></flag>
-	</use>
 </pkgmetadata>

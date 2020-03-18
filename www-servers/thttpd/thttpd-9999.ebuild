@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -52,7 +52,7 @@ src_configure() {
 	econf WEBDIR=${THTTPD_DOCROOT}
 }
 
-src_install () {
+src_install() {
 	default
 
 	newinitd "${FILESDIR}"/thttpd.init.1 thttpd

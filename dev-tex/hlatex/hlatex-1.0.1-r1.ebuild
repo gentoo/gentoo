@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs latex-package
 
@@ -29,15 +29,14 @@ SRC_URI="ftp://ftp.ktug.or.kr/pub/ktug/hlatex/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
+KEYWORDS="~alpha amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 S="${WORKDIR}/HLaTeX"
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
 	unpack uhc-fonts-1.0.tar.gz
-	cd "${S}"/contrib
+	cd "${S}"/contrib || die
 	cat >Makefile <<-EOF
 CC=$(tc-getCC)
 all: hmakeindex hbibtex
@@ -47,16 +46,16 @@ EOF
 }
 
 src_compile() {
-	cd "${S}"/contrib
+	cd "${S}"/contrib || die
 	emake
 }
 
 src_install() {
-	cd "${S}"/latex
+	cd "${S}"/latex || die
 		insinto ${TEXMF}/tex/latex/hlatex
 		doins *
 
-	cd "${S}"/lambda
+	cd "${S}"/lambda || die
 		insinto ${TEXMF}/tex/lambda/hlatex
 		doins u8hangul.tex uhc-test.tex uhc*.fd
 
@@ -66,7 +65,7 @@ src_install() {
 		insinto ${TEXMF}/omega/ocp/hlatex
 		doins hlatex.ocp
 
-	cd "${S}"/contrib
+	cd "${S}"/contrib || die
 		insinto ${TEXMF}/tex/latex/hlatex
 		doins hbname-k.tex khyper.sty showhkeys.sty showhtags.sty
 		doins hangulfn.sty hfn-k.tex
@@ -82,14 +81,14 @@ src_install() {
 
 		dobin hmakeindex hbibtex
 
-	cd "${S}"
+	cd "${S}" || die
 		dodoc ChangeLog.ko NEWS* README.en
 
-	cd "${WORKDIR}"/uhc-fonts-1.0
+	cd "${WORKDIR}"/uhc-fonts-1.0 || die
 		insinto ${TEXMF}/fonts/map/hlatex
 		doins uhc-base.map uhc-extra.map
 
-	cd "${ED}"/${TEXMF}/fonts
+	cd "${ED}"/${TEXMF}/fonts || die
 	for X in ${UHCFONTS}
 	do
 		unpack ${X}
@@ -97,19 +96,19 @@ src_install() {
 }
 
 pkg_postinst() {
-	updmap-sys --enable Map=uhc-base.map
-	updmap-sys --enable Map=uhc-extra.map
-	texhash
+	updmap-sys --enable Map=uhc-base.map || die
+	updmap-sys --enable Map=uhc-extra.map || die
+	texhash || die
 }
 
 pkg_postrm() {
 	if [ ! -e "${EPREFIX}"${TEXMF}/fonts/map/hlatex/uhc-base.map ] ; then
-		updmap-sys --disable Map=uhc-base.map
+		updmap-sys --disable Map=uhc-base.map || die
 	fi
 
 	if [ ! -e "${EPREFIX}"${TEXMF}/fonts/map/hlatex/uhc-extra.map ] ; then
-		updmap-sys --disable Map=uhc-extra.map
+		updmap-sys --disable Map=uhc-extra.map || die
 	fi
 
-	texhash
+	texhash || die
 }

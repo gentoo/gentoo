@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -6,11 +6,10 @@
  # This Makefile does not work for MSDOS. Make your 
  # own one, or compile by hand.

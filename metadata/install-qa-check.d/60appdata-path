@@ -1,0 +1,35 @@
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: ensure that metadata files are installed in /usr/share/metainfo
+# Maintainer: Georgy Yakovlev <gyakovlev@gentoo.org>
+
+appdata_path_check() {
+	[[ -d ${ED%/}/usr/share/appdata ]] || return
+
+	local found=() f
+	while read -d '' -r f; do
+		found+=( "${f%/*}" )
+	done < <(find "${ED%/}/usr/share/appdata" -name '*.xml' -print0 || die)
+
+	if [[ ${found[@]} ]]; then
+		eqawarn
+		eqawarn "This package seems to install metainfo files into the following"
+		eqawarn "location(s):"
+		eqawarn
+		eqatag -v appdata.invalid-path "${found[@]#${D%/}}"
+		eqawarn
+		eqawarn "This location is deprecated, it should not be used anymore by new software."
+		eqawarn "Appdata/Metainfo files should be installed into /usr/share/metainfo directory."
+		eqawarn "For more details, please see the freedesktop Upstream Metadata guidelines at"
+		eqawarn "https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html"
+		eqawarn
+		eqawarn "Gentoo Tracker bug: https://bugs.gentoo.org/709450"
+		eqawarn
+	fi
+}
+
+appdata_path_check
+: # guarantee successful exit
+
+# vim:ft=sh

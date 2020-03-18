@@ -19,6 +19,7 @@ KEYWORDS="amd64 x86"
 # xdb: (almost) dead, surely not supported
 
 IUSE="botan debug doc geoip ldap libressl lua luajit mydns mysql opendbx postgres protobuf remote sodium sqlite systemd tools tinydns test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="mydns? ( mysql )"
 

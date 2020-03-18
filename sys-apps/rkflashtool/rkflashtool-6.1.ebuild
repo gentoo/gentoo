@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ S=${WORKDIR}/${P}-src
 RDEPEND="virtual/libusb:1"
 DEPEND="${RDEPEND}"
 
-src_prepare(){
+src_prepare() {
 	cp "${FILESDIR}"/${P}-missing-version.h version.h || die
 	sed -i -e "s/CC	=/CC ?=/"\
 		-e "s/CFLAGS	=/CFLAGS ?=/"\
@@ -27,7 +27,7 @@ src_prepare(){
 	tc-export CC
 }
 
-src_install(){
+src_install() {
 	dodoc README
 	dobin rkcrc  rkflashtool rkmisc  rkpad  rkparameters  rkparametersblock  rkunpack  rkunsign
 }

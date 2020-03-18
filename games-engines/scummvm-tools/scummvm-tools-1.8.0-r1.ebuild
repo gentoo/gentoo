@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,11 +11,11 @@ SRC_URI="http://scummvm.org/frs/scummvm-tools/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="flac iconv mad png vorbis"
 RESTRICT="test" # some tests require external files
 
-RDEPEND=">=dev-libs/boost-1.32
+RDEPEND=">=dev-libs/boost-1.32:=
 	sys-libs/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}
 	flac? ( media-libs/flac )

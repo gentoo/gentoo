@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1
+inherit desktop eutils python-r1
 
 DESCRIPTION="GUI to configure, run or daemonize xplanet with HQ capabilities"
 HOMEPAGE="http://mein-neues-blog.de/xplanetFX/"
@@ -42,8 +42,7 @@ src_prepare() {
 
 src_install() {
 	dobin bin/${PN}
-	insinto /usr/share/applications
-	doins share/applications/${PN}.desktop
+	domenu share/applications/${PN}.desktop
 	insinto /usr/share/pixmaps
 	doins share/pixmaps/*
 	insinto /usr/share/${PN}

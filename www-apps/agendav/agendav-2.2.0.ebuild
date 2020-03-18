@@ -23,12 +23,12 @@ src_install() {
 	# fix references to the rest of the application code
 	sed -i -e '/__DIR__/s:/\.\./:/../../agendav/:' web/public/index.php || die
 	insinto "${MY_HTDOCSDIR}"
-	doins -r web/public/* || die
+	doins -r web/public/*
 
 	einfo "Installing main files"
 	cp web/config/{default.,}settings.php || die
 	insinto "${MY_HOSTROOTDIR}/${PN}"
-	doins -r web/{app,config,lang,src,templates,var,vendor} || die
+	doins -r web/{app,config,lang,src,templates,var,vendor}
 
 	einfo "Installing agendavcli utility"
 	sed -i -e '/__DIR__/s:/web/:/:' agendavcli || die

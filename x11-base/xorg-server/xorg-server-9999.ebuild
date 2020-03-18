@@ -1,24 +1,26 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 XORG_DOC=doc
+XORG_EAUTORECONF="yes"
 inherit xorg-3 multilib flag-o-matic
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
 if [[ ${PV} != 9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug elogind +glamor ipv6 libressl libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug elogind ipv6 libressl +libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
 
 CDEPEND="libglvnd? (
-		media-libs/libglvnd
+		media-libs/libglvnd[X]
 		!app-eselect/eselect-opengl
+		!!x11-drivers/nvidia-drivers[-libglvnd(-)]
 	)
 	!libglvnd? ( >=app-eselect/eselect-opengl-1.3.0	)
 	!libressl? ( dev-libs/openssl:0= )
@@ -51,11 +53,6 @@ CDEPEND="libglvnd? (
 		>=x11-libs/libXres-1.0.3
 		>=x11-libs/libXtst-1.0.99.2
 	)
-	glamor? (
-		media-libs/libepoxy[X,egl(+)]
-		>=media-libs/mesa-18[egl,gbm]
-		!x11-libs/glamor
-	)
 	kdrive? (
 		>=x11-libs/libXext-1.0.5
 		x11-libs/libXv
@@ -71,14 +68,15 @@ CDEPEND="libglvnd? (
 	!minimal? (
 		>=x11-libs/libX11-1.1.5
 		>=x11-libs/libXext-1.0.5
-		>=media-libs/mesa-18[X(+)]
+		>=media-libs/mesa-18[X(+),egl,gbm]
+		>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	)
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
 	wayland? (
 		>=dev-libs/wayland-1.3.0
-		media-libs/libepoxy[egl(+)]
-		>=dev-libs/wayland-protocols-1.1
+		>=media-libs/libepoxy-1.5.4[egl(+)]
+		>=dev-libs/wayland-protocols-1.18
 	)
 	>=x11-apps/xinit-1.3.3-r1
 	systemd? (
@@ -107,7 +105,6 @@ DEPEND="${CDEPEND}
 
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-xserver )
-	!x11-drivers/xf86-video-modesetting
 "
 
 PDEPEND="
@@ -118,7 +115,7 @@ REQUIRED_USE="!minimal? (
 	)
 	elogind? ( udev )
 	?? ( elogind systemd )
-	minimal? ( !glamor !wayland )
+	minimal? ( !wayland )
 	xephyr? ( kdrive )"
 
 UPSTREAMED_PATCHES=(
@@ -132,9 +129,10 @@ PATCHES=(
 )
 
 pkg_setup() {
-	if use wayland && ! use glamor; then
+	if use wayland && use minimal; then
 		ewarn "glamor is necessary for acceleration under Xwayland."
 		ewarn "Performance may be unacceptable without it."
+		ewarn "Build with USE=-minimal to enable glamor."
 	fi
 
 	# localstatedir is used for the log location; we need to override the default
@@ -146,7 +144,6 @@ pkg_setup() {
 		$(use_enable ipv6)
 		$(use_enable debug)
 		$(use_enable dmx)
-		$(use_enable glamor)
 		$(use_enable kdrive)
 		$(use_enable unwind libunwind)
 		$(use_enable wayland xwayland)
@@ -155,6 +152,7 @@ pkg_setup() {
 		$(use_enable !minimal dri)
 		$(use_enable !minimal dri2)
 		$(use_enable !minimal dri3)
+		$(use_enable !minimal glamor)
 		$(use_enable !minimal glx)
 		$(use_enable xcsecurity)
 		$(use_enable xephyr)

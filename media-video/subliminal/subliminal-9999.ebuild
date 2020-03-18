@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1 git-r3
@@ -18,6 +18,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/appdirs-1.3[${PYTHON_USEDEP}]
@@ -36,12 +37,10 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.0.0[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (
 		app-arch/unzip
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]

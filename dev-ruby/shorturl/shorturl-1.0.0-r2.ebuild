@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/robbyrussell/shorturl/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd ~x86-macos"
+KEYWORDS="amd64 ~ppc x86 ~x86-macos"
 IUSE=""
 
 # All tests require network connectivity.

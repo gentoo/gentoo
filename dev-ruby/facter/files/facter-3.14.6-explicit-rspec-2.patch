@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -205,7 +205,7 @@
+ if (RUBY_FOUND)
+     find_program(BUNDLER_PATH NAMES bundle.bat bundle)
+     if (BUNDLER_PATH)
+-        add_test(NAME "libfacter\\ specs" COMMAND ${BUNDLER_PATH} exec rspec WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}/lib")
++        add_test(NAME "libfacter\\ specs" COMMAND ${BUNDLER_PATH} exec rspec-2 WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}/lib")
+     endif()
+ endif()
+ add_test(NAME "facter\\ smoke" COMMAND facter)

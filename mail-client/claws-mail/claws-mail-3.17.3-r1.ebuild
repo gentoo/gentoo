@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="git://git.claws-mail.org/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
 fi
 
 SLOT="0"
@@ -72,7 +72,7 @@ COMMONDEPEND="
 	)
 	smime? ( >=app-crypt/gpgme-1.0.0 )
 	spam-report? ( >=net-misc/curl-7.9.7 )
-	spell? ( >=app-text/enchant-1.0.0:= )
+	spell? ( >=app-text/enchant-1.0.0:0= )
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
@@ -197,7 +197,7 @@ src_install() {
 	doexe tb2claws-mail update-po uudec uuooffice
 
 	# kill useless files
-	rm -f "${ED%/}"/usr/lib*/claws-mail/plugins/*.{a,la}
+	rm -f "${ED}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
 
 pkg_preinst() {

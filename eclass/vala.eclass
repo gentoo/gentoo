@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vala.eclass
@@ -32,7 +32,7 @@ VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.36}
 # @ECLASS-VARIABLE: VALA_MAX_API_VERSION
 # @DESCRIPTION:
 # Maximum vala API version (e.g. 0.36).
-VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.46}
+VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.48}
 
 # @ECLASS-VARIABLE: VALA_USE_DEPEND
 # @DEFAULT_UNSET
@@ -54,7 +54,8 @@ vala_api_versions() {
 
 	for ((minor_version = ${VALA_MAX_API_VERSION#*.}; minor_version >= ${VALA_MIN_API_VERSION#*.}; minor_version = minor_version - 2)); do
 		# 0.38 was never in main tree; remove the special case once minimal_supported_minor_version >= 40
-		if ((minor_version >= minimal_supported_minor_version)) && ((minor_version != 38)); then
+		# 0.42 is EOL and removed from tree; remove special case once minimal_support_minor_version >= 44
+		if ((minor_version >= minimal_supported_minor_version)) && ((minor_version != 38)) && ((minor_version != 42)); then
 			echo "0.${minor_version}"
 		fi
 	done

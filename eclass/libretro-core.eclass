@@ -1,4 +1,4 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: libretro-core.eclass
@@ -74,7 +74,7 @@ else
 	S="${WORKDIR}/${LIBRETRO_REPO_NAME##*/}-${LIBRETRO_COMMIT_SHA}"
 	: ${SRC_URI:="https://github.com/${LIBRETRO_REPO_NAME}/archive/${LIBRETRO_COMMIT_SHA}.tar.gz -> ${P}.tar.gz"}
 fi
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 case "${EAPI:-0}" in
 	6|7)
@@ -126,12 +126,12 @@ libretro-core_src_prepare() {
 		# * Add short-rev to Makefile
 		sed \
 			-e 's/\r$//g' \
-			-e "/flags.*=/s:-O[[:digit:]]:${CFLAGS}:g" \
-			-e "/CFLAGS.*=/s:-O[[:digit:]]:${CFLAGS}:g" \
-			-e "/CXXFLAGS.*=/s:-O[[:digit:]]:${CXXFLAGS}:g" \
-			-e "/.*,--version-script=.*/s:$: ${LDFLAGS} ${LIBS}:g" \
-			-e "/\$(CC)/s:\(\$(SHARED)\):\1 ${LDFLAGS} ${LIBS}:" \
-			-e 's:\(\$(CC)\):\1 \$(CFLAGS):g' \
+			-e "/flags.*=/s|-O[[:digit:]]|${CFLAGS}|g" \
+			-e "/CFLAGS.*=/s|-O[[:digit:]]|${CFLAGS}|g" \
+			-e "/CXXFLAGS.*=/s|-O[[:digit:]]|${CXXFLAGS}|g" \
+			-e "/.*,--version-script=.*/s|$| ${LDFLAGS} ${LIBS}|g" \
+			-e "/\$(CC)/s|\(\$(SHARED)\)|\1 ${LDFLAGS} ${LIBS}|" \
+			-e 's|\(\$(CC)\)|\1 \$(CFLAGS)|g' \
 			-e "s/GIT_VERSION\s.=.*$/GIT_VERSION=${custom_libretro_commit_sha}/g" \
 			-i "${makefile}" || die "Failed to use custom cflags in ${makefile}"
 	done

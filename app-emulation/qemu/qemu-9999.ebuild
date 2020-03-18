@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
@@ -14,12 +14,17 @@ inherit eutils linux-info toolchain-funcs multilib python-r1 \
 	udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
+	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
+	EGIT_SUBMODULES=(
+		slirp
+		tests/fp/berkeley-{test,soft}float-3
+		ui/keycodemapdb
+	)
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+	SRC_URI="https://download.qemu.org/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -27,12 +32,14 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
+
 IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
-	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg kernel_linux
-	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
-	pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
-	spice ssh static static-user systemtap tci test usb usbredir vde
-	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
+	+fdt glusterfs gnutls gtk infiniband iscsi jemalloc +jpeg kernel_linux
+	kernel_FreeBSD lzo ncurses nfs nls numa opengl +oss +pin-upstream-blobs
+	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
+	smartcard snappy spice ssh static static-user systemtap tci test usb
+	usbredir vde +vhost-net vhost-user-fs virgl virtfs +vnc vte xattr xen
+	xfs +xkb"
 
 COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
 	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
@@ -47,6 +54,7 @@ use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
 IUSE+=" ${use_softmmu_targets} ${use_user_targets}"
 
+RESTRICT="!test? ( test )"
 # Allow no targets to be built so that people can get a tools-only build.
 # Block USE flag configurations known to not work.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -57,9 +65,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_riscv32? ( fdt )
 	qemu_softmmu_targets_riscv64? ( fdt )
-	static? ( static-user !alsa !gtk !opengl !pulseaudio !snappy )
+	static? ( static-user !alsa !gtk !opengl !pulseaudio !plugins !rbd !snappy )
+	static-user? ( !plugins )
 	virtfs? ( xattr )
-	vte? ( gtk )"
+	vte? ( gtk )
+	plugins? ( !static !static-user )
+"
 
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # and user/softmmu targets (qemu-*, qemu-system-*).
@@ -80,7 +91,7 @@ ALL_DEPEND="
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
 	dev-libs/libxml2[static-libs(+)]
-	x11-libs/libxkbcommon[static-libs(+)]
+	xkb? ( x11-libs/libxkbcommon[static-libs(+)] )
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
@@ -108,6 +119,7 @@ SOFTMMU_TOOLS_DEPEND="
 		sys-fabric/librdmacm:=[static-libs(+)]
 	)
 	iscsi? ( net-libs/libiscsi )
+	jemalloc? ( dev-libs/jemalloc )
 	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
 	ncurses? (
@@ -124,12 +136,13 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	png? ( media-libs/libpng:0=[static-libs(+)] )
 	pulseaudio? ( media-sound/pulseaudio )
-	rbd? ( sys-cluster/ceph[static-libs(+)] )
+	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)] )
 	sdl? (
 		media-libs/libsdl2[X]
 		media-libs/libsdl2[static-libs(+)]
 	)
+	sdl-image? ( media-libs/sdl2-image[static-libs(+)] )
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
 	smartcard? ( >=app-emulation/libcacard-2.5.0[static-libs(+)] )
 	snappy? ( app-arch/snappy:= )
@@ -161,7 +174,7 @@ X86_FIRMWARE_DEPEND="
 	)"
 PPC64_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-1.11.0[binary,seavgabios]
+		~sys-firmware/seabios-1.12.0[binary,seavgabios]
 	)
 	!pin-upstream-blobs? (
 		>=sys-firmware/seabios-1.10.2[seavgabios]
@@ -201,10 +214,9 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-qemu )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
-	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
+	"${FILESDIR}"/${PN}-4.2.0-cflags.patch
 )
 
 QA_PREBUILT="
@@ -357,8 +369,9 @@ src_prepare() {
 
 	default
 
-	# Fix ld and objcopy being called directly
-	tc-export AR LD OBJCOPY
+	# Use correct toolchain to fix cross-compiling
+	tc-export AR LD NM OBJCOPY PKG_CONFIG
+	export WINDRES=${CHOST}-windres
 
 	# Verbose builds
 	MAKEOPTS+=" V=1"
@@ -385,8 +398,13 @@ qemu_src_configure() {
 	local conf_opts=(
 		--prefix=/usr
 		--sysconfdir=/etc
+		--bindir=/usr/bin
 		--libdir=/usr/$(get_libdir)
+		--datadir=/usr/share
 		--docdir=/usr/share/doc/${PF}/html
+		--mandir=/usr/share/man
+		--with-confsuffix=/qemu
+		--localstatedir=/var
 		--disable-bsd-user
 		--disable-guest-agent
 		--disable-strip
@@ -403,6 +421,7 @@ qemu_src_configure() {
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
 		$(use_enable doc docs)
+		$(use_enable plugins)
 		$(use_enable tci tcg-interpreter)
 		$(use_enable xattr attr)
 	)
@@ -417,7 +436,6 @@ qemu_src_configure() {
 		fi
 	}
 	conf_opts+=(
-		--disable-bluez
 		$(conf_notuser accessibility brlapi)
 		$(conf_notuser aio linux-aio)
 		$(conf_notuser bzip2)
@@ -431,6 +449,7 @@ qemu_src_configure() {
 		$(conf_notuser gtk)
 		$(conf_notuser infiniband rdma)
 		$(conf_notuser iscsi libiscsi)
+		$(conf_notuser jemalloc jemalloc)
 		$(conf_notuser jpeg vnc-jpeg)
 		$(conf_notuser kernel_linux kvm)
 		$(conf_notuser lzo)
@@ -442,6 +461,7 @@ qemu_src_configure() {
 		$(conf_notuser rbd)
 		$(conf_notuser sasl vnc-sasl)
 		$(conf_notuser sdl)
+		$(conf_notuser sdl-image)
 		$(conf_notuser seccomp)
 		$(conf_notuser smartcard)
 		$(conf_notuser snappy)
@@ -451,6 +471,7 @@ qemu_src_configure() {
 		$(conf_notuser usbredir usb-redir)
 		$(conf_notuser vde)
 		$(conf_notuser vhost-net)
+		$(conf_notuser vhost-user-fs)
 		$(conf_notuser virgl virglrenderer)
 		$(conf_notuser virtfs)
 		$(conf_notuser vnc)
@@ -458,6 +479,7 @@ qemu_src_configure() {
 		$(conf_notuser xen)
 		$(conf_notuser xen xen-pci-passthrough)
 		$(conf_notuser xfs xfsctl)
+		$(conf_notuser xkb xkbcommon)
 	)
 
 	if [[ ${buildtype} == "user" ]] ; then
@@ -468,12 +490,14 @@ qemu_src_configure() {
 
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
-		local audio_opts="oss"
-		use alsa && audio_opts="alsa,${audio_opts}"
-		use sdl && audio_opts="sdl,${audio_opts}"
-		use pulseaudio && audio_opts="pa,${audio_opts}"
+		local audio_opts=(
+			$(usev alsa)
+			$(usev oss)
+			$(usev sdl)
+			$(usex pulseaudio pa "")
+		)
 		conf_opts+=(
-			--audio-drv-list="${audio_opts}"
+			--audio-drv-list=$(printf "%s," "${audio_opts[@]}")
 		)
 	fi
 
@@ -586,7 +610,7 @@ src_test() {
 }
 
 qemu_python_install() {
-	python_domodule "${S}/python/qemu/qmp.py"
+	python_domodule "${S}/python/qemu"
 
 	python_doscript "${S}/scripts/kvm/vmxcap"
 	python_doscript "${S}/scripts/qmp/qmp-shell"
@@ -665,7 +689,7 @@ src_install() {
 		emake DESTDIR="${ED}" install
 
 		# This might not exist if the test failed. #512010
-		[[ -e check-report.html ]] && dohtml check-report.html
+		[[ -e check-report.html ]] && dodoc check-report.html
 
 		if use kernel_linux; then
 			udev_newrules "${FILESDIR}"/65-kvm.rules-r1 65-kvm.rules

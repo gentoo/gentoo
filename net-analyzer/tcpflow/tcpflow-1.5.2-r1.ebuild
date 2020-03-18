@@ -16,7 +16,7 @@ SRC_URI="
 "
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 SLOT="0"
 IUSE="cairo test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		PCem (an acronym for Personal Computer emulator) is an open-source,
+		low-level PC emulator developed for Windows and Linux by Sarah Walker.
+
+		It focuses on PC hardware from the 1980's and 1990's.
+		A variety of operating systems can be installed in the emulator,
+		which can then be used to launch programs.
+	</longdescription>
+	<use>
+		<flag name="networking">Enable support for emulation of network cards.</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://pcem-emulator.co.uk/phpBB3/viewforum.php?f=2</bugs-to>
+		<remote-id type="bitbucket">pcem_emulator/pcem</remote-id>
+	</upstream>
+</pkgmetadata>

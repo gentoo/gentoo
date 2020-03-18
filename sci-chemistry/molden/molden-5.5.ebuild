@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils fortran-2 flag-o-matic toolchain-funcs
+inherit desktop fortran-2 flag-o-matic toolchain-funcs
 
 MY_P="${PN}${PV}"
 
@@ -13,7 +12,7 @@ SRC_URI="ftp://ftp.cmbi.ru.nl/pub/molgraph/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MOLDEN"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="opengl"
 
 RDEPEND="
@@ -21,7 +20,8 @@ RDEPEND="
 		virtual/glu
 	opengl? (
 		media-libs/freeglut
-		virtual/opengl )"
+		virtual/opengl )
+"
 DEPEND="${RDEPEND}
 	x11-misc/gccmakedep
 	app-editors/vim"
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.0-overflow.patch
 	"${FILESDIR}"/${PN}-4.8-ldflags.patch
 	"${FILESDIR}"/${PN}-4.7-implicit-dec.patch
+	"${FILESDIR}"/${PN}-5.5-gcc8.patch
 )
 
 src_prepare() {
@@ -67,6 +68,8 @@ src_compile() {
 
 src_install() {
 	dobin ${PN} g${PN} $(usex opengl ${PN}ogl "")
+	doicon gmolden.png
+	make_desktop_entry gmolden MOLDEN gmolden.png
 
 	dodoc HISTORY README REGISTER
 	cd doc || die

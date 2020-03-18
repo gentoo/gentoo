@@ -1,0 +1,42 @@
+From 7318576fc7037412b755f038f8148f2d299587aa Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Tue, 26 Nov 2019 14:33:32 +0100
+Subject: [PATCH] PDF: fix to build against latest Poppler master (0.83dev)
+
+---
+ gdal/frmts/pdf/pdfio.cpp | 3 +++
+ gdal/frmts/pdf/pdfio.h   | 7 ++++++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/frmts/pdf/pdfio.cpp b/frmts/pdf/pdfio.cpp
+index 917e92330ae..c0b9dad93cb 100644
+--- a/frmts/pdf/pdfio.cpp
++++ b/frmts/pdf/pdfio.cpp
+@@ -170,6 +170,9 @@ getStart_ret_type VSIPDFFileStream::getStart()
+ /************************************************************************/
+ 
+ StreamKind VSIPDFFileStream::getKind()
++#if POPPLER_MAJOR_VERSION >= 1 || POPPLER_MINOR_VERSION >= 83
++                                        const
++#endif
+ {
+     return strFile;
+ }
+diff --git a/frmts/pdf/pdfio.h b/frmts/pdf/pdfio.h
+index aa34ab7210d..23344d33f77 100644
+--- a/frmts/pdf/pdfio.h
++++ b/frmts/pdf/pdfio.h
+@@ -81,7 +81,12 @@ class VSIPDFFileStream final: public BaseStream
+         virtual void       setPos(setPos_offset_type pos, int dir = 0) override;
+         virtual void       moveStart(moveStart_delta_type delta) override;
+ 
+-        virtual StreamKind getKind() override;
++        virtual StreamKind getKind()
++#if POPPLER_MAJOR_VERSION >= 1 || POPPLER_MINOR_VERSION >= 83
++            const
++#endif
++            override;
++
+         virtual GooString *getFileName() override;
+ 
+         virtual int        getChar() override;

@@ -1,12 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic linux-info systemd
+inherit flag-o-matic linux-info systemd
 
-if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/wireless/iwd.git"
-	inherit git-r3
+#Set this variable to the required external ell version
+ELL_REQ=""
+
+if [[ ${PV} == *9999* ]]; then
+	inherit autotools git-r3
+	IWD_EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/wireless/iwd.git"
+	ELL_EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~sparc ~x86"
@@ -19,14 +23,19 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
 
-RDEPEND=">=dev-libs/ell-0.21
+COMMON_DEPEND="sys-apps/dbus
+	client? ( sys-libs/readline:0= )"
+
+[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" ~dev-libs/ell-${ELL_REQ}"
+
+RDEPEND="${COMMON_DEPEND}
 	net-wireless/wireless-regdb
-	sys-apps/dbus
-	client? ( sys-libs/readline:0= )
 	crda? ( net-wireless/crda )"
 
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
+
+[[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
 
 pkg_pretend() {
 	CONFIG_CHECK="
@@ -58,8 +67,7 @@ pkg_pretend() {
 	fi
 
 	if use amd64;then
-		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO_AES_X86_64 ~CRYPTO_DES3_EDE_X86_64"
-		WARNING_CRYPTO_AES_X86_64="CRYPTO_AES_X86_64: enable for increased performance"
+		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO_DES3_EDE_X86_64"
 		WARNING_CRYPTO_DES3_EDE_X86_64="CRYPTO_DES3_EDE_X86_64: enable for increased performance"
 	fi
 
@@ -82,8 +90,8 @@ pkg_pretend() {
 	check_extra_config
 
 	if ! use crda; then
-		if [[ $(getfilevar CONFIG_CFG80211 /usr/src/linux/.config) == y ]] \
-			&& [[ $(getfilevar CONFIG_EXTRA_FIRMWARE /usr/src/linux/.config) != *regulatory.db* ]]
+		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
+			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
 		then
 			ewarn ""
 			ewarn "REGULATORY DOMAIN PROBLEM:"
@@ -96,9 +104,9 @@ pkg_pretend() {
 }
 
 src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
-		git-r3_src_unpack
-		git clone git://git.kernel.org/pub/scm/libs/ell/ell.git "${WORKDIR}"/ell
+	if [[ ${PV} == *9999* ]] ; then
+		EGIT_REPO_URI=${IWD_EGIT_REPO_URI} git-r3_src_unpack
+		EGIT_REPO_URI=${ELL_EGIT_REPO_URI} EGIT_CHECKOUT_DIR=${WORKDIR}/ell git-r3_src_unpack
 	else
 		default
 	fi
@@ -106,33 +114,39 @@ src_unpack() {
 
 src_prepare() {
 	default
-	eautoreconf
+	if [[ ${PV} == *9999* ]] ; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
 	append-cflags "-fsigned-char"
-	econf --sysconfdir=/etc/iwd --localstatedir=/var \
-		$(use_enable client) \
-		$(use_enable monitor) \
-		$(use_enable ofono) \
-		$(use_enable wired) \
-		--enable-external-ell \
-		--enable-systemd-service \
-		--with-systemd-unitdir="$(systemd_get_systemunitdir)" \
-		--with-systemd-modloaddir=$(_systemd_get_dir modulesloaddir /usr/lib/modules-load.d)
+	local myeconfargs=(
+		--sysconfdir="${EPREFIX}"/etc/iwd --localstatedir="${EPREFIX}"/var
+		$(use_enable client)
+		$(use_enable monitor)
+		$(use_enable ofono)
+		$(use_enable wired)
+		--enable-systemd-service
+		--with-systemd-unitdir="$(systemd_get_systemunitdir)"
+		--with-systemd-modloaddir="${EPREFIX}/usr/lib/modules-load.d"
+		--with-systemd-networkdir="$(systemd_get_utildir)/network"
+	)
+	[[ ${PV} == *9999* ]] || myeconfargs+=(--enable-external-ell)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
 	keepdir /var/lib/${PN}
 
-	newinitd "${FILESDIR}/iwd.initd" iwd
+	newinitd "${FILESDIR}/iwd.initd-r1" iwd
 
 	if use wired;then
 		newinitd "${FILESDIR}/ead.initd" ead
 	fi
 
-	if [[ ${PV} == "9999" ]] ; then
+	if [[ ${PV} == *9999* ]] ; then
 		exeinto /usr/share/iwd/scripts/
 		doexe test/*
 	fi

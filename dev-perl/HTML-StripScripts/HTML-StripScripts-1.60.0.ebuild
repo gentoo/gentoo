@@ -12,6 +12,7 @@ DESCRIPTION="Strip scripting constructs out of HTML"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 "

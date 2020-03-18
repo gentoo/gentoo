@@ -11,7 +11,7 @@ SRC_URI="https://github.com/kr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~mips x86 ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~mips x86 ~amd64-linux ~x64-macos ~x86-macos"
 
 RDEPEND=""
 DEPEND=""

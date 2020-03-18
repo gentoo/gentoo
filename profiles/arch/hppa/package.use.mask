@@ -1,8 +1,32 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
+# net-libs/libgadu is not keyworded
+net-im/pidgin gadu
+
+# Joonas Niilola <juippis@gentoo.org> (2020-02-02)
+# luajit is not keyworded on this arch.
+dev-libs/efl luajit
+
+# Jeroen Roovers <jer@gentoo.org> (2020-01-28)
+# sys-apps/systemd is not stable
+net-analyzer/wireshark sdjournal
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-07-19)
 # gdbserver is not implemented yet for hppa target.
@@ -62,7 +86,7 @@ media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=redis that is masked in this profile.
-dev-python/pyzor test
+mail-filter/pyzor test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=systemd that is masked in this profile.
@@ -85,8 +109,7 @@ app-shells/bash-completion test
 # Jeroen Roovers <jer@gentoo.org> (2017-02-04)
 # media-libs/libilbc has not been ported to HPPA
 # media-libs/zimg triggers a toolchain issue (bug #597152)
-# sofalizer needs sci-libs/netcdf and sci-libs/hdf5 (bug #615510)
-media-video/ffmpeg libilbc sofalizer zimg
+media-video/ffmpeg libilbc zimg
 
 # Jeroen Roovers <jer@gentoo.org> (2017-02-03)
 # net-mail/notmuch is not keyworded
@@ -134,7 +157,7 @@ dev-libs/efl physics
 # Jeroen Roovers <jer@gentoo.org> (2015-02-02)
 # dev-python/gevent requires dev-python/greenlet which has not been ported to
 # HPPA (bug #538510)
-dev-python/pyzor gevent
+mail-filter/pyzor gevent
 
 # Jeroen Roovers <jer@gentoo.org> (2014-10-19)
 # requires dev-python/restkit which requires
@@ -201,7 +224,6 @@ app-text/asciidoc test
 # Requires sys-power/upower or sys-power/upower-pm-utils which are
 # not much use on HPPA
 xfce-extra/xfce4-systemload-plugin upower
-xfce-base/xfce4-session upower
 xfce-base/xfce4-settings upower
 
 # Jeroen Roovers <jer@gentoo.org> (2011-10-25)

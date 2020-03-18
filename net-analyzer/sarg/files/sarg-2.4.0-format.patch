@@ -1,0 +1,22 @@
+--- a/userinfo.c
++++ b/userinfo.c
+@@ -78,7 +78,7 @@
+ 	int skip;
+ 	int flen;
+ 	int count, clen;
+-	char cstr[9];
++	char cstr[10];
+ 	char filename[MAX_USER_FNAME_LEN];
+ 
+ 	if (!UserStrings) {
+--- a/index.c
++++ b/index.c
+@@ -535,7 +535,7 @@
+ 	struct dirent *direntp;
+ 	char yearindex[MAXLEN];
+ 	char yeardir[MAXLEN];
+-	char yearnum[10];
++	char yearnum[15];
+ 	int yearsort[150];
+ 	int nyears;
+ 	int year;

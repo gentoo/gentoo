@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 # Python is required for tests and some build tasks.
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == "9999" ]]; then
@@ -13,12 +14,12 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/google/googletest"
 else
 	if [[ -z ${GOOGLETEST_COMMIT} ]]; then
-		MY_PV=release-${PV}
+		URI_PV=v${MY_PV:-${PV}}
 	else
-		MY_PV=${GOOGLETEST_COMMIT}
+		URI_PV=${MY_PV:=${GOOGLETEST_COMMIT}}
 	fi
-	SRC_URI="https://github.com/google/googletest/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+	SRC_URI="https://github.com/google/googletest/archive/${URI_PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 	S="${WORKDIR}"/googletest-${MY_PV}
 fi
 
@@ -28,6 +29,7 @@ HOMEPAGE="https://github.com/google/googletest"
 LICENSE="BSD"
 SLOT="0"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
@@ -41,7 +43,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e '/set(cxx_base_flags /s:-Werror::' \
 		googletest/cmake/internal_utils.cmake || die "sed failed!"
@@ -57,7 +59,7 @@ multilib_src_configure() {
 		-Dgtest_build_tests=$(usex test)
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install_all() {

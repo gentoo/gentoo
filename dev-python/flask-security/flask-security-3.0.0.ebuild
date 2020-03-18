@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 MY_PN="Flask-Security"
@@ -39,7 +39,6 @@ DEPEND="${RDEPEND}
 		dev-python/flask-mongoengine[${PYTHON_USEDEP}]
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/flask-peewee[${PYTHON_USEDEP}]' 'python2*')
 	)"
 
 S="${WORKDIR}/${MY_P}"

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 # git-r3 goes after ruby-ng so that it overrides src_unpack properly
 inherit cmake-utils eutils multilib ruby-ng
@@ -22,6 +22,8 @@ else
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 	SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
+
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	>=sys-devel/gcc-4.8:*
@@ -93,6 +95,7 @@ src_configure() {
 }
 
 src_compile() {
+	addpredict /proc/self/oom_score_adj
 	cmake-utils_src_compile
 }
 

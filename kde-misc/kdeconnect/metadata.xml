@@ -6,8 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="app">Enable experimental kcapp frontend</flag>
-		<flag name="mousepad">Enable remote mousepad plugin using <pkg>x11-libs/libfakekey</pkg></flag>
-		<flag name="wayland">Enable kwin_wayland support for mousepad plugin using <pkg>kde-frameworks/kwayland</pkg></flag>
+		<flag name="pulseaudio">Enable system volume control plugin using <pkg>media-sound/pulseaudio</pkg></flag>
+		<flag name="wayland">Enable remote input mousepad plugin using <pkg>kde-frameworks/kwayland</pkg></flag>
+		<flag name="X">Enable remote input mousepad plugin using <pkg>x11-libs/libfakekey</pkg></flag>
 	</use>
 </pkgmetadata>

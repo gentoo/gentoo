@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: An eclass for packages having build-time dependency on Python.
 # @DESCRIPTION:
 # A minimal eclass for packages which need any Python interpreter
@@ -33,15 +33,13 @@
 # packages using python-any-r1, and there is no need ever to inherit
 # both.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/python-any-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6|7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
 if [[ ! ${_PYTHON_ANY_R1} ]]; then
@@ -156,7 +154,7 @@ _python_any_set_globals() {
 		python_export "${i}" PYTHON_PKG_DEP
 
 		# note: need to strip '=' slot operator for || deps
-		deps="${PYTHON_PKG_DEP%=} ${deps}"
+		deps="${PYTHON_PKG_DEP/:0=/:0} ${deps}"
 	done
 	deps="|| ( ${deps})"
 
@@ -303,6 +301,7 @@ python_setup() {
 
 		python_export "${impls[0]}" EPYTHON PYTHON
 		python_wrapper_setup
+		einfo "Using ${EPYTHON} to build"
 		return
 	fi
 
@@ -311,6 +310,7 @@ python_setup() {
 		if _python_EPYTHON_supported "${EPYTHON}"; then
 			python_export EPYTHON PYTHON
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 			return
 		fi
 	fi
@@ -326,6 +326,7 @@ python_setup() {
 		elif _python_EPYTHON_supported "${i}"; then
 			python_export "${i}" EPYTHON PYTHON
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 			return
 		fi
 	done
@@ -336,6 +337,7 @@ python_setup() {
 		python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
 		if _python_EPYTHON_supported "${EPYTHON}"; then
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 			return
 		fi
 	done

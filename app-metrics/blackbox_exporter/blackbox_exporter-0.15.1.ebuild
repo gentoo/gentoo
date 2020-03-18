@@ -13,7 +13,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP"
 HOMEPAGE="https://github.com/prometheus/blackbox_exporter"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 IUSE=""
 

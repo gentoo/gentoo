@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils java-pkg-opt-2 flag-o-matic
+inherit eutils java-pkg-opt-2 flag-o-matic ltprune
 
 DESCRIPTION="Proj.4 cartographic projection software"
 HOMEPAGE="http://trac.osgeo.org/proj/"
@@ -14,7 +14,7 @@ SRC_URI="
 "
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/9"
 KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="java static-libs"
 

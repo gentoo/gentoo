@@ -1,0 +1,35 @@
+From 482311ef1041918d791e498744f8e0ddeebc91fe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=B6kt=C3=BCrk=20Y=C3=BCksek?= <gokturk@gentoo.org>
+Date: Fri, 11 Oct 2019 18:16:41 -0400
+Subject: [PATCH v1] src/Main/Main.make: simplify the WX_CONFIG_LIBS logic
+
+Irrespective of whether we are linking against widgets statically or
+dynamically, pull in only 'base' when GUI is disabled, and
+'adv,core,base' when GUI is enabled. When GUI is disabled, the C/CXX
+flag must include '-DwxUSE_GUI=0' for this to work.
+---
+ src/Main/Main.make | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/Main/Main.make b/src/Main/Main.make
+index 0bdd951d..259a1f08 100755
+--- a/src/Main/Main.make
++++ b/src/Main/Main.make
+@@ -82,14 +82,10 @@ CXXFLAGS += -I$(BASE_DIR)/Main
+ #------ wxWidgets configuration ------
+ 
+ ifdef TC_NO_GUI
+-ifdef VC_WX_STATIC
+ WX_CONFIG_LIBS := base
+ else
+ WX_CONFIG_LIBS := adv,core,base
+ endif
+-else
+-WX_CONFIG_LIBS := adv,core,base
+-endif
+ 
+ ifeq "$(TC_BUILD_CONFIG)" "Release"
+ 
+-- 
+2.23.0
+

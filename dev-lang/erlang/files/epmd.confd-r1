@@ -1,0 +1,2 @@
+#arguments for run erlang
+command_args="-relaxed_command_check -address 127.0.0.1"

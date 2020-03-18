@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="Software synthesizer based on ZynAddSubFX"
 HOMEPAGE="https://yoshimi.github.io/"
@@ -38,7 +38,7 @@ PATCHES=( "${FILESDIR}"/${P}-cxxflags.patch )
 DOCS=( Changelog README.txt )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# respect doc dir
 	sed -e "s#/doc/yoshimi#/doc/${PF}#" -i src/CMakeLists.txt || die
 }
@@ -47,5 +47,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DLV2Plugin=$(usex lv2)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

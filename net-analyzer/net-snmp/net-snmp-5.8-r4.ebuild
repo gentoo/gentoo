@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ WANT_AUTOMAKE=none
 PATCHSET=3
 GENTOO_DEPEND_ON_PERL=no
 
-inherit autotools distutils-r1 eutils perl-module systemd
+inherit autotools distutils-r1 eutils ltprune perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
@@ -24,34 +24,32 @@ S=${WORKDIR}/${P/_/.}
 LICENSE="HPND BSD GPL-2"
 SLOT="0/35"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="
-	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
-	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
-"
+IUSE="X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
 
 COMMON_DEPEND="
-	bzip2? ( app-arch/bzip2 )
-	elf? ( dev-libs/elfutils )
-	lm-sensors? ( sys-apps/lm-sensors )
-	mysql? ( dev-db/mysql-connector-c:0= )
-	netlink? ( dev-libs/libnl:3 )
-	pcap? ( net-libs/libpcap )
-	pci? ( sys-apps/pciutils )
-	perl? ( dev-lang/perl:= )
-	python? (
-		dev-python/setuptools[${PYTHON_USEDEP}]
-		${PYTHON_DEPS}
-	)
-	rpm? (
-		app-arch/rpm
-		dev-libs/popt
-	)
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-0.9.6d:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
+	rpm? (
+		app-arch/rpm
+		dev-libs/popt
+	)
+	bzip2? ( app-arch/bzip2 )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
+	elf? ( dev-libs/elfutils )
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		')
+		${PYTHON_DEPS}
+	)
+	pci? ( sys-apps/pciutils )
+	lm-sensors? ( sys-apps/lm-sensors )
+	netlink? ( dev-libs/libnl:3 )
+	mysql? ( dev-db/mysql-connector-c:0= )
+	perl? ( dev-lang/perl:= )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -83,9 +81,7 @@ src_prepare() {
 	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
 	eapply "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
-	eapply "${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
 	eapply "${FILESDIR}"/${PN}-5.8-my_bool.patch
-	eapply "${FILESDIR}"/${PN}-5.8-pcap.patch
 	eapply "${FILESDIR}"/${PN}-5.8-tinfo.patch
 
 	mv "${WORKDIR}"/patches/0002-Respect-DESTDIR-for-pythoninstall.patch{,.disabled} || die
@@ -117,7 +113,6 @@ src_configure() {
 		$(use_with kmem kmem-usage) \
 		$(use_with mysql) \
 		$(use_with netlink nl) \
-		$(use_with pcap) \
 		$(use_with pci) \
 		$(use_with perl perl-modules INSTALLDIRS=vendor) \
 		$(use_with python python-modules) \
@@ -144,7 +139,7 @@ src_compile() {
 	use doc && emake docsdox
 }
 
-src_install () {
+src_install() {
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
 

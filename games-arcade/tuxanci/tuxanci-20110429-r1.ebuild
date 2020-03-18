@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Tuxanci is first tux shooter inspired by game Bulanci"
-HOMEPAGE="http://www.tuxanci.org/"
+HOMEPAGE="https://repo.or.cz/w/tuxanci.git"
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3

@@ -11,7 +11,7 @@ DESCRIPTION="Microsemi Adaptec RAID Controller Command Line Utility"
 HOMEPAGE="https://www.microsemi.com/"
 SRC_URI="https://download.adaptec.com/raid/storage_manager/${PN}_${MY_PV}.zip"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="Microsemi"
 SLOT="0"
 

@@ -13,6 +13,7 @@ S="${WORKDIR}/${P}.5"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="test usb_modeswitch"
+RESTRICT="!test? ( test )"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -46,10 +47,10 @@ src_test() {
 	# upstream tests are designed to be run AFTER make install, because they depend on final paths.
 	testroot="${T}/testroot"
 	mkdir -p "${testroot}"
-	emake install DESTDIR="${testroot}" || die "Failed to install for testing"
+	emake install DESTDIR="${testroot}"
 	# -W filters is because CUPS tries really hard for secure filters: they must be root/root for the filter tests to pass
 	#chown root:root "${testroot}"/usr/libexec/cups/filter/{raster2dymolm,raster2dymolw} || die "failed to set ownership for tests"
 	# This will trigger the following warning repeatedly
 	#Bad permissions on cupsFilter file "..${testroot}/usr/libexec/cups/filter/raster2dymolm"
-	emake check CUPSTESTPPD_OPTS="-R ${testroot} -W filters" || die "failed tests"
+	emake check CUPSTESTPPD_OPTS="-R ${testroot} -W filters"
 }

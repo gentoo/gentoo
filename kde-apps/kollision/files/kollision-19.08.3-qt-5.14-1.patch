@@ -1,0 +1,56 @@
+From 77958df9caf1c12ff92380ea4ea382572c2e8447 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Tue, 17 Sep 2019 13:39:36 +0200
+Subject: Make it compiles against qt5.14
+
+---
+ animator.h | 4 ++--
+ mainarea.h | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/animator.h b/animator.h
+index 3fc944e..5a501f4 100644
+--- a/animator.h
++++ b/animator.h
+@@ -12,7 +12,7 @@
+ 
+ #include "animation.h"
+ #include <QTimer>
+-#include <QTime>
++#include <QElapsedTimer>
+ 
+ class Animator : public AnimationGroup
+ {
+@@ -27,7 +27,7 @@ public slots:
+     void tick();
+ private:
+     QTimer m_timer;
+-    QTime m_time;
++    QElapsedTimer m_time;
+ };
+ 
+ #endif // ANIMATOR_H
+diff --git a/mainarea.h b/mainarea.h
+index 782ad21..2a6bae1 100644
+--- a/mainarea.h
++++ b/mainarea.h
+@@ -11,7 +11,7 @@
+ #ifndef MAINAREA_H
+ #define MAINAREA_H
+ 
+-#include <QTimer>
++#include <QElapsedTimer>
+ #include <QTime>
+ #include <QList>
+ #include <QGraphicsScene>
+@@ -35,7 +35,7 @@ private:
+     QTimer m_timer;
+     int m_lastTime;
+     int m_lastGameTime;
+-    QTime m_time;
++    QElapsedTimer m_time;
+ 
+     /// time interval between two balls being added
+     int m_ball_timeout;
+-- 
+cgit v1.1

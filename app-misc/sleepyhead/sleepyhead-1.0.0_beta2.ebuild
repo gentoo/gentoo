@@ -47,7 +47,7 @@ src_prepare() {
 
 src_install() {
 	cd "${S}/sleepyhead"
-	dobin SleepyHead || die
-	dodoc ../README || die
-	dodoc docs/* || die
+	dobin SleepyHead
+	dodoc ../README
+	dodoc docs/*
 }

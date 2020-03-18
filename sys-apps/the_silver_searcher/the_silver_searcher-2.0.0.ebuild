@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,15 +10,19 @@ SRC_URI="https://github.com/ggreer/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 x86"
 IUSE="lzma test zlib"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libpcre
 	lzma? ( app-arch/xz-utils )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( dev-util/cram )"
+	test? (
+		dev-util/cram
+		dev-vcs/git
+	)"
 
 DOCS="README.md"
 

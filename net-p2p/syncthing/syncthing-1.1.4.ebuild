@@ -66,7 +66,7 @@ HOMEPAGE="https://syncthing.net"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
-LICENSE="MPL-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE="selinux tools"

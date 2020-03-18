@@ -15,6 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 IUSE="gnutls +jingle libressl plugins test"
+RESTRICT="!test? ( test )"
 
 # Prevent false positives due nested configure
 QA_CONFIGURE_OPTIONS=".*"

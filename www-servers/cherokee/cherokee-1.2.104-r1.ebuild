@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	ldap? ( net-nds/openldap )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nls? ( virtual/libintl )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	php? ( || (
 		dev-lang/php:*[fpm]
 		dev-lang/php:*[cgi]
@@ -107,7 +107,6 @@ src_configure() {
 		$(use_with ldap) \
 		$(use_with mysql) \
 		$(use_with ssl libssl) \
-		--disable-dependency-tracking \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--enable-os-string="Gentoo ${os}" \
 		--enable-tmpdir="${EPREFIX}/var/tmp" \

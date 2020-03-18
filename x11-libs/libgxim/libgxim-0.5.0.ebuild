@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby24 ruby25"
 
 inherit autotools ruby-single
 
@@ -14,6 +14,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="${USE_RUBY//ruby/ruby_targets_ruby} static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/dbus-glib
 	dev-libs/glib:2

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A limited problem scanner for C source files"
 HOMEPAGE="http://www.striker.ottawa.on.ca/~aland/pscan/"
-SRC_URI="mirror://gentoo/pscan.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

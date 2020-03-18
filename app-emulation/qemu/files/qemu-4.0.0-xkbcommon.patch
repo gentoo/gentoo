@@ -1,0 +1,38 @@
+From cef396dc0b11a09ede85b275ed1ceee71b60a4b3 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 14 Sep 2019 15:47:20 +0100
+Subject: [PATCH] configure: Add xkbcommon configure options
+
+This dependency is currently "automagic", which is bad for distributions.
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+---
+ configure | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/configure b/configure
+index 30aad233d1..30544f52e6 100755
+--- a/configure
++++ b/configure
+@@ -1521,6 +1521,10 @@ for opt do
+   ;;
+   --disable-libpmem) libpmem=no
+   ;;
++  --enable-xkbcommon) xkbcommon=yes
++  ;;
++  --disable-xkbcommon) xkbcommon=no
++  ;;
+   *)
+       echo "ERROR: unknown option $opt"
+       echo "Try '$0 --help' for more information"
+@@ -1804,6 +1808,7 @@ disabled with --disable-FEATURE, default is enabled if available:
+   capstone        capstone disassembler support
+   debug-mutex     mutex debugging support
+   libpmem         libpmem support
++  xkbcommon       xkbcommon support
+ 
+ NOTE: The object files are built at the place where configure is launched
+ EOF
+-- 
+2.23.0
+

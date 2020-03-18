@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="doc egl gbm test wayland X"
+IUSE="doc egl gbm wayland X"
 RESTRICT="test" # gl_basic tests don't work when run from portage
 
 RDEPEND="
@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+MULTILIB_CHOST_TOOLS=(
+	/usr/bin/wflinfo$(get_exeext)
+)
+
 src_unpack() {
 	default
 	[[ $PV = 9999* ]] && git-r3_src_unpack
@@ -48,8 +52,8 @@ multilib_src_configure() {
 		$(meson_feature X x11_egl)
 		$(meson_feature gbm)
 		$(meson_feature egl surfaceless_egl)
-		$(meson_use test build-tests)
 		$(meson_use doc build-manpages)
+		-Dbuild-tests=false
 	)
 	meson_src_configure
 }
@@ -65,5 +69,5 @@ multilib_src_test() {
 multilib_src_install() {
 	meson_src_install
 
-	rm -rf ${D}/usr/share/doc/waffle1
+	rm -rf "${D}"/usr/share/doc/waffle1
 }

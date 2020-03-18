@@ -33,6 +33,7 @@
 	<flag name="libilbc">Enables iLBC de/encoding via <pkg>media-libs/libilbc</pkg>.</flag>
 	<flag name="librtmp">Enables Real Time Messaging Protocol using librtmp (<pkg>media-video/rtmpdump</pkg>) in addition to FFmpeg's native implementation.</flag>
 	<flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
+	<flag name="libtesseract">Enables the OCR filter via <pkg>app-text/tesseract</pkg>.</flag>
 	<flag name="libv4l">Uses <pkg>media-libs/libv4l</pkg> for video4linux instead of direct calls. Adds support for more devices via the userspace library.</flag>
 	<flag name="libxml2">Uses <pkg>dev-libs/libxml2</pkg> to enable dash demuxing support.</flag>
 	<flag name="lv2">Enables lv2 audio filter wrapper.</flag>

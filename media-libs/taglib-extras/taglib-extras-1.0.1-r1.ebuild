@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Unofficial taglib plugins maintained by the Amarok team"
 HOMEPAGE="https://websvn.kde.org/trunk/kdesupport/taglib-extras/"

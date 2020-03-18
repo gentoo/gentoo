@@ -57,7 +57,7 @@ src_test() {
 
 src_install() {
 	java-pkg_newjar target/${P}.jar ${PN}.jar
-	dodoc NOTICE.txt README.txt RELEASE-NOTES.txt || die
+	dodoc NOTICE.txt README.txt RELEASE-NOTES.txt
 	use doc && java-pkg_dojavadoc dist/docs/api
 	use source && java-pkg_dosrc src/java/*
 }

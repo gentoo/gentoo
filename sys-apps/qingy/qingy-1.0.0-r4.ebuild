@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RDEPEND="
 	>=sys-libs/ncurses-5.7-r7:=
 	opensslcrypt? ( dev-libs/openssl:0= )
 	crypt? ( >=dev-libs/libgcrypt-1.2.1:0= )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	pam? ( >=sys-libs/pam-0.75-r11 )
 	X? (
 		x11-libs/libX11:=

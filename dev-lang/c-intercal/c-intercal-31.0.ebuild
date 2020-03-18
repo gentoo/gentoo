@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs examples"
 
-RDEPEND="emacs? ( virtual/emacs )"
+RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 BDEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/yacc"
@@ -42,6 +42,7 @@ SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-version.patch
+	eapply "${FILESDIR}"/${P}-no-common.patch
 	eapply_user
 	eautoreconf
 }
@@ -63,10 +64,7 @@ src_install() {
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	fi
 
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r pit
-	fi
+	use examples && dodoc -r pit
 }
 
 pkg_postinst() {

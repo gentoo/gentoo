@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
@@ -13,8 +13,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 s390 ~sh x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc64 s390 ~sh x86"
 IUSE="+cli doc examples test"
+RESTRICT="!test? ( test )"
 
 PY27_USEDEP="$(python_gen_usedep python2_7)"
 RDEPEND="cli? ( dev-python/ipython[${PY27_USEDEP}] )

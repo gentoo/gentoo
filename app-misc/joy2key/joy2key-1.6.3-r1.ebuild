@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ DEPEND="
 DOCS=( AUTHORS ChangeLog joy2keyrc.sample rawscancodes README TODO )
 
 src_configure() {
-	econf --disable-dependency-tracking $(use_enable X)
+	econf $(use_enable X)
 }
 
 src_install() {

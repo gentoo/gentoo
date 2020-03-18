@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs autotools
 
 DESCRIPTION="A curses-based tool for viewing and analyzing log files"
-HOMEPAGE="http://lnav.org"
+HOMEPAGE="https://lnav.org"
 SRC_URI="https://github.com/tstack/lnav/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD-2"

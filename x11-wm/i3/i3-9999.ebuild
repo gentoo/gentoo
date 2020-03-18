@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ CDEPEND="dev-libs/libev
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
 	x11-misc/xkeyboard-config
-	>=x11-libs/cairo-1.14.4[X,xcb]
+	>=x11-libs/cairo-1.14.4[X,xcb(+)]
 	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
 	doc? ( app-text/asciidoc app-text/xmlto dev-lang/perl )

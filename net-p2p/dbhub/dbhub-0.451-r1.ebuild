@@ -11,10 +11,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tbz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="debug perl nls switch_user"
+IUSE="debug perl nls switch-user"
 
 DEPEND="perl? ( dev-lang/perl )
-	switch_user? ( sys-libs/libcap )"
+	switch-user? ( sys-libs/libcap )"
 
 RDEPEND="${DEPEND}"
 
@@ -33,6 +33,6 @@ src_configure() {
 	econf \
 		$(use_enable nls) \
 		$(use_enable perl) \
-		$(use_enable switch_user) \
+		$(use_enable switch-user switch_user) \
 		$(use_enable debug)
 }

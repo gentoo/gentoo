@@ -1,0 +1,56 @@
+From 7459f27dd4bb9b60067ac49ee2c6be93d20c2c1e Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 13 Feb 2020 13:16:16 +0100
+Subject: [PATCH] Prefer pkgconfig in FindLAPACK
+
+---
+ Modules/FindLAPACK.cmake | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/Modules/FindLAPACK.cmake b/Modules/FindLAPACK.cmake
+index c9629769f0..de852d562c 100644
+--- a/Modules/FindLAPACK.cmake
++++ b/Modules/FindLAPACK.cmake
+@@ -7,6 +7,10 @@ FindLAPACK
+ 
+ Find Linear Algebra PACKage (LAPACK) library
+ 
++Version modified for Gentoo Linux.
++If a valid PkgConfig configuration is found, this overrides and cancels
++all further checks.
++
+ This module finds an installed Fortran library that implements the
+ LAPACK linear-algebra interface (see http://www.netlib.org/lapack/).
+ 
+@@ -186,6 +190,22 @@ macro(CHECK_LAPACK_LIBRARIES LIBRARIES _prefix _name _flags _list _threadlibs _a
+   #message("DEBUG: ${LIBRARIES} = ${${LIBRARIES}}")
+ endmacro()
+ 
++# first, try PkgConfig
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(PC_LAPACK lapack)
++if(PC_LAPACK_FOUND)
++  foreach(PC_LIB ${PC_LAPACK_LIBRARIES})
++    find_library(${PC_LIB}_LIBRARY NAMES ${PC_LIB} HINTS ${PC_LAPACK_LIBRARY_DIRS} )
++    if (NOT ${PC_LIB}_LIBRARY)
++      message(FATAL_ERROR "Something is wrong in your pkg-config file - lib ${PC_LIB} not found in ${PC_LAPACK_LIBRARY_DIRS}")
++    endif (NOT ${PC_LIB}_LIBRARY)
++    list(APPEND LAPACK_LIBRARIES ${${PC_LIB}_LIBRARY})
++  endforeach(PC_LIB)
++  find_package_handle_standard_args(LAPACK DEFAULT_MSG LAPACK_LIBRARIES)
++  mark_as_advanced(LAPACK_LIBRARIES)
++else(PC_LAPACK_FOUND)
++message(STATUS "No PkgConfig configuration for LAPACK found; starting more extensive search.")
++
+ set(LAPACK_LINKER_FLAGS)
+ set(LAPACK_LIBRARIES)
+ set(LAPACK95_LIBRARIES)
+@@ -494,3 +514,5 @@ endif()
+ 
+ cmake_pop_check_state()
+ set(CMAKE_FIND_LIBRARY_SUFFIXES ${_lapack_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES})
++
++endif(PC_LAPACK_FOUND)
+-- 
+2.25.0
+

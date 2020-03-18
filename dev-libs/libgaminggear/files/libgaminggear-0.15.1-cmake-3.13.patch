@@ -1,0 +1,25 @@
+From eb4ef0dcfcb4b9325f2cc520445b03f2b63c3b6d Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 31 Oct 2019 00:28:39 +0100
+Subject: [PATCH] Fix build with >=cmake-3.13
+
+https://aur.archlinux.org/packages/libgaminggear/
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 36b5f93..3b02457 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -75,6 +75,7 @@ INCLUDE_DIRECTORIES(
+   ${GTK_INCLUDE_DIRS}
+   ${M_INCLUDE_DIR}
+   ${NOTIFY_INCLUDE_DIRS}
++  /usr/include/harfbuzz
+ )
+ 
+ ADD_SUBDIRECTORY(configuration)
+-- 
+2.24.0.rc1
+

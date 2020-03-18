@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,12 @@ inherit haskell-cabal
 
 DESCRIPTION="Conversion between markup formats"
 HOMEPAGE="http://johnmacfarlane.net/pandoc"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="embed_data_files +https make-pandoc-man-pages +network-uri trypandoc"
+IUSE="embed-data-files +https make-pandoc-man-pages +network-uri trypandoc"
 
 RESTRICT=test # likes to break on highlighting-kate update
 
@@ -52,7 +52,7 @@ RDEPEND=">=dev-haskell/aeson-0.7.0.5:=[profile?]
 	>=dev-haskell/zip-archive-0.2.3.4:=[profile?] <dev-haskell/zip-archive-0.3:=[profile?]
 	>=dev-haskell/zlib-0.5:=[profile?] <dev-haskell/zlib-0.6:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
-	embed_data_files? ( dev-haskell/hsb2hs )
+	embed-data-files? ( dev-haskell/hsb2hs )
 	https? ( >=dev-haskell/http-client-0.3.2:=[profile?] <dev-haskell/http-client-0.5:=[profile?]
 			>=dev-haskell/http-client-tls-0.2:=[profile?] <dev-haskell/http-client-tls-0.3:=[profile?]
 			>=dev-haskell/http-types-0.8:=[profile?] <dev-haskell/http-types-0.9:=[profile?] )
@@ -85,7 +85,7 @@ src_prepare() {
 
 src_configure() {
 	haskell-cabal_src_configure \
-		$(cabal_flag embed_data_files embed_data_files) \
+		$(cabal_flag embed-data-files embed_data_files) \
 		$(cabal_flag https https) \
 		$(cabal_flag make-pandoc-man-pages make-pandoc-man-pages) \
 		$(cabal_flag network-uri network-uri) \

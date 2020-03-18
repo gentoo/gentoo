@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -68,7 +68,7 @@ src_test() {
 	elog "Both static and dynamic confidence tests should say PASSED."
 }
 
-src_install(){
+src_install() {
 	emake prefix="${D}/usr" libdir="${D}/usr/$(get_libdir)" \
 		docdir="${D}/usr/share/doc/${PF}" install
 
@@ -78,8 +78,8 @@ src_install(){
 	dodoc CHANGELOG TODO GNUmakefile
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins example[1-6].cpp example_makes/ex6/Makefile
+		docinto examples
+		dodoc example[1-6].cpp example_makes/ex6/Makefile
 	fi
 }
 

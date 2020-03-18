@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,9 +13,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~spar
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl autofs +locator +netlink nfsv4 nls +manpages samba selinux sudo ssh test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEP="
-	>=virtual/pam-0-r1[${MULTILIB_USEDEP}]
+	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
 	>=dev-libs/popt-1.16
 	dev-libs/glib:2
 	>=dev-libs/ding-libs-0.2
@@ -76,7 +77,7 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sss_certmap.h
 )
 
-pkg_setup(){
+pkg_setup() {
 	linux-info_pkg_setup
 }
 
@@ -112,7 +113,6 @@ multilib_src_configure() {
 		--with-nscd
 		--with-unicode-lib="glib2"
 		--disable-rpath
-		--disable-silent-rules
 		--sbindir=/usr/sbin
 		--without-kcm
 		$(use_with samba libwbclient)
@@ -223,7 +223,7 @@ multilib_src_test() {
 	default
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog "You must set up sssd.conf (default installed into /etc/sssd)"
 	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
 	elog "features. Please see howto in	https://docs.pagure.org/SSSD.sssd/design_pages/smartcard_authentication_require.html"

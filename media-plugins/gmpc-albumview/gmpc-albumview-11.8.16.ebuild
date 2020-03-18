@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="This plugin shows your music collection in albums"
 HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_ALBUMVIEW"
@@ -13,10 +13,13 @@ KEYWORDS="amd64 x86"
 IUSE="nls"
 
 RDEPEND=">=media-sound/gmpc-${PV}"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	nls? ( dev-util/intltool
-		sys-devel/gettext )"
+	nls? (
+		dev-util/intltool
+		sys-devel/gettext
+	)"
 
 src_configure() {
 	econf $(use_enable nls)
@@ -24,5 +27,7 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name "*.la" -exec rm {} + || die
+
+	# plugins only
+	find "${D}" -name '*.la' -delete || die
 }

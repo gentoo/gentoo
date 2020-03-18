@@ -11,11 +11,11 @@ inherit haskell-cabal
 
 DESCRIPTION="A class for types that can be converted to a hash value"
 HOMEPAGE="https://github.com/tibbe/hashable"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
 
 RDEPEND=">=dev-haskell/text-0.11.0.5:=[profile?]

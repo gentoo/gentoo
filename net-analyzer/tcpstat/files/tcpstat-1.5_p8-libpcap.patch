@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -47,7 +47,7 @@
+     fi
+   done
+ else
+-  LDFLAGS=" -L${with_pcap_lib} "${LDFLAGS}
++  LDFLAGS="${with_pcap_lib} "${LDFLAGS}
+ fi
+ 
+ AC_ARG_ENABLE(fdesc,

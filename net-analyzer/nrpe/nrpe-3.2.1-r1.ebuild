@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,11 +6,11 @@ inherit systemd user
 
 DESCRIPTION="Nagios Remote Plugin Executor"
 HOMEPAGE="https://github.com/NagiosEnterprises/nrpe"
-SRC_URI="${HOMEPAGE}/releases/download/${P}/${P}.tar.gz"
+SRC_URI="https://github.com/NagiosEnterprises/nrpe/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ppc ppc64 sparc x86"
 IUSE="command-args libressl selinux ssl"
 
 DEPEND="sys-apps/tcp-wrappers
@@ -74,7 +74,7 @@ src_install() {
 	rm "${D}/usr/bin/nrpe-uninstall" || die 'failed to remove uninstall tool'
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog 'Some users have reported incompatibilities between nrpe-2.x and'
 	elog 'nrpe-3.x. We recommend that you use the same major version for'
 	elog 'both your server and clients.'

@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit cmake-utils desktop prefix wxwidgets xdg
+inherit cmake desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
 HOMEPAGE="https://odamex.net/"
@@ -44,7 +44,7 @@ src_prepare() {
 
 	use odalaunch && setup-wxwidgets
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -57,11 +57,11 @@ src_configure() {
 		-DUSE_MINIUPNP=$(usex upnp)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	# Build odamex.wad
 	cd wad || die "cd failed"
@@ -79,5 +79,5 @@ src_install() {
 		fi
 	fi
 
-	cmake-utils_src_install
+	cmake_src_install
 }

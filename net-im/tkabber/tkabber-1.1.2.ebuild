@@ -19,7 +19,6 @@ DEPEND="
 	>=dev-lang/tk-8.4.9:0=
 	>=dev-tcltk/tcllib-1.3
 	>=dev-tcltk/bwidget-1.3
-	>=dev-tcltk/tkXwin-1.0
 	>=dev-tcltk/tkimg-1.2
 	>=dev-tcltk/tktray-1.3
 	ssl? ( >=dev-tcltk/tls-1.4.1 )

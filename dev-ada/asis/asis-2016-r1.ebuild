@@ -14,14 +14,11 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/57399029c7a447658e0aff71
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-ada/gnat_util[${ADA_USEDEP}]
-	|| (
-		dev-ada/gnatcoll[${ADA_USEDEP},projects,shared]
-		dev-ada/gnatcoll-core[${ADA_USEDEP},shared]
-	)"
+	dev-ada/gnatcoll-core[${ADA_USEDEP},shared]"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 

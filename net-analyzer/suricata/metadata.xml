@@ -2,17 +2,20 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>slis@gentoo.org</email>
+    <email>marecki@gentoo.org</email>
+    <name>Marek Szuba</name>
   </maintainer>
   <use>
     <flag name="af-packet">Enable AF_PACKET support</flag>
+    <flag name="bpf">Enable support for eBPF (as well as XDP if supported by the kernel and the NIC driver)
+        for low-level, high-speed packet processing</flag>
     <flag name="control-socket">Enable unix socket</flag>
     <flag name="cuda">Enable NVIDIA Cuda computations support</flag>
     <flag name="detection">Enable detection modules</flag>
+    <flag name="logrotate">Install logrotate rule</flag>
+    <flag name="lz4">Enable support for compressed pcap logging using the LZ4 algorithm</flag>
     <flag name="nflog">Enable libnetfilter_log support</flag>
     <flag name="nfqueue">Enable NFQUEUE support for inline IDP</flag>
     <flag name="redis">Enable Redis support</flag>
-    <flag name="rules">Install default ruleset</flag>
-    <flag name="logrotate">Install logrotate rule</flag>
   </use>
 </pkgmetadata>

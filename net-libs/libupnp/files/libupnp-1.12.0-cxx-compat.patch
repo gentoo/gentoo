@@ -1,0 +1,33 @@
+From 5a8e93f1a57cce5cead5c8c566a75f7c7c294c97 Mon Sep 17 00:00:00 2001
+From: Ian Whyman <v00d00@v00d00.net>
+Date: Mon, 27 Jan 2020 21:46:47 +0000
+Subject: [PATCH] List: Add extern C for C++ users
+
+---
+ upnp/inc/list.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/upnp/inc/list.h b/upnp/inc/list.h
+index 214a53e5..0fbe7efc 100644
+--- a/upnp/inc/list.h
++++ b/upnp/inc/list.h
+@@ -40,6 +40,10 @@
+ 
+ #include "UpnpGlobal.h"
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif /* __cplusplus */
++
+ /** List anchor structure. This should be the *first* entry in list
+  *  member objects, except if you want to do member offset arithmetic
+  *  instead of simple casts (look up "containerof"). The list code itself 
+@@ -71,4 +75,8 @@ EXPORT_SPEC UpnpListIter UpnpListInsert(UpnpListHead *list, UpnpListIter pos,
+ /** Erase element at pos, return next one, or end()*/
+ EXPORT_SPEC UpnpListIter UpnpListErase(UpnpListHead *list, UpnpListIter pos);
+ 
++#ifdef __cplusplus
++}
++#endif /* __cplusplus */
++
+ #endif /* _UPNPLISTH_ */

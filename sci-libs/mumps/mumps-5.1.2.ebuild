@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MYP=MUMPS_${PV}
 
 DESCRIPTION="MUltifrontal Massively Parallel sparse direct matrix Solver"
 HOMEPAGE="http://mumps.enseeiht.fr/"
-SRC_URI="${HOMEPAGE}${MYP}.tar.gz"
+SRC_URI="http://mumps.enseeiht.fr/${MYP}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

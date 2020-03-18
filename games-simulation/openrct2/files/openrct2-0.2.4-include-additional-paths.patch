@@ -1,0 +1,33 @@
+From 370b6c6ee48dd1ccc68e03f4bba3e9a2cb2067aa Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Sat, 9 Nov 2019 22:32:03 +0100
+Subject: [PATCH] src/openrct2/config/Config.cpp: Search additional paths for
+ rct data.
+
+With '/usr/share/openrct2/rct{1,2}_data' added into the search path list,
+it makes possible to install rct{1,2} game files globally,
+so every user on a linux system can run OpenRCT2 directly.
+---
+ src/openrct2/config/Config.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/openrct2/config/Config.cpp b/src/openrct2/config/Config.cpp
+index 08d59488eea..969533f8820 100644
+--- a/src/openrct2/config/Config.cpp
++++ b/src/openrct2/config/Config.cpp
+@@ -615,6 +615,7 @@ namespace Config
+         log_verbose("config_find_rct1_path(...)");
+ 
+         static constexpr const utf8* searchLocations[] = {
++            R"(/usr/share/openrct2/rct1_data)",
+             R"(C:\Program Files\Steam\steamapps\common\Rollercoaster Tycoon Deluxe)",
+             R"(C:\Program Files (x86)\Steam\steamapps\common\Rollercoaster Tycoon Deluxe)",
+             R"(C:\GOG Games\RollerCoaster Tycoon Deluxe)",
+@@ -659,6 +660,7 @@ namespace Config
+         log_verbose("config_find_rct2_path(...)");
+ 
+         static constexpr const utf8* searchLocations[] = {
++            R"(/usr/share/openrct2/rct2_data)",
+             R"(C:\Program Files\Steam\steamapps\common\Rollercoaster Tycoon 2)",
+             R"(C:\Program Files (x86)\Steam\steamapps\common\Rollercoaster Tycoon 2)",
+             R"(C:\GOG Games\RollerCoaster Tycoon 2 Triple Thrill Pack)",

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.x.org/contrib/utilities/${P}.tar.Z"
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 hppa ~mips ppc ppc64 ~sparc x86"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}
@@ -28,7 +28,7 @@ src_compile() {
 	emake CDEBUGFLAGS="${CFLAGS}" CC="$(tc-getCC)" LDOPTIONS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin unclutter
 	newman unclutter.man unclutter.1x
 	einstalldocs

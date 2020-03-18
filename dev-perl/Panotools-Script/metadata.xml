@@ -5,11 +5,6 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
-  <use>
-    <flag name="gui">
-      Installs GUIs for some tools
-    </flag>
-  </use>
   <upstream>
     <remote-id type="cpan">Panotools-Script</remote-id>
     <remote-id type="cpan-module">Panotools::Makefile</remote-id>

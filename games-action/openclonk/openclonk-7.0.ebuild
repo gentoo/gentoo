@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -55,14 +55,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-postinst.patch
 )
 S=${WORKDIR}/${P}-src
-
-pkg_pretend() {
-	if [[ $(tc-getCXX) == *g++* && $(gcc-version) < 4.9 ]] ; then
-		die 'The active compiler needs to be gcc 4.9 (or newer) or clang'
-	else
-		einfo 'The active compiler should be ok'
-	fi
-}
 
 pkg_setup() {
 	games_pkg_setup

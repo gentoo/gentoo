@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ inherit perl-module
 DESCRIPTION="A Perl module to use HTML Templates"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~mips ppc ~ppc64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp

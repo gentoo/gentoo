@@ -5,9 +5,6 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<longdescription lang="en">
-		High-performance RPC framework (python libraries)
-	</longdescription>
 	<upstream>
 		<remote-id type="github">grpc/grpc</remote-id>
 		<remote-id type="pypi">grpcio</remote-id>

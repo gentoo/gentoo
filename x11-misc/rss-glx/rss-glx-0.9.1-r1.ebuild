@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,7 +59,6 @@ src_configure() {
 		$(use_enable openal sound) \
 		$(use_with quesoglc) \
 		--bindir=/usr/$(get_libdir)/misc/xscreensaver \
-		--disable-dependency-tracking \
 		--enable-shared \
 		--with-configdir=/usr/share/xscreensaver/config
 }

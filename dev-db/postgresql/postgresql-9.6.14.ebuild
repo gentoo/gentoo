@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
 		  zh_TW"
@@ -11,14 +11,14 @@ PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
 inherit flag-o-matic l10n linux-info multilib pam prefix python-single-r1 \
 		systemd user
 
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 SLOT=$(ver_cut 1-2)
 
 MY_PV=${PV/_/}
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-SRC_URI="mirror://postgresql/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
+SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
 
 LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
@@ -36,7 +36,7 @@ sys-apps/less
 virtual/libintl
 kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap )
-pam? ( virtual/pam )
+pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
@@ -131,7 +131,7 @@ src_configure() {
 	export LDFLAGS_SL="${LDFLAGS}"
 	export LDFLAGS_EX="${LDFLAGS}"
 
-	local PO="${EPREFIX%/}"
+	local PO="${EPREFIX}"
 
 	local i uuid_config=""
 	if use uuid; then
@@ -147,7 +147,6 @@ src_configure() {
 	econf \
 		--prefix="${PO}/usr/$(get_libdir)/postgresql-${SLOT}" \
 		--datadir="${PO}/usr/share/postgresql-${SLOT}" \
-		--docdir="${PO}/usr/share/doc/${PF}" \
 		--includedir="${PO}/usr/include/postgresql-${SLOT}" \
 		--mandir="${PO}/usr/share/postgresql-${SLOT}/man" \
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
@@ -296,7 +295,7 @@ pkg_preinst() {
 	local l
 	# First remove any symlinks in /usr/bin that may have been created
 	# by the old eselect
-	for l in $(find "${ROOT%/}/usr/bin" -mindepth 1 -maxdepth 1 -type l) ; do
+	for l in $(find "${ROOT}/usr/bin" -mindepth 1 -maxdepth 1 -type l) ; do
 		if [[ $(${canonicalise} "${l}") == *postgresql-${SLOT}* ]] ; then
 			rm "${l}" || ewarn "Couldn't remove ${l}"
 		fi
@@ -314,7 +313,7 @@ pkg_postinst() {
 	postgresql-config update
 
 	elog "If you need a global psqlrc-file, you can place it in:"
-	elog "    ${EROOT%/}/etc/postgresql-${SLOT}/"
+	elog "    ${EROOT}/etc/postgresql-${SLOT}/"
 
 	if use server ; then
 		elog
@@ -325,11 +324,11 @@ pkg_postinst() {
 		elog "https://www.postgresql.org/docs/${SLOT}/static/index.html"
 		elog
 		elog "The default location of the Unix-domain socket is:"
-		elog "    ${EROOT%/}/run/postgresql/"
+		elog "    ${EROOT}/run/postgresql/"
 		elog
 		elog "Before initializing the database, you may want to edit PG_INITDB_OPTS"
 		elog "so that it contains your preferred locale in:"
-		elog "    ${EROOT%/}/etc/conf.d/postgresql-${SLOT}"
+		elog "    ${EROOT}/etc/conf.d/postgresql-${SLOT}"
 		elog
 		elog "Then, execute the following command to setup the initial database"
 		elog "environment:"
@@ -355,15 +354,15 @@ pkg_postrm() {
 pkg_config() {
 	use server || die "USE flag 'server' not enabled. Nothing to configure."
 
-	[[ -f "${EROOT%/}/etc/conf.d/postgresql-${SLOT}" ]] \
-		&& source "${EROOT%/}/etc/conf.d/postgresql-${SLOT}"
-	[[ -z "${PGDATA}" ]] && PGDATA="${EROOT%/}/etc/postgresql-${SLOT}/"
+	[[ -f "${EROOT}/etc/conf.d/postgresql-${SLOT}" ]] \
+		&& source "${EROOT}/etc/conf.d/postgresql-${SLOT}"
+	[[ -z "${PGDATA}" ]] && PGDATA="${EROOT}/etc/postgresql-${SLOT}/"
 	[[ -z "${DATA_DIR}" ]] \
-		&& DATA_DIR="${EROOT%/}/var/lib/postgresql/${SLOT}/data"
+		&& DATA_DIR="${EROOT}/var/lib/postgresql/${SLOT}/data"
 
 	# environment.bz2 may not contain the same locale as the current system
 	# locale. Unset and source from the current system locale.
-	if [ -f "${EROOT%/}/etc/env.d/02locale" ]; then
+	if [ -f "${EROOT}/etc/env.d/02locale" ]; then
 		unset LANG
 		unset LC_CTYPE
 		unset LC_NUMERIC
@@ -372,7 +371,7 @@ pkg_config() {
 		unset LC_MONETARY
 		unset LC_MESSAGES
 		unset LC_ALL
-		source "${EROOT%/}/etc/env.d/02locale"
+		source "${EROOT}/etc/env.d/02locale"
 		[ -n "${LANG}" ] && export LANG
 		[ -n "${LC_CTYPE}" ] && export LC_CTYPE
 		[ -n "${LC_NUMERIC}" ] && export LC_NUMERIC
@@ -384,7 +383,7 @@ pkg_config() {
 	fi
 
 	einfo "You can modify the paths and options passed to initdb by editing:"
-	einfo "    ${EROOT%/}/etc/conf.d/postgresql-${SLOT}"
+	einfo "    ${EROOT}/etc/conf.d/postgresql-${SLOT}"
 	einfo
 	einfo "Information on options that can be passed to initdb are found at:"
 	einfo "    https://www.postgresql.org/docs/${SLOT}/static/creating-cluster.html"
@@ -424,9 +423,9 @@ pkg_config() {
 	einfo "Initializing the database ..."
 
 	if [[ ${EUID} == 0 ]] ; then
-		su postgres -c "${EROOT%/}/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -D \"${DATA_DIR}\" ${PG_INITDB_OPTS}"
+		su postgres -c "${EROOT}/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -D \"${DATA_DIR}\" ${PG_INITDB_OPTS}"
 	else
-		"${EROOT%/}"/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -U postgres -D "${DATA_DIR}" ${PG_INITDB_OPTS}
+		"${EROOT}"/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -U postgres -D "${DATA_DIR}" ${PG_INITDB_OPTS}
 	fi
 
 	if [[ "${DATA_DIR%/}" != "${PGDATA%/}" ]] ; then
@@ -469,7 +468,7 @@ pkg_config() {
 		einfo "You should use the 'postgresql-${SLOT}.service' unit to run PostgreSQL"
 		einfo "instead of 'pg_ctl'."
 	else
-		einfo "You should use the '${EROOT%/}/etc/init.d/postgresql-${SLOT}' script to run PostgreSQL"
+		einfo "You should use the '${EROOT}/etc/init.d/postgresql-${SLOT}' script to run PostgreSQL"
 		einfo "instead of 'pg_ctl'."
 	fi
 }

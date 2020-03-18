@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic ltprune toolchain-funcs
 
 DESCRIPTION="Open source VOIP client capable of connecting to Ventrilo 3.x servers"
 HOMEPAGE="http://www.mangler.org/"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${PV:0:3}/${MY_P}.tar
 
 LICENSE="HPND BSD ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~m68k-mint"
 IUSE="caps debug ipv6 libressl openntpd parse-clocks readline samba selinux snmp ssl +threads vim-syntax zeroconf"
 
 COMMON_DEPEND="readline? ( >=sys-libs/readline-4.1:0= )
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.8-sntp-test-pthreads.patch #563922
 	"${FILESDIR}"/${PN}-4.2.8_p10-fix-build-wo-ssl-or-libressl.patch
 	"${FILESDIR}"/${PN}-4.2.8_p12-libressl-2.8.patch
+	"${FILESDIR}"/${PN}-4.2.8-gc-tests.patch #564018
 )
 
 src_prepare() {
@@ -71,8 +72,6 @@ src_configure() {
 		--with-lineeditlibs=readline,edit,editline
 		--with-yielding-select
 		--disable-local-libevent
-		--docdir='$(datarootdir)'/doc/${PF}
-		--htmldir='$(docdir)/html'
 		--with-memlock=256
 		$(use_enable caps linuxcaps)
 		$(use_enable parse-clocks)
@@ -123,7 +122,7 @@ src_install() {
 		systemd_newunit "${FILESDIR}"/ntpd.service-r2 ntpd.service
 		if use caps ; then
 			sed -i '/ExecStart/ s|$| -u ntp:ntp|' \
-				"${D%/}$(systemd_get_systemunitdir)"/ntpd.service \
+				"${D}$(systemd_get_systemunitdir)"/ntpd.service \
 				|| die
 		fi
 		systemd_enable_ntpunit 60-ntpd ntpd.service

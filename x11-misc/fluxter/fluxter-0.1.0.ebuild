@@ -10,7 +10,7 @@ SRC_URI="http://www.isomedia.com/homes/stevencooper/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ppc x86"
 IUSE=""
 
 DEPEND="x11-libs/libX11

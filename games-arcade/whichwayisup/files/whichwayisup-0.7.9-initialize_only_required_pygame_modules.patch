@@ -1,0 +1,23 @@
+From: Markus Koschany <apo@debian.org>
+Date: Tue, 28 May 2013 18:21:54 +0200
+Subject: initialize only required pygame modules.
+
+---
+ lib/main.py |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lib/main.py b/lib/main.py
+index cfe9046..6a0376a 100644
+--- a/lib/main.py
++++ b/lib/main.py
+@@ -60,7 +60,9 @@ def main():
+ 
+     #Initializing pygame and screen
+ 
+-    pygame.init()
++    pygame.joystick.init()
++    pygame.display.init()
++    pygame.mixer.init()
+     screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+     caption = "Which way is up?"
+     if (Variables.vdict["devmode"]):

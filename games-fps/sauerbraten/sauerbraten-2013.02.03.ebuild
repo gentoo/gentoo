@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic gnome2-utils games
+inherit eutils flag-o-matic gnome2-utils games vcs-clean
 
 EDITION="collect_edition"
 DESCRIPTION="Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)"

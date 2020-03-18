@@ -13,8 +13,9 @@ SRC_URI="https://github.com/pavouk/lgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-lang/lua-5.1
 		dev-libs/gobject-introspection
@@ -47,8 +48,9 @@ src_test() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dohtml -r docs/*
+	docompress -x /usr/share/doc/${PF}
 	dodoc README.md
+	dodoc -r docs/*
 	if use examples; then
 		dodoc -r samples
 	fi

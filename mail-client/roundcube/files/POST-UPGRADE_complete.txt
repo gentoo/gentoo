@@ -1,0 +1,19 @@
+Post-Upgrade Activities
+-----------------------
+1. Check .htaccess settings (some php settings could become required)
+2. If you're using the built-in addressbook, run indexing script:
+   ./bin/indexcontacts.sh.
+3. When upgrading from version older than 0.6-beta you should make sure your
+   folder settings contain a namespace prefix if necessary. For example Courier
+   users should add “INBOX.” prefix to folder names in main configuration file.
+4. Check system requirements in INSTALL file.
+5. Update your database and configurations by running:
+   ./bin/update.sh
+
+SQLite database upgrade
+-----------------------
+Versions older than 0.9 were supporting SQLite v2 only. Newer versions require
+database in v3 format. The best what you can do is to convert database file
+to the new format using command line tools:
+
+sqlite OLD.DB .dump | sqlite3 NEW.DB

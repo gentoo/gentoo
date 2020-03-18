@@ -1,0 +1,23 @@
+From ccdd9d4b941b30fc44b301595e42809dbe48628d Mon Sep 17 00:00:00 2001
+From: James Browning <JamesB.fe80@gmail.com>
+Date: Sun, 26 Jan 2020 09:58:36 -0800
+Subject: [PATCH] Externalize sys_maxclock from include/ntpd.h ...
+
+I think this will shut up the Fedora Rawhide runners
+---
+ include/ntpd.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/ntpd.h b/include/ntpd.h
+index c4f9b9e45..ee16678e1 100644
+--- a/include/ntpd.h
++++ b/include/ntpd.h
+@@ -369,7 +369,7 @@ extern int	peer_associations;	/* mobilized associations */
+  * System variables are declared here.	See Section 3.2 of the
+  * specification.
+  */
+-int	sys_maxclock;		/* maximum candidates */
++extern int	sys_maxclock;		/* maximum candidates */
+ struct system_variables {
+ 	uint8_t	sys_leap;		/* system leap indicator */
+ 	uint8_t	sys_stratum;		/* system stratum */

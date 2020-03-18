@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 AUTOTOOLS_AUTORECONF=true
 
-inherit autotools-utils fortran-2 toolchain-funcs versionator
+inherit autotools-utils eutils fortran-2 toolchain-funcs versionator
 
 MY_PV="$(replace_all_version_separators -)"
 

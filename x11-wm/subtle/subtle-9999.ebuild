@@ -7,7 +7,7 @@ USE_RUBY="ruby24 ruby25 ruby26"
 inherit ruby-ng toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
-	EHG_REPO_URI="http://hg.subforge.org/subtle"
+	EHG_REPO_URI="https://hg.subforge.org/subtle"
 	EHG_CHECKOUT_DIR=${S}/all
 	inherit mercurial
 else
@@ -16,11 +16,12 @@ else
 fi
 
 DESCRIPTION="A manual tiling window manager"
-HOMEPAGE="http://subforge.org/projects/subtle/wiki"
+HOMEPAGE="https://subforge.org/projects/subtle/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug doc +xft xinerama xpm +xrandr +xtest"
+RESTRICT="!test? ( test )"
 
 RDEPEND="x11-libs/libX11
 	xft? ( x11-libs/libXft )

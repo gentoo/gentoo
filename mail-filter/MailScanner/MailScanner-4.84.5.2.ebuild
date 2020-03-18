@@ -1,12 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils versionator multilib
-
-MY_PV=$(get_version_component_range 1-3 )
-MY_PVR=$(replace_version_separator 3 '-' )
+MY_PV=$(ver_cut 1-3)
+MY_PVR=$(ver_rs 3 '-')
 
 DESCRIPTION="Free Anti-Virus and Anti-Spam Filter"
 HOMEPAGE="http://www.mailscanner.info/"
@@ -50,11 +48,14 @@ RDEPEND="${DEPEND}
 	spamassassin? ( mail-filter/spamassassin )"
 
 S="${WORKDIR}/${PN}-${MY_PVR}"
-BASE="/usr"
 
 src_unpack() {
-	unpack ${A}
+	default
 	unpack ./${PN}-install-${MY_PV}/perl-tar/${PN}-${MY_PVR}.tar.gz
+}
+
+src_prepare() {
+	default
 
 	# setup MTA
 	if use postfix ; then
@@ -88,7 +89,7 @@ src_unpack() {
 	VIRUS_SCANNERS=""
 	use clamav && VIRUS_SCANNERS="clamav ${VIRUS_SCANNERS}"
 
-	if [ "$VIRUS_SCANNERS" == "" ]; then
+	if [[ "${VIRUS_SCANNERS}" == "" ]]; then
 		VIRUS_SCANNERS="none"
 		VIRUS_SCANNING="no"
 	else
@@ -98,57 +99,57 @@ src_unpack() {
 	sed -i \
 		-e "s/^\(Virus Scanning[ \t]*=\).*/\1 ${VIRUS_SCANNING}/" \
 		-e "s/^\(Virus Scanners[ \t]*=\).*/\1 ${VIRUS_SCANNERS}/" \
-		"${S}/etc/MailScanner.conf"
+		etc/MailScanner.conf || die
 
 	# setup spamassassin
 	if use spamassassin ; then
 		sed -i \
 			-e "s/^\(Use SpamAssassin[ \t]*=\).*$/\1 yes/" \
-			"${S}/etc/MailScanner.conf"
+			etc/MailScanner.conf || die
 	else
 		sed -i \
 			-e "s/^\(Use SpamAssassin[ \t]*=\).*$/\1 no/" \
-			"${S}/etc/MailScanner.conf"
+			etc/MailScanner.conf || die
 	fi
 
 	# update bin files
 	sed -i \
 		-e "s#msbindir=/opt/MailScanner/bin#msbindir=/usr/sbin#g" \
 		-e "s#config=/opt/MailScanner/etc/MailScanner.conf#config=/etc/MailScanner/MailScanner.conf#g" \
-		"${S}/bin/check_mailscanner"
+		bin/check_mailscanner || die
 	for each in update_virus_scanners update_phishing_sites update_bad_phishing_sites ; do
 		sed -i \
-		-e "s#/opt/MailScanner/etc#/etc/MailScanner#g" \
-		"${S}"/bin/${each}
+			-e "s#/opt/MailScanner/etc#/etc/MailScanner#g" \
+			bin/${each} || die
 	done
 	sed -i \
 		-e "s#/etc/sysconfig/MailScanner#/etc/conf.d/MailScanner#g" \
-		"${S}"/bin/update_spamassassin
+		bin/update_spamassassin || die
 	sed -i \
 		-e "s#/opt/MailScanner/etc#/etc/MailScanner#g" \
 		-e "s#/opt/MailScanner/lib#/usr/lib/MailScanner#g" \
-		"${S}"/bin/MailScanner
+		bin/MailScanner || die
 
 	# update cron files
 	sed -i \
 		-e "s#/opt/MailScanner/bin/check_mailscanner#/usr/sbin/check_MailScanner#g" \
-		"${S}"/bin/cron/check_MailScanner.cron
+		bin/cron/check_MailScanner.cron || die
 	for cronfile in update_virus_scanners.cron update_{,bad_}phishing_sites.cron; do
-	sed -i \
-		-e "s#/etc/sysconfig/MailScanner#/etc/conf.d/mailscanner#g" \
-		-e "s#/opt/MailScanner/bin#/usr/sbin#g" \
-		"${S}"/bin/cron/${cronfile}
+		sed -i \
+			-e "s#/etc/sysconfig/MailScanner#/etc/conf.d/mailscanner#g" \
+			-e "s#/opt/MailScanner/bin#/usr/sbin#g" \
+			bin/cron/${cronfile} || die
 	done
 
 	# Determine some things that may need to be changed in conf file
 	# (need to arrive at sensible replacement for yoursite)
 	YOURSITE=`dnsdomainname | sed -e "s/\./-/g"`
-	BASEBIN="${BASE}/sbin"
+	BASEBIN="/usr/sbin"
 
 	# ClamAV requires some specific changes to MailScanner.conf
 	# when mailscanner is running as root (i.e. sendmail)
 	if use clamav ; then
-		if [ "$MTA" == "sendmail" ] ; then
+		if [[ "${MTA}" == "sendmail" ]] ; then
 			WORKGRP="clamav"
 			WORKPERM="0640"
 		else
@@ -178,60 +179,61 @@ src_unpack() {
 		-e "s#^\(Sendmail2[ \t]*=\).*#\1 ${SENDMAIL2}#" \
 		-e "s#^\(Incoming Work Group[ \t]*=\).*#\1 ${WORKGRP}#" \
 		-e "s#^\(Incoming Work Permissions[ \t]*=\).*#\1 ${WORKPERM}#" \
-		"${S}/etc/MailScanner.conf"
+		etc/MailScanner.conf || die
 
 	# update spam.assassin.prefs.conf
-	sed -i -e "s#YOURDOMAIN-COM#${YOURSITE}#" "${S}/etc/spam.assassin.prefs.conf"
+	sed -i -e "s#YOURDOMAIN-COM#${YOURSITE}#" \
+		etc/spam.assassin.prefs.conf || die
 
 	# net-mail/clamav net-mail/f-prot package compatibility
 	sed -i \
 		-e "s#/opt/MailScanner/lib#/usr/lib/MailScanner#" \
 		-e 's#^\(clamav\t.*/usr\)/local$#\1#' \
 		-e 's#^\(f-prot.*\)/usr/local/f-prot$#\1/opt/f-prot#' \
-		"${S}/etc/virus.scanners.conf"
+		etc/virus.scanners.conf || die
 
 	# update lib files
 	sed -i \
 		-e "s#/opt/MailScanner/bin#$BASEBIN#g" \
 		-e "s#/opt/MailScanner/etc#/etc/MailScanner#g" \
 		-e "s#/opt/MailScanner/lib#/usr/lib/MailScanner#g" \
-		"${S}/lib/MailScanner/ConfigDefs.pl"
+		lib/MailScanner/ConfigDefs.pl || die
 	sed -i \
 		-e "s#/opt/MailScanner/bin#$BASEBIN#g" \
 		-e "s#/opt/MailScanner/etc#/etc/MailScanner#g" \
 		-e "s#/opt/MailScanner/lib#/usr/lib/MailScanner#g" \
-		"${S}/bin/MailScanner"
+		bin/MailScanner || die
 	sed -i \
 		-e "s#/opt/MailScanner/bin#$BASEBIN#g" \
 		-e "s#/opt/MailScanner/etc#/etc/MailScanner#g" \
 		-e "s#/opt/MailScanner/lib#/usr/lib/MailScanner#g" \
-		"${S}/bin/update_virus_scanners"
+		bin/update_virus_scanners || die
 	sed -i \
 		-e "s#/opt/MailScanner/bin#$BASEBIN#g" \
 		-e "s#/opt/MailScanner/etc#/etc/MailScanner#g" \
 		-e "s#/opt/MailScanner/lib#/usr/lib/MailScanner#g" \
-		"${S}/bin/mailscanner_create_locks"
+		bin/mailscanner_create_locks || die
 	sed -i \
 		-e "s#/etc/MailScanner#/etc/MailScanner#g" \
-		"${S}/lib/MailScanner/CustomConfig.pm"
+		lib/MailScanner/CustomConfig.pm || die
 
 	# finally, change MailScanner.conf into MailScanner.conf.sample
-	cp "${S}/etc/MailScanner.conf" "${S}/etc/MailScanner.conf.${MY_PV}"
-	mv "${S}/etc/MailScanner.conf" "${S}/etc/MailScanner.conf.sample"
-
+	cp "${S}/etc/MailScanner.conf" \
+		"${S}/etc/MailScanner.conf.${MY_PV}" || die
+	mv "${S}/etc/MailScanner.conf" \
+		"${S}/etc/MailScanner.conf.sample" || die
 }
 
 src_install() {
-	exeinto ${BASE}/sbin
-	doexe bin/MailScanner
-	newexe bin/check_mailscanner check_MailScanner
-	doexe bin/d2mbox bin/df2mbox
-	doexe bin/update_virus_scanners
-	doexe bin/upgrade_MailScanner_conf
-	doexe bin/mailscanner_create_locks
-	doexe bin/Quick.Peek
-	doexe bin/update_bad_phishing_sites bin/update_phishing_sites
-	newexe bin/Sophos.install.linux Sophos.install
+	dosbin bin/MailScanner
+	newsbin bin/check_mailscanner check_MailScanner
+	dosbin bin/d2mbox bin/df2mbox
+	dosbin bin/update_virus_scanners
+	dosbin bin/upgrade_MailScanner_conf
+	dosbin bin/mailscanner_create_locks
+	dosbin bin/Quick.Peek
+	dosbin bin/update_bad_phishing_sites bin/update_phishing_sites
+	newsbin bin/Sophos.install.linux Sophos.install
 
 	insinto /etc/MailScanner/conf.d
 	doins etc/conf.d/*
@@ -250,20 +252,20 @@ src_install() {
 	insinto /etc/MailScanner
 	doins -r etc/reports
 
-	insinto ${BASE}/$(get_libdir)/MailScanner
+	insinto /usr/$(get_libdir)/MailScanner
 	doins lib/*.prf
 
-	exeinto ${BASE}/$(get_libdir)/MailScanner
+	exeinto /usr/$(get_libdir)/MailScanner
 	doexe lib/*-wrapper
 	doexe lib/*-autoupdate
 	doexe lib/*-autoupdate.old
 	doexe lib/*.pm
 
-	exeinto ${BASE}/$(get_libdir)/MailScanner/MailScanner
+	exeinto /usr/$(get_libdir)/MailScanner/MailScanner
 	doexe lib/MailScanner/*.pm
 	doexe lib/MailScanner/*.pl
 
-	exeinto ${BASE}/$(get_libdir)/MailScanner/MailScanner/CustomFunctions
+	exeinto /usr/$(get_libdir)/MailScanner/MailScanner/CustomFunctions
 	doexe lib/MailScanner/CustomFunctions/MyExample.pm
 
 	newinitd "${FILESDIR}"/initd.mailscanner MailScanner
@@ -271,52 +273,55 @@ src_install() {
 
 	#Set up cron jobs
 	exeinto /etc/cron.hourly
-	newexe "${S}/bin/cron/check_MailScanner.cron" check_MailScanner
+	newexe bin/cron/check_MailScanner.cron check_MailScanner
 	for cronfile in update_{virus_scanners,{bad_,}phishing_sites}; do
-		newexe "${S}/bin/cron/${cronfile}.cron" ${cronfile}
+		newexe bin/cron/${cronfile}.cron ${cronfile}
 	done
 
 	exeinto /etc/cron.daily
-	newexe "${S}/bin/cron/clean.quarantine.cron" clean.quarantine
+	newexe bin/cron/clean.quarantine.cron clean.quarantine
 
-	dodoc README
-	insinto /usr/share/doc/${PF}
-	doins MailScanner.conf.index.html
+	dodoc README MailScanner.conf.index.html
 
 	keepdir /var/spool/MailScanner/incoming
 	keepdir /var/spool/MailScanner/quarantine
 	keepdir /var/spool/MailScanner/spamassassin
 	keepdir /var/spool/MailScanner/archive
-	keepdir ${BASE}/var
+	keepdir /usr/var
 
 	if use postfix ; then
-		chown -R postfix:postfix "${D}/var/spool/MailScanner/"
+		fowners -R postfix:postfix /var/spool/MailScanner/
 	elif use exim ; then
-		chown -R mail:mail "${D}/var/spool/MailScanner/"
+		fowners -R mail:mail /var/spool/MailScanner/
 	else
 		keepdir /var/spool/mqueue.in
 	fi
-	use spamassassin && dosym /etc/MailScanner/spam.assassin.prefs.conf /etc/mail/spamassassin/mailscanner.cf
-
+	if use spamassassin; then
+		dosym ../../MailScanner/spam.assassin.prefs.conf \
+			/etc/mail/spamassassin/mailscanner.cf
+	fi
 }
 
 pkg_postinst() {
 	if use postfix; then
 		elog "Note that postfix 2.4 now supports HOLD of messages"
 		elog "and reinjection without second postfix instance"
-		elog "Inbound path is now ${ROOT}var/spool/postfix/hold"
+		elog "Inbound path is now ${ROOT}/var/spool/postfix/hold"
 		elog
 		elog "See http://mailscanner.info/postfix.html for details"
 	fi
 
-	if [ -f "/etc/MailScanner/MailScanner.conf" ]; then
-		einfo "Upgrading the MailScanner.conf file"
-		cp /etc/MailScanner/MailScanner.conf /etc/MailScanner/MailScanner.conf.pre_upgrade.${MY_PV}
+	if [[ -f "/etc/MailScanner/MailScanner.conf" ]]; then
+		ebegin "Upgrading the MailScanner.conf file"
+		cp /etc/MailScanner/MailScanner.conf \
+			/etc/MailScanner/MailScanner.conf.pre_upgrade.${MY_PV} &&
 		/usr/sbin/upgrade_MailScanner_conf \
-		/etc/MailScanner/MailScanner.conf.pre_upgrade.${MY_PV} \
-		/etc/MailScanner/MailScanner.conf.${MY_PV} \
-		> /etc/MailScanner/MailScanner.conf 2> /dev/null
+			/etc/MailScanner/MailScanner.conf.pre_upgrade.${MY_PV} \
+			/etc/MailScanner/MailScanner.conf.${MY_PV} \
+			> /etc/MailScanner/MailScanner.conf 2> /dev/null
+		eend
 	else
-		cp /etc/MailScanner/MailScanner.conf.sample /etc/MailScanner/MailScanner.conf
+		cp /etc/MailScanner/MailScanner.conf.sample \
+			/etc/MailScanner/MailScanner.conf
 	fi
 }

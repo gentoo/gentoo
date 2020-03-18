@@ -26,6 +26,7 @@ BDEPEND="dev-tex/leaflet
 	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
 	html? ( >=dev-tex/tex4ht-20090611_p1038-r5 )"
+RDEPEND="!app-doc/pms-bin"
 
 src_compile() {
 	# just in case; we shouldn't be generating any fonts

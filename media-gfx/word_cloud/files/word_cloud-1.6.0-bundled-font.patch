@@ -1,0 +1,9 @@
+Don't install bundled DroidSansMono font.
+
+--- a/setup.py
++++ b/setup.py
+@@ -24,3 +24,3 @@
+     packages=['wordcloud'],
+-    package_data={'wordcloud': ['stopwords', 'DroidSansMono.ttf']}
++    package_data={'wordcloud': ['stopwords']}
+ )

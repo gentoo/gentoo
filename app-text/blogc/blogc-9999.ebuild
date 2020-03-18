@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="git httpd make test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	git? (

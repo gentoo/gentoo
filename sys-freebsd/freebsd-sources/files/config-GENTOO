@@ -1,4 +1,0 @@
-# Kernel configuration for Gentoo/FreeBSD.
-include GENERIC
-ident GENTOO
-
