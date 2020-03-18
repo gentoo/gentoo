@@ -84,7 +84,9 @@ src_unpack() {
 	else
 		default
 		# rename directory from git snapshot tarball
-		mv ${PN}-*/ ${P} || die
+		if [[ ${#GIT_COMMIT} -gt 8 ]]; then
+			mv ${PN}-*/ ${P} || die
+		fi
 	fi
 }
 
