@@ -23,7 +23,7 @@ RDEPEND="${PYTHON_DEPS}
 		net-firewall/iptables[ipv6]
 		net-firewall/ebtables
 		net-firewall/ipset
-		nftables? ( net-firewall/nftables[xtables] )
+		nftables? ( net-firewall/nftables[xtables(+)] )
 	)
 	|| ( >=sys-apps/openrc-0.11.5 sys-apps/systemd )
 	$(python_gen_cond_dep '
