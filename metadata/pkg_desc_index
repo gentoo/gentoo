@@ -8427,7 +8427,7 @@ dev-python/pyilmbase 2.3.0-r2: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyinsane 2.0.10 2.0.12-r1 2.0.13: Python implementation of the Sane API and abstration layer
 dev-python/pyjade 4.0.0: Jade syntax adapter for Django, Jinja2 and Mako templates
-dev-python/pyjwt 1.5.3 1.7.1 1.7.1-r1: JSON Web Token implementation in Python
+dev-python/pyjwt 1.7.1-r1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.2.1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 1.2.1 2.0.2: A Python implementation of the actor model
 dev-python/pykwalify 1.5.2 1.7.0 9999: Python lib/cli for JSON/YAML schema validation
@@ -8573,7 +8573,7 @@ dev-python/python-ctags 1.2.4 1.3.0-r1: Exuberant Ctags indexing python bindings
 dev-python/python-daemon 2.1.2: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.7.2-r1 2.8.0 2.8.1-r1: Extensions to the standard Python datetime module
 dev-python/python-ddp 0.1.5: An event driven ddp client
-dev-python/python-debian 0.1.31 0.1.36: Python modules to work with Debian-related data formats
+dev-python/python-debian 0.1.36: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.11.0: Python bindings to the Designate API.
 dev-python/python-discid 1.1.1 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.38 2.39 2.42 2.42-r1: Gettext support, themed icons and scrollkeeper-based documentation in distutils
@@ -10481,14 +10481,14 @@ dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
-dev-util/distro-info 0.14 0.22: Provides information about the Debian distributions' releases
+dev-util/distro-info 0.22: Provides information about the Debian distributions' releases
 dev-util/distro-info-data 0.29 0.32 0.42: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
 dev-util/docker-distribution-pruner 0_p20170401: Clean all old container revisions from registry
 dev-util/docker-ls 0.3.1: Tools for browsing and manipulating docker registries
 dev-util/dogtail 0.9.10: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
-dev-util/dput-ng 1.10-r1 1.28-r1: Next generation Debian package upload tool
+dev-util/dput-ng 1.28-r1: Next generation Debian package upload tool
 dev-util/drone 0.8.9: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-cli 0.8.6 1.1.4: Command-line interface for Drone
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
@@ -15243,7 +15243,7 @@ net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 1.3.15-r5 1.3.15-r6 1.3.15-r7 1.3.9999 2.0.3-r4 2.0.3-r5 9999: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC protocols
-net-p2p/fms 0.3.80 0.3.81: A spam-resistant message board application for Freenet
+net-p2p/fms 0.3.81 0.3.82: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1484: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.8.15: Official golang implementation of the Ethereum protocol
@@ -17461,7 +17461,7 @@ sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot a
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19.99 5.4.15: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 20191008 20191022 20191108 20191215 20200122 20200302 99999999: Linux firmware files
+sys-kernel/linux-firmware 20190815 20190923 20191022 20191215 20200122 20200316 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3 5.3-r1 5.4 5.5: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.3_p8 5.4_p6 5.5_p1 5.5_p2 5.5_p3 5.5_p4 5.5_p5 5.5_p6: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
@@ -18052,7 +18052,7 @@ www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections base
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.100 8.5.51 8.5.53 9.0.31 9.0.33: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
-www-servers/tornado 4.5.3 5.1-r1 6.0.3: Python web framework and asynchronous networking library
+www-servers/tornado 4.5.3 5.1-r1 6.0.3 6.0.3-r1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17 2.0.17.1 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3 5.2.1 6.0.1 6.1.1 6.2.2-r1 6.3.0 6.3.1 6.3.2: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
@@ -18468,7 +18468,7 @@ x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewe
 x11-misc/sent 0.2 1-r1 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
 x11-misc/shared-mime-info 1.10 1.10-r1: The Shared MIME-info Database specification
-x11-misc/shutter 0.93.1-r3 0.94.3: Feature-rich screenshot program
+x11-misc/shutter 0.94.3: Feature-rich screenshot program
 x11-misc/simpleswitcher 20140219 99999999: lightweight EWMH window switcher with features and looks of dmenu
 x11-misc/sisctrl 0.0.20051202 0.0.20051202-r1: tool that allows you to tune SiS drivers from X
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
