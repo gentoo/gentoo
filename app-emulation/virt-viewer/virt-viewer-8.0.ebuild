@@ -10,7 +10,7 @@ SRC_URI="https://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+libvirt sasl +spice +vnc"
 
 RDEPEND=">=dev-libs/libxml2-2.6
