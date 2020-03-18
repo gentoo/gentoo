@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.5-make43.patch # remove when bumping and switching to Meson
+)
+
 multilib_src_configure() {
 	# Always enable optional bz2 support for matroska
 	# Always enable optional zlib support for qtdemux and matroska
