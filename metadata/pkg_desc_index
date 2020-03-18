@@ -18430,7 +18430,7 @@ x11-misc/openbox-menu 0.8.0: Another dynamic menu generator for Openbox
 x11-misc/oroborus-deskmenu 1.4.5-r1: root menu program for Oroborus
 x11-misc/oroborus-keylaunch 1.3.9-r1: utility for binding keys in Oroborus
 x11-misc/parcellite 1.2.1: A lightweight GTK+ based clipboard manager
-x11-misc/pcmanfm 1.2.3 1.2.5 1.3.1 9999: Fast lightweight tabbed filemanager
+x11-misc/pcmanfm 1.3.1 9999: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.14.1-r1: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/picom 7.5-r1 9999: A lightweight compositor for X11 (previously a compton fork)
