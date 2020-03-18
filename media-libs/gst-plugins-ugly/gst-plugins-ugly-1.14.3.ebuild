@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.3-make43.patch # remove when bumping and switching to Meson
+)
+
 multilib_src_configure() {
 	gstreamer_multilib_src_configure
 
