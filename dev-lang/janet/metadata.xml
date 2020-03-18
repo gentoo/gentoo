@@ -21,7 +21,7 @@
 	<remote-id type="github">janet-lang/janet</remote-id>
 </upstream>
 <use>
-	<flag name="static-libs">install janet static library archine,
+	<flag name="static-libs">install janet static library archive,
 		you must enable this flag for using `jpm build`
 	</flag>
 </use>
