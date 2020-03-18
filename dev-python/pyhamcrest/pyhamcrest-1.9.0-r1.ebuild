@@ -12,31 +12,24 @@ MY_PN="PyHamcrest"
 DESCRIPTION="Hamcrest framework for matcher objects"
 HOMEPAGE="https://github.com/hamcrest/PyHamcrest"
 SRC_URI="https://github.com/hamcrest/PyHamcrest/archive/V${PV}.tar.gz -> ${MY_PN}-${PV}.gh.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~mips ~sh sparc ~amd64-linux ~x86-linux"
-IUSE="doc examples test"
-REQUIRED_USE="doc? ( || ( $(python_gen_useflags -3) ) )"
+IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/six-1.4[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? (
-		$(python_gen_cond_dep '>=dev-python/sphinx-2[${PYTHON_USEDEP}]' -3)
-		$(python_gen_cond_dep 'dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]' -3)
-	)
 	test? (
 		>=dev-python/pytest-2.6[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)"
 
-S="${WORKDIR}/${MY_PN}-${PV}"
-
-pkg_setup() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( -3 )
-}
+distutils_enable_sphinx doc \
+	dev-python/sphinx_rtd_theme
 
 python_prepare_all() {
 	# enables coverage testing which we don't want
@@ -54,13 +47,6 @@ python_prepare_all() {
 	fi
 
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	if use doc; then
-		esetup.py build_sphinx
-		HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
-	fi
 }
 
 python_test() {
