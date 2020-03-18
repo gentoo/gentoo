@@ -1830,7 +1830,7 @@ app-i18n/libpinyin 2.3.0 9999: Libraries for handling of Hanyu Pinyin and Zhuyin
 app-i18n/librime 1.5.3-r1: RIME (Rime Input Method Engine) core library
 app-i18n/libskk 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
-app-i18n/man-pages-de 2.12 2.12-r1: A somewhat comprehensive collection of Linux german man page translations
+app-i18n/man-pages-de 2.12 2.12-r1 2.16: A somewhat comprehensive collection of Linux german man page translations
 app-i18n/man-pages-fr 3.70-r1: A somewhat comprehensive collection of French Linux man pages
 app-i18n/man-pages-it 4.00: A somewhat comprehensive collection of Italian Linux man pages
 app-i18n/man-pages-ja 20171215 20180315: A collection of manual pages translated into Japanese
@@ -5046,7 +5046,7 @@ dev-libs/libical 3.0.5 3.0.6 3.0.7 3.0.8: An implementation of basic iCAL protoc
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.15.2 1.15.3: Library to handle input devices in Wayland
+dev-libs/libinput 1.15.2 1.15.3 1.15.4: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.0 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
@@ -14700,7 +14700,7 @@ net-libs/libsrtp 1.6.0-r1 2.2.0: Open-source implementation of the Secure Real-t
 net-libs/libssh 0.9.3 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
-net-libs/libtirpc 1.1.4 1.2.5: Transport Independent RPC library (SunRPC replacement)
+net-libs/libtirpc 1.2.5: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3 1.2.4 1.2.5: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 99999: A library and tools for trace processing
