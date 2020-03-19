@@ -4,7 +4,7 @@
 EAPI=7
 
 ECM_TEST="true"
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_7 )
 inherit ecm python-single-r1
 
 DESCRIPTION="Distribution-independent installer framework"
@@ -78,6 +78,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DINSTALL_CONFIG=ON
 		-DWEBVIEW_FORCE_WEBKIT=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_LIBPARTED=ON
 		-DWITH_PYTHONQT=$(usex pythonqt)
