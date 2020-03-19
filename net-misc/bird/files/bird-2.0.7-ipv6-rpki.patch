@@ -1,0 +1,32 @@
+diff --git a/proto/rpki/transport.c b/proto/rpki/transport.c
+index 182667be..9dcb7c5c 100644
+Patch needed for IPv6 FQDN RPKI caches, see ML archive and upstream git URL
+https://bird.network.cz/pipermail/bird-users/2020-January/014162.html
+https://gitlab.nic.cz/labs/bird/-/commit/4e23b499696da81acf0ed5ad181573b94ccdb9a3
+--- a/proto/rpki/transport.c
++++ b/proto/rpki/transport.c
+@@ -26,7 +26,6 @@
+ static ip_addr
+ rpki_hostname_autoresolv(const char *host)
+ {
+-  ip_addr addr = {};
+   struct addrinfo *res;
+   struct addrinfo hints = {
+       .ai_family = AF_UNSPEC,
+@@ -44,12 +43,10 @@ rpki_hostname_autoresolv(const char *host)
+     return IPA_NONE;
+   }
+ 
+-  sockaddr sa = {
+-      .sa = *res->ai_addr,
+-  };
+-
++  ip_addr addr = IPA_NONE;
+   uint unused;
+-  sockaddr_read(&sa, res->ai_family, &addr, NULL, &unused);
++
++  sockaddr_read((sockaddr *) res->ai_addr, res->ai_family, &addr, NULL, &unused);
+ 
+   freeaddrinfo(res);
+   return addr;
+
