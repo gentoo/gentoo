@@ -5002,7 +5002,7 @@ dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.3.9 1.3.10: Extensible binary format library (kinda like XML)
-dev-libs/libedit 20170329.3.1 20190324.3.1 20191211.3.1: BSD replacement for libreadline
+dev-libs/libedit 20191211.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.1: Erasure Code API library written in C with pluggable Erasure Code backends.
@@ -7251,7 +7251,7 @@ dev-php/PEAR-XML_Parser 1.3.7-r1 1.3.8: XML parsing class based on PHP's SAX par
 dev-php/PEAR-XML_RSS 1.1.0_alpha1 1.1.0: PHP parser for RDF and RSS documents
 dev-php/PEAR-XML_Serializer 0.21.0-r1: Swiss-army knife for reading and writing XML files
 dev-php/PEAR-XML_Util 1.4.2 1.4.3 1.4.4: XML utility class
-dev-php/PHPMailer 5.2.27 6.0.7 6.1.2 6.1.3 6.1.4: Full-featured email creation and transfer class for PHP
+dev-php/PHPMailer 5.2.27 5.2.28 6.0.7 6.1.2 6.1.3 6.1.4 6.1.5: Full-featured email creation and transfer class for PHP
 dev-php/PHP_CodeCoverage 4.0.7-r2 7.0.10-r1: Collection, processing, and rendering for PHP code coverage
 dev-php/PHP_CodeSniffer 3.5.4: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5 1.0.9 2.1.2-r1: Utility class for timing
@@ -7264,7 +7264,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.59 0.60: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.8.6 1.9.0 1.9.1 1.9.2 1.9.3: Dependency Manager for PHP
+dev-php/composer 1.9.3 1.10.1: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0: Utility to instantiate objects in PHP without invoking their constructors
@@ -7322,7 +7322,7 @@ dev-php/pecl-yaz 1.2.2-r1 1.2.3: This extension implements a Z39.50 client for P
 dev-php/pecl-zmq 1.1.3-r2 9999: PHP Bindings for ZeroMQ messaging
 dev-php/phar-io-manifest 1.0.3: Reading phar.io manifest information from a PHP Archive (PHAR)
 dev-php/phar-io-version 2.0.1: Library for handling version information and constraints
-dev-php/phar-utils 1.0.0 1.0.1: PHAR file format utilities, for when PHP phars you up
+dev-php/phar-utils 1.0.0 1.0.1 1.1.0: PHAR file format utilities, for when PHP phars you up
 dev-php/phing 2.16.1: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2-r1: Creates highlighted code by reading xml reports from codesniffer or phpunit
 dev-php/php-redmine-api 1.5.9 1.5.16: A simple, object-oriented, PHP Redmine API client
@@ -7353,28 +7353,28 @@ dev-php/sebastian-resource-operations 1.0.0 2.0.1: Provides a list of PHP built-
 dev-php/sebastian-type 1.1.3: Collection of value objects that represent the types of the PHP type system
 dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-hosted PHP projects
 dev-php/securimage 3.6.5: PHP captcha creator and validator library
-dev-php/semver 1.4.2: Semantic versioning utilities, constraint parsing, and checking
+dev-php/semver 1.4.2 1.5.1: Semantic versioning utilities, constraint parsing, and checking
 dev-php/simpletest 1.1.7: A PHP testing framework
 dev-php/smarty 3.1.33: A template engine for PHP
-dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0: Tools for working with and validating SPDX licenses
+dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0 1.5.3: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
 dev-php/swoole 4.2.13 4.4.12 4.4.14 4.4.15 4.4.16: Event-driven asynchronous & concurrent & coroutine networking engine
 dev-php/swoole-async 4.4.12 4.4.16: An extension of Swoole, including the async callback style API
 dev-php/symfony-config 2.8.20: Symfony Config Component
-dev-php/symfony-console 2.7.9-r1 2.8.43 2.8.48 2.8.50: Subtree split of the Symfony Console Component
+dev-php/symfony-console 2.7.9-r1 2.8.43 2.8.48 2.8.50 2.8.52: Subtree split of the Symfony Console Component
 dev-php/symfony-dependency-injection 2.8.20 2.8.50: Symfony DependencyInjection Component
 dev-php/symfony-event-dispatcher 2.1.0-r1 2.8.50: Symfony EventDispatcher Component
-dev-php/symfony-filesystem 3.4.28: Symfony Filesystem Component
-dev-php/symfony-finder 3.2.8 3.4.28: Symfony Finder Component
-dev-php/symfony-process 3.4.29: Symfony Process Component
+dev-php/symfony-filesystem 3.4.28 3.4.36: Symfony Filesystem Component
+dev-php/symfony-finder 3.2.8 3.4.28 3.4.38: Symfony Finder Component
+dev-php/symfony-process 3.4.29 3.4.38: Symfony Process Component
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/tcpdf 6.2.25 6.2.26: TCPDF is a FLOSS PHP class for generating PDF documents
 dev-php/theseer-tokenizer 1.1.0 1.1.3: Convert tokenized PHP source code into XML and other formats
 dev-php/twig 1.40.1-r1 1.42.3 1.42.3-r1: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
-dev-php/xdebug 2.6.1 2.9.2: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.6.1 2.9.2: Xdebug client for the Common Debugger Protocol (DBGP)
-dev-php/xdebug-handler 1.3.0 1.3.1: Restart a CLI process without loading the xdebug extension
+dev-php/xdebug 2.6.1 2.9.2 2.9.3: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.6.1 2.9.2 2.9.3: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1: Restart a CLI process without loading the xdebug extension
 dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.3.1 3.5.3: In-process task scheduler with Cron-like capabilities
@@ -7660,7 +7660,7 @@ dev-python/django-baker 0.11-r2: Management command that generates views, forms,
 dev-python/django-cacheops 4.1 4.2: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-cors-headers 2.5.1 3.0.2 3.2.1: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-crispy-forms 1.6.0: Best way to have Django DRY forms
-dev-python/django-debug-toolbar 2.0 2.1 2.2: A configurable set of panels that display debug information
+dev-python/django-debug-toolbar 2.2: A configurable set of panels that display debug information
 dev-python/django-discover-runner 1.0: A Django test runner based on unittest2's test discovery
 dev-python/django-durationfield 0.5.4: Reusable app for adding a DurationField to Django
 dev-python/django-filter 2.1.0 2.2.0: Django app allowing declarative dynamic QuerySet filtering from URL parameters
@@ -7734,7 +7734,7 @@ dev-python/eradicate 0.2.1: Removes commented-out code from Python files
 dev-python/errorhandler 2.0.1: Logging framework handler
 dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
-dev-python/eventlet 0.18.4 0.20.0-r1 0.20.1-r1 0.21.0-r1 0.24.1 0.24.1-r1 0.25.1 0.25.1-r1: Highly concurrent networking library
+dev-python/eventlet 0.25.1 0.25.1-r1: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
 dev-python/execnet 1.4.1 1.5.0 1.7.1: Rapid multi-Python deployment
 dev-python/expects 0.8.0 0.8.0-r1: Expressive and extensible TDD/BDD assertion library for Python
@@ -7806,7 +7806,7 @@ dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
 dev-python/fonttools 3.44.0 4.0.1 4.1.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/formencode 1.3.0-r3: HTML form validation, generation, and conversion package
 dev-python/fqdn 1.2.0: RFC-compliant FQDN validation and manipulation for Python
-dev-python/freezegun 0.3.12-r1 0.3.15: Let your Python tests travel through time
+dev-python/freezegun 0.3.15: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 0.5.4 2.0.21 2.0.26 2.4.8 2.4.9: Filesystem abstraction layer
@@ -8892,7 +8892,7 @@ dev-python/swagger-spec-validator 2.4.3 2.5.0: validate Swagger specs against Sw
 dev-python/sybil 1.2.0-r1 1.2.2: Automated testing for the examples in your documentation
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
 dev-python/symengine 0.5.1-r1: Python wrappers to the symengine C++ library
-dev-python/sympy 1.0-r1 1.3 1.5 1.5.1 1.5.1-r1: Computer Algebra System in pure Python
+dev-python/sympy 1.5.1-r1: Computer Algebra System in pure Python
 dev-python/tablib 0.12.1-r1: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.8.1 0.8.3 0.8.6: Pretty-print tabular data
 dev-python/tagpy 2018.1: Python Bindings for TagLib
@@ -9008,7 +9008,7 @@ dev-python/webassets 0.12.1 2.0: Asset management for Python web development
 dev-python/webcolors 1.5 1.8.1 1.10 1.11.1: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5.1 0.5.1-r1: Character encoding aliases for legacy web content
 dev-python/webob 1.8.2 1.8.2-r1 1.8.5 1.8.5-r1 1.8.5-r3: WSGI request and response object
-dev-python/websocket-client 0.37.0 0.40.0 0.47.0 0.48.0 0.56.0: WebSocket client for python with hybi13 support
+dev-python/websocket-client 0.48.0 0.56.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.8.0: WebSockets support for any application/server
 dev-python/webtest 2.0.21 2.0.29 2.0.29-r1 2.0.33: Helper to test WSGI applications
 dev-python/werkzeug 0.16.0 0.16.1 1.0.0: Collection of various utilities for WSGI applications
