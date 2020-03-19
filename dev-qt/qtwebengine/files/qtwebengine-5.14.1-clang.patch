@@ -1,0 +1,13 @@
+--- a/src/3rdparty/gn/build/gen.py
++++ b/src/3rdparty/gn/build/gen.py
+@@ -358,9 +358,7 @@
+ 
+     if platform.is_linux():
+       ldflags.append('-Wl,--as-needed')
+-
+-      if not options.no_static_libstdcpp:
+-        ldflags.append('-static-libstdc++')
++      ldflags.append('-static -rtlib=libgcc')
+ 
+       # This is needed by libc++.
+       libs.append('-ldl')

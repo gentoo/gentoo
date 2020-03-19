@@ -79,6 +79,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-disable-fatal-warnings.patch" # bug 695446
+	"${FILESDIR}/${P}-clang.patch"
 )
 
 src_prepare() {
