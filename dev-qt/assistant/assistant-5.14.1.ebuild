@@ -8,7 +8,7 @@ inherit desktop qt5-build xdg-utils
 DESCRIPTION="Tool for viewing on-line documentation in Qt help file format"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc64 ~sparc ~x86"
 fi
 
 IUSE="webkit"
