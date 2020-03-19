@@ -4775,7 +4775,7 @@ dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time c
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 7.2.26 7.2.27 7.2.28-r1 7.3.13 7.3.14 7.3.15-r1 7.4.3-r1: The PHP language runtime engine
+dev-lang/php 7.2.26 7.2.27 7.2.28-r1 7.2.29 7.3.13 7.3.14 7.3.15-r1 7.3.16 7.4.3-r1 7.4.4: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.17-r1 3.6.10 3.7.6 3.7.7 3.8.2 3.9.0_alpha4: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
@@ -4892,7 +4892,7 @@ dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 2.1: Build foreign function call interfaces in embedded interpreter
-dev-libs/flatbuffers 1.11.0: Memory efficient serialization library
+dev-libs/flatbuffers 1.11.0 1.12.0: Memory efficient serialization library
 dev-libs/folks 0.12.1 0.12.1-r1 0.13.1: Library for aggregating people from multiple sources
 dev-libs/foma 0.9.18: A set of utilities for constructing finite-state automata and transducers
 dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
@@ -5163,7 +5163,7 @@ dev-libs/libxmlb 0.1.12 0.1.14 0.1.15: Library to help create and query binary X
 dev-libs/libxslt 1.1.33-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.18 4.19 4.20: platform abstraction code for tucnak package
-dev-libs/libzip 1.5.2-r2 1.6.1: Library for manipulating zip archives
+dev-libs/libzip 1.5.2-r2 1.6.1-r1: Library for manipulating zip archives
 dev-libs/light 1.2-r1: A program to control backlights (and other hardware lights)
 dev-libs/link-grammar 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
@@ -8501,7 +8501,7 @@ dev-python/pysmi 0.1.3 0.3.1 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.4 4.4.10-r1 4.4.12 999999: Python SNMP library
 dev-python/pysnmp-apps 0.5.3: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
-dev-python/pysol_cards 0.8.6 0.8.7: Deal PySol FreeCell cards
+dev-python/pysol_cards 0.8.6 0.8.7 0.8.8: Deal PySol FreeCell cards
 dev-python/pysolr 3.3.2 3.6.0 3.8.1: Lightweight python wrapper for Apache Solr
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
 dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
@@ -16089,7 +16089,7 @@ sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, 
 sci-libs/ignition-math 4.0.0-r1: A small, fast, and high performance math library for robot applications
 sci-libs/iml 1.0.5: Integer Matrix Library
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
-sci-libs/indilib 1.7.5 1.8.3: INDI Astronomical Control Protocol library
+sci-libs/indilib 1.7.5 1.8.3 1.8.4: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.14.7: General purpose trace and experiment file reading/writing interface
 sci-libs/ipopt 3.11.7 3.11.8 3.12.12: Interior-Point Optimizer for large-scale nonlinear optimization
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
@@ -17143,14 +17143,14 @@ sys-cluster/hpx 1.2.1 9999: C++ runtime system for parallel and distributed appl
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 2.0.17 2.0.19 2.0.20: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kube-apiserver 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.17.2 1.17.3: Kubernetes API server
-sys-cluster/kube-controller-manager 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.17.2 1.17.3: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.17.2 1.17.3: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.16.8 1.17.2 1.17.3: Kubernetes API server
+sys-cluster/kube-controller-manager 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.16.8 1.17.2 1.17.3: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.16.8 1.17.2 1.17.3: Kubernetes Proxy service
 sys-cluster/kube-router 0.3.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.17.2 1.17.3: Kubernetes Scheduler
-sys-cluster/kubeadm 1.14.8 1.14.9 1.15.5 1.15.6 1.15.9 1.15.10 1.15.11 1.16.2 1.16.3 1.16.6 1.16.7 1.17.2 1.17.3: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.14.9 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.17.0 1.17.2 1.17.3: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.14.9 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.17.2 1.17.3: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.16.8 1.17.2 1.17.3: Kubernetes Scheduler
+sys-cluster/kubeadm 1.14.8 1.14.9 1.15.5 1.15.6 1.15.9 1.15.10 1.15.11 1.16.2 1.16.3 1.16.6 1.16.7 1.16.8 1.17.2 1.17.3: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.14.9 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.16.8 1.17.0 1.17.2 1.17.3: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.14.9 1.14.10 1.15.7 1.15.9 1.15.10 1.15.11 1.16.4 1.16.6 1.16.7 1.16.8 1.17.2 1.17.3: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.2 1.0.1 1.0.5 1.9.0: Library providing high performance logging, tracing, ipc, and poll
@@ -17966,7 +17966,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
-www-client/opera 67.0.3575.79: A fast and secure web browser
+www-client/opera 67.0.3575.79 67.0.3575.97: A fast and secure web browser
 www-client/opera-beta 68.0.3618.3 68.0.3618.5: A fast and secure web browser
 www-client/opera-developer 68.0.3616.0 69.0.3623.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
@@ -17979,7 +17979,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 2.11.1811.47_p1: A browser for our friends
-www-client/vivaldi-snapshot 2.12.1849.7_p1 2.12.1854.5_p1: A browser for our friends
+www-client/vivaldi-snapshot 2.12.1854.5_p1 2.12.1856.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-client/weboob 1.3 9998 9999: Consume lots of websites without a browser (Web Outside Of Browsers)
