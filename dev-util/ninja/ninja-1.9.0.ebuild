@@ -51,6 +51,10 @@ PATCHES=(
 	"${FILESDIR}/ninja-1.9.0-musl.patch"
 )
 
+PATCHES=(
+	"${FILESDIR}"/ninja-cflags.patch
+)
+
 run_for_build() {
 	if tc-is-cross-compiler; then
 		local -x AR=$(tc-getBUILD_AR)
@@ -66,8 +70,8 @@ run_for_build() {
 src_compile() {
 	tc-export AR CXX
 
-	# configure.py uses CFLAGS instead of CXXFLAGS
-	export CFLAGS=${CXXFLAGS}
+	# configure.py appends CFLAGS to CXXFLAGS
+	unset CFLAGS
 
 	run_for_build ${EPYTHON} configure.py --bootstrap --verbose || die
 
