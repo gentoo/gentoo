@@ -16,8 +16,5 @@
     <upstream>
         <remote-id type="sourceforge">lirc</remote-id>
     </upstream>
-    <longdescription lang="en">
-        LIRC (Linux Infrared remote control) allows users to receive and send infrared signals.
-    </longdescription>
 </pkgmetadata>
 
