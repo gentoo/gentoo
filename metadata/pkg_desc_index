@@ -376,7 +376,7 @@ app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/bastille 3.0.9-r1 3.0.9-r2: Bastille-Linux is a security hardening tool
 app-admin/bcfg2 1.2.4-r1: Configuration management tool
-app-admin/calamares 3.2.17.1-r1: Distribution-independent installer framework
+app-admin/calamares 3.2.20: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 5.1.3 6.0.0: A usable configuration management system
@@ -565,7 +565,6 @@ app-antivirus/clamav 0.101.2-r1 0.101.4 0.102.1-r3 0.102.2: Clam Anti-Virus Scan
 app-antivirus/clamav-unofficial-sigs 5.6.2 6.0.1-r5 7.0.1: Download and install third-party clamav signatures
 app-antivirus/clamtk 6.02-r1: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.0.1: Update and verify unofficial Clam Anti-Virus signatures
-app-antivirus/skyldav 0.7: Skyld AV: on-access scanning daemon for ClamAV using fanotify
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
 app-arch/alien 8.95 8.95-r1: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
@@ -2304,7 +2303,7 @@ app-misc/workrave 1.10.20: Helpful utility to attack Repetitive Strain Injury (R
 app-misc/xmind 3.5.3.201506180105-r2 3.7.6_p201801311814: A brainstorming and mind mapping software tool
 app-misc/yagtd 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
 app-misc/yq 2.7.1-r1 2.7.2 2.8.0 2.9.2 2.9.2-r1: Command-line YAML processor - jq wrapper for YAML documents
-app-misc/ytree 1.99_p2 2.00 2.01: A curses-based file manager
+app-misc/ytree 1.99_p2 2.00 2.01 2.02: A curses-based file manager
 app-misc/zisofs-tools 1.0.8: User utilities for zisofs
 app-misc/zygrib 8.0.1-r1: GRIB File Viewer - Weather data visualization
 app-mobilephone/adb-sync 0_p20181127-r1: Synchronize files between a PC and an Android device using ADB
@@ -2447,7 +2446,6 @@ app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 3.0-r2 3.0.1-r3: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.74 0.80 0.86 9999: Small and fast Portage helper tools written in C
-app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27 2.1.27-r1: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
@@ -7390,7 +7388,6 @@ dev-python/GitPython 2.1.11 3.1.0: Library used to interact with Git repositorie
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/ImageHash 4.0: Image Hashing library
-dev-python/Kivy 1.10.1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/MechanicalSoup 0.10.0 0.12.0: A python library for automating interaction with websites
 dev-python/Numdifftools 0.9.17-r1: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.9 1.8.0 1.8.12: Declare constraints on function parameters and return values
@@ -7456,7 +7453,6 @@ dev-python/args 0.1.0 0.1.0-r1: Command Arguments for Humans
 dev-python/arpeggio 1.5 1.9.0: Parser interpreter based on PEG grammars
 dev-python/arrow 0.10.0 0.12.1 0.13.1: Better dates and times for Python
 dev-python/asciimatics 1.10.0: Pythonic library to create text UIs and ASCII art animations
-dev-python/asciitable 0.8.0-r1: An extensible ASCII table reader
 dev-python/asn1crypto 0.22.0 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asset 0.6.11: A package resource and symbol loading helper library
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
@@ -7856,7 +7852,6 @@ dev-python/gnome-python-desktop-base 2.32.0-r1: Provides python the base files f
 dev-python/gnome-python-extras-base 2.25.3-r1: Provides python the base files for the Gnome Python Desktop bindings
 dev-python/gnome-vfs-python 2.28.1-r1: Python bindings for the GnomeVFS library
 dev-python/gntp 1.0.3: Python library for working with the Growl Notification Transport Protocol
-dev-python/gnuplot-py 1.8-r2: A python wrapper for Gnuplot
 dev-python/google-api-python-client 1.5.3 1.6.2 1.6.5 1.7.0 1.7.9: Google API Client for Python
 dev-python/google-apitools 0.5.30: Python library to manipulate Google APIs
 dev-python/google-apputils 0.4.2-r1 0.4.2-r2: Collection of utilities for building Python applications
@@ -7886,7 +7881,7 @@ dev-python/hcloud-python 1.6.3: Official Hetzner Cloud python library
 dev-python/helpdev 0.6.10: Helping users and developers to get information about the environment
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hglib 2.1: Library for using the Mercurial Command Server from Python
-dev-python/hiredis 0.2.0-r1: Python extension that wraps hiredis
+dev-python/hiredis 0.2.0-r1 0.2.0-r2: Python extension that wraps hiredis
 dev-python/hiro 0.2 0.3 0.5: Time manipulation utilities for Python
 dev-python/hpack 2.3.0-r1 3.0.0: Pure-Python HPACK header compression
 dev-python/html2text 2018.1.9 2019.8.11 2019.9.26 2020.1.16-r1: Turn HTML into equivalent Markdown-structured text
@@ -11414,9 +11409,6 @@ games-roguelike/tomenet 4.6.1a 4.7.2: A MMORPG based on the works of J.R.R. Tolk
 games-roguelike/wrogue 0.8.0b-r1: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
 games-rpg/adonthell 0.3.5-r2: roleplaying game engine
-games-rpg/arx-fatalis-data 1.21-r4: Arx Fatalis data files
-games-rpg/arx-fatalis-demo 0-r1: Arx Fatalis demo
-games-rpg/arx-libertatis 1.1.2-r2: Cross-platform port of Arx Fatalis, a first-person role-playing game
 games-rpg/asphyxia 1.0: Visual novel where the main character has one day to make peace with her friend
 games-rpg/avadon 1.0.4_p1331768904: Epic fantasy role-playing adventure in an enormous and unique world
 games-rpg/baldurs-gate-ee 2.3.67.3-r1 2.5.23121: Baldur's Gate: Enhanced Edition
@@ -11528,7 +11520,6 @@ games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SD
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
 games-strategy/knights-demo 1.32-r2: Anglo-Saxon medieval army battles and resource management
 games-strategy/lgeneral 1.4.3: A Panzer General clone written in SDL
-games-strategy/lightyears 1.4-r3: A single-player game with a science-fiction theme
 games-strategy/liquidwar 5.6.4-r2: Unique multiplayer wargame
 games-strategy/majesty-demo 1.0.0-r1: Control your own kingdom in this simulation
 games-strategy/maxr 0.2.9: Mechanized Assault and Exploration Reloaded
@@ -11537,7 +11528,6 @@ games-strategy/megaglest-data 3.11.1: Data files for the cross-platform 3D realt
 games-strategy/naev 0.6.1-r1: A 2D space trading and combat game, in a similar vein to Escape Velocity
 games-strategy/netherearth 0.52-r1: A remake of the SPECTRUM game Nether Earth
 games-strategy/openra 20190314: A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
-games-strategy/outerspace 0.5.68-r1: On-line strategy game taking place in the dangerous universe
 games-strategy/s25rttr 0.8.1-r3: Open Source remake of The Settlers II game (needs original game files)
 games-strategy/satellite-reign 1.13.06: Real-time, class-based strategy game set in a cyberpunk city
 games-strategy/scorched3d 44-r2: Multi-player tank battle in 3D (OpenGL)
@@ -12538,7 +12528,7 @@ media-fonts/x11fonts-jmk 3.0-r3 3.0-r4: This package contains character-cell fon
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
 media-gfx/aaphoto 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
-media-gfx/ahoviewer 1.6.5: A GTK2 image viewer, manga reader, and booru browser
+media-gfx/ahoviewer 1.6.5-r1: A GTK2 image viewer, manga reader, and booru browser
 media-gfx/album 4.13-r1 4.15: HTML photo album generator
 media-gfx/alembic 1.7.9 1.7.11-r1: Open framework for storing and sharing scene data
 media-gfx/apng2gif 1.8: create a GIF from an APNG
@@ -12625,7 +12615,6 @@ media-gfx/gqview 2.1.5-r1 2.1.5-r2: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.32 1.3.33 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.13: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.42.3: Open Source Graph Visualization Software
-media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gscan2pdf 1.8.11 2.6.4 2.6.5: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.6.2-r1: Image viewer and browser for Gnome
@@ -14381,7 +14370,7 @@ net-dns/nsd 4.2.2 4.2.3 4.2.4: An authoritative only, high performance, open sou
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2: A framework for managing DNS information
-net-dns/pdns 4.1.13 4.2.0 4.2.1 4.2.1-r1: The PowerDNS Daemon
+net-dns/pdns 4.1.13 4.2.0 4.2.1 4.2.1-r1 4.3.0_rc2: The PowerDNS Daemon
 net-dns/pdns-recursor 4.1.14 4.1.15 4.2.0 4.2.1 4.3.0-r1: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b 0.998b-r1: DNS server designed to serve blacklist zones
@@ -15264,7 +15253,6 @@ net-p2p/qbittorrent 4.2.1 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
 net-p2p/syncthing 1.1.4 1.3.4-r1: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r1 1.8.6-r2: A torrent file parser
@@ -15321,7 +15309,6 @@ net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.8.9 1.8.13 1.8.24 1.9.14 1.9.9999 2.0.13 2.0.9999 2.1.3 2.1.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
-net-proxy/http-replicator 4.0_alpha2-r7: Proxy cache for Gentoo packages
 net-proxy/mitmproxy 4.0.4: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/obfs4proxy 0.0.11: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
@@ -15993,7 +15980,6 @@ sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open St
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
 sci-geosciences/seawater 3.3.4: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
-sci-geosciences/tappy 0.9.0-r1: Tidal Analysis in Python breaks hourly water level into tidal components
 sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constituent Databases
 sci-geosciences/tilecache 2.11-r1: Web map tile caching system
 sci-geosciences/viking 1.6.2-r2 1.7 1.7-r1: GPS data editor and analyzer

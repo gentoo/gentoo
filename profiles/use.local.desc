@@ -2486,7 +2486,6 @@ dev-php/pecl-redis:json - Enables json serializer support
 dev-php/pecl-zmq:czmq - Use the czmq high level bindings
 dev-php/phing:zip - Support zip archives by requiring said support in dev-lang/php.
 dev-php/swoole:http2 - Add support for HTTP/2 protocol via net-libs/nghttp2
-dev-python/Kivy:garden - Install garden tool to manage user maintained widgets
 dev-python/PyQt5:bluetooth - Build bindings for the QtBluetooth module
 dev-python/PyQt5:dbus - Build bindings for the QtDBus module
 dev-python/PyQt5:declarative - Build bindings for the QtQml/QtQuick modules and enable the qmlscene plugin
@@ -3297,13 +3296,6 @@ games-roguelike/angband:sound - Enable and install sounds
 games-roguelike/stone-soup:ncurses - Enable for console (uses ncurses) based build. (can be enabled on top of tiles)
 games-roguelike/stone-soup:tiles - Enable for graphical (tiled) build. (can be enabled on top of ncurses)
 games-roguelike/tomenet:server - Compile server support
-games-rpg/arx-fatalis-data:gog - Extract the data from the GOG.com installer.
-games-rpg/arx-libertatis:c++0x - Build ROOT using the C++11 standard.
-games-rpg/arx-libertatis:crash-reporter - Build a dev-qt/qtgui-based tool that allows to submit crash information to the upstream backtracker.
-games-rpg/arx-libertatis:debug - Enable asserts and debug logging.
-games-rpg/arx-libertatis:static - Link libraries statically, currently only media-libs/glew
-games-rpg/arx-libertatis:tools - Build tools that can extract the game's data and save files.
-games-rpg/arx-libertatis:unity-build - Build everything in one big source file, allowing for faster build times and better optimizations at the cost of higher memory usage.
 games-rpg/daimonin-client:music - Install extra music
 games-rpg/drascula:sound - Install optional audio files
 games-rpg/dreamweb:doc - High-resolution scans of the written material in the original UK game box
@@ -4000,7 +3992,6 @@ media-fonts/terminus-font:ru-i - Changes view of Russian letter 'i' - not like L
 media-fonts/terminus-font:ru-k - Changes view of Russian letter 'k' (see homepage)
 media-fonts/unifont:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/unifont:utils - Install unifont utilities
-media-gfx/ahoviewer:libsecret - Support password storing using libsecret
 media-gfx/ahoviewer:rar - Rar archive support
 media-gfx/ahoviewer:zip - Zip archive support
 media-gfx/album:plugins - Install optional plugins
