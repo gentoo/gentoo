@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Mixer library for MATE Desktop"
-LICENSE="LGPL-2 GPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 
 IUSE="+alsa oss pulseaudio"
