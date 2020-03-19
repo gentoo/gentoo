@@ -26,6 +26,7 @@ IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg libav log lto profile pu
 
 RDEPEND="
 	dev-libs/hidapi:0=
+	dev-libs/libfmt:0=
 	dev-libs/lzo:2=
 	dev-libs/pugixml:0=
 	media-libs/libpng:0=
@@ -83,7 +84,6 @@ src_prepare() {
 		FreeSurround
 		cpp-optparse
 		# no support for for using system library
-		fmt
 		glslang
 		imgui
 		# FIXME: xxhash can't be found by cmake
