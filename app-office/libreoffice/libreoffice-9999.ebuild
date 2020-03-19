@@ -44,6 +44,8 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
+	# not packaged in Gentoo, https://skia.org/
+	"${ADDONS_URI}/skia-m82-7bb74c4299b8a85de1e5718fc45da569d6dab3fc.tar.xz"
 	# QR code generating library for >=libreoffice-6.4
 	"${ADDONS_URI}/QR-Code-generator-1.4.0.tar.gz"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
