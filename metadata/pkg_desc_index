@@ -7913,7 +7913,7 @@ dev-python/iminuit 1.2 1.3.3 1.3.8: Minuit numerical function minimization in Py
 dev-python/immutables 0.11: A high-performance immutable mapping type for Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
 dev-python/importlib_metadata 0.23-r1 1.4.0 1.5.0: Read metadata from Python packages
-dev-python/importlib_resources 1.0.2-r1 1.0.2-r2 1.3.1: Read resources from Python packages
+dev-python/importlib_resources 1.0.2-r1 1.3.1 1.4.0: Read resources from Python packages
 dev-python/incremental 16.10.1 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.7 0.8.10: Fast random access of gzip files in Python
 dev-python/inflect 0.2.5 3.0.2 4.0.0 4.1.0: Correctly inflect words and numbers
@@ -13944,7 +13944,7 @@ media-video/mpv 0.31.0-r1 0.32.0-r1 9999: Media player based on MPlayer and mpla
 media-video/noad 0.8.6-r3 0.8.6-r4: Mark commercial breaks in VDR recordings
 media-video/nvidia-video-codec 7.0.1 7.1.9 8.0.14 8.2.16: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
-media-video/obs-studio 24.0.3 24.0.5 9999: Software for Recording and Streaming Live Video Content
+media-video/obs-studio 24.0.3 24.0.5 25.0.0 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 2.4.0-r1 2.4.4-r1 2.5.0: An award-winning free and open-source video editor
 media-video/orion 1.6.6 1.6.7: Cross-platform Twitch client
