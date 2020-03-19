@@ -1972,6 +1972,7 @@ dev-lang/rakudo:moar - Use the MoarVM as backend
 dev-lang/ruby:rdoc - Install dev-ruby/rdoc after installing Ruby.
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
 dev-lang/rust:clippy - Install clippy component
+dev-lang/rust:miri - Install miri component (requires USE=nightly)
 dev-lang/rust:nightly - Enable nightly (UNSTABLE) features
 dev-lang/rust:parallel-compiler - Build a multi-threaded rustc
 dev-lang/rust:rls - Install rls component
