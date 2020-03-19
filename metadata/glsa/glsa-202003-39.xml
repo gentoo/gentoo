@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-39">
+  <title>phpMyAdmin: SQL injection</title>
+  <synopsis>An SQL injection vulnerability in phpMyAdmin may allow attackers to
+    execute arbitrary SQL statements.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>2020-03-19</announced>
+  <revised count="1">2020-03-19</revised>
+  <bug>701830</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">4.9.2</unaffected>
+      <vulnerable range="lt">4.9.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>phpMyAdmin is a web-based management tool for MySQL databases.</p>
+  </background>
+  <description>
+    <p>PhpMyAdmin was vulnerable to an SQL injection attack through the
+      designer feature.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An authenticated remote attacker, by specifying a specially crafted
+      database/table name, could trigger an SQL injection attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All phpMyAdmin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-4.9.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18622">CVE-2019-18622</uri>
+    <uri link="https://www.phpmyadmin.net/security/PMASA-2019-5/">PMASA-2019-5</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-19T16:07:14Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-19T16:19:16Z">whissi</metadata>
+</glsa>
