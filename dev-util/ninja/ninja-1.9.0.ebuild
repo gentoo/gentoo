@@ -48,11 +48,8 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/ninja-1.9.0-musl.patch"
-)
-
-PATCHES=(
 	"${FILESDIR}"/ninja-cflags.patch
+	"${FILESDIR}/ninja-1.9.0-musl.patch"
 )
 
 run_for_build() {
