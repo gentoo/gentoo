@@ -1,8 +1,7 @@
-diff --git a/pm_python/setup.py b/pm_python/setup.py
-index 14ab1c7..5b1e7c0 100644
---- a/pm_python/setup.py
-+++ b/pm_python/setup.py
-@@ -15,12 +15,10 @@ except ImportError:
+diff -Naur portmidi-a/pm_python/setup.py portmidi-b/pm_python/setup.py
+--- portmidi-a/pm_python/setup.py	2010-09-26 15:32:44.000000000 -0400
++++ portmidi-b/pm_python/setup.py	2020-03-19 12:34:34.398365103 -0400
+@@ -15,12 +15,10 @@
  
  
  DESCRIPTION = open('README_PYTHON.txt').read()
@@ -16,7 +15,7 @@ index 14ab1c7..5b1e7c0 100644
  #import sys
  #if "checkdocs" in sys.argv:
  #    print long_description
-@@ -142,7 +140,7 @@ PACKAGEDATA.update(EXTRAS)
+@@ -142,7 +140,7 @@
  
  
  if sys.platform == 'win32':
@@ -25,7 +24,7 @@ index 14ab1c7..5b1e7c0 100644
      EXTENSION = dict(
          ext_modules=[ 
              Extension("pyportmidi._pyportmidi", [os.path.join("pyportmidi", "_pyportmidi.pyx")],
-@@ -154,7 +152,7 @@ if sys.platform == 'win32':
+@@ -154,7 +152,7 @@
          ]
      )
  elif sys.platform == 'darwin':
@@ -34,7 +33,7 @@ index 14ab1c7..5b1e7c0 100644
      library_dirs = ["/usr/local/lib"]
      include_dirs = ["/usr/local/include"]
      EXTENSION = dict(
-@@ -169,11 +167,12 @@ elif sys.platform == 'darwin':
+@@ -169,11 +167,11 @@
          ]
      )
  else:
@@ -44,7 +43,6 @@ index 14ab1c7..5b1e7c0 100644
          ext_modules=[ 
              Extension("pyportmidi._pyportmidi", [os.path.join("pyportmidi", "_pyportmidi.pyx")],
 -                      library_dirs=["./linux"],
-+                      library_dirs=["../../portmidi*build"],
 +                      include_dirs=["../pm_common", "../porttime"],
                        libraries = ["portmidi", "asound", "pthread"]
                        )
