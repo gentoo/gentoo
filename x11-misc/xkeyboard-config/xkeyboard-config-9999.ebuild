@@ -3,6 +3,9 @@
 
 EAPI=7
 
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit python-any-r1
+
 DESCRIPTION="X keyboard configuration database"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/XKeyboardConfig https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
 
@@ -27,6 +30,10 @@ BDEPEND="
 "
 RDEPEND=""
 DEPEND="${LIVE_DEPEND}"
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
