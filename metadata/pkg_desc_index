@@ -1,3 +1,4 @@
+acct-group/abrt 0: A group for the automatic bug detection and reporting tool
 acct-group/adm 0: System group: adm
 acct-group/amavis 0: Group for mail-filter/amavisd-new
 acct-group/amule 0: Group for net-p2p/amule
@@ -172,6 +173,7 @@ acct-group/wheel 0: System group: wheel
 acct-group/x2goprint 0: Group for net-misc/x2goserver
 acct-group/x2gouser 0: Group for net-misc/x2goserver
 acct-group/xrootd 0: Group for the XRootD server
+acct-user/abrt 0: A user for the automatic bug detection and reporting tool
 acct-user/alias 0: alias user for qmail mail delivery
 acct-user/amavis 0: User for mail-filter/amavisd-new
 acct-user/amule 0: User for net-p2p/amule
@@ -358,7 +360,7 @@ app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
 app-accessibility/sphinx3 0.8-r1: CMU Speech Recognition engine
 app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech Recognition Engine
 app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
-app-admin/abrt 2.12.0-r2: Automatic bug detection and reporting tool
+app-admin/abrt 2.12.0-r2 2.14.0: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
@@ -5252,7 +5254,7 @@ dev-libs/rocm-opencl-runtime 3.0.0 3.1.0: Radeon Open Compute OpenCL Compatible 
 dev-libs/rocr-runtime 3.0.0 3.1.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 3.0.0 3.1.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
-dev-libs/satyr 0.27: Satyr is a collection of low-level algorithms for program failure processing
+dev-libs/satyr 0.27 0.30: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.28.0-r1 0.30.2: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9 2.01-r1 2.02: Library to drive several displays with built-in controllers or display modules
