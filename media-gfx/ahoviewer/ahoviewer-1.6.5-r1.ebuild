@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ahodesuka/ahoviewer/archive/${PV}.tar.gz -> ${P}.tar
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="gnutls +gstreamer libsecret +rar +ssl +zip"
+IUSE="gnutls gnome-keyring +gstreamer +rar +ssl +zip"
 
 DEPEND="
 	dev-cpp/glibmm:2
@@ -21,11 +21,11 @@ DEPEND="
 	dev-libs/libxml2:2
 	dev-libs/libsigc++:2
 	net-misc/curl
+	gnome-keyring? ( app-crypt/libsecret )
 	gstreamer? (
 		media-libs/gst-plugins-bad:1.0
 		media-libs/gstreamer:1.0
 	)
-	libsecret? ( app-crypt/libsecret )
 	rar? ( app-arch/unrar )
 	ssl? (
 		gnutls? (
@@ -60,8 +60,8 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
+		$(use_enable gnome-keyring libsecret)
 		$(use_enable gstreamer gst)
-		$(use_enable libsecret)
 		$(use_enable rar)
 		$(use_enable zip)
 	)
