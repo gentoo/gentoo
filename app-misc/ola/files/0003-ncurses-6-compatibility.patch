@@ -1,0 +1,25 @@
+From 4779cebc61b1d355345f74dfc6653fea64bdd397 Mon Sep 17 00:00:00 2001
+From: Jannis Achstetter <kripton@kripserver.net>
+Date: Sun, 15 Mar 2020 02:17:14 +0100
+Subject: [PATCH] Explicitely link against tinfo. Needed for ncurses 6
+
+---
+ examples/Makefile.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/examples/Makefile.mk b/examples/Makefile.mk
+index a707fd21d..24cac78e1 100644
+--- a/examples/Makefile.mk
++++ b/examples/Makefile.mk
+@@ -91,9 +91,9 @@ examples_ola_uni_stats_LDADD = $(EXAMPLE_COMMON_LIBS)
+ if HAVE_NCURSES
+ bin_PROGRAMS += examples/ola_dmxconsole examples/ola_dmxmonitor
+ examples_ola_dmxconsole_SOURCES = examples/ola-dmxconsole.cpp
+-examples_ola_dmxconsole_LDADD = $(EXAMPLE_COMMON_LIBS) -lncurses
++examples_ola_dmxconsole_LDADD = $(EXAMPLE_COMMON_LIBS) -lncurses -ltinfo
+ examples_ola_dmxmonitor_SOURCES = examples/ola-dmxmonitor.cpp
+-examples_ola_dmxmonitor_LDADD = $(EXAMPLE_COMMON_LIBS) -lncurses
++examples_ola_dmxmonitor_LDADD = $(EXAMPLE_COMMON_LIBS) -lncurses -ltinfo
+ endif
+ 
+ noinst_PROGRAMS += examples/ola_throughput examples/ola_latency

@@ -1,0 +1,66 @@
+diff --git a/config/ola.m4 b/config/ola.m4
+index 6080932e9..9b15a9fc8 100644
+--- a/config/ola.m4
++++ b/config/ola.m4
+@@ -24,8 +24,10 @@ AC_DEFUN([PROTOBUF_SUPPORT],
+ AC_REQUIRE_CPP()
+ PKG_CHECK_MODULES(libprotobuf, [protobuf >= $1])
+ 
+-PKG_CHECK_MODULES(libprotobuf2, [protobuf < 3.2], [],
+-                  [AC_MSG_ERROR([OLA currently requires protobuf < 3.2, see issue 1192])])
++AC_MSG_CHECKING([protobuf library version])
++PROTOBUF_VERSION=`pkg-config --modversion protobuf`;
++AC_MSG_RESULT([$PROTOBUF_VERSION])
++AC_SUBST([PROTOBUF_VERSION])
+ 
+ AC_SUBST([libprotobuf_CFLAGS])
+ 
+diff --git a/protoc/CppFileGenerator.cpp b/protoc/CppFileGenerator.cpp
+index 518c17879..e7dd95ccb 100644
+--- a/protoc/CppFileGenerator.cpp
++++ b/protoc/CppFileGenerator.cpp
+@@ -196,14 +196,6 @@ void FileGenerator::GenerateBuildDescriptors(Printer* printer) {
+       "assigndescriptorsname", GlobalAssignDescriptorsName(m_output_name));
+     printer->Indent();
+ 
+-    // Make sure the file has found its way into the pool.  If a descriptor
+-    // is requested *during* static init then AddDescriptors() may not have
+-    // been called yet, so we call it manually.  Note that it's fine if
+-    // AddDescriptors() is called multiple times.
+-    printer->Print(
+-      "$adddescriptorsname$();\n",
+-      "adddescriptorsname", GlobalAddDescriptorsName(m_file->name()));
+-
+     // Get the file's descriptor from the pool.
+     printer->Print(
+       "const ::google::protobuf::FileDescriptor* file =\n"
+diff --git a/protoc/GeneratorHelpers.cpp b/protoc/GeneratorHelpers.cpp
+index 19609181e..6f619b5c0 100644
+--- a/protoc/GeneratorHelpers.cpp
++++ b/protoc/GeneratorHelpers.cpp
+@@ -104,11 +104,6 @@ string FilenameIdentifier(const string& filename) {
+   return result;
+ }
+ 
+-// Return the name of the AddDescriptors() function for a given file.
+-string GlobalAddDescriptorsName(const string& filename) {
+-  return "protobuf_AddDesc_" + FilenameIdentifier(filename);
+-}
+-
+ // Return the name of the AssignDescriptors() function for a given file.
+ string GlobalAssignDescriptorsName(const string& filename) {
+   return "protobuf_AssignDesc_" + FilenameIdentifier(filename);
+diff --git a/protoc/GeneratorHelpers.h b/protoc/GeneratorHelpers.h
+index 35efdbb04..fa91a915d 100644
+--- a/protoc/GeneratorHelpers.h
++++ b/protoc/GeneratorHelpers.h
+@@ -67,9 +67,6 @@ string StripProto(const string& filename);
+ // Convert a file name into a valid identifier.
+ string FilenameIdentifier(const string& filename);
+ 
+-// Return the name of the AddDescriptors() function for a given file.
+-string GlobalAddDescriptorsName(const string& filename);
+-
+ // Return the name of the AssignDescriptors() function for a given file.
+ string GlobalAssignDescriptorsName(const string& filename);
+ 

@@ -1,0 +1,108 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -806,6 +806,9 @@ AS_IF([test "${enable_rdm_tests}" = "yes"],
+ AS_IF([test "x$build_java_libs" = xyes],
+       [PROTOBUF_SUPPORT([2.4.0])],
+       [PROTOBUF_SUPPORT([2.3.0])])
++# Version 3.7 and above of protoc require some additional includes
++AC_CHECK_HEADERS([google/protobuf/io/strtod.h google/protobuf/stubs/logging.h \
++                  google/protobuf/stubs/stl_util.h])
+ 
+ 
+ # Doxygen
+
+--- a/protoc/StrUtil.cpp
++++ b/protoc/StrUtil.cpp
+@@ -41,6 +41,16 @@
+ 
+ #include "protoc/StrUtil.h"
+ 
++#ifdef HAVE_GOOGLE_PROTOBUF_IO_STRTOD_H
++#include <google/protobuf/io/strtod.h>
++#endif  // HAVE_GOOGLE_PROTOBUF_IO_STRTOD_H
++#ifdef HAVE_GOOGLE_PROTOBUF_STUBS_LOGGING_H
++#include <google/protobuf/stubs/logging.h>
++#endif  // HAVE_GOOGLE_PROTOBUF_STUBS_LOGGING_H
++#ifdef HAVE_GOOGLE_PROTOBUF_STUBS_STL_UTIL_H
++#include <google/protobuf/stubs/stl_util.h>
++#endif  // HAVE_GOOGLE_PROTOBUF_STUBS_STL_UTIL_H
++
+ #ifdef _WIN32
+ // MSVC has only _snprintf, not snprintf.
+ //
+
+--- a/protoc/StrUtil.cpp
++++ b/protoc/StrUtil.cpp
+@@ -41,6 +41,11 @@
+ 
+ #include "protoc/StrUtil.h"
+ 
++#if HAVE_CONFIG_H
++#include <config.h>
++#endif  // HAVE_CONFIG_H
++
++// Required for Protobuf 3.7 onwards
+ #ifdef HAVE_GOOGLE_PROTOBUF_IO_STRTOD_H
+ #include <google/protobuf/io/strtod.h>
+ #endif  // HAVE_GOOGLE_PROTOBUF_IO_STRTOD_H
+
+--- a/protoc/CppFileGenerator.cpp
++++ b/protoc/CppFileGenerator.cpp
+@@ -221,18 +221,12 @@ void FileGenerator::GenerateBuildDescriptors(Printer* printer) {
+     // AssignDescriptors().  All later times, waits for the first call to
+     // complete and then returns.
+     printer->Print(
+-      "namespace {\n"
+-      "\n"
+-      "GOOGLE_PROTOBUF_DECLARE_ONCE(protobuf_AssignDescriptors_once_);\n"
+-      "inline void protobuf_AssignDescriptorsOnce() {\n"
+-      "  ::google::protobuf::GoogleOnceInit(&protobuf_AssignDescriptors_once_,"
+-      "\n"
+-      "                 &$assigndescriptorsname$);\n"
++      "inline void protobuf_AssignDescriptorsOnce() {\n"
++      "  static ::google::protobuf::internal::once_flag once;\n"
++      "  ::google::protobuf::internal::call_once(once, $assigndescriptorsname$);\n"
+       "}\n"
+       "\n",
+       "assigndescriptorsname", GlobalAssignDescriptorsName(m_output_name));
+-
+-    printer->Print("}  // namespace\n");
+   }
+ }
+ 
+
+--- a/protoc/CppFileGenerator.cpp
++++ b/protoc/CppFileGenerator.cpp
+@@ -220,6 +220,24 @@ void FileGenerator::GenerateBuildDescriptors(Printer* printer) {
+     // protobuf_AssignDescriptorsOnce():  The first time it is called, calls
+     // AssignDescriptors().  All later times, waits for the first call to
+     // complete and then returns.
++
++    // We need to generate different code, depending on the version
++    // of protobuf we compile against
++#if GOOGLE_PROTOBUF_VERSION < 3008000
++    printer->Print(
++      "namespace {\n"
++      "\n"
++      "GOOGLE_PROTOBUF_DECLARE_ONCE(protobuf_AssignDescriptors_once_);\n"
++      "inline void protobuf_AssignDescriptorsOnce() {\n"
++      "  ::google::protobuf::GoogleOnceInit(&protobuf_AssignDescriptors_once_,"
++      "\n"
++      "                 &$assigndescriptorsname$);\n"
++      "}\n"
++      "\n",
++      "assigndescriptorsname", GlobalAssignDescriptorsName(m_output_name));
++
++    printer->Print("}  // namespace\n");
++#else
+     printer->Print(
+       "inline void protobuf_AssignDescriptorsOnce() {\n"
+       "  static ::google::protobuf::internal::once_flag once;\n"
+@@ -227,6 +245,7 @@ void FileGenerator::GenerateBuildDescriptors(Printer* printer) {
+       "}\n"
+       "\n",
+       "assigndescriptorsname", GlobalAssignDescriptorsName(m_output_name));
++#endif
+   }
+ }
+ 
