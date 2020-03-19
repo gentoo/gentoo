@@ -1468,7 +1468,7 @@ app-emacs/mailcrypt 3.5.9-r3: Provides a simple interface to public key cryptogr
 app-emacs/markdown-mode 2.3: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.6_pre20191010-r1: Major modes for MATLAB .m and .tlc files
 app-emacs/mediawiki 2.2.9-r1: MediaWiki client for Emacs
-app-emacs/meson-mode 0.2: A GNU Emacs major mode for Meson build-system files
+app-emacs/meson-mode 0.2-r1: A GNU Emacs major mode for Meson build-system files
 app-emacs/mew 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
@@ -4942,7 +4942,7 @@ dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a gener
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12 0.13.1-r1: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
-dev-libs/jsoncpp 1.9.2-r1 1.9.2-r2: C++ JSON reader and writer
+dev-libs/jsoncpp 1.9.1 1.9.2-r1 1.9.2-r2: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
@@ -8150,7 +8150,7 @@ dev-python/nosexcover 1.0.10 1.0.11 1.0.11-r1: Extends nose.plugins.cover to add
 dev-python/notebook 5.0.0 5.2.1 5.7.0 5.7.8: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
-dev-python/nototools 0_pre20200113 0_pre20200207: Noto fonts support tools and scripts plus web site generation
+dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.4.0-r1: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.4 0.6.5 0.6.6: Python to native compiler
@@ -10383,7 +10383,7 @@ dev-util/bloaty 0_p20170420: A size profiler for binaries
 dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.72.0: A system for large project software construction, simple to use and powerful
 dev-util/bpftrace 0.9.2 0.9.3 0.9.4 9999: High-level tracing language for eBPF
-dev-util/bsdiff 4.3-r3 4.3-r4: bsdiff: Binary Differencer using a suffix alg
+dev-util/bsdiff 4.3-r4: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r3: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
 dev-util/buildbot 0.9.12-r1 1.1.2 1.3.0 9999: BuildBot build automation system
@@ -12539,7 +12539,7 @@ media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation 
 media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts
 media-gfx/blender 2.79b-r2: 3D Creation/Animation/Publishing System
-media-gfx/cairosvg 2.0.3 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
+media-gfx/cairosvg 1.0.22 2.0.3 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.5 1.3.6: Grid-entry natural handwriting input panel
 media-gfx/chafa 1.0.1 1.2.1: versatile and fast Unicode/ASCII/ANSI graphics renderer
 media-gfx/clockphoto 1.1 1.2: Adjusts photo timestamps based on clock photos.
@@ -17947,7 +17947,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.3.1 5.3.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 80.0.3987.132 80.0.3987.149 81.0.4044.69 82.0.4083.0: Open-source version of Google Chrome web browser
+www-client/chromium 80.0.3987.149 81.0.4044.69 82.0.4083.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
