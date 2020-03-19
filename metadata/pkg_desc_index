@@ -2179,7 +2179,7 @@ app-misc/metromap 0.1.4-r2: Metromap is simple pygtk+2 programm for finding path
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mkcert 1.4.0: A zero-config tool to make locally trusted development certificates
 app-misc/mmv 1.01b_p18 1.01b_p18-r1: Move/copy/append/link multiple files according to a set of wildcard patterns
-app-misc/mosquitto 1.6.8: An Open Source MQTT v3 Broker
+app-misc/mosquitto 1.6.8 1.6.9: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows *.URL (text/x-uri) files
 app-misc/mtail 1.1.1-r3 1.2.0: Tail workalike, that performs output colourising
@@ -5019,7 +5019,7 @@ dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to
 dev-libs/libfido2 1.3.0-r1 1.3.1: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1 0.20.2: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0-r1 0.3.0-r1 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
-dev-libs/libfmt 5.3.0 6.1.2 9999: Small, safe and fast formatting library
+dev-libs/libfmt 6.1.2 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
@@ -8937,7 +8937,7 @@ dev-python/tox 2.9.1 3.2.1 3.12.1 3.14.3-r1 3.14.4 3.14.5: virtualenv-based auto
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/tqdm 4.23.3 4.33.0 4.40.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
-dev-python/traitlets 4.3.2: A configuration system for Python applications
+dev-python/traitlets 4.3.2 4.3.3: A configuration system for Python applications
 dev-python/transitions 0.7.1 0.7.2: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 2.4.0: Toolkit to convert between many translation formats
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
@@ -14499,7 +14499,7 @@ net-im/slack-bin 4.1.1 4.3.2-r1 4.3.2-r2: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
-net-im/telegram-desktop 1.9.14 1.9.19-r1 1.9.20: Official desktop client for Telegram
+net-im/telegram-desktop 1.9.14 1.9.21: Official desktop client for Telegram
 net-im/telegram-desktop-bin 1.9.12 1.9.14: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
@@ -15593,7 +15593,7 @@ sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
-sci-astronomy/kstars 3.3.9: Desktop Planetarium
+sci-astronomy/kstars 3.3.9 3.4.1: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
