@@ -375,7 +375,6 @@ app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration f
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/bastille 3.0.9-r1 3.0.9-r2: Bastille-Linux is a security hardening tool
-app-admin/bcfg2 1.2.4-r1: Configuration management tool
 app-admin/calamares 3.2.20: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
@@ -1637,7 +1636,7 @@ app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and 
 app-emulation/protontricks 1.4.1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.11 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 4.2.0-r1 4.2.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 4.2.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -2254,7 +2253,6 @@ app-misc/splitvt 1.6.6-r3: Splitting terminals into two shells
 app-misc/srm 1.2.15: A command-line compatible rm which destroys file contents before unlinking
 app-misc/supercat 0.5.5-r2 0.5.6: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4-r3: Scans for and fixes broken or messy symlinks
-app-misc/tails-installer 4.4.11-r1: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.5.1-r1: Taskwarrior is a command-line todo list manager
 app-misc/taskd 1.1.0-r2: Server part of Taskwarrior, a command-line todo list manager
 app-misc/tdfsb 0.0.10-r1: SDL based graphical file browser
@@ -2685,7 +2683,6 @@ app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.26 0.27: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.5: A simple converter from OpenDocument Text to plain text
 app-text/openjade 1.3.2-r9: Jade is an implementation of DSSSL for formatting SGML and XML documents
-app-text/openlp 2.4.6: Free church presentation software
 app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6 1.18 1.19.2.1 1.19.2.1-r1: Conversion between markup formats
@@ -3458,7 +3455,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
 dev-games/simgear 2019.1.1 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 1.2.4 1.2.5 1.3.1 1.3.2: A general purpose tile map editor
+dev-games/tiled 1.2.4 1.2.5 1.3.1 1.3.2 1.3.3: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
 dev-go/coveraggregator 0_pre20170216-r1: Cover profile aggregator for golang
@@ -16396,7 +16393,7 @@ sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 4.3.0: Tool for extracting data points from graphs
 sci-visualization/yt 3.3.5 3.4.0: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.6-r1: Interactive 3D mathematical function viewer
-sec-policy/apparmor-profiles 2.13.3 9999: A collection of profiles for the AppArmor application security system
+sec-policy/apparmor-profiles 2.13.3 2.13.4 9999: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20190201-r1 2.20190609-r1 9999: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20190201-r1 2.20190609-r1 9999: SELinux policy for accountsd
 sec-policy/selinux-acct 2.20190201-r1 2.20190609-r1 9999: SELinux policy for acct
@@ -16661,8 +16658,8 @@ sys-apps/acl 2.2.53: access control list utilities, libraries and headers
 sys-apps/agedu 20190630 20200206: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.13.3: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.13.3: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor 2.13.3 2.13.4: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor-utils 2.13.3 2.13.4: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.48-r3 9999: Extended attributes tools
@@ -17483,7 +17480,7 @@ sys-libs/gwenhywfar 4.20.0 4.20.2-r1 5.1.2: Multi-platform helper library for ot
 sys-libs/kpmcore 4.0.1 4.1.0: Library for managing partitions
 sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.8 1.5.4 1.5.6 1.6.3 2.0.8 2.0.9 2.1.1: An LDAP-like embedded database
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
-sys-libs/libapparmor 2.13.3 2.13.3-r1: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.13.3 2.13.3-r1 2.13.4: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27 2.32 2.33: POSIX 1003.1e capabilities
