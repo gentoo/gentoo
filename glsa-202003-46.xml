@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-46">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ClamAV, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>2020-03-19</announced>
+  <revised count="1">2020-03-19</revised>
+  <bug>702010</bug>
+  <bug>708424</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.102.2</unaffected>
+      <vulnerable range="lt">0.102.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ClamAV is a GPL virus scanner.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ClamAV. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could cause ClamAV to scan a specially crafted file,
+      possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ClamAV users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.102.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15961">CVE-2019-15961</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3123">CVE-2020-3123</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-19T20:43:36Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-19T20:46:54Z">whissi</metadata>
+</glsa>
