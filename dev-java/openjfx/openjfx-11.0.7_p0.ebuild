@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/11/glibc-compatibility.patch
 	"${FILESDIR}"/11/respect-user-cflags.patch
 	"${FILESDIR}"/11/use-system-swt-jar.patch
+	"${FILESDIR}"/11/wno-error.patch
 )
 
 S="${WORKDIR}/rt-${MY_PV}"
