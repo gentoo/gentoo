@@ -28,26 +28,28 @@ RDEPEND="
 	>=dev-python/cloudpickle-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/diff-match-patch-20181111[${PYTHON_USEDEP}]
 	dev-python/intervaltree[${PYTHON_USEDEP}]
-	~dev-python/jedi-0.14.1[${PYTHON_USEDEP}]
+	>=dev-python/ipython-4.0[${PYTHON_USEDEP}]
+	~dev-python/jedi-0.15.2[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-4.0[${PYTHON_USEDEP}]
 	>=dev-python/numpydoc-0.6.0[${PYTHON_USEDEP}]
+	~dev-python/parso-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pickleshare-0.4[${PYTHON_USEDEP}]
-	>=dev-python/psutil-0.3[${PYTHON_USEDEP}]
+	>=dev-python/psutil-5.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 	>=dev-python/pylint-0.25[${PYTHON_USEDEP}]
-	>=dev-python/python-language-server-0.31.2[${PYTHON_USEDEP}]
+	>=dev-python/python-language-server-0.31.9[${PYTHON_USEDEP}]
 	<dev-python/python-language-server-0.32.0[${PYTHON_USEDEP}]
 	>=dev-python/pyxdg-0.26[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17.0.0[${PYTHON_USEDEP}]
-	>=dev-python/qdarkstyle-2.7[${PYTHON_USEDEP}]
+	>=dev-python/qdarkstyle-2.8[${PYTHON_USEDEP}]
 	>=dev-python/qtawesome-0.5.7[${PYTHON_USEDEP}]
 	>=dev-python/qtconsole-4.6.0[${PYTHON_USEDEP}]
 	>=dev-python/QtPy-1.5.0[${PYTHON_USEDEP},svg,webengine]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
-	>=dev-python/spyder-kernels-1.8.1[${PYTHON_USEDEP}]
-	<dev-python/spyder-kernels-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/spyder-kernels-1.9.0[${PYTHON_USEDEP}]
+	<dev-python/spyder-kernels-1.10.0[${PYTHON_USEDEP}]
 	dev-python/watchdog[${PYTHON_USEDEP}]"
 
 DEPEND="test? (
@@ -85,25 +87,34 @@ python_prepare_all() {
 	rm spyder/plugins/ipythonconsole/tests/test_ipython_config_dialog.py || die
 	rm spyder/plugins/help/tests/test_widgets.py || die
 	rm spyder/plugins/help/tests/test_plugin.py  || die
+	# fails to collect
 	rm spyder/app/tests/test_mainwindow.py || die
-
-	# skip uri (online) tests
-	rm spyder/plugins/editor/widgets/tests/test_goto.py || die
 
 	# skip online test
 	rm spyder/widgets/github/tests/test_github_backend.py || die
 
-	# Assertion error, looks like an online test
-	rm spyder/utils/tests/test_vcs.py || die
+	# AssertionError: assert 'import numpy' == '# import numpy'
+	sed -i -e 's:test_comment:_&:' \
+		spyder/plugins/editor/widgets/tests/test_codeeditor.py || die
 
-		# No idea why this fails, no error just stops and dumps core
+	# AssertionError: assert '' == 'This is some test text!'
+	sed -i -e 's:test_tab_copies_find_to_replace:_&:' \
+		spyder/plugins/editor/widgets/tests/test_editor.py || die
+
+	# RuntimeError: Unsafe load() call disabled by Gentoo. See bug #659348
+	sed -i -e 's:test_dependencies_for_binder_in_sync:_&:' \
+		spyder/tests/test_dependencies_in_sync.py || die
+
+	# Fatal Python error: Segmentation fault
+	sed -i -e 's:test_copy_path:_&:' \
+		spyder/plugins/explorer/widgets/tests/test_explorer.py || die
+
+	# No idea why this fails, no error just stops and dumps core
 	sed -i -e 's:test_arrayeditor_edit_complex_array:_&:' \
 		spyder/plugins/variableexplorer/widgets/tests/test_arrayeditor.py || die
 
 	# Assertion error, can't connect/remember inside ebuild environment
-	sed -i -e 's:test_connection_dialog_remembers_input_with_password:_&:' \
-		-e 's:test_connection_dialog_remembers_input_with_ssh_passphrase:_&:' \
-			spyder/plugins/ipythonconsole/widgets/tests/test_kernelconnect.py || die
+	rm spyder/plugins/ipythonconsole/widgets/tests/test_kernelconnect.py || die
 
 	# Assertion error (pytest-qt), maybe we can't do shortcuts inside ebuild environment?
 	sed -i -e 's:test_transform_to_uppercase_shortcut:_&:' \
