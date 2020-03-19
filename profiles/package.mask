@@ -185,7 +185,6 @@ dev-python/gevent-socketio
 dev-python/gitlabform
 dev-python/globre
 dev-python/glymur
-dev-python/hiredis
 dev-python/hiro
 dev-python/httreplay
 dev-python/husl
