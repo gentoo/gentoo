@@ -1,0 +1,36 @@
+From 31b0ec79d4d58077bbb391c170fe9fef08d460a6 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Fri, 15 Nov 2019 12:07:37 +0100
+Subject: Make it compile against 5.14 beta3
+
+---
+ src/ksieveui/editor/webengine/sieveeditorwebengineview.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/ksieveui/editor/webengine/sieveeditorwebengineview.cpp b/src/ksieveui/editor/webengine/sieveeditorwebengineview.cpp
+index d4968dc..87305e9 100644
+--- a/src/ksieveui/editor/webengine/sieveeditorwebengineview.cpp
++++ b/src/ksieveui/editor/webengine/sieveeditorwebengineview.cpp
+@@ -16,6 +16,8 @@
+ */
+ 
+ #include "sieveeditorwebengineview.h"
++#include <qtwebenginewidgetsversion.h>
++
+ #include <KLocalizedString>
+ #include <QContextMenuEvent>
+ #include <QMenu>
+@@ -61,7 +63,11 @@ void SieveEditorWebEngineView::downloadRequested(QWebEngineDownloadItem *downloa
+     const QString filename = QFileDialog::getSaveFileName(this, i18n("Save Web Page"));
+     if (!filename.isEmpty()) {
+         download->setSavePageFormat(QWebEngineDownloadItem::SingleHtmlSaveFormat);
++#if QTWEBENGINEWIDGETS_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++        download->setDownloadFileName(filename);
++#else
+         download->setPath(filename);
++#endif
+         download->accept();
+     } else {
+         download->cancel();
+-- 
+cgit v1.1
