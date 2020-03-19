@@ -466,7 +466,7 @@ python_setup() {
 		ewarn "Dependencies won't be satisfied, and PYTHON_SINGLE_TARGET flags will be ignored."
 
 		python_export "${impls[0]}" EPYTHON PYTHON
-		python_wrapper_setup
+		_python_wrapper_setup
 		einfo "Using ${EPYTHON} to build"
 		return
 	fi
@@ -484,7 +484,7 @@ python_setup() {
 			fi
 
 			python_export "${impl}" EPYTHON PYTHON
-			python_wrapper_setup
+			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 		fi
 	done

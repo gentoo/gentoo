@@ -950,6 +950,21 @@ python_doheader() {
 # @FUNCTION: python_wrapper_setup
 # @USAGE: [<path> [<impl>]]
 # @DESCRIPTION:
+# Backwards compatibility function.  The relevant API is now considered
+# private, please use python_setup instead.
+python_wrapper_setup() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	eqawarn "python_wrapper_setup() is part of private eclass API."
+	eqawarn "Please call python_setup() instead."
+
+	_python_wrapper_setup "${@}"
+}
+
+# @FUNCTION: _python_wrapper_setup
+# @USAGE: [<path> [<impl>]]
+# @INTERNAL
+# @DESCRIPTION:
 # Create proper 'python' executable and pkg-config wrappers
 # (if available) in the directory named by <path>. Set up PATH
 # and PKG_CONFIG_PATH appropriately. <path> defaults to ${T}/${EPYTHON}.
@@ -961,7 +976,7 @@ python_doheader() {
 # be assumed to contain proper wrappers already and only environment
 # setup will be done. If wrapper update is requested, the directory
 # shall be removed first.
-python_wrapper_setup() {
+_python_wrapper_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local workdir=${1:-${T}/${EPYTHON}}
