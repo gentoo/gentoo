@@ -76,7 +76,7 @@ REQUIRED_USE="|| ( alsa pulseaudio )
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/1.9.20-gcc9.patch"
+	"${FILESDIR}/1.9.21-icon.patch"
 )
 
 src_configure() {
