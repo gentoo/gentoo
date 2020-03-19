@@ -10028,7 +10028,7 @@ dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
-dev-ruby/rubyzip 1.2.2 1.3.0 2.0.0 2.1.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
+dev-ruby/rubyzip 1.3.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 4.6.6 5.0.0 5.1.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
@@ -10679,7 +10679,8 @@ dev-util/strace 4.26 5.3 5.4 5.5 9999: A useful diagnostic, instructional, and d
 dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.79.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
-dev-util/sysdig 0.26.4: A system exploration and troubleshooting tool
+dev-util/sysdig 0.26.4 0.26.4-r1: A system exploration and troubleshooting tool
+dev-util/sysdig-kmod 0.26.4: Kernel module for dev-util/sysdig
 dev-util/sysprof 3.32.0 3.34.1 3.34.1-r1: System-wide Linux Profiler
 dev-util/sysprof-capture 3.34.1 3.34.1-r1: Static library for sysprof capture data generation
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
