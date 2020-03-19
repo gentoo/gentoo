@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE default icon themes"
-LICENSE="GPL-2"
+LICENSE="CC-BY-SA-3.0 CC-PD GPL-1+"
 SLOT="0"
 
 COMMON_DEPEND=">=x11-themes/hicolor-icon-theme-0.10"

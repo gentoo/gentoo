@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE default icon themes"
-LICENSE="GPL-2"
+LICENSE="CC-BY-SA-3.0 CC-PD GPL-1+"
 SLOT="0"
 
 COMMON_DEPEND=">=x11-themes/hicolor-icon-theme-0.10"
