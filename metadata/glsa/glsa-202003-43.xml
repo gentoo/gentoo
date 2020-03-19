@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-43">
+  <title>Apache Tomcat: Multiple vulnerabilities</title>
+  <synopsis> Multiple vulnerabilities have been found in Apache Tomcat, the
+    worst of which could lead to arbitrary code execution. 
+  </synopsis>
+  <product type="ebuild">tomcat</product>
+  <announced>2020-03-19</announced>
+  <revised count="1">2020-03-19</revised>
+  <bug>692402</bug>
+  <bug>706208</bug>
+  <bug>710656</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/tomcat" auto="yes" arch="*">
+      <unaffected range="ge">8.5.51</unaffected>
+      <unaffected range="ge">7.0.100</unaffected>
+      <vulnerable range="lt">8.5.51</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache Tomcat is a Servlet-3.0/JSP-2.2 Container.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Apache Tomcat. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly smuggle HTTP requests or execute arbitrary
+      code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache Tomcat 7.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-7.0.100:7"
+    </code>
+    
+    <p>All Apache Tomcat 8.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-8.5.51:8.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-0221">CVE-2019-0221</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12418">CVE-2019-12418</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17563">CVE-2019-17563</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1938">CVE-2020-1938</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-19T17:09:01Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-19T17:16:05Z">whissi</metadata>
+</glsa>
