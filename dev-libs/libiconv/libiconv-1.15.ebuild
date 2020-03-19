@@ -15,6 +15,7 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sh ~
 IUSE="prefix static-libs"
 
 DEPEND="!sys-libs/glibc
+	!sys-libs/musl
 	!userland_GNU? ( !sys-apps/man-pages )"
 RDEPEND="${DEPEND}"
 
