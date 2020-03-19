@@ -37,6 +37,8 @@ DEPEND="${PYTHON_DEPS}
 	)
 "
 
+PATCHES=( "${FILESDIR}/${PN}-${PV}-Fix-build.patch" )
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
