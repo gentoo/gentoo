@@ -272,6 +272,9 @@ src_configure() {
 			linker = "$(usex system-llvm lld rust-lld)"
 		EOF
 	fi
+
+	einfo "Rust configured with the following settings:"
+	cat "${S}"/config.toml || die
 }
 
 src_compile() {
