@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2:= )
-	lzma? ( app-arch/lzma:= )
+	lzma? ( app-arch/xz-utils )
 	ssl? (
 		gnutls? (
 			dev-libs/nettle:0=
