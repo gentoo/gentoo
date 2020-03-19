@@ -118,6 +118,7 @@ REQUIRED_USE="!minimal? (
 	xephyr? ( kdrive )"
 
 UPSTREAMED_PATCHES=(
+	"${FILESDIR}"/${P}-Fix-building-with-fno-common.patch
 )
 
 PATCHES=(
