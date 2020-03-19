@@ -763,8 +763,8 @@ app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
 app-cdr/cdck 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
 app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel cd-cases
 app-cdr/cddetect 2.1: Tool for detecting the type of a CD/DVD without mounting it
-app-cdr/cdemu 3.2.3 3.2.4: Command-line tool for controlling cdemu-daemon
-app-cdr/cdemu-daemon 3.2.3 3.2.4: Daemon of the CDEmu optical media image mounting suite
+app-cdr/cdemu 3.2.4: Command-line tool for controlling cdemu-daemon
+app-cdr/cdemu-daemon 3.2.4: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrtools 3.02_alpha09 3.02_alpha09-r2: A set of tools for CD/DVD reading and recording, including cdrecord
@@ -781,7 +781,7 @@ app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for opt
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
 app-cdr/extract-xiso 2.7.1: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
-app-cdr/gcdemu 3.2.3 3.2.4: Gtk+ GUI for controlling cdemu-daemon
+app-cdr/gcdemu 3.2.4: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/geteltorito 0.6: El Torito boot image extractor
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
 app-cdr/gtkcdlabel 1.15: A GUI for cdlabelgen that generates CD labels
@@ -2424,11 +2424,11 @@ app-portage/g-sorcery 0.2.1-r1 9999: framework for ebuild generators
 app-portage/gemato 14.3 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.4.6 0.4.7 0.4.8 9999: Collection of administration scripts for Gentoo
-app-portage/gentoopm 0.3.0 0.3.1 9999: A common interface to Gentoo package managers
+app-portage/gentoopm 0.3.1 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/golop 0.0.1 0.0.1-r1 9999: A pure Go re-implementation of genlop
 app-portage/gpytage 0.3.0_rc1-r1: GTK Utility to help manage Portage's user config files
-app-portage/gpyutils 0.2.2 0.3 0.4 0.4.1 9999: Utitilies for maintaining Python packages
+app-portage/gpyutils 0.4.1 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.6-r1 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3-r1 9999: g-sorcery backend for elisp packages
 app-portage/gverify 2: gentoo.git signature verification tool
@@ -2437,7 +2437,7 @@ app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
-app-portage/mgorny-dev-scripts 3 4: Handy scripts for ebuild development and more
+app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
@@ -3187,7 +3187,7 @@ dev-cpp/libcmis 0.5.2-r1 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
-dev-cpp/libjson-rpc-cpp 1.2.0 1.3.0: JSON-RPC (1.0 & 2.0) framework for C++
+dev-cpp/libjson-rpc-cpp 1.3.0: JSON-RPC (1.0 & 2.0) framework for C++
 dev-cpp/libmcpp 2.7.2-r2 2.7.2-r3: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.40.1 3.0.1: C++ wrapper for the libxml2 XML parser library
 dev-cpp/libxsd-frontend 2.0.0: A compiler frontend for the W3C XML Schema definition language
@@ -4942,7 +4942,7 @@ dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a gener
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12 0.13.1-r1: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
-dev-libs/jsoncpp 1.9.1 1.9.2-r1 1.9.2-r2: C++ JSON reader and writer
+dev-libs/jsoncpp 1.9.2-r1 1.9.2-r2: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
@@ -5067,7 +5067,7 @@ dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
-dev-libs/libmirage 3.2.3 3.2.4: CD and DVD image access library
+dev-libs/libmirage 3.2.4: CD and DVD image access library
 dev-libs/libmissing 1.1.0: Library with missing functions based on GNUlib
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.6: Modbus library which supports RTU communication over a serial line or a TCP link
@@ -7944,7 +7944,7 @@ dev-python/irc 16.3 17.1 18.0.0-r1: IRC client framework written in Python
 dev-python/iso3166 0.8: Self-contained ISO 3166-1 country definitions.
 dev-python/iso8601 0.1.10 0.1.11 0.1.12: Simple module to parse ISO 8601 dates
 dev-python/iso_639 0.4.5: Python library for ISO 639 standard
-dev-python/isodate 0.5.4 0.6.0 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
+dev-python/isodate 0.6.0 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 4.2.5 4.3.15 4.3.21_p2: A python utility/library to sort imports
 dev-python/itsdangerous 0.24 0.24-r1 1.1.0: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
@@ -8228,7 +8228,7 @@ dev-python/paramiko 2.4.2 2.6.0 2.7.1: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
 dev-python/parsley 1.3: A Pattern-Matching Language Based on OMeta and Python
-dev-python/parso 0.6.0 0.6.1 0.6.2: a python parser that supports error recovery and round-trip parsing
+dev-python/parso 0.6.1 0.6.2: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 0.3.8: Appendable key-value storage
 dev-python/parver 0.1.1 0.2.1: Parse and manipulate version numbers
 dev-python/passlib 1.7.1-r1 1.7.1-r2 1.7.2: Password hashing framework supporting over 20 schemes
@@ -8400,7 +8400,7 @@ dev-python/pygame_sdl2 6.99.12.4-r2: Reimplementation of portions of the pygame 
 dev-python/pygcrypt 1.0.0: CFFI interface to dev-libs/libgcrypt
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pyghmi 1.0.22-r1 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 0.28.2 1.0.2 1.0.3 1.1.0 1.1.1: Python bindings for libgit2
+dev-python/pygit2 1.0.3 1.1.1: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.3.1 2.4.2 2.5.2 2.6.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
@@ -8808,7 +8808,7 @@ dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.0 1.4.2 9999: Python 3 library for XMPP
 dev-python/smmap 3.0.1: A pure Python implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
-dev-python/snakeoil 0.7.5 0.8.7 0.8.8 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.7.5 0.8.8 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5-r2 0.5.1: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.1 2.0.0: Stemmer algorithms generated from Snowball algorithms
@@ -10400,7 +10400,7 @@ dev-util/byacc 20190617 20191125: the best variant of the Yacc parser generator
 dev-util/cargo-ebuild 0.2.0 0.3.0: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-tree 0.28.0 0.29.0: Cargo subcommand that visualizes crate dependency graph in a tree-like format
 dev-util/catalyst 3.0.8 3.0.9 9999: Release metatool used for creating releases based on Gentoo Linux
-dev-util/catfish 1.4.10 1.4.12 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
+dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.13.1: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.2 3.7.4 3.7.5 3.7.6 3.7.7 3.7.7-r1 3.7.7-r2 3.7.8: fast compiler cache
@@ -10610,7 +10610,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33-r1 4.20.3 5.3.7 5.4.20: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.5 0.7.6 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.6 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
@@ -11119,7 +11119,7 @@ games-emulation/nestopia 1.47_p20170105 9999: A portable Nintendo Entertainment 
 games-emulation/nestra 0.66-r3: NES emulation for Linux/x86
 games-emulation/openmsx 0.14.0: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.4.0-r1 1.4.0-r2 1.6.0_rc 9999: A PlayStation 2 emulator
-games-emulation/pcsxr 1.9.94-r2 1.9.94_p20190306 9999: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
+games-emulation/pcsxr 1.9.94_p20190306 9999: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/ppsspp 1.5.4-r2 9999: A PSP emulator written in C++
 games-emulation/snes9x 1.59.2 1.60: Super Nintendo Entertainment System (SNES) emulator
 games-emulation/stella 5.1.3: Multi-platform Atari 2600 VCS Emulator
@@ -12539,7 +12539,7 @@ media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation 
 media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts
 media-gfx/blender 2.79b-r2: 3D Creation/Animation/Publishing System
-media-gfx/cairosvg 1.0.22 2.0.3 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
+media-gfx/cairosvg 2.0.3 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.5 1.3.6: Grid-entry natural handwriting input panel
 media-gfx/chafa 1.0.1 1.2.1: versatile and fast Unicode/ASCII/ANSI graphics renderer
 media-gfx/clockphoto 1.1 1.2: Adjusts photo timestamps based on clock photos.
@@ -13861,7 +13861,7 @@ media-video/atomicparsley 0.9.0: Command line program for manipulating iTunes-st
 media-video/atomicparsley-wez 0.9.6: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
 media-video/avidemux 2.7.3 2.7.4-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/baka-mplayer 2.0.4 2.0.4-r1 9999: Cross-platform libmpv-based multimedia player with uncluttered design
-media-video/bashnapi 1.3.5 2.0.0: Napiprojekt.pl subtitle downloader in bash
+media-video/bashnapi 2.0.0: Napiprojekt.pl subtitle downloader in bash
 media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler
 media-video/bdsup2sub 4.0.0-r2: A tool to convert and tweak bitmap based subtitle streams
 media-video/binkplayer 1.99w: Bink Video! Player
@@ -14703,7 +14703,7 @@ net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for soft
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
 net-libs/mbedtls 2.17.0 2.19.1-r2: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 2.1.20190625 2.1.20190824 2.1.20191224: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.1.20190824 2.1.20191224: UPnP client library and a simple UPnP client
 net-libs/nDPI 2.0 2.2 2.8 3.0-r1 3.0-r2 3.2 9999: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nativebiginteger 0.9.36-r1 0.9.42: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2: HTTP and WebDAV client library
@@ -15380,7 +15380,7 @@ net-wireless/bladerf 2018.08 2019.07 9999: Libraries for supporing the BladeRF h
 net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.7.3 0.11.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.3.4-r1: A Bluetooth configuration tool
-net-wireless/blueman 2.1.1-r1 2.1.2 9999: Simple and intuitive GTK+ Bluetooth Manager
+net-wireless/blueman 2.1.2 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 5.52-r1 5.53 5.54: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
@@ -16860,7 +16860,7 @@ sys-apps/pcsc-lite 1.8.25-r1 1.8.26: PC/SC Architecture smartcard middleware lib
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.5 1.5.6: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.9 0.10.11 9999: a framework for package management
+sys-apps/pkgcore 0.10.11 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
@@ -17420,7 +17420,7 @@ sys-fs/udiskie 1.7.7 2.0.4 2.1.0: An automatic disk mounting service using udisk
 sys-fs/udisks 1.0.5-r3 2.8.4: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on FUSE
-sys-fs/vhba 20190831 20200106: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
+sys-fs/vhba 20200106: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.8 3.1.9: xfs dump/restore utilities
 sys-fs/xfsprogs 4.19.0 5.4.0-r1 5.5.0: xfs filesystem utilities
@@ -18778,7 +18778,7 @@ x11-terms/st 0.8.2 9999: simple terminal implementation for X
 x11-terms/terminator 1.91: Multiple GNOME terminals in one window
 x11-terms/terminology 1.6.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0: A drop down terminal, similar to the consoles found in first person shooters
-x11-terms/xfce4-terminal 0.8.8 0.8.9.1: A terminal emulator for the Xfce desktop environment
+x11-terms/xfce4-terminal 0.8.9.1: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 337 351 353: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
@@ -18973,18 +18973,18 @@ x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12 0.13 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13 0.15: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2 3.0.5: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
-xfce-base/exo 0.12.8 0.12.10 0.12.11: Extensions, widgets and framework library with session support for Xfce
+xfce-base/exo 0.12.11: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.14.1 4.15.0 4.15.1: Unified widget and session management libs for Xfce
+xfce-base/libxfce4ui 4.14.1 4.15.1: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.0: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.8.9 1.8.11 1.8.12: File manager for the Xfce desktop environment
+xfce-base/thunar 1.8.12: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.14.1 4.14.3 4.15.0 4.15.1: Panel for the Xfce desktop environment
-xfce-base/xfce4-session 4.14.0 4.14.1: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.14.1 4.14.2 4.15.0: Configuration system for the Xfce desktop environment
+xfce-base/xfce4-panel 4.14.3 4.15.1: Panel for the Xfce desktop environment
+xfce-base/xfce4-session 4.14.1: A session manager for the Xfce desktop environment
+xfce-base/xfce4-settings 4.14.2 4.15.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1: A configuration management system for Xfce
-xfce-base/xfdesktop 4.14.1 4.14.2: Desktop manager for the Xfce desktop environment
+xfce-base/xfdesktop 4.14.2: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.14.0-r1: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r4: A port of the GNOME multiload applet for the Xfce panel
@@ -18994,7 +18994,7 @@ xfce-extra/thunar-shares-plugin 0.3.0: Thunar plugin to share files using Samba
 xfce-extra/thunar-vcs-plugin 0.2.0: Adds Subversion and GIT actions to the context menu of thunar
 xfce-extra/thunar-volman 0.9.5: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
-xfce-extra/tumbler 0.2.7 0.2.8: A thumbnail service for Thunar
+xfce-extra/tumbler 0.2.8: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.2.1: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-clipman-plugin 1.4.3 1.4.4: A clipboard manager plug-in for the Xfce panel
@@ -19025,7 +19025,7 @@ xfce-extra/xfce4-screensaver 0.1.8: Screen saver and locker (port of MATE screen
 xfce-extra/xfce4-screenshooter 1.9.7: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.92-r1: A panel plug-in for acpi, lm-sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.1: Smart bookmark plug-in for the Xfce desktop environment
-xfce-extra/xfce4-statusnotifier-plugin 0.2.1 0.2.2: A panel area for fd.o Status Notifiers (systray replacement)
+xfce-extra/xfce4-statusnotifier-plugin 0.2.2: A panel area for fd.o Status Notifiers (systray replacement)
 xfce-extra/xfce4-systemload-plugin 1.2.3: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.2.2: Easy to use task manager
 xfce-extra/xfce4-time-out-plugin 1.1.0: A panel plug-in to take periodical breaks from the computer
@@ -19035,7 +19035,7 @@ xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the X
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.10.0 0.10.1: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.3.4 2.3.5 2.4.2 2.4.3: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 2.3.5 2.4.3: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment
