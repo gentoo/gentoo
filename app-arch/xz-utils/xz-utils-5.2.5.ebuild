@@ -30,7 +30,8 @@ SLOT="0"
 IUSE="elibc_FreeBSD +extra-filters nls static-libs +threads"
 
 RDEPEND="!<app-arch/lzma-4.63
-	!<app-arch/p7zip-4.57"
+	!<app-arch/p7zip-4.57
+	!<app-i18n/man-pages-de-2.16"
 DEPEND="${RDEPEND}"
 
 # Tests currently do not account for smaller feature set
