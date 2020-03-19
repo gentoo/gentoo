@@ -15,3 +15,5 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DOCS=( README.md )
+
+SITEFILE="50${PN}-gentoo.el"
