@@ -6,22 +6,22 @@ EAPI=7
 inherit kernel-build
 
 MY_P=linux-${PV}
-# https://git.archlinux.org/svntogit/packages.git/log/trunk/config?h=packages/linux
-AMD64_CONFIG_VER=5.5.5-arch1
-AMD64_CONFIG_HASH=e4d4ca36741d228042185e2a9047cd88fb5b4169
-# https://git.archlinux32.org/packages/log/core/linux/config.i686
-I686_CONFIG_VER=5.5.6-arch1
-I686_CONFIG_HASH=7d53d8a42f68648bce5b002aaf8c2b14e6298275
+# https://git.archlinux.org/svntogit/packages.git/log/trunk/config?h=packages/linux-lts
+AMD64_CONFIG_VER=5.4.24.arch1
+AMD64_CONFIG_HASH=c060a2f4e686e06679d9cf9bbab5fdf423e5a402
+# https://git.archlinux32.org/packages/log/core/linux-lts/config
+I686_CONFIG_VER=5.4.24.arch1
+I686_CONFIG_HASH=3f4ba0851a9e9a3809fdec4091335182b0f1885a
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
 	amd64? (
-		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${AMD64_CONFIG_HASH}
+		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${AMD64_CONFIG_HASH}
 			-> linux-${AMD64_CONFIG_VER}.amd64.config
 	)
 	x86? (
-		https://git.archlinux32.org/packages/plain/core/linux/config.i686?id=${I686_CONFIG_HASH}
+		https://git.archlinux32.org/packages/plain/core/linux-lts/config?id=${I686_CONFIG_HASH}
 			-> linux-${I686_CONFIG_VER}.i686.config
 	)"
 S=${WORKDIR}/${MY_P}

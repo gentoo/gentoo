@@ -5,17 +5,20 @@ EAPI=7
 
 inherit kernel-build
 
-MY_P=linux-${PV}
+MY_P=linux-${PV%.*}
+GENPATCHES_P=genpatches-${PV%.*}-${PV##*.}
 # https://git.archlinux.org/svntogit/packages.git/log/trunk/config?h=packages/linux-lts
-AMD64_CONFIG_VER=5.4.18.arch1
-AMD64_CONFIG_HASH=f81c67d74936ab16f9356add6600be0de003abb4
+AMD64_CONFIG_VER=5.4.24.arch1
+AMD64_CONFIG_HASH=c060a2f4e686e06679d9cf9bbab5fdf423e5a402
 # https://git.archlinux32.org/packages/log/core/linux-lts/config
-I686_CONFIG_VER=5.4.18.arch1
-I686_CONFIG_HASH=c4c120c5fde43a49d84db7d60a9722e2ca1d1c2a
+I686_CONFIG_VER=5.4.24.arch1
+I686_CONFIG_HASH=3f4ba0851a9e9a3809fdec4091335182b0f1885a
 
-DESCRIPTION="Linux kernel built from vanilla upstream sources"
+DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
 		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${AMD64_CONFIG_HASH}
 			-> linux-${AMD64_CONFIG_VER}.amd64.config
@@ -30,9 +33,14 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	!sys-kernel/vanilla-kernel:${SLOT}
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 
 src_prepare() {
+	local PATCHES=(
+		# meh, genpatches have no directory
+		"${WORKDIR}"/*.patch
+	)
 	default
 
 	# prepare the default config
