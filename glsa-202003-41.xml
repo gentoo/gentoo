@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-41">
+  <title>GNU FriBidi: Heap-based buffer overflow</title>
+  <synopsis>A heap-based buffer overflow in GNU FriBidi might allow remote
+    attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">fribidi</product>
+  <announced>2020-03-19</announced>
+  <revised count="1">2020-03-19</revised>
+  <bug>699338</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/fribidi" auto="yes" arch="*">
+      <unaffected range="ge">1.0.8</unaffected>
+      <vulnerable range="lt">1.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Free Implementation of the Unicode Bidirectional Algorithm.</p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow vulnerability was found in GNU FriBidi.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a memory corruption, execute
+      arbitrary code with the privileges of the process or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FriBidi users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/fribidi-1.0.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18397">CVE-2019-18397</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-19T16:36:42Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-19T16:41:09Z">whissi</metadata>
+</glsa>
