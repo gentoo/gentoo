@@ -1,0 +1,88 @@
+From 24506c2af8d1904a99538543804306c6c2b81ca2 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Wed, 6 Nov 2019 13:57:20 +0100
+Subject: make the libssh finder ensure the new ssh target is set
+
+Summary:
+starting with 0.9.2 the libssh cmake config defines a new ssh imported
+target, use this as the new gold standard and ensure older versions
+are compatible
+
+broken ubuntu: no cmake config -> manual finder -> target injected
+0.9.0 and earlier: cmake config -> target injected
+0.9.2: cmake config -> target already defined; noop
+
+(0.9.1 is broken as it neither matches the old nor the new expectation)
+
+Test Plan:
+no cmake config -> target injected
+older cmake config -> target injected
+newer cmake config (with merge request) -> noop
+
+Subscribers: kde-frameworks-devel, kfm-devel
+
+Tags: #dolphin, #frameworks
+
+Differential Revision: https://phabricator.kde.org/D25170
+---
+ cmake/Findlibssh.cmake | 18 ++++++++++++++++++
+ sftp/CMakeLists.txt    |  2 +-
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/Findlibssh.cmake b/cmake/Findlibssh.cmake
+index bf6d797..f37846f 100644
+--- a/cmake/Findlibssh.cmake
++++ b/cmake/Findlibssh.cmake
+@@ -32,6 +32,19 @@
+ # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ # SUCH DAMAGE.
+ 
++# Define an imported target to have compatibility with newer libssh and so
++# we have a single target to use regardless of the code path taken in the
++# finder and the actual libssh version defining the target.
++macro(libssh_ensure_imported_target)
++  if(NOT TARGET ssh)
++      add_library(ssh SHARED IMPORTED)
++      set_target_properties(ssh PROPERTIES
++          IMPORTED_LOCATION "${LIBSSH_LIBRARIES}"
++          INTERFACE_INCLUDE_DIRECTORIES "${LIBSSH_INCLUDE_DIR}"
++      )
++  endif()
++endmacro()
++
+ # We prefer the config, but on Ubuntu 18.04 LTS (and to some extent later
+ # versions it seems) they've not packaged the config properly. So, go for the
+ # config by default and fall back to manual lookup iff the config was not found.
+@@ -39,6 +52,9 @@
+ # https://bugs.launchpad.net/ubuntu/+source/libssh/+bug/1800135
+ find_package(libssh ${libssh_FIND_VERSION} NO_MODULE QUIET)
+ if(libssh_FOUND)
++  # Certain versions with config may not have the target, so make sure it's
++  # defined.
++  libssh_ensure_imported_target()
+   return()
+ endif()
+ 
+@@ -109,5 +125,7 @@ find_package_handle_standard_args(libssh
+                                   VERSION_VAR
+                                     LIBSSH_VERSION)
+ 
++libssh_ensure_imported_target()
++
+ # show the LIBSSH_INCLUDE_DIRS and LIBSSH_LIBRARIES variables only in the advanced view
+ mark_as_advanced(LIBSSH_INCLUDE_DIR LIBSSH_LIBRARIES)
+diff --git a/sftp/CMakeLists.txt b/sftp/CMakeLists.txt
+index cd09cd3..5d1eccb 100644
+--- a/sftp/CMakeLists.txt
++++ b/sftp/CMakeLists.txt
+@@ -22,7 +22,7 @@ target_link_libraries(kio_sftp
+    KF5::WidgetsAddons # KMessageBox
+    KF5::I18n
+    Qt5::Network
+-   ${LIBSSH_LIBRARIES})
++   ssh)
+ set_target_properties(kio_sftp PROPERTIES OUTPUT_NAME "sftp")
+ 
+ install(TARGETS kio_sftp DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
+-- 
+cgit v1.1

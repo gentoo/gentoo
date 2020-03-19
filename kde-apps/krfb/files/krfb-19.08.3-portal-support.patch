@@ -1,0 +1,27 @@
+From 80db244c7ddd98d284a1412540c8f9e368e86f65 Mon Sep 17 00:00:00 2001
+From: Jan Grulich <jgrulich@redhat.com>
+Date: Wed, 6 Nov 2019 12:05:06 +0100
+Subject: Un-break portal support
+
+Summary: We need to mention what wayland interfaces will be used, otherwise KWin will not let us to use them.
+
+Reviewers: apol
+
+Reviewed By: apol
+
+Differential Revision: https://phabricator.kde.org/D25167
+---
+ krfb/org.kde.krfb.desktop | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/krfb/org.kde.krfb.desktop b/krfb/org.kde.krfb.desktop
+index c610c5b..7cd0ac7 100755
+--- a/krfb/org.kde.krfb.desktop
++++ b/krfb/org.kde.krfb.desktop
+@@ -217,3 +217,4 @@ Comment[zh_HK]=桌面分享
+ Comment[zh_TW]=桌面分享
+ Categories=Qt;KDE;Network;RemoteAccess;
+ X-DBUS-ServiceName=org.kde.krfb
++X-KDE-Wayland-Interfaces=org_kde_kwin_fake_input,org_kde_kwin_remote_access_manager
+-- 
+cgit v1.1

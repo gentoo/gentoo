@@ -1,0 +1,203 @@
+From 3c287e282f84231f1e71482464e9593d7de27912 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Fri, 27 Sep 2019 08:59:21 +0200
+Subject: Port some deprecated methods
+
+---
+ renderer/renderjob.cpp                     | 3 ++-
+ src/assets/keyframes/view/keyframeview.cpp | 4 ++--
+ src/bin/bin.cpp                            | 2 +-
+ src/dvdwizard/dvdwizardvob.cpp             | 2 +-
+ src/lib/audio/audioCorrelation.cpp         | 3 ++-
+ src/lib/audio/fftCorrelation.cpp           | 4 ++--
+ src/lib/qtimerWithTime.cpp                 | 2 +-
+ src/lib/qtimerWithTime.h                   | 6 +++---
+ src/project/projectmanager.h               | 3 ++-
+ src/titler/unicodedialog.cpp               | 2 +-
+ 10 files changed, 17 insertions(+), 14 deletions(-)
+
+diff --git a/renderer/renderjob.cpp b/renderer/renderjob.cpp
+index 2214b37..c164bf0 100644
+--- a/renderer/renderjob.cpp
++++ b/renderer/renderjob.cpp
+@@ -23,6 +23,7 @@
+ #include <QStringList>
+ #include <QThread>
+ #include <QtDBus>
++#include <QElapsedTimer>
+ #include <utility>
+ // Can't believe I need to do this to sleep.
+ class SleepThread : QThread
+@@ -165,7 +166,7 @@ void RenderJob::start()
+             qWarning() << "No org.kde.JobViewServer registered, trying to start kuiserver";
+             if (QProcess::startDetached(QStringLiteral("kuiserver"))) {
+                 // Give it a couple of seconds to start
+-                QTime t;
++                QElapsedTimer t;
+                 t.start();
+                 while (!interface->isServiceRegistered(QStringLiteral("org.kde.JobViewServer")) && t.elapsed() < 3000) {
+                     SleepThread::msleep(100); // Sleep 100 ms
+diff --git a/src/assets/keyframes/view/keyframeview.cpp b/src/assets/keyframes/view/keyframeview.cpp
+index 7e63141..867408f 100644
+--- a/src/assets/keyframes/view/keyframeview.cpp
++++ b/src/assets/keyframes/view/keyframeview.cpp
+@@ -267,14 +267,14 @@ void KeyframeView::mouseDoubleClickEvent(QMouseEvent *event)
+ void KeyframeView::wheelEvent(QWheelEvent *event)
+ {
+     if (event->modifiers() & Qt::AltModifier) {
+-        if (event->delta() > 0) {
++        if (event->angleDelta().y() > 0) {
+             slotGoToPrev();
+         } else {
+             slotGoToNext();
+         }
+         return;
+     }
+-    int change = event->delta() > 0 ? -1 : 1;
++    int change = event->angleDelta().y() > 0 ? -1 : 1;
+     int pos = qBound(0, m_position + change, m_duration - 1);
+     emit seekToPos(pos);
+ }
+diff --git a/src/bin/bin.cpp b/src/bin/bin.cpp
+index 13c9b2a..c1127d0 100644
+--- a/src/bin/bin.cpp
++++ b/src/bin/bin.cpp
+@@ -222,7 +222,7 @@ public:
+                     // Draw usage counter
+                     int usage = index.data(AbstractProjectItem::UsageCount).toInt();
+                     if (usage > 0) {
+-                        subText.append(QString().sprintf(" [%d]", usage));
++                        subText.append(QString::asprintf(" [%d]", usage));
+                     }
+                     painter->drawText(r2, Qt::AlignLeft | Qt::AlignTop, subText, &bounding);
+ 
+diff --git a/src/dvdwizard/dvdwizardvob.cpp b/src/dvdwizard/dvdwizardvob.cpp
+index 337d046..f5c89d6 100644
+--- a/src/dvdwizard/dvdwizardvob.cpp
++++ b/src/dvdwizard/dvdwizardvob.cpp
+@@ -86,7 +86,7 @@ DvdWizardVob::DvdWizardVob(QWidget *parent)
+     m_view.button_down->setIcon(QIcon::fromTheme(QStringLiteral("go-down")));
+     m_vobList = new DvdTreeWidget(this);
+     auto *lay1 = new QVBoxLayout;
+-    lay1->setMargin(0);
++    lay1->setContentsMargins(0, 0, 0, 0);
+     lay1->addWidget(m_vobList);
+     m_view.list_frame->setLayout(lay1);
+     m_vobList->setColumnCount(3);
+diff --git a/src/lib/audio/audioCorrelation.cpp b/src/lib/audio/audioCorrelation.cpp
+index 706b48a..66552fa 100644
+--- a/src/lib/audio/audioCorrelation.cpp
++++ b/src/lib/audio/audioCorrelation.cpp
+@@ -14,6 +14,7 @@ the Free Software Foundation, either version 3 of the License, or
+ #include "kdenlive_debug.h"
+ #include "klocalizedstring.h"
+ #include <QTime>
++#include <QElapsedTimer>
+ #include <cmath>
+ #include <iostream>
+ 
+@@ -128,7 +129,7 @@ void AudioCorrelation::correlate(const qint64 *envMain, size_t sizeMain, const q
+ 
+     */
+ 
+-    QTime t;
++    QElapsedTimer t;
+     t.start();
+     for (int shift = -(int)sizeSub; shift <= (int)sizeMain; ++shift) {
+ 
+diff --git a/src/lib/audio/fftCorrelation.cpp b/src/lib/audio/fftCorrelation.cpp
+index c8119e9..6ed61c5 100644
+--- a/src/lib/audio/fftCorrelation.cpp
++++ b/src/lib/audio/fftCorrelation.cpp
+@@ -9,7 +9,7 @@ the Free Software Foundation, either version 3 of the License, or
+ */
+ 
+ #include "fftCorrelation.h"
+-
++#include <QElapsedTimer>
+ extern "C" {
+ #include "../external/kiss_fft/tools/kiss_fftr.h"
+ }
+@@ -35,7 +35,7 @@ void FFTCorrelation::correlate(const qint64 *left, const size_t leftSize, const
+ 
+ void FFTCorrelation::correlate(const qint64 *left, const size_t leftSize, const qint64 *right, const size_t rightSize, float *out_correlated)
+ {
+-    QTime t;
++    QElapsedTimer t;
+     t.start();
+ 
+     auto *leftF = new float[leftSize];
+diff --git a/src/lib/qtimerWithTime.cpp b/src/lib/qtimerWithTime.cpp
+index 1d8b46f..9c1b362 100644
+--- a/src/lib/qtimerWithTime.cpp
++++ b/src/lib/qtimerWithTime.cpp
+@@ -25,7 +25,7 @@ void QTimerWithTime::start(int msec)
+     m_time.start();
+ }
+ 
+-int QTimerWithTime::elapsed() const
++qint64 QTimerWithTime::elapsed() const
+ {
+     return m_time.elapsed();
+ }
+diff --git a/src/lib/qtimerWithTime.h b/src/lib/qtimerWithTime.h
+index ab3e1c7..93f0d53 100644
+--- a/src/lib/qtimerWithTime.h
++++ b/src/lib/qtimerWithTime.h
+@@ -20,7 +20,7 @@
+ #ifndef QTIMERWITHTIME_H
+ #define QTIMERWITHTIME_H
+ 
+-#include <QTime>
++#include <QElapsedTimer>
+ #include <QTimer>
+ 
+ class QTimerWithTime : public QTimer
+@@ -28,9 +28,9 @@ class QTimerWithTime : public QTimer
+     Q_OBJECT
+ public:
+     virtual void start(int msec);
+-    int elapsed() const;
++    qint64 elapsed() const;
+ 
+ private:
+-    QTime m_time;
++    QElapsedTimer m_time;
+ };
+ #endif
+diff --git a/src/project/projectmanager.h b/src/project/projectmanager.h
+index a8a5fbd..d91314c 100644
+--- a/src/project/projectmanager.h
++++ b/src/project/projectmanager.h
+@@ -18,6 +18,7 @@ the Free Software Foundation, either version 3 of the License, or
+ #include <QTime>
+ #include <QTimer>
+ #include <QUrl>
++#include <QElapsedTimer>
+ 
+ #include "timeline2/model/timelineitemmodel.hpp"
+ 
+@@ -182,7 +183,7 @@ private:
+ 
+     KdenliveDoc *m_project{nullptr};
+     std::shared_ptr<TimelineItemModel> m_mainTimelineModel;
+-    QTime m_lastSave;
++    QElapsedTimer m_lastSave;
+     QTimer m_autoSaveTimer;
+     QUrl m_startUrl;
+     QString m_loadClipsOnOpen;
+diff --git a/src/titler/unicodedialog.cpp b/src/titler/unicodedialog.cpp
+index d6b7382..f449aa2 100644
+--- a/src/titler/unicodedialog.cpp
++++ b/src/titler/unicodedialog.cpp
+@@ -409,7 +409,7 @@ void UnicodeWidget::slotPrevUnicode()
+ void UnicodeWidget::wheelEvent(QWheelEvent *event)
+ {
+     if (frame->underMouse()) {
+-        if (event->delta() > 0) {
++        if (event->angleDelta().y() > 0) {
+             slotNextUnicode();
+         } else {
+             slotPrevUnicode();
+-- 
+cgit v1.1
