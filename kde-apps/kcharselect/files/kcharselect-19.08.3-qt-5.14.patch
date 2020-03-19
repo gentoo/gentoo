@@ -1,0 +1,32 @@
+From 956b63170b2606fb274f0bd90399dac0ae9dbcd4 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Tue, 17 Sep 2019 13:41:01 +0200
+Subject: Make it compiles against qt5.14
+
+---
+ kcharselectdia.cc | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/kcharselectdia.cc b/kcharselectdia.cc
+index f1790b5..116cba4 100644
+--- a/kcharselectdia.cc
++++ b/kcharselectdia.cc
+@@ -265,7 +265,6 @@ void KCharSelectDia::toClipHTML()
+   QClipboard *cb = QApplication::clipboard();
+   QString input;
+   QString html;
+-  QString tempstring;
+   QChar   tempchar;
+   int i = 0;
+ 
+@@ -282,7 +281,7 @@ void KCharSelectDia::toClipHTML()
+         }
+       else
+         {
+-          html.append(tempstring.sprintf("&#x%x;", tempchar.unicode()));
++          html.append(QString::asprintf("&#x%x;", tempchar.unicode()));
+         }
+     }
+   cb->setText(html);
+-- 
+cgit v1.1

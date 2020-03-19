@@ -1,0 +1,30 @@
+From fbe5097f4a79f286607b859be9c68de371955117 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Mon, 18 Nov 2019 22:13:18 +0100
+Subject: Fix build with telepathy-qt 0.9.8
+
+Use the new TelepathyQt5::Core link target with 0.9.8, otherwise compilation fails with
+/usr/include/telepathy-qt5/TelepathyQt/_gen/types.h:15:10: fatal error: QDBusArgument: No such file or directory
+
+Differential Revision: https://phabricator.kde.org/D25370
+---
+ src/KCMTelepathyAccounts/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/KCMTelepathyAccounts/CMakeLists.txt b/src/KCMTelepathyAccounts/CMakeLists.txt
+index 1fe7c09..18181f9 100644
+--- a/src/KCMTelepathyAccounts/CMakeLists.txt
++++ b/src/KCMTelepathyAccounts/CMakeLists.txt
+@@ -69,6 +69,10 @@ add_library(ktpaccountskcminternal
+             ${libktpaccountskcminternal_SRCS}
+ )
+ 
++if (TARGET TelepathyQt5::Core) # telepathy-qt 0.9.8
++    set (TELEPATHY_QT5_LIBRARIES TelepathyQt5::Core)
++endif()
++
+ target_link_libraries (ktpaccountskcminternal
+                        Qt5::Widgets
+                        Qt5::Core
+-- 
+cgit v1.1
