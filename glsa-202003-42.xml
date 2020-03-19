@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-42">
+  <title>libgit2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libgit2, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">libgit2</product>
+  <announced>2020-03-19</announced>
+  <revised count="1">2020-03-19</revised>
+  <bug>702522</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/libgit2" auto="yes" arch="*">
+      <unaffected range="ge">0.28.4</unaffected>
+      <vulnerable range="lt">0.28.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libgit2 is a portable, pure C implementation of the Git core methods
+      provided as a re-entrant linkable library with a solid API.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libgit2. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly overwrite arbitrary paths, execute arbitrary
+      code, and overwrite files in the .git directory.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libgit2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libgit2-0.28.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1348">CVE-2019-1348</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1350">CVE-2019-1350</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1387">CVE-2019-1387</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-19T16:48:12Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-19T16:50:07Z">whissi</metadata>
+</glsa>
