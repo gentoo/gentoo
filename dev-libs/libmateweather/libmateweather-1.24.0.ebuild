@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE library to access weather information from online services"
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1+ GPL-2+"
 SLOT="0"
 
 IUSE="debug"
