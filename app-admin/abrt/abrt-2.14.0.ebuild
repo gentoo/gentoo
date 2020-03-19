@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools python-single-r1 systemd
+inherit autotools python-single-r1 systemd xdg-utils
 
 DESCRIPTION="Automatic bug detection and reporting tool"
 HOMEPAGE="https://github.com/abrt/abrt/wiki/ABRT-Project"
