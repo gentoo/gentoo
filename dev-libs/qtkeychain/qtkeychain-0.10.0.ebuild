@@ -23,14 +23,12 @@ IUSE="gnome-keyring"
 BDEPEND="
 	dev-qt/linguist-tools:5
 "
-RDEPEND="
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	gnome-keyring? ( dev-libs/glib:2 )
 "
-DEPEND="${RDEPEND}
-	gnome-keyring? ( gnome-base/libgnome-keyring )
-"
+RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog ReadMe.txt )
 
