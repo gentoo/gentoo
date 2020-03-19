@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE library to access weather information from online services"
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1+ GPL-2+"
 SLOT="0"
 
 IUSE="debug"
