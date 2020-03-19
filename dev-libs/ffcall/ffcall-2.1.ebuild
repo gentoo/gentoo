@@ -32,7 +32,7 @@ src_prepare() {
 
 	for mfi in {,*/,*/*/,}Makefile.in
 	do
-		elog "Patching '${mfi}'"
+		einfo "Patching '${mfi}'"
 		# usually uses only assembler here, but -march=
 		# and -Wa, are a must to pass here.
 		sed -e 's/$(CC) /&$(CFLAGS) /g' \
