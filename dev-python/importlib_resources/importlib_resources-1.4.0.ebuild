@@ -18,16 +18,23 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 
 RDEPEND="
 	$(python_gen_cond_dep '
+		dev-python/contextlib2[${PYTHON_USEDEP}]
 		dev-python/pathlib2[${PYTHON_USEDEP}]
+		dev-python/singledispatch[${PYTHON_USEDEP}]
 		dev-python/typing[${PYTHON_USEDEP}]
 	' -2)
+	$(python_gen_cond_dep '
+		dev-python/importlib_metadata[${PYTHON_USEDEP}]
+		dev-python/zipp[${PYTHON_USEDEP}]
+	' pypy3 python3_{6,7})
+"
+BDEPEND="
+	dev-python/toml[${PYTHON_USEDEP}]
+	>=dev-python/setuptools_scm-3.4.1[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests unittest
-distutils_enable_sphinx importlib_resources/docs
-
-# https://gitlab.com/python-devs/importlib_resources/issues/71
-PATCHES=( "${FILESDIR}/${P}-skip-wheel.patch" )
+distutils_enable_sphinx docs dev-python/rst-linker dev-python/jaraco-packaging
 
 python_compile() {
 	distutils-r1_python_compile
