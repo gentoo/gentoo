@@ -3,14 +3,16 @@
 
 EAPI=7
 
+inherit xdg
+
 DESCRIPTION="Microsoft Teams, an Office 365 multimedia collaboration client, pre-release"
 HOMEPAGE="https://teams.microsoft.com/downloads#allDevicesSection"
-SRC_URI="teams_1.3.00.958_amd64.deb"
+SRC_URI="https://packages.microsoft.com/repos/ms-teams/pool/main/t/${PN}/${PN}_${PV}_amd64.deb"
 
 LICENSE="ms-teams-pre"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-RESTRICT="fetch mirror splitdebug"
+RESTRICT="mirror splitdebug"
 IUSE=""
 
 QA_PREBUILT="*"
