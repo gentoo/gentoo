@@ -95,6 +95,7 @@ src_install() {
 pkg_postinst() {
 	xdg_icon_cache_update
 	optfeature "Displaying images in the terminal" virtual/imagemagick-tools
+	optfeature "Terminfo file for the kitty terminal emulator" x11-terms/kitty-terminfo
 }
 
 pkg_postrm() {
