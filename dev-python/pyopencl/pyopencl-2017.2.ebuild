@@ -44,8 +44,9 @@ src_configure() {
 
 python_install_all() {
 	if use examples; then
-		local EXAMPLES=( examples/. )
-		einfo "Some of the examples provided by this package require dev-python/matplotlib."
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
+
 	distutils-r1_python_install_all
 }
