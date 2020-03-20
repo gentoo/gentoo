@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-03-20)
+# Last release in 2014, unsupported, EOL.
+# Include the last remaining revdep, which was last updated in 2004.
+x11-libs/gtkglarea
+media-sound/galan
+
 # Matt Turner <mattst88@gentoo.org> (2020-03-20)
 # No reverse deps. GNOME 2 era slot. Removal in 30 days
 gnome-base/gnome-desktop:2
