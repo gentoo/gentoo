@@ -544,7 +544,7 @@ app-admin/system-config-printer 1.5.12-r1: Graphical user interface for CUPS adm
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/terraform 0.12.17 0.12.20 0.12.21 0.12.23: A tool for building, changing, and combining infrastructure safely
+app-admin/terraform 0.12.17 0.12.20 0.12.21 0.12.23 0.12.24: A tool for building, changing, and combining infrastructure safely
 app-admin/testdisk 7.1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -7720,7 +7720,7 @@ dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python 
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.5.4-r1 5.6.0 5.8.1: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 6.3.1-r1 6.4.0 7.0.5 7.1.0 7.5.1: Official Python low-level client for Elasticsearch
-dev-python/elementpath 1.3.1 1.4.1 1.4.2: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
+dev-python/elementpath 1.3.1 1.4.1 1.4.2 1.4.3: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/embedly 0.5.0-r1: Python Library for Embedly
@@ -13655,7 +13655,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32 0.33: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.18-r1 0.21.19-r1 0.21.20: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.18-r1 0.21.19-r1 0.21.20 0.21.21: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
