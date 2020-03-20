@@ -774,9 +774,8 @@ python_newexe() {
 	local f=${1}
 	local newfn=${2}
 
-	local PYTHON_SCRIPTDIR d
-	python_export PYTHON_SCRIPTDIR
-	d=${PYTHON_SCRIPTDIR#${EPREFIX}}
+	local scriptdir=$(python_get_scriptdir)
+	local d=${scriptdir#${EPREFIX}}
 
 	(
 		dodir "${wrapd}"
@@ -902,10 +901,8 @@ python_domodule() {
 		d=${python_moduleroot}
 	else
 		# relative to site-packages
-		local PYTHON_SITEDIR=${PYTHON_SITEDIR}
-		[[ ${PYTHON_SITEDIR} ]] || python_export PYTHON_SITEDIR
-
-		d=${PYTHON_SITEDIR#${EPREFIX}}/${python_moduleroot//.//}
+		local sitedir=$(python_get_sitedir)
+		d=${sitedir#${EPREFIX}}/${python_moduleroot//.//}
 	fi
 
 	(
@@ -935,10 +932,8 @@ python_doheader() {
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
-	local d PYTHON_INCLUDEDIR=${PYTHON_INCLUDEDIR}
-	[[ ${PYTHON_INCLUDEDIR} ]] || python_export PYTHON_INCLUDEDIR
-
-	d=${PYTHON_INCLUDEDIR#${EPREFIX}}
+	local includedir=$(python_get_includedir)
+	local d=${includedir#${EPREFIX}}
 
 	(
 		insopts -m 0644
