@@ -1,0 +1,72 @@
+From 1233b37167097dffa9a78bd7bd0a8117c75fe8ff Mon Sep 17 00:00:00 2001
+From: Petr Machata <pmachata@redhat.com>
+Date: Sat, 8 Dec 2012 03:13:29 +0100
+Subject: [PATCH] expr_node_zero and expr_self should be stack-allocated
+
+---
+ expr.c | 14 ++++++--------
+ zero.c | 14 ++++++--------
+ 2 files changed, 12 insertions(+), 16 deletions(-)
+
+--- a/expr.c
++++ b/expr.c
+@@ -21,7 +21,6 @@
+ #include <string.h>
+ #include <assert.h>
+ #include <errno.h>
+-#include <error.h>
+ #include <stdlib.h>
+ 
+ #include "expr.h"
+@@ -327,12 +326,11 @@ expr_eval_constant(struct expr_node *node, long *valuep)
+ struct expr_node *
+ expr_self(void)
+ {
+-	static struct expr_node *node = NULL;
+-	if (node == NULL) {
+-		node = malloc(sizeof(*node));
+-		if (node == NULL)
+-			error(1, errno, "malloc expr_self");
+-		expr_init_self(node);
++	static struct expr_node *nodep = NULL;
++	if (nodep == NULL) {
++		static struct expr_node node;
++		expr_init_self(&node);
++		nodep = &node;
+ 	}
+-	return node;
++	return nodep;
+ }
+--- a/zero.c
++++ b/zero.c
+@@ -18,7 +18,6 @@
+  * 02110-1301 USA
+  */
+ 
+-#include <error.h>
+ #include <errno.h>
+ 
+ #include "zero.h"
+@@ -93,13 +92,12 @@ build_zero_w_arg(struct expr_node *expr, int own)
+ struct expr_node *
+ expr_node_zero(void)
+ {
+-	static struct expr_node *node = NULL;
+-	if (node == NULL) {
+-		node = malloc(sizeof(*node));
+-		if (node == NULL)
+-			error(1, errno, "malloc expr_node_zero");
+-		expr_init_cb1(node, &zero1_callback,
++	static struct expr_node *nodep = NULL;
++	if (nodep == NULL) {
++		static struct expr_node node;
++		expr_init_cb1(&node, &zero1_callback,
+ 			      expr_self(), 0, (void *)-1);
++		nodep = &node;
+ 	}
+-	return node;
++	return nodep;
+ }
+-- 
+2.25.2
+
