@@ -9,5 +9,4 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-<longdescription>Another Password Generator. Generates random, pronouncable passwords with a variety of algorithms</longdescription>
 </pkgmetadata>
