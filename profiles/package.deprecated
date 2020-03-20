@@ -24,7 +24,6 @@ dev-python/gconf-python
 dev-python/gnome-python-base
 dev-python/pygobject:2
 dev-python/pygtksourceview
-gnome-base/gnome-desktop:2
 gnome-base/gnome-vfs
 gnome-base/libbonobo
 gnome-base/libbonoboui
