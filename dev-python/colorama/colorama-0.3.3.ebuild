@@ -19,6 +19,11 @@ KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh spar
 IUSE="examples"
 
 python_install_all() {
-	use examples && local EXAMPLES=( demos/. )
+	if use examples; then
+		docinto examples
+		dodoc -r demos/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }
