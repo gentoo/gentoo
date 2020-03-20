@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-47">
+  <title>Exim: Heap-based buffer overflow</title>
+  <synopsis>A vulnerability in Exim could allow a remote attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>2020-03-20</announced>
+  <revised count="1">2020-03-20</revised>
+  <bug>701282</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/exim" auto="yes" arch="*">
+      <unaffected range="ge">4.92.3</unaffected>
+      <vulnerable range="lt">4.92.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Exim is a message transfer agent (MTA) designed to be a a highly
+      configurable, drop-in replacement for sendmail.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Exim incorrectly handled certain string
+      operations.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, able to connect to a vulnerable Exim instance, could
+      possibly execute arbitrary code with the privileges of the process or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Exim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-mta/exim-4.92.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-16928">CVE-2019-16928</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-20T18:44:44Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-20T18:48:39Z">whissi</metadata>
+</glsa>
