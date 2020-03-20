@@ -4,7 +4,7 @@
 EAPI=7
 
 inherit flag-o-matic meson
-COMMIT=""
+COMMIT="21a55145ddbc5d085e91352586875abe92cff73b"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
