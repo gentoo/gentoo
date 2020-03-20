@@ -44,7 +44,9 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	gnome-extra/zenity
-	>=mate-base/mate-desktop-1.20.0"
+	>=mate-base/mate-desktop-1.20.0
+	virtual/libintl
+"
 
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
