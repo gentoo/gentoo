@@ -11,7 +11,7 @@ SRC_URI="amd64? ( https://project-${PN}.com/${P}-linux64.zip )"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE=""
 
 RESTRICT="bindist mirror" #444426
