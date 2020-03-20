@@ -16,6 +16,7 @@ IUSE=""
 RDEPEND="
 	>=dev-qt/qtwidgets-5.6:5=
 	dev-qt/qtwayland:5=
+	dev-qt/qtx11extras:5=
 	x11-libs/gtk+:3[X]
 "
 DEPEND="${RDEPEND}"
