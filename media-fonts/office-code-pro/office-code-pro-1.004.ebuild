@@ -15,7 +15,6 @@ KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/Office-Code-Pro-${PV}"
 
-FONT_S="${S}"
 FONT_SUFFIX="otf"
 
 src_prepare() {
