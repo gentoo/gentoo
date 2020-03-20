@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nodejs</product>
   <announced>2020-03-20</announced>
-  <revised count="1">2020-03-20</revised>
+  <revised count="2">2020-03-20</revised>
   <bug>658074</bug>
   <bug>665656</bug>
   <bug>672136</bug>
@@ -17,8 +17,8 @@
   <access>local, remote</access>
   <affected>
     <package name="net-libs/nodejs" auto="yes" arch="*">
-      <unaffected range="ge">10.19.0</unaffected>
-      <unaffected range="ge">12.15.0</unaffected>
+      <unaffected range="rge">10.19.0</unaffected>
+      <unaffected range="rge">12.15.0</unaffected>
       <vulnerable range="lt">12.15.0</vulnerable>
     </package>
   </affected>
@@ -74,5 +74,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5739">CVE-2019-5739</uri>
   </references>
   <metadata tag="requester" timestamp="2020-03-20T04:40:01Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2020-03-20T19:19:02Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-20T20:50:31Z">whissi</metadata>
 </glsa>
