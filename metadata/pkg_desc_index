@@ -1699,6 +1699,7 @@ app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
 app-eselect/eselect-fontconfig 1.1-r1: An eselect module to manage /etc/fonts/conf.d symlinks
 app-eselect/eselect-gnome-shell-extensions 20180306: Manages system defaults for GNOME Shell extensions
 app-eselect/eselect-infinality 1-r1 1.1: Eselect module to choose an infinality font configuration style
+app-eselect/eselect-iptables 20200319: Manages the {,/usr}/sbin/iptables symlink
 app-eselect/eselect-java 0.4.0: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.2: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
@@ -14393,7 +14394,7 @@ net-firewall/fwknop 2.6.9-r1 2.6.10-r1: Single Packet Authorization and Port Kno
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipset 6.29 6.38 7.5 7.6: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.4 9999: Netflow iptables module
-net-firewall/iptables 1.6.1-r3 1.6.2-r2 1.8.3-r1 1.8.4: Linux kernel (2.4+) firewall, NAT and packet mangling tools
+net-firewall/iptables 1.6.1-r3 1.6.2-r2 1.8.3-r1 1.8.4 1.8.4-r1: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104 1.2_p20121104-r1: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99-r1: IPTables firewall setup script
 net-firewall/nfacct 1.0.1 1.0.2: Command line tool to create/retrieve/delete accounting objects in NetFilter
