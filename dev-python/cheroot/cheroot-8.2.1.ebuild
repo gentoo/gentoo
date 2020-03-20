@@ -18,10 +18,23 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 #IUSE="test"
 RESTRICT="test"
 
-RDEPEND=">=dev-python/six-1.11.0[${PYTHON_USEDEP}]
-	>=dev-python/more-itertools-2.6[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/jaraco-functools[${PYTHON_USEDEP}]
+	>=dev-python/more-itertools-2.6[${PYTHON_USEDEP}]
+	>=dev-python/six-1.11.0[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
+
+#	doc? (
+#		>=dev-python/sphinx-1.8.2[${PYTHON_USEDEP}]
+#		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
+#		>=dev-python/sphinx-tabs-1.1.0[${PYTHON_USEDEP}]
+#		dev-python/docutils[${PYTHON_USEDEP}]
+#		dev-python/alabaster[${PYTHON_USEDEP}]
+#		dev-python/python-dateutil[${PYTHON_USEDEP}]
+#		>=dev-python/sphinxcontrib-spelling-4.3.0[${PYTHON_USEDEP}]
+#	)
 
 	# Add the following for unit tests, some packages listed will need
 	# to be added and keyworded appropriately.
@@ -32,12 +45,13 @@ DEPEND="${RDEPEND}
 #		>=dev-python/pytest-testmon-0.9.7[${PYTHON_USEDEP}]
 #		~dev-python/pytest-watch-4.2.0[${PYTHON_USEDEP}]
 #		>=dev-python/pytest-xdist-1.2.28[${PYTHON_USEDEP}]
-#		~dev-python/coverage-4.5.3[${PYTHON_USEDEP}]
-#		~dev-python/codecov-2.0.15[${PYTHON_USEDEP}]
-#		~dev-python/pytest-cov-2.7.1[${PYTHON_USEDEP}]
+#		~dev-python/coverage-4.5.3[${PYTHON_USEDEP}]	#undesired
+#		~dev-python/codecov-2.0.15[${PYTHON_USEDEP}]	#undesired
+#		~dev-python/pytest-cov-2.7.1[${PYTHON_USEDEP}]	#undesired
 #		>=dev-python/trustme-0.4.0[${PYTHON_USEDEP}]
 #		dev-python/pyopenssl[${PYTHON_USEDEP}]
 #		dev-python/requests-unixsocket[${PYTHON_USEDEP}]
+#		>=dev-python/jaraco-text-3.1[${PYTHON_USEDEP}]
 #	)"
 
 #python_test() {
