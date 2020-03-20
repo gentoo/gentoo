@@ -48,18 +48,22 @@ RDEPEND="
 	xapian? ( dev-libs/xapian )"
 
 DEPEND="${RDEPEND}
-	gui? ( dev-qt/designer:5 )
-	jsonapi? (
-		|| ( <app-doc/doxygen-1.8.16 >=app-doc/doxygen-1.8.17 )
-		dev-util/cmake
-	)
 	dev-qt/qtcore:5
+	gui? ( dev-qt/designer:5 )"
+
+BDEPEND="dev-util/cmake
 	virtual/pkgconfig
-"
+	jsonapi? (
+		|| (
+			>=app-doc/doxygen-1.8.17
+			<app-doc/doxygen-1.8.16
+		)
+	)"
+
 src_unpack() {
 	default
 
-	mv RetroShare ${P}
+	mv RetroShare ${P} || die
 }
 
 src_configure() {
