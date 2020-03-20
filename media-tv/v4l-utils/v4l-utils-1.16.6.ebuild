@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,8 @@ BDEPEND="
 	bpf? ( sys-devel/clang:*[llvm_targets_BPF] )
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.16.6-gcc10-fno-common.patch )
 
 src_configure() {
 	if use qt5; then
