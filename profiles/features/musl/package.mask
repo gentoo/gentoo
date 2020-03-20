@@ -17,3 +17,7 @@ sys-fs/udev
 
 # rust-bin requires a glibc system
 dev-lang/rust-bin
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-03-20)
+#  No source builds for musl
+app-emulation/firecracker
