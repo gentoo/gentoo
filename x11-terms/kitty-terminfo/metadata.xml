@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>fgtham@gmail.com</email>
-		<name>Florian Tham</name>
+		<email>pabloorduna98@gmail.com</email>
+		<name>Pablo Orduna</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">thoughtbot/rcm</remote-id>
+		<remote-id type="github">kovidgoyal/kitty</remote-id>
 	</upstream>
 </pkgmetadata>
