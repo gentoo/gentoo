@@ -27,6 +27,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="examples ftdi httpd osc python test usb"
 
+RESTRICT="!test? ( test )"
+
 # Since media-libs/liblo is not KEYWORDed for arm, we force-disable it
 REQUIRED_USE="
 	arm? ( !osc )
@@ -39,7 +41,7 @@ RDEPEND="
 	dev-libs/protobuf
 	examples? ( sys-libs/ncurses )
 	ftdi? ( dev-embedded/libftdi:* )
-	httpd? ( || ( net-libs/libmicrohttpd[messages] >=net-libs/libmicrohttpd-0.9.68 ) )
+	httpd? ( || ( <net-libs/libmicrohttpd-0.9.68[messages] >=net-libs/libmicrohttpd-0.9.68 ) )
 	!arm? (
 		!arm64? (
 			osc? ( media-libs/liblo )
