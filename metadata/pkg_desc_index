@@ -417,7 +417,7 @@ app-admin/exo 1.10.0: Command-line tool for everything at Exoscale: compute, sto
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 5.6.13 6.6.1 6.8.4 7.2.0 7.3.2 7.4.1 7.5.2 7.6.0: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 5.6.13 6.6.1 6.8.4 7.2.0 7.3.2 7.4.1 7.5.2 7.6.1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fluentd 1.2.6-r1 1.3.1 1.3.2 1.3.3 1.4.0 1.4.1 1.4.2 1.9.0: data collector and unified logging layer (project under CNCF)
 app-admin/fsvs 1.2.5-r2: Backup/restore for subversion backends
@@ -459,7 +459,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.14.0 3.15.1 3.16.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.1.2: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 5.6.15 6.8.4 7.2.0 7.3.2 7.4.1 7.5.2 7.6.0: Tool for managing events and logs
+app-admin/logstash-bin 5.6.15 6.8.4 7.2.0 7.3.2 7.4.1 7.5.2 7.6.1: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2 2.2.3: Live Syncing (Mirror) Daemon
@@ -536,7 +536,7 @@ app-admin/supervisor 4.0.4 4.1.0: A system for controlling process state under U
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1-r1 2.0.3 2.1 2.1.1 9999: Standard log daemons
-app-admin/syslog-ng 3.22.1 3.24.1 3.25.1: syslog replacement with advanced filtering features
+app-admin/syslog-ng 3.22.1 3.24.1 3.25.1 3.26.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.2.1 12.3.1 999999: System performance tools for Linux
@@ -1408,7 +1408,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20161103: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.47 1.49 1.50: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.49 1.50: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.50_pre20170728: Source code browser for Emacs
 app-emacs/edb 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -2080,7 +2080,7 @@ app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.14-r1 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
-app-misc/elasticsearch 5.6.16 6.7.1 6.8.4 7.2.1 7.3.2 7.4.1 7.5.2 7.6.0: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 5.6.16 6.7.1 6.8.7 7.2.1 7.3.2 7.4.1 7.5.2 7.6.1: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.12.2: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
@@ -3298,7 +3298,7 @@ dev-db/pspg 1.6.5 1.6.8 2.5.4 2.5.5 2.6.6: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.1_p20191025-r1: Qt SQL driver plugin for SQLCipher
-dev-db/redis 4.0.2-r1 4.0.14 5.0.5 5.0.7: A persistent caching system, key-value and data structures database
+dev-db/redis 4.0.2-r1 4.0.14 5.0.5 5.0.7 5.0.8: A persistent caching system, key-value and data structures database
 dev-db/repmgr 3.0.1 3.3.2: PostgreSQL Replication Manager
 dev-db/rqlite 4.6.0 5.0.0 5.1.0: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.8: SqlAlchemy schema display script
@@ -17907,7 +17907,7 @@ www-apps/jekyll-sass-converter 1.5.2: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.13.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 2.2.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
-www-apps/kibana-bin 5.6.16 6.7.1 6.8.4 7.2.0 7.3.2 7.4.1 7.5.2 7.6.0: Analytics and search dashboard for Elasticsearch
+www-apps/kibana-bin 5.6.16 6.7.1 6.8.4 7.2.0 7.3.2 7.4.1 7.5.2 7.6.1: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
@@ -18766,7 +18766,8 @@ x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and 
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2: The Gnome Terminal
 x11-terms/guake 3.3.2-r1 3.6.3-r1 3.7.0 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.15.1 0.16.0-r1 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty 0.15.1 0.16.0-r1 0.16.0-r2 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty-terminfo 0.16.0: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.0 1.22.1: The MATE Terminal
