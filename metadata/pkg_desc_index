@@ -12916,7 +12916,7 @@ media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Micros
 media-libs/libepoxy 1.5.4 9999: Epoxy is a library for handling OpenGL function pointer management for you
 media-libs/libexif 0.6.21-r3: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
-media-libs/libextractor 1.8-r1 1.9: Library to extract metadata from files of arbitrary type
+media-libs/libextractor 1.9: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
 media-libs/libffado 2.4.1-r1: Driver for IEEE1394 (Firewire) audio interfaces
 media-libs/libfishsound 1.0.0: Simple programming interface to decode and encode audio with vorbis or speex
@@ -15302,7 +15302,7 @@ net-print/pnm2ppa 1.13-r1: Print driver for Hp Deskjet 710, 712, 720, 722, 820, 
 net-print/poster 20060221 20060221-r2 20060221-r3: Small utility for making a poster from an EPS file or a one-page PS document
 net-print/splix 2.0.0_p20130826 2.0.0_p20130826-r1: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
-net-proxy/3proxy 0.8.9 0.8.12 0.8.13: A really tiny cross-platform proxy servers set
+net-proxy/3proxy 0.8.13: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
