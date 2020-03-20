@@ -506,10 +506,6 @@ x11-misc/driconf
 # Masked for removal in 30 days.
 net-wireless/wifi-radar
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
-# Dead upstream, py2-only. Masked for removal in 30 days.
-app-misc/pysmssend
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-18)
 # Dead and unmaintained.  Last release in 2015.  Broken with newer
 # versions of Python 3.  No reverse dependencies left.
