@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-48">
+  <title>Node.js: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Node.js, worst of which
+    could allow remote attackers to write arbitrary files.
+  </synopsis>
+  <product type="ebuild">nodejs</product>
+  <announced>2020-03-20</announced>
+  <revised count="1">2020-03-20</revised>
+  <bug>658074</bug>
+  <bug>665656</bug>
+  <bug>672136</bug>
+  <bug>679132</bug>
+  <bug>702988</bug>
+  <bug>708458</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-libs/nodejs" auto="yes" arch="*">
+      <unaffected range="ge">10.19.0</unaffected>
+      <unaffected range="ge">12.15.0</unaffected>
+      <vulnerable range="lt">12.15.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript
+      engine.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Node.js. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly write arbitrary files, cause a Denial
+      of Service condition or can conduct HTTP request splitting attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Node.js &lt;12.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/nodejs-10.19.0"
+    </code>
+    
+    <p>All Node.js 12.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/nodejs-12.15.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12115">CVE-2018-12115</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12116">CVE-2018-12116</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12121">CVE-2018-12121</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12122">CVE-2018-12122</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12123">CVE-2018-12123</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7161">CVE-2018-7161</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7162">CVE-2018-7162</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7164">CVE-2018-7164</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7167">CVE-2018-7167</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15604">CVE-2019-15604</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15605">CVE-2019-15605</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15606">CVE-2019-15606</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-16777">CVE-2019-16777</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5737">CVE-2019-5737</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5739">CVE-2019-5739</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-20T04:40:01Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-03-20T19:19:02Z">whissi</metadata>
+</glsa>
