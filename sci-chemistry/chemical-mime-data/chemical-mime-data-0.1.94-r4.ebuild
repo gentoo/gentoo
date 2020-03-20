@@ -33,7 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-turbomole.patch
 	"${FILESDIR}"/${P}-pigz.patch
 	"${FILESDIR}"/${P}-namespace-svg.patch
-	"${FILESDIR}"/${P}-rsvg-convert.patch
+	"${FILESDIR}"/${P}-rsvg-convert-r2.patch
 	# https://github.com/dleidert/chemical-mime/issues/1
 	"${FILESDIR}"/${P}-drop-turbomole-vibrational.patch
 )
