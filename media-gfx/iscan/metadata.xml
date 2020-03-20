@@ -13,6 +13,10 @@
 		<email>dilfridge@gentoo.org</email>
 		<name>Andreas K. Hüttel (only during xmas vacations)</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>marcin.deranek@slonko.net</email>
+		<name>Marcin Deranek</name>
+	</maintainer>
 	<longdescription lang="en">
 		Image Scan! is a graphical scanner utility for people that do not need all
 		the bells and whistles provided by several of the other utilities out there
