@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/wqy/wqy-bitmapsong-pcf-1.0.0-RC1.tar.gz
-_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
+_eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
 _md5_=94ee70cff1ff7b04e9e6d423a608b0ee

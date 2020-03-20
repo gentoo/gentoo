@@ -9,5 +9,5 @@ KEYWORDS=~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-lin
 LICENSE=bakoma
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/texcm-ttf-1.0.zip
-_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
+_eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
 _md5_=b65819bac62bb9ddd08d590b2b1b3857

@@ -8,5 +8,5 @@ KEYWORDS=~alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jstein/dist/proggy-fonts-1.tar.bz2
-_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
+_eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
 _md5_=c2d8c30ff39bc930732faa22a3103815

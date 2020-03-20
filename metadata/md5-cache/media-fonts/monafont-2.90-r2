@@ -10,5 +10,5 @@ LICENSE=public-domain
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/monafont/monafont-2.90.tar.bz2 truetype? ( mirror://sourceforge/monafont/monafont-ttf-2.90.zip )
-_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
+_eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
 _md5_=ad7efe341af2c23c805b9d6f18da7edf

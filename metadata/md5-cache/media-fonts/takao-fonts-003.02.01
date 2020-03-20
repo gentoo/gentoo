@@ -9,5 +9,5 @@ LICENSE=IPAfont
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=https://launchpad.net/takao-fonts/003.02/003.02.01/+download/takao-fonts-ttf-003.02.01.tar.gz
-_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
+_eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
 _md5_=e407205a3e674397a0a5732de4e1ce12
