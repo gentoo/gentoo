@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE default window manager"
-LICENSE="GPL-2"
+LICENSE="FDL-1.2+ GPL-2+ LGPL-2+ MIT"
 SLOT="0"
 
 IUSE="startup-notification test xinerama"
