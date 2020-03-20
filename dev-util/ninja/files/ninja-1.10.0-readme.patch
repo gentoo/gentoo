@@ -1,0 +1,38 @@
+From b748d085618bf5e802de6a13b07d632d20ab04bf Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 20 Mar 2020 19:36:01 -0400
+Subject: [PATCH] Replace references to README with README.md
+
+The README file was renamed to README.md in commit
+a37da20ae74c81703b1c811182fc154d95ed46fe.
+---
+ configure.py              | 2 +-
+ misc/packaging/ninja.spec | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.py b/configure.py
+index 7d8ce9045..8eef7e6eb 100755
+--- a/configure.py
++++ b/configure.py
+@@ -649,7 +649,7 @@ def has_re2c():
+        command='$doxygen_mainpage_generator $in > $out',
+        description='DOXYGEN_MAINPAGE $out')
+ mainpage = n.build(built('doxygen_mainpage'), 'doxygen_mainpage',
+-                   ['README', 'COPYING'],
++                   ['README.md', 'COPYING'],
+                    implicit=['$doxygen_mainpage_generator'])
+ n.build('doxygen', 'doxygen', doc('doxygen.config'),
+         implicit=mainpage)
+diff --git a/misc/packaging/ninja.spec b/misc/packaging/ninja.spec
+index 05f5a079a..36e518186 100644
+--- a/misc/packaging/ninja.spec
++++ b/misc/packaging/ninja.spec
+@@ -32,7 +32,7 @@ cp -p ninja %{buildroot}%{_bindir}/
+ 
+ %files
+ %defattr(-, root, root)
+-%doc COPYING README doc/manual.html
++%doc COPYING README.md doc/manual.html
+ %{_bindir}/*
+ 
+ %clean

@@ -46,6 +46,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/ninja-cflags.patch
+	"${FILESDIR}"/ninja-1.10.0-readme.patch
 )
 
 run_for_build() {
