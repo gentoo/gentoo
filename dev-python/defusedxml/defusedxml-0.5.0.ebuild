@@ -24,6 +24,11 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( other/. )
+	if use examples; then
+		docinto examples
+		dodoc -r other/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }
