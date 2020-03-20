@@ -1,4 +1,4 @@
-BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig
+BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) dev-util/intltool sys-devel/gettext virtual/pkgconfig
 DEFINED_PHASES=configure prepare setup test
 DESCRIPTION=X keyboard configuration database
 EAPI=7
@@ -8,4 +8,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/data/xkeyboard-config/xkeyboard-config-2.29.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	89113cd44c8118e781d18387d4256fe3	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c16ee0b62bfe48b4dc176c21bb35671c
+_md5_=67cf869922a914c0764a0f88025b6ef8
