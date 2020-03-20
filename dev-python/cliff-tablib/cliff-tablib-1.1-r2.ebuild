@@ -20,8 +20,12 @@ RDEPEND="dev-python/tablib[${PYTHON_USEDEP}]
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_install_all() {
-	# Use IUSE examples for installing the demoapp
-	use examples && local EXAMPLES=( demoapp/. )
 	use doc && local HTML_DOCS=( docs/build/html/. )
+	if use examples; then
+		docinto examples
+		dodoc -r demoapp/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }
