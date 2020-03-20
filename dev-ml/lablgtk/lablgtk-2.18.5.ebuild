@@ -5,7 +5,7 @@ EAPI=5
 
 inherit multilib findlib
 
-IUSE="debug examples glade gnomecanvas sourceview +ocamlopt opengl spell svg"
+IUSE="debug examples glade gnomecanvas sourceview +ocamlopt spell svg"
 
 DESCRIPTION="Objective CAML interface for Gtk+2"
 HOMEPAGE="http://lablgtk.forge.ocamlcore.org/"
@@ -17,8 +17,6 @@ RDEPEND=">=x11-libs/gtk+-2.10:2
 	svg? ( >=gnome-base/librsvg-2.2:2 )
 	glade? ( >=gnome-base/libglade-2.0.1 )
 	gnomecanvas? ( >=gnome-base/libgnomecanvas-2.2 )
-	opengl? ( >=dev-ml/lablgl-0.98:=
-		>=x11-libs/gtkglarea-1.9:2 )
 	spell? ( app-text/gtkspell:2 )
 	sourceview? ( x11-libs/gtksourceview:2.0 )
 	dev-ml/camlp4:=
@@ -35,7 +33,7 @@ src_configure() {
 		$(use_with glade) \
 		--without-gnomeui \
 		--without-panel \
-		$(use_with opengl gl) \
+		--without-gl \
 		$(use_with spell gtkspell) \
 		--without-gtksourceview \
 		$(use_with sourceview gtksourceview2) \
@@ -58,7 +56,6 @@ install_examples() {
 	use svg && insinto /usr/share/doc/${PF}/examples/rsvg && doins examples/rsvg/*.ml examples/rsvg/*.svg
 	use glade && insinto /usr/share/doc/${PF}/examples/glade && doins examples/glade/*.ml examples/glade/*.glade*
 	use sourceview && insinto /usr/share/doc/${PF}/examples/sourceview && doins examples/sourceview/*.ml examples/sourceview/*.lang
-	use opengl && insinto /usr/share/doc/${PF}/examples/GL && doins examples/GL/*.ml
 
 	docompress -x /usr/share/doc/${PF}/examples
 }
