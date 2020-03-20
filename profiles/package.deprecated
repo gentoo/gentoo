@@ -22,17 +22,8 @@
 # Bugs #640022, #713010
 dev-python/gconf-python
 dev-python/gnome-python-base
-dev-python/gnome-python-desktop-base
-dev-python/gnome-python-extras-base
-dev-python/gnome-vfs-python
-dev-python/libbonobo-python
-dev-python/libgnomecanvas-python
-dev-python/libgnome-python
-dev-python/librsvg-python
 dev-python/pygobject:2
 dev-python/pygtksourceview
-dev-python/pyorbit
-gnome-base/gnome-desktop:2
 gnome-base/gnome-vfs
 gnome-base/libbonobo
 gnome-base/libbonoboui

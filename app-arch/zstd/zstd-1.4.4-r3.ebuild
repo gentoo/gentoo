@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/facebook/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0/1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="lz4 static-libs"
+IUSE="lz4 static-libs +threads"
 
 RDEPEND="app-arch/xz-utils
 	lz4? ( app-arch/lz4 )"
@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.4-pkgconfig_fix.patch" #700780
+	"${FILESDIR}/${P}-build-issue-More-portable-header-prefix-usage-1987.patch" #708110
 )
 
 src_prepare() {
@@ -38,7 +39,11 @@ mymake() {
 }
 
 multilib_src_compile() {
-	mymake -C lib libzstd libzstd.a libzstd.pc
+	if use threads; then
+		mymake -C lib libzstd-mt libzstd.a-mt libzstd.pc
+	else
+		mymake -C lib libzstd libzstd.a libzstd.pc
+	fi
 
 	if multilib_is_native_abi ; then
 		mymake HAVE_LZ4="$(usex lz4 1 0)" zstd
