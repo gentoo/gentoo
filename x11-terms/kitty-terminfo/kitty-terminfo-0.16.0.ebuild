@@ -23,8 +23,6 @@ RDEPEND="${PYTHON_DEPS}"
 
 DEPEND="${RDEPEND}"
 
-BDEPEND="virtual/pkgconfig"
-
 PATCHES=(
 	"${FILESDIR}"/kitty-terminfo-setup.patch
 )
