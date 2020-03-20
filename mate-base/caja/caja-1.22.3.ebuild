@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Caja file manager for the MATE desktop"
-LICENSE="GPL-2 LGPL-2 FDL-1.1"
+LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 
 IUSE="+introspection +mate packagekit xmp"
