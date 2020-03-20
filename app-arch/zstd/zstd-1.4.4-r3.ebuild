@@ -19,8 +19,8 @@ RDEPEND="app-arch/xz-utils
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.4.4-pkgconfig_fix.patch" #700780
-	"${FILESDIR}/${P}-build-issue-More-portable-header-prefix-usage-1987.patch" #708110
+	"${FILESDIR}/${P}-pkgconfig_libdir.patch" #700780
+	"${FILESDIR}/${P}-make43.patch" #708110
 )
 
 src_prepare() {
@@ -39,11 +39,9 @@ mymake() {
 }
 
 multilib_src_compile() {
-	if use threads; then
-		mymake -C lib libzstd-mt libzstd.a-mt libzstd.pc
-	else
-		mymake -C lib libzstd libzstd.a libzstd.pc
-	fi
+	local libzstd_targets=( libzstd{,.a}$(usex threads '-mt' '') )
+
+	mymake -C lib ${libzstd_targets[@]} libzstd.pc
 
 	if multilib_is_native_abi ; then
 		mymake HAVE_LZ4="$(usex lz4 1 0)" zstd
