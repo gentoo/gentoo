@@ -37,6 +37,7 @@
 # No reverse dependencies.
 # Removal in 30 days.  Bug #713566.
 dev-python/gnome-vfs-python
+dev-python/gtkspell-python
 dev-python/libbonobo-python
 dev-python/libgnome-python
 dev-python/libgnomecanvas-python
