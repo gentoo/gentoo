@@ -24,6 +24,7 @@ SLOT="0"
 IUSE=""
 
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
