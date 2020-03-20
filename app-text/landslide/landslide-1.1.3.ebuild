@@ -26,6 +26,10 @@ RDEPEND="
 	"
 
 python_install_all() {
-	use examples && EXAMPLES=( examples/. )
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }
