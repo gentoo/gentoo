@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="A MATE specific DBUS service that is used to bring up authentication dialogs"
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 
 IUSE="accountsservice appindicator"
