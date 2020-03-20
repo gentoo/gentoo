@@ -501,11 +501,6 @@ gnome-extra/nautilus-dropbox
 # Masked for removal in 30 days.
 x11-misc/driconf
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
-# Last commit in 2015, py2-only, blocks dev-python/pygtk removal, bug #710170
-# Masked for removal in 30 days.
-net-wireless/wifi-radar
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-18)
 # Dead and unmaintained.  Last release in 2015.  Broken with newer
 # versions of Python 3.  No reverse dependencies left.
