@@ -1865,6 +1865,7 @@ dev-lang/gdl:gshhs - Add support for projection adn continent maps with sci-geos
 dev-lang/gdl:hdf - Add support for the Hierarchical Data Format v.4
 dev-lang/gdl:proj - Add support for sci-libs/proj (geographic projections)
 dev-lang/gdl:udunits - Add support for manipulating units of physical quantities
+dev-lang/gforth:check - Enable build-time sanity check.
 dev-lang/ghc:binary - Install the binary version directly, rather than using it to build the source version.
 dev-lang/ghc:elfutils - Enable DWARF-based baclktraces using dev-libs/elfutils.
 dev-lang/ghc:ghcbootstrap - Internal: Bootstrap GHC from an existing GHC installation.
