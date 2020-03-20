@@ -5,4 +5,7 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
+	<use>
+		<flag name='check'>Enable build-time sanity check.</flag>
+	</use>
 </pkgmetadata>
