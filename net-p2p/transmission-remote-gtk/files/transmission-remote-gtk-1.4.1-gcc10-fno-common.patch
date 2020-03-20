@@ -1,18 +1,17 @@
-From 617aaf628962af85bf9b44ab517fec2b6fa178f9 Mon Sep 17 00:00:00 2001
+From b20655081332847426a7d10189bb1e2369efea42 Mon Sep 17 00:00:00 2001
 From: David Seifert <soap@gentoo.org>
-Date: Tue, 10 Mar 2020 11:20:12 +0100
+Date: Fri, 20 Mar 2020 20:30:24 +0100
 Subject: [PATCH] Fix building under GCC 10 / -fno-common
 
-* Define an enum type `TrgColumnType`, not an anonymous
-  enum with an object called `TrgColumnType`.
+* Add a `typedef` to avoid defining a variable.
 
 Bug: https://bugs.gentoo.org/706980
 ---
- src/trg-tree-view.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ src/trg-tree-view.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/trg-tree-view.h b/src/trg-tree-view.h
-index 435848f..363f662 100644
+index 435848f..78cd76e 100644
 --- a/src/trg-tree-view.h
 +++ b/src/trg-tree-view.h
 @@ -51,7 +51,7 @@ GtkWidget *trg_tree_view_new(void);
@@ -20,16 +19,7 @@ index 435848f..363f662 100644
  G_END_DECLS GList *trg_tree_view_get_selected_refs_list(GtkTreeView * tv);
  
 -enum {
-+enum TrgColumnType {
++typedef enum {
      TRG_COLTYPE_ICONTEXT,
      TRG_COLTYPE_FILEICONTEXT,
      TRG_COLTYPE_WANTED,
-@@ -65,7 +65,7 @@ enum {
-     TRG_COLTYPE_PRIO,
-     TRG_COLTYPE_NUMGTZERO,
-     TRG_COLTYPE_NUMGTEQZERO
--} TrgColumnType;
-+};
- 
- typedef struct {
-     gint model_column;

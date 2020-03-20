@@ -35,8 +35,7 @@ DEPEND="${RDEPEND}
 " # eautoreconf needs sys-devel/autoconf-archive
 
 PATCHES=(
-	# https://github.com/transmission-remote-gtk/transmission-remote-gtk/pull/92
-	"${FILESDIR}"/${PN}-1.4.1-gcc10-fno-common.patch
+	"${FILESDIR}"/${PN}-1.4.1-gcc10-fno-common.patch # merged, remove on bump
 )
 
 src_configure() {
