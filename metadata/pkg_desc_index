@@ -7974,7 +7974,7 @@ dev-python/jog 0.1.1: JSON Structured Logging for Python
 dev-python/josepy 1.3.0: JOSE protocol implementation in Python
 dev-python/jplephem 2.6: Python version of NASA DE4xx ephemerides for Astronomical Alamanac
 dev-python/jpype 0.6.2 0.6.3: JPype is an effort to allow Python programs full access to Java class librairies
-dev-python/jsmin 2.2.1 2.2.2: JavaScript minifier
+dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.11.0 1.13.0: JSON-RPC transport implementation for python
 dev-python/json-tools 0.4.0 0.4.1: A set of tools to manipulate JSON: diff, patch, and pretty-printing
 dev-python/jsondiff 1.1.2: Diff JSON and JSON-like structures in Python
@@ -14887,7 +14887,7 @@ net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r5 2.2.10-r6 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
 net-misc/charm 1.9.2-r2: A text based livejournal client
-net-misc/chrony 3.5-r2 9999: NTP client and server programs
+net-misc/chrony 3.5-r2 4.0_pre1 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2019.01.13 2020.03.07: Qt GUI for Connman with system tray icon
@@ -15877,7 +15877,7 @@ sci-electronics/freehdl 0.0.8: A free VHDL simulator
 sci-electronics/fritzing 0.9.2b-r2: Electronic Design Automation
 sci-electronics/gazebo 10.1.0: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.9.2-r1: GPL Electronic Design Automation (gEDA):gaf core package
-sci-electronics/geda-suite 20171223: Metapackage for all components for a full-featured gEDA/gaf system
+sci-electronics/geda-suite 20171223-r1: Metapackage for all components for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r5 0.1.3-r6: A graphical front-end for the gschem -> pcb workflow
 sci-electronics/gerbv 2.7.0: A RS-274X (Gerber) and NC drill (Excellon) file viewer
 sci-electronics/gnetman 0.0.1_pre20110124: A GNU Netlist Manipulation Library
