@@ -510,11 +510,6 @@ net-wireless/wifi-radar
 # Dead upstream, py2-only. Masked for removal in 30 days.
 app-misc/pysmssend
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
-# Last release in 2007, py2-only, blocks dev-python/pygtk removal,
-# Masked for removal in 30 days.
-app-mobilephone/pysms
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-18)
 # Dead and unmaintained.  Last release in 2015.  Broken with newer
 # versions of Python 3.  No reverse dependencies left.
