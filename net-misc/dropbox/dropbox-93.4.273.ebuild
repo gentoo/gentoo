@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~x86-linux"
 IUSE="+librsync-bundled selinux X"
 
 RESTRICT="mirror strip"
@@ -21,24 +21,12 @@ RESTRICT="mirror strip"
 QA_PREBUILT="opt/.*"
 QA_EXECSTACK="opt/dropbox/dropbox"
 
-DEPEND="librsync-bundled? ( dev-util/patchelf )"
+BDEPEND="dev-util/patchelf"
 
 # Be sure to have GLIBCXX_3.4.9, #393125
 RDEPEND="
 	X? (
 		dev-libs/glib:2
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtdeclarative:5
-		|| (
-			dev-qt/qtgui:5[-gles2,X(-)]
-			dev-qt/qtgui:5[-gles2,xcb(-)]
-		)
-		dev-qt/qtopengl:5[-gles2]
-		dev-qt/qtnetwork:5
-		dev-qt/qtprintsupport:5[-gles2]
-		dev-qt/qtwebkit:5
-		dev-qt/qtwidgets:5[-gles2]
 		media-libs/fontconfig
 		media-libs/freetype
 		virtual/jpeg
@@ -85,6 +73,11 @@ src_prepare() {
 	else
 		rm -vf librsync.so.1 || die
 	fi
+	patchelf --set-rpath '$ORIGIN' \
+		apex._apex.*.so \
+		nucleus_python.*.so \
+		tprt.*.so \
+		|| die
 	pax-mark cm dropbox
 	mv README ACKNOWLEDGEMENTS "${T}" || die
 }
