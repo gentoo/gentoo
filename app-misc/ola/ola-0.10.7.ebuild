@@ -14,7 +14,7 @@ if [[ "${PV}" == "9999" ]]; then
 fi
 
 DESCRIPTION="Open Lighting Architecture"
-HOMEPAGE="http://www.openlighting.org/"
+HOMEPAGE="https://www.openlighting.org/"
 
 if [[ "${PV}" != "9999" ]]; then
 	SRC_URI="https://github.com/OpenLightingProject/${PN}/releases/download/${PV}/${P}.tar.gz"
