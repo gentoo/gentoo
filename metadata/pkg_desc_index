@@ -10573,7 +10573,7 @@ dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lldb 7.1.0-r1 8.0.1-r1 9.0.1-r1 10.0.0_rc3 10.0.0_rc4 10.0.0.9999 11.0.0.9999: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0-r1: List available userspace I/O (UIO) devices
-dev-util/ltrace 0.7.3_p4: trace library calls made at runtime
+dev-util/ltrace 0.7.3_p4 0.7.3_p4-r1: trace library calls made at runtime
 dev-util/lttng-modules 2.7.1 2.10.12 2.11.0: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.7.1 2.10.9 2.11.0: Linux Trace Toolkit - next generation
 dev-util/lttng-ust 2.7.1 2.8.1 2.10.6 2.11.0: Linux Trace Toolkit - UST library
