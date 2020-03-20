@@ -31,9 +31,6 @@
 		<flag name="httpd">
 			Enable the integrated web UI.
 		</flag>
-		<flag name="osc">
-			Enable Open Sound Control protocol using media-libs/liblo.
-		</flag>
 		<flag name="usb">
 			Build the device plugins for USB-devices not using an FTDI chip.
 		</flag>

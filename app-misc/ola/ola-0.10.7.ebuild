@@ -25,14 +25,11 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="examples ftdi httpd osc python test usb"
+IUSE="examples ftdi httpd python test usb"
 
 RESTRICT="!test? ( test )"
 
-# Since media-libs/liblo is not KEYWORDed for arm, we force-disable it
 REQUIRED_USE="
-	arm? ( !osc )
-	arm64? ( !osc )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
@@ -41,11 +38,6 @@ RDEPEND="
 	examples? ( sys-libs/ncurses )
 	ftdi? ( dev-embedded/libftdi:* )
 	httpd? ( net-libs/libmicrohttpd[messages(+)] )
-	!arm? (
-		!arm64? (
-			osc? ( media-libs/liblo )
-		)
-	)
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -79,11 +71,11 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-fatal-warnings \
+		--disable-osc \
 		$(use_enable examples) \
 		$(use_enable ftdi libftdi) \
 		$(use_enable ftdi ftdidmx) \
 		$(use_enable httpd http) \
-		$(use_enable osc) \
 		$(use_enable python python-libs) \
 		$(use_enable usb libusb)
 }
