@@ -488,7 +488,7 @@ media-gfx/cropgui
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # No maintainer, py2-only, blocks dev-python/pygtk removal, needs version bump
-# See bugs #546024, #706486. Masked for removal in 30 days.
+# See bugs #546024, #706486, pending PR #14720. Masked for removal in 40 days.
 gnome-extra/nautilus-dropbox
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-18)
