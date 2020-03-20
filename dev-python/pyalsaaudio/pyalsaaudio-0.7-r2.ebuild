@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,11 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/html/. )
-	local EXAMPLES=( *test.py )
+	if use examples; then
+		docinto examples
+		dodoc *test.py
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 
 	distutils-r1_python_install_all
 }
