@@ -25,6 +25,11 @@ python_prepare_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( Doc/. )
-	use examples && local EXAMPLES=( Demo/Python{2,3}/. )
+	if use examples; then
+		docinto examples
+		dodoc -r Demo/Python{2,3}/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }
