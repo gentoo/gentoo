@@ -515,11 +515,6 @@ app-misc/pysmssend
 # Masked for removal in 30 days.
 app-mobilephone/pysms
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
-# Last release and commit in 2007, py2-only, blocks dev-python/pygtk removal,
-# bugs #678656, #707632. Masked for removal in 30 days.
-media-sound/pympd
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-18)
 # Dead and unmaintained.  Last release in 2015.  Broken with newer
 # versions of Python 3.  No reverse dependencies left.
