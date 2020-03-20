@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-		gtkdiskfree is a gtk extension to the cli tool df, does the same and more
-	</longdescription>
 	<use>
 		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>
 	</use>
