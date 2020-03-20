@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/p/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-vcs/mercurial-2.4.2"
@@ -33,6 +33,9 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/stats.py )
+	docinto examples
+	dodoc -r examples/stats.py
+	docompress -x /usr/share/doc/${PF}/examples
+
 	distutils-r1_python_install_all
 }
