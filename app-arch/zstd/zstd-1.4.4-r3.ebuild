@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.4-pkgconfig_fix.patch" #700780
+	"${FILESDIR}/${P}-build-issue-More-portable-header-prefix-usage-1987.patch" #708110
 )
 
 src_prepare() {
