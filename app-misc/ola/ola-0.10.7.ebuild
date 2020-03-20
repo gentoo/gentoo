@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools python-single-r1
 
@@ -24,7 +24,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64"
 IUSE="examples ftdi httpd osc python test usb"
 
 RESTRICT="!test? ( test )"
@@ -36,12 +36,11 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-# libmicrohttpd-0.9.68 enabled the "messages" functionality unconditionally and dropped the USE
 RDEPEND="
 	dev-libs/protobuf
 	examples? ( sys-libs/ncurses )
 	ftdi? ( dev-embedded/libftdi:* )
-	httpd? ( || ( <net-libs/libmicrohttpd-0.9.68[messages] >=net-libs/libmicrohttpd-0.9.68 ) )
+	httpd? ( net-libs/libmicrohttpd[messages(+)] )
 	!arm? (
 		!arm64? (
 			osc? ( media-libs/liblo )
@@ -61,11 +60,11 @@ DEPEND="
 "
 
 if [[ "${PV}" != "9999" ]]; then
-	PATCHES="
+	PATCHES=(
 		"${FILESDIR}/0001-Eliminate_protobuf_AddDescriptors_call.patch"
 		"${FILESDIR}/0002-Protobuf-3.11-compatibility.patch"
 		"${FILESDIR}/0003-ncurses-6-compatibility.patch"
-	"
+	)
 fi
 
 pkg_setup() {
@@ -78,7 +77,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf	--prefix=/usr \
+	econf \
 		--disable-fatal-warnings \
 		$(use_enable examples) \
 		$(use_enable ftdi libftdi) \
