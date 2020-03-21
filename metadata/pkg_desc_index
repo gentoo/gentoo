@@ -2061,7 +2061,7 @@ app-misc/crunch 3.6: A wordlist generator
 app-misc/cstream 3.1.1-r1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
-app-misc/datefudge 1.17 1.22: A program (and preload library) to fake system date
+app-misc/datefudge 1.22: A program (and preload library) to fake system date
 app-misc/dateutils 0.4.6: command line date and time utilities
 app-misc/datovka 4.11.1 4.13.1 4.14.1: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2: Perpetual date converter from gregorian to poee calendar
@@ -2652,7 +2652,7 @@ app-text/libmspub 0.1.4 9999: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.15 9999: Library parsing many pre-OSX MAC text formats
 app-text/libnumbertext 1.0.5: Number to number name and money text conversion libraries
 app-text/libodfgen 0.1.7 9999: Library to generate ODF documents from libwpd and libwpg
-app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
+app-text/libpaper 1.1.24_p5: Library for handling paper characteristics
 app-text/libqxp 0.0.2: Library parsing QuarkXpress documents
 app-text/libspectre 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.6 9999: Import filter for old StarOffice documents
@@ -5252,7 +5252,7 @@ dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directo
 dev-libs/satyr 0.27 0.30: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.28.0-r1 0.30.2: Library for RDF syntax which supports reading and writing Turtle and NTriples
-dev-libs/serdisplib 1.97.9 2.01-r1 2.02: Library to drive several displays with built-in controllers or display modules
+dev-libs/serdisplib 2.01-r1 2.02: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
 dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0: General-purpose libraries from skarnet.org
@@ -10468,7 +10468,7 @@ dev-util/desktop-file-utils 0.24: Command line utilities to work with desktop me
 dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20191110 1.3.20191210: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
-dev-util/difffilter 0.3.3 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
+dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffoscope 129 137: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
