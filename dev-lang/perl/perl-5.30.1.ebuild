@@ -62,9 +62,7 @@ RDEPEND="
 	app-arch/bzip2
 	sys-libs/zlib
 "
-DEPEND="${RDEPEND}
-	!prefix? ( elibc_FreeBSD? ( sys-freebsd/freebsd-mk-defs ) )
-"
+DEPEND="${RDEPEND}"
 PDEPEND="
 	>=app-admin/perl-cleaner-2.5
 	>=virtual/perl-File-Temp-0.230.400-r2
@@ -304,6 +302,7 @@ src_prepare() {
 	if use hppa ; then
 		epatch "${FILESDIR}/${PN}-5.26.2-hppa.patch" # bug 634162
 	fi
+	eapply "${FILESDIR}"/${PN}-5.30.1-gcc-10.patch # bug 708744
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,

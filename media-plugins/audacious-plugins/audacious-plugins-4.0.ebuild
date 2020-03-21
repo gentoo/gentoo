@@ -19,7 +19,8 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme
 	jack lame libav libnotify libsamplerate lirc mms modplug mp3 nls opengl
-	pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+	pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch streamtuner
+	vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio qtmedia sdl )
 	ampache? ( http )"
@@ -92,6 +93,7 @@ DEPEND="
 	sndfile? ( >=media-libs/libsndfile-1.0.17-r1 )
 	soxr? ( media-libs/soxr )
 	speedpitch? ( media-libs/libsamplerate:= )
+	streamtuner? ( dev-qt/qtnetwork:5 )
 	vorbis? (
 		>=media-libs/libogg-1.1.3
 		>=media-libs/libvorbis-1.2.0
@@ -154,6 +156,7 @@ src_configure() {
 		$(use_enable sndfile)
 		$(use_enable soxr)
 		$(use_enable speedpitch)
+		$(use_enable streamtuner)
 		$(use_enable vorbis)
 		$(use_enable wavpack)
 		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
