@@ -560,7 +560,7 @@ app-admin/whowatch 1.8.5 1.8.6: Displays information about users currently logge
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 1.12.0: A dotfile manager for the config files in your home folder
-app-antivirus/clamav 0.102.2: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.102.2-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2 6.0.1-r5 7.0.1: Download and install third-party clamav signatures
 app-antivirus/clamtk 6.02-r1: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.0.1: Update and verify unofficial Clam Anti-Virus signatures
@@ -8901,7 +8901,7 @@ dev-python/taskflow 3.4.0 3.5.0: A library to do [jobs, tasks, flows] in a HA ma
 dev-python/tblib 1.3.2 1.3.2-r1 1.6.0: Traceback fiddling library for Python
 dev-python/tempest-lib 1.0.0-r1: Functional or integrated test suites for OpenStack projects
 dev-python/tempita 0.5.3-r1 0.5.3-r2: A very small text templating language
-dev-python/tempora 1.7 1.14.1-r1 2.0.0 2.1.0 2.1.1: Objects and routines pertaining to date and time
+dev-python/tempora 1.7 1.14.1-r1 2.0.0 2.1.0 3.0.0: Objects and routines pertaining to date and time
 dev-python/tenacity 4.8.0: General-purpose retrying library
 dev-python/termcolor 1.1.0-r1 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5 0.6 0.8.1 0.8.3: Terminals served to term.js using Tornado websockets
