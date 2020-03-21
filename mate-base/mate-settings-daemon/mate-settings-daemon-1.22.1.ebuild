@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE Settings Daemon"
-LICENSE="GPL-2 LGPL-2.1"
+LICENSE="GPL-2+ GPL-3+ HPND LGPL-2+ LGPL-2.1+"
 SLOT="0"
 
 IUSE="X debug libnotify policykit pulseaudio rfkill smartcard +sound"
