@@ -4598,9 +4598,7 @@ media-sound/deinvert:liquid - improve sound quality using net-libs/liquid-dsp
 media-sound/deinvert:wav - wav file support using media-libs/libsndfile
 media-sound/denemo:alsa - Enable alsa support through media-libs/alsa-lib
 media-sound/denemo:aubio - Enable media-libs/aubio support
-media-sound/denemo:evince - Use app-text/evince document viewer
 media-sound/denemo:fluidsynth - Enable Fluidsynth MIDI software synthesis using media-sound/fluidsynth
-media-sound/denemo:gtk3 - Enable support for the GTK+. If enabled uses slot 3 of x11-libs/gtk+, if disabled it uses slot 2
 media-sound/denemo:jack - Enable jack support through virtual/jack
 media-sound/denemo:portaudio - Enable support for media-libs/portaudio
 media-sound/denemo:portmidi - Enable support for the media-libs/portmidi backend
