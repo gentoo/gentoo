@@ -304,6 +304,7 @@ src_prepare() {
 	if use hppa ; then
 		epatch "${FILESDIR}/${PN}-5.26.2-hppa.patch" # bug 634162
 	fi
+	eapply "${FILESDIR}"/${PN}-5.30.1-gcc-10.patch # bug 708744
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
