@@ -31,6 +31,8 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.16.6-gcc10-fno-common.patch )
+
 src_configure() {
 	if use qt5; then
 		append-cxxflags -std=c++11
