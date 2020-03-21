@@ -22,13 +22,13 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
 	static? (
 		acl? ( virtual/acl[static-libs(+)] )
 		nls? ( virtual/libintl[static-libs(+)] )
 		selinux? ( sys-libs/libselinux[static-libs(+)] )
 	)
 "
+BDEPEND="nls? ( sys-devel/gettext )"
 
 src_configure() {
 	local myconf=()
