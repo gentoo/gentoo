@@ -7,5 +7,4 @@
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
   </maintainer>
-  <longdescription>rsync-like utility for btrfs snapshots</longdescription>
 </pkgmetadata>
