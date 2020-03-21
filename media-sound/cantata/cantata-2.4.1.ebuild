@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PLOCALES="cs da de en_GB es fr hu it ja ko pl pt_BR ru zh_CN"
+PLOCALES="cs da de en_GB es fi fr hu it ja ko nl pl pt_BR ru zh_CN"
 inherit cmake l10n qmake-utils xdg
 
 DESCRIPTION="Featureful and configurable Qt client for the music player daemon (MPD)"
