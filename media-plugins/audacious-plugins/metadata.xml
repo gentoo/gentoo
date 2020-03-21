@@ -17,7 +17,6 @@
 		<flag name="gme">Support various gaming console music formats</flag>
 		<flag name="gtk">Build with GTK interface instead of Qt5</flag>
 		<flag name="http">Support HTTP streams through neon</flag>
-		<flag name="qt5">Build with Qt5 interface instead of GTK</flag>
 		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
