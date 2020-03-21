@@ -1,0 +1,18 @@
+[Unit]
+Description=OSPD OpenVAS
+After=network.target networking.service dnsmasq.service redis-server@openvas.service systemd-tmpfiles.service
+ConditionKernelCommandLine=!recovery
+
+[Service]
+Type=forking
+User=gvm
+Group=gvm
+ExecStart=/usr/bin/ospd-openvas --config /etc/openvas/ospd.conf --foreground
+SuccessExitStatus=SIGKILL
+# This works asynchronously, but does not take the daemon down during the reload so it's ok.
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
+Alias=ospd-openvas.service
