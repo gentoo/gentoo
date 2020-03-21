@@ -17,12 +17,13 @@ KEYWORDS="~amd64 ~x86"
 # --enable-mem(no) memory debugging: needs Electric fence (efence), which
 #		is not available in portage. See https://github.com/boundarydevices/efence
 # --enable-gtk-doc-pdf(no) doesn't work
-IUSE="alsa +aubio debug +evince jack +fluidsynth gtk-doc +gtk3 nls +portaudio
-	+portmidi +rubberband static test"
+IUSE="alsa +aubio debug jack +fluidsynth gtk-doc nls +portaudio +portmidi
+	+rubberband test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	>=app-text/evince-3.22.1-r1:=
 	dev-libs/libxml2:2
 	>=dev-scheme/guile-2:12=
 	gnome-base/librsvg:2
@@ -30,18 +31,11 @@ RDEPEND="
 	>=media-libs/libsmf-1.3
 	>=media-libs/libsndfile-1.0.28-r1
 	>=media-sound/lilypond-2.19.54[guile2(+)]
+	x11-libs/gtk+:3
+	x11-libs/gtksourceview:3.0=
 	alsa? ( >=media-libs/alsa-lib-1.1.2 )
 	aubio? ( >=media-libs/aubio-0.4.1-r1:= )
-	evince? ( >=app-text/evince-3.22.1-r1:= )
 	fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1:= )
-	gtk3? (
-		x11-libs/gtk+:3
-		x11-libs/gtksourceview:3.0=
-	)
-	!gtk3? (
-		x11-libs/gtk+:2
-		x11-libs/gtksourceview:2.0
-	)
 	jack? ( virtual/jack )
 	portaudio? (
 		>=media-libs/portaudio-19_pre20140130
@@ -54,29 +48,26 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND="
+	>=dev-util/gtk-doc-am-1.25-r1
 	>=dev-util/intltool-0.51.0-r1
 	>=sys-devel/flex-2.6.1
 	virtual/pkgconfig
 	virtual/yacc
-	gtk-doc? (
-		>=dev-util/gtk-doc-1.25-r1
-		>=dev-util/gtk-doc-am-1.25-r1
-	)
+	gtk-doc? ( >=dev-util/gtk-doc-1.25-r1 )
 	nls? ( >=sys-devel/gettext-0.19.8.1 )
-"
-
-REQUIRED_USE="
-	evince? ( gtk3 )
 "
 
 DOCS=( AUTHORS ChangeLog docs/{DESIGN{,.lilypond},GOALS,TODO} NEWS )
 
 PATCHES=(
 	"${FILESDIR}/${P}-0001-configure.ac-patch-to-find-guile-2.2.patch"
+	"${FILESDIR}/${P}-0002-Fix-issues-with-gcc10-fno-common-flag.patch"
 )
 
 src_prepare() {
 	sed -e '/^Categories=/s/GNOME\;/GNOME\;GTK\;/' -i pixmaps/denemo.desktop || die
+	sed -e 's|appdatadir = \$(datarootdir)/appdata|appdatadir = \$(datarootdir)/metainfo|' \
+		-i Makefile.am || die
 	default
 	eautoreconf
 }
@@ -84,9 +75,13 @@ src_prepare() {
 src_configure() {
 	myeconfargs=(
 		--disable-gtk-doc-pdf
+		--disable-gtk2
 		--disable-installed-tests
 		--disable-mem
 		--disable-rpath
+		--disable-static
+		--enable-evince
+		--enable-gtk3
 		--enable-x11
 		$(use_enable alsa)
 		$(use_enable aubio)
@@ -96,15 +91,12 @@ src_configure() {
 		$(use_enable gtk-doc doc)
 		$(use_enable gtk-doc gtk-doc)
 		$(use_enable gtk-doc gtk-doc-html)
-		$(use_enable evince)
 		$(use_enable fluidsynth)
 		$(use_enable jack)
 		$(use_enable nls)
 		$(use_enable portaudio)
 		$(use_enable portmidi)
 		$(use_enable rubberband)
-		$(use_enable static)
-		$(usex gtk3 --enable-gtk3 --enable-gtk2)
 	)
 	econf "${myeconfargs[@]}"
 }
