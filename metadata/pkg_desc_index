@@ -668,7 +668,7 @@ app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBac
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1-r1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
-app-backup/bacula 9.0.8-r1 9.2.2-r2 9.4.1-r2 9.4.2-r1 9.4.3-r1 9.4.4-r1 9.4.4-r2: Featureful client/server network backup suite
+app-backup/bacula 9.4.4-r2: Featureful client/server network backup suite
 app-backup/bareos 17.2.6 17.2.7-r1 18.2.6: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.10-r1 1.1.11-r1 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
