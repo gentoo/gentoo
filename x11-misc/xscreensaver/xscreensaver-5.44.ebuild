@@ -7,12 +7,12 @@ inherit autotools desktop eutils flag-o-matic multilib pam
 DESCRIPTION="A modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
 SRC_URI="
-	https://www.jwz.org/xscreensaver/${P}.tar.gz -> ${PF}.tar.gz
+	https://www.jwz.org/xscreensaver/${P}.tar.gz -> ${P}-r1.tar.gz
 "
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 IUSE="caps gdm jpeg new-login offensive opengl pam +perl selinux suid xinerama"
 
 COMMON_DEPEND="
@@ -66,8 +66,6 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.05-interix.patch
 	"${FILESDIR}"/${PN}-5.20-blurb-hndl-test-passwd.patch
-	"${FILESDIR}"/${PN}-5.20-test-passwd-segv-tty.patch
-	"${FILESDIR}"/${PN}-5.20-tests-miscfix.patch
 	"${FILESDIR}"/${PN}-5.31-pragma.patch
 	"${FILESDIR}"/${PN}-5.43-gentoo.patch
 )
@@ -85,7 +83,7 @@ src_prepare() {
 
 	default
 
-	use offensive || eapply "${FILESDIR}"/${PN}-5.35-offensive.patch
+	use offensive || eapply "${FILESDIR}"/${PN}-5.43-offensive.patch
 
 	eapply_user
 
