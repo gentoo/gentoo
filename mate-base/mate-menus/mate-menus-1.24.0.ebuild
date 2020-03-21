@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE menu system, implementing the F.D.O cross-desktop spec"
-LICENSE="GPL-2 LGPL-2"
+LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
 
 IUSE="debug +introspection"
