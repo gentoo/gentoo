@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools multilib-minimal
 
 DESCRIPTION="Library for handling paper characteristics"
-HOMEPAGE="http://packages.debian.org/unstable/source/libpaper"
+HOMEPAGE="https://packages.debian.org/unstable/source/libpaper"
 SRC_URI="mirror://debian/pool/main/libp/libpaper/${P/-/_}.tar.gz"
 
 LICENSE="GPL-2"
