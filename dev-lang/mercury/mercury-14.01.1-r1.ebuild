@@ -5,7 +5,7 @@ EAPI=5
 
 inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib vcs-clean xdg-utils
 
-PATCHSET_VER="4"
+PATCHSET_VER="5"
 MY_P=${PN}-srcdist-${PV}
 
 DESCRIPTION="Mercury is a modern general-purpose logic/functional programming language"
