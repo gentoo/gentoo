@@ -2394,7 +2394,7 @@ app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver i
 app-pda/jpilot 1.8.2-r1: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
 app-pda/libplist 2.0.0 2.1.0: Support library to deal with Apple Property Lists (Binary & XML)
-app-pda/libusbmuxd 1.0.10-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
+app-pda/libusbmuxd 1.0.10-r1 2.0.1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm device and a desktop
 app-pda/usbmuxd 1.0.8_p20140530 1.1.0: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
