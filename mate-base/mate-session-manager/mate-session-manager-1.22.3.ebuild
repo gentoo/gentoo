@@ -12,7 +12,7 @@ fi
 DESCRIPTION="MATE session manager"
 HOMEPAGE="https://mate-desktop.org/"
 
-LICENSE="GPL-2 LGPL-2 FDL-1.1"
+LICENSE="GPL-2+ GPL-3+ HPND LGPL-2+ LGPL-2.1+"
 SLOT="0"
 IUSE="debug elogind gnome-keyring ipv6 systemd +xtrans"
 
