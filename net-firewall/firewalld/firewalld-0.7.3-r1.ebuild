@@ -76,7 +76,7 @@ src_configure() {
 		$(use_with iptables ip6tables_restore "${EPREFIX}/sbin/ip6tables-restore")
 		$(use_with iptables ebtables "${EPREFIX}/sbin/ebtables")
 		$(use_with iptables ebtables_restore "${EPREFIX}/sbin/ebtables-restore")
-		$(use_with iptables ipset "${EPREFIX}/sbin/ipset")
+		$(use_with iptables ipset "${EPREFIX}/usr/sbin/ipset")
 		--with-systemd-unitdir="$(systemd_get_systemunitdir)"
 		--with-bashcompletiondir="$(get_bashcompdir)"
 	)
