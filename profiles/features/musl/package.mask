@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
+# Needs a port no musl. Uses glibc-specific termio and __getppid.
+app-emulation/ski
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # In ::gentoo dev-libs/elfutils needs an upstream port to
 # musl: #602126, #701478
 # - https://sourceware.org/PR21002
