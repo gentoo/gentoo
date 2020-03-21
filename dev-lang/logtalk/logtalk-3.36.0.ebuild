@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils xdg-utils
 
@@ -21,6 +21,8 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-portage.patch
+
+	eapply_user
 }
 
 src_install() {
@@ -40,53 +42,53 @@ src_install() {
 	doins scripts/freedesktop/logtalk.xml
 
 	# Install documentation
-	dodoc ACKNOWLEDGMENTS.md BIBLIOGRAPHY.bib CUSTOMIZE.md \
-		INSTALL.md LICENSE.txt QUICK_START.md README.md \
-		RELEASE_NOTES.md UPGRADING.md VERSION.txt
+	dodoc ACKNOWLEDGMENTS.md BIBLIOGRAPHY.bib CONTRIBUTING.md \
+		CUSTOMIZE.md INSTALL.md LICENSE.txt QUICK_START.md \
+		README.md RELEASE_NOTES.md UPGRADING.md VERSION.txt
 
 	rm -f man/man1/logtalk_backend_select.1
 	rm -f man/man1/logtalk_version_select.1
 	doman man/man1/*.1
 
 	# Integration symlinks
-	dosym /usr/share/${P}/integration/logtalk_user_setup.sh \
+	dosym ../share/${P}/integration/logtalk_user_setup.sh \
 		/usr/bin/logtalk_user_setup
-	dosym /usr/share/${P}/integration/bplgt.sh \
+	dosym ../share/${P}/integration/bplgt.sh \
 		/usr/bin/bplgt
-	dosym /usr/share/${P}/integration/cxlgt.sh \
+	dosym ../share/${P}/integration/cxlgt.sh \
 		/usr/bin/cxlgt
-	dosym /usr/share/${P}/integration/eclipselgt.sh \
+	dosym ../share/${P}/integration/eclipselgt.sh \
 		/usr/bin/eclipselgt
-	dosym /usr/share/${P}/integration/gplgt.sh \
+	dosym ../share/${P}/integration/gplgt.sh \
 		/usr/bin/gplgt
-	dosym /usr/share/${P}/integration/jiplgt.sh \
+	dosym ../share/${P}/integration/jiplgt.sh \
 		/usr/bin/jiplgt
-	dosym /usr/share/${P}/integration/lplgt.sh \
+	dosym ../share/${P}/integration/lplgt.sh \
 		/usr/bin/lplgt
-	dosym /usr/share/${P}/integration/qplgt.sh \
+	dosym ../share/${P}/integration/qplgt.sh \
 		/usr/bin/qplgt
-	dosym /usr/share/${P}/integration/quintuslgt.sh \
+	dosym ../share/${P}/integration/quintuslgt.sh \
 		/usr/bin/quintuslgt
-	dosym /usr/share/${P}/integration/sicstuslgt.sh \
+	dosym ../share/${P}/integration/sicstuslgt.sh \
 		/usr/bin/sicstuslgt
-	dosym /usr/share/${P}/integration/swilgt.sh \
+	dosym ../share/${P}/integration/swilgt.sh \
 		/usr/bin/swilgt
-	dosym /usr/share/${P}/integration/xsblgt.sh \
+	dosym ../share/${P}/integration/xsblgt.sh \
 		/usr/bin/xsblgt
-	dosym /usr/share/${P}/integration/xsbmtlgt.sh \
+	dosym ../share/${P}/integration/xsbmtlgt.sh \
 		/usr/bin/xsbmtlgt
-	dosym /usr/share/${P}/integration/yaplgt.sh \
+	dosym ../share/${P}/integration/yaplgt.sh \
 		/usr/bin/yaplgt
 
-	dosym /usr/share/${P}/tools/lgtdoc/xml/lgt2xml.sh \
+	dosym ../share/${P}/tools/lgtdoc/xml/lgt2xml.sh \
 		/usr/bin/lgt2xml
-	use xslt && dosym /usr/share/${P}/tools/lgtdoc/xml/lgt2html.sh \
+	use xslt && dosym ../share/${P}/tools/lgtdoc/xml/lgt2html.sh \
 		/usr/bin/lgt2html
-	use xslt && dosym /usr/share/${P}/tools/lgtdoc/xml/lgt2txt.sh \
+	use xslt && dosym ../share/${P}/tools/lgtdoc/xml/lgt2txt.sh \
 		/usr/bin/lgt2txt
-	use xslt && dosym /usr/share/${P}/tools/lgtdoc/xml/lgt2md.sh \
+	use xslt && dosym ../share/${P}/tools/lgtdoc/xml/lgt2md.sh \
 		/usr/bin/lgt2md
-	use fop  && dosym /usr/share/${P}/tools/lgtdoc/xml/lgt2pdf.sh \
+	use fop  && dosym ../share/${P}/tools/lgtdoc/xml/lgt2pdf.sh \
 		/usr/bin/lgt2pdf
 
 	# Install environment files
