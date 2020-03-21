@@ -22,7 +22,7 @@ BDEPEND="
 	python? ( >=dev-python/cython-0.17[${PYTHON_USEDEP}] )
 "
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( AUTHORS NEWS README.md )
 
