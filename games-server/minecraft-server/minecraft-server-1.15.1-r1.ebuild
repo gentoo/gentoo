@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="bb2b6b1aefcd70dfd1892149ac3a215f6c636b07"
+EGIT_COMMIT="4d1826eebac84847c71a77f9349cc22afd0cf0a1"
 
 inherit readme.gentoo-r1 java-pkg-2
 
@@ -30,15 +30,15 @@ RESTRICT="bindist mirror"
 S="${WORKDIR}"
 
 src_unpack() {
-	cp "${DISTDIR}"/${A} "${WORKDIR}" || die
+	cp "${DISTDIR}/${A}" "${WORKDIR}" || die
 }
 
 src_install() {
-	java-pkg_newjar minecraft-server-${PV}.jar minecraft-server.jar
-	java-pkg_dolauncher minecraft-server --jar minecraft-server.jar --java_args "\${JAVA_OPTS}"
+	java-pkg_newjar "${P}.jar" "${PN}.jar"
+	java-pkg_dolauncher "${PN}" --jar "${PN}.jar" --java_args '${JAVA_OPTS}'
 
-	newinitd "${FILESDIR}"/minecraft-server.initd-r3 minecraft-server
-	newconfd "${FILESDIR}"/minecraft-server.confd minecraft-server
+	newinitd "${FILESDIR}/${PN}.initd-r4" "${PN}"
+	newconfd "${FILESDIR}/${PN}.confd-r1" "${PN}"
 
 	readme.gentoo_create_doc
 }

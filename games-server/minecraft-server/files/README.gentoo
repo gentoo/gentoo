@@ -18,3 +18,8 @@ After that, make your settings in
 
 If you don't make a symlink, but use the default scripts,
 your world will be called 'main'.
+
+To interact with the console of the corresponding world,
+you can use:
+
+rc-service minecraft-server attach

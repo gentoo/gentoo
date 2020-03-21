@@ -1,0 +1,55 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+if [ "${RC_SVCNAME}" = "minecraft-server" ]; then
+	instance="main"
+else
+	instance="${RC_SVCNAME#minecraft-server.}"
+fi
+
+dtach_tmpfile="/tmp/${RC_SVCNAME}"
+minecraft_command="/usr/bin/minecraft-server"
+minecraft_logs="/var/log/minecraft-server"
+minecraft_logs_instance="${minecraft_logs}/${instance}"
+minecraft_path="/var/lib/minecraft-server"
+minecraft_path_instance="${minecraft_path}/${instance}"
+name="Minecraft server (world: ${instance})"
+pidfile="/run/${RC_SVCNAME}.pid"
+start_stop_daemon_args="--chdir ${minecraft_path_instance} --env JAVA_OPTS='${MINECRAFT_OPTS}'"
+
+extra_started_commands="attach"
+description_attach="Attaches to the session of the Minecraft server"
+
+command="/usr/bin/dtach"
+command_background="true"
+command_args="-N ${dtach_tmpfile} ${minecraft_command}"
+command_group="minecraft"
+command_user="minecraft"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	checkpath -d -o "${command_user}:${command_group}" -q "${minecraft_path}" "${minecraft_path_instance}"
+
+	checkpath -f -o "${command_user}:${command_group}" -q "${minecraft_path_instance}/eula.txt"
+	echo "eula=true" > "${minecraft_path_instance}/eula.txt"
+
+	checkpath -d -o "${command_user}:${command_group}" -q "${minecraft_logs}" "${minecraft_logs_instance}"/{,crash-reports}
+
+	if cd "${minecraft_path_instance}"; then
+		test ! -L logs && ln -sr "${minecraft_logs_instance}" logs
+		test ! -L crash-reports && ln -sr "${minecraft_logs_instance}/crash-reports" crash-reports
+	fi
+
+	if [ -z "${MINECRAFT_OPTS}" ]; then
+		eerror "You must define \`MINECRAFT_OPTS\` in \`/etc/conf.d/${RC_SVCNAME}\`!"
+		return 1
+	fi
+}
+
+attach() {
+	eval "${command}" -a "${dtach_tmpfile}" "${DTACH_OPTS}"
+}
