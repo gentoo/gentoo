@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,6 +55,13 @@ EANT_TEST_TARGET="junit.test"
 JAVA_ANT_ENCODING="UTF-8"
 
 src_prepare() {
+	if use test; then
+		# no *streaming as requiring >dev-java/mockito-1.9.5
+		sed -e "/streaming.*junit\.test/d" \
+			-i build.xml ||
+			die "unable to remove ministreaming tests"
+	fi
+
 	# as early as possible to allow generic patches to be applied
 	default
 
@@ -105,13 +112,6 @@ src_prepare() {
 		echo "wrapper.java.additional.$((i++))=-D$prop" >> installer/resources/wrapper.config ||
 			die "unable to apply gentoo config"
 	done
-
-	if use test; then
-		# no *streaming as requiring >dev-java/mockito-1.9.5
-		sed -e "/junit\.test.*streaming/d" \
-			-i build.xml ||
-			die "unable to remove ministreaming tests"
-	fi
 }
 
 src_test() {
@@ -161,9 +161,6 @@ src_install() {
 
 	# setup user
 	keepdir /var/lib/i2p
-	keepdir /var/lib/i2p/app
-	keepdir /var/lib/i2p/router
-	keepdir /var/lib/i2p/config
 	fowners i2p:i2p /var/lib/i2p
 }
 

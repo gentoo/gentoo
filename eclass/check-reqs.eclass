@@ -1,4 +1,4 @@
-# Copyright 2004-2019 Gentoo Authors
+# Copyright 2004-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: check-reqs.eclass
@@ -109,7 +109,7 @@ check-reqs_prepare() {
 			-z ${CHECKREQS_DISK_VAR} ]]; then
 		eerror "Set some check-reqs eclass variables if you want to use it."
 		eerror "If you are user and see this message file a bug against the package."
-		die "${FUNCNAME}: check-reqs eclass called but not actualy used!"
+		die "${FUNCNAME}: check-reqs eclass called but not actually used!"
 	fi
 }
 
