@@ -21,7 +21,10 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/PingTunnel
 
-PATCHES=( "${FILESDIR}"/${P}_makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}_makefile.patch
+	"${FILESDIR}"/${P}-musl.patch
+)
 HTML_DOCS=( web/. )
 
 src_configure() {
