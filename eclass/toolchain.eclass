@@ -172,8 +172,9 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.2 && IUSE+=" +openmp"
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
 	tc_version_is_at_least 4.7 && IUSE+=" go"
-	tc_version_is_at_least 4.8 &&
-		IUSE+=" +sanitize"
+	# sanitizer support appeared in gcc-4.8, but <gcc-5 does not
+	# support modern glibc.
+	tc_version_is_at_least 5 && IUSE+=" +sanitize"
 	# Note:
 	#   <gcc-4.8 supported graphite, it required forked ppl
 	#     versions which we dropped.  Since graphite was also experimental in
@@ -1318,9 +1319,13 @@ toolchain_src_configure() {
 		confgcc+=( --without-{cloog,ppl} )
 	fi
 
-	if tc_version_is_at_least 4.8 && in_iuse sanitize ; then
-		# See Note [implicitly enabled flags]
-		confgcc+=( $(usex sanitize '' --disable-libsanitizer) )
+	if tc_version_is_at_least 4.8; then
+		if in_iuse sanitize ; then
+			# See Note [implicitly enabled flags]
+			confgcc+=( $(usex sanitize '' --disable-libsanitizer) )
+		else
+			confgcc+=( --disable-libsanitizer )
+		fi
 	fi
 
 	if tc_version_is_at_least 6.0 && in_iuse pie ; then
