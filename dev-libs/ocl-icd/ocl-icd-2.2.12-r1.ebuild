@@ -18,6 +18,8 @@ IUSE="+khronos-headers"
 BDEPEND="${RUBY_DEPS}"
 RDEPEND="app-eselect/eselect-opencl"
 
+PATCHES=("${FILESDIR}"/${P}-gcc-10.patch)
+
 src_prepare() {
 	replace-flags -Os -O2 # bug 646122
 
