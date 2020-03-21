@@ -17,6 +17,8 @@ DEPEND="app-arch/xz-utils
 # bug 429810
 RDEPEND="!sys-fabric/dapl"
 
+PATCHES=( "${FILESDIR}"/${P}-unportable-sys-sysctl_h.patch )
+
 src_compile() {
 	emake CFLAGS="${CFLAGS}"
 }
