@@ -35,6 +35,7 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-21)
 # Package appears dead upstream, purpose unclear after media-sound/audacious-3.9
 # is gone, bug #671828. GTK2 (3.10.1) or Qt5 (4.0) version of Audacious remains.
+# Masked for removal in 30 days.
 media-libs/freeverb3
 =media-sound/audacious-3.9*
 =media-plugins/audacious-plugins-3.9*
