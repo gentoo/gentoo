@@ -94,6 +94,8 @@ src_install() {
 		-e "/^ReuseSession/s/false/true/" \
 		-e "/^EnableHiDPI/s/false/true/" \
 		-i "${D}/${confd}"/00default.conf || die
+
+	keepdir "/var/lib/${PN}"
 }
 
 pkg_postinst() {
