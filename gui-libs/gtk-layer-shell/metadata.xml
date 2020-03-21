@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>NP-Hardass@gentoo.org</email>
+		<name>NP-Hardass</name>
+	</maintainer>
+	<longdescription lang="en">
+		A library to create panels and other desktop components for Wayland using the Layer Shell protocol
+	</longdescription>
+	<upstream>
+		<remote-id type="github">wmww/gtk-layer-shell</remote-id>
+	</upstream>
+</pkgmetadata>
