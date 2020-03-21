@@ -23,11 +23,14 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	test? ( dev-python/freezegun[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/freezegun[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+	)
 "
 
 python_test() {
 	# The package uses pkg_resources to determine its version
 	distutils_install_for_testing
-	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
+	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
