@@ -14,7 +14,7 @@ HOMEPAGE="https://gitweb.torproject.org/pluggable-transports/goptlib.git"
 # Upstream does not publish release tarballs
 SRC_URI="https://dev.gentoo.org/~marecki/dists/${PN}/${P}.tar.xz"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 
 LICENSE="CC0-1.0"
 SLOT="0"
