@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Adam Feldman <NP-Hardass@gentoo.org> (2020-04-06)
+# Mask until gui-libs/gtk-layer-shell is keyworded
+mate-base/mate-panel wayland
+#
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
 # Lots of deps for little gain
 dev-python/joblib doc
