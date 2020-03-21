@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-libs/boost:=[zlib(+)] sys-libs/zlib python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) ) spreadsheet-model? ( >=dev-libs/libixion-0.14.0:= ) >=dev-util/mdds-1.4.1:1
+DEPEND=dev-libs/boost:=[zlib(+)] sys-libs/zlib python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) ) spreadsheet-model? ( >=dev-libs/libixion-0.14.0:= ) =dev-util/mdds-1.4*:1
 DESCRIPTION=Standalone file import filter library for spreadsheet documents
 EAPI=7
 HOMEPAGE=https://gitlab.com/orcus/orcus/blob/master/README.md
@@ -11,4 +11,4 @@ REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_
 SLOT=0/0.14
 SRC_URI=https://kohei.us/files/orcus/src/liborcus-0.14.1.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	01eeb2dae449b6155b46f8deb0a2087d	python-utils-r1	89113cd44c8118e781d18387d4256fe3	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ca9bb76f6ba9878b729cf6ed65857b8f
+_md5_=c5f583dbc1b62d9b5d6c86dc10b990f0
