@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2020-03-21)
+# Package masked for removal. Broken SRC_URI,
+# upstream is dead.
+# Bug #458662
+# Removal after 2020-05-01
+games-misc/OilWar
+
 # David Seifert <soap@gentoo.org> (2020-03-20)
 # Last release in 2014, unsupported, EOL.
 # Include the last remaining revdep, which was last updated in 2004.
