@@ -217,7 +217,6 @@ dev-python/dynd-python
 dev-python/embedly
 dev-python/envoy
 dev-python/fedmsg
-dev-python/flask-admin
 dev-python/flask-peewee
 dev-python/flask-pymongo
 dev-python/flask-socketio
