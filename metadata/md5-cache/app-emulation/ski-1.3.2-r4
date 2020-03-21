@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare
+DEPEND=dev-libs/libltdl:0= sys-libs/ncurses:0= virtual/libelf debug? ( sys-libs/binutils-libs:0= ) motif? ( x11-libs/motif:0= ) sys-devel/bison sys-devel/flex dev-util/gperf
+DESCRIPTION=ia64 instruction set simulator
+EAPI=7
+HOMEPAGE=http://ski.sourceforge.net/ http://www.gelato.unsw.edu.au/IA64wiki/SkiSimulator
+IUSE=debug motif
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libltdl:0= sys-libs/ncurses:0= virtual/libelf debug? ( sys-libs/binutils-libs:0= ) motif? ( x11-libs/motif:0= ) !!games-sports/ski
+SLOT=0
+SRC_URI=mirror://sourceforge/ski/ski-1.3.2.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=99461c57ca56fba9f91431daf670cf4c
