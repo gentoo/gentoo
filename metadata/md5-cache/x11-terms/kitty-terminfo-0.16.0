@@ -1,4 +1,3 @@
-BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup
 DEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Terminfo for kitty, an OpenGL-based terminal emulator
@@ -13,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/kovidgoyal/kitty/releases/download/v0.16.0/kitty-0.16.0.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	01eeb2dae449b6155b46f8deb0a2087d	python-utils-r1	89113cd44c8118e781d18387d4256fe3	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=ce76667fc086a6a8e40f030bdc845eb9
+_md5_=fc702aece3f92be551e020d9050e8105
