@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -2,11 +2,26 @@
  # (c) 2004-2009 Daniel Stoedle, daniels@cs.uit.no
  # ptunnel.exe target added by Mike Miller, mike@mikeage.net
