@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
+# Linux debugger needs a port to musl.
+app-emulation/dosemu
+
 sys-libs/uclibc-ng
 sys-libs/glibc
 
