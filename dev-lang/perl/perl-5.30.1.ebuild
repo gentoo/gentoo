@@ -62,9 +62,7 @@ RDEPEND="
 	app-arch/bzip2
 	sys-libs/zlib
 "
-DEPEND="${RDEPEND}
-	!prefix? ( elibc_FreeBSD? ( sys-freebsd/freebsd-mk-defs ) )
-"
+DEPEND="${RDEPEND}"
 PDEPEND="
 	>=app-admin/perl-cleaner-2.5
 	>=virtual/perl-File-Temp-0.230.400-r2
