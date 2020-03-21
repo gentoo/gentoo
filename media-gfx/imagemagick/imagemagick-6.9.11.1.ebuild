@@ -207,7 +207,7 @@ src_install() {
 
 	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} +
 	# .la files in parent are not needed, keep plugin .la files
-        rm "${ED}"/usr/$(get_libdir)/*.la || die
+	rm "${ED}"/usr/$(get_libdir)/*.la || die
 
 	if use opencl; then
 		cat <<-EOF > "${T}"/99${PN}
