@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors.
+# Copyright 1999-2020 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/uclibc-ng
@@ -8,6 +8,9 @@ sys-libs/glibc
 =virtual/libudev-232-r1
 sys-apps/systemd
 sys-fs/udev
+
+# systemd sources fail to build without glibc
+sys-boot/systemd-boot
 
 # Ian Stakenvicius, 2017-06-14
 # on behalf of mozilla@gentoo.org
