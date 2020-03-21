@@ -56,6 +56,8 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="netifrc? ( net-misc/netifrc )"
 
+PATCHES=("${FILESDIR}"/${PN}-0.42.1-gcc-10.patch)
+
 src_prepare() {
 	default
 	if [[ ${PV} == "9999" ]] ; then
