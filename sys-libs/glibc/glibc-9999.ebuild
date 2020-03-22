@@ -129,6 +129,26 @@ else
 	PDEPEND+=" !vanilla? ( sys-libs/timezone-data )"
 fi
 
+# Ignore tests whitelisted below
+GENTOO_GLIBC_XFAIL_TESTS="${GENTOO_GLIBC_XFAIL_TESTS:-yes}"
+
+# The following tests fail due to the Gentoo build system and are thus
+# executed but ignored:
+XFAIL_TEST_LIST=(
+	# 1) Sandbox
+	tst-ldconfig-bad-aux-cache
+	tst-pldd
+	tst-mallocfork2
+	tst-nss-db-endgrent
+	tst-nss-db-endpwent
+	tst-nss-files-hosts-long
+	tst-nss-test3
+	# 2) Namespaces and cgroup
+	tst-locale-locpath
+	# 9) Failures of unknown origin
+	tst-latepthread
+)
+
 #
 # Small helper functions
 #
@@ -1139,11 +1159,22 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir nptl)"
+
+	local myxfailparams=""
+	if [[ "${GENTOO_GLIBC_XFAIL_TESTS}" == "yes" ]] ; then
+		for myt in ${XFAIL_TEST_LIST[@]} ; do
+			myxfailparams+="test-xfail-${myt}=yes "
+		done
+	fi
+
 	# disable tests:
 	# - tests-container:
 	#     sandbox does not understand unshare() and prevents
 	#     writes to /proc/
-	emake check tests-container=
+	# emake ${myxfailparams} check tests-container=
+	# if possible let's list them (unless it's *all* container tests)
+
+	emake ${myxfailparams} check
 }
 
 do_src_test() {
