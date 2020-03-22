@@ -506,12 +506,6 @@ media-gfx/cropgui
 # See bugs #546024, #706486, pending PR #14720. Masked for removal in 40 days.
 gnome-extra/nautilus-dropbox
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-18)
-# Dead and unmaintained.  Last release in 2015.  Broken with newer
-# versions of Python 3.  No reverse dependencies left.
-# Removal in 30 days.  Bug #691044.
-dev-python/tlslite
-
 # Rich Freeman <rich0@gentoo.org> (2020-02-16)
 # Dead upstream, obsolete deps.
 app-misc/sleepyhead
