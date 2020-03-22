@@ -53,7 +53,6 @@ REQUIRED_USE="
 	ldap? ( dlz )
 	dnsrps? ( dlz )
 	python? ( ${PYTHON_REQUIRED_USE} )"
-# sdb-ldap? ( dlz )
 
 DEPEND="!libressl? ( dev-libs/openssl:=[-bindist] )
 	libressl? ( dev-libs/libressl:= )
@@ -73,8 +72,8 @@ DEPEND="!libressl? ( dev-libs/openssl:=[-bindist] )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/ply[${PYTHON_USEDEP}]
-	)"
-#	sdb-ldap? ( net-nds/openldap )
+	)
+	dev-libs/libuv:="
 
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-bind )
