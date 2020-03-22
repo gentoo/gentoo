@@ -135,8 +135,6 @@ GENTOO_GLIBC_XFAIL_TESTS="${GENTOO_GLIBC_XFAIL_TESTS:-yes}"
 # The following tests fail due to the Gentoo build system and are thus
 # executed but ignored:
 XFAIL_TEST_LIST=(
-	# 1) Namespaces and cgroup
-	tst-locale-locpath
 	# 9) Failures of unknown origin
 	tst-latepthread
 )
