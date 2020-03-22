@@ -13064,7 +13064,7 @@ media-libs/openmoiv 1.0.3a: Object-oriented 3D toolkit for rendering and interac
 media-libs/opensubdiv 3.3.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
 media-libs/opusfile 0.11: A high-level decoding and seeking API for .opus files
-media-libs/osl 1.8.12 1.9.6 1.9.9 1.10.5: Advanced shading language for production GI renderers
+media-libs/osl 1.10.5: Advanced shading language for production GI renderers
 media-libs/oyranos 0.9.6-r1 9999: Colour management system allowing to share settings across apps and services
 media-libs/partio 1.1.0_p20170829 1.5.4 9999: Library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
