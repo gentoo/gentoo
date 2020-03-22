@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ fi
 
 DESCRIPTION="Replaces xscreensaver, integrating with the MATE desktop"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ HPND LGPL-2+"
 SLOT="0"
 IUSE="X debug consolekit elogind kernel_linux libnotify opengl pam systemd"
 REQUIRED_USE="?? ( elogind systemd )"
