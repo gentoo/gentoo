@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+Hunter is a flexible code tracing toolkit, not for measuring coverage, but for debugging, logging, inspection and other nefarious purposes. It has a simple Python API, a convenient terminal API and a CLI tool to attach to processes.
+Design notes
+
+Hunter doesn't do everything. As a design goal of this library some things are made intentionally austere and verbose (to avoid complexity, confusion and inconsistency). This has few consequences:
+
+    There are Operators but there's no negation operator. Instead you're expected to negate a Query object, eg: ~Q(module='re').
+    There are no specialized operators or filters - all filters behave exactly the same. For example:
+        No filter for packages. You're expected to filter by module with an operator.
+        No filter for arguments, return values or variables. You're expected to write your own filter function and deal with the problems of poking into objects.
+    Layering is minimal. There's are some helpers that do some argument processing and conversions to save you some typing but that's about it.
+    The library doesn't try to hide the mechanics of tracing in Python - it's 1:1 regarding what Python sends to a trace function if you'd be using sys.settrace.
+    Doesn't have any storage. You are expected to redirect output to a file.
+
+You should look at it like it's a tool to help you understand and debug big applications, or a framework ridding you of the boring parts of settrace, not something that helps you learn Python.
+FAQ
+Why not Smiley?
+
+There's some obvious overlap with smiley but there are few fundamental differences:
+
+    Complexity. Smiley is simply over-engineered:
+        It uses IPC and a SQL database.
+        It has a webserver. Lots of dependencies.
+        It uses threads. Side-effects and subtle bugs are introduced in your code.
+        It records everything. Tries to dump any variable. Often fails and stops working.
+
+    Why do you need all that just to debug some stuff in a terminal? Simply put, it's a nice idea but the design choices work against you when you're already neck-deep into debugging your own code. In my experience Smiley has been very buggy and unreliable. Your mileage may vary of course.
+
+    Tracing long running code. This will make Smiley record lots of data, making it unusable.
+
+    Now because Smiley records everything, you'd think it's better suited for short programs. But alas, if your program runs quickly then it's pointless to record the execution. You can just run it again.
+
+    It seems there's only one situation where it's reasonable to use Smiley: tracing io-bound apps remotely. Those apps don't execute lots of code, they just wait on network so Smiley's storage won't blow out of proportion and tracing overhead might be acceptable.
+
+    Use-cases. It seems to me Smiley's purpose is not really debugging code, but more of a "non interactive monitoring" tool.
+
+In contrast, Hunter is very simple:
+
+    Few dependencies.
+
+    Low overhead (tracing/filtering code has an optional Cython extension).
+
+    No storage. This simplifies lots of things.
+
+    The only cost is that you might need to run the code multiple times to get the filtering/actions right. This means Hunter is not really suited for "post-mortem" debugging. If you can't reproduce the problem anymore then Hunter won't be of much help.
+
+Why not pytrace?
+
+Pytrace is another tracer tool. It seems quite similar to Smiley - it uses a sqlite database for the events, threads and IPC, thus it's reasonable to expect the same kind of problems.
+Why not PySnooper or snoop?
+
+snoop is a refined version of PySnooper. Both are more suited to tracing small programs or functions as the output is more verbose and less suited to the needs of tracing a big application where Hunter provides more flexible setup, filtering capabilities, speed and brevity.
+Why not coverage?
+
+For purposes of debugging coverage is a great tool but only as far as "debugging by looking at what code is (not) run". Checking branch coverage is good but it will only get you as far.
+
+From the other perspective, you'd be wondering if you could use Hunter to measure coverage-like things. You could do it but for that purpose Hunter is very "rough": it has no builtin storage. You'd have to implement your own storage. You can do it but it wouldn't give you any advantage over making your own tracer if you don't need to "pre-filter" whatever you're recording.
+
+In other words, filtering events is the main selling point of Hunter - it's fast (cython implementation) and the query API is flexible enough.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">python-hyper/hyper-h2</remote-id>
+    <remote-id type="pypi">h2</remote-id>
+  </upstream>
+</pkgmetadata>

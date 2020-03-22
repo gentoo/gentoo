@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+pytest-instafail is a plugin for py.test that shows failures and errors instantly instead of waiting until the end of test session.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">pytest-dev/pytest-instafail</remote-id>
+    <remote-id type="pypi">pytest-instafail</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+An aspect-oriented programming, monkey-patch and decorators library. It is useful when changing behavior in existing code is desired. It includes tools for debugging and testing: simple mock/record and a complete capture/replay framework.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">ionelmc/python-aspectlib</remote-id>
+    <remote-id type="pypi">aspectlib</remote-id>
+  </upstream>
+</pkgmetadata>

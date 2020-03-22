@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>andrewammerlaan@riseup.net</email>
+    <name>Andrew Ammerlaan</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+Curio is a coroutine-based library for concurrent Python systems programming. It provides standard programming abstractions such as as tasks, sockets, files, locks, and queues. It works on Unix and Windows. You'll find it to be familiar, small, fast, and fun
+Core Features
+
+Curio supports standard synchronization primitives (events, locks, recursive locks, semaphores, and condition variables), queues, subprocesses, as well as running tasks in threads and processes. The task model fully supports cancellation, task groups, timeouts, monitoring, and other features critical to writing reliable code.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">dabeaz/curio</remote-id>
+    <remote-id type="pypi">curio</remote-id>
+  </upstream>
+</pkgmetadata>

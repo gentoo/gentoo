@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+autoflake removes unused imports and unused variables from Python code. It makes use of pyflakes to do this.
+
+By default, autoflake only removes unused imports for modules that are part of the standard library. (Other modules may have side effects that make them unsafe to remove automatically.) Removal of unused variables is also disabled by default.
+
+autoflake also removes useless pass statements.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">myint/autoflake</remote-id>
+    <remote-id type="pypi">autoflake</remote-id>
+  </upstream>
+</pkgmetadata>

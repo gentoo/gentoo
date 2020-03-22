@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+pytest-sugar changes the look and feel of pytest, Python testing tool, by adding a progressbar and instafailing tests
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Teemu/pytest-sugar</remote-id>
+    <remote-id type="pypi">pytest-sugar</remote-id>
+    <maintainer status="unknown">
+      <email>janne.vanhala@gmail.com</email>
+      <name>Janne Vanhala</name>
+    </maintainer>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+The HTTP Core package provides a minimal low-level HTTP client, which does one thing only. Sending HTTP requests.
+
+It does not provide any high level model abstractions over the API, does not handle redirects, multipart uploads, building authentication headers, transparent HTTP caching, URL parsing, session cookie handling, content or charset decoding, handling JSON, environment based configuration defaults, or any of that Jazz.
+
+Some things HTTP Core does do:
+
+    Sending HTTP requests.
+    Provides both sync and async interfaces.
+    Supports HTTP/1.1 and HTTP/2.
+    Async backend support for asyncio and trio.
+    Automatic connection pooling.
+    HTTP(S) proxy support.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">https://github.com/encode/httpcore</remote-id>
+    <remote-id type="pypi">httpcore</remote-id>
+  </upstream>
+</pkgmetadata>

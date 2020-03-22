@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    This plugin tightly integrates into pytest. To use this effectively you should know a thing or two about pytest first. Take a look at the introductory material or watch talks.
+
+    Few notes:
+
+        This plugin benchmarks functions and only that. If you want to measure block of code or whole programs you will need to write a wrapper function.
+        In a test you can only benchmark one function. If you want to benchmark many functions write more tests or use parametrization http://docs.pytest.org/en/latest/parametrize.html.
+        To run the benchmarks you simply use pytest to run your "tests". The plugin will automatically do the benchmarking and generate a result table. Run pytest --help for more details.
+
+This plugin provides a benchmark fixture. This fixture is a callable object that will benchmark any function passed to it.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">ionelm/pytest-benchmark</remote-id>
+    <remote-id type="pypi">pytest-benchmark</remote-id>
+  </upstream>
+</pkgmetadata>
