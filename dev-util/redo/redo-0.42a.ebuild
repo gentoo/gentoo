@@ -4,15 +4,15 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
-inherit git-r3 multilib multiprocessing python-utils-r1 python-single-r1
+inherit multilib multiprocessing python-utils-r1 python-single-r1
 
 DESCRIPTION="Smaller, easier, more powerful, and more reliable than make"
 HOMEPAGE="https://github.com/apenwarr/redo"
-EGIT_REPO_URI="https://github.com/apenwarr/redo"
+SRC_URI="https://github.com/apenwarr/redo/archive/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
@@ -25,6 +25,7 @@ BDEPEND="
 RDEPEND="
 	${BDEPEND}
 "
+S=${WORKDIR}/${PN}-${P}
 
 src_configure() {
 	echo ${PYTHON} > redo/whichpython || die
