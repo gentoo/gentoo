@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,16 +35,16 @@ src_prepare() {
 	#respecting LDFLAGS, bug #208189
 	default
 	sed \
-		-e "s:bin/:${EPREFIX}/bin/:g" \
+		-e "s|bin/|${EPREFIX}/bin/|g" \
 		-i Makefile source/preferences.c source/help_data.h source/nedit.c Xlt/Makefile || die
 	sed \
-		-e "s:nc:neditc:g" -i doc/nc.pod || die
-	sed -i -e "s:CFLAGS=-O:CFLAGS=${CFLAGS}:" -e "s:check_tif_rule::" \
+		-e "s|nc|neditc|g" -i doc/nc.pod || die
+	sed -i -e "s|CFLAGS=-O|CFLAGS=${CFLAGS}|" -e "s|check_tif_rule||" \
 		makefiles/Makefile.linux || die
-	sed -i -e "s:CFLAGS=-O:CFLAGS=${CFLAGS}:"                  \
-		   -e "s:MOTIFDIR=/usr/local:MOTIFDIR=${EPREFIX}/usr:" \
-		   -e "s:-lX11:-lX11 -lXmu -liconv:"                   \
-		   -e "s:check_tif_rule::"                             \
+	sed -i -e "s|CFLAGS=-O|CFLAGS=${CFLAGS}|"                  \
+		   -e "s|MOTIFDIR=/usr/local|MOTIFDIR=${EPREFIX}/usr|" \
+		   -e "s|-lX11|-lX11 -lXmu -liconv|"                   \
+		   -e "s|check_tif_rule||"                             \
 		makefiles/Makefile.macosx || die
 }
 
