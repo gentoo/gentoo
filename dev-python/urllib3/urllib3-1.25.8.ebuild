@@ -40,7 +40,7 @@ BDEPEND="
 		>=dev-python/trustme-0.5.3[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			>=www-servers/tornado-4.2.1[${PYTHON_USEDEP}]
-		' python{2_7,3_{5,6,7}})
+		' 'python*')
 	)
 "
 
@@ -78,7 +78,7 @@ python_test() {
 	local -x CI=1
 	# FIXME: get tornado ported
 	case ${EPYTHON} in
-		python2*|python3.[567])
+		python*)
 			pytest -vv || die "Tests fail with ${EPYTHON}"
 			;;
 	esac
