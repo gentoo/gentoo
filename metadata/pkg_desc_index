@@ -661,7 +661,7 @@ app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.2 1.0.3: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
-app-arch/zstd 1.3.7-r1 1.4.4-r3: zstd fast compression library
+app-arch/zstd 1.3.7-r1 1.4.4-r3 1.4.4-r4: zstd fast compression library
 app-backup/amanda 3.3.9 3.4.1 3.4.2 3.4.3 3.4.4 3.4.5 3.5-r1 3.5.1-r1: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBack
@@ -11014,7 +11014,7 @@ games-board/cockatrice 20190304-r1: An open-source multiplatform software for pl
 games-board/crafty 24.1-r1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.6-r1: The well-known board game, written in java
 games-board/eboard 1.1.1-r2: chess interface for POSIX systems
-games-board/four-in-a-row 3.32.0: Make lines of the same color to win
+games-board/four-in-a-row 3.32.0 3.34.4: Make lines of the same color to win
 games-board/freedoko 0.7.16 0.7.16-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1-r1: UCI-only chess engine
 games-board/gambit 1.0.4: Qt-based chess application + engine "gupta"
@@ -11034,7 +11034,7 @@ games-board/grhino 0.16.1-r1 0.16.1-r2: Reversi game for GNOME, supporting the G
 games-board/gtkatlantic 0.6.1-r1: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0-r1: Board games system
 games-board/hexxagon 1.0.2-r1: Clone of the original DOS game
-games-board/iagno 3.32.0: Dominate the board in a classic version of Reversi
+games-board/iagno 3.32.0 3.34.5: Dominate the board in a classic version of Reversi
 games-board/mah-jong 1.14-r1: A networked Mah Jong program, together with a computer player
 games-board/maitretarot 0.1.98-r1: server for the french tarot game maitretarot
 games-board/megamek 0.34.10-r1: an unofficial, online version of the Classic BattleTech board game
@@ -11582,7 +11582,7 @@ games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.32.0-r2 0.34.0: Simple low-level configuration system
-gnome-base/dconf-editor 3.34.2: Graphical tool for editing the dconf configuration database
+gnome-base/dconf-editor 3.34.2 3.34.4: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.32.0 3.34.1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.32.2: Meta package for GNOME 3, merge this package to install
