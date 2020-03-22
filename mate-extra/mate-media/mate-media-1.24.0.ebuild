@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Multimedia related programs for the MATE desktop"
-LICENSE="LGPL-2 GPL-2 FDL-1.1"
+LICENSE="FDL-1.1+ GPL-2+ HPND LGPL-2+"
 SLOT="0"
 
 IUSE=""
