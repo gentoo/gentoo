@@ -60,7 +60,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	cp "${ROOT}/usr/lib/tboot/boot/*" "${ROOT}/boot/" || die
+	cp "${ROOT}/usr/lib/tboot/boot/"* "${ROOT}/boot/" || die
 
 	ewarn "Please remember to download the SINIT AC Module relevant"
 	ewarn "for your platform from:"
