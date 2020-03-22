@@ -505,7 +505,6 @@ dev-python/pygeocoder
 dev-python/pyhcl
 dev-python/pymtp
 dev-python/pynzb
-dev-python/pyopencl
 dev-python/pyshark
 dev-python/pysolr
 dev-python/pystache
