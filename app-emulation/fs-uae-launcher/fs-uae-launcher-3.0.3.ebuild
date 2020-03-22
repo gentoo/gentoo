@@ -32,7 +32,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-ROMs.patch
-	"${FILESDIR}"/${PN}-2.8.3-QApplication.patch
 )
 
 src_prepare() {

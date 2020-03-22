@@ -79,6 +79,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-disable-fatal-warnings.patch" # bug 695446
+	"${FILESDIR}/${P}-detect-ninja-1.10.patch" # QTBUG-82715, fixed in Qt 5.14.2
 )
 
 src_prepare() {
