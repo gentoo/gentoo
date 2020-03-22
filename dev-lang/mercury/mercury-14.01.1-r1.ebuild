@@ -107,8 +107,7 @@ src_compile() {
 	emake \
 		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
-		TEXI2DVI="" PDFTEX="" \
-		compiler
+		TEXI2DVI="" PDFTEX=""
 
 	# The default Mercury grade may not be the same as the bootstrap
 	# grade. Since src_test() is run before src_install() we compile
