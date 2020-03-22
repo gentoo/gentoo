@@ -2171,7 +2171,7 @@ app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
 app-misc/ltunify 0.2-r2: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4-r1: Command-line file splitter/joiner for Linux
-app-misc/mc 4.8.23-r1 4.8.23-r2 4.8.24 9999: GNU Midnight Commander is a text based file manager
+app-misc/mc 4.8.24 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 23: A repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 3.0: Calendar to track menstruation cycles
@@ -14324,8 +14324,8 @@ net-dialup/wvdial 1.61: Excellent program to automatically configure PPP session
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.7-r2 0.7-r4 0.7-r5 0.8-r1: System which facilitates service discovery on a local network
-net-dns/bind 9.14.8 9.14.9 9.16.0: Berkeley Internet Name Domain - Name Server
-net-dns/bind-tools 9.14.8 9.14.9 9.16.0-r1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+net-dns/bind 9.14.8 9.14.9 9.16.1: Berkeley Internet Name Domain - Name Server
+net-dns/bind-tools 9.14.8 9.14.9 9.16.1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0 1.14.0 1.15.0: C library that resolves names asynchronously
 net-dns/coredns 1.3.1 1.6.5: A DNS server that chains middleware
 net-dns/ddclient 3.9.0-r3: Perl client used to update dynamic DNS entries
@@ -16672,7 +16672,7 @@ sys-apps/biosdisk 0_p20171116: A script that creates floppy boot images to flash
 sys-apps/bleachbit 3.0: Clean junk to free disk space and to maintain privacy
 sys-apps/bolt 0.8-r1: Userspace system daemon to enable security levels for Thunderbolt 3
 sys-apps/bubblewrap 0.3.1-r1 0.3.1-r2: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
-sys-apps/busybox 1.30.1 1.31.1-r2 9999: Utilities for rescue and embedded systems
+sys-apps/busybox 1.31.1-r2 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
@@ -16741,7 +16741,7 @@ sys-apps/gawk 4.2.1-r1 5.0.0 5.0.1: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.12 0.13 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 8 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.32.1: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.32.1 3.34.5: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.4 1.0.5: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022 3.1.201903191516: Administrative interface for the grsecurity Role Based Access Control system
@@ -17193,7 +17193,7 @@ sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r4 2.69-r5 9999: Used to create autoconf
 sys-devel/autoconf-archive 2018.03.13 2019.01.06: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13-r1: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.16 5.18.16-r1: Program and text file generation
-sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16.1-r1 1.16.1-r2 9999: Used to generate Makefile.in from Makefile.am
+sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16.1-r1 1.16.1-r2 1.16.2 9999: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
