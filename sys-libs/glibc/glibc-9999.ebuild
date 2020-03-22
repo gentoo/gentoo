@@ -135,15 +135,7 @@ GENTOO_GLIBC_XFAIL_TESTS="${GENTOO_GLIBC_XFAIL_TESTS:-yes}"
 # The following tests fail due to the Gentoo build system and are thus
 # executed but ignored:
 XFAIL_TEST_LIST=(
-	# 1) Sandbox
-	tst-ldconfig-bad-aux-cache
-	tst-pldd
-	tst-mallocfork2
-	tst-nss-db-endgrent
-	tst-nss-db-endpwent
-	tst-nss-files-hosts-long
-	tst-nss-test3
-	# 2) Namespaces and cgroup
+	# 1) Namespaces and cgroup
 	tst-locale-locpath
 	# 9) Failures of unknown origin
 	tst-latepthread
@@ -1167,14 +1159,10 @@ glibc_src_test() {
 		done
 	fi
 
-	# disable tests:
-	# - tests-container:
-	#     sandbox does not understand unshare() and prevents
-	#     writes to /proc/
-	# emake ${myxfailparams} check tests-container=
-	# if possible let's list them (unless it's *all* container tests)
+	# sandbox does not understand unshare() and prevents
+	# writes to /proc/, which makes many tests fail
 
-	emake ${myxfailparams} check
+	SANDBOX_ON=0 LD_PRELOAD= emake ${myxfailparams} check
 }
 
 do_src_test() {
