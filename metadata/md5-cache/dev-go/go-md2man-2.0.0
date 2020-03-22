@@ -1,5 +1,5 @@
 BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
-DEFINED_PHASES=compile install postinst unpack
+DEFINED_PHASES=compile install postinst test unpack
 DESCRIPTION=A utility to convert markdown to man pages
 EAPI=7
 HOMEPAGE=https://github.com/cpuguy83/go-md2man
@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/cpuguy83/go-md2man/archive/v2.0.0.tar.gz -> go-md2man-2.0.0.tar.gz
 _eclasses_=go-module	cca12a5688562f107c14ffcf28195dd7
-_md5_=5c64794d0ba9b95e00ec6cecb5cd7e89
+_md5_=df86cf9c8d8397a93383c2eeaaa76536
