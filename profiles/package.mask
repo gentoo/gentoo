@@ -490,11 +490,6 @@ games-strategy/boswars
 # Use media-gfx/mcomix instead. Masked for removal in 30 days.
 media-gfx/comix
 
-# Mart Raudsepp <leio@gentoo.org> (2020-02-21)
-# Does not compile against new gupnp-1.2 API. No consumers, dead project.
-# Removal in 30 days. Bug #710436.
-net-libs/gupnp-ui
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # No maintainer, py2-only, blocks dev-python/pygtk removal, needs version bump
 # See bugs #546024, #706486, pending PR #14720. Masked for removal in 40 days.
