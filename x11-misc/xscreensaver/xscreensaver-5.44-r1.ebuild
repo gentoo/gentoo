@@ -65,9 +65,9 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.05-interix.patch
-	"${FILESDIR}"/${PN}-5.20-blurb-hndl-test-passwd.patch
 	"${FILESDIR}"/${PN}-5.31-pragma.patch
-	"${FILESDIR}"/${PN}-5.43-gentoo.patch
+	"${FILESDIR}"/${PN}-5.44-blurb-hndl-test-passwd.patch
+	"${FILESDIR}"/${PN}-5.44-gentoo.patch
 )
 
 src_prepare() {
@@ -83,7 +83,7 @@ src_prepare() {
 
 	default
 
-	use offensive || eapply "${FILESDIR}"/${PN}-5.43-offensive.patch
+	use offensive || eapply "${FILESDIR}"/${PN}-5.44-offensive.patch
 
 	eapply_user
 

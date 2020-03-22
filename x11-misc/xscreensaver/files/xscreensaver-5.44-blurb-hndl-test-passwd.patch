@@ -1,0 +1,10 @@
+--- a/driver/test-passwd.c
++++ b/driver/test-passwd.c
+@@ -69,6 +69,7 @@
+ char *timestring (time_t when) { return ""; }
+ 
+ const char *blurb(void) { return progname; }
++Bool in_signal_handler_p = 0;
+ Atom XA_SCREENSAVER, XA_DEMO, XA_PREFS;
+ 
+ void
