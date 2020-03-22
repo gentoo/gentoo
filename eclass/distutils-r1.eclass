@@ -873,7 +873,7 @@ distutils-r1_python_install() {
 	local root=${D%/}/_${EPYTHON}
 	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
 
-	esetup.py install --root="${root}" "${args[@]}"
+	esetup.py install --skip-build --root="${root}" "${args[@]}"
 
 	local forbidden_package_names=( examples test tests .pytest_cache )
 	local p
