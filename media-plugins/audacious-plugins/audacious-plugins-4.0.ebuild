@@ -17,13 +17,13 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme
-	jack lame libav libnotify libsamplerate lirc mms modplug mp3 nls opengl
+IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme http jack
+	lame libav libnotify libsamplerate lirc mms modplug mp3 nls opengl
 	pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch streamtuner
 	vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio qtmedia sdl )
-	ampache? ( http )"
+	ampache? ( http ) streamtuner? ( http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -84,8 +84,8 @@ DEPEND="
 	mms? ( >=media-libs/libmms-0.3 )
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
 	opengl? ( dev-qt/qtopengl:5 )
+	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
 	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
