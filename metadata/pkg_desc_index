@@ -627,7 +627,7 @@ app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompr
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
 app-arch/rar 5.8.0_p20191205: RAR compressor/uncompressor
 app-arch/rpm 4.14.1 4.14.1-r1 4.14.2.1: Red Hat Package Management Utils
-app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
+app-arch/rpm2targz 9.0.0.5g 9.0.0.5g-r1: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.15.2-r1: Tools to deal with shar archives
 app-arch/snappy 1.1.7 1.1.8: A high-speed compression/decompression library by Google
@@ -2759,7 +2759,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2019-r1: A complete TeX distribution
-app-text/texlive-core 2019-r4 2019-r8 2019-r10: A complete TeX distribution
+app-text/texlive-core 2019-r10: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -8557,7 +8557,7 @@ dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1: Client library for Barbican API.
 dev-python/python-bibtex 1.2.7-r1 1.2.7-r2: A Python extension to parse BibTeX files
 dev-python/python-blazarclient 2.1.0: This is a client for the OpenStack Blazar API
-dev-python/python-bugzilla 1.2.2 2.1.0: A python module for interacting with Bugzilla over XMLRPC
+dev-python/python-bugzilla 1.2.2 2.1.0 2.3.0: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-ceilometerclient 2.6.2-r2: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 4.2.1: A client for the OpenStack Cinder API
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
@@ -10733,7 +10733,7 @@ dev-vcs/cvs-fast-export 1.50 1.51: fast-export history from a CVS repository or 
 dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1 2.5.0: Convert a CVS repository to a Subversion repository
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
-dev-vcs/cvsps 2.2_beta1 3.13-r2: Generates patchset information from a CVS repository (supports fast-import)
+dev-vcs/cvsps 2.2_beta1 2.2_beta1-r1 3.13-r2: Generates patchset information from a CVS repository (supports fast-import)
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
