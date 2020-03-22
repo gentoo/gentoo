@@ -213,7 +213,7 @@ _python_single_set_globals() {
 
 	local deps= i PYTHON_PKG_DEP
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		python_export "${i}" PYTHON_PKG_DEP
+		_python_export "${i}" PYTHON_PKG_DEP
 		# 1) well, python-exec would suffice as an RDEP
 		# but no point in making this overcomplex, BDEP doesn't hurt anyone
 		# 2) python-exec should be built with all targets forced anyway
@@ -436,7 +436,7 @@ python_gen_impl_dep() {
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			local PYTHON_PKG_DEP
-			python_export "${impl}" PYTHON_PKG_DEP
+			_python_export "${impl}" PYTHON_PKG_DEP
 			matches+=( "python_single_target_${impl}? ( ${PYTHON_PKG_DEP} )" )
 		fi
 	done
@@ -465,8 +465,8 @@ python_setup() {
 		ewarn
 		ewarn "Dependencies won't be satisfied, and PYTHON_SINGLE_TARGET flags will be ignored."
 
-		python_export "${impls[0]}" EPYTHON PYTHON
-		python_wrapper_setup
+		_python_export "${impls[0]}" EPYTHON PYTHON
+		_python_wrapper_setup
 		einfo "Using ${EPYTHON} to build"
 		return
 	fi
@@ -483,8 +483,8 @@ python_setup() {
 				die "More than one implementation in PYTHON_SINGLE_TARGET."
 			fi
 
-			python_export "${impl}" EPYTHON PYTHON
-			python_wrapper_setup
+			_python_export "${impl}" EPYTHON PYTHON
+			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 		fi
 	done
