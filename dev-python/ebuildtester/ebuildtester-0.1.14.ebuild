@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit bash-completion-r1 distutils-r1
 
@@ -22,7 +22,7 @@ RDEPEND="
 "
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 
