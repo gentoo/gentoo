@@ -83,7 +83,17 @@ src_prepare() {
 
 	default
 
-	use offensive || eapply "${FILESDIR}"/${PN}-5.44-offensive.patch
+	if ! use offensive; then
+		sed -i \
+			-e '/boobies/d;/boobs/d;/cock/d;/pussy/d;/viagra/d;/vibrator/d' \
+			hacks/barcode.c || die
+		sed -i \
+			-e 's|erect penis|shuffle board|g' \
+			-e 's|flaccid penis|flaccid anchor|g' \
+			-e 's|vagina|engagement ring|g' \
+			-e 's|Penis|Shuttle|g' \
+			hacks/glx/glsnake.c || break
+	fi
 
 	eapply_user
 
