@@ -11,7 +11,7 @@ fi
 
 DESCRIPTION="Replaces xscreensaver, integrating with the MATE desktop"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ HPND LGPL-2+"
 SLOT="0"
 IUSE="X debug consolekit elogind kernel_linux libnotify opengl pam systemd"
 REQUIRED_USE="?? ( elogind systemd )"
