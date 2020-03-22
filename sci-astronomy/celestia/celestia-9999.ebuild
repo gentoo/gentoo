@@ -5,21 +5,27 @@ EAPI=7
 
 inherit desktop flag-o-matic xdg cmake
 
-if [[ "${PV}" = 9999 ]] ; then
-	inherit git-r3
+if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/CelestiaProject/Celestia.git"
+	inherit git-r3
 else
-	SRC_URI="https://github.com/${PN^}Project/${PN^}/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	if [[ ${PV} == *_p* ]] ; then
+		COMMIT_ID="df508a0c597a3d96c1c039fa4a973e294021cfba"
+		SRC_URI="https://github.com/${PN^}Project/${PN^}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+		S="${WORKDIR}/${PN^}-${COMMIT_ID}"
+		KEYWORDS="~amd64 ~x86"
+	else
+		SRC_URI="https://github.com/${PN^}Project/${PN^}/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+		KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	fi
 fi
 
 DESCRIPTION="OpenGL 3D space simulator"
 HOMEPAGE="https://celestia.space"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-IUSE="glut nls +qt5 theora"
-
+IUSE="glut lua nls +qt5 theora"
 REQUIRED_USE="|| ( glut qt5 )"
 
 BDEPEND="
@@ -28,14 +34,15 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 DEPEND="
-	>=dev-lang/lua-5.1:*
 	dev-libs/libfmt:=
 	media-libs/glew:0
 	media-libs/libpng:0=
+	sys-libs/zlib:=
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
 	glut? ( media-libs/freeglut )
+	lua? ( dev-lang/lua:* )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -58,8 +65,6 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	filter-flags "-funroll-loops -frerun-loop-opt"
-
 	### This version of Celestia has a bug in the font rendering and
 	### requires -fsigned-char. We should be able to force this flag
 	### on all architectures. See bug #316573.
@@ -67,10 +72,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# force lua. Seems still to be inevitable
 	local mycmakeargs=(
-		#-DENABLE_CELX="$(usex lua)"
-		-DENABLE_CELX=ON
+		-DENABLE_CELX="$(usex lua)"
 		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_GLUT="$(usex glut)"
 		-DENABLE_GTK=OFF
