@@ -874,7 +874,7 @@ app-crypt/libb2 0.98.1-r1 0.98.1-r2: C library providing BLAKE2b, BLAKE2s, BLAKE
 app-crypt/libmd 1.0.0 1.0.0-r1 1.0.1 99999: Message Digest functions from BSD systems
 app-crypt/libnitrokey 3.5 9999: Support library for the Nitrokey
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
-app-crypt/libsecret 0.18.8 0.20.1: GObject library for accessing the freedesktop.org Secret Service API
+app-crypt/libsecret 0.18.8 0.20.1 0.20.2: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.1.10: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.1.0: Yubico Universal 2nd Factor (U2F) server C Library
 app-crypt/loop-aes-losetup 2.28.2: Loop-AES losetup utility
@@ -1344,7 +1344,7 @@ app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup 
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/teco 36_p19940820: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
-app-editors/texworks 0.6.3: A simple interface for working with TeX documents
+app-editors/texworks 0.6.3 0.6.4: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.1.1486 8.1.1846 8.2.0055 8.2.0114 8.2.0210 8.2.0360 9999: Vim, an improved vi-style text editor
@@ -2274,8 +2274,8 @@ app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
 app-misc/tpconfig 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
-app-misc/tracker 2.2.2: A tagging metadata database, search tool and indexer
-app-misc/tracker-miners 2.2.2: Collection of data extractors for Tracker/Nepomuk
+app-misc/tracker 2.2.2 2.3.4: A tagging metadata database, search tool and indexer
+app-misc/tracker-miners 2.2.2 2.3.3: Collection of data extractors for Tracker/Nepomuk
 app-misc/transfolio 1.0.1: Enables data transfer between the PC and the Atari Portfolio
 app-misc/trash-cli 0.12.9.14-r2 0.17.1.14_p20170816: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
@@ -13189,7 +13189,7 @@ media-plugins/gmpc-mserver 0.20.0: This plugin allows you to play local files on
 media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the current playlist
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
-media-plugins/grilo-plugins 0.3.9: A collection of plugins for the Grilo framework
+media-plugins/grilo-plugins 0.3.9 0.3.11: A collection of plugins for the Grilo framework
 media-plugins/gst-plugins-a52dec 1.14.3: ATSC A/52 audio decoder plugin for GStreamer
 media-plugins/gst-plugins-amr 1.14.3: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
 media-plugins/gst-plugins-assrender 1.14.5: ASS/SSA rendering with effects support plugin for GStreamer
