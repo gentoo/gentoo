@@ -102,7 +102,7 @@ COMMON_DEPEND="
 	systemtap? ( dev-util/systemtap )
 "
 DEPEND="${COMMON_DEPEND}
-	test? ( >=net-dns/libidn2-2.0.5 )
+	test? ( >=net-dns/libidn2-2.3.0 )
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
@@ -123,7 +123,7 @@ else
 	"
 	DEPEND+=" virtual/os-headers "
 	RDEPEND+="
-		>=net-dns/libidn2-2.0.5
+		>=net-dns/libidn2-2.3.0
 		vanilla? ( !sys-libs/timezone-data )
 	"
 	PDEPEND+=" !vanilla? ( sys-libs/timezone-data )"
