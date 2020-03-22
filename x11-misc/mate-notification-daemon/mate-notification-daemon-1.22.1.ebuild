@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE Notification daemon"
-LICENSE="GPL-2"
+LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 
 IUSE=""
