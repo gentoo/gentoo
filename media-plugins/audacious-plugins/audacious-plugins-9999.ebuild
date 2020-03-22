@@ -17,13 +17,13 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gtk http gme
+IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme gtk http
 	jack lame libav libnotify libsamplerate lirc mms modplug mp3 nls opengl
 	pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch streamtuner
 	vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio qtmedia sdl )
-	ampache? ( http )
+	ampache? ( http ) streamtuner? ( http )
 	gtk? ( !ampache !qtmedia !streamtuner )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
