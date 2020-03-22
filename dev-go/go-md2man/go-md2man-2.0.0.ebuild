@@ -22,3 +22,7 @@ src_install() {
 	dobin bin/go-md2man
 	doman go-md2man.1
 }
+
+src_test() {
+	emake test
+}
