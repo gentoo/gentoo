@@ -16,8 +16,8 @@ IUSE="arcam_av debug ffmpeg jack libav libsamplerate +mix oss pulseaudio speex +
 RDEPEND="
 	>=media-libs/alsa-lib-${PV}:=[${MULTILIB_USEDEP}]
 	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:0= )
+		libav? ( media-video/libav:=[${MULTILIB_USEDEP}] )
+		!libav? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
 	)
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.8-r1:=[${MULTILIB_USEDEP}] )
