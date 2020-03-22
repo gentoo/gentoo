@@ -490,27 +490,10 @@ games-strategy/boswars
 # Use media-gfx/mcomix instead. Masked for removal in 30 days.
 media-gfx/comix
 
-# Mart Raudsepp <leio@gentoo.org> (2020-02-21)
-# Does not compile against new gupnp-1.2 API. No consumers, dead project.
-# Removal in 30 days. Bug #710436.
-net-libs/gupnp-ui
-
-# Mikle Kolyada <zlogene#gentoo.org> (2020-02-21)
-# Tiny package with semi-dead upstream. Unlikely useful.
-# Blocks pygtk removal.
-# Removal in 30 days.
-media-gfx/cropgui
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # No maintainer, py2-only, blocks dev-python/pygtk removal, needs version bump
 # See bugs #546024, #706486, pending PR #14720. Masked for removal in 40 days.
 gnome-extra/nautilus-dropbox
-
-# Michał Górny <mgorny@gentoo.org> (2020-02-18)
-# Dead and unmaintained.  Last release in 2015.  Broken with newer
-# versions of Python 3.  No reverse dependencies left.
-# Removal in 30 days.  Bug #691044.
-dev-python/tlslite
 
 # Rich Freeman <rich0@gentoo.org> (2020-02-16)
 # Dead upstream, obsolete deps.
@@ -590,13 +573,6 @@ www-plugins/passff
 # Snapshots from Git and pretest versions, masked for testing.
 =app-editors/emacs-27.0.50_pre*
 ~app-editors/emacs-27.0.90
-
-# Jonas Stein <jstein@gentoo.org> (2019-12-30)
-# Package masked for removal. Broken SRC_URI,
-# last upstream activity was ~16 years ago.
-# Bug #704316.
-# Removal after 2020-03-01
-app-backup/tob
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # Unmaintained, build hangs, tons of other build failures, missing
