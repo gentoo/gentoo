@@ -11,5 +11,5 @@ RDEPEND=fuse? ( dev-libs/glib:2 sys-fs/fuse:0 ) gnutls? ( dev-libs/libtasn1:= >=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/stefanberger/swtpm/archive/v0.3.0.tar.gz -> swtpm-0.3.0.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	89113cd44c8118e781d18387d4256fe3	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=94f942784e693746c9a5e4b55ffd6ef7

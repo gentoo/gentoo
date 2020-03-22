@@ -8095,7 +8095,7 @@ dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on Ea
 dev-python/mox3 0.24.0: Mock object framework for Python
 dev-python/mpi4py 3.0.2: Message Passing Interface for Python
 dev-python/mpmath 1.0.0 1.1.0: Python library for arbitrary-precision floating-point arithmetic
-dev-python/msgpack 0.4.8 0.5.1 0.5.6 0.6.1 0.6.2: MessagePack (de)serializer for Python
+dev-python/msgpack 0.5.6 0.6.2: MessagePack (de)serializer for Python
 dev-python/multidict 4.1.0 4.3.1 4.5.2: multidict implementation
 dev-python/multipledispatch 0.4.9: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/munch 2.1.1 2.2.0 2.3.2 2.5.0: A dot-accessible dictionary (a la JavaScript objects)
