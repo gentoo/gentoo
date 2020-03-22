@@ -448,7 +448,7 @@ app-admin/keepass 2.43 2.44: A free, open source, light-weight and easy-to-use p
 app-admin/keepassxc 2.5.3 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.3: A command line interface to KeePass database files
-app-admin/kube-bench 0.2.2 0.2.3 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
+app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.6.3 0.7.1: Fast way to switch between clusters and namespaces in kubectl
 app-admin/lastpass-binary-component 4.19.0-r1: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.3.1-r1 1.3.2 1.3.3: Interfaces with LastPass.com from the command line.
@@ -10423,7 +10423,7 @@ dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/coccigrep 1.13: A semantic grep for the C language
 dev-util/coccinelle 1.0.5 1.0.6 1.0.8: Program matching and transformation engine
-dev-util/codeblocks 17.12-r302 9999: The open source, cross platform, free C, C++ and Fortran IDE
+dev-util/codeblocks 17.12-r302 17.12-r303 9999: The open source, cross platform, free C, C++ and Fortran IDE
 dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10 2.12: ESR's utility for making fast comparisons among large source trees
@@ -17583,7 +17583,7 @@ sys-process/criu 3.6 3.11 3.12: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.4-r1 1.5.5: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
-sys-process/ctop 0.5.1 0.7.3: Top-like interface for container-metrics
+sys-process/ctop 0.7.3: Top-like interface for container-metrics
 sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
