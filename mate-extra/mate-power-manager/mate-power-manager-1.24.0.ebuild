@@ -11,7 +11,7 @@ fi
 
 DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop or desktop"
 
-LICENSE="GPL-2"
+LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="+applet elogind gnome-keyring policykit systemd test"
 
