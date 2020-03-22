@@ -47,11 +47,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/automake-1.16.1-py3-compile.patch
-	"${FILESDIR}"/automake-1.16.1-py3-no-pyo-files.patch
-	"${FILESDIR}"/automake-1.16.1-py3-pep3147.patch
-	"${FILESDIR}"/automake-1.16.1-py3-pep3147-cmdline.patch
-	"${FILESDIR}"/automake-1.16.1-py3-compile-test.patch
+	"${FILESDIR}"/automake-1.16.2-py3-compile.patch
 )
 # All patches have been submitted upstream.
 
