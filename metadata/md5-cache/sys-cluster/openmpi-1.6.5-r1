@@ -1,7 +1,8 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare setup test
-DEPEND=!sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/pmix <sys-apps/hwloc-2 dev-libs/libltdl:0 openmpi_fabrics_dapl? ( sys-fabric/dapl ) openmpi_fabrics_ofed? ( sys-fabric/ofed ) openmpi_fabrics_knem? ( sys-cluster/knem ) openmpi_fabrics_psm? ( sys-fabric/infinipath-psm ) openmpi_fabrics_sctp? ( net-misc/lksctp-tools ) openmpi_rm_pbs? ( sys-cluster/torque ) openmpi_rm_slurm? ( sys-cluster/slurm ) openmpi_ofed_features_rdmacm? ( sys-fabric/librdmacm ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 fortran? ( virtual/fortran )
+DEPEND=!sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/pmix <sys-apps/hwloc-2 dev-libs/libltdl:0 openmpi_fabrics_dapl? ( sys-fabric/dapl ) openmpi_fabrics_ofed? ( sys-fabric/ofed ) openmpi_fabrics_knem? ( sys-cluster/knem ) openmpi_fabrics_psm? ( sys-fabric/infinipath-psm ) openmpi_fabrics_sctp? ( net-misc/lksctp-tools ) openmpi_rm_pbs? ( sys-cluster/torque ) openmpi_rm_slurm? ( sys-cluster/slurm ) openmpi_ofed_features_rdmacm? ( sys-fabric/librdmacm ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) fortran? ( virtual/fortran )
 DESCRIPTION=A high-performance message passing library (MPI)
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.open-mpi.org
 IUSE=+cxx fortran heterogeneous ipv6 mpi-threads romio threads vt openmpi_fabrics_dapl openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_fabrics_sctp openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_rdmacm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux
@@ -10,5 +11,5 @@ RDEPEND=!sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/pmix <sys-apps/hwloc
 REQUIRED_USE=openmpi_rm_slurm? ( !openmpi_rm_pbs ) openmpi_rm_pbs? ( !openmpi_rm_slurm ) openmpi_fabrics_psm? ( openmpi_fabrics_ofed ) openmpi_ofed_features_control-hdr-padding? ( openmpi_fabrics_ofed ) openmpi_ofed_features_connectx-xrc? ( openmpi_fabrics_ofed ) openmpi_ofed_features_rdmacm? ( openmpi_fabrics_ofed ) openmpi_ofed_features_dynamic-sl? ( openmpi_fabrics_ofed ) openmpi_ofed_features_failover? ( openmpi_fabrics_ofed )
 SLOT=0
 SRC_URI=http://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	7472ddc437760e4f626968f95daed685	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=9e168b5baa3739a2dac73cb72e8bd0b4
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	7472ddc437760e4f626968f95daed685	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=bbf2490dc62afa4ffea94a0f2fc4faaa

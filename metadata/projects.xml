@@ -411,6 +411,11 @@
       <role>Biology</role>
     </member>
     <member>
+      <email>pacho@gentoo.org</email>
+      <name>Pacho Ramos</name>
+      <role>Biology</role>
+    </member>
+    <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
       <role>Biology</role>
@@ -516,6 +521,11 @@
     <member>
       <email>nicolasbock@gentoo.org</email>
       <name>Nicolas Bock</name>
+      <role>Chemistry</role>
+    </member>
+    <member>
+      <email>pacho@gentoo.org</email>
+      <name>Pacho Ramos</name>
       <role>Chemistry</role>
     </member>
   </project>
