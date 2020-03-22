@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,6 +17,7 @@ IUSE=""
 DEPEND="
 	sys-fabric/libibumad:${SLOT}
 	sys-fabric/libibmad:${SLOT}
-	sys-fabric/opensm:${SLOT}"
+	sys-fabric/opensm:${SLOT}
+	dev-libs/glib"
 RDEPEND="${DEPEND}"
 block_other_ofed_versions
