@@ -485,11 +485,6 @@ sys-apps/entropy-server
 # Masked for removal in 30 days.
 games-strategy/boswars
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-22)
-# Last release in 2009, py2-only, blocks dev-python/pygtk removal, bug #708100
-# Use media-gfx/mcomix instead. Masked for removal in 30 days.
-media-gfx/comix
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # No maintainer, py2-only, blocks dev-python/pygtk removal, needs version bump
 # See bugs #546024, #706486, pending PR #14720. Masked for removal in 40 days.
