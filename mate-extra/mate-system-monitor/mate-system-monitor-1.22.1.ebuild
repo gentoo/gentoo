@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ fi
 
 DESCRIPTION="The MATE System Monitor"
 
-LICENSE="GPL-2"
+LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="elogind systemd"
 
