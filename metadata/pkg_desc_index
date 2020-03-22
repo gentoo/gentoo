@@ -10412,7 +10412,7 @@ dev-util/cgvg 1.6.3: Minimal command-line source browsing tool similar to cscope
 dev-util/checkbashisms 2.19.7 2.20.1: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clair 2.0.8: Vulnerability Static Analysis for Containers
-dev-util/clazy 1.5 1.5-r1: Compiler plugin which allows clang to understand Qt semantics
+dev-util/clazy 1.5-r1: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2019.3.3: A complete toolset for C and C++ development
