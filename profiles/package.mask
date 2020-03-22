@@ -32,6 +32,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Bug #710172, masked for removal in 30 days.
+media-video/gtk-recordmydesktop
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Bug #708164, masked for removal in 30 days.
+media-video/pymp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# No signs of porting work, bug #708076, masked for removal in 30 days.
+x11-misc/xplanetFX
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-21)
 # Package appears dead upstream, purpose unclear after media-sound/audacious-3.9
 # is gone, bug #671828. GTK2 (3.10.1) or Qt5 (4.0) version of Audacious remains.
@@ -484,11 +499,6 @@ sys-apps/entropy-server
 # Python 2-only patterns, sed broken. Bug #703906, #710342.
 # Masked for removal in 30 days.
 games-strategy/boswars
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-22)
-# Last release in 2009, py2-only, blocks dev-python/pygtk removal, bug #708100
-# Use media-gfx/mcomix instead. Masked for removal in 30 days.
-media-gfx/comix
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # No maintainer, py2-only, blocks dev-python/pygtk removal, needs version bump
