@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="A set of backgrounds packaged with the MATE desktop"
-LICENSE="GPL-2"
+LICENSE="CC-BY-SA-4.0 GPL-2+"
 SLOT="0"
 
 DEPEND="
