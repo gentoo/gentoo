@@ -16,7 +16,7 @@ RESTRICT="test"
 
 DOC_CONTENTS="
 You must source the prll.sh file located\nin /etc/profile.d to be able to use prll:\n
- $ source /etc/profile.d/prll.sh
+$ source /etc/profile.d/prll.sh
 "
 
 src_prepare() {
