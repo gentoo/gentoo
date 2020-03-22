@@ -11,7 +11,7 @@ fi
 
 DESCRIPTION="The MATE System Monitor"
 
-LICENSE="GPL-2"
+LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="elogind systemd"
 
