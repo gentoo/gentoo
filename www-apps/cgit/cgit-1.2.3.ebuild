@@ -57,7 +57,7 @@ src_prepare() {
 	echo "CACHE_ROOT = ${CGIT_CACHEDIR}" >> cgit.conf
 	echo "DESTDIR = ${D}" >> cgit.conf
 	if use lua; then
-		if use jit; then
+		if use luajit; then
 			echo "LUA_PKGCONFIG = luajit" >> cgit.conf
 		else
 			echo "LUA_PKGCONFIG = lua" >> cgit.conf
