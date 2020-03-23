@@ -12,7 +12,7 @@ SLOT="2/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug examples glade gnomecanvas +ocamlopt sourceview spell svg"
 
-DEPEND="dev-lang/ocaml:=[ocamlopt?]
+DEPEND=">=dev-lang/ocaml-4.05:=[ocamlopt?]
 	dev-ml/camlp4:=
 	x11-libs/gtk+:2
 	glade? ( gnome-base/libglade )
