@@ -1,23 +1,35 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-COMMIT=1a477ffe380f153c5d9fb3495d9874df7f75334f
-inherit cmake-utils vcs-snapshot xdg-utils
+inherit cmake xdg
 
 DESCRIPTION="Advanced drum machine"
 HOMEPAGE="http://www.hydrogen-music.org/"
-SRC_URI="https://github.com/${PN}-music/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/${PN}-music/${PN}"
+	KEYWORDS=""
+else
+	MY_PV=${PV/_/-}
+	SRC_URI="https://github.com/${PN}-music/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	S="${WORKDIR}"/${PN}-${MY_PV}
+fi
 
 LICENSE="GPL-2 ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="alsa +archive jack ladspa lash osc oss portaudio portmidi pulseaudio"
+IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio"
 
 REQUIRED_USE="lash? ( alsa )"
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -36,13 +48,15 @@ RDEPEND="
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
 PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
+
+src_prepare() {
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -63,20 +77,15 @@ src_configure() {
 		-DWANT_RUBBERBAND=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+	use doc && cmake_src_compile doc
 }
 
 src_install() {
-	cmake-utils_src_install
-	dosym ../../${PN}/data/doc /usr/share/doc/${PF}/html
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	use doc && local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
+	cmake_src_install
 }
