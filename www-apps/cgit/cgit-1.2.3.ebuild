@@ -65,6 +65,8 @@ src_prepare() {
 	else
 		echo "NO_LUA = 1" >> cgit.conf
 	fi
+
+	epatch_user
 }
 
 src_compile() {
