@@ -43,11 +43,6 @@ dev-lang/php enchant
 sys-apps/pcsc-lite policykit
 x11-misc/colord policykit
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-05-03)
-# net-wireless/bluez has no stable keywords, bug #676430
-app-pda/pilot-link bluetooth
-dev-lang/python bluetooth
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-03-17)
 # net-analyzer/nagios (or icinga) has no stable keywords, bug #676222
 sys-libs/freeipmi nagios
