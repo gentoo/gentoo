@@ -16,7 +16,7 @@ HOMEPAGE="https://cgit.kde.org/kio-extras.git"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
-IUSE="activities +man mtp nls openexr phonon samba +sftp taglib"
+IUSE="activities +man mtp nfs openexr phonon samba +sftp taglib"
 
 BDEPEND="
 	man? ( dev-util/gperf )
@@ -52,7 +52,7 @@ DEPEND="
 		>=dev-qt/qtsql-${QTMIN}:5
 	)
 	mtp? ( >=media-libs/libmtp-1.1.16:= )
-	nls? ( net-libs/libtirpc:= )
+	nfs? ( net-libs/libtirpc:= )
 	openexr? ( media-libs/openexr:= )
 	phonon? ( media-libs/phonon[qt5(+)] )
 	samba? ( net-fs/samba[client] )
@@ -74,7 +74,7 @@ src_configure() {
 		$(cmake_use_find_package activities KF5ActivitiesStats)
 		$(cmake_use_find_package man Gperf)
 		$(cmake_use_find_package mtp Mtp)
-		$(cmake_use_find_package nls TIRPC)
+		$(cmake_use_find_package nfs TIRPC)
 		$(cmake_use_find_package openexr OpenEXR)
 		$(cmake_use_find_package phonon Phonon4Qt5)
 		$(cmake_use_find_package samba Samba)
