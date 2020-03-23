@@ -22,12 +22,20 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo"
 BDEPEND="doc? ( app-doc/doxygen )"
 
-PATCHES=( "${FILESDIR}/check-0.14.0-r1-disable-automagic-dep.patch" )
+PATCHES=( "${FILESDIR}/check-0.14.0-r2-disable-automagic-dep.patch" )
+
+src_prepare() {
+	cmake_src_prepare
+
+	# Fix wrong libdir, probably caused by multilib
+	sed -i "s|\${libdir}|/usr/$(get_libdir)|g" check.pc.in || die "sed .pc failed."
+}
+
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCHECK_ENABLE_TESTS=$(usex test ON OFF)
-		-DCHECK_ENABLE_SUBUNIT=$(usex subunit 1 0)
+		-DBUILD_TESTING=$(usex test ON OFF)
+		-DCHECK_ENABLE_SUBUNIT=$(usex subunit ON OFF)
 	)
 
 	cmake_src_configure
