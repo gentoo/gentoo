@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Atril document viewer for MATE"
-LICENSE="GPL-2"
+LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
 
 IUSE="caja dbus debug djvu dvi epub +introspection gnome-keyring +postscript t1lib tiff xps"
