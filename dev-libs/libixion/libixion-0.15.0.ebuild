@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 	dev-libs/spdlog
 "
 
+PATCHES=( "${FILESDIR}/${P}-musl-clang.patch" ) # bug 714018
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
