@@ -26,6 +26,7 @@ ppc64 - system emulation target
 ppc - system emulation target
 riscv32 - system emulation target
 riscv64 - system emulation target
+rx - Renesas RX system emulation target
 s390x - system emulation target
 sh4eb - system emulation target
 sh4 - system emulation target
