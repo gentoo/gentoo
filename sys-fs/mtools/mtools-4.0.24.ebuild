@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit flag-o-matic
 
@@ -25,13 +25,6 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	default
-
-	# Don't throw errors on existing directories
-	sed -i -e "s:mkdir:mkdir -p:" mkinstalldirs || die
-}
-
 src_configure() {
 	# 447688
 	use !elibc_glibc && use !elibc_musl && append-libs "-liconv"
@@ -50,5 +43,5 @@ src_install() {
 	doins mtools.conf
 
 	# default is fine
-	sed -i -e '/^SAMPLE FILE$/s:^:#:' "${ED%/}"/etc/mtools/mtools.conf || die
+	sed -i -e '/^SAMPLE FILE$/s:^:#:' "${ED}"/etc/mtools/mtools.conf || die
 }
