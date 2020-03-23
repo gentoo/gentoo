@@ -7,11 +7,17 @@ inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Standard log daemons"
 HOMEPAGE="https://troglobit.com/sysklogd.html https://github.com/troglobit/sysklogd"
-SRC_URI="https://github.com/troglobit/sysklogd/releases/download/v${PV}/${P}.tar.gz"
+
+if [[ "${PV}" == *9999 ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/troglobit/sysklogd.git"
+else
+	SRC_URI="https://github.com/troglobit/sysklogd/releases/download/v${PV}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="logger logrotate systemd"
 RESTRICT="test"
 
@@ -28,6 +34,11 @@ DOCS=( ChangeLog.md README.md )
 pkg_setup() {
 	append-lfs-flags
 	tc-export CC
+}
+
+src_prepare() {
+	default
+	[[ "${PV}" == *9999 ]] && eautoreconf
 }
 
 src_configure() {
