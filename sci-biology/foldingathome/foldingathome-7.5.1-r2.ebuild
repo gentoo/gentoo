@@ -25,7 +25,9 @@ RDEPEND="app-arch/bzip2
 	)
 	sys-devel/gcc
 	sys-libs/glibc
-	sys-libs/zlib"
+	sys-libs/zlib
+	acct-group/video
+"
 
 S="${WORKDIR}/fahclient_${PV}-64bit-release"
 
@@ -44,7 +46,7 @@ pkg_setup() {
 	elog ""
 
 	enewgroup foldingathome
-	enewuser foldingathome -1 -1 "${EPREFIX}"/opt/foldingathome
+	enewuser foldingathome -1 -1 "${EPREFIX}"/opt/foldingathome video
 }
 
 src_install() {
@@ -83,12 +85,16 @@ Documentation=https://foldingathome.org
 [Service]
 Type=simple
 User=foldingathome
+Group=foldingathome
+Nice=19
 WorkingDirectory=${EPREFIX}/opt/foldingathome
-PIDFile=/run/fahclient.pid
-ExecStart=${EPREFIX}/opt/foldingathome/FAHClient -v
-#ExecReload=${EPREFIX}/opt/foldingathome/FAHClient -v restart
-#ExecStop=${EPREFIX}/opt/foldingathome/FAHClient -v stop
-KillMode=process
+ExecStart=${EPREFIX}/opt/foldingathome/FAHClient --fork=false --pid=false --respawn=false --service=false
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectControlGroups=yes
+ProtectSystem=full
+RestrictRealtime=true
+ProtectControlGroups=yes
 
 [Install]
 WantedBy=multi-user.target
