@@ -16,16 +16,16 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="fdk +ffmpeg +ldac +native-headset ofono-headset"
 
 DEPEND="
-	media-libs/fdk-aac:0=
-	virtual/ffmpeg
+	fdk? ( media-libs/fdk-aac:0= )
+	ffmpeg? ( virtual/ffmpeg )
 	media-libs/sbc
-	media-libs/libldac
+	ldac? ( media-libs/libldac )
 	>=net-wireless/bluez-5
 	>=sys-apps/dbus-1.0.0
-	>=net-misc/ofono-1.13
+	ofono-headset? ( >=net-misc/ofono-1.13 )
 	>=media-sound/pulseaudio-${PULSE_VER}[-bluetooth]
 "
 # Ordinarily media-libs/libldac should be in DEPEND too, but for now upstream repo is using a ldac submodule instead.
@@ -52,6 +52,18 @@ load-module module-bluetooth-policy
 load-module module-bluetooth-discover
 .endif
 "
+
+src_configure() {
+	local mycmakeargs=(
+		-DCODEC_AAC_FDK=$(usex fdk "ON" "OFF")
+		-DCODEC_APTX_FF=$(usex ffmpeg "ON" "OFF")
+		-DCODEC_APTX_HD_FF=$(usex ffmpeg "ON" "OFF")
+		-DCODEC_LDAC=$(usex ldac "ON" "OFF")
+		-DNATIVE_HEADSET=$(usex native-headset "ON" "OFF")
+		-DOFONO_HEADSET=$(usex ofono-headset "ON" "OFF")
+	)
+	cmake-utils_src_configure
+}
 
 src_prepare() {
 	cmake-utils_src_prepare
