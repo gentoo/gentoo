@@ -2240,7 +2240,6 @@ app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
 app-misc/selecta 0.0.7 9999: A fuzzy text selector for files and anything else you need to select
 app-misc/skim 0.6.9 0.7.0: Command-line fuzzy finder
 app-misc/sl 5.02: sophisticated graphical program which corrects your miss typing
-app-misc/sleepyhead 1.0.0_beta2: Software used to analyze data from CPAP machines
 app-misc/slmon 0.5.13: Colored text-based system performance monitor
 app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
 app-misc/socnetv 2.2: Qt Social Network Visualizer
@@ -4794,7 +4793,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3: Stand-alone JavaScript C++ library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.0.3 8.1.21 8.1.22 8.1.23 8.1.24: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.0.3 8.1.21 8.1.22 8.1.23 8.1.24 8.1.25: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9: Tool Command Language
@@ -7507,7 +7506,7 @@ dev-python/biplist 1.0.1 1.0.2: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5 3.1.6: A pure Python module for creation and analysis of binary data
 dev-python/blaze 0.11.3: Next generation Python numpy
-dev-python/bleach 2.1.3 3.0.2 3.1.0-r1: an easy whitelist-based HTML-sanitizing tool
+dev-python/bleach 2.1.3 3.0.2 3.1.0-r1 3.1.3: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6-r1 1.6.1 1.7 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4 1.4-r1: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.3-r1 1.5.4: Generate block-diagram image from text

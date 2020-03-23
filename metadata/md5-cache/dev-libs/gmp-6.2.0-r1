@@ -1,6 +1,5 @@
-BDEPEND=>=app-portage/elt-patches-20170815
+BDEPEND=sys-devel/m4 app-arch/xz-utils >=app-portage/elt-patches-20170815
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=sys-devel/m4 app-arch/xz-utils
 DESCRIPTION=Library for arbitrary-precision arithmetic on different type of numbers
 EAPI=7
 HOMEPAGE=https://gmplib.org/
@@ -10,4 +9,4 @@ LICENSE=|| ( LGPL-3+ GPL-2+ )
 SLOT=0/10.4
 SRC_URI=ftp://ftp.gmplib.org/pub/gmp-6.2.0/gmp-6.2.0.tar.xz mirror://gnu/gmp/gmp-6.2.0.tar.xz doc? ( https://gmplib.org/gmp-man-6.2.0.pdf )
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	7472ddc437760e4f626968f95daed685	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=bf67fdd2b466cd3745291ac6c9c8ec62
+_md5_=474342eaecaa6cd32bce8f62abc3d424
