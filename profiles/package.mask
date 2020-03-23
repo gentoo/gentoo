@@ -361,7 +361,6 @@ dev-python/uncompyle6
 dev-python/venusian
 dev-python/versiontools
 dev-python/vulture
-dev-python/weasyprint
 dev-python/wsgiintercept
 dev-python/wtf-peewee
 dev-python/xdis
