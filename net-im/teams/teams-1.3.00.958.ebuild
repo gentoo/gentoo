@@ -10,7 +10,7 @@ SRC_URI="teams_1.3.00.958_amd64.deb"
 LICENSE="ms-teams-pre"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-RESTRICT="fetch mirror splitdebug"
+RESTRICT="bindist fetch mirror splitdebug"
 IUSE=""
 
 QA_PREBUILT="*"
