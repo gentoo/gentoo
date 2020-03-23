@@ -1,0 +1,27 @@
+From 5e3463bf6b5deb8ab5c6dffc6792a0a9a3bd7890 Mon Sep 17 00:00:00 2001
+From: Jordi Mallach <jordi@debian.org>
+Date: Sun, 22 Mar 2020 19:58:31 +0100
+Subject: Call $PYTHON_CONFIG instead of pyhon-config.
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6946a1aa6..4c089555a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1218,8 +1218,8 @@ if test "$status_python" = yes; then
+       esac
+ 
+       # See https://docs.python.org/dev/whatsnew/3.8.html#debug-build-uses-the-same-abi-as-release-build
+-      PYTHON_LIBS=`python-config --libs --embed 2>/dev/null` || \
+-         PYTHON_LIBS=`python-config --libs`
++      PYTHON_LIBS=`$PYTHON_CONFIG --libs --embed 2>/dev/null` || \
++         PYTHON_LIBS=`$PYTHON_CONFIG --libs`
+       PYTHON_INCLUDES=`$PYTHON_CONFIG --includes`
+     else
+       status_python=no     
+-- 
+cgit v1.2.1
+
