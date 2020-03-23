@@ -7637,7 +7637,7 @@ dev-python/defcon 0.6.0 0.6.0-r1: A set of UFO based objects for use in font edi
 dev-python/deform 0.9.9: Another form generation library
 dev-python/defusedxml 0.5.0 0.6.0: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/demjson 2.2.4: Encoder, decoder, and lint/validator for JSON compliant with RFC 4627
-dev-python/denonavr 0.7.12 0.8.0: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.8.0 0.8.1: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.6 1.2.7: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 1.0.1 2.0.6 2.0.7: A library to handle automated deprecations
 dev-python/dexml 0.5.1: Dead-simple Object-XML mapper for Python
@@ -7819,7 +7819,7 @@ dev-python/fusepy 3.0.1: Python FUSE bindings using ctypes
 dev-python/future 0.18.2: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 3.1.1 3.2.0: Backport of the concurrent.futures package from Python 3.2
 dev-python/futurist 1.3.1 1.6.0 1.8.1: Useful additions to futures, from the future
-dev-python/fuzzywuzzy 0.12.0 0.17.0: Fuzzy string matching in python
+dev-python/fuzzywuzzy 0.12.0 0.17.0 0.18.0: Fuzzy string matching in python
 dev-python/gast 0.2.2: A generic AST to represent Python2 and Python3's Abstract Syntax Tree (AST)
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
 dev-python/gcs-oauth2-boto-plugin 2.5: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
@@ -7892,7 +7892,7 @@ dev-python/httpretty 0.8.14 0.9.6 0.9.7: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/httreplay 0.2.0: A HTTP replay library for testing.
 dev-python/humanfriendly 4.17 4.18: Human friendly output for text interfaces using Python
-dev-python/humanize 0.5.1 2.0.0 2.1.0: Common humanization utilities
+dev-python/humanize 0.5.1 2.1.0 2.2.0: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
 dev-python/hvac 0.2.17: Python client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 3.1.1 3.2.0: HTTP/2 State-Machine based protocol implementation
@@ -15172,7 +15172,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
-net-misc/youtube-dl 2020.03.08 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.03.08 2020.03.24 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.5.5 3.5.9 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17472,7 +17472,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.3 1.6.4: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r7 2.30-r5 2.30-r6 2.31-r1 2.31-r2 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r7 2.30-r6 2.31-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0 4.20.2-r1 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.0.1 4.1.0: Library for managing partitions
