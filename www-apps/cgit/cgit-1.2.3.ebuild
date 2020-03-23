@@ -35,7 +35,6 @@ RDEPEND="
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken
 DEPEND="${RDEPEND}
-	!<www-apps/cgit-0.8.3.3
 	doc? ( app-text/docbook-xsl-stylesheets
 		>=app-text/asciidoc-8.5.1 )
 "
