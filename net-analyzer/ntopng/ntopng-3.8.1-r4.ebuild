@@ -16,7 +16,7 @@ DEPEND="
 	>=net-libs/nDPI-3.0:=
 	dev-db/mysql-connector-c:=
 	dev-db/sqlite:3
-	dev-libs/hiredis
+	dev-libs/hiredis:=
 	dev-libs/json-c:=
 	dev-libs/libmaxminddb
 	dev-libs/libsodium:=
