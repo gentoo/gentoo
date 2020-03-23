@@ -8073,7 +8073,7 @@ dev-python/microversion-parse 0.1.4 0.2.1: A simple parser for OpenStack microve
 dev-python/mimeparse 0.1.4-r1 1.6.0: Basic functions for handling mime-types in python
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/mini-amf 0.9.1: Minimal AMF encoder and decoder for Python
-dev-python/minidb 2.0.2 2.0.2-r1: Simple SQLite-based object store
+dev-python/minidb 2.0.2 2.0.2-r1 2.0.3: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 2.1.20191224: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
@@ -13849,7 +13849,7 @@ media-tv/v4l-utils 1.10.1 1.16.3 1.16.3-r1 1.16.6 1.18.0: Separate utilities ebu
 media-tv/w_scan 20141122 20170107: Scan DVB-C/DVB-T/DVB-S channels
 media-tv/xmltv 0.5.70: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
-media-video/aegisub 3.2.2_p20160518-r2 3.2.2_p20160518-r3 9999: Advanced subtitle editor
+media-video/aegisub 3.2.2_p20160518-r2 3.2.2_p20160518-r3 3.2.2_p20160518-r4 9999: Advanced subtitle editor
 media-video/alevt 1.6.2: Teletext viewer for X11
 media-video/aravis 0.7.2 9999: Library for video acquisition using Genicam cameras
 media-video/asfrecorder 1.1-r1: Linux WindowsMedia streaming client
