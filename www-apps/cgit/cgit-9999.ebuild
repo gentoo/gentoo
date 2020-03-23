@@ -17,7 +17,7 @@ EGIT_REPO_URI="https://git.zx2c4.com/cgit"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +highlight +lua +jit"
+IUSE="doc +highlight +lua +luajit"
 
 RDEPEND="
 	dev-vcs/git
@@ -25,11 +25,13 @@ RDEPEND="
 	dev-libs/openssl:0
 	virtual/httpd-cgi
 	highlight? ( || ( dev-python/pygments app-text/highlight ) )
-	lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua:0 ) )
+	lua? (
+		luajit? ( dev-lang/luajit )
+		!luajit? ( dev-lang/lua:0 )
+	)
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken
 DEPEND="${RDEPEND}
-	!<www-apps/cgit-0.8.3.3
 	doc? ( app-text/docbook-xsl-stylesheets
 		>=app-text/asciidoc-8.5.1 )
 "
@@ -48,7 +50,7 @@ src_prepare() {
 	echo "CACHE_ROOT = ${CGIT_CACHEDIR}" >> cgit.conf
 	echo "DESTDIR = ${D}" >> cgit.conf
 	if use lua; then
-		if use jit; then
+		if use luajit; then
 			echo "LUA_PKGCONFIG = luajit" >> cgit.conf
 		else
 			echo "LUA_PKGCONFIG = lua" >> cgit.conf
@@ -56,6 +58,8 @@ src_prepare() {
 	else
 		echo "NO_LUA = 1" >> cgit.conf
 	fi
+
+	epatch_user
 }
 
 src_compile() {
