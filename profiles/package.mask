@@ -34,6 +34,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
 # Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Possible alternative: media-video/simplescreenrecorder
 # Bug #710172, masked for removal in 30 days.
 media-video/gtk-recordmydesktop
 
