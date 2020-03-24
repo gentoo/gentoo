@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,10 @@ S="${WORKDIR}/${PN}"
 DOCS=( AUTHORS DEBUGGING FAQ INSTALL NEWS README THANKS
 	TODO UPGRADING ChangeLog
 )
-PATCHES=( "${FILESDIR}"/${P}-no-automagic-debug.diff )
+PATCHES=(
+	"${FILESDIR}/libnss-mysql-1.5_p20060915-no-automagic-debug.diff"
+	"${FILESDIR}/libnss-mysql-1.5_p20060915-my_bool.patch"
+)
 
 src_prepare() {
 	default

@@ -1,0 +1,20 @@
+--- libnss-mysql/src/mysql.c.orig	2019-09-03 12:03:40.484317371 +0200
++++ libnss-mysql/src/mysql.c		2019-09-03 12:03:09.387556727 +0200
+@@ -138,7 +138,7 @@
+ {
+   DN ("_nss_mysql_set_options")
+   const unsigned int def_timeout = DEF_TIMEOUT;
++  const _Bool reconnect = 1;
+-  const my_bool reconnect = 1;
+
+   DENTER
+
+@@ -148,7 +148,7 @@
+ #if MYSQL_VERSION_ID >= 50013
+   mysql_options(&ci.link, MYSQL_OPT_RECONNECT, (const char *) &reconnect);
+ #else
++  ci.link.reconnect = (_Bool) 1;
+-  ci.link.reconnect = (my_bool) 1;
+ #endif
+
+   DEXIT
