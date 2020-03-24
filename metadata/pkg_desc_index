@@ -10402,7 +10402,7 @@ dev-util/catalyst 3.0.8 3.0.9 9999: Release metatool used for creating releases 
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.13.1: A tool for generating C bindings to Rust code
-dev-util/ccache 3.7.2 3.7.6 3.7.7 3.7.7-r1 3.7.8: fast compiler cache
+dev-util/ccache 3.7.2 3.7.6 3.7.7 3.7.7-r1 3.7.8 3.7.8-r1: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 9999: C/C++/ObjC language server
 dev-util/cdiff 1.0 1.1 9999: Colored, side-by-side diff terminal viewer
@@ -17348,7 +17348,7 @@ sys-fs/fatcat 1.0.6 1.1.0: FAT filesystems explore, extract, repair, and forensi
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
 sys-fs/fatsort 1.5.0 1.6.2.605: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
-sys-fs/fuse 2.9.8 2.9.9-r1 3.8.0 3.9.0: An interface for filesystems implemented in userspace
+sys-fs/fuse 2.9.8 2.9.9-r1 3.8.0 3.9.0 3.9.1: An interface for filesystems implemented in userspace
 sys-fs/fuse-common 3.2.6 3.8.0 3.9.0: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.3.0: exFAT filesystem FUSE module
@@ -17511,7 +17511,7 @@ sys-libs/libtermcap-compat 2.0.8-r3 2.0.8-r4: Compatibility package for old term
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.2.1-r3 1.3.1: Portable and efficient API to determine the call-chain of a program
 sys-libs/liburing 0.5: Efficient I/O with io_uring
-sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
+sys-libs/libutempter 1.1.6-r3: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds
 sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.12-r3: Extended crypt library for descrypt, md5crypt, bcrypt, and others
