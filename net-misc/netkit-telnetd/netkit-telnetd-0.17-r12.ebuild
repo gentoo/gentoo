@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -46,7 +46,7 @@ src_prepare() {
 
 	# Fix portability issues.
 	sed -i \
-		-e 's:echo -n:printf %s:' \
+		-e 's/echo -n/printf %s/' \
 		configure || die
 	default
 }
@@ -58,9 +58,9 @@ src_configure() {
 	./configure --prefix=/usr || die
 
 	sed -i \
-		-e "s:-pipe -O2:${CFLAGS}:" \
-		-e "s:^\(LDFLAGS=\).*:\1${LDFLAGS}:" \
-		-e "s:-Wpointer-arith::" \
+		-e "s/-pipe -O2/${CFLAGS}/" \
+		-e "s/^\(LDFLAGS=\).*/\1${LDFLAGS}/" \
+		-e "s/-Wpointer-arith//" \
 		MCONFIG || die
 }
 
