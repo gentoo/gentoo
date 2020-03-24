@@ -16,6 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/kanaka/noVNC/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	S="${WORKDIR}/noVNC-${PV}"
 fi
 
 LICENSE="LGPL-3"
@@ -42,4 +43,5 @@ src_install() {
 	insinto /usr/share/novnc
 	doins -r vnc.html vnc_lite.html app/ core/ vendor/
 	dosym vnc_lite.html /usr/share/novnc/vnc_auto.html  # for compat
+	dosym ../share/novnc/utils/launch.sh /usr/bin/novnc
 }
