@@ -20,6 +20,7 @@ BDEPEND=">=dev-libs/protobuf-3.6.1"
 RDEPEND="
 	>=dev-db/mysql-connector-c-8.0
 	>=dev-python/protobuf-python-3.6.1[${PYTHON_USEDEP}]
+	dev-python/dnspython[${PYTHON_USEDEP}]
 "
 # tests/mysqld.py does not like MariaDB version strings.
 # See the regex MySQLServerBase._get_version.
