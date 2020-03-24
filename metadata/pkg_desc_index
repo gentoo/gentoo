@@ -12883,7 +12883,7 @@ media-libs/libaom 1.0.0-r2 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.14.0: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
-media-libs/libbluray 1.1.2 9999: Blu-ray playback libraries
+media-libs/libbluray 1.1.2 1.2.0 9999: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
 media-libs/libcaca 0.99_beta19-r1: A library that creates colored ASCII-art graphics
@@ -14591,7 +14591,7 @@ net-libs/gtk-vnc 0.9.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.4 1.2.2: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.11: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.5 0.2.5-r10: Library to handle UPnP IGD port mapping for GUPnP
-net-libs/http-parser 2.8.1 2.9.1 2.9.2 2.9.3 99999: HTTP request/response parser for C
+net-libs/http-parser 2.8.1 2.9.1 2.9.2 2.9.3 2.9.4 99999: HTTP request/response parser for C
 net-libs/iax 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-msgs 1.0.0: Protobuf messages and functions for robot applications
 net-libs/ignition-transport 4.0.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
