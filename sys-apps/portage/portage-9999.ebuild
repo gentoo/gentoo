@@ -231,14 +231,14 @@ python_install_all() {
 
 pkg_preinst() {
 	python_setup
-	python_export PYTHON_SITEDIR
-	[[ -d ${D%/}${PYTHON_SITEDIR} ]] || die "${D%/}${PYTHON_SITEDIR}: No such directory"
+	local sitedir=$(python_get_sitedir)
+	[[ -d ${D%/}${sitedir} ]] || die "${D%/}${sitedir}: No such directory"
 	env -u DISTDIR \
 		-u PORTAGE_OVERRIDE_EPREFIX \
 		-u PORTAGE_REPOSITORIES \
 		-u PORTDIR \
 		-u PORTDIR_OVERLAY \
-		PYTHONPATH="${D%/}${PYTHON_SITEDIR}${PYTHONPATH:+:${PYTHONPATH}}" \
+		PYTHONPATH="${D%/}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
 		"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
 	# elog dir must exist to avoid logrotate error for bug #415911.
