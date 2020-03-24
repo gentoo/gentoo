@@ -399,9 +399,7 @@ dev-go/ed25519
 dev-libs/rocm-opencl-driver
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-29)
-# Breaks at least app-text/texlive-core and app-office/libreoffice right now,
-# bugs 711096, 711102.
-~app-text/poppler-0.86.0
+# Breaks app-office/libreoffice right now, bug #711102.
 ~app-text/poppler-0.86.1
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
