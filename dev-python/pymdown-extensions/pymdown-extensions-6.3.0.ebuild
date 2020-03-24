@@ -21,17 +21,17 @@ KEYWORDS="~amd64 ~x86"
 # Docs require pymdownx.tabbed which is in master on github atm
 # but not in the 6.3.0 release tarballs for some reason
 
-IUSE="doc"
-
 RDEPEND=">=dev-python/markdown-3.2[${PYTHON_USEDEP}]"
 
+#	doc? (
+#		dev-python/mkdocs-git-revision-date-localized-plugin[${PYTHON_USEDEP}]
+#		dev-python/mkdocs-material[${PYTHON_USEDEP}]
+#		dev-python/pymdown-lexers[${PYTHON_USEDEP}]
+#		dev-python/pyspelling[${PYTHON_USEDEP}]
+#	)
+
 DEPEND="
-	doc? (
-		dev-python/mkdocs-git-revision-date-localized-plugin[${PYTHON_USEDEP}]
-		dev-python/mkdocs-material[${PYTHON_USEDEP}]
-		dev-python/pymdown-lexers[${PYTHON_USEDEP}]
-		dev-python/pyspelling[${PYTHON_USEDEP}]
-	)
+	${RDEPEND}
 	test? (
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)
@@ -39,10 +39,10 @@ DEPEND="
 
 distutils_enable_tests pytest
 
-python_compile_all() {
-	default
-	if use doc; then
-		mkdocs build || die "failed to make docs"
-		HTML_DOCS="site"
-	fi
-}
+#python_compile_all() {
+#	default
+#	if use doc; then
+#		mkdocs build || die "failed to make docs"
+#		HTML_DOCS="site"
+#	fi
+#}

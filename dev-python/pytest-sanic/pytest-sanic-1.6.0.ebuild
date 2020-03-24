@@ -17,9 +17,7 @@ SRC_URI="https://github.com/yunstanford/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/aiohttp[${PYTHON_USEDEP}]
@@ -32,7 +30,5 @@ BDEPEND="
 	)
 "
 
-#DOCS=( README.rst )
-
 distutils_enable_tests pytest
-#distutils_enable_sphinx docs
+distutils_enable_sphinx docs

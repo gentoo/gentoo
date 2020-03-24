@@ -17,8 +17,6 @@ SRC_URI="https://github.com/huge-success/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/aiofiles[${PYTHON_USEDEP}]
@@ -33,14 +31,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	doc? (
-		dev-python/docutils[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-2.1.2[${PYTHON_USEDEP}]
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-		>=dev-python/recommonmark-0.5.0[${PYTHON_USEDEP}]
-
-	)
 	test? (
 		dev-python/beautifulsoup[${PYTHON_USEDEP}]
 		dev-python/httpcore[${PYTHON_USEDEP}]
@@ -52,7 +42,10 @@ DEPEND="
 	)
 "
 
-DOCS=( CHANGELOG.rst SECURITY.md README.rst )
-
 distutils_enable_tests pytest
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs \
+				dev-python/docutils \
+				dev-python/pygments \
+				">=dev-python/sphinx-2.1.2" \
+				dev-python/sphinx_rtd_theme \
+				">=dev-python/recommonmark-0.5.0"
