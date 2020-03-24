@@ -28,14 +28,9 @@ RDEPEND="
 	$(python_gen_cond_dep 'dev-python/contextvars[${PYTHON_USEDEP}]' python3_6)
 "
 DEPEND="${RDEPEND}
-	>=dev-python/immutables-0.6[${PYTHON_USEDEP}]
-	doc? (
-		dev-python/sphinxcontrib-trio[${PYTHON_USEDEP}]
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-		dev-python/towncrier[${PYTHON_USEDEP}]
-	)
 	test? (
 		>=dev-python/astor-0.8.0[${PYTHON_USEDEP}]
+		>=dev-python/immutables-0.6[${PYTHON_USEDEP}]
 		dev-python/jedi[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 		dev-python/yapf[${PYTHON_USEDEP}]
@@ -43,7 +38,11 @@ DEPEND="${RDEPEND}
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs/source
+distutils_enable_sphinx docs/source \
+					">=dev-python/immutables-0.6" \
+					dev-python/sphinxcontrib-trio \
+					dev-python/sphinx_rtd_theme \
+					dev-python/towncrier
 
 python_prepare_all() {
 	# Disable tests require IPv6

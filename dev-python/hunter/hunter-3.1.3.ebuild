@@ -23,8 +23,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
-	>=dev-python/setuptools_scm-3.3.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/aspectlib[${PYTHON_USEDEP}]
 		dev-python/manhole[${PYTHON_USEDEP}]
@@ -32,6 +30,10 @@ DEPEND="
 		dev-python/pytest-benchmark[${PYTHON_USEDEP}]
 		dev-python/pytest-travis-fold[${PYTHON_USEDEP}]
 	)
+"
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+	>=dev-python/setuptools_scm-3.3.1[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
