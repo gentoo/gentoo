@@ -7,19 +7,18 @@ PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
+MYPV="${PV/_/}"
+
 DESCRIPTION="Extensions for Python Markdown."
 HOMEPAGE="
 	https://github.com/facelessuser/pymdown-extensions
 	https://pypi.org/project/pymdown-extensions
 "
-SRC_URI="https://github.com/facelessuser/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/facelessuser/${PN}/archive/${MYPV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-# Docs require pymdownx.tabbed which is in master on github atm
-# but not in the 6.3.0 release tarballs for some reason
 
 IUSE="doc"
 

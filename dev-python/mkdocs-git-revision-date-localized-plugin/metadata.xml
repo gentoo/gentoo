@@ -3,6 +3,10 @@
 
 <pkgmetadata>
   <maintainer type="person">
+    <email>andrewammerlaan@riseup.net</email>
+    <name>Andrew Ammerlaan</name>
+  </maintainer>
+  <maintainer type="person">
     <email>lssndrbarbieri@gmail.com</email>
     <name>Alessandro Barbieri</name>
   </maintainer>
@@ -11,7 +15,7 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">pytest-dev/pytest-instafail</remote-id>
-    <remote-id type="pypi">pytest-instafail</remote-id>
+    <remote-id type="github">timvink/mkdocs-git-revision-date-localized-plugin</remote-id>
+    <remote-id type="pypi">mkdocs-git-revision-date-localized-plugin</remote-id>
   </upstream>
 </pkgmetadata>

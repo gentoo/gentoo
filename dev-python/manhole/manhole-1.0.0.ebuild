@@ -3,33 +3,30 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
-DESCRIPTION="An aspect-oriented programming, monkey-patch and decorators library"
+DESCRIPTION="Debugging manhole for python application"
 HOMEPAGE="
-	https://github.com/ionelmc/python-aspectlib
-	https://pypi.org/project/python-aspectlib
+	https://github.com/ionelmc/python-manhole
+	https://pypi.org/project/python-manhole
 "
 SRC_URI="https://github.com/ionelmc/python-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-
-LICENSE="BSD"
+LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
-	dev-python/fields[${PYTHON_USEDEP}]
-"
+RDEPEND=""
 DEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/eventlet[${PYTHON_USEDEP}]
+		dev-python/gevent[${PYTHON_USEDEP}]
 		dev-python/process-tests[${PYTHON_USEDEP}]
 		dev-python/pytest-travis-fold[${PYTHON_USEDEP}]
-		dev-python/pytest-catchlog[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		www-servers/uwsgi[${PYTHON_USEDEP}]
 	)
 "
 

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -18,7 +18,15 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 "
 SLOT="0"
 
+DEPEND="
+	doc? (
+		dev-python/sphinxcontrib-programoutput[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+	)
+"
+
 distutils_enable_tests pytest
+distutils_enable_sphinx doc
 
 python_test() {
 	pytest -vv tests || "Tests fail with ${EPYTHON}"

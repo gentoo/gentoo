@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -31,10 +31,13 @@ RDEPEND="dev-python/certifi[${PYTHON_USEDEP}]
 	dev-python/sniffio[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]"
 
-BDEPEND="doc?  (
-	dev-python/mkdocs
-	dev-python/mkautodoc
-	dev-python/mkdocs-material )"
+BDEPEND="
+	doc?  (
+		dev-python/mkautodoc[${PYTHON_USEDEP}]
+		dev-python/mkdocs[${PYTHON_USEDEP}]
+		dev-python/mkdocs-material[${PYTHON_USEDEP}]
+	)
+"
 
 DEPEND="test? (
 	dev-python/attrs[${PYTHON_USEDEP}]

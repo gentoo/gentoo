@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+Manhole is in-process service that will accept unix domain socket connections and present the stacktraces for all threads and an interactive prompt. It can either work as a python daemon thread waiting for connections at all times or a signal handler (stopping your application and waiting for a connection).
+
+Access to the socket is restricted to the application's effective user id or root.
+
+This is just like Twisted's manhole. It's simpler (no dependencies), it only runs on Unix domain sockets (in contrast to Twisted's manhole which can run on telnet or ssh) and it integrates well with various types of applications.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">ionelmc/python-manhole</remote-id>
+    <remote-id type="pypi">manhole</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -22,7 +22,7 @@ IUSE="doc test"
 
 RDEPEND="
 	dev-python/h11[${PYTHON_USEDEP}]
-	dev-python/h2[${PYTHON_USEDEP}]
+	dev-python/hyper-h2[${PYTHON_USEDEP}]
 	dev-python/sniffio[${PYTHON_USEDEP}]
 	dev-python/trio[${PYTHON_USEDEP}]
 "

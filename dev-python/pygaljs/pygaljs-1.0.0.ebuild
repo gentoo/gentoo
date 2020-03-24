@@ -14,7 +14,7 @@ HOMEPAGE="
 "
 SRC_URI="https://github.com/ionelmc/python-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPLv3+"
+LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

@@ -18,20 +18,29 @@ LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-python/async_generator[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/async_generator[${PYTHON_USEDEP}]
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
 	dev-python/idna[${PYTHON_USEDEP}]
 	dev-python/outcome[${PYTHON_USEDEP}]
 	dev-python/sniffio[${PYTHON_USEDEP}]
-	dev-python/sortedcontainers[${PYTHON_USEDEP}]"
-
-RDEPEND="${DEPEND}
-	$(python_gen_cond_dep 'dev-python/contextvars[${PYTHON_USEDEP}]' python3_6)"
-
-BDEPEND="test? ( >=dev-python/astor-0.8.0[${PYTHON_USEDEP}]
+	dev-python/sortedcontainers[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/contextvars[${PYTHON_USEDEP}]' python3_6)
+"
+DEPEND="${RDEPEND}
+	>=dev-python/immutables-0.6[${PYTHON_USEDEP}]
+	doc? (
+		dev-python/sphinxcontrib-trio[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		dev-python/towncrier[${PYTHON_USEDEP}]
+	)
+	test? (
+		>=dev-python/astor-0.8.0[${PYTHON_USEDEP}]
 		dev-python/jedi[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
-		dev-python/yapf[${PYTHON_USEDEP}] )"
+		dev-python/yapf[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source

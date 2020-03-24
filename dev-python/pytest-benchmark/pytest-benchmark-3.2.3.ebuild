@@ -4,7 +4,7 @@
 EAPI="7"
 
 #DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ionelmc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -40,4 +40,4 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs dev-python/sphinx-py3doc-enhanced-theme
