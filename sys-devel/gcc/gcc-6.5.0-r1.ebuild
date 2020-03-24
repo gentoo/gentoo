@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-PATCH_VER="2"
+PATCH_VER="3"
 
 inherit toolchain
 
