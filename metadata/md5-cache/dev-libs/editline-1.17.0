@@ -1,9 +1,0 @@
-DEFINED_PHASES=configure install prepare
-DESCRIPTION=line editing library for UNIX call compatible with the FSF readline
-EAPI=7
-HOMEPAGE=http://troglobit.com/projects/editline/
-KEYWORDS=~amd64 ~x86
-LICENSE=Apache-2.0
-SLOT=0
-SRC_URI=https://github.com/troglobit/editline/releases/download/1.17.0/editline-1.17.0.tar.xz
-_md5_=883c623842e5b7dc604f37ad85109327
