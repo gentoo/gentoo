@@ -14910,7 +14910,7 @@ net-misc/dleyna-server 0.5.0 0.6.0: Service that allows to discover and manipula
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2017.75 2018.76 2019.78: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 93.3.258 93.4.273: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 93.4.273 94.3.371: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 19: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4 0.9a_p19_p1: A simple fax program for single-user systems
@@ -17964,9 +17964,9 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
-www-client/opera 67.0.3575.79 67.0.3575.97: A fast and secure web browser
+www-client/opera 67.0.3575.97: A fast and secure web browser
 www-client/opera-beta 68.0.3618.3 68.0.3618.5: A fast and secure web browser
-www-client/opera-developer 68.0.3616.0 69.0.3623.0: A fast and secure web browser
+www-client/opera-developer 69.0.3623.0 69.0.3638.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.8.3 1.10.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
@@ -17976,7 +17976,7 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 2.11.1811.47_p1 2.11.1811.49_p1: A browser for our friends
+www-client/vivaldi 2.11.1811.49_p1: A browser for our friends
 www-client/vivaldi-snapshot 2.12.1854.5_p1 2.12.1856.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
