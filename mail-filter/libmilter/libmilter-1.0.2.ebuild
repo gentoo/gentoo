@@ -36,7 +36,7 @@ src_prepare() {
 	use ipv6 && ENVDEF="${ENVDEF} -DNETINET6"
 	use poll && ENVDEF="${ENVDEF} -DSM_CONF_POLL=1"
 
-	sed -e "s:@@CFLAGS@@:${CFLAGS}:" \
+	sed -e "s|@@CFLAGS@@|${CFLAGS}|" \
 		-e "s:@@LDFLAGS@@:${LDFLAGS}:" \
 		-e "s:@@CC@@:${CC}:" \
 		-e "s:@@ENVDEF@@:${ENVDEF}:" \
