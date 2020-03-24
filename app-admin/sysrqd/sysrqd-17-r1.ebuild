@@ -34,7 +34,6 @@ src_install() {
 	echo "${secret}" > sysrqd.secret || die
 
 	diropts -m 0700 -o root -g root
-	dodir /etc/sysrqd
 	insinto /etc/sysrqd
 	insopts -m 0600 -o root -g root
 	doins sysrqd.bind
