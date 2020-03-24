@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Applets for the MATE Desktop and Panel"
-LICENSE="GPL-2 FDL-1.1 LGPL-2"
+LICENSE="CC-BY-SA-3.0 FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+"
 SLOT="0"
 
 IUSE="X +cpupower ipv6 policykit +upower"
