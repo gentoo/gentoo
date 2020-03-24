@@ -581,7 +581,7 @@ app-arch/cksfv 1.3.14 1.3.14-r1: SFV checksum utility (simple file verification)
 app-arch/cpio 2.12-r1 2.13: A file archival tool which can also read and write tar files
 app-arch/deb2targz 1-r3: Convert a .deb file to a .tar.gz archive
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
-app-arch/dpkg 1.19.0.5 1.19.6 1.19.7: Package maintenance system for Debian
+app-arch/dpkg 1.19.0.5 1.19.6 1.19.7 1.20.0: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.46 0.4.46-r1: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.22.1-r1: Engrampa archive manager for MATE
@@ -10461,7 +10461,7 @@ dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814 12.8 12.9: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.115 1.0.116 1.0.117: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.115 1.0.116 1.0.117 1.0.123: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.15.0: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24: Command line utilities to work with desktop menu entries
@@ -16830,7 +16830,7 @@ sys-apps/mlxup-bin 4.13.0: Mellanox Update and Query Utility
 sys-apps/modutils 2.4.27-r2: Standard kernel module utilities for linux-2.4 and older
 sys-apps/moreutils 0.63: a collection of tools that nobody thought to write when Unix was young
 sys-apps/most 5.0.0a-r1 5.1.0: Paging program that displays, one windowful at a time, the contents of a file
-sys-apps/mount-gtk 1.4.2 1.4.4: GTK+ based UDisks2 frontend
+sys-apps/mount-gtk 1.4.2 1.4.4 1.4.5.1: GTK+ based UDisks2 frontend
 sys-apps/mouseemu 0.12 0.15: Emulates scrollwheel, right- & left-click for one-button mice/touchpads
 sys-apps/msr-tools 1.3: Utilities allowing the read and write of CPU model-specific registers (MSR)
 sys-apps/mtree 1.0.4: Directory hierarchy mapping tool from FreeBSD
@@ -18331,7 +18331,7 @@ x11-misc/dzen 0.9.5-r1 0.9.5_p1: A general purpose messaging, notification and m
 x11-misc/e16-keyedit 0.9: Key binding editor for Enlightenment DR16
 x11-misc/e16menuedit2 0.0.3: Menu editor for Enlightenment DR16 written in GTK2
 x11-misc/easystroke 0.6.0-r3: a gesture-recognition application for X11
-x11-misc/efax-gtk 3.2.9 3.2.13 3.2.13-r1: A graphical frontend for the 'efax' application
+x11-misc/efax-gtk 3.2.9 3.2.13 3.2.13-r1 3.2.14: A graphical frontend for the 'efax' application
 x11-misc/evolvotron 0.7.1: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221-r1: A Pager for fluxbox
