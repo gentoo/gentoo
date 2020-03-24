@@ -69,7 +69,7 @@ waf-utils_src_configure() {
 
 	[[ ${fail} ]] && die "Invalid use of waf-utils.eclass"
 
-	local libdir=()
+	local conf_args=()
 
 	# @ECLASS-VARIABLE: WAF_BINARY
 	# @DESCRIPTION:
@@ -81,7 +81,15 @@ waf-utils_src_configure() {
 	# @DESCRIPTION:
 	# Variable specifying that you don't want to set the libdir for waf script.
 	# Some scripts does not allow setting it at all and die if they find it.
-	[[ -z ${NO_WAF_LIBDIR} ]] && libdir=(--libdir="${EPREFIX}/usr/$(get_libdir)")
+	[[ -z ${NO_WAF_LIBDIR} ]] && conf_args+=(--libdir="${EPREFIX}/usr/$(get_libdir)")
+
+	local waf_help=$("${WAF_BINARY}" --help 2>/dev/null)
+	if [[ ${waf_help} == *--docdir* ]]; then
+		conf_args+=( --docdir="${EPREFIX}"/usr/share/doc/${PF} )
+	fi
+	if [[ ${waf_help} == *--htmldir* ]]; then
+		conf_args+=( --htmldir="${EPREFIX}"/usr/share/doc/${PF}/html )
+	fi
 
 	tc-export AR CC CPP CXX RANLIB
 
@@ -91,7 +99,7 @@ waf-utils_src_configure() {
 		PKGCONFIG="$(tc-getPKG_CONFIG)"
 		"${WAF_BINARY}"
 		"--prefix=${EPREFIX}/usr"
-		"${libdir[@]}"
+		"${conf_args[@]}"
 		"${@}"
 		configure
 	)
