@@ -24,13 +24,16 @@ IUSE="doc"
 
 RDEPEND=">=dev-python/markdown-3.2[${PYTHON_USEDEP}]"
 
-DEPEND="
+BDEPEND="
 	doc? (
 		dev-python/mkdocs-git-revision-date-localized-plugin[${PYTHON_USEDEP}]
 		dev-python/mkdocs-material[${PYTHON_USEDEP}]
 		dev-python/pymdown-lexers[${PYTHON_USEDEP}]
 		dev-python/pyspelling[${PYTHON_USEDEP}]
 	)
+"
+DEPEND="
+	${RDEPEND}
 	test? (
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)

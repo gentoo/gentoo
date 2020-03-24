@@ -27,12 +27,14 @@ RDEPEND="
 	dev-python/trio[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	${RDEPEND}
 	doc? (
 		dev-python/mkautodoc[${PYTHON_USEDEP}]
 		dev-python/mkdocs[${PYTHON_USEDEP}]
 		dev-python/mkdocs-material[${PYTHON_USEDEP}]
 	)
+"
+DEPEND="
+	${RDEPEND}
 	test? (
 		dev-python/autoflake[${PYTHON_USEDEP}]
 		dev-python/black[${PYTHON_USEDEP}]
