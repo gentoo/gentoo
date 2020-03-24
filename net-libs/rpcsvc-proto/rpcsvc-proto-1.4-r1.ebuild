@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -14,7 +14,14 @@ LICENSE="LGPL-2.1+ BSD"
 KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86"
 IUSE=""
 
-RDEPEND="!<sys-libs/glibc-2.26"
+# sys-devel/gettext is only for libintl detection macros.
+DEPEND="sys-devel/gettext"
+RDEPEND="
+	!<sys-libs/glibc-2.26
+	virtual/libintl
+"
+
+PATCHES=("${FILESDIR}"/${P}-external-libintl.patch)
 
 src_prepare() {
 	default
@@ -25,5 +32,5 @@ src_install() {
 	default
 
 	# provided by sys-fs/quota[rpc]
-	rm "${ED%/}"/usr/include/rpcsvc/rquota.{x,h} || die
+	rm "${ED}"/usr/include/rpcsvc/rquota.{x,h} || die
 }
