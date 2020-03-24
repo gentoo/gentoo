@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="The MATE image viewer"
-LICENSE="GPL-2"
+LICENSE="FDL-1.1+ GPL-2+ IJG LGPL-2+"
 SLOT="0"
 
 IUSE="X debug exif +introspection jpeg lcms svg tiff xmp"
