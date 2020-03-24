@@ -15,10 +15,11 @@ HOMEPAGE="
 	https://pypi.org/project/backrefs
 "
 SRC_URI="https://github.com/facelessuser/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-RESTRICT="primaryuri"
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="doc"
 
 RDEPEND=""
 DEPEND="
@@ -35,6 +36,6 @@ DEPEND="
 distutils_enable_tests pytest
 
 python_compile_all() {
-	mkdocs build || die
+	use doc && mkdocs build || die
 	default
 }
