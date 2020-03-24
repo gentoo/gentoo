@@ -26,7 +26,6 @@ src_prepare() {
 	default
 
 	# some packages have their own translations
-	local manpage
 	local noinst_manpages=(
 		# sys-apps/shadow
 		po/de/man1/groups.1.po
@@ -48,10 +47,7 @@ src_prepare() {
 		po/de/man1/xzless.1.po
 		po/de/man1/xzmore.1.po
 	)
-	for manpage in ${noinst_manpages[@]} ; do
-		echo "${manpage}"
-		rm "${manpage}" || die
-	done
+	rm "${noinst_manpages[@]}" || die
 
 	eautoreconf
 }
