@@ -46,12 +46,11 @@ RDEPEND="
 
 pkg_pretend() {
 	linux-info_pkg_setup
-	CONFIG_CHECK="~EXT3_FS_XATTR ~SQUASHFS_XATTR ~CIFS_XATTR ~JFFS2_FS_XATTR
-	~TMPFS_XATTR ~UBIFS_FS_XATTR ~EXT2_FS_XATTR ~REISERFS_FS_XATTR ~EXT4_FS_XATTR
-	~ZFS"
+	CONFIG_CHECK="~EXT3_FS_XATTR ~CIFS_XATTR ~TMPFS_XATTR ~UBIFS_FS_XATTR
+	~EXT2_FS_XATTR ~REISERFS_FS_XATTR ~EXT4_FS_XATTR ~ZFS"
 	if linux_config_exists; then
 		for module in ${CONFIG_CHECK}; do
-			linux_chkconfig_present ${module} || ewarn "${module} needs to be enabled"
+			linux_chkconfig_present ${module} || ewarn "you may want to enable the ${module} module"
 		done
 	fi
 }
