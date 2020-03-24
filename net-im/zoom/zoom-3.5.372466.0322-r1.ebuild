@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils
+inherit desktop eutils xdg-utils
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us/"
@@ -50,5 +50,14 @@ src_install() {
 	use amd64 && doins icudtl.dat
 	doexe zoom{,.sh,linux} zopen ZoomLauncher
 	make_wrapper zoom ./zoom /opt/zoom
-	make_desktop_entry zoom zoom audio-headset
+	make_desktop_entry "zoom %U" Zoom audio-headset "" \
+		"MimeType=x-scheme-handler/zoommtg;application/x-zoom;"
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
