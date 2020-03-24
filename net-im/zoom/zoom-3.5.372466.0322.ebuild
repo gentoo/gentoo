@@ -46,7 +46,8 @@ src_install() {
 	insinto /opt/zoom
 	exeinto /opt/zoom
 	doins -r json sip timezones translations
-	doins *.pcm *.pem *.sh Embedded.properties icudtl.dat version.txt
+	doins *.pcm *.pem *.sh Embedded.properties version.txt
+	use amd64 && doins icudtl.dat
 	doexe zoom{,.sh,linux} zopen ZoomLauncher
 	make_wrapper zoom ./zoom /opt/zoom
 	make_desktop_entry zoom zoom audio-headset
