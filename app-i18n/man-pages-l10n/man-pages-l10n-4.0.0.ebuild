@@ -29,8 +29,6 @@ BDEPEND="app-text/po4a
 DOCS=(AUTHORS.md CHANGES.md README.md)
 
 src_prepare() {
-	echo "*** IUSE=${IUSE}"
-	echo "*** REQUIRED_USE=${REQUIRED_USE}"
 	default
 	sed -i -e "/^SUBDIRS/s/=.*/= ${L10N//-/_}/" po/Makefile.{am,in} || die
 
