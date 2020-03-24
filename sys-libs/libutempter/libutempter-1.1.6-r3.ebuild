@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit user multilib flag-o-matic toolchain-funcs
+inherit multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="Library that allows non-privileged apps to write utmp (login) info"
 HOMEPAGE="https://altlinux.org/index.php?module=sisyphus&package=libutempter"
@@ -14,13 +14,14 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs elibc_FreeBSD"
 
-RDEPEND="!sys-apps/utempter"
-
-pkg_setup() {
-	enewgroup utmp 406
-}
+RDEPEND="
+	!sys-apps/utempter
+	acct-group/utmp
+"
 
 src_prepare() {
+	default
+
 	local args=(
 		-e "/^libdir /s:/usr/lib:${EPREFIX}/usr/$(get_libdir):"
 		-e '/^libexecdir /s:=.*:= $(libdir)/misc:'
@@ -57,12 +58,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ -f "${EROOT}/var/log/wtmp" ] ; then
+	if [[ -f "${EROOT}/var/log/wtmp" ]] ; then
 		chown root:utmp "${EROOT}/var/log/wtmp"
 		chmod 664 "${EROOT}/var/log/wtmp"
 	fi
 
-	if [ -f "${EROOT}/var/run/utmp" ] ; then
+	if [[ -f "${EROOT}/var/run/utmp" ]] ; then
 		chown root:utmp "${EROOT}/var/run/utmp"
 		chmod 664 "${EROOT}/var/run/utmp"
 	fi
