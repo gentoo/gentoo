@@ -1,23 +1,23 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-inherit multilib autotools ltprune python-r1 eutils
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit autotools python-single-r1
 
 DESCRIPTION="A standards compliant, fast, light-weight, extensible window manager"
-HOMEPAGE="http://openbox.org/"
+HOMEPAGE="http://openbox.org/wiki/Main_Page"
+
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://git.openbox.org/dana/openbox"
-	SRC_URI="branding? (
-	https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
 else
-	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz
-	branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
+	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86	~x86-linux"
 fi
+
+SRC_URI+=" branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="3"
@@ -41,17 +41,33 @@ RDEPEND="dev-libs/glib:2
 	svg? ( gnome-base/librsvg:2 )
 	xdg? (
 		${PYTHON_DEPS}
-		dev-python/pyxdg[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+		')
 	)
-	"
+"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+"
 
-PATCHES=( "${FILESDIR}/${PN}-3.5.2-gnome-session.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-3.5.2-gnome-session.patch"
+	# see https://github.com/danakj/openbox/pull/35
+	"${FILESDIR}/${PN}-3.6.1-py3-xdg.patch"
+)
+
+src_unpack() {
+	if [[ ${PV} == *9999* ]]; then
+		git-r3_src_unpack
+	fi
+
+	default
+}
 
 src_prepare() {
+	use xdg && python-single-r1_pkg_setup
 	default
 	sed -i \
 		-e "s:-O0 -ggdb ::" \
@@ -86,9 +102,9 @@ src_install() {
 			"${D}"/etc/xdg/openbox/rc.xml \
 			|| die "failed to set Surreal Gentoo as the default theme"
 	fi
-	use static-libs || prune_libtool_files --all
+	use static-libs || find "${D}" -name '*.la' -delete
 	if use xdg ; then
-		python_replicate_script "${ED}"/usr/libexec/openbox-xdg-autostart
+		python_fix_shebang "${ED}"/usr/libexec/openbox-xdg-autostart
 	else
 		rm "${ED}"/usr/libexec/openbox-xdg-autostart || die
 	fi
