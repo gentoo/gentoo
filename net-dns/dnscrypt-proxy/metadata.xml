@@ -20,6 +20,6 @@
 		to upstream servers.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">jedisct1/dnscrypt-proxy</remote-id>
+		<remote-id type="github">DNSCrypt/dnscrypt-proxy</remote-id>
 	</upstream>
 </pkgmetadata>
