@@ -9008,7 +9008,7 @@ dev-python/webcolors 1.5 1.8.1 1.10 1.11.1: Color names and value formats define
 dev-python/webencodings 0.5.1 0.5.1-r1: Character encoding aliases for legacy web content
 dev-python/webob 1.8.2 1.8.2-r1 1.8.5 1.8.5-r1 1.8.5-r3: WSGI request and response object
 dev-python/websocket-client 0.48.0 0.56.0: WebSocket client for python with hybi13 support
-dev-python/websockify 0.8.0: WebSockets support for any application/server
+dev-python/websockify 0.8.0 0.9.0: WebSockets support for any application/server
 dev-python/webtest 2.0.21 2.0.29 2.0.29-r1 2.0.33: Helper to test WSGI applications
 dev-python/werkzeug 0.16.0 0.16.1 1.0.0: Collection of various utilities for WSGI applications
 dev-python/wheel 0.29.0 0.33.6 0.34.2: A built-package format for Python
@@ -13941,7 +13941,7 @@ media-video/mpv 0.31.0-r1 0.32.0-r1 9999: Media player based on MPlayer and mpla
 media-video/noad 0.8.6-r3 0.8.6-r4: Mark commercial breaks in VDR recordings
 media-video/nvidia-video-codec 7.0.1 7.1.9 8.0.14 8.2.16: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
-media-video/obs-studio 24.0.3 24.0.5 25.0.0 9999: Software for Recording and Streaming Live Video Content
+media-video/obs-studio 24.0.3 24.0.5 25.0.1 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 2.4.0-r1 2.4.4-r1 2.5.0: An award-winning free and open-source video editor
 media-video/orion 1.6.6 1.6.7: Cross-platform Twitch client
