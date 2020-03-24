@@ -15,7 +15,7 @@ SRC_URI="http://files.sagemath.org/spkg/upstream/${PN}/${P}.tar.gz"
 # oversight: https://github.com/jeanluct/cbraid/issues/4
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="static-libs"
 
 src_configure() {
