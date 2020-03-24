@@ -23,7 +23,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/sash-3.7-builtin.patch
 
 	sed \
-		-e "s:-O3:${CFLAGS}:" \
+		-e "s|-O3|${CFLAGS}|" \
 		-e '/strip/d' \
 		-i Makefile || die
 	sed \
