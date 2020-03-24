@@ -16862,7 +16862,7 @@ sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
-sys-apps/portage 2.3.69 2.3.79 2.3.84-r1 2.3.89-r1 2.3.92 2.3.93 2.3.94 2.3.95 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.69 2.3.89-r1 2.3.94 2.3.95 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
@@ -17913,7 +17913,7 @@ www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible
 www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8 2.6.12 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
 www-apps/nextcloud 16.0.8 16.0.9 17.0.3 17.0.4 18.0.1 18.0.2: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4: A static website and blog generator
-www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 9999: noVNC is a VNC client implemented using HTML5 technologies
+www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/octoprint 1.4.0_rc5: the snappy web interface for your 3D printer
 www-apps/otrs 5.0.25 6.0.3 6.0.4 6.0.5 6.0.7: An Open source Ticket Request System
 www-apps/owncloud 10.3.1 10.3.2: Web-based storage application where all your data is under your own control
