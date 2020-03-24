@@ -80,18 +80,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.6-findhyphen.patch
 )
 
+CMAKE_BUILD_TYPE="Release"
+
 src_prepare() {
 	cmake_src_prepare
 
 	rm -r codegen/cheetah scribus/third_party/hyphen || die
 
-	cat > cmake/modules/FindZLIB.cmake <<- EOF || die
-	find_package(PkgConfig)
-	pkg_check_modules(ZLIB minizip zlib)
-	SET( ZLIB_LIBRARY \${ZLIB_LIBRARIES} )
-	SET( ZLIB_INCLUDE_DIR \${ZLIB_INCLUDE_DIRS} )
-	MARK_AS_ADVANCED( ZLIB_LIBRARY ZLIB_INCLUDE_DIR )
-	EOF
 	sed \
 		-e "/^\s*unzip\.[ch]/d" \
 		-e "/^\s*ioapi\.[ch]/d" \
@@ -115,6 +110,7 @@ src_configure() {
 		-DHAVE_PYTHON=ON
 		-DWANT_DISTROBUILD=ON
 		-DDOCDIR="${EPREFIX}"/usr/share/doc/${PF}/
+		-DPython3_EXECUTABLE="${PYTHON}"
 		-DWITH_BOOST=$(usex boost)
 		-DWANT_DEBUG=$(usex debug)
 		-DWANT_NOEXAMPLES=$(usex !examples)
