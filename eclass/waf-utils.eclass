@@ -69,19 +69,12 @@ waf-utils_src_configure() {
 
 	[[ ${fail} ]] && die "Invalid use of waf-utils.eclass"
 
-	local conf_args=()
-
 	# @ECLASS-VARIABLE: WAF_BINARY
 	# @DESCRIPTION:
 	# Eclass can use different waf executable. Usually it is located in "${S}/waf".
 	: ${WAF_BINARY:="${S}/waf"}
 
-	# @ECLASS-VARIABLE: NO_WAF_LIBDIR
-	# @DEFAULT_UNSET
-	# @DESCRIPTION:
-	# Variable specifying that you don't want to set the libdir for waf script.
-	# Some scripts does not allow setting it at all and die if they find it.
-	[[ -z ${NO_WAF_LIBDIR} ]] && conf_args+=(--libdir="${EPREFIX}/usr/$(get_libdir)")
+	local conf_args=()
 
 	local waf_help=$("${WAF_BINARY}" --help 2>/dev/null)
 	if [[ ${waf_help} == *--docdir* ]]; then
@@ -89,6 +82,9 @@ waf-utils_src_configure() {
 	fi
 	if [[ ${waf_help} == *--htmldir* ]]; then
 		conf_args+=( --htmldir="${EPREFIX}"/usr/share/doc/${PF}/html )
+	fi
+	if [[ ${waf_help} == *--libdir* ]]; then
+		conf_args+=( --libdir="${EPREFIX}/usr/$(get_libdir)" )
 	fi
 
 	tc-export AR CC CPP CXX RANLIB
