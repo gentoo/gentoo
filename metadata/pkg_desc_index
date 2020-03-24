@@ -667,7 +667,7 @@ app-backup/amanda 3.3.9 3.4.1 3.4.2 3.4.3 3.4.4 3.4.5 3.5-r1 3.5.1-r1: The Advan
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBack
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
-app-backup/backupninja 1.0.1-r1: lightweight, extensible meta-backup system
+app-backup/backupninja 1.0.1-r1 1.1.0: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.4.4-r2 9.6.3: Featureful client/server network backup suite
 app-backup/bareos 17.2.6 17.2.7-r1 18.2.6: Featureful client/server network backup suite
@@ -8963,7 +8963,7 @@ dev-python/u-msgpack 2.4.1 2.5.2: A portable, lightweight MessagePack serializer
 dev-python/ubelt 0.8.8: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
 dev-python/ufoLib 3.0.0: A low-level UFO reader and writer
 dev-python/uhashring 1.0: Full featured consistent hashing python library compatible with ketama
-dev-python/ujson 1.35 1.35-r1 2.0.0 2.0.2: Ultra fast JSON encoder and decoder for Python
+dev-python/ujson 1.35 1.35-r1 2.0.0 2.0.2 2.0.3: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.0.1: Python module for calculations with uncertainties
 dev-python/uncompyle6 2.10.1: Python cross-version byte-code deparser
 dev-python/unicodecsv 0.14.1 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
