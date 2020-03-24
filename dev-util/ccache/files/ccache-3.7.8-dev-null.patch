@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/712080
+
+From 9a794689a8ba47e79c96d6c370976448b756973c Mon Sep 17 00:00:00 2001
+From: Joel Rosdahl <joel@rosdahl.net>
+Date: Sun, 22 Mar 2020 14:30:23 +0100
+Subject: [PATCH] Disable hard link mode when the output object file is
+ /dev/null
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When hard link mode is enabled, ccache ≥3.6 unlinks the output file
+before writing to it as a workaround for a bug in Clang (#331). This
+unfortunately means that /dev/null will be removed when building as root
+(don’t do that, BTW) with hard link mode enabled and /dev/null as the
+the output file. A similar problem exists if the dependency file is
+/dev/null, regardless of hard link mode.
+
+Fix this by not unlinking the output file if it’s /dev/null and by not
+copying files to /dev/null at all. (There is no need to handle other
+non-regular output files since /dev/null is the only allowed non-regular
+output file.)
+
+Fixes #564.
+---
+ src/ccache.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/ccache.c b/src/ccache.c
+index 6e9da51..b9bafac 100644
+--- a/src/ccache.c
++++ b/src/ccache.c
+@@ -1299,6 +1299,11 @@ move_file_to_cache_same_fs(const char *source, const char *dest)
+ static void
+ do_copy_or_link_file_from_cache(const char *source, const char *dest, bool copy)
+ {
++	if (str_eq(dest, "/dev/null")) {
++		cc_log("Skipping copy from %s to %s", source, dest);
++		return;
++	}
++
+ 	int ret;
+ 	bool do_link = !copy && conf->hard_link && !file_is_compressed(source);
+ 	if (do_link) {
+@@ -1432,7 +1437,8 @@ to_cache(struct args *args, struct hash *depend_mode_hash)
+ 	args_add(args, "-o");
+ 	args_add(args, output_obj);
+ 
+-	if (conf->hard_link) {
++	if (conf->hard_link && !str_eq(output_obj, "/dev/null")) {
++		// This is a workaround for https://bugs.llvm.org/show_bug.cgi?id=39782.
+ 		x_unlink(output_obj);
+ 	}
+ 
+-- 
+2.26.0
+
