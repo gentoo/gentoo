@@ -1,0 +1,11 @@
+[Unit]
+Description=SysRqd Telnet Daemon
+After=network.target
+
+[Service]
+Type=forking
+Restart=always
+ExecStart=-/usr/sbin/sysrqd
+
+[Install]
+WantedBy=multi-user.target
