@@ -255,7 +255,6 @@ dev-python/flask-socketio
 dev-python/flask-uploads
 dev-python/flipflop
 dev-python/formencode
-dev-python/fudge
 dev-python/geoalchemy2
 dev-python/geopy
 dev-python/gevent-socketio
