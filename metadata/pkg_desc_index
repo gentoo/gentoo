@@ -8048,7 +8048,7 @@ dev-python/mailmanclient 3.1.1: mailmanclient -- python library for Mailman REST
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.0.7 1.1.0 1.1.1 1.1.2: A Python templating language
 dev-python/mamba 0.8.6 0.8.6-r1: ... testing tool ... Born under the banner of Behavior Driven Development
-dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
+dev-python/mando 0.3.2 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.8.0 1.9.0: Manuel lets you build tested documentation
 dev-python/markdown 2.6.8 2.6.11 3.1.1-r1 3.2.1: Python implementation of the markdown markup language
 dev-python/markdown2 2.3.0: Python Markdown language reimplementation
