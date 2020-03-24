@@ -14,7 +14,7 @@ IUSE="examples static-libs"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # https://github.com/graph-algorithms/edge-addition-planarity-suite/issues/4
 # https://github.com/graph-algorithms/edge-addition-planarity-suite/pull/3
