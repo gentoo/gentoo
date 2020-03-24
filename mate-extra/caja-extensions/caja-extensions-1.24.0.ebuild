@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Several Caja extensions"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 
 SENDTO="cdr gajim +mail pidgin upnp"
