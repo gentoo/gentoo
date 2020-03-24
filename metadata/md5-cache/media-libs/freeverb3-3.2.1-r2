@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=sci-libs/fftw:3.0=
+DESCRIPTION=Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
+EAPI=7
+HOMEPAGE=https://savannah.nongnu.org/projects/freeverb3
+IUSE=forcefpu openmp plugdouble threads
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=sci-libs/fftw:3.0=
+SLOT=0
+SRC_URI=mirror://nongnu/freeverb3/freeverb3-3.2.1.tar.xz
+_md5_=1cb97d82e0539dc8264918e518d1e303
