@@ -136,10 +136,6 @@ app-backup/backup-manager s3
 # Requires stable phpunit
 dev-php/PEAR-Text_Password test
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-11-04)
-# Requires audacious, which is masked. Bug 632513
-media-libs/freeverb3 audacious jack
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-10-22)
 # Requires unmaintained unstable dependency net-libs/gloox.
 # The go flag requires stable masked dev-lang/go[gccgo].
