@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-		Animated sprite editor and pixel art tool
-	</longdescription>
 	<use>
 		<flag name="bundled-libs">Use the upstream provided bundled version of allegro 4.4.2</flag>
 		<flag name="gtk3">Enable support for the experimental native GTK File Dialog</flag>
