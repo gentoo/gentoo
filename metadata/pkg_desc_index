@@ -335,7 +335,7 @@ acct-user/xrootd 0: User for the XRootD server
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.32.0 2.34.0 2.34.2: Gtk module for bridging AT-SPI to Atk
-app-accessibility/at-spi2-core 2.32.1 2.34.0: D-Bus accessibility specifications and registration daemon
+app-accessibility/at-spi2-core 2.32.1 2.34.0 2.36.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.7.5.1: Combination editor, browser, and mail client that is 100% text based
@@ -4817,13 +4817,13 @@ dev-libs/amdgpu-pro-opencl 18.20.684755 19.30.838629: Proprietary OpenCL impleme
 dev-libs/angelscript 2.34.0: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2 3.5.2-r1: The ANTLR3 C Runtime
 dev-libs/appstream 0.12.7 0.12.10: Cross-distro effort for providing metadata for software in the Linux ecosystem
-dev-libs/appstream-glib 0.7.15 0.7.16: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.7.15 0.7.16 0.7.17: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.6.3-r4 1.6.5-r1 1.7.0-r1: Apache Portable Runtime Library
 dev-libs/apr-util 1.6.1-r3: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/atcore 1.0.0: API to manage the serial connection between the computer and 3D Printers
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
-dev-libs/atk 2.32.0 2.34.1: GTK+ & GNOME Accessibility Toolkit
+dev-libs/atk 2.32.0 2.34.1 2.35.1: GTK+ & GNOME Accessibility Toolkit
 dev-libs/avro-c 1.9.1: c library for the apache avro data serialization system
 dev-libs/aws-c-common 0.4.11: Core c99 package for AWS SDK for C
 dev-libs/aws-c-event-stream 0.1.3: C99 implementation of the vnd.amazon.eventstream content-type
@@ -4904,14 +4904,14 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.48.7 1.56.2 1.58.5: Javascript bindings for GNOME
-dev-libs/glib 2.60.7 2.60.7-r1 2.60.7-r2 2.62.5 2.62.6: The GLib library of C routines
+dev-libs/glib 2.60.7 2.60.7-r1 2.60.7-r2 2.62.5 2.62.6 2.64.1: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.4 3.2.5 3.2.6 3.2.7: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2 6.1.2-r1 6.2.0-r1: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
 dev-libs/go-usb 9999: CGO bindings for libusb
-dev-libs/gobject-introspection 1.60.2-r1 1.62.0: Introspection system for GObject-based libraries
-dev-libs/gobject-introspection-common 1.60.2 1.62.0: Build infrastructure for GObject Introspection
+dev-libs/gobject-introspection 1.60.2-r1 1.62.0 1.64.0: Introspection system for GObject-based libraries
+dev-libs/gobject-introspection-common 1.60.2 1.62.0 1.64.0: Build infrastructure for GObject Introspection
 dev-libs/gom 0.3.2-r1 0.3.3 0.4: GObject to SQLite object mapper library
 dev-libs/gost-engine 1.1.0.3_p20181031-r1 9999: A reference implementation of the Russian GOST crypto algorithms for OpenSSL
 dev-libs/granite 5.2.5-r1: Elementary OS library that extends GTK+
@@ -5036,7 +5036,7 @@ dev-libs/libgpg-error 1.36 1.37: Contains error handling functions used by GnuPG
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1: GObject bindings for libudev
-dev-libs/libgusb 0.2.11 0.3.1 0.3.2 0.3.3: GObject wrapper for libusb
+dev-libs/libgusb 0.2.11 0.3.1 0.3.2 0.3.3 0.3.4: GObject wrapper for libusb
 dev-libs/libgweather 3.32.2-r1 3.34.0: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.7 3.0.8: An implementation of basic iCAL protocols
@@ -10505,13 +10505,13 @@ dev-util/ftjam 2.5.3_rc2-r2: A 100% compatible, enhanced implementation of the m
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.3 4.1 4.2: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.60.7 2.62.5 2.62.6: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.60.7 2.62.5 2.62.6 2.64.1: GDBus code and documentation generator
 dev-util/geany 1.30.1 1.34.1 1.35 1.36 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.30 1.34-r1 1.35 1.36-r1: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.22.1-r1 3.22.2: A user interface designer for GTK+ and GNOME
-dev-util/glib-utils 2.60.7 2.62.5 2.62.6: Build utilities for GLib using projects
+dev-util/glib-utils 2.60.7 2.62.5 2.62.6 2.64.1: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.12.3353_pre20191027-r2 8.13.3559 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1726: GN is a meta-build system that generates build files for Ninja
@@ -14758,6 +14758,7 @@ net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx 0.10.2-r3: A mail user agent auto configuration service
 net-mail/automx2 2019.0 2020.1: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
+net-mail/b4 0.3.4: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication program w/pam support
 net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
