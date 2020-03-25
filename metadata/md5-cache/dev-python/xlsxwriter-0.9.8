@@ -4,7 +4,7 @@ DESCRIPTION=Python module for creating Excel XLSX files
 EAPI=6
 HOMEPAGE=https://github.com/jmcnamara/XlsxWriter
 IUSE=test python_targets_pypy3 python_targets_python3_6 python_targets_python3_7
-KEYWORDS=amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm64 x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=python_targets_pypy3? ( >=dev-python/pypy3-5:0= ) python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_pypy3 python_targets_python3_6 python_targets_python3_7 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/X/XlsxWriter/XlsxWriter-0.9.8.tar.gz test? ( https://github.com/jmcnamara/XlsxWriter/archive/RELEASE_0.9.8.zip -> xlsxwriter-0.9.8-tests.zip )
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	distutils-r1	577e2308f7b36e26062d464f59a5ee6c	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f948d69cb7b599c9d27d9c4718dce0b2
+_md5_=18e2d945b9783e1509a4d8cd126290b8
