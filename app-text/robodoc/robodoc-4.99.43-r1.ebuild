@@ -14,7 +14,7 @@ IUSE="examples"
 
 PATCHES=(
 	"${FILESDIR}/${P}_clean_libc.patch"
-	)
+)
 
 RDEPEND=">=dev-util/ctags-5.3.1"
 DEPEND="${RDEPEND}"
