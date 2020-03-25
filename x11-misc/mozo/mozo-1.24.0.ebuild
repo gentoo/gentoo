@@ -13,7 +13,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Mozo menu editor for MATE"
-LICENSE="GPL-2"
+LICENSE="GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
 IUSE=""
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
