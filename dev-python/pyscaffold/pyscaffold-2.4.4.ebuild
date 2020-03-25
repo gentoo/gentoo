@@ -29,7 +29,6 @@ DEPEND="${RDEPEND}
 	>=dev-python/setuptools_scm-1.7[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
 "
 
@@ -54,5 +53,5 @@ python_test() {
 	git config --global user.email "you@example.com"
 	git config --global user.name "Your Name"
 
-	TRAVIS=False py.test -v -v || die
+	TRAVIS=False pytest -vv || die
 }

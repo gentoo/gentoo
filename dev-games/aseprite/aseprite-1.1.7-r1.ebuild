@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eutils flag-o-matic
+inherit cmake desktop flag-o-matic
 
 DESCRIPTION="Animated sprite editor & pixel art tool"
 HOMEPAGE="https://www.aseprite.org"
@@ -19,22 +19,24 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bundled-libs debug kde gtk3 test webp"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/tinyxml
+RDEPEND="
 	!bundled-libs? ( media-libs/allegro:0[X,png] )
+	gtk3? ( dev-cpp/gtkmm:3.0 )
+	kde? (
+		dev-qt/qtcore:5
+		kde-frameworks/kio:5
+	)
+	webp? ( media-libs/libwebp )
+	dev-libs/tinyxml
 	media-libs/freetype
 	media-libs/giflib:=
-	webp? ( media-libs/libwebp )
 	media-libs/libpng:0=
 	net-misc/curl
 	sys-libs/zlib
 	virtual/jpeg:0
 	x11-libs/libX11
-	x11-libs/pixman
-	gtk3? ( dev-cpp/gtkmm:3.0 )
-	kde? (
-		dev-qt/qtcore:5
-		kde-frameworks/kio:5 )"
-DEPEND="${RDEPEND}
+	x11-libs/pixman"
+BDEPEND="
 	app-arch/unzip
 	gtk3? ( virtual/pkgconfig )
 	webp? ( virtual/pkgconfig )"
@@ -51,7 +53,7 @@ S="${WORKDIR}"
 PATCHES=( "${FILESDIR}/${P}_type-punned_pointer.patch" )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Fix to make flag-o-matic work.
 	if use debug ; then
@@ -85,12 +87,12 @@ src_configure() {
 		-DENABLE_TESTS="$(usex test)"
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
 	newicon -s 64 "${S}/data/icons/ase64.png" "${PN}.png"
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 pkg_postinst() {
@@ -99,4 +101,11 @@ pkg_postinst() {
 		ewarn "Please note that you will not be able to resize the main window."
 		ewarn "For resizing support enable USE-flag bundled-libs and rebuild package."
 	fi
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

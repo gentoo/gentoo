@@ -31,7 +31,6 @@ src_prepare() {
 	sed -i "s|\${libdir}|/usr/$(get_libdir)|g" check.pc.in || die "sed .pc failed."
 }
 
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)

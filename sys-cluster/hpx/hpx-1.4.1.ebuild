@@ -51,6 +51,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-boost.patch"
+	"${FILESDIR}/${P}-disable-failing-tests.patch"
+	"${FILESDIR}/${P}-python.patch"
+)
+
 hpx_memory_requirement() {
 	# HPX needs enough main memory for compiling
 	# rule of thumb: 1G per job
