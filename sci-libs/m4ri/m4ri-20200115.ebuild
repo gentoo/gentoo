@@ -11,7 +11,7 @@ SRC_URI="https://bitbucket.org/malb/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug openmp cpu_flags_x86_sse2 png static-libs"
 
 BDEPEND="virtual/pkgconfig"
