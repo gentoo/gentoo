@@ -26,7 +26,7 @@ DEPEND="${PYTHON_DEPS}
 		net-wireless/gnuradio[zeromq]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
-		dev-python/pyzmq[python_targets_python2_7]
+		dev-python/pyzmq[${PYTHON_USEDEP}]
 		dev-python/cython[${PYTHON_USEDEP}]
 		bladerf? ( net-wireless/bladerf:= )
 		hackrf? ( net-libs/libhackrf:= )
