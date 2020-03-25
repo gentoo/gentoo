@@ -3,13 +3,13 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit flag-o-matic distutils-r1 toolchain-funcs
 
 DESCRIPTION="Lightweight and super-fast messaging library built on top of the ZeroMQ library"
-HOMEPAGE="http://www.zeromq.org/bindings:python https://pypi.org/project/pyzmq/"
+HOMEPAGE="https://www.zeromq.org/bindings:python https://pypi.org/project/pyzmq/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
@@ -22,13 +22,11 @@ RDEPEND="
 	>=net-libs/zeromq-4.1.2:=
 	dev-python/py[${PYTHON_USEDEP}]
 	dev-python/cffi:=[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/gevent[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' -2)
 		www-servers/tornado[${PYTHON_USEDEP}]
 	)
 	doc? (

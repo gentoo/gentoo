@@ -154,11 +154,6 @@ mail-filter/spambayes
 # masked for removal in 14 days. Bug #712310
 dev-python/cliff-tablib
 
-# Ulrich Müller <ulm@gentoo.org> (2020-03-11)
-# No license. HOMEPAGE is gone.
-# Masked for removal in 14 days. Bug #450454.
-games-misc/fortune-mod-humorixfortunes
-
 # Matt Turner <mattst88@gentoo.org> (2020-03-11)
 # Masked for testing due to removal of libnm-glib (bug #665338)
 >=net-misc/networkmanager-1.20
