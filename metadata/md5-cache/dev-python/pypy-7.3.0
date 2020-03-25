@@ -10,4 +10,4 @@ RDEPEND=|| ( dev-python/pypy-exe:7.3.0[bzip2?,ncurses?] dev-python/pypy-exe-bin:
 SLOT=0/73
 SRC_URI=https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v7.3.0-src.tar.bz2 https://dev.gentoo.org/~mgorny/dist/python/python-gentoo-patches-2.7.17-r1.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=14d38005ea3ecdf5ffb965c5d8c22252
+_md5_=b7d1a54af2d64e91b76249c890325985
