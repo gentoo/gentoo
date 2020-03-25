@@ -14,7 +14,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Pluma text editor for the MATE desktop"
-LICENSE="GPL-2"
+LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
 
 IUSE="+introspection spell test"
