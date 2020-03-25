@@ -305,8 +305,6 @@ dev-python/pymtp
 dev-python/pynzb
 dev-python/pyopencl
 dev-python/pyshark
-dev-python/pysnmp-apps
-dev-python/pysnmp-mibs
 dev-python/pysolr
 dev-python/pystache
 dev-python/pytest-arraydiff
