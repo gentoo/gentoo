@@ -76,6 +76,11 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/util-linux-2.35.1-include_sys_types-header.patch
+	"${FILESDIR}"/util-linux-2.35.1-cleanup-pidfd-include.patch
+)
+
 src_prepare() {
 	default
 
