@@ -4,10 +4,10 @@ DESCRIPTION=Programs for elliptic curves defined over the rational numbers
 EAPI=7
 HOMEPAGE=https://www.warwick.ac.uk/~masgaj/mwrank/index.html
 IUSE=boost flint minimal static-libs test
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+KEYWORDS=amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=sci-mathematics/pari:= dev-libs/ntl:= boost? ( dev-libs/boost:= ) flint? ( sci-mathematics/flint:= )
 RESTRICT=!test? ( test )
 SLOT=0/6
 SRC_URI=http://files.sagemath.org/spkg/upstream/eclib/eclib-20190909.tar.bz2
-_md5_=cef58939154f4d4b50f32ee30cb177f2
+_md5_=af419f3b89d3aaa2ab148404fe05018c

@@ -5,7 +5,7 @@ DESCRIPTION=Cheroot is the high-performance, pure-Python HTTP server used by Che
 EAPI=7
 HOMEPAGE=https://cherrypy.org/ https://pypi.org/project/Cheroot/ https://github.com/cherrypy/cheroot
 IUSE=python_targets_pypy3 python_targets_python3_6 python_targets_python3_7
-KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=BSD
 RDEPEND=dev-python/jaraco-functools[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-python/more-itertools-2.6[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-python/six-1.11.0[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)] python_targets_pypy3? ( >=dev-python/pypy3-5:0= ) python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_pypy3 python_targets_python3_6 python_targets_python3_7 )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://pypi/C/Cheroot/cheroot-8.2.1.tar.gz
 _eclasses_=distutils-r1	577e2308f7b36e26062d464f59a5ee6c	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ed0b95695e13bc39c249fc4fbd5a5d3d
+_md5_=2edc362a54facd4d2e269946d56ef9d4
