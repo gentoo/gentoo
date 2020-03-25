@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-52">
+  <title>Samba: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Samba, the worst of
+    which could lead to remote code execution.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>2020-03-25</announced>
+  <revised count="1">2020-03-25</revised>
+  <bug>664316</bug>
+  <bug>672140</bug>
+  <bug>686036</bug>
+  <bug>693558</bug>
+  <bug>702928</bug>
+  <bug>706144</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="rge">4.9.18</unaffected>
+      <unaffected range="rge">4.10.13</unaffected>
+      <unaffected range="rge">4.11.6</unaffected>
+      <vulnerable range="lt">4.11.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Samba is a suite of SMB and CIFS client/server programs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Samba. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code, cause a Denial
+      of Service condition, conduct a man-in-the-middle attack, or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Samba 4.9.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/samba-4.9.18"
+    </code>
+    
+    <p>All Samba 4.10.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/samba-4.10.13"
+    </code>
+    
+    <p>All Samba 4.11.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/samba-4.11.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10858">CVE-2018-10858</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10918">CVE-2018-10918</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10919">CVE-2018-10919</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1139">CVE-2018-1139</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1140">CVE-2018-1140</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14629">CVE-2018-14629</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16841">CVE-2018-16841</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16851">CVE-2018-16851</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16852">CVE-2018-16852</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16853">CVE-2018-16853</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16857">CVE-2018-16857</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16860">CVE-2018-16860</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-10197">CVE-2019-10197</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14861">CVE-2019-14861</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14870">CVE-2019-14870</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14902">CVE-2019-14902</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14907">CVE-2019-14907</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19344">CVE-2019-19344</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-25T16:20:13Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-25T16:34:04Z">whissi</metadata>
+</glsa>
