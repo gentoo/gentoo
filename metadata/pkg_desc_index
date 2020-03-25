@@ -4704,7 +4704,7 @@ dev-java/xsom 20140925: XSOM is a Java library allows to easily parse and inspec
 dev-java/xz-java 1.8: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
-dev-lang/R 3.4.1 3.5.3 3.6.0 3.6.2: Language and environment for statistical computing and graphics
+dev-lang/R 3.4.1 3.6.3: Language and environment for statistical computing and graphics
 dev-lang/ats 0.2.9: ATS Programming Language
 dev-lang/bas 2.4: An interpreter for the classic dialect of the programming language BASIC
 dev-lang/bashforth 0.58a: String-threaded Forth interpreter in Bash
@@ -15308,7 +15308,7 @@ net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/mitmproxy 4.0.4: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
-net-proxy/obfs4proxy 0.0.11: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
+net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: A tool for manipulating SOCKS5 servers
 net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
