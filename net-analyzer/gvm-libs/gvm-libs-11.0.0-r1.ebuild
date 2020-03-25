@@ -44,6 +44,11 @@ BDEPEND="
 		dev-perl/SQL-Translator
 	)"
 
+PATCHES=(
+	# patch for missing gnutls linking https://github.com/greenbone/gvm-libs/issues/277
+	"${FILESDIR}/${P}-gnutls.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Remove doxygen warnings for !CLANG
