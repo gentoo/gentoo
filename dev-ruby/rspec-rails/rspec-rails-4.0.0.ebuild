@@ -26,7 +26,7 @@ IUSE=""
 ruby_add_rdepend ">=dev-ruby/activesupport-4.2:*
 	>=dev-ruby/actionpack-4.2:*
 	>=dev-ruby/railties-4.2:*
-	>=dev-ruby/rspec-3.9:3"
+	>=dev-ruby/rspec-3.8:3"
 
 # Depend on the package being already installed for tests, because
 # requiring ammeter will load it, and we need a consistent set of rspec
@@ -48,6 +48,9 @@ all_ruby_prepare() {
 	# Avoid broken controller generator specs for now.
 	rm -fr spec/generators/rspec || die
 
-	# Fix gemspec
-	sed -i -e 's/git ls-files --/find/' ${RUBY_FAKEGEM_GEMSPEC} || die
+	# Fix gemspec and allow rspec 3.8 as well. This allows parallel installation 
+	# of rspec-rails:3 given our Gentoo constraints. All tests pass.
+	sed -e 's/git ls-files --/find/' \
+		-e '/expected_rspec_version/ s/3.9.0/3.8.0/' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 }
