@@ -8344,7 +8344,7 @@ dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyamg 3.2.1-r1: Algebraic multigrid solvers in Python
 dev-python/pyasn1 0.2.3 0.3.7 0.4.2 0.4.3 0.4.8: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10 0.1.4 0.1.5 0.2.1: pyasn1 modules
-dev-python/pyatspi 2.32.1 2.34.0: Python client bindings for D-Bus AT-SPI
+dev-python/pyatspi 2.32.1 2.34.0 2.36.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pybind11 2.4.3: AST-based Python refactoring library
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
@@ -14577,7 +14577,7 @@ net-libs/dleyna-renderer 0.5.0 0.6.0: library implementing services that allow c
 net-libs/enet 1.2.2-r1 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
 net-libs/farstream 0.2.8-r2: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/freaklabs-chibiarduino 1.0.8_p20190329 9999: freaklabs fork of the lightweight wireless sensor library for Arduino
-net-libs/glib-networking 2.60.3 2.60.4 2.62.3: Network-related giomodules for glib
+net-libs/glib-networking 2.60.3 2.60.4 2.62.3 2.64.0: Network-related giomodules for glib
 net-libs/gloox 1.0.22: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.32.1: GNOME framework for accessing online accounts
@@ -18182,7 +18182,7 @@ x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.10.41 0.10.43 0.10.46: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 2.24.32-r1 3.24.11 3.24.13 3.24.14: Gimp ToolKit +
-x11-libs/gtk+extra 3.3.3: Useful Additional GTK+ widgets
+x11-libs/gtk+extra 3.3.3 3.3.4: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
 x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
