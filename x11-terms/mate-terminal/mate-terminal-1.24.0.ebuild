@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="The MATE Terminal"
-LICENSE="GPL-3"
+LICENSE="FDL-1.1+ GPL-3+ LGPL-3+"
 SLOT="0"
 
 IUSE=""
