@@ -12,13 +12,6 @@ php
 # Dependency not yet stable (dev-libs/libappindicator).
 ayatana
 
-# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
-# dev-lang/python:3.7 is not stable.
-python_targets_python3_7
-python_single_target_python3_7
-python_targets_python3_8
-python_single_target_python3_8
-
 # Tobias Klausmann <klausman@gentoo.org> (2016-03-17)
 # Webkit itself is enormous (~13h compile+test on our fastest dev machine), so
 # it will remain not-stable forever. Mask the USE flag accordingly.
