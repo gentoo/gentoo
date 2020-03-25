@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-54">
+  <title>Pure-FTPd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Pure-FTPd, the worst of
+    which could allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">pure-ftpd</product>
+  <announced>2020-03-25</announced>
+  <revised count="1">2020-03-25</revised>
+  <bug>711124</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/pure-ftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.0.49-r2</unaffected>
+      <vulnerable range="lt">1.0.49-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pure-FTPd is a fast, production-quality and standards-compliant FTP
+      server.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Pure-FTPd. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could possibly cause a Denial of Service condition or
+      cause an information disclosure.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pure-FTPd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/pure-ftpd-1.0.49-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9274">CVE-2020-9274</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9365">CVE-2020-9365</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-25T18:52:14Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-25T18:58:54Z">whissi</metadata>
+</glsa>
