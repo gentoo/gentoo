@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -21,18 +21,7 @@ RESTRICT="!test? ( test )"
 CDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/backports-ssl-match-hostname-3.5[${PYTHON_USEDEP}]' 'python2_7')
-	|| (
-		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-		(	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' 'python2_7')
-			$(python_gen_cond_dep 'dev-python/twisted-web[${PYTHON_USEDEP}]' 'python2_7')
-		)
-	)
-	$(python_gen_cond_dep '
-		dev-python/backports-abc[${PYTHON_USEDEP}]
-		dev-python/futures[${PYTHON_USEDEP}]
-		dev-python/singledispatch[${PYTHON_USEDEP}]
-	' -2)
+	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
