@@ -3424,7 +3424,7 @@ dev-erlang/stun 1.0.10 1.0.25 1.0.29: STUN and TURN library for Erlang and Elixi
 dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1: XMPP parsing and serialization library on top of Fast XML
 dev-erlang/yconf 1.0.1: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
-dev-games/aseprite 1.1.6 1.1.7: Animated sprite editor & pixel art tool
+dev-games/aseprite 1.1.6 1.1.7-r1 1.1.9: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r1: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
@@ -7522,7 +7522,7 @@ dev-python/botocore 1.12.122 1.13.46 1.13.50 1.14.7 1.14.17 1.15.5 1.15.16 9999:
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18 0.18-r1: Syntax highlighting and autocompletion for the Python interpreter
-dev-python/breathe 4.6.0: Sphinx Doxygen renderer
+dev-python/breathe 4.6.0 4.14.1: Sphinx Doxygen renderer
 dev-python/brotlipy 0.7.0: Python binding to the Brotli library
 dev-python/brython 3.7.2: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.2.4: Python bindings for Berkeley DB
@@ -8694,7 +8694,7 @@ dev-python/rdflib 4.2.2 4.2.2-r1: RDF library containing a triple store and pars
 dev-python/readlike 0.1.2 0.1.3: a python library similar to readline
 dev-python/readme_renderer 17.2 24.0-r1 25.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 1.0.1 1.0.1-r1: Code specific for Read the Docs and Sphinx
-dev-python/rebulk 0.9.0 9999: Python library that performs advanced searches in strings
+dev-python/rebulk 0.9.0: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.4.0 0.5.0_pre20180907 0.5.0_pre20181012 0.5.0_pre20181012-r1 0.5.0 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 3.2.1 3.3.11: Python client for Redis key-value store
 dev-python/redis-py-cluster 1.3.4: Python cluster client for the official redis cluster
@@ -10750,7 +10750,7 @@ dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let 
 dev-vcs/git-deps 9999: git commit dependency analysis tool
 dev-vcs/git-flow 1.12.3: Git extensions to provide high-level repository operations
 dev-vcs/git-imerge 1.0.0: Incremental merge for git
-dev-vcs/git-lfs 2.6.1 2.7.2 9999: command line extension and specification for managing large files with Git
+dev-vcs/git-lfs 2.6.1 2.7.2 2.10.0 9999: Command line extension and specification for managing large files with git
 dev-vcs/git-mailz 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
 dev-vcs/git-merge-changelog 20170131: Git merge driver for GNU style ChangeLog files
@@ -14007,7 +14007,7 @@ media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline enco
 media-video/xine-ui 0.99.10: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
-media-video/yle-dl 20191231 20200222: Download media files from Yle Areena
+media-video/yle-dl 20200222: Download media files from Yle Areena
 net-analyzer/2ping 4.2 4.3: A bi-directional ping utility
 net-analyzer/alive 2.0.2-r1: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
@@ -17137,7 +17137,7 @@ sys-cluster/glusterfs 4.1.8 6.5 6.7-r1 7.2-r1 9999: GlusterFS is a powerful netw
 sys-cluster/heartbeat 3.0.5-r3 3.0.6 3.0.6-r1: Heartbeat high availability cluster manager
 sys-cluster/heat 13.0.0 2019.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
-sys-cluster/hpx 1.2.1 9999: C++ runtime system for parallel and distributed applications
+sys-cluster/hpx 1.2.1 1.4.1 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 2.0.17 2.0.19 2.0.20: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
@@ -17958,7 +17958,7 @@ www-client/google-chrome-beta 81.0.4044.69: The web browser from Google
 www-client/google-chrome-unstable 82.0.4085.12: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
-www-client/links 2.20.2: A fast and lightweight web browser running in both graphics and text mode
+www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2017.08.10 9999: A fast, light, simple to use micro-browser using WebKit and Lua
 www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web browser with ssl support
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
