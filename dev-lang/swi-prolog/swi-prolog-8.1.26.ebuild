@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils eutils flag-o-matic multilib
 
@@ -56,15 +56,12 @@ BUILD_DIR="${S}/build"
 CMAKE_USE_DIR="${S}"
 
 src_prepare() {
-	EPATCH_FORCE=yes
-	EPATCH_SUFFIX=patch
 	if [[ -d "${WORKDIR}"/${PV} ]] ; then
-		epatch "${WORKDIR}"/${PV}
+		eapply "${WORKDIR}"/${PV}
 	fi
+	eapply_user
 
 	sed -i -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" CMakeLists.txt || die
-
-	eapply_user
 
 	cmake-utils_src_prepare
 }
@@ -94,9 +91,9 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile \
-		XDG_CONFIG_DIRS="${HOME}" \
-		XDG_DATA_DIRS="${HOME}"
+	XDG_CONFIG_DIRS="${HOME}" \
+	XDG_DATA_DIRS="${HOME}" \
+		cmake-utils_src_compile
 }
 
 src_test() {
