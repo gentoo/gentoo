@@ -8972,6 +8972,7 @@ x11-misc/spacefm:video-thumbnails - Support video thumbnails with media-video/ff
 x11-misc/stalonetray:graceful-exit - use non-portable hack to exit gracefuly on signal
 x11-misc/tint2:battery - Enable battery status plugin
 x11-misc/tint2:tint2conf - Build/Install tint2conf as well
+x11-misc/urxvt-perls:deprecated - Install scripts which have been marked as deprecated by upstream
 x11-misc/vnc2swf:x11vnc - Install script that depends on x11vnc
 x11-misc/wbar:gtk - Enables the gtk-based wbar-config GUI
 x11-misc/x11vnc:xdamage - Enable support for the Xdamage library
