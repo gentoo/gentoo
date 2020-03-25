@@ -74,7 +74,7 @@ RDEPEND="
 	>=dev-lang/perl-5.6.1
 	>=dev-libs/gmp-5:=
 	sys-libs/ncurses:0=[unicode]
-	!ghcmakebinary? ( virtual/libffi:= )
+	!ghcmakebinary? ( dev-libs/libffi:= )
 "
 
 PREBUILT_BINARY_DEPENDS="

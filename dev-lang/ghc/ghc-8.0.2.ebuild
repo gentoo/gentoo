@@ -79,7 +79,7 @@ RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-libs/gmp:0=
 	sys-libs/ncurses:0=[unicode]
-	!ghcmakebinary? ( virtual/libffi:= )
+	!ghcmakebinary? ( dev-libs/libffi:= )
 "
 
 # This set of dependencies is needed to run

@@ -85,7 +85,7 @@ RDEPEND="
 	dev-libs/gmp:0=
 	sys-libs/ncurses:0=[unicode]
 	elfutils? ( dev-libs/elfutils )
-	!ghcmakebinary? ( virtual/libffi:= )
+	!ghcmakebinary? ( dev-libs/libffi:= )
 	numa? ( sys-process/numactl )
 "
 
