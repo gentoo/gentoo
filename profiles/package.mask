@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-25)
+# Unmaintained.  Python 3 support requires a version bump.  Bad quality
+# ebuild.
+# Removal in 30 days.  Bug #710240.
+media-video/syncplay
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-25)
 # Unmaintained.  Python 2 only.  Last release in 2009, homepage
 # archived.  Last user of dev-python/nevow.
 # Removal in 30 days.  Bug #714626.
