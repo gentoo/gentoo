@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -19,14 +19,8 @@ IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
-	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
 	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/backports-abc[${PYTHON_USEDEP}]
-		dev-python/futures[${PYTHON_USEDEP}]
-		dev-python/singledispatch[${PYTHON_USEDEP}]
-	' -2)
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
