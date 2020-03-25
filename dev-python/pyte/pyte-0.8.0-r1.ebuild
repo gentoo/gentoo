@@ -15,7 +15,7 @@ SRC_URI="https://github.com/selectel/pyte/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-3"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-python/wcwidth[${PYTHON_USEDEP}]"
 
