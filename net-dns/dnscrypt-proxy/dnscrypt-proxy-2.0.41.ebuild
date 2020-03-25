@@ -30,6 +30,7 @@ RDEPEND="
 "
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
+
 PATCHES=( "${FILESDIR}"/config-full-paths-r11.patch )
 
 src_compile() {
