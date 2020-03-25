@@ -4,7 +4,7 @@
 EAPI=7
 inherit go-module
 
-DESCRIPTION="Utility to generate EGO_VENDOR data for ebuilds"
+DESCRIPTION="Utility to generate EGO_SUM data for ebuilds"
 HOMEPAGE="https://github.com/williamh/get-ego-vendor"
 SRC_URI="https://github.com/williamh/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
