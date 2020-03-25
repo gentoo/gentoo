@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Personal file sharing for the MATE desktop"
-LICENSE="GPL-2"
+LICENSE="FDL-1.1+ GPL-2+"
 SLOT="0"
 
 IUSE="X"
