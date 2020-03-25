@@ -8,13 +8,6 @@
 # d3d9 works on x86
 -d3d9
 
-# Michał Górny <mgorny@gentoo.org> (2018-07-16)
-# Python 3.7 support requires fresh versions of packages which are stuck
-# at keywordreqs.
-# bug #661320: dev-python/twisted
-python_targets_python3_7
-python_single_target_python3_7
-
 # Michael Orlitzky <mjo@gentoo.org> (2018-01-13)
 # Oracle database stuff should work on x86.
 -oci8
