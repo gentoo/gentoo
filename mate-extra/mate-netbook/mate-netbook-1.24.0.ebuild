@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE utilities for netbooks"
-LICENSE="GPL-3"
+LICENSE="LGPL-2+ GPL-3"
 SLOT="0"
 
 IUSE=""
