@@ -30,9 +30,9 @@ RDEPEND="
 	)
 "
 
-BDEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+DEPEND="${RDEPEND}"
+
+BDEPEND="nls? ( sys-devel/gettext )"
 
 src_configure() {
 	setup-wxwidgets
