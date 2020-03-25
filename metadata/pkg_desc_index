@@ -14368,7 +14368,7 @@ net-dns/pdns 4.1.13 4.2.0 4.2.1 4.2.1-r1 4.3.0_rc2: The PowerDNS Daemon
 net-dns/pdns-recursor 4.1.14 4.1.15 4.2.0 4.2.1 4.3.0-r1: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b 0.998b-r1: DNS server designed to serve blacklist zones
-net-dns/resolv_wrapper 1.1.5: Wrapper for DNS name resolving or DNS faking
+net-dns/resolv_wrapper 1.1.5 1.1.6: Wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
@@ -18577,7 +18577,7 @@ x11-misc/xtrace 1.4.0: X11 protocol trace utility
 x11-misc/xtrlock 2.12: A simplistic screen locking program for X
 x11-misc/xvfb-run 1.18.4_p2 1.19.3_p2: Run a command in a virtual X server environment
 x11-misc/xvkbd 3.7 3.9 4.0: virtual keyboard for X window system
-x11-misc/xwallpaper 0.6.2-r1 0.6.3 9999: Wallpaper setting utility for X
+x11-misc/xwallpaper 0.6.2-r1 0.6.4 9999: Wallpaper setting utility for X
 x11-misc/xwit 3.4_p15 3.4_p16: A collection of simple routines to call some of those X11 functions
 x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent repetitive stress injury
 x11-misc/xxkb 1.11.1 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
