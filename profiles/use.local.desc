@@ -5753,7 +5753,6 @@ net-ftp/pure-ftpd:anondel - Permit anonymous to delete files
 net-ftp/pure-ftpd:anonperm - Permit anonymous to change file permissions
 net-ftp/pure-ftpd:anonren - Permit anonymous to rename files
 net-ftp/pure-ftpd:anonres - Permit anonymous to resume file transfers
-net-ftp/pure-ftpd:charconv - Enables charset conversion
 net-ftp/pure-ftpd:implicittls - Enable TLS on Port 990
 net-ftp/pure-ftpd:noiplog - Disables logging of IP addresses
 net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
