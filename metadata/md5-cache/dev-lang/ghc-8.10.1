@@ -1,16 +1,16 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup test unpack
-DEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( virtual/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 ) doc? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-python/sphinx >=dev-libs/libxslt-1.1.2 ) !ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) )
+DEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( dev-libs/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 ) doc? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-python/sphinx >=dev-libs/libxslt-1.1.2 ) !ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) )
 DESCRIPTION=The Glasgow Haskell Compiler
 EAPI=7
 HOMEPAGE=https://www.haskell.org/ghc/
 IUSE=big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test binary
 LICENSE=BSD
 PDEPEND=!ghcbootstrap? ( >=app-admin/haskell-updater-1.2 )
-RDEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( virtual/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 )
+RDEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( dev-libs/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 )
 REQUIRED_USE=?? ( ghcbootstrap binary )
 RESTRICT=!test? ( test )
 SLOT=0/8.10.1
 SRC_URI=!binary? ( https://downloads.haskell.org/ghc/8.10.1/ghc-8.10.1-src.tar.xz test? ( https://downloads.haskell.org/ghc/8.10.1/ghc-8.10.1-testsuite.tar.xz ) )
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	7472ddc437760e4f626968f95daed685	ghc-package	aad3bcc521d54cb9a8e23a78ff7b48b7	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=f0d1904d8c3ffd95e67831995ca522b4
+_md5_=571727f9b0404b20d6e55672952cbeaf
