@@ -5,6 +5,9 @@
     <email>juippis@gentoo.org</email>
     <name>Joonas Niilola</name>
   </maintainer>
+  <use>
+    <flag name="deprecated">Install scripts which have been marked as deprecated by upstream</flag>
+  </use>
   <upstream>
     <remote-id type="github">muennich/urxvt-perls</remote-id>
   </upstream>
