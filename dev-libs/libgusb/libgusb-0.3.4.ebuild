@@ -4,7 +4,10 @@
 EAPI=7
 VALA_USE_DEPEND="vapigen"
 
-inherit meson multilib-minimal vala
+PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_REQ_USE="xml(+)"
+
+inherit meson multilib-minimal python-any-r1 vala
 
 DESCRIPTION="GObject wrapper for libusb"
 HOMEPAGE="https://github.com/hughsie/libgusb"
@@ -25,6 +28,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	$(python_gen_any_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 	gtk-doc? (
 		app-text/docbook-xml-dtd:4.1.2
 		app-text/docbook-xml-dtd:4.4
@@ -35,6 +39,10 @@ BDEPEND="
 "
 
 RESTRICT="!test? ( test )"
+
+python_check_deps() {
+	has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	use vala && vala_src_prepare
