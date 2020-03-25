@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.1-gnuinstalldirs.patch" # bug 667150
 	"${FILESDIR}/${P}-CVE-2020-6851.patch"
 	"${FILESDIR}/${P}-CVE-2020-8112.patch"
+	"${FILESDIR}/${P}-libtiff-4.1-compat.patch"
 )
 
 src_prepare() {
