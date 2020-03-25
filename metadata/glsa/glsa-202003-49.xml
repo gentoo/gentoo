@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-49">
+  <title>BlueZ: Security bypass</title>
+  <synopsis>A vulnerability in BlueZ might allow remote attackers to bypass
+    security restrictions.
+  </synopsis>
+  <product type="ebuild">bluez</product>
+  <announced>2020-03-25</announced>
+  <revised count="1">2020-03-25</revised>
+  <bug>712292</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/bluez" auto="yes" arch="*">
+      <unaffected range="ge">5.54</unaffected>
+      <vulnerable range="lt">5.54</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Set of tools to manage Bluetooth devices for Linux.</p>
+  </background>
+  <description>
+    <p>It was discovered that the HID and HOGP profiles implementations in
+      BlueZ did not specifically require bonding between the device and the
+      host.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker with adjacent access could impersonate an existing HID
+      device, cause a Denial of Service condition or escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BlueZ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-wireless/bluez-5.54"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-0556">CVE-2020-0556</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-25T15:19:08Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-25T15:33:12Z">whissi</metadata>
+</glsa>
