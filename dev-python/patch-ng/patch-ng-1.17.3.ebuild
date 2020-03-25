@@ -20,5 +20,5 @@ RESTRICT="!test? ( test )"
 S="${WORKDIR}/python-${P}"
 
 python_test() {
-	"${PYTHON}" -m unittest tests/run_tests.py || die "Tests failed under ${EPYTHON}"
+	"${EPYTHON}" -m unittest tests/run_tests.py || die "Tests failed under ${EPYTHON}"
 }
