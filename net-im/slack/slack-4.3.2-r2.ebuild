@@ -3,14 +3,13 @@
 
 EAPI=7
 
-MY_PN="${PN/-bin/}"
 MULTILIB_COMPAT=( abi_x86_64 )
 
 inherit desktop eutils multilib-build pax-utils unpacker xdg-utils
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="https://www.slack.com/"
-SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-amd64.deb"
+SRC_URI="https://downloads.slack-edge.com/linux_releases/${PN}-desktop-${PV}-amd64.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -64,8 +63,9 @@ S="${WORKDIR}"
 src_prepare() {
 	default
 
-	# remove hardcoded path (wrt 694058)
-	sed -i '/Icon/s|/usr/share/pixmaps/slack.png|slack|' \
+	# remove hardcoded path, logging noise (wrt 694058, 711494)
+	sed -i  -e '/Icon/s|/usr/share/pixmaps/slack.png|slack|' \
+		-e '/Exec/s|slack|slack -s|' \
 		usr/share/applications/slack.desktop \
 		|| die "sed failed in Icon for slack.desktop"
 
