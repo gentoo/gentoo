@@ -7833,7 +7833,7 @@ dev-python/geopy 1.11.0: A Geocoding Toolbox for Python
 dev-python/gevent 1.0.1 1.2.1 1.2.2 1.3.5 1.3.7 1.4.0: Coroutine-based network library
 dev-python/gevent-socketio 0.3.5_rc2-r1 0.3.6: SocketIO server based on the Gevent pywsgi server
 dev-python/gevent-websocket 0.9.3 0.10.1: Websocket handler for the gevent pywsgi server
-dev-python/geventhttpclient 1.3.1 1.3.1-r1: A high performance, concurrent HTTP client library for Python using gevent
+dev-python/geventhttpclient 1.3.1-r1: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/girder-client 2.3.0: Python libraries and CLI to interact with the REST API of a Girder server
 dev-python/git-review 1.28.0: Tool to submit code to Gerrit
 dev-python/gitdb 4.0.2: GitDB is a pure-Python git object database
@@ -7998,7 +7998,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.2.1 2.5.0 2.6.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keepassx 0.1.0-r1: Python API and CLI for KeePassX
-dev-python/keyring 13.2.1 13.2.1-r1 15.0.0 18.0.1 19.2.0 19.3.0: Provides access to the system keyring service
+dev-python/keyring 18.0.1 19.2.0 19.3.0: Provides access to the system keyring service
 dev-python/keystoneauth 3.17.1 3.17.2: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
@@ -17958,7 +17958,7 @@ www-client/google-chrome-beta 81.0.4044.69: The web browser from Google
 www-client/google-chrome-unstable 82.0.4085.12: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
-www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
+www-client/links 2.20.2: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2017.08.10 9999: A fast, light, simple to use micro-browser using WebKit and Lua
 www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web browser with ssl support
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
