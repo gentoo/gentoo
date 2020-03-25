@@ -43,8 +43,6 @@ DEPEND="${RDEPEND}
 		app-arch/unzip
 		>=dev-python/vcrpy-1.6.1[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]
 	)
 "
