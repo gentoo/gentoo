@@ -14,9 +14,9 @@ IUSE="${CARDS[@]/#/video_cards_}"
 # intel-neo and intel-ocl-sdk are amd64-only
 RDEPEND="app-eselect/eselect-opencl
 	|| (
-		video_cards_i965? ( || (
+		video_cards_i965? (
 			abi_x86_64? ( !abi_x86_32? ( dev-libs/intel-neo ) )
-			dev-libs/beignet ) )
+		)
 		video_cards_amdgpu? ( || (
 			dev-libs/rocm-opencl-runtime
 			dev-libs/amdgpu-pro-opencl ) )
