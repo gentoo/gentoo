@@ -34,6 +34,8 @@ DEPEND=" ${RDEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=( "${FILESDIR}"/hamlib-3.3-format-security.patch )
+
 DOCS=(AUTHORS NEWS PLAN README README.betatester README.developer TODO)
 
 pkg_setup() {
@@ -56,6 +58,8 @@ src_prepare() {
 	sed -i -e "s/doc:/html:/g" doc/Makefile.am || die "sed failed"
 
 	eautoreconf
+
+	eapply "${PATCHES}"
 
 	eapply_user
 }
