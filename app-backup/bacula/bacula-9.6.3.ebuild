@@ -38,7 +38,7 @@ DEPEND="
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
 		sys-libs/zlib[static-libs]
-		acl? ( virtual/acl[static-libs] )
+		acl? ( virtual/acl[static-libs(+)] )
 		ssl? (
 			!libressl? ( dev-libs/openssl:0=[static-libs] )
 			libressl? ( dev-libs/libressl:0=[static-libs] )
