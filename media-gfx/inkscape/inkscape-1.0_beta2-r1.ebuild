@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
 RELEASE_SUFFIX="_2019-12-03_2b71d25d45"
