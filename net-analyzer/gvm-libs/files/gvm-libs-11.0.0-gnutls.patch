@@ -1,0 +1,22 @@
+From 61205ecc6e28f6a1af799ec40074a61037d9bf31 Mon Sep 17 00:00:00 2001
+From: Juan Jose Nicola <juan.nicola@greenbone.net>
+Date: Mon, 28 Oct 2019 14:04:52 +0100
+Subject: [PATCH] Fix missing linking to libgnutls in util/CMakeLists.txt
+
+---
+ util/CMakeLists.txt | 2 +-
+ 1 files changed, 1 insertions(+), 1 deletion(-)
+
+diff --git a/util/CMakeLists.txt b/util/CMakeLists.txt
+index 2b7f441d..af5e363e 100644
+--- a/util/CMakeLists.txt
++++ b/util/CMakeLists.txt
+@@ -158,7 +158,7 @@ if (BUILD_SHARED)
+ 
+   target_link_libraries (gvm_util_shared LINK_PRIVATE ${GLIB_LDFLAGS}
+                          ${GIO_LDFLAGS} ${GPGME_LDFLAGS} ${ZLIB_LDFLAGS}
+-                         ${RADIUS_LDFLAGS} ${LIBSSH_LDFLAGS}
++                         ${RADIUS_LDFLAGS} ${LIBSSH_LDFLAGS} ${GNUTLS_LDFLAGS}
+                          ${GCRYPT_LDFLAGS} ${LDAP_LDFLAGS} ${REDIS_LDFLAGS}
+                          ${UUID_LDFLAGS} ${LINKER_HARDENING_FLAGS})
+ endif (BUILD_SHARED)
