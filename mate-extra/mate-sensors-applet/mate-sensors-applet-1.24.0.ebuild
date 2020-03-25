@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE panel applet to display readings from hardware sensors"
-LICENSE="GPL-2"
+LICENSE="FDL-1.1+ GPL-2+"
 SLOT="0"
 
 IUSE="+dbus hddtemp libnotify lm-sensors video_cards_nvidia"
