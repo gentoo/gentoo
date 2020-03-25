@@ -1790,7 +1790,7 @@ app-i18n/fcitx-sunpinyin 0.4.2 4.9999: Chinese SunPinyin input method for Fcitx
 app-i18n/fcitx-table-extra 0.3.8 4.9999: Extra Chinese table input methods for Fcitx
 app-i18n/fcitx-unikey 0.2.7 4.9999: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22 1.1.1_alpha23: Network-Extensible Kana-to-Kanji Conversion System
-app-i18n/ibus 1.5.18 1.5.19 1.5.20 1.5.21-r1 1.5.22: Intelligent Input Bus for Linux / Unix OS
+app-i18n/ibus 1.5.21-r1 1.5.22: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.9-r1 1.5.10-r1: Japanese Anthy engine for IBus
 app-i18n/ibus-cangjie 2.4-r1: Chinese Cangjie and Quick engines for IBus
 app-i18n/ibus-chewing 1.5.1-r1 1.6.1: Chinese Chewing engine for IBus
@@ -14174,7 +14174,7 @@ net-analyzer/ngrep 1.45-r3 1.47: A grep for network layers
 net-analyzer/nikto 2.1.6_p20180122: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4 0.7.4-r1: Real time network traffic monitor for the command line interface
-net-analyzer/nmap 7.70-r1 7.80-r1 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 7.80-r1 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 4.0.0 4.0.2: Nagios Remote Plugin Executor
@@ -16864,7 +16864,7 @@ sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
-sys-apps/portage 2.3.69 2.3.89-r1 2.3.94 2.3.95 2.3.96 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.69 2.3.89-r1 2.3.94 2.3.95 2.3.96-r1 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
