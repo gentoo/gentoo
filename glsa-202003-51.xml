@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-51">
+  <title>WeeChat: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WeeChat, the worst of
+    which could allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">weechat</product>
+  <announced>2020-03-25</announced>
+  <revised count="1">2020-03-25</revised>
+  <bug>709452</bug>
+  <bug>714086</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/weechat" auto="yes" arch="*">
+      <unaffected range="ge">2.7.1</unaffected>
+      <vulnerable range="lt">2.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wee Enhanced Environment for Chat (WeeChat) is a light and extensible
+      console IRC client.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WeeChat. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker, by sending a specially crafted IRC message, could
+      possibly cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WeeChat users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/weechat-2.7.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8955">CVE-2020-8955</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9759">CVE-2020-9759</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9760">CVE-2020-9760</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-25T16:00:28Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-25T16:04:22Z">whissi</metadata>
+</glsa>
