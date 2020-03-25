@@ -20,15 +20,20 @@ KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-mac
 IUSE="cairo doc icu java jpeg lapack minimal nls openmp perl png prefix profile readline static-libs tiff tk X"
 REQUIRED_USE="png? ( || ( cairo X ) ) jpeg? ( || ( cairo X ) ) tiff? ( || ( cairo X ) )"
 
-CDEPEND="
+BDEPEND="virtual/pkgconfig
+	doc? (
+		virtual/latex-base
+		dev-texlive/texlive-fontsrecommended
+	)"
+DEPEND="
 	app-arch/bzip2:0=
 	app-arch/xz-utils:0=
 	app-text/ghostscript-gpl
-	>=dev-libs/libpcre-8.35:3=
+	dev-libs/libpcre:3=
 	net-libs/libtirpc
 	net-misc/curl
 	virtual/blas:0
-	|| ( >=sys-apps/coreutils-8.15 app-misc/realpath )
+	|| ( sys-apps/coreutils app-misc/realpath )
 	cairo? ( x11-libs/cairo:0=[X=] x11-libs/pango:0= )
 	icu? ( dev-libs/icu:= )
 	jpeg? ( virtual/jpeg:0 )
@@ -40,15 +45,8 @@ CDEPEND="
 	tk? ( dev-lang/tk:0= )
 	X? ( x11-libs/libXmu:0= x11-misc/xdg-utils )"
 
-DEPEND="${CDEPEND}
-	virtual/pkgconfig
-	doc? (
-		virtual/latex-base
-		dev-texlive/texlive-fontsrecommended
-	)"
-
-RDEPEND="${CDEPEND}
-	>=sys-libs/zlib-1.2.5.1-r2:0[minizip]
+RDEPEND="${DEPEND}
+	sys-libs/zlib:0[minizip]
 	java? ( >=virtual/jre-1.5 )"
 
 RESTRICT="minimal? ( test )"
@@ -56,6 +54,8 @@ RESTRICT="minimal? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.1-parallel.patch
 	"${FILESDIR}"/${PN}-3.4.1-rmath-shared.patch
+	"${FILESDIR}"/${PN}-3.6.2-no-LDFLAGS-in-libR-pkg-config.patch
+	"${FILESDIR}"/${PN}-3.6.2-no-gzip-doc.patch
 )
 
 pkg_pretend() {
@@ -64,10 +64,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		if ! tc-check-openmp; then
-			ewarn "OpenMP is not available in your current selected compiler"
-			die "need openmp capable compiler"
-		fi
 		FORTRAN_NEED_OPENMP=1
 	fi
 	fortran-2_pkg_setup
