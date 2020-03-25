@@ -1,0 +1,105 @@
+--- a/generate/unix/acpiexec/Makefile
++++ b/generate/unix/acpiexec/Makefile
+@@ -256,12 +256,12 @@
+ endif
+ 
+ ifneq ($(ACPI_HOST),_QNX)
+-LDFLAGS += -lpthread
++LIBS += -lpthread
+ endif
+ 
+ ifneq ($(ACPI_HOST),_APPLE)
+ ifneq ($(ACPI_HOST),_QNX)
+-LDFLAGS += -lrt
++LIBS += -lrt
+ endif
+ endif
+ 
+--- a/generate/unix/Makefile.config
++++ b/generate/unix/Makefile.config
+@@ -35,15 +35,14 @@
+ .SUFFIXES :
+ PROGS = acpibin acpidump acpiexamples acpiexec acpihelp acpinames acpisrc acpixtract iasl
+ ACPI_HOST ?= _CYGWIN
+-CC ?=    gcc
+ 
+ #
+ # Common defines
+ #
+ OBJDIR =     obj
+ BINDIR =     bin
+-COMPILEOBJ = $(CC) -c $(CFLAGS) $(OPT_CFLAGS) -o $@ $<
+-LINKPROG =   $(CC) $(OBJECTS) -o $(PROG) $(LDFLAGS) $(OPT_LDFLAGS)
++COMPILEOBJ = $(CC) -c $(CFLAGS) $(CPPFLAGS) $(OPT_CFLAGS) -o $@ $<
++LINKPROG =   $(CC) $(LDFLAGS) $(OBJECTS) -o $(PROG) $(LIBS)
+ PREFIX ?=    /usr
+ INSTALLDIR = $(PREFIX)/bin
+ UNAME_S := $(shell uname -s)
+@@ -76,7 +75,7 @@
+ INSTALLFLAGS ?= -f
+ else
+ INSTALL =    install
+-INSTALLFLAGS ?= -m 555 -s
++INSTALLFLAGS ?= -m 555
+ endif
+ 
+ INSTALLPROG = \
+@@ -153,26 +152,18 @@
+ #
+ ifeq ($(M32),TRUE)
+ CFLAGS +=-m32
+-LDFLAGS +=-m32
++LIBS +=-m32
+ endif
+ 
+ #
+ # Optionally disable optimizations. Optimization causes problems on
+ # some compilers such as gcc 4.4
+ #
+-ifneq ($(NOOPT),TRUE)
+-OPT_CFLAGS += -O2
+-else
+-OPT_CFLAGS += -O0
+-endif
+ 
+ #
+ # Optionally disable fortify source. This option can cause
+ # compile errors in toolchains where it is already defined.
+ #
+-ifneq ($(NOFORTIFY),TRUE)
+-OPT_CFLAGS += -D_FORTIFY_SOURCE=2
+-endif
+ 
+ CFLAGS += \
+     -D$(HOST)\
+@@ -264,11 +255,11 @@
+ #YACC=      byacc
+ #YFLAGS +=
+ #
+-YACC=       bison
++YACC=       LC_ALL=C bison
+ YFLAGS +=   -y
+ 
+ MACROPROC=  m4
+ MFLAGS=     -P -I$(ASL_COMPILER)
+ 
+-LEX=        flex
++LEX=        LC_ALL=C flex
+ LFLAGS +=   -i -s
+--- a/generate/unix/Makefile.rules
++++ b/generate/unix/Makefile.rules
+@@ -12,12 +12,12 @@
+ 
+ $(PROG) : $(INTERMEDIATES) $(MISC) $(OBJECTS)
+ 	@echo "- Link" $(PROG)
+-	@$(LINKPROG)
++	$(LINKPROG)
+ 	$(RENAMEPROG)
+ 
+ $(OBJDIR)/%.o : %.c $(HEADERS) $(ACPICA_HEADERS)
+ 	@echo $(PROG)  $<
+-	@$(COMPILEOBJ)
++	$(COMPILEOBJ)
+ 
+ clean :
+ 	@rm -f $(PROG) $(PROG).exe $(OBJECTS) $(OBJDIR)/*.o $(INTERMEDIATES) $(MISC)
