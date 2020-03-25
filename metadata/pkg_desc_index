@@ -5199,7 +5199,7 @@ dev-libs/nsync 1.20.1: A C library that exports various synchronization primitiv
 dev-libs/ntl 9.3.0 9.6.4 10.5.0 11.4.3: High-performance and portable C++ number theory library
 dev-libs/ocl-icd 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
-dev-libs/oniguruma 6.9.3-r2 6.9.4 9999: Regular expression library for different character encodings
+dev-libs/oniguruma 6.9.4 9999: Regular expression library for different character encodings
 dev-libs/opencl-clang 8.0.1_p20191001-r1 8.0.1.1 9.0.0 9.0.1: OpenCL-oriented thin wrapper library around clang
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
@@ -15156,7 +15156,7 @@ net-misc/valve 1.0-r1: Copy data while enforcing a specified maximum transfer ra
 net-misc/vconfig 1.9: 802.1Q vlan control utility
 net-misc/vde 2.3.2-r4: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
 net-misc/vinagre 3.22.0-r3: VNC client for the GNOME desktop
-net-misc/vino 3.22.0 3.22.0-r1 3.22.0-r2 3.22.0-r3: An integrated VNC server for GNOME
+net-misc/vino 3.22.0-r2 3.22.0-r3: An integrated VNC server for GNOME
 net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
 net-misc/vmpsd 1.4: An open-source VLAN management system
 net-misc/vncrec 0.2-r2: VNC session recorder and player
