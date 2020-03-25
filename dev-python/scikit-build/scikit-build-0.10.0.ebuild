@@ -25,7 +25,6 @@ DEPEND="test? (
 	dev-python/flake8[${PYTHON_USEDEP}]
 	dev-python/path-py[${PYTHON_USEDEP}]
 	dev-python/pytest-mock[${PYTHON_USEDEP}]
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
 	dev-python/PyQt5[testlib,${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
