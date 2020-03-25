@@ -102,10 +102,12 @@ pkg_postinst() {
 		ewarn "For resizing support enable USE-flag bundled-libs and rebuild package."
 	fi
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
