@@ -29,10 +29,9 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
 "
 
 python_test() {
-	py.test -v || die "Tests fail with ${EPYTHON}"
+	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
