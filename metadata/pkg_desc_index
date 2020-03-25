@@ -12826,7 +12826,7 @@ media-libs/gd 2.2.5-r2: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.20 0.4.22 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
-media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
+media-libs/giflib 5.1.4 5.2.1-r1: Library to handle, display and manipulate GIF images
 media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.2.1 3.3.1: The Portable OpenGL FrameWork
 media-libs/glm 0.9.9.5 0.9.9.7: OpenGL Mathematics
@@ -14994,7 +14994,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4 1.0.5: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.2-r1: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.14 1.5.22 1.6.2: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.22 1.6.2: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.8.6 9999: Simple, powerful and moeful twitter client
@@ -17336,7 +17336,7 @@ sys-fs/duperemove 0.11.1: Btrfs and xfs deduplication utility
 sys-fs/e2fsprogs 1.45.4 1.45.5 1.45.6: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4 0.1.0: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
-sys-fs/ecryptfs-utils 108-r3 111_p20170609: eCryptfs userspace utilities
+sys-fs/ecryptfs-utils 111_p20170609: eCryptfs userspace utilities
 sys-fs/encfs 1.9.5: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620 0_p20170517: Use etcd as a FUSE filesystem
 sys-fs/eudev 3.2.5 3.2.7-r2 3.2.8 3.2.9 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
