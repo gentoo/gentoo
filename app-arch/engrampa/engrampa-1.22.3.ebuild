@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Engrampa archive manager for MATE"
-LICENSE="GPL-2"
+LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
 
 IUSE="caja magic packagekit"
