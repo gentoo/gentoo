@@ -21,7 +21,7 @@ RDEPEND="
 	app-text/djvu:0=
 	dev-lang/mujs:0=
 	dev-libs/openssl:0=
-	!media-gfx/fbida[fbcon]
+	!media-gfx/fbida[fbcon(-)]
 	media-libs/freetype:2=
 	media-libs/jbig2dec:0=
 	media-libs/openjpeg:0=
