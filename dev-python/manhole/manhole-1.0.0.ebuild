@@ -7,12 +7,14 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
+MYPN="python-${PN}"
+
 DESCRIPTION="Debugging manhole for python application"
 HOMEPAGE="
 	https://github.com/ionelmc/python-manhole
 	https://pypi.org/project/python-manhole
 "
-SRC_URI="https://github.com/ionelmc/python-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ionelmc/${MYPN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -30,5 +32,9 @@ DEPEND="
 	)
 "
 
+S="${WORKDIR}/${MYPN}-${PV}"
+
 distutils_enable_tests pytest
-distutils_enable_sphinx docs dev-python/sphinx-py3doc-enhanced-theme
+distutils_enable_sphinx docs \
+				dev-python/sphinx-py3doc-enhanced-theme \
+				dev-python/sphinxcontrib-napoleon
