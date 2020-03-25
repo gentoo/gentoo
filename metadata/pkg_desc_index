@@ -11237,7 +11237,6 @@ games-misc/fortune-mod-chucknorris 0.1: Chuck Norris Facts
 games-misc/fortune-mod-cs 1.6.9: Database of the Czech and Slovak cookies for the fortune(6) program
 games-misc/fortune-mod-flashrider 1.10-r1: Quotes from Prolinux articles and comments
 games-misc/fortune-mod-fvl 20030120: Quotes from Felix von Leitner (fefe)
-games-misc/fortune-mod-humorixfortunes 1.4-r1: Extra fortune cookies for fortune
 games-misc/fortune-mod-it 1.99: Database of the Italian cookies for the fortune program
 games-misc/fortune-mod-kernelcookies 9: A collection of funny lines from the Linux kernel
 games-misc/fortune-mod-mormon 1.1.0: Fortune modules from the LDS scriptures (KJV Bible, Book of Mormon, D&C, PGP)
@@ -16693,7 +16692,7 @@ sys-apps/coreutils 8.30 8.31 8.31-r1 8.32-r1: Standard GNU utilities (chmod, cp,
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20180519 20200211: Linux tool to dump x86 CPUID information about the CPUs
 sys-apps/cracklib-words 2.9.6: large set of crack/cracklib dictionaries
-sys-apps/crazydiskinfo 1.0.2: Interactive TUI S.M.A.R.T viewer
+sys-apps/crazydiskinfo 1.0.2 1.1.0: Interactive TUI S.M.A.R.T viewer
 sys-apps/daemonize 1.7.8: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11 12: Miscellaneous commands used on macOS, High Sierra 10.13
