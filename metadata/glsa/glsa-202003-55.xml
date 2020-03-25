@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-55">
+  <title>Zsh: Privilege escalation</title>
+  <synopsis>A vulnerability in Zsh might allow an attacker to escalate
+    privileges.
+  </synopsis>
+  <product type="ebuild">zsh</product>
+  <announced>2020-03-25</announced>
+  <revised count="1">2020-03-25</revised>
+  <bug>711136</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-shells/zsh" auto="yes" arch="*">
+      <unaffected range="ge">5.8</unaffected>
+      <vulnerable range="lt">5.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A shell designed for interactive use, although it is also a powerful
+      scripting language.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Zsh was insecure dropping privileges when
+      unsetting PRIVILEGED option.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Zsh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/zsh-5.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20044">CVE-2019-20044</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-25T20:14:34Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-25T20:22:40Z">whissi</metadata>
+</glsa>
