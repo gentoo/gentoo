@@ -3,6 +3,7 @@
 
 EAPI=6
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 git-r3
@@ -15,23 +16,16 @@ EGIT_BRANCH="develop"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/babelfish-0.5.5[${PYTHON_USEDEP}]
 	>=dev-python/rebulk-0.9.0[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	test? (
-		>=dev-python/pytest-3.4[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
-	)
-"
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# Disable benchmarks as they require unavailable pytest-benchmark.
@@ -42,8 +36,4 @@ python_prepare_all() {
 	sed -i -e "s|'pytest-runner'||g" setup.py || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	esetup.py test
 }

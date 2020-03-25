@@ -10,7 +10,6 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">fonttools</remote-id>
-		<remote-id type="github">behdad/fonttools</remote-id>
+		<remote-id type="github">fonttools/fonttools</remote-id>
 	</upstream>
 </pkgmetadata>
