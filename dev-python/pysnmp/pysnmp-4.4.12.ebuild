@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Python SNMP library"
-HOMEPAGE="http://snmplabs.com/pysnmp/ https://pypi.org/project/pysnmp/"
+HOMEPAGE="http://snmplabs.com/pysnmp/ https://pypi.org/project/pysnmp/ https://github.com/etingof/pysnmp"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
