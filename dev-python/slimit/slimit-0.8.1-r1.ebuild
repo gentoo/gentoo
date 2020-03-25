@@ -15,17 +15,12 @@ SRC_URI="https://github.com/rspivak/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/ply:=[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
-	)"
 
 PATCHES=( "${FILESDIR}/${P}-fix-python3.patch" )
+
+distutils_enable_tests pytest
 
 python_compile() {
 	distutils-r1_python_compile
@@ -39,5 +34,5 @@ python_compile() {
 }
 
 python_test() {
-	esetup.py pytest --addopts "${BUILD_DIR}" || die "Testing failed with ${EPYTHON}"
+	pytest -vv "${BUILD_DIR}" || die "Tests failed with ${EPYTHON}"
 }
