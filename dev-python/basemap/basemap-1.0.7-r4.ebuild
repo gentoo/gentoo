@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/matplotlib/${P}.tar.gz"
 
 IUSE="examples test"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="MIT GPL-2"
 
 DEPEND="sci-libs/shapelib

@@ -15,6 +15,5 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="app-arch/unzip"
 
-S="${WORKDIR}/JetBrainsMono-${PV}"
-
+S="${WORKDIR}/JetBrainsMono-${PV}/ttf"
 FONT_SUFFIX="ttf"
