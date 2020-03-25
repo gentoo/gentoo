@@ -1,0 +1,13 @@
+# Nils Freydank <holgersson@posteo.de> (2020-03-25)
+Update setup.cfg from old pytest syntax.
+
+--- a/setup.cfg	2020-03-25 16:00:00.000000000 +0100
++++ b/setup.cfg	2020-03-25 16:00:00.000000001 +0100
+@@ -1,7 +1,7 @@
+ [bdist_wheel]
+ universal = 1
+ 
+-[pytest]
++[tool:pytest]
+ norecursedirs = .git .* *.egg* old docs dist build
+ addopts = -rw
