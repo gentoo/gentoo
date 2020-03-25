@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-53">
+  <title>Chromium, Google Chrome: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium and Google
+    Chrome, the worst of which could allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium,google-chrome</product>
+  <announced>2020-03-25</announced>
+  <revised count="1">2020-03-25</revised>
+  <bug>713282</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">80.0.3987.149</unaffected>
+      <vulnerable range="lt">80.0.3987.149</vulnerable>
+    </package>
+    <package name="www-client/google-chrome" auto="yes" arch="*">
+      <unaffected range="ge">80.0.3987.149</unaffected>
+      <vulnerable range="lt">80.0.3987.149</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+    <p>Google Chrome is one fast, simple, and secure browser for all your
+      devices.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted HTML
+      or multimedia file using Chromium or Google Chrome, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-80.0.3987.149"
+    </code>
+    
+    <p>All Google Chrome users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/google-chrome-80.0.3987.149"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6422">CVE-2020-6422</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6424">CVE-2020-6424</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6425">CVE-2020-6425</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6426">CVE-2020-6426</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6427">CVE-2020-6427</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6428">CVE-2020-6428</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6429">CVE-2020-6429</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6449">CVE-2020-6449</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-25T18:24:50Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-25T18:31:07Z">whissi</metadata>
+</glsa>
