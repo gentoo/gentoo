@@ -32,10 +32,12 @@ RDEPEND="
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		${RDEPEND}
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		>=www-servers/tornado-4.2.1[$(python_gen_usedep python{2_7,3_{5,6,7}})]
+		$(python_gen_cond_dep "
+			${RDEPEND}
+			dev-python/mock[\${PYTHON_USEDEP}]
+			dev-python/pytest[\${PYTHON_USEDEP}]
+			>=www-servers/tornado-4.2.1[\${PYTHON_USEDEP}]
+		" 'python3*')
 	)
 "
 
@@ -53,7 +55,12 @@ python_prepare_all() {
 python_test() {
 	# FIXME: get tornado ported
 	case ${EPYTHON} in
-		python2*|python3.[567])
+		python2*)
+			ewarn "Tests are being skipped for Python 2 in order to reduce the number"
+			ewarn "of circular dependencies for Python 2 removal.  Please test"
+			ewarn "manually in a virtualenv."
+			;;
+		python3*)
 			pytest -vv || die "Tests fail with ${EPYTHON}"
 			;;
 	esac
