@@ -18,7 +18,7 @@ IUSE="extras +postgres sqlite"
 REQUIRED_USE="postgres !sqlite"
 
 DEPEND="
-	dev-db/postgresql:*
+	dev-db/postgresql:*[uuid]
 	dev-libs/libgcrypt:0=
 	dev-libs/libical
 	>=net-analyzer/gvm-libs-11.0.0
