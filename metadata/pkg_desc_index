@@ -8498,8 +8498,7 @@ dev-python/pyserial 3.2.1 3.4: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
 dev-python/pyshark 0.3.7.2-r1 0.4.2.3: A Python wrapper for tshark output parsing
 dev-python/pysmi 0.1.3 0.3.1 0.3.4: Python Lex & Yacc
-dev-python/pysnmp 4.4.4 4.4.10-r1 4.4.12 999999: Python SNMP library
-dev-python/pysnmp-apps 0.5.3: PySNMP applications
+dev-python/pysnmp 4.4.12 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysol_cards 0.8.6 0.8.7 0.8.8: Deal PySol FreeCell cards
 dev-python/pysolr 3.3.2 3.6.0 3.8.1: Lightweight python wrapper for Apache Solr
@@ -14237,6 +14236,7 @@ net-analyzer/slurm 0.3.3-r2 0.4.3: Realtime network interface monitor based on F
 net-analyzer/smokeping 2.6.9-r1 2.7.2 2.7.3: A powerful latency measurement tool
 net-analyzer/sngrep 1.4.6-r1: Ncurses SIP Messages flow viewer
 net-analyzer/sniffit 0.3.7-r4 0.4.0: Interactive Packet Sniffer
+net-analyzer/snmpclitools 0.6.4: Pure-Python SNMP management tools, formerly pysnmp-apps
 net-analyzer/snmptt 1.4: SNMP Trap Translator
 net-analyzer/snort 2.9.8.3-r2 2.9.12 2.9.15 2.9.15.1: The de facto standard for intrusion detection/prevention
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
