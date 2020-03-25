@@ -170,17 +170,13 @@ src_install() {
 			"${ED}${dest}"/lib-python/*2.7/test/test_{tcl,tk,ttk*}.py || die
 	fi
 
+	local -x EPYTHON=pypy
 	local -x PYTHON=${ED}${dest}/pypy-c
-	# we can't use eclass function since PyPy is dumb and always gives
-	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/lib/pypy2.7/site-packages
-	python_export pypy EPYTHON
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
+	python_moduleinto /usr/lib/pypy2.7/site-packages
 	python_domodule epython.py
 
 	einfo "Byte-compiling Python standard library..."
-
-	# compile the installed modules
 	python_optimize "${ED}${dest}"
 }
