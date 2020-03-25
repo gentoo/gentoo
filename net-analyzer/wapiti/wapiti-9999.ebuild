@@ -21,7 +21,6 @@ RESTRICT="!test? ( test )"
 
 DEPEND="test? (
 	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)"
 RDEPEND="dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
