@@ -7431,7 +7431,7 @@ dev-python/algopy 0.5.3: Taylor Arithmetic Computation and Algorithmic Different
 dev-python/ament_package 0.8.8: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.13 1.13.1 1.14.0 1.15.0: Transmit data between two computers using audio
 dev-python/amqplib 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
-dev-python/aniso8601 1.3.0 3.0.0 3.0.2 4.0.1: A library for parsing ISO 8601 strings
+dev-python/aniso8601 4.0.1: A library for parsing ISO 8601 strings
 dev-python/ansi 0.1.3: ANSI cursor movement and graphics in Python
 dev-python/ansi2html 1.4.2 1.5.1 1.5.2: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.6 0.2.6-r1 9999: Produce ansi color output and colored highlighting and diffing
@@ -7509,14 +7509,14 @@ dev-python/bitstring 3.1.5 3.1.6: A pure Python module for creation and analysis
 dev-python/blaze 0.11.3: Next generation Python numpy
 dev-python/bleach 2.1.3 3.0.2 3.1.0-r1 3.1.3: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6-r1 1.6.1 1.7 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
-dev-python/blinker 1.4 1.4-r1: Fast, simple object-to-object and broadcast signaling
+dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.3-r1 1.5.4: Generate block-diagram image from text
 dev-python/blosc 1.5.1: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.2 0.9.0: Boolean operations on paths
-dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
+dev-python/boto 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
 dev-python/botocore 1.12.122 1.13.46 1.13.50 1.14.7 1.14.17 1.15.5 1.15.16 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
@@ -7549,7 +7549,7 @@ dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.1: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
 dev-python/chameleon 2.25 3.6.2: Fast HTML/XML template compiler for Python
-dev-python/characteristic 14.3.0-r1 14.3.0-r2 14.3.0-r3: Python attributes without the boilerplate
+dev-python/characteristic 14.3.0-r3: Python attributes without the boilerplate
 dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
@@ -7766,7 +7766,7 @@ dev-python/flask-admin 1.5.1: Simple and extensible admin interface framework fo
 dev-python/flask-api 1.0 1.1: Browsable web APIs for Flask
 dev-python/flask-appconfig 0.11.1-r1: Configures Flask applications in a canonical way
 dev-python/flask-assets 0.12: Flask webassets integration
-dev-python/flask-babel 0.11.2-r1 0.11.2-r2 0.12.2: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-babel 0.11.2-r2 0.12.2: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-babelex 0.9.3: Adds i18n/l10n support to Flask applications
 dev-python/flask-bootstrap 3.3.7.1: An extension that includes Bootstrap in your project, without boilerplate code
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
@@ -7787,7 +7787,7 @@ dev-python/flask-restful 0.3.5-r1 0.3.6 0.3.7: Simple framework for creating RES
 dev-python/flask-script 2.0.6: Flask support for writing external scripts
 dev-python/flask-security 3.0.0: Simple security for Flask apps
 dev-python/flask-socketio 2.9.2 3.0.1: Socket.IO integration for Flask applications.
-dev-python/flask-sphinx-themes 1.0.1 1.0.2: Sphinx Themes for Flask related projects and Flask itself
+dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 2.3.2 2.4.1 2.4.1-r1: SQLAlchemy support for Flask applications
 dev-python/flask-themes 0.1.3-r1 0.1.3_p20180112: Infrastructure for theming support in Flask applications
 dev-python/flask-uploads 0.2.0-r1: Flexible and efficient upload handling for Flask
@@ -7811,7 +7811,7 @@ dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static f
 dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 0.5.4 2.0.21 2.0.26 2.4.8 2.4.9: Filesystem abstraction layer
 dev-python/fudge 1.1.0 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
-dev-python/funcparserlib 0.3.6 0.3.6-r1: Recursive descent parsing library based on functional combinators
+dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/funcy 1.8 1.10.1 1.14: A collection of fancy functional tools focused on practicality
@@ -7928,7 +7928,7 @@ dev-python/invoke 1.1.1: Pythonic task execution
 dev-python/iocapture 0.1.2-r1 0.1.2-r2: Capture stdout, stderr easily
 dev-python/ioflo 1.5.0 1.7.4 1.7.5: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ip-associations-python-novaclient-ext 0.2: Disk Config extension for python-novaclient
-dev-python/ipaddr 2.1.11-r1 2.2.0: Python IP address manipulation library
+dev-python/ipaddr 2.2.0: Python IP address manipulation library
 dev-python/ipaddress 1.0.14 1.0.18 1.0.19 1.0.22 1.0.23: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipcalc 1.99.0: IP subnet calculator
 dev-python/ipdb 0.10.3: IPython-enabled pdb
@@ -7945,14 +7945,14 @@ dev-python/iso3166 0.8: Self-contained ISO 3166-1 country definitions.
 dev-python/iso8601 0.1.10 0.1.11 0.1.12: Simple module to parse ISO 8601 dates
 dev-python/iso_639 0.4.5: Python library for ISO 639 standard
 dev-python/isodate 0.6.0 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
-dev-python/isort 4.2.5 4.3.15 4.3.21_p2: A python utility/library to sort imports
-dev-python/itsdangerous 0.24 0.24-r1 1.1.0: Various helpers to pass trusted data to untrusted environments and back
+dev-python/isort 4.3.15 4.3.21_p2: A python utility/library to sort imports
+dev-python/itsdangerous 1.1.0: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 2.0-r1 3.1.0: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 1.5.3-r1 2.1 3.0.0: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-envs 1.0.1: Classes for orchestrating Python (virtual) environments.
-dev-python/jaraco-functools 1.19-r1 2.0-r1 3.0.0: Additional functions used by other projects by developer jaraco
-dev-python/jaraco-itertools 2.3-r1 4.4.2 5.0.0: Tools for working with iterables. Complements itertools and more_itertools
+dev-python/jaraco-functools 2.0-r1 3.0.0: Additional functions used by other projects by developer jaraco
+dev-python/jaraco-itertools 4.4.2 5.0.0: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 1.5.2-r1 2.0 3.0.0-r1: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 6.2-r1 8.1.0: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 1.2-r1 2.0-r1 3.0.0: Routines for handling streaming data
@@ -7983,7 +7983,7 @@ dev-python/jsonpatch 1.13 1.15 1.21 1.23: Apply JSON-Patches like http://tools.i
 dev-python/jsonpickle 1.2 1.3: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 1.10 2.0 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
-dev-python/jsonrpclib 0.3.1 0.4.0 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
+dev-python/jsonrpclib 0.4.0 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
 dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2 2.6.0 3.0.1 3.2.0: An implementation of JSON-Schema validation for Python
 dev-python/jsonxs 0.6: Get/set values in JSON and Python datastructures
 dev-python/junit-xml 1.8: Python module for creating JUnit XML test result documents
@@ -8870,7 +8870,7 @@ dev-python/sqlalchemy-migrate 0.12.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.0 0.3.1: A non-validating SQL parser module for Python
 dev-python/squaremap 1.0.4: Hierarchic data-visualisation control for wxPython
-dev-python/sshtunnel 0.1.4-r2: Pure python SSH tunnels
+dev-python/sshtunnel 0.1.4-r2 0.1.5: Pure Python SSH tunnels
 dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
 dev-python/stapler 1.0_pre20191215-r1: Suite of tools for PDF files manipulation written in Python
 dev-python/statsd 3.2.1 3.3.0: A simple statsd client
@@ -14177,7 +14177,7 @@ net-analyzer/nload 0.7.4 0.7.4-r1: Real time network traffic monitor for the com
 net-analyzer/nmap 7.70-r1 7.80-r1 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
-net-analyzer/nrpe 3.2.1-r1 3.2.1-r3 4.0.0 4.0.2: Nagios Remote Plugin Executor
+net-analyzer/nrpe 4.0.0 4.0.2: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2 0.4-r3: Displays statistics about ethernet traffic including protocol breakdown
