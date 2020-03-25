@@ -27,6 +27,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libpcre2-10.32[pcre32]
+	sys-apps/coreutils
 	sys-libs/ncurses:0=[unicode]
 "
 

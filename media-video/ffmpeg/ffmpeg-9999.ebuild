@@ -127,7 +127,8 @@ ARM_CPU_REQUIRED_USE="
 	cpu_flags_arm_v6? ( cpu_flags_arm_thumb )
 "
 MIPS_CPU_FEATURES=( mipsdspr1:mipsdsp mipsdspr2 mipsfpu )
-PPC_CPU_FEATURES=( altivec )
+PPC_CPU_FEATURES=( cpu_flags_ppc_altivec:altivec cpu_flags_ppc_vsx:vsx )
+PPC_CPU_REQUIRED_USE="cpu_flags_ppc_vsx? ( cpu_flags_ppc_altivec )"
 X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
 X86_CPU_FEATURES=( ${X86_CPU_FEATURES_RAW[@]/#/cpu_flags_x86_} )
 X86_CPU_REQUIRED_USE="
@@ -159,6 +160,7 @@ IUSE="${IUSE}
 
 CPU_REQUIRED_USE="
 	${ARM_CPU_REQUIRED_USE}
+	${PPC_CPU_REQUIRED_USE}
 	${X86_CPU_REQUIRED_USE}
 "
 

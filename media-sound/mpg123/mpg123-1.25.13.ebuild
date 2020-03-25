@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://www.mpg123.org/download/${P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext alsa altivec coreaudio int-quality ipv6 jack cpu_flags_x86_mmx nas oss portaudio pulseaudio sdl cpu_flags_x86_sse"
+IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext cpu_flags_ppc_altivec alsa coreaudio int-quality ipv6 jack cpu_flags_x86_mmx nas oss portaudio pulseaudio sdl cpu_flags_x86_sse"
 
 # No MULTILIB_USEDEP here since we only build libmpg123 for non native ABIs.
 RDEPEND="
@@ -58,7 +58,7 @@ multilib_src_configure() {
 		done
 	fi
 
-	use altivec && _cpu=altivec
+	use cpu_flags_ppc_altivec && _cpu=altivec
 
 	if [[ $(tc-arch) == amd64 || ${ARCH} == x64-* ]]; then
 		use cpu_flags_x86_sse && _cpu=x86-64
