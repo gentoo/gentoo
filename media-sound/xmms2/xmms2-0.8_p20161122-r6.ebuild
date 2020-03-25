@@ -3,18 +3,20 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 USE_RUBY="ruby23 ruby24 ruby25"
 
-inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
+inherit eutils multiprocessing perl-functions python-single-r1 ruby-single toolchain-funcs
 
 # generated as 'python2 ./utils/gen-tarball.py' from clean git tree
 MY_P="${P%_p*}DrO_o-949-gca15e830"
+WAF_VER="2.0.19"
 
 DESCRIPTION="X(cross)platform Music Multiplexing System. Next generation of the XMMS player"
 HOMEPAGE="https://xmms2.org/wiki/Main_Page"
 #SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
-SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${MY_P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${MY_P}.tar.bz2
+	https://waf.io/waf-${WAF_VER}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 
 SLOT="0"
@@ -90,6 +92,30 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	# needs port
+	#epatch "${FILESDIR}/${PN}"-0.8DrO_o-waflib-fix-perl.patch #578778
+
+	"${FILESDIR}/${PN}"-0.8-ffmpeg2.patch #536232
+
+	"${FILESDIR}/${PN}"-0.8-rtvg.patch #424377
+
+	# required to build tarball from git tree
+	"${FILESDIR}/${P}"-tarball.patch
+
+	# fix hash to be the same on LE/BE platforms
+	"${FILESDIR}/${P}"-be-hash.patch
+
+	# handle mac-3 -> -4 API change
+	"${FILESDIR}/${P}"-mac-4.patch
+
+	# C++ client dangling reference: https://github.com/xmms2/xmms2-devel/pull/5
+	"${FILESDIR}/${P}"-cpp-client.patch
+
+	# gcc-10 stopped putting globals into common section
+	"${FILESDIR}/${P}"-gcc-10.patch
+)
+
 pkg_setup() {
 	# used both for building xmms2 and
 	# optionally linking client library
@@ -119,50 +145,27 @@ xmms2_flag() {
 }
 
 src_prepare() {
-	./waf # inflate waf
-	cd .waf* || die
-	# needs port
-	#epatch "${FILESDIR}/${PN}"-0.8DrO_o-waflib-fix-perl.patch #578778
-	eapply "${FILESDIR}/${PN}"-0.8_p20161122-perl-no-local.patch
-	cd "${S}"
-
-	eapply "${FILESDIR}/${PN}"-0.8-ffmpeg2.patch #536232
-
-	eapply "${FILESDIR}/${PN}"-0.8-rtvg.patch #424377
-
-	# required to build tarball from git tree
-	eapply "${FILESDIR}/${P}"-tarball.patch
-
-	# fix hash to be the same on LE/BE platforms
-	eapply "${FILESDIR}/${P}"-be-hash.patch
-
-	# handle mac-3 -> -4 API change
-	eapply "${FILESDIR}/${P}"-mac-4.patch
-
-	# C++ client dangling reference: https://github.com/xmms2/xmms2-devel/pull/5
-	eapply "${FILESDIR}/${P}"-cpp-client.patch
-
-	# gcc-10 stopped putting globals into common section
-	eapply "${FILESDIR}/${P}"-gcc-10.patch
-
-	eapply_user
+	mv "${WORKDIR}/waf-${WAF_VER}"/{waf,waflib/} . || die
+	default
 }
 
 src_configure() {
 	# ./configure alike options.
-	local waf_params="--prefix=/usr \
-			--libdir=/usr/$(get_libdir) \
-			--with-target-platform=${CHOST} \
-			--mandir=/usr/share/man \
-			--infodir=/usr/share/info \
-			--datadir=/usr/share \
-			--sysconfdir=/etc \
-			--localstatedir=/var/lib"
+	local waf_params=(
+		--prefix=/usr
+		--libdir=/usr/$(get_libdir)
+		--with-target-platform="${CHOST}"
+		--mandir=/usr/share/man
+		--infodir=/usr/share/info
+		--datadir=/usr/share
+		--sysconfdir=/etc
+		--localstatedir=/var/lib
+	)
 
 	local optionals=""
 	local plugins=""
 	if ! use server ; then
-		waf_params+=" --without-xmms2d"
+		waf_params+=( --without-xmms2d )
 	else
 		# some fun static mappings:
 		local option_map=(	# USE		# sorted xmms2 option flag (same, as USE if empty)
@@ -259,19 +262,26 @@ src_configure() {
 		for plugin in "${plugin_map[@]}"; do
 			plugins+=$(xmms2_flag $plugin)
 		done
+
+		if use perl; then
+			perl_set_version
+			waf_params+=( --with-perl-archdir="${ARCH_LIB}" )
+		fi
 	fi # ! server
 
 	# pass them explicitely even if empty as we try to avoid magic deps
-	waf_params+=" --with-optionals=${optionals:1}" # skip first ',' if yet
-	waf_params+=" --with-plugins=${plugins:1}"
-	waf_params+=" $(use_with valgrind)"
+	waf_params+=(
+		--with-optionals="${optionals:1}" # skip first ',' if yet
+		--with-plugins="${plugins:1}"
+		$(use_with valgrind)
+	)
 
 	CC="$(tc-getCC)"         \
 	CPP="$(tc-getCPP)"       \
 	AR="$(tc-getAR)"         \
 	RANLIB="$(tc-getRANLIB)" \
 	CXX="$(tc-getCXX)"       \
-	    ./waf configure ${waf_params} || die "'waf configure' failed"
+	    ./waf configure "${waf_params[@]}" || die "'waf configure' failed"
 }
 
 src_compile() {
