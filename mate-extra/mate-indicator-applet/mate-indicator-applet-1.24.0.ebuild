@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE indicator applet"
-LICENSE="GPL-2 FDL-1.1 LGPL-2"
+LICENSE="GPL-3 GPL-3+ LGPL-2+ LGPL-3+"
 SLOT="0"
 
 IUSE=""
