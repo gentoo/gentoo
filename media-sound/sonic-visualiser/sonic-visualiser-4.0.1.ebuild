@@ -11,7 +11,7 @@ SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/2607/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="id3tag jack mad ogg opus osc +portaudio pulseaudio"
 
 BDEPEND="
