@@ -23,14 +23,7 @@ DEPEND="${PYTHON_DEPS}
 	net-im/jabber-base"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		|| (
-			(
-				dev-python/twisted-core[${PYTHON_MULTI_USEDEP}]
-				dev-python/twisted-words[${PYTHON_MULTI_USEDEP}]
-				dev-python/twisted-web[${PYTHON_MULTI_USEDEP}]
-			)
-			dev-python/twisted[${PYTHON_MULTI_USEDEP}]
-		)
+		dev-python/twisted[${PYTHON_MULTI_USEDEP}]
 		webinterface? ( >=dev-python/nevow-0.4.1[${PYTHON_MULTI_USEDEP}] )
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
 	')"
