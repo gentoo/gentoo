@@ -8404,7 +8404,6 @@ sys-fs/squashfs-tools-ng:xz - Enable support for XZ ("LZMA2") compression using 
 sys-fs/udev:kmod - Enable kernel module loading/unloading support using sys-apps/kmod
 sys-fs/udisks:elogind - Use sys-auth/elogind for session tracking
 sys-fs/udisks:lvm - Add support for Logical Volume Management via sys-fs/lvm2.
-sys-fs/udisks:remote-access - Control whether connections from other clients over LAN are allowed
 sys-fs/udisks:systemd - Support sys-apps/systemd's logind
 sys-fs/udisks:vdo - Enable Virtual Data Optimizer support.
 sys-fs/zfs:kernel-builtin - Disable dependency on sys-fs/zfs-kmod under the assumption that ZFS is part of the kernel source tree
