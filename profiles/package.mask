@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-03-25)
+# No releases in two years. No commits in upstream git in last six months.
+# Many open security bugs. Masked for removal in 30 days.
+media-video/libav
+media-libs/libpostproc
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-25)
 # Unmaintained.  Python 2 only.  Last commit in 2013.
 # Removal in 30 days.  Bug #714632.
