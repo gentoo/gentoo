@@ -18,10 +18,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="ssl test"
-# IUSE="ssl test"
-# See below to see what needs to be done before testing can be enabled
-# for this release.
-#RESTRICT="test"
 
 RDEPEND=">=dev-python/cheroot-8.2.1[${PYTHON_USEDEP}]
 	>=dev-python/portend-2.1.1[${PYTHON_USEDEP}]
@@ -29,7 +25,7 @@ RDEPEND=">=dev-python/cheroot-8.2.1[${PYTHON_USEDEP}]
 	dev-python/zc-lockfile[${PYTHON_USEDEP}]
 	dev-python/jaraco-collections[${PYTHON_USEDEP}]
 	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
@@ -63,10 +59,4 @@ python_prepare_all() {
 		-i pytest.ini || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_test_old() {
-	if [[ ${EPYTHON} != pypy* ]]; then
-		pytest -vv || die "Testing failed with ${EPYTHON}"
-	fi
 }
