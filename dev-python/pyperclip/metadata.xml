@@ -8,4 +8,5 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
