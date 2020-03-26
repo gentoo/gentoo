@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,10 +22,7 @@ DEPEND=""
 # TODO: investigate the possibility of enabling PyQt5 gui
 # possible licensing concerns
 RDEPEND="${PYTHON_DEPS}
-	|| (
-		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-		dev-python/twisted-core[${PYTHON_USEDEP}]
-	)
+	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 	vlc? ( media-video/vlc[lua] )"
 
 src_prepare() {
