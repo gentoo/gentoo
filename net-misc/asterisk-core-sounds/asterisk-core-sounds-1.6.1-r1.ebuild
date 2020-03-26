@@ -3,9 +3,9 @@
 
 EAPI="7"
 
-DESCRIPTION="Extra sounds for asterisk"
+DESCRIPTION="Core sounds for asterisk"
 HOMEPAGE="https://www.asterisk.org/"
-MY_L10N="^en en_GB fr" # ^ is used to indicate to the loops below to NOT set this as an optional
+MY_L10N="^en en_AU en_GB es fr it ja ru sv" # ^ is used to indicate to the loops below to NOT set this as an optional
 CODECS="alaw g722 g729 +gsm siren7 siren14 sln16 ulaw wav"
 
 SRC_URI=""
@@ -24,13 +24,13 @@ LICENSE="CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-BLACKLIST=("astcc-followed-by-the-pound-key")
-
 S="${WORKDIR}"
+
+RDEPEND="!<net-misc/asterisk-extra-sounds-1.5.2"
 
 src_unpack() {
 	local ar
-	local l c b
+	local c
 
 	for ar in ${A}; do
 		l="${ar#${PN}-}"
@@ -38,13 +38,9 @@ src_unpack() {
 		c="${ar#${PN}-*-}"
 		c=${c%%-*}
 		ebegin "Unpacking ${c} audio files for \"${l}\""
-		[ -d "${WORKDIR}/${l}" ] || mkdir "${WORKDIR}/${l}" || die "Error creating unpack directory"
-		tar xf "${DISTDIR}/${ar}" -C "${WORKDIR}/${l}" || die "Error unpacking ${ar}"
+			[ -d "${WORKDIR}/${l}" ] || mkdir "${WORKDIR}/${l}" || die "Error creating unpack directory"
+			tar xf "${DISTDIR}/${ar}" -C "${WORKDIR}/${l}" || die "Error unpacking ${ar}"
 		eend $?
-
-		for b in "${BLACKLIST[@]}"; do
-			[ -r "${WORKDIR}/${l}/${b}.${c}" ] && rm "${WORKDIR}/${l}/${b}.${c}"
-		done
 	done
 }
 
@@ -66,6 +62,8 @@ src_install() {
 	diropts -m 0755 -o root -g root
 	insopts -m 0644 -o root -g root
 
-	insinto /var/lib/asterisk/sounds
-	doins -r .
+	ebegin "Installing audio files"
+		insinto /var/lib/asterisk/sounds
+		doins -r .
+	eend $?
 }
