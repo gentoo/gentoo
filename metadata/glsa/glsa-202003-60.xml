@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-60">
+  <title>QtCore: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in QtCore, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">qtcore</product>
+  <announced>2020-03-26</announced>
+  <revised count="1">2020-03-26</revised>
+  <bug>699226</bug>
+  <bug>707354</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-qt/qtcore" auto="yes" arch="*">
+      <unaffected range="rge">5.12.3-r2</unaffected>
+      <unaffected range="rge">5.13.2-r2</unaffected>
+      <vulnerable range="lt">5.13.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Qt toolkit is a comprehensive C++ application development framework.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in QtCore. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly execute arbitrary code with the privileges of
+      the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QtCore 5.12.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtcore-5.12.3-r2"
+    </code>
+    
+    <p>All QtCore 5.13.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtcore-5.13.2-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18281">CVE-2019-18281</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-0569">CVE-2020-0569</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-0570">CVE-2020-0570</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-26T18:45:51Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-26T18:51:32Z">whissi</metadata>
+</glsa>
