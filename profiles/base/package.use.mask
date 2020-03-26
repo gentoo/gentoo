@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-03-26)
+# Requires deprecated python2 and pygtk
+mail-client/claws-mail python
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-25)
 # Requires www-servers/tornado with py2.
 app-backup/bup web
