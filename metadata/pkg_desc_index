@@ -7417,7 +7417,7 @@ dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/aiocontextvars 0.2.2: Asyncio support for PEP-567 contextvars backport
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aioeventlet 0.5.1-r1: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 2.3.10 3.5.4 3.6.0 3.6.1: http client/server for asyncio
+dev-python/aiohttp 3.6.1: http client/server for asyncio
 dev-python/aiohttp-cors 0.6.0 0.7.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.2.2: SOCKS proxy connector for aiohttp
@@ -7457,7 +7457,7 @@ dev-python/astor 0.5 0.6 0.7.1 0.8.1: Read/rewrite/write Python ASTs
 dev-python/astroid 1.4.8 2.2.5 2.3.3-r1 2.3.3-r2: Abstract Syntax Tree for logilab packages
 dev-python/astunparse 1.6.2: Astun parser for python
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
-dev-python/async_timeout 1.2.1 2.0.1 3.0.1: Timeout context manager for asyncio programs
+dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
 dev-python/asynctest 0.12.2: Enhance the standard unittest with features for testing asyncio libraries
 dev-python/atom 0.4.1: Memory efficient Python objects
 dev-python/atomicwrites 1.3.0: Atomic file writes
