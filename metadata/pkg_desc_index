@@ -16970,7 +16970,7 @@ sys-auth/keystone 16.0.0 2019.2.9999: The Openstack authentication, authorizatio
 sys-auth/libfprint 0.99.0 1.0 1.90.0 1.90.1: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
-sys-auth/libnss-mysql 1.5_p20060915-r4: NSS MySQL Library
+sys-auth/libnss-mysql 1.5_p20060915-r5: NSS MySQL Library
 sys-auth/libnss-nis 1.4 3.1: NSS module to provide NIS support
 sys-auth/libnss-pgsql 1.5.0_beta-r1: Name Service Switch module for use with PostgreSQL
 sys-auth/libyubikey 1.13: Yubico C low-level library
