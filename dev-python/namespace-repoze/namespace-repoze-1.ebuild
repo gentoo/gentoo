@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 inherit python-r1
 
 DESCRIPTION="Namespace package declaration for repoze"
