@@ -25,8 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=net-wireless/gnuradio-3.7.0:="
 
 DEPEND="${RDEPEND}
-	dev-libs/boost:=
-	!net-wireless/gr-ntsc"
+	dev-libs/boost:="
 
 src_install() {
 	cmake-utils_src_install
