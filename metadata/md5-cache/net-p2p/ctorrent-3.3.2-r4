@@ -4,9 +4,9 @@ DESCRIPTION=Enhanced CTorrent is a BitTorrent console client written in C and C+
 EAPI=7
 HOMEPAGE=http://www.rahul.net/dholmes/ctorrent/
 IUSE=libressl
-KEYWORDS=amd64 arm ppc ~s390 ~sh ~sparc x86
+KEYWORDS=amd64 arm ppc ~s390 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=mirror://sourceforge/dtorrent/ctorrent-dnh3.3.2.tar.gz
-_md5_=2e9cc5d7151fe247b57ae5ff67c5194a
+_md5_=26b189494acbdcf4fdbb1859eff7e320

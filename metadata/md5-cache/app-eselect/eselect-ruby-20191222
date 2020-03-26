@@ -2,9 +2,9 @@ DEFINED_PHASES=install
 DESCRIPTION=Manages multiple Ruby versions
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Ruby
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.0.2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~graaff/ruby-team/ruby.eselect-20191222.xz
-_md5_=993e1ade20806f94e704a1e7e293ae65
+_md5_=317f3a72cde379074ebd662a669b1173

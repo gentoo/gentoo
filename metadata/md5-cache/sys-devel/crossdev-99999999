@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=>=sys-apps/portage-2.1 >=app-portage/portage-utils-0.55 app-shells/bash sys-apps/gentoo-functions
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
-_md5_=c779d19d72ac190ed5da21a8b1459f7f
+_md5_=83e9ebdc1e89d61083a44173d398b00a

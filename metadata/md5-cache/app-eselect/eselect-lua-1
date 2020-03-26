@@ -3,8 +3,8 @@ DEPEND=>=app-admin/eselect-1.2.4
 DESCRIPTION=Lua eselect module
 EAPI=5
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.4
 SLOT=0
-_md5_=29d1df071355cf482ea616f6288b1c11
+_md5_=bbb80012ebd2adea2ee089ae19b5b2c3
