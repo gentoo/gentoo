@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-56">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could allow for privilege escalation.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2020-03-25</announced>
+  <revised count="1">2020-03-25</revised>
+  <bug>686024</bug>
+  <bug>699048</bug>
+  <bug>699996</bug>
+  <bug>702644</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.12.0-r1</unaffected>
+      <vulnerable range="lt">4.12.0-r1</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.12.0-r1</unaffected>
+      <vulnerable range="lt">4.12.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could potentially gain privileges on the host system or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.12.0-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12126">CVE-2018-12126</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12127">CVE-2018-12127</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12130">CVE-2018-12130</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12207">CVE-2018-12207</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12207">CVE-2018-12207</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11091">CVE-2019-11091</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11135">CVE-2019-11135</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18420">CVE-2019-18420</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18421">CVE-2019-18421</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18423">CVE-2019-18423</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18424">CVE-2019-18424</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18425">CVE-2019-18425</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19577">CVE-2019-19577</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19578">CVE-2019-19578</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19580">CVE-2019-19580</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19581">CVE-2019-19581</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19582">CVE-2019-19582</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19583">CVE-2019-19583</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-25T20:41:14Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-25T20:45:30Z">whissi</metadata>
+</glsa>
