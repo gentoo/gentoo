@@ -84,13 +84,13 @@ src_prepare() {
 		mv "${WORKDIR}/jre" ./"${JRE_DIR}"
 	fi
 
-	rm -vf "${S}"/"${JRE_DIR}"/lib/*/libavplugin* || die
+	rm -vf "${S}"/"${JRE_DIR}"/lib/libavplugin* || die
 	rm -vf "${S}"/plugins/maven/lib/maven3/lib/jansi-native/*/libjansi* || die
 	rm -vrf "${S}"/lib/pty4j-native/linux/ppc64le || die
 	rm -vf "${S}"/bin/libdbm64* || die
 
 	if [[ -d "${S}"/"${JRE_DIR}" ]]; then
-		for file in "${S}"/"${JRE_DIR}"/lib/amd64/{libfxplugins.so,libjfxmedia.so}
+		for file in "${S}"/"${JRE_DIR}"/lib/{libfxplugins.so,libjfxmedia.so}
 		do
 			patchelf --set-rpath '$ORIGIN' $file || die
 		done
