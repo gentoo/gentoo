@@ -14,7 +14,7 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/lscardoso/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kik/sdr-tv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 LICENSE="GPL-3+"
