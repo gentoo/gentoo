@@ -13,7 +13,7 @@ SRC_URI="https://pub.mate-desktop.org/releases/themes/${MATE_GTK_V}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1 GPL-3"
 SLOT="0/${MATE_GTK_V}"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	>=x11-libs/gdk-pixbuf-2:2
@@ -23,8 +23,7 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	>=dev-util/intltool-0.35
-	sys-devel/gettext
+	>=sys-devel/gettext-0.19.8:*
 	>=sys-devel/autoconf-2.53
 	>=x11-misc/icon-naming-utils-0.8.7:0
 	virtual/pkgconfig
