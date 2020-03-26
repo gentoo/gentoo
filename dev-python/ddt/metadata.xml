@@ -16,6 +16,7 @@
   <longdescription lang="en">
 Data-Driven/Decorated Tests - long_description='A library to multiply test cases
 </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">ddt</remote-id>
     <remote-id type="github">txels/ddt</remote-id>
