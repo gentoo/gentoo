@@ -46,12 +46,7 @@ RDEPEND="
 		dev-python/pyopenssl[${PYTHON_MULTI_USEDEP}]
 		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
 		dev-python/setproctitle[${PYTHON_MULTI_USEDEP}]
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_MULTI_USEDEP}]
-			(
-			>=dev-python/twisted-core-13.0[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/twisted-web-13.0[${PYTHON_MULTI_USEDEP}]
-			)
-		)
+		>=dev-python/twisted-16.0.0[${PYTHON_MULTI_USEDEP}]
 		geoip? ( dev-python/geoip-python[${PYTHON_MULTI_USEDEP}] )
 		gtk? (
 			sound? ( dev-python/pygame[${PYTHON_MULTI_USEDEP}] )
