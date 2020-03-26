@@ -445,11 +445,6 @@ www-servers/tomcat:9
 # Removal in 30 days.  Bug #709458.
 app-portage/euscan
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last release in 2011, bug #708106, masked for removal in 30 days.
-app-cdr/gtkcdlabel
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-24)
 # app-admin/packagekit-base is Python 2 only and behind upstream.
 # The Portage backend is unmaintained.  Other packages are its reverse
