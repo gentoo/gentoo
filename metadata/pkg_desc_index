@@ -648,7 +648,7 @@ app-arch/unp 2.0_pre7_p1-r1: Script for unpacking various file formats
 app-arch/unrar 5.7.5 5.8.5 5.9.1: Uncompress rar files
 app-arch/unrpa 1.4.1 1.4.2 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
-app-arch/unzip 6.0_p21-r2 6.0_p25-r1: unzipper for pkzip-compressed files
+app-arch/unzip 6.0_p25-r1: unzipper for pkzip-compressed files
 app-arch/upx 3.96: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
 app-arch/upx-bin 3.96: Ultimate Packer for eXecutables, binary version with proprietary NRV compression
 app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
@@ -4849,7 +4849,7 @@ dev-libs/capstone 4.0.1: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
-dev-libs/check 0.10.0-r1 0.12.0 0.14.0 0.14.0-r2: A unit test framework for C
+dev-libs/check 0.14.0 0.14.0-r2: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cl 1.2.3 1.2.4 9999: OpenCL bindings for Erlang
 dev-libs/clhpp 2.0.10 2.0.11: Khronos OpenCL C++ bindings
@@ -12226,7 +12226,7 @@ mail-filter/dspam 3.10.2-r2: A statistical-algorithmic hybrid anti-spam filter
 mail-filter/exim-geoip 0.1: This is an IPv4 and IPv6 capable GeoIP dlfunc library for Exim
 mail-filter/exim-p0f 0.1: This is p0f version 3 dlfunc library for Exim
 mail-filter/gld 1.7-r2 1.7-r4: A standalone anti-spam greylisting algorithm on top of Postfix
-mail-filter/imapfilter 2.5.6 2.6.12 2.6.16: An IMAP mail filtering utility
+mail-filter/imapfilter 2.6.16: An IMAP mail filtering utility
 mail-filter/libmilter 1.0.2 1.0.2_p1: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
 mail-filter/libspf2 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
