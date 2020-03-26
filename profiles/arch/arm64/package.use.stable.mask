@@ -111,7 +111,6 @@ dev-python/pycurl test
 dev-python/pyopenssl test
 dev-python/setuptools_scm mercurial test
 dev-python/sphinx latex test
-dev-python/twisted-core gtk serial
 net-analyzer/netcat crypt
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-07)
