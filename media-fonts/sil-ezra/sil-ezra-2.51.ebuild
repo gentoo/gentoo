@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${MY_P}.zip"
 
 LICENSE="MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ~ppc s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm ia64 ~ppc s390 sparc x86"
 IUSE="doc"
 
 BDEPEND="app-arch/unzip"

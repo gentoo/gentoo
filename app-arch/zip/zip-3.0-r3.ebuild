@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/infozip/${MY_P}.zip"
 
 LICENSE="Info-ZIP"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux"
 IUSE="bzip2 crypt natspec unicode"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )

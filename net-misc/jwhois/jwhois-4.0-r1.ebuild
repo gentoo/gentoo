@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE="idn nls"
 
 RDEPEND="idn? ( net-dns/libidn )"

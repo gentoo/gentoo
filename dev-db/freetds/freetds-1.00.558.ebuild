@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.freetds.org/pub/${PN}/current/${MY_PN}.${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~ppc-macos"
 
 IUSE="debug gnutls iconv kerberos libressl mssql iodbc odbc ssl static-libs"
 # iODBC and unixODBC are mutually-exclusive choices for

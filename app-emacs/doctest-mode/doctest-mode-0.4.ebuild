@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="http://python-mode.svn.sourceforge.net/viewvc/*checkout*/python-mode/tr
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh x86"
+KEYWORDS="amd64 arm hppa ia64 ppc ppc64 ~s390 x86"
 
 S="${WORKDIR}"
 SITEFILE="60${PN}-gentoo.el"
