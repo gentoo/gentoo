@@ -10,7 +10,7 @@ SRC_URI="https://github.com/verdammelt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~hppa ppc ~ppc64 sparc ~x86"
+KEYWORDS="amd64 ~hppa ppc ~ppc64 sparc x86"
 
 src_prepare() {
 	default
