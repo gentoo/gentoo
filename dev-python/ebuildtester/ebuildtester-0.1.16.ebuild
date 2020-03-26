@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="A dockerized approach to test a Gentoo package within a clean stage3 container"
-HOMEPAGE="http://ebuildtester.readthedocs.io/"
+HOMEPAGE="https://ebuildtester.readthedocs.io/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -23,6 +23,7 @@ RDEPEND="
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 
