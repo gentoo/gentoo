@@ -25,6 +25,7 @@ RDEPEND="dev-libs/glib:2
 	dev-qt/qtnetwork:5
 	dev-qt/qtpositioning:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtquickcontrols:5
 	dev-qt/qtscript:5
 	dev-qt/qtwebchannel:5
 	dev-qt/qtwebengine:5
