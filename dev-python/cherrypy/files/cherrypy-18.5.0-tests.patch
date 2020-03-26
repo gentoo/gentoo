@@ -1,0 +1,21 @@
+diff --git a/cherrypy/test/test_tools.py b/cherrypy/test/test_tools.py
+index 3a0fd389..e357a445 100644
+--- a/cherrypy/test/test_tools.py
++++ b/cherrypy/test/test_tools.py
+@@ -9,6 +9,8 @@ import unittest
+ import operator
+ from http.client import IncompleteRead
+ 
++import pytest
++
+ import cherrypy
+ from cherrypy import tools
+ from cherrypy._cpcompat import ntou
+@@ -343,6 +345,7 @@ class ToolTests(helper.CPWebCase):
+         expected_msg = tmpl.format(attr='items')
+         self.assertInBody(expected_msg)
+ 
++    @pytest.mark.skipif('sys.hexversion >= 0x03080000')
+     def testCombinedTools(self):
+         expectedResult = (ntou('Hello,world') +
+                           europoundUnicode).encode('utf-8')
