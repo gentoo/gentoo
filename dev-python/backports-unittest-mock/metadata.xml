@@ -8,6 +8,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">backports.unittest_mock</remote-id>
 		<remote-id type="github">jaraco/backports.unittest_mock</remote-id>
