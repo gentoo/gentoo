@@ -476,11 +476,6 @@ x11-misc/tintwizard
 # Last activity in 2013, bug #710162, masked for removal in 30 days.
 sci-misc/pythoncad
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last release in 2013, bug #710164, masked for removal in 30 days.
-sci-electronics/gresistor
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-24)
 # app-admin/packagekit-base is Python 2 only and behind upstream.
 # The Portage backend is unmaintained.  Other packages are its reverse
