@@ -466,11 +466,6 @@ app-text/keepnote
 # Last release in 2012, bug #708142, masked for removal in 30 days.
 x11-misc/revelation
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last release in 2011, bug #708150, masked for removal in 30 days.
-x11-misc/tintwizard
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-24)
 # app-admin/packagekit-base is Python 2 only and behind upstream.
 # The Portage backend is unmaintained.  Other packages are its reverse
