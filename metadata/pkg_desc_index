@@ -7555,8 +7555,8 @@ dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.3: Python-powered template engine and code generator
-dev-python/cheroot 8.2.1-r1: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
-dev-python/cherrypy 3.8.0 13.1.0 13.1.0-r1 17.4.1-r1 18.1.0-r1 18.5.0: CherryPy is a pythonic, object-oriented HTTP framework
+dev-python/cheroot 8.2.1-r1 8.3.0: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
+dev-python/cherrypy 3.8.0 13.1.0 13.1.0-r1 17.4.1-r1 17.4.2 18.1.0-r1 18.5.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
 dev-python/cjkwrap 2.2: A library for wrapping and filling UTF-8 CJK text
@@ -17439,7 +17439,7 @@ sys-kernel/ck-sources 5.4.24: Gentoo's genpatches for Linux , with Con Kolivas' 
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.5 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.5 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.109 4.19.111 4.19.112 5.4.25 5.4.26 5.4.27 5.5.9 5.5.10 5.5.11: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.109 4.19.111 4.19.112 5.4.25 5.4.26 5.4.27 5.5.9 5.5.10 5.5.11: Pre-built Linux kernel with genpatches
