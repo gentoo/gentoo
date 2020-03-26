@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,6 @@ DEPEND="${PYTHON_DEPS}
 	dev-ada/gnatcoll-bindings[iconv,shared]
 	dev-python/mako
 	dev-python/pyyaml
-	<dev-python/pyyaml-5
 	dev-python/enum34
 	dev-python/funcy
 	dev-python/docutils
@@ -33,7 +32,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}-src
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-2019-pyyaml.patch
+)
 
 src_test() {
 	testsuite/testsuite.py -j $(makeopts_jobs) --show-error-output | tee testsuite.log
