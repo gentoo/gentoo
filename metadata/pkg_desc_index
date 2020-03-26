@@ -17106,7 +17106,6 @@ sys-boot/raspberrypi-mkimage 0_p20120201: Raspberry Pi kernel mangling tool mkim
 sys-boot/refind 0.10.4-r2 0.11.2 0.11.3 0.11.4: The UEFI Boot Manager by Rod Smith
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
-sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 sys-boot/syslinux 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 243 245: UEFI boot manager from systemd (formerly gummiboot)
