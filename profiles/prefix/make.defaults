@@ -14,6 +14,3 @@ USE="readline zlib ncurses ssl"
 # NOTE: Both are incremental variables: Need to drop obsolete base values.
 PYTHON_TARGETS="-python2_7 python3_6"
 PYTHON_SINGLE_TARGET="python3_6"
-
-# Move away from ruby22 fast forward to ruby24, we don't have ruby23
-RUBY_TARGETS="ruby24"
