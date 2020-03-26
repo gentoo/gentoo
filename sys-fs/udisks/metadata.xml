@@ -7,7 +7,6 @@
 	<use>
 		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
 		<flag name="lvm">Add support for Logical Volume Management via <pkg>sys-fs/lvm2</pkg>.</flag>
-		<flag name="remote-access">Control whether connections from other clients over LAN are allowed</flag>
 		<flag name="systemd">Support <pkg>sys-apps/systemd</pkg>'s logind</flag>
 		<flag name="vdo">Enable Virtual Data Optimizer support.</flag>
 	</use>
