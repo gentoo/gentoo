@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jaraco/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="PSF-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="doc test"
 
 RDEPEND="

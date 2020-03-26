@@ -10,7 +10,4 @@
     (MPD). It aims to be efficient (no toolbar, main menu, or statusbar),
     user-friendly, and clean.
   </longdescription>
-  <use>
-    <flag name="lyrics">Support for lyrics fetching</flag>
-  </use>
 </pkgmetadata>

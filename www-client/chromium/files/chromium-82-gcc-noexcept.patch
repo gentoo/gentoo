@@ -11,3 +11,25 @@ index 56564d7..2798a3c 100644
  
  ColorSet::~ColorSet() = default;
  
+diff --git a/third_party/blink/public/platform/cross_variant_mojo_util.h b/third_party/blink/public/platform/cross_variant_mojo_util.h
+index dee0b95..0c83580 100644
+--- a/third_party/blink/public/platform/cross_variant_mojo_util.h
++++ b/third_party/blink/public/platform/cross_variant_mojo_util.h
+@@ -124,7 +124,7 @@ class CrossVariantMojoAssociatedReceiver {
+   ~CrossVariantMojoAssociatedReceiver() = default;
+ 
+   CrossVariantMojoAssociatedReceiver(
+-      CrossVariantMojoAssociatedReceiver&&) noexcept = default;
++      CrossVariantMojoAssociatedReceiver&&) = default;
+   CrossVariantMojoAssociatedReceiver& operator=(
+       CrossVariantMojoAssociatedReceiver&&) noexcept = default;
+ 
+@@ -155,7 +155,7 @@ class CrossVariantMojoAssociatedRemote {
+   ~CrossVariantMojoAssociatedRemote() = default;
+ 
+   CrossVariantMojoAssociatedRemote(
+-      CrossVariantMojoAssociatedRemote&&) noexcept = default;
++      CrossVariantMojoAssociatedRemote&&) = default;
+   CrossVariantMojoAssociatedRemote& operator=(
+       CrossVariantMojoAssociatedRemote&&) noexcept = default;
+ 

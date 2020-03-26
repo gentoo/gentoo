@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.5-make43.patch # remove when bumping and switching to Meson
+)
+
 src_prepare() {
 	default
 	addpredict /dev # Prevent sandbox violations bug #570624

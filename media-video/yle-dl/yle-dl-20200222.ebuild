@@ -9,12 +9,12 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Download media files from Yle Areena"
-HOMEPAGE="http://aajanki.github.io/yle-dl/"
+HOMEPAGE="https://aajanki.github.io/yle-dl/ https://github.com/aajanki/yle-dl"
 SRC_URI="https://github.com/aajanki/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="libav php test +youtube-dl"
 
@@ -42,7 +42,7 @@ RDEPEND="
 DEPEND="
 	test? (
 		${RDEPEND}
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 

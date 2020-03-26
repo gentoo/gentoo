@@ -1,8 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 # svn export http://svn.musepack.net/libreplaygain libreplaygain-${PV}
@@ -18,7 +19,7 @@ KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~
 IUSE=""
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e '/CMAKE_C_FLAGS/d' CMakeLists.txt || die
 }

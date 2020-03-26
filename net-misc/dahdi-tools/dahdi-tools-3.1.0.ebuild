@@ -16,6 +16,7 @@ IUSE="ppp"
 PATCHES=(
 	"${FILESDIR}/dahdi-nondigium-blacklist.patch"
 	"${FILESDIR}/dahdi-tools-3.1.0-parallel-make-no-config.patch"
+	"${FILESDIR}/dahdi-tools-3.1.0-fno-common.patch"
 )
 
 DEPEND="dev-libs/newt

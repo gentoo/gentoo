@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/713428
+--- a/configure.ac
++++ b/configure.ac
+@@ -33,6 +33,7 @@ AC_CANONICAL_HOST
+ 
+ case "${host_os}" in
+     linux-gnu*) HOST_OS="linux-gnu" ;;
++    linux-musl*) HOST_OS="linux-gnu" ;;
+     linux-uclibc*) HOST_OS="linux-gnu" ;;
+     *)		AC_MSG_ERROR([unkown host-os ${host_os}]) ;;
+ esac

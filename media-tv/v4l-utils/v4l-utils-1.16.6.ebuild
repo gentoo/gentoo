@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~sparc x86"
 IUSE="+bpf opengl qt5"
 
 RDEPEND=">=media-libs/libv4l-${PV}[jpeg]
@@ -30,6 +30,8 @@ BDEPEND="
 	bpf? ( sys-devel/clang:*[llvm_targets_BPF] )
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.16.6-gcc10-fno-common.patch )
 
 src_configure() {
 	if use qt5; then

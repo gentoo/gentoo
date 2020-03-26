@@ -11,7 +11,7 @@ DESCRIPTION="A simple Python socket pool"
 HOMEPAGE="https://github.com/benoitc/socketpool/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 s390 ~sparc x86"
 IUSE="examples test"
 LICENSE="|| ( MIT public-domain )"
 SLOT="0"

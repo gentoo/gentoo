@@ -16,10 +16,14 @@ IUSE="examples"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-EXAMPLES=( examples/ )
 PATCHES=( "${FILESDIR}"/${PN}-0.3.2-remove-examples-from-setup.py.patch ) #555250
 
 python_install_all() {
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 	dodoc -r docs
 }

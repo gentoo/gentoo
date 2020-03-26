@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ RDEPEND="
 	app-arch/bzip2
 	dev-libs/openssl:0=
 	>=dev-libs/rapidjson-1.1.0
-	net-libs/libupnp:0=
+	<net-libs/libupnp-1.8.0
 	sys-libs/zlib
 	control-socket? ( dev-qt/qtnetwork:5 )
 	gnome-keyring? ( gnome-base/libgnome-keyring )
@@ -48,18 +48,22 @@ RDEPEND="
 	xapian? ( dev-libs/xapian )"
 
 DEPEND="${RDEPEND}
-	gui? ( dev-qt/designer:5 )
-	jsonapi? (
-		app-doc/doxygen
-		dev-util/cmake
-	)
 	dev-qt/qtcore:5
+	gui? ( dev-qt/designer:5 )"
+
+BDEPEND="dev-util/cmake
 	virtual/pkgconfig
-"
+	jsonapi? (
+		|| (
+			>=app-doc/doxygen-1.8.17
+			<app-doc/doxygen-1.8.16
+		)
+	)"
+
 src_unpack() {
 	default
 
-	mv RetroShare ${P}
+	mv RetroShare ${P} || die
 }
 
 src_configure() {

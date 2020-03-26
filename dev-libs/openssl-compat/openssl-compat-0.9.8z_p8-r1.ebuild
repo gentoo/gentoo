@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # this ebuild is only for the libcrypto.so.0.9.8 and libssl.so.0.9.8 SONAME for ABI compat
@@ -18,7 +18,7 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
 
 LICENSE="openssl"
 SLOT="0.9.8"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
 IUSE="bindist gmp kerberos cpu_flags_x86_sse2 test zlib"
 RESTRICT="!bindist? ( bindist )
 	test"

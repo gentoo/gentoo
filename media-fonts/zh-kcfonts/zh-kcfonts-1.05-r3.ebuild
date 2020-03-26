@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ppc s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm ia64 ppc s390 sparc x86"
 IUSE=""
 # Only installs fonts
 RESTRICT="strip binchecks"
@@ -25,7 +25,6 @@ RESTRICT="strip binchecks"
 BDEPEND="x11-apps/bdftopcf"
 
 S="${WORKDIR}"
-FONT_S="${S}"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-freebsd-aa_ad.patch

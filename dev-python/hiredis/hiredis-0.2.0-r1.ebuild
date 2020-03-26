@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE=""
 
-DEPEND=">=dev-libs/hiredis-0.13.1"
+DEPEND=">=dev-libs/hiredis-0.13.1:="
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-r1-system-libs.patch )

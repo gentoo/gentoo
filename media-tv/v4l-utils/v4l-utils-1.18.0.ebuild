@@ -10,7 +10,7 @@ SRC_URI="https://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+bpf opengl qt5"
 
 RDEPEND=">=media-libs/libv4l-${PV}[jpeg]
@@ -30,6 +30,8 @@ BDEPEND="
 	bpf? ( sys-devel/clang:*[llvm_targets_BPF] )
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.16.6-gcc10-fno-common.patch )
 
 src_configure() {
 	if use qt5; then

@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit eutils fortran-2 multilib flag-o-matic toolchain-funcs
+inherit fortran-2 flag-o-matic toolchain-funcs
 
 MY_P=${P/-mpi}
 
@@ -50,6 +50,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	# Necessary for scalibility, see
 	# http://www.open-mpi.org/community/lists/users/2008/09/6514.php
 	if use threads; then
@@ -92,7 +93,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	dodoc README AUTHORS NEWS VERSION
 }
 

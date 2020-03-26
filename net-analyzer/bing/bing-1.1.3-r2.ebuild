@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ia64 ppc sparc x86"
 
 src_prepare() {
 	default
-	sed -i -e "s:#COPTIM = -g: COPTIM = ${CFLAGS}:" Makefile || die
+	sed -i -e "s|#COPTIM = -g| COPTIM = ${CFLAGS}|" Makefile || die
 }
 
 src_compile() {

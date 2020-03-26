@@ -5,8 +5,4 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>peter@stuge.se</email>
-		<name>Peter Stuge</name>
-	</maintainer>
-</pkgmetadata>
+	</pkgmetadata>

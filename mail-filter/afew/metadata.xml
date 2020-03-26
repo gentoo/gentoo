@@ -5,6 +5,10 @@
 		<email>aidecoe@gentoo.org</email>
 		<name>Amadeusz Żołnowski</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>guillaumeseren@gmail.com</email>
+		<name>Guillaume Seren</name>
+	</maintainer>
 	<longdescription lang="en">
 		afew is an initial tagging script for Notmuch.  Its basic task is to
 		provide automatic tagging each time new mail is registered with Notmuch.

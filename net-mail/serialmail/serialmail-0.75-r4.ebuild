@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -27,9 +27,9 @@ src_prepare() {
 	epatch "${WORKDIR}"/${P}-gentoo.patch
 	epatch "${WORKDIR}"/${P}-smtpauth.patch
 	epatch "${WORKDIR}"/${P}-smtpauth_comp.patch
-	sed -i "s:@CFLAGS@:${CFLAGS}:" conf-cc
+	sed -i "s|@CFLAGS@|${CFLAGS}|" conf-cc
 	use static && LDFLAGS="${LDFLAGS} -static"
-	sed -i "s:@LDFLAGS@:${LDFLAGS}:" conf-ld
+	sed -i "s|@LDFLAGS@|${LDFLAGS}|" conf-ld
 	epatch "${FILESDIR}"/${P}-implicit.patch
 }
 

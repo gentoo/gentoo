@@ -3,6 +3,9 @@
 
 EAPI=7
 
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit python-any-r1
+
 DESCRIPTION="X keyboard configuration database"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/XKeyboardConfig https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
 
@@ -13,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
 else
 	SRC_URI="https://www.x.org/releases/individual/data/${PN}/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -21,6 +24,7 @@ SLOT="0"
 IUSE=""
 
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -31,6 +35,10 @@ DEPEND="${LIVE_DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-python3-support.patch
 )
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default

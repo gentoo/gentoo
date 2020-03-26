@@ -13,7 +13,7 @@ SRC_URI="http://files.sagemath.org/spkg/upstream/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/6"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="boost flint minimal static-libs test"
 RESTRICT="!test? ( test )"
 

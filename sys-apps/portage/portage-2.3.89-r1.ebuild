@@ -4,11 +4,7 @@
 EAPI=5
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=(
-	pypy3
-	python3_6 python3_7 python3_8
-	python2_7
-)
+PYTHON_COMPAT=( pypy3 python3_5 python3_6 python3_7 python3_8 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
 inherit distutils-r1 linux-info systemd prefix
@@ -17,7 +13,7 @@ DESCRIPTION="Portage is the package management and distribution system for Gento
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
 
@@ -243,14 +239,14 @@ python_install_all() {
 
 pkg_preinst() {
 	python_setup
-	python_export PYTHON_SITEDIR
-	[[ -d ${D%/}${PYTHON_SITEDIR} ]] || die "${D%/}${PYTHON_SITEDIR}: No such directory"
+	local sitedir=$(python_get_sitedir)
+	[[ -d ${D%/}${sitedir} ]] || die "${D%/}${sitedir}: No such directory"
 	env -u DISTDIR \
 		-u PORTAGE_OVERRIDE_EPREFIX \
 		-u PORTAGE_REPOSITORIES \
 		-u PORTDIR \
 		-u PORTDIR_OVERLAY \
-		PYTHONPATH="${D%/}${PYTHON_SITEDIR}${PYTHONPATH:+:${PYTHONPATH}}" \
+		PYTHONPATH="${D%/}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
 		"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
 	# elog dir must exist to avoid logrotate error for bug #415911.

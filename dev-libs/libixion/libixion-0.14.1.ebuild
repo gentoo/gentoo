@@ -25,7 +25,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	dev-libs/boost:=
-	>=dev-util/mdds-1.4.1:1=
+	=dev-util/mdds-1.4*:1
 	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${DEPEND}"

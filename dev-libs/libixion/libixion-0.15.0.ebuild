@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="https://kohei.us/files/ixion/src/${P}.tar.xz"
-# 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -31,6 +31,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/spdlog
 "
+
+PATCHES=( "${FILESDIR}/${P}-musl-clang.patch" ) # bug 714018
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

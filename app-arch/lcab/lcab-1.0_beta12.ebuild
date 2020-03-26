@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 inherit autotools
 
@@ -15,11 +15,11 @@ SRC_URI="ftp://mirror.ohnopub.net/mirror/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
 	sed -i "s:1.0b11:${MY_PV}:" mytypes.h || die
 	eautoreconf
 }

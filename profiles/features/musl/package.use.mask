@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-19)
+# check does not work on musl, bug #713138
+dev-lang/gforth check
+
 # See bug #604542
 net-misc/iputils idn
 

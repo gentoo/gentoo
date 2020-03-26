@@ -15,7 +15,7 @@ IUSE="examples mpi"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="sci-libs/hdf5:=[mpi=,hl(+)]
 	dev-python/numpy[${PYTHON_USEDEP}]

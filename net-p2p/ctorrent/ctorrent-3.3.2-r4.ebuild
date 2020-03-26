@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="${PN}-dnh${PV}"
 
@@ -11,10 +11,8 @@ SRC_URI="mirror://sourceforge/dtorrent/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ~s390 ~sh ~sparc x86"
+KEYWORDS="amd64 arm ppc ~s390 ~sparc x86"
 IUSE="libressl"
-
-S="${WORKDIR}/${MY_P}"
 
 RDEPEND="
 	libressl? ( dev-libs/libressl:0= )
@@ -22,8 +20,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+S="${WORKDIR}/${MY_P}"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-CVE-2009-1759.patch
 	"${FILESDIR}"/${P}-negative-ints.patch
 	"${FILESDIR}"/${P}-empty-path-components.patch
+	"${FILESDIR}"/${P}-sys-types_h.patch
 )

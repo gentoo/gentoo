@@ -28,7 +28,7 @@ IUSE="wayland X"
 BDEPEND=">=dev-util/cmake-3.10.2"
 DEPEND="${PYTHON_DEPS}
 	>=dev-util/glslang-7.12.3353_pre20191027-r1:=[${MULTILIB_USEDEP}]
-	>=dev-util/spirv-tools-2020.1:=
+	>=dev-util/spirv-tools-2020.1:=[${MULTILIB_USEDEP}]
 	>=dev-util/vulkan-headers-${PV}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
@@ -36,6 +36,8 @@ DEPEND="${PYTHON_DEPS}
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	)
 "
+
+PATCHES=( "${FILESDIR}/${PN}-${PV}-Fix-build.patch" )
 
 multilib_src_configure() {
 	local mycmakeargs=(

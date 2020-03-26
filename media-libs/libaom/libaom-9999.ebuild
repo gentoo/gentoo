@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ else
 		SRC_URI="mirror://gentoo/${P}.tar.gz"
 		S="${WORKDIR}"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
@@ -44,6 +44,9 @@ BDEPEND="abi_x86_32? ( dev-lang/yasm )
 "
 
 PATCHES=( "${FILESDIR}/pthread_lib2.patch" )
+
+# the PATENTS file is required to be distributed with this package bug #682214
+DOCS=( PATENTS )
 
 multilib_src_configure() {
 	local mycmakeargs=(

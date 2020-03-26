@@ -68,10 +68,6 @@ REQUIRED_USE="|| ( alsa pulseaudio )"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/0002-PPC-big-endian.patch"
-)
-
 src_configure() {
 	local mycxxflags=(
 		-Wno-deprecated-declarations

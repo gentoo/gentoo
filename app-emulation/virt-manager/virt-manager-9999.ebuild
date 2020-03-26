@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gnome-keyring gtk policykit sasl"
+IUSE="gtk policykit sasl"
 
 RDEPEND="!app-emulation/virtinst
 	${PYTHON_DEPS}
@@ -46,7 +46,6 @@ RDEPEND="!app-emulation/virtinst
 		x11-libs/gtk+:3[introspection]
 		x11-libs/gtksourceview:4[introspection]
 		x11-libs/vte:2.91[introspection]
-		gnome-keyring? ( gnome-base/libgnome-keyring )
 		policykit? ( sys-auth/polkit[introspection] )
 	)
 "

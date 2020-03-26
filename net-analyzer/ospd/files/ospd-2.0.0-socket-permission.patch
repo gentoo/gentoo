@@ -1,0 +1,53 @@
+From 8f359bb07901a18609974d5f3e587b8fe8c36177 Mon Sep 17 00:00:00 2001
+From: Juan Jose Nicola <juan.nicola@greenbone.net>
+Date: Wed, 16 Oct 2019 11:45:30 +0200
+Subject: [PATCH] Fix set permission on unix socket. It was trying to set the
+ permissions on the unix socket before creating it.
+
+---
+ CHANGELOG.md   | 7 +++++++
+ ospd/server.py | 6 +++---
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 56cb80f..0f173cb 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
+ 
+ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+ 
++## [2.0.1] (unreleased)
++
++### Fixed
++- Fix set permission in unix socket. [#157](https://github.com/greenbone/ospd/pull/157)
++
++[2.0.1]: https://github.com/greenbone/ospd/compare/v2.0.0...ospd-2.0
++
+ ## [2.0.0] (2019-10-11)
+ 
+ ### Added
+diff --git a/ospd/server.py b/ospd/server.py
+index 5523de3..9356abf 100644
+--- a/ospd/server.py
++++ b/ospd/server.py
+@@ -202,9 +202,6 @@ def start(self, stream_callback: StreamCallbackType):
+         self._cleanup_socket()
+         self._create_parent_dirs()
+ 
+-        if self.socket_path.exists():
+-            os.chmod(str(self.socket_path), self.socket_mode)
+-
+         try:
+             self.stream_callback = stream_callback
+             self.server = ThreadedUnixSocketServer(self, str(self.socket_path))
+@@ -217,6 +214,9 @@ def start(self, stream_callback: StreamCallbackType):
+                 )
+             )
+ 
++        if self.socket_path.exists():
++            self.socket_path.chmod(self.socket_mode)
++
+     def close(self):
+         super().close()
+         self._cleanup_socket()

@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 # It is the developer's intention that backports.unittest_mock will be
 # used even for Python 3: https://github.com/jaraco/jaraco.timing/pull/1
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
@@ -17,7 +18,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE="test"
 
 RDEPEND="
@@ -25,7 +26,6 @@ RDEPEND="
 	dev-python/mock[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]

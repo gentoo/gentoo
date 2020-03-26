@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ppc s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm ia64 ppc s390 sparc x86"
 
 S="${WORKDIR}/${MY_P//_/-}.orig"
 
@@ -23,5 +23,5 @@ PATCHES=( "${WORKDIR}"/${MY_P}-6.diff )
 
 DOCS="Changelog.en xcyr.README.* xrus.README"
 FONT_PN="cronyx"
-FONT_S="${S}/75dpi ${S}/100dpi ${S}/misc"
+FONT_S=( "${S}"/75dpi "${S}"/100dpi "${S}"/misc )
 FONTDIR="/usr/share/fonts/cronyx"

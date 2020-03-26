@@ -9,7 +9,7 @@ inherit multiprocessing python-any-r1 qt5-build
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 IUSE="alsa bindist designer geolocation jumbo-build pulseaudio +system-ffmpeg +system-icu widgets"
@@ -79,6 +79,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-disable-fatal-warnings.patch" # bug 695446
+	"${FILESDIR}/${P}-detect-ninja-1.10.patch" # QTBUG-82715, fixed in Qt 5.14.2
 )
 
 src_prepare() {

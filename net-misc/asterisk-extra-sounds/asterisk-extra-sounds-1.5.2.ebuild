@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 DESCRIPTION="Extra sounds for asterisk"
-HOMEPAGE="http://www.asterisk.org/"
+HOMEPAGE="https://www.asterisk.org/"
 MY_L10N="^en en_GB fr" # ^ is used to indicate to the loops below to NOT set this as an optional
 CODECS="alaw g722 g729 +gsm siren7 siren14 sln16 ulaw wav"
 
@@ -13,12 +13,12 @@ IUSE="${CODECS}"
 for l in ${MY_L10N}; do
 	[[ "${l}" != ^* ]] && IUSE+=" l10n_${l//_/-}" && SRC_URI+=" l10n_${l//_/-}? ("
 	for c in ${CODECS}; do
-		SRC_URI+=" ${c#+}? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/${PN}-${l#^}-${c#+}-${PV}.tar.gz )"
+		SRC_URI+=" ${c#+}? ( https://downloads.asterisk.org/pub/telephony/sounds/releases/${PN}-${l#^}-${c#+}-${PV}.tar.gz )"
 	done
 	[[ "${l}" = ^* ]] || SRC_URI+=" )"
 done
 
-REQUIRE_USE="|| ( ${CODECS//+/} )"
+REQUIRED_USE="|| ( ${CODECS//+/} )"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
@@ -66,7 +66,6 @@ src_install() {
 	diropts -m 0755 -o root -g root
 	insopts -m 0644 -o root -g root
 
-	dodir /var/lib/asterisk/sounds
 	insinto /var/lib/asterisk/sounds
 	doins -r .
 }

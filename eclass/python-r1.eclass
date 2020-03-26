@@ -173,7 +173,7 @@ _python_set_globals() {
 	_python_set_impls
 
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		python_export "${i}" PYTHON_PKG_DEP
+		_python_export "${i}" PYTHON_PKG_DEP
 		deps+="python_targets_${i}? ( ${PYTHON_PKG_DEP} ) "
 	done
 
@@ -485,7 +485,7 @@ python_gen_impl_dep() {
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			local PYTHON_PKG_DEP
-			python_export "${impl}" PYTHON_PKG_DEP
+			_python_export "${impl}" PYTHON_PKG_DEP
 			matches+=( "python_targets_${impl}? ( ${PYTHON_PKG_DEP} )" )
 		fi
 	done
@@ -563,7 +563,7 @@ python_gen_any_dep() {
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${i}" "${@}"; then
 			local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
-			python_export "${i}" PYTHON_PKG_DEP
+			_python_export "${i}" PYTHON_PKG_DEP
 
 			local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
 			# note: need to strip '=' slot operator for || deps
@@ -637,8 +637,8 @@ _python_multibuild_wrapper() {
 
 	local -x EPYTHON PYTHON
 	local -x PATH=${PATH} PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
-	python_export "${MULTIBUILD_VARIANT}" EPYTHON PYTHON
-	python_wrapper_setup
+	_python_export "${MULTIBUILD_VARIANT}" EPYTHON PYTHON
+	_python_wrapper_setup
 
 	"${@}"
 }
@@ -760,7 +760,7 @@ python_setup() {
 		# check patterns
 		_python_impl_matches "${impl}" "${@}" || continue
 
-		python_export "${impl}" EPYTHON PYTHON
+		_python_export "${impl}" EPYTHON PYTHON
 
 		# if python_check_deps() is declared, switch into any-of mode
 		if [[ ${has_check_deps} ]]; then
@@ -784,7 +784,7 @@ python_setup() {
 		die "${FUNCNAME}: no enabled implementation satisfy requirements"
 	fi
 
-	python_wrapper_setup
+	_python_wrapper_setup
 	einfo "Using ${EPYTHON} in global scope"
 }
 
@@ -803,7 +803,7 @@ python_replicate_script() {
 		local _PYTHON_FIX_SHEBANG_QUIET=1
 
 		local PYTHON_SCRIPTDIR
-		python_export PYTHON_SCRIPTDIR
+		_python_export PYTHON_SCRIPTDIR
 
 		(
 			exeopts -m 0755

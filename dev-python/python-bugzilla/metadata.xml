@@ -5,6 +5,10 @@
     <email>dilfridge@gentoo.org</email>
     <name>Andreas K. Huettel</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">python-bugzilla/python-bugzilla</remote-id>
     <remote-id type="pypi">python-bugzilla</remote-id>

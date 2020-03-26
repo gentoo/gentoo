@@ -4,11 +4,7 @@
 EAPI=5
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=(
-	pypy
-	python3_5 python3_6 python3_7
-	python2_7
-)
+PYTHON_COMPAT=( python3_5 python3_6 python3_7 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
 inherit distutils-r1 linux-info systemd prefix
@@ -17,16 +13,15 @@ DESCRIPTION="Portage is the package management and distribution system for Gento
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 SLOT="0"
-IUSE="build doc epydoc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
+IUSE="build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
 
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
 	>=sys-apps/sed-4.0.5 sys-devel/patch
-	doc? ( app-text/xmlto ~app-text/docbook-xml-dtd-4.4 )
-	epydoc? ( >=dev-python/epydoc-2.0[$(python_gen_usedep 'python2*')] )"
+	doc? ( app-text/xmlto ~app-text/docbook-xml-dtd-4.4 )"
 # Require sandbox-2.2 for bug #288863.
 # For xattr, we can spawn getfattr and setfattr from sys-apps/attr, but that's
 # quite slow, so it's not considered in the dependencies as an alternative to
@@ -73,8 +68,6 @@ PDEPEND="
 # coreutils-6.4 rdep is for date format in emerge-webrsync #164532
 # NOTE: FEATURES=installsources requires debugedit and rsync
 
-REQUIRED_USE="epydoc? ( $(python_gen_useflags 'python2*') )"
-
 SRC_ARCHIVES="https://dev.gentoo.org/~zmedico/portage/archives"
 
 prefix_src_archives() {
@@ -97,7 +90,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
+	:
 }
 
 python_prepare_all() {
@@ -182,7 +175,6 @@ python_prepare_all() {
 python_compile_all() {
 	local targets=()
 	use doc && targets+=( docbook )
-	use epydoc && targets+=( epydoc )
 
 	if [[ ${targets[@]} ]]; then
 		esetup.py "${targets[@]}"
@@ -215,10 +207,6 @@ python_install_all() {
 		install_docbook
 		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 	)
-	use epydoc && targets+=(
-		install_epydoc
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
-	)
 
 	# install docs
 	if [[ ${targets[@]} ]]; then
@@ -240,14 +228,14 @@ python_install_all() {
 
 pkg_preinst() {
 	python_setup
-	python_export PYTHON_SITEDIR
-	[[ -d ${D%/}${PYTHON_SITEDIR} ]] || die "${D%/}${PYTHON_SITEDIR}: No such directory"
+	local sitedir=$(python_get_sitedir)
+	[[ -d ${D%/}${sitedir} ]] || die "${D%/}${sitedir}: No such directory"
 	env -u DISTDIR \
 		-u PORTAGE_OVERRIDE_EPREFIX \
 		-u PORTAGE_REPOSITORIES \
 		-u PORTDIR \
 		-u PORTDIR_OVERLAY \
-		PYTHONPATH="${D%/}${PYTHON_SITEDIR}${PYTHONPATH:+:${PYTHONPATH}}" \
+		PYTHONPATH="${D%/}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
 		"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
 	# elog dir must exist to avoid logrotate error for bug #415911.

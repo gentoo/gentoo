@@ -1,0 +1,13 @@
+Do not trigger QA with the paths we want our docs in.
+
+--- a/docs/CMakeLists.txt	2020-03-02 23:10:28.358584552 +0100
++++ b/docs/CMakeLists.txt	2020-03-02 23:11:52.228369765 +0100
+@@ -29,8 +29,4 @@
+         USE_STAMP_FILE
+         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/..
+         )
+-    install(DIRECTORY
+-            ${CMAKE_CURRENT_BINARY_DIR}/html/
+-        DESTINATION ${KDE_INSTALL_DATADIR}/doc/KDSoapWSDiscoveryClient
+-        COMPONENT Devel)
+ endif()

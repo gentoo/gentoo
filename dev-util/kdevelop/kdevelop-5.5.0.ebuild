@@ -101,7 +101,11 @@ RESTRICT+=" test"
 # see bug 366471
 
 src_configure() {
+	local clang_version=$(best_version sys-devel/clang)
+	local llvm_root="/usr/lib/llvm/$(ver_cut 1 ${clang_version##sys-devel/clang-})"
+
 	local mycmakeargs=(
+		-DLLVM_ROOT=${llvm_root}
 		$(cmake_use_find_package gdbui KF5SysGuard)
 		-DBUILD_executeplasmoid=$(usex plasma)
 		$(cmake_use_find_package plasma KF5Plasma)

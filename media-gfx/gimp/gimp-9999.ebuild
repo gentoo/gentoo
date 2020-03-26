@@ -16,7 +16,7 @@ LICENSE="GPL-3 LGPL-3"
 SLOT="2"
 KEYWORDS=""
 
-IUSE="aalib alsa altivec aqua debug doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vector-icons webp wmf xpm cpu_flags_x86_mmx cpu_flags_x86_sse"
+IUSE="aalib alsa aqua debug doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
@@ -159,7 +159,7 @@ src_configure() {
 		--without-libbacktrace
 		--without-webkit
 		--without-xvfb-run
-		$(use_enable altivec)
+		$(use_enable cpu_flags_ppc_altivec altivec)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable doc gtk_doc)

@@ -102,7 +102,7 @@ COMMON_DEPEND="
 	systemtap? ( dev-util/systemtap )
 "
 DEPEND="${COMMON_DEPEND}
-	test? ( >=net-dns/libidn2-2.0.5 )
+	test? ( >=net-dns/libidn2-2.3.0 )
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
@@ -123,11 +123,21 @@ else
 	"
 	DEPEND+=" virtual/os-headers "
 	RDEPEND+="
-		>=net-dns/libidn2-2.0.5
+		>=net-dns/libidn2-2.3.0
 		vanilla? ( !sys-libs/timezone-data )
 	"
 	PDEPEND+=" !vanilla? ( sys-libs/timezone-data )"
 fi
+
+# Ignore tests whitelisted below
+GENTOO_GLIBC_XFAIL_TESTS="${GENTOO_GLIBC_XFAIL_TESTS:-yes}"
+
+# The following tests fail due to the Gentoo build system and are thus
+# executed but ignored:
+XFAIL_TEST_LIST=(
+	# 9) Failures of unknown origin
+	tst-latepthread
+)
 
 #
 # Small helper functions
@@ -281,76 +291,26 @@ setup_target_flags() {
 			filter-flags "-fcall-used-g7"
 			append-flags "-fcall-used-g6"
 
-			# If the CHOST is the basic one (e.g. not sparcv9-xxx already),
-			# try to pick a better one so glibc can use cpu-specific .S files.
-			# We key off the CFLAGS to get a good value.  Also need to handle
-			# version skew.
-			# We can't force users to set their CHOST to their exact machine
-			# as many of these are not recognized by config.sub/gcc and such :(.
-			# Note: If the mcpu values don't scale, we might try probing CPP defines.
-			# Note: Should we factor in -Wa,-AvXXX flags too ?  Or -mvis/etc... ?
-
 			local cpu
 			case ${CTARGET} in
 			sparc64-*)
+				cpu="sparc64"
 				case $(get-flag mcpu) in
-				niagara[234])
-					if ver_test -ge 2.8 ; then
-						cpu="sparc64v2"
-					elif ver_test -ge 2.4 ; then
-						cpu="sparc64v"
-					elif ver_test -ge 2.2.3 ; then
-						cpu="sparc64b"
-					fi
-					;;
-				niagara)
-					if ver_test -ge 2.4 ; then
-						cpu="sparc64v"
-					elif ver_test -ge 2.2.3 ; then
-						cpu="sparc64b"
-					fi
-					;;
-				ultrasparc3)
-					cpu="sparc64b"
-					;;
-				*)
+				v9)
 					# We need to force at least v9a because the base build doesn't
 					# work with just v9.
 					# https://sourceware.org/bugzilla/show_bug.cgi?id=19477
-					[[ -z ${cpu} ]] && append-flags "-Wa,-xarch=v9a"
+					append-flags "-Wa,-xarch=v9a"
 					;;
 				esac
 				;;
 			sparc-*)
 				case $(get-flag mcpu) in
-				niagara[234])
-					if ver_test -ge 2.8 ; then
-						cpu="sparcv9v2"
-					elif ver_test -ge 2.4 ; then
-						cpu="sparcv9v"
-					elif ver_test -ge 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
-					;;
-				niagara)
-					if ver_test -ge 2.4 ; then
-						cpu="sparcv9v"
-					elif ver_test -ge 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
-					;;
-				ultrasparc3)
-					cpu="sparcv9b"
-					;;
-				v9|ultrasparc)
-					cpu="sparcv9"
-					;;
 				v8|supersparc|hypersparc|leon|leon3)
 					cpu="sparcv8"
+					;;
+				*)
+					cpu="sparcv9"
 					;;
 				esac
 			;;
@@ -1139,11 +1099,18 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir nptl)"
-	# disable tests:
-	# - tests-container:
-	#     sandbox does not understand unshare() and prevents
-	#     writes to /proc/
-	emake check tests-container=
+
+	local myxfailparams=""
+	if [[ "${GENTOO_GLIBC_XFAIL_TESTS}" == "yes" ]] ; then
+		for myt in ${XFAIL_TEST_LIST[@]} ; do
+			myxfailparams+="test-xfail-${myt}=yes "
+		done
+	fi
+
+	# sandbox does not understand unshare() and prevents
+	# writes to /proc/, which makes many tests fail
+
+	SANDBOX_ON=0 LD_PRELOAD= emake ${myxfailparams} check
 }
 
 do_src_test() {

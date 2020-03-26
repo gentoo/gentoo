@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
@@ -24,7 +24,7 @@ dev-libs/amdgpu-pro-opencl
 net-im/mattermost-desktop-bin
 net-im/skypeforlinux
 net-im/skype-dbus-mock
-net-im/slack-bin
+net-im/slack
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (2012-10-07)
 # V8 upstream said they won't support x32, bug #423815

@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/matplotlib/${P}.tar.gz"
 
 IUSE="examples test"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 LICENSE="MIT GPL-2"
 
 DEPEND="sci-libs/shapelib
@@ -72,6 +72,10 @@ python_install() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }

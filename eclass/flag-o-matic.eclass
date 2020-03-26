@@ -434,13 +434,20 @@ test-flag-PROG() {
 	local lang=$2
 	shift 2
 
-	[[ -z ${comp} || -z $1 ]] && return 1
+	if [[ -z ${comp} ]]; then
+		return 1
+	fi
+	if [[ -z $1 ]]; then
+		return 1
+	fi
 
 	# verify selected compiler exists before using it
 	comp=($(tc-get${comp}))
 	# 'comp' can already contain compiler options.
 	# 'type' needs a binary name
-	type -p ${comp[0]} >/dev/null || return 1
+	if ! type -p ${comp[0]} >/dev/null; then
+		return 1
+	fi
 
 	# Set up test file.
 	local in_src in_ext cmdline_extra=()
@@ -480,6 +487,17 @@ test-flag-PROG() {
 
 	printf "%s\n" "${in_src}" > "${test_in}" || die "Failed to create '${test_in}'"
 
+	# Currently we rely on warning-free output of a compiler
+	# before the flag to see if a flag prduces any warnings.
+	# This has a few drawbacks:
+	# - if compiler already generates warnings we filter out
+	#   every single flag: bug #712488
+	# - if user actually wants to see warnings we just strip
+	#   them regardless of warnings type.
+	#
+	# We can add more selective detection of no-op flags via
+	# '-Werror=ignored-optimization-argument' and similar error options
+	# similar to what we are doing with '-Qunused-arguments'.
 	local cmdline=(
 		"${comp[@]}"
 		# Clang will warn about unknown gcc flags but exit 0.

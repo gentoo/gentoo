@@ -26,7 +26,7 @@ IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
 COMMON_DEPEND="sys-apps/dbus
 	client? ( sys-libs/readline:0= )"
 
-[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" ~dev-libs/ell-${ELL_REQ}"
+[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" >=dev-libs/ell-${ELL_REQ}"
 
 RDEPEND="${COMMON_DEPEND}
 	net-wireless/wireless-regdb

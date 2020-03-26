@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription>
-  Tails Installer is a graphical tool to install or upgrade Tails on a USB stick from an ISO image.
-  </longdescription>
-</pkgmetadata>

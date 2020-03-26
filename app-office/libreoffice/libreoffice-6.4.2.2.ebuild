@@ -44,6 +44,8 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
+	# QR code generating library for >=libreoffice-6.4
+	"${ADDONS_URI}/QR-Code-generator-1.4.0.tar.gz"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
 	"libreoffice_extensions_wiki-publisher? ( ${ADDONS_URI}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip )"
@@ -53,8 +55,6 @@ ADDONS_SRC=(
 	"libreoffice_extensions_scripting-javascript? ( ${ADDONS_URI}/35c94d2df8893241173de1d16b6034c0-swingExSrc.zip )"
 	# not packageable
 	"odk? ( http://download.go-oo.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll )"
-	# QR code generating library for >=libreoffice-6.4
-	"https://dev-www.libreoffice.org/src/QR-Code-generator-1.4.0.tar.gz"
 )
 SRC_URI+=" ${ADDONS_SRC[*]}"
 
@@ -81,8 +81,8 @@ RESTRICT="!test? ( test )"
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
-# [[ ${MY_PV} == *9999* ]] || \
-# KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+[[ ${MY_PV} == *9999* ]] || \
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	dev-util/intltool

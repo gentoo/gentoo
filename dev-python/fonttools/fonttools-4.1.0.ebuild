@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,6 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 
 		>=dev-python/fs-2.4.9[${PYTHON_USEDEP}]
 		app-arch/brotli[python,${PYTHON_USEDEP}]

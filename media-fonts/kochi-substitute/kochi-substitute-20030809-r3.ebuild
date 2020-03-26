@@ -11,12 +11,11 @@ SRC_URI="mirror://sourceforge.jp/efont/5411/${P}.tar.bz2"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 # Only installs fonts
 RESTRICT="strip binchecks"
 
 S="${WORKDIR}/${PN}-${PV:0:8}"
-FONT_S="${S}"
 
 DOCS="README.ja Changelog"
 FONT_SUFFIX="ttf"

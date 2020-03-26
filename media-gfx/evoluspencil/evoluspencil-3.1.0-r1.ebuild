@@ -14,7 +14,7 @@ SRC_URI="https://pencil.evolus.vn/dl/V${MY_PV}/${MY_PN}-${MY_PV}-1.x86_64.rpm ->
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	app-accessibility/at-spi2-atk

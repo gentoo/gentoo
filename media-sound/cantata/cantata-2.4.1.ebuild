@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PLOCALES="cs da de en_GB es fr hu it ja ko pl pt_BR ru zh_CN"
+PLOCALES="cs da de en_GB es fi fr hu it ja ko nl pl pt_BR ru zh_CN"
 inherit cmake l10n qmake-utils xdg
 
 DESCRIPTION="Featureful and configurable Qt client for the music player daemon (MPD)"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/CDrummond/${PN}/releases/download/v${PV}/${P}.tar.bz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="cdda cddb cdio http-server libav mtp musicbrainz replaygain streaming taglib udisks zeroconf"
 REQUIRED_USE="
 	?? ( cdda cdio )

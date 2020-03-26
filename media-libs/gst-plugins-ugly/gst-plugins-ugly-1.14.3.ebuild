@@ -10,7 +10,7 @@ DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="LGPL-2+" # some split plugins are LGPL but combining with a GPL library
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
@@ -20,6 +20,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.3-make43.patch # remove when bumping and switching to Meson
+)
 
 multilib_src_configure() {
 	gstreamer_multilib_src_configure

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/irda/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~sh x86"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE=""
 
 RDEPEND="
@@ -53,7 +53,7 @@ src_prepare() {
 		-e "/^LD/s:ld:$(tc-getLD):" \
 		-e "/^AR/s:ar:$(tc-getAR):" \
 		-e "/^RANLIB/s:ranlib:$(tc-getRANLIB):" \
-		-e "/^CFLAGS/s:-O2:${CFLAGS}:" Makefile */Makefile || die
+		-e "/^CFLAGS/s|-O2|${CFLAGS}|" Makefile */Makefile || die
 
 	# fix compile when pciutils is compiled with USE=zlib (Bug 200295)
 	sed -i -e "s:-lpci:$(pkg-config --libs libpci):g" smcinit/Makefile || die

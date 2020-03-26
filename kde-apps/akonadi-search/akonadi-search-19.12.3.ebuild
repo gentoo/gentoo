@@ -15,8 +15,10 @@ HOMEPAGE="https://cgit.kde.org/akonadi-search.git"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
+
+RESTRICT+=" test" # perpetually broken, bug 662378
 
 BDEPEND="
 	test? ( >=kde-apps/akonadi-${PVCUT}:5[tools] )

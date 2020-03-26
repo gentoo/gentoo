@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>zlogene@gentoo.org</email>
-		<name>Mikle Kolyada</name>
+		<email>hanno@gentoo.org</email>
+		<name>Hanno Böck</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">jepler/cropgui</remote-id>

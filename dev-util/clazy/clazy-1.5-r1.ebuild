@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,11 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="
-	sys-devel/clang:=
+	<sys-devel/clang-10:=
 	>=sys-devel/llvm-3.8:=
 "
 DEPEND="${RDEPEND}"
@@ -37,7 +37,7 @@ src_configure() {
 	# clang pulls in the equivalent llvm version, but not vice versa.
 	# so, we must find llvm based on the installed clang version.
 	# bug #681568
-	local clang_version=$(best_version sys-devel/clang)
+	local clang_version=$(best_version "<sys-devel/clang-10")
 	export LLVM_ROOT="/usr/lib/llvm/$(ver_cut 1 ${clang_version##sys-devel/clang-})"
 	cmake_src_configure
 }

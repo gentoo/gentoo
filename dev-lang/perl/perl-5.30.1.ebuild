@@ -51,7 +51,7 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 IUSE="berkdb debug doc gdbm ithreads"
@@ -62,9 +62,7 @@ RDEPEND="
 	app-arch/bzip2
 	sys-libs/zlib
 "
-DEPEND="${RDEPEND}
-	!prefix? ( elibc_FreeBSD? ( sys-freebsd/freebsd-mk-defs ) )
-"
+DEPEND="${RDEPEND}"
 PDEPEND="
 	>=app-admin/perl-cleaner-2.5
 	>=virtual/perl-File-Temp-0.230.400-r2
@@ -304,6 +302,7 @@ src_prepare() {
 	if use hppa ; then
 		epatch "${FILESDIR}/${PN}-5.26.2-hppa.patch" # bug 634162
 	fi
+	eapply "${FILESDIR}"/${PN}-5.30.1-gcc-10.patch # bug 708744
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,

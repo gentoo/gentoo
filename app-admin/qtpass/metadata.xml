@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-	QtPass is a multi-platform GUI for pass, the standard unix password manager.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">IJHack/qtpass</remote-id>
 	</upstream>

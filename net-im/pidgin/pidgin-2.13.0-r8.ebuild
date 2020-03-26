@@ -4,12 +4,12 @@
 EAPI=7
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools gnome2-utils flag-o-matic toolchain-funcs multilib perl-module python-single-r1 xdg
 
 DESCRIPTION="GTK Instant Messenger client"
-HOMEPAGE="http://pidgin.im/"
+HOMEPAGE="https://pidgin.im/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/${PN}-eds-3.6.patch.bz2
@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0/2" # libpurple version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="aqua dbus debug doc eds gadu gnutls groupwise +gstreamer +gtk idn
 meanwhile ncurses networkmanager nls perl pie prediction python sasl spell tcl
 tk +xscreensaver zephyr zeroconf"

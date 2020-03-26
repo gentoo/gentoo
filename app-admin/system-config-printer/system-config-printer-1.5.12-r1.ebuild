@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/OpenPrinting/system-config-printer"
 SRC_URI="https://github.com/OpenPrinting/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~sparc x86"
 SLOT="0"
 IUSE="doc gnome-keyring policykit"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

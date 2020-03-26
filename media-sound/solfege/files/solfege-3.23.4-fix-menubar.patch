@@ -1,0 +1,16 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: with recent gtk+ versions, the menubar text is not visibile
+ As a workaround another container (HBox) is used.
+Bug: https://savannah.gnu.org/bugs/index.php?53109
+
+--- a/solfege/mainwin.py
++++ b/solfege/mainwin.py
+@@ -267,7 +267,7 @@
+         self.g_ui_manager.add_ui_from_file("ui.xml")
+ 
+         self.add_accel_group(self.g_ui_manager.get_accel_group())
+-        hdlbox = Gtk.HandleBox()
++        hdlbox = Gtk.HBox()
+         hdlbox.show()
+         hdlbox.add(self.g_ui_manager.get_widget('/Menubar'))
+         self._vbox.pack_start(hdlbox, False, False, 0)

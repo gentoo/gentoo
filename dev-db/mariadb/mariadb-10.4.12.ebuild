@@ -325,6 +325,9 @@ src_configure() {
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
+	# It fails on alpha without this
+	use alpha && append-ldflags "-Wl,--no-relax"
+
 	append-cxxflags -felide-constructors
 
 	# bug #283926, with GCC4.4, this is required to get correct behavior.

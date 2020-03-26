@@ -18,6 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="acct-user/ossec
 	acct-user/ossecm
 	acct-user/ossecr
+	dev-libs/libevent
 	dev-libs/libpcre2
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:= )

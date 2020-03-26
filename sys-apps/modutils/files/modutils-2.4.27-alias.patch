@@ -2,8 +2,8 @@ Taken from Debian.
 
 Update misc alias cruft.
 
---- util/alias.h
-+++ util/alias.h
+--- a/util/alias.h
++++ b/util/alias.h
 @@ -52,7 +52,11 @@
  	"binfmt--310 binfmt_java",
  

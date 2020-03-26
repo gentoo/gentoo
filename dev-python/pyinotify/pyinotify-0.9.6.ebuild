@@ -21,7 +21,10 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
 python_install_all() {
-	use examples && local EXAMPLES=( python2/examples/. )
-	EXAMPLES+=( python3/examples/. )
+	if use examples; then
+		dodoc -r python3/examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }

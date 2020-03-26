@@ -1,0 +1,62 @@
+From 936307aceca3619f2b1d1e2f12d21ee4e8608cd6 Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Thu, 5 Mar 2020 08:13:14 +0100
+Subject: [PATCH] Fix crash on close. Fixes #571
+
+---
+ src/core.cpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/core.cpp b/src/core.cpp
+index 7c590a3f2..a48e1602f 100644
+--- a/src/core.cpp
++++ b/src/core.cpp
+@@ -120,11 +120,11 @@ void Core::build(bool isAppImage, const QString &MltPath)
+ 
+ void Core::initGUI(const QUrl &Url, const QString &clipsToLoad)
+ {
+-    m_guiConstructed = true;
+     m_profile = KdenliveSettings::default_profile();
+     m_currentProfile = m_profile;
+     profileChanged();
+     m_mainWindow = new MainWindow();
++    m_guiConstructed = true;
+     connect(this, &Core::showConfigDialog, m_mainWindow, &MainWindow::slotPreferences);
+ 
+     // load default profile and ask user to select one if not found.
+@@ -658,13 +658,13 @@ std::shared_ptr<ProjectItemModel> Core::projectItemModel()
+ 
+ void Core::invalidateRange(QSize range)
+ {
+-    if (!m_mainWindow || m_mainWindow->getCurrentTimeline()->loading) return;
++    if (!m_guiConstructed || m_mainWindow->getCurrentTimeline()->loading) return;
+     m_mainWindow->getCurrentTimeline()->controller()->invalidateZone(range.width(), range.height());
+ }
+ 
+ void Core::invalidateItem(ObjectId itemId)
+ {
+-    if (!m_mainWindow || !m_mainWindow->getCurrentTimeline() || m_mainWindow->getCurrentTimeline()->loading) return;
++    if (!m_guiConstructed || !m_mainWindow->getCurrentTimeline() || m_mainWindow->getCurrentTimeline()->loading) return;
+     switch (itemId.first) {
+     case ObjectType::TimelineClip:
+     case ObjectType::TimelineComposition:
+@@ -692,14 +692,14 @@ double Core::getClipSpeed(int id) const
+ 
+ void Core::updateItemKeyframes(ObjectId id)
+ {
+-    if (id.first == ObjectType::TimelineClip && m_mainWindow) {
++    if (id.first == ObjectType::TimelineClip && m_guiConstructed) {
+         m_mainWindow->getCurrentTimeline()->controller()->updateClip(id.second, {TimelineModel::KeyframesRole});
+     }
+ }
+ 
+ void Core::updateItemModel(ObjectId id, const QString &service)
+ {
+-    if (m_mainWindow && id.first == ObjectType::TimelineClip && !m_mainWindow->getCurrentTimeline()->loading && service.startsWith(QLatin1String("fade"))) {
++    if (m_guiConstructed && id.first == ObjectType::TimelineClip && !m_mainWindow->getCurrentTimeline()->loading && service.startsWith(QLatin1String("fade"))) {
+         bool startFade = service == QLatin1String("fadein") || service == QLatin1String("fade_from_black");
+         m_mainWindow->getCurrentTimeline()->controller()->updateClip(id.second, {startFade ? TimelineModel::FadeInRole : TimelineModel::FadeOutRole});
+     }
+-- 
+2.25.1
+

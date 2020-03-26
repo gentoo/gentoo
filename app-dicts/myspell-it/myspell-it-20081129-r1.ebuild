@@ -25,7 +25,7 @@ SRC_URI="mirror://sourceforge/linguistico/Dizionari.IT_${PV}.oxt"
 
 LICENSE="AGPL-3 GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 src_prepare() {

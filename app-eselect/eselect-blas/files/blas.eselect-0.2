@@ -1,5 +1,5 @@
 # -*-eselect-*-  vim: ft=eselect
-# Copyright 2019 Gentoo Foundation
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU GPL version 2 or later
 
 inherit config tests multilib skel
@@ -63,7 +63,7 @@ do_list() {
 		done
 		libdirs=( $@ )
 	fi
-	
+
 	for libdir in ${libdirs[@]}; do
 		[[ ! -d ${EROOT}/usr/$libdir ]] || [[ -L ${EROOT}/usr/$libdir ]] && continue
 		targets=( $(find_targets_in $libdir) )

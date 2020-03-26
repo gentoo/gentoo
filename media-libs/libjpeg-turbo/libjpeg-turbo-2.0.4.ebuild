@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 LICENSE="BSD IJG"
 SLOT="0"
 [[ "$(ver_cut 3)" -ge 90 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="java static-libs"
 
 ASM_DEPEND="|| ( dev-lang/nasm dev-lang/yasm )"
@@ -36,6 +36,29 @@ DEPEND="${COMMON_DEPEND}
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 
 src_prepare() {
+	local FILE
+	ln -snf ../debian/extra/*.c . || die
+
+	for FILE in ../debian/extra/*.c; do
+		FILE=${FILE##*/}
+		cat >> CMakeLists.txt <<EOF || die
+add_executable(${FILE%.c} ${FILE})
+install(TARGETS ${FILE%.c})
+EOF
+	done
+
+	for FILE in ../debian/extra/exifautotran; do
+		cat >> CMakeLists.txt <<EOF || die
+install(FILES \${CMAKE_CURRENT_SOURCE_DIR}/${FILE} DESTINATION \${CMAKE_INSTALL_BINDIR})
+EOF
+	done
+
+	for FILE in ../debian/extra/*.[0-9]*; do
+		cat >> CMakeLists.txt <<EOF || die
+install(FILES \${CMAKE_CURRENT_SOURCE_DIR}/${FILE} DESTINATION \${CMAKE_INSTALL_MANDIR}/man${FILE##*.})
+EOF
+	done
+
 	default
 
 	cmake_src_prepare
@@ -58,31 +81,12 @@ multilib_src_configure() {
 	cmake_src_configure
 }
 
-multilib_src_compile() {
-	cmake_src_compile
-
-	if multilib_is_native_abi ; then
-		pushd "${WORKDIR}/debian/extra" &>/dev/null || die
-		emake CC="$(tc-getCC)" CFLAGS="${LDFLAGS} ${CFLAGS}"
-		popd &>/dev/null || die
-	fi
-}
-
 multilib_src_install() {
 	cmake_src_install
 
-	if multilib_is_native_abi ; then
-		pushd "${WORKDIR}/debian/extra" &>/dev/null || die
-		emake \
-			DESTDIR="${D}" prefix="${EPREFIX}"/usr \
-			INSTALL="install -m755" INSTALLDIR="install -d -m755" \
-			install
-
-		popd || die
-		if use java ; then
-			rm -rf "${ED}"/usr/classes || die
-			java-pkg_dojar java/turbojpeg.jar
-		fi
+	if multilib_is_native_abi && use java ; then
+		rm -rf "${ED}"/usr/classes || die
+		java-pkg_dojar java/turbojpeg.jar
 	fi
 }
 

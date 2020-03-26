@@ -41,6 +41,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Does not compile with -fno-common.
+	# See https://pcem-emulator.co.uk/phpBB3/viewtopic.php?f=3&t=3443
+	append-cflags -fcommon
+
 	local myeconfargs=(
 		--enable-release-build
 		$(use_enable alsa)
@@ -66,6 +70,6 @@ pkg_postinst() {
 	elog "In order to use PCem, you will need some roms for various emulated systems."
 	elog "You can either install globally for all users or locally for yourself."
 	elog ""
-	elog "To install globally, put your ROM file into '${ROOT}/usr/share/pcem/roms/<system>'."
-	elog "To install locally, put your ROM file into '~/.pcem/roms/<system>'."
+	elog "To install globally, put your ROM files into '${ROOT}/usr/share/pcem/roms/<system>'."
+	elog "To install locally, put your ROM files into '~/.pcem/roms/<system>'."
 }
