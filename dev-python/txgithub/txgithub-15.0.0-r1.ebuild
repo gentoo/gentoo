@@ -17,10 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-		( >=dev-python/twisted-core-12.3.0[${PYTHON_USEDEP}]
-		>=dev-python/twisted-web-12.3.0[${PYTHON_USEDEP}] )
-	)
+	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
