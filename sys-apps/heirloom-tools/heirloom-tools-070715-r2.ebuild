@@ -37,6 +37,9 @@ src_compile() {
 	emake -j1 \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
+		CFLAGS2="${CFLAGS}" \
+		CFLAGSS="${CFLAGS}" \
+		CFLAGSU="${CFLAGS}" \
 		CPPFLAGS="${CPPFLAGS}" \
 		LCURS="$( $(tc-getPKG_CONFIG) --libs ncurses)" \
 		LDFLAGS="${LDFLAGS}" \
