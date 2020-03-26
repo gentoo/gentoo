@@ -33,10 +33,15 @@ BDEPEND="
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 	)
 "
-distutils_enable_sphinx docs '>=dev-python/jaraco-packaging-3.2' \
-	'>=dev-python/rst-linker-1.9'
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+PATCHES=(
+	"${FILESDIR}/jaraco-collections-3.0.0-pypy.patch"
+)
+
+distutils_enable_sphinx docs '>=dev-python/jaraco-packaging-3.2' \
+	'>=dev-python/rst-linker-1.9'
 
 python_test() {
 	# Override pytest options to skip flake8
