@@ -13,7 +13,7 @@ SRC_URI="https://github.com/datadriventests/ddt/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="test"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
