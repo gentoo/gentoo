@@ -22,22 +22,15 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x
 IUSE="coverage doc examples test"
 RESTRICT="!test? ( test )"
 
-COVERAGE_IMPLS=( -2 python3_{5,6,7} pypy3 )
 REQUIRED_USE="
-	coverage? ( || ( $(python_gen_useflags "${COVERAGE_IMPLS[@]}") ) )
 	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
 RDEPEND="
-	coverage? (
-		$(python_gen_cond_dep 'dev-python/coverage[${PYTHON_USEDEP}]' \
-			"${COVERAGE_IMPLS[@]}")
-	)"
+	coverage? ( dev-python/coverage[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6[$(python_gen_usedep 'python2*')] )
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/coverage[${PYTHON_USEDEP}]
-		' "${COVERAGE_IMPLS[@]}")
+		dev-python/coverage[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/twisted[${PYTHON_USEDEP}]
 		' python2_7 python3_{6,7})
