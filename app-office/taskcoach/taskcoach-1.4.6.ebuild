@@ -22,10 +22,7 @@ KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
-	|| (
-		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-		>=dev-python/twisted-core-10.0[${PYTHON_USEDEP}]
-	)
+	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	x11-libs/libXScrnSaver
