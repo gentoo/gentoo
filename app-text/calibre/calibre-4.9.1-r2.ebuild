@@ -99,7 +99,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	udisks? ( virtual/libudev )"
 RDEPEND="${COMMON_DEPEND}
-	udisks? ( || ( sys-fs/udisks:2 sys-fs/udisks:0 ) )"
+	udisks? ( sys-fs/udisks:2 )"
 DEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/setuptools-23.1.0[${PYTHON_MULTI_USEDEP}]
