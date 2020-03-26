@@ -11,7 +11,7 @@ SRC_URI="https://github.com/spkr-beep/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 ~sparc ~x86"
 IUSE="suid"
 
 # Tests require a speaker
