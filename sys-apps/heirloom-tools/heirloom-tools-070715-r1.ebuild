@@ -18,6 +18,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	sys-apps/ed
+	sys-devel/bc
 	virtual/pkgconfig
 "
 S="${WORKDIR}/heirloom-${PV}"
