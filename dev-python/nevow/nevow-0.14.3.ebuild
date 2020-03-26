@@ -17,13 +17,7 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	|| (
-		dev-python/twisted[${PYTHON_USEDEP}]
-		(
-			dev-python/twisted-core[${PYTHON_USEDEP}]
-			dev-python/twisted-web[${PYTHON_USEDEP}]
-		)
-	)
+	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
 # JS tests require a JavaScript interpreter ('smjs' or 'js' in PATH)
 # and the subunit library
