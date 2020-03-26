@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -16,16 +16,25 @@ IUSE="debug"
 
 DEPEND="dev-db/mysql-connector-c:="
 RDEPEND="${DEPEND}"
+
 S="${WORKDIR}/${PN}"
 
 DOCS=( AUTHORS DEBUGGING FAQ INSTALL NEWS README THANKS
 	TODO UPGRADING ChangeLog
 )
-PATCHES=( "${FILESDIR}"/${P}-no-automagic-debug.diff )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-no-automagic-debug.diff
+	"${FILESDIR}"/${PN}-1.5_p20060915-multiarch.patch
+	"${FILESDIR}"/${PN}-1.5_p20060915-mariadb10.2.patch
+)
 
 src_prepare() {
 	default
-	eautoconf
+
+	mv configure.{in,ac} || die
+
+	eautoreconf
 }
 
 src_configure() {
@@ -41,10 +50,11 @@ src_configure() {
 src_install() {
 	default
 
-	find "${D}" -name '*.la' -delete
+	find "${ED}" -name '*.la' -delete || die
 
 	newdoc sample/README README.sample
 
+	local subdir
 	for subdir in sample/{linux,freebsd,complex,minimal} ; do
 		docinto "${subdir}"
 		dodoc "${subdir}/"{*.sql,*.cfg}
