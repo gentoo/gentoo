@@ -35,9 +35,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6[$(python_gen_usedep 'python2*')] )
 	test? (
-		$(python_gen_cond_dep 'dev-python/coverage[${PYTHON_USEDEP}]' \
-			"${COVERAGE_IMPLS[@]}")
-		$(python_gen_cond_dep 'dev-python/twisted[${PYTHON_USEDEP}]' python2_7 python3_{5,6})
+		$(python_gen_cond_dep '
+			dev-python/coverage[${PYTHON_USEDEP}]
+		' "${COVERAGE_IMPLS[@]}")
+		$(python_gen_cond_dep '
+			dev-python/twisted[${PYTHON_USEDEP}]
+		' python2_7 python3_{6,7})
 	)"
 
 PATCHES=(
