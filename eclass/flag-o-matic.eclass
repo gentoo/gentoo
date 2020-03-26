@@ -487,15 +487,11 @@ test-flag-PROG() {
 
 	printf "%s\n" "${in_src}" > "${test_in}" || die "Failed to create '${test_in}'"
 
-	# Don't set -Werror as there are cases when benign
-	# always-on warnings filter out all flags like bug #712488.
-	# We'll have to live with potential '-Wunused-command-line-argument'.
-	# flags.
-	#
-	# We can add more selective detection of no-op flags via
-	# '-Werror=ignored-optimization-argument' and similar error options.
 	local cmdline=(
 		"${comp[@]}"
+		# Clang will warn about unknown gcc flags but exit 0.
+		# Need -Werror to force it to exit non-zero.
+		-Werror
 		"$@"
 		# -x<lang> options need to go before first source file
 		"${cmdline_extra[@]}"
@@ -503,7 +499,14 @@ test-flag-PROG() {
 		"${test_in}" -o "${test_out}"
 	)
 
-	"${cmdline[@]}" &>/dev/null
+	if ! "${cmdline[@]}" &>/dev/null; then
+		# -Werror makes clang bail out on unused arguments as well;
+		# try to add -Qunused-arguments to work-around that
+		# other compilers don't support it but then, it's failure like
+		# any other
+		cmdline+=( -Qunused-arguments )
+		"${cmdline[@]}" &>/dev/null
+	fi
 }
 
 # @FUNCTION: test-flag-CC
