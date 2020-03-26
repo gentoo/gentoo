@@ -450,12 +450,6 @@ app-portage/euscan
 # Last release in 2011, bug #708106, masked for removal in 30 days.
 app-cdr/gtkcdlabel
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# No plans upstream to port away from pygtk, suggested alternative dupeguru
-# not packaged in Gentoo, bug #708112. Masked for removal in 30 days.
-app-misc/fslint
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-24)
 # app-admin/packagekit-base is Python 2 only and behind upstream.
 # The Portage backend is unmaintained.  Other packages are its reverse
