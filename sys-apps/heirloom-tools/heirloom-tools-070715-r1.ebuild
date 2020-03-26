@@ -24,6 +24,7 @@ S="${WORKDIR}/heirloom-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${P}-major.patch
 	"${FILESDIR}"/${P}-glibc-2.30.patch
+	"${FILESDIR}"/${P}-glibc-2.31.patch
 )
 
 # slightly broken
