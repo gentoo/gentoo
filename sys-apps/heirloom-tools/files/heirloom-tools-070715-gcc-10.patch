@@ -103,3 +103,176 @@
  
  extern void		*scalloc(size_t nmemb, size_t size);
  extern struct tabulator	*tabstops(const char *s, int cols);
+--- a/diff/diff.c
++++ b/diff/diff.c
+@@ -92,6 +92,23 @@ static void	usage(void);
+ static void	xadd(const char *);
+ static void	Xadd(const char *);
+ 
++char *ifdef1;
++char *ifdef2;
++int   wantelses;
++char *file1, *file2;
++char *tempfile1, *tempfile2;
++char **diffargv;
++struct stat stb1, stb2;
++jmp_buf recenv;
++const char *start;
++struct xclusion *xflag;
++struct stackblk *curstack;
++int hflag,tflag,aflag,lflag,Nflag,sflag,rflag,Bflag,iflag,wflag,bflag,pflag;
++int mb_cur_max;
++int opt;
++int context;
++int status;
++
+ int
+ main(int argc, char **argv)
+ {
+--- a/diff/diff.h
++++ b/diff/diff.h
+@@ -106,7 +106,7 @@
+ /*
+  * Output format options
+  */
+-int	opt;
++extern int	opt;
+ 
+ #define	D_NORMAL	0	/* Normal output */
+ #define	D_EDIT		-1	/* Editor script out */
+@@ -117,66 +117,66 @@ int	opt;
+ 				   lines and no trailing . */
+ #define	D_UNIFIED	5	/* Unified diff */
+ 
+-int	aflag;			/* diff binary files */
+-int	tflag;			/* expand tabs on output */
+-int	pflag;			/* show surrounding C function */
++extern int	aflag;			/* diff binary files */
++extern int	tflag;			/* expand tabs on output */
++extern int	pflag;			/* show surrounding C function */
+ 
+ /*
+  * Algorithm related options
+  */
+-int	hflag;			/* -h, use halfhearted DIFFH */
+-int	bflag;			/* ignore blanks in comparisons */
+-int	wflag;			/* totally ignore blanks in comparisons */
+-int	iflag;			/* ignore case in comparisons */
+-int	Bflag;			/* ignore changes that consist of blank lines */
++extern int	hflag;			/* -h, use halfhearted DIFFH */
++extern int	bflag;			/* ignore blanks in comparisons */
++extern int	wflag;			/* totally ignore blanks in comparisons */
++extern int	iflag;			/* ignore case in comparisons */
++extern int	Bflag;			/* ignore changes that consist of blank lines */
+ 
+ /*
+  * Options on hierarchical diffs.
+  */
+-int	lflag;			/* long output format with header */
+-int	rflag;			/* recursively trace directories */
+-int	sflag;			/* announce files which are same */
+-int	Nflag;			/* write text of nonexistant files */
+-const char	*start;		/* do file only if name >= this */
++extern int	lflag;			/* long output format with header */
++extern int	rflag;			/* recursively trace directories */
++extern int	sflag;			/* announce files which are same */
++extern int	Nflag;			/* write text of nonexistant files */
++extern const char	*start;		/* do file only if name >= this */
+ 
+ struct xclusion {
+ 	struct xclusion	*x_nxt;
+ 	const char	*x_pat;
+-}	*xflag;			/* patterns to exclude from comparison */
++};
++extern struct xclusion	*xflag;			/* patterns to exclude from comparison */
+ 
+ /*
+  * Variables for -I D_IFDEF option.
+  */
+-int	wantelses;		/* -E */
+-char	*ifdef1;		/* String for -1 */
+-char	*ifdef2;		/* String for -2 */
+-char	*endifname;		/* What we will print on next #endif */
+-int	inifdef;
++extern int	wantelses;		/* -E */
++extern char	*ifdef1;		/* String for -1 */
++extern char	*ifdef2;		/* String for -2 */
+ 
+ /*
+  * Variables for -c context option.
+  */
+-int	context;		/* lines of context to be printed */
++extern int	context;		/* lines of context to be printed */
+ 
+ /*
+  * State for exit status.
+  */
+-int	status;
+-int	anychange;
+-char	*tempfile1;		/* used when comparing against std input */
+-char	*tempfile2;		/* used when comparing against std input */
++extern int	status;
++extern int	anychange;
++extern char	*tempfile1;		/* used when comparing against std input */
++extern char	*tempfile2;		/* used when comparing against std input */
+ 
+ /*
+  * Variables for diffdir.
+  */
+-char	**diffargv;		/* option list to pass to recursive diffs */
+-int	recdepth;		/* recursion depth */
+-jmp_buf	recenv;			/* jump stack on error */
++extern char	**diffargv;		/* option list to pass to recursive diffs */
++extern int	recdepth;		/* recursion depth */
++extern jmp_buf	recenv;			/* jump stack on error */
+ 
+ struct stackblk {
+ 	struct stackblk	*s_prev;
+ 	struct stackblk	*s_next;
+-} *curstack;
++};
++extern struct stackblk *curstack;
+ 
+ /*
+  * Input file names.
+@@ -184,13 +184,13 @@ struct stackblk {
+  * and padded with a '/', and then efile0 and efile1 point after
+  * the '/'.
+  */
+-char	*file1, *file2, *efile1, *efile2;
+-struct	stat stb1, stb2;
++extern char	*file1, *file2;
++extern struct	stat stb1, stb2;
+ 
+ extern	const char diffh[], diff[], pr[];
+ extern	const char *argv0;
+ extern	const char *progname;
+-int	mb_cur_max;
++extern int	mb_cur_max;
+ extern int	sysv3;
+ 
+ /* diff.c */
+--- a/diff/diffdir.c
++++ b/diff/diffdir.c
+@@ -142,6 +142,10 @@ static char	*mkpath(const char *, const char *);
+ static void	mktitle(void);
+ static int	xclude(const char *);
+ 
++int anychange;
++int recdepth;
++static char *efile1, *efile2;
++
+ void
+ diffdir(char **argv)
+ {
+--- a/diff/diffreg.c
++++ b/diff/diffreg.c
+@@ -186,6 +186,8 @@ static int	(*chrtran)(int);/* translation for case-folding */
+ static long	pstart;		/* start of last search for -p */
+ static long	plast;		/* match of last search for -p */
+ static long	*saveJ;		/* saved J for -p */
++static char	*endifname;	/* What we will print on next #endif */
++static int	inifdef;
+ 
+ /* chrtran points to one of 3 translation functions:
+  *	cup2low if folding upper to lower case
