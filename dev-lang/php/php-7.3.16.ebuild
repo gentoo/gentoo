@@ -64,7 +64,7 @@ COMMON_DEPEND="
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( <app-text/enchant-2.0:0 )
 	firebird? ( dev-db/firebird )
-	gd? ( virtual/jpeg:0 media-libs/libpng:0= >=sys-libs/zlib-1.2.0.4 )
+	gd? ( >=virtual/jpeg-0-r3:0 media-libs/libpng:0= >=sys-libs/zlib-1.2.0.4 )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
