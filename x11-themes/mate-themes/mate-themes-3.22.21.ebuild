@@ -11,7 +11,7 @@ HOMEPAGE="https://mate-desktop.org"
 DESCRIPTION="A set of MATE themes, with sets for users with limited or low vision"
 SRC_URI="https://pub.mate-desktop.org/releases/themes/${MATE_GTK_V}/${P}.tar.xz"
 
-LICENSE="LGPL-2.1 GPL-3"
+LICENSE="CC-BY-SA-3.0 GPL-3+ LGPL-2.1+ LGPL-3"
 SLOT="0/${MATE_GTK_V}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
