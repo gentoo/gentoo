@@ -10,7 +10,7 @@ HOMEPAGE="https://www.ctan.org/tex-archive/macros/latex/contrib/leaflet/"
 SRC_URI="mirror://gentoo/${P}.zip"
 # checksum from official ftp site changes frequently so we mirror it
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 LICENSE="LPPL-1.3"
 SLOT="0"

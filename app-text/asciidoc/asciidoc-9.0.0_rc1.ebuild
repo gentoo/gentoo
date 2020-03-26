@@ -10,7 +10,7 @@ inherit autotools eutils python-single-r1 readme.gentoo-r1
 DESCRIPTION="A plain text human readable/writable document format"
 HOMEPAGE="http://asciidoc.org/ https://github.com/asciidoc/asciidoc-py3/"
 SRC_URI="https://github.com/${PN}/${PN}-py3/archive/9.0.0rc1.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 LICENSE="GPL-2"
 SLOT="0"

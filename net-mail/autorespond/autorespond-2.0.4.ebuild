@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/qmailadmin/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc s390 sparc x86"
 
 RDEPEND="virtual/qmail"
 PATCHES=(

@@ -9,7 +9,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 ppc s390 sh sparc x86"
+KEYWORDS="amd64 arm hppa ia64 ppc s390 sparc x86"
 IUSE=""
 
 DEPEND="dev-lang/perl"

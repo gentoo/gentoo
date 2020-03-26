@@ -16,7 +16,7 @@ if [[ "${PV}" != 9999 ]] ; then
 			mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
 		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
 			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	IUSE+=" doc"
 else
 	inherit autotools git-r3

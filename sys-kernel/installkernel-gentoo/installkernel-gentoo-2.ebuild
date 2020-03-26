@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mgorny/installkernel-gentoo/archive/v${PV}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
 
 RDEPEND="
 	>=sys-apps/debianutils-4.9-r1

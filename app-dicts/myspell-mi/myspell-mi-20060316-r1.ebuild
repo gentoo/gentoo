@@ -22,5 +22,5 @@ HOMEPAGE="http://lingucomponent.openoffice.org/"
 SRC_URI="https://dev.gentoo.org/~jstein/dist/myspell-mi_NZ-${PV}.zip"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 sparc x86"
 IUSE=""

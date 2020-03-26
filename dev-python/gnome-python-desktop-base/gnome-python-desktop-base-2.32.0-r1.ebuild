@@ -14,7 +14,7 @@ inherit gnome2 python-r1
 DESCRIPTION="Provides python the base files for the Gnome Python Desktop bindings"
 HOMEPAGE="http://pygtk.org/"
 
-KEYWORDS="~alpha amd64 arm ~hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

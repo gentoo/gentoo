@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="ftp://sourceware.org/pub/newlib/${P}.tar.gz"
-	KEYWORDS="-* ~arm ~hppa ~m68k ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+	KEYWORDS="-* ~arm ~hppa ~m68k ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 export CBUILD=${CBUILD:-${CHOST}}

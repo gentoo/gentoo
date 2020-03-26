@@ -10,7 +10,7 @@ SRC_URI="https://github.com/jpr5/ngrep/archive/V${PV/./_}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ngrep"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ipv6"
 
 DEPEND="

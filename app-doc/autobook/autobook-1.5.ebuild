@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="OPL"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 m68k ppc s390 sh x86"
+KEYWORDS="amd64 arm hppa ia64 m68k ppc s390 x86"
 
 src_install() {
 	local HTML_DOCS=( . )

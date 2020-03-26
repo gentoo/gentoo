@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86"
 IUSE="postgres ldap libressl mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
 

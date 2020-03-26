@@ -12,7 +12,7 @@ SRC_URI="mirror://debian/dists/potato/main/source/utils/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT=0
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc s390 sparc x86"
 # Only installs fonts
 RESTRICT="strip binchecks"
 

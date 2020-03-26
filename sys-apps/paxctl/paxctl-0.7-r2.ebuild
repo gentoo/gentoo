@@ -9,7 +9,7 @@ DESCRIPTION="Manages various PaX related program header flags for Elf32, Elf64, 
 HOMEPAGE="https://pax.grsecurity.net/"
 SRC_URI="https://pax.grsecurity.net/${P}.tar.bz2"
 
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 LICENSE="GPL-2"
 SLOT="0"

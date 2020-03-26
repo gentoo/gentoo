@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain HPND non-free? ( free-noncomm )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86"
 IUSE="bdf non-free"
 
 DEPEND="x11-apps/bdftopcf

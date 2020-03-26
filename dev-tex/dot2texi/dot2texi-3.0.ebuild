@@ -10,7 +10,7 @@ HOMEPAGE="https://www.ctan.org/pkg/dot2texi"
 # Taken from http://theory.uwinnipeg.ca/scripts/CTAN/macros/latex/contrib/dot2texi.zip
 SRC_URI="mirror://gentoo/${P}.zip"
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
 
 LICENSE="GPL-2"
 SLOT="0"

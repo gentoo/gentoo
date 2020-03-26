@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/liba/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.ta
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 

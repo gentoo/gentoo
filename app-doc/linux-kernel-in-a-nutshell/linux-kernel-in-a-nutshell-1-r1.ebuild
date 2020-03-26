@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/linux/kernel/people/gregkh/lkn/lkn_pdf.tar.b
 
 LICENSE="CC-BY-SA-2.5"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE=""
 
 RDEPEND=""

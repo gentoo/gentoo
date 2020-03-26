@@ -12,7 +12,7 @@ SRC_URI="http://www.netmeridian.com/e-huss/${P}.tar.gz
 
 LICENSE="all-rights-reserved public-domain" # includes code from qmail
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 m68k ~mips ppc s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 m68k ~mips ppc s390 sparc x86"
 RESTRICT="mirror bindist"
 
 PDEPEND="virtual/qmail"

@@ -9,7 +9,7 @@ SRC_URI="http://releases.pagure.org/gssproxy/${P}.tar.gz"
 
 LICENSE="BSD-1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="debug selinux systemd hardened"
 
 COMMON_DEPEND=">=dev-libs/libverto-0.2.2

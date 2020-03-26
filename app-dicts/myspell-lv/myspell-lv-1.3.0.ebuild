@@ -23,7 +23,7 @@ SRC_URI="http://dict.dv.lv/download/lv_LV-${PV}.zip -> ${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
