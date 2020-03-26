@@ -7379,8 +7379,8 @@ dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1: Restart a CLI process without loading 
 dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.5.3: In-process task scheduler with Cron-like capabilities
-dev-python/Babel 2.5.0 2.5.3 2.5.3-r1 2.6.0 2.7.0 2.8.0: Collection of tools for internationalizing Python applications
-dev-python/BitVector 3.4.7 3.4.8 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
+dev-python/Babel 2.8.0: Collection of tools for internationalizing Python applications
+dev-python/BitVector 3.4.8 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.7: The httplib2 caching algorithms packaged up for use with requests
 dev-python/GitPython 2.1.11 3.1.0: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
@@ -7476,10 +7476,10 @@ dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates int
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.16: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
-dev-python/backcall 0.1.0 0.1.0-r1: Specifications for callback functions passed in to an API
+dev-python/backcall 0.1.0-r1: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
 dev-python/backports-abc 0.5: Backport of Python 3.5's 'collections.abc' module
-dev-python/backports-csv 1.0.5 1.0.7: Backport of Python 3's 'csv' module
+dev-python/backports-csv 1.0.7: Backport of Python 3's 'csv' module
 dev-python/backports-functools-lru-cache 1.3 1.4-r1 1.5 1.6.1: Backport of functools.lru_cache from Python 3.3
 dev-python/backports-lzma 0.0.10 0.0.12 0.0.13: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-os 0.1.1: Backport of new features in Python's os module
@@ -7487,10 +7487,10 @@ dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_te
 dev-python/backports-shutil_which 3.5.1: Backport of shutil.which from Python 3.3
 dev-python/backports-ssl-match-hostname 3.5.0.1-r1: Backport of the ssl.match_hostname function
 dev-python/backports-tempfile 1.0: Backport of new features in Python's tempfile module
-dev-python/backports-unittest-mock 1.3 1.4 1.5 1.5-r1: Backport of unittest.mock
+dev-python/backports-unittest-mock 1.5-r1: Backport of unittest.mock
 dev-python/backports-weakref 1.0_p1: Backport of new features in Python's weakref module
 dev-python/bandit 1.5.1-r1 1.6.2: A security linter from OpenStack Security
-dev-python/basemap 1.0.7-r2 1.0.7-r4: matplotlib toolkit to plot map projections
+dev-python/basemap 1.0.7-r4: matplotlib toolkit to plot map projections
 dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface.
 dev-python/batinfo 0.3 0.4.2: A simple Python lib to retreive battery information
@@ -7498,32 +7498,32 @@ dev-python/bcolz 1.1.2: Provides columnar and compressed data containers
 dev-python/bcrypt 3.1.6 3.1.7-r2: Modern password hashing for software and servers
 dev-python/beagle 0.2.1: Command line client for Hound, the code search tool.
 dev-python/beaker 1.8.1: A Session and Caching library with WSGI Middleware
-dev-python/beautifulsoup 3.2.1-r1 4.5.1 4.6.3 4.8.1 4.8.2: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
-dev-python/bert 2.0.0 2.2.0: BERT Serialization Library
+dev-python/beautifulsoup 3.2.1-r1 4.8.1 4.8.2: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/bert 2.2.0: BERT Serialization Library
 dev-python/betamax 0.8.0 0.8.1: python-requests HTTP exchanges recorder
-dev-python/bibtexparser 0.6.2 1.1.0: A BibTeX parser written in python
-dev-python/billiard 3.5.0.2 3.6.0.0: Python multiprocessing fork
+dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
+dev-python/billiard 3.6.0.0: Python multiprocessing fork
 dev-python/binaryornot 0.4.3: Ultra-lightweight pure Python package to guess whether a file is binary or text
 dev-python/biplist 1.0.1 1.0.2: A binary plist parser/generator for Python
-dev-python/bitarray 0.8.1 0.8.3: efficient arrays of booleans -- C extension
+dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5 3.1.6: A pure Python module for creation and analysis of binary data
 dev-python/blaze 0.11.3: Next generation Python numpy
-dev-python/bleach 2.1.3 3.0.2 3.1.0-r1 3.1.3: an easy whitelist-based HTML-sanitizing tool
-dev-python/blessings 1.6-r1 1.6.1 1.7 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
+dev-python/bleach 3.0.2 3.1.3: an easy whitelist-based HTML-sanitizing tool
+dev-python/blessings 1.7 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
-dev-python/blockdiag 1.5.3-r1 1.5.4: Generate block-diagram image from text
+dev-python/blockdiag 1.5.4: Generate block-diagram image from text
 dev-python/blosc 1.5.1: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.2 0.9.0: Boolean operations on paths
 dev-python/boto 2.49.0: Amazon Web Services API
-dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
-dev-python/botocore 1.12.122 1.13.46 1.13.50 1.14.7 1.14.17 1.15.5 1.15.16 9999: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.9.122 1.10.2 9999: The AWS SDK for Python
+dev-python/botocore 1.12.122 1.15.16 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
-dev-python/bpython 0.17.1 0.18 0.18-r1: Syntax highlighting and autocompletion for the Python interpreter
-dev-python/breathe 4.6.0 4.14.1: Sphinx Doxygen renderer
+dev-python/bpython 0.18 0.18-r1: Syntax highlighting and autocompletion for the Python interpreter
+dev-python/breathe 4.14.1: Sphinx Doxygen renderer
 dev-python/brotlipy 0.7.0: Python binding to the Brotli library
 dev-python/brython 3.7.2: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.2.4: Python bindings for Berkeley DB
