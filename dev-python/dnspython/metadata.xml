@@ -21,6 +21,7 @@ DNSPythonはPython言語用のDNSツールキットです。ほとんどのレ�
 い、その戻り値を使います。低水準はゾーン、メッセージ、ネーム、レコードを直接操作
 します。
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">dnspython</remote-id>
 	</upstream>
