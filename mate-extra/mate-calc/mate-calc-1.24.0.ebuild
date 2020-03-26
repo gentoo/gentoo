@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Calculator for MATE"
-LICENSE="GPL-2"
+LICENSE="CC-BY-SA-3.0 GPL-2+"
 SLOT="0"
 
 IUSE=""
