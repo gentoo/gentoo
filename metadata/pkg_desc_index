@@ -7444,17 +7444,17 @@ dev-python/apispec 0.35.0: A pluggable API specification generator.
 dev-python/appdirs 1.4.3-r1: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.25.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/argcomplete 1.11.0 1.11.1: Bash tab completion for argparse
-dev-python/argh 0.26.2-r1 0.26.2-r2: A simple argparse wrapper
+dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2_cffi 19.1.0: CFFI bindings to the Argon2 password hashing library
-dev-python/args 0.1.0 0.1.0-r1: Command Arguments for Humans
-dev-python/arpeggio 1.5 1.9.0: Parser interpreter based on PEG grammars
-dev-python/arrow 0.10.0 0.12.1 0.13.1: Better dates and times for Python
+dev-python/args 0.1.0-r1: Command Arguments for Humans
+dev-python/arpeggio 1.9.0: Parser interpreter based on PEG grammars
+dev-python/arrow 0.13.1: Better dates and times for Python
 dev-python/asciimatics 1.10.0: Pythonic library to create text UIs and ASCII art animations
-dev-python/asn1crypto 0.22.0 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
+dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asset 0.6.11: A package resource and symbol loading helper library
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
-dev-python/astor 0.5 0.6 0.7.1 0.8.1: Read/rewrite/write Python ASTs
-dev-python/astroid 1.4.8 2.2.5 2.3.3-r1 2.3.3-r2: Abstract Syntax Tree for logilab packages
+dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
+dev-python/astroid 2.3.3-r2: Abstract Syntax Tree for logilab packages
 dev-python/astunparse 1.6.2: Astun parser for python
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
@@ -7464,16 +7464,16 @@ dev-python/atomicwrites 1.3.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
 dev-python/attrs 19.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r1: Wrapper for audio file decoding using FFmpeg or GStreamer
-dev-python/authheaders 0.12.1 0.13.0: A library wrapping email authentication header verification and generation.
+dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.1.1: Authentication-Results Headers generation and parsing
-dev-python/autobahn 17.5.1-r2 17.9.1 17.9.2 17.10.1 18.3.1: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 17.5.1-r2 18.3.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.8.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1: Friendly state machines for python.
-dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
-dev-python/awscli 1.16.310 1.16.314 1.17.7 1.17.17 1.18.5 1.18.16: Universal Command Line Environment for AWS
+dev-python/awscli 1.18.16: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0 0.1.0-r1: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
@@ -8954,7 +8954,7 @@ dev-python/txaio 2.7.1 2.9.0: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.5-r1: Asynchronous Python HTTP for Humans
 dev-python/txtorcon 0.19.3-r1: Twisted-based Tor controller client, with state-tracking and config abstractions
-dev-python/typed-ast 1.4.0-r1 1.4.1: Python typed-ast backported
+dev-python/typed-ast 1.4.1: Python typed-ast backported
 dev-python/typing 3.6.2-r1 3.6.4-r1 3.7.4.1: Type Hints for Python
 dev-python/typing-extensions 3.7.4 3.7.4.1: Type Hint extensions from Python 3.7 backported to 3.5/3.6
 dev-python/tzlocal 1.2 2.0.0: tzinfo object for the local timezone
@@ -9016,7 +9016,7 @@ dev-python/whichcraft 0.4.1: This package provides cross-platform cross-python s
 dev-python/whisper 1.1.3 1.1.5: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/widgetsnbextension 3.0.0 3.4.2: IPython HTML widgets for Jupyter
-dev-python/wrapt 1.10.11 1.11.2-r1 1.12.0 1.12.1: Module for decorators, wrappers and monkey patching
+dev-python/wrapt 1.11.2-r1 1.12.1: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.3.4-r1 0.5.1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiintercept 1.3.1: WSGI application in place of a real URI for testing
@@ -14507,7 +14507,7 @@ net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 an
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
-net-im/zoom 3.5.372466.0322-r1: Video conferencing and web conferencing service
+net-im/zoom 3.5.372466.0322-r1 3.5.374815.0324: Video conferencing and web conferencing service
 net-irc/anope 2.0.6: Anope IRC Services
 net-irc/atheme-services 7.2.10_p2: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
