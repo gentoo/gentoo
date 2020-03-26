@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-03-26)
+# Fail to build with glibc-2.30; no maintainer. Removal in 30days.
+# Bugs 691756, 691710
+x11-terms/aterm
+x11-terms/xvt
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-26)
 # dev-python/aiohttp-cors is dead upstream and does not support
 # Python 3.7 and newer.
