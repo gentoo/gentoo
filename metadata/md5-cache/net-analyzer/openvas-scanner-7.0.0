@@ -10,5 +10,5 @@ LICENSE=GPL-2 GPL-2+
 RDEPEND=acct-user/gvm app-crypt/gpgme:= dev-db/redis dev-libs/glib dev-libs/libgcrypt:= dev-libs/libksba >=net-analyzer/gvm-libs-11.0.0 net-analyzer/net-snmp net-libs/gnutls:= net-libs/libpcap net-libs/libssh:=
 SLOT=0
 SRC_URI=https://github.com/greenbone/openvas-scanner/archive/v7.0.0.tar.gz -> openvas-scanner-7.0.0.tar.gz
-_eclasses_=cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	7472ddc437760e4f626968f95daed685	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	74b1bca587791941e9df7b808a01575b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=608c7381a386ef10afa3199bd7c1fa1b
