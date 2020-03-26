@@ -193,10 +193,6 @@ riscv		default/linux/riscv/17.0/rv64gc/lp64		exp
 s390            default/linux/s390/17.0                         exp
 s390            default/linux/s390/17.0/s390x                   exp
 
-# SH Profiles
-# @MAINTAINER: sh@gentoo.org
-sh              default/linux/sh/17.0                           exp
-
 # SPARC Profiles
 # @MAINTAINER: sparc@gentoo.org
 sparc		default/linux/sparc/17.0				exp
