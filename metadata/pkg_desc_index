@@ -15405,8 +15405,11 @@ net-wireless/gr-foo 9999: Some GNU Radio blocks that bastianbl uses
 net-wireless/gr-ieee802154 0.0_p20180402 9999: IEEE 802.15.4 ZigBee Transceiver
 net-wireless/gr-iio 0.3-r2 9999: GNU Radio IIO Blocks
 net-wireless/gr-iqbal 0.37.2 9999: gnuradio I/Q balancing
+net-wireless/gr-ntsc 9999: RTL2832U NTSC viewer
+net-wireless/gr-ntsc-rc 9999: NTSC receiver and transmitter for 5 GHz drones
 net-wireless/gr-osmosdr 0.1.4_p20180626-r5 0.1.5 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
 net-wireless/gr-paint 9999: Paints monochrome images into the waterfall of a receiver
+net-wireless/gr-ppm-wiegand 9999: GnuRadio PPM (Differential Pulse Position Modulation/Demodulation) plugin
 net-wireless/gr-rds 9999: GNU Radio FM RDS Receiver
 net-wireless/gr-rftap 9999: RFtap Module for GNU Radio
 net-wireless/gr-scan 20160211: Frequency scanner for GNU Radio
@@ -17376,7 +17379,7 @@ sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES ci
 sys-fs/lsscsi 0.29 0.30 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
-sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.184-r5 2.02.186-r2 2.03.08: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.184-r5 2.02.186-r2 2.02.187 2.03.09: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
