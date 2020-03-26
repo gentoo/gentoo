@@ -161,12 +161,10 @@ out=$(CC=clang test-flags-CC -finvalid-flag)
 [[ $? -ne 0 && -z ${out} ]]
 ftend
 
-### '-finline-limit=1200' is 'ignored' flag, not invalid.
-### We don't filter out ignored flags currently, bug #712488
-#tbegin "test-flags-CC (gcc-valid but clang-invalid flags)"
-#out=$(CC=clang test-flags-CC -finline-limit=1200)
-#[[ $? -ne 0 && -z ${out} ]]
-#ftend
+tbegin "test-flags-CC (gcc-valid but clang-invalid flags)"
+out=$(CC=clang test-flags-CC -finline-limit=1200)
+[[ $? -ne 0 && -z ${out} ]]
+ftend
 
 tbegin "test-flags-CC (unused flags w/clang)"
 out=$(CC=clang test-flags-CC -Wl,-O1)
