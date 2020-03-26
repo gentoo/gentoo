@@ -1,0 +1,105 @@
+--- a/cpio/cpio.c
++++ b/cpio/cpio.c
+@@ -748,6 +748,7 @@ static struct stat	globst;
+  */
+ #define			SANELIMIT	0177777
+ 
++enum fmttype            fmttype;
+ char			*progname;	/* argv[0] to main() */
+ static struct dslot	*devices;	/* devices table */
+ static struct dslot	*markeddevs;	/* unusable device numbers */
+@@ -826,6 +827,9 @@ static int		compressed_bar;	/* this is a compressed bar archive */
+ static int		formatforced;	/* -k -i -Hfmt forces a format */
+ static long long	lineno;		/* input line number */
+ 
++enum pax                pax;
++enum pax_preserve       pax_preserve;
++
+ int			pax_dflag;	/* directory matches only itself */
+ int			pax_kflag;	/* do not overwrite files */
+ int			pax_nflag;	/* select first archive member only */
+--- a/cpio/cpio.h
++++ b/cpio/cpio.h
+@@ -31,7 +31,7 @@
+ #include <sys/stat.h>
+ #include <inttypes.h>
+ 
+-enum	{
++enum fmttype {
+ 	FMT_NONE	= 00000000,	/* no format chosen yet */
+ 
+ 	TYP_PAX		= 00000010,	/* uses pax-like extended headers */
+@@ -70,7 +70,8 @@ enum	{
+ 	FMT_BAR		= 00400001,	/* bar format type */
+ 
+ 	FMT_ZIP		= 01000000	/* zip format */
+-} fmttype;
++};
++extern enum fmttype fmttype;
+ 
+ /*
+  * Zip compression method.
+@@ -173,11 +174,12 @@ extern int		printsev;
+ extern char		*progname;
+ extern struct glist	*patterns;
+ 
+-enum {			/* type of pax command this is */
++enum pax {			/* type of pax command this is */
+ 	PAX_TYPE_CPIO		= 0,	/* not a pax command */
+ 	PAX_TYPE_PAX1992	= 1,	/* POSIX.2 pax command */
+ 	PAX_TYPE_PAX2001	= 2	/* POSIX.1-2001 pax command */
+-} pax;
++};
++extern enum pax         pax;
+ extern int		pax_dflag;
+ extern int		pax_kflag;
+ extern int		pax_nflag;
+@@ -185,14 +187,15 @@ extern int		pax_sflag;
+ extern int		pax_uflag;
+ extern int		pax_Xflag;
+ 
+-enum {
++enum pax_preserve {
+ 	PAX_P_NONE	= 0000,
+ 	PAX_P_ATIME	= 0001,
+ 	PAX_P_MTIME	= 0004,
+ 	PAX_P_OWNER	= 0010,
+ 	PAX_P_MODE	= 0020,
+ 	PAX_P_EVERY	= 0400
+-} pax_preserve;
++};
++extern enum pax_preserve pax_preserve;
+ 
+ extern size_t		(*ofiles)(char **, size_t *);
+ extern void		(*prtime)(time_t);
+--- a/tabs/tabspec.c
++++ b/tabs/tabspec.c
+@@ -36,6 +36,8 @@
+ #include	<blank.h>
+ #include	"tabspec.h"
+ 
++enum taberrno taberrno;
++
+ static const struct {
+ 	const char	*c_nam;
+ 	const char	*c_str;
+--- a/tabs/tabspec.h
++++ b/tabs/tabspec.h
+@@ -34,14 +34,15 @@ struct	tabulator {
+ 	int	t_rep;			/* repetitive tab count */
+ };
+ 
+-enum {
++enum taberrno {
+ 	TABERR_NONE,
+ 	TABERR_CANTOP,	/* can't open */
+ 	TABERR_FILIND,	/* file indirection */
+ 	TABERR_UNKTAB,	/* unknown tab code */
+ 	TABERR_ILLINC,	/* illegal increment */
+ 	TABERR_ILLTAB	/* illegal tabs */
+-} taberrno;
++};
++extern enum taberrno taberrno;
+ 
+ extern void		*scalloc(size_t nmemb, size_t size);
+ extern struct tabulator	*tabstops(const char *s, int cols);
