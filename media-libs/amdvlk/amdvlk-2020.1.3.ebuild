@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/GPUOpen-Drivers/AMDVLK"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="debug wayland"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )"
 ###DEPENDS
@@ -42,11 +42,12 @@ CORRECT_AMDVLK_PV="v-$(ver_rs 1 '.Q')" #Only for amdvlk source code: transformin
 ##and place commits in the desired variables
 ## EXAMPLE: XGL_COMMIT="80e5a4b11ad2058097e77746772ddc9ab2118e07"
 ## SRC_URI="... ${FETCH_URI}/$PART/archive/$COMMIT.zip -> $PART-$COMMIT.zip ..."
-XGL_COMMIT="8024f27f9457e3235bf4fcde0d2879bbaae7b0f2"
-PAL_COMMIT="45f531beaf2c2b0bc2272e63a2da0022f1b07ccf"
-LLPC_COMMIT="f5268c3f6f906a3ae430a1aada7f54f70df091e8"
-SPVGEN_COMMIT="e9b2bc3a889ed6ac4f5a47b6c4c58460988e352e"
-LLVM_PROJECT_COMMIT="a163b38723cbc05f3014d4eaa1936c82bbfbf3ea"
+PATCHES=( ${FILESDIR}/amdvlk-cmake-dso.patch ) #remove after mainlining changes
+XGL_COMMIT="80e5a4b11ad2058097e77746772ddc9ab2118e07"
+PAL_COMMIT="e642f608a62887d40d1f25509d2951a4a3576985"
+LLPC_COMMIT="fc21c950b629753f9cc7d0941937c57262ceadcf"
+SPVGEN_COMMIT="843c6b95f731589bf497fad29dadf7fda4934aad"
+LLVM_PROJECT_COMMIT="e404e4b2db325184dbc2d14f31ef891d938f3835"
 METROHASH_COMMIT="2b6fee002db6cc92345b02aeee963ebaaf4c0e2f"
 CWPACK_COMMIT="b601c88aeca7a7b08becb3d32709de383c8ee428"
 ## SRC_URI
