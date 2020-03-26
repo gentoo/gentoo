@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-57">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PHP, the worst of which
+    could result in the execution of arbitrary shell commands.
+  </synopsis>
+  <product type="ebuild">PHP</product>
+  <announced>2020-03-26</announced>
+  <revised count="1">2020-03-26</revised>
+  <bug>671872</bug>
+  <bug>706168</bug>
+  <bug>710304</bug>
+  <bug>713484</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="rge">7.2.29</unaffected>
+      <unaffected range="rge">7.3.16</unaffected>
+      <unaffected range="rge">7.4.4</unaffected>
+      <vulnerable range="lt">7.4.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is an open source general-purpose scripting language that is
+      especially suited for web development.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PHP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An attacker could possibly execute arbitrary shell commands, cause a
+      Denial of Service condition or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PHP 7.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.2.29"
+    </code>
+    
+    <p>All PHP 7.3.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.3.16"
+    </code>
+    
+    <p>All PHP 7.4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.4.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19518">CVE-2018-19518</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7059">CVE-2020-7059</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7060">CVE-2020-7060</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7061">CVE-2020-7061</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7062">CVE-2020-7062</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7063">CVE-2020-7063</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7064">CVE-2020-7064</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7065">CVE-2020-7065</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7066">CVE-2020-7066</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-26T13:24:45Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-26T13:30:45Z">whissi</metadata>
+</glsa>
