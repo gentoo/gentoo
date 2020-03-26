@@ -31,7 +31,7 @@ BDEPEND="virtual/pkgconfig"
 COMMON_DEPEND="
 	>=app-crypt/gpgme-1.7.1-r1[cxx]
 	>=app-office/libalkimia-7.0.0:=
-	dev-libs/gmp:0=
+	dev-libs/gmp:0=[cxx]
 	dev-libs/kdiagram:5
 	dev-libs/libgpg-error
 	>=dev-qt/qtdbus-${QTMIN}:5
