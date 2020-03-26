@@ -456,11 +456,6 @@ app-cdr/gtkcdlabel
 # not packaged in Gentoo, bug #708112. Masked for removal in 30 days.
 app-misc/fslint
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last release in 2012, bug #708124, masked for removal in 30 days.
-app-text/keepnote
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-24)
 # app-admin/packagekit-base is Python 2 only and behind upstream.
 # The Portage backend is unmaintained.  Other packages are its reverse
