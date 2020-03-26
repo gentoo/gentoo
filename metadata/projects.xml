@@ -331,7 +331,6 @@
     <subproject ref="riscv@gentoo.org"/>
     <subproject ref="s390@gentoo.org"/>
     <subproject ref="sparc@gentoo.org"/>
-    <subproject ref="sh@gentoo.org"/>
     <subproject ref="toolchain@gentoo.org"/>
     <subproject ref="x86@gentoo.org"/>
     <member>
@@ -3487,20 +3486,6 @@
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
       <role>Member ( misc )</role>
-    </member>
-  </project>
-  <project>
-    <email>sh@gentoo.org</email>
-    <name>SuperH (sh) Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:SuperH</url>
-    <description>The SuperH Development Project is devoted to keeping Gentoo in good shape on the SuperH architecture.</description>
-    <member>
-      <email>ago@gentoo.org</email>
-      <name>Agostino Sarubbo</name>
-    </member>
-    <member is-lead="1">
-      <email>vapier@gentoo.org</email>
-      <name>Mike Frysinger</name>
     </member>
   </project>
   <project>
