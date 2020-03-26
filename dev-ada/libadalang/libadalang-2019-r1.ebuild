@@ -37,7 +37,10 @@ pkg_setup() {
 	ada_pkg_setup
 }
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-pyyaml.patch
+)
 
 src_configure() {
 	ada/manage.py -v debug generate || die
