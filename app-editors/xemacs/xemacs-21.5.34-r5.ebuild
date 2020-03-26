@@ -191,11 +191,11 @@ src_compile() {
 }
 
 src_install() {
-	emake prefix="${D}"/usr \
-		mandir="${D}"/usr/share/man/man1 \
-		infodir="${D}"/usr/share/info \
-		libdir="${D}"/usr/$(get_libdir) \
-		datadir="${D}"/usr/share \
+	emake prefix="${ED}"/usr \
+		mandir="${ED}"/usr/share/man/man1 \
+		infodir="${ED}"/usr/share/info \
+		libdir="${ED}"/usr/$(get_libdir) \
+		datadir="${ED}"/usr/share \
 		install
 
 	# Rename some applications installed in bin so that it is clear
@@ -203,12 +203,12 @@ src_install() {
 	# packages (emacs) can't clobber the actual applications.
 	# Addresses bug #62991.
 	for i in b2m ctags etags gnuclient gnudoit gnuattach; do
-		mv "${D}"/usr/bin/${i} "${D}"/usr/bin/${i}-xemacs || die "mv ${i} failed"
+		mv "${ED}"/usr/bin/${i} "${ED}"/usr/bin/${i}-xemacs || die "mv ${i} failed"
 	done
 
 	# rename man pages
 	for i in ctags etags gnuserv gnuclient gnudoit gnuattach; do
-		mv "${D}"/usr/share/man/man1/${i}{,-xemacs}.1 || die "mv ${i}.1 failed"
+		mv "${ED}"/usr/share/man/man1/${i}{,-xemacs}.1 || die "mv ${i}.1 failed"
 	done
 
 	# install base packages directories
@@ -223,7 +223,7 @@ src_install() {
 	fi
 
 	# remove extraneous info files
-	cd "${D}"/usr/share/info
+	cd "${ED}"/usr/share/info
 	rm -f dir info.info texinfo* termcap* standards*
 
 	cd "${S}"
