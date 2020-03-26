@@ -9,7 +9,7 @@ DESCRIPTION="A cute little cron from Matt Dillon"
 HOMEPAGE="http://www.jimpryor.net/linux/dcron.html http://apollo.backplane.com/FreeSrc/"
 SRC_URI="http://www.jimpryor.net/linux/releases/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
 

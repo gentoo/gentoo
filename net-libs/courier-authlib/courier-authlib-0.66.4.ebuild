@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils flag-o-matic multilib user
 
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 
 DESCRIPTION="Courier authentication library"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"

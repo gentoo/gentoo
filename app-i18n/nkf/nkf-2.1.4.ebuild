@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/64158/${P}.tar.gz
 
 LICENSE="ZLIB python? ( BSD )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-macos"
 IUSE="perl python l10n_ja"
 
 src_prepare() {

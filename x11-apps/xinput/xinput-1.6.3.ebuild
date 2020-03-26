@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="Utility to set XInput device parameters"
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND=">=x11-libs/libX11-1.3

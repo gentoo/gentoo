@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="ftp://sourceware.org/pub/newlib/${P}.tar.gz"
 	if [[ ${PV} != *.201[5-9]???? ]] ; then
-		KEYWORDS="-* ~arm ~hppa ~m68k ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+		KEYWORDS="-* ~arm ~hppa ~m68k ~mips ~ppc ~ppc64 ~sparc ~x86"
 	fi
 fi
 

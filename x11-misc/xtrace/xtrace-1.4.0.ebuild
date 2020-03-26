@@ -11,7 +11,7 @@ SRC_URI="https://salsa.debian.org/debian/${PN}/-/archive/${P}/${PN}-${P}.tar.gz 
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~s390 ~sh ~x86"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~s390 ~x86"
 
 DEPEND="x11-base/xorg-proto
 	x11-libs/libXext

@@ -16,7 +16,7 @@ RUBY_S="$MY_P"/bindings/ruby
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="graph test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( graph )"
