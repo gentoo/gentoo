@@ -2230,7 +2230,7 @@ app-misc/rioutil 1.5.4: A utility for accessing various Rio media players
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42 0.42-r1 0.43: GNU readline wrapper
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
-app-misc/rpick 0.5.0: Helps you pick items from a list by various algorithms
+app-misc/rpick 0.5.0 0.5.1: Helps you pick items from a list by various algorithms
 app-misc/rtlamr 0.9.1: software defined radio receiver for utility smart meters
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
@@ -9991,7 +9991,7 @@ dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documen
 dev-ruby/ruby-ldap 0.9.19 0.9.20: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-macho 2.1.0 2.2.0: A library for viewing and manipulating Mach-O files in Ruby
 dev-ruby/ruby-mp3info 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
-dev-ruby/ruby-net-ldap 0.16.1 0.16.2: Pure ruby LDAP client implementation
+dev-ruby/ruby-net-ldap 0.16.2: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.2.7 2.2.8: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99999: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.12.0: An oEmbed consumer library written in Ruby.
@@ -10414,7 +10414,7 @@ dev-util/clair 2.0.8: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.5-r1: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06 9999: A tool to display info about the system's OpenCL capabilities
-dev-util/clion 2019.3.3: A complete toolset for C and C++ development
+dev-util/clion 2019.3.5: A complete toolset for C and C++ development
 dev-util/cloc 1.72 1.76-r1 1.80 1.82: Count Lines of Code
 dev-util/cmake 3.13.5 3.14.6 3.16.5 3.17.0: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -14693,7 +14693,7 @@ net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3 1.2.4 1.2.5: C++ BitTorrent
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.6-r1 1.12.0-r1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
-net-libs/libvncserver 0.9.12-r4: library for creating vnc servers
+net-libs/libvncserver 0.9.12-r4 0.9.12-r5: library for creating vnc servers
 net-libs/libwebsockets 3.2.1: A flexible pure-C library for implementing network protocols
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
@@ -14853,7 +14853,7 @@ net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with Bit
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
 net-misc/asterisk 11.25.3 13.23.1 13.29.1 13.31.0 13.32.0: Asterisk: A Modular Open Source PBX System
-net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22 1.6.1: Core sounds for asterisk
+net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22 1.6.1 1.6.1-r1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11-r1 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9 13.0.3.1.9: G.729 codec and supporting files for asterisk
 net-misc/asterisk-moh-opsound 2.03 2.03-r1: asterisk moh music
@@ -15175,7 +15175,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
-net-misc/youtube-dl 2020.03.08 2020.03.24 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.03.24 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.5.5 3.5.9 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17395,7 +17395,7 @@ sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs 
 sys-fs/pysize 0.2-r1 0.2-r2: A graphical and console tool for exploring the size of directories
 sys-fs/quota 4.04-r3 4.05-r1: Linux quota tools
 sys-fs/quotatool 1.6.2: command-line utility for filesystem quotas
-sys-fs/rar2fs 1.27.2-r1 1.28.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
+sys-fs/rar2fs 1.27.2-r1 1.28.0 1.29.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r2: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.2.1 2.0.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
@@ -18759,7 +18759,7 @@ x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and 
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2 3.34.2: The Gnome Terminal
 x11-terms/guake 3.3.2-r1 3.6.3-r1 3.7.0 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.15.1 0.16.0-r1 0.16.0-r2 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty 0.15.1 0.16.0-r1 0.16.0-r2 0.16.0-r3 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
 x11-terms/kitty-terminfo 0.16.0: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
