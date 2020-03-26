@@ -1,0 +1,246 @@
+From fe581cc24805288c6c1a9b26a4b72748906f16c8 Mon Sep 17 00:00:00 2001
+From: Kurt Kanzenbach <kurt@kmk-computers.de>
+Date: Thu, 26 Mar 2020 15:58:46 +0100
+Subject: [PATCH] hpx: Remove use of deprecated header
+
+The current hpx version is v1.4. Remove the usage of deprecated hpx headers and
+make it compile again.
+
+Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
+---
+ src/libgeodecomp/communication/hpxreceiver.h             | 5 ++---
+ src/libgeodecomp/communication/hpxserializationwrapper.h | 8 ++++----
+ .../communication/test/parallel_hpx_4/hpxreceivertest.h  | 5 ++---
+ src/libgeodecomp/geometry/coord.h                        | 4 ++--
+ src/libgeodecomp/io/mocksteerer.h                        | 5 +++++
+ src/libgeodecomp/io/mockwriter.h                         | 5 +++++
+ src/libgeodecomp/misc/clonable.h                         | 2 +-
+ src/libgeodecomp/misc/nonpodtestcell.h                   | 2 +-
+ src/libgeodecomp/parallelization/hpxsimulator.cpp        | 2 +-
+ src/libgeodecomp/parallelization/hpxsimulator.h          | 9 ++++-----
+ src/libgeodecomp/storage/displacedgrid.h                 | 4 ++--
+ src/libgeodecomp/storage/grid.h                          | 4 ++--
+ src/libgeodecomp/storage/patchprovider.h                 | 3 ++-
+ .../storage/test/unit/reorderingunstructuredgridtest.h   | 4 ++--
+ 14 files changed, 35 insertions(+), 27 deletions(-)
+
+diff --git a/src/libgeodecomp/communication/hpxreceiver.h b/src/libgeodecomp/communication/hpxreceiver.h
+index 1a0baf9bbdee..beb657b88bbc 100644
+--- a/src/libgeodecomp/communication/hpxreceiver.h
++++ b/src/libgeodecomp/communication/hpxreceiver.h
+@@ -10,10 +10,9 @@
+ 
+ #include <hpx/include/components.hpp>
+ #include <hpx/include/lcos.hpp>
+-#include <hpx/lcos/broadcast.hpp>
+-#include <hpx/lcos/local/receive_buffer.hpp>
++#include <hpx/collectives/broadcast.hpp>
++#include <hpx/local_lcos/receive_buffer.hpp>
+ #include <hpx/runtime/get_ptr.hpp>
+-#include <hpx/util/unwrapped.hpp>
+ #include <libgeodecomp/communication/hpxserializationwrapper.h>
+ #include <libgeodecomp/misc/stringops.h>
+ 
+diff --git a/src/libgeodecomp/communication/hpxserializationwrapper.h b/src/libgeodecomp/communication/hpxserializationwrapper.h
+index 5ebf06c4cf7c..0afb145840a6 100644
+--- a/src/libgeodecomp/communication/hpxserializationwrapper.h
++++ b/src/libgeodecomp/communication/hpxserializationwrapper.h
+@@ -10,10 +10,10 @@
+  * just pull in this header.
+  */
+ #include <libgeodecomp/communication/hpxserialization.h>
+-#include <hpx/runtime/serialization/map.hpp>
+-#include <hpx/runtime/serialization/serialize.hpp>
+-#include <hpx/runtime/serialization/shared_ptr.hpp>
+-#include <hpx/runtime/serialization/vector.hpp>
++#include <hpx/serialization/map.hpp>
++#include <hpx/serialization/serialize.hpp>
++#include <hpx/serialization/shared_ptr.hpp>
++#include <hpx/serialization/vector.hpp>
+ 
+ #endif
+ 
+diff --git a/src/libgeodecomp/communication/test/parallel_hpx_4/hpxreceivertest.h b/src/libgeodecomp/communication/test/parallel_hpx_4/hpxreceivertest.h
+index ab16a0947546..b2f9c6d47559 100644
+--- a/src/libgeodecomp/communication/test/parallel_hpx_4/hpxreceivertest.h
++++ b/src/libgeodecomp/communication/test/parallel_hpx_4/hpxreceivertest.h
+@@ -1,9 +1,8 @@
+ #include <cxxtest/TestSuite.h>
+ #include <hpx/hpx.hpp>
+-#include <hpx/lcos/broadcast.hpp>
++#include <hpx/collectives/broadcast.hpp>
+ #include <hpx/runtime/components/component_factory.hpp>
+-#include <hpx/runtime/serialization/serialize_buffer.hpp>
+-#include <hpx/util/unwrapped.hpp>
++#include <hpx/serialization/serialize_buffer.hpp>
+ #include <libgeodecomp/communication/hpxreceiver.h>
+ #include <libgeodecomp/misc/stringops.h>
+ 
+diff --git a/src/libgeodecomp/geometry/coord.h b/src/libgeodecomp/geometry/coord.h
+index 5df21310d3ee..8772980c52df 100644
+--- a/src/libgeodecomp/geometry/coord.h
++++ b/src/libgeodecomp/geometry/coord.h
+@@ -10,8 +10,8 @@
+ #ifdef LIBGEODECOMP_WITH_HPX
+ #include <libgeodecomp/misc/cudaboostworkaround.h>
+ #include <hpx/config.hpp>
+-#include <hpx/runtime/serialization/array.hpp>
+-#include <hpx/runtime/serialization/serialize.hpp>
++#include <hpx/serialization/array.hpp>
++#include <hpx/serialization/serialize.hpp>
+ #endif
+ 
+ // For Intel MPI we need to source mpi.h before stdio.h:
+diff --git a/src/libgeodecomp/io/mocksteerer.h b/src/libgeodecomp/io/mocksteerer.h
+index 4ab2d28c5097..e20d0d5bb6bf 100644
+--- a/src/libgeodecomp/io/mocksteerer.h
++++ b/src/libgeodecomp/io/mocksteerer.h
+@@ -4,6 +4,11 @@
+ #include <sstream>
+ #include <libgeodecomp/io/steerer.h>
+ 
++#ifdef LIBGEODECOMP_WITH_HPX
++#include <hpx/include/threads.hpp>
++#include <hpx/concurrency/spinlock.hpp>
++#endif
++
+ namespace LibGeoDecomp {
+ 
+ namespace MockSteererHelpers {
+diff --git a/src/libgeodecomp/io/mockwriter.h b/src/libgeodecomp/io/mockwriter.h
+index 4d6d13c93acb..36cb7e1e1ae6 100644
+--- a/src/libgeodecomp/io/mockwriter.h
++++ b/src/libgeodecomp/io/mockwriter.h
+@@ -8,6 +8,11 @@
+ #include <libgeodecomp/misc/clonable.h>
+ #include <libgeodecomp/misc/testcell.h>
+ 
++#ifdef LIBGEODECOMP_WITH_HPX
++#include <hpx/include/threads.hpp>
++#include <hpx/concurrency/spinlock.hpp>
++#endif
++
+ #include <sstream>
+ 
+ namespace LibGeoDecomp {
+diff --git a/src/libgeodecomp/misc/clonable.h b/src/libgeodecomp/misc/clonable.h
+index 8162513826b8..a1dccbf94bd3 100644
+--- a/src/libgeodecomp/misc/clonable.h
++++ b/src/libgeodecomp/misc/clonable.h
+@@ -5,7 +5,7 @@
+ 
+ #ifdef LIBGEODECOMP_WITH_HPX
+ #include <libgeodecomp/misc/cudaboostworkaround.h>
+-#include <hpx/runtime/serialization/base_object.hpp>
++#include <hpx/serialization/base_object.hpp>
+ #endif
+ 
+ namespace LibGeoDecomp {
+diff --git a/src/libgeodecomp/misc/nonpodtestcell.h b/src/libgeodecomp/misc/nonpodtestcell.h
+index 66453ce80ba7..1618c8359b90 100644
+--- a/src/libgeodecomp/misc/nonpodtestcell.h
++++ b/src/libgeodecomp/misc/nonpodtestcell.h
+@@ -11,7 +11,7 @@
+ #endif
+ 
+ #ifdef LIBGEODECOMP_WITH_HPX
+-#include <hpx/runtime/serialization/set.hpp>
++#include <hpx/serialization/set.hpp>
+ #endif
+ 
+ namespace LibGeoDecomp {
+diff --git a/src/libgeodecomp/parallelization/hpxsimulator.cpp b/src/libgeodecomp/parallelization/hpxsimulator.cpp
+index 6e2fb6c78519..0329d6815913 100644
+--- a/src/libgeodecomp/parallelization/hpxsimulator.cpp
++++ b/src/libgeodecomp/parallelization/hpxsimulator.cpp
+@@ -3,7 +3,7 @@
+ 
+ #include <libgeodecomp/parallelization/hpxsimulator.h>
+ #include <hpx/include/lcos.hpp>
+-#include <hpx/lcos/broadcast.hpp>
++#include <hpx/collectives/broadcast.hpp>
+ 
+ namespace LibGeoDecomp {
+ namespace HpxSimulatorHelpers {
+diff --git a/src/libgeodecomp/parallelization/hpxsimulator.h b/src/libgeodecomp/parallelization/hpxsimulator.h
+index 1ccdf883e915..15b5a3628f9d 100644
+--- a/src/libgeodecomp/parallelization/hpxsimulator.h
++++ b/src/libgeodecomp/parallelization/hpxsimulator.h
+@@ -6,11 +6,10 @@
+ 
+ #include <libgeodecomp/misc/cudaboostworkaround.h>
+ #include <hpx/config.hpp>
+-#include <hpx/runtime/serialization/set.hpp>
+-#include <hpx/runtime/serialization/string.hpp>
+-#include <hpx/runtime/serialization/vector.hpp>
+-#include <hpx/include/lcos.hpp>
+-#include <hpx/lcos/broadcast.hpp>
++#include <hpx/serialization/set.hpp>
++#include <hpx/serialization/string.hpp>
++#include <hpx/serialization/vector.hpp>
++#include <hpx/collectives/broadcast.hpp>
+ 
+ #include <libgeodecomp/communication/hpxserializationwrapper.h>
+ #include <libgeodecomp/geometry/partitions/stripingpartition.h>
+diff --git a/src/libgeodecomp/storage/displacedgrid.h b/src/libgeodecomp/storage/displacedgrid.h
+index 5c72e520ce48..a8831053fedc 100644
+--- a/src/libgeodecomp/storage/displacedgrid.h
++++ b/src/libgeodecomp/storage/displacedgrid.h
+@@ -19,8 +19,8 @@
+ #ifdef LIBGEODECOMP_WITH_HPX
+ #include <libgeodecomp/misc/cudaboostworkaround.h>
+ #include <libgeodecomp/communication/hpxserializationwrapper.h>
+-#include <hpx/runtime/serialization/input_archive.hpp>
+-#include <hpx/runtime/serialization/output_archive.hpp>
++#include <hpx/serialization/input_archive.hpp>
++#include <hpx/serialization/output_archive.hpp>
+ #endif
+ 
+ namespace LibGeoDecomp {
+diff --git a/src/libgeodecomp/storage/grid.h b/src/libgeodecomp/storage/grid.h
+index 6e218696f625..821b02002c87 100644
+--- a/src/libgeodecomp/storage/grid.h
++++ b/src/libgeodecomp/storage/grid.h
+@@ -26,8 +26,8 @@
+ #ifdef LIBGEODECOMP_WITH_HPX
+ #include <libgeodecomp/misc/cudaboostworkaround.h>
+ #include <libgeodecomp/communication/hpxserializationwrapper.h>
+-#include <hpx/runtime/serialization/input_archive.hpp>
+-#include <hpx/runtime/serialization/output_archive.hpp>
++#include <hpx/serialization/input_archive.hpp>
++#include <hpx/serialization/output_archive.hpp>
+ #endif
+ 
+ namespace LibGeoDecomp {
+diff --git a/src/libgeodecomp/storage/patchprovider.h b/src/libgeodecomp/storage/patchprovider.h
+index 71fda8091e95..66aa67f214fa 100644
+--- a/src/libgeodecomp/storage/patchprovider.h
++++ b/src/libgeodecomp/storage/patchprovider.h
+@@ -2,7 +2,8 @@
+ #define LIBGEODECOMP_STORAGE_PATCHPROVIDER_H
+ 
+ #ifdef LIBGEODECOMP_WITH_HPX
+-#include <hpx/lcos/local/spinlock.hpp>
++#include <hpx/include/threads.hpp>
++#include <hpx/synchronization/spinlock.hpp>
+ #include <mutex>
+ #endif
+ 
+diff --git a/src/libgeodecomp/storage/test/unit/reorderingunstructuredgridtest.h b/src/libgeodecomp/storage/test/unit/reorderingunstructuredgridtest.h
+index d89146a4bf69..7cb5203dae44 100644
+--- a/src/libgeodecomp/storage/test/unit/reorderingunstructuredgridtest.h
++++ b/src/libgeodecomp/storage/test/unit/reorderingunstructuredgridtest.h
+@@ -19,8 +19,8 @@
+ #ifdef LIBGEODECOMP_WITH_HPX
+ #include <libgeodecomp/misc/cudaboostworkaround.h>
+ #include <libgeodecomp/communication/hpxserializationwrapper.h>
+-#include <hpx/runtime/serialization/input_archive.hpp>
+-#include <hpx/runtime/serialization/output_archive.hpp>
++#include <hpx/serialization/input_archive.hpp>
++#include <hpx/serialization/output_archive.hpp>
+ #endif
+ 
+ using namespace LibGeoDecomp;
+-- 
+2.24.1
+

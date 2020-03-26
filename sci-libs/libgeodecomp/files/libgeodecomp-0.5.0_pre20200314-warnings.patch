@@ -1,0 +1,33 @@
+From 87e1918e13fa3f3124e945a0ea12cfb339ddf303 Mon Sep 17 00:00:00 2001
+From: Kurt Kanzenbach <kurt@kmk-computers.de>
+Date: Thu, 26 Mar 2020 16:05:02 +0100
+Subject: [PATCH] hpx: receiver: Remove std::move() call
+
+This fixes the following warning:
+
+|/home/kurt/git/libgeodecomp/src/libgeodecomp/communication/hpxreceiver.h:138:29: warning: moving a local object in a return statement prevents copy elision [-Wpessimizing-move]
+|  138 |         return std::move(vec);
+
+The compiler should be smart enough to optimize the correct way :).
+
+Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
+---
+ src/libgeodecomp/communication/hpxreceiver.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libgeodecomp/communication/hpxreceiver.h b/src/libgeodecomp/communication/hpxreceiver.h
+index beb657b88bbc..28de314d5ef5 100644
+--- a/src/libgeodecomp/communication/hpxreceiver.h
++++ b/src/libgeodecomp/communication/hpxreceiver.h
+@@ -135,7 +135,7 @@ public:
+             vec << receiver->get(i).get();
+         }
+ 
+-        return std::move(vec);
++        return vec;
+     }
+ 
+ private:
+-- 
+2.24.1
+
