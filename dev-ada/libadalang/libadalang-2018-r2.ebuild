@@ -39,6 +39,7 @@ pkg_setup() {
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${PN}-2017-gentoo.patch
+	"${FILESDIR}"/${PN}-2019-pyyaml.patch
 )
 
 src_configure() {
