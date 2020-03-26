@@ -1,6 +1,11 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2020-03-26)
+# Dependency not keyworded on ~riscv
+dev-libs/libpipeline test
+sys-apps/kbd test
+
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
