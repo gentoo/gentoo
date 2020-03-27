@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,8 +26,8 @@ DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
-	dev-qt/qtgui:5[-gles2]
-	dev-qt/qtmultimedia:5[-gles2]
+	dev-qt/qtgui:5[-gles2-only]
+	dev-qt/qtmultimedia:5[-gles2-only]
 	dev-qt/qtopengl:5
 	media-gfx/opencsg
 	media-libs/fontconfig:1.0
