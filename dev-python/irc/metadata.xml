@@ -13,6 +13,7 @@
 		This project includes an event-driven IRC client framework written in Python,
 		as well as an object-oriented wrapper class and some example programs.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">irc</remote-id>
 		<remote-id type="github">jaraco/irc</remote-id>
