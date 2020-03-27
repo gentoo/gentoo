@@ -53,7 +53,12 @@ RDEPEND="
 	vtk? ( >=sci-libs/vtk-8.1.0[rendering] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="
+	doc? (
+		app-doc/doxygen
+		qt5? ( dev-qt/linguist-tools:5 )
+	)
+"
 
 # There's no easy way to test. Testing needs a rather big environment
 # properly set up.
@@ -90,7 +95,7 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX="/usr/$(get_libdir)/${PF}/ros"
 		-DINSTALL_DIR_DOC="/usr/share/doc/${PF}"
 		-DINSTALL_DIR_CMAKE="/usr/$(get_libdir)/cmake"
-		-DINSTALL_DOC_Overview=$(usex doc)
+#		-DINSTALL_DOC_Overview=$(usex doc)
 		-DINSTALL_SAMPLES=$(usex examples)
 		-DINSTALL_TEST_CASES=NO
 		-DUSE_D3D=no
