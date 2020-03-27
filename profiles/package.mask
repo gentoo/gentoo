@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Rafael G. Martins <rafaelmartins@gentoo.org> (2020-03-27)
+# Python 2 only. Uses old version of DNSimple API.
+# Removal in 30 days.  Bug #712960
+net-dns/dnsimple-dyndns
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-27)
 # Unmaintained.  Not tested for py3.7.  Last bumped in 2015.
 # Bad quality ebuild.
