@@ -9,9 +9,6 @@
 		<email>openstack@gentoo.org</email>
 		<name>Openstack</name>
 	</maintainer>
-	<longdescription lang="en">
-	A simple connector pool for python-ldap.
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">ldappool</remote-id>
 		<remote-id type="launchpad">oslo</remote-id>
