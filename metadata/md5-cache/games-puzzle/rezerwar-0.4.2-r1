@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-mixer[vorbis]
 SLOT=0
 SRC_URI=http://tamentis.com/projects/rezerwar/files/rezerwar-0.4.2.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
 _md5_=e3167945521888ff630b1232d03b7d82

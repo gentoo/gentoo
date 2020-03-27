@@ -9,5 +9,5 @@ RDEPEND=media-libs/freetype media-libs/libsdl[X,sound,opengl,video] media-libs/l
 RESTRICT=bindist fetch mirror strip test
 SLOT=0
 SRC_URI=ftl_advanced_edition_1_6_9_25330.sh
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
 _md5_=288e7affa6daea9bca95e7e6b3dbf1d3

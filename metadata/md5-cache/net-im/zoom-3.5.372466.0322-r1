@@ -8,5 +8,5 @@ RDEPEND=dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtdeclarative:5 d
 RESTRICT=mirror bindist strip
 SLOT=0
 SRC_URI=amd64? ( https://zoom.us/client/3.5.372466.0322/zoom_x86_64.tar.xz -> zoom-3.5.372466.0322_x86_64.tar.xz ) x86? ( https://zoom.us/client/3.5.372466.0322/zoom_i686.tar.xz -> zoom-3.5.372466.0322_i686.tar.xz )
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=f89868ab8105c843a20ed39fc4ee9d7a

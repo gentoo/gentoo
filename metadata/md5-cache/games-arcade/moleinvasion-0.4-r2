@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[opengl,video] virtual/opengl media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf
 SLOT=0
 SRC_URI=ftp://download.tuxfamily.org/minvasion/packages/MoleInvasion-0.4.tar.bz2 music? ( mirror://gentoo/moleinvasion-music-20090731.tar.gz )
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
 _md5_=003ef87e5d8b5968949d50fc5e1bf514

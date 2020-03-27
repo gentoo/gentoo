@@ -10,5 +10,5 @@ RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer media-libs/sdl-ttf m
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://crimson.seul.org/files/crimson-0.5.3.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
 _md5_=365ebc605ce6a5c0c7e129fd46ab8ee5

@@ -10,5 +10,5 @@ RDEPEND=|| ( dev-libs/openssl-compat:1.0.0 =dev-libs/openssl-1.0*:* ) dev-libs/l
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://www.sourcetrail.com/downloads/2019.3.46/linux/64bit -> sourcetrail-2019.3.46.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=8bf846c4a03053a03466989de18ab5c6

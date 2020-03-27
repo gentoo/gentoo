@@ -9,5 +9,5 @@ RDEPEND=app-accessibility/at-spi2-atk app-accessibility/at-spi2-core dev-libs/at
 RESTRICT=splitdebug
 SLOT=0
 SRC_URI=https://pencil.evolus.vn/dl/V3.1.0.ga/pencil-3.1.0.ga-1.x86_64.rpm -> evoluspencil-3.1.0-1.rpm
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	rpm	c1d552831d4ee9c7bb82c35545c264c8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	rpm	c1d552831d4ee9c7bb82c35545c264c8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=bf74cd331335c36fb0940795ecd6c153

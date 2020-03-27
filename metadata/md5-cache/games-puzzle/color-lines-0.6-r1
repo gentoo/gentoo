@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[X,sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[wav,mod]
 SLOT=0
 SRC_URI=https://color-lines.googlecode.com/files/lines_0.6.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
 _md5_=8bdaad715e716713d0f8c0d61f1a109d

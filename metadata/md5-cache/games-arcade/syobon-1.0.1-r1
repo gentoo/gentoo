@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video,joystick] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-ttf media-libs/sdl-mixer[vorbis]
 SLOT=0
 SRC_URI=http://download.zapek.com/software/syobon/syobon_1.0.1_src.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
 _md5_=048edf46c3a5dbb0d59f683b56473d98

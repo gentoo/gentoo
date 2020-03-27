@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=media-libs/libsdl[sound,joystick,opengl,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] virtual/opengl
 SLOT=0
 SRC_URI=mirror://sourceforge/wizznic/Wizznic_src_build_369.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
 _md5_=1b30b1885ab03355271e7807c9717595

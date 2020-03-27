@@ -7,5 +7,5 @@ LICENSE=BSD
 RDEPEND=x11-misc/xdg-utils
 SLOT=0
 SRC_URI=https://github.com/band-a-prend/gentoo-overlay/releases/download/ct-docs-2.4.0/cantera-docs-2.4.0_modified_menu.tar.xz -> cantera-docs-2.4.0.tar.xz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
 _md5_=d3f2affd758f19c25283ef641594f6aa

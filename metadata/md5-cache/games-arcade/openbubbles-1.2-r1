@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[png] media-libs/sdl-gfx
 SLOT=0
 SRC_URI=https://web.archive.org/web/20101126190910/http://www.freewebs.com/lasindi/openbubbles/openbubbles-1.2.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
 _md5_=e5133f92e00e10a9245698fc505e5abb
