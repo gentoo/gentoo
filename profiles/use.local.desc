@@ -8455,7 +8455,6 @@ sys-libs/compiler-rt-sanitizers:profile - Build profiling runtime.
 sys-libs/compiler-rt-sanitizers:sanitize - Build sanitizer runtimes.
 sys-libs/compiler-rt-sanitizers:xray - Build XRay runtime.
 sys-libs/darwin-libc-headers:man - Install the manpages
-sys-libs/db:rpc - Enable rpc client/server
 sys-libs/freeipmi:nagios - Install a nagios plugin to check sensors' status.
 sys-libs/gdbm:berkdb - enable compatibility layer for UNIX-like dbm and ndbm interfaces
 sys-libs/gdbm:exporter - enable gdbmexport binary for exporting data from gdbm-1.8 databases into gdbm-1.9

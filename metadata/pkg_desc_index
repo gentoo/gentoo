@@ -7958,10 +7958,10 @@ dev-python/jedi 0.14.1 0.15.1 0.15.2: Autocompletion library for Python
 dev-python/jeepney 0.4.1: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.7.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 3.4.2: Python wrapper for jikan.moe API.
-dev-python/jinja 2.8.1 2.10.3-r1 2.11.1: A full-featured template engine for Python
+dev-python/jinja 2.8.1 2.11.1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
-dev-python/jira 1.0.14-r2 1.0.14-r3: Python library for interacting with the JIRA REST API
+dev-python/jira 1.0.14-r3: Python library for interacting with the JIRA REST API
 dev-python/jmespath 0.9.3-r1: JSON Matching Expressions
 dev-python/joblib 0.12.2: Tools to provide lightweight pipelining in Python
 dev-python/jog 0.1.1: JSON Structured Logging for Python
@@ -14755,7 +14755,7 @@ net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx 0.10.2-r3: A mail user agent auto configuration service
 net-mail/automx2 2019.0 2020.1: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
-net-mail/b4 0.3.4: Utility for fetching patchsets from public-inbox
+net-mail/b4 0.3.5: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication program w/pam support
 net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
@@ -17463,7 +17463,7 @@ sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/darwin-libc-headers 1158.50.2-r4 1244.50.9-r4 1272.250.1-r4: Darwin system headers from Libc 1272.250.1, macOS 10.14.3
-sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r2 4.3.29_p1-r2 4.4.20_p4-r2 4.5.20_p2-r2 4.6.21_p4-r1 4.7.25_p4-r1 4.8.30-r3 5.1.29-r2 5.3.28-r2 5.3.28-r4 6.0.35-r2 6.1.38 6.2.38 18.1.32: Oracle Berkeley DB
+sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r3 4.3.29_p1-r3 4.4.20_p4-r3 4.5.20_p2-r3 4.6.21_p4-r2 4.7.25_p4-r2 4.8.30-r3 5.1.29-r2 5.3.28-r2 5.3.28-r4 6.0.35-r2 6.1.38 6.2.38 18.1.32: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.45.4 1.45.5 1.45.6: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
