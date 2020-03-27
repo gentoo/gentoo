@@ -86,9 +86,9 @@ src_prepare() {
 	fi
 
 	rm -vf ${PLUGIN_DIR}/libavplugin*
-	rm -vf ${S}/plugins/maven/lib/maven3/lib/jansi-native/*/libjansi*
-	rm -vrf ${S}/lib/pty4j-native/linux/ppc64le
-	rm -vf ${S}/bin/libdbm64*
+	rm -vf "${S}"/plugins/maven/lib/maven3/lib/jansi-native/*/libjansi*
+	rm -vrf "${S}"/lib/pty4j-native/linux/ppc64le
+	rm -vf "${S}"/bin/libdbm64*
 
 	if [[ -d "${S}"/"${JRE_DIR}" ]]; then
 		for file in "${PLUGIN_DIR}"/{libfxplugins.so,libjfxmedia.so}
