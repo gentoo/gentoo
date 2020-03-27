@@ -2474,7 +2474,7 @@ app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/loksh 6.6: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
-app-shells/mksh 57-r2 9999: MirBSD Korn Shell
+app-shells/mksh 57-r2 58 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/mpv-bash-completion 3.3.16 3.3.17: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
@@ -8055,7 +8055,7 @@ dev-python/matplotlib-python2 2.2.4: Pure python plotting library with matlab li
 dev-python/matterhook 0.1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.2.1 0.6.1 0.6.1-r1: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
-dev-python/mechanize 0.2.5-r1 0.3.6 0.4.5: Stateful programmatic web browsing in Python
+dev-python/mechanize 0.4.5: Stateful programmatic web browsing in Python
 dev-python/mediafile 0.2.0: Read and write audio files' tags in Python
 dev-python/medusa 0.5.4-r1: A framework for writing asynchronous long-running, high-performance network servers in Python
 dev-python/meld3 1.0.2-r2 2.0.0: meld3 is an HTML/XML templating engine
@@ -17960,7 +17960,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
-www-client/opera 67.0.3575.97: A fast and secure web browser
+www-client/opera 67.0.3575.97 67.0.3575.115: A fast and secure web browser
 www-client/opera-beta 68.0.3618.5 68.0.3618.24: A fast and secure web browser
 www-client/opera-developer 69.0.3623.0 69.0.3638.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
