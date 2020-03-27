@@ -5,6 +5,7 @@
     <email>robbat2@gentoo.org</email>
     <name>Robin H. Johnson</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">google/google-api-python-client</remote-id>
   </upstream>
