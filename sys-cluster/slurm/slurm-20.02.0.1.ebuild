@@ -102,6 +102,8 @@ src_prepare() {
 		-i "${S}/etc"/*.service.in \
 		|| die "Can't sed systemd services for sysconfig or var/run/"
 
+	sed -e '/AM_PATH_GTK_2_0/d' -i configure.ac || die
+
 	hprefixify auxdir/{ax_check_zlib,x_ac_{lz4,ofed,munge}}.m4
 	eautoreconf
 }
