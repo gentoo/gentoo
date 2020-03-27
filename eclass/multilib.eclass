@@ -294,10 +294,21 @@ get_modname() {
 }
 
 # This is for the toolchain to setup profile variables when pulling in
-# a crosscompiler (and thus they aren't set in the profile)
+# a crosscompiler (and thus they aren't set in the profile).
 multilib_env() {
 	local CTARGET=${1:-${CTARGET}}
 	local cpu=${CTARGET%%*-}
+
+	if [[ ${CTARGET} = *-musl* ]]; then
+		# musl has no multilib support and can run only in 'lib':
+		# - https://bugs.gentoo.org/675954
+		# - https://gcc.gnu.org/PR90077
+		# - https://github.com/gentoo/musl/issues/245
+		: ${MULTILIB_ABIS=default}
+		: ${DEFAULT_ABI=default}
+		export MULTILIB_ABIS DEFAULT_ABI
+		return
+	fi
 
 	case ${cpu} in
 		aarch64*)
