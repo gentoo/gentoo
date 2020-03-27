@@ -5,9 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription>
-    This package provides the IPython kernel for Jupyter.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">ipykernel</remote-id>
     <remote-id type="github">ipython/ipykernel</remote-id>
