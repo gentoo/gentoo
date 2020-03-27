@@ -775,6 +775,39 @@ pkg_postinst() {
 		elog "media-sound/apulse."
 		elog
 	fi
+
+	local show_normandy_information
+
+	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
+		# New install
+		show_normandy_information=yes
+	else
+		local replacing_version
+		for replacing_version in ${REPLACING_VERSIONS} ; do
+			if ver_test "${replacing_version}" -lt 68.6.0-r2 ; then
+				# Tell user only once about our Normandy default
+				show_normandy_information=yes
+				break
+			fi
+		done
+	fi
+
+	# bug 713782
+	if [[ -n "${show_normandy_information}" ]] ; then
+		elog
+		elog "Upstream operates a service named Normandy which allows Mozilla to"
+		elog "push changes for default settings or even install new add-ons remotely."
+		elog "While this can be useful to address problems like 'Armagadd-on 2.0' or"
+		elog "revert previous decisions to disable TLS 1.0/1.1, privacy and security"
+		elog "concerns prevail, which is why we have switched off the use of this"
+		elog "service by default."
+		elog
+		elog "To re-enable this service set"
+		elog
+		elog "    app.normandy.enabled=true"
+		elog
+		elog "in about:config."
+	fi
 }
 
 pkg_postrm() {
