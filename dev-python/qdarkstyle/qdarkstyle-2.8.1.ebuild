@@ -27,7 +27,7 @@ RDEPEND=">=dev-python/helpdev-0.6.2[${PYTHON_USEDEP}]
 DEPEND="test? ( dev-python/qtsass[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
-distutils_enable_sphinx doc dev-python/sphinx_rtd_theme dev-python/m2r
+distutils_enable_sphinx docs dev-python/sphinx_rtd_theme dev-python/m2r
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
