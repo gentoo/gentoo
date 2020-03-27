@@ -23,7 +23,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
-inherit mozlinguas-v2 nsplugins pax-utils xdg-utils
+inherit mozlinguas-v2 nsplugins pax-utils xdg-utils eapi7-ver
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
@@ -169,6 +169,10 @@ src_install() {
 }
 
 pkg_postinst() {
+	# Update mimedb for the new .desktop file
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+
 	if ! has_version 'gnome-base/gconf' || ! has_version 'gnome-base/orbit' \
 		|| ! has_version 'net-misc/curl'; then
 		einfo
@@ -187,9 +191,38 @@ pkg_postinst() {
 		ewarn "USE=-pulseaudio & USE=-alsa : For audio please either set USE=pulseaudio or USE=alsa!"
 	fi
 
-	# Update mimedb for the new .desktop file
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+	local show_normandy_information
+
+	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
+		# New install
+		show_normandy_information=yes
+	else
+		local replacing_version
+		for replacing_version in ${REPLACING_VERSIONS} ; do
+			if ver_test "${replacing_version}" -lt 68.6.0-r1 ; then
+				# Tell user only once about our Normandy default
+				show_normandy_information=yes
+				break
+			fi
+		done
+	fi
+
+	# bug 713782
+	if [[ -n "${show_normandy_information}" ]] ; then
+		elog
+		elog "Upstream operates a service named Normandy which allows Mozilla to"
+		elog "push changes for default settings or even install new add-ons remotely."
+		elog "While this can be useful to address problems like 'Armagadd-on 2.0' or"
+		elog "revert previous decisions to disable TLS 1.0/1.1, privacy and security"
+		elog "concerns prevail, which is why we have switched off the use of this"
+		elog "service by default."
+		elog
+		elog "To re-enable this service set"
+		elog
+		elog "    app.normandy.enabled=true"
+		elog
+		elog "in about:config."
+	fi
 }
 
 pkg_postrm() {

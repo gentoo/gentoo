@@ -192,18 +192,23 @@ pkg_postinst() {
 		ewarn "USE=-pulseaudio & USE=-alsa : For audio please either set USE=pulseaudio or USE=alsa!"
 	fi
 
-	local show_doh_information
+	local show_doh_information show_normandy_information
 
 	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		# New install; Tell user that DoH is disabled by default
 		show_doh_information=yes
+		show_normandy_information=yes
 	else
 		local replacing_version
 		for replacing_version in ${REPLACING_VERSIONS} ; do
 			if ver_test "${replacing_version}" -lt 70 ; then
 				# Tell user only once about our DoH default
 				show_doh_information=yes
-				break
+			fi
+
+			if ver_test "${replacing_version}" -lt 74.0-r1 ; then
+				# Tell user only once about our Normandy default
+				show_normandy_information=yes
 			fi
 		done
 	fi
@@ -216,6 +221,23 @@ pkg_postinst() {
 		elog "should respect OS configured settings), \"network.trr.mode\" was set to 5"
 		elog "(\"Off by choice\") by default."
 		elog "You can enable DNS-over-HTTPS in ${PN^}'s preferences."
+	fi
+
+	# bug 713782
+	if [[ -n "${show_normandy_information}" ]] ; then
+		elog
+		elog "Upstream operates a service named Normandy which allows Mozilla to"
+		elog "push changes for default settings or even install new add-ons remotely."
+		elog "While this can be useful to address problems like 'Armagadd-on 2.0' or"
+		elog "revert previous decisions to disable TLS 1.0/1.1, privacy and security"
+		elog "concerns prevail, which is why we have switched off the use of this"
+		elog "service by default."
+		elog
+		elog "To re-enable this service set"
+		elog
+		elog "    app.normandy.enabled=true"
+		elog
+		elog "in about:config."
 	fi
 }
 
