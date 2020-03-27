@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-27)
+# No Python 3 support.  Last touched by maintainer in 2014.
+# Removal in 30 days.  Bug #674734.
+www-client/weboob
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-03-26)
 # Fail to build with glibc-2.30; no maintainer. Removal in 30days.
 # Bugs 691756, 691710
