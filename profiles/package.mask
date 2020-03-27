@@ -461,15 +461,6 @@ app-admin/packagekit-qt
 app-backup/deja-dup
 gnome-extra/gnome-packagekit
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-24)
-# Effectively unmaintained in Gentoo.  Multiple versions behind
-# upstream.  Python 2 only.
-# Removal in 30 days.  Bug #709466.
-app-admin/equo
-app-admin/matter
-sys-apps/entropy
-sys-apps/entropy-server
-
 # David Seifert <soap@gentoo.org> (2020-02-23)
 # Last release in 2013, the scons SConstruct script uses variables
 # that have been removed from Scons years ago and also uses a ton of
