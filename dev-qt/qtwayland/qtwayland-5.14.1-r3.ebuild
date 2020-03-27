@@ -21,7 +21,7 @@ DEPEND="
 	>=x11-libs/libxkbcommon-0.2.0
 	vulkan? ( dev-util/vulkan-headers )
 	X? (
-		~dev-qt/qtgui-${PV}[-gles2]
+		~dev-qt/qtgui-${PV}[-gles2-only]
 		x11-libs/libX11
 		x11-libs/libXcomposite
 	)
