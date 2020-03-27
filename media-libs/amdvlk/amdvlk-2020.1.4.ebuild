@@ -4,22 +4,23 @@ EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit cmake-multilib check-reqs
-
+inherit multilib-minimal check-reqs
+#cmake-multilib and cmake-utils build doesn't support https://github.com/GPUOpen-Drivers/AMDVLK/issues/151
 DESCRIPTION="AMD Open Source Driver for Vulkan"
 HOMEPAGE="https://github.com/GPUOpen-Drivers/AMDVLK"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug wayland"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )"
 ###DEPENDS
 BUNDLED_LLVM_DEPEND="sys-libs/zlib:0=[${MULTILIB_USEDEP}]"
 DEPEND="	wayland? (	 dev-libs/wayland[${MULTILIB_USEDEP}] 	)
 	${BUNDLED_LLVM_DEPEND}
+	>=dev-util/vulkan-headers-1.2.133
 	"
-BDEPEND="${DEPEND}
+BDEPEND="${BUNDLED_LLVM_DEPEND}
 dev-util/cmake"
 RDEPEND=" ${DEPEND}
 	x11-libs/libdrm[${MULTILIB_USEDEP}]
@@ -37,17 +38,16 @@ CMAKE_USE_DIR="${S}/xgl"
 
 ###SOURCE CODE VARIABLES
 FETCH_URI="https://github.com/GPUOpen-Drivers"
-CORRECT_AMDVLK_PV="v-$(ver_rs 1 '.Q')" #Only for amdvlk source code: transforming version 2019.2.2 to v-2019.Q2.2. Any other commits should be updated manually
+CORRECT_AMDVLK_PV="v-$(ver_rs 1 '.Q')" #Works only for amdvlk source code: transforming version 2019.2.2 to v-2019.Q2.2. Any other commits should be updated manually
 ##For those who wants update ebuild: check https://github.com/GPUOpen-Drivers/AMDVLK/blob/master/default.xml
 ##and place commits in the desired variables
 ## EXAMPLE: XGL_COMMIT="80e5a4b11ad2058097e77746772ddc9ab2118e07"
 ## SRC_URI="... ${FETCH_URI}/$PART/archive/$COMMIT.zip -> $PART-$COMMIT.zip ..."
-PATCHES=( ${FILESDIR}/amdvlk-cmake-dso.patch ) #remove after mainlining changes
-XGL_COMMIT="80e5a4b11ad2058097e77746772ddc9ab2118e07"
-PAL_COMMIT="e642f608a62887d40d1f25509d2951a4a3576985"
-LLPC_COMMIT="fc21c950b629753f9cc7d0941937c57262ceadcf"
-SPVGEN_COMMIT="843c6b95f731589bf497fad29dadf7fda4934aad"
-LLVM_PROJECT_COMMIT="e404e4b2db325184dbc2d14f31ef891d938f3835"
+XGL_COMMIT="2db4177e78133c868e2c6b4dcc46aeb2f512163a"
+PAL_COMMIT="bb7398b1c7509a30ba4f7d947b5ad5549a4d58db"
+LLPC_COMMIT="7686a2ddba683f7a361460f3806b0d45e615ca76"
+SPVGEN_COMMIT="d16fddddf22a1eb3a3f4ce05cbcb95a337f708b1"
+LLVM_PROJECT_COMMIT="5c958c70bc6366298296dc778e903f65528c3b0f"
 METROHASH_COMMIT="2b6fee002db6cc92345b02aeee963ebaaf4c0e2f"
 CWPACK_COMMIT="b601c88aeca7a7b08becb3d32709de383c8ee428"
 ## SRC_URI
@@ -78,14 +78,15 @@ Identifier "AMDgpu"
 Option  "DRI" "3"
 EndSection
 EOF
-
-cmake-utils_src_prepare
+cd ${S}/xgl
+default
 }
 
 multilib_src_configure() {
 CMAKE_BUILD_TYPE="$(usex debug "Debug" "Release")"
-	local mycmakeargs=(	-DBUILD_WAYLAND_SUPPORT=$(usex wayland )	)
-cmake-utils_src_configure
+	local mycmakeargs=(	-DBUILD_WAYLAND_SUPPORT=$(usex wayland ) -DCMAKE_BUILD_TYPE="$(usex debug "Debug" "Release")"	-B${BUILD_DIR})
+cd ${S}/xgl
+cmake -H. "${mycmakeargs[@]}"
 }
 
 multilib_src_install() {
@@ -100,8 +101,6 @@ else
 	insinto /usr/share/vulkan/icd.d
 	doins ${S}/AMDVLK/json/Redhat/amd_icd32.json
 fi
-einfo "json files installs to /usr/share/vulkan/icd.d instead of /etc because it shouldn't honor config-protect"
-cmake-utils_src_install
 }
 
 multilib_src_install_all() {
@@ -114,7 +113,11 @@ multilib_src_install_all() {
 pkg_postinst() {
 	elog "More information about the configuration can be found here:"
 	elog " https://github.com/GPUOpen-Drivers/AMDVLK"
-	ewarn "Make sure the following line is NOT included in the any Xorg configuration section: "
+	ewarn "Make sure the following line is NOT included in the any Xorg configuration section:"
 	ewarn "Driver      \"modesetting\""
 	ewarn "Else AMDVLK breaks things"
+	ewarn "With some games AMDVLK is still not stable. Use it at you own risk"
+	elog "You may want to disable default vulkan mesa provider in package.use \"media-libs/mesa -vulkan\""
+	elog "or perform export in /etc/env.d/ variable VK_ICD_FILENAMES=vulkanprovidername:vulkanprovidername2 "
+	elog "exampe| VK_ICD_FILENAMES=\"/usr/share/vulkan/icd.d/amd_icd64.json:/usr/share/vulkan/icd.d/amd_icd64.json\""
 }
