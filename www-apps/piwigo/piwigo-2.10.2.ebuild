@@ -22,11 +22,6 @@ BDEPEND="app-arch/unzip"
 
 REQUIRED_USE="|| ( gd imagemagick )"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-css_vuln.patch
-	"${FILESDIR}"/${P}-php7.4_deprecation.patch
-	"${FILESDIR}"/${P}-php7.4_notice.patch
-	)
 S=${WORKDIR}/${PN}
 
 src_install() {
