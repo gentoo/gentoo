@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-<maintainer type="person">
-<email>denis7774@gmail.com</email>
-<name>Reva Denis aka RarogCmex</name>
-</maintainer>
-<maintainer type="project">
-<email>proxy-maint@gentoo.org</email>
-<name>Proxy Maintainers</name>
-</maintainer>
-<longdescription>
-The AMD Open Source Driver for Vulkan® is an open-source Vulkan driver for AMD Radeon™ graphics adapters on Linux®. It is built on top of AMD’s Platform Abstraction Library (PAL), a shared component that is designed to encapsulate certain hardware and OS-specific programming details for many of AMD’s 3D and compute drivers. Leveraging PAL can help provide a consistent experience across platforms, including support for recently released GPUs and compatibility with AMD developer tools.
-Shaders that compose a particular VkPipeline object are compiled as a single entity using the LLVM-Based Pipeline Compiler (LLPC) library. LLPC builds on LLVM’s existing shader compilation infrastructure for AMD GPUs to generate code objects compatible with PAL’s pipeline ABI.
-Product Support
-The AMD Open Source Driver for Vulkan is designed to support a wide range of AMD GPUs:
-Radeon™ HD 7000 Series
-Radeon™ HD 8000M Series
-Radeon™ R5/R7/R9 200/300 Series
-Radeon™ RX 400/500 Series
-Radeon™ M200/M300/M400 Series
-Radeon™ RX Vega Series
-AMD FirePro™ Workstation Wx000/Wx100/Wx300 Series
-Radeon™ Pro WX x100 Series
-Radeon™ Pro 400/500 Series
-And the newest (Consult homepage)
-</longdescription>
+    <maintainer type="person">
+        <email>denis7774@gmail.com</email>
+        <name>Reva Denis aka RarogCmex</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <longdescription>
+        The AMD Open Source Driver for Vulkan® is an open-source Vulkan driver for AMD Radeon™ graphics adapters on Linux®. It is built on top of AMD’s Platform Abstraction Library (PAL), a shared component that is designed to encapsulate certain hardware and OS-specific programming details for many of AMD’s 3D and compute drivers. Leveraging PAL can help provide a consistent experience across platforms, including support for recently released GPUs and compatibility with AMD developer tools.
+        Shaders that compose a particular VkPipeline object are compiled as a single entity using the LLVM-Based Pipeline Compiler (LLPC) library. LLPC builds on LLVM’s existing shader compilation infrastructure for AMD GPUs to generate code objects compatible with PAL’s pipeline ABI.
+    </longdescription>
 </pkgmetadata>
