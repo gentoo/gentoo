@@ -10,6 +10,7 @@
   to conform to the WHATWG HTML specification, as is implemented by
   all major web browsers.
 </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">html5lib</remote-id>
     <remote-id type="github">html5lib/html5lib-python</remote-id>
