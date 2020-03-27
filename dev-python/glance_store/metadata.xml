@@ -9,9 +9,6 @@
 		<email>openstack@gentoo.org</email>
 		<name>Openstack</name>
 	</maintainer>
-	<longdescription lang="en">
-		Glance's stores library
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">glance_store</remote-id>
 		<remote-id type="launchpad">oslo</remote-id>
