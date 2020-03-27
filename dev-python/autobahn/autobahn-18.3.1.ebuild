@@ -47,6 +47,7 @@ DEPEND="${RDEPEND}
 		>=dev-python/pynacl-1.0.1[${PYTHON_USEDEP}]
 		>=dev-python/pytrie-0.2[${PYTHON_USEDEP}]
 		>=dev-python/pyqrcode-1.1.0[${PYTHON_USEDEP}]
+		dev-python/unittest2[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(
