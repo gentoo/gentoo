@@ -1,0 +1,25 @@
+From 0697af646a8235f80856c472e623117719c7186e Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Fri, 27 Mar 2020 15:48:25 +0100
+Subject: [PATCH] test_all.sh: Fix detection of memory cgroup mountpoint
+
+---
+ test_all.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test_all.sh b/test_all.sh
+index d158f76..4d10e19 100644
+--- a/test_all.sh
++++ b/test_all.sh
+@@ -97,7 +97,7 @@ done
+ 
+ test_run bin/cgutil top -b -n 1
+ 
+-root=$(awk '/^cgroup.*memory/ {print $2;}' /proc/mounts)
++root=$(awk '/^(cgroup.*)?memory/ {print $2;}' /proc/mounts)
+ path=$root/memory.usage_in_bytes
+ test_run_event bin/cgutil event -t 0.1 $path +1M
+ path=$root/memory.oom_control
+-- 
+2.24.1
+

@@ -255,7 +255,6 @@ dev-python/bcolz
 dev-python/beaker
 dev-python/biplist
 dev-python/blaze
-dev-python/cgroup-utils
 dev-python/colander
 dev-python/colorful
 dev-python/columnize
