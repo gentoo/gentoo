@@ -32,7 +32,7 @@ for lang in ${LANGS}; do
 done
 
 # texlive-latexrecommended needed by imaxima for breqn.sty
-RDEPEND="!app-emacs/imaxima
+RDEPEND="
 	X? ( x11-misc/xdg-utils
 		 sci-visualization/gnuplot[gd]
 		 tk? ( dev-lang/tk:0 ) )
