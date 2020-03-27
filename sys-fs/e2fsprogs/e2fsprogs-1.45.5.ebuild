@@ -29,7 +29,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.44.6-parallel_install.patch
 	"${FILESDIR}"/${PN}-1.40-fbsd.patch
 	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
 
@@ -114,7 +113,7 @@ src_install() {
 		STRIP=: \
 		root_libdir="${EPREFIX}/usr/$(get_libdir)" \
 		DESTDIR="${D}" \
-		install install-libs
+		install
 
 	einstalldocs
 
