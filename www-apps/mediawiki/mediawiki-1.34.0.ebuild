@@ -20,7 +20,7 @@ RDEPEND=">=dev-lang/php-7.2.9[ctype,fileinfo,iconv,json,mysql?,postgres?,session
 	sqlite? (
 		dev-db/sqlite[fts3(+)]
 		>=dev-lang/php-7.2.9[pdo]
-		|| ( dev-lang/php[sqlite] dev-lang/php[sqlite3] )
+		dev-lang/php[sqlite]
 	)
 	virtual/httpd-php"
 
