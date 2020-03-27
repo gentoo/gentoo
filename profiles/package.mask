@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-27)
+# It was integrated into dev-python/fonttools, and has no reverse
+# dependencies.
+# Removal in 30 days.  Bug #682146.
+dev-python/ufoLib
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-27)
 # No Python 3 support.  Last touched by maintainer in 2014.
 # Removal in 30 days.  Bug #674734.
 www-client/weboob
