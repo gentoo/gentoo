@@ -34,7 +34,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[-gles2]
+	dev-qt/qtgui:5[-gles2-only]
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
