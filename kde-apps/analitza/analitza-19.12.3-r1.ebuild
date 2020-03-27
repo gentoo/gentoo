@@ -20,7 +20,7 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5[-gles2]
+	>=dev-qt/qtgui-${QTMIN}:5[-gles2-only]
 	>=dev-qt/qtprintsupport-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
