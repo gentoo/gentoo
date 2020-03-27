@@ -72,7 +72,7 @@ RDEPEND="
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
 	projectm? (
-		dev-qt/qtgui:5[-gles2]
+		dev-qt/qtgui:5[-gles2-only]
 		dev-qt/qtopengl:5
 		media-libs/libprojectm:=
 	)
