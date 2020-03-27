@@ -8,6 +8,7 @@
   <longdescription>
     Interactive HTML widgets for Jupyter notebooks and the IPython kernel.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">ipywidgets</remote-id>
     <remote-id type="github">jupyter-widgets/ipywidgets</remote-id>
