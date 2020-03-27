@@ -29,8 +29,9 @@ RESTRICT="!demo? ( bindist fetch )"
 
 RDEPEND="games-arcade/jazz2:=[gles2-only=]"
 
-DEPEND="
+BDEPEND="
 	${RDEPEND}
+	app-arch/unzip
 	!demo? ( app-arch/innoextract )
 "
 
