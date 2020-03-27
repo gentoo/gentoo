@@ -17,7 +17,7 @@ IUSE="demo fmod freedoom fluidsynth openal tools"
 
 RDEPEND="
 	dev-qt/qtcore:5=
-	dev-qt/qtgui:5=[-gles2]
+	dev-qt/qtgui:5=[-gles2-only]
 	dev-qt/qtnetwork:5=
 	dev-qt/qtopengl:5=
 	dev-qt/qtwidgets:5=
