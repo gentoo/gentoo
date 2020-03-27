@@ -7867,8 +7867,8 @@ dev-python/gst-python 1.14.1-r1: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 3.0.0 9999: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
-dev-python/h11 0.7.0 0.8.1: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
-dev-python/h5py 2.7.0 2.7.1 2.9.0 2.10.0 2.10.0-r1: Simple Python interface to HDF5 files
+dev-python/h11 0.8.1: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
+dev-python/h5py 2.10.0 2.10.0-r1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
 dev-python/hcloud-python 1.6.3: Official Hetzner Cloud python library
 dev-python/helpdev 0.6.10: Helping users and developers to get information about the environment
@@ -7879,16 +7879,16 @@ dev-python/hiro 0.2 0.3 0.5: Time manipulation utilities for Python
 dev-python/hpack 2.3.0-r1 3.0.0: Pure-Python HPACK header compression
 dev-python/html2text 2018.1.9 2019.8.11 2019.9.26 2020.1.16-r1: Turn HTML into equivalent Markdown-structured text
 dev-python/html5-parser 0.4.9: Fast C based HTML 5 parsing for python
-dev-python/html5lib 0.9999999 0.999999999 1.0.1 1.0.1-r1: HTML parser based on the HTML5 specification
+dev-python/html5lib 1.0.1-r1: HTML parser based on the HTML5 specification
 dev-python/httmock 1.2.5: A mocking library for requests
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
 dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest Authentication
-dev-python/httpbin 0.4.1 0.7.0: HTTP Request and Response Service
-dev-python/httplib2 0.10.3-r1 0.11.3 0.12.1 0.13.0 0.17.0: A comprehensive HTTP client library
-dev-python/httpretty 0.8.14 0.9.6 0.9.7: HTTP client mock for Python
+dev-python/httpbin 0.7.0: HTTP Request and Response Service
+dev-python/httplib2 0.13.0 0.17.0: A comprehensive HTTP client library
+dev-python/httpretty 0.9.6 0.9.7: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/httreplay 0.2.0: A HTTP replay library for testing.
-dev-python/humanfriendly 4.17 4.18: Human friendly output for text interfaces using Python
+dev-python/humanfriendly 4.18: Human friendly output for text interfaces using Python
 dev-python/humanize 0.5.1 2.1.0 2.2.0: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
 dev-python/hvac 0.2.17: Python client for HashiCorp Vault
@@ -9017,7 +9017,7 @@ dev-python/ws4py 0.3.4-r1 0.5.1 9999: WebSocket client and server library for Py
 dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiintercept 1.3.1: WSGI application in place of a real URI for testing
 dev-python/wsgiproxy2 0.4.2 0.4.4-r1 0.4.6: HTTP proxying tools for WSGI apps
-dev-python/wsproto 0.11.0 0.12.0: WebSockets state-machine based protocol implementation
+dev-python/wsproto 0.12.0: WebSockets state-machine based protocol implementation
 dev-python/wstools 0.4.3 0.4.5-r1: WSDL parsing services package for Web Services for Python
 dev-python/wtf-peewee 3.0.0: WTForms integration for peewee models
 dev-python/wtforms 2.1 2.2.1: Flexible forms validation and rendering library for python web development
