@@ -178,10 +178,6 @@ mail-filter/spambayes
 # and 1.8.25 being an old development release
 >=gnome-extra/nm-applet-1.8.25
 
-# Matthew Thode <prometheanfire@gentoo.org> (2020-03-13)
-# masked for removal in 14 days. Bug #712310
-dev-python/cliff-tablib
-
 # Matt Turner <mattst88@gentoo.org> (2020-03-11)
 # Masked for testing due to removal of libnm-glib (bug #665338)
 >=net-misc/networkmanager-1.20
