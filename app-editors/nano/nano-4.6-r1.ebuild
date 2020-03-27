@@ -32,6 +32,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
+PATCHES=( "${FILESDIR}/${PN}-4.8-justify_keystroke_crash_fix.patch" )
 src_prepare() {
 	default
 	if [[ ${PV} == "9999" ]] ; then
