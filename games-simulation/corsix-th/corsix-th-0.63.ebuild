@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils desktop eapi7-ver gnome2-utils
+inherit cmake xdg
 
 MY_PN="CorsixTH"
 MY_PV="$(ver_rs 2 -)"
@@ -15,9 +15,10 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}.t
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="libav +midi +sound +truetype +videos"
+IUSE="doc libav +midi +sound +truetype +videos"
 
-RDEPEND=">=dev-lang/lua-5.1:0
+RDEPEND="
+	>=dev-lang/lua-5.1:0
 	>=dev-lua/luafilesystem-1.5
 	>=dev-lua/lpeg-0.9
 	>=dev-lua/luasocket-3.0_rc1-r4
@@ -27,32 +28,48 @@ RDEPEND=">=dev-lang/lua-5.1:0
 	videos? (
 		!libav? ( >=media-video/ffmpeg-2.2.3:0= )
 		libav? ( >=media-video/libav-11.1:0= )
-	)"
+	)
+"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+
+BDEPEND="
+	virtual/pkgconfig
+	doc? (
+		 app-doc/doxygen[dot]
+		 >=dev-lang/lua-5.1:0
+	)
+"
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
-PATCHES=("${FILESDIR}"/${P}-gcc-10.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.62-gcc-10.patch
+)
+
+src_prepare() {
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_AUDIO="$(usex sound)"
-		-DWITH_FREETYPE2="$(usex truetype)"
-		-DWITH_LIBAV="$(usex libav)"
-		-DWITH_MOVIES="$(usex videos)"
+		-DWITH_AUDIO=$(usex sound)
+		-DWITH_FREETYPE2=$(usex truetype)
+		-DWITH_LIBAV=$(usex libav)
+		-DWITH_MOVIES=$(usex videos)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+	use doc && cmake_src_compile doc
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	dodoc {changelog,CONTRIBUTING}.txt
 
-	newicon -s scalable CorsixTH/Original_Logo.svg ${PN}.svg
-	make_desktop_entry ${PN} "${MY_PN}"
+	docinto html
+	use doc && dodoc -r "${BUILD_DIR}"/doc/*
 }
-
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
