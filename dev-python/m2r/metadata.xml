@@ -10,7 +10,4 @@
 		<remote-id type="pypi">m2r</remote-id>
 		<remote-id type="github">miyakogi/m2r</remote-id>
 	</upstream>
-	<longdescription>
-		M2R converts a markdown file including reST markups to a valid reST format.
-	</longdescription>
 </pkgmetadata>
