@@ -71,7 +71,7 @@ command="${EPREFIX}/opt/foldingathome/FAHClient"
 command_args="\${FOLD_OPTS}"
 command_user=foldingathome
 command_background=1
-pidfile="\${PIDFILE}"
+procname="FAHClient"
 EOF
 	newinitd "${T}"/fah-init foldingathome
 
@@ -85,9 +85,9 @@ Type=simple
 User=foldingathome
 WorkingDirectory=${EPREFIX}/opt/foldingathome
 PIDFile=/run/fahclient.pid
-ExecStart=${EPREFIX}/opt/foldingathome/FAHClient -v start
-ExecReload=${EPREFIX}/opt/foldingathome/FAHClient -v restart
-ExecStop=${EPREFIX}/opt/foldingathome/FAHClient -v stop
+ExecStart=${EPREFIX}/opt/foldingathome/FAHClient -v
+#ExecReload=${EPREFIX}/opt/foldingathome/FAHClient -v restart
+#ExecStop=${EPREFIX}/opt/foldingathome/FAHClient -v stop
 KillMode=process
 
 [Install]

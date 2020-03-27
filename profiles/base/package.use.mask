@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-27)
+# Requires old version of dev-python/docutils.
+dev-util/buildbot doc
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-03-26)
 # Requires deprecated python2 and pygtk
 mail-client/claws-mail python
