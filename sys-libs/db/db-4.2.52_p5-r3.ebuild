@@ -28,30 +28,31 @@ done
 LICENSE="Sleepycat"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86"
-IUSE="tcl java doc cxx rpc"
+IUSE="tcl java doc cxx"
 RESTRICT="!test? ( test )"
 
 DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
-	java? ( >=virtual/jdk-1.4 )
-	>=sys-devel/binutils-2.16.1"
+	java? ( >=virtual/jdk-1.4 )"
 RDEPEND="tcl? ( dev-lang/tcl )
 	java? ( >=virtual/jre-1.4 )"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}"-4.4-libtool.patch
+	"${FILESDIR}"/"${PN}"-4.2.52_p2-TXN.patch
+	"${FILESDIR}"/"${PN}"-"${SLOT}"-libtool.patch
 
 	# use the includes from the prefix
 	"${FILESDIR}"/"${PN}"-"${SLOT}"-jni-check-prefix-first.patch
-	"${FILESDIR}"/"${PN}"-4.2-listen-to-java-options.patch
+	"${FILESDIR}"/"${PN}"-"${SLOT}"-listen-to-java-options.patch
+	"${FILESDIR}"/"${PN}"-4.0.14-fix-dep-link.patch
 )
 
 # Required to avoid unpack attempt of patches
 src_unpack() {
-	unpack "${MY_P}".tar.gz
+	unpack ${MY_P}.tar.gz
 }
 
 src_prepare() {
-	pushd "${WORKDIR}"/"${MY_P}" &>/dev/null || die
+	pushd "${WORKDIR}/${MY_P}" &>/dev/null || die
 	for (( i=1 ; i<=${PATCHNO} ; i++ ))
 	do
 		eapply -p0 "${DISTDIR}"/patch."${MY_PV}"."${i}"
@@ -68,13 +69,24 @@ src_prepare() {
 		-e '/jarfile=.*\.jar$/s,(.jar$),-$(LIBVERSION)\1,g' \
 		-i dist/Makefile.in || die
 
+	# START of 4.5+earlier specific
+	# Upstream sucks, they normally concat these
+	local i j
+	for j in dist/aclocal{,_java} ; do
+		pushd ${j} &>/dev/null || die
+		for i in * ; do
+			ln -s ${i} ${i%.ac}.m4 || die
+		done
+		popd &>/dev/null || die
+	done
+	# END of 4.5+earlier specific
 	pushd dist &>/dev/null || die
-	rm aclocal/libtool.m4 || die
+	rm aclocal/libtool.{m4,ac} || die
 	sed \
 		-e '/AC_PROG_LIBTOOL$/aLT_OUTPUT' \
 		-i configure.ac || die
 	sed \
-		-e '/^AC_PATH_TOOL/s/ sh, none/ bash, none/' \
+		-e '/^AC_PATH_TOOL/s/ sh, missing_sh/ bash, missing_sh/' \
 		-i aclocal/programs.m4 || die
 
 	AT_M4DIR="aclocal aclocal_java" eautoreconf
@@ -95,17 +107,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# compilation with -O0 fails on amd64, see bug #171231
-	if use amd64 ; then
-		replace-flags -O0 -O2
-		is-flagq -O[s123] || append-flags -O2
-	fi
-
 	local myconf=(
 		--enable-compat185
-		--enable-o_direct
-		--without-uniquename
-		$(use_enable rpc)
+		--with-uniquename
+		--disable-rpc
 		--host="${CHOST}"
 
 		$(usex amd64 '--with-mutex=x86/gcc-assembly' '')
@@ -123,29 +128,30 @@ src_configure() {
 	fi
 
 	# the entire testsuite needs the TCL functionality
-	if use tcl && use test ; then
+	if use tcl && use test; then
 		myconf+=( --enable-test )
 	else
 		myconf+=( --disable-test )
 	fi
 
-	# Add linker versions to the symbols. Easier to do, and safer than header file
-	# mumbo jumbo.
-	if use userland_GNU; then
-		append-ldflags -Wl,--default-symver
-	fi
-
 	ECONF_SOURCE="${S}"/../dist \
 	econf "${myconf[@]}"
+}
 
-	sed -e "s,\(^STRIP *=\).*,\1\"true\"," -i Makefile || die
+src_compile() {
+	# This isn't safe for prefix (Darwin should be .jnilib), but I can't get the
+	# build system to behave itself, it generates libtool too late.
+	sed \
+		-e 's/-shrext  $(SOFLAGS)/-shrext .so $(SOFLAGS)/g' \
+		-i Makefile || die
+	emake
 }
 
 src_install() {
 	emake \
 		DESTDIR="${D}" \
 		libdir="${EPREFIX}/usr/$(get_libdir)" \
-		STRIP="true" \
+		strip="${EPREFIX}/bin/strip" \
 		install
 
 	db_src_install_usrbinslot

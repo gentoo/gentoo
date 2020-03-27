@@ -27,32 +27,33 @@ done
 
 LICENSE="Sleepycat"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86"
-IUSE="tcl java doc cxx rpc"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ppc ppc64 s390 sparc x86"
+IUSE="tcl java doc cxx"
 RESTRICT="!test? ( test )"
 
 DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
-	java? ( >=virtual/jdk-1.4 )"
+	java? ( >=virtual/jdk-1.4 )
+	>=sys-devel/binutils-2.16.1"
 RDEPEND="tcl? ( dev-lang/tcl )
 	java? ( >=virtual/jre-1.4 )"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}"-4.2.52_p2-TXN.patch
 	"${FILESDIR}"/"${PN}"-"${SLOT}"-libtool.patch
 
 	# use the includes from the prefix
-	"${FILESDIR}"/"${PN}"-"${SLOT}"-jni-check-prefix-first.patch
-	"${FILESDIR}"/"${PN}"-"${SLOT}"-listen-to-java-options.patch
-	"${FILESDIR}"/"${PN}"-4.0.14-fix-dep-link.patch
+	"${FILESDIR}"/"${PN}"-4.2-jni-check-prefix-first.patch
+	"${FILESDIR}"/"${PN}"-4.2-listen-to-java-options.patch
+
+	"${FILESDIR}"/"${PN}"-4.3.27-fix-dep-link.patch
 )
 
 # Required to avoid unpack attempt of patches
 src_unpack() {
-	unpack ${MY_P}.tar.gz
+	unpack "${MY_P}".tar.gz
 }
 
 src_prepare() {
-	pushd "${WORKDIR}/${MY_P}" &>/dev/null || die
+	pushd "${WORKDIR}"/"${MY_P}" &>/dev/null || die
 	for (( i=1 ; i<=${PATCHNO} ; i++ ))
 	do
 		eapply -p0 "${DISTDIR}"/patch."${MY_PV}"."${i}"
@@ -80,6 +81,7 @@ src_prepare() {
 		popd &>/dev/null || die
 	done
 	# END of 4.5+earlier specific
+
 	pushd dist &>/dev/null || die
 	rm aclocal/libtool.{m4,ac} || die
 	sed \
@@ -101,7 +103,6 @@ src_prepare() {
 		-e "s/__EDIT_DB_VERSION_UNIQUE_NAME__/$DB_VERSION_UNIQUE_NAME/g" \
 		-e "s/__EDIT_DB_VERSION__/$DB_VERSION/g" \
 		-i configure || die
-
 	popd &>/dev/null || die
 	popd &>/dev/null || die
 }
@@ -109,8 +110,9 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--enable-compat185
-		--with-uniquename
-		$(use_enable rpc)
+		--enable-o_direct
+		--without-uniquename
+		--disable-rpc
 		--host="${CHOST}"
 
 		$(usex amd64 '--with-mutex=x86/gcc-assembly' '')
@@ -128,23 +130,20 @@ src_configure() {
 	fi
 
 	# the entire testsuite needs the TCL functionality
-	if use tcl && use test; then
+	if use tcl && use test ; then
 		myconf+=( --enable-test )
 	else
 		myconf+=( --disable-test )
 	fi
 
+	# Add linker versions to the symbols. Easier to do, and safer than header
+	# file mumbo jumbo.
+	if use userland_GNU; then
+		append-ldflags -Wl,--default-symver
+	fi
+
 	ECONF_SOURCE="${S}"/../dist \
 	econf "${myconf[@]}"
-}
-
-src_compile() {
-	# This isn't safe for prefix (Darwin should be .jnilib), but I can't get the
-	# build system to behave itself, it generates libtool too late.
-	sed \
-		-e 's/-shrext  $(SOFLAGS)/-shrext .so $(SOFLAGS)/g' \
-		-i Makefile || die
-	emake
 }
 
 src_install() {
