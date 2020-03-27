@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <longdescription>
-      Python client for Apache Kafka
-  </longdescription>
   <upstream>
     <remote-id type="github">dpkp/kafka-python</remote-id>
     <remote-id type="pypi">kafka-python</remote-id>
