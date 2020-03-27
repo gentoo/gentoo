@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=>=sys-libs/libselinux-2.9:=[python] >=sys-libs/libsemanage-2.9:=[python] >=sys-libs/libsepol-2.9:= >=app-admin/setools-4.2.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/ipy[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] !dev-python/sepolgen python_targets_python3_6? ( dev-lang/python:3.6[xml] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+DEPEND=>=sys-libs/libselinux-2.9:=[python] >=sys-libs/libsemanage-2.9:=[python] >=sys-libs/libsepol-2.9:= >=app-admin/setools-4.2.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/ipy[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] !dev-python/sepolgen python_targets_python3_6? ( >=dev-lang/python-3.6.10:3.6[xml] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 DESCRIPTION=SELinux core utilities
 EAPI=6
 HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
 IUSE=python_targets_python3_6
 KEYWORDS=amd64 ~arm64 ~mips x86
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/libselinux-2.9:=[python] >=sys-libs/libsemanage-2.9:=[python] >=sys-libs/libsepol-2.9:= >=app-admin/setools-4.2.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/ipy[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] !dev-python/sepolgen python_targets_python3_6? ( dev-lang/python:3.6[xml] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+RDEPEND=>=sys-libs/libselinux-2.9:=[python] >=sys-libs/libsemanage-2.9:=[python] >=sys-libs/libsepol-2.9:= >=app-admin/setools-4.2.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/ipy[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] !dev-python/sepolgen python_targets_python3_6? ( >=dev-lang/python-3.6.10:3.6[xml] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 )
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/selinux/releases/download/20190315/selinux-python-2.9.tar.gz
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=082b1bb6c83b819f17ffb5af4aaa8ff8

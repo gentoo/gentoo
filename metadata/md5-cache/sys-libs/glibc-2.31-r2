@@ -1,4 +1,4 @@
-BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) >=app-misc/pax-utils-0.1.10 sys-devel/bison !<sys-devel/bison-2.7 doc? ( sys-apps/texinfo ) >=sys-devel/binutils-2.24 >=sys-devel/gcc-6 virtual/pkgconfig
+BDEPEND=|| ( >=dev-lang/python-3.8.2:3.8 >=dev-lang/python-3.7.6:3.7 >=dev-lang/python-3.6.10:3.6 ) >=app-misc/pax-utils-0.1.10 sys-devel/bison !<sys-devel/bison-2.7 doc? ( sys-apps/texinfo ) >=sys-devel/binutils-2.24 >=sys-devel/gcc-6 virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst preinst prepare pretend setup test unpack
 DEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) test? ( >=net-dns/libidn2-2.3.0 ) virtual/os-headers sys-devel/gnuconfig
 DESCRIPTION=GNU libc C library
@@ -11,5 +11,5 @@ RDEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit )
 RESTRICT=!test? ( test )
 SLOT=2.2
 SRC_URI=mirror://gnu/glibc/glibc-2.31.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.31-patches-3.tar.xz multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20180511.tar.xz )
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	42d97132740235ad4310cd60beb1992e	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	42d97132740235ad4310cd60beb1992e	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c874c35789a2ddb9ae0150ee2904b659

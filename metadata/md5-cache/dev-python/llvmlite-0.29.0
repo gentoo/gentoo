@@ -1,4 +1,4 @@
-BDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
+BDEPEND=python_targets_python3_6? ( >=dev-lang/python-3.6.10:3.6 ) python_targets_python3_7? ( >=dev-lang/python-3.7.6:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=dev-python/six[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] sys-devel/llvm:8 sys-libs/zlib:0= dev-python/setuptools[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 DESCRIPTION=Python wrapper around the llvm C++ library
@@ -7,9 +7,9 @@ HOMEPAGE=http://llvmlite.pydata.org/
 IUSE=examples python_targets_python3_6 python_targets_python3_7
 KEYWORDS=amd64 arm arm64 x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
-RDEPEND=dev-python/six[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] sys-devel/llvm:8 sys-libs/zlib:0= python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
+RDEPEND=dev-python/six[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] sys-devel/llvm:8 sys-libs/zlib:0= python_targets_python3_6? ( >=dev-lang/python-3.6.10:3.6 ) python_targets_python3_7? ( >=dev-lang/python-3.7.6:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/numba/llvmlite/archive/v0.29.0.tar.gz -> llvmlite-0.29.0.gh.tar.gz
-_eclasses_=distutils-r1	577e2308f7b36e26062d464f59a5ee6c	llvm	11596869538b5e2be887810f05390a21	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=distutils-r1	577e2308f7b36e26062d464f59a5ee6c	llvm	11596869538b5e2be887810f05390a21	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a32a3b06643d2d4e93785b700c25a23e

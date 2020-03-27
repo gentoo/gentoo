@@ -1,4 +1,4 @@
-BDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 ) doc? ( app-doc/doxygen ) virtual/pkgconfig
+BDEPEND=|| ( >=dev-lang/python-3.7.6:3.7 >=dev-lang/python-3.6.10:3.6 ) doc? ( app-doc/doxygen ) virtual/pkgconfig
 DEFINED_PHASES=compile configure install prepare setup test
 DESCRIPTION=Handler library for evdev events
 EAPI=7
@@ -9,5 +9,5 @@ LICENSE=MIT
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/libevdev/libevdev-1.8.0.tar.xz
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=87fcf0c67a92632d83f17d2fcf597c65

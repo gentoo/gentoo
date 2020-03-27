@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=virtual/blas virtual/lapack afterimage? ( media-libs/libafterimage ) boost? ( dev-libs/boost ) fftw? ( sci-libs/fftw:3.0[mpi?] ) hdf5? ( sci-libs/hdf5[mpi?] ) hypre? ( >=sci-libs/hypre-2.8.0b[mpi?] ) metis? ( >=sci-libs/parmetis-4 ) mpi? ( virtual/mpi[cxx?,fortran?] ) mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack ) scotch? ( sci-libs/scotch[mpi?] ) sparse? ( sci-libs/suitesparse >=sci-libs/cholmod-1.7.0 ) superlu? ( >=sci-libs/superlu-5 ) X? ( x11-libs/libX11 ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) virtual/pkgconfig dev-util/cmake virtual/fortran
+DEPEND=virtual/blas virtual/lapack afterimage? ( media-libs/libafterimage ) boost? ( dev-libs/boost ) fftw? ( sci-libs/fftw:3.0[mpi?] ) hdf5? ( sci-libs/hdf5[mpi?] ) hypre? ( >=sci-libs/hypre-2.8.0b[mpi?] ) metis? ( >=sci-libs/parmetis-4 ) mpi? ( virtual/mpi[cxx?,fortran?] ) mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack ) scotch? ( sci-libs/scotch[mpi?] ) sparse? ( sci-libs/suitesparse >=sci-libs/cholmod-1.7.0 ) superlu? ( >=sci-libs/superlu-5 ) X? ( x11-libs/libX11 ) || ( >=dev-lang/python-2.7.17-r1:2.7 ) virtual/pkgconfig dev-util/cmake virtual/fortran
 DESCRIPTION=Portable, Extensible Toolkit for Scientific Computation
 EAPI=7
 HOMEPAGE=http://www.mcs.anl.gov/petsc/
@@ -10,5 +10,5 @@ RDEPEND=virtual/blas virtual/lapack afterimage? ( media-libs/libafterimage ) boo
 REQUIRED_USE=afterimage? ( X ) complex-scalars? ( !hypre !superlu ) hdf5? ( mpi ) hypre? ( cxx mpi !superlu ) mumps? ( mpi scotch ) scotch? ( mpi ) superlu? ( !hypre )
 SLOT=0
 SRC_URI=http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.11.3.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	42d97132740235ad4310cd60beb1992e	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	42d97132740235ad4310cd60beb1992e	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bd7bb7f5cdc64728404a8ca6bb6476a9

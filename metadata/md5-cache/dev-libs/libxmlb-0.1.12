@@ -1,4 +1,4 @@
-BDEPEND=>=dev-util/meson-0.47.0 virtual/pkgconfig introspection? ( || ( ( dev-lang/python:3.7 dev-python/setuptools[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/setuptools[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) || ( dev-lang/python:3.7 dev-lang/python:3.6 ) ) >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+BDEPEND=>=dev-util/meson-0.47.0 virtual/pkgconfig introspection? ( || ( ( >=dev-lang/python-3.7.6:3.7 dev-python/setuptools[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( >=dev-lang/python-3.6.10:3.6 dev-python/setuptools[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) || ( >=dev-lang/python-3.7.6:3.7 >=dev-lang/python-3.6.10:3.6 ) ) >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
 DEFINED_PHASES=compile configure install setup test
 DEPEND=dev-libs/glib:2 sys-apps/util-linux stemmer? ( dev-libs/snowball-stemmer ) doc? ( dev-util/gtk-doc ) introspection? ( dev-libs/gobject-introspection )
 DESCRIPTION=Library to help create and query binary XML blobs
@@ -11,5 +11,5 @@ RDEPEND=dev-libs/glib:2 sys-apps/util-linux stemmer? ( dev-libs/snowball-stemmer
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/hughsie/libxmlb/archive/0.1.12.tar.gz -> libxmlb-0.1.12.tar.gz
-_eclasses_=meson	0b22603e8787cab8d798c23c5e711ca5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=meson	0b22603e8787cab8d798c23c5e711ca5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9356a2573f7beda0e5b5ee04402f9d92

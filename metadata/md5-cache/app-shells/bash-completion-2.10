@@ -1,5 +1,5 @@
 DEFINED_PHASES=install postinst prepare setup test
-DEPEND=test? ( >=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !!net-fs/mc app-misc/dtach dev-util/dejagnu dev-tcltk/tcllib || ( ( dev-lang/python:3.7 dev-python/pexpect[python_targets_python3_7(-),python_single_target_python3_7(+)] dev-python/pytest[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/pexpect[python_targets_python3_6(-),python_single_target_python3_6(+)] dev-python/pytest[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) )
+DEPEND=test? ( >=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !!net-fs/mc app-misc/dtach dev-util/dejagnu dev-tcltk/tcllib || ( ( >=dev-lang/python-3.7.6:3.7 dev-python/pexpect[python_targets_python3_7(-),python_single_target_python3_7(+)] dev-python/pytest[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( >=dev-lang/python-3.6.10:3.6 dev-python/pexpect[python_targets_python3_6(-),python_single_target_python3_6(+)] dev-python/pytest[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) )
 DESCRIPTION=Programmable Completion for bash
 EAPI=7
 HOMEPAGE=https://github.com/scop/bash-completion
@@ -11,5 +11,5 @@ RDEPEND=>=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !!net-fs/mc
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/scop/bash-completion/releases/download/2.10/bash-completion-2.10.tar.xz eselect? ( https://github.com/mgorny/bashcomp2/releases/download/v2.0.3/bashcomp-2.0.3.tar.gz )
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=004932e17f71ecb31b47982a2caf9e7f

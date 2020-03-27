@@ -1,4 +1,4 @@
-BDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-util/ragel dev-libs/boost net-libs/libpcap dev-util/ninja dev-util/cmake
+BDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-util/ragel dev-libs/boost net-libs/libpcap dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=High-performance regular expression matching library
 EAPI=7
@@ -6,9 +6,9 @@ HOMEPAGE=https://www.hyperscan.io/ https://github.com/intel/hyperscan
 IUSE=cpu_flags_x86_ssse3 static-libs python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-util/ragel dev-libs/boost net-libs/libpcap
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-util/ragel dev-libs/boost net-libs/libpcap
 REQUIRED_USE=cpu_flags_x86_ssse3 || ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/intel/hyperscan/archive/v5.2.0.tar.gz -> hyperscan-5.2.0.tar.gz
-_eclasses_=cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	42d97132740235ad4310cd60beb1992e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	e03f98555f2634bb9fb3160a8e30e3ec	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	42d97132740235ad4310cd60beb1992e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=753c144c47eb1c528d3e6bfea072dc76
