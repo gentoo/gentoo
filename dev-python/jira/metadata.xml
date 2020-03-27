@@ -5,9 +5,6 @@
     <email>calchan@gentoo.org</email>
     <name>Denis Dupeyron</name>
   </maintainer>
-  <longdescription lang="en">
-    Python library for interacting with JIRA via REST APIs.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">jira</remote-id>
     <remote-id type="github">pycontribs/jira</remote-id>
