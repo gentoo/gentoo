@@ -13,6 +13,7 @@
     Python Build Reasonableness
   PBR is a library that injects some useful and sensible default behaviors into your setuptools run.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pbr</remote-id>
     <remote-id type="github">openstack-dev/pbr</remote-id>

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs user
+inherit toolchain-funcs
 
 MY_PV="${PV//_p/-P}"
 MY_PV="${MY_PV/_/-}"
@@ -34,7 +34,9 @@ DEPEND="
 	openssl? ( dev-libs/openssl:0= )
 	postgres? ( dev-db/postgresql:* )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	acct-group/dhcp
+	acct-user/dhcp"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
@@ -68,9 +70,4 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}-initd ${PN}
 	keepdir /var/{lib,run}/${PN} /var/log
 	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
-}
-
-pkg_preinst() {
-	enewgroup dhcp
-	enewuser dhcp -1 -1 /var/lib/dhcp dhcp
 }
