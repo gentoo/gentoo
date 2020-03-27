@@ -42,7 +42,7 @@ python_prepare_all() {
 python_test() {
 	# tests look for a file in source dir that is not installed
 	PYTHONPATH="${S}"
-	cd "${S}"
+	cd "${S}" || die
 	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
 
