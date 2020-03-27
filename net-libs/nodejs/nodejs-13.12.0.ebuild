@@ -4,17 +4,18 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
-inherit bash-completion-r1 eutils flag-o-matic git-r3 pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 eutils flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-EGIT_REPO_URI="https://github.com/nodejs/node"
+SRC_URI="
+	https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz
+"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm pax_kernel +snapshot +ssl +system-ssl systemtap test"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	inspector? ( icu ssl )
 	npm? ( ssl )
@@ -24,7 +25,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libuv-1.35.0:=
 	>=net-dns/c-ares-1.15.0
-	>=net-libs/nghttp2-1.39.2
+	>=net-libs/nghttp2-1.40.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-66.1:= )
 	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
@@ -41,6 +42,8 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 )
+RESTRICT="test"
+S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
@@ -86,7 +89,7 @@ src_prepare() {
 	fi
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.2.0-paxmarking.patch )
+	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.8.0-paxmarking.patch )
 
 	default
 }
