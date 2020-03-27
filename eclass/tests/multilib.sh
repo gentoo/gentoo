@@ -57,5 +57,9 @@ test-multilib_env \
 	"x86_64-pc-linux-gnux32" \
 	"x32:x32 amd64 x86" \
 	"x32? ( CHOST=x86_64-pc-linux-gnux32 LIBDIR=libx32 CFLAGS=-mx32 LDFLAGS= ) amd64? ( CHOST=x86_64-pc-linux-gnu LIBDIR=lib64 CFLAGS=-m64 LDFLAGS= ) x86? ( CHOST=i686-pc-linux-gnu LIBDIR=lib CFLAGS=-m32 LDFLAGS= )"
+test-multilib_env \
+	"x86_64-gentoo-linux-musl" \
+	"default:default" \
+	"default? ( CHOST=x86_64-gentoo-linux-musl LIBDIR=lib CFLAGS= LDFLAGS= )"
 
 texit
