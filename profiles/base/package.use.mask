@@ -7,6 +7,10 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-27)
+# www-client/weboob is masked for removal.
+app-office/kmymoney weboob
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-27)
 # Requires old version of dev-python/docutils.
 dev-util/buildbot doc
 
