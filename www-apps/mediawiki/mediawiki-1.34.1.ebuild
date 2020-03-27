@@ -11,15 +11,15 @@ HOMEPAGE="http://www.mediawiki.org"
 SRC_URI="http://releases.wikimedia.org/${PN}/${MY_BRANCH}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ppc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="imagemagick mysql postgres sqlite"
 
-RDEPEND=">=dev-lang/php-7.2.9[ctype,fileinfo,iconv,json,mysql?,postgres?,session,ssl,unicode,xml,xmlreader]
+RDEPEND="dev-lang/php[ctype,fileinfo,iconv,json,mysql?,postgres?,session,ssl,unicode,xml,xmlreader]
 	imagemagick? ( virtual/imagemagick-tools )
 	!imagemagick? ( dev-lang/php[gd] )
 	sqlite? (
 		dev-db/sqlite[fts3(+)]
-		>=dev-lang/php-7.2.9[pdo]
+		dev-lang/php[pdo]
 		dev-lang/php[sqlite]
 	)
 	virtual/httpd-php"
