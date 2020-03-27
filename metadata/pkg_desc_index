@@ -411,7 +411,6 @@ app-admin/eclean-kernel 0.4.3 1.99.4 9999: Clean up old and stale kernel files
 app-admin/elektra 0.8.20-r1: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.3 4.4: Run arbitrary commands when files change
-app-admin/equo 302-r1: Entropy Package Manager text-based client
 app-admin/eselect 1.4.12 1.4.14 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/exo 1.10.0: Command-line tool for everything at Exoscale: compute, storage, dns.
@@ -465,7 +464,6 @@ app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2 2.2.3: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
-app-admin/matter 302-r1: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 168: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.12.4 2.12.5: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
@@ -1325,7 +1323,7 @@ app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20171014 20180408 20200215: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.9 1.10: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.2: GTK+-based editor for the Xfce Desktop Environment
-app-editors/nano 4.2 4.6 4.8 4.9 9999: GNU GPL'd Pico clone with more functionality
+app-editors/nano 4.6-r1 4.9 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.1.1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.4.3 9999: Vim-fork focused on extensibility and agility.
@@ -7712,18 +7710,18 @@ dev-python/dulwich 0.19.6 0.19.15: Pure-Python implementation of the Git file fo
 dev-python/dynd-python 0.7.2-r2: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.4.1: Easy thumbnails for Django
 dev-python/ebuildtester 0.1.12 0.1.13 0.1.14 0.1.16: A dockerized approach to test a Gentoo package within a clean stage3 container
-dev-python/ecdsa 0.13.3 0.14.1 0.14.1-r1: ECDSA cryptographic signature library in pure Python
+dev-python/ecdsa 0.14.1-r1: ECDSA cryptographic signature library in pure Python
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
-dev-python/elasticsearch-curator 5.5.4-r1 5.6.0 5.8.1: Tending time-series indices in Elasticsearch
-dev-python/elasticsearch-py 6.3.1-r1 6.4.0 7.0.5 7.1.0 7.5.1: Official Python low-level client for Elasticsearch
-dev-python/elementpath 1.3.1 1.4.1 1.4.2 1.4.3: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
+dev-python/elasticsearch-curator 5.8.1: Tending time-series indices in Elasticsearch
+dev-python/elasticsearch-py 7.0.5 7.5.1: Official Python low-level client for Elasticsearch
+dev-python/elementpath 1.4.3: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/embedly 0.5.0-r1: Python Library for Embedly
 dev-python/emcee 2.2.1: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
-dev-python/empy 3.3-r1 3.3.2 3.3.3: A powerful and robust templating system for Python
+dev-python/empy 3.3.3: A powerful and robust templating system for Python
 dev-python/entrypoints 0.3-r1: Discover and load entry points from installed packages
 dev-python/enum34 1.1.6-r1: Python 3.4 Enum backported
 dev-python/envoy 0.0.3 0.0.3-r1: Simple API for running external processes
@@ -7734,28 +7732,28 @@ dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard 
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
 dev-python/eventlet 0.25.1 0.25.1-r1: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
-dev-python/execnet 1.4.1 1.5.0 1.7.1: Rapid multi-Python deployment
-dev-python/expects 0.8.0 0.8.0-r1: Expressive and extensible TDD/BDD assertion library for Python
-dev-python/extras 0.0.3 1.0.0: Useful extra bits for Python that should be in the standard library
+dev-python/execnet 1.7.1: Rapid multi-Python deployment
+dev-python/expects 0.8.0-r1: Expressive and extensible TDD/BDD assertion library for Python
+dev-python/extras 1.0.0: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5 0.8.11: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 2.3.1: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 1.3.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.14.1-r1: Python package that provides useful locks
 dev-python/fastparquet 0.1.1 0.1.5: Python implementation of the parquet columnar file format
-dev-python/faulthandler 2.6 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
+dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/fedmsg 0.18.3: Fedora Messaging Client API
 dev-python/feedgenerator 1.9 1.9.1: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
-dev-python/filelock 3.0.10 3.0.12: A platform independent file lock for Python
+dev-python/filelock 3.0.12: A platform independent file lock for Python
 dev-python/filemagic 1.6: A Python API for libmagic, the library behind the Unix file command
 dev-python/filetype 1.0.5: Small, dependency-free, fast Python package to infer binary file types checking
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
-dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean tests and more
-dev-python/flake8 3.5.0 3.7.9: A wrapper around PyFlakes, pep8 & mccabe
+dev-python/fixtures 3.0.0: Fixtures, reusable state for writing clean tests and more
+dev-python/flake8 3.7.9: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-import-order 0.18: Flake8 plugin that checks import order against various Python Style Guides
 dev-python/flake8-polyfill 1.0.1: Polyfill package for Flake8 plugins
 dev-python/flaky 3.6.1: Plugin for nose or py.test that automatically reruns flaky tests
@@ -8245,7 +8243,7 @@ dev-python/pathtools 0.1.2-r2 0.1.2-r3: Pattern matching and various utilities f
 dev-python/patsy 0.4.1 0.5.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.4 1.3.4 1.3.4-r1: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 0.8.2-r1 1.10.0-r1 3.1.1 4.1.1 4.2.0-r1 4.2.0-r2 5.1.1: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 3.1.1 4.1.1 4.2.0-r1 4.2.0-r2 5.1.1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pcapy 0.11.1 0.11.2: Python pcap extension
 dev-python/pdb-clone 1.10.1: A faster clone of pdb
 dev-python/pdfrw 0.2 0.4: PDF file reader/writer library
@@ -14976,7 +14974,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or c
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 1.1.1 2.0.1 2.1.0 2.1.1 2.2.0 2.2.1 2.3.0 2.4.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
-net-misc/kea 1.7.4 1.7.5 9999: High-performance production grade DHCPv4 & DHCPv6 server
+net-misc/kea 1.7.5 1.7.6 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knock 0.7: A simple port-knocking daemon
 net-misc/l7-filter-userspace 0.12_beta1-r1: Userspace utilities for layer 7 iptables QoS
@@ -15245,7 +15243,7 @@ net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written 
 net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.4.1-r2: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/qbittorrent 4.2.1 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.2.1 4.2.2 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
@@ -16717,8 +16715,6 @@ sys-apps/edid-fixdim 1: Tool to fix screen dimensions in EDID data dumps
 sys-apps/elfix 0.9.5 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/elivepatch-client 0.1 9999: Live patch installer client working with elivepatch-server
 sys-apps/elivepatch-server 0.1 0.2 9999: Live patch building server with RESTFul Api for elivepatch-client
-sys-apps/entropy 302-r2: Entropy Package Manager foundation library
-sys-apps/entropy-server 302-r1: Entropy Package Manager server-side tools
 sys-apps/epoch 1.2.1 1.2.2 1.3.0 9999: An init system, a /sbin/init replacement; designed for simplicity
 sys-apps/etckeeper 1.18.6 1.18.8 1.18.14: A collection of tools to let /etc be stored in a repository
 sys-apps/ethq 0.5.0 0.6.1 9999: Ethernet NIC Queue stats viewer
@@ -17448,7 +17444,7 @@ sys-kernel/linux-docs 4.19.99 5.4.15: Developer documentation generated from the
 sys-kernel/linux-firmware 20190815 20190923 20191022 20191215 20200122 20200316 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3 5.3-r1 5.4 5.5: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.3_p8 5.4_p6 5.5_p1 5.5_p2 5.5_p3 5.5_p4 5.5_p5 5.5_p6 5.5_p7: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.3_p8 5.4_p6 5.5_p1 5.5_p2 5.5_p3 5.5_p4 5.5_p5 5.5_p6 5.5_p7 5.5_p8: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
