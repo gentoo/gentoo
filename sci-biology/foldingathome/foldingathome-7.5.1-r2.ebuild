@@ -63,7 +63,7 @@ src_install() {
 	newconfd "${FILESDIR}"/7.3/folding-conf.d foldingathome
 	cat <<EOF >"${T}"/fah-init
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 start_stop_daemon_args="--chdir \"${EPREFIX}/opt/foldingathome\""
@@ -71,7 +71,7 @@ command="${EPREFIX}/opt/foldingathome/FAHClient"
 command_args="\${FOLD_OPTS}"
 command_user=foldingathome
 command_background=1
-procname="FAHClient"
+pidfile="\${PIDFILE}"
 EOF
 	newinitd "${T}"/fah-init foldingathome
 
