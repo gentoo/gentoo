@@ -9,5 +9,9 @@
 	<email>denis7774@gmail.com</email>
 	<name>Reva Denis aka RarogCmex</name>
 </maintainer>
+<maintainer type="project">
+<email>proxy-maint@gentoo.org</email>
+<name>Proxy Maintainers</name>
+</maintainer>
 <longdescription>The CAPS Audio Plugin Suite - LADSPA plugin suite which includes DSP units emulating instrument amplifiers, stomp-box classics, versatile 'virtual analogue' oscillators, fractal oscillation, reverb, equalization and others</longdescription>
 </pkgmetadata>

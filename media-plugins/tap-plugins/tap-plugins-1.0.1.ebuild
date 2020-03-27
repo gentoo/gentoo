@@ -14,30 +14,26 @@ case "${PV}" in
 		SRC_URI="https://github.com/tomszilagyi/tap-plugins/archive/v${PV}.tar.gz -> $P.tar.gz"
 		;;
 esac
-inherit eutils multilib-minimal ${VCS_ECLASS}
+inherit eutils toolchain-funcs ${VCS_ECLASS}
 DESCRIPTION="Tom's audio processing (TAP) LADSPA plugins"
 HOMEPAGE="https://github.com/tomszilagyi/tap-plugins http://tap-plugins.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-DEPEND="media-libs/ladspa-sdk[${MULTILIB_USEDEP}]"
+DEPEND="media-libs/ladspa-sdk"
 RDEPEND="${DEPEND}"
 DOCS=( README CREDITS )
-src_prepare()
-{
-	default
-	multilib_copy_sources
+PATCHES=( $FILESDIR/tap-plugins-1.0.1-makefile.patch )
+src_compile() {
+	emake CC=$(tc-getCC) EXTRA_LDFLAGS="${LDFLAGS}"
 }
-multilib_src_configure() { :; }
-multilib_src_install()
-{
-	emake install \
-		INSTALL_PLUGINS_DIR="${ED}"/usr/$(get_libdir)/ladspa \
-		INSTALL_LRDF_DIR="${ED}"/usr/share/ladspa/rdf
-    einstalldocs
-}
-multilib_src_install_all(){
-einfo "If you use only 64 bit sequencers, you may want to disable 32 bit support via USE flag"
-einfo "example| media-plugins/tap-plugins -abi_x86_32"
-default
+
+src_install() {
+insinto /usr/share/ladspa/rdf
+doins *.rdf
+
+exeinto /usr/$(get_libdir)/ladspa
+doexe *.so
+
+einstalldocs
 }

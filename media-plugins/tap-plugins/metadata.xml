@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<maintainer type="project">
+<email>proaudio@gentoo.org</email>
+<name>Gentoo ProAudio Project</name>
+</maintainer>
 <maintainer type="person">
 <email>denis7774@gmail.com</email>
 <name>Reva Denis aka RarogCmex</name>
 </maintainer>
 <maintainer type="project">
-<email>proaudio@gentoo.org</email>
-<name>Gentoo ProAudio Project</name>
+<email>proxy-maint@gentoo.org</email>
+<name>Proxy Maintainers</name>
 </maintainer>
 <longdescription>
 TAP-plugins is short for Tom's Audio Processing plugins. It is a bunch of
