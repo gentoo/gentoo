@@ -17178,7 +17178,7 @@ sys-cluster/rdma-core 26.0-r1 26.1 27.0-r1 28.0 9999: Userspace components for t
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1: Application containers for Linux
-sys-cluster/slurm 19.05.4.1 19.05.5.1 20.02.0.1: A Highly Scalable Resource Manager
+sys-cluster/slurm 19.05.4.1 19.05.5.1 20.02.0.1 20.02.1.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.3.1-r1 2.4.4-r1: Lightning-fast unified analytics engine
 sys-cluster/swift 2.23.1-r2 2.24.0-r1 2019.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
