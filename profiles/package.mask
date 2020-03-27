@@ -445,42 +445,6 @@ www-servers/tomcat:9
 # Removal in 30 days.  Bug #709458.
 app-portage/euscan
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last release in 2011, bug #708106, masked for removal in 30 days.
-app-cdr/gtkcdlabel
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# No plans upstream to port away from pygtk, suggested alternative dupeguru
-# not packaged in Gentoo, bug #708112. Masked for removal in 30 days.
-app-misc/fslint
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last release in 2012, bug #708124, masked for removal in 30 days.
-app-text/keepnote
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last release in 2012, bug #708142, masked for removal in 30 days.
-x11-misc/revelation
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last release in 2011, bug #708150, masked for removal in 30 days.
-x11-misc/tintwizard
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last activity in 2013, bug #710162, masked for removal in 30 days.
-sci-misc/pythoncad
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Last release in 2013, bug #710164, masked for removal in 30 days.
-sci-electronics/gresistor
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-24)
 # app-admin/packagekit-base is Python 2 only and behind upstream.
 # The Portage backend is unmaintained.  Other packages are its reverse
