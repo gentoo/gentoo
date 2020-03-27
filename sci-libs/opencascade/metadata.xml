@@ -13,9 +13,6 @@
 	<flag name="freeimage">
 		Enable support for image i/o via media-libs/freeimage
 	</flag>
-	<flag name="gl2ps">
-		Use gl2ps PostScript printing library
-	</flag>
 	<flag name="gles2">
 		Use OpenGL ES 2.0
 	</flag>
