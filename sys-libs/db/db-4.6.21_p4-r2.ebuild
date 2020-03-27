@@ -17,8 +17,6 @@ else
 	MY_P="${PN}-${MY_PV}"
 fi
 
-RESTRICT="!test? ( test )"
-
 S="${WORKDIR}/${MY_P}/build_unix"
 DESCRIPTION="Oracle Berkeley DB"
 HOMEPAGE="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
@@ -29,22 +27,21 @@ done
 
 LICENSE="Sleepycat"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ppc ppc64 s390 sparc x86"
-IUSE="doc java cxx tcl test rpc"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86"
+IUSE="tcl java doc cxx"
+RESTRICT="!test? ( test )"
 
-# the entire testsuite needs the TCL functionality
 DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
-	test? ( >=dev-lang/tcl-8.4 )
-	java? ( >=virtual/jdk-1.5 )
+	java? ( >=virtual/jdk-1.4 )
 	>=sys-devel/binutils-2.16.1"
 RDEPEND="tcl? ( dev-lang/tcl )
-	java? ( >=virtual/jre-1.5 )"
+	java? ( >=virtual/jre-1.4 )"
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-4.4-libtool.patch
 
 	# use the includes from the prefix
-	"${FILESDIR}"/"${PN}"-4.6-jni-check-prefix-first.patch
+	"${FILESDIR}"/"${PN}"-"${SLOT}"-jni-check-prefix-first.patch
 	"${FILESDIR}"/"${PN}"-4.2-listen-to-java-options.patch
 )
 
@@ -108,14 +105,14 @@ src_configure() {
 		--enable-compat185
 		--enable-o_direct
 		--without-uniquename
-		$(use_enable rpc)
+		--disable-rpc
+		--host="${CHOST}"
 
 		$(usex amd64 '--with-mutex=x86/gcc-assembly' '')
 		$(use_enable cxx)
 		$(use_enable tcl)
 		$(usex tcl "--with-tcl=${EPREFIX}/usr/$(get_libdir)" '') #"
 		$(use_enable java)
-		$(use_enable test)
 	)
 
 	if use java; then
@@ -125,7 +122,7 @@ src_configure() {
 		)
 	fi
 
-	# Bug #270851: test needs TCL support
+	# the entire testsuite needs the TCL functionality
 	if use tcl && use test ; then
 		myconf+=( --enable-test )
 	else
@@ -134,26 +131,22 @@ src_configure() {
 
 	# Add linker versions to the symbols. Easier to do, and safer than header file
 	# mumbo jumbo.
-	if use userland_GNU ; then
+	if use userland_GNU; then
 		append-ldflags -Wl,--default-symver
 	fi
 
 	ECONF_SOURCE="${S}"/../dist \
-	STRIP="true" \
 	econf "${myconf[@]}"
 
-	# The embedded assembly on ARM does not work on newer hardware
-	# so you CANNOT use --with-mutex=ARM/gcc-assembly anymore.
-	# Specifically, it uses the SWPB op, which was deprecated:
-	# http://www.keil.com/support/man/docs/armasm/armasm_dom1361289909499.htm
-
-	# The op ALSO cannot be used in ARM-Thumb mode.
-	# Trust the compiler instead.
-	# >=db-6.1 uses LDREX instead.
+	sed -e "s,\(^STRIP *=\).*,\1\"true\"," -i Makefile || die
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	emake \
+		DESTDIR="${D}" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" \
+		STRIP="true" \
+		install
 
 	db_src_install_usrbinslot
 

@@ -29,7 +29,7 @@ done
 LICENSE="Sleepycat BSD"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="tcl java doc cxx rpc"
+IUSE="tcl java doc cxx"
 RESTRICT="!test? ( test )"
 
 DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
@@ -106,7 +106,7 @@ src_configure() {
 		--enable-compat185
 		--enable-o_direct
 		--without-uniquename
-		$(use_enable rpc)
+		--disable-rpc
 		--host="${CHOST}"
 
 		$(usex amd64 '--with-mutex=x86/gcc-assembly' '')
