@@ -61,9 +61,6 @@ QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 
 # jbr11 binary doesn't unpack nicely into a single folder
 src_unpack() {
-	echo "S is ${S}"
-	echo "SRC_URI is ${SRC_URI}"
-	echo "unpack ${MY_PN}IC-${PV_STRING}.tar.gz"
 	if use !jbr11 ; then
 		default_src_unpack
 	else
@@ -80,19 +77,25 @@ src_prepare() {
 	else
 		JRE_DIR=jre
 	fi
+
 	if use jbr8; then
 		mv "${WORKDIR}/jre" ./"${JRE_DIR}"
+		PLUGIN_DIR="${S}/${JRE_DIR}/lib/${ARCH}"
+	else
+		PLUGIN_DIR="${S}/${JRE_DIR}/lib/"
 	fi
 
-	rm -vf "${S}"/"${JRE_DIR}"/lib/*/libavplugin* || die
-	rm -vf "${S}"/plugins/maven/lib/maven3/lib/jansi-native/*/libjansi* || die
-	rm -vrf "${S}"/lib/pty4j-native/linux/ppc64le || die
-	rm -vf "${S}"/bin/libdbm64* || die
+	rm -vf ${PLUGIN_DIR}/libavplugin*
+	rm -vf ${S}/plugins/maven/lib/maven3/lib/jansi-native/*/libjansi*
+	rm -vrf ${S}/lib/pty4j-native/linux/ppc64le
+	rm -vf ${S}/bin/libdbm64*
 
 	if [[ -d "${S}"/"${JRE_DIR}" ]]; then
-		for file in "${S}"/"${JRE_DIR}"/lib/amd64/{libfxplugins.so,libjfxmedia.so}
+		for file in "${PLUGIN_DIR}"/{libfxplugins.so,libjfxmedia.so}
 		do
-			patchelf --set-rpath '$ORIGIN' $file || die
+			if [[ -f "$file" ]]; then
+			  patchelf --set-rpath '$ORIGIN' $file || die
+			fi
 		done
 	fi
 
