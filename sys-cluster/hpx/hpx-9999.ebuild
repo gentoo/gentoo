@@ -19,7 +19,7 @@ HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
 
 SLOT="0"
 LICENSE="Boost-1.0"
-IUSE="doc examples jemalloc papi +perftools tbb test"
+IUSE="doc examples jemalloc mpi papi +perftools tbb test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -45,6 +45,7 @@ RDEPEND="
 	dev-libs/boost:=
 	sys-apps/hwloc
 	sys-libs/zlib
+	mpi? ( virtual/mpi )
 	papi? ( dev-libs/papi )
 	perftools? ( dev-util/google-perftools )
 	tbb? ( dev-cpp/tbb )
@@ -77,6 +78,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DHPX_WITH_EXAMPLES=OFF
 		-DHPX_WITH_DOCUMENTATION=$(usex doc)
+		-DHPX_WITH_PARCELPORT_MPI=$(usex mpi)
 		-DHPX_WITH_PAPI=$(usex papi)
 		-DHPX_WITH_GOOGLE_PERFTOOLS=$(usex perftools)
 		-DBUILD_TESTING=$(usex test)
