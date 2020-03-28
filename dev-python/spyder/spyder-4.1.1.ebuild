@@ -33,7 +33,7 @@ RDEPEND="
 	dev-python/keyring[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-4.0[${PYTHON_USEDEP}]
 	>=dev-python/numpydoc-0.6.0[${PYTHON_USEDEP}]
-	~dev-python/parso-0.5.2[${PYTHON_USEDEP}]
+	>=dev-python/parso-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pickleshare-0.4[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.3[${PYTHON_USEDEP}]
@@ -69,8 +69,11 @@ DEPEND="test? (
 # Based on the courtesy of Arfrever
 # This patch removes a call to update-desktop-database during build
 # This fails because access is denied to this command during build
-PATCHES=( "${FILESDIR}/${P}-build.patch"
-	"${FILESDIR}/${P}-py3-only.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-py3-only.patch"
+	"${FILESDIR}/${P}-allow-newer-parso.patch"
+)
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/doc --no-autodoc
