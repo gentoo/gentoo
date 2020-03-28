@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-PATCH="${PN}-74.0-patches-04"
+PATCH="${PN}-74.0-patches-05"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
@@ -62,7 +62,7 @@ REQUIRED_USE="pgo? ( lto )"
 RESTRICT="!bindist? ( bindist )
 	!test? ( test )"
 
-PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c,whissi}/mozilla/patchsets/${PATCH}.tar.xz )
+PATCH_URIS=( https://dev.gentoo.org/~{whissi,anarchy,polynomial-c,axs}/mozilla/patchsets/${PATCH}.tar.xz )
 SRC_URI="${SRC_URI}
 	${MOZ_SRC_URI}
 	${PATCH_URIS[@]}"
