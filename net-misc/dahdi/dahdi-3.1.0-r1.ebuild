@@ -7,7 +7,7 @@ inherit flag-o-matic linux-mod toolchain-funcs
 
 MY_P="${P/dahdi/dahdi-linux}"
 JNET=1.0.14
-GENTOO=3.1.0-r1
+GENTOO=3.1.0-r1-v2
 S="${WORKDIR}/${MY_P}"
 
 JNET_DRIVERS="cwain qozap ztgsm"
@@ -40,9 +40,6 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="flash oslec"
-
-DEPEND=""
-RDEPEND=""
 
 PATCHES=( "${WORKDIR}/dahdi-patchset" )
 
