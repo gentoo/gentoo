@@ -17,18 +17,18 @@ IUSE="debug wayland"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )"
 ###DEPENDS
 BUNDLED_LLVM_DEPEND="sys-libs/zlib:0=[${MULTILIB_USEDEP}]"
-DEPEND="wayland? (	 dev-libs/wayland[${MULTILIB_USEDEP}] 	)
-        ${BUNDLED_LLVM_DEPEND}
-        >=dev-util/vulkan-headers-1.2.133"
+DEPEND="wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
+	${BUNDLED_LLVM_DEPEND}
+	>=dev-util/vulkan-headers-1.2.133"
 BDEPEND="${BUNDLED_LLVM_DEPEND}
-        dev-util/cmake"
+	dev-util/cmake"
 RDEPEND=" ${DEPEND}
-        x11-libs/libdrm[${MULTILIB_USEDEP}]
-        x11-libs/libXrandr[${MULTILIB_USEDEP}]
-        x11-libs/libxcb[${MULTILIB_USEDEP}]
-        x11-libs/libxshmfence[${MULTILIB_USEDEP}]
-        virtual/libstdc++
-        >=media-libs/vulkan-loader-1.2.133[${MULTILIB_USEDEP}]"
+	x11-libs/libdrm[${MULTILIB_USEDEP}]
+	x11-libs/libXrandr[${MULTILIB_USEDEP}]
+	x11-libs/libxcb[${MULTILIB_USEDEP}]
+	x11-libs/libxshmfence[${MULTILIB_USEDEP}]
+	virtual/libstdc++
+	>=media-libs/vulkan-loader-1.2.133[${MULTILIB_USEDEP}]"
 
 CHECKREQS_MEMORY="4G"
 CHECKREQS_DISK_BUILD="2G"
@@ -61,46 +61,46 @@ ${FETCH_URI}/CWPack/archive/${CWPACK_COMMIT}.tar.gz -> CWPack-${CWPACK_COMMIT}.t
 
 ###EBUILD FUNCTIONS
 src_prepare() {
-    ##moving src to proper directories
-    mkdir -p ${S}
-    mkdir -p ${S}/third_party
-    mv AMDVLK-${CORRECT_AMDVLK_PV}/ ${S}/AMDVLK
-    mv xgl-${XGL_COMMIT}/ ${S}/xgl
-    mv pal-${PAL_COMMIT}/ ${S}/pal
-    mv llpc-${LLPC_COMMIT}/ ${S}/llpc
-    mv spvgen-${SPVGEN_COMMIT}/ ${S}/spvgen
-    mv llvm-project-${LLVM_PROJECT_COMMIT}/ ${S}/llvm-project
-    mv MetroHash-${METROHASH_COMMIT}/ ${S}/third_party/metrohash
-    mv CWPack-${CWPACK_COMMIT}/ ${S}/third_party/cwpack
-    ##Installing rule
-    cat << EOF > "${T}/10-amdvlk-dri3.conf" || die
+	##moving src to proper directories
+	mkdir -p ${S}
+	mkdir -p ${S}/third_party
+	mv AMDVLK-${CORRECT_AMDVLK_PV}/ ${S}/AMDVLK
+	mv xgl-${XGL_COMMIT}/ ${S}/xgl
+	mv pal-${PAL_COMMIT}/ ${S}/pal
+	mv llpc-${LLPC_COMMIT}/ ${S}/llpc
+	mv spvgen-${SPVGEN_COMMIT}/ ${S}/spvgen
+	mv llvm-project-${LLVM_PROJECT_COMMIT}/ ${S}/llvm-project
+	mv MetroHash-${METROHASH_COMMIT}/ ${S}/third_party/metrohash
+	mv CWPack-${CWPACK_COMMIT}/ ${S}/third_party/cwpack
+	##Installing rule
+	cat << EOF > "${T}/10-amdvlk-dri3.conf" || die
 Section "Device"
 Identifier "AMDgpu"
 Option  "DRI" "3"
 EndSection
 EOF
-    cd ${S}/xgl
-    default
+	cd ${S}/xgl
+	default
 }
 
 multilib_src_configure() {
-    local mycmakeargs=(	-DBUILD_WAYLAND_SUPPORT=$(usex wayland ) -DCMAKE_BUILD_TYPE="$(usex debug "Debug" "Release")"	-B${BUILD_DIR})
-    cd ${S}/xgl
-    cmake -H. "${mycmakeargs[@]}"
+	local mycmakeargs=( -DBUILD_WAYLAND_SUPPORT=$(usex wayland ) -DCMAKE_BUILD_TYPE="$(usex debug "Debug" "Release")" -B${BUILD_DIR} )
+	cd ${S}/xgl
+	cmake -H. "${mycmakeargs[@]}"
 }
 
 multilib_src_install() {
-    if use abi_x86_64 && multilib_is_native_abi; then
-        mkdir -p ${D}/usr/lib64/
-        mv "${BUILD_DIR}/icd/amdvlk64.so" ${D}/usr/lib64/
-        insinto /usr/share/vulkan/icd.d
-        doins ${S}/AMDVLK/json/Redhat/amd_icd64.json
-    else
-        mkdir -p ${D}/usr/lib/
-        mv "${BUILD_DIR}/icd/amdvlk32.so" ${D}/usr/lib/
-        insinto /usr/share/vulkan/icd.d
-        doins ${S}/AMDVLK/json/Redhat/amd_icd32.json
-    fi
+	if use abi_x86_64 && multilib_is_native_abi; then
+		mkdir -p ${D}/usr/lib64/
+		mv "${BUILD_DIR}/icd/amdvlk64.so" ${D}/usr/lib64/
+		insinto /usr/share/vulkan/icd.d
+		doins ${S}/AMDVLK/json/Redhat/amd_icd64.json
+	else
+		mkdir -p ${D}/usr/lib/
+		mv "${BUILD_DIR}/icd/amdvlk32.so" ${D}/usr/lib/
+		insinto /usr/share/vulkan/icd.d
+		doins ${S}/AMDVLK/json/Redhat/amd_icd32.json
+	fi
 }
 
 multilib_src_install_all() {
