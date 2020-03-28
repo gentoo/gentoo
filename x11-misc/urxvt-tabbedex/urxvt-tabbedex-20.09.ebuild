@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mina86/urxvt-tabbedex/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND=">=x11-terms/rxvt-unicode-9.21[perl]"
 
