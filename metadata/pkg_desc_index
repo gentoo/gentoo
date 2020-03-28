@@ -4356,7 +4356,7 @@ dev-java/httpcomponents-client 4.5: A low level toolset of Java components focus
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.15.0: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.13.0 3.14.0: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.14.0 3.15.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -4567,9 +4567,9 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
-dev-java/openjdk 8.222_p10 8.232_p09 8.242 11.0.6: Open source implementation of the Java programming language
-dev-java/openjdk-bin 8.222_p10-r1 8.232_p09 8.242_p08 11.0.6_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.222_p10 8.232_p09 8.242_p08 11.0.4_p11 11.0.5_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk 8.242 11.0.6: Open source implementation of the Java programming language
+dev-java/openjdk-bin 8.242_p08 11.0.6_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.242_p08 11.0.5_p10 11.0.6_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 11.0.6_p2 11.0.7_p0: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
@@ -10454,7 +10454,7 @@ dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to suppo
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 12.8 12.9: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 12.9 12.10: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.115 1.0.116 1.0.117 1.0.123: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.15.0: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
