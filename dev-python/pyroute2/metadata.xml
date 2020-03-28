@@ -9,9 +9,6 @@
 		<email>openstack@gentoo.org</email>
 		<name>Openstack</name>
 	</maintainer>
-	<longdescription lang="en">
-	Pyroute2 is a pure Python netlink and Linux network configuration library.
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">pyroute2</remote-id>
 		<remote-id type="github">svinota/pyroute2</remote-id>
