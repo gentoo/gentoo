@@ -32,6 +32,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-28)
+# Unmaintained.  Python 2 only.  Last upstream commit in 2017.
+# Potential fork available (bug #705018) but not guaranteed a drop-in
+# replacement.
+# Removal in 30 days.  Bug #715044.
+dev-vcs/bzr
+dev-vcs/bzr-rewrite
+dev-vcs/bzr-xmloutput
+dev-vcs/bzrtools
+kde-apps/dolphin-plugins-bazaar
+
 # Joshua Kinard <kumba@gentoo.org> (2020-03-28)
 # In Linux ~4.18, IPX (Internetwork Packet eXchange) protocol and
 # NCPFS (NetWare Core Protocol Filesystem) support was removed due
