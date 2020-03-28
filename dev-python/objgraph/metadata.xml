@@ -5,7 +5,6 @@
     <email>heroxbd@gentoo.org</email>
     <name>Benda Xu</name>
   </maintainer>
-  <longdescription>A module that lets you visually explore Python object graphs.</longdescription>
   <upstream>
     <remote-id type="pypi">objgraph</remote-id>
   </upstream>
