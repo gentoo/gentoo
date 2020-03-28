@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,9 +20,9 @@ RDEPEND="${DEPEND}"
 PATCHES=( ${FILESDIR}/${P}-list.patch )
 
 src_prepare() {
-	sed -e "s:cc :$(tc-getCC) :" \
-		-e "s:-O2:${CFLAGS}:" \
-		-e "s:-o wmpop3:${LDFLAGS} -o wmpop3:" \
+	sed -e "s|cc |$(tc-getCC) |" \
+		-e "s|-O2|${CFLAGS}|" \
+		-e "s|-o wmpop3|${LDFLAGS} -o wmpop3|" \
 		-i ${PN}/Makefile || die
 
 	default
