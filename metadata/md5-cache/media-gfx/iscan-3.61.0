@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install
-DEPEND=dev-libs/boost:= media-gfx/sane-backends media-libs/tiff virtual/libusb:1 virtual/jpeg gui? ( dev-cpp/gtkmm:= ) imagemagick? ( !graphicsmagick? ( media-gfx/imagemagick:= ) graphicsmagick? ( media-gfx/graphicsmagick:= ) )
+DEPEND=dev-libs/boost:= media-gfx/sane-backends media-libs/tiff virtual/libusb:1 virtual/jpeg gui? ( dev-cpp/gtkmm:= ) imagemagick? ( !graphicsmagick? ( media-gfx/imagemagick:=[cxx] ) graphicsmagick? ( media-gfx/graphicsmagick:= ) )
 DESCRIPTION=EPSON Image Scan v3 for Linux
 EAPI=7
 HOMEPAGE=http://support.epson.net/linux/en/imagescanv3.php
 IUSE=graphicsmagick gui imagemagick
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
-RDEPEND=dev-libs/boost:= media-gfx/sane-backends media-libs/tiff virtual/libusb:1 virtual/jpeg gui? ( dev-cpp/gtkmm:= ) imagemagick? ( !graphicsmagick? ( media-gfx/imagemagick:= ) graphicsmagick? ( media-gfx/graphicsmagick:= ) )
+RDEPEND=dev-libs/boost:= media-gfx/sane-backends media-libs/tiff virtual/libusb:1 virtual/jpeg gui? ( dev-cpp/gtkmm:= ) imagemagick? ( !graphicsmagick? ( media-gfx/imagemagick:=[cxx] ) graphicsmagick? ( media-gfx/graphicsmagick:= ) )
 SLOT=0
 SRC_URI=http://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_3.61.0.orig.tar.gz
-_md5_=35da9e6df17904c78a76a78669c1dbab
+_md5_=90ba046d6ed61ac3c78b4ab281297a36
