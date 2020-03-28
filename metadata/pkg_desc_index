@@ -444,7 +444,7 @@ app-admin/helm 2.16.1 3.0.0 3.0.1 3.0.2 3.0.3 3.1.1 3.1.2: Kubernetes Package Ma
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/integrit 4.1-r1: file integrity verification program
-app-admin/keepass 2.43 2.44: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.44: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.5.3 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.3: A command line interface to KeePass database files
@@ -2507,7 +2507,7 @@ app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1 1.2.1-r1: A thesaurus lib, tool and database
 app-text/an 1.2 1.2-r1 1.2_p6: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.15 2.16: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.16: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
@@ -10635,7 +10635,7 @@ dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.1.0 9999: ROCm Applicat
 dev-util/rosdep 0.13.0 0.14.0 0.15.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.13 0.1.14 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
-dev-util/rpmdevtools 8.10-r1 8.10-r2: Collection of rpm packaging related utilities
+dev-util/rpmdevtools 8.10-r2: Collection of rpm packaging related utilities
 dev-util/rr 5.3.0-r1: Record and Replay Framework
 dev-util/rt-tests 1.8: A collection of latency testing tools for the linux(-rt) kernel
 dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
@@ -12564,7 +12564,7 @@ media-gfx/eog-plugins 3.26.4-r1: Eye of GNOME plugins
 media-gfx/eom 1.22.0 1.22.1: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
-media-gfx/evoluspencil 3.0.4 3.1.0-r1: A simple GUI prototyping tool to create mockups
+media-gfx/evoluspencil 3.1.0-r1: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r3: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiv2 0.27.2: EXIF, IPTC and XMP metadata C++ library and command line utility
@@ -14263,7 +14263,7 @@ net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet 
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
 net-analyzer/telegraf 1.5.3 1.8.3 1.10.4 1.11.5 1.12.1 1.13.3: The plugin-driven server agent for collecting & reporting metrics.
-net-analyzer/testssl 2.9.5_p8 3.0: Tool to check TLS/SSL cipher support
+net-analyzer/testssl 3.0: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 3.2-r1 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r1: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
@@ -14547,7 +14547,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 4.2.4.1 5.0.1 5.0.3 5.0.3.1: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.2.4.1 5.0.3.1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.7.1 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
