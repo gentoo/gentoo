@@ -8310,69 +8310,69 @@ dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1: Python library for communicating with Pocket Science Lab
 dev-python/psutil 5.6.7-r1 5.7.0: Retrieve information on running processes and system utilization
 dev-python/psycopg 2.7.4 2.7.5 2.7.7 2.8.3 2.8.4: PostgreSQL database adapter for Python
-dev-python/ptpython 0.33-r1 2.0.6: Python REPL build on top of prompt_toolkit
+dev-python/ptpython 2.0.6: Python REPL build on top of prompt_toolkit
 dev-python/ptvsd 3.2.1: Visual Studio remote debugging server for Python
 dev-python/ptyprocess 0.5.2 0.6.0: Run a subprocess in a pseudo terminal
 dev-python/publicsuffix 2.20190205: Get a public suffix for a domain name using the Public Suffix List.
-dev-python/pudb 2017.1.4 2018.1: A full-screen, console-based Python debugger
+dev-python/pudb 2018.1: A full-screen, console-based Python debugger
 dev-python/pupynere 1.0.15-r2: Pupynere is a PUre PYthon NEtcdf REader
 dev-python/pure-sasl 0.6.1: High-level SASL client written in pure Python
 dev-python/pushbullet-py 0.11.0: A simple python client for pushbullet.com
 dev-python/pweave 0.30.3: Scientific report generator and literate programming tool
 dev-python/pxml 0.2.12: A python library and command-line tool to 'prettify' and colorize XML
-dev-python/py 1.4.30 1.4.34 1.5.2 1.5.3 1.5.4 1.8.0: library with cross-python path, ini-parsing, io, code, log facilities
-dev-python/py-amqp 2.3.2 2.4.2 2.5.0: Low-level AMQP client for Python (fork of amqplib)
+dev-python/py 1.8.0: library with cross-python path, ini-parsing, io, code, log facilities
+dev-python/py-amqp 2.5.0: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-cpuinfo 5.0.0-r1: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1 0.1.4: Github-Flavored Markdown for Python-Markdown
 dev-python/py-lz4framed 0.9.6: LZ4Frame library for Python (via C bindings)
 dev-python/py-ubjson 0.9.0 0.10.0 0.11.0 0.15.0: Universal Binary JSON encoder/decoder
 dev-python/py2neo 3.1.2: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
-dev-python/pyClamd 0.4.0 0.4.0-r1: python interface to Clamd (Clamav daemon)
+dev-python/pyClamd 0.4.0-r1: python interface to Clamd (Clamav daemon)
 dev-python/pyFFTW 0.11.1 9999: A pythonic python wrapper around FFTW
 dev-python/pyGPG 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyTenable 0.3.7 0.3.18 0.3.19 0.3.20: Tenable API Library for Tenable.io and SecurityCenter
 dev-python/pyacoustid 1.1.7: Python bindings for Chromaprint and the AcoustID web service
-dev-python/pyaes 1.6.0 1.6.1-r1 1.6.1-r2: Pure-Python Implementation of the AES block-cipher and common modes of operation
+dev-python/pyaes 1.6.1-r1 1.6.1-r2: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.1.6 1.1.6-r1: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyamg 3.2.1-r1: Algebraic multigrid solvers in Python
-dev-python/pyasn1 0.2.3 0.3.7 0.4.2 0.4.3 0.4.8: ASN.1 library for Python
-dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10 0.1.4 0.1.5 0.2.1: pyasn1 modules
+dev-python/pyasn1 0.4.3 0.4.8: ASN.1 library for Python
+dev-python/pyasn1-modules 0.2.1: pyasn1 modules
 dev-python/pyatspi 2.32.1 2.34.0 2.36.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pybind11 2.4.3: AST-based Python refactoring library
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
-dev-python/pybluez 0.18-r1 0.22 0.23: Python bindings for Bluez Bluetooth Stack
+dev-python/pybluez 0.18-r1 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.18.2: Python bindings for the cairo library
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
-dev-python/pycapnp 0.6.2 0.6.3 0.6.4: Python wrapping of the Cap'n Proto library
-dev-python/pycares 3.1.0_p3 3.1.1: Python interface for c-ares
+dev-python/pycapnp 0.6.4: Python wrapping of the Cap'n Proto library
+dev-python/pycares 3.1.1: Python interface for c-ares
 dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control library)
-dev-python/pychm 0.8.4-r1 0.8.5 0.8.6: Python bindings for the chmlib library
+dev-python/pychm 0.8.6: Python bindings for the chmlib library
 dev-python/pychromecast 4.1.0: Python module to talk to Google Chromecast.
 dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2-r1: A Python module that implements several well-known classical cipher algorithms
 dev-python/pyclipper 1.1.0: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
 dev-python/pycmd 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycobertura 0.10.0: Cobertura coverage parser that can diff reports and show coverage progress
-dev-python/pycodestyle 2.3.1 2.5.0: Python style guide checker (fka pep8)
+dev-python/pycodestyle 2.5.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.6-r1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.19-r1 2.20: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
-dev-python/pycryptodome 3.4.6 3.4.7 3.6.6 3.7.3 3.8.2 3.9.4: A self-contained cryptographic library for Python
+dev-python/pycryptodome 3.6.6 3.9.4: A self-contained cryptographic library for Python
 dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSON)
-dev-python/pycuda 2017.1 2018.1.1 9999: Python wrapper for NVIDIA CUDA
-dev-python/pycups 1.9.73-r1 1.9.73-r2: Python bindings for the CUPS API
-dev-python/pycurl 7.43.0 7.43.0.2 7.43.0.3 7.43.0.5: python binding for curl/libcurl
-dev-python/pycxx 6.2.6 7.1.2 7.1.2-r2: Set of facilities to extend Python with C++
+dev-python/pycuda 2018.1.1 9999: Python wrapper for NVIDIA CUDA
+dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
+dev-python/pycurl 7.43.0 7.43.0.3 7.43.0.5: python binding for curl/libcurl
+dev-python/pycxx 6.2.6 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
-dev-python/pydiff 0.2 0.2-r1: Diffs two Python files at the bytecode level
+dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydns 2.3.6-r1 3.1.1: Python DNS (Domain Name System) library
-dev-python/pydocstyle 2.1.1 5.0.2: Python docstring style checker
+dev-python/pydocstyle 5.0.2: Python docstring style checker
 dev-python/pydot 1.4.1: Python interface to Graphviz's Dot language
 dev-python/pydot-ng 1.0.0: Python interface to Graphviz's Dot language next gen
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
