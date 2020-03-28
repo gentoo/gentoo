@@ -1,21 +1,26 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-info linux-mod
 
 DESCRIPTION="Amazon EC2 Elastic Network Adapter (ENA) kernel driver"
 HOMEPAGE="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking-ena.html"
 SRC_URI="https://github.com/amzn/amzn-drivers/archive/ena_linux_${PV}.zip -> ${P}-linux.zip"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
+
+DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/amzn-drivers-ena_linux_${PV}/kernel/linux/ena"
 
 MODULE_NAMES="ena(net:${S}:${S})"
 BUILD_TARGETS="all"
+
+CONFIG_CHECK="PCI_MSI !CPU_BIG_ENDIAN DIMLIB"
 
 pkg_setup() {
 	linux-mod_pkg_setup
@@ -23,7 +28,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 
 	sed -i -e 's!/lib/modules/\$(BUILD_KERNEL)/build!$(KERNEL_DIR)!g' \
 		"Makefile" || die "Unable to fix Makefile"
