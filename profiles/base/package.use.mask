@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joshua Kinard <kumba@gentoo.org> (2020-03-28)
+# NCP support is masked pending removal of net-fs/ncpfs
+# Bug #681820
+net-analyzer/hydra ncp
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-28)
 # Requires masked dev-vcs/bzr.  Remove the mask if breezy is packaged
 # and the package is confirmed to work with it.
