@@ -13,6 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -21,7 +22,10 @@ RDEPEND="
 "
 
 DEPEND="
-	test? ( dev-tcltk/expect dev-python/pytest ${RDEPEND} )
+	test? ( ${RDEPEND}
+		dev-python/pytest
+		dev-tcltk/expect
+	)
 "
 
 src_compile() {
@@ -34,12 +38,12 @@ src_test() {
 	# test_syntax: needs yamllint (not packaged)
 	# test_compat_alt: known broken, tests deprecated features
 	# test_compat_jinja: needs envtpl
-	rm test/test_encryption.py || die
-	rm test/test_alt.py || die
-	rm test/test_compat_jinja.py || die
-	rm test/test_unit_template_j2.py || die
-	rm test/test_syntax.py || die
-	rm test/test_compat_alt.py || die
+	rm -v test/test_encryption.py || die
+	rm -v test/test_alt.py || die
+	rm -v test/test_compat_jinja.py || die
+	rm -v test/test_unit_template_j2.py || die
+	rm -v test/test_syntax.py || die
+	rm -v test/test_compat_alt.py || die
 
 	pytest || die "Testsuite failed under ${EPYTHON}"
 }
