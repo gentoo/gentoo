@@ -727,7 +727,7 @@ PROFILE_EOF
 	newins "${FILESDIR}"/disable-auto-update.policy.json policies.json
 
 	# Install icons and .desktop for menu entry
-	for size in ${sizes}; do
+	for size in ${sizes} ; do
 		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
 		newins "${icon_path}/default${size}.png" "${icon}.png"
 	done
@@ -753,7 +753,7 @@ PROFILE_EOF
 	dosym firefox ${MOZILLA_FIVE_HOME}/firefox-bin
 
 	# Required in order to use plugins and even run firefox on hardened.
-	pax-mark m "${ED}"${MOZILLA_FIVE_HOME}/{firefox,plugin-container}
+	pax-mark m "${ED%/}"${MOZILLA_FIVE_HOME}/{firefox,plugin-container}
 }
 
 pkg_preinst() {
