@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
 inherit distutils-r1
@@ -23,7 +24,6 @@ RDEPEND="
 	>=dev-python/coverage-4.4[${PYTHON_USEDEP}]
 "
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		dev-python/fields[${PYTHON_USEDEP}]
