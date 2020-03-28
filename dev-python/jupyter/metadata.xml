@@ -5,9 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription>
-Install the Jupyter system, including the notebook, qtconsole, and the IPython kernel.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">jupyter</remote-id>
     <remote-id type="github">jupyter/jupyter</remote-id>
