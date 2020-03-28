@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="Network abstraction library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~sparc ~x86"
+	KEYWORDS="arm"
 fi
 
 IUSE="bindist connman libproxy networkmanager sctp +ssl"
