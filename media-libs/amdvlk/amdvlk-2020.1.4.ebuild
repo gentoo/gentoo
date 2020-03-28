@@ -84,7 +84,10 @@ EOF
 }
 
 multilib_src_configure() {
-	local mycmakeargs=( -DBUILD_WAYLAND_SUPPORT=$(usex wayland ) -DCMAKE_BUILD_TYPE="$(usex debug "Debug" "Release")" -B${BUILD_DIR} )
+	local mycmakeargs=( \
+			-DBUILD_WAYLAND_SUPPORT=$(usex wayland ) \
+			-DCMAKE_BUILD_TYPE="$(usex debug "Debug" "Release")" \
+			-B${BUILD_DIR} )
 	cd ${S}/xgl
 	cmake -H. "${mycmakeargs[@]}"
 }
