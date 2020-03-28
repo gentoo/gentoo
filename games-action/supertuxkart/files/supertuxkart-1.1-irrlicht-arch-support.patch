@@ -32,8 +32,8 @@ Signed-off-by: Christoph Egger <debian@christoph-egger.org>
 + #endif
  #endif
  #define _IRR_POSIX_API_
-@@ -460,11 +464,7 @@
- 	#undef _IRR_WCHAR_FILESYSTEM
+@@ -465,11 +465,7 @@
+     #undef _IRR_WCHAR_FILESYSTEM
  #endif
  
 -#if defined(__sparc__) || defined(__sun__)
@@ -42,6 +42,6 @@ Signed-off-by: Christoph Egger <debian@christoph-egger.org>
 -
 -#if defined(_IRR_SOLARIS_PLATFORM_)
 +#if defined(_IRR_SOLARIS_PLATFORM_) || defined(__FreeBSD_kernel__) || defined(__gnu_hurd__)
- 	#undef _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+     #undef _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
  #endif
  

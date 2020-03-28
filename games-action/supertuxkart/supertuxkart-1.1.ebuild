@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake desktop xdg-utils
+inherit cmake desktop xdg
 
 DESCRIPTION="A kart racing game starring Tux, the linux penguin (TuxKart fork)"
 HOMEPAGE="https://supertuxkart.net/"
@@ -21,6 +21,7 @@ IUSE="debug fribidi libressl nettle recorder wiimote"
 
 RDEPEND="
 	dev-libs/angelscript:=
+	dev-libs/fribidi
 	media-libs/freetype:2
 	media-libs/glew:0=
 	media-libs/libpng:0=
@@ -35,7 +36,6 @@ RDEPEND="
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXxf86vm
-	fribidi? ( dev-libs/fribidi )
 	nettle? ( dev-libs/nettle:= )
 	!nettle? (
 		libressl? ( dev-libs/libressl:= )
@@ -48,11 +48,12 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+S="${WORKDIR}/${P}-src"
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.9.3-irrlicht-arch-support.patch
+	"${FILESDIR}"/${PN}-1.1-irrlicht-arch-support.patch
 	"${FILESDIR}"/${PN}-0.9.3-irrlicht-system-libs.patch
-	"${FILESDIR}"/${PN}-1.0-fix-buildsystem.patch
-	"${FILESDIR}"/${PN}-1.0-system-squish.patch
+	"${FILESDIR}"/${PN}-1.1-fix-buildsystem.patch
 )
 
 src_prepare() {
@@ -69,9 +70,10 @@ src_configure() {
 		-DUSE_SYSTEM_GLEW=ON
 		-DUSE_SYSTEM_SQUISH=OFF
 		-DUSE_SYSTEM_WIIUSE=OFF
+		-DUSE_IPV6=OFF # not supported by system enet
+		-DOpenGL_GL_PREFERENCE=GLVND
 		-DUSE_CRYPTO_OPENSSL=$(usex nettle no yes)
 		-DENABLE_WAYLAND_DEVICE=OFF
-		-DUSE_FRIBIDI=$(usex fribidi)
 		-DBUILD_RECORDER=$(usex recorder)
 		-DUSE_WIIUSE=$(usex wiimote)
 		-DSTK_INSTALL_BINARY_DIR=bin
@@ -86,12 +88,4 @@ src_install() {
 	dodoc CHANGELOG.md
 
 	doicon -s 64 "${DISTDIR}"/${PN}.png
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
