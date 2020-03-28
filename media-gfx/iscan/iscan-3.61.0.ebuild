@@ -20,7 +20,7 @@ DEPEND="
 	virtual/jpeg
 	gui? ( dev-cpp/gtkmm:= )
 	imagemagick? (
-		!graphicsmagick? ( media-gfx/imagemagick:= )
+		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:= )
 	)
 "
