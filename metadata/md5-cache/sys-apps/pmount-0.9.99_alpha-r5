@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=acct-group/plugdev >=sys-apps/util-linux-2.17.2 crypt? ( >=sys-fs/cryptsetup-1.0.6-r2 )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/pmount/pmount_0.9.99-alpha.orig.tar.bz2
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	c9e26066f2b7b5a91ad08d042f7f7306	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=14fd084af8adf786b1d3d3b265742c7f
