@@ -74,7 +74,7 @@ src_install() {
 
 	make_wrapper zoom ./zoom /opt/zoom
 	make_desktop_entry "zoom %U" Zoom zoom-videocam "" \
-					   "MimeType=x-scheme-handler/zoommtg;application/x-zoom;"
+		"MimeType=x-scheme-handler/zoommtg;application/x-zoom;"
 	# The tarball doesn't contain an icon, so take a generic camera icon
 	# from https://github.com/google/material-design-icons, modified to be
 	# white on a blue background
