@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2020-03-28)
+# Last release 2008. Last upstream commit 2013. Blocks removal of
+# gnome-base/libgnome-keyring
+# Bug #713030
+mail-client/mail-notification
+
+# Matt Turner <mattst88@gentoo.org> (2020-03-28)
 # Homepage gone. Dead project. Blocks removal of gnome-base/libgnome-keyring
 # Bug #713028
 games-puzzle/skoosh
