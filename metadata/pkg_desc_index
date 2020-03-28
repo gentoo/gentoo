@@ -7844,7 +7844,7 @@ dev-python/gnome-python-desktop-base 2.32.0-r1: Provides python the base files f
 dev-python/gnome-python-extras-base 2.25.3-r1: Provides python the base files for the Gnome Python Desktop bindings
 dev-python/gnome-vfs-python 2.28.1-r1: Python bindings for the GnomeVFS library
 dev-python/gntp 1.0.3: Python library for working with the Growl Notification Transport Protocol
-dev-python/google-api-python-client 1.5.3 1.6.2 1.6.5 1.7.0 1.7.9: Google API Client for Python
+dev-python/google-api-python-client 1.6.5 1.7.9: Google API Client for Python
 dev-python/google-apitools 0.5.30: Python library to manipulate Google APIs
 dev-python/google-apputils 0.4.2-r2: Collection of utilities for building Python applications
 dev-python/google-auth 1.0.1 1.6.3: Google Authentication Library
@@ -8148,26 +8148,26 @@ dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.4.0-r1: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
-dev-python/nuitka 0.6.4 0.6.5 0.6.6: Python to native compiler
+dev-python/nuitka 0.6.6: Python to native compiler
 dev-python/numba 0.37.0 0.39.0: NumPy aware dynamic Python compiler using LLVM
-dev-python/numexpr 2.6.8 2.6.9: Fast numerical array expression evaluator for Python and NumPy
+dev-python/numexpr 2.6.9: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.16.5 1.17.4-r2: Fast array and numerical python library
 dev-python/numpy-python2 1.16.5: Fast array and numerical python library
 dev-python/numpydoc 0.9.1: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
-dev-python/oauth2client 2.0.1 2.2.0 4.1.2 4.1.3: Library for accessing resources protected by OAuth 2.0
-dev-python/oauthlib 1.0.3 2.0.2 2.0.3 2.0.6 3.0.1 3.1.0: Spec-compliant and thorough implementation of the OAuth request-signing logic
-dev-python/objgraph 3.1.0 3.4.0 3.4.1: Draws Python object reference graphs with graphviz
+dev-python/oauth2client 4.1.3: Library for accessing resources protected by OAuth 2.0
+dev-python/oauthlib 3.0.1 3.1.0: Spec-compliant and thorough implementation of the OAuth request-signing logic
+dev-python/objgraph 3.4.0 3.4.1: Draws Python object reference graphs with graphviz
 dev-python/oct2py 3.6.0 4.0.6: Python to GNU Octave bridge
 dev-python/octave_kernel 0.26.2: Jupyter kernel for octave
 dev-python/odfpy 1.3.6: Python API and tools to manipulate OpenDocument files
 dev-python/odo 0.5.0-r1: Data migration in python
-dev-python/olefile 0.44 0.46: Python package to parse, read and write Microsoft OLE2 files
+dev-python/olefile 0.46: Python package to parse, read and write Microsoft OLE2 files
 dev-python/onkyo-eiscp 1.2.7: Control Onkyo A/V receivers over the network
-dev-python/openpyxl 2.6.1 2.6.2 2.6.4 3.0.0 9999: Pure python reader and writer of Excel OpenXML files
-dev-python/openstackdocstheme 1.16.1 1.18.1: Theme and extension support for Sphinx documentation
-dev-python/openstacksdk 0.27.0 0.36.0: A collection of libraries for building applications to work with OpenStack.
+dev-python/openpyxl 3.0.0 9999: Pure python reader and writer of Excel OpenXML files
+dev-python/openstackdocstheme 1.18.1: Theme and extension support for Sphinx documentation
+dev-python/openstacksdk 0.36.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/opt-einsum 3.0.1: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 3.1.1: A mutable set that remembers the order of its entries
 dev-python/os-brick 2.8.2: OpenStack Cinder brick library for managing local volume attaches
@@ -8209,13 +8209,13 @@ dev-python/oslotest 3.7.1: Oslo test framework
 dev-python/osprofiler 2.6.0: OpenStack Profiler Library
 dev-python/ovs 2.10.0-r1 2.11.0: OVS bindings for python.
 dev-python/ovsdbapp 0.17.2: A library for creating OVSDB applications
-dev-python/owslib 0.16.0-r1 0.17.1 0.17.1-r1: Library for client programming with Open Geospatial Consortium web service
+dev-python/owslib 0.17.1-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 20.1 20.3: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
-dev-python/paho-mqtt 1.4.0 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
+dev-python/paho-mqtt 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
 dev-python/pandas 0.24.2 1.0.1 9999: Powerful data structures for data analysis and statistics
-dev-python/pandas-datareader 0.7.0 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
+dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.2-r1 1.4.2-r2: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.0: Parameterized testing with any Python test framework
 dev-python/parametrized 0.1: Parameterized testing with any Python test framework
@@ -10520,7 +10520,7 @@ dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19 2019.11.30: Converts profili
 dev-util/gtk-builder-convert 2.24.32: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.25-r1 1.32-r1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.25-r1 1.32: Automake files from gtk-doc
-dev-util/gtk-update-icon-cache 3.24.11 3.24.13 3.24.14: GTK update icon cache
+dev-util/gtk-update-icon-cache 3.24.11 3.24.13 3.24.14 3.24.16: GTK update icon cache
 dev-util/gyp 20170904022846-r1 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
@@ -18176,7 +18176,7 @@ x11-libs/gl2ps 1.3.9 1.4.0: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.10.41 0.10.43 0.10.46: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4: Canvas widget for GTK+ using the cairo 2D library for drawing
-x11-libs/gtk+ 2.24.32-r1 3.24.11 3.24.13 3.24.14: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.11 3.24.13 3.24.14 3.24.16: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.3 3.3.4: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
