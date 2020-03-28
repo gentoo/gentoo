@@ -9,7 +9,7 @@ inherit multiprocessing python-any-r1 qt5-build
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm arm64 ~x86"
+	KEYWORDS="arm"
 fi
 
 IUSE="alsa bindist designer jumbo-build pulseaudio +system-ffmpeg +system-icu widgets"

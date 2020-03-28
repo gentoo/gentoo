@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="Tool for reporting diagnostic information about Qt and its environment"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~sparc ~x86"
+	KEYWORDS="~arm"
 fi
 
 IUSE="+network +widgets"
