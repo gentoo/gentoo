@@ -14915,7 +14915,7 @@ net-misc/efax 0.9a-r4 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2: Lightweight Bitcoin Cash client (BCH fork of Electrum)
 net-misc/electrum 3.3.8: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
-net-misc/ena-driver 2.0.2 2.0.3: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
+net-misc/ena-driver 2.0.3 2.2.3: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
 net-misc/endlessh 1.0 9999: SSH tarpit that slowly sends and endless banner
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
 net-misc/etherdfs 20180203: An ethernet-based file system for DOS
