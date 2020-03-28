@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Interface to KeePass V1 and V2 database files"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
