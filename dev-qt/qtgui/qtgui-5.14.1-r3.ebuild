@@ -10,7 +10,7 @@ DESCRIPTION="The GUI module and platform plugins for the Qt5 framework"
 SLOT=5/${PV} # bug 707658
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
 fi
 
 # TODO: linuxfb
