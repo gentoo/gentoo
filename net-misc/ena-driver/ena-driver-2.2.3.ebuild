@@ -7,7 +7,7 @@ inherit linux-info linux-mod
 
 DESCRIPTION="Amazon EC2 Elastic Network Adapter (ENA) kernel driver"
 HOMEPAGE="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking-ena.html"
-SRC_URI="https://github.com/amzn/amzn-drivers/archive/ena_linux_${PV}.zip -> ${P}-linux.zip"
+SRC_URI="https://github.com/amzn/amzn-drivers/archive/ena_linux_${PV}.tar.gz -> ${P}-linux.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
