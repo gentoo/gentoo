@@ -9,7 +9,6 @@
 		<email>gentoo@seichter.de</email>
 		<name>Ralph Seichter</name>
 	</maintainer>
-	<longdescription>Encrypted bandwidth-efficient backup using the rsync algorithm</longdescription>
 	<use>
 		<flag name="s3">Support for backing up to the Amazon S3 system</flag>
 	</use>
