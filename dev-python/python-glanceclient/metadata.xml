@@ -9,9 +9,6 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
-  <longdescription lang="en">
-    This is a client for the OpenStack Glance API.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">python-glanceclient</remote-id>
     <remote-id type="github">openstack/python-glanceclient</remote-id>
