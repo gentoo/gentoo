@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,8 +27,8 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e "s:-O2:${CFLAGS}:g" \
-		-e "s:\$x_libraries:/usr/$(get_libdir):" \
+		-e "s|-O2|${CFLAGS}|g" \
+		-e "s|\$x_libraries|/usr/$(get_libdir)|" \
 		configure.ac || die
 
 	eautoreconf
