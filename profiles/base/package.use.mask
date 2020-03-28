@@ -6,6 +6,18 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-28)
+# Requires masked dev-vcs/bzr.  Remove the mask if breezy is packaged
+# and the package is confirmed to work with it.
+app-portage/layman bazaar
+dev-qt/qt-creator bazaar
+dev-vcs/cvs2svn bazaar
+kde-apps/kdesdk-meta bazaar
+sys-apps/etckeeper bazaar
+<=dev-util/rosinstall-0.7.8 test
+<=dev-util/wstool-0.1.18 test
+<=dev-python/vcstools-0.1.42 test
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Depends on vulnerable old version of icedtea-web #711392
 # new version uses maven + rust
