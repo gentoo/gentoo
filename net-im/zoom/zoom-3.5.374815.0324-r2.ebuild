@@ -18,6 +18,7 @@ IUSE="pulseaudio"
 RESTRICT="mirror bindist strip"
 
 RDEPEND="dev-libs/glib:2
+	dev-libs/icu
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
@@ -33,6 +34,7 @@ RDEPEND="dev-libs/glib:2
 	dev-qt/qtwidgets:5
 	media-libs/libglvnd
 	media-libs/libjpeg-turbo
+	media-sound/mpg123
 	sys-apps/dbus
 	sys-apps/util-linux
 	x11-libs/libX11
@@ -42,7 +44,8 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( media-sound/pulseaudio )
+	!pulseaudio? ( media-libs/alsa-lib )"
 
 BDEPEND="!pulseaudio? ( dev-util/bbe )"
 
@@ -66,6 +69,7 @@ src_install() {
 	doins *.pcm *.pem *.sh Embedded.properties version.txt
 	use amd64 && doins icudtl.dat
 	doexe zoom{,.sh,linux} zopen ZoomLauncher
+	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libturbojpeg.so #715106
 
 	make_wrapper zoom ./zoom /opt/zoom
