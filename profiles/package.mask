@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Thode <prometheanfire@gentoo.org> (2020-03-28)
+# No consumers. requires old dev-python/pika, bug 715152. Removal in 14 days.
+dev-python/pika-pool
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-03-27)
 # No consumers. Build problems, bug 668244. Removal in 30 days.
 media-libs/openmoiv
