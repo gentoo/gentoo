@@ -17,6 +17,8 @@ PATCHES=(
 	"${FILESDIR}/dahdi-nondigium-blacklist.patch"
 	"${FILESDIR}/dahdi-tools-3.1.0-parallel-make-no-config.patch"
 	"${FILESDIR}/dahdi-tools-3.1.0-fno-common.patch"
+	"${FILESDIR}/dahdi-tools-3.1.0-execinfo.patch"
+	"${FILESDIR}/dahdi-tools-3.1.0-cplusplusexternc.patch"
 )
 
 DEPEND="dev-libs/newt
