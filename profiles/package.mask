@@ -37,6 +37,11 @@
 # Removal in 30 days.  Bug #712960
 net-dns/dnsimple-dyndns
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
+# Vulnerable old version of icedtea-web #711392
+# new version uses maven + rust
+dev-java/icedtea-web
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-27)
 # Unmaintained.  Not tested for py3.7.  Last bumped in 2015.
 # Bad quality ebuild.
