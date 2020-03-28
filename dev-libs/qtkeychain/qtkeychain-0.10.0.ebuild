@@ -26,7 +26,10 @@ BDEPEND="
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
-	gnome-keyring? ( dev-libs/glib:2 )
+	gnome-keyring? (
+		app-crypt/libsecret
+		dev-libs/glib:2
+	)
 "
 RDEPEND="${DEPEND}"
 

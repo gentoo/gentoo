@@ -5,7 +5,6 @@
 		<email>ikelos@gentoo.org</email>
 		<name>Mike Auty</name>
 	</maintainer>
-	<longdescription lang="en">Extensions for the mypy static type checker</longdescription>
 	<upstream>
 		<remote-id type="github">python/mypy_extesions</remote-id>
 	</upstream>
