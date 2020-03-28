@@ -9,10 +9,6 @@
     <email>python@gentoo.org</email>
     <name>Python</name>
   </maintainer>
-  <longdescription>
-    The Jupyter HTML notebook is a web-based notebook environment
-    for interactive computing.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">notebook</remote-id>
   </upstream>
