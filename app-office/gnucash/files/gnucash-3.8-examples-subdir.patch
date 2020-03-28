@@ -1,0 +1,10 @@
+--- a/doc/examples/CMakeLists.txt
++++ b/doc/examples/CMakeLists.txt
+@@ -21,6 +21,6 @@
+   web.qif
+ )
+ 
+-install(FILES ${examples_DATA} DESTINATION  ${CMAKE_INSTALL_DOCDIR})
++install(FILES ${examples_DATA} DESTINATION  ${CMAKE_INSTALL_DOCDIR}/examples)
+ 
+ set_dist_list(examples_DIST ${examples_DATA} CMakeLists.txt )
