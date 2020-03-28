@@ -8331,7 +8331,7 @@ dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
 dev-python/pyClamd 0.4.0-r1: python interface to Clamd (Clamav daemon)
 dev-python/pyFFTW 0.11.1 9999: A pythonic python wrapper around FFTW
 dev-python/pyGPG 0.2 9999: A python interface wrapper for gnupg's gpg command
-dev-python/pyTenable 0.3.7 0.3.18 0.3.19 0.3.20: Tenable API Library for Tenable.io and SecurityCenter
+dev-python/pyTenable 0.3.20: Tenable API Library for Tenable.io and SecurityCenter
 dev-python/pyacoustid 1.1.7: Python bindings for Chromaprint and the AcoustID web service
 dev-python/pyaes 1.6.1-r1 1.6.1-r2: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.1.6 1.1.6-r1: Python bindings for ALSA library
@@ -8505,42 +8505,42 @@ dev-python/pysvg 0.2.2_p3: Python SVG document creation library
 dev-python/pysvn 1.8.0 1.9.11: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.05.01_pre20160529: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.4.4: Hierarchical datasets for Python
-dev-python/pyte 0.5.2-r2 0.8.0-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 3.10.1 4.5.0 4.6.9 5.3.4 5.3.5 5.4.1: Simple powerful testing with Python
-dev-python/pytest-aiohttp 0.1.3 0.3.0: pytest plugin for aiohttp support
+dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
+dev-python/pytest 3.10.1 4.5.0 4.6.9 5.4.1: Simple powerful testing with Python
+dev-python/pytest-aiohttp 0.3.0: pytest plugin for aiohttp support
 dev-python/pytest-arraydiff 0.1: pytest plugin to facilitate comparison of arrays
 dev-python/pytest-asyncio 0.10.0: Library for testing asyncio code with pytest
-dev-python/pytest-cache 1.0-r1 1.0-r2: mechanisms for caching across test runs
+dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
-dev-python/pytest-cov 2.3.1 2.6.1 2.8.1: py.test plugin for coverage reporting
+dev-python/pytest-cov 2.8.1: py.test plugin for coverage reporting
 dev-python/pytest-cython 0.1.0: Plugin for testing Cython extension modules
 dev-python/pytest-describe 0.11.1: Describe-style plugin for py.test
-dev-python/pytest-django 3.4.4 3.8.0: A Django plugin for py.test
+dev-python/pytest-django 3.8.0: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
-dev-python/pytest-fixture-config 1.2.11 1.7.0 1.7.0-r1: Virtualenv fixture for py.test
+dev-python/pytest-fixture-config 1.7.0 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-flake8 0.8.1 0.9.1: py.test plugin for flake8
 dev-python/pytest-flakes 4.0.0: Collection of small Python functions & classes
 dev-python/pytest-forked 0.2 1.1.3: run tests in isolated forked subprocesses
 dev-python/pytest-helpers-namespace 2019.1.8: Provides a helpers pytest namespace
-dev-python/pytest-html 1.16.0 1.22.1: Plugin for generating HTML reports for py.test results
-dev-python/pytest-httpbin 0.2.3 1.0.0: Easily test your HTTP library against a local copy of httpbin
-dev-python/pytest-isort 0.1.0 0.3.1: py.test plugin for isort
+dev-python/pytest-html 1.22.1: Plugin for generating HTML reports for py.test results
+dev-python/pytest-httpbin 1.0.0: Easily test your HTTP library against a local copy of httpbin
+dev-python/pytest-isort 0.3.1: py.test plugin for isort
 dev-python/pytest-lazy-fixture 0.6.2: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.3.7 0.5.0: Py.test plugin to test server connections locally
-dev-python/pytest-metadata 1.3.0 1.7.0 1.8.0: A plugin for pytest that provides access to test session metadata
-dev-python/pytest-mock 1.6.0 1.6.3 1.10.0 1.11.2: Thin-wrapper around the mock package for easier use with py.test
+dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
+dev-python/pytest-mock 1.11.2: Thin-wrapper around the mock package for easier use with py.test
 dev-python/pytest-mpl 0.8: pytest plugin to faciliate image comparison for matplotlib figures
-dev-python/pytest-pep8 1.0.6 1.0.6-r1: pytest plugin to check PEP8 requirements
-dev-python/pytest-pylint 0.7.1 0.14.1: pytest plugin to check source code with pylint
+dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
+dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
-dev-python/pytest-rerunfailures 2.1.0 7.0 8.0: pytest plugin to re-run tests to eliminate flaky failures
+dev-python/pytest-rerunfailures 8.0: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-runner 5.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-salt 2019.2.1_p1: PyTest Salt Plugin
 dev-python/pytest-services 2.0.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.2.11 1.7.0 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
-dev-python/pytest-timeout 1.2.0 1.2.1 1.3.3: py.test plugin to abort hanging tests
+dev-python/pytest-timeout 1.3.3: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.11 1.7.0 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.23.2 1.28.0 1.30.0 1.31.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1-r2 0.13.1: Manage external processes across test runs
