@@ -4,7 +4,7 @@
 EAPI=7
 
 inherit autotools
-DESCRIPTION="Packagedesk"
+DESCRIPTION="A software synthesizer plugin for the DSSI Soft Synth Interface"
 HOMEPAGE="http://smbolton.com/whysynth.html https://github.com/smbolton/whysynth"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
