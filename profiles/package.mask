@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-03-27)
+# No consumers. Build problems, bug 668244. Removal in 30 days.
+media-libs/openmoiv
+
 # Rafael G. Martins <rafaelmartins@gentoo.org> (2020-03-27)
 # Python 2 only. Uses old version of DNSimple API.
 # Removal in 30 days.  Bug #712960
