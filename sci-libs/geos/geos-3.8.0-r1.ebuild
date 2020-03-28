@@ -33,10 +33,14 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--disable-python \
-		$(use_enable ruby) \
+	local myeconfargs=(
+		--disable-python
+		$(use_enable ruby)
 		$(use_enable static-libs static)
+	)
+	use arm && myeconfargs+=( --disable-inline ) # bug 709368
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {

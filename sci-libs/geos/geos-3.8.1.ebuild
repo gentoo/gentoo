@@ -34,6 +34,8 @@ src_configure() {
 		$(use_enable ruby)
 		$(use_enable static-libs static)
 	)
+	use arm && myeconfargs+=( --disable-inline ) # bug 709368
+
 	econf "${myeconfargs[@]}"
 }
 
