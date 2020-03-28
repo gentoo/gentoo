@@ -6,6 +6,15 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
+# Depends on vulnerable old version of icedtea-web #711392
+# new version uses maven + rust
+dev-java/icedtea nsplugin webstart
+dev-java/icedtea-bin nsplugin webstart
+dev-java/openjdk nsplugin webstart
+dev-java/openjdk-bin nsplugin webstart
+dev-java/openjdk-jre-bin nsplugin webstart
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-27)
 # www-client/weboob is masked for removal.
 app-office/kmymoney weboob
