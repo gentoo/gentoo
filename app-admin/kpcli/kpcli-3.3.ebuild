@@ -9,7 +9,7 @@ SRC_URI="http://downloads.sourceforge.net/project/kpcli/${P}.pl"
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 DEPEND=""
