@@ -1,0 +1,29 @@
+From bf69bdbf674269e84b22461c50ce1016182b56d3 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Sat, 28 Mar 2020 06:56:07 +0200
+Subject: [PATCH] Fix build with LibreSSL
+
+Bug: https://bugs.gentoo.org/714882
+Upstream-Status: Submitted
+[https://github.com/lefcha/imapfilter/pull/204]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ src/socket.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/socket.c b/src/socket.c
+index 0a1874f..03e0d21 100644
+--- a/src/socket.c
++++ b/src/socket.c
+@@ -143,7 +143,7 @@ open_secure_connection(session *ssn)
+ 		goto fail;
+ 
+ 	if (get_option_boolean("certificates")) {
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+ 		SSL_set_hostflags(ssn->sslconn,
+ 		    X509_CHECK_FLAG_NO_PARTIAL_WILDCARDS);
+ 		if (!SSL_set1_host(ssn->sslconn, ssn->server)) {
+-- 
+2.26.0
+
