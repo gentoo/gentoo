@@ -1,6 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2020-03-28)
+# Includes an assembly file which is not arm-compatible.
+# Will no longer be an issue from 0.13 onwards, where
+# introspection data is an xxd-generated C array.
+# https://bugs.gentoo.org/715146
+=sys-auth/rtkit-0.12
+
 # Bernardo Meurer <bernardo@standard.ai> (2019-09-28)
 # Requires app-crypt/tpm2-tss which is pending ~arm vide
 # https://bugs.gentoo.org/695758
