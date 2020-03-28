@@ -26,24 +26,26 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/wheel-0.32.0[${PYTHON_USEDEP}]
-		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
-		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
-		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/subunit-1.0.0[${PYTHON_USEDEP}]
-		>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
-		>=dev-python/testresources-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
-		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/virtualenv-14.0.6[${PYTHON_USEDEP}]
-		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
-		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
-		>=dev-python/stestr-2.1.0
-		dev-vcs/git
+		$(python_gen_cond_dep '
+			>=dev-python/wheel-0.32.0[${PYTHON_USEDEP}]
+			>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
+			!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
+			>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
+			>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
+			>=dev-python/subunit-1.0.0[${PYTHON_USEDEP}]
+			>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+			>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
+			>=dev-python/testresources-2.0.0[${PYTHON_USEDEP}]
+			>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+			>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
+			>=dev-python/virtualenv-14.0.6[${PYTHON_USEDEP}]
+			>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
+			!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+			>=dev-python/stestr-2.1.0
+			dev-vcs/git
+		' -3)
 	)"
 PDEPEND=""
 
@@ -69,6 +71,12 @@ python_prepare_all() {
 }
 
 python_test() {
+	if ! python_is_python3; then
+		ewarn "Skipping tests on ${EPYTHON} to unblock circular deps."
+		ewarn "Please run tests manually."
+		return
+	fi
+
 	distutils_install_for_testing
 
 	rm -rf .testrepository || die "couldn't remove '.testrepository' under ${EPTYHON}"

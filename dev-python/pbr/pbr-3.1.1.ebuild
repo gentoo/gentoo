@@ -24,22 +24,24 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
-		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
-		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.5.1[$(python_gen_usedep 'python2_7' 'python3_6')]
-		!~dev-python/sphinx-1.6.1[$(python_gen_usedep 'python2_7' 'python3_6')]
-		>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
-		>=dev-python/testresources-0.2.4[${PYTHON_USEDEP}]
-		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
-		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
-		>=dev-python/virtualenv-13.1.0[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
-		dev-python/docutils[${PYTHON_USEDEP}]
-		dev-vcs/git
+		$(python_gen_cond_dep '
+			>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
+			!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
+			>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
+			>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
+			>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
+			>=dev-python/sphinx-1.5.1[${PYTHON_USEDEP}]
+			!~dev-python/sphinx-1.6.1[${PYTHON_USEDEP}]
+			>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
+			>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
+			>=dev-python/testresources-0.2.4[${PYTHON_USEDEP}]
+			>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+			>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
+			>=dev-python/virtualenv-13.1.0[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+			dev-python/docutils[${PYTHON_USEDEP}]
+			dev-vcs/git
+		' -3)
 	)"
 PDEPEND=""
 
@@ -65,6 +67,12 @@ python_prepare_all() {
 }
 
 python_test() {
+	if ! python_is_python3; then
+		ewarn "Skipping tests on ${EPYTHON} to unblock circular deps."
+		ewarn "Please run tests manually."
+		return
+	fi
+
 	distutils_install_for_testing
 
 	rm -rf .testrepository || die "couldn't remove '.testrepository' under ${EPTYHON}"
