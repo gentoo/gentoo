@@ -20,20 +20,26 @@ REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND=">=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
-	av? ( media-libs/libvpx
-		media-libs/opus )
+DEPEND="
+	>dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
+	av? (
+		media-libs/libvpx
+		media-libs/opus
+	)
 	daemon? ( dev-libs/libconfig )"
-RDEPEND="${DEPEND}
-	daemon? ( acct-group/tox
-		  acct-user/tox )"
+RDEPEND="
+	${DEPEND}
+	daemon? (
+		acct-group/tox
+		acct-user/tox
+	)"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	cmake_src_prepare
 	#remove faulty tests
-	for testname in bootstrap lan_discovery save_compatibility tcp_relay tox_many_tcp; do
+	for testname in bootstrap lan_discovery save_compatibility; do
 		sed -i -e "/^auto_test(${testname})$/d" CMakeLists.txt || die
 	done
 }
@@ -50,13 +56,10 @@ src_configure() {
 		-DMUST_BUILD_TOXAV=$(usex av))
 	if use test; then
 		mycmakeargs+=(
-			-DBUILD_AV_TEST=$(usex av)
 			-DTEST_TIMEOUT_SECONDS=120
 			-DUSE_IPV6=$(usex ipv6))
 	else
-		mycmakeargs+=(
-			-DBUILD_AV_TEST=OFF
-			-DUSE_IPV6=OFF)
+		mycmakeargs+=(-DUSE_IPV6=OFF)
 	fi
 
 	if use log-trace; then
@@ -91,12 +94,13 @@ src_install() {
 
 pkg_postinst() {
 	if use dht-node; then
-		ewarn "There is currently an unresolved issue with tox"
-		ewarn "DHT Bootstrap node that causes the program to be"
-		ewarn "built with a null library reference. This"
-		ewarn "causes an infinite loop for certain revdep-rebuild"
-		ewarn "commands. If you aren't running a node, please"
-		ewarn "consider disabling the DHT-node use flag."
+		ewarn "The QA notice regarding libmisc_tools.so is known by the upstream"
+		ewarn "developers and is on their TODO list."
+		ewarn ""
+		ewarn "There is currently an unresolved issue with tox DHT Bootstrap node"
+		ewarn "that causes the program to be built with a null library reference."
+		ewarn "This causes an infinite loop for certain revdep-rebuild commands."
+		ewarn "If you aren't running a node, please consider disabling the dht-node use flag."
 	fi
 	if use daemon; then
 		if [[ -f ${EROOT}/var/lib/tox-dht-bootstrap/key ]]; then

@@ -43,8 +43,10 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/libgeodecomp-${MY_COMMIT}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-mpi.patch"
+	"${FILESDIR}/${P}-hpx.patch"
 	"${FILESDIR}/${P}-libdir.patch"
+	"${FILESDIR}/${P}-mpi.patch"
+	"${FILESDIR}/${P}-warnings.patch"
 )
 
 src_prepare() {
