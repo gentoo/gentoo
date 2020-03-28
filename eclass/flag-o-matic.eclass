@@ -56,7 +56,9 @@ setup-allowed-flags() {
 		-mno-faster-structs -mfaster-structs -m32 -m64 -mx32 -mabi
 		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 -mcmodel
 		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' -mfloat-abi
-		-mfix-r10000 -mno-fix-r10000 -mthumb -marm
+		-mfix-r4000 -mno-fix-r4000 -mfix-r4400 -mno-fix-r4400
+		-mfix-rm7000 -mno-fix-rm7000 -mfix-r10000 -mno-fix-r10000
+		-mr10k-cache-barrier -mthumb -marm
 
 		# gcc 4.5
 		-mno-fma4 -mno-movbe -mno-xop -mno-lwp
