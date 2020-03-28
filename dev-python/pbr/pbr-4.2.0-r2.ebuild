@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 
 # git is needed for tests, see https://bugs.launchpad.net/pbr/+bug/1326682 and https://bugs.gentoo.org/show_bug.cgi?id=561038
 # docutils is needed for sphinx exceptions... https://bugs.gentoo.org/show_bug.cgi?id=603848
+# stestr is run as external tool
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -36,9 +37,9 @@ DEPEND="
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 		>=dev-python/virtualenv-14.0.6[${PYTHON_USEDEP}]
-		>=dev-python/stestr-2.1.0[$(python_gen_usedep python{2_7,3_5,3_6})]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
+		>=dev-python/stestr-2.1.0
 		dev-vcs/git
 	)"
 PDEPEND=""
