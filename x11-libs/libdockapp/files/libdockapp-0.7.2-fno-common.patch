@@ -1,0 +1,12 @@
+diff -Naur libdockapp-0.7.2.orig/src/wmgeneral.h libdockapp-0.7.2/src/wmgeneral.h
+--- libdockapp-0.7.2.orig/src/wmgeneral.h	2015-10-27 10:32:25.000000000 +0100
++++ libdockapp-0.7.2/src/wmgeneral.h	2020-03-28 14:33:25.070622841 +0100
+@@ -66,7 +66,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
