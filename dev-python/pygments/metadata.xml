@@ -6,6 +6,7 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription>Pygments is a syntax highlighting package written in Python. Pygments can output to html, bbcode, latex, rtf and other formats.</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Pygments</remote-id>
 		<remote-id type="bitbucket">birkenfeld/pygments-main</remote-id>
