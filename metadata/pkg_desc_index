@@ -8219,48 +8219,48 @@ dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide rang
 dev-python/pandocfilters 1.4.2-r1 1.4.2-r2: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.0: Parameterized testing with any Python test framework
 dev-python/parametrized 0.1: Parameterized testing with any Python test framework
-dev-python/paramiko 2.4.2 2.6.0 2.7.1: SSH2 protocol library
+dev-python/paramiko 2.7.1: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
 dev-python/parsley 1.3: A Pattern-Matching Language Based on OMeta and Python
 dev-python/parso 0.5.2 0.6.1 0.6.2: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 0.3.8: Appendable key-value storage
-dev-python/parver 0.1.1 0.2.1: Parse and manipulate version numbers
-dev-python/passlib 1.7.1-r1 1.7.1-r2 1.7.2: Password hashing framework supporting over 20 schemes
+dev-python/parver 0.2.1: Parse and manipulate version numbers
+dev-python/passlib 1.7.1-r2 1.7.2: Password hashing framework supporting over 20 schemes
 dev-python/passwordmeter 0.1.8: A password strength measuring library
-dev-python/paste 2.0.3-r1 3.0.7 3.2.3: Tools for using a Web Server Gateway Interface stack
+dev-python/paste 3.2.3: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 2.0.1-r1: Load, configure, and compose WSGI applications and servers
 dev-python/pastescript 2.0.2-r1: A pluggable command-line frontend, including commands to setup package file layouts
 dev-python/patch 1.16: Library to parse and apply unified diffs
 dev-python/patch-ng 1.17.3: Library to parse and apply unified diffs, fork of dev-python/patch
-dev-python/path-and-address 1.1.0 2.0.1: Functions for server CLI applications used by humans
+dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
 dev-python/path-py 11.5.2 12.0.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
-dev-python/pathlib2 2.3.0 2.3.2 2.3.5: Fork of pathlib aiming to support the full stdlib Python API
-dev-python/pathspec 0.6.0 0.7.0: Utility library for gitignore style pattern matching of file paths.
-dev-python/pathtools 0.1.2-r2 0.1.2-r3: Pattern matching and various utilities for file systems paths
-dev-python/patsy 0.4.1 0.5.1: Python module to describe statistical models and design matrices
-dev-python/paver 1.2.4 1.3.4 1.3.4-r1: Python-based software project scripting tool along the lines of Make
+dev-python/pathlib2 2.3.5: Fork of pathlib aiming to support the full stdlib Python API
+dev-python/pathspec 0.7.0: Utility library for gitignore style pattern matching of file paths.
+dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
+dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
+dev-python/paver 1.3.4-r1: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
 dev-python/pbr 3.1.1 4.1.1 4.2.0-r1 4.2.0-r2 5.1.1: Inject some useful and sensible default behaviors into setuptools
-dev-python/pcapy 0.11.1 0.11.2: Python pcap extension
+dev-python/pcapy 0.11.2: Python pcap extension
 dev-python/pdb-clone 1.10.1: A faster clone of pdb
-dev-python/pdfrw 0.2 0.4: PDF file reader/writer library
+dev-python/pdfrw 0.4: PDF file reader/writer library
 dev-python/pdoc 0.3.2: Simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
 dev-python/pecan 1.3.3-r2: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
 dev-python/peewee 3.1.0: Small python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
-dev-python/pep8 1.5.7 1.7.0 1.7.1: Python style guide checker
+dev-python/pep8 1.7.1: Python style guide checker
 dev-python/peppercorn 0.5 0.6: Convert a token stream into a web form data structure
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.6.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgpdump 1.5: PGP packet parser library
-dev-python/pgspecial 1.11.5 1.11.7 1.11.9: Python implementation of postgres meta commands
-dev-python/phonenumbers 8.10.22 8.11.2 8.12.0: Python port of Google's libphonenumber
-dev-python/pickleshare 0.7.3 0.7.4-r1 0.7.5: A small 'shelve' like datastore with concurrency support
-dev-python/pid 2.2.0 2.2.5: Pidfile featuring stale detection and file-locking
-dev-python/piexif 1.0.12 1.0.13 1.1.0_beta0 1.1.3: Exif manipulation with pure Python
+dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
+dev-python/phonenumbers 8.10.22 8.12.0: Python port of Google's libphonenumber
+dev-python/pickleshare 0.7.4-r1 0.7.5: A small 'shelve' like datastore with concurrency support
+dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
+dev-python/piexif 1.0.12 1.1.3: Exif manipulation with pure Python
 dev-python/pika 0.10.0 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pika-pool 0.1.3: A connection pool for pika.
 dev-python/pikepdf 1.8.3: Python library to work with pdf files based on qpdf
@@ -8268,18 +8268,18 @@ dev-python/pilkit 2.0: A collection of utilities and processors for the Python I
 dev-python/pillow 6.2.1 6.2.2 7.0.0: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 9.0.1-r2 19.3.1-r2 20.0.2: Installs python packages -- replacement for easy_install
-dev-python/pipenv 9.0.0 9.0.0-r1 9.0.0-r2 2018.11.26: Python Development Workflow for Humans
+dev-python/pipenv 2018.11.26: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
-dev-python/pkgconfig 1.2.2 1.4.0 1.5.1: Interface Python with pkg-config
-dev-python/pkginfo 1.2.1 1.4.2 1.5.0.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
+dev-python/pkgconfig 1.4.0 1.5.1: Interface Python with pkg-config
+dev-python/pkginfo 1.5.0.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/plotly 1.9.6: Browser-based graphing library for Python
-dev-python/pluggy 0.5.2 0.7.1 0.11.0 0.12.0 0.13.0 0.13.1: plugin and hook calling mechanisms for python
+dev-python/pluggy 0.11.0 0.13.1: plugin and hook calling mechanisms for python
 dev-python/pluginbase 0.5: Support library for building plugins sytems in Python
-dev-python/plumbum 1.6.4 1.6.7 1.6.8: A library for shell script-like programs in python
+dev-python/plumbum 1.6.8: A library for shell script-like programs in python
 dev-python/ply 3.11: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
-dev-python/plyvel 1.1.0 1.2.0: Python interface to LevelDB
+dev-python/plyvel 1.2.0: Python interface to LevelDB
 dev-python/pmw 1.3.3-r2 1.3.3-r3 2.0.1-r2: Toolkit for building high-level compound Python widgets using the Tkinter module
 dev-python/pocketlint 0.17 0.19 0.20: Shared code for running pylint against rhinstaller projects
 dev-python/pockets 0.5.1: Collection of helpful Python tools
@@ -9077,17 +9077,17 @@ dev-qt/qdbusviewer 5.13.2 5.14.1: Graphical tool that lets you introspect D-Bus 
 dev-qt/qdoc 5.13.2 5.14.1: Qt documentation generator
 dev-qt/qt-creator 4.8.2 4.10.1 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.13.2_p201910220817 5.14.1_p202001241012: Qt5 documentation, for use with Qt Creator and other tools
-dev-qt/qt3d 5.13.2 5.14.1: 3D rendering module for the Qt5 framework
+dev-qt/qt3d 5.14.1: 3D rendering module for the Qt5 framework
 dev-qt/qtbluetooth 5.13.2 5.14.1: Bluetooth support library for the Qt5 framework
-dev-qt/qtcharts 5.13.2 5.14.1: Chart component library for the Qt5 framework
+dev-qt/qtcharts 5.14.1: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
 dev-qt/qtconcurrent 5.13.2 5.14.1: Multi-threading concurrence support library for the Qt5 framework
 dev-qt/qtcore 5.13.2-r2 5.14.1-r1: Cross-platform application development framework
-dev-qt/qtdatavis3d 5.13.2 5.14.1: 3D data visualization library for the Qt5 framework
+dev-qt/qtdatavis3d 5.14.1: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.13.2 5.14.1: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 5.13.2-r1 5.14.1-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdiag 5.13.2 5.14.1: Tool for reporting diagnostic information about Qt and its environment
-dev-qt/qtgamepad 5.13.2 5.14.1: Qt module to support gamepad hardware
+dev-qt/qtgamepad 5.14.1: Qt module to support gamepad hardware
 dev-qt/qtgraphicaleffects 5.13.2 5.14.1: Set of QML types for adding visual effects to user interfaces
 dev-qt/qtgui 5.13.2 5.14.1-r3: The GUI module and platform plugins for the Qt5 framework
 dev-qt/qthelp 5.13.2 5.14.1: Qt5 module for integrating online documentation into applications
@@ -9096,18 +9096,18 @@ dev-qt/qtlocation 5.13.2 5.14.1: Location (places, maps, navigation) library for
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
 dev-qt/qtmultimedia 5.13.2-r1 5.14.1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
 dev-qt/qtnetwork 5.13.2 5.14.1: Network abstraction library for the Qt5 framework
-dev-qt/qtnetworkauth 5.13.2 5.14.1: Network authorization library for the Qt5 framework
+dev-qt/qtnetworkauth 5.14.1: Network authorization library for the Qt5 framework
 dev-qt/qtopengl 5.13.2 5.14.1: OpenGL support library for the Qt5 framework (deprecated)
 dev-qt/qtpaths 5.13.2 5.14.1: Command line client to QStandardPaths
-dev-qt/qtplugininfo 5.13.2 5.14.1: Qt5 plugin metadata dumper
+dev-qt/qtplugininfo 5.14.1: Qt5 plugin metadata dumper
 dev-qt/qtpositioning 5.13.2 5.14.1: Physical position determination library for the Qt5 framework
-dev-qt/qtprintsupport 5.13.2 5.13.2-r1 5.14.1: Printing support library for the Qt5 framework
+dev-qt/qtprintsupport 5.13.2-r1 5.14.1: Printing support library for the Qt5 framework
 dev-qt/qtquickcontrols 5.13.2 5.14.1: Set of Qt Quick controls to create complete user interfaces (deprecated)
 dev-qt/qtquickcontrols2 5.13.2 5.14.1: Set of next generation Qt Quick controls for the Qt5 framework
 dev-qt/qtscript 5.13.2 5.14.1: Application scripting library for the Qt5 framework (deprecated)
-dev-qt/qtscxml 5.13.2 5.14.1: State Chart XML (SCXML) support library for the Qt5 framework
+dev-qt/qtscxml 5.14.1: State Chart XML (SCXML) support library for the Qt5 framework
 dev-qt/qtsensors 5.13.2 5.14.1: Hardware sensor access library for the Qt5 framework
-dev-qt/qtserialbus 5.13.2 5.14.1: Qt module to access CAN, ModBus, and other industrial serial buses and protocols
+dev-qt/qtserialbus 5.14.1: Qt module to access CAN, ModBus, and other industrial serial buses and protocols
 dev-qt/qtserialport 5.13.2 5.14.1: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20171024: Qt library to start applications only once per user
 dev-qt/qtspeech 5.13.2 5.14.1: Text-to-speech library for the Qt5 framework
@@ -9121,7 +9121,7 @@ dev-qt/qtwebchannel 5.13.2 5.14.1: Qt5 module for integrating C++ and QML applic
 dev-qt/qtwebengine 5.13.2 5.14.1: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20190629 5.212.0_pre20200309: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.13.2 5.14.1: Implementation of the WebSocket protocol for the Qt5 framework
-dev-qt/qtwebview 5.13.2 5.14.1: Module for displaying web content in a QML application using the Qt5 framework
+dev-qt/qtwebview 5.14.1: Module for displaying web content in a QML application using the Qt5 framework
 dev-qt/qtwidgets 5.13.2 5.14.1: Set of components for creating classic desktop-style UIs for the Qt5 framework
 dev-qt/qtx11extras 5.13.2 5.14.1: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.13.2 5.14.1: Implementation of SAX and DOM for the Qt5 framework
@@ -12079,7 +12079,7 @@ kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
 kde-misc/gmailfeed 1.1-r1: Plasma 5 applet providing a list of unread emails from your Gmail inbox
 kde-misc/kdeconnect 1.4: Adds communication between KDE Plasma and your smartphone
-kde-misc/kdiff3 1.8.1: Frontend to diff3 based on KDE Frameworks
+kde-misc/kdiff3 1.8.1 1.8.2: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.2.0: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: Input method frontend for Plasma
 kde-misc/kio-gdrive 1.2.7: KIO Slave for Google Drive service
