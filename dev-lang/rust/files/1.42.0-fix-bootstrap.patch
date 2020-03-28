@@ -1,0 +1,440 @@
+From 5f979e9afab42dd7536ca93994de66169880361e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Kr=C3=BCger?= <matthias.krueger@famsik.de>
+Date: Mon, 3 Feb 2020 20:13:30 +0100
+Subject: [PATCH] bootstrap: fix clippy warnings
+
+---
+ src/bootstrap/bin/rustc.rs     |  6 +++---
+ src/bootstrap/bin/rustdoc.rs   |  2 +-
+ src/bootstrap/builder.rs       | 24 ++++++++----------------
+ src/bootstrap/builder/tests.rs |  1 -
+ src/bootstrap/compile.rs       | 20 ++++++++++----------
+ src/bootstrap/config.rs        |  7 +++----
+ src/bootstrap/dist.rs          |  4 ++--
+ src/bootstrap/doc.rs           |  2 +-
+ src/bootstrap/flags.rs         |  2 +-
+ src/bootstrap/install.rs       |  5 ++---
+ src/bootstrap/lib.rs           |  6 +++---
+ src/bootstrap/metadata.rs      |  1 -
+ src/bootstrap/native.rs        |  4 +---
+ src/bootstrap/test.rs          |  9 +++------
+ src/bootstrap/tool.rs          |  2 +-
+ src/bootstrap/toolstate.rs     |  2 +-
+ src/bootstrap/util.rs          |  2 +-
+ 17 files changed, 41 insertions(+), 58 deletions(-)
+
+diff --git a/src/bootstrap/bin/rustc.rs b/src/bootstrap/bin/rustc.rs
+index a34ec44566bc..a8c00c8c3ca8 100644
+--- a/src/bootstrap/bin/rustc.rs
++++ b/src/bootstrap/bin/rustc.rs
+@@ -47,7 +47,7 @@ fn main() {
+     };
+     let stage = env::var("RUSTC_STAGE").expect("RUSTC_STAGE was not set");
+     let sysroot = env::var_os("RUSTC_SYSROOT").expect("RUSTC_SYSROOT was not set");
+-    let on_fail = env::var_os("RUSTC_ON_FAIL").map(|of| Command::new(of));
++    let on_fail = env::var_os("RUSTC_ON_FAIL").map(Command::new);
+ 
+     let rustc = env::var_os(rustc).unwrap_or_else(|| panic!("{:?} was not set", rustc));
+     let libdir = env::var_os(libdir).unwrap_or_else(|| panic!("{:?} was not set", libdir));
+@@ -64,7 +64,7 @@ fn main() {
+     if let Some(crate_name) = crate_name {
+         if let Some(target) = env::var_os("RUSTC_TIME") {
+             if target == "all"
+-                || target.into_string().unwrap().split(",").any(|c| c.trim() == crate_name)
++                || target.into_string().unwrap().split(',').any(|c| c.trim() == crate_name)
+             {
+                 cmd.arg("-Ztime");
+             }
+@@ -189,7 +189,7 @@ fn main() {
+                 crate_name,
+                 is_test,
+                 dur.as_secs(),
+-                dur.subsec_nanos() / 1_000_000
++                dur.subsec_millis()
+             );
+ 
+             match status.code() {
+diff --git a/src/bootstrap/bin/rustdoc.rs b/src/bootstrap/bin/rustdoc.rs
+index 8c8b33a4e4e0..04345867bf5c 100644
+--- a/src/bootstrap/bin/rustdoc.rs
++++ b/src/bootstrap/bin/rustdoc.rs
+@@ -61,7 +61,7 @@ fn main() {
+     }
+ 
+     // Needed to be able to run all rustdoc tests.
+-    if let Some(_) = env::var_os("RUSTDOC_GENERATE_REDIRECT_PAGES") {
++    if env::var_os("RUSTDOC_GENERATE_REDIRECT_PAGES").is_some() {
+         // This "unstable-options" can be removed when `--generate-redirect-pages` is stabilized
+         if !has_unstable {
+             cmd.arg("-Z").arg("unstable-options");
+diff --git a/src/bootstrap/builder.rs b/src/bootstrap/builder.rs
+index d9c894aa9c6b..18f6fda76084 100644
+--- a/src/bootstrap/builder.rs
++++ b/src/bootstrap/builder.rs
+@@ -510,7 +510,7 @@ impl<'a> Builder<'a> {
+             Subcommand::Format { .. } | Subcommand::Clean { .. } => panic!(),
+         };
+ 
+-        let builder = Builder {
++        Builder {
+             build,
+             top_stage: build.config.stage.unwrap_or(2),
+             kind,
+@@ -518,9 +518,7 @@ impl<'a> Builder<'a> {
+             stack: RefCell::new(Vec::new()),
+             time_spent_on_dependencies: Cell::new(Duration::new(0, 0)),
+             paths: paths.to_owned(),
+-        };
+-
+-        builder
++        }
+     }
+ 
+     pub fn execute_cli(&self) {
+@@ -753,13 +751,12 @@ impl<'a> Builder<'a> {
+             cargo.env("RUST_CHECK", "1");
+         }
+ 
+-        let stage;
+-        if compiler.stage == 0 && self.local_rebuild {
++        let stage = if compiler.stage == 0 && self.local_rebuild {
+             // Assume the local-rebuild rustc already has stage1 features.
+-            stage = 1;
++            1
+         } else {
+-            stage = compiler.stage;
+-        }
++            compiler.stage
++        };
+ 
+         let mut rustflags = Rustflags::new(&target);
+         if stage != 0 {
+@@ -1252,12 +1249,7 @@ impl<'a> Builder<'a> {
+         };
+ 
+         if self.config.print_step_timings && dur > Duration::from_millis(100) {
+-            println!(
+-                "[TIMING] {:?} -- {}.{:03}",
+-                step,
+-                dur.as_secs(),
+-                dur.subsec_nanos() / 1_000_000
+-            );
++            println!("[TIMING] {:?} -- {}.{:03}", step, dur.as_secs(), dur.subsec_millis());
+         }
+ 
+         {
+@@ -1302,7 +1294,7 @@ impl Rustflags {
+ 
+     fn arg(&mut self, arg: &str) -> &mut Self {
+         assert_eq!(arg.split_whitespace().count(), 1);
+-        if self.0.len() > 0 {
++        if !self.0.is_empty() {
+             self.0.push_str(" ");
+         }
+         self.0.push_str(arg);
+diff --git a/src/bootstrap/builder/tests.rs b/src/bootstrap/builder/tests.rs
+index 5fefb972866a..cca8ab80c93b 100644
+--- a/src/bootstrap/builder/tests.rs
++++ b/src/bootstrap/builder/tests.rs
+@@ -19,7 +19,6 @@ fn configure(host: &[&str], target: &[&str]) -> Config {
+     config.out = dir;
+     config.build = INTERNER.intern_str("A");
+     config.hosts = vec![config.build]
+-        .clone()
+         .into_iter()
+         .chain(host.iter().map(|s| INTERNER.intern_str(s)))
+         .collect::<Vec<_>>();
+diff --git a/src/bootstrap/compile.rs b/src/bootstrap/compile.rs
+index eced03506ab9..7dded96e18ef 100644
+--- a/src/bootstrap/compile.rs
++++ b/src/bootstrap/compile.rs
+@@ -18,7 +18,6 @@ use std::str;
+ use build_helper::{output, t, up_to_date};
+ use filetime::FileTime;
+ use serde::Deserialize;
+-use serde_json;
+ 
+ use crate::builder::Cargo;
+ use crate::dist;
+@@ -149,7 +148,8 @@ fn copy_third_party_objects(
+     // which is provided by std for this target.
+     if target == "x86_64-fortanix-unknown-sgx" {
+         let src_path_env = "X86_FORTANIX_SGX_LIBS";
+-        let src = env::var(src_path_env).expect(&format!("{} not found in env", src_path_env));
++        let src =
++            env::var(src_path_env).unwrap_or_else(|_| panic!("{} not found in env", src_path_env));
+         copy_and_stamp(Path::new(&src), "libunwind.a");
+     }
+ 
+@@ -361,7 +361,7 @@ impl Step for StartupObjects {
+                 );
+             }
+ 
+-            let target = sysroot_dir.join(file.to_string() + ".o");
++            let target = sysroot_dir.join((*file).to_string() + ".o");
+             builder.copy(dst_file, &target);
+             target_deps.push(target);
+         }
+@@ -515,7 +515,7 @@ pub fn rustc_cargo_env(builder: &Builder<'_>, cargo: &mut Cargo, target: Interne
+         .env("CFG_VERSION", builder.rust_version())
+         .env("CFG_PREFIX", builder.config.prefix.clone().unwrap_or_default());
+ 
+-    let libdir_relative = builder.config.libdir_relative().unwrap_or(Path::new("lib"));
++    let libdir_relative = builder.config.libdir_relative().unwrap_or_else(|| Path::new("lib"));
+     cargo.env("CFG_LIBDIR_RELATIVE", libdir_relative);
+ 
+     if let Some(ref ver_date) = builder.rust_info.commit_date() {
+@@ -843,11 +843,11 @@ pub fn run_cargo(
+         };
+         for filename in filenames {
+             // Skip files like executables
+-            if !filename.ends_with(".rlib")
+-                && !filename.ends_with(".lib")
+-                && !filename.ends_with(".a")
+-                && !is_dylib(&filename)
+-                && !(is_check && filename.ends_with(".rmeta"))
++            if !(filename.ends_with(".rlib")
++                || filename.ends_with(".lib")
++                || filename.ends_with(".a")
++                || is_dylib(&filename)
++                || (is_check && filename.ends_with(".rmeta")))
+             {
+                 continue;
+             }
+@@ -905,7 +905,7 @@ pub fn run_cargo(
+     for (prefix, extension, expected_len) in toplevel {
+         let candidates = contents.iter().filter(|&&(_, ref filename, ref meta)| {
+             filename.starts_with(&prefix[..])
+-                && filename[prefix.len()..].starts_with("-")
++                && filename[prefix.len()..].starts_with('-')
+                 && filename.ends_with(&extension[..])
+                 && meta.len() == expected_len
+         });
+diff --git a/src/bootstrap/config.rs b/src/bootstrap/config.rs
+index 110c8b844d54..709cf2908ead 100644
+--- a/src/bootstrap/config.rs
++++ b/src/bootstrap/config.rs
+@@ -16,7 +16,6 @@ use crate::flags::Flags;
+ pub use crate::flags::Subcommand;
+ use build_helper::t;
+ use serde::Deserialize;
+-use toml;
+ 
+ /// Global configuration for the entire build and/or bootstrap.
+ ///
+@@ -440,7 +439,7 @@ impl Config {
+                     }
+                 }
+             })
+-            .unwrap_or_else(|| TomlConfig::default());
++            .unwrap_or_else(TomlConfig::default);
+ 
+         let build = toml.build.clone().unwrap_or_default();
+         // set by bootstrap.py
+@@ -539,7 +538,7 @@ impl Config {
+             config.llvm_ldflags = llvm.ldflags.clone();
+             set(&mut config.llvm_use_libcxx, llvm.use_libcxx);
+             config.llvm_use_linker = llvm.use_linker.clone();
+-            config.llvm_allow_old_toolchain = llvm.allow_old_toolchain.clone();
++            config.llvm_allow_old_toolchain = llvm.allow_old_toolchain;
+         }
+ 
+         if let Some(ref rust) = toml.rust {
+@@ -606,7 +605,7 @@ impl Config {
+                 target.ar = cfg.ar.clone().map(PathBuf::from);
+                 target.ranlib = cfg.ranlib.clone().map(PathBuf::from);
+                 target.linker = cfg.linker.clone().map(PathBuf::from);
+-                target.crt_static = cfg.crt_static.clone();
++                target.crt_static = cfg.crt_static;
+                 target.musl_root = cfg.musl_root.clone().map(PathBuf::from);
+                 target.wasi_root = cfg.wasi_root.clone().map(PathBuf::from);
+                 target.qemu_rootfs = cfg.qemu_rootfs.clone().map(PathBuf::from);
+diff --git a/src/bootstrap/dist.rs b/src/bootstrap/dist.rs
+index 8d13df3ee21a..651506dbaa8a 100644
+--- a/src/bootstrap/dist.rs
++++ b/src/bootstrap/dist.rs
+@@ -827,7 +827,7 @@ impl Step for Analysis {
+         assert!(builder.config.extended);
+         let name = pkgname(builder, "rust-analysis");
+ 
+-        if &compiler.host != builder.config.build {
++        if compiler.host != builder.config.build {
+             return distdir(builder).join(format!("{}-{}.tar.gz", name, target));
+         }
+ 
+@@ -876,7 +876,7 @@ fn copy_src_dirs(builder: &Builder<'_>, src_dirs: &[&str], exclude_dirs: &[&str]
+             Some(path) => path,
+             None => return false,
+         };
+-        if spath.ends_with("~") || spath.ends_with(".pyc") {
++        if spath.ends_with('~') || spath.ends_with(".pyc") {
+             return false;
+         }
+ 
+diff --git a/src/bootstrap/doc.rs b/src/bootstrap/doc.rs
+index 204056598d90..b0d9a5b94641 100644
+--- a/src/bootstrap/doc.rs
++++ b/src/bootstrap/doc.rs
+@@ -560,7 +560,7 @@ impl Step for Rustdoc {
+         builder.ensure(Rustc { stage, target });
+ 
+         // Build rustdoc.
+-        builder.ensure(tool::Rustdoc { compiler: compiler });
++        builder.ensure(tool::Rustdoc { compiler });
+ 
+         // Symlink compiler docs to the output directory of rustdoc documentation.
+         let out_dir = builder.stage_out(compiler, Mode::ToolRustc).join(target).join("doc");
+diff --git a/src/bootstrap/flags.rs b/src/bootstrap/flags.rs
+index 2101ef27f9d4..516be6a30c23 100644
+--- a/src/bootstrap/flags.rs
++++ b/src/bootstrap/flags.rs
+@@ -571,7 +571,7 @@ fn split(s: &[String]) -> Vec<String> {
+ }
+ 
+ fn parse_deny_warnings(matches: &getopts::Matches) -> Option<bool> {
+-    match matches.opt_str("warnings").as_ref().map(|v| v.as_str()) {
++    match matches.opt_str("warnings").as_deref() {
+         Some("deny") => Some(true),
+         Some("warn") => Some(false),
+         Some(value) => {
+diff --git a/src/bootstrap/install.rs b/src/bootstrap/install.rs
+index f8734ebdf425..6549262811b9 100644
+--- a/src/bootstrap/install.rs
++++ b/src/bootstrap/install.rs
+@@ -126,9 +126,8 @@ fn add_destdir(path: &Path, destdir: &Option<PathBuf>) -> PathBuf {
+         None => return path.to_path_buf(),
+     };
+     for part in path.components() {
+-        match part {
+-            Component::Normal(s) => ret.push(s),
+-            _ => {}
++        if let Component::Normal(s) = part {
++            ret.push(s)
+         }
+     }
+     ret
+diff --git a/src/bootstrap/lib.rs b/src/bootstrap/lib.rs
+index 1fee3fd9ac1d..0db4fb389010 100644
+--- a/src/bootstrap/lib.rs
++++ b/src/bootstrap/lib.rs
+@@ -444,7 +444,7 @@ impl Build {
+             builder.execute_cli();
+         } else {
+             let builder = builder::Builder::new(&self);
+-            let _ = builder.execute_cli();
++            builder.execute_cli();
+         }
+ 
+         // Check for postponed failures from `test --no-fail-fast`.
+@@ -839,7 +839,7 @@ impl Build {
+             .target_config
+             .get(&target)
+             .and_then(|t| t.musl_root.as_ref())
+-            .or(self.config.musl_root.as_ref())
++            .or_else(|| self.config.musl_root.as_ref())
+             .map(|p| &**p)
+     }
+ 
+@@ -1026,7 +1026,7 @@ impl Build {
+     }
+ 
+     fn llvm_link_tools_dynamically(&self, target: Interned<String>) -> bool {
+-        (target.contains("linux-gnu") || target.contains("apple-darwin"))
++        target.contains("linux-gnu") || target.contains("apple-darwin")
+     }
+ 
+     /// Returns the `version` string associated with this compiler for Rust
+diff --git a/src/bootstrap/metadata.rs b/src/bootstrap/metadata.rs
+index 8a26adc7ed50..292aa3b1e24a 100644
+--- a/src/bootstrap/metadata.rs
++++ b/src/bootstrap/metadata.rs
+@@ -5,7 +5,6 @@ use std::process::Command;
+ 
+ use build_helper::output;
+ use serde::Deserialize;
+-use serde_json;
+ 
+ use crate::cache::INTERNER;
+ use crate::{Build, Crate};
+diff --git a/src/bootstrap/native.rs b/src/bootstrap/native.rs
+index 5bbd9f47fc90..1cfb4b2f63b5 100644
+--- a/src/bootstrap/native.rs
++++ b/src/bootstrap/native.rs
+@@ -15,8 +15,6 @@ use std::path::{Path, PathBuf};
+ use std::process::Command;
+ 
+ use build_helper::{output, t};
+-use cc;
+-use cmake;
+ 
+ use crate::builder::{Builder, RunConfig, ShouldRun, Step};
+ use crate::cache::Interned;
+@@ -205,7 +203,7 @@ impl Step for Llvm {
+             cfg.define("LLVM_ENABLE_LIBXML2", "OFF");
+         }
+ 
+-        if enabled_llvm_projects.len() > 0 {
++        if !enabled_llvm_projects.is_empty() {
+             enabled_llvm_projects.sort();
+             enabled_llvm_projects.dedup();
+             cfg.define("LLVM_ENABLE_PROJECTS", enabled_llvm_projects.join(";"));
+diff --git a/src/bootstrap/test.rs b/src/bootstrap/test.rs
+index 6adf9ddaf343..8d9e62010015 100644
+--- a/src/bootstrap/test.rs
++++ b/src/bootstrap/test.rs
+@@ -1424,13 +1424,10 @@ impl Step for ErrorIndex {
+ }
+ 
+ fn markdown_test(builder: &Builder<'_>, compiler: Compiler, markdown: &Path) -> bool {
+-    match fs::read_to_string(markdown) {
+-        Ok(contents) => {
+-            if !contents.contains("```") {
+-                return true;
+-            }
++    if let Ok(contents) = fs::read_to_string(markdown) {
++        if !contents.contains("```") {
++            return true;
+         }
+-        Err(_) => {}
+     }
+ 
+     builder.info(&format!("doc tests for: {}", markdown.display()));
+diff --git a/src/bootstrap/tool.rs b/src/bootstrap/tool.rs
+index 7f24768a4f10..67e0ed5c5802 100644
+--- a/src/bootstrap/tool.rs
++++ b/src/bootstrap/tool.rs
+@@ -234,7 +234,7 @@ pub fn prepare_tool_cargo(
+         cargo.env("RUSTC_EXTERNAL_TOOL", "1");
+     }
+ 
+-    let mut features = extra_features.iter().cloned().collect::<Vec<_>>();
++    let mut features = extra_features.to_vec();
+     if builder.build.config.cargo_native_static {
+         if path.ends_with("cargo")
+             || path.ends_with("rls")
+diff --git a/src/bootstrap/toolstate.rs b/src/bootstrap/toolstate.rs
+index b068c8200ace..bb012a388551 100644
+--- a/src/bootstrap/toolstate.rs
++++ b/src/bootstrap/toolstate.rs
+@@ -124,7 +124,7 @@ fn check_changed_files(toolstates: &HashMap<Box<str>, ToolState>) {
+     let output = t!(String::from_utf8(output.stdout));
+ 
+     for (tool, submodule) in STABLE_TOOLS.iter().chain(NIGHTLY_TOOLS.iter()) {
+-        let changed = output.lines().any(|l| l.starts_with("M") && l.ends_with(submodule));
++        let changed = output.lines().any(|l| l.starts_with('M') && l.ends_with(submodule));
+         eprintln!("Verifying status of {}...", tool);
+         if !changed {
+             continue;
+diff --git a/src/bootstrap/util.rs b/src/bootstrap/util.rs
+index 7d1efe4610f9..eac790fe504b 100644
+--- a/src/bootstrap/util.rs
++++ b/src/bootstrap/util.rs
+@@ -98,7 +98,7 @@ impl Drop for TimeIt {
+     fn drop(&mut self) {
+         let time = self.1.elapsed();
+         if !self.0 {
+-            println!("\tfinished in {}.{:03}", time.as_secs(), time.subsec_nanos() / 1_000_000);
++            println!("\tfinished in {}.{:03}", time.as_secs(), time.subsec_millis());
+         }
+     }
+ }
