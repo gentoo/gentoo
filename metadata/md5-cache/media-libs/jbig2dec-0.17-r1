@@ -11,5 +11,5 @@ RDEPEND=png? ( media-libs/libpng:0= )
 RESTRICT=!test? ( test )
 SLOT=0/0.17
 SRC_URI=https://github.com/ArtifexSoftware/jbig2dec/archive/0.17.tar.gz -> jbig2dec-0.17.tar.gz test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	c9e26066f2b7b5a91ad08d042f7f7306	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e8ab2d20bc3be23c18b7bcdc9b034807

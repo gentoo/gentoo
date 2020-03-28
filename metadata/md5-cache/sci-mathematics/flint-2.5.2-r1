@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=dev-libs/gmp:= dev-libs/mpfr:= gc? ( dev-libs/boehm-gc ) ntl? ( dev-libs/ntl:= )
 SLOT=0/13
 SRC_URI=http://www.flintlib.org/flint-2.5.2.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	c9e26066f2b7b5a91ad08d042f7f7306	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=fc8b0df9e799f61eeb8585aab7915f84

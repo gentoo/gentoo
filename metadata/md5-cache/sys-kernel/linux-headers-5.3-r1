@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.xz mirror://gentoo/gentoo-headers-5.3-2.tar.xz https://dev.gentoo.org/~slyfox/distfiles/gentoo-headers-5.3-2.tar.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	161e65a1e185c10599fd2c5b258be436	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	161e65a1e185c10599fd2c5b258be436	multilib	c9e26066f2b7b5a91ad08d042f7f7306	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=cdc23bf224bac9e6eef28d32f0d13942

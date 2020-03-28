@@ -11,5 +11,5 @@ RDEPEND=>=sys-apps/pcsc-lite-1.2.9 gtk? ( x11-libs/gdk-pixbuf[jpeg] x11-libs/gtk
 REQUIRED_USE=dialogs? ( gtk )
 SLOT=0
 SRC_URI=https://codeload.github.com/fedict/eid-mw/tar.gz/v4.4.19 -> eid-mw-4.4.19.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	3b1f1d9a6b749c9ce2d5182877265b23	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	3b1f1d9a6b749c9ce2d5182877265b23	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	c9e26066f2b7b5a91ad08d042f7f7306	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=a46199c0aed42c6c97e86db658f37cd7

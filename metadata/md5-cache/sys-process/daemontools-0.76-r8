@@ -8,5 +8,5 @@ LICENSE=public-domain
 RDEPEND=selinux? ( sec-policy/selinux-daemontools ) !app-doc/daemontools-man
 SLOT=0
 SRC_URI=http://cr.yp.to/daemontools/daemontools-0.76.tar.gz http://smarden.org/pape/djb/manpages/daemontools-0.76-man-20020131.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	fixheadtails	662e80584ee2337b981d7188078e7c74	flag-o-matic	42d97132740235ad4310cd60beb1992e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmail	83a4685f5044b0b067cb7e6f0e9c909c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	fixheadtails	662e80584ee2337b981d7188078e7c74	flag-o-matic	42d97132740235ad4310cd60beb1992e	multilib	c9e26066f2b7b5a91ad08d042f7f7306	qmail	83a4685f5044b0b067cb7e6f0e9c909c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a6683ccc9a05f9b881702475ae87c95d

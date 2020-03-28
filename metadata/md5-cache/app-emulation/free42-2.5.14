@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/atk x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 alsa? ( media-libs/alsa-lib )
 SLOT=0
 SRC_URI=https://thomasokken.com/free42/upstream/free42-nologo-2.5.14.tgz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	c9e26066f2b7b5a91ad08d042f7f7306	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=00f9a1b58c79523ce9759b706ddbd44e

@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.32 dev-libs/libgudev:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/libmbim/libmbim-1.6.0.tar.xz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	c9e26066f2b7b5a91ad08d042f7f7306	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=54f1554a17b800d3521646ff06d19266
