@@ -32,6 +32,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Joshua Kinard <kumba@gentoo.org> (2020-03-28)
+# In Linux ~4.18, IPX (Internetwork Packet eXchange) protocol and
+# NCPFS (NetWare Core Protocol Filesystem) support was removed due
+# to lack of maintenance.  Due to both being dead from a technology
+# standpoint and lack of any upstream activity, mask the below
+# packages and remove in 75 days.
+# Bug #681820
+net-fs/ncpfs
+net-misc/ipx-utils
+
+# Last release 2008. Last upstream commit 2013. Blocks removal of
+# gnome-base/libgnome-keyring
+# Bug #713030
+mail-client/mail-notification
+
 # Matt Turner <mattst88@gentoo.org> (2020-03-28)
 # Last release 2008. Last upstream commit 2013. Blocks removal of
 # gnome-base/libgnome-keyring
