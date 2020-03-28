@@ -1,0 +1,47 @@
+From: Christoph Egger <debian@christoph-egger.org>
+Subject: [PATCH] debian/arch-support
+
+Building on non-linux architectures currently fails with unpatched
+irrlicht because irrlicht tries to create Joystick support using
+linux-specific headers. However there's infrastructure to disable
+Joystick support, we just need to activate that on non-linux
+architectures.
+
+Additionally if built on a sparc machine irrlicht assumes wrongly it's
+a solaris system. We fix this wrong assumption as our sparc builds are
+all on linux.
+
+Finally irrlicht exceeds the size constraights for -fpic requiering to
+build with -fPIC. As upstream doesn't do that we need to fix this for
+sparc and s390 builds (powerPC?).
+
+Signed-off-by: Christoph Egger <debian@christoph-egger.org>
+
+---
+ lib/irrlicht/include/IrrCompileConfig.h |   10 +++++-----
+ 1 files changed, 5 insertions(+), 5 deletions(-)
+
+--- a/lib/irrlicht/include/IrrCompileConfig.h
++++ b/lib/irrlicht/include/IrrCompileConfig.h
+@@ -110,4 +110,8 @@
+ #ifndef _IRR_SOLARIS_PLATFORM_
+ #define _IRR_LINUX_PLATFORM_
++#include <endian.h>
++ #if __BYTE_ORDER == __BIG_ENDIAN
++  #define __BIG_ENDIAN__
++ #endif
+ #endif
+ #define _IRR_POSIX_API_
+@@ -465,11 +465,7 @@
+     #undef _IRR_WCHAR_FILESYSTEM
+ #endif
+ 
+-#if defined(__sparc__) || defined(__sun__)
+-#define __BIG_ENDIAN__
+-#endif
+-
+-#if defined(_IRR_SOLARIS_PLATFORM_)
++#if defined(_IRR_SOLARIS_PLATFORM_) || defined(__FreeBSD_kernel__) || defined(__gnu_hurd__)
+     #undef _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+ #endif
+ 
