@@ -685,7 +685,7 @@ app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.5.11 2.5.18 2.6.4 2.6.5: A full featured backup tool, aimed for disks
 app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
-app-backup/duplicity 0.7.10 0.7.12 0.7.19 0.8.09-r1 0.8.11.1596 0.8.11.1596-r1: Secure backup system using gnupg to encrypt data
+app-backup/duplicity 0.8.09-r1 0.8.11.1596 0.8.11.1596-r1: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2 2.0.3: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.8.5: Flexible filesystem archiver for backup and deployment tool
@@ -14675,7 +14675,7 @@ net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.16.4 1.18.0 1.18.2 1.20.0 1.20.2 1
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 0.9.7-r3 2.0.1-r1 2.0.2 2.1.0 2.2.1: Remote delta-compression library
 net-libs/libsearpc 3.0.8-r3 3.2.0-r1: A simple C language RPC framework
-net-libs/libsignal-protocol-c 2.3.2 9999: Signal Protocol C Library
+net-libs/libsignal-protocol-c 2.3.2 2.3.3 9999: Signal Protocol C Library
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.62.3 2.66.4: HTTP client/server library for GNOME
@@ -14753,7 +14753,7 @@ net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
 net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
 net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx 0.10.2-r3: A mail user agent auto configuration service
-net-mail/automx2 2019.0 2020.1: Email client autoconfiguration service
+net-mail/automx2 2019.0 2020.1-r1: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/b4 0.3.5: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
