@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit autotools python-r1
+inherit autotools python-r1 toolchain-funcs
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
 HOMEPAGE="https://www.libimobiledevice.org/"
@@ -49,13 +49,16 @@ src_configure() {
 		do_configure "$@"
 	}
 
+	# Don't prefer clang.
+	tc-export CC CXX
+
 	do_configure --without-cython
 	use python && python_foreach_impl do_configure_python
 }
 
 src_compile() {
 	python_compile() {
-		emake -C "${BUILD_DIR}"/cython -j1 \
+		emake -C "${BUILD_DIR}"/cython \
 			VPATH="${S}/cython:${native_builddir}/cython" \
 			plist_la_LIBADD="${native_builddir}/src/libplist.la"
 	}
@@ -73,7 +76,7 @@ src_test() {
 
 src_install() {
 	python_install() {
-		emake -C "${BUILD_DIR}/cython" -j1 \
+		emake -C "${BUILD_DIR}/cython" \
 			VPATH="${S}/cython:${native_builddir}/cython" \
 			DESTDIR="${D}" install
 	}
