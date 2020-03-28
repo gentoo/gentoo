@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 x86 ~ppc-macos"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86 ~ppc-macos"
 IUSE="caps doc libressl lzma +man scrypt seccomp selinux systemd tor-hardening test zstd"
 
 DEPEND="
