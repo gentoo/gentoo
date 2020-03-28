@@ -8280,33 +8280,33 @@ dev-python/plumbum 1.6.8: A library for shell script-like programs in python
 dev-python/ply 3.11: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/plyvel 1.2.0: Python interface to LevelDB
-dev-python/pmw 1.3.3-r2 1.3.3-r3 2.0.1-r2: Toolkit for building high-level compound Python widgets using the Tkinter module
-dev-python/pocketlint 0.17 0.19 0.20: Shared code for running pylint against rhinstaller projects
+dev-python/pmw 1.3.3-r3 2.0.1-r2: Toolkit for building high-level compound Python widgets using the Tkinter module
+dev-python/pocketlint 0.17 0.20: Shared code for running pylint against rhinstaller projects
 dev-python/pockets 0.5.1: Collection of helpful Python tools
 dev-python/podcastparser 0.6.4: Podcast parser for the gpodder client
 dev-python/polib 1.1.0-r1: A library to manipulate gettext files (.po and .mo files)
 dev-python/polygon 3.0.7: Python package to handle polygonal shapes in 2D
-dev-python/portend 2.2 2.2-r1 2.6: TCP port monitoring utilities
+dev-python/portend 2.6: TCP port monitoring utilities
 dev-python/positional 1.1.2: A decorator which enforces only some args may be passed positionally.
 dev-python/posix_ipc 0.9.8: POSIX IPC primitives (semaphores, shared memory and message queues) for Python
 dev-python/potr 1.0.1: Pure Python OTR implementation
 dev-python/poyo 0.4.1: A lightweight YAML Parser for Python
-dev-python/precis-i18n 1.0.0 1.0.1: Internationalized Usernames and Passwords
-dev-python/pretend 1.0.8 1.0.8-r1 1.0.9: A library for stubbing in Python
+dev-python/precis-i18n 1.0.1: Internationalized Usernames and Passwords
+dev-python/pretend 1.0.9: A library for stubbing in Python
 dev-python/pretty-yaml 15.8.2: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettyprinter 0.13.2: Syntax-highlighting, declarative and composable pretty printer
-dev-python/prettytable 0.7.1-r1 0.7.2 0.7.2-r1: Easily displaying tabular data in a visually appealing ASCII table format
+dev-python/prettytable 0.7.2-r1: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 2.0.2: Tools for testing processes
-dev-python/progress 1.2 1.3: Easy to use progress bars
-dev-python/progressbar 2.3-r3 2.5: Text progressbar library for python
+dev-python/progress 1.3: Easy to use progress bars
+dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3: Text progressbar library for python
-dev-python/prometheus_client 0.6.0 0.6.0-r1 0.7.1 0.7.1-r1: Python client for the Prometheus monitoring system
-dev-python/prometheus_flask_exporter 0.4.1 0.5.1 0.7.2: Provides HTTP request metrics to export into Prometheus
-dev-python/promises 2.0.1-r1 2.1-r1: An implementation of Promises in Python
-dev-python/prompt_toolkit 1.0.15 2.0.6 2.0.7 2.0.10 2.0.10-r1 3.0.3: Building powerful interactive command lines in Python
-dev-python/protobuf-python 3.10.1 3.11.2 3.11.4 9999: Google's Protocol Buffers - Python bindings
-dev-python/prov 1.5.0 1.5.1 1.5.3: W3C provenance data dodel library
+dev-python/prometheus_client 0.7.1-r1: Python client for the Prometheus monitoring system
+dev-python/prometheus_flask_exporter 0.7.2: Provides HTTP request metrics to export into Prometheus
+dev-python/promises 2.1-r1: An implementation of Promises in Python
+dev-python/prompt_toolkit 2.0.10 2.0.10-r1 3.0.3: Building powerful interactive command lines in Python
+dev-python/protobuf-python 3.11.4 9999: Google's Protocol Buffers - Python bindings
+dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1: Python library for communicating with Pocket Science Lab
 dev-python/psutil 5.6.7-r1 5.7.0: Retrieve information on running processes and system utilization
 dev-python/psycopg 2.7.4 2.7.5 2.7.7 2.8.3 2.8.4: PostgreSQL database adapter for Python

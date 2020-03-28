@@ -11,4 +11,4 @@ RDEPEND=ruby? ( dev-lang/ruby:* )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://download.osgeo.org/geos/geos-3.8.0.tar.bz2
-_md5_=1b2082630df38e883660b6d96d7eb6fd
+_md5_=a6a4ce9997bf68987907fb14dfb0c8ec
