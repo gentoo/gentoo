@@ -929,3 +929,49 @@ dev-libs/cygwin
 dev-util/mingw64-runtime
 sys-libs/newlib
 dev-embedded/avr-libc
+
+
+# Hans de Graaff <graaff@gentoo.org> (2020-03-29)
+# Old rails version that is no longer supported upstream and has known
+# security issues. ruby24-only package. Migrate to Rails 5.2.
+# Masked for removal in 30 days.
+dev-ruby/rails:4.2
+dev-ruby/railties:4.2
+dev-ruby/activerecord:4.2
+dev-ruby/actionmailer:4.2
+dev-ruby/actionpack:4.2
+dev-ruby/actionview:4.2
+dev-ruby/activejob:4.2
+dev-ruby/activemodel:4.2
+dev-ruby/activesupport:4.2
+dev-ruby/arel:6.0
+dev-ruby/actionpack-xml_parser:0
+dev-ruby/jquery-rails:3
+dev-ruby/postgres_ext
+dev-ruby/protected_attributes
+dev-ruby/rails-dom-testing:1
+dev-ruby/web-console:0
+# Reverse dependencies of rails:4.2
+dev-ruby/metasploit-concern
+dev-ruby/metasploit-credential
+dev-ruby/metasploit-model
+dev-ruby/metasploit_data_models
+net-analyzer/metasploit
+dev-ruby/rex-arch
+dev-ruby/rex-bin_tools
+dev-ruby/rex-core
+dev-ruby/rex-encoder
+dev-ruby/rex-exploitation
+dev-ruby/rex-java
+dev-ruby/rex-mime
+dev-ruby/rex-nop
+dev-ruby/rex-ole
+dev-ruby/rex-powershell
+dev-ruby/rex-random_identifier
+dev-ruby/rex-registry
+dev-ruby/rex-rop_builder
+dev-ruby/rex-socket
+dev-ruby/rex-sslscan
+dev-ruby/rex-struct2
+dev-ruby/rex-text
+dev-ruby/rex-zip
