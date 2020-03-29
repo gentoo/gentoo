@@ -1,0 +1,36 @@
+diff -Naur wmSMPmon-3.1.orig/wmgeneral/wmgeneral.h wmSMPmon-3.1/wmgeneral/wmgeneral.h
+--- wmSMPmon-3.1.orig/wmgeneral/wmgeneral.h	1999-04-25 05:08:22.000000000 +0200
++++ wmSMPmon-3.1/wmgeneral/wmgeneral.h	2020-03-29 13:32:55.253627166 +0200
+@@ -36,7 +36,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
+diff -Naur wmSMPmon-3.1.orig/wmSMPmon/standards.h wmSMPmon-3.1/wmSMPmon/standards.h
+--- wmSMPmon-3.1.orig/wmSMPmon/standards.h	2004-11-19 14:57:30.000000000 +0100
++++ wmSMPmon-3.1/wmSMPmon/standards.h	2020-03-29 13:32:14.666639432 +0200
+@@ -37,7 +37,7 @@
+ #define	HAUTEUR  31 /* Max. height of CPU Load Bar+Graph */
+ 
+ /* Program name used in error messages */
+-char *Myname;
++extern char *Myname;
+ 
+ /* NumCPUs_DoInit returns the number of CPUs present in the system and
+    performs any initialization necessary for the sysinfo-XXX module */
+diff -Naur wmSMPmon-3.1.orig/wmSMPmon/wmSMPmon.c wmSMPmon-3.1/wmSMPmon/wmSMPmon.c
+--- wmSMPmon-3.1.orig/wmSMPmon/wmSMPmon.c	2005-11-07 01:24:32.000000000 +0100
++++ wmSMPmon-3.1/wmSMPmon/wmSMPmon.c	2020-03-29 13:33:03.630624637 +0200
+@@ -35,6 +35,8 @@
+ /*###### Funcition definitions ##########################################*/
+ void usage(int cpus, const char *str);
+ 
++char *Myname;
++Display *display;
+ 
+ /*###### MAIN PROGRAM ###################################################*/
+ int main(int argc, char **argv)

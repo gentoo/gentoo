@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,9 +22,16 @@ DEPEND="${RDEPEND}
 
 DOCS=( ../Changelog )
 
-S="${WORKDIR}/${P}/${PN}"
+S=${WORKDIR}/${P}/${PN}
 
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+
+src_prepare() {
+	default
+
+	pushd "${WORKDIR}"/${P} || die
+	eapply "${FILESDIR}"/${P}-fno-common.patch
+}
 
 src_compile() {
 	emake CC="$(tc-getCC)" LIBDIR="/usr/$(get_libdir)"
