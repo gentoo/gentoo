@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 PYTHON_REQ_USE="sqlite?,threads(+)"
 
@@ -29,7 +30,6 @@ RDEPEND="
 	mysql? ( dev-python/mysql-python[$(python_gen_usedep 'python2*')] )
 	redland? ( dev-libs/redland-bindings[python,$(python_gen_usedep 'python2*')] )"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/sparql-wrapper[${PYTHON_USEDEP}]
