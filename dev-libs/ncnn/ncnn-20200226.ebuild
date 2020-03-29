@@ -15,7 +15,6 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-
 DEPEND="
 	dev-util/glslang
 	dev-util/vulkan-headers"
