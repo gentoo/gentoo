@@ -56,7 +56,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/20170731-gethex-unaligned.patch
+	"${FILESDIR}"/20200314-stylemap.patch
 	"${FILESDIR}"/20200314-tilepath.patch
 )
 
