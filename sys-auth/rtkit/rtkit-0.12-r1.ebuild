@@ -24,8 +24,8 @@ DEPEND="acct-group/rtkit
 RDEPEND="${DEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.12_introspection_no_asm.patch
 	"${FILESDIR}"/${PN}-0.12_libsystemd_optional.patch
-	"${FILESDIR}"/${PN}-0.12_noexecstack.patch
 )
 
 pkg_pretend() {
