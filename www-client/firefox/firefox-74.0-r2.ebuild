@@ -757,7 +757,6 @@ PROFILE_EOF
 	done
 	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
 	newicon "${icon_path}/default48.png" "${icon}.png"
-	newmenu "${FILESDIR}/icon/${PN}-r1.desktop" "${PN}.desktop"
 
 	# Add StartupNotify=true bug 237317
 	local startup_notify="false"
@@ -765,12 +764,61 @@ PROFILE_EOF
 		startup_notify="true"
 	fi
 
-	sed -i \
-		-e "s:@NAME@:${name}:" \
-		-e "s:@EXEC@:firefox:" \
-		-e "s:@ICON@:${icon}:" \
-		-e "s:@STARTUP_NOTIFY@:${startup_notify}:" \
-		"${ED%/}/usr/share/applications/${PN}.desktop" || die
+	local display_protocols="auto X11" use_wayland="false"
+	if use wayland ; then
+		display_protocols+=" Wayland"
+		use_wayland="true"
+	fi
+
+	local app_name desktop_filename display_protocol exec_command
+	for display_protocol in ${display_protocols} ; do
+		app_name="${name} on ${display_protocol}"
+		desktop_filename="${PN}-${display_protocol,,}.desktop"
+
+		case ${display_protocol} in
+			Wayland)
+				exec_command='firefox-wayland --name firefox-wayland'
+				newbin "${FILESDIR}"/firefox-wayland.sh firefox-wayland
+				;;
+			X11)
+				exec_command='firefox-x11 --name firefox-x11'
+				if use wayland ; then
+					# Only needed when there's actually a choice
+					newbin "${FILESDIR}"/firefox-x11.sh firefox-x11
+				fi
+				;;
+			*)
+				app_name="${name}"
+				desktop_filename="${PN}.desktop"
+				exec_command='firefox'
+				;;
+		esac
+
+		newmenu "${FILESDIR}/icon/${PN}-r1.desktop" "${desktop_filename}"
+		sed -i \
+			-e "s:@NAME@:${app_name}:" \
+			-e "s:@EXEC@:${exec_command}:" \
+			-e "s:@ICON@:${icon}:" \
+			-e "s:@STARTUP_NOTIFY@:${startup_notify}:" \
+			"${ED%/}/usr/share/applications/${desktop_filename}" || die
+	done
+
+	rm "${ED%/}"/usr/bin/firefox || die
+	newbin "${FILESDIR}"/firefox.sh firefox
+
+	local wrapper
+	for wrapper in \
+		"${ED%/}"/usr/bin/firefox \
+		"${ED%/}"/usr/bin/firefox-x11 \
+		"${ED%/}"/usr/bin/firefox-wayland \
+	; do
+		[[ ! -f "${wrapper}" ]] && continue
+
+		sed -i \
+			-e "s:@PREFIX@:${EPREFIX%/}/usr:" \
+			-e "s:@DEFAULT_WAYLAND@:${use_wayland}:" \
+			"${wrapper}" || die
+	done
 
 	# Don't install llvm-symbolizer from sys-devel/llvm package
 	[[ -f "${ED%/}${MOZILLA_FIVE_HOME}/llvm-symbolizer" ]] && \
