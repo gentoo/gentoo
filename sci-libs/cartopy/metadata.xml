@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
+	</maintainer>
+	<longdescription>
+		Cartopy is a Python package designed for geospatial data processing
+		in order to produce maps and other geospatial data analyses.
+		Key features of cartopy are its object oriented projection definitions, 
+		and its ability to transform points, lines, vectors, polygons and i
+		images between those projections.
+	</longdescription>
+</pkgmetadata>
