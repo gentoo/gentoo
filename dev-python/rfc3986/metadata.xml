@@ -9,9 +9,6 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
-  <longdescription lang="en">
-  Validating URI References per RFC 3986
-  </longdescription>
   <use>
     <flag name="idna">enable support for the IDNA specification (RFC 5891)</flag>
   </use>
