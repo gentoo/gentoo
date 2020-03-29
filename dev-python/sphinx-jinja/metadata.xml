@@ -10,7 +10,4 @@
 		<remote-id type="pypi">sphinx-jinja</remote-id>
 		<remote-id type="github">tardyp/sphinx-jinja</remote-id>
 	</upstream>
-	<longdescription>A sphinx extension to include jinja based templates
-	based documentation into a sphinx doc
-	</longdescription>
 </pkgmetadata>
