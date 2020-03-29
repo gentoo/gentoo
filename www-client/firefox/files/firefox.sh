@@ -90,6 +90,11 @@ if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
 	export GNOME_DISABLE_CRASH_DIALOG
 fi
 
+##
+## Enable Xinput2 (#617344)
+##
+export MOZ_USE_XINPUT2=1
+
 # Don't throw "old profile" dialog box.
 export MOZ_ALLOW_DOWNGRADE=1
 
