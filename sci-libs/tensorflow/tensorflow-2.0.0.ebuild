@@ -188,9 +188,8 @@ src_configure() {
 		export TF_SET_ANDROID_WORKSPACE=0
 
 		if use python; then
-			python_export PYTHON_SITEDIR
 			export PYTHON_BIN_PATH="${PYTHON}"
-			export PYTHON_LIB_PATH="${PYTHON_SITEDIR}"
+			export PYTHON_LIB_PATH="$(python_get_sitedir)"
 		else
 			export PYTHON_BIN_PATH="$(which python)"
 			export PYTHON_LIB_PATH="$(python -c 'from distutils.sysconfig import *; print(get_python_lib())')"
@@ -319,9 +318,8 @@ src_install() {
 		esetup.py install
 
 		# libtensorflow_framework.so is in /usr/lib already
-		python_export PYTHON_SITEDIR PYTHON_SCRIPTDIR
-		rm -f "${D}/${PYTHON_SITEDIR}"/${PN}/lib${PN}_framework.so* || die
-		rm -f "${D}/${PYTHON_SITEDIR}"/${PN}_core/lib${PN}_framework.so* || die
+		rm -f "${D}/$(python_get_sitedir)"/${PN}/lib${PN}_framework.so* || die
+		rm -f "${D}/$(python_get_sitedir)"/${PN}_core/lib${PN}_framework.so* || die
 		python_optimize
 	}
 
