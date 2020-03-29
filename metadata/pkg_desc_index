@@ -4879,7 +4879,7 @@ dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.23.3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.177 0.178: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/ell 0.26 0.27 0.28 0.30 9999: Embedded Linux Library provides core, low-level functionality for system daemons
+dev-libs/ell 0.26 0.27 0.28 0.30 0.30-r1 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library
 dev-libs/faxpp 0.4-r1: Small, fast and conformant XML pull parser written in C
@@ -8992,15 +8992,15 @@ dev-python/vobject 0.9.6.1-r1: Python package for parsing and generating vCard a
 dev-python/voluptuous 0.11.1: A Python data validation library.
 dev-python/vpython 7.4.6: VPython for Jupyter notebook
 dev-python/vulture 0.10: find unused classes, functions and variables in your code
-dev-python/waitress 1.0.2 1.3.1: A pure-Python WSGI server
-dev-python/warlock 1.1.0 1.2.0 1.3.0: Python object model built on JSON schema and JSON patch
+dev-python/waitress 1.3.1: A pure-Python WSGI server
+dev-python/warlock 1.3.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.3-r2 0.9.0 0.9.0-r1: Python API and shell utilities to monitor file system events
-dev-python/wcwidth 0.1.7-r1 0.1.7-r2 0.1.8: Measures number of Terminal column cells of wide-character codes
+dev-python/wcwidth 0.1.8: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.12.1 2.0: Asset management for Python web development
-dev-python/webcolors 1.5 1.8.1 1.10 1.11.1: Color names and value formats defined by the HTML and CSS specifications
-dev-python/webencodings 0.5.1 0.5.1-r1: Character encoding aliases for legacy web content
-dev-python/webob 1.8.2 1.8.2-r1 1.8.5 1.8.5-r1 1.8.5-r3: WSGI request and response object
+dev-python/webcolors 1.10 1.11.1: Color names and value formats defined by the HTML and CSS specifications
+dev-python/webencodings 0.5.1-r1: Character encoding aliases for legacy web content
+dev-python/webob 1.8.5-r3: WSGI request and response object
 dev-python/websocket-client 0.48.0 0.56.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.8.0 0.9.0: WebSockets support for any application/server
 dev-python/webtest 2.0.21 2.0.29 2.0.29-r1 2.0.33: Helper to test WSGI applications
@@ -11393,7 +11393,7 @@ games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy t
 games-roguelike/mazesofmonad 1.0.9-r3: Console-based roguelike Role Playing Game similar to nethack
 games-roguelike/moria 5.7.10: The Dungeons of Moria, a single player roguelike game, also known as Umoria
 games-roguelike/neon-chrome 1.1.12: A ruthless top-down cyberpunk shooter with rogue-like elements
-games-roguelike/nethack 3.6.4: The ultimate old-school single player dungeon exploration game
+games-roguelike/nethack 3.6.6: The ultimate old-school single player dungeon exploration game
 games-roguelike/powder 117-r1: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/scourge 0.21.1-r1: A graphical rogue-like adventure game
 games-roguelike/stone-soup 0.23.2 0.24.0: Role-playing roguelike game of exploration and treasure-hunting in dungeons
@@ -12242,7 +12242,7 @@ mail-filter/popfile 1.1.3-r1: Anti-spam bayesian filter
 mail-filter/postforward 1.1.0 1.1.1: Postfix Sender Rewriting Scheme forwarding agent
 mail-filter/postfwd 1.35-r3 2.00-r1 2.02: Versatile Postfix policy server with a flexible ruleset based configuration
 mail-filter/postgrey 1.34-r3 1.35-r2 1.36-r1 1.37: Postgrey is a Postfix policy server implementing greylisting
-mail-filter/postsrsd 1.4 1.4-r1: Postfix Sender Rewriting Scheme daemon
+mail-filter/postsrsd 1.4 1.4-r1 1.6: Postfix Sender Rewriting Scheme daemon
 mail-filter/procmail 3.22-r14: Mail delivery agent/filter
 mail-filter/pypolicyd-spf 2.0.2: Python-based policy daemon for Postfix SPF verification
 mail-filter/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
@@ -18657,7 +18657,7 @@ x11-plugins/wmSMPmon 3.1-r2: SMP system monitor dockapp
 x11-plugins/wmSpaceWeather 1.04_p19-r1: dockapp showing weather at geosynchronous orbit
 x11-plugins/wmSun 1.05-r1: dockapp which displays the rise/set time of the sun
 x11-plugins/wmXName 0.1-r1: dock-app showing you status of your XName hosted zones
-x11-plugins/wmacpi 2.3-r1: DockApp ACPI status monitor for laptops
+x11-plugins/wmacpi 2.3-r1 2.3-r2: DockApp ACPI status monitor for laptops
 x11-plugins/wmacpiload-ac 0.2.0 0.2.0-r1: WMACPILoad based dockapp to monitor CPU temp and battery time on ACPI kernels
 x11-plugins/wmacpimon 0.2.1: DockApp monitors the temperature and Speedstep features in ACPI-based systems
 x11-plugins/wmail 2.0-r5 2.2 2.3: Window Maker dock application showing incoming mail
@@ -18678,7 +18678,7 @@ x11-plugins/wmcdplay 1.1-r1: CD player applet for WindowMaker
 x11-plugins/wmcliphist 2.1-r2: Dockable clipboard history application for Window Maker
 x11-plugins/wmclock 1.0.16-r1: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
 x11-plugins/wmclockmon 0.8.1-r1: a nice digital clock with 7 different styles either in LCD or LED style
-x11-plugins/wmcms 0.3.5-r3: WindowMaker CPU and Memory Usage Monitor Dock App
+x11-plugins/wmcms 0.3.5-r4: WindowMaker CPU and Memory Usage Monitor Dock App
 x11-plugins/wmcoincoin 2.6.2_p20140602 2.6.3: a dockapp for browsing dacode news and board sites
 x11-plugins/wmcp 1.2.8-r1: A pager dockapp
 x11-plugins/wmcpuload 1.1.1: a dockapp for monitoring CPU usage with a LCD display
