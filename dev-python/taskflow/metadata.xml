@@ -9,10 +9,6 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
-  <longdescription lang="en">
-  A library to do [jobs, tasks, flows] in a HA manner
-  using different backends to be used with OpenStack projects.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">taskflow</remote-id>
     <remote-id type="github">openstack/taskflow</remote-id>
