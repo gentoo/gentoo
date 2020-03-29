@@ -1,0 +1,8 @@
+--- a/sample/systemd/borgmatic.service
++++ b/sample/systemd/borgmatic.service
+@@ -21,4 +21,4 @@
+ 
+ # Delay start to prevent backups running during boot.
+ ExecStartPre=sleep 1m
+-ExecStart=systemd-inhibit --who="borgmatic" --why="Prevent interrupting scheduled backup" /root/.local/bin/borgmatic --syslog-verbosity 1
++ExecStart=systemd-inhibit --who="borgmatic" --why="Prevent interrupting scheduled backup" /usr/bin/borgmatic --syslog-verbosity 1
