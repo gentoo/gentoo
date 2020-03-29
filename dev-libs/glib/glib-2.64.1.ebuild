@@ -262,6 +262,13 @@ pkg_postinst() {
 		ewarn "your final image for performance reasons and re-run it when packages"
 		ewarn "installing GIO modules get upgraded or added to the image."
 	fi
+
+	for v in ${REPLACING_VERSIONS}; do
+		if ver_test "$v" "-lt" "2.63.6"; then
+			ewarn "glib no longer installs the gio-launch-desktop binary. You may need"
+			ewarn "to restart your session for \"Open With\" dialogs to work."
+		fi
+	done
 }
 
 pkg_postrm() {
