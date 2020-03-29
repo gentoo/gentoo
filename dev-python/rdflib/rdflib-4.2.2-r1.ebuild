@@ -27,8 +27,12 @@ RDEPEND="
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	berkdb? ( dev-python/bsddb3[${PYTHON_USEDEP}] )
-	mysql? ( dev-python/mysql-python[$(python_gen_usedep 'python2*')] )
-	redland? ( dev-libs/redland-bindings[python,$(python_gen_usedep 'python2*')] )"
+	mysql? (
+		$(python_gen_cond_dep '
+			dev-python/mysql-python[${PYTHON_USEDEP}]
+		' -2)
+	)
+	redland? ( dev-libs/redland-bindings[python,${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
