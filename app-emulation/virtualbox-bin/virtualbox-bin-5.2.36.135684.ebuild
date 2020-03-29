@@ -34,7 +34,7 @@ SRC_URI="amd64? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_am
 
 LICENSE="GPL-2 PUEL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+additions +chm headless python vboxwebsrv rdesktop-vrdp"
 RESTRICT="bindist mirror"
 
