@@ -28,6 +28,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.1-o-tmpfile-eacces.patch #529044
 	"${FILESDIR}"/${PN}-3.3_rc0-ppc-macos-go.patch
 	"${FILESDIR}"/${PN}-3.3-power7.patch
+	"${FILESDIR}"/${PN}-3.3-power7-memcpy.patch
+	"${FILESDIR}"/${PN}-3.3-power7-memcpy-2.patch
 )
 
 S=${WORKDIR}/${MY_P}
