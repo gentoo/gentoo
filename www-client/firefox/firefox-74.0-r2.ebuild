@@ -199,6 +199,21 @@ if [[ -z $GMP_PLUGIN_LIST ]] ; then
 	GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
 fi
 
+fix_path() {
+	local value_to_move=${1}
+	local new_path path_value
+	IFS=:; local -a path_values=( ${PATH} )
+	for path_value in "${path_values[@]}" ; do
+		if [[ ${path_value} == *"${value_to_move}"* ]] ; then
+			new_path="${path_value}${new_path:+:}${new_path}"
+		else
+			new_path+="${new_path:+:}${path_value}"
+		fi
+	done
+
+	echo "${new_path}"
+}
+
 llvm_check_deps() {
 	if ! has_version --host-root "sys-devel/clang:${LLVM_SLOT}" ; then
 		ewarn "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
@@ -280,6 +295,15 @@ pkg_setup() {
 	addpredict /proc/self/oom_score_adj
 
 	llvm_pkg_setup
+
+	# Workaround for #627726
+	if has ccache ${FEATURES} ; then
+		einfo "Fixing PATH for FEATURES=ccache ..."
+		PATH=$(fix_path 'ccache/bin')
+	elif has distcc ${FEATURES} ; then
+		einfo "Fixing PATH for FEATURES=distcc ..."
+		PATH=$(fix_path 'distcc/bin')
+	fi
 }
 
 src_unpack() {
