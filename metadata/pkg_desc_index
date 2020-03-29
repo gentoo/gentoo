@@ -11019,7 +11019,7 @@ games-board/gmchess 0.29.6-r2: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.34.0: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.34.0: Disassemble a pile of tiles by removing matching pairs
-games-board/gnome-mines 3.20.1 3.34.0: Clear hidden mines from a minefield
+games-board/gnome-mines 3.34.0: Clear hidden mines from a minefield
 games-board/gnono 1.9.1-r1: A rewrite for GNOME of the Windows card game WUNO
 games-board/gnubg 1.06.002-r1: GNU BackGammon
 games-board/gnuchess 6.2.4 6.2.5: Console based chess interface
@@ -11303,7 +11303,7 @@ games-puzzle/einstein 2.1.1: A puzzle game inspired by Albert Einstein
 games-puzzle/enigma 1.21-r3: Puzzle game similar to Oxyd
 games-puzzle/fbg 0.9-r2: A Tetris clone written in OpenGL
 games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
-games-puzzle/five-or-more 3.28.0 3.32.0 3.32.1 3.32.2: Remove colored balls from the board by forming lines
+games-puzzle/five-or-more 3.32.0 3.32.2: Remove colored balls from the board by forming lines
 games-puzzle/flobopuyo 0.20-r2: Clone of the famous PuyoPuyo game
 games-puzzle/freesweep 0.92-r1: Console Minesweeper
 games-puzzle/galaxis 1.8-r1: Curses-based clone of the nifty little Macintosh freeware game Galaxis
@@ -11350,7 +11350,7 @@ games-puzzle/pingus 0.7.6-r2 9999: free Lemmings clone
 games-puzzle/pipepanic 0.1.3-r1: A simple pipe connecting game
 games-puzzle/pipewalker 0.9.4-r1: Rotating pieces puzzle game
 games-puzzle/quadra 1.2.0-r1: A tetris clone with multiplayer support
-games-puzzle/quadrapassel 3.32.0: Fit falling blocks together
+games-puzzle/quadrapassel 3.32.0 3.36.00: Fit falling blocks together
 games-puzzle/rezerwar 0.4.2-r1: Puzzle game like the known tetromino and the average pipe games
 games-puzzle/scramble 0.9.5-r1: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1-r1: Swap and match 3 or more jewels in a line in order to score points
@@ -16061,7 +16061,7 @@ sci-libs/eccodes 2.16.0: A set of encoding/decoding APIs and tools for WMO GRIB,
 sci-libs/exodusii 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fcl 0.5.0 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
-sci-libs/fftw 2.1.5-r9 3.3.6_p2 3.3.8 9999: Fast C library for the Discrete Fourier Transform
+sci-libs/fftw 2.1.5-r9 3.3.6_p2 3.3.8 3.3.8-r1 9999: Fast C library for the Discrete Fourier Transform
 sci-libs/flann 1.9.1-r2 9999: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/fplll 4.0.4 5.3.2: Implementations of the floating-point LLL reduction algorithm
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
