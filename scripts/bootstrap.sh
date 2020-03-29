@@ -239,9 +239,6 @@ for opt in ${ORIGUSE} ; do
 			fi
 			USE_NPTL=1
 			;;
-		nptlonly)
-			USE_NPTLONLY=1
-			;;
 		multilib)
 			ALLOWED_USE="${ALLOWED_USE} multilib"
 			;;
@@ -259,37 +256,37 @@ done
 
 eval $(pycmd '
 import portage
+from portage.dbapi._expand_new_virt import expand_new_virt
 import sys
+root = portage.settings["EROOT"]
 for atom in portage.settings.packages:
 	if not isinstance(atom, portage.dep.Atom):
 		atom = portage.dep.Atom(atom.lstrip("*"))
 	varname = "my" + portage.catsplit(atom.cp)[1].upper().replace("-", "_")
+	atom = list(expand_new_virt(portage.db[root]["vartree"].dbapi, atom))[0]
 	sys.stdout.write("%s=\"%s\"; " % (varname, atom))
 ')
 
 # This stuff should never fail but will if not enough is installed.
 [[ -z ${myBASELAYOUT} ]] && myBASELAYOUT=">=$(portageq best_version / sys-apps/baselayout)"
-[[ -z ${myPORTAGE}    ]] && myPORTAGE="portage"
-[[ -z ${myBINUTILS}   ]] && myBINUTILS="binutils"
-[[ -z ${myGCC}        ]] && myGCC="gcc"
-[[ -z ${myGETTEXT}    ]] && myGETTEXT="gettext"
+[[ -z ${myPORTAGE}    ]] && myPORTAGE="sys-apps/portage"
+[[ -z ${myBINUTILS}   ]] && myBINUTILS="sys-devel/binutils"
+[[ -z ${myGCC}        ]] && myGCC="sys-devel/gcc"
+[[ -z ${myGETTEXT}    ]] && myGETTEXT="sys-devel/gettext"
 [[ -z ${myLIBC}       ]] && myLIBC="$(portageq expand_virtual / virtual/libc)"
 [[ -z ${myTEXINFO}    ]] && myTEXINFO="sys-apps/texinfo"
-[[ -z ${myZLIB}       ]] && myZLIB="zlib"
-[[ -z ${myNCURSES}    ]] && myNCURSES="ncurses"
+[[ -z ${myZLIB}       ]] && myZLIB="sys-libs/zlib"
+[[ -z ${myNCURSES}    ]] && myNCURSES="sys-libs/ncurses"
 
 # Do we really want gettext/nls?
 [[ ${USE_NLS} != 1 ]] && myGETTEXT=
 
-# Do we really have no 2.4.x nptl kernels in portage?
 if [[ ${USE_NPTL} = "1" ]] ; then
 	myOS_HEADERS="$(portageq best_visible / '>=sys-kernel/linux-headers-2.6.0')"
 	[[ -n ${myOS_HEADERS} ]] && myOS_HEADERS=">=${myOS_HEADERS}"
 	ALLOWED_USE="${ALLOWED_USE} nptl"
-	# Should we build with nptl only?
-	[[ ${USE_NPTLONLY} = "1" ]] && ALLOWED_USE="${ALLOWED_USE} nptlonly"
 fi
-[[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="virtual/os-headers"
+[[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="$(portageq expand_virtual / virtual/os-headers)"
 
 einfo "Using baselayout : ${myBASELAYOUT}"
 einfo "Using portage    : ${myPORTAGE}"
