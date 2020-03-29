@@ -32,6 +32,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-29)
+# Unmaintained, seriously outdated, vulnerable.  Multiple bugs reported.
+# Stuck on Python 3.6.
+# Removal in 30 days.  Bug #711702.
+app-metrics/buildbot-prometheus
+dev-util/buildbot
+dev-util/buildbot-console-view
+dev-util/buildbot-grid-view
+dev-util/buildbot-pkg
+dev-util/buildbot-waterfall-view
+dev-util/buildbot-worker
+dev-util/buildbot-wsgi-dashboards
+dev-util/buildbot-www
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-28)
 # Unmaintained.  Python 2 only.  Last upstream commit in 2017.
 # Potential fork available (bug #705018) but not guaranteed a drop-in
