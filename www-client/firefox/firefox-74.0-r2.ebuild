@@ -757,16 +757,20 @@ PROFILE_EOF
 	done
 	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
 	newicon "${icon_path}/default48.png" "${icon}.png"
-	newmenu "${FILESDIR}/icon/${PN}.desktop" "${PN}.desktop"
-	sed -i -e "s:@NAME@:${name}:" -e "s:@ICON@:${icon}:" \
-		"${ED}/usr/share/applications/${PN}.desktop" || die
+	newmenu "${FILESDIR}/icon/${PN}-r1.desktop" "${PN}.desktop"
 
 	# Add StartupNotify=true bug 237317
+	local startup_notify="false"
 	if use startup-notification ; then
-		echo "StartupNotify=true"\
-			 >> "${ED}/usr/share/applications/${PN}.desktop" \
-			|| die
+		startup_notify="true"
 	fi
+
+	sed -i \
+		-e "s:@NAME@:${name}:" \
+		-e "s:@EXEC@:firefox:" \
+		-e "s:@ICON@:${icon}:" \
+		-e "s:@STARTUP_NOTIFY@:${startup_notify}:" \
+		"${ED%/}/usr/share/applications/${PN}.desktop" || die
 
 	# Don't install llvm-symbolizer from sys-devel/llvm package
 	[[ -f "${ED%/}${MOZILLA_FIVE_HOME}/llvm-symbolizer" ]] && \
