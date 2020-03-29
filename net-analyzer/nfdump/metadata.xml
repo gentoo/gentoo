@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="readpcap">Build nfcapd collector to read from pcap file instead ofnetwork data</flag>
-    <flag name="compat15">Enable read support for nfdump data files created with nfdump 1.5.x</flag>
     <flag name="ftconv">Build the flow-tools to nfdump converter</flag>
     <flag name="nfprofile">Build nfprofile used by NfSen</flag>
     <flag name="nftrack">Build nfprofile used by PortTracker</flag>
