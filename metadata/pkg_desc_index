@@ -4878,7 +4878,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.23.3: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.176-r1 0.177 0.178: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.177 0.178: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.26 0.27 0.28 0.30 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library
@@ -5009,7 +5009,7 @@ dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
-dev-libs/libffi 3.2.1 3.3_rc0 3.3-r1: a portable, high level programming interface to various calling conventions
+dev-libs/libffi 3.3_rc0 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.0-r1 1.3.1: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1 0.20.2: C++ library offering some basic functionality for platform-independent programs
@@ -9940,7 +9940,7 @@ dev-ruby/rjb 1.5.7 1.6.1: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 3.1.0 3.2.0 4.0.0 4.1.0 4.1.1: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/roadie 3.5.0 3.5.1 4.0.0: Making HTML emails comfortable for the Rails rockstars
-dev-ruby/roadie-rails 1.2.1 1.3.0: Hooks Roadie into your Rails application to help with email generation
+dev-ruby/roadie-rails 1.3.0: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 3.13.0 3.14.0 3.15.0 3.16.0 3.17.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.10.1 1.1.1: Library for encoding QR Codes
@@ -10624,7 +10624,7 @@ dev-util/radare2 4.3.1 9999: unix-like reverse engineering framework and command
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2: Command line tools for use with Review Board
-dev-util/re2c 1.1.1 1.2.1 1.3: tool for generating C-based recognizers from regular expressions
+dev-util/re2c 1.3: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rebar-bin 3.6.2: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/redo 0.42-r1 0.42a 99999: Smaller, easier, more powerful, and more reliable than make
@@ -17190,7 +17190,7 @@ sys-cluster/zookeepercli 1.0.12: Simple, lightweight, dependable CLI for ZooKeep
 sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r4 2.69-r5 9999: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2018.03.13 2019.01.06: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13-r1: wrapper for autoconf to manage multiple autoconf versions
-sys-devel/autogen 5.18.16 5.18.16-r1: Program and text file generation
+sys-devel/autogen 5.18.16-r1: Program and text file generation
 sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16.1-r1 1.16.1-r2 1.16.2 9999: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
@@ -17671,7 +17671,7 @@ virtual/leechcraft-wysiwyg-editor 9999: Virtual for LeechCraft plugins providing
 virtual/libc 1: Virtual for the C library
 virtual/libcrypt 1 2: Virtual for libcrypt.so
 virtual/libelf 2 3: Virtual for libelf.so.1 provider dev-libs/elfutils
-virtual/libffi 3.0.13-r1 3.3_rc0: A virtual for the Foreign Function Interface implementation
+virtual/libffi 3.3_rc0: A virtual for the Foreign Function Interface implementation
 virtual/libgudev 215-r3 230 232: Virtual for libgudev providers
 virtual/libiconv 0 0-r1 0-r2: Virtual for the GNU conversion library
 virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
