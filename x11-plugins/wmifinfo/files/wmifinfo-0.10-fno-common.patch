@@ -1,0 +1,35 @@
+diff -Naur dockapps.orig/xutils.c dockapps/xutils.c
+--- dockapps.orig/xutils.c	2014-12-09 20:31:13.000000000 +0100
++++ dockapps/xutils.c	2020-03-29 13:29:01.027698381 +0200
+@@ -54,6 +54,11 @@
+ XpmIcon		wmgen;
+ Pixmap		pixmask;
+ 
++Display		*display;
++Window          Root;
++Window          iconwin, win;
++int             screen;
++int             DisplayDepth;
+ 
+ 
+ 
+diff -Naur dockapps.orig/xutils.h dockapps/xutils.h
+--- dockapps.orig/xutils.h	2014-12-09 20:31:13.000000000 +0100
++++ dockapps/xutils.h	2020-03-29 13:29:10.728695410 +0200
+@@ -18,11 +18,11 @@
+ /*
+  *   Global variable
+  */
+-Display		*display;
+-Window          Root;
+-Window          iconwin, win;
+-int             screen;
+-int             DisplayDepth;
++extern Display		*display;
++extern Window          Root;
++extern Window          iconwin, win;
++extern int             screen;
++extern int             DisplayDepth;
+ 
+ 
+ 
