@@ -12576,7 +12576,7 @@ media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.1.1: Tools and a library for creating flame fractal images
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
-media-gfx/fontforge 20170731-r5 20190317-r3 20190801: postscript font editor and converter
+media-gfx/fontforge 20170731-r5 20190801 20200314: postscript font editor and converter
 media-gfx/fontypython 0.4.4-r3: Font preview application
 media-gfx/fotowall 1.0: Qt5 tool for creating wallpapers
 media-gfx/fotoxx 15.05: Program for improving image files made with a digital camera

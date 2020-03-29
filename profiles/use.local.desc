@@ -4061,6 +4061,7 @@ media-gfx/fim:imagemagick - Use convert from media-gfx/imagemagick as fallback f
 media-gfx/fim:pcx - Enable PCX file support
 media-gfx/fim:xfig - Enable FIG file support via media-gfx/xfig
 media-gfx/fontforge:truetype-debugger - Enable truetype debugger in fontforge
+media-gfx/fontforge:woff2 - Enable support for WOFF2 format
 media-gfx/fotowall:webcam - Enable webcam support
 media-gfx/freewrl:glew - Enable glew extensions
 media-gfx/freewrl:java - Build and install java EAI/SAI support library
