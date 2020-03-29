@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2003-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,7 +59,7 @@ src_install() {
 		USRDIR=usr
 	)
 	use utils || makeargs+=( -C font )
-	emake "${makeargs[@]}" install
+	emake "${makeargs[@]}" COMPRESS=0 install
 	font_xfont_config
 	font_fontconfig
 }
