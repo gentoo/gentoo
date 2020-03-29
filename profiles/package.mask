@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2020-03-29)
+# Old releases gone from upstream, new releases use overly restrictive
+# license. For ancient scripts and symbols, use media-fonts/quivira instead.
+# For emojis and pictographs, use media-fonts/noto-emoji instead.
+# Masked for removal in 30 days, bug #715226
+media-fonts/symbola
+
 # Hans de Graaff <graaff@gentoo.org> (2020-03-29)
 # Old ruby24-only rails version that is no longer supported upstream
 # and has known security issues, including dependencies and slots
