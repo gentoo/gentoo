@@ -1343,7 +1343,7 @@ app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup 
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/teco 36_p19940820: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
-app-editors/texworks 0.6.3 0.6.4: A simple interface for working with TeX documents
+app-editors/texworks 0.6.3 0.6.4 0.6.5: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.1.1486 8.1.1846 8.2.0055 8.2.0114 8.2.0210 8.2.0360 9999: Vim, an improved vi-style text editor
@@ -8699,56 +8699,56 @@ dev-python/reflink 0.2.1: Python wrapper around the reflink system calls
 dev-python/regendoc 0.6.1: Check/update simple file/shell examples in documentation
 dev-python/regex 2017.04.05 2017.04.05-r1 2019.11.1 2020.2.20: Alternative regular expression module to replace re
 dev-python/rencode 1.0.5-r1: similar to bencode from the BitTorrent project
-dev-python/reno 2.7.0 2.11.2 2.11.3: Release notes manager, storing release notes in a git repo and building docs
+dev-python/reno 2.7.0 2.11.3: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.5.13-r1: Tools for generating printable PDF documents from any data source
-dev-python/repoze-lru 0.6-r2 0.6-r3 0.7 0.7-r1: A tiny LRU cache implementation and decorator
+dev-python/repoze-lru 0.7 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1-r1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2 2.2-r1: repoze.who is an identification and authentication framework for WSGI
 dev-python/requests 2.21.0-r1 2.22.0 2.23.0: HTTP library for human beings
 dev-python/requests-cache 0.4.12: Persistent cache for requests library
 dev-python/requests-credssp 1.0.2: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
-dev-python/requests-kerberos 0.12.0 0.12.0-r1: A Kerberos authentication handler for python-requests
-dev-python/requests-mock 1.5.0 1.5.2 1.7.0: Mock out responses from the requests package
-dev-python/requests-ntlm 1.1.0 1.1.0-r1: HTTP NTLM authentication using the requests library
+dev-python/requests-kerberos 0.12.0-r1: A Kerberos authentication handler for python-requests
+dev-python/requests-mock 1.5.2 1.7.0: Mock out responses from the requests package
+dev-python/requests-ntlm 1.1.0-r1: HTTP NTLM authentication using the requests library
 dev-python/requests-oauthlib 0.7.0 1.3.0: This project provides first-class OAuth library support for Requests
-dev-python/requests-toolbelt 0.8.0 0.9.1: A utility belt for advanced users of python-requests
+dev-python/requests-toolbelt 0.9.1: A utility belt for advanced users of python-requests
 dev-python/requests_download 0.1.2: A convenient function to download to a file using requests
 dev-python/requests_pkcs12 1.4: Adds PKCS#12 support to the Python requests library in a clean way
-dev-python/requestsexceptions 1.1.3 1.4.0: Finds the correct path to exceptions in the requests library.
-dev-python/responses 0.6.0 0.9.0 0.10.7: Utility for mocking out the Python Requests library
+dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
+dev-python/responses 0.10.7: Utility for mocking out the Python Requests library
 dev-python/restkit 4.2.2: A HTTP ressource kit for Python
 dev-python/restructuredtext-lint 0.12.2 1.1.2: Checks PyPI validity of reStructuredText
 dev-python/resumable-urlretrieve 0.1.5: Small library to fetch files over HTTP and resuming their download
-dev-python/retry-decorator 1.0.0 1.0.0-r1: Decorator for retrying when exceptions occur
+dev-python/retry-decorator 1.0.0-r1: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.3: General-purpose retrying library
 dev-python/rfc3339-validator 0.1.2: A pure python RFC3339 validator
-dev-python/rfc3986 0.3.1 0.4.1 1.1.0 1.2.0 1.3.2: Validating URI References per RFC 3986
+dev-python/rfc3986 1.2.0 1.3.2: Validating URI References per RFC 3986
 dev-python/rfc3986-validator 0.1.1: Pure python RFC3986 validator
-dev-python/rfc3987 1.3.7 1.3.8 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
+dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
 dev-python/riak-python-client 2.7.0-r1: The Riak client for Python.
 dev-python/rnc2rng 2.6.1: RELAX NG Compact to regular syntax conversion library
 dev-python/robotbackgroundlogger 1.2: Helper module for logging to Robot Framework log from background threads
-dev-python/robotframework 3.0.2 3.0.4: Test automation framework for acceptance testing & test-driven development
-dev-python/roman 2.0.0 3.0: An Integer to Roman numerals converter
+dev-python/robotframework 3.0.4: Test automation framework for acceptance testing & test-driven development
+dev-python/roman 3.0: An Integer to Roman numerals converter
 dev-python/root_numpy 4.7.3-r1: Interface between ROOT and numpy
 dev-python/rootpy 1.0.1-r1: Pythonic layer on top of the ROOT framework's PyROOT bindings
-dev-python/rope 0.10.7 0.16.0: Python refactoring library
+dev-python/rope 0.16.0: Python refactoring library
 dev-python/ropemode 0.4: A helper for using rope refactoring library in IDEs
-dev-python/rosdistro 0.7.2 0.7.4 0.8.0 9999: Tools to work with catkinized rosdistro files
-dev-python/rospkg 1.1.9 1.1.10 1.2.0 9999: Standalone Python library for the ROS package system
+dev-python/rosdistro 0.8.0 9999: Tools to work with catkinized rosdistro files
+dev-python/rospkg 1.2.0 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1 2.4.1-r1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
-dev-python/rply 0.7.5 0.7.7: Pure python parser generator that also works with RPython
-dev-python/rpy 2.6.2 2.9.0: Python interface to the R Programming Language
-dev-python/rpyc 3.4.4 4.0.2 4.1.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
-dev-python/rq 0.13.0 1.0 1.3.0: simple, lightweight library for creating and processing background jobs
-dev-python/rsa 3.2.3-r1 3.4.2-r1 4.0: Pure-Python RSA implementation
-dev-python/rst-linker 1.9-r1 1.11 2.0.0: Sphinx plugin to add links and timestamps to the changelog
+dev-python/rply 0.7.7: Pure python parser generator that also works with RPython
+dev-python/rpy 2.9.0: Python interface to the R Programming Language
+dev-python/rpyc 4.1.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
+dev-python/rq 1.3.0: simple, lightweight library for creating and processing background jobs
+dev-python/rsa 3.4.2-r1 4.0: Pure-Python RSA implementation
+dev-python/rst-linker 1.11 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r3: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.69: A Python object API for managing the Linux LIO kernel target
-dev-python/ruamel-std-pathlib 0.6.3 0.6.4 0.6.4-r1: Ruamel enhancements to pathlib and pathlib2
-dev-python/ruamel-yaml 0.15.35 0.15.96 0.15.97: YAML parser/emitter that supports roundtrip comment preservation
+dev-python/ruamel-std-pathlib 0.6.4-r1: Ruamel enhancements to pathlib and pathlib2
+dev-python/ruamel-yaml 0.15.35 0.15.97: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ryu 4.26 4.26-r1: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.1.2 0.1.5: Pythonic file interface to S3
 dev-python/s3transfer 0.1.13-r1 0.2.0 0.2.1 0.3.1: An Amazon S3 Transfer Manager
@@ -9824,7 +9824,7 @@ dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.4.0-r2 1.4.1 1.4.2 1.4.3 1.4.4: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
-dev-ruby/octokit 4.14.0 4.15.0 4.16.0 4.17.0: Ruby toolkit for the Github API
+dev-ruby/octokit 4.14.0 4.15.0 4.16.0 4.17.0 4.18.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.9.0 1.9.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
 dev-ruby/openssl-ccm 1.2.1 1.2.2: OpenSSL CBC-MAC (CCM) ruby gem
@@ -9938,13 +9938,13 @@ dev-ruby/rinku 2.0.4 2.0.5 2.0.6: A Ruby library that does autolinking
 dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.5.7 1.6.1: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
-dev-ruby/rmagick 3.1.0 3.2.0 4.0.0 4.1.0: An interface between Ruby and the ImageMagick(TM) image processing library
+dev-ruby/rmagick 3.1.0 3.2.0 4.0.0 4.1.0 4.1.1: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/roadie 3.5.0 3.5.1 4.0.0: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.2.1 1.3.0: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 3.13.0 3.14.0 3.15.0 3.16.0 3.17.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.10.1 1.1.1: Library for encoding QR Codes
-dev-ruby/rqrcode_core 0.1.0: Library for encoding QR Codes
+dev-ruby/rqrcode_core 0.1.0 0.1.2: Library for encoding QR Codes
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.6.0 1.7.1-r1 1.7.2: Ruby bindings for rrdtool
 dev-ruby/rspec 2.99.0 3.8.0 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
@@ -11491,7 +11491,6 @@ games-sports/xmoto 0.5.11-r2: A challenging 2D motocross platform game
 games-strategy/0ad 0.0.23_alpha 0.0.23b_alpha: A free, real-time strategy game
 games-strategy/0ad-data 0.0.23_alpha 0.0.23b_alpha: Data files for 0ad
 games-strategy/asc 2.6.0.0-r2: turn based strategy game designed in the tradition of the Battle Isle series
-games-strategy/boswars 2.7-r2: Futuristic real-time strategy game
 games-strategy/colobot 0.1.12 9999: Colobot is an educational real-time strategy video game featuring 3D graphics
 games-strategy/colobot-data 0.1.12: Data package for colobot (Colonize with Bots)
 games-strategy/crimson 0.5.3-r1: Tactical war game in the tradition of Battle Isle
