@@ -20,15 +20,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/pyasn1-0.1.3[${PYTHON_USEDEP}]
-	dev-python/traceback2[${PYTHON_USEDEP}]
-	"
-DEPEND="${RDEPEND}
-	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/unittest2[${PYTHON_USEDEP}]
-		)
 	"
 
-python_test() {
-	nosetests --verbose || die
-}
+distutils_enable_tests unittest
