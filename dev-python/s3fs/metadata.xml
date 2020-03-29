@@ -5,9 +5,6 @@
     <email>python@gentoo.org</email>
     <name>Gentoo Python Project</name>
   </maintainer>
-  <longdescription lang="en">
-    S3Fs builds on boto3 to provide a convenient Python filesystem interface for S3.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">s3fs</remote-id>
     <remote-id type="github">dask/s3fs</remote-id>
