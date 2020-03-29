@@ -59,8 +59,6 @@ gnome-extra/gnome-user-share
 # python2_7-only packages that depend on portage
 # cause unresolvable deps
 =app-admin/bcfg2-1.2.4-r1
-app-admin/equo
-app-admin/matter
 app-admin/packagekit
 ~app-admin/packagekit-base-1.1.12
 app-admin/packagekit-gtk
@@ -75,8 +73,4 @@ app-portage/euscan
 <app-portage/layman-2.4.2
 app-portage/metagen
 =app-portage/overlint-0.5.2
-app-portage/porthole
 gnome-extra/gnome-packagekit
-net-proxy/http-replicator
-sys-apps/entropy
-sys-apps/entropy-server
