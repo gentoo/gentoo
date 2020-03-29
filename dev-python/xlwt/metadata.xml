@@ -12,6 +12,7 @@
 		be generated on any platform without needing Excel or a COM
 		server. xlwt is a fork of pyExcelerator.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">xlwt</remote-id>
 	</upstream>
