@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,10 +23,14 @@ RDEPEND="
 	net-dialup/ppp[eap-tls]
 	net-dialup/xl2tpd
 	>=dev-libs/glib-2.32
-	net-vpn/libreswan
+	|| (
+		net-vpn/strongswan
+		net-vpn/libreswan
+	)
 	gnome? (
 		x11-libs/gtk+:3
-		gnome-base/libgnome-keyring
+		app-crypt/libsecret
+		gnome-extra/nm-applet
 	)"
 
 BDEPEND="${RDEPEND}
