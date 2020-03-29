@@ -1,0 +1,11 @@
+diff -Naur dockapps.orig/wmacpi.c dockapps/wmacpi.c
+--- dockapps.orig/wmacpi.c	2015-01-12 11:24:15.000000000 +0100
++++ dockapps/wmacpi.c	2020-03-29 13:11:56.712022800 +0200
+@@ -72,6 +72,7 @@
+ 
+ /* globals */
+ struct dockapp *dockapp;
++Display *display;
+ /* global_t *globals; */
+ 
+ /* this gives us a variable scroll rate, depending on the importance of the
