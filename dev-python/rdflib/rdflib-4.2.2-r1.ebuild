@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 PYTHON_REQ_USE="sqlite?,threads(+)"
 
@@ -17,7 +18,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc berkdb examples mysql redland sqlite test"
 RESTRICT="!test? ( test )"
 
@@ -26,10 +27,13 @@ RDEPEND="
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	berkdb? ( dev-python/bsddb3[${PYTHON_USEDEP}] )
-	mysql? ( dev-python/mysql-python[$(python_gen_usedep 'python2*')] )
-	redland? ( dev-libs/redland-bindings[python,$(python_gen_usedep 'python2*')] )"
+	mysql? (
+		$(python_gen_cond_dep '
+			dev-python/mysql-python[${PYTHON_USEDEP}]
+		' -2)
+	)
+	redland? ( dev-libs/redland-bindings[python,${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/sparql-wrapper[${PYTHON_USEDEP}]
