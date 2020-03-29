@@ -350,7 +350,7 @@ app-accessibility/freetts 1.2.2: A speech synthesis system written entirely in J
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
 app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
-app-accessibility/orca 3.32.0-r1: Extensible screen reader that provides access to the desktop
+app-accessibility/orca 3.32.0-r1 3.34.2: Extensible screen reader that provides access to the desktop
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/simon 9999: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
@@ -11581,7 +11581,7 @@ gnome-base/dconf 0.32.0-r2 0.34.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.34.2 3.34.4: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.32.0 3.34.1: GNOME Display Manager for managing graphical display servers and user logins
-gnome-base/gnome 3.32.2: Meta package for GNOME 3, merge this package to install
+gnome-base/gnome 3.32.2 3.34.4: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-applets 3.32.0 3.34.0: Applets for the GNOME Flashback Panel
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.30.3-r1 3.32.2 3.34.4: GNOME's main interface to configure various aspects of the desktop
@@ -11591,7 +11591,7 @@ gnome-base/gnome-desktop 2.32.1-r2 3.32.2 3.34.4: Library with common API for va
 gnome-base/gnome-extra-apps 3.32.2 3.34.4: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.32.0 3.34.2: GNOME Flashback session
 gnome-base/gnome-keyring 3.31.91-r1 3.34.0: Password and keyring managing daemon
-gnome-base/gnome-light 3.22.0 3.26.2 3.30.2 3.32.2: Meta package for GNOME-Light, merge this package to install
+gnome-base/gnome-light 3.26.2 3.30.2 3.32.2 3.34.4: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.32.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.32.0 3.34.1: The GNOME Flashback Panel
@@ -16001,6 +16001,7 @@ sci-libs/btf 1.2.0 1.2.6: Algorithm for matrix permutation into block triangular
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.3.1 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/cantera 2.4.0-r1 2.4.0-r4: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
+sci-libs/cartopy 0.18.0_beta1: Python package for geospatial data processing and analysis
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
 sci-libs/cblas-reference 20030223-r6 20151113-r2 20161223: C wrapper interface to the F77 reference BLAS implementation
 sci-libs/ccfits 2.4-r1 2.5: C++ interface for cfitsio
