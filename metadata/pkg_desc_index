@@ -8750,35 +8750,35 @@ dev-python/rtslib-fb 2.1.69: A Python object API for managing the Linux LIO kern
 dev-python/ruamel-std-pathlib 0.6.4-r1: Ruamel enhancements to pathlib and pathlib2
 dev-python/ruamel-yaml 0.15.35 0.15.97: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ryu 4.26 4.26-r1: Component-based Software-defined Networking Framework
-dev-python/s3fs 0.1.2 0.1.5: Pythonic file interface to S3
-dev-python/s3transfer 0.1.13-r1 0.2.0 0.2.1 0.3.1: An Amazon S3 Transfer Manager
-dev-python/sabyenc 3.3.5 3.3.6: Module providing raw yEnc encoding/decoding for SABnzbd
+dev-python/s3fs 0.1.5: Pythonic file interface to S3
+dev-python/s3transfer 0.2.0 0.3.1: An Amazon S3 Transfer Manager
+dev-python/sabyenc 3.3.6: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
-dev-python/scandir 1.10.0 1.10.0-r1: A better directory iterator and faster os.walk()
+dev-python/scandir 1.10.0-r1: A better directory iterator and faster os.walk()
 dev-python/schedule 0.6.0 9999: Python job scheduling for humans
 dev-python/schema 0.6.6: Library for validating Python data structures
 dev-python/scikit-build 0.10.0: Improved build system generator for Python C/C++/Fortran/Cython extensions
 dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
 dev-python/scp 0.10.2: scp module for paramiko
-dev-python/scripttest 1.2-r1 1.3.0: A very small text templating language
-dev-python/scrypt 0.8.0 0.8.13 0.8.13-r2: Bindings for the scrypt key derivation function library
-dev-python/sdnotify 0.3.1 0.3.2: Python implementation of systemd's service notification protocol (sd_notify)
-dev-python/seaborn 0.7.1 0.8.1 0.9.0 0.10.0: Statistical data visualization
-dev-python/secretstorage 2.3.1 3.1.0 3.1.1 3.1.1-r1: Python bindings to FreeDesktop.org Secret Service API.
+dev-python/scripttest 1.3.0: A very small text templating language
+dev-python/scrypt 0.8.13 0.8.13-r2: Bindings for the scrypt key derivation function library
+dev-python/sdnotify 0.3.2: Python implementation of systemd's service notification protocol (sd_notify)
+dev-python/seaborn 0.10.0: Statistical data visualization
+dev-python/secretstorage 3.1.1 3.1.1-r1: Python bindings to FreeDesktop.org Secret Service API.
 dev-python/selectors34 1.2: Backport of the selectors module from Python 3.4
-dev-python/selenium 3.0.2 3.13.0 3.141.0: Python language binding for Selenium Remote Control
-dev-python/semantic_version 2.8.2 2.8.4: Python library providing a few tools handling SemVer in Python
+dev-python/selenium 3.141.0: Python language binding for Selenium Remote Control
+dev-python/semantic_version 2.8.4: Python library providing a few tools handling SemVer in Python
 dev-python/semver 2.9.0 2.9.1: A Python module for semantic versioning
-dev-python/send2trash 1.3.0 1.5.0 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
-dev-python/sentry-sdk 0.13.2 0.14.1: Python client for Sentry
-dev-python/serpent 1.19 1.28 1.30: A simple serialization library based on ast.literal_eval
+dev-python/send2trash 1.5.0 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
+dev-python/sentry-sdk 0.14.1: Python client for Sentry
+dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
-dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1 18.1.0: Service identity verification for pyOpenSSL
+dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 42.0.2 44.0.0 44.1.0 45.3.0: Collection of extensions to Distutils
+dev-python/setuptools 44.0.0 44.1.0 45.3.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
-dev-python/setuptools_scm 1.15.6-r1 3.2.0 3.4.3 3.5.0: Manage versions by scm tags via setuptools
+dev-python/setuptools_scm 3.5.0: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
 dev-python/setuptools_trial 0.6.0: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
@@ -8789,33 +8789,33 @@ dev-python/simpleeval 0.9.8 0.9.10: A simple, safe single expression evaluator l
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.17.0: Simple, fast, extensible JSON encoder/decoder for Python
 dev-python/simplekml 1.3.1: enables you to generate KML with as little effort as possible
-dev-python/simplekv 0.9.2 0.11.11: A key-value storage for binary data, support many backends.
+dev-python/simplekv 0.11.11: A key-value storage for binary data, support many backends.
 dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR library
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
 dev-python/sip 4.19.19 4.19.20 4.19.21: Python extension module generator for C and C++ libraries
-dev-python/six 1.12.0 1.13.0 1.14.0: Python 2 and 3 compatibility library
+dev-python/six 1.14.0: Python 2 and 3 compatibility library
 dev-python/slackclient 1.2.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
-dev-python/slixmpp 1.4.0 1.4.2 9999: Python 3 library for XMPP
+dev-python/slixmpp 1.4.2 9999: Python 3 library for XMPP
 dev-python/smmap 3.0.1: A pure Python implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
 dev-python/snakeoil 0.7.5 0.8.8 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
-dev-python/snappy 0.5-r2 0.5.1: Python library for the snappy compression library from Google
+dev-python/snappy 0.5.1: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.1 2.0.0: Stemmer algorithms generated from Snowball algorithms
 dev-python/soappy 0.12.22: SOAP Services for Python
 dev-python/socketio-client 0.6.6: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
 dev-python/socketpool 0.5.3-r2: A simple Python socket pool
 dev-python/sortedcollections 0.5.3: Python library to sort collections and containers
-dev-python/sortedcontainers 1.5.7 2.1.0: Python library to sort collections and containers
+dev-python/sortedcontainers 2.1.0: Python library to sort collections and containers
 dev-python/soupsieve 1.9.5: A modern CSS selector implementation for BeautifulSoup
 dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with games in mind
-dev-python/spark-parser 1.6.1 1.8.5: An Early-Algorithm Context-free grammar Parser
-dev-python/sparql-wrapper 1.8.0 1.8.4: Wrapper around a SPARQL service
+dev-python/spark-parser 1.8.5: An Early-Algorithm Context-free grammar Parser
+dev-python/sparql-wrapper 1.8.4: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
 dev-python/sphinx 1.7.5-r1 2.0.1-r1 2.4.3-r1 2.4.4: Python documentation generator
