@@ -239,9 +239,6 @@ for opt in ${ORIGUSE} ; do
 			fi
 			USE_NPTL=1
 			;;
-		nptlonly)
-			USE_NPTLONLY=1
-			;;
 		multilib)
 			ALLOWED_USE="${ALLOWED_USE} multilib"
 			;;
@@ -284,13 +281,10 @@ for atom in portage.settings.packages:
 # Do we really want gettext/nls?
 [[ ${USE_NLS} != 1 ]] && myGETTEXT=
 
-# Do we really have no 2.4.x nptl kernels in portage?
 if [[ ${USE_NPTL} = "1" ]] ; then
 	myOS_HEADERS="$(portageq best_visible / '>=sys-kernel/linux-headers-2.6.0')"
 	[[ -n ${myOS_HEADERS} ]] && myOS_HEADERS=">=${myOS_HEADERS}"
 	ALLOWED_USE="${ALLOWED_USE} nptl"
-	# Should we build with nptl only?
-	[[ ${USE_NPTLONLY} = "1" ]] && ALLOWED_USE="${ALLOWED_USE} nptlonly"
 fi
 [[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="$(portageq expand_virtual / virtual/os-headers)"
 
