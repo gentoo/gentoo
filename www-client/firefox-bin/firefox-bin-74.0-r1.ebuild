@@ -35,7 +35,7 @@ RESTRICT="strip mirror"
 KEYWORDS="-* amd64 x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+alsa +ffmpeg +pulseaudio selinux startup-notification"
+IUSE="+alsa +ffmpeg +pulseaudio selinux startup-notification wayland"
 
 DEPEND="app-arch/unzip
 	alsa? (
@@ -96,39 +96,17 @@ src_unpack() {
 }
 
 src_install() {
-	declare MOZILLA_FIVE_HOME=/opt/${MOZ_PN}
-
-	local size sizes icon_path icon name
-	sizes="16 32 48 128"
-	icon_path="${S}/browser/chrome/icons/default"
-	icon="${PN}"
-	name="Mozilla Firefox"
-
-	# Install icons and .desktop for menu entry
-	for size in ${sizes}; do
-		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
-		newins "${icon_path}/default${size}.png" "${icon}.png"
-	done
-	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
-	newicon "${S}"/browser/chrome/icons/default/default48.png ${PN}.png
-	newmenu "${FILESDIR}/${PN}-r1.desktop" "${PN}.desktop"
-
-	# Add StartupNotify=true bug 237317
-	local startup_notify="false"
-	if use startup-notification ; then
-		startup_notify="true"
-	fi
-
-	sed -i \
-		-e "s:@NAME@:${name} (bin):" \
-		-e "s:@EXEC@:firefox-bin:" \
-		-e "s:@ICON@:${icon}:" \
-		-e "s:@STARTUP_NOTIFY@:${startup_notify}:" \
-		"${ED%/}/usr/share/applications/${PN}.desktop" || die
+	local MOZILLA_FIVE_HOME=/opt/${MOZ_PN}
 
 	# Install firefox in /opt
 	dodir ${MOZILLA_FIVE_HOME%/*}
-	mv "${S}" "${ED}"${MOZILLA_FIVE_HOME} || die
+	mv "${S}" "${ED%/}"${MOZILLA_FIVE_HOME} || die
+	cd "${WORKDIR}" || die
+
+	# Install language packs
+	MOZEXTENSION_TARGET="distribution/extensions" \
+		MOZ_INSTALL_L10N_XPIFILE="1" \
+		mozlinguas_src_install
 
 	# Disable built-in auto-update because we update firefox-bin through package manager
 	insinto ${MOZILLA_FIVE_HOME}/distribution/
@@ -140,27 +118,89 @@ src_install() {
 	insinto ${MOZILLA_FIVE_HOME}
 	newins "${FILESDIR}"/all-gentoo-3.js all-gentoo.js
 
-	# Install language packs
-	MOZEXTENSION_TARGET="distribution/extensions" \
-		MOZ_INSTALL_L10N_XPIFILE="1" \
-		mozlinguas_src_install
+	local size sizes icon_path icon name
+	sizes="16 32 48 128"
+	icon_path="${MOZILLA_FIVE_HOME}/browser/chrome/icons/default"
+	icon="${PN}"
+	name="Mozilla Firefox (bin)"
 
+	local apulselib=
 	if use alsa && ! use pulseaudio; then
-		local apulselib="/usr/$(get_libdir)/apulse"
-		patchelf --set-rpath "${apulselib}" "${ED}"${MOZILLA_FIVE_HOME}/libxul.so || die
+		apulselib="${EPREFIX%/}/usr/$(get_libdir)/apulse"
+		patchelf --set-rpath "${apulselib}" "${ED%/}"${MOZILLA_FIVE_HOME}/libxul.so || die
 	fi
 
-	# Create /usr/bin/firefox-bin
-	dodir /usr/bin/
-	local apulselib=$(usex pulseaudio "" $(usex alsa "/usr/$(get_libdir)/apulse:" ""))
-	cat <<-EOF >"${ED}"usr/bin/${PN}
-	#!/bin/sh
-	unset LD_PRELOAD
-	LD_LIBRARY_PATH="${apulselib}/opt/firefox/" \\
-	GTK_PATH=/usr/$(get_libdir)/gtk-3.0/ \\
-	exec /opt/${MOZ_PN}/${MOZ_PN} "\$@"
-	EOF
-	fperms 0755 /usr/bin/${PN}
+	# Install icons and .desktop for menu entry
+	for size in ${sizes} ; do
+		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
+		newins "${icon_path}/default${size}.png" "${icon}.png"
+	done
+	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
+	newicon ${MOZILLA_FIVE_HOME}/browser/chrome/icons/default/default48.png ${PN}.png
+
+	# Add StartupNotify=true bug 237317
+	local startup_notify="false"
+	if use startup-notification ; then
+		startup_notify="true"
+	fi
+
+	local display_protocols="auto X11" use_wayland="false"
+	if use wayland ; then
+		display_protocols+=" Wayland"
+		use_wayland="true"
+	fi
+
+	local app_name desktop_filename display_protocol exec_command
+	for display_protocol in ${display_protocols} ; do
+		app_name="${name} on ${display_protocol}"
+		desktop_filename="${PN}-${display_protocol,,}.desktop"
+
+		case ${display_protocol} in
+			Wayland)
+				exec_command="${PN}-wayland --name ${PN}-wayland"
+				newbin "${FILESDIR}"/firefox-bin-wayland.sh ${PN}-wayland
+				;;
+			X11)
+				exec_command="${PN}-x11 --name ${PN}-x11"
+				if use wayland ; then
+					# Only needed when there's actually a choice
+					newbin "${FILESDIR}"/firefox-bin-x11.sh ${PN}-x11
+				fi
+				;;
+			*)
+				app_name="${name}"
+				desktop_filename="${PN}.desktop"
+				exec_command='firefox-bin'
+				;;
+		esac
+
+		newmenu "${FILESDIR}/${PN}-r1.desktop" "${desktop_filename}"
+		sed -i \
+			-e "s:@NAME@:${app_name}:" \
+			-e "s:@EXEC@:${exec_command}:" \
+			-e "s:@ICON@:${icon}:" \
+			-e "s:@STARTUP_NOTIFY@:${startup_notify}:" \
+			"${ED%/}/usr/share/applications/${desktop_filename}" || die
+	done
+
+	rm -f "${ED%/}"/usr/bin/firefox-bin || die
+	newbin "${FILESDIR}"/firefox-bin.sh firefox-bin
+
+	local wrapper
+	for wrapper in \
+		"${ED%/}"/usr/bin/firefox-bin \
+		"${ED%/}"/usr/bin/firefox-bin-x11 \
+		"${ED%/}"/usr/bin/firefox-bin-wayland \
+	; do
+		[[ ! -f "${wrapper}" ]] && continue
+
+		sed -i \
+			-e "s:@PREFIX@:${EPREFIX%/}/usr:" \
+			-e "s:@MOZ_FIVE_HOME@:${MOZILLA_FIVE_HOME}:" \
+			-e "s:@APULSELIB_DIR@:${apulselib}:" \
+			-e "s:@DEFAULT_WAYLAND@:${use_wayland}:" \
+			"${wrapper}" || die
+	done
 
 	# revdep-rebuild entry
 	insinto /etc/revdep-rebuild
@@ -171,7 +211,7 @@ src_install() {
 	share_plugins_dir
 
 	# Required in order to use plugins and even run firefox on hardened.
-	pax-mark mr "${ED}"${MOZILLA_FIVE_HOME}/{firefox,firefox-bin,plugin-container}
+	pax-mark mr "${ED%/}"${MOZILLA_FIVE_HOME}/{firefox,firefox-bin,plugin-container}
 }
 
 pkg_postinst() {
