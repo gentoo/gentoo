@@ -1829,7 +1829,7 @@ app-i18n/libpinyin 2.3.0 9999: Libraries for handling of Hanyu Pinyin and Zhuyin
 app-i18n/librime 1.5.3-r1: RIME (Rime Input Method Engine) core library
 app-i18n/libskk 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
-app-i18n/man-pages-de 2.12 2.12-r1 2.16: A somewhat comprehensive collection of Linux german man page translations
+app-i18n/man-pages-de 2.12-r1 2.16: A somewhat comprehensive collection of Linux german man page translations
 app-i18n/man-pages-fr 3.70-r1: A somewhat comprehensive collection of French Linux man pages
 app-i18n/man-pages-it 4.00: A somewhat comprehensive collection of Italian Linux man pages
 app-i18n/man-pages-ja 20171215 20180315: A collection of manual pages translated into Japanese
@@ -4901,7 +4901,7 @@ dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and mini
 dev-libs/gjs 1.48.7 1.56.2 1.58.5 1.58.6: Javascript bindings for GNOME
 dev-libs/glib 2.60.7 2.60.7-r1 2.60.7-r2 2.62.5 2.62.6 2.64.1: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.4 3.2.5 3.2.6 3.2.7: Utilities for creating and parsing messages using MIME
-dev-libs/gmp 4.3.2-r1 6.1.2-r1 6.2.0-r1: Library for arbitrary-precision arithmetic on different type of numbers
+dev-libs/gmp 6.1.2-r1 6.2.0-r1: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
 dev-libs/go-usb 9999: CGO bindings for libusb
