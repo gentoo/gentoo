@@ -48,7 +48,6 @@ RDEPEND="
 		x11-libs/libXi:0=
 		>=x11-libs/pango-1.10:0=[X]
 	)
-	!media-gfx/pfaedit
 "
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
