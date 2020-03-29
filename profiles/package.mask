@@ -716,12 +716,6 @@ dev-libs/OpenSRF
 dev-java/ant-eclipse-ecj:4.13
 dev-java/eclipse-ecj:4.13
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-10-16)
-# Binary-only slot that provides libgmp.so.3. If you need that
-# library please add a note to describe use case to the bug #697826.
-# Masked for removal in a year.
-dev-libs/gmp:3
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
