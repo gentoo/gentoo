@@ -1905,6 +1905,7 @@ dev-lang/lua:test-complete - Run the complete (non-portable) testsuite
 dev-lang/luajit:lua52compat - Enable some upwards-compatible features from Lua 5.2 that are unlikely to break existing code.
 dev-lang/mercury:erlang - Support Mercury Erlang grade
 dev-lang/mercury:trail - Support Mercury trail grades
+dev-lang/mercury-extras:tommath - Enable support for tommath library
 dev-lang/mlton:binary - install a binary version
 dev-lang/mlton:bootstrap-smlnj - Boostrap mlton with dev-lang/smlnj (takes a long time)
 dev-lang/mlton:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
