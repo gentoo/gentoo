@@ -272,14 +272,14 @@ for atom in portage.settings.packages:
 
 # This stuff should never fail but will if not enough is installed.
 [[ -z ${myBASELAYOUT} ]] && myBASELAYOUT=">=$(portageq best_version / sys-apps/baselayout)"
-[[ -z ${myPORTAGE}    ]] && myPORTAGE="portage"
-[[ -z ${myBINUTILS}   ]] && myBINUTILS="binutils"
-[[ -z ${myGCC}        ]] && myGCC="gcc"
-[[ -z ${myGETTEXT}    ]] && myGETTEXT="gettext"
+[[ -z ${myPORTAGE}    ]] && myPORTAGE="sys-apps/portage"
+[[ -z ${myBINUTILS}   ]] && myBINUTILS="sys-devel/binutils"
+[[ -z ${myGCC}        ]] && myGCC="sys-devel/gcc"
+[[ -z ${myGETTEXT}    ]] && myGETTEXT="sys-devel/gettext"
 [[ -z ${myLIBC}       ]] && myLIBC="$(portageq expand_virtual / virtual/libc)"
 [[ -z ${myTEXINFO}    ]] && myTEXINFO="sys-apps/texinfo"
-[[ -z ${myZLIB}       ]] && myZLIB="zlib"
-[[ -z ${myNCURSES}    ]] && myNCURSES="ncurses"
+[[ -z ${myZLIB}       ]] && myZLIB="sys-libs/zlib"
+[[ -z ${myNCURSES}    ]] && myNCURSES="sys-libs/ncurses"
 
 # Do we really want gettext/nls?
 [[ ${USE_NLS} != 1 ]] && myGETTEXT=
