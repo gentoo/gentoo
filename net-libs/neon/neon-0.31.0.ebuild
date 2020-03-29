@@ -109,5 +109,5 @@ multilib_src_install() {
 multilib_src_install_all() {
 	find "${D}" -name "*.la" -type f -delete || die
 
-	dodoc AUTHORS BUGS NEWS README THANKS TODO
+	dodoc AUTHORS BUGS NEWS README.md THANKS TODO
 }
