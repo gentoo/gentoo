@@ -8,9 +8,6 @@
 		<email>cedk@gentoo.org</email>
 		<name>Cédric Krier</name>
 	</maintainer>
-	<longdescription lang="en">
-		Official Stripe Bindings for Python
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">stripe</remote-id>
 		<remote-id type="github">stripe/stripe-python</remote-id>
