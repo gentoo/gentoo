@@ -59,7 +59,7 @@ src_install() {
 		USRDIR=usr
 	)
 	use utils || makeargs+=( -C font )
-	emake "${makeargs[@]}" install
+	emake "${makeargs[@]}" COMPRESS=0 install
 	font_xfont_config
 	font_fontconfig
 }
