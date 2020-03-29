@@ -259,11 +259,14 @@ done
 
 eval $(pycmd '
 import portage
+from portage.dbapi._expand_new_virt import expand_new_virt
 import sys
+root = portage.settings["EROOT"]
 for atom in portage.settings.packages:
 	if not isinstance(atom, portage.dep.Atom):
 		atom = portage.dep.Atom(atom.lstrip("*"))
 	varname = "my" + portage.catsplit(atom.cp)[1].upper().replace("-", "_")
+	atom = list(expand_new_virt(portage.db[root]["vartree"].dbapi, atom))[0]
 	sys.stdout.write("%s=\"%s\"; " % (varname, atom))
 ')
 
