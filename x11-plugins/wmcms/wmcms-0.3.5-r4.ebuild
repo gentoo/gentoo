@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,15 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
-DEPEND=">=x11-libs/libdockapp-0.7:="
+DEPEND=">=x11-libs/libdockapp-0.7-r1:="
+
+PATCHES=(
+	"${FILESDIR}"/${P}-s4t4n.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}"/wmcms-0.3.5-s4t4n.patch
 
 	# Respect LDFLAGS, see bug #335031
 	sed -e 's/ -o wmcms/ ${LDFLAGS} -o wmcms/' -i Makefile || die
