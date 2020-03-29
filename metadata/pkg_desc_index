@@ -15342,7 +15342,7 @@ net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/libreswan 3.29 3.30 3.31: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engine
 net-vpn/networkmanager-fortisslvpn 1.2.6-r1 1.2.8-r1: NetworkManager Fortinet SSLVPN compatible plugin
-net-vpn/networkmanager-l2tp 1.2.12 1.8.0: NetworkManager L2TP plugin
+net-vpn/networkmanager-l2tp 1.8.0 1.8.2: NetworkManager L2TP plugin
 net-vpn/networkmanager-libreswan 1.2.12: NetworkManager libreswan plugin
 net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.10-r1: NetworkManager OpenVPN plugin
