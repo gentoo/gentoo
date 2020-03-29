@@ -10396,7 +10396,7 @@ dev-util/catalyst 3.0.8 3.0.9 9999: Release metatool used for creating releases 
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.13.1: A tool for generating C bindings to Rust code
-dev-util/ccache 3.7.2 3.7.6 3.7.7 3.7.7-r1 3.7.8 3.7.8-r1: fast compiler cache
+dev-util/ccache 3.7.2 3.7.6 3.7.7 3.7.7-r1 3.7.8 3.7.8-r1 3.7.9: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 9999: C/C++/ObjC language server
 dev-util/cdiff 1.0 1.1 9999: Colored, side-by-side diff terminal viewer
@@ -11588,7 +11588,7 @@ gnome-base/gnome-control-center 3.30.3-r1 3.32.2 3.34.4: GNOME's main interface 
 gnome-base/gnome-core-apps 3.30.2 3.32.2 3.34.4: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.32.2 3.34.4: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.32.2 3.34.4: Library with common API for various GNOME modules
-gnome-base/gnome-extra-apps 3.32.2: Sub-meta package for the applications of GNOME 3
+gnome-base/gnome-extra-apps 3.32.2 3.34.4: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.32.0 3.34.2: GNOME Flashback session
 gnome-base/gnome-keyring 3.31.91-r1 3.34.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.22.0 3.26.2 3.30.2 3.32.2: Meta package for GNOME-Light, merge this package to install
@@ -11656,7 +11656,7 @@ gnome-extra/gnome-software 3.30.6 3.32.4: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.32.1: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.32.0-r1 3.34.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.32.3 3.34.1: GNOME end user documentation
-gnome-extra/gnome-user-share 3.32.0.1: Personal file sharing for the GNOME desktop
+gnome-extra/gnome-user-share 3.32.0.1 3.34.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.32.2 3.34.0: A weather application for GNOME
 gnome-extra/gtkhtml 4.10.0 4.10.0-r2: Lightweight HTML rendering/printing/editing engine
@@ -12594,7 +12594,7 @@ media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, h
 media-gfx/gmic 2.8.1 2.8.2 2.8.3: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.32.0 3.34.0: Font viewer utility for GNOME
-media-gfx/gnome-photos 3.32.1: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.32.1 3.34.1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.32.0 3.36.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
