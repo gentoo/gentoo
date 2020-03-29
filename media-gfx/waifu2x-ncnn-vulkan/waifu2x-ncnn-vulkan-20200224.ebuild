@@ -15,7 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-
 DEPEND="
 	dev-libs/ncnn
 	media-libs/vulkan-loader"
@@ -39,4 +38,3 @@ src_install() {
 	insinto "/usr/share/${PN}"
 	doins -r models/*
 }
-
