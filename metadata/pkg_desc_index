@@ -10918,7 +10918,7 @@ games-arcade/funnyboat 1.5_p11-r1: A side scrolling shooter game starring a stea
 games-arcade/gav 0.9.0-r1: GPL Arcade Volleyball
 games-arcade/gish-demo 1.6-r1: Play as an amorphous ball of tar that rolls and squishes around
 games-arcade/gnake 0.94b-r1: An ncurses-based Nibbles clone
-games-arcade/gnome-nibbles 3.32.0: Nibbles clone for Gnome
+games-arcade/gnome-nibbles 3.32.0 3.36.0: Nibbles clone for Gnome
 games-arcade/gnome-robots 3.32.0 3.36.0: Avoid the robots and make them crash into each other
 games-arcade/gnujump 1.0.8-r1: Xjump clone with added features
 games-arcade/grande-KXL 0.6-r1: ZANAC type game
@@ -11654,7 +11654,7 @@ gnome-extra/gnome-shell-extensions-topicons-plus 22-r1 22_p20190929: Moves legac
 gnome-extra/gnome-shell-frippery 3.32.1 3.34.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.30.6 3.32.4: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.32.1: The Gnome System Monitor
-gnome-extra/gnome-tweaks 3.32.0-r1: Customize advanced GNOME 3 options
+gnome-extra/gnome-tweaks 3.32.0-r1 3.34.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.32.3 3.34.1: GNOME end user documentation
 gnome-extra/gnome-user-share 3.32.0.1: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
@@ -11673,7 +11673,7 @@ gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME'
 gnome-extra/pch-session 3.32.0 3.34.3: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
-gnome-extra/sushi 3.32.1: A quick previewer for Nautilus, the GNOME file manager
+gnome-extra/sushi 3.32.1 3.34.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.32.2 3.34.0: Help browser for GNOME
 gnome-extra/yelp-xsl 3.32.1: XSL stylesheets for yelp
@@ -15926,7 +15926,7 @@ sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your phot
 sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxpy 0.8.6: python GPX parser
-sci-geosciences/gpxsee 7.18 7.20 7.23 7.25: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
+sci-geosciences/gpxsee 7.18 7.20 7.23 7.25 7.26: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/grass 7.4.4 7.4.4-r3: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
