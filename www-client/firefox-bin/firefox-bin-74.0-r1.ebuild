@@ -111,14 +111,20 @@ src_install() {
 	done
 	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
 	newicon "${S}"/browser/chrome/icons/default/default48.png ${PN}.png
-	domenu "${FILESDIR}"/${PN}.desktop
-	sed -i -e "s:@NAME@:${name}:" -e "s:@ICON@:${icon}:" \
-		"${ED}usr/share/applications/${PN}.desktop" || die
+	newmenu "${FILESDIR}/${PN}-r1.desktop" "${PN}.desktop"
 
 	# Add StartupNotify=true bug 237317
-	if use startup-notification; then
-		echo "StartupNotify=true" >> "${ED}"usr/share/applications/${PN}.desktop
+	local startup_notify="false"
+	if use startup-notification ; then
+		startup_notify="true"
 	fi
+
+	sed -i \
+		-e "s:@NAME@:${name} (bin):" \
+		-e "s:@EXEC@:firefox-bin:" \
+		-e "s:@ICON@:${icon}:" \
+		-e "s:@STARTUP_NOTIFY@:${startup_notify}:" \
+		"${ED%/}/usr/share/applications/${PN}.desktop" || die
 
 	# Install firefox in /opt
 	dodir ${MOZILLA_FIVE_HOME%/*}
