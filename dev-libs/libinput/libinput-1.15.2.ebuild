@@ -13,7 +13,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0/10"
 [[ "$(ver_cut 3)" -gt 900 ]] || \
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="doc input_devices_wacom"
 # Tests require write access to udev rules directory which is a no-no for live system.
 # Other tests are just about logs, exported symbols and autotest of the test library.
