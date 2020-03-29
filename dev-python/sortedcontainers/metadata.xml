@@ -8,6 +8,7 @@
   <longdescription lang="en">
     Python Sorted Container Types: SortedList, SortedDict, and SortedSet 
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">sortedcontainers</remote-id>
     <remote-id type="github">grantjenks/sorted_containers</remote-id>    
