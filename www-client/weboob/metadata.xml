@@ -5,9 +5,23 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>laurent@bachelier.name</email>
+		<name>Laurent Bachelier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name="deprecated">Enable <pkg>dev-python/mechanize</pkg> support (deprecated in favor of <pkg>dev-python/requests</pkg></flag>
+		<flag name="deprecated" restrict='&lt;www-client/weboob-2.0'>Enable <pkg>dev-python/mechanize</pkg> support (deprecated in favor of <pkg>dev-python/requests</pkg></flag>
 		<flag name="fast-libs">Enable fast libs</flag>
 		<flag name="secure-updates">Enable secure updates</flag>
 	</use>
+	<longdescription lang="en">
+		Weboob (Web Outside Of Browsers) is a collection of applications able to
+		interact with websites, without requiring the user to open them in a
+		browser. It also provides well-defined APIs to talk to websites lacking
+		one.
+	</longdescription>
 </pkgmetadata>
