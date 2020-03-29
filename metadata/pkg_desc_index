@@ -8685,18 +8685,18 @@ dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
 dev-python/raven 5.33.0: Raven is a client for Sentry
 dev-python/rax-default-network-flags-python-novaclient-ext 0.4.0: Disk Config extension for python-novaclient
 dev-python/rax-scheduled-images-python-novaclient-ext 0.3.1: Adds backup-schedule extension support to python-novaclient
-dev-python/rdflib 4.2.2 4.2.2-r1: RDF library containing a triple store and parser/serializer
-dev-python/readlike 0.1.2 0.1.3: a python library similar to readline
-dev-python/readme_renderer 17.2 24.0-r1 25.0: a library for rendering "readme" descriptions for Warehouse
+dev-python/rdflib 4.2.2-r1: RDF library containing a triple store and parser/serializer
+dev-python/readlike 0.1.3: a python library similar to readline
+dev-python/readme_renderer 24.0-r1 25.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 1.0.1 1.0.1-r1: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 0.9.0: Python library that performs advanced searches in strings
-dev-python/recommonmark 0.4.0 0.5.0_pre20180907 0.5.0_pre20181012 0.5.0_pre20181012-r1 0.5.0 0.6.0: Python docutils-compatibility bridge to CommonMark
-dev-python/redis-py 3.2.1 3.3.11: Python client for Redis key-value store
+dev-python/recommonmark 0.5.0 0.6.0: Python docutils-compatibility bridge to CommonMark
+dev-python/redis-py 3.3.11: Python client for Redis key-value store
 dev-python/redis-py-cluster 1.3.4: Python cluster client for the official redis cluster
 dev-python/redlock-py 1.0.8: Redis distributed locks in Python
-dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
+dev-python/rednose 0.4.3: coloured output for nosetests
 dev-python/reflink 0.2.1: Python wrapper around the reflink system calls
-dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
+dev-python/regendoc 0.6.1: Check/update simple file/shell examples in documentation
 dev-python/regex 2017.04.05 2017.04.05-r1 2019.11.1 2020.2.20: Alternative regular expression module to replace re
 dev-python/rencode 1.0.5-r1: similar to bencode from the BitTorrent project
 dev-python/reno 2.7.0 2.11.2 2.11.3: Release notes manager, storing release notes in a git repo and building docs
@@ -18973,7 +18973,7 @@ xfce-base/thunar 1.8.12 1.8.14: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.3 4.15.1: Panel for the Xfce desktop environment
-xfce-base/xfce4-session 4.14.1: A session manager for the Xfce desktop environment
+xfce-base/xfce4-session 4.14.1 4.14.2: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.2 4.15.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1: A configuration management system for Xfce
 xfce-base/xfdesktop 4.14.2: Desktop manager for the Xfce desktop environment
