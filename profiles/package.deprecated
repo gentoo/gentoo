@@ -97,8 +97,8 @@ dev-java/oracle-jre-bin
 # app-editors/emacs package, which makes the virtual unnecessary.
 # Packages should depend on >=app-editors/emacs-23.1:* instead.
 # See the documentation of elisp-common.eclass for details.
-# Removal (without prior masking) in 90 days, or after the release
-# of Emacs 27.1, whatever will occur later. Bug #291296.
+# Removal (without prior masking) after the release of Emacs 27.1,
+# but not later than 2020-06-18. Bug #291296.
 virtual/emacs
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-09)
