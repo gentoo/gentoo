@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -37,7 +37,6 @@ DEPEND="
 	app-crypt/qca:2[ssl]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
@@ -52,6 +51,7 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/libxcb
 	aspell? ( app-text/aspell )
+	dbus? ( dev-qt/qtdbus:5 )
 	enchant? ( app-text/enchant:2 )
 	hunspell? ( app-text/hunspell:= )
 	keyring? ( dev-libs/qtkeychain:= )
@@ -121,6 +121,7 @@ src_configure() {
 		-DUSE_ASPELL=$(usex aspell)
 		-DUSE_ENCHANT=$(usex enchant)
 		-DUSE_HUNSPELL=$(usex hunspell)
+		-DUSE_DBUS=$(usex dbus)
 		-DINSTALL_PLUGINS_SDK=1
 		-DUSE_KEYCHAIN=$(usex keyring)
 		-DCHAT_TYPE=$chattype
