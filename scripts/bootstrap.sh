@@ -292,7 +292,7 @@ if [[ ${USE_NPTL} = "1" ]] ; then
 	# Should we build with nptl only?
 	[[ ${USE_NPTLONLY} = "1" ]] && ALLOWED_USE="${ALLOWED_USE} nptlonly"
 fi
-[[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="virtual/os-headers"
+[[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="$(portageq expand_virtual / virtual/os-headers)"
 
 einfo "Using baselayout : ${myBASELAYOUT}"
 einfo "Using portage    : ${myPORTAGE}"
