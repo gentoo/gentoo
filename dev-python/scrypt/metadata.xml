@@ -9,9 +9,6 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
-	<longdescription lang="en">
-		Bindings for the scrypt key derivation function library
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">scrypt</remote-id>
 		<remote-id type="bitbucket">mhallin/py-scrypt</remote-id>
