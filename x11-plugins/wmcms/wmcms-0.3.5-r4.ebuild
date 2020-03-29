@@ -11,11 +11,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
-DEPEND=">=x11-libs/libdockapp-0.7-r1:="
+DEPEND=">=x11-libs/libdockapp-0.7:="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-s4t4n.patch
-	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
