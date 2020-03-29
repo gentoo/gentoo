@@ -25,6 +25,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.5-tinfo.patch
+	"${FILESDIR}"/${PN}-1.4.6-stdin.patch
 )
 
 src_prepare() {
