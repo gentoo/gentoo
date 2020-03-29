@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit font toolchain-funcs xdg-utils
+inherit font toolchain-funcs
 
 DESCRIPTION="GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font"
 HOMEPAGE="http://unifoundry.com/"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="fontforge utils"
 
-DEPEND="
+BDEPEND="
 	fontforge? (
 		app-text/bdf2psf
 		dev-lang/perl
@@ -34,32 +34,27 @@ PATCHES=(
 	"${FILESDIR}"/11.0.02-make.patch
 )
 
-src_prepare() {
-	sed -i -e 's/install -s/install/' src/Makefile || die
-	default
-}
-
 src_compile() {
+	buildargs=(
+		BUILDFONT=$(usex fontforge 1 '')
+		CC="$(tc-getCC)"
+		CFLAGS="${CFLAGS}"
+		INSTALL="${INSTALL-install}"
+	)
 	if use fontforge || use utils; then
-		tc-export CC
-		xdg_environment_reset
-		makeargs=(
-			CFLAGS="${CFLAGS}"
-			BUILDFONT=$(usex fontforge 1 '')
-		)
-		emake  "${makeargs[@]}"
+		emake "${buildargs[@]}"
 	fi
 }
 
 src_install() {
-	makeargs+=(
-		DESTDIR="${ED%/}"
-		PCFDEST="${ED%/}${FONTDIR}"
-		TTFDEST="${ED%/}${FONTDIR}"
-		USRDIR=usr
+	local installargs=(
+		COMPRESS=0
+		DESTDIR="${ED}"
+		PCFDEST="${ED}${FONTDIR}"
+		TTFDEST="${ED}${FONTDIR}"
 	)
-	use utils || makeargs+=( -C font )
-	emake "${makeargs[@]}" COMPRESS=0 install
+	use utils || installargs+=( -C font )
+	emake "${buildargs[@]}" "${installargs[@]}" install
 	font_xfont_config
 	font_fontconfig
 }
