@@ -411,7 +411,7 @@ app-admin/eclean-kernel 0.4.3 1.99.4 9999: Clean up old and stale kernel files
 app-admin/elektra 0.8.20-r1: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.3 4.4: Run arbitrary commands when files change
-app-admin/eselect 1.4.12 1.4.14 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
+app-admin/eselect 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/exo 1.10.0: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
@@ -1421,7 +1421,7 @@ app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/emhacks 20070920-r1: Useful Emacs Lisp libraries, including gdiff, jjar, jmaker, swbuff, and tabbar
 app-emacs/emms 4.4 5.2 5.3: The Emacs Multimedia System
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
-app-emacs/eselect-mode 1.4.14 1.4.15 1.4.16 9999: Emacs major mode for editing eselect files
+app-emacs/eselect-mode 1.4.15 1.4.16 9999: Emacs major mode for editing eselect files
 app-emacs/ess 17.11 18.10.2-r1: Emacs Speaks Statistics
 app-emacs/evil 1.2.13 1.2.14: Extensible vi layer for Emacs
 app-emacs/expand-region 0.11.0-r1: Emacs extension to increase selected region by semantic units
@@ -8978,19 +8978,19 @@ dev-python/vcrpy 1.11.1 1.12.0 4.0.2: Automatically mock your HTTP interactions 
 dev-python/vcstools 0.1.42: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.16.0.0: Use version control tags to discover version numbers
 dev-python/vdf 3.2: A module for (de)serialization to and from VDF, Valve's key-value text format
-dev-python/vdirsyncer 0.16.3 0.16.4 0.16.6 0.16.7: Synchronize calendars and contacts
+dev-python/vdirsyncer 0.16.7: Synchronize calendars and contacts
 dev-python/venusian 1.0 1.0_p20161030: A library for deferring decorator actions
-dev-python/verboselogs 1.6 1.7: Verbose logging for Python's logging module
-dev-python/versioneer 0.16 0.18 0.18-r1: Easy VCS-based management of project version strings
+dev-python/verboselogs 1.7: Verbose logging for Python's logging module
+dev-python/versioneer 0.18: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
-dev-python/vine 1.1.3 1.3.0: Python Promises
+dev-python/vine 1.3.0: Python Promises
 dev-python/virtualenv 16.0.0 16.7.9: Virtual Python Environment builder
-dev-python/virtualenv-clone 0.2.6 0.5.3: A script for cloning a non-relocatable virtualenv
-dev-python/virtualenvwrapper 4.8.2 4.8.2-r1 4.8.4: Set of extensions to Ian Bicking's virtualenv tool
+dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
+dev-python/virtualenvwrapper 4.8.4: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
 dev-python/vobject 0.9.6.1-r1: Python package for parsing and generating vCard and vCalendar files
-dev-python/voluptuous 0.10.5 0.11.1: A Python data validation library.
-dev-python/vpython 7.4.2 7.4.6: VPython for Jupyter notebook
+dev-python/voluptuous 0.11.1: A Python data validation library.
+dev-python/vpython 7.4.6: VPython for Jupyter notebook
 dev-python/vulture 0.10: find unused classes, functions and variables in your code
 dev-python/waitress 1.0.2 1.3.1: A pure-Python WSGI server
 dev-python/warlock 1.1.0 1.2.0 1.3.0: Python object model built on JSON schema and JSON patch
@@ -10540,7 +10540,7 @@ dev-util/intel-graphics-compiler 1.0.3151 1.0.3445: LLVM-based OpenCL compiler t
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/its4 1.1.1-r1: ITS4: Software Security Tool
-dev-util/itstool 2.0.2 2.0.6-r1: Translation tool for XML documents that uses gettext files and ITS rules
+dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
@@ -12596,7 +12596,7 @@ media-gfx/gnofract4d 4.0.1_p1-r1: A program for drawing beautiful mathematically
 media-gfx/gnome-font-viewer 3.32.0 3.34.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.32.1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
-media-gfx/gnome-screenshot 3.32.0: Screenshot utility for GNOME
+media-gfx/gnome-screenshot 3.32.0 3.36.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.20: Free, redistributable digital camera software application
@@ -17550,7 +17550,7 @@ sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlo
 sys-power/bbswitch 0.8-r2 9999: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 4.13.0 5.4: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
-sys-power/iasl 20190215 20190703 20190703-r1 20200214: Intel ACPI Source Language (ASL) compiler
+sys-power/iasl 20190215 20190703 20190703-r1 20200214 20200326: Intel ACPI Source Language (ASL) compiler
 sys-power/intel-undervolt 1.6 1.7 9999: Intel CPU undervolting and throttling configuration tool
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.7.4-r4 2.7.4-r5: Network-UPS Tools
