@@ -14,7 +14,7 @@ SRC_URI="http://lttng.org/files/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${MY_SLOT}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 ~x86"
 IUSE="examples numa"
 
 DEPEND="
