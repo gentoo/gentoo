@@ -1,17 +1,17 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils ltprune
+EAPI=7
+inherit autotools
 
 DESCRIPTION="A set of tools to collect and process netflow data"
 HOMEPAGE="https://github.com/phaag/nfdump"
 SRC_URI="https://github.com/phaag/nfdump/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0/${PV}"
+SLOT="0/1.6.15"
 KEYWORDS="~amd64 ~x86"
-IUSE="compat15 debug ftconv nfprofile nftrack readpcap sflow static-libs"
+IUSE="debug ftconv nfprofile nftrack readpcap sflow static-libs"
 
 COMMON_DEPEND="
 	app-arch/bzip2
@@ -23,6 +23,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+	app-doc/doxygen
 	sys-devel/flex
 	virtual/yacc
 "
@@ -30,17 +31,18 @@ RDEPEND="
 	${COMMON_DEPEND}
 	dev-lang/perl
 "
-
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.19-compiler.patch
+	"${FILESDIR}"/${PN}-1.6.19-libft.patch
+)
 DOCS=( AUTHORS ChangeLog README.md )
 
 src_prepare() {
-	eapply \
-		"${FILESDIR}"/${PN}-1.6.14-libft.patch \
-		"${FILESDIR}"/${PN}-1.6.14-libnfdump.patch
-
-	eapply_user
+	default
 
 	eautoreconf
+
+	doxygen -u doc/Doxyfile.in || die
 }
 
 src_configure() {
@@ -49,7 +51,6 @@ src_configure() {
 		$(use ftconv && echo "--enable-ftconv --with-ftpath=/usr") \
 		$(use nfprofile && echo --enable-nfprofile) \
 		$(use nftrack && echo --enable-nftrack) \
-		$(use_enable compat15) \
 		$(use_enable debug devel) \
 		$(use_enable readpcap) \
 		$(use_enable sflow) \
@@ -58,6 +59,5 @@ src_configure() {
 
 src_install() {
 	default
-
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
