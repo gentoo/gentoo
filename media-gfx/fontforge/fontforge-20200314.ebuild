@@ -16,10 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 IUSE="doc truetype-debugger gif gtk jpeg png +python readline test tiff svg unicode woff2 X"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( png python )
-"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/glib:2
