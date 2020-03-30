@@ -641,7 +641,7 @@ src_install() {
 	pax-mark m "${BUILD_OBJ_DIR}"/dist/bin/xpcshell
 
 	# Add our default prefs for firefox
-	cp "${FILESDIR}"/gentoo-default-prefs.js-2 \
+	cp "${FILESDIR}"/gentoo-default-prefs.js-3 \
 		"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
 		|| die
 
@@ -852,20 +852,35 @@ pkg_postinst() {
 		elog
 	fi
 
-	local show_normandy_information
+	local show_doh_information show_normandy_information
 
 	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
-		# New install
+		# New install; Tell user that DoH is disabled by default
+		show_doh_information=yes
 		show_normandy_information=yes
 	else
 		local replacing_version
 		for replacing_version in ${REPLACING_VERSIONS} ; do
-			if ver_test "${replacing_version}" -lt 68.6.0-r2 ; then
+			if ver_test "${replacing_version}" -lt 68.6.0-r3 ; then
+				# Tell user only once about our DoH default
+				show_doh_information=yes
+			fi
+
+			if ver_test "${replacing_version}" -lt 68.6.0-r3 ; then
 				# Tell user only once about our Normandy default
 				show_normandy_information=yes
-				break
 			fi
 		done
+	fi
+
+	if [[ -n "${show_doh_information}" ]] ; then
+		elog
+		elog "Note regarding Trusted Recursive Resolver aka DNS-over-HTTPS (DoH):"
+		elog "Due to privacy concerns (encrypting DNS might be a good thing, sending all"
+		elog "DNS traffic to Cloudflare by default is not a good idea and applications"
+		elog "should respect OS configured settings), \"network.trr.mode\" was set to 5"
+		elog "(\"Off by choice\") by default."
+		elog "You can enable DNS-over-HTTPS in ${PN^}'s preferences."
 	fi
 
 	# bug 713782
