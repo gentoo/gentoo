@@ -11,7 +11,7 @@ SRC_URI="https://ftp.isc.org/isc/aggregate/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc sparc x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl"

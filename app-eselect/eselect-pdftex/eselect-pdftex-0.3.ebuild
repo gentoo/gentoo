@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~ppc ~ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~ppc ~ppc64 s390 sparc x86"
 
 DEPEND=""
 # Depend on texlive-core-2008 that allows usage of this module, otherwise it

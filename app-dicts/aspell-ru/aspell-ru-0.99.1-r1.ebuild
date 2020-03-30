@@ -14,7 +14,7 @@ MY_P="aspell6-ru-0.99f7-1"
 SRC_URI="mirror://gnu/aspell/dict/ru/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}

@@ -10,7 +10,7 @@ SRC_URI="http://www.coda.cs.cmu.edu/pub/lwp/src/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
-KEYWORDS="~alpha amd64 ~hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 PATCHES=(

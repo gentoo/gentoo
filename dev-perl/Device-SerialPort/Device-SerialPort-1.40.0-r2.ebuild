@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A Serial port Perl Module"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc sparc x86"
 IUSE=""
 
 #From the module:

@@ -17,7 +17,7 @@ SRC_URI="http://archive.mozilla.org/pub/js/${MY_PN}${PV}.tar.gz
 LICENSE="NPL-1.1"
 SLOT="17"
 # "MIPS, MacroAssembler is not supported" wrt #491294 for -mips
-KEYWORDS="~alpha amd64 arm -hppa ia64 -mips ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm -hppa ~ia64 -mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="debug jit minimal static-libs test"
 
 REQUIRED_USE="debug? ( jit )"

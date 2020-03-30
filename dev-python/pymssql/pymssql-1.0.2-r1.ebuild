@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 DEPEND=">=dev-db/freetds-0.63[mssql]

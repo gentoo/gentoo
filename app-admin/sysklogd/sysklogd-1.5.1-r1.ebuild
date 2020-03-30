@@ -13,7 +13,7 @@ SRC_URI="http://www.infodrom.org/projects/sysklogd/download/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="logrotate"
 RESTRICT="test"
 

@@ -11,7 +11,7 @@ DESCRIPTION="An object-oriented interface to Ogg Vorbis information and comment 
 
 SLOT="0"
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2" # GPL-2+
-KEYWORDS="~alpha amd64 ia64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc sparc x86"
 IUSE=""
 
 RDEPEND="

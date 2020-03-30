@@ -11,7 +11,7 @@ inherit toolchain-funcs perl-module
 DESCRIPTION="Perl Net::DNS - Perl DNS Resolver Module"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="+ipv6 test minimal"
 RESTRICT="!test? ( test )"
 
