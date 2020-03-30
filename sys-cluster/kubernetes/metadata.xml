@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<use>
+		<flag name="kubeadm">CLI to bootstrap a secure Kubernetes cluster</flag>
+		<flag name="kubectl">CLI to run commands against Kubernetes clusters</flag>
+		<flag name="kubelet">Kubernetes node agent</flag>
+		<flag name="kube-apiserver">Kubernetes API server</flag>
+		<flag name="kube-controller-manager">Kubernetes controller manager</flag>
+		<flag name="kube-proxy">Kubernetes proxy service</flag>
+		<flag name="kube-scheduler">Kubernetes scheduler</flag>
+	</use>
+</pkgmetadata>
