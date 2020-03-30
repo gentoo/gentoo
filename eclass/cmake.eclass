@@ -371,15 +371,6 @@ cmake_src_configure() {
 	# Fix xdg collision with sandbox
 	xdg_environment_reset
 
-	# @SEE CMAKE_BUILD_TYPE
-	if [[ ${CMAKE_BUILD_TYPE} = Gentoo ]]; then
-		# Handle release builds
-		if ! in_iuse debug || ! use debug; then
-			local CPPFLAGS=${CPPFLAGS}
-			append-cppflags -DNDEBUG
-		fi
-	fi
-
 	# Prepare Gentoo override rules (set valid compiler, append CPPFLAGS etc.)
 	local build_rules=${BUILD_DIR}/gentoo_rules.cmake
 
