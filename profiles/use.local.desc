@@ -8147,6 +8147,13 @@ sys-cluster/hpx:tbb - Use dev-cpp/tbb for memory allocation
 sys-cluster/keepalived:bfd - compile with support for Bidirectional Forwarding Detection (BFD).
 sys-cluster/keepalived:json - compile with signal to dump configuration and stats as JSON.
 sys-cluster/keepalived:regex - compile with support for regex in health checks
+sys-cluster/kubernetes:kube-apiserver - Kubernetes API server
+sys-cluster/kubernetes:kube-controller-manager - Kubernetes controller manager
+sys-cluster/kubernetes:kube-proxy - Kubernetes proxy service
+sys-cluster/kubernetes:kube-scheduler - Kubernetes scheduler
+sys-cluster/kubernetes:kubeadm - CLI to bootstrap a secure Kubernetes cluster
+sys-cluster/kubernetes:kubectl - CLI to run commands against Kubernetes clusters
+sys-cluster/kubernetes:kubelet - Kubernetes node agent
 sys-cluster/legion:gasnet - Enable GASNet lib support
 sys-cluster/legion:hwloc - Enable HWLoc lib support
 sys-cluster/lustre:client - Enable kernel client modules
