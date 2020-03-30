@@ -1,0 +1,33 @@
+From 93ebdd809b725c7f13e8fc150b3186b3b6d80d43 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Mon, 30 Mar 2020 16:49:31 +0000
+Subject: [PATCH] libstdc++: fix namespace of nullptr_t in array_buffer_view_helpers.h
+
+nullptr_t is defined in namespace std.
+
+Bug: 819294
+Change-Id: I16fd876b84aff4f3c0ef6d4654b8ad5015e52d27
+---
+
+diff --git a/third_party/blink/renderer/core/typed_arrays/array_buffer_view_helpers.h b/third_party/blink/renderer/core/typed_arrays/array_buffer_view_helpers.h
+index a6b8547..5fa03cb 100644
+--- a/third_party/blink/renderer/core/typed_arrays/array_buffer_view_helpers.h
++++ b/third_party/blink/renderer/core/typed_arrays/array_buffer_view_helpers.h
+@@ -36,7 +36,7 @@
+   template <typename U, std::enable_if_t<std::is_base_of<T, U>::value, int> = 0>
+   NotShared(const NotShared<U>& other) : typed_array_(other.Get()) {}
+ 
+-  explicit NotShared(nullptr_t) {}
++  explicit NotShared(std::nullptr_t) {}
+   explicit NotShared(T* typed_array) : typed_array_(typed_array) {
+     DCHECK(!typed_array || !typed_array->IsShared());
+   }
+@@ -95,7 +95,7 @@
+   template <typename U, std::enable_if_t<std::is_base_of<T, U>::value, int> = 0>
+   MaybeShared(const MaybeShared<U>& other) : typed_array_(other.Get()) {}
+ 
+-  explicit MaybeShared(nullptr_t) {}
++  explicit MaybeShared(std::nullptr_t) {}
+   // [AllowShared] array buffer view may be a view of non-shared array buffer,
+   // so we don't check if the buffer is SharedArrayBuffer or not.
+   // https://heycam.github.io/webidl/#AllowShared
