@@ -27,7 +27,11 @@ RDEPEND="
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		dev-python/pycrypto[${PYTHON_USEDEP}]
 	)"
-DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+# Block dev-python/pytest-testmon for bug #693508.
+DEPEND="test? (
+	dev-python/pytest[${PYTHON_USEDEP}]
+	!!dev-python/pytest-testmon
+)"
 
 S=${WORKDIR}/${MY_PN}-${EGIT_COMMIT}
 
