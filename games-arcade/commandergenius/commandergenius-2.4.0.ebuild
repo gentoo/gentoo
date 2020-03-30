@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8} )
 
-inherit cmake desktop python-single-r1 xdg-utils
+inherit desktop python-single-r1 xdg cmake
 
 MY_PN="Commander-Genius"
 MY_P="${MY_PN}-v${PV}"
@@ -20,22 +20,25 @@ IUSE="+downloader opengl +python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="mirror" # contains keen files, but we do not install them
 
-RDEPEND="media-libs/libsdl2[opengl?,video]
+RDEPEND="
+	media-libs/libsdl2[opengl?,video]
 	media-libs/sdl2-image
 	media-libs/sdl2-mixer[vorbis]
+	media-libs/sdl2-ttf
 	sys-libs/zlib[minizip]
 	downloader? ( net-misc/curl )
 	opengl? ( virtual/opengl )
-	python? ( ${PYTHON_DEPS} )"
+	python? ( ${PYTHON_DEPS} )
+"
 
-DEPEND="${RDEPEND}
-	dev-libs/boost"
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost
+"
 
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.3.1-minizip.patch
-	"${FILESDIR}"/${PN}-2.3.1-desktop.patch
 	"${FILESDIR}"/${PN}-2.3.1-build.patch
 	"${FILESDIR}"/${PN}-2.3.1-paths.patch
 )
@@ -52,10 +55,10 @@ src_configure() {
 		-DGAMES_SHAREDIR="${EPREFIX}${SHAREDIR}"
 		-DDOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DDOWNLOADER=$(usex downloader)
-		-DOPENGL=$(usex opengl)
+		-DUSE_OPENGL=$(usex opengl)
 		-DUSE_PYTHON3=$(usex python)
 		-DUSE_SDL2=ON
-		-DBUILD_SHARED_LIBS=OFF
+		-DUSE_SDL_TTF=ON # Crashes when disabled.
 	)
 
 	cmake_src_configure
@@ -72,7 +75,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 
 	elog "Run ${PN} to start the game. It will search for game data"
 	elog "in ~/.CommanderGenius/games and ${EPREFIX}${GAMESDIR}."
@@ -85,8 +88,4 @@ pkg_postinst() {
 	elog "started the game for the first time."
 	elog
 	use opengl && elog "You may also want to set \"OpenGL = true\"."
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
