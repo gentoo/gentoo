@@ -859,7 +859,7 @@ app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for file
 app-crypt/ima-evm-utils 1.1-r1 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
 app-crypt/jetring 0.25 0.27: GPG keyring maintenance using changesets
-app-crypt/jitterentropy 2.1.2: Hardware RNG based on CPU timing jitter
+app-crypt/jitterentropy 2.1.2 2.2.0: Hardware RNG based on CPU timing jitter
 app-crypt/jitterentropy-rngd 1.1.0: Jitter RNG daemon
 app-crypt/johntheripper 1.8.0: fast password cracker
 app-crypt/johntheripper-jumbo 1.8.0 1.9.0 9999: fast password cracker
@@ -943,7 +943,7 @@ app-crypt/tpm2-tss 2.2.3-r2 2.3.3: TCG Trusted Platform Module 2.0 Software Stac
 app-crypt/tpm2-tss-engine 1.0.1: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1: GnuPG archive keys of the Ubuntu archive
-app-crypt/veracrypt 1.23 1.24 1.24-r1 1.24-r2 1.24_p1 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
+app-crypt/veracrypt 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
 app-crypt/virtualsmartcard 0.7: Smart card emulator, can be used with Remote Smart Card Reader
 app-crypt/xca 2.1.2 2.2.1: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
@@ -7518,7 +7518,7 @@ dev-python/boto3 1.9.122 1.10.2 9999: The AWS SDK for Python
 dev-python/botocore 1.12.122 1.15.16 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
-dev-python/bpython 0.18 0.18-r1: Syntax highlighting and autocompletion for the Python interpreter
+dev-python/bpython 0.18 0.18-r1 0.19: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/breathe 4.14.1: Sphinx Doxygen renderer
 dev-python/brotlipy 0.7.0: Python binding to the Brotli library
 dev-python/brython 3.7.2: A Python 3 implementation for client-side web programming
@@ -7877,7 +7877,7 @@ dev-python/hglib 2.1: Library for using the Mercurial Command Server from Python
 dev-python/hiredis 0.2.0-r1 0.2.0-r2: Python extension that wraps hiredis
 dev-python/hiro 0.2 0.3 0.5: Time manipulation utilities for Python
 dev-python/hpack 2.3.0-r1 3.0.0: Pure-Python HPACK header compression
-dev-python/html2text 2018.1.9 2019.8.11 2019.9.26 2020.1.16-r1: Turn HTML into equivalent Markdown-structured text
+dev-python/html2text 2019.9.26 2020.1.16-r1: Turn HTML into equivalent Markdown-structured text
 dev-python/html5-parser 0.4.9: Fast C based HTML 5 parsing for python
 dev-python/html5lib 1.0.1-r1: HTML parser based on the HTML5 specification
 dev-python/httmock 1.2.5: A mocking library for requests
@@ -14826,7 +14826,7 @@ net-mail/relay-ctrl 3.1.1-r2: SMTP Relaying Control designed for qmail & tcpserv
 net-mail/renattach 1.2.4-r1: Filter that renames/deletes dangerous email attachments
 net-mail/ripmime 1.4.0.10: extract attachment files out of a MIME-encoded email pack
 net-mail/ripole 0.2.2: Program/library to pull out attachment from OLE2 data files
-net-mail/rss2email 2.71-r2 3.11: A python script that converts RSS/Atom newsfeeds to email
+net-mail/rss2email 3.11: A python script that converts RSS/Atom newsfeeds to email
 net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, safely copying standard input
 net-mail/sendEmail 1.56-r1 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r4: A serialmail is a collection of tools for passing mail across serial links
@@ -16881,7 +16881,7 @@ sys-apps/restartd 0.2.2-r1: A daemon for checking your running and not running p
 sys-apps/restorecond 2.9 3.0 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 11.0.2 12.0.0: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
-sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8 6.9: Daemon to use hardware random number generators
+sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8 6.9 6.10: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.7.0 5.9.0: Utility for advanced configuration of Roccat devices
 sys-apps/rtl-entropy 0.1.2_p20180118-r1: An entropy generator using SDR peripherals, including rtl-sdr and BladeRF
 sys-apps/s390-tools 2.4.0-r1 2.9.0: User space utilities for the zSeries (s390) Linux kernel and device drivers
