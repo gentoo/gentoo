@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-MOZ_ESR=0
+MOZ_ESR=1
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 MOZ_LANGS=(ach af an ar ast az be bg bn br bs ca cak cs cy da de dsb el en en-CA
@@ -35,7 +35,7 @@ RESTRICT="strip mirror"
 KEYWORDS="-* amd64 x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+alsa +ffmpeg +pulseaudio selinux startup-notification"
+IUSE="+alsa +ffmpeg +pulseaudio selinux startup-notification wayland"
 
 DEPEND="app-arch/unzip
 	alsa? (
@@ -96,33 +96,17 @@ src_unpack() {
 }
 
 src_install() {
-	declare MOZILLA_FIVE_HOME=/opt/${MOZ_PN}
-
-	local size sizes icon_path icon name
-	sizes="16 32 48 128"
-	icon_path="${S}/browser/chrome/icons/default"
-	icon="${PN}"
-	name="Mozilla Firefox"
-
-	# Install icons and .desktop for menu entry
-	for size in ${sizes}; do
-		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
-		newins "${icon_path}/default${size}.png" "${icon}.png"
-	done
-	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
-	newicon "${S}"/browser/chrome/icons/default/default48.png ${PN}.png
-	domenu "${FILESDIR}"/${PN}.desktop
-	sed -i -e "s:@NAME@:${name}:" -e "s:@ICON@:${icon}:" \
-		"${ED}usr/share/applications/${PN}.desktop" || die
-
-	# Add StartupNotify=true bug 237317
-	if use startup-notification; then
-		echo "StartupNotify=true" >> "${ED}"usr/share/applications/${PN}.desktop
-	fi
+	local MOZILLA_FIVE_HOME=/opt/${MOZ_PN}
 
 	# Install firefox in /opt
 	dodir ${MOZILLA_FIVE_HOME%/*}
-	mv "${S}" "${ED}"${MOZILLA_FIVE_HOME} || die
+	mv "${S}" "${ED%/}"${MOZILLA_FIVE_HOME} || die
+	cd "${WORKDIR}" || die
+
+	# Install language packs
+	MOZEXTENSION_TARGET="distribution/extensions" \
+		MOZ_INSTALL_L10N_XPIFILE="1" \
+		mozlinguas_src_install
 
 	# Disable built-in auto-update because we update firefox-bin through package manager
 	insinto ${MOZILLA_FIVE_HOME}/distribution/
@@ -134,27 +118,89 @@ src_install() {
 	insinto ${MOZILLA_FIVE_HOME}
 	newins "${FILESDIR}"/all-gentoo-3.js all-gentoo.js
 
-	# Install language packs
-	MOZEXTENSION_TARGET="distribution/extensions" \
-		MOZ_INSTALL_L10N_XPIFILE="1" \
-		mozlinguas_src_install
+	local size sizes icon_path icon name
+	sizes="16 32 48 128"
+	icon_path="${MOZILLA_FIVE_HOME}/browser/chrome/icons/default"
+	icon="${PN}"
+	name="Mozilla Firefox (bin)"
 
+	local apulselib=
 	if use alsa && ! use pulseaudio; then
-		local apulselib="/usr/$(get_libdir)/apulse"
-		patchelf --set-rpath "${apulselib}" "${ED}"${MOZILLA_FIVE_HOME}/libxul.so || die
+		apulselib="${EPREFIX%/}/usr/$(get_libdir)/apulse"
+		patchelf --set-rpath "${apulselib}" "${ED%/}"${MOZILLA_FIVE_HOME}/libxul.so || die
 	fi
 
-	# Create /usr/bin/firefox-bin
-	dodir /usr/bin/
-	local apulselib=$(usex pulseaudio "" $(usex alsa "/usr/$(get_libdir)/apulse:" ""))
-	cat <<-EOF >"${ED}"usr/bin/${PN}
-	#!/bin/sh
-	unset LD_PRELOAD
-	LD_LIBRARY_PATH="${apulselib}/opt/firefox/" \\
-	GTK_PATH=/usr/$(get_libdir)/gtk-3.0/ \\
-	exec /opt/${MOZ_PN}/${MOZ_PN} "\$@"
-	EOF
-	fperms 0755 /usr/bin/${PN}
+	# Install icons and .desktop for menu entry
+	for size in ${sizes} ; do
+		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
+		newins "${icon_path}/default${size}.png" "${icon}.png"
+	done
+	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
+	newicon ${MOZILLA_FIVE_HOME}/browser/chrome/icons/default/default48.png ${PN}.png
+
+	# Add StartupNotify=true bug 237317
+	local startup_notify="false"
+	if use startup-notification ; then
+		startup_notify="true"
+	fi
+
+	local display_protocols="auto X11" use_wayland="false"
+	if use wayland ; then
+		display_protocols+=" Wayland"
+		use_wayland="true"
+	fi
+
+	local app_name desktop_filename display_protocol exec_command
+	for display_protocol in ${display_protocols} ; do
+		app_name="${name} on ${display_protocol}"
+		desktop_filename="${PN}-${display_protocol,,}.desktop"
+
+		case ${display_protocol} in
+			Wayland)
+				exec_command="${PN}-wayland --name ${PN}-wayland"
+				newbin "${FILESDIR}"/firefox-bin-wayland.sh ${PN}-wayland
+				;;
+			X11)
+				exec_command="${PN}-x11 --name ${PN}-x11"
+				if use wayland ; then
+					# Only needed when there's actually a choice
+					newbin "${FILESDIR}"/firefox-bin-x11.sh ${PN}-x11
+				fi
+				;;
+			*)
+				app_name="${name}"
+				desktop_filename="${PN}.desktop"
+				exec_command='firefox-bin'
+				;;
+		esac
+
+		newmenu "${FILESDIR}/${PN}-r1.desktop" "${desktop_filename}"
+		sed -i \
+			-e "s:@NAME@:${app_name}:" \
+			-e "s:@EXEC@:${exec_command}:" \
+			-e "s:@ICON@:${icon}:" \
+			-e "s:@STARTUP_NOTIFY@:${startup_notify}:" \
+			"${ED%/}/usr/share/applications/${desktop_filename}" || die
+	done
+
+	rm -f "${ED%/}"/usr/bin/firefox-bin || die
+	newbin "${FILESDIR}"/firefox-bin.sh firefox-bin
+
+	local wrapper
+	for wrapper in \
+		"${ED%/}"/usr/bin/firefox-bin \
+		"${ED%/}"/usr/bin/firefox-bin-x11 \
+		"${ED%/}"/usr/bin/firefox-bin-wayland \
+	; do
+		[[ ! -f "${wrapper}" ]] && continue
+
+		sed -i \
+			-e "s:@PREFIX@:${EPREFIX%/}/usr:" \
+			-e "s:@MOZ_FIVE_HOME@:${MOZILLA_FIVE_HOME}:" \
+			-e "s:@APULSELIB_DIR@:${apulselib}:" \
+			-e "s:@DEFAULT_WAYLAND@:${use_wayland}:" \
+			"${wrapper}" || die
+	done
 
 	# revdep-rebuild entry
 	insinto /etc/revdep-rebuild
@@ -165,7 +211,7 @@ src_install() {
 	share_plugins_dir
 
 	# Required in order to use plugins and even run firefox on hardened.
-	pax-mark mr "${ED}"${MOZILLA_FIVE_HOME}/{firefox,firefox-bin,plugin-container}
+	pax-mark mr "${ED%/}"${MOZILLA_FIVE_HOME}/{firefox,firefox-bin,plugin-container}
 }
 
 pkg_postinst() {
@@ -180,7 +226,6 @@ pkg_postinst() {
 		einfo "gnome-base/orbit and net-misc/curl emerged."
 		einfo
 	fi
-
 	use ffmpeg || ewarn "USE=-ffmpeg : HTML5 video will not render without media-video/ffmpeg installed"
 
 	local HAS_AUDIO=0
@@ -192,33 +237,41 @@ pkg_postinst() {
 		ewarn "USE=-pulseaudio & USE=-alsa : For audio please either set USE=pulseaudio or USE=alsa!"
 	fi
 
-	local show_doh_information
+	local show_normandy_information
 
 	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
-		# New install; Tell user that DoH is disabled by default
-		show_doh_information=yes
+		# New install
+		show_normandy_information=yes
 	else
 		local replacing_version
 		for replacing_version in ${REPLACING_VERSIONS} ; do
-			if ver_test "${replacing_version}" -lt 70 ; then
-				# Tell user only once about our DoH default
-				show_doh_information=yes
+			if ver_test "${replacing_version}" -lt 68.6.0-r1 ; then
+				# Tell user only once about our Normandy default
+				show_normandy_information=yes
 				break
 			fi
 		done
 	fi
 
-	if [[ -n "${show_doh_information}" ]] ; then
+	# bug 713782
+	if [[ -n "${show_normandy_information}" ]] ; then
 		elog
-		elog "Note regarding Trusted Recursive Resolver aka DNS-over-HTTPS (DoH):"
-		elog "Due to privacy concerns (encrypting DNS might be a good thing, sending all"
-		elog "DNS traffic to Cloudflare by default is not a good idea and applications"
-		elog "should respect OS configured settings), \"network.trr.mode\" was set to 5"
-		elog "(\"Off by choice\") by default."
-		elog "You can enable DNS-over-HTTPS in ${PN^}'s preferences."
+		elog "Upstream operates a service named Normandy which allows Mozilla to"
+		elog "push changes for default settings or even install new add-ons remotely."
+		elog "While this can be useful to address problems like 'Armagadd-on 2.0' or"
+		elog "revert previous decisions to disable TLS 1.0/1.1, privacy and security"
+		elog "concerns prevail, which is why we have switched off the use of this"
+		elog "service by default."
+		elog
+		elog "To re-enable this service set"
+		elog
+		elog "    app.normandy.enabled=true"
+		elog
+		elog "in about:config."
 	fi
 }
 
 pkg_postrm() {
+	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
