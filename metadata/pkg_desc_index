@@ -9552,7 +9552,7 @@ dev-ruby/c21e 1.1.8 1.1.9 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.2 3.12.0 3.12.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 2.18.0 3.28.0 3.29.0 3.30.0 3.31.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 2.18.0 3.28.0 3.29.0 3.30.0 3.31.0 3.32.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.6 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
@@ -10127,7 +10127,7 @@ dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and 
 dev-ruby/uglifier 4.1.20 4.2.0: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
-dev-ruby/unf_ext 0.0.7.5 0.0.7.6: Unicode Normalization Form support library for CRuby
+dev-ruby/unf_ext 0.0.7.5 0.0.7.6 0.0.7.7: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/vagrant_cloud 2.0.3-r1: Vagrant Cloud API Library
