@@ -138,7 +138,7 @@ src_compile() {
 	fi
 
 	tc-export AR CC PKG_CONFIG RANLIB
-	emake WARNERROR=no "${args[@]}"
+	emake WARNERROR=no "${args[@]}" all libflashrom.a
 }
 
 src_test() {
@@ -153,6 +153,8 @@ src_install() {
 	dosbin flashrom
 	doman flashrom.8
 	dodoc README Documentation/*.txt
+	dolib.a libflashrom.a
+	doheader libflashrom.h
 
 	if use tools ; then
 		if use amd64 ; then
