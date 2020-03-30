@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-30)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Bugs #484270 and #705646, masked for removal in 30 days.
+dev-python/basemap
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-30)
 # Unmaintained.  Humongous number of vulnerabilities.  Python 2 only.
 # Needs really active maintainer.  app-editors/atom is the only revdep.
