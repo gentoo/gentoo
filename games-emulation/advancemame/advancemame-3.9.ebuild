@@ -1,51 +1,53 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools flag-o-matic
 
 DESCRIPTION="GNU/Linux port of the MAME emulator with GUI menu"
 HOMEPAGE="http://www.advancemame.it/"
 SRC_URI="https://github.com/amadvance/advancemame/releases/download/v${PV}/${P}.tar.gz"
 
-# Fetch too big upstream patch
-SRC_URI+=" https://github.com/amadvance/advancemame/commit/70f099ac49786a287ebd3949ce8f8670a5731abd.patch -> ${PN}-3.7-use_pkgconfig_for_freetype_and_sdl.patch"
-
 LICENSE="GPL-2 XMAME"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa fbcon oss truetype"
+IUSE="alsa fbcon ncurses oss slang truetype"
 
 # sdl is required (bug #158417)
-RDEPEND="
-	app-arch/unzip
-	app-arch/zip
+DEPEND="
 	dev-libs/expat
-	media-libs/libsdl2
+	media-libs/libsdl2[video]
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
+	ncurses? ( sys-libs/ncurses )
+	slang? ( sys-libs/slang )
 	truetype? ( media-libs/freetype:2 )
 "
-DEPEND="${RDEPEND}
-	virtual/os-headers
+RDEPEND="
+	${DEPEND}
+	app-arch/unzip
+	app-arch/zip
+"
+BDEPEND="
 	virtual/pkgconfig
 	x86? ( >=dev-lang/nasm-0.98 )
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.2-pic.patch"
-	"${FILESDIR}"/${PN}-1.2-verboselog.patch
+	"${FILESDIR}"/${PN}-pic.patch
+	"${FILESDIR}"/${PN}-verboselog.patch
 
 	# Patches from upstream
-	"${FILESDIR}/${P}-move_aclocal_to_acinclude.patch"
-	"${DISTDIR}/${P}-use_pkgconfig_for_freetype_and_sdl.patch"
-	"${FILESDIR}/${P}-remove_static_configure_option.patch"
+	"${FILESDIR}"/${P}-pkgconfig_for_ncurses_and_slang.patch
 )
 
 src_prepare() {
 	default
-	eautoreconf
 
+	# AC_CHECK_CC_OPT is obsolete, superseded by AX_CHECK_COMPILE_FLAG
+	sed -i -e 's/AC_CHECK_CC_OPT/AX_CHECK_COMPILE_FLAG/' configure.ac || die
+
+	eautoreconf
 	sed -i -e 's/"-s"//' configure || die
 
 	use x86 && ln -s $(type -P nasm) "${T}/${CHOST}-nasm"
@@ -68,7 +70,9 @@ src_configure() {
 		--disable-svgalib \
 		$(use_enable alsa) \
 		$(use_enable fbcon fb) \
+		$(use_enable ncurses) \
 		$(use_enable oss) \
+		$(use_enable slang) \
 		$(use_enable truetype freetype) \
 		$(use_enable x86 asm)
 }
