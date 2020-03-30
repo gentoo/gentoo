@@ -334,3 +334,7 @@ media-video/mplayer -cpudetection
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-11-02)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-php/pecl-mongodb test
+
+# Christopher Head <chead@chead.ca> (2020-06-10)
+# Requires dev-db/influxdb which is amd64-only
+dev-python/influxdb test
