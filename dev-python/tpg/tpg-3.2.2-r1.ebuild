@@ -15,7 +15,7 @@ SRC_URI="http://christophe.delord.free.fr/tpg/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc x86"
+KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE="doc examples"
 DOCS=( ChangeLog README THANKS doc/tpg.pdf )
 

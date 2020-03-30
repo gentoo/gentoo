@@ -13,7 +13,7 @@ SRC_URI="https://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="sqlite"
 
 RDEPEND=">=dev-libs/elfutils-0.142

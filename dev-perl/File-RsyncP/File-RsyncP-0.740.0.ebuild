@@ -12,7 +12,7 @@ HOMEPAGE="http://perlrsync.sourceforge.net/ https://metacpan.org/release/File-Rs
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="net-misc/rsync"

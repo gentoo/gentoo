@@ -9,7 +9,7 @@ SRC_URI="http://pubwww.hsz-t.ch/~mgloor/data/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ia64 sparc x86"
+KEYWORDS="amd64 ~arm hppa ~ia64 sparc x86"
 IUSE=""
 
 RDEPEND="app-misc/screen"

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Perl module to parse XSL Transformational sheets"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND=">=dev-perl/XML-Parser-2.29

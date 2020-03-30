@@ -14,7 +14,7 @@ SRC_URI="
 	https://nmap.org/dist/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~jer/nmap-logo-64.png
 "
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 LICENSE="GPL-2"
 SLOT="0"

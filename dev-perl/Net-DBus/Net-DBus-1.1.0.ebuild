@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for the DBus message system"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~x64-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

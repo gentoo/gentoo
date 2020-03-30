@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A bare-bone HTML parser, similar to HTML::Parser"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="dev-perl/HTML-Parser"

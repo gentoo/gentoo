@@ -10,7 +10,7 @@ SRC_URI="https://dev.gentoo.org/~dolsen/releases/keyrings/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~x64-cygwin ~amd64-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~x64-cygwin ~amd64-linux"
 
 S="${WORKDIR}"
 

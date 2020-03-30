@@ -28,7 +28,7 @@ SRC_URI="http://www.iozone.org/src/current/${PN}${PV/./_}.tar"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 arm ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ~ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${PN}${PV/./_}

@@ -11,5 +11,5 @@ DESCRIPTION="Simple platform independent mailer"
 
 LICENSE="Mail-Sendmail"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Glue object frameworks together transparently"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND=">=dev-perl/Params-Validate-0.24-r1

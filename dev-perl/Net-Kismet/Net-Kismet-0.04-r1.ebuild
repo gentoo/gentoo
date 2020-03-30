@@ -11,7 +11,7 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="amd64 ia64 ppc x86"
+KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE=""
 SRC_TEST="do parallel"
 

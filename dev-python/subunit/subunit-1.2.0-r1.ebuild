@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/$(get_version_component_range 1-2)/+d
 
 LICENSE="Apache-2.0 BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 

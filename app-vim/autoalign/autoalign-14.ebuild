@@ -8,7 +8,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: automatically align bib, c, c++, tex and vim code"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=884"
 LICENSE="vim"
-KEYWORDS="~alpha amd64 ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc sparc x86"
 IUSE=""
 
 if [[ ${PV} != 9999* ]] ; then

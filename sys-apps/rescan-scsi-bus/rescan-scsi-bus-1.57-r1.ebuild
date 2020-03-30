@@ -11,7 +11,7 @@ SRC_URI="http://www.garloff.de/kurt/linux/${SRC_NAME}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 
 RDEPEND=">=sys-apps/sg3_utils-1.24
 	<sys-apps/sg3_utils-1.44

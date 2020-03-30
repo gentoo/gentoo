@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/ampasctl/${P}.tar.gz"
 
 LICENSE="AMPAS"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 RDEPEND=">=media-libs/ilmbase-2.0.1:=

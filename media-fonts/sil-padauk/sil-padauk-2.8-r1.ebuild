@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${MY_PN}-${PV}.zip"
 
 LICENSE="OFL"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

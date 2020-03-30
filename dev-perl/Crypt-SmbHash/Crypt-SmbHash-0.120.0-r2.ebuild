@@ -11,7 +11,7 @@ DESCRIPTION="LM/NT hashing, for Samba's smbpasswd entries"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Digest-MD4"

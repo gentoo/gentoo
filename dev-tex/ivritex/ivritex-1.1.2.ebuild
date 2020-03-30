@@ -9,7 +9,7 @@ DESCRIPTION="Hebrew support for TeX"
 HOMEPAGE="http://ivritex.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ivritex/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86"
 
 RESTRICT="mirror"
 

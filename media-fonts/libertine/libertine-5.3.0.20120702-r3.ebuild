@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/linuxlibertine/${MY_P_OTF}.tgz
 
 LICENSE="|| ( GPL-2-with-font-exception OFL-1.1 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="!<x11-libs/pango-1.20.4"

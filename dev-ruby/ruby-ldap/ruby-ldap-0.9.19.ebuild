@@ -14,7 +14,7 @@ DESCRIPTION="A Ruby interface to some LDAP libraries"
 HOMEPAGE="https://github.com/bearded/ruby-ldap"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ia64 ppc ~ppc64 ~sparc x86 ~x86-macos"
+KEYWORDS="amd64 ~arm hppa ~ia64 ppc ~ppc64 ~sparc x86 ~x86-macos"
 IUSE="ssl"
 DEPEND=">=net-nds/openldap-2
 	dev-libs/cyrus-sasl

@@ -36,7 +36,7 @@ SRC_URI="
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~x86-linux ~x86-macos"
 IUSE=""
 
 src_prepare() {

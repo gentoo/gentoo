@@ -11,7 +11,7 @@ SRC_URI="https://github.com/OpenSC/OpenSC/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ia64 ~m68k ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ppc ppc64 ~s390 ~sparc x86"
 IUSE="ctapi doc libressl openct notify +pcsc-lite readline secure-messaging ssl test zlib"
 RESTRICT="!test? ( test )"
 

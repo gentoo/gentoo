@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Data::Hierarchy - Handle data in a hierarchical structure"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ~mips ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

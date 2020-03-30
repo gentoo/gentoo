@@ -11,7 +11,7 @@ HOMEPAGE="http://fgouget.free.fr/bing/index-en.shtml"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="amd64 ~arm ia64 ppc sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc sparc x86"
 
 src_prepare() {
 	default

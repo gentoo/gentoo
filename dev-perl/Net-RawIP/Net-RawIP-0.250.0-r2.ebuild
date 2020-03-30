@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Raw IP packets manipulation Module"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND="net-libs/libpcap"

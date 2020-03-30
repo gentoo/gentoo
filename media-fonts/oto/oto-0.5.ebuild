@@ -9,4 +9,4 @@ SRC_URI="mirror://sourceforge/oto/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ~ppc ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ~s390 sparc x86"

@@ -6,7 +6,7 @@ inherit xorg-2
 
 DESCRIPTION="video driver for framebuffer device"
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="x11-base/xorg-server"

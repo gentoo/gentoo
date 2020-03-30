@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/arabeyes/${MY_PN}_${PV}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 arm ia64 ppc s390 sparc x86"
+KEYWORDS="amd64 arm ~ia64 ppc s390 sparc x86"
 
 FONT_SUFFIX="ttf"
 

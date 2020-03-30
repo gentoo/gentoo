@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/s3tools/${P/_/-}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="amd64 ia64 x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~ia64 x86 ~amd64-linux ~x64-macos"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]"

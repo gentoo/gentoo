@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ppc s390 x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc s390 x86"
 
 S="${WORKDIR}"
 FONT_S="${S}"

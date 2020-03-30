@@ -11,7 +11,7 @@ SRC_URI="http://dl.liveforge.org/fonts/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 sparc x86"
 
 S="${WORKDIR}/${PN}"
 

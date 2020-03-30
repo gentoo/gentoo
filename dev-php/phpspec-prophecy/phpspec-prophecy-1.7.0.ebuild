@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${MY_VENDOR}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_PN}-${PV}"

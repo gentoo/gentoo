@@ -19,7 +19,7 @@ SRC_URI="https://github.com/cucumber/cucumber-ruby/archive/v${PV}.tar.gz -> ${P}
 RUBY_S="cucumber-ruby-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="amd64 arm ~arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
 SLOT="0"
 IUSE="examples test"
 

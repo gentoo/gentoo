@@ -18,7 +18,7 @@ SRC_URI="http://www.vanhemert.co.uk/files/${MY_P}.tar.gz"
 
 IUSE=""
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
 
 RDEPEND=">=dev-perl/URI-1.10
 	>=dev-perl/HTML-Parser-3.15

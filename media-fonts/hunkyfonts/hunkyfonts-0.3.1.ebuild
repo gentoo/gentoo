@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/hunkyfonts/${P}.tar.bz2"
 
 LICENSE="BitstreamVera public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ppc s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc s390 sparc x86"
 
 DOCS="ChangeLog README"
 FONT_S="${S}/TTF"

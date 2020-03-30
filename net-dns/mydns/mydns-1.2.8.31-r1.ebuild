@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/mydns-ng/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ia64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc sparc x86"
 IUSE="alias debug nls mysql postgres ssl static status"
 
 RDEPEND="mysql? ( virtual/mysql )

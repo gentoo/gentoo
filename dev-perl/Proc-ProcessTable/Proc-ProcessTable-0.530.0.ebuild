@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Unix process table information"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="examples"
 
 PATCHES=(

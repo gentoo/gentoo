@@ -13,7 +13,7 @@ HOMEPAGE="http://armin.emx.at/cddb/ https://metacpan.org/release/CDDB_get"
 
 LICENSE="|| ( Artistic GPL-2 )" # "as perl, either GPL-2 or Artistic"
 SLOT="2"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 SRC_TEST=do

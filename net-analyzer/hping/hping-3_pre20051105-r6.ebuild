@@ -11,7 +11,7 @@ SRC_URI="http://www.hping.org/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc sparc x86"
 IUSE="tcl"
 
 S="${WORKDIR}/${MY_P}"

@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/ufw/${PV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="examples ipv6"
 
 DEPEND=""

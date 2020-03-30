@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.unidata.ucar.edu/pub/netcdf/${P}.tar.gz"
 
 LICENSE="UCAR-Unidata"
 SLOT="0/7"
-KEYWORDS="amd64 ~arm ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+dap examples hdf +hdf5 mpi static-libs szip test tools"
 RESTRICT="!test? ( test )"
 

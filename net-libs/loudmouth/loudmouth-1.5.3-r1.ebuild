@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mcabber/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ia64 ppc ppc64 sparc x86 ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ppc64 sparc x86 ~ppc-macos"
 
 IUSE="asyncns ssl openssl static-libs test"
 RESTRICT="!test? ( test )"

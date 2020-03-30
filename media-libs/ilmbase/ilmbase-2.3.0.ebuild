@@ -10,7 +10,7 @@ SRC_URI="https://github.com/openexr/openexr/releases/download/v${PV}/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/24" # based on SONAME
-KEYWORDS="amd64 -arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 -arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="static-libs"
 
 DEPEND="virtual/pkgconfig[${MULTILIB_USEDEP}]"

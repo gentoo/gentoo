@@ -11,7 +11,7 @@ HOMEPAGE="http://search.cpan.org/~pajas/"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="~alpha amd64 ia64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc sparc x86"
 IUSE=""
 
 SRC_TEST="do"

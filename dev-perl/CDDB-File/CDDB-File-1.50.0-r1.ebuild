@@ -11,7 +11,7 @@ DESCRIPTION="Parse a CDDB/freedb data file"
 
 LICENSE="|| ( GPL-3 GPL-2 )" # GPL-2+
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc x86"
 IUSE=""
 
 SRC_TEST="do"

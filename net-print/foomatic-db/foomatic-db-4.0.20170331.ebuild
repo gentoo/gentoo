@@ -11,7 +11,7 @@ SRC_URI="http://www.openprinting.org/download/foomatic/${PN}-$(replace_version_s
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 DEPEND=""

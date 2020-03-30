@@ -14,7 +14,7 @@ HOMEPAGE="http://fallabs.com/hyperestraier/"
 SRC_URI="http://fallabs.com/hyperestraier/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86"
 SLOT="0"
 
 RDEPEND="dev-db/qdbm

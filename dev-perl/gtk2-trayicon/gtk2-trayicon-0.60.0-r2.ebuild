@@ -14,7 +14,7 @@ HOMEPAGE="http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-TrayIcon"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ia64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="

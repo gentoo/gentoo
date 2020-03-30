@@ -12,7 +12,7 @@ DESCRIPTION="A liberal object-oriented parser for RSS feeds"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ia64 sparc x86"
+KEYWORDS="amd64 ~ia64 sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Class-ErrorHandler

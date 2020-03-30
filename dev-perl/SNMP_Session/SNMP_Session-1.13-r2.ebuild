@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/sleinen/snmp-session"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86 ~sparc-solaris ~x86-solaris"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-Socket6.patch

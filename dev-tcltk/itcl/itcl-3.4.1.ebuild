@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/incrtcl/%5BIncr%20Tcl_Tk%5D-source/$(get_version_c
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~alpha amd64 ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 RDEPEND="<dev-lang/tcl-8.6:0="

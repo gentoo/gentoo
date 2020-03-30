@@ -13,7 +13,7 @@ DESCRIPTION="Theme engine based on GTK pixmap engine using the Plasma color sche
 HOMEPAGE="http://www.kde-look.org/content/show.php?content=7043"
 SRC_URI="http://www.cpdrummond.freeuk.com/${MY_P}.tar.gz"
 
-KEYWORDS="~alpha amd64 ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
 

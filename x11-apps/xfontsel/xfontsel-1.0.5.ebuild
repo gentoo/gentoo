@@ -7,7 +7,7 @@ inherit xorg-2
 
 DESCRIPTION="point and click selection of X11 font names"
 
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~x64-macos"
 IUSE=""
 
 RDEPEND="x11-libs/libXaw

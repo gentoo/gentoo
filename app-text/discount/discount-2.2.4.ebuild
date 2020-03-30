@@ -11,7 +11,7 @@ SRC_URI="http://www.pell.portland.or.us/~orc/Code/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 sparc x86"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
 

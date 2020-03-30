@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.nl.linux.org/pub/DOC-NL/manpages-nl/manpages-nl-${PV}.tar.gz"
 
 LICENSE="man-pages GPL-2+ GPL-2 BSD LDP-1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 IUSE=""
 
 RDEPEND="virtual/man"
