@@ -83,8 +83,8 @@ src_install() {
 		if [[ $x =~ kubelet|kube-proxy ]]; then
 			keepdir /var/lib/${x}
 		fi
-#		if [[ $x =~ .*apiserver|.*controller-manager|.*scheduler ]]; then
-#			fowners ${x}:${x} /var/log/${x}
-#		fi
+		if [[ $x =~ .*apiserver|.*controller-manager|.*scheduler ]]; then
+			fowners ${x}:${x} /var/log/${x}
+		fi
 	done
 }
