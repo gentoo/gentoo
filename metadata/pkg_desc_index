@@ -7505,7 +7505,7 @@ dev-python/biplist 1.0.1 1.0.2: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5 3.1.6: A pure Python module for creation and analysis of binary data
 dev-python/blaze 0.11.3: Next generation Python numpy
-dev-python/bleach 3.0.2 3.1.3 3.1.4: an easy whitelist-based HTML-sanitizing tool
+dev-python/bleach 3.1.4: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.7 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.4: Generate block-diagram image from text
@@ -8449,7 +8449,7 @@ dev-python/pyodbc 4.0.23: python ODBC module to connect to almost any database
 dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyogg 1.3-r2: Python bindings for the ogg library
 dev-python/pyopenal 0.1.6-r1: OpenAL library port for Python
-dev-python/pyopencl 2017.2: Python wrapper for OpenCL
+dev-python/pyopencl 2017.2 2019.1.2: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0-r1: Accelerate module for PyOpenGL
 dev-python/pyopenssl 19.0.0 19.1.0: Python interface to the OpenSSL library
@@ -8653,7 +8653,7 @@ dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pythonz-bd 1.11.4: Manage python installations in your system, berdario's shallow fork
 dev-python/pytidylib 0.3.2: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytoml 0.1.20: A TOML-0.4.0 parser/writer for Python
-dev-python/pytools 2017.4-r1 9999: A collection of tools missing from the Python standard library
+dev-python/pytools 2017.4-r1 2020.1 9999: A collection of tools missing from the Python standard library
 dev-python/pytrie 0.3 0.3.1-r1: A pure Python implementation of the trie data structure
 dev-python/pytz 2019.3: World timezone definitions for Python
 dev-python/pyu2f 0.1.4: Python based U2F host library
