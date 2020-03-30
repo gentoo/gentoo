@@ -141,14 +141,6 @@ src_compile() {
 	emake WARNERROR=no "${args[@]}" all libflashrom.a
 }
 
-src_test() {
-	if [[ -d tests ]] ; then
-		pushd tests >/dev/null
-		./tests.py || die
-		popd >/dev/null
-	fi
-}
-
 src_install() {
 	dosbin flashrom
 	doman flashrom.8
