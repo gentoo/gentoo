@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-62">
+  <title>GNU Screen: Buffer overflow</title>
+  <synopsis>A buffer overflow in GNU Screen might allow remote attackers to
+    corrupt memory.
+  </synopsis>
+  <product type="ebuild">screen</product>
+  <announced>2020-03-30</announced>
+  <revised count="1">2020-03-30</revised>
+  <bug>708460</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-misc/screen" auto="yes" arch="*">
+      <unaffected range="ge">4.8.0</unaffected>
+      <vulnerable range="lt">4.8.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Screen is a full-screen window manager that multiplexes a physical
+      terminal between several processes, typically interactive shells.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow was found in the way GNU Screen treated the special
+      escape OSC 49.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by writing a specially crafted string of characters
+      to a GNU Screen window, could possibly corrupt memory or have other
+      unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Screen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-misc/screen-4.8.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9366">CVE-2020-9366</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-30T05:50:23Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-03-30T14:41:12Z">whissi</metadata>
+</glsa>
