@@ -5078,7 +5078,7 @@ dev-libs/libnsutils 0.0.5-r1: base64 and time library, written in C
 dev-libs/libofx 0.9.15: Library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
-dev-libs/liborcus 0.14.1-r1 0.15.3 9999: Standalone file import filter library for spreadsheet documents
+dev-libs/liborcus 0.14.1-r1 0.15.4 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1 0.32-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.10: Abstraction layer to simplify PKCS#11 API
