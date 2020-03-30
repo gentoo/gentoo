@@ -13,7 +13,7 @@ MY_P="aspell6-pt_BR-20090702-0"
 SRC_URI="mirror://gnu/aspell/dict/pt_BR/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}

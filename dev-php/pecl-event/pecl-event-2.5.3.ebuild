@@ -12,7 +12,7 @@ USE_PHP="php7-1 php7-2 php7-3 php7-4"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="amd64 ia64 x86"
+KEYWORDS="amd64 ~ia64 x86"
 LICENSE="PHP-3.01"
 
 DESCRIPTION="PHP wrapper for libevent2"

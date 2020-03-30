@@ -12,7 +12,7 @@ SRC_URI="mirror://debian/pool/main/e/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ia64 ~sparc x86"
+KEYWORDS="amd64 arm ~ia64 ~sparc x86"
 IUSE=""
 
 DEPEND=""

@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: enhanced comment creation"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=23"
 
 LICENSE="BSD"
-KEYWORDS="~alpha amd64 ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc sparc x86"
 
 VIM_PLUGIN_HELPFILES="EnhancedCommentify"
 

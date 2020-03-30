@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Automate telnet sessions w/ routers&switches"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ~mips ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ~ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

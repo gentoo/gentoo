@@ -11,7 +11,7 @@ SRC_URI="https://github.com/BelledonneCommunications/bcg729/archive/${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ppc64 x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc64 x86"
 IUSE="static-libs"
 RDEPEND="
 	!media-plugins/mediastreamer-bcg729

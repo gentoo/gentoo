@@ -13,7 +13,7 @@ SRC_URI="http://web.mit.edu/kerberos/dist/krb5-appl/${MAJOR_MINOR}/${MY_P}-signe
 
 LICENSE="openafs-krb5-a BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE=""
 
 RDEPEND=">=app-crypt/mit-krb5-1.8.0

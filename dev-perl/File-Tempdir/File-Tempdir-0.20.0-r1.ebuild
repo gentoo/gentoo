@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="This module provide an object interface to tempdir() from File::Temp"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
 IUSE=""
 
 SRC_TEST="do"

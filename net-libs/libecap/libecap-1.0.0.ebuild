@@ -11,7 +11,7 @@ SRC_URI="http://www.measurement-factory.com/tmp/ecap/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="1"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 RDEPEND="!net-libs/libecap:0

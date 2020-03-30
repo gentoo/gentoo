@@ -11,7 +11,7 @@ SRC_URI="http://www.tsg.ne.jp/GANA/S/pcf2bdf/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~ppc s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~ppc s390 sparc x86"
 IUSE=""
 
 S=${WORKDIR}

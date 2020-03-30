@@ -11,7 +11,7 @@ HOMEPAGE="https://pear.php.net/package/Console_CommandLine"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 

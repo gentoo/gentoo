@@ -16,7 +16,7 @@ SRC_URI="http://code.haskell.org/~slyfox/snapshots/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RESTRICT=test # many test depends are not keyworded yet

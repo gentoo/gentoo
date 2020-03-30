@@ -11,7 +11,7 @@ SRC_URI="http://helm.cs.unibo.it/mml-widget/sources/${P}.tar.gz"
 LICENSE="LGPL-3"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="gtk mathml svg t1lib"
 
 RDEPEND="

@@ -12,7 +12,7 @@ SRC_URI="https://www.cybercom.net/~dcoffin/dcraw/archive/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 LANGS=" ca cs de da eo es fr hu it nl pl pt ru sv zh_CN zh_TW"
 IUSE="nls gimp jpeg lcms"
 

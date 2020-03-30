@@ -23,7 +23,7 @@ SRC_URI="mirror://gentoo/jiskan16-2004-1.bdf.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ppc s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc s390 sparc x86"
 IUSE=""
 RESTRICT="binchecks strip"
 

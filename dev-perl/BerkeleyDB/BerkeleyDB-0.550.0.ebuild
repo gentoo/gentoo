@@ -10,7 +10,7 @@ inherit perl-module eutils db-use
 DESCRIPTION="This module provides Berkeley DB interface for Perl"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 # Install DB_File if you want older support. BerkleyDB no longer

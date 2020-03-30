@@ -10,7 +10,7 @@ inherit eutils perl-module
 DESCRIPTION="MySQL driver for the Perl5 Database Interface (DBI)"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
 
 IUSE="mariadb +mysql test +ssl"
 RESTRICT="!test? ( test )"

@@ -15,7 +15,7 @@ SRC_URI="http://eyed3.nicfit.net/releases/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0.7"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 DEPEND="dev-python/paver[${PYTHON_USEDEP}]"

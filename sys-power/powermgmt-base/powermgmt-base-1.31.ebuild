@@ -10,7 +10,7 @@ SRC_URI="mirror://debian/pool/main/p/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ia64 ppc ppc64 x86"
+KEYWORDS="amd64 arm ~ia64 ppc ppc64 x86"
 IUSE="+pm-utils"
 
 RDEPEND="!pm-utils? ( virtual/awk )

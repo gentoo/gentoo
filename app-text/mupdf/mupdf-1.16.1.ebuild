@@ -11,7 +11,7 @@ SRC_URI="https://mupdf.com/downloads/archive/${P}-source.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 s390 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 s390 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="X +javascript libressl opengl ssl static-libs"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of

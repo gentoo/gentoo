@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="OPL"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 m68k ppc s390 x86"
+KEYWORDS="amd64 arm hppa ~ia64 m68k ppc s390 x86"
 
 src_install() {
 	local HTML_DOCS=( . )

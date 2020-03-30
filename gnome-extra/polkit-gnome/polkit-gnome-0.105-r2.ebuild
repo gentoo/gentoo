@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/polkit/polkit/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND=">=dev-libs/glib-2.30

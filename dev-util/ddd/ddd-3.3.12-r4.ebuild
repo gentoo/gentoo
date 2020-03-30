@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gnu.org/software/ddd"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3 FDL-1.1"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="readline"
 

@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/storaged-project/libbytesize"
 SRC_URI="https://github.com/storaged-project/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="doc test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

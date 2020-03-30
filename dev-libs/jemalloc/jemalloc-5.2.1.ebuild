@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jemalloc/jemalloc/releases/download/${PV}/${P}.tar.b
 
 LICENSE="BSD"
 SLOT="0/2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 IUSE="debug hardened lazy-lock prof static-libs stats xmalloc"
 HTML_DOCS=( doc/jemalloc.html )
 PATCHES=( "${FILESDIR}/${PN}-5.2.0-gentoo-fixups.patch" )

@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~naota/files/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="canna"
 
 DEPEND="canna? ( app-i18n/canna )"

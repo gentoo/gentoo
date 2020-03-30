@@ -13,7 +13,7 @@ SRC_URI="http://wenner.ch/files/public/mirror/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0.2"
-KEYWORDS="~alpha amd64 arm ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 sparc x86"
 IUSE="debug doc +introspection vala"
 
 RDEPEND="

@@ -14,7 +14,7 @@ SRC_URI="http://www.alcyone.com/software/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ia64 ppc x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc x86"
 IUSE="doc"
 
 python_test() {

@@ -11,7 +11,7 @@ SRC_URI="mirror://openbsd/OpenNTPD/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="libressl selinux"
 
 DEPEND="!<=net-misc/ntp-4.2.0-r2

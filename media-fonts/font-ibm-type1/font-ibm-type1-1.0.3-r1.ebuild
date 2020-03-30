@@ -6,5 +6,5 @@ inherit xorg-2
 
 DESCRIPTION="X.Org IBM Courier font"
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE=""

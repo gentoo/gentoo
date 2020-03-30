@@ -14,7 +14,7 @@ SRC_URI="https://archive.mozilla.org/pub/${PN}/releases/${PV}/${MY_P}.tar.bz2
 
 LICENSE="NPL-1.1"
 SLOT="38"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="debug +jit minimal static-libs +system-icu test"
 
 RESTRICT="!test? ( test ) ia64? ( test )"

@@ -12,7 +12,7 @@ SRC_URI="http://simon.morlat.free.fr/download/1.1.x/source/ilbc-rfc3951.tar.gz -
 # relicensed under 3-clause BSD license, bug 390797
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
 S="${WORKDIR}/${PN}"
 PATCHES=( "${FILESDIR}"/${PN}-asneeded.patch )

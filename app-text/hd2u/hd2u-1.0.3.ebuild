@@ -7,7 +7,7 @@ DESCRIPTION="Dos2Unix like text file converter"
 HOMEPAGE="http://www.megaloman.com/~hany/software/hd2u/"
 SRC_URI="http://www.megaloman.com/~hany/_data/hd2u/${P}.tgz"
 
-KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 SLOT="0"
 LICENSE="GPL-2"
 

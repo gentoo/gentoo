@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="manage utmp/wtmp entries for non-init clients"
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 RDEPEND=""

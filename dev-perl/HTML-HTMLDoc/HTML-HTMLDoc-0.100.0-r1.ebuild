@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl interface to the htmldoc program for producing PDF-Files from HTML-Content"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ia64 ~ppc sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc sparc x86"
 IUSE=""
 
 RDEPEND="app-text/htmldoc"

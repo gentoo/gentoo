@@ -12,7 +12,7 @@ DESCRIPTION="An object-oriented implementation of Sender Policy Framework"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
