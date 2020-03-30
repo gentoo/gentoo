@@ -43,6 +43,7 @@ dev-python/basemap
 # Removal in 30 days.  Bug #699866.
 dev-util/electron
 app-editors/atom
+app-eselect/eselect-electron
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2020-03-29)
 # Old releases gone from upstream, new releases use overly restrictive
