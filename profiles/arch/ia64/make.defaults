@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="ia64"
-ACCEPT_KEYWORDS="ia64"
+ACCEPT_KEYWORDS="ia64 ~ia64"
 
 CHOST="ia64-unknown-linux-gnu"
 CFLAGS="-O2 -pipe"
