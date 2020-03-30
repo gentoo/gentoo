@@ -1,0 +1,14 @@
+Title: Stable ia64 keywords removed
+Author: Matt Turner <mattst88@gentoo.org>
+Posted: 2020-03-30
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Keyword: ia64
+
+The Gentoo/IA64 team no longer thinks that the time invested in package
+stabilization is warranted for the small number of users on IA64. As a
+result, we will drop all "ia64" keywords to "~ia64" on 2020-04-03 and will
+add "~ia64" to ACCEPT_KEYWORDS in the profile.
+
+Users need not make any changes to their systems, and the Gentoo/IA64 team
+has no plans to remove support for the architecture.
