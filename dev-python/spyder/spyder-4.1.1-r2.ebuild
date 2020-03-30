@@ -64,7 +64,8 @@ DEPEND="test? (
 	dev-python/pytest-mock[${PYTHON_USEDEP}]
 	dev-python/pytest-qt[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	dev-python/sympy[${PYTHON_USEDEP}] )"
+	dev-python/sympy[${PYTHON_USEDEP}]
+	dev-python/xarray[${PYTHON_USEDEP}] )"
 
 # Based on the courtesy of Arfrever
 # This patch removes a call to update-desktop-database during build
@@ -72,7 +73,6 @@ DEPEND="test? (
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
 	"${FILESDIR}/${P}-py3-only.patch"
-	"${FILESDIR}/${P}-allow-newer-parso.patch"
 )
 
 distutils_enable_tests pytest
@@ -81,6 +81,11 @@ distutils_enable_sphinx docs/doc --no-autodoc
 python_prepare_all() {
 	# move docs into workdir
 	mv ../spyder-docs-${DOCS_PV}* docs || die
+
+	# allow newer parso: https://bugs.gentoo.org/715148
+	sed -i -e 's/parso =0.5.2/parso >=0.5.2/g' requirements/conda.txt || die
+	sed -i -e 's/parso==0.5.2/parso>=0.5.2/g' setup.py || die
+	sed -i -e 's/=0.5.2/>=0.5.2/g' spyder/dependencies.py || die
 
 	# some tests still depend on QtPy[webkit] which is going to be removed
 	# spyder itself works fine without webkit
