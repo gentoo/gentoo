@@ -161,11 +161,14 @@ src_install() {
 				newbin "${FILESDIR}"/firefox-bin-wayland.sh ${PN}-wayland
 				;;
 			X11)
-				exec_command="${PN}-x11 --name ${PN}-x11"
-				if use wayland ; then
-					# Only needed when there's actually a choice
-					newbin "${FILESDIR}"/firefox-bin-x11.sh ${PN}-x11
+				if ! use wayland ; then
+					# Exit loop here because there's no choice so
+					# we don't need wrapper/.desktop file for X11.
+					continue
 				fi
+
+				exec_command="${PN}-x11 --name ${PN}-x11"
+				newbin "${FILESDIR}"/firefox-bin-x11.sh ${PN}-x11
 				;;
 			*)
 				app_name="${name}"
