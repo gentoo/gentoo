@@ -11,7 +11,7 @@ LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
 IUSE="+cairo examples gtk test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~alpha amd64 arm ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.52.1

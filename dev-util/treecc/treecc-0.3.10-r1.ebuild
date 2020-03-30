@@ -9,7 +9,7 @@ SRC_URI="https://download.savannah.gnu.org/releases/dotgnu-pnet/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="doc examples"
 
 DEPEND="doc? ( app-text/texi2html )"

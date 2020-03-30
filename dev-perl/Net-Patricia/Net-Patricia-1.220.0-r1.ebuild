@@ -11,7 +11,7 @@ DESCRIPTION="Patricia Trie perl module for fast IP address lookups"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE="ipv6"
 
 RDEPEND="dev-perl/Net-CIDR-Lite

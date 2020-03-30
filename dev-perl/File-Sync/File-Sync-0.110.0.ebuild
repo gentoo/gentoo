@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl access to fsync() and sync() function calls"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 SRC_TEST="do"

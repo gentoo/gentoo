@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/vim-scripts/vimbuddy.vim"
 SRC_URI="https://github.com/vim-scripts/${PN}.vim/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
-KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc sparc x86"
 
 S="${WORKDIR}/${PN}.vim-${PV}"
 

@@ -25,5 +25,5 @@ HOMEPAGE="https://extensions.openoffice.org/en/project/corrector-ortografico-hun
 SRC_URI="mirror://sourceforge/aoo-extensions/hunspell-gl-13.10.oxt -> ${P}.oxt"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""

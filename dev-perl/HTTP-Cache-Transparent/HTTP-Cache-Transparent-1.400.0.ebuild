@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Cache the result of http get-requests persistently"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ia64 ppc sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

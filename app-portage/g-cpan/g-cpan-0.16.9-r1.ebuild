@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/gentoo-perl/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 fi
 
 DESCRIPTION="Autogenerate and install ebuilds for CPAN modules"
