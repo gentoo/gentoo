@@ -1,0 +1,13 @@
+--- a/data/example.conf
++++ b/data/example.conf
+@@ -375,8 +375,8 @@
+ 	 * On Linux/UNIX systems Anope can setuid and setgid to this user and group
+ 	 * after starting up. This is useful if Anope has to bind to privileged ports
+ 	 */
+-	#user = "anope"
+-	#group = "anope"
++	user = "anope"
++	group = "anope"
+ 
+ 	/*
+ 	 * The case mapping used by services. This must be set to a valid locale name
