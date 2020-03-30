@@ -17949,8 +17949,8 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 68.6.0-r1 74.0-r1: Firefox Web Browser
-www-client/firefox-bin 52.9.0 68.6.0 74.0: Firefox Web Browser
+www-client/firefox 52.9.0 68.6.0-r2 74.0-r2: Firefox Web Browser
+www-client/firefox-bin 52.9.0 68.6.0-r1 74.0-r1: Firefox Web Browser
 www-client/google-chrome 80.0.3987.149: The web browser from Google
 www-client/google-chrome-beta 81.0.4044.83: The web browser from Google
 www-client/google-chrome-unstable 83.0.4093.3: The web browser from Google
@@ -18865,7 +18865,7 @@ x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon
 x11-themes/notify-osd-icons 0.7-r1: Icons for on-screen-display notification agent
 x11-themes/nou-icon-theme 09.02.08: A scalable icon theme called Nou
 x11-themes/numix-gtk-theme 2.6.7-r1: A modern flat theme with a combination of light and dark elements
-x11-themes/numix-icon-theme 18.07.17 19.09.20: An official icon theme from the Numix Project
+x11-themes/numix-icon-theme 18.07.17 19.09.20 20.03.20: An official icon theme from the Numix Project
 x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03 18.12.01 19.01.24 19.02.07 19.02.22 19.03.20 19.04.15 19.05.07 19.09.20 19.12.27: An icon theme for Linux from the Numix project
 x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
