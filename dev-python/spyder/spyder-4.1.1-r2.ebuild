@@ -85,7 +85,7 @@ python_prepare_all() {
 	# allow newer parso: https://bugs.gentoo.org/715148
 	sed -i -e 's/parso =0.5.2/parso >=0.5.2/g' requirements/conda.txt || die
 	sed -i -e 's/parso==0.5.2/parso>=0.5.2/g' setup.py || die
-	sed -i -e 's/=0.5.2/>=0.5.2/g' spyder/dependencies.py
+	sed -i -e 's/=0.5.2/>=0.5.2/g' spyder/dependencies.py || die
 
 	# some tests still depend on QtPy[webkit] which is going to be removed
 	# spyder itself works fine without webkit
