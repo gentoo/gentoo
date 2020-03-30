@@ -1,8 +1,23 @@
+From 25f79b67da9ca6da2089ba14ccc14333e4a108b6 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Mon, 30 Mar 2020 08:39:19 +0000
+Subject: [PATCH] libstdc++: fix namespace of nullptr_t in v8_set_return_value.h
+
+nullptr_t is defined in namespace std.
+
+Bug: 819294
+Change-Id: Ia3e8257ece1331319272ead84472eefcc7259268
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2126289
+Reviewed-by: Yuki Shiino <yukishiino@chromium.org>
+Commit-Queue: Yuki Shiino <yukishiino@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#754423}
+---
+
 diff --git a/third_party/blink/renderer/platform/bindings/v8_set_return_value.h b/third_party/blink/renderer/platform/bindings/v8_set_return_value.h
-index 07cae22..7871f55 100644
+index ed639ef..6c7ffa1 100644
 --- a/third_party/blink/renderer/platform/bindings/v8_set_return_value.h
 +++ b/third_party/blink/renderer/platform/bindings/v8_set_return_value.h
-@@ -51,7 +51,7 @@ void V8SetReturnValue(const CallbackInfo& info, const v8::Local<S> value) {
+@@ -116,7 +116,7 @@
  
  // nullptr
  template <typename CallbackInfo>
