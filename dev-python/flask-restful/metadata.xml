@@ -8,7 +8,4 @@
 	<upstream>
 		<remote-id type="github">twilio/flask-restful</remote-id>
 	</upstream>
-	<use>
-		<flag name="paging">Enable resource paging support</flag>
-	</use>
 </pkgmetadata>
