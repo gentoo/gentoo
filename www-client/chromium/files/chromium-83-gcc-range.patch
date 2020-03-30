@@ -1,0 +1,28 @@
+From 895f0d24db74516e2653672a4b5e57757eeba75a Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sun, 29 Mar 2020 21:03:23 +0000
+Subject: [PATCH] GCC: fix out-of-range constant in status_codes.h
+
+Constant 0x99999999 is not within range of int32_t.
+
+Bug: 819294
+Change-Id: I133b9bb0f1f57a6e1d81f96f39f348b6ea1c7f11
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2126227
+Commit-Queue: Ted Meyer <tmathmeyer@chromium.org>
+Reviewed-by: Ted Meyer <tmathmeyer@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#754364}
+---
+
+diff --git a/media/base/status_codes.h b/media/base/status_codes.h
+index ccac030..219defb 100644
+--- a/media/base/status_codes.h
++++ b/media/base/status_codes.h
+@@ -69,7 +69,7 @@
+   kVaapiFailedAcceleratorCreation = 0x00000509,
+ 
+   // Special codes
+-  kGenericErrorPleaseRemove = 0x99999999,
++  kGenericErrorPleaseRemove = 0x79999999,
+   kCodeOnlyForTesting = std::numeric_limits<StatusCodeType>::max(),
+   kMaxValue = kCodeOnlyForTesting,
+ };

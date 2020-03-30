@@ -149,6 +149,9 @@ PATCHES=(
 	"${FILESDIR}/chromium-82-gcc-template.patch"
 	"${FILESDIR}/chromium-82-gcc-iterator.patch"
 	"${FILESDIR}/chromium-82-clang-std.patch"
+	"${FILESDIR}/chromium-83-gcc-template.patch"
+	"${FILESDIR}/chromium-83-gcc-range.patch"
+	"${FILESDIR}/chromium-83-clang-std.patch"
 )
 
 pre_build_checks() {
@@ -343,6 +346,7 @@ src_prepare() {
 		third_party/qcms
 		third_party/rnnoise
 		third_party/s2cellid
+		third_party/schema_org
 		third_party/simplejson
 		third_party/skia
 		third_party/skia/include/third_party/skcms
