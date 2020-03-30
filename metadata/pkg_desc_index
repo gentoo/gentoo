@@ -10396,7 +10396,7 @@ dev-util/cargo-tree 0.28.0 0.29.0: Cargo subcommand that visualizes crate depend
 dev-util/catalyst 3.0.8 3.0.9 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/cbindgen 0.13.1: A tool for generating C bindings to Rust code
+dev-util/cbindgen 0.13.1 0.13.2: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.2 3.7.6 3.7.7 3.7.7-r1 3.7.8 3.7.8-r1 3.7.9: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 9999: C/C++/ObjC language server
@@ -13272,11 +13272,11 @@ media-plugins/kodi-audioencoder-lame 2.0.1 2.0.2 2.0.4 9999: Lame MP3 encoder ad
 media-plugins/kodi-audioencoder-vorbis 2.0.4 9999: Vorbis encoder addon for Kodi
 media-plugins/kodi-audioencoder-wav 2.0.1 2.0.2 2.0.3 9999: WAV encoder addon for Kodi
 media-plugins/kodi-game-libretro 1.1.0 1.1.1 9999: Libretro compatibility layer for the Kodi Game API
-media-plugins/kodi-game-libretro-bnes 0.83.0.3 0.83.0.4 0.83.0.5 0.83.0.6 9999: bNES GameClient for Kodi
-media-plugins/kodi-game-libretro-dosbox 0.74.0.3 0.74.0.4 0.74.0.5 9999: DOSBox GameClient for Kodi
+media-plugins/kodi-game-libretro-bnes 0.83.0.3 0.83.0.4 0.83.0.5 0.83.0.6 0.83.0.7 9999: bNES GameClient for Kodi
+media-plugins/kodi-game-libretro-dosbox 0.74.0.3 0.74.0.4 0.74.0.5 0.74.0.6 9999: DOSBox GameClient for Kodi
 media-plugins/kodi-game-libretro-fceumm 0.0.1.9 9999: FCEU-Next GameClient for Kodi
-media-plugins/kodi-game-libretro-nestopia 1.50.0.8 9999: Nestopia GameClient for Kodi
-media-plugins/kodi-game-libretro-snes9x 1.60.0.10 9999: Snes9x GameClient for Kodi
+media-plugins/kodi-game-libretro-nestopia 1.50.0.8 1.50.0.9 9999: Nestopia GameClient for Kodi
+media-plugins/kodi-game-libretro-snes9x 1.60.0.10 1.60.0.11 9999: Snes9x GameClient for Kodi
 media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.111 9999: 2048 for Kodi
 media-plugins/kodi-inputstream-adaptive 2.4.2 2.4.3 9999: Kodi's Adaptive inputstream addon
 media-plugins/kodi-inputstream-rtmp 2.0.9 9999: Kodi's RTMP inputstream addon
@@ -13306,9 +13306,9 @@ media-plugins/kodi-screensaver-greynetic 1.1.0 2.0.0 9999: Greynetic screensaver
 media-plugins/kodi-screensaver-pingpong 1.1.0 2.0.0 9999: Ping-pong screensaver for Kodi
 media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 3.0.1 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
-media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 9999: Libarchive VFS add-on for Kodi
+media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 1.0.7 9999: Libarchive VFS add-on for Kodi
 media-plugins/kodi-vfs-rar 2.2.0 2.2.1 2.2.2 2.2.3 9999: RAR VFS addon for Kodi
-media-plugins/kodi-vfs-sacd 1.0.3 9999: SACD VFS addon for Kodi
+media-plugins/kodi-vfs-sacd 1.0.3 1.0.4 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 2.1.0 2.2.0 2.2.1 9999: Goom visualizer for Kodi
@@ -14397,7 +14397,7 @@ net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1 4.18: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
-net-firewall/shorewall 5.2.3.5 5.2.3.6 5.2.3.7: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.3.7 5.2.4: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 2.13 3.7 3.8 3.9: iptables extensions not yet accepted in the main kernel
