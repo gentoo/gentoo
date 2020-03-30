@@ -1,0 +1,45 @@
+--- a/data/tests/colorhug/meson.build
++++ b/data/tests/colorhug/meson.build
+@@ -1,9 +1,11 @@
++if false
+ install_data([
+     'firmware.bin',
+     'firmware.bin.asc',
+   ],
+   install_dir: installed_test_datadir,
+ )
++endif
+ 
+ if get_option('pkcs7')
+   # generate self-signed detached signature
+@@ -16,7 +18,7 @@
+                         '--load-certificate', pkcs7_certificate,
+                         '--infile', '@INPUT@',
+                         '--outfile', '@OUTPUT@'],
+-    install: true,
++    install: false,
+     install_dir: installed_test_datadir,
+   )
+ endif
+--- a/data/tests/meson.build
++++ b/data/tests/meson.build
+@@ -2,7 +2,7 @@
+   input : 'libjcat.test.in',
+   output : 'libjcat.test',
+   configuration : conf,
+-  install: true,
++  install: false,
+   install_dir: installed_test_datadir,
+ )
+ 
+--- a/libjcat/meson.build
++++ b/libjcat/meson.build
+@@ -225,7 +225,7 @@
+       '-DTESTDATADIR_SRC="' + testdatadir_src + '"',
+       '-DTESTDATADIR_DST="' + testdatadir_dst + '"',
+     ],
+-    install : true,
++    install : false,
+     install_dir : installed_test_bindir
+   )
+   test('jcat-self-test', e)
