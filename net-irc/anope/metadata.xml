@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
-	<longdescription>Anope IRC Services</longdescription>
+	<maintainer type="person">
+		<email>sam@cmpct.info</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Anope IRC Services provide user and channel management services for an
+		IRC server. It is a well-known package which continues to be actively
+		developed. It has support for multiple different IRCd linking protocols.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">anope</remote-id>
 		<remote-id type="github">anope/anope</remote-id>
 	</upstream>
 	<use>
+		<flag name="ldap">Build LDAP modules for e.g. opertypes</flag>
+		<flag name="ssl">Provide SSL services using OpenSSL</flag>
+		<flag name="sql">Build modules which require SQL</flag>
+		<flag name="tre">Use <pkg>dev-libs/tre</pkg> for regular expressions</flag>
+
+		<!-- pre 2.0.7 USE flags; deprecated -->
 		<flag name="chanstats">Channel Statistics</flag>
 		<flag name="cs-fantasy-stats">Enables the STATS and GSTATS commands</flag>
-		<flag name="cs-fantasy-top">Enables the (G)TOP and  (G)TOP10 commands</flag>
+		<flag name="cs-fantasy-top">Enables the (G)TOP and (G)TOP10 commands</flag>
 		<flag name="irc2sql">Stores channel statistics in a mysql database</flag>
 		<flag name="ldap-auth">Authorize through LDAP</flag>
 		<flag name="ldap-oper">Dynamically ties users to Anope opertypes via LDAP</flag>
@@ -18,7 +35,5 @@
 		<flag name="sql-auth">Authorize through SQL</flag>
 		<flag name="sql-log">Additional log target in SQL</flag>
 		<flag name="sql-oper">Allows granting users services operator privileges from SQL</flag>
-		<flag name="ssl">Provide SSL services using OpenSSL</flag>
-		<flag name="tre">Use <pkg>dev-libs/tre</pkg> for regular expressions</flag>
 	</use>
 </pkgmetadata>
