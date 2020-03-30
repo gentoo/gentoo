@@ -46,16 +46,17 @@ IUSE="clippy cpu_flags_x86_sse2 debug doc libressl miri nightly parallel-compile
 
 # How to use it:
 # 1. List all the working slots (with min versions) in ||, newest first.
-# 2. Update the := to specify *max* version, e.g. < 10.
-# 3. Specify LLVM_MAX_SLOT, e.g. 9.
+# 2. Update the := to specify *max* version, e.g. < 11.
+# 3. Specify LLVM_MAX_SLOT, e.g. 10.
 LLVM_DEPEND="
 	|| (
+		sys-devel/llvm:10[${LLVM_TARGET_USEDEPS// /,}]
 		sys-devel/llvm:9[${LLVM_TARGET_USEDEPS// /,}]
-		wasm? ( =sys-devel/lld-9* )
+		wasm? ( >=sys-devel/lld-9 )
 	)
-	<sys-devel/llvm-10:=
+	<sys-devel/llvm-11:=
 "
-LLVM_MAX_SLOT=9
+LLVM_MAX_SLOT=10
 
 BOOTSTRAP_DEPEND="|| ( >=dev-lang/rust-1.$(($(ver_cut 2) - 1)).0-r1 >=dev-lang/rust-bin-1.$(($(ver_cut 2) - 1)) )"
 
