@@ -16,7 +16,7 @@ IUSE="debug +threads"
 
 RDEPEND="
 	dev-lang/tk:*
-	virtual/opengl
+	media-libs/mesa[X]
 	x11-libs/libXmu"
 DEPEND="${RDEPEND}"
 
