@@ -306,7 +306,7 @@ echo ---------------------------------------------------------------------------
 [[ -x /usr/bin/gcc-config  ]] && GCC_CONFIG="/usr/bin/gcc-config"
 
 # Allow portage to overwrite stuff
-export CONFIG_PROTECT="-*"
+[[ $CONFIG_PROTECT != "-*"* ]] && export CONFIG_PROTECT="-*"
 
 # disable collision-protection
 export FEATURES="${FEATURES} -collision-protect"
