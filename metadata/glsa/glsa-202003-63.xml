@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-63">
+  <title>GNU IDN Library 2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GNU IDN Library 2, the
+    worst of which could result in the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libidn2</product>
+  <announced>2020-03-30</announced>
+  <revised count="1">2020-03-30</revised>
+  <bug>697752</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-dns/libidn2" auto="yes" arch="*">
+      <unaffected range="ge">2.2.0</unaffected>
+      <vulnerable range="lt">2.2.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU IDN Library 2 is an implementation of the IDNA2008 + TR46
+      specifications (RFC 5890, RFC 5891, RFC 5892, RFC 5893, TR 46).
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GNU IDN Library 2.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send specially crafted input, possibly resulting
+      in execution of arbitrary code with the privileges of the process,
+      impersonation of domains or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU IDN Library 2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/libidn2-2.2.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12290">CVE-2019-12290</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18224">CVE-2019-18224</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-30T14:23:33Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-30T14:45:26Z">whissi</metadata>
+</glsa>

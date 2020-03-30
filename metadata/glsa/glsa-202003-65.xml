@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-65">
+  <title>FFmpeg: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FFmpeg, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">ffmpeg</product>
+  <announced>2020-03-30</announced>
+  <revised count="1">2020-03-30</revised>
+  <bug>660924</bug>
+  <bug>692418</bug>
+  <bug>711144</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-video/ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">4.2.0</unaffected>
+      <vulnerable range="ge">4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FFmpeg is a complete, cross-platform solution to record, convert and
+      stream audio and video.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FFmpeg. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user or automated system using FFmpeg
+      to process a specially crafted file, resulting in the execution of
+      arbitrary code or a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FFmpeg 4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/ffmpeg-4.2.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10001">CVE-2018-10001</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6912">CVE-2018-6912</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7557">CVE-2018-7557</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7751">CVE-2018-7751</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9841">CVE-2018-9841</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12730">CVE-2019-12730</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13312">CVE-2019-13312</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13390">CVE-2019-13390</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17539">CVE-2019-17539</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17542">CVE-2019-17542</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-20T05:25:46Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-03-30T15:05:02Z">whissi</metadata>
+</glsa>
