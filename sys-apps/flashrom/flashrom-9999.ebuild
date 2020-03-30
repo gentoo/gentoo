@@ -156,11 +156,7 @@ src_install() {
 	dolib.a libflashrom.a
 	doheader libflashrom.h
 
-	if use tools ; then
-		if use amd64 ; then
-			dosbin util/ich_descriptors_tool/ich_descriptors_tool
-		elif use x86 ; then
-			dosbin util/ich_descriptors_tool/ich_descriptors_tool
-		fi
+	if use tools; then
+		dosbin util/ich_descriptors_tool/ich_descriptors_tool
 	fi
 }
