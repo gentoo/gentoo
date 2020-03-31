@@ -5203,7 +5203,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.20.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 1.0.2u 1.1.0l 1.1.1d-r3 1.1.1e: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 1.0.2u 1.1.0l 1.1.1d-r3 1.1.1f: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2u: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
@@ -12497,7 +12497,7 @@ media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Font
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
 media-fonts/terminus-font 4.46 4.47 4.48: A clean fixed font for the console and X11
 media-fonts/termsyn 1.8.7: Monospaced font based on terminus and tamsyn
-media-fonts/tex-gyre 2.005: Extensive remake of freely available URW fonts
+media-fonts/tex-gyre 2.005 2.501: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
 media-fonts/thaifonts-scalable 0.6.1: A collection of Free fonts for Thai
 media-fonts/tibetan-machine-font 1.901: Fonts for the Tibetan and Himalayan languages
@@ -13613,7 +13613,7 @@ media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professi
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
 media-sound/lltag 0.14.4-r1 0.14.5: Automatic command-line mp3/ogg/flac file tagger and renamer
 media-sound/lmms 1.2.0 1.2.1 9999: Cross-platform music production software
-media-sound/lollypop 1.1.4.16 1.2.29: Modern music player for GNOME
+media-sound/lollypop 1.1.4.16 1.2.32: Modern music player for GNOME
 media-sound/loudness-scanner 0.5.1_p20190709 9999: Scans your music files and tags them with loudness information
 media-sound/lxmusic 0.4.7: A simple GUI XMMS2 client with minimal functionality
 media-sound/lyvi 2.0.0: A simple command-line lyrics viewer
@@ -17442,7 +17442,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.5 9999: Gentoo automatic kernel building script
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.109 4.19.111 4.19.112 5.4.25 5.4.26 5.4.27 5.5.9 5.5.10 5.5.11: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.109 4.19.111 4.19.112 5.4.25 5.4.26 5.4.27 5.5.9 5.5.10 5.5.11: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.210 4.4.212 4.4.213 4.4.214 4.4.215 4.4.216 4.4.217 4.9.210 4.9.212 4.9.213 4.9.214 4.9.215 4.9.216 4.9.217 4.14.166 4.14.169 4.14.170 4.14.171 4.14.172 4.14.173 4.14.174 4.19.97 4.19.108 4.19.109 4.19.110 4.19.111 4.19.112 4.19.113 5.4.24 5.4.25 5.4.26 5.4.27 5.4.28 5.5.7 5.5.8 5.5.9 5.5.10 5.5.11 5.5.13 5.6.0: Full sources including the Gentoo patchset for the 5.6 kernel tree
+sys-kernel/gentoo-sources 4.4.215 4.4.216 4.4.217 4.9.215 4.9.216 4.9.217 4.14.166 4.14.169 4.14.170 4.14.171 4.14.172 4.14.173 4.14.174 4.19.97 4.19.108 4.19.109 4.19.110 4.19.111 4.19.112 4.19.113 5.4.24 5.4.25 5.4.26 5.4.27 5.4.28 5.5.7 5.5.8 5.5.9 5.5.10 5.5.11 5.5.13 5.6.0: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.6_rc1 5.6_rc2 5.6_rc3 5.6_rc4 5.6_rc5 5.6_rc6 5.6_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel

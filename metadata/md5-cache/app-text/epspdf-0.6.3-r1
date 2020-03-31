@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!<dev-texlive/texlive-pictures-2011-r1 >=dev-texlive/texlive-basic-2011 app-text/ghostscript-gpl tk? ( dev-lang/tk )
 SLOT=0
 SRC_URI=http://tex.aanhet.net/epspdf/epspdf.0.6.3.tgz
-_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23	texlive-common	930a8063ad61a83cd5b9b186a1f75f9c
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	texlive-common	3438add11e8232d1fa32884e5e278bfe
 _md5_=7467cf79a18935e28a4e3a6072f2d6c2

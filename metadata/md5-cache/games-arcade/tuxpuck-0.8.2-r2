@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl media-libs/libpng:0= virtual/jpeg:0 media-libs/libvorbis
 SLOT=0
 SRC_URI=http://home.no.net/munsuun/tuxpuck/files/tuxpuck-0.8.2.tar.gz
-_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
 _md5_=4a5e1ffefb5ff56a620d984848b3bf1e

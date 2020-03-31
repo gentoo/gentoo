@@ -9,5 +9,5 @@ RDEPEND=virtual/latex-base
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/jadetex/jadetex-3.13.tar.gz
-_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	texlive-common	930a8063ad61a83cd5b9b186a1f75f9c
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	texlive-common	3438add11e8232d1fa32884e5e278bfe
 _md5_=4f056a1294eaacaaf9bbff5eeaf0b509

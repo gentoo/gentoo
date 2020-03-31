@@ -8,5 +8,5 @@ LICENSE=GPL-2 BitstreamVera
 RDEPEND=media-libs/libsdl[sound,video,joystick] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf
 SLOT=0
 SRC_URI=mirror://sourceforge/gnurobbo/gnurobbo-0.66-source.tar.gz
-_eclasses_=desktop	3b1f1d9a6b749c9ce2d5182877265b23
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
 _md5_=0a434e079fbb44a64b5fb3bd81037b16
