@@ -136,15 +136,15 @@ gnome2_gconf_install() {
 
 	# We are ready to install the GCONF Scheme now
 	unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
-	export GCONF_CONFIG_SOURCE="$("${updater}" --get-default-source | sed "s;:/;:${ROOT};")"
+	export GCONF_CONFIG_SOURCE="$("${updater}" --get-default-source | sed "s;:/;:${ROOT%/}/;")"
 
 	einfo "Installing GNOME 2 GConf schemas"
 
 	local F
 	for F in ${GNOME2_ECLASS_SCHEMAS}; do
-		if [[ -e "${EROOT}${F}" ]]; then
+		if [[ -e "${EROOT%/}/${F}" ]]; then
 			debug-print "Installing schema: ${F}"
-			"${updater}" --makefile-install-rule "${EROOT}${F}" 1>/dev/null
+			"${updater}" --makefile-install-rule "${EROOT%/}/${F}" 1>/dev/null
 		fi
 	done
 
@@ -176,15 +176,15 @@ gnome2_gconf_uninstall() {
 	fi
 
 	unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
-	export GCONF_CONFIG_SOURCE="$("${updater}" --get-default-source | sed "s;:/;:${ROOT};")"
+	export GCONF_CONFIG_SOURCE="$("${updater}" --get-default-source | sed "s;:/;:${ROOT%/}/;")"
 
 	einfo "Uninstalling GNOME 2 GConf schemas"
 
 	local F
 	for F in ${GNOME2_ECLASS_SCHEMAS}; do
-		if [[ -e "${EROOT}${F}" ]]; then
+		if [[ -e "${EROOT%/}/${F}" ]]; then
 			debug-print "Uninstalling gconf schema: ${F}"
-			"${updater}" --makefile-uninstall-rule "${EROOT}${F}" 1>/dev/null
+			"${updater}" --makefile-uninstall-rule "${EROOT%/}/${F}" 1>/dev/null
 		fi
 	done
 
@@ -352,7 +352,7 @@ gnome2_gdk_pixbuf_update() {
 	local tmp_file=$(emktemp)
 	${updater} 1> "${tmp_file}" &&
 	chmod 0644 "${tmp_file}" &&
-	cp -f "${tmp_file}" "${EROOT}usr/$(get_libdir)/gdk-pixbuf-2.0/2.10.0/loaders.cache" &&
+	cp -f "${tmp_file}" "${EROOT%/}/usr/$(get_libdir)/gdk-pixbuf-2.0/2.10.0/loaders.cache" &&
 	rm "${tmp_file}" # don't replace this with mv, required for SELinux support
 	eend $?
 }
@@ -365,7 +365,7 @@ gnome2_query_immodules_gtk2() {
 	[[ ! -x ${updater} ]] && updater=${EPREFIX}/usr/bin/gtk-query-immodules-2.0
 
 	ebegin "Updating gtk2 input method module cache"
-	GTK_IM_MODULE_FILE="${EROOT}usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache" \
+	GTK_IM_MODULE_FILE="${EROOT%/}/usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache" \
 		"${updater}" --update-cache
 	eend $?
 }
@@ -378,7 +378,7 @@ gnome2_query_immodules_gtk3() {
 	[[ ! -x ${updater} ]] && updater=${EPREFIX}/usr/bin/gtk-query-immodules-3.0
 
 	ebegin "Updating gtk3 input method module cache"
-	GTK_IM_MODULE_FILE="${EROOT}usr/$(get_libdir)/gtk-3.0/3.0.0/immodules.cache" \
+	GTK_IM_MODULE_FILE="${EROOT%/}/usr/$(get_libdir)/gtk-3.0/3.0.0/immodules.cache" \
 		"${updater}" --update-cache
 	eend $?
 }
