@@ -1,3 +1,4 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install postinst postrm setup
 DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Extensive remake of freely available URW fonts
@@ -9,4 +10,4 @@ LICENSE=|| ( GFL LPPL-1.3c )
 SLOT=0
 SRC_URI=http://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg2_501otf.zip
 _eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
-_md5_=2d8046a70cd6388edd71d13dfa842ec3
+_md5_=8ff49c0ac051b88eac2017d237ae47cc
