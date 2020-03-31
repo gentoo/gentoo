@@ -103,8 +103,8 @@ export MOZ_ALLOW_DOWNGRADE=1
 ## names and contect menus
 ##
 if [[ $@ != *"--name "* ]]; then
-	set -- "--name ${DESKTOP_FILE}" "$@"
+	set -- --name "${DESKTOP_FILE}" "$@"
 fi
 
 # Run the browser
-exec ${MOZ_PROGRAM} $@
+exec ${MOZ_PROGRAM} "$@"
