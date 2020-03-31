@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="pypi">pyzmq</remote-id>
   </upstream>
+  <use>
+    <flag name="draft">Enable draft API support</flag>
+  </use>
 </pkgmetadata>
