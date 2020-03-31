@@ -17,7 +17,7 @@ HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="doc egl gbm wayland X"
+IUSE="doc +egl +gbm wayland X"
 RESTRICT="test" # gl_basic tests don't work when run from portage
 
 RDEPEND="
