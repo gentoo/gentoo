@@ -30,10 +30,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=x11-base/xcb-proto-1.8-r3[${MULTILIB_USEDEP}]
-	doc? (
-		dev-libs/libxslt
-		app-text/docbook-xml-dtd:4.2
-	)
+"
+BDEPEND="
+	dev-libs/libxslt
+	app-text/docbook-xml-dtd:4.2
 "
 
 MULTILIB_CHOST_TOOLS=(
@@ -52,7 +52,7 @@ multilib_src_configure() {
 		$(meson_feature X x11_egl)
 		$(meson_feature gbm)
 		$(meson_feature egl surfaceless_egl)
-		$(meson_use doc build-manpages)
+		-Dbuild-manpages=true
 		-Dbuild-tests=false
 	)
 	meson_src_configure
@@ -69,5 +69,5 @@ multilib_src_test() {
 multilib_src_install() {
 	meson_src_install
 
-	rm -rf "${D}"/usr/share/doc/waffle1
+	! use doc && rm -rf "${D}"/usr/share/doc/waffle1
 }
