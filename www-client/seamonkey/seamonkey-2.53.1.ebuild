@@ -40,7 +40,7 @@ PATCH="${PN}-2.53.1-patches-02"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
