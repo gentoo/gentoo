@@ -5,7 +5,7 @@ EAPI=5
 
 # svn export http://svn.xiph.org/trunk/Tremor tremor-${PV}
 
-inherit autotools eutils ltprune multilib-minimal
+inherit autotools eutils multilib-minimal
 
 DESCRIPTION="A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)"
 HOMEPAGE="https://wiki.xiph.org/Tremor"
@@ -46,5 +46,5 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	dohtml -r doc/*
-	prune_libtool_files
+	find "${D}" -name '*.la' -type f -delete || die
 }
