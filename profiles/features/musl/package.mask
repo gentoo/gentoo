@@ -3,6 +3,8 @@
 
 # Ulrich Müller (2020-03-31)
 # Not ported to musl, bug #715642.
+# See https://wiki.gentoo.org/wiki/Project:Emacs/Emacs-like_editors
+# for alternatives.
 app-editors/jasspa-microemacs
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
