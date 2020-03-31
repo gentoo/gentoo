@@ -1,0 +1,11 @@
+DEFINED_PHASES=install setup
+DESCRIPTION=OPUS codec and supporting files for asterisk
+EAPI=7
+HOMEPAGE=https://wiki.asterisk.org/wiki/display/AST/Codec+Opus
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Digium
+RDEPEND==net-misc/asterisk-13*
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://downloads.digium.com/pub/telephony/codec_opus/asterisk-13.0/x86-64/codec_opus-13.0_1.3.0-x86_64.tar.gz ) x86? ( https://downloads.digium.com/pub/telephony/codec_opus/asterisk-13.0/x86-32/codec_opus-13.0_1.3.0-x86_32.tar.gz )
+_md5_=23eb20b27f905d3f16a399102ffcba57

@@ -558,7 +558,7 @@ app-admin/webapp-config 1.55-r1 9999: Gentoo's installer for web-based applicati
 app-admin/whowatch 1.8.5 1.8.6: Displays information about users currently logged on in real time
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
-app-admin/yadm 1.12.0 2.4.0: A dotfile manager for the config files in your home folder
+app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.2-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2 6.0.1-r5 7.0.1: Download and install third-party clamav signatures
 app-antivirus/clamtk 6.02-r1: A graphical front-end for ClamAV
@@ -4356,7 +4356,7 @@ dev-java/httpcomponents-client 4.5: A low level toolset of Java components focus
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.15.0: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.14.0 3.15.0: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.15.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -4569,7 +4569,7 @@ dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/openjdk 8.242 11.0.6: Open source implementation of the Java programming language
 dev-java/openjdk-bin 8.242_p08 11.0.6_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.242_p08 11.0.5_p10 11.0.6_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.242_p08 11.0.6_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 11.0.6_p2 11.0.7_p0: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
@@ -10953,7 +10953,7 @@ games-arcade/openmortal 0.7-r2: A spoof of the famous Mortal Kombat game
 games-arcade/opensonic 0.1.4-r2: A free open-source game based on the Sonic the Hedgehog universe
 games-arcade/opentyrian 2.1.20130907-r1: Open-source port of the DOS game Tyrian, vertical scrolling shooter
 games-arcade/orthorobot 0-r1 0-r2: Perspective based puzzle game, where you flatten the view to move across gaps
-games-arcade/oshu 2.0.0: Lightweight osu! port
+games-arcade/oshu 2.0.1 9999: Lightweight osu! port
 games-arcade/pachi 1.0: platform game inspired by games like Manic Miner and Jet Set Willy
 games-arcade/pacmanarena 0.15-r1: 3D Pacman clone with a few surprises. Rockets, bombs and explosions abound
 games-arcade/penguin-command 1.6.11-r1: A clone of the classic Missile Command game
@@ -13322,7 +13322,7 @@ media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 3.1.0 3.1.1 9999: Waveform
 media-plugins/ladspa-bs2b 0.9.1-r1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2017.10.28 2018.01.29 2018.07.07: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2017.10.28 2018.01.29 2018.07.07 2020.03.06: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.2.4: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mythplugins 30.0-r2: Official WMythTV plugins
@@ -14495,7 +14495,7 @@ net-im/slack 4.1.1 4.3.2-r1 4.3.2-r2: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958 1.3.00.5153: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
-net-im/telegram-desktop 1.9.14 1.9.21 1.9.22: Official desktop client for Telegram
+net-im/telegram-desktop 1.9.14 1.9.21 2.0.0: Official desktop client for Telegram
 net-im/telegram-desktop-bin 1.9.12 1.9.14 1.9.21: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
@@ -14856,6 +14856,7 @@ net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22 1.6.1 1.6.1-r1: Core sounds for a
 net-misc/asterisk-extra-sounds 1.4.11-r1 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9 13.0.3.1.9: G.729 codec and supporting files for asterisk
 net-misc/asterisk-moh-opsound 2.03 2.03-r1: asterisk moh music
+net-misc/asterisk-opus 13.0.1.3.0: OPUS codec and supporting files for asterisk
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4g: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.7 9999: Automatic open port forwarder using UPnP
@@ -18753,7 +18754,7 @@ x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
 x11-plugins/wmwork 0.2.5-r1: a dockapp that lets you easily track time spent on different projects
 x11-plugins/wmxkb 1.2.2-r1: Dockable keyboard layout switcher for Window Maker
 x11-plugins/wmxres 1.2-r1: Dock application to select your display mode among those possible
-x11-terms/alacritty 0.4.0 0.4.1 0.4.2_rc3 9999: GPU-accelerated terminal emulator
+x11-terms/alacritty 0.4.0 0.4.1 0.4.2 9999: GPU-accelerated terminal emulator
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and feel of the old cathode tube screens
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
