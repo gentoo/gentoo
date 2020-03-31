@@ -1,0 +1,29 @@
+diff -Nuar a_init/Makefile.am b_env/Makefile.am
+--- a_init/Makefile.am	2020-03-28 15:36:06.000000000 +0300
++++ b_env/Makefile.am	2020-03-30 18:14:12.000000000 +0300
+@@ -46,5 +46,5 @@
+ clean-local:
+ 	rm -f $(top_srcdir)/debian/codeblocks-headers.install
+ 
+-appdatadir = $(datarootdir)/appdata
++appdatadir = $(datarootdir)/metainfo
+ dist_appdata_DATA = $(top_srcdir)/codeblocks.appdata.xml
+diff -Nuar a_init/m4/acinclude.m4 b_env/m4/acinclude.m4
+--- a_init/m4/acinclude.m4	2020-03-28 15:36:06.000000000 +0300
++++ b_env/m4/acinclude.m4	2020-03-30 18:08:13.000000000 +0300
+@@ -91,8 +91,6 @@
+ AC_ARG_ENABLE(debug, [AC_HELP_STRING([--enable-debug], [turn on debugging (default is OFF)])],,
+                        enable_debug=$debug_default)
+     if test "x$enable_debug" = "xyes"; then
+-        CFLAGS="-g $CFLAGS"
+-        CXXFLAGS="-g $CXXFLAGS"
+         CPPFLAGS="-DDEBUG -DcbDEBUG $CPPFLAGS"
+         AC_MSG_RESULT(yes)
+     else
+diff -Nuar a_init/src/plugins/contrib/appdata/Makefile.am b_env/src/plugins/contrib/appdata/Makefile.am
+--- a_init/src/plugins/contrib/appdata/Makefile.am	2020-03-28 15:35:54.000000000 +0300
++++ b_env/src/plugins/contrib/appdata/Makefile.am	2020-03-30 18:14:22.000000000 +0300
+@@ -1,2 +1,2 @@
+-appdatadir = $(datarootdir)/appdata
++appdatadir = $(datarootdir)/metainfo
+ dist_appdata_DATA = $(top_srcdir)/codeblocks-contrib.metainfo.xml
