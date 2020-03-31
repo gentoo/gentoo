@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit leechcraft
 
@@ -13,18 +13,18 @@ IUSE="debug geoip"
 
 DEPEND="
 	~app-leechcraft/lc-core-${PV}
-	net-libs/libtorrent-rasterbar
-	dev-qt/qtxml:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
+	net-libs/libtorrent-rasterbar:=
+	geoip? ( dev-libs/libmaxminddb:= )
 "
 RDEPEND="${DEPEND}
 	virtual/leechcraft-task-show
-	geoip? ( dev-libs/geoip )
 "
 
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_BITTORRENT_GEOIP=$(usex geoip)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
