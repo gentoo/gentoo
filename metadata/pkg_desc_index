@@ -4783,7 +4783,7 @@ dev-lang/rust 1.41.1 1.42.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.41.1 1.42.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
-dev-lang/scala-bin 2.12.4: The Scala Programming Language
+dev-lang/scala-bin 2.12.4 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
