@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
+# Ulrich Müller (2020-03-31)
+# Not ported to musl, bug #715642.
+app-editors/jasspa-microemacs
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # musl has no support for nss subsystem.
 sys-auth/libnss-nis
