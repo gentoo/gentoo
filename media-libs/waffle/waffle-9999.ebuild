@@ -26,7 +26,7 @@ RDEPEND="
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
 	gbm? ( >=virtual/libudev-208:=[${MULTILIB_USEDEP}] )
-	wayland? ( >=dev-libs/wayland-1.0.6[${MULTILIB_USEDEP}] )
+	wayland? ( >=dev-libs/wayland-1.10[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	>=x11-base/xcb-proto-1.8-r3[${MULTILIB_USEDEP}]
