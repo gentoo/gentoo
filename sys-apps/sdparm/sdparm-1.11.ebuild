@@ -13,7 +13,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~am
 IUSE=""
 
 # Older releases contain a conflicting sas_disk_blink
-RDEPEND=">=sys-apps/sg3_utils-1.42"
+RDEPEND=">=sys-apps/sg3_utils-1.45"
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog CREDITS README notes.txt )
