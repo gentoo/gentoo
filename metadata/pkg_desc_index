@@ -7471,7 +7471,7 @@ dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to 
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
-dev-python/awscli 1.18.16: Universal Command Line Environment for AWS
+dev-python/awscli 1.18.16 1.18.32: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0-r1: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
@@ -7516,7 +7516,7 @@ dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.2 0.9.0: Boolean operations on paths
 dev-python/boto 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.122 1.10.2 9999: The AWS SDK for Python
-dev-python/botocore 1.12.122 1.15.16 9999: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.12.122 1.15.16 1.15.32 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.18 0.18-r1 0.19: Syntax highlighting and autocompletion for the Python interpreter
