@@ -75,6 +75,10 @@ REQUIRED_USE="|| ( alsa pulseaudio )
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/2.0.0-fixes.patch"
+)
+
 src_configure() {
 	local mycxxflags=(
 		-Wno-deprecated-declarations
