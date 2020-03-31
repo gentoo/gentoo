@@ -17,7 +17,8 @@ IUSE=""
 
 DEPEND="
 	dev-util/glslang
-	dev-util/vulkan-headers"
+	dev-util/vulkan-headers
+	media-libs/vulkan-loader"
 
 RDEPEND="${DEPEND}"
 BDEPEND=""
