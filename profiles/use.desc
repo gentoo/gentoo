@@ -100,6 +100,7 @@ ggi - Add support for media-libs/libggi (non-X video api/drivers)
 gif - Add GIF image support
 gimp - Build a plugin for the GIMP
 git - Enable git (version control system) support
+gles2-only - Use GLES 2.0 or later instead of full OpenGL
 glut - Build an OpenGL plugin using the GLUT library
 gmp - Add support for dev-libs/gmp (GNU MP library)
 gnome - Add GNOME support
