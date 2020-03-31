@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,11 +9,12 @@ DESCRIPTION="PHP-based tool for managing,updating and playing audio files via a 
 HOMEPAGE="http://www.ampache.org/"
 SRC_URI="https://github.com/ampache/ampache/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
+SLOT="${PV}"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="aac flac mp3 ogg transcode"
 
-RDEPEND="dev-lang/php[gd,hash,iconv,mysql,pdo,session,unicode,xml,zlib]
+RDEPEND="dev-lang/php[gd,hash(+),iconv,mysql,pdo,session,unicode,xml,zlib]
 	transcode? ( media-sound/lame
 		aac? ( || ( media-libs/faad2 media-sound/alac_decoder ) )
 		flac? ( media-libs/flac )
