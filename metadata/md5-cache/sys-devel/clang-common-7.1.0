@@ -7,5 +7,5 @@ LICENSE=UoI-NCSA
 PDEPEND=sys-devel/clang:*
 SLOT=0
 SRC_URI=https://releases.llvm.org/7.1.0/cfe-7.1.0.src.tar.xz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d4a0789dae5f34145b240d561e057c55
