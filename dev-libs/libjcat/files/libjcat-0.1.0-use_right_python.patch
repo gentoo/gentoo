@@ -1,0 +1,29 @@
+By default generate-version-script.py uses /usr/bin/python3, whatever
+version that may be - which causes problems if the default python3
+installation is one either built without XML support or not included
+in PYTHON_TARGETS of dev-python/setuptools. Make sure the script is
+invoked using the same interpreter as meson itself, as that one is
+already guaranteed to provide both 'xml' and 'pkg_resources'.
+
+--- a/libjcat/meson.build
++++ b/libjcat/meson.build
+@@ -129,6 +129,11 @@
+     install : true,
+   )
+ 
++  # Make sure generate-version-script.py is invoked by the same python as meson,
++  # as that one must already have both XML support and setuptools.
++  python = import('python')
++  python_interpreter = python.find_installation()
++
+   # Verify the map file is correct -- note we can't actually use the generated
+   # file for two reasons:
+   #
+@@ -141,6 +146,7 @@
+     input: jcat_gir[0],
+     output: 'jcat.map',
+     command: [
++      python_interpreter,
+       join_paths(meson.source_root(), 'contrib', 'generate-version-script.py'),
+       'LIBJCAT',
+       '@INPUT@',
