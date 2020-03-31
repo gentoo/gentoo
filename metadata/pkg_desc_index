@@ -10465,7 +10465,7 @@ dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20191110 1.3.20191210 1.3.20200228: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 137: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 137 138: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -13139,7 +13139,7 @@ media-libs/vo-amrwbenc 0.1.3 9999: VisualOn AMR-WB encoder library
 media-libs/volpack 1.0_p7-r1: Volume rendering library
 media-libs/vulkan-layers 1.1.125-r2 1.2.133-r1 9999: Vulkan Validation Layers
 media-libs/vulkan-loader 1.1.125 1.2.133 9999: Vulkan Installable Client Driver (ICD) Loader
-media-libs/waffle 1.6.0-r1 9999: Library that allows selection of GL API and of window system at runtime
+media-libs/waffle 1.6.0-r1 1.6.1 9999: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/webvfx 1.1.0: Video effects library based on web technologies
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
@@ -17407,7 +17407,7 @@ sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 11.2 11.3: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.3-r2 4.3_p7 4.3_p12 4.4 9999: tools to create and extract Squashfs filesystems
-sys-fs/squashfs-tools-ng 0.7 0.8 9999: A new set of tools for working with SquashFS images
+sys-fs/squashfs-tools-ng 0.7 0.8 0.9 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
