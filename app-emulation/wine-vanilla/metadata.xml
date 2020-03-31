@@ -40,6 +40,7 @@ This variant of the Wine packaging does not include external patchsets
 						(these pages are not currently in the updated WineHQ Wiki).</flag>		
 		<flag name="sdl">Add support for gamepad detection using SDL</flag>
 		<flag name="udev">Use <pkg>virtual/libudev</pkg> to provide plug and play support</flag>
+		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> to unwind the stack</flag>
 		<flag name="vkd3d">Use <pkg>app-emulation/vkd3d</pkg> to provide Direct3D 12 support</flag>
 		<flag name="vulkan">Enable Vulkan drivers</flag>
 	</use>
