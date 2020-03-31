@@ -15,11 +15,8 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 RDEPEND="
+	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	|| (
-		dev-python/pycryptodome[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
-	)
 "
 DEPEND="
 	${RDEPEND}
