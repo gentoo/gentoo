@@ -4878,7 +4878,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.23.3: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.177 0.178: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.177 0.178 0.179: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.26 0.27 0.28 0.30 0.30-r1 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library

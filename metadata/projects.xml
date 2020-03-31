@@ -1240,6 +1240,11 @@
       <role>Member ( general )</role>
     </member>
     <member>
+      <email>jstein@gentoo.org</email>
+      <name>Jonas Stein</name>
+      <role>Member ( mostly cleaning up bugs and QA )</role>
+    </member>
+    <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
       <role>Member ( general )</role>
