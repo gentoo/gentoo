@@ -1,0 +1,6 @@
+# User and group the server should run as.
+ut2003_ded_user="nobody"
+ut2003_ded_group="nobody"
+
+# Any extra options you want to pass to the server.
+ut2003_ded_opts="DM-Antalus"
