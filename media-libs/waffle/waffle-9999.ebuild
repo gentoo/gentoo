@@ -7,7 +7,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/${PN}"
 	GIT_ECLASS="git-r3"
 else
-	SRC_URI="http://www.waffle-gl.org/files/release/${P}/${P}.tar.xz"
+	SRC_URI="https://gitlab.freedesktop.org/mesa/${PN}/-/raw/website/files/release/${P}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 fi
 inherit meson multilib-minimal ${GIT_ECLASS}
