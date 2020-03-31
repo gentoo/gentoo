@@ -67,6 +67,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PDEPEND="media-fonts/open-sans"
+
 REQUIRED_USE="|| ( alsa pulseaudio )
 	spell? (
 		^^ ( enchant hunspell )
@@ -74,10 +76,6 @@ REQUIRED_USE="|| ( alsa pulseaudio )
 "
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=(
-	"${FILESDIR}/2.0.0-fixes.patch"
-)
 
 src_configure() {
 	local mycxxflags=(
