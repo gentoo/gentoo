@@ -10,13 +10,16 @@ SRC_URI="http://www.live555.com/liveMedia/public/${P/-/.}.tar.gz"
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="libressl ssl"
-DOCS=( "live-shared/README" )
+
 DEPEND="
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
 "
+RDEPEND="${DEPEND}"
+
+DOCS=( "live-shared/README" )
 
 # Alexis Ballier <aballier@gentoo.org>, Sam James <sam@cmpct.info>
 # Be careful, bump this everytime you bump the package and the ABI has changed.
@@ -95,6 +98,6 @@ src_install() {
 		doins "${S}/${library}"/include/*h
 	done
 
-	dobin ${S}/mediaServer/live555MediaServer
-	dobin ${S}/proxyServer/live555ProxyServer
+	dobin "${S}"/mediaServer/live555MediaServer
+	dobin "${S}"/proxyServer/live555ProxyServer
 }
