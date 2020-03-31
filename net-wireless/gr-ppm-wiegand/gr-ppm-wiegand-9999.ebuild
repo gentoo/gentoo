@@ -27,3 +27,17 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	dev-libs/boost:=
 	dev-util/cppunit"
+
+src_configure() {
+	#not supported by upstream...yet
+	mycmakeargs=(
+		-DGR_PKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
+	)
+	cmake-utils_src_configure
+}
+
+src_install(){
+	default
+	dodir "/usr/share/doc/${PF}"
+	mv "${ED}/usr/share/doc/${PN}" "${ED}/usr/share/doc/${PF}"
+}
