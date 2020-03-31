@@ -18,7 +18,7 @@ SRC_URI="https://github.com/effigies/BitTornado/archive/${EGIT_COMMIT}.tar.gz ->
 LICENSE="MIT GPL-2"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
