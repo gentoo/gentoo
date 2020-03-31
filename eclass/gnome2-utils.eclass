@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2-utils.eclass
@@ -122,7 +122,7 @@ gnome2_gconf_savelist() {
 # This function should be called from pkg_postinst.
 gnome2_gconf_install() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}${GCONFTOOL_BIN}"
+	local updater="${EROOT%/}${GCONFTOOL_BIN}"
 
 	if [[ ! -x "${updater}" ]]; then
 		debug-print "${updater} is not executable"
@@ -163,7 +163,7 @@ gnome2_gconf_install() {
 # database.
 gnome2_gconf_uninstall() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}${GCONFTOOL_BIN}"
+	local updater="${EROOT%/}${GCONFTOOL_BIN}"
 
 	if [[ ! -x "${updater}" ]]; then
 		debug-print "${updater} is not executable"
@@ -266,7 +266,7 @@ gnome2_scrollkeeper_savelist() {
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_scrollkeeper_update() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}${SCROLLKEEPER_UPDATE_BIN}"
+	local updater="${EROOT%/}${SCROLLKEEPER_UPDATE_BIN}"
 
 	if [[ ! -x "${updater}" ]] ; then
 		debug-print "${updater} is not executable"
@@ -279,7 +279,7 @@ gnome2_scrollkeeper_update() {
 	fi
 
 	ebegin "Updating scrollkeeper database ..."
-	"${updater}" -q -p "${EROOT}${SCROLLKEEPER_DIR}"
+	"${updater}" -q -p "${EROOT%/}${SCROLLKEEPER_DIR}"
 	eend $?
 }
 
@@ -302,7 +302,7 @@ gnome2_schemas_savelist() {
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_schemas_update() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}${GLIB_COMPILE_SCHEMAS}"
+	local updater="${EROOT%/}${GLIB_COMPILE_SCHEMAS}"
 
 	if [[ ! -x ${updater} ]]; then
 		debug-print "${updater} is not executable"
@@ -332,10 +332,10 @@ gnome2_gdk_pixbuf_savelist() {
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_gdk_pixbuf_update() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}/usr/bin/${CHOST}-gdk-pixbuf-query-loaders"
+	local updater="${EROOT%/}/usr/bin/${CHOST}-gdk-pixbuf-query-loaders"
 
 	if [[ ! -x ${updater} ]]; then
-		updater="${EROOT}/usr/bin/gdk-pixbuf-query-loaders"
+		updater="${EROOT%/}/usr/bin/gdk-pixbuf-query-loaders"
 	fi
 
 	if [[ ! -x ${updater} ]]; then
@@ -389,10 +389,10 @@ gnome2_query_immodules_gtk3() {
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_giomodule_cache_update() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}/usr/bin/${CHOST}-gio-querymodules"
+	local updater="${EROOT%/}/usr/bin/${CHOST}-gio-querymodules"
 
 	if [[ ! -x ${updater} ]]; then
-		updater="${EROOT}/usr/bin/gio-querymodules"
+		updater="${EROOT%/}/usr/bin/gio-querymodules"
 	fi
 
 	if [[ ! -x ${updater} ]]; then
