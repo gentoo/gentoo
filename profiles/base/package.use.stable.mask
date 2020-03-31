@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# David Seifert <soap@gentoo.org> (2020-03-31)
+# Numpy support in Boost.Python is brittle and shouldn't be enabled
+# on stable systems or force a stable upgrade.
+dev-libs/boost numpy
+
 # Brian Evans <grknight@gentoo.org> (2020-02-27)
 # Two packages are delayed during stable of PHP 7.4
 # arm, arm64 and hppa necessary to not disruput consistency
