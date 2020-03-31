@@ -2592,6 +2592,7 @@ dev-python/python-mpd:twisted - Enable twisted support
 dev-python/python-stdnum:vies - Enable VIES
 dev-python/pyudev:qt5 - Install PyQt5 bindings
 dev-python/pyyaml:libyaml - enable support for C implementation using libyaml
+dev-python/pyzmq:draft - Enable draft API support
 dev-python/rarfile:compressed - Enables the module to support compressed v3 archives by calling the app-arch/unrar.
 dev-python/rdflib:redland - enable support for Redland triplestore
 dev-python/restkit:cli - Install the restcli command line interface/tool, based on dev-python/ipython
@@ -4111,13 +4112,14 @@ media-gfx/imagemagick:q32 - Set quantum depth value to 32
 media-gfx/imagemagick:q8 - Set quantum depth value to 8
 media-gfx/imv:freeimage - Use media-libs/freeimage as image library
 media-gfx/imv:libnsgif - Use media-libs/libnsgif as image library
-media-gfx/inkscape:cdr - Enable support for CorelDRAW Diagrams via media-libs/libcdr
-media-gfx/inkscape:dia - pull in app-office/dia for dia import extension
+media-gfx/inkscape:cdr - Enable support for CorelDRAW files via media-libs/libcdr
+media-gfx/inkscape:dia - Enable DIA flow chart import via app-office/dia
 media-gfx/inkscape:inkjar - Enable support for OpenOffice.org SVG jar files
-media-gfx/inkscape:latex - pull in dependencies for LaTeX formulas
+media-gfx/inkscape:latex - Enable rendering of LaTeX formulas
 media-gfx/inkscape:svg2 - Enable support for new SVG2 features
-media-gfx/inkscape:visio - Enable support for Microsoft Visio Diagrams via media-libs/libvisio
-media-gfx/inkscape:wpg - Enable support for WordPerfect Graphics via app-text/libwpg
+media-gfx/inkscape:uniconvertor - Enable conversion of vector graphic files via media-gfx/uniconvertor (needs Python 2)
+media-gfx/inkscape:visio - Enable support for Microsoft Visio diagrams via media-libs/libvisio
+media-gfx/inkscape:wpg - Enable support for WordPerfect graphics via app-text/libwpg
 media-gfx/iscan-plugin-gt-f500:minimal - Install the firmware only, and not the plugin.
 media-gfx/jpeg2ps:metric - Default to A4 paper size
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
