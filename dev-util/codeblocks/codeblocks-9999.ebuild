@@ -5,10 +5,10 @@ EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools subversion wxwidgets xdg-utils
+inherit autotools subversion wxwidgets xdg
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
-HOMEPAGE="http://www.codeblocks.org/"
+HOMEPAGE="https://codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
@@ -58,13 +58,9 @@ pkg_postinst() {
 	elog "The Symbols Browser is disabled due to it causing crashes."
 	elog "For more information see https://sourceforge.net/p/codeblocks/tickets/225/"
 
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
+	xdg_pkg_postrm
 }
