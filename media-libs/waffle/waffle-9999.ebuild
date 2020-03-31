@@ -40,11 +40,6 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/wflinfo$(get_exeext)
 )
 
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
-}
-
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_feature X glx)
@@ -60,10 +55,6 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
 }
 
 multilib_src_install() {
