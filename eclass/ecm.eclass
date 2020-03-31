@@ -74,8 +74,8 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_po
 
 # @ECLASS-VARIABLE: ECM_DEBUG
 # @DESCRIPTION:
-# Add "debug" to IUSE. If !debug, add -DNDEBUG (via cmake_src_configure)
-# and -DQT_NO_DEBUG to CPPFLAGS. If set to "false", do nothing.
+# Add "debug" to IUSE. If !debug, add -DQT_NO_DEBUG to CPPFLAGS. If set to
+# "false", do nothing.
 : ${ECM_DEBUG:=true}
 
 # @ECLASS-VARIABLE: ECM_DESIGNERPLUGIN
@@ -476,7 +476,6 @@ ecm_src_prepare() {
 ecm_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# we rely on cmake.eclass to append -DNDEBUG too
 	if in_iuse debug && ! use debug; then
 		append-cppflags -DQT_NO_DEBUG
 	fi
