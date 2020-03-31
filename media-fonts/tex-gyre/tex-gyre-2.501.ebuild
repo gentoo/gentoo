@@ -13,5 +13,7 @@ LICENSE="|| ( GFL LPPL-1.3c )" # legally equivalent
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~x86"
 
+BDEPEND="app-arch/unzip"
+
 S="${WORKDIR}/${MY_P}"
 FONT_SUFFIX="otf"
