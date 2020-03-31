@@ -44,7 +44,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gcrypt +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gcrypt +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks +unwind v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -112,6 +112,7 @@ COMMON_DEPEND="
 	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
+	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
 	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
 	vkd3d? ( app-emulation/vkd3d[${MULTILIB_USEDEP}] )
@@ -473,6 +474,7 @@ multilib_src_configure() {
 		$(use_enable test tests)
 		$(use_with truetype freetype)
 		$(use_with udev)
+		$(use_with unwind)
 		$(use_with v4l v4l2)
 		$(use_with vkd3d)
 		$(use_with vulkan)
