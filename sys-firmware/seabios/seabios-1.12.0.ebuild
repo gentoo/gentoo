@@ -34,19 +34,35 @@ LICENSE="LGPL-3 GPL-3"
 SLOT="0"
 IUSE="+binary debug +seavgabios"
 
-REQUIRED_USE="debug? ( !binary )
-	!amd64? ( !x86? ( binary ) )"
+REQUIRED_USE="debug? ( !binary )"
 
-# The amd64/x86 check is needed to workaround #570892.
 SOURCE_DEPEND="
 	>=sys-power/iasl-20060912
 	${PYTHON_DEPS}"
 DEPEND="
 	!binary? (
-		amd64? ( ${SOURCE_DEPEND} )
-		x86? ( ${SOURCE_DEPEND} )
+		${SOURCE_DEPEND}
 	)"
 RDEPEND=""
+
+choose_target_chost() {
+	if [[ -n "${CC}" ]]; then
+		${CC} -dumpmachine
+		return
+	fi
+
+	if use amd64 || use x86; then
+		# Use the native compiler
+		echo "${CHOST}"
+		return
+	fi
+
+	local i
+	for i in x86_64 i686 i586 i486 i386 ; do
+		i=${i}-pc-linux-gnu
+		type -P ${i}-gcc > /dev/null && echo ${i} && return
+	done
+}
 
 pkg_pretend() {
 	if ! use binary; then
@@ -58,6 +74,14 @@ pkg_pretend() {
 		ewarn "you will not receive any support if you have compiled your"
 		ewarn "own SeaBIOS. Virtual machines subtly fail based on changes"
 		ewarn "in SeaBIOS."
+		if [[ -z "$(choose_target_chost)" ]]; then
+			elog
+			eerror "Before you can compile ${PN}[-binary], you need to install a x86 cross-compiler"
+			eerror "Run the following commands:"
+			eerror "  emerge crossdev"
+			eerror "  crossdev --stable -t x86_64-pc-linux-gnu"
+			die "cross-compiler is needed"
+		fi
 	fi
 }
 
@@ -108,10 +132,12 @@ _emake() {
 src_compile() {
 	use binary && return
 
+	local TARGET_CHOST=$(choose_target_chost)
+
 	cp "${FILESDIR}/seabios/config.seabios-256k" .config || die
 	_emake oldnoconfig
-	_emake iasl
-	_emake out/bios.bin
+	CHOST="${TARGET_CHOST}" _emake iasl
+	CHOST="${TARGET_CHOST}" _emake out/bios.bin
 	mv out/bios.bin ../bios-256k.bin || die
 
 	if use seavgabios ; then
@@ -127,7 +153,7 @@ src_compile() {
 			emake clean distclean
 			cp "${FILESDIR}/seavgabios/config.vga-${t}" .config || die
 			_emake oldnoconfig
-			_emake out/vgabios.bin
+			CHOST="${TARGET_CHOST}" _emake out/vgabios.bin
 			cp out/vgabios.bin ../vgabios-${t}.bin || die
 		done
 	fi
