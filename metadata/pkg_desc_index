@@ -18131,7 +18131,7 @@ x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
 x11-apps/xwd 1.0.6 1.0.7: dump an image of an X window
 x11-apps/xwininfo 1.1.5: window information utility for X
 x11-apps/xwud 1.0.5: image displayer for X
-x11-base/xcb-proto 1.13 1.14: X C-language Bindings protocol headers
+x11-base/xcb-proto 1.13 1.14-r1: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20-r1 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2019.2 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.7 1.20.8 9999: X.Org X servers
