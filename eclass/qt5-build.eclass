@@ -104,10 +104,11 @@ EGIT_REPO_URI=(
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
-case ${QT5_BUILD_TYPE} in
-	live)    : ${QT5_BUILD_DIR:=${S}_build} ;;
-	release) : ${QT5_BUILD_DIR:=${S}} ;; # workaround for bug 497312
-esac
+if ver_test ${PV} -lt 5.14.2; then
+	: ${QT5_BUILD_DIR:=${S}} # workaround for bug 497312
+else
+	: ${QT5_BUILD_DIR:=${S}_build}
+fi
 
 IUSE="debug test"
 
@@ -658,7 +659,12 @@ qt5_base_configure() {
 
 	# a forwarding header is no longer created since 5.8, causing the system
 	# config to always be used. bug 599636
-	cp src/corelib/global/qconfig.h include/QtCore/ || die
+	# ${S}/include does not exist in live sources
+	local basedir="${S}/"
+	if ver_test ${PV} -lt 5.14.2 || [[ ${QT5_BUILD_TYPE} == live ]]; then
+		basedir=""
+	fi
+	cp src/corelib/global/qconfig.h "${basedir}"include/QtCore/ || die
 
 	popd >/dev/null || die
 
