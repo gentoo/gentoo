@@ -677,6 +677,7 @@ app-emulation/wine-staging:sdl - Add support for gamepad detection using SDL
 app-emulation/wine-staging:staging - Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet
 app-emulation/wine-staging:themes - Support GTK+:3 window theming through Wine-Staging
 app-emulation/wine-staging:udev - Use virtual/libudev to provide plug and play support
+app-emulation/wine-staging:unwind - Use sys-libs/libunwind to unwind the stack
 app-emulation/wine-staging:vkd3d - Use app-emulation/vkd3d to provide Direct3D 12 support
 app-emulation/wine-staging:vulkan - Enable Vulkan drivers
 app-emulation/wine-vanilla:capi - Enable ISDN support via CAPI
@@ -698,6 +699,7 @@ app-emulation/wine-vanilla:run-exes - Use Wine to open and run .EXE and .MSI fil
 app-emulation/wine-vanilla:samba - Add support for NTLM auth. See: https://web.archive.org/web/20160108123008/http://wiki.winehq.org:80/NtlmAuthSetupGuide and https://web.archive.org/web/20150906013746/http://wiki.winehq.org/NtlmSigningAndSealing (these pages are not currently in the updated WineHQ Wiki).
 app-emulation/wine-vanilla:sdl - Add support for gamepad detection using SDL
 app-emulation/wine-vanilla:udev - Use virtual/libudev to provide plug and play support
+app-emulation/wine-vanilla:unwind - Use sys-libs/libunwind to unwind the stack
 app-emulation/wine-vanilla:vkd3d - Use app-emulation/vkd3d to provide Direct3D 12 support
 app-emulation/wine-vanilla:vulkan - Enable Vulkan drivers
 app-emulation/winetricks:rar - Pull in app-arch/unrar for extraction of rar-compressed game files
