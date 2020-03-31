@@ -15,8 +15,9 @@
 #  * scrollkeeper (old Gnome help system) management
 
 [[ ${EAPI:-0} == [012345] ]] && inherit multilib
-[[ ${EAPI:-0} == [0123456] ]] && inherit eutils
-inherit xdg-utils
+# eutils.eclass: emktemp
+# xdg-utils.eclass: xdg_environment_reset, xdg_icon_cache_update
+inherit eutils xdg-utils
 
 case "${EAPI:-0}" in
 	0|1|2|3|4|5|6|7) ;;
