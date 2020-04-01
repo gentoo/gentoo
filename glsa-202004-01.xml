@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-01">
+  <title>HAProxy: Remote execution of arbitrary code</title>
+  <synopsis>A vulnerability in HAProxy might lead to remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">haproxy</product>
+  <announced>2020-04-01</announced>
+  <revised count="1">2020-04-01</revised>
+  <bug>701842</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/haproxy" auto="yes" arch="*">
+      <unaffected range="rge">1.8.23</unaffected>
+      <unaffected range="rge">1.9.13</unaffected>
+      <unaffected range="rge">2.0.10</unaffected>
+      <vulnerable range="lt">2.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>HAProxy is a TCP/HTTP reverse proxy for high availability environments.</p>
+  </background>
+  <description>
+    <p>It was discovered that HAProxy incorrectly handled certain HTTP/2
+      headers.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted HTTP/2 header, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All HAProxy 1.8.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/haproxy-1.8.23"
+    </code>
+    
+    <p>All HAProxy 1.9.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/haproxy-1.9.13"
+    </code>
+    
+    <p>All HAProxy 2.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/haproxy-2.0.10"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19330">CVE-2019-19330</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-01T19:22:40Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-01T19:28:55Z">whissi</metadata>
+</glsa>
