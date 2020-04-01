@@ -8,7 +8,7 @@ inherit eutils vcs-snapshot
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="git://git.infradead.org/mtd-utils.git"
 
-	inherit git-2
+	inherit git-r3
 	SRC_URI=""
 	#KEYWORDS=""
 else
