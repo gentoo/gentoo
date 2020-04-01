@@ -12,7 +12,7 @@ HOMEPAGE="https://www.google.com/get/noto/ https://github.com/googlei18n/noto-em
 COMMIT="4325631b45027a3d4da9a0f08f829e790f86ff4d"
 SRC_URI="https://github.com/googlei18n/noto-emoji/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 OFL-1.1"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE=""
