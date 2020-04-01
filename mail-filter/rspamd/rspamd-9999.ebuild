@@ -22,27 +22,47 @@ IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit libressl pcre2"
 RDEPEND="
 	acct-group/rspamd
 	acct-user/rspamd
+	app-arch/zstd
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/icu:=
 	dev-libs/libev
 	dev-libs/libsodium
-	dev-util/ragel
+	dev-libs/snowball-stemmer
 	net-libs/libnsl
 	sys-apps/file
 	blas? ( sci-libs/openblas )
 	cpu_flags_x86_ssse3? ( dev-libs/hyperscan )
 	jemalloc? ( dev-libs/jemalloc )
-	jit? ( dev-lang/luajit:2 )
-	!jit? ( dev-lang/lua:* )
+	jit? (
+		dev-lang/luajit:2
+		dev-lua/lpeg[luajit]
+	)
+	!jit? (
+		dev-lang/lua:*
+		dev-lua/lpeg[-luajit]
+		dev-lua/LuaBitOp
+	)
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
 	pcre2? ( dev-libs/libpcre2[jit=] )
 	!pcre2? ( dev-libs/libpcre[jit=] )"
 DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-util/ragel
+	virtual/pkgconfig
+"
+
+PATCHES=(
+	"${FILESDIR}/rspamd-2.5-unbundle-lua.patch"
+	"${FILESDIR}/rspamd-2.5-unbundle-zstd.patch"
+	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare
+
+	rm -vrf contrib/{lua-{bit,lpeg},snowball,zstd} || die
 
 	sed -i -e 's/User=_rspamd/User=rspamd/g' \
 		rspamd.service \
