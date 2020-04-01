@@ -9,6 +9,7 @@ gnome		https://download.gnome.org/
 gnu		https://ftp.gnu.org/gnu/ https://artfiles.org/gnu.org/ https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/
 gnu-alpha	https://www.mirrorservice.org/sites/alpha.gnu.org/gnu/ https://gnualpha.uib.no/ https://mirrors.fe.up.pt/pub/gnu-alpha/ https://alpha.gnu.org/gnu/ https://www.nic.funet.fi/pub/gnu/alpha/gnu/ http://mirror.lihnidos.org/GNU/alpha/gnu/ http://mirrors.ibiblio.org/gnu/alpha/gnu/ ftp://ftp.funet.fi/pub/gnu/alpha/gnu/ ftp://gnualpha.uib.no/pub/gnualpha/ ftp://mirrors.fe.up.pt/pub/gnu-alpha/ ftp://alpha.gnu.org/gnu/
 gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://ftp.heanet.ie/mirrors/ftp.gnupg.org/gcrypt/ https://mirrors.dotsrc.org/gcrypt/ ftp://ftp.gnupg.org/gcrypt/
+goproxy https://proxy.golang.org/ https://goproxy.io/ https://gocenter.io/
 idsoftware	ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff
 imagemagick	https://www.imagemagick.org/download/releases/ https://mirror.checkdomain.de/imagemagick/releases/ https://ftp.acc.umu.se/mirror/imagemagick.org/ftp/releases/ ftp://ftp.fifi.org/pub/ImageMagick/releases/
 kde		https://download.kde.org http://mirror.csclub.uwaterloo.ca/kde ftp://mirrors.dotsrc.org/kde ftp://kde.mirror.anlx.net
@@ -25,4 +26,3 @@ sourceforge	https://download.sourceforge.net
 sourceforge.jp	http://iij.dl.sourceforge.jp https://osdn.dl.sourceforge.jp https://jaist.dl.sourceforge.jp
 ubuntu		http://mirror.internode.on.net/pub/ubuntu/ubuntu/ https://mirror.tcc.wa.edu.au/ubuntu/ http://ubuntu.uni-klu.ac.at/ubuntu/ http://mirror.dhakacom.com/ubuntu-archive/ http://ubuntu.c3sl.ufpr.br/ubuntu/ http://ubuntu.uni-sofia.bg/ubuntu/ http://hr.archive.ubuntu.com/ubuntu/ http://cz.archive.ubuntu.com/ubuntu/ https://mirror.dkm.cz/ubuntu http://ftp.cvut.cz/ubuntu/ http://ftp.stw-bonn.de/ubuntu/ https://ftp-stud.hs-esslingen.de/ubuntu/ https://mirror.netcologne.de/ubuntu/ https://mirror.unej.ac.id/ubuntu/ http://kr.archive.ubuntu.com/ubuntu/ https://mirror.nforce.com/pub/linux/ubuntu/ http://mirror.amsiohosting.net/archive.ubuntu.com/ http://nl3.archive.ubuntu.com/ubuntu/ https://mirror.timeweb.ru/ubuntu/ http://ubuntu.mirror.su.se/ubuntu/ https://ftp.yzu.edu.tw/ubuntu/ https://ubuntu.volia.net/ubuntu-archive/ https://mirror.pnl.gov/ubuntu/ http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive/ https://mirrors.namecheap.com/ubuntu/
 vdr-developerorg http://projects.vdr-developer.org/attachments/download
-goproxy	https://proxy.golang.org/ https://goproxy.io/ https://gocenter.io/
