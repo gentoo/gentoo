@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,11 +16,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="sys-process/procps:=
-	sys-kernel/pf-sources:*"
+DEPEND="sys-process/procps:="
 RDEPEND="${DEPEND}"
 
-CONFIG_CHECK="KSM"
+CONFIG_CHECK="~KSM"
 
 S="${WORKDIR}/${MY_P}"
 

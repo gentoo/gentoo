@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils qmake-utils
+inherit qmake-utils xdg-utils
 
 DESCRIPTION="GUI to access the Czech data box e-government system"
 HOMEPAGE="https://www.datovka.cz/"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # minimum Qt version required
-QT_PV="5.3.2:5"
+QT_PV="5.14.0:5"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2:0=
@@ -26,13 +26,14 @@ RDEPEND="
 	>=dev-qt/qtsql-${QT_PV}[sqlite]
 	>=dev-qt/qtsvg-${QT_PV}
 	>=dev-qt/qtwidgets-${QT_PV}
-	>=net-libs/libisds-0.10.8
+	>=net-libs/libisds-0.11
 "
 DEPEND="
 	${RDEPEND}
 	>=dev-qt/linguist-tools-${QT_PV}
+	virtual/pkgconfig
 "
-
+PATCHES=( "${FILESDIR}/${P}-appdata-to-metainfo.patch" )
 DOCS=( ChangeLog README )
 
 src_configure() {
@@ -46,9 +47,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
