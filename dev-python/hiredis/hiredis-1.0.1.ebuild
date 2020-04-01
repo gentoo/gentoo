@@ -22,3 +22,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-system-libs.patch
 	"${FILESDIR}"/${P}-api-0.14.patch
 )
+
+python_test() {
+	cd test
+	"${EPYTHON}" -m unittest reader.ReaderTest || die "tests failed"
+}
