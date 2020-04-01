@@ -10,7 +10,9 @@
 aes - Enable support for Intel's AES instruction set (AES-NI)
 avx - Adds support for Advanced Vector Extensions instructions
 avx2 - Adds support for Advanced Vector Extensions 2 instructions
+avx512dq - Use AVX-512 double- and quad-word instructions
 avx512f - Adds support for AVX-512 Foundation instructions
+avx512vl - Use AVX-512 vector-length instructions
 f16c - Adds support for F16C instruction set for converting between half-precision and single-precision floats
 fma3 - Use the Fused Multiply Add 3 instruction set ([fma] in cpuinfo)
 fma4 - Use the Fused Multiply Add 4 instruction set
