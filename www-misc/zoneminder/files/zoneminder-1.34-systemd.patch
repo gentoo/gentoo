@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a15267582..811c3b2ad 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -258,9 +258,9 @@ include_directories("${CMAKE_BINARY_DIR}")
+ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS ON)
+ 
+ # Set the systemd flag if systemd is autodetected or ZM_SYSTEMD has been set
+-if(ZM_SYSTEMD OR (IS_DIRECTORY /usr/lib/systemd/system) OR (IS_DIRECTORY /lib/systemd/system))
++if(ZM_SYSTEMD)
+     set(WITH_SYSTEMD 1)
+-endif(ZM_SYSTEMD OR (IS_DIRECTORY /usr/lib/systemd/system) OR (IS_DIRECTORY /lib/systemd/system))
++endif(ZM_SYSTEMD)
+ 
+ # System checks
+ check_include_file("libv4l1-videodev.h" HAVE_LIBV4L1_VIDEODEV_H)
