@@ -13,12 +13,11 @@ LICENSE="ut2003"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="dedicated"
-RESTRICT="bindist strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	!games-server/ut2003-ded
 	games-fps/ut2003-data
-	media-libs/libsdl[abi_x86_32]
 	sys-libs/glibc
 	virtual/opengl[abi_x86_32]
 "
@@ -40,8 +39,8 @@ src_install() {
 	doins -r .
 	fperms +x "${DIR}"/System/{ucc,${PN}}-bin
 
-	make_wrapper ${PN} ./${PN}-bin "${DIR}"/System "${DIR}"/System
-	make_wrapper ${PN}-ded "./ucc-bin server" "${DIR}"/System "${DIR}"/System
+	make_wrapper ${PN} ./${PN}-bin "${DIR}"
+	make_wrapper ${PN}-ded ./ucc "${DIR}"
 
 	make_desktop_entry ${PN} "Unreal Tournament 2003" applications-games
 
