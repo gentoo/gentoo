@@ -136,12 +136,6 @@ kde-apps/dolphin-plugins-bazaar
 net-fs/ncpfs
 net-misc/ipx-utils
 
-# Joshua Kinard <kumba@gentoo.org> (2020-03-28)
-# Last release 2008. Last upstream commit 2013. Blocks removal of
-# gnome-base/libgnome-keyring
-# Bug #713030
-mail-client/mail-notification
-
 # Matt Turner <mattst88@gentoo.org> (2020-03-28)
 # Last release 2008. Last upstream commit 2013. Blocks removal of
 # gnome-base/libgnome-keyring
