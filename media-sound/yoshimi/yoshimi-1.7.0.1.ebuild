@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake xdg
+inherit cmake xdg flag-o-matic
 
 DESCRIPTION="Software synthesizer based on ZynAddSubFX"
 HOMEPAGE="https://yoshimi.github.io/"
@@ -17,7 +17,7 @@ IUSE="+lv2"
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	>=dev-libs/mxml-2.5
-	>=media-libs/alsa-lib-1.0.17
+	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/libsndfile
 	sci-libs/fftw:3.0=
@@ -33,19 +33,19 @@ RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${WORKDIR}/${P}/src"
 
-PATCHES=( "${FILESDIR}"/${P}-cxxflags.patch )
-
 DOCS=( Changelog README.txt )
 
 src_prepare() {
 	cmake_src_prepare
-	# respect doc dir
-	sed -e "s#/doc/yoshimi#/doc/${PF}#" -i src/CMakeLists.txt || die
+	append-cxxflags -lpthread
+	append-cppflags -lpthread
 }
 
 src_configure() {
-	local mycmakeargs=(
-		-DLV2Plugin=$(usex lv2)
-	)
+	local mycmakeargs=( -DLV2Plugin=$(usex lv2) )
 	cmake_src_configure
+}
+src_install() {
+	cmake_src_install
+	mv "${D}"/usr/share/doc/yoshimi "${D}"/usr/share/doc/${P}
 }
