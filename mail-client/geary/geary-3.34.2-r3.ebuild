@@ -42,7 +42,7 @@ DEPEND="
 	>=gui-libs/libhandy-0.0.9:0.0=
 	>=app-crypt/libsecret-0.11
 	>=net-libs/libsoup-2.48:2.4
-	>=sys-libs/libunwind-1.1:7
+	>=sys-libs/libunwind-1.1:0
 	>=dev-libs/libxml2-2.7.8:2
 	ytnef? ( >=net-mail/ytnef-1.9.3 )
 "

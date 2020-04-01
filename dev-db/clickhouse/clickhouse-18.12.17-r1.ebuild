@@ -42,7 +42,7 @@ RDEPEND="
 		dev-libs/double-conversion
 		dev-libs/capnproto
 		dev-libs/libltdl:0
-		sys-libs/libunwind:7
+		sys-libs/libunwind:0
 		sys-libs/zlib
 		|| (
 			dev-db/unixODBC
@@ -71,7 +71,7 @@ DEPEND="${RDEPEND}
 		)
 		dev-libs/capnproto[static-libs]
 		dev-libs/libltdl[static-libs]
-		sys-libs/libunwind:7[static-libs]
+		sys-libs/libunwind:0[static-libs]
 		sys-libs/zlib[static-libs]
 		|| (
 			dev-db/unixODBC[static-libs]
