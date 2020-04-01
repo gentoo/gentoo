@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-02">
+  <title>VirtualBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VirtualBox, the worst
+    of which could allow an attacker to take control of VirtualBox.
+  </synopsis>
+  <product type="ebuild">virtualbox</product>
+  <announced>2020-04-01</announced>
+  <revised count="1">2020-04-01</revised>
+  <bug>714064</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/virtualbox" auto="yes" arch="*">
+      <unaffected range="rge">5.2.36</unaffected>
+      <unaffected range="rge">6.0.16</unaffected>
+      <unaffected range="rge">6.1.2</unaffected>
+      <vulnerable range="lt">6.1.2</vulnerable>
+    </package>
+    <package name="app-emulation/virtualbox-bin" auto="yes" arch="*">
+      <unaffected range="rge">5.2.36</unaffected>
+      <unaffected range="rge">6.0.16</unaffected>
+      <unaffected range="rge">6.1.2</unaffected>
+      <vulnerable range="lt">6.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VirtualBox is a powerful virtualization product from Oracle.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VirtualBox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could take control of VirtualBox resulting in the execution
+      of arbitrary code with the privileges of the process, a Denial of Service
+      condition, or other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VirtualBox 5.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-5.2.36"
+    </code>
+    
+    <p>All VirtualBox 6.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-6.0.16"
+    </code>
+    
+    <p>All VirtualBox 6.1.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-6.1.2"
+    </code>
+    
+    <p>All VirtualBox binary 5.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-bin-5.2.36"
+    </code>
+    
+    <p>All VirtualBox binary 6.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-bin-6.0.16"
+    </code>
+    
+    <p>All VirtualBox binary 6.1.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-bin-6.1.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2926">CVE-2019-2926</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2944">CVE-2019-2944</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2984">CVE-2019-2984</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3002">CVE-2019-3002</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3005">CVE-2019-3005</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3017">CVE-2019-3017</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3021">CVE-2019-3021</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3026">CVE-2019-3026</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3028">CVE-2019-3028</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3031">CVE-2019-3031</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2674">CVE-2020-2674</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2678">CVE-2020-2678</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2681">CVE-2020-2681</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2682">CVE-2020-2682</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2689">CVE-2020-2689</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2690">CVE-2020-2690</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2691">CVE-2020-2691</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2692">CVE-2020-2692</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2693">CVE-2020-2693</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2698">CVE-2020-2698</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2702">CVE-2020-2702</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2703">CVE-2020-2703</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2704">CVE-2020-2704</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2705">CVE-2020-2705</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2725">CVE-2020-2725</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2726">CVE-2020-2726</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2727">CVE-2020-2727</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-01T19:35:27Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-01T19:41:08Z">whissi</metadata>
+</glsa>
