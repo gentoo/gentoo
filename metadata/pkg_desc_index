@@ -17120,7 +17120,7 @@ sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted
 sys-boot/udk 2015-r1 2018 2018-r1: Tianocore UEFI Development kit
 sys-boot/unetbootin 661 675 677-r1: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 72_p20181229-r1 80_p20200108: Chrome OS verified boot tools
-sys-boot/woeusb 3.3.0 3.3.1: Creates windows installer on usb media from an iso image
+sys-boot/woeusb 3.3.1: Creates windows installer on usb media from an iso image
 sys-boot/yaboot 1.3.14-r2 1.3.16 1.3.17-r2 1.3.17-r3: PPC Bootloader
 sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loader for machines with open firmware
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
