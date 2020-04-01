@@ -56,6 +56,7 @@ REQUIRED_USE="dhcp-tools? ( dhcp )
 PATCHES=(
 	"${FILESDIR}/dnsmasq-2.80-nettle-3.5.patch"
 	"${FILESDIR}/dnsmasq-2.80-linux-headers-5.2.patch"
+	"${FILESDIR}/dnsmasq-2.80-cve-2019-14834.patch"
 )
 
 use_have() {
