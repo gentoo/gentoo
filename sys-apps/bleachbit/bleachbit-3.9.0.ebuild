@@ -28,7 +28,7 @@ BDEPEND="
 distutils_enable_tests unittest
 
 # tests fail under FEATURES=usersandbox
-RESTRICT+=" test"
+RESTRICT="test"
 
 python_prepare_all() {
 	if use test; then
