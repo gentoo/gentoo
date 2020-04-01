@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-05">
+  <title>ledger: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ledger, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">ledger</product>
+  <announced>2020-04-01</announced>
+  <revised count="1">2020-04-01</revised>
+  <bug>627060</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/ledger" auto="yes" arch="*">
+      <unaffected range="ge">3.1.2</unaffected>
+      <vulnerable range="lt">3.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ledger is a powerful, double-entry accounting system that is accessed
+      from the UNIX command-line.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ledger. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      file using ledger, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ledger users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/ledger-3.1.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12481">CVE-2017-12481</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12482">CVE-2017-12482</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-2807">CVE-2017-2807</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-2808">CVE-2017-2808</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-01T20:22:30Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-01T20:25:33Z">whissi</metadata>
+</glsa>
