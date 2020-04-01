@@ -103,7 +103,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/boost[threads]
 "
 RDEPEND="${COMMON_DEPEND}
-	mysql? ( virtual/mysql[server] )
+	mysql? ( virtual/mysql[server(+)] )
 	panorama? ( media-gfx/hugin )
 "
 
