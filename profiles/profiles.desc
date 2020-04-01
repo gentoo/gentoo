@@ -182,6 +182,7 @@ ppc64           default/linux/ppc64le/17.0/desktop                exp
 ppc64           default/linux/ppc64le/17.0/desktop/plasma         exp
 ppc64           default/linux/ppc64le/17.0/desktop/plasma/systemd exp
 ppc64           default/linux/ppc64le/17.0/systemd                exp
+ppc64           default/linux/ppc64le/17.0/developer              exp
 ppc64           default/linux/ppc64le/17.0/musl                   exp
 ppc64           default/linux/ppc64le/17.0/musl/hardened          exp
 
