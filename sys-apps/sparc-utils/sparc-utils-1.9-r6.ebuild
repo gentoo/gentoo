@@ -23,6 +23,7 @@ S=${WORKDIR}/${P}.orig
 PATCHES=(
 	"${WORKDIR}/${PN}_${PV}-4.diff"
 	"${FILESDIR}"/${P}-no-implicit.patch
+	"${FILESDIR}"/elftoaout-2.3-64bit_fixes-1.patch
 )
 
 src_compile() {
