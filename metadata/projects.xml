@@ -471,26 +471,22 @@
     <email>catalyst@gentoo.org</email>
     <name>Catalyst Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>
-    <description>The Gentoo Catalyst Project develops and supports the Catalyst release building tool. Catalyst has been designed to be easy to use, customize, and maintain. It is also used in other Gentoo projects, such as GNAP.</description>
+    <description>The Gentoo Catalyst Project develops and supports the Catalyst release building tool. Catalyst has been designed to be easy to use, customize, and maintain.</description>
     <member>
       <email>bkohler@gentoo.org</email>
       <name>Ben Kohler</name>
-      <role>Member</role>
     </member>
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>Member</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>dolsen@gentoo.org</email>
       <name>Brian Dolbec</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
-      <role>Member</role>
     </member>
     <member>
       <email>mattst88@gentoo.org</email>
@@ -499,7 +495,6 @@
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
