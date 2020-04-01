@@ -9867,7 +9867,7 @@ dev-ruby/protected_attributes 1.1.4: Protect attributes from mass-assignment in 
 dev-ruby/pry 0.12.2: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/public_suffix 3.1.1 4.0.1 4.0.2 4.0.3: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0 2.1.0: Object oriented authorization for Rails applications
-dev-ruby/puppet_forge 2.2.9-r1 2.3.0 2.3.1 2.3.2 2.3.3: Tools to access Forge API information on Modules, Users, and Releases
+dev-ruby/puppet_forge 2.3.2 2.3.3: Tools to access Forge API information on Modules, Users, and Releases
 dev-ruby/puppetdb-termini 6.9.1: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 1.2.1-r1: Pygments syntax highlighting in ruby
@@ -10120,7 +10120,7 @@ dev-ruby/tty-which 0.4.1: Platform independent implementation of Unix which comm
 dev-ruby/turbolinks 2.5.4 5.2.0 5.2.1: Makes following links in your web application faster
 dev-ruby/turbolinks-source 5.2.0: Turbolinks JavaScript assets
 dev-ruby/twitter 6.2.0 7.0.0: Ruby wrapper around the Twitter API
-dev-ruby/twitter-text 1.14.7 2.1.0 3.0.0: Text handling for Twitter
+dev-ruby/twitter-text 1.14.7 2.1.0 3.0.0 3.1.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9-r1 1.3.1: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 1.2.5 1.2.6 2.0.0 2.0.1: Daylight-savings aware timezone library
