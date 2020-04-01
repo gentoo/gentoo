@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 	gtk? ( virtual/pkgconfig )
 	xml? ( virtual/pkgconfig )"
 
+pkg_setup() {
+	use llvm && llvm_pkg_setup
+}
+
 _emake() {
 	# Makefile does not allow for an easy override of flags.
 	# Collect them here and override default phases.
