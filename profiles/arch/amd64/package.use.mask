@@ -17,11 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Marek Szuba <marecki@gentoo.org> (2020-04-01)
-# Phase one of removing ABI_X86_32 support from virtual/opencl,
-# as announced on 2020-03-09
-virtual/opencl abi_x86_32
-
 # Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
 # media-libs/cudnn is keyworded on amd64
 sci-physics/root -cudnn

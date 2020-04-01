@@ -1,11 +1,6 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Marek Szuba <marecki@gentoo.org> (2020-04-01)
-# Phase one of removing ABI_X86_32 support from virtual/opencl,
-# as announced on 2020-03-09
-virtual/opencl
-
 # Bernardo Meurer <bernardo@standard.ai> (2019-09-28)
 # Requires app-crypt/tpm2-tss which is pending ~x86 vide
 # https://bugs.gentoo.org/695758
