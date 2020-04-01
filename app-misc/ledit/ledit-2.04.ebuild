@@ -4,13 +4,14 @@
 EAPI=7
 
 DESCRIPTION="A line editor to be used with interactive commands"
-SRC_URI="http://pauillac.inria.fr/~ddr/ledit/distrib/src/${P}.tgz"
 HOMEPAGE="http://pauillac.inria.fr/~ddr/ledit/"
+SRC_URI="http://pauillac.inria.fr/~ddr/ledit/distrib/src/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="+ocamlopt"
+
 RESTRICT="installsources !ocamlopt? ( strip )"
 
 DEPEND=">=dev-lang/ocaml-3.09:=[ocamlopt?]
