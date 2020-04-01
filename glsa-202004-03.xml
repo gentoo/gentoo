@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-03">
+  <title>GPL Ghostscript: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GPL Ghostscript, the
+    worst of which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ghostscript</product>
+  <announced>2020-04-01</announced>
+  <revised count="1">2020-04-01</revised>
+  <bug>676264</bug>
+  <bug>692106</bug>
+  <bug>693002</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-text/ghostscript-gpl" auto="yes" arch="*">
+      <unaffected range="ge">9.28_rc4</unaffected>
+      <vulnerable range="lt">9.28_rc4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ghostscript is an interpreter for the PostScript language and for PDF.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GPL Ghostscript. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      file using GPL Ghostscript, possibly resulting in execution of arbitrary
+      code with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GPL Ghostscript users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-text/ghostscript-gpl-9.28_rc4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-10216">CVE-2019-10216</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14811">CVE-2019-14811</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14812">CVE-2019-14812</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14813">CVE-2019-14813</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14817">CVE-2019-14817</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3835">CVE-2019-3835</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3838">CVE-2019-3838</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6116">CVE-2019-6116</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-01T19:47:46Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-01T19:50:31Z">whissi</metadata>
+</glsa>
