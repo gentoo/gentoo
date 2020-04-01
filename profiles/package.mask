@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2020-04-01)
+# Upstream has no idea what they're doing, and every new version
+# introduces more security issues. Freshclam itself can now fetch
+# most third-party signatures, or app-antivirus/fangfrisch serves
+# as a replacement with a sane upstream.
+app-antivirus/clamav-unofficial-sigs
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-30)
 # Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
 # Bugs #484270 and #705646, masked for removal in 30 days.
