@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-04-01)
+# net-libs/mbedtls has no stable keywords
+net-misc/curl curl_ssl_mbedtls
+
 # Mart Raudsepp <leio@gentoo.org> (2020-02-12)
 # No stable media-fonts/cantarell on hppa.
 x11-libs/pango test

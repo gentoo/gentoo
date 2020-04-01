@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Matt Turner <mattst88@gentoo.org> (2020-04-01)
-# net-libs/mbedtls has no stable keywords
-net-misc/curl curl_ssl_mbedtls
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-23)
 # net-fs/samba has no stable keywords
 samba
