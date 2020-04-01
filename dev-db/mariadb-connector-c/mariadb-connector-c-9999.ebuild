@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ else
 	MY_PV=${PV/_b/-b}
 	SRC_URI="https://downloads.mariadb.org/f/${MY_PN}-${PV%_beta}/${PN}-${MY_PV}-src.tar.gz?serve -> ${P}-src.tar.gz"
 	S="${WORKDIR%/}/${PN}-${MY_PV}-src"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 
 inherit cmake-utils multilib-minimal toolchain-funcs ${VCS_INHERIT}
@@ -48,7 +48,7 @@ DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/gentoo-layout-3.0.patch
-	"${FILESDIR}"/${PN}-3.0.8-fix-pkconfig-file.patch
+	"${FILESDIR}"/${PN}-3.1.3-fix-pkconfig-file.patch
 )
 
 src_configure() {

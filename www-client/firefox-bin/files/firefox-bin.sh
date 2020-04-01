@@ -90,12 +90,12 @@ export MOZ_ALLOW_DOWNGRADE=1
 
 ##
 ## Set special variables for -bin
-export LD_LIBRARY_PATH="${APULSELIB_DIR:${APULSELIB_DIR}:}${MOZILLA_FIVE_HOME}"
+export LD_LIBRARY_PATH="${APULSELIB_DIR:+${APULSELIB_DIR}:}${MOZILLA_FIVE_HOME}"
 export GTK_PATH="${MOZ_LIB_DIR}/gtk-3.0"
 
 ##
 ## Route to the correct .desktop file to get proper
-## names and contect menus
+## name and actions
 ##
 if [[ $@ != *"--name "* ]]; then
 	set -- --name "${DESKTOP_FILE}" "$@"
