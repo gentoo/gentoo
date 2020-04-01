@@ -78,7 +78,7 @@ src_install() {
 	# The tarball doesn't contain an icon, so take a generic camera icon
 	# from https://github.com/google/material-design-icons, modified to be
 	# white on a blue background
-	doicon "${FILESDIR}"/zoom-videocam.svg
+	doicon "${FILESDIR}"/zoom-videocam.{svg,xpm}
 }
 
 pkg_postinst() {
