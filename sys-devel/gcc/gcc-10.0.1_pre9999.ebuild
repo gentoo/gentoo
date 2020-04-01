@@ -4,7 +4,7 @@
 EAPI="7"
 
 PATCH_GCC_VER="9.3.0" # reuse subset of patches for latest for live ebuilds gcc
-PATCH_VER="1"
+PATCH_VER="2"
 
 inherit toolchain
 
@@ -25,8 +25,8 @@ fi
 
 src_prepare() {
 	local p ignore_patches=(
-		04_all_default-ssp-fix.patch # needs a port
 		11_all_extra-options.patch # needs a port
+		27_all_default_ssp-buffer-size.patch # needs a port
 
 		12_all_pr55930-dependency-tracking.patch # upstreamed
 		25_all_ia64-bootstrap.patch # upstreamed
