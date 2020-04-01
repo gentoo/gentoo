@@ -95,7 +95,7 @@ export GTK_PATH="${MOZ_LIB_DIR}/gtk-3.0"
 
 ##
 ## Route to the correct .desktop file to get proper
-## names and contect menus
+## name and actions
 ##
 if [[ $@ != *"--name "* ]]; then
 	set -- --name "${DESKTOP_FILE}" "$@"
