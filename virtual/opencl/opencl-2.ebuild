@@ -11,7 +11,7 @@ KEYWORDS="amd64 x86"
 CARDS=( amdgpu i965 nvidia r600 radeonsi )
 IUSE="${CARDS[@]/#/video_cards_}"
 
-# intel-neo and intel-ocl-sdk are amd64-only
+# intel-neo, intel-ocl-sdk and rocm-opencl-runtime are abi_x86_64-only
 # ocl-icd is essentially a dummy/you-are-on-your-own provider - it installs
 # header files to include in the source code and a library to link against
 # but does not support any actual devices
@@ -21,8 +21,8 @@ RDEPEND="app-eselect/eselect-opencl
 			abi_x86_64? ( !abi_x86_32? ( dev-libs/intel-neo ) )
 		)
 		video_cards_amdgpu? ( || (
-			dev-libs/rocm-opencl-runtime
-			dev-libs/amdgpu-pro-opencl ) )
+			abi_x86_64? ( !abi_x86_32? ( dev-libs/rocm-opencl-runtime ) )
+			dev-libs/amdgpu-pro-opencl[${MULTILIB_USEDEP}] ) )
 		video_cards_nvidia? ( || (
 			>=x11-drivers/nvidia-drivers-290.10-r2[uvm(-)]
 			>=media-libs/mesa-9.1.6[opencl,X(+),${MULTILIB_USEDEP}] ) )
