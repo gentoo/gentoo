@@ -1,0 +1,32 @@
+diff -Nur hiredis-1.0.1.orig/src/reader.c hiredis-1.0.1/src/reader.c
+--- hiredis-1.0.1.orig/src/reader.c	2019-11-13 11:38:29.000000000 +0100
++++ hiredis-1.0.1/src/reader.c	2020-04-01 13:15:19.852085240 +0200
+@@ -167,7 +167,7 @@
+ static void Reader_dealloc(hiredis_ReaderObject *self) {
+     // we don't need to free self->encoding as the buffer is managed by Python
+     // https://docs.python.org/3/c-api/arg.html#strings-and-buffers
+-    redisReplyReaderFree(self->reader);
++    redisReaderFree(self->reader);
+     Py_XDECREF(self->protocolErrorClass);
+     Py_XDECREF(self->replyErrorClass);
+ 
+@@ -271,7 +271,7 @@
+       goto error;
+     }
+ 
+-    redisReplyReaderFeed(self->reader, (char *)buf.buf + off, len);
++    redisReaderFeed(self->reader, (char *)buf.buf + off, len);
+     PyBuffer_Release(&buf);
+     Py_RETURN_NONE;
+ 
+@@ -290,8 +290,8 @@
+         return NULL;
+     }
+ 
+-    if (redisReplyReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
+-        errstr = redisReplyReaderGetError(self->reader);
++    if (redisReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
++        errstr = redisReaderGetError(self->reader);
+         /* protocolErrorClass might be a callable. call it, then use it's type */
+         err = createError(self->protocolErrorClass, errstr, strlen(errstr));
+         if (err != NULL) {
