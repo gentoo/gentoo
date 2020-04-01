@@ -39,7 +39,7 @@ RDEPEND+="
 	sci-libs/spqr:0=
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
-	>=sys-libs/libunwind-1.1:7=
+	>=sys-libs/libunwind-1.1:0=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
 	>=virtual/blas-3.6
