@@ -11,3 +11,4 @@ move dev-python/git-python dev-python/GitPython
 move www-servers/automx2 net-mail/automx2
 move dev-python/pysnmp-apps net-analyzer/snmpclitools
 move net-im/slack-bin net-im/slack
+slotmove sys-libs/libunwind 7 0
