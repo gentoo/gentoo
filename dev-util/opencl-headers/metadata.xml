@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription lang="en">
+		The OpenCL API headers in this package are unified headers and are designed to work
+		with all released OpenCL versions. This differs from previous OpenCL API headers,
+		where version-specific API headers either existed in separate branches, or
+		in separate folders in a branch.
+
+		By default, the OpenCL API headers in this repository are for the latest OpenCL
+		version supported. To use these API headers to target a different OpenCL version,
+		an application may #define the preprocessor value CL_TARGET_OPENCL_VERSION before
+		including the OpenCL API headers. The CL_TARGET_OPENCL_VERSION is a three digit
+		decimal value representing the OpenCL API version.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">KhronosGroup/OpenCL-Headers</remote-id>
+	</upstream>
+</pkgmetadata>
+
