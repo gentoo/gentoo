@@ -1,0 +1,26 @@
+From 26296c94e997c27bd41250d91edee699c09128a3 Mon Sep 17 00:00:00 2001
+From: Guillaume Seren <guillaumeseren@gmail.com>
+Date: Wed, 1 Apr 2020 18:48:53 +0200
+Subject: [PATCH] Fix missing name warning
+
+Signed-off-by: Guillaume Seren <guillaumeseren@gmail.com>
+---
+ phpunit.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/phpunit.xml b/phpunit.xml
+index c21ffbc..29c96ce 100644
+--- a/phpunit.xml
++++ b/phpunit.xml
+@@ -7,7 +7,7 @@
+          beStrictAboutTestsThatDoNotTestAnything="true"
+          beStrictAboutTodoAnnotatedTests="true"
+          verbose="true">
+-    <testsuite>
++    <testsuite name='tests'>
+         <directory suffix="Test.php">tests</directory>
+     </testsuite>
+ 
+-- 
+2.24.1
+
