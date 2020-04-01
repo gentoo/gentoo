@@ -31,13 +31,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	# fix build failure w/ xfce4-panel-4.15.0
-	sed -i -e 's@<libxfce4panel/xfce-panel-plugin\.h>@<libxfce4panel/libxfce4panel.h>@' \
-		panel-plugin/register-plugin.c || die
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_AS_NEEDED=OFF
