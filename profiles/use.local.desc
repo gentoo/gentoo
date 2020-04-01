@@ -4744,6 +4744,11 @@ media-sound/pulseaudio:ssl - Use dev-libs/openssl to provide support for RAOP (A
 media-sound/pulseaudio:system-wide - Allow preparation and installation of the system-wide init script for PulseAudio. Since this support is only supported for embedded situations, do not enable without reading the upstream instructions at https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/ .
 media-sound/pulseaudio:systemd - Build with sys-apps/systemd support to replace standalone ConsoleKit.
 media-sound/pulseaudio:webrtc-aec - Uses the webrtc.org AudioProcessing library for enhancing VoIP calls greatly in applications that support it by performing acoustic echo cancellation, analog gain control, noise suppression and other processing.
+media-sound/pulseaudio-modules-bt:fdk - AAC encoding support using media-libs/fdk-aac
+media-sound/pulseaudio-modules-bt:ffmpeg - APTX, APTX-HD encoding support
+media-sound/pulseaudio-modules-bt:ldac - LDAC encoding support, using media-libs/libldac
+media-sound/pulseaudio-modules-bt:native-headset - Build with native HSP (Headset Profile) headset for bluez 5
+media-sound/pulseaudio-modules-bt:ofono-headset - Build with oFono HFP (Hands Free Profile) headset for bluez 5, requires net-misc/ofono.
 media-sound/pulseeffects:bs2b - Enable use of media-libs/libbs2b
 media-sound/pulseeffects:calf - Enable use of media-plugins/calf for adding various FX
 media-sound/pulseeffects:mda-lv2 - Enable use of media-plugins/mda-lv2 for the loudness FX
