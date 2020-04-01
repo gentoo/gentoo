@@ -1,0 +1,37 @@
+From 3a893377f815476b2d24434faa6cf9ba73ad9891 Mon Sep 17 00:00:00 2001
+From: Guillaume Seren <guillaumeseren@gmail.com>
+Date: Sun, 29 Mar 2020 23:16:28 +0200
+Subject: [PATCH] Fix issue #55
+
+Test if fstat function is available before using it.
+
+Signed-off-by: Guillaume Seren <guillaumeseren@gmail.com>
+---
+ src/Console.php | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/Console.php b/src/Console.php
+index 926c184..fe4d88f 100644
+--- a/src/Console.php
++++ b/src/Console.php
+@@ -89,10 +89,14 @@ public function isInteractive($fileDescriptor = self::STDOUT): bool
+             if (\function_exists('stream_isatty') && @\stream_isatty($fileDescriptor)) {
+                 return true;
+             }
+-
+-            $stat = @\fstat(\STDOUT);
+             // Check if formatted mode is S_IFCHR
+-            return $stat ? 0020000 === ($stat['mode'] & 0170000) : false;
++            if (\function_exists('fstat') && @\stream_isatty($fileDescriptor)) {
++                $stat = @\fstat(\STDOUT);
++
++                return $stat ? 0020000 === ($stat['mode'] & 0170000) : false;
++            }
++
++            return false;
+         }
+ 
+         return \function_exists('posix_isatty') && @\posix_isatty($fileDescriptor);
+-- 
+2.24.1
+
