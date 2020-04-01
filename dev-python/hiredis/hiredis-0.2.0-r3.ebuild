@@ -15,7 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-DEPEND=">=dev-libs/hiredis-0.13.1:="
+DEPEND=">=dev-libs/hiredis-0.14:="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-r1-system-libs.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-r1-system-libs.patch
+	"${FILESDIR}"/${P}-api-0.14.patch
+)
