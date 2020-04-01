@@ -16910,7 +16910,7 @@ sys-apps/smartmontools 7.0-r1 7.1 9999: Tools to monitor storage systems to prov
 sys-apps/smc-sum 2.4.0.20191206: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r3: Supermicro Update Manager (SUM) kernel module
 sys-apps/smcipmitool 2.21.0.181029 2.23.0.191216: An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
-sys-apps/sparc-utils 1.9-r5: Various sparc utilities from Debian GNU/Linux
+sys-apps/sparc-utils 1.9-r6: Various sparc utilities from Debian GNU/Linux
 sys-apps/spu-tools 2.3.0.136: CELL spu ps and top alike utilities
 sys-apps/stroke 0.1.3-r1: A powerful tool to change file timestamps (including ctimes)
 sys-apps/superdiag 1.3.0.20200109: Provides the capability to determine the health of Supermicro servers components
