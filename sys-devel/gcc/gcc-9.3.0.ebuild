@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PATCH_VER="1"
+PATCH_VER="2"
 
 inherit toolchain
 
