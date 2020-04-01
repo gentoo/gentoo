@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-04">
+  <title>Qt WebEngine: Arbitrary code execution</title>
+  <synopsis>A heap use-after-free flaw in Qt WebEngine at worst might allow an
+    attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">qtwebengine</product>
+  <announced>2020-04-01</announced>
+  <revised count="1">2020-04-01</revised>
+  <bug>699328</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-qt/qtwebengine" auto="yes" arch="*">
+      <unaffected range="ge">5.14.1</unaffected>
+      <vulnerable range="lt">5.14.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Library for rendering dynamic web content in Qt5 C++ and QML
+      applications.
+    </p>
+  </background>
+  <description>
+    <p>A use-after-free vulnerability has been found in the audio component of
+      Qt WebEngine.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted media
+      file in an application linked against Qt WebEngine, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Qt WebEngine users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtwebengine-5.14.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13720">CVE-2019-13720</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-01T19:59:12Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-01T20:04:23Z">whissi</metadata>
+</glsa>
