@@ -1,0 +1,99 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bbc141170..8e3665c18 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -112,7 +112,6 @@ INCLUDE_DIRECTORIES("${CMAKE_SOURCE_DIR}/"
+ 		"${CMAKE_SOURCE_DIR}/contrib/librdns"
+ 		"${CMAKE_SOURCE_DIR}/contrib/aho-corasick"
+ 		"${CMAKE_SOURCE_DIR}/contrib/lc-btrie"
+-		"${CMAKE_SOURCE_DIR}/contrib/lua-lpeg"
+ 		"${CMAKE_BINARY_DIR}/src" #Stored in the binary dir
+ 		"${CMAKE_BINARY_DIR}/src/libcryptobox")
+ 
+@@ -592,16 +591,11 @@ ENDIF()
+ ADD_SUBDIRECTORY(contrib/libucl)
+ ADD_SUBDIRECTORY(contrib/librdns)
+ ADD_SUBDIRECTORY(contrib/aho-corasick)
+-ADD_SUBDIRECTORY(contrib/lua-lpeg)
+ ADD_SUBDIRECTORY(contrib/t1ha)
+ ADD_SUBDIRECTORY(contrib/libev)
+ ADD_SUBDIRECTORY(contrib/kann)
+ ADD_SUBDIRECTORY(contrib/fastutf8)
+ 
+-IF (NOT WITH_LUAJIT)
+-	ADD_SUBDIRECTORY(contrib/lua-bit)
+-ENDIF()
+-
+ IF (ENABLE_LUA_REPL MATCHES "ON")
+ 	ADD_SUBDIRECTORY(contrib/replxx)
+ 	SET(WITH_LUA_REPL 1)
+@@ -700,7 +694,6 @@ INSTALL(FILES "contrib/lua-fun/fun.lua" DESTINATION ${LUALIBDIR})
+ INSTALL(FILES "contrib/lua-argparse/argparse.lua" DESTINATION ${LUALIBDIR})
+ INSTALL(FILES "contrib/lua-tableshape/tableshape.lua" DESTINATION ${LUALIBDIR})
+ INSTALL(FILES "contrib/lua-lupa/lupa.lua" DESTINATION ${LUALIBDIR})
+-INSTALL(FILES "contrib/lua-lpeg/lpegre.lua" DESTINATION ${LUALIBDIR})
+ 
+ # systemd unit
+ IF(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND WANT_SYSTEMD_UNITS MATCHES "ON")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 9a34d2ac4..54b2e4083 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -180,7 +180,6 @@ ENDIF()
+ TARGET_LINK_LIBRARIES(rspamd-server rspamd-http-parser)
+ TARGET_LINK_LIBRARIES(rspamd-server rspamd-fpconv)
+ TARGET_LINK_LIBRARIES(rspamd-server rspamd-cdb)
+-TARGET_LINK_LIBRARIES(rspamd-server rspamd-lpeg)
+ TARGET_LINK_LIBRARIES(rspamd-server lcbtrie)
+ TARGET_LINK_LIBRARIES(rspamd-server rspamd-zstd)
+ TARGET_LINK_LIBRARIES(rspamd-server rspamd-fastutf8)
+@@ -189,10 +188,6 @@ IF (ENABLE_CLANG_PLUGIN MATCHES "ON")
+ 	ADD_DEPENDENCIES(rspamd-server rspamd-clang)
+ ENDIF()
+ 
+-IF (NOT WITH_LUAJIT)
+-	TARGET_LINK_LIBRARIES(rspamd-server rspamd-bit)
+-ENDIF()
+-
+ IF (ENABLE_SNOWBALL MATCHES "ON")
+ 	TARGET_LINK_LIBRARIES(rspamd-server stemmer)
+ ENDIF()
+diff --git a/src/lua/lua_common.c b/src/lua/lua_common.c
+index ce5fff6c5..509ceeb44 100644
+--- a/src/lua/lua_common.c
++++ b/src/lua/lua_common.c
+@@ -14,7 +14,6 @@
+  * limitations under the License.
+  */
+ #include "lua_common.h"
+-#include "lptree.h"
+ #include "utlist.h"
+ #include "unix-std.h"
+ #include "ottery.h"
+@@ -903,10 +902,6 @@ rspamd_lua_wipe_realloc (void *ud,
+ 	return NULL;
+ }
+ 
+-#ifndef WITH_LUAJIT
+-extern int luaopen_bit(lua_State *L);
+-#endif
+-
+ lua_State *
+ rspamd_lua_init (bool wipe_mem)
+ {
+@@ -961,7 +956,6 @@ rspamd_lua_init (bool wipe_mem)
+ 	luaopen_kann (L);
+ 	luaopen_spf (L);
+ #ifndef WITH_LUAJIT
+-	rspamd_lua_add_preload (L, "bit", luaopen_bit);
+ 	lua_settop (L, 0);
+ #endif
+ 
+@@ -971,7 +965,6 @@ rspamd_lua_init (bool wipe_mem)
+ 	rspamd_lua_new_class (L, "rspamd{session}", NULL);
+ 	lua_pop (L, 1);
+ 
+-	rspamd_lua_add_preload (L, "lpeg", luaopen_lpeg);
+ 	luaopen_ucl (L);
+ 	rspamd_lua_add_preload (L, "ucl", luaopen_ucl);
+ 
