@@ -1572,7 +1572,7 @@ app-emulation/conmon 2.0.10 2.0.11: An OCI container runtime monitor
 app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.2.12 1.2.13 1.3.0 1.3.1 1.3.2: A daemon to control runC
 app-emulation/containers-storage 1.15.1 1.15.2 1.15.7: containers/storage library
 app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2 1.16.3 1.17.0 1.17.1: OCI-based implementation of Kubernetes Container Runtime Interface
-app-emulation/cri-tools 1.14.0 1.15.0 1.16.1: CLI and validation tools for Kubelet Container Runtime (CRI)
+app-emulation/cri-tools 1.14.0 1.15.0 1.16.1 1.18.0: CLI and validation tools for Kubelet Container Runtime (CRI)
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0-r1: Commercial version of app-emulation/wine with paid support.
 app-emulation/crun 0.10.6: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
@@ -5307,6 +5307,7 @@ dev-libs/xmlrpc-c 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlsec 1.2.29: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xxhash 0.6.5 0.7.0 0.7.1: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1 2.1.0-r2: Small event-driven (SAX-style) JSON parser
+dev-libs/yaml-cpp 0.6.3: A YAML parser and emitter in C++
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zlog 1.2.12 1.2.12-r1: A reliable, thread safe, clear-model, pure C logging library.
 dev-libs/zookeeper-c 3.4.8 3.4.9 3.4.10: C client interface to Zookeeper server
@@ -14339,7 +14340,7 @@ net-dns/dnscrypt-proxy 2.0.33 2.0.39 2.0.41 2.0.42 9999: A flexible DNS proxy, w
 net-dns/dnsdist 1.3.3-r1 1.4.0: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
 net-dns/dnsimple-dyndns 0.1: Dynamic DNS implementation, that relies on DNSimple.com
-net-dns/dnsmasq 2.80-r1: Small forwarding DNS server
+net-dns/dnsmasq 2.80-r2: Small forwarding DNS server
 net-dns/dnssec-check 2.2: Tests local resolver for support of DNSSEC validation
 net-dns/dnssec-root 20181220-r1: The DNSSEC root key(s)
 net-dns/dnssec-tools 2.2.3-r1: Tools to ease the deployment of DNSSEC related technologies
@@ -17971,7 +17972,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
 www-client/opera 67.0.3575.97 67.0.3575.115: A fast and secure web browser
-www-client/opera-beta 68.0.3618.5 68.0.3618.24: A fast and secure web browser
+www-client/opera-beta 68.0.3618.24 68.0.3618.31: A fast and secure web browser
 www-client/opera-developer 69.0.3638.0 69.0.3645.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
