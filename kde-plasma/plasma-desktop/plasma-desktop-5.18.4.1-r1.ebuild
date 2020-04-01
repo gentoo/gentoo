@@ -19,6 +19,17 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="+fontconfig ibus +mouse scim +semantic-desktop touchpad"
 
 COMMON_DEPEND="
+	>=dev-qt/qtconcurrent-${QTMIN}:5
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtdeclarative-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtprintsupport-${QTMIN}:5
+	>=dev-qt/qtsql-${QTMIN}:5
+	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/attica-${KFMIN}:5
 	>=kde-frameworks/kactivities-${KFMIN}:5
 	>=kde-frameworks/kactivities-stats-${KFMIN}:5
@@ -60,17 +71,6 @@ COMMON_DEPEND="
 	>=kde-plasma/kwin-${PVCUT}:5
 	>=kde-plasma/libksysguard-${PVCUT}:5
 	>=kde-plasma/plasma-workspace-${PVCUT}:5
-	>=dev-qt/qtconcurrent-${QTMIN}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtprintsupport-${QTMIN}:5
-	>=dev-qt/qtsql-${QTMIN}:5
-	>=dev-qt/qtsvg-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtx11extras-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
 	media-libs/phonon[qt5(+)]
 	x11-libs/libX11
 	x11-libs/libXcursor
@@ -85,9 +85,9 @@ COMMON_DEPEND="
 		x11-libs/xcb-util-image
 	)
 	ibus? (
-		>=dev-qt/qtx11extras-${QTMIN}:5
 		app-i18n/ibus
 		dev-libs/glib:2
+		>=dev-qt/qtx11extras-${QTMIN}:5
 		x11-libs/libxcb
 		x11-libs/xcb-util-keysyms
 	)
@@ -105,13 +105,13 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
+	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
+	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:5
 	>=kde-plasma/breeze-${PVCUT}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 	>=kde-plasma/oxygen-${PVCUT}:5
-	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
-	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	sys-apps/util-linux
 	x11-apps/setxkbmap
 	!<kde-plasma/kdeplasma-addons-5.15.80
