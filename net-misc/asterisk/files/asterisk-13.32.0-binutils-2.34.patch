@@ -1,8 +1,6 @@
-diff --git a/main/backtrace.c b/main/backtrace.c
-index 2623d7f..1bc9bea 100644
---- a/main/backtrace.c
-+++ b/main/backtrace.c
-@@ -59,6 +59,12 @@
+--- a/main/backtrace.c	2020-03-12 07:37:03.000000000 -0700
++++ b/main/backtrace.c	2020-03-31 23:22:18.272691980 -0700
+@@ -64,6 +64,15 @@
  #if defined(HAVE_DLADDR) && defined(HAVE_BFD) && defined(BETTER_BACKTRACES)
  #include <dlfcn.h>
  #include <bfd.h>
@@ -11,6 +9,9 @@ index 2623d7f..1bc9bea 100644
 +#endif
 +#ifndef bfd_get_section_vma
 +#define bfd_get_section_vma(x, y)	bfd_section_vma(y)
++#endif
++#ifndef bfd_get_section_flags
++#define bfd_get_section_flags(bfd, ptr) ((void) bfd, (ptr)->flags)
 +#endif
  #endif
  
