@@ -3403,13 +3403,14 @@ dev-erlang/jose 1.9.0: JSON Object Signing and Encryption (JOSE) for Erlang and 
 dev-erlang/lager 3.2.4 3.8.0: Logging framework for Erlang/OTP
 dev-erlang/luerl 0.2 0.3: Lua in Erlang
 dev-erlang/meck 0.8.4 0.8.12 0.8.13: Mocking library for Erlang
-dev-erlang/mqtree 1.0.4 1.0.5: Index tree for MQTT topic filters
+dev-erlang/mqtree 1.0.4 1.0.5 1.0.7: Index tree for MQTT topic filters
+dev-erlang/p1_acme 1.0.5: ACME client library for Erlang
 dev-erlang/p1_mysql 1.0.2 1.0.11 1.0.14: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1 0.6.5 0.6.6: Erlang OAuth 2.0 implementation
 dev-erlang/p1_pgsql 1.1.2 1.1.6 1.1.8 1.1.9: Pure Erlang PostgreSQL driver
 dev-erlang/p1_utils 1.0.13 1.0.16 1.0.18: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
-dev-erlang/pkix 1.0.3 1.0.4: PKIX certificates management library for Erlang
+dev-erlang/pkix 1.0.3 1.0.4 1.0.5: PKIX certificates management library for Erlang
 dev-erlang/proper 1.2 1.3: QuickCheck-inspired property-based testing tool for Erlang
 dev-erlang/protobuffs 0.9.0: Google's Protocol Buffers for Erlang
 dev-erlang/riak_pb 2.2.0.2: Riak Protocol Buffers messages
@@ -3418,7 +3419,7 @@ dev-erlang/sqlite3 1.1.5 1.1.6: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.8 1.0.17 1.0.19: Fast Stringprep implementation for Erlang and Elixir
 dev-erlang/stun 1.0.10 1.0.25 1.0.29 1.0.31: STUN and TURN library for Erlang and Elixir
 dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1 1.4.5: XMPP parsing and serialization library on top of Fast XML
-dev-erlang/yconf 1.0.1: YAML configuration processor
+dev-erlang/yconf 1.0.1 1.0.4: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7-r1 1.1.9: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4 0.4-r1: set of free cards sets
