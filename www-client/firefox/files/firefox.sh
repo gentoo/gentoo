@@ -100,7 +100,7 @@ export MOZ_ALLOW_DOWNGRADE=1
 
 ##
 ## Route to the correct .desktop file to get proper
-## names and contect menus
+## name and actions
 ##
 if [[ $@ != *"--name "* ]]; then
 	set -- --name "${DESKTOP_FILE}" "$@"
