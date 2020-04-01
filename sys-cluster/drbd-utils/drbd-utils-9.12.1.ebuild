@@ -47,7 +47,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/run-lock.patch
 
 	# bug 616758
-	epatch "${FILESDIR}/${P}"-sysmacros.patch
+	epatch "${FILESDIR}"/drbd-utils-8.9.6-sysmacros.patch
 
 	autoreconf
 }
