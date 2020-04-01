@@ -28,7 +28,7 @@ fi
 
 # Patch version
 FIREFOX_PATCHSET="firefox-68.0-patches-12"
-SPIDERMONKEY_PATCHSET="${PN}-68.6.0-patches-01"
+SPIDERMONKEY_PATCHSET="${PN}-68.6.0-patches-02"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/firefox/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
@@ -52,18 +52,18 @@ HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 KEYWORDS=""
 
 SLOT="68"
-LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="debug +jit +system-icu test"
+LICENSE="MPL-2.0"
+IUSE="debug +jit test"
 
 RESTRICT="!test? ( test )"
 
 BDEPEND="dev-lang/python:2.7
 	test? ( ${PYTHON_DEPS} )"
 
-DEPEND=">=dev-libs/nspr-4.21
+DEPEND=">=dev-libs/icu-63.1:=
+	>=dev-libs/nspr-4.21
 	sys-libs/readline:0=
-	>=sys-libs/zlib-1.2.3
-	system-icu? ( >=dev-libs/icu-63.1:= )"
+	>=sys-libs/zlib-1.2.3"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/firefox-${MY_PV}/js/src"
@@ -117,19 +117,25 @@ src_configure() {
 
 	cd "${MOZJS_BUILDDIR}" || die
 
+	# ../python/mach/mach/mixin/process.py fails to detect SHELL
+	export SHELL="${EPREFIX}/bin/bash"
+
+	# forcing system-icu allows us to skip patching bundled ICU for PPC
+	# and other minor arches
 	ECONF_SOURCE="${S}" \
 	econf \
 		--disable-jemalloc \
+		--disable-optimize \
+		--disable-strip \
 		--enable-readline \
+		--enable-shared-js \
+		--with-intl-api \
+		--with-system-icu \
 		--with-system-nspr \
 		--with-system-zlib \
-		--disable-optimize \
-		--with-intl-api \
-		$(use_with system-icu) \
 		$(use_enable debug) \
 		$(use_enable jit ion) \
 		$(use_enable test tests) \
-		CONFIG_SHELL="${EPREFIX}/bin/bash" \
 		XARGS="${EPREFIX}/usr/bin/xargs"
 
 	# restore PYTHON
