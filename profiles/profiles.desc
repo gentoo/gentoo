@@ -180,6 +180,7 @@ ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	sta
 ppc64           default/linux/ppc64le/17.0                        exp
 ppc64           default/linux/ppc64le/17.0/desktop                exp
 ppc64           default/linux/ppc64le/17.0/desktop/plasma         exp
+ppc64           default/linux/ppc64le/17.0/desktop/plasma/systemd exp
 ppc64           default/linux/ppc64le/17.0/systemd                exp
 ppc64           default/linux/ppc64le/17.0/musl                   exp
 ppc64           default/linux/ppc64le/17.0/musl/hardened          exp
