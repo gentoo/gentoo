@@ -10,6 +10,7 @@ app-editors/jasspa-microemacs
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # musl has no support for nss subsystem.
 sys-auth/libnss-nis
+sys-auth/libnss-compat
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # Needs a port no musl. Uses glibc-specific termio and __getppid.
