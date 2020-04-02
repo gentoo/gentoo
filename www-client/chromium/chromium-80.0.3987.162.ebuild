@@ -134,6 +134,14 @@ theme that covers the appropriate MIME types, and configure this as your
 GTK+ icon theme.
 
 For native file dialogs in KDE, install kde-apps/kdialog.
+
+To make password storage work with your desktop environment you may
+have install one of the supported credentials management applications:
+- app-crypt/libsecret (GNOME)
+- kde-frameworks/kwallet (KDE)
+If you have one of above packages installed, but don't want to use
+them in Chromium, then add --password-store=basic to CHROMIUM_FLAGS
+in /etc/chromium/default.
 "
 
 PATCHES=(
