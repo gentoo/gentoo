@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2011-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,14 +44,16 @@ DEPEND="
 	lz4? ( app-arch/lz4:= )
 	nls? ( virtual/libintl )
 	smartcard? ( sys-apps/pcsc-lite:0= )
-	stoken? ( app-crypt/stoken )"
+	stoken? ( app-crypt/stoken )
+"
 RDEPEND="${DEPEND}
 	sys-apps/iproute2
-	!<sys-apps/openrc-0.13"
+"
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( ${PYTHON_DEPS} sys-apps/groff )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 CONFIG_CHECK="~TUN"
 
@@ -136,7 +138,6 @@ src_install() {
 	default
 
 	newinitd "${FILESDIR}"/openconnect.init.in-r4 openconnect
-	dodir /etc/openconnect
 	insinto /etc/openconnect
 	newconfd "${FILESDIR}"/openconnect.conf.in openconnect
 	exeinto /etc/openconnect
