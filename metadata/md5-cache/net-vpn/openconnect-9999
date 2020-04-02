@@ -7,8 +7,8 @@ HOMEPAGE=http://www.infradead.org/openconnect.html
 IUSE=doc +gnutls gssapi libproxy libressl lz4 nls smartcard static-libs stoken kernel_linux
 LICENSE=LGPL-2.1 GPL-2
 PROPERTIES=live
-RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) libressl? ( dev-libs/libressl:0=[static-libs?] ) ) gnutls? ( app-crypt/trousers app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken ) sys-apps/iproute2 !<sys-apps/openrc-0.13
+RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) libressl? ( dev-libs/libressl:0=[static-libs?] ) ) gnutls? ( app-crypt/trousers app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken ) sys-apps/iproute2
 SLOT=0/5
-SRC_URI=ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20190611.tar.gz
+SRC_URI=ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20200226.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4f1cf452c8c5c7fa7cb4f2ebdba141c9
+_md5_=b71a73a48919c1223ca9bd5e8a168549
