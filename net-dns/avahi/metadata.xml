@@ -9,7 +9,10 @@
 		<flag name="autoipd">Build and install the IPv4LL (RFC3927) network address configuration daemon</flag>
 		<flag name="bookmarks">Install the avahi-bookmarks application (requires <pkg>dev-python/twisted</pkg>)</flag>
 		<flag name="howl-compat">Enable compat libraries for howl</flag>
-		<flag name="gtk3">Build the avahi-ui-gtk3 library, and use gtk3 for the avahi utilities</flag>
+		<flag name="gtk"  restrict="&lt;net-dns/avahi-0.8-r2">Use gtk2 for the avahi utilities (overridden by USE=gtk3) and build the avahi-ui library</flag>
+		<flag name="gtk3" restrict="&lt;net-dns/avahi-0.8-r2">Use gtk3 for the avahi utilities (overrides USE=gtk) and build the avahi-ui-gtk3 library</flag>
+		<flag name="gtk2" restrict="&gt;=net-dns/avahi-0.8-r2">Use gtk2 for the avahi utilities (overridden by USE=gtk) and build the avahi-ui library</flag>
+		<flag name="gtk"  restrict="&gt;=net-dns/avahi-0.8-r2">Use gtk3 for the avahi utilities (overrides USE=gtk2) and build the avahi-ui-gtk3 library</flag>
 		<flag name="mdnsresponder-compat">Enable compat libraries for mDNSResponder</flag>
 	</use>
 	<upstream>
