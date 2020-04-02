@@ -158,7 +158,7 @@ mercury_pkg_compile() {
 	mmake -j1 \
 		MLFLAGS=--no-strip \
 		CFLAGS="${CFLAGS}" \
-		LD_LIBFLAGS="${LDFLAGS} -L/usr/$(get_libdir)" \
+		LD_LIBFLAGS="${LDFLAGS}" \
 		${mercury_mmc_target} || die "mmake ${mercury_pkg} failed"
 
 }
@@ -183,7 +183,7 @@ mercury_pkg_install() {
 		mmake -j1 \
 			MLFLAGS=--no-strip \
 			CFLAGS="${CFLAGS}" \
-			LD_LIBFLAGS="${LDFLAGS} -L/usr/$(get_libdir)" \
+			LD_LIBFLAGS="${LDFLAGS}" \
 			INSTALL_LIBDIR="${D}/usr/$(get_libdir)/mercury/extras" \
 			lib${mercury_pkg_name}.install || die "mmake ${mercury_pkg} failed"
 	fi
