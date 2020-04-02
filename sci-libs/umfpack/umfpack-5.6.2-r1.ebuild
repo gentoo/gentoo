@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools-utils toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Unsymmetric multifrontal sparse LU factorization library"
 HOMEPAGE="http://www.cise.ufl.edu/research/sparse/umfpack"
@@ -14,11 +14,13 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="doc +cholmod static-libs"
 
+# doesn't build against cholmod-3.0.13 and amd-2.4.6
 RDEPEND="
 	>=sci-libs/amd-1.3
+	<sci-libs/amd-2.4.6
 	sci-libs/suitesparseconfig
 	virtual/blas
-	cholmod? ( >=sci-libs/cholmod-2[-minimal] )"
+	cholmod? ( =sci-libs/cholmod-2*[-minimal(-)] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( virtual/latex-base )"
@@ -29,5 +31,10 @@ src_configure() {
 		$(use_with doc)
 		$(use_with cholmod)
 	)
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
+}
+
+src_compile() {
+	use doc && export VARTEXFONTS="${T}/fonts"
+	default
 }
