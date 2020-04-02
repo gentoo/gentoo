@@ -27,6 +27,7 @@ SLOT="0"
 RDEPEND="
 	~sci-libs/votca-tools-${PV}
 	>=dev-cpp/eigen-3.3
+	sci-libs/hdf5[cxx]
 	~sci-chemistry/votca-csg-${PV}
 	sci-libs/libxc"
 
