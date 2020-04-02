@@ -19,6 +19,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-util/pkgcheck[${PYTHON_USEDEP}]
+	dev-vcs/git
 	sys-apps/pkgcore[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? ( dev-python/vcrpy[${PYTHON_USEDEP}] )"
