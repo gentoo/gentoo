@@ -44,14 +44,16 @@ DEPEND="
 	lz4? ( app-arch/lz4:= )
 	nls? ( virtual/libintl )
 	smartcard? ( sys-apps/pcsc-lite:0= )
-	stoken? ( app-crypt/stoken )"
+	stoken? ( app-crypt/stoken )
+"
 RDEPEND="${DEPEND}
 	sys-apps/iproute2
-	!<sys-apps/openrc-0.13"
+"
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( ${PYTHON_DEPS} sys-apps/groff )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 CONFIG_CHECK="~TUN"
 
@@ -136,7 +138,6 @@ src_install() {
 	default
 
 	newinitd "${FILESDIR}"/openconnect.init.in-r4 openconnect
-	dodir /etc/openconnect
 	insinto /etc/openconnect
 	newconfd "${FILESDIR}"/openconnect.conf.in openconnect
 	exeinto /etc/openconnect
