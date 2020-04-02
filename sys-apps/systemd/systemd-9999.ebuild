@@ -28,12 +28,17 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi http idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi homed http idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb"
 
-REQUIRED_USE="importd? ( curl gcrypt lzma )"
+REQUIRED_USE="
+	homed? ( cryptsetup )
+	importd? ( curl gcrypt lzma )
+"
 RESTRICT="!test? ( test )"
 
 MINKV="3.11"
+
+OPENSSL_DEP=">=dev-libs/openssl-1.1.0:0="
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
@@ -45,6 +50,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	dns-over-tls? ( >=net-libs/gnutls-3.5.3:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
+	homed? ( ${OPENSSL_DEP} )
 	http? (
 		>=net-libs/libmicrohttpd-0.9.33:0=[epoll(+)]
 		>=net-libs/gnutls-3.1.4:0=
@@ -63,6 +69,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	pcre? ( dev-libs/libpcre2 )
 	pwquality? ( dev-libs/libpwquality:0= )
 	qrcode? ( media-gfx/qrencode:0= )
+	repart? ( ${OPENSSL_DEP} )
 	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
 	selinux? ( sys-libs/libselinux:0= )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )"
@@ -266,6 +273,7 @@ multilib_src_configure() {
 		-Dgcrypt=$(meson_use gcrypt)
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
+		-Dhomed=$(meson_multilib_native_use homed)
 		-Dmicrohttpd=$(meson_multilib_native_use http)
 		-Didn=$(meson_multilib_native_use idn)
 		-Dimportd=$(meson_multilib_native_use importd)
@@ -281,6 +289,7 @@ multilib_src_configure() {
 		-Dpolkit=$(meson_multilib_native_use policykit)
 		-Dpwquality=$(meson_multilib_native_use pwquality)
 		-Dqrencode=$(meson_multilib_native_use qrcode)
+		-Drepart=$(meson_multilib_native_use repart)
 		-Dseccomp=$(meson_multilib_native_use seccomp)
 		-Dselinux=$(meson_multilib_native_use selinux)
 		-Ddbus=$(meson_multilib_native_use test)
