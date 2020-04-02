@@ -31,7 +31,3 @@ VIDEO_CARDS="fbdev glint mga nv r128 radeon"
 # Diego Pettenò <flameeyes@gentoo.org> (2006-12-23)
 # Defaults for audio drivers - Took from x86 profile
 ALSA_CARDS="ali5451 als4000 atiixp atiixp-modem bt87x ca0106 cmipci emu10k1x ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 intel8x0m maestro3 trident usb-audio via82xx via82xx-modem ymfpci"
-
-# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
-# Temporary RUBY_TARGETS for bug 688976
-RUBY_TARGETS="ruby24 -ruby25"
