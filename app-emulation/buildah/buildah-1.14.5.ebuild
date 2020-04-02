@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,10 +11,8 @@ LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="selinux"
 EGIT_COMMIT="v${PV}"
-GIT_COMMIT="9513cb8"
-CONTAINERS_STORAGE_PATCH="containers-storage-1.14.0-vfs-user-xattrs.patch"
-SRC_URI="https://github.com/containers/buildah/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
-	https://github.com/containers/storage/pull/466.patch -> ${CONTAINERS_STORAGE_PATCH}"
+GIT_COMMIT=5247a1f
+SRC_URI="https://github.com/containers/buildah/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 RDEPEND="app-crypt/gpgme:=
 	app-emulation/skopeo
 	dev-libs/libgpg-error:=
@@ -27,20 +25,13 @@ RESTRICT="test"
 
 src_prepare() {
 	default
-	sed -e 's| \([ab]\)/| \1/vendor/github.com/containers/storage/|' < \
-		"${DISTDIR}/${CONTAINERS_STORAGE_PATCH}" > \
-		"${WORKDIR}/${CONTAINERS_STORAGE_PATCH}" || die
-	eapply "${WORKDIR}/${CONTAINERS_STORAGE_PATCH}"
-	sed -e 's|^\(GIT_COMMIT ?= \).*|\1'${GIT_COMMIT}'|' -i Makefile || die
-
 	[[ -f selinux_tag.sh ]] || die
 	use selinux || { echo -e "#!/bin/sh\ntrue" > \
 		selinux_tag.sh || die; }
 }
 
 src_compile() {
-	export -n GOCACHE XDG_CACHE_HOME
-	emake all
+	emake GIT_COMMIT=${GIT_COMMIT} all
 }
 
 src_install() {
