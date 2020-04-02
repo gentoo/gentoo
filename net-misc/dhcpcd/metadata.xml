@@ -16,5 +16,8 @@
 		<flag name="embedded">
 			Embed the definitions of dhcp options in the dhcpcd executable
 		</flag>
+		<flag name="privsep">
+			Enable support for privilege separation through chroot
+		</flag>
 	</use>
 </pkgmetadata>
