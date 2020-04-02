@@ -30,6 +30,7 @@ gnome-extra/gnome-logs
 gnome-extra/gnome-shell-extensions
 gnome-extra/gnome-shell-frippery
 gnome-extra/gnome-shell-extensions-topicons-plus
+gnome-extra/gnome-shell-extension-appindicator
 gnome-extra/gnome-shell-extension-applications-overview-tooltip
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect
 gnome-extra/gnome-shell-extension-dash-to-panel
