@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare setup
-DEPEND=>=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_conntrack-1.0.8 >=net-libs/libnetfilter_queue-1.0.2 >=net-libs/libnfnetlink-1.0.1 net-libs/libtirpc cthelper? ( >=net-libs/libnetfilter_cthelper-1.0.0 ) cttimeout? ( >=net-libs/libnetfilter_cttimeout-1.0.0 ) doc? ( app-text/docbook-xml-dtd:4.1.2 app-text/xmlto ) virtual/pkgconfig sys-devel/bison sys-devel/flex
+DEPEND=>=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_conntrack-1.0.8 >=net-libs/libnetfilter_queue-1.0.2 >=net-libs/libnfnetlink-1.0.1 net-libs/libtirpc cthelper? ( >=net-libs/libnetfilter_cthelper-1.0.0 ) cttimeout? ( >=net-libs/libnetfilter_cttimeout-1.0.0 ) systemd? ( >=sys-apps/systemd-227 ) doc? ( app-text/docbook-xml-dtd:4.1.2 app-text/xmlto ) virtual/pkgconfig sys-devel/bison sys-devel/flex
 DESCRIPTION=Connection tracking userspace tools
 EAPI=7
 HOMEPAGE=http://conntrack-tools.netfilter.org
-IUSE=doc +cthelper +cttimeout kernel_linux
+IUSE=doc +cthelper +cttimeout systemd kernel_linux
 KEYWORDS=~alpha ~amd64 ~arm64 ~hppa ~x86
 LICENSE=GPL-2
-RDEPEND=>=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_conntrack-1.0.8 >=net-libs/libnetfilter_queue-1.0.2 >=net-libs/libnfnetlink-1.0.1 net-libs/libtirpc cthelper? ( >=net-libs/libnetfilter_cthelper-1.0.0 ) cttimeout? ( >=net-libs/libnetfilter_cttimeout-1.0.0 )
+RDEPEND=>=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_conntrack-1.0.8 >=net-libs/libnetfilter_queue-1.0.2 >=net-libs/libnfnetlink-1.0.1 net-libs/libtirpc cthelper? ( >=net-libs/libnetfilter_cthelper-1.0.0 ) cttimeout? ( >=net-libs/libnetfilter_cttimeout-1.0.0 ) systemd? ( >=sys-apps/systemd-227 )
 SLOT=0
 SRC_URI=http://www.netfilter.org/projects/conntrack-tools/files/conntrack-tools-1.4.6.tar.bz2
 _eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a4afc46d2dc3211b3ca4d517c52c1a04
+_md5_=bf9bf1547cdc72d6c6720057a3c75de7
