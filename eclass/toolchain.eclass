@@ -426,17 +426,7 @@ SRC_URI=$(get_gcc_src_uri)
 
 #---->> pkg_pretend <<----
 
-toolchain_is_unsupported() {
-	[[ -n ${SNAPSHOT} ]] || tc_is_live
-}
-
 toolchain_pkg_pretend() {
-	if toolchain_is_unsupported &&
-	   [[ -z ${I_PROMISE_TO_SUPPLY_PATCHES_WITH_BUGS} ]] ; then
-		die "Please \`export I_PROMISE_TO_SUPPLY_PATCHES_WITH_BUGS=1\` or define it" \
-			"in your make.conf if you want to use this version."
-	fi
-
 	if ! use_if_iuse cxx ; then
 		use_if_iuse go && ewarn 'Go requires a C++ compiler, disabled due to USE="-cxx"'
 		use_if_iuse objc++ && ewarn 'Obj-C++ requires a C++ compiler, disabled due to USE="-cxx"'
@@ -2233,12 +2223,6 @@ toolchain_pkg_postinst() {
 		# Since these aren't critical files and portage sucks with
 		# handling of binpkgs, don't require these to be found
 		cp "${ROOT%/}${DATAPATH}"/c{89,99} "${EROOT%/}"/usr/bin/ 2>/dev/null
-	fi
-
-	if toolchain_is_unsupported ; then
-		einfo "This GCC ebuild is provided for your convenience, and the use"
-		einfo "of this compiler is not supported by the Gentoo Developers."
-		einfo "Please report bugs to upstream at http://gcc.gnu.org/bugzilla/"
 	fi
 }
 
