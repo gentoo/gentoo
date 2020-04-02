@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit eutils python-single-r1 toolchain-funcs xdg
 
@@ -30,14 +30,15 @@ RDEPEND="
 	>=media-libs/harfbuzz-1.5.0:=
 	media-libs/libcanberra
 	media-libs/libpng:0=
+	sys-apps/dbus
+	sys-libs/zlib
 	x11-libs/libxcb[xkb]
 	x11-libs/libXcursor
 	x11-libs/libXi
 	x11-libs/libXinerama
 	x11-libs/libxkbcommon[X]
 	x11-libs/libXrandr
-	sys-apps/dbus
-	sys-libs/zlib
+	x11-terms/kitty-terminfo
 	wayland? (
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.17
@@ -54,8 +55,9 @@ BDEPEND="virtual/pkgconfig"
 [[ ${PV} == *9999 ]] && BDEPEND+=" >=dev-python/sphinx-1.7"
 
 PATCHES=(
-	"${FILESDIR}"/kitty-0.17.2-flags.patch
+	"${FILESDIR}"/${PN}-0.17.2-flags.patch
 	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
+	"${FILESDIR}"/${PN}-0.16.0-remove-terminfo.patch
 )
 
 src_prepare() {
