@@ -27,10 +27,6 @@ pulseaudio
 # sys-auth/elogind is not stable here.
 elogind
 
-# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
-# Temporary mask for stable bug 688976
-ruby_targets_ruby25
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
 # sys-auth/consolekit will not be stabilised anymore.
 consolekit
