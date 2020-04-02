@@ -1,0 +1,92 @@
+From 12ddbee51f0e1cf4372146f8d42ea404dd07dba3 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Thu, 2 Apr 2020 19:54:19 +0000
+Subject: Fix build without INET or INET6
+
+---
+ src/dhcpcd.c       | 2 +-
+ src/if-bsd.c       | 2 ++
+ src/if-options.c   | 6 ++++++
+ src/privsep-root.c | 2 ++
+ 4 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/dhcpcd.c b/src/dhcpcd.c
+index 057a1fd9..9208f37c 100644
+--- a/src/dhcpcd.c
++++ b/src/dhcpcd.c
+@@ -2169,7 +2169,7 @@ printpidfile:
+ 	}
+ #endif
+ 
+-#ifdef BSD
++#if defined(BSD) && defined(INET6)
+ 	/* Disable the kernel RTADV sysctl as early as possible. */
+ 	if (ctx.options & DHCPCD_IPV6 && ctx.options & DHCPCD_IPV6RS)
+ 		if_disable_rtadv();
+diff --git a/src/if-bsd.c b/src/if-bsd.c
+index dbe5c359..d6c38903 100644
+--- a/src/if-bsd.c
++++ b/src/if-bsd.c
+@@ -1524,6 +1524,8 @@ if_missfilter0(struct dhcpcd_ctx *ctx, struct interface *ifp,
+ #ifdef INET6
+ 	if (sa->sa_family == AF_INET6)
+ 		ifa_setscope(satosin6(sa), ifp->index);
++#else
++	UNUSED(ifp);
+ #endif
+ 
+ 	cp = ctx->rt_missfilter + ctx->rt_missfilterlen;
+diff --git a/src/if-options.c b/src/if-options.c
+index 7850ff2e..1280cfbd 100644
+--- a/src/if-options.c
++++ b/src/if-options.c
+@@ -573,6 +573,8 @@ set_option_space(struct dhcpcd_ctx *ctx,
+ 		return;
+ 	}
+ #endif
++#else
++	UNUSED(arg);
+ #endif
+ 
+ #ifdef INET
+@@ -1275,6 +1277,7 @@ parse_option(struct dhcpcd_ctx *ctx, const char *ifname, struct if_options *ifo,
+ 		memset(ifo->nomask6, 0xff, sizeof(ifo->nomask6));
+ 
+ 		/* Allow the bare minimum through */
++#ifdef INET
+ 		del_option_mask(ifo->nomask, DHO_SUBNETMASK);
+ 		del_option_mask(ifo->nomask, DHO_CSR);
+ 		del_option_mask(ifo->nomask, DHO_ROUTER);
+@@ -1286,11 +1289,14 @@ parse_option(struct dhcpcd_ctx *ctx, const char *ifname, struct if_options *ifo,
+ 		del_option_mask(ifo->nomask, DHO_RENEWALTIME);
+ 		del_option_mask(ifo->nomask, DHO_REBINDTIME);
+ 		del_option_mask(ifo->nomask, DHO_DNSSEARCH);
++#endif
+ 
++#ifdef INET6
+ 		del_option_mask(ifo->nomask6, D6_OPTION_DNS_SERVERS);
+ 		del_option_mask(ifo->nomask6, D6_OPTION_DOMAIN_LIST);
+ 		del_option_mask(ifo->nomask6, D6_OPTION_SOL_MAX_RT);
+ 		del_option_mask(ifo->nomask6, D6_OPTION_INF_MAX_RT);
++#endif
+ 
+ 		break;
+ #ifdef INET
+diff --git a/src/privsep-root.c b/src/privsep-root.c
+index f88f56dd..0f099bb7 100644
+--- a/src/privsep-root.c
++++ b/src/privsep-root.c
+@@ -435,8 +435,10 @@ ps_root_dispatchcb(void *arg, struct ps_msghdr *psm, struct msghdr *msg)
+ 	struct dhcpcd_ctx *ctx = arg;
+ 	ssize_t err;
+ 
++#ifdef INET
+ 	err = ps_bpf_dispatch(ctx, psm, msg);
+ 	if (err == -1 && errno == ENOTSUP)
++#endif
+ 		err = ps_inet_dispatch(ctx, psm, msg);
+ 	return err;
+ }
+-- 
+cgit v1.2.3
+
