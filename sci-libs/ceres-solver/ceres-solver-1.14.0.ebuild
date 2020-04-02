@@ -30,15 +30,15 @@ BDEPEND="${PYTHON_DEPS}
 "
 RDEPEND="
 	dev-cpp/glog[gflags?,${MULTILIB_USEDEP}]
-	cxsparse? ( sci-libs/cxsparse:0= )
+	cxsparse? ( sci-libs/cxsparse )
 	lapack? ( virtual/lapack )
 	sparse? (
-		sci-libs/amd:0=
-		sci-libs/camd:0=
-		sci-libs/ccolamd:0=
-		sci-libs/cholmod:0=[metis]
-		sci-libs/colamd:0=
-		sci-libs/spqr:0=
+		sci-libs/amd
+		sci-libs/camd
+		sci-libs/ccolamd
+		sci-libs/cholmod[metis(+)]
+		sci-libs/colamd
+		sci-libs/spqr
 	)
 "
 DEPEND="${RDEPEND}"
