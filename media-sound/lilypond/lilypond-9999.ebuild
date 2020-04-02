@@ -81,7 +81,7 @@ src_prepare() {
 	sed -i 's/OPTIMIZE -g/OPTIMIZE/' aclocal.m4 || die
 
 	# respect AR
-	sed -i "s:^AR=ar:AR=$(tc-getAR):" stepmake/stepmake/library-vars.make || die
+	sed -i "s:^AR=ar:AR=$(tc-getAR):" flower/GNUmakefile || die
 
 	# remove bundled texinfo file (fixes bug #448560)
 	rm tex/texinfo.tex || die
@@ -97,7 +97,6 @@ src_configure() {
 
 	local myeconfargs=(
 		--with-texgyre-dir=/usr/share/fonts/tex-gyre
-		--enable-guile2
 		--disable-documentation
 		--disable-optimising
 		--disable-pipe
