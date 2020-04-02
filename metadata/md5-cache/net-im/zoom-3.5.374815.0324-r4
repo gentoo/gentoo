@@ -11,4 +11,4 @@ RESTRICT=mirror bindist strip
 SLOT=0
 SRC_URI=amd64? ( https://zoom.us/client/3.5.374815.0324/zoom_x86_64.tar.xz -> zoom-3.5.374815.0324_x86_64.tar.xz ) x86? ( https://zoom.us/client/3.5.374815.0324/zoom_i686.tar.xz -> zoom-3.5.374815.0324_i686.tar.xz )
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=7938c4baa28c545c7c1d740217a4a242
+_md5_=94dfe5ee75f065d981888fb1eb8d3f43
