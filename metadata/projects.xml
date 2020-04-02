@@ -471,7 +471,7 @@
     <email>catalyst@gentoo.org</email>
     <name>Catalyst Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>
-    <description>The Gentoo Catalyst Project develops and supports the Catalyst release building tool. Catalyst has been designed to be easy to use, customize, and maintain.</description>
+    <description>The Gentoo Catalyst Project develops and supports the [[Catalyst|Catalyst]] release building tool.</description>
     <member>
       <email>bkohler@gentoo.org</email>
       <name>Ben Kohler</name>
