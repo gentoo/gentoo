@@ -1,0 +1,13 @@
+diff --git a/mscore/scoreview.cpp b/mscore/scoreview.cpp
+index 9804e1f32..83e0c0e47 100644
+--- a/mscore/scoreview.cpp
++++ b/mscore/scoreview.cpp
+@@ -2405,7 +2405,7 @@ void ScoreView::cmd(const char* s)
+                   cv->updateGrips();
+                   }},
+       #ifdef OMR
+-            {{"show-omr"}, [](ScoreView* cv, const QByteArray&) {
++            {{"show-omr"}, [&](ScoreView* cv, const QByteArray&) {
+                   if (cv->score()->masterScore()->omr())
+                         showOmr(!_score->masterScore()->showOmr());
+                   }},
