@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit multilib-minimal toolchain-funcs
 
@@ -9,21 +9,21 @@ inherit multilib-minimal toolchain-funcs
 RE2_VER=${PV#0.}
 RE2_VER=${RE2_VER//./-}
 
-DESCRIPTION="An efficent, principled regular expression library"
+DESCRIPTION="An efficient, principled regular expression library"
 HOMEPAGE="https://github.com/google/re2"
 SRC_URI="https://github.com/google/re2/archive/${RE2_VER}.tar.gz -> re2-${RE2_VER}.tar.gz"
 
 LICENSE="BSD"
 # NOTE: Always run libre2 through abi-compliance-checker!
 # https://abi-laboratory.pro/tracker/timeline/re2/
-SONAME="gentoo-2017-03-01"
+SONAME="6"
 SLOT="0/${SONAME}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="icu"
 
 RDEPEND="icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
-	icu? ( virtual/pkgconfig )"
+DEPEND="${RDEPEND}"
+BDEPEND="icu? ( virtual/pkgconfig )"
 
 S="${WORKDIR}/re2-${RE2_VER}"
 
@@ -32,7 +32,7 @@ HTML_DOCS=( doc/syntax.html )
 
 src_prepare() {
 	default
-	grep -qv '^SONAME=0$' Makefile || die "Check SONAME in Makefile"
+	grep -q "^SONAME=${SONAME}\$" Makefile || die "SONAME mismatch"
 	if use icu; then
 		sed -i -e 's:^# \(\(CC\|LD\)ICU=.*\):\1:' Makefile || die
 	fi
