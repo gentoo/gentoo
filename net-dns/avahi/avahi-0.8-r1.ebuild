@@ -61,8 +61,6 @@ RDEPEND="
 		acct-group/avahi-autoipd
 	)
 	${DEPEND}
-	howl-compat? ( !net-misc/howl )
-	mdnsresponder-compat? ( !net-misc/mDNSResponder )
 	selinux? ( sec-policy/selinux-avahi )
 "
 BDEPEND="
