@@ -9,7 +9,7 @@ LICENSE="GPL-2"
 
 DESCRIPTION="mirror/replicate block-devices across a network-connection"
 SRC_URI="http://www.linbit.com/downloads/drbd/utils/${P/_/}.tar.gz"
-HOMEPAGE="http://www.drbd.org"
+HOMEPAGE="https://www.linbit.com/drbd/"
 
 KEYWORDS="~amd64 ~x86"
 IUSE="heartbeat pacemaker +udev xen"
