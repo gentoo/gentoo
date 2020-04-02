@@ -446,7 +446,7 @@ setup_env() {
 	# configure script checks CFLAGS for some targets (like mips).  Keep
 	# around the original clean value to avoid appending multiple ABIs on
 	# top of each other.
-	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET_OPT:-${CTARGET}})}
+	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET})}
 	export __GLIBC_CC CC="${__GLIBC_CC} ${!VAR}"
 	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 }
