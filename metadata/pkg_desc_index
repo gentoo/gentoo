@@ -14919,7 +14919,7 @@ net-misc/dleyna-server 0.5.0 0.6.0: Service that allows to discover and manipula
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2019.78: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 93.4.273 94.3.371: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 93.4.273 94.3.371 94.4.384: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 19: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4 0.9a_p19_p1: A simple fax program for single-user systems
@@ -15430,7 +15430,7 @@ net-wireless/hostapd 2.9-r1 2.9-r2 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
-net-wireless/iwd 1.4 1.4-r1 1.5 1.6 9999: Wireless daemon for linux
+net-wireless/iwd 1.5 1.6 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
 net-wireless/kismet 2016.07.1-r2 2019.09.1-r2 2019.12.2-r1 2020.03.1_p20200314 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
