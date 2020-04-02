@@ -1,0 +1,27 @@
+From 1b05b87742f421646d431ccb6135efd883887f1a Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Mon, 6 Apr 2020 21:18:56 +0200
+Subject: [PATCH] [Gentoo specific]: fix self linking of files
+
+The patch removes a line in Makefile.am which linkes files back to
+themselves and let the build fail. This might be a result of
+split building of this package out of SuiteSparse superpackage.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ Doc/Makefile.am | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Doc/Makefile.am b/Doc/Makefile.am
+index de2201b..fc9f82e 100644
+--- a/Doc/Makefile.am
++++ b/Doc/Makefile.am
+@@ -1,5 +1,4 @@
+ UserGuide.pdf: 
+-	ln -s $(srcdir)/*.{awk,bib,tex} .
+ 	$(srcdir)/getmproto $(top_srcdir)/MATLAB/analyze.m > _analyze_m.tex
+ 	$(srcdir)/getmproto $(top_srcdir)/MATLAB/bisect.m > _bisect_m.tex
+ 	$(srcdir)/getmproto $(top_srcdir)/MATLAB/chol2.m > _chol2_m.tex
+-- 
+2.26.0
+

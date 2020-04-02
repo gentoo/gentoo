@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools-utils multilib toolchain-funcs
+inherit autotools multilib toolchain-funcs
 
 DESCRIPTION="Sparse Cholesky factorization and update/downdate library"
 HOMEPAGE="http://faculty.cse.tamu.edu/davis/suitesparse.html"
@@ -14,24 +14,29 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="cuda doc lapack metis minimal static-libs"
 
+# doesn't build against current version of sci-libs/amd, sci-libs/colamd
+# <sci-libs/parmetis-4 is no longer in the tree
 RDEPEND="
-	>=sci-libs/amd-2.3
-	>=sci-libs/colamd-2.8
+	=sci-libs/amd-2.3*
+	=sci-libs/colamd-2.8*
 	cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit )
 	lapack? ( virtual/lapack )
 	metis? (
-		>=sci-libs/camd-2.3
+		=sci-libs/camd-2.3*
 		>=sci-libs/ccolamd-2.8
-		|| ( <sci-libs/metis-5 <sci-libs/parmetis-4 ) )"
+		<sci-libs/metis-5 )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( virtual/latex-base )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-0001-Gentoo-specific-fix-self-linking-of-files.patch"
+)
+
 src_prepare() {
-	# bug #399483 does not build with parmetis-3.2
-	has_version "=sci-libs/parmetis-3.2*" && \
-		epatch "${FILESDIR}"/${PN}-1.7.4-parmetis32.patch
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -59,5 +64,19 @@ src_configure() {
 			--with-cublas-cflags="-I${EPREFIX}/opt/cuda/include"
 		)
 	fi
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
+}
+
+src_compile() {
+	use doc && export VARTEXFONTS="${T}/fonts"
+	default
+}
+
+src_install() {
+	default
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.a' -delete || die "failed to delete static libs"
+		find "${ED}" -name '*.la' -delete || die "failed to delete libtool files"
+	fi
 }

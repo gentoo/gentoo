@@ -5,10 +5,12 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">
-  CHOLMOD is a set of ANSI C routines for sparse Cholesky
-  factorization and update/downdate.
-</longdescription>
+  <longdescription>
+  CHOLMOD is a set of ANSI C routines for factorizing sparse symmetric
+  positive definite matrices, updating/downdating a sparse Cholesky
+  factorization, solving linear systems, and many other sparse matrix
+  functions for both symmetric and unsymmetric matrices.
+  </longdescription>
   <use>
     <flag name="cuda">Use nvidia cuda toolkit for speeding up computations</flag>
     <flag name="matrixops">
