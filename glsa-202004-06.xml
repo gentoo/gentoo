@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-06">
+  <title>GnuTLS: DTLS protocol regression</title>
+  <synopsis>A regression in GnuTLS breaks the security guarantees of the DTLS
+    protocol.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>2020-04-02</announced>
+  <revised count="1">2020-04-02</revised>
+  <bug>715602</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">3.6.13</unaffected>
+      <vulnerable range="lt">3.6.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GnuTLS is an Open Source implementation of the TLS and SSL protocols.</p>
+  </background>
+  <description>
+    <p>It was discovered that DTLS client did not contribute any randomness to
+      the DTLS negotiation.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced advisory for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuTLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-3.6.13"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://www.gnutls.org/security-new.html#GNUTLS-SA-2020-03-31">
+      GNUTLS-SA-2020-03-31
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-02T22:03:22Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-02T23:01:11Z">whissi</metadata>
+</glsa>
