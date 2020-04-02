@@ -11,7 +11,7 @@ SRC_URI="http://www.netfilter.org/projects/conntrack-tools/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~x86"
-IUSE="doc +cthelper +cttimeout"
+IUSE="doc +cthelper +cttimeout systemd"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.3
@@ -24,6 +24,9 @@ RDEPEND="
 	)
 	cttimeout? (
 		>=net-libs/libnetfilter_cttimeout-1.0.0
+	)
+	systemd? (
+		>=sys-apps/systemd-227
 	)
 "
 DEPEND="
@@ -72,7 +75,8 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable cthelper) \
-		$(use_enable cttimeout)
+		$(use_enable cttimeout) \
+		$(use_enable systemd)
 }
 
 src_compile() {
