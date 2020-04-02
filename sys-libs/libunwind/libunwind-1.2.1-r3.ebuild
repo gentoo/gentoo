@@ -19,7 +19,7 @@ IUSE="debug debug-frame doc libatomic lzma +static-libs"
 RESTRICT="test" # half of tests are broken (toolchain version dependent)
 
 # We just use the header from libatomic.
-RDEPEND="lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )"
+RDEPEND="lzma? ( app-arch/xz-utils[static-libs?,${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	libatomic? ( dev-libs/libatomic_ops[${MULTILIB_USEDEP}] )"
 
