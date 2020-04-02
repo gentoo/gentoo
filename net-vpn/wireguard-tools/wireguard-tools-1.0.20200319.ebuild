@@ -49,6 +49,7 @@ pkg_setup() {
 		wg_quick_optional_config_nob NFT_FIB
 		wg_quick_optional_config_nob NFT_FIB_IPV4
 		wg_quick_optional_config_nob NFT_FIB_IPV6
+		wg_quick_optional_config_nob NF_CONNTRACK_MARK
 	elif has_version net-firewall/iptables; then
 		wg_quick_optional_config_nob NETFILTER_XTABLES
 		wg_quick_optional_config_nob NETFILTER_XT_MARK
