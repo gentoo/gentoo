@@ -35,7 +35,7 @@ CDEPEND="
 		x11-libs/vte:2.91 )
 	telepathy? ( net-libs/telepathy-glib )
 	vnc? ( net-libs/libvncserver[jpeg] )
-	zeroconf? ( net-dns/avahi[gtk3] )
+	zeroconf? ( || ( >=net-dns/avahi-0.8-r2[dbus,gtk] <net-dns/avahi-0.8-r2[dbus,gtk3] ) )
 "
 DEPEND="${CDEPEND}
 	dev-util/intltool
