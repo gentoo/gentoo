@@ -14385,7 +14385,7 @@ net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns
 net-dns/valtz 0.7-r3: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.3 2.1.0: Arno's iptables firewall script
 net-firewall/arptables 0.0.4 0.0.5: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
-net-firewall/conntrack-tools 1.4.4-r1 1.4.5: Connection tracking userspace tools
+net-firewall/conntrack-tools 1.4.5 1.4.6: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r1 2.0.10.4-r2 2.0.11: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4.1 2.5 2.5.1: Command line util for managing firewall rules
@@ -14654,7 +14654,7 @@ net-libs/libnatpmp 20150609: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.7: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r7 1.2 1.2.9999: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2 1.0.3: Userspace library providing interface to extended accounting infrastructure of NetFilter
-net-libs/libnetfilter_conntrack 1.0.4 1.0.5 1.0.6 1.0.7: programming interface (API) to the in-kernel connection tracking state table
+net-libs/libnetfilter_conntrack 1.0.6 1.0.7 1.0.8: programming interface (API) to the in-kernel connection tracking state table
 net-libs/libnetfilter_cthelper 1.0.0 1.0.0-r1: userspace library that provides the programming interface to the user-space helper infrastructure
 net-libs/libnetfilter_cttimeout 1.0.0 1.0.0-r1: netlink interface to the connection tracking timeout infrastructure in the kernel packet filter
 net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by the kernel packet filter
