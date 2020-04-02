@@ -15,7 +15,7 @@ else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
-VPNC_VER=20190611
+VPNC_VER=20200226
 SRC_URI="${ARCHIVE_URI}
 	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
 
@@ -89,7 +89,6 @@ src_configure() {
 
 	local myconf=(
 		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh"
-		--without-openssl-version-check
 		$(use_enable static-libs static)
 		$(use_enable nls)
 		$(use_with !gnutls openssl)
