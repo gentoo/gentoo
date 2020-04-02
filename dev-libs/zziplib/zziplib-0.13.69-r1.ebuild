@@ -35,6 +35,10 @@ RDEPEND="${DEPEND}"
 
 PATCHES=( "${WORKDIR}"/${P}-patches )
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	default
 	eautoreconf
