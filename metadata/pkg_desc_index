@@ -14911,7 +14911,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.5 8.1.6 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.6 8.1.7 9.0.0 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -16798,7 +16798,7 @@ sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmicfg 1.31.0.200205: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.3 3.1.4 3.1.5 3.1.5-r1: IPMI Management Utilities
-sys-apps/iproute2 4.19.0-r1 5.2.0-r1 5.4.0 5.5.0 9999: kernel routing and traffic control utilities
+sys-apps/iproute2 4.19.0-r1 5.2.0-r1 5.4.0 5.5.0 5.6.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.5.0 1.6.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.1.1 2.1.2 2.2 2.3 2.3.1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
@@ -17453,7 +17453,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.5 9999: Gentoo automatic kernel building script
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.112 4.19.113 5.4.27 5.4.29 5.5.11 5.5.14: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.112 5.4.27 5.4.29 5.5.11 5.5.14: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.215 4.4.216 4.4.217 4.9.215 4.9.216 4.9.217 4.14.172 4.14.173 4.14.174 4.14.175 4.19.111 4.19.112 4.19.113 4.19.114 5.4.26 5.4.27 5.4.28 5.4.29 5.4.30 5.5.10 5.5.11 5.5.13 5.5.14 5.5.15 5.6.0 5.6.1 5.6.2: Full sources including the Gentoo patchset for the 5.6 kernel tree
+sys-kernel/gentoo-sources 4.4.215 4.4.216 4.4.217 4.4.218 4.9.215 4.9.216 4.9.217 4.9.218 4.14.172 4.14.173 4.14.174 4.14.175 4.19.111 4.19.112 4.19.113 4.19.114 5.4.26 5.4.27 5.4.28 5.4.29 5.4.30 5.5.10 5.5.11 5.5.13 5.5.14 5.5.15 5.6.0 5.6.1 5.6.2: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.6_rc1 5.6_rc2 5.6_rc3 5.6_rc4 5.6_rc5 5.6_rc6 5.6_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
