@@ -1564,7 +1564,7 @@ app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs t
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/aranym 1.1.0: Atari Running on Any Machine, VM running Atari ST/TT/Falcon OS and TOS/GEM apps
 app-emulation/bochs 2.6.9 2.6.10 9999: LGPL-ed pc emulator
-app-emulation/buildah 1.11.5-r1 1.11.6 1.12.0 1.13.1 1.14.0 1.14.2 1.14.3 1.14.4: A tool that facilitates building OCI images
+app-emulation/buildah 1.14.5: A tool that facilitates building OCI images
 app-emulation/cadvisor 0.34.0 0.35.0 0.36.0: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 19.4 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
@@ -5200,6 +5200,7 @@ dev-libs/ocl-icd 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loa
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 6.9.4 9999: Regular expression library for different character encodings
 dev-libs/opencl-clang 8.0.1_p20191001-r1 8.0.1.1 9.0.0 9.0.1: OpenCL-oriented thin wrapper library around clang
+dev-libs/opencl-icd-loader 2020.03.13: Official Khronos OpenCL ICD Loader
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
@@ -9406,7 +9407,7 @@ dev-ros/rqt_tf_tree 0.5.6 0.5.7 0.5.8 9999: GUI plugin for visualizing the ROS T
 dev-ros/rqt_top 0.4.7 0.4.8 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.4.9 0.4.10 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.4.7 0.4.8 9999: Simple web content viewer for rqt
-dev-ros/rviz 1.13.1-r1 1.13.3 1.13.6 9999: 3D visualization tool for ROS
+dev-ros/rviz 1.13.1-r1 1.13.1-r2 1.13.3 1.13.3-r1 1.13.6 1.13.6-r1 9999: 3D visualization tool for ROS
 dev-ros/rviz_imu_plugin 1.1.5-r1 1.2.0 1.2.1 9999: RVIZ plugin for IMU visualization
 dev-ros/rviz_plugin_tutorials 0.10.1-r4 0.10.2 0.10.3 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.9.2 0.10.1 0.10.2 0.10.3 9999: Tutorials showing how to call into rviz internals from python scripts
@@ -10601,6 +10602,7 @@ dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
+dev-util/opencl-headers 2020.03.13: Unified C language headers for the OpenCL API
 dev-util/oprofile 1.3.0: A transparent low-overhead system-wide profiler
 dev-util/ostree 2018.9 2018.9-r1 2019.5: Operating system and container binary deployment and upgrades
 dev-util/packer 1.3.5 1.4.0 1.4.1 1.4.4 1.4.5: A tool to create identical machine images for multiple platforms
