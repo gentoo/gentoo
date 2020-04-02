@@ -47,7 +47,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	audit? ( >=sys-process/audit-2:0= )
 	cryptsetup? ( >=sys-fs/cryptsetup-2.0.1:0= )
 	curl? ( net-misc/curl:0= )
-	dns-over-tls? ( >=net-libs/gnutls-3.5.3:0= )
+	dns-over-tls? ( >=net-libs/gnutls-3.6.0:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
 	homed? ( ${OPENSSL_DEP} )
