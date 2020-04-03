@@ -3,17 +3,21 @@
 
 EAPI=7
 
-inherit elisp-common git-r3 qmake-utils xdg
+inherit elisp-common qmake-utils xdg
 
+# 2015.03-3
+MY_VER=$(ver_cut 1-2) # version component
+MY_REL=$(ver_cut 4) # release component, 'p' being the third component
+MY_PV=${MY_VER}-${MY_REL}
 SITEFILE="50${PN}-gentoo.el"
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
 HOMEPAGE="http://www.openscad.org/"
-EGIT_REPO_URI="https://github.com/openscad/openscad.git"
+SRC_URI="http://files.openscad.org/${PN}-${MY_PV}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
 
 DEPEND="
@@ -21,13 +25,10 @@ DEPEND="
 	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/gmp:0=
-	dev-libs/libzip:=
 	dev-libs/mpfr:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
 	dev-qt/qtgui:5[-gles2-only]
-	dev-qt/qtmultimedia:5[-gles2-only]
 	dev-qt/qtopengl:5
 	media-gfx/opencsg
 	media-libs/fontconfig:1.0
@@ -40,13 +41,19 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2015.03_p2_uic_tr_fix.patch"
+	"${FILESDIR}/${PN}-2015.03_p3_fix-boost-1.70.0-build.patch"
+)
+
+S="${WORKDIR}/${PN}-${MY_PV}"
+
 src_prepare() {
 	default
 
+	#Use our CFLAGS (specifically don't force x86)
+	sed -i "s/QMAKE_CXXFLAGS_RELEASE = .*//g" ${PN}.pro  || die
 	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro || die
-
-	# tries to call ccache even if it's not present otherwise
-	sed -i '/CONFIG += ccache/d' ${PN}.pro || die
 }
 
 src_configure() {

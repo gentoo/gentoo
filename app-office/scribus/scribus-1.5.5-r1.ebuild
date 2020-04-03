@@ -3,19 +3,17 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
-inherit cmake desktop flag-o-matic python-single-r1 subversion xdg
+inherit cmake desktop flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
-SRC_URI=""
-ESVN_REPO_URI="svn://scribus.net/trunk/Scribus"
-ESVN_PROJECT=Scribus-1.5
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts +templates tk"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -73,20 +71,28 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
+	# upstream svn trunk
+	"${FILESDIR}"/${P}-poppler-0.82.patch
+	"${FILESDIR}"/${P}-poppler-0.83.patch
+	"${FILESDIR}"/${P}-poppler-0.84.patch
 	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
-	"${FILESDIR}"/${PN}-1.5.6-docdir.patch
-	"${FILESDIR}"/${PN}-1.5.5-findhyphen-1.patch
-	"${FILESDIR}"/${PN}-1.5.6-findhyphen.patch
+	"${FILESDIR}"/${P}-docdir.patch
+	"${FILESDIR}"/${P}-findhyphen-{1,2}.patch
 )
-
-CMAKE_BUILD_TYPE="Release"
 
 src_prepare() {
 	cmake_src_prepare
 
 	rm -r codegen/cheetah scribus/third_party/hyphen || die
 
+	cat > cmake/modules/FindZLIB.cmake <<- EOF || die
+	find_package(PkgConfig)
+	pkg_check_modules(ZLIB minizip zlib)
+	SET( ZLIB_LIBRARY \${ZLIB_LIBRARIES} )
+	SET( ZLIB_INCLUDE_DIR \${ZLIB_INCLUDE_DIRS} )
+	MARK_AS_ADVANCED( ZLIB_LIBRARY ZLIB_INCLUDE_DIR )
+	EOF
 	sed \
 		-e "/^\s*unzip\.[ch]/d" \
 		-e "/^\s*ioapi\.[ch]/d" \
@@ -108,9 +114,10 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DHAVE_PYTHON=ON
+		-DPYTHON_INCLUDE_PATH=$(python_get_includedir)
+		-DPYTHON_LIBRARY=$(python_get_library_path)
 		-DWANT_DISTROBUILD=ON
 		-DDOCDIR="${EPREFIX}"/usr/share/doc/${PF}/
-		-DPython3_EXECUTABLE="${PYTHON}"
 		-DWITH_BOOST=$(usex boost)
 		-DWANT_DEBUG=$(usex debug)
 		-DWANT_NOEXAMPLES=$(usex !examples)
