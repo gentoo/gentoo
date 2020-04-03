@@ -6,6 +6,7 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <use>
+	<flag name="audit">Use <pkg>sys-process/audit</pkg> to emit audit messages about system changes</flag>
 	<flag name="caps">build setpriv helper (run programs with diff capabilities)</flag>
 	<flag name="cramfs">build mkfs/fsck helpers for cramfs filesystems</flag>
 	<flag name="cryptsetup">Use <pkg>sys-fs/cryptsetup</pkg> to have built-in dm-verity in libmount</flag>
