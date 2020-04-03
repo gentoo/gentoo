@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils linux-info python-any-r1 readme.gentoo-r1
+inherit linux-info python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/openconnect/openconnect.git"
@@ -106,55 +106,23 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
-DOC_CONTENTS="The init script for openconnect supports multiple vpn tunnels.
-
-You need to create a symbolic link to /etc/init.d/openconnect in /etc/init.d
-instead of calling it directly:
-
-ln -s /etc/init.d/openconnect /etc/init.d/openconnect.vpn0
-
-You can then start the vpn tunnel like this:
-
-/etc/init.d/openconnect.vpn0 start
-
-If you would like to run preup, postup, predown, and/or postdown scripts,
-You need to create a directory in /etc/openconnect with the name of the vpn:
-
-mkdir /etc/openconnect/vpn0
-
-Then add executable shell files:
-
-mkdir /etc/openconnect/vpn0
-cd /etc/openconnect/vpn0
-echo '#!/bin/sh' > preup.sh
-cp preup.sh predown.sh
-cp preup.sh postup.sh
-cp preup.sh postdown.sh
-chmod 755 /etc/openconnect/vpn0/*
-"
-
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/openconnect.init.in-r4 openconnect
-	insinto /etc/openconnect
-	newconfd "${FILESDIR}"/openconnect.conf.in openconnect
-	exeinto /etc/openconnect
-	newexe "${WORKDIR}"/vpnc-scripts-${VPNC_VER}/vpnc-script openconnect.sh
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/openconnect.logrotate openconnect
-	keepdir /var/log/openconnect
-
 	find "${ED}" -name '*.la' -delete || die
 
-	readme.gentoo_create_doc
-}
+	dodoc "${FILESDIR}"/README.OpenRC.txt
 
-pkg_postinst() {
-	readme.gentoo_print_elog
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog
-		elog "You may want to consider installing the following optional packages."
-		optfeature "resolvconf support" virtual/resolvconf
-	fi
+	newinitd "${FILESDIR}"/openconnect.init.in-r4 openconnect
+	insinto /etc/openconnect
+
+	newconfd "${FILESDIR}"/openconnect.conf.in openconnect
+
+	exeinto /etc/openconnect
+	newexe "${WORKDIR}"/vpnc-scripts-${VPNC_VER}/vpnc-script openconnect.sh
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/openconnect.logrotate openconnect
+
+	keepdir /var/log/openconnect
 }
