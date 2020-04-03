@@ -90,9 +90,9 @@ src_configure() {
 	addwrite /run/netns
 
 	local myconf=(
-		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh"
-		$(use_enable static-libs static)
+		--disable-dsa-tests
 		$(use_enable nls)
+		$(use_enable static-libs static)
 		$(use_with !gnutls openssl)
 		$(use_with gnutls)
 		$(use_with libproxy)
@@ -100,10 +100,24 @@ src_configure() {
 		$(use_with gssapi)
 		$(use_with smartcard libpcsclite)
 		$(use_with stoken)
+		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh"
 		--without-java
 	)
 
 	econf "${myconf[@]}"
+}
+
+src_test() {
+	local charset
+	for charset in UTF-8 ISO8859-2; do
+		if [[ $(LC_ALL=cs_CZ.${charset} locale charmap 2>/dev/null) != ${charset} ]]; then
+			# If we don't have valid cs_CZ locale data, auth-nonascii will fail.
+			# Force a test skip by exiting with status 77.
+			sed -i -e '2i exit 77' tests/auth-nonascii || die
+			break
+		fi
+	done
+	default
 }
 
 src_install() {
