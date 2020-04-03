@@ -8097,14 +8097,19 @@ sys-cluster/ceph:cephfs - Build support for cephfs, a POSIX compatible filesyste
 sys-cluster/ceph:dpdk - Enable DPDK messaging
 sys-cluster/ceph:fuse - Build fuse client
 sys-cluster/ceph:grafana - Install grafana dashboards
+sys-cluster/ceph:kafka - Rados Gateway's pubsub support for Kafka push endpoint
 sys-cluster/ceph:lttng - Add support for LTTng
 sys-cluster/ceph:mgr - Build the ceph-mgr daemon
 sys-cluster/ceph:nss - Use dev-libs/nss for cryptography
 sys-cluster/ceph:numa - Use sys-process/numactl for numa support in rocksdb
+sys-cluster/ceph:openssl - Use dev-libs/openssl
+sys-cluster/ceph:pmdk - Enable PMDK libraries
 sys-cluster/ceph:rabbitmq - Use rabbitmq-c to build rgw amqp push endpoint
 sys-cluster/ceph:radosgw - Add radosgw support
+sys-cluster/ceph:rbd-rwl - Enable librbd persistent write back cache
 sys-cluster/ceph:spdk - Enable SPDK user-mode storage driver toolkit
 sys-cluster/ceph:system-boost - Use system dev-libs/boost instead of the bundled one
+sys-cluster/ceph:uring - Build with support for sys-libs/liburing
 sys-cluster/ceph:xfs - Add xfs support
 sys-cluster/ceph:zfs - Add zfs support
 sys-cluster/charliecloud:pv - Use sys-apps/pv to enable progress bar functionality
