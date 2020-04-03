@@ -12,6 +12,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="test"
 
+RESTRICT="!test? ( test )"
+
 DEPEND="
 	>=dev-lang/erlang-21:0=[ssl]
 "
