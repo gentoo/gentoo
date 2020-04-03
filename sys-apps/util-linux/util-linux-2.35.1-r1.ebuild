@@ -283,6 +283,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc AUTHORS NEWS README* Documentation/{TODO,*.txt,releases/*}
+	chmod -x "${ED}"/usr/share/doc/util-linux-${PVR}/getopt/getopt-parse* || die
 
 	# e2fsprogs-libs didnt install .la files, and .pc work fine
 	find "${ED}" -name "*.la" -delete || die
