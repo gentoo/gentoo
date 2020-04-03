@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<use>
+		<flag name="lz4">Enable support for lz4 compression</flag>
+		<flag name="otp">Enable support for one-time passwords</flag>
+	</use>
+</pkgmetadata>
