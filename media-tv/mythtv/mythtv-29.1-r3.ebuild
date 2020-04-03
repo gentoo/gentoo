@@ -155,7 +155,10 @@ to journald via the console at the notice verbosity.
 
 MYTHTV_GROUPS="video,audio,tty,uucp"
 
-PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.1.patch" ) # bug 691904
+PATCHES=(
+	"${FILESDIR}/${P}-exiv2-0.27.1.patch"
+	"${FILESDIR}/${P}-Fix_create_webbrowser_window.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
