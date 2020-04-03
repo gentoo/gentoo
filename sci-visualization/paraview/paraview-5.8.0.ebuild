@@ -85,6 +85,7 @@ RDEPEND="
 		dev-qt/qtsql:5
 		dev-qt/qttest:5
 		dev-qt/qtx11extras:5
+		dev-qt/qtxmlpatterns:5
 	)
 	sqlite? ( dev-db/sqlite:3 )
 	tcl? ( dev-lang/tcl:0= )
