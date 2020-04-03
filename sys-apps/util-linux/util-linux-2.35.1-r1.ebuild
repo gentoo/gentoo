@@ -191,6 +191,7 @@ multilib_src_configure() {
 			--enable-bash-completion
 			--enable-line
 			--enable-partx
+			--enable-pg
 			--enable-raw
 			--enable-rename
 			--enable-rfkill
