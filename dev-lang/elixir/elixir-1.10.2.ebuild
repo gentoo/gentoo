@@ -10,12 +10,17 @@ SRC_URI="https://github.com/elixir-lang/elixir/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="Apache-2.0 ErlPL-1.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86"
-IUSE=""
+IUSE="test"
 
-DEPEND=">=dev-lang/erlang-21:0=[ssl]"
+DEPEND="
+	>=dev-lang/erlang-21:0=[ssl]
+"
 # 'mix' tool collides with sci-biology/phylip, bug #537514
 RDEPEND="${DEPEND}
 	!!sci-biology/phylip
+"
+DEPEND+="
+	test? ( dev-vcs/git )
 "
 
 PATCHES=(
