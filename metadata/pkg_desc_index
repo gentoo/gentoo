@@ -624,7 +624,7 @@ app-arch/plzip 1.8: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
-app-arch/rar 5.8.0_p20191205 5.9.0_p20200330: RAR compressor/uncompressor
+app-arch/rar 5.9.0_p20200330: RAR compressor/uncompressor
 app-arch/rpm 4.14.1 4.14.1-r1 4.14.2.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g 9.0.0.5g-r1: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
@@ -643,7 +643,7 @@ app-arch/unar 1.10.6 1.10.7: Unpacker for various archiving formats, e.g. rar v3
 app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1: Script for unpacking various file formats
-app-arch/unrar 5.7.5 5.8.5 5.9.1 5.9.2: Uncompress rar files
+app-arch/unrar 5.9.2: Uncompress rar files
 app-arch/unrpa 1.4.1 1.4.2 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1: unzipper for pkzip-compressed files
@@ -1301,7 +1301,7 @@ app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0 1.8.1: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.28.1 3.32.0: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2 0.8.1: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.1.1486 8.1.1846 8.2.0055 8.2.0114 8.2.0210-r1 8.2.0360 9999: GUI version of the Vim text editor
+app-editors/gvim 8.1.1486 8.2.0360 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0-r1: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1346,8 +1346,8 @@ app-editors/ted 2.23: X-based rich text editor
 app-editors/texworks 0.6.3 0.6.4 0.6.5: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.1.1486 8.1.1846 8.2.0055 8.2.0114 8.2.0210 8.2.0360 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 8.1.1486 8.1.1846 8.2.0055 8.2.0114 8.2.0210 8.2.0360 9999: vim and gvim shared files
+app-editors/vim 8.1.1486 8.2.0360 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 8.1.1486 8.2.0360 9999: vim and gvim shared files
 app-editors/vis 0.5 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
@@ -13656,7 +13656,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32 0.33: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.20 0.21.21: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.20 0.21.21 0.21.22: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
@@ -15254,7 +15254,7 @@ net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written 
 net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.4.1-r2: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/qbittorrent 4.2.1 4.2.2 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.2.1 4.2.3 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
