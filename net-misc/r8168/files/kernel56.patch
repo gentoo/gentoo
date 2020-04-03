@@ -1,0 +1,50 @@
+--- r8168-8.048.00/src/r8168_n.c	2019-11-26 08:32:35.000000000 +0000
++++ r8168-8.048.00/src/r8168_n.c	2020-03-16 12:34:04.893511463 +0000
+@@ -456,7 +456,13 @@ static void rtl8168_hw_config(struct net
+ static void rtl8168_hw_start(struct net_device *dev);
+ static int rtl8168_close(struct net_device *dev);
+ static void rtl8168_set_rx_mode(struct net_device *dev);
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,6,0)
+ static void rtl8168_tx_timeout(struct net_device *dev);
++#else
++static void rtl8168_tx_timeout(struct net_device *dev, unsigned int txqueue);
++#endif
++
+ static struct net_device_stats *rtl8168_get_stats(struct net_device *dev);
+ static int rtl8168_rx_interrupt(struct net_device *, struct rtl8168_private *, napi_budget);
+ static int rtl8168_change_mtu(struct net_device *dev, int new_mtu);
+@@ -1616,12 +1622,21 @@ static int rtl8168_proc_open(struct inod
+         return single_open(file, show, dev);
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,6,0)
+ static const struct file_operations rtl8168_proc_fops = {
+         .open           = rtl8168_proc_open,
+         .read           = seq_read,
+         .llseek         = seq_lseek,
+         .release        = single_release,
+ };
++#else
++static const struct proc_ops rtl8168_proc_fops = {
++         .proc_open           = rtl8168_proc_open,
++         .proc_read           = seq_read,
++         .proc_lseek         = seq_lseek,
++         .proc_release        = single_release,
++};
++#endif
+ #endif
+ 
+ /*
+@@ -27844,7 +27859,11 @@ static void rtl8168_reset_task(struct wo
+ }
+ 
+ static void
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,6,0)
+ rtl8168_tx_timeout(struct net_device *dev)
++#else
++rtl8168_tx_timeout(struct net_device *dev, unsigned int txqueue)
++#endif
+ {
+         struct rtl8168_private *tp = netdev_priv(dev);
+         unsigned long flags;
