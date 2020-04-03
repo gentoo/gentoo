@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# bash-completion-r1 can be added once we can generate completion scripts
 inherit go-module
 
 DESCRIPTION="A simple JIRA commandline client in Go"
@@ -114,9 +115,16 @@ S="${WORKDIR}/jira-${PV}"
 
 src_compile() {
 	go build -o jira  cmd/jira/main.go || die
+	# these cause failures.
+#	./jira --completion-script-bash > jira.bash || die
+#	./jira --completion-script-zsh > jira.zsh || die
 }
 
 src_install() {
 	dobin jira
 	dodoc {CHANGELOG,README}.md
+	# This can be uncommented once we can generate completion scripts
+#	newbashcomp jira.bash jira
+#	insinto /usr/share/zsh/site-functions
+#	newins jira.zsh _jira
 }
