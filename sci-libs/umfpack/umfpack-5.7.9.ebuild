@@ -29,3 +29,8 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with cholmod)
 }
+
+src_compile() {
+	use doc && export VARTEXFONTS="${T}/fonts"
+	default
+}
