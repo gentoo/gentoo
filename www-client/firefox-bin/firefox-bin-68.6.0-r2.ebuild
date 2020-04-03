@@ -133,10 +133,10 @@ src_install() {
 	# Install icons and .desktop for menu entry
 	for size in ${sizes} ; do
 		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
-		newins "${icon_path}/default${size}.png" "${icon}.png"
+		newins "${ED%/}${icon_path}/default${size}.png" "${icon}.png"
 	done
 	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
-	newicon ${MOZILLA_FIVE_HOME}/browser/chrome/icons/default/default48.png ${PN}.png
+	newicon "${ED%/}${MOZILLA_FIVE_HOME}/browser/chrome/icons/default/default48.png" ${PN}.png
 
 	# Add StartupNotify=true bug 237317
 	local startup_notify="false"
