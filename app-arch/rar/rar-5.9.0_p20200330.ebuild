@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 DESCRIPTION="RAR compressor/uncompressor"
 HOMEPAGE="https://rarlab.com/"
@@ -18,7 +18,7 @@ SRC_URI="x86? ( ${URI_x86} )
 
 LICENSE="RAR BSD BSD-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="all_sfx"
 RESTRICT="mirror bindist"
 
