@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=games-emulation/mupen64plus-core-2.5:0=[gles2-only=] media-libs/libpng:0= media-libs/libsdl2:0=[video] virtual/opengl:0= gles2-only? ( media-libs/libsdl2:0[gles] ) virtual/pkgconfig
+DESCRIPTION=A fork of Mupen64 Nintendo 64 emulator, rice video plugin
+EAPI=7
+HOMEPAGE=https://www.mupen64plus.org/
+IUSE=gles2-only cpu_flags_x86_sse
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=games-emulation/mupen64plus-core-2.5:0=[gles2-only=] media-libs/libpng:0= media-libs/libsdl2:0=[video] virtual/opengl:0= gles2-only? ( media-libs/libsdl2:0[gles] )
+SLOT=0
+SRC_URI=https://github.com/mupen64plus/mupen64plus-video-rice/releases/download/2.5.9/mupen64plus-video-rice-src-2.5.9.tar.gz
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=5e004e5fa6e74c3a906eb01ee236d20d

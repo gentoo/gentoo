@@ -11112,12 +11112,12 @@ games-emulation/mekanix 070-r1: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO,
 games-emulation/mgba 0.7.3 0.8.0 0.8.1 9999: Game Boy Advance emulator written in C
 games-emulation/mupen64plus 2.5.9: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.5.9: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
-games-emulation/mupen64plus-core 2.5.9: A fork of Mupen64 Nintendo 64 emulator, core library
+games-emulation/mupen64plus-core 2.5.9-r1: A fork of Mupen64 Nintendo 64 emulator, core library
 games-emulation/mupen64plus-input-sdl 2.5.9: A fork of Mupen64 Nintendo 64 emulator, SDL input plugin
 games-emulation/mupen64plus-rsp-hle 2.5.9: A fork of Mupen64 Nintendo 64 emulator, HLE RSP plugin
 games-emulation/mupen64plus-ui-console 2.5.9: A fork of Mupen64 Nintendo 64 emulator, console UI
-games-emulation/mupen64plus-video-glide64mk2 2.5.9: A fork of Mupen64 Nintendo 64 emulator, glide64mk2 video plugin
-games-emulation/mupen64plus-video-rice 2.5.9: A fork of Mupen64 Nintendo 64 emulator, rice video plugin
+games-emulation/mupen64plus-video-glide64mk2 2.5.9-r1: A fork of Mupen64 Nintendo 64 emulator, glide64mk2 video plugin
+games-emulation/mupen64plus-video-rice 2.5.9-r1: A fork of Mupen64 Nintendo 64 emulator, rice video plugin
 games-emulation/nestopia 1.47_p20170105 9999: A portable Nintendo Entertainment System emulator written in C++
 games-emulation/nestra 0.66-r3: NES emulation for Linux/x86
 games-emulation/openmsx 0.14.0: MSX emulator that aims for perfection
@@ -12111,54 +12111,54 @@ kde-misc/skanlite 2.1.0.1-r1: Simple image scanning application based on libksan
 kde-misc/tellico 3.2.3: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.71-r1: Getting things done application by KDE
-kde-plasma/bluedevil 5.17.5 5.18.3: Bluetooth stack for KDE Plasma
-kde-plasma/breeze 5.17.5 5.18.3: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-grub 5.17.5 5.18.3: Breeze theme for GRUB
-kde-plasma/breeze-gtk 5.17.5 5.18.3: Official GTK+ port of Plasma's Breeze widget style
-kde-plasma/breeze-plymouth 5.17.5 5.18.3: Breeze theme for Plymouth
-kde-plasma/discover 5.17.5 5.18.3: KDE Plasma resources management GUI
-kde-plasma/drkonqi 5.17.5 5.18.3: Plasma crash handler, gives the user feedback if a program crashed
-kde-plasma/kactivitymanagerd 5.17.5 5.18.3: System service to manage user's activities, track the usage patterns etc.
-kde-plasma/kde-cli-tools 5.17.5 5.18.3: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.17.5 5.18.3: GTK2 and GTK3 configurator for KDE Plasma
-kde-plasma/kdecoration 5.17.5 5.18.3: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.17.5 5.18.3: Extra Plasma applets and engines
-kde-plasma/kgamma 5.17.5 5.18.3: Screen gamma values kcontrol module
-kde-plasma/khotkeys 5.17.5 5.18.3: KDE Plasma workspace hotkey module
-kde-plasma/kinfocenter 5.17.5 5.18.3: Utility providing information about the computer hardware
-kde-plasma/kmenuedit 5.17.5 5.18.3: KDE Plasma menu editor
-kde-plasma/kscreen 5.17.5 5.18.3: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.17.5 5.18.3: Library and components for secure lock screen architecture
-kde-plasma/ksshaskpass 5.17.5 5.18.3: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.17.5 5.18.3: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.17.5 5.18.3: PAM module to not enter KWallet password again after login
-kde-plasma/kwayland-integration 5.17.5 5.18.3: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.17.5 5.18.3: Flexible, composited Window Manager for windowing systems on Linux
-kde-plasma/kwrited 5.17.5 5.18.3: KDE Plasma daemon listening for wall and write messages
-kde-plasma/libkscreen 5.17.5 5.18.3: Plasma screen management library
-kde-plasma/libksysguard 5.17.5 5.18.3: Task management and system monitoring library
-kde-plasma/libkworkspace 5.17.5 5.18.3: Workspace library to interact with the Plasma session manager
-kde-plasma/milou 5.17.5 5.18.3: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.17.5 5.18.3: Oxygen visual style for the Plasma desktop
-kde-plasma/plasma-browser-integration 5.17.5 5.18.3: Integrate Chrome/Firefox better into Plasma through browser extensions
-kde-plasma/plasma-desktop 5.17.5-r1 5.18.3: KDE Plasma desktop
-kde-plasma/plasma-integration 5.17.5-r1 5.18.3: Qt Platform Theme integration plugins for the Plasma workspaces
-kde-plasma/plasma-meta 5.17.5 5.18.3: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.17.5 5.18.3: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.17.5 5.18.3: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.17.5 5.18.3: Useful applications for Plasma development
-kde-plasma/plasma-thunderbolt 5.17.5 5.18.3: Plasma integration for controlling Thunderbolt devices
-kde-plasma/plasma-vault 5.17.5 5.18.3: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.17.5-r1 5.18.3: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.17.5 5.18.3: Wallpapers for the Plasma workspace
-kde-plasma/plymouth-kcm 5.17.5 5.18.3: KDE Plasma control module for Plymouth
-kde-plasma/polkit-kde-agent 5.17.5 5.18.3: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 5.17.5 5.18.3: Power management for KDE Plasma Shell
-kde-plasma/sddm-kcm 5.17.5 5.18.3: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.17.5 5.18.3: Control Center to configure KDE Plasma desktop
-kde-plasma/user-manager 5.17.5 5.18.3: Simple system settings module to manage the users of your system
-kde-plasma/xdg-desktop-portal-kde 5.17.5 5.18.3: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
-kde-plasma/xembed-sni-proxy 5.17.5 5.18.3: Legacy xembed tray icons support for SNI-only system trays
+kde-plasma/bluedevil 5.17.5 5.18.4.1: Bluetooth stack for KDE Plasma
+kde-plasma/breeze 5.17.5 5.18.4.1: Breeze visual style for the Plasma desktop
+kde-plasma/breeze-grub 5.17.5 5.18.4.1: Breeze theme for GRUB
+kde-plasma/breeze-gtk 5.17.5 5.18.4.1: Official GTK+ port of Plasma's Breeze widget style
+kde-plasma/breeze-plymouth 5.17.5 5.18.4.1: Breeze theme for Plymouth
+kde-plasma/discover 5.17.5 5.18.4.1: KDE Plasma resources management GUI
+kde-plasma/drkonqi 5.17.5 5.18.4.1: Plasma crash handler, gives the user feedback if a program crashed
+kde-plasma/kactivitymanagerd 5.17.5 5.18.4.1: System service to manage user's activities, track the usage patterns etc.
+kde-plasma/kde-cli-tools 5.17.5 5.18.4.1: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.17.5 5.18.4.1: GTK2 and GTK3 configurator for KDE Plasma
+kde-plasma/kdecoration 5.17.5 5.18.4.1: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.17.5 5.18.4.1: Extra Plasma applets and engines
+kde-plasma/kgamma 5.17.5 5.18.4.1: Screen gamma values kcontrol module
+kde-plasma/khotkeys 5.17.5 5.18.4.1: KDE Plasma workspace hotkey module
+kde-plasma/kinfocenter 5.17.5 5.18.4.1: Utility providing information about the computer hardware
+kde-plasma/kmenuedit 5.17.5 5.18.4.1: KDE Plasma menu editor
+kde-plasma/kscreen 5.17.5 5.18.4.1: KDE Plasma screen management
+kde-plasma/kscreenlocker 5.17.5 5.18.4.1: Library and components for secure lock screen architecture
+kde-plasma/ksshaskpass 5.17.5 5.18.4.1: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.17.5 5.18.4.1: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.17.5 5.18.4.1: PAM module to not enter KWallet password again after login
+kde-plasma/kwayland-integration 5.17.5 5.18.4.1: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwin 5.17.5 5.18.4.1: Flexible, composited Window Manager for windowing systems on Linux
+kde-plasma/kwrited 5.17.5 5.18.4.1: KDE Plasma daemon listening for wall and write messages
+kde-plasma/libkscreen 5.17.5 5.18.4.1: Plasma screen management library
+kde-plasma/libksysguard 5.17.5 5.18.4.1: Task management and system monitoring library
+kde-plasma/libkworkspace 5.17.5 5.18.4.1: Workspace library to interact with the Plasma session manager
+kde-plasma/milou 5.17.5 5.18.4.1: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.17.5 5.18.4.1: Oxygen visual style for the Plasma desktop
+kde-plasma/plasma-browser-integration 5.17.5 5.18.4.1: Integrate Chrome/Firefox better into Plasma through browser extensions
+kde-plasma/plasma-desktop 5.17.5-r1 5.18.4.1: KDE Plasma desktop
+kde-plasma/plasma-integration 5.17.5-r1 5.18.4.1: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-meta 5.17.5 5.18.4.1: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.17.5 5.18.4.1: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.17.5 5.18.4.1: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.17.5 5.18.4.1: Useful applications for Plasma development
+kde-plasma/plasma-thunderbolt 5.17.5 5.18.4.1: Plasma integration for controlling Thunderbolt devices
+kde-plasma/plasma-vault 5.17.5 5.18.4.1: Plasma applet and services for creating encrypted vaults
+kde-plasma/plasma-workspace 5.17.5-r1 5.18.4.1: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.17.5 5.18.4.1: Wallpapers for the Plasma workspace
+kde-plasma/plymouth-kcm 5.17.5 5.18.4.1: KDE Plasma control module for Plymouth
+kde-plasma/polkit-kde-agent 5.17.5 5.18.4.1: PolKit agent module for KDE Plasma
+kde-plasma/powerdevil 5.17.5 5.18.4.1: Power management for KDE Plasma Shell
+kde-plasma/sddm-kcm 5.17.5 5.18.4.1: KDE Plasma control module for SDDM
+kde-plasma/systemsettings 5.17.5 5.18.4.1: Control Center to configure KDE Plasma desktop
+kde-plasma/user-manager 5.17.5 5.18.4.1: Simple system settings module to manage the users of your system
+kde-plasma/xdg-desktop-portal-kde 5.17.5 5.18.4.1: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
+kde-plasma/xembed-sni-proxy 5.17.5 5.18.4.1: Legacy xembed tray icons support for SNI-only system trays
 lxde-base/lxappearance 0.6.3 0.6.3-r1: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.99.1 0.99.2: LXDE Session default configuration files and nuoveXT2 iconset
@@ -12651,7 +12651,7 @@ media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion too
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.6.1: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.2.8.2-r2: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.2.8.2-r2 4.2.9: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
@@ -13721,7 +13721,7 @@ media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO f
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.3.2 1.3.5 1.3.6 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
-media-sound/qsynth 0.6.0 0.6.1 9999: A Qt application to control FluidSynth
+media-sound/qsynth 0.6.0 0.6.1 0.6.2 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.12: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
@@ -18017,9 +18017,9 @@ www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras 
 www-plugins/adobe-flash 32.0.0.344: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
 www-plugins/chrome-binary-plugins 80.0.3987.162 81.0.4044.83_beta 83.0.4100.3_alpha: Binary plugins from Google Chrome for use in Chromium
-www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
+www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
-www-plugins/lightspark 0.8.2: High performance flash player
+www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff 1.9.1: zx2c4 pass manager extension for Firefox
 www-plugins/passff-host 1.2.1 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426 2.1.266: A PDF reader in JavaScript
