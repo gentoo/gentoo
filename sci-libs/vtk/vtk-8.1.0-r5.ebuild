@@ -152,6 +152,7 @@ src_configure() {
 		-Wno-dev
 		-DVTK_DIR="${S}"
 		-DVTK_INSTALL_LIBRARY_DIR=$(get_libdir)
+		-DVTK_INSTALL_PACKAGE_DIR="$(get_libdir)/cmake/${PN}-${SPV}"
 		-DVTK_INSTALL_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DVTK_DATA_ROOT="${EPREFIX}/usr/share/${PN}/data"
 		-DVTK_CUSTOM_LIBRARY_SUFFIX=""
