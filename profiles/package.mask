@@ -588,13 +588,6 @@ www-apps/ownpaste
 # Removal in 30 days.  Bug #706362.
 www-apps/venus
 
-# Marek Szuba <marecki@gentoo.org> (2020-03-04)
-# Most of upstream code has got merged into x-crypto (dev-go/go-crypto),
-# and since go-1.13 subsequently into the Go standard library.
-# Original code is no longer maintained and contains known bugs.
-# Removal in 30 days. Bug #711520.
-dev-go/ed25519
-
 # Craig Andrews <candrews@gentoo.org> (2020-03-03)
 # Deprecated upstream in favor of dev-libs/rocm-comgr
 # Masked for removal in 30 days. Bug #711398
