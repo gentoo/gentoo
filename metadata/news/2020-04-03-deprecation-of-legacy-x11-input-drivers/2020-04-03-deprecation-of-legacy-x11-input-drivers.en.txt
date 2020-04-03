@@ -1,0 +1,45 @@
+Title: Deprecation of legacy X11 input drivers
+Author: Piotr Karbowski <slashbeast@gentoo.org>
+Posted: 2020-04-03
+Revision: 2
+News-Item-Format: 2.0
+Display-If-Installed: x11-drivers/xf86-input-mouse
+Display-If-Installed: x11-drivers/xf86-input-keyboard
+
+The Gentoo X11 Team is announcing the deprecation and future removal of
+the legacy X11 input drivers x11-drivers/xf86-input-mouse and
+x11-drivers/xf86-input-keyboard. As of 2020-05-01 those input drivers
+will be masked for removal.
+
+These drivers have been deprecated for many years, first by
+xf86-input-evdev and then by xf86-input-libinput.
+
+The only use for those drivers remain in deployments which intentionally
+opt-out of using udev, as both evdev and libinput require udev during
+runtime, however given that upstream has already removed the Linux
+support from xf86-input-keyboard, future X11 releases will no longer
+support xf86-input-keyboard on Linux rendering those installation
+infeasible to use without udev.
+
+In order to ensure frictionless upgrade path for future X11 releases, we
+have decided to deprecate those drivers that are not in active use by
+pretty much any installation of Gentoo.
+
+No action is required from end-users who are already using libinput (or
+evdev). To check which driver is in use, one can use
+
+    $ grep 'Using input driver' ~/.local/share/xorg/Xorg.0.log
+
+for the systems running xorg-server as regular user (-suid
++elogind/+systemd) or by running
+
+    # grep 'Using input driver' /var/log/Xorg.0.log
+
+for those running xorg-server as root.
+
+If however neither libinput or evdev is in use, one should append
+'libinput' to the INPUT_DEVICES variable inside /etc/portage/make.conf
+while removing 'keyboard' and 'mouse' if present, then update @world
+with new USE flags
+
+    # emerge -N @world
