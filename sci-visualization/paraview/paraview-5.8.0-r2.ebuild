@@ -54,7 +54,7 @@ RDEPEND="
 	x11-libs/libXt
 	coprocessing? (
 		dev-python/PyQt5
-		dev-qt/qtgui:5[-gles2]
+		dev-qt/qtgui:5[-gles2-only]
 	)
 	ffmpeg? ( virtual/ffmpeg )
 	mpi? ( virtual/mpi[cxx,romio] )
@@ -79,9 +79,9 @@ RDEPEND="
 	)
 	qt5? (
 		dev-qt/designer:5
-		dev-qt/qtgui:5[-gles2]
+		dev-qt/qtgui:5[-gles2-only]
 		dev-qt/qthelp:5
-		dev-qt/qtopengl:5[-gles2]
+		dev-qt/qtopengl:5[-gles2-only]
 		dev-qt/qtsql:5
 		dev-qt/qttest:5
 		dev-qt/qtx11extras:5
