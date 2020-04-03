@@ -1,0 +1,25 @@
+From 3681c96f54b34f60493cbbf5ec830f158e469799 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Thu, 2 Apr 2020 14:35:44 +0000
+Subject: [PATCH] IWYU: std::find is defined in algorithm
+
+---
+ extensions/browser/install/crx_install_error.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/extensions/browser/install/crx_install_error.cc b/extensions/browser/install/crx_install_error.cc
+index a9765bb..bd0d3e3 100644
+--- a/extensions/browser/install/crx_install_error.cc
++++ b/extensions/browser/install/crx_install_error.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "extensions/browser/install/crx_install_error.h"
+ 
++#include <algorithm>
++
+ #include "base/logging.h"
+ #include "extensions/browser/install/sandboxed_unpacker_failure_reason.h"
+ 
+-- 
+2.24.1
+

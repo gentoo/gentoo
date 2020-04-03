@@ -156,10 +156,9 @@ PATCHES=(
 	"${FILESDIR}/chromium-82-gcc-incomplete-type.patch"
 	"${FILESDIR}/chromium-82-gcc-template.patch"
 	"${FILESDIR}/chromium-82-gcc-iterator.patch"
-	"${FILESDIR}/chromium-82-clang-std.patch"
 	"${FILESDIR}/chromium-83-gcc-template.patch"
-	"${FILESDIR}/chromium-83-gcc-range.patch"
-	"${FILESDIR}/chromium-83-clang-std.patch"
+	"${FILESDIR}/chromium-83-gcc-include.patch"
+	"${FILESDIR}/chromium-83-gcc-permissive.patch"
 )
 
 pre_build_checks() {
