@@ -2330,7 +2330,7 @@ app-office/dia 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
 app-office/glabels 3.4.1: Program for creating labels and business cards
 app-office/gnome-todo 3.28.1-r1: Personal task manager
-app-office/gnucash 3.2-r2 3.3 3.3-r1 3.4 3.5 3.6 3.7 3.8b: A personal finance manager
+app-office/gnucash 3.2-r2 3.3 3.3-r1 3.4 3.5 3.6 3.7 3.8b 3.8b-r1: A personal finance manager
 app-office/gnumeric 1.12.39-r1 1.12.43 1.12.44-r1 1.12.46: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3.1: Personal organizer for the GNOME desktop environment
@@ -13043,7 +13043,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
 media-libs/lv2 1.14.0-r2 1.16.0-r1: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 19.3.5 20.0.1-r1 20.0.2 20.0.3 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.3.5 20.0.4 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.20.0 6.20.0-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
