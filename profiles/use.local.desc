@@ -7955,6 +7955,7 @@ sys-apps/timer_entropyd:debug - Enable printf debugging and logging to the syslo
 sys-apps/ucspi-ssl:bindist - Disable EC/RC5 algorithms in OpenSSL for patent reasons.
 sys-apps/usb_modeswitch:jimtcl - Use dev-lang/jimtcl instead of dev-lang/tcl for smaller memory footprint
 sys-apps/usermode-utilities:fuse - Build tools (currently umlmount) needing fuse
+sys-apps/util-linux:audit - Use sys-process/audit to emit audit messages about system changes
 sys-apps/util-linux:caps - build setpriv helper (run programs with diff capabilities)
 sys-apps/util-linux:cramfs - build mkfs/fsck helpers for cramfs filesystems
 sys-apps/util-linux:cryptsetup - Use sys-fs/cryptsetup to have built-in dm-verity in libmount
