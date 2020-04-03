@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
+# Lots of deps for little gain
+dev-python/joblib doc
+
 # Matthias Maier <tamiko@gentoo.org> (2020-03-13)
 # requires media-libs/sdl2-image, which is not yet keyworded
 app-emulation/qemu sdl-image
