@@ -2490,7 +2490,6 @@ dev-python/PyQt5:bluetooth - Build bindings for the QtBluetooth module
 dev-python/PyQt5:dbus - Build bindings for the QtDBus module
 dev-python/PyQt5:declarative - Build bindings for the QtQml/QtQuick modules and enable the qmlscene plugin
 dev-python/PyQt5:designer - Build bindings for the QtDesigner module and enable the designer plugin
-dev-python/PyQt5:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-python/PyQt5:gui - Build bindings for the QtGui module
 dev-python/PyQt5:help - Build bindings for the QtHelp module
 dev-python/PyQt5:location - Build bindings for the QtLocation module
@@ -2709,14 +2708,11 @@ dev-qt/qt-docs:widgets - Install documentation for dev-qt/qtwidgets
 dev-qt/qt-docs:x11extras - Install documentation for dev-qt/qtx11extras
 dev-qt/qt-docs:xmlpatterns - Install documentation for dev-qt/qtxmlpatterns
 dev-qt/qt3d:gamepad - Add support for gamepad hardware via dev-qt/qtgamepad
-dev-qt/qt3d:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qt3d:qml - Build QML/QtQuick bindings
 dev-qt/qtbluetooth:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtcharts:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtcore:systemd - Enable native journald logging support
-dev-qt/qtdatavis3d:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtdatavis3d:qml - Build QML/QtQuick bindings and imports
-dev-qt/qtdeclarative:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtdeclarative:localstorage - Build the LocalStorage import for QtQuick (requires QtSql)
 dev-qt/qtdeclarative:vulkan - Enable support for Vulkan
 dev-qt/qtdeclarative:widgets - Enable QtWidgets support
@@ -2727,7 +2723,6 @@ dev-qt/qtgamepad:qml - Build QML bindings
 dev-qt/qtgui:egl - Enable EGL integration
 dev-qt/qtgui:eglfs - Build the EGL Full Screen/Single Surface platform plugin
 dev-qt/qtgui:evdev - Enable support for input devices via evdev
-dev-qt/qtgui:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtgui:ibus - Build the IBus input method plugin
 dev-qt/qtgui:libinput - Enable support for input devices via dev-libs/libinput
 dev-qt/qtgui:tslib - Enable support for touchscreen devices via x11-libs/tslib
@@ -2735,7 +2730,6 @@ dev-qt/qtgui:tuio - Build plugin to receive touch events over the TUIO protocol
 dev-qt/qtgui:vulkan - Enable support for Vulkan
 dev-qt/qtgui:wayland - Provide dev-qt/qtwayland to ensure Qt applications can be run as Wayland clients
 dev-qt/qtgui:xcb - Build the XCB platform plugin and enable X11 integration
-dev-qt/qtmultimedia:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtmultimedia:gstreamer - Enable audio support via media-libs/gstreamer using SLOT 1.0
 dev-qt/qtmultimedia:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtmultimedia:widgets - Build the QtMultimediaWidgets module
@@ -2743,10 +2737,8 @@ dev-qt/qtnetwork:bindist - Disable EC support via dev-libs/openssl
 dev-qt/qtnetwork:connman - Enable net-misc/connman-based bearer plugin
 dev-qt/qtnetwork:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy configuration
 dev-qt/qtnetwork:networkmanager - Enable net-misc/networkmanager-based bearer plugin
-dev-qt/qtopengl:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtpositioning:geoclue - Use enhanced location information from app-misc/geoclue
 dev-qt/qtpositioning:qml - Build QML bindings
-dev-qt/qtprintsupport:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtquickcontrols:widgets - Enable QtWidgets support
 dev-qt/qtquickcontrols2:widgets - Enable QtWidgets support
 dev-qt/qtscript:scripttools - Build the QtScriptTools module (requires QtWidgets)
@@ -2762,7 +2754,6 @@ dev-qt/qtwebengine:system-ffmpeg - Use the system-wide media-video/ffmpeg instea
 dev-qt/qtwebengine:system-icu - Use the system-wide dev-libs/icu instead of bundled.
 dev-qt/qtwebengine:widgets - Enable QtWidgets support
 dev-qt/qtwebkit:geolocation - Enable physical position determination via dev-qt/qtpositioning
-dev-qt/qtwebkit:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtwebkit:gstreamer - Enable HTML5 audio/video support via media-libs/gstreamer using SLOT 1.0
 dev-qt/qtwebkit:hyphen - Enable hyphenation support via dev-libs/hyphen
 dev-qt/qtwebkit:multimedia - Enable HTML5 audio/video support via dev-qt/qtmultimedia
@@ -2770,7 +2761,6 @@ dev-qt/qtwebkit:orientation - Enable device orientation detection via dev-qt/qts
 dev-qt/qtwebkit:printsupport - Enable printing via dev-qt/qtprintsupport
 dev-qt/qtwebkit:qml - Build QML/QtQuick bindings
 dev-qt/qtwebsockets:qml - Build QML bindings
-dev-qt/qtwidgets:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtxmlpatterns:qml - Build the XmlListModel import for QtQuick (requires QtDeclarative)
 dev-ros/rosbag:lz4 - Add support for lz4 compressed bags.
 dev-ros/rosconsole:glog - Use dev-cpp/glog as log backend.
@@ -3528,7 +3518,6 @@ kde-apps/kdemultimedia-meta:cdrom - Include packages for optical discs
 kde-apps/kdenetwork-meta:dropbox - Enable support for Dropbox in kde-apps/dolphin via kde-apps/dolphin-plugins-dropbox
 kde-apps/kdenetwork-meta:telepathy - Enable support for Plasma Telepathy (instant messaging) integration via kde-apps/plasma-telepathy-meta
 kde-apps/kdenlive:freesound - Enable freesound.org credentials support via dev-qt/qtwebkit to download files
-kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-apps/kdenlive:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/kdepim-addons:importwizard - Enable additional import plugins for kde-apps/akonadi-import-wizard
 kde-apps/kdepim-addons:markdown - Enable Markdown support via app-text/discount
@@ -3650,7 +3639,6 @@ kde-frameworks/kwallet:man - Build and install man pages
 kde-frameworks/kwidgetsaddons:designer - Build plugins for dev-qt/designer
 kde-frameworks/kxmlgui:designer - Build plugins for dev-qt/designer
 kde-frameworks/networkmanager-qt:teamd - Enable Teamd control support
-kde-frameworks/plasma:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-frameworks/prison:qml - Enable QML/QtQuick support via dev-qt/qtdeclarative
 kde-frameworks/purpose:dolphin - Enable support for sharing files from kde-apps/dolphin
 kde-frameworks/purpose:kaccounts - Enable support for system-wide defined KAccounts
@@ -3670,12 +3658,10 @@ kde-plasma/discover:firmware - Enable support for firmware upgrades using sys-ap
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
 kde-plasma/kdeplasma-addons:share - Enable applet for quickly sharing data to a variety of sources
 kde-plasma/kdeplasma-addons:webengine - Enable dictionary and web browser applets using dev-qt/qtwebengine
-kde-plasma/kinfocenter:gles2 - Show OpenGL ES information in kinfocenter
 kde-plasma/kinfocenter:pci - Show advanced PCI information
 kde-plasma/kmenuedit:hotkeys - Enable support for hotkey editing
 kde-plasma/kscreenlocker:consolekit - Support for killing the screenlocker when sys-auth/consolekit is the session tracker
 kde-plasma/ksysguard:pcap - Enable per-process network statistic collection using net-libs/libpcap
-kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
 kde-plasma/libksysguard:webengine - Enable display of detailed memory information using dev-qt/qtwebengine.
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus

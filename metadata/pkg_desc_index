@@ -2363,7 +2363,7 @@ app-office/planner 0.14.6_p20130520-r1 0.14.6_p20130520-r2: Project manager for 
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/pybliographer 1.4.0-r3: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.5.5 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.5.5-r1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.21.1: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
@@ -2436,7 +2436,7 @@ app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.0.1 0.0.2 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.0.2 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -7392,7 +7392,7 @@ dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.46 1.47: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt5 5.13.2 5.14.1: Python bindings for the Qt framework
+dev-python/PyQt5 5.13.2-r1 5.14.1-r1: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.19 4.19.20 4.19.21: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.13.2 5.14.0: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
@@ -8269,7 +8269,7 @@ dev-python/pika 0.10.0 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pika-pool 0.1.3: A connection pool for pika.
 dev-python/pikepdf 1.8.3: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
-dev-python/pillow 6.2.1 6.2.2 7.0.0: Python Imaging Library (fork)
+dev-python/pillow 6.2.1 6.2.2 7.0.0 7.1.1: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 9.0.1-r2 19.3.1-r2 20.0.2: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2018.11.26: Python Development Workflow for Humans
@@ -9082,31 +9082,31 @@ dev-qt/qdbusviewer 5.13.2 5.14.1: Graphical tool that lets you introspect D-Bus 
 dev-qt/qdoc 5.13.2 5.14.1: Qt documentation generator
 dev-qt/qt-creator 4.8.2 4.10.1 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.13.2_p201910220817 5.14.1_p202001241012: Qt5 documentation, for use with Qt Creator and other tools
-dev-qt/qt3d 5.14.1: 3D rendering module for the Qt5 framework
+dev-qt/qt3d 5.14.1-r1: 3D rendering module for the Qt5 framework
 dev-qt/qtbluetooth 5.13.2 5.14.1: Bluetooth support library for the Qt5 framework
 dev-qt/qtcharts 5.14.1: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
 dev-qt/qtconcurrent 5.13.2 5.14.1: Multi-threading concurrence support library for the Qt5 framework
 dev-qt/qtcore 5.13.2-r2 5.14.1-r1: Cross-platform application development framework
-dev-qt/qtdatavis3d 5.14.1: 3D data visualization library for the Qt5 framework
+dev-qt/qtdatavis3d 5.14.1-r1: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.13.2 5.14.1: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 5.13.2-r1 5.14.1-r1: The QML and Quick modules for the Qt5 framework
+dev-qt/qtdeclarative 5.13.2-r2 5.14.1-r2: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdiag 5.13.2 5.14.1: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgamepad 5.14.1: Qt module to support gamepad hardware
 dev-qt/qtgraphicaleffects 5.13.2 5.14.1: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 5.13.2 5.14.1-r3: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qtgui 5.13.2-r1 5.14.1-r4: The GUI module and platform plugins for the Qt5 framework
 dev-qt/qthelp 5.13.2 5.14.1: Qt5 module for integrating online documentation into applications
 dev-qt/qtimageformats 5.13.2 5.14.1: Additional format plugins for the Qt image I/O system
 dev-qt/qtlocation 5.13.2 5.14.1: Location (places, maps, navigation) library for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 5.13.2-r1 5.14.1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
+dev-qt/qtmultimedia 5.13.2-r2 5.14.1-r1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
 dev-qt/qtnetwork 5.13.2 5.14.1: Network abstraction library for the Qt5 framework
 dev-qt/qtnetworkauth 5.14.1: Network authorization library for the Qt5 framework
-dev-qt/qtopengl 5.13.2 5.14.1: OpenGL support library for the Qt5 framework (deprecated)
+dev-qt/qtopengl 5.13.2-r1 5.14.1-r1: OpenGL support library for the Qt5 framework (deprecated)
 dev-qt/qtpaths 5.13.2 5.14.1: Command line client to QStandardPaths
 dev-qt/qtplugininfo 5.14.1: Qt5 plugin metadata dumper
 dev-qt/qtpositioning 5.13.2 5.14.1: Physical position determination library for the Qt5 framework
-dev-qt/qtprintsupport 5.13.2-r1 5.14.1: Printing support library for the Qt5 framework
+dev-qt/qtprintsupport 5.13.2-r2 5.14.1-r1: Printing support library for the Qt5 framework
 dev-qt/qtquickcontrols 5.13.2 5.14.1: Set of Qt Quick controls to create complete user interfaces (deprecated)
 dev-qt/qtquickcontrols2 5.13.2 5.14.1: Set of next generation Qt Quick controls for the Qt5 framework
 dev-qt/qtscript 5.13.2 5.14.1: Application scripting library for the Qt5 framework (deprecated)
@@ -9121,13 +9121,13 @@ dev-qt/qtsvg 5.13.2 5.14.1: SVG rendering library for the Qt5 framework
 dev-qt/qttest 5.13.2 5.14.1: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 5.13.2 5.14.1: Translation files for the Qt5 framework
 dev-qt/qtvirtualkeyboard 5.13.2 5.14.1: Customizable input framework and virtual keyboard for Qt
-dev-qt/qtwayland 5.13.2-r1 5.14.1-r2: Wayland platform plugin for Qt
+dev-qt/qtwayland 5.13.2-r1 5.14.1-r3: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.13.2 5.14.1: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
 dev-qt/qtwebengine 5.13.2 5.14.1: Library for rendering dynamic web content in Qt5 C++ and QML applications
-dev-qt/qtwebkit 5.212.0_pre20190629 5.212.0_pre20200309: WebKit rendering library for the Qt5 framework (deprecated)
+dev-qt/qtwebkit 5.212.0_pre20190629-r1 5.212.0_pre20200309-r1: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.13.2 5.14.1: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwebview 5.14.1: Module for displaying web content in a QML application using the Qt5 framework
-dev-qt/qtwidgets 5.13.2 5.14.1: Set of components for creating classic desktop-style UIs for the Qt5 framework
+dev-qt/qtwidgets 5.13.2-r1 5.14.1-r1: Set of components for creating classic desktop-style UIs for the Qt5 framework
 dev-qt/qtx11extras 5.13.2 5.14.1: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.13.2 5.14.1: Implementation of SAX and DOM for the Qt5 framework
 dev-qt/qtxmlpatterns 5.13.2 5.14.1: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
@@ -10352,7 +10352,7 @@ dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22
 dev-util/android-studio 3.5.3.0.191.6010548 3.6.0.21.192.6200805 3.6.1.0.192.6241897 3.6.2.0.192.6308749: Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1 9.0.0_p3 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.28.0-r1: A versatile IDE for GNOME
-dev-util/apitrace 9.0: Tool for tracing, analyzing, and debugging graphics APIs
+dev-util/apitrace 9.0-r1: Tool for tracing, analyzing, and debugging graphics APIs
 dev-util/appdata-tools 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
@@ -11157,7 +11157,7 @@ games-fps/avp 20150214-r1: Linux port of Aliens vs Predator
 games-fps/blackshades 20070723-r1: You control a psychic bodyguard, and try to protect the VIP
 games-fps/darkplaces 20140513-r1: Enhanced engine for iD Software's Quake 1
 games-fps/doom-data 1.9: The IWAD used by the shareware version of Doom
-games-fps/doomsday 2.1.1: A modern gaming engine for Doom, Heretic, and Hexen
+games-fps/doomsday 2.1.1-r1: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/duke3d-data 1.0-r4: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
 games-fps/eduke32 20200311.8738: An open source engine port of the classic PC first person shooter Duke Nukem 3D
@@ -11772,7 +11772,7 @@ kde-apps/akonadi-notes 19.12.3: Library for akonadi notes integration
 kde-apps/akonadi-search 19.12.3: Libraries and daemons to implement searching in Akonadi
 kde-apps/akonadiconsole 19.12.3: Application for debugging Akonadi Resources
 kde-apps/akregator 19.12.3: News feed aggregator
-kde-apps/analitza 19.12.3: KDE library for mathematical features
+kde-apps/analitza 19.12.3-r1: KDE library for mathematical features
 kde-apps/ark 19.12.3: KDE Archiving tool
 kde-apps/artikulate 19.12.3: Language learning application that helps improving pronunciation skills
 kde-apps/audiocd-kio 19.12.3: kioslave for accessing audio CDs
@@ -11847,7 +11847,7 @@ kde-apps/kdegraphics-mobipocket 19.12.3: Library to support mobipocket ebooks
 kde-apps/kdemultimedia-meta 19.12.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 19.12.3: SMB filesharing config module for systemsettings
 kde-apps/kdenetwork-meta 19.12.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 19.12.3-r1: Non-linear video editing suite by KDE
+kde-apps/kdenlive 19.12.3-r2: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 19.12.3: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 19.12.3: Libraries for KDE PIM applications
 kde-apps/kdepim-meta 19.12.3: KDE PIM - merge this to pull in all kdepim-derived packages
@@ -12073,7 +12073,7 @@ kde-frameworks/kxmlrpcclient 5.67.0 5.68.0: Framework providing client-side supp
 kde-frameworks/modemmanager-qt 5.67.0 5.68.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.67.0 5.68.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.67.0 5.68.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.67.0-r2 5.68.0: Plasma framework
+kde-frameworks/plasma 5.67.0-r3 5.68.0-r1: Plasma framework
 kde-frameworks/prison 5.67.0 5.68.0: QRCode and data matrix barcode library
 kde-frameworks/purpose 5.67.0 5.68.0: Library for providing abstractions to get the developer's purposes fulfilled
 kde-frameworks/qqc2-desktop-style 5.67.1 5.68.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
@@ -12124,7 +12124,7 @@ kde-plasma/kdecoration 5.17.5 5.18.4.1: Plugin based library to create window de
 kde-plasma/kdeplasma-addons 5.17.5 5.18.4.1: Extra Plasma applets and engines
 kde-plasma/kgamma 5.17.5 5.18.4.1: Screen gamma values kcontrol module
 kde-plasma/khotkeys 5.17.5 5.18.4.1: KDE Plasma workspace hotkey module
-kde-plasma/kinfocenter 5.17.5 5.18.4.1: Utility providing information about the computer hardware
+kde-plasma/kinfocenter 5.17.5-r1 5.18.4.1-r1: Utility providing information about the computer hardware
 kde-plasma/kmenuedit 5.17.5 5.18.4.1: KDE Plasma menu editor
 kde-plasma/kscreen 5.17.5 5.18.4.1: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.17.5 5.18.4.1: Library and components for secure lock screen architecture
@@ -12132,7 +12132,7 @@ kde-plasma/ksshaskpass 5.17.5 5.18.4.1: KDE implementation of ssh-askpass with K
 kde-plasma/ksysguard 5.17.5 5.18.4.1: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.17.5 5.18.4.1: PAM module to not enter KWallet password again after login
 kde-plasma/kwayland-integration 5.17.5 5.18.4.1: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.17.5 5.18.4.1: Flexible, composited Window Manager for windowing systems on Linux
+kde-plasma/kwin 5.17.5-r1 5.18.4.1-r1: Flexible, composited Window Manager for windowing systems on Linux
 kde-plasma/kwrited 5.17.5 5.18.4.1: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.17.5 5.18.4.1: Plasma screen management library
 kde-plasma/libksysguard 5.17.5 5.18.4.1: Task management and system monitoring library
@@ -12140,7 +12140,7 @@ kde-plasma/libkworkspace 5.17.5 5.18.4.1: Workspace library to interact with the
 kde-plasma/milou 5.17.5 5.18.4.1: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.17.5 5.18.4.1: Oxygen visual style for the Plasma desktop
 kde-plasma/plasma-browser-integration 5.17.5 5.18.4.1: Integrate Chrome/Firefox better into Plasma through browser extensions
-kde-plasma/plasma-desktop 5.17.5-r1 5.18.4.1: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.17.5-r1 5.18.4.1-r1: KDE Plasma desktop
 kde-plasma/plasma-integration 5.17.5-r1 5.18.4.1: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.17.5 5.18.4.1: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.17.5 5.18.4.1: KDE Plasma applet for NetworkManager
@@ -12556,7 +12556,7 @@ media-gfx/curaengine 3.4.1 3.6.0 4.2.0 4.3.0: A 3D model slicing engine for 3D p
 media-gfx/darktable 2.6.2 2.6.3 3.0.0 3.0.1 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
-media-gfx/digikam 6.4.0: Digital photo management application
+media-gfx/digikam 6.4.0-r1: Digital photo management application
 media-gfx/displaycal 3.8.8.1-r1 3.8.9.3: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dmtx-utils 0.7.5 0.7.6: Tools for reading and writing Data Matrix barcodes
@@ -12650,7 +12650,7 @@ media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion too
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.6.1: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.2.8.2-r2 4.2.9: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.2.8.2-r3 4.2.9: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
@@ -12675,7 +12675,7 @@ media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
 media-gfx/opencsg 1.4.2 1.4.2-r1: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 2.3.0: OpenEXR Viewers
 media-gfx/openmesh 7.1: A generic data structure to represent and manipulate polygonal meshes
-media-gfx/openscad 2015.03_p3-r1 2019.05-r1 9999: The Programmers Solid 3D CAD Modeller
+media-gfx/openscad 2015.03_p3-r2 2019.05-r2 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.1.2 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: An open-source full-featured 2D animation creation software
 media-gfx/openvdb 4.0.2-r3 5.2.0-r1: Libs for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.7 0.7.7-r1: Compress PNG files without affecting image quality
@@ -13553,7 +13553,7 @@ media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 2.0.7 2.1.0: Software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
-media-sound/fmit 1.0.15-r2: Free Music Instrument Tuner
+media-sound/fmit 1.0.15-r3: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
 media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
 media-sound/frescobaldi 3.1.1: A LilyPond sheet music text editor
@@ -13718,7 +13718,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.6.0 0.6.1 0.6.2 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.3.2 1.3.5 1.3.6 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.3.2-r1 1.3.5-r1 1.3.6-r1 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.0 0.6.1 0.6.2 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
@@ -16394,7 +16394,7 @@ sci-visualization/labplot 2.7.0 9999: Scientific data analysis and visualisation
 sci-visualization/nonolith-connect 1.1: CEE (Control - Experiment - Explore) analog multitool
 sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
-sci-visualization/paraview 5.8.0 5.8.0-r1: Powerful scientific data visualization application
+sci-visualization/paraview 5.8.0-r1 5.8.0-r2: Powerful scientific data visualization application
 sci-visualization/pythonprop 0.29: Scripts to prepare and plot VOACAP propagation predictions
 sci-visualization/pyxplot 0.9.2-r3: Gnuplot like graphing program publication-quality figures
 sci-visualization/quickplot 0.10.6 0.10.8 1.0.1_rc: A fast interactive 2D plotter
