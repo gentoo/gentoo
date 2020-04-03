@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
+# Lots of deps for little gain
+dev-python/joblib doc
+
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
