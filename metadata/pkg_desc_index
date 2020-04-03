@@ -2367,7 +2367,7 @@ app-office/scribus 1.5.5 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.21.1: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
-app-office/texmaker 5.0.3: A nice LaTeX-IDE
+app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
 app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2.12.14 2.12.16_beta2-r1 2.12.16 2.12.18: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.8.2 0.9 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.3.3.860: Project collaboration and tracking software for upwork.com
