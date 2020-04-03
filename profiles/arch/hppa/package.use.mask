@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Matt Turner <mattst88@gentoo.org> (2020-04-03)
+# app-emacs/wanderlust is not keyworded
+app-emacs/elscreen wanderlust
+
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
