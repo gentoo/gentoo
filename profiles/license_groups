@@ -44,7 +44,7 @@ FSF-APPROVED-OTHER Arphic CC-BY-2.0 CC-BY-2.5 CC-BY-3.0 CC-BY-4.0 CC-BY-SA-2.0 C
 # Misc licenses for free documents and other works (including fonts)
 # that follow the definition at https://freedomdefined.org/ but are NOT
 # listed in @FSF-APPROVED-OTHER
-MISC-FREE-DOCS BAEKMUK BitstreamVera CC-BY-SA-1.0 CC-PD CC-SA-1.0 LDP-1 LDP-1a man-pages man-pages-posix man-pages-posix-2013 MaxMind2 mplus-fonts myspell-en_CA-KevinAtkinson quake1-textures Texinfo-manual UbuntuFontLicense-1.0 Unicode_Fonts_for_Ancient_Scripts vlgothic wxWinFDL-3
+MISC-FREE-DOCS BAEKMUK BitstreamVera CC-BY-SA-1.0 CC-PD CC-SA-1.0 LDP-1 LDP-1a man-pages man-pages-posix man-pages-posix-2013 MaxMind2 mplus-fonts myspell-en_CA-KevinAtkinson quake1-textures Texinfo-manual UbuntuFontLicense-1.0 vlgothic wxWinFDL-3
 
 # Metaset for all free documents
 FREE-DOCUMENTS @FSF-APPROVED-OTHER @MISC-FREE-DOCS
