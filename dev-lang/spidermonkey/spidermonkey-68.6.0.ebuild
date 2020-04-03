@@ -28,7 +28,7 @@ fi
 
 # Patch version
 FIREFOX_PATCHSET="firefox-68.0-patches-12"
-SPIDERMONKEY_PATCHSET="${PN}-68.6.0-patches-02"
+SPIDERMONKEY_PATCHSET="${PN}-68.6.0-patches-03"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/firefox/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
