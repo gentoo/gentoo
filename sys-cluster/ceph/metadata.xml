@@ -23,13 +23,18 @@
     <flag name="spdk">Enable SPDK user-mode storage driver toolkit</flag>
     <flag name="fuse">Build fuse client</flag>
     <flag name="grafana">Install grafana dashboards</flag>
+    <flag name="kafka">Rados Gateway's pubsub support for Kafka push endpoint</flag>
     <flag name="lttng">Add support for LTTng</flag>
     <flag name="mgr">Build the ceph-mgr daemon</flag>
     <flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
     <flag name="numa">Use <pkg>sys-process/numactl</pkg> for numa support in rocksdb</flag>
+    <flag name="openssl">Use <pkg>dev-libs/openssl</pkg></flag>
+    <flag name="pmdk">Enable PMDK libraries</flag>
     <flag name="rabbitmq">Use rabbitmq-c to build rgw amqp push endpoint</flag>
     <flag name="radosgw">Add radosgw support</flag>
+    <flag name="rbd-rwl">Enable librbd persistent write back cache</flag>
     <flag name="system-boost">Use system <pkg>dev-libs/boost</pkg> instead of the bundled one</flag>
+    <flag name="uring">Build with support for <pkg>sys-libs/liburing</pkg></flag>
     <flag name="xfs">Add xfs support</flag>
     <flag name="zfs">Add zfs support</flag>
   </use>

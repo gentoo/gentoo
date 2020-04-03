@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 CMAKE_MAKEFILE_GENERATOR=emake
 
 DISTUTILS_OPTIONAL=1
@@ -17,20 +17,20 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="https://ceph.com/"
 
-LICENSE="LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ BSD Boost-1.0 MIT public-domain"
+LICENSE="Apache-2.0 LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ LGPL-2.1 LGPL-3 GPL-3 BSD Boost-1.0 MIT public-domain"
 SLOT="0"
 
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
-IUSE="babeltrace +cephfs custom-cflags dpdk fuse grafana jemalloc kerberos ldap"
-IUSE+=" libressl lttng +mgr numa rabbitmq +radosgw +ssl spdk static-libs"
-IUSE+=" system-boost systemd +tcmalloc test xfs zfs"
+IUSE="babeltrace +cephfs custom-cflags dpdk fuse grafana jemalloc kafka kerberos ldap
+	libressl lttng +mgr numa +openssl pmdk rabbitmq +radosgw rbd-rwl +ssl spdk static-libs
+	system-boost systemd +tcmalloc test uring xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
 COMMON_DEPEND="
@@ -48,10 +48,16 @@ COMMON_DEPEND="
 	dev-libs/libaio:=[static-libs?]
 	dev-libs/libnl:3=[static-libs?]
 	dev-libs/libxml2:=[static-libs?]
+	dev-libs/xmlsec:=[!openssl?,!libressl?,static-libs?]
+	dev-libs/yaml-cpp:=[static-libs?]
 	dev-libs/nss:=
+	dev-libs/protobuf:=[static-libs?]
+	net-dns/c-ares:=[static-libs?]
+	net-libs/gnutls:=[static-libs?]
 	sys-auth/oath-toolkit:=
 	sys-apps/coreutils
 	sys-apps/grep
+	sys-apps/hwloc:=[static-libs?]
 	sys-apps/keyutils:=[static-libs?]
 	sys-apps/util-linux:=[static-libs?]
 	sys-apps/sed
@@ -59,21 +65,20 @@ COMMON_DEPEND="
 	sys-libs/libcap-ng:=[static-libs?]
 	sys-libs/ncurses:0=[static-libs?]
 	sys-libs/zlib:=[static-libs?]
+	sys-process/numactl:=[static-libs?]
+	x11-libs/libpciaccess:=[static-libs?]
 	babeltrace? ( dev-util/babeltrace )
+	fuse? ( sys-fs/fuse:0=[static-libs?] )
+	jemalloc? ( dev-libs/jemalloc:=[static-libs?] )
+	!jemalloc? ( >=dev-util/google-perftools-2.6.1:=[static-libs?] )
+	kafka? ( dev-libs/librdkafka:=[static-libs?] )
+	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap:=[static-libs?] )
 	lttng? ( dev-util/lttng-ust:= )
-	fuse? ( sys-fs/fuse:0=[static-libs?] )
-	kerberos? ( virtual/krb5 )
 	rabbitmq? ( net-libs/rabbitmq-c:=[static-libs?] )
-	ssl? (
-		!libressl? ( dev-libs/openssl:=[static-libs?] )
-		libressl? ( dev-libs/libressl:=[static-libs?] )
-	)
-	xfs? ( sys-fs/xfsprogs:=[static-libs(+)?] )
-	zfs? ( sys-fs/zfs:=[static-libs?] )
 	radosgw? (
 		dev-libs/expat:=[static-libs?]
-		!libressl? (
+		openssl? (
 			dev-libs/openssl:=[static-libs?]
 			net-misc/curl:=[curl_ssl_openssl,static-libs?]
 		)
@@ -82,9 +87,14 @@ COMMON_DEPEND="
 			net-misc/curl:=[curl_ssl_libressl,static-libs?]
 		)
 	)
+	ssl? (
+		openssl? ( dev-libs/openssl:=[static-libs?] )
+		libressl? ( dev-libs/libressl:=[static-libs?] )
+	)
 	system-boost? ( =dev-libs/boost-1.72*[threads,context,python,static-libs?,${PYTHON_USEDEP}] )
-	jemalloc? ( dev-libs/jemalloc:=[static-libs?] )
-	!jemalloc? ( >=dev-util/google-perftools-2.6.1:=[static-libs?] )
+	uring? ( sys-libs/liburing:=[static-libs?] )
+	xfs? ( sys-fs/xfsprogs:=[static-libs(+)?] )
+	zfs? ( sys-fs/zfs:=[static-libs?] )
 	${PYTHON_DEPS}
 "
 BDEPEND="
@@ -96,6 +106,7 @@ BDEPEND="
 	dev-python/sphinx
 	dev-util/cunit
 	dev-util/gperf
+	dev-util/ragel
 	dev-util/valgrind
 	sys-apps/coreutils
 	sys-apps/findutils
@@ -123,6 +134,7 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/awk
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/cherrypy[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/pecan[${PYTHON_USEDEP}]
@@ -131,19 +143,27 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	mgr? (
+		dev-python/jsonpatch[${PYTHON_USEDEP}]
 		dev-python/more-itertools[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pyjwt[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/routes[${PYTHON_USEDEP}]
+		sci-libs/scipy[${PYTHON_USEDEP}]
+		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	^^ ( openssl libressl )
+	kafka? ( radosgw )
+	rabbitmq? ( radosgw )
 	mgr? ( cephfs )
 	?? ( jemalloc tcmalloc )
 	rabbitmq? ( radosgw )
 "
+RESTRICT="!test? ( test )"
 
 # the tests need root access
 RESTRICT="test? ( userpriv )"
@@ -159,15 +179,12 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
 	"${FILESDIR}/ceph-13.2.0-cflags.patch"
-	"${FILESDIR}/ceph-14.2.0-mgr-python-version.patch"
-	"${FILESDIR}/ceph-14.2.5-no-virtualenvs.patch"
+	"${FILESDIR}/ceph-15.2.0-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
 	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
-	"${FILESDIR}/ceph-14.2.3-dpdk-compile-fix-1.patch"
-	"${FILESDIR}/ceph-14.2.4-python-executable.patch"
-	"${FILESDIR}/ceph-14.2.4-undefined-behaviour.patch"
+	"${FILESDIR}/ceph-15.2.0-rocksdb-cmake.patch"
 )
 
 check-reqs_export_vars() {
@@ -197,12 +214,11 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-14.2.8-boost-sonames.patch"
-
 		find "${S}" -name '*.cmake' -or -name 'CMakeLists.txt' -print0 \
-			| xargs --null sed \
+			| xargs --null sed -r \
 			-e 's|Boost::|Boost_|g' \
-			-e 's|Boost_boost|boost_system|g' -i || die
+			-e 's|Boost_|boost_|g' \
+			-e 's|[Bb]oost_boost|boost_system|g' -i || die
 	fi
 
 	sed -i -r "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
@@ -216,8 +232,9 @@ ceph_src_configure() {
 	local flag
 	local mycmakeargs=(
 		-DWITH_BABELTRACE=$(usex babeltrace)
+		-DWITH_BLUESTORE_PMEM=$(usex pmdk)
 		-DWITH_CEPHFS=$(usex cephfs)
-		-DWITH_CEPHFS_SHELL=$(if python_is_python3; then usex cephfs; else echo OFF; fi)
+		-DWITH_CEPHFS_SHELL=$(usex cephfs)
 		-DWITH_DPDK=$(usex dpdk)
 		-DWITH_DPDK=$(usex spdk)
 		-DWITH_FUSE=$(usex fuse)
@@ -225,30 +242,30 @@ ceph_src_configure() {
 		-DWITH_GSSAPI=$(usex kerberos)
 		-DWITH_GRAFANA=$(usex grafana)
 		-DWITH_MGR=$(usex mgr)
-		-DWITH_MGR_DASHBOARD_FRONTEND=NO
+		-DWITH_MGR_DASHBOARD_FRONTEND=OFF
 		-DWITH_NUMA=$(usex numa)
 		-DWITH_OPENLDAP=$(usex ldap)
-		-DMGR_PYTHON_VERSION=$(if python_is_python3; then echo 3; else echo 2; fi)
-		-DWITH_PYTHON3=$(if python_is_python3; then echo "ON"; else echo "OFF"; fi)
-		-DWITH_PYTHON2=$(if python_is_python3; then echo "OFF"; else echo "ON"; fi)
+		-DWITH_PYTHON3=3
 		-DWITH_RADOSGW=$(usex radosgw)
 		-DWITH_RADOSGW_AMQP_ENDPOINT=$(usex rabbitmq)
+		-DWITH_RADOSGW_KAFKA_ENDPOINT=$(usex kafka)
+		-DWITH_RBD_RWL=$(usex rbd-rwl)
 		-DWITH_SSL=$(usex ssl)
 		-DWITH_SYSTEMD=$(usex systemd)
 		-DWITH_TESTS=$(usex test)
+		-DWITH_LIBURING=$(usex uring)
 		-DWITH_XFS=$(usex xfs)
 		-DWITH_ZFS=$(usex zfs)
 		-DENABLE_SHARED=$(usex static-libs '' 'ON' 'OFF')
 		-DALLOCATOR=$(usex tcmalloc 'tcmalloc' "$(usex jemalloc 'jemalloc' 'libc')")
 		-DWITH_SYSTEM_BOOST=$(usex system-boost)
 		-DBOOST_J=$(makeopts_jobs)
-		-DWITH_RDMA=no
-		-DWITH_TBB=no
+		-DWITH_RDMA=OFF
+		-DWITH_TBB=OFF
 		-DSYSTEMD_UNITDIR=$(systemd_get_systemunitdir)
 		-DEPYTHON_VERSION="${EPYTHON#python}"
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PN}-${PVR}"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
-		#-Wno-dev
 	)
 	if use amd64 || use x86; then
 		for flag in ${CPU_FLAGS_X86[@]}; do
