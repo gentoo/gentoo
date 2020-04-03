@@ -6,23 +6,20 @@ EAPI=7
 MY_P=${PN}-src-${PV}
 inherit toolchain-funcs
 
-DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, glide64mk2 video plugin"
+DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, rice video plugin"
 HOMEPAGE="https://www.mupen64plus.org/"
 SRC_URI="https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
 
-# TODO: 3dfx licenses
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gles2 hires cpu_flags_x86_sse"
+IUSE="gles2-only cpu_flags_x86_sse"
 
-RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2=]
+RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2-only=]
 	media-libs/libpng:0=
 	media-libs/libsdl2:0=[video]
-	sys-libs/zlib:0=
 	virtual/opengl:0=
-	gles2? ( media-libs/libsdl2:0[gles] )
-	hires? ( dev-libs/boost:0= )"
+	gles2-only? ( media-libs/libsdl2:0[gles] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -69,13 +66,8 @@ src_compile() {
 		SDL_CFLAGS="$($(tc-getPKG_CONFIG) --cflags sdl2)"
 		SDL_LDLIBS="$($(tc-getPKG_CONFIG) --libs sdl2)"
 
-		NOSSE=$(usex cpu_flags_x86_sse 0 1)
-		HIRES=$(usex hires 1 0)
-		USE_FRAMESKIPPER=1
-		USE_GLES=$(usex gles2 1 0)
-		# use bundled lib
-		# https://bugs.gentoo.org/654470
-		TXCDXTN=0
+		NO_ASM=$(usex cpu_flags_x86_sse 0 1)
+		USE_GLES=$(usex gles2-only 1 0)
 	)
 
 	use amd64 && MAKEARGS+=( HOST_CPU=x86_64 )
@@ -86,5 +78,5 @@ src_compile() {
 
 src_install() {
 	emake "${MAKEARGS[@]}" DESTDIR="${D}" install
-	dodoc RELEASE
+	dodoc README RELEASE
 }
