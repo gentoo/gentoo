@@ -255,7 +255,7 @@ src_configure() {
 			-DVTK_USE_QVTK_QTOPENGL=ON
 			-DQT_WRAP_CPP=ON
 			-DQT_WRAP_UI=ON
-			-DVTK_INSTALL_QT_DIR="$(qt5_get_libdir)/qt5/plugins/designer"
+			-DVTK_INSTALL_QT_DIR="$(basename $(qt5_get_libdir))/qt5/plugins/designer"
 			-DDESIRED_QT_VERSION=5
 			-DVTK_QT_VERSION=5
 			-DQT_MOC_EXECUTABLE="$(qt5_get_bindir)/moc"
