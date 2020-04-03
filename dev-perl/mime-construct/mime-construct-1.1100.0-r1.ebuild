@@ -11,7 +11,7 @@ DESCRIPTION="construct and optionally mail MIME messages"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ~sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="

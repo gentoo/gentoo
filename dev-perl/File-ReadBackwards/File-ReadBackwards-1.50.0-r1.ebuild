@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The Perl File-ReadBackwards Module"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ~ppc ppc64 sparc x86 ~x86-solaris"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~ppc ppc64 sparc x86 ~x86-solaris"
 IUSE=""
 
 SRC_TEST="do"

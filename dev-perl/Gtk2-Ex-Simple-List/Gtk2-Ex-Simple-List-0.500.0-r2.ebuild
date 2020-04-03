@@ -13,7 +13,7 @@ DESCRIPTION="A simple interface to Gtk2's complex MVC list widget"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )" # LGPL-2.1+
 SLOT="0"
-KEYWORDS="amd64 ia64 sparc x86"
+KEYWORDS="amd64 ~ia64 sparc x86"
 IUSE=""
 
 RDEPEND="

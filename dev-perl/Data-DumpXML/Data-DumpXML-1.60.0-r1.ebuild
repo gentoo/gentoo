@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Dump arbitrary data structures as XML"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~sparc-solaris"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~sparc-solaris"
 IUSE=""
 
 RDEPEND=">=virtual/perl-MIME-Base64-2

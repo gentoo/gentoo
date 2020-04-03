@@ -13,7 +13,7 @@ DESCRIPTION="Perl module for Tk-TableMatrix"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc sparc x86"
 IUSE=""
 
 DEPEND="dev-perl/Tk"

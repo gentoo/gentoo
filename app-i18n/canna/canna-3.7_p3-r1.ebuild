@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge.jp/canna/9565/${MY_P}.tar.bz2"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="x11-misc/gccmakedep

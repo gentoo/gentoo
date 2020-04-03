@@ -11,7 +11,7 @@ SRC_URI="https://archives.eyrie.org/software/ARCHIVE/pam-krb5/pam-krb5-${PV}.tar
 
 LICENSE="|| ( BSD-2 GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE=""
 
 DEPEND="

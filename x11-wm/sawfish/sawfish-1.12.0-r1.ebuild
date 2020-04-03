@@ -12,7 +12,7 @@ SRC_URI="https://download.tuxfamily.org/sawfish/${MY_P}.tar.xz"
 
 LICENSE="GPL-2 Artistic-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 sparc x86"
 IUSE="emacs kde nls xinerama"
 
 RDEPEND="

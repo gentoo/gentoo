@@ -9,7 +9,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc sparc x86"
+KEYWORDS="amd64 ~ia64 ppc sparc x86"
 IUSE="debug png"
 
 RDEPEND="x11-libs/libX11
