@@ -23,7 +23,7 @@ BDEPEND=">=dev-util/cmake-3.14.3"
 COMMON_DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5[gles2-only=]
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5
@@ -42,10 +42,9 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	x11-libs/libX11
+	gles2-only? ( media-libs/mesa[gles2] )
 	ieee1394? ( sys-libs/libraw1394 )
 	opengl? (
-		>=dev-qt/qtgui-${QTMIN}:5[gles2-only=]
-		gles2-only? ( media-libs/mesa[gles2,X(+)] )
 		!gles2-only? ( media-libs/glu )
 	)
 	pci? ( sys-apps/pciutils )
@@ -70,7 +69,7 @@ src_configure() {
 		$(cmake_use_find_package wayland KF5Wayland)
 	)
 
-	if has_version "dev-qt/qtgui[gles2]"; then
+	if has_version "dev-qt/qtgui[gles2-only]"; then
 		mycmakeargs+=( $(cmake_use_find_package gles2 OpenGLES) )
 	else
 		mycmakeargs+=( $(cmake_use_find_package opengl OpenGL) )
