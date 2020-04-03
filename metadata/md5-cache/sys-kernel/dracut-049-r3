@@ -5,11 +5,11 @@ DESCRIPTION=Generic initramfs generation tool
 EAPI=7
 HOMEPAGE=https://dracut.wiki.kernel.org
 IUSE=selinux kernel_linux
-KEYWORDS=~alpha amd64 arm arm64 ia64 ~mips ppc ppc64 ~sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=app-arch/cpio >=app-shells/bash-4.0:0 sys-apps/coreutils[xattr(-)] >=sys-apps/kmod-23[tools] || ( >=sys-apps/sysvinit-2.87-r3 sys-apps/openrc[sysv-utils,selinux?] sys-apps/systemd[sysv-utils] ) >=sys-apps/util-linux-2.21 virtual/pkgconfig virtual/udev elibc_musl? ( sys-libs/fts-standalone ) selinux? ( sec-policy/selinux-dracut sys-libs/libselinux sys-libs/libsepol )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/dracutdevs/dracut/archive/049.tar.gz -> dracut-049.tar.gz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=f6830403f10136914e2c79235b3f7323
+_md5_=cfe4db33b1c46747402217b3368ef293

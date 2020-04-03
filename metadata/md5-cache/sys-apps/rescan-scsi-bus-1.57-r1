@@ -2,9 +2,9 @@ DEFINED_PHASES=install unpack
 DESCRIPTION=Script to rescan the SCSI bus without rebooting
 EAPI=6
 HOMEPAGE=http://www.garloff.de/kurt/linux/
-KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/sg3_utils-1.24 <sys-apps/sg3_utils-1.44 app-admin/killproc virtual/modutils app-shells/bash
 SLOT=0
 SRC_URI=http://www.garloff.de/kurt/linux/rescan-scsi-bus.sh-1.57
-_md5_=d374736c3c8c7edbb02460e40e19b330
+_md5_=b61bc12d76ba2c871fb4fbdcd61ae1f3

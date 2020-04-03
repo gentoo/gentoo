@@ -4,11 +4,11 @@ DESCRIPTION=Create and manipulate mime messages with PHP
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Mail_Mime
 IUSE=test
-KEYWORDS=~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~s390 sparc x86
 LICENSE=BSD
 RDEPEND=>=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Mail_Mime-1.10.2.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=8911f80bf9093c5dac2d57c9cdb99240
+_md5_=0216e69ffa4815918725626064607c1f

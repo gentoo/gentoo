@@ -4,11 +4,11 @@ DESCRIPTION=Perl bindings for EggTrayManager
 EAPI=6
 HOMEPAGE=http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-TrayManager
 IUSE=examples test
-KEYWORDS=amd64 ia64 x86
+KEYWORDS=amd64 ~ia64 x86
 LICENSE=LGPL-2
 RDEPEND=x11-libs/gtk+:2 >=dev-perl/glib-perl-1.012 >=dev-perl/Gtk2-1.012 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BO/BORUP/Gtk2-TrayManager-0.05.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	virtualx	e49dbce7ac14426e1155497476915307
-_md5_=9d83981666a39c2d6e6df59ec9b7e9e3
+_md5_=28a8b20d56c0ebc994c416ab893a3c3d

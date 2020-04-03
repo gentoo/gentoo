@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Emacs mode for OCaml
 EAPI=7
 HOMEPAGE=https://ocaml.org/
-KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/ocaml/ocaml/archive/4.05.0.tar.gz -> ocaml-4.05.0.tar.gz
 _eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
-_md5_=15222598b7dfeec4ee84d72c293c7fa1
+_md5_=4176d28463bfdc51ab40e7acec7d8371

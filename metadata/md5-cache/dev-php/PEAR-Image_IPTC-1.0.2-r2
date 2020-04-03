@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=This package provides a mechanism for modifying IPTC header information
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Image_IPTC
-KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=PHP-2.02
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Image_IPTC-1.0.2.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=be7b7ba88b6e11413e12cd9ea1b61ad6
+_md5_=8faa48d46f8ea9d994927e4fce59c74d

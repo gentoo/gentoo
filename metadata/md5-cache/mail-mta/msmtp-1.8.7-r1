@@ -5,11 +5,11 @@ DESCRIPTION=An SMTP client and SMTP plugin for mail user agents such as Mutt
 EAPI=7
 HOMEPAGE=https://marlam.de/msmtp/
 IUSE=daemon doc gnome-keyring idn +mta nls sasl ssl vim-syntax +filecaps
-KEYWORDS=~alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-3
 RDEPEND=gnome-keyring? ( app-crypt/libsecret ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( net-libs/gnutls[idn?] ) !ssl? ( idn? ( net-dns/libidn2:= ) ) net-mail/mailbase daemon? ( acct-group/msmtpd acct-user/msmtpd ) mta? ( !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] )
 REQUIRED_USE=daemon? ( filecaps )
 SLOT=0
 SRC_URI=https://marlam.de/msmtp/releases/msmtp-1.8.7.tar.xz
 _eclasses_=fcaps	ec29518af791bd4f819e5d42f0f4c11f	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=1b9f3551becd1a724969e140263b737b
+_md5_=daefa4f45a1c8cd3518a1c174f06c6e2

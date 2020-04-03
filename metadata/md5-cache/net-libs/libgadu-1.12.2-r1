@@ -5,11 +5,11 @@ DESCRIPTION=Client-side library for the Gadu-Gadu protocol
 EAPI=7
 HOMEPAGE=https://libgadu.net/
 IUSE=doc ssl test threads
-KEYWORDS=amd64 arm arm64 ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/protobuf-c:= sys-libs/zlib ssl? ( net-libs/gnutls:= )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/wojtekka/libgadu/releases/download/1.12.2/libgadu-1.12.2.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=fa6277c947c07d6e89db3ce4a5eecc88
+_md5_=61f7633619c402e3717f36faf2e61563

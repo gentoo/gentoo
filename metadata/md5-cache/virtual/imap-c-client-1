@@ -2,7 +2,7 @@ DEFINED_PHASES=-
 DESCRIPTION=Virtual for IMAP c-client
 EAPI=5
 IUSE=ssl
-KEYWORDS=~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sparc x86
 RDEPEND=|| ( net-libs/c-client[ssl=] net-mail/uw-imap[ssl=] )
 SLOT=0
-_md5_=42d4be731b525dbbe1f3afb6a93a8c83
+_md5_=f691607d195d81aec3edcc801d0516e3

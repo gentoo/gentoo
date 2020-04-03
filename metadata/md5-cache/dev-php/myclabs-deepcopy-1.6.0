@@ -2,9 +2,9 @@ DEFINED_PHASES=install
 DESCRIPTION=Create deep copies (clones) of your objects
 EAPI=6
 HOMEPAGE=https://github.com/myclabs/DeepCopy
-KEYWORDS=~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~s390 sparc x86
 LICENSE=MIT
 RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-5.6:*
 SLOT=0
 SRC_URI=https://github.com/myclabs/DeepCopy/archive/1.6.0.tar.gz -> myclabs-deepcopy-1.6.0.tar.gz
-_md5_=48fa173f01cddcee8ab6a4317813eb35
+_md5_=13a694514e6be3c7a84188cf35f1c420

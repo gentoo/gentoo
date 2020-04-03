@@ -3,10 +3,10 @@ DESCRIPTION=XSL Stylesheets for Docbook
 EAPI=5
 HOMEPAGE=https://github.com/docbook/wiki/wiki
 IUSE=ruby
-KEYWORDS=~alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 LICENSE=BSD
 RDEPEND=>=app-text/build-docbook-catalog-1.4 ruby? ( dev-lang/ruby )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook/docbook-xsl-ns-1.78.0.tar.bz2
-_md5_=02227cd75f4b8bf20755cc9d32c5039c
+_md5_=4bc3c456fb4f763dbfb93d7e79bd7e84

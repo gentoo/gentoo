@@ -3,11 +3,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=An Emacs major mode for editing Lua scripts
 EAPI=7
 HOMEPAGE=http://lua-users.org/wiki/LuaEditorSupport http://immerrr.github.io/lua-mode/
-KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/immerrr/lua-mode/archive/rel-20151025.tar.gz -> lua-mode-20151025.tar.gz
 _eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
-_md5_=bba1d33d987c92ecf0d09ddbc22fb88e
+_md5_=5dcc01fc2ba0b1cb67a8320960c9386c

@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Abstraction of various SASL mechanism responses
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Auth_SASL
-KEYWORDS=~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~s390 sparc x86
 LICENSE=BSD
 RDEPEND=>=dev-php/PEAR-PEAR-1.10.1 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Auth_SASL-1.1.0.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=c0c38d54aba19b9ffd0bc27b1233e8ca
+_md5_=086568155057a7bd963d496ad6c91197

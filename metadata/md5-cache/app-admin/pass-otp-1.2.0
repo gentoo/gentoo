@@ -4,11 +4,11 @@ DESCRIPTION=A pass extension for managing one-time-password (OTP) tokens.
 EAPI=7
 HOMEPAGE=https://github.com/tadfisher/pass-otp
 IUSE=qrcode test
-KEYWORDS=amd64 x86
+KEYWORDS=amd64 ~ppc64 x86
 LICENSE=GPL-3
 RDEPEND=>=app-admin/pass-1.7 sys-auth/oath-toolkit qrcode? ( media-gfx/qrencode )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tadfisher/pass-otp/releases/download/v1.2.0/pass-otp-1.2.0.tar.gz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a18f64075a8d5c6abeca3d6ab88c4f1e
+_md5_=51747febbd0196bc8c7e1a07850ec14c

@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual to select between different resolvconf providers
 EAPI=7
-KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86
 RDEPEND=|| ( net-dns/openresolv >=sys-apps/systemd-239-r1[resolvconf] )
 SLOT=0
-_md5_=7c3b51d5fa93ee3dacafef7c17e26ee5
+_md5_=a5a88fb4338f774aae812293039907de

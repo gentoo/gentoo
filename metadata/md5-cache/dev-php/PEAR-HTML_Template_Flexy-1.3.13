@@ -3,10 +3,10 @@ DESCRIPTION=An extremely powerful Tokenizer driven Template engine
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/HTML_Template_Flexy
 IUSE=minimal
-KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=PHP-2.02
 RDEPEND=!minimal? ( >=dev-php/PEAR-HTML_Javascript-1.1.0-r1 dev-php/PEAR-File_Gettext ) >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_Template_Flexy-1.3.13.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=3e72497c5c9b39985573c1d756db4bf4
+_md5_=0d4c91cc8a3599968a0f771261acd90b

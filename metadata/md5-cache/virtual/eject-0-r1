@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for the eject command
 EAPI=6
-KEYWORDS=~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
 RDEPEND=|| ( >=sys-apps/util-linux-2.22 sys-block/eject-bsd )
 SLOT=0
-_md5_=1784d0e1fc452d837602e15b506e0d04
+_md5_=f5fd61ee5974d9cea7defe6cd1a07575

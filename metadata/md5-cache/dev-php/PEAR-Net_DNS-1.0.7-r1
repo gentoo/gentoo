@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Resolver library used to communicate with a DNS server
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Net_DNS
-KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=PHP-3.01 || ( LGPL-2.1 LGPL-3 )
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Net_DNS-1.0.7.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=dc43f3cb30ff658963feec3547fb1d14
+_md5_=14e54c7cfe6d04b662d6bc69882eb757

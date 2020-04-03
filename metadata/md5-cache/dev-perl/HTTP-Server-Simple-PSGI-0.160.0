@@ -3,10 +3,10 @@ DEPEND=>=dev-perl/HTTP-Server-Simple-0.420.0 >=virtual/perl-ExtUtils-MakeMaker-6
 DESCRIPTION=PSGI handler for HTTP::Server::Simple
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/HTTP-Server-Simple-PSGI
-KEYWORDS=~alpha amd64 ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/HTTP-Server-Simple-0.420.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MIYAGAWA/HTTP-Server-Simple-PSGI-0.16.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=4e41dc8ecd73a1edecdf0993f71bfc16
+_md5_=306e055b5b425fc20a06044e474e030f

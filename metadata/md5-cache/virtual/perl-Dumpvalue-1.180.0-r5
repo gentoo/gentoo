@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Dumpvalue
 EAPI=6
-KEYWORDS=~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~x64-cygwin
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~x64-cygwin
 RDEPEND=|| ( =dev-lang/perl-5.30* ~perl-core/Dumpvalue-1.180.0 ) dev-lang/perl:= !<perl-core/Dumpvalue-1.180.0 !>perl-core/Dumpvalue-1.180.0-r999
 SLOT=0
-_md5_=af9cefa23351027a4393c2696532ae29
+_md5_=03dade588e7a2f859868ff07ab72d102

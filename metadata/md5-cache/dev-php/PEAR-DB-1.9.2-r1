@@ -4,11 +4,11 @@ DESCRIPTION=Database abstraction layer for PHP
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/DB
 IUSE=test
-KEYWORDS=~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~s390 sparc x86
 LICENSE=PHP-3
 RDEPEND=>=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/DB-1.9.2.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=0195ae262c624e0976f2db33df086316
+_md5_=a826bdc1e900739bea5841da2593e165

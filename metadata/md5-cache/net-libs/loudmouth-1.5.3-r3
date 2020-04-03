@@ -4,10 +4,10 @@ DESCRIPTION=Lightweight C Jabber library
 EAPI=7
 HOMEPAGE=https://mcabber.com
 IUSE=asyncns ssl openssl static-libs test
-KEYWORDS=~alpha amd64 arm ia64 ppc ppc64 sparc x86 ~ppc-macos
+KEYWORDS=~alpha amd64 arm ~ia64 ppc ppc64 sparc x86 ~ppc-macos
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.16:2 net-dns/libidn:= ssl? ( !openssl? ( >=net-libs/gnutls-1.4.0:0= ) openssl? ( dev-libs/openssl:0= ) ) asyncns? ( >=net-libs/libasyncns-0.3 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://mcabber.com/files/loudmouth/loudmouth-1.5.3.tar.bz2
-_md5_=49b025b99e4cbb352f26be2b5540c544
+_md5_=3adcb0571ef42b076d9140f3828f317d
