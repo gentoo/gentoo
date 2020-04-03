@@ -1564,7 +1564,7 @@ app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs t
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/aranym 1.1.0: Atari Running on Any Machine, VM running Atari ST/TT/Falcon OS and TOS/GEM apps
 app-emulation/bochs 2.6.9 2.6.10 9999: LGPL-ed pc emulator
-app-emulation/buildah 1.14.5: A tool that facilitates building OCI images
+app-emulation/buildah 1.14.5 1.14.6: A tool that facilitates building OCI images
 app-emulation/cadvisor 0.34.0 0.35.0 0.36.0: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 19.4 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
@@ -16076,6 +16076,7 @@ sci-libs/eccodes 2.16.0: A set of encoding/decoding APIs and tools for WMO GRIB,
 sci-libs/exodusii 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fcl 0.5.0 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
+sci-libs/fflas-ffpack 2.4.3: Library for dense linear algebra over word-size finite fields
 sci-libs/fftw 2.1.5-r9 3.3.6_p2 3.3.8 3.3.8-r1 9999: Fast C library for the Discrete Fourier Transform
 sci-libs/flann 1.9.1-r2 9999: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/fplll 4.0.4 5.3.2: Implementations of the floating-point LLL reduction algorithm
