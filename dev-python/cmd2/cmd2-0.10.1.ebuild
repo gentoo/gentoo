@@ -23,6 +23,7 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests pytest
