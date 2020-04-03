@@ -1,0 +1,28 @@
+From 6e6402caa7962a9c9f7c5327f3c802545824f7f9 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 3 Apr 2020 10:37:56 -0400
+Subject: [PATCH] test.support.unlink: ignore PermissionError
+
+Resolves test errors when running in the Gentoo sandbox environment.
+
+Bug: https://bugs.gentoo.org/679628
+---
+ Lib/test/support/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Lib/test/support/__init__.py b/Lib/test/support/__init__.py
+index 1f792d8514d..a0772480eb4 100644
+--- a/Lib/test/support/__init__.py
++++ b/Lib/test/support/__init__.py
+@@ -488,7 +488,7 @@ else:
+ def unlink(filename):
+     try:
+         _unlink(filename)
+-    except (FileNotFoundError, NotADirectoryError):
++    except (FileNotFoundError, NotADirectoryError, PermissionError):
+         pass
+ 
+ def rmdir(dirname):
+-- 
+2.26.0
+
