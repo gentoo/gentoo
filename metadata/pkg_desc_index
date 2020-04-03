@@ -13944,7 +13944,7 @@ media-video/mpv 0.32.0-r1 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.8.6-r3 0.8.6-r4: Mark commercial breaks in VDR recordings
 media-video/nvidia-video-codec 7.0.1 7.1.9 8.0.14 8.2.16: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
-media-video/obs-studio 24.0.3 24.0.5 25.0.1 9999: Software for Recording and Streaming Live Video Content
+media-video/obs-studio 24.0.5 25.0.3 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 2.4.0-r1 2.4.4-r1 2.5.0: An award-winning free and open-source video editor
 media-video/orion 1.6.6 1.6.7: Cross-platform Twitch client
