@@ -6,7 +6,6 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<use>
-		<flag name="lz4">Enable support for lz4 compression</flag>
 		<flag name="otp">Enable support for one-time passwords</flag>
 	</use>
 </pkgmetadata>
