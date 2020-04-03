@@ -19,8 +19,7 @@ S="${WORKDIR}/${MY_PN}-${MY_PV}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE="examples"
 
 RDEPEND="
 	dev-python/wheel[${PYTHON_USEDEP}]
