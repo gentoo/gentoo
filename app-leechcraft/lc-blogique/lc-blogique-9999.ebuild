@@ -24,8 +24,9 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
+	dev-qt/qtsql:5[sqlite]
 	virtual/leechcraft-wysiwyg-editor
-	"
+"
 
 src_configure() {
 	local mycmakeargs=(
