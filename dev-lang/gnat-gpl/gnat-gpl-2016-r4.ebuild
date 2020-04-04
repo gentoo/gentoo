@@ -53,7 +53,7 @@ SRC_URI+="
 LICENSE+=" GPL-2 GPL-3"
 SLOT="${TOOLCHAIN_GCC_PV}"
 KEYWORDS="amd64 x86"
-IUSE="+bootstrap"
+IUSE="+ada +bootstrap"
 RESTRICT="!test? ( test )"
 
 RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
@@ -145,20 +145,9 @@ src_prepare() {
 src_configure() {
 	downgrade_arch_flags "$(gcc-version)"
 	toolchain_src_configure \
-		--enable-languages=ada \
-		--disable-libada \
 		CC=${GCC} \
 		GNATBIND=${GNATBIND} \
 		GNATMAKE=yes
-}
-
-src_compile() {
-	unset ADAFLAGS
-	toolchain_src_compile
-	gcc_do_make "-C gcc gnatlib-shared"
-	ln -s gcc ../build/prev-gcc || die
-	ln -s ${CHOST} ../build/prev-${CHOST} || die
-	gcc_do_make "-C gcc gnattools"
 }
 
 pkg_postinst() {
