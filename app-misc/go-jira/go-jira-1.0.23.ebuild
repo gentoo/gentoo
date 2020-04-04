@@ -107,7 +107,7 @@ go-module_set_globals
 SRC_URI="https://github.com/go-jira/jira/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD-2 BSD ISC MIT MIT-with-advertising"
 SLOT="0"
 KEYWORDS="~amd64"
 
