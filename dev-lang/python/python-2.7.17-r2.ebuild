@@ -88,7 +88,7 @@ src_prepare() {
 
 	local PATCHES=(
 		"${WORKDIR}/${PATCHSET}"
-		"${FILESDIR}/test.support.unlink-ignore-EPERM.patch"
+		"${FILESDIR}/test.support.unlink-ignore-EACCES.patch"
 	)
 
 	default
