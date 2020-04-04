@@ -11594,7 +11594,7 @@ gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome package
 gnome-base/gnome-control-center 3.30.3-r1 3.32.2 3.34.4 3.34.5: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.30.2 3.32.2 3.34.4: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.32.2 3.34.4: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 2.32.1-r2 3.32.2 3.34.4: Library with common API for various GNOME modules
+gnome-base/gnome-desktop 2.32.1-r2 3.32.2 3.34.4 3.34.5: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.32.2 3.34.4: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.32.0 3.34.2: GNOME Flashback session
 gnome-base/gnome-keyring 3.31.91-r1 3.34.0: Password and keyring managing daemon
@@ -11634,7 +11634,7 @@ gnome-extra/eiciel 0.9.12.1-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.32.5 3.34.4: Evolution groupware backend
 gnome-extra/evolution-ews 3.32.2 3.34.4: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
-gnome-extra/gnome-boxes 3.30.3 3.32.2: Simple GNOME 3 application to access remote or virtual systems
+gnome-extra/gnome-boxes 3.30.3 3.32.2 3.34.4: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.32.2 3.34.1: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.32.2 3.34.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.32.1: Unicode character map viewer and library
@@ -15931,7 +15931,7 @@ sci-geosciences/congen 1.6.2-r1: Calculate speeds, equilibrium arguments, node f
 sci-geosciences/dcw-gmt 1.1.4: Digital Chart of the World for GMT 5 or later
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/gdal-grass 2.1.3: GDAL plugin to access GRASS data
-sci-geosciences/geocode-glib 3.26.1: GLib helper library for geocoding services
+sci-geosciences/geocode-glib 3.26.1 3.26.2: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.18-r1 5.4.4: Powerful map generator
 sci-geosciences/gnome-maps 3.34.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes converter
