@@ -128,6 +128,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-5.2.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-6.0.0-qemu-end-the-agent-job-in-qemuDomainSetTimeAgent.patch
 )
 
 pkg_setup() {
