@@ -4741,7 +4741,7 @@ dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance program
 dev-lang/janet 1.7.0: A dynamic Lisp dialect and bytecode vm
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
 dev-lang/jsonnet 0.15.0: A data templating language for app and tool developers
-dev-lang/julia 1.2.0 1.3.0 1.4.0: High-performance programming language for technical computing
+dev-lang/julia 1.2.0 1.3.0 1.4.0-r1: High-performance programming language for technical computing
 dev-lang/julia-bin 1.2.0 1.3.0 1.4.0: High-performance programming language for technical computing
 dev-lang/jwasm 2.13: MASM-compatible TASM-similar assembler (fork of Wasm)
 dev-lang/lazarus 1.0.12 1.8.4-r2 2.0.2: Lazarus IDE is a feature rich visual programming environment emulating Delphi
@@ -10469,7 +10469,7 @@ dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 137 138: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 137 138 139: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
