@@ -4919,7 +4919,7 @@ dev-libs/hiredis 0.13.3 0.14.0 0.14.1: Minimalistic C client library for the Red
 dev-libs/hsa-ext-rocr 1.1.9.139 1.1.30100.0: Proprietary image-support library for Radeon Open Compute
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
-dev-libs/hyperscan 5.1.0 5.1.1 5.2.0 5.2.1: High-performance regular expression matching library
+dev-libs/hyperscan 5.2.1-r1: High-performance regular expression matching library
 dev-libs/hyphen 2.8.8-r1: ALTLinux hyphenation library
 dev-libs/icu 65.1-r1 66.1: International Components for Unicode
 dev-libs/icu-layoutex 65.1 66.1: External layout part of International Components for Unicode
@@ -18770,7 +18770,7 @@ x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and 
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2 3.34.2: The Gnome Terminal
 x11-terms/guake 3.3.2-r1 3.6.3-r1 3.7.0 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.15.1 0.16.0-r1 0.16.0-r2 0.16.0-r3 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty 0.15.1 0.16.0-r1 0.16.0-r2 0.16.0-r3 0.17.2 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
 x11-terms/kitty-terminfo 0.16.0: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
