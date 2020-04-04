@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-04-04)
+# py27-only vim plugins. Masked for removal in 30 days.
+app-vim/automatictexplugin
+app-vim/colorv
+app-vim/slimv
+app-vim/vimcalc
+app-vim/vimpress
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-02)
 # Introduced new privsep (chroot) feature. Masked for testing.
 >=net-misc/dhcpcd-9.0.0
