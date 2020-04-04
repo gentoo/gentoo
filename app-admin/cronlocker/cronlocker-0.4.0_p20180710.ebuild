@@ -10,7 +10,7 @@ DESCRIPTION="synchronize a cron job across multiple hosts using the consul lock 
 HOMEPAGE="https://github.com/Barzahlen/cronlocker"
 SRC_URI="https://github.com/Barzahlen/${PN}/archive/${HASH}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -21,6 +21,6 @@ src_compile() {
 
 src_install() {
 	pushd src/${EGO_PN}
-dobin cronlocker
-dodoc *.md package/changelog
+	dobin cronlocker
+	dodoc *.md package/changelog
 }
