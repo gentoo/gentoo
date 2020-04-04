@@ -43,7 +43,7 @@ EGO_VENDOR=(
 SRC_URI="https://github.com/go-jira/jira/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	$(go-module_vendor_uris)"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD-2 BSD ISC MIT MIT-with-advertising"
 SLOT="0"
 KEYWORDS="~amd64"
 
