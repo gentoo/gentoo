@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php[gd,hash(+),iconv,mysql,pdo,session,unicode,xml,zlib] transc
 SLOT=3.8.3
 SRC_URI=https://github.com/ampache/ampache/archive/3.8.3.tar.gz -> ampache-3.8.3.tar.gz
 _eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
-_md5_=90caecf9082a9d8fa68054d44e440e17
+_md5_=f28d31d16b21625c4cf7de01da0e122e
