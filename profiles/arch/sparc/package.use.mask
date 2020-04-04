@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
+# app-emacs/wanderlust is not keyworded
+app-emacs/elscreen wanderlust
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-02-20)
 # Mask as dev-lang/spidermonkey:0 does not work on sparc, bug #710204
 net-libs/libproxy spidermonkey
