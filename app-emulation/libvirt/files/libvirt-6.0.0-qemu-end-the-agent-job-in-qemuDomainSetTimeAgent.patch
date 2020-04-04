@@ -1,0 +1,39 @@
+From ba756e8d0928ac4ddb7decd1033de2121201d941 Mon Sep 17 00:00:00 2001
+Message-Id: <ba756e8d0928ac4ddb7decd1033de2121201d941.1585986243.git.mprivozn@redhat.com>
+From: =?UTF-8?q?J=C3=A1n=20Tomko?= <jtomko@redhat.com>
+Date: Mon, 20 Jan 2020 07:55:48 +0100
+Subject: [PATCH] qemu: end the agent job in qemuDomainSetTimeAgent
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This function grabs an agent job but ends a monitor job.
+End the agent job instead.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1792723
+
+Signed-off-by: Ján Tomko <jtomko@redhat.com>
+Reported-by: Dan Zheng <dzheng@redhat.com>
+Fixes: e005c95f56fee9ed780be7f8db103d690bd34cbd
+(cherry picked from commit d61f95cf6a6fbd564e104c168d325581acd9cd8d)
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ src/qemu/qemu_driver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/qemu/qemu_driver.c b/src/qemu/qemu_driver.c
+index d6b1e9f00c..48cd5b95d9 100644
+--- a/src/qemu/qemu_driver.c
++++ b/src/qemu/qemu_driver.c
+@@ -20376,7 +20376,7 @@ qemuDomainSetTimeAgent(virQEMUDriverPtr driver,
+     qemuDomainObjExitAgent(vm, agent);
+ 
+  endjob:
+-    qemuDomainObjEndJob(driver, vm);
++    qemuDomainObjEndAgentJob(vm);
+     return ret;
+ }
+ 
+-- 
+2.24.1
+
