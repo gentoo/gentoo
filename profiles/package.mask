@@ -541,7 +541,6 @@ dev-python/rackspace-monitoring
 dev-python/readlike
 dev-python/redis-py-cluster
 dev-python/regendoc
-dev-python/ropemode
 dev-python/schedule
 dev-python/schema
 dev-python/scp
