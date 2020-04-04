@@ -135,6 +135,8 @@ src_install() {
 	# Install configuration file
 	insinto /opt/cxoffice/etc
 	doins share/crossover/data/cxoffice.conf
+	dodir /etc/env.d
+	echo "CONFIG_PROTECT=/opt/cxoffice/etc/cxoffice.conf" >> "${ED}"/etc/env.d/30crossover-bin || die
 
 	# Konqueror in its infinite wisdom decides to try opening things for
 	# writing, which are sandbox violations. This breaks the install process if
