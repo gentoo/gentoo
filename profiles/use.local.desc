@@ -7489,6 +7489,7 @@ sci-libs/spqr:tbb - Enable multithreading with the Intel Threads Building Block 
 sci-libs/spr:root - Add sci-physics/root graphics and i/o support
 sci-libs/suitesparse:cuda - Enable nvidia cuda toolkit for speeding up computations
 sci-libs/suitesparse:metis - Enable the Partition module to cholmod using sci-libs/metis
+sci-libs/suitesparse:partition - Enable graph partitioning and graph-partition-based orderings through sci-libs/metis or sci-libs/parmetis
 sci-libs/suitesparse:tbb - Enable multithreading with the Intel Threads Building Block dev-cpp/tbb
 sci-libs/sundials:hypre - Build with sci-libs/hypre conditioners
 sci-libs/sundials:sparse - Enable support for sci-libs/klu sparse solver
