@@ -8663,7 +8663,7 @@ dev-python/pyudev 0.22.0: Python binding to libudev
 dev-python/pyusb 1.0.2: USB support for Python
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pywavelets 0.5.2-r1: Discrete Wavelet Transforms in Python
-dev-python/pywinrm 0.3.0: Windows Remote Management through Python
+dev-python/pywinrm 0.3.0 0.4.1: Windows Remote Management through Python
 dev-python/pyx 0.15: Python package for the generation of encapsulated PostScript figures
 dev-python/pyxattr 0.6.0-r1 0.6.1 0.6.1-r1 0.7.1: Python interface to xattr
 dev-python/pyxdg 0.26-r1: A Python module to deal with freedesktop.org specifications
@@ -8710,7 +8710,7 @@ dev-python/repoze-sphinx-autointerface 0.7.1-r1: Sphinx extension: auto-generate
 dev-python/repoze-who 2.2 2.2-r1: repoze.who is an identification and authentication framework for WSGI
 dev-python/requests 2.21.0-r1 2.22.0 2.23.0: HTTP library for human beings
 dev-python/requests-cache 0.4.12: Persistent cache for requests library
-dev-python/requests-credssp 1.0.2: HTTPS CredSSP authentication with the requests library
+dev-python/requests-credssp 1.0.2 1.1.1: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
 dev-python/requests-kerberos 0.12.0-r1: A Kerberos authentication handler for python-requests
 dev-python/requests-mock 1.5.2 1.7.0: Mock out responses from the requests package
