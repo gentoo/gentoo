@@ -1,9 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit perl-module
+
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/gentoo-perl/g-cpan.git"
 	inherit git-r3
@@ -43,7 +44,11 @@ DEPEND="${COMMONDEPEND}
 
 src_install() {
 	perl-module_src_install
-	diropts -m0775 -o portage -g portage
+	if ! use prefix; then
+		diropts -m0775 -o portage -g portage
+	else
+		diropts -m0775
+	fi
 	dodir "/var/tmp/g-cpan"
 	dodir "/var/log/g-cpan"
 	keepdir "/var/log/g-cpan"
