@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,6 +9,8 @@ DESCRIPTION="PHP-based tool for managing,updating and playing audio files via a 
 HOMEPAGE="http://www.ampache.org/"
 SRC_URI="https://github.com/ampache/ampache/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
+# Remove this and the SLOT line below if the code changes. Added for a dependency only change
+WEBAPP_MANUAL_SLOT="yes"
 SLOT="${PV}"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~ppc ~sparc x86"
