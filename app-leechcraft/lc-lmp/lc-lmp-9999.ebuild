@@ -16,7 +16,7 @@ DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtdeclarative:5[widgets]
 	dev-qt/qtnetwork:5
-	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-libs/gstreamer:1.0
@@ -26,8 +26,10 @@ DEPEND="
 	potorchu? ( media-libs/libprojectm:= )
 "
 RDEPEND="${DEPEND}
+	dev-qt/qtsql:5[sqlite]
 	graffiti? ( media-libs/flac )
-	mtp? ( ~app-leechcraft/lc-devmon-${PV} )"
+	mtp? ( ~app-leechcraft/lc-devmon-${PV} )
+"
 
 src_configure() {
 	local mycmakeargs=(
