@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit leechcraft
 
@@ -22,8 +22,9 @@ DEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/taglib
 	mpris? ( dev-qt/qtdbus:5 )
-	mtp? ( media-libs/libmtp )
-	potorchu? ( media-libs/libprojectm )"
+	mtp? ( media-libs/libmtp:= )
+	potorchu? ( media-libs/libprojectm:= )
+"
 RDEPEND="${DEPEND}
 	graffiti? ( media-libs/flac )
 	mtp? ( ~app-leechcraft/lc-devmon-${PV} )"
@@ -38,5 +39,5 @@ src_configure() {
 		-DENABLE_LMP_MTPSYNC=$(usex mtp)
 		-DENABLE_LMP_POTORCHU=$(usex potorchu)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
