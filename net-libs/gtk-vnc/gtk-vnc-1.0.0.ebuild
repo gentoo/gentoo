@@ -31,7 +31,8 @@ RDEPEND="
 "
 # Keymap databases code is generated with python3; configure picks up $PYTHON exported from python-any-r1_pkg_setup
 # perl for pod2man
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-lang/perl-5
 	dev-util/glib-utils
@@ -43,6 +44,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Few fixes from origin/master + optionality patches filed as https://gitlab.gnome.org/GNOME/gtk-vnc/merge_requests/6
 	"${WORKDIR}"/patches
+	"${FILESDIR}"/${PV}-honor-python-ver.patch
 )
 
 src_prepare() {
