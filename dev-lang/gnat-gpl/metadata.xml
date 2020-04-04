@@ -5,6 +5,7 @@
 		<email>ada@gentoo.org</email>
 	</maintainer>
 	<use>
+		<flag name="ada">Build the ADA language (GNAT) frontend</flag>
 		<flag name="awt">Useful only when building GCJ, this enables Abstract
 			Window Toolkit (AWT) peer support on top of GTK+</flag>
 		<flag name="bootstrap">Used to bootstrap gnat-gpl</flag>
