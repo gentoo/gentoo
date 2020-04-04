@@ -184,7 +184,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 6.5 &&
 		IUSE+=" graphite" TC_FEATURES+=(graphite)
 	tc_version_is_between 4.9 8 && IUSE+=" cilk"
-	tc_version_is_at_least 4.9 && IUSE+=" +vtv"
+	tc_version_is_at_least 4.9 && IUSE+=" ada +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit"
 	tc_version_is_between 5.0 9 && IUSE+=" mpx"
 	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
@@ -899,8 +899,7 @@ toolchain_src_configure() {
 	is_f77 && GCC_LANG+=",f77"
 	is_f95 && GCC_LANG+=",f95"
 
-	# We do NOT want 'ADA support' in here!
-	# is_ada && GCC_LANG+=",ada"
+	is_ada && GCC_LANG+=",ada"
 
 	confgcc+=( --enable-languages=${GCC_LANG} )
 
@@ -1258,6 +1257,10 @@ toolchain_src_configure() {
 				confgcc+=( --disable-libssp )
 			fi
 		fi
+	fi
+
+	if in_iuse ada ; then
+		confgcc+=( --disable-libada )
 	fi
 
 	if in_iuse cilk ; then
@@ -1653,6 +1656,11 @@ toolchain_src_compile() {
 	[[ ! -x /usr/bin/perl ]] \
 		&& find "${WORKDIR}"/build -name '*.[17]' -exec touch {} +
 
+	# To compile ada library standard files special compiler options are passed
+	# via ADAFLAGS in the Makefile.
+	# Unset ADAFLAGS as setting this override the options
+	unset ADAFLAGS
+
 	# Older gcc versions did not detect bash and re-exec itself, so force the
 	# use of bash.  Newer ones will auto-detect, but this is not harmful.
 	# This needs to be set for compile as well, as it's used in libtool
@@ -1720,6 +1728,17 @@ gcc_do_make() {
 		BOOT_CFLAGS="${BOOT_CFLAGS}" \
 		${GCC_MAKE_TARGET} \
 		|| die "emake failed with ${GCC_MAKE_TARGET}"
+
+	if is_ada; then
+		# Building standard ada library
+		emake -C gcc gnatlib-shared
+		# Without these links it is not getting the good compiler
+		# Need to check why
+		ln -s gcc ../build/prev-gcc || die
+		ln -s ${CHOST} ../build/prev-${CHOST} || die
+		# Building gnat toold
+		emake -C gcc gnattools
+	fi
 
 	if ! is_crosscompile && use_if_iuse cxx && use_if_iuse doc ; then
 		if type -p doxygen > /dev/null ; then
