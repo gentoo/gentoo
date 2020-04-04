@@ -32,10 +32,6 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-# Doesn't build executable needed for the test
-# https://github.com/fmang/oshu/issues/87
-RESTRICT="test"
-
 src_prepare() {
 	if use osu-skin; then
 		eapply "${FILESDIR}/oshu-2.0.0-use_unpacked_osu-skin.patch"
@@ -52,4 +48,8 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	cmake_build check
 }
