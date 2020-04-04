@@ -6,6 +6,7 @@
     <name>Gentoo Toolchain Project</name>
   </maintainer>
   <use>
+    <flag name="ada">Build the ADA language (GNAT) frontend</flag>
     <flag name="awt">Useful only when building GCJ, this enables Abstract Window Toolkit
       (AWT) peer support on top of GTK+</flag>
     <flag name="boundschecking">Add the bounds checking patch by Haj Ten Brugge,
