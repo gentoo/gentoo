@@ -16,7 +16,7 @@ inherit golang-build
 
 DESCRIPTION="A utility to convert markdown to man pages"
 HOMEPAGE="https://github.com/cpuguy83/go-md2man"
-LICENSE="MIT"
+LICENSE="BSD-2 MIT"
 SLOT="0"
 IUSE=""
 DEPEND="dev-go/blackfriday"
