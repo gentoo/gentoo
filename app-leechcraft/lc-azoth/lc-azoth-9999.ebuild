@@ -50,6 +50,7 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen[dot] )
 "
 RDEPEND="${COMMON_DEPEND}
+	dev-qt/qtsql:5[sqlite]
 	astrality? (
 		net-im/telepathy-mission-control
 		net-voip/telepathy-haze
