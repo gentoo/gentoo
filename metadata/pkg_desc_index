@@ -2655,7 +2655,7 @@ app-text/libspectre 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.6 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.10.3: WordPerfect Document import/export library
 app-text/libwpg 0.3.3: C++ library to read and parse graphics in WPG
-app-text/libwps 0.4.10: Microsoft Works file word processor format import filter library
+app-text/libwps 0.4.10 0.4.11: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.73-r1: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 30 30_p20190316: Graphical PDF viewer which aims to superficially resemble less(1)
@@ -10784,7 +10784,7 @@ dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository mana
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
 dev-vcs/pwclient 20141110122616: command line utility for interacting with patchwork repos
 dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0 1.13.0: Python command line interface to gitlab API
-dev-vcs/qgit 2.8 2.9: Qt GUI for git repositories
+dev-vcs/qgit 2.9: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
@@ -15205,7 +15205,7 @@ net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.3 1.12.7-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.13 2.18: An RSS/Atom feed reader for text terminals
-net-news/quiterss 0.18.12 0.19.3 9999: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.19.3 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
