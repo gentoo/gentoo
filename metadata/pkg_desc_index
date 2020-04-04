@@ -832,7 +832,7 @@ app-crypt/crackpkcs12 0.2.10: multithreaded program to crack PKCS#12 files
 app-crypt/debian-archive-keyring 2018.1 2019.1: GnuPG archive keys of the Debian archive
 app-crypt/dehydrated 0.6.5: a client for signing certificates with an ACME-server
 app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNG's
-app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6: Small RSA key management package, based on OpenSSL
+app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6 3.0.7: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.7.0 1.8.1 1.9.2: Tools for manipulating UEFI secure boot platforms
 app-crypt/eid-mw 4.4.1 4.4.19 4.4.23 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.5-r1: Entropy Key userspace daemon
@@ -10725,7 +10725,7 @@ dev-vcs/bzr 2.7.0 2.7.1_pre: Bazaar is a next generation distributed version con
 dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to git rebase
 dev-vcs/bzr-xmloutput 0.8.8-r3: Bazaar plugin providing an option to generate XML output for builtin commands
 dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
-dev-vcs/cli 0.5.5 0.6.1 0.6.2 9999: GitHub CLI
+dev-vcs/cli 0.5.5 0.6.1 0.6.2 0.6.4 9999: GitHub CLI
 dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0 1.4.1: The GNU Project's replacement for SCCS
@@ -13159,7 +13159,7 @@ media-libs/zita-alsa-pcmi 0.3.2: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 4.0.3: C++ library implementing a real-time convolution matrix
 media-libs/zita-resampler 1.6.2: C++ library for real-time resampling of audio signals
 media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
-media-libs/zxing-cpp 1.0.7 1.0.8: C++ Multi-format 1D/2D barcode image processing library
+media-libs/zxing-cpp 1.0.8: C++ Multi-format 1D/2D barcode image processing library
 media-plugins/alsa-plugins 1.2.1 1.2.2: ALSA extra plugins
 media-plugins/alsaequal 0.7.1: A real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
