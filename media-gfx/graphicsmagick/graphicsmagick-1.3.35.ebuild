@@ -19,7 +19,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
-IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg lcms lzma modules openmp
+IUSE="bzip2 +cxx debug fpx imagemagick jbig jpeg lcms lzma modules openmp
 	perl png postscript q16 q32 static-libs svg threads tiff truetype
 	webp wmf X zlib"
 
