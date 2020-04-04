@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-07">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2020-04-04</announced>
+  <revised count="1">2020-04-04</revised>
+  <bug>716098</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="rge">68.6.1</unaffected>
+      <unaffected range="rge">74.0.1</unaffected>
+      <vulnerable range="lt">74.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to view a specially crafted web
+      page, possibly resulting in the execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox ESR users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-68.6.1"
+    </code>
+    
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-74.0.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6819">CVE-2020-6819</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6820">CVE-2020-6820</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-11/">
+      MFSA-2020-11
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-04T10:59:17Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-04T11:03:31Z">whissi</metadata>
+</glsa>
