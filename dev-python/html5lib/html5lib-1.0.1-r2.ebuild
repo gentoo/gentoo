@@ -29,6 +29,8 @@ BDEPEND="${RDEPEND}
 RESTRICT+=" !test? ( test )"
 
 PATCHES=(
+	# fix deprecated import
+	"${FILESDIR}/html5lib-1.0.1-collections-abc.patch"
 	# https://github.com/html5lib/html5lib-python/pull/429
 	"${FILESDIR}/html5lib-python-1.0.1-support-pytest4.patch"
 )
