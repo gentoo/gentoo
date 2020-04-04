@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
 
-inherit toolchain-funcs python-any-r1
+inherit toolchain-funcs
 
 DESCRIPTION="DNS server designed to serve blacklist zones"
 HOMEPAGE="https://rbldnsd.io/"
@@ -13,23 +12,18 @@ SRC_URI="https://github.com/spamhaus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~sparc ~x86"
-IUSE="ipv6 test zlib"
-RESTRICT="!test? ( test )"
+IUSE="ipv6 zlib"
 
 RDEPEND="zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	acct-group/rbldns
 	acct-user/rbldns
-	test? (
-		${RDEPEND}
-		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/pydns:2[${PYTHON_USEDEP}]')
-	)"
+"
 
-PATCHES=(
-	"${FILESDIR}/rbldnsd-0.997a-robust-ipv6-test-support.patch"
-)
+# The test suite was dropped from the ebuild because it requires
+# python-2.7, and it will crash if you try to run it now.
+RESTRICT=test
 
 src_configure() {
 	# The ./configure file is handwritten and doesn't support a `make
@@ -48,12 +42,6 @@ src_compile() {
 		RANLIB="$(tc-getRANLIB)"
 }
 
-src_test() {
-	emake check \
-		CC="$(tc-getCC)" \
-		PYTHON="${PYTHON}"
-}
-
 src_install() {
 	einstalldocs
 	dosbin rbldnsd
@@ -62,8 +50,4 @@ src_install() {
 	newconfd "${FILESDIR}"/confd-0.997a rbldnsd
 	diropts -g rbldns -o rbldns -m 0750
 	keepdir /var/db/rbldnsd
-}
-
-python_check_deps() {
-	! use test || has_version "dev-python/pydns:2[${PYTHON_USEDEP}]"
 }
