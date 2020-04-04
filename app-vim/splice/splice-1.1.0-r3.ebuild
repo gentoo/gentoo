@@ -11,7 +11,7 @@ HOMEPAGE="https://docs.stevelosh.com/splice.vim/ https://www.vim.org/scripts/scr
 SRC_URI="https://bitbucket.org/sjl/${PN}.vim/get/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
