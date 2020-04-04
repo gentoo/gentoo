@@ -7,6 +7,10 @@ inherit go-module
 DESCRIPTION="GitHub CLI"
 HOMEPAGE="https://github.com/cli/cli"
 
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/cli/cli.git"
+else
 EGO_SUM=(
 	"cloud.google.com/go v0.26.0/go.mod"
 	"github.com/AlecAivazis/survey/v2 v2.0.7"
@@ -33,8 +37,8 @@ EGO_SUM=(
 	"github.com/briandowns/spinner v1.9.0"
 	"github.com/briandowns/spinner v1.9.0/go.mod"
 	"github.com/cespare/xxhash v1.1.0/go.mod"
-	"github.com/charmbracelet/glamour v0.1.1-0.20200304134224-7e5c90143acc"
-	"github.com/charmbracelet/glamour v0.1.1-0.20200304134224-7e5c90143acc/go.mod"
+	"github.com/charmbracelet/glamour v0.1.1-0.20200320173916-301d3bcf3058"
+	"github.com/charmbracelet/glamour v0.1.1-0.20200320173916-301d3bcf3058/go.mod"
 	"github.com/client9/misspell v0.3.4/go.mod"
 	"github.com/coreos/bbolt v1.3.2/go.mod"
 	"github.com/coreos/etcd v3.3.10+incompatible/go.mod"
@@ -68,6 +72,7 @@ EGO_SUM=(
 	"github.com/golang/groupcache v0.0.0-20190129154638-5b532d6fd5ef/go.mod"
 	"github.com/golang/mock v1.1.1/go.mod"
 	"github.com/golang/protobuf v1.2.0/go.mod"
+	"github.com/golang/protobuf v1.3.1"
 	"github.com/golang/protobuf v1.3.1/go.mod"
 	"github.com/google/btree v1.0.0/go.mod"
 	"github.com/google/go-cmp v0.2.0/go.mod"
@@ -155,6 +160,10 @@ EGO_SUM=(
 	"github.com/russross/blackfriday/v2 v2.0.1/go.mod"
 	"github.com/sergi/go-diff v1.0.0"
 	"github.com/sergi/go-diff v1.0.0/go.mod"
+	"github.com/shurcooL/githubv4 v0.0.0-20191127044304-8f68eb5628d0"
+	"github.com/shurcooL/githubv4 v0.0.0-20191127044304-8f68eb5628d0/go.mod"
+	"github.com/shurcooL/graphql v0.0.0-20181231061246-d48a9a75455f"
+	"github.com/shurcooL/graphql v0.0.0-20181231061246-d48a9a75455f/go.mod"
 	"github.com/shurcooL/sanitized_anchor_name v1.0.0"
 	"github.com/shurcooL/sanitized_anchor_name v1.0.0/go.mod"
 	"github.com/sirupsen/logrus v1.2.0/go.mod"
@@ -205,6 +214,7 @@ EGO_SUM=(
 	"golang.org/x/net v0.0.0-20190522155817-f3200d17e092/go.mod"
 	"golang.org/x/net v0.0.0-20200219183655-46282727080f"
 	"golang.org/x/net v0.0.0-20200219183655-46282727080f/go.mod"
+	"golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be"
 	"golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod"
 	"golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod"
 	"golang.org/x/sync v0.0.0-20181108010431-42b317875d0f/go.mod"
@@ -230,6 +240,7 @@ EGO_SUM=(
 	"golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod"
 	"golang.org/x/tools v0.0.0-20190114222345-bf090417da8b/go.mod"
 	"golang.org/x/tools v0.0.0-20190311212946-11955173bddd/go.mod"
+	"google.golang.org/appengine v1.1.0"
 	"google.golang.org/appengine v1.1.0/go.mod"
 	"google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8/go.mod"
 	"google.golang.org/grpc v1.19.0/go.mod"
@@ -250,13 +261,7 @@ EGO_SUM=(
 	"gopkg.in/yaml.v3 v3.0.0-20200121175148-a6ecf24a6d71/go.mod"
 	"honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099/go.mod"
 	)
-
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/cli/cli.git"
-	PROPERTIES="live"
-else
-	go-module_set_globals
+go-module_set_globals
 	SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz
 			${EGO_SUM_SRC_URI}"
 	KEYWORDS="~amd64"
