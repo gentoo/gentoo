@@ -1,0 +1,31 @@
+Title: K8s Moving to a Single Package
+Author: William Hubbs <williamh@gentoo.org>
+Posted: 2020-04-03
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: sys-cluster/kubeadm
+Display-If-Installed: sys-cluster/kube-apiserver
+Display-If-Installed: sys-cluster/kube-controller-manager
+Display-If-Installed: sys-cluster/kubectl
+Display-If-Installed: sys-cluster/kubelet
+Display-If-Installed: sys-cluster/kube-proxy
+Display-If-Installed: sys-cluster/kube-scheduler
+
+Formerly, we packaged kubernetes as seven separate packages:
+
+sys-cluster/kubeadm, sys-cluster/kube-apiserver,
+sys-cluster/kube-controller-manager, sys-cluster/kubectl,
+sys-cluster/kubelet, sys-cluster/kube-proxy and
+sys-cluster/kube-scheduler.
+
+Starting with kubernetes 1.18.0, 1.17.5 and 1.16.9, these will be merged
+into one package, sys-cluster/kubernetes. The components of this package
+which are build and installed will be selectable by use flags.
+
+If you are using 1.16.x or 1.17.x and would like to migrate to the
+single package without upgrading, I have also made 1.16.8 and 1.17.4
+available in this new package.
+
+Currently, everything is built and installed by default; however, I am
+open to changing this if there is a better way to configure the default
+build.
