@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{6,7,8})
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit python-single-r1
 
@@ -21,6 +21,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}
 	sys-process/numactl"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+	use elibc_musl && eapply "${FILESDIR}/${P}-musl.patch"
+}
 
 src_install() {
 	emake prefix=/usr DESTDIR="${D}" MAN_COMPRESSION=none install
