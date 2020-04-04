@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/drm.git"
 
@@ -16,7 +16,7 @@ HOMEPAGE="https://dri.freedesktop.org/ https://gitlab.freedesktop.org/mesa/drm"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	SRC_URI="https://dri.freedesktop.org/libdrm/${P}.tar.bz2"
+	SRC_URI="https://dri.freedesktop.org/libdrm/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -30,15 +30,10 @@ RESTRICT="test" # see bug #236845
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND="elibc_FreeBSD? ( >=dev-libs/libpthread-stubs-0.4:=[${MULTILIB_USEDEP}] )
+RDEPEND="
 	video_cards_intel? ( >=x11-libs/libpciaccess-0.13.1-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	valgrind? ( dev-util/valgrind )"
-
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
-}
 
 multilib_src_configure() {
 	local emesonargs=(
