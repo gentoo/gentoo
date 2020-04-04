@@ -25,18 +25,22 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/
 
 LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="build caps +cramfs cryptsetup fdformat hardlink kill +logger ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
+IUSE="audit build caps +cramfs cryptsetup fdformat hardlink kill +logger ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
 RDEPEND="
 	virtual/libcrypt:=
+	audit? ( >=sys-process/audit-2.6:= )
 	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib:= )
 	cryptsetup? ( sys-fs/cryptsetup )
+	hardlink? ( dev-libs/libpcre2:= )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
 	nls? ( virtual/libintl[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
+	ppc? ( sys-libs/librtas )
+	ppc64? ( sys-libs/librtas )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
@@ -75,6 +79,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+)
 
 src_prepare() {
 	default
@@ -163,6 +170,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with udev)
 		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
 		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
+		$(multilib_native_use_with audit)
 		$(tc-has-tls || echo --disable-tls)
 		$(use_enable nls)
 		$(use_enable unicode widechar)
@@ -181,6 +189,7 @@ multilib_src_configure() {
 			--enable-bash-completion
 			--enable-line
 			--enable-partx
+			--enable-pg
 			--enable-raw
 			--enable-rename
 			--enable-rfkill
@@ -273,6 +282,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc AUTHORS NEWS README* Documentation/{TODO,*.txt,releases/*}
+	chmod -x "${ED}"/usr/share/doc/util-linux-${PVR}/getopt/getopt-parse* || die
 
 	# e2fsprogs-libs didnt install .la files, and .pc work fine
 	find "${ED}" -name "*.la" -delete || die
