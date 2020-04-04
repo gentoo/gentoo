@@ -27,6 +27,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Fix-missing-header-without-LZO.patch
+)
+
 src_prepare() {
 	default
 	[[ ${PV} == "9999" ]] && eautoreconf
