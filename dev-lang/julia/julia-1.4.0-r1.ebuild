@@ -12,6 +12,7 @@ MY_LIBUV_V="35b1504507a7a4168caae3d78db54d1121b121e1"
 MY_UTF8PROC_V="5c632c57426f2e4246e3b64dd2fd088d3920f9e5"
 MY_LIBWHICH_V="81e9723c0273d78493dc8c8ed570f68d9ce7e89e"
 MY_DSFMT_V="2.2.3"
+MY_PKG_V="49908bffe83790bc7cf3c5d46faf3667f8902ad4"
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
@@ -21,6 +22,7 @@ SRC_URI="
 	https://api.github.com/repos/JuliaLang/utf8proc/tarball/${MY_UTF8PROC_V} -> ${PN}-utf8proc-${MY_UTF8PROC_V}.tar.gz
 	https://api.github.com/repos/vtjnash/libwhich/tarball/${MY_LIBWHICH_V} -> ${PN}-libwhich-${MY_LIBWHICH_V}.tar.gz
 	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-${MY_DSFMT_V}.tar.gz -> ${PN}-dsfmt-${MY_DSFMT_V}.tar.gz
+	https://dev.gentoo.org/~tamiko/distfiles/Pkg-${MY_PKG_V}.tar.gz -> ${PN}-Pkg-${MY_PKG_V}.tar.gz
 "
 
 LICENSE="MIT"
@@ -36,7 +38,6 @@ LLVM_MAX_SLOT=9
 RDEPEND+="
 	dev-libs/double-conversion:0=
 	dev-libs/gmp:0=
-	dev-libs/libgit2:0=
 	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
 	dev-libs/mpfr:0=
 	dev-libs/openspecfun
@@ -77,7 +78,19 @@ src_unpack() {
 
 	mkdir -p "${S}/deps/srccache/"
 	for i in "${tounpack[@]:1}"; do
-		cp "${DISTDIR}/${i}" "${S}/deps/srccache/${i#julia-}" || die
+		if [[ $i == *Pkg* ]] || [[ $i = *Statistics* ]]; then
+			# Bundled Pkg and Statistics packages go into ./stdlib
+			local tarball="${i#julia-}"
+			cp "${DISTDIR}/${i}" "${S}/stdlib/srccache/${tarball}" || die
+			# and we have to fix up the sha1sum
+			local name="${tarball%-*}"
+			local sha1="${tarball#*-}"
+			sha1="${sha1%.tar*}"
+			einfo "using patched stdlib package \"${name}\""
+			sed -i -e "s/PKG_SHA1 = .*/PKG_SHA1 = ${sha1}/" "${S}/stdlib/${name}.version" || die
+		else
+			cp "${DISTDIR}/${i}" "${S}/deps/srccache/${i#julia-}" || die
+		fi
 	done
 }
 
@@ -136,7 +149,6 @@ src_configure() {
 		USE_SYSTEM_MBEDTLS:=1
 		USE_SYSTEM_LIBSSH2:=1
 		USE_SYSTEM_CURL:=1
-		USE_SYSTEM_LIBGIT2:=1
 		USE_SYSTEM_PATCHELF:=1
 		USE_SYSTEM_ZLIB:=1
 		USE_SYSTEM_P7ZIP:=1
