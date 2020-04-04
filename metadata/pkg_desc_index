@@ -8424,7 +8424,7 @@ dev-python/pyjwt 1.7.1-r1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.2.1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 2.0.2: A Python implementation of the actor model
 dev-python/pykwalify 1.7.0 9999: Python lib/cli for JSON/YAML schema validation
-dev-python/pylama 7.6.5: Code audit tool for python
+dev-python/pylama 7.6.5 7.7.1: Code audit tool for python
 dev-python/pylast 1.9.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylibacl 0.5.3: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
@@ -8738,7 +8738,7 @@ dev-python/roman 3.0: An Integer to Roman numerals converter
 dev-python/root_numpy 4.7.3-r1: Interface between ROOT and numpy
 dev-python/rootpy 1.0.1-r1: Pythonic layer on top of the ROOT framework's PyROOT bindings
 dev-python/rope 0.16.0: Python refactoring library
-dev-python/ropemode 0.4: A helper for using rope refactoring library in IDEs
+dev-python/ropemode 0.4 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.0 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.0 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1 2.4.1-r1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
