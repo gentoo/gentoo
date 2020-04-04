@@ -21,7 +21,7 @@ fi
 DESCRIPTION="runc container cli tools"
 HOMEPAGE="http://runc.io"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD-2 BSD MIT"
 SLOT="0"
 IUSE="+ambient apparmor hardened +kmem +seccomp"
 
