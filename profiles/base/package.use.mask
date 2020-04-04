@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
+# Ada support is not yet ready for sys-deve/gcc
+sys-devel/gcc ada
+
 # Joshua Kinard <kumba@gentoo.org> (2020-03-28)
 # NCP support is masked pending removal of net-fs/ncpfs
 # Bug #681820
