@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit leechcraft
 
@@ -9,19 +9,21 @@ DESCRIPTION="Full-featured RSS/Atom feed reader for LeechCraft"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="debug mysql +sqlite postgres"
+IUSE="debug mysql postgres +sqlite"
 
 DEPEND="
-	~app-leechcraft/lc-core-${PV}[postgres?,sqlite?]
+	~app-leechcraft/lc-core-${PV}[postgres?]
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsql:5[sqlite?,postgres?,mysql?]
+	dev-qt/qtsql:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5"
 RDEPEND="${DEPEND}
-		virtual/leechcraft-downloader-http"
+	dev-qt/qtsql:5[mysql?,postgres?,sqlite?]
+	virtual/leechcraft-downloader-http
+"
 
 REQUIRED_USE="|| ( mysql sqlite postgres )"
 
