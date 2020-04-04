@@ -12459,7 +12459,7 @@ media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
 media-fonts/noto 20190524 20200308: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20190416: Google's CJK font family
-media-fonts/noto-emoji 20200311: Google Noto Emoji fonts
+media-fonts/noto-emoji 20200311 20200317: Google Noto Emoji fonts
 media-fonts/nunito 1.0-r1: A Sans Serif font with rounded terminals
 media-fonts/nuosu-sil 2.1.1: Unicode font for the standardized Yi script
 media-fonts/office-code-pro 1.004: Customized version of Source Code Pro
@@ -16967,7 +16967,7 @@ sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later ker
 sys-auth/authenticator 0.2.4-r1 9999: Two-factor authentication code generator for GNOME
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/docker_auth 1.3.1 1.4.0: Docker Registry 2 authentication server
-sys-auth/elogind 241.4 243.4 243.7: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 243.4 243.7: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.09-r1: Use Fingerprint Devices with Linux
 sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.08 9999: PAM Module for two step verification via mobile platform
