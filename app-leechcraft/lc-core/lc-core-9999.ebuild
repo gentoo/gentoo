@@ -14,7 +14,7 @@ KEYWORDS=""
 IUSE="debug doc postgres +qwt +sqlite"
 
 DEPEND="
-	>=dev-libs/boost-1.62
+	dev-libs/boost:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
