@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Few fixes from origin/master + optionality patches filed as https://gitlab.gnome.org/GNOME/gtk-vnc/merge_requests/6
 	"${WORKDIR}"/patches
+	"${FILESDIR}"/${PV}-honor-python-ver.patch
 )
 
 src_prepare() {
