@@ -20,6 +20,10 @@
 # Matt Turner <mattst88@gentoo.org> (2020-04-01)
 # net-libs/mbedtls has no stable keywords
 net-misc/curl curl_ssl_mbedtls
+dev-libs/libzip mbedtls
+net-libs/libssh mbedtls
+net-libs/libssh2 mbedtls
+net-vpn/openvpn mbedtls
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-12)
 # No stable media-fonts/cantarell on hppa.
