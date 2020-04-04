@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit leechcraft
 
@@ -37,11 +37,11 @@ COMMON_DEPEND="
 	)
 	sarin? (
 		dev-qt/qtconcurrent:5
-		net-libs/tox
+		net-libs/tox:=
 	)
 	woodpecker? ( dev-libs/kqoauth )
 	xmpp? (
-		>=net-libs/qxmpp-0.9.3-r1
+		>=net-libs/qxmpp-1.2.0
 		media? ( net-libs/qxmpp[speex] )
 	)
 	xtazy? ( ~app-leechcraft/lc-xtazy-${PV} )
@@ -98,11 +98,11 @@ src_configure() {
 		-DENABLE_AZOTH_XTAZY=$(usex xtazy)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use doc && dodoc -r "${CMAKE_BUILD_DIR}"/out/html/*
 }
 
