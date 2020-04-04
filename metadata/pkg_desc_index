@@ -16394,7 +16394,7 @@ sci-visualization/labplot 2.7.0 9999: Scientific data analysis and visualisation
 sci-visualization/nonolith-connect 1.1: CEE (Control - Experiment - Explore) analog multitool
 sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
-sci-visualization/paraview 5.8.0-r1 5.8.0-r2: Powerful scientific data visualization application
+sci-visualization/paraview 5.8.0-r2: Powerful scientific data visualization application
 sci-visualization/pythonprop 0.29: Scripts to prepare and plot VOACAP propagation predictions
 sci-visualization/pyxplot 0.9.2-r3: Gnuplot like graphing program publication-quality figures
 sci-visualization/quickplot 0.10.6 0.10.8 1.0.1_rc: A fast interactive 2D plotter
