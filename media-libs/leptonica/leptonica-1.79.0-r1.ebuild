@@ -21,7 +21,7 @@ RDEPEND="gif? ( >=media-libs/giflib-5.1.3:=[${MULTILIB_USEDEP}] )
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}]
-		   sys-libs/zlib:=[${MULTILIB_USEDEP}] )
+		sys-libs/zlib:=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:0=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )"
@@ -58,6 +58,7 @@ multilib_src_configure() {
 		$(use_with png libpng) \
 		$(use_with tiff libtiff) \
 		$(use_with webp libwebp) \
+		$(use_with webp libwebpmux) \
 		$(use_with zlib) \
 		$(use_enable static-libs static) \
 		$(multilib_native_use_enable utils programs)
