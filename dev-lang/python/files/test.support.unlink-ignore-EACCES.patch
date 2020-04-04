@@ -1,7 +1,7 @@
-From 789c61e1a1966241d274012cdbd5fb9716448952 Mon Sep 17 00:00:00 2001
+From b8dc49c87f29fa875bd24fe47c741d11962a33b6 Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
-Date: Fri, 3 Apr 2020 10:37:56 -0400
-Subject: [PATCH] test.support.unlink: ignore EPERM
+Date: Sat, 4 Apr 2020 14:11:25 -0400
+Subject: [PATCH] test.support.unlink: ignore EACCES
 
 Resolves test errors when running in the Gentoo sandbox environment.
 
@@ -11,7 +11,7 @@ Bug: https://bugs.gentoo.org/679628
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Lib/test/support/__init__.py b/Lib/test/support/__init__.py
-index ccc11c1b4b0..c5ec06bb420 100644
+index ccc11c1b4b0..d47bdebda5c 100644
 --- a/Lib/test/support/__init__.py
 +++ b/Lib/test/support/__init__.py
 @@ -291,7 +291,7 @@ def unlink(filename):
@@ -19,7 +19,7 @@ index ccc11c1b4b0..c5ec06bb420 100644
          _unlink(filename)
      except OSError as exc:
 -        if exc.errno not in (errno.ENOENT, errno.ENOTDIR):
-+        if exc.errno not in (errno.ENOENT, errno.ENOTDIR, errno.EPERM):
++        if exc.errno not in (errno.ENOENT, errno.ENOTDIR, errno.EACCES):
              raise
  
  def rmdir(dirname):
