@@ -13,8 +13,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
-
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_APPLYING_RPATH=OFF
