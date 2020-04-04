@@ -7729,7 +7729,7 @@ dev-python/entrypoints 0.3-r1: Discover and load entry points from installed pac
 dev-python/enum34 1.1.6-r1: Python 3.4 Enum backported
 dev-python/envoy 0.0.3 0.0.3-r1: Simple API for running external processes
 dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
-dev-python/eradicate 0.2.1 1.0: Removes commented-out code from Python files
+dev-python/eradicate 1.0: Removes commented-out code from Python files
 dev-python/errorhandler 2.0.1: Logging framework handler
 dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
@@ -8424,7 +8424,7 @@ dev-python/pyjwt 1.7.1-r1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.2.1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 2.0.2: A Python implementation of the actor model
 dev-python/pykwalify 1.7.0 9999: Python lib/cli for JSON/YAML schema validation
-dev-python/pylama 7.6.5 7.7.1: Code audit tool for python
+dev-python/pylama 7.7.1: Code audit tool for python
 dev-python/pylast 1.9.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylibacl 0.5.3: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
@@ -8680,7 +8680,7 @@ dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/rackspace-auth-openstack 1.3 9999: Rackspace Auth Plugin for OpenStack Clients
 dev-python/rackspace-monitoring 0.8.0: Client library for Rackspace Cloud Monitoring
 dev-python/rackspace-novaclient 2.1: A client for the OpenStack Nova API
-dev-python/radon 1.4.2 4.1.0: Code Metrics in Python
+dev-python/radon 4.1.0: Code Metrics in Python
 dev-python/raet 0.6.8: Reliable Asynchronous Event Transport Protocol
 dev-python/ramlfications 0.1.9_p20160718: RAML reference implementation in Python
 dev-python/random2 1.0.1-r1: Python-2.7 random module ported to python-3
@@ -8738,7 +8738,7 @@ dev-python/roman 3.0: An Integer to Roman numerals converter
 dev-python/root_numpy 4.7.3-r1: Interface between ROOT and numpy
 dev-python/rootpy 1.0.1-r1: Pythonic layer on top of the ROOT framework's PyROOT bindings
 dev-python/rope 0.16.0: Python refactoring library
-dev-python/ropemode 0.4 0.5: A helper for using rope refactoring library in IDEs
+dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.0 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.0 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1 2.4.1-r1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
