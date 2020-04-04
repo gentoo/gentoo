@@ -1,0 +1,132 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8e3665c18..ad989f7f2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -171,6 +171,8 @@ ELSE()
+ 		ROOT ${PCRE_ROOT_DIR} MODULES pcre libpcre pcre3 libpcre3)
+ ENDIF()
+ 
++ProcessPackage(ZSTD LIBRARY zstd INCLUDE zstd.h
++	ROOT ${ZSTD_ROOT_DIR} MODULES libzstd)
+ ProcessPackage(SQLITE3 LIBRARY sqlite3 INCLUDE sqlite3.h INCLUDE_SUFFIXES include/sqlite3 include/sqlite
+ 	ROOT ${SQLITE3_ROOT_DIR} MODULES sqlite3 sqlite)
+ ProcessPackage(ICUDATA LIBRARY icudata INCLUDE unicode/ucnv.h
+@@ -583,7 +585,6 @@ ADD_SUBDIRECTORY(contrib/http-parser)
+ ADD_SUBDIRECTORY(contrib/fpconv)
+ ADD_SUBDIRECTORY(contrib/lc-btrie)
+ ADD_SUBDIRECTORY(contrib/libottery)
+-ADD_SUBDIRECTORY(contrib/zstd)
+ IF(ENABLE_SNOWBALL MATCHES "ON")
+ 	ADD_SUBDIRECTORY(contrib/snowball)
+ 	SET(WITH_SNOWBALL 1)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 54b2e4083..e0e2edd58 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -181,7 +181,6 @@ TARGET_LINK_LIBRARIES(rspamd-server rspamd-http-parser)
+ TARGET_LINK_LIBRARIES(rspamd-server rspamd-fpconv)
+ TARGET_LINK_LIBRARIES(rspamd-server rspamd-cdb)
+ TARGET_LINK_LIBRARIES(rspamd-server lcbtrie)
+-TARGET_LINK_LIBRARIES(rspamd-server rspamd-zstd)
+ TARGET_LINK_LIBRARIES(rspamd-server rspamd-fastutf8)
+ 
+ IF (ENABLE_CLANG_PLUGIN MATCHES "ON")
+diff --git a/src/client/rspamdclient.c b/src/client/rspamdclient.c
+index 98b51506b..b4ed1cb5e 100644
+--- a/src/client/rspamdclient.c
++++ b/src/client/rspamdclient.c
+@@ -19,8 +19,8 @@
+ #include "libserver/http/http_private.h"
+ #include "libserver/protocol_internal.h"
+ #include "unix-std.h"
+-#include "contrib/zstd/zstd.h"
+-#include "contrib/zstd/zdict.h"
++#include <zstd.h>
++#include <zdict.h>
+ 
+ #ifdef HAVE_FETCH_H
+ #include <fetch.h>
+diff --git a/src/libserver/cfg_utils.c b/src/libserver/cfg_utils.c
+index d3ad9e210..c7e09c2f9 100644
+--- a/src/libserver/cfg_utils.c
++++ b/src/libserver/cfg_utils.c
+@@ -36,9 +36,8 @@
+ #include "contrib/libottery/ottery.h"
+ #include "contrib/fastutf8/fastutf8.h"
+ 
+-#define ZSTD_STATIC_LINKING_ONLY
+-#include "contrib/zstd/zstd.h"
+-#include "contrib/zstd/zdict.h"
++#include <zstd.h>
++#include <zdict.h>
+ 
+ #ifdef HAVE_OPENSSL
+ #include <openssl/rand.h>
+diff --git a/src/libserver/maps/map.c b/src/libserver/maps/map.c
+index a832adc4f..bdc1f8ba0 100644
+--- a/src/libserver/maps/map.c
++++ b/src/libserver/maps/map.c
+@@ -23,7 +23,7 @@
+ #include "libserver/http/http_connection.h"
+ #include "libserver/http/http_private.h"
+ #include "rspamd.h"
+-#include "contrib/zstd/zstd.h"
++#include <zstd.h>
+ #include "contrib/libev/ev.h"
+ #include "contrib/uthash/utlist.h"
+ 
+diff --git a/src/libserver/protocol.c b/src/libserver/protocol.c
+index 35d50b909..53c23ed51 100644
+--- a/src/libserver/protocol.c
++++ b/src/libserver/protocol.c
+@@ -21,7 +21,7 @@
+ #include "worker_private.h"
+ #include "libserver/cfg_file_private.h"
+ #include "libmime/scan_result_private.h"
+-#include "contrib/zstd/zstd.h"
++#include <zstd.h>
+ #include "lua/lua_common.h"
+ #include "unix-std.h"
+ #include "protocol_internal.h"
+diff --git a/src/libserver/task.c b/src/libserver/task.c
+index 3e8dd381f..150b5d54c 100644
+--- a/src/libserver/task.c
++++ b/src/libserver/task.c
+@@ -25,7 +25,7 @@
+ #include "stat_api.h"
+ #include "unix-std.h"
+ #include "utlist.h"
+-#include "contrib/zstd/zstd.h"
++#include <zstd.h>
+ #include "libserver/mempool_vars_internal.h"
+ #include "libserver/cfg_file_private.h"
+ #include "libmime/lang_detection.h"
+diff --git a/src/lua/lua_util.c b/src/lua/lua_util.c
+index 91cc18800..d29f8aeaa 100644
+--- a/src/lua/lua_util.c
++++ b/src/lua/lua_util.c
+@@ -17,7 +17,7 @@
+ #include "html.h"
+ #include "tokenizers/tokenizers.h"
+ #include "unix-std.h"
+-#include "contrib/zstd/zstd.h"
++#include <zstd.h>
+ #include "contrib/uthash/utlist.h"
+ #include "libmime/email_addr.h"
+ #include "libmime/content_type.h"
+diff --git a/src/rspamd_proxy.c b/src/rspamd_proxy.c
+index e9ce9ef5e..a9f3159db 100644
+--- a/src/rspamd_proxy.c
++++ b/src/rspamd_proxy.c
+@@ -36,7 +36,7 @@
+ #include "libserver/milter.h"
+ #include "libserver/milter_internal.h"
+ #include "libmime/lang_detection.h"
+-#include "contrib/zstd/zstd.h"
++#include <zstd.h>
+ 
+ #include <math.h>
+ 
+-- 
+2.24.1
+
