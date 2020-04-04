@@ -11655,7 +11655,7 @@ gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 6 7: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 10: Allow to connect bluetooth paired devices from gnome control panel
-gnome-extra/gnome-shell-extension-dash-to-panel 26 33: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-dash-to-panel 26 34: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.4 19.10.2: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 28-r1 33: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.32.1 3.34.0 3.34.2: JavaScript extensions for GNOME Shell
