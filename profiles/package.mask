@@ -654,11 +654,6 @@ net-misc/gnome-remote-desktop
 # and accept a more unstable release.
 >=www-client/chromium-82
 
-# Mart Raudsepp <leio@gentoo.org> (2020-02-12)
-# GNOME 3.35 development release packages
->=dev-libs/vala-common-0.47
-dev-lang/vala:0.48
-
 # Stefan Strogin <steils@gentoo.org> (2020-02-12)
 # Mask for testing revdeps.
 >=dev-games/mygui-3.4.0
