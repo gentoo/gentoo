@@ -22,15 +22,21 @@ IUSE="doc examples +sqlite test"
 
 REQUIRED_USE="test? ( sqlite )"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+BDEPEND="
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+	)
+"
 
 S="${WORKDIR}/${MY_P}"
 
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	local PATCHES=(
+		"${FILESDIR}"/sqlalchemy-pytest-deprecation.patch
+	)
 	# Disable tests hardcoding function call counts specific to Python versions.
 	rm -r test/aaa_profiling || die
 	distutils-r1_python_prepare_all
