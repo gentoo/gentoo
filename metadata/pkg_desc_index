@@ -2611,7 +2611,7 @@ app-text/highlight 3.42-r1: Converts source code to formatted text (HTML, LaTeX,
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 7.1 7.4 7.5 7.6 7.7: A number of simple utilities for manipulating HTML and XML files
-app-text/html2text 1.3.2a-r2: HTML to text converter
+app-text/html2text 1.3.2a-r2 9999: HTML to text converter
 app-text/html401 19991224-r4: DTDs for the HyperText Markup Language 4.01
 app-text/htmlc 2.40.0 2.60.0: HTML template files expander
 app-text/htmldoc 1.8.30: Convert HTML pages into a PDF document
