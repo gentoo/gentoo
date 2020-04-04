@@ -16,8 +16,18 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="test"
 
 RDEPEND="
+	>=dev-python/html5lib-1.0.1-r1[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/webencodings[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# unbundle unpatched broken html5lib
+	rm -r bleach/_vendor || die
+	sed -i -e 's:bleach\._vendor\.::' \
+		bleach/html5lib_shim.py tests/test_clean.py || die
+
+	distutils-r1_src_prepare
+}
