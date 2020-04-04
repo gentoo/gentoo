@@ -12106,7 +12106,7 @@ kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring 
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
 kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
-kde-misc/rsibreak 0.12.11 0.12.12: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.11 0.12.12 0.12.13: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: Simple image scanning application based on libksane and KDE Frameworks
 kde-misc/tellico 3.2.3: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
@@ -18553,7 +18553,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.29 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.61 5.62 5.63_alpha0: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.61 5.62 5.63_alpha0 5.63_beta: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
