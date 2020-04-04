@@ -1,0 +1,29 @@
+diff -U3 -r sbcl-2.0.3.orig/make.sh sbcl-2.0.3/make.sh
+--- sbcl-2.0.3.orig/make.sh	2020-03-29 03:58:29.000000000 +0700
++++ sbcl-2.0.3/make.sh	2020-04-04 19:56:16.510279232 +0700
+@@ -24,7 +24,7 @@
+ # thing" when run on the target machine, with the minor caveat that
+ # any --xc-host parameter should be suitable for the host machine
+ # instead of the target.
+-sh make-config.sh "$@" --check-host-lisp || exit $?
++sh -x make-config.sh "$@" --check-host-lisp || exit $?
+ 
+ . output/prefix.def
+ . output/build-config
+@@ -76,11 +76,11 @@
+         $@
+     fi
+ }
+-maybetime sh make-host-1.sh
+-maybetime sh make-target-1.sh
+-maybetime sh make-host-2.sh
+-maybetime sh make-target-2.sh
+-maybetime sh make-target-contrib.sh
++maybetime sh -x make-host-1.sh
++maybetime sh -x make-target-1.sh
++maybetime sh -x make-host-2.sh
++maybetime sh -x make-target-2.sh
++maybetime sh -x make-target-contrib.sh
+ 
+ # contrib/Makefile shouldn't be counted in NCONTRIBS.
+ # "find contrib/* -name Makefile" would still find contrib/./Makefile.
