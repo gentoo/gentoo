@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>vpayno+gentoo@gmail.com</email>
+		<name>Victor Payno</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription>
+		Sentinels are objects with special meanings. They can be thought of as singletons, but they service the need of having 'special' values in your code, that have special meanings.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">sentinels</remote-id>
+	</upstream>
+</pkgmetadata>
