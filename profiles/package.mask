@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-04-05)
+# Not maintained in Gentoo, doesn't build for 2 years, has only
+# deprecated version present in Gentoo. Has a huge number of open
+# bugs. Removal in 30 days. #642952
+www-misc/zoneminder
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-04)
 # Package that used to provide test data for dev-python/cryptography.
 # The modern versions fetch it via SRC_URI and the last version
