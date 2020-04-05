@@ -10,9 +10,7 @@ SRC_URI="https://dev.gentoo.org/~juippis/distfiles/${P}.edj"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86"
-IUSE=""
 
-DEPEND=""
 RDEPEND="x11-wm/enlightenment"
 
 S="${WORKDIR}"
