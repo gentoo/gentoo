@@ -48,7 +48,7 @@ src_prepare() {
 		-e 's/^\(install:.*\) install\.python$/\1/'
 	)
 
-	has_version -b '>=dev-lang/go-1.14' || makefile_sed_args+=(-e 's:GO111MODULE=off:GO111MODULE=on:')
+	has_version -b '>=dev-lang/go-1.13.9' || makefile_sed_args+=(-e 's:GO111MODULE=off:GO111MODULE=on:')
 
 	sed "${makefile_sed_args[@]}" -i Makefile || die
 
