@@ -24,6 +24,7 @@ RDEPEND="
 
 src_test() {
 	# Use NO_LOCAL_MONGO to disable tests that need a MongoDB instance.
+	# TZ=UTC needed for date/time tests to pass
 	TZ=UTC NO_LOCAL_MONGO=1 distutils-r1_src_test
 }
 
