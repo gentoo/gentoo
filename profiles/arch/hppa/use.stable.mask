@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-05)
+# app-editors/{,g}vim has no stable keywords
+vim-syntax
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-05)
 # app-editors/{,x}emacs has no stable keywords
 emacs
 xemacs
