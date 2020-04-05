@@ -17342,7 +17342,7 @@ sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1-r1 332.14_p1-r2: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dislocker 0.7.1-r2 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
-sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4: Device-mapper RAID tool and library
+sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.11.1: Btrfs and xfs deduplication utility
 sys-fs/e2fsprogs 1.45.4 1.45.5 1.45.6: Standard EXT2/EXT3/EXT4 filesystem utilities
