@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
 PATCHES=(
-	"${FILESDIR}/${P}"-fix-ldflags-in-pkgconfig.patch
+	"${FILESDIR}/${PN}-1.7.0"-fix-ldflags-in-pkgconfig.patch
 )
 
 src_configure() {
@@ -26,7 +26,7 @@ src_compile() {
 	# janet_build is the git hash of the commit related to the
 	# current release - it defines a constant which is then shown
 	# when starting janet
-	local janet_build='\"f7ee8bd\"'
+	local janet_build='\"5b6b9f1\"'
 	emake PREFIX="/usr" JANET_BUILD="${janet_build}"
 	emake PREFIX="/usr" build/janet.pc JANET_BUILD="${janet_build}"
 	emake PREFIX="/usr" docs JANET_BUILD="${janet_build}"
