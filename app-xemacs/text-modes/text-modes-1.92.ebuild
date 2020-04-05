@@ -11,6 +11,6 @@ RDEPEND="app-xemacs/xemacs-ispell
 app-xemacs/fsf-compat
 app-xemacs/xemacs-base
 "
-KEYWORDS="~alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
 
 inherit xemacs-packages
