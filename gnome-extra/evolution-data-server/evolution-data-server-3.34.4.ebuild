@@ -2,10 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_6 )
 VALA_USE_DEPEND="vapigen"
 
-inherit cmake-utils db-use flag-o-matic gnome2 python-any-r1 systemd vala virtualx
+inherit cmake-utils db-use flag-o-matic gnome2 systemd vala virtualx
 
 DESCRIPTION="Evolution groupware backend"
 HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
@@ -58,7 +57,6 @@ RDEPEND="
 	weather? ( >=dev-libs/libgweather-3.10:2= )
 "
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	dev-util/gperf
@@ -77,10 +75,6 @@ DEPEND="${RDEPEND}
 # Also, dbus tests are flaky, bugs #397975 #501834
 # It looks like a nightmare to disable those for now.
 RESTRICT="test !test? ( test )"
-
-pkg_setup() {
-	python-any-r1_pkg_setup
-}
 
 # global scope PATCHES or DOCS array mustn't be used due to double default_src_prepare call
 src_prepare() {
