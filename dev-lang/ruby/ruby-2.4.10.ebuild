@@ -198,8 +198,7 @@ src_install() {
 	fi
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r sample
+		dodoc -r sample
 	fi
 
 	dodoc ChangeLog NEWS doc/NEWS* README*
