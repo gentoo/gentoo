@@ -6079,6 +6079,7 @@ net-libs/libproxy:spidermonkey - Use libmozjs from dev-lang/spidermonkey for PAC
 net-libs/libproxy:webkit - Use libjavascriptcoregtk from net-libs/webkit-gtk for PAC parsing
 net-libs/libpsl:man - Build man-pages
 net-libs/libqmi:mbim - Support QMI over Mobile Broadband Interface Model (MBIM)
+net-libs/libsoup:brotli - Enable brotli decompression support
 net-libs/libsoup:gssapi - Enable GSSAPI support
 net-libs/libsoup:samba - Use net-fs/samba for NTLM Single Sign-On
 net-libs/libsrtp:aesicm - Use AES ICM cryptographic algorithm

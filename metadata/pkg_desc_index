@@ -8933,7 +8933,7 @@ dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 2.9.1 3.2.1 3.12.1 3.14.4 3.14.5 3.14.6: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
-dev-python/tqdm 4.23.3 4.33.0 4.40.0 9999: Add a progress meter to your loops in a second
+dev-python/tqdm 4.23.3 4.33.0 4.40.0 4.45.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2 4.3.3: A configuration system for Python applications
 dev-python/transitions 0.7.1 0.7.2: A lightweight, object-oriented state machine implementation in Python
@@ -14687,7 +14687,7 @@ net-libs/libsearpc 3.0.8-r3 3.2.0-r1: A simple C language RPC framework
 net-libs/libsignal-protocol-c 2.3.2 2.3.3 9999: Signal Protocol C Library
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
-net-libs/libsoup 2.62.3 2.66.4: HTTP client/server library for GNOME
+net-libs/libsoup 2.62.3 2.66.4 2.70.0: HTTP client/server library for GNOME
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.6.0-r1 2.2.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.9.3 9999: Access a working SSH implementation by means of a library
@@ -17217,7 +17217,7 @@ sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34 9999: Tools necessary to build
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.1-r1 5.2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34: Tools necessary to build programs
-sys-devel/bison 3.1 3.3.2 3.4.2 3.5.2 3.5.3: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.3.2 3.4.2 3.5.3 3.5.4: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20181221: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 7.1.0 8.0.1 9.0.1 10.0.0 10.0.0.9999 11.0.0.9999: C language family frontend for LLVM
