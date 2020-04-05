@@ -1056,7 +1056,6 @@ app-office/gnucash:quotes - Enable Online Stock Quote retrieval
 app-office/gnucash:register2 - Use the new register (Experimental)
 app-office/gnumeric:libgda - Enable database support through gnome-extra/libgda.
 app-office/gnumeric:perl - Enable perl plugin loader.
-app-office/gnumeric:python - Enable python plugin loader.
 app-office/grisbi:goffice - enable goffice graphic support
 app-office/kexi:experimental - Enable features deemed experimental by upstream
 app-office/kexi:marble - Enable displaying of maps using kde-apps/marble
@@ -4268,7 +4267,8 @@ media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl:sound - Control audio support (disable at your own risk)
 media-libs/libsdl:tslib - Build with tslib support for touchscreen devices
 media-libs/libsdl:video - Control video support (disable at your own risk)
-media-libs/libsdl2:gles - include OpenGL ES support
+media-libs/libsdl2:gles - include OpenGL ES 2.0 support
+media-libs/libsdl2:gles2 - include OpenGL ES 2.0 support
 media-libs/libsdl2:haptic - Enable the haptic (force feedback) subsystem
 media-libs/libsdl2:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl2:kms - Build the KMSDRM video driver

@@ -2331,7 +2331,7 @@ app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various sou
 app-office/glabels 3.4.1: Program for creating labels and business cards
 app-office/gnome-todo 3.28.1-r1: Personal task manager
 app-office/gnucash 3.2-r2 3.3 3.3-r1 3.4 3.5 3.6 3.7 3.8b 3.8b-r1: A personal finance manager
-app-office/gnumeric 1.12.39-r1 1.12.43 1.12.44-r1 1.12.46: The GNOME Spreadsheet
+app-office/gnumeric 1.12.46: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/homebank 5.2.2 5.2.8 5.3.2: Free, easy, personal accounting for everyone
@@ -10654,7 +10654,7 @@ dev-util/scons 3.1.1 3.1.2: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2 9999: simple command-line tool to talk to serial devices
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
-dev-util/sgb 20030623-r1: Stanford GraphBase
+dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
 dev-util/shards 0.9.0: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
@@ -11112,12 +11112,12 @@ games-emulation/mekanix 070-r1: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO,
 games-emulation/mgba 0.7.3 0.8.0 0.8.1 9999: Game Boy Advance emulator written in C
 games-emulation/mupen64plus 2.5.9: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.5.9: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
-games-emulation/mupen64plus-core 2.5.9-r1: A fork of Mupen64 Nintendo 64 emulator, core library
+games-emulation/mupen64plus-core 2.5.9-r2: A fork of Mupen64 Nintendo 64 emulator, core library
 games-emulation/mupen64plus-input-sdl 2.5.9: A fork of Mupen64 Nintendo 64 emulator, SDL input plugin
 games-emulation/mupen64plus-rsp-hle 2.5.9: A fork of Mupen64 Nintendo 64 emulator, HLE RSP plugin
 games-emulation/mupen64plus-ui-console 2.5.9: A fork of Mupen64 Nintendo 64 emulator, console UI
-games-emulation/mupen64plus-video-glide64mk2 2.5.9-r1: A fork of Mupen64 Nintendo 64 emulator, glide64mk2 video plugin
-games-emulation/mupen64plus-video-rice 2.5.9-r1: A fork of Mupen64 Nintendo 64 emulator, rice video plugin
+games-emulation/mupen64plus-video-glide64mk2 2.5.9-r2: A fork of Mupen64 Nintendo 64 emulator, glide64mk2 video plugin
+games-emulation/mupen64plus-video-rice 2.5.9-r2: A fork of Mupen64 Nintendo 64 emulator, rice video plugin
 games-emulation/nestopia 1.47_p20170105 9999: A portable Nintendo Entertainment System emulator written in C++
 games-emulation/nestra 0.66-r3: NES emulation for Linux/x86
 games-emulation/openmsx 0.14.0: MSX emulator that aims for perfection
@@ -13006,7 +13006,7 @@ media-libs/librosprite 0.1.3-r1: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.9 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
-media-libs/libsdl2 2.0.10 2.0.10-r2 2.0.12: Simple Direct Media Layer
+media-libs/libsdl2 2.0.10 2.0.10-r2 2.0.12-r1: Simple Direct Media Layer
 media-libs/libsfml 2.5.1: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.4.1-r2 2.4.2 2.4.3: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r2 2.1.1-r5: C64 SID player library
@@ -18192,7 +18192,7 @@ x11-libs/gdk-pixbuf 2.40.0: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gl2ps 1.3.9 1.4.0: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
-x11-libs/goffice 0.10.41 0.10.43 0.10.46: A library of document-centric objects and utilities
+x11-libs/goffice 0.10.46: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 2.24.32-r1 3.24.11 3.24.13 3.24.14 3.24.16 3.24.17: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.3 3.3.4: Useful Additional GTK+ widgets
