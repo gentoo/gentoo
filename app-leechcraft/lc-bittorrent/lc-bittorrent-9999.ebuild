@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit leechcraft
+inherit xdg-utils leechcraft
 
 DESCRIPTION="Full-featured BitTorrent client plugin for LeechCraft"
 
@@ -27,4 +27,12 @@ src_configure() {
 		-DENABLE_BITTORRENT_GEOIP=$(usex geoip)
 	)
 	cmake_src_configure
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
