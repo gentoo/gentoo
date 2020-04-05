@@ -4,6 +4,10 @@
   <maintainer type="person">
     <email>fordfrog@gentoo.org</email>
     <name>Miroslav Šulc</name>
+  </maintainer> 
+  <maintainer type="person">
+    <email>holgersson@posteo.de</email>
+    <name>Nils Freydank</name>
   </maintainer>
   <maintainer type="person">
     <email>patrick@gentoo.org</email>
