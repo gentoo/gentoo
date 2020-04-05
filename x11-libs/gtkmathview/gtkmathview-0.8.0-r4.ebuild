@@ -12,18 +12,12 @@ LICENSE="LGPL-3"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE="gtk mathml svg t1lib"
+IUSE="mathml svg t1lib"
 
 RDEPEND="
 	>=dev-libs/glib-2.2.1:2
 	>=dev-libs/popt-1.7
 	>=dev-libs/libxml2-2.6.7:2
-	gtk? (
-		>=media-libs/t1lib-5:5
-		>=x11-libs/gtk+-2.2.1:2
-		x11-libs/pango
-		x11-libs/pangox-compat
-	)
 	mathml? ( media-fonts/texcm-ttf )
 	t1lib?	( >=media-libs/t1lib-5:5 )
 "
@@ -65,7 +59,7 @@ src_prepare() {
 src_configure() {
 	# --disable-popt will build only the library and not the frontend
 	# TFM is needed for SVG, default value is 2
-	econf $(use_enable gtk) \
+	econf --disable-gtk \
 		$(use_enable svg) \
 		$(use_with t1lib) \
 		--with-popt \
