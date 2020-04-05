@@ -24,4 +24,5 @@ RDEPEND="
 BDEPEND="
 	test? ( dev-python/vcrpy[${PYTHON_USEDEP}] )"
 
+distutils_enable_sphinx doc --no-autodoc
 distutils_enable_tests pytest
