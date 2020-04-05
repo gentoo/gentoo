@@ -51,7 +51,7 @@ src_prepare() {
 	vala_src_prepare
 	xdg_src_prepare
 	# Don't add -O2 explicitly to CFLAGS
-	sed -i -e "/'-O2'/d" meson.build
+	sed -i -e "/'-O2'/d" meson.build || die
 }
 
 src_configure() {
