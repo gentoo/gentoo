@@ -1,0 +1,25 @@
+From 2b8892fe2ca51ef0334b08babad0fa9d689087c0 Mon Sep 17 00:00:00 2001
+From: "A. Wilcox" <AWilcox@Wilcox-Tech.com>
+Date: Wed, 27 Sep 2017 01:42:33 -0500
+Subject: [PATCH] cacheline: Ensure sysconf var is defined before use on Linux
+
+---
+ src/libmowgli/platform/cacheline.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libmowgli/platform/cacheline.c b/src/libmowgli/platform/cacheline.c
+index 90c803f..7651588 100644
+--- a/src/libmowgli/platform/cacheline.c
++++ b/src/libmowgli/platform/cacheline.c
+@@ -32,7 +32,7 @@ size_t cacheline_size;
+ void
+ mowgli_cacheline_bootstrap(void)
+ {
+-#ifdef MOWGLI_OS_LINUX
++#if defined(MOWGLI_OS_LINUX) && defined(_SC_LEVEL1_DCACHE_LINESIZE)
+ 	cacheline_size = sysconf(_SC_LEVEL1_DCACHE_LINESIZE);
+ #elif defined(MOWGLI_OS_OSX)
+ 	size_t size = sizeof(size_t);
+-- 
+2.24.1
+
