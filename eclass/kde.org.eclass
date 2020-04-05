@@ -250,11 +250,10 @@ kde.org_pkg_nofetch() {
 kde.org_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ ${KDE_BUILD_TYPE} = live ]]; then
-		git-r3_src_unpack
-	else
-		default
-	fi
+	case ${KDE_BUILD_TYPE} in
+		live) git-r3_src_unpack ;&
+		*) default ;;
+	esac
 }
 
 fi
