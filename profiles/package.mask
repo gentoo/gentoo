@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-05)
+# Breaks app-text/texlive-core right now, bug #716344.
+~app-text/poppler-0.87.0
+
 # Joonas Niilola <juippis@gentoo.org> (2020-04-05)
 # Not maintained in Gentoo, doesn't build for 2 years, has only
 # deprecated version present in Gentoo. Has a huge number of open
@@ -612,10 +616,6 @@ www-apps/venus
 # Deprecated upstream in favor of dev-libs/rocm-comgr
 # Masked for removal in 30 days. Bug #711398
 dev-libs/rocm-opencl-driver
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-29)
-# Breaks app-office/libreoffice right now, bug #711102.
-~app-text/poppler-0.86.1
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
 # Depends on dev-java/eclipse-ecj:4.13 which
