@@ -4871,7 +4871,7 @@ dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1.4: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.34_pre20140729-r1 0.34: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0 0.6.1: set of utility libraries (mostly used by sssd)
-dev-libs/distorm64 3.4.1: The ultimate disassembler library (X86-32, X86-64)
+dev-libs/distorm64 3.4.1 3.4.2: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/dmalloc 5.5.2-r7: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion routines for IEEE doubles
@@ -10658,7 +10658,7 @@ dev-util/sgb 20030623-r1: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
 dev-util/shards 0.9.0: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
-dev-util/shellcheck 0.7.0: Shell script analysis tool
+dev-util/shellcheck 0.7.0 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.0: Shell script analysis tool (binary package)
 dev-util/shelltestrunner 1.3.5-r1 1.9: A tool for testing command-line programs
 dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
@@ -12545,7 +12545,7 @@ media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and e
 media-gfx/blender 2.79b-r2: 3D Creation/Animation/Publishing System
 media-gfx/cairosvg 1.0.22 2.0.3 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.5 1.3.6: Grid-entry natural handwriting input panel
-media-gfx/chafa 1.0.1 1.2.1: versatile and fast Unicode/ASCII/ANSI graphics renderer
+media-gfx/chafa 1.2.1 1.4.0: versatile and fast Unicode/ASCII/ANSI graphics renderer
 media-gfx/clockphoto 1.1 1.2: Adjusts photo timestamps based on clock photos.
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/converseen 0.9.6.2: Batch image converter and resizer based on ImageMagick
@@ -12600,7 +12600,7 @@ media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and an
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.8.22-r2 2.9.8-r1 2.10.8-r2 2.10.14-r1 2.10.18 2.10.18-r1 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
-media-gfx/gmic 2.8.1 2.8.2 2.8.3: GREYC's Magic Image Converter
+media-gfx/gmic 2.8.3 2.9.0: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.32.0 3.34.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.32.1 3.34.1: Access, organize and share your photos on GNOME
@@ -12791,7 +12791,7 @@ media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio app
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
 media-libs/chromaprint 1.4.3: Library implementing a custom algorithm for extracting audio fingerprints
-media-libs/cimg 2.8.1 2.8.3: C++ template image processing toolkit
+media-libs/cimg 2.8.3 2.9.0: C++ template image processing toolkit
 media-libs/clutter 1.26.2-r2 1.26.4: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 3.0.27 3.0.27-r1: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
@@ -12807,7 +12807,7 @@ media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT
 media-libs/elles_icc_profiles 20160501.0932 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 11.86 11.91: Read and write meta information in image, audio and video files
+media-libs/exiftool 11.86 11.91 11.93: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8 2.9.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.0 2.0.1: Fraunhofer AAC codec library
@@ -12958,7 +12958,7 @@ media-libs/libmad 0.15.1b-r9: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.22.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.5.2: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
-media-libs/libmediainfo 19.09: MediaInfo libraries
+media-libs/libmediainfo 19.09 20.03: MediaInfo libraries
 media-libs/libmetalink 0.1.3-r1: Library for handling Metalink files
 media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
@@ -13036,7 +13036,7 @@ media-libs/libxmlbird 1.2.0: XML parser written in Vala
 media-libs/libxspf 1.2.0: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
-media-libs/libzen 0.4.37: Shared library for libmediainfo and mediainfo
+media-libs/libzen 0.4.37 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.4-r1 0.24.6: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
@@ -13925,12 +13925,12 @@ media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping 
 media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
 media-video/makemkv 1.15.0: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
-media-video/mediainfo 19.09: MediaInfo supplies technical and tag information about media files
+media-video/mediainfo 19.09 20.03: MediaInfo supplies technical and tag information about media files
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.5.2: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 37.0.0 42.0.0 43.0.0 9999: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 37.0.0 42.0.0 43.0.0 45.0.0 9999: Tools to create, alter, and inspect Matroska files
 media-video/motion 4.1.1-r1: A software motion detector
 media-video/motiontrack 0.1.3-r2: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.6.1 1.6.2: Modern Video Toolkit
@@ -15795,7 +15795,7 @@ sci-chemistry/bkchem 0.14.0_pre2-r2: Chemical drawing program
 sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and isotope properties
 sci-chemistry/cara-bin 1.8.4-r1: Analysis of NMR spectra and Computer Aided Resonance Assignment
 sci-chemistry/chemex 0.6.1-r3: Program to fit chemical exchange induced shift and relaxation data
-sci-chemistry/chemical-mime-data 0.1.94-r3 0.1.94-r4: A collection of data files to add support for chemical MIME types
+sci-chemistry/chemical-mime-data 0.1.94-r4: A collection of data files to add support for chemical MIME types
 sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecules
 sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
 sci-chemistry/cluster 1.3.081231-r1: Build lists of collections of interacting items
