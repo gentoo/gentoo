@@ -9842,7 +9842,7 @@ dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1 2.2.0: Terminal painter
 dev-ruby/parallel 1.17.0 1.18.0 1.19.0 1.19.1: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
-dev-ruby/parser 2.6.5.0 2.7.0.3 2.7.0.4 2.7.0.5: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.6.5.0 2.7.0.3 2.7.0.4 2.7.0.5 2.7.1.0: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.2 0.7.3: Terminal strings styling with intuitive and clean API
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
@@ -18398,7 +18398,7 @@ x11-misc/libinput-gestures 2.48 9999: Actions gestures on your touchpad using li
 x11-misc/light-locker 1.8.0-r1 1.9.0-r2: A simple locker using lightdm
 x11-misc/lightdm 1.28.0 1.30.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.6 2.0.7-r1: LightDM GTK+ Greeter
-x11-misc/lightdm-mini-greeter 0.3.2 0.3.4: A Minimal, Configurable, Single-User GTK3 LightDM Greeter
+x11-misc/lightdm-mini-greeter 0.3.4 0.4.0: A Minimal, Configurable, Single-User GTK3 LightDM Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1 0.9.0-r2: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r2: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r2 0.9.0-r3: Linux support for Easy Access and Internet Keyboards
