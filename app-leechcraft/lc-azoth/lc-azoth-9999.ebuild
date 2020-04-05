@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit leechcraft
+inherit xdg-utils leechcraft
 
 DESCRIPTION="Azoth, the modular IM client for LeechCraft"
 
@@ -114,4 +114,10 @@ pkg_postinst() {
 		elog "so install the ones for languages you use to enable"
 		elog "spellchecking."
 	fi
+
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
