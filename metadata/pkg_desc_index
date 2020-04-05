@@ -11574,7 +11574,7 @@ games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/springlobby 0.266 0.267 0.269: The official lobby client for SpringRTS community games
 games-util/ucon64 2.0.0: The backup tool and wonderful emulator's Swiss Army knife program
 games-util/uglygs 0_rc11-r1: Quickly searches the network for game servers
-games-util/umodpack 0.5_beta16-r2: portable and useful [un]packer for Unreal Tournament's Umod files
+games-util/umodpack 0.5_beta16-r3: Portable (un)packer for Unreal Tournament's Umod files
 games-util/uz2unpack 0.1: UZ2 Decompressor for UT2003/UT2004
 games-util/vispatch 1.4.6: WaterVIS utility for glquake
 games-util/wiiload 0.5: load homebrew apps over the network to your Wii
