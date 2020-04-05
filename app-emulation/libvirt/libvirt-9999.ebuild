@@ -125,7 +125,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.0.0-do-not-use-sysconf.patch
+	"${FILESDIR}"/${PN}-6.2.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 )
 

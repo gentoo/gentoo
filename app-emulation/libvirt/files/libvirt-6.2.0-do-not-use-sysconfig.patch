@@ -1,0 +1,325 @@
+From c378ab3e7fe84ac69ad787c099f24fd32dbbf6e4 Mon Sep 17 00:00:00 2001
+Message-Id: <c378ab3e7fe84ac69ad787c099f24fd32dbbf6e4.1586091631.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Sun, 5 Apr 2020 14:41:45 +0200
+Subject: [PATCH] Do not use sysconfig
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ src/Makefile.am                         | 21 ++-------------------
+ src/interface/virtinterfaced.service.in |  1 -
+ src/libxl/virtxend.service.in           |  1 -
+ src/locking/virtlockd.service.in        |  3 +--
+ src/logging/virtlogd.service.in         |  3 +--
+ src/lxc/virtlxcd.service.in             |  1 -
+ src/network/virtnetworkd.service.in     |  1 -
+ src/node_device/virtnodedevd.service.in |  1 -
+ src/nwfilter/virtnwfilterd.service.in   |  1 -
+ src/qemu/virtqemud.service.in           |  1 -
+ src/remote/libvirtd.service.in          |  3 +--
+ src/remote/virtproxyd.service.in        |  1 -
+ src/secret/virtsecretd.service.in       |  1 -
+ src/storage/virtstoraged.service.in     |  1 -
+ src/vbox/virtvboxd.service.in           |  1 -
+ src/vz/virtvzd.service.in               |  1 -
+ tools/Makefile.am                       | 13 ++-----------
+ tools/libvirt-guests.service.in         |  2 +-
+ tools/libvirt-guests.sysconf            |  6 ++++++
+ 19 files changed, 14 insertions(+), 49 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 12dd6b80e1..10f1bb769d 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -522,23 +522,6 @@ EXTRA_DIST += \
+ 	$(SYSCONF_FILES) \
+ 	$(OPENRC_CONF_FILES)
+ 
+-install-sysconfig:
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/sysconfig
+-	for f in $(SYSCONF_FILES:%.sysconf=%) ; \
+-	do \
+-	  tgt=`basename $$f`; \
+-	  $(INSTALL_DATA) $(srcdir)/$$f.sysconf \
+-	      $(DESTDIR)$(sysconfdir)/sysconfig/$$tgt; \
+-	done
+-
+-uninstall-sysconfig:
+-	for f in $(SYSCONF_FILES:%.sysconf=%) ; \
+-	do \
+-	  tgt=`basename $$f`; \
+-	  rm -f $(DESTDIR)$(sysconfdir)/sysconfig/$$tgt; \
+-	done
+-	rmdir $(DESTDIR)$(sysconfdir)/sysconfig || :
+-
+ OPENRC_CONF_DIR = $(sysconfdir)/conf.d
+ 
+ install-openrc-conf:
+@@ -604,14 +587,14 @@ SYSTEMD_UNIT_DIR = $(prefix)/lib/systemd/system
+ BUILT_SOURCES += $(SYSTEMD_UNIT_FILES)
+ DISTCLEANFILES += $(SYSTEMD_UNIT_FILES)
+ 
+-install-systemd: $(SYSTEMD_UNIT_FILES) install-sysconfig
++install-systemd: $(SYSTEMD_UNIT_FILES)
+ 	$(MKDIR_P) $(DESTDIR)$(SYSTEMD_UNIT_DIR)
+ 	for f in $(SYSTEMD_UNIT_FILES); \
+ 	do \
+ 	  $(INSTALL_DATA) $$f $(DESTDIR)$(SYSTEMD_UNIT_DIR)/ ; \
+ 	done
+ 
+-uninstall-systemd: uninstall-sysconfig
++uninstall-systemd:
+ 	rm -f $(SYSTEMD_UNIT_FILES:%=$(DESTDIR)$(SYSTEMD_UNIT_DIR)/%)
+ 	rmdir $(DESTDIR)$(SYSTEMD_UNIT_DIR) || :
+ 
+diff --git a/src/interface/virtinterfaced.service.in b/src/interface/virtinterfaced.service.in
+index 73d409b81b..2d2c0138f5 100644
+--- a/src/interface/virtinterfaced.service.in
++++ b/src/interface/virtinterfaced.service.in
+@@ -13,7 +13,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtinterfaced
+ ExecStart=@sbindir@/virtinterfaced $VIRTINTERFACED_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/libxl/virtxend.service.in b/src/libxl/virtxend.service.in
+index a863917467..5b2d16f627 100644
+--- a/src/libxl/virtxend.service.in
++++ b/src/libxl/virtxend.service.in
+@@ -17,7 +17,6 @@ ConditionPathExists=/proc/xen/capabilities
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtxend
+ ExecStart=@sbindir@/virtxend $VIRTXEND_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/locking/virtlockd.service.in b/src/locking/virtlockd.service.in
+index e7f8057c06..2449b201d9 100644
+--- a/src/locking/virtlockd.service.in
++++ b/src/locking/virtlockd.service.in
+@@ -7,8 +7,7 @@ Documentation=man:virtlockd(8)
+ Documentation=https://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtlockd
+-ExecStart=@sbindir@/virtlockd $VIRTLOCKD_ARGS
++ExecStart=@sbindir@/virtlockd
+ ExecReload=/bin/kill -USR1 $MAINPID
+ # Loosing the locks is a really bad thing that will
+ # cause the machine to be fenced (rebooted), so make
+diff --git a/src/logging/virtlogd.service.in b/src/logging/virtlogd.service.in
+index daff48e67d..43736191d5 100644
+--- a/src/logging/virtlogd.service.in
++++ b/src/logging/virtlogd.service.in
+@@ -7,8 +7,7 @@ Documentation=man:virtlogd(8)
+ Documentation=https://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtlogd
+-ExecStart=@sbindir@/virtlogd $VIRTLOGD_ARGS
++ExecStart=@sbindir@/virtlogd
+ ExecReload=/bin/kill -USR1 $MAINPID
+ # Loosing the logs is a really bad thing that will
+ # cause the machine to be fenced (rebooted), so make
+diff --git a/src/lxc/virtlxcd.service.in b/src/lxc/virtlxcd.service.in
+index 3af7c1a52d..cff421d988 100644
+--- a/src/lxc/virtlxcd.service.in
++++ b/src/lxc/virtlxcd.service.in
+@@ -18,7 +18,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtlxcd
+ ExecStart=@sbindir@/virtlxcd $VIRTLXCD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process
+diff --git a/src/network/virtnetworkd.service.in b/src/network/virtnetworkd.service.in
+index e7f1326945..49fb7b99ff 100644
+--- a/src/network/virtnetworkd.service.in
++++ b/src/network/virtnetworkd.service.in
+@@ -13,7 +13,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtnetworkd
+ ExecStart=@sbindir@/virtnetworkd $VIRTNETWORKD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/node_device/virtnodedevd.service.in b/src/node_device/virtnodedevd.service.in
+index d2453dd620..847263e8b9 100644
+--- a/src/node_device/virtnodedevd.service.in
++++ b/src/node_device/virtnodedevd.service.in
+@@ -13,7 +13,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtnodedevd
+ ExecStart=@sbindir@/virtnodedevd $VIRTNODEDEVD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/nwfilter/virtnwfilterd.service.in b/src/nwfilter/virtnwfilterd.service.in
+index dda7c01a3d..bb0bf0afa4 100644
+--- a/src/nwfilter/virtnwfilterd.service.in
++++ b/src/nwfilter/virtnwfilterd.service.in
+@@ -13,7 +13,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtnwfilterd
+ ExecStart=@sbindir@/virtnwfilterd $VIRTNWFILTERD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/qemu/virtqemud.service.in b/src/qemu/virtqemud.service.in
+index 8abc9d3a7f..3539be3c0b 100644
+--- a/src/qemu/virtqemud.service.in
++++ b/src/qemu/virtqemud.service.in
+@@ -18,7 +18,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtqemud
+ ExecStart=@sbindir@/virtqemud $VIRTQEMUD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process
+diff --git a/src/remote/libvirtd.service.in b/src/remote/libvirtd.service.in
+index 90b2cad5b0..d16b11ec8d 100644
+--- a/src/remote/libvirtd.service.in
++++ b/src/remote/libvirtd.service.in
+@@ -25,8 +25,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/libvirtd
+-ExecStart=@sbindir@/libvirtd $LIBVIRTD_ARGS
++ExecStart=@sbindir@/libvirtd
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process
+ Restart=on-failure
+diff --git a/src/remote/virtproxyd.service.in b/src/remote/virtproxyd.service.in
+index f43ce9ee6e..9076e638a7 100644
+--- a/src/remote/virtproxyd.service.in
++++ b/src/remote/virtproxyd.service.in
+@@ -13,7 +13,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtproxyd
+ ExecStart=@sbindir@/virtproxyd $VIRTPROXYD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/secret/virtsecretd.service.in b/src/secret/virtsecretd.service.in
+index 8444142a3a..57e74c2d38 100644
+--- a/src/secret/virtsecretd.service.in
++++ b/src/secret/virtsecretd.service.in
+@@ -13,7 +13,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtsecretd
+ ExecStart=@sbindir@/virtsecretd $VIRTSECRETD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/storage/virtstoraged.service.in b/src/storage/virtstoraged.service.in
+index fc3e9a1b69..a82319b214 100644
+--- a/src/storage/virtstoraged.service.in
++++ b/src/storage/virtstoraged.service.in
+@@ -15,7 +15,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtstoraged
+ ExecStart=@sbindir@/virtstoraged $VIRTSTORAGED_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/vbox/virtvboxd.service.in b/src/vbox/virtvboxd.service.in
+index ebb31dde07..21eec57bab 100644
+--- a/src/vbox/virtvboxd.service.in
++++ b/src/vbox/virtvboxd.service.in
+@@ -14,7 +14,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtvboxd
+ ExecStart=@sbindir@/virtvboxd $VIRTVBOXD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/vz/virtvzd.service.in b/src/vz/virtvzd.service.in
+index f551cb8fbf..99b9b4f1bf 100644
+--- a/src/vz/virtvzd.service.in
++++ b/src/vz/virtvzd.service.in
+@@ -14,7 +14,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtvzd
+ ExecStart=@sbindir@/virtvzd $VIRTVZD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/tools/Makefile.am b/tools/Makefile.am
+index 53df930e0a..598a62ddef 100644
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -294,15 +294,6 @@ install-data-local: install-systemd install-nss \
+ uninstall-local: uninstall-systemd uninstall-nss \
+ 	uninstall-bash-completion
+ 
+-install-sysconfig:
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/sysconfig
+-	$(INSTALL_DATA) $(srcdir)/libvirt-guests.sysconf \
+-	  $(DESTDIR)$(sysconfdir)/sysconfig/libvirt-guests
+-
+-uninstall-sysconfig:
+-	rm -f $(DESTDIR)$(sysconfdir)/sysconfig/libvirt-guests
+-	rmdir $(DESTDIR)$(sysconfdir)/sysconfig ||:
+-
+ EXTRA_DIST += libvirt-guests.sh.in
+ 
+ libvirt-guests.sh: libvirt-guests.sh.in $(top_builddir)/config.status
+@@ -322,12 +313,12 @@ EXTRA_DIST += libvirt-guests.service.in
+ SYSTEMD_UNIT_DIR = $(prefix)/lib/systemd/system
+ 
+ if LIBVIRT_INIT_SCRIPT_SYSTEMD
+-install-systemd: libvirt-guests.service install-sysconfig libvirt-guests.sh
++install-systemd: libvirt-guests.service libvirt-guests.sh
+ 	$(MKDIR_P) $(DESTDIR)$(SYSTEMD_UNIT_DIR)
+ 	$(INSTALL_DATA) libvirt-guests.service \
+ 	  $(DESTDIR)$(SYSTEMD_UNIT_DIR)/libvirt-guests.service
+ 
+-uninstall-systemd: uninstall-sysconfig
++uninstall-systemd:
+ 	rm -f $(DESTDIR)$(SYSTEMD_UNIT_DIR)/libvirt-guests.service
+ 	rmdir $(DESTDIR)$(SYSTEMD_UNIT_DIR) ||:
+ 
+diff --git a/tools/libvirt-guests.service.in b/tools/libvirt-guests.service.in
+index 10c664016a..f0f417bffb 100644
+--- a/tools/libvirt-guests.service.in
++++ b/tools/libvirt-guests.service.in
+@@ -10,7 +10,7 @@ Documentation=man:libvirtd(8)
+ Documentation=https://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-@sysconfdir@/sysconfig/libvirt-guests
++EnvironmentFile=-/etc/libvirt/libvirt-guests.conf
+ # Hack just call traditional service until we factor
+ # out the code
+ ExecStart=@libexecdir@/libvirt-guests.sh start
+diff --git a/tools/libvirt-guests.sysconf b/tools/libvirt-guests.sysconf
+index 0765efec21..a1a53d8a8d 100644
+--- a/tools/libvirt-guests.sysconf
++++ b/tools/libvirt-guests.sysconf
+@@ -1,3 +1,9 @@
++#
++# Warning: This configuration file is only sourced by the systemd
++# libvirt-guests.service unit. The coresponding openrc facility is in
++# /etc/init.d/libvirtd and /etc/conf.d/libvirtd
++#
++
+ # Customizations for the libvirt-guests.service systemd unit
+ 
+ # URIs to check for running guests
+-- 
+2.24.1
+
