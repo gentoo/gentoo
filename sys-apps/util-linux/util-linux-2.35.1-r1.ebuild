@@ -191,7 +191,6 @@ multilib_src_configure() {
 			--enable-bash-completion
 			--enable-line
 			--enable-partx
-			--enable-pg
 			--enable-raw
 			--enable-rename
 			--enable-rfkill
@@ -203,6 +202,7 @@ multilib_src_configure() {
 			$(use_enable hardlink)
 			$(use_enable kill)
 			$(use_enable logger)
+			$(use_enable ncurses pg)
 			$(use_enable su)
 			$(use_enable tty-helpers mesg)
 			$(use_enable tty-helpers wall)
