@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit leechcraft
+inherit xdg-utils leechcraft
 
 DESCRIPTION="LeechCraft Media Player, Phonon-based audio/video player"
 
@@ -42,4 +42,12 @@ src_configure() {
 		-DENABLE_LMP_POTORCHU=$(usex potorchu)
 	)
 	cmake_src_configure
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
