@@ -31,5 +31,5 @@ src_compile() {
 src_install() {
 	dobin html2text
 	doman html2text.1 html2textrc.5
-	dodoc CHANGES CREDITS KNOWN_BUGS README TODO
+	dodoc CHANGES CREDITS KNOWN_BUGS TODO
 }
