@@ -12,7 +12,7 @@ SRC_URI="https://github.com/immerrr/${PN}/archive/rel-${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 RESTRICT="test"		# tests require cask which isn't packaged yet
 
 S="${WORKDIR}/${PN}-rel-${PV}"
