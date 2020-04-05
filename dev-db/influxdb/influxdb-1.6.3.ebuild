@@ -58,7 +58,7 @@ HOMEPAGE="https://www.influxdata.com"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
-LICENSE="MIT"
+LICENSE="MIT BSD Apache-2.0 EPL-1.0 MPL-2.0 MIT-with-advertising BSD-2 ISC"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
