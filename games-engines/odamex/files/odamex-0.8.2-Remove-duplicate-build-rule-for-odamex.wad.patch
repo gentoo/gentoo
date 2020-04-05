@@ -1,0 +1,26 @@
+From 2d80f79770f43d19e1af2c7b04a41078b860a46a Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Wed, 8 Apr 2020 11:47:45 -0400
+Subject: [PATCH] Remove duplicate build rule for odamex.wad
+
+The odamex.wad file shouldn't be listed in BYPRODUCTS because it's
+already listed as the OUTPUT of the add_custom_command.
+---
+ wad/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/wad/CMakeLists.txt b/wad/CMakeLists.txt
+index 349ce0df..7b948ea3 100644
+--- a/wad/CMakeLists.txt
++++ b/wad/CMakeLists.txt
+@@ -7,7 +7,6 @@ if(DEUTEX)
+ 	add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/odamex.wad
+ 		COMMAND ${DEUTEX} -rgb 0 255 255 -doom2 bootstrap -build wadinfo.txt ${CMAKE_CURRENT_BINARY_DIR}/odamex.wad
+ 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+-		BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/odamex.wad
+ 		VERBATIM)
+ 
+ 	add_custom_target(odawad ALL
+-- 
+2.26.0
+
