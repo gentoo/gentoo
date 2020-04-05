@@ -11,7 +11,7 @@ SRC_URI="http://python-mode.svn.sourceforge.net/viewvc/*checkout*/python-mode/tr
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ~ia64 ppc ppc64 ~s390 x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 x86"
 
 S="${WORKDIR}"
 SITEFILE="60${PN}-gentoo.el"
