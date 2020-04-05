@@ -9,7 +9,7 @@ SRC_URI="http://ftp.cs.stanford.edu/pub/sgb/sgb-${PV:0:4}-${PV:4:2}-${PV:6:2}.ta
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="virtual/tex-base"
