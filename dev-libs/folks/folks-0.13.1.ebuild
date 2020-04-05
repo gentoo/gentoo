@@ -3,7 +3,6 @@
 
 EAPI=7
 VALA_USE_DEPEND="vapigen"
-VALA_MAX_API_VERSION="0.44" # tests-utils fails to build with newer with v0.12.1
 
 inherit gnome.org gnome2-utils meson vala xdg
 
