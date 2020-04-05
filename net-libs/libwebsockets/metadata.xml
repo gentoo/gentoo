@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-		libwebsockets is a C library for lightweight websocket clients and servers.
-	</longdescription>
 	<use>
 		<flag name="access-log">Support generating Apache-compatible access logs</flag>
 		<flag name="cgi">Include CGI (spawn process with network-connected stdin/out/err) APIs</flag>
