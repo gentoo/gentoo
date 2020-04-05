@@ -35,7 +35,7 @@ diff --git a/docs/conf/inspircd.conf.example b/docs/conf/inspircd.conf
 similarity index 98%
 rename from docs/conf/inspircd.conf.example
 rename to docs/conf/inspircd.conf
-index dbd56d2fe..55535b1a0 100644
+index dbd56d2fe..665d4dfb5 100644
 --- a/docs/conf/inspircd.conf.example
 +++ b/docs/conf/inspircd.conf
 @@ -247,10 +247,10 @@
@@ -79,7 +79,7 @@ index dbd56d2fe..55535b1a0 100644
  #                                                                     #
  
 -#<pid file="/path/to/inspircd.pid">
-+#<pid file="/var/run/inspircd/inspircd.pid">
++<pid file="/var/run/inspircd/inspircd.pid">
  
  #-#-#-#-#-#-#-#-#-#-#-#-#- LIST MODE LIMITS #-#-#-#-#-#-#-#-#-#-#-#-#-#
  #                                                                     #
