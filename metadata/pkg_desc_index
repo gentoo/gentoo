@@ -3484,7 +3484,7 @@ dev-go/golint 0_pre20180702 0_pre20191125 0_pre20200301: a linter for Go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/goptlib 1.1.0: Go Tor pluggable transports library
 dev-go/goversion 1.2.0: Print version used to build Go executables
-dev-go/gox 0.4.0: A dead simple, no frills Go cross compile tool
+dev-go/gox 1.0.1: A dead simple, no frills Go cross compile tool
 dev-go/qr 0_p20161121: Basic QR code library for Go
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
 dev-go/siphash 1.0.0 1.2.1: Go implementation of SipHash-2.4
