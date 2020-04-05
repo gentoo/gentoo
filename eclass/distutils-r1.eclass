@@ -377,6 +377,76 @@ distutils_enable_sphinx() {
 	return 0
 }
 
+# @FUNCTION: distutils_enable_mkdocs
+# @USAGE: <subdir> [<plugin-pkgs>...]
+# @DESCRIPTION:
+# Set up IUSE, BDEPEND, python_check_deps() and python_compile_all() for
+# building HTML docs via dev-python/mkdocs.  python_compile_all() will
+# append to HTML_DOCS if docs are enabled.
+#
+# This helper is meant for the most common case, that is a single mkdocs
+# subdirectory with standard layout, building and installing HTML docs
+# behind USE=doc.  It assumes it's the only consumer of the three
+# aforementioned functions.  If you need to use a custom implemention,
+# you can't use it.
+#
+# If your package uses additional mkdocs plugins, they should be passed
+# (without PYTHON_USEDEP) as <plugin-pkgs>.  The function will take care
+# of setting appropriate any-of dep and python_check_deps().
+#
+# This function must be called in global scope.  Take care not to
+# overwrite the variables set by it.  If you need to extend
+# python_compile_all(), you can call the original implementation
+# as mkdocs_compile_all.
+distutils_enable_mkdocs() {
+	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${#} -ge 1 ]] || die "${FUNCNAME} takes at least one arg: <subdir>"
+
+	_DISTUTILS_MKDOCS_SUBDIR=${1}
+	shift
+	_DISTUTILS_MKDOCS_PLUGINS=( "${@}" )
+
+	local deps d
+	for d; do
+		deps+="
+			${d}[\${PYTHON_USEDEP}]"
+	done
+
+	deps="$(python_gen_any_dep "
+		dev-python/mkdocs[\${PYTHON_USEDEP}]
+		${deps}")"
+
+	python_check_deps() {
+		use doc || return 0
+		local p
+		for p in dev-python/mkdocs "${_DISTUTILS_MKDOCS_PLUGINS[@]}"; do
+			has_version "${p}[${PYTHON_USEDEP}]" || return 1
+		done
+	}
+
+	mkdocs_compile_all() {
+		use doc || return
+
+		local mkdocsyml=${_DISTUTILS_MKDOCS_SUBDIR}/mkdocs.yml
+		[[ -f ${mkdocsyml} ]] ||
+			die "${mkdocsyml} not found, distutils_enable_mkdocs call wrong"
+
+		build_mkdocs "${_DISTUTILS_MKDOCS_SUBDIR}"
+	}
+	python_compile_all() { mkdocs_compile_all; }
+
+	IUSE+=" doc"
+	if [[ ${EAPI} == [56] ]]; then
+		DEPEND+=" doc? ( ${deps} )"
+	else
+		BDEPEND+=" doc? ( ${deps} )"
+	fi
+
+	# we need to ensure successful return in case we're called last,
+	# otherwise Portage may wrongly assume sourcing failed
+	return 0
+}
+
 # @FUNCTION: distutils_enable_tests
 # @USAGE: <test-runner>
 # @DESCRIPTION:

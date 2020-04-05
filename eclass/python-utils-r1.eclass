@@ -1252,6 +1252,33 @@ build_sphinx() {
 	HTML_DOCS+=( "${dir}/_build/html/." )
 }
 
+# @FUNCTION: build_mkdocs
+# @USAGE: <directory>
+# @DESCRIPTION:
+# Build HTML documentation using dev-python/mkdocs in the specified
+# <directory>.  Takes care of appending to HTML_DOCS.
+#
+# If <directory> is relative to the current directory, care needs
+# to be taken to run einstalldocs from the same directory
+# (usually ${S}).
+build_mkdocs() {
+	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes 1 arg: <directory>"
+
+	local dir=${1}
+
+	pushd "${dir}"
+	mkdocs build -d _build/html || die
+	popd
+
+	# remove generated .gz variants
+	# mkdocs currently has no option to disable this
+	# and portage complains: "Colliding files found by ecompress"
+	rm "${dir}"/_build/html/*.gz
+
+	HTML_DOCS+=( "${dir}/_build/html/." )
+}
+
 # -- python.eclass functions --
 
 _python_check_dead_variables() {
