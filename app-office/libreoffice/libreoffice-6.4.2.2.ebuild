@@ -252,6 +252,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
+
+	# TODO: upstream (for now taken from Arch Linux)
+	"${FILESDIR}/${P}-poppler-0.86.patch" # bug 711102
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
