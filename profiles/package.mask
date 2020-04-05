@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-05)
+# Breaks app-text/texlive-core right now, bug #716344.
+~app-text/poppler-0.87.0
+
 # Joonas Niilola <juippis@gentoo.org> (2020-04-05)
 # Not maintained in Gentoo, doesn't build for 2 years, has only
 # deprecated version present in Gentoo. Has a huge number of open
