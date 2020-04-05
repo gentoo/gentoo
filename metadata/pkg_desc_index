@@ -17357,7 +17357,7 @@ sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.13.0: Tools for Flash-Friendly File System (F2FS)
-sys-fs/fatcat 1.0.6 1.1.0: FAT filesystems explore, extract, repair, and forensic tool
+sys-fs/fatcat 1.0.6 1.1.0 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic tool
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
 sys-fs/fatsort 1.5.0 1.6.2.605: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
