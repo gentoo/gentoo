@@ -11,18 +11,29 @@ inherit distutils-r1 readme.gentoo-r1
 DESCRIPTION="Update and verify unofficial Clam Anti-Virus signatures"
 HOMEPAGE="https://github.com/rseichter/fangfrisch https://pypi.org/project/fangfrisch/"
 SRC_URI="https://github.com/rseichter/fangfrisch/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
+MY_CONF="/etc/${PN}.conf"
+MY_DBDIR="/var/lib/${PN}"
 DISABLE_AUTOFORMATTING=1
-DOC_CONTENTS="Fresh installations:
+DOC_CONTENTS="See https://rseichter.github.io/fangfrisch/ for the official
+documentation.
 
-Before enabling /etc/cron.d/${PN} configure Fangfrisch,
-then run the 'initdb' command.
+### Fresh installations:
 
-Updating from release 1.0.1:
+Modify ${MY_CONF} according to your preferences.
+Assuming you place the database into ${MY_DBDIR}
+(recommended), execute the following commands in a root shell:
+
+mkdir -m 0770 ${MY_DBDIR}
+chgrp clamav ${MY_DBDIR}
+sudo -u clamav -- fangfrisch -c ${MY_CONF} initdb
+
+You can now enable /etc/cron.d/${PN} for periodic updates.
+
+### Alternative: Updating from release 1.0.1:
 
 Either create a fresh database or manually delete all existing
-database tables, then run the 'initdb' command.
-
-See https://rseichter.github.io/fangfrisch/ for more information."
+database tables, then run the initdb command as shown above."
 
 LICENSE="GPL-3+"
 SLOT="0"
