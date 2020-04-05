@@ -617,10 +617,6 @@ www-apps/venus
 # Masked for removal in 30 days. Bug #711398
 dev-libs/rocm-opencl-driver
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-29)
-# Breaks app-office/libreoffice right now, bug #711102.
-~app-text/poppler-0.86.1
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
 # Depends on dev-java/eclipse-ecj:4.13 which
 # depends on >=virtual/{jdk,jre}-11 which is masked
