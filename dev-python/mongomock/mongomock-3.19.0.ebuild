@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
-DESCRIPTION="Library to help testing Python code that interacts with MongoDB via Pymongo."
-HOMEPAGE=" https://github.com/mongomock/mongomock https://pypi.org/project/mongomock/"
+DESCRIPTION="Library to help testing Python code that interacts with MongoDB via Pymongo"
+HOMEPAGE="https://github.com/mongomock/mongomock https://pypi.org/project/mongomock/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
