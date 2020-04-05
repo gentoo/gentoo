@@ -1,4 +1,4 @@
-# Copyright 2017-2019 Gentoo Authors
+# Copyright 2017-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,7 +49,6 @@ RDEPEND="${DEPEND}
 	launcher? ( sys-apps/dbus )"
 BDEPEND="
 	doc? ( dev-python/docutils )
-	dev-python/docutils
 	virtual/pkgconfig
 "
 
