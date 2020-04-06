@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
+# grub pc is not supported on sparc
+sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen grub_platforms_xen-pvh
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
 # net-misc/unison is not keyworded
 net-misc/scponly unison
 
