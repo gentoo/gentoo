@@ -58,6 +58,10 @@ PDEPEND="mate? ( >=x11-themes/mate-icon-theme-${MATE_BRANCH} )"
 # GLib-GIO-ERROR **: Settings schema 'org.mate.caja.preferences' is not installed
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc-10-fno-common.patch"
+)
+
 src_prepare() {
 	# Remove unnecessary CFLAGS.
 	sed -i -e 's:-DG.*DISABLE_DEPRECATED::g' \
