@@ -51,7 +51,7 @@ src_configure() {
 	append-cxxflags -std=c++11
 	econf \
 		--enable-ladspa \
-		--enable-lilv \
+		--enable-liblilv \
 		$(use_enable debug) \
 		$(use_enable aubio libaubio) \
 		$(use_enable dssi) \
