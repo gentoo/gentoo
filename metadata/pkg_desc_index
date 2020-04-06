@@ -7500,6 +7500,7 @@ dev-python/beaker 1.8.1: A Session and Caching library with WSGI Middleware
 dev-python/beautifulsoup 4.8.1 4.8.2: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/bert 2.2.0: BERT Serialization Library
 dev-python/betamax 0.8.0 0.8.1: python-requests HTTP exchanges recorder
+dev-python/betamax-matchers 0.4.0: A group of experimental matchers for Betamax
 dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
 dev-python/billiard 3.6.0.0: Python multiprocessing fork
 dev-python/binaryornot 0.4.3: Ultra-lightweight pure Python package to guess whether a file is binary or text
@@ -7837,7 +7838,7 @@ dev-python/girder-client 2.3.0: Python libraries and CLI to interact with the RE
 dev-python/git-review 1.28.0: Tool to submit code to Gerrit
 dev-python/gitdb 4.0.2: GitDB is a pure-Python git object database
 dev-python/gitdb2 2.0.3: GitDB is a pure-Python git object database
-dev-python/github3 0.9.3: A wrapper for the GitHub API written in python
+dev-python/github3 0.9.3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/gitlabform 1.0.7 1.3.0 1.5.0: Easy configuration as code tool for GitLab using config in plain YAML
 dev-python/glance_store 1.0.1: A library for glance
 dev-python/globre 0.1.4 0.1.5: A glob matching library, providing an interface similar to the 're' module
@@ -7990,7 +7991,7 @@ dev-python/jupyter 1.0.0-r2: Jupyter metapackage. Install all the Jupyter compon
 dev-python/jupyter_client 5.2.3-r1 5.3.4: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 6.0.0: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.6.1: Core common functionality of Jupyter projects
-dev-python/jwcrypto 0.4.2: Implements JWK,JWS,JWE specifications using python-cryptography
+dev-python/jwcrypto 0.4.2 0.7.0: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.4.7: Kafka protocol support in Python
 dev-python/kaitaistruct 0.8: Kaitai Struct runtime for Python
 dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
