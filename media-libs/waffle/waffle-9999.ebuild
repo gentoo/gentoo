@@ -8,7 +8,7 @@ if [[ ${PV} = *9999* ]]; then
 	GIT_ECLASS="git-r3"
 else
 	SRC_URI="https://gitlab.freedesktop.org/mesa/${PN}/-/raw/website/files/release/${P}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 inherit meson multilib-minimal ${GIT_ECLASS}
 

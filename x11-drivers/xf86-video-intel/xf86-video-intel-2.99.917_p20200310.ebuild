@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="amd64 x86"
-	COMMIT_ID="6afed33b2d673d88674f0c76efe500ae414e8e1b"
+	COMMIT_ID="652d93cbbdc159c0883f1b626ea48e28bac63ae3"
 	SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/${COMMIT_ID}/${P}.tar.bz2"
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 fi
@@ -30,7 +30,6 @@ RDEPEND="
 	>=x11-libs/pixman-0.27.1
 	>=x11-libs/libdrm-2.4.52[video_cards_intel]
 	>=x11-base/xorg-server-1.18
-	!<=media-libs/mesa-12.0.4
 	tools? (
 		x11-libs/libX11
 		x11-libs/libxcb
