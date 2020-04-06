@@ -30,7 +30,6 @@ RDEPEND="
 		dev-python/functools32[${PYTHON_USEDEP}]
 		dev-python/typing[${PYTHON_USEDEP}]
 	' -2)
-	!dev-python/pep8[${PYTHON_USEDEP}]
 "
 PDEPEND="
 	>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
