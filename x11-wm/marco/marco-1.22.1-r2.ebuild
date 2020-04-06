@@ -8,12 +8,12 @@ MATE2_LA_PUNT="yes"
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="MATE default window manager"
 LICENSE="FDL-1.2+ GPL-2+ LGPL-2+ MIT"
-SLOT="0"
+SLOT="0/1"
 
 IUSE="startup-notification test xinerama"
 RESTRICT="!test? ( test )"
