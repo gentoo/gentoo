@@ -37,7 +37,6 @@ COMMON_DEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango
-	virtual/libintl
 	systemd? ( sys-apps/systemd )
 	!systemd? (
 		elogind? ( sys-auth/elogind )
@@ -46,6 +45,7 @@ COMMON_DEPEND="
 	xtrans? ( x11-libs/xtrans )"
 
 RDEPEND="${COMMON_DEPEND}
+	virtual/libintl
 	x11-apps/xdpyinfo
 	x11-misc/xdg-user-dirs
 	x11-misc/xdg-user-dirs-gtk
@@ -55,8 +55,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=dev-lang/perl-5
 	dev-util/glib-utils
-	>=dev-util/intltool-0.40
-	>=sys-devel/gettext-0.10.40
+	>=sys-devel/gettext-0.19.8:*
 	virtual/pkgconfig"
 
 MATE_FORCE_AUTORECONF=true
@@ -83,8 +82,8 @@ src_install() {
 
 	dodir /etc/X11/xinit/xinitrc.d/
 	exeinto /etc/X11/xinit/xinitrc.d/
-	doexe "${FILESDIR}"/15-xdg-data-mate
+	newexe "${FILESDIR}"/15-xdg-data-mate-r1 15-xdg-data-mate
 
 	# This should be done in MATE too, see Gentoo bug #270852
-	doexe "${FILESDIR}"/10-user-dirs-update-mate
+	newexe "${FILESDIR}"/10-user-dirs-update-mate-r1 10-user-dirs-update-mate
 }
