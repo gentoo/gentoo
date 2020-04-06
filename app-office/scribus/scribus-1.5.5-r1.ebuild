@@ -75,6 +75,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-poppler-0.82.patch
 	"${FILESDIR}"/${P}-poppler-0.83.patch
 	"${FILESDIR}"/${P}-poppler-0.84.patch
+	"${FILESDIR}"/${P}-poppler-0.86.patch
 	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${P}-docdir.patch
