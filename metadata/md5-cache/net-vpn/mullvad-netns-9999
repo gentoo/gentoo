@@ -1,0 +1,11 @@
+BDEPEND=sys-apps/coreutils sys-devel/make >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=unpack
+DESCRIPTION=Script to run a command within a Mullvad network namespace
+EAPI=7
+HOMEPAGE=https://github.com/chutz/mullvad-netns
+LICENSE=GPL-2+
+PROPERTIES=live
+RDEPEND=app-misc/jq app-shells/bash net-misc/curl[ipv6,ssl] net-vpn/wireguard-tools sys-apps/baselayout sys-apps/coreutils sys-apps/grep sys-apps/iproute2[ipv6] sys-apps/util-linux
+SLOT=0
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
+_md5_=d2e26ee1d96db46cdb24dd1bd229d92d
