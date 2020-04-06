@@ -1,0 +1,52 @@
+From c2f808efeb0820edf23dbb66362ad3091321253f Mon Sep 17 00:00:00 2001
+From: Mateusz Mandera <mateusz.mandera@protonmail.com>
+Date: Tue, 31 Mar 2020 15:11:30 +0200
+Subject: [PATCH] Use proc_ops structure for kernel version >= 5.6.0
+
+Since 5.6.0, proc_create requires a proc_ops* argument
+instead of file_operations*.
+---
+ bbswitch.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/bbswitch.c b/bbswitch.c
+index d64cdae..9ca0e42 100644
+--- a/bbswitch.c
++++ b/bbswitch.c
+@@ -42,6 +42,9 @@
+ #include <linux/suspend.h>
+ #include <linux/seq_file.h>
+ #include <linux/pm_runtime.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++#include <linux/proc_fs.h>
++#endif
+ 
+ #define BBSWITCH_VERSION "0.8"
+ 
+@@ -382,6 +385,15 @@ static int bbswitch_pm_handler(struct notifier_block *nbp,
+     return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++static struct proc_ops bbswitch_fops = {
++    .proc_open   = bbswitch_proc_open,
++    .proc_read   = seq_read,
++    .proc_write  = bbswitch_proc_write,
++    .proc_lseek = seq_lseek,
++    .proc_release= single_release
++};
++#else
+ static struct file_operations bbswitch_fops = {
+     .open   = bbswitch_proc_open,
+     .read   = seq_read,
+@@ -389,6 +401,7 @@ static struct file_operations bbswitch_fops = {
+     .llseek = seq_lseek,
+     .release= single_release
+ };
++#endif
+ 
+ static struct notifier_block nb = {
+     .notifier_call = &bbswitch_pm_handler
+-- 
+2.26.0
+
