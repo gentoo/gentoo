@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfredo Tupone <tupone@gentoo.org> (2020-04-06)
+# USE=ada is mandatory to build a gnat compiler
+sys-devel/gnat-gpl ada
+
 # Matt Turner <mattst88@gentoo.org> (2020-03-28)
 # wget is the default FETCHCOMMAND, and most distfiles are distributed via
 # HTTPS. Bug #611072
