@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -87,6 +87,7 @@ src_configure() {
 		-DENABLE_MYSQL="$(usex mysql)"
 		-DENABLE_PQXX="$(usex postgres)"
 		-DENABLE_PURPLE="$(usex purple)"
+		$(usex irc '-DENABLE_QT4=OFF' '')
 		-DENABLE_SMSTOOLS3="$(usex sms)"
 		-DENABLE_SQLITE3="$(usex sqlite)"
 		-DENABLE_TESTS="$(usex test)"

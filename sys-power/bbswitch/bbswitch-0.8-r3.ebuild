@@ -15,7 +15,7 @@ else
 		"${FILESDIR}/${PN}-0.8-kernel-5.6.patch"
 	)
 	SRC_URI="https://github.com/Bumblebee-Project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Toggle discrete NVIDIA Optimus graphics card"

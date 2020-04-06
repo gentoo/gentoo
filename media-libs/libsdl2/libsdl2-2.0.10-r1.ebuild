@@ -6,31 +6,29 @@ inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 MY_P="SDL2-${PV}"
 DESCRIPTION="Simple Direct Media Layer"
-HOMEPAGE="https://www.libsdl.org/"
-SRC_URI="https://www.libsdl.org/release/${MY_P}.tar.gz"
+HOMEPAGE="http://www.libsdl.org"
+SRC_URI="http://www.libsdl.org/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
-IUSE="alsa altivec aqua cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus gles haptic jack +joystick kms libsamplerate nas opengl oss pulseaudio +sound static-libs +threads tslib udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
+IUSE="cpu_flags_x86_3dnow alsa altivec aqua custom-cflags dbus gles2 haptic libsamplerate +joystick kms cpu_flags_x86_mmx nas opengl oss pulseaudio +sound cpu_flags_x86_sse cpu_flags_x86_sse2 static-libs +threads tslib udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
 REQUIRED_USE="
 	alsa? ( sound )
-	gles? ( video )
-	jack? ( sound )
+	gles2? ( video )
 	nas? ( sound )
 	opengl? ( video )
 	pulseaudio? ( sound )
 	vulkan? ( video )
-	wayland? ( gles )
+	wayland? ( gles2 )
 	xinerama? ( X )
 	xscreensaver? ( X )"
 
 CDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
-	gles? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2] )
-	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
+	gles2? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2] )
 	kms? (
 		>=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]
 		>=media-libs/mesa-9.0.0[${MULTILIB_USEDEP},gbm]
@@ -126,8 +124,6 @@ multilib_src_configure() {
 		$(use_enable oss)
 		$(use_enable alsa)
 		--disable-alsa-shared
-		$(use_enable jack)
-		--disable-jack-shared
 		--disable-esd
 		$(use_enable pulseaudio)
 		--disable-pulseaudio-shared
@@ -161,7 +157,7 @@ multilib_src_configure() {
 		$(use_enable video video-dummy)
 		$(use_enable opengl video-opengl)
 		--disable-video-opengles1
-		$(use_enable gles video-opengles2)
+		$(use_enable gles2 video-opengles2)
 		$(use_enable vulkan video-vulkan)
 		$(use_enable udev libudev)
 		$(use_enable dbus)
@@ -185,8 +181,9 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	# Do not delete the static .a libraries here as some are
-	# mandatory. They may be needed even when linking dynamically.
 	find "${ED}" -type f -name "*.la" -delete || die
+	if ! use static-libs ; then
+		find "${ED}" -type f -name "*.a" -delete || die
+	fi
 	dodoc {BUGS,CREDITS,README,README-SDL,TODO,WhatsNew}.txt docs/README*.md
 }
