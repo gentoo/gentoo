@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2002-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,13 +18,11 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="doc selinux"
 
-DEPEND=">=dev-libs/elfutils-0.100[static-libs(+)]
-	selinux? ( sys-libs/libselinux[static-libs(+)] )
-	!dev-libs/libelf
-	sys-libs/binutils-libs
-	>=sys-libs/glibc-2.8"
-RDEPEND="${DEPEND}
-	>=sys-devel/binutils-2.18"
+RDEPEND=">=dev-libs/elfutils-0.100
+	selinux? ( sys-libs/libselinux )
+	!dev-libs/libelf"
+DEPEND="${RDEPEND}
+	sys-libs/binutils-libs"
 
 S=${WORKDIR}/${MY_P}
 
