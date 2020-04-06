@@ -43,6 +43,7 @@ RDEPEND="
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.17
 	)
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_MULTI_USEDEP}]' python3_6)
 "
 
 DEPEND="${RDEPEND}
