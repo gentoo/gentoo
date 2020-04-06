@@ -451,11 +451,6 @@ www-apps/ownpaste
 # Removal in 30 days.  Bug #706362.
 www-apps/venus
 
-# Craig Andrews <candrews@gentoo.org> (2020-03-03)
-# Deprecated upstream in favor of dev-libs/rocm-comgr
-# Masked for removal in 30 days. Bug #711398
-dev-libs/rocm-opencl-driver
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
 # Depends on dev-java/eclipse-ecj:4.13 which
 # depends on >=virtual/{jdk,jre}-11 which is masked
