@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+DEFINED_PHASES=compile configure install test
+DEPEND=>=x11-libs/gtk+-3.22.0:3[introspection,wayland] >=dev-libs/wayland-1.10.0
+DESCRIPTION=Library to create desktop components for Wayland using the Layer Shell protocol
+EAPI=7
+HOMEPAGE=https://github.com/wmww/gtk-layer-shell
+IUSE=examples gtk-doc
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT-with-advertising
+RDEPEND=>=x11-libs/gtk+-3.22.0:3[introspection,wayland] >=dev-libs/wayland-1.10.0
+SLOT=0
+SRC_URI=https://github.com/wmww/gtk-layer-shell/releases/download/v0.1.0/gtk-layer-shell-0.1.0.tar.xz
+_eclasses_=meson	0b22603e8787cab8d798c23c5e711ca5	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=9513285039b63e72f51f39881852fbef

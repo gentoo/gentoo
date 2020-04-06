@@ -3916,6 +3916,7 @@ mate-base/mate:extras - Install additional MATE Desktop applications that are re
 mate-base/mate:help - Install gnome-extra/yelp to handle in application help menus and documentation browsing
 mate-base/mate:notification - Force notification daemon to default to MATE's notification daemon. Enabled by default. Disable if it causes conflicts with other installed desktop environments.
 mate-base/mate:themes - Install MATE Desktop's themes; if you use other themes, you can disable this to spare some space and time.
+mate-base/mate-applets:cpupower - Enable support for cpu frequency manipulation using sys-power/cpupower
 mate-base/mate-applets-meta:appindicator - Pull in mate-extra/mate-indicator-applet for AppIndicator applet
 mate-base/mate-applets-meta:sensors - Pull in mate-extra/mate-sensors-applet for hw sensors applet
 mate-base/mate-control-center:accountsservice - Add support for AccountsService
@@ -4029,6 +4030,7 @@ media-gfx/digikam:vkontakte - Build net-libs/libkvkontakte plugin for vkontakte.
 media-gfx/digikam:webkit - Build with dev-qt/qtwebkit instead of dev-qt/qtwebengine
 media-gfx/eog-plugins:map - Enable world map display using media-libs/libchamplain
 media-gfx/eog-plugins:picasa - Enable uploading to Google's Picasa Web Albums
+media-gfx/eom:imagemagick - Use media-gfx/imagemagick as an external backend for the thumbnailer
 media-gfx/exact-image:swig - Adds Swig support dev-lang/swig
 media-gfx/exiv2:webready - Support reading metadata over the internet
 media-gfx/fbida:X - Install the Motif based image viewer "ida"
