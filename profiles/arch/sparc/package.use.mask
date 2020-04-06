@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
+# net-misc/unison is not keyworded
+net-misc/scponly unison
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
 # hardware related dependencies are not keyworded
 net-analyzer/nagios-plugin-check_raid 3ware aacraid hpa hpsa megaraid-sas megaraid-scsi mpt-sas2 mpt
 
