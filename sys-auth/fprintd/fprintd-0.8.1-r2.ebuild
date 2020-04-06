@@ -69,10 +69,10 @@ src_install() {
 	dodoc AUTHORS NEWS README{,.transifex} TODO
 	newdoc pam/README README.pam_fprintd
 	if use doc ; then
-		insinto /usr/share/doc/${PF}/html
-		doins doc/{fprintd-docs,version}.xml
-		insinto /usr/share/doc/${PF}/html/dbus
-		doins doc/dbus/net.reactivated.Fprint.{Device,Manager}.ref.xml
+		docinto html
+		dodoc doc/{fprintd-docs,version}.xml
+		docinto html/dbus
+		dodoc doc/dbus/net.reactivated.Fprint.{Device,Manager}.ref.xml
 	fi
 }
 
