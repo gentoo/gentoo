@@ -2436,7 +2436,7 @@ app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.0.2 0.0.3 0.0.4 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.0.2 0.0.3 0.0.4 0.0.5 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -5016,7 +5016,7 @@ dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to
 dev-libs/libfido2 1.3.0-r1 1.3.1: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1 0.20.2: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
-dev-libs/libfmt 6.1.2 9999: Small, safe and fast formatting library
+dev-libs/libfmt 6.1.2 6.2.0 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
@@ -7574,7 +7574,7 @@ dev-python/confuse 1.0.0: Confuse is a configuration library for Python that use
 dev-python/consonance 0.1.3: WhatsApp's handshake implementation using Noise Protocol
 dev-python/constantly 15.1.0-r1: Symbolic constants in Python
 dev-python/construct 2.9.45: A powerful declarative parser for binary data
-dev-python/contextlib2 0.6.0: Backports and enhancements for the contextlib module
+dev-python/contextlib2 0.6.0 0.6.0_p1: Backports and enhancements for the contextlib module
 dev-python/contextvars 2.4: Backport of Python 3.7 contextvars module (PEP 567) for Python 3.6
 dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
@@ -14022,7 +14022,7 @@ net-analyzer/nessus-agent-bin 7.5.1: A remote security scanner for Linux - agent
 net-analyzer/nessus-bin 8.9.1: A remote security scanner for Linux
 net-analyzer/net-snmp 5.8-r3 5.8-r4 5.8-r5 5.8.1_pre1-r1 5.8.1_pre2 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
-net-analyzer/netdata 1.19.0-r2 1.20.0 1.20.0-r1 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.19.0-r2 1.20.0 1.20.0-r1 1.21.0 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3 0.3_beta6-r4: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
@@ -15233,7 +15233,7 @@ net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - pyth
 net-vpn/strongswan 5.8.1 5.8.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 0.97_p45: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.1.7 0.4.1.8 0.4.1.9 0.4.2.5 0.4.2.6 0.4.2.7 0.4.3.2_alpha 0.4.3.3_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.2.7 0.4.3.3_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
