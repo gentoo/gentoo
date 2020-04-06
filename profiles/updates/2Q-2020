@@ -1,2 +1,3 @@
 move dev-libs/yaml-cpp dev-cpp/yaml-cpp
 move dev-python/scikit-learn sci-libs/scikits_learn
+move dev-python/rnc2rng app-text/rnc2rng
