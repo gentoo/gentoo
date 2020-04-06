@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -72,6 +72,10 @@ python_prepare_all() {
 	sed -i -e '/def test_partialfunction/i\
 @pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
 		-e '/def test_autodoc_typed_instance_variables/i\
+@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
+		-e '/def test_autodoc_inherited_members_None/i\
+@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
+		-e '/def test_cython/i\
 @pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
 		tests/test_autodoc.py || die
 	sed -i -e '11aimport sys' \
