@@ -10261,7 +10261,7 @@ dev-util/cargo-tree 0.28.0 0.29.0: Cargo subcommand that visualizes crate depend
 dev-util/catalyst 3.0.8 3.0.9 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/cbindgen 0.13.1 0.13.2: A tool for generating C bindings to Rust code
+dev-util/cbindgen 0.13.2: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.2 3.7.6 3.7.7 3.7.7-r1 3.7.8 3.7.8-r1 3.7.9: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 9999: C/C++/ObjC language server
