@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
+# No stable app-arch/rpm on hppa, bug #471456
+rpm
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-05)
 # app-editors/{,g}vim has no stable keywords
 vim-syntax
