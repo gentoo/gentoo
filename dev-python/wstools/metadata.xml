@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">wstools</remote-id>
-    <remote-id type="github">kiorky/wstools</remote-id>
+    <remote-id type="github">pycontribs/wstools</remote-id>
   </upstream>
 </pkgmetadata>
