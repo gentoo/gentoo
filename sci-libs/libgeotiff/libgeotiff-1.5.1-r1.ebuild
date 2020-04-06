@@ -25,6 +25,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-proj-6.2-tests.patch" )
+
 src_prepare() {
 	default
 	sed -e "s:-O3::g" -i configure.ac || die
