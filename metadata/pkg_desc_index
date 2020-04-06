@@ -582,7 +582,7 @@ app-arch/deltarpm 3.6: tools to create and apply deltarpms
 app-arch/dpkg 1.19.0.5 1.19.6 1.19.7 1.20.0: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.46 0.4.46-r1: Dump/restore ext2fs backup utilities
-app-arch/engrampa 1.22.1-r1 1.22.3 1.24.0: Engrampa archive manager for MATE
+app-arch/engrampa 1.22.1-r1 1.22.3-r1 1.24.0: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
 app-arch/file-roller 3.32.3 3.32.4: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
@@ -12144,10 +12144,10 @@ mail-mta/protonmail-bridge-bin 1.2.3 1.2.5 1.2.6: Serves ProtonMail to IMAP/SMTP
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
-mate-base/caja 1.22.1 1.22.3 1.24.0: Caja file manager for the MATE desktop
+mate-base/caja 1.22.1 1.22.3-r1 1.24.0: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.18.2 1.22.0 1.24.0: MATE keyboard configuration library
 mate-base/mate 1.22 1.24: Meta ebuild for MATE, a traditional desktop environment
-mate-base/mate-applets 1.22.0 1.22.1 1.22.2 1.24.0: Applets for the MATE Desktop and Panel
+mate-base/mate-applets 1.22.0 1.22.1 1.22.2-r1 1.24.0: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.22.0 1.24.0: Meta package for MATE panel applets
 mate-base/mate-common 1.22.0 1.22.2 1.24.0: Common files for development of MATE packages
 mate-base/mate-control-center 1.22.1-r1 1.22.2 1.22.2-r1 1.24.0: The MATE Desktop configuration tool
@@ -12171,7 +12171,7 @@ mate-extra/mate-sensors-applet 1.22.1 1.24.0: MATE panel applet to display readi
 mate-extra/mate-system-monitor 1.22.0 1.22.1 1.22.2 1.24.0: The MATE System Monitor
 mate-extra/mate-user-guide 1.22.0 1.22.2 1.22.3 1.24.0: User documentation for MATE Desktop
 mate-extra/mate-user-share 1.22.0 1.22.1 1.24.0: Personal file sharing for the MATE desktop
-mate-extra/mate-utils 1.22.0 1.22.1-r1 1.22.2 1.24.0: Utilities for the MATE desktop
+mate-extra/mate-utils 1.22.0 1.22.1-r1 1.22.2-r1 1.24.0: Utilities for the MATE desktop
 media-fonts/Humor-Sans 1.0-r1: A sanserif typeface in the style of xkcd
 media-fonts/ahem 1.0: A font developed to help test writers develop predictable tests
 media-fonts/alee-fonts 13-r1: A Lee's Hangul truetype fonts
@@ -17827,8 +17827,8 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 68.6.1 74.0.1: Firefox Web Browser
-www-client/firefox-bin 52.9.0 68.6.1 74.0.1: Firefox Web Browser
+www-client/firefox 52.9.0 68.6.1 74.0.1 75.0: Firefox Web Browser
+www-client/firefox-bin 52.9.0 68.6.1 74.0.1 75.0: Firefox Web Browser
 www-client/google-chrome 80.0.3987.163: The web browser from Google
 www-client/google-chrome-beta 81.0.4044.92: The web browser from Google
 www-client/google-chrome-unstable 83.0.4100.3: The web browser from Google
