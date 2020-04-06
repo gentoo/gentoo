@@ -45,6 +45,10 @@ src_configure() {
 		$(use_enable packagekit)
 }
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc-10-fno-common.patch"
+)
+
 src_install() {
 	mate_src_install
 }
@@ -66,4 +70,3 @@ pkg_postinst() {
 	optfeature "Support for unstuff"  app-arch/stuffit
 	optfeature "Support for zoo"  app-arch/zoo
 }
-
