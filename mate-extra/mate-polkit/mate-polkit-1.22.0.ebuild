@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="A MATE specific DBUS service that is used to bring up authentication dialogs"
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 
 IUSE="accountsservice appindicator"

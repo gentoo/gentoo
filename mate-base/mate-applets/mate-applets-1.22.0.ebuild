@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Applets for the MATE Desktop and Panel"
-LICENSE="GPL-2 FDL-1.1 LGPL-2"
+LICENSE="CC-BY-SA-3.0 FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+"
 SLOT="0"
 
 IUSE="X ipv6 policykit +upower"
