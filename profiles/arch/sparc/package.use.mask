@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
+# hardware related dependencies are not keyworded
+net-analyzer/nagios-plugin-check_raid 3ware aacraid hpa hpsa megaraid-sas megaraid-scsi mpt-sas2 mpt
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
 # dev-python/pymongo is not keyworded
 app-portage/g-sorcery bson
