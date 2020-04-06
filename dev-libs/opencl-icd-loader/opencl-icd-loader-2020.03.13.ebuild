@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 MY_PN="OpenCL-ICD-Loader"
 MY_P="${MY_PN}-${PV}"
@@ -25,6 +25,15 @@ RDEPEND="${DEPEND}
 	app-eselect/eselect-opencl"
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	# Until the next upstream release. Bug #716410
+	if use test; then
+		append-cflags $(test-flags-CC -fcommon)
+	fi
+
+	cmake_src_prepare
+}
 
 multilib_src_configure() {
 	local ocl_dir="/usr/$(get_libdir)/OpenCL/vendors/${PN}"
