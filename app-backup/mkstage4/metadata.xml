@@ -10,10 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-		This is a bash script to create stage 4 tarballs either for the 
-		running system, or a system at a specified mount point. It is 
-		highly parameterized allowing the exclusion of sensitive user
-		data.
+		This is a bash script which can create stage 4 tarballs either
+		for the running system, or a system at a specified mount point.
+		It is highly parameterized allowing among other things the
+		exclusion of sensitive user data.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">TheChymera/mkstage4</remote-id>
