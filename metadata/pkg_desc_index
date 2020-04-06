@@ -2436,7 +2436,7 @@ app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.0.2 0.0.3 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.0.2 0.0.3 0.0.4 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -8305,7 +8305,7 @@ dev-python/pygal 2.4.0 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6 1.9.6-r1: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 1.0.3 1.1.1: Python bindings for libgit2
+dev-python/pygit2 1.0.3 1.1.1 1.2.0: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.5.2 2.6.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
@@ -8696,7 +8696,7 @@ dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with ga
 dev-python/sparql-wrapper 1.8.4: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
-dev-python/sphinx 1.7.5-r1 2.0.1-r1 2.4.3-r1 2.4.4: Python documentation generator
+dev-python/sphinx 1.7.5-r1 2.0.1-r1 2.4.3-r1 2.4.4 3.0.0: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.5 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -8869,7 +8869,7 @@ dev-python/webassets 0.12.1 2.0: Asset management for Python web development
 dev-python/webcolors 1.10 1.11.1: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5.1-r1: Character encoding aliases for legacy web content
 dev-python/webob 1.8.5-r3: WSGI request and response object
-dev-python/websocket-client 0.48.0 0.56.0: WebSocket client for python with hybi13 support
+dev-python/websocket-client 0.48.0 0.56.0 0.57.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.8.0 0.9.0: WebSockets support for any application/server
 dev-python/webtest 2.0.21 2.0.29 2.0.29-r1 2.0.33: Helper to test WSGI applications
 dev-python/werkzeug 0.16.0 0.16.1 1.0.0 1.0.1: Collection of various utilities for WSGI applications
