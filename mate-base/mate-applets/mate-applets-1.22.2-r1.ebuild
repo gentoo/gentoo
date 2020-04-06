@@ -55,6 +55,10 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc-10-fno-common.patch"
+)
+
 src_configure() {
 
 	# configure.ac logic is a little hinky

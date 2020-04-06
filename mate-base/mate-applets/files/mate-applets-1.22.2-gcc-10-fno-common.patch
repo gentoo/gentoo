@@ -1,0 +1,45 @@
+From c477b6fd2eec63f629ff5934e78c190ea6c73911 Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Wed, 29 Jan 2020 17:10:12 +0100
+Subject: [PATCH] Fix build using gcc 10 -fno-common flag
+
+---
+ drivemount/drive-list.c | 4 ++++
+ drivemount/drive-list.h | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/drivemount/drive-list.c b/drivemount/drive-list.c
+index a20e1329..1b3679b3 100644
+--- a/drivemount/drive-list.c
++++ b/drivemount/drive-list.c
+@@ -32,6 +32,8 @@
+ 
+ G_DEFINE_TYPE (DriveList, drive_list, GTK_TYPE_GRID);
+ 
++GSettings *settings;
++
+ static GVolumeMonitor *volume_monitor = NULL;
+ 
+ static void drive_list_finalize (GObject *object);
+@@ -153,6 +155,8 @@ drive_list_finalize (GObject *object)
+     g_hash_table_destroy (self->volumes);
+     g_hash_table_destroy (self->mounts);
+ 
++    g_object_unref (settings);
++
+     if (G_OBJECT_CLASS (drive_list_parent_class)->finalize)
+ 	(* G_OBJECT_CLASS (drive_list_parent_class)->finalize) (object);
+ }
+diff --git a/drivemount/drive-list.h b/drivemount/drive-list.h
+index c7e844dd..ea55b908 100644
+--- a/drivemount/drive-list.h
++++ b/drivemount/drive-list.h
+@@ -65,7 +65,7 @@ void       drive_list_set_panel_size  (DriveList *list,
+ 				       int panel_size);
+ void       drive_list_set_transparent (DriveList *self,
+ 				       gboolean transparent);
+-GSettings *settings;
++extern GSettings *settings;
+ void       drive_list_redraw (DriveList *self);
+ void       settings_color_changed (GSettings *settings, gchar *key, DriveList *drive_list);
+ 
