@@ -4,4 +4,7 @@
   <maintainer type="person">
     <email>lu_zero@gentoo.org</email>
   </maintainer>
+  <use>
+    <flag name="capi">Build the C-API library and header file</flag>
+  </use>
 </pkgmetadata>
