@@ -46,6 +46,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc-10-fno-common.patch"
+)
+
 src_prepare() {
 	# Make apps visible in all DEs.
 	LC_ALL=C find . -iname '*.desktop.in*' -exec \
