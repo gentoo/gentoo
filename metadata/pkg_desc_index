@@ -16981,7 +16981,7 @@ sys-boot/refind 0.10.4-r2 0.11.2 0.11.3 0.11.4: The UEFI Boot Manager by Rod Smi
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
 sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
-sys-boot/syslinux 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+sys-boot/syslinux 5.10 6.03 6.04_pre1 6.04_pre1-r1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 243 245: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015-r1 2018 2018-r1: Tianocore UEFI Development kit
@@ -17827,8 +17827,8 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 68.6.1 74.0.1 75.0: Firefox Web Browser
-www-client/firefox-bin 52.9.0 68.6.1 74.0.1 75.0: Firefox Web Browser
+www-client/firefox 52.9.0 68.6.1 68.7.0 74.0.1 75.0: Firefox Web Browser
+www-client/firefox-bin 52.9.0 68.6.1 68.7.0 74.0.1 75.0: Firefox Web Browser
 www-client/google-chrome 80.0.3987.163: The web browser from Google
 www-client/google-chrome-beta 81.0.4044.92: The web browser from Google
 www-client/google-chrome-unstable 83.0.4100.3: The web browser from Google
