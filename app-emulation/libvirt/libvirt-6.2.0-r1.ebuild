@@ -11,11 +11,11 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
 	SRC_URI=""
-	KEYWORDS="amd64 x86"
+	KEYWORDS=""
 	SLOT="0"
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -25,7 +25,7 @@ LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
 	iscsi-direct +libvirtd lvm libssh lxc +macvtap nfs nls numa openvz
-	parted pcap phyp policykit +qemu rbd sasl selinux +udev +vepa
+	parted pcap policykit +qemu rbd sasl selinux +udev +vepa
 	virtualbox virt-network wireshark-plugins xen zfs
 "
 
@@ -71,7 +71,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	dtrace? ( dev-util/systemtap )
 	firewalld? ( >=net-firewall/firewalld-0.6.3 )
-	fuse? ( sys-fs/fuse:0= )
+	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
@@ -126,9 +126,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-do-not-use-sysconf.patch
-	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-5.2.0-fix-paths-for-apparmor.patch
-	"${FILESDIR}"/${PN}-6.0.0-qemu-end-the-agent-job-in-qemuDomainSetTimeAgent.patch
+	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
+	"${FILESDIR}"/${PN}-6.1.0-fix-paths-for-apparmor.patch
 )
 
 pkg_setup() {
@@ -253,7 +252,6 @@ my_src_configure() {
 		$(use_with openvz)
 		$(use_with parted storage-disk)
 		$(use_with pcap libpcap)
-		$(use_with phyp)
 		$(use_with policykit polkit)
 		$(use_with qemu)
 		$(use_with qemu yajl)
@@ -326,9 +324,6 @@ my_src_install() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	systemd_install_serviced \
-		"${FILESDIR}"/libvirtd.service.conf libvirtd.service
-
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd
@@ -339,7 +334,7 @@ my_src_install() {
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r3")
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
 }

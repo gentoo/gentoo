@@ -36,8 +36,8 @@ For openrc users:
 
 For systemd users:
 
-	Please use /etc/systemd/system/libvirtd.service.d/00gentoo.conf
-	to control the '--listen' parameter for libvirtd.
+	The '--listen' parameter is unavailable when libvirtd is run as a
+    systemd unit.
 
 	The configuration for the 'libvirt-guests.service' is found under
 	/etc/libvirt/libvirt-guests.conf"

@@ -324,9 +324,6 @@ my_src_install() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	systemd_install_serviced \
-		"${FILESDIR}"/libvirtd.service.conf libvirtd.service
-
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd
@@ -337,7 +334,7 @@ my_src_install() {
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r3")
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
 }
