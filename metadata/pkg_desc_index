@@ -2758,7 +2758,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2019-r1: A complete TeX distribution
-app-text/texlive-core 2019-r10: A complete TeX distribution
+app-text/texlive-core 2019-r10 2019-r11: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -7839,8 +7839,6 @@ dev-python/httpretty 0.9.6 0.9.7 1.0.2: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 4.18: Human friendly output for text interfaces using Python
 dev-python/humanize 0.5.1 2.1.0 2.2.0: Common humanization utilities
-dev-python/husl 4.0.3: Human-friendly HSL
-dev-python/hvac 0.2.17: Python client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 3.1.1 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
@@ -9417,7 +9415,7 @@ dev-ruby/c21e 1.1.8 1.1.9 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.2 3.12.0 3.12.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 2.18.0 3.28.0 3.29.0 3.30.0 3.31.0 3.32.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 2.18.0 3.28.0 3.29.0 3.30.0 3.31.0 3.32.0 3.32.1: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.6 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
@@ -9535,7 +9533,7 @@ dev-ruby/globalid 0.4.2: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/google-protobuf 3.8.0 3.9.2 3.10.1 3.11.2 3.11.3 3.11.4: Protocol Buffers are Google's data interchange format
 dev-ruby/gpgme 2.0.18 2.0.19 2.0.20: Ruby language binding for GnuPG Made Easy
-dev-ruby/gruff 0.7.0-r1 0.7.0-r2: Beautiful graphs for one or multiple datasets
+dev-ruby/gruff 0.7.0-r2 0.8.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r3 5.1.2: A ruby web page templating engine
 dev-ruby/haml-rails 1.0.0 2.0.0 2.0.1: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
@@ -9608,7 +9606,7 @@ dev-ruby/lockfile 2.1.3: A ruby library for creating NFS safe lockfiles
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
 dev-ruby/logue 1.0.13-r1 1.0.16 1.0.18: A module that adds logging/trace functionality
-dev-ruby/loofah 2.3.1 2.4.0: Library for manipulating and transforming HTML/XML documents and fragments.
+dev-ruby/loofah 2.3.1 2.4.0 2.5.0: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
 dev-ruby/lumberjack 1.0.13: A simple, powerful, and very fast logging utility
 dev-ruby/mab 0.0.3: Markup as Ruby
@@ -9729,7 +9727,7 @@ dev-ruby/prawn 2.2.0 2.2.2: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/protected_attributes 1.1.4: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.12.2: Pry is a powerful alternative to the standard IRB shell for Ruby
-dev-ruby/public_suffix 3.1.1 4.0.1 4.0.2 4.0.3: Parse and decompose a domain name into top level domain, domain and subdomains
+dev-ruby/public_suffix 3.1.1 4.0.3 4.0.4: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0 2.1.0: Object oriented authorization for Rails applications
 dev-ruby/puppet_forge 2.3.2 2.3.3: Tools to access Forge API information on Modules, Users, and Releases
 dev-ruby/puppetdb-termini 6.9.1: Library needed to connect puppet to puppetdb
@@ -9855,7 +9853,7 @@ dev-ruby/ruby-mp3info 0.8.10: A pure Ruby library for access to mp3 files (inter
 dev-ruby/ruby-net-ldap 0.16.2: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.2.7 2.2.8: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99999: RubyODBC - For accessing ODBC data sources from the Ruby language
-dev-ruby/ruby-oembed 0.12.0: An oEmbed consumer library written in Ruby.
+dev-ruby/ruby-oembed 0.12.0 0.13.0: An oEmbed consumer library written in Ruby.
 dev-ruby/ruby-ole 1.2.12.1 1.2.12.2: Ruby library for easy read/write access to OLE compound documents
 dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.9.2: A robust library for verifying and serving OpenID identities
@@ -14573,7 +14571,7 @@ net-libs/nativebiginteger 0.9.42 0.9.45: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2 0.31.0: HTTP and WebDAV client library
 net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
-net-libs/nghttp2 1.39.2 1.40.0 9999: HTTP/2 C Library
+net-libs/nghttp2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
 net-libs/nodejs 8.12.0 10.19.0 12.16.1 13.10.1 13.11.0 13.12.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
