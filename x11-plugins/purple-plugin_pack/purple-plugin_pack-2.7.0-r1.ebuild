@@ -14,7 +14,7 @@ SRC_URI="https://bitbucket.org/rekkanoryo/${MY_PN}/downloads/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug gtk ncurses spell talkfilters"
 
 RDEPEND="
