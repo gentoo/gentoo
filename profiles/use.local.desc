@@ -2516,7 +2516,6 @@ dev-python/QtPy:gui - Build bindings for the QtGui module
 dev-python/QtPy:svg - Build bindings for the QtSvg module
 dev-python/QtPy:testlib - Build bindings for the QtTest module
 dev-python/QtPy:webengine - Build bindings for the QtWebEngine module
-dev-python/amqplib:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/cryptography:idna - enable support for the old, deprecated IDNA specification (RFC 3490)
 dev-python/ctypescrypto:gost - Build with support for GOST Message Authentication Code
 dev-python/cvxopt:dsdp - Use interior point library sci-libs/dsdp
@@ -2529,8 +2528,6 @@ dev-python/fabric:fab2 - Install as "fab2", allowing side-by-side install with f
 dev-python/falcon:cython - Build cython-based python modules
 dev-python/fastparquet:brotli - Enable support for brotli compression
 dev-python/flask-restful:paging - Enable resource paging support
-dev-python/geopy:timezone - Enables localized date support
-dev-python/geopy:yahoo - Enables use of YahooPlaceFinder
 dev-python/glance_store:cinder - enable cinder backend supprt
 dev-python/glance_store:swift - enable swift backend supprt
 dev-python/glance_store:vmware - enable vmware backend supprt
