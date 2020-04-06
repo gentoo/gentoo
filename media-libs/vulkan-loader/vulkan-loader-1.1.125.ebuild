@@ -52,7 +52,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
-		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
+		-DVULKAN_HEADERS_INSTALL_DIR="${EPREFIX}/usr"
 	)
 	cmake-utils_src_configure
 }
