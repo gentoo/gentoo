@@ -10,10 +10,11 @@ inherit ruby-fakegem
 
 DESCRIPTION="Library for manipulating and transforming HTML/XML documents and fragments."
 HOMEPAGE="https://github.com/flavorjones/loofah"
+SRC_URI="https://github.com/flavorjones/loofah/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE=""
 
 ruby_add_rdepend "=dev-ruby/crass-1.0* >=dev-ruby/crass-1.0.2 >=dev-ruby/nokogiri-1.5.9"
