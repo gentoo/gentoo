@@ -21,4 +21,6 @@ PATCHES=(
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" \
 		UNITDIR="$(systemd_get_systemunitdir)" install
+	newinitd "${FILESDIR}"/jitterentropy-rngd-initd jitterentropy-rngd
 }
+
