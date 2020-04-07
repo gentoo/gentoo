@@ -93,10 +93,6 @@ src_configure() {
 		-DRUN_IN_PLACE=0
 	)
 
-	use server && mycmakeargs+=(
-		-DIRRLICHT_INCLUDE_DIR="${EPREFIX}/usr/include/irrlicht"
-	)
-
 	cmake_src_configure
 }
 
