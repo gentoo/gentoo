@@ -1,0 +1,14 @@
+On amd64 linux /usr/lib does not match default 64-bit ABI.
+
+Let's rely on default compiler and linker paths instead.
+--- a/src/compiler/crystal/codegen/link.cr
++++ b/src/compiler/crystal/codegen/link.cr
+@@ -106,7 +106,7 @@ module Crystal
+ 
+     private def lib_flags_posix
+       library_path = ENV["LIBRARY_PATH"]?.try(&.split(':', remove_empty: true)) ||
+-                     ["/usr/lib", "/usr/local/lib"]
++                     [] of String
+       has_pkg_config = nil
+ 
+       String.build do |flags|
