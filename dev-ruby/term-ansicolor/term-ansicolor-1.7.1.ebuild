@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="none"
@@ -23,7 +23,7 @@ IUSE=""
 ruby_add_rdepend ">=dev-ruby/tins-1.0"
 
 each_ruby_test() {
-	${RUBY} -Ilib -S testrb-2 tests/*_test.rb || die
+	${RUBY} -Ilib:.:tests -e 'Dir["tests/*_test.rb"].each{|f| require f}' || die
 }
 
 all_ruby_install() {
