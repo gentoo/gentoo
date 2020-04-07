@@ -73,6 +73,7 @@ src_configure() {
 		-DGEANT4_USE_FREETYPE=$(usex freetype)
 		-DGEANT4_USE_G3TOG4=$(usex geant3)
 		-DGEANT4_USE_GDML=$(usex gdml)
+		-DGEANT4_USE_HDF5=$(usex hdf5)
 		-DGEANT4_USE_INVENTOR=$(usex inventor)
 		-DGEANT4_USE_NETWORKDAWN=$(usex dawn)
 		-DGEANT4_USE_NETWORKVRML=$(usex vrml)
