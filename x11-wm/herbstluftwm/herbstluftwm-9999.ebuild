@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs bash-completion-r1
+inherit toolchain-funcs cmake-utils
 
-if [[ ${PV} == 9999* ]] ; then
+if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/herbstluftwm/herbstluftwm"
 	BDEPEND="app-text/asciidoc"
@@ -36,37 +36,27 @@ BDEPEND+="
 	virtual/pkgconfig
 "
 
-src_compile() {
-	tc-export CC CXX LD PKG_CONFIG
+src_configure() {
+	sed -i \
+		-e '/^install.*LICENSEDIR/d' \
+		-e '/set(DOCDIR / s#.*#set(DOCDIR ${CMAKE_INSTALL_DOCDIR})#' \
+		CMakeLists.txt || die
 
-	emake LDXX="$(tc-getCXX)" COLOR=0 VERBOSE= \
-		$(use xinerama || echo XINERAMAFLAGS= XINERAMALIBS= )
+	mycmakeargs=(
+		-DWITH_XINERAMA=$(usex xinerama)
+	)
+
+	cmake-utils_src_configure
 }
 
 src_install() {
-	dobin herbstluftwm herbstclient
-	dodoc BUGS MIGRATION NEWS README.md
+	cmake-utils_src_install
 
-	doman doc/{herbstluftwm,herbstclient}.1
-
-	exeinto /etc/xdg/herbstluftwm
-	doexe share/{autostart,panel.sh,restartpanels.sh}
-
-	insinto /usr/share/xsessions
-	doins share/herbstluftwm.desktop
-
-	newbashcomp share/herbstclient-completion herbstclient
-
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		doins share/_herbstclient
+	if ! use examples; then
+		rm -r "${ED}"/usr/share/doc/${PF}/examples || die
 	fi
 
-	if use examples ; then
-		exeinto /usr/share/doc/${PF}/examples
-		doexe scripts/*.sh
-		docinto examples
-		dodoc scripts/README
-		docompress -x /usr/share/doc/${PF}/examples
+	if ! use zsh-completion; then
+		rm -r "${ED}"/usr/share/zsh || die
 	fi
 }
