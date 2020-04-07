@@ -1,0 +1,17 @@
+Patch by Daniel Baumann <daniel@debian.org> for librsync >= 0.9.7, which makes
+rdiff aware of -i and -z getopt options mentioned in --help output. For further
+information, please have a look to Debian bug ID #435894.
+
+--- librsync-0.9.7/rdiff.c			2004-09-17 23:35:50.000000000 +0200
++++ librsync-0.9.7/rdiff.c.getopt		2008-12-20 13:45:58.000000000 +0100
+@@ -97,8 +97,8 @@
+     { "sum-size",    'S', POPT_ARG_INT,  &strong_len },
+     { "statistics",  's', POPT_ARG_NONE, &show_stats },
+     { "stats",        0,  POPT_ARG_NONE, &show_stats },
+-    { "gzip",         0,  POPT_ARG_NONE, 0,             OPT_GZIP },
+-    { "bzip2",        0,  POPT_ARG_NONE, 0,             OPT_BZIP2 },
++    { "gzip",        'z', POPT_ARG_NONE, 0,             OPT_GZIP },
++    { "bzip2",       'i', POPT_ARG_NONE, 0,             OPT_BZIP2 },
+     { "paranoia",     0,  POPT_ARG_NONE, &rs_roll_paranoia },
+     { 0 }
+ };
