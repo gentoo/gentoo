@@ -25,12 +25,8 @@ RDEPEND="dev-libs/glib:2
 	dev-qt/qtgraphicaleffects:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtpositioning:5
-	dev-qt/qtprintsupport:5
 	dev-qt/qtquickcontrols:5[widgets]
 	dev-qt/qtscript:5
-	dev-qt/qtwebchannel:5
-	dev-qt/qtwebengine:5
 	dev-qt/qtwidgets:5
 	media-libs/libglvnd
 	media-libs/libjpeg-turbo
@@ -44,6 +40,15 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
+	amd64? (
+		dev-qt/qtpositioning:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwebchannel:5
+		dev-qt/qtwebengine:5
+	)
+	x86? (
+		dev-qt/qtwebkit:5
+	)
 	pulseaudio? ( media-sound/pulseaudio )
 	!pulseaudio? ( media-libs/alsa-lib )"
 
