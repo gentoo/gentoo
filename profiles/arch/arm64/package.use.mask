@@ -4,7 +4,7 @@
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-04-06)
 # Mask until gui-libs/gtk-layer-shell is keyworded
 mate-base/mate-panel wayland
-#
+
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
 # Lots of deps for little gain
 dev-python/joblib doc
@@ -462,11 +462,6 @@ x11-misc/colord extra-print-profiles
 # requires app-office/unoconv, which requires virtual/ooo, which is not
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-30)
-# requires dev-util/bustle, which is written in haskell
-# remove mask if/when dev-lang/ghc is keywoded for arm
-dev-util/dbus-test-runner test
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-27)
 # remove mask when >=app-editors/gedit-3.6 is keyworded here
