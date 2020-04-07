@@ -15,10 +15,6 @@ libglvnd
 # Dependencies not keyworded.
 ayatana
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
-# sys-auth/elogind is not yet keyworded here. bug #681200
-elogind
-
 # Michał Górny <mgorny@gentoo.org> (2018-07-16)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.
