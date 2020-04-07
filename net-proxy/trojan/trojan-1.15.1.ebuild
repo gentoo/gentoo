@@ -45,3 +45,17 @@ src_install() {
 src_test() {
 	cmake_src_test -j1
 }
+
+pkg_postinst() {
+	elog "Running Trojan with multi instances"
+	elog ""
+
+	elog "Prepare /etc/trojan/\${blah}.json first"
+	elog "Config with Openrc"
+	elog "   ln -s /etc/init.d/trojan{,.\${blah}}"
+	elog "   rc-update add trojan.\${blah} default"
+	elog ""
+	elog "Config with Systemd"
+	elog "   systemctl enable trojan.\${blah}"
+	elog ""
+}
