@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools eutils git-r3
 
 DESCRIPTION="The fast and light GNUstep window manager"
@@ -32,6 +32,9 @@ DEPEND="media-libs/fontconfig
 RDEPEND="${DEPEND}
 	nls? ( >=sys-devel/gettext-0.10.39 )"
 
+DOCS=( AUTHORS BUGFORM BUGS ChangeLog INSTALL INSTALL-WMAKER FAQ
+	NEWS README README.definable-cursor README.i18n TODO )
+
 src_unpack() {
 	# wm-extras
 	unpack ${A}
@@ -43,9 +46,9 @@ src_prepare() {
 	# Fix some paths
 	for file in WindowMaker/*menu* util/wmgenmenu.c; do
 		if [[ -r $file ]] ; then
-			sed -i -e "s:/usr/local/GNUstep/Applications/WPrefs.app:${EPREFIX}/usr/bin/:g;" "$file" || die
-			sed -i -e "s:/usr/local/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;" "$file" || die
-			sed -i -e "s:/opt/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;" "$file" || die
+			sed -i -e "s|/usr/local/GNUstep/Applications/WPrefs.app|${EPREFIX}/usr/bin/|g;" "$file" || die
+			sed -i -e "s|/usr/local/share/WindowMaker|${EPREFIX}/usr/share/WindowMaker|g;" "$file" || die
+			sed -i -e "s|/opt/share/WindowMaker|${EPREFIX}/usr/share/WindowMaker|g;" "$file" || die
 		fi;
 	done;
 
@@ -77,7 +80,7 @@ src_configure() {
 		--localedir="${EPREFIX}"/usr/share/locale \
 		${myconf}
 
-	cd ../WindowMaker-extra-0.1
+	pushd ../WindowMaker-extra-0.1 || die
 	econf
 }
 
@@ -85,18 +88,15 @@ src_compile() {
 	emake
 
 	# WindowMaker Extra Package (themes and icons)
-	cd ../WindowMaker-extra-0.1
+	pushd ../WindowMaker-extra-0.1 || die
 	emake
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-
-	dodoc AUTHORS BUGFORM BUGS ChangeLog INSTALL* FAQ* \
-		  README* NEWS TODO
+	default
 
 	# WindowMaker Extra
-	cd ../WindowMaker-extra-0.1
+	pushd ../WindowMaker-extra-0.1 || die
 	emake DESTDIR="${D}" install
 
 	newdoc README README.extra
