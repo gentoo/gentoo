@@ -14,8 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=dev-lang/ocaml-4.09.0
-	>=dev-ml/findlib-1.8.1"
+DEPEND=">=dev-lang/ocaml-4.09.0[ocamlopt]
+	>=dev-ml/findlib-1.8.1[ocamlopt]"
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
