@@ -40,7 +40,7 @@ DEPEND="
 	introspection? ( dev-libs/gobject-introspection:= )
 	mono? (
 		dev-lang/mono
-		gtk? ( dev-dotnet/gtk-sharp:2 )
+		gtk2? ( dev-dotnet/gtk-sharp:2 )
 	)
 	python? (
 		${PYTHON_DEPS}
