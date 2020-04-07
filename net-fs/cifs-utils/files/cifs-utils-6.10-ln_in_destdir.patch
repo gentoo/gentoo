@@ -1,0 +1,15 @@
+--- cifs-utils-6.10/Makefile.am
++++ cifs-utils-6.10/Makefile.am
+@@ -119,10 +119,10 @@
+ SUBDIRS = contrib
+ 
+ install-exec-hook:
+-	(cd $(ROOTSBINDIR) && ln -sf mount.cifs mount.smb3)
++	(cd $(DESTDIR)$(ROOTSBINDIR) && ln -sf mount.cifs mount.smb3)
+ 
+ install-data-hook:
+-	(cd $(man8dir) && ln -sf mount.cifs.8 mount.smb3.8)
++	(cd $(DESTDIR)$(man8dir) && ln -sf mount.cifs.8 mount.smb3.8)
+ 
+ uninstall-hook:
+ 	(cd $(ROOTSBINDIR) && rm -f $(ROOTSBINDIR)/mount.smb3)
