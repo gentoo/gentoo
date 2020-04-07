@@ -2436,7 +2436,7 @@ app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.0.2 0.0.3 0.0.4 0.0.5 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.0.6 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -7556,7 +7556,7 @@ dev-python/cligj 0.4.0: Click-based argument and option decorators for Python GI
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.3.0: Extended pickling support for Python objects
-dev-python/cmd2 0.8.9 0.10.1 1.0.1: Extra features for standard library's cmd module
+dev-python/cmd2 0.8.9 0.10.1 1.0.1 1.0.2: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.3.9-r1 0.4.1 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -18853,7 +18853,7 @@ xfce-base/libxfce4util 4.14.0 4.15.0: A basic utility library for the Xfce deskt
 xfce-base/thunar 1.8.12 1.8.14: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.14.3 4.15.1: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.14.3 4.15.1 4.15.2: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.1 4.14.2: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.2 4.15.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1: A configuration management system for Xfce
