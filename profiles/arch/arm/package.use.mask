@@ -485,11 +485,6 @@ x11-misc/colord argyllcms extra-print-profiles
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-30)
-# requires dev-util/bustle, which is written in haskell
-# remove mask if/when dev-lang/ghc is keywoded for arm
-dev-util/dbus-test-runner test
-
 # Markus Meier <maekke@gentoo.org> (2012-Dez-25)
 # unkeyworded deps for app-accessibility/speech-dispatcher
 app-accessibility/speech-dispatcher flite
