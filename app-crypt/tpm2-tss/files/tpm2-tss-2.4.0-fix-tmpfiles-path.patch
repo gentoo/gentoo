@@ -1,0 +1,22 @@
+diff --git a/dist/fapi-config.json.in b/dist/fapi-config.json.in
+index e32a3c36..4aa636e2 100644
+--- a/dist/fapi-config.json.in
++++ b/dist/fapi-config.json.in
+@@ -2,7 +2,7 @@
+      "profile_name": "P_RSA2048SHA256",
+      "profile_dir": "@sysconfdir@/tpm2-tss/fapi-profiles/",
+      "user_dir": "~/@userstatedir@/tpm2-tss/user/keystore",
+-     "system_dir": "@localstatedir@/lib/tpm2-tss/system/keystore",
++     "system_dir": "@localstatedir@/tpm2-tss/system/keystore",
+      "tcti": "",
+      "system_pcrs" : [],
+      "log_dir" : "@runstatedir@/tpm2-tss/eventlog/"
+diff --git a/dist/tmpfiles.d/tpm2-tss-fapi.conf.in b/dist/tmpfiles.d/tpm2-tss-fapi.conf.in
+index 1793c4d7..3f0c8380 100644
+--- a/dist/tmpfiles.d/tpm2-tss-fapi.conf.in
++++ b/dist/tmpfiles.d/tpm2-tss-fapi.conf.in
+@@ -1,3 +1,3 @@
+ #Type   Path                                           Mode User Group Age         Argument
+-d       @localstatedir@/lib/tpm2-tss/system/keystore   775  tss  tss   -           -
++d       @localstatedir@/tpm2-tss/system/keystore       775  tss  tss   -           -
+ d       @runstatedir@/tpm2-tss/eventlog                775  tss  tss   -           -
