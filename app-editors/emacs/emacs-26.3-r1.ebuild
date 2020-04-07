@@ -15,9 +15,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~a
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
-RDEPEND="sys-libs/ncurses:0=
-	>=app-eselect/eselect-emacs-1.16
-	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
@@ -98,11 +97,13 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="app-eselect/eselect-emacs
+	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
-	!<app-editors/emacs-vcs-${PV}"
+	!<app-editors/emacs-vcs-${PV}
+	app-eselect/eselect-emacs"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
