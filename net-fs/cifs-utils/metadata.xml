@@ -5,11 +5,17 @@
 		<email>samba@gentoo.org</email>
 		<name>Samba Team</name>
 	</maintainer>
-	<longdescription>The in-kernel CIFS filesystem relies on a set of user-space tools. That package of tools is called cifs-utils. Although not really part of Samba proper, these tools were originally part of the Samba package. For several reasons, shipping these tools as part of Samba was problematic and it was deemed better to split them off into their own package</longdescription>
+	<longdescription>
+		The in-kernel CIFS filesystem relies on a set of user-space
+		tools. That package of tools is called cifs-utils. Although not
+		really part of Samba proper, these tools were originally part of
+		the Samba package. For several reasons, shipping these tools as
+		part of Samba was problematic and it was deemed better to split
+		them off into their own package
+	</longdescription>
 	<use>
 		<flag name="ads">Enable Active Directory support and create cifs.idmap binary - idmap support</flag>
-		<flag name="caps">libcap support</flag>
-		<flag name="caps-ng">libcap-ng support</flag>
+		<flag name="caps">Enable <pkg>sys-libs/libcap-ng</pkg> support</flag>
 		<flag name="creds">cifs credentials support</flag>
 	</use>
 </pkgmetadata>
