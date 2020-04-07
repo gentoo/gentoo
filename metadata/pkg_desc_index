@@ -17842,8 +17842,8 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
 www-client/opera 67.0.3575.97 67.0.3575.115: A fast and secure web browser
 www-client/opera-beta 68.0.3618.24 68.0.3618.31: A fast and secure web browser
-www-client/opera-developer 69.0.3638.0 69.0.3645.0: A fast and secure web browser
-www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
+www-client/opera-developer 69.0.3645.0 69.0.3651.0: A fast and secure web browser
+www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.8.3 1.10.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
