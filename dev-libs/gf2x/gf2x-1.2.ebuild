@@ -13,7 +13,7 @@ SRC_URI="http://gforge.inria.fr/frs/download.php/${PACKAGEID}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/1"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="fft static-libs custom-tune"
 IUSE_CPU_FLAGS=" pclmul sse2 sse3 sse4_1 ssse3"
 IUSE+=" ${IUSE_CPU_FLAGS// / cpu_flags_x86_}"
