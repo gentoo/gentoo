@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils linux-info multilib pam
+inherit autotools linux-info multilib pam
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
@@ -11,19 +11,18 @@ SRC_URI="https://ftp.samba.org/pub/linux-cifs/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x86-linux"
-IUSE="+acl +ads +caps +caps-ng creds pam"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-linux"
+IUSE="+acl +ads +caps creds pam"
 
 RDEPEND="
 	!net-fs/mount-cifs
 	!<net-fs/samba-3.6_rc1
-	sys-apps/keyutils
+	sys-apps/keyutils:=
 	ads? (
 		sys-libs/talloc
 		virtual/krb5
 	)
-	caps? ( !caps-ng? ( sys-libs/libcap ) )
-	caps? ( caps-ng? ( sys-libs/libcap-ng ) )
+	caps? ( sys-libs/libcap-ng )
 	pam? ( sys-libs/pam )
 "
 DEPEND="${RDEPEND}"
@@ -35,9 +34,7 @@ REQUIRED_USE="acl? ( ads )"
 
 DOCS="doc/linux-cifs-client-guide.odt"
 
-PATCHES=(
-	"${FILESDIR}/${P}-talloc.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-6.10-ln_in_destdir.patch" )
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -66,27 +63,28 @@ src_prepare() {
 }
 
 src_configure() {
-	ROOTSBINDIR="${EPREFIX}"/sbin \
-	econf \
-		$(use_enable acl cifsacl cifsidmap) \
-		$(use_enable ads cifsupcall) \
-		$(use caps && use_with !caps-ng libcap || echo --without-libcap) \
-		$(use caps && use_with caps-ng libcap-ng || echo --without-libcap-ng) \
-		$(use_enable creds cifscreds) \
-		$(use_enable pam) \
+	local myeconfargs=(
+		--enable-smbinfo
+		$(use_enable acl cifsacl cifsidmap)
+		$(use_enable ads cifsupcall)
+		$(use_with caps libcap)
+		$(use_enable creds cifscreds)
+		$(use_enable pam)
 		$(use_with pam pamdir $(getpam_mod_dir))
+	)
+	ROOTSBINDIR="${EPREFIX}"/sbin \
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
 
 	# remove empty directories
-	find "${ED}" -type d -print0 | xargs --null rmdir \
-		--ignore-fail-on-non-empty &>/dev/null
+	find "${ED}" -type d -empty -delete || die
 
 	if use acl ; then
 		dodir /etc/cifs-utils
-		dosym /usr/$(get_libdir)/cifs-utils/idmapwb.so \
+		dosym ../../usr/$(get_libdir)/cifs-utils/idmapwb.so \
 			/etc/cifs-utils/idmap-plugin
 		dodir /etc/request-key.d
 		echo 'create cifs.idmap * * /usr/sbin/cifs.idmap %k' \
