@@ -40,5 +40,5 @@ src_install() {
 	mate_src_install
 
 	exeinto /etc/X11/xinit/xinitrc.d/
-	doexe "${FILESDIR}/10-xdg-menu-mate"
+	newexe "${FILESDIR}/10-xdg-menu-mate-r1" "10-xdg-menu-mate"
 }
