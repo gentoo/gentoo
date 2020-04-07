@@ -21,3 +21,12 @@ RDEPEND="
 	"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${RDEPEND}"
+
+src_prepare() {
+	# Upstream uses pytest-runner as an extra optional target in setup.py as
+	# part of tooling to generate distfiles.
+	sed -i \
+		-e '/setup_requires=/s,"pytest-runner",,' \
+		"${S}"/setup.py || die
+	default
+}
