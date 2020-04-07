@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,7 @@ SLOT="18"
 KEYWORDS="amd64 x86"
 IUSE="abi_x86_x32 X"
 
-RDEPEND=">=app-eselect/eselect-emacs-1.16
-	sys-libs/ncurses:0=
+RDEPEND="sys-libs/ncurses:0=
 	amd64? (
 		abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_x32(-)?] )
 		!abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_32(-)] )
@@ -29,7 +28,12 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 		x11-misc/xbitmaps
 	)"
-BDEPEND="virtual/pkgconfig"
+
+BDEPEND="app-eselect/eselect-emacs
+	virtual/pkgconfig"
+
+RDEPEND="${RDEPEND}
+	app-eselect/eselect-emacs"
 
 PATCHES="../${P}-linux22x-elf-glibc21.diff ../patch"
 
