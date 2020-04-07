@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>thebitpit@earthlink.net</email>
+		<name>Wilson Michaels</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="ar">Argentina tv listing grabber</flag>
 		<flag name="ch-search">Grabber for Switzerland</flag>
@@ -10,20 +17,23 @@
 		<flag name="es-laguiatv">Spain alternative grabber</flag>
 		<flag name="eu-dotmedia">Grabber for Europe (xmltv.se / dotmedia)</flag>
 		<flag name="eu-epg">EPG grabber for some European countries.</flag>
-		<flag name="fi">Finland tv listing grabber</flag>
+		<flag name="eu-epgdata">include fanart URLs for some European countries.</flag>
+		<flag name="eu-xmltvse">Grabbber for Europe [replaces eu-dotmedia and se-tvzon]</flag>
+		<flag name="fi">Finland tv listing grabber (0.6.1 add ampparit telsu)</flag>
 		<flag name="fi-sv">Grabber for Finland (Swedish)</flag>
 		<flag name="fr">France tv listing grabber</flag>
 		<flag name="fr-kazer">France (Kazer) tv listing grabber</flag>
 		<flag name="huro">Hungarian tv listing grabber</flag>
 		<flag name="il">Israel tv listing grabber</flag>
 		<flag name="is">Iceland tv listing grabber</flag>
-		<flag name="it">Italy tv listing grabber</flag>
+		<flag name="it">Italy tv listing grabber (RUV)</flag>
 		<flag name="na-dd">North America tv listing grabber</flag>
 		<flag name="na-dtv">North America Direct TV grabber</flag>
 		<flag name="na-tvmedia">Grabber for North America (TVMedia)</flag>
-		<flag name="nl">Netherlands tv listing grabber</flag>
+		<flag name="nl">Netherlands tv listing grabber [REMOVED 0.6.1]</flag>
 		<flag name="no-gf">Norway Gfeed tv listing grabber</flag>
 		<flag name="pt-meo">Grabber for Portugal (MEO)</flag>
+		<flag name="pt-vodafone">Grabber for Portugal (Vodafone)</flag>
 		<flag name="se-swedb">Sweden tv listing grabber</flag>
 		<flag name="se-tvzon">Sweden (tvzon.se) tv listing grabber</flag>
 		<flag name="tr">Turkey (Digiturk) tv listing grabber</flag>
@@ -33,9 +43,10 @@
 		<flag name="uk-bleb">Britain tv listing grabber</flag>
 		<flag name="uk-tvguide">UK and Ireland tv listing grabber using TV Guide website</flag>
 		<flag name="zz-sdjson">Grabber for schedulesDirect.org SD-JSON service (many countries)</flag>
+		<flag name="zz-sdjson-sqlite">Grabber for schedulesDirect.org SD-JSON service (sqlite DB)</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">xmltv</remote-id>
+		<remote-id type="github">XMLTV/xmltv</remote-id>
 	</upstream>
 </pkgmetadata>
 
