@@ -76,6 +76,8 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${P}-arping-revert-partially-fix-sent-vs-received-package.patch
+	"${FILESDIR}"/${P}-ping-try-next-addrinfo-on-connect-failure.patch
+	"${FILESDIR}"/${P}-ping-fix-main-loop-over-multiple-addrinfo-results.patch
 )
 
 src_prepare() {
