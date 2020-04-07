@@ -14,7 +14,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="+default-term"
 
 RDEPEND="dev-haskell/extensible-exceptions:=[profile?]
