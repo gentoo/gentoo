@@ -30,8 +30,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND="
-	doc? ( app-text/asciidoc )
-	>=app-text/docbook2X-0.8.8-r4
+	doc? (
+		app-text/asciidoc
+		>=app-text/docbook2X-0.8.8-r4
+	)
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
@@ -115,6 +117,7 @@ src_install() {
 		python_foreach_impl python_make install
 	fi
 
+	python_foreach_impl python_optimize
 	find "${ED}" -type f -name "*.la" -delete || die
 }
 
@@ -136,7 +139,7 @@ pkg_postinst() {
 
 	elog "If you wish to enable the firewall rules on boot (on systemd) you"
 	elog "will need to enable the nftables-restore service."
-	elog "    'systemd_enable_service basic.target ${PN}-restore.service'"
+	elog "    'systemctl enable ${PN}-restore.service'"
 	elog
 	elog "If you are creating firewall rules before the next system restart "
 	elog "the nftables-restore service must be manually started in order to "
