@@ -567,6 +567,7 @@ dev-db/clickhouse
 # until upstream releases fixed versions.
 ~xfce-base/xfce4-panel-4.15.0
 ~xfce-base/xfce4-panel-4.15.1
+~xfce-base/xfce4-panel-4.15.2
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-10-16)
 # Depends on apache-2.2
