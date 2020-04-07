@@ -12,7 +12,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ppc ~ppc64 sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/ghc-6.8.2"

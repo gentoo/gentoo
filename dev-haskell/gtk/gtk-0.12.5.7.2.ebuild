@@ -20,7 +20,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="${GTK_MAJ_VER}/${PV}"
-KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 x86"
 IUSE="+fmode-binary +gio"
 
 RDEPEND="fmode-binary? ( >=dev-haskell/glib-0.12.5.4:0=[profile?] <dev-haskell/glib-0.13:0=[profile?]

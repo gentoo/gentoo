@@ -14,7 +14,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 x86"
 IUSE="+closuresignals"
 
 RDEPEND=">=dev-haskell/cabal-1.24.0.0:=[profile?] <dev-haskell/cabal-1.25:=[profile?]
