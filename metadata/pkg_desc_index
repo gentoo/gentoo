@@ -14641,7 +14641,7 @@ net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
-net-mail/fetchmail 6.4.1 6.4.1-r3 6.4.2: the legendary remote-mail retrieval and forwarding utility
+net-mail/fetchmail 6.4.1 6.4.1-r3 6.4.2 6.4.3: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
@@ -16217,7 +16217,7 @@ sci-physics/clhep 2.2.0.5 2.4.0.4 2.4.1.2 2.4.1.3: High Energy Physics C++ libra
 sci-physics/espresso 4.0_pre20170228 4.0.0-r2 9999: Extensible Simulation Package for Research on Soft matter
 sci-physics/espresso++ 2.0.2 9999: A Modern Multiscale Simulation Package for Soft Matter Systems
 sci-physics/fastjet 3.0.3-r1 3.0.6-r1: Fast implementation of several recombination jet algorithms
-sci-physics/geant 4.10.05_p01 4.10.6_beta1 4.10.6 4.10.6_p1: Toolkit for simulation of passage of particles through matter
+sci-physics/geant 4.10.05_p01 4.10.6_beta1-r1 4.10.6-r1 4.10.6_p1-r1: Toolkit for simulation of passage of particles through matter
 sci-physics/geant-data 4.10.05 4.10.6_beta1 4.10.6 4.10.6_p1: Data files for Geant4 physical processes
 sci-physics/geant-vmc 4.4.0 9999: Virtual Monte Carlo Geant4 implementation
 sci-physics/h2o-gtk 0.1-r1 9999: GTK+ UI for libh2o -- water & steam properties
