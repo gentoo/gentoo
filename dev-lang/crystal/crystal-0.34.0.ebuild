@@ -22,7 +22,9 @@ IUSE="doc debug examples blocking-stdio-hack +xml +yaml"
 
 RESTRICT=test # not stable for day-to-day runs
 
-LLVM_MAX_SLOT=10
+# On llvm-10 target crashes using USE=-debug codegen.
+# Might be just non-deterministic.
+LLVM_MAX_SLOT=9
 
 # dev-libs/boehm-gc[static-libs] dependency problem,  check the issue: https://github.com/manastech/crystal/issues/1382
 DEPEND="
