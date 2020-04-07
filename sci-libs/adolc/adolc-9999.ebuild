@@ -1,24 +1,22 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools toolchain-funcs eutils git-r3 ltprune
-
-MYPN=ADOL-C
+inherit autotools toolchain-funcs eutils
 
 DESCRIPTION="Automatic differentiation system for C/C++"
 HOMEPAGE="https://projects.coin-or.org/ADOL-C/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.com/adol-c/adol-c.git"
+	EGIT_REPO_URI="https://github.com/coin-or/ADOL-C"
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="http://www.coin-or.org/download/source/${MYPN}/${MYPN}-${PV}.tgz"
+	SRC_URI="https://github.com/coin-or/ADOL-C/archive/releases/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${MYPN}-${PV}"
+	S="${WORKDIR}/ADOL-C-releases-${PV}"
 fi
 
 LICENSE="|| ( EPL-1.0 GPL-2 )"
@@ -59,5 +57,5 @@ src_test() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+	use static-libs || find "${D}" -name '*.la' -type f -delete || die
 }
