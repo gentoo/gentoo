@@ -5661,8 +5661,7 @@ net-fs/autofs:libtirpc - Use TiRPC library instead of SunRPC
 net-fs/autofs:mount-locking - Enable locking to prevent corruption of /etc/mtab in the presence of concurrent auto-mounting. If enabled, recursive auto-mounting (eg. using autofs to bind or loop mount a filesystem which is itself auto-mounted) is not possible.
 net-fs/autofs:sasl - Enable SASL support in the LDAP module
 net-fs/cifs-utils:ads - Enable Active Directory support and create cifs.idmap binary - idmap support
-net-fs/cifs-utils:caps - libcap support
-net-fs/cifs-utils:caps-ng - libcap-ng support
+net-fs/cifs-utils:caps - Enable sys-libs/libcap-ng support
 net-fs/cifs-utils:creds - cifs credentials support
 net-fs/cvmfs:aufs - Use AUFS instead of OverlayFS for the server
 net-fs/cvmfs:preload - Install the cvmfs cache preloader for distributed file systems

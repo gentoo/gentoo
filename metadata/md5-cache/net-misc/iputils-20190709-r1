@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig filecaps? ( sys-libs/libcap ) >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2 virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute6? ( !net-analyzer/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn2:= ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( nettle? ( dev-libs/nettle ) !nettle? ( libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) ) ) ) ) nls? ( sys-devel/gettext ) ) virtual/os-headers static? ( caps? ( sys-libs/libcap[static-libs(+)] ) idn? ( net-dns/libidn2:=[static-libs(+)] ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] ) !gcrypt? ( nettle? ( dev-libs/nettle[static-libs(+)] ) !nettle? ( libressl? ( dev-libs/libressl:0=[static-libs(+)] ) !libressl? ( dev-libs/openssl:0=[static-libs(+)] ) ) ) ) ) nls? ( sys-devel/gettext[static-libs(+)] ) )
+DESCRIPTION=Network monitoring tools including ping and ping6
+EAPI=7
+HOMEPAGE=https://wiki.linuxfoundation.org/networking/iputils
+IUSE=+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle nls rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6 +filecaps
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux
+LICENSE=BSD GPL-2+ rdisc
+RDEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute6? ( !net-analyzer/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn2:= ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( nettle? ( dev-libs/nettle ) !nettle? ( libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) ) ) ) ) nls? ( sys-devel/gettext ) )
+SLOT=0
+SRC_URI=https://github.com/iputils/iputils/archive/s20190709.tar.gz -> iputils-20190709.tar.gz https://dev.gentoo.org/~whissi/dist/iputils/iputils-manpages-20190709.tar.xz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	fcaps	ec29518af791bd4f819e5d42f0f4c11f	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	meson	0b22603e8787cab8d798c23c5e711ca5	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=d1174eb07dc3430eacfe2889c34c3e8e
