@@ -4,11 +4,11 @@ DESCRIPTION=library to smooth charset/localization issues
 EAPI=6
 HOMEPAGE=http://natspec.sourceforge.net/
 IUSE=doc python +python_single_target_python2_7
-KEYWORDS=~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/popt python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/natspec/libnatspec-0.3.0.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	151046e8d2ffc8cffc8329bbc50a686b	python-utils-r1	6f5996d2ae01e0c6f2869ed18f023239	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=333d93edcb80316a5ad1bb30dc3973c3
+_md5_=046adeabc12848c635dd48d3b50a3d95
