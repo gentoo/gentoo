@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="fapi">Enable feature API (requires openssl as crypto backend)</flag>
 		<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> as crypto engine</flag>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto engine</flag>
 	</use>
