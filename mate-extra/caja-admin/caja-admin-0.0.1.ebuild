@@ -12,7 +12,7 @@ elif [[ ${PV} =~ _p[0-9]{8,} ]]; then
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${SHA}"
 else
-	SRC_URI="https://github.com/infirit/${PN}/archive/${PV}.tar.gz"
+	SRC_URI="https://github.com/infirit/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
