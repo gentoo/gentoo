@@ -1,0 +1,37 @@
+From 3c83e2bca90b697e7c98f849319f1ad015dcdb86 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Tue, 7 Apr 2020 13:16:59 -0700
+Subject: [PATCH nftables 2/2] build: Allow building from tarballs without
+ yacc/lex
+
+The generated files are included in the tarballs already, but
+configure.ac was coded to fail if yacc/lex were not found regardless.
+
+Signed-off-by: Matt Turner <mattst88@gmail.com>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a04d94bc..3496e410 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,13 +29,13 @@ AC_PROG_SED
+ AM_PROG_LEX
+ AC_PROG_YACC
+ 
+-if test -z "$ac_cv_prog_YACC"
++if test -z "$ac_cv_prog_YACC" -a ! -f "${srcdir}/src/parser_bison.c"
+ then
+         echo "*** Error: No suitable bison/yacc found. ***"
+         echo "    Please install the 'bison' package."
+         exit 1
+ fi
+-if test -z "$ac_cv_prog_LEX"
++if test -z "$ac_cv_prog_LEX" -a ! -f "${srcdir}/src/scanner.c"
+ then
+         echo "*** Error: No suitable flex/lex found. ***"
+         echo "    Please install the 'flex' package."
+-- 
+2.24.1
+
