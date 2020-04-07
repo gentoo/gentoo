@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools pam systemd
 
 DESCRIPTION="D-Bus service to access fingerprint readers"
-HOMEPAGE="https://cgit.freedesktop.org/libfprint/fprintd/"
+HOMEPAGE="https://fprint.freedesktop.org"
 MY_PV="V_$(ver_rs 0- _)"
 SRC_URI="https://gitlab.freedesktop.org/libfprint/${PN}/-/archive/${MY_PV}/fprintd-${MY_PV}.tar.bz2 -> ${P}.tar.bz2"
 #SRC_URI="https://cgit.freedesktop.org/libfprint/${PN}/snapshot/${MY_PV}.tar.bz2 -> ${P}.tar.bz2"
