@@ -23,4 +23,3 @@ src_install() {
 		UNITDIR="$(systemd_get_systemunitdir)" install
 	newinitd "${FILESDIR}"/jitterentropy-rngd-initd jitterentropy-rngd
 }
-
