@@ -83,8 +83,8 @@ src_install() {
 
 	dodir /etc/X11/xinit/xinitrc.d/
 	exeinto /etc/X11/xinit/xinitrc.d/
-	newexe "${FILESDIR}"/15-xdg-data-mate-r1 15-xdg-data-mate
+	newexe "${FILESDIR}"/15-xdg-data-mate-r2 15-xdg-data-mate
 
 	# This should be done in MATE too, see Gentoo bug #270852
-	newexe "${FILESDIR}"/10-user-dirs-update-mate-r1 10-user-dirs-update-mate
+	newexe "${FILESDIR}"/10-user-dirs-update-mate-r2 10-user-dirs-update-mate
 }
