@@ -15,9 +15,6 @@ fittings for the EVE Online SciFi MMORPG. It provides many advanced features
 such as graphs and full calculations of any possible combination of modules,
 fits, etc.
 </longdescription>
-  <use>
-    <flag name="graph">Enable support for graphs</flag>
-  </use>
   <upstream>
     <remote-id type="github">pyfa-org/Pyfa</remote-id>
   </upstream>
