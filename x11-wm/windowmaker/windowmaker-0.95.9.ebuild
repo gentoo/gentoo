@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=7
+inherit autotools eutils
 
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="http://www.windowmaker.org/"
@@ -12,7 +12,7 @@ SRC_URI="http://windowmaker.org/pub/source/release/${P/windowm/WindowM}.tar.gz
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama +xpm xrandr"
-KEYWORDS="~alpha amd64 ~arm hppa ~mips ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 DEPEND="media-libs/fontconfig
 	>=x11-libs/libXft-2.1.0
@@ -21,7 +21,7 @@ DEPEND="media-libs/fontconfig
 	x11-libs/libXt
 	x11-libs/libXv
 	gif? ( >=media-libs/giflib-4.1.0-r3 )
-	imagemagick? ( media-gfx/imagemagick )
+	imagemagick? ( >=media-gfx/imagemagick-7:0= )
 	jpeg? ( virtual/jpeg:0= )
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
@@ -33,15 +33,22 @@ RDEPEND="${DEPEND}
 
 S=${WORKDIR}/${P/windowm/WindowM}
 
+DOCS=( AUTHORS BUGFORM BUGS ChangeLog INSTALL INSTALL-WMAKER FAQ
+	NEWS README README.definable-cursor README.i18n TODO )
+PATCHES=( "${FILESDIR}"/${PN}-0.95.8-configure_default_search_paths.patch )
+
 src_prepare() {
 	# Fix some paths
 	for file in WindowMaker/*menu* util/wmgenmenu.c; do
 		if [[ -r $file ]] ; then
-			sed -i -e "s:/usr/local/GNUstep/Applications/WPrefs.app:${EPREFIX}/usr/bin/:g;" "$file" || die
-			sed -i -e "s:/usr/local/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;" "$file" || die
-			sed -i -e "s:/opt/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;" "$file" || die
+			sed -i -e "s|/usr/local/GNUstep/Applications/WPrefs.app|${EPREFIX}/usr/bin/|g;" "$file" || die
+			sed -i -e "s|/usr/local/share/WindowMaker|${EPREFIX}/usr/share/WindowMaker|g;" "$file" || die
+			sed -i -e "s|/opt/share/WindowMaker|${EPREFIX}/usr/share/WindowMaker|g;" "$file" || die
 		fi;
 	done;
+
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -68,7 +75,7 @@ src_configure() {
 		--localedir="${EPREFIX}"/usr/share/locale \
 		${myconf}
 
-	cd ../WindowMaker-extra-0.1
+	pushd ../WindowMaker-extra-0.1 || die
 	econf
 }
 
@@ -76,18 +83,15 @@ src_compile() {
 	emake
 
 	# WindowMaker Extra Package (themes and icons)
-	cd ../WindowMaker-extra-0.1
+	pushd ../WindowMaker-extra-0.1 || die
 	emake
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-
-	dodoc AUTHORS BUGFORM BUGS ChangeLog INSTALL* FAQ* \
-		  README* NEWS TODO
+	default
 
 	# WindowMaker Extra
-	cd ../WindowMaker-extra-0.1
+	pushd ../WindowMaker-extra-0.1 || die
 	emake DESTDIR="${D}" install
 
 	newdoc README README.extra
