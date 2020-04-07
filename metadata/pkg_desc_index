@@ -18838,7 +18838,7 @@ x11-wm/treewm 0.4.5-r2: WindowManager that arranges the windows in a tree (not i
 x11-wm/twm 1.0.10: X.Org Tab Window Manager
 x11-wm/vtwm 5.4.7-r2: TWM descendant that implements a Virtual Desktop
 x11-wm/windowlab 1.40-r1: small and simple window manager of novel design
-x11-wm/windowmaker 0.95.7 0.95.8-r1 9999: The fast and light GNUstep window manager
+x11-wm/windowmaker 0.95.8-r1 0.95.9 9999: The fast and light GNUstep window manager
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manager highly configurable
 x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
