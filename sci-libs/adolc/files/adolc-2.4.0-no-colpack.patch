@@ -1,0 +1,24 @@
+do not test colpack when user says no even when it is installed
+
+--- configure.ac.orig	2012-07-19 13:04:37.426461811 -0700
++++ configure.ac	2012-07-19 13:06:06.477916144 -0700
+@@ -281,7 +281,7 @@
+ COLPACK_LIBDIR=""
+ COLPACK_LIBS="-lColPack"
+ ])
+-
++if test x$colpack != xno; then
+ AC_LANG_PUSH([C++])
+ save_CPPFLAGS="$CPPFLAGS"
+ save_LIBS="$LIBS"
+@@ -301,7 +301,9 @@
+ CPPFLAGS="$save_CPPFLAGS"
+ LIBS="$save_LIBS"
+ AC_LANG_POP([C++])
+-
++else
++    have_colpack=no
++fi
+ AM_CONDITIONAL(HAVE_LIBCOLPACK,[test x$have_colpack = xyes])
+ if test x$have_colpack = xyes; then 
+    sparse=yes
