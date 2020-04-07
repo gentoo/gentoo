@@ -129,18 +129,8 @@ src_configure() {
 		if [ ${CONF} = . ]; then
 			CONF=${LISPS[${n}]}
 		fi
-		if [[ ${CONF} == ccl ]]; then
-			# 64-bit version of clozurecl is enabled
-			# by --enable-ccl64, not by --enable-ccl.
-			# bug #665364
-			use amd64 && CONF=ccl64
-		fi
 		CONFS="${CONFS} --enable-${CONF}"
 	done
-
-	# Gentoo calls 'ccl' both 32-bit and 64-bit version of clozurecl.
-	# bug #665364
-	CONFS="${CONFS} --with-ccl64=ccl"
 
 	# enable existing translated doc
 	if use nls; then
