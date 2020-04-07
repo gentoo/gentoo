@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="jitterentropy daemon"
+command="/usr/sbin/jitterentropy-rngd"
+pidfile="/run/jitterentropy-rngd.pid"
+command_args="--pid ${pidfile}"
+
+depend() {
+   need localmount
+   before net
+   use logger
+
+   provide entropy
+}
+
