@@ -25,6 +25,14 @@ USE_RUBY="ruby26 ruby27" ruby_add_rdepend "dev-ruby/sync"
 
 ruby_add_bdepend "test? ( >=dev-ruby/test-unit-2.5.1-r1 )"
 
+each_ruby_prepare() {
+	case ${RUBY} in
+		*ruby24|*ruby25)
+			sed -i -e '/sync/d' ${RUBY_FAKEGEM_GEMSPEC} || die
+			;;
+	esac
+}
+
 each_ruby_test() {
 	ruby-ng_testrb-2 -Ilib tests/*_test.rb
 }
