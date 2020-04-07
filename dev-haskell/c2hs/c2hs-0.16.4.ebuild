@@ -14,7 +14,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 x86"
 IUSE="doc"
 
 DEPEND=">=dev-lang/ghc-6.10.4
