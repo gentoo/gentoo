@@ -15861,7 +15861,7 @@ sci-libs/Fiona 1.7.6 9999: OGR's neat, nimble, no-nonsense API
 sci-libs/Rtree 0.8.3_p20180802: R-Tree spatial index for Python GIS
 sci-libs/Shapely 1.6.4_p2-r1: Geometric objects, predicates, and operations
 sci-libs/ViSP 3.2.0-r2: Visual Servoing Platform: visual tracking and visual servoing library
-sci-libs/adolc 2.4.1 2.6.3-r1 9999: Automatic differentiation system for C/C++
+sci-libs/adolc 2.6.3-r1 2.7.2 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 8.300.2 9.800.3 9.850.1: Streamlined C++ linear algebra library
