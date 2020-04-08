@@ -45,6 +45,7 @@ app-text/asciidoc graphviz test
 app-text/po4a test
 app-text/xmlto text
 dev-lang/python tk
+dev-libs/boost mpi numpy zstd
 dev-libs/check doc subunit
 dev-libs/glib gtk-doc test
 dev-libs/icu doc
@@ -79,6 +80,7 @@ sys-apps/kmod doc
 sys-apps/portage apidoc epydoc
 sys-apps/rng-tools nistbeacon pkcs11
 sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
+sys-block/thin-provisioning-tools test
 sys-devel/automake test
 sys-devel/gdb source-highlight
 sys-devel/gettext cvs
