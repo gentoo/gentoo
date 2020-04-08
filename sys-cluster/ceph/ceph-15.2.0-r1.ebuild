@@ -46,6 +46,7 @@ COMMON_DEPEND="
 	dev-libs/crypto++:=[static-libs?]
 	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc(-)?]
 	dev-libs/libaio:=[static-libs?]
+	dev-libs/libfmt:=
 	dev-libs/libnl:3=[static-libs?]
 	dev-libs/libxml2:=[static-libs?]
 	dev-libs/xmlsec:=[!openssl?,!libressl?,static-libs?]
