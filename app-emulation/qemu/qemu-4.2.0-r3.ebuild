@@ -23,7 +23,8 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="https://download.qemu.org/${P}.tar.xz"
+	SRC_URI="https://download.qemu.org/${P}.tar.xz
+		https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
@@ -45,7 +46,7 @@ COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
 	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
 	sh4 sh4eb sparc sparc64 x86_64 xtensa xtensaeb"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS}
-	lm32 moxie rx tricore unicore32"
+	lm32 moxie tricore unicore32"
 IUSE_USER_TARGETS="${COMMON_TARGETS}
 	aarch64_be armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus
 	tilegx"
@@ -139,7 +140,7 @@ SOFTMMU_TOOLS_DEPEND="
 	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)] )
 	sdl? (
-		media-libs/libsdl2[video]
+		media-libs/libsdl2[X]
 		media-libs/libsdl2[static-libs(+)]
 	)
 	sdl-image? ( media-libs/sdl2-image[static-libs(+)] )
@@ -214,9 +215,13 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-qemu )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
+	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
+	"${FILESDIR}"/${PN}-4.0.0-sanitize-interp_info.patch
 	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
-	"${FILESDIR}"/${PN}-4.2.0-cflags.patch
+	"${FILESDIR}"/${PN}-4.2.0-CVE-2020-11102.patch #716518
+	"${WORKDIR}"/patches
 )
 
 QA_PREBUILT="
@@ -436,6 +441,7 @@ qemu_src_configure() {
 		fi
 	}
 	conf_opts+=(
+		--disable-bluez
 		$(conf_notuser accessibility brlapi)
 		$(conf_notuser aio linux-aio)
 		$(conf_notuser bzip2)
