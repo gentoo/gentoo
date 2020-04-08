@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,8 +21,7 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="bindist mirror fetch strip"
 
 BDEPEND="dev-util/patchelf"
-COMMON="app-eselect/eselect-opencl
-	dev-libs/ocl-icd"
+COMMON=">=virtual/opencl-3"
 DEPEND="${COMMON}"
 RDEPEND="${COMMON}
 	!media-libs/mesa[opencl]" # Bug #686790
@@ -97,6 +96,4 @@ pkg_postinst() {
 	elog "This package is now DEPRECATED on amd64 in favour of dev-libs/rocm-opencl-runtime."
 	elog "Moreover, it only provides legacy AMDGPU-Pro OpenCL libraries which are not compatible with Vega 10 and newer GPUs."
 	elog ""
-
-	"${ROOT}"/usr/bin/eselect opencl set --use-old ocl-icd
 }
