@@ -16,14 +16,14 @@ LICENSE="man-pages GPL-2+ BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE_L10N=" de fr it ja nl pl ru zh-CN"
-IUSE="nls ${IUSE_L10N// / l10n_}"
+IUSE="${IUSE_L10N// / l10n_}"
 RESTRICT="binchecks"
 
 # Block packages that used to install colliding man pages #341953 #548900 #612640 #617462
 RDEPEND="virtual/man
 	!<sys-apps/keyutils-1.5.9-r4
 	!<dev-libs/libbsd-0.8.3-r1"
-PDEPEND="nls? (
+PDEPEND="
 	l10n_de? ( || ( app-i18n/man-pages-l10n[l10n_de] app-i18n/man-pages-de ) )
 	l10n_fr? ( || ( app-i18n/man-pages-l10n[l10n_fr] app-i18n/man-pages-fr ) )
 	l10n_it? ( app-i18n/man-pages-it )
@@ -32,7 +32,6 @@ PDEPEND="nls? (
 	l10n_pl? ( || ( app-i18n/man-pages-l10n[l10n_pl] app-i18n/man-pages-pl ) )
 	l10n_ru? ( app-i18n/man-pages-ru )
 	l10n_zh-CN? ( app-i18n/man-pages-zh_CN )
-	)
 	sys-apps/man-pages-posix"
 
 src_configure() { :; }
