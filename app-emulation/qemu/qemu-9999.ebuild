@@ -491,10 +491,10 @@ qemu_src_configure() {
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
 		local audio_opts=(
+			$(usex pulseaudio pa "")
+			$(usev sdl)
 			$(usev alsa)
 			$(usev oss)
-			$(usev sdl)
-			$(usex pulseaudio pa "")
 		)
 		conf_opts+=(
 			--audio-drv-list=$(printf "%s," "${audio_opts[@]}")
