@@ -5913,6 +5913,7 @@ net-im/vacuum:socksstreams - Enable initiating SOCKS5 data streams between two X
 net-im/vacuum:urlprocessor - Allows other plugins to load data from custom types of URLs
 net-im/vacuum:vcard - Enable obtaining peer's personal contact information
 net-im/vacuum:xmppuriqueries - Allow other plugins to handle XMPP URI queries
+net-im/zoom:bundled-libjpeg-turbo - Use bundled libturbojpeg instead of media-libs/libjpeg-turbo
 net-irc/anope:chanstats - Channel Statistics
 net-irc/anope:cs-fantasy-stats - Enables the STATS and GSTATS commands
 net-irc/anope:cs-fantasy-top - Enables the (G)TOP and (G)TOP10 commands
