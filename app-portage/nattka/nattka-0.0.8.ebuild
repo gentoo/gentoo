@@ -26,3 +26,9 @@ BDEPEND="
 
 distutils_enable_sphinx doc --no-autodoc
 distutils_enable_tests pytest
+
+pkg_postinst() {
+	elog "NATTkA can optionally use:"
+	elog "  dev-python/networkx"
+	elog "to sort 'apply' output in dependency order."
+}
