@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE="vaapi"
 
 BDEPEND="virtual/pkgconfig"
-COMMON="dev-libs/ocl-icd
+COMMON=">=virtual/opencl-3
 	>=dev-util/intel-graphics-compiler-1.0.3151
 	>=media-libs/gmmlib-19.4.1
 	vaapi? (
@@ -47,8 +47,4 @@ src_configure() {
 		-DSKIP_UNIT_TESTS=ON
 	)
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	"${ROOT}"/usr/bin/eselect opencl set --use-old ocl-icd
 }
