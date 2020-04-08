@@ -22,5 +22,6 @@
 		<flag name="span">Enable support for the spandsp codec</flag>
 		<flag name="srtp">Enable support for encrypted voice transmission (secure RTP)</flag>
 		<flag name="statsd">Enable statsd integration</flag>
+		<flag name="unbound">Enable improved DNS core (SRV, NAPTR) by use of libunbound</flag>
 	</use>
 </pkgmetadata>
