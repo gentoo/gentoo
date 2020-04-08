@@ -36,6 +36,10 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.2
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-meson-Generate-cmake-config-and-version-files-if-mes.patch
+)
+
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/wflinfo$(get_exeext)
 )
