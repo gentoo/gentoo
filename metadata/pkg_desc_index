@@ -8292,7 +8292,7 @@ dev-python/pydocstyle 5.0.2: Python docstring style checker
 dev-python/pydot 1.4.1: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyds9 1.8.1: Python interface to XPA to communicate with DS9
-dev-python/pyelftools 0.25: pure-Python library for analyzing ELF files and DWARF debugging information
+dev-python/pyelftools 0.25 0.26: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyenchant 2.0.0: Python bindings for the Enchant spellchecking system
 dev-python/pyfakefs 3.7.1 3.7.2 4.0.2: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
