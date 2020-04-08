@@ -2436,7 +2436,7 @@ app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.0.6 0.0.7 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.0.6 0.0.7 0.0.8 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -12151,7 +12151,7 @@ mate-base/libmatekbd 1.18.2 1.22.0 1.24.0: MATE keyboard configuration library
 mate-base/mate 1.22 1.24: Meta ebuild for MATE, a traditional desktop environment
 mate-base/mate-applets 1.22.0 1.22.1 1.22.2-r1 1.24.0: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.22.0 1.24.0: Meta package for MATE panel applets
-mate-base/mate-common 1.22.0 1.22.2 1.24.0: Common files for development of MATE packages
+mate-base/mate-common 1.22.0 1.22.2 1.24.1: Common files for development of MATE packages
 mate-base/mate-control-center 1.22.1-r1 1.22.2 1.22.2-r1 1.24.0: The MATE Desktop configuration tool
 mate-base/mate-desktop 1.22.0 1.22.1 1.22.2 1.24.0: Libraries for the MATE desktop that are not part of the UI
 mate-base/mate-menus 1.22.0 1.22.0-r1 1.22.1-r1 1.24.0-r1: MATE menu system, implementing the F.D.O cross-desktop spec
@@ -12163,11 +12163,11 @@ mate-extra/caja-dropbox 1.22.1-r1 1.24.0: Store, Sync and Share Files Online
 mate-extra/caja-extensions 1.22.0 1.22.1 1.24.0: Several Caja extensions
 mate-extra/caja-hide 0.9.0: Hide files without renaming them in MATE's Caja
 mate-extra/mate-calc 1.22.0 1.24.0: Calculator for MATE
-mate-extra/mate-indicator-applet 1.22.0 1.24.0: MATE indicator applet
+mate-extra/mate-indicator-applet 1.22.0 1.22.1 1.24.0: MATE indicator applet
 mate-extra/mate-media 1.22.1 1.22.2 1.24.0: Multimedia related programs for the MATE desktop
 mate-extra/mate-netbook 1.22.1 1.22.2 1.24.0: MATE utilities for netbooks
 mate-extra/mate-polkit 1.22.0 1.22.0-r1 1.24.0: A MATE specific DBUS service that is used to bring up authentication dialogs
-mate-extra/mate-power-manager 1.22.1 1.22.2 1.24.0: A session daemon for MATE that makes it easy to manage your laptop or desktop
+mate-extra/mate-power-manager 1.22.1 1.22.2 1.24.1: A session daemon for MATE that makes it easy to manage your laptop or desktop
 mate-extra/mate-screensaver 1.22.1 1.22.2 1.24.0: Replaces xscreensaver, integrating with the MATE desktop
 mate-extra/mate-sensors-applet 1.22.1 1.24.0: MATE panel applet to display readings from hardware sensors
 mate-extra/mate-system-monitor 1.22.0 1.22.1 1.22.2 1.24.0: The MATE System Monitor
@@ -13182,7 +13182,7 @@ media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
 media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 1.0.7 9999: Libarchive VFS add-on for Kodi
 media-plugins/kodi-vfs-rar 2.2.0 2.2.1 2.2.2 2.2.3 2.3.0 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 1.0.3 1.0.4 9999: SACD VFS addon for Kodi
-media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 9999: SFTP VFS addon for Kodi
+media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 1.0.6 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 2.1.0 2.2.0 2.2.1 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
@@ -18735,7 +18735,7 @@ x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwo
 x11-themes/light-themes 17.04_p20170406: GTK2/GTK3 Ambiance and Radiance themes from Ubuntu
 x11-themes/lovelock-backgrounds 14.91.1.1-r1: Fedora 15 official background artwork
 x11-themes/lxqt-themes 0.14.0: Themes, graphics and icons for LXQt
-x11-themes/mate-backgrounds 1.22.0 1.24.0: A set of backgrounds packaged with the MATE desktop
+x11-themes/mate-backgrounds 1.22.0 1.24.1: A set of backgrounds packaged with the MATE desktop
 x11-themes/mate-icon-theme 1.22.0 1.22.1 1.22.2 1.24.0: MATE default icon themes
 x11-themes/mate-icon-theme-faenza 1.18.1 1.20.0: Faenza icon theme, that was adapted for MATE desktop
 x11-themes/mate-themes 3.22.19 3.22.21: A set of MATE themes, with sets for users with limited or low vision
