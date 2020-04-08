@@ -6,8 +6,8 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Computer-aided number theory C library and tools"
-HOMEPAGE="http://pari.math.u-bordeaux.fr/"
-SRC_URI="http://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz"
+HOMEPAGE="https://pari.math.u-bordeaux.fr/"
+SRC_URI="https://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/6"
