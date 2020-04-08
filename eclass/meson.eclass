@@ -84,6 +84,11 @@ fi
 # Optional meson test arguments as Bash array; this should be defined before
 # calling meson_src_test.
 
+# @VARIABLE: MYMESONARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# User-controlled environment variable containing arguments to be passed to
+# meson in meson_src_configure.
 
 read -d '' __MESON_ARRAY_PARSER <<"EOF"
 import shlex
@@ -236,12 +241,18 @@ meson_src_configure() {
 
 	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
 
+	# Handle quoted whitespace
+	eval "local -a MYMESONARGS=( ${MYMESONARGS} )"
+
 	mesonargs+=(
 		# Arguments from ebuild
 		"${emesonargs[@]}"
 
 		# Arguments passed to this function
 		"$@"
+
+		# Arguments from user
+		"${MYMESONARGS[@]}"
 
 		# Source directory
 		"${EMESON_SOURCE:-${S}}"
