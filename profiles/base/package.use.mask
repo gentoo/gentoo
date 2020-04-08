@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Ulrich Müller <ulm@gentoo.org> (2020-04-08)
+# Old versions of libjpeg-turbo have known security issues.
+# Use the bundled lib on your own risk. Bug #715106.
+net-im/zoom bundled-libjpeg-turbo
+
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
 # Ada support is not yet ready for sys-deve/gcc
 sys-devel/gcc ada
