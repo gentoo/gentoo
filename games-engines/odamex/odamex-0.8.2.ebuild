@@ -34,12 +34,14 @@ BDEPEND="games-util/deutex"
 S="${WORKDIR}/${PN}-src-${PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-miniupnpc.patch
-	"${FILESDIR}"/${P}-SearchDir.patch
+	"${FILESDIR}"/odamex-0.8.1-miniupnpc.patch
+	"${FILESDIR}"/odamex-0.8.1-SearchDir.patch
+	"${FILESDIR}"/odamex-0.8.2-Fix-odamex.wad-build-flow.patch
+	"${FILESDIR}"/odamex-0.8.2-Remove-duplicate-build-rule-for-odamex.wad.patch
 )
 
 src_prepare() {
-	rm -r libraries/libminiupnpc odamex.wad || die
+	rm -r libraries/libminiupnpc wad/odamex.wad || die
 	hprefixify common/d_main.cpp
 
 	use odalaunch && setup-wxwidgets
@@ -58,14 +60,6 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
-
-	# Build odamex.wad
-	cd wad || die "cd failed"
-	deutex -rgb 0 255 255 -doom2 bootstrap -build wadinfo.txt ../odamex.wad || die
 }
 
 src_install() {

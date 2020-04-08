@@ -32,6 +32,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2020-04-08)
+# Both of these block app-eselect/eselect-opencl in order to prevent
+# file collisions in /usr/include/CL and on /usr/lib/libOpenCL.so* .
+# However, virtual/opencl-3 as it stands now does not support
+# opencl-icd-loader yet and only pulls in dev-libs/ocl-icd - which depends
+# on eselect-opencl.
+# Will extend the virtual and remove the mask once satisfied with both
+# the new ICD loader itself and the sanity of the eselect-free approach
+# to OpenCL.
+dev-libs/opencl-icd-loader
+dev-util/opencl-headers
+
 # Joonas Niilola <juippis@gentoo.org> (2020-04-05)
 # Not maintained in Gentoo, doesn't build for 2 years, has only
 # deprecated version present in Gentoo. Has a huge number of open

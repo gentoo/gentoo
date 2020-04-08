@@ -20,9 +20,9 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-util/opencl-headers"
-RDEPEND="${DEPEND}
-	app-eselect/eselect-opencl"
+DEPEND="dev-util/opencl-headers
+	!app-eselect/eselect-opencl"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -36,13 +36,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local ocl_dir="/usr/$(get_libdir)/OpenCL/vendors/${PN}"
-
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${ocl_dir}"
-		-DCMAKE_INSTALL_LIBDIR="${ocl_dir}"
 		-DBUILD_TESTING=$(usex test)
-		-DOPENCL_ICD_LOADER_HEADERS_DIR="${ocl_dir}/include"
+		-DOPENCL_ICD_LOADER_HEADERS_DIR="${EPREFIX}/usr/include"
 	)
 	cmake_src_configure
 }
@@ -50,8 +46,4 @@ multilib_src_configure() {
 multilib_src_test() {
 	OCL_ICD_FILENAMES="${BUILD_DIR}/test/driver_stub/libOpenCLDriverStub.so" \
 	cmake_src_test
-}
-
-pkg_postinst() {
-	eselect opencl set --use-old "${PN}"
 }
