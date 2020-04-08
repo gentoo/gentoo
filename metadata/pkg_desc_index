@@ -8583,7 +8583,7 @@ dev-python/redis-py 3.3.11: Python client for Redis key-value store
 dev-python/redlock-py 1.0.8: Redis distributed locks in Python
 dev-python/rednose 0.4.3: coloured output for nosetests
 dev-python/reflink 0.2.1: Python wrapper around the reflink system calls
-dev-python/regex 2017.04.05 2017.04.05-r1 2019.11.1 2020.2.20: Alternative regular expression module to replace re
+dev-python/regex 2017.04.05 2017.04.05-r1 2019.11.1 2020.2.20 2020.4.4: Alternative regular expression module to replace re
 dev-python/rencode 1.0.5-r1: similar to bencode from the BitTorrent project
 dev-python/reno 2.7.0 2.11.3: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.5.13-r1: Tools for generating printable PDF documents from any data source
@@ -18891,7 +18891,7 @@ xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.5.2: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.2: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-notes-plugin 1.8.1-r4: Xfce4 panel sticky notes plugin
-xfce-extra/xfce4-notifyd 0.4.4: Notification daemon for the Xfce desktop environment
+xfce-extra/xfce4-notifyd 0.4.4 0.6.0: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-panel-profiles 1.0.10: Simple application to manage Xfce panel layouts
 xfce-extra/xfce4-places-plugin 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-power-manager 1.6.5 1.6.6 1.7.0: Power manager for the Xfce desktop environment
