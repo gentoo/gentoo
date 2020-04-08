@@ -12,7 +12,7 @@ SRC_URI="https://github.com/aio-libs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~s390 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~s390 ~sparc x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
