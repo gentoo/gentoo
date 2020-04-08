@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs autotools
+inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/strace/strace.git"
@@ -39,10 +39,6 @@ RDEPEND="
 
 src_prepare() {
 	default
-
-	# Needed for applied patch (#701516). Remove with next version.
-	# Don't forget about autotools inherit.
-	eautoreconf
 
 	if [[ ! -e configure ]] ; then
 		# git generation
