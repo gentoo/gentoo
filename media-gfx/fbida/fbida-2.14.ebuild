@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/ida-desktop.patch
 	"${FILESDIR}"/${PN}-2.10-giflib-4.2.patch
 	"${FILESDIR}"/${PN}-2.14-Autoconf.patch
+	"${FILESDIR}"/${PN}-2.14-fno-common.patch
 )
 
 src_configure() {
