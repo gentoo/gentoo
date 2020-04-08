@@ -150,10 +150,6 @@
 -cpu_flags_x86_ssse3
 -cpu_flags_x86_xop
 
-# George Shapovalov <george@gentoo.org> (2007-04-08)
-# supported on amd64
--ada
-
 # Robert Buchholz <rbu@gentoo.org> (2007-06-03)
 # Unmask as it works on amd64
 -lcd_devices_luise
