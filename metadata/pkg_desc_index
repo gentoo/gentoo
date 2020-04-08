@@ -6743,6 +6743,7 @@ dev-perl/Spreadsheet-ParseExcel 0.650.0: Read information from an Excel file
 dev-perl/Spreadsheet-WriteExcel 2.400.0: Write cross-platform Excel binary file
 dev-perl/Starlet 0.310.0: A simple, high-performance PSGI/Plack HTTP server
 dev-perl/Stat-lsMode 0.500.0-r1: The Perl Stat-lsMode Module
+dev-perl/Statistics-Basic 1.661.100: A collection of very basic statistics modules
 dev-perl/Statistics-CaseResampling 0.150.0: Efficient resampling and calculation of medians with confidence intervals
 dev-perl/Statistics-Descriptive 3.61.200: Module of basic descriptive statistical functions
 dev-perl/Statistics-Descriptive-Discrete 0.70.0-r1: Statistics-Descriptive-Discrete module
@@ -14386,7 +14387,7 @@ net-irc/dccserver 0.5-r1: linux implementation of the mirc dccserver command
 net-irc/eggdrop 1.8.3 1.8.4: An IRC bot extensible with C or TCL
 net-irc/emech 3.0.3-r1 3.0.99_p3: UNIX compatible IRC bot programmed in the C language
 net-irc/epic5 2.0.1: Epic5 IRC Client
-net-irc/hexchat 2.12.4-r2 2.14.1 2.14.2 2.14.3 9999: Graphical IRC client based on XChat
+net-irc/hexchat 2.14.3 9999: Graphical IRC client based on XChat
 net-irc/ii 1.8 9999: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 2.0.28 3.4.0 3.5.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
