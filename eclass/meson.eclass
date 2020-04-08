@@ -219,32 +219,42 @@ meson_feature() {
 meson_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# Common args
 	local mesonargs=(
+		meson setup
 		--buildtype plain
 		--libdir "$(get_libdir)"
 		--localstatedir "${EPREFIX}/var/lib"
 		--prefix "${EPREFIX}/usr"
 		--sysconfdir "${EPREFIX}/etc"
 		--wrap-mode nodownload
-		)
+	)
 
 	if tc-is-cross-compiler || [[ ${ABI} != ${DEFAULT_ABI-${ABI}} ]]; then
 		_meson_create_cross_file || die "unable to write meson cross file"
 		mesonargs+=( --cross-file "${T}/meson.${CHOST}.${ABI}" )
 	fi
 
+	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
+
+	mesonargs+=(
+		# Arguments from ebuild
+		"${emesonargs[@]}"
+
+		# Arguments passed to this function
+		"$@"
+
+		# Source directory
+		"${EMESON_SOURCE:-${S}}"
+
+		# Build directory
+		"${BUILD_DIR}"
+	)
+
 	# https://bugs.gentoo.org/625396
 	python_export_utf8_locale
 
-	# Append additional arguments from ebuild
-	mesonargs+=("${emesonargs[@]}")
-
-	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
-	set -- meson "${mesonargs[@]}" "$@" \
-		"${EMESON_SOURCE:-${S}}" "${BUILD_DIR}"
-	echo "$@"
-	tc-env_build "$@" || die
+	echo "${mesonargs[@]}" >&2
+	tc-env_build "${mesonargs[@]}" || die
 }
 
 # @FUNCTION: meson_src_compile
