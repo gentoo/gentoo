@@ -153,6 +153,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-80-gcc-blink.patch"
 	"${FILESDIR}/chromium-81-gcc-noexcept.patch"
 	"${FILESDIR}/chromium-81-gcc-constexpr.patch"
+	"${FILESDIR}/chromium-81-gcc-10.patch"
 )
 
 pre_build_checks() {
