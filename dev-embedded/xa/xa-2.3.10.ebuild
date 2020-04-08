@@ -23,6 +23,10 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}"
 }
 
+src_test() {
+	emake -j1 test
+}
+
 src_install() {
 	emake install DESTDIR="${ED}/usr"
 	einstalldocs
