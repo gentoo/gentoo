@@ -1,0 +1,53 @@
+--- a/fbi.c
++++ b/fbi.c
+@@ -86,7 +86,6 @@ static int img_mem, max_mem_mb;
+ 
+ /* graphics interface */
+ gfxstate                   *gfx;
+-int                        debug;
+ 
+ /* framebuffer */
+ char                       *fbdev = NULL;
+--- a/filter.c
++++ b/filter.c
+@@ -6,8 +6,6 @@
+ #include "readers.h"
+ #include "filter.h"
+ 
+-int debug = 0;
+-
+ /* ----------------------------------------------------------------------- */
+ 
+ static void
+--- a/idaconfig.h
++++ b/idaconfig.h
+@@ -17,7 +17,7 @@
+ 
+ /* -------------------------------------------------------------------------- */
+ 
+-char *ida_lists;
++extern char *ida_lists;
+ 
+ void ida_init_config(void);
+ void ida_read_config(void);
+--- a/readers.c
++++ b/readers.c
+@@ -7,6 +7,8 @@
+ #include "readers.h"
+ #include "byteorder.h"
+ 
++int debug=0;
++
+ /* ----------------------------------------------------------------------- */
+ 
+ void load_bits_lsb(unsigned char *dst, unsigned char *src, int width,
+--- a/viewer.c
++++ b/viewer.c
+@@ -38,7 +38,6 @@
+ 
+ #define PROCESS_LINES    16
+ 
+-int debug;
+ Cursor ptrs[POINTER_COUNT];
+ 
+ /* ----------------------------------------------------------------------- */
