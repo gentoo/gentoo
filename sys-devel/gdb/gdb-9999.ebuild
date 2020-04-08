@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit eutils flag-o-matic python-single-r1
+inherit eutils flag-o-matic python-single-r1 toolchain-funcs
 
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
@@ -180,6 +180,9 @@ src_configure() {
 		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
 		myconf+=( --disable-largefile )
 	fi
+
+	# source-highlight is detected with pkg-config: bug #716558
+	export ac_cv_path_pkg_config_prog_path="$(tc-getPKG_CONFIG)"
 
 	econf "${myconf[@]}"
 }
