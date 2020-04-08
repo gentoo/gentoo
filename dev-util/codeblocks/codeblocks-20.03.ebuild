@@ -5,18 +5,22 @@ EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools subversion wxwidgets xdg
+inherit autotools wxwidgets xdg
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="https://codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-SRC_URI=""
-ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}/code/trunk"
-ESVN_FETCH_CMD="svn checkout --ignore-externals"
+KEYWORDS="~amd64 ~ppc ~x86"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
+https://dev.gentoo.org/~leio/distfiles/${P}-fortran.tar.xz"
 
-IUSE="contrib debug pch"
+# USE="fortran" enables FortranProject plugin (v1.6 updated to 2020-04-06 [r277])
+# that is delivered with Code::Blocks 20.03 source code.
+# https://sourceforge.net/projects/fortranproject
+# http://cbfortran.sourceforge.net
+
+IUSE="contrib debug fortran pch"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -32,26 +36,31 @@ RDEPEND="app-arch/zip
 
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/codeblocks-17.12-nodebug.diff )
+PATCHES=(
+	"${FILESDIR}"/${P}-env.patch
+	"${WORKDIR}"/patches/
+	)
 
 src_prepare() {
 	default
-	# Let's make the autorevision work.
-	subversion_wc_info
-	CB_LCD=$(LC_ALL=C svn info "${ESVN_WC_PATH}" | grep "^Last Changed Date:" | cut -d" " -f4,5)
-	echo "m4_define([SVN_REV], ${ESVN_WC_REVISION})" > revision.m4
-	echo "m4_define([SVN_DATE], ${CB_LCD})" >> revision.m4
 	eautoreconf
 }
 
 src_configure() {
 	setup-wxwidgets
 
+	# USE="contrib -fortran" setup:
+	use fortran || CONF_WITH_LST=$(use_with contrib contrib-plugins all,-FortranProject)
+	# USE="contrib fortran" setup:
+	use fortran && CONF_WITH_LST=$(use_with contrib contrib-plugins all)
+	# USE="-contrib fortran" setup:
+	use contrib || CONF_WITH_LST=$(use_with fortran contrib-plugins FortranProject)
+
 	econf \
 		--disable-static \
 		$(use_enable debug) \
 		$(use_enable pch) \
-		$(use_with contrib contrib-plugins all)
+		${CONF_WITH_LST}
 }
 
 pkg_postinst() {
