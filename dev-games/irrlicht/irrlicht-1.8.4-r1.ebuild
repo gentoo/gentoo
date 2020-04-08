@@ -17,9 +17,9 @@ IUSE="debug doc static-libs"
 RDEPEND="app-arch/bzip2
 	~dev-games/irrlicht-headers-${PV}
 	media-libs/libpng:0=
+	media-libs/mesa[X,libglvnd]
 	sys-libs/zlib
 	virtual/jpeg:0
-	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXxf86vm"
 DEPEND="${RDEPEND}
