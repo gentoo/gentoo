@@ -142,9 +142,5 @@
 -lcd_devices_svga
 -lcd_devices_luise
 
-# George Shapovalov <george@gentoo.org> (2007-04-08)
-# supported on x86
--ada
-
 # fdk-aac is already keyworded here
 -fdk

@@ -107,10 +107,6 @@ alsa_cards_sbawe
 alsa_cards_sscape
 alsa_cards_wavefront
 
-# George Shapovalov <george@gentoo.org> (2007-04-08)
-# supported on ppc
--ada
-
 # Joseph Jezak <josejx@gentoo.org> (2007-06-28)
 # Masked Parallel LCD devices for bug #180683
 # app-misc/lcd4linux
