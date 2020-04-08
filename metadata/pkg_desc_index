@@ -8278,7 +8278,7 @@ dev-python/pycollada 0.6-r1: Python library for reading and writing COLLADA docu
 dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.19-r1 2.20: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
-dev-python/pycryptodome 3.6.6 3.9.4: A self-contained cryptographic library for Python
+dev-python/pycryptodome 3.6.6 3.9.4 3.9.7: A self-contained cryptographic library for Python
 dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2018.1.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
