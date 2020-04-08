@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info multilib pam
+inherit autotools bash-completion-r1 linux-info multilib pam
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
@@ -98,6 +98,8 @@ src_install() {
 		echo 'create cifs.spnego * * /usr/sbin/cifs.upcall %k' \
 			> "${ED}/etc/request-key.d/cifs.spnego.conf"
 	fi
+
+	dobashcomp bash-completion/smbinfo
 }
 
 pkg_postinst() {
