@@ -18065,7 +18065,7 @@ x11-libs/gtkdatabox 0.9.3.0: Gtk+ Widgets for live display of large amounts of f
 x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
 x11-libs/gtkglext 1.2.0-r4: GL extensions for Gtk+ 2.0
 x11-libs/gtkmathview 0.8.0-r4: Rendering engine for MathML documents
-x11-libs/gtksourceview 2.10.5-r3 3.24.11 4.2.0: A text widget implementing syntax highlighting and other features
+x11-libs/gtksourceview 2.10.5-r3 3.24.11 4.2.0 4.4.0: A text widget implementing syntax highlighting and other features
 x11-libs/libFS 1.0.8: X.Org FS library
 x11-libs/libGLw 8.0.0-r1: Mesa GLw library
 x11-libs/libICE 1.0.10: X.Org Inter-Client Exchange library
