@@ -25,7 +25,7 @@ SLOT="0/$(ver_cut 1-2)"
 RDEPEND=">=dev-libs/rocr-runtime-${PV}
 	>=dev-libs/rocm-comgr-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
-	dev-libs/ocl-icd[khronos-headers]
+	>=virtual/opencl-3
 	media-libs/mesa"
 DEPEND="${RDEPEND}
 	dev-lang/ocaml
