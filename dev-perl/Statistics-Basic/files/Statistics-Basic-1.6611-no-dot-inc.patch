@@ -1,0 +1,436 @@
+From fb35de2d10ce7894e46e3b9088a670416d09ffc9 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 8 Apr 2020 19:48:41 +1200
+Subject: Fix test failures without '.' present in '@INC'
+
+Since Perl 5.26.0, under default conditions, '.' is no longer in @INC
+
+This issue is however presently hidden, as unless somebody explicitly
+sets PERL_UNSAFE_INC=0:
+- CPAN tools set PERL_USE_UNSAFE_INC=1 when running "./Makefile.PL"
+- Test::Harness sets PERL_USE_UNSAFE_INC=1
+
+Its anticipated that in a future perl version, the PERL_USE_UNSAFE_INC
+mechansim will go away, leading to these failures.
+
+Without this patch, the issue is always visible when testing via:
+
+  perl Makefile.PL
+  make
+  perl -Mblib t/foo.t
+
+But is not visible with a standard
+
+  make test
+
+( A good way to see where it gets turned on automatically is put a
+  throw-away test somewhere with the code:
+
+  die "BAD PROGRAMMER, NO COOKIE" if $ENV{PERL_USE_UNSAFE_INC};
+
+Then it barfs every time your toolchain hid this problem from you.
+
+Just don't ship that in a test or you will have a bad day )
+
+Bug: https://github.com/jettero/statistics--basic/pull/3
+---
+ t/05_load_them.t                  | 3 +--
+ t/07_vector.t                     | 2 +-
+ t/08_cvec.t                       | 2 +-
+ t/08_filter_outliers.t            | 2 +-
+ t/09_test_importer_vars_debug.t   | 2 +-
+ t/09_test_importer_vars_debug0.t  | 2 +-
+ t/09_test_importer_vars_debug1.t  | 2 +-
+ t/09_test_importer_vars_ipres.t   | 2 +-
+ t/09_test_importer_vars_ipres1.t  | 2 +-
+ t/09_test_importer_vars_ipres2.t  | 2 +-
+ t/09_test_importer_vars_nofill.t  | 2 +-
+ t/09_test_importer_vars_nofill0.t | 2 +-
+ t/09_test_importer_vars_nofill1.t | 2 +-
+ t/09_test_importer_vars_toler.t   | 2 +-
+ t/09_test_importer_vars_toler1.t  | 2 +-
+ t/10_mean.t                       | 2 +-
+ t/10_median.t                     | 2 +-
+ t/10_mode.t                       | 2 +-
+ t/10_moving_average.t             | 2 +-
+ t/15_covariance.t                 | 2 +-
+ t/15_variance.t                   | 2 +-
+ t/17_stddev.t                     | 3 ++-
+ t/19_combo.t                      | 2 +-
+ t/20_LSF.t                        | 2 +-
+ t/20_correlation.t                | 2 +-
+ t/25_correlate_computed.t         | 2 +-
+ t/30_empty_constructor_tests.t    | 2 +-
+ t/53_co_persistance.t             | 2 +-
+ t/53_persistance.t                | 2 +-
+ t/54_doc_example.t                | 2 +-
+ t/60_bigfloats.t                  | 2 +-
+ t/75_filtered_missings.t          | 2 +-
+ t/75_missing_correlated.t         | 2 +-
+ 33 files changed, 34 insertions(+), 34 deletions(-)
+
+diff --git a/t/05_load_them.t b/t/05_load_them.t
+index f5f2979..ee76bcc 100644
+--- a/t/05_load_them.t
++++ b/t/05_load_them.t
+@@ -1,5 +1,4 @@
+-
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ 
+diff --git a/t/07_vector.t b/t/07_vector.t
+index 2672718..73ba75f 100644
+--- a/t/07_vector.t
++++ b/t/07_vector.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all ignore_env);
+diff --git a/t/08_cvec.t b/t/08_cvec.t
+index 9783422..171e17d 100644
+--- a/t/08_cvec.t
++++ b/t/08_cvec.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all ignore_env);
+diff --git a/t/08_filter_outliers.t b/t/08_filter_outliers.t
+index 16f3b7d..ecb13a9 100644
+--- a/t/08_filter_outliers.t
++++ b/t/08_filter_outliers.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all ignore_env);
+diff --git a/t/09_test_importer_vars_debug.t b/t/09_test_importer_vars_debug.t
+index d8747d2..0c8266f 100644
+--- a/t/09_test_importer_vars_debug.t
++++ b/t/09_test_importer_vars_debug.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all debug);
+ 
+diff --git a/t/09_test_importer_vars_debug0.t b/t/09_test_importer_vars_debug0.t
+index 9c7041e..b657032 100644
+--- a/t/09_test_importer_vars_debug0.t
++++ b/t/09_test_importer_vars_debug0.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all debug=0);
+ 
+diff --git a/t/09_test_importer_vars_debug1.t b/t/09_test_importer_vars_debug1.t
+index 1e6702e..a37a931 100644
+--- a/t/09_test_importer_vars_debug1.t
++++ b/t/09_test_importer_vars_debug1.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all debug=1);
+ 
+diff --git a/t/09_test_importer_vars_ipres.t b/t/09_test_importer_vars_ipres.t
+index 8045d21..c2cc9d8 100644
+--- a/t/09_test_importer_vars_ipres.t
++++ b/t/09_test_importer_vars_ipres.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all ipres);
+ 
+diff --git a/t/09_test_importer_vars_ipres1.t b/t/09_test_importer_vars_ipres1.t
+index 1ea991b..f076f7a 100644
+--- a/t/09_test_importer_vars_ipres1.t
++++ b/t/09_test_importer_vars_ipres1.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all ipres=1);
+ 
+diff --git a/t/09_test_importer_vars_ipres2.t b/t/09_test_importer_vars_ipres2.t
+index c908c26..5fdf76c 100644
+--- a/t/09_test_importer_vars_ipres2.t
++++ b/t/09_test_importer_vars_ipres2.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all ipres=2);
+ 
+diff --git a/t/09_test_importer_vars_nofill.t b/t/09_test_importer_vars_nofill.t
+index 461f843..eda5ec6 100644
+--- a/t/09_test_importer_vars_nofill.t
++++ b/t/09_test_importer_vars_nofill.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all nofill);
+ 
+diff --git a/t/09_test_importer_vars_nofill0.t b/t/09_test_importer_vars_nofill0.t
+index 53bb877..52725f4 100644
+--- a/t/09_test_importer_vars_nofill0.t
++++ b/t/09_test_importer_vars_nofill0.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all nofill=0);
+ 
+diff --git a/t/09_test_importer_vars_nofill1.t b/t/09_test_importer_vars_nofill1.t
+index 87f6300..42f3280 100644
+--- a/t/09_test_importer_vars_nofill1.t
++++ b/t/09_test_importer_vars_nofill1.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all nofill=1);
+ 
+diff --git a/t/09_test_importer_vars_toler.t b/t/09_test_importer_vars_toler.t
+index 9af2659..0b44e3a 100644
+--- a/t/09_test_importer_vars_toler.t
++++ b/t/09_test_importer_vars_toler.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ 
+ BEGIN { $ENV{TOLER} = 1 }
+ 
+diff --git a/t/09_test_importer_vars_toler1.t b/t/09_test_importer_vars_toler1.t
+index dacc30c..85094a7 100644
+--- a/t/09_test_importer_vars_toler1.t
++++ b/t/09_test_importer_vars_toler1.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all toler=0);
+ 
+diff --git a/t/10_mean.t b/t/10_mean.t
+index 322d3f5..777cdf3 100644
+--- a/t/10_mean.t
++++ b/t/10_mean.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic;
+diff --git a/t/10_median.t b/t/10_median.t
+index dc1b6d4..73527da 100644
+--- a/t/10_median.t
++++ b/t/10_median.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all);
+diff --git a/t/10_mode.t b/t/10_mode.t
+index 0b053cc..e27220f 100644
+--- a/t/10_mode.t
++++ b/t/10_mode.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all ignore_env);
+diff --git a/t/10_moving_average.t b/t/10_moving_average.t
+index eea4667..3a2587b 100644
+--- a/t/10_moving_average.t
++++ b/t/10_moving_average.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all nofill);
+diff --git a/t/15_covariance.t b/t/15_covariance.t
+index 1f2868a..4d13ed0 100644
+--- a/t/15_covariance.t
++++ b/t/15_covariance.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic;
+diff --git a/t/15_variance.t b/t/15_variance.t
+index fbd4cec..24073db 100644
+--- a/t/15_variance.t
++++ b/t/15_variance.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic;
+diff --git a/t/17_stddev.t b/t/17_stddev.t
+index 681aa32..11fa423 100644
+--- a/t/17_stddev.t
++++ b/t/17_stddev.t
+@@ -1,5 +1,6 @@
+ 
+-use t::locale_hack;
++
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic;
+diff --git a/t/19_combo.t b/t/19_combo.t
+index 483e14b..5fba593 100644
+--- a/t/19_combo.t
++++ b/t/19_combo.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all);
+diff --git a/t/20_LSF.t b/t/20_LSF.t
+index 9941053..e3c14ea 100644
+--- a/t/20_LSF.t
++++ b/t/20_LSF.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic;
+diff --git a/t/20_correlation.t b/t/20_correlation.t
+index 629373a..015d12d 100644
+--- a/t/20_correlation.t
++++ b/t/20_correlation.t
+@@ -1,5 +1,5 @@
+ use strict;
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all toler=0.000_001);
+ 
+diff --git a/t/25_correlate_computed.t b/t/25_correlate_computed.t
+index 3b79a06..2fa0c98 100644
+--- a/t/25_correlate_computed.t
++++ b/t/25_correlate_computed.t
+@@ -1,4 +1,4 @@
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all toler=0.05);
+diff --git a/t/30_empty_constructor_tests.t b/t/30_empty_constructor_tests.t
+index b603e74..6cd5557 100644
+--- a/t/30_empty_constructor_tests.t
++++ b/t/30_empty_constructor_tests.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use Test;
+ use Statistics::Basic qw(:all);
+ 
+diff --git a/t/53_co_persistance.t b/t/53_co_persistance.t
+index 827069d..94c0ed3 100644
+--- a/t/53_co_persistance.t
++++ b/t/53_co_persistance.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all ignore_env);
+diff --git a/t/53_persistance.t b/t/53_persistance.t
+index c71ab29..1007610 100644
+--- a/t/53_persistance.t
++++ b/t/53_persistance.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all);
+diff --git a/t/54_doc_example.t b/t/54_doc_example.t
+index 3237e82..a66c290 100644
+--- a/t/54_doc_example.t
++++ b/t/54_doc_example.t
+@@ -1,5 +1,5 @@
+ 
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+    use Statistics::Basic qw(:all);
+ 
+    my $v1 = vector(1,2,3,4,5);
+diff --git a/t/60_bigfloats.t b/t/60_bigfloats.t
+index d2f04b1..b052435 100644
+--- a/t/60_bigfloats.t
++++ b/t/60_bigfloats.t
+@@ -1,4 +1,4 @@
+-use t::locale_hack;
++BEGIN { require "./t/locale_hack.pm" }
+ use strict;
+ use Test;
+ use Statistics::Basic qw(:all toler=0.000_001);
+diff --git a/t/75_filtered_missings.t b/t/75_filtered_missings.t
+index 0874446..862ca5a 100644
+--- a/t/75_filtered_missings.t
++++ b/t/75_filtered_missings.t
+@@ -1,5 +1,5 @@
++BEGIN { require "./t/locale_hack.pm" }
+ 
+-use t::locale_hack;
+ use Test;
+ use Statistics::Basic qw(:all);
+ 
+diff --git a/t/75_missing_correlated.t b/t/75_missing_correlated.t
+index 2b16719..1532e81 100644
+--- a/t/75_missing_correlated.t
++++ b/t/75_missing_correlated.t
+@@ -1,5 +1,5 @@
++BEGIN { require "./t/locale_hack.pm" }
+ 
+-use t::locale_hack;
+ use Test;
+ use Statistics::Basic qw(:all);
+ 
+-- 
+2.26.0
+
