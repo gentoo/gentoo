@@ -456,11 +456,6 @@ app-admin/packagekit-qt
 app-backup/deja-dup
 gnome-extra/gnome-packagekit
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
-# No maintainer, py2-only, blocks dev-python/pygtk removal, needs version bump
-# See bugs #546024, #706486, pending PR #14720. Masked for removal in 40 days.
-gnome-extra/nautilus-dropbox
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)
 # Fails to automatically launch pipewire for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
