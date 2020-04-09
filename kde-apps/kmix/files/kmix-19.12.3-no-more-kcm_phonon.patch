@@ -1,0 +1,71 @@
+From b012e900cce1e432537b192bb146f0b07dbe055c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 9 Apr 2020 22:37:28 +0200
+Subject: [PATCH] Drop no longer available kcm_phonon 'Audio Setup' from
+ Settings menu/systray
+
+---
+ apps/kmix.cpp     | 10 +++-------
+ apps/kmix.h       |  1 -
+ desktop/kmixui.rc |  1 -
+ 3 files changed, 3 insertions(+), 9 deletions(-)
+
+diff --git a/apps/kmix.cpp b/apps/kmix.cpp
+index 5b83d007..dd39a3d7 100644
+--- a/apps/kmix.cpp
++++ b/apps/kmix.cpp
+@@ -177,11 +177,7 @@ void KMixWindow::initActions()
+ 	//actionCollection()->addAction(QStringLiteral( a->objectName()), a );
+ 	KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
+ 	KStandardAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), actionCollection());
+-	QAction* action = actionCollection()->addAction(QStringLiteral("launch_kdesoundsetup"));
+-	action->setText(i18n("Audio Setup..."));
+-	connect(action, SIGNAL(triggered(bool)), SLOT(slotKdeAudioSetupExec()));
+-
+-	action = actionCollection()->addAction(QStringLiteral("hide_kmixwindow"));
++	QAction* action = actionCollection()->addAction(QStringLiteral("hide_kmixwindow"));
+ 	action->setText(i18n("Hide Mixer Window"));
+ 	connect(action, SIGNAL(triggered(bool)), SLOT(hideOrClose()));
+ 	actionCollection()->setDefaultShortcut(action, Qt::Key_Escape);
+@@ -1209,12 +1205,12 @@ void KMixWindow::toggleMenuBar()
+ {
+ 	menuBar()->setVisible(_actionShowMenubar->isChecked());
+ }
+-
++/*
+ void KMixWindow::slotKdeAudioSetupExec()
+ {
+     forkExec(QStringList() << "kcmshell5" << "kcm_phonon");
+ }
+-
++*/
+ void KMixWindow::forkExec(const QStringList& args)
+ {
+ 	int pid = KProcess::startDetached(args);
+diff --git a/apps/kmix.h b/apps/kmix.h
+index b18ec38b..575f654a 100644
+--- a/apps/kmix.h
++++ b/apps/kmix.h
+@@ -138,7 +138,6 @@ private:
+ 	void updateTabsClosable();
+ 
+   private slots:
+-   void slotKdeAudioSetupExec();
+    void slotConfigureCurrentView();
+ 
+    void plugged(const char *driverName, const QString &udi, int dev);
+diff --git a/desktop/kmixui.rc b/desktop/kmixui.rc
+index ffb220f6..27ca3351 100644
+--- a/desktop/kmixui.rc
++++ b/desktop/kmixui.rc
+@@ -16,7 +16,6 @@
+  <Menu name="settings">
+      <Action name="toggle_channels_currentview" append="save_merge"/>
+      <Action name="select_master" append="save_merge"/>
+-     <Action name="launch_kdesoundsetup" append="save_merge"/>     
+  </Menu>
+  <Menu name="help" append="about_merge"><text>&amp;Help</text>
+   <Action name="hwinfo"/>
+-- 
+2.26.0
+
