@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 inherit cmake-utils python-single-r1 xdg
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
@@ -53,11 +53,6 @@ RDEPEND="
 	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
-
-pkg_setup() {
-	# build system is using FindPythonLibs.cmake which needs python:2
-	python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	sed -e "s/-O3//" -i CMakeLists.txt || die
