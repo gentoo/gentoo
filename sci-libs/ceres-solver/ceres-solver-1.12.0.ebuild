@@ -21,15 +21,15 @@ REQUIRED_USE="test? ( gflags ) sparse? ( lapack ) abi_x86_32? ( !sparse !lapack 
 
 RDEPEND="
 	dev-cpp/glog[gflags?,${MULTILIB_USEDEP}]
-	cxsparse? ( sci-libs/cxsparse:0= )
+	cxsparse? ( sci-libs/cxsparse )
 	lapack? ( virtual/lapack )
 	sparse? (
-		sci-libs/amd:0=
-		sci-libs/camd:0=
-		sci-libs/ccolamd:0=
-		sci-libs/cholmod:0=[metis]
-		sci-libs/colamd:0=
-		sci-libs/spqr:0=
+		sci-libs/amd
+		sci-libs/camd
+		sci-libs/ccolamd
+		sci-libs/cholmod[metis(+)]
+		sci-libs/colamd
+		sci-libs/spqr
 	)"
 
 DEPEND="${RDEPEND}
@@ -90,7 +90,7 @@ src_install() {
 	dodoc README.md VERSION
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
+		docinto /usr/share/doc/${PF}
 		docompress -x /usr/share/doc/${PF}/examples
 		doins -r examples data
 	fi
