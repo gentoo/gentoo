@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,10 @@ EAPI=6
 inherit llvm meson xdg-utils
 
 DESCRIPTION="An EFL-based IDE"
-HOMEPAGE="https://www.enlightenment.org/about-edi"
+HOMEPAGE="http://edi-ide.com/
+	https://www.enlightenment.org/about-edi
+	https://phab.enlightenment.org/w/projects/edi/
+	https://github.com/Enlightenment/edi"
 SRC_URI="https://github.com/Enlightenment/edi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"

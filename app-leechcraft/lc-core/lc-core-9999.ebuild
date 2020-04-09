@@ -11,10 +11,10 @@ DESCRIPTION="Core of LeechCraft, the modular network client"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="debug doc postgres +qwt +sqlite"
+IUSE="debug doc postgres +qwt"
 
 DEPEND="
-	>=dev-libs/boost-1.62
+	dev-libs/boost:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -22,7 +22,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtscript:5
-	dev-qt/qtsql:5[postgres?,sqlite?]
+	dev-qt/qtsql:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
@@ -30,6 +30,7 @@ DEPEND="
 	qwt? ( x11-libs/qwt:6 )
 "
 RDEPEND="${DEPEND}
+	dev-qt/qtsql:5[postgres?,sqlite]
 	dev-qt/qtsvg:5
 	|| (
 		kde-frameworks/oxygen-icons
@@ -40,8 +41,6 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	doc? ( app-doc/doxygen )
 "
-
-REQUIRED_USE="|| ( postgres sqlite )"
 
 src_configure() {
 	local mycmakeargs=(
