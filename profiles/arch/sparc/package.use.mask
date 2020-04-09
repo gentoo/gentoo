@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-09)
+# dependencies not keyworded
+dev-python/stevedore doc
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
 # ghc does not build, which is needed for darcs, bug #711944
 app-portage/layman darcs
