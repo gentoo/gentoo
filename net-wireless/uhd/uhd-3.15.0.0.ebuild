@@ -33,17 +33,19 @@ RDEPEND="${PYTHON_DEPS}
 	usb? ( virtual/libusb:1 )
 	dev-libs/boost:=
 	sys-libs/ncurses:0[tinfo]
+	$(python_gen_cond_dep '
+	|| (
+		dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	)
+	dev-python/requests[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	$(python_gen_cond_dep '
 	dev-python/mako[${PYTHON_MULTI_USEDEP}]
-	|| (
-		dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-	)
-	dev-python/requests[${PYTHON_MULTI_USEDEP}]
 	')
 	app-arch/unzip
 	app-arch/gzip
