@@ -7855,7 +7855,7 @@ dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client lib
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.11: A high-performance immutable mapping type for Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
-dev-python/importlib_metadata 1.4.0 1.5.0 1.6.0: Read metadata from Python packages
+dev-python/importlib_metadata 1.4.0 1.5.0 1.6.0-r1: Read metadata from Python packages
 dev-python/importlib_resources 1.0.2-r1 1.3.1 1.4.0: Read resources from Python packages
 dev-python/incremental 16.10.1 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
