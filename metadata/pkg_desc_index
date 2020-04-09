@@ -13152,7 +13152,7 @@ media-plugins/kodi-game-libretro-fceumm 0.0.1.9 9999: FCEU-Next GameClient for K
 media-plugins/kodi-game-libretro-nestopia 1.50.0.8 1.50.0.9 9999: Nestopia GameClient for Kodi
 media-plugins/kodi-game-libretro-snes9x 1.60.0.10 1.60.0.11 9999: Snes9x GameClient for Kodi
 media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.111 9999: 2048 for Kodi
-media-plugins/kodi-inputstream-adaptive 2.4.2 2.4.3 9999: Kodi's Adaptive inputstream addon
+media-plugins/kodi-inputstream-adaptive 2.4.4 9999: Kodi's Adaptive inputstream addon
 media-plugins/kodi-inputstream-rtmp 2.0.9 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 1.4.9 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
@@ -14636,7 +14636,7 @@ net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication prog
 net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 5.0.7 5.0.8: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
-net-mail/cyrus-imapd 3.0.10-r1 3.0.11: The Cyrus IMAP Server
+net-mail/cyrus-imapd 3.0.10-r1 3.0.11 3.0.13: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1 3.2.3-r2: Fast and scalable sql based email services
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.9.3 2.3.10: An IMAP and POP3 server written with security primarily in mind

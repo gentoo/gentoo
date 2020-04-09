@@ -6191,7 +6191,7 @@ net-mail/automx:tools - Install additional automx-test tool
 net-mail/courier-imap:trashquota - include deleted messages, and the Trash folder, in the estimated quota usage for maildirs
 net-mail/cyrus-imapd:backup - Enable backup service support
 net-mail/cyrus-imapd:calalarm - Enable CalDAV alarm support
-net-mail/cyrus-imapd:http - Enable http support
+net-mail/cyrus-imapd:http - Enable http and http/2 support
 net-mail/cyrus-imapd:lmdb - Enable support for using dev-db/lmdb
 net-mail/cyrus-imapd:replication - Enable replication support
 net-mail/cyrus-imapd:server - Enable building server binaries
