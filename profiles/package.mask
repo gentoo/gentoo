@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Stefan Strogin <steils@gentoo.org> (2020-04-09)
+# Masked for testing
+>=dev-libs/libressl-3.1.0
+
 # Marek Szuba <marecki@gentoo.org> (2020-04-08)
 # Both of these block app-eselect/eselect-opencl in order to prevent
 # file collisions in /usr/include/CL and on /usr/lib/libOpenCL.so* .
