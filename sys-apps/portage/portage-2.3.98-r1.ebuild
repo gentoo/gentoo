@@ -93,6 +93,9 @@ pkg_pretend() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply ad325eb10bc6
+	sed -e '1638s|^\t\t\tself\._schedule()|\t\t\tif self._main_exit is not None and not self._main_exit.done():\n\t\t\t\tself._schedule()|' -i lib/_emerge/Scheduler.py || die
+
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
 	if use gentoo-dev; then
