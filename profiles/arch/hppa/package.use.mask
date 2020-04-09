@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-09)
+# dependencies not keyworded
+dev-python/stevedore doc
+
 # Matt Turner <mattst88@gentoo.org> (2020-04-03)
 # app-emacs/wanderlust is not keyworded
 app-emacs/elscreen wanderlust
