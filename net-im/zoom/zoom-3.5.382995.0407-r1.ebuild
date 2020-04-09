@@ -26,6 +26,7 @@ RDEPEND="dev-libs/glib:2
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5[widgets]
 	dev-qt/qtscript:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	media-libs/libglvnd
 	media-sound/mpg123
