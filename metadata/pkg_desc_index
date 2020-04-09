@@ -5185,7 +5185,7 @@ dev-libs/mpc 1.1.0-r1: A library for multiprecision complex arithmetic with exac
 dev-libs/mpfr 4.0.2: library for multiple-precision floating-point computations with exact rounding
 dev-libs/msgpack 1.1.0 3.1.1 3.2.0 3.2.1: MessagePack is a binary-based efficient data interchange format
 dev-libs/mxml 3.1: A small XML parsing library that you can use to read XML data files or strings
-dev-libs/nanomsg 1.1.4 1.1.5: High-performance messaging interface for distributed applications
+dev-libs/nanomsg 1.1.5: High-performance messaging interface for distributed applications
 dev-libs/ncnn 20200226: A high-performance neural network inference framework
 dev-libs/nettle 3.4.1 3.5.1: Low-level cryptographic library
 dev-libs/newt 0.52.20 0.52.21 0.52.21-r1: Redhat's Newt windowing toolkit development files
@@ -8935,65 +8935,65 @@ dev-python/zope-schema 4.9.3: Zope schema Architecture
 dev-python/zope-testing 4.7-r1: Zope testing helpers
 dev-python/zope-testrunner 5.1: Zope testrunner script
 dev-python/zstandard 0.8.1 0.12.0 0.13.0: Zstandard Bindings for Python
-dev-qt/assistant 5.13.2 5.14.1: Tool for viewing on-line documentation in Qt help file format
-dev-qt/designer 5.13.2 5.14.1: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
-dev-qt/linguist 5.13.2 5.14.1: Graphical tool for translating Qt applications
-dev-qt/linguist-tools 5.13.2 5.14.1: Tools for working with Qt translation data files
-dev-qt/pixeltool 5.13.2 5.14.1: Qt screen magnifier
-dev-qt/qdbus 5.13.2 5.14.1: Interface to Qt applications communicating over D-Bus
-dev-qt/qdbusviewer 5.13.2 5.14.1: Graphical tool that lets you introspect D-Bus objects and messages
-dev-qt/qdoc 5.13.2 5.14.1: Qt documentation generator
+dev-qt/assistant 5.13.2 5.14.1 5.14.2: Tool for viewing on-line documentation in Qt help file format
+dev-qt/designer 5.13.2 5.14.1 5.14.2: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
+dev-qt/linguist 5.13.2 5.14.1 5.14.2: Graphical tool for translating Qt applications
+dev-qt/linguist-tools 5.13.2 5.14.1 5.14.2: Tools for working with Qt translation data files
+dev-qt/pixeltool 5.13.2 5.14.1 5.14.2: Qt screen magnifier
+dev-qt/qdbus 5.13.2 5.14.1 5.14.2: Interface to Qt applications communicating over D-Bus
+dev-qt/qdbusviewer 5.13.2 5.14.1 5.14.2: Graphical tool that lets you introspect D-Bus objects and messages
+dev-qt/qdoc 5.13.2 5.14.1 5.14.2: Qt documentation generator
 dev-qt/qt-creator 4.8.2 4.10.1 9999: Lightweight IDE for C++/QML development centering around Qt
-dev-qt/qt-docs 5.13.2_p201910220817 5.14.1_p202001241012: Qt5 documentation, for use with Qt Creator and other tools
-dev-qt/qt3d 5.14.1-r1: 3D rendering module for the Qt5 framework
-dev-qt/qtbluetooth 5.13.2 5.14.1: Bluetooth support library for the Qt5 framework
-dev-qt/qtcharts 5.14.1: Chart component library for the Qt5 framework
+dev-qt/qt-docs 5.13.2_p201910220817 5.14.1_p202001241012 5.14.2_p202003291239: Qt5 documentation, for use with Qt Creator and other tools
+dev-qt/qt3d 5.14.1-r1 5.14.2: 3D rendering module for the Qt5 framework
+dev-qt/qtbluetooth 5.13.2 5.14.1 5.14.2: Bluetooth support library for the Qt5 framework
+dev-qt/qtcharts 5.14.1 5.14.2: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
-dev-qt/qtconcurrent 5.13.2 5.14.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.13.2-r2 5.14.1-r1: Cross-platform application development framework
-dev-qt/qtdatavis3d 5.14.1-r1: 3D data visualization library for the Qt5 framework
-dev-qt/qtdbus 5.13.2 5.14.1: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 5.13.2-r2 5.14.1-r2: The QML and Quick modules for the Qt5 framework
-dev-qt/qtdiag 5.13.2 5.14.1: Tool for reporting diagnostic information about Qt and its environment
-dev-qt/qtgamepad 5.14.1: Qt module to support gamepad hardware
-dev-qt/qtgraphicaleffects 5.13.2 5.14.1: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 5.13.2-r1 5.14.1-r4: The GUI module and platform plugins for the Qt5 framework
-dev-qt/qthelp 5.13.2 5.14.1: Qt5 module for integrating online documentation into applications
-dev-qt/qtimageformats 5.13.2 5.14.1: Additional format plugins for the Qt image I/O system
-dev-qt/qtlocation 5.13.2 5.14.1: Location (places, maps, navigation) library for the Qt5 framework
+dev-qt/qtconcurrent 5.13.2 5.14.1 5.14.2: Multi-threading concurrence support library for the Qt5 framework
+dev-qt/qtcore 5.13.2-r2 5.14.1-r1 5.14.2: Cross-platform application development framework
+dev-qt/qtdatavis3d 5.14.1-r1 5.14.2: 3D data visualization library for the Qt5 framework
+dev-qt/qtdbus 5.13.2 5.14.1 5.14.2: Qt5 module for inter-process communication over the D-Bus protocol
+dev-qt/qtdeclarative 5.13.2-r2 5.14.1-r2 5.14.2: The QML and Quick modules for the Qt5 framework
+dev-qt/qtdiag 5.13.2 5.14.1 5.14.2: Tool for reporting diagnostic information about Qt and its environment
+dev-qt/qtgamepad 5.14.1 5.14.2: Qt module to support gamepad hardware
+dev-qt/qtgraphicaleffects 5.13.2 5.14.1 5.14.2: Set of QML types for adding visual effects to user interfaces
+dev-qt/qtgui 5.13.2-r1 5.14.1-r4 5.14.2: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qthelp 5.13.2 5.14.1 5.14.2: Qt5 module for integrating online documentation into applications
+dev-qt/qtimageformats 5.13.2 5.14.1 5.14.2: Additional format plugins for the Qt image I/O system
+dev-qt/qtlocation 5.13.2 5.14.1 5.14.2: Location (places, maps, navigation) library for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 5.13.2-r2 5.14.1-r1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
-dev-qt/qtnetwork 5.13.2 5.14.1: Network abstraction library for the Qt5 framework
-dev-qt/qtnetworkauth 5.14.1: Network authorization library for the Qt5 framework
-dev-qt/qtopengl 5.13.2-r1 5.14.1-r1: OpenGL support library for the Qt5 framework (deprecated)
-dev-qt/qtpaths 5.13.2 5.14.1: Command line client to QStandardPaths
-dev-qt/qtplugininfo 5.14.1: Qt5 plugin metadata dumper
-dev-qt/qtpositioning 5.13.2 5.14.1: Physical position determination library for the Qt5 framework
-dev-qt/qtprintsupport 5.13.2-r2 5.14.1-r1: Printing support library for the Qt5 framework
-dev-qt/qtquickcontrols 5.13.2 5.14.1: Set of Qt Quick controls to create complete user interfaces (deprecated)
-dev-qt/qtquickcontrols2 5.13.2 5.14.1: Set of next generation Qt Quick controls for the Qt5 framework
-dev-qt/qtscript 5.13.2 5.14.1: Application scripting library for the Qt5 framework (deprecated)
-dev-qt/qtscxml 5.14.1: State Chart XML (SCXML) support library for the Qt5 framework
-dev-qt/qtsensors 5.13.2 5.14.1: Hardware sensor access library for the Qt5 framework
-dev-qt/qtserialbus 5.14.1: Qt module to access CAN, ModBus, and other industrial serial buses and protocols
-dev-qt/qtserialport 5.13.2 5.14.1: Serial port abstraction library for the Qt5 framework
+dev-qt/qtmultimedia 5.13.2-r2 5.14.1-r1 5.14.2: Multimedia (audio, video, radio, camera) library for the Qt5 framework
+dev-qt/qtnetwork 5.13.2 5.14.1 5.14.2: Network abstraction library for the Qt5 framework
+dev-qt/qtnetworkauth 5.14.1 5.14.2: Network authorization library for the Qt5 framework
+dev-qt/qtopengl 5.13.2-r1 5.14.1-r1 5.14.2: OpenGL support library for the Qt5 framework (deprecated)
+dev-qt/qtpaths 5.13.2 5.14.1 5.14.2: Command line client to QStandardPaths
+dev-qt/qtplugininfo 5.14.1 5.14.2: Qt5 plugin metadata dumper
+dev-qt/qtpositioning 5.13.2 5.14.1 5.14.2: Physical position determination library for the Qt5 framework
+dev-qt/qtprintsupport 5.13.2-r2 5.14.1-r1 5.14.2: Printing support library for the Qt5 framework
+dev-qt/qtquickcontrols 5.13.2 5.14.1 5.14.2: Set of Qt Quick controls to create complete user interfaces (deprecated)
+dev-qt/qtquickcontrols2 5.13.2 5.14.1 5.14.2: Set of next generation Qt Quick controls for the Qt5 framework
+dev-qt/qtscript 5.13.2 5.14.1 5.14.2: Application scripting library for the Qt5 framework (deprecated)
+dev-qt/qtscxml 5.14.1 5.14.2: State Chart XML (SCXML) support library for the Qt5 framework
+dev-qt/qtsensors 5.13.2 5.14.1 5.14.2: Hardware sensor access library for the Qt5 framework
+dev-qt/qtserialbus 5.14.1 5.14.2: Qt module to access CAN, ModBus, and other industrial serial buses and protocols
+dev-qt/qtserialport 5.13.2 5.14.1 5.14.2: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20171024: Qt library to start applications only once per user
-dev-qt/qtspeech 5.13.2 5.14.1: Text-to-speech library for the Qt5 framework
-dev-qt/qtsql 5.13.2 5.14.1: SQL abstraction library for the Qt5 framework
-dev-qt/qtsvg 5.13.2 5.14.1: SVG rendering library for the Qt5 framework
-dev-qt/qttest 5.13.2 5.14.1: Unit testing library for the Qt5 framework
-dev-qt/qttranslations 5.13.2 5.14.1: Translation files for the Qt5 framework
-dev-qt/qtvirtualkeyboard 5.13.2 5.14.1: Customizable input framework and virtual keyboard for Qt
-dev-qt/qtwayland 5.13.2-r1 5.14.1-r3: Wayland platform plugin for Qt
-dev-qt/qtwebchannel 5.13.2 5.14.1: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.13.2 5.14.1: Library for rendering dynamic web content in Qt5 C++ and QML applications
-dev-qt/qtwebkit 5.212.0_pre20190629-r1 5.212.0_pre20200309-r1: WebKit rendering library for the Qt5 framework (deprecated)
-dev-qt/qtwebsockets 5.13.2 5.14.1: Implementation of the WebSocket protocol for the Qt5 framework
-dev-qt/qtwebview 5.14.1: Module for displaying web content in a QML application using the Qt5 framework
-dev-qt/qtwidgets 5.13.2-r1 5.14.1-r1: Set of components for creating classic desktop-style UIs for the Qt5 framework
-dev-qt/qtx11extras 5.13.2 5.14.1: Linux/X11-specific support library for the Qt5 framework
-dev-qt/qtxml 5.13.2 5.14.1: Implementation of SAX and DOM for the Qt5 framework
-dev-qt/qtxmlpatterns 5.13.2 5.14.1: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
+dev-qt/qtspeech 5.13.2 5.14.1 5.14.2: Text-to-speech library for the Qt5 framework
+dev-qt/qtsql 5.13.2 5.14.1 5.14.2: SQL abstraction library for the Qt5 framework
+dev-qt/qtsvg 5.13.2 5.14.1 5.14.2: SVG rendering library for the Qt5 framework
+dev-qt/qttest 5.13.2 5.14.1 5.14.2: Unit testing library for the Qt5 framework
+dev-qt/qttranslations 5.13.2 5.14.1 5.14.2: Translation files for the Qt5 framework
+dev-qt/qtvirtualkeyboard 5.13.2 5.14.1 5.14.2: Customizable input framework and virtual keyboard for Qt
+dev-qt/qtwayland 5.13.2-r1 5.14.1-r3 5.14.2: Wayland platform plugin for Qt
+dev-qt/qtwebchannel 5.13.2 5.14.1 5.14.2: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
+dev-qt/qtwebengine 5.13.2 5.14.1 5.14.2: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtwebkit 5.212.0_pre20200309-r1: WebKit rendering library for the Qt5 framework (deprecated)
+dev-qt/qtwebsockets 5.13.2 5.14.1 5.14.2: Implementation of the WebSocket protocol for the Qt5 framework
+dev-qt/qtwebview 5.14.1 5.14.2: Module for displaying web content in a QML application using the Qt5 framework
+dev-qt/qtwidgets 5.13.2-r1 5.14.1-r1 5.14.2: Set of components for creating classic desktop-style UIs for the Qt5 framework
+dev-qt/qtx11extras 5.13.2 5.14.1 5.14.2: Linux/X11-specific support library for the Qt5 framework
+dev-qt/qtxml 5.13.2 5.14.1 5.14.2: Implementation of SAX and DOM for the Qt5 framework
+dev-qt/qtxmlpatterns 5.13.2 5.14.1 5.14.2: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
 dev-ros/actionlib 1.11.13 1.11.14 1.11.15 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.5 1.12.6 1.12.7 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 0.1.10 0.1.11 9999: Actionlib tutorials
@@ -10276,7 +10276,7 @@ dev-util/cgvg 1.6.3: Minimal command-line source browsing tool similar to cscope
 dev-util/checkbashisms 2.19.7 2.20.1 2.20.2: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clair 2.0.8: Vulnerability Static Analysis for Containers
-dev-util/clazy 1.5-r1 1.6: Compiler plugin which allows clang to understand Qt semantics
+dev-util/clazy 1.5-r1 1.6 1.6-r1: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2019.3.5: A complete toolset for C and C++ development
@@ -10660,7 +10660,7 @@ dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log
 dev-vcs/svn2git 1.0.11-r1 1.0.12 1.0.13 1.0.13-r1 1.0.16 1.0.17 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.3.2 1.4.2 1.5.0: Tool collecting path entries across SVN history
 dev-vcs/svnmailer 1.0.9-r2: A subversion commit notifier written in Python
-dev-vcs/tig 2.3.3 2.4.1 2.5.0 9999: text mode interface for git
+dev-vcs/tig 2.3.3 2.4.1 2.5.0 2.5.1 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9-r1: A different patch queue manager
 dev-vcs/tortoisehg 4.9 4.9.1 5.0.2 9999: Set of graphical tools for Mercurial
@@ -11537,7 +11537,7 @@ gnome-extra/libgda 5.2.8-r1: GNOME database access library
 gnome-extra/libgsf 1.14.45 1.14.46: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.32.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when files are selected in Nautilus
-gnome-extra/nautilus-dropbox 1.6.2 2019.02.14: Dropbox Nautilus Extension
+gnome-extra/nautilus-dropbox 2019.02.14: Dropbox Nautilus Extension
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
 gnome-extra/nemo 3.6.4-r1 3.8.6-r1 4.0.6: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.24 1.8.25: GNOME applet for NetworkManager
@@ -11649,7 +11649,7 @@ kde-apps/calendarjanitor 19.12.3: Tool to scan calendar data for buggy instances
 kde-apps/calendarsupport 19.12.3: Calendar support library
 kde-apps/cantor 19.12.3: Interface for doing mathematics and scientific computing
 kde-apps/cervisia 19.12.3: CVS frontend by KDE
-kde-apps/dolphin 19.12.3: Plasma filemanager focusing on usability
+kde-apps/dolphin 19.12.3 19.12.3-r1: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins-bazaar 19.12.3: Dolphin plugin for Bazaar integration
 kde-apps/dolphin-plugins-dropbox 19.12.3: Dolphin plugin for Dropbox service integration
 kde-apps/dolphin-plugins-git 19.12.3: Dolphin plugin for Git integration
@@ -11759,7 +11759,7 @@ kde-apps/kmailtransport 19.12.3: Mail transport service
 kde-apps/kmbox 19.12.3: Library for accessing MBox format mail storages
 kde-apps/kmime 19.12.3: Libary for handling mail messages and newsgroup articles
 kde-apps/kmines 19.12.3: Classic mine sweeper game
-kde-apps/kmix 19.12.3: Volume control gui based on KDE Frameworks
+kde-apps/kmix 19.12.3 19.12.3-r1: Volume control gui based on KDE Frameworks
 kde-apps/kmousetool 19.12.3: KDE program that clicks the mouse for you
 kde-apps/kmouth 19.12.3: Text-to-speech synthesizer front end
 kde-apps/kmplot 19.12.3: Mathematical function plotter
@@ -11970,7 +11970,7 @@ kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring 
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
 kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
-kde-misc/rsibreak 0.12.11 0.12.12 0.12.13: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.11 0.12.13: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: Simple image scanning application based on libksane and KDE Frameworks
 kde-misc/tellico 3.2.3: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
@@ -13026,7 +13026,7 @@ media-libs/zita-alsa-pcmi 0.3.2: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 4.0.3: C++ library implementing a real-time convolution matrix
 media-libs/zita-resampler 1.6.2: C++ library for real-time resampling of audio signals
 media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
-media-libs/zxing-cpp 1.0.8: C++ Multi-format 1D/2D barcode image processing library
+media-libs/zxing-cpp 1.0.8-r1: C++ Multi-format 1D/2D barcode image processing library
 media-plugins/alsa-plugins 1.2.1 1.2.2: ALSA extra plugins
 media-plugins/alsaequal 0.7.1: A real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen

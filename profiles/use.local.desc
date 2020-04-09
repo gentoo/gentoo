@@ -2708,6 +2708,7 @@ dev-qt/qt3d:gamepad - Add support for gamepad hardware via dev-qt/qtgamepad
 dev-qt/qt3d:qml - Build QML/QtQuick bindings
 dev-qt/qtbluetooth:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtcharts:qml - Build QML/QtQuick bindings and imports
+dev-qt/qtcore:old-kernel - Disable syscalls not available on Linux kernels older than 3.17
 dev-qt/qtcore:systemd - Enable native journald logging support
 dev-qt/qtdatavis3d:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtdeclarative:localstorage - Build the LocalStorage import for QtQuick (requires QtSql)
@@ -2732,6 +2733,7 @@ dev-qt/qtmultimedia:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtmultimedia:widgets - Build the QtMultimediaWidgets module
 dev-qt/qtnetwork:bindist - Disable EC support via dev-libs/openssl
 dev-qt/qtnetwork:connman - Enable net-misc/connman-based bearer plugin
+dev-qt/qtnetwork:gssapi - Enable support for GSSAPI (virtual/krb5)
 dev-qt/qtnetwork:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy configuration
 dev-qt/qtnetwork:networkmanager - Enable net-misc/networkmanager-based bearer plugin
 dev-qt/qtpositioning:geoclue - Use enhanced location information from app-misc/geoclue
