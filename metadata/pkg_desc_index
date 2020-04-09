@@ -14954,7 +14954,7 @@ net-misc/rclone 1.50.0 1.51.0 9999: A program to sync files to and from various 
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1 1.3.10 1.4.1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1 1.3.10 1.4.1 1.4.2: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
