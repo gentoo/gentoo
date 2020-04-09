@@ -7703,7 +7703,7 @@ dev-python/extras 1.0.0: Useful extra bits for Python that should be in the stan
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5 0.8.11: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 2.3.1: A simple pythonic tool for remote execution and deployment
-dev-python/falcon 1.3.0: A supersonic micro-framework for building cloud APIs
+dev-python/falcon 1.3.0 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.14.1-r1: Python package that provides useful locks
 dev-python/fastparquet 0.1.1 0.1.5: Python implementation of the parquet columnar file format
 dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
@@ -14719,7 +14719,7 @@ net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/anydesk 5.5.0-r1 5.5.1: Feature rich multi-platform remote desktop application
-net-misc/apt-cacher-ng 3.3_p2 3.3.1_p1 3.3.1_p2 9999999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
+net-misc/apt-cacher-ng 3.3_p2 3.3.1_p1 3.3.1_p2 3.4_p1 9999999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
