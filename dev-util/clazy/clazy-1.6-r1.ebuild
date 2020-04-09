@@ -21,7 +21,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( README.md )
 
-PATCHES=( "${FILESDIR}/${P}-llvm-10.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-llvm-10.patch"
+	"${FILESDIR}/${P}-clang-cpp.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare
