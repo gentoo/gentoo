@@ -26,11 +26,11 @@ SRC_URI+=" https://waf.io/waf-${WAF_PV}"
 DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
 
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
-LICENSE="LGPL-2.1+ GPL-2+ BSD ISC samba? ( GPL-3+ )"
+LICENSE="LGPL-2.1+ GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda debug doc drm dvb
-	dvd +egl gamepad gbm +iconv jack javascript jpeg lcms +libass libcaca libmpv +lua
-	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
+	dvd +egl gamepad gbm +iconv jack javascript jpeg lcms libcaca libmpv +lua
+	luajit openal +opengl oss pulseaudio raspberry-pi rubberband sdl
 	selinux test tools +uchardet vaapi vdpau vulkan wayland +X +xv zlib zimg"
 
 REQUIRED_USE="
@@ -81,10 +81,8 @@ COMMON_DEPEND="
 	javascript? ( >=dev-lang/mujs-1.0.0 )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( >=media-libs/lcms-2.6:2 )
-	libass? (
-		>=media-libs/libass-0.12.1:=[fontconfig,harfbuzz]
-		virtual/ttf-fonts
-	)
+	>=media-libs/libass-0.12.1:=[fontconfig,harfbuzz]
+	virtual/ttf-fonts
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
 	lua? (
 		!luajit? ( <dev-lang/lua-5.3:= )
@@ -94,7 +92,6 @@ COMMON_DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
-	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
 	vaapi? ( x11-libs/libva:=[drm?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
@@ -171,12 +168,9 @@ src_configure() {
 		$(use_enable test)
 
 		$(use_enable iconv)
-		$(use_enable samba libsmbclient)
 		$(use_enable lua)
 		$(usex luajit '--lua=luajit' '')
 		$(use_enable javascript)
-		$(use_enable libass)
-		$(use_enable libass libass-osd)
 		$(use_enable zlib)
 		$(use_enable bluray libbluray)
 		$(use_enable dvd dvdnav)
