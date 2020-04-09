@@ -37,7 +37,13 @@ RDEPEND="${PYTHON_DEPS}
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	dev-python/mako
+	$(python_gen_cond_dep '
+	dev-python/mako[${PYTHON_MULTI_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	)
+	')
 	app-arch/unzip
 	app-arch/gzip
 "
