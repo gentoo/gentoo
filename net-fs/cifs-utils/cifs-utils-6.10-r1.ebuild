@@ -26,6 +26,7 @@ RDEPEND="
 	pam? ( sys-libs/pam )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="dev-python/docutils"
 PDEPEND="
 	acl? ( >=net-fs/samba-4.0.0_alpha1 )
 "
