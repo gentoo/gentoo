@@ -41,10 +41,6 @@ net-misc/openssh security-key
 # Dependency not keyworded on this arch.
 dev-libs/dbus-c++ ecore
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# media-libs/libheif is not keyworded
-media-gfx/gimp heif
-
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
