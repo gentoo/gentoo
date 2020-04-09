@@ -497,6 +497,8 @@ qemu_src_configure() {
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
 		local audio_opts=(
+			# Note: backend order matters here: #716202
+			# We iterate from higher-level to lower level.
 			$(usex pulseaudio pa "")
 			$(usev sdl)
 			$(usev alsa)

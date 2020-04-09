@@ -217,9 +217,9 @@ pkg_preinst() {
 pkg_postinst() {
 	# do not install server.{key,pem) if they exist
 	if use ssl ; then
-		if [ ! -f "${ROOT}"etc/ssl/cyrus/server.key ]; then
+		if [ ! -f "${ROOT}"/etc/ssl/cyrus/server.key ]; then
 			install_cert /etc/ssl/cyrus/server
-			chown cyrus:mail "${ROOT}"etc/ssl/cyrus/server.{key,pem}
+			chown cyrus:mail "${ROOT}"/etc/ssl/cyrus/server.{key,pem}
 		fi
 	fi
 
