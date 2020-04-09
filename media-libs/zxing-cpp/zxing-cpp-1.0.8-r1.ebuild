@@ -14,4 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
-PATCHES=( "${FILESDIR}/${P}-pkgconfig.patch" ) # bug 716818
+PATCHES=(
+	"${FILESDIR}/${P}-pkgconfig.patch" # bug 716818
+	"${FILESDIR}/${P}-version.patch" # bug 716818
+)
