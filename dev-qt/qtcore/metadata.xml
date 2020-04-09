@@ -6,6 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
+		<flag name="old-kernel">Disable syscalls not available on Linux kernels older than 3.17</flag>
 		<flag name="systemd">Enable native journald logging support</flag>
 	</use>
 	<upstream>
