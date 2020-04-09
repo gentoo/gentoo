@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="sqlite,tk?,xml(+)"
 
 inherit distutils-r1
@@ -20,6 +20,7 @@ IUSE="tk"
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
+		dev-python/joblib[${PYTHON_USEDEP}]
 		dev-python/nltk-data
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pyparsing[${PYTHON_USEDEP}]
