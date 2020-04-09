@@ -21,7 +21,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-util/opencl-headers
-	!app-eselect/eselect-opencl"
+	!app-eselect/eselect-opencl
+	!dev-libs/ocl-icd"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
