@@ -564,6 +564,7 @@ qt5_base_configure() {
 		-no-libpng -no-libjpeg
 		-no-freetype -no-harfbuzz
 		-no-openssl -no-libproxy
+		$([[ ${QT5_MINOR_VERSION} -ge 14 ]] && echo -no-feature-gssapi)
 		-no-xcb-xlib
 
 		# bug 672340
