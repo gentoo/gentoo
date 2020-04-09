@@ -27,7 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 BDEPEND="
-	$(python_gen_cond_dep 'dev-python/docutils[${PYTHON_MULTI_USEDEP}]' )
+	dev-python/docutils
 	virtual/pkgconfig"
 
 # use system rst2man
