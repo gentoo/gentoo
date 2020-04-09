@@ -22,7 +22,6 @@ RDEPEND="
 	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' -2)
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' pypy3 python{2_7,3_6})
@@ -34,3 +33,12 @@ BDEPEND="
 distutils_enable_sphinx "${PN}/docs" \
 	'>=dev-python/rst-linker-1.9'
 distutils_enable_tests unittest
+
+python_prepare_all() {
+	# remove dep on setuptools_scm
+	sed -i -r "s:use_scm_version=.+,:version='${PV}',:" \
+		setup.py || die
+	sed -i -e 's:setuptools-scm::' setup.cfg || die
+
+	distutils-r1_python_prepare_all
+}
