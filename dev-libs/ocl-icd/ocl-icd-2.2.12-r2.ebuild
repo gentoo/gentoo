@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+khronos-headers"
 
 BDEPEND="${RUBY_DEPS}"
-RDEPEND="app-eselect/eselect-opencl"
+RDEPEND="app-eselect/eselect-opencl
+	!dev-libs/opencl-icd-loader"
 
 PATCHES=("${FILESDIR}"/${P}-gcc-10.patch)
 
