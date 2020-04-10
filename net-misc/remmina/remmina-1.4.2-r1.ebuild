@@ -28,6 +28,7 @@ CDEPEND="
 	ayatana? ( dev-libs/libappindicator:3 )
 	crypt? ( dev-libs/libgcrypt:0= )
 	rdp? ( >=net-misc/freerdp-2.0.0_rc4_p1129
+		<net-misc/freerdp-3
 		cups? ( net-print/cups:= ) )
 	gnome-keyring? ( app-crypt/libsecret )
 	kwallet? ( kde-frameworks/kwallet )
