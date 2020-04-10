@@ -20,9 +20,12 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
+# nvidia-drivers block is hopefully temporary, until it has ceased
+# to depend on eselect-opencl
 DEPEND="dev-util/opencl-headers
 	!app-eselect/eselect-opencl
-	!dev-libs/ocl-icd"
+	!dev-libs/ocl-icd
+	!x11-drivers/nvidia-drivers"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
