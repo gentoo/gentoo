@@ -21,6 +21,7 @@ RDEPEND="
 
 src_install() {
 	newbin mkstage4.sh mkstage4
+	einstalldocs
 }
 
 src_test() {
