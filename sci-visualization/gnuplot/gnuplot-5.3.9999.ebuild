@@ -128,7 +128,6 @@ src_configure() {
 		$(use_with doc tutorial) \
 		$(use_with gd) \
 		"$(use_with ggi ggi "${EPREFIX}/usr/$(get_libdir)")" \
-		"$(use_with ggi xmi "${EPREFIX}/usr/$(get_libdir)")" \
 		"$(use_with libcaca caca "${EPREFIX}/usr/$(get_libdir)")" \
 		$(use_with libcerf) \
 		$(use_with lua) \
@@ -164,7 +163,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	dodoc BUGS ChangeLog NEWS PGPKEYS PORTING README* RELEASE_NOTES TODO
+	dodoc BUGS NEWS PGPKEYS README* RELEASE_NOTES TODO
 	newdoc term/PostScript/README README-ps
 	newdoc term/js/README README-js
 	use lua && newdoc term/lua/README README-lua
