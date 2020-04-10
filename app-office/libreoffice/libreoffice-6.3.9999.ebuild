@@ -215,7 +215,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3.1
-	=dev-util/mdds-1.4*:1=
+	dev-util/mdds:1/1.4
 	media-libs/glm
 	sys-devel/ucpp
 	x11-base/xorg-proto
