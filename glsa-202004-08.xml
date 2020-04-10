@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-08">
+  <title>libssh: Denial of Service</title>
+  <synopsis>A vulnerability in libssh could allow a remote attacker to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libssh</product>
+  <announced>2020-04-10</announced>
+  <revised count="1">2020-04-10</revised>
+  <bug>716788</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libssh" auto="yes" arch="*">
+      <unaffected range="ge">0.9.4</unaffected>
+      <vulnerable range="lt">0.9.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libssh is a multiplatform C library implementing the SSHv2 protocol on
+      client and server side.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that libssh could crash when AES-CTR ciphers are used.</p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker running a malicious client or server could possibly
+      crash the counterpart implemented with libssh and cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>Disable AES-CTR ciphers. If you implement a server using libssh it is
+      recommended to use a prefork model so each session runs in an own
+      process.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All libssh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libssh-0.9.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1730">CVE-2020-1730</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-10T21:38:04Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-10T21:45:49Z">whissi</metadata>
+</glsa>
