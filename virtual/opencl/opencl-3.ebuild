@@ -9,9 +9,8 @@ DESCRIPTION="Virtual for OpenCL API"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# Will add dev-libs/opencl-icd-loader here as an alternative once all potential
-# file collisions with eselect-opencl have been resolved
-RDEPEND="dev-libs/ocl-icd[khronos-headers,${MULTILIB_USEDEP}]"
+RDEPEND="|| ( dev-libs/ocl-icd[khronos-headers,${MULTILIB_USEDEP}]
+	dev-libs/opencl-icd-loader[${MULTILIB_USEDEP}] )"
 
 # so that src_install() doesn't fail on missing directory
 S="${WORKDIR}"
