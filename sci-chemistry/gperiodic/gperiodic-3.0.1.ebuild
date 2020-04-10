@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Periodic table application for Linux"
-HOMEPAGE="http://www.frantz.fi/software/gperiodic.php"
-SRC_URI="http://downloads.sourceforge.net/project/${PN}/${P}.tar.gz"
+HOMEPAGE="https://sourceforge.net/projects/gperiodic/"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
