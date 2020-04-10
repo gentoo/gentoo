@@ -11530,7 +11530,7 @@ gnome-extra/gnome-tweaks 3.32.0-r1 3.34.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.32.3 3.34.1: GNOME end user documentation
 gnome-extra/gnome-user-share 3.32.0.1 3.34.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
-gnome-extra/gnome-weather 3.32.2 3.34.0 3.34.1: A weather application for GNOME
+gnome-extra/gnome-weather 3.32.2 3.34.0 3.34.1 3.34.2: A weather application for GNOME
 gnome-extra/gtkhtml 4.10.0 4.10.0-r2: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 12.0.1 12.0.1-r1: Unicode character map viewer and library
 gnome-extra/libgda 5.2.8-r1: GNOME database access library
@@ -18058,7 +18058,7 @@ x11-libs/gl2ps 1.3.9 1.4.0: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.10.46: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4: Canvas widget for GTK+ using the cairo 2D library for drawing
-x11-libs/gtk+ 2.24.32-r1 3.24.11 3.24.13 3.24.14 3.24.16 3.24.17: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.11 3.24.13 3.24.14 3.24.16 3.24.17 3.24.18: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.3 3.3.4: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
@@ -18727,7 +18727,7 @@ x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-extra-themes 1.1 1.2: Extra themes for IceWM
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
-x11-themes/kvantum 0.14.0 0.14.1: SVG-based theme engine for Qt5, KDE Plasma and LXQt
+x11-themes/kvantum 0.14.1 0.15.2: SVG-based theme engine for Qt5, KDE and LXQt
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3-r1: Fedora 14 official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwork
