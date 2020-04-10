@@ -29,10 +29,10 @@ RDEPEND="!games-engines/zoom
 	dev-qt/qtscript:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	media-libs/libglvnd
 	media-sound/mpg123
 	sys-apps/dbus
 	sys-apps/util-linux
+	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libXext
