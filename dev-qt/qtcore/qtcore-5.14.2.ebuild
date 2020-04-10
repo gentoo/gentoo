@@ -53,8 +53,8 @@ pkg_pretend() {
 	use kernel_linux || return
 	get_running_version
 	if kernel_is -lt 3 17 && ! use old-kernel; then
-		ewarn "The running kernel is older than 3.17. USE=old-kernel is needed for ${CATEGORY}/${PN}"
-		ewarn "to function on this kernel properly.  See Bug #669994."
+		ewarn "The running kernel is older than 3.17. USE=old-kernel is needed for"
+		ewarn "dev-qt/qtcore to function on this kernel properly. See Bug #669994."
 	fi
 }
 
@@ -73,9 +73,11 @@ src_configure() {
 		-no-feature-statx	# bug 672856
 		$(qt_use icu)
 		$(qt_use !icu iconv)
-		$(qt_use !old-kernel feature-renameat2)  # needs Linux 3.16, bug 669994
-		$(qt_use !old-kernel feature-getentropy) # needs Linux 3.17, bug 669994
 		$(qt_use systemd journald)
+	)
+	use old-kernel && myconf+=(
+		-no-feature-renameat2 # needs Linux 3.16, bug 669994
+		-no-feature-getentropy # needs Linux 3.17, bug 669994
 	)
 	qt5-build_src_configure
 }
