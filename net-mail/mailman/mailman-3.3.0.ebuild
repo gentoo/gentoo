@@ -3,16 +3,14 @@
 
 EAPI=7
 
-# Already prepared for python 3.7, but not all deps are ready,
-# see #691528
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
 DESCRIPTION="Mailman -- the GNU mailing list manager"
 HOMEPAGE="https://www.list.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	mirror://gentoo/${P}-importlib_resources-fix.diff.xz"
+	https://dev.gentoo.org/~hanno/distfiles/${P}-importlib_resources-fix.diff.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -29,7 +27,7 @@ RDEPEND="
 	>=dev-python/authres-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]
 	>=dev-python/dnspython-1.14.0[${PYTHON_USEDEP}]
-	>=dev-python/falcon-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/falcon-2.0.0[${PYTHON_USEDEP}]
 	dev-python/flufl-bounce[${PYTHON_USEDEP}]
 	>=dev-python/flufl-i18n-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/flufl-lock-3.1[${PYTHON_USEDEP}]
