@@ -41,6 +41,7 @@ acct-group/gerbera 0: Gerbera UPnP Media Server group
 acct-group/git 0: System group: git
 acct-group/gkrellmd 0: System group: gkrellmd
 acct-group/glance 0: System group: glance
+acct-group/gluster 0: System group: gluster
 acct-group/graylog 0: Graylog program group
 acct-group/gvm 0: Greenbone vulnerability management program group
 acct-group/heat 0: System group: heat
@@ -211,6 +212,7 @@ acct-user/gerbera 0: Gerbera UPnP Media Server user
 acct-user/git 0: Git repository hosting user
 acct-user/gkrellmd 0: user for gkrellm daemon
 acct-user/glance 0: user for the glance openstack service
+acct-user/gluster 0: System user: gluster
 acct-user/graylog 0: Graylog program user
 acct-user/gvm 0: Greenbone vulnerability management program user
 acct-user/heat 0: user for the heat openstack service
@@ -16882,7 +16884,7 @@ sys-auth/polkit 0.115-r4 0.116-r1: Policy framework for controlling privileges f
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.113.0: Qt wrapper around polkit-1 client libraries
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
-sys-auth/rtkit 0.11-r2 0.11-r3 0.12-r1: Realtime Policy and Watchdog Daemon
+sys-auth/rtkit 0.11-r2 0.11-r3 0.12-r1 0.13: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/ssh-ldap-pubkey 1.3.0-r2 1.3.1 1.3.2: Utility to manage SSH public keys stored in LDAP
 sys-auth/sssd 1.16.3-r3 2.1.0-r1 2.2.0-r1 2.2.2 2.2.3: System Security Services Daemon provides access to identity and authentication
@@ -17011,7 +17013,7 @@ sys-cluster/galera 25.3.25 25.3.26 25.3.28 25.3.28-r1 26.4.2 26.4.3: Synchronous
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
-sys-cluster/glusterfs 4.1.8 6.5 6.7-r1 7.2-r1 9999: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 4.1.8 6.5 6.7-r1 6.8 7.2-r1 7.3 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6 3.0.6-r1: Heartbeat high availability cluster manager
 sys-cluster/heat 13.0.0 2019.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
