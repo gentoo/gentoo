@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic readme.gentoo-r1 toolchain-funcs wxwidgets
 
@@ -17,7 +17,7 @@ if [[ -z ${PV%%*9999} ]]; then
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="gnuplot"
@@ -37,7 +37,8 @@ RDEPEND="
 			>=dev-texlive/texlive-latexrecommended-2008-r2 ) )
 	libcaca? ( media-libs/libcaca )
 	lua? ( dev-lang/lua:0 )
-	qt5? ( dev-qt/qtcore:5=
+	qt5? (
+		dev-qt/qtcore:5=
 		dev-qt/qtgui:5=
 		dev-qt/qtnetwork:5=
 		dev-qt/qtprintsupport:5=
@@ -52,7 +53,10 @@ RDEPEND="
 		x11-libs/pango
 		x11-libs/gtk+:2 )
 	X? ( x11-libs/libXaw )"
-DEPEND="${RDEPEND}
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		virtual/latex-base
@@ -184,8 +188,8 @@ src_install() {
 		# Demo files
 		insinto /usr/share/${PN}/${GP_VERSION}
 		doins -r demo
-		rm -f "${ED%/}"/usr/share/${PN}/${GP_VERSION}/demo/Makefile*
-		rm -f "${ED%/}"/usr/share/${PN}/${GP_VERSION}/demo/binary*
+		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/Makefile*
+		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/binary*
 	fi
 
 	if use doc; then
