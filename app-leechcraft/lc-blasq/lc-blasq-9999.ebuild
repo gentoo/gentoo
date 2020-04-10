@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit leechcraft
 
@@ -13,9 +13,9 @@ IUSE="debug +deathnote +rappor +spegnersi +vangog"
 
 DEPEND="
 	~app-leechcraft/lc-core-${PV}
-	dev-qt/qtwidgets:5
-	dev-qt/qtnetwork:5
 	dev-qt/qtdeclarative:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
 	rappor? ( dev-qt/qtxml:5 )
 	deathnote? (
 		dev-qt/qtxml:5
@@ -36,5 +36,5 @@ src_configure() {
 		-DENABLE_BLASQ_VANGOG=$(usex vangog)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
