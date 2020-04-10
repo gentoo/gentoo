@@ -91,6 +91,10 @@ BDEPEND="
 	) ) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/2.0.0-backports.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
