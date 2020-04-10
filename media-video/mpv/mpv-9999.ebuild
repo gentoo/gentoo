@@ -30,7 +30,7 @@ LICENSE="LGPL-2.1+ GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda debug doc drm dvb
 	dvd +egl gamepad gbm +iconv jack javascript jpeg lcms libcaca libmpv +lua
-	luajit openal +opengl oss pulseaudio raspberry-pi rubberband sdl
+	luajit openal +opengl pulseaudio raspberry-pi rubberband sdl
 	selinux test tools +uchardet vaapi vdpau vulkan wayland +X +xv zlib zimg"
 
 REQUIRED_USE="
@@ -185,9 +185,6 @@ src_configure() {
 
 		# Audio outputs:
 		$(use_enable sdl sdl2) # Listed under audio, but also includes video.
-		$(use_enable oss oss-audio)
-		--disable-rsound # Only available in overlays.
-		--disable-sndio # Only available in overlays.
 		$(use_enable pulseaudio pulse)
 		$(use_enable jack)
 		$(use_enable openal)
