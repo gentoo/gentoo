@@ -18,7 +18,6 @@ DOCS="ChangeLog"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.21-cflags.patch
-	"${FILESDIR}"/${P}-cxx-compat.patch
 )
 
 src_prepare() {
