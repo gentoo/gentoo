@@ -1,0 +1,13 @@
+DEFINED_PHASES=install test
+DEPEND=test? ( dev-util/bats )
+DESCRIPTION=Bash Utility for Creating Stage 4 Tarballs
+EAPI=7
+HOMEPAGE=https://github.com/TheChymera/mkstage4
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=app-shells/bash app-arch/tar
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/TheChymera/mkstage4/archive/0.3.tar.gz -> mkstage4-0.3.tar.gz
+_md5_=51322dda1700f94dbfd3432ebc8a4e34
