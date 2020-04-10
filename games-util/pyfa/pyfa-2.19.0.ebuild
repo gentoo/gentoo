@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite,threads"
 
@@ -18,9 +19,9 @@ if [[ ${PV} = 9999 ]]; then
 else
 	SRC_URI="https://github.com/pyfa-org/Pyfa/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S=${WORKDIR}/Pyfa-${PV}
+	S="${WORKDIR}/Pyfa-${PV}"
 fi
-IUSE=""
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="mirror bindist"
 
@@ -49,7 +50,7 @@ BDEPEND="app-arch/zip"
 PATCHES=(
 	# fix import path in the main script for systemwide installation
 	"${FILESDIR}/${PN}-2.9.3-import-pyfa.patch"
-	)
+)
 
 src_prepare() {
 	# get rid of CRLF line endings introduced in 1.1.10 so patches work
