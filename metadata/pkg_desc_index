@@ -477,7 +477,7 @@ app-admin/mongo-tools 3.6.13 3.6.14 3.6.16 3.6.17 4.0.12 4.0.13 4.0.14 4.0.16 4.
 app-admin/monit 5.25.3 5.26.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc33 3.0.0_rc35: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
-app-admin/needrestart 3.3 3.4 3.5 9999: Restart daemons after library updates
+app-admin/needrestart 3.3 3.5 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1 1.1.0.81: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.3_pre141201: real-time metrics for nginx server (and others)
 app-admin/openrc-settingsd 1.0.1-r1: System settings D-Bus service for OpenRC
@@ -10354,7 +10354,7 @@ dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.12 1.13 1.15 1.16 1.16-r1 1.17 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2: diff-like program operating at word level instead of line level
-dev-util/edb-debugger 1.1.0-r1 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
+dev-util/edb-debugger 1.1.0-r1 1.2.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.7.1: An EFL-based IDE
 dev-util/editorconfig-geany 0.1_p20160725 0.2: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
@@ -10596,7 +10596,7 @@ dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0 1.4.1: The GNU Project's replacement for SCCS
 dev-vcs/cvs 1.12.12-r12: Concurrent Versions System - source code revision control tools
-dev-vcs/cvs-fast-export 1.51 1.52: fast-export history from a CVS repository or RCS collection
+dev-vcs/cvs-fast-export 1.51 1.53: fast-export history from a CVS repository or RCS collection
 dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1 2.5.0: Convert a CVS repository to a Subversion repository
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
@@ -14632,7 +14632,7 @@ net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx 0.10.2-r3: A mail user agent auto configuration service
 net-mail/automx2 2019.0 2020.1-r1: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
-net-mail/b4 0.3.5: Utility for fetching patchsets from public-inbox
+net-mail/b4 0.3.7: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication program w/pam support
 net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
