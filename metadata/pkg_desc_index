@@ -446,7 +446,7 @@ app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.44: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.5.3 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.5.3 2.5.4 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.3: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
@@ -7532,7 +7532,7 @@ dev-python/certifi 2019.11.28 2020.4.5.1: Python package for providing Mozilla's
 dev-python/cffi 1.13.2 1.14.0: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.21.6: CloudFormation Linter
 dev-python/cgroup-utils 0.6 0.8: Tools and libraries for control groups of Linux
-dev-python/chai 1.1.1: Easy to use mocking, stubbing and spying framework
+dev-python/chai 1.1.1 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
 dev-python/chameleon 2.25 3.6.2 3.7.0: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.3.0-r3: Python attributes without the boilerplate
@@ -14802,7 +14802,7 @@ net-misc/exabgp 3.2.17 3.4.26-r1 4.0.10: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
-net-misc/freerdp 2.0.0_rc4 2.0.0_rc4_p1129 2.0.0 9999: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 2.0.0_rc4 2.0.0_rc4_p1129 2.0.0-r1 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol
