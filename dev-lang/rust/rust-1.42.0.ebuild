@@ -109,6 +109,7 @@ QA_SONAME="usr/lib.*/librustc_macros.*.so"
 PATCHES=(
 	"${FILESDIR}"/1.40.0-add-soname.patch
 	"${FILESDIR}"/1.42.0-fix-bootstrap.patch
+	"${FILESDIR}"/1.42.0-libressl.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
