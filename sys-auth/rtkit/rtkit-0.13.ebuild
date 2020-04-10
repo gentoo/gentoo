@@ -23,6 +23,11 @@ DEPEND="acct-group/rtkit
 	systemd? ( sys-apps/systemd )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.13_meson_rtkitctl_dir.patch
+	"${FILESDIR}"/${PN}-0.13_meson_xxd_optional.patch
+)
+
 pkg_pretend() {
 	if use kernel_linux; then
 		CONFIG_CHECK="~!RT_GROUP_SCHED"
