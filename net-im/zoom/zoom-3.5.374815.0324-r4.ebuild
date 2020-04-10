@@ -17,7 +17,8 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="pulseaudio"
 RESTRICT="mirror bindist strip"
 
-RDEPEND="dev-libs/glib:2
+RDEPEND="!games-engines/zoom
+	dev-libs/glib:2
 	dev-libs/icu
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
