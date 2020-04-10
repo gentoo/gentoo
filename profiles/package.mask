@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2020-04-10)
+# Masked for removal
+# Last release 2002
+# No reverse dependency
+dev-tcltk/tcl-mccp
+
 # Stefan Strogin <steils@gentoo.org> (2020-04-09)
 # Masked for testing
 >=dev-libs/libressl-3.1.0
