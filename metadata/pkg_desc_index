@@ -539,7 +539,7 @@ app-admin/sysklogd 1.5.1-r1 2.0.3 2.1.1 2.1.2 9999: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1 3.25.1 3.26.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17 17-r1: Daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 12.2.1 12.3.1 999999: System performance tools for Linux
+app-admin/sysstat 12.2.1 12.3.1 12.3.2 999999: System performance tools for Linux
 app-admin/system-config-printer 1.5.12-r1: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
@@ -15823,7 +15823,7 @@ sci-geosciences/mapnik 3.0.9-r1 3.0.18: A Free Toolkit for developing mapping ap
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mapserver 7.2.2: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
-sci-geosciences/merkaartor 0.18.3-r4 9999: Qt based map editor for the openstreetmap.org project
+sci-geosciences/merkaartor 0.18.4 9999: Qt based map editor for the openstreetmap.org project
 sci-geosciences/mtkbabel 0.8.2-r1 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/opencpn 4.8.0-r1 4.8.2 4.8.8: a free, open source software for marine navigation
 sci-geosciences/opencpn-plugin-br24radar 2.1 9999: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
