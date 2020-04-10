@@ -22,7 +22,7 @@ LICENSE="Apache-2.0"
 # same build of ERTS that was used when compiling the code.  See
 # http://erlang.org/doc/system_principles/misc.html for more information.
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE="doc emacs +hipe java +kpoll libressl odbc sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
@@ -51,8 +51,6 @@ S="${WORKDIR}/otp-OTP-${PV}"
 PATCHES=(
 	"${FILESDIR}/18.2.1-wx3.0.patch"
 	"${FILESDIR}/${PN}-22.0-dont-ignore-LDFLAGS.patch"
-	"${FILESDIR}/${PN}-22.2.2-gcc-10.patch"
-	"${FILESDIR}/${PN}-22.1.4-asn1-dep.patch"
 )
 
 SITEFILE=50"${PN}"-gentoo.el
@@ -109,7 +107,13 @@ src_install() {
 	emake INSTALL_PREFIX="${D}" install
 
 	if use doc ; then
-		local DOCS=( "AUTHORS" "HOWTO"/* "README.md" "CONTRIBUTING.md" "${WORKDIR}"/doc/. "${WORKDIR}"/lib/. "${WORKDIR}"/erts-* )
+		# Note: we explicitly install docs into:
+		#     /usr/share/doc/${PF}/{doc,lib,erts-*}
+		# To maintain that layout we gather everything in 'html-docs'.
+		# See bug #684376.
+		mkdir html-docs || die
+		mv "${WORKDIR}"/doc "${WORKDIR}"/lib "${WORKDIR}"/erts-* html-docs/ || die
+		local DOCS=( "AUTHORS" "HOWTO"/* "README.md" "CONTRIBUTING.md" html-docs/. )
 		docompress -x /usr/share/doc/${PF}
 	else
 		local DOCS=("README.md")
