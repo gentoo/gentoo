@@ -10,25 +10,27 @@ DESCRIPTION="Standalone file import filter library for spreadsheet documents"
 HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
 
 if [[ ${PV} == *9999* ]]; then
+	MDDS_SLOT="1/9999"
 	EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
 	inherit git-r3 autotools
 else
+	MDDS_SLOT="1/1.5"
 	SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="MIT"
-SLOT="0/0.15" # based on SONAME of liborcus.so
+SLOT="0/0.16" # based on SONAME of liborcus.so
 IUSE="python +spreadsheet-model static-libs tools"
 
 RDEPEND="
 	dev-libs/boost:=[zlib(+)]
 	sys-libs/zlib
 	python? ( ${PYTHON_DEPS} )
-	spreadsheet-model? ( >=dev-libs/libixion-0.15.0:= )
+	spreadsheet-model? ( dev-libs/libixion:${SLOT} )
 "
 DEPEND="${RDEPEND}
-	>=dev-util/mdds-1.5.0:1
+	dev-util/mdds:${MDDS_SLOT}
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

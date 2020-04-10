@@ -7,7 +7,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/fosnola/libstaroffice.git"
 	inherit git-r3 autotools
 else
-	SRC_URI="http://dev-www.libreoffice.org/src/${P}.tar.xz"
+	SRC_URI="https://github.com/fosnola/${PN}/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 

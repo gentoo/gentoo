@@ -10,22 +10,24 @@ DESCRIPTION="General purpose formula parser & interpreter"
 HOMEPAGE="https://gitlab.com/ixion/ixion"
 
 if [[ ${PV} == *9999 ]]; then
+	MDDS_SLOT="1/9999"
 	EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 	inherit git-r3 autotools
 else
+	MDDS_SLOT="1/1.5"
 	SRC_URI="https://kohei.us/files/ixion/src/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="MIT"
-SLOT="0/0.15" # based on SONAME of libixion.so
+SLOT="0/0.16" # based on SONAME of libixion.so
 IUSE="debug python static-libs +threads"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/boost:=
-	>=dev-util/mdds-1.5.0:1=
+	dev-util/mdds:${MDDS_SLOT}
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}
