@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND="
 	dev-libs/jansson
-	sys-apps/hwloc"
+	<sys-apps/hwloc-2.0"
 RDEPEND="${DEPEND}"
 
 src_configure() {
