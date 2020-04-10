@@ -67,6 +67,9 @@ src_prepare() {
 
 	#this may not be needed in 3.4.3 and above, please verify
 	sed -i 's#SET(PKG_LIB_DIR ${PKG_DATA_DIR})#SET(PKG_LIB_DIR ${LIBRARY_DIR}/uhd)#g' CMakeLists.txt || die
+
+	#rpath is set for apple and no one else, just remove the conditional
+	sed -i -e '/if(APPLE)/d' -e '/endif(APPLE)/d' CMakeLists.txt || die
 }
 
 src_configure() {
@@ -92,11 +95,14 @@ src_configure() {
 		-DENABLE_N230="$(usex n230)"
 		-DENABLE_MPMD="$(usex mpmd)"
 		-DENABLE_OCTOCLOCK="$(usex octoclock)"
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DPKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
 	cmake-utils_src_configure
 }
 src_install() {
 	cmake-utils_src_install
+	python_optimize
 	use utils && python_fix_shebang "${ED}"/usr/$(get_libdir)/${PN}/utils/
 	if [ "${PV}" != "9999" ]; then
 		rm -rf "${ED}/usr/bin/uhd_images_downloader"
