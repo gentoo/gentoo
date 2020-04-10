@@ -4865,7 +4865,7 @@ dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
-dev-libs/cyrus-sasl 2.1.27-r2 2.1.27-r3: The Cyrus SASL (Simple Authentication and Security Layer)
+dev-libs/cyrus-sasl 2.1.27-r3: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
 dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
@@ -5071,7 +5071,7 @@ dev-libs/libmissing 1.1.0: Library with missing functions based on GNUlib
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.6: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
-dev-libs/libmowgli 1.0.0-r1 2.1.3 9999: Useful set of performance and usability-oriented extensions to C
+dev-libs/libmowgli 1.0.0-r1 2.1.3 2.1.3-r1 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmspack 0.9.1_alpha-r1 9999: A library for Microsoft compression formats
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
 dev-libs/libnfc 1.7.1: Near Field Communications (NFC) library
@@ -11431,7 +11431,7 @@ games-util/lutris 0.5.3 0.5.4-r1 9999: An open source gaming platform for GNU/Li
 games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5-r2: Compiler of NML files into GRF/NFO files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
-games-util/pyfa 2.14.1 2.15.1-r1 2.17.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
+games-util/pyfa 2.17.0 2.19.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/springlobby 0.266 0.267 0.269: The official lobby client for SpringRTS community games
@@ -14361,7 +14361,7 @@ net-im/pyicq-t 0.8.1.5-r7: Python based jabber transport for ICQ
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.32.3: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.33.0: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.57.0.116-r1 8.58.0.93: Instant messaging client, with support for audio and video
 net-im/slack 4.1.1 4.3.2-r1 4.3.2-r2: Team collaboration tool
@@ -15136,7 +15136,7 @@ net-p2p/vuze-coreplugins 4.8.1.2 5.7.6.0: Core plugins for Vuze that are include
 net-p2p/xmr-stak 2.7.0 2.7.1 2.8.0 2.8.2 2.8.3 2.9.0 2.10.0 2.10.1 2.10.2 2.10.3 2.10.4 2.10.5 2.10.6 2.10.7 2.10.8 9999: Unified all-in-one Monero miner
 net-p2p/xmr-stak-rx 1.0.4 9999: Monero RandomX Miner
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
-net-print/brlaser 4: Brother laser printer driver
+net-print/brlaser 4 6: Brother laser printer driver
 net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
@@ -16020,7 +16020,7 @@ sci-libs/linux-gpib-modules 4.2.0: Kernel modules for GPIB (IEEE 488.2) hardware
 sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
 sci-libs/lmfit 5.1 6.4 7.0 8.2.2: library for Levenberg-Marquardt least-squares minimization and curve fitting
 sci-libs/lrslib 062: Self-contained C implementation of the reverse search algorithm
-sci-libs/m4ri 20140914 20200115: Method of four russian for inversion (M4RI)
+sci-libs/m4ri 20140914 20200115 20200125: Method of four russian for inversion (M4RI)
 sci-libs/m4rie 20200115: Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.4.1-r2: Math Graphics Library
