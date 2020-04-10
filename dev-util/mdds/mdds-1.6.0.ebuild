@@ -16,7 +16,7 @@ DESCRIPTION="A collection of multi-dimensional data structure and indexing algor
 HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
-SLOT="1/${PV%.*}" # Check API version on version bumps!
+SLOT="1/1.5"
 IUSE="doc valgrind test"
 RESTRICT="!test? ( test )"
 
