@@ -32,6 +32,10 @@ RDEPEND="${DEPEND}
 		dev-python/numpy-python2[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.2.1[${PYTHON_USEDEP}]
 	)
+	|| (
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+	)
 "
 
 # Just in case someone renames the ebuild
