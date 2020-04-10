@@ -98,4 +98,6 @@ src_install() {
 		cd bindings/python || die
 		distutils-r1_src_install
 	fi
+
+	keepdir /var/lib/spool/prelude
 }
