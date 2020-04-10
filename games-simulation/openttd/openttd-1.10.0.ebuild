@@ -58,8 +58,8 @@ PDEPEND="
 	openmedia? ( >=games-misc/opengfx-0.4.7 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.10.0-cflags.patch
-	"${FILESDIR}"/${PN}-1.10.0-dont_compress_manpages.patch
+	"${FILESDIR}"/${PN}-1.9.0-cflags.patch
+	"${FILESDIR}"/${PN}-1.9.0-dont_compress_manpages.patch
 )
 
 src_configure() {
