@@ -1,0 +1,12 @@
+--- src/test_bz2file.py~	2020-04-07 23:11:28.987587102 -0700
++++ src/test_bz2file.py	2020-04-07 23:10:45.263590154 -0700
+@@ -497,7 +497,8 @@
+                 t.join()
+ 
+     def testWithoutThreading(self):
+-        if not hasattr(support, "import_fresh_module"):
++        import sys
++        if not hasattr(support, "import_fresh_module") or (sys.version_info.major == 3 and sys.version_info.minor >= 6):
+             return
+         module = support.import_fresh_module("bz2file", blocked=("threading",))
+         with module.BZ2File(self.filename, "wb") as f:
