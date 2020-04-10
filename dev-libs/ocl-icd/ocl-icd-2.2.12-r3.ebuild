@@ -13,10 +13,16 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+# Does nothing now but by keeping it here we avoid having to have virtual/opencl
+# handle ebuilds both with and without this flag.
 IUSE="+khronos-headers"
 
 BDEPEND="${RUBY_DEPS}"
-RDEPEND="!app-eselect/eselect-opencl
+DEPEND="dev-util/opencl-headers"
+# nvidia-drivers block is hopefully temporary, until it has ceased
+# to depend on eselect-opencl
+RDEPEND="${DEPEND}
+	!app-eselect/eselect-opencl
 	!dev-libs/opencl-icd-loader
 	!x11-drivers/nvidia-drivers"
 
@@ -30,7 +36,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf --enable-pthread-once
+	# dev-util/opencl-headers ARE official Khronos Group headers, what this option
+	# does is disable the use of the bundled ones
+	ECONF_SOURCE="${S}" econf --enable-pthread-once --disable-official-khronos-headers
 }
 
 multilib_src_install() {
@@ -38,10 +46,4 @@ multilib_src_install() {
 
 	# Drop .la files
 	find "${ED}" -name '*.la' -delete || die
-
-	# Install vendor headers
-	if use khronos-headers; then
-		insinto /usr/include
-		doins -r "${S}/khronos-headers/CL"
-	fi
 }
