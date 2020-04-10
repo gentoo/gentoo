@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
+# No stable media-video/ffmpeg on hppa, bug #711144
+ffmpeg
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
 # No stable app-arch/rpm on hppa, bug #471456
 rpm
 
