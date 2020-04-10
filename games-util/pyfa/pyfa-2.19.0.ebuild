@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite,threads"
 
@@ -18,9 +19,9 @@ if [[ ${PV} = 9999 ]]; then
 else
 	SRC_URI="https://github.com/pyfa-org/Pyfa/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S=${WORKDIR}/Pyfa-${PV}
+	S="${WORKDIR}/Pyfa-${PV}"
 fi
-IUSE="+graph"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="mirror bindist"
 
@@ -31,7 +32,8 @@ DEPEND="
 		>=dev-python/pyyaml-5.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/sqlalchemy-1.3.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/wxpython-4.0.4[webkit,${PYTHON_MULTI_USEDEP}]
-	')"
+	')
+	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/beautifulsoup-4.6.0[${PYTHON_MULTI_USEDEP}]
@@ -40,17 +42,15 @@ RDEPEND="${DEPEND}
 		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/requests-2.0.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/roman-2.0.0[${PYTHON_MULTI_USEDEP}]
-		graph? (
-			>=dev-python/matplotlib-2.0.0[wxwidgets,${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}] )
-	')
-	${PYTHON_DEPS}"
+		>=dev-python/matplotlib-3.1.2[wxwidgets,${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	')"
 BDEPEND="app-arch/zip"
 
 PATCHES=(
 	# fix import path in the main script for systemwide installation
 	"${FILESDIR}/${PN}-2.9.3-import-pyfa.patch"
-	)
+)
 
 src_prepare() {
 	# get rid of CRLF line endings introduced in 1.1.10 so patches work
