@@ -28,7 +28,7 @@ RDEPEND="
 	spreadsheet-model? ( dev-libs/libixion:${SLOT} )
 "
 DEPEND="${RDEPEND}
-	>=dev-util/mdds-1.5.0:1
+	dev-util/mdds:1/1.5
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
