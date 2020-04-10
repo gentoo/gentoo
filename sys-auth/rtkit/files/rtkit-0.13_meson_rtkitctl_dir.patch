@@ -1,0 +1,25 @@
+From c295fa849f52b487be6433e69e08b46251950399 Mon Sep 17 00:00:00 2001
+From: Felipe Sateler <fsateler@users.noreply.github.com>
+Date: Sun, 5 Apr 2020 12:16:01 -0400
+Subject: [PATCH 1/2] meson: Install rtkitctl to sbin
+
+That is the path previously used in the autotools system
+---
+ meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/meson.build b/meson.build
+index 50e137c..02e6c73 100644
+--- a/meson.build
++++ b/meson.build
+@@ -115,6 +115,7 @@ executable(
+         'rtkitctl',
+         'rtkitctl.c', 'rtkit.h', config_h,
+         install: true,
++        install_dir: get_option('sbindir'),
+         dependencies: [dbus_dep],
+ )
+ 
+-- 
+2.24.1
+
