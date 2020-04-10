@@ -15,7 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.xz"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard usbredir vala webdav libressl"
+IUSE="+gtk3 +introspection libressl lz4 mjpeg policykit pulseaudio sasl smartcard usbredir vala webdav"
 
 # TODO:
 # * check if sys-freebsd/freebsd-lib (from virtual/acl) provides acl/libacl.h
@@ -48,8 +48,8 @@ RDEPEND="
 		policykit? (
 			sys-apps/acl
 			>=sys-auth/polkit-0.110-r1
-			!~sys-auth/polkit-0.111 )
 		)
+	)
 	webdav? (
 		net-libs/phodav:2.0
 		>=net-libs/libsoup-2.49.91 )
@@ -75,48 +75,32 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	# bug 558558
-	export GIT_CEILING_DIRECTORIES="${WORKDIR}"
-
 	default
 
 	use vala && vala_src_prepare
 }
 
 src_configure() {
-	# Prevent sandbox violations, bug #581836
-	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
-	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
-	addpredict /dev
-
-	# Clean up environment, bug #586642
-	xdg_environment_reset
-
 	local emesonargs=(
 		$(meson_feature gtk3 gtk)
 		$(meson_feature introspection)
 		$(meson_use mjpeg builtin-mjpeg)
 		$(meson_feature policykit polkit)
 		$(meson_feature pulseaudio pulse)
+		$(meson_feature lz4)
 		$(meson_feature sasl)
 		$(meson_feature smartcard)
 		$(meson_feature usbredir)
-		$(usex usbredir -Dusb-acl-helper-dir=/usr/libexec)
-		$(usex usbredir -Dusb-ids-path=/usr/share/misc/usb.ids)
 		$(meson_feature vala vapi)
 		$(meson_feature webdav)
 	)
 
+	if use usbredir; then
+		emesonargs+=( -D "usb-acl-helper-dir=/usr/libexec" )
+		emesonargs+=( -D "usb-ids-path=/usr/share/misc/usb.ids" )
+	fi
+
 	meson_src_configure
-}
-
-src_compile() {
-	# Prevent sandbox violations, bug #581836
-	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
-	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
-	addpredict /dev
-
-	meson_src_compile
 }
 
 src_install() {
