@@ -4919,7 +4919,7 @@ dev-libs/grantlee 5.2.0: C++ string template engine based on the Django template
 dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
-dev-libs/hiredis 0.13.3 0.14.0 0.14.1: Minimalistic C client library for the Redis database
+dev-libs/hiredis 0.14.1: Minimalistic C client library for the Redis database
 dev-libs/hsa-ext-rocr 1.1.9.139 1.1.30100.0: Proprietary image-support library for Radeon Open Compute
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
@@ -17759,7 +17759,7 @@ www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from t
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 1.2.3 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20181209: A graphical web-based front-end for visualizing RRD collected by collectd
-www-apps/chromedriver-bin 2.24-r1 2.30-r1 2.35-r1 2.40 2.41 74.0.3729.6 76.0.3809.68 77.0.3865.40 78.0.3904.70 78.0.3904.105 79.0.3945.36 80.0.3987.106: WebDriver for Chrome
+www-apps/chromedriver-bin 2.24-r1 2.30-r1 2.35-r1 2.40 2.41 74.0.3729.6 76.0.3809.68 77.0.3865.40 78.0.3904.70 78.0.3904.105 79.0.3945.36 80.0.3987.106 81.0.4044.69: WebDriver for Chrome
 www-apps/curator 3.0_p20110120-r3: Gallery generator
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.2: A CalDAV and CardDAV Server
