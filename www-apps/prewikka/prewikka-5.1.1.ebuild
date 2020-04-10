@@ -40,3 +40,9 @@ BDEPEND="dev-python/lesscpy[${PYTHON_USEDEP}]
 pkg_postinst() {
 	optfeature "Asynchronous DNS" dev-python/twisted[${PYTHON_USEDEP}]
 }
+
+src_install() {
+	distutils-r1_src_install
+
+	keepdir /var/lib/prewikka
+}
