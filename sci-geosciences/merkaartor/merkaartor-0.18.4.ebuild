@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,27 +23,23 @@ DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsingleapplication[X,qt5(+)]
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	sci-libs/gdal
-	sci-libs/proj
+	sci-libs/gdal:=
+	sci-libs/proj:=
 	sys-libs/zlib
 	exif? ( media-gfx/exiv2:= )
-	gps? ( >=sci-geosciences/gpsd-3.17-r2:= )
+	gps? ( >=sci-geosciences/gpsd-3.17-r2 )
 	libproxy? ( net-libs/libproxy )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-sharedir-pluginsdir.patch # bug 621826
-	"${FILESDIR}"/${P}-desktopfile.patch
-	"${FILESDIR}"/${P}-webengine{1,2,3}.patch
-	"${FILESDIR}"/${P}-exiv2-0.27.1.patch # bug 689098
-)
+PATCHES=( "${FILESDIR}"/${PN}-0.18.3-sharedir-pluginsdir.patch ) # bug 621826
 
 DOCS=( AUTHORS CHANGELOG )
 
@@ -67,7 +63,7 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+	append-cppflags -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H
 
 	# TRANSDIR_SYSTEM is for bug #385671
 	eqmake5 \
@@ -84,7 +80,6 @@ src_configure() {
 		GPSDLIB=$(usex gps 1 0) \
 		LIBPROXY=$(usex libproxy 1 0) \
 		USEWEBENGINE=$(usex webengine 1 0) \
-		ZBAR=0 \
 		Merkaartor.pro
 }
 
