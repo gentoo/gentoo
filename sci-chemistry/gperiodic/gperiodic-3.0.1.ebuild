@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs xdg-utils
 
 DESCRIPTION="Periodic table application for Linux"
 HOMEPAGE="https://sourceforge.net/projects/gperiodic/"
@@ -23,10 +23,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 		virtual/pkgconfig"
 
-src_prepare() {
-	epatch \
+PATCHES=(
 		"${FILESDIR}"/${P}-makefile.patch \
 		"${FILESDIR}"/${P}-nls.patch
+)
+
+src_prepare() {
+	default
 	for lang in ${MY_AVAILABLE_LINGUAS}; do
 		if ! has ${lang} ${LINGUAS-${lang}}; then
 			einfo "Cleaning translation for ${lang}"
@@ -50,4 +53,12 @@ src_install() {
 	emake DESTDIR="${D}" ${myopts} install
 	dodoc AUTHORS ChangeLog README
 	newdoc po/README README.translation
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
