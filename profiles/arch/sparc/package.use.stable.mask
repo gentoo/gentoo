@@ -1,6 +1,14 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-10)
+# net-libs/mbedtls has no stable keywords
+net-misc/curl curl_ssl_mbedtls
+dev-libs/libzip mbedtls
+net-libs/libssh mbedtls
+net-libs/libssh2 mbedtls
+net-vpn/openvpn mbedtls
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
 # Needs stable dev-libs/klibc, bug #653384
 sys-fs/dmraid klibc
