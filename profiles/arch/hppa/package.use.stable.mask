@@ -18,6 +18,10 @@
 #--- END OF EXAMPLES ---
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# No stable app-arch/rpm on hppa, bug #471456
+dev-util/patchutils test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # no stable app-editors/{,g}vim
 dev-util/gtk-doc vim
 
