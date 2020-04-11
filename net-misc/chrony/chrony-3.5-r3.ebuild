@@ -10,7 +10,7 @@ SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="
 	+adns +caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc
 	+seccomp selinux
