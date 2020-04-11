@@ -6,7 +6,7 @@ EAPI=7
 inherit linux-info systemd
 
 DESCRIPTION="Jitter RNG daemon"
-HOMEPAGE="http://www.chronox.de/jent.html"
+HOMEPAGE="https://www.chronox.de/jent.html"
 SRC_URI="https://github.com/smuellerDD/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -21,4 +21,5 @@ PATCHES=(
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" \
 		UNITDIR="$(systemd_get_systemunitdir)" install
+	newinitd "${FILESDIR}"/jitterentropy-rngd-initd jitterentropy-rngd
 }
