@@ -29,6 +29,7 @@
 		<remote-id type="cpan-module">Rex::Box</remote-id>
 		<remote-id type="cpan-module">Rex::Box::Amazon</remote-id>
 		<remote-id type="cpan-module">Rex::Box::Base</remote-id>
+		<remote-id type="cpan-module">Rex::Box::Docker</remote-id>
 		<remote-id type="cpan-module">Rex::Box::KVM</remote-id>
 		<remote-id type="cpan-module">Rex::Box::VBox</remote-id>
 		<remote-id type="cpan-module">Rex::CLI</remote-id>
@@ -224,6 +225,7 @@
 		<remote-id type="cpan-module">Rex::Pkg::SunOS::OpenCSW</remote-id>
 		<remote-id type="cpan-module">Rex::Pkg::SunOS::pkg</remote-id>
 		<remote-id type="cpan-module">Rex::Pkg::Ubuntu</remote-id>
+		<remote-id type="cpan-module">Rex::Pkg::VoidLinux</remote-id>
 		<remote-id type="cpan-module">Rex::PkgConf</remote-id>
 		<remote-id type="cpan-module">Rex::PkgConf::Base</remote-id>
 		<remote-id type="cpan-module">Rex::PkgConf::Debian</remote-id>
@@ -263,6 +265,7 @@
 		<remote-id type="cpan-module">Rex::Service::SunOS</remote-id>
 		<remote-id type="cpan-module">Rex::Service::SunOS::svcadm</remote-id>
 		<remote-id type="cpan-module">Rex::Service::Ubuntu</remote-id>
+		<remote-id type="cpan-module">Rex::Service::VoidLinux</remote-id>
 		<remote-id type="cpan-module">Rex::Shared::Var</remote-id>
 		<remote-id type="cpan-module">Rex::Shared::Var::Array</remote-id>
 		<remote-id type="cpan-module">Rex::Shared::Var::Common</remote-id>
@@ -306,11 +309,15 @@
 		<remote-id type="cpan-module">Rex::Virtualization::Docker::daemon</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::Docker::delete</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::Docker::destroy</remote-id>
+		<remote-id type="cpan-module">Rex::Virtualization::Docker::guestinfo</remote-id>
+		<remote-id type="cpan-module">Rex::Virtualization::Docker::images</remote-id>
+		<remote-id type="cpan-module">Rex::Virtualization::Docker::import</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::Docker::info</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::Docker::list</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::Docker::reboot</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::Docker::shutdown</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::Docker::start</remote-id>
+		<remote-id type="cpan-module">Rex::Virtualization::Docker::status</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::LibVirt</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::LibVirt::blklist</remote-id>
 		<remote-id type="cpan-module">Rex::Virtualization::LibVirt::clone</remote-id>
