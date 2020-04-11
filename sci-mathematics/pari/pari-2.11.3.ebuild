@@ -33,7 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-2.11.2-Makefile-LDFLAGS.patch
 	"${FILESDIR}/${PN}"-2.11.2-Makefile-docinstall.patch
 	"${FILESDIR}/${PN}"-2.11.3-incorrect_bnfisunit.patch
-	)
+)
 
 src_prepare() {
 	default
