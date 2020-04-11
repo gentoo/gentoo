@@ -98,9 +98,8 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 
 # Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
 # Default Ruby build target(s)
-# Updated to include ruby24 on 2018-11-12
 # Updated to include ruby25 on 2019-07-17
-RUBY_TARGETS="ruby24 ruby25"
+RUBY_TARGETS="ruby25"
 
 # Enable extended filesystem attribute support by default.
 # https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
