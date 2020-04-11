@@ -49,7 +49,7 @@
 @@ -36,24 +36,10 @@
  
  all: $(OBJS)
- 	$(CC) $(LDFLAGS) -shared -Wl,-soname -Wl,libbz2.so.1.0 -o libbz2.so.1.0.8 $(OBJS)
+ 	$(CC) $(LDFLAGS) -shared -Wl,-soname -Wl,libbz2.so.1 -o libbz2.so.1.0.8 $(OBJS)
 -	$(CC) $(LDFLAGS) $(CFLAGS) -o bzip2-shared bzip2.c libbz2.so.1.0.8
 -	rm -f libbz2.so.1.0
 -	ln -s libbz2.so.1.0.8 libbz2.so.1.0
