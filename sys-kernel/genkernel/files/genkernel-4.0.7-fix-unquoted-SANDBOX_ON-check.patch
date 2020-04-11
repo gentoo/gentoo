@@ -1,0 +1,26 @@
+commit 2948a542da6964a4f61a71fd5253c97f803eac34
+Author:     Thomas Deutschmann <whissi@gentoo.org>
+AuthorDate: Sun Apr 12 01:12:38 2020 +0200
+Commit:     Thomas Deutschmann <whissi@gentoo.org>
+CommitDate: Sun Apr 12 01:12:38 2020 +0200
+
+    gen_determineargs.sh: determine_real_args(): Quote $SANDBOX_ON
+    
+    $SANDBOX_ON can be unset causing 'unary operator expected' error.
+    
+    Fixes c0e013c ("gen_determineargs.sh: determine_real_args(): Error out early when already running within a sandbox")
+    Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+
+diff --git a/gen_determineargs.sh b/gen_determineargs.sh
+index 95ec4021..b1c038d3 100755
+--- a/gen_determineargs.sh
++++ b/gen_determineargs.sh
+@@ -1012,7 +1012,7 @@ determine_real_args() {
+ 		SANDBOX_COMMAND=
+ 		if isTrue "${SANDBOX}"
+ 		then
+-			if [ ${SANDBOX_ON} -eq 1 ]
++			if [[ "${SANDBOX_ON}" == "1" ]]
+ 			then
+ 				gen_die "SANDBOX_ON=1 detected -- You cannot use --sandbox when already running within a sandbox!"
+ 			fi
