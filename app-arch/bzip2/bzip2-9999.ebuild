@@ -16,8 +16,13 @@ else
 fi
 LICENSE="BZIP2"
 SLOT="0/1" # subslot = SONAME
-
 IUSE="static-libs"
+
+if [[ ${PV} == 1.1* ]]; then
+	eerror "Please update SLOT due to accidental soname change in bzip2-1.0.7."
+	eerror "See commit 98da0ad82192d21ad74ae52366ea8466e2acea24 for reference."
+	die "SLOT update needed"
+fi
 
 multilib_src_configure() {
 	local emesonargs=(
