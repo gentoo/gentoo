@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/gtest-1.8.0 )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fix-tests.patch
+	"${FILESDIR}"/${PN}-0.9.13.32-fix-tests.patch
 )
 
 DOCS=(
