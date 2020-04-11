@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# No stable media-libs/libsdl or media-libs/libsdl2 on hppa
+sdl
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
 # No stable media-video/ffmpeg on hppa, bug #711144
 ffmpeg
