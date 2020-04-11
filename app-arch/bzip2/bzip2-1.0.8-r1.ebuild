@@ -17,6 +17,12 @@ SLOT="0/1" # subslot = SONAME
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="static static-libs"
 
+if [[ ${PV} == 1.1* ]]; then
+    eerror "Please update SLOT due to accidental soname change in bzip2-1.0.7."
+    eerror "See commit 98da0ad82192d21ad74ae52366ea8466e2acea24 for reference."
+    die "SLOT update needed"
+fi
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.4-makefile-CFLAGS.patch
 	"${FILESDIR}"/${PN}-1.0.8-saneso.patch
