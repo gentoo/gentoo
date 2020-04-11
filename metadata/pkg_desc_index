@@ -4972,7 +4972,7 @@ dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbpf 0.0.6 0.0.7 9999: Stand-alone build of libbpf from the Linux kernel
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.10.0: An library to provide useful functions commonly found on BSD systems
-dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1: Library routines related to building,parsing and iterating BSON documents
+dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1 1.16.2: Library routines related to building,parsing and iterating BSON documents
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.0 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 1.4 2.1 2.2: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
@@ -5182,7 +5182,7 @@ dev-libs/mathjax 2.7.0 2.7.4 2.7.7: JavaScript display engine for LaTeX, MathML 
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
-dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1: Client library written in C for MongoDB
+dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2: Client library written in C for MongoDB
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
 dev-libs/mpc 1.1.0-r1: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 4.0.2: library for multiple-precision floating-point computations with exact rounding
@@ -7304,7 +7304,7 @@ dev-php/pecl-mailparse 3.0.2-r1 3.0.3-r1 3.0.4: PHP extension for parsing and wo
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 4.0.5.2: PHP extension for using memcached
 dev-php/pecl-memcached 3.1.3-r1 3.1.5-r1: Interface PHP with memcached via libmemcached library
-dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0: MongoDB database driver for PHP
+dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0 1.7.4: MongoDB database driver for PHP
 dev-php/pecl-ncurses 1.0.2-r5: Terminal screen handling and optimization package
 dev-php/pecl-oauth 2.0.5: OAuth is an authorization protocol built on top of HTTP
 dev-php/pecl-pam 1.0.3-r3: This extension provides PAM (Pluggable Authentication Modules) integration
@@ -17319,7 +17319,7 @@ sys-kernel/ck-sources 5.4.24 5.4.28: Gentoo's genpatches for Linux , with Con Ko
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.5.3.3 4.0.5 4.0.6 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.5 4.0.7 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.112 4.19.113 5.4.27 5.4.29 5.4.31 5.5.11 5.5.14 5.5.16: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.112 5.4.27 5.4.29 5.4.31 5.5.11 5.5.14 5.5.16: Pre-built Linux kernel with genpatches
@@ -17905,7 +17905,7 @@ www-servers/h2o 2.2.5 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.53 1.4.54 1.4.55: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.16.1-r1 1.17.9-r1: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.16.1-r1 1.17.9-r2: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.8.0 1.12.0-r3 1.13.0 1.14.0 1.15.0 1.16.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
