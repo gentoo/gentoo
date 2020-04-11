@@ -1,5 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-11)
+# git useflag requires dev-libs/libgit2
+<dev-util/geany-plugins-1.35 git
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-02)
 # media-video/pipewire is not stable yet

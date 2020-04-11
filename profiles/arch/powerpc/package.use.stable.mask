@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-11)
+# git useflag requires dev-libs/libgit2
+<dev-util/geany-plugins-1.35 git
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-12)
 # Needs stable net-libs/webkit-gtk, bug #684702
 dev-util/geany-plugins markdown

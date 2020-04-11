@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-11)
+# git useflag requires dev-libs/libgit2
+dev-util/geany-plugins git
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # uses slot 0 of dev-lang/spidermonkey that is broken on sparc
 www-client/elinks javascript

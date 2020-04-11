@@ -167,10 +167,6 @@ media-video/mpv raspberry-pi
 # Mask it globally, unmask it on arm.
 media-video/ffmpeg mmal
 
-# Nathan Phillip Brink <binki@gentoo.org> (2015-09-26)
-# git useflag requires dev-libs/libgit2 which few arches support
-dev-util/geany-plugins git
-
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 mroonga sst-xtrabackup galera

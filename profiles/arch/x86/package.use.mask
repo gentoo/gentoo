@@ -191,10 +191,6 @@ www-client/chromium widevine
 app-emulation/libvirt xen
 app-emulation/ganeti xen
 
-# Nathan Phillip Brink <binki@gentoo.org> (2015-09-26)
-# git useflag requires dev-libs/libgit2 which few arches support
-dev-util/geany-plugins -git
-
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Unmask new USE flags for mariadb on supported arches
 >=dev-db/mariadb-10.1.0 -sst-xtrabackup -galera
