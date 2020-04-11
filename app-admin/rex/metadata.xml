@@ -224,6 +224,7 @@
 		<remote-id type="cpan-module">Rex::Pkg::SunOS::OpenCSW</remote-id>
 		<remote-id type="cpan-module">Rex::Pkg::SunOS::pkg</remote-id>
 		<remote-id type="cpan-module">Rex::Pkg::Ubuntu</remote-id>
+		<remote-id type="cpan-module">Rex::Pkg::VoidLinux</remote-id>
 		<remote-id type="cpan-module">Rex::PkgConf</remote-id>
 		<remote-id type="cpan-module">Rex::PkgConf::Base</remote-id>
 		<remote-id type="cpan-module">Rex::PkgConf::Debian</remote-id>
@@ -263,6 +264,7 @@
 		<remote-id type="cpan-module">Rex::Service::SunOS</remote-id>
 		<remote-id type="cpan-module">Rex::Service::SunOS::svcadm</remote-id>
 		<remote-id type="cpan-module">Rex::Service::Ubuntu</remote-id>
+		<remote-id type="cpan-module">Rex::Service::VoidLinux</remote-id>
 		<remote-id type="cpan-module">Rex::Shared::Var</remote-id>
 		<remote-id type="cpan-module">Rex::Shared::Var::Array</remote-id>
 		<remote-id type="cpan-module">Rex::Shared::Var::Common</remote-id>
