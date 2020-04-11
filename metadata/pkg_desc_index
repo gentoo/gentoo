@@ -193,7 +193,7 @@ acct-user/ceph 0: User for ceph
 acct-user/cinder 0: user for the openstack cinder service
 acct-user/clamav 0: System user: clamav
 acct-user/cmd5checkpw 0: User for cmd5checkpw
-acct-user/cyrus 0: user for cyrus-imapd daemon
+acct-user/cyrus 0-r1: user for cyrus-imapd daemon
 acct-user/davfs2 0: System user: davfs2
 acct-user/ddclient 0: A user for the dynamic DNS client
 acct-user/deluge 0: user for deluge
