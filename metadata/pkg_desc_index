@@ -3296,7 +3296,7 @@ dev-db/postgresql 9.4.22 9.4.22-r1 9.4.23 9.4.24 9.4.25 9.4.26 9.5.17 9.5.17-r1 
 dev-db/pspg 1.6.5 1.6.8 2.5.4 2.5.5 2.6.6: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
-dev-db/qt5-sqlcipher 1.0.1_p20191025-r1: Qt SQL driver plugin for SQLCipher
+dev-db/qt5-sqlcipher 1.0.1_p20191025-r1 1.0.10: Qt SQL driver plugin for SQLCipher
 dev-db/redis 4.0.2-r1 4.0.14 5.0.5 5.0.7 5.0.8: A persistent caching system, key-value and data structures database
 dev-db/repmgr 3.0.1 3.3.2: PostgreSQL Replication Manager
 dev-db/rqlite 4.6.0 5.0.0 5.1.0: Replicated SQLite using the Raft consensus protocol
@@ -14351,7 +14351,7 @@ net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pi
 net-im/mattermost-desktop-bin 4.4.0: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
-net-im/openmittsu 0.9.13.32 0.9.13.46: An open source chat client for Threema-style end-to-end encrypted chat networks
+net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.13.0-r7 2.13.0-r8: GTK Instant Messenger client
 net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
