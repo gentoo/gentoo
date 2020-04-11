@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java opengl openssl
 	portaudio postscript +qhull +qrupdate readline sndfile +sparse static-libs X zlib"
-KEYWORDS="amd64 ~arm hppa ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-arch/bzip2
