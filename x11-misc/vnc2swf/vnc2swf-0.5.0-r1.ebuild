@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="A tool for recording Flash SWF movies from VNC sessions"
-HOMEPAGE="http://www.unixuser.org/~euske/vnc2swf"
-SRC_URI="http://www.unixuser.org/~euske/vnc2swf/${P}.tar.gz"
+HOMEPAGE="https://www.unixuser.org/~euske/vnc2swf/"
+SRC_URI="https://www.unixuser.org/~euske/vnc2swf/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
