@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-04-11)
+# Work in progress, will be unmasked when ready
+~dev-lang/perl-5.30.2
+
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-10)
 # Masked for removal
 # Last release 2002
