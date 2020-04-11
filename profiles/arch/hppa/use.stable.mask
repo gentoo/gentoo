@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# No stable media-video/libav on hppa
+libav
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # No stable media-libs/libsdl or media-libs/libsdl2 on hppa
 sdl
 
