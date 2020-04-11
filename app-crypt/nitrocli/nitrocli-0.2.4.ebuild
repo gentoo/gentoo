@@ -40,7 +40,7 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 inherit cargo
 
 DESCRIPTION="A command line application for interacting with Nitrokey devices"
-HOMEPAGE="https://github.com/d-e-s-o/nitrocli/tree/master/nitrocli"
+HOMEPAGE="https://github.com/d-e-s-o/nitrocli/tree/master"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 GPL-3+ LGPL-3 MIT"
