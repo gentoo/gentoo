@@ -18,7 +18,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
-RDEPEND="app-text/enchant:0"
+RDEPEND="app-text/enchant:*"
 BDEPEND="
 	test? (
 		app-dicts/myspell-en
