@@ -14513,7 +14513,7 @@ net-libs/libkvkontakte 5.0.0-r1: Library for accessing the features of social ne
 net-libs/liblockfile 1.16: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
-net-libs/libmicrodns 0.0.9 9999: Minimal mDNS resolver (and announcer) library
+net-libs/libmicrodns 0.0.9 0.1.2 9999: Minimal mDNS resolver (and announcer) library
 net-libs/libmicrohttpd 0.9.65 0.9.68 0.9.69 0.9.70: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
