@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# No stable dev-libs/libressl on hppa, bug #704228
+libressl
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # No stable media-video/libav on hppa
 libav
 
