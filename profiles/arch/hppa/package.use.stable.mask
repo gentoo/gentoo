@@ -18,6 +18,10 @@
 #--- END OF EXAMPLES ---
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# no stable app-editors/{,g}vim
+dev-util/gtk-doc vim
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # no stable libsdl
 media-libs/libtheora examples
 
