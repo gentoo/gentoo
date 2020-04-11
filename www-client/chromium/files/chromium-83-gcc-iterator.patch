@@ -1,0 +1,41 @@
+From 4abcf0a76a7cb5c343be7d17c60cb908f3673c3d Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Thu, 9 Apr 2020 17:03:38 +0000
+Subject: [PATCH] libstdc++: replace std::any_of in blink::SerializedScriptValue
+
+Use of std::any_of requires STL compliant iterator. However,
+HashTableIterator does not define iterator_tag and therefore
+is no STL iterator.
+---
+ .../core/v8/serialization/serialized_script_value.h | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/third_party/blink/renderer/bindings/core/v8/serialization/serialized_script_value.h b/third_party/blink/renderer/bindings/core/v8/serialization/serialized_script_value.h
+index bbf10ef..53d98c9 100644
+--- a/third_party/blink/renderer/bindings/core/v8/serialization/serialized_script_value.h
++++ b/third_party/blink/renderer/bindings/core/v8/serialization/serialized_script_value.h
+@@ -268,12 +268,17 @@ class CORE_EXPORT SerializedScriptValue
+   MessagePortChannelArray& GetStreamChannels() { return stream_channels_; }
+ 
+   bool IsLockedToAgentCluster() const {
++    auto AnyOfIsLockedToAgentCluster = [&]() {
++      for (auto entry = attachments_.begin();
++           entry != attachments_.end(); ++entry) {
++           if (entry->value->IsLockedToAgentCluster())
++             return true;
++      }
++      return false;
++    };
+     return !wasm_modules_.IsEmpty() ||
+            !shared_array_buffers_contents_.IsEmpty() ||
+-           std::any_of(attachments_.begin(), attachments_.end(),
+-                       [](const auto& entry) {
+-                         return entry.value->IsLockedToAgentCluster();
+-                       });
++           AnyOfIsLockedToAgentCluster();
+   }
+ 
+   // Returns true after serializing script values that remote origins cannot
+-- 
+2.24.1
+
