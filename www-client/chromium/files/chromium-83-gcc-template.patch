@@ -1,6 +1,6 @@
-From 7f1503a80edc5ccd73559b227a242eeb9c1bea93 Mon Sep 17 00:00:00 2001
+From 8d115ddda495d0d2e1e1447392db6e9e6a8a1b32 Mon Sep 17 00:00:00 2001
 From: Stephan Hartmann <stha09@googlemail.com>
-Date: Mon, 30 Mar 2020 07:26:49 +0000
+Date: Tue, 07 Apr 2020 00:23:57 +0000
 Subject: [PATCH] GCC: fix template specialization in WTF::VectorMover
 
 GCC complains that explicit specialization in non-namespace scope
@@ -10,6 +10,10 @@ into MoveOverlappingImpl method without changing generated code.
 
 Bug: 819294
 Change-Id: I90b893b9701748302f7b900fbcc2c341685fe0d3
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2126290
+Reviewed-by: Kent Tamura <tkent@chromium.org>
+Commit-Queue: Kent Tamura <tkent@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#756880}
 ---
 
 diff --git a/third_party/blink/renderer/platform/wtf/vector.h b/third_party/blink/renderer/platform/wtf/vector.h

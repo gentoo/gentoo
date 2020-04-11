@@ -15,7 +15,7 @@ apps::AppServiceProxy::BrowserAppLauncher()' changes meaning of
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/apps/app_service/app_service_proxy.h b/chrome/browser/apps/app_service/app_service_proxy.h
-index 1ebadfd..83f9c71 100644
+index b7fff63..1ecd49d 100644
 --- a/chrome/browser/apps/app_service/app_service_proxy.h
 +++ b/chrome/browser/apps/app_service/app_service_proxy.h
 @@ -79,7 +79,7 @@ class AppServiceProxy : public KeyedService,
@@ -25,8 +25,7 @@ index 1ebadfd..83f9c71 100644
 -  BrowserAppLauncher& BrowserAppLauncher();
 +  apps::BrowserAppLauncher& BrowserAppLauncher();
  
-   apps::PreferredApps& PreferredApps();
+   apps::PreferredAppsList& PreferredApps();
  
 -- 
 2.24.1
-
