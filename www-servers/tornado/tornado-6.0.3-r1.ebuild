@@ -41,7 +41,9 @@ distutils_enable_sphinx docs \
 #)
 
 python_test() {
-	"${PYTHON}" -m tornado.test.runtests || die "tests failed under ${EPYTHON}"
+	local -x ASYNC_TEST_TIMEOUT=60
+	"${PYTHON}" -m tornado.test.runtests --verbose ||
+		die "tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
