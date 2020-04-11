@@ -17,12 +17,6 @@ SLOT="0/1" # subslot = SONAME
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="static static-libs"
 
-if [[ ${PV} == 1.1* ]]; then
-    eerror "Please update SLOT due to accidental soname change in bzip2-1.0.7."
-    eerror "See commit 98da0ad82192d21ad74ae52366ea8466e2acea24 for reference."
-    die "SLOT update needed"
-fi
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.4-makefile-CFLAGS.patch
 	"${FILESDIR}"/${PN}-1.0.8-saneso.patch
@@ -77,6 +71,14 @@ multilib_src_install() {
 	for v in libbz2.so{,.{${PV%%.*},${PV%.*}}} ; do
 		dosym libbz2.so.${PV} /usr/$(get_libdir)/${v}
 	done
+
+	# Install libbz2.so.1.0 due to accidental soname change in 1.0.7.
+	# Reference: 98da0ad82192d21ad74ae52366ea8466e2acea24.
+	# OK to remove one year after 2020-04-11.
+	if [[ ! -L "${ED}/usr/$(get_libdir)/libbz2.so.1.0" ]]; then
+		dosym libbz2.so.${PV} "/usr/$(get_libdir)/libbz2.so.1.0"
+	fi
+
 	use static-libs && dolib.a libbz2.a
 
 	if multilib_is_native_abi ; then

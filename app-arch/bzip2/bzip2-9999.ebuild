@@ -16,13 +16,8 @@ else
 fi
 LICENSE="BZIP2"
 SLOT="0/1" # subslot = SONAME
-IUSE="static-libs"
 
-if [[ ${PV} == 1.1* ]]; then
-	eerror "Please update SLOT due to accidental soname change in bzip2-1.0.7."
-	eerror "See commit 98da0ad82192d21ad74ae52366ea8466e2acea24 for reference."
-	die "SLOT update needed"
-fi
+IUSE="static-libs"
 
 multilib_src_configure() {
 	local emesonargs=(
@@ -40,6 +35,13 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	meson_src_install
+
+	# Install libbz2.so.1.0 due to accidental soname change in 1.0.7.
+	# Reference: 98da0ad82192d21ad74ae52366ea8466e2acea24.
+	# OK to remove one year after 2020-04-11.
+	if [[ ! -L "${ED}/usr/$(get_libdir)/libbz2.so.1.0" ]]; then
+		dosym libbz2.so.1 "/usr/$(get_libdir)/libbz2.so.1.0"
+	fi
 
 	if multilib_is_native_abi ; then
 		gen_usr_ldscript -a bz2
