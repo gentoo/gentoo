@@ -1,0 +1,35 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1a2b7ba..26fbe9b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -161,8 +161,6 @@ if (ENABLE_BSON STREQUAL SYSTEM)
+    endif ()
+ 
+    message ("--   libbson found version \"${bson-1.0_VERSION}\"")
+-   message ("--   disabling test-libmongoc since using system libbson")
+-   SET (ENABLE_TESTS OFF)
+ 
+    if (ENABLE_STATIC MATCHES "ON|AUTO")
+       set (MONGOC_ENABLE_STATIC ON)
+@@ -174,7 +172,7 @@ if (ENABLE_BSON STREQUAL SYSTEM)
+    endif ()
+    set (BSON_LIBRARIES mongo::bson_shared)
+    if (NOT TARGET mongo::bson_static)
+-           message (FATAL_ERROR "System libbson built without static library target")
++	   message (STATUS "System libbson built without static library target")
+    endif ()
+    set (BSON_STATIC_LIBRARIES mongo::bson_static)
+ endif ()
+diff --git a/src/libbson/tests/test-bson.c b/src/libbson/tests/test-bson.c
+index c949d22..4d5a47f 100644
+--- a/src/libbson/tests/test-bson.c
++++ b/src/libbson/tests/test-bson.c
+@@ -17,7 +17,7 @@
+ 
+ #include <bson/bson.h>
+ #include <bson/bcon.h>
+-#include <bson/bson-private.h>
++#include "bson/bson-private.h"
+ #include <fcntl.h>
+ #include <time.h>
+ 
