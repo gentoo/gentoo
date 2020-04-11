@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,18 +18,19 @@ IUSE="jadetex"
 
 DEPEND=">=dev-lang/perl-5
 	app-text/docbook-dsssl-stylesheets
+	app-text/docbook-xml-dtd:4.2
 	app-text/openjade
+	app-text/xhtml1
 	dev-perl/SGMLSpm
-	~app-text/docbook-xml-simple-dtd-4.1.2.4
-	~app-text/docbook-xml-simple-dtd-1.0
-	app-text/docbook-xml-dtd
 	~app-text/docbook-sgml-dtd-3.0
 	~app-text/docbook-sgml-dtd-3.1
 	~app-text/docbook-sgml-dtd-4.0
 	~app-text/docbook-sgml-dtd-4.1
 	~app-text/docbook-sgml-dtd-4.2
 	~app-text/docbook-sgml-dtd-4.4
-	jadetex? ( dev-texlive/texlive-formatsextra )
+	~app-text/docbook-xml-simple-dtd-1.0
+	~app-text/docbook-xml-simple-dtd-4.1.2.4
+	jadetex? ( app-text/jadetex )
 	userland_GNU? ( sys-apps/which )
 	|| (
 		www-client/lynx
