@@ -5556,7 +5556,7 @@ dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binar
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.140.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
-dev-perl/AnyEvent-HTTP 2.230.0 2.240.0: Simple but non-blocking HTTP/HTTPS client
+dev-perl/AnyEvent-HTTP 2.240.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-HTTPD 0.930.0: A simple lightweight event based web (application) server
 dev-perl/AnyEvent-I3 0.170.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.270.0-r1: Perl Authentication and Authorization via cookies
@@ -5568,17 +5568,17 @@ dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
 dev-perl/Apache-Test 1.400.0-r2 1.420.0: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
-dev-perl/App-CLI 0.313.0-r1 0.500.0: Dispatcher module for command line interface programs
+dev-perl/App-CLI 0.500.0: Dispatcher module for command line interface programs
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
-dev-perl/App-Nopaste 1.11.0 1.12.0: Easy access to any pastebin
+dev-perl/App-Nopaste 1.12.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.704.400: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.820.0 0.840.0: Manage perl installations in your $HOME
+dev-perl/App-perlbrew 0.840.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0 1.150.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.500: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0: Generic archive extracting mechanism
 dev-perl/Archive-Tar-Stream 0.30.0: pure perl IO-friendly tar file management
-dev-perl/Archive-Tar-Wrapper 0.230.0 0.330.0: API wrapper around the 'tar' utility
+dev-perl/Archive-Tar-Wrapper 0.330.0: API wrapper around the 'tar' utility
 dev-perl/Archive-Zip 1.640.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.1: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
@@ -5590,18 +5590,18 @@ dev-perl/Audio-DSP 0.20.0-r2: Perl interface to *NIX digital audio device
 dev-perl/Audio-FLAC-Header 2.400.0-r1: Access to FLAC audio metadata
 dev-perl/Audio-Mixer 0.700.0-r2: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1: An OO interface to Musepack file information and APE tag fields
-dev-perl/Audio-Scan 1.0.0 1.10.0: Fast C metadata and tag reader for all common audio file formats
+dev-perl/Audio-Scan 1.10.0: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0: extension for reading WMA/ASF metadata
 dev-perl/Audio-Wav 0.140.0: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1: interface to read and modify Apache .htpasswd files
 dev-perl/Authen-Libwrap 0.230.0: A Perl access to the TCP Wrappers interface
 dev-perl/Authen-NTLM 1.90.0-r1: An NTLM authentication module
-dev-perl/Authen-PAM 0.160.0-r1 0.160.0-r2: Interface to PAM library
-dev-perl/Authen-Radius 0.260.0 0.270.0: Communicate with a Radius server from Perl
+dev-perl/Authen-PAM 0.160.0-r2: Interface to PAM library
+dev-perl/Authen-Radius 0.270.0: Communicate with a Radius server from Perl
 dev-perl/Authen-SASL 2.160.0-r1: A Perl SASL interface
 dev-perl/Authen-SASL-SASLprep 1.100.0: A Stringprep Profile for User Names and Passwords (RFC 4013)
-dev-perl/Authen-SCRAM 0.9.0 0.11.0: Salted Challenge Response Authentication Mechanism (RFC 5802)
+dev-perl/Authen-SCRAM 0.11.0: Salted Challenge Response Authentication Mechanism (RFC 5802)
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
@@ -7108,7 +7108,7 @@ dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.190.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1: Lets your class/object say it works like something else
-dev-perl/autobox 2.860.0 3.0.1: Call methods on native types
+dev-perl/autobox 3.0.1: Call methods on native types
 dev-perl/autovivification 0.180.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.5.0 0.6.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
@@ -12746,6 +12746,7 @@ media-libs/lcms 2.9: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.4 1.78.0 1.79.0-r1: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 1.3.0-r2 2.0.0_rc1 2.0.0_rc1-r1: library for managing 3D-Studio Release 3 and 4 .3DS files
+media-libs/lib3mf 1.8.1: Implementation of the 3D Manufacturing Format file standard
 media-libs/libXcm 0.5.4 9999: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
 media-libs/libaacs 0.9.0: Open implementation of the Advanced Access Content System (AACS) specification
@@ -15146,7 +15147,7 @@ net-print/cnijfilter2 5.20 5.40 5.50 5.70: IJ Printer Driver
 net-print/cnrdrvcups-lb 5.10: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.2.13 2.3.1 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.25.11 1.25.13 1.26.2 1.27.1 1.27.2 9999: Cups filters
+net-print/cups-filters 1.25.11 1.25.13 1.26.2 1.27.2 1.27.4 9999: Cups filters
 net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows

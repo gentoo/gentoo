@@ -2412,7 +2412,6 @@ dev-ml/uutf:utftrip - Builds and install the utftrip executable: Among other thi
 dev-ml/zarith:mpir - Use MPIR library instead of GMP.
 dev-perl/App-Nopaste:browser - Spawn browser with pasted page
 dev-perl/App-Nopaste:clipboard - copying of URLs with -x/--copy
-dev-perl/App-Nopaste:github - Github authentication
 dev-perl/App-Nopaste:gitlab - Ensure git is installed for reading/passing GitLab authentication
 dev-perl/App-Nopaste:pastebin - pastebin.com support
 dev-perl/Boulder:genbank - Provide support with Boulder::Genbank for decoding Genbank data records
