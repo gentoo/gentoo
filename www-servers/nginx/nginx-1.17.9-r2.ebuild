@@ -341,7 +341,7 @@ REQUIRED_USE="pcre-jit? ( pcre )
 		nginx_modules_http_rewrite
 	)
 	nginx_modules_http_naxsi? ( pcre )
-	nginx_modules_http_dav_ext? ( nginx_modules_http_dav )
+	nginx_modules_http_dav_ext? ( nginx_modules_http_dav nginx_modules_http_xslt )
 	nginx_modules_http_metrics? ( nginx_modules_http_stub_status )
 	nginx_modules_http_security? ( pcre )
 	nginx_modules_http_push_stream? ( ssl )"
