@@ -159,6 +159,8 @@ PATCHES=(
 	"${FILESDIR}/chromium-83-gcc-template.patch"
 	"${FILESDIR}/chromium-83-gcc-include.patch"
 	"${FILESDIR}/chromium-83-gcc-permissive.patch"
+	"${FILESDIR}/chromium-83-gcc-iterator.patch"
+	"${FILESDIR}/chromium-83-gcc-10.patch"
 )
 
 pre_build_checks() {
