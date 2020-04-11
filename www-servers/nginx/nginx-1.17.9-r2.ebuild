@@ -335,6 +335,7 @@ DEPEND="${CDEPEND}
 PDEPEND="vim-syntax? ( app-vim/nginx-syntax )"
 
 REQUIRED_USE="pcre-jit? ( pcre )
+	nginx_modules_http_fancyindex? ( nginx_modules_http_addition )
 	nginx_modules_http_grpc? ( http2 )
 	nginx_modules_http_lua? (
 		luajit
