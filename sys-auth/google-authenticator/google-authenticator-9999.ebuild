@@ -24,7 +24,7 @@ IUSE=""
 DEPEND="sys-libs/pam"
 RDEPEND="${DEPEND}"
 
-RESTRICT="test"
+PATCHES=( "${FILESDIR}/1.08-remove-failing-tests.patch" )
 
 src_prepare() {
 	default
