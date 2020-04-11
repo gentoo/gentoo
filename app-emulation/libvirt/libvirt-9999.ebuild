@@ -218,7 +218,7 @@ src_prepare() {
 	default
 
 	# Tweak the init script:
-	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
+	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
@@ -327,8 +327,8 @@ my_src_install() {
 
 	newinitd "${S}/libvirtd.init" libvirtd
 	newinitd "${FILESDIR}/libvirt-guests.init-r4" libvirt-guests
-	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd
-	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd
+	newinitd "${FILESDIR}/virtlockd.init-r2" virtlockd
+	newinitd "${FILESDIR}/virtlogd.init-r2" virtlogd
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests

@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="libvirt virtual machine lock manager"
+command="/usr/sbin/virtlockd"
+start_stop_daemon_args="-b"
+pidfile="/run/virtlockd.pid"
+
+extra_started_commands="reload"
+description_reload="re-exec the daemon, while maintaining locks and clients"
+
+
+depend() {
+    after ntp-client ntpd nfs nfsmount corosync
+}
+
+reload() {
+    ebegin "re-exec() virtlockd"
+
+    start-stop-daemon --signal SIGUSR1 \
+      --exec "${command}" --pidfile "${pidfile}"
+}
