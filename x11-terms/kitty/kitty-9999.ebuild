@@ -30,14 +30,15 @@ RDEPEND="
 	>=media-libs/harfbuzz-1.5.0:=
 	media-libs/libcanberra
 	media-libs/libpng:0=
+	sys-apps/dbus
+	sys-libs/zlib
 	x11-libs/libxcb[xkb]
 	x11-libs/libXcursor
 	x11-libs/libXi
 	x11-libs/libXinerama
 	x11-libs/libxkbcommon[X]
 	x11-libs/libXrandr
-	sys-apps/dbus
-	sys-libs/zlib
+	x11-terms/kitty-terminfo
 	wayland? (
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.17
@@ -51,10 +52,12 @@ DEPEND="${RDEPEND}
 
 BDEPEND="virtual/pkgconfig"
 
-[[ ${PV} == *9999 ]] && BDEPEND+=" >=dev-python/sphinx-1.7"
+[[ ${PV} == *9999 ]] && BDEPEND+="
+	$(python_gen_cond_dep '>=dev-python/sphinx-1.7[${PYTHON_MULTI_USEDEP}]')"
 
 PATCHES=(
 	"${FILESDIR}"/kitty-0.17.2-flags.patch
+	"${FILESDIR}"/kitty-0.16.0-remove-terminfo.patch
 	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 )
 
