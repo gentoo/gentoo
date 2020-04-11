@@ -4,9 +4,6 @@
   <maintainer type="person">
     <email>klausman@gentoo.org</email>
   </maintainer>
-  <maintainer type="person">
-    <email>zx2c4@gentoo.org</email>
-  </maintainer>
   <use>
     <flag name="libevent">Use libevent for event handling</flag>
     <flag name="zlib">Support for compressing XMPP streams with mod_compression</flag>
