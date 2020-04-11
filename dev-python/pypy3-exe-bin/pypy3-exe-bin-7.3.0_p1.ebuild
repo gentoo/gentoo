@@ -24,7 +24,7 @@ SLOT="${PV%_p*}"
 KEYWORDS="amd64 x86"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0/1
-	virtual/libffi:0/7
+	dev-libs/libffi:0/7
 	virtual/libintl:0/0
 	dev-libs/expat:0/0
 	app-arch/bzip2:0/1
