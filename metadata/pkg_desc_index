@@ -26,6 +26,7 @@ acct-group/dhcpcd 0: System group: dhcpcd
 acct-group/dialout 0: System group: dialout
 acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
+acct-group/dnsdist 0: A group for net-dns/dnsdist
 acct-group/dnsmasq_exporter 0: System group: dnsmasq_exporter
 acct-group/docker 0: System group: docker
 acct-group/dovecot 0: System group: dovecot
@@ -200,6 +201,7 @@ acct-user/deluge 0: user for deluge
 acct-user/dhcp 0: user for dhcp daemon
 acct-user/dhcpcd 0: user for dhcpcd client
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
+acct-user/dnsdist 0: A user for net-dns/dnsdist
 acct-user/dnsmasq_exporter 0: user for dnsmasq_exporter
 acct-user/dovecot 0: user for dovecot daemon
 acct-user/dovenull 0: user for dovecot daemon
