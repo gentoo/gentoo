@@ -12,7 +12,7 @@ SRC_URI="https://curl.haxx.se/download/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="adns alt-svc brotli http2 idn ipv6 kerberos ldap metalink +progress-meter rtmp samba ssh ssl static-libs test threads"
+IUSE="adns alt-svc brotli http2 idn +imap ipv6 kerberos ldap metalink +pop3 +progress-meter rtmp samba +smtp ssh ssl static-libs test threads"
 IUSE+=" curl_ssl_gnutls curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_winssl"
 IUSE+=" nghttp3 quiche"
 IUSE+=" elibc_Winnt"
@@ -167,16 +167,16 @@ multilib_src_configure() {
 		--enable-ftp \
 		--enable-gopher \
 		--enable-http \
-		--enable-imap \
+		$(use_enable imap) \
 		$(use_enable ldap) \
 		$(use_enable ldap ldaps) \
 		--disable-ntlm-wb \
-		--enable-pop3 \
+		$(use_enable pop3) \
 		--enable-rt  \
 		--enable-rtsp \
 		$(use_enable samba smb) \
 		$(use_with ssh libssh2) \
-		--enable-smtp \
+		$(use_enable smtp) \
 		--enable-telnet \
 		--enable-tftp \
 		--enable-tls-srp \
