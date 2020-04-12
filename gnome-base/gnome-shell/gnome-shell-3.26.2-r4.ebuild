@@ -16,7 +16,7 @@ IUSE="+bluetooth +browser-extension elogind +ibus +networkmanager nsplugin syste
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 # libXfixes-5.0 needed for pointer barriers and #include <X11/extensions/Xfixes.h>
 # FIXME:

@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/test-unit/test-unit-rr"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rr-1.1.1 >=dev-ruby/test-unit-2.5.2"

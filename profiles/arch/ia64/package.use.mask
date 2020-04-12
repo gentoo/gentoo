@@ -1,6 +1,24 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
+# ruby-2.7 dropped ia64 support, mask dependencies requiring ruby.
+# These pull in:
+# - direct ruby dependency:
+app-admin/augeas test
+app-i18n/canna doc
+sys-block/thin-provisioning-tools test
+# - texlive japan modules: ruby runtime scripts
+app-text/texlive l10n_ja context
+# - net-libs/webkit-gtk: ruby build system
+app-editors/emacs xwidgets
+dev-util/geany-plugins markdown
+# - gnome-extra/sushi: depends on webkit-gtk
+gnome-base/nautilus previewer
+# - gnome-base/gnome-shell: depends on gnome-extra/evolution-data-server
+gnome-base/gnome-control-center flickr
+gnome-base/gvfs google
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-04-11)
 # git useflag requires dev-libs/libgit2
 dev-util/geany-plugins git

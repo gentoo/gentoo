@@ -17,7 +17,7 @@ HOMEPAGE="https://mustache.github.com/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86 ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 sparc x86 ~x64-macos ~x64-solaris"
 IUSE=""
 
 ruby_add_bdepend "doc? ( app-text/ronn )"

@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/prawnpdf/pdf-inspector"
 
 LICENSE="|| ( Ruby GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/pdf-reader-1.0:* <dev-ruby/pdf-reader-3:*"

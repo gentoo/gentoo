@@ -17,7 +17,7 @@ HOMEPAGE="https://fauna.github.com/fauna/allison/files/README.html"
 
 LICENSE="AFL-3.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~mips ppc ppc64 ~s390 ~sparc x86 ~x86-solaris"
 IUSE=""
 
 all_ruby_install() {

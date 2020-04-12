@@ -20,7 +20,7 @@ DESCRIPTION="A gem to provide swappable JSON backends"
 HOMEPAGE="https://github.com/intridea/multi_json"
 LICENSE="MIT"
 
-KEYWORDS="amd64 arm ~arm64 hppa ~ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE=""
 

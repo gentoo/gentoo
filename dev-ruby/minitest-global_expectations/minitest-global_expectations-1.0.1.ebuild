@@ -11,5 +11,5 @@ HOMEPAGE="https://github.com/jeremyevans/minitest-global_expectations"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
