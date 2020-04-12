@@ -498,11 +498,6 @@ net-irc/hexchat theme-manager
 # Avoid the usage of dead net-dialup/capi4k-utils
 app-emulation/crossover-bin capi
 
-# Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
-# Dependency has no stable keyword
-# and as for now we have only stable mate versions
-mate-base/mate bluetooth
-
 # Ulrich Müller <ulm@gentoo.org> (2016-10-15)
 # The --with-cairo option is considered as experimental by upstream
 # and causes problems with updating the X window, bug #592238

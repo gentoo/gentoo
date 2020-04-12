@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Adam Feldman <NP-Hardass@gentoo.org> (2020-04-12)
+# Dependency (net-wireless/blueman) has no stable keywords
+mate-base/mate bluetooth
+
 # David Seifert <soap@gentoo.org> (2020-03-31)
 # Numpy support in Boost.Python is brittle and shouldn't be enabled
 # on stable systems or force a stable upgrade.
