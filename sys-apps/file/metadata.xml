@@ -6,6 +6,6 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <upstream>
-	<bugs-to>http://bugs.gw.com/</bugs-to>
+	<bugs-to>https://bugs.astron.com/</bugs-to>
 </upstream>
 </pkgmetadata>
