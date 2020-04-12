@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ inherit eutils toolchain
 DESCRIPTION="64bit kernel compiler"
 
 # Works on mips and sparc; all other archs, refer to bug #228115
-KEYWORDS="hppa ~sparc"
+KEYWORDS="hppa"
 
 RDEPEND=">=dev-libs/gmp-4.2.1
 	>=dev-libs/mpfr-2.3.2
@@ -31,10 +31,6 @@ RDEPEND=">=dev-libs/gmp-4.2.1
 # ports in binutils yet
 DEPEND="${RDEPEND}
 	hppa? ( sys-devel/binutils-hppa64 )
-	!sys-devel/gcc-hppa64
-	!sys-devel/gcc-mips64
-	!sys-devel/gcc-powerpc64
-	!sys-devel/gcc-sparc64
 	>=sys-apps/texinfo-4.8
 	>=sys-devel/bison-1.875"
 
