@@ -4,9 +4,15 @@
 # Unmask the flag which corresponds to ARCH.
 -ia64
 
-# # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-28)
-# ruby-2.7 dropped ia64 support.
-ruby_targets_ruby27
+# # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
+# ruby-2.7 dropped ia64 support, mask ruby in Gentoo.
+ruby
+# - gnome-extra/evolution-data-server: depends on net-libs/webkit-gtk
+eds
+# - net-libs/gnome-online-accounts: depend on net-libs/webkit-gtk
+gnome-online-accounts
+# - gnome-base/gnome-shell: depends on gnome-extra/evolution-data-server
+gnome-shell
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libindicate).

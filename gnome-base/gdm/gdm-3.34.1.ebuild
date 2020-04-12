@@ -25,7 +25,7 @@ IUSE="accessibility audit bluetooth-sound branding elogind fprint +introspection
 RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( elogind systemd )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 # NOTE: x11-base/xorg-server dep is for X_SERVER_PATH etc, bug #295686
 # nspr used by smartcard extension

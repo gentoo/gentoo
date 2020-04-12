@@ -20,7 +20,7 @@ HOMEPAGE="http://codeforpeople.com/lib/ruby/session/"
 # by author.
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 DEPEND+=" test? ( sys-apps/coreutils )"
