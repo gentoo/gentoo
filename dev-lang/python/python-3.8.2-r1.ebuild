@@ -67,6 +67,8 @@ src_prepare() {
 	local PATCHES=(
 		"${WORKDIR}/${PATCHSET}"
 		"${FILESDIR}/test.support.unlink-ignore-PermissionError.patch"
+		# add module importing numpy to blacklist
+		"${FILESDIR}/test-__all__-numpy.patch"
 	)
 
 	default
