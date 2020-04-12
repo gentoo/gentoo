@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-04-12)
+# Texlive-2020 mask. Work in progress.
+# Do NOT report any bugs untill fully unmasked.
+~dev-libs/kpathsea-6.3.2_p20200406
+
 # Matt Turner <mattst88@gentoo.org> (2020-04-12)
 # In conjunction with Firefox's sandbox, breaks loading of i965 driver.
 # Bug #716574
