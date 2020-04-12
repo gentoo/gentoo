@@ -23,6 +23,7 @@
   <flag name="gettext">Use <pkg>sys-devel/gettext</pkg></flag>
   <flag name="gpg">Use <pkg>app-crypt/gnupg</pkg></flag>
   <flag name="haskell">Use <pkg>dev-lang/ghc</pkg></flag>
+  <flag name="hdf5">Use <pkg>sci-libs/hdf5</pkg></flag>
   <flag name="hex">Use <pkg>app-editors/vim-core</pkg></flag>
   <flag name="iso">Use <pkg>virtual/cdrtools</pkg></flag>
   <flag name="llvm">Use <pkg>sys-devel/llvm</pkg></flag>

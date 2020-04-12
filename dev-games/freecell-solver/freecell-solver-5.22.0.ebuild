@@ -32,16 +32,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.html )
 
-PATCHES=(
-	"${FILESDIR}/${P}-cmake.patch"
-	"${FILESDIR}/${P}-pkgconfig.patch"
-)
+PATCHES=( "${FILESDIR}/${P}-docs.patch" )
 
 src_prepare() {
-	sed -i -e "s|share/doc/freecell-solver/|share/doc/${P}|" CMakeLists.txt || die
-
 	python_fix_shebang board_gen
-
 	cmake_src_prepare
 }
 
