@@ -3,9 +3,9 @@ DEPEND=dev-libs/expat net-libs/libtirpc:= sys-libs/zlib
 DESCRIPTION=Open Geographical Datastore Interface, a GIS support library
 EAPI=7
 HOMEPAGE=http://ogdi.sourceforge.net/ https://github.com/libogdi/ogdi
-KEYWORDS=~amd64 ~arm arm64 ~ia64 ppc ppc64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm arm64 ~ia64 ppc ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=dev-libs/expat net-libs/libtirpc:= sys-libs/zlib
 SLOT=0
 SRC_URI=https://github.com/libogdi/ogdi/releases/download/ogdi_4_1_0/ogdi-4.1.0.tar.gz
-_md5_=78b91293ec3a7d8fa99b55f7be63fd68
+_md5_=f367a421a57a5a53964e658be3171f27
