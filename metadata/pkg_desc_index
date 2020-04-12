@@ -3436,7 +3436,7 @@ dev-games/cardpics 0.4 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r1: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
-dev-games/freecell-solver 5.14.0-r1 5.20.1: C library for automatically solving Freecell and some other solitaire variants
+dev-games/freecell-solver 5.14.0-r1 5.22.0: C library for automatically solving Freecell and some other solitaire variants
 dev-games/goatee 0.3.0 0.3.1.1 0.3.1.2: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
@@ -10340,7 +10340,7 @@ dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 137 138 139: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 137 138 139 140: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -13774,7 +13774,7 @@ media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially suited for stop motion animation
-media-video/gaupol 1.5 1.6 1.7: A subtitle editor for text-based subtitles
+media-video/gaupol 1.6 1.7 1.8: A subtitle editor for text-based subtitles
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
 media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
 media-video/gpac 0.7.1-r1 9999: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
@@ -16712,7 +16712,7 @@ sys-apps/miller 5.3.0: A tool like sed, awk, cut, join, and sort for name-indexe
 sys-apps/minijail 9 12: helper binary and library for sandboxing & restricting privs of service
 sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
 sys-apps/miscfiles 1.5-r3: Miscellaneous files
-sys-apps/mlocate 0.26-r2: Merging locate is an utility to index and quickly search for files
+sys-apps/mlocate 0.26-r2 0.26-r3: Merging locate is an utility to index and quickly search for files
 sys-apps/mlxup-bin 4.13.0: Mellanox Update and Query Utility
 sys-apps/modutils 2.4.27-r2: Standard kernel module utilities for linux-2.4 and older
 sys-apps/moreutils 0.63: a collection of tools that nobody thought to write when Unix was young

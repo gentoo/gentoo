@@ -2873,6 +2873,7 @@ dev-util/diffoscope:find - Use sys-apps/findutils
 dev-util/diffoscope:gettext - Use sys-devel/gettext
 dev-util/diffoscope:gpg - Use app-crypt/gnupg
 dev-util/diffoscope:haskell - Use dev-lang/ghc
+dev-util/diffoscope:hdf5 - Use sci-libs/hdf5
 dev-util/diffoscope:hex - Use app-editors/vim-core
 dev-util/diffoscope:iso - Use virtual/cdrtools
 dev-util/diffoscope:llvm - Use sys-devel/llvm
