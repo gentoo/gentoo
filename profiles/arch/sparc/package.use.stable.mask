@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-10)
+# gnome-online-accounts not stable on sparc
+gnome-base/gvfs google
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-10)
 # net-libs/mbedtls has no stable keywords
 net-misc/curl curl_ssl_mbedtls
 dev-libs/libzip mbedtls
