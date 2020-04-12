@@ -4921,7 +4921,7 @@ dev-libs/grantlee 5.2.0: C++ string template engine based on the Django template
 dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
-dev-libs/hiredis 0.13.3 0.14.0 0.14.1: Minimalistic C client library for the Redis database
+dev-libs/hiredis 0.14.1: Minimalistic C client library for the Redis database
 dev-libs/hsa-ext-rocr 1.1.9.139 1.1.30100.0: Proprietary image-support library for Radeon Open Compute
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
@@ -7831,7 +7831,7 @@ dev-python/hcloud-python 1.6.3: Official Hetzner Cloud python library
 dev-python/helpdev 0.6.10: Helping users and developers to get information about the environment
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hglib 2.1: Library for using the Mercurial Command Server from Python
-dev-python/hiredis 0.2.0-r1 0.2.0-r3 1.0.1: Python extension that wraps hiredis
+dev-python/hiredis 1.0.1: Python extension that wraps hiredis
 dev-python/hpack 2.3.0-r1 3.0.0: Pure-Python HPACK header compression
 dev-python/html2text 2019.9.26 2020.1.16-r1: Turn HTML into equivalent Markdown-structured text
 dev-python/html5-parser 0.4.9: Fast C based HTML 5 parsing for python
@@ -9576,7 +9576,7 @@ dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality o
 dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.0.1-r1 1.6.0 1.7.0 1.7.1 1.8.0 1.8.1 1.8.2 1.8.2-r1: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
-dev-ruby/image_processing 1.9.3 1.10.0: High-level image processing helper methods with libvips and ImageMagick
+dev-ruby/image_processing 1.9.3 1.10.0 1.10.3: High-level image processing helper methods with libvips and ImageMagick
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inflecto 0.0.2: Inflector for ruby
 dev-ruby/inifile 3.0.0: Native Ruby package for reading and writing INI files
@@ -9691,7 +9691,7 @@ dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation 
 dev-ruby/nio4r 1.2.1-r1 2.4.0 2.5.2: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.10.4: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
-dev-ruby/nokogumbo 1.5.0 2.0.1: A Nokogiri interface to the Gumbo HTML5 parser
+dev-ruby/nokogumbo 1.5.0 2.0.1 2.0.2: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
@@ -12224,7 +12224,7 @@ media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed wi
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6-r1: Simplistic, technical sans serif - openSUSE font
-media-fonts/fira-code 1.207 2: Monospaced font with programming ligatures
+media-fonts/fira-code 1.207 2 3: Monospaced font with programming ligatures
 media-fonts/fira-mono 3.205: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105: Default typeface for FirefoxOS, designed for legibility
 media-fonts/font-adobe-100dpi 1.0.3-r1: X.Org Adobe bitmap fonts
