@@ -26,7 +26,7 @@ RDEPEND=">=sys-fs/fuse-common-3.3.0-r1"
 DOCS=( AUTHORS ChangeLog.rst README.md doc/README.NFS doc/kernel.txt )
 
 python_check_deps() {
-	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
