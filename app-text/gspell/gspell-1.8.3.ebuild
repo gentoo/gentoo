@@ -30,7 +30,13 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
+	test? ( app-text/enchant:2[hunspell]
+		|| (  app-dicts/myspell-en[l10n_en(+)] app-dicts/myspell-en[l10n_en-US(+)] ) )
 "
+# Tests require a en_US dictionary and fail with deprecated enchant aspell backend:
+# So enchant[hunspell] + myspell-en ensure they pass (hunspell is ordered before aspell),
+# however a different backend like hspell or nuspell + their en_US dict might be fine too,
+# but we don't support them at this time (2020-04-12) in enchant:2
 
 src_prepare() {
 	use vala && vala_src_prepare
