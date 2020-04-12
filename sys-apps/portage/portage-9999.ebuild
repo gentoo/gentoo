@@ -26,12 +26,7 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 		dev-python/sphinx
 		dev-python/sphinx-epytext
 	)"
-
 # Require sandbox-2.2 for bug #288863.
-# For xattr, we can spawn getfattr and setfattr from sys-apps/attr, but that's
-# quite slow, so it's not considered in the dependencies as an alternative to
-# to python-3.3 / pyxattr. Also, xattr support is only tested with Linux, so
-# for now, don't pull in xattr deps for other kernels.
 # For whirlpool hash, require python[ssl] (bug #425046).
 # For compgen, require bash[readline] (bug #445576).
 # app-portage/gemato goes without PYTHON_USEDEP since we're calling
