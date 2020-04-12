@@ -89,6 +89,9 @@ pkg_pretend() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply 03efd1125214
+	sed -e '50s|"EMERGE_FROM", "EPREFIX",|"EMERGE_FROM", "ENV_UNSET", "EPREFIX",|' -i lib/portage/package/ebuild/_config/special_env_vars.py || die
+
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
 	if use gentoo-dev; then
