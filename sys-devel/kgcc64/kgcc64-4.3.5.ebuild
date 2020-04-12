@@ -26,11 +26,7 @@ KEYWORDS="-hppa ~mips"
 
 # unlike every other target, hppa has not unified the 32/64 bit
 # ports in binutils yet
-DEPEND="hppa? ( sys-devel/binutils-hppa64 )
-	!sys-devel/gcc-hppa64
-	!sys-devel/gcc-mips64
-	!sys-devel/gcc-powerpc64
-	!sys-devel/gcc-sparc64"
+DEPEND="hppa? ( sys-devel/binutils-hppa64 )"
 
 pkg_postinst() {
 	toolchain_pkg_postinst
