@@ -15,17 +15,15 @@ LICENSE="LGPL-2.1"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE=""
 
-COMMON_DEPEND="
+RDEPEND="
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5[egl]
+	>=dev-qt/qtwayland-${QTMIN}:5
 	>=dev-libs/wayland-1.15.0
 	media-libs/mesa[egl]
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	>=dev-libs/wayland-protocols-1.15
-"
-RDEPEND="${COMMON_DEPEND}
-	>=dev-qt/qtwayland-${QTMIN}:5
 "
 
 # All failing, I guess we need a virtual wayland server
