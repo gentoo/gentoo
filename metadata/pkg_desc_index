@@ -27,6 +27,7 @@ acct-group/dialout 0: System group: dialout
 acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
 acct-group/dnsdist 0: A group for net-dns/dnsdist
+acct-group/dnsmasq 0: System group: dnsmasq
 acct-group/dnsmasq_exporter 0: System group: dnsmasq_exporter
 acct-group/docker 0: System group: docker
 acct-group/dovecot 0: System group: dovecot
@@ -203,6 +204,7 @@ acct-user/dhcp 0: user for dhcp daemon
 acct-user/dhcpcd 0: user for dhcpcd client
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/dnsdist 0: A user for net-dns/dnsdist
+acct-user/dnsmasq 0: User for net-dns/dnsmasq
 acct-user/dnsmasq_exporter 0: user for dnsmasq_exporter
 acct-user/dovecot 0: user for dovecot daemon
 acct-user/dovenull 0: user for dovecot daemon
@@ -4737,7 +4739,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.10.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r1 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.12.17 1.13.9 1.14.1 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.12.17 1.13.9 1.13.10 1.14.1 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
@@ -12145,7 +12147,7 @@ mail-filter/zdkimfilter 1.8: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92.3 4.93.0.4: A highly configurable, drop-in replacement for sendmail
-mail-mta/msmtp 1.8.7-r1: An SMTP client and SMTP plugin for mail user agents such as Mutt
+mail-mta/msmtp 1.8.7-r1 1.8.8: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.6.4_p1: Lightweight but featured SMTP daemon from OpenBSD
@@ -14218,7 +14220,7 @@ net-dns/dnscrypt-proxy 2.0.33 2.0.39 2.0.41 2.0.42 9999: A flexible DNS proxy, w
 net-dns/dnsdist 1.3.3-r1 1.4.0: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
 net-dns/dnsimple-dyndns 0.1: Dynamic DNS implementation, that relies on DNSimple.com
-net-dns/dnsmasq 2.80-r2: Small forwarding DNS server
+net-dns/dnsmasq 2.80-r2 2.81: Small forwarding DNS server
 net-dns/dnssec-check 2.2: Tests local resolver for support of DNSSEC validation
 net-dns/dnssec-root 20181220-r1: The DNSSEC root key(s)
 net-dns/dnssec-tools 2.2.3-r1: Tools to ease the deployment of DNSSEC related technologies
