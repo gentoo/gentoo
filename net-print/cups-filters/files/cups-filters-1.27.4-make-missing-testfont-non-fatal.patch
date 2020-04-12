@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -789,7 +789,7 @@ AC_ARG_WITH([test-font-path],
+ 	[with_test_font_path=`find /usr/share/fonts -name DejaVuSans.ttf || echo /usr/share/fonts/dejavu/DejaVuSans.ttf`]
+ )
+ AC_CHECK_FILE("$with_test_font_path", [], [
+-	AC_MSG_ERROR([Requested font file is missing. Please install a package providing it.])
++	AC_MSG_WARN([Specified font for tests not found. Expect test failures!])
+ ])
+ AC_DEFINE_UNQUOTED([TESTFONT], ["$with_test_font_path"], [Path to font used in tests])
+ 
