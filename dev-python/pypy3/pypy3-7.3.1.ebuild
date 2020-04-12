@@ -57,50 +57,27 @@ src_prepare() {
 	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
 
-	# tests are copied from cpython and apparently not adjusted to pypy3
-	# or marked XFAIL
+	# see http://buildbot.pypy.org/summary?branch=py3.6&builder=pypy-c-jit-linux-x86-64
 	sed -i -e 's:test_runeval_step:_&:' \
 		lib-python/3/test/test_bdb.py || die
-	sed -i -e 's:test_set_nomemory:_&:' \
-		-e '/class PyMemDebugTests/i@unittest.skip("Broken on pypy3")' \
-		lib-python/3/test/test_capi.py || die
 	sed -i -e 's:test_crashing_decode_handler:_&:' \
 		lib-python/3/test/test_codeccallbacks.py || die
-	sed -i -e 's:test_unicode:_&:' \
-		lib-python/3/test/test_dbm_gnu.py || die
 	sed -i -e 's:test_jumpy:_&:' \
 		lib-python/3/test/test_dis.py || die
-	sed -i -e 's:test_generator_doesnt_retain_old_exc:_&:' \
-		-e 's:test_generator_finalizing_and_exc_info:_&:' \
-		-e 's:test_generator_leaking:_&:' \
-		lib-python/3/test/test_exceptions.py || die
-	sed -i -e 's:test_locale:_&:' \
-		lib-python/3/test/test_format.py || die
 	sed -i -e 's:test_ast_line_numbers:_&:' \
 		-e 's:test_backslashes_in_string_part:_&:' \
 		lib-python/3/test/test_fstring.py || die
-	sed -i -e 's:test_decompressor_bug_28275:_&:' \
-		lib-python/3/test/test_lzma.py || die
 	sed -i -e 's:test_listdir_bytes_like:_&:' \
-		-e 's:test_putenv:_&:' \
 		lib-python/3/test/test_posix.py || die
 	sed -i -e 's:test_auto_history:_&:' \
 		-e 's:test_history_size:_&:' \
 		lib-python/3/test/test_readline.py || die
-	sed -i -e 's:CheckDMLDoesNotAutoCommitBefore:_&:' \
-		-e 's:CheckImmediateTransactionalDDL:_&:' \
-		-e 's:CheckTransactionalDDL:_&:' \
-		lib-python/3/sqlite3/test/transactions.py || die
 	sed -i -e 's:test_pha_optional:_&:' \
 		-e 's:test_pha_required:_&:' \
 		lib-python/3/test/test_ssl.py || die
 	sed -i -e 's:test_eval_bytes_invalid_escape:_&:' \
 		-e 's:test_eval_str_invalid_escape:_&:' \
 		lib-python/3/test/test_string_literals.py || die
-	# the first one's broken by sandbox, the second by our env
-	sed -i -e 's:test_empty_env:_&:' \
-		-e 's:test_executable:_&:' \
-		lib-python/3/test/test_subprocess.py || die
 	sed -i -e 's:test_jump_out_of_async_for_block:_&:' \
 		-e 's:test_jump_over_async_for_block_before_else:_&:' \
 		-e 's:test_no_jump_.*wards_into_async_for_block:_&:' \
@@ -109,6 +86,21 @@ src_prepare() {
 		lib-python/3/test/test_sys_settrace.py || die
 	sed -i -e 's:test_circular_imports:_&:' \
 		lib-python/3/test/test_threaded_import.py || die
+
+	# fixed in git
+	sed -i -e 's:test_SOCK_CLOEXEC:_&:' \
+		lib-python/3/test/test_socket.py || die
+
+	# the first one's broken by sandbox, the second by our env
+	sed -i -e 's:test_empty_env:_&:' \
+		-e 's:test_executable:_&:' \
+		lib-python/3/test/test_subprocess.py || die
+
+	# XXX
+	sed -i -e 's:test_locale:_&:' \
+		lib-python/3/test/test_format.py || die
+	sed -i -e 's:test_decompressor_bug_28275:_&:' \
+		lib-python/3/test/test_lzma.py || die
 
 	eapply_user
 }
