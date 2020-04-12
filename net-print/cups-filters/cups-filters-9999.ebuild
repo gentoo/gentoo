@@ -5,10 +5,10 @@ EAPI=7
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit perl-module systemd flag-o-matic
+inherit autotools perl-module systemd flag-o-matic
 
 if [[ "${PV}" == "9999" ]] ; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OpenPrinting/cups-filters.git"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
@@ -54,8 +54,18 @@ BDEPEND="
 "
 
 src_prepare() {
+	local need_eautoreconf=
+
 	default
-	[[ "${PV}" == "9999" ]] && eautoreconf
+
+	if ! use test ; then
+		eapply "${FILESDIR}"/${PN}-1.27.4-make-missing-testfont-non-fatal.patch
+		need_eautoreconf=yes
+	elif [[ "${PV}" == "9999" ]] ; then
+		need_eautoreconf=yes
+	fi
+
+	[[ -n ${need_eautoreconf} ]] && eautoreconf
 
 	# Bug #626800
 	append-cxxflags -std=c++11
