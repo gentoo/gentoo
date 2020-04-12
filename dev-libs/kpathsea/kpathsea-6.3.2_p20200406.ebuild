@@ -58,7 +58,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" web2cdir="${EPREFIX}/usr/share/texmf-dist/web2c" install
-	find "${D}" -name '*.la' -delete
+	find "${D}" -name '*.la' -delete || die
 
 	dodir /usr/share # just in case
 	cp -pR "${WORKDIR}"/texmf-dist "${ED}/usr/share/" || die "failed to install texmf trees"
@@ -86,8 +86,8 @@ src_install() {
 	# by texmf-update
 	rm -f "${ED}${TEXMF_PATH}/web2c/fmtutil.cnf"
 
-	dosym /etc/texmf/web2c/fmtutil.cnf ${TEXMF_PATH}/web2c/fmtutil.cnf
-	dosym /etc/texmf/web2c/texmf.cnf ${TEXMF_PATH}/web2c/texmf.cnf
+	dosym ../texmf/web2c/fmtutil.cnf ${TEXMF_PATH}/web2c/fmtutil.cnf
+	dosym ../texmf/web2c/texmf.cnf ${TEXMF_PATH}/web2c/texmf.cnf
 
 	newsbin "${S}/texmf-update" texmf-update
 
