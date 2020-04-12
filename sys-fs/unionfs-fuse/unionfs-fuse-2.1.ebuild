@@ -4,15 +4,15 @@
 EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit python-any-r1 git-r3
+inherit python-any-r1
 
 DESCRIPTION="Self-syncing tree-merging file system based on FUSE"
 HOMEPAGE="https://github.com/rpodgorny/unionfs-fuse"
-EGIT_REPO_URI="https://github.com/rpodgorny/unionfs-fuse.git"
+SRC_URI="https://github.com/rpodgorny/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
