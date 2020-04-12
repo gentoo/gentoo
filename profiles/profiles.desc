@@ -112,10 +112,10 @@ hppa            default/linux/hppa/17.0/developer               exp
 # IA64 Profiles
 # @MAINTAINER: ia64@gentoo.org
 ia64            default/linux/ia64/17.0                         stable
-ia64            default/linux/ia64/17.0/desktop                 stable
-ia64            default/linux/ia64/17.0/desktop/gnome           stable
-ia64            default/linux/ia64/17.0/desktop/gnome/systemd   stable
-ia64            default/linux/ia64/17.0/developer               stable
+ia64            default/linux/ia64/17.0/desktop                 exp
+ia64            default/linux/ia64/17.0/desktop/gnome           exp
+ia64            default/linux/ia64/17.0/desktop/gnome/systemd   exp
+ia64            default/linux/ia64/17.0/developer               exp
 
 # M68K Profiles
 # @MAINTAINER: m68k@gentoo.org
