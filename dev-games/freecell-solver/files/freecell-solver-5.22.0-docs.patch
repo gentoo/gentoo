@@ -1,0 +1,31 @@
+From 672147174c4c0198b04039db83fe3a0f9f6f181b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 12 Apr 2020 17:27:52 +0200
+Subject: [PATCH] Don't unconditionally install README.win32.txt
+
+---
+ fc-solve/source/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cefe77ad1..4e2ad4789 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -902,10 +902,13 @@ IF (UNIX AND FCS_BUILD_DOCS)
+     INSTALL_MAN ("${fc_solve_manpage}" 6)
+ ENDIF ()
+ 
++IF(WIN32)
++    SET (docs_to_install ${docs_to_install} README.win32.txt)
++ENDIF ()
++
+ INSTALL(
+     FILES
+         ${docs_to_install}
+-        "README.win32.txt"
+     DESTINATION
+         "${CMAKE_INSTALL_DOCDIR}"
+ )
+-- 
+2.26.0
+
