@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ inherit eutils toolchain
 
 DESCRIPTION="64bit kernel compiler"
 
-KEYWORDS="-* hppa ~mips ~s390 ~sparc"
+KEYWORDS="-* hppa ~mips ~s390"
 
 # unlike every other target, hppa has not unified the 32/64 bit
 # ports in binutils yet
