@@ -35,6 +35,12 @@ DEPEND="
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Revert-PR-93-iaeiaeiaeiae-Do-as-the-comment-says-and.patch
+	"${FILESDIR}"/${P}-td-is-for-ptrdiff_t-not-for-off_t.patch
+	"${FILESDIR}"/${P}-The-executable-bit-is-only-set-when-DF_1_PIE-bit-is-.patch
+)
+
 src_prepare() {
 	default
 
