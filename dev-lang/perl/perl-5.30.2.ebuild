@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.3.1
+CROSS_VER=1.3.2
 PATCH_BASE="perl-5.30.0-patches-${PATCH_VER}"
 PATCH_DEV=dilfridge
 
