@@ -55,19 +55,14 @@ src_prepare() {
 	# this test relies on pypy-c hardcoding correct build time paths
 	sed -i -e 's:test_executable_without_cwd:_&:' \
 		lib-python/2.7/test/test_subprocess.py || die
-	# this one seems to rely on cpython gc handling (?)
-	sed -i -e 's:test_number_of_objects:_&:' \
-		lib-python/2.7/test/test_multiprocessing.py || die
-	# hardcoded assumptions (?)
+	# broken upstream
+	# see http://buildbot.pypy.org/summary?branch=%3Ctrunk%3E
 	sed -i -e 's:test_alpn_protocols:_&:' \
 		-e 's:test_default_ecdh_curve:_&:' \
 		lib-python/2.7/test/test_ssl.py || die
 	# requires Internet
 	sed -i -e '/class NetworkedTests/i@unittest.skip("Requires networking")' \
 		lib-python/2.7/test/test_ssl.py || die
-	# TODO: investigate (sandbox?)
-	sed -i -e 's:test__copy_to_each:_&:' \
-		lib-python/2.7/test/test_pty.py || die
 
 	eapply_user
 }
