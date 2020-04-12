@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily locate database update
+
+[Timer]
+OnCalendar=daily
+AccuracySec=12h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
