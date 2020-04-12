@@ -1,0 +1,21 @@
+--- a/test/git/test_git.py 	2020-04-11 23:36:18.858361255 -0700
++++ b/test/git/test_git.py	2020-04-11 23:47:01.929316371 -0700
+@@ -8,7 +8,8 @@
+ import tempfile
+ 
+ 
+-from pkg_resources import parse_version, SetuptoolsLegacyVersion
++from pkg_resources import parse_version
++from packaging.version import LegacyVersion
+ 
+ sys.path.insert(0, "src")
+ import common
+@@ -590,7 +591,7 @@
+     def assertPEP440(self, got, state, tree, runtime):
+         where = "/".join([state, tree, runtime])
+         pv = parse_version(got)
+-        self.assertFalse(isinstance(pv, SetuptoolsLegacyVersion),
++        self.assertFalse(isinstance(pv, LegacyVersion),
+                          "%s: '%s' was not pep440-compatible"
+                          % (where, got))
+         self.assertEqual(str(pv), got,
