@@ -5653,7 +5653,7 @@ dev-perl/CGI-Fast 2.130.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r2: High Performance Templates and Variable Interpolation
 dev-perl/CGI-FormBuilder 3.100.0: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
-dev-perl/CGI-Session 4.480.0-r1 4.480.0-r2: persistent session data in CGI applications
+dev-perl/CGI-Session 4.480.0-r2: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.115.0: A Simple totally OO CGI interface that is CGI.pm compliant
 dev-perl/CHI 0.600.0: Unified cache handling interface
 dev-perl/CPAN-Changes 0.400.2: Read and write Changes files
@@ -5805,7 +5805,7 @@ dev-perl/Crypt-Rijndael 1.130.0 1.140.0: Crypt::CBC compliant Rijndael encryptio
 dev-perl/Crypt-SMIME 0.190.0 0.250.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r1 0.720.0-r2: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
-dev-perl/Crypt-SmbHash 0.120.0-r1 0.120.0-r2: LM/NT hashing, for Samba's smbpasswd entries
+dev-perl/Crypt-SmbHash 0.120.0-r2: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
