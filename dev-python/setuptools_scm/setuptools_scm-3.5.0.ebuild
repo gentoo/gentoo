@@ -19,6 +19,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
+	!!<dev-python/setuptools_scm-2
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/toml[${PYTHON_USEDEP}]
