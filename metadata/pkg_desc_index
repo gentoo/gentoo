@@ -12181,7 +12181,7 @@ mate-extra/mate-power-manager 1.22.1 1.22.2 1.24.1: A session daemon for MATE th
 mate-extra/mate-screensaver 1.22.1 1.22.2 1.24.0: Replaces xscreensaver, integrating with the MATE desktop
 mate-extra/mate-sensors-applet 1.22.1 1.24.0: MATE panel applet to display readings from hardware sensors
 mate-extra/mate-system-monitor 1.22.0 1.22.1 1.22.2 1.24.0: The MATE System Monitor
-mate-extra/mate-user-guide 1.22.0 1.22.2 1.22.3 1.24.0: User documentation for MATE Desktop
+mate-extra/mate-user-guide 1.22.0 1.22.2 1.22.3-r1 1.24.0-r1: User documentation for MATE Desktop
 mate-extra/mate-user-share 1.22.0 1.22.1 1.24.0: Personal file sharing for the MATE desktop
 mate-extra/mate-utils 1.22.0 1.22.1-r1 1.22.2-r1 1.24.0: Utilities for the MATE desktop
 media-fonts/Humor-Sans 1.0-r1: A sanserif typeface in the style of xkcd
@@ -14785,7 +14785,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.6 8.1.7 9.0.0 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.6 8.1.7 9.0.0 9.0.1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
