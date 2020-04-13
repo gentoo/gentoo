@@ -6266,6 +6266,7 @@ net-misc/asterisk:samples - Install sample sound and configuration files (defaul
 net-misc/asterisk:span - Enable support for the spandsp codec
 net-misc/asterisk:srtp - Enable support for encrypted voice transmission (secure RTP)
 net-misc/asterisk:statsd - Enable statsd integration
+net-misc/asterisk:unbound - Enable improved DNS core (SRV, NAPTR) by use of libunbound
 net-misc/asterisk-core-sounds:alaw - Install the sounds files for the alaw codec.
 net-misc/asterisk-core-sounds:g722 - Install the sounds files for the g722 codec.
 net-misc/asterisk-core-sounds:g729 - Install the sounds files for the g729 codec.
