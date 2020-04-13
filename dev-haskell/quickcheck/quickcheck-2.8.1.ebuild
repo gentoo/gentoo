@@ -18,7 +18,7 @@ SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2/${PV}"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="+template-haskell"
 
 RDEPEND="dev-haskell/random:=[profile?]

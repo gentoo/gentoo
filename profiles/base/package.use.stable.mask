@@ -4,6 +4,15 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
+# app-text/pandoc (dev-lang/ghc) has no stable keywords.
+app-emulation/xen-tools doc
+dev-python/notebook doc
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
+# dev-util/shellcheck (dev-lang/ghc) has no stable keywords.
+app-emulation/winetricks test
+
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-04-12)
 # Dependency (net-wireless/blueman) has no stable keywords
 mate-base/mate bluetooth

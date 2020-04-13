@@ -14,7 +14,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+bytestring +containers +deepseq +hashable +text +unordered-containers"
 
 RDEPEND=">=dev-haskell/nats-0.1:=[profile?] <dev-haskell/nats-2:=[profile?]
