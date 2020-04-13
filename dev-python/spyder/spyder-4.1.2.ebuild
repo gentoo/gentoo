@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit eutils xdg distutils-r1 virtualx
 
 # Commit of documentation to fetch
-DOCS_PV="7c0b590"
+DOCS_PV="1022fd8"
 
 DESCRIPTION="The Scientific Python Development Environment"
 HOMEPAGE="
@@ -33,7 +33,7 @@ RDEPEND="
 	dev-python/keyring[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-4.0[${PYTHON_USEDEP}]
 	>=dev-python/numpydoc-0.6.0[${PYTHON_USEDEP}]
-	>=dev-python/parso-0.5.2[${PYTHON_USEDEP}]
+	~dev-python/parso-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pickleshare-0.4[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.3[${PYTHON_USEDEP}]
@@ -82,11 +82,6 @@ python_prepare_all() {
 	# move docs into workdir
 	mv ../spyder-docs-${DOCS_PV}* docs || die
 
-	# allow newer parso: https://bugs.gentoo.org/715148
-	sed -i -e 's/parso =0.5.2/parso >=0.5.2/g' requirements/conda.txt || die
-	sed -i -e 's/parso==0.5.2/parso>=0.5.2/g' setup.py || die
-	sed -i -e 's/=0.5.2/>=0.5.2/g' spyder/dependencies.py || die
-
 	# some tests still depend on QtPy[webkit] which is going to be removed
 	# spyder itself works fine without webkit
 	rm spyder/widgets/tests/test_browser.py || die
@@ -112,10 +107,6 @@ python_prepare_all() {
 	# RuntimeError: Unsafe load() call disabled by Gentoo. See bug #659348
 	sed -i -e 's:test_dependencies_for_binder_in_sync:_&:' \
 		spyder/tests/test_dependencies_in_sync.py || die
-
-	# Fatal Python error: Segmentation fault
-	sed -i -e 's:test_copy_path:_&:' \
-		spyder/plugins/explorer/widgets/tests/test_explorer.py || die
 
 	# No idea why this fails, no error just stops and dumps core
 	sed -i -e 's:test_arrayeditor_edit_complex_array:_&:' \
