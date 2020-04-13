@@ -9,4 +9,10 @@
     <remote-id type="pypi">socketpool</remote-id>
     <remote-id type="github">benoitc/socketpool</remote-id>
   </upstream>
+  <use>
+    <flag name="gevent">
+      Install <pkg>dev-python/gevent</pkg> as needed for the gevent
+      backend.
+    </flag>
+  </use>
 </pkgmetadata>
