@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,7 @@ RDEPEND="${DEPEND}
 "
 
 S="${WORKDIR}/yubikey-personalization-${PV}"
+PATCHES=( "${FILESDIR}"/${PN}-1.20.0-fix-gcc10-fno-common.patch )
 
 DOCS=( doc/. AUTHORS NEWS README )
 
