@@ -28,7 +28,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi homed http idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi homed http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb"
 
 REQUIRED_USE="
 	homed? ( cryptsetup )
@@ -119,7 +119,7 @@ RDEPEND="${COMMON_DEPEND}
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
 PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
-	>=sys-apps/hwids-20150417[udev]
+	hwdb? ( >=sys-apps/hwids-20150417[udev] )
 	>=sys-fs/udev-init-scripts-25
 	policykit? ( sys-auth/polkit )
 	!vanilla? ( sys-apps/gentoo-systemd-integration )"
@@ -274,6 +274,7 @@ multilib_src_configure() {
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		-Dhomed=$(meson_multilib_native_use homed)
+		-Dhwdb=$(meson_multilib_native_use hwdb)
 		-Dmicrohttpd=$(meson_multilib_native_use http)
 		-Didn=$(meson_multilib_native_use idn)
 		-Dimportd=$(meson_multilib_native_use importd)
@@ -307,7 +308,6 @@ multilib_src_configure() {
 		-Dfirstboot=$(meson_multilib)
 		-Dhibernate=$(meson_multilib)
 		-Dhostnamed=$(meson_multilib)
-		-Dhwdb=$(meson_multilib)
 		-Dldconfig=$(meson_multilib)
 		-Dlocaled=$(meson_multilib)
 		-Dman=$(meson_multilib)
@@ -369,7 +369,12 @@ multilib_src_install_all() {
 	keepdir /etc/{binfmt.d,modules-load.d,tmpfiles.d}
 	keepdir /etc/kernel/install.d
 	keepdir /etc/systemd/{network,system,user}
-	keepdir /etc/udev/{hwdb.d,rules.d}
+	keepdir /etc/udev/rules.d
+
+	if use hwdb; then
+		keepdir /etc/udev/hwdb.d
+	fi
+
 	keepdir "${rootprefix}"/lib/systemd/{system-sleep,system-shutdown}
 	keepdir /usr/lib/{binfmt.d,modules-load.d}
 	keepdir /usr/lib/systemd/user-generators
@@ -379,7 +384,9 @@ multilib_src_install_all() {
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
-	rm -r "${ED}${rootprefix}"/lib/udev/hwdb.d || die
+	if use hwdb; then
+		rm -r "${ED}${rootprefix}"/lib/udev/hwdb.d || die
+	fi
 
 	if use split-usr; then
 		# Avoid breaking boot/reboot
