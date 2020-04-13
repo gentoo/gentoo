@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Hans de Graaff <graaff@gentoo.org> (2020-06-13)
+# Mask Ruby 2.4 as EOL
+ruby_targets_ruby24
+
 # Ben Kohler <bkohler@gentoo.org> (2020-05-15)
 # Mask 9.4 target to match <9.5 package.mask entry
 postgres_targets_postgres9_4
