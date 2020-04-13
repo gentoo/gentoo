@@ -17322,7 +17322,7 @@ sys-fs/zfs-kmod 0.7.13 0.8.3 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
 sys-kernel/bliss-initramfs 8.0.0: Boot your system's rootfs from OpenZFS/LUKS
 sys-kernel/bliss-kernel-bin 4.14.170 5.4.15 5.5.2: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
-sys-kernel/ck-sources 5.4.24 5.4.28: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
+sys-kernel/ck-sources 5.4.28 5.4.31: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
@@ -17330,7 +17330,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.5 4.0.7-r1 9999: Gentoo automatic kernel buildi
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.112 4.19.113 5.4.27 5.4.29 5.4.31 5.5.11 5.5.14 5.5.16: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.112 5.4.27 5.4.29 5.4.31 5.5.11 5.5.14 5.5.16: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.215 4.4.216 4.4.217 4.4.218 4.9.215 4.9.216 4.9.217 4.9.218 4.14.172 4.14.173 4.14.174 4.14.175 4.19.111 4.19.112 4.19.113 4.19.114 5.4.26 5.4.27 5.4.28 5.4.29 5.4.30 5.4.31 5.5.10 5.5.11 5.5.13 5.5.14 5.5.15 5.5.16 5.6.0 5.6.1 5.6.2 5.6.3: Full sources including the Gentoo patchset for the 5.6 kernel tree
+sys-kernel/gentoo-sources 4.4.215 4.4.216 4.4.217 4.4.218 4.4.219 4.9.215 4.9.216 4.9.217 4.9.218 4.14.172 4.14.173 4.14.174 4.14.175 4.19.111 4.19.112 4.19.113 4.19.114 5.4.26 5.4.27 5.4.28 5.4.29 5.4.30 5.4.31 5.5.10 5.5.11 5.5.13 5.5.14 5.5.15 5.5.16 5.6.0 5.6.1 5.6.2 5.6.3: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.7_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
