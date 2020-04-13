@@ -8192,7 +8192,7 @@ dev-python/peewee 3.1.0: Small python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
-dev-python/pexpect 4.6.0: Python module for spawning child apps and responding to expected patterns
+dev-python/pexpect 4.6.0 4.8.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
 dev-python/phonenumbers 8.10.22 8.12.0: Python port of Google's libphonenumber
