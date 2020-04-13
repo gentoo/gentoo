@@ -11,12 +11,17 @@ DESCRIPTION="A simple Python socket pool"
 HOMEPAGE="https://github.com/benoitc/socketpool/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 s390 ~sparc x86"
-IUSE="examples gevent"
+KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="eventlet examples gevent"
 LICENSE="|| ( MIT public-domain )"
 SLOT="0"
 
 RDEPEND="
+	eventlet? (
+		$(python_gen_cond_dep '
+			dev-python/eventlet[${PYTHON_USEDEP}]
+		' 'python3*')
+	)
 	gevent? (
 		$(python_gen_cond_dep '
 			dev-python/gevent[${PYTHON_USEDEP}]
@@ -25,6 +30,9 @@ RDEPEND="
 
 BDEPEND="
 	test? (
+		$(python_gen_cond_dep '
+			dev-python/eventlet[${PYTHON_USEDEP}]
+		' 'python3*')
 		!ia64? (
 			$(python_gen_cond_dep '
 				dev-python/gevent[${PYTHON_USEDEP}]
