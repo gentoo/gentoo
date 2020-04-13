@@ -161,6 +161,8 @@ dev-ruby/web-console:0
 # likely be moved to an overlay.
 dev-ruby/metasploit-concern
 dev-ruby/metasploit-credential
+dev-ruby/metasploit-payloads
+dev-ruby/metasploit_payloads-mettle
 dev-ruby/metasploit-model
 dev-ruby/metasploit_data_models
 net-analyzer/metasploit
