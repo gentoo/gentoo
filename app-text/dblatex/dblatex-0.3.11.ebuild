@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/project/dblatex/dblatex/${P}/${P}py3.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="inkscape"
 
 RDEPEND="
