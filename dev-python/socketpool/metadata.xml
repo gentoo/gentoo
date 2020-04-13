@@ -10,6 +10,10 @@
     <remote-id type="github">benoitc/socketpool</remote-id>
   </upstream>
   <use>
+    <flag name="eventlet">
+      Install <pkg>dev-python/eventlet</pkg> as needed for the eventlet
+      backend.
+    </flag>
     <flag name="gevent">
       Install <pkg>dev-python/gevent</pkg> as needed for the gevent
       backend.
