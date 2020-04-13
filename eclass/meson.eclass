@@ -23,9 +23,9 @@
 #
 # src_configure() {
 # 	local emesonargs=(
-# 		-Dqt4=$(usex qt4 true false)
-# 		-Dthreads=$(usex threads true false)
-# 		-Dtiff=$(usex tiff true false)
+# 		$(meson_use qt4)
+# 		$(meson_feature threads)
+# 		$(meson_use bindist official_branding)
 # 	)
 # 	meson_src_configure
 # }
