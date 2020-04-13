@@ -7,7 +7,7 @@ inherit libtool
 
 DESCRIPTION="Library for Japanese pTeX providing a better way of handling character encodings"
 HOMEPAGE="http://tutimura.ath.cx/ptexlive/?ptexenc"
-SRC_URI="mirror://gentoo/texlive-${PV#*_p}-source.tar.xz"
+SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
 # http://tutimura.ath.cx/~nob/tex/ptexlive/ptexenc/${P}.tar.xz
 
 LICENSE="BSD"
