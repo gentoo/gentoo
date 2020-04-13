@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-04-13)
+# Discontinued by upstream. Superseded by sys-apps/fwupd.
+# Masked for removal in 30 days.
+sys-apps/fwupdate
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-04-12)
 # Texlive-2020 mask. Work in progress.
 # Do NOT report any bugs untill fully unmasked.
