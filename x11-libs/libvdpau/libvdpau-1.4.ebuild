@@ -7,7 +7,7 @@ inherit flag-o-matic meson virtualx multilib-minimal
 
 DESCRIPTION="VDPAU wrapper and trace libraries"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/VDPAU"
-SRC_URI="https://gitlab.freedesktop.org/vdpau/${PN}/-/archive/${P}/${PN}-${P}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/vdpau/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,7 +28,6 @@ DEPEND="
 		)
 	dri? ( x11-base/xorg-proto )
 "
-S=${WORKDIR}/${PN}-${P}
 
 src_prepare() {
 	sed -i -e "/^docdir/s|${PN}|${PF}|g" doc/meson.build || die
