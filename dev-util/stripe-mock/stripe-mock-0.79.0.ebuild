@@ -10,7 +10,7 @@ inherit golang-build golang-vcs-snapshot
 DESCRIPTION="Mock HTTP server that responds like the real Stripe API"
 HOMEPAGE="https://github.com/stripe/stripe-mock"
 SRC_URI="https://github.com/stripe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 LICENSE="MIT ISC BSD-2"
 SLOT="0"
