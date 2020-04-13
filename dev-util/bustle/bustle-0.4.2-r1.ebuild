@@ -14,7 +14,7 @@ SRC_URI="http://willthompson.co.uk/${PN}/releases/${PV}/${P}.tar.gz https://dev.
 
 LICENSE="LGPL-2 GPL-2" # bustle-dbus-monitor.c is GPL-2, rest is LGPL-2
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="dev-libs/glib:2

@@ -17,7 +17,7 @@ SRC_URI="
 	http://downloads.ganeti.org/releases/${SERIES}/${MY_P}.tar.gz
 	mirror://debian/pool/main/g/ganeti-${SERIES}/ganeti-${SERIES}_${PV}-${DEBIAN_PATCH}.debian.tar.xz
 "
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 PATCHES=(
 	"${FILESDIR}"/ganeti-2.15-use-balloon-device.patch
 	"${WORKDIR}"/debian/patches/do-not-backup-export-dir.patch
