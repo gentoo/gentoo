@@ -17,7 +17,7 @@ SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~ia64 ppc ppc64 x86 ~amd64-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~ppc-macos ~x86-macos"
 # hackport-args: --always-disabled='mtl1 network23 old-base warn-as-error'
 IUSE=""
 
