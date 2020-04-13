@@ -1,0 +1,62 @@
+From f14a3b2b73c6c95edbea8de799cf1df07decdf0e Mon Sep 17 00:00:00 2001
+From: Stephen Finucane <sfinucan@redhat.com>
+Date: Thu, 4 Oct 2018 10:27:33 +0100
+Subject: [PATCH] Support wheel 0.32.0+
+
+Wheel 0.32.0 removed the 'wheel install' command [1] and, subsequently,
+the 'wheel.install' module [2]. It also made 'WheelFile' a subclass of
+'zipfile.ZipFile' rather than a wrapper [2] and deprecated the '[wheel]'
+section of 'setup.cfg' in favour of '[bdist_wheel]'. Handle these
+changes.
+
+[1] https://github.com/pypa/wheel/commit/353217fb4
+[2] https://github.com/pypa/wheel/commit/89492505b
+
+Change-Id: I2903089a07bdd2dc96437b9f65f2d2bba2741707
+---
+ pbr/tests/test_packaging.py | 8 ++++----
+ setup.cfg                   | 2 +-
+ test-requirements.txt       | 1 +
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/pbr/tests/test_packaging.py b/pbr/tests/test_packaging.py
+index 9bd91ae0..bbbd5847 100644
+--- a/pbr/tests/test_packaging.py
++++ b/pbr/tests/test_packaging.py
+@@ -54,7 +54,7 @@
+ import testtools
+ from testtools import matchers
+ import virtualenv
+-import wheel.install
++from wheel import wheelfile
+ 
+ from pbr import git
+ from pbr import packaging
+@@ -370,13 +370,13 @@ def setUp(self):
+         relative_wheel_filename = os.listdir(dist_dir)[0]
+         absolute_wheel_filename = os.path.join(
+             dist_dir, relative_wheel_filename)
+-        wheel_file = wheel.install.WheelFile(absolute_wheel_filename)
++        wheel_file = wheelfile.WheelFile(absolute_wheel_filename)
+         wheel_name = wheel_file.parsed_filename.group('namever')
+         # Create a directory path to unpack the wheel to
+         self.extracted_wheel_dir = os.path.join(dist_dir, wheel_name)
+         # Extract the wheel contents to the directory we just created
+-        wheel_file.zipfile.extractall(self.extracted_wheel_dir)
+-        wheel_file.zipfile.close()
++        wheel_file.extractall(self.extracted_wheel_dir)
++        wheel_file.close()
+ 
+     def test_data_directory_has_wsgi_scripts(self):
+         # Build the path to the scripts directory
+diff --git a/setup.cfg b/setup.cfg
+index bd65299e..6fa3c423 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -51,5 +51,5 @@ build-dir = doc/build
+ source-dir = doc/source
+ warning-is-error = 1
+ 
+-[wheel]
++[bdist_wheel]
+ universal = 1

@@ -46,6 +46,8 @@ DEPEND="
 	)"
 PDEPEND=""
 
+PATCHES=( "${FILESDIR}"/pbr-4.2.0-wheel.patch )
+
 # This normally actually belongs here.
 python_prepare_all() {
 	# This test passes when run within the source and doesn't represent a failure, but rather
