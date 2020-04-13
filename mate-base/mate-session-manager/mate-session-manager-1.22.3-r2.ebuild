@@ -73,15 +73,12 @@ src_configure() {
 src_install() {
 	mate_src_install
 
-	dodir /etc/X11/Sessions/
 	exeinto /etc/X11/Sessions/
 	doexe "${FILESDIR}"/MATE
 
-	dodir /usr/share/mate/applications/
 	insinto /usr/share/mate/applications/
 	doins "${FILESDIR}"/defaults.list
 
-	dodir /etc/X11/xinit/xinitrc.d/
 	exeinto /etc/X11/xinit/xinitrc.d/
 	newexe "${FILESDIR}"/15-xdg-data-mate-r2 15-xdg-data-mate
 
