@@ -2592,6 +2592,8 @@ dev-python/restkit:cli - Install the restcli command line interface/tool, based 
 dev-python/rfc3986:idna - enable support for the IDNA specification (RFC 5891)
 dev-python/simplespectral:faster - Use sci-libs/scipy to speed up drawing
 dev-python/simplespectral:fastest - Use dev-python/pyFFTW to speed up drawing to the max
+dev-python/socketpool:eventlet - Install dev-python/eventlet as needed for the eventlet backend.
+dev-python/socketpool:gevent - Install dev-python/gevent as needed for the gevent backend.
 dev-python/sphinx:net - enable internet capabilities
 dev-python/sympy:imaging - Add support for dev-python/pillow
 dev-python/sympy:ipython - Add support for dev-python/ipython
