@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">tonsky/FiraCode</remote-id>
 	</upstream>
+	<use>
+		<flag name="ttf">Install TTF files instead of OTF.</flag>
+	</use>
 </pkgmetadata>

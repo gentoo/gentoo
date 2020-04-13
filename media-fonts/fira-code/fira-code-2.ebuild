@@ -13,15 +13,23 @@ https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip"
 LICENSE="OFL-1.1"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 x86"
-IUSE=""
+IUSE="ttf"
 
 S="${WORKDIR}/FiraCode-${PV}"
-FONT_S="${S}/distr/otf"
-FONT_SUFFIX="otf"
 
 DOCS="README.md"
 
 DEPEND="app-arch/unzip"
+
+pkg_setup() {
+	if ! use ttf; then
+		export FONT_S="${S}/distr/otf"
+		export FONT_SUFFIX="otf"
+	else
+		export FONT_S="${S}/distr/ttf"
+		export FONT_SUFFIX="ttf"
+	fi
+}
 
 src_prepare() {
 	default
