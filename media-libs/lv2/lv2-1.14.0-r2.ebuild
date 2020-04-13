@@ -14,7 +14,7 @@ SRC_URI="http://lv2plug.in/spec/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE="doc plugins"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
