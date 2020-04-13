@@ -126,9 +126,9 @@ src_install() {
 
 	if use python ; then
 		python_foreach_impl python_make install
+		python_foreach_impl python_optimize
 	fi
 
-	python_foreach_impl python_optimize
 	find "${ED}" -type f -name "*.la" -delete || die
 }
 
