@@ -147,6 +147,9 @@ src_test()
 	cd src
 	PATH="${GOBIN}:${PATH}" \
 	./run.bash -no-rebuild || die "tests failed"
+	cd ..
+	rm -fr pkg/*_race || die
+	rm -fr pkg/obj/go-build || die
 }
 
 src_install()
