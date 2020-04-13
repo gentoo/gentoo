@@ -20,6 +20,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 # the check is automagic in gio/meson.build. gresource is not a multilib tool
 # right now, thus it doesn't matter if non-native ABI libelf exists or not
 # (non-native binary is overwritten, it doesn't matter if libelf was linked to).
+# * elfutils (via libelf) does not build on Windows. gresources are not embedded
+# within ELF binaries on that platform anyway and inspecting ELF binaries from
+# other platforms is not that useful so exclude the dependency in this case.
 # * Technically static-libs is needed on zlib, util-linux and perhaps more, but
 # these are used by GIO, which glib[static-libs] consumers don't really seem
 # to need at all, thus not imposing the deps for now and once some consumers
@@ -36,7 +39,7 @@ RDEPEND="
 	kernel_linux? ( >=sys-apps/util-linux-2.23[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r5[${MULTILIB_USEDEP}] )
 	xattr? ( !elibc_glibc? ( >=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}] ) )
-	virtual/libelf:0=
+	!kernel_Winnt? ( virtual/libelf:0= )
 	fam? ( >=virtual/fam-0-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
