@@ -24,7 +24,7 @@ SRC_URI="
 SLOT="0"
 LICENSE="Plex"
 RESTRICT="bindist strip"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
