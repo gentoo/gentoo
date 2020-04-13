@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Layer Four Traceroute (LFT) and WhoB"
 HOMEPAGE="http://pwhois.org/lft/"
@@ -22,6 +22,9 @@ S=${WORKDIR}/${P/0}
 DOCS=( CHANGELOG README TODO )
 
 src_prepare() {
+	sed -i -e 's:strip:true:g' Makefile.in || die
+	sed -i \
+		-e 's|_BSD_SOURCE|_DEFAULT_SOURCE|g' \
+		configure config/acconfig.h.in || die
 	default
-	sed -i Makefile.in -e 's:strip:true:g' || die
 }
