@@ -15,7 +15,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+bibutils debug embed-data-files test-citeproc unicode_collation"
 
 RESTRICT=test # execs a process dropping environment (with LD_PRELOAD)

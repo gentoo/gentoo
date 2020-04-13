@@ -15,7 +15,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa dbus inotify mpd mpris timezone wifi xft xpm"
 
 RDEPEND=">=dev-haskell/http-4000.2.4:=

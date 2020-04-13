@@ -15,7 +15,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cpu-flags-x86-rdrand cpu_flags_x86_aes cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 +integer-gmp"
 
 RDEPEND=">=dev-haskell/memory-0.8:=[profile?]

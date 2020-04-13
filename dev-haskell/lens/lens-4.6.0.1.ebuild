@@ -15,7 +15,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="benchmark-uniplate dump-splices +inlining j old-inline-pragmas safe +test-doctests +test-hlint +test-hunit +test-properties +trustworthy"
 RESTRICT="!test? ( test )"
 
