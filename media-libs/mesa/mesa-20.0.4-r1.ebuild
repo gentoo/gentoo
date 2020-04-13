@@ -246,6 +246,10 @@ x86? (
 	libglvnd? ( usr/lib/libGLX_mesa.so.0.0.0 )
 )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-Specify-the-maximum-required-libdrm-in-dri.pc.patch
+)
+
 llvm_check_deps() {
 	local flags=${MULTILIB_USEDEP}
 	if use video_cards_r600 || use video_cards_radeon || use video_cards_radeonsi
