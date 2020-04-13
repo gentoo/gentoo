@@ -1,0 +1,33 @@
+From 316b352e946a9993a20f28abc741d34455a957a8 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 13 Apr 2020 09:20:18 -0700
+Subject: [PATCH] meson: Specify the maximum required libdrm in dri.pc
+
+When dealing with a regression in libdrm-2.4.101, I masked the package
+in Gentoo. In doing so, we discovered that Mesa's dri.pc specifies a
+version requirement in dri.pc for >= the version of libdrm Mesa was
+built against, thus preventing packages from being rebuilt with the
+older version of libdrm installed.
+
+Let's reduce this version requirement to the latest libdrm required by
+Mesa instead, since libdrm is backward compatible.
+---
+ src/mesa/drivers/dri/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/mesa/drivers/dri/meson.build b/src/mesa/drivers/dri/meson.build
+index acf7d2eb128..b09ca16e38a 100644
+--- a/src/mesa/drivers/dri/meson.build
++++ b/src/mesa/drivers/dri/meson.build
+@@ -86,7 +86,7 @@ endif
+ if with_dri
+   dri_req_private = []
+   if dep_libdrm.found()
+-    dri_req_private = ['libdrm >= ' + dep_libdrm.version()]
++    dri_req_private = ['libdrm >= ' + _drm_ver]
+   endif
+ 
+   pkg.generate(
+-- 
+2.24.1
+
