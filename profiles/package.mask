@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2020-04-13)
+# Masked for removal
+# Last release 2002
+# No reverse dependency
+dev-tcltk/anigif
+
 # Hans de Graaff <graaff@gentoo.org> (2020-04-13)
 # ruby24-only packages. Ruby 2.4 is EOL and will be masked for removal
 # shortly. These packages either have newer ruby25 slots available, or
