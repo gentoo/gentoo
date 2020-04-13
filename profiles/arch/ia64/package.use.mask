@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-04-13)
+# Requires unsupported dev-python/gevent.
+dev-python/socketpool gevent
+
 # # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
 # ruby-2.7 dropped ia64 support, mask dependencies requiring ruby.
 # These pull in:
