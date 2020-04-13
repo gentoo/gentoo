@@ -8277,7 +8277,7 @@ dev-python/pybind11 2.4.3: AST-based Python refactoring library
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
 dev-python/pybluez 0.18-r1 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
-dev-python/pycairo 1.18.2: Python bindings for the cairo library
+dev-python/pycairo 1.18.2 1.19.1: Python bindings for the cairo library
 dev-python/pycapnp 0.6.4: Python wrapping of the Cap'n Proto library
 dev-python/pycares 3.1.1: Python interface for c-ares
 dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control library)
@@ -10410,7 +10410,7 @@ dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-community 2019.3.3.193.6494.35 2019.3.4.193.6911.18: A complete toolset for web, mobile and enterprise development
+dev-util/idea-community 2019.3.3.193.6494.35 2019.3.4.193.6911.18 2020.1.0.201.6668.121: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 9.0: Find unused include directives in C/C++ programs
