@@ -29,7 +29,7 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=3
+PATCH_VER=4
 PATCH_DEV=dilfridge
 
 SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
