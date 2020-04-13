@@ -899,7 +899,7 @@ app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT K
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41 0.42: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.42.1 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
-app-crypt/nitrocli 0.2.4 0.3.0 0.3.1: A command line tool for interacting with Nitrokey devices.
+app-crypt/nitrocli 0.2.4 0.3.1 0.3.2: A command line tool for interacting with Nitrokey devices
 app-crypt/nitrokey-app 1.4 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.25: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
@@ -2088,7 +2088,7 @@ app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.14-r1 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
-app-misc/elasticsearch 5.6.16 6.7.1 6.8.7 7.2.1 7.3.2 7.4.1 7.5.2 7.6.1: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 5.6.16 6.8.8 7.6.2: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.12.2: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
@@ -8073,7 +8073,7 @@ dev-python/nltk 3.2.5 3.4.5: Natural Language Toolkit
 dev-python/nltk-data 20200312: Data files for NLTK
 dev-python/nnpy 1.4.2: cffi-based Python bindings for nanomsg
 dev-python/node-semver 0.7.0: Python version of node-semver, the semantic versioner for npm
-dev-python/nodeenv 1.1.3-r1: Node.js virtual environment builder
+dev-python/nodeenv 1.1.3-r1 1.3.5: Node.js virtual environment builder
 dev-python/nose 1.3.7-r4: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-descriptionfixer 0.0.4: Fix the way tests are described when the verbose flag is used
@@ -8744,7 +8744,7 @@ dev-python/sphinxcontrib-serializinghtml 1.1.3 1.1.4: Sphinx extension which out
 dev-python/sphinxcontrib-spelling 4.3.0 5.0.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.1.0 1.2.1: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
-dev-python/spyder 4.1.1-r2: The Scientific Python Development Environment
+dev-python/spyder 4.1.2: The Scientific Python Development Environment
 dev-python/spyder-kernels 1.9.0: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.0: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.0: Plugin to run the python memory_profiler from within the spyder editor
@@ -18646,7 +18646,7 @@ x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2 3.34.2: The Gnome Terminal
 x11-terms/guake 3.3.2-r1 3.6.3-r1 3.7.0 9999: Drop-down terminal for GNOME
 x11-terms/kitty 0.15.1 0.16.0-r1 0.16.0-r2 0.16.0-r3 0.17.2-r1 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
-x11-terms/kitty-terminfo 0.16.0 0.17.2: Terminfo for kitty, an OpenGL-based terminal emulator
+x11-terms/kitty-terminfo 0.16.0 0.17.2 9999: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.0 1.22.1 1.24.0: The MATE Terminal
