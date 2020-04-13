@@ -15,15 +15,16 @@ DESCRIPTION="User documentation for MATE Desktop"
 LICENSE="FDL-1.1+ GPL-2+"
 SLOT="0"
 
-COMMON_DEPEND=""
+COMMON_DEPEND="virtual/libintl:0"
 
 RDEPEND="${COMMON_DEPEND}
 	gnome-extra/yelp
-	virtual/libintl
 "
 
 DEPEND="${COMMON_DEPEND}
+	>=dev-util/intltool-0.40
 	app-text/yelp-tools
-	>=sys-devel/gettext-0.19.8:*
+	sys-devel/gettext:*
 	virtual/pkgconfig:*
-	!!mate-base/mate-desktop[user-guide]"
+	!!mate-base/mate-desktop[user-guide(-)]
+"
