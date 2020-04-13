@@ -1,0 +1,12 @@
+BDEPEND=sys-apps/texinfo >=app-editors/emacs-23.1:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DESCRIPTION=A modern list library for Emacs
+EAPI=7
+HOMEPAGE=https://github.com/magnars/dash.el
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3+
+RDEPEND=>=app-editors/emacs-23.1:*
+SLOT=0
+SRC_URI=https://github.com/magnars/dash.el/archive/2.17.0.tar.gz -> dash-2.17.0.tar.gz
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_md5_=51060b3b02c2aa75f2835128c6baceec

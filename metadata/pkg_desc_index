@@ -1403,7 +1403,7 @@ app-emacs/css-sort-buffer 0.2: Sort CSS buffer
 app-emacs/csv-mode 1.9 1.10: A major mode for editing comma-separated value files
 app-emacs/cycle-buffer 2.16: Select buffer by cycling through
 app-emacs/d-mode 2.0.10: Emacs major mode for editing D code
-app-emacs/dash 2.14.1 2.16.0: A modern list library for Emacs
+app-emacs/dash 2.14.1 2.16.0 2.17.0: A modern list library for Emacs
 app-emacs/ddskk 16.2: One Japanese input methods on Emacs
 app-emacs/desktop+ 0.2-r2: desktop+ extends standard desktop module
 app-emacs/develock 0.47: An Emacs minor mode for highlighting broken formatting rules
@@ -1471,7 +1471,7 @@ app-emacs/lookup 1.99.96_pre20180209: An interface to search CD-ROM books and ne
 app-emacs/lua-mode 20151025: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410 0.48_p20200226: Elisp client for the LysKOM conference system
 app-emacs/magit 2.13.1 2.90.1: A Git porcelain inside Emacs
-app-emacs/magit-popup 2.12.3 2.12.4 2.13.0: Define prefix-infix-suffix command combos
+app-emacs/magit-popup 2.12.3 2.12.4 2.13.0 2.13.2: Define prefix-infix-suffix command combos
 app-emacs/mailcrypt 3.5.9-r3: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 2.3: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.6_pre20191010-r1: Major modes for MATLAB .m and .tlc files
@@ -1556,7 +1556,7 @@ app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
 app-emacs/wanderlust 2.15.9_p20180814 2.15.9_p20190623: Yet Another Message Interface on Emacsen
 app-emacs/websocket 1.10 1.12: A websocket implementation in elisp
-app-emacs/wgrep 2.3.0: Writable grep buffer and apply the changes to files
+app-emacs/wgrep 2.3.0 2.3.2: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.53: Window manager for GNU Emacs
