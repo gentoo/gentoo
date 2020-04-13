@@ -9534,7 +9534,7 @@ dev-ruby/flog 4.6.2 4.6.3 4.6.4: Flog reports the most tortured code in an easy 
 dev-ruby/font-awesome-rails 4.7.0.5: Font-awesome for the asset pipeline
 dev-ruby/forgery 0.7.0: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0-r1: Forwardable with hash, and instance variable extensions
-dev-ruby/fuubar 2.3.2 2.4.0 2.4.1 2.5.0: Instafailing RSpec progress bar formatter
+dev-ruby/fuubar 2.3.2 2.4.0 2.4.1 2.5.0 2.5.0-r1: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.30 0.31 0.34: A gem to ease i18n
 dev-ruby/gettext_i18n_rails 1.8.0 1.8.1: FastGettext / Rails integration
 dev-ruby/gh 0.15.1-r2 0.16.0: multi-layer client for the github api v3
@@ -9835,7 +9835,7 @@ dev-ruby/rspec-rails 3.8.2 3.8.3 3.9.0 3.9.1 4.0.0: RSpec's official Ruby on Rai
 dev-ruby/rspec-retry 0.6.2: Retry intermittently failing rspec examples
 dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context for testing
 dev-ruby/rspec-support 3.8.2 3.8.3 3.9.0 3.9.1 3.9.2: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspectacular 0.70.7 0.70.8: RSpec support and matchers
+dev-ruby/rspectacular 0.70.8 0.70.8-r1: RSpec support and matchers
 dev-ruby/ruby-atk 3.3.2 3.3.6 3.3.7: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
 dev-ruby/ruby-cairo-gobject 3.3.2 3.3.6 3.3.7: Ruby cairo-gobject bindings
@@ -9873,7 +9873,7 @@ dev-ruby/ruby-openid 2.9.2: A robust library for verifying and serving OpenID id
 dev-ruby/ruby-pango 3.3.2 3.3.6 3.3.7: Ruby Pango bindings
 dev-ruby/ruby-poppler 3.3.2 3.3.6 3.3.7: Ruby poppler-glib bindings
 dev-ruby/ruby-prof 0.18.0: A module for profiling Ruby code
-dev-ruby/ruby-progressbar 1.4.2-r1 1.10.0 1.10.1: A Text Progress Bar Library for Ruby
+dev-ruby/ruby-progressbar 1.4.2-r1 1.10.0 1.10.1 1.10.1-r1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 3.3.2 3.3.6 3.3.7: Ruby bindings for librsvg
@@ -9922,7 +9922,7 @@ dev-ruby/shorturl 1.0.0-r2: A very simple library to use URL shortening services
 dev-ruby/shotgun 0.9.2: Forking implementation of rackup
 dev-ruby/shoulda 2.11.3-r2 3.6.0: Making tests easy on the fingers and eyes
 dev-ruby/shoulda-context 1.2.2: Context framework extracted from Shoulda
-dev-ruby/shoulda-matchers 2.8.0-r1 3.1.3 4.0.1 4.1.2 4.2.0 4.3.0: Making tests easy on the fingers and eyes
+dev-ruby/shoulda-matchers 2.8.0-r1 3.1.3 4.0.1 4.1.2 4.2.0 4.3.0 4.3.0-r1: Making tests easy on the fingers and eyes
 dev-ruby/sigar 0.7.3: System Information Gatherer And Reporter
 dev-ruby/sigdump 0.2.4: Setup signal handler which dumps backtrace of threads and allocated objects
 dev-ruby/simple-rss 1.3.3: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
@@ -14769,7 +14769,7 @@ net-misc/charm 1.9.2-r2: A text based livejournal client
 net-misc/chrony 3.5-r2 3.5-r3 4.0_pre1 4.0_pre1-r1 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
-net-misc/cmst 2019.01.13 2020.03.07: Qt GUI for Connman with system tray icon
+net-misc/cmst 2019.01.13 2020.03.07 2020.04.12: Qt GUI for Connman with system tray icon
 net-misc/cni-plugins 0.8.2 0.8.3 0.8.4: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.38 9999: Provides a daemon for managing internet connections
