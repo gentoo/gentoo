@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-13)
+# No stable wayland components on hppa
+wayland
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # No stable dev-libs/libressl on hppa, bug #704228
 curl_ssl_libressl
