@@ -7849,7 +7849,7 @@ dev-python/httplib2 0.13.0 0.17.0: A comprehensive HTTP client library
 dev-python/httpretty 0.9.6 0.9.7 1.0.2: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 4.18: Human friendly output for text interfaces using Python
-dev-python/humanize 0.5.1 2.1.0 2.2.0: Common humanization utilities
+dev-python/humanize 0.5.1 2.2.0 2.3.0: Common humanization utilities
 dev-python/hyper-h2 2.5.1 3.1.1 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
