@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
+# Dependency has no stable keyword
+# and as for now we have only stable mate versions
+mate-base/mate bluetooth
+
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-04-06)
 # Mask until gui-libs/gtk-layer-shell is keyworded
 mate-base/mate-panel wayland
