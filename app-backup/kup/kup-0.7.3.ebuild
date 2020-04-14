@@ -49,9 +49,9 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${PN^}-${P}"
 
-src_configure() {
-	local mycmakeargs=(
-		-DUSE_SYSTEM_LIBGIT2=ON
-	)
-	ecm_src_configure
+PATCHES=( "${FILESDIR}/${P}-libgit2.patch" )
+
+src_prepare() {
+	ecm_src_prepare
+	rm -r libgit2-0.19.0 || die "Failed to remove bundled libgit2-0.19.0"
 }
