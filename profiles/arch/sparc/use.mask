@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# media-libs/opencv not keyworded on sparc
+opencv
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-09)
 # gimp dependencies unusable because of unaligned accesses, bug #638172
 gimp
