@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,6 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-ros/diagnostic_updater[${PYTHON_USEDEP}]
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/message_filters

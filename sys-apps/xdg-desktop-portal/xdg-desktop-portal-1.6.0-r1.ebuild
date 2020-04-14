@@ -24,14 +24,16 @@ BDEPEND="
 	)
 "
 DEPEND="
-	dev-libs/glib:2[dbus]
+	dev-libs/glib:2
 	dev-libs/json-glib
 	media-libs/fontconfig
 	sys-fs/fuse:0
 	geolocation? ( >=app-misc/geoclue-2.5.3:2.0 )
 	screencast? ( media-video/pipewire:= )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	sys-apps/dbus
+"
 
 src_configure() {
 	local myeconfargs=(

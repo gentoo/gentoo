@@ -140,16 +140,14 @@ RELOC_TARGET=texmf-dist
 texlive-module_src_unpack() {
 	unpack ${A}
 
-	grep RELOC tlpkg/tlpobj/* | awk '{print $2}' | sed 's#^RELOC/##' > "${T}/reloclist" || die
-	{ for i in $(<"${T}/reloclist"); do  dirname ${i}; done; } | uniq > "${T}/dirlist"
-	for i in $(<"${T}/dirlist"); do
-		if [[ ! -d ${RELOC_TARGET}/${i} ]]; then
-			mkdir -p "${RELOC_TARGET}/${i}" || die
-		fi
-	done
-	for i in $(<"${T}/reloclist"); do
-		mv "${i}" "${RELOC_TARGET}"/$(dirname "${i}") || die "failed to relocate ${i} to ${RELOC_TARGET}/$(dirname ${i})"
-	done
+	sed -n -e 's:\s*RELOC/::p' tlpkg/tlpobj/* > "${T}/reloclist" || die
+	sed -e 's/\/[^/]*$//' -e "s:^:${RELOC_TARGET}/:" "${T}/reloclist" |
+		sort -u |
+		xargs mkdir -p || die
+	local i
+	while read i; do
+		mv "${i}" "${RELOC_TARGET}/${i%/*}" || die
+	done < "${T}/reloclist"
 }
 
 # @FUNCTION: texlive-module_add_format
