@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/irrlicht/${MY_P}.zip
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="!<dev-games/irrlicht-1.8.4-r1"
 BDEPEND="app-arch/unzip"
