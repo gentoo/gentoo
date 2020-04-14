@@ -24,6 +24,7 @@ RDEPEND="
 	dev-libs/fribidi
 	media-libs/freetype:2
 	media-libs/glew:0=
+	media-libs/harfbuzz:=
 	media-libs/libpng:0=
 	media-libs/libvorbis
 	media-libs/openal
