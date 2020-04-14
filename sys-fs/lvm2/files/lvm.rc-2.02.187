@@ -138,39 +138,36 @@ stop() {
 	fi
 
 	# Stop LVM2
-	if [ -x /sbin/vgs ] \
-		&& [ -x /sbin/vgchange ] \
-		&& [ -x /sbin/lvchange ] \
-		&& [ -f /etc/lvmtab -o -d /etc/lvm ] \
+	if [ -f /etc/lvmtab -o -d /etc/lvm ] \
 		&& [ -d /proc/lvm  -o "$(grep device-mapper /proc/misc 2>/dev/null)" ]
 	then
-		einfo "Shutting down the Logical Volume Manager"
-
-		VGS=$($lvm_path vgs --config "${config}" -o vg_name --noheadings --nosuffix --rows 2> /dev/null)
-
-		if [ -n "${VGS}" ] ; then
-			local _ending="eend"
-			[ "${RC_RUNLEVEL}" = shutdown ] && _ending="ewend"
-
-			ebegin "  Shutting Down LVs & VGs"
-				#still echo stderr for debugging
-				lvm_commands="#!${lvm_path}\n"
-				# Extra PV find pass because some devices might not have been available until very recently
-				lvm_commands="${lvm_commands}lvchange --config '${config}' --sysinit -a ln ${VGS}\n"
-				# Now make the nodes
-				lvm_commands="${lvm_commands}vgchange --config '${config}' --sysinit -a ln ${VGS}\n"
-				# Order of this is important, have to work around dash and LVM readline
-				printf "%b\n" "${lvm_commands}" | ${lvm_path} /proc/self/fd/0 --config "${config}" >/dev/null
-
-				rc=${?}
-				msg="Failed (possibly some LVs still needed for /usr or root)"
-				[ "${RC_RUNLEVEL}" = shutdown ] && msg="${msg} [rc=${rc}]" && rc=0
-			${_ending} ${rc} "${msg}"
+		local VGS=$($lvm_path vgs --config "${config}" -o vg_name --noheadings --nosuffix --rows 2> /dev/null)
+		if [ -z "${VGS}" ] ; then
+			# nothing to do for us
+			return 0
 		fi
 
-		einfo "Finished shutting down the Logical Volume Manager"
-		return 0
+		local has_errors=0 verbose_command eend_cmd="eend"
+
+		yesno "${rc_verbose}" && verbose_command=" -v"
+
+		local msg="Failed to stop Logical Volume Manager"
+		if [ "${RC_RUNLEVEL}" = shutdown ] ; then
+			# failures on shutdown are non-fatal
+			eend_cmd="ewend"
+			msg="${msg} (possibly some LVs still needed for /usr or root)"
+		fi
+
+		ebegin "Stopping the Logical Volume Manager"
+
+		${lvm_path} vgchange${verbose_command} --config "${config}" --sysinit --activate n
+		[ $? -ne 0 ] && has_errors=1
+
+		${eend_cmd} ${has_errors} "${msg}"
 	fi
+
+	# at this point make sure we always exit without indicating an error
+	return 0
 }
 
 # vim:ts=4
