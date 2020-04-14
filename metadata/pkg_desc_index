@@ -6136,14 +6136,14 @@ dev-perl/Gtk2-Unique 0.50.0-r2: Perl binding for C libunique library
 dev-perl/Gtk3 0.34.0: Perl interface to the 3.x series of the gtk+ toolkit
 dev-perl/Gtk3-SimpleList 0.170.0: A simple interface to GTK+ 3's complex MVC list widget
 dev-perl/Guard 1.23.0: Safe cleanup blocks
-dev-perl/HTML-Clean 0.800.0-r1 0.800.0-r2: Cleans up HTML code for web browsers, not humans
+dev-perl/HTML-Clean 0.800.0-r2: Cleans up HTML code for web browsers, not humans
 dev-perl/HTML-Element-Extended 1.180.0-r1: Extension for manipulating a table composed of HTML::Element style components
 dev-perl/HTML-FillInForm 2.210.0: Populates HTML Forms with data
-dev-perl/HTML-Form 6.30.0-r1 6.30.0-r2: Class that represents an HTML form element
+dev-perl/HTML-Form 6.30.0-r2: Class that represents an HTML form element
 dev-perl/HTML-FormatText-WithLinks 0.150.0-r1: HTML to text conversion with links as footnotes
 dev-perl/HTML-FormatText-WithLinks-AndTables 0.70.0-r1: Converts HTML to text with tables intact
 dev-perl/HTML-Formatter 2.160.0: Base class for HTML Formatters
-dev-perl/HTML-FromText 2.50.0-r1 2.70.0: Convert plain text to HTML
+dev-perl/HTML-FromText 2.70.0: Convert plain text to HTML
 dev-perl/HTML-Gumbo 0.180.0: HTML5 parser based on gumbo C library
 dev-perl/HTML-HTMLDoc 0.100.0-r1: Perl interface to the htmldoc program for producing PDF-Files from HTML-Content
 dev-perl/HTML-Highlight 0.200.0: A module to highlight words or patterns in HTML documents
@@ -6152,7 +6152,7 @@ dev-perl/HTML-Mason 1.560.0: A HTML development and delivery Perl Module
 dev-perl/HTML-Mason-PSGIHandler 0.530.0: PSGI handler for HTML::Mason
 dev-perl/HTML-Object 2.29-r2: A HTML development and delivery Perl Module
 dev-perl/HTML-Packer 2.60.0: Another HTML code cleaner
-dev-perl/HTML-Parser 3.710.0-r1 3.720.0: Parse <HEAD> section of HTML documents
+dev-perl/HTML-Parser 3.720.0: Parse <HEAD> section of HTML documents
 dev-perl/HTML-Quoted 0.40.0: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
 dev-perl/HTML-Scrubber 0.170.0: Perl extension for scrubbing/sanitizing html
@@ -6182,9 +6182,9 @@ dev-perl/HTTP-Daemon 6.10.0-r2 6.60.0: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Entity-Parser 0.200.0: PSGI compliant HTTP Entity Parser
 dev-perl/HTTP-Headers-Fast 0.210.0 0.220.0: Faster implementation of HTTP::Headers
-dev-perl/HTTP-Message 6.110.0 6.130.0: Base class for Request/Response
+dev-perl/HTTP-Message 6.130.0: Base class for Request/Response
 dev-perl/HTTP-MultiPartParser 0.20.0: Low Level MultiPart MIME HTTP parser
-dev-perl/HTTP-Negotiate 6.10.0 6.10.0-r1: HTTP content negotiation
+dev-perl/HTTP-Negotiate 6.10.0-r1: HTTP content negotiation
 dev-perl/HTTP-Request-AsCGI 1.200.0: Set up a CGI environment from an HTTP::Request
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
 dev-perl/HTTP-Server-Simple 0.520.0: Lightweight HTTP Server
@@ -6198,7 +6198,7 @@ dev-perl/Hash-MoreUtils 0.50.0: Provide the stuff missing in Hash::Util
 dev-perl/Hash-MultiValue 0.160.0: Store multiple values per key
 dev-perl/Hash-NoRef 0.30.0-r2: Hash to store values without increasing reference count (weak references)
 dev-perl/Heap 0.800.0-r2: Perl extensions for keeping data partially sorted
-dev-perl/Hook-LexWrap 0.250.0 0.260.0: Lexically scoped subroutine wrappers
+dev-perl/Hook-LexWrap 0.260.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.8: Perl module for basic IMAP server administration
 dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
 dev-perl/IO-AIO 4.340.0: Asynchronous Input/Output
@@ -9095,7 +9095,7 @@ dev-ros/hector_geotiff_plugins 0.3.5-r1 0.4.0 9999: Plugins that extend geotiff 
 dev-ros/hector_imu_attitude_to_tf 0.3.5 0.4.0 9999: Publish the roll/pitch attitude angles reported via a imu message to tf
 dev-ros/hector_imu_tools 0.3.5 0.4.0 9999: Tools for processing IMU messages
 dev-ros/hector_map_server 0.3.5 0.4.0 9999: Service for retrieving the map, as well as for raycasting based obstacle queries
-dev-ros/hector_map_tools 0.3.5 0.4.0 9999: Functions related to accessing information from OccupancyGridMap maps
+dev-ros/hector_map_tools 0.4.0-r1 9999: Functions related to accessing information from OccupancyGridMap maps
 dev-ros/hector_mapping 0.3.5 0.4.0 9999: SLAM approach that can be used without odometry and on platforms that exhibit roll/pitch motion
 dev-ros/hector_marker_drawing 0.3.3 0.3.4 0.3.5 0.4.0 9999: Convenience functions for easier publishing of visualization markers
 dev-ros/hector_nav_msgs 0.3.5 0.4.0 9999: Messages and services used in the hector_slam stack

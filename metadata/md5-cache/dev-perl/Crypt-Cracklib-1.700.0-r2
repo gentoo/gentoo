@@ -4,11 +4,11 @@ DESCRIPTION=Perl interface to Alec Muffett's Cracklib
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Crypt-Cracklib
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=sys-libs/cracklib dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DANIEL/Crypt-Cracklib-1.7.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=cb7f7f8f824b1ef96f049265420dd1e9
+_md5_=6a34907dde7c3c769ee7a8a62f24f280
