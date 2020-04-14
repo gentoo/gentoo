@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# media-libs/kate not stable on sparc
+media-sound/vorbis-tools kate
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dependencies not stable on sparc
 media-video/ffmpeg codec2 libaom libilbc lv2 rubberband
 
