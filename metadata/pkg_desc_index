@@ -4908,7 +4908,7 @@ dev-libs/fstrm 0.3.0: Frame Streams implementation in C
 dev-libs/gdl 3.28.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
-dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
+dev-libs/gf2x 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.48.7 1.56.2 1.58.5 1.58.6: Javascript bindings for GNOME
 dev-libs/glib 2.60.7 2.60.7-r1 2.60.7-r2 2.62.5 2.62.6 2.64.1: The GLib library of C routines
