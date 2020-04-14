@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.html )
 
-PATCHES=( "${FILESDIR}/${P}-docs.patch" )
+PATCHES=( "${FILESDIR}/${P}-no-docs.patch" )
 
 src_prepare() {
 	python_fix_shebang board_gen
