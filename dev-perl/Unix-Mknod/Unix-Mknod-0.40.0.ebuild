@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Filesys-Statvfs"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 BDEPEND="virtual/perl-ExtUtils-MakeMaker"
