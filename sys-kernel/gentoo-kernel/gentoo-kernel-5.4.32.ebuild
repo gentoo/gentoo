@@ -5,23 +5,26 @@ EAPI=7
 
 inherit kernel-build
 
-MY_P=linux-${PV}
+MY_P=linux-${PV%.*}
+GENPATCHES_P=genpatches-${PV%.*}-${PV##*.}
 # https://git.archlinux.org/svntogit/packages.git/log/trunk/config?h=packages/linux
-AMD64_CONFIG_VER=5.5.5-arch1
-AMD64_CONFIG_HASH=e4d4ca36741d228042185e2a9047cd88fb5b4169
+AMD64_CONFIG_VER=5.4.15-arch1
+AMD64_CONFIG_HASH=dc8d69b59a7a529ec5aaeb6b32b16e59a3cc1569
 # https://git.archlinux32.org/packages/log/core/linux/config.i686
-I686_CONFIG_VER=5.5.6-arch1
-I686_CONFIG_HASH=7d53d8a42f68648bce5b002aaf8c2b14e6298275
+I686_CONFIG_VER=5.4.15-arch1
+I686_CONFIG_HASH=1ad219bd3f0ab439a81ed01fec7660eeea7daa0e
 
-DESCRIPTION="Linux kernel built from vanilla upstream sources"
+DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
-		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${AMD64_CONFIG_HASH}
+		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${AMD64_CONFIG_HASH}
 			-> linux-${AMD64_CONFIG_VER}.amd64.config
 	)
 	x86? (
-		https://git.archlinux32.org/packages/plain/core/linux/config.i686?id=${I686_CONFIG_HASH}
+		https://git.archlinux32.org/packages/plain/core/linux-lts/config?id=${I686_CONFIG_HASH}
 			-> linux-${I686_CONFIG_VER}.i686.config
 	)"
 S=${WORKDIR}/${MY_P}
@@ -30,9 +33,14 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	!sys-kernel/vanilla-kernel:${SLOT}
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 
 src_prepare() {
+	local PATCHES=(
+		# meh, genpatches have no directory
+		"${WORKDIR}"/*.patch
+	)
 	default
 
 	# prepare the default config
