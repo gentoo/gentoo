@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# media-libs/gstreamer is not stable for hppa
+gstreamer
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-13)
 # No stable wayland components on hppa
 wayland
