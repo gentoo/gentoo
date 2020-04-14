@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,8 @@ KEYWORDS="amd64 hppa ppc x86"
 IUSE=""
 
 RDEPEND="
-	|| ( <dev-perl/Inline-0.790.0 ( >=dev-perl/Inline-0.790.0 dev-perl/Inline-C ) )
+	>=dev-perl/Inline-0.790.0
+	dev-perl/Inline-C
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
