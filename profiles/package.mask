@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2020-04-14)
+# Masked for removal
+# Upstream url non existent
+# No reverse dependency
+dev-tcltk/combobox
+
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-13)
 # Masked for removal
 # Last release 2002
