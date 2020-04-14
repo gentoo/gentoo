@@ -2120,10 +2120,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:MySQL</url>
     <description>This project maintains MySQL and its derivatives</description>
     <member>
-      <email>grknight@gentoo.org</email>
-      <name>Brian Evans</name>
-    </member>
-    <member>
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
     </member>
