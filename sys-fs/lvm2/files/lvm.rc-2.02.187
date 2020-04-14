@@ -71,12 +71,10 @@ start() {
 
 	# NOTE: Add needed modules for LVM or RAID, etc
 	#       to /etc/modules.autoload if needed
+
 	lvm_path="$(_get_lvm_path)"
-	for lvm_path in /bin/lvm /sbin/lvm ; do
-		[ -x "${lvm_path}" ] && break
-	done
-	if [ ! -x "${lvm_path}" ] ; then
-		eerror "Cannot find lvm binary in /sbin or /bin!"
+	if [ -z "${lvm_path}" ] ; then
+		eerror "Failed to find lvm binary in /bin or /sbin!"
 		return 1
 	fi
 	if [ -z "${CDBOOT}" ] ; then
@@ -121,12 +119,9 @@ start_post() {
 }
 
 stop() {
-	for lvm_path in /bin/lvm /sbin/lvm ; do
-		[ -x "${lvm_path}" ] && break
-	done
-
-	if [ ! -x "${lvm_path}" ] ; then
-		eerror "Cannot find lvm binary in /sbin or /bin!"
+	lvm_path="$(_get_lvm_path)"
+	if [ -z "${lvm_path}" ] ; then
+		eerror "Failed to find lvm binary in /bin or /sbin!"
 		return 1
 	fi
 
