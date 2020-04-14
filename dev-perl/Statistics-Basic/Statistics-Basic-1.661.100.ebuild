@@ -11,6 +11,7 @@ DESCRIPTION="A collection of very basic statistics modules"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Number-Format-1.420.0
