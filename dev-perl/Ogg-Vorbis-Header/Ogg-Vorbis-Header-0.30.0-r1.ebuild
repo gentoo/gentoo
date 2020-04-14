@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~ia64 ~ppc sparc x86"
 IUSE=""
 
 RDEPEND="
-	|| ( <=dev-perl/Inline-0.560.0 dev-perl/Inline-C )
+	dev-perl/Inline-C
 	media-libs/libogg
 	media-libs/libvorbis
 "
