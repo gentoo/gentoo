@@ -10379,8 +10379,8 @@ dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.3 4.1 4.2: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.60.7 2.62.5 2.62.6 2.64.1: GDBus code and documentation generator
-dev-util/geany 1.30.1 1.34.1 1.35 1.36 9999: GTK+ based fast and lightweight IDE
-dev-util/geany-plugins 1.30 1.34-r1 1.35 1.36-r1 1.36-r2: A collection of different plugins for Geany
+dev-util/geany 1.36 9999: GTK+ based fast and lightweight IDE
+dev-util/geany-plugins 1.36-r2: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.22.1-r1 3.22.2: A user interface designer for GTK+ and GNOME
