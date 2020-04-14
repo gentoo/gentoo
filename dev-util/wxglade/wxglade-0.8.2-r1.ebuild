@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/wxglade/${MY_P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
