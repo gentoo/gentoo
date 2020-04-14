@@ -2378,7 +2378,7 @@ app-office/skrooge 2.21.1 2.22.1: Personal finances manager, aiming at being sim
 app-office/taskcoach 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
-app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2.12.14 2.12.16_beta2-r1 2.12.16 2.12.18 2.12.20: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2.12.14 2.12.16 2.12.18 2.12.20 2.12.22: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.8.2 0.9 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.3.3.860: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
@@ -15250,7 +15250,7 @@ net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - pyth
 net-vpn/strongswan 5.8.1 5.8.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 0.97_p45: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.2.7 0.4.3.3_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.2.7 0.4.3.4_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
