@@ -1,14 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>hendrik@consetetur.de</email>
-		<name>Hendrik v. Raven (lorem_ipsum)</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="minimal">Avoid collision with <pkg>app-misc/pwsafe</pkg></flag>
 		<flag name="qr">Enable QR code password display</flag>
