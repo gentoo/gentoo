@@ -3438,7 +3438,7 @@ dev-games/cardpics 0.4 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r1: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
-dev-games/freecell-solver 5.14.0-r1 5.22.0: C library for automatically solving Freecell and some other solitaire variants
+dev-games/freecell-solver 5.14.0-r1 5.22.1: C library for automatically solving Freecell and some other solitaire variants
 dev-games/goatee 0.3.0 0.3.1.1 0.3.1.2: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
@@ -8178,7 +8178,7 @@ dev-python/path-and-address 2.0.1: Functions for server CLI applications used by
 dev-python/path-py 11.5.2 12.0.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathlib2 2.3.5: Fork of pathlib aiming to support the full stdlib Python API
-dev-python/pathspec 0.7.0: Utility library for gitignore style pattern matching of file paths.
+dev-python/pathspec 0.7.0 0.8.0: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.3.4-r1: Python-based software project scripting tool along the lines of Make
@@ -14591,7 +14591,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 13.10.1 13.11.0 13.12.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 13.10.1 13.11.0 13.12.0 13.13.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -14988,7 +14988,7 @@ net-misc/sipp 3.6.0: A free Open Source test tool / traffic generator for the SI
 net-misc/sipsak 0.9.6_p1-r1 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sks 1.1.6-r2 1.1.6-r4 1.1.6-r5: An OpenPGP keyserver which is decentralized with highly reliable synchronization
-net-misc/smb4k 3.0.2 3.0.3: Advanced network neighborhood browser
+net-misc/smb4k 3.0.3 3.0.4: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r3: Text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r4: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sobby 0.4.8-r1: Standalone Obby server
@@ -18321,7 +18321,7 @@ x11-misc/qt5ct 0.41: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1 0.7.3: A BBS client based on Qt
 x11-misc/qtfm 6.2.0 99999: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
-x11-misc/qxkb 0.5.1_pre20150305: Qt-based keyboard layout switcher
+x11-misc/qxkb 0.5.1_pre20190821: Qt-based keyboard layout switcher
 x11-misc/read-edid 1.4.2 3.0.2: Program that can get information from a PnP monitor
 x11-misc/redshift 1.12-r3: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5-r1: Tests for compliance with X RENDER extension
