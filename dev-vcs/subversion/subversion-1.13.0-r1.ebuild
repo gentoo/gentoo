@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	ctypes-python? ( ${PYTHON_DEPS} )
 	gnome-keyring? (
 		dev-libs/glib:2
-		gnome-base/libgnome-keyring
+		app-crypt/libsecret
 		sys-apps/dbus
 	)
 	http? ( >=net-libs/serf-1.3.4 )
