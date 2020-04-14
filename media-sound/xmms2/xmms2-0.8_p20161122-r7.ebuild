@@ -114,6 +114,9 @@ PATCHES=(
 
 	# gcc-10 stopped putting globals into common section
 	"${FILESDIR}/${P}"-gcc-10.patch
+
+	# fix required since faad 2.9.0
+	"${FILESDIR}/${P}"-faad.patch
 )
 
 pkg_setup() {
