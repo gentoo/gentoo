@@ -13,8 +13,14 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
+    <flag name="cdd">
+      Build the ppl_lcdd program for vertex/facet enumeration
+      accepting the same input format as the programs shipped with
+      <pkg>sci-libs/cddlib</pkg> and <pkg>sci-libs/lrslib</pkg>
+    </flag>
     <flag name="lpsol">
-      Build the ppl_lpsol linear programming problem solver
+      Build the ppl_lpsol linear program solver that uses
+      <pkg>sci-mathematics/glpk</pkg> for its input routines
     </flag>
   </use>
 </pkgmetadata>

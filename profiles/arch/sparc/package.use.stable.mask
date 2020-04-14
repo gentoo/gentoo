@@ -7,7 +7,7 @@ media-sound/vorbis-tools kate
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dependencies not stable on sparc
-media-video/ffmpeg codec2 libaom libilbc lv2 rubberband
+media-video/ffmpeg codec2 dav1d libaom libaribb24 libilbc libtesseract lv2 rubberband vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # needs app-arch/rpm for the tests, which is not stable on sparc

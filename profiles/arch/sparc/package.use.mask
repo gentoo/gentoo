@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# dev-lang/luajit is not keyworded on sparc
+net-analyzer/snort open-appid
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # net-libs/srt is -sparc
 media-video/ffmpeg srt
 
