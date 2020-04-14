@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit toolchain-funcs multilib
 
@@ -19,8 +19,12 @@ RDEPEND="
 	mpfr? ( dev-libs/mpfr:0= )
 	readline? ( sys-libs/readline:0= )
 "
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	>=sys-apps/texinfo-6.7
+	>=sys-devel/bison-3.5.4
+	nls? ( sys-devel/gettext )
+"
 
 src_prepare() {
 	default
@@ -30,7 +34,7 @@ src_prepare() {
 		-e '/^LN =/s:=.*:= $(LN_S):' \
 		-e '/install-exec-hook:/s|$|\nfoo:|' \
 		Makefile.in doc/Makefile.in || die
-	sed -i '/^pty1:$/s|$|\n_pty1:|' test/Makefile.in #413327
+	sed -i '/^pty1:$/s|$|\n_pty1:|' test/Makefile.in || die #413327
 	# fix standards conflict on Solaris
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		sed -i \
@@ -58,26 +62,28 @@ src_install() {
 	# Install headers
 	insinto /usr/include/awk
 	doins *.h
-	rm "${ED%/}"/usr/include/awk/config.h || die
+	rm "${ED}"/usr/include/awk/config.h || die
 }
 
 pkg_postinst() {
 	# symlink creation here as the links do not belong to gawk, but to any awk
-	if has_version app-admin/eselect \
-			&& has_version app-eselect/eselect-awk ; then
+	if has_version app-admin/eselect && has_version app-eselect/eselect-awk ; then
 		eselect awk update ifunset
 	else
 		local l
-		for l in "${EROOT}"/usr/share/man/man1/gawk.1* "${EROOT}"/usr/bin/gawk; do
-			[[ -e ${l} && ! -e ${l/gawk/awk} ]] && ln -s "${l##*/}" "${l/gawk/awk}"
+		for l in "${EROOT}"/usr/share/man/man1/gawk.1* "${EROOT}"/usr/bin/gawk ; do
+			if [[ -e ${l} ]] && ! [[ -e ${l/gawk/awk} ]] ; then
+				ln -s "${l##*/}" "${l/gawk/awk}" || die
+			fi
 		done
-		[[ ! -e ${EROOT}/bin/awk ]] && ln -s "../usr/bin/gawk" "${EROOT}/bin/awk"
+		if ! [[ -e ${EROOT}/bin/awk ]] ; then
+			ln -s "../usr/bin/gawk" "${EROOT}/bin/awk" || die
+		fi
 	fi
 }
 
 pkg_postrm() {
-	if has_version app-admin/eselect \
-			&& has_version app-eselect/eselect-awk ; then
+	if has_version app-admin/eselect && has_version app-eselect/eselect-awk ; then
 		eselect awk update ifunset
 	fi
 }
