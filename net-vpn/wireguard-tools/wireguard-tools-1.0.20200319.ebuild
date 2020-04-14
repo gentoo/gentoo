@@ -11,10 +11,10 @@ HOMEPAGE="https://www.wireguard.com/"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.zx2c4.com/wireguard-tools"
-	KEYWORDS=""
+	KEYWORDS="amd64"
 else
 	SRC_URI="https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-${PV}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
