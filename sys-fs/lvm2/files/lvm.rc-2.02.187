@@ -77,9 +77,12 @@ start() {
 		eerror "Failed to find lvm binary in /bin or /sbin!"
 		return 1
 	fi
+
 	if [ -z "${CDBOOT}" ] ; then
 		if [ -e /proc/modules ] && ! dm_in_proc ; then
+			ebegin "Trying to load dm-mod module"
 			modprobe dm-mod 2>/dev/null
+			eend $?
 		fi
 
 		if [ -d /proc/lvm ] || dm_in_proc ; then
