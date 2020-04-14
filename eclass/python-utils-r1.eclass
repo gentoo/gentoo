@@ -378,7 +378,7 @@ _python_export() {
 					python3.6)
 						PYTHON_PKG_DEP=">=dev-lang/python-3.6.10:3.6";;
 					python3.7)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.7.6:3.7";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.7.7-r1:3.7";;
 					python3.8)
 						PYTHON_PKG_DEP=">=dev-lang/python-3.8.2:3.8";;
 					pypy3)
