@@ -10500,7 +10500,7 @@ dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
-dev-util/radare2 4.3.1 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.3.1 4.4.0 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2: Command line tools for use with Review Board
@@ -13700,7 +13700,7 @@ media-sound/wildmidi 0.3.13: Midi processing library and a midi player using the
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.3.0: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
-media-sound/xmms2 0.8_p20161122-r5 0.8_p20161122-r6: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
+media-sound/xmms2 0.8_p20161122-r5 0.8_p20161122-r7: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.6: Digital vinyl emulation software
@@ -14120,7 +14120,7 @@ net-analyzer/sngrep 1.4.6-r2: Ncurses SIP Messages flow viewer
 net-analyzer/sniffit 0.3.7-r4 0.4.0: Interactive Packet Sniffer
 net-analyzer/snmpclitools 0.6.4: Pure-Python SNMP management tools, formerly pysnmp-apps
 net-analyzer/snmptt 1.4: SNMP Trap Translator
-net-analyzer/snort 2.9.8.3-r2 2.9.12 2.9.15 2.9.15.1: The de facto standard for intrusion detection/prevention
+net-analyzer/snort 2.9.8.3-r2 2.9.12 2.9.15 2.9.15.1 2.9.16: The de facto standard for intrusion detection/prevention
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 0.9.9-r1: flow-based network traffic analyser capable of Cisco NetFlow data export
@@ -14451,7 +14451,7 @@ net-libs/courier-unicode 1.3 1.4 2.1: Unicode library used by the courier mail s
 net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 2.2.0-r2 3.0.2: High-level C Binding for ZeroMQ
-net-libs/daq 2.0.6-r1: Data Acquisition library, for packet I/O
+net-libs/daq 2.0.6-r1 2.0.7: Data Acquisition library, for packet I/O
 net-libs/davix 0.6.7 0.7.3 0.7.4 0.7.5: High-performance file management over WebDAV/HTTP
 net-libs/dleyna-connector-dbus 0.2.0 0.3.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-core 0.5.0 0.6.0: utility library for higher level dLeyna libraries
