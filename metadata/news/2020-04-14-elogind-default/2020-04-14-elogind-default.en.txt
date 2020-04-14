@@ -1,0 +1,60 @@
+Title: Desktop profile switching USE default to elogind
+Author: Andreas Sturmlechner <asturm@gentoo.org>
+Posted: 2020-04-14
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: sys-auth/consolekit
+
+Modern desktop environments make use of PAM session tracking for users, login
+sessions and seats. [1] The most user-visible part of that is device and file
+permissions management and reboot/shutdown handling without superuser rights.
+
+Users with systemd can stop reading here and continue with their daily
+routine.
+
+ConsoleKit2 is unmaintained upstream for more than two years [2]. There are
+many longstanding bugs and papercuts with consumers that aren't being fixed,
+not least because these code paths receive very little testing.
+
+Enter the elogind project [3], which is a standalone logind implementation
+based on systemd code, currently maintained by a fellow Gentoo user. We have
+had sys-auth/elogind available in Gentoo since the beginning of 2017, and
+meanwhile it has gained support [4] in KDE Plasma, Gnome [5], Cinnamon, MATE
+and Xfce, as well as most other former consolekit consumers.
+
+Consequently, the desktop profile is switching away from consolekit to
+elogind. Users of sys-auth/consolekit who selected a different profile should
+consider doing the same. A guide is available [6]. Migration is easy, but any
+existing consolekit session will be broken, and elogind will only begin to work
+on relogin.
+
+Rely either on the profile, or set USE="elogind -consolekit" in make.conf
+yourself. Make sure there is no consolekit debris in /etc/portage/package.use:
+
+# grep -R consolekit /etc/portage/package.use
+
+Rebuild all affected consumers and remove sys-auth/consolekit:
+
+# emerge --ask --changed-use --deep @world
+# emerge --depclean consolekit
+
+Optional, but recommended in case of trouble such as missing reboot/shutdown
+capabilities in the display manager:
+
+# rc-update add elogind boot
+
+For users of ~/.xinitrc instead of one of the supported DMs, do not forget to
+update accordingly (ck-launch-session is gone without replacement).
+
+PS: Subsequently, this will lead to the last-riting of sys-power/pm-utils [7]
+which is dead even longer than the original ConsoleKit(1) project. KDE Plasma
+users sticking with sys-auth/consolekit are then going to lose suspend from
+GUI without superuser rights.
+
+[1] https://wiki.gentoo.org/wiki/ConsoleKit
+[2] https://github.com/ConsoleKit2/ConsoleKit2
+[3] https://github.com/elogind/elogind/blob/master/README.md
+[4] https://bugs.gentoo.org/show_bug.cgi?id=elogind-support
+[5] https://blogs.gentoo.org/leio/2019/03/26/gnome-3-30/
+[6] https://wiki.gentoo.org/wiki/Elogind
+[7] https://bugs.gentoo.org/659616
