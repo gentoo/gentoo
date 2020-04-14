@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Use any SSH module"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
