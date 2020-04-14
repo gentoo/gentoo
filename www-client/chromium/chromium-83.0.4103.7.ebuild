@@ -12,7 +12,8 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz"
+SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
+	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip"
 
 LICENSE="BSD"
 SLOT="0"
@@ -89,6 +90,7 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/gzip-1.7
+	app-arch/unzip
 	!arm? (
 		dev-lang/yasm
 	)
@@ -637,6 +639,9 @@ src_compile() {
 
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
+
+	# https://bugs.gentoo.org/717456
+	local -x PYTHONPATH="${WORKDIR}/setuptools-44.1.0${PYTHONPATH+:}${PYTHONPATH}"
 
 	#"${EPYTHON}" tools/clang/scripts/update.py --force-local-build --gcc-toolchain /usr --skip-checkout --use-system-cmake --without-android || die
 
