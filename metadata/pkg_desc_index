@@ -5998,12 +5998,12 @@ dev-perl/Encode-HanConvert 0.350.0-r1: Traditional and Simplified Chinese mappin
 dev-perl/Encode-HanExtra 0.230.0-r2: Extra sets of Chinese encodings
 dev-perl/Encode-IMAPUTF7 1.50.0-r1: Modification of UTF-7 encoding for IMAP
 dev-perl/Encode-JIS2K 0.30.0: JIS X 0212 (aka JIS 2000) Encodings
-dev-perl/Encode-Locale 1.30.0-r1 1.50.0: Determine the locale encoding
+dev-perl/Encode-Locale 1.50.0: Determine the locale encoding
 dev-perl/Encode-compat 0.70.0-r2: Encode.pm emulation layer
-dev-perl/Error 0.170.240 0.170.250: Error/exception handling in an OO-ish way
-dev-perl/Eval-Closure 0.130.0 0.140.0: safely and cleanly create closures via string eval
+dev-perl/Error 0.170.250: Error/exception handling in an OO-ish way
+dev-perl/Eval-Closure 0.140.0: safely and cleanly create closures via string eval
 dev-perl/Eval-LineNumbers 0.340.0: Add line numbers to hereis blocks that contain perl source code
-dev-perl/Event 1.240.0 1.260.0: Fast, generic event loop
+dev-perl/Event 1.260.0: Fast, generic event loop
 dev-perl/Event-ExecFlow 0.640.0-r1: High level API for event-based execution flow control
 dev-perl/Event-RPC 1.80.0 1.100.0: Event based transparent Client/Server RPC framework
 dev-perl/Exception-Base 0.250.100: Error handling with exception class
@@ -6013,16 +6013,16 @@ dev-perl/Exception-System 0.110.0-r1: Exception class for system or library call
 dev-perl/Exception-Warning 0.40.100-r1: Convert simple warn into real exception object
 dev-perl/Expect 1.350.0: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1: Extension for easy multiple module imports
-dev-perl/Exporter-Lite 0.20.0-r1 0.80.0: Lightweight exporting of variables
+dev-perl/Exporter-Lite 0.80.0: Lightweight exporting of variables
 dev-perl/Exporter-Tiny 1.2.1: An exporter with the features of Sub::Exporter but only core dependencies
-dev-perl/ExtUtils-AutoInstall 0.630.0-r1 0.640.0: Automatic installation of dependencies via CPAN from within Makefile.PL
+dev-perl/ExtUtils-AutoInstall 0.640.0: Automatic installation of dependencies via CPAN from within Makefile.PL
 dev-perl/ExtUtils-CChecker 0.100.0: Configure-time utilities for using C headers
-dev-perl/ExtUtils-Config 0.7.0 0.8.0: A wrapper for perl's configuration
+dev-perl/ExtUtils-Config 0.8.0: A wrapper for perl's configuration
 dev-perl/ExtUtils-CppGuess 0.110.0: Guess C++ compiler and flags
-dev-perl/ExtUtils-Depends 0.404.0 0.405.0: Easily build XS extensions that depend on XS extensions
+dev-perl/ExtUtils-Depends 0.405.0: Easily build XS extensions that depend on XS extensions
 dev-perl/ExtUtils-F77 1.200.0-r1: Facilitate use of FORTRAN from Perl/XS code
-dev-perl/ExtUtils-Helpers 0.22.0 0.26.0: Various portability utilities for module builders
-dev-perl/ExtUtils-InstallPaths 0.10.0 0.11.0: Build.PL install path logic made easy
+dev-perl/ExtUtils-Helpers 0.26.0: Various portability utilities for module builders
+dev-perl/ExtUtils-InstallPaths 0.11.0: Build.PL install path logic made easy
 dev-perl/ExtUtils-LibBuilder 0.80.0: A tool to build C libraries
 dev-perl/ExtUtils-PkgConfig 1.160.0: Simplistic perl interface to pkg-config
 dev-perl/ExtUtils-Typemaps-Default 1.50.0: A set of useful typemaps
@@ -12600,7 +12600,7 @@ media-gfx/scantailor-advanced 1.0.14 1.0.16: Interactive post-processing tool fo
 media-gfx/scour 0.37: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8_p13-r1 1.2 9999: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.30.8: Open source photo manager for GNOME
+media-gfx/shotwell 0.30.8-r1: Open source photo manager for GNOME
 media-gfx/sigal 1.3.0: Simple static web gallery generator
 media-gfx/simple-scan 3.32.2 3.32.2.1 3.34.4: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.3.0-r1 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
