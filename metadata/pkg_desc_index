@@ -4581,7 +4581,7 @@ dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/openjdk 8.242 11.0.6: Open source implementation of the Java programming language
 dev-java/openjdk-bin 8.242_p08 11.0.6_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.242_p08 11.0.6_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.242_p08-r1 11.0.6_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 11.0.6_p2 11.0.7_p0: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
@@ -17265,7 +17265,7 @@ sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES ci
 sys-fs/lsscsi 0.29 0.30 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
-sys-fs/lvm2 2.02.184-r5 2.02.186-r2 2.02.187 2.03.09: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.184-r5 2.02.186-r2 2.02.187 2.02.187-r1 2.03.09: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
