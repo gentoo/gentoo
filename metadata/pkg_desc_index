@@ -2768,7 +2768,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2019-r1: A complete TeX distribution
-app-text/texlive-core 2019-r10 2019-r11: A complete TeX distribution
+app-text/texlive-core 2019-r10 2019-r11 2020: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -6266,22 +6266,22 @@ dev-perl/LWP-Authen-Wsse 0.50.0-r1: Library for enabling X-WSSE authentication i
 dev-perl/LWP-MediaTypes 6.20.0-r1: Media types and mailcap processing
 dev-perl/LWP-Online 1.80.0-r2: Does your process have access to the web
 dev-perl/LWP-Protocol-http10 6.30.0: Legacy HTTP/1.0 support for LWP
-dev-perl/LWP-Protocol-https 6.60.0 6.70.0: Provide https support for LWP::UserAgent
+dev-perl/LWP-Protocol-https 6.70.0: Provide https support for LWP::UserAgent
 dev-perl/LWP-UserAgent-Cached 0.60.0-r1: LWP::UserAgent with simple caching mechanism
 dev-perl/LWP-UserAgent-Determined 1.70.0: A virtual browser that retries errors
 dev-perl/LWPx-ParanoidAgent 1.120.0: Subclass of LWP::UserAgent that protects you from harm
-dev-perl/LaTeX-Driver 0.200.4 0.300.2: Perl encapsulation of invoking the Latex programs
-dev-perl/LaTeX-Encode 0.91.6-r1 0.92.0: Encode characters for LaTeX formatting
-dev-perl/LaTeX-Table 1.0.6 1.0.6-r1: Perl extension for the automatic generation of LaTeX tables
+dev-perl/LaTeX-Driver 0.300.2: Perl encapsulation of invoking the Latex programs
+dev-perl/LaTeX-Encode 0.92.0: Encode characters for LaTeX formatting
+dev-perl/LaTeX-Table 1.0.6-r1: Perl extension for the automatic generation of LaTeX tables
 dev-perl/Lab-Measurement 3.682 3.692 9999: Measurement control and automation with Perl
 dev-perl/Lab-VXI11 0.20.0: Perl interface to the VXI-11 Test&Measurement backend
 dev-perl/Lab-Zhinst 0.30.0 0.50.0 1.20.0 9999: Perl bindings to the LabOne API of Zurich Instruments
-dev-perl/Lchown 1.10.0-r1 1.10.0-r2: Use the lchown(2) system call from Perl
+dev-perl/Lchown 1.10.0-r2: Use the lchown(2) system call from Perl
 dev-perl/Lexical-Persistence 1.23.0: Bind lexicals to persistent data
 dev-perl/Lexical-SealRequireHints 0.11.0: Prevent leakage of lexical hints
 dev-perl/Lingua-EN-Inflect 1.902.0: Perl module to pluralize English words
 dev-perl/Lingua-EN-NameCase 1.190.0-r1: Correctly case a person's name from UPERCASE or lowcase
-dev-perl/Lingua-EN-NameParse 1.330.0 1.360.0: routines for manipulating a person's name
+dev-perl/Lingua-EN-NameParse 1.360.0: routines for manipulating a person's name
 dev-perl/Lingua-EN-Numbers-Ordinate 1.40.0: Convert cardinal numbers(3) to ordinal numbers(3rd)
 dev-perl/Lingua-PT-Stemmer 0.20.0: Portuguese language stemming
 dev-perl/Lingua-Preferred 0.2.4-r1: Pick a language based on user's preferences
@@ -6313,7 +6313,7 @@ dev-perl/Locale-gettext 1.70.0: A Perl module for accessing the GNU locale utili
 dev-perl/LockFile-Simple 0.208.0-r2: File locking module for Perl
 dev-perl/Log-Agent 1.1.0: A general logging framework
 dev-perl/Log-Any 1.701.0: Bringing loggers and listeners together
-dev-perl/Log-Dispatch 2.540.0 2.580.0 2.630.0 2.670.0: Dispatches messages to one or more outputs
+dev-perl/Log-Dispatch 2.580.0 2.630.0 2.670.0: Dispatches messages to one or more outputs
 dev-perl/Log-Dispatch-Array 1.3.0: log events to an array (reference)
 dev-perl/Log-Dispatchouli 2.15.0: a simple wrapper around Log::Dispatch
 dev-perl/Log-Log4perl 1.490.0: Log4j implementation for Perl
@@ -7141,8 +7141,8 @@ dev-perl/gtk2-traymanager 0.50.0-r2: Perl bindings for EggTrayManager
 dev-perl/indirect 0.370.0: Lexically warn about using the indirect method call syntax
 dev-perl/libintl-perl 1.280.0 1.310.0: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43-r1: Parsers and format conversion utilities used by (e.g.) profphd
-dev-perl/libwww-perl 6.150.0 6.270.0: A collection of Perl Modules for the WWW
-dev-perl/libxml-perl 0.80.0-r1 0.80.0-r2: Collection of Perl modules for working with XML
+dev-perl/libwww-perl 6.270.0: A collection of Perl Modules for the WWW
+dev-perl/libxml-perl 0.80.0-r2: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.24: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
