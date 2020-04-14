@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,5 +13,8 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]"
+RDEPEND="
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-cpp/eigen:3
+"
 DEPEND="${RDEPEND}"
