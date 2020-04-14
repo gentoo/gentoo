@@ -86,24 +86,33 @@ start() {
 		fi
 
 		if [ -d /proc/lvm ] || dm_in_proc ; then
-			ebegin "Setting up the Logical Volume Manager"
-			#still echo stderr for debugging
-			lvm_commands="#!${lvm_path}\n"
-			# Extra PV find pass because some devices might not have been available until very recently
-			lvm_commands="${lvm_commands}pvscan --config '${config}'\n"
+			local has_errors=0 verbose_command
+
+			yesno "${rc_verbose}" && verbose_command=" -v"
+
+			ebegin "Starting the Logical Volume Manager"
+
+			if _use_lvmetad ; then
+				# Extra PV find pass because some devices might not have been available until very recently
+				${lvm_path} pvscan${verbose_command} --config "${config}" --cache
+				[ $? -ne 0 ] && has_errors=1
+			fi
+
 			# Now make the nodes
-			lvm_commands="${lvm_commands}vgscan --config '${config}' --mknodes\n"
-			# And turn them on!
-			lvm_commands="${lvm_commands}vgchange --config '${config}' --sysinit -a ly\n"
+			${lvm_path} vgscan${verbose_command} --config "${config}" --mknodes
+			[ $? -ne 0 ] && has_errors=1
+
+			# Enable all VGs
+			${lvm_path} vgchange${verbose_command} --config "${config}" --sysinit --activate y
+			[ $? -ne 0 ] && has_errors=1
 
 			if _use_lvmlockd ; then
 				# Start lockd VGs as required
-				lvm_commands="${lvm_commands}vgchange --config '${config}' --lock-start --lock-opt auto\n"
+				${lvm_path} vgchange${verbose_command} --config "${config}" --lock-start --lock-opt auto
+				[ $? -ne 0 ] && has_errors=1
 			fi
 
-			# Order of this is important, have to work around dash and LVM readline
-			printf "%b\n" "${lvm_commands}" | $lvm_path /proc/self/fd/0 >/dev/null
-			eend $? "Failed to setup the LVM"
+			eend ${has_errors} "Failed to start the Logical Volume Manager"
 		fi
 	fi
 }
