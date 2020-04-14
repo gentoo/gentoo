@@ -1670,7 +1670,7 @@ app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
 app-emulation/vagrant 2.2.6-r1 2.2.7-r1: A tool for building and distributing development environments
-app-emulation/vice 3.1 3.4_p37498 3.4_p37605: The Versatile Commodore Emulator
+app-emulation/vice 3.4_p37498 3.4_p37605: The Versatile Commodore Emulator
 app-emulation/virt-manager 2.2.1-r2 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19 1.20: Detects if the current machine is running in a virtual machine
@@ -2446,7 +2446,7 @@ app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.1 0.1.2 0.1.3 0.1.4 0.1.6 0.1.7 0.1.9 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.1 0.1.2 0.1.3 0.1.4 0.1.6 0.1.7 0.1.9 0.1.10 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -2714,7 +2714,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1 0.56 0.57: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.85.0 0.86.1 0.87.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.85.0 0.87.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20190410 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -3444,7 +3444,7 @@ dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using All
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
 dev-games/hdl_dump 0.8.6.20060901 0.9.2.20180722: Game installer for PlayStation 2 HD Loader and Open PS2 Loader
 dev-games/higan-ananke 094: A higan helper library needed for extra rom load options
-dev-games/irrlicht 1.8.4 1.8.4-r1: open source high performance realtime 3D engine written in C++
+dev-games/irrlicht 1.8.4-r1: open source high performance realtime 3D engine written in C++
 dev-games/irrlicht-headers 1.8.4: Irrlicht 3D engine headers
 dev-games/libmaitretarot 0.1.98: backend library for the maitretarot games
 dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
@@ -5600,7 +5600,7 @@ dev-perl/Audio-Mixer 0.700.0-r2: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1: An OO interface to Musepack file information and APE tag fields
 dev-perl/Audio-Scan 1.10.0: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0: extension for reading WMA/ASF metadata
-dev-perl/Audio-Wav 0.140.0: Modules for reading & writing Microsoft WAV files
+dev-perl/Audio-Wav 0.140.0-r1: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1: interface to read and modify Apache .htpasswd files
 dev-perl/Authen-Libwrap 0.230.0: A Perl access to the TCP Wrappers interface
@@ -6205,7 +6205,7 @@ dev-perl/IO-AIO 4.340.0: Asynchronous Input/Output
 dev-perl/IO-All 0.870.0: unified IO operations
 dev-perl/IO-BufferedSelect 1.0.0-r2: Perl module that implements a line-buffered select interface
 dev-perl/IO-Capture 0.50.0-r2: Abstract Base Class to build modules to capture output
-dev-perl/IO-CaptureOutput 1.110.400 1.110.400-r1: Capture STDOUT and STDERR from Perl code, subprocesses or XS
+dev-perl/IO-CaptureOutput 1.110.400-r1: Capture STDOUT and STDERR from Perl code, subprocesses or XS
 dev-perl/IO-Compress-Brotli 0.4.1: Read/write Brotli buffers/streams
 dev-perl/IO-Digest 0.110.0-r2: IO::Digest - Calculate digests while reading or writing
 dev-perl/IO-Event 0.813.0-r1: Tied Filehandles for Nonblocking IO with Object Callbacks
@@ -6214,12 +6214,12 @@ dev-perl/IO-Handle-Util 0.10.0: Functions for working with IO::Handle like objec
 dev-perl/IO-Interactive 1.22.0: Utilities for interactive I/O
 dev-perl/IO-Interface 1.90.0: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
-dev-perl/IO-Multiplex 1.160.0 1.160.0-r1: Manage IO on many file handles
+dev-perl/IO-Multiplex 1.160.0-r1: Manage IO on many file handles
 dev-perl/IO-Pager 0.390.0: Select a pager, optionally pipe it output if destination is a TTY
 dev-perl/IO-Pipely 0.5.0-r1: Portably create pipe() or pipe-like handles, one way or another
 dev-perl/IO-Prompt 0.997.4: Interactively prompt for user input
 dev-perl/IO-SessionData 1.30.0-r1: Session data support module for SOAP::Lite
-dev-perl/IO-Socket-INET6 2.720.0 2.720.0-r1: Work with IO sockets in ipv6
+dev-perl/IO-Socket-INET6 2.720.0-r1: Work with IO sockets in ipv6
 dev-perl/IO-Socket-Multicast 1.120.0: Send and receive multicast messages
 dev-perl/IO-Socket-PortState 0.30.0: Perl extension for checking the open or closed status of a port
 dev-perl/IO-Socket-SSL 2.52.0 2.66.0: Nearly transparent SSL encapsulation for IO::Socket::INET
@@ -6246,11 +6246,11 @@ dev-perl/Image-Scale 0.130.0: Fast, high-quality fixed-point image resizing
 dev-perl/Image-Size 3.300.0: A library to extract height/width from images
 dev-perl/Import-Into 1.2.5: Import packages into other packages
 dev-perl/Importer 0.24.0: Alternative interface to modules that export symbols
-dev-perl/Inline 0.500.0-r1 0.800.0: Write Perl subroutines in other languages
+dev-perl/Inline 0.800.0: Write Perl subroutines in other languages
 dev-perl/Inline-C 0.780.0: C Language Support for Inline
 dev-perl/Inline-Files 0.690.0: Multiple virtual files in a single file
 dev-perl/Inline-Python 0.560.0: Easy implementation of Python extensions
-dev-perl/JSON 2.900.0 2.940.0: JSON (JavaScript Object Notation) encoder/decoder
+dev-perl/JSON 2.940.0: JSON (JavaScript Object Notation) encoder/decoder
 dev-perl/JSON-Any 1.390.0: Wrapper Class for the various JSON classes (DEPRECATED)
 dev-perl/JSON-MaybeXS 1.3.9: Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
 dev-perl/JSON-Parse 0.550.0: Read JSON into a Perl Variable
@@ -6559,7 +6559,7 @@ dev-perl/Object-Enum 0.75.0: Replacement for if ($foo eq 'bar')
 dev-perl/Object-Event 1.230.0: A class that provides an event callback interface
 dev-perl/Object-MultiType 0.50.0: Perl Objects as Hash, Array, Scalar, Code and Glob at the same time
 dev-perl/Object-Realize-Later 0.190.0: Delayed creation of objects
-dev-perl/Ogg-Vorbis-Header 0.30.0-r1 0.50.0: An object-oriented interface to Ogg Vorbis information and comment fields
+dev-perl/Ogg-Vorbis-Header 0.30.0-r2 0.50.0-r1: An object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r2: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Olson-Abbreviations 0.40.0: Globally unique timezones abbreviation handling
 dev-perl/OpenGL 0.670.400 0.700.0: Perl interface providing graphics display using OpenGL
@@ -7138,7 +7138,7 @@ dev-perl/gtk2-gladexml 1.7.0-r2: Create user interfaces directly from Glade XML 
 dev-perl/gtk2-spell 1.40.0-r2: Bindings for GtkSpell with Gtk2.x
 dev-perl/gtk2-trayicon 0.60.0-r2: Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 dev-perl/gtk2-traymanager 0.50.0-r2: Perl bindings for EggTrayManager
-dev-perl/indirect 0.360.0 0.370.0: Lexically warn about using the indirect method call syntax
+dev-perl/indirect 0.370.0: Lexically warn about using the indirect method call syntax
 dev-perl/libintl-perl 1.280.0 1.310.0: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43-r1: Parsers and format conversion utilities used by (e.g.) profphd
 dev-perl/libwww-perl 6.150.0 6.270.0: A collection of Perl Modules for the WWW
@@ -9006,7 +9006,7 @@ dev-qt/qtxmlpatterns 5.13.2 5.14.1 5.14.2: XPath, XQuery, XSLT, and XML Schema v
 dev-ros/actionlib 1.11.13 1.11.14 1.11.15 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.5 1.12.6 1.12.7 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 0.1.10 0.1.11 9999: Actionlib tutorials
-dev-ros/amcl 1.16.3 9999: Probabilistic localization system for a robot moving in 2D
+dev-ros/amcl 1.16.3-r1 9999: Probabilistic localization system for a robot moving in 2D
 dev-ros/ament_cmake_core 0.8.1 9999: The core of the ament buildsystem in CMake
 dev-ros/ament_cmake_export_definitions 0.8.1 9999: Export definitions to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_export_dependencies 0.8.1 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
@@ -14766,7 +14766,7 @@ net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r5 2.2.10-r6 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
 net-misc/charm 1.9.2-r2: A text based livejournal client
-net-misc/chrony 3.5-r2 3.5-r3 4.0_pre1 4.0_pre1-r1 9999: NTP client and server programs
+net-misc/chrony 3.5-r2 3.5-r3 3.5-r4 4.0_pre1 4.0_pre1-r1 4.0_pre1-r2 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2019.01.13 2020.03.07 2020.04.12: Qt GUI for Connman with system tray icon
@@ -16836,7 +16836,7 @@ sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
-sys-apps/xdg-desktop-portal 1.4.2-r1 1.6.0: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.4.2-r1 1.6.0-r1: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.22.0 1.22.4: Fast, reliable, and secure node dependency management
