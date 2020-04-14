@@ -55,6 +55,7 @@ DEPEND="${RDEPEND}
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		virtual/imagemagick-tools[jpeg,png,svg]
+		dev-texlive/texlive-fontsextra
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
 		app-text/dvipng
