@@ -108,10 +108,16 @@ start() {
 }
 
 start_post() {
-	# Save if we needed lvmetad
+	local _use=
 	if _use_lvmetad ; then
-		service_set_value use lvmetad
+		_use="${_use} lvmetad"
 	fi
+
+	if _use_lvmlockd ; then
+		_use="${_use} lvmlockd"
+	fi
+
+	service_set_value use "${_use}"
 }
 
 stop() {
