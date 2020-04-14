@@ -9,13 +9,13 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit bash-completion-r1 flag-o-matic linux-info distutils-r1 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
-HOMEPAGE="https://zfsonlinux.org/"
+HOMEPAGE="https://github.com/openzfs/zfs"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3 linux-mod
-	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
+	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
-	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
+	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
