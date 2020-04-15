@@ -12,6 +12,7 @@ media-video/ffmpeg srt
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-04-11)
 # git useflag requires dev-libs/libgit2
 dev-util/geany-plugins git
+dev-util/geany-plugins workbench
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # uses slot 0 of dev-lang/spidermonkey that is broken on sparc

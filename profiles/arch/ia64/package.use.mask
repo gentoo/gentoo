@@ -23,10 +23,6 @@ gnome-base/nautilus previewer
 gnome-base/gnome-control-center flickr
 gnome-base/gvfs google
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-11)
-# git useflag requires dev-libs/libgit2
-dev-util/geany-plugins git
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-15)
 # Mask USE=libtesseract, app-text/tesseract is not keyworded
 # Mask USE=dav1d, media-libs/dav1d is not keyworded
