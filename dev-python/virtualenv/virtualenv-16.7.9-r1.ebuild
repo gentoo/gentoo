@@ -5,6 +5,7 @@ EAPI=7
 
 # pypy{,3} dropped until test deps are tested/updated
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -23,7 +24,8 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND=">=dev-python/setuptools-19.6.2[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/setuptools-19.6.2[${PYTHON_USEDEP}]"
+BDEPEND="${RDEPEND}
 	test? (
 		>=dev-python/pip-19.3.1-r1[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
