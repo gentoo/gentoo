@@ -5,6 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit db-use distutils-r1
 

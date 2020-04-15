@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -18,7 +19,6 @@ IUSE="test"
 RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
 	<dev-python/mistune-2.0[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
