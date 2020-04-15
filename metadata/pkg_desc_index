@@ -1416,7 +1416,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20161103: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.49 1.50: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.50: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.50_pre20170728: Source code browser for Emacs
 app-emacs/edb 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -1490,7 +1490,7 @@ app-emacs/muse 3.20-r1: An authoring and publishing environment for Emacs
 app-emacs/nagios-mode 0.3-r1: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NXML
-app-emacs/nxml-gentoo-schemas 20180611 20200109 20200303: Extension for nxml-mode with Gentoo-specific schemas
+app-emacs/nxml-gentoo-schemas 20200303: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml
@@ -3038,7 +3038,7 @@ app-xemacs/dictionary 1.16 1.18: Interface to RFC2229 dictionary servers
 app-xemacs/dired 1.17 1.19 1.20 1.22: Manage file systems
 app-xemacs/docbookide 0.08 0.10: DocBook editing support
 app-xemacs/easypg 1.02 1.03-r1 1.05: GnuPG interface for Emacs
-app-xemacs/ebuild-mode 1.49 1.50: Emacs modes for editing ebuilds and other Gentoo specific files
+app-xemacs/ebuild-mode 1.50: Emacs modes for editing ebuilds and other Gentoo specific files
 app-xemacs/ecb 1.25: Emacs source code browser
 app-xemacs/ecrypto 0.20 0.21 0.23: Crypto functionality in Emacs Lisp
 app-xemacs/ede 1.07: Emacs Development Environment
@@ -17866,7 +17866,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 2.11.1811.52_p1: A browser for our friends
-www-client/vivaldi-snapshot 2.12.1873.3_p1 2.12.1874.30_p1: A browser for our friends
+www-client/vivaldi-snapshot 2.12.1874.30_p1 3.0.1874.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-client/weboob 1.3 9998 9999: Consume lots of websites without a browser (Web Outside Of Browsers)
