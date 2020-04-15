@@ -5,6 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 PYTHON_REQ_USE="xml(+),sqlite?"
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit eutils distutils-r1 linux-info prefix
 
