@@ -11782,7 +11782,7 @@ kde-apps/kolourpaint 19.12.3: Paint Program by KDE
 kde-apps/kompare 19.12.3: A program to view the differences between files
 kde-apps/konqueror 19.12.3: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 19.12.3: Galactic Strategy KDE Game
-kde-apps/konsole 19.12.3: KDE's terminal emulator
+kde-apps/konsole 19.12.3 19.12.3-r1: KDE's terminal emulator
 kde-apps/konsolekalendar 19.12.3: Command line interface to KDE calendars
 kde-apps/kontact 19.12.3: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 19.12.3: Library for embedding KParts in a Kontact component
@@ -16837,7 +16837,7 @@ sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
-sys-apps/xdg-desktop-portal 1.4.2-r1 1.6.0-r1: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.6.0-r1: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.22.0 1.22.4: Fast, reliable, and secure node dependency management
