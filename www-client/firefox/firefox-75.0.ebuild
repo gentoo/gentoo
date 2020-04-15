@@ -131,7 +131,7 @@ DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
 	>=dev-util/cbindgen-0.13.0
-	>=net-libs/nodejs-8.11.0
+	>=net-libs/nodejs-10.19.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
 	|| (
