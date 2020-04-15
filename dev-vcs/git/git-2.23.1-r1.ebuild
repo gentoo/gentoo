@@ -173,7 +173,7 @@ exportmakeopts() {
 		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
 		$(usex perforce '' NO_PYTHON=YesPlease)
 		$(usex subversion '' NO_SVN_TESTS=YesPlease)
-		$(usex threads '' NO_PTHREAD=YesPlease)
+		$(usex threads '' NO_PTHREADS=YesPlease)
 		$(usex tk '' NO_TCLTK=YesPlease)
 	)
 
