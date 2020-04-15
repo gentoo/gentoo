@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 CABAL_FEATURES="bin nocabaldep"
 inherit eutils haskell-cabal
@@ -12,7 +12,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND=">=dev-lang/ghc-6.12.1"
@@ -22,6 +22,8 @@ RDEPEND="|| ( >=sys-apps/portage-2.1.6
 		sys-apps/pkgcore )"
 
 src_prepare() {
+	default
+
 	if use prefix; then
 		sed -i -e "s,/var/db/pkg,${EPREFIX}&,g" \
 			"${S}/Distribution/Gentoo/Packages.hs" || die
