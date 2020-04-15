@@ -5,13 +5,13 @@ Subject: [PATCH] We'll install docs manually, thanks
 
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
- fc-solve/source/CMakeLists.txt | 12 ++++++------
+ CMakeLists.txt | 12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/fc-solve/source/CMakeLists.txt b/fc-solve/source/CMakeLists.txt
+diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 0c550764f..59c1defb3 100644
---- a/fc-solve/source/CMakeLists.txt
-+++ b/fc-solve/source/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -1274,12 +1274,12 @@ IF (WIN32 AND NOT UNIX)
      LIST(APPEND docs_to_install "README.win32.txt")
  ENDIF ()
