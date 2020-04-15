@@ -1,0 +1,25 @@
+Title: new ppc64le (little-endian) profiles
+Author: Georgy Yakovlev <gyakovlev@gentoo.org>
+Posted: 2020-04-04
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Profile: default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian
+Display-If-Profile: default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd
+
+A new set of 17.0 ppc64le profiles has been added to the Gentoo repository.
+New profiles are compatible with existing ppc64 little-endian profiles,
+and no additional action required after switching the profile.
+
+Please migrate away from the old profiles:
+
+* Old profiles:
+default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian
+default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd
+
+* Replaced by:
+default/linux/ppc64le/17.0 
+default/linux/ppc64le/17.0/systemd
+
+Desktop profiles are now also available.
+
+Refer to `eselect profile list` output.
