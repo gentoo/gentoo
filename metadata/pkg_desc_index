@@ -7025,7 +7025,7 @@ dev-perl/WWW-Form-UrlEncoded-XS 0.240.0: XS parsing/building of application/x-ww
 dev-perl/WWW-Mechanize 1.870.0 1.910.0: Handy web browsing in a Perl object
 dev-perl/WWW-Mechanize-FormFiller 0.120.0: Framework to automate HTML forms
 dev-perl/WWW-Pastebin-PastebinCom-Create 1.3.0-r1: Paste on www.pastebin.com without API keys
-dev-perl/WWW-RobotRules 6.20.0 6.20.0-r1: Parse /robots.txt file
+dev-perl/WWW-RobotRules 6.20.0-r1: Parse /robots.txt file
 dev-perl/WWW-Shorten 3.93.0: Interface to URL shortening sites
 dev-perl/Want 0.290.0: A generalisation of wantarray
 dev-perl/WattsUp-Daemon 0.4-r1: Watt's Up Monitoring Daemon
@@ -7033,11 +7033,11 @@ dev-perl/WeakRef 0.10.0-r1: An API to the Perl weak references
 dev-perl/Weather-Com 2.0.0-r1: fetching weather information from weather.com
 dev-perl/WebService-Linode 0.28.0: Perl interface to the Linode.com API
 dev-perl/WebService-MusicBrainz 1.0.4: Web service API to MusicBrainz database
-dev-perl/WordNet-QueryData 1.490.0-r1 1.490.0-r2: Direct perl interface to WordNet database
+dev-perl/WordNet-QueryData 1.490.0-r2: Direct perl interface to WordNet database
 dev-perl/Wx 0.993.200-r1: Perl bindings for wxGTK
 dev-perl/Wx-GLCanvas 0.90.0: interface to wxWidgets' OpenGL canvas
-dev-perl/Wx-Perl-ProcessStream 0.320.0-r2 0.320.0-r3: access IO of external processes via events
-dev-perl/Wx-Scintilla 0.390.0-r2 0.390.0-r3: Scintilla source code editing component for wxWidgets
+dev-perl/Wx-Perl-ProcessStream 0.320.0-r3: access IO of external processes via events
+dev-perl/Wx-Scintilla 0.390.0-r3: Scintilla source code editing component for wxWidgets
 dev-perl/X-Osd 0.700.0-r1 0.700.0-r2: Perl glue to libxosd (X OnScreen Display)
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
 dev-perl/X11-Protocol 0.560.0-r1 0.560.0-r2: Client-side interface to the X11 Protocol
@@ -16871,7 +16871,7 @@ sys-auth/pam_abl 0.6.0: PAM module for blacklisting hosts and users repeatedly f
 sys-auth/pam_blue 0.9.0-r1: PAM module providing ability to authenticate via a bluetooth compatible device
 sys-auth/pam_dotfile 0.7-r2: pam module to allow password-storing in $HOME/dotfiles
 sys-auth/pam_fprint 0.2-r1: a simple PAM module which uses libfprint's functionality for authentication
-sys-auth/pam_krb5 4.6 4.7 4.9: Kerberos V PAM Authentication Module
+sys-auth/pam_krb5 4.9: Kerberos V PAM Authentication Module
 sys-auth/pam_ldap 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
 sys-auth/pam_mount 2.16 2.16-r1: A PAM module that can mount volumes for a user session
