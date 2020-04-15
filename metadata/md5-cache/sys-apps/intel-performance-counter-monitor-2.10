@@ -1,13 +1,13 @@
 DEFINED_PHASES=install postinst prepare
-DEPEND=>=sys-devel/gcc-4:* sys-apps/sed filecaps? ( sys-libs/libcap )
+DEPEND=>=sys-devel/gcc-4:* sys-apps/sed
 DESCRIPTION=Intel Performance Counter Monitor - A better way to measure CPU utilization
 EAPI=5
 HOMEPAGE=https://software.intel.com/en-us/articles/intel-performance-counter-monitor-a-better-way-to-measure-cpu-utilization
 IUSE=+filecaps
 KEYWORDS=~amd64
 LICENSE=BSD
-RDEPEND=>=sys-devel/gcc-4:*
+RDEPEND=>=sys-devel/gcc-4:* filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~idella4/distfiles/IntelPerformanceCounterMonitor-PCM-V2.10.zip
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	fcaps	ec29518af791bd4f819e5d42f0f4c11f	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	fcaps	da689a8e04bbbb3518888ff668fee45b	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=e4439d45183ea80c915cc16e03ef1640

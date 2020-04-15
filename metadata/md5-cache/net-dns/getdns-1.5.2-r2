@@ -7,10 +7,10 @@ HOMEPAGE=https://getdnsapi.net/
 IUSE=doc +getdns-query +getdns-server-mon gnutls +idn libev libevent libuv nettle static-libs stubby +threads +unbound +filecaps
 KEYWORDS=amd64 ~x86
 LICENSE=BSD
-RDEPEND=dev-libs/libbsd:= dev-libs/libyaml:= idn? ( net-dns/libidn2:= ) !gnutls? ( dev-libs/openssl:0= ) gnutls? ( net-libs/gnutls:0=[dane] ) libev? ( dev-libs/libev:= ) libevent? ( dev-libs/libevent:= ) libuv? ( dev-libs/libuv:= ) nettle? ( dev-libs/nettle:0= ) unbound? ( >=net-dns/unbound-1.4.16:= ) stubby? ( sys-libs/libcap:= )
+RDEPEND=dev-libs/libbsd:= dev-libs/libyaml:= idn? ( net-dns/libidn2:= ) !gnutls? ( dev-libs/openssl:0= ) gnutls? ( net-libs/gnutls:0=[dane] ) libev? ( dev-libs/libev:= ) libevent? ( dev-libs/libevent:= ) libuv? ( dev-libs/libuv:= ) nettle? ( dev-libs/nettle:0= ) unbound? ( >=net-dns/unbound-1.4.16:= ) stubby? ( sys-libs/libcap:= ) filecaps? ( sys-libs/libcap )
 REQUIRED_USE=gnutls? ( nettle )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://getdnsapi.net/releases/getdns-1-5-2/getdns-1.5.2.tar.gz
-_eclasses_=fcaps	ec29518af791bd4f819e5d42f0f4c11f	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=56ccb9534e68be278d7ed867fa7ec199

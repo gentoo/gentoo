@@ -7,9 +7,9 @@ HOMEPAGE=https://github.com/swaywm/wlroots
 IUSE=elogind icccm systemd x11-backend X +filecaps
 KEYWORDS=amd64 arm64 ~ppc64 x86
 LICENSE=MIT
-RDEPEND=>=dev-libs/libinput-1.9.0:0= >=dev-libs/wayland-1.17.0 media-libs/mesa[egl,gles2,gbm] virtual/libudev x11-libs/libdrm x11-libs/libxkbcommon x11-libs/pixman elogind? ( >=sys-auth/elogind-237 ) icccm? ( x11-libs/xcb-util-wm ) systemd? ( >=sys-apps/systemd-237 ) x11-backend? ( x11-libs/libxcb:0= ) X? ( x11-base/xorg-server[wayland] x11-libs/libxcb:0= x11-libs/xcb-util-image )
+RDEPEND=>=dev-libs/libinput-1.9.0:0= >=dev-libs/wayland-1.17.0 media-libs/mesa[egl,gles2,gbm] virtual/libudev x11-libs/libdrm x11-libs/libxkbcommon x11-libs/pixman elogind? ( >=sys-auth/elogind-237 ) icccm? ( x11-libs/xcb-util-wm ) systemd? ( >=sys-apps/systemd-237 ) x11-backend? ( x11-libs/libxcb:0= ) X? ( x11-base/xorg-server[wayland] x11-libs/libxcb:0= x11-libs/xcb-util-image ) filecaps? ( sys-libs/libcap )
 REQUIRED_USE=?? ( elogind systemd )
 SLOT=0/10
 SRC_URI=https://github.com/swaywm/wlroots/archive/0.10.0.tar.gz -> wlroots-0.10.0.tar.gz
-_eclasses_=fcaps	ec29518af791bd4f819e5d42f0f4c11f	meson	7e1b57786f9b4f7aa3bb403dbd65475f	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	00efd460b0996a1e4aab8825dded5700	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	meson	7e1b57786f9b4f7aa3bb403dbd65475f	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	00efd460b0996a1e4aab8825dded5700	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bf0d74771f3786e8ebd62548acdc2982

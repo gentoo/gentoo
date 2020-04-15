@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install postinst prepare
-DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr x11-base/xorg-proto filecaps? ( sys-libs/libcap )
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr x11-base/xorg-proto
 DESCRIPTION=simple X display locker
 EAPI=6
 HOMEPAGE=https://tools.suckless.org/slock
 IUSE=+filecaps savedconfig
 KEYWORDS=amd64 hppa x86
 LICENSE=MIT
-RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://dl.suckless.org/tools/slock-1.4.tar.gz
-_eclasses_=fcaps	ec29518af791bd4f819e5d42f0f4c11f	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f6d38704c26d0648e1c04173ff9ece20
