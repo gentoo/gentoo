@@ -5,6 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 PYTHON_REQ_USE="xml(+)"
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 prefix
 
