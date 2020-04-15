@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-04-15)
+# Last upstream release in 2001. HOMEPAGE disappeared in 2010.
+# Use app-i18n/man-pages-l10n[l10n_nl] as replacement.
+# Masked for removal in 30 days. Bug #713590.
+app-i18n/man-pages-nl
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-15)
 # Temporary fork of app-emulation/runc used by Docker.  The latter
 # switched back to the original which is now blocking this package.
