@@ -5316,7 +5316,7 @@ dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
 dev-libs/xerces-c 3.2.2-r1 9999: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlsec 1.2.29: Command line tool for signing, verifying, encrypting and decrypting XML
-dev-libs/xxhash 0.6.5 0.7.0 0.7.1: Extremely fast non-cryptographic hash algorithm
+dev-libs/xxhash 0.6.5 0.7.1 0.7.3: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1 2.1.0-r2: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zlog 1.2.12 1.2.12-r1: A reliable, thread safe, clear-model, pure C logging library.
@@ -6332,11 +6332,11 @@ dev-perl/MIME-Charset 1.12.2: Charset Informations for MIME
 dev-perl/MIME-EncWords 1.14.3: Deal with RFC 2047 encoded words (improved)
 dev-perl/MIME-Lite 3.30.0: Low-calorie MIME generator
 dev-perl/MIME-Lite-HTML 1.240.0: Provide routine to transform a HTML page in a MIME-Lite mail
-dev-perl/MIME-Types 2.120.0 2.130.0: Definition of MIME types
+dev-perl/MIME-Types 2.130.0: Definition of MIME types
 dev-perl/MIME-tools 5.509.0: A Perl module for parsing and creating MIME entities
 dev-perl/MLDBM 2.50.0: A multidimensional/tied hash Perl Module
 dev-perl/MLDBM-Sync 0.300.0-r1: Safe concurrent access to MLDBM databases
-dev-perl/MP3-Info 1.240.0-r1 1.260.0: A Perl module to manipulate/fetch info from MP3 files
+dev-perl/MP3-Info 1.260.0: A Perl module to manipulate/fetch info from MP3 files
 dev-perl/MP3-Tag 1.150.0: Module for reading tags of MP3 Audio files
 dev-perl/MP4-Info 1.130.0: Fetch info from MPEG-4 files (.mp4, .m4a, .m4p, .3gp)
 dev-perl/MRO-Compat 0.130.0: Lets you build groups of accessors
@@ -6347,7 +6347,7 @@ dev-perl/Mail-Box-IMAP4 3.2.0: Mail::Box connector via IMAP4
 dev-perl/Mail-Box-POP3 3.3.0: Mail::Box connector via POP3
 dev-perl/Mail-Builder 2.130.0: Easily create plaintext/html e-mail messages with attachments and inline images
 dev-perl/Mail-Builder-Simple 0.160.0-r1: Send UTF-8 HTML and text email using templates
-dev-perl/Mail-DKIM 0.410.0 0.440.0: Signs/verifies Internet mail using DKIM message signatures
+dev-perl/Mail-DKIM 0.440.0: Signs/verifies Internet mail using DKIM message signatures
 dev-perl/Mail-DMARC 1.201.709.110: Perl implementation of DMARC
 dev-perl/Mail-DomainKeys 1.0.0-r1: A perl implementation of DomainKeys
 dev-perl/Mail-IMAPClient 3.390.0: IMAP client module for Perl
@@ -6359,14 +6359,14 @@ dev-perl/Mail-Procmail 1.80.0-r1: Mail sorting/delivery module for Perl
 dev-perl/Mail-SPF 2.9.0-r2: An object-oriented implementation of Sender Policy Framework
 dev-perl/Mail-SRS 0.310.0-r2: Interface to Sender Rewriting Scheme
 dev-perl/Mail-Sender 0.903.0: Module for sending mails with attachments through an SMTP server
-dev-perl/Mail-Sendmail 0.790.0-r1 0.800.0: Simple platform independent mailer
+dev-perl/Mail-Sendmail 0.800.0: Simple platform independent mailer
 dev-perl/Mail-Transport 3.0.0: Base class for Email Message Exchange
 dev-perl/MailTools 2.190.0: Manipulation of electronic mail addresses
 dev-perl/Math-Base-Convert 0.110.0: Very fast base to base conversion
 dev-perl/Math-Base36 0.140.0: Encoding and decoding of base36 strings
 dev-perl/Math-Bezier 0.10.0-r1: Solution of Bezier Curves
-dev-perl/Math-BigInt-GMP 1.600.200 1.600.600: Use the GMP library for Math::BigInt routines
-dev-perl/Math-BigInt-Lite 0.140.0 0.170.0 0.180.0: What BigInts are before they become big
+dev-perl/Math-BigInt-GMP 1.600.600: Use the GMP library for Math::BigInt routines
+dev-perl/Math-BigInt-Lite 0.180.0: What BigInts are before they become big
 dev-perl/Math-CDF 0.100.0: Generate probabilities and quantiles from statistical functions
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
 dev-perl/Math-Derivative 1.10.0: 1st and 2nd order differentiation of data
@@ -6380,7 +6380,7 @@ dev-perl/Math-ModInt 0.11.0: modular integer arithmetic
 dev-perl/Math-NumSeq 72.0.0: number sequences (for example from OEIS)
 dev-perl/Math-NumberCruncher 5.0.0-r1: Collection of useful math-related functions
 dev-perl/Math-Pari 2.10.809.0-r1: Perl interface to PARI
-dev-perl/Math-PlanePath 123.0.0 124.0.0: Mathematical paths through the 2-D plane
+dev-perl/Math-PlanePath 124.0.0: Mathematical paths through the 2-D plane
 dev-perl/Math-Prime-XS 0.270.0: Detect and calculate prime numbers with deterministic tests
 dev-perl/Math-Random 0.720.0: Random Number Generators
 dev-perl/Math-Random-ISAAC 1.4.0-r1: Perl interface to the ISAAC PRNG algorithm
@@ -6400,7 +6400,7 @@ dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does
 dev-perl/Mo 0.400.0: Perl Micro Object framework
 dev-perl/Mock-Config 0.30.0: Temporarily set Config or XSConfig values
 dev-perl/Modem-Vgetty 0.30.0-r2: Interface to voice modems using vgetty
-dev-perl/Modern-Perl 1.201.701.170 1.201.907.270: enable all of the features of Modern Perl with one import
+dev-perl/Modern-Perl 1.201.907.270: enable all of the features of Modern Perl with one import
 dev-perl/Module-Build 0.422.400: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-WithXSpp 0.140.0: XS++ enhanced flavour of Module::Build
@@ -6417,8 +6417,8 @@ dev-perl/Module-Path 0.190.0: get the full path to a locally installed module
 dev-perl/Module-Pluggable 5.200.0: Automatically give your module the ability to have plugins
 dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
 dev-perl/Module-Runtime 0.16.0: Runtime module handling
-dev-perl/Module-Runtime-Conflicts 0.2.0 0.3.0: Provide information on conflicts for Module::Runtime
-dev-perl/Module-ScanDeps 1.230.0 1.240.0: Recursively scan Perl code for dependencies
+dev-perl/Module-Runtime-Conflicts 0.3.0: Provide information on conflicts for Module::Runtime
+dev-perl/Module-ScanDeps 1.240.0: Recursively scan Perl code for dependencies
 dev-perl/Module-Signature 0.810.0: Module signature file manipulation
 dev-perl/Module-Starter 1.730.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
@@ -6428,8 +6428,8 @@ dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-bl
 dev-perl/MogileFS-Network 0.60.0-r2: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Server 2.720.0-r1 2.730.0: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.290.0 2.300.0: Server for the MogileFS distributed file system
-dev-perl/Mojolicious 6.610.0 7.140.0 7.190.0 7.290.0 7.300.0 7.570.0: Real-time web framework
-dev-perl/Mon 0.110.0-r1 0.110.0-r2: A Monitor Perl Module
+dev-perl/Mojolicious 7.570.0: Real-time web framework
+dev-perl/Mon 0.110.0-r2: A Monitor Perl Module
 dev-perl/MongoDB 1.8.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0 0.400.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
 dev-perl/Moo 2.3.3: Minimalist Object Orientation (with Moose compatiblity)
@@ -6437,13 +6437,13 @@ dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-StrictConstructor 0.10.0: Make your Moo-based object constructors blow up on unknown attributes
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.30.0: Moo types for numbers
-dev-perl/MooX-late 0.15.0 0.15.0-r1: Easily translate Moose code to Moo
+dev-perl/MooX-late 0.15.0-r1: Easily translate Moose code to Moo
 dev-perl/Moose 2.160.500 2.180.600 2.180.700 2.200.400 2.200.500 2.200.700: A postmodern object system for Perl 5
 dev-perl/Moose-Autobox 0.160.0: Autoboxed wrappers for Native Perl datatypes
 dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in Moose
 dev-perl/MooseX-ClassAttribute 0.290.0: Declare class attributes Moose-style
 dev-perl/MooseX-ConfigFromFile 0.140.0-r1: An abstract Moose role for setting attributes from a configfile
-dev-perl/MooseX-FollowPBP 0.50.0 0.50.0-r1: Name your accessors get_foo() and set_foo(), whatever that may mean
+dev-perl/MooseX-FollowPBP 0.50.0-r1: Name your accessors get_foo() and set_foo(), whatever that may mean
 dev-perl/MooseX-Getopt 0.740.0: A Moose role for processing command line options
 dev-perl/MooseX-GlobRef 0.70.100: Store a Moose object in glob reference
 dev-perl/MooseX-Has-Sugar 1.0.6: Sugar Syntax for moose 'has' fields
@@ -6469,7 +6469,7 @@ dev-perl/MooseX-Types-Perl 0.101.343: Moose types that check against Perl syntax
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
 dev-perl/Mouse 2.4.10: Moose minus the antlers
 dev-perl/MouseX-NativeTraits 1.90.0-r2: Extend your attribute interfaces for Mouse
-dev-perl/MouseX-Types 0.60.0 0.60.0-r1: Organize your Mouse types in libraries
+dev-perl/MouseX-Types 0.60.0-r1: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/Mozilla-PublicSuffix 1.0.0: Get a domain name's public suffix via the Mozilla Public Suffix List
 dev-perl/MusicBrainz-DiscID 0.40.0: Perl interface for the MusicBrainz libdiscid library
@@ -7146,7 +7146,7 @@ dev-perl/libxml-perl 0.80.0-r2: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.24: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
-dev-perl/mime-construct 1.900.0-r1 1.1100.0-r1: construct and optionally mail MIME messages
+dev-perl/mime-construct 1.1100.0-r1: construct and optionally mail MIME messages
 dev-perl/multidimensional 0.13.0: disables multidimensional array emulation
 dev-perl/namespace-autoclean 0.280.0: Keep imports out of your namespace
 dev-perl/namespace-clean 0.270.0: Keep imports and functions out of your namespace
