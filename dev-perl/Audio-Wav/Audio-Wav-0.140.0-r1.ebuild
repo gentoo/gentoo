@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Modules for reading & writing Microsoft WAV files"
 
 SLOT="0"
-KEYWORDS="amd64 hppa ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE=""
 
 RDEPEND="
