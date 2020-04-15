@@ -8939,7 +8939,7 @@ dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.4: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-exceptions 4.3: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 5.0.0: Zope i18nmessageid Architecture
-dev-python/zope-interface 4.7.1: Interfaces for Python
+dev-python/zope-interface 4.7.1 5.1.0: Interfaces for Python
 dev-python/zope-schema 4.9.3: Zope schema Architecture
 dev-python/zope-testing 4.7-r1: Zope testing helpers
 dev-python/zope-testrunner 5.1: Zope testrunner script
