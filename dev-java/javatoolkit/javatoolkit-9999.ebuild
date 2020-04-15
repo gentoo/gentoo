@@ -4,8 +4,8 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-
 PYTHON_REQ_USE="xml(+)"
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 multilib prefix git-r3
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/javatoolkit.git"
