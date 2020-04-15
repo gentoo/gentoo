@@ -13983,7 +13983,7 @@ net-analyzer/ippl 1.4.14-r6: A daemon which logs TCP/UDP/ICMP packets
 net-analyzer/ipsumdump 1.85 1.86 1.86-r1: Simple TCP/IP Dump summarizer/analyzer
 net-analyzer/iptraf-ng 1.1.4-r1 1.1.4-r2 1.1.4-r3 9999: A console-based network monitoring utility
 net-analyzer/iptstate 2.2.5 2.2.6: IP Tables State displays states being kept by iptables in a top-like format
-net-analyzer/ipv6toolkit 2.0_p20160422 2.1_p20190919 99999999: Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
+net-analyzer/ipv6toolkit 2.1_p20190919 2.1_p20200412 99999999: Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
 net-analyzer/isic 0.07-r1: IP Stack Integrity Checker
 net-analyzer/jffnms 0.9.4-r1: Network Management and Monitoring System
 net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
@@ -17854,7 +17854,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
 www-client/opera 67.0.3575.137: A fast and secure web browser
-www-client/opera-beta 68.0.3618.31 68.0.3618.36: A fast and secure web browser
+www-client/opera-beta 68.0.3618.36 68.0.3618.41: A fast and secure web browser
 www-client/opera-developer 69.0.3653.0 69.0.3660.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
