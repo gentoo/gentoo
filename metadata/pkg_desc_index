@@ -635,7 +635,7 @@ app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par 
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
 app-arch/rar 5.9.0_p20200330: RAR compressor/uncompressor
-app-arch/rpm 4.14.1 4.14.1-r1 4.14.2.1: Red Hat Package Management Utils
+app-arch/rpm 4.14.1 4.14.1-r1 4.14.2.1-r1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g 9.0.0.5g-r1: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.15.2-r1: Tools to deal with shar archives
@@ -7637,7 +7637,7 @@ dev-python/discogs-client 2.2.1: Official Python API client for Discogs
 dev-python/diskcache 3.1.0: Disk and file backed cache
 dev-python/dissononce 0.34.3: A python implementation for Noise Protocol Framework
 dev-python/distributed 1.18.0-r1: Python library for distributed computation
-dev-python/distro 1.0.4: Reliable machine-readable Linux distribution information for Python
+dev-python/distro 1.0.4-r1: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.4.2: Use Database URLs in your Django Application
 dev-python/django 2.2.11 2.2.12: High-level Python web framework
 dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
@@ -8285,7 +8285,7 @@ dev-python/pychm 0.8.6: Python bindings for the chmlib library
 dev-python/pychromecast 4.1.0: Python module to talk to Google Chromecast.
 dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chroot handling
 dev-python/pyclipper 1.1.0: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
-dev-python/pycodestyle 2.5.0: Python style guide checker (fka pep8)
+dev-python/pycodestyle 2.5.0-r1: Python style guide checker (fka pep8)
 dev-python/pycollada 0.6-r1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.19-r1 2.20: C parser and AST generator written in Python
@@ -10392,7 +10392,7 @@ dev-util/gnome-builder 3.30.3-r1 3.32.4-r1 3.34.1-r1: An IDE for writing GNOME-b
 dev-util/gnome-devel-docs 3.30.2 3.32.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2019.3.4: Golang IDE by JetBrains
-dev-util/google-perftools 2.6.2 2.7 2.7-r1: Fast, multi-threaded malloc() and nifty performance analysis tools
+dev-util/google-perftools 2.6.2 2.7-r1: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19 2019.11.30: Converts profiling output to dot graphs
