@@ -116,6 +116,8 @@ src_install() {
 
 	# Fix perllocal.pod file collision
 	perl_delete_localpod
+
+	use python && python_optimize
 }
 
 src_test() {
