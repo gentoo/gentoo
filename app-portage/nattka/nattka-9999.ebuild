@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
+	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-util/pkgcheck[${PYTHON_USEDEP}]
 	dev-vcs/git
