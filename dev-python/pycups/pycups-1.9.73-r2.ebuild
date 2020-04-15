@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
+DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for the CUPS API"
