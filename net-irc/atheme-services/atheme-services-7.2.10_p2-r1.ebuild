@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic perl-functions user
+inherit flag-o-matic perl-functions
 
 MY_PN="atheme"
 MY_PV="7.2.10-r2"
 
 DESCRIPTION="A portable and secure set of open-source and modular IRC services"
 HOMEPAGE="https://github.com/atheme/atheme"
-SRC_URI="https://github.com/atheme/atheme/releases/download/v${MY_PV}/${MY_PN}-v${MY_PV}.tar.xz -> ${PN}-${PV}.tar.xz"
+SRC_URI="https://github.com/atheme/atheme/releases/download/v${MY_PV}/${MY_PN}-v${MY_PV}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,7 +18,10 @@ KEYWORDS="~amd64"
 IUSE="cracklib largenet ldap nls +pcre perl profile ssl"
 S="${WORKDIR}/${MY_PN}-v${MY_PV}"
 
-RDEPEND=">=dev-libs/libmowgli-2.1.0:2
+RDEPEND="
+	acct-group/atheme-services
+	acct-user/atheme-services
+	>=dev-libs/libmowgli-2.1.0:2
 	cracklib? ( sys-libs/cracklib )
 	ldap? ( net-nds/openldap )
 	perl? ( dev-lang/perl )
@@ -28,12 +31,9 @@ DEPEND="${RDEPEND}
 	dev-vcs/git
 	virtual/pkgconfig"
 
-PATCHES=("${FILESDIR}"/${P}-configure-logdir.patch)
-
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/atheme ${PN}
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-configure-logdir.patch
+	"${FILESDIR}"/${P}-fix-backtrace-compat-detection.patch)
 
 src_configure() {
 	# perl scriping module support is also broken in 7.0.0. Yay for QA failures.
@@ -85,8 +85,8 @@ src_install() {
 
 	use perl && perl_domodule -r contrib/Atheme{,.pm}
 
-	rm "${ED%/}/usr/share/doc/${PF}/WINDOWS" || die
+	rm "${ED}/usr/share/doc/${PF}/WINDOWS" || die
 
 	# Bug #454840 #520490
-	rm -rf "${ED%/}/var/run" || die
+	rm -rf "${ED}/var/run" || die
 }
