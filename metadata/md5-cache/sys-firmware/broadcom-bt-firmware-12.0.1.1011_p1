@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Broadcom Bluetooth firmware
+EAPI=7
+HOMEPAGE=https://github.com/winterheart/broadcom-bt-firmware
+KEYWORDS=~amd64 ~x86
+LICENSE=broadcom_bcm20702 MIT
+SLOT=0
+SRC_URI=https://github.com/winterheart/broadcom-bt-firmware/archive/v12.0.1.1011_p1.tar.gz -> broadcom-bt-firmware-12.0.1.1011_p1.tar.gz
+_md5_=490e6745e33dcfea2be797280e8b379c
