@@ -5152,7 +5152,7 @@ dev-libs/libusb 1.0.19-r1 1.0.21-r1 1.0.22 1.0.23-r1: Userspace access to USB de
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0: mapping tool for UTF-8 strings
-dev-libs/libuv 1.35.0 9999: Cross-platform asychronous I/O
+dev-libs/libuv 1.35.0 1.36.0 9999: Cross-platform asychronous I/O
 dev-libs/libvarlink 16 18: C implementation of the Varlink protocol and command line tool
 dev-libs/libverto 0.2.5-r1 0.3.0 0.3.1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
@@ -7038,16 +7038,16 @@ dev-perl/Wx 0.993.200-r1: Perl bindings for wxGTK
 dev-perl/Wx-GLCanvas 0.90.0: interface to wxWidgets' OpenGL canvas
 dev-perl/Wx-Perl-ProcessStream 0.320.0-r3: access IO of external processes via events
 dev-perl/Wx-Scintilla 0.390.0-r3: Scintilla source code editing component for wxWidgets
-dev-perl/X-Osd 0.700.0-r1 0.700.0-r2: Perl glue to libxosd (X OnScreen Display)
+dev-perl/X-Osd 0.700.0-r2: Perl glue to libxosd (X OnScreen Display)
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
 dev-perl/X11-Protocol 0.560.0-r1 0.560.0-r2: Client-side interface to the X11 Protocol
 dev-perl/X11-XCB 0.170.0-r1: Perl bindings for libxcb
 dev-perl/X500-DN 0.290.0-r1: handle X.500 DNs (Distinguished Names), parse and format them
 dev-perl/XML-Atom 0.420.0: Atom feed and API implementation
-dev-perl/XML-Catalog 1.30.0 1.30.0-r1: Resolve public identifiers and remap system identifiers
-dev-perl/XML-CompactTree-XS 0.20.0-r1 0.30.0: a fast builder of compact tree structures from XML documents
+dev-perl/XML-Catalog 1.30.0-r1: Resolve public identifiers and remap system identifiers
+dev-perl/XML-CompactTree-XS 0.30.0: a fast builder of compact tree structures from XML documents
 dev-perl/XML-Compile 1.600.0: Compilation based XML Processing
-dev-perl/XML-Compile-Cache 1.50.0 1.60.0: Cache compiled XML translations
+dev-perl/XML-Compile-Cache 1.60.0: Cache compiled XML translations
 dev-perl/XML-Compile-SOAP 3.240.0-r1: Soap 1.1 XML Compiler
 dev-perl/XML-Compile-Tester 0.900.0: Support XML::Compile related regression testing
 dev-perl/XML-Compile-WSDL11 3.60.0-r1: WSDL version 1.1 XML Compiler
@@ -7056,22 +7056,22 @@ dev-perl/XML-DOM-XPath 0.140.0-r2: Perl extension to add XPath support to XML::D
 dev-perl/XML-DT 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
 dev-perl/XML-Descent 1.40.0: Recursive decent XML parsing
-dev-perl/XML-Directory 1.0.0 1.0.0-r1: Returns a content of directory as XML
+dev-perl/XML-Directory 1.0.0-r1: Returns a content of directory as XML
 dev-perl/XML-Dumper 0.810.0-r1: Perl module for dumping Perl objects from/to XML
 dev-perl/XML-Elemental 2.110.0-r1: XML::Parser style and generic classes for handling of XML data
 dev-perl/XML-Encoding 2.90.0: Perl Module that parses encoding map XML files
 dev-perl/XML-Entities 1.0.200: Decode strings with XML entities
-dev-perl/XML-Fast 0.110.0-r1 0.170.0: Simple and very fast XML to hash conversion
+dev-perl/XML-Fast 0.170.0: Simple and very fast XML to hash conversion
 dev-perl/XML-Feed 0.530.0-r1: Syndication feed parser and auto-discovery
 dev-perl/XML-FeedPP 0.430.0: Parse/write/merge/edit RSS/RDF/Atom syndication feeds
 dev-perl/XML-Filter-BufferText 1.10.0-r1: Filter to put all characters() in one event
 dev-perl/XML-Filter-DOMFilter-LibXML 0.40.0: SAX Filter allowing DOM processing of selected subtrees
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
 dev-perl/XML-Grove 0.46_alpha-r2 0.460.0_rc-r1: A Perl module providing a simple API to parsed XML instances
-dev-perl/XML-Handler-YAWriter 0.230.0-r1 0.230.0-r2: A Perl module providing a simple API to parsed XML instances
+dev-perl/XML-Handler-YAWriter 0.230.0-r2: A Perl module providing a simple API to parsed XML instances
 dev-perl/XML-LibXML 2.13.200 2.20.100: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
-dev-perl/XML-LibXML-Simple 0.970.0 0.990.0: XML::LibXML based XML::Simple clone
+dev-perl/XML-LibXML-Simple 0.990.0: XML::LibXML based XML::Simple clone
 dev-perl/XML-LibXSLT 1.960.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
 dev-perl/XML-Mini 1.380.0-r1: pure perl API to create and parse XML
 dev-perl/XML-NamespaceSupport 1.120.0: A Perl module that offers a simple to process namespaced XML names
@@ -7079,7 +7079,7 @@ dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
 dev-perl/XML-Parser 2.440.0: A Perl extension interface to James Clark's XML parser, expat
 dev-perl/XML-Parser-Lite 0.721.0: Lightweight regexp-based XML parser
 dev-perl/XML-RAI 1.303.100-r1: RSS Abstraction Interface
-dev-perl/XML-RSS 1.590.0 1.600.0: a basic framework for creating and maintaining RSS files
+dev-perl/XML-RSS 1.600.0: a basic framework for creating and maintaining RSS files
 dev-perl/XML-RSS-Feed 2.400.0-r1: Persistant XML RSS Encapsulation
 dev-perl/XML-RSS-LibXML 0.310.500: XML::RSS with XML::LibXML
 dev-perl/XML-RSS-Parser 4.0.0-r1: A liberal object-oriented parser for RSS feeds
@@ -7088,18 +7088,18 @@ dev-perl/XML-SAX 0.990.0-r1 1.0.0: Perl module for using and building Perl SAX2 
 dev-perl/XML-SAX-Base 1.90.0: Base class SAX Drivers and Filters
 dev-perl/XML-SAX-Expat 0.510.0: SAX2 Driver for Expat
 dev-perl/XML-SAX-ExpatXS 1.330.0: Perl SAX 2 XS extension to Expat parser
-dev-perl/XML-SAX-Writer 0.560.0 0.570.0: SAX2 XML Writer
+dev-perl/XML-SAX-Writer 0.570.0: SAX2 XML Writer
 dev-perl/XML-Simple 2.250.0: An API for simple XML files
 dev-perl/XML-Simple-DTDReader 0.40.0-r1: Simple XML file reading based on their DTDs
 dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
 dev-perl/XML-Smart 1.790.0: Access or create XML from fields, data and URLs.
-dev-perl/XML-Stream 1.240.0 1.240.0-r1: Creates and XML Stream connection and parses return data
+dev-perl/XML-Stream 1.240.0-r1: Creates and XML Stream connection and parses return data
 dev-perl/XML-TokeParser 0.50.0: Simplified interface to XML::Parser
 dev-perl/XML-TreePP 0.430.0-r1: Pure Perl implementation for parsing/writing XML documents
 dev-perl/XML-Twig 3.520.0: Process huge XML documents in tree mode
 dev-perl/XML-Validator-Schema 1.100.0: Validate XML against a subset of W3C XML Schema
 dev-perl/XML-Writer 0.625.0: XML Writer Perl Module
-dev-perl/XML-XPath 1.130.0-r1 1.370.0 1.420.0: A XPath Perl Module
+dev-perl/XML-XPath 1.420.0: A XPath Perl Module
 dev-perl/XML-XPathEngine 0.140.0-r1: A re-usable XPath engine for DOM-like trees
 dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL queries on XML trees
 dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
