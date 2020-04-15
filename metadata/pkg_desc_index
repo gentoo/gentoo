@@ -1691,7 +1691,7 @@ app-emulation/winetricks 20190912 20191224 99999999: Easy way to install DLLs ne
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.12.2-r1 4.13.0-r2: The Xen virtual machine monitor
+app-emulation/xen 4.12.2-r1 4.12.2-r2 4.13.0-r3: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.12.2 4.13.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.12.2-r1 4.13.0-r2: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
@@ -6805,7 +6805,7 @@ dev-perl/Sysadm-Install 0.480.0: Typical installation tasks for system administr
 dev-perl/TAP-Parser-SourceHandler-pgTAP 3.330.0 3.340.0 3.350.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
 dev-perl/Taint-Util 0.80.0-r1: Test for and flip the taint flag without regex matches or eval
-dev-perl/Task-Weaken 1.40.0-r1 1.50.0: Ensure that a platform has weaken support
+dev-perl/Task-Weaken 1.50.0: Ensure that a platform has weaken support
 dev-perl/TeX-Encode 2.4.0: Encode/decode Perl utf-8 strings into TeX
 dev-perl/Template-DBI 2.650.0-r2: DBI plugin for the Template Toolkit
 dev-perl/Template-GD 2.660.0-r1: GD plugin(s) for the Template Toolkit
@@ -6816,27 +6816,27 @@ dev-perl/Template-Toolkit 2.270.0-r1: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
 dev-perl/Term-ANSIScreen 1.500.0-r1: Terminal control using ANSI escape sequences
 dev-perl/Term-Encoding 0.20.0: Detect encoding of the current terminal
-dev-perl/Term-ProgressBar 2.170.0 2.210.0: Provide a progress meter on a standard terminal
+dev-perl/Term-ProgressBar 2.210.0: Provide a progress meter on a standard terminal
 dev-perl/Term-ProgressBar-Quiet 0.310.0-r1: Provide a progress meter if run interactively
 dev-perl/Term-ProgressBar-Simple 0.30.0: Simple progess bars
 dev-perl/Term-ReadLine-Gnu 1.310.0 1.360.0: GNU Readline XS library wrapper
-dev-perl/Term-ReadLine-Perl 1.30.300-r1 1.30.300-r2: Quick implementation of readline utilities
+dev-perl/Term-ReadLine-Perl 1.30.300-r2: Quick implementation of readline utilities
 dev-perl/Term-ReadLine-TTYtter 1.400.0-r1: Quick implementation of readline utilities for ttytter
-dev-perl/Term-ReadPassword 0.110.0-r1 0.110.0-r2: Asking the user for a password
-dev-perl/Term-Screen 1.50.0 1.60.0: A simple Term::Cap based screen positioning module
+dev-perl/Term-ReadPassword 0.110.0-r2: Asking the user for a password
+dev-perl/Term-Screen 1.60.0: A simple Term::Cap based screen positioning module
 dev-perl/Term-ScreenColor 1.200.0-r1: A Term::Screen based screen positioning and coloring module
-dev-perl/Term-Shell 0.90.0 0.110.0: A simple command-line shell framework
+dev-perl/Term-Shell 0.110.0: A simple command-line shell framework
 dev-perl/Term-ShellUI 0.920.0-r1: A fully-featured shell-like command line environment
 dev-perl/Term-Table 0.8.0: Format a header and rows into a table
 dev-perl/Term-UI 0.460.0: User interfaces via Term::ReadLine made easy
-dev-perl/TermReadKey 2.330.0 2.370.0: Change terminal modes, and perform non-blocking reads
+dev-perl/TermReadKey 2.370.0: Change terminal modes, and perform non-blocking reads
 dev-perl/Test-Assert 0.50.400-r1: Assertion methods for those who like JUnit
 dev-perl/Test-Base 0.880.0: A Data Driven Testing Framework
 dev-perl/Test-Bits 0.20.0: Provides a bits_is() subroutine for testing binary data
 dev-perl/Test-CPAN-Meta 0.250.0: Validate your CPAN META.yml file
 dev-perl/Test-CheckDeps 0.10.0: Check for presence of dependencies
 dev-perl/Test-Class 0.500.0: Easily create test classes in an xUnit/JUnit style
-dev-perl/Test-ClassAPI 1.60.0-r2 1.70.0: Provides basic first-pass API testing for large class trees
+dev-perl/Test-ClassAPI 1.70.0: Provides basic first-pass API testing for large class trees
 dev-perl/Test-CleanNamespaces 0.220.0 0.240.0: Check for uncleaned imports
 dev-perl/Test-Command 0.110.0: Test routines for external commands
 dev-perl/Test-Command-Simple 0.50.0: Test external commands (nearly) as easily as loaded modules
@@ -6846,7 +6846,7 @@ dev-perl/Test-Dependencies 0.230.0: Ensure that your dependency listing is compl
 dev-perl/Test-Differences 0.640.0: Test strings and data structures and show differences if not ok
 dev-perl/Test-DistManifest 1.14.0: Author test that validates a package MANIFEST
 dev-perl/Test-Distribution 2.0.0-r1: perform tests on all modules of a distribution
-dev-perl/Test-EOL 1.600.0 2.0.0: Check the correct line endings in your project
+dev-perl/Test-EOL 2.0.0: Check the correct line endings in your project
 dev-perl/Test-Exception 0.430.0: Test functions for exception based code
 dev-perl/Test-FailWarnings 0.8.0-r1: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.14.0: Incredibly simple helpers for testing code with exceptions
@@ -6856,7 +6856,7 @@ dev-perl/Test-File-ShareDir 1.1.2: Create a Fake ShareDir for your modules for t
 dev-perl/Test-Files 0.140.0: A Test::Builder based module to ease testing with files and dirs
 dev-perl/Test-Inline 2.213.0-r2: Inline test suite support for Perl
 dev-perl/Test-Inter 1.60.0 1.90.0: Framework for more readable interactive test scripts
-dev-perl/Test-LeakTrace 0.150.0 0.160.0: Traces memory leaks
+dev-perl/Test-LeakTrace 0.160.0: Traces memory leaks
 dev-perl/Test-LectroTest 0.500.100: Easy, automatic, specification-based tests
 dev-perl/Test-LongString 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 2.20.0: Interact with a t/test_manifest file
@@ -6864,7 +6864,7 @@ dev-perl/Test-Memory-Cycle 1.60.0: Check for memory leaks and circular memory re
 dev-perl/Test-MinimumVersion 0.101.82: does your code require newer perl than you think?
 dev-perl/Test-Mock-LWP-Dispatch 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.110.0 0.130.0: Override subroutines in a module for unit testing
-dev-perl/Test-MockObject 1.201.505.270-r1 1.201.612.20: Perl extension for emulating troublesome interfaces
+dev-perl/Test-MockObject 1.201.612.20: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
 dev-perl/Test-MockTime 0.160.0: Replaces actual time with simulated time
 dev-perl/Test-MockTime-HiRes 0.80.0: Replace actual time with simulated high resolution time
@@ -6874,20 +6874,20 @@ dev-perl/Test-Needs 0.2.5: Skip tests when modules not available
 dev-perl/Test-NoTabs 2.0.0-r1: Check the presence of tabs in your project
 dev-perl/Test-NoWarnings 1.40.0-r3: Make sure you didn't emit any warnings while testing
 dev-perl/Test-Number-Delta 1.60.0: Compare the difference between numbers against a given tolerance
-dev-perl/Test-Object 0.70.0-r1 0.80.0: Thoroughly testing objects via registered handlers
-dev-perl/Test-Output 1.30.0 1.31.0: Utilities to test STDOUT and STDERR messages
+dev-perl/Test-Object 0.80.0: Thoroughly testing objects via registered handlers
+dev-perl/Test-Output 1.31.0: Utilities to test STDOUT and STDERR messages
 dev-perl/Test-Perl-Critic 1.30.0: Use Perl::Critic in test programs
 dev-perl/Test-Pod 1.510.0: Check for POD errors in files
 dev-perl/Test-Pod-Coverage 1.100.0: Check for pod coverage in your distribution
-dev-perl/Test-Portability-Files 0.60.0-r1 0.90.0: Check file names portability
+dev-perl/Test-Portability-Files 0.90.0: Check file names portability
 dev-perl/Test-Regexp 2017040101.0.0: Provide commonly requested regular expressions
 dev-perl/Test-Requires 0.100.0: Checks to see if the module can be loaded
 dev-perl/Test-RequiresInternet 0.50.0: Easily test network connectivity
 dev-perl/Test-Script 1.180.0 1.230.0: Cross-platform basic tests for scripts
 dev-perl/Test-SharedFork 0.350.0: Ensure that tests work correctly when fork() is used
-dev-perl/Test-Spec 0.510.0 0.540.0: Write tests in a declarative specification style
+dev-perl/Test-Spec 0.540.0: Write tests in a declarative specification style
 dev-perl/Test-Strict 0.470.0: Check syntax, presence of use strict; and test coverage
-dev-perl/Test-SubCalls 1.90.0-r1 1.100.0: Track the number of times subs are called
+dev-perl/Test-SubCalls 1.100.0: Track the number of times subs are called
 dev-perl/Test-TCP 2.190.0-r1: Testing TCP program
 dev-perl/Test-Taint 1.60.0-r1: Tools to test taintedness
 dev-perl/Test-TempDir-Tiny 0.17.0: Temporary directories that stick around when tests fail
@@ -6897,30 +6897,30 @@ dev-perl/Test-Trap 0.3.3: Trap exit codes, exceptions, output, etc
 dev-perl/Test-Unit-Lite 0.120.200-r1: Unit testing without external dependencies
 dev-perl/Test-UseAllModules 0.170.0-r1: do use_ok() for all the MANIFESTed modules
 dev-perl/Test-Version 2.70.0: Check to see that version's in modules are sane
-dev-perl/Test-WWW-Mechanize 1.440.0-r1 1.480.0: Testing-specific WWW::Mechanize subclass
+dev-perl/Test-WWW-Mechanize 1.480.0: Testing-specific WWW::Mechanize subclass
 dev-perl/Test-Warn 0.320.0: Perl extension to test methods for warnings
-dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
+dev-perl/Test-Warnings 0.26.0: Test for warnings and the lack of them
 dev-perl/Test-Without-Module 0.200.0: Test fallback behaviour in absence of modules
-dev-perl/Test-YAML 1.50.0 1.60.0: Testing Module for YAML Implementations
+dev-perl/Test-YAML 1.60.0: Testing Module for YAML Implementations
 dev-perl/Test-utf8 1.10.0: Handy utf8 tests
 dev-perl/Test2-Plugin-NoWarnings 0.60.0: Fail if tests warn
 dev-perl/Test2-Suite 0.0.77: A rich set of tools built upon the Test2 framework
 dev-perl/Text-Aligner 0.130.0: Used to justify strings to various alignment styles
-dev-perl/Text-Aspell 0.90.0-r1 0.90.0-r2: Perl interface to the GNU Aspell Library
+dev-perl/Text-Aspell 0.90.0-r2: Perl interface to the GNU Aspell Library
 dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.850.0 0.880.0: A Perl library for reading, parsing, and processing BibTeX files
-dev-perl/Text-CSV 1.940.0 1.950.0: Manipulate comma-separated value strings
+dev-perl/Text-CSV 1.950.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
 dev-perl/Text-CSV_XS 1.340.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
-dev-perl/Text-Diff 1.440.0 1.450.0: Perform diffs on files and record sets
+dev-perl/Text-Diff 1.450.0: Perform diffs on files and record sets
 dev-perl/Text-FindIndent 0.110.0: Heuristically determine the indent style
-dev-perl/Text-Format 0.590.0 0.600.0: Various subroutines to format text
+dev-perl/Text-Format 0.600.0: Various subroutines to format text
 dev-perl/Text-German 0.60.0-r1: German grundform reduction
 dev-perl/Text-Glob 0.90.0-r1 0.110.0: Match globbing patterns against text
-dev-perl/Text-Iconv 1.700.0-r1 1.700.0-r2: A Perl interface to the iconv() codeset conversion function
-dev-perl/Text-Kakasi 2.40.0-r1 2.40.0-r2: This module provides libkakasi interface for Perl
-dev-perl/Text-Levenshtein 0.50.0-r1 0.130.0: An implementation of the Levenshtein edit distance
+dev-perl/Text-Iconv 1.700.0-r2: A Perl interface to the iconv() codeset conversion function
+dev-perl/Text-Kakasi 2.40.0-r2: This module provides libkakasi interface for Perl
+dev-perl/Text-Levenshtein 0.130.0: An implementation of the Levenshtein edit distance
 dev-perl/Text-LevenshteinXS 0.30.0-r1: An XS implementation of the Levenshtein edit distance
 dev-perl/Text-Markdown 1.0.31-r1: Convert MultiMarkdown syntax to (X)HTML
 dev-perl/Text-Netstring 0.70.0-r1: Create and manipulate netstrings
@@ -6945,7 +6945,7 @@ dev-perl/Thread-SigMask 0.4.0: Thread specific signal masks
 dev-perl/Throwable 0.200.13: A role for classes that can be thrown
 dev-perl/Tie-Array-Sorted 1.410.0-r1: An array which is kept sorted
 dev-perl/Tie-CPHash 2.0.0: Case preserving but case insensitive hash table
-dev-perl/Tie-Cache 0.210.0 0.210.0-r1: In memory size limited LRU cache
+dev-perl/Tie-Cache 0.210.0-r1: In memory size limited LRU cache
 dev-perl/Tie-Cache-LRU 20150301.0.0: A Least-Recently Used cache
 dev-perl/Tie-Cache-LRU-Expires 0.550.0-r1: Extends Tie::Cache::LRU with expiring
 dev-perl/Tie-Cycle 1.225.0: Cycle through a list of values via a scalar
@@ -6977,37 +6977,37 @@ dev-perl/Tk-JPEG-Lite 2.14.30-r1 2.15.0: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1 1.230.0-r2: Create and manipulate tables in Perl + Tk
 dev-perl/Tree-DAG_Node 1.310.0: (Super)class for representing nodes in a tree
 dev-perl/Tree-Simple 1.330.0: A simple tree object
-dev-perl/Try-Tiny 0.240.0 0.300.0: Minimal try/catch with proper localization of $@
+dev-perl/Try-Tiny 0.300.0: Minimal try/catch with proper localization of $@
 dev-perl/Type-Tie 0.9.0: Tie a variable to a type constraint
 dev-perl/Type-Tiny 1.2.1: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
 dev-perl/Types-Serialiser 1.0.0-r1: simple data types for common serialisation formats
 dev-perl/UNIVERSAL-can 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
-dev-perl/UNIVERSAL-isa 1.201.506.140 1.201.710.120: Attempt to recover from people calling UNIVERSAL::isa as a function
+dev-perl/UNIVERSAL-isa 1.201.710.120: Attempt to recover from people calling UNIVERSAL::isa as a function
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
 dev-perl/UNIVERSAL-require 0.180.0: UNIVERSAL::require - require() modules from a variable
 dev-perl/URI 1.710.0 1.730.0: Uniform Resource Identifiers (absolute and relative)
 dev-perl/URI-Encode 1.1.1: Simple percent Encoding/Decoding
 dev-perl/URI-Fetch 0.130.0: Smart URI fetching/caching
-dev-perl/URI-Find 20140709.0.0 20160806.0.0: Find URIs in plain text
+dev-perl/URI-Find 20160806.0.0: Find URIs in plain text
 dev-perl/URI-redis 0.20.0: URI for Redis connection info
 dev-perl/USB-LibUSB 0.50.0 0.60.0: Perl interface to the libusb-1.0 API
 dev-perl/USB-TMC 0.6.0 0.7.0: Perl interface to the USB Test & Measurement (USBTMC) backend
-dev-perl/UUID 0.260.0 0.270.0: Perl extension for using UUID interfaces as defined in e2fsprogs
+dev-perl/UUID 0.270.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
 dev-perl/UltraDNS 0.60.0-r2: Client API for the NeuStar UltraDNS Transaction Protocol
 dev-perl/Unicode-EastAsianWidth 1.330.0-r1: East Asian Width properties
 dev-perl/Unicode-LineBreak 2017.4.0-r1: UAX #14 Unicode Line Breaking Algorithm
 dev-perl/Unicode-Map 0.112.0-r1: Map charsets from and to utf16 code
 dev-perl/Unicode-Map8 0.130.0 0.130.0-r1: Convert between most 8bit encodings
-dev-perl/Unicode-MapUTF8 1.110.0-r1 1.110.0-r2: Conversions to and from arbitrary character sets and UTF8
+dev-perl/Unicode-MapUTF8 1.110.0-r2: Conversions to and from arbitrary character sets and UTF8
 dev-perl/Unicode-String 2.100.0: String manipulation for Unicode strings
-dev-perl/Unicode-Stringprep 1.105.0-r1 1.105.0-r2: Preparation of Internationalized Strings (RFC 3454)
+dev-perl/Unicode-Stringprep 1.105.0-r2: Preparation of Internationalized Strings (RFC 3454)
 dev-perl/Unicode-UTF8 0.620.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
-dev-perl/Unix-Getrusage 0.030.0 0.30.0-r1: Perl interface to the Unix getrusage system call
+dev-perl/Unix-Getrusage 0.30.0-r1: Perl interface to the Unix getrusage system call
 dev-perl/Unix-Mknod 0.40.0: Filesys-Statvfs
-dev-perl/Unix-Syslog 1.100.0-r1 1.100.0-r2: A Perl module which provides access to the system logger
+dev-perl/Unix-Syslog 1.100.0-r2: A Perl module which provides access to the system logger
 dev-perl/User-Identity 0.990.0: Maintains info about a physical person
 dev-perl/VM-EC2 1.280.0: Interface to Amazon EC2, VPC, ELB, Autoscaling, and Relational DB services
 dev-perl/VM-EC2-Security-CredentialCache 0.250.0: Cache credentials respecting expiration time for IAM roles
@@ -7159,7 +7159,7 @@ dev-perl/rename 1.900.0: A filename renaming utility based on perl regular expre
 dev-perl/self 0.350.0: provides '$self' in OO code
 dev-perl/strictures 2.0.3: Turn on strict and make most warnings fatal
 dev-perl/syntax 0.4.0-r1: Activate syntax extensions
-dev-perl/tkispell 0.180.0 0.180.0-r1: Perl/Tk user interface for ispell
+dev-perl/tkispell 0.180.0-r1: Perl/Tk user interface for ispell
 dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
 dev-php/File_Iterator 1.3.4 1.4.2 1.4.3 2.0.2 2.0.2-r1: FilterIterator implementation that filters files based on criteria
 dev-php/PEAR-Archive_Tar 1.4.5 1.4.7 1.4.8 1.4.9: Tar file management class
