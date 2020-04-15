@@ -28,9 +28,9 @@ SLOT="0"
 
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
-IUSE="babeltrace +cephfs dpdk fuse grafana jemalloc kerberos ldap libressl"
-IUSE+=" lttng +mgr numa rabbitmq +radosgw +ssl spdk static-libs system-boost"
-IUSE+=" systemd +tcmalloc test xfs zfs"
+IUSE="babeltrace +cephfs custom-cflags dpdk fuse grafana jemalloc kerberos ldap"
+IUSE+=" libressl lttng +mgr numa rabbitmq +radosgw +ssl spdk static-libs"
+IUSE+=" system-boost systemd +tcmalloc test xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
 COMMON_DEPEND="
@@ -82,16 +82,9 @@ COMMON_DEPEND="
 			net-misc/curl:=[curl_ssl_libressl,static-libs?]
 		)
 	)
-	system-boost? (
-		|| (
-			=dev-libs/boost-1.71*[threads,context,python,static-libs?,${PYTHON_USEDEP}]
-			=dev-libs/boost-1.70*[threads,context,python,static-libs?,${PYTHON_USEDEP}]
-			=dev-libs/boost-1.67*[threads,context,python,static-libs?,${PYTHON_USEDEP}]
-		)
-		dev-libs/boost:=[threads,context,python,static-libs?,${PYTHON_USEDEP}]
-	)
+	system-boost? ( =dev-libs/boost-1.72*[threads,context,python,static-libs?,${PYTHON_USEDEP}] )
 	jemalloc? ( dev-libs/jemalloc:=[static-libs?] )
-	!jemalloc? ( >=dev-util/google-perftools-2.4:=[static-libs?] )
+	!jemalloc? ( >=dev-util/google-perftools-2.6.1:=[static-libs?] )
 	${PYTHON_DEPS}
 "
 BDEPEND="
@@ -172,7 +165,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
 	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
-	"${FILESDIR}/ceph-14.2.5-boost-1.70.patch"
 	"${FILESDIR}/ceph-14.2.3-dpdk-compile-fix-1.patch"
 	"${FILESDIR}/ceph-14.2.4-python-executable.patch"
 	"${FILESDIR}/ceph-14.2.4-undefined-behaviour.patch"
@@ -205,13 +197,12 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-14.2.5-boost-sonames.patch"
+		eapply "${FILESDIR}/ceph-14.2.8-boost-sonames.patch"
 
 		find "${S}" -name '*.cmake' -or -name 'CMakeLists.txt' -print0 \
-			| xargs --null sed -e 's|Boost::|Boost_|g' -i || die
-
-		has_version '>=dev-libs/boost-1.70.0' || \
-			eapply "${FILESDIR}/ceph-14.2.5-boost-1.6-python-sonames.patch"
+			| xargs --null sed \
+			-e 's|Boost::|Boost_|g' \
+			-e 's|Boost_boost|boost_system|g' -i || die
 	fi
 
 	sed -i -r "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
@@ -277,6 +268,7 @@ ceph_src_configure() {
 }
 
 src_configure() {
+	use custom-cflags || strip-flags
 	ceph_src_configure
 }
 

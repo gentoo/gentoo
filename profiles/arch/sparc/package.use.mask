@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
+# dev-qt/designer is not keyworded on sparc
+sys-libs/gwenhywfar designer
+x11-libs/qwt designer
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
 # USE=bpf depends on sys-devel/clang which is not keyworded on sparc
 media-tv/v4l-utils bpf
 
