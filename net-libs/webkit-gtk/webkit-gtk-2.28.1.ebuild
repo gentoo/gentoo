@@ -16,7 +16,7 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4/37" # soname version of libwebkit2gtk-4.0
-KEYWORDS="amd64 arm64 ~ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~sparc ~x86"
 
 IUSE="aqua coverage +egl +geolocation gles2-only gnome-keyring +gstreamer gtk-doc +introspection +jpeg2k +jumbo-build libnotify +opengl seccomp spell wayland +X"
 
@@ -64,7 +64,7 @@ RDEPEND="
 	gnome-keyring? ( app-crypt/libsecret )
 	introspection? ( >=dev-libs/gobject-introspection-1.32.0:= )
 	dev-libs/libtasn1:=
-	spell? ( >=app-text/enchant-0.22:= )
+	spell? ( >=app-text/enchant-0.22:2 )
 	gstreamer? (
 		>=media-libs/gstreamer-1.14:1.0
 		>=media-libs/gst-plugins-base-1.14:1.0[egl?,opengl?]
@@ -87,6 +87,8 @@ RDEPEND="
 	gles2-only? ( media-libs/mesa[gles2] )
 	opengl? ( virtual/opengl )
 	wayland? (
+		dev-libs/wayland
+		>=dev-libs/wayland-protocols-1.12
 		opengl? ( ${wpe_depend} )
 		gles2-only? ( ${wpe_depend} )
 	)
@@ -164,7 +166,6 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.24.4-eglmesaext-include.patch" # bug 699054 # https://bugs.webkit.org/show_bug.cgi?id=204108
-	eapply "${FILESDIR}"/2.26.2-fix-arm-non-unified-build.patch # bug 704194
 	eapply "${FILESDIR}"/2.26.3-fix-gtk-doc.patch # bug 704550 - retest without it once we can depend on >=gtk-doc-1.32
 	cmake-utils_src_prepare
 	gnome2_src_prepare

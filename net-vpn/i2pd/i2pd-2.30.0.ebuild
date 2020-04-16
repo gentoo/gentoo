@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit systemd cmake toolchain-funcs
 
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
@@ -47,9 +48,6 @@ PATCHES=( "${FILESDIR}/${PN}-2.14.0-fix_installed_components.patch"
 	"${FILESDIR}/i2pd-2.25.0-lib-path.patch" )
 
 pkg_pretend() {
-	if tc-is-gcc && ! ver_test "$(gcc-version)" -ge "4.7"; then
-		die "At least gcc 4.7 is required"
-	fi
 	if use i2p-hardening && ! tc-is-gcc; then
 		die "i2p-hardening requires gcc"
 	fi
