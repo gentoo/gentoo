@@ -39,12 +39,13 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio raspberry-pi samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio raspberry-pi samba systemd +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
 	^^ ( gbm raspberry-pi wayland X )
 	?? ( mariadb mysql )
+	bluray? ( udf )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
@@ -110,6 +111,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	>=sys-libs/zlib-1.2.11
+	udf? ( >=dev-libs/libudfread-1.0.0 )
 	udev? ( virtual/udev )
 	vaapi? (
 		x11-libs/libva:=
@@ -228,6 +230,7 @@ src_configure() {
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_INTERNAL_FSTRCMP=OFF
 		-DENABLE_INTERNAL_GTEST=OFF
+		-DENABLE_INTERNAL_UDFREAD=OFF
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRCCLIENT=$(usex lirc)
@@ -243,6 +246,7 @@ src_configure() {
 		-DENABLE_SMBCLIENT=$(usex samba)
 		-DENABLE_TESTING=$(usex test)
 		-DENABLE_UDEV=$(usex udev)
+		-DENABLE_UDFREAD=$(usex udf)
 		-DENABLE_UPNP=$(usex upnp)
 		-DENABLE_VAAPI=$(usex vaapi)
 		-DENABLE_VDPAU=$(usex vdpau)
