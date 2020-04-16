@@ -48,13 +48,6 @@ pkg_setup() {
 			*) die "Use sys-devel/crossdev to build a newlib toolchain" ;;
 		esac
 	fi
-
-	case ${CTARGET} in
-		msp430*)
-			# bug #717610
-			die "gcc on ${CTARGET} needs older newlib. Use newlib-3.1.0."
-			;;
-	esac
 }
 
 src_configure() {
