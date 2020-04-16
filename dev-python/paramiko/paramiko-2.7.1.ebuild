@@ -30,11 +30,11 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 
 distutils_enable_sphinx sites/docs
+distutils_enable_tests pytest
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-tests.patch
@@ -44,10 +44,6 @@ src_prepare() {
 	fi
 
 	eapply_user
-}
-
-python_test() {
-	py.test -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
