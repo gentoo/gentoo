@@ -59,8 +59,7 @@ LICENSE="
 			!gpl? ( LGPL-3 )
 		)
 	)
-	samba? ( GPL-3 )
-"
+	"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
@@ -94,6 +93,9 @@ FFMPEG_FLAG_MAP=(
 		libsoxr
 		# Threads; we only support pthread for now but ffmpeg supports more
 		+threads:pthreads
+	        #Intel Quick Sync Video support, see bug #590752
+	        qsv
+
 )
 
 # Same as above but for encoders, i.e. they do something only with USE=encode.
@@ -108,6 +110,7 @@ IUSE="
 	alsa chromium doc +encode oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
+
 "
 
 # Strings for CPU features in the useflag[:configure_option] form
@@ -253,6 +256,7 @@ RDEPEND="
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	)
 	vpx? ( >=media-libs/libvpx-1.4.0:=[${MULTILIB_USEDEP}] )
+	qsv? ( >=media-libs/intel-mediasdk-20.1.0:= )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
@@ -395,7 +399,10 @@ multilib_src_configure() {
 			myconf+=( --disable-${i} )
 		done
 	fi
-
+	#Intel Quick Sync does not support x86
+	if multilib_is_native_abi; then
+		use qsv && myconf+=( --enable-libmfx --enable-nonfree )
+	fi
 	# CPU features
 	for i in "${CPU_FEATURES_MAP[@]}" ; do
 		use ${i%:*} || myconf+=( --disable-${i#*:} )
