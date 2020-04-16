@@ -117,6 +117,7 @@ app-office/scribus osg
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-06-17)
 # Mask broken HIPE support on sparc32 (bug #656618)
 dev-lang/erlang hipe
+net-im/ejabberd hipe
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-05-08)
 # Mask USE=games to avoid unkeyworded games-util/qstat.
