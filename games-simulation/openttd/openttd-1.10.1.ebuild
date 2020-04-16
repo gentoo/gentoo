@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit xdg
+
+inherit toolchain-funcs xdg
 
 MY_PV="${PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
@@ -20,11 +21,11 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aplaymidi debug dedicated iconv icu lzo +openmedia +png cpu_flags_x86_sse +timidity +truetype zlib"
+IUSE="aplaymidi debug dedicated iconv icu +lzma lzo +openmedia +png cpu_flags_x86_sse +timidity +truetype zlib"
 RESTRICT="test" # needs a graphics set in order to test
 
 RDEPEND="!dedicated? (
-		media-libs/libsdl[sound,X,video]
+		media-libs/libsdl2[sound,video]
 		icu? (
 			dev-libs/icu-layoutex
 			dev-libs/icu-le-hb
@@ -36,6 +37,7 @@ RDEPEND="!dedicated? (
 			sys-libs/zlib:=
 		)
 	)
+	lzma? ( app-arch/xz-utils )
 	lzo? ( dev-libs/lzo:2 )
 	iconv? ( virtual/libiconv )
 	png? (
@@ -72,6 +74,7 @@ src_configure() {
 		--prefix-dir="${EPREFIX}/usr"
 		$(use_with cpu_flags_x86_sse sse)
 		$(use_with iconv)
+		$(use_with lzma)
 		$(use_with lzo liblzo2)
 		$(use_with png)
 		$(usex debug '--enable-debug=3' '')
@@ -79,11 +82,6 @@ src_configure() {
 		# the configure for it looks broken so the sdl interface is
 		# always built instead.
 		--without-allegro
-
-		# libtimidity not needed except for some embedded platform
-		# nevertheless, it will be automagically linked if it is
-		# installed. Hence, we disable it.
-		--without-libtimidity
 
 		--without-fluidsynth
 	)
@@ -106,7 +104,7 @@ src_configure() {
 
 	# configure is a hand-written bash-script, so econf will not work.
 	# It's all built as C++, upstream uses CFLAGS internally.
-	CFLAGS="" ./configure ${myopts[@]} || die
+	CC=$(tc-getCC) CXX=$(tc-getCXX) CFLAGS="" ./configure ${myopts[@]} || die
 }
 
 src_compile() {
@@ -117,9 +115,9 @@ src_install() {
 	default
 	if use dedicated ; then
 		newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
-		rm -rf "${ED}"/usr/share/{applications,icons,pixmaps}
+		rm -rf "${ED}"/usr/share/{applications,icons,pixmaps} || die
 	fi
-	rm -f "${ED}"/usr/share/doc/${PF}/COPYING
+	rm -f "${ED}"/usr/share/doc/${PF}/COPYING || die
 }
 
 pkg_preinst() {
