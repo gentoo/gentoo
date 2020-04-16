@@ -41,6 +41,7 @@ BDEPEND="app-arch/unzip
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.15.4-no-hardcode-blas.patch
+	"${FILESDIR}"/numpy-1.16.5-setup.py-install-skip-build-fails.patch
 )
 
 src_unpack() {
