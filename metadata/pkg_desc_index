@@ -2354,10 +2354,10 @@ app-office/kraft 0.82-r1: Software to manage quotes and invoices in small enterp
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.1.2-r1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.3.4.2-r1 6.3.5.2 6.3.9999 6.4.2.2 6.4.9999 9999: A full office productivity suite
+app-office/libreoffice 6.3.4.2-r1 6.3.5.2 6.3.9999 6.4.3.2 6.4.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.3.4.2 6.3.4.2-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.3.4.2 6.3.4.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.3.4.2 6.3.5.2 6.4.2.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 6.3.4.2 6.3.5.2 6.4.3.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.3: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
@@ -14494,7 +14494,7 @@ net-libs/kdsoap-ws-discovery-client 0.2_pre20200317: WS-Discovery client library
 net-libs/kimap2 0.3.0: Library for interacting with IMAP servers - successor of kimap
 net-libs/ldns 1.7.0-r2 1.7.1-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
-net-libs/libaccounts-glib 1.24-r1: Accounts SSO (Single Sign-On) management library for GLib applications
+net-libs/libaccounts-glib 1.24-r1 1.25: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and handling, multi-chip sync, etc.
 net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
