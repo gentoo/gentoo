@@ -1,6 +1,10 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-16)
+# net-misc/pps-tools is not stable on sparc
+net-misc/chrony pps
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # media-libs/kate not stable on sparc
 media-sound/vorbis-tools kate
