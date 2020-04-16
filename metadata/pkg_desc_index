@@ -10289,7 +10289,7 @@ dev-util/clair 2.0.8: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.5-r1 1.6-r1: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
-dev-util/clion 2019.3.5: A complete toolset for C and C++ development
+dev-util/clion 2020.1: A complete toolset for C and C++ development
 dev-util/cloc 1.72 1.76-r1 1.80 1.82: Count Lines of Code
 dev-util/cmake 3.13.5 3.14.6 3.16.5 3.17.0 3.17.1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -13721,7 +13721,7 @@ media-tv/linuxtv-dvb-apps 1.1.1.20140321 1.1.1.20140321-r1: Small utils for DVB 
 media-tv/mythtv 29.1-r3 30.0_p20190808-r3: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/plex-media-server 1.13.2-r2 1.14.1 1.16.4 1.18.3 1.18.4-r1: A free media library that is intended for use with a plex client
+media-tv/plex-media-server 1.13.2-r2 1.14.1 1.16.4 1.18.3 1.18.4-r1 1.19.1: A free media library that is intended for use with a plex client
 media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser-bin 4.0.1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8 9999: Tvheadend is a TV streaming server and digital video recorder
@@ -14629,7 +14629,7 @@ net-libs/tox 0.2.10 0.2.11 9999: Encrypted P2P, messaging, and audio/video calli
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1: C library for simple and efficient file IO
-net-libs/webkit-gtk 2.24.4 2.26.4 2.26.4-r1: Open source web browser engine
+net-libs/webkit-gtk 2.24.4 2.26.4-r1 2.28.1: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.8.3 4.9.0 4.10.1 4.11.1: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
@@ -14780,8 +14780,8 @@ net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for c
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.66.0 7.67.0-r1 7.68.0 7.69.0 7.69.1: A Client that groks URLs
-net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1 2.11.1-r1 3.1.0 3.1.0-r1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
-net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2 2.11.1 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
+net-misc/dahdi 3.1.0-r1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
+net-misc/dahdi-tools 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
@@ -15060,7 +15060,7 @@ net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
 net-misc/youtube-dl 2020.03.24 99999999: Download videos from YouTube.com (and more sites...)
-net-misc/youtube-viewer 3.5.5 3.5.9 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
+net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
@@ -15224,7 +15224,7 @@ net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.2: Peer-to-peer VPN software that abstracts a LAN over the Internet
 net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.44-r2 0.9.45: A privacy-centric, anonymous network
-net-vpn/i2pd 2.27.0 2.28.0 2.29.0: A C++ daemon for accessing the I2P anonymous network
+net-vpn/i2pd 2.29.0 2.30.0 2.31.0: A C++ daemon for accessing the I2P anonymous network
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
@@ -15645,7 +15645,7 @@ sci-biology/vienna-rna 2.1.1 2.1.8: RNA secondary structure prediction and compa
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
-sci-calculators/bc-gh 2.3.2 2.5.3: Implementation of POSIX bc with GNU extensions
+sci-calculators/bc-gh 2.3.2 2.5.3 2.6.1: Implementation of POSIX bc with GNU extensions
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/datamash 1.4 1.5 1.6: command-line program for basic numeric, textual and statistical operations
 sci-calculators/galculator 2.1.4: GTK+ based algebraic and RPN calculator
@@ -17073,7 +17073,7 @@ sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemake
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1: Application containers for Linux
 sys-cluster/slurm 19.05.4.1 19.05.5.1 20.02.0.1 20.02.1.1: A Highly Scalable Resource Manager
-sys-cluster/spark-bin 2.3.1-r1 2.4.4-r1: Lightning-fast unified analytics engine
+sys-cluster/spark-bin 2.3.1-r1 2.4.5: Lightning-fast unified analytics engine
 sys-cluster/swift 2.23.1-r2 2.24.0-r1 2019.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 4.1.7-r1 4.2.10-r1 6.0.4-r1: Resource manager and queuing system based on OpenPBS
