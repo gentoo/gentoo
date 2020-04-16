@@ -157,7 +157,7 @@ DEPEND="${COMMON_DEPEND}
 	media-libs/giflib
 	>=media-libs/libjpeg-turbo-2.0.4:=
 	>=media-libs/libpng-1.6.26:0=
-	test? ( dev-cpp/gtest )
+	test? ( >=dev-cpp/gtest-1.10.0 )
 	virtual/pkgconfig
 	virtual/jre
 	x86? ( dev-lang/nasm )
@@ -227,6 +227,7 @@ src_configure() {
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_INTERNAL_FSTRCMP=OFF
+		-DENABLE_INTERNAL_GTEST=OFF
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRCCLIENT=$(usex lirc)
@@ -240,6 +241,7 @@ src_configure() {
 		-DENABLE_PLIST=$(usex airplay)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_SMBCLIENT=$(usex samba)
+		-DENABLE_TESTING=$(usex test)
 		-DENABLE_UDEV=$(usex udev)
 		-DENABLE_UPNP=$(usex upnp)
 		-DENABLE_VAAPI=$(usex vaapi)
