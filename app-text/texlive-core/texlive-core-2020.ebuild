@@ -89,8 +89,10 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	!~dev-texlive/texlive-basic-2019
 	!~dev-texlive/texlive-fontutils-2019
 	sys-libs/zlib
+	>=media-libs/harfbuzz-1.4.5[icu,graphite]
 	>=media-libs/libpng-1.2.43-r2:0=
 	media-libs/gd[png]
+	media-gfx/graphite2
 	>=x11-libs/cairo-1.12
 	>=x11-libs/pixman-0.18
 	dev-libs/zziplib
@@ -98,10 +100,8 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	dev-libs/gmp:0
 	dev-libs/mpfr:0=
 	xetex? (
-		>=media-libs/harfbuzz-1.4.5[icu,graphite]
 		>=app-text/teckit-2.5.3
 		media-libs/fontconfig
-		media-gfx/graphite2
 	)
 	media-libs/freetype:2
 	>=dev-libs/icu-50:=
