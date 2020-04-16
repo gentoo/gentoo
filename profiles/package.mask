@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jeroen Roovers <jer@gentoo.org> (2020-04-26)
+# Breaks API, see https://bugs.gentoo.org/717728
+=dev-libs/libuv-1.36.0
+
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-16)
 # Both packages have been last bumped mid-2018.  They depend
 # on pytest-relaxed plugin that has been removed due to breaking pretty
