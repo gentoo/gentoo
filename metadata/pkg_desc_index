@@ -8184,7 +8184,7 @@ dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file s
 dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.3.4-r1: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 3.1.1 4.1.1 4.2.0-r1 4.2.0-r2 5.1.1: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 3.1.1 4.1.1 4.2.0-r1 4.2.0-r3 5.1.1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pcapy 0.11.2: Python pcap extension
 dev-python/pdfrw 0.4: PDF file reader/writer library
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
