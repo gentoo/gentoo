@@ -93,13 +93,13 @@ BDEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils"
 
 for i in ${TEXLIVE_MODULE_CONTENTS}; do
-	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
 done
 
 # Forge doc SRC_URI
 [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} doc? ("
 for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
-	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
 done
 [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} )"
 
@@ -107,7 +107,7 @@ done
 if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]] ; then
 	SRC_URI="${SRC_URI} source? ("
 	for i in ${TEXLIVE_MODULE_SRC_CONTENTS}; do
-		SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
+		SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
 	done
 	SRC_URI="${SRC_URI} )"
 fi
