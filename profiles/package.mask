@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-04-16)
+# Unmaintained.  Last release in 2011.  Multiple vulnerabilities
+# via bundled code.
+# Removal in 30 days.  Bug #701820.
+net-misc/ssvnc
+
 # Ulrich Müller <ulm@gentoo.org> (2020-04-15)
 # Last upstream release in 2001. HOMEPAGE disappeared in 2010.
 # Use app-i18n/man-pages-l10n[l10n_nl] as replacement.
