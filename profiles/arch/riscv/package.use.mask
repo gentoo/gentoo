@@ -1,6 +1,11 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
+# Lots of python dependencies, mask to facilitate keywording
+# keywording dev-libs/libfido2
+dev-libs/libcbor doc
+
 # Joonas Niilola <juippis@gentoo.org> (2020-03-26)
 # Dependency not keyworded on ~riscv
 dev-libs/libpipeline test
