@@ -12455,7 +12455,7 @@ media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fdm-materials 3.4.1 3.6.0 4.2.0 4.3.0: FDM materials for media-gfx/cura
-media-gfx/feh 3.2.1 3.3 3.4: A fast, lightweight imageviewer using imlib2
+media-gfx/feh 3.3 3.4: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.1.1: Tools and a library for creating flame fractal images
@@ -16748,7 +16748,7 @@ sys-apps/pcsc-lite 1.8.25-r1 1.8.26: PC/SC Architecture smartcard middleware lib
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.5 1.5.6: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.11 9999: a framework for package management
+sys-apps/pkgcore 0.10.11 0.10.12 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
