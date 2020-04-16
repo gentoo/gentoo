@@ -10,7 +10,8 @@ inherit distutils-r1
 
 DESCRIPTION="Inject some useful and sensible default behaviors into setuptools"
 HOMEPAGE="https://github.com/openstack-dev/pbr"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	https://github.com/openstack/pbr/commit/f14a3b2b73c6c95edbea8de799cf1df07decdf0e.patch -> ${PN}-wheel.patch"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -45,6 +46,8 @@ DEPEND="
 		' -3)
 	)"
 PDEPEND=""
+
+PATCHES=("${DISTDIR}/${PN}-wheel.patch")
 
 # This normally actually belongs here.
 python_prepare_all() {
