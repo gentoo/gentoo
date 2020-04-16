@@ -29,7 +29,7 @@ DEPEND="
 	x11-base/xorg-proto
 "
 DOCS=(
-	AUTHORS ChangeLog CONTRIBUTING.md README TODO
+	AUTHORS ChangeLog CONTRIBUTING.md README.md TODO
 )
 
 src_prepare() {
