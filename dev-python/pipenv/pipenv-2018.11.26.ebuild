@@ -27,7 +27,6 @@ RDEPEND="
 	"
 DEPEND="
 	>=dev-python/parver-0.2[${PYTHON_USEDEP}]
-	dev-python/invoke[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
