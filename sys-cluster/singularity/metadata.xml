@@ -5,7 +5,11 @@
 		<email>jlec@gentoo.org</email>
 		<name>Justin Lecher</name>
 	</maintainer>
+	<use>
+		<flag name="network">Install network plug-ins</flag>
+		<flag name="suid">Install SUID helper binary</flag>
+	</use>
 	<upstream>
-		<remote-id type="github">singularityware/singularity</remote-id>
+		<remote-id type="github">sylabs/singularity</remote-id>
 	</upstream>
 </pkgmetadata>
