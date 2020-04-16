@@ -57,7 +57,6 @@ dev-vcs/hgsubversion
 dev-vcs/hgsvn
 dev-vcs/hgview
 dev-vcs/mercurial-server
-dev-vcs/tortoisehg
 
 # Alexander Tsoy <alexander@tsoy.me> (2020-03-10)
 # media-sound/gtklick: last commit in 2014, python 2 only, blocks
