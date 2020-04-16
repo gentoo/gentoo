@@ -22,6 +22,7 @@ RDEPEND="!games-engines/zoom
 	dev-libs/icu
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
+	dev-qt/qtdiag:5
 	dev-qt/qtgraphicaleffects:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
