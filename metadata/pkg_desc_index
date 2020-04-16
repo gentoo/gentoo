@@ -5954,16 +5954,23 @@ dev-perl/Dist-CheckConflicts 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Metadata 0.927.0: Information about a perl module distribution
 dev-perl/Dist-Zilla 6.10.0-r2: distribution builder; installer not included!
 dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.6.0: Add per-file per-year copyright information
+dev-perl/Dist-Zilla-Plugin-CheckExtraTests 0.29.0-r1: check xt tests before release
 dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0: Plugin configuration containing settings for a Git repo
+dev-perl/Dist-Zilla-Plugin-ContributorsFile 0.3.0: add a file listing all contributors
 dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1: Update your git repository after release
+dev-perl/Dist-Zilla-Plugin-Git-Contributors 0.35.0: Add contributor names from git to your distribution
 dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.390.0: A more awesome MakeMaker plugin for Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-Meta-Contributors 0.3.0: Generate an x_contributors section in distribution metadata
 dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.4: Generating and Populating 'provides' in your META.yml
 dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/version from traditional packages for provides
+dev-perl/Dist-Zilla-Plugin-NextVersion-Semantic 0.2.5: update the next version, semantic-wise
 dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0: List prereqs conditional on operating system
 dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.120.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-RPM 0.15.0: Build an RPM from your Dist::Zilla release
+dev-perl/Dist-Zilla-Plugin-Run 0.48.0: Run external commands and code at specific phases of Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-SurgicalPodWeaver 0.2.300: Surgically apply PodWeaver
+dev-perl/Dist-Zilla-Plugin-Test-CPAN-Changes 0.12.0: release tests for your changelog
 dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7: Release tests for minimum required versions
 dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.1.0: Tests to check your code against best practices
 dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0: A role for plugins that use Module::Metadata
@@ -6621,6 +6628,7 @@ dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
 dev-perl/Path-Class 0.370.0: Cross-platform path specification manipulation
 dev-perl/Path-FindDev 0.5.3: Find a development path somewhere in an upper hierarchy
 dev-perl/Path-IsDev 1.1.3: Determine if a given Path resembles a development source tree
+dev-perl/Path-Iterator-Rule 1.14.0: Iterative, recursive file finder
 dev-perl/Path-Tiny 0.104.0: File path utility
 dev-perl/Pegex 0.640.0: Acmeist PEG Parser Framework
 dev-perl/Perl-Critic 1.130.0: Critique Perl source code for best-practices
@@ -6853,6 +6861,7 @@ dev-perl/Test-Fatal 0.14.0: Incredibly simple helpers for testing code with exce
 dev-perl/Test-File 1.443.0: Test file attributes
 dev-perl/Test-File-Contents 0.230.0: Test routines for examining the contents of files
 dev-perl/Test-File-ShareDir 1.1.2: Create a Fake ShareDir for your modules for testing.
+dev-perl/Test-Filename 0.30.0-r2: Portable filename comparison
 dev-perl/Test-Files 0.140.0: A Test::Builder based module to ease testing with files and dirs
 dev-perl/Test-Inline 2.213.0-r2: Inline test suite support for Perl
 dev-perl/Test-Inter 1.60.0 1.90.0: Framework for more readable interactive test scripts
@@ -17071,7 +17080,7 @@ sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Ch
 sys-cluster/rdma-core 26.0-r1 26.1 27.0-r1 28.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
-sys-cluster/singularity 2.6.1: Application containers for Linux
+sys-cluster/singularity 2.6.1 3.5.3: Application containers for Linux
 sys-cluster/slurm 19.05.4.1 19.05.5.1 20.02.0.1 20.02.1.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.3.1-r1 2.4.5: Lightning-fast unified analytics engine
 sys-cluster/swift 2.23.1-r2 2.24.0-r1 2019.2.9999: A highly available, distributed, and eventually consistent object/blob store

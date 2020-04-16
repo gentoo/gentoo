@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install setup
+DEPEND=sys-libs/libseccomp >=dev-lang/go-1.13.0 app-crypt/gpgme dev-libs/openssl sys-apps/util-linux sys-fs/cryptsetup
+DESCRIPTION=Application containers for Linux
+EAPI=7
+HOMEPAGE=https://sylabs.io
+IUSE=examples +network +suid kernel_linux
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=sys-libs/libseccomp sys-fs/squashfs-tools
+SLOT=0
+SRC_URI=https://github.com/sylabs/singularity/releases/download/v3.5.3/singularity-3.5.3.tar.gz
+_eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=ff21dbf47930e3941f44a3cd6edae2a8

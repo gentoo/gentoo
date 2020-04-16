@@ -8208,6 +8208,8 @@ sys-cluster/rdma-core:python - Enable pyverbs support
 sys-cluster/rdma-core:valgrind - Enable valgrind notations
 sys-cluster/resource-agents:libnet - Force use of net-libs/libnet
 sys-cluster/resource-agents:rgmanager - Install resources for rgmanager
+sys-cluster/singularity:network - Install network plug-ins
+sys-cluster/singularity:suid - Install SUID helper binary
 sys-cluster/slurm:html - Build html documentation
 sys-cluster/slurm:ipmi - Build support for collecting some ipmi stats
 sys-cluster/slurm:json - Add support for json-persing via json-c
