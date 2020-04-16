@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit leechcraft toolchain-funcs
+inherit leechcraft
 
 DESCRIPTION="Allows launching external applications (and LeechCraft plugins) from LeechCraft"
 
@@ -12,9 +12,8 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
-	dev-qt/qtnetwork:5
-	dev-qt/qtgui:5
 	dev-qt/qtdeclarative:5[widgets]
+	dev-qt/qtnetwork:5
 "
 RDEPEND="${DEPEND}
 	~virtual/leechcraft-trayarea-${PV}"
