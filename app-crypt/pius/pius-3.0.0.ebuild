@@ -23,5 +23,5 @@ RDEPEND="${DEPEND}
 	dev-lang/perl"
 
 python_test() {
-	${EPYTHON} -m unittest discover -s test/* -v
+	${EPYTHON} -m unittest discover -s test/* -v || die
 }
