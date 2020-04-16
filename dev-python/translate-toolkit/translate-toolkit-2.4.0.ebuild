@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc +html +ical +ini +subtitles +yaml"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	subtitles? ( || ( $(python_gen_useflags python3_6 python3_7) ) )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -38,7 +37,7 @@ RDEPEND="${DEPEND}
 	html? ( dev-python/utidylib[${PYTHON_USEDEP}] )
 	ical? ( dev-python/vobject[${PYTHON_USEDEP}] )
 	ini? ( dev-python/iniparse[${PYTHON_USEDEP}] )
-	subtitles? ( $(python_gen_cond_dep 'media-video/gaupol[${PYTHON_USEDEP}]' python3_6 python3_7) )
+	subtitles? ( media-video/gaupol[${PYTHON_USEDEP}] )
 	yaml? ( dev-python/pyyaml[${PYTHON_USEDEP}] )
 "
 
