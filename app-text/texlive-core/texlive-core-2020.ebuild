@@ -87,6 +87,7 @@ MODULAR_X_DEPEND="X? (
 
 COMMON_DEPEND="${MODULAR_X_DEPEND}
 	!~dev-texlive/texlive-basic-2019
+	!~dev-texlive/texlive-fontutils-2019
 	sys-libs/zlib
 	>=media-libs/libpng-1.2.43-r2:0=
 	media-libs/gd[png]
