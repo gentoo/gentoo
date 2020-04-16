@@ -65,6 +65,7 @@ python_test() {
 	export USE_TWISTED=false
 	export USE_ASYNCIO=true
 	py.test -v autobahn/wamp/test/test_cryptosign.py || die
+	rm -r .pytest_cache || die
 }
 
 pkg_postinst() {
