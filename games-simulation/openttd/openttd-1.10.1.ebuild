@@ -24,7 +24,7 @@ IUSE="aplaymidi debug dedicated iconv icu lzo +openmedia +png cpu_flags_x86_sse 
 RESTRICT="test" # needs a graphics set in order to test
 
 RDEPEND="!dedicated? (
-		media-libs/libsdl[sound,X,video]
+		media-libs/libsdl2[sound,X,video]
 		icu? (
 			dev-libs/icu-layoutex
 			dev-libs/icu-le-hb
