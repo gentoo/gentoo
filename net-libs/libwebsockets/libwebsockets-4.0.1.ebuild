@@ -9,7 +9,7 @@ DESCRIPTION="A flexible pure-C library for implementing network protocols"
 HOMEPAGE="https://libwebsockets.org/"
 SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="MIT"
 SLOT="0/16" # libwebsockets.so.16
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="access-log caps cgi client dbus generic-sessions http-proxy http2 ipv6
