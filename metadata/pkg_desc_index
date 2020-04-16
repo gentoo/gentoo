@@ -448,7 +448,7 @@ app-admin/graylog 2.5.1 3.1.3 3.2.4: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.9 1.2.10 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
-app-admin/hcloud 1.14.0 1.15.0 1.16.0 1.16.1: A command-line interface for Hetzner Cloud
+app-admin/hcloud 1.16.1: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r28: A simple utility to read the temperature of SMART capable hard drives
 app-admin/helm 2.16.1 3.0.0 3.0.1 3.0.2 3.0.3 3.1.1 3.1.2: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
@@ -5229,7 +5229,7 @@ dev-libs/pigpio 72 73 74: A library for the Raspberry which allows control of th
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
-dev-libs/ppl 1.2 1.2-r1 1.2-r2: The Parma Polyhedra Library for numerical analysis of complex systems
+dev-libs/ppl 1.2-r2: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/processor-trace 1.6.1 1.6.2 2.0: Intel(R) Processor Trace decoder library
 dev-libs/protobuf 3.10.1 3.11.2 3.11.4 9999: Google's Protocol Buffers - Extensible mechanism for serializing structured data
 dev-libs/protobuf-c 1.3.2: Protocol Buffers implementation in C
@@ -14374,7 +14374,7 @@ net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/signal-desktop-bin 1.33.0: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
-net-im/skypeforlinux 8.57.0.116-r1 8.58.0.93: Instant messaging client, with support for audio and video
+net-im/skypeforlinux 8.57.0.116-r1 8.58.0.93 8.59.0.77: Instant messaging client, with support for audio and video
 net-im/slack 4.1.1 4.3.2-r1 4.3.2-r2: Team collaboration tool
 net-im/spectrum2 2.0.12-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
@@ -14965,7 +14965,7 @@ net-misc/rclone 1.50.0 1.51.0 9999: A program to sync files to and from various 
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1 1.3.10 1.4.1 1.4.2-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1 1.3.10 1.4.1 1.4.2-r1 1.4.3: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
