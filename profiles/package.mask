@@ -640,12 +640,6 @@ gnome-base/gnome-desktop:2
 # Masked for testing due to removal of libnm-glib (bug #665338)
 >=net-misc/networkmanager-1.20
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-11)
-# The following Mercurial-related tools do not declare support
-# for Python 3 and have no maintainers.
-# Removal in 30 days.  Bug #712114.
-dev-vcs/tortoisehg
-
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
 =mail-mta/postfix-3.6*
