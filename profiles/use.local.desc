@@ -4827,6 +4827,7 @@ media-tv/kodi:nfs - Enable NFS client support
 media-tv/kodi:raspberry-pi - Enable support for the Raspberry Pi
 media-tv/kodi:system-ffmpeg - Use system ffmpeg instead of the bundled one
 media-tv/kodi:udev - Use sys-fs/udev rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.
+media-tv/kodi:udf - Enable UDF support. Required for playing blurays.
 media-tv/kodi:webserver - Enable internal webserver
 media-tv/kodi:xslt - Enable XSLT support using dev-libs/libxslt
 media-tv/linuxtv-dvb-apps:alevt - Build videotext decoder
