@@ -1579,7 +1579,7 @@ app-emulation/cadvisor 0.34.0 0.35.0 0.36.0: Analyzes resource usage and perform
 app-emulation/cloud-init 19.4 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/conmon 2.0.10 2.0.11: An OCI container runtime monitor
-app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.2.12 1.2.13 1.3.0 1.3.1 1.3.2: A daemon to control runC
+app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.2.12 1.2.13 1.3.0 1.3.1 1.3.2 1.3.4: A daemon to control runC
 app-emulation/containers-storage 1.15.1 1.15.2 1.15.7 1.18.1: containers/storage library
 app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2 1.16.3 1.17.0 1.17.1: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.14.0 1.15.0 1.16.1 1.18.0: CLI and validation tools for Kubelet Container Runtime (CRI)
@@ -1644,7 +1644,7 @@ app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and 
 app-emulation/protontricks 1.4.1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.11 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 4.2.0-r2 4.2.0-r3 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 4.2.0-r2 4.2.0-r3 4.2.0-r4 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -4891,7 +4891,7 @@ dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.23.3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.177 0.178 0.179: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/ell 0.26 0.27 0.28 0.30 0.30-r1 0.31 9999: Embedded Linux Library provides core, low-level functionality for system daemons
+dev-libs/ell 0.28 0.31 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library
 dev-libs/faxpp 0.4-r1: Small, fast and conformant XML pull parser written in C
@@ -14804,7 +14804,7 @@ net-misc/dleyna-server 0.5.0 0.6.0: Service that allows to discover and manipula
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2019.78: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 93.4.273 94.3.371 94.4.384: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 94.4.384 95.4.441: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 19: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4 0.9a_p19_p1: A simple fax program for single-user systems
@@ -14974,7 +14974,7 @@ net-misc/rclone 1.50.0 1.51.0 9999: A program to sync files to and from various 
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1 1.3.10 1.4.1 1.4.2-r1 1.4.3: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.3.6-r1 1.4.3: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
