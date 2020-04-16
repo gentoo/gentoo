@@ -117,7 +117,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-cpp/libcmis-0.5.2
 	dev-db/unixODBC
 	dev-lang/perl
-	dev-libs/boost:=[nls]
+	>=dev-libs/boost-1.72.0:=[nls]
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
@@ -211,7 +211,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3.1
-	>=dev-util/mdds-1.5.0:1=
+	dev-util/mdds:1/1.5
 	media-libs/glm
 	sys-devel/ucpp
 	x11-base/xorg-proto
@@ -254,7 +254,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 
 	# TODO: upstream (for now taken from Arch Linux)
-	"${FILESDIR}/${P}-poppler-0.86.patch" # bug 711102
+	"${FILESDIR}/${PN}-6.4.2.2-poppler-0.86.patch" # bug 711102
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
