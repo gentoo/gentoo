@@ -613,7 +613,7 @@ src_test() {
 	if [[ -n ${softmmu_targets} ]]; then
 		cd "${S}/softmmu-build"
 		pax-mark m */qemu-system-* #515550
-		emake -j1 check
+		emake check
 	fi
 }
 
