@@ -22,11 +22,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=(
-	ChangeLog DESCRIPTION.txt README-1.19.txt README.developer
+	ChangeLog DESCRIPTION.txt README.md devdoc/README.developer
 	devdoc/critcl-tcllib.txt devdoc/dirlayout_install.txt
-	devdoc/indexing.txt devdoc/installation.txt
+	devdoc/indexing.txt
 )
-HTML_DOCS=( devdoc/devguide.html devdoc/releaseguide.html )
+HTML_DOCS=( idoc/www )
 
 PATCHES=( "${FILESDIR}"/${P}-test.patch )
 
