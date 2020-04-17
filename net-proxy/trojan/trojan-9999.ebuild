@@ -4,16 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
+EGIT_REPO_URI="https://github.com/trojan-gfw/trojan.git"
 
-inherit cmake python-any-r1 systemd
+inherit cmake git-r3 python-any-r1 systemd
 
 DESCRIPTION="An unidentifiable mechanism that helps you bypass GFW"
 HOMEPAGE="https://github.com/trojan-gfw/trojan"
-SRC_URI="https://github.com/trojan-gfw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS=""
 IUSE="mysql test"
 
 # Some hiccups setting up local network server.
