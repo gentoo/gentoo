@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit leechcraft
 
-DESCRIPTION="NetworkMonitor watches HTTP requests in for LeechCraft"
+DESCRIPTION="NetworkMonitor allows monitoring HTTP requests in LeechCraft"
 
 SLOT="0"
 KEYWORDS=""
