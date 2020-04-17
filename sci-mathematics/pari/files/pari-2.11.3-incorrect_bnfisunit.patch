@@ -1,0 +1,49 @@
+From: Karim Belabas <Karim.Belabas@math.u-bordeaux1.fr>
+Date: Mon, 9 Sep 2019 15:20:21 +0000 (+0200)
+Subject: fix #2164
+X-Git-Url: https://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi?p=pari.git;a=commitdiff_plain;h=c7a1d35f382e96ddf14694be27a0ca5746880700
+
+fix #2164
+---
+
+diff --git a/src/basemath/buch2.c b/src/basemath/buch2.c
+index a853d3c48..e31b2278b 100644
+--- a/src/basemath/buch2.c
++++ b/src/basemath/buch2.c
+@@ -2136,7 +2136,8 @@ bnfisunit(GEN bnf,GEN x)
+   for (i = 1; i < RU; i++)
+     if (gexpo(gel(emb,i)) > -1) break;
+   p1 = imag_i( row_i(logunit,i, 1,RU-1) );
+-  p1 = RgV_dotproduct(p1, ex); if (!R1) p1 = gmul2n(p1, -1);
++  p1 = RgV_dotproduct(p1, ex);
++  if (i > R1) p1 = gmul2n(p1, -1);
+   p1 = gsub(garg(gel(emb,i),prec), p1);
+   /* p1 = arg(the missing root of 1) */
+ 
+diff --git a/src/test/32/nf b/src/test/32/nf
+index 16bf83ce3..e6c41f8b5 100644
+--- a/src/test/32/nf
++++ b/src/test/32/nf
+@@ -502,6 +502,7 @@ Mod(1/2*x - 1/2, x^2 + 23)
+ [1, 1/2*x - 1/2]
+ Mod(0, x)
+ Mod(-6/5, x)
++[0, 2, Mod(0, 2)]~
+   ***   at top-level: nfinit([y^3+2,[1,x]])
+   ***                 ^---------------------
+   *** nfinit: incorrect type in nfinit_basic (t_VEC).
+diff --git a/src/test/in/nf b/src/test/in/nf
+index 49148123b..94d5165bc 100644
+--- a/src/test/in/nf
++++ b/src/test/in/nf
+@@ -156,6 +156,10 @@ K.zk
+ nfinit(x, 3)[2]
+ nfinit(1/2*x + 3/5, 3)[2]
+ 
++\\ #2164
++bnf = bnfinit(y^4-y-1);
++bnfisunit(bnf,-y^3+2*y^2-1)
++
+ \\ ERRORS: keep at end of file
+ 
+ nfinit([y^3+2,[1,x]])

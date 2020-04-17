@@ -613,7 +613,6 @@ src_test() {
 		cd "${S}/softmmu-build"
 		pax-mark m */qemu-system-* #515550
 		emake -j1 check
-		emake -j1 check-report.html
 	fi
 }
 

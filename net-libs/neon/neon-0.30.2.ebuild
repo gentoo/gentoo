@@ -6,7 +6,7 @@ EAPI="6"
 inherit autotools libtool multilib-minimal
 
 DESCRIPTION="HTTP and WebDAV client library"
-HOMEPAGE="http://webdav.org/neon/"
+HOMEPAGE="https://notroj.github.io/neon/"
 SRC_URI="http://webdav.org/neon/${P}.tar.gz"
 
 LICENSE="GPL-2"

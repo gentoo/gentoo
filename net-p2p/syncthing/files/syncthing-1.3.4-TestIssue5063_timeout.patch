@@ -1,0 +1,18 @@
+As of early April 2020, running the Syncthing test suite on the Gentoo ppc64
+buildhost fails due to TestIssue5063 timing out. Increase the time-out
+threshold for this test to allow it to pass.
+
+Other arches we currently support (i.e. amd64, arm and x86) shouldn't be
+affected by the change because thay have always passed so far anyway.
+
+--- a/lib/model/model_test.go
++++ b/lib/model/model_test.go
+@@ -914,7 +914,7 @@
+ 	}()
+ 	select {
+ 	case <-finished:
+-	case <-time.After(10 * time.Second):
++	case <-time.After(20 * time.Second):
+ 		pprof.Lookup("goroutine").WriteTo(os.Stdout, 1)
+ 		t.Fatal("Timed out before all devices were added")
+ 	}

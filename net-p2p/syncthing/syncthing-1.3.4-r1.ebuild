@@ -292,6 +292,10 @@ RDEPEND="acct-group/syncthing
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.4-TestIssue5063_timeout.patch
+)
+
 src_prepare() {
 	# Bug #679280
 	xdg_environment_reset

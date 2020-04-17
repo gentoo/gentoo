@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/6001-lib-fix-non-local-lambda-expression-cannot-have-a-ca.patch"
 	"${FILESDIR}/6002-context-workaround-to-prevent-LOGICAL_INO-and-btrfs-.patch"
 	"${FILESDIR}/6003-process-Fix-gettid-ambiguity-with-glibc-2.30.patch"
+	"${FILESDIR}/0001-HACK-musl-does-not-define-pthread_getname_np.patch"
 )
 
 pkg_pretend() {

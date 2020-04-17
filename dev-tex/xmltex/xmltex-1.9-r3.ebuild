@@ -22,6 +22,11 @@ DEPEND="virtual/latex-base"
 
 RDEPEND="${DEPEND}"
 
+src_unpack() {
+	# Bug 645438
+	tar -I /bin/gzip -xf "${DISTDIR}"/${P}.tar.gz || die
+}
+
 src_compile() {
 	fmt_call="$(has_version '>=app-text/texlive-core-2019' \
 	  && echo "fmtutil-user" || echo "fmtutil")"
