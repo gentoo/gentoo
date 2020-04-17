@@ -34,7 +34,6 @@ DEPEND="
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kcrash-${KFMIN}:5
 	>=kde-frameworks/kdbusaddons-${KFMIN}:5
-	>=kde-frameworks/kemoticons-${KFMIN}:5
 	>=kde-frameworks/kglobalaccel-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kiconthemes-${KFMIN}:5
@@ -65,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-kf5windowsystem-5.63.patch
 	# git master
 	"${FILESDIR}"/${P}-kf5bookmarks-5.69.patch
+	"${FILESDIR}"/${P}-unused-kemoticons.patch
 )
 
 src_configure() {
