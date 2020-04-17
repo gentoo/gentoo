@@ -19,6 +19,7 @@ acct-group/ceph 0: System group: ceph
 acct-group/cinder 0: System group: cinder
 acct-group/clamav 0: System group: clamav
 acct-group/cmd5checkpw 0: System group: cmd5checkpw
+acct-group/consul 0: System group: consul
 acct-group/davfs2 0: System group: davfs2
 acct-group/ddclient 0: A group for the dynamic DNS client
 acct-group/deluge 0: System group: deluge
@@ -198,6 +199,7 @@ acct-user/ceph 0: User for ceph
 acct-user/cinder 0: user for the openstack cinder service
 acct-user/clamav 0: System user: clamav
 acct-user/cmd5checkpw 0: User for cmd5checkpw
+acct-user/consul 0: User for consul
 acct-user/cyrus 0-r1: user for cyrus-imapd daemon
 acct-user/davfs2 0: System user: davfs2
 acct-user/ddclient 0: A user for the dynamic DNS client
@@ -403,7 +405,7 @@ app-admin/clustershell 1.7.3: Python framework for efficient cluster administrat
 app-admin/conky 1.10.8-r4 1.10.8-r8 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4: Serial Console Manager
-app-admin/consul 1.6.2 1.6.3 1.7.0: A tool for service discovery, monitoring and configuration
+app-admin/consul 1.6.2 1.6.3 1.7.0 1.7.2: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.23.0 0.24.0 0.24.1: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -599,7 +601,7 @@ app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
 app-arch/file-roller 3.32.3 3.32.4: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 1.3 1.4: Library and tool for working with Microsoft Cabinet (CAB) files
-app-arch/gnome-autoar 0.2.3 0.2.4: Automatic archives creating and extracting library
+app-arch/gnome-autoar 0.2.4: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.9 1.10: Standard GNU compressor
 app-arch/hardlink 0.3.2: A tool which replaces copies of a file with hardlinks
@@ -851,7 +853,7 @@ app-crypt/ekeyd 1.1.5-r1: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0: Save environment variables in a secret vault
 app-crypt/fcrackzip 1.0: a zip password cracker
-app-crypt/gcr 3.28.1 3.34.0-r1: Libraries for cryptographic UIs and accessing PKCS#11 modules
+app-crypt/gcr 3.34.0-r1: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
@@ -1311,7 +1313,7 @@ app-editors/gedit 3.32.2-r1 3.34.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.32.2-r1 3.34.1: Collection of extra plugins for the gedit Text Editor
 app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0 1.8.1: Cross-platform, aesthetic, distraction-free markdown editor
-app-editors/gnome-latex 3.28.1 3.32.0: Integrated LaTeX environment for GNOME
+app-editors/gnome-latex 3.32.0: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2 0.8.1: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.2.0360 8.2.0508 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
@@ -2591,7 +2593,7 @@ app-text/dvipsk 5.999_p20190410 2020.1_p20200406: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.1 0.12.2 0.12.3: EditorConfig core library written in C
-app-text/enchant 1.6.1-r1 2.2.7 2.2.8: Spellchecker wrapping library
+app-text/enchant 1.6.1-r1 2.2.8: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes
@@ -2615,7 +2617,7 @@ app-text/groonga 5.0.3 5.0.9 6.1.2 8.0.2: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0 1.1.1: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
 app-text/gspell 1.6.1 1.8.3: Spell check library for GTK+ applications
-app-text/gtkspell 2.0.16 2.0.16-r1 3.0.9 3.0.10: Spell checking widget for GTK
+app-text/gtkspell 2.0.16 2.0.16-r1 3.0.10: Spell checking widget for GTK
 app-text/gtranslator 3.32.0: GNOME Translation Editor
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
@@ -4827,7 +4829,7 @@ dev-libs/amdgpu-pro-opencl 18.20.684755 19.30.838629: Proprietary OpenCL impleme
 dev-libs/angelscript 2.34.0: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2 3.5.2-r1: The ANTLR3 C Runtime
 dev-libs/appstream 0.12.7 0.12.10: Cross-distro effort for providing metadata for software in the Linux ecosystem
-dev-libs/appstream-glib 0.7.15 0.7.16 0.7.17: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.7.16 0.7.17: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.6.3-r4 1.6.5-r1 1.7.0-r1: Apache Portable Runtime Library
 dev-libs/apr-util 1.6.1-r3: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
@@ -4913,7 +4915,7 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.48.7 1.56.2 1.58.5 1.58.6: Javascript bindings for GNOME
-dev-libs/glib 2.60.7 2.60.7-r1 2.60.7-r2 2.62.5 2.62.6 2.64.1: The GLib library of C routines
+dev-libs/glib 2.60.7-r2 2.62.6 2.64.1: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.4 3.2.5 3.2.6 3.2.7: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 6.1.2-r1 6.2.0-r1: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -5285,7 +5287,7 @@ dev-libs/template-glib 3.32.0: Templating library for GLib
 dev-libs/tinyxml 2.6.2-r3: Simple and small C++ XML parser
 dev-libs/tinyxml2 7.1.0: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded web application server extensible with C++
-dev-libs/totem-pl-parser 3.26.3 3.26.4 3.26.5: Playlist parsing library
+dev-libs/totem-pl-parser 3.26.4 3.26.5: Playlist parsing library
 dev-libs/tre 0.8.0-r1: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tut 2013.12.18 2016.12.19: C++ Template Unit Test Framework
 dev-libs/tvision 2.1.0_pre2-r4 2.2.1.4: Text User Interface that implements the well known CUA widgets
@@ -10400,7 +10402,7 @@ dev-util/glib-utils 2.60.7 2.62.5 2.62.6 2.64.1: Build utilities for GLib using 
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.12.3353_pre20191027-r2 8.13.3559 8.13.3560_pre20200404 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1726: GN is a meta-build system that generates build files for Ninja
-dev-util/gnome-builder 3.30.3-r1 3.32.4-r1 3.34.1-r1: An IDE for writing GNOME-based software
+dev-util/gnome-builder 3.32.4-r1 3.34.1-r1: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.30.2 3.32.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2019.3.4: Golang IDE by JetBrains
@@ -11552,7 +11554,7 @@ gnome-extra/gnome-user-docs 3.32.3 3.34.1: GNOME end user documentation
 gnome-extra/gnome-user-share 3.32.0.1 3.34.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.32.2 3.34.0 3.34.1 3.34.2: A weather application for GNOME
-gnome-extra/gtkhtml 4.10.0 4.10.0-r2: Lightweight HTML rendering/printing/editing engine
+gnome-extra/gtkhtml 4.10.0-r2: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 12.0.1 12.0.1-r1: Unicode character map viewer and library
 gnome-extra/libgda 5.2.8-r1: GNOME database access library
 gnome-extra/libgsf 1.14.45 1.14.46: The GNOME Structured File Library
@@ -14923,7 +14925,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 0.01c: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.18.4-r1 1.18.4-r3 1.22.8-r1 1.22.10: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.18.4-r3 1.22.8-r1 1.22.10: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.5.2 2.6.2 2.6.3 2.6.4: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
@@ -17847,7 +17849,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 81.0.4044.92 81.0.4044.113 83.0.4103.14: Open-source version of Google Chrome web browser
+www-client/chromium 81.0.4044.113 83.0.4103.14: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit

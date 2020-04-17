@@ -2916,7 +2916,6 @@ dev-util/gnome-builder:git - Provide support for the Git version control system 
 dev-util/gnome-builder:glade - Provide integration with dev-util/glade UI designer for Gtk
 dev-util/gnome-builder:sysprof - Provide an integrated profiler via dev-util/sysprof
 dev-util/gnome-builder:vala - Provide an autoindenter, autocompletion, diagnostics, and symbol resolver for Vala
-dev-util/gnome-builder:webkit - Enable net-libs/webkit-gtk using plugins support and the HTML/Markdown previewer plugin
 dev-util/google-perftools:debug - Build a set of libraries with debug support (so-called debugalloc). These are available by default but are not needed unless you're actually developing using tcmalloc.
 dev-util/google-perftools:largepages - Use (experimental) larger pages for tcmalloc, this increases memory usage, but should speed up the allocation/free operations.
 dev-util/google-perftools:minimal - Only build the tcmalloc_minimal library, ignoring the heap checker and the profilers.
