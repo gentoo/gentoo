@@ -189,7 +189,37 @@ src_install() {
 		done
 		popd > /dev/null
 	fi
-	docompress -x /usr/share/doc/${PF}/{BioC_mirrors.csv,CRAN_mirrors.csv,KEYWORDS.db,NEWS.rds}
+
+	# Users are encouraged to access some of the the R documentation
+	# interactively, through functions like "contributors()" that
+	# tries to open the "AUTHORS" file. Other files can be accessed
+	# by name with RShowDoc(), and the documentation for e.g. license()
+	# and RShowDoc() suggests a few of these names. Here we try to
+	# collect as many names as possible that a user might actually
+	# try to view through R, because if we don't decompress them,
+	# then R doesn't know what to do with 'em. Bug #556706.
+	INTERACTIVE_DOCS=(
+		AUTHORS
+		COPYING
+		FAQ
+		NEWS
+		THANKS
+	)
+
+	# Other data sources that are shipped as "documentation," but which
+	# need to be accessible via their original unmolested filenames.
+	INTERACTIVE_DATA=(
+		BioC_mirrors.csv
+		CRAN_mirrors.csv
+		KEYWORDS.db
+		NEWS.rds
+	)
+
+	NOCOMPRESS_DOCS=( "${INTERACTIVE_DOCS[@]}" "${INTERACTIVE_DATA[@]}" )
+
+	for f in "${NOCOMPRESS_DOCS[@]}"; do
+		docompress -x "/usr/share/doc/${PF}/${f}"
+	done
 }
 
 pkg_postinst() {
