@@ -9,4 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="battery">Enables battery charge level reading support.</flag>
+		<flag name="poweractions">Enables support for suspending and hibernating the machine.</flag>
+		<flag name="powerevents">Enables support for receiving events about suspending and resuming the machine (to notify other plugins).</flag>
+	</use>
 </pkgmetadata>
