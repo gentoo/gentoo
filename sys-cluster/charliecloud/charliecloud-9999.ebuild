@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools python-single-r1
+inherit autotools eutils python-single-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	S="${WORKDIR}/${P}"
 else
 	SRC_URI="https://github.com/hpc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86 ~x86-linux"
 fi
 
 DESCRIPTION="Lightweight user-defined software stacks for high-performance computing"
@@ -21,7 +21,7 @@ HOMEPAGE="https://hpc.github.io/charliecloud/"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-IUSE="buildah ch-grow doc docker examples +pv +squashfs squashfuse"
+IUSE="ch-grow doc examples +pv +squashfs squashfuse"
 
 # Extensive test suite exists, but downloads container images
 # directly and via Docker and installs packages inside using apt/yum.
@@ -31,8 +31,6 @@ RESTRICT="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	buildah? ( >=app-emulation/buildah-1.11.2 )
-	docker? ( >=app-emulation/docker-17.03 )
 	pv? ( sys-apps/pv )
 	squashfs? ( sys-fs/squashfs-tools )
 	squashfuse? ( sys-fs/squashfuse )"
@@ -67,4 +65,13 @@ src_configure() {
 		--with-sphinx-python=$(which python) \
 	)
 	econf "${econf_args[@]}"
+}
+
+pkg_postinst() {
+	elog "Various builders are supported, as alternative "
+	elog "to the internal ch-grow. The following packages "
+	elog "can be installed to get the corresponding support."
+
+	optfeature "Building with Buildah"	"app-emulation/buildah"
+	optfeature "Building with Docker"	"app-emulation/docker"
 }
