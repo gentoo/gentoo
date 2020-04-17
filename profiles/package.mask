@@ -44,6 +44,13 @@ dev-python/pycrypto
 # Removal in 30 days.  Bug #611608.
 dev-python/potr
 
+# Ulrich Müller <ulm@gentoo.org> (2020-04-17)
+# Upstream has moved the manpages-de project to manpages-l10n.
+# We cannot move multiple packages to one, therefore removing the
+# old package. Use app-i18n/man-pages-l10n[l10n_de] as replacement.
+# Masked for removal in 30 days. Bug #717744.
+app-i18n/man-pages-de
+
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2020-04-17)
 # Very little activity for almost a year and the link to download the
 # "compiled" man-pages is dead.
