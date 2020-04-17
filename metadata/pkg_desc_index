@@ -14319,7 +14319,7 @@ net-fs/openafs-kernel 1.6.22.1 1.6.22.2: The OpenAFS distributed file system ker
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
-net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for online data storage
+net-fs/s3ql 2.33: A full-featured file system for online data storage
 net-fs/samba 4.11.6-r2 4.11.7 4.12.0 4.12.1: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
@@ -16049,7 +16049,7 @@ sci-libs/m4ri 20200115 20200125: Method of four russian for inversion (M4RI)
 sci-libs/m4rie 20200115: Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.4.1-r2: Math Graphics Library
-sci-libs/matio 1.5.13 1.5.16 1.5.17: Library for reading and writing matlab files
+sci-libs/matio 1.5.17: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/med 4.0.0-r1 4.0.0-r2: A library to store and exchange meshed data or computation results
 sci-libs/metis 4.0.3-r1 5.1.0-r2 5.1.0-r3: A package for unstructured serial graph partitioning
