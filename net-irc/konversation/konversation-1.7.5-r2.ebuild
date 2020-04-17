@@ -4,7 +4,7 @@
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
-KFMIN=5.60.0
+KFMIN=5.63.0
 QTMIN=5.12.3
 inherit ecm kde.org
 
@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-regex-for-cap-ack.patch
 	"${FILESDIR}"/${P}-missing-header.patch
 	"${FILESDIR}"/${P}-QElapsedTimer.patch
+	"${FILESDIR}"/${P}-kf5windowsystem-5.63.patch
 )
 
 src_configure() {
