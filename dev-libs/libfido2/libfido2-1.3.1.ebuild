@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/libfido2-1.3.0-cmakelists.patch"
+	"${FILESDIR}/libfido2-1.3.1-no-werror.patch"
 )
 
 pkg_pretend() {
