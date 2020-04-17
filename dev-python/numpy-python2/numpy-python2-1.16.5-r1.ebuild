@@ -151,6 +151,8 @@ sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
+	# https://github.com/numpy/numpy/issues/16005
+	local mydistutilsargs=( build_src )
 	distutils-r1_python_install ${NUMPY_FCONFIG}
 	python_optimize
 }
