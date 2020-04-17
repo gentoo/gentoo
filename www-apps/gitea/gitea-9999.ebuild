@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,8 @@ LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="+acct pam sqlite"
 
-BDEPEND="dev-lang/go"
+BDEPEND="dev-lang/go
+	>=net-libs/nodejs-10[npm]"
 DEPEND="pam? ( sys-libs/pam )"
 RDEPEND="${DEPEND}
 	acct? (
