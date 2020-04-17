@@ -169,6 +169,7 @@ acct-group/uptimed 0: System group: uptimed
 acct-group/usb 0: System group: usb
 acct-group/utmp 0: System group: utmp
 acct-group/varnish 0: group for varnish
+acct-group/vault 0: System group: vault
 acct-group/vboxguest 0: System group: vboxguest
 acct-group/vboxsf 0: System group: vboxsf
 acct-group/vboxusers 0: System group: vboxusers
@@ -339,6 +340,7 @@ acct-user/unrealircd 0: System user: unrealircd
 acct-user/uptimed 0: user for uptime daemon
 acct-user/usbmux 0: User for the usbmuxd daemon
 acct-user/varnish 0: user for varnish
+acct-user/vault 0: User for vault
 acct-user/vboxguest 0: user for virtualbox-guest-additions
 acct-user/vdradmin 0: User for www-misc/vdradmin-am
 acct-user/vpopmail 0: user for vpopmail
