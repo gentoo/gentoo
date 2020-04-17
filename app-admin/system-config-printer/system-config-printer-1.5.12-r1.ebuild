@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 inherit gnome2 python-single-r1 systemd
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/OpenPrinting/${PN}/releases/download/${PV}/${P}.tar.
 LICENSE="GPL-2+"
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~sparc x86"
 SLOT="0"
-IUSE="doc gnome-keyring policykit"
+IUSE="gnome-keyring policykit"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Needs cups running, bug 284005
@@ -41,7 +41,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
-	doc? ( dev-python/epydoc )
 "
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
@@ -75,11 +74,9 @@ src_configure() {
 
 src_compile() {
 	gnome2_src_compile
-	use doc && emake html
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( html/. )
 	gnome2_src_install
 	python_fix_shebang "${ED}"
 	python_optimize
