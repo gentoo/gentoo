@@ -5027,7 +5027,7 @@ dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.3_rc0 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
-dev-libs/libfido2 1.3.0-r1 1.3.1: Provides library functionality for FIDO 2.0
+dev-libs/libfido2 1.3.1 1.4.0: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1 0.20.2: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 6.1.2 6.2.0-r1 9999: Small, safe and fast formatting library
@@ -8425,7 +8425,7 @@ dev-python/pysendfile 2.0.1-r1: A python interface to the sendfile(2) system cal
 dev-python/pyserial 3.4: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
 dev-python/pysmi 0.3.4: Python Lex & Yacc
-dev-python/pysnmp 4.4.12 999999: Python SNMP library
+dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysol_cards 0.8.6 0.8.9: Deal PySol FreeCell cards
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
@@ -15121,7 +15121,7 @@ net-p2p/bitcoin-cli 0.16.3 0.19.1: Command-line JSON-RPC client specifically for
 net-p2p/bitcoin-qt 0.16.3 0.19.1: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.16.3 0.19.1: Original Bitcoin crypto-currency wallet for automated services
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
-net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the original bittorrent
+net-p2p/bittornado 0.4.1_p20160925-r2: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.13: Program for displaying classified advertisement items
 net-p2p/cpuminer-opt 3.12.4.2 3.12.13 9999: Optimized multi algo CPU miner
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
@@ -18215,7 +18215,7 @@ x11-misc/bbppp 0.2.5-r1: blackbox ppp frontend/monitor
 x11-misc/bbrun 1.6-r1: blackbox program execution dialog box
 x11-misc/bbtime 0.1.5-r1: blackbox time watcher
 x11-misc/bbweather 0.6.3-r2: blackbox weather monitor
-x11-misc/birdtray 1.7.0 9999: A new mail system tray notification icon for Thunderbird
+x11-misc/birdtray 1.7.0-r1 9999: A new mail system tray notification icon for Thunderbird
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
 x11-misc/bumblebee 3.2.1 3.2.1_p20170123 3.2.1_p20170130 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r1: An analog clock displaying the system-time
