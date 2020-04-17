@@ -30,6 +30,10 @@ RDEPEND="dev-db/sqlite:=
 
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.0-desktop_file_deprecated_category.patch
+)
+
 pkg_postinst() {
 	xdg_icon_cache_update
 }
