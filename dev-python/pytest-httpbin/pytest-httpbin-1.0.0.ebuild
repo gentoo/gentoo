@@ -21,6 +21,9 @@ RDEPEND="
 	dev-python/httpbin[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? ( dev-python/requests[${PYTHON_USEDEP}] )
+"
 
 PATCHES=(
 	"${FILESDIR}"/pytest-httpbin-1.0.0-pypy3-hang.patch
