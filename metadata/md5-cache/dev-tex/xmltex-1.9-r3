@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst postrm
+DEFINED_PHASES=compile install postinst postrm unpack
 DEPEND=virtual/latex-base virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=A non validating namespace aware XML parser implemented in TeX
 EAPI=7
@@ -9,4 +9,4 @@ RDEPEND=virtual/latex-base virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/xmltex-1.9.tar.gz
 _eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	texlive-common	3438add11e8232d1fa32884e5e278bfe
-_md5_=5f1f489bc76e405d95e1abf1cf0594b1
+_md5_=78f505f5a9a3400490cdc65ce3030b86
