@@ -12,7 +12,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="elogind nls policykit systemd +xscreensaver"
+IUSE="nls policykit +xscreensaver"
 
 COMMON_DEPEND="x11-apps/iceauth
 	>=dev-libs/glib-2.42
@@ -38,9 +38,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
-
-REQUIRED_USE="elogind? ( policykit )
-	systemd? ( policykit )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.10.1-alock_support_to_xflock4.patch
