@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-17)
+# librdkafka is not stable on sparc because of unaligned accesses, bug #717908
+app-admin/syslog-ng kafka
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-17)
 # dovector is not stable on sparc because of unaligned accesses, bug #634822
 mail-filter/maildrop dovecot
 
