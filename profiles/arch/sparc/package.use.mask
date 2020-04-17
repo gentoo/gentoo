@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-17)
+# net-analyzer/icinga is not keyworded on sparc
+net-analyzer/pnp4nagios icinga
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
 # net-libs/farstream is not keyworded on sparc
 net-im/pidgin gstreamer
