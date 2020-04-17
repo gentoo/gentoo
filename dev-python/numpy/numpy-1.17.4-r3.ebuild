@@ -1,10 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 FORTRAN_NEEDED=lapack
 
@@ -22,26 +23,24 @@ SRC_URI="
 	)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc lapack test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	lapack? (
-		virtual/cblas
-		virtual/lapack
+		>=virtual/cblas-3.8
+		>=virtual/lapack-3.8
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	lapack? ( virtual/pkgconfig )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.15.4-no-hardcode-blas.patch
-	"${FILESDIR}"/numpy-1.16.5-setup.py-install-skip-build-fails.patch
+	"${FILESDIR}"/${PN}-1.17.4-no-hardcode-blasv2.patch
 )
 
 src_unpack() {
@@ -51,36 +50,18 @@ src_unpack() {
 	fi
 }
 
-pc_incdir() {
-	$(tc-getPKG_CONFIG) --cflags-only-I $@ | \
-		sed -e 's/^-I//' -e 's/[ ]*-I/:/g' -e 's/[ ]*$//' -e 's|^:||'
-}
-
-pc_libdir() {
-	$(tc-getPKG_CONFIG) --libs-only-L $@ | \
-		sed -e 's/^-L//' -e 's/[ ]*-L/:/g' -e 's/[ ]*$//' -e 's|^:||'
-}
-
-pc_libs() {
-	$(tc-getPKG_CONFIG) --libs-only-l $@ | \
-		sed -e 's/[ ]-l*\(pthread\|m\)\([ ]\|$\)//g' \
-		-e 's/^-l//' -e 's/[ ]*-l/,/g' -e 's/[ ]*$//' \
-		| tr ',' '\n' | sort -u | tr '\n' ',' | sed -e 's|,$||'
-}
-
 python_prepare_all() {
 	if use lapack; then
-		append-ldflags "$($(tc-getPKG_CONFIG) --libs-only-other cblas lapack)"
 		local incdir="${EPREFIX}"/usr/include
 		local libdir="${EPREFIX}"/usr/$(get_libdir)
 		cat >> site.cfg <<-EOF || die
 			[blas]
-			include_dirs = $(pc_incdir cblas):${incdir}
-			library_dirs = $(pc_libdir cblas blas):${libdir}
-			blas_libs = $(pc_libs cblas blas)
+			include_dirs = ${incdir}
+			library_dirs = ${libdir}
+			blas_libs = cblas,blas
 			[lapack]
-			library_dirs = $(pc_libdir lapack):${libdir}
-			lapack_libs = $(pc_libs lapack)
+			library_dirs = ${libdir}
+			lapack_libs = lapack
 		EOF
 	else
 		export {ATLAS,PTATLAS,BLAS,LAPACK,MKL}=None
@@ -142,7 +123,10 @@ sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
+	# https://github.com/numpy/numpy/issues/16005
+	local mydistutilsargs=( build_src )
 	distutils-r1_python_install ${NUMPY_FCONFIG}
+	python_optimize
 }
 
 python_install_all() {
