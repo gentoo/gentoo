@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,29 +28,29 @@ if use otf; then
 
 	FONT_SUFFIX+="otf"
 
-	FONT_S="
-		"${S}"/IBM-Plex-Mono/fonts/complete/otf
-		"${S}"/IBM-Plex-Sans-Condensed/fonts/complete/otf
-		"${S}"/IBM-Plex-Sans-Devanagari/fonts/complete/otf
-		"${S}"/IBM-Plex-Sans-Hebrew/fonts/complete/otf
-		"${S}"/IBM-Plex-Sans/fonts/complete/otf
-		"${S}"/IBM-Plex-Serif/fonts/complete/otf
-		"${S}"/IBM-Plex-Sans-Thai-Looped/fonts/complete/otf"
+	FONT_S=(
+		IBM-Plex-Mono/fonts/complete/otf
+		IBM-Plex-Sans-Condensed/fonts/complete/otf
+		IBM-Plex-Sans-Devanagari/fonts/complete/otf
+		IBM-Plex-Sans-Hebrew/fonts/complete/otf
+		IBM-Plex-Sans/fonts/complete/otf
+		IBM-Plex-Serif/fonts/complete/otf
+		IBM-Plex-Sans-Thai-Looped/fonts/complete/otf )
 fi
 
 if use ttf; then
 
 	FONT_SUFFIX+="ttf"
 
-	FONT_S="
-		"${S}"/IBM-Plex-Mono/fonts/complete/ttf
-		"${S}"/IBM-Plex-Sans-Condensed/fonts/complete/ttf
-		"${S}"/IBM-Plex-Sans-Devanagari/fonts/complete/ttf
-		"${S}"/IBM-Plex-Sans-Hebrew/fonts/complete/ttf
-		"${S}"/IBM-Plex-Sans/fonts/complete/ttf
-		"${S}"/IBM-Plex-Serif/fonts/complete/ttf
-		"${S}"/IBM-Plex-Sans-Thai-Looped/fonts/complete/ttf
-		"${S}"/IBM-Plex-Sans-Variable/fonts/complete/ttf"
+	FONT_S=(
+		IBM-Plex-Mono/fonts/complete/ttf
+		IBM-Plex-Sans-Condensed/fonts/complete/ttf
+		IBM-Plex-Sans-Devanagari/fonts/complete/ttf
+		IBM-Plex-Sans-Hebrew/fonts/complete/ttf
+		IBM-Plex-Sans/fonts/complete/ttf
+		IBM-Plex-Serif/fonts/complete/ttf
+		IBM-Plex-Sans-Thai-Looped/fonts/complete/ttf
+		IBM-Plex-Sans-Variable/fonts/complete/ttf )
 fi
 
 font_src_install
