@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Yubico/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/1"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="libressl +static-libs"
 
 DEPEND="
@@ -23,10 +23,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/libfido2-1.3.0-cmakelists.patch"
-
-	# from upstream git, no longer needed with openssh-8.2
-	"${FILESDIR}/libfido2-1.3.0-remove-openssh-middleware.patch"
+	"${FILESDIR}/libfido2-1.4.0-cmakelists.patch"
 )
 
 pkg_pretend() {

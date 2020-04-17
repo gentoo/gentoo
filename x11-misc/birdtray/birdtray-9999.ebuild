@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake xdg-utils
 
 DESCRIPTION="A new mail system tray notification icon for Thunderbird"
 HOMEPAGE="https://github.com/gyunaev/birdtray"
@@ -29,3 +29,11 @@ RDEPEND="dev-db/sqlite:=
 	x11-libs/libX11"
 
 DEPEND="${RDEPEND}"
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+}
