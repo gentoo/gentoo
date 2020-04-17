@@ -26,7 +26,7 @@ DEPEND="
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/karchive-${KFMIN}:5
-	>=kde-frameworks/kbookmarks-${KFMIN}:5
+	>=kde-frameworks/kbookmarks-${KFMIN}:5=
 	>=kde-frameworks/kcodecs-${KFMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
@@ -63,6 +63,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-missing-header.patch
 	"${FILESDIR}"/${P}-QElapsedTimer.patch
 	"${FILESDIR}"/${P}-kf5windowsystem-5.63.patch
+	# git master
+	"${FILESDIR}"/${P}-kf5bookmarks-5.69.patch
 )
 
 src_configure() {
