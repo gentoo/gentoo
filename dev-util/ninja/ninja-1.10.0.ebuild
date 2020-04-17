@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
