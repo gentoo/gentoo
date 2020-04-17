@@ -62,7 +62,7 @@ src_configure() {
 		# Libdir is used as a libexec-style destination.
 		--libdir="${EPREFIX}"/usr/lib
 		# Attempts to call python-exec directly otherwise.
-		--with-sphinx-python=$(which python) \
+		--with-sphinx-python=${PYTHON}
 	)
 	econf "${econf_args[@]}"
 }
@@ -72,6 +72,6 @@ pkg_postinst() {
 	elog "to the internal ch-grow. The following packages "
 	elog "can be installed to get the corresponding support."
 
-	optfeature "Building with Buildah"	"app-emulation/buildah"
-	optfeature "Building with Docker"	"app-emulation/docker"
+	optfeature "Building with Buildah" app-emulation/buildah
+	optfeature "Building with Docker" app-emulation/docker
 }
