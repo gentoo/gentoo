@@ -182,6 +182,7 @@ src_prepare() {
 		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}" || die
 		pushd "${hpn_patchdir}" &>/dev/null || die
 		eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-glue.patch
+		eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-libressl.patch
 		if use X509; then
 		#	einfo "Will disable MT AES cipher due to incompatbility caused by X509 patch set"
 		#	# X509 and AES-CTR-MT don't get along, let's just drop it
