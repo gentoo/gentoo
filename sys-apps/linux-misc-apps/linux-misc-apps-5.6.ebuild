@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit versionator eutils toolchain-funcs linux-info ltprune autotools flag-o-matic
+inherit versionator eutils toolchain-funcs linux-info autotools flag-o-matic
 
 DESCRIPTION="Misc tools bundled with kernel sources"
 HOMEPAGE="https://kernel.org/"
@@ -191,14 +191,19 @@ src_install() {
 		newdoc README README.usbip
 		newdoc AUTHORS AUTHORS.usbip
 		popd >/dev/null
-		dodoc Documentation/usb/usbip_protocol.txt
+		dodoc Documentation/usb/usbip_protocol.rst
+		find "${D}" -name 'libusbip*.la' -delete || die
 	fi
 
-	mv -f "${D}"/usr/sbin/{,iio_}generic_buffer
+	# At one point upstream it was moved, but be generic to detect if it's
+	# happened already
+	if [[ -f "${D}"/usr/sbin/generic_buffer ]] && \
+		[[ ! -f "${D}"/usr/sbin/iio_generic_buffer ]]; then
+		mv -f "${D}"/usr/sbin/{,iio_}generic_buffer || die
+	fi
 
 	newconfd "${FILESDIR}"/freefall.confd freefall
 	newinitd "${FILESDIR}"/freefall.initd freefall
-	prune_libtool_files
 }
 
 pkg_postinst() {
@@ -206,7 +211,7 @@ pkg_postinst() {
 	elog "The cpupower utility is maintained separately at sys-power/cpupower"
 	elog "The lguest utility no longer builds, and has been dropped."
 	elog "The hpfall tool has been renamed by upstream to freefall; update your config if needed"
-	if find /etc/runlevels/ -name hpfall ; then
+	if find "${ROOT}"/etc/runlevels/ -name hpfall ; then
 		ewarn "You must change hpfall to freefall in your runlevels!"
 	fi
 	if use usbip; then
