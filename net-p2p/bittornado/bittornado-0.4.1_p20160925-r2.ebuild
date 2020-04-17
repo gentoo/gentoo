@@ -23,10 +23,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	|| (
-		dev-python/pycryptodome[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
-	)"
+	dev-python/pycryptodome[${PYTHON_USEDEP}]"
 # Block dev-python/pytest-testmon for bug #693508.
 DEPEND="test? (
 	dev-python/pytest[${PYTHON_USEDEP}]
