@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Python SNMP library"
@@ -14,32 +15,25 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 IUSE="doc examples"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-"
 RDEPEND="
 	>=dev-python/pyasn1-0.2.3[${PYTHON_USEDEP}]
 	dev-python/pysmi[${PYTHON_USEDEP}]
-	|| (
-		dev-python/pycryptodome[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
-	)
+	dev-python/pycryptodome[${PYTHON_USEDEP}]
 "
 
-python_compile_all() {
-	default
+distutils_enable_sphinx docs/source
 
-	if use doc; then
-		touch docs/source/conf.py
-		emake -C docs html
-	fi
+python_prepare_all() {
+	touch docs/source/conf.py || die
+	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/build/html/* )
-	docinto examples
-	use examples && dodoc -r examples/* docs/mibs
+	if use examples; then
+		docinto examples
+		dodoc -r examples/. docs/mibs
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 
 	distutils-r1_python_install_all
 }
