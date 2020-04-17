@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	>=media-libs/harfbuzz-2.4.0:0=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
+	system-libvpx? ( >=media-libs/libvpx-1.8.2:=[postproc,svc] )
 	>=media-libs/openh264-1.6.0:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
@@ -186,7 +186,9 @@ pre_build_checks() {
 	CHECKREQS_MEMORY="3G"
 	CHECKREQS_DISK_BUILD="7G"
 	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
-		CHECKREQS_DISK_BUILD="25G"
+		if use custom-cflags || use component-build; then
+			CHECKREQS_DISK_BUILD="25G"
+		fi
 		if ! use component-build; then
 			CHECKREQS_MEMORY="16G"
 		fi
@@ -556,8 +558,9 @@ src_configure() {
 		replace-flags "-Os" "-O2"
 		strip-flags
 
+		# Debug info section overflows without component build
 		# Prevent linker from running out of address space, bug #471810 .
-		if use x86; then
+		if ! use component-build || use x86; then
 			filter-flags "-g*"
 		fi
 
