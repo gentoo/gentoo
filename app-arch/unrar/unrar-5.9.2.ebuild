@@ -46,7 +46,7 @@ src_configure() {
 
 src_compile() {
 	unrar_make() {
-		emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS}" STRIP=true "$@"
+		emake AR="$(tc-getAR)" CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS}" STRIP=true "$@"
 	}
 
 	unrar_make CXXFLAGS+=" -fPIC" -C build-lib lib
