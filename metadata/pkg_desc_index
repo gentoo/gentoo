@@ -15268,7 +15268,7 @@ net-vpn/strongswan 5.8.1 5.8.2: IPsec-based VPN solution, supporting IKEv1/IKEv2
 net-vpn/tailscale 0.97_p45: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.4.2.7 0.4.3.4_rc: Anonymizing overlay network for TCP
-net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
+net-vpn/vpnc 0.5.3_p550 0.5.3_p550-r1: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20200413 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
@@ -17083,7 +17083,7 @@ sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
-sys-cluster/rdma-core 26.0-r1 26.1 27.0-r1 28.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
+sys-cluster/rdma-core 26.0-r1 26.1 27.0-r1 28.0 29.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1 3.5.3: Application containers for Linux
