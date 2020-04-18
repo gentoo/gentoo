@@ -66,6 +66,8 @@ BDEPEND="
 		dev-haskell/parsec
 	)"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
+
 S="${WORKDIR}"/${MY_P}
 
 src_configure() {
