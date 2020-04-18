@@ -1,0 +1,64 @@
+Origin: Based on patch from Petr Písař <ppisar@redhat.com>
+Date: Tue, 13 Jun 2017 15:29:15 +0200
+
+--- a/php/redland-post.i
++++ b/php/redland-post.i
+@@ -132,8 +132,11 @@ librdf_php_world_init(void)
+     exception_ce = zend_exception_get_default();
+     INIT_CLASS_ENTRY(ee_ce, "RedlandException", NULL);
+     redland_exception_ptr = zend_register_internal_class_ex(&ee_ce, 
+-                                                            exception_ce, 
+-                                                            NULL TSRMLS_CC);
++                                                            exception_ce
++#if PHP_MAJOR_VERSION < 7
++                                                            ,NULL TSRMLS_CC
++#endif
++                                                            );
+ #endif
+ 
+     memset(&librdf_php_locator, '\0', sizeof(raptor_locator));
+--- a/php/redland-typemap.i
++++ b/php/redland-typemap.i
+@@ -1,17 +1,17 @@
+-%typemap(in) librdf_uri* %{
+-  if(SWIG_ConvertPtr(*$input, (void **) &$1, SWIGTYPE_p_librdf_uri_s, 0) < 0) {
++%typemap(in) librdf_uri %{
++  if(SWIG_ConvertPtr($input, (void **) &$1, SWIGTYPE_p_librdf_uri_s, 0) < 0) {
+     /* Allow NULL from php for librdf_uri* */
+-    if ((*$input)->type==IS_NULL)
++    if ($input->type==IS_NULL)
+       $1=NULL;
+    else
+       SWIG_PHP_Error(E_ERROR, "Type error in argument $argnum of $symname. Expected $1_descriptor");
+   }
+ %}
+ 
+-%typemap(in) librdf_node* %{
+-  if(SWIG_ConvertPtr(*$input, (void **) &$1, SWIGTYPE_p_librdf_node_s, 0) < 0) {
++%typemap(in) librdf_node %{
++  if(SWIG_ConvertPtr($input, (void **) &$1, SWIGTYPE_p_librdf_node_s, 0) < 0) {
+     /* Allow NULL from php for librdf_node* */
+-    if ((*$input)->type==IS_NULL)
++    if ($input->type==IS_NULL)
+       $1=NULL;
+    else
+       SWIG_PHP_Error(E_ERROR, "Type error in argument $argnum of $symname. Expected $1_descriptor");
+ 
+--- a/php/test.php
++++ b/php/test.php
+@@ -26,11 +26,9 @@
+ /* ------------------------------------------------------------------------ */
+
+ print "Testing Redland...\n";
+-$dlls = array("redland.so", "php_redland.dll", "redland.dylib", "redland.bundle");
+-foreach ($dlls as $dll) {
+-  if(file_exists($dll)) {
+-    dl($dll);
+-  }
++if (extension_loaded('redland') !== true) {
++    print "Redland extension not loaded. Cannot run tests!" . PHP_EOL;
++    exit(1);
+ }
+
+ $world=librdf_php_get_world();
+ 
