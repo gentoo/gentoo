@@ -8457,7 +8457,7 @@ dev-python/pytest-httpbin 1.0.0: Easily test your HTTP library against a local c
 dev-python/pytest-lazy-fixture 0.6.2: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.3.7 0.5.0: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
-dev-python/pytest-mock 1.11.2: Thin-wrapper around the mock package for easier use with py.test
+dev-python/pytest-mock 1.11.2 2.0.0 3.0.0: Thin-wrapper around the mock package for easier use with pytest
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
@@ -11716,7 +11716,7 @@ kde-apps/kbruch 19.12.3: Educational application to learn calculating with fract
 kde-apps/kcachegrind 19.12.3: Frontend for Cachegrind by KDE
 kde-apps/kcalc 19.12.3: KDE calculator
 kde-apps/kcalutils 19.12.3: Library providing utility functions for the handling of calendar data
-kde-apps/kcharselect 19.12.3: KDE character selection utility
+kde-apps/kcharselect 19.12.3 19.12.3-r1: KDE character selection utility
 kde-apps/kcolorchooser 19.12.3: KDE color selector/editor
 kde-apps/kcron 19.12.3: KDE Task Scheduler
 kde-apps/kdav 19.12.3: DAV protocol implemention with KJobs
@@ -17364,7 +17364,7 @@ sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 5.4.31 5.4.32 5.4.33 5.5.16 5.5.17 5.5.18 5.6.4 5.6.5: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 3.16.82 4.4.219 4.9.219 4.14.176 4.19.115 5.4.32 5.5.17 5.6.4: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.82 4.4.219 4.9.219 4.14.176 4.19.116 5.4.33 5.5.18 5.6.5: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.13: The Zen Kernel Live Sources
