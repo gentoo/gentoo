@@ -1669,10 +1669,10 @@ app-emulation/skopeo 0.1.39 0.1.40-r1 0.1.41 0.2.0: Command line utility foroper
 app-emulation/slirp4netns 0.3.3 0.4.1-r1 0.4.2 0.4.3: User-mode networking for unprivileged network namespaces
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
-app-emulation/spice 0.14.0-r2 0.14.2 0.14.3 9999: SPICE server
+app-emulation/spice 0.14.3 9999: SPICE server
 app-emulation/spice-html5 0.2.1 0.2.2: Spice Javascript client
-app-emulation/spice-protocol 0.12.14 0.12.15 0.14.0 0.14.1 9999: Headers defining the SPICE protocol
-app-emulation/spice-vdagent 0.17.0_p20180319-r1 0.19.0-r1: SPICE VD Linux Guest Agent
+app-emulation/spice-protocol 0.14.1 9999: Headers defining the SPICE protocol
+app-emulation/spice-vdagent 0.19.0-r1: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
@@ -15014,7 +15014,7 @@ net-misc/socat 1.7.3.2 1.7.3.3 1.7.3.4 2.0.0_beta9 9999: Multipurpose relay (SOc
 net-misc/sock 1.1-r1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/socket-burst-dampener 1.2.0 1.2.1: A daemon that spawns one command per connection, and dampens connection bursts
-net-misc/spice-gtk 0.35 0.37-r2 9999: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
+net-misc/spice-gtk 0.37-r2 9999: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
 net-misc/spiped 1.6.0-r1: secure pipe daemon
 net-misc/spread 4.4.1 5.0.1: Distributed network messaging system
 net-misc/srf-ip-conn-srv 9999: SharkRF IP Connector Protocol server
