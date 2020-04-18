@@ -1,0 +1,136 @@
+diff -urNp libgda-5.2.8-orig/providers/mysql/gda-mysql-provider.c libgda-5.2.8-dwok/providers/mysql/gda-mysql-provider.c
+--- libgda-5.2.8-orig/providers/mysql/gda-mysql-provider.c	2019-08-21 12:47:26.763768166 +0200
++++ libgda-5.2.8-dwok/providers/mysql/gda-mysql-provider.c	2019-08-21 12:58:54.915575798 +0200
+@@ -1835,7 +1835,7 @@ real_prepare (GdaServerProvider *provide
+ 		return FALSE;
+ 	}
+ 
+-	my_bool update_max_length = 1;
++	_Bool update_max_length = 1;
+ 	if (mysql_stmt_attr_set (mysql_stmt, STMT_ATTR_UPDATE_MAX_LENGTH, (const void *) &update_max_length)) {
+ 		_gda_mysql_make_error (cnc, NULL, mysql_stmt, error);
+ 		mysql_stmt_close (mysql_stmt);
+@@ -1941,7 +1941,7 @@ prepare_stmt_simple (MysqlConnectionData
+ 		return FALSE;
+ 	}
+ 
+-	my_bool update_max_length = 1;
++	_Bool update_max_length = 1;
+ 	if (mysql_stmt_attr_set (mysql_stmt, STMT_ATTR_UPDATE_MAX_LENGTH, (const void *) &update_max_length)) {
+ 		_gda_mysql_make_error (cdata->cnc, NULL, mysql_stmt, error);
+ 		mysql_stmt_close (mysql_stmt);
+@@ -2327,7 +2327,7 @@ gda_mysql_provider_statement_execute (Gd
+ 			if (allow_noparam) {
+                                 /* bind param to NULL */
+ 				mysql_bind_param[i].buffer_type = MYSQL_TYPE_NULL;
+-				mysql_bind_param[i].is_null = (my_bool*)1;
++				mysql_bind_param[i].is_null = (_Bool *) 1;
+                                 empty_rs = TRUE;
+                                 continue;
+ 			}
+@@ -2347,7 +2347,7 @@ gda_mysql_provider_statement_execute (Gd
+ 			if (allow_noparam) {
+                                 /* bind param to NULL */
+ 				mysql_bind_param[i].buffer_type = MYSQL_TYPE_NULL;
+-				mysql_bind_param[i].is_null = (my_bool*)1;
++				mysql_bind_param[i].is_null = (_Bool *) 1;
+                                 empty_rs = TRUE;
+                                 continue;
+ 			}
+@@ -2399,7 +2399,7 @@ gda_mysql_provider_statement_execute (Gd
+ 			GdaStatement *rstmt;
+ 			if (! gda_rewrite_statement_for_null_parameters (stmt, params, &rstmt, error)) {
+ 				mysql_bind_param[i].buffer_type = MYSQL_TYPE_NULL;
+-				mysql_bind_param[i].is_null = (my_bool*)1;
++				mysql_bind_param[i].is_null = (_Bool *) 1;
+ 			}
+ 			else if (!rstmt)
+ 				return NULL;
+@@ -2459,7 +2459,7 @@ gda_mysql_provider_statement_execute (Gd
+ 			ts = (GdaTimestamp*) gda_value_get_timestamp (value);
+ 			if (!ts) {
+ 				mysql_bind_param[i].buffer_type = MYSQL_TYPE_NULL;
+-				mysql_bind_param[i].is_null = (my_bool*)1;
++				mysql_bind_param[i].is_null = (_Bool *) 1;
+ 			}
+ 			else {
+ 				_Bool tofree = FALSE;
+@@ -2495,7 +2495,7 @@ gda_mysql_provider_statement_execute (Gd
+ 			ts = (GdaTime*) gda_value_get_time (value);
+ 			if (!ts) {
+ 				mysql_bind_param[i].buffer_type = MYSQL_TYPE_NULL;
+-				mysql_bind_param[i].is_null = (my_bool*)1;
++				mysql_bind_param[i].is_null = (_Bool *) 1;
+ 			}
+ 			else {
+ 				_Bool tofree = FALSE;
+@@ -2528,7 +2528,7 @@ gda_mysql_provider_statement_execute (Gd
+ 			ts = (GDate*) g_value_get_boxed (value);
+ 			if (!ts) {
+ 				mysql_bind_param[i].buffer_type = MYSQL_TYPE_NULL;
+-				mysql_bind_param[i].is_null = (my_bool*)1;
++				mysql_bind_param[i].is_null = (_Bool *) 1;
+ 			}
+ 			else {
+ 				MYSQL_TIME *mtime;
+@@ -2548,7 +2548,7 @@ gda_mysql_provider_statement_execute (Gd
+ 			str = g_value_get_string (value);
+ 			if (!str) {
+ 				mysql_bind_param[i].buffer_type = MYSQL_TYPE_NULL;
+-				mysql_bind_param[i].is_null = (my_bool*)1;
++				mysql_bind_param[i].is_null = (_Bool *) 1;
+ 			}
+ 			else {
+ 				mysql_bind_param[i].buffer_type= MYSQL_TYPE_STRING;
+@@ -2624,7 +2624,7 @@ gda_mysql_provider_statement_execute (Gd
+ 			bin = ((GdaBinary*) blob);
+ 			if (!bin) {
+ 				mysql_bind_param[i].buffer_type = MYSQL_TYPE_NULL;
+-				mysql_bind_param[i].is_null = (my_bool*)1;
++				mysql_bind_param[i].is_null = (_Bool *) 1;
+ 			}
+ 			else {
+ 				gchar *str = NULL;
+@@ -2665,7 +2665,7 @@ gda_mysql_provider_statement_execute (Gd
+ 			bin = gda_value_get_binary (value);
+ 			if (!bin) {
+ 				mysql_bind_param[i].buffer_type = MYSQL_TYPE_NULL;
+-				mysql_bind_param[i].is_null = (my_bool*)1;
++				mysql_bind_param[i].is_null = (_Bool *) 1;
+ 			}
+ 			else {
+ 				mysql_bind_param[i].buffer_type= MYSQL_TYPE_BLOB;
+diff -urNp libgda-5.2.8-orig/providers/mysql/gda-mysql-recordset.c libgda-5.2.8-dwok/providers/mysql/gda-mysql-recordset.c
+--- libgda-5.2.8-orig/providers/mysql/gda-mysql-recordset.c	2019-08-21 12:45:14.144430495 +0200
++++ libgda-5.2.8-dwok/providers/mysql/gda-mysql-recordset.c	2019-08-21 12:59:57.265383845 +0200
+@@ -627,7 +627,7 @@ gda_mysql_recordset_new (GdaConnection
+ 		/* binding results with types */
+ 		mysql_bind_result[i].buffer_type = field->type;
+ 		mysql_bind_result[i].is_unsigned = field->flags & UNSIGNED_FLAG ? TRUE : FALSE;
+-		mysql_bind_result[i].is_null = g_malloc0 (sizeof (my_bool));
++		mysql_bind_result[i].is_null = g_malloc0 (sizeof (_Bool));
+ 		
+ 		switch (mysql_bind_result[i].buffer_type) {
+ 		case MYSQL_TYPE_TINY:
+@@ -753,7 +753,7 @@ new_row_from_mysql_stmt (GdaMysqlRecords
+ 
+ 		gint col;
+ 		for (col = 0; col < ((GdaDataSelect *) imodel)->prep_stmt->ncols; ++col) {
+-			my_bool truncated;
++			_Bool truncated;
+ 			mysql_bind_result[col].error = &truncated;
+ 			mysql_stmt_fetch_column (imodel->priv->mysql_stmt, &(mysql_bind_result[col]),
+ 						 (unsigned int)col, 0);
+@@ -784,10 +784,10 @@ new_row_from_mysql_stmt (GdaMysqlRecords
+ 		
+ 		/*g_print ("%s: #%d : TYPE=%d, GTYPE=%s\n", __func__, i, mysql_bind_result[i].buffer_type, g_type_name (type));*/
+ 
+-		my_bool is_null = FALSE;
++		_Bool is_null = FALSE;
+ 		unsigned long length;
+ 		
+-		memmove (&is_null, mysql_bind_result[i].is_null, sizeof (my_bool));
++		memmove (&is_null, mysql_bind_result[i].is_null, sizeof (_Bool));
+ 		if (is_null) {
+ 			gda_value_set_null (value);
+ 			continue;
