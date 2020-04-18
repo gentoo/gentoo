@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-use-cmake-find-intl.patch"
 	"${FILESDIR}/${P}-fix-warn-registering-schemes.patch"
 	"${FILESDIR}/${P}-qt-5.14.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
 )
 
 # bug 653046
