@@ -96,7 +96,9 @@ src_install() {
 	strip-linguas -i po
 
 	emake install DESTDIR="${ED}" "LINGUAS=""${LINGUAS}"""
-	python_optimize
+	if use python; then
+		python_optimize
+	fi
 
 	ruby-ng_src_install
 
