@@ -11,7 +11,6 @@
   </maintainer>
   <use>
     <flag name="firmware">Install firmware</flag>
-    <flag name="isa">Build ISA kernel modules; from 3.12 on the setting is ignored and the decision based on the kernel configuration</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">linux-gpib</remote-id>
