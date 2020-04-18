@@ -105,8 +105,4 @@ src_install() {
 	if use perl; then
 		perl_delete_localpod
 	fi
-
-	#can't figure out a better way to do this
-	mv "${ED}"/usr/man/man3/* "${ED}/usr/share/man/man3/" || die
-	rm -r "${ED}/usr/man" || die
 }
