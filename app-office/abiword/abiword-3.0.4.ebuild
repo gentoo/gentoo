@@ -7,7 +7,9 @@ inherit autotools xdg
 
 DESCRIPTION="Fully featured yet light and fast cross platform word processor"
 HOMEPAGE="http://www.abisource.com/"
-SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/source/${P}.tar.gz"
+SRC_URI="
+	http://www.abisource.com/downloads/${PN}/${PV}/source/${P}.tar.gz
+	https://dev.gentoo.org/~soap/distfiles/${P}-patchset.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
@@ -65,9 +67,12 @@ BDEPEND="
 	virtual/pkgconfig"
 
 PATCHES=(
-	# Backport of hard dep on enchant-2
-	# https://gitlab.gnome.org/World/AbiWord/commit/ae05e92df5a5d6151641622c83d35a6fdba47b1f
-	"${FILESDIR}"/${P}-enchant-2.patch
+	"${WORKDIR}"/patches/${PN}-2.6.0-boolean.patch
+	"${WORKDIR}"/patches/${PN}-2.8.3-desktop.patch
+	"${WORKDIR}"/patches/${PN}-3.0.0-librevenge.patch
+	"${WORKDIR}"/patches/${PN}-3.0.2-explicit-python.patch
+	"${WORKDIR}"/patches/${PN}-3.0.4-enchant-2.patch # backport
+	"${WORKDIR}"/patches/${PN}-3.0.4-pygobject.patch
 )
 
 src_prepare() {
