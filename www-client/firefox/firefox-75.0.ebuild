@@ -325,6 +325,9 @@ src_prepare() {
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
 
+	einfo "Removing pre-built binaries ..."
+	find "${S}"/third_party -type f \( -name '*.so' -o -name '*.o' \) -print -delete || die
+
 	# Enable gnomebreakpad
 	if use debug ; then
 		sed -i -e "s:GNOME_DISABLE_CRASH_DIALOG=1:GNOME_DISABLE_CRASH_DIALOG=0:g" \
