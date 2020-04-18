@@ -52,6 +52,7 @@ DEPEND="
 
 src_compile() {
 	python_foreach_impl run_in_build_dir default
+	distutils-r1_src_compile
 	if use doc ; then
 		cd docs || die
 		sphinx-build -b html -d _build/doctrees   . _build/html
