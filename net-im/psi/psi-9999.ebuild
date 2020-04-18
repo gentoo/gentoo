@@ -118,6 +118,7 @@ src_configure() {
 	use webkit && chattype=webkit
 
 	local mycmakeargs=(
+		-DPRODUCTION=OFF
 		-DUSE_ASPELL=$(usex aspell)
 		-DUSE_ENCHANT=$(usex enchant)
 		-DUSE_HUNSPELL=$(usex hunspell)
