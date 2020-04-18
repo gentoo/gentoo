@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,9 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	lz4? ( app-arch/lz4 )
-	pulseaudio? ( media-sound/pulseaudio[glib] )
+	pulseaudio? (
+		media-plugins/gst-plugins-pulse:1.0
+	)
 	sasl? ( dev-libs/cyrus-sasl )
 	smartcard? ( app-emulation/qemu[smartcard] )
 	usbredir? (
