@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod systemd user toolchain-funcs
+inherit linux-mod systemd toolchain-funcs
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -11,7 +11,7 @@ MY_P="VirtualBox-${MY_PV}"
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.0.16-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.0.20-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,7 +19,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X"
 
+# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
 RDEPEND="
+	acct-group/vboxguest
+	acct-group/vboxsf
+	acct-user/vboxguest
 	X? ( x11-apps/xrandr
 		x11-apps/xrefresh
 		x11-libs/libXmu
@@ -172,13 +176,6 @@ src_install() {
 	docompress -x "${ED}"/usr/share/doc/${PF}/xorg.conf.vbox
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
-}
-
-pkg_preinst() {
-	enewgroup vboxguest
-	enewuser vboxguest -1 /bin/sh /dev/null vboxguest
-	# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
-	enewgroup vboxsf
 }
 
 pkg_postinst() {

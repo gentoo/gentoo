@@ -49,6 +49,7 @@ DEPEND="app-arch/unzip
 
 RDEPEND="!!app-emulation/virtualbox
 	!app-emulation/virtualbox-additions
+	acct-group/vboxusers
 	~app-emulation/virtualbox-modules-${MY_PV,,}
 	!headless? (
 		dev-libs/glib

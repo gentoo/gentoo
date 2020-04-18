@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod systemd user toolchain-funcs
+inherit linux-mod systemd toolchain-funcs
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -19,7 +19,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X"
 
+# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
 RDEPEND="
+	acct-group/vboxguest
+	acct-group/vboxsf
+	acct-user/vboxguest
 	X? ( x11-apps/xrandr
 		x11-apps/xrefresh
 		x11-libs/libXmu
@@ -171,13 +175,6 @@ src_install() {
 	docompress -x "${ED}"/usr/share/doc/${PF}/xorg.conf.vbox
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
-}
-
-pkg_preinst() {
-	enewgroup vboxguest
-	enewuser vboxguest -1 /bin/sh /dev/null vboxguest
-	# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
-	enewgroup vboxsf
 }
 
 pkg_postinst() {

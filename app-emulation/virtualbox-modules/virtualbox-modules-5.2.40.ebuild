@@ -15,8 +15,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/virtualbox/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="pax_kernel"
 
 RDEPEND="!=app-emulation/virtualbox-9999"
@@ -24,10 +23,16 @@ RDEPEND="!=app-emulation/virtualbox-9999"
 S="${WORKDIR}"
 
 BUILD_TARGETS="all"
-MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S})"
+MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S}) vboxpci(misc:${S})"
 MODULESD_VBOXDRV_ENABLED="yes"
 MODULESD_VBOXNETADP_ENABLED="no"
 MODULESD_VBOXNETFLT_ENABLED="no"
+# The following is a security measure that comes directly from usptream.
+# Do NOT remove this!!!
+MODULESD_VBOXPCI_ADDITIONS=(
+	"blacklist vboxpci"
+	"install vboxpci /bin/true"
+)
 
 pkg_setup() {
 	enewgroup vboxusers
@@ -50,7 +55,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	# Remove vboxpci.ko from current running kernel
-	find /lib/modules/${KV_FULL}/misc -type f -name "vboxpci.ko" -delete
 	linux-mod_pkg_postinst
 }

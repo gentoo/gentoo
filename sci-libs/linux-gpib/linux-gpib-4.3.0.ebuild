@@ -109,7 +109,6 @@ src_install() {
 	newins util/templates/gpib.conf gpib.conf.example
 
 	if use pcmcia; then
-		dodir /etc/pcmcia
 		insinto /etc/pcmcia
 		doins "${S}"/etc/pcmcia/*
 	fi

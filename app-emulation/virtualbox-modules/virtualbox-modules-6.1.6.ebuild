@@ -6,7 +6,7 @@
 
 EAPI=7
 
-inherit linux-mod toolchain-funcs user
+inherit linux-mod toolchain-funcs
 
 MY_P="vbox-kernel-module-src-${PV}"
 DESCRIPTION="Kernel Modules for Virtualbox"
@@ -30,7 +30,6 @@ MODULESD_VBOXNETADP_ENABLED="no"
 MODULESD_VBOXNETFLT_ENABLED="no"
 
 pkg_setup() {
-	enewgroup vboxusers
 	linux-mod_pkg_setup
 	BUILD_PARAMS="CC=$(tc-getBUILD_CC) KERN_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
 }
