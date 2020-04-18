@@ -18,7 +18,7 @@ RDEPEND="
 	>=media-libs/gd-2.0.35-r1:=
 	>=app-text/ghostscript-gpl-8.71-r1
 	emf? ( >=media-libs/libemf-1.0.3 )
-	imagemagick? ( >=media-gfx/imagemagick-6.6.1.2[cxx] )
+	imagemagick? ( >=media-gfx/imagemagick-6.6.1.2:=[cxx] )
 	plotutils? ( media-libs/plotutils )
 	pptx? ( dev-libs/libzip )
 "
