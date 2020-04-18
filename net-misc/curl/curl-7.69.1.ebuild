@@ -12,7 +12,7 @@ SRC_URI="https://curl.haxx.se/download/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="adns alt-svc brotli +ftp gopher http2 idn +imap ipv6 kerberos ldap metalink +pop3 +progress-meter rtmp samba +smtp ssh ssl static-libs test telnet +tftp threads"
+IUSE="adns alt-svc brotli +dateparse +dict +dnsshuffle +doh +file +ftp gopher +hidden-symbols http2 idn +imap ipv6 kerberos ldap +libcurl-option +manual +mime metalink +netrc +pop3 +progress-meter +proxy rtmp +rtsp samba +smtp ssh ssl static-libs test telnet +tftp +tls-srp threads +unix-sockets"
 IUSE+=" curl_ssl_gnutls curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_winssl"
 IUSE+=" nghttp3 quiche"
 IUSE+=" elibc_Winnt"
@@ -161,39 +161,41 @@ multilib_src_configure() {
 	econf \
 		$(use_enable alt-svc) \
 		--enable-crypto-auth \
-		--enable-dict \
+		$(use_enable dict) \
 		--disable-esni \
-		--enable-file \
+		$(use_enable file) \
 		$(use_enable ftp) \
 		$(use_enable gopher) \
 		--enable-http \
 		$(use_enable imap) \
 		$(use_enable ldap) \
 		$(use_enable ldap ldaps) \
+		$(use_enable libcurl-option) \
 		--disable-ntlm-wb \
 		$(use_enable pop3) \
 		--enable-rt  \
-		--enable-rtsp \
+		$(use_enable rtsp) \
 		$(use_enable samba smb) \
 		$(use_with ssh libssh2) \
 		$(use_enable smtp) \
 		$(use_enable telnet) \
 		$(use_enable tftp) \
-		--enable-tls-srp \
+		$(use_enable tls-srp) \
+		$(use_enable unix-sockets) \
 		$(use_enable adns ares) \
 		--enable-cookies \
-		--enable-dateparse \
-		--enable-dnsshuffle \
-		--enable-doh \
-		--enable-hidden-symbols \
+		$(use_enable dateparse) \
+		$(use_enable dnsshuffle) \
+		$(use_enable doh) \
+		$(use_enable hidden-symbols) \
 		--enable-http-auth \
 		$(use_enable ipv6) \
 		--enable-largefile \
-		--enable-manual \
-		--enable-mime \
-		--enable-netrc \
+		$(use_enable manual) \
+		$(use_enable mime) \
+		$(use_enable netrc) \
 		$(use_enable progress-meter) \
-		--enable-proxy \
+		$(use_enable proxy) \
 		--disable-sspi \
 		$(use_enable static-libs static) \
 		$(use_enable threads threaded-resolver) \
