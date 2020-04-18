@@ -3,7 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_IN_SOURCE_BUILD=1
+DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
 
 DESCRIPTION="Python Bindings for TagLib"
@@ -17,14 +19,10 @@ KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE="examples"
 
 RDEPEND="
-	dev-libs/boost:=[python,threads,${PYTHON_USEDEP}]
+	>=dev-libs/boost-1.70:=[python,threads,${PYTHON_USEDEP}]
 	>=media-libs/taglib-1.8
 "
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
-
-DISTUTILS_IN_SOURCE_BUILD=1
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-taglib-1.8.patch" )
 
@@ -35,15 +33,10 @@ python_prepare_all() {
 
 python_configure() {
 	local boostpy_ver="${EPYTHON#python}"
-	if has_version ">=dev-libs/boost-1.70"; then
-		boostpy_ver="${boostpy_ver/\.}"
-	else
-		boostpy_ver="-${boostpy_ver}"
-	fi
 
 	"${PYTHON}" configure.py \
 		--taglib-inc-dir="${EPREFIX}/usr/include/taglib" \
-		--boost-python-libname="boost_python${boostpy_ver}"
+		--boost-python-libname="boost_python${boostpy_ver/\.}"
 }
 
 python_install_all() {
