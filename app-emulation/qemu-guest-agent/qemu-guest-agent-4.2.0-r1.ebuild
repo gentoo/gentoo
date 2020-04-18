@@ -29,6 +29,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.0-sysmacros.patch #580924
+	"${FILESDIR}"/${PN}-4.2.0-fix-shutdown.patch #681874
 )
 
 src_configure() {
