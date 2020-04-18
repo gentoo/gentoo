@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
+# nagios and icinga not stable on hppa
+sys-libs/freeipmi nagios
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # No stable app-arch/rpm on hppa, bug #471456
 dev-util/patchutils test
