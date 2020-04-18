@@ -28,7 +28,7 @@ src_test() {
 	# The sed command deletes all lines up to the pattern match.
 	#
 	ACTUAL=$(echo 1000000000000000005490000000000000001989 | \
-				 QuadraticSieve | \
+				 "${S}"/src/QuadraticSieve | \
 				 sed '0,/FACTORS:/d' | \
 				 sort --numeric | \
 				 uniq |
