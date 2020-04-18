@@ -1,0 +1,130 @@
+From 03072c0039261e9980ab5e88b283e1f07b4002bb Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 19 Apr 2020 00:59:33 +0200
+Subject: [PATCH] Remove subshells and fix invalid test syntax
+
+---
+ configure.ac        | 28 ++++++++++++++--------------
+ m4/introspection.m4 |  4 ++--
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 33badfac0..fe43f844a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -261,7 +261,7 @@ AC_ARG_WITH(libnm-glib,
+             AS_HELP_STRING([--with-libnm-glib],
+                            [build legacy libraries]))
+ fake_typelibs=no
+-if test "$with_libnm_glib" == "yes"; then
++if test "$with_libnm_glib" = "yes"; then
+ 	PKG_CHECK_MODULES(DBUS, dbus-1 >= 1.1 dbus-glib-1 >= 0.94, :,
+ 	                  [AC_MSG_FAILURE([$DBUS_PKG_ERRORS
+ 
+@@ -277,7 +277,7 @@ Configure with --without-libnm-glib if you do not need the legacy libraries])
+ else
+ 	with_libnm_glib=no
+ fi
+-AM_CONDITIONAL(WITH_LEGACY_LIBRARIES, test "$with_libnm_glib" == "yes")
++AM_CONDITIONAL(WITH_LEGACY_LIBRARIES, test "$with_libnm_glib" = "yes")
+ if test "$fake_typelibs" = "yes"; then
+ 	AC_DEFINE(WITH_FAKE_TYPELIBS, 1, [Define for libnm to prevent GIR from loading libnm-glib])
+ else
+@@ -633,7 +633,7 @@ AC_ARG_ENABLE(json-validation,
+               AS_HELP_STRING([--enable-json-validation], [Enable JSON validation in libnm]),
+               [enable_json_validation=${enableval}],
+               [enable_json_validation=${have_jansson}])
+-if (test "${enable_json_validation}" == "no"); then
++if (test "${enable_json_validation}" = "no"); then
+ 	AC_DEFINE(WITH_JSON_VALIDATION, 0, [Define if JSON validation in libnm is enabled])
+ else
+ 	if test "$have_jansson" = "no"; then
+@@ -816,8 +816,8 @@ AC_ARG_WITH([dhcpcanon],
+ if test "$with_dhcpcanon" != "no"; then
+     with_dhcpcanon_="$with_dhcpcanon"
+     AC_PATH_PROGS(with_dhcpcanon, dhcpcanon, no, /sbin:/usr/sbin:/usr/local/sbin:/usr/bin:/usr/local/bin)
+-    if test "$with_dhcpcanon" == "no"; then
+-        if test "$with_dhcpcanon_" == yes; then
++    if test "$with_dhcpcanon" = "no"; then
++        if test "$with_dhcpcanon_" = yes; then
+             AC_MSG_WARN([dhcpcanon not found, assume path /sbin/dhcpcanon])
+             with_dhcpcanon=/sbin/dhcpcanon
+         fi
+@@ -846,8 +846,8 @@ AC_ARG_WITH([dhclient],
+ if test "$with_dhclient" != "no"; then
+ 	with_dhclient_="$with_dhclient"
+ 	AC_PATH_PROGS(with_dhclient, dhclient, no, /sbin:/usr/sbin:/usr/local/sbin)
+-	if test "$with_dhclient" == "no"; then
+-		if test "$with_dhclient_" == yes; then
++	if test "$with_dhclient" = "no"; then
++		if test "$with_dhclient_" = yes; then
+ 			AC_MSG_WARN([dhclient not found, assume path /usr/sbin/dhclient])
+ 			with_dhclient=/usr/sbin/dhclient
+ 		fi
+@@ -865,8 +865,8 @@ AC_ARG_WITH([dhcpcd],
+ if test "$with_dhcpcd" != "no"; then
+ 	with_dhcpcd_="$with_dhcpcd"
+ 	AC_PATH_PROGS(with_dhcpcd, dhcpcd, no, /sbin:/usr/sbin:/usr/local/sbin)
+-	if test "$with_dhcpcd" == "no"; then
+-		if test "$with_dhcpcd_" == yes; then
++	if test "$with_dhcpcd" = "no"; then
++		if test "$with_dhcpcd_" = yes; then
+ 			AC_MSG_WARN([dhcpcd not found, assume path /usr/sbin/dhcpcd])
+ 			with_dhcpcd=/usr/sbin/dhcpcd
+ 		fi
+@@ -1192,17 +1192,17 @@ AS_IF([test -z "$with_valgrind"], with_valgrind="no")
+ # Normalize values
+ AS_IF([test "$enable_tests" != "yes" -a "$enable_tests" != "root"], enable_tests="no")
+ # Search for tools
+-AS_IF([test "$with_valgrind" == "yes"],
++AS_IF([test "$with_valgrind" = "yes"],
+       [AC_PATH_PROGS(with_valgrind, valgrind, no)])
+ # Add conditionals and substitutions
+ AM_CONDITIONAL(ENABLE_TESTS, test "$enable_tests" != "no")
+-AM_CONDITIONAL(REQUIRE_ROOT_TESTS, test "$enable_tests" == "root")
++AM_CONDITIONAL(REQUIRE_ROOT_TESTS, test "$enable_tests" = "root")
+ AC_ARG_WITH(valgrind-suppressions,
+             AS_HELP_STRING([--with-valgrind-suppressions=path], [Use specific valgrind suppression file]))
+-if test "$with_valgrind" == no; then
++if test "$with_valgrind" = no; then
+ 	with_valgrind_suppressions=
+ else
+-	if test  "$with_valgrind_suppressions" == ""; then
++	if test  "$with_valgrind_suppressions" = ""; then
+ 		with_valgrind_suppressions='$(top_srcdir)/valgrind.suppressions'
+ 	fi
+ fi
+@@ -1218,7 +1218,7 @@ GTK_DOC_CHECK(1.0)
+ build_docs=no
+ if test -n "$INTROSPECTION_MAKEFILE"; then
+ 	# If g-i is installed we know we have python, but we might not have pygobject
+-	if ! "$PYTHON" -c 'from gi.repository import GObject' >& /dev/null; then
++	if ! "$PYTHON" -c 'from gi.repository import GObject' > /dev/null 2>&1; then
+ 		AC_MSG_ERROR(["--enable-introspection aims to build the settings documentation. This requires GObject introspection for python (pygobject)])
+ 	fi
+ 
+diff --git a/m4/introspection.m4 b/m4/introspection.m4
+index f3bda0e7c..8c64bd04c 100644
+--- a/m4/introspection.m4
++++ b/m4/introspection.m4
+@@ -31,7 +31,7 @@ m4_define([_GOBJECT_INTROSPECTION_CHECK_INTERNAL],
+     INTROSPECTION_GIRDIR=
+     INTROSPECTION_TYPELIBDIR=
+ 
+-    if test "x$enable_introspection" == "xno"; then
++    if test "x$enable_introspection" = "xno"; then
+       found_introspection="no"
+     else
+        PKG_CHECK_EXISTS([gobject-introspection-1.0 >= $1], [
+@@ -53,7 +53,7 @@ m4_define([_GOBJECT_INTROSPECTION_CHECK_INTERNAL],
+            AC_MSG_RESULT([$found_introspection])
+        ], [found_introspection="no (not installed)"])
+ 
+-       if test "x$enable_introspection" == "xyes"; then
++       if test "x$enable_introspection" = "xyes"; then
+           if test "x$found_introspection" != "xyes"; then
+               AC_MSG_ERROR([introspection enabled but can't be used])
+           fi
+-- 
+2.26.0
+

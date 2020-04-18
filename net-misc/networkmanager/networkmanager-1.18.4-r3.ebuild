@@ -3,6 +3,7 @@
 
 EAPI=6
 GNOME_ORG_MODULE="NetworkManager"
+GNOME2_EAUTORECONF="yes"
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python{3_6,3_7} )
@@ -105,6 +106,7 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-data-fix-the-ID_NET_DRIVER-udev-rule.patch
 	"${FILESDIR}"/${PV}-iwd1-compat.patch # included in 1.21.3+
+	"${FILESDIR}"/${PV}-fix-bashisms.patch
 )
 
 python_check_deps() {
