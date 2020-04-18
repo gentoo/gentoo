@@ -39,7 +39,7 @@
 # Masked for removal in 30 days (bug #717744).
 app-i18n/man-pages-fr
 
-# Jeroen Roovers <jer@gentoo.org> (2020-04-26)
+# Jeroen Roovers <jer@gentoo.org> (2020-04-16)
 # Breaks API, see https://bugs.gentoo.org/717728
 =dev-libs/libuv-1.36.0
 
