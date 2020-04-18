@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
-# File collision conflict with x11-misc/launchy, bug 545170
-ruby_add_rdepend ">=dev-ruby/addressable-2.7 !!x11-misc/launchy"
+ruby_add_rdepend ">=dev-ruby/addressable-2.7"
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.0:5 )"
 
