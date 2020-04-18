@@ -66,6 +66,9 @@ src_configure() {
 	# Avoid automagic on libdevmapper, #709694
 	export ac_cv_search_dm_task_create=no
 
+	# Build fails with -O3 (bug #712698)
+	replace-flags -O3 -O2
+
 	# Upstream does NOT support --disable-static anymore,
 	# https://www.spinics.net/lists/linux-xfs/msg30185.html
 	# https://www.spinics.net/lists/linux-xfs/msg30272.html
