@@ -3,22 +3,22 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_6 python3_7 )
 
-inherit linux-info readme.gentoo-r1 versionator eutils linux-mod autotools perl-functions python-single-r1 toolchain-funcs udev user
+inherit readme.gentoo-r1 autotools perl-functions python-single-r1 toolchain-funcs udev
 
-MY_PV=${PV/_/}
-
-DESCRIPTION="Kernel module and driver library for GPIB (IEEE 488.2) hardware"
+DESCRIPTION="Driver library for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
-SRC_URI="mirror://sourceforge/linux-gpib/${PN}-${MY_PV}.tar.gz
+SRC_URI="mirror://sourceforge/linux-gpib/${P}.tar.gz
 	firmware? ( https://linux-gpib.sourceforge.io/firmware/gpib_firmware-2006-11-12.tar.gz )
 "
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
-IUSE="isa pcmcia static debug guile perl php python tcl doc firmware"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="pcmcia static guile perl php python tcl doc firmware"
+
+S="${WORKDIR}/${PN}-user-${PV}"
 
 COMMONDEPEND="
 	sys-libs/readline:=
@@ -28,7 +28,10 @@ COMMONDEPEND="
 	php? ( dev-lang/php:= )
 	python? ( ${PYTHON_DEPS} )
 	firmware? ( sys-apps/fxload )"
-RDEPEND="${COMMONDEPEND}"
+RDEPEND="${COMMONDEPEND}
+	acct-group/gpib
+	~sci-libs/linux-gpib-modules-${PV}
+"
 DEPEND="${COMMONDEPEND}
 	virtual/pkgconfig
 	doc? ( app-text/docbook-sgml-utils )
@@ -37,72 +40,54 @@ DEPEND="${COMMONDEPEND}
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.21-build.patch
-	"${FILESDIR}"/${PN}-3.2.16-perl.patch
-	"${FILESDIR}"/${PN}-4.0.3-reallydie.patch
+	"${FILESDIR}"/${PN}-4.3.0-perl.patch
 )
-
-S=${WORKDIR}/${PN}-${MY_PV}
 
 pkg_setup() {
 	use perl && perl_set_version
 	use python && python_setup
+}
 
-	linux-mod_pkg_setup
-
-	if kernel_is -lt 2 6 8; then
-		die "Kernel versions older than 2.6.8 are not supported."
-	fi
-
-	# https://sourceforge.net/p/linux-gpib/bugs/43/
-	if use pcmcia && kernel_is -ge 2 6 38; then
-		die "pcmcia support is broken on kernels newer 2.6.38"
-	fi
+src_unpack() {
+	default
+	unpack "${WORKDIR}/${P}/${PN}-user-${PV}.tar.gz"
 }
 
 src_prepare() {
 	default
-	kernel_is ge 4 11 0 && eapply "${FILESDIR}"/${PN}-4.0.4_rc2-kernel-4.11.0.patch
 	eautoreconf
 }
 
 src_configure() {
-	set_arch_to_kernel
 	econf \
-		$(use_enable isa) \
-		$(use_enable pcmcia) \
 		$(use_enable static) \
-		$(use_enable debug driver-debug) \
 		$(use_enable guile guile-binding) \
 		$(use_enable perl perl-binding) \
 		$(use_enable php php-binding) \
 		$(use_enable python python-binding) \
 		$(use_enable tcl tcl-binding) \
-		$(use_enable doc documentation) \
-		--with-linux-srcdir=${KV_DIR}
+		$(use_enable doc documentation)
 }
 
 src_compile() {
-	set_arch_to_kernel
 	FIRM_DIR=/usr/share/usb
 	emake \
 		DESTDIR="${D}" \
 		INSTALL_MOD_PATH="${D}" \
-		HOTPLUG_USB_CONF_DIR="${D}"/etc/hotplug/usb \
-		UDEV_RULES_DIR="${D}$(get_udevdir)"/rules.d \
-		USB_FIRMWARE_DIR="${D}"${FIRM_DIR} \
+		HOTPLUG_USB_CONF_DIR=/etc/hotplug/usb \
+		UDEV_RULES_DIR="$(get_udevdir)"/rules.d \
+		USB_FIRMWARE_DIR=${FIRM_DIR} \
 		docdir=/usr/share/doc/${PF}/html
 }
 
 src_install() {
-	set_arch_to_kernel
 	FIRM_DIR=/usr/share/usb
 	emake \
 		DESTDIR="${D}" \
 		INSTALL_MOD_PATH="${D}" \
-		HOTPLUG_USB_CONF_DIR="${D}"/etc/hotplug/usb \
-		UDEV_RULES_DIR="${D}/$(get_udevdir)"/rules.d \
-		USB_FIRMWARE_DIR="${D}"${FIRM_DIR} \
+		HOTPLUG_USB_CONF_DIR=/etc/hotplug/usb \
+		UDEV_RULES_DIR="$(get_udevdir)"/rules.d \
+		USB_FIRMWARE_DIR=${FIRM_DIR} \
 		docdir=/usr/share/doc/${PF}/html install
 
 	if use perl; then
@@ -129,18 +114,6 @@ src_install() {
 		doins "${S}"/etc/pcmcia/*
 	fi
 
-	if use firmware; then
-		insinto "${FIRM_DIR}"/agilent_82357a
-		doins "${WORKDIR}"/gpib_firmware-2006-11-12/agilent_82357a/*
-
-		insinto "${FIRM_DIR}"/ni_gpib_usb_b
-		doins "${WORKDIR}"/gpib_firmware-2006-11-12/ni_gpib_usb_b/*
-
-		insinto /usr/share/linux-gpib/hp_82341
-		# do not install precompiled generate_firmware
-		doins "${WORKDIR}"/gpib_firmware-2006-11-12/hp_82341/{*.bin,README}
-	fi
-
 	# fix rules files
 	local f
 	find "${D}$(get_udevdir)"/rules.d -type f -print0 | while read -rd '' f ; do
@@ -149,6 +122,14 @@ src_install() {
 	done
 
 	DOC_CONTENTS="
+As the udev rules were changed and refactored in this release it is
+necessary to remove any manually installed pre-4.3.0 gpib udev rules files
+in /etc/udev/rules.d/. The files to remove are:
+\n
+	99-agilent_82357a.rules\n
+	99-gpib-generic.rules\n
+	99-ni_usb_gpib.rules\n
+\n
 You need to run the 'gpib_config' utility to setup the driver before
 you can use it. In order to do it automatically you can add to your
 start script something like this (supposing the appropriate driver
@@ -193,24 +174,6 @@ gpib_config --minor 0 --init-data /usr/share/linux-gpib/hp_82341/hp_82341c_fw.bi
 	readme.gentoo_create_doc
 }
 
-pkg_preinst() {
-	linux-mod_pkg_preinst
-	use perl && perl_set_version
-	enewgroup gpib
-}
-
 pkg_postinst() {
-	linux-mod_pkg_postinst
 	readme.gentoo_print_elog
-
-	local v
-		for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 3.2.21-r1 ${v}; then
-			ewarn "sci-libs/linux-gpib-3.2.21-r1 introduces incompatible changes to the kernel"
-			ewarn "interface. You may need to reboot to make sure the newly built driver modules"
-			ewarn "are used (some of the driver modules cannot be unloaded)."
-			ewarn "If you do not do this, every gpib call will just result in an error message."
-			break
-		fi
-	done
 }
