@@ -12,6 +12,7 @@ mail-filter/maildrop dovecot
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-16)
 # net-misc/pps-tools is not stable on sparc
 net-misc/chrony pps
+net-misc/ntp parse-clocks
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # media-libs/kate not stable on sparc
