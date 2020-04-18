@@ -8,5 +8,5 @@ KEYWORDS=~alpha amd64 ~ia64 sparc x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=http://dl.liveforge.org/fonts/webby-fonts-1.tar.bz2
-_eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=5f6efb436756729251171063d88e1570

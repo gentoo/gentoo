@@ -9,5 +9,5 @@ KEYWORDS=amd64 x86
 LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=http://scholarsfonts.net/cardo104.zip
-_eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=ddef74f1044ab2c69bd7b6697434eaca

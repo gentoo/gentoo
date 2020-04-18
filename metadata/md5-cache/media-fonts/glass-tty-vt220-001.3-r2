@@ -8,5 +8,5 @@ KEYWORDS=amd64 arm arm64 x86
 LICENSE=Unlicense
 SLOT=0
 SRC_URI=https://github.com/svofski/glasstty/archive/8d5bcafe971ee94df4aa20317f197d407df672e9.tar.gz -> glass-tty-vt220-001.3.tar.gz
-_eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=4d07549e4bba7e7593e9cdcfd680e4db

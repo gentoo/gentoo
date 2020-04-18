@@ -8,5 +8,5 @@ KEYWORDS=amd64 x86
 LICENSE=public-domain
 SLOT=0
 SRC_URI=http://www.fgdc.gov/HSWG/symbol_downloads/ers_v220.zip
-_eclasses_=font	4021fe3baa559f77681b3f3f58db27ce
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=1fd2ab4906e05727a127a895880dbad2
