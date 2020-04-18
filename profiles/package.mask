@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-04-18)
+# Practically dead.  Last blocker for dev-python/pycrypto removal.
+# Upstream is struggling to port away from it for 3 years now.
+# Removal in 30 days.  Bug #611608.
+dev-python/potr
+
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2020-04-17)
 # Very little activity for almost a year and the link to download the
 # "compiled" man-pages is dead.
