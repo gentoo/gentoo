@@ -82,20 +82,10 @@ src_configure() {
 		$(usex readline --disable-editline $(use_enable libedit editline))
 	)
 
-	if is-flagq -fno-lto ; then
-		einfo "LTO disabled via {C,CXX,F,FC}FLAGS"
-		myconf+=( --disable-lto )
+	if is-flagq -flto ; then
+		myconf+=( --enable-lto )
 	else
-		if is-flagq -flto ; then
-			einfo "LTO forced via {C,CXX,F,FC}FLAGS"
-			myconf+=( --enable-lto )
-		elif use amd64 || use x86  ; then
-			# match upstream default
-			myconf+=( --enable-lto )
-		else
-			# LTO can cause problems on some architectures, bug 655638
-			myconf+=( --disable-lto )
-		fi
+		myconf+=( --disable-lto )
 	fi
 
 	econf "${myconf[@]}"
