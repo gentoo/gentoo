@@ -137,7 +137,7 @@ src_compile()
 	fi
 
 	cd src
-	./make.bash || die "build failed"
+	./make.bash -v || die "build failed"
 }
 
 src_test()
