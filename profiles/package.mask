@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-18)
+# Long dead, vulnerable.  All revdeps have either been ported away,
+# removed or had their optional deps removed.
+# Removal in 30 days.  Bug #703682.
+dev-python/pycrypto
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-18)
 # Practically dead.  Last blocker for dev-python/pycrypto removal.
 # Upstream is struggling to port away from it for 3 years now.
 # Removal in 30 days.  Bug #611608.
