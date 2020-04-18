@@ -5255,7 +5255,7 @@ dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
 dev-libs/re2 0.2019.12.01 0.2020.04.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
-dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1: Language bindings for Redland
+dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1 1.0.17.1-r1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.4.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
@@ -8468,7 +8468,7 @@ dev-python/pytest-services 2.0.1: Collection of fixtures and utility functions t
 dev-python/pytest-shutil 1.2.11 1.7.0 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
-dev-python/pytest-timeout 1.3.3: py.test plugin to abort hanging tests
+dev-python/pytest-timeout 1.3.3 1.3.4: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.11 1.7.0 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.23.2 1.28.0 1.30.0 1.31.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.13.1: Manage external processes across test runs
@@ -8504,7 +8504,7 @@ dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gammu 2.11: Python bindings for Gammu
 dev-python/python-gflags 3.1.2-r1: Google's Python argument parsing library
 dev-python/python-glanceclient 2.16.0: A client for the OpenStack Glance API
-dev-python/python-gnupg 0.4.5: A Python wrapper for GnuPG
+dev-python/python-gnupg 0.4.5 0.4.6: A Python wrapper for GnuPG
 dev-python/python-heatclient 1.17.0: OpenStack Orchestration API Client Library
 dev-python/python-iptables 0.13.0: Python bindings for iptables
 dev-python/python-ironicclient 2.7.2: Python bindings for the Ironic API
