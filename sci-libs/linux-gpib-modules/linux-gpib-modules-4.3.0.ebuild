@@ -16,6 +16,7 @@ IUSE="debug"
 
 COMMONDEPEND=""
 RDEPEND="${COMMONDEPEND}
+	acct-group/gpib
 	!<sci-libs/linux-gpib-4.2.0_rc1
 "
 DEPEND="${COMMONDEPEND}
@@ -67,13 +68,4 @@ src_install() {
 		install
 
 	dodoc ChangeLog AUTHORS README* NEWS
-}
-
-pkg_preinst() {
-	linux-mod_pkg_preinst
-	enewgroup gpib
-}
-
-pkg_postinst() {
-	linux-mod_pkg_postinst
 }
