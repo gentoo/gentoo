@@ -1,0 +1,50 @@
+From 7972b9858bcdd2bf8cd2b09cb7e8b6c9b51dfec9 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Fri, 17 Apr 2020 21:49:00 +0200
+Subject: [KCharSelect] Adapt the code to KBookmarks-5.69 changes
+
+Test Plan:
+The Bookmarks menu has the usual entries, and the bookmark actions are
+displayed in the configure shortcuts dialog.
+
+Reviewers: cfeck
+
+Reviewed By: cfeck
+
+Subscribers: asturmlechner, kde-utils-devel
+
+Differential Revision: https://phabricator.kde.org/D28927
+---
+ kcharselectdia.cc | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/kcharselectdia.cc b/kcharselectdia.cc
+index 116cba4..37ef894 100644
+--- a/kcharselectdia.cc
++++ b/kcharselectdia.cc
+@@ -27,6 +27,7 @@
+ #include <QMenu>
+ 
+ #include <KActionCollection>
++#include <kbookmarks_version.h>
+ #include <KBookmarkManager>
+ #include <KBookmarkMenu>
+ #include <KConfigGroup>
+@@ -185,7 +186,14 @@ KCharSelectDia::KCharSelectDia()
+   action->setText(i18n("Bookmarks"));
+   QMenu *bmmenu = new QMenu(this);
+   action->setMenu(bmmenu);
++
++#if KBOOKMARKS_VERSION < QT_VERSION_CHECK(5, 69, 0)
+   KBookmarkMenu *bm = new KBookmarkMenu(manager, new KCharSelectBookmarkOwner(this), bmmenu, actionCollection());
++#else
++  KBookmarkMenu *bm = new KBookmarkMenu(manager, new KCharSelectBookmarkOwner(this), bmmenu);
++  actionCollection()->addActions(bmmenu->actions());
++#endif
++
+   bm->setParent(this);
+ 
+   setupGUI(ToolBar|Keys|Save|Create);
+-- 
+cgit v1.1
+
