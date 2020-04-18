@@ -8,4 +8,4 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/gmp:=
 SLOT=0
 SRC_URI=http://files.sagemath.org/spkg/upstream/flintqs/flintqs-1.0.tar.gz
-_md5_=c80d2871eb91f43d23b53ad888816e0d
+_md5_=5566f70cf38ebb1e94388f06b803aee3
