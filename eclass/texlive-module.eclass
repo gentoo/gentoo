@@ -86,6 +86,9 @@ IUSE="source"
 # Starting from TeX Live 2009, upstream provides .tar.xz modules.
 PKGEXT=tar.xz
 
+# Now where should we get these files?
+TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge }
+
 # We do not need anything from SYSROOT:
 #   Everything is built from the texlive install in /
 #   Generated files are noarch
@@ -93,13 +96,17 @@ BDEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils"
 
 for i in ${TEXLIVE_MODULE_CONTENTS}; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
+	for tldev in ${TEXLIVE_DEVS}; do
+		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
+	done
 done
 
 # Forge doc SRC_URI
 [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} doc? ("
 for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
+	for tldev in ${TEXLIVE_DEVS}; do
+		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
+	done
 done
 [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} )"
 
@@ -107,7 +114,9 @@ done
 if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]] ; then
 	SRC_URI="${SRC_URI} source? ("
 	for i in ${TEXLIVE_MODULE_SRC_CONTENTS}; do
-		SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
+		for tldev in ${TEXLIVE_DEVS}; do
+			SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
+		done
 	done
 	SRC_URI="${SRC_URI} )"
 fi
