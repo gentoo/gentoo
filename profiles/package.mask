@@ -545,12 +545,6 @@ net-ftp/pybootd
 # Removal in 30 days.  Bug #708268.
 app-backup/buttersink
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-17)
-# Abandoned.  Python 2 only.  Upstream recommends dev-python/suds
-# instead.
-# Removal in 30 days.  Bug #713056.
-dev-python/soappy
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
