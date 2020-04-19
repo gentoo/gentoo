@@ -147,7 +147,7 @@ pkg_pretend() {
 
 	if ! use opengl && ! use gles2-only; then
 		ewarn
-		ewarn "You are disabling OpenGL usage (USE=opengl or USE=gles-only) completely."
+		ewarn "You are disabling OpenGL usage (USE=opengl or USE=gles2-only) completely."
 		ewarn "This is an unsupported configuration meant for very specific embedded"
 		ewarn "use cases, where there truly is no GL possible (and even that use case"
 		ewarn "is very unlikely to come by). If you have GL (even software-only), you"
