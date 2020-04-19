@@ -630,7 +630,6 @@ app-portage/euscan
 # Removal in 30 days.  Bug #708398.
 app-admin/packagekit
 app-admin/packagekit-base
-app-admin/packagekit-gtk
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)
 # Fails to automatically launch pipewire for me. Help welcome figuring it out.

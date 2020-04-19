@@ -62,7 +62,6 @@ gnome-extra/gnome-user-share
 =app-admin/bcfg2-1.2.4-r1
 app-admin/packagekit
 ~app-admin/packagekit-base-1.1.12
-app-admin/packagekit-gtk
 <app-admin/salt-2018
 <app-admin/webapp-config-1.55
 app-portage/distpatch
