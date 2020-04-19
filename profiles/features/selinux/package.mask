@@ -73,4 +73,3 @@ app-portage/euscan
 <app-portage/layman-2.4.2
 app-portage/metagen
 =app-portage/overlint-0.5.2
-gnome-extra/gnome-packagekit
