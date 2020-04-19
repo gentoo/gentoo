@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="2ced9094d4728dd09f60a177faa32339a8d0f721"
+EGIT_COMMIT="d985723506a29766ed21585ba8541033db6bd572"
 
 inherit bash-completion-r1 flag-o-matic go-module
 
@@ -14,7 +14,7 @@ LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 
 KEYWORDS="~amd64"
-IUSE="apparmor btrfs +rootless selinux"
+IUSE="apparmor btrfs +fuse +rootless selinux"
 RESTRICT="test"
 
 COMMON_DEPEND="
@@ -23,6 +23,7 @@ COMMON_DEPEND="
 	|| ( >=app-emulation/runc-1.0.0_rc6 app-emulation/crun )
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
+	net-misc/cni-plugins
 	sys-fs/lvm2
 	sys-libs/libseccomp:=
 
@@ -34,7 +35,8 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	dev-go/go-md2man"
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	fuse? ( sys-fs/fuse-overlayfs )"
 
 src_prepare() {
 	default
@@ -47,7 +49,7 @@ src_prepare() {
 		-e 's/^\(install:.*\) install\.python$/\1/'
 	)
 
-	has_version -b '>=dev-lang/go-1.14' || makefile_sed_args+=(-e 's:GO111MODULE=off:GO111MODULE=on:')
+	has_version -b '>=dev-lang/go-1.13.9' || makefile_sed_args+=(-e 's:GO111MODULE=off:GO111MODULE=on:')
 
 	sed "${makefile_sed_args[@]}" -i Makefile || die
 
