@@ -212,7 +212,7 @@ force_dest_file_opt=
 
 nextargs=( "$@" )
 
-while [[ $# > 0 ]]
+while [[ $# -gt 0 ]]
 do
 	arg=${1}
 	shift
@@ -260,7 +260,7 @@ ret=$?
 
 if [[ -z ${mydest} ]]
 then
-	[[ ${#mysrcs[@]} < 2 ]] && exit 0
+	[[ ${#mysrcs[@]} -lt 2 ]] && exit 0
 	: "${mysrcs[@]}" "${#mysrcs[@]}"
 	mydest=${mysrcs[${#mysrcs[@]}-1]}
 	unset mysrcs[${#mysrcs[@]}-1]
