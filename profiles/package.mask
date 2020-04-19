@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
+# Stuck on Python 3.6, support for which already required
+# backporting patches to a release from 2014. Upstream's git
+# HEAD works fine, but they can't be bothered to make a new
+# release. Bug 718326. Removal whenever it becomes an issue.
+mail-filter/pyzor
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.
 # Removal in 30 days.  Bug #718548.
