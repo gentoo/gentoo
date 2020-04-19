@@ -576,12 +576,6 @@ mail-filter/spambayes
 >=net-misc/networkmanager-1.20
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-11)
-# Unmaintained Trac plugins.  Last bumped in 2013.  Blockers
-# for Python 2 removal.
-# Removal in 30 days.  Bug #712120.
-www-apps/trac-accountmanager
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-11)
 # The following Mercurial-related tools do not declare support
 # for Python 3 and have no maintainers.
 # Removal in 30 days.  Bug #712114.
