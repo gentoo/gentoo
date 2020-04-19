@@ -556,12 +556,6 @@ dev-python/soappy
 # Removal in 30 days. Bug #708410
 net-mail/automx
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-17)
-# Unmaintained.  Current Gentoo version is from 2015, last upstream
-# release in 2017.  Python 2 only.
-# Removal in 30 days.  Bug #712950.
-mail-filter/spambayes
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
