@@ -17297,7 +17297,7 @@ sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 242 243 243-r2 245 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2: Ben Fennema's tools for packet writing and the UDF filesystem
-sys-fs/udiskie 1.7.7 2.0.4 2.1.0: An automatic disk mounting service using udisks
+sys-fs/udiskie 2.1.0 2.1.1: An automatic disk mounting service using udisks
 sys-fs/udisks 2.8.4: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 2.1 9999: Self-syncing tree-merging file system based on FUSE
