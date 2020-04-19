@@ -21,7 +21,8 @@ RDEPEND="
 	net-misc/networkmanager
 	net-vpn/strongswan[networkmanager]
 	x11-libs/gtk+:3
-	glib? ( gnome-extra/nm-applet[gtk] )
+	glib? ( gnome-extra/nm-applet[gtk]
+		<net-misc/networkmanager-1.19 )
 "
 
 DEPEND="
@@ -35,7 +36,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	local myeconfargs=(
-		# Don't	enable all warnings, as	some are treated as errors and the compilation will fail
+		# Don't enable all warnings, as some are treated as errors and the compilation will fail
 		--disable-more-warnings
 		--disable-static
 		$(usex glib '' --without-libnm-glib)
