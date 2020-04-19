@@ -247,21 +247,13 @@ src_install() {
 	diropts -m 0750 -o root -g asterisk
 	keepdir	/etc/asterisk
 	if use samples; then
-		emake NOISY_BUILD=yes DESTDIR="${ED}" samples
+		emake NOISY_BUILD=yes DESTDIR="${ED}" CONFIG_SRC=configs/samples CONFIG_EXTEN=.sample install-configs
 		for conffile in "${ED}/etc/asterisk/"*
 		do
 			fowners root:root "${conffile#${ED}}"
 			fperms 0644 "${conffile#${ED}}"
 		done
-		einfo "Sample files have been installed"
-	else
-		einfo "Skipping installation of sample files..."
-		rm "${ED}"/var/lib/asterisk/mohmp3/* || die
-		rm "${ED}"/var/lib/asterisk/sounds/demo-* || die
-		rm "${ED}"/var/lib/asterisk/agi-bin/* || die
-		rm "${ED}"/etc/asterisk/* || die
 	fi
-	rm -r "${ED}"/var/spool/asterisk/voicemail/default || die
 
 	# keep directories
 	diropts -m 0750 -o asterisk -g root
