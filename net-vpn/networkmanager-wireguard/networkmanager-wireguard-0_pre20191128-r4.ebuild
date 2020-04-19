@@ -15,18 +15,16 @@ SRC_URI="https://github.com/max-moser/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+glib +gtk +nls"
-REQUIRED_USE="glib? ( gtk )"
+IUSE="+gtk +nls"
 
 RDEPEND="
-	net-misc/networkmanager
+	>=net-misc/networkmanager-1.7.0
 	net-vpn/wireguard-tools[wg-quick]
-	glib? ( dev-libs/glib )
+	>=dev-libs/glib-2.32:2
 	gtk? (
-		app-crypt/libsecret
-		<net-misc/networkmanager-1.19
-		gnome-extra/nm-applet[gtk]
-		x11-libs/gtk+:3
+		>=x11-libs/gtk+-3.4:3
+		>=net-libs/libnma-1.7.0
+		>=app-crypt/libsecret-0.18
 	)
 "
 
@@ -53,8 +51,8 @@ src_configure() {
 		--disable-lto
 		--disable-more-warnings
 		--disable-static
-		$(use_with glib libnm-glib)
 		$(use_with gtk gnome)
+		--without-libnm-glib
 		$(use_enable nls)
 		--with-dist-version="Gentoo"
 	)

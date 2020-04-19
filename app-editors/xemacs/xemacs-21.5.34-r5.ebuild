@@ -68,6 +68,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-glibc-macro.patch"
 	eapply "${FILESDIR}/${P}-as-needed.patch"
 	eapply "${FILESDIR}/${P}-configure-libc-version.patch"
+	eapply "${FILESDIR}/${P}-ar.patch"
 
 	eapply_user
 

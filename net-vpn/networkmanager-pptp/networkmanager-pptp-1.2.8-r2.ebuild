@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager/VPN"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="gtk"
 
 RDEPEND="
@@ -21,9 +21,8 @@ RDEPEND="
 	net-dialup/ppp:=
 	net-dialup/pptpclient
 	gtk? (
+		>=net-libs/libnma-1.2.0
 		>=app-crypt/libsecret-0.18
-		<net-misc/networkmanager-1.19
-		>=gnome-extra/nm-applet-1.2.0[gtk]
 		>=x11-libs/gtk+-3.4:3
 	)
 "
@@ -49,5 +48,6 @@ src_configure() {
 		--disable-static \
 		--with-dist-version=Gentoo \
 		$(use_with gtk gnome) \
+		--without-libnm-glib \
 		${myconf}
 }

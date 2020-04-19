@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="7a830be343876ac381c965c7429a7fb9b3d7a609"
+EGIT_COMMIT="1bddbf7051a973f4a4fecf06faa0c48e82f1e9e1"
 DESCRIPTION="An OCI container runtime monitor"
 HOMEPAGE="https://github.com/containers/conmon"
 SRC_URI="https://github.com/containers/conmon/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
@@ -12,6 +12,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="systemd"
+RESTRICT="test"
 
 RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"

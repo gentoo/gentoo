@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="gtk test"
 RESTRICT="!test? ( test )"
 
@@ -21,10 +21,9 @@ RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=net-vpn/vpnc-0.5.3_p550
 	gtk? (
-		>=app-crypt/libsecret-0.18
-		<net-misc/networkmanager-1.19
-		>=gnome-extra/nm-applet-1.2.0[gtk]
 		>=x11-libs/gtk+-3.4:3
+		>=net-libs/libnma-1.2.0
+		>=app-crypt/libsecret-0.18
 	)
 "
 DEPEND="${RDEPEND}
@@ -47,5 +46,6 @@ src_configure() {
 		--disable-more-warnings \
 		--disable-static \
 		--with-dist-version=Gentoo \
-		$(use_with gtk gnome)
+		$(use_with gtk gnome) \
+		--without-libnm-glib
 }
