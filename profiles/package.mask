@@ -535,11 +535,6 @@ dev-python/pyorbit
 # Removal in 30 days.  Bug #710166.
 sci-electronics/geda-xgsch2pcb
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-19)
-# Unmaintained.  Added in 2014 and not touched since.  Python 2 only.
-# Removal in 30 days.  Bug #713506.
-net-ftp/pybootd
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
