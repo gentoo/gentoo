@@ -60,7 +60,6 @@ gnome-extra/gnome-user-share
 # python2_7-only packages that depend on portage
 # cause unresolvable deps
 =app-admin/bcfg2-1.2.4-r1
-app-admin/packagekit
 ~app-admin/packagekit-base-1.1.12
 <app-admin/salt-2018
 <app-admin/webapp-config-1.55

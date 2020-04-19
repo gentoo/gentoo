@@ -628,7 +628,6 @@ app-portage/euscan
 # The Portage backend is unmaintained.  Other packages are its reverse
 # dependencies.
 # Removal in 30 days.  Bug #708398.
-app-admin/packagekit
 app-admin/packagekit-base
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)
