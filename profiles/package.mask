@@ -631,7 +631,6 @@ app-portage/euscan
 app-admin/packagekit
 app-admin/packagekit-base
 app-admin/packagekit-gtk
-app-admin/packagekit-qt
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)
 # Fails to automatically launch pipewire for me. Help welcome figuring it out.
