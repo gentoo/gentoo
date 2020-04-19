@@ -540,12 +540,6 @@ sci-electronics/geda-xgsch2pcb
 # Removal in 30 days.  Bug #713506.
 net-ftp/pybootd
 
-# Hans de Graaff <graaff@gentoo.org> (2020-03-19)
-# Masked for security issues, bug #699840
-# No reverse dependencies. Use dev-ruby/haml:5 instead.
-# Removal in 30 days.
-dev-ruby/haml:4
-
 # Michał Górny <mgorny@gentoo.org> (2020-03-18)
 # Unmaintained.  Version bump pending.  No Python 3 support upstream.
 # Removal in 30 days.  Bug #708268.
