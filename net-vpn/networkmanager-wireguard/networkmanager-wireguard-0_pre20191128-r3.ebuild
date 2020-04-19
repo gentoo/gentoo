@@ -24,6 +24,7 @@ RDEPEND="
 	glib? ( dev-libs/glib )
 	gtk? (
 		app-crypt/libsecret
+		<net-misc/networkmanager-1.19
 		gnome-extra/nm-applet[gtk]
 		x11-libs/gtk+:3
 	)
@@ -52,7 +53,7 @@ src_configure() {
 		--disable-lto
 		--disable-more-warnings
 		--disable-static
-		$(use_with glib	libnm-glib)
+		$(use_with glib libnm-glib)
 		$(use_with gtk gnome)
 		$(use_enable nls)
 		--with-dist-version="Gentoo"
