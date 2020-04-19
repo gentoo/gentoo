@@ -206,10 +206,6 @@ net-libs/gnutls test-full
 # Requires php:7.0 and ruby:2.2 being stable
 >=dev-libs/Ice-3.6.3 php ruby
 
-# Pacho Ramos <pacho@gentoo.org> (2016-08-19)
-# Not ready to be stabilized yet.
-app-admin/packagekit-base entropy
-
 # Kristian Fiskerstrand <k_f@gentoo.org> (2016-08-18)
 # Dropping stable for xtrabackup-bin, stable masking use
 # flag until a source based version that doesn't depend
