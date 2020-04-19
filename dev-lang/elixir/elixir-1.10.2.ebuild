@@ -27,6 +27,7 @@ DEPEND+="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.1-disable-network-tests.patch
+	"${FILESDIR}"/${P}-test-regex-fix.patch # backport
 )
 
 src_compile() {

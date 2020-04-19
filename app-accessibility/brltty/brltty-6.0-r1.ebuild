@@ -35,7 +35,7 @@ COMMON_DEP="
 	gpm? ( >=sys-libs/gpm-1.20 )
 	iconv? ( virtual/libiconv )
 	icu? ( dev-libs/icu:= )
-	louis? ( dev-libs/liblouis )
+	louis? ( dev-libs/liblouis:= )
 	midi? ( media-libs/alsa-lib )
 	ncurses? ( sys-libs/ncurses:0= )
 	pcm? ( media-libs/alsa-lib )
