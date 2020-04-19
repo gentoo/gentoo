@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="packagekit">Enable support for the distro-neutral package
-			manager GUI <pkg>app-admin/packagekit</pkg></flag>
+			manager GUI PackageKit</flag>
 	</use>
 	<longdescription lang="en">GNOME Color Manager is a set of graphical utilities for color management
 to be used in the GNOME desktop.</longdescription>
