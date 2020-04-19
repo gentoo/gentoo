@@ -623,13 +623,6 @@ www-servers/tomcat:9
 # Removal in 30 days.  Bug #709458.
 app-portage/euscan
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-24)
-# app-admin/packagekit-base is Python 2 only and behind upstream.
-# The Portage backend is unmaintained.  Other packages are its reverse
-# dependencies.
-# Removal in 30 days.  Bug #708398.
-app-admin/packagekit-base
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)
 # Fails to automatically launch pipewire for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
