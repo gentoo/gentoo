@@ -8,7 +8,7 @@
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
 # oracle-jdk-bin masked for removal, mask revdep useflag.
-app-forensics/sleuthkit java
+=app-forensics/sleuthkit-4.7.0 java
 
 # Ulrich Müller <ulm@gentoo.org> (2020-04-15)
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2020-04-17)
