@@ -32,6 +32,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
+# Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
+# requires agreement to restrictive license
+# Revdeps that still depend on oracle variants require javafx
+# Please use icedtea or openjdk instead.
+# Removal in 30 days.
+# https://bugs.gentoo.org/681828
+dev-java/oracle-jdk-bin
+dev-java/oracle-jre-bin
+app-forensics/sleuthkit
+app-text/jabref-bin
+dev-java/netbeans-platform
+dev-java/netbeans-harness
+games-util/pogo-manager-bin
+net-p2p/bisq
+sci-mathematics/geogebra
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-18)
 # Long dead, vulnerable.  All revdeps have either been ported away,
 # removed or had their optional deps removed.
