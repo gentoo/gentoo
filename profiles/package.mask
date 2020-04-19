@@ -551,11 +551,6 @@ app-backup/buttersink
 # Removal in 30 days.  Bug #713056.
 dev-python/soappy
 
-# Marc Schiffbauer <mschiff@gentoo.org> (2020-03-17)
-# No py3 support, replaced by its successor automx2
-# Removal in 30 days. Bug #708410
-net-mail/automx
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
