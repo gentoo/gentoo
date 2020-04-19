@@ -510,58 +510,6 @@ media-sound/galan
 # No reverse deps. GNOME 2 era slot. Removal in 30 days
 gnome-base/gnome-desktop:2
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-20)
-# Python 2 only.  Upstream is not working on a port.
-# Removal in 30 days.  Bug #713568.
-sci-physics/espresso++
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-20)
-# Deprecated GNOME libraries, replaced by introspection.  Python 2 only.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #713566.
-dev-python/gnome-python-desktop-base
-dev-python/gnome-python-extras-base
-dev-python/gnome-vfs-python
-dev-python/gtkspell-python
-dev-python/libbonobo-python
-dev-python/libgnome-python
-dev-python/libgnomecanvas-python
-dev-python/librsvg-python
-dev-python/pyorbit
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-20)
-# Added in 2009, not bumped since.  Python 2 only, requires dead
-# dev-python/pygtk.  Gone from HOMEPAGE.
-# Removal in 30 days.  Bug #710166.
-sci-electronics/geda-xgsch2pcb
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-19)
-# Unmaintained.  Added in 2014 and not touched since.  Python 2 only.
-# Removal in 30 days.  Bug #713506.
-net-ftp/pybootd
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-18)
-# Unmaintained.  Version bump pending.  No Python 3 support upstream.
-# Removal in 30 days.  Bug #708268.
-app-backup/buttersink
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-17)
-# Abandoned.  Python 2 only.  Upstream recommends dev-python/suds
-# instead.
-# Removal in 30 days.  Bug #713056.
-dev-python/soappy
-
-# Marc Schiffbauer <mschiff@gentoo.org> (2020-03-17)
-# No py3 support, replaced by its successor automx2
-# Removal in 30 days. Bug #708410
-net-mail/automx
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-17)
-# Unmaintained.  Current Gentoo version is from 2015, last upstream
-# release in 2017.  Python 2 only.
-# Removal in 30 days.  Bug #712950.
-mail-filter/spambayes
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
@@ -576,21 +524,9 @@ mail-filter/spambayes
 >=net-misc/networkmanager-1.20
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-11)
-# Unmaintained Trac plugins.  Last bumped in 2013.  Blockers
-# for Python 2 removal.
-# Removal in 30 days.  Bug #712120.
-www-apps/trac-accountmanager
-www-apps/trac-mercurial
-www-apps/trac-tags
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-11)
 # The following Mercurial-related tools do not declare support
 # for Python 3 and have no maintainers.
 # Removal in 30 days.  Bug #712114.
-dev-vcs/hgsubversion
-dev-vcs/hgsvn
-dev-vcs/hgview
-dev-vcs/mercurial-server
 dev-vcs/tortoisehg
 
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
