@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}"
 # deal with it for now.
 RESTRICT="test"
 
+S=${WORKDIR}/${PN}-${P}
+
 src_configure() {
 	local emesonargs=(
 		-Ddefault_library=$(usex static-libs both shared)
