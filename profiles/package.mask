@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
+# Unmaintained.  Stuck on Python 3.6.  In need of bump since 2016.
+# Removal in 30 days.  Bug #718426.
+net-analyzer/ripe-atlas-tools
+net-libs/ripe-atlas-sagan
+www-client/ripe-atlas-cousteau
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.  Last release in 2016.
 # Removal in 30 days.  Bug #718410.
 media-video/subliminal
