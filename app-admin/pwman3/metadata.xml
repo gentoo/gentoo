@@ -9,9 +9,6 @@
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
-<use>
-	<flag name="mongodb">Add support for MongoDB</flag>
-</use>
 <longdescription lang="en">
 	A lightweight command line password manager, which can use different
 	databases to store your passwords (currently, SQLite, MySQL, Postgresql
