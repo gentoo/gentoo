@@ -6,6 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 
+DISTUTILS_USE_SETUPTOOLS=no
 inherit gnome2 distutils-r1
 
 DESCRIPTION="A graphical tool for administering virtual machines"
@@ -59,9 +60,7 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-distutils-r1_python_compile() {
-	local defgraphics=
-
+python_configure() {
 	esetup.py configure \
 		--default-graphics=spice
 }
