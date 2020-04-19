@@ -7790,7 +7790,7 @@ dev-python/fqdn 1.2.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 0.3.15: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
-dev-python/fs 2.4.9: Filesystem abstraction layer
+dev-python/fs 2.4.9 2.4.9-r1: Filesystem abstraction layer
 dev-python/fudge 1.1.0 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
@@ -15131,7 +15131,7 @@ net-p2p/classified-ads 0.13: Program for displaying classified advertisement ite
 net-p2p/cpuminer-opt 3.12.4.2 3.12.13 9999: Optimized multi algo CPU miner
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
-net-p2p/deluge 1.3.15-r5 1.3.15-r6 1.3.15-r7 1.3.9999 2.0.3-r4 2.0.3-r5 9999: BitTorrent client with a client/server model
+net-p2p/deluge 1.3.15-r5 1.3.15-r6 1.3.15-r7 1.3.9999 2.0.3-r4 2.0.3-r5 2.0.3-r6 9999: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC protocols
 net-p2p/fms 0.3.82: A spam-resistant message board application for Freenet
