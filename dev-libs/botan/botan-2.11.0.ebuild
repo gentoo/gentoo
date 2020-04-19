@@ -2,37 +2,40 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )
 
-inherit multilib python-r1 toolchain-funcs
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-MY_PN="Botan"
-MY_P="${MY_PN}-${PV}"
-DESCRIPTION="A C++ crypto library"
+MY_P="Botan-${PV}"
+inherit python-r1 toolchain-funcs
+
+DESCRIPTION="C++ crypto library"
 HOMEPAGE="https://botan.randombit.net/"
 SRC_URI="https://botan.randombit.net/releases/${MY_P}.tar.xz"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
-SLOT="2/$(ver_cut 1-2)" # soname version
 LICENSE="BSD"
-IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
+SLOT="2/$(ver_cut 1-2)" # soname version
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
+IUSE="bindist bzip2 boost doc libressl lzma python sqlite ssl static-libs zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
 DEPEND="python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}
-	bzip2? ( >=app-arch/bzip2-1.0.5:= )
-	zlib? ( >=sys-libs/zlib-1.2.3:= )
 	boost? ( >=dev-libs/boost-1.48:= )
+	bzip2? ( >=app-arch/bzip2-1.0.5:= )
 	lzma? ( app-arch/xz-utils:= )
 	sqlite? ( dev-db/sqlite:3= )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0=[bindist=] )
 		libressl? ( dev-libs/libressl:0= )
-	)"
-BDEPEND="dev-lang/python:*
-	doc? ( dev-python/sphinx )"
+	)
+	zlib? ( >=sys-libs/zlib-1.2.3:= )
+"
+BDEPEND="
+	dev-lang/python:*
+	doc? ( dev-python/sphinx )
+"
 
 src_configure() {
 	local disable_modules=()
@@ -49,12 +52,12 @@ src_configure() {
 
 	local myos=
 	case ${CHOST} in
-		*-darwin*)	myos=darwin ;;
-		*)			myos=linux  ;;
+		*-darwin*) myos=darwin ;;
+		*) myos=linux  ;;
 	esac
 
 	case ${CHOST} in
-		hppa*)		CHOSTARCH=parisc ;;
+		hppa*) CHOSTARCH=parisc ;;
 	esac
 
 	local pythonvers=()
