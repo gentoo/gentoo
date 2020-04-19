@@ -616,13 +616,6 @@ media-libs/pyliblo
 # depends on >=virtual/{jdk,jre}-11 which is masked
 www-servers/tomcat:9
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-26)
-# Effectively unmaintained.  Last upstream commit in 2016.  Multiple
-# unresolved bugs.  Python 2 only.  Repology (https://repology.org/)
-# provides quite a good replacement.
-# Removal in 30 days.  Bug #709458.
-app-portage/euscan
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)
 # Fails to automatically launch pipewire for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
