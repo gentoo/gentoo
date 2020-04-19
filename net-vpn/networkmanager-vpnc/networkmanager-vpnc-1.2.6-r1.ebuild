@@ -22,6 +22,7 @@ RDEPEND="
 	>=net-vpn/vpnc-0.5.3_p550
 	gtk? (
 		>=app-crypt/libsecret-0.18
+		<net-misc/networkmanager-1.19
 		>=gnome-extra/nm-applet-1.2.0[gtk]
 		>=x11-libs/gtk+-3.4:3
 	)
