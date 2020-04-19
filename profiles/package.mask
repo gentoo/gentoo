@@ -520,7 +520,6 @@ sci-physics/espresso++
 # No reverse dependencies.
 # Removal in 30 days.  Bug #713566.
 dev-python/gnome-python-desktop-base
-dev-python/gnome-python-extras-base
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
