@@ -510,11 +510,6 @@ media-sound/galan
 # No reverse deps. GNOME 2 era slot. Removal in 30 days
 gnome-base/gnome-desktop:2
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-20)
-# Python 2 only.  Upstream is not working on a port.
-# Removal in 30 days.  Bug #713568.
-sci-physics/espresso++
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
