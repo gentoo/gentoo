@@ -5152,7 +5152,7 @@ dev-libs/libusb 1.0.19-r1 1.0.21-r1 1.0.22 1.0.23-r1: Userspace access to USB de
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0: mapping tool for UTF-8 strings
-dev-libs/libuv 1.35.0 1.36.0 9999: Cross-platform asychronous I/O
+dev-libs/libuv 1.35.0 1.37.0 9999: Cross-platform asychronous I/O
 dev-libs/libvarlink 16 18: C implementation of the Varlink protocol and command line tool
 dev-libs/libverto 0.2.5-r1 0.3.0 0.3.1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
@@ -7460,7 +7460,7 @@ dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2_cffi 19.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/args 0.1.0-r1: Command Arguments for Humans
 dev-python/arpeggio 1.9.0: Parser interpreter based on PEG grammars
-dev-python/arrow 0.13.1: Better dates and times for Python
+dev-python/arrow 0.13.1 0.15.5: Better dates and times for Python
 dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
@@ -7509,7 +7509,7 @@ dev-python/betamax 0.8.0 0.8.1: python-requests HTTP exchanges recorder
 dev-python/betamax-matchers 0.4.0: A group of experimental matchers for Betamax
 dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
 dev-python/billiard 3.6.0.0: Python multiprocessing fork
-dev-python/binaryornot 0.4.3: Ultra-lightweight pure Python package to guess whether a file is binary or text
+dev-python/binaryornot 0.4.3 0.4.4: Ultra-lightweight pure Python package to guess whether a file is binary or text
 dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5 3.1.6: A pure Python module for creation and analysis of binary data
 dev-python/bleach 3.1.4-r1: an easy whitelist-based HTML-sanitizing tool
@@ -8230,7 +8230,7 @@ dev-python/portend 2.6: TCP port monitoring utilities
 dev-python/positional 1.1.2: A decorator which enforces only some args may be passed positionally.
 dev-python/posix_ipc 0.9.8: POSIX IPC primitives (semaphores, shared memory and message queues) for Python
 dev-python/potr 1.0.1: Pure Python OTR implementation
-dev-python/poyo 0.4.1: A lightweight YAML Parser for Python
+dev-python/poyo 0.4.1 0.5.0: A lightweight YAML Parser for Python
 dev-python/precis-i18n 1.0.1: Internationalized Usernames and Passwords
 dev-python/pretend 1.0.9: A library for stubbing in Python
 dev-python/pretty-yaml 15.8.2: PyYAML-based module to produce pretty and readable YAML-serialized data
@@ -8889,7 +8889,7 @@ dev-python/webtest 2.0.21 2.0.29 2.0.29-r1 2.0.33: Helper to test WSGI applicati
 dev-python/werkzeug 0.16.0 0.16.1 1.0.0 1.0.1: Collection of various utilities for WSGI applications
 dev-python/wheel 0.34.2: A built-package format for Python
 dev-python/whelk 2.7.1: Pretending python is a shell
-dev-python/whichcraft 0.4.1: This package provides cross-platform cross-python shutil.which functionality
+dev-python/whichcraft 0.4.1 0.6.1: Cross-platform cross-python shutil.which functionality
 dev-python/whisper 1.1.5: Fixed size round-robin style database
 dev-python/whoosh 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/widgetsnbextension 3.0.0 3.4.2: IPython HTML widgets for Jupyter

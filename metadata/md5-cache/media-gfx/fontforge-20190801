@@ -12,5 +12,5 @@ REQUIRED_USE=cairo? ( png ) gtk? ( cairo ) python? ( ^^ ( python_single_target_p
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/fontforge/fontforge/releases/download/20190801/fontforge-20190801.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	00efd460b0996a1e4aab8825dded5700	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=c68d4898566e887c02390156ff7ff723
