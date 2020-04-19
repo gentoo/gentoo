@@ -15223,14 +15223,14 @@ net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/libreswan 3.29 3.30 3.31: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engine
 net-vpn/mullvad-netns 0.2 9999: Script to run a command within a Mullvad network namespace
-net-vpn/networkmanager-fortisslvpn 1.2.6-r1 1.2.8-r1: NetworkManager Fortinet SSLVPN compatible plugin
+net-vpn/networkmanager-fortisslvpn 1.2.8-r1 1.2.8-r2: NetworkManager Fortinet SSLVPN compatible plugin
 net-vpn/networkmanager-l2tp 1.8.0 1.8.2: NetworkManager L2TP plugin
 net-vpn/networkmanager-libreswan 1.2.12: NetworkManager libreswan plugin
 net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.10-r1: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8-r1: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-vpn/networkmanager-strongswan 1.4.5-r1: NetworkManager StrongSwan plugin
+net-vpn/networkmanager-strongswan 1.4.5-r1 1.4.5-r2: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6-r1: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r3 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
