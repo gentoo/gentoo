@@ -17,9 +17,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	!<dev-python/docutils-0.9[${PYTHON_USEDEP}]"
-
 python_test() {
 	cp "${S}/src/tests.py" . || die "copying test file failed"
 	esetup.py test
