@@ -524,7 +524,6 @@ dev-python/gnome-python-extras-base
 dev-python/gnome-vfs-python
 dev-python/gtkspell-python
 dev-python/libbonobo-python
-dev-python/libgnome-python
 dev-python/libgnomecanvas-python
 dev-python/librsvg-python
 dev-python/pyorbit
