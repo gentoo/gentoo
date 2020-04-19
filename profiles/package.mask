@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
+# Unmaintained.  Stuck on Python 3.6.
+# Removal in 30 days.  Bug #718308.
+dev-vcs/git-imerge
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck at Python 3.6.  Many versions behind upstream.
 # Removal in 30 days.  Bug #718300.
 dev-vcs/ghp-import
