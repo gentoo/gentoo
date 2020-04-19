@@ -16,14 +16,6 @@ libglvnd
 appindicator
 ayatana
 
-# Michał Górny <mgorny@gentoo.org> (2018-07-16)
-# Python 3.7 support requires fresh versions of packages which are stuck
-# at keywordreqs.
-# bug #661306: dev-python/pytest
-# bug #661320: dev-python/twisted
-python_targets_python3_7
-python_single_target_python3_7
-
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
