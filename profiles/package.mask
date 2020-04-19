@@ -588,7 +588,6 @@ www-apps/trac-tags
 # for Python 3 and have no maintainers.
 # Removal in 30 days.  Bug #712114.
 dev-vcs/hgsubversion
-dev-vcs/hgsvn
 dev-vcs/tortoisehg
 
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
