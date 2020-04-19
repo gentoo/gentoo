@@ -124,11 +124,6 @@ media-sound/pulseaudio native-headset
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
 dev-vcs/git pcre-jit
 
-# Fabian Groffen <grobian@gentoo.org> (2017-06-15)
-# net-mail/notmuch is not keyworded, and holds back stabilisation, see
-# bug https://bugs.gentoo.org/show_bug.cgi?id=604902
-mail-client/mutt notmuch
-
 # Tobias Klausmann <klausman@gentoo.org> (2017-05-18)
 # Stack protector code is not ported to alpha (and may not ever be)
 >=sys-devel/gcc-6 ssp

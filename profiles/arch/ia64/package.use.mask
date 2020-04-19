@@ -96,7 +96,6 @@ app-arch/rpm test
 
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Unkeyworded dep masks moved from default/linux/ia64 tree.
-mail-client/mutt notmuch
 mail-mta/exim redis
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-03-18)

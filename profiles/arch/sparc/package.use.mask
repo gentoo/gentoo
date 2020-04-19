@@ -205,10 +205,6 @@ dev-libs/hiredis test
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
 
-# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
-# unkeyworded notmuch dependency, bug #587560
-mail-client/mutt notmuch
-
 # Michał Górny <mgorny@gentoo.org> (2016-11-18)
 # libomp does not support SPARC, #600148.
 sys-devel/clang-runtime openmp

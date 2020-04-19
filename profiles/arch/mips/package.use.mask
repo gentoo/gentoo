@@ -62,10 +62,6 @@ app-portage/g-sorcery bson
 # dev-python/gmpy also a test depend, so minimize the features until can test properly (http2 soap test)
 dev-python/twisted conch crypt http2 soap test
 
-# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
-# unkeyworded notmuch dependency, bug #587560
-mail-client/mutt notmuch
-
 # Felix Janda <felix.janda@posteo.de> (2016-09-24)
 # net-libs/libnetfilter_conntrack is not keyworded on mips
 net-dns/dnsmasq conntrack

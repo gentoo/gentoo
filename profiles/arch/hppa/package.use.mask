@@ -135,10 +135,6 @@ app-shells/bash-completion test
 # media-libs/zimg triggers a toolchain issue (bug #597152)
 media-video/ffmpeg libilbc zimg
 
-# Jeroen Roovers <jer@gentoo.org> (2017-02-03)
-# net-mail/notmuch is not keyworded
-mail-client/mutt notmuch
-
 # Justin Lecher <jlec@gentoo.org> (2017-01-15)
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
