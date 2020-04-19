@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
+# Both packages are unmaintained and have unresolved bugs.  stfl
+# is stuck on Python 3.6 and newsboat is its only revdep.
+# Removal in 30 days.  Bug #718286.
+dev-libs/stfl
+net-news/newsboat
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.  A few releases behind upstream.
 # Removal in 30 days.  Bug #718268.
 app-text/doconce
