@@ -8629,7 +8629,7 @@ dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs 
 dev-python/riak-python-client 2.7.0-r1: The Riak client for Python.
 dev-python/robotbackgroundlogger 1.2: Helper module for logging to Robot Framework log from background threads
 dev-python/robotframework 3.0.4: Test automation framework for acceptance testing & test-driven development
-dev-python/roman 3.0: An Integer to Roman numerals converter
+dev-python/roman 3.0 3.2: An Integer to Roman numerals converter
 dev-python/root_numpy 4.7.3-r1: Interface between ROOT and numpy
 dev-python/rootpy 1.0.1-r1: Pythonic layer on top of the ROOT framework's PyROOT bindings
 dev-python/rope 0.16.0: Python refactoring library
