@@ -522,10 +522,6 @@ dev-qt/qtdeclarative -jit
 dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
 
-# Markus Meier <maekke@gentoo.org> (2011-09-05)
-# unkeyworded deps for bug 379657 and bug 379651
-app-admin/packagekit-base entropy
-
 # Sebastian Pipping <sping@gentoo.org> (2011-02-22)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test

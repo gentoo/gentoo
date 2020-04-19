@@ -490,10 +490,6 @@ net-vpn/tinc vde
 # libpcre jit is not supported on alpha
 dev-libs/libpcre jit
 
-# Markus Meier <maekke@gentoo.org> (2011-09-05)
-# unkeyworded deps for bug 379657 and bug 379651
-app-admin/packagekit-base entropy
-
 # Jim Ramsay <lack@gentoo.org> (2008-11-05)
 # app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded
 app-admin/gkrellm ntlm
