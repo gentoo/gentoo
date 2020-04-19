@@ -525,7 +525,6 @@ dev-python/gnome-vfs-python
 dev-python/gtkspell-python
 dev-python/libgnomecanvas-python
 dev-python/librsvg-python
-dev-python/pyorbit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
