@@ -4,6 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 GNOME_ORG_MODULE="network-manager-applet"
+GNOME2_EAUTORECONF="yes"
 
 inherit gnome2
 
@@ -47,6 +48,10 @@ DEPEND="${RDEPEND}
 "
 
 PDEPEND="virtual/notification-daemon" #546134
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-bashisms.patch
+)
 
 src_configure() {
 	local myconf=(
