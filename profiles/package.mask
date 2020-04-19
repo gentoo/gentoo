@@ -590,7 +590,6 @@ www-apps/trac-tags
 dev-vcs/hgsubversion
 dev-vcs/hgsvn
 dev-vcs/hgview
-dev-vcs/mercurial-server
 dev-vcs/tortoisehg
 
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
