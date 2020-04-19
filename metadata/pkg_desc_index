@@ -953,7 +953,7 @@ app-crypt/tpm2-totp 0.2.1: Attest the trustworthiness of a device against a huma
 app-crypt/tpm2-tss 2.2.3-r2 2.3.3: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.0.1: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
-app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1: GnuPG archive keys of the Ubuntu archive
+app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
 app-crypt/virtualsmartcard 0.7: Smart card emulator, can be used with Remote Smart Card Reader
 app-crypt/xca 2.1.2 2.2.1: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
@@ -7474,7 +7474,7 @@ dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__
 dev-python/attrs 19.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r1: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
-dev-python/authres 0.800 1.1.1: Authentication-Results Headers generation and parsing
+dev-python/authres 0.800 1.1.1 1.2.0: Parse and generate Authentication-Results headers
 dev-python/autobahn 17.5.1-r2 18.3.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.8.0-r1: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1: Friendly state machines for python.
@@ -8417,7 +8417,7 @@ dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysol_cards 0.8.6 0.8.9: Deal PySol FreeCell cards
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
-dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
+dev-python/pyspf 2.0.12 2.0.14: Python implementation of the Sender Policy Framework (SPF)
 dev-python/pysrt 1.1.1 1.1.2 9999: Python library used to edit or create SubRip files
 dev-python/pysvg 0.2.2_p3: Python SVG document creation library
 dev-python/pysvn 1.8.0 1.9.11: Object-oriented python bindings for subversion
@@ -12123,7 +12123,7 @@ mail-filter/postfwd 1.35-r3 2.00-r1 2.02: Versatile Postfix policy server with a
 mail-filter/postgrey 1.34-r3 1.35-r2 1.36-r1 1.37: Postgrey is a Postfix policy server implementing greylisting
 mail-filter/postsrsd 1.4 1.4-r1 1.6: Postfix Sender Rewriting Scheme daemon
 mail-filter/procmail 3.22-r14: Mail delivery agent/filter
-mail-filter/pypolicyd-spf 2.0.2: Python-based policy daemon for Postfix SPF verification
+mail-filter/pypolicyd-spf 2.0.2 2.0.2-r1: Python-based policy daemon for Postfix SPF verification
 mail-filter/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
@@ -13010,7 +13010,7 @@ media-libs/urt 3.1b-r1 3.1b-r3: the Utah Raster Toolkit is a library for dealing
 media-libs/vamp-plugin-sdk 2.7.1: Audio processing system for plugins to extract information from audio data
 media-libs/vidstab 1.1.0-r2 9999: Video stabilization library
 media-libs/vigra 1.11.1-r3 9999: C++ computer vision library emphasizing customizable algorithms and structures
-media-libs/virglrenderer 0.6.0 0.7.0 9999: library used implement a virtual 3D GPU used by qemu
+media-libs/virglrenderer 0.6.0 0.7.0 0.8.2 9999: library used implement a virtual 3D GPU used by qemu
 media-libs/vitamtp 2.5.9_pre20160829 9999: Library to interact with PS Vita's USB MTP protocol
 media-libs/vo-aacenc 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.3 9999: VisualOn AMR-WB encoder library
@@ -17193,7 +17193,7 @@ sys-fs/avfs 1.1.1: AVFS is a virtual filesystem that allows browsing of compress
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bees 0.6.1-r2 9999: Best-Effort Extent-Same, a btrfs dedup agent
-sys-fs/bindfs 1.14.1 1.14.3 1.14.4: FUSE filesystem for bind mounting with altered permissions
+sys-fs/bindfs 1.14.1 1.14.3 1.14.4 1.14.5: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 4.4.1 4.19 5.4 5.4.1 5.6 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
@@ -18233,7 +18233,7 @@ x11-misc/gpaste 3.20.3: Clipboard management system
 x11-misc/grabc 1.1-r2: Identify color of a pixel on the screen by clicking on a pixel on the screen
 x11-misc/gromit 20041213-r1: GRaphics Over MIscellaneous Things, a presentation helper
 x11-misc/grsync 1.2.6: A gtk frontend to rsync
-x11-misc/grub2-theme-preview 1.3.1 1.3.2 1.4.1: Preview a GRUB 2.x theme using KVM/QEMU
+x11-misc/grub2-theme-preview 1.4.2: Preview a GRUB 2.x theme using KVM/QEMU
 x11-misc/grun 0.9.3-r1: A GTK based Run dialog resembling the Windows Run dialog, just like xexec
 x11-misc/gtk2fontsel 0.1-r1: A font selection tool similar to xfontsel
 x11-misc/gtkdialog 0.8.3-r2 0.8.3-r3 0.8.3_p20200202 99999: A small utility for fast and easy GUI building
