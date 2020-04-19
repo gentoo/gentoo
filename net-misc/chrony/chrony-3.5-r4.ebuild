@@ -51,7 +51,7 @@ src_prepare() {
 		doc/* examples/* || die
 
 	# Copy for potential user fixup
-	cp "${FILESDIR}"/chronyd.conf "${T}"/chronyd.conf
+	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf
 	cp examples/chronyd.service "${T}"/chronyd.service
 
 	# Set config for privdrop
