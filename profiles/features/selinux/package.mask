@@ -63,7 +63,6 @@ gnome-extra/gnome-user-share
 <app-admin/salt-2018
 <app-admin/webapp-config-1.55
 app-portage/distpatch
-app-portage/euscan
 <app-portage/g-sorcery-0.2.1-r1
 =app-portage/gs-elpa-0.1.3
 <app-portage/layman-2.4.2
