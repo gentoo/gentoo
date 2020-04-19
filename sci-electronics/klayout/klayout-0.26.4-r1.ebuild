@@ -80,8 +80,8 @@ each_ruby_install() {
 	dodir "/usr/$(get_libdir)/klayout"
 	mv lib* lay_plugins db_plugins "${ED}/usr/$(get_libdir)/klayout/" || die
 
-	dodir "$(python_get_sitedir)"
-	mv pymod/* "${ED}/$(python_get_sitedir)/" || die
+	mkdir -p "${D}/$(python_get_sitedir)" || die
+	mv pymod/* "${D}/$(python_get_sitedir)/" || die
 	rmdir pymod || die
 
 	dobin *
