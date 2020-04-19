@@ -174,7 +174,7 @@ pkg_postinst() {
 	echo ""
 	elog "    For a basic setup, you may use emerge --config ${PN}"
 	echo ""
-	if [[ -z "${REPLACING_VERSIONS}" ]] || [[ ${REPLACING_VERSIONS} < 4 ]]; then
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "Important 4.0+ updates"
 		elog "  - The on-wire protocol version has been changed."
 		elog "    Versions of Torque before 4.0.0 are no longer able to communicate."
