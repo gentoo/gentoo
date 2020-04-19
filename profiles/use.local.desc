@@ -213,9 +213,9 @@ app-arch/dpkg:update-alternatives - Install update-alternatives
 app-arch/dump:ermt - encrypted rmt support
 app-arch/dump:uuid - Enable UUID support
 app-arch/engrampa:caja - Enable engrampa to integrate with mate-base/caja by providing entries in its context menu
-app-arch/engrampa:packagekit - Enable support for installing via app-admin/packagekit based on archive type
+app-arch/engrampa:packagekit - Enable support for installing via Packagekit based on archive type
 app-arch/file-roller:nautilus - Build contextual menu extension for gnome-base/nautilus.
-app-arch/file-roller:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
+app-arch/file-roller:packagekit - Enable support for the distro-neutral package manager GUI PackageKit
 app-arch/gzip:pic - disable optimized assembly code that is not PIC friendly
 app-arch/innoextract:debug - Enable debug logging and the --debug command-line option
 app-arch/innoextract:lzma - Enable support for extracting lzma-compressed installers using app-arch/xz-utils
@@ -282,7 +282,7 @@ app-benchmarks/ramspeed:pic - Force shared libraries to be built as PIC (this is
 app-benchmarks/sysbench:aio - Enable libaio support
 app-cdr/brasero:libburn - Enable dev-libs/libburn backend
 app-cdr/brasero:nautilus - Build the gnome-base/nautilus extension
-app-cdr/brasero:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
+app-cdr/brasero:packagekit - Enable support for the distro-neutral package manager GUI PackageKit
 app-cdr/brasero:playlist - Enable support for playlists through dev-libs/totem-pl-parser
 app-cdr/brasero:tracker - Enable audio playlist search using the app-misc/tracker indexer
 app-cdr/cdemu:cdemu-daemon - Pull app-cdr/cdemu-daemon dependency, useful in chroot environment (bug #315491). Do not disable until you know what you are doing.
@@ -3391,7 +3391,7 @@ gnome-extra/evolution-data-server:berkdb - sys-libs/db support needed to migrate
 gnome-extra/evolution-data-server:gnome-online-accounts - Enable net-libs/gnome-online-accounts based Google authentication support
 gnome-extra/evolution-data-server:oauth - Enable internal OAuth2 authentication support for Google and Outlook.com. If gnome-online-accounts is enabled and used, this is not necessary, but both can be supported at the same time with different setup at runtime
 gnome-extra/evolution-data-server:weather - Enable optional weather calendar support
-gnome-extra/gnome-color-manager:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
+gnome-extra/gnome-color-manager:packagekit - Enable support for the distro-neutral package manager GUI PackageKit
 gnome-extra/gnome-commander:chm - Enable metadata support for Microsoft Compiled HTML Help files
 gnome-extra/gnome-commander:gsf - Add metadata support for OLE, OLE2 and ODF
 gnome-extra/gnome-commander:pdf - Add metadata support for PDF
@@ -3895,7 +3895,7 @@ mail-mta/postfix:memcached - Add support for using net-misc/memcached for lookup
 mail-mta/qpsmtpd:postfix - create user with permissions for proper postfix interaction
 mail-mta/ssmtp:mta - Install symlinks for sendmail-compatible MTA.
 mate-base/caja:mate - Install x11-themes/mate-icon-theme which is needed when this package is used in the MATE desktop environment.
-mate-base/caja:packagekit - Enable support for installing via app-admin/packagekit based on mimetype
+mate-base/caja:packagekit - Enable support for installing via PackageKit based on mimetype
 mate-base/mate:base - Install base MATE Desktop applications that are recommended for the most common usage; for example, this installs the file manager. Disable this and other USE flags if you want a more minimal MATE Desktop.
 mate-base/mate:extras - Install additional MATE Desktop applications that are recommended for extended usage of the MATE Desktop as upstream sees it; for example, this installs MATE Desktop's office related applications. Disable this if you plan to use your own non-MATE Desktop alternatives or a custom mixture of MATE and non-MATE packages.
 mate-base/mate:help - Install gnome-extra/yelp to handle in application help menus and documentation browsing
