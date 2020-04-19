@@ -34,6 +34,11 @@
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.
+# Removal in 30 days.  Bug #718548.
+x11-terms/roxterm
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-19)
+# Unmaintained.  Stuck on Python 3.6.
 # Removal in 30 days.  Bug #718530.
 sys-boot/raspberrypi-mkimage
 
