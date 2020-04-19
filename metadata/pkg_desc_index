@@ -11621,7 +11621,7 @@ gui-libs/gtk-layer-shell 0.1.0: Library to create desktop components for Wayland
 gui-libs/libhandy 0.0.9 0.0.13: Library with GTK widgets for mobile phones
 gui-libs/libwpe 1.4.0.1: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.2.1: GtkSourceView-based text editors and IDE helper library
-gui-libs/wlroots 0.10.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
+gui-libs/wlroots 0.10.0 0.10.1 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
 gui-wm/sway 1.4 1.4-r1 9999: i3-compatible Wayland window manager
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
@@ -14533,6 +14533,7 @@ net-libs/libnftnl 1.1.3 1.1.4 1.1.5 1.1.6: Netlink API to the in-kernel nf_table
 net-libs/libnice 0.1.13 0.1.15: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
+net-libs/libnma 1.8.24: NetworkManager GUI library
 net-libs/libnsl 0-r1 1.2.0: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
 net-libs/libntlm 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
@@ -16727,7 +16728,7 @@ sys-apps/onerng 3.6-r2 3.6-r3: Software for the Open Hardware Random Number Gene
 sys-apps/opal-utils 6.5 6.5.2: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 9999: A standalone utility to process systemd-style tmpfiles.d files
-sys-apps/osinfo-db 20200214: osinfo database files
+sys-apps/osinfo-db 20200214 20200325: osinfo database files
 sys-apps/osinfo-db-tools 1.6.0-r1: Tools for managing the osinfo database
 sys-apps/pacman 5.0.2-r2: Archlinux's binary package manager
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
@@ -17377,7 +17378,7 @@ sys-libs/libhx 3.22-r1 3.24: Platform independent library providing basic system
 sys-libs/libieee1284 0.2.11-r4 0.2.11-r5 0.2.11-r6: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
-sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
+sys-libs/libnih 1.0.3-r3 1.0.3-r4: Light-weight 'standard library' of C functions
 sys-libs/libomp 7.1.0 8.0.1 9.0.1 10.0.0 10.0.0.9999 11.0.0.9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.6.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
@@ -18327,7 +18328,7 @@ x11-misc/sddm 0.15.0 0.18.1-r1: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 1-r1 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
-x11-misc/shared-mime-info 1.10 1.10-r1: The Shared MIME-info Database specification
+x11-misc/shared-mime-info 1.10 1.10-r1 1.15: The Shared MIME-info Database specification
 x11-misc/shutter 0.94.3: Feature-rich screenshot program
 x11-misc/simpleswitcher 20140219 99999999: lightweight EWMH window switcher with features and looks of dmenu
 x11-misc/sisctrl 0.0.20051202 0.0.20051202-r1: tool that allows you to tune SiS drivers from X
