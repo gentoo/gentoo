@@ -7,6 +7,7 @@ IUSE=systemd
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RDEPEND=dev-libs/glib:= systemd? ( sys-apps/systemd:= )
+RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/containers/conmon/archive/7a830be343876ac381c965c7429a7fb9b3d7a609.tar.gz -> conmon-2.0.10.tar.gz
-_md5_=3d347542cc7fbe58ba1071e53ba5e2de
+SRC_URI=https://github.com/containers/conmon/archive/1bddbf7051a973f4a4fecf06faa0c48e82f1e9e1.tar.gz -> conmon-2.0.15.tar.gz
+_md5_=81961263eb7675df999323dd96fccfcf
