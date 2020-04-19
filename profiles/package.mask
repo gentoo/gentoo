@@ -529,12 +529,6 @@ dev-python/libgnomecanvas-python
 dev-python/librsvg-python
 dev-python/pyorbit
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-20)
-# Added in 2009, not bumped since.  Python 2 only, requires dead
-# dev-python/pygtk.  Gone from HOMEPAGE.
-# Removal in 30 days.  Bug #710166.
-sci-electronics/geda-xgsch2pcb
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
