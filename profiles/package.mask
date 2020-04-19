@@ -581,7 +581,6 @@ mail-filter/spambayes
 # Removal in 30 days.  Bug #712120.
 www-apps/trac-accountmanager
 www-apps/trac-mercurial
-www-apps/trac-tags
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-11)
 # The following Mercurial-related tools do not declare support
