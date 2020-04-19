@@ -88,11 +88,6 @@ app-admin/logstash-bin:x-pack - Enable additional features (may need a license)
 app-admin/mcollective:client - Install client utilities
 app-admin/mms-agent:monitoring - Install the monitoring agent
 app-admin/openrc-settingsd:systemd - Use the versions of dbus and polkit files provided by sys-apps/systemd
-app-admin/packagekit-base:command-not-found - Enable packagekit support on shell "command not found"
-app-admin/packagekit-base:consolekit - Use sys-auth/consolekit to get user session
-app-admin/packagekit-base:cron - Install cron script for auto-update
-app-admin/packagekit-base:elogind - Enable sys-auth/elogind support to get user session
-app-admin/packagekit-base:entropy - Enable Entropy backend
 app-admin/pass:X - Use x11-misc/xclip to copy passwords to the clipboard.
 app-admin/pass:dmenu - Add support for x11-misc/dmenu with the 'passmenu' program.
 app-admin/pass:fish-completion - Enable fish completion support.
@@ -273,7 +268,6 @@ app-backup/dar:dar32 - Enables --enable-mode=32 option, which replace infinite b
 app-backup/dar:dar64 - Enables --enable-mode=64 option, which replace infinite by 64 bit integers
 app-backup/dar:gcrypt - Enables strong encryption support
 app-backup/dar:gpg - Enables usage of asymetric crypto algorithms
-app-backup/deja-dup:nautilus - Build gnome-base/nautilus extension
 app-backup/duplicity:s3 - Support for backing up to the Amazon S3 system
 app-backup/rear:udev - Have ReaR start backup when attaching your USB drive.
 app-backup/snapper:lvm - Enable LVM thinprovisioned snapshots support sys-fs/lvm2

@@ -495,10 +495,6 @@ app-admin/needrestart 3.3 3.5 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1 1.1.0.81: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.3_pre141201: real-time metrics for nginx server (and others)
 app-admin/openrc-settingsd 1.0.1-r1: System settings D-Bus service for OpenRC
-app-admin/packagekit 1.1.12: PackageKit Package Manager interface (meta package)
-app-admin/packagekit-base 1.1.12-r1: Manage packages in a secure way using a cross-distro and cross-architecture API
-app-admin/packagekit-gtk 1.1.12: Gtk3 PackageKit backend library
-app-admin/packagekit-qt 1.0.1-r1: Qt PackageKit backend library
 app-admin/pass 1.7.3 9999: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/pass-otp 1.2.0: A pass extension for managing one-time-password (OTP) tokens.
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
@@ -700,7 +696,6 @@ app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote file
 app-backup/consul-backinator 1.6.5: consul backup and restore utility
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.5.11 2.5.18 2.6.5 2.6.9: A full featured backup tool, aimed for disks
-app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.8.09-r1 0.8.11.1596 0.8.11.1596-r1 0.8.12.1612: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2 2.0.3: A shell frontend for duplicity
@@ -2427,7 +2422,6 @@ app-portage/emerge-delta-webrsync 3.7.5 3.7.6: emerge-webrsync using patches to 
 app-portage/epkg 0.4-r1: A simple portage wrapper which works like other package managers
 app-portage/esearch 1.3-r2 9999: Replacement for 'emerge --search' with search-index
 app-portage/etc-proposals 1.4.3-r3: a set of tools for updating gentoo config files
-app-portage/euscan 0.1.1-r2 9999: Ebuild upstream scan utility
 app-portage/euses 2.5.9: look up USE flag descriptions fast
 app-portage/fetchcommandwrapper 0.8.1-r1 0.8.2 0.8.3: Wrapper integrating aria2 into portage's FETCHCOMMAND
 app-portage/flaggie 0.2.1-r1 9999: A smart CLI mangler for package.* files
@@ -8459,7 +8453,7 @@ dev-python/pytest-httpbin 1.0.0: Easily test your HTTP library against a local c
 dev-python/pytest-lazy-fixture 0.6.2: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.3.7 0.5.0: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
-dev-python/pytest-mock 1.11.2 2.0.0 3.0.0: Thin-wrapper around the mock package for easier use with pytest
+dev-python/pytest-mock 1.11.2 2.0.0 3.0.0 3.1.0: Thin-wrapper around the mock package for easier use with pytest
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
@@ -11540,7 +11534,6 @@ gnome-extra/gnome-dvb-daemon 0.2.90 0.2.90-r1: Setup your DVB devices, record an
 gnome-extra/gnome-getting-started-docs 3.32.2 3.34.1: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.30.0 3.32.1 3.34.0: Log viewer for the systemd journal
-gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desktop
 gnome-extra/gnome-power-manager 3.30.0 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
@@ -12977,7 +12970,6 @@ media-libs/portaudio 19.06.00-r1 19.06.00-r2: A free, cross-platform, open-sourc
 media-libs/portmidi 217-r3: Library for real time MIDI input and output
 media-libs/ptex 2.3.2: Per-Face Texture Mapping for Production Rendering
 media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
-media-libs/pyliblo 0.10.0-r1: A Python wrapper for the liblo OSC library
 media-libs/pymemphis 0.2.1-r3: Python bindings for the libmemphis library
 media-libs/qhull 2015.2: Geometry library
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
@@ -13477,7 +13469,6 @@ media-sound/gst123 0.3.5: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
 media-sound/gtick 0.5.4 0.5.4-r1: Metronome application supporting different meters and speeds ranging
 media-sound/gtkguitune 0.8: A guitar tuning program that uses Schmitt-triggering for quick feedback
-media-sound/gtklick 0.6.4-r1: A simple metronome with an easy-to-use GTK interface
 media-sound/guayadeque 0.4.5_p20170110 9999: Music management program designed for all music enthusiasts
 media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
 media-sound/guitarix 0.39.0 9999: Virtual guitar amplifier for Linux
@@ -17361,7 +17352,7 @@ sys-kernel/linux-docs 4.19.114 5.4.31: Developer documentation generated from th
 sys-kernel/linux-firmware 20190815 20190923 20191022 20191215 20200122 20200316 20200413 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.5 5.6: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.4_p6 5.5_p8 5.6_p1 5.6_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.4_p6 5.5_p8 5.6_p1 5.6_p2 5.6_p3: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
