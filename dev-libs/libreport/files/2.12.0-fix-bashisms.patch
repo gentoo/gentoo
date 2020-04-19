@@ -1,0 +1,57 @@
+From fee176e2975b2ccd55773b3d606aaa32b4026ebd Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 19 Apr 2020 11:36:26 +0200
+Subject: [PATCH] Use POSIX expr in place of bashisms
+
+Project-Bug-URL: https://github.com/abrt/libreport/pull/620
+---
+ configure.ac | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0d69b71f..f3fd18d5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -116,8 +116,8 @@ AC_SUBST(XMLRPC_CLIENT_LIBS)
+ # enable bugzilla & deps translations
+ for FILE in `grep -e "#.*ugzilla.*" -e "#.*naconda.*" po/POTFILES.in`
+ do
+-  sed -ie "s,$FILE,${FILE:1}," po/POTFILES.in
+-  sed -ie "\,^${FILE:1}$,d" po/POTFILES.skip
++  sed -ie "s,$FILE,${FILE#\#}," po/POTFILES.in
++  sed -ie "\,^${FILE#\#}$,d" po/POTFILES.skip
+ done
+ else
+ AM_CONDITIONAL(BUILD_BUGZILLA, false)
+@@ -125,7 +125,7 @@ AM_CONDITIONAL(BUILD_BUGZILLA, false)
+ # disablie bugzilla & deps translations
+ for FILE in `grep -e "ugzilla" -e "naconda" po/POTFILES.in`
+ do
+-  if test "${FILE:0:1}" = "#"
++  if test `expr "${FILE}" : .` = "#"
+   then
+     continue
+   fi
+@@ -149,8 +149,8 @@ AM_CONDITIONAL(BUILD_MANTISBT, true)
+ # enable mantisbt & deps translations
+ for FILE in `grep -e "#.*antisbt.*" -e "#.*naconda.*" po/POTFILES.in`
+ do
+-  sed -ie "s,$FILE,${FILE:1}," po/POTFILES.in
+-  sed -ie "\,^${FILE:1}$,d" po/POTFILES.skip
++  sed -ie "s,$FILE,${FILE#\#}," po/POTFILES.in
++  sed -ie "\,^${FILE#\#}$,d" po/POTFILES.skip
+ done
+ else
+ AM_CONDITIONAL(BUILD_MANTISBT, false)
+@@ -158,7 +158,7 @@ AM_CONDITIONAL(BUILD_MANTISBT, false)
+ # disablie mantisbt & deps translations
+ for FILE in `grep -e "antisbt" -e "naconda" po/POTFILES.in`
+ do
+-  if test "${FILE:0:1}" = "#"
++  if test `expr "${FILE}" : .` = "#"
+   then
+     continue
+   fi
+-- 
+2.26.0
+

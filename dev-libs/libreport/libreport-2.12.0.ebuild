@@ -50,6 +50,10 @@ BDEPEND="
 # Tests require python-meh, which is highly redhat-specific.
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-bashisms.patch
+)
+
 src_prepare() {
 	default
 	./gen-version || die # Needed to be run before autoreconf
