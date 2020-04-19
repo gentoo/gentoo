@@ -1739,7 +1739,7 @@ app-eselect/eselect-rails 0.24: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
 app-eselect/eselect-repository 7: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20170723 20190121 20191222: Manages multiple Ruby versions
-app-eselect/eselect-rust 20200101: Eselect module for management of multiple Rust versions
+app-eselect/eselect-rust 20200101 20200419: Eselect module for management of multiple Rust versions
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
 app-eselect/eselect-sh 0.4-r2: Manages the /bin/sh (POSIX shell) symlink
 app-eselect/eselect-sndpeek 1.0.1: Manages the /usr/bin/sndpeek symlink
@@ -2385,7 +2385,7 @@ app-office/skrooge 2.21.1 2.22.1: Personal finances manager, aiming at being sim
 app-office/taskcoach 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
-app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2.12.14 2.12.16 2.12.18 2.12.20 2.12.22: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2.12.14 2.12.16 2.12.18 2.12.20 2.12.22 9999: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.8.2 0.9 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.3.3.860: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
@@ -7419,7 +7419,7 @@ dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different
 dev-python/PyGithub 1.46 1.47: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.13.2-r1 5.14.1-r1: Python bindings for the Qt framework
-dev-python/PyQt5-sip 4.19.19 4.19.20 4.19.21: Private sip module for PyQt5
+dev-python/PyQt5-sip 4.19.19 4.19.21 4.19.22: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.13.2 5.14.0: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.6: Python (ctypes) bindings for SDL2 libraries
@@ -8705,7 +8705,7 @@ dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR libra
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
-dev-python/sip 4.19.19 4.19.20 4.19.21: Python extension module generator for C and C++ libraries
+dev-python/sip 4.19.19 4.19.21 4.19.22: Python extension module generator for C and C++ libraries
 dev-python/six 1.14.0: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
