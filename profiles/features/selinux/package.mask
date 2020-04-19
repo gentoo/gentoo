@@ -66,7 +66,6 @@ app-admin/packagekit-gtk
 app-admin/packagekit-qt
 <app-admin/salt-2018
 <app-admin/webapp-config-1.55
-app-backup/deja-dup
 app-portage/distpatch
 app-portage/euscan
 <app-portage/g-sorcery-0.2.1-r1
