@@ -522,7 +522,6 @@ sci-physics/espresso++
 dev-python/gnome-python-desktop-base
 dev-python/gnome-python-extras-base
 dev-python/gnome-vfs-python
-dev-python/gtkspell-python
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
