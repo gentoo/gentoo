@@ -7418,7 +7418,7 @@ dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.46 1.47: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt5 5.13.2-r1 5.14.1-r1: Python bindings for the Qt framework
+dev-python/PyQt5 5.13.2-r1 5.14.1-r1 5.14.2: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.19 4.19.21 4.19.22: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.13.2 5.14.0: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
