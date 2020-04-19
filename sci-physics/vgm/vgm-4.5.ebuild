@@ -25,7 +25,7 @@ IUSE="doc examples +geant4 +root test"
 # sci-physics/root[c++11] required to match sci-physics/geant
 RDEPEND="
 	sci-physics/clhep:=
-	root? ( sci-physics/root:=[c++11] )
+	root? ( >=sci-physics/root-6.14:=[c++11] )
 	geant4? ( >=sci-physics/geant-4.10.03 )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
