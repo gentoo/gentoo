@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
+# oracle-jdk-bin masked for removal, mask revdep useflag.
+app-forensics/sleuthkit java
+
 # Ulrich Müller <ulm@gentoo.org> (2020-04-15)
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2020-04-17)
 # app-i18n/man-pages-{de,fr,nl} masked for removal.
