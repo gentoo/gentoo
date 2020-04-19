@@ -31,9 +31,9 @@ RDEPEND=">=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND}
-	dev-python/nose[${PYTHON_USEDEP}] )
+	dev-python/pytest[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	nosetests || die
+	esetup.py test || die
 }
