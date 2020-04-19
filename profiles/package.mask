@@ -32,12 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
 # Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
 # requires agreement to restrictive license
 # Revdeps that still depend on oracle variants require javafx
 # Please use icedtea or openjdk instead.
-# Only openjdk:11 provides javafx flag.
+# Removal in 30 days.
 # https://bugs.gentoo.org/681828
 dev-java/oracle-jdk-bin
 dev-java/oracle-jre-bin
