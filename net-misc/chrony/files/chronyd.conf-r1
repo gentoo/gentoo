@@ -9,4 +9,4 @@ CFGFILE="/etc/chrony/chrony.conf"
 # The combination of "-s -r" allows chronyd to perform long term averaging of
 # the gain or loss rate across system reboots and shutdowns.
 
-ARGS=""
+ARGS="-u ntp -F 1"
