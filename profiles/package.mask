@@ -593,14 +593,6 @@ dev-vcs/hgview
 dev-vcs/mercurial-server
 dev-vcs/tortoisehg
 
-# Alexander Tsoy <alexander@tsoy.me> (2020-03-10)
-# media-libs/pyliblo: last commit in 2015, the only revdep is
-# media-sound/gtklick, there is an actively maintained fork named
-# pyliblo3.
-#
-# Removal in 30 days.  Bug #708172.
-media-libs/pyliblo
-
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
 =mail-mta/postfix-3.6*
