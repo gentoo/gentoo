@@ -40,6 +40,7 @@ dev-python/pytest-runner
 # Deprecated GNOME 2 era packages
 # Bugs #640022, #713010
 dev-python/gconf-python
+dev-python/gnome-python-base
 dev-python/pygobject:2
 dev-python/pygtksourceview
 gnome-base/gnome-vfs
