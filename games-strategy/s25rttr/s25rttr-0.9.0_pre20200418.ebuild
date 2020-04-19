@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop xdg cmake
+inherit desktop toolchain-funcs xdg cmake
 
 DESCRIPTION="Open source remake of The Settlers II: Gold Edition (needs original data files)"
 HOMEPAGE="https://www.siedler25.org/"
@@ -97,10 +97,9 @@ src_configure() {
 		-DRTTR_VERSION="${PV}"
 	)
 
-	if use test ; then
-		einfo "Forcing clang due to USE=test."
-		CC=${CHOST}-clang
-		CXX=${CHOST}-clang++
+	if use test && tc-is-gcc; then
+		# Work around libasan and libsandbox both wanting to be first.
+		append-ldflags -static-libasan
 	fi
 
 	cmake_src_configure
