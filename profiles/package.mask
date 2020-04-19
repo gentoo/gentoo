@@ -515,12 +515,6 @@ gnome-base/gnome-desktop:2
 # Removal in 30 days.  Bug #713568.
 sci-physics/espresso++
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-20)
-# Deprecated GNOME libraries, replaced by introspection.  Python 2 only.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #713566.
-dev-python/gnome-python-desktop-base
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
