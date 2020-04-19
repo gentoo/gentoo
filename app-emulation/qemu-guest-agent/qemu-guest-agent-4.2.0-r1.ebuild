@@ -33,7 +33,7 @@ PATCHES=(
 )
 
 src_configure() {
-	tc-export AR LD OBJCOPY
+	tc-export AR LD OBJCOPY RANLIB
 
 	local myconf=(
 		--prefix=/usr
