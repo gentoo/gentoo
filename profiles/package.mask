@@ -456,11 +456,6 @@ app-misc/openastro
 app-misc/openastro-data
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  A few releases behind upstream.
-# Removal in 30 days.  Bug #718222.
-app-i18n/transifex-client
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Discontinued upstream.  Uses old ACMEv1 API.
 # Stuck on Python 3.6.
 # Removal in 30 days.  Bug #718204.
