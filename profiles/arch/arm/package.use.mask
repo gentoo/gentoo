@@ -138,7 +138,6 @@ net-analyzer/zmap mongo
 # Unkeyworded dep masks moved from default/linux.
 app-admin/diamond mongo
 net-libs/gnutls test-full
-mail-client/mutt notmuch
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-03-02)
 # Requires unkeyworded deps
