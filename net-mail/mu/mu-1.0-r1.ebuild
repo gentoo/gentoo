@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools elisp-common
 
 DESCRIPTION="Set of tools to deal with Maildirs, in particular, searching and indexing"
-HOMEPAGE="http://www.djcbsoftware.nl/code/mu/"
+HOMEPAGE="https://www.djcbsoftware.nl/code/mu/"
 SRC_URI="https://github.com/djcb/mu/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -60,7 +60,7 @@ pkg_postinst() {
 	if use emacs; then
 		einfo "To use mu4e you need to configure it in your .emacs file"
 		einfo "See the manual for more information:"
-		einfo "http://www.djcbsoftware.nl/code/mu/mu4e/"
+		einfo "https://www.djcbsoftware.nl/code/mu/mu4e/"
 	fi
 
 	elog "If you upgrade from an older major version,"
