@@ -1,22 +1,23 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 
 inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Python package for convex optimization"
-HOMEPAGE="http://cvxopt.org/"
+HOMEPAGE="http://cvxopt.org/ https://github.com/cvxopt/cvxopt"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc +dsdp examples fftw +glpk gsl"
+IUSE="doc +dsdp examples fftw +glpk gsl test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
+DEPEND="
 	virtual/blas
 	virtual/lapack
 	sci-libs/amd:0=
@@ -28,9 +29,12 @@ RDEPEND="
 	fftw? ( sci-libs/fftw:3.0= )
 	glpk? ( >=sci-mathematics/glpk-4.49:0= )
 	gsl? ( sci-libs/gsl:0= )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	doc? ( dev-python/sphinx )"
+
+RDEPEND="${DEPEND}"
+
+BDEPEND="virtual/pkgconfig
+	doc? ( dev-python/sphinx )
+	test? ( ${RDEPEND} dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	pkg_libs() {
@@ -93,11 +97,9 @@ python_test() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( doc/build/html/. )
-	insinto /usr/share/doc/${PF}
 	distutils-r1_python_install_all
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
-		docompress -x /usr/share/doc/${PF}/examples
+		dodoc -r examples
+		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
 }
