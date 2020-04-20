@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Library for testing asyncio code with pytest"
@@ -26,6 +26,10 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/async_generator[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-3.64[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/pytest-asyncio-0.10.0-py38.patch
+)
 
 python_test() {
 	distutils_install_for_testing
