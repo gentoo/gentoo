@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Orca"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="+braille"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
