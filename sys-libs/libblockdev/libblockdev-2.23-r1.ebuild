@@ -119,4 +119,5 @@ src_install() {
 	if ! use lvm; then
 		rm -f "${ED}"/usr/bin/lvm-cache-stats || die
 	fi
+	python_optimize #718576
 }
