@@ -8256,7 +8256,7 @@ dev-python/publicsuffix 2.20190205: Get a public suffix for a domain name using 
 dev-python/pudb 2018.1: A full-screen, console-based Python debugger
 dev-python/pupynere 1.0.15-r2: Pupynere is a PUre PYthon NEtcdf REader
 dev-python/pure-sasl 0.6.1: High-level SASL client written in pure Python
-dev-python/pushbullet-py 0.11.0: A simple python client for pushbullet.com
+dev-python/pushbullet-py 0.11.0 0.11.0-r1: A simple python client for pushbullet.com
 dev-python/pweave 0.30.3: Scientific report generator and literate programming tool
 dev-python/py 1.8.0: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 2.5.0: Low-level AMQP client for Python (fork of amqplib)
@@ -18633,7 +18633,7 @@ x11-plugins/wmwork 0.2.5-r1: a dockapp that lets you easily track time spent on 
 x11-plugins/wmxkb 1.2.2-r1: Dockable keyboard layout switcher for Window Maker
 x11-plugins/wmxres 1.2-r1: Dock application to select your display mode among those possible
 x11-terms/alacritty 0.4.0 0.4.1 0.4.2 9999: GPU-accelerated terminal emulator
-x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
+x11-terms/aterm 1.0.1-r3 1.0.1-r4: rxvt compatible terminal emulator with transparency support
 x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and feel of the old cathode tube screens
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2 3.34.2: The Gnome Terminal
