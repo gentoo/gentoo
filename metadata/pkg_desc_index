@@ -2767,7 +2767,7 @@ app-text/tessdata_fast 4.0.0: Fast integer versions of trained models for app-te
 app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible with the legacy engine
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
-app-text/texlive 2019-r1: A complete TeX distribution
+app-text/texlive 2019-r1 2020: A complete TeX distribution
 app-text/texlive-core 2019-r10 2019-r11 2020-r1: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
@@ -4668,7 +4668,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.23: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.100 7.0.103 8.5.51 8.5.53 8.5.54 9.0.31 9.0.33 9.0.34: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.100 7.0.103 8.5.51 8.5.53 8.5.54 9.0.33 9.0.34: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -8322,7 +8322,7 @@ dev-python/pygame 1.9.6 1.9.6-r1: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.0.3 1.1.1 1.2.0: Python bindings for libgit2
-dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
+dev-python/pyglet 1.2.4 1.5.3: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.5.2 2.6.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 2.28.6-r55 3.32.1 3.34.0: Python bindings for GObject Introspection
@@ -11168,7 +11168,7 @@ games-puzzle/bastet 0.43.2: a simple, evil, ncurses-based Tetris(R) clone
 games-puzzle/biniax2 1.30-r1: Logic game with arcade and tactics modes
 games-puzzle/braincurses 0.5b-r1 1.1.0: A version of the classic game Mastermind
 games-puzzle/brainparty 0.61-r1: A puzzle-solving, brain-stretching game for all ages
-games-puzzle/brainworkshop 5_beta20180712: Short-term-memory training N-Back game
+games-puzzle/brainworkshop 5_beta20200310: Short-term-memory training N-Back game
 games-puzzle/color-lines 0.6-r1: Color lines game written with SDL with bonus features
 games-puzzle/colorcode 0.8.5: A free advanced MasterMind clone
 games-puzzle/concentration 1.2-r2: The classic memory game with some new life
@@ -17368,7 +17368,7 @@ sys-libs/ldb 2.0.8 2.0.9 2.1.1: An LDAP-like embedded database
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.3 2.13.3-r1 2.13.4: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
-sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
+sys-libs/libblockdev 2.20-r2 2.22 2.23-r1 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27 2.32 2.33: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.10: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
@@ -17915,7 +17915,7 @@ www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.100 7.0.103 8.5.51 8.5.53 8.5.54 9.0.31 9.0.33 9.0.34: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.100 7.0.103 8.5.51 8.5.53 8.5.54 9.0.33 9.0.34: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.5.3 5.1-r1 6.0.3 6.0.3-r1 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17 2.0.17.1 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3 5.2.1 6.0.1 6.1.1 6.2.2-r1 6.3.0 6.3.1 6.3.2: Varnish is a state-of-the-art, high-performance HTTP accelerator
