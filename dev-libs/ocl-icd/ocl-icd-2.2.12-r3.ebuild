@@ -19,12 +19,9 @@ IUSE="+khronos-headers"
 
 BDEPEND="${RUBY_DEPS}"
 DEPEND="dev-util/opencl-headers"
-# nvidia-drivers block is hopefully temporary, until it has ceased
-# to depend on eselect-opencl
 RDEPEND="${DEPEND}
 	!app-eselect/eselect-opencl
-	!dev-libs/opencl-icd-loader
-	!x11-drivers/nvidia-drivers"
+	!dev-libs/opencl-icd-loader"
 
 PATCHES=("${FILESDIR}"/${P}-gcc-10.patch)
 
