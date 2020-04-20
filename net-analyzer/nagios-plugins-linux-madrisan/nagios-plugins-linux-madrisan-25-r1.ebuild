@@ -22,7 +22,11 @@ RDEPEND="${DEPEND}"
 
 # https://github.com/madrisan/nagios-plugins-linux/issues/48
 # Will be in the next release
-PATCHES=( "${FILESDIR}/${P}-fix-fno-common.patch" )
+# https://github.com/madrisan/nagios-plugins-linux/pull/52
+PATCHES=(
+	"${FILESDIR}/${P}-fix-fno-common.patch"
+	"${FILESDIR}/${P}-fix-musl-build.patch"
+)
 
 S="${WORKDIR}/${MY_P}"
 
