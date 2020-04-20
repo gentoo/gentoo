@@ -17,6 +17,7 @@ LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="cacert utils"
+# pkg-config called by nss-config -> virtual/pkgconfig in RDEPEND
 RDEPEND="
 	>=dev-libs/nspr-${NSPR_VER}[${MULTILIB_USEDEP}]
 	>=dev-db/sqlite-3.8.2[${MULTILIB_USEDEP}]
