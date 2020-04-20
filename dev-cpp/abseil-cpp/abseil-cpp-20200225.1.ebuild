@@ -34,8 +34,8 @@ src_prepare() {
 		-e '/"-march=armv8-a+crypto"/d' \
 		absl/copts/copts.py || die
 
-		# now generate cmake files
-		absl/copts/generate_copts.py || die
+	# now generate cmake files
+	absl/copts/generate_copts.py || die
 }
 
 src_configure() {
