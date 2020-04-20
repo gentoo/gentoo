@@ -202,13 +202,15 @@ src_install() {
 	# Provide another link for legacy FSH
 	dosym ../sbin/sendmail /usr/$(get_libdir)/sendmail
 
-	# Install qshape, posttls-finger and collate
+	# Install qshape, posttls-finger and collate and tlstype
 	dobin auxiliary/qshape/qshape.pl
 	doman man/man1/qshape.1
 	dobin bin/posttls-finger
 	doman man/man1/posttls-finger.1
 	dobin auxiliary/collate/collate.pl
 	newdoc auxiliary/collate/README README.collate
+	dobin auxiliary/collate/tlstype.pl
+	dodoc auxiliary/collate/README.tlstype
 
 	# Performance tuning tools and their manuals
 	dosbin bin/smtp-{source,sink} bin/qmqp-{source,sink}
