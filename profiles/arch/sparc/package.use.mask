@@ -2,7 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
+# test dependencies for USE=gstreamer not keyworded on sparc
+app-misc/tracker-miners test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # dependencies not yet keyworded
+dev-ruby/activesupport test
 dev-ruby/http test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
