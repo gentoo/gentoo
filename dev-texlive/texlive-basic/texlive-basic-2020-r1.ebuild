@@ -5,7 +5,7 @@ EAPI="7"
 
 TEXLIVE_MODULE_CONTENTS="amsfonts bibtex cm colorprofiles ec enctex etex etex-pkg graphics-def hyph-utf8 hyphenex ifplatform iftex knuth-lib knuth-local lua-alt-getopt luahbtex luatex makeindex metafont mflogo mfware modes pdftex plain tex tex-ini-files texlive-common texlive-docindex texlive-en texlive-msg-translations tlshell unicode-data updmap-map collection-basic
 "
-TEXLIVE_MODULE_DOC_CONTENTS="amsfonts.doc bibtex.doc cm.doc colorprofiles.doc ec.doc enctex.doc etex.doc etex-pkg.doc graphics-def.doc hyph-utf8.doc ifplatform.doc iftex.doc lua-alt-getopt.doc luahbtex.doc luatex.doc makeindex.doc metafont.doc mflogo.doc mfware.doc modes.doc pdftex.doc tex.doc tex-ini-files.doc texlive-common.doc texlive-docindex.doc texlive-en.doc texlive-scripts.doc tlshell.doc unicode-data.doc "
+TEXLIVE_MODULE_DOC_CONTENTS="amsfonts.doc bibtex.doc cm.doc colorprofiles.doc ec.doc enctex.doc etex.doc etex-pkg.doc graphics-def.doc hyph-utf8.doc ifplatform.doc iftex.doc lua-alt-getopt.doc luahbtex.doc luatex.doc makeindex.doc metafont.doc mflogo.doc mfware.doc modes.doc pdftex.doc tex.doc tex-ini-files.doc texlive-common.doc texlive-docindex.doc texlive-en.doc tlshell.doc unicode-data.doc "
 TEXLIVE_MODULE_SRC_CONTENTS="amsfonts.source hyph-utf8.source hyphenex.source ifplatform.source mflogo.source "
 TEXLIVE_MODULE_OPTIONAL_ENGINE="luajittex"
 inherit  texlive-module
