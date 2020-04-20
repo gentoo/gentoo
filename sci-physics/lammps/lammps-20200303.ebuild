@@ -41,7 +41,7 @@ DEPEND="
 	sci-libs/fftw:3.0
 	netcdf? ( sci-libs/netcdf )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
-	kokkos? ( >=dev-cpp/kokkos-3.0.00 )
+	kokkos? ( =dev-cpp/kokkos-3.0* )
 	dev-cpp/eigen:3
 	"
 RDEPEND="${DEPEND}"
