@@ -30,5 +30,6 @@ RDEPEND="dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 S=${WORKDIR}/${MY_P}
 
 python_prepare_all() {
+	sed -e 's/"pytest-runner"//' -i setup.py || die
 	distutils-r1_python_prepare_all
 }
