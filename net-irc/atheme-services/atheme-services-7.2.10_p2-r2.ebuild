@@ -27,7 +27,9 @@ RDEPEND="
 	perl? ( dev-lang/perl )
 	pcre? ( dev-libs/libpcre )
 	ssl? ( dev-libs/openssl:0= )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+# 'dev-vcs/git' required as per bug #665802
+BDEPEND="
 	dev-vcs/git
 	virtual/pkgconfig"
 
