@@ -31,7 +31,7 @@ TL_CORE_BINEXTRA_MODULES="
 	pdflatexpicscale pdftex-quiet pdfxup pdftosrc pfarrei pkfix pkfix-helper purifyeps
 	seetexk srcredact sty2dtx synctex tex4ebook texcount texdef texdiff texdirflatten
 	texdoc texfot texliveonfly texlive-scripts-extra texloganalyser texosquery texplate
-	texware tie tpic2pdftex typeoutfileinfo web xpdfopen collection-binextra
+	texware tie tpic2pdftex typeoutfileinfo web xindy xindex xpdfopen collection-binextra
 	"
 TL_CORE_BINEXTRA_DOC_MODULES="
 	a2ping.doc adhocfilelist.doc arara.doc asymptote.doc bundledoc.doc
@@ -47,7 +47,7 @@ TL_CORE_BINEXTRA_DOC_MODULES="
 	sty2dtx.doc synctex.doc tex4ebook.doc texcount.doc texdef.doc texdiff.doc
 	texdirflatten.doc texdoc.doc texfot.doc texliveonfly.doc texlive-scripts-extra.doc
 	texloganalyser.doc texosquery.doc texware.doc tie.doc tpic2pdftex.doc typeoutfileinfo.doc
-	texplate.doc web.doc xpdfopen.doc
+	texplate.doc web.doc xindy.doc xindex.doc xpdfopen.doc
 "
 TL_CORE_BINEXTRA_SRC_MODULES="
 	adhocfilelist.source arara.source checklistings.source clojure-pamphlet.source
@@ -86,6 +86,7 @@ MODULAR_X_DEPEND="X? (
 	)"
 
 COMMON_DEPEND="${MODULAR_X_DEPEND}
+	!app-text/xindy
 	!~dev-texlive/texlive-basic-2019
 	!~dev-texlive/texlive-fontutils-2019
 	sys-libs/zlib
@@ -337,6 +338,9 @@ src_install() {
 	# Ditto for pdftex
 	mv "${ED}/usr/bin/pdftex" "${ED}/usr/bin/pdftex-${P}" || die
 	dosym "pdftex-${P}" /usr/bin/pdftex
+
+	# Make xindex availible
+	dosym ../share/texmf-dist/scripts/xindy/xindy.pl /usr/bin/xindy
 }
 
 pkg_postinst() {
