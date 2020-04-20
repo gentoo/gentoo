@@ -22,7 +22,7 @@ SRC_URI="
 "
 
 EMULTILIB_PKG="true"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 
@@ -33,7 +33,6 @@ REQUIRED_USE="
 "
 
 COMMON="
-	app-eselect/eselect-opencl
 	driver? ( kernel_linux? ( acct-group/video ) )
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
 	tools? (
@@ -71,6 +70,7 @@ RDEPEND="
 	${COMMON}
 	acpi? ( sys-power/acpid )
 	tools? ( !media-video/nvidia-settings )
+	uvm? ( >=virtual/opencl-3 )
 	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	X? (
 		<x11-base/xorg-server-1.20.99:=
@@ -391,6 +391,8 @@ src_install() {
 
 	dobin ${NV_OBJ}/nvidia-bug-report.sh
 
+	dobin nvidia-sleep.sh
+
 	if has_multilib_profile && use multilib; then
 		local OABI=${ABI}
 		for ABI in $(get_install_abis); do
@@ -542,7 +544,6 @@ pkg_postinst() {
 	if ! use libglvnd; then
 		use X && "${ROOT}"/usr/bin/eselect opengl set --use-old nvidia
 	fi
-	"${ROOT}"/usr/bin/eselect opencl set --use-old nvidia
 
 	readme.gentoo_print_elog
 

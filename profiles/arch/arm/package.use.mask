@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
+# Not keyworded on arm
+net-misc/whois xcrypt
+
 # Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
 # Dependency has no stable keyword
 # and as for now we have only stable mate versions

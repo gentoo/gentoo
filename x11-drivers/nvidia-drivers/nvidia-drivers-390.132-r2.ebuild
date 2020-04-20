@@ -38,7 +38,6 @@ REQUIRED_USE="
 "
 
 COMMON="
-	app-eselect/eselect-opencl
 	driver? ( kernel_linux? ( acct-group/video ) )
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
 	tools? (
@@ -76,6 +75,7 @@ RDEPEND="
 	${COMMON}
 	acpi? ( sys-power/acpid )
 	tools? ( !media-video/nvidia-settings )
+	uvm? ( >=virtual/opencl-3 )
 	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	X? (
 		<x11-base/xorg-server-1.20.99:=
@@ -547,7 +547,6 @@ pkg_postinst() {
 	if ! use libglvnd; then
 		use X && "${ROOT}"/usr/bin/eselect opengl set --use-old nvidia
 	fi
-	"${ROOT}"/usr/bin/eselect opencl set --use-old nvidia
 
 	readme.gentoo_print_elog
 
