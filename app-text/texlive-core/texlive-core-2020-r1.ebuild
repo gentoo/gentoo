@@ -339,7 +339,7 @@ src_install() {
 	mv "${ED}/usr/bin/pdftex" "${ED}/usr/bin/pdftex-${P}" || die
 	dosym "pdftex-${P}" /usr/bin/pdftex
 
-	# Make xindex availible
+	# Make xindy available
 	dosym ../share/texmf-dist/scripts/xindy/xindy.pl /usr/bin/xindy
 }
 
