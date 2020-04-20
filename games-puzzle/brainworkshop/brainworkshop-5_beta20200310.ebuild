@@ -1,12 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
-inherit eutils gnome2-utils python-r1
+PYTHON_COMPAT=( python3_{7,8} )
 
-COMMIT="c5343cb3d828e8181ffff8249f683fce2fcca6db"
+inherit desktop eutils python-single-r1 xdg
+
+COMMIT="ea817f7e163c4fb07a60b2066c694cba92d23818"
 DESCRIPTION="Short-term-memory training N-Back game"
 HOMEPAGE="https://github.com/samcv/brainworkshop"
 SRC_URI="https://github.com/samcv/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
@@ -15,9 +16,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
-	|| ( >=dev-python/pyglet-1.1.4[${PYTHON_USEDEP},openal]
-		 >=dev-python/pyglet-1.1.4[${PYTHON_USEDEP},alsa] )"
+RDEPEND="
+	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		>=dev-python/pyglet-1.5[${PYTHON_USEDEP},sound]
+	')
+"
+
+BDEPEND="
+	${PYTHON_DEPS}
+"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
@@ -35,8 +43,7 @@ src_prepare() {
 }
 
 src_install() {
-	newbin ${PN}.pyw ${PN}
-	python_replicate_script "${ED}"usr/bin/${PN}
+	python_newscript ${PN}.pyw ${PN}
 
 	insinto /usr/share/${PN}
 	doins -r res/*
@@ -46,7 +53,3 @@ src_install() {
 	newicon -s 48 res/misc/brain/brain.png ${PN}.png
 	make_desktop_entry ${PN} "Brain Workshop"
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
