@@ -9,7 +9,7 @@
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
 # media-libs/libvpx is not keyworded, bug #698956
-system-vpx
+system-libvpx
 vpx
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)

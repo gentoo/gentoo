@@ -156,10 +156,6 @@ sci-geosciences/gpsbabel gui
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
 
-# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
-# unkeyworded notmuch dependency, bug #587560
-mail-client/mutt notmuch
-
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # Enable numa support on supported architectures
 dev-db/mysql -numa

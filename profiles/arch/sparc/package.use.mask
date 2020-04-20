@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
+# dependencies not yet keyworded
+dev-ruby/http test
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
 # dev-ruby/asciidoctor is not keyworded on sparc
 net-misc/chrony html
@@ -204,10 +208,6 @@ dev-libs/hiredis test
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
-
-# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
-# unkeyworded notmuch dependency, bug #587560
-mail-client/mutt notmuch
 
 # Michał Górny <mgorny@gentoo.org> (2016-11-18)
 # libomp does not support SPARC, #600148.
