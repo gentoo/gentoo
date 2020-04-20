@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit pam systemd toolchain-funcs
 
-MY_PV="${PV/_pre/-}"
+inherit flag-o-matic pam systemd toolchain-funcs
+
+MY_PV="${PV/_rc/-RC}"
 MY_SRC="${PN}-${MY_PV}"
-MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
+MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
@@ -16,7 +17,7 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
+IUSE="+berkdb cdb dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND=">=dev-libs/libpcre-3.4
 	dev-lang/perl
@@ -167,6 +168,19 @@ src_configure() {
 		fi
 	fi
 
+	# Robin H. Johnson <robbat2@gentoo.org> 17/Nov/2006
+	# Fix because infra boxes hit 2Gb .db files that fail a 32-bit fstat signed check.
+	mycc="${mycc} -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE"
+	filter-lfs-flags
+
+	# Workaround for bug #76512
+	if use hardened; then
+		[[ "$(gcc-version)" == "3.4" ]] && replace-flags -O? -Os
+	fi
+
+	# Remove annoying C++ comment style warnings - bug #378099
+	append-flags -Wno-comment
+
 	sed -i -e "/^RANLIB/s/ranlib/$(tc-getRANLIB)/g" "${S}"/makedefs
 	sed -i -e "/^AR/s/ar/$(tc-getAR)/g" "${S}"/makedefs
 
@@ -263,6 +277,17 @@ src_install() {
 	fi
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
+}
+
+pkg_preinst() {
+	if has_version '<mail-mta/postfix-3.4'; then
+		elog
+		elog "Postfix-3.4 introduces a new master.cf service 'postlog'"
+		elog "with type 'unix-dgram' that is used by the new postlogd(8) daemon."
+		elog "Before backing out to an older Postfix version, edit the master.cf"
+		elog "file and remove the postlog entry."
+		elog
+	fi
 }
 
 pkg_postinst() {
