@@ -4,10 +4,10 @@ DEPEND=>=dev-libs/glib-2.28:2 >=net-libs/gupnp-1.2.0:0=
 DESCRIPTION=utility library for higher level dLeyna libraries
 EAPI=7
 HOMEPAGE=https://01.org/dleyna/
-KEYWORDS=~amd64 ~arm64 ~x86
+KEYWORDS=amd64 ~arm64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.28:2 >=net-libs/gupnp-1.2.0:0=
 SLOT=1.0/4
 SRC_URI=https://01.org/sites/default/files/downloads/dleyna/dleyna-core-0.6.0.tar_3.gz -> dleyna-core-0.6.0.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ecdde6c0c2d0ab2555e248f32ebe7b74
+_md5_=cff94efda78b324331ffda8261c35d80
