@@ -1,0 +1,26 @@
+From 026fb9b1fbfa8040815ac524b6002f93b6411d45 Mon Sep 17 00:00:00 2001
+From: Jimi Huotari <chiitoo@gentoo.org>
+Date: Mon, 20 Apr 2020 22:58:48 +0300
+Subject: [PATCH] Fix build against Qt 5.15.
+
+Due to a change in Qt, 'QPainterPath' needs to be explicitly
+included.
+---
+ src/theme.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/theme.cpp b/src/theme.cpp
+index 4708338..59551ea 100644
+--- a/src/theme.cpp
++++ b/src/theme.cpp
+@@ -27,6 +27,7 @@
+ #include <QFile>
+ #include <QImageReader>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QSettings>
+ #include <QTextEdit>
+ #include <QUuid>
+-- 
+2.26.1
+
