@@ -23,7 +23,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.38:2

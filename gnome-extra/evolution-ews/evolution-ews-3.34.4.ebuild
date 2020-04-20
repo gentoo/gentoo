@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 # libical-glib currently (2020-02-29) oddly behind USE=introspection
