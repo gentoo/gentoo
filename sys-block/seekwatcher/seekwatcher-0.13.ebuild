@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_6 )
 
@@ -17,10 +18,16 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="dev-python/cython"
+BDEPEND="$(python_gen_cond_dep '
+		dev-python/cython[${PYTHON_MULTI_USEDEP}]
+	')
+"
+
 RDEPEND="
-	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	')
 	sys-block/blktrace
 "
 
