@@ -18,12 +18,15 @@ else
 fi
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="iconv idn nls"
+IUSE="iconv idn nls xcrypt"
 RESTRICT="test" #59327
 
-RDEPEND="iconv? ( virtual/libiconv )
+RDEPEND="
+	iconv? ( virtual/libiconv )
 	idn? ( net-dns/libidn2:= )
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+	xcrypt? ( >=sys-libs/libxcrypt-4.1 )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
@@ -36,6 +39,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.2-config-file.patch
 	"${FILESDIR}"/${PN}-5.3.0-libidn_automagic.patch
+	"${FILESDIR}"/${PN}-5.5.6-libxcrypt_automagic.patch
 )
 
 src_prepare() {
@@ -57,6 +61,7 @@ src_compile() {
 	unset HAVE_ICONV HAVE_LIBIDN
 	use iconv && export HAVE_ICONV=1
 	use idn && export HAVE_LIBIDN=1
+	use xcrypt && export HAVE_XCRYPT=1
 	tc-export CC
 	emake CFLAGS="${CFLAGS} ${CPPFLAGS}"
 }
