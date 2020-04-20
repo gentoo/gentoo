@@ -15,6 +15,9 @@
 			applications require at runtime to detect or open files. Warning:
 			do not disable this flag unless installing on a headless server.
 		</flag>
+		<flag name="nls">
+			Enable native language support (translations)
+		</flag>
 		<flag name="systemtap">
 			Build support for profiling and tracing using
 			<pkg>dev-util/systemtap</pkg>

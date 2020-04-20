@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-IUSE="dbus debug elibc_glibc fam gtk-doc kernel_linux +mime selinux static-libs systemtap test utils xattr"
+IUSE="dbus debug elibc_glibc fam gtk-doc kernel_linux +mime +nls selinux static-libs systemtap test utils xattr"
 RESTRICT="!test? ( test )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
@@ -168,7 +168,7 @@ multilib_src_configure() {
 		-Dgtk_doc=$(multilib_native_usex gtk-doc true false)
 		$(meson_use fam)
 		-Dinstalled_tests=false
-		-Dnls=enabled
+		-Dnls=$(usex nls enabled disabled)
 		-Doss_fuzz=disabled
 	)
 	meson_src_configure
