@@ -72,7 +72,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake-utils_src_compile
-	use doc && multilib_is_native_abi && emake apidoc
+	use doc && multilib_is_native_abi && cd "${S}" && emake apidoc
 }
 
 multilib_src_test() {
