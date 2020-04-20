@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
 # Copyright (c) 2008 Saleem Abdulrasool <compnerd@compnerd.org>
-# Copyright 2013-2020 Gentoo Authors
+# Copyright 2013-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 description="NetworkManager daemon. The service is marked as started only \
@@ -10,12 +10,6 @@ depend() {
 	need dbus
 	use consolekit
 	provide net
-}
-
-start_pre() {
-	# Make sure we have /run/NetworkManager available or else
-	# service is seen as crashed by openrc because of missing pidfile
-	checkpath -q -d /run/NetworkManager
 }
 
 start() {
