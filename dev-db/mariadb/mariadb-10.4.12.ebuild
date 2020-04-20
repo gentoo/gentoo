@@ -8,7 +8,7 @@ SUBSLOT="18"
 JAVA_PKG_OPT_USE="jdbc"
 
 inherit eutils systemd flag-o-matic prefix toolchain-funcs \
-	java-pkg-opt-2 cmake
+	multiprocessing java-pkg-opt-2 cmake
 
 SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz "
 
@@ -112,8 +112,10 @@ BDEPEND="virtual/yacc
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 "
 DEPEND="static? ( sys-libs/ncurses[static-libs] )
-	server? ( extraengine? ( jdbc? ( >=virtual/jdk-1.6 ) )
-		test? ( acct-group/mysql acct-user/mysql ) )
+	server? (
+		extraengine? ( jdbc? ( >=virtual/jdk-1.6 ) )
+		test? ( acct-group/mysql acct-user/mysql )
+	)
 	${COMMON_DEPEND}"
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
@@ -130,27 +132,87 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 		!prefix? ( dev-db/mysql-init-scripts acct-group/mysql acct-user/mysql )
 		extraengine? ( jdbc? ( >=virtual/jre-1.6 ) )
 	)
-	perl? ( !dev-db/mytop
+	perl? (
+		!dev-db/mytop
 		virtual/perl-Getopt-Long
 		dev-perl/TermReadKey
 		virtual/perl-Term-ANSIColor
-		virtual/perl-Time-HiRes )
+		virtual/perl-Time-HiRes
+	)
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
 	 server? ( ~virtual/mysql-5.6[static=] )"
 
+mysql_init_vars() {
+	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mariadb"}
+	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
+	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="${EPREFIX}/var/lib/mysql"}
+	MY_LOGDIR=${MY_LOGDIR="${EPREFIX}/var/log/mysql"}
+
+	if [[ -z "${MY_DATADIR}" ]] ; then
+		MY_DATADIR=""
+		if [[ -f "${MY_SYSCONFDIR}/my.cnf" ]] ; then
+			MY_DATADIR=$(my_print_defaults mysqld 2>/dev/null \
+				| sed -ne '/datadir/s|^--datadir=||p' \
+				| tail -n1)
+			if [[ -z "${MY_DATADIR}" ]] ; then
+				MY_DATADIR=$(grep ^datadir "${MY_SYSCONFDIR}/my.cnf" \
+				| sed -e 's/.*=\s*//' \
+				| tail -n1)
+			fi
+		fi
+		if [[ -z "${MY_DATADIR}" ]] ; then
+			MY_DATADIR="${MY_LOCALSTATEDIR}"
+			einfo "Using default MY_DATADIR"
+		fi
+		elog "MySQL MY_DATADIR is ${MY_DATADIR}"
+
+		if [[ -z "${PREVIOUS_DATADIR}" ]] ; then
+			if [[ -e "${MY_DATADIR}" ]] ; then
+				# If you get this and you're wondering about it, see bug #207636
+				elog "MySQL datadir found in ${MY_DATADIR}"
+				elog "A new one will not be created."
+				PREVIOUS_DATADIR="yes"
+			else
+				PREVIOUS_DATADIR="no"
+			fi
+			export PREVIOUS_DATADIR
+		fi
+	else
+		if [[ ${EBUILD_PHASE} == "config" ]]; then
+			local new_MY_DATADIR
+			new_MY_DATADIR=$(my_print_defaults mysqld 2>/dev/null \
+				| sed -ne '/datadir/s|^--datadir=||p' \
+				| tail -n1)
+
+			if [[ ( -n "${new_MY_DATADIR}" ) && ( "${new_MY_DATADIR}" != "${MY_DATADIR}" ) ]]; then
+				ewarn "MySQL MY_DATADIR has changed"
+				ewarn "from ${MY_DATADIR}"
+				ewarn "to ${new_MY_DATADIR}"
+				MY_DATADIR="${new_MY_DATADIR}"
+			fi
+		fi
+	fi
+
+	export MY_SHAREDSTATEDIR MY_SYSCONFDIR
+	export MY_LOCALSTATEDIR MY_LOGDIR
+	export MY_DATADIR
+}
+
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
 		local GCC_MAJOR_SET=$(gcc-major-version)
 		local GCC_MINOR_SET=$(gcc-minor-version)
+
 		if use tokudb && [[ ${GCC_MAJOR_SET} -lt 4 || \
 			${GCC_MAJOR_SET} -eq 4 && ${GCC_MINOR_SET} -lt 7 ]] ; then
 			eerror "${PN} with tokudb needs to be built with gcc-4.7 or later."
 			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
 			die
 		fi
+
 		# Bug 565584.  InnoDB now requires atomic functions introduced with gcc-4.7 on
 		# non x86{,_64} arches
 		if ! use amd64 && ! use x86 && [[ ${GCC_MAJOR_SET} -lt 4 || \
@@ -159,82 +221,19 @@ pkg_setup() {
 			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
 			die
 		fi
-	fi
-	java-pkg-opt-2_pkg_setup
-	if has test ${FEATURES} && \
-		use server && ! has userpriv ${FEATURES} ; then
-			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
-	fi
 
-}
+		if has test ${FEATURES} ; then
+			# Bug #213475 - MySQL _will_ object strenuously if your machine is named
+			# localhost. Also causes weird failures.
+			[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-pkg_preinst() {
-	java-pkg-opt-2_pkg_preinst
-}
-
-pkg_postinst() {
-	# Make sure the vars are correctly initialized
-	mysql_init_vars
-
-	# Create log directory securely if it does not exist
-	[[ -d "${ROOT}/${MY_LOGDIR}" ]] || install -d -m0750 -o mysql -g mysql "${ROOT}/${MY_LOGDIR}"
-
-	if use server ; then
-		if use pam; then
-			einfo
-			elog "This install includes the PAM authentication plugin."
-			elog "To activate and configure the PAM plugin, please read:"
-			elog "https://mariadb.com/kb/en/mariadb/pam-authentication-plugin/"
-			einfo
-			chown mysql:mysql "${EROOT}/usr/$(get_libdir)/mariadb/plugin/auth_pam_tool_dir" || die
-		fi
-
-		if [[ -z "${REPLACING_VERSIONS}" ]] ; then
-			einfo
-			elog "You might want to run:"
-			elog "\"emerge --config =${CATEGORY}/${PF}\""
-			elog "if this is a new install."
-			elog
-			elog "If you are switching server implentations, you should run the"
-			elog "mysql_upgrade tool."
-			einfo
-		else
-			einfo
-			elog "If you are upgrading major versions, you should run the"
-			elog "mysql_upgrade tool."
-			einfo
-		fi
-
-		if use galera ; then
-			einfo
-			elog "Be sure to edit the my.cnf file to activate your cluster settings."
-			elog "This should be done after running \"emerge --config =${CATEGORY}/${PF}\""
-			elog "The first time the cluster is activated, you should add"
-			elog "--wsrep-new-cluster to the options in /etc/conf.d/mysql for one node."
-			elog "This option should then be removed for subsequent starts."
-			einfo
-			if [[ -n "${REPLACING_VERSIONS}" ]] ; then
-				local rver
-				for rver in ${REPLACING_VERSIONS} ; do
-					if ver_test "${rver}" -lt "10.4.0" ; then
-						ewarn "Upgrading galera from a previous version requires admin restart of the entire cluster."
-						ewarn "Please refer to https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-104/#galera-4"
-						ewarn "for more information"
-					fi
-				done
+			if ! has userpriv ${FEATURES} ; then
+				die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 			fi
 		fi
 	fi
 
-	# Note about configuration change
-	einfo
-	elog "This version of mariadb reorganizes the configuration from a single my.cnf"
-	elog "to several files in /etc/mysql/${PN}.d."
-	elog "Please backup any changes you made to /etc/mysql/my.cnf"
-	elog "and add them as a new file under /etc/mysql/${PN}.d with a .cnf extension."
-	elog "You may have as many files as needed and they are read alphabetically."
-	elog "Be sure the options have the appropriate section headers, i.e. [mysqld]."
-	einfo
+	java-pkg-opt-2_pkg_setup
 }
 
 src_unpack() {
@@ -517,6 +516,134 @@ src_compile() {
 	cmake_src_compile
 }
 
+# Official test instructions:
+# USE='extraengine perl server' \
+# FEATURES='test userpriv' \
+# ebuild mariadb-X.X.XX.ebuild \
+# digest clean package
+src_test() {
+	_disable_test() {
+		local rawtestname bug reason
+		rawtestname="${1}" ; shift
+		bug="${1}" ; shift
+		reason="${@}"
+		ewarn "test '${rawtestname}' disabled: '${reason}' (BUG#${bug})"
+		echo "${rawtestname} : BUG#${bug} ${reason}" >> "${T}/disabled.def"
+	}
+
+	local TESTDIR="${BUILD_DIR}/mysql-test"
+	local retstatus_unit
+	local retstatus_tests
+
+	if ! use server ; then
+		einfo "Skipping server tests due to minimal build."
+		return 0
+	fi
+
+	einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
+
+	# Run CTest (test-units)
+	cmake_src_test
+	retstatus_unit=$?
+
+	# Ensure that parallel runs don't die
+	export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
+
+	if [[ -z "${MTR_PARALLEL}" ]] ; then
+		local -x MTR_PARALLEL=$(makeopts_jobs)
+
+		if [[ ${MTR_PARALLEL} -gt 4 ]] ; then
+			# Running multiple tests in parallel usually require higher ulimit
+			# and fs.aio-max-nr setting. In addition, tests like main.multi_update
+			# are known to hit timeout when system is busy.
+			# To avoid test failure we will limit MTR_PARALLEL to 4 instead of
+			# using "auto".
+			local info_msg="Parallel MySQL test suite jobs limited to 4 (MAKEOPTS=${MTR_PARALLEL})"
+			info_msg+=" to avoid test failures. Set MTR_PARALLEL if you know what you are doing!"
+			einfo "${info_msg}"
+			unset info_msg
+			MTR_PARALLEL=4
+		fi
+	else
+		einfo "MTR_PARALLEL is set to '${MTR_PARALLEL}'"
+	fi
+
+	# Try to increase file limits to increase test coverage
+	if ! ulimit -n 16500 1>/dev/null 2>&1 ; then
+		# Upper limit comes from parts.partition_* tests
+		ewarn "For maximum test coverage please raise open file limit to 16500 (ulimit -n 16500) before calling the package manager."
+
+		if ! ulimit -n 4162 1>/dev/null 2>&1 ; then
+			# Medium limit comes from '[Warning] Buffered warning: Could not increase number of max_open_files to more than 3000 (request: 4162)'
+			ewarn "For medium test coverage please raise open file limit to 4162 (ulimit -n 4162) before calling the package manager."
+
+			if ! ulimit -n 3000 1>/dev/null 2>&1 ; then
+				ewarn "For minimum test coverage please raise open file limit to 3000 (ulimit -n 3000) before calling the package manager."
+			else
+				einfo "Will run test suite with open file limit set to 3000 (minimum test coverage)."
+			fi
+		else
+			einfo "Will run test suite with open file limit set to 4162 (medium test coverage)."
+		fi
+	else
+		einfo "Will run test suite with open file limit set to 16500 (best test coverage)."
+	fi
+
+	# create directories because mysqladmin might run out of order
+	mkdir -p "${T}"/var-tests{,/log} || die
+
+	cp "${S}"/mysql-test/unstable-tests "${T}/disabled.def" || die
+
+	local -a disabled_tests
+	disabled_tests+=( "compat/oracle.plugin;0;Needs example plugin which Gentoo disables" )
+	disabled_tests+=( "main.explain_non_select;0;Sporadically failing test" )
+	disabled_tests+=( "main.func_time;0;Dependent on time test was written" )
+	disabled_tests+=( "main.plugin_auth;0;Needs client libraries built" )
+	disabled_tests+=( "main.stat_tables;0;Sporadically failing test" )
+	disabled_tests+=( "main.stat_tables_innodb;0;Sporadically failing test" )
+	disabled_tests+=( "mariabackup.*;0;Broken test suite" )
+	disabled_tests+=( "plugins.auth_ed25519;0;Needs client libraries built" )
+	disabled_tests+=( "plugins.cracklib_password_check;0;False positive due to varying policies" )
+	disabled_tests+=( "plugins.two_password_validations;0;False positive due to varying policies" )
+	disabled_tests+=( "roles.acl_statistics;0;False positive due to a user count mismatch caused by previous test" )
+
+	if ! use latin1 ; then
+		disabled_tests+=( "funcs_1.is_columns_mysql;0;Requires USE=latin1" )
+		disabled_tests+=( "main.information_schema;0;Requires USE=latin1" )
+		disabled_tests+=( "main.system_mysql_db;0;Requires USE=latin1" )
+	fi
+
+	local test_infos_str test_infos_arr
+	for test_infos_str in "${disabled_tests[@]}" ; do
+		IFS=';' read -r -a test_infos_arr <<< "${test_infos_str}"
+
+		if [[ ${#test_infos_arr[@]} != 3 ]] ; then
+			die "Invalid test data set, not matching format: ${test_infos_str}"
+		fi
+
+		_disable_test "${test_infos_arr[0]}" "${test_infos_arr[1]}" "${test_infos_arr[2]}"
+	done
+	unset test_infos_str test_infos_arr
+
+	# run mysql-test tests
+	pushd "${TESTDIR}" &>/dev/null || die
+	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
+	retstatus_tests=$?
+
+	popd &>/dev/null || die
+
+	# Cleanup is important for these testcases.
+	pkill -9 -f "${S}/ndb" 2>/dev/null
+	pkill -9 -f "${S}/sql" 2>/dev/null
+
+	local failures=""
+	[[ $retstatus_unit -eq 0 ]] || failures="${failures} test-unit"
+	[[ $retstatus_tests -eq 0 ]] || failures="${failures} tests"
+
+	[[ -z "$failures" ]] || die "Test failures: $failures"
+	einfo "Tests successfully completed"
+}
+
 src_install() {
 	cmake_src_install
 
@@ -617,160 +744,73 @@ src_install() {
 	done
 }
 
-# Official test instructions:
-# USE='extraengine perl server' \
-# FEATURES='test userpriv -usersandbox' \
-# ebuild mariadb-X.X.XX.ebuild \
-# digest clean package
-src_test() {
-
-	_disable_test() {
-		local rawtestname reason
-		rawtestname="${1}" ; shift
-		reason="${@}"
-		ewarn "test '${rawtestname}' disabled: '${reason}'"
-		echo ${rawtestname} : ${reason} >> "${T}/disabled.def"
-	}
-
-	local TESTDIR="${BUILD_DIR}/mysql-test"
-	local retstatus_unit
-	local retstatus_tests
-
-	if ! use server ; then
-		einfo "Skipping server tests due to minimal build."
-		return 0
-	fi
-
-	# Bug #213475 - MySQL _will_ object strenously if your machine is named
-	# localhost. Also causes weird failures.
-	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
-
-	if [[ $UID -eq 0 ]]; then
-		die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
-	fi
-	has usersandbox $FEATURES && ewarn "Some tests may fail with FEATURES=usersandbox"
-
-	einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
-
-	# Run CTest (test-units)
-	cmake_src_test
-	retstatus_unit=$?
-
-	# Ensure that parallel runs don't die
-	export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
-	# Enable parallel testing, auto will try to detect number of cores
-	# You may set this by hand.
-	# The default maximum is 8 unless MTR_MAX_PARALLEL is increased
-	export MTR_PARALLEL="${MTR_PARALLEL:-auto}"
-
-	# create directories because mysqladmin might run out of order
-	mkdir -p "${T}"/var-tests{,/log} || die
-
-	# Run mysql tests
-	pushd "${TESTDIR}" > /dev/null || die
-
-	touch "${T}/disabled.def"
-	# These are failing in MariaDB 10.0 for now and are believed to be
-	# false positives:
-	#
-	# main.mysql_client_test, main.mysql_client_test_nonblock
-	# main.mysql_client_test_comp:
-	# segfaults at random under Portage only, suspect resource limits.
-
-	local t
-	for t in plugins.cracklib_password_check plugins.two_password_validations ; do
-		_disable_test  "$t" "False positive due to varying policies"
-	done
-
-	for t in main.mysql_client_test main.mysql_client_test_nonblock main.mysql \
-		main.mysql_client_test_comp rpl.rpl_extra_col_master_myisam ; do
-			_disable_test  "$t" "False positives in Gentoo"
-	done
-
-	for t in funcs_1.is_columns_mysql main.gis_notembedded main.information_schema \
-		main.mysql_upgrade main.system_mysql_db  ; do
-			_disable_test  "$t" "Failure for difference between latin1 and utf-8"
-	done
-
-	_disable_test main.plugin_auth "Needs client libraries built"
-	_disable_test plugins.auth_ed25519 "Needs client libraries built"
-
-	_disable_test main.func_time "Dependent on time test was written"
-
-	_disable_test compat/oracle.plugin "Needs example plugin which Gentoo disables"
-
-	# run mysql-test tests
-	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
-	retstatus_tests=$?
-
-	popd > /dev/null || die
-
-	# Cleanup is important for these testcases.
-	pkill -9 -f "${S}/ndb" 2>/dev/null
-	pkill -9 -f "${S}/sql" 2>/dev/null
-
-	local failures=""
-	[[ $retstatus_unit -eq 0 ]] || failures="${failures} test-unit"
-	[[ $retstatus_tests -eq 0 ]] || failures="${failures} tests"
-
-	[[ -z "$failures" ]] || die "Test failures: $failures"
-	einfo "Tests successfully completed"
+pkg_preinst() {
+	java-pkg-opt-2_pkg_preinst
 }
 
-mysql_init_vars() {
-	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mariadb"}
-	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
-	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="${EPREFIX}/var/lib/mysql"}
-	MY_LOGDIR=${MY_LOGDIR="${EPREFIX}/var/log/mysql"}
+pkg_postinst() {
+	# Make sure the vars are correctly initialized
+	mysql_init_vars
 
-	if [[ -z "${MY_DATADIR}" ]] ; then
-		MY_DATADIR=""
-		if [[ -f "${MY_SYSCONFDIR}/my.cnf" ]] ; then
-			MY_DATADIR=`"my_print_defaults" mysqld 2>/dev/null \
-				| sed -ne '/datadir/s|^--datadir=||p' \
-				| tail -n1`
-			if [[ -z "${MY_DATADIR}" ]] ; then
-				MY_DATADIR=`grep ^datadir "${MY_SYSCONFDIR}/my.cnf" \
-				| sed -e 's/.*=\s*//' \
-				| tail -n1`
-			fi
-		fi
-		if [[ -z "${MY_DATADIR}" ]] ; then
-			MY_DATADIR="${MY_LOCALSTATEDIR}"
-			einfo "Using default MY_DATADIR"
-		fi
-		elog "MySQL MY_DATADIR is ${MY_DATADIR}"
+	# Create log directory securely if it does not exist
+	[[ -d "${ROOT}/${MY_LOGDIR}" ]] || install -d -m0750 -o mysql -g mysql "${ROOT}/${MY_LOGDIR}"
 
-		if [[ -z "${PREVIOUS_DATADIR}" ]] ; then
-			if [[ -e "${MY_DATADIR}" ]] ; then
-				# If you get this and you're wondering about it, see bug #207636
-				elog "MySQL datadir found in ${MY_DATADIR}"
-				elog "A new one will not be created."
-				PREVIOUS_DATADIR="yes"
-			else
-				PREVIOUS_DATADIR="no"
-			fi
-			export PREVIOUS_DATADIR
+	if use server ; then
+		if use pam; then
+			einfo
+			elog "This install includes the PAM authentication plugin."
+			elog "To activate and configure the PAM plugin, please read:"
+			elog "https://mariadb.com/kb/en/mariadb/pam-authentication-plugin/"
+			einfo
+			chown mysql:mysql "${EROOT}/usr/$(get_libdir)/mariadb/plugin/auth_pam_tool_dir" || die
 		fi
-	else
-		if [[ ${EBUILD_PHASE} == "config" ]]; then
-			local new_MY_DATADIR
-			new_MY_DATADIR=`"my_print_defaults" mysqld 2>/dev/null \
-				| sed -ne '/datadir/s|^--datadir=||p' \
-				| tail -n1`
 
-			if [[ ( -n "${new_MY_DATADIR}" ) && ( "${new_MY_DATADIR}" != "${MY_DATADIR}" ) ]]; then
-				ewarn "MySQL MY_DATADIR has changed"
-				ewarn "from ${MY_DATADIR}"
-				ewarn "to ${new_MY_DATADIR}"
-				MY_DATADIR="${new_MY_DATADIR}"
+		if [[ -z "${REPLACING_VERSIONS}" ]] ; then
+			einfo
+			elog "You might want to run:"
+			elog "\"emerge --config =${CATEGORY}/${PF}\""
+			elog "if this is a new install."
+			elog
+			elog "If you are switching server implentations, you should run the"
+			elog "mysql_upgrade tool."
+			einfo
+		else
+			einfo
+			elog "If you are upgrading major versions, you should run the"
+			elog "mysql_upgrade tool."
+			einfo
+		fi
+
+		if use galera ; then
+			einfo
+			elog "Be sure to edit the my.cnf file to activate your cluster settings."
+			elog "This should be done after running \"emerge --config =${CATEGORY}/${PF}\""
+			elog "The first time the cluster is activated, you should add"
+			elog "--wsrep-new-cluster to the options in /etc/conf.d/mysql for one node."
+			elog "This option should then be removed for subsequent starts."
+			einfo
+			if [[ -n "${REPLACING_VERSIONS}" ]] ; then
+				local rver
+				for rver in ${REPLACING_VERSIONS} ; do
+					if ver_test "${rver}" -lt "10.4.0" ; then
+						ewarn "Upgrading galera from a previous version requires admin restart of the entire cluster."
+						ewarn "Please refer to https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-104/#galera-4"
+						ewarn "for more information"
+					fi
+				done
 			fi
 		fi
 	fi
 
-	export MY_SHAREDSTATEDIR MY_SYSCONFDIR
-	export MY_LOCALSTATEDIR MY_LOGDIR
-	export MY_DATADIR
+	# Note about configuration change
+	einfo
+	elog "This version of mariadb reorganizes the configuration from a single my.cnf"
+	elog "to several files in /etc/mysql/${PN}.d."
+	elog "Please backup any changes you made to /etc/mysql/my.cnf"
+	elog "and add them as a new file under /etc/mysql/${PN}.d with a .cnf extension."
+	elog "You may have as many files as needed and they are read alphabetically."
+	elog "Be sure the options have the appropriate section headers, i.e. [mysqld]."
+	einfo
 }
 
 pkg_config() {
