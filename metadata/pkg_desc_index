@@ -8050,7 +8050,7 @@ dev-python/mypy_extensions 0.4.3: Optional static typing for Python
 dev-python/mysql-connector-python 8.0.19: Python client library for MariaDB/MySQL
 dev-python/mysql-python 1.2.5-r3: Python interface to MySQL
 dev-python/mysqlclient 1.4.6: Fork of MySQL-python
-dev-python/nagiosplugin 1.3.2: A class library for writing nagios-compatible plugins
+dev-python/nagiosplugin 1.3.2-r1: A class library for writing nagios-compatible plugins
 dev-python/namespace-google 1: Namespace package declaration for google
 dev-python/namespace-jaraco 1 2: Namespace package declaration for jaraco
 dev-python/namespace-paste 1-r1: Namespace package declaration for paste
@@ -18633,7 +18633,7 @@ x11-plugins/wmwork 0.2.5-r1: a dockapp that lets you easily track time spent on 
 x11-plugins/wmxkb 1.2.2-r1: Dockable keyboard layout switcher for Window Maker
 x11-plugins/wmxres 1.2-r1: Dock application to select your display mode among those possible
 x11-terms/alacritty 0.4.0 0.4.1 0.4.2 9999: GPU-accelerated terminal emulator
-x11-terms/aterm 1.0.1-r3 1.0.1-r4: rxvt compatible terminal emulator with transparency support
+x11-terms/aterm 1.0.1-r4: rxvt compatible terminal emulator with transparency support
 x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and feel of the old cathode tube screens
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2 3.34.2: The Gnome Terminal
