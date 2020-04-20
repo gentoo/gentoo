@@ -22,7 +22,7 @@ SRC_URI="
 "
 
 EMULTILIB_PKG="true"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 
@@ -390,6 +390,8 @@ src_install() {
 	fi
 
 	dobin ${NV_OBJ}/nvidia-bug-report.sh
+
+	dobin nvidia-sleep.sh
 
 	if has_multilib_profile && use multilib; then
 		local OABI=${ABI}
