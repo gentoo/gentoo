@@ -33,6 +33,8 @@ src_configure() {
 }
 
 src_compile() {
+	# Increase stack limit to 11GiB to avoid stack overflow error.
+	ulimit -s 11530000
 	emake byte
 	use ocamlopt && emake native
 }
