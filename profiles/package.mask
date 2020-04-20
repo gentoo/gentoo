@@ -176,11 +176,6 @@ app-crypt/manuale
 app-crypt/gkeys
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Last upstream activity in 2015.
-# Removal in 30 days.  Bug #718184.
-app-admin/ngxtop
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # The maintainer retired and ceased the development.  Stuck
 # on Python 3.6.
 # Removal in 30 days.  Bug #718182.
