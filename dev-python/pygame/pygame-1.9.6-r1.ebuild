@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~sparc ~x86"
-IUSE="doc examples midi X"
+IUSE="doc examples midi opengl X"
 
 DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=media-libs/sdl-image-1.2.2[png,jpeg]
@@ -21,7 +21,7 @@ DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=media-libs/sdl-ttf-2.0.6
 	>=media-libs/smpeg-0.4.4-r1
 	midi? ( media-libs/portmidi )
-	X? ( >=media-libs/libsdl-1.2.5[X,video] )
+	X? ( >=media-libs/libsdl-1.2.5[opengl?,video,X] )
 	!X? ( >=media-libs/libsdl-1.2.5 )"
 RDEPEND="${DEPEND}"
 
