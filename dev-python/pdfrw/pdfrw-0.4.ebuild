@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
@@ -41,7 +41,7 @@ src_prepare() {
 	sed -e '/repaginate\/7037/s:[0-9a-f]*$:skip:' \
 		-e '/.*\/72eb/s:[0-9a-f]*$:skip:' \
 		-i tests/expected.txt || die
-	# fix py3.7+
+	# fix py3.7+ some
 	sed -i -e 's:raise StopIteration:return:' pdfrw/tokens.py || die
 
 	distutils-r1_src_prepare
