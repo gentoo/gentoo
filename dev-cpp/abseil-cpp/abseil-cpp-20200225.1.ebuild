@@ -20,6 +20,9 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+# requires source of gtest and other libs
+RESTRICT=test
+
 src_prepare() {
 	cmake_src_prepare
 
