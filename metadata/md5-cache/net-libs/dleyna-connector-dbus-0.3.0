@@ -4,10 +4,10 @@ DEPEND=>=dev-libs/glib-2.28:2 >=net-libs/dleyna-core-0.2.1:1.0 >=sys-apps/dbus-1
 DESCRIPTION=utility library for higher level dLeyna libraries
 EAPI=7
 HOMEPAGE=https://01.org/dleyna/
-KEYWORDS=amd64 ~arm64 ~x86
+KEYWORDS=amd64 ~arm64 x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.28:2 >=net-libs/dleyna-core-0.2.1:1.0 >=sys-apps/dbus-1
 SLOT=1.0
 SRC_URI=https://01.org/sites/default/files/downloads/dleyna/dleyna-connector-dbus-0.3.0.tar_2.gz -> dleyna-connector-dbus-0.3.0.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c14f7440ac80ecf0576b4a88514bc1bb
+_md5_=626f3fed2354bc2d591fba23c71a819e
