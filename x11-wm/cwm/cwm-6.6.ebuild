@@ -30,6 +30,10 @@ BDEPEND="sys-devel/bison
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-Makefile.patch"
+)
+
 src_compile() {
 	emake CFLAGS="${CFLAGS} -D_GNU_SOURCE" CC="$(tc-getCC)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
