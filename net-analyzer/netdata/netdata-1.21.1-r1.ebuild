@@ -42,11 +42,11 @@ RDEPEND="
 	caps? ( sys-libs/libcap )
 	cups? ( net-print/cups )
 	dbengine? (
-		dev-libs/libuv
 		app-arch/lz4
 		dev-libs/judy
 		dev-libs/openssl:=
 	)
+	dev-libs/libuv
 	compression? ( sys-libs/zlib )
 	ipmi? ( sys-libs/freeipmi )
 	jsonc? ( dev-libs/json-c )
