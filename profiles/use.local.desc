@@ -6939,7 +6939,6 @@ net-vpn/ipsec-tools:rc5 - Enable support for the patented RC5 algorithm
 net-vpn/ipsec-tools:stats - Enable statistics reporting
 net-vpn/libreswan:dnssec - Use DNSSEC resolver (requires net-dns/unbound)
 net-vpn/networkmanager-strongswan:glib - Enable libnm-glib compatibility.
-net-vpn/networkmanager-wireguard:glib - Enable libnm-glib compatibility.
 net-vpn/ocserv:otp - Enable support for one-time passwords
 net-vpn/openconnect:gssapi - Build GSSAPI support
 net-vpn/openconnect:libproxy - Enable proxy support
