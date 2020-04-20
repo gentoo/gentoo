@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Louis Sautier <sbraz@gentoo.org> (2020-04-20)
+# No revdeps, no release in 3 years, doesn't support Bootstrap 4.
+# Removal in 30 days.
+dev-python/flask-bootstrap
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-20)
 # Effectively unmaintained.  Stuck on Python 2 and pygtk.  Last bumped
 # in 2014.
