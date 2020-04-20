@@ -1,5 +1,6 @@
+BDEPEND=>=app-arch/rpm2targz-9.0.0.3g
 DEFINED_PHASES=install postinst postrm setup unpack
-DEPEND=>=app-arch/rpm2targz-9.0.0.3g X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=SGI fonts collection
 EAPI=7
 HOMEPAGE=http://oss.sgi.com/projects/sgi_propack
@@ -8,5 +9,5 @@ KEYWORDS=~alpha amd64 arm ~ia64 ~ppc ppc64 s390 sparc x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=ftp://ftp.suse.com/pub/suse/i386/9.1/suse/noarch/sgi-fonts-1.0-705.noarch.rpm
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	font	dd073b36fe3fd8b868c23bc23209db45	rpm	c1d552831d4ee9c7bb82c35545c264c8
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	font	dd073b36fe3fd8b868c23bc23209db45	rpm	760ff223c2c4299b68ea901e24c4cabd
 _md5_=817f414330d79176ec3edeae7411a188
