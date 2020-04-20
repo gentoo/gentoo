@@ -43,7 +43,7 @@ src_configure() {
 		--debian-glitch
 	)
 	einfo "Running ${configure_call[@]}"
-	CC="$(tc-getCC)" \
+	CC="$(tc-getCC)" AR="$(tc-getAR)" \
 	"${configure_call[@]}" || die
 }
 
