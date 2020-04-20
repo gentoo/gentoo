@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-20)
+# Stuck on Python 3.6.  Last release in 2012.  No revdeps.
+# dev-python/lxml is the recommended XML handling package.
+# Removal in 30 days.  Bug #718646.
+dev-python/dexml
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-20)
 # Stuck on Python 3.6.  Relies on 2to3.  Last release in 2015.
 # No revdeps.  'json' is built-in in all modern Python versions.
 # Removal in 30 days.  Bug #718638.
