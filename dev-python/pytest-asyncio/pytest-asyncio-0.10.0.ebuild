@@ -3,7 +3,9 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} )
+
 inherit distutils-r1
 
 DESCRIPTION="Library for testing asyncio code with pytest"
@@ -18,9 +20,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/pytest[${PYTHON_USEDEP}]"
+DEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/async_generator[${PYTHON_USEDEP}]
