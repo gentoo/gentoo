@@ -15044,7 +15044,7 @@ net-misc/wakeonlan 0.41-r2 0.41-r3: Client for Wake-On-LAN
 net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WWW
 net-misc/wget2 1.99.2: GNU Wget2 is a file and recursive website downloader
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whois 5.4.3 5.5.5 5.5.6 9999: improved Whois Client
+net-misc/whois 5.4.3 5.5.5 5.5.6-r1 9999: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
 net-misc/wput 0.6.1-r1 0.6.2: Tiny program like wget, to upload files/whole directories via FTP
@@ -18014,7 +18014,7 @@ x11-base/xorg-drivers 1.20-r1 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2019.2 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.7 1.20.8 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 430.64-r1 435.21-r1 440.64 440.82: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 430.64-r1 430.64-r2 435.21-r1 435.21-r2 440.82 440.82-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices

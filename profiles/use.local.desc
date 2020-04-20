@@ -6704,6 +6704,7 @@ net-misc/wget2:http2 - Enable HTTP/2.0 support
 net-misc/wget2:openssl - Enable crypto support via dev-libs/openssl
 net-misc/wget2:psl - Use public suffix list via media-libs/libnspsl
 net-misc/wget2:valgrind - Depend on dev-util/vagrind for test suite
+net-misc/whois:xcrypt - Enable crypt through sys-libs/libxcrypt package
 net-misc/wicd:ambiance - Install icons from Ubuntu's ambiance theme
 net-misc/wicd:gnome-shell - Install gnome-shell extension
 net-misc/wicd:gtk - Installs a gtk UI. This is enabled by default because it is intended behavior. Requires dev-python/pygtk
