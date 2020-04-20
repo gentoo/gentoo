@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="${PYTHON_DEPS}"
 
 # requires source of gtest and other libs
 RESTRICT=test
