@@ -399,19 +399,19 @@ src_test() {
 	touch "${T}/disabled.def"
 
 	local -a disabled_tests
-	disabled_tests+=( "auth_sec.keyring_file_data_qa;0;Won't work with user privileges")
-	disabled_tests+=( "gis.spatial_analysis_functions_buffer;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "gis.gis_bugs_crashes;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "gis.geometry_class_attri_prop;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "gis.spatial_utility_function_distance_sphere;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "gis.geometry_property_function_issimple;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "gis.spatial_analysis_functions_centroid;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "gis.spatial_operators_intersection;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet")
-	disabled_tests+=( "main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet")
+	disabled_tests+=( "auth_sec.keyring_file_data_qa;0;Won't work with user privileges" )
+	disabled_tests+=( "gis.spatial_analysis_functions_buffer;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.gis_bugs_crashes;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.geometry_class_attri_prop;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_utility_function_distance_sphere;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.geometry_property_function_issimple;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_analysis_functions_centroid;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_operators_intersection;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
+	disabled_tests+=( "main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
 	disabled_tests+=( "rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure" )
 	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Known failure - no upstream bug yet" )
 	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware")
@@ -420,7 +420,7 @@ src_test() {
 	disabled_tests+=( "x.message_compressed_payload;0;False positive caused by protobuff-3.11+" )
 	disabled_tests+=( "x.message_protobuf_nested;0;False positive caused by protobuff-3.11+" )
 
-	local test_ds
+	local test_infos_str test_infos_arr
 	for test_infos_str in "${disabled_tests[@]}" ; do
 		IFS=';' read -r -a test_infos_arr <<< "${test_infos_str}"
 
@@ -430,7 +430,7 @@ src_test() {
 
 		_disable_test "${test_infos_arr[0]}" "${test_infos_arr[1]}" "${test_infos_arr[2]}"
 	done
-	unset test_ds test_infos_str test_infos_arr
+	unset test_infos_str test_infos_arr
 
 	# Try to increase file limits to increase test coverage
 	if ! ulimit -n 16500 1>/dev/null 2>&1 ; then
