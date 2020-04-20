@@ -10178,7 +10178,7 @@ dev-tex/translator 1.00: A package for translating words in TeX
 dev-tex/tth 4.08: Translate TEX into HTML
 dev-tex/vc 0.6: The vc (version control) bundle
 dev-tex/xmltex 1.9-r3: A non validating namespace aware XML parser implemented in TeX
-dev-texlive/texlive-basic 2019-r1 2020: TeXLive Essential programs and files
+dev-texlive/texlive-basic 2019-r1 2020-r1: TeXLive Essential programs and files
 dev-texlive/texlive-bibtexextra 2019 2020: TeXLive BibTeX additional styles
 dev-texlive/texlive-context 2019 2020: TeXLive ConTeXt and packages
 dev-texlive/texlive-fontsextra 2019 2020: TeXLive Additional fonts
@@ -13913,7 +13913,7 @@ net-analyzer/bwping 1.15 1.16: A tool to measure bandwidth and RTT between two h
 net-analyzer/cacti 1.2.11: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 1.2.11 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
-net-analyzer/carl 0.9-r2: An rsync logfile analyzer
+net-analyzer/carl 0.9-r2 0.9-r3: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1 0.2: Color Bandwidth Meter
 net-analyzer/chaosreader 0.96: Trace TCP/UDP/... sessions and fetch application data.
 net-analyzer/check_mk_agent 1.2.8_p27 1.4.0_p31: Agent to report data to Check_MK for monitoring
