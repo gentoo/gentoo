@@ -12,7 +12,7 @@ DESCRIPTION="Collection of extra plugins for the gedit Text Editor"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 
 IUSE="charmap git +python terminal vala"
