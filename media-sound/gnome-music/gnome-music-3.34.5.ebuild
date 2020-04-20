@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.50:2
