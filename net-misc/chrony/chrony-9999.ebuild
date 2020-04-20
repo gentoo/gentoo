@@ -20,14 +20,13 @@ REQUIRED_USE="
 "
 
 CDEPEND="
-	caps? ( sys-libs/libcap )
+	caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
 	readline? ( >=sys-libs/readline-4.1-r4:= )
 	seccomp? ( sys-libs/libseccomp )
 "
 DEPEND="
 	${CDEPEND}
-	caps? ( acct-group/ntp acct-user/ntp )
 	dev-ruby/asciidoctor
 	pps? ( net-misc/pps-tools )
 "
@@ -135,6 +134,13 @@ src_install() {
 
 	keepdir /var/{lib,log}/chrony
 
+	if use caps; then
+		# Prepare a directory for the chrony.drift file (a la ntpsec)
+		# Ensures the environment is sane on new installs
+		fowners ntp:ntp /var/{lib,log}/chrony
+		fperms 770 /var/lib/chrony
+	fi
+
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
@@ -143,6 +149,20 @@ src_install() {
 	systemd_enable_ntpunit 50-chrony chronyd.service
 }
 
+pkg_preinst() {
+	HAD_CAPS=false
+
+	if has_version 'net-misc/chrony[caps]'; then
+		HAD_CAPS=true
+	fi
+}
+
 pkg_postinst() {
 	tmpfiles_process chronyd.conf
+
+	if use caps && ! ${HAD_CAPS}; then
+		ewarn "Please adjust permissions on ${EROOT}/var/{lib,log}/chrony to be owned by ntp:ntp"
+		ewarn "e.g. chown -R ntp:ntp ${EROOT}/var/{lib,log}/chrony"
+		ewarn "This is necessary for chrony to drop privileges"
+	fi
 }
