@@ -837,7 +837,6 @@ dev-java/icedtea-web
 # that's pending for a long time (bug #688016) but not aiohttp-cors dep.
 #
 # Removal in 30 days.  Bug #712964.
-dev-python/aiohttp-cors
 net-misc/gns3-converter
 net-misc/gns3-gui
 net-misc/gns3-server
