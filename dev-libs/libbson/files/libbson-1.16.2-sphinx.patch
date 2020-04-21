@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/716774
+
+--- a/build/sphinx/taglist.py
++++ b/build/sphinx/taglist.py
+@@ -24,7 +24,12 @@ THE SOFTWARE.
+ """
+ 
+ from docutils import nodes, utils
+-from sphinx.environment import NoUri
++
++try:
++    from sphinx.environment import NoUri
++except ImportError:
++    from sphinx.errors import NoUri
++
+ try:
+     from sphinx.util.compat import Directive
+ except ImportError:
+ 
