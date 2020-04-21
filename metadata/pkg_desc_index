@@ -9361,7 +9361,7 @@ dev-ruby/actionpack-xml_parser 1.0.2 2.0.1: XML parameters parser for Action Pac
 dev-ruby/actiontext 6.0.2.2: Edit and display rich text in Rails applications
 dev-ruby/actionview 4.2.11.1 5.2.4.2 6.0.2.2: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 4.2.11.1 5.2.4.2 6.0.2.2: Job framework with pluggable queues
-dev-ruby/activeldap 4.0.6 5.2.4 6.0.0: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
+dev-ruby/activeldap 4.0.6 5.2.4 6.0.0 6.0.1: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
 dev-ruby/activemodel 4.2.11.1 5.2.4.2 6.0.2.2: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Model objects and Active Record models
 dev-ruby/activerecord 4.2.11.1 5.2.4.2 6.0.2.2: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
@@ -15222,7 +15222,7 @@ net-vpn/i2pd 2.29.0 2.30.0 2.31.0: A C++ daemon for accessing the I2P anonymous 
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
-net-vpn/libreswan 3.29 3.30 3.31: IPsec implementation for Linux, fork of Openswan
+net-vpn/libreswan 3.29 3.31: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engine
 net-vpn/mullvad-netns 0.2 9999: Script to run a command within a Mullvad network namespace
 net-vpn/networkmanager-fortisslvpn 1.2.8-r2: NetworkManager Fortinet SSLVPN compatible plugin
