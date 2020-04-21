@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( pypy3 python3_6 python3_7 python3_8 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
-inherit distutils-r1 linux-info systemd prefix
+inherit distutils-r1 epatch linux-info systemd prefix
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -78,7 +78,8 @@ prefix_src_archives() {
 
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)
+	https://github.com/gentoo/portage/commit/9738a404e876270cbdef2514f66915bce35d7435.patch -> portage-2.3.89-bug-718578.patch"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS"
@@ -88,6 +89,8 @@ pkg_pretend() {
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
+
+	epatch "${DISTDIR}/portage-2.3.89-bug-718578.patch"
 
 	# Apply 03efd1125214
 	sed -e '50s|"EMERGE_FROM", "EPREFIX",|"EMERGE_FROM", "ENV_UNSET", "EPREFIX",|' -i lib/portage/package/ebuild/_config/special_env_vars.py || die
