@@ -32,7 +32,7 @@ RDEPEND="
 			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		')
 	)
-	<sci-libs/sundials-5.2.0:0=
+	<sci-libs/sundials-5.3.0:0=
 "
 
 DEPEND="
