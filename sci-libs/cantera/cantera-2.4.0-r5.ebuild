@@ -52,9 +52,9 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}_${PV}_env.patch"
-	"${FILESDIR}/${PN}_${PV}_env_python_install.patch"
+	"${FILESDIR}/${PN}_${PV}_env_python_install_prefix.patch"
 	"${FILESDIR}/${PN}_${PV}_sundials4.patch"
-	)
+)
 
 pkg_setup() {
 	fortran-2_pkg_setup
@@ -107,7 +107,7 @@ src_test() {
 }
 
 src_install() {
-	escons install stage_dir="${D}" libdirname="$(get_libdir)"
+	escons install stage_dir="${D}" libdirname="$(get_libdir)" python3_prefix="$(python_get_sitedir)"
 	if ! use cti ; then
 		rm -r "${D}/usr/share/man" || die "Can't remove man files."
 	else
