@@ -58,10 +58,16 @@ IUSE="${IUSE_VIDEO_CARDS} ${IUSE_INPUT_DEVICES}"
 
 PDEPEND="
 	input_devices_elographics? ( x11-drivers/xf86-input-elographics )
-	input_devices_evdev?       ( >=x11-drivers/xf86-input-evdev-2.10.6 )
+	input_devices_evdev?       (
+								 >=x11-base/xorg-server-${PV}[udev]
+								 >=x11-drivers/xf86-input-evdev-2.10.6
+							   )
 	input_devices_joystick?    ( >=x11-drivers/xf86-input-joystick-1.6.3 )
 	input_devices_keyboard?    ( x11-drivers/xf86-input-keyboard )
-	input_devices_libinput?    ( >=x11-drivers/xf86-input-libinput-0.27.1 )
+	input_devices_libinput?    (
+								 >=x11-base/xorg-server-${PV}[udev]
+								 >=x11-drivers/xf86-input-libinput-0.27.1
+							   )
 	input_devices_mouse?       ( >=x11-drivers/xf86-input-mouse-1.9.3 )
 	input_devices_vmmouse?     ( x11-drivers/xf86-input-vmmouse )
 	input_devices_void?        ( x11-drivers/xf86-input-void )
