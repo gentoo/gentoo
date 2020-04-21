@@ -1,6 +1,6 @@
-diff -Nur old/SConstruct new/SConstruct
---- old/SConstruct	2019-08-14 04:12:50.000000000 +0300
-+++ new/SConstruct	2019-08-14 04:38:55.000000000 +0300
+diff -Naur a/SConstruct b/SConstruct
+--- a/SConstruct	2020-04-21 13:55:06.000000000 +0300
++++ b/SConstruct	2020-04-21 13:55:54.000000000 +0300
 @@ -1013,23 +1013,29 @@
  
  import SCons.Conftest, SCons.SConf
@@ -42,18 +42,35 @@ diff -Nur old/SConstruct new/SConstruct
  
  # Checkout Sundials submodule if needed
  if (env['system_sundials'] == 'n' and
-@@ -1066,7 +1072,7 @@
+@@ -1066,13 +1072,14 @@
  
      # Ignore the minor version, e.g. 2.4.x -> 2.4
      env['sundials_version'] = '.'.join(sundials_version.split('.')[:2])
 -    if env['sundials_version'] not in ('2.4','2.5','2.6','2.7','3.0','3.1','3.2'):
-+    if env['sundials_version'] not in ('2.4','2.5','2.6','2.7','3.0','3.1','3.2','4.0','4.1','5.0','5.1'):
++    sundials_ver = LooseVersion(env['sundials_version'])
++    if sundials_ver < LooseVersion('2.4') or sundials_ver >= LooseVersion('6.0'):
          print("""ERROR: Sundials version %r is not supported.""" % env['sundials_version'])
          sys.exit(1)
      print("""INFO: Using system installation of Sundials version %s.""" % sundials_version)
-diff -Nur old/include/cantera/numerics/CVodesIntegrator.h new/include/cantera/numerics/CVodesIntegrator.h
---- old/include/cantera/numerics/CVodesIntegrator.h	2018-08-24 16:24:45.000000000 +0300
-+++ new/include/cantera/numerics/CVodesIntegrator.h	2019-08-14 04:39:50.000000000 +0300
+ 
+     #Determine whether or not Sundials was built with BLAS/LAPACK
+-    if LooseVersion(env['sundials_version']) < LooseVersion('2.6'):
++    if sundials_ver < LooseVersion('2.6'):
+         # In Sundials 2.4 / 2.5, SUNDIALS_BLAS_LAPACK is either 0 or 1
+         sundials_blas_lapack = get_expression_value(['"sundials/sundials_config.h"'],
+                                                        'SUNDIALS_BLAS_LAPACK')
+@@ -1690,7 +1697,7 @@
+ 
+ if env['system_sundials'] == 'y':
+     env['sundials_libs'] = ['sundials_cvodes', 'sundials_ida', 'sundials_nvecserial']
+-    if env['use_lapack'] and LooseVersion(env['sundials_version']) >= LooseVersion('3.0'):
++    if env['use_lapack'] and sundials_ver >= LooseVersion('3.0'):
+         if env.get('has_sundials_lapack'):
+             env['sundials_libs'].extend(('sundials_sunlinsollapackdense',
+                                          'sundials_sunlinsollapackband'))
+diff -Naur a/include/cantera/numerics/CVodesIntegrator.h b/include/cantera/numerics/CVodesIntegrator.h
+--- a/include/cantera/numerics/CVodesIntegrator.h	2018-08-24 16:24:45.000000000 +0300
++++ b/include/cantera/numerics/CVodesIntegrator.h	2020-04-21 13:55:54.000000000 +0300
 @@ -49,7 +49,6 @@
          m_maxord = n;
      }
@@ -62,9 +79,9 @@ diff -Nur old/include/cantera/numerics/CVodesIntegrator.h new/include/cantera/nu
      virtual void setMaxStepSize(double hmax);
      virtual void setMinStepSize(double hmin);
      virtual void setMaxSteps(int nmax);
-diff -Nur old/include/cantera/numerics/Integrator.h new/include/cantera/numerics/Integrator.h
---- old/include/cantera/numerics/Integrator.h	2018-08-24 16:24:45.000000000 +0300
-+++ new/include/cantera/numerics/Integrator.h	2019-08-14 04:44:27.000000000 +0300
+diff -Naur a/include/cantera/numerics/Integrator.h b/include/cantera/numerics/Integrator.h
+--- a/include/cantera/numerics/Integrator.h	2018-08-24 16:24:45.000000000 +0300
++++ b/include/cantera/numerics/Integrator.h	2020-04-21 13:55:54.000000000 +0300
 @@ -34,17 +34,6 @@
      Adams_Method //! Adams
  };
@@ -95,9 +112,9 @@ diff -Nur old/include/cantera/numerics/Integrator.h new/include/cantera/numerics
      //! Set the maximum step size
      virtual void setMaxStepSize(double hmax) {
          warn("setMaxStepSize");
-diff -Nur old/src/kinetics/ImplicitSurfChem.cpp new/src/kinetics/ImplicitSurfChem.cpp
---- old/src/kinetics/ImplicitSurfChem.cpp	2018-08-24 16:24:45.000000000 +0300
-+++ new/src/kinetics/ImplicitSurfChem.cpp	2019-08-14 04:45:57.000000000 +0300
+diff -Naur a/src/kinetics/ImplicitSurfChem.cpp b/src/kinetics/ImplicitSurfChem.cpp
+--- a/src/kinetics/ImplicitSurfChem.cpp	2018-08-24 16:24:45.000000000 +0300
++++ b/src/kinetics/ImplicitSurfChem.cpp	2020-04-21 13:55:54.000000000 +0300
 @@ -79,7 +79,6 @@
      // numerically, and use a Newton linear iterator
      m_integ->setMethod(BDF_Method);
@@ -106,9 +123,9 @@ diff -Nur old/src/kinetics/ImplicitSurfChem.cpp new/src/kinetics/ImplicitSurfChe
      m_work.resize(ntmax);
  }
  
-diff -Nur old/src/numerics/CVodesIntegrator.cpp new/src/numerics/CVodesIntegrator.cpp
---- old/src/numerics/CVodesIntegrator.cpp	2018-08-24 16:24:45.000000000 +0300
-+++ new/src/numerics/CVodesIntegrator.cpp	2019-08-14 04:49:02.000000000 +0300
+diff -Naur a/src/numerics/CVodesIntegrator.cpp b/src/numerics/CVodesIntegrator.cpp
+--- a/src/numerics/CVodesIntegrator.cpp	2018-08-24 16:24:45.000000000 +0300
++++ b/src/numerics/CVodesIntegrator.cpp	2020-04-21 13:55:54.000000000 +0300
 @@ -88,7 +88,6 @@
      m_type(DENSE+NOJAC),
      m_itol(CV_SS),
@@ -161,9 +178,9 @@ diff -Nur old/src/numerics/CVodesIntegrator.cpp new/src/numerics/CVodesIntegrato
              #if CT_SUNDIALS_USE_LAPACK
                  m_linsol = SUNLapackBand(m_y, (SUNMatrix) m_linsol_matrix);
              #else
-diff -Nur old/src/numerics/IDA_Solver.cpp new/src/numerics/IDA_Solver.cpp
---- old/src/numerics/IDA_Solver.cpp	2018-08-24 16:24:45.000000000 +0300
-+++ new/src/numerics/IDA_Solver.cpp	2019-08-14 04:51:01.000000000 +0300
+diff -Naur a/src/numerics/IDA_Solver.cpp b/src/numerics/IDA_Solver.cpp
+--- a/src/numerics/IDA_Solver.cpp	2018-08-24 16:24:45.000000000 +0300
++++ b/src/numerics/IDA_Solver.cpp	2020-04-21 13:55:54.000000000 +0300
 @@ -442,7 +442,11 @@
          #if CT_SUNDIALS_VERSION >= 30
              SUNLinSolFree((SUNLinearSolver) m_linsol);
@@ -177,9 +194,9 @@ diff -Nur old/src/numerics/IDA_Solver.cpp new/src/numerics/IDA_Solver.cpp
              #if CT_SUNDIALS_USE_LAPACK
                  m_linsol = SUNLapackBand(m_y, (SUNMatrix) m_linsol_matrix);
              #else
-diff -Nur old/src/zeroD/ReactorNet.cpp new/src/zeroD/ReactorNet.cpp
---- old/src/zeroD/ReactorNet.cpp	2018-08-24 16:24:45.000000000 +0300
-+++ new/src/zeroD/ReactorNet.cpp	2019-08-14 04:51:35.000000000 +0300
+diff -Naur a/src/zeroD/ReactorNet.cpp b/src/zeroD/ReactorNet.cpp
+--- a/src/zeroD/ReactorNet.cpp	2018-08-24 16:24:45.000000000 +0300
++++ b/src/zeroD/ReactorNet.cpp	2020-04-21 13:55:54.000000000 +0300
 @@ -28,7 +28,6 @@
      // numerically, and use a Newton linear iterator
      m_integ->setMethod(BDF_Method);
