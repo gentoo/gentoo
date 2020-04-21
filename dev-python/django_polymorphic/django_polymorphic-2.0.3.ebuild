@@ -28,7 +28,6 @@ DEPEND="
 	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/django-setuptest-0.2.1[${PYTHON_USEDEP}]
 		dev-python/dj-database-url[${PYTHON_USEDEP}]
 	)
 "
