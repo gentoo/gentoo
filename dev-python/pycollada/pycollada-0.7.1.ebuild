@@ -29,7 +29,7 @@ distutils_enable_tests unittest
 
 python_install_all() {
 	if use examples ; then
-		insinto /usr/share/${P}/
+		insinto /usr/share/${PF}/
 		doins -r examples
 	fi
 
