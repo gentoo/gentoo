@@ -8246,7 +8246,7 @@ dev-python/promises 2.1-r1: An implementation of Promises in Python
 dev-python/prompt_toolkit 2.0.10 2.0.10-r1 3.0.3: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.11.4 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
-dev-python/pslab-python 1.0.1: Python library for communicating with Pocket Science Lab
+dev-python/pslab-python 1.0.1 1.0.1-r1: Python library for communicating with Pocket Science Lab
 dev-python/psutil 5.6.7-r1 5.7.0: Retrieve information on running processes and system utilization
 dev-python/psycopg 2.7.4 2.7.5 2.7.7 2.8.3 2.8.4: PostgreSQL database adapter for Python
 dev-python/ptpython 2.0.6: Python REPL build on top of prompt_toolkit
@@ -14587,7 +14587,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 13.10.1 13.11.0 13.12.0 13.13.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 13.13.0 14.0.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15336,7 +15336,7 @@ net-wireless/reaver 1.6.5: Brute force attack against Wifi Protected Setup
 net-wireless/rfcat 0.0.170508 0.0.190423 9999: The swiss army knife of subGHz
 net-wireless/rfkill 0.5-r2 0.5-r3: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rtl-sdr 0.5.3_p20170919 0.5.4 0.6.0-r1 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
-net-wireless/rtl_433 0.1_p20190709-r1 9999: Decode OOK modulated signals
+net-wireless/rtl_433 0.1_p20190709-r1 20.02_p20200321 9999: Decode OOK modulated signals
 net-wireless/rtl_power_fftw 0.0_p20180528 9999: power spectrum for RTLSDR dongles
 net-wireless/sdrplay 2.13.1-r1: SDRplay API/HW driver for all RSPs
 net-wireless/soapy_power 1.6.1-r1 9999: Obtain power spectrum from SoapySDR devices
