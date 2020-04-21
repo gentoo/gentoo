@@ -63,6 +63,17 @@ python_test_all() {
 	esetup.py test
 }
 
+# Ugly hack to work around Bug #717922
+python_install() {
+	local mydistutilsargs=(
+		--resourcepath=/usr/share
+		--no-compress-manpages
+		build
+	)
+	distutils-r1_python_install
+	echo -n "/usr/share" > "${D}$(python_get_sitedir)/gramps/gen/utils/resource-path" || die
+}
+
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
