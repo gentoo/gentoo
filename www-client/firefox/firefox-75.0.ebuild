@@ -298,6 +298,10 @@ pkg_setup() {
 
 	# Workaround for #627726
 	if has ccache ${FEATURES} ; then
+		if use clang && use pgo ; then
+			die "Using FEATURES=ccache with USE=clang and USE=pgo is currently known to be broken (bug #718632)."
+		fi
+
 		einfo "Fixing PATH for FEATURES=ccache ..."
 		PATH=$(fix_path 'ccache/bin')
 	elif has distcc ${FEATURES} ; then
