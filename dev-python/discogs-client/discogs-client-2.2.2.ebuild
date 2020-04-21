@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
@@ -19,9 +19,5 @@ RDEPEND="
 	dev-python/oauth2[${PYTHON_USEDEP}]
 	dev-python/oauthlib[${PYTHON_USEDEP}]
 	"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-python_test() {
-	"${PYTHON}" -m unittest discover -v || die "Tests failed under ${EPYTHON}"
-}
+distutils_enable_tests unittest
