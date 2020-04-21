@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -14,7 +14,6 @@ SRC_URI="https://www.dwheeler.com/${PN}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
