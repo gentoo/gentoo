@@ -52,7 +52,8 @@ src_compile() {
 		DIST="${D}" \
 		CC="$(tc-getCC)" \
 		LIBDIR="/usr/$(get_libdir)/bcc" \
-		INCLDIR="/usr/$(get_libdir)/bcc"
+		INCLDIR="/usr/$(get_libdir)/bcc" \
+		all
 
 	export PATH=${S}/bin:${PATH}
 
@@ -61,7 +62,10 @@ src_compile() {
 	cd .. || die
 
 	cd bootblocks || die
-	emake DIST="${D}"
+	emake \
+		DIST="${D}" \
+		HOSTCC="$(tc-getCC)"
+
 }
 
 src_install() {
