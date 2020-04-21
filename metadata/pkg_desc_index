@@ -7672,7 +7672,7 @@ dev-python/django-tagging 0.4.6: Generic tagging application for Django
 dev-python/django-taggit 1.2.0: simple tagging for django
 dev-python/django-taggit-serializer 0.1.7: the django taggit serializer for the django rest framework
 dev-python/django-timezone-field 4.0: A Django app providing database and form fields for pytz timezone objects
-dev-python/django_polymorphic 2.0.3: Seamless Polymorphic Inheritance for Django Models
+dev-python/django_polymorphic 2.0.3 2.1.2: Seamless Polymorphic Inheritance for Django Models
 dev-python/djangorestframework 3.11.0: Web APIs with django made easy
 dev-python/dkimpy 0.9.2: DKIM and ARC email signing and verification library
 dev-python/dns-lexicon 3.3.4: Manipulate DNS records on various DNS providers in a standardized/agnostic way
