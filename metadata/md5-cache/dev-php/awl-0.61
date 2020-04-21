@@ -9,5 +9,5 @@ LICENSE=GPL-2 GPL-2+ GPL-3+ LGPL-2+ LGPL-3+
 RDEPEND=dev-lang/php:*[pdo,postgres,xml]
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://www.davical.org/downloads/awl_0.60.orig.tar.xz -> awl-0.60.tar.xz
-_md5_=29da62092d18885ab3f3285dddf158f3
+SRC_URI=https://www.davical.org/downloads/awl_0.61.orig.tar.xz -> awl-0.61.tar.xz
+_md5_=98c6c5191ae76e8faa6cda1fd1fdc023

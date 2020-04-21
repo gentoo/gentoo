@@ -7283,7 +7283,7 @@ dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
 dev-php/adodb 5.20.14 5.20.15: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
-dev-php/awl 0.59 0.60: Andrew McMillan's Web Libraries
+dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
 dev-php/composer 1.9.3 1.10.1 1.10.5: Dependency Manager for PHP
@@ -17325,7 +17325,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.31 5.4.32 5.4.33 5.5.16 5.5.17 5.5.18 5.6.4 5.6.5: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.31 5.4.32 5.4.33 5.5.16 5.5.17 5.5.18 5.6.4 5.6.5: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.9.217 4.9.218 4.9.219 4.14.174 4.14.175 4.14.176 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.5.15 5.5.16 5.5.17 5.5.18 5.6.2 5.6.3 5.6.4 5.6.5: Full sources including the Gentoo patchset for the 5.6 kernel tree
+sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.9.217 4.9.218 4.9.219 4.14.174 4.14.175 4.14.176 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.5.15 5.5.16 5.5.17 5.5.18 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
