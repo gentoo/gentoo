@@ -10375,7 +10375,7 @@ dev-util/eric 18.03 19.11-r1: A full featured Python IDE using PyQt and QScintil
 dev-util/fatrace 0.12: report file access events from all running processes
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
-dev-util/flawfinder 1.31 2.0.7 2.0.8 2.0.10: Examines C/C++ source code for security flaws
+dev-util/flawfinder 1.31 2.0.7 2.0.8 2.0.10 2.0.11: Examines C/C++ source code for security flaws
 dev-util/ftjam 2.5.3_rc2-r2: A 100% compatible, enhanced implementation of the make alternative Jam
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
