@@ -26,7 +26,10 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="internal-tls ipv6 libressl logwatch netlink sqlite +wps +crda"
+IUSE="internal-tls ipv6 libressl logwatch netlink sqlite +suiteb +wps +crda"
+
+# suiteb impl uses openssl feature not available in libressl, see bug 710992
+REQUIRED_USE="?? ( libressl suiteb )"
 
 DEPEND="
 	libressl? ( dev-libs/libressl:0= )
@@ -95,8 +98,11 @@ src_configure() {
 	echo "CONFIG_SAE=y" >> ${CONFIG}
 	echo "CONFIG_OWE=y" >> ${CONFIG}
 	echo "CONFIG_DPP=y" >> ${CONFIG}
-	echo "CONFIG_SUITEB=y" >> ${CONFIG}
-	echo "CONFIG_SUITEB192=y" >> ${CONFIG}
+
+	if use suiteb; then
+		echo "CONFIG_SUITEB=y" >> ${CONFIG}
+		echo "CONFIG_SUITEB192=y" >> ${CONFIG}
+	fi
 
 	if use internal-tls && ! use libressl; then
 		echo "CONFIG_TLS=internal" >> ${CONFIG}
