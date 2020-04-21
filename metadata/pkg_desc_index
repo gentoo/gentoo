@@ -1348,7 +1348,7 @@ app-editors/qhexedit2 0.8.4 0.8.4_p20170719 0.8.6_p20190316: Hex editor library,
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
-app-editors/scite 4.1.3 4.2.0 4.2.1: A very powerful, highly configurable, small editor with syntax coloring
+app-editors/scite 4.1.3 4.2.0 4.2.1 4.3.2: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.15: Simple Hex EDitor
 app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup and prose
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
@@ -7643,8 +7643,8 @@ dev-python/dicttoxml 1.7.4: Converts a Python dictionary or other data type to a
 dev-python/diff-cover 2.3.0: Automatically find diff lines that need test coverage
 dev-python/diff-match-patch 20181111: Diff, match and patch algorithms for plain text
 dev-python/dill 0.3.1.1: Serialize all of python (almost)
-dev-python/discogs-client 2.2.1: Official Python API client for Discogs
-dev-python/diskcache 3.1.0: Disk and file backed cache
+dev-python/discogs-client 2.2.1 2.2.2: Official Python API client for Discogs
+dev-python/diskcache 3.1.0 4.1.0: Disk and file backed cache
 dev-python/dissononce 0.34.3: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.3.0: Low-level components of distutils2/packaging
 dev-python/distributed 1.18.0-r1: Python library for distributed computation
@@ -7860,7 +7860,7 @@ dev-python/humanize 0.5.1 2.2.0 2.3.0: Common humanization utilities
 dev-python/hyper-h2 2.5.1 3.1.1 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.50.8 4.57.1 5.9.1 5.10.0: A library for property based testing
+dev-python/hypothesis 4.50.8 4.57.1 5.9.1 5.10.0 5.10.1: A library for property based testing
 dev-python/icalendar 4.0.3: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.9: Internationalized Domain Names in Applications (IDNA)
@@ -8290,7 +8290,7 @@ dev-python/pychromecast 4.1.0: Python module to talk to Google Chromecast.
 dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chroot handling
 dev-python/pyclipper 1.1.0: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
 dev-python/pycodestyle 2.5.0-r1: Python style guide checker (fka pep8)
-dev-python/pycollada 0.6-r1: Python library for reading and writing COLLADA documents
+dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.19-r1 2.20: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
@@ -8427,7 +8427,7 @@ dev-python/pytables 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 3.10.1 4.5.0 4.6.9 5.4.1: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.3.0: pytest plugin for aiohttp support
-dev-python/pytest-asyncio 0.10.0: Library for testing asyncio code with pytest
+dev-python/pytest-asyncio 0.10.0 0.11.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.8.1: py.test plugin for coverage reporting
@@ -8515,7 +8515,7 @@ dev-python/python-memcached 1.59: Pure python memcached client
 dev-python/python-mistralclient 3.8.1: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.15.0: A client for the OpenStack Monasca API
 dev-python/python-mpd 1.0.0: Python MPD client library
-dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
+dev-python/python-musicbrainz-ngs 0.6 0.7.1: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.6.10-r1: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
 dev-python/python-neutronclient 6.12.1: A client for the OpenStack Quantum API
@@ -8712,7 +8712,7 @@ dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with ga
 dev-python/sparql-wrapper 1.8.4: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
-dev-python/sphinx 1.7.5-r1 2.0.1-r1 2.4.3-r1 2.4.4 3.0.0 3.0.1: Python documentation generator
+dev-python/sphinx 1.7.5-r1 2.0.1-r1 2.4.3-r1 2.4.4 3.0.0 3.0.1 3.0.2: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.5 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -8793,7 +8793,7 @@ dev-python/termcolor 1.1.0-r1 1.1.0-r2: ANSII Color formatting for output in ter
 dev-python/terminado 0.8.1 0.8.3: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
 dev-python/test_server 0.0.31: Server to test HTTP clients
-dev-python/testfixtures 4.9.1 6.8.2 6.14.0: A collection of helpers and mock objects for unit tests and doc tests
+dev-python/testfixtures 4.9.1 6.8.2 6.14.0 6.14.1: A collection of helpers and mock objects for unit tests and doc tests
 dev-python/testpath 0.3.1 0.4.4 0.4.4-r1: Test utilities for code working with files and commands
 dev-python/testrepository 0.0.20: A repository of test results
 dev-python/testresources 2.0.1: A pyunit extension for managing expensive test resources
@@ -10617,7 +10617,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, int
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.8 2.9 2.10: Simple, high-reliability, source control management, and more
 dev-vcs/ghp-import 0.4.1-r1: Copy your docs directly to the gh-pages branch
-dev-vcs/git 2.23.1-r1 2.23.2 2.24.1 2.24.2 2.25.1 2.25.2 2.25.3 2.26.0 2.26.1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.23.1-r1 2.23.2 2.23.3 2.24.1 2.24.2 2.24.3 2.25.1 2.25.2 2.25.3 2.25.4 2.26.0 2.26.1 2.26.2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818 6.20170818-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
 dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
@@ -14151,7 +14151,7 @@ net-analyzer/tleds 1.05_beta11-r2: Blinks keyboard LEDs indicating outgoing and 
 net-analyzer/tptest 3.1.7-r2: Internet bandwidth tester
 net-analyzer/tracebox 0.2: A Middlebox Detection Tool
 net-analyzer/traceproto 1.1.2_beta1: A traceroute-like utility that sends packets based on protocol
-net-analyzer/traceroute 2.0.20 2.0.22 2.1.0: Utility to trace the route of IP packets
+net-analyzer/traceroute 2.1.0: Utility to trace the route of IP packets
 net-analyzer/traceroute-nanog 6.4.2-r1 6.4.2_p1: Traceroute with AS lookup, TOS support, MTU discovery and other features
 net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/tsung 1.7.0: Erlang's multi-protocol distributed load testing tool
@@ -14316,7 +14316,7 @@ net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
 net-ftp/lftp 4.8.4-r1 4.9.0 4.9.1 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
-net-ftp/ncftp 3.2.6 3.2.6-r1: An extremely configurable ftp client
+net-ftp/ncftp 3.2.6 3.2.6-r1 3.2.6-r2: An extremely configurable ftp client
 net-ftp/proftpd 1.3.6c 1.3.7_rc3: An advanced and very configurable FTP server
 net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written in Perl
 net-ftp/pure-ftpd 1.0.49-r2 9999: Fast, production-quality, standard-conformant FTP server
@@ -14761,7 +14761,7 @@ net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r5 2.2.10-r6 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
 net-misc/charm 1.9.2-r2: A text based livejournal client
-net-misc/chrony 3.5-r2 3.5-r3 3.5-r4 4.0_pre1 4.0_pre1-r1 4.0_pre1-r2 9999: NTP client and server programs
+net-misc/chrony 3.5-r2 3.5-r3 3.5-r4 4.0_pre1 4.0_pre1-r1 4.0_pre1-r2 4.0_pre2 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2019.01.13 2020.03.07 2020.04.12: Qt GUI for Connman with system tray icon
@@ -14797,7 +14797,7 @@ net-misc/electron-cash 4.0.2-r2: Lightweight Bitcoin Cash client (BCH fork of El
 net-misc/electrum 3.3.8: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
 net-misc/ena-driver 2.0.3 2.2.3: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
-net-misc/endlessh 1.0 9999: SSH tarpit that slowly sends and endless banner
+net-misc/endlessh 1.0 1.1 9999: SSH tarpit that slowly sends and endless banner
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
 net-misc/etherdfs 20180203: An ethernet-based file system for DOS
 net-misc/ethertypes 0: Maps ethernet frame ids to symbolic names
@@ -14832,7 +14832,7 @@ net-misc/hashcash 1.22-r2: Utility to generate hashcash tokens
 net-misc/hath 0.5.0: Hath manipulates network blocks in CIDR notation
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.2.0 1.2.2: Synchronize local workstation with time offered by remote webservers
-net-misc/httpie 1.0.3 2.0.0: Modern command line HTTP client
+net-misc/httpie 1.0.3 2.0.0 2.1.0: Modern command line HTTP client
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 5.5.5 5.6.1: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/iaxmodem 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
@@ -16545,7 +16545,7 @@ sys-apps/agedu 20190630 20200206: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.13.3 2.13.4: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.13.3 2.13.4: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor-utils 2.13.3 2.13.4 2.13.4-r1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.48-r3 9999: Extended attributes tools
@@ -16785,7 +16785,7 @@ sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration to
 sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44 1.45-r1: Apps for querying the sg SCSI interface
-sys-apps/shadow 4.6 4.7-r2 4.8-r4 4.8.1-r2: Utilities to deal with user accounts
+sys-apps/shadow 4.8-r4 4.8.1-r2: Utilities to deal with user accounts
 sys-apps/smartmontools 7.0-r1 7.1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.4.0.20191206: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r3: Supermicro Update Manager (SUM) kernel module
@@ -17773,7 +17773,7 @@ www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/gitea 1.10.6 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.5.3 6.7.2: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
-www-apps/hugo 0.58.3 0.62.0: The world's fastest framework for building websites
+www-apps/hugo 0.69.0: The world's fastest framework for building websites
 www-apps/icingaweb2 2.7.1 2.7.3 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite

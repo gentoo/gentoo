@@ -12,4 +12,4 @@ REQUIRED_USE=gtalk? ( xmpp ) ^^ ( voicemail_storage_file voicemail_storage_odbc 
 SLOT=0
 SRC_URI=https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-16.9.0.tar.gz https://downloads.uls.co.za/gentoo/asterisk/gentoo-asterisk-patchset-4.08.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=386c4b9575fe89cdbc7742b12022f4c5
+_md5_=c1680144940a559f184fbbbed0c4f47d
