@@ -74,7 +74,6 @@ DEPEND="
 		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/pyserial[${PYTHON_USEDEP}]
 		>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
-		<net-misc/openssh-7.6
 	)
 "
 
@@ -96,6 +95,12 @@ python_prepare_all() {
 	if use test ; then
 		# Remove since this is an upstream distribution test for making releases
 		rm src/twisted/python/test/test_release.py || die "rm src/twisted/python/test/test_release.py FAILED"
+
+		# Conch doesn't work with latest >=OpenSSH 7.6
+		#   - https://twistedmatrix.com/trac/ticket/9311
+		#   - https://twistedmatrix.com/trac/ticket/9515
+		rm src/twisted/conch/test/test_conch.py || die "rm src/twisted/conch/test/test_conch.py FAILED"
+		rm src/twisted/conch/test/test_cftp.py || die "rm src/twisted/conch/test/test_cftp.py FAILED"
 	fi
 	distutils-r1_python_prepare_all
 }
