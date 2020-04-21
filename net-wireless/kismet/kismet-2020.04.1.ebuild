@@ -18,12 +18,12 @@ else
 	S=${WORKDIR}/${MY_P/BETA/beta}
 
 	#normally we want an official release
-	#SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
+	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
 
 	#but sometimes we want a git commit
-	COMMIT="ea3f9ffe84b86cfc5e01ce3fec5476d51d161b98"
-	SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${COMMIT}"
+	#COMMIT="ea3f9ffe84b86cfc5e01ce3fec5476d51d161b98"
+	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	#S="${WORKDIR}/${PN}-${COMMIT}"
 
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 fi
