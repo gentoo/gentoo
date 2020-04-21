@@ -7531,7 +7531,7 @@ dev-python/bpython 0.18 0.18-r1 0.19: Syntax highlighting and autocompletion for
 dev-python/breathe 4.14.1: Sphinx Doxygen renderer
 dev-python/brotlipy 0.7.0: Python binding to the Brotli library
 dev-python/brython 3.7.2: A Python 3 implementation for client-side web programming
-dev-python/bsddb3 6.2.4: Python bindings for Berkeley DB
+dev-python/bsddb3 6.2.4 6.2.7: Python bindings for Berkeley DB
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/bz2file 0.98: Replacement for bz2.BZ2File with features from newest CPython
 dev-python/cached-property 1.5.1: A cached-property for decorating methods in classes
