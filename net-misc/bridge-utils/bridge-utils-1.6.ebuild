@@ -44,6 +44,10 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	emake AR=$(tc-getAR)
+}
+
 src_install() {
 	emake install DESTDIR="${D}"
 	dodoc AUTHORS ChangeLog README THANKS TODO \
