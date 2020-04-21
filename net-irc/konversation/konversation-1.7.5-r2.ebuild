@@ -65,6 +65,7 @@ PATCHES=(
 	# git master
 	"${FILESDIR}"/${P}-kf5bookmarks-5.69.patch
 	"${FILESDIR}"/${P}-unused-kemoticons.patch
+	"${FILESDIR}"/${P}-qt-5.15.patch
 )
 
 src_configure() {
