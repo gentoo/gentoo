@@ -8862,7 +8862,7 @@ dev-python/uvloop 0.14.0: Ultra-fast implementation of asyncio event loop on top
 dev-python/vcrpy 1.11.1 1.12.0 4.0.2: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.42: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.16.0.0: Use version control tags to discover version numbers
-dev-python/vdf 3.2: A module for (de)serialization to and from VDF, Valve's key-value text format
+dev-python/vdf 3.2 3.2-r1: A module for (de)serialization to and from VDF, Valve's key-value text format
 dev-python/vdirsyncer 0.16.7: Synchronize calendars and contacts
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18: Easy VCS-based management of project version strings
