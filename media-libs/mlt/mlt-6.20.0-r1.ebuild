@@ -89,7 +89,10 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
 
-PATCHES=( "${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
+	"${FILESDIR}"/${P}-qt-5.15.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
