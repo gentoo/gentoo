@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite(+)"
 
 inherit desktop distutils-r1 virtualx
 
 DESCRIPTION="Clean junk to free disk space and to maintain privacy"
 HOMEPAGE="https://www.bleachbit.org"
-SRC_URI="https://download.bleachbit.org/beta/${PV}/${P}.tar.bz2"
+SRC_URI="https://download.bleachbit.org/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -38,10 +38,6 @@ python_prepare_all() {
 		# fails due to non-existent $HOME/.profile
 		rm tests/TestInit.py || die
 
-		# permission error on $PORTAGE_TMPDIR
-		sed -e "s/test_encoding(self)/_&/" \
-			-i tests/TestCLI.py || die
-
 		# fails on upstream Travis CI as well as on Gentoo
 		sed -e "s/test_get_proc_swaps(self)/_&/" \
 			-i tests/TestMemory.py || die
@@ -52,6 +48,10 @@ python_prepare_all() {
 
 python_compile_all() {
 	emake -C po local
+}
+
+python_test() {
+	virtx emake tests
 }
 
 python_install() {
@@ -71,8 +71,4 @@ python_install_all() {
 
 	doicon ${PN}.png
 	domenu org.${PN}.BleachBit.desktop
-}
-
-python_test() {
-	virtx emake tests
 }

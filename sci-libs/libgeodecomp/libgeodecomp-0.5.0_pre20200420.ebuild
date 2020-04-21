@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake cuda virtualx
 
-MY_COMMIT="09529db4b3f458f93a0240be578d1da6f1c2dc21"
+MY_COMMIT="69c5573ac7b2b654d649e8902fad73b05bf33644"
 
 DESCRIPTION="An auto-parallelizing library to speed up computer simulations"
 HOMEPAGE="
@@ -23,7 +23,7 @@ BDEPEND="
 		app-doc/doxygen
 		app-text/texlive
 		media-gfx/graphviz
-		)"
+	)"
 RDEPEND="dev-libs/boost"
 DEPEND="${RDEPEND}
 	~dev-libs/libflatarray-0.4.0_pre20200314
@@ -42,12 +42,9 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/libgeodecomp-${MY_COMMIT}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-hpx.patch"
-	"${FILESDIR}/${P}-libdir.patch"
-	"${FILESDIR}/${P}-mpi.patch"
-	"${FILESDIR}/${P}-warnings.patch"
-)
+PATCHES=( "${FILESDIR}/${P}-mpi.patch" )
+
+DOCS=( README )
 
 src_prepare() {
 	cmake_src_prepare
@@ -76,8 +73,7 @@ src_compile() {
 }
 
 src_install() {
-	DOCS=( README )
-	use doc && HTML_DOCS=( doc/html/* )
+	use doc && local HTML_DOCS=( doc/html/* )
 	cmake_src_install
 }
 
