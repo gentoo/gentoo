@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.14.0-no-docs.patch"
 	"${FILESDIR}/${PN}-1.16.2-enable-tests.patch" # enable tests with system libbson
 	"${FILESDIR}/${PN}-1.16.2-single-doc-job.patch"
+	"${FILESDIR}/${PN}-1.16.2-sphinx.patch"
 )
 
 src_prepare() {
