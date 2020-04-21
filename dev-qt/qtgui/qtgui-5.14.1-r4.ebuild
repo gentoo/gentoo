@@ -7,7 +7,7 @@ QT5_MODULE="qtbase"
 inherit qt5-build
 
 DESCRIPTION="The GUI module and platform plugins for the Qt5 framework"
-SLOT=5/${PV} # bug 707658
+SLOT=5/$(ver_cut 1-3) # bug 707658
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
@@ -26,7 +26,7 @@ REQUIRED_USE="
 	X? ( gles2-only? ( egl ) )
 "
 
-COMMON_DEPEND="
+RDEPEND="
 	dev-libs/glib:2
 	~dev-qt/qtcore-${PV}
 	dev-util/gtk-update-icon-cache
@@ -66,16 +66,9 @@ COMMON_DEPEND="
 		x11-libs/xcb-util-wm
 	)
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	evdev? ( sys-kernel/linux-headers )
 	udev? ( sys-kernel/linux-headers )
-"
-# bug 703306, _populate_Gui_plugin_properties breaks installed cmake modules
-RDEPEND="${COMMON_DEPEND}
-	!<dev-qt/qtimageformats-5.14.0:5
-	!<dev-qt/qtsvg-5.14.0:5
-	!<dev-qt/qtvirtualkeyboard-5.14.0:5
-	!<dev-qt/qtwayland-5.14.0:5
 "
 PDEPEND="
 	ibus? ( app-i18n/ibus )
@@ -179,8 +172,8 @@ src_configure() {
 		-opengl $(usex gles2-only es2 desktop)
 		$(qt_use png libpng system)
 		$(qt_use tslib)
-		$(qt_use vulkan)
 		$(qt_use udev libudev)
+		$(qt_use vulkan)
 		$(qt_use X xcb system)
 		$(usex X '-xcb-xlib -xcb-xinput -xkb' '')
 	)
