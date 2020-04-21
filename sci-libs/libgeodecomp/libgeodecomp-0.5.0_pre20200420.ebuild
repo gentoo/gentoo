@@ -23,7 +23,7 @@ BDEPEND="
 		app-doc/doxygen
 		app-text/texlive
 		media-gfx/graphviz
-		)"
+	)"
 RDEPEND="dev-libs/boost"
 DEPEND="${RDEPEND}
 	~dev-libs/libflatarray-0.4.0_pre20200314
@@ -43,6 +43,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/libgeodecomp-${MY_COMMIT}"
 
 PATCHES=( "${FILESDIR}/${P}-mpi.patch" )
+
+DOCS=( README )
 
 src_prepare() {
 	cmake_src_prepare
@@ -71,8 +73,7 @@ src_compile() {
 }
 
 src_install() {
-	DOCS=( README )
-	use doc && HTML_DOCS=( doc/html/* )
+	use doc && local HTML_DOCS=( doc/html/* )
 	cmake_src_install
 }
 
