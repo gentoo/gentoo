@@ -19,6 +19,7 @@ DEPEND="dev-python/sphinx"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.14.0-no-docs.patch"
 	"${FILESDIR}/${PN}-1.16.2-single-doc-job.patch"
+	"${FILESDIR}/${PN}-1.16.2-sphinx.patch"
 )
 
 S="${WORKDIR}/mongo-c-driver-${PV}"
