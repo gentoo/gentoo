@@ -4583,7 +4583,7 @@ dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library 
 dev-java/openjdk 8.242 8.252_p09 11.0.6 11.0.7_p10: Open source implementation of the Java programming language
 dev-java/openjdk-bin 8.242_p08 8.252_p09 11.0.6_p10 11.0.7_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
 dev-java/openjdk-jre-bin 8.242_p08-r1 8.252_p09 11.0.6_p10 11.0.7_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
-dev-java/openjfx 11.0.6_p2 11.0.7_p0: Java OpenJFX client application platform
+dev-java/openjfx 11.0.6_p2 11.0.7_p0 11.0.7_p1: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
 dev-java/oracle-jre-bin 1.8.0.202: Oracle's Java SE Runtime Environment
@@ -8335,7 +8335,7 @@ dev-python/pygtk 2.24.0-r4 2.24.0-r5: GTK+2 bindings for Python
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 1.9.0-r1: Hamcrest framework for matcher objects
-dev-python/pyicu 2.4.2: Python bindings for dev-libs/icu
+dev-python/pyicu 2.4.2 2.4.3: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyilmbase 2.3.0-r2: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
