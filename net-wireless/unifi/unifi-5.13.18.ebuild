@@ -4,7 +4,7 @@
 EAPI=6
 
 # Set this var for any releases except stable
-RC_SUFFIX="-e24b0812ee"
+RC_SUFFIX="-b0197fba32"
 
 inherit systemd
 
@@ -14,7 +14,7 @@ SRC_URI="https://dl.ui.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
 KEYWORDS="~amd64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
-SLOT="0/5.12"
+SLOT="0/5.13"
 IUSE="systemd"
 
 RDEPEND="
@@ -45,13 +45,8 @@ src_prepare() {
 }
 
 src_install() {
-	# Install MongoDB wrapper script, to avoid problems with >= 3.6.0
-	# See https://community.ubnt.com/t5/UniFi-Routing-Switching/MongoDB-3-6/td-p/2195435
-	exeinto /usr/lib/unifi/bin
-	newexe "${FILESDIR}"/mongod-wrapper mongod
-
 	insinto /usr/lib/unifi
-	doins -r dl lib webapps
+	doins -r bin dl lib webapps
 
 	diropts -o unifi -g unifi
 	keepdir /var/lib/unifi/{conf,data,run,tmp,work} /var/log/unifi
