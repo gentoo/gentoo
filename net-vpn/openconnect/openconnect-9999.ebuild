@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3 autotools
 else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64"
 fi
 VPNC_VER=20200226
 SRC_URI="${ARCHIVE_URI}
@@ -24,7 +24,8 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi libproxy lz4 nls smartcard static-libs stoken"
+IUSE="doc +gnutls gssapi libproxy lz4 nls smartcard static-libs stoken test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libxml2
@@ -52,6 +53,11 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( ${PYTHON_DEPS} sys-apps/groff )
 	nls? ( sys-devel/gettext )
+	test? (
+		net-libs/socket_wrapper
+		net-vpn/ocserv
+		sys-libs/uid_wrapper
+	)
 "
 
 CONFIG_CHECK="~TUN"
