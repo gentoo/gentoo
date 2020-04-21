@@ -67,6 +67,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.3.6-iproute2-path.patch" #480636
 	"${FILESDIR}/${PN}-4.2.5-bindtodevice-inet6.patch" #471142
 	"${FILESDIR}/${PN}-4.3.3-ldap-ipv6-client-id.patch" #559832
+
+	# Possible upstream candidates
+	"${FILESDIR}/${PN}-4.4.2-fno-common.patch" #710194
 )
 
 src_prepare() {
