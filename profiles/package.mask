@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@cmpct.info> (2020-04-24)
+# Out of date with security bugs.
+# Please use www-client/seamonkey instead.
+# Removal in 30 days. Bug #718738.
+www-client/seamonkey-bin
+
 # Zac Medico <zmedico@gentoo.org> (2020-04-26)
 # Mask obsolete and vulnerable dev-go/go-crypto, along with obsolete
 # reverse dependencies. Removal in 30 days.  Bug #710142.
