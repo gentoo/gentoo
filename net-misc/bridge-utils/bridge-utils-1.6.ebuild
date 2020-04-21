@@ -29,6 +29,9 @@ get_headers() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/libbridge-substitute-AR-variable-from-configure.patch
+	)
 	default
 	eautoreconf
 }
@@ -42,10 +45,6 @@ src_configure() {
 		--with-linux-headers="$(get_headers)"
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_compile() {
-	emake AR=$(tc-getAR)
 }
 
 src_install() {
