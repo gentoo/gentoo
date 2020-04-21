@@ -5,9 +5,9 @@
 		<email>imirkin@alum.mit.edu</email>
 		<name>Ilia Mirkin</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+	<maintainer type="person">
+		<email>mattst88@gentoo.org</email>
+		<name>Matt Turner</name>
 	</maintainer>
 	<use>
 		<flag name="background">Enable background image support via
