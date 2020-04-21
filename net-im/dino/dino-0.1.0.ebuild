@@ -28,11 +28,11 @@ RDEPEND="
 	dev-libs/icu
 	dev-libs/libgee:0.8
 	net-libs/glib-networking
-	net-libs/libsignal-protocol-c
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango
+	~net-libs/libsignal-protocol-c-2.3.2
 	gpg? ( app-crypt/gpgme:1 )
 	http? ( net-libs/libsoup:2.4 )
 	omemo? (
