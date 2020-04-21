@@ -41,6 +41,10 @@ src_configure() {
 		--with-linux-headers="$(get_headers)"
 }
 
+src_compile() {
+	emake AR=$(tc-getAR)
+}
+
 src_install() {
 	emake install DESTDIR="${D}"
 	dodoc AUTHORS ChangeLog README THANKS TODO \
