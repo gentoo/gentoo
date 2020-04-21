@@ -54,6 +54,8 @@ RDEPEND="${DEPEND}
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_PLASMOID=$(usex plasma)
