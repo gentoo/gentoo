@@ -112,7 +112,6 @@ app-admin/syslog-ng kafka
 # No ia64 arch support for jit. Version 17 USE=debug
 # required USE=jit.
 dev-lang/spidermonkey jit
-=dev-lang/spidermonkey-17* debug
 
 # Mart Raudsepp <leio@gentoo.org> (2019-03-17)
 # Unkeyworded media-libs/opencv dependency, bug #680656
