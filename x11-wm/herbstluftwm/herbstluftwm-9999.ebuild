@@ -22,7 +22,6 @@ SLOT="0"
 IUSE="examples xinerama zsh-completion"
 
 DEPEND="
-	>=dev-libs/glib-2.24:2
 	x11-libs/libX11
 	x11-libs/libXext
 	xinerama? ( x11-libs/libXinerama )
