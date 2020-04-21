@@ -4955,7 +4955,7 @@ dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
 dev-libs/kasync 0.3.0: C++ library for controlling asynchronous tasks
-dev-libs/kdiagram 2.6.1-r1 2.6.3: Powerful libraries (KChart, KGantt) for creating business diagrams
+dev-libs/kdiagram 2.6.1-r1 2.6.3 2.7.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r201 0.3.2-r300: A library for registering global keyboard shortcuts
 dev-libs/keystone 0.9.1 9999: assembly/assembler framework + bindings
 dev-libs/klibc 2.0.4-r3: A minimal libc subset for use with initramfs
@@ -7286,7 +7286,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.59 0.60: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.9.3 1.10.1: Dependency Manager for PHP
+dev-php/composer 1.9.3 1.10.1 1.10.5: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0: Utility to instantiate objects in PHP without invoking their constructors
@@ -7329,7 +7329,7 @@ dev-php/pecl-propro 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r2: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 2.0.0-r2 2.0.1: A reusable, persistent handle and resource factory API
-dev-php/pecl-redis 3.1.6-r1 4.2.0 4.3.0 5.0.2 5.1.1: PHP extension for interfacing with Redis
+dev-php/pecl-redis 3.1.6-r1 4.2.0 4.3.0 5.0.2 5.1.1 5.2.1: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 2.0.1-r3: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers
@@ -7594,7 +7594,7 @@ dev-python/configshell-fb 1.1.25: A Python library for building configuration sh
 dev-python/confuse 1.0.0: Confuse is a configuration library for Python that uses YAML
 dev-python/consonance 0.1.3: WhatsApp's handshake implementation using Noise Protocol
 dev-python/constantly 15.1.0-r1: Symbolic constants in Python
-dev-python/construct 2.9.45: A powerful declarative parser for binary data
+dev-python/construct 2.9.46 2.10.56: A powerful declarative parser for binary data
 dev-python/contextlib2 0.6.0 0.6.0_p1: Backports and enhancements for the contextlib module
 dev-python/contextvars 2.4: Backport of Python 3.7 contextvars module (PEP 567) for Python 3.6
 dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/renderer
@@ -7649,7 +7649,7 @@ dev-python/dissononce 0.34.3: A python implementation for Noise Protocol Framewo
 dev-python/distlib 0.3.0: Low-level components of distutils2/packaging
 dev-python/distributed 1.18.0-r1: Python library for distributed computation
 dev-python/distro 1.0.4-r1 1.3.0: Reliable machine-readable Linux distribution information for Python
-dev-python/dj-database-url 0.4.2: Use Database URLs in your Django Application
+dev-python/dj-database-url 0.4.2 0.5.0: Use Database URLs in your Django Application
 dev-python/django 2.2.11 2.2.12: High-level Python web framework
 dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
 dev-python/django-cacheops 4.2: ORM cache with automatic granular event-driven invalidation for Django
@@ -7659,7 +7659,7 @@ dev-python/django-durationfield 0.5.4: Reusable app for adding a DurationField t
 dev-python/django-filter 2.2.0: Django app allowing declarative dynamic QuerySet filtering from URL parameters
 dev-python/django-js-asset 1.2.2: script tag with additional attributes for django.forms.Media
 dev-python/django-mptt 0.11.0: utilities for modified preorder tree traversal and trees of model instances
-dev-python/django-otp 0.4.3: Django framework adding two-factor authentication using one-time passwords
+dev-python/django-otp 0.4.3 0.9.0: Django framework adding two-factor authentication using one-time passwords
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
 dev-python/django-prometheus 2.0.0: Library to export django metrics for prometheus
 dev-python/django-redis 4.10.0: Full featured redis cache backend for Django.
@@ -14780,7 +14780,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.6 8.1.7 9.0.0 9.0.1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.2.3 7.2.5 8.1.7 8.1.9 9.0.1 9.0.2 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -14923,7 +14923,7 @@ net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
-net-misc/openssh 7.5_p1-r5 7.7_p1-r10 7.9_p1-r5 8.0_p1-r5 8.1_p1-r3 8.2_p1-r5 8.2_p1-r6: Port of OpenBSD's free SSH release
+net-misc/openssh 8.1_p1-r3 8.2_p1-r5 8.2_p1-r6: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.10.2 2.11.1-r1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.6.0.13018 2.6.1.13407-r1: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8.1 1.9 2.1: Packet generator tool for ethernet
