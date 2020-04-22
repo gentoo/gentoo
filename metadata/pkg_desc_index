@@ -14872,7 +14872,7 @@ net-misc/liveice 2000530-r2: Live Source Client For IceCast
 net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 1.0.3 1.0.4 1.0.5: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
-net-misc/megatools 1.10.2-r1: Command line tools and C library for accessing Mega cloud storage
+net-misc/megatools 1.10.3: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.5.22 1.6.2 1.6.3 1.6.5: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
@@ -15575,7 +15575,7 @@ sci-biology/kallisto 0.43.1 9999: Near-optimal RNA-Seq quantification
 sci-biology/lagan 2.0-r3: The LAGAN suite of tools for whole-genome multiple alignment of genomic DNA
 sci-biology/last 299-r1: Genome-scale comparison of biological sequences
 sci-biology/libgtextutils 0.6.1: Gordon Text utils Library
-sci-biology/mafft 7.050 7.215 7.305: Multiple sequence alignments using a variety of algorithms
+sci-biology/mafft 7.305: Multiple sequence alignments using a variety of algorithms
 sci-biology/maq 0.7.1-r2: Mapping and Assembly with Qualities, mapping NGS reads to reference genomes
 sci-biology/maqview 0.2.5-r3: GUI for sci-biology/maq, a short read mapping assembler
 sci-biology/mcl 14.137: A Markov Cluster Algorithm implementation
