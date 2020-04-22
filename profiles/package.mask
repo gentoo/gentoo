@@ -649,11 +649,6 @@ media-video/gtk-recordmydesktop
 # Bug #708164, masked for removal in 30 days.
 media-video/pymp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# No signs of porting work, bug #708076, masked for removal in 30 days.
-x11-misc/xplanetFX
-
 # Jonas Stein <jstein@gentoo.org> (2020-03-21)
 # Package masked for removal. Broken SRC_URI,
 # upstream is dead.
