@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="Command line tools and C library for accessing Mega cloud storage"
 HOMEPAGE="https://megatools.megous.com"
-SRC_URI="https://github.com/megous/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://megatools.megous.com/builds/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
