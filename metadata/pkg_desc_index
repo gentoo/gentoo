@@ -5051,7 +5051,7 @@ dev-libs/libical 3.0.7 3.0.8: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.15.4: Library to handle input devices in Wayland
+dev-libs/libinput 1.15.4 1.15.5: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.0 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
@@ -15238,7 +15238,7 @@ net-vpn/networkmanager-vpnc 1.2.6-r1 1.2.6-r2: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/ocserv 1.0.0: Openconnect SSL VPN server
-net-vpn/openconnect 8.05 8.06 8.08 9999: Free client for Cisco AnyConnect SSL VPN software
+net-vpn/openconnect 8.06 8.08 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.13.2: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6 2.4.6-r1 2.4.7-r1 2.4.8 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r4: P2P mesh VPN
@@ -17826,7 +17826,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 81.0.4044.113 83.0.4103.14: Open-source version of Google Chrome web browser
+www-client/chromium 81.0.4044.113 81.0.4044.122 83.0.4103.14: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
