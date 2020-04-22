@@ -7,6 +7,6 @@
   </longdescription>
   <upstream>
     <remote-id type="github">aliles/filemagic</remote-id>
-    <remote-id type="pypi">kafka-python</remote-id>
+    <remote-id type="pypi">filemagic</remote-id>
   </upstream>
 </pkgmetadata>
