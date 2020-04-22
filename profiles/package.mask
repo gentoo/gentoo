@@ -365,21 +365,6 @@ dev-tcltk/tcl-mccp
 # Masked for testing
 >=dev-libs/libressl-3.1.0
 
-# Marek Szuba <marecki@gentoo.org> (2020-04-08)
-# All of these block app-eselect/eselect-opencl in order to prevent
-# file collisions in /usr/include/CL and on /usr/lib/libOpenCL.so* .
-# However, eselect-opencl is still required by x11-drivers/nvidia-drivers
-# (even with USE=-uvm, i.e. when it does NOT handle OpenCL) - which by design
-# does not appear in virtual/opencl-3.
-# Moreover, upgrading to either of the loader ebuilds listed here
-# will on systems using FEATURES=collision-protect require prior manual
-# clean-up of libOpenCL links created by eselect-opencl so even with the Nvidia
-# situation taken care of, we should probably publish an appropriate news item
-# before unmasking these.
->=dev-libs/ocl-icd-2.2.12-r3
-dev-libs/opencl-icd-loader
-dev-util/opencl-headers
-
 # Joonas Niilola <juippis@gentoo.org> (2020-04-05)
 # Not maintained in Gentoo, doesn't build for 2 years, has only
 # deprecated version present in Gentoo. Has a huge number of open
