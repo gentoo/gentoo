@@ -28,8 +28,10 @@ RESTRICT=test
 src_configure() {
 	# The ./configure file is handwritten and doesn't support a `make
 	# install` target, so there are no --prefix options. The econf
-	# function appends those automatically, so we can't use it.
-	./configure \
+	# function appends those automatically, so we can't use it. We
+	# Have to set $CC here, too (and not just in the call to emake),
+	# because the ./configure script checks for it.
+	CC="$(tc-getCC)" ./configure \
 		$(use_enable ipv6) \
 		$(use_enable zlib) \
 		|| die "./configure failed"
