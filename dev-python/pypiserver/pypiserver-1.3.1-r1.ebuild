@@ -15,7 +15,9 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ~sparc x86"
 IUSE="test"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/pip[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/wheel-0.25.0[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	dev-python/setuptools-git[${PYTHON_USEDEP}]
