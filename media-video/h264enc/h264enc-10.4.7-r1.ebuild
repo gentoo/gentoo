@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Script to encode H.264/AVC/MPEG-4 Part 10 formats"
-HOMEPAGE="http://h264enc.sourceforge.net/"
+HOMEPAGE="https://h264enc.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -21,7 +21,7 @@ RDEPEND="
 	aac? (
 		media-libs/faac
 		media-libs/libaacplus
-		)
+	)
 	dvd? ( media-video/lsdvd )
 	flac? ( media-libs/flac )
 	lame? ( media-sound/lame )
@@ -31,7 +31,7 @@ RDEPEND="
 	vorbis? ( media-sound/vorbis-tools )"
 DEPEND=""
 
-PATCHES=( "${FILESDIR}"/libaacplusenc.patch )
+PATCHES=( "${FILESDIR}"/${P}-libaacplusenc.patch )
 
 src_install() {
 	dobin ${PN}
