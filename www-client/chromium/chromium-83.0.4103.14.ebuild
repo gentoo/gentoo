@@ -428,7 +428,7 @@ src_prepare() {
 			mkdir -p source/config/linux/ppc64 || die
 			./generate_gni.sh || die
 			popd >/dev/null || die
-		fi	
+		fi
 	fi
 	if use tcmalloc; then
 		keeplibs+=( third_party/tcmalloc )
