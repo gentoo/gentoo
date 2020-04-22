@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Code specific for Read the Docs and Sphinx"
@@ -25,8 +25,3 @@ BDEPEND="
 # unittest should be sufficient but tests are very verbose, so pytest's
 # output capture is most welcome
 distutils_enable_tests pytest
-
-src_prepare() {
-	sed -i -e '/find_packages/s:):, exclude=["tests"]):' setup.py || die
-	distutils-r1_src_prepare
-}
