@@ -639,10 +639,6 @@ games-misc/OilWar
 x11-libs/gtkglarea
 media-sound/galan
 
-# Matt Turner <mattst88@gentoo.org> (2020-03-20)
-# No reverse deps. GNOME 2 era slot. Removal in 30 days
-gnome-base/gnome-desktop:2
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
