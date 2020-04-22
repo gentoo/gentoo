@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-04-22)
+# Package is no longer being updated upstream.
+# Replaced by app-i18n/man-pages-l10n[l10n_pl].
+# Masked for removal in 30 days. Bug #717744.
+app-i18n/man-pages-pl
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
