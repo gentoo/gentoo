@@ -1,4 +1,4 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,10 +13,10 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/Haivision/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 -sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 -sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
-LICENSE="MPL-2.0"
+LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="gnutls libressl"
 
@@ -32,20 +32,18 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( README.md )
-
 PATCHES=(
 	"${FILESDIR}/${PN}-always-GNUInstallDirs.patch"
 )
 
 src_prepare() {
 	cmake-utils_src_prepare
-	sed -i -e "s:hcrypt_ut.c::" "${S}"/haicrypt/*.maf || die
-	sed -i -e 's:DESTINATION lib:DESTINATION lib${LIB_SUFFIX}:' CMakeLists.txt || die
+	sed -i -e "s:hcrypt_ut.c::" haicrypt/*.maf || die
 }
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_STATIC=OFF
 		-DUSE_GNUTLS=$(usex gnutls)
 	)
 	cmake-multilib_src_configure

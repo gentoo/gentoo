@@ -1,4 +1,4 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,20 +36,18 @@ DEPEND="${RDEPEND}
 
 RESTRICT="!test? ( test )"
 
-DOCS=( README.md )
-
 PATCHES=(
 	"${FILESDIR}/${PN}-always-GNUInstallDirs.patch"
 )
 
 src_prepare() {
 	cmake-utils_src_prepare
-	sed -i -e "s:hcrypt_ut.c::" "${S}"/haicrypt/*.maf || die
-	sed -i -e 's:DESTINATION lib:DESTINATION lib${LIB_SUFFIX}:' CMakeLists.txt || die
+	sed -i -e "s:hcrypt_ut.c::" haicrypt/*.maf || die
 }
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_STATIC=OFF
 		-DUSE_GNUTLS=$(usex gnutls)
 		-DENABLE_UNITTESTS=$(usex test)
 	)
