@@ -261,6 +261,11 @@ meson_src_configure() {
 		"${BUILD_DIR}"
 	)
 
+	# Used by symbolextractor.py
+	# https://bugs.gentoo.org/717720
+	tc-export NM
+	tc-getPROG READELF readelf >/dev/null
+
 	# https://bugs.gentoo.org/625396
 	python_export_utf8_locale
 

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit llvm meson multilib-minimal pax-utils python-any-r1
+inherit llvm meson multilib-minimal python-any-r1
 
 OPENGL_DIR="xorg-x11"
 
@@ -501,8 +501,6 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	meson_src_install
-
-	use libglvnd && rm -f "${D}"/usr/$(get_libdir)/pkgconfig/{egl,gl}.pc
 }
 
 multilib_src_install_all() {
