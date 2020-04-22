@@ -1,0 +1,70 @@
+Title: Python 3.7 to become the default target
+Author: Michał Górny <mgorny@gentoo.org>
+Posted: 2020-04-22
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: dev-lang/python:3.6
+Display-If-Installed: dev-lang/python:3.7
+
+On 2020-05-06 (or later), Python 3.7 will replace Python 3.6 as one
+of the default Python targets for Gentoo systems.  The new default
+values will be:
+
+    PYTHON_TARGETS="python2_7 python3_7"
+    PYTHON_SINGLE_TARGET="python3_7"
+
+If you have not overriden these variables on your system, then your
+package manager will switch to the new targets immediately.  In order
+to avoid dependency conflicts, please clean stray packages up
+and rebuild/upgrade all packages with USE flag changes after the change,
+e.g.:
+
+    emerge --depclean
+    emerge -1vUD @world
+    emerge --depclean
+
+Please note that during the system upgrade some of the package
+dependencies may temporarily become missing.  While this should not
+affect programs that are already fully loaded, it may cause ImportErrors
+when starting Python scripts or loading additional modules (only scripts
+running Python 3.6 are affected).
+
+In order to improve stability of the upgrade, you may choose to
+temporarily enable both targets, i.e. set in /etc/portage/package.use
+or its equivalent:
+
+    */* PYTHON_TARGETS: python3_6 python3_7
+    */* PYTHON_SINGLE_TARGET: -* python3_6
+
+This will cause the dependencies to include both Python 3.6 and 3.7
+support whenever possible, throughout the next system upgrade.  Once all
+packages are updated, you can restart your scripts, remove the setting
+and start another upgrade in order to cleanly remove Python 3.6.
+
+There are still some Gentoo packages that do not support Python 3.7.
+We will be pushing updates to these packages as time permits.  However,
+some of them will probably be removed instead.
+
+If you would like to postpone the switch to Python 3.7, you can copy
+the current value of PYTHON_TARGETS and/or PYTHON_SINGLE_TARGET
+to /etc/portage/package.use or its equivalent:
+
+    */* PYTHON_TARGETS: -python3_7 python3_6
+    */* PYTHON_SINGLE_TARGET: -* python3_6
+
+If you would like to migrate your systems earlier, you can do
+the opposite.  Note that if you are running ~arch, you may want to go
+straight for Python 3.8 at this point.
+
+Please note that this switch is long overdue.  Python 3.6 is no longer
+receiving bug fixes.  Its planned end-of-life is 2021-12-23 but we will
+probably remove it earlier than that.  [1]
+
+All above snippets assume using package.use to control USE flags.
+If you still have make.conf entries for these targets, you need
+to remove them.  While using make.conf is possible, it is strongly
+discouraged as it does not respect package defaults.  The latter
+can help you keep some of Python 3.6 packages without the need to
+explicitly toggle flags per-package.
+
+[1] https://devguide.python.org/#status-of-python-branches
