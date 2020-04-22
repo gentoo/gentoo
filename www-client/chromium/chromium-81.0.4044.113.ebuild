@@ -89,9 +89,6 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/gzip-1.7
-	!arm? (
-		dev-lang/yasm
-	)
 	dev-lang/perl
 	dev-util/gn
 	dev-vcs/git
@@ -101,8 +98,12 @@ BDEPEND="
 	sys-apps/hwids[usb(+)]
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
-	closure-compile? ( virtual/jre )
 	virtual/pkgconfig
+	closure-compile? ( virtual/jre )
+	!system-libvpx? (
+		amd64? ( dev-lang/yasm )
+		x86? ( dev-lang/yasm )
+	)
 "
 
 : ${CHROMIUM_FORCE_CLANG=no}
@@ -403,6 +404,15 @@ src_prepare() {
 	if ! use system-libvpx; then
 		keeplibs+=( third_party/libvpx )
 		keeplibs+=( third_party/libvpx/source/libvpx/third_party/x86inc )
+
+		# we need to generate ppc64 stuff because upstream does not ship it yet
+		# it has to be done before unbundling.
+		if use ppc64; then
+			pushd third_party/libvpx >/dev/null || die
+			mkdir -p source/config/linux/ppc64 || die
+			./generate_gni.sh || die
+			popd >/dev/null || die
+		fi
 	fi
 	if use tcmalloc; then
 		keeplibs+=( third_party/tcmalloc )
@@ -569,6 +579,9 @@ src_configure() {
 	elif [[ $myarch = arm ]] ; then
 		myconf_gn+=" target_cpu=\"arm\""
 		ffmpeg_target_arch=$(usex cpu_flags_arm_neon arm-neon arm)
+	elif [[ $myarch = ppc64 ]] ; then
+		myconf_gn+=" target_cpu=\"ppc64\""
+		ffmpeg_target_arch=ppc64
 	else
 		die "Failed to determine target arch, got '$myarch'."
 	fi
