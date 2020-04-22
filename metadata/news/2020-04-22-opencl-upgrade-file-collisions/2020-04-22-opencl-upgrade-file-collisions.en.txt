@@ -1,0 +1,28 @@
+Title: Potential file collisions during OpenCL upgrade
+Author: Marek Szuba <marecki@gentoo.org>
+Posted: 2020-04-22
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: app-eselect/eselect-opencl
+
+OpenCL support in Gentoo is now being migrated to having all implementations
+operate through an ICD loader (dev-libs/ocl-icd or dev-libs/opencl-icd-loader)
+installed directly into /usr rather than using eselect-opencl to switch
+between implementations, with updated loader ebuilds having just been released
+to the public. Unfortunately although the upgrade process will automatically
+uninstall app-eselect/eselect-opencl, it will not remove the symbolic links to
+libOpenCL.so created by this tool in library directories because those links
+are not owned by the package in question.
+
+For everyone using the default Gentoo configuration of collision protection
+(FEATURES='-collision-protect protect-owned'), this should cause no trouble
+because this configuration allows the overwriting of orphaned files.
+Obviously, systems with collision protection completely disabled (not
+recommended but technically possible) will not be affected either. However,
+if your system is configured for full collision protection
+(FEATURES=collision-protect), it will be necessary to manually remove those
+links
+
+    rm -i /usr/lib{,64}/libOpenCL.so*
+
+before running the upgrade.
