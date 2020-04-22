@@ -560,7 +560,9 @@ net-dns/dnsimple-dyndns
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
-# new version uses maven + rust
+# new version is not packaged yet
+# package is not going away anytime soon, just masked
+# for security. unmask as needed.
 dev-java/icedtea-web
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-27)
