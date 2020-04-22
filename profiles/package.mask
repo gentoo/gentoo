@@ -638,12 +638,6 @@ media-video/syncplay
 net-im/pyicq-t
 dev-python/nevow
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Possible alternative: media-video/simplescreenrecorder
-# Bug #710172, masked for removal in 30 days.
-media-video/gtk-recordmydesktop
-
 # Jonas Stein <jstein@gentoo.org> (2020-03-21)
 # Package masked for removal. Broken SRC_URI,
 # upstream is dead.
