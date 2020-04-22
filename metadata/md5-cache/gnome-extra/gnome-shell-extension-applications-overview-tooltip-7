@@ -3,9 +3,9 @@ DEPEND=dev-libs/glib:2
 DESCRIPTION=Show tooltip with full name and description
 EAPI=7
 HOMEPAGE=https://github.com/RaphaelRochet/applications-overview-tooltip
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=public-domain
 RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-3.20
 SLOT=0
 SRC_URI=https://github.com/RaphaelRochet/applications-overview-tooltip/archive/v7.tar.gz -> gnome-shell-extension-applications-overview-tooltip-7.tar.gz
-_md5_=9d77703c8b184f9b402d0aee2790510d
+_md5_=7c7eccdb0d1cd7ddd8eafbf8adb36a22
