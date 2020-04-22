@@ -15,14 +15,10 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/pyqtgraph[${PYTHON_USEDEP}]
-		dev-python/pyserial[${PYTHON_USEDEP}]
-		sci-libs/scipy[${PYTHON_USEDEP}]
-	')"
-DEPEND="${RDEPEND}"
+RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/pyqtgraph[${PYTHON_USEDEP}]
+	dev-python/pyserial[${PYTHON_USEDEP}]
+	sci-libs/scipy[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.1-sys_version.patch
