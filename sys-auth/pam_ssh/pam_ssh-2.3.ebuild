@@ -12,17 +12,18 @@ SRC_URI="mirror://sourceforge/pam-ssh/${P}.tar.xz"
 LICENSE="BSD-2 BSD ISC"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 # Only supports OpenSSH via `ssh-agent` #282993
 DEPEND="sys-libs/pam
 	dev-libs/openssl:0="
+
 RDEPEND="${DEPEND}
 	net-misc/openssh"
 
 PATCHES=(
 	# 503424#c5
 	"${FILESDIR}"/${PN}-2.1-dot-ssh-check.patch
+	"${FILESDIR}"/${PN}-gcc10-fix.patch
 )
 
 src_configure() {
