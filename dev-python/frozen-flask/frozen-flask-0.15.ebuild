@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( pypy3 python3_6 )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -36,5 +36,5 @@ python_compile_all() {
 }
 
 python_test() {
-	nosetests || die Tests failed under "${EPYTHON}"
+	nosetests -v || die Tests failed under "${EPYTHON}"
 }
