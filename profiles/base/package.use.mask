@@ -59,7 +59,9 @@ kde-apps/kdesdk-meta bazaar
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Depends on vulnerable old version of icedtea-web #711392
-# new version uses maven + rust
+# new version is not packaged yet
+# package/useflag is not going away anytime soon,
+# just masked. unmask as needed.
 dev-java/icedtea nsplugin webstart
 dev-java/icedtea-bin nsplugin webstart
 dev-java/openjdk nsplugin webstart

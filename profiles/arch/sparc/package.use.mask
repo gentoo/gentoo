@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
+# dev-libs/criterion not yet keyworded
+>=app-admin/syslog-ng-3.25 test
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # Not keyworded on sparc
 net-misc/whois xcrypt
@@ -11,6 +15,7 @@ app-misc/tracker-miners test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # dependencies not yet keyworded
+dev-ruby/rack-cache test
 dev-ruby/activesupport test
 dev-ruby/http test
 
