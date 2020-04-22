@@ -32,8 +32,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( README.md )
-
 PATCHES=(
 	"${FILESDIR}/${PN}-always-GNUInstallDirs.patch"
 )
@@ -41,11 +39,11 @@ PATCHES=(
 src_prepare() {
 	cmake-utils_src_prepare
 	sed -i -e "s:hcrypt_ut.c::" "${S}"/haicrypt/*.maf || die
-	sed -i -e 's:DESTINATION lib:DESTINATION lib${LIB_SUFFIX}:' CMakeLists.txt || die
 }
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_STATIC=OFF
 		-DUSE_GNUTLS=$(usex gnutls)
 	)
 	cmake-multilib_src_configure
