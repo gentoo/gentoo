@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>mattsch@gmail.com</email>
-		<name>Matthew Schultz</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>marcin.deranek@slonko.net</email>
 		<name>Marcin Deranek</name>
 	</maintainer>
