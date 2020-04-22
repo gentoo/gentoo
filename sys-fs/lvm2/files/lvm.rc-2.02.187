@@ -25,22 +25,22 @@ _use_lvmlockd() {
 depend() {
 	before checkfs fsck
 	after modules device-mapper
-	# We may use lvmetad based on the configuration. If we added lvmetad
+	# We may want lvmetad based on the configuration. If we added lvmetad
 	# support while lvm2 is running then we aren't dependent on it. For the
 	# more common case, if its disabled in the config we aren't dependent
 	# on it.
 	config /etc/lvm/lvm.conf
-	local _use=
+	local _want=
 
 	if service_started ; then
-		_use=$(service_get_value use)
+		_want=$(service_get_value want)
 	else
 		if _use_lvmetad ; then
-			_use="${_use} lvmetad"
+			_want="${_want} lvmetad"
 		fi
 
 		if _use_lvmlockd ; then
-			_use="${_use} lvmlockd"
+			_want="${_want} lvmlockd"
 		fi
 	fi
 
@@ -48,8 +48,8 @@ depend() {
 	# Depending on your system, it might also introduce udev & mdraid
 	need sysfs
 
-	if [ -n "${_use}" ] ; then
-		use ${_use}
+	if [ -n "${_want}" ] ; then
+		want ${_want}
 	fi
 }
 
@@ -118,16 +118,16 @@ start() {
 }
 
 start_post() {
-	local _use=
+	local _want=
 	if _use_lvmetad ; then
-		_use="${_use} lvmetad"
+		_want="${_want} lvmetad"
 	fi
 
 	if _use_lvmlockd ; then
-		_use="${_use} lvmlockd"
+		_want="${_want} lvmlockd"
 	fi
 
-	service_set_value use "${_use}"
+	service_set_value want "${_want}"
 }
 
 stop() {
