@@ -4,9 +4,9 @@ DEPEND=app-crypt/libsecret >=net-libs/libnma-1.1.0 net-misc/networkmanager net-v
 DESCRIPTION=NetworkManager StrongSwan plugin
 EAPI=7
 HOMEPAGE=https://www.strongswan.org/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=app-crypt/libsecret >=net-libs/libnma-1.1.0 net-misc/networkmanager net-vpn/strongswan[networkmanager] x11-libs/gtk+:3
 SLOT=0
 SRC_URI=https://download.strongswan.org/NetworkManager/NetworkManager-strongswan-1.4.5.tar.bz2
-_md5_=eb23d62c6e765e3586ec87c464463c5c
+_md5_=474b6acafa7d8043348cac652cd45721
