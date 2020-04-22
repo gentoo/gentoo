@@ -11,6 +11,7 @@ app-misc/tracker-miners test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # dependencies not yet keyworded
+dev-ruby/rack-cache test
 dev-ruby/activesupport test
 dev-ruby/http test
 
