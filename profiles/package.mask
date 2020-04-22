@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-04-22)
+# Unmaintained.  Stuck at Python 3.6.  The only revdep last rited.
+# Removal in 30 days.  Bug #718896.
+dev-python/cligj
+
 # Ulrich Müller <ulm@gentoo.org> (2020-04-22)
 # Package is no longer being updated upstream.
 # Replaced by app-i18n/man-pages-l10n[l10n_pl].
