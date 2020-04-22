@@ -40,3 +40,10 @@ DEPEND="${RDEPEND}
 python_compile_all() {
 	mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
 }
+
+python_install() {
+	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas build )
+	distutils-r1_python_install
+	rm "${ED}"/usr/share/doc/meld-${PV}/{COPYING,NEWS} || die
+	rmdir "${ED}"/usr/share/doc/meld-${PV} || die
+}
