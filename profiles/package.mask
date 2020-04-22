@@ -644,11 +644,6 @@ dev-python/nevow
 # Bug #710172, masked for removal in 30 days.
 media-video/gtk-recordmydesktop
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Bug #708164, masked for removal in 30 days.
-media-video/pymp
-
 # Jonas Stein <jstein@gentoo.org> (2020-03-21)
 # Package masked for removal. Broken SRC_URI,
 # upstream is dead.
