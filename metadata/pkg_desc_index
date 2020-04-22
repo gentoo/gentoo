@@ -7501,7 +7501,7 @@ dev-python/backports-weakref 1.0_p1: Backport of new features in Python's weakre
 dev-python/bandit 1.5.1-r1 1.6.2: A security linter from OpenStack Security
 dev-python/basemap 1.0.7-r4: matplotlib toolkit to plot map projections
 dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
-dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface.
+dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface
 dev-python/bcrypt 3.1.6 3.1.7-r2: Modern password hashing for software and servers
 dev-python/beagle 0.2.1: Command line client for Hound, the code search tool.
 dev-python/beautifulsoup 4.8.1 4.8.2: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
@@ -17937,7 +17937,6 @@ x11-apps/igt-gpu-tools 1.24 9999: Intel GPU userland tools
 x11-apps/listres 1.0.4: list resources in widgets
 x11-apps/luit 20190106: Locale and ISO 2022 support for Unicode terminals
 x11-apps/mesa-progs 8.4.0 9999: Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
-x11-apps/mkfontdir 1.2.0: create an index of X font files in a directory
 x11-apps/mkfontscale 1.2.1: create an index of scalable font files for X
 x11-apps/oclock 1.0.4: round X clock
 x11-apps/radeon-profile 20190603 20190903 99999999: Read current clocks of ATi/AMD Radeon cards
