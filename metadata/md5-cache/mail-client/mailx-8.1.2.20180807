@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=net-libs/liblockfile-1.03 dev-libs/libbsd virtual/mta mail-client/mailx-support
+DESCRIPTION=The $ mail program, which is used to send mail via shell scripts
+EAPI=7
+HOMEPAGE=https://www.debian.org/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=>=net-libs/liblockfile-1.03 dev-libs/libbsd virtual/mta mail-client/mailx-support !mail-client/nail !net-mail/mailutils
+SLOT=0
+SRC_URI=http://http.debian.net/debian/pool/main/b/bsd-mailx/bsd-mailx_8.1.2-0.20180807cvs.orig.tar.xz http://http.debian.net/debian/pool/main/b/bsd-mailx/bsd-mailx_8.1.2-0.20180807cvs-1.debian.tar.xz
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=aee4c153c8caf170e1ed62e61a41c9cd

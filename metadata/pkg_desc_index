@@ -12076,7 +12076,7 @@ mail-client/geary 3.34.2-r3 3.36.0 3.36.1: A lightweight, easy-to-use, feature-r
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
-mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
+mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.13.5: A small but very powerful text-based mail client
 mail-client/neomutt 20180716 20191102 20191111 20191129 20191207 20200313 20200320 20200417 99999999: A small but very powerful text-based mail client
@@ -17756,7 +17756,7 @@ www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 2.2.0: multilanguage CalDAV web client
 www-apps/airdcpp-webui 2.6.0 2.6.1: Web interface for airdcpp-webclient
 www-apps/ampache 3.8.3-r1 3.8.8-r1: PHP-based tool for managing,updating and playing audio files via a web interface
-www-apps/baikal 0.5.2 0.6.0: Lightweight CalDAV+CardDAV server
+www-apps/baikal 0.5.2 0.6.0 0.6.1: Lightweight CalDAV+CardDAV server
 www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for producing static content
 www-apps/blohg 0.13-r4 9999: A Mercurial (or Git) based blogging engine
 www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
@@ -17857,7 +17857,7 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 2.11.1811.52_p1: A browser for our friends
+www-client/vivaldi 2.11.1811.52_p1 3.0.1874.23_p1: A browser for our friends
 www-client/vivaldi-snapshot 3.0.1874.11_p1 3.0.1874.15_p1 3.0.1874.22_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
