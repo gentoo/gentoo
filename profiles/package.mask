@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
+# Unmaintained.  After adding tests, it turns out it's completely
+# broken (can't find magic file).
+# Removal in 30 days.  Bug #718822.
+dev-python/filemagic
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Multiple unresolved vulnerabilities.  No reverse dependencies.
 # Removal in 30 days.  Bug #711016.
 dev-lua/lua-openssl
