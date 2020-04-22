@@ -27,9 +27,15 @@ RDEPEND="${DEPEND}
 	app-misc/mime-types
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-cc.patch"
+)
+
 src_prepare() {
 	default
 	eautoreconf
+	tc-export CC RANLIB AR
+	export CC_FOR_BUILD=$(tc-getBUILD_CC)
 }
 
 src_configure() {
