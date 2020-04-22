@@ -32,8 +32,6 @@ RDEPEND="
 	>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.5[${PYTHON_USEDEP}]
 	>=dev-python/snowballstemmer-1.1[${PYTHON_USEDEP}]
-	>=dev-python/sphinx_rtd_theme-0.1[${PYTHON_USEDEP}]
-	<dev-python/sphinx_rtd_theme-2.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' -2)

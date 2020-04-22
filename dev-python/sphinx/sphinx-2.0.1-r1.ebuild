@@ -36,7 +36,6 @@ RDEPEND="
 	dev-python/sphinxcontrib-htmlhelp[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-serializinghtml[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-qthelp[${PYTHON_USEDEP}]
-	dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	latex? (
 		dev-texlive/texlive-latexextra
