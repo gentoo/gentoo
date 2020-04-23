@@ -5567,7 +5567,7 @@ dev-perl/Alien-Libxml2 0.90.0 0.150.0: Install the C libxml2 library on your sys
 dev-perl/Alien-SDL 1.446.0 1.446.0-r1: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
-dev-perl/AnyEvent 7.140.0: Provides a uniform interface to various event loops
+dev-perl/AnyEvent 7.140.0 7.170.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.240.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-HTTPD 0.930.0: A simple lightweight event based web (application) server
