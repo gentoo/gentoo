@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-13">
+  <title>Git: Information disclosure</title>
+  <synopsis>Multiple vulnerabilities have been found in Git which might all
+    allow attackers to access sensitive information.
+  </synopsis>
+  <product type="ebuild">git</product>
+  <announced>2020-04-23</announced>
+  <revised count="1">2020-04-23</revised>
+  <bug>717156</bug>
+  <bug>718710</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/git" auto="yes" arch="*">
+      <unaffected range="rge">2.23.3</unaffected>
+      <unaffected range="rge">2.24.3</unaffected>
+      <unaffected range="rge">2.25.4</unaffected>
+      <unaffected range="rge">2.26.2</unaffected>
+      <vulnerable range="lt">2.26.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Git is a free and open source distributed version control system
+      designed to handle everything from small to very large projects with
+      speed and efficiency.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Git. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker, by providing a specially crafted URL, could possibly
+      trick Git into returning credential information for a wrong host.
+    </p>
+  </impact>
+  <workaround>
+    <p>Disabling credential helpers will prevent this vulnerability.</p>
+  </workaround>
+  <resolution>
+    <p>All Git 2.23.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-2.23.3"
+    </code>
+    
+    <p>All Git 2.24.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-2.24.3"
+    </code>
+    
+    <p>All Git 2.25.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-2.25.4"
+    </code>
+    
+    <p>All Git 2.26.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-2.26.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11008">CVE-2020-11008</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-5260">CVE-2020-5260</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-23T14:48:48Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-23T15:16:30Z">whissi</metadata>
+</glsa>
