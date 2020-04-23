@@ -3,15 +3,16 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="xml"
-MY_P="${P/_/}"
-RELEASE_SUFFIX="_2019-12-03_2b71d25d45"
+
+RELEASE_SUFFIX="1.0rc1_2020-04-09_09960d6f05"
+
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://inkscape.org/gallery/item/16197/${MY_P}${RELEASE_SUFFIX}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -62,7 +63,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
 	imagemagick? (
-		!graphicsmagick? ( <media-gfx/imagemagick-7:=[cxx] )
+		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
 	jemalloc? ( dev-libs/jemalloc )
@@ -97,14 +98,9 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.65
 "
 
-S="${WORKDIR}/${MY_P}${RELEASE_SUFFIX}"
-
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.0_beta1-detect-imagemagick.patch
-	"${FILESDIR}"/${PN}-1.0_beta1-do-not-compress-man.patch
-)
+S="${WORKDIR}"/${PN}-${RELEASE_SUFFIX}
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
