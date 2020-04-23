@@ -77,6 +77,10 @@ REQUIRED_USE="javafx? ( alsa !headless-awt )"
 
 S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-sigsegv.patch"
+)
+
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
 # should be close enough to be useful.
