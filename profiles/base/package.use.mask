@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mike Gilbert <floppym@gentoo.org> (2020-04-23)
+# Tests are very sensitive to the host environment.
+dev-util/meson test
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Requires dev-python/filemagic that is broken and masked for removal.
 dev-python/jira magic
