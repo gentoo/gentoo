@@ -5562,7 +5562,7 @@ dev-perl/Alien-Base-ModuleBuild 1.60.0 1.140.0: A Module::Build subclass for bui
 dev-perl/Alien-Build 1.790.0 2.210.0: Build external dependencies for use in CPAN
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-LibGumbo 0.50.0 0.50.0-r1: Gumbo parser library
-dev-perl/Alien-Libxml2 0.90.0: Install the C libxml2 library on your system
+dev-perl/Alien-Libxml2 0.90.0 0.150.0: Install the C libxml2 library on your system
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
@@ -12570,7 +12570,7 @@ media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
 media-gfx/pngcrush 1.8.13: Portable Network Graphics (PNG) optimizing utility
 media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
-media-gfx/pngquant 2.12.3 2.12.6: command-line utility and library for lossy compression of PNG images
+media-gfx/pngquant 2.12.3 2.12.6: Command-line utility and library for lossy compression of PNG images
 media-gfx/pngrewrite 1.4.0: Utility which reduces large palettes in PNG images
 media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
