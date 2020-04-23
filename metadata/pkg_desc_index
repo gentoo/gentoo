@@ -943,7 +943,7 @@ app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authenticatio
 app-crypt/ssss 0.5: Shamir's Secret Sharing Scheme
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92: Software Token for Linux/UNIX
-app-crypt/swtpm 0.3.0: Libtpms-based TPM emulator
+app-crypt/swtpm 0.3.1: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tpm-emulator 0.7.5-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
@@ -5297,7 +5297,7 @@ dev-libs/ucommon 6.0.3 6.5.7 7.0.0: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 2.0.0: A very basic terminfo library
 dev-libs/unittest++ 1.6.1 2.0.0: A lightweight unit testing framework for C++
-dev-libs/univalue 1.0.2 1.0.3 1.0.4 9999: C++ universal value object and JSON library
+dev-libs/univalue 1.0.2 1.0.3 1.0.4 1.0.5 9999: C++ universal value object and JSON library
 dev-libs/urdfdom 1.0.0-r1 1.0.3 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 1.0.2 1.0.3 1.0.4 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.9.1 0.9.3: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
@@ -5561,7 +5561,7 @@ dev-perl/Algorithm-Munkres 0.80.0-r1 0.80.0-r2: Munkres solution to classical As
 dev-perl/Alien-Base-ModuleBuild 1.60.0 1.140.0: A Module::Build subclass for building Alien:: modules and their libraries
 dev-perl/Alien-Build 1.790.0 2.210.0: Build external dependencies for use in CPAN
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
-dev-perl/Alien-LibGumbo 0.50.0: Gumbo parser library
+dev-perl/Alien-LibGumbo 0.50.0 0.50.0-r1: Gumbo parser library
 dev-perl/Alien-Libxml2 0.90.0: Install the C libxml2 library on your system
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binaries
@@ -8180,7 +8180,7 @@ dev-python/paste 3.2.3: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 2.0.1-r1: Load, configure, and compose WSGI applications and servers
 dev-python/pastescript 2.0.2-r1: A pluggable command-line frontend, including commands to setup package file layouts
 dev-python/patch 1.16: Library to parse and apply unified diffs
-dev-python/patch-ng 1.17.3: Library to parse and apply unified diffs, fork of dev-python/patch
+dev-python/patch-ng 1.17.3 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
 dev-python/path-py 11.5.2 12.0.2-r1: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
@@ -10307,7 +10307,7 @@ dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1: COmputer Language Manipula
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10 2.12: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
-dev-util/conan 1.23.0: Distributed C/C++ package manager
+dev-util/conan 1.23.0 1.24.1: Distributed C/C++ package manager
 dev-util/conf2struct 1.0 9999: Create C parsers for libconfig and command-line
 dev-util/confix 2.3.5-r2 2.3.5-r3 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 1: Wrapper to select either confix1.py or confix2.py
@@ -17362,7 +17362,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.3 1.6.4: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r7 2.29-r8 2.30-r7 2.30-r8 2.31-r2 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r7 2.29-r8 2.30-r8 2.31-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0 4.20.2-r1 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.1.0: Library for managing partitions
@@ -17767,7 +17767,7 @@ www-apps/cgp 1_p20181209: A graphical web-based front-end for visualizing RRD co
 www-apps/chromedriver-bin 2.24-r1 2.30-r1 2.35-r1 2.40 2.41 74.0.3729.6 76.0.3809.68 77.0.3865.40 78.0.3904.70 78.0.3904.105 79.0.3945.36 80.0.3987.106 81.0.4044.69: WebDriver for Chrome
 www-apps/curator 3.0_p20110120-r3: Gallery generator
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
-www-apps/davical 1.1.9.2: A CalDAV and CardDAV Server
+www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20160626e 20170219e 20180422a 20180422b: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.69 8.7.12 8.7.13 8.8.4 8.8.5: PHP-based open-source platform and content management system
