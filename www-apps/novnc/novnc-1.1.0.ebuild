@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/kanaka/noVNC.git"
 else
 	SRC_URI="https://github.com/kanaka/noVNC/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/noVNC-${PV}"
 fi
 
