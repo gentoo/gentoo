@@ -84,6 +84,8 @@ fi
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,
 # and that gcc already contains the hardened patches.
+# Lastly, let's avoid some openssh nastiness, bug 708224, as
+# convenience to our users.
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
@@ -100,6 +102,7 @@ COMMON_DEPEND="
 	suid? ( caps? ( sys-libs/libcap ) )
 	selinux? ( sys-libs/libselinux )
 	systemtap? ( dev-util/systemtap )
+	!<net-misc/openssh-8.1_p1-r2
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( >=net-dns/libidn2-2.3.0 )
