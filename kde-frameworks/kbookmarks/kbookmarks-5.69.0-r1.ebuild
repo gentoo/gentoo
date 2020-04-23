@@ -32,3 +32,5 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=kde-frameworks/kconfigwidgets-${PVCUT}:5
 "
+
+PATCHES=( "${FILESDIR}/${P}-konqbookmarkmenu.patch" )

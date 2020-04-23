@@ -14,7 +14,7 @@ HOMEPAGE="https://phabricator.kde.org/project/profile/72/"
 
 if [[ ${KDE_BUILD_TYPE} != live ]] ; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-2+"
@@ -22,33 +22,22 @@ SLOT="5"
 IUSE="+kaccounts"
 
 BDEPEND="dev-util/intltool"
-COMMON_DEPEND="
+RDEPEND="
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-apps/libkgapi-19.08.0:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
-	kaccounts? ( kde-apps/kaccounts-integration:5 )
+	kaccounts? ( >=kde-apps/kaccounts-integration-20.03.90:5 )
 	!kaccounts? ( dev-libs/qtkeychain:=[qt5(+)] )
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
 "
-RDEPEND="${COMMON_DEPEND}
-	kaccounts? ( >=kde-apps/kaccounts-providers-19.08.0:5 )
-"
 
 DOCS=( README.md )
-
-PATCHES=( "${FILESDIR}"/${PN}-1.2.6-refresh-credentials.patch )
-
-src_prepare() {
-	has_version ">=kde-apps/kaccounts-providers-20.03.80" &&
-		PATCHES+=( "${FILESDIR}"/${P}-kaccounts-integration-20.04.patch )
-	ecm_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(

@@ -16,7 +16,7 @@ DESCRIPTION="KDE Plasma workspace"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="appstream +calendar feedback geolocation gps qalculate qrcode +semantic-desktop systemd"
+IUSE="appstream +calendar geolocation gps qalculate qrcode +semantic-desktop systemd telemetry"
 
 REQUIRED_USE="gps? ( geolocation )"
 
@@ -87,12 +87,12 @@ COMMON_DEPEND="
 	x11-libs/xcb-util-image
 	appstream? ( dev-libs/appstream[qt5] )
 	calendar? ( >=kde-frameworks/kholidays-${KFMIN}:5 )
-	feedback? ( dev-libs/kuserfeedback:5 )
 	geolocation? ( >=kde-frameworks/networkmanager-qt-${KFMIN}:5 )
 	gps? ( sci-geosciences/gpsd )
 	qalculate? ( sci-libs/libqalculate:= )
 	qrcode? ( >=kde-frameworks/prison-${KFMIN}:5 )
 	semantic-desktop? ( >=kde-frameworks/baloo-${KFMIN}:5 )
+	telemetry? ( dev-libs/kuserfeedback:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
@@ -176,11 +176,11 @@ src_configure() {
 		-DBUILD_xembed-sni-proxy=OFF
 		$(cmake_use_find_package appstream AppStreamQt)
 		$(cmake_use_find_package calendar KF5Holidays)
-		$(cmake_use_find_package feedback KUserFeedback)
 		$(cmake_use_find_package geolocation KF5NetworkManagerQt)
 		$(cmake_use_find_package qalculate Qalculate)
 		$(cmake_use_find_package qrcode KF5Prison)
 		$(cmake_use_find_package semantic-desktop KF5Baloo)
+		$(cmake_use_find_package telemetry KUserFeedback)
 	)
 
 	use geolocation && mycmakeargs+=( $(cmake_use_find_package gps libgps) )
