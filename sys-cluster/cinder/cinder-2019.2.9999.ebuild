@@ -32,6 +32,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
 	app-admin/sudo"
 
+#	>=dev-python/oauth2client-1.5.0[${PYTHON_USEDEP}]  # do not include, upstream depricated
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
@@ -47,7 +48,6 @@ RDEPEND="
 	>=dev-python/keystonemiddleware-4.21.0[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.4.1[${PYTHON_USEDEP}]
 	!~dev-python/lxml-3.7.0[${PYTHON_USEDEP}]
-	>=dev-python/oauth2client-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-concurrency-3.26.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-2.19.2[${PYTHON_USEDEP}]
