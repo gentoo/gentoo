@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit out-of-source
+inherit autotools out-of-source
 
 DESCRIPTION="Library for MS CHM (compressed html) file format"
 HOMEPAGE="http://www.jedrea.com/chmlib/"
@@ -18,6 +18,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.39-stdtypes.patch
 	"${FILESDIR}"/${P}-headers.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 my_src_configure() {
 	econf \
