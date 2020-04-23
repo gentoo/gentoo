@@ -22,7 +22,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( lua luajit )
 	bpf? ( af-packet )"
 
-CDEPEND="acct-group/suricata
+RDEPEND="${PYTHON_DEPS}
+	acct-group/suricata
 	acct-user/suricata
 	dev-libs/jansson
 	dev-libs/libpcre
@@ -32,7 +33,7 @@ CDEPEND="acct-group/suricata
 	dev-libs/nspr
 	dev-libs/nss
 	$(python_gen_cond_dep '
-		dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	>=net-libs/libhtp-0.5.32
 	net-libs/libpcap
@@ -48,11 +49,9 @@ CDEPEND="acct-group/suricata
 	nflog?      ( net-libs/libnetfilter_log )
 	nfqueue?    ( net-libs/libnetfilter_queue )
 	redis?      ( dev-libs/hiredis )"
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.69-r5
 	virtual/rust"
-RDEPEND="${CDEPEND}
-	${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1_configure-no-lz4-automagic.patch"
@@ -74,7 +73,7 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	sed -ie 's/docdir =.*/docdir = ${datarootdir}\/doc\/'${PF}'\//' "${S}/doc/Makefile.am"
+	sed -ie 's/docdir =.*/docdir = ${datarootdir}\/doc\/'${PF}'\//' "${S}/doc/Makefile.am" || die
 	eautoreconf
 }
 
