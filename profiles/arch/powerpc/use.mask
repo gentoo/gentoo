@@ -55,6 +55,7 @@ gnuefi
 
 # Patrick Lauer <patrick@gentoo.org> (2015-04-28)
 # dependencies not keyworded yet
+appindicator
 ayatana
 
 #Klibc does not work
@@ -145,5 +146,4 @@ nvtt
 # Pacho Ramos <pacho@gentoo.org> (2014-01-08)
 # Unmask systemd since it is keyworded here.
 -systemd
-
 
