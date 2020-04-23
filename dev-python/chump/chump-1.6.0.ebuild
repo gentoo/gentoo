@@ -3,9 +3,7 @@
 
 EAPI=7
 
-# PyPy is not properly supported:
-# https://github.com/karanlyons/chump/issues/17
-PYTHON_COMPAT=( pypy3 python3_{6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -19,9 +17,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
+
+# The package has no test suite
 
 python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die
