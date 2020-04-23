@@ -9,7 +9,7 @@ inherit autotools out-of-source bash-completion-r1 eutils linux-info python-any-
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
+	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt.git"
 	SRC_URI=""
 	KEYWORDS=""
 	SLOT="0"
