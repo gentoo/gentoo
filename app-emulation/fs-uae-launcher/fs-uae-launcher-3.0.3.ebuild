@@ -3,10 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r1 xdg
 
 DESCRIPTION="PyQt5-based launcher for FS-UAE"
 HOMEPAGE="https://fs-uae.net/"
@@ -26,7 +27,7 @@ RDEPEND="
 	')
 "
 
-DEPEND="
+BDEPEND="
 	sys-devel/gettext
 "
 
@@ -39,19 +40,21 @@ src_prepare() {
 
 	# Unbundle OpenGL library. Keep oyoyo IRC library because upstream
 	# is long dead and it's not worth packaging separately.
-	rm -r OpenGL || die
+	rm -r OpenGL/ || die
 	sed -i -r "/OpenGL/d" setup.py || die
 }
 
-src_compile() {
+python_compile_all() {
 	emake
 }
 
-src_install() {
+python_install() {
 	local dir=${EPREFIX}/usr/share/${PN}
 	distutils-r1_python_install --install-lib="${dir}" --install-scripts="${dir}"
-	dosym ../share/${PN}/${PN} /usr/bin/${PN}
+}
 
+python_install_all() {
+	dosym ../share/${PN}/${PN} /usr/bin/${PN}
 	emake install-data DESTDIR="${D}" prefix="${EPREFIX}"/usr
 	mv "${ED}"/usr/share/doc/{${PN},${PF}} || die
 }
@@ -73,6 +76,3 @@ pkg_postinst() {
 	elog "   Alternatively, you can start FS-UAE and/or FS-UAE Launcher with"
 	elog "   --base-dir=/path/to/desired/dir"
 }
-
-pkg_postinst() { xdg_icon_cache_update; }
-pkg_postrm() { xdg_icon_cache_update; }
