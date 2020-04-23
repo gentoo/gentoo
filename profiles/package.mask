@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
+# Unmaintained.  Stuck on Python 3.6.  Nose plugin with no revdeps.
+# Removal in 30 days.  Bug #719000.
+dev-python/ipdbplugin
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-23)
 # Unmaintained.  Stuck at Python 3.6.  dev-python/rebulk is broken with
 # recent versions of dev-python/regex and has no fix (or activity)
 # upstream.  dev-python/guessit is its only revdep, and the only revdep
