@@ -10,10 +10,12 @@ inherit autotools python-any-r1
 DESCRIPTION="Libtpms-based TPM emulator"
 HOMEPAGE="https://github.com/stefanberger/swtpm"
 SRC_URI="https://github.com/stefanberger/swtpm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="fuse gnutls libressl seccomp test"
+
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -44,6 +46,8 @@ DEPEND="${COMMON_DEPEND}
 "
 
 RDEPEND="${COMMON_DEPEND}
+	acct-group/tss
+	acct-user/tss
 	app-crypt/tpm-tools
 	app-crypt/trousers
 	dev-tcltk/expect"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="app-admin/pwgen
 	dev-perl/DBD-Pg
 	dev-perl/DBI
 	dev-perl/YAML
-	>=dev-php/awl-0.60
+	>=dev-php/awl-0.61
 	virtual/httpd-php"
 
 need_httpd
