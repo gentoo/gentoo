@@ -3902,7 +3902,6 @@ mate-base/mate-applets:cpupower - Enable support for cpu frequency manipulation 
 mate-base/mate-applets-meta:appindicator - Pull in mate-extra/mate-indicator-applet for AppIndicator applet
 mate-base/mate-applets-meta:sensors - Pull in mate-extra/mate-sensors-applet for hw sensors applet
 mate-base/mate-control-center:accountsservice - Add support for AccountsService
-mate-base/mate-control-center:appindicator - Add support for AppIndicator
 mate-base/mate-session-manager:xtrans - Build with Xtrans support; WARNING: Disabling this flag will result in ICE binding on all interfaces
 mate-base/mate-settings-daemon:rfkill - build support for rfkill
 mate-extra/caja-extensions:cdr - Add an extension to burn files to cds using app-cdr/brasero.
@@ -3914,7 +3913,6 @@ mate-extra/caja-extensions:pidgin - Add an extension to support net-im/pidgin
 mate-extra/caja-extensions:share - Add an extension to support sharing files.
 mate-extra/caja-extensions:wallpaper - Add an extension to support setting an image as the current wallpaper
 mate-extra/mate-polkit:accountsservice - Support extraction of data from AccountsService
-mate-extra/mate-polkit:appindicator - Add support for AppIndicator
 mate-extra/mate-power-manager:applet - Enable building of the MATE applet.
 mate-extra/mate-screensaver:consolekit - Enable support for sys-auth/consolekit
 mate-extra/mate-utils:applet - Enable the mate dictionary applet
@@ -4679,7 +4677,6 @@ media-sound/ncmpcpp:outputs - Enable outputs screen
 media-sound/ncmpcpp:visualizer - Enable visualizer screen with sound wave/frequency spectrum modes
 media-sound/patchage:jack-dbus - Use Jack via D-Bus instead of libjack
 media-sound/patchage:session - Include experimental Jack session management (save/restore) support
-media-sound/pithos:appindicator - Enable usage of appindicator to export menu options in to unity
 media-sound/pithos:keybinder - Use keybinder to enable global key bindings
 media-sound/pms:regex - Enable regular expression searches
 media-sound/pragha:glyr - Enable music metadata searchengine support using media-libs/glyr
@@ -6992,7 +6989,6 @@ net-wireless/bladerf-fpga:x115 - bitstream for the x115 kLE Cyclone IV FPGA blad
 net-wireless/bladerf-fpga:x40 - bitstream for the x40 kLE Cyclone IV FPGA bladerf model"
 net-wireless/bladerf-fpga:xA4 - bitstream for the xA4 49 kLE Cyclone V FPGA bladerf 2.0 micro model"
 net-wireless/bladerf-fpga:xA9 - bitstream for the xA9 301 kLE Cyclone V FPGA bladerf 2.0 micro model"
-net-wireless/blueman:appindicator - Enable usage of dev-libs/libappindicator to export menu options
 net-wireless/blueman:network - Add functionality to setup (host) PAN connections using either net-dns/dnsmasq or net-misc/dhcp
 net-wireless/bluez:btpclient - Enable BTP client
 net-wireless/bluez:deprecated - Build deprecated plugins
