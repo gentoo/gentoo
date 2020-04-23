@@ -197,12 +197,10 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-14.2.8-boost-sonames.patch"
-
 		find "${S}" -name '*.cmake' -or -name 'CMakeLists.txt' -print0 \
 			| xargs --null sed \
-			-e 's|Boost::|Boost_|g' \
-			-e 's|Boost_boost|boost_system|g' -i || die
+			-e 's|Boost::|boost_|g' \
+			-e 's|boost_boost|boost_system|g' -i || die
 	fi
 
 	sed -i -r "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
