@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 eutils linux-info user
+inherit distutils-r1 eutils linux-info
 
 DESCRIPTION="Cinder is the OpenStack Block storage service, a spin out of nova-volumes"
 HOMEPAGE="https://launchpad.net/cinder"
@@ -32,6 +32,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
 	app-admin/sudo"
 
+#	>=dev-python/oauth2client-1.5.0[${PYTHON_USEDEP}]  # do not include, upstream depricated
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
@@ -47,7 +48,6 @@ RDEPEND="
 	>=dev-python/keystonemiddleware-4.21.0[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.4.1[${PYTHON_USEDEP}]
 	!~dev-python/lxml-3.7.0[${PYTHON_USEDEP}]
-	>=dev-python/oauth2client-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-concurrency-3.26.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-2.19.2[${PYTHON_USEDEP}]
@@ -132,7 +132,9 @@ RDEPEND="
 	lvm? ( sys-fs/lvm2 )
 	memcached? ( net-misc/memcached )
 	app-emulation/qemu
-	sys-fs/sysfsutils"
+	sys-fs/sysfsutils
+	acct-user/cinder
+	acct-group/cinder"
 # qemu is needed for image conversion
 
 #PATCHES=(
@@ -155,11 +157,6 @@ pkg_pretend() {
 			linux_chkconfig_present ${module} || ewarn "${module} needs to be enabled"
 		done
 	fi
-}
-
-pkg_setup() {
-	enewgroup cinder
-	enewuser cinder -1 -1 /var/lib/cinder cinder
 }
 
 python_prepare_all() {
