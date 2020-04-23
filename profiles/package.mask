@@ -32,11 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Mike Gilbert <floppym@gentoo.org> (2020-04-23)
-# Regression in multilib pkgconfig support.
-# https://bugs.gentoo.org/719018
-=dev-util/meson-0.54.0
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
 # Removal in 30 days.  Bug #719040.
