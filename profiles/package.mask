@@ -36,6 +36,7 @@
 # not needed anymore, no revdeps
 # removal in 14 days. Bug #718996.
 dev-python/ip-associations-python-novaclient-ext
+dev-python/rackspace-novaclient
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
