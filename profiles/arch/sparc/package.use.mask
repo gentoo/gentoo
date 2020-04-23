@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-23)
+# don't bother keywording old versions
+<dev-qt/qtgui-5.14.2 wayland
+<net-analyzer/rrdtool-1.7.2 ruby
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
 # dev-libs/criterion not yet keyworded
 >=app-admin/syslog-ng-3.25 test
