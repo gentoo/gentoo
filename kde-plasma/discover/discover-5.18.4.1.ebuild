@@ -16,7 +16,7 @@ HOMEPAGE="https://userbase.kde.org/Discover"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="+firmware feedback"
+IUSE="+firmware telemetry"
 
 # libmarkdown (app-text/discount) only used in PackageKitBackend
 DEPEND="
@@ -42,8 +42,8 @@ DEPEND="
 	>=dev-qt/qtnetwork-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
-	feedback? ( dev-libs/kuserfeedback:5 )
 	firmware? ( sys-apps/fwupd )
+	telemetry? ( dev-libs/kuserfeedback:5 )
 "
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:5
@@ -61,8 +61,8 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_AppStreamQt=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Snapd=ON
 		-DBUILD_FlatpakBackend=OFF
-		$(cmake_use_find_package feedback KUserFeedback)
 		-DBUILD_FwupdBackend=$(usex firmware)
+		$(cmake_use_find_package telemetry KUserFeedback)
 	)
 
 	ecm_src_configure
