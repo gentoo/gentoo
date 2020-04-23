@@ -51,8 +51,8 @@ src_prepare() {
 		eapply "${FILESDIR}/${PN}-20180823-build-path.patch"
 
 		# Be more verbose, bug #717654
-		eapply "${FILESDIR}"/${PN}-pngquant.patch
-		eapply "${FILESDIR}"/${PN}-zopflipng.patch
+		eapply "${FILESDIR}"/${PN}-pngquant-verbose.patch
+		eapply "${FILESDIR}"/${PN}-zopflipng-verbose.patch
 
 		# Based on Fedora patch to allow graphicsmagick usage
 		if has_version media-gfx/graphicsmagick; then
