@@ -58,7 +58,7 @@ go-module_set_globals
 
 EGO_PN="github.com/junegunn/${PN}"
 SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-			${EGO_SUM_SRC_URI}"
+	${EGO_SUM_SRC_URI}"
 
 LICENSE="MIT BSD-with-disclosure"
 SLOT="0"
