@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit linux-info python-any-r1 systemd toolchain-funcs
 
@@ -11,7 +11,7 @@ DESCRIPTION="OPAL firmware utilities"
 HOMEPAGE="https://github.com/open-power/skiboot"
 SRC_URI="https://github.com/open-power/skiboot/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"
 KEYWORDS="~ppc64"
 IUSE="doc"
@@ -45,6 +45,7 @@ pkg_setup() {
 src_prepare() {
 	default
 	sed -i '/^CFLAGS +=/ s/-g2 -ggdb//' external/opal-prd/Makefile || die
+	sed -i 's/-lrt -o/-lrt $(LDFLAGS) -o/' external/ffspart/rules.mk || die
 }
 
 src_configure() {
@@ -53,6 +54,7 @@ src_configure() {
 	export GARD_VERSION="${PV}"
 	export PFLASH_VERSION="${PV}"
 	export XSCOM_VERSION="${PV}"
+	export FFSPART_VERSION="${PV}"
 }
 
 src_compile() {
@@ -60,6 +62,7 @@ src_compile() {
 	emake V=1 -C external/gard
 	emake V=1 -C external/pflash
 	emake V=1 -C external/xscom-utils
+	emake V=1 -C external/ffspart
 
 	use doc && emake V=1 -C doc html
 }
@@ -69,6 +72,7 @@ src_install() {
 	emake -C external/gard DESTDIR="${D}" prefix="${EPREFIX}/usr" install
 	emake -C external/pflash DESTDIR="${D}" prefix="${EPREFIX}/usr" install
 	emake -C external/xscom-utils DESTDIR="${D}" prefix="${EPREFIX}/usr" install
+	dosbin external/ffspart/ffspart
 
 	newinitd "${FILESDIR}"/opal-prd.initd opal-prd
 	newconfd "${FILESDIR}"/opal-prd.confd opal-prd
@@ -80,4 +84,13 @@ src_install() {
 		local HTML_DOCS=( doc/_build/html/. )
 	fi
 	einstalldocs
+}
+
+src_test() {
+	emake V=1 -C external/opal-prd test
+	emake V=1 -C external/gard check
+	# this test is fragile and fails because of unstable output
+	rm external/pflash/test/tests/01-info || die
+	emake V=1 -C external/pflash check
+	emake V=1 -C external/ffspart check
 }

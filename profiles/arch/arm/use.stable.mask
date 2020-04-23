@@ -6,6 +6,7 @@
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependencies not yet stable.
+appindicator
 ayatana
 
 # Mike Gilbert <floppym@gentoo.org> (2017-06-08)

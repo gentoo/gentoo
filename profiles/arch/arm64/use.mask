@@ -34,6 +34,7 @@ cpu_flags_arm_neon
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libindicate).
+appindicator
 ayatana
 
 # Mart Raudsepp <leio@gentoo.org> (2019-01-07)
