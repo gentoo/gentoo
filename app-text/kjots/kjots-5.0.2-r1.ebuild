@@ -46,4 +46,10 @@ RDEPEND="${DEPEND}
 	!app-text/kjots:4
 "
 
-PATCHES=( "${FILESDIR}/${P}-kf5bookmarks-5.69.patch" ) # KDE-Bug 384000
+src_prepare() {
+	if has_version ">=kde-frameworks/kbookmarks-5.69"; then
+		PATCHES+=( "${FILESDIR}/${P}-kf5bookmarks-5.69.patch" ) # KDE-Bug 384000
+	fi
+
+	ecm_src_prepare
+}
