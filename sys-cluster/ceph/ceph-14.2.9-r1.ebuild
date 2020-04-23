@@ -163,7 +163,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.5-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
-	"${FILESDIR}/ceph-14.2.0-link-crc32-Wstatically.patch"
+	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
 	"${FILESDIR}/ceph-14.2.3-dpdk-compile-fix-1.patch"
 	"${FILESDIR}/ceph-14.2.4-python-executable.patch"
@@ -197,12 +197,10 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-14.2.8-boost-sonames.patch"
-
 		find "${S}" -name '*.cmake' -or -name 'CMakeLists.txt' -print0 \
 			| xargs --null sed \
-			-e 's|Boost::|Boost_|g' \
-			-e 's|Boost_boost|boost_system|g' -i || die
+			-e 's|Boost::|boost_|g' \
+			-e 's|boost_boost|boost_system|g' -i || die
 	fi
 
 	sed -i -r "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
