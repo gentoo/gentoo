@@ -17,7 +17,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="amd64 ~ppc64"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
@@ -29,7 +29,7 @@ SLOT="0"
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
 IUSE="babeltrace +cephfs custom-cflags dpdk fuse grafana jemalloc kerberos ldap"
-IUSE+=" libressl lttng +mgr numa rabbitmq +radosgw +ssl spdk static-libs"
+IUSE+=" libressl lttng +mgr numa rabbitmq +radosgw +ssl spdk"
 IUSE+=" system-boost systemd +tcmalloc test xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
@@ -37,54 +37,54 @@ COMMON_DEPEND="
 	acct-group/ceph
 	acct-user/ceph
 	virtual/libudev:=
-	app-arch/bzip2:=[static-libs?]
-	app-arch/lz4:=[static-libs?]
-	app-arch/snappy:=[static-libs(-)?]
-	app-arch/zstd:=[static-libs?]
+	app-arch/bzip2:=
+	app-arch/lz4:=
+	app-arch/snappy:=
+	app-arch/zstd:=
 	app-shells/bash:0
-	app-misc/jq:=[static-libs?]
-	dev-libs/crypto++:=[static-libs?]
-	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc(-)?]
-	dev-libs/libaio:=[static-libs?]
-	dev-libs/libnl:3=[static-libs?]
-	dev-libs/libxml2:=[static-libs?]
+	app-misc/jq:=
+	dev-libs/crypto++:=
+	dev-libs/leveldb:=[snappy,tcmalloc(-)?]
+	dev-libs/libaio:=
+	dev-libs/libnl:3=
+	dev-libs/libxml2:=
 	dev-libs/nss:=
 	sys-auth/oath-toolkit:=
 	sys-apps/coreutils
 	sys-apps/grep
-	sys-apps/keyutils:=[static-libs?]
-	sys-apps/util-linux:=[static-libs?]
+	sys-apps/keyutils:=
+	sys-apps/util-linux:=
 	sys-apps/sed
 	sys-apps/util-linux
-	sys-libs/libcap-ng:=[static-libs?]
-	sys-libs/ncurses:0=[static-libs?]
-	sys-libs/zlib:=[static-libs?]
+	sys-libs/libcap-ng:=
+	sys-libs/ncurses:0=
+	sys-libs/zlib:=
 	babeltrace? ( dev-util/babeltrace )
-	ldap? ( net-nds/openldap:=[static-libs?] )
+	ldap? ( net-nds/openldap:= )
 	lttng? ( dev-util/lttng-ust:= )
-	fuse? ( sys-fs/fuse:0=[static-libs?] )
+	fuse? ( sys-fs/fuse:0= )
 	kerberos? ( virtual/krb5 )
-	rabbitmq? ( net-libs/rabbitmq-c:=[static-libs?] )
+	rabbitmq? ( net-libs/rabbitmq-c:= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:=[static-libs?] )
-		libressl? ( dev-libs/libressl:=[static-libs?] )
+		!libressl? ( dev-libs/openssl:= )
+		libressl? ( dev-libs/libressl:= )
 	)
-	xfs? ( sys-fs/xfsprogs:=[static-libs(+)?] )
-	zfs? ( sys-fs/zfs:=[static-libs?] )
+	xfs? ( sys-fs/xfsprogs:= )
+	zfs? ( sys-fs/zfs:= )
 	radosgw? (
-		dev-libs/expat:=[static-libs?]
+		dev-libs/expat:=
 		!libressl? (
-			dev-libs/openssl:=[static-libs?]
-			net-misc/curl:=[curl_ssl_openssl,static-libs?]
+			dev-libs/openssl:=
+			net-misc/curl:=[curl_ssl_openssl]
 		)
 		libressl? (
-			dev-libs/libressl:=[static-libs?]
-			net-misc/curl:=[curl_ssl_libressl,static-libs?]
+			dev-libs/libressl:=
+			net-misc/curl:=[curl_ssl_libressl]
 		)
 	)
-	system-boost? ( =dev-libs/boost-1.72*[threads,context,python,static-libs?,${PYTHON_USEDEP}] )
-	jemalloc? ( dev-libs/jemalloc:=[static-libs?] )
-	!jemalloc? ( >=dev-util/google-perftools-2.6.1:=[static-libs?] )
+	system-boost? ( =dev-libs/boost-1.72*[threads,context,python,${PYTHON_USEDEP}] )
+	jemalloc? ( dev-libs/jemalloc:= )
+	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
 	${PYTHON_DEPS}
 "
 BDEPEND="
@@ -197,12 +197,10 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-14.2.8-boost-sonames.patch"
-
 		find "${S}" -name '*.cmake' -or -name 'CMakeLists.txt' -print0 \
 			| xargs --null sed \
-			-e 's|Boost::|Boost_|g' \
-			-e 's|Boost_boost|boost_system|g' -i || die
+			-e 's|Boost::|boost_|g' \
+			-e 's|boost_boost|boost_system|g' -i || die
 	fi
 
 	sed -i -r "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
@@ -238,7 +236,7 @@ ceph_src_configure() {
 		-DWITH_TESTS=$(usex test)
 		-DWITH_XFS=$(usex xfs)
 		-DWITH_ZFS=$(usex zfs)
-		-DENABLE_SHARED=$(usex static-libs '' 'ON' 'OFF')
+		-DENABLE_SHARED="ON"
 		-DALLOCATOR=$(usex tcmalloc 'tcmalloc' "$(usex jemalloc 'jemalloc' 'libc')")
 		-DWITH_SYSTEM_BOOST=$(usex system-boost)
 		-DBOOST_J=$(makeopts_jobs)

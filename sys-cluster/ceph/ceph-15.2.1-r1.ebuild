@@ -29,7 +29,7 @@ SLOT="0"
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
 IUSE="babeltrace +cephfs custom-cflags dpdk fuse grafana jemalloc kafka kerberos ldap
-	libressl lttng +mgr numa +openssl pmdk rabbitmq +radosgw rbd-rwl +ssl spdk static-libs
+	libressl lttng +mgr numa +openssl pmdk rabbitmq +radosgw rbd-rwl +ssl spdk
 	system-boost systemd +tcmalloc test uring xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
@@ -37,65 +37,65 @@ COMMON_DEPEND="
 	acct-group/ceph
 	acct-user/ceph
 	virtual/libudev:=
-	app-arch/bzip2:=[static-libs?]
-	app-arch/lz4:=[static-libs?]
-	app-arch/snappy:=[static-libs(-)?]
-	app-arch/zstd:=[static-libs?]
+	app-arch/bzip2:=
+	app-arch/lz4:=
+	app-arch/snappy:=
+	app-arch/zstd:=
 	app-shells/bash:0
-	app-misc/jq:=[static-libs?]
-	dev-libs/crypto++:=[static-libs?]
-	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc(-)?]
-	dev-libs/libaio:=[static-libs?]
+	app-misc/jq:=
+	dev-libs/crypto++:=
+	dev-libs/leveldb:=[snappy,tcmalloc(-)?]
+	dev-libs/libaio:=
 	dev-libs/libfmt:=
-	dev-libs/libnl:3=[static-libs?]
-	dev-libs/libxml2:=[static-libs?]
-	dev-libs/xmlsec:=[!openssl?,!libressl?,static-libs?]
+	dev-libs/libnl:3=
+	dev-libs/libxml2:=
+	dev-libs/xmlsec:=[!openssl?,!libressl?]
 	dev-cpp/yaml-cpp:=
 	dev-libs/nss:=
-	dev-libs/protobuf:=[static-libs?]
-	net-dns/c-ares:=[static-libs?]
-	net-libs/gnutls:=[static-libs?]
+	dev-libs/protobuf:=
+	net-dns/c-ares:=
+	net-libs/gnutls:=
 	sys-auth/oath-toolkit:=
 	sys-apps/coreutils
 	sys-apps/grep
-	sys-apps/hwloc:=[static-libs?]
-	sys-apps/keyutils:=[static-libs?]
-	sys-apps/util-linux:=[static-libs?]
+	sys-apps/hwloc:=
+	sys-apps/keyutils:=
+	sys-apps/util-linux:=
 	sys-apps/sed
 	sys-apps/util-linux
-	sys-libs/libcap-ng:=[static-libs?]
-	sys-libs/ncurses:0=[static-libs?]
-	sys-libs/zlib:=[static-libs?]
-	sys-process/numactl:=[static-libs?]
-	x11-libs/libpciaccess:=[static-libs?]
+	sys-libs/libcap-ng:=
+	sys-libs/ncurses:0=
+	sys-libs/zlib:=
+	sys-process/numactl:=
+	x11-libs/libpciaccess:=
 	babeltrace? ( dev-util/babeltrace )
-	fuse? ( sys-fs/fuse:0=[static-libs?] )
-	jemalloc? ( dev-libs/jemalloc:=[static-libs?] )
-	!jemalloc? ( >=dev-util/google-perftools-2.6.1:=[static-libs?] )
-	kafka? ( dev-libs/librdkafka:=[static-libs?] )
+	fuse? ( sys-fs/fuse:0= )
+	jemalloc? ( dev-libs/jemalloc:= )
+	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
+	kafka? ( dev-libs/librdkafka:= )
 	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap:=[static-libs?] )
+	ldap? ( net-nds/openldap:= )
 	lttng? ( dev-util/lttng-ust:= )
-	rabbitmq? ( net-libs/rabbitmq-c:=[static-libs?] )
+	rabbitmq? ( net-libs/rabbitmq-c:= )
 	radosgw? (
-		dev-libs/expat:=[static-libs?]
+		dev-libs/expat:=
 		openssl? (
-			dev-libs/openssl:=[static-libs?]
-			net-misc/curl:=[curl_ssl_openssl,static-libs?]
+			dev-libs/openssl:=
+			net-misc/curl:=[curl_ssl_openssl]
 		)
 		libressl? (
-			dev-libs/libressl:=[static-libs?]
-			net-misc/curl:=[curl_ssl_libressl,static-libs?]
+			dev-libs/libressl:=
+			net-misc/curl:=[curl_ssl_libressl]
 		)
 	)
 	ssl? (
-		openssl? ( dev-libs/openssl:=[static-libs?] )
-		libressl? ( dev-libs/libressl:=[static-libs?] )
+		openssl? ( dev-libs/openssl:= )
+		libressl? ( dev-libs/libressl:= )
 	)
-	system-boost? ( =dev-libs/boost-1.72*[threads,context,python,static-libs?,${PYTHON_USEDEP}] )
-	uring? ( sys-libs/liburing:=[static-libs?] )
-	xfs? ( sys-fs/xfsprogs:=[static-libs(+)?] )
-	zfs? ( sys-fs/zfs:=[static-libs?] )
+	system-boost? ( =dev-libs/boost-1.72*[threads,context,python,${PYTHON_USEDEP}] )
+	uring? ( sys-libs/liburing:= )
+	xfs? ( sys-fs/xfsprogs:= )
+	zfs? ( sys-fs/zfs:= )
 	${PYTHON_DEPS}
 "
 BDEPEND="
@@ -260,7 +260,7 @@ ceph_src_configure() {
 		-DWITH_LIBURING=$(usex uring)
 		-DWITH_XFS=$(usex xfs)
 		-DWITH_ZFS=$(usex zfs)
-		-DENABLE_SHARED=$(usex static-libs '' 'ON' 'OFF')
+		-DENABLE_SHARED="ON"
 		-DALLOCATOR=$(usex tcmalloc 'tcmalloc' "$(usex jemalloc 'jemalloc' 'libc')")
 		-DWITH_SYSTEM_BOOST=$(usex system-boost)
 		-DBOOST_J=$(makeopts_jobs)
