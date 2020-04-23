@@ -5564,7 +5564,7 @@ dev-perl/Alien-Build 1.790.0 2.210.0: Build external dependencies for use in CPA
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-LibGumbo 0.50.0 0.50.0-r1: Gumbo parser library
 dev-perl/Alien-Libxml2 0.90.0 0.150.0: Install the C libxml2 library on your system
-dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
+dev-perl/Alien-SDL 1.446.0 1.446.0-r1: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.140.0: Provides a uniform interface to various event loops
@@ -17006,7 +17006,7 @@ sys-cluster/ceph 12.2.12-r2 14.2.7 14.2.8 14.2.9 15.2.1: Ceph distributed filesy
 sys-cluster/charliecloud 0.9.6 0.9.10 0.10-r1 0.15 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 15.0.1 15.1.0 2019.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 15.1.0-r1 2019.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/corosync 1.4.7 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
