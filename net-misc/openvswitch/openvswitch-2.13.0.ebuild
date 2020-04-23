@@ -96,14 +96,14 @@ src_install() {
 			sed -e '1s|^.*$|#!/usr/bin/python|' -i utilities/"${SCRIPT}"
 			python_foreach_impl python_doscript utilities/"${SCRIPT}"
 		done
-		rm -r "${ED%/}"/usr/share/openvswitch/python || die
+		rm -r "${ED%}"/usr/share/openvswitch/python || die
 	fi
 
 	keepdir /var/{lib,log}/openvswitch
 	keepdir /etc/ssl/openvswitch
 	fperms 0750 /etc/ssl/openvswitch
 
-	rm -rf "${ED%/}"/var/run || die
+	rm -rf "${ED%}"/var/run || die
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
 	newconfd "${FILESDIR}/ovs-vswitchd.confd-r2" ovs-vswitchd
@@ -132,15 +132,15 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	local db="${EROOT%/}"/var/lib/openvswitch/conf.db
+	local db="${EROOT%}"/var/lib/openvswitch/conf.db
 	if [[ -e "${db}" ]] ; then
 		einfo "Database '${db}' already exists, doing schema migration..."
 		einfo "(if the migration fails, make sure that ovsdb-server is not running)"
 		ovsdb-tool convert "${db}" \
-			"${EROOT%/}"/usr/share/openvswitch/vswitch.ovsschema || die "converting database failed"
+			"${EROOT%}"/usr/share/openvswitch/vswitch.ovsschema || die "converting database failed"
 	else
 		einfo "Creating new database '${db}'..."
 		ovsdb-tool create "${db}" \
-			"${EROOT%/}"/usr/share/openvswitch/vswitch.ovsschema || die "creating database failed"
+			"${EROOT%}"/usr/share/openvswitch/vswitch.ovsschema || die "creating database failed"
 	fi
 }
