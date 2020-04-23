@@ -43,6 +43,7 @@ samba
 
 # Mart Raudsepp <leio@gentoo.org> (2017-02-07)
 # dev-libs/libappindicator not tested
+appindicator
 ayatana
 
 # Anthony G. Basile <blueness@gentoo.org> (2015-08-01)
