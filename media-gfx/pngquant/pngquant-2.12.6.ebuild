@@ -5,21 +5,25 @@ EAPI="7"
 
 inherit toolchain-funcs
 
-DESCRIPTION="command-line utility and library for lossy compression of PNG images"
+DESCRIPTION="Command-line utility and library for lossy compression of PNG images"
 HOMEPAGE="https://pngquant.org/ https://github.com/kornelski/pngquant"
 SRC_URI="https://github.com/kornelski/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 HPND rwpng"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug lcms openmp cpu_flags_x86_sse2"
+IUSE="cpu_flags_x86_sse2 debug lcms openmp test"
 
-RDEPEND="media-libs/libpng:0=
+RDEPEND="
+	media-libs/libpng:0=
 	media-gfx/libimagequant:=
 	sys-libs/zlib:=
-	lcms? ( media-libs/lcms:2 )"
+	lcms? ( media-libs/lcms:2 )
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	test? ( media-libs/lcms:2 )
+	virtual/pkgconfig
+"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.12.2-respect-CFLAGS.patch )
 
