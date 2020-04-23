@@ -28,6 +28,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	sed -i -e 's:test_which_editor_good:_&:' tests/test_cmd2.py || die
+	distutils-r1_src_prepare
+}
+
 src_test() {
 	# tests rely on very specific text wrapping...
 	local -x COLUMNS=80
