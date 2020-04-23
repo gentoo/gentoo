@@ -5552,7 +5552,7 @@ dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1 0.100.0-r2: Represent a series of changes in annotate form
 dev-perl/Algorithm-C3 0.100.0: A module for merging hierarchies using the C3 algorithm
 dev-perl/Algorithm-ClusterPoints 0.80.0 0.80.0-r1: Find clusters inside a set of points
-dev-perl/Algorithm-Dependency 1.110.0-r2: Toolkit for implementing dependency systems
+dev-perl/Algorithm-Dependency 1.110.0-r2 1.111.0: Toolkit for implementing dependency systems
 dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment problem
 dev-perl/Alien-Base-ModuleBuild 1.60.0: A Module::Build subclass for building Alien:: modules and their libraries
