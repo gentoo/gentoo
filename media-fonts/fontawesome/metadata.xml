@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">FortAwesome/Font-Awesome</remote-id>
-	</upstream>
+	<maintainer type="person">
+		<email>gentoo@aisha.cc</email>
+		<name>Aisha Tammy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="otf">Install the OpenType version of the font</flag>
 		<flag name="ttf">Install the TrueType version of the font</flag>
