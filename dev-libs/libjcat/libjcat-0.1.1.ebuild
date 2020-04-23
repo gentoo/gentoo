@@ -3,7 +3,10 @@
 
 EAPI=7
 
-inherit meson vala xdg-utils
+PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_REQ_USE="xml"
+
+inherit meson python-any-r1 vala xdg-utils
 
 DESCRIPTION="Library and tool for reading and writing Jcat files "
 HOMEPAGE="https://github.com/hughsie/libjcat"
@@ -25,6 +28,9 @@ RDEPEND="dev-libs/glib:2
 	dev-lang/vala:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
+	$(python_gen_any_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	')
 	gtk-doc? ( dev-util/gtk-doc )
 	man? ( sys-apps/help2man )
 	test? ( net-libs/gnutls[tools] )"
@@ -34,6 +40,10 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.1.1-disable_installed_tests.patch
 )
+
+python_check_deps() {
+	has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	xdg_environment_reset

@@ -18,8 +18,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="${PYTHON_DEPS}
-	dev-libs/icu:="
+RDEPEND="dev-libs/icu:="
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
