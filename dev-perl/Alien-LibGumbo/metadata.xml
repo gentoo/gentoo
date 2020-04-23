@@ -12,5 +12,7 @@
   <upstream>
     <remote-id type="cpan">Alien-LibGumbo</remote-id>
     <remote-id type="cpan-module">Alien::LibGumbo</remote-id>
+    <remote-id type="cpan-module">Alien::LibGumbo::ConfigData</remote-id>
+    <remote-id type="cpan-module">Alien::LibGumbo::Install::Files</remote-id>
   </upstream>
 </pkgmetadata>
