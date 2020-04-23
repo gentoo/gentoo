@@ -443,7 +443,7 @@ app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor AP
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
 app-admin/gentoo-perl-helpers 0.3.1-r1 0.4.0: Introspection and Upgrade Assistance tools for Gentoo Perl
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
-app-admin/github-backup-utils 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0 2.18.0 2.19.1: Backup and recovery utilities for GitHub Enterprise
+app-admin/github-backup-utils 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0 2.18.0 2.19.1 2.20.2: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.20: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.10-r2 2.3.11 2.3.11-r1 9999: Single process stack of various system monitors
 app-admin/glance 19.0.2 2019.2.9999: Services for discovering, registering, and retrieving VM images
@@ -2170,7 +2170,7 @@ app-misc/lcdproc 0.5.9: Displays real-time system information from your Linux/*B
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
 app-misc/ledit 2.03 2.04: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1 3.1: Last File Manager is a powerful file manager for the console
-app-misc/linux-logo 5.11-r4: A utility that displays an ANSI/ASCII logo and some system information
+app-misc/linux-logo 5.11-r4 5.11-r5: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1-r2: Linux Serial Protocol Analyser
 app-misc/lirc 0.10.1-r3 0.10.1-r4: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.5 2.6 9999: Gentoo LiveCD tools for autoconfiguration of hardware
@@ -5315,7 +5315,7 @@ dev-libs/wayland 1.18.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.20 9999: Wayland protocol files
 dev-libs/weston 8.0.0 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
-dev-libs/xapian 1.2.25 1.4.7 1.4.11 1.4.14 1.4.15: Xapian Probabilistic Information Retrieval library
+dev-libs/xapian 1.2.25 1.4.14 1.4.15: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.25 1.4.14 1.4.15: SWIG and JNI bindings for Xapian
 dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
 dev-libs/xerces-c 3.2.2-r1 9999: A validating XML parser written in a portable subset of C++
@@ -16013,7 +16013,7 @@ sci-libs/liborigin 20110829-r1: Library for reading OriginLab OPJ project files
 sci-libs/libpdb 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728-r1: PDB Record I/O Libraries -- c++ version
 sci-libs/libqalculate 0.9.9 2.2.0 2.8.1 3.2.0-r1: A modern multi-purpose calculator library
-sci-libs/libsc 1.0-r1 1.1-r1 2.0 2.2 9999: Support for parallel scientific applications
+sci-libs/libsc 2.0 2.2 9999: Support for parallel scientific applications
 sci-libs/libsigrok 0.3.0 0.4.0 0.5.1 0.5.2 9999: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.4.1 0.5.2 0.5.3 9999: provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.5-r1: General framework for developing spatial indices
@@ -16062,7 +16062,7 @@ sci-libs/opencascade 7.4.0: Development platform for CAD/CAE, 3D surface/solid m
 sci-libs/openlibm 0.5.4 0.7.0: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.3.1-r1 1.4.0 9999: Kinematics and Dynamics Library (KDL)
-sci-libs/p4est 1.0 1.1 2.0 2.2 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
+sci-libs/p4est 2.0 2.2 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
 sci-libs/parmetis 4.0.3-r1: Parallel (MPI) unstructured graph partitioning library
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
 sci-libs/pcl 1.9.1 9999: 2D/3D image and point cloud processing
