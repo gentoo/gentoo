@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+RESTRICT="!test? ( test )"
+
 PATCHES=( "${FILESDIR}"/${PN}-2.12.2-respect-CFLAGS.patch )
 
 src_prepare() {
