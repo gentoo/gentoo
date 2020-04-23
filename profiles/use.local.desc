@@ -3939,6 +3939,7 @@ media-fonts/liberation-fonts:fontforge - Use media-gfx/fontforge to build fonts 
 media-fonts/montecarlo:bdf - Install BDF fonts in addition to PCF
 media-fonts/mplus-outline-fonts:ipafont - Generates new fonts merged with media-fonts/ja-ipafonts
 media-fonts/noto:extra - Install full upstream font set
+media-fonts/noto-emoji:buildfont - Build Noto Emoji font with supplied images.
 media-fonts/sil-charis:compact - Use more compactly spaced font
 media-fonts/sil-gentium:compact - Also install more compact version of the font.
 media-fonts/terminus-font:a-like-o - Changes view of letter 'a' - a looks like o (see homepage)
