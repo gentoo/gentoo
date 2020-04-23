@@ -7729,7 +7729,7 @@ dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5 0.8.11: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 2.3.1: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 1.3.0 2.0.0: A supersonic micro-framework for building cloud APIs
-dev-python/fasteners 0.14.1-r1: Python package that provides useful locks
+dev-python/fasteners 0.14.1-r1 0.15: Python package that provides useful locks
 dev-python/fastparquet 0.1.1 0.1.5: Python implementation of the parquet columnar file format
 dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
 dev-python/fdsend 0.1: flexible file descriptor passing
@@ -10339,7 +10339,7 @@ dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to suppo
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 12.9 12.10: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 12.9 12.10 13: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.115 1.0.116 1.0.117 1.0.123: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.15.0: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
@@ -14727,7 +14727,7 @@ net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/anydesk 5.5.0-r1 5.5.1: Feature rich multi-platform remote desktop application
-net-misc/apt-cacher-ng 3.3.1_p2 3.4_p1 9999999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
+net-misc/apt-cacher-ng 3.3.1_p2 3.4_p1 3.5_p1 9999999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
@@ -18256,7 +18256,7 @@ x11-misc/imake 1.0.8: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/ipager 1.1.0-r1: A themable desktop pager for fluxbox and other window managers
 x11-misc/j4-dmenu-desktop 2.17: A fast desktop replacement for i3-dmenu-desktop
-x11-misc/kapow 1.5.8 1.5.9: A punch clock program designed to easily keep track of your hours
+x11-misc/kapow 1.5.8 1.5.9 1.5.10: A punch clock program designed to easily keep track of your hours
 x11-misc/kaqaz 1.2.0-r4: Modern note manager
 x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 5.2 5.3: Helper to dock any application into the system tray
