@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools python-single-r1
 
@@ -20,8 +20,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
+		dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
 		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
 		sci-libs/cartopy[${PYTHON_MULTI_USEDEP}]
+		sci-libs/scipy[${PYTHON_MULTI_USEDEP}]
 	')
 	dev-python/cairocffi
 	sci-electronics/voacapl
