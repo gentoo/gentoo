@@ -5,6 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1 eutils
 
 DESCRIPTION="A lightweight password-manager with multiple database backends"
@@ -19,8 +20,8 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-python/cryptography-2.3[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.3.0[${PYTHON_USEDEP}]
-	test? ( dev-python/pexpect[${PYTHON_USEDEP}] )
-	"
+"
+BDEPEND="test? ( dev-python/pexpect[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
 
