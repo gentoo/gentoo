@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2020-04-24)
+# Fails to install. Bug #154735
+# Developers do not have access to the cd.
+# Remove after 2020-05-24
+games-action/rune
+
 # Matthew Thode <prometheanfire@gentoo.org> (2020-04-23)
 # not needed anymore, no revdeps
 # removal in 14 days. Bug #718996.
