@@ -63,6 +63,10 @@ RDEPEND="${COMMON_DEPEND}
 	kde-plasma/kde-cli-tools:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-kf5bookmarks-5.69.patch" # bug 717316, KDE-Bug 420010
+)
+
 src_prepare() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lmalloc
 
