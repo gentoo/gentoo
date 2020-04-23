@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/virgl/${PN}/-/archive/${P}/${PN}-${P}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 DESCRIPTION="library used implement a virtual 3D GPU used by qemu"
