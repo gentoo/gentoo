@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="doc examples libressl"
 
 DEPEND="
-	~dev-cpp/abseil-cpp-20200225.1:=
+	=dev-cpp/abseil-cpp-20200225*:=
 	>=dev-libs/protobuf-3.11.2:=
 	>=net-dns/c-ares-1.15.0:=
 	sys-libs/zlib:=
