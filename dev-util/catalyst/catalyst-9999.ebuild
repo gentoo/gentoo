@@ -42,7 +42,30 @@ RDEPEND="
 	>=sys-fs/squashfs-tools-2.1
 	ccache? ( dev-util/ccache )
 
-	iso? ( virtual/cdrtools )
+	iso? (
+		virtual/cdrtools
+
+		alpha? (
+			dev-libs/libisoburn
+		)
+		ia64?  (
+			dev-libs/libisoburn
+			sys-boot/grub[grub_platforms_efi-64]
+			sys-fs/mtools
+		)
+		ppc?   (
+			dev-libs/libisoburn
+			sys-boot/grub:2[grub_platforms_ieee1275]
+		)
+		ppc64? (
+			dev-libs/libisoburn
+			sys-boot/grub:2[grub_platforms_ieee1275]
+		)
+		sparc? (
+			dev-libs/libisoburn
+			sys-boot/grub:2[grub_platforms_ieee1275]
+		)
+	)
 
 	amd64? ( >=sys-boot/syslinux-3.72 )
 	x86?   ( >=sys-boot/syslinux-3.72 )
