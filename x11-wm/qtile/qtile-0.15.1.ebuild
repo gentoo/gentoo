@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 virtualx
@@ -45,8 +44,6 @@ BDEPEND="
 
 # display retry backoff slowness and failures
 RESTRICT="test"
-
-PATCHES=( "${FILESDIR}"/${PN}-0.12.0-tests.patch )
 
 python_test() {
 	# force usage of built module
