@@ -20,20 +20,19 @@ IUSE=""
 
 KEYWORDS=""
 
-DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
+DEPEND="
+	sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	sys-apps/gawk
 	sys-apps/gentoo-functions"
+
+distutils_enable_tests setup.py
 
 python_prepare_all() {
 	python_setup
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
 }
 
 pkg_preinst() {
