@@ -195,12 +195,6 @@ PYTHON_UPDATER_IGNORE="1"
 
 QA_PREBUILT="/usr/*"
 
-pkg_pretend() {
-	[[ $(gcc-major-version) -lt 4 ]] || \
-			( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 4 ]] ) \
-		&& die "Sorry, but gcc-4.4 and earlier won't work for libreoffice-bin package (see bug #387515)."
-}
-
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
