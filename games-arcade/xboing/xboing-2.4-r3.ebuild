@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit flag-o-matic eutils
 
 DESCRIPTION="Blockout type game where you bounce a ball trying to destroy blocks"
 HOMEPAGE="http://www.techrescue.org/xboing/"
@@ -36,6 +36,7 @@ src_prepare() {
 src_configure() {
 	xmkmf -a || die
 	sed -i -e "s:GENTOO_VER:${PF/${PN}-/}:" Imakefile || die
+	append-cflags -fcommon
 }
 
 src_compile() {
