@@ -14438,7 +14438,7 @@ net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for fr
 net-libs/accounts-qml 0.7-r1: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 5.7.8 6.0.1: Generic Online Banking Interface
-net-libs/axtls 1.5.3 2.1.3 2.1.4 2.1.5: Embedded client/server TLSv1 SSL library and small HTTP(S) server
+net-libs/axtls 2.1.5: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 1.1.2-r2 2.0.1: A multicast protocol to support Bible software shared co-navigation
@@ -15036,7 +15036,7 @@ net-misc/usbip 3.19 4.13: Userspace utilities for a general USB device sharing s
 net-misc/utelnetd 0.1.11-r2: A small Telnet daemon, derived from the Axis tools
 net-misc/valve 1.0-r1: Copy data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
-net-misc/vde 2.3.2-r4: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
+net-misc/vde 2.3.2-r4 2.3.2-r5: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
 net-misc/vinagre 3.22.0-r3: VNC client for the GNOME desktop
 net-misc/vino 3.22.0-r2 3.22.0-r3: An integrated VNC server for GNOME
 net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
