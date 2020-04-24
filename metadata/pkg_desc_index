@@ -2273,7 +2273,7 @@ app-misc/timestamp 1.1-r1: A text filtering pipe that marks each line with a tim
 app-misc/timew 1.0.0 1.1.1 1.2.0: Tracks your time from the command line, and generates reports
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
 app-misc/tmate 2.3.1 2.4.0: Instant terminal sharing
-app-misc/tmux 2.9a 3.0a 9999: Terminal multiplexer
+app-misc/tmux 2.9a 3.0a 3.1 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
@@ -15131,7 +15131,7 @@ net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written 
 net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.4.1-r2: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/qbittorrent 4.2.1 4.2.3 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.2.1 4.2.3 4.2.4 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
@@ -15202,7 +15202,7 @@ net-proxy/privoxy 3.0.26 3.0.28: A web proxy with advanced filtering capabilitie
 net-proxy/redsocks 0.5 0.5-r1 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 3.3.4: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
-net-proxy/squid 4.10: A full-featured web proxy cache
+net-proxy/squid 4.10 4.11: A full-featured web proxy cache
 net-proxy/squidguard 1.5_beta-r2 1.6.0: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
 net-proxy/sshuttle 0.78.5: Transparent proxy server that works as a poor man's VPN using ssh
@@ -18833,7 +18833,7 @@ x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/page 1.9.9-r3: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1 0.1.17-r2: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
-x11-wm/qtile 0.14.2-r1 9999: A full-featured, hackable tiling window manager written in Python
+x11-wm/qtile 0.14.2-r1 0.15.1 9999: A full-featured, hackable tiling window manager written in Python
 x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.0-r1: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
