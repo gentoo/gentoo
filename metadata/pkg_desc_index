@@ -8837,7 +8837,7 @@ dev-python/trustme 0.6.0: #1 quality TLS certs while you wait, for the discernin
 dev-python/ttystatus 0.36: Terminal progress bar and status output for command line
 dev-python/tvdb_api 1.10_pre20150406-r1 2.0: Python interface to thetvdb.com API
 dev-python/twine 1.15.0 3.0.0 3.1.1: Collection of utilities for publishing packages on PyPI
-dev-python/twisted 16.6.0-r3 18.4.0 19.10.0: An asynchronous networking framework written in Python
+dev-python/twisted 16.6.0-r3 18.4.0 19.10.0 20.3.0: An asynchronous networking framework written in Python
 dev-python/twython 3.6.0 3.7.0: An easy way to access Twitter data with Python
 dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using Twisted
 dev-python/txaio 2.9.0: Compatibility API between asyncio/Twisted/Trollius
