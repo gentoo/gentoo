@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="Readme.md"
 
@@ -33,6 +33,9 @@ all_ruby_prepare() {
 		${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -i -e '/byebug/ s:^:#:' Gemfile || die
 
+	sed -e '/shows short backtraces/askip "fails on ruby27"' \
+		-e '/fails when not used/askip "fails with newer maxitest by design"' \
+		-i spec/maxitest_spec.rb || die
 }
 
 each_ruby_prepare() {
