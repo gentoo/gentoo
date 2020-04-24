@@ -46,6 +46,8 @@ src_configure() {
 
 	my_gpib_makeopts=''
 	use debug && my_gpib_makeopts+='GPIB-DEBUG=1 '
+
+	my_gpib_makeopts+="LINUX_SRCDIR=${KERNEL_DIR} "
 }
 
 src_compile() {
