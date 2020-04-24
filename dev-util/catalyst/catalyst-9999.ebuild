@@ -34,7 +34,6 @@ RDEPEND="
 	app-arch/lbzip2
 	app-arch/tar[xattr]
 	app-misc/zisofs-tools
-	app-crypt/shash
 	sys-fs/dosfstools
 	>=sys-fs/squashfs-tools-2.1
 	ccache? ( dev-util/ccache )
