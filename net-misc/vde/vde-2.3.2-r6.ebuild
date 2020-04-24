@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-format-security.patch"
-	"${FILESDIR}/${P}-fix-inline-funcs.patch"
+	"${FILESDIR}/${P}-fix-inline-funcs-r1.patch"
 )
 
 src_prepare() {
