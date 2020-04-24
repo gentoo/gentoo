@@ -8405,7 +8405,7 @@ dev-python/pypy3-exe 7.3.0 7.3.1: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.0_p1 7.3.1_p1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.3.0: distutils extension to work with PyQt applications and UI files
-dev-python/pyqtgraph 0.10.0-r2: A pure-python graphics and GUI library built on PyQt and numpy
+dev-python/pyqtgraph 0.10.0-r2 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.4.1: A jQuery-like library for python
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
@@ -17051,7 +17051,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 15.0.2 2019.2.9999: A virtual network service for Openstack
-sys-cluster/nova 20.1.1 20.2.0 2019.2.9999: Cloud computing fabric controller
+sys-cluster/nova 20.2.0 2019.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
