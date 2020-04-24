@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python-r1
+inherit autotools eutils python-single-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/yasm/yasm.git"
@@ -29,11 +29,15 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	nls? ( sys-devel/gettext )
-	python? ( >=dev-python/cython-0.14[${PYTHON_USEDEP}] )"
+	python? ( $(python_gen_cond_dep '>=dev-python/cython-0.14[${PYTHON_USEDEP}]') )"
 
 if [[ ${PV} == 9999* ]]; then
 	DEPEND="${DEPEND} ${PYTHON_DEPS} app-text/xmlto app-text/docbook-xml-dtd:4.1.2"
 fi
+
+pkg_setup() {
+	: # Avoid python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	if ! [[ ${PV} == 9999* ]]; then
