@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# James Le Cuirot <chewi@gentoo.org> (2020-04-23)
+# Requires media-libs/mesa[llvm], which is masked.
+dev-python/pyopengl test
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
 # dev-libs/criterion not yet keyworded
 >=app-admin/syslog-ng-3.25 test
