@@ -81,6 +81,11 @@ DEPEND="
 S=${WORKDIR}/${TWISTED_P}
 
 python_prepare_all() {
+	local PATCHES=(
+		"${FILESDIR}"/twisted-20.3.0-py38-cgi.patch
+		"${FILESDIR}"/twisted-20.3.0-py38-hmac.patch
+	)
+
 	# upstream test for making releases; not very useful and requires
 	# sphinx (including on py2)
 	rm src/twisted/python/test/test_release.py || die
