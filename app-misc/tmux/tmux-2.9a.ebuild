@@ -25,10 +25,8 @@ IUSE="debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux"
 DEPEND="
 	dev-libs/libevent:0=
 	sys-libs/ncurses:0=
-	utempter? (
-		kernel_linux? ( sys-libs/libutempter )
-		kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
-	)"
+	utempter? ( sys-libs/libutempter )
+"
 
 BDEPEND="
 	virtual/pkgconfig"
