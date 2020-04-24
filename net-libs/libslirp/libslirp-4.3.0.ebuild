@@ -19,3 +19,8 @@ RDEPEND="dev-libs/glib:="
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	default
+	echo "${PV}" > .tarball-version || die
+}
