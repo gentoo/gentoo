@@ -52,6 +52,16 @@ src_install() {
 	emake DESTDIR="${ED}" -C builddir install
 	keepdir /var/singularity/mnt/session
 
+	# As of version 3.5.3 this seems to be very much broken, affecting
+	# commands which have got nothing to do with singularity (example:
+	# completion on 'udisks mount -b /dev/' rejects all files from that
+	# directory other than 'autofs'). Moreover, this should go into
+	# $(get_bashcompdir) (from bash-completion-r1.eclass) rather than /etc.
+	# Hopefully temporary, which is why we delete this at install time
+	# instead of patching build scripts not to generate bash-completion
+	# data in the first place.
+	rm -rf "${ED}"/etc/bash_completion.d || die
+
 	dodoc README.md CONTRIBUTORS.md CONTRIBUTING.md
 	if use examples; then
 		dodoc -r examples
