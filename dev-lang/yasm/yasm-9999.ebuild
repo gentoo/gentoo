@@ -67,5 +67,6 @@ src_configure() {
 }
 
 src_test() {
-	emake check
+	# https://bugs.gentoo.org/718870
+	emake -j1 check
 }
