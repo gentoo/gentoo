@@ -33,20 +33,28 @@ RDEPEND="
 	>=dev-python/pydecomp-0.3[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-arch/tar[xattr]
+	app-misc/zisofs-tools
 	app-crypt/shash
 	sys-fs/dosfstools
-	amd64? ( >=sys-boot/syslinux-3.72 )
-	x86? ( >=sys-boot/syslinux-3.72 )
+	>=sys-fs/squashfs-tools-2.1
 	ccache? ( dev-util/ccache )
+
 	iso? ( virtual/cdrtools )
-	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
+
+	amd64? ( >=sys-boot/syslinux-3.72 )
+	x86?   ( >=sys-boot/syslinux-3.72 )
 "
-PDEPEND="system-bootloader? ( >=sys-apps/memtest86+-5.01-r4
-				sys-boot/grub:2
-				amd64? ( sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64] )
-				x86? ( sys-boot/grub[grub_platforms_efi-32] )
-				sys-boot/syslinux
-				sys-boot/shim )"
+PDEPEND="
+	system-bootloader? (
+		>=sys-apps/memtest86+-5.01-r4
+		sys-boot/grub:2
+		sys-boot/shim
+		sys-boot/syslinux
+
+		amd64? ( sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64] )
+		x86?   ( sys-boot/grub[grub_platforms_efi-32] )
+	)
+"
 
 python_prepare_all() {
 	python_setup
