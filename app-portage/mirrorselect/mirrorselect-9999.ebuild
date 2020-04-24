@@ -23,7 +23,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-util/dialog
 	>=net-analyzer/netselect-0.4[ipv6(+)]
-	=dev-python/ssl-fetch-9999[${PYTHON_USEDEP}]
+	~dev-python/ssl-fetch-9999[${PYTHON_USEDEP}]
 	"
 
 python_prepare_all() {
