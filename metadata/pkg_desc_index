@@ -1757,7 +1757,7 @@ app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r2 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 2.1: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 2.1 2.2: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 2.7.5: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
@@ -2444,7 +2444,7 @@ app-portage/gverify 2: gentoo.git signature verification tool
 app-portage/hackport 0.5.6 0.6.2 0.6.3 9999: Hackage and Portage integration tool
 app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
-app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
+app-portage/layman 2.4.2-r1 2.4.3 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
@@ -5213,7 +5213,7 @@ dev-libs/nspr 4.25: Netscape Portable Runtime
 dev-libs/nss 3.51 3.51.1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
-dev-libs/ntl 9.3.0 9.6.4 10.5.0 11.4.3: High-performance and portable C++ number theory library
+dev-libs/ntl 11.4.3: High-performance and portable C++ number theory library
 dev-libs/ocl-icd 2.2.12 2.2.12-r2 2.2.12-r3: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 6.9.4 9999: Regular expression library for different character encodings
