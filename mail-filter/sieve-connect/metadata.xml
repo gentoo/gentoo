@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>alarig@swordarmor.fr</email>
+		<name>Alarig Le Lay</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		This is sieve-connect. A client for the ManageSieve protocol,
 		as specifed in RFC 5804. Historically, this was MANAGESIEVE as
