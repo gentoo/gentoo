@@ -312,10 +312,6 @@ dev-python/pandas doc
 # solution is found, e.g., transition to a free font package.
 app-text/ghostscript-gpl l10n_ja
 
-# Michał Górny <mgorny@gentoo.org> (2019-04-10)
-# media-sound/aacplusenc is slated for removal.
-media-video/h264enc aac
-
 # Michał Górny <mgorny@gentoo.org> (2019-03-21)
 # x11-wm/afterstep is slated for removal.
 x11-terms/aterm background
