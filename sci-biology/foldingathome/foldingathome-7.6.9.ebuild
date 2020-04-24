@@ -1,13 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit versionator user systemd
+inherit user systemd
 
 DESCRIPTION="Folding@Home is a distributed computing project for protein folding"
 HOMEPAGE="https://foldingathome.org/"
-SRC_URI="https://download.foldingathome.org/releases/public/release/fahclient/centos-6.7-64bit/v$(get_version_component_range 1-2)/fahclient_${PV}-64bit-release.tar.bz2"
+SRC_URI="https://download.foldingathome.org/releases/public/release/fahclient/centos-6.7-64bit/v$(ver_cut 1-2)/fahclient_${PV}-64bit-release.tar.bz2"
 
 RESTRICT="mirror bindist strip"
 
