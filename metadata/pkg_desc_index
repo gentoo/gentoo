@@ -641,7 +641,7 @@ app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompr
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
 app-arch/rar 5.9.0_p20200330: RAR compressor/uncompressor
 app-arch/rpm 4.14.1 4.14.1-r1 4.14.2.1-r1: Red Hat Package Management Utils
-app-arch/rpm2targz 9.0.0.5g 9.0.0.5g-r1: Convert a .rpm file to a .tar.gz archive
+app-arch/rpm2targz 9.0.0.5g 9.0.0.5g-r1 9.0.0.5g-r2: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.15.2-r1: Tools to deal with shar archives
 app-arch/snappy 1.1.7 1.1.8: A high-speed compression/decompression library by Google
@@ -14573,7 +14573,7 @@ net-libs/libssh2 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.2.5 1.2.6: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3 1.2.4 1.2.5: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3 1.2.4 1.2.5 1.2.6: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
