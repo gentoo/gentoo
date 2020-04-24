@@ -85,8 +85,6 @@ src_compile() {
 	args+=( $(haproxy_use net_ns NS) )
 	args+=( $(haproxy_use pcre PCRE) )
 	args+=( $(haproxy_use pcre-jit PCRE_JIT) )
-	args+=( $(haproxy_use pcre2 PCRE2) )
-	args+=( $(haproxy_use pcre2-jit PCRE2_JIT) )
 	args+=( $(haproxy_use ssl OPENSSL) )
 	args+=( $(haproxy_use slz SLZ) )
 	args+=( $(haproxy_use zlib ZLIB) )
@@ -104,9 +102,8 @@ src_compile() {
 
 	if use tools ; then
 		for contrib in ${CONTRIBS[@]} ; do
-			# Those two includes are a workaround for hpack Makefile missing those
 			emake -C contrib/${contrib} \
-				CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+				CFLAGS="${CFLAGS}" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
 		done
 	fi
 }
@@ -166,7 +163,7 @@ pkg_postinst() {
 		if [[ -d "${EROOT}/usr/share/doc/${PF}" ]]; then
 			einfo "Please consult the installed documentation for learning the configuration file's syntax."
 			einfo "The documentation and sample configuration files are installed here:"
-			einfo "   ${EROOT}/usr/share/doc/${PF}"
+			einfo "   ${EROOT}usr/share/doc/${PF}"
 		fi
 	fi
 }
