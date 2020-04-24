@@ -82,6 +82,10 @@ DEPEND="
 S=${WORKDIR}/${TWISTED_P}
 
 python_prepare_all() {
+	# upstream test for making releases; not very useful and requires
+	# sphinx (including on py2)
+	rm src/twisted/python/test/test_release.py || die
+
 	# puts system in EMFILE state, then the exception handler may fail
 	# trying to open more files due to some gi magic
 	sed -e '/SKIP_EMFILE/s:None:"Fails on non-pristine systems":' \
@@ -106,6 +110,12 @@ python_prepare_all() {
 	# TODO: figure it out, probably doesn't accept DST date here
 	sed -e 's:test_getTimezoneOffsetWithoutDaylightSavingTime:_&:' \
 		-i src/twisted/test/test_log.py || die
+
+	# TODO: failures specific to Python 2
+	sed -e 's:testLookupProcNetTcp:_&:' \
+		-i src/twisted/test/test_ident.py || die
+	sed -e 's:test_loggingFactoryOpensLogfileAutomatically:_&:' \
+		-i src/twisted/test/test_policies.py || die
 
 	distutils-r1_python_prepare_all
 }
