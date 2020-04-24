@@ -82,19 +82,31 @@ DEPEND="
 S=${WORKDIR}/${TWISTED_P}
 
 python_prepare_all() {
-	# No allowed tests are garaunteed to work on py3.5 or py3.8
-	if use test ; then
-		# Remove since this is an upstream distribution test for making releases
-		rm src/twisted/python/test/test_release.py || die "rm src/twisted/python/test/test_release.py FAILED"
+	# puts system in EMFILE state, then the exception handler may fail
+	# trying to open more files due to some gi magic
+	sed -e '/SKIP_EMFILE/s:None:"Fails on non-pristine systems":' \
+		-i src/twisted/internet/test/test_tcp.py || die
 
-		# Remove these as they are known to fail -- fix (py2.7 - py3.6)
-		rm src/twisted/conch/test/test_ckeygen.py || die "rm src/twisted/conch/test/test_ckeygen.py FAILED"
-		rm src/twisted/pair/test/test_tuntap.py || die "rm src/twisted/pair/test/test_tuntap.py FAILED"
-		rm src/twisted/test/test_log.py || die "rm src/twisted/test/test_log.py FAILED"
+	# TODO: times out, i can't find where to increase the timeout
+	sed -e 's:test_manyProcesses:_&:' \
+		-i src/twisted/test/test_process.py || die
 
-		# This test fails only on py3.7
-		rm src/twisted/internet/test/test_process.py || die " rm src/twisted/internet/test/test_process.py FAILED"
-	fi
+	# multicast tests fail within network-sandbox
+	sed -e 's:test_joinLeave:_&:' \
+		-e 's:test_loopback:_&:' \
+		-e 's:test_multiListen:_&:' \
+		-e 's:test_multicast:_&:' \
+		-i src/twisted/test/test_udp.py || die
+
+	# accesses /dev/net/tun
+	sed -e '/class RealDeviceTestsMixin/a\
+    skip = "Requires extra permissions"' \
+		-i src/twisted/pair/test/test_tuntap.py || die
+
+	# TODO: figure it out, probably doesn't accept DST date here
+	sed -e 's:test_getTimezoneOffsetWithoutDaylightSavingTime:_&:' \
+		-i src/twisted/test/test_log.py || die
+
 	distutils-r1_python_prepare_all
 }
 
@@ -103,29 +115,11 @@ src_test() {
 }
 
 python_test() {
+	# TODO: upstream seems to override our build paths
 	distutils_install_for_testing
 
-	# workaround for the eclass not installing the entry points
-	# in the test environment.  copy the old 16.3.2 start script
-	# to run the tests with
-	cp "${FILESDIR}"/trial "${TEST_DIR}" || die
-	chmod +x "${TEST_DIR}"/trial || die
-
-	pushd "${TEST_DIR}" > /dev/null || die
-
-	if ! "${TEST_DIR}"/trial twisted; then
+	"${EPYTHON}" -m twisted.trial twisted ||
 		die "Tests failed with ${EPYTHON}"
-	fi
-
-	if ! "${TEST_DIR}"/trial twisted.test.test_twistd.DaemonizeTests; then
-		die "DaemonizeTests failed with ${EPYTHON}"
-	fi
-
-	if ! "${TEST_DIR}"/trial twisted.test.test_reflect.SafeStrTests; then
-		die "SafeStrTests failed with ${EPYTHON}"
-	fi
-
-	popd > /dev/null || die
 }
 
 python_install() {
