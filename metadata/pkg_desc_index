@@ -1674,7 +1674,7 @@ app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
 app-emulation/vagrant 2.2.6-r1 2.2.7-r1: A tool for building and distributing development environments
 app-emulation/vice 3.4_p37498 3.4_p37605: The Versatile Commodore Emulator
-app-emulation/virt-manager 2.2.1-r2 9999: A graphical tool for administering virtual machines
+app-emulation/virt-manager 2.2.1-r3 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19 1.20: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.173.9: VirtIO drivers for Windows virtual machines running on KVM
@@ -14642,7 +14642,7 @@ net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
 net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx2 2019.0 2020.1-r1: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
-net-mail/b4 0.3.7: Utility for fetching patchsets from public-inbox
+net-mail/b4 0.4.0: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication program w/pam support
 net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
@@ -16115,7 +16115,7 @@ sci-libs/taucs 2.2: C library of sparse linear solvers
 sci-libs/tensorflow 1.15.0 2.0.0 2.1.0 2.2.0_rc2: Computation framework using data flow graphs for scalable machine learning
 sci-libs/tensorflow-estimator 1.15.1 2.0.1 2.1: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
-sci-libs/trilinos 12.14.1: Scientific library collection for large scale problems
+sci-libs/trilinos 12.14.1 12.18.1: Scientific library collection for large scale problems
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.6.2 5.7.9: Unsymmetric multifrontal sparse LU factorization library
