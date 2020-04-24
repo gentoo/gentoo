@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="${PYTHON_DEPS}
+BDEPEND="${PYTHON_DEPS}
 	app-arch/zopfli
 	$(python_gen_any_dep '
 		dev-python/fonttools[${PYTHON_USEDEP}]
@@ -27,7 +27,6 @@ DEPEND="${PYTHON_DEPS}
 	x11-libs/cairo
 	|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png] )
 "
-RDEPEND=""
 
 RESTRICT="binchecks strip"
 
@@ -37,8 +36,12 @@ FONT_S="${S}"
 FONT_SUFFIX="ttf"
 
 python_check_deps() {
-	has_version "dev-python/fonttools[${PYTHON_USEDEP}]" && \
-        has_version "dev-python/nototools[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/fonttools[${PYTHON_USEDEP}]" &&
+	has_version -b "dev-python/nototools[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	font_pkg_setup
 }
 
 PATCHES=(
@@ -56,6 +59,11 @@ src_prepare() {
 	if has_version media-gfx/graphicsmagick; then
 		eapply "${FILESDIR}/${PN}-20190328-use-gm.patch"
 	fi
+}
+
+src_compile() {
+	python_setup
+	default
 }
 
 src_install() {

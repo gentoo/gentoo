@@ -17,7 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="buildfont"
 
-DEPEND="buildfont? (
+BDEPEND="
+	buildfont? (
 		${PYTHON_DEPS}
 		app-arch/zopfli
 		$(python_gen_any_dep '
@@ -29,15 +30,18 @@ DEPEND="buildfont? (
 		|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png] )
 	)
 "
-RDEPEND=""
 
 RESTRICT="binchecks strip"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 python_check_deps() {
-	has_version "dev-python/fonttools[${PYTHON_USEDEP}]" && \
-        has_version "dev-python/nototools[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/fonttools[${PYTHON_USEDEP}]" &&
+	has_version -b "dev-python/nototools[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	font_pkg_setup
 }
 
 src_prepare() {
@@ -55,7 +59,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-zopflipng-verbose.patch
 
 		# Based on Fedora patch to allow graphicsmagick usage
-		if has_version media-gfx/graphicsmagick; then
+		if has_version -b media-gfx/graphicsmagick; then
 			eapply "${FILESDIR}/${PN}-20190328-use-gm.patch"
 		fi
 	fi
@@ -68,6 +72,7 @@ src_compile() {
 		einfo "To build fonts based on latest images enable 'buildfont'"
 		einfo "USE (that will require more time and resources too)."
 	else
+		python_setup
 		einfo "Building fonts..."
 		default
 	fi
