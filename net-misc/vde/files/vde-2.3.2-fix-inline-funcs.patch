@@ -1,7 +1,7 @@
 # Sourced from https://raw.githubusercontent.com/OpenMandrivaAssociation/vde2/master/vd2-2.3.2-clang.patch
 
---- a/vde2-2.3.2/src/vde_switch/fstp.c	2014-10-29 22:54:18.659988435 +0000
-+++ b/vde2-2.3.2/src/vde_switch/fstp.c	2014-10-29 22:54:44.912986501 +0000
+--- a/src/vde_switch/fstp.c	2014-10-29 22:54:18.659988435 +0000
++++ b/src/vde_switch/fstp.c	2014-10-29 22:54:44.912986501 +0000
 @@ -30,14 +30,14 @@
  #ifdef FSTP
  #include <fstp.h>
