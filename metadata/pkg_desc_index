@@ -2358,8 +2358,8 @@ app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.1.2-r1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.3.4.2-r1 6.3.5.2 6.3.9999 6.4.3.2 6.4.9999 9999: A full office productivity suite
-app-office/libreoffice-bin 6.3.4.2 6.3.4.2-r1: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.3.4.2 6.3.4.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-bin 6.3.4.2-r1: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 6.3.4.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.3.4.2 6.3.5.2 6.4.3.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.3: WYSIWYM frontend for LaTeX, DocBook, etc.
@@ -6821,7 +6821,7 @@ dev-perl/TAP-Parser-SourceHandler-pgTAP 3.330.0 3.340.0 3.350.0: Stream TAP from
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
 dev-perl/Taint-Util 0.80.0-r1: Test for and flip the taint flag without regex matches or eval
 dev-perl/Task-Weaken 1.50.0: Ensure that a platform has weaken support
-dev-perl/TeX-Encode 2.4.0: Encode/decode Perl utf-8 strings into TeX
+dev-perl/TeX-Encode 2.4.0 2.8.0: Encode/decode Perl utf-8 strings into TeX
 dev-perl/Template-DBI 2.650.0-r2: DBI plugin for the Template Toolkit
 dev-perl/Template-GD 2.660.0-r1: GD plugin(s) for the Template Toolkit
 dev-perl/Template-Plugin-Cycle 1.60.0: Cyclically insert into a Template from a sequence of values
