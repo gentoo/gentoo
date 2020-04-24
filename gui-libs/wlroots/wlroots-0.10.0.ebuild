@@ -47,7 +47,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=("${FILESDIR}"/${P}-gcc-10.patch)
+PATCHES=("${FILESDIR}"/${PN}-gcc-10.patch)
 
 src_configure() {
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
