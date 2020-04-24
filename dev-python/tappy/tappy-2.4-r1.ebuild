@@ -14,7 +14,7 @@ S=${WORKDIR}/${MY_PN}-${PV}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc x86"
 IUSE="yaml"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
