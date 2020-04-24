@@ -24,12 +24,16 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="ccache doc +iso kernel_linux system-bootloader"
 
-DEPEND="
-	app-text/asciidoc
+COMMON_DEPEND="
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
+"
+DEPEND="
+	${COMMON_DEPEND}
+	app-text/asciidoc
 "
 RDEPEND="
-	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
+	${COMMON_DEPEND}
 	>=dev-python/pydecomp-0.3[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-arch/tar[xattr]
