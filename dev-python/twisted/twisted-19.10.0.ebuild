@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 virtualx
 
 TWISTED_PN="Twisted"
 TWISTED_P="${TWISTED_PN}-${PV}"
@@ -96,6 +96,10 @@ python_prepare_all() {
 		rm src/twisted/internet/test/test_process.py || die " rm src/twisted/internet/test/test_process.py FAILED"
 	fi
 	distutils-r1_python_prepare_all
+}
+
+src_test() {
+	virtx distutils-r1_src_test
 }
 
 python_test() {
