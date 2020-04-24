@@ -1,0 +1,27 @@
+From 3f94f1a87252d2343aa71f8f7c5acec180492cf4 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Fri, 24 Apr 2020 14:48:28 +0200
+Subject: [PATCH] autotools: ensure $(DESTDIR)/usr/share/consolefonts exists
+
+Ensure that $(DESTDIR)/usr/share/consolefonts exists, as otherwise the
+following install commands would create a binary file
+$(DESTDIR)/usr/share/consolefonts with the content of matrix.psf.gz.
+---
+ Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 6679e15..016f21d 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -17,6 +17,7 @@ install-data-local:
+ 	@if test $(BUILD_FONTS) = 1; then \
+ 		if test -d /usr/share/consolefonts; then \
+ 	    		echo " Installing matrix fonts in /usr/share/consolefonts..."; \
++	    		mkdir -p $(DESTDIR)/usr/share/consolefonts; \
+ 	    		$(INSTALL_DATA) $(srcdir)/matrix.fnt $(DESTDIR)/usr/share/consolefonts; \
+ 	    		$(INSTALL_DATA) $(srcdir)/matrix.psf.gz  $(DESTDIR)/usr/share/consolefonts; \
+ 		fi; \
+-- 
+2.24.1
+

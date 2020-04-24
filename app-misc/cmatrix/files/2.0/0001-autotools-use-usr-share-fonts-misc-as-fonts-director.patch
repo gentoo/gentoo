@@ -1,0 +1,59 @@
+From 3190bba551f96a438b7a380f15f801e66ba03ffd Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Fri, 24 Apr 2020 13:14:13 +0200
+Subject: [PATCH 1/3] autotools: use /usr/share/fonts/misc as fonts directory
+
+Instad of /usr/lib/X11/fonts/misc, the fonts should be installed to
+/usr/share/fonts/misc. Just like the CMake-based build already does.
+---
+ Makefile.am  | 12 ++++++------
+ configure.ac |  4 ++--
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 60dc25a..640eb96 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -25,12 +25,12 @@ install-data-local:
+ 	    		$(INSTALL_DATA) $(srcdir)/matrix.fnt /usr/lib/kbd/consolefonts; \
+ 	    		$(INSTALL_DATA) $(srcdir)/matrix.psf.gz /usr/lib/kbd/consolefonts; \
+ 		fi; \
+-		if test -d /usr/lib/X11/fonts/misc; then \
+-	    		echo " Installing X window matrix fonts in /usr/lib/X11/fonts/misc..."; \
+-	    		$(INSTALL_DATA) $(srcdir)/mtx.pcf /usr/lib/X11/fonts/misc; \
+-	    		$(INSTALL_DATA) $(srcdir)/mtx.pcf /usr/lib/X11/fonts/misc; \
+-	    		echo " Running mkfontdir /usr/lib/X11/fonts/misc..."; \
+-	    		$(MKFONTDIR) /usr/lib/X11/fonts/misc; \
++		if test -d /usr/share/fonts/misc; then \
++	    		echo " Installing X window matrix fonts in /usr/share/fonts/misc..."; \
++	    		$(INSTALL_DATA) $(srcdir)/mtx.pcf /usr/share/fonts/misc; \
++	    		$(INSTALL_DATA) $(srcdir)/mtx.pcf /usr/share/fonts/misc; \
++	    		echo " Running mkfontdir /usr/share/fonts/misc..."; \
++	    		$(MKFONTDIR) /usr/share/fonts/misc; \
+ 	    		echo " Done.  If this is the first time you have installed CMatrix you will"; \
+ 	    		echo " probably have to restart X window in order to use the mtx.pcf font."; \
+ 		else \
+diff --git a/configure.ac b/configure.ac
+index 8a8066a..976d1b0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -112,14 +112,14 @@ if test "x$enable_fonts" != xfalse; then
+   fi
+ 
+   AC_PATH_PROG(MKFONTDIR, mkfontdir, "", $PATH:/usr/bin:/usr/bin/X11:/usr/local/bin/X11:/usr/X11R6/bin:/usr/local/bin:/sbin:/usr/sbin)
+-  AC_CHECK_FILES([/usr/lib/X11/fonts/misc /usr/X11R6/lib/X11/fonts/misc])
++  AC_CHECK_FILES([/usr/share/fonts/misc /usr/X11R6/lib/X11/fonts/misc])
+ 
+   if test "x$ac_cv_file__usr_lib_X11_fonts_misc" = "xno"; then
+       if test "x$ac_cv_file__usr_X11R6_lib_X11_fonts_misc" = "xno"; then
+ 	  AC_MSG_WARN([ 
+ 
+ *** You do not appear to have an X window fonts directory in the standard
+-*** locations (/usr/lib/X11/fonts/misc or /usr/X11R6/lib/X11/fonts/misc). The
++*** locations (/usr/share/fonts/misc or /usr/X11R6/lib/X11/fonts/misc). The
+ *** mtx.pcf font will not be installed.  This means you will probably not
+ *** be able to use the mtx fonts in your x terminals, and hence be unable
+ *** to use the -x command line switch.  Sorry about that...
+-- 
+2.24.1
+

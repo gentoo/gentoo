@@ -1,0 +1,30 @@
+From 1faf69a5b67f45f7ab7cd52408abca277a851015 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Fri, 24 Apr 2020 14:35:51 +0200
+Subject: [PATCH 3/3] autotools: correct --with(out)-fonts
+
+The previous M4 code would lead to fonts being disabled, irregardless
+if --without-fonts or --with-fonts was given.
+---
+ configure.ac | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 976d1b0..387eb6e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,7 +65,10 @@ if test "$ac_cv_prog_CC" = gcc -o "$ac_cv_prog_CC" = g++; then
+ fi
+ 
+ dnl cmatrix terminal font disable option (default enabled)
+-AC_ARG_WITH([fonts], AS_HELP_STRING([--without-fonts], [Install cmatrix without cmatrix font]), [enable_fonts=false], [enable_fonts=true])
++AC_ARG_WITH([fonts],
++	AS_HELP_STRING([--without-fonts], [Install cmatrix without cmatrix font]),
++	AS_IF([test "x$with_fonts" == "xno"], [enable_fonts=false], [enable_fonts=true]),
++	[enable_fonts=true])
+ 
+ if test "x$enable_fonts" != xfalse; then
+   dnl Check for consolechars and setfonts
+-- 
+2.24.1
+
