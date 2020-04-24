@@ -27,5 +27,5 @@ S=${WORKDIR}
 src_install() {
 	newbin ${P}.py ${PN}
 	python_replicate_script "${D}"/usr/bin/${PN}
-	newbashcomp "${FILESDIR}"/${P}-completion ${PN}
+	newbashcomp "${FILESDIR}"/${PN}-19-completion ${PN}
 }
