@@ -10,6 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="chappa">enhance Alpine by applying Eduardo Chappa's
+			patches</flag>
 		<flag name="onlyalpine">installs only the alpine binary, so it does
 			not collied with pico and/or pine</flag>
 		<flag name="passfile">Adds support for caching passwords into a file
