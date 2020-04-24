@@ -3,6 +3,9 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">b5invis/iosevka</remote-id>
+    <remote-id type="github">be5invis/Iosevka</remote-id>
   </upstream>
+  <use>
+    <flag name="stylisticsets">Enable stylistic sets (see https://git.io/iosevka-stylesets for the list).</flag>
+  </use>
 </pkgmetadata>
