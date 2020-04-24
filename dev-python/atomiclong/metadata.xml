@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">dreid/atomiclong</remote-id>
+  </upstream>
+  <longdescription lang="en">
+Sometimes you need to increment some numbers ... atomically ... in python.
+AtomicLong was born out of the need for fast thread-safe counters in python.
+It uses CFFI to bind GCC's Atomic Builtins.
+Its value is a C long which can be incremented, decremented, and set atomically. It is inspired by Java's java.util.concurrent.atomic.AtomicLong.
+  </longdescription>
+</pkgmetadata>
