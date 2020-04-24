@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit cmake desktop flag-o-matic python-any-r1 xdg-utils
 
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+alsa +dbus enchant +hunspell libressl pulseaudio +spell"
+IUSE="+alsa +dbus enchant +hunspell libressl pulseaudio +spell wayland +X"
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
@@ -28,26 +28,19 @@ RDEPEND="
 	dev-cpp/range-v3
 	dev-libs/xxhash
 	dev-qt/qtcore:5
+	dev-qt/qtgui:5[jpeg,png,wayland?,X(-)?]
 	dev-qt/qtimageformats:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5[png,X(-)?]
+	media-fonts/open-sans
 	media-libs/fontconfig:=
 	>=media-libs/libtgvoip-2.4.4_p20200301[alsa?,pulseaudio?]
 	media-libs/openal[alsa?,pulseaudio?]
 	media-libs/opus:=
-	media-video/ffmpeg:=[opus]
+	media-video/ffmpeg:=[alsa?,opus,pulseaudio?]
 	sys-libs/zlib[minizip]
 	virtual/libiconv
-	x11-libs/libva:=[X,drm]
-	x11-libs/libX11
-	|| (
-		dev-qt/qtgui:5[jpeg,png,X(-)]
-		dev-qt/qtgui:5[jpeg,png,xcb(-)]
-	)
-	|| (
-		dev-qt/qtwidgets:5[png,X(-)]
-		dev-qt/qtwidgets:5[png,xcb(-)]
-	)
 	dbus? (
 		dev-qt/qtdbus:5
 		dev-libs/libdbusmenu-qt[qt5(+)]
@@ -67,7 +60,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="|| ( alsa pulseaudio )
+REQUIRED_USE="
+	|| ( alsa pulseaudio )
+	|| ( X wayland )
 	spell? (
 		^^ ( enchant hunspell )
 	)
@@ -75,9 +70,7 @@ REQUIRED_USE="|| ( alsa pulseaudio )
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/1.9.21-icon.patch"
-)
+PATCHES=( "${FILESDIR}/${PV}-kde-dir.patch" )
 
 src_configure() {
 	local mycxxflags=(
@@ -100,7 +93,7 @@ src_configure() {
 		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION="$(usex dbus OFF ON)"
-		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)" # enables hunspell
+		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)" # enables hunspell (recommended)
 		-DDESKTOP_APP_USE_ENCHANT="$(usex enchant ON OFF)" # enables enchant and disables hunspell
 	)
 
