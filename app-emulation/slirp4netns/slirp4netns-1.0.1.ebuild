@@ -16,6 +16,7 @@ SLOT="0"
 RDEPEND="
 	dev-libs/glib:2=
 	dev-libs/libpcre:=
+	net-libs/libslirp:=
 	sys-libs/libseccomp:=
 	sys-libs/libcap:="
 

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pkgcore/pkgcheck.git"
@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/pkgcore/pkgcheck"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="network perl test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 if [[ ${PV} == *9999 ]]; then
@@ -35,8 +35,6 @@ RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
-	network? ( dev-python/requests[${PYTHON_USEDEP}] )
-	perl? ( dev-perl/Gentoo-PerlMod-Version )
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -51,4 +49,9 @@ python_install_all() {
 	local DOCS=( NEWS.rst )
 	[[ ${PV} == *9999 ]] || doman man/*
 	distutils-r1_python_install_all
+}
+
+pkg_postinst() {
+	optfeature "Network check support" dev-python/requests
+	optfeature "Perl module version check support" dev-perl/Gentoo-PerlMod-Version
 }
