@@ -4,7 +4,7 @@
 EAPI="7"
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit user toolchain-funcs flag-o-matic systemd linux-info $SCM
+inherit toolchain-funcs flag-o-matic systemd linux-info $SCM
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
@@ -12,7 +12,7 @@ DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
-	KEYWORDS="amd64 arm ~ppc x86"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 else
 	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
@@ -20,8 +20,8 @@ fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
-ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
+IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit pcre2 pcre2-jit ssl
+systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
 	pcre? ( !pcre2 )
@@ -45,7 +45,9 @@ DEPEND="
 	zlib? ( sys-libs/zlib )
 	lua? ( dev-lang/lua:5.3 )
 	device-atlas? ( dev-libs/device-atlas-api-c )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	acct-group/haproxy
+	acct-user/haproxy"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -63,9 +65,6 @@ haproxy_use() {
 }
 
 pkg_setup() {
-	enewgroup haproxy
-	enewuser haproxy -1 -1 -1 haproxy
-
 	if use net_ns; then
 		CONFIG_CHECK="~NET_NS"
 		linux-info_pkg_setup
@@ -75,7 +74,9 @@ pkg_setup() {
 src_compile() {
 	local -a args=(
 		V=1
-		TARGET=linux-glibc
+		TARGET=linux2628
+		USE_GETADDRINFO=1
+		USE_TFO=1
 	)
 
 	# TODO: PCRE2_WIDTH?
@@ -98,12 +99,7 @@ src_compile() {
 	# For now, until the strict-aliasing breakage will be fixed
 	append-cflags -fno-strict-aliasing
 
-	if use prometheus-exporter; then
-		EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o"
-	fi
-
-	# HAProxy really needs some of those "SPEC_CFLAGS", like -fno-strict-aliasing
-	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" ${args[@]}
+	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
 	emake -C contrib/systemd SBINDIR=/usr/sbin
 
 	if use tools ; then
@@ -152,12 +148,12 @@ src_install() {
 	if use examples ; then
 		docinto examples
 		dodoc examples/*.cfg
-		dodoc doc/seamless_reload.txt
+		dodoc examples/seamless_reload.txt
 	fi
 
 	if use vim-syntax ; then
 		insinto /usr/share/vim/vimfiles/syntax
-		doins contrib/syntax-highlight/haproxy.vim
+		doins examples/haproxy.vim
 	fi
 }
 

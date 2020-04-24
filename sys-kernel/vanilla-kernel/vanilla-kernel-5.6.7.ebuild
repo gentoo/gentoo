@@ -7,11 +7,11 @@ inherit kernel-build
 
 MY_P=linux-${PV}
 # https://git.archlinux.org/svntogit/packages.git/log/trunk/config?h=packages/linux
-AMD64_CONFIG_VER=5.5.5-arch1
-AMD64_CONFIG_HASH=e4d4ca36741d228042185e2a9047cd88fb5b4169
+AMD64_CONFIG_VER=5.6.5-arch2
+AMD64_CONFIG_HASH=fdf9d6f7ce59ea8e64911c1a1e7992026b57f552
 # https://git.archlinux32.org/packages/log/core/linux/config.i686
-I686_CONFIG_VER=5.5.6-arch1
-I686_CONFIG_HASH=7d53d8a42f68648bce5b002aaf8c2b14e6298275
+I686_CONFIG_VER=5.6.5-arch3
+I686_CONFIG_HASH=e36c1ea7991eca34f6d80d325da9413a4827eabf
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="https://www.kernel.org/"

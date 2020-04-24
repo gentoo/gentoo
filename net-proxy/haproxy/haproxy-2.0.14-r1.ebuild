@@ -4,7 +4,7 @@
 EAPI="7"
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit user toolchain-funcs flag-o-matic systemd linux-info $SCM
+inherit toolchain-funcs flag-o-matic systemd linux-info $SCM
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
@@ -12,7 +12,7 @@ DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
-	KEYWORDS="amd64 arm ~ppc x86"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 else
 	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
@@ -45,7 +45,9 @@ DEPEND="
 	zlib? ( sys-libs/zlib )
 	lua? ( dev-lang/lua:5.3 )
 	device-atlas? ( dev-libs/device-atlas-api-c )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	acct-group/haproxy
+	acct-user/haproxy"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -63,9 +65,6 @@ haproxy_use() {
 }
 
 pkg_setup() {
-	enewgroup haproxy
-	enewuser haproxy -1 -1 -1 haproxy
-
 	if use net_ns; then
 		CONFIG_CHECK="~NET_NS"
 		linux-info_pkg_setup

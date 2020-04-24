@@ -1,20 +1,20 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit user versionator toolchain-funcs flag-o-matic systemd linux-info $SCM
+inherit toolchain-funcs flag-o-matic systemd linux-info $SCM
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
 DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
-	SRC_URI="http://haproxy.1wt.eu/download/$(get_version_component_range 1-2)/src/${MY_P}.tar.gz"
+	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 else
-	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(get_version_component_range 1-2).git/"
+	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
 fi
 
@@ -45,16 +45,18 @@ DEPEND="
 	zlib? ( sys-libs/zlib )
 	lua? ( dev-lang/lua:5.3 )
 	device-atlas? ( dev-libs/device-atlas-api-c )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	acct-group/haproxy
+	acct-user/haproxy"
 
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 CONTRIBS=( halog iprange )
 # ip6range is present in 1.6, but broken.
-version_is_at_least 1.7.0 $PV && CONTRIBS+=( ip6range spoa_example tcploop )
+ver_test $PV -ge 1.7.0 && CONTRIBS+=( ip6range spoa_example tcploop )
 # TODO: mod_defender - requires apache / APR, modsecurity - the same
-version_is_at_least 1.8.0 $PV && CONTRIBS+=( hpack )
+ver_test $PV -ge 1.8.0 && CONTRIBS+=( hpack )
 
 haproxy_use() {
 	(( $# != 2 )) && die "${FUNCNAME} <USE flag> <make option>"
@@ -63,9 +65,6 @@ haproxy_use() {
 }
 
 pkg_setup() {
-	enewgroup haproxy
-	enewuser haproxy -1 -1 -1 haproxy
-
 	if use net_ns; then
 		CONFIG_CHECK="~NET_NS"
 		linux-info_pkg_setup
@@ -74,6 +73,7 @@ pkg_setup() {
 
 src_compile() {
 	local -a args=(
+		V=1
 		TARGET=linux2628
 		USE_GETADDRINFO=1
 		USE_TFO=1

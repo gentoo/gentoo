@@ -7,18 +7,17 @@ DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
-SRC_URI=""
+SRC_URI="https://gitweb.gentoo.org/proj/gentoolkit.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 DEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]"
