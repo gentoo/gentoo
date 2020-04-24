@@ -66,6 +66,10 @@ python_configure() {
 		--default-graphics=spice
 }
 
+python_install() {
+	esetup.py install
+}
+
 src_install() {
 	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
 	distutils-r1_src_install
