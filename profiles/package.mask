@@ -59,7 +59,11 @@ games-action/rune
 # not needed anymore, no revdeps
 # removal in 14 days. Bug #718996.
 dev-python/ip-associations-python-novaclient-ext
+dev-python/os-virtual-interfacesv2-python-novaclient-ext
+dev-python/os-networksv2-python-novaclient-ext
+dev-python/osc-placement
 dev-python/rackspace-novaclient
+dev-python/nose-testconfig
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
