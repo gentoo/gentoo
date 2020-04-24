@@ -33,9 +33,9 @@ src_install() {
 
 pkg_postinst() {
 	if use X; then
-		if [[ -d "${ROOT}"usr/share/fonts/misc ]] ; then
-			einfo ">>> Running mkfontdir on ${ROOT}usr/share/fonts/misc"
-			mkfontdir "${ROOT}"usr/share/fonts/misc
+		if [[ -d "${ROOT}"/usr/share/fonts/misc ]] ; then
+			einfo ">>> Running mkfontdir on ${ROOT}/usr/share/fonts/misc"
+			mkfontdir "${ROOT}"/usr/share/fonts/misc
 		fi
 		font_pkg_postinst
 	fi
