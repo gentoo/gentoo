@@ -29,15 +29,14 @@ RDEPEND="${COMMON_DEPS}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( 
+PATCHES=(
 	"${FILESDIR}/${P}-format-security.patch"
-	"${FILESDIR}/${P}-fix-inline-funcs.patch
+	"${FILESDIR}/${P}-fix-inline-funcs.patch"
 )
 
 src_prepare() {
 	default
-	has_version ">=dev-libs/openssl-1.1.0" && \
-		eapply "${FILESDIR}/${P}-openssl-1.1.patch"
+	has_version ">=dev-libs/openssl-1.1.0" && eapply "${FILESDIR}/${P}-openssl-1.1.patch"
 }
 
 src_configure() {
