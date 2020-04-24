@@ -1,8 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 inherit autotools eutils python-single-r1
@@ -23,16 +22,25 @@ SLOT="0"
 IUSE="nls python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="
-	nls? ( virtual/libintl )
-	python? ( ${PYTHON_DEPS} )"
-DEPEND="
-	${RDEPEND}
+BDEPEND="
 	nls? ( sys-devel/gettext )
-	python? ( $(python_gen_cond_dep '>=dev-python/cython-0.14[${PYTHON_USEDEP}]') )"
+	python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '>=dev-python/cython-0.14[${PYTHON_USEDEP}]')
+	)
+"
+DEPEND="
+	nls? ( virtual/libintl )
+"
+RDEPEND="${DEPEND}
+	python? ( ${PYTHON_DEPS} )
+"
 
 if [[ ${PV} == 9999* ]]; then
-	DEPEND="${DEPEND} ${PYTHON_DEPS} app-text/xmlto app-text/docbook-xml-dtd:4.1.2"
+	BDEPEND+="
+		app-text/xmlto
+		app-text/docbook-xml-dtd:4.1.2
+	"
 fi
 
 pkg_setup() {
@@ -40,11 +48,15 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	if ! [[ ${PV} == 9999* ]]; then
 		sed -i -e 's:xmlto:&dIsAbLe:' configure.ac || die #459940
 	fi
+
 	# ksh doesn't grok $(xxx), makes aclocal fail
 	sed -i -e '1c\#!/usr/bin/env sh' YASM-VERSION-GEN.sh || die
+
 	eautoreconf
 
 	if [[ ${PV} == 9999* ]]; then
@@ -53,17 +65,16 @@ src_prepare() {
 }
 
 src_configure() {
-	if [[ ${PV} == 9999* ]]; then
-		python_setup
-	else
-		use python && python_setup
-	fi
+	use python && python_setup
 
-	econf \
-		--disable-warnerror \
-		$(use_enable python) \
-		$(use_enable python python-bindings) \
+	local myconf=(
+		--disable-warnerror
+		$(use_enable python)
+		$(use_enable python python-bindings)
 		$(use_enable nls)
+	)
+
+	econf "${myconf[@]}"
 }
 
 src_test() {
