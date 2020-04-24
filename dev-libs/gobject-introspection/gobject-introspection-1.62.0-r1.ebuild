@@ -53,8 +53,8 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature test cairo)
-		$(meson_feature doctool)
+		$(meson_use test cairo)
+		$(meson_use doctool)
 		#-Dglib_src_dir
 		$(meson_use gtk-doc gtk_doc)
 		#-Dcairo_libname
