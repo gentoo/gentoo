@@ -23,7 +23,7 @@ RDEPEND="
 "
 
 BDEPEND="
-	!cdinstall? ( app-arch/innoextract )
+	!cdinstall? ( >=app-arch/innoextract-1.8 )
 "
 
 S="${WORKDIR}/target"
