@@ -106,6 +106,10 @@ QA_FLAGS_IGNORED="
 	usr/lib/rustlib/.*/lib/lib.*.so
 "
 
+# tests need a bit more work, currently they are causing multiple
+# re-compilations and somewhat fragile.
+RESTRICT="test"
+
 QA_SONAME="usr/lib.*/librustc_macros.*.so"
 
 PATCHES=(
