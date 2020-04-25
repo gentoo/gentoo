@@ -18,7 +18,7 @@ RDEPEND="virtual/latex-base
 
 DEPEND="${RDEPEND}"
 
-BDEPDND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${PN}"
 
