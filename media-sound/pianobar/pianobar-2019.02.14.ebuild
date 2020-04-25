@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,14 +17,13 @@ HOMEPAGE="https://6xq.net/pianobar/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="libav static-libs"
+IUSE="static-libs"
 
 RDEPEND="media-libs/libao
 	net-misc/curl
 	dev-libs/libgcrypt:0=
 	dev-libs/json-c:=
-	libav? ( >=media-video/libav-12:0= )
-	!libav? ( >=media-video/ffmpeg-3.1:0= )
+	>=media-video/ffmpeg-3.1:0=
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
