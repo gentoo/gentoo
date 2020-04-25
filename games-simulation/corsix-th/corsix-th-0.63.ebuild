@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}.t
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="doc libav +midi +sound +truetype +videos"
+IUSE="doc +midi +sound +truetype +videos"
 
 RDEPEND="
 	>=dev-lang/lua-5.1:0
@@ -25,10 +25,7 @@ RDEPEND="
 	media-libs/libsdl2[opengl,video]
 	sound? ( media-libs/sdl2-mixer[midi?] )
 	truetype? ( >=media-libs/freetype-2.5.3:2 )
-	videos? (
-		!libav? ( >=media-video/ffmpeg-2.2.3:0= )
-		libav? ( >=media-video/libav-11.1:0= )
-	)
+	videos? ( >=media-video/ffmpeg-2.2.3:0= )
 "
 
 DEPEND="${RDEPEND}"
