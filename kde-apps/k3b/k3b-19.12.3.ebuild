@@ -17,7 +17,7 @@ https://userbase.kde.org/K3b"
 LICENSE="GPL-2 FDL-1.2"
 SLOT="5"
 KEYWORDS="amd64 arm64 x86"
-IUSE="dvd encode ffmpeg flac libav mad mp3 musepack sndfile sox taglib vcd vorbis webkit"
+IUSE="dvd encode ffmpeg flac mad mp3 musepack sndfile sox taglib vcd vorbis webkit"
 
 REQUIRED_USE="
 	flac? ( taglib )
@@ -53,10 +53,7 @@ DEPEND="
 	>=dev-qt/qtxml-${QTMIN}:5
 	media-libs/libsamplerate
 	dvd? ( media-libs/libdvdread:= )
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:0= )
-	)
+	ffmpeg? ( media-video/ffmpeg:0= )
 	flac? ( >=media-libs/flac-1.2[cxx] )
 	mp3? ( media-sound/lame )
 	mad? ( media-libs/libmad )
