@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,10 +33,7 @@ RDEPEND="
 	dev-qt/qtx11extras:5
 	media-libs/alsa-lib:0=
 	media-libs/mesa[${MULTILIB_USEDEP},X(+)]
-	|| (
-		media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
-		media-video/libav[vorbis?,vpx?,x264?,mp3?,theora?]
-	)
+	media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
