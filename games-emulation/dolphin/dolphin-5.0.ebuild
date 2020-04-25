@@ -17,7 +17,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth doc egl +evdev ffmpeg libav log lto openal +pch portaudio profile pulseaudio qt5 sdl upnp +wxwidgets"
+IUSE="alsa ao bluetooth doc egl +evdev ffmpeg log lto openal +pch portaudio profile pulseaudio qt5 sdl upnp +wxwidgets"
 
 RESTRICT=test
 
@@ -42,10 +42,7 @@ RDEPEND="
 		dev-libs/libevdev
 		virtual/udev
 	)
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	openal? (
 		media-libs/openal
 		media-libs/libsoundtouch

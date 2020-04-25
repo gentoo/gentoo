@@ -22,7 +22,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg libav log lto profile pulseaudio +qt5 systemd upnp"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp"
 
 RDEPEND="
 	dev-libs/hidapi:0=
@@ -48,10 +48,7 @@ RDEPEND="
 		dev-libs/libevdev
 		virtual/udev
 	)
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? (

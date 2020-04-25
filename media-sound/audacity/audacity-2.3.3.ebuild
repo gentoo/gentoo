@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86"
-IUSE="alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame libav
+IUSE="alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame
 	+lv2 mad midi nls +portmixer sbsms +soundtouch twolame vamp +vorbis +vst"
 
 RESTRICT="test"
@@ -30,10 +30,7 @@ RDEPEND="dev-libs/expat
 	media-libs/soxr
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	alsa? ( media-libs/alsa-lib )
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( >=media-video/ffmpeg-1.2:= )
-	)
+	ffmpeg? ( >=media-video/ffmpeg-1.2:= )
 	flac? ( >=media-libs/flac-1.3.1[cxx] )
 	id3tag? ( media-libs/libid3tag )
 	jack? ( virtual/jack )

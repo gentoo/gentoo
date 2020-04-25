@@ -18,7 +18,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug ffmpeg
-fftw frei0r gtk jack kdenlive kernel_linux libav libsamplerate lua melt opencv opengl python
+fftw frei0r gtk jack kdenlive kernel_linux libsamplerate lua melt opencv opengl python
 qt5 rtaudio ruby sdl vdpau vidstab xine xml"
 # java perl php tcl
 
@@ -38,10 +38,7 @@ BDEPEND="
 #rtaudio will use OSS on non linux OSes
 DEPEND="
 	>=media-libs/libebur128-1.2.2:=
-	ffmpeg? (
-		libav? ( >=media-video/libav-12:0=[vdpau?] )
-		!libav? ( media-video/ffmpeg:0=[vdpau?,-flite] )
-	)
+	ffmpeg? ( media-video/ffmpeg:0=[vdpau?,-flite] )
 	fftw? ( sci-libs/fftw:3.0= )
 	frei0r? ( media-plugins/frei0r-plugins )
 	gtk? (

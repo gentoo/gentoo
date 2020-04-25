@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2020-04-25)
+# gnome-base/gnome-control-center not keyworded on alpha
+# anymore, bug #692802
+net-libs/gnome-online-accounts gnome
+
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test

@@ -13,7 +13,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg +pdf +playlist raw +rss seccomp test +tiff upower +xml xmp xps"
 
-REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpe
+REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
 
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
