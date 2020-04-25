@@ -5102,7 +5102,6 @@ media-video/subtitlecomposer:mpv - Build mpv backend support
 media-video/syncplay:client - Install Syncplay client
 media-video/syncplay:server - Install Syncplay server
 media-video/syncplay:vlc - Enable VLC2.x support
-media-video/totem:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
 media-video/totem:python - Build dev-lang/python using plugins (dbusservice for notifications and MPRIS control, interactive python console and opensubtitles lookup)
 media-video/transcode:mjpeg - Enables mjpegtools support
 media-video/transcode:nuv - NuppelVideo container format demuxing
@@ -9095,7 +9094,6 @@ x11-wm/metacity:vulkan - Enable Vulkan based compositor support via META_COMPOSI
 x11-wm/musca:apis - Optionally install the experimental `apis' window manager
 x11-wm/musca:xlisten - Optionally install the xlisten utility
 x11-wm/mutter:elogind - Rely on sys-auth/elogind as logind provider for Wayland sessions
-x11-wm/mutter:gles2 - Enable OpenGL ES 2.0 support
 x11-wm/mutter:screencast - Enable support for remote desktop and screen cast using media-video/pipewire
 x11-wm/mutter:sysprof - Enable profiling data capture support using dev-util/sysprof-capture
 x11-wm/notion:xrandr - Add support for xrandr
