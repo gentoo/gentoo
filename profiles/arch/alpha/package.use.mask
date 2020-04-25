@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (2020-04-25)
+# gnome-base/gnome-shell not keyworded on alpha
+# anymore, bug #677176
+x11-terms/gnome-terminal gnome-shell
+
+# Mart Raudsepp <leio@gentoo.org> (2020-04-25)
 # gnome-base/gnome-control-center not keyworded on alpha
 # anymore, bug #692802
 net-libs/gnome-online-accounts gnome
