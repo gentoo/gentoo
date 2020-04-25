@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -96,6 +96,8 @@ src_compile() {
 		export AWT_LIB_PATH="${JAVA_HOME}/jre/bin"
 	elif [[ -f "${JAVA_HOME}/$(get_libdir)/${JAWTSO}" ]] ; then
 		export AWT_LIB_PATH="${JAVA_HOME}/$(get_libdir)"
+	elif [[ -f "${JAVA_HOME}/lib/${JAWTSO}" ]] ; then
+		export AWT_LIB_PATH="${JAVA_HOME}/lib"
 	else
 		eerror "${JAWTSO} not found in the JDK being used for compilation!"
 		die "cannot build AWT library"
