@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python3_6 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6..8} )
 GENTOO_DEPEND_ON_PERL=no
 inherit eutils multilib perl-module python-r1 toolchain-funcs
 
@@ -28,6 +28,12 @@ DEPEND="${RDEPEND}
 	ruby? ( dev-lang/swig )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.21-python.patch"
+	"${FILESDIR}/${PN}-0.22-soname-symlink.patch"
+	"${FILESDIR}/${PN}-0.22-ruby-sharedlib.patch"
+)
+
 src_prepare() {
 	sed -i \
 		-e 's/-Os -ggdb//' \
@@ -41,9 +47,7 @@ src_prepare() {
 		sed -i -e "/install .* libstfl.a/d" Makefile || die
 	fi
 
-	epatch "${FILESDIR}"/${PN}-0.21-python.patch
-	epatch "${FILESDIR}"/${PN}-0.22-soname-symlink.patch
-	epatch "${FILESDIR}"/${PN}-0.22-ruby-sharedlib.patch
+	eapply_user
 
 	if use perl ; then
 		echo "FOUND_PERL5=1" >> Makefile.cfg
