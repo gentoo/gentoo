@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )  # 3.7 dropped due to dep-hell
+PYTHON_COMPAT=( python3_6 )  # 3.{7,8} dropped due to dep-hell
 
 inherit distutils-r1 prefix
 
@@ -20,12 +20,7 @@ RDEPEND="
 	carbon? ( dev-python/carbon[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
 	memcached? ( dev-python/python-memcached[${PYTHON_USEDEP}] )
-	mysql? (
-		|| (
-			dev-python/mysql-python[${PYTHON_USEDEP}]
-			dev-python/mysqlclient[${PYTHON_USEDEP}]
-		)
-	)
+	mysql? ( dev-python/mysqlclient[${PYTHON_USEDEP}] )
 	postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	>=dev-python/django-1.11.19[sqlite?,${PYTHON_USEDEP}]
 	>=dev-python/django-tagging-0.4.6[${PYTHON_USEDEP}]
