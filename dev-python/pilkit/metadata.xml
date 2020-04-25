@@ -16,8 +16,4 @@
 			https://github.com/matthewwithanm/pilkit/issues
 		</bugs-to>
 	</upstream>
-	<longdescription>
-		PILKit is a collection of utilities for working with
-		PIL (the Python Imaging Library).
-	</longdescription>
 </pkgmetadata>
