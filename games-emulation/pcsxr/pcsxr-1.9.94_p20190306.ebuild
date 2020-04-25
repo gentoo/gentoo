@@ -15,7 +15,7 @@ LICENSE="GPL-2 public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="alsa archive ccdda cdio libav openal oss pulseaudio +sdl"
+IUSE="alsa archive ccdda cdio openal oss pulseaudio +sdl"
 REQUIRED_USE="?? ( alsa openal oss pulseaudio sdl )"
 
 RDEPEND="
@@ -33,10 +33,7 @@ RDEPEND="
 	archive? ( app-arch/libarchive:= )
 	alsa? ( media-libs/alsa-lib:= )
 	cdio? ( dev-libs/libcdio:= )
-	ccdda? (
-		!libav? ( >=media-video/ffmpeg-3:= )
-		libav? ( media-video/libav:= )
-	)
+	ccdda? ( >=media-video/ffmpeg-3:= )
 	openal? ( media-libs/openal:= )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	sdl? ( media-libs/libsdl2:=[sound] )
