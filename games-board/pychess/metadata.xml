@@ -6,6 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">pychess</remote-id>
+		<remote-id type="github">pychess/pychess</remote-id>
 	</upstream>
 </pkgmetadata>
