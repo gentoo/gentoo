@@ -21,7 +21,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # KEYWORDS further up
 IUSE="aac +alsa analyzer archive bs2b cdda cover crossfade cue curl +dbus enca ffmpeg flac game
-gnome jack ladspa libav lyrics +mad midi mms modplug mplayer musepack notifier opus oss projectm
+gnome jack ladspa lyrics +mad midi mms modplug mplayer musepack notifier opus oss projectm
 pulseaudio qsui qtmedia scrobbler shout sid sndfile soxr stereo tray udisks +vorbis wavpack"
 
 REQUIRED_USE="
@@ -50,10 +50,7 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	dbus? ( dev-qt/qtdbus:5 )
 	enca? ( app-i18n/enca )
-	ffmpeg? (
-		!libav? ( media-video/ffmpeg:= )
-		libav? ( media-video/libav:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac )
 	game? ( media-libs/game-music-emu )
 	jack? (
