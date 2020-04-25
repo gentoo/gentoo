@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2020-04-25)
+# Causes multilib glib failure.
+# https://bugs.gentoo.org/719382
+=dev-util/meson-0.54.0
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-25)
 # Unmaintained.  Stuck on Python 3.6.  Tests require direct hardware
 # access.  Ebuild broken.  No revdeps.
