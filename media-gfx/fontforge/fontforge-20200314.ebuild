@@ -94,7 +94,12 @@ src_configure() {
 	fi
 
 	if use truetype-debugger ; then
-		mycmakeargs+=( -DENABLE_FREETYPE_DEBUGGER="${EPREFIX}/usr/include/freetype2/internal4fontforge" )
+		local ft2="${ESYSROOT}/usr/include/freetype2"
+		local ft2i="${ft2}/internal4fontforge"
+		mycmakeargs+=(
+			-DENABLE_FREETYPE_DEBUGGER="${ft2}"
+			-DFreeTypeSource_INCLUDE_DIRS="${ft2};${ft2i}/include;${ft2i}/include/freetype;${ft2i}/src/truetype"
+		)
 	fi
 
 	cmake_src_configure
