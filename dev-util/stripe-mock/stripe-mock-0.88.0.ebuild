@@ -18,5 +18,5 @@ SLOT="0"
 src_install() {
 	golang-build_src_install
 	dobin bin/stripe-mock
-	rm -rf "${D%/}$(get_golibdir_gopath)" || die
+	rm -rf "${D}$(get_golibdir_gopath)" || die
 }
