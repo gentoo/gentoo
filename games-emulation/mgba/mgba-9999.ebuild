@@ -19,7 +19,7 @@ else
 fi
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="debug discord elf ffmpeg libav opengl qt5 +sdl sqlite"
+IUSE="debug discord elf ffmpeg opengl qt5 +sdl sqlite"
 REQUIRED_USE="|| ( qt5 sdl )
 		qt5? ( opengl )"
 
@@ -27,10 +27,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	sys-libs/zlib[minizip]
 	elf? ( dev-libs/elfutils )
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	opengl? ( virtual/opengl )
 	qt5? (
 		dev-qt/qtcore:5
