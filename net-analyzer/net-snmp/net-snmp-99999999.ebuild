@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=yesplz
 DISTUTILS_OPTIONAL=yesplz
 WANT_AUTOMAKE=none
@@ -76,8 +76,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
 	"${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
-	"${FILESDIR}"/${PN}-5.8-tinfo.patch
 	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
+	"${FILESDIR}"/${PN}-99999999-tinfo.patch
 )
 
 pkg_setup() {
