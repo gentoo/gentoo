@@ -33,7 +33,7 @@ PATCHES=(
 pkg_setup() {
 	linux-info_pkg_setup
 
-	local CONFIG_CHECK="~IP_NF_IPTABLES VLAN_8021Q"
+	local CONFIG_CHECK="BRIDGE_NETFILTER ~IP_NF_IPTABLES VLAN_8021Q"
 	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
 	if use natevents; then
 		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
