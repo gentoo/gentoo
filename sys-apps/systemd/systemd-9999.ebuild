@@ -255,8 +255,6 @@ multilib_src_configure() {
 		-Dsplit-bin=true
 		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
-		-Dsysvinit-path=
-		-Dsysvrcnd-path=
 		# Avoid infinite exec recursion, bug 642724
 		-Dtelinit-path="${EPREFIX}/lib/sysvinit/telinit"
 		# no deps
@@ -354,6 +352,9 @@ multilib_src_install_all() {
 	if ! use resolvconf; then
 		rm -f "${ED}${rootprefix}"/sbin/resolvconf || die
 	fi
+
+	rm "${ED}"/etc/init.d/README || die
+	rm "${ED}${rootprefix}"/lib/systemd/system-generators/systemd-sysv-generator || die
 
 	if ! use sysv-utils; then
 		rm "${ED}${rootprefix}"/sbin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit} || die
