@@ -194,13 +194,12 @@ src_install() {
 	cmake-utils_src_install
 
 	# Clean up the mess:
-	rm "${ED}"/TrilinosRepoVersion.txt || die "rm failed"
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 	if [ -f "${ED}"/lib/exodus.py ]; then
 		mv "${ED}"/lib/exodus.py "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 	fi
 	if [[ $(get_libdir) != lib ]]; then
-		mv "${ED}"/usr/lib/pkgconfig "${ED}/usr/$(get_libdir)" || die "mv failed"
+		mv "${ED}"/usr/lib/pkgconfig "${ED}/usr/$(get_libdir)"
 	fi
 
 	#
