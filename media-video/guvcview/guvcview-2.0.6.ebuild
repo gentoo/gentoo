@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="gsl libav pulseaudio qt5"
+IUSE="gsl pulseaudio qt5"
 
 RDEPEND="
 	>=dev-libs/glib-2.10
@@ -26,8 +26,7 @@ RDEPEND="
 	virtual/libusb:1
 	virtual/udev
 	gsl? ( >=sci-libs/gsl-1.15 )
-	!libav? ( >=media-video/ffmpeg-2.8:0= )
-	libav? ( media-video/libav:= )
+	>=media-video/ffmpeg-2.8:0=
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.15 )
 	qt5? (
 		dev-qt/qtcore:5
