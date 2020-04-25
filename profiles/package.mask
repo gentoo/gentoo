@@ -33,6 +33,28 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-25)
+# Unmaintained.  Stuck on py3.6.  Tests missing.  The only revdep masked
+# for removal.
+# Removal in 30 days.  Bug #719432.
+dev-python/pyswisseph
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-25)
+# Stuck on py3.6.  Missing tests.  No revdeps.
+# Removal in 30 days.  Bug #719424.
+dev-python/pyodbc
+
+# Mike Gilbert <floppym@gentoo.org> (2020-04-25)
+# Causes multilib glib failure.
+# https://bugs.gentoo.org/719382
+=dev-util/meson-0.54.0
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-25)
+# Unmaintained.  Stuck on Python 3.6.  Missing tests.  The only revdep
+# is masked for removal.
+# Removal in 30 days.  Bug #719418.
+dev-python/pyjade
+
+# Michał Górny <mgorny@gentoo.org> (2020-04-25)
 # Unmaintained.  Stuck on Python 3.6.  Tests require direct hardware
 # access.  Ebuild broken.  No revdeps.
 # Removal in 30 days.  Bug #719380.
@@ -106,6 +128,8 @@ dev-python/os-networksv2-python-novaclient-ext
 dev-python/osc-placement
 dev-python/rackspace-novaclient
 dev-python/nose-testconfig
+dev-python/positional
+dev-python/posix_ipc
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
@@ -321,13 +345,6 @@ dev-util/spec-cleaner
 # Unmaintained.  Stuck on Python 3.6.  Missing tests.  No revdeps.
 # Removal in 30 days.  Bug #718288.
 dev-util/bumpversion
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Both packages are unmaintained and have unresolved bugs.  stfl
-# is stuck on Python 3.6 and newsboat is its only revdep.
-# Removal in 30 days.  Bug #718286.
-dev-libs/stfl
-net-news/newsboat
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.  A few releases behind upstream.

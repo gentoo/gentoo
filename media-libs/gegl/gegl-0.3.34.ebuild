@@ -43,9 +43,7 @@ RDEPEND="
 	x11-libs/pango
 
 	cairo? ( >=x11-libs/cairo-1.12.2 )
-	ffmpeg? (
-		>=media-video/ffmpeg-2.8:0=
-	)
+	ffmpeg? ( >=media-video/ffmpeg-2.8:0= )
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 	virtual/jpeg:0=
 	lcms? ( >=media-libs/lcms-2.8:2 )

@@ -66,7 +66,7 @@ src_install() {
 		--exclude="killme*" --exclude=".gdb_hist*" \
 		--exclude="debian"  --exclude="COPYING*" \
 		--exclude="*.app" \
-		"${S}" "${ED%/}"/usr/share \
+		"${S}" "${ED}"/usr/share \
 		|| die "Unable to copy files!"
 
 	dosym ../share/lazarus/startlazarus /usr/bin/startlazarus
