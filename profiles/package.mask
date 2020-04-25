@@ -32,565 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-27)
-# Unmaintained.  Unresolved breakage with py3.8 for almost a year.
-# Python upstream included some async testing support in py3.8 too.
-# No revdeps.
-# Removal in 30 days.  Bug #719746.
-dev-python/asynctest
-
-# Zac Medico <zmedico@gentoo.org> (2020-04-26)
-# Stuck on py3.6.  No revdeps.
-# Removal in 30 days.  Bug #719540.
-dev-python/riak-python-client
-
-# Zac Medico <zmedico@gentoo.org> (2020-04-26)
-# Stuck on py3.6.  No revdeps.
-# Removal in 30 days.  Bug #718904.
-dev-python/flower
-
-# Sam James <sam@cmpct.info> (2020-04-24)
-# Out of date with security bugs.
-# Please use www-client/seamonkey instead.
-# Removal in 30 days. Bug #718738.
-www-client/seamonkey-bin
-
-# Zac Medico <zmedico@gentoo.org> (2020-04-26)
-# Mask obsolete and vulnerable dev-go/go-crypto, along with obsolete
-# reverse dependencies. Removal in 30 days.  Bug #710142.
-dev-go/go-crypto
-dev-go/go-net
-dev-go/go-sys
-=dev-embedded/arduino-builder-1.4.1
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  Stuck on py3.6.  Missing tests (but having an unused
-# test flag!).  The only revdep is app-admin/ara that is masked
-# for removal already.
-# Removal in 30 days.  Bug #719660.
-dev-python/xstatic
-dev-python/xstatic-bootstrap-scss
-dev-python/xstatic-datatables
-dev-python/xstatic-jquery
-dev-python/xstatic-patternfly
-dev-python/xstatic-patternfly-bootstrap-treeview
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Stuck on py3.6.  Failing tests.  No revdeps.
-# Removal in 30 days.  Bug #639520.
-dev-python/versiontools
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Stuck on py3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719616.
-dev-python/utmp
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  Stuck on Python 3.6.  No revdeps.
-# Removal in 30 days.  Bug #719604.
-dev-python/txtorcon
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Stuck on Python 3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719568.
-dev-python/sphinxcontrib-googleanalytics
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  Stuck on py3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719548.
-dev-python/sdnotify
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  Stuck on py3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719546.
-dev-python/scoop
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  Stuck on Python 3.6.  No tests.  No revdeps.
-# Removal in 30 days.  Bug #719504.
-dev-python/pythonmagick
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  djvusmooth is stuck on py2, python-djvulibre on py3.6.
-# Unresolved test failures.  No other revdeps.
-# Removal in 30 days.  Bug #719488.
-app-text/djvusmooth
-dev-python/python-djvulibre
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Unmaintained.  Stuck on py3.6.  Tests missing.  The only revdep masked
-# for removal.
-# Removal in 30 days.  Bug #719432.
-dev-python/pyswisseph
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Stuck on py3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719424.
-dev-python/pyodbc
-
-# Mike Gilbert <floppym@gentoo.org> (2020-04-25)
-# Causes multilib glib failure.
-# https://bugs.gentoo.org/719382
-=dev-util/meson-0.54.0
-=dev-util/meson-0.54.1
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Unmaintained.  Stuck on Python 3.6.  Missing tests.  The only revdep
-# is masked for removal.
-# Removal in 30 days.  Bug #719418.
-dev-python/pyjade
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Unmaintained.  Stuck on Python 3.6.  Tests require direct hardware
-# access.  Ebuild broken.  No revdeps.
-# Removal in 30 days.  Bug #719380.
-dev-python/pyalsaaudio
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Unused plugin for dead dev-python/nose.  No revdeps.
-# Removal in 30 days.  Bug #719280.
-dev-python/nose-descriptionfixer
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Last release in 2012.  Stuck on py3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719362.
-dev-python/placefinder
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Old transitional package.  No revdeps.
-# Removal in 30 days.  Bug #719360.
-dev-python/pillowfight
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Stuck on Python 3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719356.
-dev-python/pgpdump
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Stuck on py3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719352.
-dev-python/patch
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Stuck on py3.6.  Broken tests.  The only revdep last rited.
-# Removal in 30 days.  Bug #719350.
-dev-python/pastescript
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Stuck on Python 2.  Last release in 2008.  The only revdep is probably
-# wrong and last rited anyway.
-# Removal in 30 days.  Bug #719348.
-dev-python/dap
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-24)
-# Unmaintained.  Stuck at py3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719298.
-dev-python/parsley
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-24)
-# Unmaintained.  Stuck at py3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719296.
-dev-python/paramunittest
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-24)
-# Stuck on Python 2.  Last release of obmenu in 2006, obtheme in 2013.
-# Require dead dev-python/pygtk.
-# Removal in 30 days.  Bug #708140.
-x11-misc/obmenu
-x11-misc/obtheme
-
-# Jonas Stein <jstein@gentoo.org> (2020-04-24)
-# Fails to install. Bug #154735
-# Developers do not have access to the cd.
-# Remove after 2020-05-24
-games-action/rune
-
-# Matthew Thode <prometheanfire@gentoo.org> (2020-04-23)
-# not needed anymore, no revdeps
-# removal in 14 days. Bug #718996.
-dev-python/ip-associations-python-novaclient-ext
-dev-python/os-virtual-interfacesv2-python-novaclient-ext
-dev-python/os-networksv2-python-novaclient-ext
-dev-python/osc-placement
-dev-python/rackspace-novaclient
-dev-python/nose-testconfig
-dev-python/positional
-dev-python/posix_ipc
-dev-python/repoze-who
-dev-python/tablib
-dev-python/rackspace-auth-openstack
-dev-python/rax-default-network-flags-python-novaclient-ext
-dev-python/rax-scheduled-images-python-novaclient-ext
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Unmaintained.  Stuck on Python 3.6.  No revdeps.
-# Removal in 30 days.  Bug #719040.
-dev-python/kivy-garden
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Unmaintained.  Stuck on Python 3.6.  No revdeps.
-# Removal in 30 days.  Bug #718848.
-dev-python/PyDbLite
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Unmaintained.  Stuck on Python 2.
-# Removal in 30 days.  Bug #713366.
-app-backup/bup
-app-backup/kup
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Effectively unmaintained.  Stuck on Python 3.6, broken with 3.8.
-# The only revdep is masked for removal.
-# Removal in 30 days.  Bug #719008.
-dev-python/junit-xml
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Unmaintained.  Stuck on Python 3.6.  Nose plugin with no revdeps.
-# Removal in 30 days.  Bug #719000.
-dev-python/ipdbplugin
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Unmaintained.  Stuck at Python 3.6.  dev-python/rebulk is broken with
-# recent versions of dev-python/regex and has no fix (or activity)
-# upstream.  dev-python/guessit is its only revdep, and the only revdep
-# of that package is masked already.
-# Removal in 30 days.  Bug #718986.
-dev-python/guessit
-dev-python/rebulk
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-22)
-# Unmaintained.  Stuck at Python 3.6.  The only revdep last rited.
-# Removal in 30 days.  Bug #718896.
-dev-python/cligj
-
-# Ulrich Müller <ulm@gentoo.org> (2020-04-22)
-# Package is no longer being updated upstream.
-# Replaced by app-i18n/man-pages-l10n[l10n_pl].
-# Masked for removal in 30 days. Bug #717744.
-app-i18n/man-pages-pl
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-22)
-# Unmaintained.  Stuck at Python 3.6.  The only revdep was last rited
-# already.
-# Removal in 30 days.  Bug #718854.
-dev-python/URLObject
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-22)
-# Effectively unmaintained and stuck on Python 3.6.
-#
-# dev-python/bokeh does not work because of missing dependencies
-# (bug #607778).  It has no reverse dependencies
-#
-# dev-python/flexx tries to fetch data from Internet during build.
-# Its only revdep is dev-python/bokeh.
-#
-# Removal in 30 days.  Bug #607778.
-dev-python/bokeh
-dev-python/flexx
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-22)
-# Unmaintained.  After adding tests, it turns out it's completely
-# broken (can't find magic file).
-# Removal in 30 days.  Bug #718822.
-dev-python/filemagic
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-21)
-# Unmaintained.  Stuck on Python 3.6.  Missing tests.  Bad quality
-# package.  No revdeps.
-# Removal in 30 days.  Bug #718744.
-dev-python/django-spurl
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-21)
-# Unmaintained.  Last commit in 2016.  Upstream bugtracker indicates it
-# doesn't support current dev-python/django versions.  No revdeps.
-# Removal in 30 days.  Bug #718734.
-dev-python/django-setuptest
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-21)
-# Django has a native DurationField since 1.8.  No revdeps.
-# Removal in 30 days.  Bug #718724.
-dev-python/django-durationfield
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Stuck on Python 3.6.  Last release in 2012.  No revdeps.
-# dev-python/lxml is the recommended XML handling package.
-# Removal in 30 days.  Bug #718646.
-dev-python/dexml
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Stuck on Python 3.6.  Relies on 2to3.  Last release in 2015.
-# No revdeps.  'json' is built-in in all modern Python versions.
-# Removal in 30 days.  Bug #718638.
-dev-python/demjson
-
-# Louis Sautier <sbraz@gentoo.org> (2020-04-20)
-# No revdeps, no release in 3 years, doesn't support Bootstrap 4.
-# Removal in 30 days. Bug #718832
-dev-python/flask-bootstrap
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Effectively unmaintained.  Stuck on Python 2 and pygtk.  Last bumped
-# in 2014.
-# Removal in 30 days.  Bug #708168.
-media-video/griffith
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Unmaintained.  Stuck on Python 2.  rst2pdf depends on dev-python/pdfrw
-# that is dead and broken with py3.7+.  svg2rlg is only used by pdfrw.
-# Removal in 30 days.  Bug #718572.
-dev-python/rst2pdf
-media-gfx/svg2rlg
-
-# Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
-# Stuck on Python 3.6, support for which already required
-# backporting patches to a release from 2014. Upstream's git
-# HEAD works fine, but they can't be bothered to make a new
-# release. Bug 718326. Removal whenever it becomes an issue.
-mail-filter/pyzor
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718548.
-x11-terms/roxterm
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718530.
-sys-boot/raspberrypi-mkimage
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Some releases behind.
-# Removal in 30 days.  Bug #718498.
-sci-libs/Fiona
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718488.
-sci-geosciences/seawater
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Numerous releases behind.
-# Removal in 30 days.  Bug #718486.
-sci-geosciences/gpxpy
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Needs version bump.
-# Removal in 30 days.  Bug #718458.
-net-proxy/mitmproxy
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718452.
-net-misc/trackma
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  In need of bump since 2016.
-# Removal in 30 days.  Bug #718426.
-net-analyzer/ripe-atlas-tools
-net-libs/ripe-atlas-sagan
-www-client/ripe-atlas-cousteau
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Last release in 2016.
-# Removal in 30 days.  Bug #718410.
-media-video/subliminal
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Last release in 2014.
-# Removal in 30 days.  Bug #718402.
-media-sound/lyvi
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Has a few bugs reported,
-# including indication of poor ebuild state.
-# Removal in 30 days.  Bug #718398.
-media-sound/beets
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  No revdeps.  Last release
-# in 2016.
-# Removal in 30 days.  Bug #718340.
-media-gfx/qrencode-python
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718308.
-dev-vcs/git-imerge
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck at Python 3.6.  Many versions behind upstream.
-# Removal in 30 days.  Bug #718300.
-dev-vcs/ghp-import
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  A few releases behind upstream.
-# Removal in 30 days.  Bug #718296.
-dev-util/spec-cleaner
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #718288.
-dev-util/bumpversion
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  A few releases behind upstream.
-# Removal in 30 days.  Bug #718268.
-app-text/doconce
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718238.
-app-misc/openastro
-app-misc/openastro-data
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  A few releases behind upstream.
-# Removal in 30 days.  Bug #718222.
-app-i18n/transifex-client
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Discontinued upstream.  Uses old ACMEv1 API.
-# Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718204.
-app-crypt/manuale
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Large number of unresolved bugs.
-# Removal in 30 days.  Bug #702430.
-app-crypt/gkeys
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# The maintainer retired and ceased the development.  Stuck
-# on Python 3.6.
-# Removal in 30 days.  Bug #718182.
-app-admin/installer
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Multiple versions behind
-# upstream.
-# Removal in 30 days.  Bug #718166.
-app-admin/ara
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
-# Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
-# requires agreement to restrictive license
-# Revdeps that still depend on oracle variants require javafx
-# javafx package  for icedtea or openjdk is in the works and
-# will be commited before oracle-jdk is removed.
-# Oracle JDK Removal in 30 days.
-# Packages will get unmasked after switch to openjfx.
-# https://bugs.gentoo.org/681828
-dev-java/oracle-jdk-bin
-dev-java/oracle-jre-bin
-app-text/jabref-bin
-dev-java/netbeans-platform
-dev-java/netbeans-harness
-games-util/pogo-manager-bin
-net-p2p/bisq
-sci-mathematics/geogebra
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-18)
-# Long dead, vulnerable.  All revdeps have either been ported away,
-# removed or had their optional deps removed.
-# Removal in 30 days.  Bug #703682.
-dev-python/pycrypto
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-18)
-# Practically dead.  Last blocker for dev-python/pycrypto removal.
-# Upstream is struggling to port away from it for 3 years now.
-# Removal in 30 days.  Bug #611608.
-dev-python/potr
-
-# Ulrich Müller <ulm@gentoo.org> (2020-04-17)
-# Upstream has moved the manpages-de project to manpages-l10n.
-# We cannot move multiple packages to one, therefore removing the
-# old package. Use app-i18n/man-pages-l10n[l10n_de] as replacement.
-# Masked for removal in 30 days. Bug #717744.
-app-i18n/man-pages-de
-
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2020-04-17)
-# Very little activity for almost a year and the link to download the
-# "compiled" man-pages is dead.
-# Use app-i18n/man-pages-l10n[l10n_fr] as replacement.
-# Masked for removal in 30 days (bug #717744).
-app-i18n/man-pages-fr
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-16)
-# Both packages have been last bumped mid-2018.  They depend
-# on pytest-relaxed plugin that has been removed due to breaking pretty
-# much everything.  They do not have a dedicated maintainer, and they
-# don't fit python@.  No revdeps.
-# Removal in 30 days.  Bug #717670.
-dev-python/fabric
-dev-python/invoke
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-16)
-# Unmaintained.  Last release in 2011.  Multiple vulnerabilities
-# via bundled code.
-# Removal in 30 days.  Bug #701820.
-net-misc/ssvnc
-
-# Ulrich Müller <ulm@gentoo.org> (2020-04-15)
-# Last upstream release in 2001. HOMEPAGE disappeared in 2010.
-# Use app-i18n/man-pages-l10n[l10n_nl] as replacement.
-# Masked for removal in 30 days. Bug #713590.
-app-i18n/man-pages-nl
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-15)
-# Temporary fork of app-emulation/runc used by Docker.  The latter
-# switched back to the original which is now blocking this package.
-# Most likely carries old vulnerabilities of runc.
-# Removal in 14 days.  Bug #711620.
-app-emulation/docker-runc
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-15)
-# Unmaintained.  Python 2 only.  Superseded by net-p2p/tremc.
-# Removal in 30 days.  Bug #713518.
-net-p2p/transmission-remote-cli
-
-# Alfredo Tupone <tupone@gentoo.org> (2020-04-14)
-# Masked for removal
-# Upstream url non existent
-# No reverse dependency
-dev-tcltk/combobox
-
-# Alfredo Tupone <tupone@gentoo.org> (2020-04-13)
-# Masked for removal
-# Last release 2002
-# No reverse dependency
-dev-tcltk/anigif
-
-# Hans de Graaff <graaff@gentoo.org> (2020-04-13)
-# ruby24-only packages. Ruby 2.4 is EOL and will be masked for removal
-# shortly. These packages either have newer ruby25 slots available, or
-# are no longer maintained and have no reverse dependencies. Masked
-# for removal in 30 days.
-dev-ruby/activeldap:4
-dev-ruby/bones
-dev-ruby/github_api
-dev-ruby/http:0.8
-dev-ruby/http-form_data:0.8
-dev-ruby/rack-test:0.6
-dev-ruby/rails-deprecated_sanitizer
-dev-ruby/riel
-dev-ruby/shoulda-matchers:0
-dev-ruby/vcr:1
-dev-ruby/webmock:2
-
-# Hans de Graaff <graaff@gentoo.org> (2020-04-13)
-# dev-ruby/libxml is ruby24-only and has known
-# bugs. sci-biology/bioruby depends on this. It looks like there is a
-# new version upstream that may not depend on libxml, but this
-# requires a dedicated maintainer to test and sort out. Masked for
-# removal in 30 days.
-dev-ruby/libxml
-sci-biology/bioruby
-
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-13)
-# Discontinued by upstream. Superseded by sys-apps/fwupd.
-# Masked for removal in 30 days.
-sys-apps/fwupdate
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-12)
 # In conjunction with Firefox's sandbox, breaks loading of i965 driver.
 # Bug #716574
@@ -605,6 +46,21 @@ dev-tcltk/tcl-mccp
 # Stefan Strogin <steils@gentoo.org> (2020-04-09)
 # Masked for testing
 >=dev-libs/libressl-3.1.0
+
+# Marek Szuba <marecki@gentoo.org> (2020-04-08)
+# All of these block app-eselect/eselect-opencl in order to prevent
+# file collisions in /usr/include/CL and on /usr/lib/libOpenCL.so* .
+# However, eselect-opencl is still required by x11-drivers/nvidia-drivers
+# (even with USE=-uvm, i.e. when it does NOT handle OpenCL) - which by design
+# does not appear in virtual/opencl-3.
+# Moreover, upgrading to either of the loader ebuilds listed here
+# will on systems using FEATURES=collision-protect require prior manual
+# clean-up of libOpenCL links created by eselect-opencl so even with the Nvidia
+# situation taken care of, we should probably publish an appropriate news item
+# before unmasking these.
+>=dev-libs/ocl-icd-2.2.12-r3
+dev-libs/opencl-icd-loader
+dev-util/opencl-headers
 
 # Joonas Niilola <juippis@gentoo.org> (2020-04-05)
 # Not maintained in Gentoo, doesn't build for 2 years, has only
@@ -690,8 +146,6 @@ dev-ruby/web-console:0
 # likely be moved to an overlay.
 dev-ruby/metasploit-concern
 dev-ruby/metasploit-credential
-dev-ruby/metasploit-payloads
-dev-ruby/metasploit_payloads-mettle
 dev-ruby/metasploit-model
 dev-ruby/metasploit_data_models
 net-analyzer/metasploit
@@ -765,6 +219,10 @@ games-puzzle/skoosh
 # Bug #713020
 dev-dotnet/gnome-keyring-sharp
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-03-27)
+# No consumers. Build problems, bug 668244. Removal in 30 days.
+media-libs/openmoiv
+
 # Rafael G. Martins <rafaelmartins@gentoo.org> (2020-03-27)
 # Python 2 only. Uses old version of DNSimple API.
 # Removal in 30 days.  Bug #712960
@@ -772,9 +230,7 @@ net-dns/dnsimple-dyndns
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
-# new version is not packaged yet
-# package is not going away anytime soon, just masked
-# for security. unmask as needed.
+# new version uses maven + rust
 dev-java/icedtea-web
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-27)
@@ -803,6 +259,7 @@ www-client/weboob
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-03-26)
 # Fail to build with glibc-2.30; no maintainer. Removal in 30days.
 # Bugs 691756, 691710
+x11-terms/aterm
 x11-terms/xvt
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-26)
@@ -845,6 +302,22 @@ media-video/syncplay
 net-im/pyicq-t
 dev-python/nevow
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Possible alternative: media-video/simplescreenrecorder
+# Bug #710172, masked for removal in 30 days.
+media-video/gtk-recordmydesktop
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Bug #708164, masked for removal in 30 days.
+media-video/pymp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-22)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# No signs of porting work, bug #708076, masked for removal in 30 days.
+x11-misc/xplanetFX
+
 # Jonas Stein <jstein@gentoo.org> (2020-03-21)
 # Package masked for removal. Broken SRC_URI,
 # upstream is dead.
@@ -857,6 +330,68 @@ games-misc/OilWar
 # Include the last remaining revdep, which was last updated in 2004.
 x11-libs/gtkglarea
 media-sound/galan
+
+# Matt Turner <mattst88@gentoo.org> (2020-03-20)
+# No reverse deps. GNOME 2 era slot. Removal in 30 days
+gnome-base/gnome-desktop:2
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-20)
+# Python 2 only.  Upstream is not working on a port.
+# Removal in 30 days.  Bug #713568.
+sci-physics/espresso++
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-20)
+# Deprecated GNOME libraries, replaced by introspection.  Python 2 only.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #713566.
+dev-python/gnome-python-desktop-base
+dev-python/gnome-python-extras-base
+dev-python/gnome-vfs-python
+dev-python/gtkspell-python
+dev-python/libbonobo-python
+dev-python/libgnome-python
+dev-python/libgnomecanvas-python
+dev-python/librsvg-python
+dev-python/pyorbit
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-20)
+# Added in 2009, not bumped since.  Python 2 only, requires dead
+# dev-python/pygtk.  Gone from HOMEPAGE.
+# Removal in 30 days.  Bug #710166.
+sci-electronics/geda-xgsch2pcb
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-19)
+# Unmaintained.  Added in 2014 and not touched since.  Python 2 only.
+# Removal in 30 days.  Bug #713506.
+net-ftp/pybootd
+
+# Hans de Graaff <graaff@gentoo.org> (2020-03-19)
+# Masked for security issues, bug #699840
+# No reverse dependencies. Use dev-ruby/haml:5 instead.
+# Removal in 30 days.
+dev-ruby/haml:4
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-18)
+# Unmaintained.  Version bump pending.  No Python 3 support upstream.
+# Removal in 30 days.  Bug #708268.
+app-backup/buttersink
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-17)
+# Abandoned.  Python 2 only.  Upstream recommends dev-python/suds
+# instead.
+# Removal in 30 days.  Bug #713056.
+dev-python/soappy
+
+# Marc Schiffbauer <mschiff@gentoo.org> (2020-03-17)
+# No py3 support, replaced by its successor automx2
+# Removal in 30 days. Bug #708410
+net-mail/automx
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-17)
+# Unmaintained.  Current Gentoo version is from 2015, last upstream
+# release in 2017.  Python 2 only.
+# Removal in 30 days.  Bug #712950.
+mail-filter/spambayes
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
@@ -871,6 +406,38 @@ media-sound/galan
 # Masked for testing due to removal of libnm-glib (bug #665338)
 >=net-misc/networkmanager-1.20
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-11)
+# Unmaintained Trac plugins.  Last bumped in 2013.  Blockers
+# for Python 2 removal.
+# Removal in 30 days.  Bug #712120.
+www-apps/trac-accountmanager
+www-apps/trac-mercurial
+www-apps/trac-tags
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-11)
+# The following Mercurial-related tools do not declare support
+# for Python 3 and have no maintainers.
+# Removal in 30 days.  Bug #712114.
+dev-vcs/hgsubversion
+dev-vcs/hgsvn
+dev-vcs/hgview
+dev-vcs/mercurial-server
+dev-vcs/tortoisehg
+
+# Alexander Tsoy <alexander@tsoy.me> (2020-03-10)
+# media-sound/gtklick: last commit in 2014, python 2 only, blocks
+# dev-python/pygtk removal.
+# Alternatives: media-sound/kmetronome, media-sound/gtick,
+# media-sound/klick (cli)
+#
+# media-libs/pyliblo: last commit in 2015, the only revdep is
+# media-sound/gtklick, there is an actively maintained fork named
+# pyliblo3.
+#
+# Removal in 30 days.  Bug #708172.
+media-sound/gtklick
+media-libs/pyliblo
+
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
 =mail-mta/postfix-3.6*
@@ -880,9 +447,38 @@ media-sound/galan
 # depends on >=virtual/{jdk,jre}-11 which is masked
 www-servers/tomcat:9
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-26)
+# Effectively unmaintained.  Last upstream commit in 2016.  Multiple
+# unresolved bugs.  Python 2 only.  Repology (https://repology.org/)
+# provides quite a good replacement.
+# Removal in 30 days.  Bug #709458.
+app-portage/euscan
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-24)
+# app-admin/packagekit-base is Python 2 only and behind upstream.
+# The Portage backend is unmaintained.  Other packages are its reverse
+# dependencies.
+#
+# It is unclear why app-backup/deja-dup needs it unconditionally.
+# However, it has not been bumped since 2016.
+#
+# Removal in 30 days.  Bug #708398.
+app-admin/packagekit
+app-admin/packagekit-base
+app-admin/packagekit-gtk
+app-admin/packagekit-qt
+app-backup/deja-dup
+gnome-extra/gnome-packagekit
+
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)
 # Fails to automatically launch pipewire for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
+
+# Stephan Hartmann <stha09@googlemail.com> (2020-02-16)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-82
 
 # Stefan Strogin <steils@gentoo.org> (2020-02-12)
 # Mask for testing revdeps.
@@ -1136,9 +732,9 @@ sys-devel/automake:1.10
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-5.4
 <sys-libs/glibc-2.29
-<sys-devel/binutils-2.33.1-r1
-<sys-devel/binutils-hppa64-2.33.1
-<sys-libs/binutils-libs-2.33.1-r1
+<sys-devel/binutils-2.32-r1
+<sys-devel/binutils-hppa64-2.32-r1
+<sys-libs/binutils-libs-2.32-r1
 
 # Michał Górny <mgorny@gentoo.org> (2017-05-20)
 # Old versions of CUDA and their reverse dependencies. They do not
