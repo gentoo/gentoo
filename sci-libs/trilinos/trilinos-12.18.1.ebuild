@@ -10,7 +10,8 @@ DESCRIPTION="Scientific library collection for large scale problems"
 HOMEPAGE="http://trilinos.sandia.gov/"
 MY_PV="${PV//\./-}"
 PATCHSET="r0"
-SRC_URI="https://github.com/${PN}/Trilinos/archive/${PN}-release-${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/Trilinos/archive/${PN}-release-${MY_PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-${PATCHSET}.tar.xz"
 
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
@@ -65,6 +66,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/Trilinos-${PN}-release-${MY_PV}"
 
 PATCHES=(
+	"${WORKDIR}"/patches
 )
 
 trilinos_conf() {
@@ -192,9 +194,13 @@ src_install() {
 	cmake-utils_src_install
 
 	# Clean up the mess:
+	rm "${ED}"/TrilinosRepoVersion.txt || die "rm failed"
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 	if [ -f "${ED}"/lib/exodus.py ]; then
 		mv "${ED}"/lib/exodus.py "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
+	fi
+	if [[ $(get_libdir) != lib ]]; then
+		mv "${ED}"/usr/lib/pkgconfig "${ED}/usr/$(get_libdir)" || die "mv failed"
 	fi
 
 	#
