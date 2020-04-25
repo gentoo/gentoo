@@ -1314,7 +1314,7 @@ app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0 1.8.1: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.32.0: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2 0.8.1: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.2.0360 8.2.0508 9999: GUI version of the Vim text editor
+app-editors/gvim 8.2.0360 8.2.0508 8.2.0638 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0-r1: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1359,8 +1359,8 @@ app-editors/ted 2.23: X-based rich text editor
 app-editors/texworks 0.6.3 0.6.4 0.6.5: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.2.0360 8.2.0508 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 8.2.0360 8.2.0508 9999: vim and gvim shared files
+app-editors/vim 8.2.0360 8.2.0508 8.2.0638 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 8.2.0360 8.2.0508 8.2.0638 9999: vim and gvim shared files
 app-editors/vis 0.5 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
@@ -5178,7 +5178,7 @@ dev-libs/libxml2 2.9.9-r2 2.9.9-r3: XML C parser and toolkit
 dev-libs/libxmlb 0.1.12 0.1.14 0.1.15: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.33-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2: YAML 1.1 parser and emitter written in C
-dev-libs/libzia 4.18 4.19 4.20: platform abstraction code for tucnak package
+dev-libs/libzia 4.18 4.19 4.20 4.21: platform abstraction code for tucnak package
 dev-libs/libzip 1.6.1-r1: Library for manipulating zip archives
 dev-libs/light 1.2-r1: A program to control backlights (and other hardware lights)
 dev-libs/link-grammar 5.3.11: A Syntactic English parser
@@ -8893,6 +8893,7 @@ dev-python/webcolors 1.10 1.11.1: Color names and value formats defined by the H
 dev-python/webencodings 0.5.1-r1: Character encoding aliases for legacy web content
 dev-python/webob 1.8.5-r3: WSGI request and response object
 dev-python/websocket-client 0.48.0 0.56.0 0.57.0: WebSocket client for python with hybi13 support
+dev-python/websockets 8.1: Library for building WebSocket servers and clients in Python
 dev-python/websockify 0.9.0: WebSockets support for any application/server
 dev-python/webtest 2.0.21 2.0.29 2.0.29-r1 2.0.33: Helper to test WSGI applications
 dev-python/werkzeug 0.16.0 0.16.1 1.0.0 1.0.1: Collection of various utilities for WSGI applications
@@ -10654,7 +10655,7 @@ dev-vcs/gitstats 0_pre131024 0_pre20151223 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-evolve 8.5.1 9.3.1: enables the changeset evolution feature of Mercurial
-dev-vcs/hg-git 0.8.8 0.8.12-r1 0.8.13_pre20190808 0.8.13: push to and pull from a Git repository using Mercurial
+dev-vcs/hg-git 0.8.8 0.8.13: push to and pull from a Git repository using Mercurial
 dev-vcs/hub 2.13.0 2.14.1: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
 dev-vcs/lab 0.17.2: Lab wraps Git or Hub, making it simple to interact with repositories on GitLab
@@ -10932,7 +10933,7 @@ games-board/pioneers 15.3-r1: A clone of the popular board game The Settlers of 
 games-board/pokerth 1.1.2: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r3: Protocol adapter to run UCI chess engines under xboard
 games-board/pouetchess 0.2.0-r2: 3D and open source chess game
-games-board/pychess 0.99.4-r1: A chess client for Gnome
+games-board/pychess 1.0.0: A chess client for GNOME
 games-board/pysolfc 2.6.4-r1: An exciting collection of more than 1000 solitaire card games
 games-board/scid 4.6.2-r1: a free chess database application
 games-board/simsu 1.3.6: A basic sudoku game
@@ -13321,7 +13322,7 @@ media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
 media-radio/direwolf 1.4: Decoded Information from Radio Emissions for Windows Or Linux Fans
 media-radio/dxcc 20190309 20191204: A ham radio callsign DXCC lookup utility
 media-radio/flamp 2.2.03 2.2.05: Fldigi helper for transferring files
-media-radio/fldigi 4.1.06 4.1.08 4.1.09 4.1.11: Sound card based multimode software modem for Amateur Radio use
+media-radio/fldigi 4.1.09 4.1.11 4.1.12: Sound card based multimode software modem for Amateur Radio use
 media-radio/flmsg 4.0.3 4.0.14: Fldigi helper for creating radiograms
 media-radio/flrig 1.3.46 1.3.48 1.3.49 1.3.50: Transceiver control program for Amateur Radio use
 media-radio/fsync-mdc1200-decode 1.0 9999: Linux Fleetsync / MDC1200 decoder
@@ -13334,7 +13335,7 @@ media-radio/qsstv 9.2.6 9.4.2 9.4.4: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.3.2 1.4.0: Console-mode amateur radio contest logger
 media-radio/tqsl 2.3.1 2.4.1 2.4.3 2.5.1: ARRL Logbook of the World
-media-radio/tucnak 4.18 4.19 4.20: Amateur Radio VHF Contest Logbook
+media-radio/tucnak 4.18 4.19 4.20 4.21: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1: A package of programs that fit together to form a morse code tutor program
 media-radio/wsjtx 2.1.0 2.1.2: Weak signal ham radio communication
 media-radio/xastir 2.1.4: X Amateur Station Tracking and Information Reporting
@@ -15082,7 +15083,7 @@ net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.3 1.12.7-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
-net-news/newsboat 2.13 2.18: An RSS/Atom feed reader for text terminals
+net-news/newsboat 2.13 2.18 2.19: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.19.3 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
@@ -16804,7 +16805,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 243-r2 244 244.3 245-r3 9999: System and service manager for Linux
+sys-apps/systemd 243-r2 244 244.3 245-r4 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93 2.95-r1 2.96: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
