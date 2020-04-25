@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Itseez/opencv/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/2.4"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 jpeg libav opencl openexr opengl openmp pch png +python qt5 testprograms threads tiff v4l vtk xine"
+IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 jpeg opencl openexr opengl openmp pch png +python qt5 testprograms threads tiff v4l vtk xine"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -28,10 +28,7 @@ RDEPEND="
 	app-arch/bzip2
 	sys-libs/zlib
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-5.5 )
-	ffmpeg? (
-		libav? ( media-video/libav:0= )
-		!libav? ( media-video/ffmpeg:0= )
-	)
+	ffmpeg? ( media-video/ffmpeg:0= )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
