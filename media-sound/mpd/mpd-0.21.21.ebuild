@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~x64-macos"
 IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl +dbus debug
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
-	+ipv6 jack lame libav libmpdclient libsamplerate libsoxr +mad mikmod mms
+	+ipv6 jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
 	modplug mpg123 musepack +network nfs openal opus oss pipe pulseaudio qobuz
 	recorder samba selinux sid signalfd sndfile soundcloud sqlite systemd
 	test tidal twolame udisks unicode vorbis wavpack webdav wildmidi upnp
@@ -56,12 +56,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	expat? ( dev-libs/expat )
 	faad? ( media-libs/faad2 )
-
-	ffmpeg? (
-		libav? ( media-video/libav:0= )
-		!libav? ( media-video/ffmpeg:0= )
-	)
-
+	ffmpeg?	( media-video/ffmpeg:0= )
 	flac? ( media-libs/flac )
 	fluidsynth? ( media-sound/fluidsynth )
 	gme? ( >=media-libs/game-music-emu-0.6.0_pre20120802 )
