@@ -7,7 +7,7 @@ net-misc/whois xcrypt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
 # Unsupported on ppc/ppc64
-www-client/chromium proprietary-codecs tcmalloc widevine
+www-client/chromium widevine
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
 # Lots of deps for little gain
