@@ -2457,7 +2457,7 @@ app-portage/portage-utils 0.74 0.80 0.86 9999: Small and fast Portage helper too
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27 2.1.27-r1: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
-app-portage/pram 8: Tool to ease merging Pull Requests and git patches
+app-portage/pram 8 9: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
 app-portage/repo-commit 0.4.1-r1 9999: A repository commit helper
 app-portage/repoman 2.3.16 2.3.20 2.3.21 2.3.22 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
@@ -8395,7 +8395,7 @@ dev-python/pypng 0.0.18 0.0.20: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.20: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 2.4.2: Python interface to the PROJ library
-dev-python/pyproject2setuppy 2 3: Cheap setup.py hack to install flit & poetry-based projects
+dev-python/pyproject2setuppy 2 3 4: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pypy 7.3.0 7.3.1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.0 7.3.1: PyPy executable (build from source)
