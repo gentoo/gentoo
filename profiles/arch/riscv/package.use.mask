@@ -1,6 +1,10 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Zac Medico <zmedico@gentoo.org> (2020-05-05)
+# Mask until app-arch/zstd is keyworded
+sys-apps/portage zstd
+
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
 # Lots of python dependencies, mask to facilitate keywording
 # keywording dev-libs/libfido2
