@@ -18,7 +18,7 @@ LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
-IUSE="cairo debug ffmpeg jpeg lensfun libav cpu_flags_x86_mmx openexr png raw sdl cpu_flags_x86_sse svg umfpack" # +introspection vala
+IUSE="cairo debug ffmpeg jpeg lensfun cpu_flags_x86_mmx openexr png raw sdl cpu_flags_x86_sse svg umfpack" # +introspection vala
 
 RDEPEND="
 	>=media-libs/babl-0.1.10
@@ -27,10 +27,7 @@ RDEPEND="
 	x11-libs/pango
 	sys-libs/zlib
 	cairo? ( x11-libs/cairo )
-	ffmpeg? (
-		libav? ( >=media-video/libav-12:0= )
-		!libav? ( >=media-video/ffmpeg-4:0= )
-	)
+	ffmpeg? ( >=media-video/ffmpeg-4:0= )
 	jpeg? ( virtual/jpeg:0 )
 	openexr? ( media-libs/openexr )
 	png? ( media-libs/libpng:0= )
