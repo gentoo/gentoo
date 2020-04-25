@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 SLOT="0"
-IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
+IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr zstd"
 
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
@@ -58,6 +58,7 @@ RDEPEND="
 	xattr? ( kernel_linux? (
 		>=sys-apps/install-xattr-0.3
 	) )
+	zstd? ( app-arch/zstd )
 	!<app-admin/logrotate-3.8.0
 	!<app-portage/gentoolkit-0.4.6
 	!<app-portage/repoman-2.3.10"
@@ -132,6 +133,12 @@ python_prepare_all() {
 		echo -e '\nFEATURES="${FEATURES} xattr"' >> cnf/make.globals \
 			|| die "failed to append to make.globals"
 	fi
+
+	if use zstd ; then
+		einfo "Adding BINPKG_COMPRESS=\"zstd\" to make.globals ..."
+		echo -e '\nBINPKG_COMPRESS="zstd"' >> cnf/make.globals \
+			|| die "failed to append to make.globals"
+        fi
 
 	if use build || ! use rsync-verify; then
 		sed -e '/^sync-rsync-verify-metamanifest/s|yes|no|' \
