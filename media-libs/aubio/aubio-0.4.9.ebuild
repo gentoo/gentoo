@@ -15,14 +15,11 @@ SRC_URI="https://aubio.org/pub/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0/5"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python test"
+IUSE="doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	ffmpeg? (
-		!libav? ( >=media-video/ffmpeg-2.6:0= )
-		libav? ( >=media-video/libav-9:0= )
-	)
+	ffmpeg? ( >=media-video/ffmpeg-2.6:0= )
 	fftw? ( sci-libs/fftw:3.0= )
 	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )

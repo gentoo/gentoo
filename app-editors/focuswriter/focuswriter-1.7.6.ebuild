@@ -34,10 +34,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( ChangeLog CREDITS README )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.6.0-unbundle-qtsingleapplication.patch"
-	"${FILESDIR}/${PN}-1.7.5-qt-5.15-build.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-1.6.0-unbundle-qtsingleapplication.patch" )
 
 src_configure() {
 	eqmake5 PREFIX="${EPREFIX}"/usr
