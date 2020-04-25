@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -15,8 +15,7 @@ LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE="test"
-
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/lockfile[${PYTHON_USEDEP}]"
