@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>hfern@fernhout.info</email>
+		<name>Hans Fernhout</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 	</maintainer>
 	<use>
+		<flag name="mariadb">Add mariadb database support</flag>
 		<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
+		<flag name="supervise-daemon">Add experimental suppport for OpenRC's supervise-daemon process supervision</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Motion-Project/motion</remote-id>
