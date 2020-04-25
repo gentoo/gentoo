@@ -104,19 +104,19 @@ rust_arch_uri() {
 rust_all_arch_uris()
 {
   local uris=""
-  uris+="amd64? ( elibc_glibc? ( $(rust_arch_uri x86_64-unknown-linux-gnu "$@") ) 
-                  elibc_musl?  ( $(rust_arch_uri x86_64-unknown-linux-musl "$@") ) ) "
-  uris+="arm?   ( $(rust_arch_uri arm-unknown-linux-gnueabi      "$@")
-                  $(rust_arch_uri arm-unknown-linux-gnueabihf    "$@")
-                  $(rust_arch_uri armv7-unknown-linux-gnueabihf  "$@") ) "
-  uris+="arm64? ( $(rust_arch_uri aarch64-unknown-linux-gnu      "$@") ) "
-  uris+="mips?  ( $(rust_arch_uri mips-unknown-linux-gnu         "$@")
-                  $(rust_arch_uri mipsel-unknown-linux-gnu       "$@")
-                  $(rust_arch_uri mips64-unknown-linux-gnuabi64  "$@") ) "
-  uris+="ppc?   ( $(rust_arch_uri powerpc-unknown-linux-gnu      "$@") ) "
-  uris+="ppc64? ( $(rust_arch_uri powerpc64-unknown-linux-gnu    "$@")
-                  $(rust_arch_uri powerpc64le-unknown-linux-gnu  "$@") ) "
-  uris+="s390?  ( $(rust_arch_uri s390x-unknown-linux-gnu        "$@") ) "
-  uris+="x86?   ( $(rust_arch_uri i686-unknown-linux-gnu         "$@") ) "
+  uris+="abi_x86_64? ( elibc_glibc? ( $(rust_arch_uri x86_64-unknown-linux-gnu "$@") ) 
+                       elibc_musl?  ( $(rust_arch_uri x86_64-unknown-linux-musl "$@") ) ) "
+  uris+="arm?        ( $(rust_arch_uri arm-unknown-linux-gnueabi      "$@")
+                       $(rust_arch_uri arm-unknown-linux-gnueabihf    "$@")
+                       $(rust_arch_uri armv7-unknown-linux-gnueabihf  "$@") ) "
+  uris+="arm64?      ( $(rust_arch_uri aarch64-unknown-linux-gnu      "$@") ) "
+  uris+="mips?       ( $(rust_arch_uri mips-unknown-linux-gnu         "$@")
+                       $(rust_arch_uri mipsel-unknown-linux-gnu       "$@")
+                       $(rust_arch_uri mips64-unknown-linux-gnuabi64  "$@") ) "
+  uris+="ppc?        ( $(rust_arch_uri powerpc-unknown-linux-gnu      "$@") ) "
+  uris+="ppc64?      ( $(rust_arch_uri powerpc64-unknown-linux-gnu    "$@")
+                       $(rust_arch_uri powerpc64le-unknown-linux-gnu  "$@") ) "
+  uris+="s390?       ( $(rust_arch_uri s390x-unknown-linux-gnu        "$@") ) "
+  uris+="abi_x86_32? ( $(rust_arch_uri i686-unknown-linux-gnu         "$@") ) "
   echo "${uris}"
 }
