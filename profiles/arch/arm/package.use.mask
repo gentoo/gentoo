@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2020-04-25)
+# gnome-base/gnome-control-center not keyworded on arm
+# anymore, bug #692802
+net-libs/gnome-online-accounts gnome
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
 # Not keyworded on arm
 net-misc/whois xcrypt
