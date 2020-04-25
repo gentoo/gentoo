@@ -11470,19 +11470,19 @@ gnome-base/dconf-editor 3.34.4: Graphical tool for editing the dconf configurati
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.34.1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.34.4: Meta package for GNOME 3, merge this package to install
-gnome-base/gnome-applets 3.32.0 3.34.0: Applets for the GNOME Flashback Panel
+gnome-base/gnome-applets 3.34.0: Applets for the GNOME Flashback Panel
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.34.5: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.34.4: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.34.4: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 3.32.2 3.34.5: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.34.4: Sub-meta package for the applications of GNOME 3
-gnome-base/gnome-flashback 3.32.0 3.34.2: GNOME Flashback session
+gnome-base/gnome-flashback 3.34.2: GNOME Flashback session
 gnome-base/gnome-keyring 3.31.91-r1 3.34.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.34.4: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.32.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
-gnome-base/gnome-panel 3.32.0 3.34.1: The GNOME Flashback Panel
+gnome-base/gnome-panel 3.34.1: The GNOME Flashback Panel
 gnome-base/gnome-session 3.34.2: Gnome session manager
 gnome-base/gnome-settings-daemon 3.34.2: Gnome Settings Daemon
 gnome-base/gnome-shell 3.34.5: Provides core UI functions for the GNOME 3 desktop
@@ -18824,7 +18824,7 @@ x11-wm/lumina 1.5.0-r1 1.6.0 9999: Lumina desktop environment
 x11-wm/lwm 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.22.1-r2 1.22.4 1.22.4-r1 1.24.0 1.24.0-r1: MATE default window manager
 x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebars and frames
-x11-wm/metacity 3.32.0 3.34.1: GNOME Flashback window manager
+x11-wm/metacity 3.34.1: GNOME Flashback window manager
 x11-wm/muffin 4.0.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.34.5: GNOME 3 compositing window manager based on Clutter
