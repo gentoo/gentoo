@@ -2062,7 +2062,7 @@ app-misc/chkcrontab 1.7: A tool to detect crontab errors
 app-misc/ckb 0.2.9-r1 0.4.0 0.4.1 0.4.2: Corsair K65/K70/K95 Driver
 app-misc/ckermit 8.0.211-r4 9.0.302: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
-app-misc/cmatrix 1.2a-r3 1.2a-r4 2.0: An ncurses based app to show a scrolling screen from the Matrix
+app-misc/cmatrix 1.2a-r3 1.2a-r4 2.0-r1: An ncurses based app to show a scrolling screen from the Matrix
 app-misc/color 1.2-r2: Easily add ANSI colouring to shell scripts
 app-misc/colordiff 1.0.18: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
