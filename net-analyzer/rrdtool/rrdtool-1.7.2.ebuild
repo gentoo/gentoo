@@ -100,12 +100,13 @@ src_prepare() {
 			tests/Makefile.am || die
 	fi
 
-	export rd_cv_gcc_flag__Werror=no
-
 	eautoreconf
 }
 
 src_configure() {
+	export rd_cv_gcc_flag__Werror=no
+	export rd_cv_ms_async=ok
+
 	filter-flags -ffast-math
 
 	export RRDDOCDIR=${EPREFIX}/usr/share/doc/${PF}
