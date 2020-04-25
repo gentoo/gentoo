@@ -12,12 +12,10 @@ SRC_URI="https://github.com/FFMS/ffms2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/4"
 KEYWORDS="amd64 x86"
-IUSE="libav"
 
 RDEPEND="
 	sys-libs/zlib
-	!libav? ( >=media-video/ffmpeg-2.4:0= )
-	libav? ( >=media-video/libav-9:0= )
+	>=media-video/ffmpeg-2.4:0=
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
