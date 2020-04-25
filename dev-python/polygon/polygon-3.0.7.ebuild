@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python3_6 )
+
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -30,7 +32,7 @@ python_prepare_all() {
 }
 
 python_test() {
-	${PYTHON} test/Test.py || die "Tests failed under ${EPYTHON}"
+	"${EPYTHON}" test/Test.py -v || die "Tests failed under ${EPYTHON}"
 }
 
 python_install_all() {

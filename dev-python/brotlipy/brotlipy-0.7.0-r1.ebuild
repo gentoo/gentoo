@@ -23,7 +23,9 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="virtual/python-cffi[${PYTHON_USEDEP}]"
+# module name collision with app-arch/brotli
+RDEPEND="virtual/python-cffi[${PYTHON_USEDEP}]
+	!app-arch/brotli[python]"
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
