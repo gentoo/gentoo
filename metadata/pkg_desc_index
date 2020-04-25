@@ -6821,7 +6821,7 @@ dev-perl/TAP-Parser-SourceHandler-pgTAP 3.330.0 3.340.0 3.350.0: Stream TAP from
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
 dev-perl/Taint-Util 0.80.0-r1: Test for and flip the taint flag without regex matches or eval
 dev-perl/Task-Weaken 1.50.0: Ensure that a platform has weaken support
-dev-perl/TeX-Encode 2.4.0 2.8.0: Encode/decode Perl utf-8 strings into TeX
+dev-perl/TeX-Encode 2.8.0: Encode/decode Perl utf-8 strings into TeX
 dev-perl/Template-DBI 2.650.0-r2: DBI plugin for the Template Toolkit
 dev-perl/Template-GD 2.660.0-r1: GD plugin(s) for the Template Toolkit
 dev-perl/Template-Plugin-Cycle 1.60.0: Cyclically insert into a Template from a sequence of values
@@ -8309,7 +8309,7 @@ dev-python/pycxx 6.2.6 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
-dev-python/pydns 2.3.6-r1 3.1.1: Python DNS (Domain Name System) library
+dev-python/pydns 2.3.6-r1 3.1.1 3.2.1: Python DNS (Domain Name System) library
 dev-python/pydocstyle 5.0.2: Python docstring style checker
 dev-python/pydot 1.4.1: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
@@ -10693,7 +10693,7 @@ games-action/beathazardultra 20130308-r2: Intense music-driven arcade shooter po
 games-action/bomberclone 0.11.9: Bomberman clone with network game support
 games-action/brutal-legend 20130615-r2: Unleash the power of Heavy Metal to reign down fire from the sky
 games-action/btanks 0.9.8083: Fast 2D tank arcade game with multiplayer and split-screen modes
-games-action/bzflag 2.4.12 2.4.14 2.4.16 2.4.18: 3D tank combat simulator game
+games-action/bzflag 2.4.12 2.4.14 2.4.16 2.4.18 2.4.20: 3D tank combat simulator game
 games-action/chickens 0.2.4-r1: Target chickens with rockets and shotguns. Funny
 games-action/chromium-bsu 0.9.15.1-r1: Chromium B.S.U. - an arcade game
 games-action/clanbomber 2.1.1-r1: Bomberman-like multiplayer game
