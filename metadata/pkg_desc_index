@@ -7535,7 +7535,7 @@ dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-appli
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.18 0.18-r1 0.19: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/breathe 4.14.1: Sphinx Doxygen renderer
-dev-python/brotlipy 0.7.0: Python binding to the Brotli library
+dev-python/brotlipy 0.7.0-r1: Python binding to the Brotli library
 dev-python/brython 3.7.2: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.2.4 6.2.7: Python bindings for Berkeley DB
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
