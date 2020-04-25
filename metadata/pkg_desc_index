@@ -4888,7 +4888,7 @@ dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1.4: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.34_pre20140729-r1 0.34: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0 0.6.1: set of utility libraries (mostly used by sssd)
-dev-libs/distorm64 3.4.1 3.4.2: The ultimate disassembler library (X86-32, X86-64)
+dev-libs/distorm64 3.4.1 3.4.2 3.4.4: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/dmalloc 5.5.2-r7: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion routines for IEEE doubles
@@ -8205,7 +8205,7 @@ dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.6.0 4.8.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
-dev-python/phonenumbers 8.10.22 8.12.0: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.10.22 8.12.2: Python port of Google's libphonenumber
 dev-python/pickleshare 0.7.4-r1 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.0.12 1.1.3: Exif manipulation with pure Python
@@ -8539,7 +8539,7 @@ dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara 
 dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
-dev-python/python-stdnum 1.12: A module to handle standardized numbers and codes
+dev-python/python-stdnum 1.12 1.13: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 233 234: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
@@ -8775,7 +8775,7 @@ dev-python/stestr 2.1.0: A parallel Python test runner built around subunit
 dev-python/stevedore 1.31.0: Manage dynamic plugins for Python applications
 dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP protocol
 dev-python/strict-rfc3339 0.7-r1: Strict, simple, lightweight RFC3339 functions
-dev-python/stripe 2.43.0: Stripe python bindings
+dev-python/stripe 2.43.0 2.46.0: Stripe python bindings
 dev-python/subprocess32 3.2.7 3.5.4: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
 dev-python/subunit 1.2.0-r1: A streaming protocol for test results
 dev-python/subvertpy 0.10.1: Alternative Python bindings for Subversion
@@ -10560,7 +10560,7 @@ dev-util/statifier 1.7.4: Statifier is a tool for creating portable, self-contai
 dev-util/stepman 0.10.0 0.10.2 0.10.4 0.10.5: Step collection manager for Bitrise CLI
 dev-util/strace 5.3 5.4 5.5 5.6 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.9: Stressful Application Test
-dev-util/stripe-mock 0.79.0: Mock HTTP server that responds like the real Stripe API
+dev-util/stripe-mock 0.79.0 0.88.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
 dev-util/sysdig 0.26.4 0.26.4-r1 0.26.6: A system exploration and troubleshooting tool
 dev-util/sysdig-kmod 0.26.4 0.26.6: Kernel module for dev-util/sysdig
@@ -10653,7 +10653,7 @@ dev-vcs/gitsh 0.11.2: An interactive shell for git
 dev-vcs/gitstats 0_pre131024 0_pre20151223 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface to git
-dev-vcs/hg-evolve 8.5.1 9.3.0: enables the changeset evolution feature of Mercurial
+dev-vcs/hg-evolve 8.5.1 9.3.1: enables the changeset evolution feature of Mercurial
 dev-vcs/hg-git 0.8.8 0.8.12-r1 0.8.13_pre20190808 0.8.13: push to and pull from a Git repository using Mercurial
 dev-vcs/hub 2.13.0 2.14.1: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
