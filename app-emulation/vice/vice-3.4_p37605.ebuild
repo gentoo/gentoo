@@ -15,7 +15,7 @@ SRC_URI="https://sourceforge.net/code-snapshots/svn/v/vi/vice-emu/code/${MY_P}.z
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa debug doc ethernet ffmpeg flac gif +gtk headless ipv6 jpeg lame libav mpg123 ogg oss +opengl parport pci png portaudio pulseaudio sdl zlib"
+IUSE="alsa debug doc ethernet ffmpeg flac gif +gtk headless ipv6 jpeg lame mpg123 ogg oss +opengl parport pci png portaudio pulseaudio sdl zlib"
 REQUIRED_USE="|| ( gtk headless sdl ) gtk? ( zlib )"
 
 RDEPEND="
@@ -26,10 +26,7 @@ RDEPEND="
 		>=net-libs/libpcap-0.9.8
 		>=net-libs/libnet-1.1.2.1:1.1
 	)
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac )
 	gif? ( media-libs/giflib:= )
 	gtk? (
