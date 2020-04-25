@@ -111,6 +111,8 @@ dev-python/os-networksv2-python-novaclient-ext
 dev-python/osc-placement
 dev-python/rackspace-novaclient
 dev-python/nose-testconfig
+dev-python/positional
+dev-python/posix_ipc
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
