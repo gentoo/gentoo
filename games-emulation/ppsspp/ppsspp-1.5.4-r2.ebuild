@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="headless libav +qt5 sdl +system-ffmpeg"
+IUSE="headless +qt5 sdl +system-ffmpeg"
 REQUIRED_USE="!qt5? ( sdl )"
 
 RDEPEND="
@@ -39,10 +39,7 @@ RDEPEND="
 		!sdl? ( dev-qt/qtmultimedia:5 )
 	)
 	sdl? ( media-libs/libsdl2 )
-	system-ffmpeg? (
-		!libav? ( media-video/ffmpeg:= )
-		libav? ( media-video/libav:= )
-	)
+	system-ffmpeg? ( media-video/ffmpeg:= )
 "
 DEPEND="${RDEPEND}"
 
