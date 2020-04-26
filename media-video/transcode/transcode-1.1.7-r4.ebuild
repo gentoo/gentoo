@@ -69,8 +69,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	if has_version '>=media-video/ffmpeg-2.8' ||
-		has_version '>=media-video/libav-12'; then
+	if has_version '>=media-video/ffmpeg-2.8'; then
 		PATCHES+=( "${WORKDIR}"/${P}-patchset/${P}-ffmpeg29.patch )
 	fi
 
