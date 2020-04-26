@@ -315,10 +315,6 @@ dev-libs/libpeas lua
 # Missing ffmpeg deps, bug #510340
 media-video/ffmpeg x265
 
-# Patrick Lauer <patrick@gentoo.org> (2015-02-10)
-# Missing keywords for media-libs/x265
-media-video/libav x265
-
 # Pacho Ramos <pacho@gentoo.org> (2014-01-10)
 # Missing keywords
 net-misc/networkmanager teamd

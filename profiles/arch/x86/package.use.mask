@@ -151,10 +151,6 @@ x11-wm/awesome doc
 # nvidia drivers are unmasked here
 media-video/ffmpeg -nvenc
 
-# Luca Barbato <lu_zero@gentoo.org> (2017-01-22)
-# cuda is not available on x86 nvidia-video-codec depends on it
-media-video/libav nvidia
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2016-12-31)
 # on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-14)
 # Fails to build with newly unmasked ffmpeg-3, so mask this useflag

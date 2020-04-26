@@ -119,7 +119,6 @@ media-libs/mlt -sdl
 media-libs/openal -sdl
 media-sound/mpg123 -sdl
 media-video/ffmpeg -sdl
-media-video/libav -sdl
 media-video/mplayer -sdl
 media-video/mpv -sdl
 media-video/transcode -sdl
