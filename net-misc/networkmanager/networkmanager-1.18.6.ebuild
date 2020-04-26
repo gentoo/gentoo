@@ -285,7 +285,7 @@ multilib_src_install_all() {
 	einstalldocs
 	! use systemd && readme.gentoo_create_doc
 
-	newinitd "${FILESDIR}/init.d.NetworkManager-r1" NetworkManager
+	newinitd "${FILESDIR}/init.d.NetworkManager-r2" NetworkManager
 	newconfd "${FILESDIR}/conf.d.NetworkManager" NetworkManager
 
 	# Need to keep the /etc/NetworkManager/dispatched.d for dispatcher scripts
