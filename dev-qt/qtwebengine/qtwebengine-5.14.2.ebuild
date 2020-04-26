@@ -91,7 +91,8 @@ src_prepare() {
 		-i src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py || die
 
 	# bug 620444 - ensure local headers are used
-	find "${S}" -type f -name "*.pr[fio]" | xargs sed -i -e 's|INCLUDEPATH += |&$$QTWEBENGINE_ROOT/include |' || die
+	find "${S}" -type f -name "*.pr[fio]" | \
+		xargs sed -i -e 's|INCLUDEPATH += |&$${QTWEBENGINE_ROOT}_build/include $${QTWEBENGINE_ROOT}/include |' || die
 
 	if use system-icu; then
 		# Sanity check to ensure that bundled copy of ICU is not used.
