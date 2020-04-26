@@ -82,10 +82,9 @@ Exporters
     <flag name="cg">NVIDIA toolkit plugin</flag>
     <flag name="double-precision">More precise calculations at the expense of speed</flag>
     <flag name="egl">Use egl instead of glx</flag>
-    <flag name="experimental" restrict="&lt;dev-games/ogre-1.11">
-        Build experimental BETA components 'Bites' and 'HLMS'
+    <flag name="deprecated" restrict="~dev-games/ogre-1.12.6">
+        Build deprecated component 'HLMS' and nodeless positioning of Lights and Cameras.
     </flag>
-    <flag name="experimental">Build experimental BETA component 'HLMS'</flag>
     <flag name="freeimage">Support images via media-libs/freeimage</flag>
     <flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
     <flag name="gles2" restrict="&gt;dev-games/ogre-1.10">

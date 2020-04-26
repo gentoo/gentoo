@@ -7,7 +7,7 @@ CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
 inherit cmake
 
 IMGUI_PN="imgui"
-IMGUI_PV="1.74"
+IMGUI_PV="1.76"
 IMGUI_P="${IMGUI_PN}-${IMGUI_PV}"
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
@@ -19,11 +19,24 @@ LICENSE="MIT public-domain"
 SLOT="0/1.12"
 KEYWORDS="~amd64 ~arm ~x86"
 
-IUSE="+cache cg debug doc double-precision egl examples experimental +freeimage
-	gles2 json openexr +opengl pch profile resman-pedantic tools"
+IUSE="+cache cg debug deprecated doc double-precision egl examples +freeimage
+	json openexr +opengl pch profile resman-pedantic tools"
 
+# Note: gles2 USE flag taken out for now. It seems like the Ogre Devs now rely
+#       on HLSL2GLSL (https://github.com/aras-p/hlsl2glslfork) unconditionally
+#       for GLES2. So unless we have an ebuild for that, gles2/3 are off the
+#       table.
+#       ~~sed 2020-04-26 (yamakuzure@gmx.net)
+#
+# Note: Without gles2 USE flag, the opengl USE flag is next to useless. But
+#       there are packages which enforce it, so it has to stay.
+#
+# USE="gles2"
+# REQUIRED_USE="
+# 	|| ( gles2 opengl )
+# "
 REQUIRED_USE="
-	|| ( gles2 opengl )
+	examples? ( opengl )
 "
 
 RESTRICT="test" #139905
@@ -40,7 +53,6 @@ RDEPEND="
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	egl? ( media-libs/mesa[egl] )
 	freeimage? ( media-libs/freeimage )
-	gles2? ( media-libs/mesa[gles2] )
 	json? ( dev-libs/rapidjson )
 	openexr? ( media-libs/openexr:= )
 	opengl? (
@@ -49,6 +61,7 @@ RDEPEND="
 	)
 	tools? ( dev-libs/tinyxml[stl] )
 "
+# 	gles2? ( media-libs/mesa[gles2] )
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
@@ -61,21 +74,21 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-media_path.patch
 	"${FILESDIR}"/${P}-resource_path.patch
-	"${FILESDIR}"/${P}-fix_sample_source_install.patch
+	"${FILESDIR}"/${P}-fix_Simple_demo.patch
+	"${FILESDIR}"/${P}-upgrade_imgui.patch
 	"${FILESDIR}"/${PN}-1.10.12-use_system_tinyxml.patch
 )
 
 src_unpack() {
 	unpack ${P}.tar.gz || die "Unpacking ${P}.zip failed"
 
-	# Ogre 1.12.3 includes imgui, but as a submodule, it is not included
-	# in the release.
-	cd "${S}"/Components/Overlay/src || die "Unpack incomplete"
+	# Ogre 1.12.8 includes imgui, but as a submodule, it is not included
+	# in the release. The build system tries to download it, that may
+	# a) fail and
+	# b) uses an old release 1.73
+	# So we are doing it ourselves.
+	cd "${S}" || die "Unpack incomplete"
 	unpack ${IMGUI_P}.tar.gz || die "Unpacking ${IMGUI_P}.zip failed"
-
-	# Without this 'rm', mv puts imgui-1.73 *into* imgui/ instead of renaming.
-	rm -rf "${IMGUI_PN}" || die "Removing ${IMGUI_PN} failed"
-	mv "${IMGUI_P}" "${IMGUI_PN}" || die "Moving ${IMGUI_P} to ${IMGUI_PN} failed"
 }
 
 src_prepare() {
@@ -92,25 +105,11 @@ src_prepare() {
 	# In this series, the CMAKE_BUILD_TARGET is hard-wired to the
 	# installation. And only Debug, MinSizeRel and RelWithDebInfo
 	# are supported.
-	if use debug; then
-		sed -i \
-			-e 's/Debug/Gentoo/g' \
-			CMake/InstallResources.cmake \
-			|| die
-		sed -i \
-			-e 's/Debug/Gentoo/g' \
-			CMake/Utils/OgreConfigTargets.cmake \
-			|| die
-	else
-		sed -i \
-			-e 's/MinSizeRel/Gentoo/g' \
-			CMake/InstallResources.cmake \
-			|| die
-		sed -i \
-			-e 's/MinSizeRel/Gentoo/g' \
-			CMake/Utils/OgreConfigTargets.cmake \
-			|| die
-	fi
+	sed -i \
+		-e "s/$(usex debug Debug Release)/Gentoo/g" \
+		CMake/InstallResources.cmake \
+		CMake/Utils/OgreConfigTargets.cmake \
+		|| die
 
 	# Fix broken png files
 	einfo "Fixing broken png files."
@@ -131,7 +130,7 @@ src_configure() {
 		-DCMAKE_SKIP_INSTALL_RPATH=yes
 		-DOGRE_BUILD_COMPONENT_BITES=yes
 		-DOGRE_BUILD_COMPONENT_CSHARP=no
-		-DOGRE_BUILD_COMPONENT_HLMS=$(usex experimental)
+		-DOGRE_BUILD_COMPONENT_HLMS=$(usex deprecated)
 		-DOGRE_BUILD_COMPONENT_JAVA=no
 		-DOGRE_BUILD_COMPONENT_OVERLAY=yes
 		-DOGRE_BUILD_COMPONENT_OVERLAY_IMGUI=yes
@@ -147,24 +146,27 @@ src_configure() {
 		-DOGRE_BUILD_PLUGIN_EXRCODEC=$(usex openexr)
 		-DOGRE_BUILD_RENDERSYSTEM_GL=$(usex opengl)
 		-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS=$(usex opengl)
-		-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
+		-DOGRE_BUILD_RENDERSYSTEM_GLES2=no
 		-DOGRE_BUILD_SAMPLES=$(usex examples)
 		-DOGRE_BUILD_TESTS=no
 		-DOGRE_BUILD_TOOLS=$(usex tools)
 		-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
 		-DOGRE_CONFIG_ENABLE_GL_STATE_CACHE_SUPPORT=$(usex cache)
-		-DOGRE_CONFIG_ENABLE_GLES2_CG_SUPPORT=$(usex gles2 $(usex cg) no)
-		-DOGRE_CONFIG_ENABLE_GLES3_SUPPORT=$(usex gles2)
+		-DOGRE_CONFIG_ENABLE_GLES2_CG_SUPPORT=no
+		-DOGRE_CONFIG_ENABLE_GLES3_SUPPORT=no
 		-DOGRE_CONFIG_THREADS=3
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
 		-DOGRE_ENABLE_PRECOMPILED_HEADERS=$(usex pch)
-		-DOGRE_GLSUPPORT_USE_EGL=$(usex egl)
 		-DOGRE_INSTALL_DOCS=$(usex doc)
 		-DOGRE_INSTALL_SAMPLES=$(usex examples)
 		-DOGRE_INSTALL_SAMPLES_SOURCE=$(usex examples)
+		-DOGRE_NODELESS_POSITIONING=$(usex deprecated)
 		-DOGRE_PROFILING=$(usex profile)
 		-DOGRE_RESOURCEMANAGER_STRICT=$(usex resman-pedantic 1 2)
 	)
+#		-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
+#		-DOGRE_CONFIG_ENABLE_GLES2_CG_SUPPORT=$(usex gles2 $(usex cg) no)
+#		-DOGRE_CONFIG_ENABLE_GLES3_SUPPORT=$(usex gles2)
 
 	cmake_src_configure
 }
@@ -193,8 +195,8 @@ src_install() {
 	# These are only for the sample browser
 	if use examples ; then
 		insinto "${SHAREDIR}"
-		doins "${BUILD_DIR}"/bin/quakemap.cfg
 		doins "${BUILD_DIR}"/bin/samples.cfg
+		doins "${BUILD_DIR}"/bin/tests.cfg
 	fi
 }
 
@@ -202,5 +204,5 @@ pkg_postinst() {
 	elog "If you experience crashes when starting /usr/bin/SampleBrowser,"
 	elog "remove the cache directory at:"
 	elog "  '~/.cache/OGRE Sample Browser'"
-	elog "first, before filling a bug report."
+	elog "first, before filing a bug report."
 }
