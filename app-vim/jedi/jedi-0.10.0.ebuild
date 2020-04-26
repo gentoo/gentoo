@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit vim-plugin python-any-r1
+inherit vim-plugin python-single-r1
 
 DESCRIPTION="vim plugin: binding to the autocompletion library jedi"
 HOMEPAGE="https://github.com/davidhalter/jedi-vim"
@@ -15,9 +15,11 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-python/jedi[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/jedi[${PYTHON_MULTI_USEDEP}]')
 	app-editors/vim[python]"
 BDEPEND="${PYTHON_DEPS}
 	test? ( dev-python/pytest )"
