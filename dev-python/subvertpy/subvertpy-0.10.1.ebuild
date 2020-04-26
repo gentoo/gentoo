@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
 inherit distutils-r1
