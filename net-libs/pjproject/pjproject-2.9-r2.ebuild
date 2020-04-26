@@ -30,7 +30,7 @@ RDEPEND="net-libs/libsrtp:=
 
 	alsa? ( media-libs/alsa-lib )
 	amr? ( media-libs/opencore-amr )
-	ffmpeg? ( virtual/ffmpeg:= )
+	ffmpeg? ( media-video/ffmpeg:= )
 	g729? ( media-libs/bcg729 )
 	gsm? ( media-sound/gsm )
 	ilbc? ( media-libs/libilbc )
