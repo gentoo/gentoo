@@ -8257,7 +8257,7 @@ dev-python/pslab-python 1.0.1 1.0.1-r1: Python library for communicating with Po
 dev-python/psutil 5.6.7-r1 5.7.0: Retrieve information on running processes and system utilization
 dev-python/psycopg 2.7.4 2.7.5 2.7.7 2.8.3 2.8.4: PostgreSQL database adapter for Python
 dev-python/ptpython 2.0.6: Python REPL build on top of prompt_toolkit
-dev-python/ptvsd 3.2.1: Visual Studio remote debugging server for Python
+dev-python/ptvsd 4.3.2: Visual Studio remote debugging server for Python
 dev-python/ptyprocess 0.5.2 0.6.0: Run a subprocess in a pseudo terminal
 dev-python/publicsuffix 2.20190205 2.20191221: Get a public suffix for a domain name using the Public Suffix List.
 dev-python/pudb 2018.1: A full-screen, console-based Python debugger
@@ -13197,7 +13197,7 @@ media-plugins/kodi-screensaver-pingpong 1.1.0 2.0.0 9999: Ping-pong screensaver 
 media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 3.0.1 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
 media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 1.0.7 9999: Libarchive VFS add-on for Kodi
-media-plugins/kodi-vfs-rar 2.2.0 2.2.1 2.2.2 2.2.3 2.3.0 9999: RAR VFS addon for Kodi
+media-plugins/kodi-vfs-rar 2.2.0 2.2.1 2.2.2 2.2.3 2.3.0 2.3.1 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 1.0.3 1.0.4 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 1.0.6 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
