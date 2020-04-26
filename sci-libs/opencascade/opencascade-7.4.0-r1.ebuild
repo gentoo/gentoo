@@ -39,7 +39,7 @@ RDEPEND="
 	virtual/glu
 	virtual/opengl
 	x11-libs/libXmu
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	freeimage? ( media-libs/freeimage )
 	java? ( virtual/jdk:1.8 )
 	qt5? (
