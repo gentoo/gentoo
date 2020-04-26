@@ -18,8 +18,7 @@ RDEPEND="ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)"
-DEPEND="${RDEPEND}
-	sys-devel/libtool"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
