@@ -32,7 +32,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	opus? ( media-libs/opus )
 	speex? ( media-libs/speexdsp )
 
-	ffmpeg? ( virtual/ffmpeg:= )
+	ffmpeg? ( media-video/ffmpeg:= )
 	sdl? ( media-libs/libsdl )
 	openh264? ( media-libs/openh264 )
 	resample? ( media-libs/libsamplerate )
