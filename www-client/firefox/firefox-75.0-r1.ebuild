@@ -91,7 +91,7 @@ CDEPEND="
 	>=dev-libs/glib-2.26:2
 	>=sys-libs/zlib-1.2.3
 	>=dev-libs/libffi-3.0.10:=
-	virtual/ffmpeg
+	media-video/ffmpeg
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
