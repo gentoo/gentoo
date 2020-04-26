@@ -15,7 +15,7 @@ https://dev.gentoo.org/~johu/distfiles/${P}-capi.h-${CAPI_HASH}.xz"
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0/1"
 KEYWORDS="amd64"
-IUSE="gui libav opengl portaudio pulseaudio vaapi"
+IUSE="gui opengl portaudio pulseaudio vaapi"
 REQUIRED_USE="gui? ( opengl )"
 
 DEPEND="
@@ -24,11 +24,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	gui? ( dev-qt/qtsql:5 )
-	libav? (
-		media-video/libav:=
-		x11-libs/libX11
-	)
-	!libav? ( media-video/ffmpeg:= )
+	media-video/ffmpeg:=
 	opengl? ( dev-qt/qtopengl:5 )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
