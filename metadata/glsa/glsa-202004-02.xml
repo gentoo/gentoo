@@ -7,21 +7,17 @@
   </synopsis>
   <product type="ebuild">virtualbox</product>
   <announced>2020-04-01</announced>
-  <revised count="1">2020-04-01</revised>
+  <revised count="2">2020-04-26</revised>
   <bug>714064</bug>
   <access>local, remote</access>
   <affected>
     <package name="app-emulation/virtualbox" auto="yes" arch="*">
-      <unaffected range="rge">5.2.36</unaffected>
-      <unaffected range="rge">6.0.16</unaffected>
-      <unaffected range="rge">6.1.2</unaffected>
-      <vulnerable range="lt">6.1.2</vulnerable>
+      <unaffected range="ge">5.2.36</unaffected>
+      <vulnerable range="lt">5.2.36</vulnerable>
     </package>
     <package name="app-emulation/virtualbox-bin" auto="yes" arch="*">
-      <unaffected range="rge">5.2.36</unaffected>
-      <unaffected range="rge">6.0.16</unaffected>
-      <unaffected range="rge">6.1.2</unaffected>
-      <vulnerable range="lt">6.1.2</vulnerable>
+      <unaffected range="ge">5.2.36</unaffected>
+      <vulnerable range="lt">5.2.36</vulnerable>
     </package>
   </affected>
   <background>
@@ -118,5 +114,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2727">CVE-2020-2727</uri>
   </references>
   <metadata tag="requester" timestamp="2020-04-01T19:35:27Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2020-04-01T19:41:08Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-26T19:47:03Z">whissi</metadata>
 </glsa>
