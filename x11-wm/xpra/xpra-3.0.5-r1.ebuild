@@ -40,7 +40,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	sound? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 		dev-python/gst-python:1.0 )
-	vpx? ( media-libs/libvpx virtual/ffmpeg )
+	vpx? ( media-libs/libvpx media-video/ffmpeg )
 	webp? ( media-libs/libwebp )
 "
 RDEPEND="${COMMON_DEPEND}
