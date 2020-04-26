@@ -22,7 +22,7 @@ RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.11 )
 	cache? ( >=sys-libs/db-4.1:= )
 	curl? ( >=net-misc/curl-7.15.1 )
-	ffmpeg? ( >=virtual/ffmpeg-9 )
+	ffmpeg? ( >=media-video/ffmpeg-1.2.6-r1 )
 	flac? ( >=media-libs/flac-1.1.3 )
 	jack? ( >=media-sound/jack-audio-connection-kit-0.4 )
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.0 )
