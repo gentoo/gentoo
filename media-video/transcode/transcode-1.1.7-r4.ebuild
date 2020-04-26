@@ -4,7 +4,7 @@
 EAPI=6
 inherit autotools libtool multilib
 
-DESCRIPTION="A suite of utilities for transcoding video and audio codecs in different containers"
+DESCRIPTION="Utilities for transcoding video and audio codecs in different containers"
 HOMEPAGE="http://www.transcoding.org/ https://bitbucket.org/france/transcode-tcforge"
 SRC_URI="https://www.bitbucket.org/france/${PN}-tcforge/downloads/${P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 sparc x86"
 IUSE="cpu_flags_x86_3dnow a52 aac alsa altivec dv dvd +iconv imagemagick jpeg lzo mjpeg cpu_flags_x86_mmx mp3 mpeg nuv ogg oss pic postproc quicktime sdl cpu_flags_x86_sse cpu_flags_x86_sse2 theora truetype v4l vorbis X x264 xml xvid"
 
 RDEPEND="
-	>=virtual/ffmpeg-0.10
+	>=media-video/ffmpeg-0.10
 	a52? ( media-libs/a52dec )
 	aac? ( media-libs/faac )
 	alsa? ( media-libs/alsa-lib )
@@ -29,7 +29,7 @@ RDEPEND="
 	mp3? ( media-sound/lame )
 	mpeg? ( media-libs/libmpeg2 )
 	ogg? ( media-libs/libogg )
-	postproc? ( >=virtual/ffmpeg-0.10 )
+	postproc? ( >=media-video/ffmpeg-0.10 )
 	quicktime? ( >=media-libs/libquicktime-1 )
 	sdl? ( >=media-libs/libsdl-1.2.5[X?] )
 	theora? ( media-libs/libtheora )
