@@ -18,5 +18,5 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	${PYTHON_DEPS}
-	virtual/ffmpeg
+	media-video/ffmpeg
 "
