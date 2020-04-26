@@ -3,30 +3,26 @@
 
 EAPI="7"
 
-inherit autotools fcaps
+inherit autotools fcaps toolchain-funcs vcs-snapshot
+
+EGIT_COMMIT="ccea326dd73f4d6b6442fde7ba7c2be9cd35c6df"
 
 DESCRIPTION="Fast terminal emulator for the Linux framebuffer"
 HOMEPAGE="https://github.com/gjedeer/fbterm"
 
-MY_COMMIT="ccea326dd73f4d6b6442fde7ba7c2be9cd35c6df"
-SRC_URI="https://github.com/gjedeer/fbterm/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/fbterm-${MY_COMMIT}"
+SRC_URI="https://github.com/gjedeer/fbterm/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="gpm video_cards_vesa"
 
-DEPEND="
-	media-libs/fontconfig
+DEPEND="media-libs/fontconfig
 	media-libs/freetype:2
 	>=sys-libs/ncurses-6.1
 	gpm? ( sys-libs/gpm )
-	video_cards_vesa? ( dev-libs/libx86 )
-"
-BDEPEND="
-	virtual/pkgconfig
-"
+	video_cards_vesa? ( dev-libs/libx86 )"
+BDEPEND="virtual/pkgconfig"
 
 FILECAPS=(
 	cap_sys_tty_config+ep usr/bin/${PN}
@@ -44,6 +40,10 @@ src_configure() {
 	econf \
 		$(use_enable gpm) \
 		$(use_enable video_cards_vesa vesa)
+}
+
+src_compile() {
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {
