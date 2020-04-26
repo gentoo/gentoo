@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,17 +15,16 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug libav +udev"
+IUSE="debug +udev"
 
 COMMON_DEPEND="
 	>=app-cdr/dvd+rw-tools-7.1
 	media-libs/libexif:=
 	>=media-libs/wxsvg-1.5.11:=
 	>=media-video/dvdauthor-0.7.1
+	>=media-video/ffmpeg-2.6:0=[encode]
 	>=media-video/xine-ui-0.99.7
 	virtual/cdrtools
-	libav? ( >=media-video/libav-9:0=[encode] )
-	!libav? ( >=media-video/ffmpeg-2.6:0=[encode] )
 	virtual/jpeg:0
 	x11-libs/wxGTK:${WX_GTK_VER}=[gstreamer,X]
 	sys-apps/dbus
