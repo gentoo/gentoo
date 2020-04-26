@@ -25,6 +25,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install # need explicit install line #397835
+	emake DESTDIR="${ED}" install # need explicit install line #397835
 	dodoc *.README*
 }
