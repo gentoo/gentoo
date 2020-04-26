@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-25)
-# static-pie is not fully implemented on ppc/ppc64, bug #719444
-sys-libs/glibc static-pie
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
 # Not keyworded on ppc
 net-misc/whois xcrypt
