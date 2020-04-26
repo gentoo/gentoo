@@ -22,7 +22,10 @@ IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+	)
 "
 
 python_install_all() {
