@@ -21,7 +21,7 @@ HOMEPAGE="https://gerbera.io"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm libav +magic +matroska mysql systemd +taglib"
+IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm +magic +matroska mysql systemd +taglib"
 
 DEPEND="
 	acct-user/gerbera
@@ -34,10 +34,7 @@ DEPEND="
 	lastfm? ( >=media-libs/lastfmlib-0.4 )
 	exif? ( media-libs/libexif )
 	exiv2? ( media-gfx/exiv2 )
-	ffmpeg? (
-		libav? ( >=media-video/libav-10:0= )
-		!libav? ( >=media-video/ffmpeg-2.2:0= )
-	)
+	ffmpeg? ( >=media-video/ffmpeg-2.2:0= )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	curl? ( net-misc/curl net-misc/youtube-dl )
 	magic? ( sys-apps/file )
