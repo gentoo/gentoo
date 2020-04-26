@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/libsdl2
 	media-libs/libv4l
 	>=media-libs/portaudio-19_pre
-	virtual/ffmpeg
+	media-video/ffmpeg
 	virtual/libusb:1
 	virtual/udev
 	gsl? ( >=sci-libs/gsl-1.15 )
