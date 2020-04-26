@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ REQUIRED_USE="|| ( lv2 standalone )"
 COMMON_DEPEND="dev-cpp/eigen:3
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:2.4
+	dev-lang/sassc
 	dev-libs/glib:2
 	>=media-libs/libsndfile-1.0.17
 	>=media-libs/zita-convolver-3:=
