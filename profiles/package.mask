@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (2020-04-26)
+# Mask obsolete and vulnerable dev-go/go-crypto, along with obsolete
+# reverse dependencies. Removal in 30 days.  Bug #710142.
+dev-go/go-crypto
+dev-go/go-net
+=dev-embedded/arduino-builder-1.4.1
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-26)
 # Unmaintained.  Stuck on py3.6.  Missing tests (but having an unused
 # test flag!).  The only revdep is app-admin/ara that is masked
