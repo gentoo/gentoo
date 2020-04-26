@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lightspark/lightspark/archive/${PV}.tar.gz -> ${P}.t
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_sse2 curl ffmpeg gles2-only libav nsplugin ppapi profile rtmp"
+IUSE="cpu_flags_x86_sse2 curl ffmpeg gles2-only nsplugin ppapi profile rtmp"
 
 # Note: no LLVM since it's broken upstream
 RDEPEND="app-arch/xz-utils:0=
@@ -30,10 +30,7 @@ RDEPEND="app-arch/xz-utils:0=
 	x11-libs/pango:0=
 	virtual/jpeg:0=
 	curl? ( net-misc/curl:0= )
-	ffmpeg? (
-		libav? ( <media-video/libav-13_pre:0= )
-		!libav? ( media-video/ffmpeg:0= )
-	)
+	ffmpeg?	( media-video/ffmpeg:0= )
 	gles2-only? ( media-libs/mesa:0=[gles2] )
 	!gles2-only? (
 		>=media-libs/glew-1.5.3:0=
