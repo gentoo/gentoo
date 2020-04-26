@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ HOMEPAGE="https://gpac.wp.imt.fr/"
 LICENSE="GPL-2"
 # subslot == libgpac major
 SLOT="0/7"
-IUSE="a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k libav libressl mad opengl oss png
+IUSE="a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k libressl mad opengl oss png
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
 RDEPEND="
@@ -27,10 +27,7 @@ RDEPEND="
 	a52? ( media-libs/a52dec )
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
-	ffmpeg? (
-		!libav? ( media-video/ffmpeg:0= )
-		libav? ( media-video/libav:0= )
-	)
+	ffmpeg? ( media-video/ffmpeg:0= )
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:0 )
