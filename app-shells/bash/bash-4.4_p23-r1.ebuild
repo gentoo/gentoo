@@ -217,7 +217,7 @@ src_install() {
 	if use examples ; then
 		for d in examples/{functions,misc,scripts,startup-files} ; do
 			exeinto /usr/share/doc/${PF}/${d}
-			docinto /usr/share/doc/${PF}/${d}
+			docinto ${d}
 			for f in ${d}/* ; do
 				if [[ ${f##*/} != PERMISSION ]] && [[ ${f##*/} != *README ]] ; then
 					doexe ${f}
