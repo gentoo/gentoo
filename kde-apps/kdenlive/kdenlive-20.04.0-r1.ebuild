@@ -5,7 +5,7 @@ EAPI=7
 
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
-KFMIN=5.63.0
+KFMIN=5.69.0
 QTMIN=5.12.3
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
@@ -15,7 +15,7 @@ HOMEPAGE="https://kdenlive.org/en/"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="freesound gles2-only semantic-desktop share v4l"
 
 BDEPEND="
@@ -29,6 +29,7 @@ DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5[gles2-only=]
 	>=dev-qt/qtmultimedia-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
@@ -55,7 +56,7 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
-	>=media-libs/mlt-6.18.0[ffmpeg,frei0r,kdenlive,melt,qt5,sdl,xml]
+	>=media-libs/mlt-6.20.0[ffmpeg,frei0r,kdenlive,melt,qt5,sdl,xml]
 	freesound? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 	semantic-desktop? ( >=kde-frameworks/kfilemetadata-${KFMIN}:5 )
 	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
@@ -63,12 +64,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
-	virtual/ffmpeg[encode,sdl,X]
+	media-video/ffmpeg[encode,sdl,X]
 "
-
-RESTRICT+=" test" # segfaults, bug 684132
-
-PATCHES=( "${FILESDIR}"/${P}-qt-5.14-crash-on-close-{1,2}.patch ) # 20.04 branch
 
 src_configure() {
 	local mycmakeargs=(
