@@ -16,7 +16,7 @@ SRC_URI="https://github.com/maxrd2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="5"
 KEYWORDS="amd64 x86"
-IUSE="gstreamer libav mpv unicode xine"
+IUSE="gstreamer mpv unicode xine"
 
 BDEPEND="
 	sys-devel/gettext
@@ -43,8 +43,7 @@ DEPEND="
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
-	libav? ( media-video/libav:= )
-	!libav? ( media-video/ffmpeg:0= )
+	media-video/ffmpeg:0=
 	mpv? ( media-video/mpv[libmpv] )
 	unicode? ( dev-libs/icu:= )
 	xine? (
