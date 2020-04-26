@@ -20,7 +20,7 @@ RDEPEND=">=dev-libs/libltdl-2:0
 	alsa? ( media-libs/alsa-lib )
 	cache? ( >=sys-libs/db-4:= )
 	curl? ( net-misc/curl )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	flac? ( media-libs/flac )
 	jack? ( media-sound/jack-audio-connection-kit )
 	libsamplerate? ( media-libs/libsamplerate )
