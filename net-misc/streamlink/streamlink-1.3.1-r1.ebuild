@@ -41,7 +41,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	media-video/rtmpdump
-	virtual/ffmpeg
+	media-video/ffmpeg
 "
 BDEPEND="
 	$(python_gen_cond_dep '
