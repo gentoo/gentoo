@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,8 +38,6 @@ src_prepare() {
 
 	# remove bundled nodejs
 	rm -r node || die
-	sed -i 's@\(^NODE="\).*@\1/usr/bin/node"@g' \
-		bin/kibana || die
 
 	# move optimize/plugins to /var/lib/kibana
 	rm -r optimize plugins || die
