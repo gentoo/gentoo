@@ -93,8 +93,9 @@ python_prepare_all() {
 	# Conch doesn't work with latest >=OpenSSH 7.6
 	#   - https://twistedmatrix.com/trac/ticket/9311
 	#   - https://twistedmatrix.com/trac/ticket/9515
-	rm src/twisted/conch/test/test_conch.py || die "rm src/twisted/conch/test/test_conch.py FAILED"
-	rm src/twisted/conch/test/test_cftp.py || die "rm src/twisted/conch/test/test_cftp.py FAILED"
+	rm src/twisted/conch/test/test_ckeygen.py || die
+	rm src/twisted/conch/test/test_conch.py || die
+	rm src/twisted/conch/test/test_cftp.py || die
 
 	# puts system in EMFILE state, then the exception handler may fail
 	# trying to open more files due to some gi magic
