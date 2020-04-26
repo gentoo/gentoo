@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="https://www.exit1.org/dvdrip/dist/${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="ffmpeg fping libav mplayer ogg subtitles vcd vorbis xine xvid"
+IUSE="ffmpeg fping mplayer ogg subtitles vcd vorbis xine xvid"
 
 DEPEND=">=dev-perl/Event-ExecFlow-0.64
 	>=dev-perl/Event-RPC-0.89
@@ -24,10 +24,7 @@ DEPEND=">=dev-perl/Event-ExecFlow-0.64
 RDEPEND="${DEPEND}
 	x11-libs/gdk-pixbuf:2[jpeg]
 	x11-libs/gtk+:2
-	ffmpeg? (
-		libav? ( media-video/libav )
-		!libav? ( media-video/ffmpeg:0 )
-	)
+	ffmpeg? ( media-video/ffmpeg:0 )
 	fping? ( >=net-analyzer/fping-2.2 )
 	mplayer? ( media-video/mplayer )
 	ogg? ( media-sound/ogmtools )
@@ -54,9 +51,6 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-fix_parallel_make.patch
 	# Fix default device for >=udev-180 wrt #224559
 	sed -i -e 's:/dev/dvd:/dev/cdrom:' lib/Video/DVDRip/Config.pm || die
-
-	# Ubuntu patch for supporting libav
-	use libav && epatch "${FILESDIR}"/${P}-libav.patch
 }
 
 src_install() {

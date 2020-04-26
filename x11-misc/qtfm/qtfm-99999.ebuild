@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	sys-apps/file
 	dbus? ( dev-qt/qtdbus:5 )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	imagemagick? ( >=media-gfx/imagemagick-7:= )
 "
 DEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 
 DEPEND="media-libs/raspberrypi-userland
 		media-video/vdr
-		virtual/ffmpeg"
+		media-video/ffmpeg"
 
 src_prepare() {
 	sed -i "${S}"/Makefile -e '/LDFLAGS.*VCLIBDIR/s/$/ -Wl,--no-as-needed/' || die "sed failed"

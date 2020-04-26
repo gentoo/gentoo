@@ -53,7 +53,7 @@ pkg_pretend() {
 		elog
 	fi
 
-	if { has_version media-video/ffmpeg[x264] || has_version media-video/libav[x264] ; } && has_version media-libs/x264[10bit] ; then
+	if has_version media-video/ffmpeg[x264] && has_version media-libs/x264[10bit] ; then
 		ewarn
 		ewarn "media-libs/x264 is currently built with 10bit useflag."
 		ewarn "This is known to prevent simplescreenrecorder from recording x264 videos"
@@ -82,12 +82,6 @@ multilib_src_configure() {
 		-DWITH_JACK="$(multilib_native_usex jack)"
 		-DWITH_GLINJECT="true"
 	)
-
-	# libav doesn't have AVFrame::channels
-	# https://github.com/MaartenBaert/ssr/issues/195#issuecomment-45646159
-	if has_version media-video/libav ; then
-		mycmakeargs+=( -DENABLE_FFMPEG_VERSIONS="false" )
-	fi
 
 	if multilib_is_native_abi ; then
 		mycmakeargs+=(

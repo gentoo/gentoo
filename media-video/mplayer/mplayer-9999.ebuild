@@ -196,12 +196,6 @@ pkg_setup() {
 		ewarn "mplayer for this system. Also, if your compile fails, try"
 		ewarn "disabling this use flag."
 	fi
-
-	if has_version 'media-video/libav' ; then
-		ewarn "Please note that upstream uses media-video/ffmpeg."
-		ewarn "media-video/libav should be fine in theory but if you"
-		ewarn "experience any problem, try to move to media-video/ffmpeg."
-	fi
 }
 
 src_unpack() {

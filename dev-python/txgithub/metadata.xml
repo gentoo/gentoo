@@ -13,5 +13,4 @@
 		<remote-id type="pypi">txgithub</remote-id>
 		<remote-id type="github">tomprince/txgithub</remote-id>
 	</upstream>
-	<longdescription>txgithub is a library based on Twisted for accessing GitHub's API version 3</longdescription>
 </pkgmetadata>

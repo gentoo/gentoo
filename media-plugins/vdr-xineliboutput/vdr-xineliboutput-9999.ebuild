@@ -26,7 +26,7 @@ COMMON_DEPEND="
 
 	xine? (
 		( >=media-libs/xine-lib-1.2
-			virtual/ffmpeg )
+			media-video/ffmpeg )
 		fbcon? ( jpeg? ( virtual/jpeg:* ) )
 		X? (
 			x11-libs/libX11

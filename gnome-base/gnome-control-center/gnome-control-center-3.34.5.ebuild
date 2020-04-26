@@ -53,7 +53,7 @@ DEPEND="
 		>=media-video/cheese-3.28.0 )
 	ibus? ( >=app-i18n/ibus-1.5.2 )
 	networkmanager? (
-		>=gnome-extra/nm-applet-1.8.0
+		>=net-libs/libnma-1.8.0
 		>=net-misc/networkmanager-1.12.0:=[modemmanager]
 		>=net-misc/modemmanager-0.7.990 )
 	bluetooth? ( >=net-wireless/gnome-bluetooth-3.18.2:= )
