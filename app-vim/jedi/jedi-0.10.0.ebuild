@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit vim-plugin python-any-r1
 
@@ -15,12 +15,12 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-DEPEND="
+RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/jedi[${PYTHON_USEDEP}]')
-	"
-RDEPEND="app-editors/vim[python]"
-BDEPEND="test? ( dev-python/pytest )"
+	app-editors/vim[python]"
+BDEPEND="${PYTHON_DEPS}
+	test? ( dev-python/pytest )"
 
 S="${WORKDIR}/jedi-vim-${PV}"
 
