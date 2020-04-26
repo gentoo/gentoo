@@ -14,14 +14,12 @@ SRC_URI="https://gitlab.com/rastersoft/${PN}/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libav"
 
 RDEPEND="dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3
 	|| ( media-video/vlc media-video/mpv media-video/mplayer )
-	!libav? ( media-video/ffmpeg )
-	libav? ( media-video/libav )
+	media-video/ffmpeg
 	media-video/dvdauthor
 	media-video/vcdimager
 	virtual/cdrtools
