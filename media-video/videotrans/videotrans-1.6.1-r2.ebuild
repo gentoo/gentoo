@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,17 +11,12 @@ SRC_URI="mirror://sourceforge/videotrans/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~ppc ~x86"
-
-IUSE="libav"
-
 DEPEND="
 	media-video/mplayer
 	media-video/mjpegtools[png]
 	media-video/dvdauthor
 	virtual/imagemagick-tools
-	libav? ( media-video/libav )
-	!libav? ( media-video/ffmpeg:0 )
+	media-video/ffmpeg:0
 "
 
 RDEPEND="${DEPEND}
@@ -36,6 +31,4 @@ src_prepare() {
 	# fixing LDFLAGS usage
 	sed -i -e 's|^\(LDFLAGS.*=\).*\( @LIBS@.*\)|\1\2 @LDFLAGS@|' src/Makefile.in
 
-	# Debian patch to support libav
-	use libav && epatch "${FILESDIR}"/${P}-libav.patch
 }
