@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,11 +13,9 @@ SRC_URI="https://github.com/alexkay/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libav"
 
 RDEPEND="
-	libav? ( media-video/libav:= )
-	!libav? ( media-video/ffmpeg:0= )
+	media-video/ffmpeg:0=
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 "
 DEPEND="${RDEPEND}
