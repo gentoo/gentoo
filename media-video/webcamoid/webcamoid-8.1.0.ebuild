@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,10 +16,9 @@ LICENSE="GPL-3"
 SLOT="0"
 
 IUSE_AVKYS=( alsa coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects )
-IUSE="${IUSE_AVKYS[@]} debug headers libav v4l"
+IUSE="${IUSE_AVKYS[@]} debug headers v4l"
 
 REQUIRED_USE="
-	libav? ( ffmpeg )
 	v4lutils? ( v4l )
 "
 
@@ -33,10 +32,7 @@ RDEPEND="
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)
+	ffmpeg?	( media-video/ffmpeg:= )
 	gstreamer? ( >=media-libs/gstreamer-1.6.0 )
 	jack? ( virtual/jack )
 	libuvc? ( media-libs/libuvc )

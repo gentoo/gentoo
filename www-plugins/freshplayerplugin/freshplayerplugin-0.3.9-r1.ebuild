@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,13 +10,11 @@ HOMEPAGE="https://github.com/i-rinat/freshplayerplugin"
 DESCRIPTION="PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers"
 SRC_URI="https://github.com/i-rinat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT=0
-IUSE="gles2-only jack libav libressl pulseaudio v4l vaapi vdpau"
+IUSE="gles2-only jack libressl pulseaudio v4l vaapi vdpau"
 
 KEYWORDS="amd64"
 
-HWDEC_DEPEND="
-	libav? ( media-video/libav:0=[vaapi?,vdpau?] )
-	!libav? ( media-video/ffmpeg:0=[vaapi?,vdpau?] )
+HWDEC_DEPEND="media-video/ffmpeg:0=[vaapi?,vdpau?]
 	x11-libs/libvdpau
 "
 

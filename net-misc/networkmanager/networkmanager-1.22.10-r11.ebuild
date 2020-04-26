@@ -281,7 +281,7 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	newinitd "${FILESDIR}/init.d.NetworkManager-r1" NetworkManager
+	newinitd "${FILESDIR}/init.d.NetworkManager-r2" NetworkManager
 	newconfd "${FILESDIR}/conf.d.NetworkManager" NetworkManager
 
 	# Need to keep the /etc/NetworkManager/dispatched.d for dispatcher scripts

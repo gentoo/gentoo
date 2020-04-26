@@ -16,13 +16,12 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="libav php test +youtube-dl"
+IUSE="php test +youtube-dl"
 
 # Requires an active internet connection during tests
 RESTRICT="test"
 
 RDEPEND="
-	!libav? ( media-video/ffmpeg )
 	>=dev-python/attrs-18.1.0[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.13.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
@@ -31,6 +30,7 @@ RDEPEND="
 	dev-python/progress[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	media-video/ffmpeg
 	net-misc/wget
 	php? (
 		dev-lang/php:*[bcmath,cli,curl,simplexml]
