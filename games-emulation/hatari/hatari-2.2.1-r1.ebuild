@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
-inherit cmake python-single-r1 xdg
+inherit cmake python-single-r1 xdg-utils
 
 DESCRIPTION="Atari ST emulator"
 HOMEPAGE="https://hatari.tuxfamily.org/"
