@@ -36,7 +36,7 @@ RDEPEND="server? (
 			>=media-libs/libdiscid-0.1.1
 			>=media-sound/cdparanoia-3.9.8 )
 		curl? ( >=net-misc/curl-7.15.1 )
-		ffmpeg? ( virtual/ffmpeg )
+		ffmpeg? ( media-video/ffmpeg )
 		flac? ( media-libs/flac )
 		fluidsynth? ( media-sound/fluidsynth )
 		ices? ( media-libs/libogg
@@ -44,7 +44,7 @@ RDEPEND="server? (
 			media-libs/libvorbis )
 		jack? ( virtual/jack )
 		mac? ( media-sound/mac )
-		mms? ( virtual/ffmpeg
+		mms? ( media-video/ffmpeg
 			>=media-libs/libmms-0.3 )
 		modplug? ( media-libs/libmodplug )
 		mad? ( media-libs/libmad )
