@@ -4853,7 +4853,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r1: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 1.10.17-r2 2.9.0 2.11.0: C++ crypto library
+dev-libs/botan 1.10.17-r2 2.9.0 2.11.0 2.14.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
@@ -17336,7 +17336,7 @@ sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloa
 sys-kernel/gentoo-kernel 5.4.32 5.4.34 5.4.35 5.5.19 5.6.6 5.6.7: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.34 5.4.35 5.5.19 5.6.6 5.6.7: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.9.217 4.9.218 4.9.219 4.9.220 4.14.174 4.14.175 4.14.176 4.14.177 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.5.15 5.5.16 5.5.17 5.5.18 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7: Full sources including the Gentoo patchset for the 5.6 kernel tree
-sys-kernel/git-sources 5.7_rc1 5.7_rc2: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.4: Kernel config generator
