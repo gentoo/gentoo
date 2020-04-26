@@ -34,8 +34,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-2.11.2-Makefile-docinstall.patch
 )
 
-DOCS=( AUTHORS CHANGES* COMPAT NEW README* )
-
 src_prepare() {
 	default
 
