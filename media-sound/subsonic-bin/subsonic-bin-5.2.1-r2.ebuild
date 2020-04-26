@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ IUSE="ffmpeg lame selinux"
 DEPEND=""
 RDEPEND="virtual/jre
 	lame? ( media-sound/lame )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	selinux? ( sec-policy/selinux-subsonic )"
 
 S="${WORKDIR}/"
