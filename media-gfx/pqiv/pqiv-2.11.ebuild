@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,17 +17,14 @@ HOMEPAGE="https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="archive ffmpeg imagemagick kernel_linux libav pdf postscript webp"
+IUSE="archive ffmpeg imagemagick kernel_linux pdf postscript webp"
 
 RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=x11-libs/cairo-1.6
 	x11-libs/gtk+:3
 	archive? ( app-arch/libarchive:0= )
-	ffmpeg? (
-		!libav? ( media-video/ffmpeg:0= )
-		libav? ( media-video/libav:0= )
-	)
+	ffmpeg? ( media-video/ffmpeg:0= )
 	imagemagick? ( media-gfx/imagemagick:0= )
 	pdf? ( app-text/poppler:0= )
 	postscript? ( app-text/libspectre:0= )
@@ -51,7 +48,7 @@ pkg_setup() {
 src_configure() {
 	local backends="gdkpixbuf"
 	use archive && backends+=",archive,archive_cbx"
-	use ffmpeg || use libav && backends+=",libav"
+	use ffmpeg && backends+=",libav"
 	use imagemagick && backends+=",wand"
 	use pdf && backends+=",poppler"
 	use postscript && backends+=",spectre"
