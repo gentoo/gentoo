@@ -64,7 +64,7 @@ DEPEND="
 		>=media-libs/libcddb-1.2.1
 	)
 	cue? ( media-libs/libcue:= )
-	ffmpeg? ( >=virtual/ffmpeg-0.7.3 )
+	ffmpeg? ( >=media-video/ffmpeg-0.7.3 )
 	flac? (
 		>=media-libs/flac-1.2.1-r1
 		>=media-libs/libvorbis-1.0

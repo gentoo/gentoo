@@ -10,18 +10,20 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious-plugins.git"
 else
 	SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify libsamplerate
-	lirc mms modplug mp3 nls opengl pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme http jack
+	lame libav libnotify libsamplerate lirc mms modplug mp3 nls opengl
+	pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch streamtuner
+	vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio qtmedia sdl )
-	ampache? ( qt5 http ) qtmedia? ( qt5 )"
+	ampache? ( http ) streamtuner? ( http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -50,7 +52,10 @@ DEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib
 	dev-libs/libxml2:2
-	~media-sound/audacious-${PV}[qt5=]
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	~media-sound/audacious-${PV}
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
@@ -61,7 +66,7 @@ DEPEND="
 		>=media-libs/libcddb-1.2.1
 	)
 	cue? ( media-libs/libcue:= )
-	ffmpeg? ( >=virtual/ffmpeg-0.7.3 )
+	ffmpeg? ( >=media-video/ffmpeg-0.7.3 )
 	flac? (
 		>=media-libs/flac-1.2.1-r1
 		>=media-libs/libvorbis-1.0
@@ -79,18 +84,8 @@ DEPEND="
 	mms? ( >=media-libs/libmms-0.3 )
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
+	opengl? ( dev-qt/qtopengl:5 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
-	!qt5? (
-		x11-libs/gtk+:2
-		x11-libs/libXcomposite
-		x11-libs/libXrender
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		opengl? ( dev-qt/qtopengl:5 )
-	)
 	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
@@ -98,6 +93,7 @@ DEPEND="
 	sndfile? ( >=media-libs/libsndfile-1.0.17-r1 )
 	soxr? ( media-libs/soxr )
 	speedpitch? ( media-libs/libsamplerate:= )
+	streamtuner? ( dev-qt/qtnetwork:5 )
 	vorbis? (
 		>=media-libs/libogg-1.1.3
 		>=media-libs/libvorbis-1.2.0
@@ -108,6 +104,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_setup() {
+	use mp3 || ewarn "MP3 support is optional, you may want to enable the mp3 USE-flag"
+}
+
 src_prepare() {
 	default
 	if ! use nls; then
@@ -117,12 +117,13 @@ src_prepare() {
 }
 
 src_configure() {
-	use mp3 || ewarn "MP3 support is optional, you may want to enable the mp3 USE-flag"
-
 	local myeconfargs=(
 		--enable-mpris2
+		--enable-qt
 		--enable-songchange
 		--disable-adplug # not packaged
+		--disable-gtk
+		--disable-openmpt # not packaged
 		--disable-oss4
 		--disable-coreaudio
 		--disable-sndio
@@ -146,11 +147,8 @@ src_configure() {
 		$(use_enable modplug)
 		$(use_enable mp3 mpg123)
 		$(use_enable nls)
+		$(use_enable opengl qtglspectrum)
 		$(use_enable pulseaudio pulse)
-		$(use_enable !qt5 aosd)
-		$(use_enable !qt5 gtk)
-		$(use_enable !qt5 hotkey)
-		$(use_enable qt5 qt)
 		$(use_enable qtmedia qtaudio)
 		$(use_enable scrobbler scrobbler2)
 		$(use_enable sdl sdlout)
@@ -158,11 +156,11 @@ src_configure() {
 		$(use_enable sndfile)
 		$(use_enable soxr)
 		$(use_enable speedpitch)
+		$(use_enable streamtuner)
 		$(use_enable vorbis)
 		$(use_enable wavpack)
 		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
 	)
-	use qt5 && myeconfargs+=( $(usex opengl --enable-qtglspectrum --disable-qtglspectrum) )
 
 	econf "${myeconfargs[@]}"
 }
