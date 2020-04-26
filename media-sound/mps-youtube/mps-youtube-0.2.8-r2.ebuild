@@ -22,6 +22,6 @@ SLOT="0"
 
 RDEPEND="
 	dev-python/pafy[${PYTHON_USEDEP}]
-	virtual/ffmpeg
+	media-video/ffmpeg
 	|| ( media-video/mpv media-video/mplayer )
 "
