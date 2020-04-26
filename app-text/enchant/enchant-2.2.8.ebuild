@@ -32,9 +32,11 @@ src_configure() {
 		--disable-static \
 		$(use_with aspell) \
 		$(use_with hunspell) \
-		--without-hspell \
 		--without-nuspell \
+		--without-hspell \
 		--without-voikko \
+		--without-applespell \
+		--without-zemberek \
 		--with-hunspell-dir="${EPREFIX}"/usr/share/hunspell/
 }
 
