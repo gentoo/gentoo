@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TO DO:
@@ -57,7 +57,7 @@ DEPEND="
 	dev-php/pecl-apcu:*
 	sys-auth/polkit
 	sys-libs/zlib
-	virtual/ffmpeg
+	media-video/ffmpeg
 	virtual/httpd-php:*
 	virtual/jpeg:0
 	virtual/perl-ExtUtils-MakeMaker
