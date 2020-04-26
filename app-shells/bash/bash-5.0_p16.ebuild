@@ -56,7 +56,6 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!<sys-apps/portage-2.1.6.7_p1
 "
 # we only need yacc when the .y files get patched (bash42-005)
 #DEPEND+=" virtual/yacc"
@@ -222,12 +221,12 @@ src_install() {
 	if use examples ; then
 		for d in examples/{functions,misc,scripts,startup-files} ; do
 			exeinto /usr/share/doc/${PF}/${d}
-			insinto /usr/share/doc/${PF}/${d}
+			docinto /usr/share/doc/${PF}/${d}
 			for f in ${d}/* ; do
 				if [[ ${f##*/} != PERMISSION ]] && [[ ${f##*/} != *README ]] ; then
 					doexe ${f}
 				else
-					doins ${f}
+					dodoc ${f}
 				fi
 			done
 		done
