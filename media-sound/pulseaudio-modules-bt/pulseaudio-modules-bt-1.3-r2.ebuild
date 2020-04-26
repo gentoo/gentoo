@@ -1,10 +1,10 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit cmake-utils readme.gentoo-r1
 
-DESCRIPTION="PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth (alongside SBC and native+ofono headset)"
+DESCRIPTION="PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth"
 HOMEPAGE="https://github.com/EHfive/pulseaudio-modules-bt"
 
 PULSE_VER="13.0"
@@ -20,7 +20,7 @@ IUSE="fdk +ffmpeg +ldac +native-headset ofono-headset"
 
 DEPEND="
 	fdk? ( media-libs/fdk-aac:0= )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	media-libs/sbc
 	ldac? ( media-libs/libldac )
 	>=net-wireless/bluez-5
