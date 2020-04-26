@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=media-libs/libdv
+DESCRIPTION=Extract info or subtitles from DV stream
+EAPI=7
+HOMEPAGE=http://dv2sub.sourceforge.net/
+IUSE=kino
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=media-libs/libdv kino? ( media-video/kino media-video/dvdauthor media-video/ffmpeg )
+SLOT=0
+SRC_URI=mirror://sourceforge/dv2sub/dv2sub-0.3.tar.gz
+_md5_=396e766affe4efa75d3726c90fec0f86

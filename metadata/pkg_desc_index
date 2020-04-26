@@ -466,7 +466,7 @@ app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.44: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.5.3 2.5.4 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
-app-admin/kpcli 3.3: A command line interface to KeePass database files
+app-admin/kpcli 3.3 3.4: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.6.3 0.7.1: Fast way to switch between clusters and namespaces in kubectl
 app-admin/lastpass-binary-component 4.19.0-r1: Binary component required by the LastPass Password Manager browser extension
@@ -882,7 +882,7 @@ app-crypt/kencfs-plasma 2.0.2_alpha: GUI frontend for encfs
 app-crypt/keybase 4.4.2 4.5.0 4.7.0 4.7.2 5.1.1 9999: Client for keybase.io
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
-app-crypt/libb2 0.98.1-r1 0.98.1-r2: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
+app-crypt/libb2 0.98.1-r2 0.98.1-r3: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
 app-crypt/libmd 1.0.0 1.0.0-r1 1.0.1 99999: Message Digest functions from BSD systems
 app-crypt/libnitrokey 3.5 9999: Support library for the Nitrokey
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
@@ -2396,7 +2396,7 @@ app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various co
 app-officeext/texmaths 0.48: LaTeX Equation Editor for LibreOffice
 app-pda/barry 0.18.3: Sync, backup, program management, and charging for BlackBerry devices
 app-pda/dynamite 0.1.1_p20120512: A tool for decompressing data compressed with PKWARE Data Compression Library
-app-pda/gnupod 0.99.8-r1: A collection of Perl-scripts for iPod
+app-pda/gnupod 0.99.8-r2: A collection of Perl-scripts for iPod
 app-pda/gtkpod 2.1.5: A graphical user interface to the Apple productline
 app-pda/ideviceinstaller 1.1.0: A tool to interact with the installation_proxy of an Apple's iDevice
 app-pda/ifuse 1.1.3: Mount Apple iPhone/iPod Touch file systems for backup purposes
@@ -5987,7 +5987,7 @@ dev-perl/EV 4.220.0: Perl interface to libev, a high performance full-featured e
 dev-perl/Emacs-PDE 0.2.16-r2: Perl Develop Environment in Emacs
 dev-perl/Email-Abstract 3.8.0: unified interface to mail representations
 dev-perl/Email-Address 1.912.0: RFC 2822 Address Parsing and Creation
-dev-perl/Email-Address-List 0.50.0 0.60.0: RFC close address list parsing
+dev-perl/Email-Address-List 0.60.0: RFC close address list parsing
 dev-perl/Email-Address-XS 1.10.0: Parse and format RFC 2822 email addresses and groups
 dev-perl/Email-Date 1.104.0-r1 1.104.0-r2: Find and Format Date Headers
 dev-perl/Email-Date-Format 1.5.0: Produce RFC 822 date strings
@@ -6583,7 +6583,7 @@ dev-perl/PBKDF2-Tiny 0.5.0-r1: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HM
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
 dev-perl/PDF-API2 2.33.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Create 1.430.0: Create PDF documents in Perl
-dev-perl/PDL 2.17.0: Perl Data Language for scientific computing
+dev-perl/PDL 2.17.0-r1: Perl Data Language for scientific computing
 dev-perl/PDL-Graphics-Gnuplot 2.11.0-r1: Gnuplot-based plotting for PDL
 dev-perl/PDL-Transform-Color 1.3.0: Useful color system conversions for PDL
 dev-perl/PGPLOT 2.210.0-r1: allow subroutines in the PGPLOT graphics library to be called from Perl
@@ -7479,7 +7479,7 @@ dev-python/asynctest 0.12.2: Enhance the standard unittest with features for tes
 dev-python/atomicwrites 1.3.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
 dev-python/attrs 19.3.0: Attributes without boilerplate
-dev-python/audioread 2.1.8-r1: Wrapper for audio file decoding using FFmpeg or GStreamer
+dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.1.1 1.2.0: Parse and generate Authentication-Results headers
 dev-python/autobahn 17.5.1-r2 18.3.1: WebSocket and WAMP for Twisted and Asyncio
@@ -8042,7 +8042,7 @@ dev-python/mongomock 3.19.0: Library to help testing Python code that interacts 
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/more-itertools 5.0.0 7.0.0: More routines for operating on iterables, beyond itertools
 dev-python/moto 1.3.8-r1: Mock library for boto
-dev-python/moviepy 1.0.1: Video editing with Python
+dev-python/moviepy 1.0.1-r1: Video editing with Python
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.24.0: Mock object framework for Python
 dev-python/mpi4py 3.0.2: Message Passing Interface for Python
@@ -10844,7 +10844,7 @@ games-arcade/pachi 1.0: platform game inspired by games like Manic Miner and Jet
 games-arcade/pacmanarena 0.15-r1: 3D Pacman clone with a few surprises. Rockets, bombs and explosions abound
 games-arcade/penguin-command 1.6.11-r1: A clone of the classic Missile Command game
 games-arcade/pengupop 2.2.5-r1: Networked multiplayer-only Puzzle Bubble clone
-games-arcade/performous 1.1-r1: SingStar GPL clone
+games-arcade/performous 1.1-r2: SingStar GPL clone
 games-arcade/primateplunge 1.1-r2: Help poor Monkey navigate his way down through treacherous areas
 games-arcade/retrobattle 1.0.0-r1: A NES-like platform arcade game
 games-arcade/ri-li 2.0.1-r1: Drive a toy wood engine and collect all the coaches
@@ -11026,7 +11026,7 @@ games-engines/odamex 0.8.2: Online multiplayer free software engine for DOOM
 games-engines/openmw 0.45.0: Open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0_p20180317 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 3.0.0: Multimedia interpreter for TADS text adventures
-games-engines/renpy 6.99.12.4-r3: Visual novel engine written in python
+games-engines/renpy 6.99.12.4-r4: Visual novel engine written in python
 games-engines/residualvm 0.2.1-r1 0.3.1-r2 9999: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 games-engines/scummvm 2.1.0: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 1.8.0-r1 2.0.0-r1: utilities for the SCUMM game engine
@@ -11730,7 +11730,7 @@ kde-apps/kdegraphics-mobipocket 19.12.3 20.04.0: Library to support mobipocket e
 kde-apps/kdemultimedia-meta 19.12.3 20.04.0: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 19.12.3 20.04.0: SMB filesharing config module for systemsettings
 kde-apps/kdenetwork-meta 19.12.3 20.04.0: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 19.12.3-r2 20.04.0: Non-linear video editing suite by KDE
+kde-apps/kdenlive 19.12.3-r3 20.04.0-r1: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 19.12.3 20.04.0: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 19.12.3 20.04.0: Libraries for KDE PIM applications
 kde-apps/kdepim-meta 19.12.3 20.04.0: KDE PIM - merge this to pull in all kdepim-derived packages
@@ -12090,12 +12090,12 @@ mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.13.5: A small but very powerful text-based mail client
-mail-client/neomutt 20180716 20191102 20191111 20191129 20191207 20200313 20200320 20200417 99999999: A small but very powerful text-based mail client
+mail-client/neomutt 20180716 20191102 20191111 20191129 20191207 20200313 20200320 20200417 20200424 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1 1.4.2 1.4.3: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1 68.7.0: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1-r1 68.7.0-r1: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.7.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
@@ -12414,7 +12414,7 @@ media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encod
 media-gfx/aaphoto 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
 media-gfx/ahoviewer 1.6.5-r1: A GTK2 image viewer, manga reader, and booru browser
-media-gfx/album 4.13-r1 4.15: HTML photo album generator
+media-gfx/album 4.13-r2 4.15-r1: HTML photo album generator
 media-gfx/alembic 1.7.9 1.7.11-r1: Open framework for storing and sharing scene data
 media-gfx/apng2gif 1.8: create a GIF from an APNG
 media-gfx/apngasm 2.91: create an APNG from multiple PNG files
@@ -12667,7 +12667,7 @@ media-libs/aribb24 1.0.3 1.0.3-r1 1.0.3-r2: Library for decoding ARIB STD-B24 su
 media-libs/assimp 4.0.1 4.0.1-r1 4.1.0 5.0.0: Importer library to import assets from 3D files
 media-libs/aubio 0.4.7-r1 0.4.8 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
-media-libs/avidemux-core 2.7.3 2.7.4: Core libraries for simple video cutting, filtering and encoding tasks
+media-libs/avidemux-core 2.7.3-r1 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
 media-libs/babl 0.1.62 0.1.66 0.1.74 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.0.4 1.0.4-r1 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
@@ -12802,7 +12802,7 @@ media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Micros
 media-libs/libepoxy 1.5.4 9999: Library for handling OpenGL function pointer management
 media-libs/libexif 0.6.21-r3: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
-media-libs/libextractor 1.9: Library to extract metadata from files of arbitrary type
+media-libs/libextractor 1.9-r1: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
 media-libs/libffado 2.4.1-r1: Driver for IEEE1394 (Firewire) audio interfaces
 media-libs/libfishsound 1.0.0: Simple programming interface to decode and encode audio with vorbis or speex
@@ -13048,7 +13048,7 @@ media-plugins/alsa-plugins 1.2.1 1.2.2: ALSA extra plugins
 media-plugins/alsaequal 0.7.1: A real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/ams-lv2 1.1.0 1.2.1: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
-media-plugins/audacious-plugins 3.10.1-r1 4.0.2 9999: Lightweight and versatile audio player
+media-plugins/audacious-plugins 3.10.1-r2 4.0.2-r1 9999: Lightweight and versatile audio player
 media-plugins/calf 0.90.3 9999: A set of open source instruments and effects for digital audio workstations
 media-plugins/caps-plugins 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
 media-plugins/fil-plugins 0.3.0-r1: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
@@ -13311,7 +13311,7 @@ media-plugins/vdr-vdrmanager 0.14: VDR Plugin: remote programming VDR using VDR-
 media-plugins/vdr-vompserver 0.4.1 0.4.1-r1 0.5.1: VDR Plugin: server part for MediaMVP device
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
 media-plugins/vdr-wirbelscan 0.0.7-r1 2018.11.04-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
-media-plugins/vdr-xineliboutput 2.1.0 2.2.0 9999: VDR Plugin: Xinelib PlugIn
+media-plugins/vdr-xineliboutput 2.1.0-r1 2.2.0-r1 9999: VDR Plugin: Xinelib PlugIn
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
 media-plugins/xbmc-addon-xvdr 9999: XBMC addon: add VDR (http://www.tvdr.de/) as a TV/PVR Backend
 media-plugins/xsynth-dssi 0.9.2 0.9.4: A software synthesizer plugin for the DSSI Soft Synth Interface
@@ -13346,7 +13346,7 @@ media-radio/xlog 2.0.15 2.0.17: An amateur radio logging program
 media-radio/xwxapt 3.4.2: GTK+ linux weather satellite APT image decoder software
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 9 9999: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
-media-sound/abcde 2.9.3: Command line CD encoder
+media-sound/abcde 2.9.3-r1: Command line CD encoder
 media-sound/abcm2ps 8.14.4 8.14.6: Program to convert abc files to Postscript files
 media-sound/abcmidi 2020.01.22: Programs for processing ABC music notation files
 media-sound/aeolus 0.9.7: A synthesised pipe organ emulator
@@ -13490,7 +13490,7 @@ media-sound/jackbeat 0.7.6: An audio sequencer for Linux
 media-sound/jalv 1.6.4: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/justeport 0.2: Stream audio to your AirPort Express
-media-sound/kid3 3.8.2: Simple tag editor based on Qt
+media-sound/kid3 3.8.2-r1: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1 3.100-r2: LAME Ain't an MP3 Encoder
@@ -13517,7 +13517,7 @@ media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
 media-sound/milkytracker 1.0.0: FastTracker 2 inspired music tracker
 media-sound/mixxx 2.2.3-r2 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
-media-sound/moc 2.5.2 2.6_alpha3: Music On Console - ncurses interface for playing audio files
+media-sound/moc 2.5.2-r1 2.6_alpha3-r1: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.3: libmodplug based module players modplug123 and modplugplay
 media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist management
 media-sound/mp32ogg 0.11-r6: A perl script to convert MP3 files to Ogg Vorbis files
@@ -13545,7 +13545,7 @@ media-sound/mpfc 1.3.8.1-r2: Music Player For Console
 media-sound/mpg123 1.25.10-r1 1.25.12 1.25.13: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
-media-sound/mps-youtube 0.2.8-r1 9999: Terminal-based YouTube player and downloader
+media-sound/mps-youtube 0.2.8-r2 9999: Terminal-based YouTube player and downloader
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
 media-sound/mumble 1.3.0 9999: Mumble is an open source, low-latency, high quality voice chat software
@@ -13593,7 +13593,7 @@ media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.66: CLI utility to control PulseAudio volume
-media-sound/pulseaudio-modules-bt 1.3-r1 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth (alongside SBC and native+ofono headset)
+media-sound/pulseaudio-modules-bt 1.3-r2 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
 media-sound/pulseeffects 4.7.2 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.0 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
@@ -13654,7 +13654,7 @@ media-sound/spotify 1.0.72-r1 1.1.10-r1 1.1.26: Spotify is a social music platfo
 media-sound/strawberry 0.6.8 0.6.9 9999: Modern music player and library organizer based on Clementine and Qt
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
-media-sound/subsonic-bin 5.2.1-r1: Subsonic is a complete, personal media streaming solution
+media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
 media-sound/substract_wave 0.3-r1: substracts 2 mono wave files from each other by a factor specified on the command line
 media-sound/supercollider 3.10.2: An environment and a programming language for real time audio synthesis.
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
@@ -13706,10 +13706,10 @@ media-sound/wildmidi 0.3.13: Midi processing library and a midi player using the
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.3.0: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
-media-sound/xmms2 0.8_p20161122-r5 0.8_p20161122-r7: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
+media-sound/xmms2 0.8_p20161122-r6 0.8_p20161122-r8: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
-media-sound/xwax 1.6: Digital vinyl emulation software
+media-sound/xwax 1.6-r1: Digital vinyl emulation software
 media-sound/yarock 1.4.0: Qt-based music player
 media-sound/yoshimi 1.7.0.1: Software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
@@ -13759,12 +13759,12 @@ media-video/cclive 0.9.3-r2: Command line tool for extracting videos from variou
 media-video/celluloid 0.16 0.18 0.19: A simple GTK+ frontend for mpv
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
 media-video/cheese 3.34.0-r1: A cheesy program to take pictures and videos from your webcam
-media-video/cinelerra 2.3: The most advanced non-linear video editor and compositor
+media-video/cinelerra 2.3-r1: The most advanced non-linear video editor and compositor
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpvts 1.2-r1: raw copy title sets from a DVD to your harddisc
 media-video/devedeng 4.15.0 4.16.0: DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)
 media-video/dirac 1.0.2-r1: Open Source video codec
-media-video/dv2sub 0.3: Extract info or subtitles from DV stream
+media-video/dv2sub 0.3-r1: Extract info or subtitles from DV stream
 media-video/dvbackup 0.0.4-r2: A small utility for creating backups on DV tapes
 media-video/dvbsnoop 1.4.50-r1: DVB/MPEG stream analyzer program
 media-video/dvd9to5 0.1.7: Perl script to backup the main feature of a DVD-9 on DVD-5
@@ -13772,7 +13772,7 @@ media-video/dvd_info 1.1: DVD utilities to print information, copy tracks, etc.
 media-video/dvdauthor 0.7.1-r1 0.7.2-r2: Tools for generating DVD files to be played on standalone DVD players
 media-video/dvdbackup 0.4.2: Backup content from DVD to hard disk
 media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to check for errors
-media-video/dvdrip 0.98.11-r3 0.98.11-r4: dvd::rip is a graphical frontend for transcode
+media-video/dvdrip 0.98.11-r4: dvd::rip is a graphical frontend for transcode
 media-video/dvdstyler 3.0.4: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
@@ -13787,12 +13787,12 @@ media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and 
 media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
 media-video/gpac 0.7.1-r1 9999: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13-r3: Movie collection manager
-media-video/guvcview 2.0.6: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
+media-video/guvcview 2.0.6-r1: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
 media-video/gxine 0.5.907-r1 0.5.909: GTK+ Front-End for libxine
 media-video/h264enc 10.4.7-r1: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 media-video/handbrake 1.2.2-r3 1.3.0-r2 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
 media-video/harvid 0.8.0 0.8.1 0.8.2: HTTP Ardour Video Daemon
-media-video/imagination 3.0-r1: Simple DVD slideshow maker
+media-video/imagination 3.0-r2: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.18: Media player with digital TV support by KDE
@@ -13823,7 +13823,7 @@ media-video/mplay-sh 0.5.3-r1: mplayer wrapper script as backend for vdr-mplayer
 media-video/mplayer 1.3.0-r6 9999: Media Player for Linux
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
 media-video/mpv 0.32.0-r1 9999: Media player based on MPlayer and mplayer2
-media-video/noad 0.8.6-r3 0.8.6-r4: Mark commercial breaks in VDR recordings
+media-video/noad 0.8.6-r5 0.8.6-r6: Mark commercial breaks in VDR recordings
 media-video/nvidia-video-codec 7.0.1 7.1.9 8.0.14 8.2.16: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 24.0.5 25.0.3 9999: Software for Recording and Streaming Live Video Content
@@ -13840,7 +13840,7 @@ media-video/pitivi 0.999-r1: A non-linear video editor using the GStreamer multi
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r1 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 9999: A Qt-based video player, which can play most formats and codecs
-media-video/raspberrypi-omxplayer 0_p20160217 0_p20160528 0_p20160528-r1 9999: Command line media player for the Raspberry Pi
+media-video/raspberrypi-omxplayer 0_p20160217-r1 0_p20160528-r2 0_p20160528-r3 9999: Command line media player for the Raspberry Pi
 media-video/rav1e 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg video/audio files
@@ -13870,8 +13870,8 @@ media-video/syncplay 1.5.0 1.5.1 9999: Client/server to synchronize media playba
 media-video/tcmplex-panteltje 0.4.7-r1: Audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
 media-video/totem 3.34.1: Media player for GNOME
-media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
-media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
+media-video/tovid 0.35.2-r2: A collection of DVD authoring tools
+media-video/transcode 1.1.7-r4: Utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
 media-video/unifi-video 3.10.10 3.10.11: UniFi Video Server
@@ -13881,7 +13881,7 @@ media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vcsi 7: Create thumbnail sheets from video files
 media-video/vdr 2.2.0-r5 2.2.0-r6 2.4.1-r2 2.4.1-r3: Video Disk Recorder - turns a pc into a powerful set top box for DVB
-media-video/vdr2jpeg 0.1.9-r1 0.2.0 0.2.0-r1: Addon needed for XXV - WWW Admin for the Video Disk Recorder
+media-video/vdr2jpeg 0.1.9-r2 0.2.0 0.2.0-r1: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrsync 0.1.3_pre050322-r1 0.1.3_pre050322-r2: converting vdr-recordings to mpeg2, dvd or other similar formats
 media-video/vdrtools-genindex 0.1.3-r1 0.1.3-r2: VDR: genindex Script
 media-video/videotrans 1.6.1-r2: A package to convert movies to DVD format and to build DVDs with
@@ -14606,7 +14606,7 @@ net-libs/ortp 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/osptoolkit 4.13.0: Open Settlement Protocol development kit
 net-libs/pacparser 1.3.7: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
-net-libs/pjproject 2.7.1 2.7.2-r1 2.9-r1: Open source SIP, Media, and NAT Traversal Library
+net-libs/pjproject 2.7.1-r1 2.7.2-r2 2.9-r2: Open source SIP, Media, and NAT Traversal Library
 net-libs/quasselc 0_p20170111: API for accessing Quassel using C
 net-libs/quiche 0.1.0_alpha4_p20190912 0.1.0-r1 0.2.0 0.3.0 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 0.9.3-r2 1.2.0 9999: A cross-platform C++ XMPP client library based on the Qt framework
@@ -15012,7 +15012,7 @@ net-misc/sslh 1.20 9999: Port multiplexer - accept both HTTPS and SSH connection
 net-misc/sstp-client 1.0.10-r1 1.0.12: A client implementation of Secure Socket Tunneling Protocol (SSTP)
 net-misc/ssvnc 1.0.29-r2: VNC viewer that adds encryption security to VNC connections
 net-misc/stargazer 2.408-r1: Billing system for small home and office networks
-net-misc/streamlink 1.3.0-r1 1.3.1 9999: CLI for extracting streams from websites to a video player of your choice
+net-misc/streamlink 1.3.0-r2 1.3.1-r1 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/stunnel 5.50-r1 5.55 5.56-r1: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.15: Open source implementation of the STUN protocol
@@ -15061,7 +15061,7 @@ net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with Op
 net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
-net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
+net-misc/you-get 0.4.536-r1 0.4.1270-r1 0.4.1355-r1: utility to download media contents from the web
 net-misc/youtube-dl 2020.03.24 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
@@ -15136,7 +15136,7 @@ net-p2p/nicotine+ 1.4.1-r2: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.2.1 4.2.3 4.2.5 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
-net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
+net-p2p/retroshare 0.6.3-r2 0.6.4-r1 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
 net-p2p/syncthing 1.3.4-r1 1.4.2: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
@@ -15240,7 +15240,7 @@ net-vpn/networkmanager-libreswan 1.2.12: NetworkManager libreswan plugin
 net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.10-r1 1.8.10-r2: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8-r1 1.2.8-r2: NetworkManager PPTP VPN plugin
-net-vpn/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
+net-vpn/networkmanager-sstp 1.2.0-r1: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-vpn/networkmanager-strongswan 1.4.5-r1 1.4.5-r2: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6-r1 1.2.6-r2: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard plugin
@@ -16064,7 +16064,7 @@ sci-libs/oce 0.18.3-r1: Development platform for CAD/CAE, 3D surface/solid model
 sci-libs/octomap 1.9.0 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openblas 0.3.6 0.3.7 0.3.9: Optimized BLAS library based on GotoBLAS2
-sci-libs/opencascade 7.4.0: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
+sci-libs/opencascade 7.4.0-r1: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.5.4 0.7.0: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.3.1-r1 1.4.0 9999: Kinematics and Dynamics Library (KDL)
@@ -16123,7 +16123,7 @@ sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse librar
 sci-libs/umfpack 5.6.2 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 9999: Votca tools library
-sci-libs/vtk 8.1.0-r5: The Visualization Toolkit
+sci-libs/vtk 8.1.0-r6: The Visualization Toolkit
 sci-libs/xdmf2 1.0_p141226-r3: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1 1.1.4: Library to read gromacs trajectory and topology files
 sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System
@@ -16275,7 +16275,7 @@ sci-visualization/labplot 2.7.0 9999: Scientific data analysis and visualisation
 sci-visualization/nonolith-connect 1.1: CEE (Control - Experiment - Explore) analog multitool
 sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
-sci-visualization/paraview 5.8.0-r2: Powerful scientific data visualization application
+sci-visualization/paraview 5.8.0-r3: Powerful scientific data visualization application
 sci-visualization/pythonprop 0.29: Scripts to prepare and plot VOACAP propagation predictions
 sci-visualization/pyxplot 0.9.2-r3: Gnuplot like graphing program publication-quality figures
 sci-visualization/quickplot 0.10.6 0.10.8 1.0.1_rc: A fast interactive 2D plotter
@@ -17840,7 +17840,7 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 68.7.0 75.0: Firefox Web Browser
+www-client/firefox 52.9.0-r1 68.7.0-r1 75.0-r1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.7.0 75.0: Firefox Web Browser
 www-client/google-chrome 81.0.4044.122: The web browser from Google
 www-client/google-chrome-beta 83.0.4103.14: The web browser from Google
@@ -17860,7 +17860,7 @@ www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.8.3 1.10.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.49.5-r1 2.53.1: Seamonkey Web Browser
+www-client/seamonkey 2.49.5-r2 2.53.1-r1: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
@@ -17889,7 +17889,7 @@ www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10 3.6.10-r1: WWW Admin for the Video Di
 www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
-www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
+www-misc/zoneminder 1.30.4-r2: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.363: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
 www-plugins/chrome-binary-plugins 81.0.4044.122 83.0.4103.14_beta 84.0.4115.5_alpha: Binary plugins from Google Chrome for use in Chromium
@@ -17904,7 +17904,7 @@ www-servers/apache 2.4.41 2.4.43: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
 www-servers/caddy 0.10.11: Fast, cross-platform HTTP/2 web server with automatic HTTPS
-www-servers/cherokee 1.2.104-r1: An extremely fast and tiny web server
+www-servers/cherokee 1.2.104-r2: An extremely fast and tiny web server
 www-servers/civetweb 1.11: Embedded C/C++ web server
 www-servers/fnord 1.11-r1: Yet another small httpd
 www-servers/gatling 0.15: High performance web server
@@ -18856,7 +18856,7 @@ x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12 0.13 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13 0.15: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
-x11-wm/xpra 3.0.2 3.0.5: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 3.0.2-r1 3.0.5-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.1 4.15.2: Unified widget and session management libs for Xfce

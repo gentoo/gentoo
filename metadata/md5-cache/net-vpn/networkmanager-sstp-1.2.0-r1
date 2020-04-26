@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/glib-2.32:2 net-misc/sstp-client >=net-misc/networkmanager-1.1.0 net-dialup/ppp:= gtk? ( >=x11-libs/gtk+-3.4:3 >=net-libs/libnma-1.1.0 app-crypt/libsecret ) dev-util/gdbus-codegen virtual/pkgconfig sys-devel/gettext dev-util/intltool
+DESCRIPTION=Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/sstp-client/
+IUSE=gtk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.32:2 net-misc/sstp-client >=net-misc/networkmanager-1.1.0 net-dialup/ppp:= gtk? ( >=x11-libs/gtk+-3.4:3 >=net-libs/libnma-1.1.0 app-crypt/libsecret )
+SLOT=0
+SRC_URI=mirror://sourceforge/project/sstp-client/network-manager-sstp/1.2.0/NetworkManager-sstp-1.2.0.tar.bz2
+_md5_=1bc4c5342c4e6f0a7ca66d53dc3e1fca

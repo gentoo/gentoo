@@ -1,0 +1,15 @@
+BDEPEND=doc? ( virtual/latex-base )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/readline:0= data? ( sci-mathematics/pari-data ) doc? ( X? ( x11-misc/xdg-utils ) ) fltk? ( x11-libs/fltk:1= ) gmp? ( dev-libs/gmp:0= ) X? ( x11-libs/libX11:0= )
+DESCRIPTION=Computer-aided number theory C library and tools
+EAPI=7
+HOMEPAGE=https://pari.math.u-bordeaux.fr/
+IUSE=data doc fltk gmp test threads X
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=sys-libs/readline:0= data? ( sci-mathematics/pari-data ) doc? ( X? ( x11-misc/xdg-utils ) ) fltk? ( x11-libs/fltk:1= ) gmp? ( dev-libs/gmp:0= ) X? ( x11-libs/libX11:0= )
+RESTRICT=!test? ( test )
+SLOT=0/6
+SRC_URI=https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.11.4.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=b625d9b349d049681d429ec89778caa4

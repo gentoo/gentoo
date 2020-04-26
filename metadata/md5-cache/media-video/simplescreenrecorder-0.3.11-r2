@@ -11,4 +11,4 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 m
 SLOT=0
 SRC_URI=https://github.com/MaartenBaert/ssr/archive/0.3.11.tar.gz -> simplescreenrecorder-0.3.11.tar.gz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	cmake-multilib	b396704c8c04bb210b7b45dff5c67fea	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a33c8ad3242773b833293251c735864a
+_md5_=d14f5234fcbcb6784280c6891fdff10a
