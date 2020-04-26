@@ -17,7 +17,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="libav test"
+IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Requires an active internet connection during tests,
@@ -25,7 +25,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
-	!libav? ( media-video/ffmpeg )
+	media-video/ffmpeg
 	net-misc/wget
 	$(python_gen_cond_dep '
 		>=dev-python/attrs-18.1.0[${PYTHON_MULTI_USEDEP}]
