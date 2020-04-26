@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
-IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame libav cpu_flags_x86_mmx opengl png static-libs vorbis X x264"
+IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame cpu_flags_x86_mmx opengl png static-libs vorbis X x264"
 
 RDEPEND="
 	sys-libs/zlib
@@ -23,10 +23,7 @@ RDEPEND="
 	)
 	alsa? ( >=media-libs/alsa-lib-1.0.20 )
 	dv? ( >=media-libs/libdv-1.0.0-r3[${MULTILIB_USEDEP}] )
-	ffmpeg? (
-		libav? ( >=media-video/libav-12:0=[${MULTILIB_USEDEP}] )
-		!libav? ( >=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}] )
-	)
+	ffmpeg? ( >=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:2 )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	lame? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
