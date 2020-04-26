@@ -1056,9 +1056,9 @@ sys-devel/automake:1.10
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-5.4
 <sys-libs/glibc-2.29
-<sys-devel/binutils-2.32-r1
-<sys-devel/binutils-hppa64-2.32-r1
-<sys-libs/binutils-libs-2.32-r1
+<sys-devel/binutils-2.33.1-r1
+<sys-devel/binutils-hppa64-2.33.1
+<sys-libs/binutils-libs-2.33.1-r1
 
 # Michał Górny <mgorny@gentoo.org> (2017-05-20)
 # Old versions of CUDA and their reverse dependencies. They do not
