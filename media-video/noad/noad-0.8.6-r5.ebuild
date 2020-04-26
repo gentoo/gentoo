@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="+ffmpeg imagemagick libmpeg2"
 
 RDEPEND="
 	libmpeg2? ( media-libs/libmpeg2:= )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	imagemagick? ( media-gfx/imagemagick )
 	!media-plugins/vdr-markad"
 DEPEND="${RDEPEND}

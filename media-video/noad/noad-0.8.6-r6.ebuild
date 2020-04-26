@@ -17,7 +17,7 @@ IUSE="+ffmpeg imagemagick libmpeg2"
 
 RDEPEND="
 	libmpeg2? ( media-libs/libmpeg2:= )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	imagemagick? ( media-gfx/imagemagick )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
