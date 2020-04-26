@@ -454,6 +454,9 @@ src_prepare() {
 		keeplibs+=( third_party/openh264 )
 		keeplibs+=( third_party/re2 )
 		keeplibs+=( third_party/snappy )
+		if use system-icu; then
+			keeplibs+=( third_party/icu )
+		fi
 	fi
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
