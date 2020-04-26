@@ -8213,7 +8213,7 @@ dev-python/piexif 1.0.12 1.1.3: Exif manipulation with pure Python
 dev-python/pika 0.10.0 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.8.3: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
-dev-python/pillow 6.2.1 6.2.2 7.0.0 7.1.1: Python Imaging Library (fork)
+dev-python/pillow 6.2.1 6.2.2 7.0.0 7.1.1 7.1.2: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 9.0.1-r2 19.3.1-r2 20.0.2: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2018.11.26: Python Development Workflow for Humans
@@ -8449,7 +8449,7 @@ dev-python/pytest-helpers-namespace 2019.1.8-r1: Provides a helpers pytest names
 dev-python/pytest-html 1.22.1: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 1.0.0: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-lazy-fixture 0.6.2: It helps to use fixtures in pytest.mark.parametrize
-dev-python/pytest-localserver 0.3.7 0.5.0: Py.test plugin to test server connections locally
+dev-python/pytest-localserver 0.3.7 0.5.0 0.5.0-r1: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
 dev-python/pytest-mock 1.11.2 2.0.0 3.0.0 3.1.0: Thin-wrapper around the mock package for easier use with pytest
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
@@ -16651,7 +16651,7 @@ sys-apps/haveged 1.9.2-r1 1.9.4 1.9.8 1.9.8c: A simple entropy daemon using the 
 sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.56 9.58: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715-r3: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.47.10 1.47.12 1.47.13: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.10 1.47.12 1.47.13 1.47.14: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
