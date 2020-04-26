@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
+# static-pie works on x86, #719444
+sys-libs/glibc -static-pie
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
 # Encrypted Media Extensions (eme-free) can be disabled on x86
 www-client/firefox -eme-free
@@ -150,10 +154,6 @@ x11-wm/awesome doc
 # Alexis Ballier <aballier@gentoo.org> (2017-01-31)
 # nvidia drivers are unmasked here
 media-video/ffmpeg -nvenc
-
-# Luca Barbato <lu_zero@gentoo.org> (2017-01-22)
-# cuda is not available on x86 nvidia-video-codec depends on it
-media-video/libav nvidia
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2016-12-31)
 # on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-14)

@@ -80,7 +80,6 @@ media-gfx/imagemagick raw
 # media-video/faac is not stable.
 # media-libs/{libdc1394,x264} is not stable.
 # media-libs/game-music-emu is not stable.
-media-video/libav faac ieee1394 x264
 media-video/ffmpeg gme ieee1394 x264
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-06)
