@@ -26,6 +26,10 @@
 		<bugs-to>https://github.com/saimn/sigal/issues</bugs-to>
 	</upstream>
 	<use>
+		<flag name="brotli">Enables the brotli compression algorithm.</flag>
+		<flag name="crypt">Enables file encryption support.</flag>
+		<flag name="rss">Enables RSS/Atom feed support.</flag>
 		<flag name="s3">Enables support for the Amazon S3 service.</flag>
+		<flag name="zopfli">Enables zopfli compression support.</flag>
 	</use>
 </pkgmetadata>
