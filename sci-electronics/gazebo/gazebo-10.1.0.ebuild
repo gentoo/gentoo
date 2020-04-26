@@ -13,7 +13,7 @@ LICENSE="Apache-2.0"
 # Subslot = major version = soname of libs
 SLOT="0/10"
 KEYWORDS="~amd64"
-IUSE="cpu_flags_x86_sse2 libav test"
+IUSE="cpu_flags_x86_sse2 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -29,8 +29,7 @@ RDEPEND="
 	<dev-games/ogre-1.10
 	>=media-libs/freeimage-3.15.4[png]
 	sci-libs/libccd
-	libav? ( >=media-video/libav-9:0= )
-	!libav? ( >=media-video/ffmpeg-2.6:0= )
+	>=media-video/ffmpeg-2.6:0=
 	sci-libs/gts
 	>=sci-physics/bullet-2.82
 	>=dev-libs/sdformat-6.0:=
