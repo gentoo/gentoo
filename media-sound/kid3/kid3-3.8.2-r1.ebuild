@@ -34,7 +34,7 @@ DEPEND="
 	sys-libs/readline:0=
 	acoustid? (
 		media-libs/chromaprint
-		virtual/ffmpeg
+		media-video/ffmpeg
 	)
 	flac? (
 		media-libs/flac[cxx]
