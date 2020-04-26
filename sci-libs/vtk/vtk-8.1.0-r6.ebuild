@@ -66,7 +66,7 @@ RDEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 	)
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	gdal? ( sci-libs/gdal )
 	java? ( >=virtual/jdk-1.7:* )
 	mysql? ( virtual/mysql )
