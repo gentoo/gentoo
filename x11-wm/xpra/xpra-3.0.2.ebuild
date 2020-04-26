@@ -14,7 +14,7 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+client +clipboard csc cups dbus dec_avcodec2 enc_ffmpeg enc_x264 enc_x265 jpeg libav +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
+IUSE="+client +clipboard csc cups dbus dec_avcodec2 enc_ffmpeg enc_x264 enc_x265 jpeg +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( || ( server client ) )
@@ -33,25 +33,13 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXrandr
 	x11-libs/libXtst
 	x11-libs/libxkbfile
-	csc? (
-		!libav? ( >=media-video/ffmpeg-1.2.2:0= )
-		libav? ( media-video/libav:0= )
-	)
-	dec_avcodec2? (
-		!libav? ( >=media-video/ffmpeg-2:0=[x264,x265] )
-		libav? ( media-video/libav:0=[x264,x265] )
-	)
-	enc_ffmpeg? (
-		!libav? ( >=media-video/ffmpeg-3.2.2:0= )
-		libav? ( media-video/libav:0= )
-	)
+	csc? ( >=media-video/ffmpeg-1.2.2:0= )
+	dec_avcodec2? ( >=media-video/ffmpeg-2:0=[x264,x265] )
+	enc_ffmpeg? ( >=media-video/ffmpeg-3.2.2:0= )
 	enc_x264? ( media-libs/x264
-		!libav? ( >=media-video/ffmpeg-1.0.4:0=[x264] )
-		libav? ( media-video/libav:0=[x264] )
-	)
+	>=media-video/ffmpeg-1.0.4:0=[x264] )
 	enc_x265? ( media-libs/x265
-		!libav? ( >=media-video/ffmpeg-2:0=[x264] )
-		libav? ( media-video/libav:0=[x264] ) )
+	>=media-video/ffmpeg-2:0=[x264] )
 	jpeg? ( media-libs/libjpeg-turbo )
 	opengl? ( dev-python/pyopengl )
 	pulseaudio? ( media-sound/pulseaudio )
