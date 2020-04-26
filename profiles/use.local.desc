@@ -3406,7 +3406,6 @@ gnome-extra/libgsf:gtk - Enable use of gdk in thumbnailer
 gnome-extra/nemo:packagekit - Use packagekit to search for programs to open unknown file types
 gnome-extra/nemo:tracker - Add support for app-misc/tracker search
 gnome-extra/nm-applet:gcr - Enable advanced certificate chooser, requires app-crypt/gcr
-gnome-extra/nm-applet:gtk - Enable legacy library libnm-gtk
 gnome-extra/nm-applet:lto - Enable link time optimization
 gnome-extra/nm-applet:modemmanager - Enable support for mobile broadband devices using net-misc/modemmanager
 gnome-extra/nm-applet:teamd - Enable teamd configuration editor
@@ -4968,32 +4967,6 @@ media-video/handbrake:nvenc - Adds support for NVIDIA Encoder (NVENC) API for ha
 media-video/handbrake:x265 - Support for encoding h265 using media-libs/x265.
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
-media-video/libav:aac - Use external vo-aacenc library for AAC encoding
-media-video/libav:amr - Enable Adaptive Multi-Rate Audio support
-media-video/libav:armv5te - Enable optimizations for armv5te processors
-media-video/libav:armv6 - Enable optimizations for armv6 processors
-media-video/libav:armv6t2 - Enable optimizations for armv6t2 processors
-media-video/libav:armvfp - Enable VFP optimizations for ARM processors
-media-video/libav:bs2b - Enable media-libs/libbs2b based Bauer stereo-to-binaural audio filter
-media-video/libav:cdio - Enable audio CD grabbing with dev-libs/libcdio.
-media-video/libav:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs).
-media-video/libav:faac - Use external faac library for AAC encoding
-media-video/libav:fdk - Use external fdk-aac library for AAC encoding and decoding
-media-video/libav:frei0r - Enable frei0r wrapping in libavfilter
-media-video/libav:gpl - Build all GPL licensed code. Without this flag set the package is build under LGPL license.
-media-video/libav:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
-media-video/libav:network - Enable network streaming support.
-media-video/libav:nvidia - Enable nvidia video codec hardware acceleration support.
-media-video/libav:openssl - Prefer dev-libs/openssl over net-libs/gnutls to provide SSL/TLS support (notice: the resulting binaries are unredistributable).
-media-video/libav:opus - Use the external opus library for encoding and decoding.
-media-video/libav:pic - Force shared libraries to be built as PIC (this is slower).
-media-video/libav:pulseaudio - Enable pulseaudio input support.
-media-video/libav:rtmp - Enable Real Time Messaging Protocol using librtmp instead the native implementation.
-media-video/libav:ssl - Enable SSL/TLS support using dev-libs/openssl or net-libs/gnutls.
-media-video/libav:tools - Build and install small tools like aviocat, cws2fws, graph2dot, ismindex, qt-faststart.
-media-video/libav:twolame - Enable MP2 encoding via media-sound/twolame as an alternative to the internal encoder
-media-video/libav:vpx - Enable vp8 encoding support using media-libs/libvpx.
-media-video/libav:x265 - Enable HEVC encoding with media-libs/x265.
 media-video/libva-utils:drm - Enables VA/DRM API support.
 media-video/mjpegtools:sdlgfx - Enables y4mhist to display a graphical histogram
 media-video/mjpg-streamer:input-control - Plugin giving ability to control camera movement (only specific cameras)
@@ -6924,7 +6897,6 @@ net-vpn/ipsec-tools:nat - Enable NAT-Traversal
 net-vpn/ipsec-tools:rc5 - Enable support for the patented RC5 algorithm
 net-vpn/ipsec-tools:stats - Enable statistics reporting
 net-vpn/libreswan:dnssec - Use DNSSEC resolver (requires net-dns/unbound)
-net-vpn/networkmanager-strongswan:glib - Enable libnm-glib compatibility.
 net-vpn/ocserv:otp - Enable support for one-time passwords
 net-vpn/openconnect:gssapi - Build GSSAPI support
 net-vpn/openconnect:libproxy - Enable proxy support

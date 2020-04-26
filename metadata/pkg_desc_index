@@ -7126,7 +7126,7 @@ dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protoc
 dev-perl/XS-Object-Magic 0.40.0-r3: Opaque, extensible XS pointer backed objects using sv_magic
 dev-perl/YAML 1.150.0 1.240.0 1.260.0-r1: YAML Ain't Markup Language (tm)
 dev-perl/YAML-LibYAML 0.690.0: Perl YAML Serialization using XS and libyaml
-dev-perl/YAML-PP 0.18.0: YAML 1.2 processor in perl
+dev-perl/YAML-PP 0.18.0 0.18.0-r1: YAML 1.2 processor in perl
 dev-perl/YAML-Syck 1.300.0 1.310.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0 1.730.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
@@ -11560,7 +11560,7 @@ gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when file
 gnome-extra/nautilus-dropbox 2019.02.14: Dropbox Nautilus Extension
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
 gnome-extra/nemo 4.0.6: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.8.24 1.8.25: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.8.24-r1 1.8.25: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/pch-session 3.32.0 3.34.3: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
@@ -13800,7 +13800,6 @@ media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.18: Media player with digital TV support by KDE
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b-r3: Video player plugin for Konqueror and basic MPlayer frontend
-media-video/libav 12.3 13_pre20171219 9999: Complete solution to record, convert and stream audio and video
 media-video/libva-utils 2.4.0 9999: Collection of utilities and tests for VA-API
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6-r1: USB Video Class grabber
@@ -15240,11 +15239,11 @@ net-vpn/networkmanager-fortisslvpn 1.2.8-r2: NetworkManager Fortinet SSLVPN comp
 net-vpn/networkmanager-l2tp 1.8.0 1.8.2: NetworkManager L2TP plugin
 net-vpn/networkmanager-libreswan 1.2.12: NetworkManager libreswan plugin
 net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
-net-vpn/networkmanager-openvpn 1.8.10-r1 1.8.10-r2: NetworkManager OpenVPN plugin
-net-vpn/networkmanager-pptp 1.2.8-r1 1.2.8-r2: NetworkManager PPTP VPN plugin
+net-vpn/networkmanager-openvpn 1.8.10-r2: NetworkManager OpenVPN plugin
+net-vpn/networkmanager-pptp 1.2.8-r2: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0-r1: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-vpn/networkmanager-strongswan 1.4.5-r1 1.4.5-r2: NetworkManager StrongSwan plugin
-net-vpn/networkmanager-vpnc 1.2.6-r1 1.2.6-r2: NetworkManager VPNC plugin
+net-vpn/networkmanager-strongswan 1.4.5-r2: NetworkManager StrongSwan plugin
+net-vpn/networkmanager-vpnc 1.2.6-r2: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/ocserv 1.0.0: Openconnect SSL VPN server
