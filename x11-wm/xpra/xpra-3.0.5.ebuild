@@ -14,7 +14,7 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+client +clipboard csc cups dbus ffmpeg jpeg libav +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
+IUSE="+client +clipboard csc cups dbus ffmpeg jpeg +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
@@ -32,14 +32,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXrandr
 	x11-libs/libXtst
 	x11-libs/libxkbfile
-	csc? (
-		!libav? ( >=media-video/ffmpeg-1.2.2:0= )
-		libav? ( media-video/libav:0= )
-	)
-	ffmpeg? (
-		!libav? ( >=media-video/ffmpeg-3.2.2:0=[x264,x265] )
-		libav? ( media-video/libav:0=[x264,x265] )
-	)
+	csc? ( >=media-video/ffmpeg-1.2.2:0= )
+	ffmpeg? ( >=media-video/ffmpeg-3.2.2:0=[x264,x265] )
 	jpeg? ( media-libs/libjpeg-turbo )
 	opengl? ( dev-python/pyopengl )
 	pulseaudio? ( media-sound/pulseaudio )
