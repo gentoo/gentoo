@@ -92,6 +92,7 @@ acct-group/netbox 0: System group: netbox
 acct-group/netdata 0: System group: netdata
 acct-group/netdev 0: group for netdev (avahi)
 acct-group/neutron 0: System group: neutron
+acct-group/ngircd 0: Group for ngircd (IRC daemon)
 acct-group/node_exporter 0: System group: node_exporter
 acct-group/nofiles 0: System group: nofiles
 acct-group/nova 0: System group: nova
@@ -266,6 +267,7 @@ acct-user/nagios 0: System user: nagios
 acct-user/netbox 0: user for netbox
 acct-user/netdata 0: user for netdata
 acct-user/neutron 0: user for the openstack neutron service
+acct-user/ngircd 0: User for ngircd (IRC daemon)
 acct-user/node_exporter 0: node_exporter User
 acct-user/nova 0: user for the openstack nova service
 acct-user/nsd 0: user for nsd daemon
@@ -478,7 +480,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.14.0 3.15.1 3.16.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.1.2: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 5.6.15 6.8.4 7.2.0 7.3.2 7.4.1 7.5.2 7.6.1: Tool for managing events and logs
+app-admin/logstash-bin 5.6.15 6.8.8 7.6.2: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2 2.2.3: Live Syncing (Mirror) Daemon
@@ -758,7 +760,7 @@ app-benchmarks/libc-bench 20110206: Time and memory-efficiency tests of various 
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
-app-benchmarks/siege 4.0.4: A HTTP regression testing and benchmarking utility
+app-benchmarks/siege 4.0.4 4.0.5: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
 app-benchmarks/stress-ng 0.11.03: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.19 9999: System performance benchmark
@@ -2211,7 +2213,7 @@ app-misc/openastro 1.1.56: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.8: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.5 1.2.6: ELF utils that can check files for security relevant properties
-app-misc/pdfpc 4.3.0 4.3.2: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 4.3.0 4.4.0: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6: Simple command-line snippet manager
 app-misc/pfm 2.12.3-r1: A terminal-based file manager written in Perl
@@ -11112,7 +11114,7 @@ games-misc/bsd-games 2.17-r5: collection of games from NetBSD
 games-misc/bsod 0.1-r1: This program will let you experience the authentic Microsoft Windows experience
 games-misc/c++robots 0-r1: ongoing 'King of the Hill' (KotH) tournament
 games-misc/cowsay 3.04: Configurable talking ASCII cow (and other characters)
-games-misc/doge 3.5.0: wow very terminal doge
+games-misc/doge 3.6.0: wow very terminal doge
 games-misc/exult-sound 0-r2: Sound data for games-engines/exult
 games-misc/fortune-mod 1.99.1-r2: The notorious fortune program
 games-misc/fortune-mod-all 4: Meta package for all fortune-mod packages
@@ -12143,7 +12145,7 @@ mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rmilter 1.9.2 1.10.0 1.10.0-r1 1.10.0-r2 9999: Another sendmail milter for different mail checks
 mail-filter/rspamd 2.3 2.4 2.5 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
-mail-filter/sieve-connect 0.87-r1: Sieve Command Line Interface
+mail-filter/sieve-connect 0.87-r1 0.90: Sieve Command Line Interface
 mail-filter/sigh 1607.1.2 1607.1.6: S/MIME signing milter
 mail-filter/spamassassin 3.4.4: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
@@ -12647,8 +12649,8 @@ media-gfx/xpaint 2.10.2: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r2: graphical scanning frontend
 media-gfx/xv 3.10a-r19: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
-media-gfx/yafaray 3.3.0-r2: A free open-source montecarlo raytracing engine
-media-gfx/zbar 0.23-r1: Library and tools for reading barcodes from images or video
+media-gfx/yafaray 3.4.1: A free open-source montecarlo raytracing engine
+media-gfx/zbar 0.23-r1 0.23.1: Library and tools for reading barcodes from images or video
 media-gfx/zgv 5.9: A svgalib console image viewer
 media-libs/Field3D 1.7.2: A library for storing voxel data
 media-libs/SoXt 1.3.0-r1: GUI binding for using Coin/Open Inventor with Xt/Motif
@@ -14382,7 +14384,7 @@ net-im/spectrum2 2.0.12-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958 1.3.00.5153: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.0.1-r1 2.1.0: Official desktop client for Telegram
-net-im/telegram-desktop-bin 1.9.21 2.0.1: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.9.21 2.0.1 2.1.0: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.4 5.16.5: An account manager and channel dispatcher for the Telepathy framework
@@ -14418,7 +14420,7 @@ net-irc/kvirc 5.2_pre20190628041642 5.2_pre20191202122540 9999: Advanced IRC Cli
 net-irc/limnoria 20191123 99999999: Python based extensible IRC infobot and channel bot
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/nebula 0.5: An IRC client for X11 and Motif
-net-irc/ngircd 23-r1 24: An IRC server written from scratch
+net-irc/ngircd 24 25: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
@@ -14720,7 +14722,7 @@ net-mail/sendEmail 1.56-r1 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r4: A serialmail is a collection of tools for passing mail across serial links
 net-mail/signify 1.14: A (semi-)random e-mail signature rotator
 net-mail/smtptools 0.2.3: A collection of tools to send or receive mails with SMTP
-net-mail/swaks 20130209.0-r1: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
+net-mail/swaks 20130209.0-r1 20190914.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
 net-mail/tnef 1.4.18: Decodes MS-TNEF MIME attachments
 net-mail/tpop3d 1.5.5 1.5.5-r1: An extensible POP3 server with vmail-sql/MySQL support
@@ -17794,7 +17796,7 @@ www-apps/jekyll-sass-converter 1.5.2: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.13.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 2.2.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
-www-apps/kibana-bin 5.6.16 6.7.1 6.8.4 7.2.0 7.3.2 7.4.1 7.5.2 7.6.1: Analytics and search dashboard for Elasticsearch
+www-apps/kibana-bin 5.6.16 6.8.8 7.6.2: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
@@ -18645,8 +18647,8 @@ x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and 
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2 3.34.2: The Gnome Terminal
 x11-terms/guake 3.3.2-r1 3.6.3-r1 3.7.0 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.15.1 0.16.0-r1 0.16.0-r2 0.16.0-r3 0.17.2-r1 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
-x11-terms/kitty-terminfo 0.16.0 0.17.2 9999: Terminfo for kitty, an OpenGL-based terminal emulator
+x11-terms/kitty 0.15.1 0.16.0-r1 0.16.0-r2 0.16.0-r3 0.17.2-r1 0.17.3 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty-terminfo 0.16.0 0.17.2 0.17.3 9999: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.0 1.22.1 1.24.0: The MATE Terminal

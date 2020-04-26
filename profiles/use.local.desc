@@ -5940,6 +5940,8 @@ net-irc/kvirc:dcc_video - Support video connections over DCC protocol
 net-irc/kvirc:phonon - Support Phonon for audio output
 net-irc/limnoria:crypt - Enables user authentication with GPG
 net-irc/ngircd:ident - Enables support for net-libs/libident
+net-irc/ngircd:irc-plus - Enables support for the IRC+ protocol (needs virtual/libiconv)
+net-irc/ngircd:strict-rfc - Strict RFC compliance; may harm compatibility
 net-irc/psybnc:multinetwork - Adds support for multiple networks
 net-irc/psybnc:oidentd - Adds support for oidentd
 net-irc/psybnc:scripting - Adds scripting support
