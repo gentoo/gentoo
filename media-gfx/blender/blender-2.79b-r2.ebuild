@@ -21,7 +21,7 @@ SLOT="0"
 LICENSE="|| ( GPL-2 BL )"
 KEYWORDS="amd64 ~x86"
 IUSE="+bullet +dds +elbeem +game-engine +openexr collada color-management \
-	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
+	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k \
 	llvm man ndof nls openal opencl openimageio openmp opensubdiv openvdb \
 	osl player sdl sndfile test tiff valgrind"
 RESTRICT="!test? ( test )"
@@ -53,7 +53,6 @@ RDEPEND="${PYTHON_DEPS}
 	color-management? ( media-libs/opencolorio )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?] )
-	libav? ( >=media-video/libav-11.3:=[x264,mp3,encode,theora,jpeg2k?] )
 	fftw? ( sci-libs/fftw:3.0= )
 	!headless? (
 		x11-libs/libX11
