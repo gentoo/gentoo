@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=(python3_6)
+PYTHON_COMPAT=(python{3_6,3_7})
 
 inherit eutils distutils-r1
 
@@ -18,5 +18,5 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	${PYTHON_DEPS}
-	virtual/ffmpeg
+	media-video/ffmpeg
 "
