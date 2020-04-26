@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils ltprune
-
 MY_PN="NetworkManager-sstp"
 MY_P="${MY_PN}-${PV}"
 
@@ -17,17 +15,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
-RDEPEND=">=dev-libs/dbus-glib-0.74
+RDEPEND="
+	>=dev-libs/glib-2.32:2
 	net-misc/sstp-client
-	>=net-misc/networkmanager-${PV}
+	>=net-misc/networkmanager-1.1.0
 	net-dialup/ppp:=
 	gtk? (
-		x11-libs/gtk+:3
+		>=x11-libs/gtk+-3.4:3
+		>=net-libs/libnma-1.1.0
 		app-crypt/libsecret
 	)
 "
 
 DEPEND="${RDEPEND}
+	dev-util/gdbus-codegen
 	virtual/pkgconfig
 	sys-devel/gettext
 	dev-util/intltool
@@ -42,10 +43,11 @@ src_configure() {
 		--disable-static \
 		--with-dist-version=Gentoo \
 		--with-pppd-plugin-dir="${EPREFIX}/usr/$(get_libdir)/pppd/${PPPD_VERSION}" \
-		 $(use_with gtk gnome)
+		 $(use_with gtk gnome) \
+		 --without-libnm-glib
 }
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -type f -name '*.la' -delete || die
 }
