@@ -12,7 +12,6 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc x86 ~amd64-linux ~x86-linux"
-
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -20,7 +19,9 @@ RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}] )"
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
+	)"
 
 python_test() {
 	# -s unbreaks some tests
