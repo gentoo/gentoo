@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	dev-libs/libpcre
 	>=sys-libs/zlib-1.1.4-r1
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	geoip? ( dev-libs/geoip )
 	ldap? ( net-nds/openldap )
 	mysql? ( dev-db/mysql-connector-c:0= )
