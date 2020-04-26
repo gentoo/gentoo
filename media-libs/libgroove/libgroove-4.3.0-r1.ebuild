@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,11 +12,10 @@ SRC_URI="https://github.com/andrewrk/libgroove/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="MIT"
 SLOT="0/4"
 KEYWORDS="~amd64"
-IUSE="+chromaprint libav +loudness +sound static-libs"
+IUSE="+chromaprint +loudness +sound static-libs"
 
 DEPEND="
-	libav? ( media-video/libav:= )
-	!libav? ( media-video/ffmpeg:= )
+	media-video/ffmpeg:=
 	chromaprint? ( media-libs/chromaprint:= )
 	loudness? ( media-libs/libebur128:=[speex(+)] )
 	sound? ( media-libs/libsdl2[sound] )"
