@@ -39,6 +39,7 @@ DEPEND="
 	media-libs/gst-plugins-base:1.0
 	networkmanager? (
 		>=net-misc/networkmanager-1.10.4:=[introspection]
+		net-libs/libnma[introspection]
 		>=app-crypt/libsecret-0.18
 		dev-libs/dbus-glib )
 	systemd? ( >=sys-apps/systemd-31
