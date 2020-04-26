@@ -56,7 +56,7 @@ RDEPEND="
 		dev-python/PyQt5
 		dev-qt/qtgui:5[-gles2-only]
 	)
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg )
 	mpi? ( virtual/mpi[cxx,romio] )
 	mysql? ( dev-db/mysql-connector-c )
 	offscreen? ( >=media-libs/mesa-18.3.6[osmesa] )
