@@ -123,7 +123,6 @@ media-video/libav -sdl
 media-video/mplayer -sdl
 media-video/mpv -sdl
 media-video/transcode -sdl
-virtual/ffmpeg -sdl
 >=x11-libs/wxGTK-3 -sdl
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2019-02-24)
