@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!--maintainer-needed-->
-	<longdescription lang="en">
-		Python bindings for Gammu
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">python-gammu</remote-id>
 		<remote-id type="github">gammu/python-gammu</remote-id>
