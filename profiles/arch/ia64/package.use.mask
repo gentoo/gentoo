@@ -346,11 +346,6 @@ dev-haskell/dataenc test
 # depends on mono/monodevelop
 >=net-irc/hexchat-2.9.4-r1 theme-manager
 
-# Agostino Sarubbo <ago@gentoo.org> (2013-02-09)
-# Mask media-video/libav[hardcoded-tables] bug #453328
-# I don't use use.mask because it works on ffmpeg
-media-video/libav hardcoded-tables
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-31)
 # remove mask when net-libs/libqmi is keyworded here
 net-misc/modemmanager qmi

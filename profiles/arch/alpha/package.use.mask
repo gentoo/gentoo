@@ -246,10 +246,6 @@ dev-libs/libpeas lua
 # Dependency not keyworded for some reason.
 media-libs/gegl umfpack
 
-# Patrick Lauer <patrick@gentoo.org> (2015-02-10)
-# Missing keywords for media-libs/x265
-media-video/libav x265
-
 # Johannes Huber <johu@gentoo.org> (2015-01-28)
 # Missing keyword on dev-libs/botan
 app-crypt/qca botan
@@ -344,10 +340,6 @@ media-libs/phonon gstreamer vlc
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-27)
 # remove mask when dev-java/fop is keyworded here
 gnome-extra/libgda reports
-
-# Luca Barbato <lu_zero@gentoo.org> (2012-11-11)
-# Libav 9 can use fdk-aac
->=media-video/libav-9_beta2 fdk
 
 # Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
