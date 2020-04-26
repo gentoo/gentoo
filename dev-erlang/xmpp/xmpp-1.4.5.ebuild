@@ -12,7 +12,7 @@ SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ia64"
 
 RDEPEND=">=dev-lang/erlang-20.0
 	>=dev-erlang/ezlib-1.0.7
