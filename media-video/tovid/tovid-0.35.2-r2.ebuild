@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ RDEPEND="app-cdr/dvd+rw-tools
 	>=media-video/mjpegtools-2.0.0
 	|| ( >=media-video/mplayer-1.0_rc4_p20110101[dvdnav] media-video/mpv[libmpv,dvdnav] )
 	sys-devel/bc
-	virtual/ffmpeg
+	media-video/ffmpeg
 	virtual/imagemagick-tools[png]"
 DEPEND="app-text/txt2tags"
 
