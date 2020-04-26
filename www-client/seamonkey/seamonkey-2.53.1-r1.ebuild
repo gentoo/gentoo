@@ -80,7 +80,7 @@ DEPEND="
 	x11-libs/libXt
 	>=x11-libs/pango-1.22.0
 	>=x11-libs/pixman-0.19.2
-	virtual/ffmpeg
+	media-video/ffmpeg
 	virtual/freedesktop-icon-theme
 	dbus? (
 		>=dev-libs/dbus-glib-0.72
