@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit autotools eutils
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.tntnet.org/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
-IUSE="doc gnutls libressl server ssl examples"
+IUSE="gnutls libressl server ssl examples"
 
 RDEPEND=">=dev-libs/cxxtools-2.2.1
 	sys-libs/zlib[minizip]
@@ -26,21 +26,28 @@ RDEPEND=">=dev-libs/cxxtools-2.2.1
 			libressl? ( dev-libs/libressl:0= )
 		)
 	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	app-arch/zip"
 
 src_prepare() {
 	# Both fixed in the next release
-	epatch "${FILESDIR}"/${PN}-2.0-zlib-minizip.patch
+	eapply "${FILESDIR}"/${PN}-2.0-zlib-minizip.patch
 	rm framework/common/{ioapi,unzip}.[ch] || die
 
+	# bug 426262
+	if has_version ">sys-devel/autoconf-2.13"; then
+		mv configure.in configure.ac
+	fi
+
 	# bug 423697
-	sed -e "s:unzip.h:minizip/unzip.h:" -i framework/defcomp/unzipcomp.cpp
+	sed -e "s:unzip.h:minizip/unzip.h:" -i framework/defcomp/unzipcomp.cpp || die
 
 	eautoreconf
 
 	sed -i -e 's:@localstatedir@:/var:' etc/tntnet/tntnet.xml.in || die
+
+	default
 }
 
 src_configure() {
@@ -68,10 +75,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	dodoc AUTHORS ChangeLog README TODO
-	if use doc; then
-		dodoc doc/*.pdf
-	fi
+	dodoc AUTHORS ChangeLog README TODO doc/tntnet.pdf
 
 	if use examples; then
 		cd "${S}/sdk/demos"
@@ -79,8 +83,8 @@ src_install() {
 		rm -rf .deps */.deps .libs */.libs
 		cd "${S}"
 
-		insinto /usr/share/doc/${PF}/examples
-		doins -r sdk/demos/*
+		docinto examples
+		dodoc -r sdk/demos/*
 	fi
 
 	if use server; then
@@ -88,5 +92,3 @@ src_install() {
 		newinitd "${FILESDIR}/tntnet.initd" tntnet
 	fi
 }
-
-# @stable ~26may2020
