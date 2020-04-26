@@ -11,7 +11,7 @@ inherit ecm kde.org python-any-r1
 DESCRIPTION="Library for extracting file metadata"
 LICENSE="LGPL-2+"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
-IUSE="epub exif ffmpeg kernel_linux libav office pdf taglib"
+IUSE="epub exif ffmpeg kernel_linux office pdf taglib"
 
 BDEPEND="
 	test? ( ${PYTHON_DEPS} )
@@ -22,10 +22,7 @@ RDEPEND="
 	>=dev-qt/qtxml-${QTMIN}:5
 	epub? ( app-text/ebook-tools )
 	exif? ( media-gfx/exiv2:= )
-	ffmpeg? (
-		libav? ( >=media-video/libav-12.2:= )
-		!libav? ( media-video/ffmpeg:0= )
-	)
+	ffmpeg? ( media-video/ffmpeg:0= )
 	office? ( =kde-frameworks/karchive-${PVCUT}*:5 )
 	pdf? ( app-text/poppler[qt5] )
 	taglib? ( media-libs/taglib )
