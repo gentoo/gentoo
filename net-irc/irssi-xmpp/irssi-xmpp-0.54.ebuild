@@ -27,7 +27,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake PREFIX=/usr CC="$(tc-getCC)"
+	emake PREFIX=/usr
 }
 
 src_install() {
