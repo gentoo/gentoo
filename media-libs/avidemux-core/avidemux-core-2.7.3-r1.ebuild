@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
 DEPEND="dev-db/sqlite:3
 	nvenc? ( media-video/nvidia_video_sdk )
 	sdl? ( media-libs/libsdl:0 )
-	system-ffmpeg? ( >=virtual/ffmpeg-9:0[mp3,theora] )
+	system-ffmpeg? ( >=media-video/ffmpeg-9:0[mp3,theora] )
 	vaapi? ( x11-libs/libva:0= )
 	vdpau? ( x11-libs/libvdpau:0 )
 	xv? ( x11-libs/libXv:0 )
@@ -38,6 +38,8 @@ BDEPEND="virtual/pkgconfig
 
 S="${WORKDIR}/avidemux2-${PV}"
 CMAKE_USE_DIR="${S}/${PN/-/_}"
+
+PATCHES=( "${FILESDIR}"/${P}-permissions.patch )
 
 src_prepare() {
 	cmake_src_prepare
@@ -70,7 +72,9 @@ src_configure() {
 		-DXVIDEO="$(usex xv)"
 	)
 
-	use debug && mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
+	if use debug ; then
+		mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
+	fi
 
 	cmake_src_configure
 }
