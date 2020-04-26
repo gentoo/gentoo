@@ -32,7 +32,7 @@ SLOT="0/12-9" # vlc - vlccore
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
 	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate kms
-	libass libav libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc
+	libass libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc
 	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
 	nfs ogg omxil optimisememory opus png postproc projectm pulseaudio +qt5 rdp
 	run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib
@@ -97,8 +97,7 @@ RDEPEND="
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
 	ffmpeg? (
-		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?,vdpau?] )
-		libav? ( >=media-video/libav-12.2:0=[vaapi?,vdpau?] )
+		>=media-video/ffmpeg-3.1.3:0=[vaapi?,vdpau?]
 	)
 	flac? (
 		media-libs/flac
@@ -155,7 +154,6 @@ RDEPEND="
 	ogg? ( media-libs/libogg )
 	opus? ( >=media-libs/opus-1.0.3 )
 	png? ( media-libs/libpng:0= )
-	postproc? ( libav? ( media-libs/libpostproc ) )
 	projectm? (
 		media-fonts/dejavu
 		media-libs/libprojectm
