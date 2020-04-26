@@ -1,37 +1,33 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=5
 
 DESCRIPTION="HTML photo album generator"
-HOMEPAGE="https://marginalhacks.com/Hacks/album/"
-SRC_URI="https://marginalhacks.com/bin/album.versions/${P}.tar.gz
-	https://marginalhacks.com/bin/album.versions/data-4.05.tar.gz"
+HOMEPAGE="http://MarginalHacks.com/Hacks/album/"
+SRC_URI="http://marginalhacks.com/bin/album.versions/${P}.tar.gz
+	http://marginalhacks.com/bin/album.versions/data-4.05.tar.gz"
 
 LICENSE="marginalhacks"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="doc ffmpeg plugins themes"
 
 DEPEND=""
 RDEPEND="dev-lang/perl
 	media-gfx/jhead
 	virtual/imagemagick-tools
-	ffmpeg? ( virtual/ffmpeg )"
+	ffmpeg? ( media-video/ffmpeg )"
 
 src_install() {
 	dobin album
 	doman album.1
 	dodoc License.txt CHANGELOG
-
-	if use doc ; then
-		docinto html
-		dodoc -r Docs/.
-	fi
+	use doc && dohtml -r Docs/*
 
 	dodir /usr/share/album
 	insinto /usr/share/album
-	cd .. || die
+	cd ..
 	doins -r lang
 	use themes && doins -r Themes
 	use plugins && doins -r plugins
@@ -39,5 +35,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "For some optional tools please browse:"
-	elog "https://MarginalHacks.com/Hacks/album/tools/"
+	elog "http://MarginalHacks.com/Hacks/album/tools/"
 }
