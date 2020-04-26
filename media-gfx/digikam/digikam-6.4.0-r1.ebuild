@@ -22,7 +22,7 @@ HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2"
 SLOT="5"
-IUSE="addressbook calendar dnn heif +imagemagick gphoto2 +lensfun libav marble mediaplayer mysql opengl openmp +panorama scanner semantic-desktop vkontakte webkit X"
+IUSE="addressbook calendar dnn heif +imagemagick gphoto2 +lensfun marble mediaplayer mysql opengl openmp +panorama scanner semantic-desktop vkontakte webkit X"
 
 BDEPEND="
 	>=dev-util/cmake-3.14.3
@@ -80,8 +80,7 @@ COMMON_DEPEND="
 	)
 	mediaplayer? (
 		media-libs/qtav[opengl]
-		!libav? ( media-video/ffmpeg:= )
-		libav? ( media-video/libav:= )
+		media-video/ffmpeg:=
 	)
 	opengl? (
 		>=dev-qt/qtopengl-${QTMIN}:5
