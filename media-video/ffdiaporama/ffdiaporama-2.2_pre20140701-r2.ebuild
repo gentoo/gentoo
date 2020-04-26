@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ LICENSE="GPL-2
 	texturemate? ( CC-BY-3.0 )"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="libav openclipart texturemate"
+IUSE="openclipart texturemate"
 
 RDEPEND="
 	dev-qt/qtconcurrent:5
@@ -36,8 +36,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-gfx/exiv2:=
-	libav? ( >=media-video/libav-11:0=[encode] )
-	!libav? ( >=media-video/ffmpeg-3:0=[encode] )
+	>=media-video/ffmpeg-3:0=[encode]
 	openclipart? ( media-gfx/openclipart[svg,-gzip] )"
 DEPEND="${RDEPEND}"
 

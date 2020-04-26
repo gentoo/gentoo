@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -14,19 +14,10 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/requests[${PYTHON_USEDEP}]"
 
-# This package bundles dev-python/requests, so setup.py won't check for
-# it. As a result, we don't need RDEPEND in DEPEND unconditionally.
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		${RDEPEND}
-		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-	)"
+distutils_enable_tests nose
 
 python_prepare_all() {
 	# Remove the bundled copy of dev-python/requests...
@@ -39,8 +30,4 @@ python_prepare_all() {
 		|| die 'failed to replace the dev-python/requests library import'
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	nosetests || die "tests failed under ${EPYTHON}"
 }
