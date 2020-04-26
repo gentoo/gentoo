@@ -29,12 +29,9 @@ COMMON_DEPEND="
 	>=dev-libs/atk-2.26
 	dev-libs/expat:=
 	dev-libs/glib:2
-	system-icu? ( >=dev-libs/icu-65:= )
 	>=dev-libs/libxml2-2.9.4-r3:=[icu]
-	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.26:=
-	>=dev-libs/re2-0.2019.08.01:=
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
@@ -42,7 +39,6 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( >=media-libs/libvpx-1.8.2:=[postproc,svc] )
-	>=media-libs/openh264-1.6.0:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
 		>=media-video/ffmpeg-4:=
@@ -70,7 +66,6 @@ COMMON_DEPEND="
 	x11-libs/libXScrnSaver:=
 	x11-libs/libXtst:=
 	x11-libs/pango:=
-	app-arch/snappy:=
 	media-libs/flac:=
 	>=media-libs/libwebp-0.4.0:=
 	sys-libs/zlib:=[minizip]
@@ -108,10 +103,30 @@ BDEPEND="
 	)
 "
 
-: ${CHROMIUM_FORCE_CLANG=no}
+: ${CHROMIUM_FORCE_CLANG=yes}
+: ${CHROMIUM_FORCE_LIBCXX=yes}
 
 if [[ ${CHROMIUM_FORCE_CLANG} == yes ]]; then
 	BDEPEND+=" >=sys-devel/clang-9"
+fi
+
+if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
+	RDEPEND+=" >=sys-libs/libcxx-9"
+	DEPEND+=" >=sys-libs/libcxx-9"
+	BDEPEND+="
+		amd64? ( dev-lang/yasm )
+		x86? ( dev-lang/yasm )
+	"
+else
+	COMMON_DEPEND="
+		app-arch/snappy:=
+		dev-libs/libxslt:=
+		>=dev-libs/re2-0.2019.08.01:=
+		>=media-libs/openh264-1.6.0:=
+		system-icu? ( >=dev-libs/icu-65:= )
+	"
+	RDEPEND+="${COMMON_DEPEND}"
+	DEPEND+="${COMMON_DEPEND}"
 fi
 
 if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then
@@ -433,7 +448,13 @@ src_prepare() {
 	if use tcmalloc; then
 		keeplibs+=( third_party/tcmalloc )
 	fi
-
+	if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
+		keeplibs+=( third_party/libxml )
+		keeplibs+=( third_party/libxslt )
+		keeplibs+=( third_party/openh264 )
+		keeplibs+=( third_party/re2 )
+		keeplibs+=( third_party/snappy )
+	fi
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
 }
@@ -457,6 +478,9 @@ src_configure() {
 	if tc-is-clang; then
 		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
 	else
+		if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
+			die "Compiling with sys-libs/libcxx requires clang."
+		fi
 		myconf_gn+=" is_clang=false"
 	fi
 
@@ -502,11 +526,6 @@ src_configure() {
 		libjpeg
 		libpng
 		libwebp
-		libxml
-		libxslt
-		openh264
-		re2
-		snappy
 		yasm
 		zlib
 	)
@@ -518,6 +537,14 @@ src_configure() {
 	fi
 	if use system-libvpx; then
 		gn_system_libraries+=( libvpx )
+	fi
+	if [[ ${CHROMIUM_FORCE_LIBCXX} != yes ]]; then
+		# unbundle only without libc++, because libc++ is not fully ABI compatible with libstdc++
+		gn_system_libraries+=( libxml )
+		gn_system_libraries+=( libxslt )
+		gn_system_libraries+=( openh264 )
+		gn_system_libraries+=( re2 )
+		gn_system_libraries+=( snappy )
 	fi
 	build/linux/unbundle/replace_gn_files.py --system-libraries "${gn_system_libraries[@]}" || die
 
@@ -578,6 +605,11 @@ src_configure() {
 		if [[ ${myarch} == amd64 || ${myarch} == x86 ]]; then
 			filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 -mno-avx -mno-avx2
 		fi
+	fi
+
+	if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
+		append-flags -stdlib=libc++
+		append-ldflags -stdlib=libc++
 	fi
 
 	if [[ $myarch = amd64 ]] ; then
