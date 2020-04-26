@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/network-manager-applet/-/archive/${PV}-d
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ayatana doc gtk introspection lto modemmanager selinux teamd test wwan"
+IUSE="ayatana doc introspection lto modemmanager selinux teamd test wwan"
 
 DEPEND="
 	app-crypt/libsecret
@@ -26,7 +26,6 @@ DEPEND="
 		dev-libs/libappindicator:3
 		dev-libs/libdbusmenu
 	)
-	gtk? ( ~net-misc/networkmanager-1.18.4 )
 	introspection? ( dev-libs/gobject-introspection:= )
 	modemmanager? ( net-misc/modemmanager )
 	selinux? ( sys-libs/libselinux )
@@ -43,7 +42,7 @@ S="${WORKDIR}"/network-manager-applet-${PV}-dev
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use gtk libnm_gtk)
+		-Dlibnm_gtk=false
 		-Dlibnma_gtk4=false
 		-Dappindicator=$(usex ayatana yes no)
 		$(meson_use wwan)

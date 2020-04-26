@@ -5,10 +5,6 @@
     <email>base-system@gentoo.org</email>
     <name>Gentoo Base System</name>
   </maintainer>
-  <maintainer type="person">
-    <email>robbat2@gentoo.org</email>
-    <description>LPK issues. Only assign if it's a direct LPK issue. Do not directly assign for anything else.</description>
-  </maintainer>
   <longdescription>
 OpenSSH is a FREE version of the SSH protocol suite of network connectivity tools that 
 increasing numbers of people on the Internet are coming to rely on. Many users of telnet, 
