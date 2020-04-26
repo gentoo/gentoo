@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-26)
+# tests optionally depend on dev-ruby/coffee-script needing nodejs
+dev-ruby/tilt test
+
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
