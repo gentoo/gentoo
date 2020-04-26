@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-04-26)
+# Unmaintained.  djvusmooth is stuck on py2, python-djvulibre on py3.6.
+# Unresolved test failures.  No other revdeps.
+# Removal in 30 days.  Bug #719488.
+app-text/djvusmooth
+dev-python/python-djvulibre
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-25)
 # Unmaintained.  Stuck on py3.6.  Tests missing.  The only revdep masked
 # for removal.
