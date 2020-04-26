@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,10 @@ RDEPEND="sys-libs/ncurses:0=
 	gd? ( media-libs/gd )
 	gsl? ( sci-libs/gsl )
 	hdf? ( sci-libs/hdf )
-	netpbm? ( media-libs/netpbm virtual/ffmpeg )
+	netpbm? (
+		media-libs/netpbm
+		media-video/ffmpeg
+	)
 	pdl2? (
 		>=dev-perl/Devel-REPL-1.3.11
 		|| ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu )
