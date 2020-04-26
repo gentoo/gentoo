@@ -28,7 +28,7 @@ RDEPEND="
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	virtual/ffmpeg
+	media-video/ffmpeg
 "
 DEPEND="${RDEPEND}"
 
