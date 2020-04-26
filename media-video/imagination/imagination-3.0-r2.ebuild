@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ DEPEND="
 	x11-libs/cairo:=
 	x11-libs/gtk+:2"
 RDEPEND="${DEPEND}
-	virtual/ffmpeg"
+	media-video/ffmpeg"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cflags.patch
