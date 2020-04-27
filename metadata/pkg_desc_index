@@ -560,7 +560,7 @@ app-admin/system-config-printer 1.5.12-r1: Graphical user interface for CUPS adm
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/terraform 0.12.17 0.12.20 0.12.21 0.12.23 0.12.24: A tool for building, changing, and combining infrastructure safely
+app-admin/terraform 0.12.24: A tool for building, changing, and combining infrastructure safely
 app-admin/testdisk 7.1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -7418,7 +7418,7 @@ dev-python/Numdifftools 0.9.17-r1: Solves automatic numerical differentiation pr
 dev-python/PyContracts 1.7.9 1.8.0 1.8.12 1.8.14: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.46 1.47: Python library to access the Github API v3
+dev-python/PyGithub 1.46 1.47 1.50: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.13.2-r1 5.14.1-r1 5.14.2: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.19 4.19.21 4.19.22: Private sip module for PyQt5
@@ -7845,7 +7845,7 @@ dev-python/gsd 1.5.3-r1: GSD - file format specification and a library to read a
 dev-python/gst-python 1.14.1-r1: A Python Interface to GStreamer
 dev-python/guessit 3.0.0 9999: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
-dev-python/h11 0.8.1: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
+dev-python/h11 0.8.1 0.9.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0 2.10.0-r1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
 dev-python/hcloud-python 1.6.3: Official Hetzner Cloud python library
@@ -8180,7 +8180,7 @@ dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
 dev-python/parsley 1.3: A Pattern-Matching Language Based on OMeta and Python
 dev-python/parso 0.5.2 0.6.1 0.6.2 0.7.0: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 0.3.8: Appendable key-value storage
-dev-python/parver 0.2.1: Parse and manipulate version numbers
+dev-python/parver 0.2.1 0.3: Parse and manipulate version numbers
 dev-python/passlib 1.7.1-r2 1.7.2: Password hashing framework supporting over 20 schemes
 dev-python/paste 3.2.3: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 2.0.1-r1: Load, configure, and compose WSGI applications and servers
@@ -8384,7 +8384,7 @@ dev-python/pyopengl 3.1.0 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0-r1: Accelerate module for PyOpenGL
 dev-python/pyopenssl 19.1.0: Python interface to the OpenSSL library
 dev-python/pyotherside 1.5.9: Asynchronous Python 3 Bindings for Qt 5
-dev-python/pyotp 2.2.6-r1: PyOTP is a Python library for generating and verifying one-time passwords.
+dev-python/pyotp 2.2.6-r1 2.3.0: PyOTP is a Python library for generating and verifying one-time passwords.
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
 dev-python/pyparsing 2.4.6 2.4.7: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.7 3.11.6 999999: Python bindings for sys-block/parted
@@ -8910,7 +8910,7 @@ dev-python/wrapt 1.11.2-r1 1.12.1: Module for decorators, wrappers and monkey pa
 dev-python/ws4py 0.3.4-r1 0.5.1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiproxy2 0.4.6: HTTP proxying tools for WSGI apps
-dev-python/wsproto 0.12.0 0.15.0: WebSockets state-machine based protocol implementation
+dev-python/wsproto 0.12.0: WebSockets state-machine based protocol implementation
 dev-python/wstools 0.4.5-r1 0.4.8: WSDL parsing services package for Web Services for Python
 dev-python/wtforms 2.2.1: Flexible forms validation and rendering library for python web development
 dev-python/wurlitzer 2.0.0: Capture C-level stdout/stderr in Python
@@ -13443,7 +13443,6 @@ media-sound/fmit 1.0.15-r3: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
 media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
 media-sound/frescobaldi 3.1.1: A LilyPond sheet music text editor
-media-sound/galan 0.3.0_beta7: gAlan - Graphical Audio Language
 media-sound/gbsplay 0.0.91-r2: Nintendo Gameboy sound player for GBS format
 media-sound/gigedit 1.1.1-r1 9999: An instrument editor for gig files
 media-sound/gimmix 0.5.7.2-r1: a graphical music player daemon (MPD) client using GTK+2
@@ -18073,7 +18072,6 @@ x11-libs/gtk+ 2.24.32-r1 3.24.16 3.24.18: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.3 3.3.4: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
-x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
 x11-libs/gtkglext 1.2.0-r4: GL extensions for Gtk+ 2.0
 x11-libs/gtkmathview 0.8.0-r4: Rendering engine for MathML documents
 x11-libs/gtksourceview 2.10.5-r3 3.24.11 4.2.0 4.4.0: A text widget implementing syntax highlighting and other features
