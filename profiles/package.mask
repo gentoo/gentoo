@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2020-04-28)
+# Upstream stopped development. Package should depend on 
+# <net-irc/quassel-0.13 which is no longer in the tree.
+# Bug #719728
+# Remove after 2020-05-28
+net-irc/quassel-irssi
+
 # Michał Górny <mgorny@gentoo.org> (2020-04-27)
 # Unmaintained.  Unresolved breakage with py3.8 for almost a year.
 # Python upstream included some async testing support in py3.8 too.
