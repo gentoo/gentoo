@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>kde@gentoo.org</email>
-		<name>Gentoo KDE Project</name>
+		<email>python@gentoo.org</email>
 	</maintainer>
 </pkgmetadata>
