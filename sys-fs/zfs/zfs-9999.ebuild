@@ -184,12 +184,6 @@ pkg_postinst() {
 			elog "  sys-kernel/dracut"
 			elog "  sys-kernel/genkernel"
 		fi
-
-		if has_version "<=sys-kernel/genkernel-3.5.3.3"; then
-			einfo "genkernel version 3.5.3.3 and earlier does NOT support"
-			einfo " unlocking pools with native zfs encryption enabled at boot"
-			einfo " use dracut or >=genkernel-4 if you requre this functionality"
-		fi
 	fi
 
 	if ! use kernel-builtin && [[ ${PV} = "9999" ]]; then
