@@ -6,7 +6,6 @@
 		<name>Gentoo Layman team</name>
 	</maintainer>
 	<use>
-		<flag name="bazaar">Support <pkg>dev-vcs/bzr</pkg> based overlays</flag>
 		<flag name="cvs">Support <pkg>dev-vcs/cvs</pkg> based overlays</flag>
 		<flag name="darcs">Support <pkg>dev-vcs/darcs</pkg> based overlays</flag>
 		<flag name="g-sorcery">Support <pkg>app-portage/g-sorcery</pkg> based overlays</flag>
