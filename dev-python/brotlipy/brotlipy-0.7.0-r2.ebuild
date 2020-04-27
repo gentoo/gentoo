@@ -22,7 +22,9 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 sparc x86"
 
 # module name collision with app-arch/brotli
-RDEPEND="virtual/python-cffi[${PYTHON_USEDEP}]
+RDEPEND="
+	virtual/python-cffi[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' -2)
 	!app-arch/brotli[python]"
 DEPEND="
 	test? (
