@@ -14,16 +14,14 @@ SRC_URI="https://github.com/rthalley/dnspython/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
-IUSE="examples test"
+IUSE="examples"
 
 RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	>=dev-python/ecdsa-0.13[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' -2)
 	!dev-python/dnspython:py2
 	!dev-python/dnspython:py3"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-
-RESTRICT+=" !test? ( test )"
 
 python_test() {
 	pushd tests >/dev/null || die
