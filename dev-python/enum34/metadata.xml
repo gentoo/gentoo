@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">enum34</remote-id>
+    <remote-id type="cpe">cpe:/a:python:enum34</remote-id>
   </upstream>
 </pkgmetadata>
