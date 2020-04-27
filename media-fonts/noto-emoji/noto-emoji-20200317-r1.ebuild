@@ -41,7 +41,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	font_pkg_setup
+	test && font_pkg_setup
 }
 
 src_prepare() {
