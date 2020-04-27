@@ -6,6 +6,8 @@
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
 # dependencies not yet keyworded
+dev-ruby/activemodel test
+dev-ruby/activerecord test
 dev-ruby/activesupport test
 
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
