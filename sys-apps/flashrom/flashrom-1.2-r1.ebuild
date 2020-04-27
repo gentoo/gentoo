@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
+
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://review.coreboot.org/flashrom.git"
 	inherit git-r3
@@ -101,6 +102,13 @@ _flashrom_enable() {
 flashrom_enable() {
 	local u
 	for u ; do _flashrom_enable "${u}" ; done
+}
+
+src_prepare() {
+	# To make libflashrom.a actually useful
+	append-flags -fPIC
+
+	default
 }
 
 src_compile() {
