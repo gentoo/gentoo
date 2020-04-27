@@ -3,48 +3,45 @@
 
 EAPI=7
 
-inherit eutils user systemd bash-completion-r1 autotools
+inherit systemd bash-completion-r1 autotools
 
 DESCRIPTION="Implementation of IEEE 802.1ab (LLDP)"
 HOMEPAGE="https://vincentbernat.github.com/lldpd/"
 SRC_URI="http://media.luffy.cx/files/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
-SLOT="0"
+SLOT="0/4.8.0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
 	seccomp sonmp snmp static-libs test readline xml zsh-completion"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/libbsd
+RDEPEND="
+	acct-group/lldpd
+	acct-user/lldpd
+	dev-libs/libbsd
 	>=dev-libs/libevent-2.0.5:=
 	sys-libs/readline:0=
+	seccomp? ( sys-libs/libseccomp:= )
 	snmp? ( net-analyzer/net-snmp[extensible(+)] )
 	xml? ( dev-libs/libxml2:= )
-	seccomp? ( sys-libs/libseccomp:= )
-	zsh-completion? ( app-shells/zsh )"
+	zsh-completion? ( app-shells/zsh )
+"
 DEPEND="${RDEPEND}
-	test? ( dev-libs/check )"
+	test? ( dev-libs/check )
+"
 BDEPEND="virtual/pkgconfig
 	doc? (
 		graph? ( app-doc/doxygen[dot] )
 		!graph? ( app-doc/doxygen )
-	)"
+	)
+"
 
 REQUIRED_USE="graph? ( doc )"
 
 PATCHES=(
-	"${FILESDIR}/lldpd-0.9.5-seccomp-add-socket-ops.patch"
-	"${FILESDIR}/lldpd-1.0.1-seccomp-add-brk.patch"
-	"${FILESDIR}/lldpd-1.0.2-seccomp-add-misc.patch"
+	"${FILESDIR}/lldpd-1.0.5-seccomp.patch"
 )
-
-pkg_setup() {
-	ebegin "Creating lldpd user and group"
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
-	eend $?
-}
 
 src_prepare() {
 	default
