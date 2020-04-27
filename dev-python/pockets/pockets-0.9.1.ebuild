@@ -11,8 +11,6 @@ DESCRIPTION="Collection of helpful Python tools"
 HOMEPAGE="https://pypi.org/project/pockets/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-IUSE="test"
-
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
