@@ -18,14 +18,19 @@ SRC_URI="
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DOCS=( doc/{README,FAQ} )
 
-src_prepare() {
-	sed -e 's:test_requires_provides:_&:' \
-		-i test/auto.py || die
-	distutils-r1_src_prepare
-}
+BDEPEND="
+	dev-libs/gobject-introspection
+	dev-python/httplib2
+	dev-python/pygobject"
+
+PATCHES=(
+	"${FILESDIR}"/python-distutils-extra-2.44-test.patch
+)
 
 python_test() {
 	unset PYTHONDONTWRITEBYTECODE
