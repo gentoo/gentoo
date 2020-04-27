@@ -45,9 +45,6 @@ python_test() {
 	# COLORTERM must not be truecolor
 	# See https://github.com/jquast/blessed/issues/162
 	# Ignore coverage options
-	# Skip two failing tests
 	COLORTERM= pytest -vv --override-ini="addopts=" \
-		--deselect tests/test_core.py::test_number_of_colors_without_tty \
-		--deselect tests/test_core.py::test_number_of_colors_with_tty \
 		|| die "tests failed with ${EPYTHON}"
 }
