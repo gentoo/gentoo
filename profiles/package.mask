@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Jonas Stein <jstein@gentoo.org> (2020-04-28)
+# Package is no longer required after the removal of 
+# net-irc/quassel-irssi. See also bug #719856.
+# Remove after 2020-06-28
+net-libs/quasselc
+
+# Jonas Stein <jstein@gentoo.org> (2020-04-28)
 # Upstream stopped development. Package should depend on 
 # <net-irc/quassel-0.13 which is no longer in the tree.
 # Bug #719728
