@@ -5,7 +5,7 @@ EAPI=7
 
 inherit linux-info systemd
 
-MY_COMMIT="42f4ff8eb09011bf1a199938aa2afe23040d7faf"
+MY_COMMIT="9b6a6e55e07c524ba0a36eb25c869b47655010ee"
 MY_P="${PN}-${MY_COMMIT}"
 
 DESCRIPTION="Userspace KSM helper daemon"
@@ -23,7 +23,7 @@ CONFIG_CHECK="~KSM"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${P}-respect-cflags-ldflags.patch" )
+PATCHES=( "${FILESDIR}/uksmd-0_pre20190726-respect-cflags-ldflags.patch" )
 
 src_install() {
 	default

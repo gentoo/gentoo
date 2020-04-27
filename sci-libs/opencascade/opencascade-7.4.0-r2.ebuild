@@ -92,7 +92,7 @@ src_configure() {
 		-DBUILD_Inspector=$(usex inspector)
 		-DBUILD_WITH_DEBUG=$(usex debug)
 		-DCMAKE_CONFIGURATION_TYPES="Gentoo"
-		-DCMAKE_INSTALL_PREFIX="/usr/$(get_libdir)/${PF}/ros"
+		-DCMAKE_INSTALL_PREFIX="/usr/$(get_libdir)/${P}/ros"
 		-DINSTALL_DIR_DOC="/usr/share/doc/${PF}"
 		-DINSTALL_DIR_CMAKE="/usr/$(get_libdir)/cmake"
 #		-DINSTALL_DOC_Overview=$(usex doc)
