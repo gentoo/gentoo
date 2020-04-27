@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
+# Mask until 'app-arch/lxqt-archiver' is keyworded.
+lxqt-base/lxqt-meta archiver
+
 # Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
 # Mask until net-analyzer/icinga2 is keyworded
 net-analyzer/pnp4nagios icinga
