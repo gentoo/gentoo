@@ -61,22 +61,34 @@ src_prepare() {
 }
 
 src_configure() {
+	local myeconfargs=(
+		$(use_enable inotify async-push)
+		$(use_enable ssl crypto)
+	)
+	if use ssl; then
+		myeconfargs+=(
+			$(use_with ssl crypto-library $(usex mbedtls mbedtls openssl))
+		)
+		if use libressl || ! use mbedtls; then
+			myeconfargs+=(
+				$(use_enable pkcs11)
+			)
+		fi
+	fi
+	myeconfargs+=(
+		$(use_enable lz4)
+		$(use_enable lzo)
+		$(use_enable plugins)
+		$(use_enable iproute2)
+		$(use_enable pam plugin-auth-pam)
+		$(use_enable down-root plugin-down-root)
+		$(use_enable systemd)
+	)
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 	TMPFILES_DIR="/usr/lib/tmpfiles.d" \
 	IFCONFIG=/bin/ifconfig \
 	ROUTE=/bin/route \
-	econf \
-		$(use_enable inotify async-push) \
-		$(use_enable ssl crypto) \
-		$(use_with ssl crypto-library $(usex mbedtls mbedtls openssl)) \
-		$(use_enable lz4) \
-		$(use_enable lzo) \
-		$(use_enable pkcs11) \
-		$(use_enable plugins) \
-		$(use_enable iproute2) \
-		$(use_enable pam plugin-auth-pam) \
-		$(use_enable down-root plugin-down-root) \
-		$(use_enable systemd)
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
