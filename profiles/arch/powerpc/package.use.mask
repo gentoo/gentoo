@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Benda Xu <heroxbd@gentoo.org> (2020-04-27)
+# tests optionally depend on dev-python/hypothesis
+dev-python/numpy test
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
 # Not keyworded on ppc
 net-misc/whois xcrypt

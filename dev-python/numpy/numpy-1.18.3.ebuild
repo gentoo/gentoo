@@ -10,7 +10,7 @@ FORTRAN_NEEDED=lapack
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit autotools distutils-r1 flag-o-matic fortran-2 multiprocessing toolchain-funcs
+inherit distutils-r1 flag-o-matic fortran-2 multiprocessing toolchain-funcs
 
 DOC_PV="1.16.4"
 DESCRIPTION="Fast array and numerical python library"
@@ -24,7 +24,7 @@ SRC_URI="
 	)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc lapack"
 
 RDEPEND="
@@ -37,11 +37,7 @@ BDEPEND="
 	${RDEPEND}
 	app-arch/unzip
 	>=dev-python/cython-0.29.15[${PYTHON_USEDEP}]
-	lapack? (
-		>=sys-devel/automake-1.16.2
-		>=sys-devel/gcc-6.5.0-r1[fortran]
-		virtual/pkgconfig
-	)
+	lapack? ( virtual/pkgconfig )
 	test? (
 		>=dev-python/hypothesis-5.8.0[${PYTHON_USEDEP}]
 		>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
@@ -60,11 +56,6 @@ src_unpack() {
 	if use doc; then
 		unzip -qo "${DISTDIR}"/numpy-html-${DOC_PV}.zip -d html || die
 	fi
-}
-
-src_prepare() {
-	default
-	eautomake
 }
 
 python_prepare_all() {
@@ -118,6 +109,8 @@ python_prepare_all() {
 }
 
 python_compile() {
+	export MAKEOPTS=-j1 #660754
+
 	distutils-r1_python_compile ${NUMPY_FCONFIG}
 }
 
