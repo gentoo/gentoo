@@ -5,6 +5,9 @@
 		<email>lxqt@gentoo.org</email>
 		<name>LXQt</name>
 	</maintainer>
+	<use>
+		<flag name="backlight">Enable backlight control features.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">lxqt/liblxqt</remote-id>
 	</upstream>
