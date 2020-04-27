@@ -37,7 +37,6 @@
 		<flag name="nfs">Enable support for nfs protocol via <pkg>net-fs/libnfs</pkg></flag>
 		<flag name="omxil">Enable OpenMAX Integration Layer codec module</flag>
 		<flag name="optimisememory">Enable optimisation for memory rather than performance</flag>
-		<flag name="postproc">Enable image post-processing via libpostproc (part of FFmpeg)</flag>
 		<flag name="projectm">Enable the projectM visualization plugin</flag>
 		<flag name="run-as-root">Allows vlc to start for root. Don't enable this unless you have a very specific (e.g. embedded) need for it!</flag>
 		<flag name="sdl-image">Enable sdl image video decoder (depends on sdl)</flag>
