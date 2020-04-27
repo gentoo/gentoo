@@ -8,6 +8,8 @@
 	<use>
 		<flag name="about">Install <pkg>lxqt-base/lxqt-about</pkg></flag>
 		<flag name="admin">Install <pkg>lxqt-base/lxqt-admin</pkg></flag>
+		<flag name="archiver">Install <pkg>app-arch/lxqt-archiver</pkg></flag>
+		<flag name="display-manager">Install a graphical display manager</flag>
 		<flag name="filemanager">Install <pkg>x11-misc/pcmanfm-qt</pkg>file manager</flag>
 		<flag name="lightdm">Install <pkg>x11-misc/lightdm</pkg>display manager</flag>
 		<flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>image viewer</flag>
