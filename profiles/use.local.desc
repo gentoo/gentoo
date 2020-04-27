@@ -2621,7 +2621,6 @@ dev-qt/qt-creator:android - Build plugin for Android devices
 dev-qt/qt-creator:autotest - Enable integration with popular unit testing frameworks (QtTest, Google Test, Boost.Test)
 dev-qt/qt-creator:autotools - Enable autotools project manager plugin
 dev-qt/qt-creator:baremetal - Build plugin for bare metal devices
-dev-qt/qt-creator:bazaar - Add support for dev-vcs/bzr version control system
 dev-qt/qt-creator:beautifier - Build the beautifier plugin (supports astyle, clang-format, and uncrustify)
 dev-qt/qt-creator:boot2qt - Build plugin for Boot2Qt devices
 dev-qt/qt-creator:clang - Build clang-based plugins (code model, formatting, refactoring, static analysis)
@@ -3497,7 +3496,6 @@ kde-apps/kdepim-addons:markdown - Enable Markdown support via app-text/discount
 kde-apps/kdepim-meta:bogofilter - Install mail-filter/bogofilter for spam filter support in kde-apps/kmail
 kde-apps/kdepim-meta:clamav - Install app-antivirus/clamav for virus detection support in kde-apps/kmail
 kde-apps/kdepim-meta:spamassassin - Install mail-filter/spamassassin for spam filter support in kde-apps/kmail
-kde-apps/kdesdk-meta:bazaar - Enable support for Bazaar VCS in kde-apps/dolphin via kde-apps/dolphin-plugins-bazaar
 kde-apps/kdesdk-meta:git - Enable support for Git VCS in kde-apps/dolphin via kde-apps/dolphin-plugins-git
 kde-apps/kdesdk-meta:mercurial - Enable support for Mercurial VCS in kde-apps/dolphin via kde-apps/dolphin-plugins-mercurial
 kde-apps/kdesdk-meta:subversion - Enable support for Apache Subversion VCS in kde-apps/dolphin via kde-apps/dolphin-plugins-subversion
