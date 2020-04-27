@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ fi
 
 # TODO: unbundle sqlite and KSyntaxHighlighting
 
-QTC_PLUGINS=(android +autotest baremetal bazaar beautifier
+QTC_PLUGINS=(android +autotest baremetal beautifier
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
 	cmake:cmakeprojectmanager cppcheck cvs +designer git glsl:glsleditor +help ios lsp:languageclient
 	mercurial modeling:modeleditor nim perforce perfprofiler python:pythoneditor qbs:qbsprojectmanager
@@ -80,7 +80,6 @@ DEPEND="${CDEPEND}
 "
 RDEPEND="${CDEPEND}
 	sys-devel/gdb[client,python]
-	bazaar? ( dev-vcs/bzr )
 	cmake? ( dev-util/cmake )
 	cppcheck? ( dev-util/cppcheck )
 	cvs? ( dev-vcs/cvs )
