@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit autotools ruby-single toolchain-funcs
 
