@@ -55,6 +55,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/20200314-stylemap.patch
 	"${FILESDIR}"/20200314-tilepath.patch
+	"${FILESDIR}"/20200314-big-endian.patch
 )
 
 pkg_setup() {
