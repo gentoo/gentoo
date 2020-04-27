@@ -5579,7 +5579,7 @@ dev-perl/AnyEvent-I3 0.170.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.270.0-r1 3.300.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r2: CGI::Builder and Apache2/mod_perl2 integration
 dev-perl/Apache-DBI 1.120.0-r2: Authentication and Authorization via Perl's DBI
-dev-perl/Apache-LogFormat-Compiler 0.350.0: Compile an Apache log format string to perl-code
+dev-perl/Apache-LogFormat-Compiler 0.350.0 0.360.0: Compile an Apache log format string to perl-code
 dev-perl/Apache-Reload 0.130.0-r1: Automatically reload changed modules without restarting Apache
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
@@ -7585,7 +7585,7 @@ dev-python/cliff 2.12.0 2.12.0-r2 2.18.0: Command Line Interface Formulation Fra
 dev-python/cligj 0.4.0: Click-based argument and option decorators for Python GIS command line programs
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
-dev-python/cloudpickle 1.3.0: Extended pickling support for Python objects
+dev-python/cloudpickle 1.3.0 1.4.0: Extended pickling support for Python objects
 dev-python/cmd2 0.8.9 0.10.1 1.0.1 1.0.2: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.3.9-r1 0.4.1 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
@@ -7772,7 +7772,7 @@ dev-python/flask-nav 0.6-r1: Easily create navigation for Flask applications.
 dev-python/flask-paginate 0.5.3-r1: Pagination support for flask
 dev-python/flask-paranoid 0.2.0-r1: Simple user session protection extension for Flask
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
-dev-python/flask-restful 0.3.7: Simple framework for creating REST APIs
+dev-python/flask-restful 0.3.7 0.3.8: Simple framework for creating REST APIs
 dev-python/flask-script 2.0.6: Flask support for writing external scripts
 dev-python/flask-security 3.0.0: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
@@ -8487,7 +8487,7 @@ dev-python/python-dateutil 2.8.1-r1: Extensions to the standard Python datetime 
 dev-python/python-debian 0.1.36: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.11.0: Python bindings to the Designate API.
 dev-python/python-discid 1.1.1 1.2.0: Python bindings for libdiscid
-dev-python/python-distutils-extra 2.42-r1: Gettext support, themed icons and scrollkeeper-based documentation in distutils
+dev-python/python-distutils-extra 2.42-r1 2.44: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.8: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.17 3.6.10 3.7.6 3.7.7 3.8.2: HTML documentation for Python
 dev-python/python-editor 1.0.4: Programmatically open an editor, capture the result.
@@ -18644,7 +18644,7 @@ x11-terms/root-tail 1.2-r4: Terminal to display (multiple) log files on the root
 x11-terms/roxterm 3.1.5-r1: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.22-r1 9.22-r3 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.5.0 3.6.0-r1 3.7.0: sakura is a terminal emulator based on GTK and VTE
-x11-terms/st 0.8.2 9999: simple terminal implementation for X
+x11-terms/st 0.8.2 0.8.3 9999: simple terminal implementation for X
 x11-terms/terminator 1.91: Multiple GNOME terminals in one window
 x11-terms/terminology 1.6.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0: A drop down terminal, similar to the consoles found in first person shooters
@@ -18665,7 +18665,7 @@ x11-themes/comix-xcursors 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background artwork
-x11-themes/e-flat-theme 0_pre20200401: A modern, flat theme for Enlightenment WM
+x11-themes/e-flat-theme 0_pre20200401 0_pre20200427: A modern, flat theme for Enlightenment WM
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
