@@ -9,7 +9,7 @@ HOMEPAGE="https://kde.org/applications/development"
 LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="amd64 arm64 x86"
-IUSE="bazaar cvs git mercurial subversion +webkit"
+IUSE="cvs git mercurial subversion +webkit"
 
 RDEPEND="
 	>=kde-apps/kapptemplate-${PV}:${SLOT}
@@ -23,7 +23,6 @@ RDEPEND="
 	>=kde-apps/libkomparediff2-${PV}:${SLOT}
 	>=kde-apps/lokalize-${PV}:${SLOT}
 	>=kde-apps/poxml-${PV}:${SLOT}
-	bazaar? ( >=kde-apps/dolphin-plugins-bazaar-${PV}:${SLOT} )
 	cvs? ( >=kde-apps/cervisia-${PV}:${SLOT} )
 	git? ( >=kde-apps/dolphin-plugins-git-${PV}:${SLOT} )
 	mercurial? ( >=kde-apps/dolphin-plugins-mercurial-${PV}:${SLOT} )
