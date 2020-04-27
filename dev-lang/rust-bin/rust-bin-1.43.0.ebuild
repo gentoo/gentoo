@@ -3,8 +3,6 @@
 
 EAPI=7
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
-
 inherit bash-completion-r1 rust-toolchain toolchain-funcs multilib-minimal
 
 MY_P="rust-${PV}"
@@ -53,7 +51,7 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 
 	# start native abi install
-	pushd ${S} >/dev/null || die
+	pushd "${S}" >/dev/null || die
 	local std
 	std="$(grep 'std' ./components)"
 	local components="rustc,cargo,${std}"

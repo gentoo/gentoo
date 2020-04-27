@@ -32,7 +32,7 @@ esac
 
 EXPORT_FUNCTIONS src_prepare src_compile src_test src_install
 
-RDEPEND="dev-lang/erlang"
+RDEPEND="dev-lang/erlang:="
 DEPEND="${RDEPEND}
 	dev-util/rebar
 	>=sys-apps/gawk-4.1"

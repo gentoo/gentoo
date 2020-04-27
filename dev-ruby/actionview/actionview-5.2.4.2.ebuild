@@ -49,12 +49,13 @@ all_ruby_prepare() {
 		-e '/group :doc/,/^end/ s:^:#:' ../Gemfile || die
 	rm ../Gemfile.lock || die
 
-	# Avoid tests failing due to missing logger setup in activerecord,
-	# most likely related to test environment setup.
-	rm -f test/activerecord/render_partial_with_record_identification_test.rb || die
+	# Avoid activerecord integration tests because they are very sensitive to the specifics
+	# of the environment.
+	sed -i -e 's/, "test:integration:active_record"//' Rakefile || die
 
-	sed -e '1igem "actionpack", "~> 5.2.0"' \
-		-e '1igem "activemodel", "~> 5.2.0"' \
-		-e '1igem "railties", "~> 5.2.0"' \
+	sed -e '2igem "actionpack", "~> 5.2.0"' \
+		-e '2igem "activemodel", "~> 5.2.0"' \
+		-e '2igem "railties", "~> 5.2.0"' \
+		-e '/active_record/ s:^:#:' \
 		-i test/abstract_unit.rb || die
 }
