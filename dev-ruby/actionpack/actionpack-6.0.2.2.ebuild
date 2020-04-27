@@ -52,4 +52,7 @@ all_ruby_prepare() {
 		-e '/:job/,/end/ s:^:#:' \
 		-e '/group :doc/,/^end/ s:^:#:' ../Gemfile || die
 	rm ../Gemfile.lock || die
+
+	# Use different timezone notation, this changed at some point due to an external dependency changing.
+	sed -i -e 's/-0000/GMT/' test/dispatch/response_test.rb test/dispatch/cookies_test.rb test/dispatch/session/cookie_store_test.rb || die
 }

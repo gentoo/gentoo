@@ -57,4 +57,7 @@ all_ruby_prepare() {
 		-e '1i gem "actionview", "~> 5.2.0"' \
 		-e '1i gem "railties", "~> 5.2.0"' \
 		-i test/abstract_unit.rb || die
+
+	# Use different timezone notation, this changed at some point due to an external dependency changing.
+	sed -i -e 's/-0000/GMT/' test/dispatch/response_test.rb test/dispatch/cookies_test.rb test/dispatch/session/cookie_store_test.rb || die
 }
