@@ -96,10 +96,6 @@ pkg_postinst() {
 	einfo "  \$ chromium http://192.168.4.1"
 	einfo "  \$ ping 192.168.4.1"
 	einfo
-	einfo "If you'd like to redirect your internet traffic, you can run it with the"
-	einfo "\"default-route\" argument. You may not use this server for any abusive or illegal"
-	einfo "purposes. It is for quick testing only."
-	einfo
 	einfo "More info on getting started can be found at: https://www.wireguard.com/quickstart/"
 	einfo
 }
