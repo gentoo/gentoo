@@ -3,8 +3,6 @@
 
 EAPI=7
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
-
 inherit bash-completion-r1 rust-toolchain toolchain-funcs multilib-minimal
 
 MY_P="rust-${PV}"
