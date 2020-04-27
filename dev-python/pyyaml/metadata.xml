@@ -10,5 +10,5 @@
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:pyyaml_project:pyyaml</remote-id>
-  </upstream>`
+  </upstream>
 </pkgmetadata>
