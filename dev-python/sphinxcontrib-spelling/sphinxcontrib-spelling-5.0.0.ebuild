@@ -27,6 +27,7 @@ DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		${COMMON_DEPEND}
+		app-dicts/myspell-en
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
 	)
