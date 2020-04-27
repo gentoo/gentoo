@@ -194,6 +194,9 @@ qt5-build_src_configure() {
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_base_configure
 	fi
+	if [[ ${QT5_MINOR_VERSION} -ge 15 ]] && [[ ${QT5_MODULE} == qttools ]] && [[ -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
+		qt5_tools_configure
+	fi
 
 	qt5_foreach_target_subdir qt5_qmake
 }
@@ -668,6 +671,34 @@ qt5_base_configure() {
 
 	popd >/dev/null || die
 
+}
+
+# @FUNCTION: qt5_tools_configure
+# @INTERNAL
+# @DESCRIPTION:
+# Disables modules other than ${PN} belonging to qttools.
+qt5_tools_configure() {
+	# configure arguments
+	local qmakeargs=(
+		--
+		# not packaged in Gentoo
+		-no-feature-distancefieldgenerator
+		-no-feature-kmap2qmap
+		-no-feature-macdeployqt
+		-no-feature-makeqpf
+		-no-feature-qev
+		-no-feature-qtattributionsscanner
+		-no-feature-windeployqt
+		-no-feature-winrtrunner
+	)
+
+	local i
+	for i in assistant designer linguist pixeltool qdbus qdoc qtdiag qtpaths qtplugininfo; do
+		[[ ${PN} == ${i} ]] || qmakeargs+=( -no-feature-${i} )
+	done
+
+	# allow the ebuild to override what we set here
+	myqmakeargs=( "${qmakeargs[@]}" "${myqmakeargs[@]}" )
 }
 
 # @FUNCTION: qt5_qmake_args
