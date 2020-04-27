@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-27)
+# app-shells/fish dependency is broken on sparc, bug #709662
+dev-python/argcomplete test
+
 # Benda Xu <heroxbd@gentoo.org> (2020-04-27)
 # tests optionally depend on dev-python/hypothesis
 dev-python/numpy test
@@ -33,8 +37,9 @@ app-misc/tracker-miners test
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # dependencies not yet keyworded
 dev-ruby/rack-cache test
+dev-ruby/activemodel test
+dev-ruby/activerecord test
 dev-ruby/activesupport test
-dev-ruby/http test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
 # dev-ruby/asciidoctor is not keyworded on sparc
