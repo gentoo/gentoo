@@ -20,7 +20,7 @@ RDEPEND="
 	media-gfx/zbar
 "
 
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
