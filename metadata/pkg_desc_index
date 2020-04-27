@@ -5065,7 +5065,7 @@ dev-libs/libisoburn 1.5.0 1.5.2: Creation/expansion of ISO-9660 filesystems on C
 dev-libs/libisofs 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
 dev-libs/libite 2.1.0 2.1.2 2.2.0: A collection of useful BSD APIs
 dev-libs/libixion 0.14.1 0.15.0 9999: General purpose formula parser & interpreter
-dev-libs/libjcat 0.1.0 0.1.1: Library and tool for reading and writing Jcat files
+dev-libs/libjcat 0.1.1 0.1.2: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 210-r1 221 230: A Library for Large Linear Classification
