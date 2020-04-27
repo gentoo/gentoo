@@ -728,17 +728,6 @@ dev-util/buildbot-worker
 dev-util/buildbot-wsgi-dashboards
 dev-util/buildbot-www
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-28)
-# Unmaintained.  Python 2 only.  Last upstream commit in 2017.
-# Potential fork available (bug #705018) but not guaranteed a drop-in
-# replacement.
-# Removal in 30 days.  Bug #715044.
-dev-vcs/bzr
-dev-vcs/bzr-rewrite
-dev-vcs/bzr-xmloutput
-dev-vcs/bzrtools
-kde-apps/dolphin-plugins-bazaar
-
 # Joshua Kinard <kumba@gentoo.org> (2020-03-28)
 # In Linux ~4.18, IPX (Internetwork Packet eXchange) protocol and
 # NCPFS (NetWare Core Protocol Filesystem) support was removed due
@@ -765,45 +754,12 @@ games-puzzle/skoosh
 # Bug #713020
 dev-dotnet/gnome-keyring-sharp
 
-# Rafael G. Martins <rafaelmartins@gentoo.org> (2020-03-27)
-# Python 2 only. Uses old version of DNSimple API.
-# Removal in 30 days.  Bug #712960
-net-dns/dnsimple-dyndns
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
 # new version is not packaged yet
 # package is not going away anytime soon, just masked
 # for security. unmask as needed.
 dev-java/icedtea-web
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-27)
-# Unmaintained.  Not tested for py3.7.  Last bumped in 2015.
-# Bad quality ebuild.
-# Removal in 30 days.  Bug #710230.
-dev-vcs/pwclient
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-27)
-# Unmaintained.  Not tested for py3.7.  Last bumped in 2017.
-# Bad quality ebuild.
-# Removal in 30 days.  Bug #710226.
-dev-util/fatrace
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-27)
-# It was integrated into dev-python/fonttools, and has no reverse
-# dependencies.
-# Removal in 30 days.  Bug #682146.
-dev-python/ufoLib
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-27)
-# No Python 3 support.  Last touched by maintainer in 2014.
-# Removal in 30 days.  Bug #674734.
-www-client/weboob
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-03-26)
-# Fail to build with glibc-2.30; no maintainer. Removal in 30days.
-# Bugs 691756, 691710
-x11-terms/xvt
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-26)
 # dev-python/aiohttp-cors is dead upstream and does not support
@@ -824,26 +780,7 @@ net-misc/gns3-server
 # Matt Turner <mattst88@gentoo.org> (2020-03-25)
 # No releases in two years. No commits in upstream git in last six months.
 # Many open security bugs. Masked for removal in 30 days.
-media-video/libav
 media-libs/libpostproc
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-25)
-# Unmaintained.  Python 2 only.  Last commit in 2013.
-# Removal in 30 days.  Bug #714632.
-net-irc/redirbot
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-25)
-# Unmaintained.  Python 3 support requires a version bump.  Bad quality
-# ebuild.
-# Removal in 30 days.  Bug #710240.
-media-video/syncplay
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-25)
-# Unmaintained.  Python 2 only.  Last release in 2009, homepage
-# archived.  Last user of dev-python/nevow.
-# Removal in 30 days.  Bug #714626.
-net-im/pyicq-t
-dev-python/nevow
 
 # Jonas Stein <jstein@gentoo.org> (2020-03-21)
 # Package masked for removal. Broken SRC_URI,
@@ -851,12 +788,6 @@ dev-python/nevow
 # Bug #458662
 # Removal after 2020-05-01
 games-misc/OilWar
-
-# David Seifert <soap@gentoo.org> (2020-03-20)
-# Last release in 2014, unsupported, EOL.
-# Include the last remaining revdep, which was last updated in 2004.
-x11-libs/gtkglarea
-media-sound/galan
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
