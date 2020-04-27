@@ -15,9 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="test"
-RESTRICT="!test? ( test )"
-
 RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	media-gfx/zbar
