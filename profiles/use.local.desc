@@ -1105,7 +1105,6 @@ app-portage/gemato:gpg - Install dependencies needed for OpenPGP signature verif
 app-portage/gemato:sha3 - Install dependencies needed for SHA3 hash functions
 app-portage/gemato:tools - Install additional utilities (benchmarks, hash testing tools, fast Manifest generators) to /usr/share/gemato.
 app-portage/grs:server - Install all the tools building systems
-app-portage/layman:bazaar - Support dev-vcs/bzr based overlays
 app-portage/layman:cvs - Support dev-vcs/cvs based overlays
 app-portage/layman:darcs - Support dev-vcs/darcs based overlays
 app-portage/layman:g-sorcery - Support app-portage/g-sorcery based overlays
