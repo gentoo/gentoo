@@ -51,7 +51,7 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 
 	# start native abi install
-	pushd ${S} >/dev/null || die
+	pushd "${S}" >/dev/null || die
 	local std
 	std="$(grep 'std' ./components)"
 	local components="rustc,cargo,${std}"
