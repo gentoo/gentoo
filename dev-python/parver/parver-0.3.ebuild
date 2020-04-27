@@ -29,6 +29,11 @@ DEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/RazerM/parver/pull/6
+	"${FILESDIR}"/${P}-test.patch
+)
+
 src_prepare() {
 	# unlock dependencies
 	sed -i -e 's:~=:>=:g' setup.py || die
