@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools flag-o-matic
 
 DESCRIPTION="GNU/Linux port of the MAME emulator with GUI menu"
@@ -13,7 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa fbcon ncurses oss slang truetype"
 
-# sdl is required (bug #158417)
 DEPEND="
 	dev-libs/expat
 	media-libs/libsdl2[video]
@@ -39,6 +39,9 @@ PATCHES=(
 
 	# Patches from upstream
 	"${FILESDIR}"/${P}-pkgconfig_for_ncurses_and_slang.patch
+	"${FILESDIR}"/${P}-blank-flags.patch
+	"${FILESDIR}"/${P}-DESTDIR.patch
+	"${FILESDIR}"/${P}-FHS.patch
 )
 
 src_prepare() {
@@ -48,14 +51,11 @@ src_prepare() {
 	sed -i -e 's/AC_CHECK_CC_OPT/AX_CHECK_COMPILE_FLAG/' configure.ac || die
 
 	eautoreconf
-	sed -i -e 's/"-s"//' configure || die
 }
 
 src_configure() {
 	# Fix for bug #78030
-	if use ppc; then
-		append-ldflags "-Wl,--relax"
-	fi
+	use ppc && append-ldflags "-Wl,--relax"
 
 	ac_cv_prog_ASM=nasm \
 	econf \
@@ -75,28 +75,12 @@ src_configure() {
 }
 
 src_compile() {
-	STRIPPROG=true emake
+	emake \
+		VERSION="${PV}"
 }
 
 src_install() {
-	local f
-
-	for f in adv* ; do
-		if [[ -L "${f}" ]] ; then
-			dobin "${f}"
-		fi
-	done
-
-	insinto "/usr/share/advance"
-	doins support/event.dat
-	keepdir "/usr/share/advance/"{artwork,diff,image,rom,sample,snap}
-
-	dodoc HISTORY README RELEASE
-	cd doc
-	dodoc *.txt
-	HTMLDOCS="*.html" einstalldocs
-
-	for f in *.1 ; do
-		newman ${f} ${f/1/6}
-	done
+	emake install \
+		VERSION="${PV}" \
+		DESTDIR="${D}"
 }
