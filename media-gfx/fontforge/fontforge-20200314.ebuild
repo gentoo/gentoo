@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/20200314-stylemap.patch
 	"${FILESDIR}"/20200314-tilepath.patch
 	"${FILESDIR}"/20200314-big-endian.patch
+	"${FILESDIR}"/fontforge-doc-no-warn-error.patch
 )
 
 pkg_setup() {
