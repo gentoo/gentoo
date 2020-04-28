@@ -10,7 +10,7 @@ inherit perl-module eutils
 DESCRIPTION="Extensible, general Perl server engine"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="ipv6"
 
 RDEPEND="
