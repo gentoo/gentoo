@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,11 +17,11 @@ IUSE=""
 src_prepare() {
 	use elibc_musl && CPPFLAGS="${CPPFLAGS} -U__linux__"
 	sed -i \
-		-e '/^PREFIX/s:=.*:=$(DESTDIR)/usr:' \
-		-e '/^MANDIR/s:)/man/man1:)/share/man/man1:' \
-		-e '/^INSTALL_OPTS/s:-s::' \
-		-e "/^CFLAGS/s:=.*:=${CFLAGS} -D_POSIX_SOURCE ${CPPFLAGS}:" \
-		-e "/^LDFLAGS/s:=.*:=${LDFLAGS}:" \
+		-e '/^PREFIX/s|=.*|=$(DESTDIR)/usr|' \
+		-e '/^MANDIR/s|)/man/man1|)/share/man/man1|' \
+		-e '/^INSTALL_OPTS/s|-s||' \
+		-e "/^CFLAGS/s|=.*|=${CFLAGS} -D_POSIX_SOURCE ${CPPFLAGS}|" \
+		-e "/^LDFLAGS/s|=.*|=${LDFLAGS}|" \
 		Makefile || die
 	epatch "${FILESDIR}"/${PN}-0.16.17-amd64-build.patch
 	eapply_user
