@@ -1354,7 +1354,7 @@ app-editors/qhexedit2 0.8.4 0.8.4_p20170719 0.8.6_p20190316: Hex editor library,
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
-app-editors/scite 4.1.3 4.2.0 4.2.1 4.3.2: A very powerful, highly configurable, small editor with syntax coloring
+app-editors/scite 4.1.3 4.2.0 4.2.1 4.3.2 4.3.3: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.15: Simple Hex EDitor
 app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup and prose
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
@@ -5583,7 +5583,7 @@ dev-perl/Apache-CGI-Builder 1.300.0-r2: CGI::Builder and Apache2/mod_perl2 integ
 dev-perl/Apache-DBI 1.120.0-r2: Authentication and Authorization via Perl's DBI
 dev-perl/Apache-LogFormat-Compiler 0.350.0 0.360.0: Compile an Apache log format string to perl-code
 dev-perl/Apache-Reload 0.130.0-r1: Automatically reload changed modules without restarting Apache
-dev-perl/Apache-Session 1.930.0: A persistence framework for session data
+dev-perl/Apache-Session 1.930.0 1.930.0-r1: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
 dev-perl/Apache-Test 1.400.0-r2 1.420.0: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
@@ -7632,7 +7632,7 @@ dev-python/curtsies 0.3.0 0.3.0-r2: Curses-like terminal wrapper, with colored s
 dev-python/cvxopt 1.2.5: Python package for convex optimization
 dev-python/cx_Freeze 5.0.2 6.1: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0 0.10.0-r1: Composable style cycles
-dev-python/cython 0.29.14-r1 0.29.15: A Python to C compiler
+dev-python/cython 0.29.14-r1 0.29.15 0.29.17: A Python to C compiler
 dev-python/cytoolz 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
@@ -12276,7 +12276,7 @@ media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
 media-fonts/font-util 1.3.2-r1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
-media-fonts/fontawesome 4.7.0 5.1.0 5.11.2: The iconic font
+media-fonts/fontawesome 4.7.0 5.1.0 5.11.2 5.13.0 9999: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
 media-fonts/freefonts 0.10-r4: A Collection of Free Type1 Fonts
@@ -13939,7 +13939,7 @@ net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.14 0.9.17 0.9.18: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3 10-r4: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.3 9999: A suite for man in the middle attacks
-net-analyzer/fail2ban 0.10.4-r1 0.10.4-r2 0.10.5-r1 0.11.1-r2 99999999: scans log files and bans IPs that show malicious signs
+net-analyzer/fail2ban 0.11.1-r2 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r1 5.0-r2: A tool for determining a firewall's rule set
 net-analyzer/flent 1.0.1-r1: The FLExible Network Tester
 net-analyzer/flow-tools 0.68.5.1-r10: library and programs to process reports from NetFlow data
@@ -14404,7 +14404,7 @@ net-irc/ircstats 1.2: IRCStats is a Linux log analyzer
 net-irc/irker 2.18-r2: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.30-r1 3.31 3.32: IRC fileserver using DCC
 net-irc/irssi 1.2.2 9999: A modular textUI IRC client with IPv6 support
-net-irc/irssi-xmpp 0.53: An irssi plugin providing Jabber/XMPP support
+net-irc/irssi-xmpp 0.53 0.54: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.5-r1 1.7.5-r2: User friendly IRC Client
 net-irc/kvirc 5.2_pre20190628041642 5.2_pre20191202122540 9999: Advanced IRC Client
@@ -17925,7 +17925,7 @@ x11-apps/appres 1.0.4 1.0.5: list X application resource database
 x11-apps/bdftopcf 1.1: X.Org bdftopcf application
 x11-apps/beforelight 1.0.5: Sample implementation of screen saver
 x11-apps/bitmap 1.0.9: X.Org bitmap application
-x11-apps/copyq 3.7.2 3.8.0: Clipboard manager with advanced features
+x11-apps/copyq 3.10.0: Clipboard manager with advanced features
 x11-apps/editres 1.0.6 1.0.7: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.1.0: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.5-r1: list fonts served by X font server
@@ -18645,7 +18645,7 @@ x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background 
 x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305 0.0_pre20171111: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
 x11-terms/qterminal 0.14.1-r1 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r4: Terminal to display (multiple) log files on the root window
-x11-terms/roxterm 3.1.5-r1: A terminal emulator designed to integrate with the ROX environment
+x11-terms/roxterm 3.1.5-r1 3.9.3: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.22-r1 9.22-r3 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.5.0 3.6.0-r1 3.7.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.2 0.8.3 9999: simple terminal implementation for X
