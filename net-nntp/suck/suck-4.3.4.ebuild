@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="Grab news from a remote NNTP server and feed them to another"
@@ -37,8 +38,13 @@ src_prepare() {
 }
 
 src_configure() {
-	use ssl || sed -i -e 's/^SSL_/#SSL_/' Makefile.in || die "ssl sed failed"
-	use perl || sed -i -e 's/^PERL_/#PERL_/' Makefile.in || die "perl sed failed"
+	if use ssl; then
+		sed -i -e 's/^SSL_/#SSL_/' Makefile.in || die "ssl sed failed"
+	fi
+
+	if use perl; then
+		sed -i -e 's/^PERL_/#PERL_/' Makefile.in || die "perl sed failed"
+	fi
 
 	econf --without-inn-lib --without-inn-include
 }
