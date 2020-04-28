@@ -6,12 +6,6 @@ EAPI=7
 DESCRIPTION="Sugar Candy theme for SDDM"
 HOMEPAGE="https://www.opencode.net/marianarlt/sddm-sugar-candy"
 
-if [[ ${PV} == 9999 ]];then
-	KEYWORDS=""
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/Kangie/sddm-sugar-candy.git"
-fi
-
 KEYWORDS="~amd64 ~x86"
 SRC_URI="https://github.com/Kangie/sddm-sugar-candy/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -37,19 +31,17 @@ S="${WORKDIR}/sddm-sugar-candy-${PV}"
 src_install() {
 	local DOCS=( AUTHORS COPYING CHANGELOG.md README.md )
 	einstalldocs
-
-	local target="${ROOT}usr/share/sddm/themes/${PN}"
-	dodir ${target}
+	local target="${ROOT}/usr/share/sddm/themes/${PN}"
 	insinto ${target}
 	doins -r *
 }
 
 pkg_postinst () {
 	elog "This theme can be customised by editing"
-	elog "${ROOT}usr/share/sddm/themes/sugar-candy/theme.conf"
-	elog "You will need to setup your ${ROOT}etc/sddm.conf file before"
+	elog "${ROOT}/usr/share/sddm/themes/sugar-candy/theme.conf"
+	elog "You will need to configure your ${ROOT}/etc/sddm.conf before"
 	elog "this theme will be applied. If the file does not exist"
-	elog "it is safe to create it with the following config:"
+	elog "it is safe to create it with the following configuration:"
 	elog "[Theme]"
 	elog "Current=sugar-candy"
 }

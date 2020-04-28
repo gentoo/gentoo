@@ -10,6 +10,10 @@
 		<email>Kangie@footclan.ninja</email>
 		<name>Matt Jolly</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="jpeg">Provide support for jpeg backgrounds.</flag>
 		<flag name="svg">Provide support for svg backgrounds.</flag>
