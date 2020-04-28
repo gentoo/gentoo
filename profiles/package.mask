@@ -750,12 +750,6 @@ dev-util/buildbot-www
 net-fs/ncpfs
 net-misc/ipx-utils
 
-# Matt Turner <mattst88@gentoo.org> (2020-03-28)
-# Last release 2008. Last upstream commit 2013. Blocks removal of
-# gnome-base/libgnome-keyring
-# Bug #713030
-mail-client/mail-notification
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
 # new version is not packaged yet
