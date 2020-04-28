@@ -9543,6 +9543,7 @@ dev-ruby/ffaker 2.11.0 2.12.0 2.13.0 2.14.0: Faster Faker, generates dummy data
 dev-ruby/ffi 1.11.3 1.12.1 1.12.2: Ruby extension for programmatically loading dynamic libraries
 dev-ruby/file-tail 1.2.0: A small ruby library that allows it to 'tail' files in Ruby
 dev-ruby/filesize 0.2.0: small ruby class for handling filesizes with both the SI and binary prefixes
+dev-ruby/filigree 0.4.1: New classes and extensions to core library classes.
 dev-ruby/fivemat 1.3.7: MiniTest/RSpec/Cucumber formatter that gives each test file its own line of dots
 dev-ruby/flexmock 2.3.6: Simple mock object library for Ruby unit testing
 dev-ruby/flickraw 0.9.9 0.9.10: A library to access flickr api in a simple way
@@ -9572,7 +9573,7 @@ dev-ruby/hashicorp-checkpoint 0.1.5: Internal HashiCorp service to check version
 dev-ruby/hashie 2.1.2-r1 3.6.0 4.0.0 4.1.0: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 3.4.3 3.5.0 3.6.0: A simple pluggable Hierarchical Database
+dev-ruby/hiera 3.4.3 3.6.0: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 3.0.0 3.1.0 3.1.1: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.7.4: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6-r1: A plaintext backend for hiera-eyaml
@@ -9581,7 +9582,7 @@ dev-ruby/hipchat 1.6.0: Ruby library to interact with HipChat
 dev-ruby/hiredis 0.6.3: Wrapper for hiredis (protocol serialization/deserialization and blocking I/O)
 dev-ruby/hitimes 1.3.1 2.0.0: A fast, high resolution timer library
 dev-ruby/hocon 1.2.5 1.2.6 1.3.0: This is a port of the Typesafe Config library to Ruby.
-dev-ruby/hoe 3.16.0 3.18.1 3.19.0 3.20.0 3.21.0: Hoe extends rake to provide full project automation
+dev-ruby/hoe 3.16.0 3.21.0: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.5: Hoe plugins providing tasks used by seattle.rb
 dev-ruby/hpricot 0.8.6-r5: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.2.0: Convert HTML and HTML+Erb to Haml
@@ -9742,9 +9743,9 @@ dev-ruby/pdf-core 0.7.0 0.8.1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.3.0: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.4.1-r2 2.3.0 2.4.0: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
-dev-ruby/pg 0.21.0 1.1.4 1.2.2: Ruby extension library providing an API to PostgreSQL
+dev-ruby/pg 0.21.0 1.2.2: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
-dev-ruby/pkg-config 1.2.8 1.3.9 1.4.0 1.4.1: A pkg-config implementation by Ruby
+dev-ruby/pkg-config 1.2.8 1.4.1: A pkg-config implementation by Ruby
 dev-ruby/plist 3.4.0 3.5.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.2.0 1.3.1 1.4.0 1.4.1 1.5.0: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
@@ -10010,7 +10011,7 @@ dev-ruby/tty-prompt 0.19.0 0.20.0 0.21.0: A beautiful and powerful interactive c
 dev-ruby/tty-reader 0.6.0-r1 0.7.0: Methods for processing keyboard input in character, line and multiline modes
 dev-ruby/tty-screen 0.7.0 0.7.1: Terminal screen size detection which works on Linux, OS X and Windows/Cygwin
 dev-ruby/tty-which 0.4.1: Platform independent implementation of Unix which command
-dev-ruby/turbolinks 5.2.0 5.2.1: Makes following links in your web application faster
+dev-ruby/turbolinks 5.2.1: Makes following links in your web application faster
 dev-ruby/turbolinks-source 5.2.0: Turbolinks JavaScript assets
 dev-ruby/twitter 6.2.0 7.0.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.7 2.1.0 3.0.0 3.1.0: Text handling for Twitter
