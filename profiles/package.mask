@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-04-28)
+# Dead upstream. Removal in 30 days
+sys-cluster/openais
+
 # Jonas Stein <jstein@gentoo.org> (2020-04-28)
 # Package is no longer required after the removal of 
 # net-irc/quassel-irssi. See also bug #719856.
