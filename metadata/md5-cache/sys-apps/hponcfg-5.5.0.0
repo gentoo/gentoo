@@ -1,0 +1,12 @@
+BDEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DEFINED_PHASES=install unpack
+DESCRIPTION=HP Lights-Out Online Configuration Utility (HPONCFG)
+EAPI=7
+HOMEPAGE=http://h20564.www2.hpe.com/hpsc/swd/public/detail?swItemId=MTX_5ab6295f49964f16a699064f29
+KEYWORDS=-* ~amd64
+LICENSE=hpe
+RDEPEND=elibc_glibc? ( >sys-libs/glibc-2.14 )
+SLOT=0
+SRC_URI=amd64? ( https://downloads.linux.hpe.com/SDR/repo/spp/RHEL/7/x86_64/current/hponcfg-5.5.0-0.x86_64.rpm )
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	rpm	760ff223c2c4299b68ea901e24c4cabd
+_md5_=0b8b0bd7484167da29c189fcf49fa763

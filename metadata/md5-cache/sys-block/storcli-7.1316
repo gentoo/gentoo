@@ -3,9 +3,9 @@ DEPEND=app-arch/unzip
 DESCRIPTION=MegaRAID StorCLI (successor of the MegaCLI)
 EAPI=7
 HOMEPAGE=https://www.broadcom.com/support/download-search?dk=storcli
-KEYWORDS=-* amd64 x86
+KEYWORDS=-* ~amd64 ~x86
 LICENSE=Avago LSI BSD
-SLOT=0/7.12
-SRC_URI=https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/007.1211.0000.0000_Unified_StorCLI.zip -> storcli-7.1211.zip
+SLOT=0/7.13
+SRC_URI=https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/007.1316.0000.0000_Unified_StorCLI.zip -> storcli-7.1316.zip
 _eclasses_=pax-utils	a41d1fd1c111289ffa04490de6ee79d7
-_md5_=ec99961fd718315f2754bfa67adecc1d
+_md5_=e54fbba43051ce274c682cc70710f747

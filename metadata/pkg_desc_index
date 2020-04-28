@@ -539,7 +539,7 @@ app-admin/recursos 2.0-r1: Script to create html and text report about your syst
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1 0.14.2 0.14.4: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.3.3 1.4.0-r1 1.4.1 1.5.0 1.6.0 1.9.0 9999: (R)?ex, the friendly automation framework
-app-admin/rsyslog 8.1910.0-r1 8.1911.0-r1 8.2001.0 8.2002.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.1910.0-r1 8.1911.0-r1 8.2001.0 8.2002.0 8.2004.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2018.3.4 2019.2.0-r1 2019.2.2 2019.2.3: Salt is a remote execution and configuration manager
@@ -1616,8 +1616,8 @@ app-emulation/faudio 19.06 19.09 20.02 9999: FAudio - Accuracy-focused XAudio re
 app-emulation/firecracker 0.18.0 0.18.1 0.19.0 0.19.1 0.21.1: Secure and fast microVMs for serverless computing
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
 app-emulation/free42 2.0.20 2.5.14 2.5.16 2.5.17: An HP-42S Calculator Simulator
-app-emulation/fs-uae 3.0.3: Integrates the most accurate Amiga emulation code available from WinUAE
-app-emulation/fs-uae-launcher 3.0.3: PyQt5-based launcher for FS-UAE
+app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
+app-emulation/fs-uae-launcher 3.0.5: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.4.1 1.4.3: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/gallium-nine-standalone 0.5 9999: A standalone version of the WINE parts of Gallium Nine
@@ -5124,7 +5124,7 @@ dev-libs/libpwquality 1.4.1 1.4.2: Library for password quality checking and gen
 dev-libs/libqtxdg 3.3.1 3.4.0: A Qt implementation of XDG standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
 dev-libs/librdkafka 1.1.0 1.2.1 1.2.2 1.3.0 1.4.0: Apache Kafka C/C++ client library
-dev-libs/librelp 1.4.0 1.5.0: An easy to use library for the RELP protocol
+dev-libs/librelp 1.4.0 1.5.0 1.6.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.10.0 2.12.0 2.13.0: Generic library for reporting software bugs
 dev-libs/libressl 2.6.5 2.8.3 2.9.1 2.9.2 3.0.0 3.0.1 3.0.2 3.1.0: Free version of the SSL/TLS protocol forked from OpenSSL
@@ -14280,7 +14280,7 @@ net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1 4.18: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
-net-firewall/shorewall 5.2.3.7 5.2.4: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.3.7 5.2.4 5.2.4.3: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 2.13 3.7 3.8 3.9: iptables extensions not yet accepted in the main kernel
@@ -16648,7 +16648,7 @@ sys-apps/help2man 1.47.10 1.47.13 1.47.14 1.47.15: GNU utility to convert progra
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
-sys-apps/hponcfg 4.6.0.0 5.4.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
+sys-apps/hponcfg 4.6.0.0 5.4.0.0 5.5.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwids 20190316 20190818 20191025 20200204 20200306 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
@@ -16951,7 +16951,7 @@ sys-block/sedutil 1.15 1.15.1: The Drive Trust Alliance Self Encrypting Drive Ut
 sys-block/seekwatcher 0.13: generates graphs from blktrace to help visualize IO patterns and performance
 sys-block/smp_utils 0.99_beta4_p151 0.99: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
-sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606 7.0709-r1 7.1017 7.1211: MegaRAID StorCLI (successor of the MegaCLI)
+sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606 7.0709-r1 7.1017 7.1211 7.1316: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0-r1: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli-fb 2.1.49 2.1.51: Command shell for managing Linux LIO kernel target
 sys-block/tgt 1.0.78 1.0.79: Linux SCSI target framework (tgt)
