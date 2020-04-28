@@ -96,7 +96,6 @@ games-strategy/spaz
 media-sound/aucdtect
 media-video/binkplayer
 media-video/tsmuxer
-net-misc/icaclient
 net-misc/ps3mediaserver
 net-print/cndrvcups-common-lb
 net-print/cndrvcups-lb
