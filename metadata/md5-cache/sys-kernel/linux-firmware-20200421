@@ -4,12 +4,12 @@ DESCRIPTION=Linux firmware files
 EAPI=7
 HOMEPAGE=https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git
 IUSE=initramfs +redistributable savedconfig unknown-license savedconfig
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86
 LICENSE=GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 ) redistributable? ( linux-fw-redistributable ( BSD-2 BSD BSD-4 ISC MIT no-source-code ) ) unknown-license? ( all-rights-reserved )
 RDEPEND=!savedconfig? ( redistributable? ( !sys-firmware/alsa-firmware[alsa_cards_ca0132] !media-tv/cx18-firmware !<sys-firmware/ivtv-firmware-20080701-r1 !media-tv/linuxtv-dvb-firmware[dvb_cards_cx231xx] !media-tv/linuxtv-dvb-firmware[dvb_cards_cx23885] !media-tv/linuxtv-dvb-firmware[dvb_cards_usb-dib0700] !net-dialup/ueagle-atm !net-dialup/ueagle4-atm !net-wireless/ar9271-firmware !net-wireless/i2400m-fw !net-wireless/libertas-firmware !sys-firmware/rt61-firmware !net-wireless/rt73-firmware !net-wireless/rt2860-firmware !net-wireless/rt2870-firmware !sys-block/qla-fc-firmware !sys-firmware/amd-ucode !sys-firmware/iwl1000-ucode !sys-firmware/iwl2000-ucode !sys-firmware/iwl2030-ucode !sys-firmware/iwl3945-ucode !sys-firmware/iwl4965-ucode !sys-firmware/iwl5000-ucode !sys-firmware/iwl5150-ucode !sys-firmware/iwl6000-ucode !sys-firmware/iwl6005-ucode !sys-firmware/iwl6030-ucode !sys-firmware/iwl6050-ucode !sys-firmware/iwl3160-ucode !sys-firmware/iwl7260-ucode !sys-firmware/iwl7265-ucode !sys-firmware/iwl3160-7260-bt-ucode !sys-firmware/radeon-ucode ) unknown-license? ( !sys-firmware/alsa-firmware[alsa_cards_korg1212] !sys-firmware/alsa-firmware[alsa_cards_maestro3] !sys-firmware/alsa-firmware[alsa_cards_sb16] !sys-firmware/alsa-firmware[alsa_cards_ymfpci] ) )
 REQUIRED_USE=initramfs? ( redistributable )
 RESTRICT=binchecks strip unknown-license? ( bindist )
 SLOT=0
-SRC_URI=https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-64dba0fedb22eae32f76dcd4534b3f416db178de.tar.gz -> linux-firmware-20200413.tar.gz
+SRC_URI=https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20200421.tar.gz -> linux-firmware-20200421.tar.gz
 _eclasses_=mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd
-_md5_=e08030ab9ab07cb9dd7932aa7f641617
+_md5_=0db5453b30ede87b82444afc23f32e34
