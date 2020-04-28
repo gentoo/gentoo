@@ -5599,7 +5599,7 @@ dev-perl/Archive-Any 0.94.500 0.94.600: Single interface to deal with file archi
 dev-perl/Archive-Extract 0.800.0 0.860.0: Generic archive extracting mechanism
 dev-perl/Archive-Tar-Stream 0.30.0 0.30.0-r1: pure perl IO-friendly tar file management
 dev-perl/Archive-Tar-Wrapper 0.330.0 0.370.0: API wrapper around the 'tar' utility
-dev-perl/Archive-Zip 1.640.0: A wrapper that lets you read Zip archive members as if they were files
+dev-perl/Archive-Zip 1.640.0 1.680.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.1: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
