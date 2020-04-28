@@ -24,9 +24,11 @@ RESTRICT="!test? ( test )"
 DOCS=( doc/{README,FAQ} )
 
 BDEPEND="
-	dev-libs/gobject-introspection
-	dev-python/httplib2
-	dev-python/pygobject"
+	test? (
+		dev-libs/gobject-introspection
+		dev-python/httplib2[${PYTHON_USEDEP}]
+		dev-python/pygobject[${PYTHON_USEDEP}]
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/python-distutils-extra-2.44-test.patch
