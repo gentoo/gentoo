@@ -29,6 +29,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.13-nouseradd.patch"
 	"${FILESDIR}/${P}-libressl.patch"
+	"${FILESDIR}/${P}-fno-common.patch"
 )
 
 DOCS="AUTHORS ChangeLog NICETOHAVES README TODO"
@@ -37,45 +38,9 @@ DOC_CONTENTS="
 	If you have problems starting tcsd, please check permissions and
 	ownership on /dev/tpm* and ~tss/system.data
 "
-
 S="${WORKDIR}"
 
-pkg_setup() {
-	# Check for driver (not sure it can be an rdep, because ot depends on the
-	# version of virtual/linux-sources... Is that supported by portage?)
-	linux-info_pkg_setup
-	local tpm_kernel_version tpm_kernel_present tpm_module
-	kernel_is ge 2 6 12 && tpm_kernel_version="yes"
-	if linux_config_exists; then
-		linux_chkconfig_present TCG_TPM && tpm_kernel_present="yes"
-	else
-		ewarn "No kernel configuration could be found."
-	fi
-	has_version app-crypt/tpm-emulator && tpm_module="yes"
-	if [[ -n "${tpm_kernel_present}" ]]; then
-		einfo "Good, you seem to have in-kernel TPM support."
-	elif [[ -n "${tpm_module}" ]]; then
-		einfo "Good, you seem to have TPM support with the external module."
-		if [[ -n "${tpm_kernel_version}" ]]; then
-			elog
-			elog "Note that since you have a >=2.6.12 kernel, you could use"
-			elog "the in-kernel driver instead of (CONFIG_TCG_TPM)."
-		fi
-	elif [[ -n "${tpm_kernel_version}" ]]; then
-		eerror
-		eerror "To use this package, you will have to activate TPM support"
-		eerror "in your kernel configuration. That's at least CONFIG_TCG_TPM,"
-		eerror "plus probably a chip specific driver (like CONFIG_TCG_ATMEL)."
-		eerror
-	else
-		eerror
-		eerror "To use this package, you should install a TPM driver."
-		eerror "You can have the following options:"
-		eerror "  - install app-crypt/tpm-emulator"
-		eerror "  - switch to a >=2.6.12 kernel and compile the kernel module"
-		eerror
-	fi
-}
+CONFIG_CHECK="~TCG_TPM"
 
 src_prepare() {
 	default
