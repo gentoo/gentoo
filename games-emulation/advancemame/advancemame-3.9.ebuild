@@ -19,7 +19,7 @@ DEPEND="
 	media-libs/libsdl2[video]
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:= )
 	slang? ( sys-libs/slang )
 	truetype? ( media-libs/freetype:2 )
 "
