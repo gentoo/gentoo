@@ -26,7 +26,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/importlib_metadata[${PYTHON_USEDEP}]
 		dev-python/zipp[${PYTHON_USEDEP}]
-	' pypy3 python3_{6,7})
+	' pypy3 python3_6)
 "
 BDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]
@@ -34,7 +34,7 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
-distutils_enable_sphinx importlib_resources/docs dev-python/rst-linker
+distutils_enable_sphinx docs dev-python/rst-linker dev-python/jaraco-packaging
 
 python_compile() {
 	distutils-r1_python_compile
