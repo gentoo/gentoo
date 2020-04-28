@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,10 +32,9 @@ RDEPEND="
 	webkit? ( dev-qt/qtwebkit:5 )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	test? ( dev-qt/qttest:5 )
-"
-S=${WORKDIR}/$MY_P
+	test? ( dev-qt/qttest:5 )"
+BDEPEND="dev-qt/linguist-tools:5"
+S="${WORKDIR}/$MY_P"
 
 src_configure() {
 	# CMakeLists.txt concatenates INSTALL_PREFIX with INSTALL_MANDIR leading to /usr/usr
