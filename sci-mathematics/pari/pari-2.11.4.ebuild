@@ -97,6 +97,7 @@ src_test() {
 }
 
 src_install() {
+	DOCS=( AUTHORS CHANGES* COMPAT NEW README* )
 	default
 
 	if use doc; then
