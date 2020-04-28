@@ -8,5 +8,6 @@
 	<longdescription>the network swiss army knife</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">nc110</remote-id>
+		<remote-id type="cpe">cpe:/a:netcat_project:netcat</remote-id>
 	</upstream>
 </pkgmetadata>

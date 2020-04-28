@@ -29,4 +29,7 @@
         when installing files. Usually only required for hardened systems.
     </flag>
   </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gentoo:portage</remote-id>
+  </upstream>
 </pkgmetadata>

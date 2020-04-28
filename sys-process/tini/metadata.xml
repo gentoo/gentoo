@@ -15,4 +15,7 @@
 	<use>
 		<flag name="args">Enable argument parsing.</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:tini_project:tini</remote-id>
+	</upstream>
 </pkgmetadata>

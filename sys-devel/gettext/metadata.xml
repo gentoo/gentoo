@@ -15,4 +15,7 @@
 		this requires git at runtime, but will be faster/smaller than raw archives
 	</flag>
 </use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:gnu:gettext</remote-id>
+</upstream>
 </pkgmetadata>

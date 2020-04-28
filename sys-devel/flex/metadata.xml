@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="sourceforge">flex</remote-id>
 		<remote-id type="github">westes/flex</remote-id>
+		<remote-id type="cpe">cpe:/a:flex_project:flex</remote-id>
 	</upstream>
 </pkgmetadata>

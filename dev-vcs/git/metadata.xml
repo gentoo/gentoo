@@ -38,4 +38,7 @@
     <flag name="tk">Include the 'gitk' and 'git gui' tools</flag>
     <flag name="webdav">Adds support for push'ing to HTTP/HTTPS repositories via DAV</flag>
   </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:git:git</remote-id>
+  </upstream>
 </pkgmetadata>
