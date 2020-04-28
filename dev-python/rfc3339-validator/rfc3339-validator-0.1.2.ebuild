@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc64 ~sparc ~x86"
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]
 	dev-python/strict-rfc3339[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/hypothesis[${PYTHON_USEDEP}] )
 "
 
 PATCHES=(
