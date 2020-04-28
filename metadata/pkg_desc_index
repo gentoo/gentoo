@@ -5591,8 +5591,8 @@ dev-perl/App-CLI 0.500.0: Dispatcher module for command line interface programs
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
 dev-perl/App-Nopaste 1.12.0 1.13.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.704.400: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.840.0: Manage perl installations in your $HOME
-dev-perl/App-pwhich 1.140.0 1.150.0: Perl-only 'which'
+dev-perl/App-perlbrew 0.840.0 0.880.0: Manage perl installations in your $HOME
+dev-perl/App-pwhich 1.140.0 1.150.0 1.160.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.500: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0: Generic archive extracting mechanism
@@ -5678,7 +5678,7 @@ dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version fro
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 3.760.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
@@ -5940,7 +5940,7 @@ dev-perl/Devel-Leak 0.30.0: Utility for looking for perl objects that are not re
 dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
 dev-perl/Devel-NYTProf 6.60.0: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
-dev-perl/Devel-PatchPerl 1.520.0: Patch perl source a la Devel::PPPort's buildperl.pl
+dev-perl/Devel-PatchPerl 1.520.0 1.920.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.28: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r1: Perl extension for refactoring Perl code
 dev-perl/Devel-SimpleTrace 0.80.0: See where you code warns and dies using stack traces
@@ -16187,7 +16187,7 @@ sci-mathematics/pymc3 3.1: Bayesian Modeling and Probabilistic Machine Learning 
 sci-mathematics/relational 2.5-r2: Educational tool for relational algebra
 sci-mathematics/rkward 0.7.1: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 1.1.463-r1 1.2.1335 1.2.5033: IDE for the R language
+sci-mathematics/rstudio 1.1.463-r1 1.2.1335 1.2.5033 1.2.5042: IDE for the R language
 sci-mathematics/rw 0.8-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 4.0.2 4.0.3: Computer algebra system for polynomial computations
