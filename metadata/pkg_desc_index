@@ -5584,7 +5584,7 @@ dev-perl/Apache-DBI 1.120.0-r2: Authentication and Authorization via Perl's DBI
 dev-perl/Apache-LogFormat-Compiler 0.350.0 0.360.0: Compile an Apache log format string to perl-code
 dev-perl/Apache-Reload 0.130.0-r1: Automatically reload changed modules without restarting Apache
 dev-perl/Apache-Session 1.930.0 1.930.0-r1: A persistence framework for session data
-dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
+dev-perl/Apache-SizeLimit 0.970.0-r1 0.970.0-r2: Graceful exit for large children
 dev-perl/Apache-Test 1.400.0-r2 1.420.0: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.500.0: Dispatcher module for command line interface programs
@@ -15093,7 +15093,7 @@ net-nntp/pan 0.145: A newsreader for GNOME
 net-nntp/sabnzbd 2.3.9-r1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
-net-nntp/suck 4.3.3-r1: Grab news from a remote NNTP server and feed them to another
+net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.6.0 2.6.1: Cross-platform Direct Connect client
 net-p2p/amule 2.3.2-r2 2.3.2-r4 9999: aMule, the all-platform eMule p2p client
