@@ -7900,7 +7900,7 @@ dev-python/intervaltree 3.0.2: Editable interval tree data structure for Python 
 dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
 dev-python/invoke 1.1.1: Pythonic task execution
 dev-python/iocapture 0.1.2-r2: Capture stdout, stderr easily
-dev-python/ioflo 1.7.5: Automated Reasoning Engine and Flow Based Programming Framework
+dev-python/ioflo 1.7.5 1.7.8 2.0.0: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ip-associations-python-novaclient-ext 0.2: Disk Config extension for python-novaclient
 dev-python/ipaddr 2.2.0: Python IP address manipulation library
 dev-python/ipaddress 1.0.23: IPv4/IPv6 manipulation library, backport of the ipaddress module

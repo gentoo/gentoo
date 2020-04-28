@@ -3,10 +3,10 @@ DEPEND=>=virtual/perl-libnet-1.70.300 virtual/perl-ExtUtils-MakeMaker dev-lang/p
 DESCRIPTION=interact with TELNET port or other TCP ports in Perl
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Net-Telnet
-KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-libnet-1.70.300 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JR/JROGERS/Net-Telnet-3.04.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=06fdd9f7171ba4ba2ef22be737e90d46
+_md5_=d8ecef44c00e22c03b867974a4589b24

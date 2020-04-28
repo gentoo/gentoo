@@ -4,11 +4,11 @@ DESCRIPTION=Attempt to recover from people calling UNIVERSAL::isa as a function
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/UNIVERSAL-isa
 IUSE=test
-KEYWORDS=amd64 ~arm ppc sparc x86 ~ppc-aix
+KEYWORDS=amd64 ~arm ~arm64 ppc sparc x86 ~ppc-aix
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Scalar-List-Utils dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/UNIVERSAL-isa-1.20171012.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=614a940534019b223ed32b0149faaacb
+_md5_=4746f342acd325bea0f78ab6425d229e
