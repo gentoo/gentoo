@@ -27,7 +27,7 @@ RDEPEND="
 	<net-libs/libupnp-1.8.0
 	sys-libs/zlib
 	control-socket? ( dev-qt/qtnetwork:5 )
-	gnome-keyring? ( gnome-base/libgnome-keyring )
+	gnome-keyring? ( app-crypt/libsecret )
 	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtmultimedia:5
