@@ -1,0 +1,57 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+inherit gnome.org meson multilib-minimal
+
+DESCRIPTION="C++ interface for glib2"
+HOMEPAGE="https://www.gtkmm.org"
+
+LICENSE="LGPL-2.1+"
+SLOT="2"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+IUSE="doc debug test"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	>=dev-libs/libsigc++-2.9.1:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.61.2:2[${MULTILIB_USEDEP}]
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+	>=dev-cpp/mm-common-1.0.0
+"
+
+src_prepare() {
+	default
+
+	if ! use test; then
+		sed -i -e "/^subdir('tests')/d" meson.build || die
+	fi
+}
+
+multilib_src_configure() {
+	local emesonargs=(
+		-Dmaintainer-mode=true
+		-Dwarnings=min
+		-Dbuild-deprecated-api=true
+		-Dbuild-documentation=$(usex doc true false)
+		-Ddebug-refcounting=$(usex debug true false)
+		-Dbuild-examples=false
+	)
+	meson_src_configure
+}
+
+multilib_src_compile() {
+	meson_src_compile
+}
+
+multilib_src_test() {
+	meson_src_test
+}
+
+multilib_src_install() {
+	meson_src_install
+}
