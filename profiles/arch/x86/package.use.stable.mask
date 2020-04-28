@@ -29,11 +29,6 @@ kde-plasma/xdg-desktop-portal-kde screencast
 sys-apps/xdg-desktop-portal screencast
 x11-wm/mutter screencast
 
-# Brian Evans <grknight@gentoo.org> (2019-05-22)
-# Allow python-exec to install all targets
-# Ack by mgorny
-dev-lang/python-exec -python_targets_python3_7 -python_targets_python3_8
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
 # dev-db/oracle-instantclient ain't stable
 dev-qt/qtsql oci8
@@ -90,4 +85,4 @@ dev-cpp/eigen test
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy3
+dev-lang/python-exec -python_targets_pypy3 -python_targets_python3_8
