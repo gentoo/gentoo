@@ -20,6 +20,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc64 ~sparc ~x86"
 
 RDEPEND="dev-python/rfc3987[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/hypothesis[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
 
