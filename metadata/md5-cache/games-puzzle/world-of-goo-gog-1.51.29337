@@ -1,0 +1,15 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A puzzle game with a strong emphasis on physics (GOG edition)
+EAPI=7
+HOMEPAGE=https://2dboy.com/
+IUSE=bundled-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=2dboy-EULA
+RDEPEND=!bundled-libs? ( media-libs/libsdl2[opengl,sound,video] media-libs/sdl2-mixer[vorbis] ) >=sys-devel/gcc-3.4 sys-libs/glibc virtual/opengl !games-puzzle/world-of-goo !games-puzzle/world-of-goo-hb
+RESTRICT=bindist fetch strip bundled-libs? ( splitdebug )
+SLOT=0
+SRC_URI=world_of_goo_1_51_29337.sh
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=4964db13dedeffc3a3bca21178b02dbe
