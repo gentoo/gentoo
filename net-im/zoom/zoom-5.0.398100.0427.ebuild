@@ -22,6 +22,8 @@ RDEPEND="!games-engines/zoom
 	dev-libs/icu
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
+	amd64? ( dev-qt/qtdeclarative:5[widgets] )
+	x86? ( dev-qt/qtdeclarative:5 )
 	dev-qt/qtdiag:5
 	dev-qt/qtgraphicaleffects:5
 	dev-qt/qtgui:5
@@ -41,17 +43,6 @@ RDEPEND="!games-engines/zoom
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
-	amd64? (
-		dev-qt/qtdeclarative:5[widgets]
-		dev-qt/qtpositioning:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtwebchannel:5
-		dev-qt/qtwebengine:5[widgets]
-	)
-	x86? (
-		dev-qt/qtdeclarative:5
-		dev-qt/qtwebkit:5
-	)
 	!bundled-libjpeg-turbo? ( media-libs/libjpeg-turbo )
 	pulseaudio? ( media-sound/pulseaudio )
 	!pulseaudio? ( media-libs/alsa-lib )"
