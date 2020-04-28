@@ -51,7 +51,6 @@ src_prepare() {
 	sed -i -e 's/"-s"//' configure || die
 
 	use x86 && ln -s $(type -P nasm) "${T}/${CHOST}-nasm"
-	ln -s $(type -P sdl2-config) "${T}/${CHOST}-sdl2-config"
 }
 
 src_configure() {
