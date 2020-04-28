@@ -32,6 +32,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/python-distutils-extra-2.44-test.patch
+	"${FILESDIR}"/python-distutils-extra-2.44-skip-build.patch
 )
 
 python_test() {
