@@ -25,7 +25,10 @@ DEPEND="
 	>=dev-libs/wayland-1.10.0
 "
 RDEPEND="${DEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc )
+"
 
 src_configure() {
 	local emesonargs=(
