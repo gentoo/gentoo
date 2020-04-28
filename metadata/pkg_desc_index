@@ -14590,7 +14590,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 13.13.0 14.0.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 13.13.0 14.0.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -17828,7 +17828,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 81.0.4044.122 83.0.4103.23: Open-source version of Google Chrome web browser
+www-client/chromium 81.0.4044.122 81.0.4044.129 83.0.4103.23: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
@@ -17836,9 +17836,9 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0-r1 68.7.0-r1 75.0-r2: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.7.0 75.0: Firefox Web Browser
-www-client/google-chrome 81.0.4044.122: The web browser from Google
-www-client/google-chrome-beta 83.0.4103.14: The web browser from Google
-www-client/google-chrome-unstable 84.0.4115.5: The web browser from Google
+www-client/google-chrome 81.0.4044.129: The web browser from Google
+www-client/google-chrome-beta 83.0.4103.23: The web browser from Google
+www-client/google-chrome-unstable 84.0.4122.7: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
@@ -17885,7 +17885,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r2: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.363: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 81.0.4044.122 83.0.4103.14_beta 84.0.4115.5_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 81.0.4044.129 83.0.4103.23_beta 84.0.4122.7_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
