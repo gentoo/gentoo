@@ -5576,7 +5576,7 @@ dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binar
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.140.0 7.170.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
-dev-perl/AnyEvent-HTTP 2.240.0: Simple but non-blocking HTTP/HTTPS client
+dev-perl/AnyEvent-HTTP 2.240.0 2.250.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-HTTPD 0.930.0: A simple lightweight event based web (application) server
 dev-perl/AnyEvent-I3 0.170.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.270.0-r1 3.300.0: Perl Authentication and Authorization via cookies
