@@ -19,9 +19,11 @@ RESTRICT="!test? ( test )"
 IUSE="test"
 
 RDEPEND="
-		>=app-arch/brotli-1.0.7[python,${PYTHON_USEDEP}]
+		|| (
+			>=app-arch/brotli-1.0.7[python,${PYTHON_USEDEP}]
+			>=dev-python/brotlipy-0.7.0[${PYTHON_USEDEP}]
+		)
 		>=app-arch/zopfli-0.1.6
-		>=dev-python/brotlipy-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/fs-2.4.11[${PYTHON_USEDEP}]
 		>=dev-python/scipy-1.4.1[${PYTHON_USEDEP}]
 		>=dev-python/unicodedata2-13.0.0[${PYTHON_USEDEP}]
