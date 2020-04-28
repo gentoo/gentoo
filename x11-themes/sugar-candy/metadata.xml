@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<bugs-to>mailto:marianarlt@icloud.com</bugs-to>
+		<changelog>https://github.com/Kangie/sddm-sugar-candy/blob/master/CHANGELOG.md</changelog>
+		<doc>https://github.com/Kangie/sddm-sugar-candy/blob/master/README.md</doc>
+	</upstream>
+	<maintainer type="person">
+		<email>Kangie@footclan.ninja</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+	<use>
+		<flag name="jpeg">Provide support for jpeg backgrounds.</flag>
+		<flag name="svg">Provide support for svg backgrounds.</flag>
+	</use>
+</pkgmetadata>
+
