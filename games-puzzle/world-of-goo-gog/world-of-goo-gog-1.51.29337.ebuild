@@ -54,7 +54,7 @@ src_install() {
 	doins -r data/noarch/game/game/
 	use bundled-libs && doins -r data/noarch/game/lib$(usex amd64 64)/
 
-	newicon -s 256 data/noarch/game/gooicon.png ${PN%-*}.png
+	newicon -s 256 data/noarch/game/game/gooicon.png ${PN%-*}.png
 	make_desktop_entry ${PN%-*} "World of Goo" ${PN%-*}
 
 	dodoc data/noarch/docs/linux-issues.txt

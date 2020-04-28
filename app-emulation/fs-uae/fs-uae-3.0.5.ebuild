@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools xdg-utils
+inherit autotools xdg
 
 DESCRIPTION="Integrates the most accurate Amiga emulation code available from WinUAE"
 HOMEPAGE="https://fs-uae.net/"
@@ -105,15 +105,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
-
+	xdg_pkg_postinst
 	elog "Install app-emulation/fs-uae-launcher for a better graphical interface."
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
 }
