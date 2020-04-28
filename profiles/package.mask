@@ -750,22 +750,6 @@ dev-util/buildbot-www
 net-fs/ncpfs
 net-misc/ipx-utils
 
-# Matt Turner <mattst88@gentoo.org> (2020-03-28)
-# Last release 2008. Last upstream commit 2013. Blocks removal of
-# gnome-base/libgnome-keyring
-# Bug #713030
-mail-client/mail-notification
-
-# Matt Turner <mattst88@gentoo.org> (2020-03-28)
-# Homepage gone. Dead project. Blocks removal of gnome-base/libgnome-keyring
-# Bug #713028
-games-puzzle/skoosh
-
-# Matt Turner <mattst88@gentoo.org> (2020-03-28)
-# No consumers. Dead project. Blocks removal of gnome-base/libgnome-keyring
-# Bug #713020
-dev-dotnet/gnome-keyring-sharp
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
 # new version is not packaged yet
@@ -788,11 +772,6 @@ dev-python/aiohttp-cors
 net-misc/gns3-converter
 net-misc/gns3-gui
 net-misc/gns3-server
-
-# Matt Turner <mattst88@gentoo.org> (2020-03-25)
-# No releases in two years. No commits in upstream git in last six months.
-# Many open security bugs. Masked for removal in 30 days.
-media-libs/libpostproc
 
 # Jonas Stein <jstein@gentoo.org> (2020-03-21)
 # Package masked for removal. Broken SRC_URI,
