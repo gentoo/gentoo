@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	sysprof? ( >=dev-util/sysprof-capture-3.33.2:3 )
 	virtual/pkgconfig
 	test? ( sys-apps/dbus
-		>=x11-libs/gtk+-3.20:3 )
+		>=x11-libs/gtk+-3.20:3[introspection] )
 "
 
 RESTRICT="!test? ( test )"
