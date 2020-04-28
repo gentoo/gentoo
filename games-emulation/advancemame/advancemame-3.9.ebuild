@@ -49,8 +49,6 @@ src_prepare() {
 
 	eautoreconf
 	sed -i -e 's/"-s"//' configure || die
-
-	use x86 && ln -s $(type -P nasm) "${T}/${CHOST}-nasm"
 }
 
 src_configure() {
@@ -59,7 +57,7 @@ src_configure() {
 		append-ldflags "-Wl,--relax"
 	fi
 
-	PATH="${PATH}:${T}"
+	ac_cv_prog_ASM=nasm \
 	econf \
 		--enable-expat \
 		--enable-sdl2 \
