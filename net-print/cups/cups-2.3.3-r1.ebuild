@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic linux-info xdg multilib-minimal pam user systemd toolchain-funcs
+inherit autotools flag-o-matic linux-info xdg multilib-minimal pam systemd toolchain-funcs
 
 MY_PV="${PV/_rc/rc}"
 MY_PV="${MY_PV/_beta/b}"
@@ -56,11 +56,13 @@ CDEPEND="
 DEPEND="${CDEPEND}"
 BDEPEND="
 	acct-group/lp
+	acct-group/lpadmin
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 "
 
 RDEPEND="${CDEPEND}
 	acct-group/lp
+	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
 "
 
@@ -89,8 +91,9 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	#enewgroup lp -> acct-group/lp
-	enewuser lp -1 -1 -1 lp
-	enewgroup lpadmin 106
+	# user lp already provided by baselayout
+	#enewuser lp -1 -1 -1 lp
+	#enewgroup lpadmin 106
 
 	if use kernel_linux; then
 		linux-info_pkg_setup
