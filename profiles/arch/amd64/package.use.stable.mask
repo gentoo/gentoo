@@ -17,15 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Brian Evans <grknight@gentoo.org> (2020-03-04)
-# Small number of packages which need new stables
-# app-misc/gramps needs newer media-libs/gexiv2 bug 711784
-# dev-python/pyqrcode needs newer dev-python/pypng
-# sys-cluser/ceph needs new cherrypy
-app-misc/gramps python_single_target_python3_7
-dev-python/pyqrcode python_targets_python3_7
-sys-cluster/ceph python_targets_python3_7
-
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
 # net-libs/quiche is an early HTTP/3 implementation
 # not yet ready for everyone.
@@ -38,11 +29,6 @@ kde-apps/krfb wayland
 kde-plasma/xdg-desktop-portal-kde screencast
 sys-apps/xdg-desktop-portal screencast
 x11-wm/mutter screencast
-
-# Brian Evans <grknight@gentoo.org> (2019-05-22)
-# Allow python-exec to install all targets
-# Ack by mgorny
-dev-lang/python-exec -python_targets_python3_7 -python_targets_python3_8
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
 # dev-db/oracle-instantclient ain't stable
@@ -101,4 +87,4 @@ gnustep-base/gnustep-make libobjc2
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy3
+dev-lang/python-exec -python_targets_pypy3 -python_targets_python3_8
