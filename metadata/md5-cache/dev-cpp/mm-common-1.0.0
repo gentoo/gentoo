@@ -1,0 +1,11 @@
+BDEPEND=app-arch/xz-utils >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=Build infrastructure and utilities for GNOME C++ bindings
+EAPI=7
+HOMEPAGE=https://www.gtkmm.org/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gnome/sources/mm-common/1.0/mm-common-1.0.0.tar.xz
+_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	meson	ec6bf50968c54cd38e70bf708c92c299	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=cd4da7d947c3665aa9b8bc7026a040bf
