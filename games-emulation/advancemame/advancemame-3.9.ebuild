@@ -80,7 +80,7 @@ src_compile() {
 }
 
 src_install() {
-	emake install \
+	emake -j1 install \
 		VERSION="${PV}" \
 		DESTDIR="${D}"
 }
