@@ -5,7 +5,35 @@
     <email>python@gentoo.org</email>
     <name>Python</name>
   </maintainer>
+  <longdescription lang="en">
+    ReportLab is the time-proven, ultra-robust open-source engine for creating
+    complex, data-driven PDF documents and custom vector graphics. It's free,
+    open-source, and written in Python. The package sees 50,000+ downloads per
+    month, is part of standard Linux distributions, is embedded in many
+    products, and was selected to power the print/export feature for Wikipedia.
+
+    The ReportLab Toolkit has evolved over the years in direct response to the
+    real-world reporting needs of large institutions. The library implements
+    three main layers:
+
+        A graphics canvas API that 'draws' PDF pages A charts and widgets
+        library for creating reusable data graphics. A page layout engine -
+        PLATYPUS ("Page Layout and TYPography Using Scripts") - which builds
+        documents from elements such as headlines, paragraphs, fonts, tables
+        and vector graphics.
+
+    The open-source ReportLab Toolkit provides the core of our commercial
+    product, ReportLab PLUS, which generates PDF at higher speed and allows use
+    of our smart XML-based templating language RML. ReportLab PLUS contains
+    significant upgrades over the open-source library that allows for a much
+    faster development cycle. If you are putting substantial time into
+    building a solution please consider the commercial version; it is faster,
+    does more, and the revenues directly support ongoing development. You
+    can trial ReportLab PLUS for free.
+  </longdescription>
   <upstream>
+    <bugs-to>mailto:reportlab-users@lists2.reportlab.com</bugs-to>
+    <doc lang="en">https://www.reportlab.com/dev/docs</doc>
     <remote-id type="pypi">reportlab</remote-id>
   </upstream>
 </pkgmetadata>
