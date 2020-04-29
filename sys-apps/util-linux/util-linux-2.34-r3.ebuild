@@ -62,11 +62,6 @@ RDEPEND+="
 		!>=sys-apps/shadow-4.7-r2[su]
 	)
 	!net-wireless/rfkill
-	!sys-process/schedutils
-	!sys-apps/setarch
-	!<sys-apps/sysvinit-2.88-r7
-	!<sys-libs/e2fsprogs-libs-1.41.8
-	!<sys-fs/e2fsprogs-1.41.8
 	!<app-shells/bash-completion-2.7-r1"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
