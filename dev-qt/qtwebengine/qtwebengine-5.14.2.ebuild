@@ -78,7 +78,10 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.14.1-disable-fatal-warnings.patch" ) # bug 695446
+PATCHES=(
+	"${FILESDIR}/${PN}-5.14.1-disable-fatal-warnings.patch" # bug 695446
+	"${FILESDIR}/${PN}-5.14.2-icu67.patch"
+)
 
 src_prepare() {
 	if ! use jumbo-build; then
