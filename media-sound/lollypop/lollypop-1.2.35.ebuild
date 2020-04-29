@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
-inherit python-single-r1 gnome2-utils meson xdg-utils
+inherit gnome2-utils meson xdg-utils
 
 DESCRIPTION="Modern music player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lollypop"
