@@ -12,3 +12,4 @@ move www-servers/automx2 net-mail/automx2
 move dev-python/pysnmp-apps net-analyzer/snmpclitools
 move net-im/slack-bin net-im/slack
 slotmove sys-libs/libunwind 7 0
+move x11-libs/gdk-pixbuf-loader-webp gui-libs/webp-pixbuf-loader
