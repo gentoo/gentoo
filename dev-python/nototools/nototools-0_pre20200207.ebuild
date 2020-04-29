@@ -30,6 +30,9 @@ RDEPEND="
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
+# Some tests weren't ported to python3 yet
+RESTRICT="test"
+
 python_test() {
 	esetup.py test
 }
