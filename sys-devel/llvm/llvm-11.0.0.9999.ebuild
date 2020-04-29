@@ -258,6 +258,7 @@ get_distribution_components() {
 			llvm-elfabi
 			llvm-exegesis
 			llvm-extract
+			llvm-gsymutil
 			llvm-ifs
 			llvm-install-name-tool
 			llvm-jitlink
