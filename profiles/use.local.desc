@@ -3436,6 +3436,8 @@ gui-apps/swaylock:man - Build and install man pages
 gui-apps/waybar:mpd - Enable support for the Music Player Daemon
 gui-apps/waybar:network - Enable libnl support for network related features
 gui-apps/waybar:tray - Enable support for tray
+gui-apps/wf-recorder:man - Build and install man pages
+gui-apps/wf-recorder:opencl - Enable OpenCL
 gui-libs/libhandy:glade - Install module and catalog for dev-util/glade
 gui-libs/wlroots:X - Enable support for X11 applications (XWayland)
 gui-libs/wlroots:elogind - Enable support for rootless session via elogind
