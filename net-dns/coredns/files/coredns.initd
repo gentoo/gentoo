@@ -1,15 +1,15 @@
 #!/sbin/openrc-run
-# Copyright 2017-2018 Gentoo Authors
+# Copyright 2017-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="CoreDNS service"
-pidfile=${pidfile:-"/run/${SVCNAME}.pid"}
-user=${user:-root}
-group=${group:-root}
+pidfile="${pidfile:-"/run/${SVCNAME}.pid"}"
+user="${user:-root}"
+group="${group:-root}"
 
 supervisor="supervise-daemon"
 command="/usr/bin/coredns"
-command_args="${command_args}"
+command_args="-conf ${COREDNS_CONFIG} ${CORENDS_EXTRA_ARGS}"
 
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
@@ -18,3 +18,13 @@ start_stop_daemon_args="--user ${user} --group ${group} \
 depend() {
 	after net
 }
+
+if [[ -n "${COREDNS_HEALTHCHECK_URI}" ]]; then
+        healthcheck_delay=20
+        healthcheck_timer=30
+
+        healthcheck() {
+                command -v wget || return 0
+                wget -Oq- "${COREDNS_HEALTHCHECK_URI}"
+        }
+fi
