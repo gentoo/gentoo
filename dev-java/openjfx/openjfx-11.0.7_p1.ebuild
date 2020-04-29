@@ -97,7 +97,8 @@ egradle() {
 	unset ANT_HOME
 
 	einfo "gradle "${gradle_args[@]}" ${@}"
-	"${gradle}" "${gradle_args[@]}" ${@} || die "gradle failed"
+	# TERM needed, otherwise gradle may fail on terms it does not know about
+	TERM="xterm" "${gradle}" "${gradle_args[@]}" ${@} || die "gradle failed"
 }
 
 pkg_setup() {
@@ -168,7 +169,7 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -Wno-error
+	append-flags -Wno-error -fcommon
 
 	#FIXME: still calls gcc, pkg-config etc by name without chost prefix
 	#FIXME: should we enable webkit? doubt so
