@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=dev-db/sqlite:3
+DESCRIPTION=PROJ coordinate transformation software
+EAPI=7
+HOMEPAGE=https://proj4.org/
+IUSE=europe static-libs test
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=MIT
+RDEPEND=dev-db/sqlite:3
+REQUIRED_USE=test? ( !europe )
+RESTRICT=!test? ( test )
+SLOT=0/19
+SRC_URI=https://download.osgeo.org/proj/proj-7.0.0.tar.gz https://download.osgeo.org/proj/proj-datumgrid-1.8.tar.gz europe? ( https://download.osgeo.org/proj/proj-datumgrid-europe-1.6.tar.gz )
+_md5_=0a5612f5ea3417253e26e5c9795c18ee

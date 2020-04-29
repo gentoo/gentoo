@@ -3280,7 +3280,7 @@ dev-db/mysql-connector-c 6.1.11-r2 8.0.19: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
-dev-db/mysql-workbench 8.0.19-r1: MySQL Workbench
+dev-db/mysql-workbench 8.0.19-r1 8.0.20: MySQL Workbench
 dev-db/mysqltuner 1.6.18 1.7.13 1.7.15 1.7.17: MySQLTuner is a high-performance MySQL tuning script
 dev-db/mytop 1.6-r4 1.9.1: mytop - a top clone for mysql
 dev-db/ocp 0.2 0.3 9999: Oracle copy tool
@@ -5609,8 +5609,8 @@ dev-perl/AtExit 2.30.0: atexit() function to register exit-callbacks
 dev-perl/Audio-CD-disc-cover 0.05-r2: Perl Module needed for app-cdr/disc-cover
 dev-perl/Audio-DSP 0.20.0-r2: Perl interface to *NIX digital audio device
 dev-perl/Audio-FLAC-Header 2.400.0-r1 2.400.0-r2: Access to FLAC audio metadata
-dev-perl/Audio-Mixer 0.700.0-r2: Perl extension for Sound Mixer control
-dev-perl/Audio-Musepack 1.0.1: An OO interface to Musepack file information and APE tag fields
+dev-perl/Audio-Mixer 0.700.0-r2 0.700.0-r3: Perl extension for Sound Mixer control
+dev-perl/Audio-Musepack 1.0.1 1.0.1-r1: An OO interface to Musepack file information and APE tag fields
 dev-perl/Audio-Scan 1.10.0: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0: extension for reading WMA/ASF metadata
 dev-perl/Audio-Wav 0.140.0-r1: Modules for reading & writing Microsoft WAV files
@@ -8447,7 +8447,7 @@ dev-python/pytest-asyncio 0.10.0 0.11.0: Library for testing asyncio code with p
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.8.1: py.test plugin for coverage reporting
-dev-python/pytest-describe 0.11.1: Describe-style plugin for py.test
+dev-python/pytest-describe 0.11.1 1.0.0: Describe-style plugin for pytest
 dev-python/pytest-django 3.8.0 3.9.0: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
 dev-python/pytest-fixture-config 1.7.0 1.7.0-r1: Virtualenv fixture for py.test
@@ -15243,7 +15243,7 @@ net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/ocserv 1.0.0: Openconnect SSL VPN server
 net-vpn/openconnect 8.06 8.08 9999: Free client for Cisco AnyConnect SSL VPN software
-net-vpn/openfortivpn 1.13.2: Fortinet compatible VPN client
+net-vpn/openfortivpn 1.13.2 1.13.3: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6 2.4.6-r1 2.4.7-r1 2.4.8 2.4.9 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
@@ -16074,7 +16074,7 @@ sci-libs/plplot 5.15.0-r1: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
-sci-libs/proj 6.2.1 6.3.0: PROJ coordinate transformation software
+sci-libs/proj 6.2.1 6.3.0 7.0.0: PROJ coordinate transformation software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pycifrw 3.6.2 4.1.1: Reading and writing CIF (Crystallographic Information Format) files
 sci-libs/pyshp 1.2.0 2.1.0 9999: Pure Python read/write support for ESRI Shapefile format
@@ -17856,7 +17856,7 @@ www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.8.3 1.10.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.49.5-r2 2.53.1-r1: Seamonkey Web Browser
+www-client/seamonkey 2.53.1-r1 2.53.2_beta1: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
