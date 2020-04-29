@@ -180,6 +180,7 @@ get_distribution_components() {
 			clang-query
 			clang-reorder-fields
 			clang-tidy
+			clang-tidy-headers
 			clangd
 			find-all-symbols
 			modularize
