@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic
-
 DESCRIPTION="Converts DVI files to SVG"
 HOMEPAGE="https://dvisvgm.de/"
 SRC_URI="https://github.com/mgieseki/dvisvgm/releases/download/${PV}/${P}.tar.gz"
@@ -20,17 +18,16 @@ IUSE="test"
 RESTRICT="test"
 
 # TODO unbundle app-arch/brotli
-RDEPEND="virtual/tex-base
+RDEPEND="app-text/texlive-core
 	>=app-arch/brotli-1.0.5
 	app-text/ghostscript-gpl
-	dev-libs/kpathsea:=
 	>=dev-libs/xxhash-0.6.5
 	>=media-gfx/potrace-1.10-r1
 	media-libs/freetype:2
 	>=media-libs/woff2-1.0.2
 	dev-libs/kpathsea
 	sys-libs/zlib"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	app-text/xmlto
 	app-text/asciidoc
 	dev-libs/libxslt
