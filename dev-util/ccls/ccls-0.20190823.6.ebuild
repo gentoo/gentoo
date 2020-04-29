@@ -32,6 +32,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake-support-CLANG_LINK_CLANG_DYLIB.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_SYSTEM_RAPIDJSON=ON
