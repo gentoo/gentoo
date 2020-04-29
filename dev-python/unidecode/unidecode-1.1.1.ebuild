@@ -3,8 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 PYTHON_REQ_USE="wide-unicode(+)"
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 MY_PN=Unidecode
 MY_P=${MY_PN}-${PV}
@@ -19,11 +20,6 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 sparc x86"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
