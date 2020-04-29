@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -84,9 +84,9 @@ src_unpack() {
 }
 
 src_configure() {
-	sed -e "s:^\(BUILD_CFLAGS\s*=\).*$:\1 ${CFLAGS} -MD -fshort-wchar -fno-strict-aliasing -nostdlib -c -fPIC:" \
-		-e "s:^\(BUILD_LFLAGS\s*=\).*$:\1 ${LDFLAGS}:" \
-		-e "s:^\(BUILD_CXXFLAGS\s*=\).*$:\1 ${CXXFLAGS} -Wno-unused-result:" \
+	sed -e "s|^\(BUILD_CFLAGS\s*=\).*$|\1 ${CFLAGS} -MD -fshort-wchar -fno-strict-aliasing -nostdlib -c -fPIC|" \
+		-e "s|^\(BUILD_LFLAGS\s*=\).*$|\1 ${LDFLAGS}|" \
+		-e "s|^\(BUILD_CXXFLAGS\s*=\).*$|\1 ${CXXFLAGS} -Wno-unused-result|" \
 		-i "BaseTools/Source/C/Makefiles/header.makefile" \
 		|| die "Failed to update makefile header"
 }
@@ -103,11 +103,11 @@ src_compile() {
 	emake "${make_flags[@]}" -j1 -C BaseTools
 
 	# Update template parameter files
-	sed -e "s:^\(ACTIVE_PLATFORM\s*=\).*$:\1 MdeModulePkg/MdeModulePkg.dsc:" \
-		-e "s:^\(TARGET\s*=\).*$:\1 RELEASE:" \
-		-e "s:^\(TARGET_ARCH\s*=\).*$:\1 ${EFIARCH}:" \
-		-e "s:^\(TOOL_CHAIN_TAG\s*=\).*$:\1 ${TOOLCHAIN_TAG}:" \
-		-e "s:^\(MAX_CONCURRENT_THREAD_NUMBER\s*=\).*$:\1 $(makeopts_jobs):" \
+	sed -e "s|^\(ACTIVE_PLATFORM\s*=\).*$|\1 MdeModulePkg/MdeModulePkg.dsc|" \
+		-e "s|^\(TARGET\s*=\).*$|\1 RELEASE|" \
+		-e "s|^\(TARGET_ARCH\s*=\).*$|\1 ${EFIARCH}|" \
+		-e "s|^\(TOOL_CHAIN_TAG\s*=\).*$|\1 ${TOOLCHAIN_TAG}|" \
+		-e "s|^\(MAX_CONCURRENT_THREAD_NUMBER\s*=\).*$|\1 $(makeopts_jobs)|" \
 		-i "BaseTools/Conf/target.template" || die "Failed to configure target file"
 
 	# Clean unneeded files
@@ -118,7 +118,7 @@ src_compile() {
 	rm "${S}/EmulatorPkg/Unix/Host/X11IncludeHack" || die
 
 	# Create workspace script file
-	sed -e "s:{EDK_BASE}:${EPREFIX}/usr/lib/${P}:" \
+	sed -e "s|{EDK_BASE}|${EPREFIX}/usr/lib/${P}|" \
 		"${FILESDIR}"/udk-workspace.template \
 		> "${T}/udk-workspace" || die "Failed to build udk-workspace"
 }
