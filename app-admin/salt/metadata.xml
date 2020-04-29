@@ -21,9 +21,11 @@ Between the remote execution system, and state management Salt addresses the
 backbone of cloud and data center management.
   </longdescription>
   <use>
+    <flag name="cheetah">Enable support for <pkg>dev-python/cheetah3</pkg></flag>
     <flag name="cherrypy">Enable support for using cherrypy.</flag>
     <flag name="libcloud">Enable salt-cloud support via libcloud.</flag>
     <flag name="libvirt">Support managing virtual machines with app-emulation/libvirt.</flag>
+    <flag name="genshi">Enable support for <pkg>dev-python/genshi</pkg></flag>
     <flag name="gnupg">Enable support for gnupg via python-gnupg.</flag>
     <flag name="keyring">Enable support for keyrings via python-keyring.</flag>
     <flag name="mako">Add support for using the mako template engine for parsing salt states.</flag>
