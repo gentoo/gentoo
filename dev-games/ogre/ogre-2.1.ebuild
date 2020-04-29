@@ -5,30 +5,26 @@ EAPI=7
 
 CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
 
-inherit cmake flag-o-matic git-r3
+inherit cmake flag-o-matic
+
+MY_PN="${PN}-next"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="https://www.ogre3d.org/"
-
-EGIT_BRANCH="v2-1"
-EGIT_COMMIT="5b682fb90c9e8e660e2fbf92bbf7797a9246700d"
-EGIT_REPO_URI="https://github.com/OGRECave/ogre-next.git"
-EGIT_SUBMODULES=()
+SRC_URI="https://github.com/OGRECave/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0/2.1"
 KEYWORDS="~amd64"
 
-IUSE="+cache debug doc egl examples +freeimage gles2 json
-	legacy-animations mobile +opengl profile tools"
+IUSE="+cache debug doc double-precision egl examples fine-granularity +freeimage json
+	legacy-animations +opengl profile tools"
 
 # USE flags that do not work, as their options aren't ported, yet.
 #      cg
-#      double-precision
-
-REQUIRED_USE="
-	|| ( gles2 opengl )
-	mobile? ( egl gles2 !opengl )"
+#      gles2
+#      mobile
 
 RESTRICT="test" #139905
 
@@ -42,7 +38,6 @@ RDEPEND="
 	x11-libs/libXt
 	egl? ( media-libs/mesa[egl] )
 	freeimage? ( media-libs/freeimage )
-	gles2? ( media-libs/mesa[gles2] )
 	json? ( dev-libs/rapidjson )
 	opengl? (
 		virtual/glu
@@ -52,6 +47,7 @@ RDEPEND="
 "
 # Dependencies for USE flags that do not work, yet.
 #	cg? ( media-gfx/nvidia-cg-toolkit )
+#	gles2? ( media-libs/mesa[gles2] )
 
 DEPEND="
 	${RDEPEND}
@@ -67,16 +63,27 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.1-resource_path.patch"
 	"${FILESDIR}/${PN}-2.1-media_path.patch"
 	"${FILESDIR}/${PN}-2.1-enhance_config_loading.patch"
+	"${FILESDIR}/${PN}-2.1-fix_opengl_search.patch"
+	"${FILESDIR}/${PN}-2.1-fix_compilation_issues.patch"
+	"${FILESDIR}/${PN}-2.1-fix_warnings.patch"
+	"${FILESDIR}/${PN}-2.1-d1c1116.patch"
 )
+
+S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	sed -i \
 		-e "s:share/OGRE/docs:share/doc/${PF}:" \
 		Docs/CMakeLists.txt || die
-	# Stupid build system hardcodes release names
+
+	# In this series, the CMAKE_BUILD_TARGET is hard-wired to the
+	# installation. And only Release, Debug, MinSizeRel and RelWithDebInfo
+	# are supported.
 	sed -i \
-		-e '/CONFIGURATIONS/s:CONFIGURATIONS Release.*::' \
-		CMake/Utils/OgreConfigTargets.cmake || die
+		-e "s/$(usex debug Debug Release)/Gentoo/g" \
+		CMake/InstallResources.cmake \
+		CMake/Utils/OgreConfigTargets.cmake \
+		|| die
 
 	# Fix some path issues
 	cmake_src_prepare
@@ -84,29 +91,26 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DOGRE_BUILD_COMPONENT_HLMS_PBS=$(         usex mobile no yes)
-		-DOGRE_BUILD_COMPONENT_HLMS_PBS_MOBILE=$(  usex mobile)
-		-DOGRE_BUILD_COMPONENT_HLMS_UNLIT=$(       usex mobile no yes)
-		-DOGRE_BUILD_COMPONENT_HLMS_UNLIT_MOBILE=$(usex mobile)
+		-DOGRE_BUILD_COMPONENT_HLMS_PBS=yes
+		-DOGRE_BUILD_COMPONENT_HLMS_PBS_MOBILE=no
+		-DOGRE_BUILD_COMPONENT_HLMS_UNLIT=yes
+		-DOGRE_BUILD_COMPONENT_HLMS_UNLIT_MOBILE=no
 		-DOGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=yes
 		-DOGRE_BUILD_COMPONENT_SCENE_FORMAT=yes
 		-DOGRE_BUILD_PLATFORM_NACL=no
 		-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS=$(usex opengl)
-		-DOGRE_BUILD_RENDERSYSTEM_GLES=no
-		-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
+		-DOGRE_BUILD_RENDERSYSTEM_GLES2=no
 		-DOGRE_BUILD_SAMPLES2=$(usex examples)
-		-DOGRE_BUILD_TESTS=no
+		-DOGRE_BUILD_TESTS=$(usex debug)
 		-DOGRE_BUILD_TOOLS=$(usex tools)
 		-DOGRE_CONFIG_ALLOCATOR=$(usex debug 5 1)
-		-DOGRE_CONFIG_ENABLE_FINE_LIGHT_MASK_GRANULARITY=yes
+		-DOGRE_CONFIG_ENABLE_FINE_LIGHT_MASK_GRANULARITY=$(usex fine-granularity)
 		-DOGRE_CONFIG_ENABLE_FREEIMAGE=$(usex freeimage)
 		-DOGRE_CONFIG_ENABLE_GL_STATE_CACHE_SUPPORT=$(usex cache)
-		-DOGRE_CONFIG_ENABLE_GLES3_SUPPORT=$(\
-			usex gles2 $(\
-			usex mobile no yes) no)
 		-DOGRE_CONFIG_ENABLE_JSON=$(usex json)
 		-DOGRE_CONFIG_MEMTRACK_DEBUG=$(usex debug)
-		-DOGRE_CONFIG_THREADS=2
+		-DOGRE_CONFIG_MEMTRACK_RELEASE=no
+		-DOGRE_CONFIG_THREADS=0
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
 		-DOGRE_FULL_RPATH=no
 		-DOGRE_INSTALL_DOCS=$(usex doc)
@@ -115,10 +119,17 @@ src_configure() {
 		-DOGRE_LEGACY_ANIMATIONS=$(usex legacy-animations)
 		-DOGRE_PROFILING_PROVIDER=$(usex profile none internal)
 		-DOGRE_USE_BOOST=no
+		-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
+		-DOGRE_SIMD_NEON=$(usex double-precision no yes)
+		-DOGRE_SIMD_SSE2=$(usex double-precision no yes)
 	)
 
-	# The double-precision mode can not be enabled, yet.
-	#	-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
+	# GLES2 is not supported, yet
+	#	-DOGRE_BUILD_COMPONENT_HLMS_PBS=$(         usex mobile no yes)
+	#	-DOGRE_BUILD_COMPONENT_HLMS_PBS_MOBILE=$(  usex mobile)
+	#	-DOGRE_BUILD_COMPONENT_HLMS_UNLIT=$(       usex mobile no yes)
+	#	-DOGRE_BUILD_COMPONENT_HLMS_UNLIT_MOBILE=$(usex mobile)
+	#	-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
 
 	# The CgFxScriptLoader doesn't seem to be completely ported, yet.
 	# USE flag disabled.
@@ -138,6 +149,13 @@ src_configure() {
 		-DOGRE_BUILD_COMPONENT_TERRAIN=no
 		-DOGRE_BUILD_COMPONENT_VOLUME=no
 	)
+
+	# In Release builds the system moans about unknown flags. Lets help!
+	if use debug; then
+		append-flags -DOGRE_DEBUG_MODE=1 -DDEBUG=1 -D_DEBUG=1
+	else
+		append-flags -DOGRE_DEBUG_MODE=0
+	fi
 
 	# Take out the warning about deprecated copy, as Ogre emits thousands of
 	# those. But using a deprecated way of doing things isn't an error and
