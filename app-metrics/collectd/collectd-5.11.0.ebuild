@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,3,7} )
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 
 inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info multilib perl-functions python-single-r1 systemd tmpfiles user
@@ -11,7 +11,7 @@ inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info multilib perl-fun
 DESCRIPTION="Collects system statistics and provides mechanisms to store the values"
 
 HOMEPAGE="https://collectd.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PN}-${PV}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="MIT GPL-2 GPL-2+ GPL-3 GPL-3+"
 SLOT="0"
@@ -37,12 +37,13 @@ IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux 
 # pf:            Requires BSD packet filter
 # pinba:         Requires MySQL Pinba engine (http://pinba.org/)
 # tape:          Requires libkstat (Solaris only)
+# tokyotyrant:   Requires tokyotyrant
 # write_riemann: Requires riemann-c-client
 # xmms:          Requires libxmms (v1)
 # zone:          Solaris only...
 COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer dpdkstat
-	grpc intel_pmu intel_rdt lpar mic netapp pf pinba tape write_riemann
-	xmms zone"
+	grpc intel_pmu intel_rdt lpar mic netapp pf pinba tape tokyotyrant
+	write_riemann xmms zone"
 
 # Plugins that have been (compile) tested and can be enabled via COLLECTD_PLUGINS
 COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
@@ -57,9 +58,9 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	ntpd numa nut olsrd onewire openldap openvpn oracle ovs_events
 	ovs_stats perl ping postgresql powerdns processes protocols python
 	python redis routeros rrdcached rrdtool sensors serial sigrok smart
-	snmp snmp_agent statsd swap syslog table tail tail_csv
+	snmp snmp_agent statsd swap sysevent syslog table tail tail_csv
 	target_notification target_replace target_scale target_set tcpconns
-	teamspeak2 ted thermal threshold tokyotyrant turbostat unixsock
+	teamspeak2 ted thermal threshold turbostat unixsock
 	uptime users uuid varnish virt vmem vserver wireless write_graphite
 	write_http write_kafka write_log write_mongodb write_prometheus
 	write_redis write_sensu write_tsdb xencpu zfs_arc zookeeper"
@@ -125,7 +126,7 @@ COMMON_DEPEND="
 	collectd_plugins_smart?			( dev-libs/libatasmart )
 	collectd_plugins_snmp?			( net-analyzer/net-snmp )
 	collectd_plugins_snmp_agent?		( net-analyzer/net-snmp )
-	collectd_plugins_tokyotyrant?		( net-misc/tokyotyrant )
+	collectd_plugins_sysevent?		( dev-libs/yajl:= )
 	collectd_plugins_varnish?		( www-servers/varnish:= )
 	collectd_plugins_virt?			( app-emulation/libvirt:= dev-libs/libxml2:2= )
 	collectd_plugins_write_http?		( net-misc/curl:0= dev-libs/yajl:= )
@@ -153,14 +154,12 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	collectd_plugins_java?			( >=virtual/jre-1.6 )
 	collectd_plugins_syslog?		( virtual/logger )
-	selinux?				( sec-policy/selinux-collectd )
-	!<sys-apps/openrc-0.18.2"
+	selinux?				( sec-policy/selinux-collectd )"
 
 REQUIRED_USE="
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )
-	collectd_plugins_smart?			( udev )"
-
-S="${WORKDIR}/${PN}-${PN}-${PV}"
+	collectd_plugins_smart?			( udev )
+	contrib?				( perl )"
 
 # @FUNCTION: collectd_plugin_kernel_linux
 # @DESCRIPTION:
@@ -446,7 +445,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog README
 
 	if use contrib ; then
-		insinto /usr/share/doc/${PF}
+		insinto /usr/share/${PN}
 		doins -r contrib
 	fi
 
@@ -536,6 +535,6 @@ pkg_postinst() {
 
 	if use contrib; then
 		elog "The scripts in /usr/share/doc/${PF}/collection3 for generating graphs need dev-perl/HTML-Parser,"
-		elog "dev-perl/config-general, dev-perl/regexp-common, and net-analyzer/rrdtool[perl] to be installed."
+		elog "dev-perl/CGI, dev-perl/Config-General and net-analyzer/rrdtool[perl] to be installed."
 	fi
 }
