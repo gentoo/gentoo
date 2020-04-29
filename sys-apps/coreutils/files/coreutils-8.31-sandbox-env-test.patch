@@ -1,0 +1,71 @@
+From 09c3e88aa0652a9eec700d84227368dd1edb26ef Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 30 Apr 2015 17:26:55 +0100
+Subject: [PATCH 1/2] Skip some path tests with sandbox
+
+---
+ tests/du/long-from-unreadable.sh | 3 +++
+ tests/rm/deep-2.sh               | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/tests/du/long-from-unreadable.sh b/tests/du/long-from-unreadable.sh
+index aed328d..c0a4e9c 100755
+--- a/tests/du/long-from-unreadable.sh
++++ b/tests/du/long-from-unreadable.sh
+@@ -29,6 +29,9 @@
+ # unnecessarily to using FTS_NOCHDIR mode in this corner case.
+ 
+ . "${srcdir=.}/tests/init.sh"; path_prepend_ ./src
++# Avoid #413621 until #548250 is resolved
++test -n "$SANDBOX_ACTIVE" && skip_ "Gentoo: Test known bad under sandbox (#413621)"
++
+ print_ver_ du
+ 
+ require_perl_
+diff --git a/tests/rm/deep-2.sh b/tests/rm/deep-2.sh
+index de39331..fe7ffa6 100755
+--- a/tests/rm/deep-2.sh
++++ b/tests/rm/deep-2.sh
+@@ -17,6 +17,9 @@
+ # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ . "${srcdir=.}/tests/init.sh"; path_prepend_ ./src
++# Avoid #413621 until #548250 is resolved
++test -n "$SANDBOX_ACTIVE" && skip_ "Gentoo: Test known bad under sandbox (#413621)"
++
+ print_ver_ rm
+ require_perl_
+ 
+-- 
+2.26.2
+
+From 0687588d9d09c0a4bcb197206a39d58df49b105d Mon Sep 17 00:00:00 2001
+From: Sam James (sam_c) <sam@cmpct.info>
+Date: Wed, 29 Apr 2020 08:55:46 +0000
+Subject: [PATCH 2/2] Skip env-S.pl test which relies on clean environment
+
+libsandbox contaminates the pristine environment that this
+test expects. See bug 675802.
+---
+ tests/misc/env-S.pl | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/tests/misc/env-S.pl b/tests/misc/env-S.pl
+index b99dfcb..c930829 100755
+--- a/tests/misc/env-S.pl
++++ b/tests/misc/env-S.pl
+@@ -24,6 +24,11 @@ my $prog = 'env';
+ # Turn off localization of executable's output.
+ @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
+ 
++# Skip if sandbox is enabled
++if ($ENV{SANDBOX_ACTIVE}) {
++     CuSkip::skip "Gentoo: Test known bad under sandbox (#675802)\n";
++}
++
+ my @Tests =
+     (
+      # Test combination of -S and regular arguments
+-- 
+2.26.2
+
