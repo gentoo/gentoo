@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 	SRC_URI="https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 fi
 
@@ -25,18 +25,22 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/
 
 LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="build caps +cramfs cryptsetup fdformat hardlink kill +logger ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
+IUSE="audit build caps +cramfs cryptsetup fdformat hardlink kill +logger ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
 RDEPEND="
 	virtual/libcrypt:=
+	audit? ( >=sys-process/audit-2.6:= )
 	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib:= )
 	cryptsetup? ( sys-fs/cryptsetup )
+	hardlink? ( dev-libs/libpcre2:= )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
 	nls? ( virtual/libintl[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
+	ppc? ( sys-libs/librtas )
+	ppc64? ( sys-libs/librtas )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
@@ -64,11 +68,6 @@ RDEPEND+="
 		!>=sys-apps/shadow-4.7-r2[su]
 	)
 	!net-wireless/rfkill
-	!sys-process/schedutils
-	!sys-apps/setarch
-	!<sys-apps/sysvinit-2.88-r7
-	!<sys-libs/e2fsprogs-libs-1.41.8
-	!<sys-fs/e2fsprogs-1.41.8
 	!<app-shells/bash-completion-2.7-r1"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -79,6 +78,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/util-linux-2.35.1-include_sys_types-header.patch
 	"${FILESDIR}"/util-linux-2.35.1-cleanup-pidfd-include.patch
+	"${FILESDIR}"/util-linux-2.35.1-hwclock-glibc-2.31.patch
 )
 
 src_prepare() {
@@ -168,6 +168,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with udev)
 		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
 		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
+		$(multilib_native_use_with audit)
 		$(tc-has-tls || echo --disable-tls)
 		$(use_enable nls)
 		$(use_enable unicode widechar)
@@ -197,6 +198,7 @@ multilib_src_configure() {
 			$(use_enable hardlink)
 			$(use_enable kill)
 			$(use_enable logger)
+			$(use_enable ncurses pg)
 			$(use_enable su)
 			$(use_enable tty-helpers mesg)
 			$(use_enable tty-helpers wall)
@@ -278,6 +280,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc AUTHORS NEWS README* Documentation/{TODO,*.txt,releases/*}
+	chmod -x "${ED}"/usr/share/doc/util-linux-${PVR}/getopt/getopt-parse* || die
 
 	# e2fsprogs-libs didnt install .la files, and .pc work fine
 	find "${ED}" -name "*.la" -delete || die
