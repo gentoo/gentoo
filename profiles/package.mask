@@ -655,14 +655,6 @@ app-antivirus/clamav-unofficial-sigs
 # Bugs #484270 and #705646, masked for removal in 30 days.
 dev-python/basemap
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-30)
-# Unmaintained.  Humongous number of vulnerabilities.  Python 2 only.
-# Needs really active maintainer.  app-editors/atom is the only revdep.
-# Removal in 30 days.  Bug #699866.
-dev-util/electron
-app-editors/atom
-app-eselect/eselect-electron
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2020-03-29)
 # Old releases gone from upstream, new releases use overly restrictive
 # license. For ancient scripts and symbols, use media-fonts/quivira instead.
