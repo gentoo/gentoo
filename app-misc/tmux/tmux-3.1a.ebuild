@@ -12,7 +12,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	SRC_URI="https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b"
 	EGIT_REPO_URI="https://github.com/tmux/tmux.git"
 else
-	SRC_URI="https://github.com/tmux/tmux/releases/download/$(ver_cut 1-2)/${P/_/-}.tar.gz"
+	SRC_URI="https://github.com/tmux/tmux/releases/download/${PV}/${P/_/-}.tar.gz"
 	[[ "${PV}" == *_rc* ]] || \
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	S="${WORKDIR}/${P/_/-}"
