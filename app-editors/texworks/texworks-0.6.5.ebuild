@@ -13,7 +13,7 @@ SRC_URI="https://github.com/TeXworks/texworks/archive/release-${PV}.tar.gz -> ${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="lua python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
