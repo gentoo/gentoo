@@ -139,6 +139,7 @@ kernel-install_update_symlink() {
 	else
 		local symlink_target=$(readlink "${target}")
 		local symlink_ver=${symlink_target#${target##*/}-}
+		local updated=
 		if [[ ${symlink_target} == ${target##*/}-* && \
 				-z ${symlink_ver//[0-9.]/} ]]
 		then
@@ -151,7 +152,13 @@ kernel-install_update_symlink() {
 				ebegin "Updating ${target} symlink"
 				ln -f -n -s "${target##*/}-${version}" "${target}"
 				eend ${?}
+				updated=1
 			fi
+		fi
+
+		if [[ ! ${updated} ]]; then
+			elog "${target} points at another kernel, leaving it as-is."
+			elog "Please use 'eselect kernel' to update it when desired."
 		fi
 	fi
 }
