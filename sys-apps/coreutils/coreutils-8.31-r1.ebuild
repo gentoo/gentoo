@@ -60,6 +60,7 @@ pkg_setup() {
 src_prepare() {
 	if ! use vanilla ; then
 		eapply "${WORKDIR}"/patch/*.patch
+		eapply "${FILESDIR}"/${PN}-8.31-sandbox-env-test.patch
 	fi
 
 	eapply_user
