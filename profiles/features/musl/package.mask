@@ -52,7 +52,7 @@ sys-boot/systemd-boot
 # rust-bin requires a glibc system
 dev-lang/rust-bin
 mail-client/thunderbird-bin
-www-client/thunderbird-bin
+www-client/firefox-bin
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-03-20)
 #  No source builds for musl
