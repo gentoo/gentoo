@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">transifex-client</remote-id>
-		<remote-id type="github">transifex/transifex-client</remote-id>
+		<remote-id type="pypi">python-slugify</remote-id>
+		<remote-id type="github">un33k/python-slugify</remote-id>
 	</upstream>
 </pkgmetadata>
