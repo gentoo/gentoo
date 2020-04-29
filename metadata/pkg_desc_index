@@ -1685,12 +1685,12 @@ app-emulation/virt-manager 2.2.1-r3 9999: A graphical tool for administering vir
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19 1.20: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.173.9: VirtIO drivers for Windows virtual machines running on KVM
-app-emulation/virtualbox 5.2.32 5.2.36 5.2.40 6.0.16-r1 6.0.20 6.1.4-r2 6.1.6: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 5.2.32 5.2.36 5.2.40 6.0.16 6.0.20 6.1.4 6.1.6: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-bin 5.2.32.132073 5.2.36.135684 5.2.40.137108 6.0.16.135674-r1 6.0.20.137117 6.1.4.136177-r1 6.1.6.137129: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-extpack-oracle 5.2.32.132073 5.2.36.135684 5.2.40.137108 6.0.16.135674 6.0.20.137117 6.1.4.136177 6.1.6.137129: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 5.2.32 5.2.36 5.2.40 6.0.16-r1 6.0.20 6.1.4-r1 6.1.6: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 5.2.32 5.2.36 5.2.40 6.0.16-r1 6.0.20 6.1.4-r1 6.1.6: Kernel Modules for Virtualbox
+app-emulation/virtualbox 5.2.40 6.0.20 6.1.6: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 5.2.40 6.0.20 6.1.6: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-bin 5.2.40.137108 6.0.20.137117 6.1.6.137129: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-extpack-oracle 5.2.40.137108 6.0.20.137117 6.1.6.137129: PUEL extensions for VirtualBox
+app-emulation/virtualbox-guest-additions 5.2.40 6.0.20 6.1.6: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 5.2.40 6.0.20 6.1.6: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
@@ -5602,8 +5602,8 @@ dev-perl/Archive-Tar-Stream 0.30.0 0.30.0-r1: pure perl IO-friendly tar file man
 dev-perl/Archive-Tar-Wrapper 0.330.0 0.370.0: API wrapper around the 'tar' utility
 dev-perl/Archive-Zip 1.640.0 1.680.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.1 3.0.3: Perl extension for comparing arrays
-dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
-dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
+dev-perl/Array-RefElem 1.0.0-r1 1.0.0-r2: Set up array elements as aliases
+dev-perl/Array-Window 1.20.0-r1 1.20.0-r2: Calculate windows/subsets/pages of arrays
 dev-perl/Astro-FITS-Header 3.70.0: Interface to FITS headers
 dev-perl/AtExit 2.30.0: atexit() function to register exit-callbacks
 dev-perl/Audio-CD-disc-cover 0.05-r2: Perl Module needed for app-cdr/disc-cover
@@ -10634,7 +10634,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, int
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.8 2.9 2.10: Simple, high-reliability, source control management, and more
 dev-vcs/ghp-import 0.4.1-r1: Copy your docs directly to the gh-pages branch
-dev-vcs/git 2.23.1-r1 2.23.2 2.23.3 2.24.1 2.24.2 2.24.3 2.25.1 2.25.2 2.25.3 2.25.4 2.26.0 2.26.1 2.26.2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818 6.20170818-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
 dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
