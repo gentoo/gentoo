@@ -1297,7 +1297,6 @@ app-doc/zeal 0.4.0 0.6.0 0.6.1: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0 0.9.1: Tips, tricks and examples for the Z shell
 app-editors/aee 2.2.15b 2.2.21: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
-app-editors/atom 1.32.1: A hackable text editor for the 21st Century
 app-editors/beaver 0.4.1-r1: Beaver is an Early AdVanced EditoR
 app-editors/bluefish 2.2.10: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.4.1: Display-oriented editor for binary files, based on the vi texteditor
@@ -1363,7 +1362,7 @@ app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup 
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/teco 36_p19940820: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
-app-editors/texworks 0.6.3 0.6.4 0.6.5: A simple interface for working with TeX documents
+app-editors/texworks 0.6.3 0.6.5: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.2.0360 8.2.0508 8.2.0638 9999: Vim, an improved vi-style text editor
@@ -1712,7 +1711,6 @@ app-eselect/eselect-cblas 0.1: C-language BLAS module for eselect
 app-eselect/eselect-cdparanoia 0.1: Manage /usr/bin/cdparanoia symlink
 app-eselect/eselect-chuck 1.0.2: Manages the /usr/bin/chuck symlink
 app-eselect/eselect-ctags 1.18: Manages ctags implementations
-app-eselect/eselect-electron 2.1: Utility to select the default Electron slot
 app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
 app-eselect/eselect-fontconfig 1.1-r1: An eselect module to manage /etc/fonts/conf.d symlinks
 app-eselect/eselect-gnome-shell-extensions 20180306: Manages system defaults for GNOME Shell extensions
@@ -5612,8 +5610,8 @@ dev-perl/Audio-FLAC-Header 2.400.0-r1 2.400.0-r2: Access to FLAC audio metadata
 dev-perl/Audio-Mixer 0.700.0-r2 0.700.0-r3: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1 1.0.1-r1: An OO interface to Musepack file information and APE tag fields
 dev-perl/Audio-Scan 1.10.0: Fast C metadata and tag reader for all common audio file formats
-dev-perl/Audio-WMA 1.300.0: extension for reading WMA/ASF metadata
-dev-perl/Audio-Wav 0.140.0-r1: Modules for reading & writing Microsoft WAV files
+dev-perl/Audio-WMA 1.300.0 1.300.0-r1: extension for reading WMA/ASF metadata
+dev-perl/Audio-Wav 0.140.0-r1 0.140.0-r2: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1: interface to read and modify Apache .htpasswd files
 dev-perl/Authen-Libwrap 0.230.0: A Perl access to the TCP Wrappers interface
@@ -10389,7 +10387,6 @@ dev-util/edb-debugger 1.1.0-r1 1.2.0 9999: edb is a cross platform x86/x86-64 de
 dev-util/edi 0.7.1: An EFL-based IDE
 dev-util/editorconfig-geany 0.1_p20160725 0.2: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
-dev-util/electron 2.0.17-r2: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.1a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/envman 1.2.0 1.2.1 2.1.0 2.1.1: Environment variable manager for Bitrise CLI

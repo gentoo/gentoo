@@ -2878,14 +2878,6 @@ dev-util/diffoscope:xz - Use app-arch/xz-utils
 dev-util/diffoscope:zip - Use app-arch/unzip
 dev-util/edb-debugger:jumbo-build - Experimental jumbo (also known as unity) build capability
 dev-util/edi:clang - Provide integration with sys-devel/clang for autocompletion and inline errors
-dev-util/electron:gconf - Use gnome-base/gconf
-dev-util/electron:lto - Build with link time optimization enabled
-dev-util/electron:pic - Disable optimized assembly code that is not PIC friendly
-dev-util/electron:proprietary-codecs - Enable proprietary codecs like H.264, MP3
-dev-util/electron:system-ffmpeg - Use system ffmpeg instead of the bundled one
-dev-util/electron:system-libvpx - Use system libvpx instead of the bundled one
-dev-util/electron:system-ssl - Use system OpenSSL instead of the bundled one
-dev-util/electron:tcmalloc - Use bundled tcmalloc instead of system malloc
 dev-util/emilpro:system-binutils - Use the gentoo binutils instead of building against an unpatched vanilla version
 dev-util/geany:gtk3 - Use GTK+3 instead of GTK+2
 dev-util/geany:vte - Enable Terminal support (x11-libs/vte)
