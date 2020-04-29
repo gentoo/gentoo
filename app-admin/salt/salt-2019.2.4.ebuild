@@ -3,8 +3,8 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
-
-inherit eutils systemd distutils-r1
+DISTUTILS_USE_SETUPTOOLS=bdepend
+inherit systemd distutils-r1
 
 DESCRIPTION="Salt is a remote execution and configuration manager"
 HOMEPAGE="https://www.saltstack.com/resources/community/
@@ -23,13 +23,15 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="cherrypy ldap libcloud libvirt gnupg keyring mako mongodb neutron nova"
-IUSE+=" openssl portage profile redis selinux test raet +zeromq vim-syntax"
+IUSE="cherrypy ldap libcloud libvirt gnupg keyring mako mongodb neutron nova
+	openssl portage profile redis selinux test raet +zeromq vim-syntax"
 
-RDEPEND="sys-apps/pciutils
+RDEPEND="
+	sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/libnacl[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.3[${PYTHON_USEDEP}]
+	<dev-python/msgpack-1.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
@@ -64,22 +66,22 @@ RDEPEND="sys-apps/pciutils
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
 	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
 	vim-syntax? ( app-vim/salt-vim )"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/pytest-salt-2018.12.8[${PYTHON_USEDEP}]
+		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.0[${PYTHON_USEDEP}]
+		>=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}]
+		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]
+		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
+		>=dev-python/pytest-salt-2018.12.8[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-catchlog[${PYTHON_USEDEP}]
-		dev-python/pip[${PYTHON_USEDEP}]
-		dev-python/virtualenv[${PYTHON_USEDEP}]
-		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
-		!x86? ( >=dev-python/boto3-1.2.1[${PYTHON_USEDEP}] )
-		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]
 		>=dev-python/SaltTesting-2016.5.11[${PYTHON_USEDEP}]
-		>=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}]
+		dev-python/virtualenv[${PYTHON_USEDEP}]
+		!x86? ( >=dev-python/boto3-1.2.1[${PYTHON_USEDEP}] )
 		${RDEPEND}
 	)"
 
@@ -131,20 +133,17 @@ python_test() {
 	mkdir "${BUILD_DIR}"/../{templates,conf/cloud.{providers,profiles,maps}.d} || die
 
 	(
-		cleanup() {
-			rm -f "${tempdir}"
-			rmdir "${BUILD_DIR}"/../{templates,conf/cloud.{providers,profiles,maps}.d} || die
-		}
+		cleanup() { rm -f "${tempdir}" || die; }
 
 		trap cleanup EXIT
 
 		addwrite "${tempdir}"
-		ln -s "$(realpath --relative-to=/tmp "${T}/$(basename "${tempdir}")")" "${tempdir}"
+		ln -s "$(realpath --relative-to=/tmp "${T}/$(basename "${tempdir}")")" "${tempdir}" || die
 
 		USE_SETUPTOOLS=1 SHELL="/bin/bash" \
 			TMPDIR="${tempdir}" \
 			${EPYTHON} tests/runtests.py \
-			--unit-tests --no-report --verbose
-
-	) || die "testing failed"
+			--unit-tests --no-report --verbose \
+			|| die "testing failed with ${EPYTHON}"
+	)
 }
