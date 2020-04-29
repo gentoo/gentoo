@@ -1892,7 +1892,7 @@ app-i18n/tagainijisho 1.2.0_pre20191230120610_p20200101_p20200101 1.2.0_pre20200
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r5: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r5: Tomoe GTK+ interface widget library
-app-i18n/transifex-client 0.12.4: A command line interface for Transifex
+app-i18n/transifex-client 0.12.4 0.13.9: A command line interface for Transifex
 app-i18n/translate-shell 0.9.6.10 0.9.6.11: Online command-line translator
 app-i18n/uchardet 0.0.6-r2 9999: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.6-r2 1.8.8: A multilingual input method framework
@@ -5601,7 +5601,7 @@ dev-perl/Archive-Extract 0.800.0 0.860.0: Generic archive extracting mechanism
 dev-perl/Archive-Tar-Stream 0.30.0 0.30.0-r1: pure perl IO-friendly tar file management
 dev-perl/Archive-Tar-Wrapper 0.330.0 0.370.0: API wrapper around the 'tar' utility
 dev-perl/Archive-Zip 1.640.0 1.680.0: A wrapper that lets you read Zip archive members as if they were files
-dev-perl/Array-Compare 3.0.1: Perl extension for comparing arrays
+dev-perl/Array-Compare 3.0.1 3.0.3: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
 dev-perl/Astro-FITS-Header 3.70.0: Interface to FITS headers
@@ -8549,6 +8549,7 @@ dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara 
 dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
+dev-python/python-slugify 1.2.6: A Python Slugify application that handles Unicode
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.12 1.13: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
@@ -12609,7 +12610,7 @@ media-gfx/sane-backends 1.0.27-r3: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14-r3 1.0.14-r4: Scanner Access Now Easy
 media-gfx/scantailor-advanced 1.0.14 1.0.16: Interactive post-processing tool for scanned pages
 media-gfx/scour 0.37: Take an SVG file and produce a cleaner and more concise file
-media-gfx/scrot 0.8_p13-r1 1.2 1.3 9999: Screen capture utility using imlib2 library
+media-gfx/scrot 0.8_p13-r1 1.2 1.3-r1 9999: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.30.8-r1: Open source photo manager for GNOME
 media-gfx/sigal 1.3.0: Simple static web gallery generator
@@ -14370,7 +14371,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.33.3: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.33.4: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.57.0.116-r1 8.58.0.93 8.59.0.77: Instant messaging client, with support for audio and video
 net-im/slack 4.1.1 4.3.2-r1 4.3.2-r2: Team collaboration tool
@@ -18016,7 +18017,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2019.2 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.7 1.20.8 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 430.64-r1 430.64-r2 435.21-r1 435.21-r2 440.82 440.82-r1: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 430.64-r1 430.64-r2 430.64-r3 435.21-r1 435.21-r2 435.21-r3 440.82 440.82-r1 440.82-r2: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
