@@ -14,10 +14,9 @@
 		<flag name="chatzilla">Build Mozilla's IRC client (default on)</flag>
 		<flag name="custom-optimization">Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
 		<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles</flag>
-		<flag name="force-gtk3">Use the cairo-gtk3 rendering engine</flag>
 		<flag name="ipc">Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes</flag>
 		<flag name="roaming">Build roaming extension support (default on)</flag>
-		<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg> instead of bundled</flag>
+		<!-- flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg> instead of bundled</flag -->
 		<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg> instead of bundled</flag>
 		<flag name="system-icu">Use the sytem-wide <pkg>dev-libs/icu</pkg> instead of bundled</flag>
 		<flag name="system-jpeg">Use the system-wide <pkg>media-libs/libjpeg-turbo</pkg> instead of bundled</flag>
