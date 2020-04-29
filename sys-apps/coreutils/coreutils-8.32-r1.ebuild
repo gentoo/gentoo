@@ -71,6 +71,7 @@ src_prepare() {
 
 	if ! use vanilla ; then
 		PATCHES+=( "${WORKDIR}"/patch )
+		PATCHES+=( "${FILESDIR}"/${PN}-8.31-sandbox-env-test.patch )
 	fi
 
 	default
