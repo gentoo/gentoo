@@ -33,6 +33,7 @@ DOCS=(
 )
 
 src_prepare() {
+	sed -i -e 's#-g -O3##g' src/Makefile.am || die
 	default
 	eautoreconf
 }
