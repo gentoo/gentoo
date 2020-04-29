@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ DIST_VERSION=1.01
 inherit perl-module
 
 DESCRIPTION="Fast C metadata and tag reader for all common audio file formats"
-
+# License note: ambiguity: https://rt.cpan.org/Ticket/Display.html?id=132450
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-solaris"
