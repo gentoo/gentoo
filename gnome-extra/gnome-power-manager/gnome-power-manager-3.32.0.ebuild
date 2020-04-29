@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome.org gnome2-utils meson virtualx xdg
 
 DESCRIPTION="GNOME power statistics"
-HOMEPAGE="https://projects.gnome.org/gnome-power-manager/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-power-manager"
 
 LICENSE="GPL-2+"
 SLOT="0"
