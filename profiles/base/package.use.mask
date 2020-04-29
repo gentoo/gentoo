@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Ben Kohler <bkohler@gentoo.org> (2020-04-29)
+# Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
+net-fs/samba test
+
 # Mike Gilbert <floppym@gentoo.org> (2020-04-23)
 # Tests are very sensitive to the host environment.
 dev-util/meson test
