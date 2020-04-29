@@ -263,7 +263,7 @@ pkg_pretend() {
 		if ! use video_cards_i965 &&
 		   ! use video_cards_iris &&
 		   ! use video_cards_radeonsi; then
-			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain i965, irisi, or radeonsi"
+			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain i965, iris, or radeonsi"
 		fi
 	fi
 
