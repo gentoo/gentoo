@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
+BDEPEND="dev-util/gdbus-codegen"
 
 src_prepare() {
 	# stupid vala.eclass...
