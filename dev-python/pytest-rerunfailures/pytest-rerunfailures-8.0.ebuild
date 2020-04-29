@@ -18,6 +18,9 @@ IUSE=""
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pytest-4.4[${PYTHON_USEDEP}]"
-BDEPEND="${RDEPEND}"
+BDEPEND="
+	test? (
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
+	)"
 
 distutils_enable_tests pytest
