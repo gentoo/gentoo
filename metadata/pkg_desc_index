@@ -11455,7 +11455,7 @@ games-util/lutris 0.5.4-r1 0.5.6 9999: An open source gaming platform for GNU/Li
 games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5-r2: Compiler of NML files into GRF/NFO files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
-games-util/pyfa 2.17.0 2.19.0 2.20.1 2.20.2 9999: Python Fitting Assistant - a ship fitting application for EVE Online
+games-util/pyfa 2.17.0 2.19.0 2.20.1 2.20.2 2.20.3 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/springlobby 0.266 0.267 0.269: The official lobby client for SpringRTS community games
@@ -14219,7 +14219,7 @@ net-dns/ddclient 3.9.0-r3: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r2: A caching DNS proxy server
 net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for DNS traffic
-net-dns/dnscrypt-proxy 2.0.33 2.0.39 2.0.41 2.0.42 9999: A flexible DNS proxy, with support for encrypted DNS protocols
+net-dns/dnscrypt-proxy 2.0.41 2.0.42 9999: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsdist 1.3.3-r1 1.4.0: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
 net-dns/dnsmasq 2.80-r2 2.81: Small forwarding DNS server
@@ -17861,7 +17861,7 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.0.1874.32_p1: A browser for our friends
+www-client/vivaldi 3.0.1874.32_p1 3.0.1874.33_p1: A browser for our friends
 www-client/vivaldi-snapshot 3.0.1874.22_p1 3.0.1874.27_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
