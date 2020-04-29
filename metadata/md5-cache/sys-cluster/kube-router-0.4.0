@@ -1,13 +1,13 @@
 BDEPEND=>=dev-lang/go-1.10
-DEFINED_PHASES=compile install test unpack
+DEFINED_PHASES=compile install prepare test unpack
 DESCRIPTION=A turnkey solution for Kubernetes networking
 EAPI=7
 HOMEPAGE=https://kube-router.io
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 MIT BSD BSD-2 MPL-2.0 ISC LGPL-3-with-linking-exception
 RDEPEND=net-firewall/iptables[conntrack] net-firewall/ipset sys-cluster/ipvsadm
-RESTRICT=strip
+RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/cloudnativelabs/kube-router/archive/v0.3.1.tar.gz -> kube-router-0.3.1.tar.gz
+SRC_URI=https://github.com/cloudnativelabs/kube-router/archive/v0.4.0.tar.gz -> kube-router-0.4.0.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=6e273a1583bb0046edc78c822a292c19
+_md5_=fadbefcc3996f0aeeb3f2e7c89b2c301
