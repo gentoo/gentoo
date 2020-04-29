@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit base toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products"
 HOMEPAGE="http://hostap.epitest.fi/"
@@ -12,11 +12,6 @@ SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
 
