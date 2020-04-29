@@ -1,0 +1,46 @@
+# This file specifies keyword level for profiles
+# https://www.gentoo.org/glep/glep-0072.html
+#
+# arch		stability
+#
+# stability is one of:
+# - stable: uses stable keywords and has consistent stable tree
+# - transitional: uses stable keywords but only ~arch is consistent
+# - testing: uses only ~arch keywords
+
+alpha		testing
+amd64		stable
+arm		stable
+arm64		stable
+hppa		stable
+ia64		testing
+m68k		testing
+mips		testing
+ppc		stable
+ppc64		stable
+riscv		testing
+s390		stable
+sparc		stable
+x86		stable
+
+# Prefix keywords
+ppc-aix		testing
+amd64-linux	testing
+arm-linux	testing
+arm64-linux	testing
+ppc64-linux	testing
+x86-linux	testing
+ppc-macos	testing
+x86-macos	testing
+x64-macos	testing
+m68k-mint	testing
+sparc-solaris	testing
+sparc64-solaris	testing
+x64-solaris	testing
+x86-solaris	testing
+x64-winnt	testing
+x86-winnt	testing
+x64-cygwin	testing
+x86-cygwin	testing
+
+# vim: set ts=8 noet ft=conf:
