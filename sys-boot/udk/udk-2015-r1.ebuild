@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -80,7 +80,7 @@ src_configure() {
 		|| die "Failed to patch source file"
 	# Compile of Base Tools is required for further setting up the environment
 	# Base tools does not like parallel make
-	sed -e "s:^\(CFLAGS\s*=\).*$:\1 ${CFLAGS} -MD -fshort-wchar -fno-strict-aliasing -nostdlib -c -fPIC:" \
+	sed -e "s|^\(CFLAGS\s*=\).*$|\1 ${CFLAGS} -MD -fshort-wchar -fno-strict-aliasing -nostdlib -c -fPIC|" \
 		-i "${S}/BaseTools/Source/C/Makefiles/header.makefile" \
 		|| die "Failed to update makefile header"
 	local make_flags=(
@@ -105,17 +105,17 @@ src_configure() {
 	else
 		append-cflags $(test-flags-CC -m32) $(test-flags-CC -malign-double)
 	fi
-	sed -e "s:^\(ACTIVE_PLATFORM\s*=\).*$:\1 MdeModulePkg/MdeModulePkg.dsc:" \
-		-e "s:^\(TARGET\s*=\).*$:\1 RELEASE:" \
-		-e "s:^\(TARGET_ARCH\s*=\).*$:\1 ${ARCH}:" \
-		-e "s:^\(TOOL_CHAIN_TAG\s*=\).*$:\1 ${TOOLCHAIN_TAG}:" \
-		-e "s:^\(MAX_CONCURRENT_THREAD_NUMBER\s*=\).*$:\1 $(makeopts_jobs):" \
+	sed -e "s|^\(ACTIVE_PLATFORM\s*=\).*$|\1 MdeModulePkg/MdeModulePkg.dsc|" \
+		-e "s|^\(TARGET\s*=\).*$|\1 RELEASE|" \
+		-e "s|^\(TARGET_ARCH\s*=\).*$|\1 ${ARCH}|" \
+		-e "s|^\(TOOL_CHAIN_TAG\s*=\).*$|\1 ${TOOLCHAIN_TAG}|" \
+		-e "s|^\(MAX_CONCURRENT_THREAD_NUMBER\s*=\).*$|\1 $(makeopts_jobs)|" \
 		-i "${S}/Conf/target.txt" || die "Failed to configure target file"
-	sed -e "s:«CC»:$(tc-getCC):" \
-		-e "s:«AR»:$(tc-getAR):" \
-		-e "s:«LD»:$(tc-getLD):" \
-		-e "s:«OBJCOPY»:$(tc-getOBJCOPY):" \
-		-e "s:«CFLAGS»:${CFLAGS}:" \
+	sed -e "s|«CC»|$(tc-getCC)|" \
+		-e "s|«AR»|$(tc-getAR)|" \
+		-e "s|«LD»|$(tc-getLD)|" \
+		-e "s|«OBJCOPY»|$(tc-getOBJCOPY)|" \
+		-e "s|«CFLAGS»|${CFLAGS}|" \
 		"${FILESDIR}/${PV}-tools_def.template" >>"${S}/Conf/tools_def.txt" \
 		|| die "Failed to prepare tools definition file"
 }
@@ -181,23 +181,23 @@ copySourceFiles() {
 # 3 - Path of the generated Makefile.
 createMakefile() {
 	local static_libs=$(sed -n '/^STATIC_LIBRARY_FILES\s*=/,/^\s*\$(OUTPUT_DIR)/{/^\s*\$(OUTPUT_DIR)/b;p}' ${3} \
-		| sed -e 's:^\s*\$(BIN_DIR).*/\([^/]*\)\.lib:\t-l\1:' -e 's:\\$:\\\\\\n:' | tr --delete '\n')
+		| sed -e 's|^\s*\$(BIN_DIR).*/\([^/]*\)\.lib|\t-l\1|' -e 's|\\$|\\\\\\n|' | tr --delete '\n')
 	local pecoff_header_size;
 	[[ $ARCH == X64 ]] && pecoff_header_size='0x228' || pecoff_header_size='0x220'
-	sed -e "s:«MODULE»:${2}:" \
-		-e "s:«PACKAGE_NAME»:${PN}:" \
-		-e "s:«STATIC_LIBS»:${static_libs}:" \
-		-e "s:«MODULE_TYPE»:$(grep -e '^MODULE_TYPE\s*=' ${3} | tail -1):" \
-		-e "s:«IMAGE_ENTRY_POINT»:$(grep -e '^IMAGE_ENTRY_POINT\s*=' ${3}):" \
-		-e "s:«CP»:$(grep -e '^CP\s*=' ${3}):" \
-		-e "s:«RM»:$(grep -e '^RM\s*=' ${3}):" \
-		-e "s:«CC»:$(grep -e '^CC\s*=' ${3}):" \
-		-e "s:«DLINK»:$(grep -e '^DLINK\s*=' ${3}):" \
-		-e "s:«OBJCOPY»:$(grep -e '^OBJCOPY\s*=' ${3}):" \
-		-e "s:«GENFW»:$(grep -e '^GENFW\s*=' ${3}):" \
-		-e "s:«PECOFF_HEADER_SIZE»:${pecoff_header_size}:" \
-		-e "s:«OBJCOPY_FLAGS»:$(grep -e '^OBJCOPY_FLAGS\s*=' ${3}):" \
-		-e "s:«GENFW_FLAGS»:$(grep -e '^GENFW_FLAGS\s*=' ${3}):" \
+	sed -e "s|«MODULE»|${2}|" \
+		-e "s|«PACKAGE_NAME»|${PN}|" \
+		-e "s|«STATIC_LIBS»|${static_libs}|" \
+		-e "s|«MODULE_TYPE»|$(grep -e '^MODULE_TYPE\s*=' ${3} | tail -1)|" \
+		-e "s|«IMAGE_ENTRY_POINT»|$(grep -e '^IMAGE_ENTRY_POINT\s*=' ${3})|" \
+		-e "s|«CP»|$(grep -e '^CP\s*=' ${3})|" \
+		-e "s|«RM»|$(grep -e '^RM\s*=' ${3})|" \
+		-e "s|«CC»|$(grep -e '^CC\s*=' ${3})|" \
+		-e "s|«DLINK»|$(grep -e '^DLINK\s*=' ${3})|" \
+		-e "s|«OBJCOPY»|$(grep -e '^OBJCOPY\s*=' ${3})|" \
+		-e "s|«GENFW»|$(grep -e '^GENFW\s*=' ${3})|" \
+		-e "s|«PECOFF_HEADER_SIZE»|${pecoff_header_size}|" \
+		-e "s|«OBJCOPY_FLAGS»|$(grep -e '^OBJCOPY_FLAGS\s*=' ${3})|" \
+		-e "s|«GENFW_FLAGS»|$(grep -e '^GENFW_FLAGS\s*=' ${3})|" \
 		"${FILESDIR}/${PV}-makefile.template" >${1} \
 		|| die "Failed to create Makefile"
 }
