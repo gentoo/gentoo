@@ -4591,7 +4591,7 @@ dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library 
 dev-java/openjdk 8.242 8.252_p09 11.0.6 11.0.7_p10: Open source implementation of the Java programming language
 dev-java/openjdk-bin 8.242_p08 8.252_p09 11.0.6_p10 11.0.7_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
 dev-java/openjdk-jre-bin 8.242_p08-r1 8.252_p09 11.0.6_p10 11.0.7_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
-dev-java/openjfx 11.0.6_p2 11.0.7_p0 11.0.7_p1: Java OpenJFX client application platform
+dev-java/openjfx 11.0.7_p1: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
 dev-java/oracle-jre-bin 1.8.0.202: Oracle's Java SE Runtime Environment
@@ -4920,7 +4920,7 @@ dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.2 1.3.0: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and minimalism
-dev-libs/gjs 1.56.2 1.58.6 1.58.7: Javascript bindings for GNOME
+dev-libs/gjs 1.56.2 1.58.6 1.58.7 1.64.2: Javascript bindings for GNOME
 dev-libs/glib 2.60.7-r2 2.62.6 2.64.1 2.64.2: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.4 3.2.5 3.2.6 3.2.7: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 6.1.2-r1 6.2.0-r1: Library for arbitrary-precision arithmetic on different type of numbers
@@ -7232,7 +7232,7 @@ dev-php/PEAR-MDB2_Driver_oci8 1.5.0_beta4-r1: Database Abstraction Layer, oci8 d
 dev-php/PEAR-MDB2_Driver_pgsql 1.5.0_beta4-r1: Database Abstraction Layer, pgsql driver
 dev-php/PEAR-MIME_Type 1.4.1: Utility class for dealing with MIME types
 dev-php/PEAR-Mail 1.4.1-r1: Class that provides multiple interfaces for sending emails
-dev-php/PEAR-Mail_Mime 1.10.2-r1 1.10.4 1.10.6: Create and manipulate mime messages with PHP
+dev-php/PEAR-Mail_Mime 1.10.2-r1 1.10.4 1.10.6 1.10.7: Create and manipulate mime messages with PHP
 dev-php/PEAR-Mail_mimeDecode 1.5.6-r2: Provides a class to decode mime messages (split from PEAR-Mail_Mime)
 dev-php/PEAR-Math_BigInteger 1.0.3-r1: Pure-PHP arbitrary precision integer arithmetic library
 dev-php/PEAR-Net_DNS 1.0.7-r1: Resolver library used to communicate with a DNS server
@@ -7314,7 +7314,7 @@ dev-php/mockery 0.9.0-r1: Simple yet flexible PHP mock object framework for use 
 dev-php/myclabs-deepcopy 1.6.0 1.6.1 1.9.4: Create deep copies (clones) of your objects
 dev-php/onphp 1.0.11_pre20141124: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
-dev-php/pecl-amqp 1.9.4 1.9.4-r1: PHP Bindings for AMQP 0-9-1 compatible brokers
+dev-php/pecl-amqp 1.9.4 1.9.4-r1 1.10.2: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 5.1.12 5.1.17-r1 5.1.18: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-crack 0.4-r7: PHP interface to the cracklib libraries
@@ -7326,7 +7326,7 @@ dev-php/pecl-geoip 1.1.1-r4: PHP extension to map IP address to geographic place
 dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
 dev-php/pecl-http 3.2.1 3.2.3: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
-dev-php/pecl-lzf 1.6.6 1.6.7: This package handles LZF de/compression
+dev-php/pecl-lzf 1.6.6 1.6.7 1.6.8: This package handles LZF de/compression
 dev-php/pecl-mailparse 3.0.2-r1 3.0.3-r1 3.0.4: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 4.0.5.2: PHP extension for using memcached
@@ -7344,7 +7344,7 @@ dev-php/pecl-rrd 2.0.1-r3: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers
 dev-php/pecl-taint 2.0.5 2.0.6: Extension used for detecting XSS code (tainted strings)
-dev-php/pecl-timezonedb 2019.3: Timezone Database to be used with PHP's date and time functions
+dev-php/pecl-timezonedb 2019.3 2020.1: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.3: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.1.3: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.1.0: A wrapper around libuuid
@@ -7367,9 +7367,9 @@ dev-php/phpdocumentor-type-resolver 0.2.1: PSR-5 based resolver of Class names, 
 dev-php/phpmd 2.6.0: PHP mess detector
 dev-php/phpspec-prophecy 1.7.0 1.8.0 1.9.0 1.10.0 1.10.1: Highly opinionated mocking framework
 dev-php/phptal 1.3.1: A templating engine for PHP5 that implements Zope Page Templates syntax
-dev-php/phpunit 5.7.15-r3 8.5.0 8.5.1 8.5.2: A PHP Unit Testing framework
+dev-php/phpunit 5.7.15-r3 8.5.0 8.5.1 8.5.2 8.5.4: A PHP Unit Testing framework
 dev-php/phpunit-mock-objects 3.4.3 3.4.3-r1: Mock Object library for PHPUnit
-dev-php/psr-log 1.0.2 1.1.0 1.1.2: Common interface for logging libraries
+dev-php/psr-log 1.0.2 1.1.0 1.1.2 1.1.3: Common interface for logging libraries
 dev-php/realpath_turbo 2.0.0: PHP extension to re-enable realpath cache when using open_basedir restriction
 dev-php/recaptcha 1.2.1: PHP client library for Google's reCAPTCHA service
 dev-php/sebastian-code-unit-reverse-lookup 1.0.1: Looks up which function or method a line of code belongs to
@@ -7404,8 +7404,8 @@ dev-php/tcpdf 6.2.25 6.2.26: TCPDF is a FLOSS PHP class for generating PDF docum
 dev-php/theseer-tokenizer 1.1.0 1.1.3: Convert tokenized PHP source code into XML and other formats
 dev-php/twig 1.40.1-r1 1.42.3 1.42.3-r1: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
-dev-php/xdebug 2.6.1 2.9.2 2.9.3 2.9.4: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.6.1 2.9.2 2.9.3 2.9.4: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug 2.6.1 2.9.2 2.9.3 2.9.4 2.9.5: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.6.1 2.9.2 2.9.3 2.9.4 2.9.5: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1: Restart a CLI process without loading the xdebug extension
 dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
@@ -10073,7 +10073,7 @@ dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r3 2.2.3 2.2.4 2.2.6: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.2.1: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.3.0: Guile bindings of git
-dev-scheme/guile-json 3.3.0: JSON module for Guile
+dev-scheme/guile-json 3.3.0 3.4.0: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.0: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
@@ -10419,7 +10419,7 @@ dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19 2019.11.30: Converts profili
 dev-util/gtk-builder-convert 2.24.32: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.25-r1 1.32-r1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.25-r1 1.32: Automake files from gtk-doc
-dev-util/gtk-update-icon-cache 3.24.16: GTK update icon cache
+dev-util/gtk-update-icon-cache 3.24.16 3.24.20: GTK update icon cache
 dev-util/gyp 20170904022846-r1 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
@@ -16178,7 +16178,7 @@ sci-mathematics/octave-epstk 2.4: Graphical output functions for Matlab and Octa
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
 sci-mathematics/pari 2.11.2 2.11.4: Computer-aided number theory C library and tools
 sci-mathematics/pari-data 20191216: Additional dataset packages for PARI
-sci-mathematics/petsc 3.11.3 3.12.1: Portable, Extensible Toolkit for Scientific Computation
+sci-mathematics/petsc 3.13.0: Portable, Extensible Toolkit for Scientific Computation
 sci-mathematics/planarity 3.0.0.5: The edge addition planarity suite of graph algorithms
 sci-mathematics/polymake 3.0_p2: research tool for polyhedral geometry and combinatorics
 sci-mathematics/prng 3.0.2-r2: Pseudo-Random Number Generator library
@@ -16193,7 +16193,7 @@ sci-mathematics/rstudio 1.1.463-r1 1.2.1335 1.2.5033 1.2.5042: IDE for the R lan
 sci-mathematics/rw 0.8-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 4.0.2 4.0.3: Computer algebra system for polynomial computations
-sci-mathematics/slepc 3.11.1 3.12.1: Scalable Library for Eigenvalue Problem Computations
+sci-mathematics/slepc 3.13.1: Scalable Library for Eigenvalue Problem Computations
 sci-mathematics/spin 6.4.5: Tool for formal verification of distributed software systems
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
@@ -17430,7 +17430,7 @@ sys-libs/talloc 2.3.1: Samba talloc library
 sys-libs/tapi 1.30 2.0.0: Text-based Application Programming Interface
 sys-libs/tdb 1.4.3: A simple database API
 sys-libs/tevent 0.10.2: Samba tevent library
-sys-libs/timezone-data 2019c: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+sys-libs/timezone-data 2019c 2020a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2: Standard (de)compression library
@@ -17906,7 +17906,7 @@ www-servers/h2o 2.2.5 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.53 1.4.54 1.4.55: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.16.1-r1 1.17.9-r2 1.17.10: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.16.1-r1 1.17.10-r1 1.18.0: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.8.0 1.17.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
@@ -18061,7 +18061,7 @@ x11-libs/gl2ps 1.3.9 1.4.0: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.10.46: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4: Canvas widget for GTK+ using the cairo 2D library for drawing
-x11-libs/gtk+ 2.24.32-r1 3.24.16 3.24.18: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.16 3.24.18 3.24.20: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.3 3.3.4: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
