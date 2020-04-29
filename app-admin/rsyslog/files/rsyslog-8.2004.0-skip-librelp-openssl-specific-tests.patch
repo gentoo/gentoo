@@ -1,0 +1,106 @@
+From 15f5a1bda22bc4586e7ad8d24222befd1933a822 Mon Sep 17 00:00:00 2001
+From: Andre lorbach <alorbach@adiscon.com>
+Date: Wed, 29 Apr 2020 09:24:10 +0200
+Subject: [PATCH] SKIP librelp tlscmd tests if librelp was build without
+ openssl support
+
+closes https://github.com/rsyslog/rsyslog/issues/4131
+---
+ tests/imrelp-tls-cfgcmd.sh      | 23 ++++++++++++-----------
+ tests/sndrcv_relp_tls-cfgcmd.sh | 25 +++++++++++++------------
+ 2 files changed, 25 insertions(+), 23 deletions(-)
+
+diff --git a/tests/imrelp-tls-cfgcmd.sh b/tests/imrelp-tls-cfgcmd.sh
+index bbd63c9cd3..bb1af4ec91 100755
+--- a/tests/imrelp-tls-cfgcmd.sh
++++ b/tests/imrelp-tls-cfgcmd.sh
+@@ -1,6 +1,7 @@
+ #!/bin/bash
+ # addd 2019-11-14 by alorbach, released under ASL 2.0
+ . ${srcdir:=.}/diag.sh init
++require_relpEngineSetTLSLibByName
+ export NUMMESSAGES=1000
+ export RSYSLOG_DEBUG="debug nologfuncflow noprintmutexaction nostdout"
+ export RSYSLOG_DEBUGLOG="$RSYSLOG_DYNNAME.receiver.debuglog"
+@@ -27,21 +28,21 @@ tcpflood --check-only -k "Protocol=-ALL,TLSv1.2" -u "openssl" -Trelp-tls -acertv
+ shutdown_when_empty
+ wait_shutdown
+ 
+-content_check --check-only "parameter tls.tlslib ignored" ${RSYSLOG_DEBUGLOG}
++content_check --check-only "relpTcpTLSSetPrio_gtls" ${RSYSLOG_DEBUGLOG}
+ ret=$?
+ if [ $ret == 0 ]; then
+-	echo "SKIP: Parameter tls.tlslib not supported"
++	echo "SKIP: LIBRELP was build without OPENSSL Support"
++	skip_test
++fi 
++
++content_check --check-only "OpenSSL Version too old" ${RSYSLOG_DEBUGLOG}
++ret=$?
++if [ $ret == 0 ]; then
++	echo "SKIP: OpenSSL Version too old"
+ 	skip_test
+ else
+-	content_check --check-only "OpenSSL Version too old" ${RSYSLOG_DEBUGLOG}
+-	ret=$?
+-	if [ $ret == 0 ]; then
+-		echo "SKIP: OpenSSL Version too old"
+-		skip_test
+-	else
+-		# Kindly check for a failed session
+-		content_check "relp connect failed with return 10031" ${RSYSLOG_DYNNAME}.tcpflood
+-	fi
++	# Kindly check for a failed session
++	content_check "relp connect failed with return 10031" ${RSYSLOG_DYNNAME}.tcpflood
+ fi
+ 
+ exit_test
+\ No newline at end of file
+diff --git a/tests/sndrcv_relp_tls-cfgcmd.sh b/tests/sndrcv_relp_tls-cfgcmd.sh
+index ff7b3bb75c..57e0f720f0 100755
+--- a/tests/sndrcv_relp_tls-cfgcmd.sh
++++ b/tests/sndrcv_relp_tls-cfgcmd.sh
+@@ -1,6 +1,7 @@
+ #!/bin/bash
+ # added 2019-11-13 by alorbach
+ . ${srcdir:=.}/diag.sh init
++require_relpEngineSetTLSLibByName
+ export PORT_RCVR="$(get_free_port)"
+ export RSYSLOG_DEBUG="debug nologfuncflow noprintmutexaction nostdout"
+ export RSYSLOG_DEBUGLOG="$RSYSLOG_DYNNAME.receiver.debuglog"
+@@ -40,22 +41,22 @@ wait_shutdown 2
+ shutdown_when_empty
+ wait_shutdown
+ 
+-content_check --check-only "parameter tls.tlslib ignored" ${RSYSLOG_DEBUGLOG}
++content_check --check-only "relpTcpConnectTLSInit_gnutls" ${RSYSLOG_DEBUGLOG}
+ ret=$?
+ if [ $ret == 0 ]; then
+-	echo "SKIP: Parameter tls.tlslib not supported"
++	echo "SKIP: LIBRELP was build without OPENSSL Support"
++	skip_test
++fi 
++
++content_check --check-only "OpenSSL Version too old" $RSYSLOG_DEBUGLOG
++ret=$?
++if [ $ret == 0 ]; then
++	echo "SKIP: OpenSSL Version too old"
+ 	skip_test
+ else
+-	content_check --check-only "OpenSSL Version too old" $RSYSLOG_DEBUGLOG
+-	ret=$?
+-	if [ $ret == 0 ]; then
+-		echo "SKIP: OpenSSL Version too old"
+-		skip_test
+-	else
+-		# Kindly check for a failed session
+-		content_check "librelp error 10031" $RSYSLOG_DEBUGLOG
+-	#	content_check "OpenSSL Error Stack:"
+-	fi
++	# Kindly check for a failed session
++	content_check "librelp error 10031" $RSYSLOG_DEBUGLOG
++#	content_check "OpenSSL Error Stack:"
+ fi
+ 
+ exit_test
+\ No newline at end of file
