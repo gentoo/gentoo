@@ -9,6 +9,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-3.18.0
 SLOT=0
-SRC_URI=https://github.com/home-sweet-gnome/dash-to-panel/archive/v36.tar.gz -> gnome-shell-extension-dash-to-panel-36.tar.gz branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
+SRC_URI=https://github.com/home-sweet-gnome/dash-to-panel/archive/v37.tar.gz -> gnome-shell-extension-dash-to-panel-37.tar.gz branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=137b0de4674a9dd3fb400df6b73427f5
