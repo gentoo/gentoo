@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit flag-o-matic fortran-2 python-any-r1 toolchain-funcs
 
@@ -36,7 +36,7 @@ RDEPEND="
 	boost? ( dev-libs/boost )
 	fftw? ( sci-libs/fftw:3.0[mpi?] )
 	hdf5? ( sci-libs/hdf5[mpi?] )
-	hypre? ( >=sci-libs/hypre-2.8.0b[mpi?] )
+	hypre? ( >=sci-libs/hypre-2.18.0[mpi?] )
 	metis? ( >=sci-libs/parmetis-4 )
 	mpi? ( virtual/mpi[cxx?,fortran?] )
 	mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack )
@@ -53,15 +53,11 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.7.0-disable-rpath.patch \
-	"${FILESDIR}"/${PN}-3.9.0-fix_sandbox_violation.patch
+	"${FILESDIR}"/${PN}-3.7.0-disable-rpath.patch
+	"${FILESDIR}"/${PN}-3.13.0-fix_sandbox_violation.patch
+	"${FILESDIR}"/${PN}-3.13.0-make_hypre_configure.patch
+	"${FILESDIR}"/${PN}-3.13.0-do_not_run_mpiexec.patch
 )
-
-src_prepare() {
-	default
-
-	sed -i -e 's%/usr/bin/env python%/usr/bin/env python2%' configure || die
-}
 
 # petsc uses --with-blah=1 and --with-blah=0 to en/disable options
 petsc_enable() {
@@ -157,23 +153,23 @@ src_configure() {
 		$(use_with hdf5) \
 		$(petsc_with hypre hypre \
 			/usr/include/hypre -lHYPRE) \
-		$(petsc_with sparse suitesparse) \
+		$(use_with sparse suitesparse) \
 		$(petsc_with superlu superlu \
 			/usr/include/superlu -lsuperlu) \
-		$(petsc_with X x) \
-		$(petsc_with X x11) \
+		$(use_with X x) \
+		$(use_with X x11) \
 		$(petsc_with scotch ptscotch \
 			/usr/include/scotch \
 		[-lptesmumps,-lptscotch,-lptscotcherr,-lscotch,-lscotcherr]) \
 		$(petsc_with mumps scalapack \
 			/usr/include/scalapack -lscalapack) \
-		$(petsc_with mumps mumps \
+		$(use_with mumps mumps \
 			/usr/include \
 			[-lcmumps,-ldmumps,-lsmumps,-lzmumps,-lmumps_common,-lpord]) \
 		--with-imagemagick=0 \
 		--with-python=0 \
-		$(petsc_with boost) \
-		$(petsc_with fftw)
+		$(use_with boost) \
+		$(use_with fftw)
 }
 
 src_install() {

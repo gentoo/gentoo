@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-04-29)
+# Masked for testing
+>=dev-libs/gjs-1.64
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-04-28)
 # Dead upstream. Removal in 30 days
 sys-cluster/openais

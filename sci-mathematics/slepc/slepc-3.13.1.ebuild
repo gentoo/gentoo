@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit eutils flag-o-matic python-any-r1 toolchain-funcs
 
@@ -30,12 +30,6 @@ DEPEND="${RDEPEND}
 
 MAKEOPTS="${MAKEOPTS} V=1"
 
-src_prepare() {
-	default
-
-	sed -i -e 's%/usr/bin/env python%/usr/bin/env python2%' configure || die
-}
-
 src_configure() {
 	# *sigh*
 	addpredict "${PETSC_DIR}"/.nagged
@@ -43,9 +37,10 @@ src_configure() {
 	# Make sure that the environment is set up correctly:
 	unset PETSC_DIR
 	unset PETSC_ARCH
-	unset SLEPC_DIR
 	source "${EPREFIX}"/etc/env.d/99petsc
 	export PETSC_DIR
+	export PETSC_ARCH
+	export SLEPC_DIR="${S}"
 
 	# configure is a custom python script and doesn't want to have default
 	# configure arguments that we set with econf
@@ -53,8 +48,7 @@ src_configure() {
 		--prefix="${EPREFIX}/usr/$(get_libdir)/slepc" \
 		--with-arpack=1 \
 		--with-arpack-dir="${EPREFIX}/usr/$(get_libdir)" \
-		--with-arpack-flags="$(usex mpi "-lparpack,-larpack" "-larpack")"
-
+		--with-arpack-lib="$(usex mpi "-lparpack,-larpack" "-larpack")"
 }
 
 src_install() {

@@ -1,18 +1,18 @@
 diff --git a/config/BuildSystem/config/packages/hypre.py b/config/BuildSystem/config/packages/hypre.py
-index 869a1661..76067c8d 100644
+index 4d915c31..1b05a1ee 100644
 --- a/config/BuildSystem/config/packages/hypre.py
 +++ b/config/BuildSystem/config/packages/hypre.py
 @@ -5,10 +5,6 @@ class Configure(config.package.GNUPackage):
    def __init__(self, framework):
      config.package.GNUPackage.__init__(self, framework)
-     self.version         = '2.18.1'
+     #self.version         = '2.18.2'
 -    self.minversion      = '2.14'
 -    self.versionname     = 'HYPRE_RELEASE_VERSION'
 -    self.versioninclude  = 'HYPRE_config.h'
 -    self.requiresversion = 1
-     self.gitcommit       = 'v'+self.version
+     #self.gitcommit       = 'v'+self.version
+     self.gitcommit       = '93baaa8c9' # v2.18.2+valgrind-fix
      self.download        = ['git://https://github.com/hypre-space/hypre','https://github.com/hypre-space/hypre/archive/'+self.gitcommit+'.tar.gz']
-     self.functions       = ['HYPRE_IJMatrixCreate']
 diff --git a/include/petsc/private/petschypre.h b/include/petsc/private/petschypre.h
 index 81ca7136..b403e70e 100644
 --- a/include/petsc/private/petschypre.h
@@ -31,7 +31,7 @@ index 81ca7136..b403e70e 100644
    With scalar type == real, HYPRE_Complex == PetscScalar;
    With scalar type == complex,  HYPRE_Complex is double __complex__ while PetscScalar may be std::complex<double>
 diff --git a/src/mat/impls/hypre/mhypre.c b/src/mat/impls/hypre/mhypre.c
-index 8e8fe678..3533b99a 100644
+index 0f7470e6..cce3e2b0 100644
 --- a/src/mat/impls/hypre/mhypre.c
 +++ b/src/mat/impls/hypre/mhypre.c
 @@ -15,10 +15,6 @@
@@ -42,10 +42,10 @@ index 8e8fe678..3533b99a 100644
 -#define  hypre_ParCSRMatrixClone(A,B) hypre_ParCSRMatrixCompleteClone(A)
 -#endif
 -
- PETSC_INTERN PetscErrorCode MatPtAP_IS_XAIJ(Mat,Mat,MatReuse,PetscReal,Mat*);
- 
  static PetscErrorCode MatHYPRE_CreateFromMat(Mat,Mat_HYPRE*);
-@@ -65,7 +61,6 @@ static PetscErrorCode MatHYPRE_IJMatrixPreallocate(Mat A_d, Mat A_o, HYPRE_IJMat
+ static PetscErrorCode MatHYPRE_IJMatrixPreallocate(Mat,Mat,HYPRE_IJMatrix);
+ static PetscErrorCode MatHYPRE_IJMatrixFastCopy_MPIAIJ(Mat,HYPRE_IJMatrix);
+@@ -63,7 +59,6 @@ static PetscErrorCode MatHYPRE_IJMatrixPreallocate(Mat A_d, Mat A_o, HYPRE_IJMat
          nnz_o[i] = 0;
        }
      }
@@ -53,7 +53,7 @@ index 8e8fe678..3533b99a 100644
      { /* If we don't do this, the columns of the matrix will be all zeros! */
        hypre_AuxParCSRMatrix *aux_matrix;
        aux_matrix = (hypre_AuxParCSRMatrix*)hypre_IJMatrixTranslator(ij);
-@@ -75,9 +70,6 @@ static PetscErrorCode MatHYPRE_IJMatrixPreallocate(Mat A_d, Mat A_o, HYPRE_IJMat
+@@ -73,9 +68,6 @@ static PetscErrorCode MatHYPRE_IJMatrixPreallocate(Mat A_d, Mat A_o, HYPRE_IJMat
        aux_matrix = (hypre_AuxParCSRMatrix*)hypre_IJMatrixTranslator(ij);
        hypre_AuxParCSRMatrixNeedAux(aux_matrix) = 1;
      }
@@ -63,7 +63,7 @@ index 8e8fe678..3533b99a 100644
      ierr = PetscFree(nnz_d);CHKERRQ(ierr);
      ierr = PetscFree(nnz_o);CHKERRQ(ierr);
    }
-@@ -235,11 +227,7 @@ static PetscErrorCode MatHYPRE_IJMatrixFastCopy_MPIAIJ(Mat A, HYPRE_IJMatrix ij)
+@@ -233,11 +225,7 @@ static PetscErrorCode MatHYPRE_IJMatrixFastCopy_MPIAIJ(Mat A, HYPRE_IJMatrix ij)
    /* need to shift the diag column indices (hdiag->j) back to global numbering since hypre is expecting this */
    hjj = hdiag->j;
    pjj = pdiag->j;
@@ -75,7 +75,7 @@ index 8e8fe678..3533b99a 100644
    ierr = PetscArraycpy(hdiag->data,pdiag->a,pdiag->nz);CHKERRQ(ierr);
    if (sameint) {
      ierr = PetscArraycpy(hoffd->i,poffd->i,pA->A->rmap->n + 1);CHKERRQ(ierr);
-@@ -249,12 +237,8 @@ static PetscErrorCode MatHYPRE_IJMatrixFastCopy_MPIAIJ(Mat A, HYPRE_IJMatrix ij)
+@@ -247,12 +235,8 @@ static PetscErrorCode MatHYPRE_IJMatrixFastCopy_MPIAIJ(Mat A, HYPRE_IJMatrix ij)
  
    /* need to move the offd column indices (hoffd->j) back to global numbering since hypre is expecting this
       If we hacked a hypre a bit more we might be able to avoid this step */
