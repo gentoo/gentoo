@@ -12,9 +12,10 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/${MY_PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SNAPSHOT_COMMIT="49ca250b44c633ba7cb8897002e62781a451421c"
+	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/${SNAPSHOT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
-	S="${WORKDIR}"/${MY_PN}-${PV}
+	S="${WORKDIR}"/${MY_PN}-${SNAPSHOT_COMMIT}
 fi
 
 DESCRIPTION="Provides an API and commands for processing SPIR-V modules"
