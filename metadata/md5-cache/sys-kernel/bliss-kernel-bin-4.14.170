@@ -10,5 +10,5 @@ RDEPEND=|| ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-bo
 RESTRICT=strip test
 SLOT=4.14.170-FC.01
 SRC_URI=https://xyinn.org/gentoo/kernels/4.14.170-FC.01/kernel-4.14.170-FC.01.tar.xz
-_eclasses_=kernel-install	8d71ac2b8604c81762590203a3959633	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d
+_eclasses_=kernel-install	ce866c49e06c27f1a5579b707ef95d9c	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d
 _md5_=094d32a5460cfeff0c856475320945df

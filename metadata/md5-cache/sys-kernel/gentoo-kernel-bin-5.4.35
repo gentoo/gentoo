@@ -10,5 +10,5 @@ RDEPEND=!sys-kernel/gentoo-kernel:5.4.35 !sys-kernel/vanilla-kernel:5.4.35 !sys-
 RESTRICT=!test? ( test ) test? ( userpriv )
 SLOT=5.4.35
 SRC_URI=test? ( amd64? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-amd64.qcow2 ) x86? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-x86.qcow2 ) ) amd64? ( https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/gentoo-kernel-5.4.35-1.xpak -> gentoo-kernel-5.4.35-1.amd64.xpak ) x86? ( https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/gentoo-kernel/gentoo-kernel-5.4.35-1.xpak -> gentoo-kernel-5.4.35-1.x86.xpak )
-_eclasses_=kernel-install	8d71ac2b8604c81762590203a3959633	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d
+_eclasses_=kernel-install	ce866c49e06c27f1a5579b707ef95d9c	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d
 _md5_=090591d3b01a83132e35a9ff23d3d8a6
