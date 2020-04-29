@@ -136,7 +136,7 @@ src_install() {
 	# Here we do the same thing, but from the system arduino-builder.
 	dosym "../../arduino-builder/platform.txt" "${SHARE}/hardware/platform.txt"
 	dosym "../../arduino-builder/platform.keys.rewrite.txt" "${SHARE}/hardware/platform.keys.rewrite.txt"
-	dosym "../../../bin/arduino-builder" "${SHARE}/arduino-builder"
+	dosym "../../bin/arduino-builder" "${SHARE}/arduino-builder"
 
 	# hardware/tools/avr needs to exist or arduino-builder will
 	# complain about missing required -tools arg
