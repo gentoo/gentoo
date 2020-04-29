@@ -28,7 +28,7 @@ index 6c0aaa8..50d40ca 100755
 -use Net::hostent ;
 +
 +use Socket qw(AF_INET);
-+use Socket6 qw(AF_INET6);
++use Socket6 qw(AF_INET6 gethostbyname2);
 +use Data::Dumper qw( Dumper );
 +
 +sub gethost($){
