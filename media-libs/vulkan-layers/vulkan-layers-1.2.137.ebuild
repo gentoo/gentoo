@@ -28,7 +28,7 @@ IUSE="wayland X"
 BDEPEND=">=dev-util/cmake-3.10.2"
 DEPEND="${PYTHON_DEPS}
 	>=dev-util/glslang-8.13.3560_pre20200404:=[${MULTILIB_USEDEP}]
-	>=dev-util/spirv-tools-9999:=[${MULTILIB_USEDEP}]
+	>=dev-util/spirv-tools-2020.4_pre20200429:=[${MULTILIB_USEDEP}]
 	>=dev-util/vulkan-headers-${PV}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
