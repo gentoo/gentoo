@@ -1,0 +1,71 @@
+diff -r -U3 routino-3.3.2.orig/Makefile routino-3.3.2/Makefile
+--- routino-3.3.2.orig/Makefile	2018-10-31 02:27:41.000000000 +0700
++++ routino-3.3.2/Makefile	2020-04-29 20:59:05.239931544 +0700
+@@ -24,7 +24,7 @@
+ 
+ # Sub-directories and sub-makefiles
+ 
+-SUBDIRS=src xml doc web extras python
++SUBDIRS=src xml doc web extras
+ 
+ ########
+ 
+diff -r -U3 routino-3.3.2.orig/Makefile.conf routino-3.3.2/Makefile.conf
+--- routino-3.3.2.orig/Makefile.conf	2019-04-13 17:52:02.000000000 +0700
++++ routino-3.3.2/Makefile.conf	2020-04-29 20:58:35.352930803 +0700
+@@ -45,11 +45,11 @@
+ # Installation locations (edit if required)
+ 
+ ifneq ($(HOST),MINGW)
+-  prefix=/usr/local
++  prefix=/usr
+   bindir=$(prefix)/bin
+   incdir=$(prefix)/include
+   libdir=$(prefix)/lib
+-  docdir=$(prefix)/doc/routino
++  docdir=$(prefix)/share/doc/${PF}
+   datadir=$(prefix)/share/routino
+ else
+   prefix="c:/Program Files/Routino"
+@@ -82,10 +82,10 @@
+ endif
+ 
+ # Maths library
+-LDFLAGS=-lm
++LDFLAGS+=-lm
+ 
+ # Language dialect selection
+-CFLAGS=-std=c99
++CFLAGS+=-std=c99
+ 
+ # Warning options
+ CFLAGS+=-Wall -Wmissing-prototypes -Wextra -Wno-unused-parameter -pedantic
+@@ -97,7 +97,7 @@
+ endif
+ 
+ # Optimisation options
+-CFLAGS+=-O3
++#CFLAGS+=-O3
+ 
+ # Fast maths option - makes test cases fail slightly
+ CFLAGS+=-ffast-math
+@@ -138,7 +138,7 @@
+ endif
+ 
+ # Put the current directory in the shared library path for the router using libroutino
+-LDFLAGS_LDSO=-Wl,-R.
++#LDFLAGS_LDSO=-Wl,-R.
+ 
+ 
+ # Required for multi-threaded support (comment these two lines out if not required)
+@@ -159,8 +159,8 @@
+ 
+ 
+ # Required for xz support (uncomment these two lines if required)
+-#CFLAGS+=-DUSE_XZ
+-#LDFLAGS+=-llzma
++CFLAGS+=-DUSE_XZ
++LDFLAGS+=-llzma
+ 
+ 
+ # Required to use stdio with files > 2GiB on 32-bit system.
