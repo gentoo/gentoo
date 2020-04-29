@@ -7,14 +7,12 @@ inherit cmake-utils multilib-minimal
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://tls.mbed.org/"
-CRYPTO_SUBMODULE="mbedcrypto-3.1.0"
-SRC_URI="https://github.com/ARMmbed/mbedtls/archive/${P}.tar.gz
-	https://github.com/ARMmbed/mbed-crypto/archive/${CRYPTO_SUBMODULE}.tar.gz"
+SRC_URI="https://github.com/ARMmbed/mbedtls/archive/${P}.tar.gz"
 S=${WORKDIR}/${PN}-${P}
 
 LICENSE="Apache-2.0"
 SLOT="0/13" # slot for libmbedtls.so
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="cpu_flags_x86_sse2 doc havege libressl programs -static-libs test threads zlib"
 RESTRICT="!test? ( test )"
 
@@ -36,21 +34,12 @@ enable_mbedtls_option() {
 		include/mbedtls/config.h || die
 }
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-dont-overwrite-headers.patch
-	"${FILESDIR}"/${PN}-un-pebcak-705038-wrong-file.patch
-)
-
 src_prepare() {
 	use cpu_flags_x86_sse2 && enable_mbedtls_option MBEDTLS_HAVE_SSE2
 	use zlib && enable_mbedtls_option MBEDTLS_ZLIB_SUPPORT
 	use havege && enable_mbedtls_option MBEDTLS_HAVEGE_C
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_C
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_PTHREAD
-
-	# pretend to be git submodule
-	rmdir "${S}"/crypto
-	mv "${WORKDIR}"/mbed-crypto-${CRYPTO_SUBMODULE} "${S}"/crypto
 
 	cmake-utils_src_prepare
 }
