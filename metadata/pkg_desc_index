@@ -7948,7 +7948,7 @@ dev-python/jsondiff 1.1.2: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0: Merge a series of JSON documents
 dev-python/jsonpatch 1.23 1.25: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
-dev-python/jsonpickle 1.2 1.3: Python library for serializing any arbitrary object graph into JSON
+dev-python/jsonpickle 1.2 1.3 1.4.1: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
 dev-python/jsonrpclib 0.4.0 0.4.1 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
@@ -8780,7 +8780,7 @@ dev-python/sshtunnel 0.1.4-r2 0.1.5: Pure Python SSH tunnels
 dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
 dev-python/stapler 1.0_pre20191215-r1: Suite of tools for PDF files manipulation written in Python
 dev-python/statsd 3.3.0: A simple statsd client
-dev-python/statsmodels 0.10.2 9999: Statistical computations and models for use with SciPy
+dev-python/statsmodels 0.10.2 0.11.1 9999: Statistical computations and models for use with SciPy
 dev-python/stestr 2.1.0: A parallel Python test runner built around subunit
 dev-python/stevedore 1.31.0: Manage dynamic plugins for Python applications
 dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP protocol
