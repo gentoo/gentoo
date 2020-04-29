@@ -7534,7 +7534,7 @@ dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.2 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0 2.49.0-r1: Amazon Web Services API
-dev-python/boto3 1.9.122 1.10.2 9999: The AWS SDK for Python
+dev-python/boto3 1.9.122 1.10.2 1.12.48 9999: The AWS SDK for Python
 dev-python/botocore 1.12.122 1.15.16 1.15.32 1.15.48 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
@@ -8083,7 +8083,7 @@ dev-python/neovim-remote 2.2.1 9999: A tool that helps control neovim processes
 dev-python/netaddr 0.7.19: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
-dev-python/networkx 2.4: Python tools to manipulate graphs and complex networks
+dev-python/networkx 2.4 2.4-r1: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 1.29.2: Neutron shared routines and utilities.
 dev-python/nltk 3.4.5 3.5: Natural Language Toolkit
 dev-python/nltk-data 20200312 20200312-r1: Data files for NLTK
@@ -8636,7 +8636,7 @@ dev-python/requests_pkcs12 1.4 1.7: Adds PKCS#12 support to the Python requests 
 dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
 dev-python/responses 0.10.7: Utility for mocking out the Python Requests library
 dev-python/restkit 4.2.2: A HTTP ressource kit for Python
-dev-python/restructuredtext-lint 0.12.2 1.1.2: Checks PyPI validity of reStructuredText
+dev-python/restructuredtext-lint 0.12.2 1.1.2 1.3.0: Checks PyPI validity of reStructuredText
 dev-python/resumable-urlretrieve 0.1.5: Small library to fetch files over HTTP and resuming their download
 dev-python/retry-decorator 1.0.0-r1: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.3: General-purpose retrying library
@@ -14590,7 +14590,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 13.13.0 14.0.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 13.13.0 14.0.0 14.1.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -17328,7 +17328,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.32 5.4.34 5.4.35 5.5.19 5.6.6 5.6.7: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.34 5.4.35 5.5.19 5.6.6 5.6.7: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.9.217 4.9.218 4.9.219 4.9.220 4.14.174 4.14.175 4.14.176 4.14.177 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.5.15 5.5.16 5.5.17 5.5.18 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7: Full sources including the Gentoo patchset for the 5.6 kernel tree
+sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.9.217 4.9.218 4.9.219 4.9.220 4.14.174 4.14.175 4.14.176 4.14.177 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.5.15 5.5.16 5.5.17 5.5.18 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
