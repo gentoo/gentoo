@@ -1,0 +1,53 @@
+commit ef7fce5a4fcd951a6c2bd1b9c6d21e6cf6a711e2
+Author: gruebel <anton.gruebel@gmail.com>
+Date:   Thu Nov 21 22:35:20 2019 +0100
+
+    Fixed failing tests, due to a new required parameter StreamEnabled
+
+diff --git a/tests/test_dynamodbstreams/test_dynamodbstreams.py b/tests/test_dynamodbstreams/test_dynamodbstreams.py
+index 01cf915a..a98f97bf 100644
+--- a/tests/test_dynamodbstreams/test_dynamodbstreams.py
++++ b/tests/test_dynamodbstreams/test_dynamodbstreams.py
+@@ -213,7 +213,7 @@ class TestEdges:
+
+         resp = conn.update_table(
+             TableName="test-streams",
+-            StreamSpecification={"StreamViewType": "KEYS_ONLY"},
++            StreamSpecification={"StreamEnabled": True, "StreamViewType": "KEYS_ONLY"},
+         )
+         assert "StreamSpecification" in resp["TableDescription"]
+         assert resp["TableDescription"]["StreamSpecification"] == {
+@@ -226,7 +226,10 @@ class TestEdges:
+         with assert_raises(conn.exceptions.ResourceInUseException):
+             resp = conn.update_table(
+                 TableName="test-streams",
+-                StreamSpecification={"StreamViewType": "OLD_IMAGES"},
++                StreamSpecification={
++                    "StreamEnabled": True,
++                    "StreamViewType": "OLD_IMAGES",
++                },
+             )
+
+     def test_stream_with_range_key(self):
+@@ -243,7 +246,7 @@ class TestEdges:
+                 {"AttributeName": "color", "AttributeType": "S"},
+             ],
+             ProvisionedThroughput={"ReadCapacityUnits": 1, "WriteCapacityUnits": 1},
+-            StreamSpecification={"StreamViewType": "NEW_IMAGES"},
++            StreamSpecification={"StreamEnabled": True, "StreamViewType": "NEW_IMAGES"},
+         )
+         stream_arn = resp["TableDescription"]["LatestStreamArn"]
+
+diff --git a/moto/core/responses.py b/moto/core/responses.py
+index bf4af902..c708edb8 100644
+--- a/moto/core/responses.py
++++ b/moto/core/responses.py
+@@ -307,7 +307,7 @@ class BaseResponse(_TemplateEnvironmentMixin, ActionAuthenticatorMixin):
+         def _convert(elem, is_last):
+             if not re.match("^{.*}$", elem):
+                 return elem
+-            name = elem.replace("{", "").replace("}", "")
++            name = elem.replace("{", "").replace("}", "").replace("+", "")
+             if is_last:
+                 return "(?P<%s>[^/]*)" % name
+             return "(?P<%s>.*)" % name
