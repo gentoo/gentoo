@@ -4,11 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
-# dev-lang/python:3.8 is not stable.
-python_targets_python3_8
-python_single_target_python3_8
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
 # dev-db/firebird is keyworded ~amd64
 firebird
