@@ -19,15 +19,16 @@ DEPEND=""
 BDEPEND=""
 RDEPEND="${DEPEND}
 	>=dev-python/fonttools-4.0.2[${PYTHON_USEDEP}]
-	>=dev-python/pyclipper-1.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pyclipper-1.1.0_p3[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests setup.py
+
+# tests need fontPens, that is not packaged
+RESTRICT="test"
 
 src_prepare() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
 	distutils-r1_src_prepare
-}
-
-python_test() {
-	esetup.py test
 }

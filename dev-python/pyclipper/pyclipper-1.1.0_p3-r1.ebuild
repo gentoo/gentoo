@@ -31,5 +31,5 @@ S="${WORKDIR}/${P/_p/.post}"
 
 src_prepare() {
 	distutils-r1_src_prepare
-	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
+	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV/_p/.post}"
 }

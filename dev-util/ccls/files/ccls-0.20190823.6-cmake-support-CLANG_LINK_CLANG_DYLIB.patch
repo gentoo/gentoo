@@ -1,0 +1,57 @@
+From 7e795e9b9ec20f02cab23e63d1e52189aa33ab4e Mon Sep 17 00:00:00 2001
+From: Fangrui Song <i@maskray.me>
+Date: Fri, 1 Nov 2019 10:36:38 -0700
+Subject: [PATCH] cmake: support CLANG_LINK_CLANG_DYLIB
+
+---
+ CMakeLists.txt | 34 +++++++++++++++++++---------------
+ 1 file changed, 19 insertions(+), 15 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 278e0735..092f178f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -70,21 +70,25 @@ endif()
+ 
+ find_package(Clang REQUIRED)
+ 
+-target_link_libraries(ccls PRIVATE
+-  clangIndex
+-  clangFormat
+-  clangTooling
+-  clangToolingInclusions
+-  clangToolingCore
+-  clangFrontend
+-  clangParse
+-  clangSerialization
+-  clangSema
+-  clangAST
+-  clangLex
+-  clangDriver
+-  clangBasic
+-)
++if(CLANG_LINK_CLANG_DYLIB)
++  target_link_libraries(ccls PRIVATE clang-cpp)
++else()
++  target_link_libraries(ccls PRIVATE
++    clangIndex
++    clangFormat
++    clangTooling
++    clangToolingInclusions
++    clangToolingCore
++    clangFrontend
++    clangParse
++    clangSerialization
++    clangSema
++    clangAST
++    clangLex
++    clangDriver
++    clangBasic
++  )
++endif()
+ 
+ if(LLVM_LINK_LLVM_DYLIB)
+   target_link_libraries(ccls PRIVATE LLVM)
+-- 
+2.26.2
+
