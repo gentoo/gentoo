@@ -41,7 +41,7 @@ DEPEND="
 		dev-cpp/eigen:3
 		>=kde-frameworks/knewstuff-${KFMIN}:5
 		sci-chemistry/openbabel
-		sci-libs/avogadrolibs[qt5]
+		>=sci-libs/avogadrolibs-1.93[qt5]
 	)
 	solver? ( dev-ml/facile[ocamlopt] )
 "
