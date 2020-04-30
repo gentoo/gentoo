@@ -28,6 +28,7 @@
 		<flag name="iscsi">Enable direct iSCSI support via
 		<pkg>net-libs/libiscsi</pkg> instead of indirectly via the Linux
 		block layer that <pkg>sys-block/open-iscsi</pkg> does.</flag>
+		<flag name="io-uring">Enable efficient I/O via <pkg>sys-libs/liburing</pkg>.</flag>
 		<flag name="ncurses">Enable the ncurses-based console</flag>
 		<flag name="nfs">Enable NFS support</flag>
 		<flag name="numa">Enable NUMA support</flag>
