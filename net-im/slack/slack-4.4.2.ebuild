@@ -48,16 +48,16 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
 
-QA_PREBUILT="opt/slack/chrome-sandbox
-	opt/slack/libEGL.so
-	opt/slack/libffmpeg.so
-	opt/slack/libGLESv2.so
-	opt/slack/resources/app.asar.unpacked/node_modules/*/*/build/Release/*.node
-	opt/slack/resources/app.asar.unpacked/node_modules/*/build/Release/*.node
-	opt/slack/slack
-	opt/slack/swiftshader/libEGL.so
-	opt/slack/swiftshader/libGLESv2.so
-	opt/slack/swiftshader/libvk_swiftshader.so"
+QA_PREBUILT="/opt/slack/chrome-sandbox
+	/opt/slack/libEGL.so
+	/opt/slack/libffmpeg.so
+	/opt/slack/libGLESv2.so
+	/opt/slack/resources/app.asar.unpacked/node_modules/*/*/build/Release/*.node
+	/opt/slack/resources/app.asar.unpacked/node_modules/*/build/Release/*.node
+	/opt/slack/slack
+	/opt/slack/swiftshader/libEGL.so
+	/opt/slack/swiftshader/libGLESv2.so
+	/opt/slack/swiftshader/libvk_swiftshader.so"
 
 S="${WORKDIR}"
 

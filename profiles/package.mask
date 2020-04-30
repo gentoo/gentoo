@@ -32,6 +32,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-04-30)
+# Unmaintained. Blocks removal of other dead packages. No Python3 support.
+# Masked for removal in 30 days. Bug #720190
+gnome-extra/cinnamon
+gnome-extra/cinnamon-control-center
+gnome-extra/cinnamon-desktop
+gnome-extra/cinnamon-menus
+gnome-extra/cinnamon-screensaver
+gnome-extra/cinnamon-session
+gnome-extra/cinnamon-settings-daemon
+gnome-extra/cinnamon-translations
+gnome-extra/cjs
+gnome-extra/nemo
+x11-wm/muffin
+
 # Bernard Cafarelli <voyageur@gentoo.org> (2020-04-30)
 # Does not compile with latest windowmaker, bug #717418
 # Last release in 2007. Masked for removal in 30 days.
