@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>hanno@gentoo.org</email>
-		<name>Hanno Böck</name>
+	<maintainer type="project">
+		<email>ejabberd@gentoo.org</email>
 	</maintainer>
 	<longdescription>
 		Free and Open Source distributed fault-tolerant Jabber server. It's
@@ -25,6 +24,8 @@
 			data store</flag>
 		<flag name="roster-gw">Turn on workaround for processing gateway subscriptions</flag>
 		<flag name="sqlite">Enable SQLite database support</flag>
+		<flag name="sip">Enable SIP support</flag>
+		<flag name="stun">Enable STUN/TURN support</flag>
 		<flag name="zlib">Enable Stream Compression (XEP-0138) using zlib</flag>
 		<!-- TODO Add later: flag name="tools">Build development tools</flag -->
 	</use>
