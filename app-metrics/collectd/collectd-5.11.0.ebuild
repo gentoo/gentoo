@@ -58,11 +58,11 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	memcachec memcached memory modbus mqtt multimeter mysql netlink
 	network network nfs nginx notify_desktop notify_email notify_nagios
 	ntpd numa nut olsrd onewire openldap openvpn oracle ovs_events
-	ovs_stats perl ping postgresql powerdns processes protocols python
-	python redis routeros rrdcached rrdtool sensors serial sigrok slurm
-	smart snmp snmp_agent statsd swap sysevent syslog table tail tail_csv
-	target_notification target_replace target_scale target_set tcpconns
-	teamspeak2 ted thermal threshold turbostat ubi unixsock
+	ovs_stats perl ping postgresql powerdns procevent processes protocols
+	python python redis routeros rrdcached rrdtool sensors serial sigrok
+	slurm smart snmp snmp_agent statsd swap sysevent syslog table tail
+	tail_csv target_notification target_replace target_scale target_set
+	tcpconns teamspeak2 ted thermal threshold turbostat ubi unixsock
 	uptime users uuid varnish virt vmem vserver wireless write_graphite
 	write_http write_influxdb_udp write_kafka write_log write_mongodb
 	write_prometheus write_redis write_sensu write_syslog write_tsdb
@@ -119,6 +119,7 @@ COMMON_DEPEND="
 	collectd_plugins_perl?			( dev-lang/perl:=[ithreads] )
 	collectd_plugins_ping?			( net-libs/liboping )
 	collectd_plugins_postgresql?		( dev-db/postgresql:= )
+	collectd_plugins_procevent?		( dev-libs/yajl:= )
 	collectd_plugins_python?		( ${PYTHON_DEPS} )
 	collectd_plugins_redis?			( dev-libs/hiredis:= )
 	collectd_plugins_routeros?		( net-libs/librouteros )

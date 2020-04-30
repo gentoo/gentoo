@@ -91,6 +91,7 @@ perl - Build the perl language binding plugin (embeds a Perl interpreter into co
 ping - Build the ping input plugin (measures network latency)
 postgresql - Build the postgresql input plugin (executes SQL statements against a PostgreSQL database)
 powerdns - Build the powerdns input plugin (collects statistics from the PowerDNS name server or recursor via control socket)
+procevent - Build the procevent input plugin (monitors process starts/stops via netlink library)
 processes - Build the processes input plugin (collects the number of processes, grouped by their state or detailed statistics about selected processes)
 protocols - Build the protocols input plugin (collects information about the network protocols supported by the system)
 python - Build the python language binding plugin (embeds a Python interpreter into collectd for writing plugins)
