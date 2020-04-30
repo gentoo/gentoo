@@ -378,13 +378,11 @@ _python_export() {
 				local d
 				case ${impl} in
 					python2.7)
-						PYTHON_PKG_DEP='>=dev-lang/python-2.7.17-r1:2.7';;
-					python3.6)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.6.10:3.6";;
-					python3.7)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.7.7-r1:3.7";;
-					python3.8)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.8.2:3.8";;
+						PYTHON_PKG_DEP='>=dev-lang/python-2.7.5-r2:2.7';;
+					python*)
+						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
+					pypy)
+						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.0:0=';;
 					pypy3)
 						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.0:0=';;
 					*)
