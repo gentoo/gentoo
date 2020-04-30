@@ -16,6 +16,7 @@
 		<flag name="gles2">Enable GLESv2 support.</flag>
 		<flag name="libglvnd">Use libglvnd for dispatch.</flag>
 		<flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
+		<flag name="lm-sensors">Enable Gallium HUD lm-sensors support.</flag>
 		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
 		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
 		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
