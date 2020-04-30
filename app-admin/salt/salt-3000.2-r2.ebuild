@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit systemd distutils-r1
 
@@ -103,6 +103,14 @@ PATCHES=(
 	"${FILESDIR}/salt-2019.2.0-skip-tests-that-oom-machine.patch"
 	"${FILESDIR}/salt-3000.1-tests.patch"
 	"${FILESDIR}/salt-3000.2-tests.patch"
+
+	# https://github.com/saltstack/salt/pull/55410
+	"${FILESDIR}/salt-3000.2-py38.patch"
+
+	"${FILESDIR}/salt-3000.2-py38-misc.patch"
+
+	# https://github.com/saltstack/salt/pull/55900
+	"${FILESDIR}/salt-3000.2-py38-abc.patch"
 )
 
 python_prepare() {
@@ -157,7 +165,7 @@ python_test() {
 	)
 }
 
-pkg_postinst_disabled() {
+pkg_postinst() {
 	if use python_targets_python3_8; then
 		if use nova; then
 			ewarn "Salt's nova functionality will not work with python3.8 since"
