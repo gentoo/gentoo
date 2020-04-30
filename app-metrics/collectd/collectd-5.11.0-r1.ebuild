@@ -83,6 +83,7 @@ unset plugin
 COMMON_DEPEND="
 	dev-libs/libgcrypt:=
 	dev-libs/libltdl:0=
+	sys-libs/libcap
 	perl?					( dev-lang/perl:=[ithreads] )
 	udev?					( virtual/udev )
 	xfs?					( sys-fs/xfsprogs )
@@ -91,7 +92,7 @@ COMMON_DEPEND="
 	collectd_plugins_ascent?		( net-misc/curl:0= dev-libs/libxml2:2= )
 	collectd_plugins_bind?			( net-misc/curl:0= dev-libs/libxml2:2= )
 	collectd_plugins_ceph?			( dev-libs/yajl:= )
-	collectd_plugins_capabilities?		( sys-libs/libcap dev-libs/jansson net-libs/libmicrohttpd:= )
+	collectd_plugins_capabilities?		( dev-libs/jansson net-libs/libmicrohttpd:= )
 	collectd_plugins_connectivity?		( dev-libs/yajl:= net-libs/libmnl )
 	collectd_plugins_curl?			( net-misc/curl:0= )
 	collectd_plugins_curl_json?		( net-misc/curl:0= dev-libs/yajl:= )
