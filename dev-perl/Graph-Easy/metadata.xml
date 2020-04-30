@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Graph-Easy</remote-id>
+    <remote-id type="cpan-module">Graph::Easy</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::As_ascii</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::As_graphml</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::As_graphviz</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::As_txt</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::As_vcg</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Attributes</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Base</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Edge</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Edge::Cell</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Group</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Group::Anon</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Group::Cell</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Layout</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Layout::Chain</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Layout::Force</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Layout::Grid</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Layout::Path</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Layout::Repair</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Layout::Scout</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Node</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Node::Anon</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Node::Cell</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Node::Empty</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Parser</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Parser::Graphviz</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Parser::VCG</remote-id>
+    <remote-id type="cpan-module">Graph::Easy::Util</remote-id>
+  </upstream>
+</pkgmetadata>
