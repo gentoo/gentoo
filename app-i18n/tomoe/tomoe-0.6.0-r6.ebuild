@@ -2,10 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby25 ruby26 ruby27"
 
-inherit autotools python-single-r1 ruby-utils
+USE_RUBY="ruby25 ruby26 ruby27"
+inherit autotools ruby-utils
 
 DESCRIPTION="Japanese handwriting recognition engine"
 HOMEPAGE="http://tomoe.osdn.jp/"
@@ -14,21 +13,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="hyperestraier mysql python ruby ${USE_RUBY//ruby/ruby_targets_ruby} static-libs subversion"
+IUSE="hyperestraier mysql ruby ${USE_RUBY//ruby/ruby_targets_ruby} subversion"
+REQUIRED_USE="ruby? ( ^^ ( ${USE_RUBY//ruby/ruby_targets_ruby} ) )"
+
 RESTRICT="test"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	ruby? ( ^^ ( ${USE_RUBY//ruby/ruby_targets_ruby} ) )"
 
 RDEPEND="dev-libs/glib:2
 	hyperestraier? ( app-text/hyperestraier )
 	mysql? ( dev-db/mysql-connector-c:= )
-	python? (
-		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
-		')
-	)
 	ruby? (
 		$(for ruby in ${USE_RUBY}; do
 			echo "ruby_targets_${ruby}? (
@@ -50,10 +42,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-glib-2.32.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
 )
-
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	sed -i \
@@ -77,8 +65,8 @@ src_configure() {
 
 	econf \
 		$(use_enable ruby dict-ruby) \
-		$(use_enable static-libs static) \
-		$(use_with python python "") \
+		--disable-static \
+		--without-python \
 		$(use_with ruby ruby "$(type -P ${ruby})") \
 		--with-svn-include="${EPREFIX}"/usr/include \
 		--with-svn-lib="${EPREFIX}"/usr/$(get_libdir)
