@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-16">
+  <title>Cacti: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Cacti, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">cacti</product>
+  <announced>2020-04-30</announced>
+  <revised count="1">2020-04-30</revised>
+  <bug>715166</bug>
+  <bug>716406</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="ge">1.2.11</unaffected>
+      <vulnerable range="lt">1.2.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Cacti is a complete frontend to rrdtool.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Cacti. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Cacti users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/cacti-1.2.11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8813">CVE-2020-8813</uri>
+    <uri link="https://github.com/Cacti/cacti/releases/tag/release%2F1.2.11">
+      Cacti 1.2.11 Release Notes
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-08T05:48:28Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-04-30T23:18:03Z">b-man</metadata>
+</glsa>
