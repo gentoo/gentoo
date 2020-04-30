@@ -23,6 +23,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/2.11-Add-ipv6-monitor-support-to-mirmon.patch"
+	"${FILESDIR}/2.11-Fix-options.patch"
 )
 
 src_install() {
