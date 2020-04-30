@@ -7509,7 +7509,6 @@ dev-python/backports-tempfile 1.0: Backport of new features in Python's tempfile
 dev-python/backports-unittest-mock 1.5-r1: Backport of unittest.mock
 dev-python/backports-weakref 1.0_p1: Backport of new features in Python's weakref module
 dev-python/bandit 1.5.1-r1 1.6.2: A security linter from OpenStack Security
-dev-python/basemap 1.0.7-r4: matplotlib toolkit to plot map projections
 dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface
 dev-python/bcrypt 3.1.6 3.1.7-r2: Modern password hashing for software and servers
@@ -16830,7 +16829,7 @@ sys-apps/usermode-utilities 20070815-r3 20070815-r4: Tools for use with Usermode
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
 sys-apps/util-linux 2.33.2 2.34-r3 2.35.1-r2 9999: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
-sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
+sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections

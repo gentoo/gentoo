@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=nfs? ( net-libs/libtirpc )
+DESCRIPTION=A software watchdog and /dev/watchdog daemon
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/watchdog/
+IUSE=nfs
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=nfs? ( net-libs/libtirpc )
+SLOT=0
+SRC_URI=mirror://sourceforge/watchdog/watchdog-5.16.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=08ddeb4f303cbd7c1e991dde727a08ad
