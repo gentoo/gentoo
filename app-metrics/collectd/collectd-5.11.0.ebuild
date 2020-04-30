@@ -65,8 +65,8 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	tcpconns teamspeak2 ted thermal threshold turbostat ubi unixsock
 	uptime users uuid varnish virt vmem vserver wireless write_graphite
 	write_http write_influxdb_udp write_kafka write_log write_mongodb
-	write_prometheus write_redis write_sensu write_syslog write_tsdb
-	xencpu zfs_arc zookeeper"
+	write_prometheus write_redis write_sensu write_stackdriver
+	write_syslog write_tsdb xencpu zfs_arc zookeeper"
 
 COLLECTD_DISABLED_PLUGINS="${COLLECTD_IMPOSSIBLE_PLUGINS}"
 
@@ -138,6 +138,7 @@ COMMON_DEPEND="
 	collectd_plugins_write_mongodb?		( >=dev-libs/mongo-c-driver-1.8.2:= )
 	collectd_plugins_write_prometheus?	( >=dev-libs/protobuf-c-1.2.1-r1:= net-libs/libmicrohttpd:= )
 	collectd_plugins_write_redis?		( dev-libs/hiredis:= )
+	collectd_plugins_write_stackdriver?	( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_xencpu?		( app-emulation/xen-tools:= )
 
 	kernel_FreeBSD? (
