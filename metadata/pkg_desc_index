@@ -2822,7 +2822,7 @@ app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edi
 app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xournalpp 1.0.17 1.0.18 9999: Handwriting notetaking software with PDF annotation support
-app-text/xpdf 4.02-r2 4.02-r3: The PDF viewer and tools
+app-text/xpdf 4.02-r2 4.02-r3 4.02-r4: The PDF viewer and tools
 app-text/yelp-tools 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 0.4.5 9999: A highly customizable and functional document viewer
@@ -14343,11 +14343,11 @@ net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpo
 net-im/dianara 1.4.2: Qt-based client for the pump.io distributed social network
 net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/discord-bin 0.0.10: All-in-one voice and text chat for gamers
-net-im/ejabberd 17.04-r2: Robust, scalable and extensible XMPP server
+net-im/ejabberd 17.04-r2 20.03: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 5.2.0-r1: Multiprotocol chatbot designed to be easily deployable and maintainable
-net-im/gajim 1.0.3-r2 1.0.3-r3 1.1.3-r1 1.1.3-r2: Jabber client written in PyGTK
+net-im/gajim 1.1.3-r1 1.1.3-r2: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
 net-im/jabber-base 0.01-r1: Jabber servers and transports layout package
@@ -14859,7 +14859,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or c
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 1.1.1 2.0.1 2.1.0 2.1.1 2.2.0 2.2.1 2.3.0 2.4.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
-net-misc/kea 1.7.5 1.7.6 9999: High-performance production grade DHCPv4 & DHCPv6 server
+net-misc/kea 1.7.6 1.7.7 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knock 0.7: A simple port-knocking daemon
 net-misc/l7-filter-userspace 0.12_beta1-r1: Userspace utilities for layer 7 iptables QoS

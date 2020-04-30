@@ -5718,7 +5718,9 @@ net-im/ejabberd:postgres - Enable PostgreSQL support for data storage
 net-im/ejabberd:redis - Enable Redis support for transient data
 net-im/ejabberd:riak - Enable support for Riak - distributed NoSQL key-value data store
 net-im/ejabberd:roster-gw - Turn on workaround for processing gateway subscriptions
+net-im/ejabberd:sip - Enable SIP support
 net-im/ejabberd:sqlite - Enable SQLite database support
+net-im/ejabberd:stun - Enable STUN/TURN support
 net-im/ejabberd:zlib - Enable Stream Compression (XEP-0138) using zlib
 net-im/ekg2:gadu - Enable Gadu-Gadu protocol support (requires net-libs/libgadu).
 net-im/ekg2:gpg - Enable jabber message encryption through app-crypt/gpgme.
@@ -5731,7 +5733,6 @@ net-im/err:irc - Pull optional dependencies, needed for IRC backend
 net-im/gajim:crypt - End to end encryption and GPG encryption
 net-im/gajim:geolocation - Sharing your location
 net-im/gajim:jingle - Audio and video calls
-net-im/gajim:keyring - Saving your password to your system keyring
 net-im/gajim:networkmanager - Network lose detection using NetworkManager
 net-im/gajim:remote - Controling Gajim instance from command line with gajim-remote
 net-im/gajim:rst - Generating XHTML output from RST code
