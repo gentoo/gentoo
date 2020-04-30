@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
+# sys-cluster/slurm is keyworded on amd64
+app-metrics/collectd -collectd_plugins_slurm
+
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
 # static-pie works on amd64, #719444
 sys-libs/glibc -static-pie
