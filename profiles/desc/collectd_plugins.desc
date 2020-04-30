@@ -15,6 +15,7 @@ buddyinfo - Build the buddyinfo input plugin (collects statistics from /proc/bud
 capabilities - Build the capabilities input plugin (collects platform capabilities decoded from the hardware subsystems)
 ceph - Build the Ceph input plugin (collects statistics from the Ceph distributed storage system)
 cgroups - Build the cgroups input plugin (collects CPU accounting information for processes in a cgroup)
+check_uptime - Build a plugin to notify about uptime reset
 chrony - Build the chrony input plugin (collects statistics from a chrony NTP server)
 conntrack - Build the conntrack input plugin (tracks the number of entries in Linux's connection tracking table)
 contextswitch - Build the contextswitch input plugin (collects the number of context switches done by the operating system)
