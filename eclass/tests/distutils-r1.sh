@@ -63,7 +63,7 @@ tend
 einfo distutils_enable_tests
 eindent
 BASE_IUSE="python_targets_python2_7"
-BASE_DEPS="python_targets_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]"
+BASE_DEPS="python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]"
 TEST_RESTRICT=" !test? ( test )"
 
 einfo "empty RDEPEND"
