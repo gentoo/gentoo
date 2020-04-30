@@ -126,6 +126,7 @@ turbostat - Build the turbostat input plugin (reads CPU frequency and C-state re
 unixsock - Build the unixsock input/output plugin (opens a UNIX domain socket and accepts connections)
 uptime - Build the uptime input plugin (keeps track of the system uptime)
 users - Build the users input plugin (counts the number of users currently logged into the system)
+ubi - Build the ubi input plugin (collects block state for flash memory devices with UBIFS)
 uuid - Build the uuid plugin (tries hard to determine the UUID of the system it is running on)
 varnish - Build the varnish input plugin (collects information about Varnish)
 virt - Build the (lib)virt input plugin (collects statistics about virtualized guests on a system)
