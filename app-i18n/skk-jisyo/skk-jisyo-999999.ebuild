@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -28,7 +28,8 @@ DEPEND="${RUBY_DEPS}
 	)"
 RDEPEND=""
 
-DOCS=( ChangeLog{,.{1..3}} committers.txt edict_doc.txt )
+DOCS=( ChangeLog{,.{1..3}} committers.md )
+HTML_DOCS=( edict_doc.html )
 
 SKKTOOLS_DIR="${EPREFIX}/usr/share/skktools/convert2skk"
 
