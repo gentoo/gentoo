@@ -1,0 +1,13 @@
+diff --git a/src/Loop.h b/src/Loop.h
+index 3681dad..03d8a75 100644
+--- a/src/Loop.h
++++ b/src/Loop.h
+@@ -21,7 +21,7 @@
+ /* The loop is lazily created per-thread and run with uWS::run() */
+ 
+ #include "LoopData.h"
+-#include <libusockets.h>
++#include <uSockets/libusockets.h>
+ 
+ namespace uWS {
+ struct Loop {
