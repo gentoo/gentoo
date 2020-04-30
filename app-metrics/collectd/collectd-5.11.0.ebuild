@@ -48,8 +48,8 @@ COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer
 
 # Plugins that have been (compile) tested and can be enabled via COLLECTD_PLUGINS
 COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
-	ceph cgroups chrony conntrack contextswitch cpu cpufreq cpusleep
-	csv curl curl_json curl_xml dbi df disk dns drbd email
+	buddyinfo ceph cgroups chrony conntrack contextswitch cpu cpufreq
+	cpusleep csv curl curl_json curl_xml dbi df disk dns drbd email
 	entropy ethstat exec fhcount filecount fscache gmond gps hddtemp
 	hugepages interface ipc ipmi iptables ipvs irq java lua
 	load logfile log_logstash madwifi match_empty_counter

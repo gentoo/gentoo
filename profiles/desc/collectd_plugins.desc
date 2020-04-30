@@ -11,6 +11,7 @@ apcups - Build the apcups input plugin (reads various statistics about a connect
 ascent - Build the ascent input plugin (reads and parses the statistics page of Ascent)
 battery - Build the battery input plugin (collects the battery's charge, the drawn current and the battery's voltage)
 bind - Build the bind input plugin (collects statistics from bind instances)
+buddyinfo - Build the buddyinfo input plugin (collects statistics from /proc/buddyinfo)
 ceph - Build the Ceph input plugin (collects statistics from the Ceph distributed storage system)
 cgroups - Build the cgroups input plugin (collects CPU accounting information for processes in a cgroup)
 chrony - Build the chrony input plugin (collects statistics from a chrony NTP server)
