@@ -8,6 +8,6 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sp
 LICENSE=GPL-2
 RDEPEND=!<virtual/wireguard-1 module? ( kernel_linux? ( virtual/modutils ) )
 SLOT=0
-SRC_URI=https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20200426.tar.xz
+SRC_URI=https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20200429.tar.xz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	ed97304af323c7b2f6934f229982cb7d	linux-mod	9991808b521b5a8c569c9c4ccf8893f6	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8391cea5b78183e4ac3f15ff571923ba
