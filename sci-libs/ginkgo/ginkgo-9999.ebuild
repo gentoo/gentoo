@@ -8,21 +8,34 @@ inherit cmake-utils
 DESCRIPTION="Numerical linear algebra software package"
 HOMEPAGE="https://ginkgo-project.github.io/"
 
-inherit git-r3
-EGIT_REPO_URI="https://github.com/ginkgo-project/ginkgo"
-SRC_URI=""
-KEYWORDS=""
+if [[ ${PV} = *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/ginkgo-project/ginkgo"
+	SRC_URI=""
+	KEYWORDS=""
+	inherit git-r3
+else
+	SRC_URI="https://github.com/${PN}-project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="BSD-with-attribution"
 SLOT="0"
-IUSE=""
+IUSE="+openmp cuda"
 
-# TODO: add slepc use flag once slepc is packaged for gentoo-science
-REQUIRED_USE=""
+RDEPEND="
+	cuda? ( dev-util/nvidia-cuda-sdk )"
+DEPEND="${RDEPEND}"
 
-RDEPEND=""
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.1-set_soname.patch
+)
 
-DEPEND=""
+pkg_setup() {
+	if [[ ${MERGE_TYPE} != binary ]] && \
+		use openmp && ! tc-has-openmp ; then
+			die "Need an OpenMP capable compiler"
+	fi
+}
 
 src_prepare() {
 	sed -i \
@@ -40,7 +53,8 @@ src_configure() {
 		-DGINKGO_BUILD_TESTS=OFF
 		-DGINKGO_BUILD_BENCHMARKS=OFF
 		-DGINKGO_BUILD_REFERENCE=ON
-		-DGINKGO_BUILD_OMP=ON
+		-DGINKGO_BUILD_OMP="$(usex openmp)"
+		-DGINKGO_BUILD_CUDA="$(usex cuda)"
 	)
 	cmake-utils_src_configure
 }
