@@ -11,7 +11,6 @@
     <flag name="crypt">End to end encryption and GPG encryption</flag>
     <flag name="geolocation">Sharing your location</flag>
     <flag name="jingle">Audio and video calls</flag>
-    <flag name="keyring">Saving your password to your system keyring</flag>
     <flag name="networkmanager">Network lose detection using NetworkManager</flag>
     <flag name="remote">Controling Gajim instance from command line with gajim-remote</flag>
     <flag name="rst">Generating XHTML output from RST code</flag>
