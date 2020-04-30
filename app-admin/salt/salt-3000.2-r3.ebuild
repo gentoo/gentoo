@@ -111,6 +111,7 @@ PATCHES=(
 
 	# https://github.com/saltstack/salt/pull/55900
 	"${FILESDIR}/salt-3000.2-py38-abc.patch"
+	"${FILESDIR}/salt-3000.2-tornado-py38.patch"
 )
 
 python_prepare() {
@@ -121,6 +122,9 @@ python_prepare() {
 
 	# tests that require network access
 	rm tests/unit/{states,modules}/test_zcbuildout.py || die
+
+	# make sure pkg_resources doesn't bomb because pycrypto isn't installed
+	find . -name '*.txt' -print0 | xargs -0 sed -e '/pycrypto>/ d' -i || die
 
 	# allow the use of the renamed msgpack
 	sed -i '/^msgpack/d' requirements/base.txt || die
