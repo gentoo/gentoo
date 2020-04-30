@@ -42,4 +42,4 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-apps/signon-kwallet-extension-${PVCUT}:5
 "
 
-PATCHES=( "${WORKDIR}/${P}-ktp_integration_module.patch" )
+PATCHES=( "${FILESDIR}/${P}-ktp_integration_module.patch" )
