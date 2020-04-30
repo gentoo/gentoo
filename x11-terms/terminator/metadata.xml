@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chutzpah@gentoo.org</email>
-		<name>Patrick McLean</name>
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		Much of the behaviour of Terminator is based on GNOME Terminal, and
@@ -16,6 +20,6 @@
 		<flag name="libnotify">Enables desktop notifications via<pkg>dev-python/notify-python</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="launchpad">terminator</remote-id>
+		<remote-id type="github">gnome-terminator/terminator</remote-id>
 	</upstream>
 </pkgmetadata>
