@@ -103,8 +103,8 @@ BDEPEND="
 	)
 "
 
-: ${CHROMIUM_FORCE_CLANG=yes}
-: ${CHROMIUM_FORCE_LIBCXX=yes}
+: ${CHROMIUM_FORCE_CLANG=no}
+: ${CHROMIUM_FORCE_LIBCXX=no}
 
 if [[ ${CHROMIUM_FORCE_CLANG} == yes ]]; then
 	BDEPEND+=" >=sys-devel/clang-9"
@@ -123,7 +123,7 @@ else
 		dev-libs/libxslt:=
 		>=dev-libs/re2-0.2019.08.01:=
 		>=media-libs/openh264-1.6.0:=
-		system-icu? ( >=dev-libs/icu-65:= )
+		system-icu? ( >=dev-libs/icu-67.1:= )
 	"
 	RDEPEND+="${COMMON_DEPEND}"
 	DEPEND+="${COMMON_DEPEND}"
@@ -178,7 +178,9 @@ PATCHES=(
 	"${FILESDIR}/chromium-83-gcc-include.patch"
 	"${FILESDIR}/chromium-83-gcc-permissive.patch"
 	"${FILESDIR}/chromium-83-gcc-iterator.patch"
+	"${FILESDIR}/chromium-83-gcc-serviceworker.patch"
 	"${FILESDIR}/chromium-83-gcc-10.patch"
+	"${FILESDIR}/chromium-83-icu67.patch"
 )
 
 pre_build_checks() {
