@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2020-04-30)
+# Does not compile with latest windowmaker, bug #717418
+# Last release in 2007. Masked for removal in 30 days.
+x11-plugins/fsviewer
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2020-04-30)
+# Does not compile with latest windowmaker, bug #716890
+# Last release in 2007. Masked for removal in 30 days.
+x11-misc/wmakerconf
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
 # Py3 porting "not in the near future", bug #708152
 # Stuck on Python 2 and pygtk. Masked for removal in 30 days.
