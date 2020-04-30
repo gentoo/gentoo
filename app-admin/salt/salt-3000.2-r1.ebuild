@@ -29,6 +29,7 @@ IUSE="cheetah cherrypy ldap libcloud libvirt genshi gnupg keyring mako
 
 RDEPEND="
 	sys-apps/pciutils
+	dev-python/distro[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/libnacl[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.5[${PYTHON_USEDEP}]
@@ -101,6 +102,7 @@ PATCHES=(
 	"${FILESDIR}/salt-2017.7.0-dont-realpath-tmpdir.patch"
 	"${FILESDIR}/salt-2019.2.0-skip-tests-that-oom-machine.patch"
 	"${FILESDIR}/salt-3000.1-tests.patch"
+	"${FILESDIR}/salt-3000.2-tests.patch"
 )
 
 python_prepare() {
