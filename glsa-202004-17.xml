@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-17">
+  <title>Django: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Django, the worst of
+    which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">django</product>
+  <announced>2020-04-30</announced>
+  <revised count="1">2020-04-30</revised>
+  <bug>692384</bug>
+  <bug>701744</bug>
+  <bug>706204</bug>
+  <bug>707998</bug>
+  <bug>711522</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/django" auto="yes" arch="*">
+      <unaffected range="ge">2.2.11</unaffected>
+      <vulnerable range="lt">2.2.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Django is a Python-based web framework.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Django. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by sending specially crafted input, could possibly
+      cause a Denial of Service condition, or alter the database.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Django users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-2.2.11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12308">CVE-2019-12308</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14232">CVE-2019-14232</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14233">CVE-2019-14233</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14234">CVE-2019-14234</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14235">CVE-2019-14235</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19118">CVE-2019-19118</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19844">CVE-2019-19844</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7471">CVE-2020-7471</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9402">CVE-2020-9402</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-08T04:55:21Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-04-30T23:30:28Z">b-man</metadata>
+</glsa>
