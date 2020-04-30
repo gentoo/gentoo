@@ -3271,11 +3271,11 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 5.3.9 5.3.10-r3 8.0.16 8.0.17 8.0.19: ODBC driver for MySQL
-dev-db/mysql 5.6.44-r1 5.6.45-r2 5.7.26-r1 5.7.27-r1 5.7.29 8.0.19-r1: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.6.44-r1 5.6.45-r2 5.7.26-r1 5.7.27-r1 5.7.29 8.0.19-r1 8.0.20: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2-r1 3.2.3-r1 3.2.4 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
-dev-db/mysql-connector-c 6.1.11-r2 8.0.19: C client library for MariaDB/MySQL
-dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19: MySQL database connector for C++ (mimics JDBC 4.0 API)
+dev-db/mysql-connector-c 6.1.11-r2 8.0.19 8.0.20: C client library for MariaDB/MySQL
+dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-workbench 8.0.19-r1 8.0.20: MySQL Workbench
@@ -3288,7 +3288,7 @@ dev-db/oracle-instantclient-basic 11.2.0.3 11.2.0.4 12: Transition package movin
 dev-db/oracle-instantclient-jdbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.7.27.30 8.0.18.9: Fully compatible, enhanced and open source drop-in replacement for MySQL
+dev-db/percona-server 5.7.27.30 8.0.18.9 8.0.19.10: Fully compatible, enhanced and open source drop-in replacement for MySQL
 dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.15 8.0.7: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
@@ -6138,6 +6138,7 @@ dev-perl/Goo-Canvas 0.60.0-r2: Perl interface to the GooCanvas
 dev-perl/GooCanvas2 0.60.0: Perl binding for GooCanvas2 widget using Glib::Object::Introspection
 dev-perl/Google-Ads-AdWords-Client 4.18.0: Google AdWords API Perl Client Library
 dev-perl/Graph 0.970.400: Data structure and ops for directed graphs
+dev-perl/Graph-Easy 0.760.0: Convert or render graphs (as ASCII, HTML, SVG or via Graphviz)
 dev-perl/GraphViz 2.240.0: Interface to AT&T's GraphViz
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
 dev-perl/Graphics-ColorNames-WWW 1.130.0: WWW color names and equivalent RGB values
@@ -12483,7 +12484,7 @@ media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
-media-gfx/gimp 2.8.22-r2 2.9.8-r1 2.10.8-r2 2.10.14-r1 2.10.18 2.10.18-r1 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.8.22-r2 2.9.8-r1 2.10.14-r1 2.10.18-r1 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.8.3 2.9.0: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1: A program for drawing beautiful mathematically-based images known as fractals
@@ -12670,7 +12671,7 @@ media-libs/aubio 0.4.7-r1 0.4.8 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.3-r1 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
-media-libs/babl 0.1.62 0.1.66 0.1.74 9999: A dynamic, any to any, pixel format conversion library
+media-libs/babl 0.1.66 0.1.74 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.0.4 1.0.4-r1 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
@@ -12714,7 +12715,7 @@ media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.4.2-r1: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.5-r2: Graphics library for fast image creation
-media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.20 0.4.22 9999: A graph based image processing framework
+media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.22 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 0.12.0-r1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.1.4 5.2.1-r1: Library to handle, display and manipulate GIF images
@@ -12859,7 +12860,7 @@ media-libs/libmpeg3 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
 media-libs/libmtp 1.1.16 1.1.17 9999: Implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.1.0 9999: Qt/C++ library wrapping the gpodder.net webservice
-media-libs/libmypaint 1.3.0-r1 1.4.0 1.4.0-r1: Library for making brushstrokes
+media-libs/libmypaint 1.4.0 1.4.0-r1: Library for making brushstrokes
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnsbmp 0.1.5-r1: decoding library for BMP and ICO image file formats, written in C
 media-libs/libnsgif 0.2.1-r1: decoding library for the GIF image file format, written in C
@@ -14776,7 +14777,7 @@ net-misc/connman-json-client 1.0_p20150721: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
-net-misc/curl 7.66.0 7.67.0-r1 7.68.0 7.69.0 7.69.1: A Client that groks URLs
+net-misc/curl 7.68.0 7.69.1 7.70.0: A Client that groks URLs
 net-misc/dahdi 3.1.0-r1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
@@ -15962,6 +15963,7 @@ sci-libs/gdal 3.0.4-r1: Translator library for raster geospatial data formats (i
 sci-libs/geos 3.8.0-r1 3.8.1: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r3: Reference implementation of the Dirfile, format for time-ordered binary data
+sci-libs/ginkgo 1.1.1 9999: Numerical linear algebra software package
 sci-libs/givaro 4.1.1: C++ library for arithmetic and algebraic computations
 sci-libs/gmsh 4.4.1: A three-dimensional finite element mesh generator
 sci-libs/gsl 1.16 2.4 2.5 2.5-r1: The GNU Scientific Library
