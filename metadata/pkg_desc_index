@@ -5623,7 +5623,7 @@ dev-perl/Authen-SASL-SASLprep 1.100.0: A Stringprep Profile for User Names and P
 dev-perl/Authen-SCRAM 0.11.0 0.11.0-r1: Salted Challenge Response Authentication Mechanism (RFC 5802)
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
-dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
+dev-perl/AutoXS-Header 1.20.0-r1 1.20.0-r2: Container for the AutoXS header files
 dev-perl/B-Debug 1.260.0: Walk Perl syntax tree, printing debug info about ops
 dev-perl/B-Flags 0.170.0: Friendlier flags for B
 dev-perl/B-Hooks-EndOfScope 0.240.0: Execute code after a scope finished compilation
@@ -7135,7 +7135,7 @@ dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
 dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.190.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
-dev-perl/asa 1.30.0-r1: Lets your class/object say it works like something else
+dev-perl/asa 1.30.0-r1 1.40.0: Lets your class/object say it works like something else
 dev-perl/autobox 3.0.1: Call methods on native types
 dev-perl/autovivification 0.180.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.5.0 0.6.0: Disables bareword filehandles
