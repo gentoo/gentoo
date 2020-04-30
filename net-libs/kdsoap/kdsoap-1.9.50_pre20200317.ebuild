@@ -8,7 +8,7 @@ if [[ ${PV} != *9999* ]]; then
 	LIBKODE_COMMIT=dfe0d565cb58cfb25da77853d9694097aa8e5882
 	SRC_URI="https://github.com/KDAB/KDSoap/archive/${KDSOAP_COMMIT}.tar.gz -> ${P}.tar.gz
 		https://github.com/cornelius/libkode/archive/${LIBKODE_COMMIT}.tar.gz -> ${P}-libkode-${LIBKODE_COMMIT}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 	S="${WORKDIR}/KDSoap-${KDSOAP_COMMIT}"
 else
 	EGIT_REPO_URI="https://github.com/KDAB/KDSoap.git"
