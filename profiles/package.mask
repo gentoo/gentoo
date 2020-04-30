@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
+# Requires <OpenSSL-1.1.x. Please migrate to
+# >=dev-db/mysql-5.7. Masked for removal in 30 days.
+<dev-db/mysql-5.7
+
 # Matt Turner <mattst88@gentoo.org> (2020-04-30)
 # Unmaintained. Blocks removal of other dead packages. No Python3 support.
 # Masked for removal in 30 days. Bug #720190
