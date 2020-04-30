@@ -2,25 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20190822-1908Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit cmake-utils eutils flag-o-matic linux-info \
-	prefix toolchain-funcs user multilib-minimal
+	prefix toolchain-funcs multilib-minimal
+
+# Patch version
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-5.7.30-patches-01.tar.xz"
 
 SRC_URI="https://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
 	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
-	http://downloads.mysql.com/archives/MySQL-5.7/${PN}-boost-${PV}.tar.gz"
-
-# Gentoo patches to MySQL
-if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]] ; then
-	SRC_URI="${SRC_URI}
-		mirror://gentoo/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
-		https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
-fi
+	http://downloads.mysql.com/archives/MySQL-5.7/${PN}-boost-${PV}.tar.gz
+	${PATCH_SET}"
 
 HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
@@ -34,34 +30,11 @@ RESTRICT="!test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc ) static? ( yassl )"
 
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
 S="${WORKDIR}/mysql"
-
-if [[ "${MY_EXTRAS_VER}" == "live" ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/mysql-extras.git"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/mysql-extras"
-	EGIT_CLONE_TYPE=shallow
-	MY_PATCH_DIR="${WORKDIR}/mysql-extras"
-else
-	MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
-fi
-
-PATCHES=(
-	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.7.23.patch
-	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-5.7.patch
-	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.7.10.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.26-without-clientlibs-tools.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.25-fix-libressl-support.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-add-missing-gcc-8-fix.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-grant_user_lock-a-root.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-round-off-test-values-for-same-output-on-all-architectures.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-mips-ASM.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.25-fix-build-without-server.patch
-)
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
@@ -112,13 +85,21 @@ DEPEND="${COMMON_DEPEND}
 		experimental? ( net-libs/rpcsvc-proto )
 	)
 	static? ( sys-libs/ncurses[static-libs] )
-	test? ( dev-perl/JSON )
+	test? (
+		acct-group/mysql acct-user/mysql
+		dev-perl/JSON
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	selinux? ( sec-policy/selinux-mysql )
-	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
+	server? (
+		!prefix? (
+			acct-group/mysql acct-user/mysql
+			dev-db/mysql-init-scripts
+		)
+	)
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
@@ -209,10 +190,6 @@ pkg_setup() {
 		use server && ! has userpriv ${FEATURES} ; then
 			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 	fi
-
-	# This should come after all of the die statements
-	enewgroup mysql 60 || die "problem adding 'mysql' group"
-	enewuser mysql 60 -1 /dev/null mysql || die "problem adding 'mysql' user"
 }
 
 pkg_preinst() {
@@ -266,13 +243,13 @@ pkg_postinst() {
 
 src_unpack() {
 	unpack ${A}
-	# Grab the patches
-	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR}/mysql-extras" git-r3_src_unpack
 
 	mv -f "${WORKDIR}/${P}" "${S}" || die
 }
 
 src_prepare() {
+	eapply "${WORKDIR}"/mysql-patches
+
 	cmake-utils_src_prepare
 
 	if use jemalloc ; then
@@ -294,6 +271,13 @@ src_prepare() {
 		"${S}"/extra/protobuf \
 		"${S}"/extra/libevent \
 		"${S}"/zlib \
+		|| die
+
+	# Don't clash with dev-db/mysql-connector-c
+	rm \
+		man/my_print_defaults.1 \
+		man/perror.1 \
+		man/zlib_decompress.1 \
 		|| die
 
 	if use libressl ; then

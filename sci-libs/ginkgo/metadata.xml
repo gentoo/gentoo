@@ -15,6 +15,7 @@
 		implemented using modern C++, with GPU kernels implemented in CUDA.
 	</longdescription>
 	<use>
+		<flag name="cuda">Add support for cuda assimp (<pkg>dev-util/nvidia-cuda-sdk</pkg>)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ginkgo-project/ginkgo</remote-id>
