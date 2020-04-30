@@ -87,6 +87,7 @@ openvpn - Build the openvpn input plugin (reads the status file printed by OpenV
 oracle - Build the oracle input plugin (executes SQL statements against Oracle database systems)
 ovs_events - Build an input plugin which reports link state changes from Open vSwitch (OVS)
 ovs_stats - Build an input plugin which reports bridge and interface statistics from Open vSwitch (OVS)
+pcie_errors - Build an input plugin which reports the PCIe errors
 perl - Build the perl language binding plugin (embeds a Perl interpreter into collectd for writing plugins)
 ping - Build the ping input plugin (measures network latency)
 postgresql - Build the postgresql input plugin (executes SQL statements against a PostgreSQL database)
