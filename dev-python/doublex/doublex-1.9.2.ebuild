@@ -3,9 +3,7 @@
 
 EAPI=7
 
-# tests are failing with Python 3.8
-# https://bitbucket.org/DavidVilla/python-doublex/issues/5/support-for-python-36-36-38-tests-failing
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1 vcs-snapshot
 
