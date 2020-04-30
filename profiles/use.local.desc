@@ -7323,6 +7323,7 @@ sci-libs/gdal:ogdi - Enable support for the open geographic datastore interface 
 sci-libs/gdal:opencl - Enable OpenCL support
 sci-libs/gdal:spatialite - Enable Spatial DBMS over sqlite dev-db/spatialite
 sci-libs/gdal:xls - Add the dev-libs/freexl library for xls import support
+sci-libs/ginkgo:cuda - Add support for cuda assimp (dev-util/nvidia-cuda-sdk)
 sci-libs/gmsh:cgns - Enables cgns output support
 sci-libs/gmsh:med - Enables med support
 sci-libs/gmsh:metis - Enables metis support
