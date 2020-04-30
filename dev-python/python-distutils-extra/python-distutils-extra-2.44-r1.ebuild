@@ -28,6 +28,7 @@ BDEPEND="
 		dev-libs/gobject-introspection
 		dev-python/httplib2[${PYTHON_USEDEP}]
 		dev-python/pygobject[${PYTHON_USEDEP}]
+		dev-util/intltool
 	)"
 
 PATCHES=(
