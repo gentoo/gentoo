@@ -5618,9 +5618,9 @@ dev-perl/Authen-Libwrap 0.230.0: A Perl access to the TCP Wrappers interface
 dev-perl/Authen-NTLM 1.90.0-r1 1.90.0-r2: An NTLM authentication module
 dev-perl/Authen-PAM 0.160.0-r2: Interface to PAM library
 dev-perl/Authen-Radius 0.270.0 0.310.0: Communicate with a Radius server from Perl
-dev-perl/Authen-SASL 2.160.0-r1: A Perl SASL interface
+dev-perl/Authen-SASL 2.160.0-r1 2.160.0-r2: A Perl SASL interface
 dev-perl/Authen-SASL-SASLprep 1.100.0: A Stringprep Profile for User Names and Passwords (RFC 4013)
-dev-perl/Authen-SCRAM 0.11.0: Salted Challenge Response Authentication Mechanism (RFC 5802)
+dev-perl/Authen-SCRAM 0.11.0 0.11.0-r1: Salted Challenge Response Authentication Mechanism (RFC 5802)
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
