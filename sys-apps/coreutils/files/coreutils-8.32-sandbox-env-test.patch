@@ -12,6 +12,18 @@ Skip tests known to fail when running under Gentoo sandbox.
  print_ver_ du
  
  require_perl_
+--- a/tests/ls/removed-directory.sh
++++ b/tests/ls/removed-directory.sh
+@@ -19,6 +19,9 @@
+ # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ . "${srcdir=.}/tests/init.sh"; path_prepend_ ./src
++# Avoid #413621 until #548250 is resolved
++test -n "$SANDBOX_ACTIVE" && skip_ "Gentoo: Test known bad under sandbox (#413621)"
++
+ print_ver_ ls
+ 
+ case $host_triplet in
 --- a/tests/ls/stat-free-symlinks.sh
 +++ b/tests/ls/stat-free-symlinks.sh
 @@ -17,6 +17,9 @@
