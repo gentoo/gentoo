@@ -51,7 +51,7 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	csv curl curl_json curl_xml dbi df disk dns drbd email
 	entropy ethstat exec fhcount filecount fscache gmond gps hddtemp
 	hugepages interface ipc ipmi iptables ipvs irq java lua
-	load logfile log_logstash lvm madwifi match_empty_counter
+	load logfile log_logstash madwifi match_empty_counter
 	match_hashed match_regex match_timediff match_value mbmon mcelog md
 	memcachec memcached memory modbus mqtt multimeter mysql netlink
 	network network nfs nginx notify_desktop notify_email notify_nagios
@@ -98,7 +98,6 @@ COMMON_DEPEND="
 	collectd_plugins_iptables?		( >=net-firewall/iptables-1.4.13:0= )
 	collectd_plugins_log_logstash?		( dev-libs/yajl:= )
 	collectd_plugins_lua?			( dev-lang/lua:0= )
-	collectd_plugins_lvm?			( sys-fs/lvm2 )
 	collectd_plugins_memcachec?		( dev-libs/libmemcached )
 	collectd_plugins_modbus?		( dev-libs/libmodbus )
 	collectd_plugins_mqtt?			( app-misc/mosquitto )
