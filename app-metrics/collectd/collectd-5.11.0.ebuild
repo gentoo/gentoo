@@ -49,24 +49,25 @@ COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer
 
 # Plugins that have been (compile) tested and can be enabled via COLLECTD_PLUGINS
 COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
-	buddyinfo capabilities ceph cgroups chrony conntrack contextswitch
-	cpu cpufreq cpusleep csv curl curl_json curl_xml dbi df disk dns
-	drbd email entropy ethstat exec fhcount filecount fscache gmond gps
-	hddtemp hugepages interface ipc ipmi iptables ipvs irq java lua
-	load logfile logparser log_logstash madwifi match_empty_counter
-	match_hashed match_regex match_timediff match_value mbmon mcelog md
-	memcachec memcached memory modbus mqtt multimeter mysql netlink
-	network network nfs nginx notify_desktop notify_email notify_nagios
-	ntpd numa nut olsrd onewire openldap openvpn oracle ovs_events
-	ovs_stats pcie_errors perl ping postgresql powerdns procevent
-	processes protocols python python redis routeros rrdcached rrdtool
-	sensors serial sigrok slurm smart snmp snmp_agent statsd swap synproxy
-	sysevent syslog table tail tail_csv target_notification target_replace
-	target_scale target_set tcpconns teamspeak2 ted thermal threshold
-	turbostat ubi unixsock uptime users uuid varnish virt vmem vserver
-	wireless write_graphite write_http write_influxdb_udp write_kafka
-	write_log write_mongodb write_prometheus write_redis write_sensu
-	write_stackdriver write_syslog write_tsdb xencpu zfs_arc zookeeper"
+	buddyinfo capabilities ceph cgroups check_uptime chrony conntrack
+	contextswitch cpu cpufreq cpusleep csv curl curl_json curl_xml
+	dbi df disk dns drbd email entropy ethstat exec fhcount filecount
+	fscache gmond gps hddtemp hugepages interface ipc ipmi iptables
+	ipvs irq java lua load logfile logparser log_logstash madwifi
+	match_empty_counter match_hashed match_regex match_timediff
+	match_value mbmon mcelog md memcachec memcached memory modbus mqtt
+	multimeter mysql netlink network network nfs nginx notify_desktop
+	notify_email notify_nagios ntpd numa nut olsrd onewire openldap
+	openvpn oracle ovs_events ovs_stats pcie_errors perl ping postgresql
+	powerdns procevent processes protocols python python redis routeros
+	rrdcached rrdtool sensors serial sigrok slurm smart snmp snmp_agent
+	statsd swap synproxy sysevent syslog table tail tail_csv
+	target_notification target_replace target_scale target_set tcpconns
+	teamspeak2 ted thermal threshold turbostat ubi unixsock uptime users
+	uuid varnish virt vmem vserver wireless write_graphite write_http
+	write_influxdb_udp write_kafka write_log write_mongodb write_prometheus
+	write_redis write_sensu write_stackdriver write_syslog write_tsdb
+	xencpu zfs_arc zookeeper"
 
 COLLECTD_DISABLED_PLUGINS="${COLLECTD_IMPOSSIBLE_PLUGINS}"
 
