@@ -12,7 +12,7 @@ DESCRIPTION="Jisyo (dictionary) files for the SKK Japanese-input software"
 HOMEPAGE="https://skk-dev.github.io/dict"
 EGIT_REPO_URI="https://github.com/skk-dev/dict"
 
-LICENSE="GPL-2 freedist public-domain"
+LICENSE="CC-BY-SA-3.0 GPL-2+ public-domain unicode"
 SLOT="0"
 KEYWORDS=""
 IUSE="cdb ${USE_RUBY//ruby/ruby_targets_ruby}"
