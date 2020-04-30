@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-15">
+  <title>libu2f-host: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libu2f-host, the worst
+    of which could result in the execution of code.
+  </synopsis>
+  <product type="ebuild">libu2f-host</product>
+  <announced>2020-04-30</announced>
+  <revised count="1">2020-04-30</revised>
+  <bug>678580</bug>
+  <bug>679724</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-crypt/libu2f-host" auto="yes" arch="*">
+      <unaffected range="ge">1.1.10</unaffected>
+      <vulnerable range="lt">1.1.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Yubico Universal 2nd Factor (U2F) Host C Library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libu2f-host. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could entice a user to plug-in a malicious USB device,
+      possibly resulting in execution of arbitrary code with the privileges of
+      the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libu2f-host users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/libu2f-host-1.1.10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20340">CVE-2018-20340</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9578">CVE-2019-9578</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-16T07:16:39Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-04-30T23:12:17Z">b-man</metadata>
+</glsa>

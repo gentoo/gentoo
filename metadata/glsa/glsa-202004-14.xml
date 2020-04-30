@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202004-14">
+  <title>FontForge: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FontForge, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">fontforge</product>
+  <announced>2020-04-30</announced>
+  <revised count="1">2020-04-30</revised>
+  <bug>706778</bug>
+  <bug>715808</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-gfx/fontforge" auto="yes" arch="*">
+      <unaffected range="ge">20200314</unaffected>
+      <vulnerable range="lt">20200314</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FontForge is a PostScript font editor and converter.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FontForge. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted font
+      using FontForge, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FontForge users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/fontforge-20200314"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15785">CVE-2019-15785</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-5395">CVE-2020-5395</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-5496">CVE-2020-5496</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-01T20:32:15Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-04-30T23:00:58Z">whissi</metadata>
+</glsa>
