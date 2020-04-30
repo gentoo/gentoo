@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_{6,3,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 
 inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info multilib perl-functions python-single-r1 systemd tmpfiles user
@@ -21,49 +21,53 @@ IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux 
 # The plugin lists have to follow here since they extend IUSE
 
 # Plugins that don't build (e.g. dependencies not in Gentoo)
-# apple_sensors: Requires libIOKit
-# amqp1:         Requires libqpid-proton
-# aquaero:       Requires aerotools-ng/libaquaero5
-# barometer:     Requires libi2c (i2c_smbus_read_i2c_block_data)
-# dpdkevents:    Requires dpdk
-# dpdkstat:      Requires dpdk
-# grpc:          Requires libgrpc
-# intel_pmu:     Requires libjevents (pmu-tools)
-# intel_rdt:     Requires libpqos from intel-cmt-cat project
-# lpar:          Requires libperfstat (AIX only)
-# mic:           Requires Intel Many Integrated Core Architecture API
-#                (part of Intel's  Xeon Phi software)
-# netapp:        Requires libnetapp (http://communities.netapp.com/docs/DOC-1110)
-# pf:            Requires BSD packet filter
-# pinba:         Requires MySQL Pinba engine (http://pinba.org/)
-# tape:          Requires libkstat (Solaris only)
-# tokyotyrant:   Requires tokyotyrant
-# write_riemann: Requires riemann-c-client
-# xmms:          Requires libxmms (v1)
-# zone:          Solaris only...
-COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer dpdkstat
-	grpc intel_pmu intel_rdt lpar mic netapp pf pinba tape tokyotyrant
-	write_riemann xmms zone"
+# apple_sensors:  Requires libIOKit
+# amqp1:          Requires libqpid-proton
+# aquaero:        Requires aerotools-ng/libaquaero5
+# barometer:      Requires libi2c (i2c_smbus_read_i2c_block_data)
+# dpdkevents:     Requires dpdk
+# dpdkstat:       Requires dpdk
+# dpdk_telemetry: Requires dpdk
+# grpc:           Requires libgrpc
+# intel_pmu:      Requires libjevents (pmu-tools)
+# intel_rdt:      Requires libpqos from intel-cmt-cat project
+# lpar:           Requires libperfstat (AIX only)
+# mic:            Requires Intel Many Integrated Core Architecture API
+#                 (part of Intel's  Xeon Phi software)
+# netapp:         Requires libnetapp (http://communities.netapp.com/docs/DOC-1110)
+# pf:             Requires BSD packet filter
+# pinba:          Requires MySQL Pinba engine (http://pinba.org/)
+# redfish:        Requires libredfish
+# tape:           Requires libkstat (Solaris only)
+# tokyotyrant:    Requires tokyotyrant
+# write_riemann:  Requires riemann-c-client
+# xmms:           Requires libxmms (v1)
+# zone:           Solaris only...
+COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer
+	dpdkevents dpdkstat dpdk_telemetry grpc intel_pmu intel_rdt lpar
+	mic netapp pf pinba redfish tape tokyotyrant write_riemann xmms zone"
 
 # Plugins that have been (compile) tested and can be enabled via COLLECTD_PLUGINS
 COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
-	ceph cgroups chrony conntrack contextswitch cpu cpufreq cpusleep
-	csv curl curl_json curl_xml dbi df disk dns drbd email
-	entropy ethstat exec fhcount filecount fscache gmond gps hddtemp
-	hugepages interface ipc ipmi iptables ipvs irq java lua
-	load logfile log_logstash lvm madwifi match_empty_counter
-	match_hashed match_regex match_timediff match_value mbmon mcelog md
-	memcachec memcached memory modbus mqtt multimeter mysql netlink
-	network network nfs nginx notify_desktop notify_email notify_nagios
-	ntpd numa nut olsrd onewire openldap openvpn oracle ovs_events
-	ovs_stats perl ping postgresql powerdns processes protocols python
-	python redis routeros rrdcached rrdtool sensors serial sigrok smart
-	snmp snmp_agent statsd swap sysevent syslog table tail tail_csv
+	buddyinfo capabilities ceph cgroups check_uptime chrony connectivity
+	conntrack contextswitch cpu cpufreq cpusleep csv curl curl_json
+	curl_xml dbi df disk dns drbd email entropy ethstat exec fhcount
+	filecount fscache gmond gps hddtemp hugepages interface ipc ipmi
+	iptables ipvs irq java lua load logfile logparser log_logstash
+	madwifi match_empty_counter match_hashed match_regex match_timediff
+	match_value mbmon mcelog md memcachec memcached memory modbus mqtt
+	multimeter mysql netlink network network nfs nginx notify_desktop
+	notify_email notify_nagios ntpd numa nut olsrd onewire openldap
+	openvpn oracle ovs_events ovs_stats pcie_errors perl ping postgresql
+	powerdns procevent processes protocols python python redis routeros
+	rrdcached rrdtool sensors serial sigrok slurm smart snmp snmp_agent
+	statsd swap synproxy sysevent syslog table tail tail_csv
 	target_notification target_replace target_scale target_set tcpconns
-	teamspeak2 ted thermal threshold turbostat unixsock
-	uptime users uuid varnish virt vmem vserver wireless write_graphite
-	write_http write_kafka write_log write_mongodb write_prometheus
-	write_redis write_sensu write_tsdb xencpu zfs_arc zookeeper"
+	teamspeak2 ted thermal threshold turbostat ubi unixsock uptime users
+	uuid varnish virt vmem vserver wireless write_graphite write_http
+	write_influxdb_udp write_kafka write_log write_mongodb write_prometheus
+	write_redis write_sensu write_stackdriver write_syslog write_tsdb
+	xencpu zfs_arc zookeeper"
 
 COLLECTD_DISABLED_PLUGINS="${COLLECTD_IMPOSSIBLE_PLUGINS}"
 
@@ -79,6 +83,7 @@ unset plugin
 COMMON_DEPEND="
 	dev-libs/libgcrypt:=
 	dev-libs/libltdl:0=
+	sys-libs/libcap
 	perl?					( dev-lang/perl:=[ithreads] )
 	udev?					( virtual/udev )
 	xfs?					( sys-fs/xfsprogs )
@@ -87,6 +92,8 @@ COMMON_DEPEND="
 	collectd_plugins_ascent?		( net-misc/curl:0= dev-libs/libxml2:2= )
 	collectd_plugins_bind?			( net-misc/curl:0= dev-libs/libxml2:2= )
 	collectd_plugins_ceph?			( dev-libs/yajl:= )
+	collectd_plugins_capabilities?		( dev-libs/jansson net-libs/libmicrohttpd:= )
+	collectd_plugins_connectivity?		( dev-libs/yajl:= net-libs/libmnl )
 	collectd_plugins_curl?			( net-misc/curl:0= )
 	collectd_plugins_curl_json?		( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_curl_xml?		( net-misc/curl:0= dev-libs/libxml2:2= )
@@ -98,7 +105,6 @@ COMMON_DEPEND="
 	collectd_plugins_iptables?		( >=net-firewall/iptables-1.4.13:0= )
 	collectd_plugins_log_logstash?		( dev-libs/yajl:= )
 	collectd_plugins_lua?			( dev-lang/lua:0= )
-	collectd_plugins_lvm?			( sys-fs/lvm2 )
 	collectd_plugins_memcachec?		( dev-libs/libmemcached )
 	collectd_plugins_modbus?		( dev-libs/libmodbus )
 	collectd_plugins_mqtt?			( app-misc/mosquitto )
@@ -116,6 +122,7 @@ COMMON_DEPEND="
 	collectd_plugins_perl?			( dev-lang/perl:=[ithreads] )
 	collectd_plugins_ping?			( net-libs/liboping )
 	collectd_plugins_postgresql?		( dev-db/postgresql:= )
+	collectd_plugins_procevent?		( dev-libs/yajl:= )
 	collectd_plugins_python?		( ${PYTHON_DEPS} )
 	collectd_plugins_redis?			( dev-libs/hiredis:= )
 	collectd_plugins_routeros?		( net-libs/librouteros )
@@ -123,7 +130,7 @@ COMMON_DEPEND="
 	collectd_plugins_rrdtool?		( net-analyzer/rrdtool:= )
 	collectd_plugins_sensors?		( sys-apps/lm-sensors:= )
 	collectd_plugins_sigrok?		( <sci-libs/libsigrok-0.4:= dev-libs/glib:2 )
-	collectd_plugins_smart?			( dev-libs/libatasmart )
+	collectd_plugins_slurm?			( sys-cluster/slurm )
 	collectd_plugins_snmp?			( net-analyzer/net-snmp )
 	collectd_plugins_snmp_agent?		( net-analyzer/net-snmp )
 	collectd_plugins_sysevent?		( dev-libs/yajl:= )
@@ -134,6 +141,7 @@ COMMON_DEPEND="
 	collectd_plugins_write_mongodb?		( >=dev-libs/mongo-c-driver-1.8.2:= )
 	collectd_plugins_write_prometheus?	( >=dev-libs/protobuf-c-1.2.1-r1:= net-libs/libmicrohttpd:= )
 	collectd_plugins_write_redis?		( dev-libs/hiredis:= )
+	collectd_plugins_write_stackdriver?	( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_xencpu?		( app-emulation/xen-tools:= )
 
 	kernel_FreeBSD? (
