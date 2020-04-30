@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python 2/3 unicode CSV compatibility layer"
@@ -23,6 +23,10 @@ BDEPEND="
 	test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-pypy3.patch
+)
 
 src_prepare() {
 	sed -i -e '/--cov/d' setup.cfg || die

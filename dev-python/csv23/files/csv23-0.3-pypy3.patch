@@ -1,0 +1,44 @@
+From cb9a4519b81daccbb54ea767829d888a6b97855a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 30 Apr 2020 11:54:31 +0200
+Subject: [PATCH] fix hashlib usage compatibility with pypy3
+
+PyPy3's hashlib fails when passed a memoryview object (i.e.
+BytesIO.getbuffer()).  Convert it to bytes instead in order to fix
+compatibility.  While this isn't necessary for CPython, it should not
+cause any issues.
+
+Also enabling testing with pypy3.  I had to switch to the newer Ubuntu
+version as well in order to avoid more bugs in old PyPy versions.
+
+PyPy3 bug: https://foss.heptapod.net/pypy/pypy/issues/3217
+---
+ .travis.yml        | 2 ++
+ csv23/shortcuts.py | 2 +-
+ tox.ini            | 2 +-
+ 3 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/csv23/shortcuts.py b/csv23/shortcuts.py
+index 6eeb248..7bdb013 100644
+--- a/csv23/shortcuts.py
++++ b/csv23/shortcuts.py
+@@ -206,7 +206,7 @@ def write_csv(file, rows, header=None, dialect=DIALECT, encoding=ENCODING,
+                 buf = f.buffer
+                 for rows in iterslices(rows, 1000):
+                     writer.writerows(rows)
+-                    hashsum.update(buf.getbuffer())
++                    hashsum.update(bytes(buf.getbuffer()))
+                     # NOTE: f.truncate(0) would prepend zero-bytes
+                     f.seek(0)
+                     f.truncate()
+diff --git a/tox.ini b/tox.ini
+index 2a234b3..89a4432 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,5 +1,5 @@
+ [tox]
+-envlist = py{27,35,36,37,38}
++envlist = py{27,35,36,37,38},pypy3
+ skip_missing_interpreters = true
+ 
+ [testenv]
