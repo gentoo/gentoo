@@ -49,12 +49,12 @@ COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer
 
 # Plugins that have been (compile) tested and can be enabled via COLLECTD_PLUGINS
 COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
-	buddyinfo capabilities ceph cgroups check_uptime chrony conntrack
-	contextswitch cpu cpufreq cpusleep csv curl curl_json curl_xml
-	dbi df disk dns drbd email entropy ethstat exec fhcount filecount
-	fscache gmond gps hddtemp hugepages interface ipc ipmi iptables
-	ipvs irq java lua load logfile logparser log_logstash madwifi
-	match_empty_counter match_hashed match_regex match_timediff
+	buddyinfo capabilities ceph cgroups check_uptime chrony connectivity
+	conntrack contextswitch cpu cpufreq cpusleep csv curl curl_json
+	curl_xml dbi df disk dns drbd email entropy ethstat exec fhcount
+	filecount fscache gmond gps hddtemp hugepages interface ipc ipmi
+	iptables ipvs irq java lua load logfile logparser log_logstash
+	madwifi match_empty_counter match_hashed match_regex match_timediff
 	match_value mbmon mcelog md memcachec memcached memory modbus mqtt
 	multimeter mysql netlink network network nfs nginx notify_desktop
 	notify_email notify_nagios ntpd numa nut olsrd onewire openldap
@@ -92,6 +92,7 @@ COMMON_DEPEND="
 	collectd_plugins_bind?			( net-misc/curl:0= dev-libs/libxml2:2= )
 	collectd_plugins_ceph?			( dev-libs/yajl:= )
 	collectd_plugins_capabilities?		( sys-libs/libcap dev-libs/jansson net-libs/libmicrohttpd:= )
+	collectd_plugins_connectivity?		( dev-libs/yajl:= net-libs/libmnl )
 	collectd_plugins_curl?			( net-misc/curl:0= )
 	collectd_plugins_curl_json?		( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_curl_xml?		( net-misc/curl:0= dev-libs/libxml2:2= )

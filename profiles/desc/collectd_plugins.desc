@@ -17,6 +17,7 @@ ceph - Build the Ceph input plugin (collects statistics from the Ceph distribute
 cgroups - Build the cgroups input plugin (collects CPU accounting information for processes in a cgroup)
 check_uptime - Build a plugin to notify about uptime reset
 chrony - Build the chrony input plugin (collects statistics from a chrony NTP server)
+connectivity - Build the connectivity input plugin (monitors interface up/down status via netlink library)
 conntrack - Build the conntrack input plugin (tracks the number of entries in Linux's connection tracking table)
 contextswitch - Build the contextswitch input plugin (collects the number of context switches done by the operating system)
 cpu - Build the cpu input plugin (collects the amount of time spent by the CPU in various states)
