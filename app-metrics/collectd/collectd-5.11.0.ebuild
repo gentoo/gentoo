@@ -21,29 +21,30 @@ IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux 
 # The plugin lists have to follow here since they extend IUSE
 
 # Plugins that don't build (e.g. dependencies not in Gentoo)
-# apple_sensors: Requires libIOKit
-# amqp1:         Requires libqpid-proton
-# aquaero:       Requires aerotools-ng/libaquaero5
-# barometer:     Requires libi2c (i2c_smbus_read_i2c_block_data)
-# dpdkevents:    Requires dpdk
-# dpdkstat:      Requires dpdk
-# grpc:          Requires libgrpc
-# intel_pmu:     Requires libjevents (pmu-tools)
-# intel_rdt:     Requires libpqos from intel-cmt-cat project
-# lpar:          Requires libperfstat (AIX only)
-# mic:           Requires Intel Many Integrated Core Architecture API
-#                (part of Intel's  Xeon Phi software)
-# netapp:        Requires libnetapp (http://communities.netapp.com/docs/DOC-1110)
-# pf:            Requires BSD packet filter
-# pinba:         Requires MySQL Pinba engine (http://pinba.org/)
-# tape:          Requires libkstat (Solaris only)
-# tokyotyrant:   Requires tokyotyrant
-# write_riemann: Requires riemann-c-client
-# xmms:          Requires libxmms (v1)
-# zone:          Solaris only...
-COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer dpdkstat
-	grpc intel_pmu intel_rdt lpar mic netapp pf pinba tape tokyotyrant
-	write_riemann xmms zone"
+# apple_sensors:  Requires libIOKit
+# amqp1:          Requires libqpid-proton
+# aquaero:        Requires aerotools-ng/libaquaero5
+# barometer:      Requires libi2c (i2c_smbus_read_i2c_block_data)
+# dpdkevents:     Requires dpdk
+# dpdkstat:       Requires dpdk
+# dpdk_telemetry: Requires dpdk
+# grpc:           Requires libgrpc
+# intel_pmu:      Requires libjevents (pmu-tools)
+# intel_rdt:      Requires libpqos from intel-cmt-cat project
+# lpar:           Requires libperfstat (AIX only)
+# mic:            Requires Intel Many Integrated Core Architecture API
+#                 (part of Intel's  Xeon Phi software)
+# netapp:         Requires libnetapp (http://communities.netapp.com/docs/DOC-1110)
+# pf:             Requires BSD packet filter
+# pinba:          Requires MySQL Pinba engine (http://pinba.org/)
+# tape:           Requires libkstat (Solaris only)
+# tokyotyrant:    Requires tokyotyrant
+# write_riemann:  Requires riemann-c-client
+# xmms:           Requires libxmms (v1)
+# zone:           Solaris only...
+COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer
+	dpdkevents dpdkstat dpdk_telemetry grpc intel_pmu intel_rdt lpar
+	mic netapp pf pinba tape tokyotyrant write_riemann xmms zone"
 
 # Plugins that have been (compile) tested and can be enabled via COLLECTD_PLUGINS
 COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
