@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
+# Maintainer timeout, unmaintained upstream, last release in 2011, bug #708114
+# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
+app-laptop/batti
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
 # Maintainer timeout, unmaintained upstream, last release in 2009, bug #708068
 # Stuck on Python 2 and pygtk. Masked for removal in 30 days.
 sys-fs/pysize
