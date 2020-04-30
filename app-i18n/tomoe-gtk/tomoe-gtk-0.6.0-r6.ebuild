@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/tomoe/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="static-libs"
+IUSE=""
 
 RDEPEND="app-i18n/tomoe
 	x11-libs/gtk+:2"
@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static) \
+		--disable-static \
 		--without-python \
 		--without-gucharmap
 }
