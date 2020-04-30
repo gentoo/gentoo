@@ -50,6 +50,7 @@ irq - Build the irq input plugin (collects the number of times each interrupt ha
 java - Build the java input plugin (embeds a JVM into collectd for writing plugins)
 load - Build the load input plugin (collects the system load)
 logfile - Build the logfile output plugin (receives log messages from collectd and writes them to a text file)
+logparser - Build the logparser plugin (allows for filtering and parsing log messages)
 log_logstash - Build the Logstash output plugin (writes collectd logs and events as Logstash JSON formatted events)
 lua - Build the LUA language binding plugin (uses dev-lang/lua) for writing plugins
 lvm - Build the LVM input plugin (collects the size of logical volumes (LV) and free space inside a volume group (VG) from Linux' Logical Volume Manager (LVM))

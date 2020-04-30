@@ -52,7 +52,7 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	cpu cpufreq cpusleep csv curl curl_json curl_xml dbi df disk dns
 	drbd email entropy ethstat exec fhcount filecount fscache gmond gps
 	hddtemp hugepages interface ipc ipmi iptables ipvs irq java lua
-	load logfile log_logstash madwifi match_empty_counter
+	load logfile logparser log_logstash madwifi match_empty_counter
 	match_hashed match_regex match_timediff match_value mbmon mcelog md
 	memcachec memcached memory modbus mqtt multimeter mysql netlink
 	network network nfs nginx notify_desktop notify_email notify_nagios
