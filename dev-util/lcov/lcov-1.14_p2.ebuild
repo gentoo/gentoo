@@ -14,7 +14,7 @@ else
 		mirror://sourceforge/ltp/${PN}-${LCOV_V}.tar.gz
 		mirror://debian/pool/main/l/${PN}/${PN}_${LCOV_V}-${DB_V}.debian.tar.xz
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-linux ~x64-macos"
 fi
 
 inherit prefix
