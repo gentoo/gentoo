@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DEPEND=app-i18n/tomoe x11-libs/gtk+:2 dev-util/gtk-doc-am sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=Tomoe GTK+ interface widget library
+EAPI=6
+HOMEPAGE=http://tomoe.osdn.jp/
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2.1
+RDEPEND=app-i18n/tomoe x11-libs/gtk+:2
+SLOT=0
+SRC_URI=mirror://sourceforge/tomoe/tomoe-gtk-0.6.0.tar.gz
+_md5_=fed017843f9f2f94f33e48b2647aa33e
