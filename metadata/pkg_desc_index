@@ -11693,7 +11693,7 @@ kde-apps/kajongg 19.12.3 20.04.0: Classical Mah Jongg for four players
 kde-apps/kalarm 19.12.3 20.04.0: Application to manage alarms and other timer based alerts for the desktop
 kde-apps/kalarmcal 19.12.3 20.04.0: Client library to access and handling of KAlarm calendar data
 kde-apps/kalgebra 19.12.3 20.04.0: MathML-based 2D and 3D graph calculator by KDE
-kde-apps/kalzium 19.12.3 20.04.0: Periodic table of the elements
+kde-apps/kalzium 19.12.3 20.04.0-r1: Periodic table of the elements
 kde-apps/kamera 19.12.3 20.04.0: Plasma integration for gphoto2 cameras
 kde-apps/kamoso 19.12.3 20.04.0: Application to take pictures and videos from your webcam by KDE
 kde-apps/kanagram 19.12.3 20.04.0: Game based on anagrams of words
