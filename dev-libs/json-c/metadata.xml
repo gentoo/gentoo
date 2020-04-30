@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>jakov.smolic@sartura.hr</email>
+    <name>Jakov Smolic</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>luka.perkov@sartura.hr</email>
+    <name>Luka Perkov</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <longdescription lang="en">
 "A JSON implementation in C" is probably the better description, and then
 "JSON-C implements a reference counting object model that allows you to 
