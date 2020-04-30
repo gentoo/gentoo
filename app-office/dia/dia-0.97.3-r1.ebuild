@@ -1,12 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-GCONF_DEBUG=yes
-GNOME2_LA_PUNT=yes
-PYTHON_COMPAT=( python2_7 )
+EAPI=6
 
-inherit autotools eutils gnome2 python-single-r1 multilib
+GNOME2_EAUTORECONF="yes"
+inherit gnome2
 
 DESCRIPTION="Diagram/flowchart creation program"
 HOMEPAGE="https://wiki.gnome.org/Apps/Dia"
@@ -17,8 +15,7 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-
 # the doc USE flag doesn't seem to do anything without docbook2html
 # cairo support is preferred as explained by upstream at:
 # https://bugzilla.gnome.org/show_bug.cgi?id=729668#c6
-IUSE="+cairo doc python"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="+cairo doc"
 
 RDEPEND="
 	>=dev-libs/glib-2:2
@@ -35,9 +32,6 @@ RDEPEND="
 	doc? (
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets )
-	python? (
-		>=dev-python/pygtk-2
-		${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}
 	dev-util/intltool
@@ -45,21 +39,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( dev-libs/libxslt )"
 
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
+DOCS=( AUTHORS ChangeLog KNOWN_BUGS MAINTAINERS NEWS README RELEASE-PROCESS THANKS TODO )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.97.0-gnome-doc.patch #159381 , upstream #470812 #558690
+	"${FILESDIR}"/${PN}-0.97.2-underlinking.patch #420685, upstream #678761
+	"${FILESDIR}"/${PN}-0.97.3-freetype_pkgconfig.patch #654814, upstream https://gitlab.gnome.org/GNOME/dia/merge_requests/1
+)
 
 src_prepare() {
-	DOCS="AUTHORS ChangeLog KNOWN_BUGS MAINTAINERS NEWS README RELEASE-PROCESS THANKS TODO"
-
-	epatch "${FILESDIR}"/${PN}-0.97.0-gnome-doc.patch #159381 , upstream #470812 #558690
-	epatch "${FILESDIR}"/${PN}-0.97.2-underlinking.patch #420685, upstream #678761
-	epatch "${FILESDIR}"/${PN}-0.97.3-freetype_pkgconfig.patch #654814, upstream https://gitlab.gnome.org/GNOME/dia/merge_requests/1
-
-	if use python; then
-		python_fix_shebang .
-	fi
-
 	if ! use doc; then
 		# Skip man generation
 		sed -i -e '/if HAVE_DB2MAN/,/endif/d' doc/*/Makefile.am || die
@@ -88,7 +76,7 @@ src_configure() {
 		--disable-libemf \
 		$(use_enable doc db2html) \
 		$(use_with cairo) \
-		$(use_with python) \
+		--without-python \
 		--without-swig \
 		--without-hardbooks
 }

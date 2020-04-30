@@ -1,0 +1,49 @@
+From 5b412673cbbd7739b8de8c477e048e7bba85edc1 Mon Sep 17 00:00:00 2001
+From: Serg Truf <strufkin@gmail.com>
+Date: Thu, 30 Apr 2020 16:16:27 +0200
+Subject: rename ktp_integration target so it comply to the name in dbus
+ service file
+
+Summary:
+kded was complaining that it could not find some of the modules
+
+```
+kded5[7242]: kf5.kded: could not find kded module with id "ktp_integration_module"
+```
+
+so let's rename target from ktp_integration to ktp_integration_module so we comply with what configured in service file:
+```
+[D-BUS Service]
+Name=org.freedesktop.Telepathy.Client.KTp.KdedIntegrationModule
+Exec=/usr/bin/dbus-send --session --type=method_call --dest=org.kde.kded5 /kded org.kde.kded5.loadModule string:"ktp_integration_module"
+```
+
+Reviewers: #kde_telepathy, akulichalexandr, nicolasfella
+
+Reviewed By: #kde_telepathy, akulichalexandr
+
+Subscribers: asturmlechner, rdieter, arojas, #kde_telepathy
+
+Tags: #kde_telepathy
+
+Differential Revision: https://phabricator.kde.org/D28604
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3f8130c..66d95bc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -54,7 +54,7 @@ set (kded_ktp_integration_module_SRCS
+ )
+ 
+ add_library (kded_ktp_integration_module MODULE ${kded_ktp_integration_module_SRCS})
+-set_target_properties (kded_ktp_integration_module PROPERTIES OUTPUT_NAME ktp_integration)
++set_target_properties (kded_ktp_integration_module PROPERTIES OUTPUT_NAME ktp_integration_module)
+ kcoreaddons_desktop_to_json(kded_ktp_integration_module ktp_integration_module.desktop)
+ 
+ target_link_libraries (kded_ktp_integration_module
+-- 
+cgit v1.1
+
