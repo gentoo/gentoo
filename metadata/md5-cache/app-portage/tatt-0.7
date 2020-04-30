@@ -1,4 +1,4 @@
-BDEPEND=dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] python_targets_python3_6? ( >=dev-lang/python-3.6.10:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+BDEPEND=dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=arch testing tool
 EAPI=7
@@ -6,9 +6,9 @@ HOMEPAGE=https://github.com/gentoo/tatt
 IUSE=+templates python_targets_python3_6
 KEYWORDS=amd64 ~arm64 hppa ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=app-portage/eix app-portage/gentoolkit dev-python/configobj[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/requests[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] www-client/pybugz python_targets_python3_6? ( >=dev-lang/python-3.6.10:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+RDEPEND=app-portage/eix app-portage/gentoolkit dev-python/configobj[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/requests[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] www-client/pybugz python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 )
 SLOT=0
 SRC_URI=https://github.com/gentoo/tatt/archive/v0.7.tar.gz -> tatt-0.7.tar.gz
-_eclasses_=distutils-r1	b33fa13a5178ad9bf895a5190d20cdc7	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=distutils-r1	b33fa13a5178ad9bf895a5190d20cdc7	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=df111743234f75b6c3cca10a38704574

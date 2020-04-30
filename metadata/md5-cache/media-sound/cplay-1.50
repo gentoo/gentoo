@@ -1,14 +1,14 @@
 DEFINED_PHASES=install prepare setup
-DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) vorbis? ( media-sound/vorbis-tools ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 media-sound/madplay media-sound/splay ) ) sys-devel/gettext
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) vorbis? ( media-sound/vorbis-tools ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 media-sound/madplay media-sound/splay ) ) sys-devel/gettext
 DESCRIPTION=A Curses front-end for various audio players
 EAPI=6
 HOMEPAGE=https://github.com/hukka/cplay/
 IUSE=mp3 vorbis +python_single_target_python2_7
 KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) vorbis? ( media-sound/vorbis-tools ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 media-sound/madplay media-sound/splay ) )
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) vorbis? ( media-sound/vorbis-tools ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 media-sound/madplay media-sound/splay ) )
 REQUIRED_USE=^^ ( python_single_target_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/hukka/cplay/archive/v1.50.tar.gz -> cplay-1.50.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9ae5bd27701e4373b858515418629efc

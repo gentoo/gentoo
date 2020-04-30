@@ -1,14 +1,14 @@
 DEFINED_PHASES=install postinst postrm prepare
-DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Small and highly customizable twin-panel file manager with plugin-support
 EAPI=7
 HOMEPAGE=https://github.com/MeanEYE/Sunflower http://sunflower-fm.org/
 IUSE=python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygtk-2.15.0:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/notify-python-0.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gnome-base/librsvg:2 dev-python/chardet[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pycairo[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygtk-2.15.0:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/notify-python-0.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gnome-base/librsvg:2 dev-python/chardet[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pycairo[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/MeanEYE/Sunflower/archive/0.3-61.tar.gz -> sunflower-0.3.61.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=cde8b4f2405e290da841019678f54ff8

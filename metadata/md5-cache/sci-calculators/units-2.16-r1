@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install setup
-DEPEND=sys-libs/readline:= units--cur? ( python_single_target_python3_6? ( >=dev-lang/python-3.6.10:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_6? ( dev-python/future[python_targets_python3_6(-)] dev-python/requests[python_targets_python3_6(-)] ) )
+DEPEND=sys-libs/readline:= units--cur? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_6? ( dev-python/future[python_targets_python3_6(-)] dev-python/requests[python_targets_python3_6(-)] ) )
 DESCRIPTION=Unit conversion program
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/units/units.html
 IUSE=+units--cur +python_single_target_python3_6
 KEYWORDS=~alpha amd64 ~arm hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=FDL-1.3 GPL-3
-RDEPEND=sys-libs/readline:= units--cur? ( python_single_target_python3_6? ( >=dev-lang/python-3.6.10:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_6? ( dev-python/future[python_targets_python3_6(-)] dev-python/requests[python_targets_python3_6(-)] ) )
+RDEPEND=sys-libs/readline:= units--cur? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_6? ( dev-python/future[python_targets_python3_6(-)] dev-python/requests[python_targets_python3_6(-)] ) )
 REQUIRED_USE=units--cur? ( ^^ ( python_single_target_python3_6 ) )
 SLOT=0
 SRC_URI=mirror://gnu/units/units-2.16.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=64813399940172824782dd1e16dd43ea

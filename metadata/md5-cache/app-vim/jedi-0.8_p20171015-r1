@@ -6,10 +6,10 @@ HOMEPAGE=https://github.com/davidhalter/jedi-vim
 IUSE=python_targets_python2_7 python_targets_python3_6
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 ) python_targets_python3_6? ( >=dev-lang/python-3.6.10:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] dev-python/jedi[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] dev-python/jedi[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_6 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/davidhalter/jedi-vim/archive/77924398bd594e238766153cec97ace62650f082.tar.gz -> jedi-0.8_p20171015.tar.gz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
 _md5_=abe2b88db6ef41be19b6f70fc3252343

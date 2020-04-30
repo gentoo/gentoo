@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) virtual/pkgconfig
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) virtual/pkgconfig
 DESCRIPTION=A security-aware DNS server
 EAPI=6
 HOMEPAGE=http://www.maradns.org/
 IUSE=authonly examples ipv6 +python_single_target_python2_7
 KEYWORDS=~amd64 ~mips ~ppc ~x86
 LICENSE=BSD-2 GPL-2
-RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) dev-lang/perl
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) dev-lang/perl
 REQUIRED_USE=^^ ( python_single_target_python2_7 )
 SLOT=0
 SRC_URI=http://www.maradns.org/download/2.0/2.0.14/maradns-2.0.14.tar.bz2
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=f6a5a7d1eef29e5dbe866ce66256565f

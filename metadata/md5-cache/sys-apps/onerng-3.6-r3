@@ -7,9 +7,9 @@ HOMEPAGE=https://www.onerng.info/
 IUSE=python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( LGPL-2.1 LGPL-3 )
-RDEPEND=virtual/udev python_single_target_python3_6? ( >=dev-lang/python-3.6.10:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( >=dev-lang/python-3.7.7-r1:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( >=dev-lang/python-3.8.2:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) app-crypt/gnupg python_single_target_python3_6? ( dev-python/python-gnupg[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/python-gnupg[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/python-gnupg[python_targets_python3_8(-)] ) sys-apps/rng-tools sys-process/at
+RDEPEND=virtual/udev python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) app-crypt/gnupg python_single_target_python3_6? ( dev-python/python-gnupg[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/python-gnupg[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/python-gnupg[python_targets_python3_8(-)] ) sys-apps/rng-tools sys-process/at
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=https://github.com/OneRNG/onerng.github.io/raw/master/sw/onerng_3.6.orig.tar.gz -> onerng-3.6.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=b50c8a7f543f84d50f8a35ebb071594d

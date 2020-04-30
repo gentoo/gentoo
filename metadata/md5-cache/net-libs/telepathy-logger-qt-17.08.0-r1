@@ -1,4 +1,4 @@
-BDEPEND=|| ( >=dev-lang/python-3.8.2:3.8 >=dev-lang/python-3.7.7-r1:3.7 >=dev-lang/python-3.6.10:3.6 ) dev-util/ninja dev-util/cmake >=kde-frameworks/extra-cmake-modules-5.64.0:5
+BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) dev-util/ninja dev-util/cmake >=kde-frameworks/extra-cmake-modules-5.64.0:5
 DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
 DEPEND=dev-libs/dbus-glib dev-libs/glib:2 dev-libs/libxml2 >=dev-qt/qtdbus-5.12.3:5 net-im/telepathy-logger net-libs/telepathy-glib net-libs/telepathy-qt[qt5(+)] sys-apps/dbus dev-util/desktop-file-utils x11-misc/shared-mime-info dev-qt/qtcore:5
 DESCRIPTION=Qt bindings for the Telepathy logger
@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-libs/dbus-glib dev-libs/glib:2 dev-libs/libxml2 >=dev-qt/qtdbus-5.12.3:5 net-im/telepathy-logger net-libs/telepathy-glib net-libs/telepathy-qt[qt5(+)] sys-apps/dbus || ( kde-frameworks/breeze-icons:* kde-frameworks/oxygen-icons:* ) >=kde-frameworks/kf-env-4 dev-qt/qtcore:5
 SLOT=5
 SRC_URI=mirror://kde/stable/telepathy-logger-qt/17.08/src/telepathy-logger-qt-17.08.0.tar.xz https://dev.gentoo.org/~asturm/distfiles/telepathy-logger-qt-17.08.0-python3.patch.xz
-_eclasses_=cmake	19b0421555865baefd505831dd4303e3	ecm	e341cb3583b4219b5c207e24915b0264	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake	19b0421555865baefd505831dd4303e3	ecm	e341cb3583b4219b5c207e24915b0264	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=5334cf3293f256ea75ea16087cab42a8

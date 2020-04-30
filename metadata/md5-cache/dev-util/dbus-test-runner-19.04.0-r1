@@ -1,16 +1,16 @@
 BDEPEND=dev-util/gdbus-codegen dev-util/intltool
 DEFINED_PHASES=configure install prepare setup
-DEPEND=python_single_target_python3_6? ( >=dev-lang/python-3.6.10:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) dev-libs/dbus-glib dev-libs/glib:2 test? ( python_single_target_python3_6? ( dev-python/dbusmock[python_targets_python3_6(-)] ) )
+DEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) dev-libs/dbus-glib dev-libs/glib:2 test? ( python_single_target_python3_6? ( dev-python/dbusmock[python_targets_python3_6(-)] ) )
 DESCRIPTION=Run executables under a new DBus session for testing
 EAPI=7
 HOMEPAGE=https://launchpad.net/dbus-test-runner
 IUSE=test +python_single_target_python3_6
 KEYWORDS=~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86
 LICENSE=GPL-3
-RDEPEND=python_single_target_python3_6? ( >=dev-lang/python-3.6.10:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) dev-libs/dbus-glib dev-libs/glib:2 python_single_target_python3_6? ( dev-python/dbusmock[python_targets_python3_6(-)] )
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) dev-libs/dbus-glib dev-libs/glib:2 python_single_target_python3_6? ( dev-python/dbusmock[python_targets_python3_6(-)] )
 REQUIRED_USE=^^ ( python_single_target_python3_6 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://launchpad.net/dbus-test-runner/19.04/19.04.0/+download/dbus-test-runner-19.04.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ad1142fbdc56eada983eb474cd7efd72

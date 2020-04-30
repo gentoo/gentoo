@@ -542,7 +542,7 @@ app-admin/rex 1.3.3 1.4.0-r1 1.4.1 1.5.0 1.6.0 1.9.0 9999: (R)?ex, the friendly 
 app-admin/rsyslog 8.1910.0-r1 8.1911.0-r1 8.2001.0 8.2002.0 8.2004.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2018.3.4 2019.2.4 3000.2-r1: Salt is a remote execution and configuration manager
+app-admin/salt 2018.3.4 2019.2.4 3000.2-r2: Salt is a remote execution and configuration manager
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.2.1 4.2.2 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
@@ -9770,7 +9770,7 @@ dev-ruby/pygments_rb 1.2.1-r1: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.14 1.4.16-r1: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.12 2.0.8 2.0.8-r1 2.0.9 2.1.1 2.1.1-r1 2.2.2: A modular Ruby webserver interface
-dev-ruby/rack-attack 5.4.2 6.2.0 6.2.1 6.2.2: A DSL for blocking & throttling abusive clients
+dev-ruby/rack-attack 5.4.2 6.2.2: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.9.0 1.10.0 1.11.0 1.11.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
@@ -9785,7 +9785,7 @@ dev-ruby/rails-html-sanitizer 1.2.0 1.3.0 1.3.0-r1: Sanitize HTML fragments in R
 dev-ruby/railties 4.2.11.1 5.2.4.2 6.0.2.2: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1: Make-like scripting in Ruby
-dev-ruby/rake-compiler 1.0.7 1.0.8 1.0.9 1.1.0: Provide a standard and simplified way to build and package Ruby extensions
+dev-ruby/rake-compiler 1.0.7 1.1.0: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.4.3: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rash_alt 0.4.7 0.4.8: Rash alt version for Hashie's own Rash
@@ -9971,7 +9971,7 @@ dev-ruby/sshkey 1.9.0 2.0.0: SSH private and public key generator in pure Ruby
 dev-ruby/sshkit 1.20.0 1.21.0: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
-dev-ruby/stomp 1.4.4 1.4.8 1.4.9: Ruby bindings for the stomp messaging protocol
+dev-ruby/stomp 1.4.4 1.4.9: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.8.5: Extensions for Ruby's String class
 dev-ruby/strptime 0.2.3: A fast strptime/strftime engine which uses VM
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
@@ -10384,7 +10384,7 @@ dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debu
 dev-util/dwarves 1.12 1.13 1.15 1.16 1.16-r1 1.17 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 1.1.0-r1 1.2.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
-dev-util/edi 0.7.1: An EFL-based IDE
+dev-util/edi 0.8.0: An EFL-based IDE
 dev-util/editorconfig-geany 0.1_p20160725 0.2: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
 dev-util/elfkickers 3.1a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
@@ -14590,7 +14590,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 13.13.0 14.0.0 14.1.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 13.13.0 13.14.0 14.0.0 14.1.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -17478,7 +17478,7 @@ sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
-sys-process/evisum 0.3.0 0.3.2: System and process monitor written with EFL
+sys-process/evisum 0.3.0 0.3.2 0.4.0: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 2.11.1 3.1.0 3.1.1 3.1.2 3.1.3-r1 3.1.4.1: CLI curses based monitoring tool

@@ -1,14 +1,14 @@
 DEFINED_PHASES=install prepare setup
-DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7[ssl] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) app-text/docbook-xml-dtd:4.1.2 app-text/xmlto socks5? ( python_single_target_python2_7? ( dev-python/PySocks[python_targets_python2_7(-)] ) ) virtual/pkgconfig
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) app-text/docbook-xml-dtd:4.1.2 app-text/xmlto socks5? ( python_single_target_python2_7? ( dev-python/PySocks[python_targets_python2_7(-)] ) ) virtual/pkgconfig
 DESCRIPTION=Submission tools for IRC notifications
 EAPI=6
 HOMEPAGE=http://www.catb.org/esr/irker/
 IUSE=socks5 +python_single_target_python2_7
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=BSD
-RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7[ssl] >=dev-lang/python-exec-2:=[python_targets_python2_7] )
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] >=dev-lang/python-exec-2:=[python_targets_python2_7] )
 REQUIRED_USE=^^ ( python_single_target_python2_7 )
 SLOT=0
 SRC_URI=http://www.catb.org/esr/irker/irker-2.18.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=371d74665d97c94bf815cab2a957e89d

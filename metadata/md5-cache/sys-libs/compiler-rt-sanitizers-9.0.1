@@ -1,4 +1,4 @@
-BDEPEND=clang? ( sys-devel/clang ) elibc_glibc? ( net-libs/libtirpc ) test? ( !<sys-apps/sandbox-2.13 || ( ( >=dev-lang/python-3.7.7-r1:3.7 >=dev-python/lit-5[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( >=dev-lang/python-3.6.10:3.6 >=dev-python/lit-5[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) =sys-devel/clang-9.0.1*:9 sys-libs/compiler-rt:9.0.1 ) || ( >=dev-lang/python-3.7.7-r1:3.7 >=dev-lang/python-3.6.10:3.6 ) dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=clang? ( sys-devel/clang ) elibc_glibc? ( net-libs/libtirpc ) test? ( !<sys-apps/sandbox-2.13 || ( ( dev-lang/python:3.7 >=dev-python/lit-5[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 >=dev-python/lit-5[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) =sys-devel/clang-9.0.1*:9 sys-libs/compiler-rt:9.0.1 ) || ( dev-lang/python:3.7 dev-lang/python:3.6 ) dev-util/ninja >=dev-util/cmake-3.9.6
 DEFINED_PHASES=compile configure install prepare pretend setup test unpack
 DEPEND=>=sys-devel/llvm-6
 DESCRIPTION=Compiler runtime libraries for clang (sanitizers & xray)
@@ -11,5 +11,5 @@ REQUIRED_USE=libfuzzer? ( || ( sanitize xray ) )
 RESTRICT=!test? ( test ) !clang? ( test )
 SLOT=9.0.1
 SRC_URI=https://github.com/llvm/llvm-project/archive/llvmorg-9.0.1.tar.gz
-_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	llvm	11596869538b5e2be887810f05390a21	llvm.org	4e92588f6138c82063258a2d303eaed8	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	llvm	11596869538b5e2be887810f05390a21	llvm.org	4e92588f6138c82063258a2d303eaed8	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=1b1e62d56a1da8942cf1801ee52ff900

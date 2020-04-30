@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install setup
-DEPEND=|| ( >=dev-lang/python-2.7.17-r1:2.7 )
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 )
 DESCRIPTION=An ambiguously named music replacement set for OpenTTD
 EAPI=6
 HOMEPAGE=http://bundles.openttdcoop.org/openmsx/
@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~arm ~ppc64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://bundles.openttdcoop.org/openmsx/releases/0.3.1/openmsx-0.3.1-source.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ff3de9b72cbb33aa46462278011ab893

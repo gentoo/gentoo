@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure prepare
-DEPEND=dev-lang/perl =sci-libs/htslib-1.5*:= sys-libs/zlib python_targets_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEPEND=dev-lang/perl =sci-libs/htslib-1.5*:= sys-libs/zlib python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Utilities for variant calling and manipulating VCF and BCF files
 EAPI=6
 HOMEPAGE=http://www.htslib.org
 IUSE=python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=dev-lang/perl =sci-libs/htslib-1.5*:= sys-libs/zlib python_targets_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=dev-lang/perl =sci-libs/htslib-1.5*:= sys-libs/zlib python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/samtools/bcftools/releases/download/1.5/bcftools-1.5.tar.bz2
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e289371e3fec376baf8fe36c652ca521

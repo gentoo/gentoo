@@ -1,6 +1,6 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-libs/glib:2 dev-libs/json-c:= gegl? ( media-libs/babl >=media-libs/gegl-0.4.14:0.4[introspection?] ) introspection? ( >=dev-libs/gobject-introspection-1.32 ) openmp? ( >sys-devel/gcc-5:*[openmp] ) nls? ( sys-devel/gettext ) || ( >=dev-lang/python-3.8.2:3.8 >=dev-lang/python-3.7.7-r1:3.7 >=dev-lang/python-3.6.10:3.6 ) nls? ( dev-util/intltool )
+DEPEND=dev-libs/glib:2 dev-libs/json-c:= gegl? ( media-libs/babl >=media-libs/gegl-0.4.14:0.4[introspection?] ) introspection? ( >=dev-libs/gobject-introspection-1.32 ) openmp? ( >sys-devel/gcc-5:*[openmp] ) nls? ( sys-devel/gettext ) || ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) nls? ( dev-util/intltool )
 DESCRIPTION=Library for making brushstrokes
 EAPI=7
 HOMEPAGE=https://github.com/mypaint/libmypaint
@@ -10,5 +10,5 @@ LICENSE=ISC
 RDEPEND=dev-libs/glib:2 dev-libs/json-c:= gegl? ( media-libs/babl >=media-libs/gegl-0.4.14:0.4[introspection?] ) introspection? ( >=dev-libs/gobject-introspection-1.32 ) openmp? ( >sys-devel/gcc-5:*[openmp] ) nls? ( sys-devel/gettext ) !<media-gfx/mypaint-1.2.1
 SLOT=0/1.4
 SRC_URI=https://github.com/mypaint/libmypaint/releases/download/v1.4.0/libmypaint-1.4.0.tar.xz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=05e6b04267d0102647ec8b006d097ea8

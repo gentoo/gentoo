@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install postinst postrm
-DEPEND=python_targets_python3_6? ( >=dev-lang/python-3.6.10:3.6 ) python_targets_python3_7? ( >=dev-lang/python-3.7.7-r1:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-texlive/texlive-latexextra-2016 dev-tex/pgf virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-texlive/texlive-latexextra-2016 dev-tex/pgf virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=Fast Access to Python from within LaTeX
 EAPI=7
 HOMEPAGE=https://github.com/gpoore/pythontex
 IUSE=doc highlighting python_targets_python3_6 python_targets_python3_7
 KEYWORDS=~amd64 ~x86
 LICENSE=LPPL-1.3 BSD
-RDEPEND=python_targets_python3_6? ( >=dev-lang/python-3.6.10:3.6 ) python_targets_python3_7? ( >=dev-lang/python-3.7.7-r1:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-texlive/texlive-latexextra-2016 dev-tex/pgf dev-python/pygments[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] virtual/latex-base
+RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-texlive/texlive-latexextra-2016 dev-tex/pgf dev-python/pygments[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] virtual/latex-base
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/gpoore/pythontex/archive/v0.17.tar.gz -> pythontex-0.17.tar.gz
-_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f3b68322a1db332487abd1b8f82bccec

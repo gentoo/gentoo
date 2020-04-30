@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install setup
-DEPEND=>=dev-libs/dbus-glib-0.61 dev-libs/libxml2 >=dev-libs/glib-2.28:2 >=sys-apps/dbus-1.1.0 >=net-libs/telepathy-glib-0.17.1 >=net-dns/avahi-0.6.22[dbus] net-libs/libsoup:2.4 sys-apps/util-linux dev-db/sqlite:3 gnutls? ( >=net-libs/gnutls-2.10.2 ) !gnutls? ( >=dev-libs/openssl-0.9.8g:0[-bindist] ) || ( >=dev-lang/python-2.7.17-r1:2.7 ) dev-libs/libxslt virtual/pkgconfig test? ( >=dev-libs/check-0.9.4 net-libs/libgsasl || ( ( >=dev-lang/python-2.7.17-r1:2.7 dev-python/twisted[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) )
+DEPEND=>=dev-libs/dbus-glib-0.61 dev-libs/libxml2 >=dev-libs/glib-2.28:2 >=sys-apps/dbus-1.1.0 >=net-libs/telepathy-glib-0.17.1 >=net-dns/avahi-0.6.22[dbus] net-libs/libsoup:2.4 sys-apps/util-linux dev-db/sqlite:3 gnutls? ( >=net-libs/gnutls-2.10.2 ) !gnutls? ( >=dev-libs/openssl-0.9.8g:0[-bindist] ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-libs/libxslt virtual/pkgconfig test? ( >=dev-libs/check-0.9.4 net-libs/libgsasl || ( ( >=dev-lang/python-2.7.5-r2:2.7 dev-python/twisted[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) )
 DESCRIPTION=A link-local XMPP connection manager for Telepathy
 EAPI=6
 HOMEPAGE=https://telepathy.freedesktop.org/
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/dbus-glib-0.61 dev-libs/libxml2 >=dev-libs/glib-2.28:2 >=sys-
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://telepathy.freedesktop.org/releases/telepathy-salut/telepathy-salut-0.8.1.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=73a6f40a9c5c451b2c824ea67176edd1

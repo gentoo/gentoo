@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure postinst postrm preinst prepare setup
-DEPEND=dev-libs/gobject-introspection:= dev-libs/glib:2 >=media-libs/gstreamer-1.8.2:1.0[introspection] >=media-libs/gst-plugins-base-1.8.2:1.0[introspection] || ( >=dev-lang/python-3.6.10:3.6 ) >=dev-util/meson-0.28.0 virtual/pkgconfig dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=dev-libs/gobject-introspection:= dev-libs/glib:2 >=media-libs/gstreamer-1.8.2:1.0[introspection] >=media-libs/gst-plugins-base-1.8.2:1.0[introspection] || ( dev-lang/python:3.6 ) >=dev-util/meson-0.28.0 virtual/pkgconfig dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=GStreamer Transcoding API
 EAPI=6
 HOMEPAGE=https://github.com/pitivi/gst-transcoder
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/gobject-introspection:= dev-libs/glib:2 >=media-libs/gstreamer-1.8.2:1.0[introspection] >=media-libs/gst-plugins-base-1.8.2:1.0[introspection]
 SLOT=0
 SRC_URI=https://github.com/pitivi/gst-transcoder/archive/1.8.2.tar.gz -> gst-transcoder-1.8.2.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=1c4cb68be4c64350f66787cfd884c1d7

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
-DEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 dev-libs/glib:2 >=media-libs/libsndfile-1.0.17 >=media-libs/zita-convolver-3:= media-libs/zita-resampler >=net-misc/curl-7.26.0 >=sci-libs/fftw-3.1.2:3.0= x11-libs/gtk+:2 lv2? ( media-libs/lv2 ) standalone? ( dev-libs/boost:= media-libs/liblrdf media-libs/lilv virtual/jack bluetooth? ( net-wireless/bluez ) zeroconf? ( net-dns/avahi ) ) || ( >=dev-lang/python-3.8.2:3.8[threads(+)] >=dev-lang/python-3.7.7-r1:3.7[threads(+)] >=dev-lang/python-3.6.10:3.6[threads(+)] ) virtual/pkgconfig nls? ( dev-util/intltool ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 dev-libs/glib:2 >=media-libs/libsndfile-1.0.17 >=media-libs/zita-convolver-3:= media-libs/zita-resampler >=net-misc/curl-7.26.0 >=sci-libs/fftw-3.1.2:3.0= x11-libs/gtk+:2 lv2? ( media-libs/lv2 ) standalone? ( dev-libs/boost:= media-libs/liblrdf media-libs/lilv virtual/jack bluetooth? ( net-wireless/bluez ) zeroconf? ( net-dns/avahi ) ) || ( dev-lang/python:3.8[threads(+)] dev-lang/python:3.7[threads(+)] dev-lang/python:3.6[threads(+)] ) virtual/pkgconfig nls? ( dev-util/intltool ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Virtual guitar amplifier for Linux
 EAPI=6
 HOMEPAGE=http://guitarix.org/
@@ -10,5 +10,5 @@ RDEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 dev-libs/glib:2 >=med
 REQUIRED_USE=|| ( lv2 standalone )
 SLOT=0
 SRC_URI=mirror://sourceforge/guitarix/guitarix/guitarix2-0.39.0.tar.xz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	waf-utils	cf9742c01975dc707eb982114a9d70fa	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	waf-utils	cf9742c01975dc707eb982114a9d70fa	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=0e36c72c94a0982c98f08951ff581dbc

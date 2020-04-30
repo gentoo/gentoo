@@ -1,4 +1,4 @@
-BDEPEND=|| ( >=dev-lang/python-3.8.2:3.8 >=dev-lang/python-3.7.7-r1:3.7 >=dev-lang/python-3.6.10:3.6 ) >=dev-libs/protobuf-3.0.0 dev-util/gyp dev-util/ninja virtual/pkgconfig emacs? ( app-editors/emacs:* ) fcitx4? ( sys-devel/gettext )
+BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) >=dev-libs/protobuf-3.0.0 dev-util/gyp dev-util/ninja virtual/pkgconfig emacs? ( app-editors/emacs:* ) fcitx4? ( sys-devel/gettext )
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
 DEPEND=>=dev-libs/protobuf-3.0.0:= emacs? ( app-editors/emacs:* ) fcitx4? ( app-i18n/fcitx:4 virtual/libintl ) gui? ( app-i18n/zinnia dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 handwriting-tegaki? ( app-i18n/tegaki-zinnia-japanese ) handwriting-tomoe? ( app-i18n/zinnia-tomoe ) ) ibus? ( >=app-i18n/ibus-1.4.1 dev-libs/glib:2 x11-libs/libxcb ) renderer? ( dev-libs/glib:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/pango ) test? ( >=dev-cpp/gtest-1.8.0 dev-libs/jsoncpp )
 DESCRIPTION=Mozc - Japanese input method editor
@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/google/mozc/archive/afb03ddfe72dde4cf2409863a3bfea160f7a66d8.tar.gz -> mozc-2.23.2815.102.tar.gz https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/e5b3425575734c323e1d947009dd74709437b684.tar.gz -> japanese-usage-dictionary-20120416091336.tar.gz fcitx4? ( https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch )
-_eclasses_=elisp-common	504a3383c45504fde86b00426619a709	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=elisp-common	504a3383c45504fde86b00426619a709	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d940579dca0d432e40a83adcbf2e6ce8

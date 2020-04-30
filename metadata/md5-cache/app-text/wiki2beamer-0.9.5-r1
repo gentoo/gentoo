@@ -1,14 +1,14 @@
 DEFINED_PHASES=install setup
-DEPEND=python_single_target_python3_6? ( >=dev-lang/python-3.6.10:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) app-arch/unzip
+DEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) app-arch/unzip
 DESCRIPTION=Tool to produce LaTeX Beamer code from wiki-like input
 EAPI=5
 HOMEPAGE=http://wiki2beamer.sourceforge.net/
 IUSE=+examples +python_single_target_python3_6
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( GPL-2 GPL-3 ) FDL-1.3
-RDEPEND=python_single_target_python3_6? ( >=dev-lang/python-3.6.10:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] )
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] )
 REQUIRED_USE=^^ ( python_single_target_python3_6 )
 SLOT=0
 SRC_URI=mirror://sourceforge/wiki2beamer/wiki2beamer-0.9.5.zip
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=1cca9c94918c58d95a03033cb015d049

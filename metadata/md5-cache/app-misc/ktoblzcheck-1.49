@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install setup
-DEPEND=app-text/recode sys-apps/grep sys-apps/sed virtual/awk || ( net-misc/wget www-client/lynx ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) ) sys-devel/libtool
+DEPEND=app-text/recode sys-apps/grep sys-apps/sed virtual/awk || ( net-misc/wget www-client/lynx ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) ) sys-devel/libtool
 DESCRIPTION=Library to check account numbers and bank codes of German banks
 EAPI=7
 HOMEPAGE=http://ktoblzcheck.sourceforge.net/
 IUSE=python +python_single_target_python2_7
 KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86
 LICENSE=LGPL-2.1
-RDEPEND=app-text/recode sys-apps/grep sys-apps/sed virtual/awk || ( net-misc/wget www-client/lynx ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
+RDEPEND=app-text/recode sys-apps/grep sys-apps/sed virtual/awk || ( net-misc/wget www-client/lynx ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/ktoblzcheck/ktoblzcheck-1.49.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e2438d1a8b5cc5dcec3c96d38cd26081

@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare setup unpack
-DEPEND=dev-libs/boost:= sci-libs/gsl:= sci-physics/fastjet[plugins] sci-physics/hepmc sci-physics/yoda:=[python] python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) ) doc? ( app-doc/doxygen[dot] dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsextra dev-texlive/texlive-fontutils dev-texlive/texlive-latex dev-texlive/texlive-latexextra ) python? ( python_single_target_python2_7? ( dev-python/cython[python_targets_python2_7(-)] ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/boost:= sci-libs/gsl:= sci-physics/fastjet[plugins] sci-physics/hepmc sci-physics/yoda:=[python] python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) ) doc? ( app-doc/doxygen[dot] dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsextra dev-texlive/texlive-fontutils dev-texlive/texlive-latex dev-texlive/texlive-latexextra ) python? ( python_single_target_python2_7? ( dev-python/cython[python_targets_python2_7(-)] ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Toolkit for validation of Monte Carlo HEP event generators
 EAPI=6
 HOMEPAGE=http://rivet.hepforge.org/
 IUSE=doc python static-libs +python_single_target_python2_7
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=dev-libs/boost:= sci-libs/gsl:= sci-physics/fastjet[plugins] sci-physics/hepmc sci-physics/yoda:=[python] python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
+RDEPEND=dev-libs/boost:= sci-libs/gsl:= sci-physics/fastjet[plugins] sci-physics/hepmc sci-physics/yoda:=[python] python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 ) )
 SLOT=0
 SRC_URI=http://www.hepforge.org/archive/rivet/Rivet-2.6.0.tar.bz2 doc? ( https://rivet.hepforge.org/trac/export/8a05acecd26c18f368f4b748da2d5aa2db46be6c/doc/refs.bib )
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0073e79972c14c3934acbe9d2ab37df1

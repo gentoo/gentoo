@@ -1,4 +1,4 @@
-BDEPEND=|| ( ( >=dev-lang/python-3.7.7-r1:3.7 dev-libs/marisa[python,python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( >=dev-lang/python-3.6.10:3.6 dev-libs/marisa[python,python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) || ( dev-lang/vala:0.48 dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) dev-libs/gobject-introspection virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=|| ( ( dev-lang/python:3.7 dev-libs/marisa[python,python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-libs/marisa[python,python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) || ( dev-lang/vala:0.48 dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) dev-libs/gobject-introspection virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare setup
 DEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/libgee:0.8 dev-libs/marisa nls? ( virtual/libintl )
 DESCRIPTION=Japanese Kana Kanji conversion input method library
@@ -10,5 +10,5 @@ LICENSE=GPL-3+
 RDEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/libgee:0.8 dev-libs/marisa nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=https://github.com/ueno/libkkc/archive/b2e5a152980ee627c39ca8a49082e6df7694b8fc.tar.gz -> libkkc-0.3.6_pre20190809104047.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	5b72a65a36d681d65aef5f7b4b8b2cb6
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	5b72a65a36d681d65aef5f7b4b8b2cb6
 _md5_=ce59ae5d8726054b33c405612e5dff6e

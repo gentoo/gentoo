@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure prepare setup
-DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) app-i18n/pyzy dev-db/sqlite:3 python_single_target_python2_7? ( app-i18n/ibus[python(+),python_targets_python2_7(-)] dev-python/pygobject:3[python_targets_python2_7(-)] ) boost? ( dev-libs/boost ) lua? ( =dev-lang/lua-5.1*:= ) nls? ( virtual/libintl ) dev-util/intltool sys-devel/autoconf-archive virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) app-i18n/pyzy dev-db/sqlite:3 python_single_target_python2_7? ( app-i18n/ibus[python(+),python_targets_python2_7(-)] dev-python/pygobject:3[python_targets_python2_7(-)] ) boost? ( dev-libs/boost ) lua? ( =dev-lang/lua-5.1*:= ) nls? ( virtual/libintl ) dev-util/intltool sys-devel/autoconf-archive virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Chinese Pinyin and Bopomofo engines for IBus
 EAPI=6
 HOMEPAGE=https://github.com/ibus/ibus/wiki
 IUSE=boost lua nls +python_single_target_python2_7
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) app-i18n/pyzy dev-db/sqlite:3 python_single_target_python2_7? ( app-i18n/ibus[python(+),python_targets_python2_7(-)] dev-python/pygobject:3[python_targets_python2_7(-)] ) boost? ( dev-libs/boost ) lua? ( =dev-lang/lua-5.1*:= ) nls? ( virtual/libintl )
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) app-i18n/pyzy dev-db/sqlite:3 python_single_target_python2_7? ( app-i18n/ibus[python(+),python_targets_python2_7(-)] dev-python/pygobject:3[python_targets_python2_7(-)] ) boost? ( dev-libs/boost ) lua? ( =dev-lang/lua-5.1*:= ) nls? ( virtual/libintl )
 REQUIRED_USE=^^ ( python_single_target_python2_7 )
 SLOT=0
 SRC_URI=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/ibus-pinyin-1.5.0.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=080c2679199d694c89faa7f1e56ff991

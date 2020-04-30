@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare setup
-DEPEND=>=app-text/djvu-3.5.21:= >=app-text/poppler-0.16.7:= dev-libs/libxml2:= dev-libs/libxslt:= graphicsmagick? ( media-gfx/graphicsmagick:= ) dev-cpp/pstreams virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( || ( >=dev-lang/python-2.7.17-r1:2.7 ) || ( ( >=dev-lang/python-2.7.17-r1:2.7 dev-python/nose[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) )
+DEPEND=>=app-text/djvu-3.5.21:= >=app-text/poppler-0.16.7:= dev-libs/libxml2:= dev-libs/libxslt:= graphicsmagick? ( media-gfx/graphicsmagick:= ) dev-cpp/pstreams virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) || ( ( >=dev-lang/python-2.7.5-r2:2.7 dev-python/nose[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) )
 DESCRIPTION=A tool to create DjVu files from PDF files
 EAPI=6
 HOMEPAGE=http://jwilk.net/software/pdf2djvu
@@ -11,5 +11,5 @@ REQUIRED_USE=test? ( graphicsmagick )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/jwilk/pdf2djvu/releases/download/0.9.8/pdf2djvu-0.9.8.tar.xz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=5b329b9c5ad3e4de4d95bb32a11410ae

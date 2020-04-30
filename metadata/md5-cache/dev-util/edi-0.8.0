@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
+DEPEND=|| ( dev-libs/efl[X] dev-libs/efl[wayland] ) >=dev-libs/efl-1.22.0[eet] clang? ( sys-devel/clang:= ) dev-libs/check dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=An EFL-based IDE
+EAPI=7
+HOMEPAGE=http://edi-ide.com/ https://www.enlightenment.org/about-edi https://phab.enlightenment.org/w/projects/edi/ https://github.com/Enlightenment/edi
+IUSE=clang
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 GPL-3 LGPL-2.1-with-linking-exception
+RDEPEND=|| ( dev-libs/efl[X] dev-libs/efl[wayland] ) >=dev-libs/efl-1.22.0[eet] clang? ( sys-devel/clang:= )
+SLOT=0
+SRC_URI=https://github.com/Enlightenment/edi/archive/v0.8.0.tar.gz -> edi-0.8.0.tar.gz
+_eclasses_=llvm	11596869538b5e2be887810f05390a21	meson	ec6bf50968c54cd38e70bf708c92c299	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=be4ca44a6345b5a946e4e30bb2109925

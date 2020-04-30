@@ -1,14 +1,14 @@
 DEFINED_PHASES=install setup
-DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
 DESCRIPTION=Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 EAPI=7
 HOMEPAGE=https://jak-linux.org/projects/dir2ogg/
 IUSE=aac flac mac mp3 musepack wavpack wma +python_single_target_python2_7
 KEYWORDS=amd64 ~ppc sparc x86
 LICENSE=GPL-2
-RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.17-r1:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python2_7? ( >=media-libs/mutagen-1.11[python_targets_python2_7(-)] ) media-sound/vorbis-tools[ogg123] aac? ( || ( media-libs/faad2 media-video/mplayer ) ) flac? ( || ( media-libs/flac media-video/mplayer ) ) mac? ( || ( media-sound/mac media-video/mplayer ) ) mp3? ( || ( media-sound/mpg123 media-sound/lame media-video/mplayer media-sound/mpg321 ) ) musepack? ( || ( >=media-sound/musepack-tools-444 media-video/mplayer ) ) wavpack? ( || ( media-sound/wavpack media-video/mplayer ) ) wma? ( media-video/mplayer )
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python2_7? ( >=media-libs/mutagen-1.11[python_targets_python2_7(-)] ) media-sound/vorbis-tools[ogg123] aac? ( || ( media-libs/faad2 media-video/mplayer ) ) flac? ( || ( media-libs/flac media-video/mplayer ) ) mac? ( || ( media-sound/mac media-video/mplayer ) ) mp3? ( || ( media-sound/mpg123 media-sound/lame media-video/mplayer media-sound/mpg321 ) ) musepack? ( || ( >=media-sound/musepack-tools-444 media-video/mplayer ) ) wavpack? ( || ( media-sound/wavpack media-video/mplayer ) ) wma? ( media-video/mplayer )
 REQUIRED_USE=^^ ( python_single_target_python2_7 )
 SLOT=0
 SRC_URI=https://jak-linux.org/projects/dir2ogg/0.12/dir2ogg-0.12.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	727554821dab8292d3a8198893c2ef8b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8d206142274d6d25a49ea2920c428989
