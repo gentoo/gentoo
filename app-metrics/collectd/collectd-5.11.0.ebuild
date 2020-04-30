@@ -60,13 +60,13 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	ntpd numa nut olsrd onewire openldap openvpn oracle ovs_events
 	ovs_stats perl ping postgresql powerdns procevent processes protocols
 	python python redis routeros rrdcached rrdtool sensors serial sigrok
-	slurm smart snmp snmp_agent statsd swap sysevent syslog table tail
-	tail_csv target_notification target_replace target_scale target_set
-	tcpconns teamspeak2 ted thermal threshold turbostat ubi unixsock
-	uptime users uuid varnish virt vmem vserver wireless write_graphite
-	write_http write_influxdb_udp write_kafka write_log write_mongodb
-	write_prometheus write_redis write_sensu write_stackdriver
-	write_syslog write_tsdb xencpu zfs_arc zookeeper"
+	slurm smart snmp snmp_agent statsd swap synproxy sysevent syslog
+	table tail tail_csv target_notification target_replace target_scale
+	target_set tcpconns teamspeak2 ted thermal threshold turbostat ubi
+	unixsock uptime users uuid varnish virt vmem vserver wireless
+	write_graphite write_http write_influxdb_udp write_kafka write_log
+	write_mongodb write_prometheus write_redis write_sensu
+	write_stackdriver write_syslog write_tsdb xencpu zfs_arc zookeeper"
 
 COLLECTD_DISABLED_PLUGINS="${COLLECTD_IMPOSSIBLE_PLUGINS}"
 
