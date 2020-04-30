@@ -37,6 +37,7 @@ IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux 
 # netapp:         Requires libnetapp (http://communities.netapp.com/docs/DOC-1110)
 # pf:             Requires BSD packet filter
 # pinba:          Requires MySQL Pinba engine (http://pinba.org/)
+# redfish:        Requires libredfish
 # tape:           Requires libkstat (Solaris only)
 # tokyotyrant:    Requires tokyotyrant
 # write_riemann:  Requires riemann-c-client
@@ -44,7 +45,7 @@ IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux 
 # zone:           Solaris only...
 COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer
 	dpdkevents dpdkstat dpdk_telemetry grpc intel_pmu intel_rdt lpar
-	mic netapp pf pinba tape tokyotyrant write_riemann xmms zone"
+	mic netapp pf pinba redfish tape tokyotyrant write_riemann xmms zone"
 
 # Plugins that have been (compile) tested and can be enabled via COLLECTD_PLUGINS
 COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
@@ -58,8 +59,8 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	network network nfs nginx notify_desktop notify_email notify_nagios
 	ntpd numa nut olsrd onewire openldap openvpn oracle ovs_events
 	ovs_stats perl ping postgresql powerdns processes protocols python
-	python redis routeros rrdcached rrdtool sensors serial sigrok smart
-	snmp snmp_agent statsd swap sysevent syslog table tail tail_csv
+	python redis routeros rrdcached rrdtool sensors serial sigrok slurm
+	smart snmp snmp_agent statsd swap sysevent syslog table tail tail_csv
 	target_notification target_replace target_scale target_set tcpconns
 	teamspeak2 ted thermal threshold turbostat unixsock
 	uptime users uuid varnish virt vmem vserver wireless write_graphite
@@ -124,7 +125,7 @@ COMMON_DEPEND="
 	collectd_plugins_rrdtool?		( net-analyzer/rrdtool:= )
 	collectd_plugins_sensors?		( sys-apps/lm-sensors:= )
 	collectd_plugins_sigrok?		( <sci-libs/libsigrok-0.4:= dev-libs/glib:2 )
-	collectd_plugins_smart?			( dev-libs/libatasmart )
+	collectd_plugins_slurm?			( sys-cluster/slurm )
 	collectd_plugins_snmp?			( net-analyzer/net-snmp )
 	collectd_plugins_snmp_agent?		( net-analyzer/net-snmp )
 	collectd_plugins_sysevent?		( dev-libs/yajl:= )
