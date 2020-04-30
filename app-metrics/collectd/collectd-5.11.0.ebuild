@@ -65,8 +65,8 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	teamspeak2 ted thermal threshold turbostat ubi unixsock
 	uptime users uuid varnish virt vmem vserver wireless write_graphite
 	write_http write_influxdb_udp write_kafka write_log write_mongodb
-	write_prometheus write_redis write_sensu write_tsdb xencpu zfs_arc
-	zookeeper"
+	write_prometheus write_redis write_sensu write_syslog write_tsdb
+	xencpu zfs_arc zookeeper"
 
 COLLECTD_DISABLED_PLUGINS="${COLLECTD_IMPOSSIBLE_PLUGINS}"
 
