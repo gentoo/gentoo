@@ -75,7 +75,6 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_KDSoapWSDiscoveryClient=OFF # disable bundled stuff
 		$(cmake_use_find_package activities KF5Activities)
 		$(cmake_use_find_package activities KF5ActivitiesStats)
 		$(cmake_use_find_package man Gperf)
@@ -87,6 +86,9 @@ src_configure() {
 		$(cmake_use_find_package sftp libssh)
 		$(cmake_use_find_package taglib Taglib)
 		$(cmake_use_find_package X X11)
+	)
+	use samba && mycmakeargs+=(
+		-DBUILD_KDSoapWSDiscoveryClient=OFF # disable bundled stuff
 	)
 
 	ecm_src_configure
