@@ -384,6 +384,8 @@ src_install() {
 
 	systemd_dounit *.service
 	dobin nvidia-sleep.sh
+	exeinto $(systemd_get_utildir)/system-sleep
+	doexe nvidia
 
 	if has_multilib_profile && use multilib; then
 		local OABI=${ABI}
