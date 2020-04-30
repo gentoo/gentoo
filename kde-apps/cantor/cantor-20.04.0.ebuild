@@ -97,7 +97,6 @@ src_configure() {
 	use julia && addpredict /proc/self/mem # bug 602894
 
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=ON
 		$(cmake_use_find_package analitza Analitza5)
 		$(cmake_use_find_package julia Julia)
 		$(cmake_use_find_package lua LuaJIT)

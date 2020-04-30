@@ -32,11 +32,22 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( $(python_gen_any_dep '
+	test? ( ${PYTHON_DEPS} $(python_gen_any_dep '
 		dev-python/pygobject:2[${PYTHON_USEDEP}]
 		dev-python/dbus-python[${PYTHON_USEDEP}]') )
 	vala? ( $(vala_depend) )
 "
+
+python_check_deps() {
+	if use test; then
+		has_version "dev-python/pygobject:2[${PYTHON_USEDEP}]" &&
+		has_version "dev-python/dbus-python[${PYTHON_USEDEP}]"
+	fi
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PV}-vala-0.42-compat.patch
