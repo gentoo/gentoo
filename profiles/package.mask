@@ -654,11 +654,6 @@ sys-block/kvpm
 # as a replacement with a sane upstream.
 app-antivirus/clamav-unofficial-sigs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-30)
-# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
-# Bugs #484270 and #705646, masked for removal in 30 days.
-dev-python/basemap
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2020-03-29)
 # Old releases gone from upstream, new releases use overly restrictive
 # license. For ancient scripts and symbols, use media-fonts/quivira instead.
