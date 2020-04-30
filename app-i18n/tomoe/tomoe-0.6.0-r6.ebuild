@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="hyperestraier mysql ruby ${USE_RUBY//ruby/ruby_targets_ruby} static-libs subversion"
+IUSE="hyperestraier mysql ruby ${USE_RUBY//ruby/ruby_targets_ruby} subversion"
 REQUIRED_USE="ruby? ( ^^ ( ${USE_RUBY//ruby/ruby_targets_ruby} ) )"
 
 RESTRICT="test"
@@ -65,7 +65,7 @@ src_configure() {
 
 	econf \
 		$(use_enable ruby dict-ruby) \
-		$(use_enable static-libs static) \
+		--disable-static \
 		--without-python \
 		$(use_with ruby ruby "$(type -P ${ruby})") \
 		--with-svn-include="${EPREFIX}"/usr/include \
