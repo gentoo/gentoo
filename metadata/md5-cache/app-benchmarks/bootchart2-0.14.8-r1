@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst prepare setup
+DESCRIPTION=Performance analysis and visualization of the system boot process
+EAPI=7
+HOMEPAGE=https://github.com/mmeeks/bootchart/
+IUSE=kernel_linux
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=!app-benchmarks/bootchart sys-apps/lsb-release
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/mmeeks/bootchart/archive/0.14.8.tar.gz -> bootchart2-0.14.8.tar.gz
+_eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=b701d8412b8ce30b2402000839ddacbc
