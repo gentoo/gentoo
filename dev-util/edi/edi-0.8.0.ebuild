@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit llvm meson xdg-utils
+inherit llvm meson xdg
 
 DESCRIPTION="An EFL-based IDE"
 HOMEPAGE="http://edi-ide.com/
@@ -12,7 +12,7 @@ HOMEPAGE="http://edi-ide.com/
 	https://github.com/Enlightenment/edi"
 SRC_URI="https://github.com/Enlightenment/edi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
+LICENSE="GPL-2 GPL-3 LGPL-2.1-with-linking-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="clang"
@@ -22,8 +22,7 @@ RDEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
 	clang? ( sys-devel/clang:= )"
 DEPEND="${RDEPEND}
 	dev-libs/check"
-BDEPEND=">=dev-util/meson-0.50.0
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
@@ -35,7 +34,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	xdg_environment_reset
 
 	# fix a QA issue with .desktop file, https://phab.enlightenment.org/T7368
 	sed -i '/Version=/d' data/desktop/edi.desktop* || die
