@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Ginkgo is a high-performance linear algebra library for manycore
+		systems, with a focus on sparse solution of linear systems. It is
+		implemented using modern C++, with GPU kernels implemented in CUDA.
+	</longdescription>
+	<use>
+	</use>
+	<upstream>
+		<remote-id type="github">ginkgo-project/ginkgo</remote-id>
+	</upstream>
+</pkgmetadata>
