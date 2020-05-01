@@ -1,0 +1,40 @@
+https://sourceware.org/PR25900
+https://sourceware.org/git/?p=binutils-gdb.git;a=patch;h=a2714d6cca1f1c7695f8dc84b49a4a51d1db86c8
+
+From a2714d6cca1f1c7695f8dc84b49a4a51d1db86c8 Mon Sep 17 00:00:00 2001
+From: Alan Modra <amodra@gmail.com>
+Date: Fri, 1 May 2020 15:32:00 +0930
+Subject: [PATCH] PR25900, RISC-V: null pointer dereference
+
+	PR 25900
+	* elfnn-riscv.c (_bfd_riscv_relax_section): Check root.type before
+	accessing root.u.def of symbols.  Also check root.u.def.section
+	is non-NULL.  Reverse tests so as to make the logic positive.
+
+--- a/bfd/elfnn-riscv.c
++++ b/bfd/elfnn-riscv.c
+@@ -4161,15 +4161,16 @@ _bfd_riscv_relax_section (bfd *abfd, asection *sec,
+ 	      symval = 0;
+ 	      sym_sec = bfd_und_section_ptr;
+ 	    }
+-	  else if (h->root.u.def.section->output_section == NULL
+-		   || (h->root.type != bfd_link_hash_defined
+-		       && h->root.type != bfd_link_hash_defweak))
+-	    continue;
+-	  else
++	  else if ((h->root.type == bfd_link_hash_defined
++		    || h->root.type == bfd_link_hash_defweak)
++		   && h->root.u.def.section != NULL
++		   && h->root.u.def.section->output_section != NULL)
+ 	    {
+ 	      symval = h->root.u.def.value;
+ 	      sym_sec = h->root.u.def.section;
+ 	    }
++	  else
++	    continue;
+ 
+ 	  if (h->type != STT_FUNC)
+ 	    reserve_size =
+-- 
+2.18.2
+

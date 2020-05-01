@@ -86,6 +86,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.33-gcc-10.patch
+	"${FILESDIR}"/${PN}-2.34-riscv-SEGV.patch
 )
 
 MY_BUILDDIR=${WORKDIR}/build
