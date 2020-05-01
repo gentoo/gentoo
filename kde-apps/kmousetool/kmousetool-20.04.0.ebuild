@@ -13,7 +13,7 @@ HOMEPAGE="https://kde.org/applications/utilities/org.kde.kmousetool"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 RDEPEND="

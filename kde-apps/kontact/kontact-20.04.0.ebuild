@@ -14,7 +14,7 @@ HOMEPAGE="https://kontact.kde.org/ https://kde.org/applications/office/org.kde.k
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="

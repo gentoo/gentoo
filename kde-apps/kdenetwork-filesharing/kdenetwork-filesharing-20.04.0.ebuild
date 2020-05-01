@@ -12,7 +12,7 @@ HOMEPAGE="https://kde.org/applications/system/org.kde.kdenetwork_filesharing"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="

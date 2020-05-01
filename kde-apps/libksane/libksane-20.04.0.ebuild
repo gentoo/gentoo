@@ -11,7 +11,7 @@ DESCRIPTION="SANE Library interface based on KDE Frameworks"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="kwallet"
 
 DEPEND="

@@ -15,7 +15,7 @@ HOMEPAGE="https://kde.org/applications/internet/org.kde.kget"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="bittorrent gpg kde mms sqlite"
 
 RDEPEND="

@@ -16,7 +16,7 @@ DESCRIPTION="Storage service for PIM data and libraries for PIM apps"
 HOMEPAGE="https://community.kde.org/KDE_PIM/akonadi"
 
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 LICENSE="LGPL-2.1+"
 IUSE="+kaccounts +mysql postgres sqlite tools xml"
 
