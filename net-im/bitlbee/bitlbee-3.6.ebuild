@@ -53,10 +53,11 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	xinetd? ( sys-apps/xinetd )"
 
-src_prepare() {
-	[[ ${PV} != "9999" ]] && eapply "${FILESDIR}"/${PN}-3.5-systemd-user.patch
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
+	"${FILESDIR}"/${PN}-3.5-libcheck.patch
+	"${FILESDIR}"/${PN}-3.5-libevent.patch
+)
 
 src_configure() {
 	local myconf

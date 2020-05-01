@@ -54,15 +54,12 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/logger
 	xinetd? ( sys-apps/xinetd )"
 
-src_prepare() {
-	if [[ ${PV} != "9999" ]]; then
-		eapply \
-			"${FILESDIR}"/${PN}-3.5-systemd-user.patch \
-			"${FILESDIR}"/${PN}-3.5-verbose-build.patch
-	fi
-
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
+	"${FILESDIR}"/${PN}-3.5-verbose-build.patch
+	"${FILESDIR}"/${PN}-3.5-libcheck.patch
+	"${FILESDIR}"/${PN}-3.5-libevent.patch
+)
 
 src_configure() {
 	local myconf
