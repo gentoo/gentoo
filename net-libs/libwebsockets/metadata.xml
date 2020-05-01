@@ -27,7 +27,7 @@
 		<flag name="generic-sessions">With the Generic Sessions plugin</flag>
 		<flag name="http2">Support the HTTP/2 protocol</flag>
 		<flag name="http-proxy">Support for rewriting HTTP proxying</flag>
-		<flag name="http-uncommon-headers">Inlude less common http header support</flag>
+		<flag name="http-basic-auth">Support Basic Auth</flag>
 		<flag name="lejp">With the Lightweight JSON Parser</flag>
 		<flag name="libev">Support event loops via dev-libs/libev</flag>
 		<flag name="libevent">Support event loops via dev-libs/libevent</flag>

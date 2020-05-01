@@ -12,7 +12,7 @@ SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.
 LICENSE="MIT"
 SLOT="0/16" # libwebsockets.so.16
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="access-log caps cgi client dbus +dir +extensions +file-ops generic-sessions http-proxy +http-uncommon-headers http2 ipv6
+IUSE="access-log caps cgi client dbus +dir +extensions +file-ops generic-sessions http-proxy +http-basic-auth http2 ipv6
 	+lejp libev libevent libressl libuv mbedtls peer-limits server-status smtp socks5
 	sqlite3 ssl static-libs +testapps threads zip"
 
@@ -64,9 +64,9 @@ src_configure() {
 		-DLWS_WITH_FILE_OPS=$(usex file-ops)
 		-DLWS_WITH_GENERIC_SESSIONS=$(usex generic-sessions)
 		-DLWS_WITH_HTTP2=$(usex http2)
-		-DLWS_WITH_HTTP_BASIC_AUTH=$(usex http-uncommon-headers)
+		-DLWS_WITH_HTTP_BASIC_AUTH=$(usex http-basic-auth)
 		-DLWS_WITH_HTTP_PROXY=$(usex http-proxy)
-		-DLWS_WITH_HTTP_UNCOMMON_HEADERS=$(usex http-uncommon-headers)
+		-DLWS_WITH_HTTP_UNCOMMON_HEADERS=$(usex http-basic-auth)
 		-DLWS_WITH_HUBBUB=$(usex http-proxy)
 		-DLWS_WITH_LEJP=$(usex lejp)
 		-DLWS_WITH_LIBEV=$(usex libev)
