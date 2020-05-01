@@ -1,0 +1,35 @@
+From 08bfc8a788e8081515d733e67be026d051c726f7 Mon Sep 17 00:00:00 2001
+From: Evan <evanunderscore@gmail.com>
+Date: Thu, 19 Mar 2020 14:55:07 +1100
+Subject: [PATCH] Remove expected test failure for new versions of fish (#292)
+
+---
+ test/test.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/test/test.py b/test/test.py
+index e91352b..2c34806 100755
+--- a/test/test.py
++++ b/test/test.py
+@@ -28,6 +28,8 @@
+ 
+ BASH_VERSION = subprocess.check_output(['bash', '-c', 'echo $BASH_VERSION']).decode()
+ BASH_MAJOR_VERSION = int(BASH_VERSION.split('.')[0])
++FISH_VERSION_STR = subprocess.check_output(['fish', '-c', 'echo -n $FISH_VERSION']).decode()
++FISH_VERSION_TUPLE = tuple(int(x) for x in FISH_VERSION_STR.split('.'))
+ 
+ 
+ class TempDir(object):
+@@ -1258,8 +1260,11 @@ class TestFish(_TestSh, unittest.TestCase):
+     expected_failures = [
+         'test_parse_special_characters',
+         'test_comp_point',
+-        'test_special_characters_double_quoted'
+     ]
++    if FISH_VERSION_TUPLE < (3, 1):
++        expected_failures.extend([
++            'test_special_characters_double_quoted'
++        ])
+ 
+     skipped = [
+         'test_single_quotes_in_single_quotes',
