@@ -39,10 +39,8 @@ DEPEND="${RDEPEND}
 	>=net-libs/biblesync-1.1.2-r1[-static]
 	virtual/pkgconfig
 	sys-devel/gettext
-	$(python_gen_cond_dep '
-		app-text/gnome-doc-utils[${PYTHON_MULTI_USEDEP}]
-		dev-libs/libxslt[${PYTHON_MULTI_USEDEP}]
-	')
+	app-text/gnome-doc-utils
+	dev-libs/libxslt
 "
 
 pkg_setup() {
