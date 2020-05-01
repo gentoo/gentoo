@@ -25,6 +25,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/nftlb-0.6-tests.patch"
+	"${FILESDIR}/nftlb-0.6-musl.patch"
 )
 
 pkg_setup() {
