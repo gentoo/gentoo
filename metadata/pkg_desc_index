@@ -14767,7 +14767,7 @@ net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r5 2.2.10-r6 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
 net-misc/charm 1.9.2-r2: A text based livejournal client
-net-misc/chrony 3.5-r2 3.5-r3 3.5-r4 4.0_pre1 4.0_pre1-r1 4.0_pre1-r2 4.0_pre2 9999: NTP client and server programs
+net-misc/chrony 3.5-r2 3.5-r3 3.5-r4 4.0_pre1 4.0_pre1-r1 4.0_pre1-r2 4.0_pre2-r1 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2019.01.13 2020.03.07 2020.04.12: Qt GUI for Connman with system tray icon
@@ -16567,7 +16567,7 @@ sys-apps/biosdevname 0.7.2 0.7.3: Sets BIOS-given device names instead of kernel
 sys-apps/biosdisk 0_p20171116: A script that creates floppy boot images to flash Dell BIOSes
 sys-apps/bleachbit 3.0 4.0.0: Clean junk to free disk space and to maintain privacy
 sys-apps/bolt 0.8-r1: Userspace system daemon to enable security levels for Thunderbolt 3
-sys-apps/bubblewrap 0.3.1-r1 0.3.1-r2: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
+sys-apps/bubblewrap 0.3.1-r1 0.3.1-r2 0.4.1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
 sys-apps/busybox 1.31.1-r2 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
