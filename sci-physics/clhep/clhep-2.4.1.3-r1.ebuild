@@ -15,7 +15,16 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc test threads"
 RESTRICT="!test? ( test )"
 
-BDEPEND="doc? ( app-doc/doxygen[latex] )"
+BDEPEND="
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
+"
 
 S="${WORKDIR}/${PV}/CLHEP"
 
