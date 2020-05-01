@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-05-01)
+# Wrongly adds '-*' to USE causing catastrophic system breakage.
+# Bug #649416.
+app-portage/ufed
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Requires <OpenSSL-1.1.x. Please migrate to
 # >=dev-db/mysql-5.7. Masked for removal in 30 days.
