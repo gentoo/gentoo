@@ -24,6 +24,9 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 
+BDEPEND="
+	test? ( dev-python/webob[${PYTHON_USEDEP}] )"
+
 distutils_enable_tests nose
 distutils_enable_sphinx doc
 
