@@ -31,6 +31,10 @@ BDEPEND="
 		>=dev-python/pip-19
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/argcomplete-1.11.1-fish-xpass.patch
+)
+
 python_test() {
 	"${EPYTHON}" test/test.py -v || die
 }

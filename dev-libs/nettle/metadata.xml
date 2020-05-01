@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:nettle_project:nettle</remote-id>
 	</upstream>
+	<use>
+		<flag name="asm">Support assembly hand optimized crypto functions (i.e. faster run time)</flag>
+	</use>
 </pkgmetadata>
