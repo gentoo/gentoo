@@ -2263,6 +2263,7 @@ dev-libs/m17n-lib:gd - Build API and utilities based on media-libs/gd. This flag
 dev-libs/m17n-lib:libotf - Use dev-libs/libotf to handle OpenType fonts
 dev-libs/m17n-lib:libxml2 - Use dev-libs/libxml2 to parse XML
 dev-libs/msgpack:boost - Enable boost support
+dev-libs/nettle:asm - Support assembly hand optimized crypto functions (i.e. faster run time)
 dev-libs/nss:cacert - Include root/class3 certs from CAcert (http://www.cacert.org/)
 dev-libs/nss:utils - Install utilities included with the library
 dev-libs/ocl-icd:khronos-headers - Install Khronos OpenCL headers.

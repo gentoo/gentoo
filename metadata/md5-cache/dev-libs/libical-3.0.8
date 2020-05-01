@@ -5,7 +5,7 @@ DESCRIPTION=An implementation of basic iCAL protocols
 EAPI=7
 HOMEPAGE=https://github.com/libical/libical
 IUSE=berkdb doc examples +glib +introspection static-libs test vala
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=|| ( MPL-2.0 LGPL-2.1 )
 RDEPEND=dev-libs/icu:= berkdb? ( sys-libs/db:= ) glib? ( dev-libs/glib:2 ) sys-libs/timezone-data
 REQUIRED_USE=introspection? ( glib ) vala? ( introspection )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/3
 SRC_URI=https://github.com/libical/libical/releases/download/v3.0.8/libical-3.0.8.tar.gz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=e1b9ba64ddcdc122bfb322721c5a4479
+_md5_=e8e12dc03460a9ecf574cd48f2003dd7
