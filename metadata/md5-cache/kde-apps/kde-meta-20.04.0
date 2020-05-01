@@ -2,8 +2,8 @@ DEFINED_PHASES=-
 DESCRIPTION=Merge this to pull in all KDE Plasma and Applications packages
 EAPI=7
 HOMEPAGE=https://kde.org/
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~arm64
 LICENSE=metapackage
 RDEPEND=>=kde-apps/kde-apps-meta-20.04.0:5 kde-plasma/plasma-meta:5
 SLOT=5
-_md5_=70be3160ed9eb591163b15d629d8c603
+_md5_=86ecfa72c4be4590873ea3721d7b9d48

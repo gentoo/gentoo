@@ -2,8 +2,8 @@ DEFINED_PHASES=-
 DESCRIPTION=Transitional package to pull in plasma-meta plus basic applications
 EAPI=7
 HOMEPAGE=https://kde.org/
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~arm64
 LICENSE=metapackage
 RDEPEND=>=kde-apps/kdecore-meta-20.04.0:5 kde-plasma/plasma-meta
 SLOT=5
-_md5_=21f0bd4d0ce220984027ea46340511e2
+_md5_=793f9d5fd4b210619ca6669c4718df0e

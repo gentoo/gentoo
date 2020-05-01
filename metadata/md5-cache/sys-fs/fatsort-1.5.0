@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/fatsort/fatsort-1.5.0.456.tar.xz
 _eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a67448bfdcbdcdd765c5c3450c83bc38
+_md5_=bb53e256c86f629c1dee0bb20d8af683

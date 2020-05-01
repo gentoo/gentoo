@@ -5,11 +5,11 @@ DESCRIPTION=Interactive physics simulator
 EAPI=7
 HOMEPAGE=https://kde.org/applications/education/org.kde.step https://edu.kde.org/step/
 IUSE=+gsl nls +qalculate debug +handbook test
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~arm64
 LICENSE=GPL-2
 RDEPEND=>=kde-frameworks/kcompletion-5.69.0:5 >=kde-frameworks/kconfig-5.69.0:5 >=kde-frameworks/kconfigwidgets-5.69.0:5 >=kde-frameworks/kcoreaddons-5.69.0:5 >=kde-frameworks/kcrash-5.69.0:5 >=kde-frameworks/ki18n-5.69.0:5 >=kde-frameworks/kiconthemes-5.69.0:5 >=kde-frameworks/kio-5.69.0:5 >=kde-frameworks/knewstuff-5.69.0:5 >=kde-frameworks/kparts-5.69.0:5 >=kde-frameworks/kplotting-5.69.0:5 >=kde-frameworks/ktextwidgets-5.69.0:5 >=kde-frameworks/kwidgetsaddons-5.69.0:5 >=kde-frameworks/kxmlgui-5.69.0:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtopengl-5.12.3:5 >=dev-qt/qtsvg-5.12.3:5 >=dev-qt/qtwidgets-5.12.3:5 >=dev-qt/qtxml-5.12.3:5 >=dev-cpp/eigen-3.2:3 sci-libs/cln gsl? ( sci-libs/gsl:= ) qalculate? ( >=sci-libs/libqalculate-0.9.5:= ) || ( kde-frameworks/breeze-icons:* kde-frameworks/oxygen-icons:* ) >=kde-frameworks/kf-env-4 dev-qt/qtcore:5
 RESTRICT=!test? ( test )
 SLOT=5
 SRC_URI=mirror://kde/stable/release-service/20.04.0/src/step-20.04.0.tar.xz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	ecm	e341cb3583b4219b5c207e24915b0264	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=ecff0d9c9cc0341d6ee5ad2282d03c8e
+_md5_=b33e81dd7829c66fb271e0edb2d3250c

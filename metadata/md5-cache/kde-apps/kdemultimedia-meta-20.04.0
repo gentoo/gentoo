@@ -3,8 +3,8 @@ DESCRIPTION=kdemultimedia - merge this to pull in all kdemultimedia-derived pack
 EAPI=7
 HOMEPAGE=https://kde.org/applications/multimedia/ https://multimedia.kde.org/
 IUSE=+cdrom +ffmpeg gstreamer
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~arm64
 LICENSE=metapackage
 RDEPEND=>=kde-apps/dragon-20.04.0:5 >=kde-apps/juk-20.04.0:5 >=kde-apps/kdenlive-20.04.0:5 >=kde-apps/kmix-20.04.0:5 >=kde-apps/kwave-20.04.0:5 >=media-sound/elisa-20.04.0:5 cdrom? ( >=kde-apps/audiocd-kio-20.04.0:5 >=kde-apps/k3b-20.04.0:5 >=kde-apps/libkcddb-20.04.0:5 >=kde-apps/libkcompactdisc-20.04.0:5 ) ffmpeg? ( >=kde-apps/ffmpegthumbs-20.04.0:5 ) gstreamer? ( >=kde-apps/kamoso-20.04.0:5 )
 SLOT=5
-_md5_=666e066ef5b7ab6353c320923dddbed6
+_md5_=e6b55624619c58c9b1f68935882bebf0

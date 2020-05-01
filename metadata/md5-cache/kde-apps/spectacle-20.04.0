@@ -5,11 +5,11 @@ DESCRIPTION=Screenshot capture utility
 EAPI=7
 HOMEPAGE=https://kde.org/applications/utilities/org.kde.spectacle
 IUSE=kipi share debug +handbook test
-KEYWORDS=~amd64 ~ppc64
+KEYWORDS=~amd64 ~arm64 ~ppc64
 LICENSE=LGPL-2+ handbook? ( FDL-1.3 ) kipi? ( GPL-2+ )
 RDEPEND=>=kde-frameworks/kconfig-5.69.0:5 >=kde-frameworks/kconfigwidgets-5.69.0:5 >=kde-frameworks/kcoreaddons-5.69.0:5 >=kde-frameworks/kdbusaddons-5.69.0:5 >=kde-frameworks/kglobalaccel-5.69.0:5 >=kde-frameworks/ki18n-5.69.0:5 >=kde-frameworks/kio-5.69.0:5 >=kde-frameworks/knewstuff-5.69.0:5 >=kde-frameworks/knotifications-5.69.0:5 >=kde-frameworks/kservice-5.69.0:5 >=kde-frameworks/kwayland-5.69.0:5 >=kde-frameworks/kwidgetsaddons-5.69.0:5 >=kde-frameworks/kwindowsystem-5.69.0:5 >=kde-frameworks/kxmlgui-5.69.0:5 >=dev-qt/qdbus-5.12.3:5 >=dev-qt/qtdbus-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtprintsupport-5.12.3:5 >=dev-qt/qtwidgets-5.12.3:5 >=dev-qt/qtx11extras-5.12.3:5 x11-libs/libxcb x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-image kipi? ( >=kde-apps/libkipi-20.04.0:5= ) share? ( >=kde-frameworks/purpose-5.69.0:5 ) kipi? ( >=kde-apps/kipi-plugins-20.04.0:5 ) || ( kde-frameworks/breeze-icons:* kde-frameworks/oxygen-icons:* ) >=kde-frameworks/kf-env-4 dev-qt/qtcore:5
 RESTRICT=!test? ( test )
 SLOT=5
 SRC_URI=mirror://kde/stable/release-service/20.04.0/src/spectacle-20.04.0.tar.xz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	ecm	e341cb3583b4219b5c207e24915b0264	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=12cc66a624f83388907c5f6e45e82518
+_md5_=768b2dc61648f0fd6bc9dd85525831e1

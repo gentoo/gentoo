@@ -2,8 +2,8 @@ DEFINED_PHASES=-
 DESCRIPTION=kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 EAPI=7
 HOMEPAGE=https://kde.org/
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~arm64
 LICENSE=metapackage
 RDEPEND=>=kde-apps/kmag-20.04.0:5 >=kde-apps/kmousetool-20.04.0:5 >=kde-apps/kmouth-20.04.0:5
 SLOT=5
-_md5_=e94faafb02b557f7cd9f79b5116d55b8
+_md5_=30239093018bcd9b0462165be4f58a49
