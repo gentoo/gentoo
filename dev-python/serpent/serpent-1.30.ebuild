@@ -13,6 +13,13 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 distutils_enable_tests setup.py
+
+BDEPEND="
+	test? (
+		dev-python/attrs[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
+	)"
