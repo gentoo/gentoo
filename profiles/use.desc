@@ -277,6 +277,7 @@ sdl - Add support for Simple Direct Layer (media library)
 seccomp - Enable seccomp (secure computing mode) to perform system call filtering at runtime to increase security of programs
 selinux - !!internal use only!! Security Enhanced Linux support, this must be set by the selinux profile or breakage will occur
 semantic-desktop - Cross-KDE support for semantic search and information retrieval
+sendto - Enable support to share content with other devices or using online services
 session - Add persistent session support
 skey - Enable S/Key (Single use password) authentication support
 slang - Add support for the slang text display library (it's like ncurses, but different)
