@@ -198,7 +198,7 @@ src_configure() {
 		-DVTK_Group_Tk=$(usex tk)
 		-DVTK_Group_Views=$(usex views)
 		-DVTK_Group_Web=$(usex web)
-		-DVTK_WWW_DIR="${ED%/}/${MY_HTDOCSDIR}"
+		-DVTK_WWW_DIR="${ED}/${MY_HTDOCSDIR}"
 		-DVTK_WRAP_JAVA=$(usex java)
 		-DVTK_WRAP_PYTHON=$(usex python)
 		-DVTK_WRAP_PYTHON_SIP=$(usex python)
@@ -296,7 +296,7 @@ src_install() {
 
 	cmake-utils_src_install
 
-	use java && java-pkg_regjar "${ED%/}"/usr/$(get_libdir)/${PN}.jar
+	use java && java-pkg_regjar "${ED}"/usr/$(get_libdir)/${PN}.jar
 
 	# Stop web page images from being compressed
 	use doc && docompress -x /usr/share/doc/${PF}/doxygen

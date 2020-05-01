@@ -21,7 +21,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="ayatana gtk libressl lightweight nls mbedtls qt5 systemd test"
+IUSE="appindicator gtk libressl lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -57,7 +57,7 @@ COMMON_DEPEND="
 		>=dev-libs/dbus-glib-0.100
 		>=dev-libs/glib-2.32:2
 		>=x11-libs/gtk+-3.4:3
-		ayatana? ( >=dev-libs/libappindicator-0.4.30:3 )
+		appindicator? ( >=dev-libs/libappindicator-0.4.30:3 )
 	)
 	qt5? (
 		dev-qt/qtcore:5
@@ -111,7 +111,7 @@ src_configure() {
 
 		-DWITH_CRYPTO=$(usex mbedtls polarssl openssl)
 		-DWITH_INOTIFY=ON
-		-DWITH_LIBAPPINDICATOR=$(usex ayatana ON OFF)
+		-DWITH_LIBAPPINDICATOR=$(usex appindicator ON OFF)
 		-DWITH_SYSTEMD=$(usex systemd ON OFF)
 	)
 

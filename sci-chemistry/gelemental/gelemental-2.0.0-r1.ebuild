@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools fdo-mime flag-o-matic gnome2-utils eutils
+inherit autotools eutils flag-o-matic xdg-utils
 
 DESCRIPTION="Periodic table viewer with detailed information on the chemical elements"
 HOMEPAGE="https://github.com/ginggs/gelemental/"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ginggs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="
@@ -36,11 +36,13 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
