@@ -16923,7 +16923,6 @@ sys-block/hdrecover 0.5: Attempts to recover a hard disk that has bad blocks on 
 sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Config Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/hpssacli 2.40.13.0-r1 3.10.3.0: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
 sys-block/io-scheduler-udev-rules 1: Udev rules to allow easier customization of kernel I/O schedulers
-sys-block/kvpm 0.9.10-r1: GUI front end for Linux LVM2 and GNU parted based on KDE Frameworks
 sys-block/libzbc 5.5.1: A library and tools for working with ZBC and ZAC disks
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
 sys-block/mbuffer 20150412 20171011 20181119 20190127 20190725 20191016: M(easuring)buffer is a replacement for buffer with additional functionality
