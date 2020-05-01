@@ -1,0 +1,12 @@
+--- a/src/options.h
++++ b/src/options.h
+@@ -35,7 +35,7 @@
+ extern struct sStringList *OPT_INCL_DIRS, *OPT_EXCL_DIRS, *OPT_INCL_DIRS_REC, *OPT_EXCL_DIRS_REC, *OPT_IGNORE_PREFIXES_LIST;
+ extern struct sRegExList *OPT_REGEX_INCL, *OPT_REGEX_EXCL;
+ 
+-char *OPT_LOCALE;
++extern char *OPT_LOCALE;
+ 
+ // parses command line options
+ int32_t parse_options(int argc, char *argv[]);
+

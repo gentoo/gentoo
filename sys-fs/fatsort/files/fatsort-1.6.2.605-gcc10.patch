@@ -1,0 +1,256 @@
+Index: tests/Makefile
+===================================================================
+--- a/tests/Makefile	(revision 606)
++++ b/tests/Makefile	(revision 613)
+@@ -19,7 +19,7 @@
+ 		if [ ! -f $$i/passed ]; then \
+ 			printf "%.70s" "Test case $$i...                                                                 "; \
+ 			printf "[ \e[1;33mWAIT \e[0m]"; \
+-			${MAKE} -C $$i &>> /dev/null; \
++			${MAKE} -C $$i &> /dev/null; \
+ 			ret=$$?; \
+ 			printf "\r%.70s" "Test case $$i...                                                                 "; \
+ 			if [ $$ret -eq 0 ]; then \
+Index: CHANGES.md
+===================================================================
+--- a/CHANGES.md	(revision 606)
++++ b/CHANGES.md	(revision 613)
+@@ -1,5 +1,11 @@
+ # Changelog
+ 
++## v1.6.3 (xxx)
++* fixed support for macOS (thanks to Max for the fix)
++* declared OPT_LOCALE as extern
++* fixed uninitialized variable
++* avoided some string truncation compiler warnings
++
+ ## v1.6.2 (November 29, 2019)
+ - FIX: multiple endianness issues with exFAT
+ - now using /proc/self/mounts instead of /etc/mtab to check whether filesystem is mounted
+Index: src/FAT_fs.c
+===================================================================
+--- a/src/FAT_fs.c	(revision 606)
++++ b/src/FAT_fs.c	(revision 613)
+@@ -42,7 +42,7 @@
+ // used to check if device is mounted
+ #if defined(__LINUX__)
+ #include <mntent.h>
+-#elif defined (__BSD__)
++#elif defined (__BSD__) || defined (__OSX__)
+ #include <sys/ucred.h>
+ #include <sys/mount.h>
+ #endif
+@@ -85,7 +85,7 @@
+ 
+ 	return ret;
+ 
+-#elif defined(__BSD__)
++#elif defined(__BSD__) || defined(__OSX__)
+ 	struct statfs *mntbuf;
+ 	int i, mntsize;
+ 	int32_t ret = 0;
+Index: src/deviceio.c
+===================================================================
+--- a/src/deviceio.c	(revision 606)
++++ b/src/deviceio.c	(revision 613)
+@@ -24,7 +24,7 @@
+ 
+ #include "deviceio.h"
+ 
+-#if defined __LINUX__ || defined __BSD__
++#if defined __LINUX__ || defined __BSD__ || defined __OSX__ 
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -59,7 +59,7 @@
+ #include "mallocv.h"
+ #include "errors.h"
+ 
+-#if defined __LINUX__ || defined __BSD__
++#if defined __LINUX__ || defined __BSD__ || defined __OSX__ 
+ 
+ DEVICE *device_open(const char *path) {
+ 
+@@ -88,7 +88,7 @@
+   assert(device != NULL);
+   assert(offset >= 0);
+ 
+-#if defined __BSD__
++#if defined __BSD__ || defined __OSX__ 
+   return lseek(device->fd, (off_t) offset, SEEK_SET);
+ #else
+   return lseek64(device->fd, (off64_t) offset, SEEK_SET);
+Index: src/deviceio.h
+===================================================================
+--- a/src/deviceio.h	(revision 606)
++++ b/src/deviceio.h	(revision 613)
+@@ -27,7 +27,7 @@
+ 
+ #include <stdint.h>
+ 
+-#if defined __LINUX__ || defined __BSD__
++#if defined __LINUX__ || defined __BSD__ || defined __OSX__ 
+ 
+ #define DIRECTORY_SEPARATOR '/'
+ 
+Index: src/fatsort.c
+===================================================================
+--- a/src/fatsort.c	(revision 606)
++++ b/src/fatsort.c	(revision 613)
+@@ -45,7 +45,7 @@
+ 
+ // program information
+ #define INFO_PROGRAM		"fatsort"
+-#define INFO_VERSION		"1.6.2"
++#define INFO_VERSION		"1.6.3"
+ #define INFO_AUTHOR		"Written by Boris Leidner.\n"
+ #define INFO_COPYRIGHT		"Copyright (C) 2004-2019 Boris Leidner.\n"
+ #define INFO_LICENSE		"License GPLv2: GNU GPL version 2 (see LICENSE.txt)\n" \
+Index: src/sort.c
+===================================================================
+--- a/src/sort.c	(revision 606)
++++ b/src/sort.c	(revision 613)
+@@ -261,14 +261,15 @@
+ 
+ 	struct sExFATDirEntry de;
+ 	struct sExFATDirEntrySet *des;
+-	struct sExFATDirEntryList *del;
++	struct sExFATDirEntryList *del=NULL;
+ 
+ 	char name[MAX_PATH_LEN+1];
+-	char str[32];
++	char str[31];
+ 	char *outptr, *inptr;
+ 	uint8_t nameLength=0;
+ 
+-	size_t outcount, incount, iret;
++	size_t outcount=30;
++	size_t incount, iret;
+ 
+ 	*direntrysets=0;
+ 
+@@ -376,7 +377,7 @@
+ 				        }
+ 					outptr[0]='\0';
+ 
+-					strncat(name, str, 30);
++					strncat(name, str, 31);
+ 
+ 					// we are done here
+ 					if (entries == expected_entries) {
+@@ -512,7 +513,7 @@
+ 	union sDirEntry de;
+ 	struct sDirEntryList *lnde;
+ 	struct sLongDirEntryList *llist;
+-	char tmp[MAX_PATH_LEN+1], dummy[MAX_PATH_LEN*2+1], sname[MAX_PATH_LEN+1], lname[MAX_PATH_LEN+1];
++	char tmp[MAX_PATH_LEN+1], dummy[MAX_PATH_LEN+1], sname[MAX_PATH_LEN+1], lname[MAX_PATH_LEN+1];
+ 
+ 	*direntries=0;
+ 
+@@ -589,8 +590,11 @@
+ 					return -1;
+ 				}
+ 
+-				snprintf(dummy, MAX_PATH_LEN*2+1, "%s%s", tmp, lname);
+-				strncpy(lname, dummy, MAX_PATH_LEN);
++				strncpy(dummy, tmp, MAX_PATH_LEN);
++				dummy[MAX_PATH_LEN]='\0';
++				strncat(dummy, lname, MAX_PATH_LEN - strlen(dummy));
++				dummy[MAX_PATH_LEN]='\0';
++				strncpy(lname, dummy, MAX_PATH_LEN+1);
+ 
+ 				break;
+ 			default:
+@@ -708,8 +712,8 @@
+ 			dummy[MAX_PATH_LEN]='\0';
+ 			strncat(dummy, lname, MAX_PATH_LEN - strlen(dummy));
+ 			dummy[MAX_PATH_LEN]='\0';
+-			strncpy(lname, dummy, MAX_PATH_LEN);
+-			dummy[MAX_PATH_LEN]='\0';
++			strncpy(lname, dummy, MAX_PATH_LEN+1);
++			//dummy[MAX_PATH_LEN]='\0';
+ 			break;
+ 		default:
+ 			myerror("Unhandled return code!");
+Index: src/options.c
+===================================================================
+--- a/src/options.c	(revision 606)
++++ b/src/options.c	(revision 613)
+@@ -55,7 +55,6 @@
+ 	assert(stringList != NULL);
+ 	assert(stringList->str == NULL);
+ 	assert(str != NULL);
+-	assert(strlen((char *)str) <= MAX_PATH_LEN);
+ 
+ 	char *newStr;
+ 
+@@ -77,14 +76,16 @@
+ 	// copy string to new structure including missing slashes
+ 	newStr[0] = '\0';
+ 	if (prefix) newStr[0] = DIRECTORY_SEPARATOR;
+-	strncat(newStr, (const char*) str, len);
++	memcpy(newStr+prefix, (const char*) str, len);
+ 	if (suffix) newStr[prefix+len] = DIRECTORY_SEPARATOR; 
+ 
++/*
+ 	if (prefix+len+suffix > MAX_PATH_LEN) {
+ 		newStr[MAX_PATH_LEN] = '\0';
+ 	} else {
+ 		newStr[prefix+len+suffix] = '\0';
+ 	}
++*/
+ 
+ 	ret = addStringToStringList(stringList, newStr);
+ 
+@@ -137,7 +138,7 @@
+ 	parses command line options
+ */
+ 
+-	int8_t c;
++	int8_t c,len;
+ 
+ 	static struct option longOpts[] = {
+ 		// name, has_arg, flag, val
+@@ -315,12 +316,13 @@
+ 			case 't' : OPT_MODIFICATION = 1; break;
+ 			case 'v' : OPT_VERSION = 1; break;
+ 			case 'L' :
+-				OPT_LOCALE=realloc(OPT_LOCALE, strlen(optarg)+1);
++				len=strlen(optarg);
++				OPT_LOCALE=realloc(OPT_LOCALE, len+1);
+ 				if (OPT_LOCALE == NULL) {
+ 					stderror();
+ 					return -1;
+ 				}
+-				strncpy(OPT_LOCALE, optarg, strlen(optarg)+1);
++				memcpy(OPT_LOCALE, optarg, len+1);
+ 			break;
+ 			default :
+ 				myerror("Unknown option '%c'.", optopt);
+Index: src/stringlist.c
+===================================================================
+--- a/src/stringlist.c	(revision 606)
++++ b/src/stringlist.c	(revision 613)
+@@ -78,8 +78,7 @@
+ 		return -1;
+ 	}
+ 
+-	strncpy(stringList->next->str, str, len);
+-	stringList->next->str[len] = '\0';
++	memcpy(stringList->next->str, str, len+1);
+ 
+ 	return 0;
+ 
+Index: src/options.h
+===================================================================
+--- a/src/options.h	(revision 606)
++++ b/src/options.h	(revision 613)
+@@ -35,7 +35,7 @@
+ extern struct sStringList *OPT_INCL_DIRS, *OPT_EXCL_DIRS, *OPT_INCL_DIRS_REC, *OPT_EXCL_DIRS_REC, *OPT_IGNORE_PREFIXES_LIST;
+ extern struct sRegExList *OPT_REGEX_INCL, *OPT_REGEX_EXCL;
+ 
+-char *OPT_LOCALE;
++extern char *OPT_LOCALE;
+ 
+ // parses command line options
+ int32_t parse_options(int argc, char *argv[]);
