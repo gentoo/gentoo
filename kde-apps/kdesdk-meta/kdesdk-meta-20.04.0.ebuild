@@ -8,7 +8,7 @@ HOMEPAGE="https://kde.org/applications/development"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="cvs git mercurial python subversion +webkit"
 
 RDEPEND="

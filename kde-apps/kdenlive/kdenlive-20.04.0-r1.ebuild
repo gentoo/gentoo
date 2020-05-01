@@ -15,7 +15,7 @@ HOMEPAGE="https://kdenlive.org/en/"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="freesound gles2-only semantic-desktop share v4l"
 
 BDEPEND="

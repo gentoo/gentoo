@@ -16,7 +16,7 @@ HOMEPAGE="https://kde.org/applications/office/org.kde.korganizer"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="telemetry X"
 
 BDEPEND="

@@ -10,7 +10,7 @@ DESCRIPTION="Wrapper around exiv2 library"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="+xmp"
 
 DEPEND="

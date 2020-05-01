@@ -14,7 +14,7 @@ DESCRIPTION="Bookmarks editor based on KDE Frameworks"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="+man"
 
 DEPEND="

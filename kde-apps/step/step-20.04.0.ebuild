@@ -15,7 +15,7 @@ https://edu.kde.org/step/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+gsl nls +qalculate"
 
 BDEPEND="

@@ -13,7 +13,7 @@ HOMEPAGE="https://kde.org/applications/system/org.kde.yakuake"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="absolute-position X"
 
 DEPEND="

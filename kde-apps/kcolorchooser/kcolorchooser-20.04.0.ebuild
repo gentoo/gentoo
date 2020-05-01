@@ -12,7 +12,7 @@ HOMEPAGE="https://kde.org/applications/graphics/org.kde.kcolorchooser"
 
 LICENSE="MIT"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 DEPEND="

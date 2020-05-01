@@ -16,7 +16,7 @@ HOMEPAGE="https://kde.org/applications/utilities/org.kde.kleopatra"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="

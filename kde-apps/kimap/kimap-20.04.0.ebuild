@@ -14,7 +14,7 @@ HOMEPAGE="https://api.kde.org/kdepim/kimap/html/index.html"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 RDEPEND="

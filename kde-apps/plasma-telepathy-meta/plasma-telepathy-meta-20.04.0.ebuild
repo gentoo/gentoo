@@ -8,7 +8,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="gstreamer"
 
 RDEPEND="

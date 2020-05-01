@@ -13,7 +13,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="Apache-2.0 || ( AFL-2.1 BSD ) GPL-2+ LGPL-2.1+ MIT"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="speech"
 
 DEPEND="

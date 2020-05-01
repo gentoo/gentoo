@@ -13,7 +13,7 @@ HOMEPAGE="https://kde.org/applications/education/org.kde.artikulate"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+gstreamer qtmedia"
 
 REQUIRED_USE="|| ( gstreamer qtmedia )"

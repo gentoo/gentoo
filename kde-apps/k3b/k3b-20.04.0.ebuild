@@ -16,7 +16,7 @@ https://userbase.kde.org/K3b"
 
 LICENSE="GPL-2 FDL-1.2"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="dvd encode ffmpeg flac mad mp3 musepack sndfile sox taglib vcd vorbis webkit"
 
 REQUIRED_USE="
