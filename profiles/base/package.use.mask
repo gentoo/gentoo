@@ -36,10 +36,6 @@ www-apps/nikola ghpages
 # Bug #713590, bug #717744.
 <sys-apps/man-pages-5.05-r1 l10n_de l10n_fr l10n_nl l10n_pl
 
-# Stephan Hartmann <stha09@googlemail.com> (2020-04-11)
-# Requires unreleased >=dev-libs/icu-67
->=www-client/chromium-83.0.4103.7 system-icu
-
 # Ulrich Müller <ulm@gentoo.org> (2020-04-08)
 # Old versions of libjpeg-turbo have known security issues.
 # Use the bundled lib on your own risk. Bug #715106.
