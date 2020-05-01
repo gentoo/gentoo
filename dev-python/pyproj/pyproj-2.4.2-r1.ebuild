@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="doc"
 
-RDEPEND=">=sci-libs/proj-6.2.0"
+RDEPEND=">=sci-libs/proj-6.2.0:="
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]"
 BDEPEND="
