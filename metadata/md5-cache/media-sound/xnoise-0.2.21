@@ -1,14 +1,14 @@
 BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-DEPEND=dev-db/sqlite:3= dev-libs/glib:2 gnome-base/librsvg:2 media-libs/gstreamer:1.0= media-libs/gst-plugins-base:1.0= media-libs/libtaginfo:= media-plugins/gst-plugins-meta:1.0 x11-libs/cairo:= x11-libs/gtk+:3 x11-libs/libX11 ayatana? ( dev-libs/libappindicator:3= ) lastfm? ( net-libs/libsoup:2.4= ) lyrics? ( net-libs/libsoup:2.4= dev-libs/libxml2:2= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=dev-db/sqlite:3= dev-libs/glib:2 gnome-base/librsvg:2 media-libs/gstreamer:1.0= media-libs/gst-plugins-base:1.0= media-libs/libtaginfo:= media-plugins/gst-plugins-meta:1.0 x11-libs/cairo:= x11-libs/gtk+:3 x11-libs/libX11 appindicator? ( dev-libs/libappindicator:3= ) lastfm? ( net-libs/libsoup:2.4= ) lyrics? ( net-libs/libsoup:2.4= dev-libs/libxml2:2= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A media player for Gtk+ with a slick GUI, great speed and lots of features
 EAPI=7
 HOMEPAGE=http://www.xnoise-media-player.com/
-IUSE=ayatana +lastfm +lyrics
+IUSE=appindicator +lastfm +lyrics
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=dev-db/sqlite:3= dev-libs/glib:2 gnome-base/librsvg:2 media-libs/gstreamer:1.0= media-libs/gst-plugins-base:1.0= media-libs/libtaginfo:= media-plugins/gst-plugins-meta:1.0 x11-libs/cairo:= x11-libs/gtk+:3 x11-libs/libX11 ayatana? ( dev-libs/libappindicator:3= ) lastfm? ( net-libs/libsoup:2.4= ) lyrics? ( net-libs/libsoup:2.4= dev-libs/libxml2:2= )
+RDEPEND=dev-db/sqlite:3= dev-libs/glib:2 gnome-base/librsvg:2 media-libs/gstreamer:1.0= media-libs/gst-plugins-base:1.0= media-libs/libtaginfo:= media-plugins/gst-plugins-meta:1.0 x11-libs/cairo:= x11-libs/gtk+:3 x11-libs/libX11 appindicator? ( dev-libs/libappindicator:3= ) lastfm? ( net-libs/libsoup:2.4= ) lyrics? ( net-libs/libsoup:2.4= dev-libs/libxml2:2= )
 SLOT=0
 SRC_URI=https://www.bitbucket.org/shuerhaaken/xnoise/downloads/xnoise-0.2.21.tar.gz
 _eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b290924bffcb2acfc4b71edaf8e6b38d
+_md5_=c95d29106d9b8dcf3a7807ffb36804a4
