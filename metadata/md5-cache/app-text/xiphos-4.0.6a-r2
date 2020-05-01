@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
-DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) >=app-text/sword-1.7.4 dev-libs/glib:2 gnome-extra/gtkhtml:4.0 >=gnome-extra/libgsf-1.14 net-libs/webkit-gtk:4 x11-libs/gtk+:3 python_single_target_python2_7? ( dev-libs/libxml2:2[python_targets_python2_7(-)] gnome-base/gconf[python_targets_python2_7(-)] ) dbus? ( dev-libs/dbus-glib ) app-text/docbook2X app-text/rarian dev-util/intltool dev-util/glib-utils >=net-libs/biblesync-1.1.2-r1[-static] virtual/pkgconfig sys-devel/gettext python_single_target_python2_7? ( app-text/gnome-doc-utils[python_targets_python2_7(-)] dev-libs/libxslt[python_targets_python2_7(-)] )
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) >=app-text/sword-1.7.4 dev-libs/glib:2 gnome-extra/gtkhtml:4.0 >=gnome-extra/libgsf-1.14 net-libs/webkit-gtk:4 x11-libs/gtk+:3 python_single_target_python2_7? ( dev-libs/libxml2:2[python_targets_python2_7(-)] gnome-base/gconf[python_targets_python2_7(-)] ) dbus? ( dev-libs/dbus-glib ) app-text/docbook2X app-text/rarian dev-util/intltool dev-util/glib-utils >=net-libs/biblesync-1.1.2-r1[-static] virtual/pkgconfig sys-devel/gettext app-text/gnome-doc-utils dev-libs/libxslt
 DESCRIPTION=A bible study frontend for Sword (formerly known as GnomeSword)
 EAPI=6
 HOMEPAGE=http://xiphos.org/
@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( python_single_target_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/crosswire/xiphos/releases/download/4.0.6a/xiphos-4.0.6a-20170820.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=0ff810c5bf135769ccf6761bad172541
+_md5_=f543db588feffca042cde76df9b24c76
