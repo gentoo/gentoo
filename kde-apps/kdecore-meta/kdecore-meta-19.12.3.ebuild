@@ -9,7 +9,7 @@ HOMEPAGE="https://kde.org/"
 LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
-IUSE="+handbook +share +thumbnail +webengine"
+IUSE="+handbook +sendto +thumbnail +webengine"
 
 RDEPEND="
 	>=kde-apps/dolphin-${PV}:${SLOT}
@@ -26,7 +26,7 @@ RDEPEND="
 "
 # Optional runtime deps: kde-apps/dolphin
 RDEPEND="${RDEPEND}
-	share? ( kde-frameworks/purpose:${SLOT} )
+	sendto? ( kde-frameworks/purpose:${SLOT} )
 	thumbnail? (
 		>=kde-apps/ffmpegthumbs-${PV}:${SLOT}
 		>=kde-apps/thumbnailers-${PV}:${SLOT}

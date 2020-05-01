@@ -17,7 +17,7 @@ HOMEPAGE="https://okular.kde.org https://kde.org/applications/office/org.kde.oku
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
-IUSE="chm crypt djvu epub +image-backend markdown mobi mobile +pdf plucker +postscript share speech +tiff"
+IUSE="chm crypt djvu epub +image-backend markdown mobi mobile +pdf plucker +postscript sendto speech +tiff"
 
 DEPEND="
 	>=kde-frameworks/kactivities-${KFMIN}:5
@@ -58,7 +58,7 @@ DEPEND="
 	pdf? ( app-text/poppler[qt5] )
 	plucker? ( virtual/jpeg:0 )
 	postscript? ( app-text/libspectre )
-	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
+	sendto? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
 	tiff? ( media-libs/tiff:0 )
 "
@@ -94,7 +94,7 @@ src_configure() {
 		$(cmake_use_find_package pdf Poppler)
 		$(cmake_use_find_package plucker JPEG)
 		$(cmake_use_find_package postscript LibSpectre)
-		$(cmake_use_find_package share KF5Purpose)
+		$(cmake_use_find_package sendto KF5Purpose)
 		$(cmake_use_find_package speech Qt5TextToSpeech)
 		$(cmake_use_find_package tiff TIFF)
 	)

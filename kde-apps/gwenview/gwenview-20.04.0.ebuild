@@ -17,7 +17,7 @@ https://userbase.kde.org/Gwenview"
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
-IUSE="activities fits kipi +mpris raw semantic-desktop share X"
+IUSE="activities fits kipi +mpris raw semantic-desktop sendto X"
 
 # requires running environment
 RESTRICT+=" test"
@@ -58,7 +58,7 @@ COMMON_DEPEND="
 		>=kde-frameworks/baloo-${KFMIN}:5
 		>=kde-frameworks/kfilemetadata-${KFMIN}:5
 	)
-	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
+	sendto? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 	X? (
 		>=dev-qt/qtx11extras-${QTMIN}:5
 		x11-libs/libX11
@@ -88,7 +88,7 @@ src_configure() {
 		$(cmake_use_find_package fits CFitsio)
 		$(cmake_use_find_package kipi KF5Kipi)
 		$(cmake_use_find_package raw KF5KDcraw)
-		$(cmake_use_find_package share KF5Purpose)
+		$(cmake_use_find_package sendto KF5Purpose)
 		$(cmake_use_find_package X X11)
 	)
 
