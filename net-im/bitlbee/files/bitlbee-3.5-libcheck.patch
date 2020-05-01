@@ -1,0 +1,645 @@
+diff --git a/tests/check_arc.c b/tests/check_arc.c
+index 9fcd4b25..c7e1dfef 100644
+--- a/tests/check_arc.c
++++ b/tests/check_arc.c
+@@ -17,7 +17,7 @@ char *clear_tests[] =
+ 	NULL
+ };
+ 
+-static void check_codec(int l)
++START_TEST(check_codec)
+ {
+ 	int i;
+ 
+@@ -37,6 +37,7 @@ static void check_codec(int l)
+ 		g_free(decrypted);
+ 	}
+ }
++END_TEST
+ 
+ struct {
+ 	unsigned char crypted[30];
+@@ -72,7 +73,7 @@ struct {
+ 	{ "", 0, NULL }
+ };
+ 
+-static void check_decod(int l)
++START_TEST(check_decod)
+ {
+ 	int i;
+ 
+@@ -92,6 +93,7 @@ static void check_decod(int l)
+ 		g_free(decrypted);
+ 	}
+ }
++END_TEST
+ 
+ Suite *arc_suite(void)
+ {
+diff --git a/tests/check_help.c b/tests/check_help.c
+index 92d7c28f..ccf136a4 100644
+--- a/tests/check_help.c
++++ b/tests/check_help.c
+@@ -7,20 +7,24 @@
+ #include "help.h"
+ 
+ START_TEST(test_help_initfree)
+-help_t * h, *r;
+-r = help_init(&h, "/dev/null");
+-fail_if(r == NULL);
+-fail_if(r != h);
++{
++    help_t * h, *r;
++    r = help_init(&h, "/dev/null");
++    fail_if(r == NULL);
++    fail_if(r != h);
+ 
+-help_free(&h);
+-fail_if(h != NULL);
++    help_free(&h);
++    fail_if(h != NULL);
++}
+ END_TEST
+ 
+ START_TEST(test_help_nonexistent)
+-help_t * h, *r;
+-r = help_init(&h, "/dev/null");
+-fail_unless(help_get(&h, "nonexistent") == NULL);
+-fail_if(r == NULL);
++{
++    help_t * h, *r;
++    r = help_init(&h, "/dev/null");
++    fail_unless(help_get(&h, "nonexistent") == NULL);
++    fail_if(r == NULL);
++}
+ END_TEST
+ 
+ Suite *help_suite(void)
+diff --git a/tests/check_irc.c b/tests/check_irc.c
+index 5c940729..e2054106 100644
+--- a/tests/check_irc.c
++++ b/tests/check_irc.c
+@@ -8,49 +8,53 @@
+ #include "testsuite.h"
+ 
+ START_TEST(test_connect)
+-GIOChannel * ch1, *ch2;
+-irc_t *irc;
+-char *raw;
+-fail_unless(g_io_channel_pair(&ch1, &ch2));
++{
++    GIOChannel * ch1, *ch2;
++    irc_t *irc;
++    char *raw;
++    fail_unless(g_io_channel_pair(&ch1, &ch2));
+ 
+-irc = irc_new(g_io_channel_unix_get_fd(ch1));
++    irc = irc_new(g_io_channel_unix_get_fd(ch1));
+ 
+-irc_free(irc);
++    irc_free(irc);
+ 
+-fail_unless(g_io_channel_read_to_end(ch2, &raw, NULL, NULL) == G_IO_STATUS_NORMAL);
++    fail_unless(g_io_channel_read_to_end(ch2, &raw, NULL, NULL) == G_IO_STATUS_NORMAL);
+ 
+-fail_if(strcmp(raw, "") != 0);
++    fail_if(strcmp(raw, "") != 0);
+ 
+-g_free(raw);
++    g_free(raw);
++}
+ END_TEST
+ 
+ START_TEST(test_login)
+-GIOChannel * ch1, *ch2;
+-irc_t *irc;
+-char *raw;
+-fail_unless(g_io_channel_pair(&ch1, &ch2));
++{
++    GIOChannel * ch1, *ch2;
++    irc_t *irc;
++    char *raw;
++    fail_unless(g_io_channel_pair(&ch1, &ch2));
+ 
+-g_io_channel_set_flags(ch1, G_IO_FLAG_NONBLOCK, NULL);
+-g_io_channel_set_flags(ch2, G_IO_FLAG_NONBLOCK, NULL);
++    g_io_channel_set_flags(ch1, G_IO_FLAG_NONBLOCK, NULL);
++    g_io_channel_set_flags(ch2, G_IO_FLAG_NONBLOCK, NULL);
+ 
+-irc = irc_new(g_io_channel_unix_get_fd(ch1));
++    irc = irc_new(g_io_channel_unix_get_fd(ch1));
+ 
+-fail_unless(g_io_channel_write_chars(ch2, "NICK bla\r\r\n"
+-                                     "USER a a a a\n", -1, NULL, NULL) == G_IO_STATUS_NORMAL);
+-fail_unless(g_io_channel_flush(ch2, NULL) == G_IO_STATUS_NORMAL);
++    fail_unless(g_io_channel_write_chars(ch2, "NICK bla\r\r\n"
++                "USER a a a a\n", -1, NULL, NULL) == G_IO_STATUS_NORMAL);
++    fail_unless(g_io_channel_flush(ch2, NULL) == G_IO_STATUS_NORMAL);
+ 
+-g_main_iteration(FALSE);
+-irc_free(irc);
++    g_main_iteration(FALSE);
++    irc_free(irc);
+ 
+-fail_unless(g_io_channel_read_to_end(ch2, &raw, NULL, NULL) == G_IO_STATUS_NORMAL);
++    fail_unless(g_io_channel_read_to_end(ch2, &raw, NULL, NULL) == G_IO_STATUS_NORMAL);
+ 
+-fail_unless(strstr(raw, "001") != NULL);
+-fail_unless(strstr(raw, "002") != NULL);
+-fail_unless(strstr(raw, "003") != NULL);
+-fail_unless(strstr(raw, "004") != NULL);
+-fail_unless(strstr(raw, "005") != NULL);
++    fail_unless(strstr(raw, "001") != NULL);
++    fail_unless(strstr(raw, "002") != NULL);
++    fail_unless(strstr(raw, "003") != NULL);
++    fail_unless(strstr(raw, "004") != NULL);
++    fail_unless(strstr(raw, "005") != NULL);
+ 
+-g_free(raw);
++    g_free(raw);
++}
+ END_TEST
+ 
+ Suite *irc_suite(void)
+diff --git a/tests/check_jabber_sasl.c b/tests/check_jabber_sasl.c
+index e7ea8a75..b6c34bb8 100644
+--- a/tests/check_jabber_sasl.c
++++ b/tests/check_jabber_sasl.c
+@@ -77,7 +77,7 @@ struct {
+ 	{ NULL, NULL, NULL }
+ };
+ 
+-static void check_get_part(int l)
++START_TEST(check_get_part)
+ {
+ 	int i;
+ 
+@@ -103,6 +103,7 @@ static void check_get_part(int l)
+ 		g_free(res);
+ 	}
+ }
++END_TEST
+ 
+ Suite *jabber_sasl_suite(void)
+ {
+diff --git a/tests/check_jabber_util.c b/tests/check_jabber_util.c
+index e4d4533a..411f58b1 100644
+--- a/tests/check_jabber_util.c
++++ b/tests/check_jabber_util.c
+@@ -8,7 +8,7 @@
+ 
+ static struct im_connection *ic;
+ 
+-static void check_buddy_add(int l)
++START_TEST(check_buddy_add)
+ {
+ 	struct jabber_buddy *budw1, *budw2, *budw3, *budn, *bud;
+ 
+@@ -93,8 +93,9 @@ static void check_buddy_add(int l)
+ 	fail_unless(jabber_buddy_remove(ic, "bugtest@google.com/B"));
+ 	fail_unless(jabber_buddy_remove(ic, "bugtest@google.com/C"));
+ }
++END_TEST
+ 
+-static void check_compareJID(int l)
++START_TEST(check_compareJID)
+ {
+ 	fail_unless(jabber_compare_jid("bugtest@google.com/B", "bugtest@google.com/A"));
+ 	fail_if(jabber_compare_jid("bugtest1@google.com/B", "bugtest@google.com/A"));
+@@ -105,8 +106,9 @@ static void check_compareJID(int l)
+ 	fail_if(jabber_compare_jid(NULL, ""));
+ 	fail_if(jabber_compare_jid("", NULL));
+ }
++END_TEST
+ 
+-static void check_hipchat_slug(int l)
++START_TEST(check_hipchat_slug)
+ {
+ 	int i;
+ 
+@@ -124,6 +126,7 @@ static void check_hipchat_slug(int l)
+ 		g_free(new);
+ 	}
+ }
++END_TEST
+ 
+ Suite *jabber_util_suite(void)
+ {
+diff --git a/tests/check_md5.c b/tests/check_md5.c
+index a68df687..5ca52a5b 100644
+--- a/tests/check_md5.c
++++ b/tests/check_md5.c
+@@ -29,7 +29,7 @@ struct md5_test {
+ 	{ NULL },
+ };
+ 
+-static void check_sums(int l)
++START_TEST(check_sums)
+ {
+ 	int i;
+ 
+@@ -45,6 +45,7 @@ static void check_sums(int l)
+ 		fail_if(memcmp(tests[i].expected, sum, 16) != 0, "%s failed", tests[i].str);
+ 	}
+ }
++END_TEST
+ 
+ Suite *md5_suite(void)
+ {
+diff --git a/tests/check_set.c b/tests/check_set.c
+index 6f8b39b5..cf9429e6 100644
+--- a/tests/check_set.c
++++ b/tests/check_set.c
+@@ -7,97 +7,123 @@
+ #include "testsuite.h"
+ 
+ START_TEST(test_set_add)
+-void *data = "data";
+-set_t *s = NULL, *t;
+-t = set_add(&s, "name", "default", NULL, data);
+-fail_unless(s == t);
+-fail_unless(t->data == data);
+-fail_unless(strcmp(t->def, "default") == 0);
++{
++    void *data = "data";
++    set_t *s = NULL, *t;
++    t = set_add(&s, "name", "default", NULL, data);
++    fail_unless(s == t);
++    fail_unless(t->data == data);
++    fail_unless(strcmp(t->def, "default") == 0);
++}
+ END_TEST
+ 
+ START_TEST(test_set_add_existing)
+-void *data = "data";
+-set_t *s = NULL, *t;
+-t = set_add(&s, "name", "default", NULL, data);
+-t = set_add(&s, "name", "newdefault", NULL, data);
+-fail_unless(s == t);
+-fail_unless(strcmp(t->def, "newdefault") == 0);
++{
++    void *data = "data";
++    set_t *s = NULL, *t;
++    t = set_add(&s, "name", "default", NULL, data);
++    t = set_add(&s, "name", "newdefault", NULL, data);
++    fail_unless(s == t);
++    fail_unless(strcmp(t->def, "newdefault") == 0);
++}
+ END_TEST
+ 
+ START_TEST(test_set_find_unknown)
+-set_t * s = NULL;
+-fail_unless(set_find(&s, "foo") == NULL);
++{
++    set_t * s = NULL;
++    fail_unless(set_find(&s, "foo") == NULL);
++}
+ END_TEST
+ 
+ START_TEST(test_set_find)
+-void *data = "data";
+-set_t *s = NULL, *t;
+-t = set_add(&s, "name", "default", NULL, data);
+-fail_unless(s == t);
+-fail_unless(set_find(&s, "name") == t);
++{
++    void *data = "data";
++    set_t *s = NULL, *t;
++    t = set_add(&s, "name", "default", NULL, data);
++    fail_unless(s == t);
++    fail_unless(set_find(&s, "name") == t);
++}
+ END_TEST
+ 
+ START_TEST(test_set_get_str_default)
+-void *data = "data";
+-set_t *s = NULL, *t;
+-t = set_add(&s, "name", "default", NULL, data);
+-fail_unless(s == t);
+-fail_unless(strcmp(set_getstr(&s, "name"), "default") == 0);
++{
++    void *data = "data";
++    set_t *s = NULL, *t;
++    t = set_add(&s, "name", "default", NULL, data);
++    fail_unless(s == t);
++    fail_unless(strcmp(set_getstr(&s, "name"), "default") == 0);
++}
+ END_TEST
+ 
+ START_TEST(test_set_get_bool_default)
+-void *data = "data";
+-set_t *s = NULL, *t;
+-t = set_add(&s, "name", "true", NULL, data);
+-fail_unless(s == t);
+-fail_unless(set_getbool(&s, "name"));
++{
++    void *data = "data";
++    set_t *s = NULL, *t;
++    t = set_add(&s, "name", "true", NULL, data);
++    fail_unless(s == t);
++    fail_unless(set_getbool(&s, "name"));
++}
+ END_TEST
+ 
+ START_TEST(test_set_get_bool_integer)
+-void *data = "data";
+-set_t *s = NULL, *t;
+-t = set_add(&s, "name", "3", NULL, data);
+-fail_unless(s == t);
+-fail_unless(set_getbool(&s, "name") == 3);
++{
++    void *data = "data";
++    set_t *s = NULL, *t;
++    t = set_add(&s, "name", "3", NULL, data);
++    fail_unless(s == t);
++    fail_unless(set_getbool(&s, "name") == 3);
++}
+ END_TEST
+ 
+ START_TEST(test_set_get_bool_unknown)
+-set_t * s = NULL;
+-fail_unless(set_getbool(&s, "name") == 0);
++{
++    set_t * s = NULL;
++    fail_unless(set_getbool(&s, "name") == 0);
++}
+ END_TEST
+ 
+ START_TEST(test_set_get_str_value)
+-void *data = "data";
+-set_t *s = NULL;
+-set_add(&s, "name", "default", NULL, data);
+-set_setstr(&s, "name", "foo");
+-fail_unless(strcmp(set_getstr(&s, "name"), "foo") == 0);
++{
++    void *data = "data";
++    set_t *s = NULL;
++    set_add(&s, "name", "default", NULL, data);
++    set_setstr(&s, "name", "foo");
++    fail_unless(strcmp(set_getstr(&s, "name"), "foo") == 0);
++}
+ END_TEST
+ 
+ START_TEST(test_set_get_str_unknown)
+-set_t * s = NULL;
+-fail_unless(set_getstr(&s, "name") == NULL);
++{
++    set_t * s = NULL;
++    fail_unless(set_getstr(&s, "name") == NULL);
++}
+ END_TEST
+ 
+ START_TEST(test_setint)
+-void *data = "data";
+-set_t *s = NULL;
+-set_add(&s, "name", "10", NULL, data);
+-set_setint(&s, "name", 3);
+-fail_unless(set_getint(&s, "name") == 3);
++{
++    void *data = "data";
++    set_t *s = NULL;
++    set_add(&s, "name", "10", NULL, data);
++    set_setint(&s, "name", 3);
++    fail_unless(set_getint(&s, "name") == 3);
++}
+ END_TEST
+ 
+ START_TEST(test_setstr)
+-void *data = "data";
+-set_t *s = NULL;
+-set_add(&s, "name", "foo", NULL, data);
+-set_setstr(&s, "name", "bloe");
+-fail_unless(strcmp(set_getstr(&s, "name"), "bloe") == 0);
++{
++    void *data = "data";
++    set_t *s = NULL;
++    set_add(&s, "name", "foo", NULL, data);
++    set_setstr(&s, "name", "bloe");
++    fail_unless(strcmp(set_getstr(&s, "name"), "bloe") == 0);
++}
+ END_TEST
+ 
+ START_TEST(test_set_get_int_unknown)
+-set_t * s = NULL;
+-fail_unless(set_getint(&s, "foo") == 0);
++{
++    set_t * s = NULL;
++    fail_unless(set_getint(&s, "foo") == 0);
++}
+ END_TEST
+ 
+ Suite *set_suite(void)
+diff --git a/tests/check_util.c b/tests/check_util.c
+index 44a223ae..2d79417e 100644
+--- a/tests/check_util.c
++++ b/tests/check_util.c
+@@ -8,7 +8,8 @@
+ #include "misc.h"
+ #include "url.h"
+ 
+-START_TEST(test_strip_linefeed){
++START_TEST(test_strip_linefeed)
++{
+ 	int i;
+ 	const char *get[] = { "Test", "Test\r", "Test\rX\r", NULL };
+ 	const char *expected[] = { "Test", "Test", "TestX", NULL };
+@@ -43,63 +44,73 @@ START_TEST(test_strip_newlines)
+ END_TEST
+ 
+ START_TEST(test_set_url_http)
+-url_t url;
+-
+-fail_if(0 == url_set(&url, "http://host/"));
+-fail_unless(!strcmp(url.host, "host"));
+-fail_unless(!strcmp(url.file, "/"));
+-fail_unless(!strcmp(url.user, ""));
+-fail_unless(!strcmp(url.pass, ""));
+-fail_unless(url.proto == PROTO_HTTP);
+-fail_unless(url.port == 80);
++{
++    url_t url;
++
++    fail_if(0 == url_set(&url, "http://host/"));
++    fail_unless(!strcmp(url.host, "host"));
++    fail_unless(!strcmp(url.file, "/"));
++    fail_unless(!strcmp(url.user, ""));
++    fail_unless(!strcmp(url.pass, ""));
++    fail_unless(url.proto == PROTO_HTTP);
++    fail_unless(url.port == 80);
++}
+ END_TEST
+ 
+ START_TEST(test_set_url_https)
+-url_t url;
+-
+-fail_if(0 == url_set(&url, "https://ahost/AimeeMann"));
+-fail_unless(!strcmp(url.host, "ahost"));
+-fail_unless(!strcmp(url.file, "/AimeeMann"));
+-fail_unless(!strcmp(url.user, ""));
+-fail_unless(!strcmp(url.pass, ""));
+-fail_unless(url.proto == PROTO_HTTPS);
+-fail_unless(url.port == 443);
++{
++    url_t url;
++
++    fail_if(0 == url_set(&url, "https://ahost/AimeeMann"));
++    fail_unless(!strcmp(url.host, "ahost"));
++    fail_unless(!strcmp(url.file, "/AimeeMann"));
++    fail_unless(!strcmp(url.user, ""));
++    fail_unless(!strcmp(url.pass, ""));
++    fail_unless(url.proto == PROTO_HTTPS);
++    fail_unless(url.port == 443);
++}
+ END_TEST
+ 
+ START_TEST(test_set_url_port)
+-url_t url;
+-
+-fail_if(0 == url_set(&url, "https://ahost:200/Lost/In/Space"));
+-fail_unless(!strcmp(url.host, "ahost"));
+-fail_unless(!strcmp(url.file, "/Lost/In/Space"));
+-fail_unless(!strcmp(url.user, ""));
+-fail_unless(!strcmp(url.pass, ""));
+-fail_unless(url.proto == PROTO_HTTPS);
+-fail_unless(url.port == 200);
++{
++    url_t url;
++
++    fail_if(0 == url_set(&url, "https://ahost:200/Lost/In/Space"));
++    fail_unless(!strcmp(url.host, "ahost"));
++    fail_unless(!strcmp(url.file, "/Lost/In/Space"));
++    fail_unless(!strcmp(url.user, ""));
++    fail_unless(!strcmp(url.pass, ""));
++    fail_unless(url.proto == PROTO_HTTPS);
++    fail_unless(url.port == 200);
++}
+ END_TEST
+ 
+ START_TEST(test_set_url_username)
+-url_t url;
+-
+-fail_if(0 == url_set(&url, "socks4://user@ahost/Space"));
+-fail_unless(!strcmp(url.host, "ahost"));
+-fail_unless(!strcmp(url.file, "/Space"));
+-fail_unless(!strcmp(url.user, "user"));
+-fail_unless(!strcmp(url.pass, ""));
+-fail_unless(url.proto == PROTO_SOCKS4);
+-fail_unless(url.port == 1080);
++{
++    url_t url;
++
++    fail_if(0 == url_set(&url, "socks4://user@ahost/Space"));
++    fail_unless(!strcmp(url.host, "ahost"));
++    fail_unless(!strcmp(url.file, "/Space"));
++    fail_unless(!strcmp(url.user, "user"));
++    fail_unless(!strcmp(url.pass, ""));
++    fail_unless(url.proto == PROTO_SOCKS4);
++    fail_unless(url.port == 1080);
++}
+ END_TEST
+ 
+ START_TEST(test_set_url_username_pwd)
+-url_t url;
+-
+-fail_if(0 == url_set(&url, "socks5://user:pass@ahost/"));
+-fail_unless(!strcmp(url.host, "ahost"));
+-fail_unless(!strcmp(url.file, "/"));
+-fail_unless(!strcmp(url.user, "user"));
+-fail_unless(!strcmp(url.pass, "pass"));
+-fail_unless(url.proto == PROTO_SOCKS5);
+-fail_unless(url.port == 1080);
++{
++    url_t url;
++
++    fail_if(0 == url_set(&url, "socks5://user:pass@ahost/"));
++    fail_unless(!strcmp(url.host, "ahost"));
++    fail_unless(!strcmp(url.file, "/"));
++    fail_unless(!strcmp(url.user, "user"));
++    fail_unless(!strcmp(url.pass, "pass"));
++    fail_unless(url.proto == PROTO_SOCKS5);
++    fail_unless(url.port == 1080);
++}
+ END_TEST
+ 
+ struct {
+@@ -148,26 +159,30 @@ struct {
+ };
+ 
+ START_TEST(test_word_wrap)
+-int i;
++{
++    int i;
+ 
+-for (i = 0; word_wrap_tests[i].orig && *word_wrap_tests[i].orig; i++) {
+-	char *wrapped = word_wrap(word_wrap_tests[i].orig, word_wrap_tests[i].line_len);
++    for (i = 0; word_wrap_tests[i].orig && *word_wrap_tests[i].orig; i++) {
++        char *wrapped = word_wrap(word_wrap_tests[i].orig, word_wrap_tests[i].line_len);
+ 
+-	fail_unless(strcmp(word_wrap_tests[i].wrapped, wrapped) == 0,
+-	            "%s (line_len = %d) should wrap to `%s', not to `%s'",
+-	            word_wrap_tests[i].orig, word_wrap_tests[i].line_len,
+-	            word_wrap_tests[i].wrapped, wrapped);
++        fail_unless(strcmp(word_wrap_tests[i].wrapped, wrapped) == 0,
++                "%s (line_len = %d) should wrap to `%s', not to `%s'",
++                word_wrap_tests[i].orig, word_wrap_tests[i].line_len,
++                word_wrap_tests[i].wrapped, wrapped);
+ 
+-	g_free(wrapped);
++        g_free(wrapped);
++    }
+ }
+ END_TEST
+ 
+ START_TEST(test_http_encode)
+-char s[80];
++{
++    char s[80];
+ 
+-strcpy(s, "ee\xc3" "\xab" "ee!!...");
+-http_encode(s);
+-fail_unless(strcmp(s, "ee%C3%ABee%21%21...") == 0);
++    strcpy(s, "ee\xc3" "\xab" "ee!!...");
++    http_encode(s);
++    fail_unless(strcmp(s, "ee%C3%ABee%21%21...") == 0);
++}
+ END_TEST
+ 
+ struct {
+@@ -198,19 +213,21 @@ struct {
+ };
+ 
+ START_TEST(test_split_command_parts)
+-int i;
+-for (i = 0; split_tests[i].command; i++) {
+-	char *cmd = g_strdup(split_tests[i].command);
+-	char **split = split_command_parts(cmd, split_tests[i].limit);
+-	char **expected = split_tests[i].expected;
+-
+-	int j;
+-	for (j = 0; split[j] && expected[j]; j++) {
+-		fail_unless(strcmp(split[j], expected[j]) == 0,
+-		            "(%d) split_command_parts broken: split(\"%s\")[%d] -> %s (expected: %s)",
+-		            i, split_tests[i].command, j, split[j], expected[j]);
+-	}
+-	g_free(cmd);
++{
++    int i;
++    for (i = 0; split_tests[i].command; i++) {
++        char *cmd = g_strdup(split_tests[i].command);
++        char **split = split_command_parts(cmd, split_tests[i].limit);
++        char **expected = split_tests[i].expected;
++
++        int j;
++        for (j = 0; split[j] && expected[j]; j++) {
++            fail_unless(strcmp(split[j], expected[j]) == 0,
++                    "(%d) split_command_parts broken: split(\"%s\")[%d] -> %s (expected: %s)",
++                    i, split_tests[i].command, j, split[j], expected[j]);
++        }
++        g_free(cmd);
++    }
+ }
+ END_TEST
+ 
+-- 
+2.26.2
+
