@@ -10,4 +10,4 @@ RDEPEND=!dev-lang/julia
 RESTRICT=strip
 SLOT=0
 SRC_URI=x86? ( https://julialang-s3.julialang.org/bin/linux/x86/1.2/julia-1.2.0-linux-i686.tar.gz ) amd64? ( https://julialang-s3.julialang.org/bin/linux/x64/1.2/julia-1.2.0-linux-x86_64.tar.gz ) amd64-fbsd? ( https://julialang-s3.julialang.org/bin/freebsd/x64/1.2/julia-1.2.0-freebsd-x86_64.tar.gz )
-_md5_=ffeb37e243715799dd319a4002ee1074
+_md5_=bafbb170593156c3ecd0efc1a5dc1d98
