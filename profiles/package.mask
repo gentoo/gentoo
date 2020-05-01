@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-01)
+# Currently packaged release from 2015, needs maintainer + bump. Bug #720346
+# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
+app-mobilephone/ganyremote
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-01)
+# Last release in 2018, wip/gtk3 branch untouched since 2017. Bug #598906
+# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
+app-office/pybliographer
+
 # Michał Górny <mgorny@gentoo.org> (2020-05-01)
 # Wrongly adds '-*' to USE causing catastrophic system breakage.
 # Bug #649416.

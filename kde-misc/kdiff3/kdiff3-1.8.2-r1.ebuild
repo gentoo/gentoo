@@ -36,5 +36,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	sys-apps/diffutils
-	!kde-misc/kdiff3:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-crash-w-o-clipboard.patch" )
