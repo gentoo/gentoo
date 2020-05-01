@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/anonbeat/${PN}/archive/9fec4f7b85095fa2d9f8e4d39c0cf
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="ayatana ipod +minimal"
+IUSE="appindicator ipod +minimal"
 
 # No test available, Making src_test fail
 RESTRICT="test"
@@ -40,7 +40,7 @@ RDEPEND="
 	net-misc/curl
 	sys-apps/dbus
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	ayatana? ( >=dev-libs/libindicate-0.7 )
+	appindicator? ( >=dev-libs/libindicate-0.7 )
 	ipod? ( media-libs/libgpod )
 	!minimal? ( ${GST_DEPS} )"
 DEPEND="${RDEPEND}
@@ -76,7 +76,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_IPOD=$(usex ipod)
-		-DENABLE_LIBINDICATE=$(usex ayatana)
+		-DENABLE_LIBINDICATE=$(usex appindicator)
 	)
 	cmake-utils_src_configure
 }
