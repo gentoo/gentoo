@@ -24,6 +24,10 @@ RDEPEND="
 	dev-python/feedparser[${PYTHON_USEDEP}]
 	dev-python/ujson[${PYTHON_USEDEP}]
 "
+# toml via setuptools_scm[toml]
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]"
 
 distutils_enable_sphinx "docs/source"
 
