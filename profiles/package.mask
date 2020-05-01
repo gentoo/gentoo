@@ -894,9 +894,9 @@ net-misc/wicd
 
 # Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
 # Proxy Maintainers <proxy-maint@gentoo.org>
-# v3.6.3 uses huge amounts of memory: Bug #705682
+# v3.6.4 uses huge amounts of memory: Bug #705682
 # v3.6.1 is the latest version without this issue
-=dev-libs/libsass-3.6.3
+>=dev-libs/libsass-3.6.2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
 # Starting with Firefox 74 Mozilla removes xpi sideloading support
