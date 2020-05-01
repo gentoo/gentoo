@@ -16,7 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 
 SENDTO="cdr gajim +mail pidgin upnp"
-IUSE="image-converter +open-terminal share +wallpaper xattr ${SENDTO}"
+IUSE="image-converter +open-terminal sendto +wallpaper xattr ${SENDTO}"
 
 COMMON_DEPEND=">=dev-libs/glib-2.50:2
 	>=mate-base/caja-1.21.3
@@ -67,7 +67,7 @@ src_configure() {
 		--disable-gksu \
 		$(use_enable image-converter) \
 		$(use_enable open-terminal) \
-		$(use_enable share) \
+		$(use_enable sendto share) \
 		$(use_enable wallpaper) \
 		$(use_enable xattr xattr-tags)
 }
