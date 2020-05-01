@@ -1,0 +1,25 @@
+commit 9f855d41f3e6d610bd01df9688467fdbb341917c
+Author: Alexey Sokolov <sokolov@google.com>
+Date:   Fri May 1 08:36:09 2020 +0100
+
+    Make failed tests fail the test
+
+diff --git a/run_tests b/run_tests
+index 3bf51e4a..cc7fb56a 100755
+--- a/run_tests
++++ b/run_tests
+@@ -4,10 +4,10 @@ for t in tests/test*; do
+     echo $t
+     file_type=$(file -b $t)
+     case ${file_type} in
+-        *[Pp]ython*) python ${t} ;;
+-        *Bourne*) bash ${t} ;;
+-        *bash*)   bash ${t} ;;
+-        *perl*)   perl ${t} ;;
++        *[Pp]ython*) python ${t} || exit 1 ;;
++        *Bourne*) bash ${t} || exit 1 ;;
++        *bash*)   bash ${t} || exit 1 ;;
++        *perl*)   perl ${t} || exit 1 ;;
+         *) echo "Unknown" ;;
+     esac
+     echo
