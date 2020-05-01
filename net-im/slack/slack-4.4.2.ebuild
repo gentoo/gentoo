@@ -14,7 +14,7 @@ SRC_URI="https://downloads.slack-edge.com/linux_releases/${PN}-desktop-${PV}-amd
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="ayatana suid"
+IUSE="appindicator suid"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
@@ -46,7 +46,7 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
-	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
+	appindicator? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="/opt/slack/chrome-sandbox
 	/opt/slack/libEGL.so
@@ -70,7 +70,7 @@ src_prepare() {
 		usr/share/applications/slack.desktop \
 		|| die "sed failed in Icon for slack.desktop"
 
-	if use ayatana ; then
+	if use appindicator ; then
 		sed -i '/Exec/s|=|=env XDG_CURRENT_DESKTOP=Unity |' \
 			usr/share/applications/slack.desktop \
 			|| die "sed failed for slack.desktop"
