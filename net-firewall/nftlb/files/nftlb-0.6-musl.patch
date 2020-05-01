@@ -1,0 +1,72 @@
+diff --git a/configure.ac b/configure.ac
+index 4e7b0a9..2396857 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2,6 +2,7 @@ AC_INIT([nftlb], [0.6], [netfilter-devel@vger.kernel.org])
+ 
+ AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_MACRO_DIR([m4])
++AC_CONFIG_HEADERS([config.h])
+ AM_INIT_AUTOMAKE([-Wall foreign subdir-objects
+         tar-pax no-dist-gzip dist-bzip2 1.6])
+ 
+@@ -25,5 +26,7 @@ AC_CHECK_HEADER([ev.h], [EVENTINC="-include ev.h"],
+ 				 [EVENTINC="-include libev/ev.h"],
+ 				 [AC_MSG_ERROR([ev.h not found])])])
+ 
++AC_CHECK_HEADERS([execinfo.h])
++
+ AC_CONFIG_FILES([Makefile src/Makefile])
+ AC_OUTPUT
+diff --git a/src/main.c b/src/main.c
+index b6b5ec4..b2a080f 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -18,6 +18,7 @@
+  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  *
+  */
++#include "config.h"
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -26,7 +27,10 @@
+ #include <syslog.h>
+ #include <errno.h>
+ #include <unistd.h>
++
++#ifdef HAVE_EXECINFO_H
+ #include <execinfo.h>
++#endif /* HAVE_EXECINFO_H */
+ 
+ #include "config.h"
+ #include "objects.h"
+@@ -85,6 +89,7 @@ static void nftlb_sighandler(int signo)
+ 	exit(EXIT_SUCCESS);
+ }
+ 
++#ifdef HAVE_EXECINFO_H
+ static void nftlb_trace() {
+ 	void *buffer[255];
+ 	char **str;
+@@ -106,6 +111,7 @@ static void nftlb_trace() {
+ 
+ 	exit(EXIT_FAILURE);
+ }
++#endif /* HAVE_EXECINFO_H */
+ 
+ int main(int argc, char *argv[])
+ {
+@@ -157,8 +163,12 @@ int main(int argc, char *argv[])
+ 
+ 	if (signal(SIGINT, nftlb_sighandler) == SIG_ERR ||
+ 	    signal(SIGTERM, nftlb_sighandler) == SIG_ERR ||
++#ifdef HAVE_EXECINFO_H
+ 	    signal(SIGPIPE, SIG_IGN) == SIG_ERR ||
+ 	    signal(SIGSEGV, nftlb_trace) == SIG_ERR) {
++#else
++	    signal(SIGPIPE, SIG_IGN) == SIG_ERR) {
++#endif /* HAVE_EXECINFO_H */
+ 		fprintf(stderr, "Error assigning signals\n");
+ 		syslog(LOG_ERR, "Error assigning signals");
+ 		return EXIT_FAILURE;
