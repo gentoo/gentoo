@@ -15242,7 +15242,7 @@ net-vpn/networkmanager-vpnc 1.2.6-r2: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/ocserv 1.0.0: Openconnect SSL VPN server
-net-vpn/openconnect 8.06 8.08 9999: Free client for Cisco AnyConnect SSL VPN software
+net-vpn/openconnect 8.06 8.08 8.09 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.13.2 1.13.3: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6 2.4.6-r1 2.4.7-r1 2.4.8 2.4.9 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r4: P2P mesh VPN
@@ -17840,8 +17840,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0-r1 68.7.0-r1 75.0-r3: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.7.0 75.0: Firefox Web Browser
 www-client/google-chrome 81.0.4044.129: The web browser from Google
-www-client/google-chrome-beta 83.0.4103.23: The web browser from Google
-www-client/google-chrome-unstable 84.0.4122.7: The web browser from Google
+www-client/google-chrome-beta 83.0.4103.34: The web browser from Google
+www-client/google-chrome-unstable 84.0.4128.3: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
@@ -17888,7 +17888,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r2: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.363: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 81.0.4044.129 83.0.4103.23_beta 84.0.4122.7_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 81.0.4044.129 83.0.4103.34_beta 84.0.4128.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
@@ -18018,7 +18018,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2019.2 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.7 1.20.8 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 430.64-r1 430.64-r2 430.64-r3 435.21-r1 435.21-r2 435.21-r3 440.82 440.82-r1 440.82-r2: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 430.64-r1 430.64-r2 430.64-r4 435.21-r1 435.21-r2 435.21-r4 440.82 440.82-r1 440.82-r3: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
