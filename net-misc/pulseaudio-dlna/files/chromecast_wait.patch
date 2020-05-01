@@ -1,0 +1,11 @@
+diff --git a/pulseaudio_dlna/plugins/chromecast/renderer.py b/pulseaudio_dlna/plugins/chromecast/renderer.py
+index 6950a56..df3d839 100644
+--- a/pulseaudio_dlna/plugins/chromecast/renderer.py
++++ b/pulseaudio_dlna/plugins/chromecast/renderer.py
+@@ -65,6 +65,7 @@ class ChromecastRenderer(pulseaudio_dlna.plugins.renderer.BaseRenderer):
+     def _create_pychromecast(self):
+         chromecast = pychromecast._get_chromecast_from_host(
+             (self.ip, self.port, self.udn, self.model_name, self.name))
++        chromecast.wait()
+         return chromecast
+ 
