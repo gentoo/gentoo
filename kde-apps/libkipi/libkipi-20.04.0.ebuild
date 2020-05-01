@@ -11,7 +11,7 @@ DESCRIPTION="A library for image plugins accross KDE applications"
 
 LICENSE="GPL-2+"
 SLOT="5/32"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 DEPEND="

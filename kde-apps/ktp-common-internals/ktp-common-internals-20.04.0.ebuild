@@ -14,7 +14,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="otr +sso"
 
 RDEPEND="

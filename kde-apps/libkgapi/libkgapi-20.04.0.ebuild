@@ -14,7 +14,7 @@ HOMEPAGE="https://api.kde.org/kdepim/libkgapi/html/index.html"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="nls"
 
 BDEPEND="

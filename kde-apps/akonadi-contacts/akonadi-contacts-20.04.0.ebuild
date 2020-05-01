@@ -12,7 +12,7 @@ inherit ecm kde.org
 DESCRIPTION="Library for akonadi contact integration"
 
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 LICENSE="GPL-2+"
 IUSE=""
 

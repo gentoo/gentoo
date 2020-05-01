@@ -13,7 +13,7 @@ HOMEPAGE="https://kde.org/applications/utilities/org.kde.kbackup"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 DEPEND="

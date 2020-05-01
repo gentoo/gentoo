@@ -13,7 +13,7 @@ HOMEPAGE="https://kde.org/applications/education/org.kde.kgeography"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="

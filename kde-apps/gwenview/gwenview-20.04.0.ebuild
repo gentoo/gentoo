@@ -16,7 +16,7 @@ https://userbase.kde.org/Gwenview"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="activities fits kipi +mpris raw semantic-desktop share X"
 
 # requires running environment

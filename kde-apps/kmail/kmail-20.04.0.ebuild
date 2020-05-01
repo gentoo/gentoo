@@ -17,7 +17,7 @@ https://kontact.kde.org/components/kmail.html"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="telemetry"
 
 # drop qtcore subslot operator when QT_MINIMAL >= 5.14.0
