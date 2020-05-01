@@ -1,0 +1,16 @@
+BDEPEND=java? ( virtual/jdk ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=gmp? ( dev-libs/gmp:0= ) java? ( virtual/jdk ) test-openssl? ( dev-libs/openssl:0 )
+DESCRIPTION=Optimized C library for EC operations on curve secp256k1
+EAPI=7
+HOMEPAGE=https://github.com/bitcoin-core/secp256k1
+IUSE=+asm ecdh endomorphism experimental gmp java +recovery test test-openssl
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=gmp? ( dev-libs/gmp:0= )
+REQUIRED_USE=asm? ( || ( amd64 arm ) arm? ( experimental ) ) ecdh? ( experimental ) java? ( ecdh ) test-openssl? ( test )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/bitcoin-core/secp256k1/archive/b19c000063be11018b4d1a6b0a85871ab9d0bdcf.tar.gz -> libsecp256k1-v0.1_pre20190401.tgz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=fd2e53f40a2faf3835983a015792eb7b
