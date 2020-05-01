@@ -722,11 +722,6 @@ app-vim/vimpress
 # Introduced new privsep (chroot) feature. Masked for testing.
 >=net-misc/dhcpcd-9.0.0
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-02)
-# Broken and unmaintained upstream, last commit in 2016, bug #715594
-# Use sys-block/partitionmanager instead. Masked for removal in 30 days.
-sys-block/kvpm
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-01)
 # Upstream has no idea what they're doing, and every new version
 # introduces more security issues. Freshclam itself can now fetch
