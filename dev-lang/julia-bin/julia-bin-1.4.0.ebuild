@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}"
 
 RESTRICT="strip"
 
+QA_PREBUILT="*"
+
 S="${WORKDIR}/${MY_P}"
 
 src_install() {
