@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit systemd toolchain-funcs
+PYTHON_COMPAT=( python3_{6..8} )
+
+inherit python-any-r1 systemd toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/bitlbee/bitlbee.git"
@@ -32,7 +34,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	acct-group/bitlbee
 	acct-user/bitlbee
-	>=dev-libs/glib-2.16
+	dev-libs/glib:2
 	purple? ( net-im/pidgin )
 	libevent? ( dev-libs/libevent:= )
 	otr? ( >=net-libs/libotr-4 )
@@ -46,17 +48,21 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
 	selinux? ( sec-policy/selinux-bitlbee )
-	test? ( dev-libs/check )"
+	test? ( dev-libs/check )
+"
 
 RDEPEND="${COMMON_DEPEND}
-	xinetd? ( sys-apps/xinetd )"
+	xinetd? ( sys-apps/xinetd )
+"
 
-src_prepare() {
-	[[ ${PV} != "9999" ]] && eapply "${FILESDIR}"/${PN}-3.5-systemd-user.patch
-	eapply_user
-}
+BDEPEND="${PYTHON_DEPS}
+	virtual/pkgconfig
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
+)
 
 src_configure() {
 	local myconf
