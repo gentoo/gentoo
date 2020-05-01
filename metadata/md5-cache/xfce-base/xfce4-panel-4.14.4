@@ -1,3 +1,4 @@
+BDEPEND=dev-util/gdbus-codegen
 DEFINED_PHASES=configure install postinst postrm prepare
 DEPEND=>=dev-libs/glib-2.42 >=x11-libs/cairo-1 >=x11-libs/gtk+-3.22:3[introspection?] x11-libs/libX11 x11-libs/libwnck:3 >=xfce-base/exo-0.11.2:= >=xfce-base/garcon-0.5:= >=xfce-base/libxfce4ui-4.13:= >=xfce-base/libxfce4util-4.13:=[introspection?] >=xfce-base/xfconf-4.13:= gtk2? ( >=x11-libs/gtk+-2.20:2 ) introspection? ( dev-libs/gobject-introspection:= ) vala? ( || ( dev-lang/vala:0.48 dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) ) dev-lang/perl dev-util/gtk-doc-am dev-util/intltool sys-devel/gettext virtual/pkgconfig
 DESCRIPTION=Panel for the Xfce desktop environment
@@ -12,4 +13,4 @@ RESTRICT=!gtk2? ( test )
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/xfce/xfce4-panel/4.14/xfce4-panel-4.14.4.tar.bz2
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=cf8369cbb1dcd6a07c74454e4c735b19
+_md5_=8d3a9a233e5a97e61a9b809eff9fcb06
