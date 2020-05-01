@@ -147,10 +147,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	chown -R bitlbee:bitlbee "${ROOT}"/var/lib/bitlbee
-	[[ -d "${ROOT}"/var/run/bitlbee ]] &&
-		chown -R bitlbee:bitlbee "${ROOT}"/var/run/bitlbee
-
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		einfo
 		elog "The bitlbee init script will now attempt to stop all processes owned by the"
