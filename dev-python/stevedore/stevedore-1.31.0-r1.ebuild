@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 # entry_points is added via setup.cfg as just [entry_points]
 _DISTUTILS_SETUPTOOLS_WARNED=1
