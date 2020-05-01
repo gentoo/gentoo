@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>matt@offtopica.uk</email>
+    <name>Matt Smith</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    OfflineIMAP is software that downloads your email mailbox(es) as local Maildirs.
+    OfflineIMAP will synchronize both sides via IMAP.
+  </longdescription>
   <use>
-    <flag name="sqlite"> Enable runtime support for sqlite mail status backend. </flag>
+    <flag name="sqlite">Enable runtime support for sqlite mail status backend.</flag>
   </use>
   <upstream>
     <remote-id type="github">OfflineIMAP/offlineimap</remote-id>
