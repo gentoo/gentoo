@@ -24,6 +24,10 @@ RDEPEND=">=x11-libs/libdrm-2.4.89[video_cards_radeon]
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Fix-link-failure-with-gcc-10.patch
+)
+
 pkg_pretend() {
 	if use kernel_linux ; then
 		if kernel_is -ge 3 9; then
