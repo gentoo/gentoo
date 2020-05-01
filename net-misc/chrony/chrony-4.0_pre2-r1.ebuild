@@ -23,7 +23,7 @@ REQUIRED_USE="
 CDEPEND="
 	caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
-	nettle? ( dev-libs/nettle )
+	nettle? ( dev-libs/nettle:= )
 	readline? ( >=sys-libs/readline-4.1-r4:= )
 	seccomp? ( sys-libs/libseccomp )
 "
