@@ -1653,7 +1653,7 @@ app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and 
 app-emulation/protontricks 1.4.1 1.4.1-r1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.11 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 4.2.0-r6 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 4.2.0-r6 5.0.0 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -4355,7 +4355,7 @@ dev-java/gnu-crypto 2.0.1-r3: GNU Crypto cryptographic primitives for Java
 dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protocol portion of the hfaxd server
 dev-java/gnu-jaf 1.1.1-r1 1.1.2: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
-dev-java/gradle-bin 3.3 3.4.1 5.2.1: A project automation and build tool with a Groovy based DSL
+dev-java/gradle-bin 3.3 3.4.1 5.2.1 6.3: A project automation and build tool with a Groovy based DSL
 dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
@@ -5121,7 +5121,7 @@ dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing 
 dev-libs/libpwquality 1.4.1 1.4.2: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.3.1 3.4.0: A Qt implementation of XDG standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
-dev-libs/librdkafka 1.1.0 1.2.1 1.2.2 1.3.0 1.4.0: Apache Kafka C/C++ client library
+dev-libs/librdkafka 1.4.0: Apache Kafka C/C++ client library
 dev-libs/librelp 1.4.0 1.5.0 1.6.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.10.0 2.12.0 2.13.0: Generic library for reporting software bugs

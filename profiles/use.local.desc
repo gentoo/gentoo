@@ -580,6 +580,7 @@ app-emulation/qemu:curl - Support ISOs / -cdrom directives vis HTTP or HTTPS.
 app-emulation/qemu:fdt - Enables firmware device tree support
 app-emulation/qemu:glusterfs - Enables GlusterFS cluster fileystem via sys-cluster/glusterfs
 app-emulation/qemu:gnutls - Enable TLS support for the VNC console server. For 1.4 and newer this also enables WebSocket support. For 2.0 through 2.3 also enables disk quorum support.
+app-emulation/qemu:io-uring - Enable efficient I/O via sys-libs/liburing.
 app-emulation/qemu:iscsi - Enable direct iSCSI support via net-libs/libiscsi instead of indirectly via the Linux block layer that sys-block/open-iscsi does.
 app-emulation/qemu:jemalloc - Enable jemalloc allocator support
 app-emulation/qemu:jpeg - Enable jpeg image support for the VNC console server

@@ -12,4 +12,4 @@ RESTRICT=bindist fetch strip bundled-libs? ( splitdebug )
 SLOT=0
 SRC_URI=WorldOfGoo.Linux.1.53.sh
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9670030aa0f31e9cd6108b30efd468e5
+_md5_=310a5868b74d3bda3beb0f7bd1055998
