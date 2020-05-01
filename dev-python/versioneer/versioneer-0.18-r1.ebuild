@@ -18,7 +18,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	test? ( dev-vcs/git )
+	test? (
+		dev-python/packaging[${PYTHON_USEDEP}]
+		dev-vcs/git
+	)
 "
 
 PATCHES=(
