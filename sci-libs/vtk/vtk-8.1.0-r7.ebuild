@@ -27,7 +27,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="
 	all-modules aqua boost doc examples imaging ffmpeg gdal java json mpi
-	mysql odbc offscreen postgres python qt5 rendering tbb theora tk tcl
+	odbc offscreen postgres python qt5 rendering tbb theora tk tcl
 	video_cards_nvidia views web R +X xdmf2"
 
 REQUIRED_USE="
@@ -69,7 +69,6 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg )
 	gdal? ( sci-libs/gdal )
 	java? ( >=virtual/jdk-1.7:* )
-	mysql? ( virtual/mysql )
 	odbc? ( dev-db/unixODBC )
 	offscreen? ( media-libs/mesa[osmesa] )
 	postgres? ( dev-db/postgresql:= )
