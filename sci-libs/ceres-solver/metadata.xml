@@ -29,6 +29,5 @@
     <flag name="sparse">Enable support for sparse matrix algebra with various
   packages from SuiteSparse</flag>
     <flag name="gflags">Use <pkg>dev-cpp/gflags</pkg> for flag parsing</flag>
-    <flag name="c++11">Build ceres-solver using the C++11 standard</flag>
   </use>
 </pkgmetadata>
