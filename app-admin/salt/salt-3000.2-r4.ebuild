@@ -17,7 +17,8 @@ if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+		https://dev.gentoo.org/~chutzpah/dist/salt/salt-3000.2-py38-misc.patch.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -107,11 +108,12 @@ PATCHES=(
 	# https://github.com/saltstack/salt/pull/55410
 	"${FILESDIR}/salt-3000.2-py38.patch"
 
-	"${FILESDIR}/salt-3000.2-py38-misc.patch"
-
 	# https://github.com/saltstack/salt/pull/55900
 	"${FILESDIR}/salt-3000.2-py38-abc.patch"
-	"${FILESDIR}/salt-3000.2-tornado-py38.patch"
+
+	# misc py38 fixups
+	"${WORKDIR}/salt-3000.2-py38-misc.patch"
+	"${FILESDIR}/salt-3000.2-py38-logwarn.patch"
 )
 
 python_prepare() {
@@ -125,6 +127,11 @@ python_prepare() {
 
 	# make sure pkg_resources doesn't bomb because pycrypto isn't installed
 	find . -name '*.txt' -print0 | xargs -0 sed -e '/pycrypto>/ d' -i || die
+
+	einfo "Fixing collections.abc warnings for ${EPYTHON}"
+	local abc
+	abc="$("${EPYTHON}" -c 'import collections.abc; print("|".join((c for c in dir(collections.abc) if not c.startswith("_"))))')" || die
+	find -name '*.py' -type f -print0 | xargs -0 sed -r -e "s:collections\\.(${abc}):collections.abc.\\1:g" -i || die
 
 	# allow the use of the renamed msgpack
 	sed -i '/^msgpack/d' requirements/base.txt || die
