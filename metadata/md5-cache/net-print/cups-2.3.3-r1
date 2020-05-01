@@ -5,7 +5,7 @@ DESCRIPTION=The Common Unix Printing System
 EAPI=7
 HOMEPAGE=https://www.cups.org/
 IUSE=acl dbus debug kerberos lprng-compat pam selinux +ssl static-libs systemd +threads usb X xinetd zeroconf kernel_linux abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~m68k-mint
+KEYWORDS=~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc ~x86 ~m68k-mint
 LICENSE=Apache-2.0
 PDEPEND=>=net-print/cups-filters-1.0.43
 RDEPEND=app-text/libpaper sys-libs/zlib acl? ( kernel_linux? ( sys-apps/acl sys-apps/attr ) ) dbus? ( >=sys-apps/dbus-1.6.18-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) kerberos? ( >=virtual/krb5-0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !lprng-compat? ( !net-print/lprng ) pam? ( sys-libs/pam ) ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) systemd? ( sys-apps/systemd ) usb? ( virtual/libusb:1 ) X? ( x11-misc/xdg-utils ) xinetd? ( sys-apps/xinetd ) zeroconf? ( >=net-dns/avahi-0.6.31-r2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) acct-group/lp acct-group/lpadmin selinux? ( sec-policy/selinux-cups )
@@ -14,4 +14,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	pam	a1771fc1e5831c201eaf18451747d94b	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=30df4f2c94e05b428c870bf766ae1c59
+_md5_=3cd766197cb4d1f763739acb940d78a5
