@@ -155,6 +155,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-81-gcc-noexcept.patch"
 	"${FILESDIR}/chromium-81-gcc-constexpr.patch"
 	"${FILESDIR}/chromium-81-gcc-10.patch"
+	"${FILESDIR}/chromium-81-icu67.patch"
 )
 
 pre_build_checks() {
