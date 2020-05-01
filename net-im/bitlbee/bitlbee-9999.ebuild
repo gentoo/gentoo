@@ -148,7 +148,3 @@ src_install() {
 	exeinto /usr/share/bitlbee
 	doexe utils/{convert_purple.py,bitlbee-ctl.pl}
 }
-
-pkg_postinst() {
-	chown -R bitlbee:bitlbee "${ROOT}"/var/lib/bitlbee
-}
