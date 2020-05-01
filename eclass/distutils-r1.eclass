@@ -416,7 +416,8 @@ distutils_enable_tests() {
 			;;
 		setup.py)
 			python_test() {
-				esetup.py test --verbose
+				nonfatal esetup.py test --verbose ||
+					die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		unittest)
