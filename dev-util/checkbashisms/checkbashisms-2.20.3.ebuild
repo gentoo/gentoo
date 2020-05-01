@@ -26,8 +26,6 @@ S="${WORKDIR}/${MY_P}/scripts"
 src_prepare() {
 	default
 
-	eapply -p2 "${FILESDIR}"/${PN}-2.18.6-command-vV.patch
-
 	sed "s@###VERSION###@${PV}@" -i checkbashisms.pl || die
 }
 
