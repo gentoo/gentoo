@@ -13711,7 +13711,7 @@ media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.6-r1: Digital vinyl emulation software
 media-sound/yarock 1.4.0: Qt-based music player
-media-sound/yoshimi 1.7.0.1: Software synthesizer based on ZynAddSubFX
+media-sound/yoshimi 1.7.0.1 1.7.1: Software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
 media-tv/channeleditor 1.9.2.1-r1 1.9.2.1-r2: Editor for VDR channels.conf
 media-tv/dtv-scan-tables 0_p20171003 0_p20190922 9999: Digital TV scan tables in v3 and v5 format
