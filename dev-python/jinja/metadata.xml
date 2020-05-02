@@ -9,5 +9,6 @@
   <upstream>
     <remote-id type="pypi">Jinja2</remote-id>
     <remote-id type="github">pallets/jinja</remote-id>
+    <remote-id type="cpe">cpe:/a:palletsprojects:jinja</remote-id>
   </upstream>
 </pkgmetadata>
