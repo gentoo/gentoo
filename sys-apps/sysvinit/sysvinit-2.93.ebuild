@@ -65,7 +65,7 @@ src_prepare() {
 			'#hvsi:2345:respawn:/sbin/agetty -L 19200 hvsi0'
 		)
 	fi
-	(use arm || use mips || use sh || use sparc) && sed -i '/ttyS0/s:#::' inittab
+	(use arm || use mips || use sparc) && sed -i '/ttyS0/s:#::' inittab
 	if use kernel_FreeBSD ; then
 		sed -i \
 			-e 's/linux/cons25/g' \
