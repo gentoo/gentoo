@@ -2453,7 +2453,7 @@ app-portage/layman 2.4.2-r1 2.4.3 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.2.2 0.2.3 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.2.2 0.2.3 0.2.4 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1 0.5.3-r2: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -8336,7 +8336,7 @@ dev-python/pygal 2.4.0 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6 1.9.6-r1: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 1.0.3 1.2.0: Python bindings for libgit2
+dev-python/pygit2 1.0.3 1.2.0 1.2.1: Python bindings for libgit2
 dev-python/pyglet 1.2.4 1.5.3: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.5.2 2.6.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
@@ -9996,7 +9996,7 @@ dev-ruby/thread_safe 0.3.6: A collection of thread-safe versions of common core 
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4 0.0.5-r5: Tool to convert an array of struct into an HTML table
 dev-ruby/tilt 2.0.9 2.0.10: Thin interface over template engines to make their usage as generic as possible
-dev-ruby/timecop 0.8.1 0.9.1: A gem providing 'time travel' and 'time freezing' capabilities
+dev-ruby/timecop 0.9.1: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.2.0 4.3.0: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 1.20.2 1.20.3 1.21.1 1.22.2 1.24.1: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet

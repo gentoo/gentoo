@@ -11,4 +11,4 @@ RDEPEND=dev-libs/json-c:= >=sys-auth/libyubikey-1.6 virtual/libusb:1 consolekit?
 SLOT=0
 SRC_URI=https://github.com/Yubico/yubikey-personalization/archive/v1.20.0.tar.gz -> ykpers-1.20.0.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=4766975a12aef88ca53976d236a25bdc
+_md5_=958cb7d4d3987620dcf00a8d038117c0
