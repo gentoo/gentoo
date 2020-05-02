@@ -18,10 +18,6 @@ mate-base/mate bluetooth
 # Lots of deps for little gain
 dev-python/joblib doc
 
-# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
-# Mask until dev-libs/libfido2 is keyworded
-net-misc/openssh security-key
-
 # Matt Turner <mattst88@gentoo.org> (2020-02-02)
 # dev-libs/mongo-c-driver is not keyworded
 net-dialup/freeradius mongodb
