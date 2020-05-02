@@ -3,5 +3,6 @@
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-05-02)
 # greenlet needs arch-specific stack switching code. There is no ia64 port.
+dev-python/gevent
 dev-python/greenlet
 virtual/python-greenlet
