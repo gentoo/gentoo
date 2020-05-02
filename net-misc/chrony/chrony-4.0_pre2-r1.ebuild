@@ -6,19 +6,32 @@ inherit systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="https://chrony.tuxfamily.org/"
-SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
+
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
+
+	inherit git-r3
+else
+	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+fi
+
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="
 	+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline +refclock +rtc
 	+seccomp +sechash selinux
 "
+
 REQUIRED_USE="
 	?? ( libedit readline )
 	sechash? ( nettle )
 "
+
+RESTRICT=test
+
+BDEPEND=""
 
 CDEPEND="
 	caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap )
@@ -27,17 +40,21 @@ CDEPEND="
 	readline? ( >=sys-libs/readline-4.1-r4:= )
 	seccomp? ( sys-libs/libseccomp )
 "
+
 DEPEND="
 	${CDEPEND}
 	html? ( dev-ruby/asciidoctor )
 	pps? ( net-misc/pps-tools )
 "
+
 RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-chronyd )
 "
 
-RESTRICT=test
+if [[ ${PV} == "9999" ]]; then
+	BDEPEND+=" virtual/w3m"
+fi
 
 S="${WORKDIR}/${P/_/-}"
 
@@ -48,6 +65,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	sed -i \
 		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
 		doc/* examples/* || die
@@ -117,6 +135,11 @@ src_configure() {
 }
 
 src_compile() {
+	if [[ ${PV} == "9999" ]]; then
+		# uses w3m
+		emake -C doc man txt
+	fi
+
 	emake all docs $(usex html '' 'ADOC=true')
 }
 
