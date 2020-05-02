@@ -147,6 +147,13 @@ XFAIL_TEST_LIST=(
 	tst-locale-locpath
 	# 9) Failures of unknown origin
 	tst-latepthread
+
+	# buggy test, fixed in glibc-2.31 in 70ba28f7ab29
+	tst-pkey
+
+	# buggy test, assumes /dev/ and /dev/null on a single filesystem
+	# 'mount --bind /dev/null /chroot/dev/null' breaks it.
+	tst-support_descriptors
 )
 
 #
