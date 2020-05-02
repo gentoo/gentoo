@@ -11,5 +11,6 @@ representation of JSON objects.
   </longdescription>
   <upstream>
     <remote-id type="github">json-c/json-c</remote-id>
+    <remote-id type="cpe">cpe:/a:json-c_project:json-c</remote-id>
   </upstream>
 </pkgmetadata>
