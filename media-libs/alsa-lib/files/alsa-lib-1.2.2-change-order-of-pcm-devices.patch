@@ -1,0 +1,80 @@
+From 27c7927842a691ef13724cd16fb26264680c6aa2 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 29 Feb 2020 10:30:37 +0100
+Subject: [PATCH] conf: change the order of PCM devices in alsa.conf
+
+Appearently, some applications use the first device for probe or so.
+
+Fixes: https://github.com/alsa-project/alsa-lib/issues/27
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/conf/alsa.conf | 46 +++++++++++++++++++++++-----------------------
+ 1 file changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/src/conf/alsa.conf b/src/conf/alsa.conf
+index 0998058..a091b81 100644
+--- a/src/conf/alsa.conf
++++ b/src/conf/alsa.conf
+@@ -119,29 +119,6 @@ defaults.timer.subdevice 0
+ #  PCM interface
+ #
+ 
+-# redirect to load-on-demand extended pcm definitions
+-pcm.cards cards.pcm
+-
+-pcm.default cards.pcm.default
+-pcm.sysdefault cards.pcm.default
+-pcm.front cards.pcm.front
+-pcm.rear cards.pcm.rear
+-pcm.center_lfe cards.pcm.center_lfe
+-pcm.side cards.pcm.side
+-pcm.surround21 cards.pcm.surround21
+-pcm.surround40 cards.pcm.surround40
+-pcm.surround41 cards.pcm.surround41
+-pcm.surround50 cards.pcm.surround50
+-pcm.surround51 cards.pcm.surround51
+-pcm.surround71 cards.pcm.surround71
+-pcm.iec958 cards.pcm.iec958
+-pcm.spdif iec958
+-pcm.hdmi cards.pcm.hdmi
+-pcm.dmix cards.pcm.dmix
+-pcm.dsnoop cards.pcm.dsnoop
+-pcm.modem cards.pcm.modem
+-pcm.phoneline cards.pcm.phoneline
+-
+ pcm.hw {
+ 	@args [ CARD DEV SUBDEV ]
+ 	@args.CARD {
+@@ -323,6 +300,29 @@ pcm.null {
+ 	}
+ }
+ 
++# redirect to load-on-demand extended pcm definitions
++pcm.cards cards.pcm
++
++pcm.default cards.pcm.default
++pcm.sysdefault cards.pcm.default
++pcm.front cards.pcm.front
++pcm.rear cards.pcm.rear
++pcm.center_lfe cards.pcm.center_lfe
++pcm.side cards.pcm.side
++pcm.surround21 cards.pcm.surround21
++pcm.surround40 cards.pcm.surround40
++pcm.surround41 cards.pcm.surround41
++pcm.surround50 cards.pcm.surround50
++pcm.surround51 cards.pcm.surround51
++pcm.surround71 cards.pcm.surround71
++pcm.iec958 cards.pcm.iec958
++pcm.spdif iec958
++pcm.hdmi cards.pcm.hdmi
++pcm.dmix cards.pcm.dmix
++pcm.dsnoop cards.pcm.dsnoop
++pcm.modem cards.pcm.modem
++pcm.phoneline cards.pcm.phoneline
++
+ #
+ #  Control interface
+ #
+-- 
+1.8.3.1

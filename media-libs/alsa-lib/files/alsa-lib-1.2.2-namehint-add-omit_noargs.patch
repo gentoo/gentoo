@@ -1,0 +1,108 @@
+From 09e78da4cade7b8fecb8f36717b85c456f2e5487 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 1 Mar 2020 19:57:06 +0100
+Subject: [PATCH] conf: namehint - add omit_noargs to the hint section
+
+Do not list simple surround devices in the namehint function by default.
+
+Fixes: https://github.com/alsa-project/alsa-lib/issues/27
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/conf/pcm/surround21.conf | 1 +
+ src/conf/pcm/surround40.conf | 1 +
+ src/conf/pcm/surround41.conf | 1 +
+ src/conf/pcm/surround50.conf | 1 +
+ src/conf/pcm/surround51.conf | 1 +
+ src/conf/pcm/surround71.conf | 1 +
+ src/control/namehint.c       | 6 +++++-
+ 7 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/conf/pcm/surround21.conf b/src/conf/pcm/surround21.conf
+index 1cf1b7a..ad19507 100644
+--- a/src/conf/pcm/surround21.conf
++++ b/src/conf/pcm/surround21.conf
+@@ -57,5 +57,6 @@ pcm.!surround21 {
+ 	hint {
+ 		description "2.1 Surround output to Front and Subwoofer speakers"
+ 		device_output $DEV
++		omit_noargs true
+ 	}
+ }
+diff --git a/src/conf/pcm/surround40.conf b/src/conf/pcm/surround40.conf
+index 9788ad4..7c61502 100644
+--- a/src/conf/pcm/surround40.conf
++++ b/src/conf/pcm/surround40.conf
+@@ -55,5 +55,6 @@ pcm.!surround40 {
+ 	hint {
+ 		description "4.0 Surround output to Front and Rear speakers"
+ 		device_output $DEV
++		omit_noargs true
+ 	}
+ }
+diff --git a/src/conf/pcm/surround41.conf b/src/conf/pcm/surround41.conf
+index 7b4ef3b..cb6c044 100644
+--- a/src/conf/pcm/surround41.conf
++++ b/src/conf/pcm/surround41.conf
+@@ -61,5 +61,6 @@ pcm.!surround41 {
+ 	hint {
+ 		description "4.1 Surround output to Front, Rear and Subwoofer speakers"
+ 		device_output $DEV
++		omit_noargs true
+ 	}
+ }
+diff --git a/src/conf/pcm/surround50.conf b/src/conf/pcm/surround50.conf
+index 7d9a9e7..70d5406 100644
+--- a/src/conf/pcm/surround50.conf
++++ b/src/conf/pcm/surround50.conf
+@@ -61,5 +61,6 @@ pcm.!surround50 {
+ 	hint {
+ 		description "5.0 Surround output to Front, Center and Rear speakers"
+ 		device_output $DEV
++		omit_noargs true
+ 	}
+ }
+diff --git a/src/conf/pcm/surround51.conf b/src/conf/pcm/surround51.conf
+index e67f007..d0236e4 100644
+--- a/src/conf/pcm/surround51.conf
++++ b/src/conf/pcm/surround51.conf
+@@ -57,5 +57,6 @@ pcm.!surround51 {
+ 	hint {
+ 		description "5.1 Surround output to Front, Center, Rear and Subwoofer speakers"
+ 		device_output $DEV
++		omit_noargs true
+ 	}
+ }
+diff --git a/src/conf/pcm/surround71.conf b/src/conf/pcm/surround71.conf
+index a26c3f3..66792dd 100644
+--- a/src/conf/pcm/surround71.conf
++++ b/src/conf/pcm/surround71.conf
+@@ -59,5 +59,6 @@ pcm.!surround71 {
+ 	hint {
+ 		description "7.1 Surround output to Front, Center, Side, Rear and Woofer speakers"
+ 		device_output $DEV
++		omit_noargs true
+ 	}
+ }
+diff --git a/src/control/namehint.c b/src/control/namehint.c
+index 60c48ae..169bd42 100644
+--- a/src/control/namehint.c
++++ b/src/control/namehint.c
+@@ -287,10 +287,14 @@ static int try_config(snd_config_t *config,
+ 			err = -EINVAL;
+ 			goto __cleanup;
+ 		}
++		if (list->card < 0 &&
++		    snd_config_search(cfg, "omit_noargs", &n) >= 0 &&
++		    snd_config_get_bool(n) > 0)
++			goto __skip_add;
+ 		if (level == 1 &&
+ 		    snd_config_search(cfg, "show", &n) >= 0 &&
+ 		    snd_config_get_bool(n) <= 0)
+-		    	goto __skip_add;
++			goto __skip_add;
+ 		if (buf1 == NULL &&
+ 		    snd_config_search(cfg, "description", &n) >= 0 &&
+ 		    snd_config_get_string(n, &str) >= 0) {
+-- 
+1.8.3.1
