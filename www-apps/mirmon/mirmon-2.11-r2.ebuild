@@ -1,14 +1,15 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit webapp eutils
 WEBAPP_MANUAL_SLOT="yes"
 
 DESCRIPTION="Simple webapp to monitor the status of mirrors"
-HOMEPAGE="https://www.staff.science.uu.nl/~penni101/mirmon/"
-SRC_URI="https://www.staff.science.uu.nl/~penni101/${PN}/${P}.tar.gz"
+# The author has passed away: https://www.apache.org/memorials/henk_penning.html
+HOMEPAGE="http://www2.projects.science.uu.nl/csg/mirmon/mirmon.html"
+SRC_URI="https://deb.debian.org/debian/pool/main/m/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,9 +21,10 @@ RDEPEND="${DEPEND}
 	dev-perl/File-Tempdir
 	dev-perl/Socket6"
 
-src_prepare() {
-	epatch "${FILESDIR}/0002-Add-ipv6-monitor-support-to-mirmon.patch"
-}
+PATCHES=(
+	"${FILESDIR}/2.11-Add-ipv6-monitor-support-to-mirmon.patch"
+	"${FILESDIR}/2.11-Fix-options.patch"
+)
 
 src_install() {
 	# Don't install empty dirs
