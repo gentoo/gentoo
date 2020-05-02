@@ -13012,7 +13012,7 @@ media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stk 4.6.1: Synthesis ToolKit in C++
 media-libs/stops 0.3.0-r1: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/suil 0.10.6: Lightweight C library for loading and wrapping LV2 plugin UIs
-media-libs/svgalib 1.9.25-r5: A library for running svga graphics on the console
+media-libs/svgalib 1.9.25-r5 1.9.25-r6: A library for running svga graphics on the console
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
@@ -17291,7 +17291,7 @@ sys-fs/reiser4progs 1.2.1 2.0.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
-sys-fs/sandboxfs 0.1.1: A virtual file system for sandboxing
+sys-fs/sandboxfs 0.1.1 0.2.0: A virtual file system for sandboxing
 sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 11.2 11.3: a backup program for disk array for home media centers

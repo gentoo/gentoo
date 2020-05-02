@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=A library for running svga graphics on the console
+EAPI=7
+HOMEPAGE=http://www.svgalib.org/
+IUSE=build +kernel-helper kernel_linux kernel_linux
+KEYWORDS=-* ~x86
+LICENSE=BSD
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.arava.co.il/matan/svgalib/svgalib-1.9.25.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	linux-info	ed97304af323c7b2f6934f229982cb7d	linux-mod	9991808b521b5a8c569c9c4ccf8893f6	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=7b8c9348a243b47e50bcb39127aea1ad
