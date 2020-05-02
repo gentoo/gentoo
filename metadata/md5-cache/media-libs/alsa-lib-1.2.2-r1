@@ -1,0 +1,15 @@
+BDEPEND=doc? ( >=app-doc/doxygen-1.2.6 ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) )
+DESCRIPTION=Advanced Linux Sound Architecture Library
+EAPI=7
+HOMEPAGE=https://alsa-project.org/
+IUSE=alisp debug doc elibc_uclibc python +thread-safety abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64 python_single_target_python2_7 python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1
+RDEPEND=python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) )
+SLOT=0
+SRC_URI=https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.2.tar.bz2
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=5852cc6e2672db54b541c64c45c74a92
