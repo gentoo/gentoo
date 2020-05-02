@@ -125,17 +125,17 @@ _meson_env_array() {
 	python -c "${__MESON_ARRAY_PARSER}" "$@"
 }
 
-# @FUNCTION: _meson_create_cross_file
+# @FUNCTION: _meson_get_machine_info
+# @USAGE: <tuple>
+# @RETURN: system/cpu_family/cpu variables
 # @INTERNAL
 # @DESCRIPTION:
-# Creates a cross file. meson uses this to define settings for
-# cross-compilers. This function is called from meson_src_configure.
-_meson_create_cross_file() {
-	# Reference: http://mesonbuild.com/Cross-compilation.html
+# Translate toolchain tuple into machine values for meson.
+_meson_get_machine_info() {
+	local tuple=$1
 
 	# system roughly corresponds to uname -s (lowercase)
-	local system=unknown
-	case ${CHOST} in
+	case ${tuple} in
 		*-aix*)          system=aix ;;
 		*-cygwin*)       system=cygwin ;;
 		*-darwin*)       system=darwin ;;
@@ -145,19 +145,29 @@ _meson_create_cross_file() {
 		*-solaris*)      system=sunos ;;
 	esac
 
-	local cpu_family=$(tc-arch)
+	cpu_family=$(tc-arch "${tuple}")
 	case ${cpu_family} in
 		amd64) cpu_family=x86_64 ;;
 		arm64) cpu_family=aarch64 ;;
 	esac
 
 	# This may require adjustment based on CFLAGS
-	local cpu=${CHOST%%-*}
+	cpu=${tuple%%-*}
+}
 
-	local needs_exe_wrapper=false
-	tc-is-cross-compiler && needs_exe_wrapper=true
+# @FUNCTION: _meson_create_cross_file
+# @RETURN: path to cross file
+# @INTERNAL
+# @DESCRIPTION:
+# Creates a cross file. meson uses this to define settings for
+# cross-compilers. This function is called from meson_src_configure.
+_meson_create_cross_file() {
+	local system cpu_family cpu
+	_meson_get_machine_info "${CHOST}"
 
-	cat > "${T}/meson.${CHOST}.${ABI}" <<-EOF
+	local fn=${T}/meson.${CHOST}.ini
+
+	cat > "${fn}" <<-EOF
 	[binaries]
 	ar = $(_meson_env_array "$(tc-getAR)")
 	c = $(_meson_env_array "$(tc-getCC)")
@@ -181,16 +191,67 @@ _meson_create_cross_file() {
 	objc_link_args = $(_meson_env_array "${OBJCFLAGS} ${LDFLAGS}")
 	objcpp_args = $(_meson_env_array "${OBJCXXFLAGS} ${CPPFLAGS}")
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
-	needs_exe_wrapper = ${needs_exe_wrapper}
+	needs_exe_wrapper = true
 	sys_root = '${SYSROOT}'
-	pkg_config_libdir = '${PKG_CONFIG_LIBDIR-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
+	pkg_config_libdir = '${EPREFIX}/usr/$(get_libdir)/pkgconfig'
 
 	[host_machine]
 	system = '${system}'
 	cpu_family = '${cpu_family}'
 	cpu = '${cpu}'
-	endian = '$(tc-endian)'
+	endian = '$(tc-endian "${CHOST}")'
 	EOF
+
+	echo "${fn}"
+}
+
+# @FUNCTION: _meson_create_native_file
+# @RETURN: path to native file
+# @INTERNAL
+# @DESCRIPTION:
+# Creates a native file. meson uses this to define settings for
+# native compilers. This function is called from meson_src_configure.
+_meson_create_native_file() {
+	local system cpu_family cpu
+	_meson_get_machine_info "${CBUILD}"
+
+	local fn=${T}/meson.${CBUILD}.ini
+
+	cat > "${fn}" <<-EOF
+	[binaries]
+	ar = $(_meson_env_array "$(tc-getBUILD_AR)")
+	c = $(_meson_env_array "$(tc-getBUILD_CC)")
+	cpp = $(_meson_env_array "$(tc-getBUILD_CXX)")
+	fortran = $(_meson_env_array "$(tc-getBUILD_PROG FC gfortran)")
+	llvm-config = '$(tc-getBUILD_PROG LLVM_CONFIG llvm-config)'
+	objc = $(_meson_env_array "$(tc-getBUILD_PROG OBJC cc)")
+	objcpp = $(_meson_env_array "$(tc-getBUILD_PROG OBJCXX c++)")
+	pkgconfig = '$(tc-getBUILD_PKG_CONFIG)'
+	strip = $(_meson_env_array "$(tc-getBUILD_STRIP)")
+	windres = $(_meson_env_array "$(tc-getBUILD_PROG RC windres)")
+
+	[properties]
+	c_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_CPPFLAGS}")
+	c_link_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_LDFLAGS}")
+	cpp_args = $(_meson_env_array "${BUILD_CXXFLAGS} ${BUILD_CPPFLAGS}")
+	cpp_link_args = $(_meson_env_array "${BUILD_CXXFLAGS} ${BUILD_LDFLAGS}")
+	fortran_args = $(_meson_env_array "${BUILD_FCFLAGS}")
+	fortran_link_args = $(_meson_env_array "${BUILD_FCFLAGS} ${BUILD_LDFLAGS}")
+	objc_args = $(_meson_env_array "${BUILD_OBJCFLAGS} ${BUILD_CPPFLAGS}")
+	objc_link_args = $(_meson_env_array "${BUILD_OBJCFLAGS} ${BUILD_LDFLAGS}")
+	objcpp_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_CPPFLAGS}")
+	objcpp_link_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_LDFLAGS}")
+	needs_exe_wrapper = false
+	pkg_config_libdir = '${EPREFIX}/usr/$(get_libdir)/pkgconfig'
+
+	[build_machine]
+	system = '${system}'
+	cpu_family = '${cpu_family}'
+	cpu = '${cpu}'
+	endian = '$(tc-endian "${CHOST}")'
+	EOF
+
+	echo "${fn}"
 }
 
 # @FUNCTION: meson_use
@@ -226,6 +287,11 @@ meson_feature() {
 meson_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	tc-export_build_env
+	: ${BUILD_FCFLAGS:=${FCFLAGS}}
+	: ${BUILD_OBJCFLAGS:=${OBJCFLAGS}}
+	: ${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}
+
 	local mesonargs=(
 		meson setup
 		--buildtype plain
@@ -234,12 +300,13 @@ meson_src_configure() {
 		--prefix "${EPREFIX}/usr"
 		--sysconfdir "${EPREFIX}/etc"
 		--wrap-mode nodownload
-		--pkg-config-path="${PKG_CONFIG_PATH-${EPREFIX}/usr/share/pkgconfig}"
+		--build.pkg-config-path="${EPREFIX}/usr/share/pkgconfig"
+		--pkg-config-path="${EPREFIX}/usr/share/pkgconfig"
+		--native-file "$(_meson_create_native_file)"
 	)
 
-	if tc-is-cross-compiler || [[ ${ABI} != ${DEFAULT_ABI-${ABI}} ]]; then
-		_meson_create_cross_file || die "unable to write meson cross file"
-		mesonargs+=( --cross-file "${T}/meson.${CHOST}.${ABI}" )
+	if tc-is-cross-compiler; then
+		mesonargs+=( --cross-file "$(_meson_create_cross_file)" )
 	fi
 
 	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
@@ -273,7 +340,7 @@ meson_src_configure() {
 	python_export_utf8_locale
 
 	echo "${mesonargs[@]}" >&2
-	tc-env_build "${mesonargs[@]}" || die
+	"${mesonargs[@]}" || die
 }
 
 # @FUNCTION: meson_src_compile
