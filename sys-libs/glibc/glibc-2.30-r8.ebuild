@@ -153,6 +153,7 @@ XFAIL_TEST_LIST=(
 
 	# buggy test, assumes /dev/ and /dev/null on a single filesystem
 	# 'mount --bind /dev/null /chroot/dev/null' breaks it.
+	# https://sourceware.org/PR25909
 	tst-support_descriptors
 )
 
