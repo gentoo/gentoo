@@ -8,6 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">rhash</remote-id>
 		<remote-id type="github">rhash/RHash</remote-id>
+		<remote-id type="cpe">cpe:/a:rhash_project:rhash</remote-id>
 		<bugs-to>https://github.com/rhash/RHash/issues</bugs-to>
 	</upstream>
 	<longdescription lang="en">
