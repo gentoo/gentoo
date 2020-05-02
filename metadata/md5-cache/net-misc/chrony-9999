@@ -1,15 +1,15 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
-DEFINED_PHASES=compile configure install postinst prepare unpack
-DEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) seccomp? ( sys-libs/libseccomp ) caps? ( acct-group/ntp acct-user/ntp ) dev-ruby/asciidoctor pps? ( net-misc/pps-tools )
+BDEPEND=virtual/w3m virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst preinst prepare unpack
+DEPEND=caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap ) libedit? ( dev-libs/libedit ) nettle? ( dev-libs/nettle:= ) readline? ( >=sys-libs/readline-4.1-r4:= ) seccomp? ( sys-libs/libseccomp ) html? ( dev-ruby/asciidoctor ) pps? ( net-misc/pps-tools )
 DESCRIPTION=NTP client and server programs
 EAPI=7
 HOMEPAGE=https://chrony.tuxfamily.org/
-IUSE=+adns +caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc +seccomp selinux
+IUSE=+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline +refclock +rtc +seccomp +sechash selinux
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) seccomp? ( sys-libs/libseccomp ) selinux? ( sec-policy/selinux-chronyd ) virtual/tmpfiles
-REQUIRED_USE=?? ( libedit readline )
+RDEPEND=caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap ) libedit? ( dev-libs/libedit ) nettle? ( dev-libs/nettle:= ) readline? ( >=sys-libs/readline-4.1-r4:= ) seccomp? ( sys-libs/libseccomp ) selinux? ( sec-policy/selinux-chronyd ) virtual/tmpfiles
+REQUIRED_USE=?? ( libedit readline ) sechash? ( nettle )
 RESTRICT=test
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=477e373ccb850bfa25c447954edc8501
+_md5_=36cb20e964cf6e34a266f99a97793247
