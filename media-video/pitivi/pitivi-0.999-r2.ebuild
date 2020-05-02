@@ -51,7 +51,8 @@ RDEPEND="${COMMON_DEPEND}
 
 	>=media-libs/gstreamer-editing-services-${GST_VER}:1.0[introspection]
 	>=media-libs/gst-plugins-base-${GST_VER}:1.0[introspection]
-	>=media-libs/gst-plugins-bad-${GST_VER}:1.0[gtk]
+	>=media-libs/gst-plugins-bad-${GST_VER}:1.0
+	>=media-plugins/gst-plugins-gtk-${GST_VER}:1.0
 	>=media-libs/gst-plugins-good-${GST_VER}:1.0
 	>=media-plugins/gst-plugins-libav-${GST_VER}:1.0
 	>=media-plugins/gst-plugins-gdkpixbuf-${GST_VER}:1.0
