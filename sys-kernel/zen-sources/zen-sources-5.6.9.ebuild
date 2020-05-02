@@ -21,7 +21,6 @@ DESCRIPTION="The Zen Kernel Live Sources"
 ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV}-zen1/v${PV}-zen1.patch.xz"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${ZEN_URI}"
 
-
 UNIPATCH_LIST="${DISTDIR}/v${PV}-zen1.patch.xz"
 UNIPATCH_EXCLUDE="2400_iwlwifi-PHY_SKU-NVM-3168-fix.patch"
 UNIPATCH_STRICTORDER="yes"
