@@ -94,7 +94,7 @@ RDEPEND="${COMMON_DEPEND}
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
-CHECKREQS_DISK_BUILD="8G"
+CHECKREQS_DISK_BUILD="9G"
 
 mysql_init_vars() {
 	: ${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mysql"}
