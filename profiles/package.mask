@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-05-02)
+# New boost, mask for potential breakage.
+>=dev-util/boost-build-1.73
+>=dev-libs/boost-1.73
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-01)
 # Currently packaged release from 2015, needs maintainer + bump. Bug #720346
 # Stuck on Python 2 and pygtk. Masked for removal in 30 days.
