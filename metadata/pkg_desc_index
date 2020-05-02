@@ -15082,7 +15082,7 @@ net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.3 1.12.7-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
-net-news/newsboat 2.13 2.18 2.19: An RSS/Atom feed reader for text terminals
+net-news/newsboat 2.13 2.18 2.19-r1: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.19.3 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
@@ -17347,7 +17347,7 @@ sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 5.4.34 5.4.35 5.5.19 5.6.6 5.6.7: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 3.16.83 4.4.220 4.9.220 4.14.177 4.19.119 5.4.36 5.5.18 5.6.8: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.83 4.4.221 4.9.221 4.14.178 4.19.120 5.4.38 5.5.18 5.6.10: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.13 5.6.9: The Zen Kernel Live Sources
