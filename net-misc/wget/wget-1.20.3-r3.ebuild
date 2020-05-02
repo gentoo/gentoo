@@ -54,6 +54,8 @@ BDEPEND="
 
 DOCS=( AUTHORS MAILING-LIST NEWS README doc/sample.wgetrc )
 
+PATCHES=( "${FILESDIR}"/${P}-gcc10-fno-common.patch )
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
