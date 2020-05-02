@@ -88,8 +88,6 @@ src_configure() {
 	# In many places aliasing rules are broken; play it safe
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
-	# SuperH needs this
-	use sh && append-flags -mieee
 
 	# Socks support via dante
 	if use socks5 ; then
