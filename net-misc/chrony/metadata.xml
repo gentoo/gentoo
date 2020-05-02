@@ -29,4 +29,7 @@ Chrony はコンピュータのシステム・クロックの精度を保つた�
 <flag name="rtc">Support for the Linux Real Time Clock interface</flag>
 <flag name="sechash">Enable support for hashes other than MD5</flag>
 </use>
+<upstream>
+<remote-id type="cpe">cpe:/a:chrony_project:chrony</remote-id>
+</upstream>
 </pkgmetadata>
