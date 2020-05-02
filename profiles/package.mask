@@ -239,12 +239,6 @@ dev-python/pyswisseph
 # Removal in 30 days.  Bug #719424.
 dev-python/pyodbc
 
-# Mike Gilbert <floppym@gentoo.org> (2020-04-25)
-# Causes multilib glib failure.
-# https://bugs.gentoo.org/719382
-=dev-util/meson-0.54.0
-=dev-util/meson-0.54.1
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-25)
 # Unmaintained.  Stuck on Python 3.6.  Missing tests.  The only revdep
 # is masked for removal.
