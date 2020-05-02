@@ -581,7 +581,7 @@ app-admin/whowatch 1.8.5 1.8.6: Displays information about users currently logge
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
-app-antivirus/clamav 0.102.2-r1 0.102.2-r2: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.102.2-r1 0.102.2-r3: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2 6.0.1-r5 7.0.1: Download and install third-party clamav signatures
 app-antivirus/clamtk 6.02-r1: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.2.0: Update and verify unofficial Clam Anti-Virus signatures
@@ -650,7 +650,7 @@ app-arch/rar 5.9.0_p20200330: RAR compressor/uncompressor
 app-arch/rpm 4.14.1 4.14.1-r1 4.14.2.1-r1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g-r2: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
-app-arch/sharutils 4.15.2-r1: Tools to deal with shar archives
+app-arch/sharutils 4.15.2-r1 4.15.2-r2: Tools to deal with shar archives
 app-arch/snappy 1.1.7 1.1.8: A high-speed compression/decompression library by Google
 app-arch/stenc 1.0.7: SCSI Tape Encryption Manager enables AES support for LTO drives.
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
@@ -13353,7 +13353,7 @@ media-sound/abcm2ps 8.14.4 8.14.6: Program to convert abc files to Postscript fi
 media-sound/abcmidi 2020.01.22: Programs for processing ABC music notation files
 media-sound/aeolus 0.9.7: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
-media-sound/alsa-tools 1.1.7 1.2.2: Advanced Linux Sound Architecture tools
+media-sound/alsa-tools 1.1.7 1.2.2-r1: Advanced Linux Sound Architecture tools
 media-sound/alsa-utils 1.2.1 1.2.2: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
 media-sound/alsamixer-app 0.1-r1: simple alsa mixer dockapp
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
