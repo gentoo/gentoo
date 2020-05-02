@@ -619,6 +619,7 @@ app-emulation/runc:kmem - Enable Kernel Memory Accounting.
 app-emulation/runv:libvirt - Enable support for KVM via libvirt
 app-emulation/runv:xen - Enable support for the Xen Hypervisor
 app-emulation/ski:debug - enable extra binary emulation debugging via sys-libs/binutils-libs
+app-emulation/skopeo:btrfs - Enables dependencies for the "btrfs" graph driver.
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
 app-emulation/spice-vdagent:consolekit - Use sys-auth/consolekit to determine the master vdagentd in case of multiple running vdagentds (highly recommended)
 app-emulation/vagrant:virtualbox - Use VirtualBox provider.
