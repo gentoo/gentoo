@@ -143,6 +143,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-2.11-flags.patch"
 	"${FILESDIR}/${PN}-2.19-libressl.patch"
+	"${FILESDIR}/${PN}-2.19-json-c-0.14.0.patch"
 )
 
 src_configure() {
