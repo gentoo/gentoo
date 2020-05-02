@@ -26,7 +26,10 @@ RDEPEND="${DEPEND}
 "
 
 S="${WORKDIR}/yubikey-personalization-${PV}"
-PATCHES=( "${FILESDIR}"/${PN}-1.20.0-fix-gcc10-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.20.0-fix-gcc10-fno-common.patch
+	"${FILESDIR}"/${PN}-1.20.0-json-boolean.patch
+)
 
 DOCS=( doc/. AUTHORS NEWS README )
 
