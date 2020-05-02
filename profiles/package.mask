@@ -327,6 +327,7 @@ dev-python/tablib
 dev-python/rackspace-auth-openstack
 dev-python/rax-default-network-flags-python-novaclient-ext
 dev-python/rax-scheduled-images-python-novaclient-ext
+dev-python/zake
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
