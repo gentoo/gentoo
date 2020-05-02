@@ -9,5 +9,6 @@
 		<remote-id type="pypi">pyOpenSSL</remote-id>
 		<remote-id type="launchpad">pyopenssl</remote-id>
 		<remote-id type="sourceforge">pyopenssl</remote-id>
+		<remote-id type="cpe">cpe:/a:pyopenssl:pyopenssl</remote-id>
 	</upstream>
 </pkgmetadata>
