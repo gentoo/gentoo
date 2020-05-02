@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-05-02)
+# Included in recent texlive versions. Please uninstall.
+# Removal in 30 days.
+dev-tex/revtex
+
 # David Seifert <soap@gentoo.org> (2020-05-02)
 # New boost, mask for potential breakage.
 >=dev-util/boost-build-1.73
@@ -327,6 +332,7 @@ dev-python/tablib
 dev-python/rackspace-auth-openstack
 dev-python/rax-default-network-flags-python-novaclient-ext
 dev-python/rax-scheduled-images-python-novaclient-ext
+dev-python/zake
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.

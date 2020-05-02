@@ -19,7 +19,10 @@ RDEPEND="!static? ( libedit? ( dev-libs/libedit ) )"
 DEPEND="${RDEPEND}
 	libedit? ( static? ( dev-libs/libedit[static-libs] ) )"
 
-PATCHES=( "${FILESDIR}/${PN}-0.5.9.1-format-security.patch" )
+PATCHES=(
+	"${FILESDIR}/dash-0.5.9.1-format-security.patch"
+	"${FILESDIR}/dash-0.5.20.2-gcc-fno-common.patch"
+)
 
 src_prepare() {
 	default
