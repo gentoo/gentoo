@@ -16,7 +16,7 @@ SRC_URI="https://github.com/sphinx-doc/sphinxcontrib-websupport/archive/${PV}.ta
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 
 RDEPEND="
 	>=dev-python/six-1.5[${PYTHON_USEDEP}]
