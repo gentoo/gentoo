@@ -19,6 +19,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=("${FILESDIR}"/${PN}-1.18.1-gcc-10.patch)
+
 src_prepare() {
 	default
 	eautoreconf
