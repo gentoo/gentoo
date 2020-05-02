@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.0-disable-help2man-gengetopt-checks.patch"
+	"${FILESDIR}/${PN}-1.1.0-jsonc014.patch"
 )
 
 src_prepare() {
