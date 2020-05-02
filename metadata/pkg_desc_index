@@ -16106,7 +16106,7 @@ sci-libs/suitesparseconfig 4.2.1-r1 5.4.0: Common configurations for all package
 sci-libs/sundials 3.2.1 4.0.2 4.1.0 5.0.0 5.1.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
-sci-libs/symengine 0.5.0-r1: Fast symbolic manipulation library, written in C++
+sci-libs/symengine 0.5.0-r1 0.6.0: Fast symbolic manipulation library, written in C++
 sci-libs/symmetrica 3.0.1: C library for representation theory, combinatorics, and more
 sci-libs/szip 2.1-r2: Extended-Rice lossless compression algorithm implementation
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
