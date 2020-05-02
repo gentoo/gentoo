@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) media-libs/opus:= alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio )
+DESCRIPTION=VoIP library for Telegram clients
+EAPI=7
+HOMEPAGE=https://github.com/telegramdesktop/libtgvoip
+IUSE=+alsa +dsp libressl pulseaudio
+KEYWORDS=~amd64 ~ppc64
+LICENSE=Unlicense
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) media-libs/opus:= alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio )
+REQUIRED_USE=|| ( alsa pulseaudio )
+SLOT=0
+SRC_URI=https://github.com/telegramdesktop/libtgvoip/archive/a045c9eea47b371c0c514c72c76172a211c894cb.tar.gz -> libtgvoip-2.4.4_p20200430.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=70a8397511666de44a7dfcf8b427d0ed
