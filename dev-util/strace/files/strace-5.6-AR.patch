@@ -1,4 +1,4 @@
-From 0b0dccc7f198ce93f9b5faa3613b1630bffb338f Mon Sep 17 00:00:00 2001
+From 81e11a9b8c9469002833bd1707a435b1f81baf92 Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
 Date: Sat, 2 May 2020 16:25:21 -0400
 Subject: [PATCH] configure: check AR variable for 'ar' tool
@@ -11,14 +11,14 @@ Bug: https://bugs.gentoo.org/720712
  1 file changed, 1 insertion(+)
 
 diff --git a/configure.ac b/configure.ac
-index 6aabc2c8..7d6dde67 100644
+index 6aabc2c8..da486c24 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -36,6 +36,7 @@ AC_PROG_CC_STDC
  AC_PROG_CPP
  AC_PROG_INSTALL
  AC_PROG_RANLIB
-+AC_CHECK_TOOL([AR], [ar])
++AM_PROG_AR
  
  AC_USE_SYSTEM_EXTENSIONS
  AX_CODE_COVERAGE
