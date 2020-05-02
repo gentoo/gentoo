@@ -16,9 +16,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="test"
-RESTRICT="!test? ( test )"
-
 DEPEND="dev-libs/libsass
 	dev-python/six[${PYTHON_USEDEP}]
 	test? (
@@ -29,6 +26,8 @@ DEPEND="dev-libs/libsass
 # Remove sassc, in favour of pysassc, see: https://github.com/sass/libsass-python/issues/134
 # This avoids a file collision with dev-lang/sassc
 PATCHES=( "${FILESDIR}"/${P}_rename_sassc.patch )
+
+distutils_enable_tests pytest
 
 python_test() {
 	"${EPYTHON}" sasstests.py || die "Tests fail with ${EPYTHON}"
