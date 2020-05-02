@@ -125,9 +125,7 @@ src_configure() {
 	append-flags $(test-flags -fno-strict-aliasing)
 	append-ldflags $(test-flags -no-pie)	#639568
 
-	if use sh; then
-		replace-flags "-O[1-9]" -O0		#262359
-	elif use ia64; then
+	if use ia64; then
 		replace-flags "-O[2-9]" -O1		#325373
 	else
 		replace-flags "-O[3-9]" -O2
