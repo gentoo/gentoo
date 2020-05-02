@@ -30,7 +30,9 @@ S=${WORKDIR}/${MY_P}
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-	sed -e 's:packages=find_packages(:\0exclude=["examples", "examples.*"]:' -i setup.py || die
+	sed -e 's:packages=find_packages(:\0exclude=["examples", "examples.*"]:' \
+		-e "s:\\(setup_requires=\[\\)'pytest-runner'\\(\],\\):\\1\\2:" \
+		-i setup.py || die
 }
 
 python_test() {
