@@ -1,0 +1,38 @@
+From 4459ec7f6cd394b9d01bd9d537b0f04975583dff Mon Sep 17 00:00:00 2001
+From: Jeroen Roovers <jer@gentoo.org>
+Date: Mon, 16 Mar 2020 19:25:00 +0100
+Subject: [PATCH] input: Fix compiling against libedit with -fno-common
+To: dash@vger.kernel.org
+
+With -fno-common, which will be enabled by default in GCC 10, we see
+this error:
+
+ld: input.o:(.bss+0x0): multiple definition of `el';
+histedit.o:(.bss+0x8): first defined here
+
+To fix this, simply remove the definition as it is not needed.
+
+Signed-off-by: Jeroen Roovers <jer@gentoo.org>
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ src/input.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/input.c b/src/input.c
+index ae0c4c8..e84eca8 100644
+--- a/src/input.c
++++ b/src/input.c
+@@ -67,10 +67,6 @@ MKINIT char basebuf[IBUFSIZ];	/* buffer for top level input file */
+ struct parsefile *parsefile = &basepf;	/* current input file */
+ int whichprompt;		/* 1 == PS1, 2 == PS2 */
+ 
+-#ifndef SMALL
+-EditLine *el;			/* cookie for editline package */
+-#endif
+-
+ STATIC void pushfile(void);
+ static int preadfd(void);
+ static void setinputfd(int fd, int push);
+-- 
+2.25.1
+
