@@ -45,7 +45,7 @@ app-office/pybliographer
 # Michał Górny <mgorny@gentoo.org> (2020-05-01)
 # Wrongly adds '-*' to USE causing catastrophic system breakage.
 # Bug #649416.
-app-portage/ufed
+<app-portage/ufed-0.96
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Requires <OpenSSL-1.1.x. Please migrate to
