@@ -140,6 +140,10 @@ GENTOO_GLIBC_XFAIL_TESTS="${GENTOO_GLIBC_XFAIL_TESTS:-yes}"
 XFAIL_TEST_LIST=(
 	# 9) Failures of unknown origin
 	tst-latepthread
+
+	# buggy test, assumes /dev/ and /dev/null on a single filesystem
+	# 'mount --bind /dev/null /chroot/dev/null' breaks it.
+	tst-support_descriptors
 )
 
 #
