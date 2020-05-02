@@ -6,5 +6,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">golang/protobuf</remote-id>
+    <remote-id type="cpe">cpe:/a:protobuf_project:protobuf</remote-id>
   </upstream>
 </pkgmetadata>
