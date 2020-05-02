@@ -239,7 +239,6 @@ ppc
 ppc64
 riscv
 s390
-sh
 sparc
 x86
 x86-fbsd
