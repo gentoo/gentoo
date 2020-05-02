@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Advanced Linux Sound Architecture tools"
@@ -21,7 +22,7 @@ DEPEND=">=media-libs/alsa-lib-${PV}
 	>=dev-python/pyalsa-1.0.26
 	fltk? ( >=x11-libs/fltk-1.3.0:1 )
 	gtk? (
-		>=dev-python/pygtk-2
+		dev-libs/gobject-introspection
 		x11-libs/gtk+:2
 		x11-libs/gtk+:3
 	)" #468294
