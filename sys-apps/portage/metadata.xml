@@ -5,6 +5,7 @@
     <bugs-to>mailto:dev-portage@gentoo.org</bugs-to>
     <changelog>https://gitweb.gentoo.org/proj/portage.git/plain/RELEASE-NOTES</changelog>
     <doc>https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage</doc>
+    <remote-id type="cpe">cpe:/a:gentoo:portage</remote-id>
   </upstream>
   <maintainer type="project">
     <email>dev-portage@gentoo.org</email>
