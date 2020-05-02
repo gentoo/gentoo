@@ -108,13 +108,6 @@ src_prepare() {
 	multilib_copy_sources
 }
 
-src_configure() {
-	# those steps should be done once-per-ebuild rather than per-ABI
-	use sh && replace-flags -O? -O0
-
-	multilib-minimal_src_configure
-}
-
 multilib_src_configure() {
 	local myconf=(
 		--disable-monodoc
