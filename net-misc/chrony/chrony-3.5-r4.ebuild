@@ -51,7 +51,7 @@ src_prepare() {
 		doc/* examples/* || die
 
 	# Copy for potential user fixup
-	cp "${FILESDIR}"/chronyd.conf "${T}"/chronyd.conf
+	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf
 	cp examples/chronyd.service "${T}"/chronyd.service
 
 	# Set config for privdrop
@@ -164,7 +164,7 @@ pkg_preinst() {
 pkg_postinst() {
 	tmpfiles_process chronyd.conf
 
-	if use caps && ! ${HAD_CAPS}; then
+	if [[ -n ${REPLACING_VERSIONS} ]] && use caps && ! ${HAD_CAPS}; then
 		ewarn "Please adjust permissions on ${EROOT}/var/{lib,log}/chrony to be owned by ntp:ntp"
 		ewarn "e.g. chown -R ntp:ntp ${EROOT}/var/{lib,log}/chrony"
 		ewarn "This is necessary for chrony to drop privileges"

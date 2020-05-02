@@ -24,10 +24,6 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-PATCHES=(
-	"${FILESDIR}"/${P}-pypy3.patch
-)
-
 src_prepare() {
 	sed -i -e '/--cov/d' setup.cfg || die
 	distutils-r1_src_prepare

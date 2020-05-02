@@ -9,6 +9,7 @@
     <email>mgorny@gentoo.org</email>
     <name>Michał Górny</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">python-bugzilla/python-bugzilla</remote-id>
     <remote-id type="pypi">python-bugzilla</remote-id>
