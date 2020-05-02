@@ -35,13 +35,13 @@ CDEPEND="acct-group/clamav
 	!libclamav-only? ( net-misc/curl )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
+	metadata-analysis-api? ( dev-libs/json-c:= )
 	milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) )
 	xml? ( dev-libs/libxml2 )"
 
 BDEPEND="virtual/pkgconfig"
 
 DEPEND="${CDEPEND}
-	metadata-analysis-api? ( dev-libs/json-c:* )
 	test? ( dev-libs/check )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-clamav )"
@@ -55,6 +55,19 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoconf
+
+	if ! use clamsubmit; then
+		# ENABLE_CLAMSUBMIT is defined in the configure script based on
+		# only the values of $have_curl and $have_json (so we have no
+		# easy way to disable it). Here we hack the configure script to
+		# manually set the value of ENABLE_CLAMSUBMIT to something falsy
+		# when USE=clamsubmit is not set. Yes, this looks backwards. The
+		# value '#' is not a boolean indicator, it's a comment character.
+		sed -e "s/ENABLE_CLAMSUBMIT_TRUE=$/ENABLE_CLAMSUBMIT_TRUE='#'/" \
+			-e "s/ENABLE_CLAMSUBMIT_FALSE='#'/ENABLE_CLAMSUBMIT_FALSE=/" \
+			-i configure \
+			|| die 'failed to disable clamsubmit in ./configure script'
+	fi
 }
 
 src_configure() {
@@ -67,13 +80,11 @@ src_configure() {
 	# but that does not work
 	# do not add this, since --disable-xml seems to override
 	# --without-xml
-	JSONUSE="--without-libjson"
+	JSONCONF="--without-libjson"
 
 	if use clamsubmit || use metadata-analysis-api; then
-		# either of those 2 requires libjson.
-		# clamsubmit will be built as soon as libjson and curl are found
-		# but we only install the binary if requested
-		JSONUSE="--with-libjson=${EPREFIX}/usr"
+		# Either of these requires libjson-c.
+		JSONCONF="--with-libjson=${EPREFIX}/usr"
 	fi
 
 	local myeconfargs=(
@@ -84,7 +95,7 @@ src_configure() {
 		$(use_enable test check)
 		$(use_with xml)
 		$(use_with iconv)
-		${JSONUSE}
+		${JSONCONF}
 		$(use_enable libclamav-only)
 		$(use_with !libclamav-only libcurl)
 		--with-system-libmspack
