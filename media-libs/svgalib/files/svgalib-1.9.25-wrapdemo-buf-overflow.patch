@@ -1,0 +1,14 @@
+Fix buffer overflow in palette when writing last non-used element:
+
+wrapdemo.c:256:29: warning: iteration 63 invokes undefined behavior [-Waggressive-loop-optimizations]
+--- svgalib-1.9.25/threeDKit/wrapdemo.c.orig	2020-05-01 23:41:32.000000000 +0300
++++ svgalib-1.9.25/threeDKit/wrapdemo.c	2020-05-01 23:41:55.911933032 +0300
+@@ -230,7 +230,7 @@
+    can be 0, 64, 128, OR 192 */
+ 
+     int i;
+-    unsigned char palette[768];
++    unsigned char palette[769];
+ 
+     for (i = 0; i < 64; i++) {
+ 	palette[i * 3] = i;

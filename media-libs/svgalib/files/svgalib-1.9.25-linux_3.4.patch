@@ -1,22 +1,8 @@
-diff -Naur svgalib-1.9.25/kernel/svgalib_helper/main.c svgalib-1.9.25_new/kernel/svgalib_helper/main.c
---- svgalib-1.9.25/kernel/svgalib_helper/main.c    2006-01-12 18:17:53.000000000 +0000
-+++ svgalib-1.9.25_new/kernel/svgalib_helper/main.c    2012-06-25 15:02:11.000000000 +0100
-@@ -33,7 +33,9 @@
- 
- #include <asm/processor.h>
- #include <asm/uaccess.h>
--#include <asm/system.h>   /* cli(), *_flags */
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,4,0)
-+  #include <asm/system.h>   /* cli(), *_flags */
-+#endif
- #include <asm/segment.h>  /* memcpy and such */
- #include <asm/io.h>
- #include <asm/pgtable.h>
-diff -Naur svgalib-1.9.25/kernel/svgalib_helper/Makefile svgalib-1.9.25_new/kernel/svgalib_helper/Makefile
---- svgalib-1.9.25/kernel/svgalib_helper/Makefile    2006-05-20 13:31:04.000000000 +0100
-+++ svgalib-1.9.25_new/kernel/svgalib_helper/Makefile    2012-06-25 13:39:38.000000000 +0100
+diff '--color=auto' -Naurd svgalib-1.9.25.prev/kernel/svgalib_helper/Makefile svgalib-1.9.25/kernel/svgalib_helper/Makefile
+--- svgalib-1.9.25.prev/kernel/svgalib_helper/Makefile	2020-05-02 09:49:05.072052128 +0300
++++ svgalib-1.9.25/kernel/svgalib_helper/Makefile	2020-05-02 09:50:14.748043187 +0300
 @@ -11,9 +11,11 @@
-    PWD    := $(shell pwd)
+    PWD	:= $(shell pwd)
     TARGET  := svgalib_helper
  
 +   ifneq ($(TOPDIR),)
@@ -27,3 +13,17 @@ diff -Naur svgalib-1.9.25/kernel/svgalib_helper/Makefile svgalib-1.9.25_new/kern
  
  else
  
+diff '--color=auto' -Naurd svgalib-1.9.25.prev/kernel/svgalib_helper/main.c svgalib-1.9.25/kernel/svgalib_helper/main.c
+--- svgalib-1.9.25.prev/kernel/svgalib_helper/main.c	2020-05-02 09:49:05.075052085 +0300
++++ svgalib-1.9.25/kernel/svgalib_helper/main.c	2020-05-02 09:50:14.751043144 +0300
+@@ -38,7 +38,9 @@
+ 
+ #include <asm/processor.h>
+ #include <asm/uaccess.h>
+-#include <asm/system.h>   /* cli(), *_flags */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,4,0)
++  #include <asm/system.h>   /* cli(), *_flags */
++#endif
+ #include <asm/segment.h>  /* memcpy and such */
+ #include <asm/io.h>
+ #include <asm/pgtable.h>
