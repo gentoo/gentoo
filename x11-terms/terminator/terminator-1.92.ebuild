@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS="no"
 inherit distutils-r1 virtualx xdg-utils
 
 DESCRIPTION="Multiple GNOME terminals in one window"
@@ -36,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/terminator-1.91-without-icon-cache.patch
 	"${FILESDIR}"/terminator-1.91-desktop.patch
 	"${FILESDIR}"/terminator-1.92-make-tests-fail.patch
+	"${FILESDIR}"/terminator-1.92-metainfo.patch
 )
 
 src_prepare() {
