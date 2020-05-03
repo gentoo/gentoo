@@ -30,10 +30,10 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/eventlet[${PYTHON_USEDEP}]
-		' 'python3*')
 		!hppa? ( !ia64? (
+			$(python_gen_cond_dep '
+				dev-python/eventlet[${PYTHON_USEDEP}]
+			' 'python3*')
 			$(python_gen_cond_dep '
 				dev-python/gevent[${PYTHON_USEDEP}]
 			' 'python*')
