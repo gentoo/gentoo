@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
+# Last release in 2015, not compatible with >=media-gfx/gimp-2.10.0
+# Masked for removal in 30 days.
+media-plugins/gimp-lensfun
+
 # Piotr Karbowski <slashbeast@gentoo.org> (2020-05-03)
 # Obsolete input drivers, use x11-drivers/xf86-input-libinput
 # or x11-drivers/xf86-input-evdev instead.
@@ -361,13 +366,6 @@ dev-python/junit-xml
 # Unmaintained.  Stuck on Python 3.6.  Nose plugin with no revdeps.
 # Removal in 30 days.  Bug #719000.
 dev-python/ipdbplugin
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Unmaintained.  Stuck at Python 3.6.  dev-python/guessit is broken
-# with modern pyyaml, and the only revdep of that package is masked
-# already.
-# Removal in 30 days.  Bug #718986.
-dev-python/guessit
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Unmaintained.  Stuck at Python 3.6.  The only revdep last rited.
