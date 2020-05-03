@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=x11-misc/xkeyboard-config >=dev-libs/json-c-0.13:0= >=dev-libs/libinput-1.6.0:0= dev-libs/libpcre dev-libs/wayland x11-libs/cairo x11-libs/libxkbcommon x11-libs/pango x11-libs/pixman media-libs/mesa[gles2] elogind? ( >=sys-auth/elogind-239 ) swaybar? ( x11-libs/gdk-pixbuf:2 ) swaybg? ( gui-apps/swaybg ) swayidle? ( gui-apps/swayidle ) swaylock? ( gui-apps/swaylock ) systemd? ( >=sys-apps/systemd-239 ) X? ( x11-libs/libxcb:0= ) ~gui-libs/wlroots-9999:=[elogind=,systemd=,X=]
 REQUIRED_USE=?? ( elogind systemd ) tray? ( || ( elogind systemd ) )
 SLOT=0
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	meson	9c73a90393af513cef449c0599c5148a	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	meson	5c420ed2737a743967fb9e88ad25b362	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=24bfb5eaa877230feee1fbab3e895cdb
