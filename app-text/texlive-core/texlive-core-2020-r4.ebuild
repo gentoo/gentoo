@@ -61,17 +61,17 @@ TL_CORE_EXTRA_DOC_MODULES="gsftopk.doc texlive.infra.doc texlive-scripts.doc ${T
 TL_CORE_EXTRA_SRC_MODULES="${TL_CORE_BINEXTRA_SRC_MODULES}"
 
 for i in ${TL_CORE_EXTRA_MODULES}; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${PV}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${PV}.tar.xz"
 done
 
 SRC_URI="${SRC_URI} doc? ( "
 for i in ${TL_CORE_EXTRA_DOC_MODULES}; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${PV}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${PV}.tar.xz"
 done
 SRC_URI="${SRC_URI} )"
 SRC_URI="${SRC_URI} source? ( "
 for i in ${TL_CORE_EXTRA_SRC_MODULES}; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${PV}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${PV}.tar.xz"
 done
 SRC_URI="${SRC_URI} )"
 
