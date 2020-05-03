@@ -1,0 +1,49 @@
+libXxf86misc is the client-side code of an X extension that has not been
+supported by the Xserver in more than 10 years. Since xscreensaver's dependency
+on it is automagic, we have to patch configure.in to safely remove it.
+
+https://bugs.gentoo.org/720158
+
+diff -ruN xscreensaver.orig/configure.in xscreensaver/configure.in
+--- xscreensaver.orig/configure.in	2020-05-02 18:09:23.169324761 -0700
++++ xscreensaver/configure.in	2020-05-02 18:09:52.578233240 -0700
+@@ -104,12 +104,6 @@
+ 	    (It's available if the file /usr/include/X11/extensions/XInput.h
+ 	    exists.)])
+ 
+-AH_TEMPLATE([HAVE_XF86MISCSETGRABKEYSSTATE],
+-	    [Define this if you have the XF86MiscSetGrabKeysState function
+-	    (which allows the Ctrl-Alt-KP_star and Ctrl-Alt-KP_slash key
+-	    sequences to be temporarily disabled.  Sadly, it doesn't affect
+-	    Ctrl-Alt-BS or Ctrl-Alt-F1.)])
+-
+ AH_TEMPLATE([HAVE_RANDR],
+ 	    [Define this if you have the Resize and Rotate extension.
+ 	    This is standard on sufficiently-recent XFree86 systems, and
+@@ -1888,25 +1882,6 @@
+ fi
+ 
+ 
+-###############################################################################
+-#
+-#       Check for XF86MiscSetGrabKeysState (but only bother if we are already
+-#	using other XF86 stuff.)
+-#
+-###############################################################################
+-
+-have_xf86miscsetgrabkeysstate=no
+-if test "$have_xf86gamma" = yes -o "$have_xf86vmode" = yes; then
+-  AC_CHECK_X_LIB(Xxf86misc, XF86MiscSetGrabKeysState,
+-                [have_xf86miscsetgrabkeysstate=yes],
+-                [true], -lXext -lX11)
+-  if test "$have_xf86miscsetgrabkeysstate" = yes ; then
+-    SAVER_LIBS="$SAVER_LIBS -lXxf86misc"
+-    AC_DEFINE(HAVE_XF86MISCSETGRABKEYSSTATE)
+-  fi
+-fi
+-
+-
+ ###############################################################################
+ #
+ #       Check for HP XHPDisableReset and XHPEnableReset.
+
