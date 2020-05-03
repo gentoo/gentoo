@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.4-disable-kexec-test.patch
 	"${FILESDIR}"/${PN}-2.0.4-out-of-source.patch
 	"${FILESDIR}"/${P}-remove-duplicated-variable-declarations.patch
+	"${FILESDIR}"/${P}-build-multiboot2-for-i386.patch
 )
 
 pkg_setup() {
