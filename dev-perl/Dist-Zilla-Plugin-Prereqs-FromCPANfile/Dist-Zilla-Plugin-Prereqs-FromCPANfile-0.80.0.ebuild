@@ -11,7 +11,7 @@ DESCRIPTION="Parse cpanfile for prereqs"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-
+RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-perl/Dist-Zilla-4.300.17
 	>=dev-perl/Module-CPANfile-0.903.0
