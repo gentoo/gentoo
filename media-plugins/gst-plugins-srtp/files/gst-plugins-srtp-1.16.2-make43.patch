@@ -1,0 +1,200 @@
+diff --git a/common/glib-gen.mak b/common/glib-gen.mak
+index ef93a5f..cc02239 100644
+--- a/common/glib-gen.mak
++++ b/common/glib-gen.mak
+@@ -1,11 +1,13 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_enum_prefix=gst_color_balance
+ 
+-enum_headers=$(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers=$(foreach h,$(glib_enum_headers),\n${H}include \"$(h)\")
+ 
+ # these are all the rules generating the relevant files
+ %-marshal.h: %-marshal.list
+diff --git a/common/gst-glib-gen.mak b/common/gst-glib-gen.mak
+index 76b2233..5f2b1ed 100644
+--- a/common/gst-glib-gen.mak
++++ b/common/gst-glib-gen.mak
+@@ -1,6 +1,8 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+@@ -8,7 +10,7 @@
+ #glib_gen_decl_banner=GST_EXPORT
+ #glib_gen_decl_include=\#include <gst/foo/foo-prelude.h>
+ 
+-enum_headers=$(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers=$(foreach h,$(glib_enum_headers),\n${H}include \"$(h)\")
+ 
+ # these are all the rules generating the relevant files
+ $(glib_gen_basename)-marshal.h: $(glib_gen_basename)-marshal.list
+diff --git a/ext/srt/Makefile.in b/ext/srt/Makefile.in
+index 09109c3..e5f2a9d 100644
+--- a/ext/srt/Makefile.in
++++ b/ext/srt/Makefile.in
+@@ -17,6 +17,8 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+@@ -794,7 +796,7 @@ noinst_HEADERS = \
+ 	gstsrtsrc.h \
+ 	$(NULL)
+ 
+-enum_headers = $(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers = $(foreach h,$(glib_enum_headers),\n${H}include \"$(h)\")
+ all: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am
+ 
+diff --git a/ext/srtp/Makefile.in b/ext/srtp/Makefile.in
+index 758db8e..017c075 100644
+--- a/ext/srtp/Makefile.in
++++ b/ext/srtp/Makefile.in
+@@ -17,6 +17,8 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+@@ -775,7 +777,7 @@ glib_gen_basename = gstsrtp
+ BUILT_SOURCES = gstsrtp-enumtypes.c gstsrtp-enumtypes.h
+ nodist_libgstsrtp_la_SOURCES = $(BUILT_SOURCES)
+ CLEANFILES = $(BUILT_SOURCES)
+-enum_headers = $(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers = $(foreach h,$(glib_enum_headers),\n${H}include \"$(h)\")
+ all: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am
+ 
+diff --git a/ext/webrtc/Makefile.in b/ext/webrtc/Makefile.in
+index da8fd9a..ec3588f 100644
+--- a/ext/webrtc/Makefile.in
++++ b/ext/webrtc/Makefile.in
+@@ -17,6 +17,8 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+@@ -805,7 +807,7 @@ libgstwebrtc_la_LIBADD = \
+ 
+ libgstwebrtc_la_LDFLAGS = $(GST_PLUGIN_LDFLAGS)
+ libgstwebrtc_la_LIBTOOLFLAGS = $(GST_PLUGIN_LIBTOOLFLAGS)
+-enum_headers = $(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers = $(foreach h,$(glib_enum_headers),\n${H}include \"$(h)\")
+ all: all-am
+ 
+ .SUFFIXES:
+diff --git a/gst-libs/gst/interfaces/Makefile.in b/gst-libs/gst/interfaces/Makefile.in
+index ca1bde5..9d54c2e 100644
+--- a/gst-libs/gst/interfaces/Makefile.in
++++ b/gst-libs/gst/interfaces/Makefile.in
+@@ -17,6 +17,8 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+@@ -773,7 +775,7 @@ glib_enum_define = GST_PHOTOGRAPHY
+ glib_gen_prefix = gst_photography
+ glib_gen_basename = photography
+ glib_gen_decl_banner = GST_PHOTOGRAPHY_API
+-glib_gen_decl_include = \#include <gst/interfaces/photography-prelude.h>
++glib_gen_decl_include = ${H}include <gst/interfaces/photography-prelude.h>
+ built_sources = \
+ 	photography-enumtypes.c
+ 
+@@ -806,7 +808,7 @@ BUILT_SOURCES = \
+ 	$(built_headers)
+ 
+ CLEANFILES = $(BUILT_SOURCES)
+-enum_headers = $(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers = $(foreach h,$(glib_enum_headers),\n${H}include \"$(h)\")
+ all: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am
+ 
+diff --git a/gst-libs/gst/mpegts/Makefile.in b/gst-libs/gst/mpegts/Makefile.in
+index 7a145cb..91a81cc 100644
+--- a/gst-libs/gst/mpegts/Makefile.in
++++ b/gst-libs/gst/mpegts/Makefile.in
+@@ -17,6 +17,8 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+@@ -822,7 +824,7 @@ glib_enum_define = GST_MPEGTS
+ glib_gen_prefix = gst_mpegts
+ glib_gen_basename = gstmpegts
+ glib_gen_decl_banner = GST_MPEGTS_API
+-glib_gen_decl_include = \#include <gst/mpegts/mpegts-prelude.h>
++glib_gen_decl_include = ${H}include <gst/mpegts/mpegts-prelude.h>
+ BUILT_SOURCES = gstmpegts-enumtypes.c gstmpegts-enumtypes.h
+ nodist_libgstmpegts_@GST_API_VERSION@_la_SOURCES = gstmpegts-enumtypes.c
+ CLEANFILES = $(BUILT_SOURCES) $(am__append_1)
+@@ -842,7 +844,7 @@ CLEANFILES = $(BUILT_SOURCES) $(am__append_1)
+ @HAVE_INTROSPECTION_TRUE@gir_DATA = $(BUILT_GIRSOURCES)
+ @HAVE_INTROSPECTION_TRUE@typelibsdir = $(libdir)/girepository-1.0/
+ @HAVE_INTROSPECTION_TRUE@typelibs_DATA = $(BUILT_GIRSOURCES:.gir=.typelib)
+-enum_headers = $(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers = $(foreach h,$(glib_enum_headers),\n${H}include \"$(h)\")
+ all: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am
+ 
+diff --git a/gst-libs/gst/webrtc/Makefile.in b/gst-libs/gst/webrtc/Makefile.in
+index 04146bc..1d0db28 100644
+--- a/gst-libs/gst/webrtc/Makefile.in
++++ b/gst-libs/gst/webrtc/Makefile.in
+@@ -17,6 +17,8 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+@@ -761,7 +763,7 @@ glib_enum_define = GST_WEBRTC
+ glib_gen_prefix = gst_webrtc
+ glib_gen_basename = webrtc
+ glib_gen_decl_banner = GST_WEBRTC_API
+-glib_gen_decl_include = \#include <gst/webrtc/webrtc_fwd.h>
++glib_gen_decl_include = ${H}include <gst/webrtc/webrtc_fwd.h>
+ built_sources = webrtc-enumtypes.c
+ built_headers = webrtc-enumtypes.h
+ BUILT_SOURCES = $(built_sources) $(built_headers)
+@@ -807,7 +809,7 @@ libgstwebrtc_@GST_API_VERSION@_la_LDFLAGS = \
+ 	$(GST_ALL_LDFLAGS) \
+ 	$(GST_LT_LDFLAGS)
+ 
+-enum_headers = $(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers = $(foreach h,$(glib_enum_headers),\n${H}include \"$(h)\")
+ @HAVE_INTROSPECTION_TRUE@BUILT_GIRSOURCES = GstWebRTC-@GST_API_VERSION@.gir
+ @HAVE_INTROSPECTION_TRUE@gir_headers = $(patsubst %,$(srcdir)/%, $(libgstwebrtc_@GST_API_VERSION@include_HEADERS))
+ @HAVE_INTROSPECTION_TRUE@gir_sources = $(patsubst %,$(srcdir)/%, $(libgstwebrtc_@GST_API_VERSION@_la_SOURCES)) $(BUILT_SOURCES)

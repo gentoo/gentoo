@@ -19,7 +19,7 @@ IUSE="debug gstreamer spellcheck"
 RDEPEND="dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/json-glib
-	gstreamer? ( media-libs/gst-plugins-bad:1.0[X,gtk]
+	gstreamer? ( media-plugins/gst-plugins-gtk:1.0
 		media-libs/gst-plugins-base:1.0[X]
 		media-libs/gst-plugins-good:1.0
 		media-plugins/gst-plugins-hls:1.0

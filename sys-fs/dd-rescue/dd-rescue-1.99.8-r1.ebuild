@@ -26,6 +26,8 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${MY_PN}-1.99-musl-r2.patch
 	"${FILESDIR}"/${PN}-1.99.8-xattr.patch
+	"${FILESDIR}"/${PN}-1.99.8-sysrandom.patch
+	"${FILESDIR}"/${PN}-1.99.8-testhole.patch
 )
 
 src_prepare() {
@@ -91,6 +93,7 @@ src_compile() {
 }
 
 src_test() {
+	append-cflags -fcommon # bug 707796
 	_emake check
 }
 
