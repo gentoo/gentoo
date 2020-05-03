@@ -193,7 +193,7 @@ _meson_create_cross_file() {
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
 	needs_exe_wrapper = true
 	sys_root = '${SYSROOT}'
-	pkg_config_libdir = '${EPREFIX}/usr/$(get_libdir)/pkgconfig'
+	pkg_config_libdir = '${PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
 
 	[host_machine]
 	system = '${system}'
@@ -242,7 +242,7 @@ _meson_create_native_file() {
 	objcpp_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_CPPFLAGS}")
 	objcpp_link_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_LDFLAGS}")
 	needs_exe_wrapper = false
-	pkg_config_libdir = '${EPREFIX}/usr/$(get_libdir)/pkgconfig'
+	pkg_config_libdir = '${BUILD_PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
 
 	[build_machine]
 	system = '${system}'
@@ -294,6 +294,8 @@ meson_src_configure() {
 	local BUILD_OBJCFLAGS=${BUILD_OBJCFLAGS}
 	local BUILD_OBJCXXFLAGS=${BUILD_OBJCXXFLAGS}
 	local BUILD_LDFLAGS=${BUILD_LDFLAGS}
+	local BUILD_PKG_CONFIG_LIBDIR=${BUILD_PKG_CONFIG_LIBDIR}
+	local BUILD_PKG_CONFIG_PATH=${BUILD_PKG_CONFIG_PATH}
 
 	if tc-is-cross-compiler; then
 		: ${BUILD_CFLAGS:=-O1 -pipe}
@@ -309,6 +311,8 @@ meson_src_configure() {
 		: ${BUILD_LDFLAGS:=${LDFLAGS}}
 		: ${BUILD_OBJCFLAGS:=${OBJCFLAGS}}
 		: ${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}
+		: ${BUILD_PKG_CONFIG_LIBDIR:=${PKG_CONFIG_LIBDIR}}
+		: ${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}
 	fi
 
 	local mesonargs=(
@@ -319,8 +323,8 @@ meson_src_configure() {
 		--prefix "${EPREFIX}/usr"
 		--sysconfdir "${EPREFIX}/etc"
 		--wrap-mode nodownload
-		--build.pkg-config-path="${EPREFIX}/usr/share/pkgconfig"
-		--pkg-config-path="${EPREFIX}/usr/share/pkgconfig"
+		--build.pkg-config-path "${BUILD_PKG_CONFIG_PATH:-${EPREFIX}/usr/share/pkgconfig}"
+		--pkg-config-path "${PKG_CONFIG_PATH:-${EPREFIX}/usr/share/pkgconfig}"
 		--native-file "$(_meson_create_native_file)"
 	)
 
@@ -359,7 +363,7 @@ meson_src_configure() {
 	python_export_utf8_locale
 
 	# https://bugs.gentoo.org/720818
-	export -n {C,CPP,CXX,F,FC,OBJC,OBJCXX,LD}FLAGS
+	export -n {C,CPP,CXX,F,FC,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
 
 	echo "${mesonargs[@]}" >&2
 	"${mesonargs[@]}" || die
