@@ -43,6 +43,10 @@ if [[ -z ${_MESON_ECLASS} ]]; then
 
 inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
+if [[ ${EAPI} == 6 ]]; then
+	inherit eapi7-ver
+fi
+
 fi
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
@@ -364,6 +368,17 @@ meson_src_configure() {
 
 	# https://bugs.gentoo.org/720818
 	export -n {C,CPP,CXX,F,FC,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
+
+	# https://bugs.gentoo.org/720860
+	if ver_test "$(meson --version)" -lt "0.54"; then
+		local -x CFLAGS=${BUILD_CFLAGS}
+		local -x CPPFLAGS=${BUILD_CPPFLAGS}
+		local -x CXXFLAGS=${BUILD_CXXFLAGS}
+		local -x FFLAGS=${BUILD_FCFLAGS}
+		local -x OBJCFLAGS=${BUILD_OBJCFLAGS}
+		local -x OBJCXXFLAGS=${BUILD_OBJCXXFLAGS}
+		local -x LDFLAGS=${BUILD_LDFLAGS}
+	fi
 
 	echo "${mesonargs[@]}" >&2
 	"${mesonargs[@]}" || die
