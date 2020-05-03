@@ -11,7 +11,7 @@ DESCRIPTION="pack your dependencies onto your script file"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-
+RESTRICT="!test? ( test )"
 RDEPEND="
 	virtual/perl-File-Path
 	virtual/perl-File-Spec
