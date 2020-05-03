@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,8 @@ src_prepare() {
 
 	# Patches from previus patchset + Fedora + Debian
 	eapply "${WORKDIR}"/patches/*.patch
+
+	eapply "${FILESDIR}"/${PN}-missing-sys_types_h.patch #713740
 
 	mv configure.guess config.guess
 	mv configure.sub config.sub
