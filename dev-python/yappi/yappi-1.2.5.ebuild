@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/contextvars[${PYTHON_USEDEP}]
