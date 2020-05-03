@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile config configure install postinst postrm prepare setup unpack
+DEPEND=vdr? ( media-video/vdr libextractor? ( >=media-libs/libextractor-0.5.20 ) caps? ( sys-libs/libcap ) ) xine? ( ( >=media-libs/xine-lib-1.2 media-video/ffmpeg ) fbcon? ( jpeg? ( virtual/jpeg:* ) ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXrender bluray? ( media-libs/libbluray ) dbus? ( dev-libs/dbus-glib dev-libs/glib:2 ) jpeg? ( virtual/jpeg:* ) opengl? ( virtual/opengl ) vaapi? ( x11-libs/libva >=media-libs/xine-lib-1.2[vaapi] ) vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2[vdpau] ) xinerama? ( x11-libs/libXinerama ) ) ) virtual/pkgconfig sys-kernel/linux-headers nls? ( sys-devel/gettext ) xine? ( X? ( x11-base/xorg-proto x11-libs/libXxf86vm ) ) >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
+DESCRIPTION=VDR Plugin: Xinelib PlugIn
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/xineliboutput/
+IUSE=bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vaapi vdpau +X +xine xinerama
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=vdr? ( media-video/vdr libextractor? ( >=media-libs/libextractor-0.5.20 ) caps? ( sys-libs/libcap ) ) xine? ( ( >=media-libs/xine-lib-1.2 media-video/ffmpeg ) fbcon? ( jpeg? ( virtual/jpeg:* ) ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXrender bluray? ( media-libs/libbluray ) dbus? ( dev-libs/dbus-glib dev-libs/glib:2 ) jpeg? ( virtual/jpeg:* ) opengl? ( virtual/opengl ) vaapi? ( x11-libs/libva >=media-libs/xine-lib-1.2[vaapi] ) vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2[vdpau] ) xinerama? ( x11-libs/libXinerama ) ) ) >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+REQUIRED_USE=|| ( vdr xine )
+SLOT=0
+SRC_URI=mirror://sourceforge/xineliboutput/vdr-xineliboutput-2.2.0.tgz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f
+_md5_=6ec37061b70da53448ba412122dbe0fc

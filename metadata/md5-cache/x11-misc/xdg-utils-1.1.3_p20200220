@@ -1,0 +1,14 @@
+BDEPEND=>=app-text/xmlto-0.0.26-r1[text(+)] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst prepare
+DESCRIPTION=Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
+EAPI=7
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/xdg-utils/
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x64-solaris
+LICENSE=MIT
+RDEPEND=dev-util/desktop-file-utils dev-perl/File-MimeInfo dev-perl/Net-DBus dev-perl/X11-Protocol sys-apps/dbus x11-misc/shared-mime-info x11-apps/xprop x11-apps/xset
+RESTRICT=test
+SLOT=0
+SRC_URI=https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/9816ebb3e6fd9f23e993b8b7fcbd56f92d9c9197/xdg-utils-1.1.3_p20200220.tar.bz2
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=1243d056fce85857d40d26bea4ded048
