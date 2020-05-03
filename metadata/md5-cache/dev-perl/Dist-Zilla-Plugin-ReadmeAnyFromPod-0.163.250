@@ -1,0 +1,15 @@
+BDEPEND=dev-perl/Dist-Zilla dev-perl/Dist-Zilla-Role-FileWatcher virtual/perl-Encode dev-perl/Moose dev-perl/MooseX-Has-Sugar dev-perl/PPI >=dev-perl/Path-Tiny-0.4.0 >=dev-perl/Pod-Markdown-2.0.0 dev-perl/Pod-Markdown-Github >=virtual/perl-Pod-Simple-3.230.0 >=virtual/perl-Scalar-List-Utils-1.330.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Carp virtual/perl-File-Spec virtual/perl-IO dev-perl/Test-Deep dev-perl/Test-Fatal dev-perl/Test-Most dev-perl/Test-Requires >=virtual/perl-Test-Simple-0.940.0 virtual/perl-autodie ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Automatically convert POD to a README in any format for Dist::Zilla
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Dist-Zilla-Plugin-ReadmeAnyFromPod
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Dist-Zilla dev-perl/Dist-Zilla-Role-FileWatcher virtual/perl-Encode dev-perl/Moose dev-perl/MooseX-Has-Sugar dev-perl/PPI >=dev-perl/Path-Tiny-0.4.0 >=dev-perl/Pod-Markdown-2.0.0 dev-perl/Pod-Markdown-Github >=virtual/perl-Pod-Simple-3.230.0 >=virtual/perl-Scalar-List-Utils-1.330.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RT/RTHOMPSON/Dist-Zilla-Plugin-ReadmeAnyFromPod-0.163250.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=f0c270e41a06b40d45afde69a3c230d4

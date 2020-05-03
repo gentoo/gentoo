@@ -1,0 +1,15 @@
+BDEPEND=>=dev-perl/Dist-Zilla-4.101.582 dev-perl/File-pushd virtual/perl-IPC-Cmd >=dev-perl/Moose-1.70.0 >=dev-perl/MooseX-Types-URI-0.30.0 dev-perl/Try-Tiny virtual/perl-version virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec virtual/perl-IO dev-perl/Path-Tiny dev-perl/Test-Deep >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Automatically include GitHub meta information in META.yml
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Dist-Zilla-Plugin-GithubMeta
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Dist-Zilla-4.101.582 dev-perl/File-pushd virtual/perl-IPC-Cmd >=dev-perl/Moose-1.70.0 >=dev-perl/MooseX-Types-URI-0.30.0 dev-perl/Try-Tiny virtual/perl-version dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BI/BINGOS/Dist-Zilla-Plugin-GithubMeta-0.58.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=f2c23a4ebba6ea33515fb1c55a28644c

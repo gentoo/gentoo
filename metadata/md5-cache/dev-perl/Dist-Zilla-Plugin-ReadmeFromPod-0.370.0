@@ -1,0 +1,15 @@
+BDEPEND=>=dev-perl/Dist-Zilla-6.0.0 dev-perl/IO-String dev-perl/Moose >=dev-perl/Path-Tiny-0.4.0 >=dev-perl/Pod-Readme-1.2.0 >=virtual/perl-Scalar-List-Utils-1.330.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec virtual/perl-IO virtual/perl-Test-Simple ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=dzil plugin to generate README from POD
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Dist-Zilla-Plugin-ReadmeFromPod
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Dist-Zilla-6.0.0 dev-perl/IO-String dev-perl/Moose >=dev-perl/Path-Tiny-0.4.0 >=dev-perl/Pod-Readme-1.2.0 >=virtual/perl-Scalar-List-Utils-1.330.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/F/FA/FAYLAND/Dist-Zilla-Plugin-ReadmeFromPod-0.37.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=a4e4a8b531224479c992252a91d041b8

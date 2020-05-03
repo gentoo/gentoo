@@ -1,0 +1,15 @@
+BDEPEND=>=dev-perl/Data-Section-0.200.2 >=dev-perl/Dist-Zilla-6.0.0 >=dev-perl/Moose-2.0.0 virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter-ForMethods >=virtual/perl-autodie-2.0.0 >=dev-perl/namespace-autoclean-0.280.0 >=virtual/perl-ExtUtils-MakeMaker-6.170.0 test? ( dev-perl/Capture-Tiny virtual/perl-File-Spec dev-perl/Path-Tiny dev-perl/Test-Fatal virtual/perl-Test-Harness >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Ensure Changes has content before releasing
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Dist-Zilla-Plugin-CheckChangesHasContent
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-perl/Data-Section-0.200.2 >=dev-perl/Dist-Zilla-6.0.0 >=dev-perl/Moose-2.0.0 virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter-ForMethods >=virtual/perl-autodie-2.0.0 >=dev-perl/namespace-autoclean-0.280.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/Dist-Zilla-Plugin-CheckChangesHasContent-0.011.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=20fa6d5c90b5e0d053a2c16b51a29c5e

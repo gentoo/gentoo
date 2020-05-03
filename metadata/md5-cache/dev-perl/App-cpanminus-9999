@@ -1,0 +1,14 @@
+BDEPEND=virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-perl/Dist-Milla dev-perl/Dist-Zilla dev-perl/Dist-Zilla-Plugin-Run dev-perl/Perl-Version dev-perl/App-FatPacker dev-perl/Module-Install dev-perl/Module-Signature dev-perl/Perl-Strip dev-lang/perl >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-lang/perl
+DESCRIPTION=Get, unpack, build and install modules from CPAN
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/App-cpanminus
+IUSE=test
+LICENSE=|| ( Artistic GPL-1+ )
+PROPERTIES=live
+RDEPEND=dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=b50fcd3c4356fd6a933ed19698a369f0

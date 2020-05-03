@@ -1,0 +1,15 @@
+BDEPEND=dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!minimal? ( dev-perl/Pod-Markdown dev-perl/Pod-Markdown-Github dev-perl/Pod-Simple-LaTeX dev-perl/Type-Tiny-XS virtual/perl-podlators ) >=dev-perl/CPAN-Changes-0.300.0 virtual/perl-CPAN-Meta dev-perl/Class-Method-Modifiers dev-perl/File-Slurp dev-perl/Getopt-Long-Descriptive virtual/perl-Module-CoreList dev-perl/Moo dev-perl/MooX-HandlesVia dev-perl/Path-Tiny virtual/perl-Pod-Simple dev-perl/Role-Tiny >=virtual/perl-Scalar-List-Utils-1.330.0 dev-perl/Try-Tiny >=dev-perl/Type-Tiny-1.0.0 dev-perl/namespace-autoclean virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/IO-String virtual/perl-Module-Metadata dev-perl/Test-Deep dev-perl/Test-Exception dev-perl/Test-Kit virtual/perl-Test-Simple ) dev-lang/perl
+DESCRIPTION=Intelligently generate a README file from POD
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Pod-Readme
+IUSE=minimal test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!minimal? ( dev-perl/Pod-Markdown dev-perl/Pod-Markdown-Github dev-perl/Pod-Simple-LaTeX dev-perl/Type-Tiny-XS virtual/perl-podlators ) >=dev-perl/CPAN-Changes-0.300.0 virtual/perl-CPAN-Meta dev-perl/Class-Method-Modifiers dev-perl/File-Slurp dev-perl/Getopt-Long-Descriptive virtual/perl-Module-CoreList dev-perl/Moo dev-perl/MooX-HandlesVia dev-perl/Path-Tiny virtual/perl-Pod-Simple dev-perl/Role-Tiny >=virtual/perl-Scalar-List-Utils-1.330.0 dev-perl/Try-Tiny >=dev-perl/Type-Tiny-1.0.0 dev-perl/namespace-autoclean dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RR/RRWO/Pod-Readme-v1.2.3.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=048982a544b9d878cbe193384178b9bc

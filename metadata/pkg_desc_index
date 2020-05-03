@@ -5591,8 +5591,9 @@ dev-perl/Apache-Test 1.400.0-r2 1.420.0: Test.pm wrapper with helpers for testin
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.500.0: Dispatcher module for command line interface programs
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
+dev-perl/App-FatPacker 0.10.8: pack your dependencies onto your script file
 dev-perl/App-Nopaste 1.12.0 1.13.0: Easy access to any pastebin
-dev-perl/App-cpanminus 1.704.400: Get, unpack, build and install modules from CPAN
+dev-perl/App-cpanminus 1.704.400 9999: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.840.0 0.880.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0 1.150.0 1.160.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0 1.710.0-r1: Perl5 module for reading configuration files and parsing command line arguments
@@ -5772,6 +5773,7 @@ dev-perl/Config-IniFiles 2.940.0: A module for reading .ini-style configuration 
 dev-perl/Config-JSON 1.520.200: A JSON based config file system
 dev-perl/Config-MVP 2.200.10: multivalue-property package-oriented configuration
 dev-perl/Config-MVP-Reader-INI 2.101.463: an MVP config reader for .ini files
+dev-perl/Config-MVP-Slicer 0.303.0: Extract embedded plugin config from parent config
 dev-perl/Config-Properties 1.800.0: Configuration using Java style properties
 dev-perl/Config-Simple 4.590.0-r1: Config::Simple - simple configuration file class
 dev-perl/Config-Tiny 2.230.0: Read/Write .ini style files with as little code as possible
@@ -5965,28 +5967,46 @@ dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Metadata 0.927.0: Information about a perl module distribution
+dev-perl/Dist-Milla 1.0.20: Distribution builder, Opinionated but Unobtrusive
 dev-perl/Dist-Zilla 6.10.0-r2: distribution builder; installer not included!
+dev-perl/Dist-Zilla-Config-Slicer 0.202.0: Config::MVP::Slicer customized for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.6.0: Add per-file per-year copyright information
+dev-perl/Dist-Zilla-Plugin-CheckChangesHasContent 0.11.0: Ensure Changes has content before releasing
 dev-perl/Dist-Zilla-Plugin-CheckExtraTests 0.29.0-r1: check xt tests before release
 dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0: Plugin configuration containing settings for a Git repo
 dev-perl/Dist-Zilla-Plugin-ContributorsFile 0.3.0: add a file listing all contributors
+dev-perl/Dist-Zilla-Plugin-CopyFilesFromBuild 0.170.880: Copy (or move) specific files after building (for SCM inclusion, etc.)
+dev-perl/Dist-Zilla-Plugin-CopyFilesFromRelease 0.6.0: Copy files from a release (for SCM inclusion, etc.)
 dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1: Update your git repository after release
 dev-perl/Dist-Zilla-Plugin-Git-Contributors 0.35.0: Add contributor names from git to your distribution
+dev-perl/Dist-Zilla-Plugin-GithubMeta 0.580.0: Automatically include GitHub meta information in META.yml
+dev-perl/Dist-Zilla-Plugin-LicenseFromModule 0.70.0: Extract License and Copyright from its main_module file
 dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.390.0: A more awesome MakeMaker plugin for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-Meta-Contributors 0.3.0: Generate an x_contributors section in distribution metadata
 dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.4: Generating and Populating 'provides' in your META.yml
 dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/version from traditional packages for provides
+dev-perl/Dist-Zilla-Plugin-ModuleBuildTiny 0.15.0: Build a Build.PL that uses Module::Build::Tiny
+dev-perl/Dist-Zilla-Plugin-NameFromDirectory 0.40.0: Guess distribution name from the current directory
 dev-perl/Dist-Zilla-Plugin-NextVersion-Semantic 0.2.5: update the next version, semantic-wise
 dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0: List prereqs conditional on operating system
 dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.120.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-Prereqs-FromCPANfile 0.80.0: Parse cpanfile for prereqs
 dev-perl/Dist-Zilla-Plugin-RPM 0.15.0: Build an RPM from your Dist::Zilla release
+dev-perl/Dist-Zilla-Plugin-ReadmeAnyFromPod 0.163.250: Automatically convert POD to a README in any format for Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-ReadmeFromPod 0.370.0: dzil plugin to generate README from POD
+dev-perl/Dist-Zilla-Plugin-ReversionOnRelease 0.60.0: Bump and reversion $VERSION on release
 dev-perl/Dist-Zilla-Plugin-Run 0.48.0: Run external commands and code at specific phases of Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-StaticInstall 0.12.0: Identify a distribution as eligible for static installation
 dev-perl/Dist-Zilla-Plugin-SurgicalPodWeaver 0.2.300: Surgically apply PodWeaver
 dev-perl/Dist-Zilla-Plugin-Test-CPAN-Changes 0.12.0: release tests for your changelog
+dev-perl/Dist-Zilla-Plugin-Test-Compile 2.58.0: Common tests to check syntax of your modules, using only core modules
 dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7: Release tests for minimum required versions
 dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.1.0: Tests to check your code against best practices
+dev-perl/Dist-Zilla-Plugin-VersionFromMainModule 0.40.0: Set the distribution version from your main module's
+dev-perl/Dist-Zilla-Role-FileWatcher 0.6.0: Receive notification when something changes a file's contents
 dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0: A role for plugins that use Module::Metadata
+dev-perl/Dist-Zilla-Role-PluginBundle-PluginRemover 0.105.0: Add '-remove' functionality to a bundle
 dev-perl/Dumbbench 0.111.0: More reliable benchmarking with the least amount of thinking
 dev-perl/DynaLoader-Functions 0.3.0: Deconstructed Dynamic C Library Loading
 dev-perl/EV 4.220.0: Perl interface to libev, a high performance full-featured event loop
@@ -6426,6 +6446,7 @@ dev-perl/Module-Build 0.422.400: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-WithXSpp 0.140.0: XS++ enhanced flavour of Module::Build
 dev-perl/Module-Build-XSUtil 0.180.0: A Module::Build class for building XS modules
+dev-perl/Module-CPANfile 1.100.400: Parse cpanfile
 dev-perl/Module-Compile 0.350.0: Perl Module Compilation
 dev-perl/Module-Find 0.130.0: Find and use installed modules in a (sub)category
 dev-perl/Module-Implementation 0.90.0: Loads one of several alternate underlying implementations for a module
@@ -6488,6 +6509,7 @@ dev-perl/MooseX-Types-Path-Class 0.90.0: A Path::Class type library for Moose
 dev-perl/MooseX-Types-Path-Tiny 0.12.0: Path::Tiny types and coercions for Moose
 dev-perl/MooseX-Types-Perl 0.101.343: Moose types that check against Perl syntax
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
+dev-perl/MooseX-Types-URI 0.80.0: URI related types and coercions for Moose
 dev-perl/Mouse 2.4.10: Moose minus the antlers
 dev-perl/MouseX-NativeTraits 1.90.0-r2: Extend your attribute interfaces for Mouse
 dev-perl/MouseX-Types 0.60.0-r1: Organize your Mouse types in libraries
@@ -6652,6 +6674,7 @@ dev-perl/Perl-Critic-Nits 1.0.0-r1: policies of nits I like to pick
 dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect 0.60.0-r1: Perl::Critic policy against indirect method calls
 dev-perl/Perl-MinimumVersion 1.380.0: Find a minimum required version of perl for Perl code
 dev-perl/Perl-PrereqScanner 1.23.0: a tool to scan your Perl code for its prerequisites
+dev-perl/Perl-Strip 1.100.0: reduce file size by stripping whitespace, comments, pod etc
 dev-perl/Perl-Tags 0.320.0-r1: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
 dev-perl/Perl-Tidy 20171214.0.0 20190915.0.0: Perl script indenter and beautifier
 dev-perl/Perl-Unsafe-Signals 0.30.0-r1: Allow unsafe handling of signals in selected blocks
@@ -6675,9 +6698,10 @@ dev-perl/Pod-Elemental-PerlMunger 0.200.6: A thing that takes a string of Perl a
 dev-perl/Pod-Eventual 0.94.1: read a POD document as a series of trivial events
 dev-perl/Pod-LaTeX 0.610.0 0.610.0-r1: Convert Pod data to formatted LaTeX
 dev-perl/Pod-Markdown 3.5.0: Convert POD to Markdown
+dev-perl/Pod-Markdown-Github 0.40.0: Convert POD to Github's specific markdown
 dev-perl/Pod-POM 2.10.0: POD Object Model
 dev-perl/Pod-POM-View-Restructured 1.0.1: View for Pod::POM that outputs reStructuredText
-dev-perl/Pod-Readme 1.1.2: Intelligently generate a README file from POD
+dev-perl/Pod-Readme 1.1.2 1.2.3: Intelligently generate a README file from POD
 dev-perl/Pod-Simple-LaTeX 0.60.0: format Pod as LaTeX
 dev-perl/Pod-Spell 1.200.0: A formatter for spellchecking Pod
 dev-perl/Pod-Strip 1.20.0-r1: Remove POD from Perl code
@@ -6797,6 +6821,7 @@ dev-perl/String-ShellQuote 1.40.0-r1: Quote strings for passing through the shel
 dev-perl/String-Tokenizer 0.60.0: A simple string tokenizer
 dev-perl/String-Truncate 1.100.602: Module for when strings are too long to be displayed in...
 dev-perl/Struct-Compare 1.0.1: Recursive diff for perl structures
+dev-perl/Sub-Delete 1.0.20: Perl module enabling one to delete subroutines
 dev-perl/Sub-Exporter 0.987.0: A sophisticated exporter for custom-built routines
 dev-perl/Sub-Exporter-ForMethods 0.100.52: Helper routines for using Sub::Exporter to build methods
 dev-perl/Sub-Exporter-GlobExporter 0.5.0: export shared globs with Sub::Exporter collectors
@@ -6879,6 +6904,7 @@ dev-perl/Test-Filename 0.30.0-r2: Portable filename comparison
 dev-perl/Test-Files 0.140.0: A Test::Builder based module to ease testing with files and dirs
 dev-perl/Test-Inline 2.213.0-r2: Inline test suite support for Perl
 dev-perl/Test-Inter 1.60.0 1.90.0: Framework for more readable interactive test scripts
+dev-perl/Test-Kit 2.150.0: Build custom test packages with only the features you want
 dev-perl/Test-LeakTrace 0.160.0: Traces memory leaks
 dev-perl/Test-LectroTest 0.500.100: Easy, automatic, specification-based tests
 dev-perl/Test-LongString 0.170.0: A library to test long strings
@@ -7013,6 +7039,7 @@ dev-perl/URI 1.710.0 1.730.0: Uniform Resource Identifiers (absolute and relativ
 dev-perl/URI-Encode 1.1.1: Simple percent Encoding/Decoding
 dev-perl/URI-Fetch 0.130.0: Smart URI fetching/caching
 dev-perl/URI-Find 20160806.0.0: Find URIs in plain text
+dev-perl/URI-FromHash 0.50.0: Build a URI from a set of named parameters
 dev-perl/URI-redis 0.20.0: URI for Redis connection info
 dev-perl/USB-LibUSB 0.50.0 0.60.0: Perl interface to the libusb-1.0 API
 dev-perl/USB-TMC 0.6.0 0.7.0: Perl interface to the USB Test & Measurement (USBTMC) backend
