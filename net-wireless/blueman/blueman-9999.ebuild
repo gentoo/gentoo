@@ -69,7 +69,6 @@ RDEPEND="${DEPEND}
 			media-sound/pulseaudio-modules-bt
 		)
 	)
-	!net-wireless/gnome-bluetooth
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
