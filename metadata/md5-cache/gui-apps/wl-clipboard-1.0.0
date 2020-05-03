@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/wayland
 SLOT=0
 SRC_URI=https://github.com/bugaevc/wl-clipboard/archive/v1.0.0.tar.gz -> wl-clipboard-1.0.0.tar.gz
-_eclasses_=meson	da356d6f92174b1d551da2405336fb21	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=meson	49b23c492573412147a97ba9ec275d03	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=3d4c7f47817920f7b11f31d749b2c2b5
