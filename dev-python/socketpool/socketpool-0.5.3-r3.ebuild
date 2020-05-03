@@ -30,14 +30,14 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/eventlet[${PYTHON_USEDEP}]
-		' 'python3*')
-		!ia64? (
+		!hppa? ( !ia64? (
+			$(python_gen_cond_dep '
+				dev-python/eventlet[${PYTHON_USEDEP}]
+			' 'python3*')
 			$(python_gen_cond_dep '
 				dev-python/gevent[${PYTHON_USEDEP}]
 			' 'python*')
-		)
+		) )
 	)"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.5.2-locale.patch )

@@ -356,13 +356,11 @@ dev-python/junit-xml
 dev-python/ipdbplugin
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Unmaintained.  Stuck at Python 3.6.  dev-python/rebulk is broken with
-# recent versions of dev-python/regex and has no fix (or activity)
-# upstream.  dev-python/guessit is its only revdep, and the only revdep
-# of that package is masked already.
+# Unmaintained.  Stuck at Python 3.6.  dev-python/guessit is broken
+# with modern pyyaml, and the only revdep of that package is masked
+# already.
 # Removal in 30 days.  Bug #718986.
 dev-python/guessit
-dev-python/rebulk
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Unmaintained.  Stuck at Python 3.6.  The only revdep last rited.

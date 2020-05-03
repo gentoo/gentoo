@@ -26,8 +26,10 @@ DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		${RDEPEND}
-		dev-python/gevent[${PYTHON_USEDEP}]
-		dev-python/geventhttpclient[${PYTHON_USEDEP}]
+		!hppa? ( !ia64? (
+			dev-python/gevent[${PYTHON_USEDEP}]
+			dev-python/geventhttpclient[${PYTHON_USEDEP}]
+		) )
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/python-fastimport[${PYTHON_USEDEP}]
 	)"
