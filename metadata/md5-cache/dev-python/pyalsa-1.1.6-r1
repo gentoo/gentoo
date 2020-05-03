@@ -5,11 +5,11 @@ DESCRIPTION=Python bindings for ALSA library
 EAPI=7
 HOMEPAGE=https://alsa-project.org/
 IUSE=python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc ~x86
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ~mips ~ppc ppc64 sparc ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/alsa-lib python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
 SLOT=0
 SRC_URI=https://www.alsa-project.org/files/pub/pyalsa/pyalsa-1.1.6.tar.bz2
 _eclasses_=distutils-r1	054fa5f0442c7ccb4d4a05410d92123b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=caf9940d6e73a61fb066c5496aa39929
+_md5_=7800688f377578727433ec40b8289836
