@@ -1,0 +1,78 @@
+--- a/libopeniscsiusr/Makefile
++++ b/libopeniscsiusr/Makefile
+@@ -44,7 +44,7 @@ EXTRA_MAN_FILES = libopeniscsiusr.h.3
+ OBJS = context.o misc.o session.o sysfs.o iface.o idbm.o node.o default.o
+ 
+ CFLAGS ?= -O2 -g
+-CFLAGS += -Wall -Werror -Wextra -fvisibility=hidden -fPIC
++CFLAGS += -Wall -Wextra -fvisibility=hidden -fPIC
+ CFLAGS += $(shell $(PKG_CONFIG) --cflags libkmod)
+ 
+ LDFLAGS += $(shell $(PKG_CONFIG) --libs libkmod)
+--- a/usr/Makefile
++++ b/usr/Makefile
+@@ -35,7 +35,7 @@ endif
+ PKG_CONFIG = /usr/bin/pkg-config
+ 
+ CFLAGS ?= -O2 -g
+-WARNFLAGS ?= -Wall -Wextra -Werror -Wstrict-prototypes -fno-common
++WARNFLAGS ?= -Wall -Wextra -Wstrict-prototypes -fno-common
+ CFLAGS += $(WARNFLAGS) -I../include -I. -D_GNU_SOURCE \
+ 	  -I$(TOPDIR)/libopeniscsiusr
+ CFLAGS += $(shell $(PKG_CONFIG) --cflags libkmod)
+@@ -76,9 +76,9 @@ iscsistart: $(ISCSI_LIB_SRCS) $(INITIATOR_SRCS) $(FW_BOOT_SRCS) \
+ 		iscsistart.o statics.o
+ 	$(CC) $(CFLAGS) $^ -o $@ -lcrypto -lrt $(LDFLAGS) $(ISCSI_LIB)
+ clean:
+-	rm -f *.o $(PROGRAMS) .depend $(LIBSYS)
++	$(RM) *.o $(PROGRAMS) .depend $(LIBSYS)
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -10,9 +10,9 @@ iscsi-iname: md5.o iscsi-iname.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(DBM_LIB) -o $@
+ 
+ clean:
+-	rm -f *.o $(PROGRAMS) .depend
++	$(RM) *.o $(PROGRAMS) .depend
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+--- a/utils/fwparam_ibft/Makefile
++++ b/utils/fwparam_ibft/Makefile
+@@ -41,11 +41,11 @@ LDFLAGS += -L$(TOPDIR)/libopeniscsiusr -liscsiusr
+ all: $(OBJS)
+ 
+ clean:
+-	rm -f *.o $(CLEANFILES) .depend
++	$(RM) *.o $(CLEANFILES) .depend
+ 
+ $(OBJS): prom_parse.tab.h prom_parse.h fwparam_ibft.h
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+--- a/utils/sysdeps/Makefile
++++ b/utils/sysdeps/Makefile
+@@ -8,9 +8,9 @@ SYSDEPS_OBJS=sysdeps.o
+ all: $(SYSDEPS_OBJS)
+ 
+ clean:
+-	rm -f *.o .depend
++	$(RM) *.o .depend
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
