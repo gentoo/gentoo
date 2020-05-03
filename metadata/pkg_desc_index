@@ -9462,7 +9462,7 @@ dev-ruby/cinch 2.3.4: IRC Bot Building Framework
 dev-ruby/classifier-reborn 2.2.0: Module to allow Bayesian and other types of classifications
 dev-ruby/climate_control 0.2.0: Easily manage your environment
 dev-ruby/cliver 0.3.2: An easy way to detect and use command-line dependencies
-dev-ruby/cmdparse 2.0.6-r1 3.0.4 3.0.5: Advanced command line parser supporting commands
+dev-ruby/cmdparse 2.0.6-r1 3.0.4 3.0.5 3.0.6: Advanced command line parser supporting commands
 dev-ruby/coderay 1.1.2: A Ruby library for syntax highlighting
 dev-ruby/coercible 1.0.0: Powerful, flexible and configurable coercion library
 dev-ruby/coffee-rails 4.2.2-r1 5.0.0: Coffee Script adapter for the Rails asset pipeline
