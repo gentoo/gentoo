@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.5-respect-flags.patch
 	"${FILESDIR}"/${PN}-0.8.3-no-gziped-docs.patch
 	"${FILESDIR}"/${PN}-0.8.3-json-c-0.14.patch
+	"${FILESDIR}"/${PN}-0.8.3-fix-gcc-10-compatibility.patch
 )
 
 get_systemd_pv() {
