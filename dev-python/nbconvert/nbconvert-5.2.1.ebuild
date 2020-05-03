@@ -27,7 +27,8 @@ RDEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.2.1[${PYTHON_USEDEP}]
 	dev-python/testpath[${PYTHON_USEDEP}]
-	www-servers/tornado[${PYTHON_USEDEP}]
+	>=www-servers/tornado-4.0[${PYTHON_USEDEP}]
+	<www-servers/tornado-6.0[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
