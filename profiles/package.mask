@@ -362,13 +362,6 @@ dev-python/junit-xml
 # Removal in 30 days.  Bug #719000.
 dev-python/ipdbplugin
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Unmaintained.  Stuck at Python 3.6.  dev-python/guessit is broken
-# with modern pyyaml, and the only revdep of that package is masked
-# already.
-# Removal in 30 days.  Bug #718986.
-dev-python/guessit
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Unmaintained.  Stuck at Python 3.6.  The only revdep last rited.
 # Removal in 30 days.  Bug #718896.
