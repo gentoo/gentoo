@@ -14,7 +14,7 @@ SRC_URI="https://github.com/glensc/nagios-plugin-check_raid/archive/${MY_PV}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="3ware aacraid dmraid hpa hpsa megaraid-sas megaraid-scsi mpt mpt-sas2"
 
 DEPEND="dev-perl/Monitoring-Plugin
@@ -47,7 +47,7 @@ src_install() {
 	plugindir="/usr/$(get_libdir)/nagios/plugins"
 	dodir "$plugindir"
 	mv -f "${D}"/usr/bin/check_raid.pl "${D}"/"${plugindir}"
-	dodoc README.md ChangeLog.md CONTRIBUTING.md check_raid.cfg
+	dodoc README.md CHANGELOG.md CONTRIBUTING.md check_raid.cfg
 }
 
 pkg_postinst() {

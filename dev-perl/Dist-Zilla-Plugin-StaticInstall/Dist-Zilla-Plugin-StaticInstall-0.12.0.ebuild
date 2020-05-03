@@ -11,7 +11,7 @@ DESCRIPTION="Identify a distribution as eligible for static installation"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-
+RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-perl/Dist-Zilla-4.300.39
 	dev-perl/Moose

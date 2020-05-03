@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
+# Obsolete package gets in the way of unmasking >=x11-libs/pango-1.44
+# Bug #698922
+x11-libs/pangox-compat
+
 # Kent Fredric <kentnl@gentoo.org> (2020-04-15)
 # Functionality now provided by Net::SMTP 3.25+
 # available with >=virtual/perl-libnet-1.28

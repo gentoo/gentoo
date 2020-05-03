@@ -11,7 +11,7 @@ DESCRIPTION="Build a Build.PL that uses Module::Build::Tiny"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-
+RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-perl/Dist-Zilla-4.300.39
 	>=dev-perl/Module-Build-Tiny-0.39.0
