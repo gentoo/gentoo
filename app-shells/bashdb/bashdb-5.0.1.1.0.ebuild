@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="!>=app-shells/bash-${PV:0:1}.$((${PV:2:1}+1))"
+DEPEND=">=app-shells/bash-5
+	!>=app-shells/bash-${PV:0:1}.$((${PV:2:1}+1))"
 
 S="${WORKDIR}/${MY_P}"
 
