@@ -10,7 +10,6 @@ inherit perl-module
 DESCRIPTION="reduce file size by stripping whitespace, comments, pod etc"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 
 RDEPEND="
 	>=virtual/perl-Digest-MD5-2.0.0
