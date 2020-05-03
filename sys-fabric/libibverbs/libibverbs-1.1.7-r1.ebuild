@@ -12,7 +12,7 @@ inherit eutils openib multilib-minimal
 
 DESCRIPTION="A library to use InfiniBand 'verbs' for direct access to IB hardware"
 
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux"
 IUSE="static-libs"
 
 DEPEND=""
