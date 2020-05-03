@@ -4,7 +4,10 @@
   <maintainer type="person">
     <email>o.freyermuth@googlemail.com</email>
     <name>Oliver Freyermuth</name>
-    <description>Proxy-maintainer, assign bugs</description>
+  </maintainer>
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
