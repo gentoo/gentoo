@@ -15,7 +15,7 @@ app-text/texlive context l10n_ja
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-13)
 # Requires unsupported dev-python/gevent.
-dev-python/socketpool gevent
+dev-python/socketpool eventlet gevent
 
 # # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
 # ruby-2.7 dropped ia64 support, mask dependencies requiring ruby.
