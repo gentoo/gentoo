@@ -23,12 +23,12 @@ DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="0/18"
 IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa +perl profiling
-	selinux +server static static-libs systemtap tcmalloc test yassl"
+	selinux +server static static-libs systemtap tcmalloc test"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="!test? ( test ) libressl? ( test )"
 
-REQUIRED_USE="?? ( tcmalloc jemalloc ) static? ( yassl )"
+REQUIRED_USE="?? ( tcmalloc jemalloc )"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
@@ -65,15 +65,13 @@ COMMON_DEPEND="net-misc/curl:=
 	)
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
-	!yassl? (
-		client-libs? (
-			!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
-			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
-		)
-		!client-libs? (
-			!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
+	client-libs? (
+		!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
+	)
+	!client-libs? (
+		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 "
 DEPEND="${COMMON_DEPEND}
@@ -337,6 +335,7 @@ multilib_src_configure() {
 		### TODO: make this system but issues with UTF-8 prevent it
 		-DWITH_EDITLINE=bundled
 		-DWITH_ZLIB=system
+		-DWITH_SSL=system
 		-DWITH_LIBWRAP=0
 		-DENABLED_LOCAL_INFILE=1
 		-DMYSQL_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
@@ -352,12 +351,6 @@ multilib_src_configure() {
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
 	else
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR='' )
-	fi
-
-	if ! use yassl ; then
-		mycmakeargs+=( -DWITH_SSL=system )
-	else
-		mycmakeargs+=( -DWITH_SSL=bundled )
 	fi
 
 	if ! use client-libs ; then
