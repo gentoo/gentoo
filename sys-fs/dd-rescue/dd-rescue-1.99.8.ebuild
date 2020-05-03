@@ -91,6 +91,7 @@ src_compile() {
 }
 
 src_test() {
+	append-cflags -fcommon # bug 707796
 	_emake check
 }
 
