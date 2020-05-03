@@ -287,13 +287,26 @@ meson_feature() {
 meson_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	tc-export_build_env
+	local BUILD_CFLAGS=${BUILD_CFLAGS}
+	local BUILD_CPPFLAGS=${BUILD_CPPFLAGS}
+	local BUILD_CXXFLAGS=${BUILD_CXXFLAGS}
+	local BUILD_FCFLAGS=${BUILD_FCFLAGS}
+	local BUILD_OBJCFLAGS=${BUILD_OBJCFLAGS}
+	local BUILD_OBJCXXFLAGS=${BUILD_OBJCXXFLAGS}
+	local BUILD_LDFLAGS=${BUILD_LDFLAGS}
+
 	if tc-is-cross-compiler; then
+		: ${BUILD_CFLAGS:=-O1 -pipe}
+		: ${BUILD_CXXFLAGS:=-O1 -pipe}
 		: ${BUILD_FCFLAGS:=-O1 -pipe}
 		: ${BUILD_OBJCFLAGS:=-O1 -pipe}
 		: ${BUILD_OBJCXXFLAGS:=-O1 -pipe}
 	else
+		: ${BUILD_CFLAGS:=${CFLAGS}}
+		: ${BUILD_CPPFLAGS:=${CPPFLAGS}}
+		: ${BUILD_CXXFLAGS:=${CXXFLAGS}}
 		: ${BUILD_FCFLAGS:=${FCFLAGS}}
+		: ${BUILD_LDFLAGS:=${LDFLAGS}}
 		: ${BUILD_OBJCFLAGS:=${OBJCFLAGS}}
 		: ${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}
 	fi
