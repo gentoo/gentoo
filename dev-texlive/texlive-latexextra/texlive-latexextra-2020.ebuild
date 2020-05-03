@@ -28,3 +28,5 @@ TEXLIVE_MODULE_BINSCRIPTS="
 	texmf-dist/scripts/exceltex/exceltex
 	texmf-dist/tex/latex/pygmentex
 "
+
+PATCHES=( "${FILESDIR}"/lstlinebgrd-syntax.patch )
