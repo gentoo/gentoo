@@ -6,7 +6,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (2020-05-03)
 # Requires unsupported dev-python/gevent.
-dev-python/socketpool gevent
+dev-python/socketpool eventlet gevent
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
 # dependencies not yet keyworded
