@@ -165,7 +165,7 @@ _meson_create_cross_file() {
 	local system cpu_family cpu
 	_meson_get_machine_info "${CHOST}"
 
-	local fn=${T}/meson.${CHOST}.ini
+	local fn=${T}/meson.${CHOST}.${ABI}.ini
 
 	cat > "${fn}" <<-EOF
 	[binaries]
@@ -215,7 +215,7 @@ _meson_create_native_file() {
 	local system cpu_family cpu
 	_meson_get_machine_info "${CBUILD}"
 
-	local fn=${T}/meson.${CBUILD}.ini
+	local fn=${T}/meson.${CBUILD}.${ABI}.ini
 
 	cat > "${fn}" <<-EOF
 	[binaries]
@@ -248,7 +248,7 @@ _meson_create_native_file() {
 	system = '${system}'
 	cpu_family = '${cpu_family}'
 	cpu = '${cpu}'
-	endian = '$(tc-endian "${CHOST}")'
+	endian = '$(tc-endian "${CBUILD}")'
 	EOF
 
 	echo "${fn}"
