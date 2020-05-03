@@ -11,7 +11,7 @@ DESCRIPTION="Extract License and Copyright from its main_module file"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-
+RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-perl/Dist-Zilla-4.300.30
 	>=virtual/perl-Module-Load-0.320.0
