@@ -16,9 +16,9 @@ HOMEPAGE="https://tug.org/texlive/"
 SLOT="0"
 LICENSE="GPL-2 LPPL-1.3c TeX"
 
-SRC_URI="mirror://gentoo/${MY_P}.tar.xz
-	mirror://gentoo/${PN}-patches-${PV}-${PATCHLEVEL}.tar.xz
-	mirror://gentoo/texlive-tlpdb-${PV}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/texlive/${MY_P}.tar.xz
+	https://dev.gentoo.org/~zlogene/distfiles/texlive/${PN}-patches-${PV}-${PATCHLEVEL}.tar.xz
+	https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-tlpdb-${PV}.tar.xz"
 
 TL_CORE_BINEXTRA_MODULES="
 	a2ping adhocfilelist arara asymptote bundledoc checklistings ctan_chk
@@ -58,21 +58,21 @@ TL_CORE_EXTRA_DOC_MODULES="tetex.doc gsftopk.doc texlive.infra.doc ${TL_CORE_BIN
 TL_CORE_EXTRA_SRC_MODULES="${TL_CORE_BINEXTRA_SRC_MODULES}"
 
 for i in ${TL_CORE_EXTRA_MODULES}; do
-	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${PV}.tar.xz"
 done
 
 SRC_URI="${SRC_URI} doc? ( "
 for i in ${TL_CORE_EXTRA_DOC_MODULES}; do
-	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${PV}.tar.xz"
 done
 SRC_URI="${SRC_URI} )"
 SRC_URI="${SRC_URI} source? ( "
 for i in ${TL_CORE_EXTRA_SRC_MODULES}; do
-	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.tar.xz"
+	SRC_URI="${SRC_URI}  https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${PV}.tar.xz"
 done
 SRC_URI="${SRC_URI} )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="cjk X doc source tk +luajittex xetex"
 
 TEXMF_PATH=/usr/share/texmf-dist
