@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 DESCRIPTION="Brings up/down ethernet ports automatically with cable detection"
 HOMEPAGE="http://0pointer.de/lennart/projects/ifplugd/"
@@ -25,7 +25,9 @@ PATCHES=(
 	"${FILESDIR}/${P}-strictalias.patch"
 	"${FILESDIR}/${P}-noip.patch"
 	"${FILESDIR}/${P}-musl.patch"
-	)
+	"${FILESDIR}/${P}-gcc10-compatibility.patch"
+)
+
 DOCS=( doc/README doc/SUPPORTED_DRIVERS )
 HTML_DOCS=( doc/README.html doc/style.css )
 
