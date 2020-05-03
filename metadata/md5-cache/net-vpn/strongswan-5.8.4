@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install postinst preinst setup
+DEPEND=!net-misc/openswan gmp? ( >=dev-libs/gmp-4.1.5:= ) gcrypt? ( dev-libs/libgcrypt:0 ) caps? ( sys-libs/libcap ) curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist] ) mysql? ( dev-db/mysql-connector-c:= ) sqlite? ( >=dev-db/sqlite-3.3.1 ) systemd? ( sys-apps/systemd ) networkmanager? ( net-misc/networkmanager ) pam? ( sys-libs/pam ) strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns ) virtual/linux-sources sys-kernel/linux-headers
+DESCRIPTION=IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
+EAPI=7
+HOMEPAGE=https://www.strongswan.org/
+IUSE=+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11 +strongswan_plugins_led +strongswan_plugins_lookip +strongswan_plugins_systime-fix +strongswan_plugins_unity +strongswan_plugins_vici strongswan_plugins_aesni strongswan_plugins_blowfish strongswan_plugins_ccm strongswan_plugins_chapoly strongswan_plugins_ctr strongswan_plugins_forecast strongswan_plugins_gcm strongswan_plugins_ha strongswan_plugins_ipseckey strongswan_plugins_newhope strongswan_plugins_ntru strongswan_plugins_padlock strongswan_plugins_rdrand strongswan_plugins_save-keys strongswan_plugins_unbound strongswan_plugins_whitelist kernel_linux
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=GPL-2 RSA DES
+RDEPEND=!net-misc/openswan gmp? ( >=dev-libs/gmp-4.1.5:= ) gcrypt? ( dev-libs/libgcrypt:0 ) caps? ( sys-libs/libcap ) curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist] ) mysql? ( dev-db/mysql-connector-c:= ) sqlite? ( >=dev-db/sqlite-3.3.1 ) systemd? ( sys-apps/systemd ) networkmanager? ( net-misc/networkmanager ) pam? ( sys-libs/pam ) strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns ) virtual/logger sys-apps/iproute2 !net-vpn/libreswan selinux? ( sec-policy/selinux-ipsec )
+SLOT=0
+SRC_URI=https://download.strongswan.org/strongswan-5.8.4.tar.bz2
+_eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_md5_=10c833068a52fd64c3fee89387a8e9c6

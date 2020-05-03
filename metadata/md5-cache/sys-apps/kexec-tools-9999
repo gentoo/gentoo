@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl] || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=configure install postinst prepare setup unpack
+DEFINED_PHASES=compile configure install postinst prepare setup unpack
 DEPEND=lzma? ( app-arch/xz-utils ) zlib? ( sys-libs/zlib )
 DESCRIPTION=Load another kernel from the currently executing Linux kernel
 EAPI=7
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=lzma? ( app-arch/xz-utils ) zlib? ( sys-libs/zlib )
 REQUIRED_USE=lzma? ( zlib )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8bc60d8f5cb81ac7f06b162776f7408a
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=f2bc7a5bf2fb6fa87eb2ba6f5b346ab4
