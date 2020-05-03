@@ -12,15 +12,13 @@ HOMEPAGE="https://gstreamer.freedesktop.org/"
 LICENSE="LGPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-# TODO: egl IUSE only for transition
-IUSE="X bzip2 +egl gles2 +introspection +opengl +orc vnc wayland" # Keep default IUSE mirrored with gst-plugins-base where relevant
+IUSE="X bzip2 +introspection +orc vnc wayland"
 
 # X11 is automagic for now, upstream #709530 - only used by librfb USE=vnc plugin
-# We mirror opengl/gles2 from -base to ensure no automagic openglmixers plugin (with "opengl?" it'd still get built with USE=-opengl here)
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
 	>=media-libs/gstreamer-${PV}:${SLOT}[${MULTILIB_USEDEP},introspection?]
-	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP},egl?,introspection?,gles2=,opengl=]
+	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP},introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
 
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
@@ -51,13 +49,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf=()
-	if use opengl || use gles2; then
-		myconf+=( --enable-gl )
-	else
-		myconf+=( --disable-gl )
-	fi
-
 	# Always enable shm (shm_open) and ipcpipeline (sys/socket.h); no extra deps
 	gstreamer_multilib_src_configure \
 		$(multilib_native_use_enable introspection) \
@@ -70,7 +61,7 @@ multilib_src_configure() {
 		--without-player-tests \
 		--enable-shm \
 		--enable-ipcpipeline \
-		"${myconf[@]}"
+		--disable-gl # eclass probably does this too, but be explicit as it used to be handled in ebuild here; all parts now in gst-plugins-base instead
 
 	if multilib_is_native_abi; then
 		local x
