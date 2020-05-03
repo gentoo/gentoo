@@ -288,9 +288,15 @@ meson_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	tc-export_build_env
-	: ${BUILD_FCFLAGS:=${FCFLAGS}}
-	: ${BUILD_OBJCFLAGS:=${OBJCFLAGS}}
-	: ${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}
+	if tc-is-cross-compiler; then
+		: ${BUILD_FCFLAGS:=-O1 -pipe}
+		: ${BUILD_OBJCFLAGS:=-O1 -pipe}
+		: ${BUILD_OBJCXXFLAGS:=-O1 -pipe}
+	else
+		: ${BUILD_FCFLAGS:=${FCFLAGS}}
+		: ${BUILD_OBJCFLAGS:=${OBJCFLAGS}}
+		: ${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}
+	fi
 
 	local mesonargs=(
 		meson setup
