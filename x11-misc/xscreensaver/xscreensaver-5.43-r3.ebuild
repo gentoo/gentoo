@@ -30,7 +30,6 @@ COMMON_DEPEND="
 	x11-libs/libXmu
 	x11-libs/libXrandr
 	x11-libs/libXt
-	x11-libs/libXxf86misc
 	x11-libs/libXxf86vm
 	caps? ( sys-libs/libcap )
 	jpeg? ( virtual/jpeg:0 )
@@ -64,6 +63,7 @@ DEPEND="
 	x11-base/xorg-proto
 "
 PATCHES=(
+	"${FILESDIR}"/${PN}-remove-libXxf86misc-dep.patch
 	"${FILESDIR}"/${PN}-5.05-interix.patch
 	"${FILESDIR}"/${PN}-5.20-blurb-hndl-test-passwd.patch
 	"${FILESDIR}"/${PN}-5.20-test-passwd-segv-tty.patch
