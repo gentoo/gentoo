@@ -20,7 +20,6 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXv
-	x11-libs/libXxf86misc
 "
 DEPEND="${RDEPEND}
 	virtual/os-headers
