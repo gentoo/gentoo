@@ -13626,7 +13626,7 @@ media-sound/rosegarden 17.12.1 19.06 19.12: MIDI and audio sequencer and notatio
 media-sound/rplay 3.3.2-r3: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
 media-sound/sc2mpd 1.1.5: Implements the SongCast protocol for use by upmpdcli and mpd
-media-sound/schismtracker 20180810: Free implementation of Impulse Tracker, a tool used to create high quality music
+media-sound/schismtracker 20180810-r1: Free implementation of Impulse Tracker, a tool used to create high quality music
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
 media-sound/seq24 0.9.3-r1: Loop based MIDI sequencer with focus on live performances
 media-sound/setmixer 19941227_p1: A commandline mixer
