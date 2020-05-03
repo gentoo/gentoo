@@ -27,6 +27,10 @@ RDEPEND="
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
 "
+# block pytest plugins that will be broken by the upgrade
+RDEPEND+="
+	!<dev-python/pytest-virtualenv-1.7.0-r1[python_targets_python2_7(-)]
+"
 
 BDEPEND="
 	${RDEPEND}
