@@ -20,7 +20,9 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)"
 BDEPEND="
-	test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )"
+	test? (
+		>=dev-python/pytest-4.6[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
