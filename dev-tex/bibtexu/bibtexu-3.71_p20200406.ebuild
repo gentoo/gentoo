@@ -24,12 +24,12 @@ EXTRA_TL_MODULES="bibtex8 bibtexu"
 EXTRA_TL_DOC_MODULES="bibtex8.doc bibtexu.doc"
 
 for i in ${EXTRA_TL_MODULES} ; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 
 SRC_URI="${SRC_URI} doc? ( "
 for i in ${EXTRA_TL_DOC_MODULES} ; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-module-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 SRC_URI="${SRC_URI} ) "
 
