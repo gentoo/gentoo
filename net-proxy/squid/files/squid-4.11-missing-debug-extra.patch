@@ -1,0 +1,31 @@
+From 0cbf89e7d266aabacc8651759a8509ebbe0f5c93 Mon Sep 17 00:00:00 2001
+From: Alex Rousskov <rousskov@measurement-factory.com>
+Date: Mon, 20 Apr 2020 15:32:48 -0400
+Subject: [PATCH] Bug 5041: Missing Debug::Extra breaks build on hosts with
+ systemd
+
+Master commit 6fa8c66 (i.e. Bug 5016 fix) relied on Debug::Extra added
+by master commit (ccfbe8f) that was not ported to v4. The port of the
+former master commit lacked the required piece of the latter commit.
+
+The problem is invisible on hosts without a systemd package (that Squid
+can find/use) and with Squids explicitly ./configured --without-systemd.
+---
+ src/Debug.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/Debug.h b/src/Debug.h
+index 6eecd01bf9..ddd9e38f8f 100644
+--- a/src/Debug.h
++++ b/src/Debug.h
+@@ -99,6 +99,10 @@ class Debug
+ 
+     /// configures the active debugging context to write syslog ALERT
+     static void ForceAlert();
++
++    /// prefixes each grouped debugs() line after the first one in the group
++    static std::ostream& Extra(std::ostream &os) { return os << "\n    "; }
++
+ private:
+     static Context *Current; ///< deepest active context; nil outside debugs()
+ };

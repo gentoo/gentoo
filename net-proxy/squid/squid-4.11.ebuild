@@ -78,6 +78,7 @@ pkg_pretend() {
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-4.3-gentoo.patch"
+	eapply "${FILESDIR}/${PN}-4.11-missing-debug-extra.patch"
 	sed -i -e 's:/usr/local/squid/etc:/etc/squid:' \
 		INSTALL QUICKSTART \
 		scripts/fileno-to-pathname.pl \
