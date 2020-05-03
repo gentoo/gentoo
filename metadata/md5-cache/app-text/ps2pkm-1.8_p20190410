@@ -8,5 +8,5 @@ KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64
 LICENSE=MIT
 RDEPEND=>=dev-libs/kpathsea-6.2.1
 SLOT=0
-SRC_URI=mirror://gentoo/texlive-20190410-source.tar.xz
-_md5_=e50901a99703968ed819848b41507420
+SRC_URI=https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-20190410-source.tar.xz
+_md5_=e438530e89e9fb2137f2577368df0287

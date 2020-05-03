@@ -471,6 +471,9 @@ app-emulation/cri-o:device-mapper - Enables dependencies for the "devicemapper" 
 app-emulation/cri-o:ostree - Enables dependencies for handling of OSTree images.
 app-emulation/crossover-bin:capi - Enable ISDN support via CAPI
 app-emulation/crossover-bin:opencl - Enable OpenCL support
+app-emulation/crossover-bin:osmesa - Add support for OpenGL in bitmaps using libOSMesa
+app-emulation/crossover-bin:pcap - Support packet capture software (e.g. wireshark)
+app-emulation/crossover-bin:vulkan - Enable Vulkan drivers
 app-emulation/crun:bpf - Enable in Kernel, eBPF (enhanced Berkley Packet Filter) support for managing device controllers.
 app-emulation/docker:apparmor - Enable AppArmor support.
 app-emulation/docker:aufs - Enables dependencies for the "aufs" graph driver, including necessary kernel flags.

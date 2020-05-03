@@ -1594,7 +1594,7 @@ app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.2.12 1.2.13 1.3.0 1.3.1 1.3.2 1.3.
 app-emulation/containers-storage 1.15.1 1.15.2 1.15.7 1.18.1: containers/storage library
 app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2 1.16.3 1.17.0 1.17.1: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.14.0 1.15.0 1.16.1 1.18.0: CLI and validation tools for Kubelet Container Runtime (CRI)
-app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0-r1: Commercial version of app-emulation/wine with paid support.
+app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0-r1 19.0.1: Commercial version of app-emulation/wine with paid support
 app-emulation/crun 0.10.6: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 2.35.0 2.36.0 9999: Golden Disk Image builder.
@@ -2455,7 +2455,7 @@ app-portage/layman 2.4.2-r1 2.4.3 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.2.2 0.2.3 0.2.4 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.2.4 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1 0.5.3-r2: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -2778,7 +2778,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2019-r1 2020: A complete TeX distribution
-app-text/texlive-core 2019-r10 2019-r11 2020-r4: A complete TeX distribution
+app-text/texlive-core 2019-r11 2020-r4: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -8406,7 +8406,7 @@ dev-python/pypng 0.0.18 0.0.20: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.20: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 2.4.2-r1: Python interface to the PROJ library
-dev-python/pyproject2setuppy 2 3 4: Cheap setup.py hack to install flit & poetry-based projects
+dev-python/pyproject2setuppy 4: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pypy 7.3.0 7.3.1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.0 7.3.1: PyPy executable (build from source)
@@ -14657,7 +14657,7 @@ net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
-net-mail/fetchmail 6.4.1 6.4.1-r3 6.4.2 6.4.3: the legendary remote-mail retrieval and forwarding utility
+net-mail/fetchmail 6.4.1 6.4.1-r3 6.4.2 6.4.3 6.4.4: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
