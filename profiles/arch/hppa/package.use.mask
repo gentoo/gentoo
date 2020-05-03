@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Michał Górny <mgorny@gentoo.org> (2020-05-03)
+# Requires unsupported dev-python/gevent.
+dev-python/socketpool gevent
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
 # dependencies not yet keyworded
 dev-ruby/activemodel test
