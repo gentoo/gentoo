@@ -49,6 +49,10 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-rpm )
 "
 
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-4.11.0-autotools.patch
 	eapply "${FILESDIR}"/${PN}-4.8.1-db-path.patch
