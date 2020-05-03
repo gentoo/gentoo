@@ -5260,7 +5260,7 @@ dev-libs/quazip 0.8.1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP packag
 dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
-dev-libs/re2 0.2019.12.01 0.2020.04.01: An efficient, principled regular expression library
+dev-libs/re2 0.2019.12.01 0.2020.04.01 0.2020.05.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1 1.0.17.1-r1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
@@ -12761,12 +12761,12 @@ media-libs/gnonlin 1.4.0-r1: Set of GStreamer elements to ease the creation of n
 media-libs/graphene 1.8.6 1.10.0: A thin layer of types for graphic libraries
 media-libs/grilo 0.3.11 0.3.12: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 1.14.5: Less plugins for GStreamer
-media-libs/gst-plugins-base 1.14.5 1.14.5-r1: Basepack of plugins for gstreamer
-media-libs/gst-plugins-good 1.14.5: Basepack of plugins for GStreamer
-media-libs/gst-plugins-ugly 1.14.3: Basepack of plugins for gstreamer
+media-libs/gst-plugins-bad 1.14.5 1.16.2: Less plugins for GStreamer
+media-libs/gst-plugins-base 1.14.5 1.14.5-r1 1.16.2: Basepack of plugins for gstreamer
+media-libs/gst-plugins-good 1.14.5 1.16.2: Basepack of plugins for GStreamer
+media-libs/gst-plugins-ugly 1.14.3 1.16.2: Basepack of plugins for gstreamer
 media-libs/gst-rtsp-server 1.14.5: A GStreamer based RTSP server
-media-libs/gstreamer 1.14.5: Open source multimedia framework
+media-libs/gstreamer 1.14.5 1.16.2: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.14.5: SDK for making video editors and more
 media-libs/guilib 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
@@ -13108,76 +13108,76 @@ media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the cu
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
 media-plugins/grilo-plugins 0.3.9 0.3.11: A collection of plugins for the Grilo framework
-media-plugins/gst-plugins-a52dec 1.14.3: ATSC A/52 audio decoder plugin for GStreamer
-media-plugins/gst-plugins-amr 1.14.3: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
-media-plugins/gst-plugins-assrender 1.14.5: ASS/SSA rendering with effects support plugin for GStreamer
-media-plugins/gst-plugins-bluez 1.14.5: AVDTP source/sink and A2DP sink plugin for GStreamer
-media-plugins/gst-plugins-bs2b 1.14.5: bs2b elements for Gstreamer
-media-plugins/gst-plugins-cairo 1.14.5: Video overlay plugin based on cairo for GStreamer
-media-plugins/gst-plugins-cdio 1.14.3: CD Audio Source (cdda) plugin for GStreamer
-media-plugins/gst-plugins-cdparanoia 1.14.5: CD Audio Source (cdda) plugin for GStreamer
-media-plugins/gst-plugins-chromaprint 1.14.5: Calculate Chromaprint fingerprint from audio files for GStreamer
-media-plugins/gst-plugins-colormanagement 1.14.5: Color management correction GStreamer plugins
-media-plugins/gst-plugins-dash 1.14.5: MPEG-DASH plugin for GStreamer
-media-plugins/gst-plugins-dtls 1.14.5: DTLS encoder/decoder with SRTP support plugin for GStreamer
-media-plugins/gst-plugins-dts 1.14.5: DTS audio decoder plugin for Gstreamer
-media-plugins/gst-plugins-dv 1.14.5: DV demuxer and decoder plugin for GStreamer
-media-plugins/gst-plugins-dvb 1.14.5: plugin for gstreamer
-media-plugins/gst-plugins-dvdread 1.14.3: DVD read plugin for GStreamer
-media-plugins/gst-plugins-faac 1.14.5: AAC audio encoder plugin for GStreamer
-media-plugins/gst-plugins-faad 1.14.5: AAC audio decoder plugin.
-media-plugins/gst-plugins-flac 1.14.5: FLAC encoder/decoder/tagger plugin for GStreamer
-media-plugins/gst-plugins-gdkpixbuf 1.14.5: plugin for gstreamer
-media-plugins/gst-plugins-gtk 1.14.5: Video sink plugin for GStreamer that renders to a GtkWidget
-media-plugins/gst-plugins-hls 1.14.5: HTTP live streaming plugin for GStreamer
-media-plugins/gst-plugins-jack 1.14.5: plugin for gstreamer
-media-plugins/gst-plugins-jpeg 1.14.5: JPEG image encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-kate 1.14.5: Kate overlay codec suppport plugin for GStreamer
-media-plugins/gst-plugins-ladspa 1.14.5: Ladspa elements for Gstreamer
-media-plugins/gst-plugins-lame 1.14.5: MP3 encoder plugin for GStreamer
-media-plugins/gst-plugins-libav 1.14.4.4.1.3_p20190329: FFmpeg based gstreamer plugin
-media-plugins/gst-plugins-libde265 1.14.5: H.265 decoder plugin for GStreamer
-media-plugins/gst-plugins-libmms 1.14.5: Microsoft Multi Media Server source plugin for GStreamer
+media-plugins/gst-plugins-a52dec 1.14.3 1.16.2: ATSC A/52 audio decoder plugin for GStreamer
+media-plugins/gst-plugins-amr 1.14.3 1.16.2: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
+media-plugins/gst-plugins-assrender 1.14.5 1.16.2: ASS/SSA rendering with effects support plugin for GStreamer
+media-plugins/gst-plugins-bluez 1.14.5 1.16.2: AVDTP source/sink and A2DP sink plugin for GStreamer
+media-plugins/gst-plugins-bs2b 1.14.5 1.16.2: bs2b elements for Gstreamer
+media-plugins/gst-plugins-cairo 1.14.5 1.16.2: Video overlay plugin based on cairo for GStreamer
+media-plugins/gst-plugins-cdio 1.14.3 1.16.2: CD Audio Source (cdda) plugin for GStreamer
+media-plugins/gst-plugins-cdparanoia 1.14.5 1.16.2: CD Audio Source (cdda) plugin for GStreamer
+media-plugins/gst-plugins-chromaprint 1.14.5 1.16.2: Calculate Chromaprint fingerprint from audio files for GStreamer
+media-plugins/gst-plugins-colormanagement 1.14.5 1.16.2: Color management correction GStreamer plugins
+media-plugins/gst-plugins-dash 1.14.5 1.16.2: MPEG-DASH plugin for GStreamer
+media-plugins/gst-plugins-dtls 1.14.5 1.16.2: DTLS encoder/decoder with SRTP support plugin for GStreamer
+media-plugins/gst-plugins-dts 1.14.5 1.16.2: DTS audio decoder plugin for Gstreamer
+media-plugins/gst-plugins-dv 1.14.5 1.16.2: DV demuxer and decoder plugin for GStreamer
+media-plugins/gst-plugins-dvb 1.14.5 1.16.2: plugin for gstreamer
+media-plugins/gst-plugins-dvdread 1.14.3 1.16.2: DVD read plugin for GStreamer
+media-plugins/gst-plugins-faac 1.14.5 1.16.2: AAC audio encoder plugin for GStreamer
+media-plugins/gst-plugins-faad 1.14.5 1.16.2: AAC audio decoder plugin.
+media-plugins/gst-plugins-flac 1.14.5 1.16.2: FLAC encoder/decoder/tagger plugin for GStreamer
+media-plugins/gst-plugins-gdkpixbuf 1.14.5 1.16.2: plugin for gstreamer
+media-plugins/gst-plugins-gtk 1.14.5 1.16.2: Video sink plugin for GStreamer that renders to a GtkWidget
+media-plugins/gst-plugins-hls 1.14.5 1.16.2: HTTP live streaming plugin for GStreamer
+media-plugins/gst-plugins-jack 1.14.5 1.16.2: plugin for gstreamer
+media-plugins/gst-plugins-jpeg 1.14.5 1.16.2: JPEG image encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-kate 1.14.5 1.16.2: Kate overlay codec suppport plugin for GStreamer
+media-plugins/gst-plugins-ladspa 1.14.5 1.16.2: Ladspa elements for Gstreamer
+media-plugins/gst-plugins-lame 1.14.5 1.16.2: MP3 encoder plugin for GStreamer
+media-plugins/gst-plugins-libav 1.14.4.4.1.3_p20190329 1.16.2: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libde265 1.14.5 1.16.2: H.265 decoder plugin for GStreamer
+media-plugins/gst-plugins-libmms 1.14.5 1.16.2: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.15-r100: GStreamer plugin for ICE (RFC 5245) support
-media-plugins/gst-plugins-libpng 1.14.5: PNG image encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-libvisual 1.14.5: Visualization elements for GStreamer
-media-plugins/gst-plugins-lv2 1.14.5: Lv2 elements for Gstreamer
+media-plugins/gst-plugins-libpng 1.14.5 1.16.2: PNG image encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-libvisual 1.14.5 1.16.2: Visualization elements for GStreamer
+media-plugins/gst-plugins-lv2 1.14.5 1.16.2: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-meta 1.14.3: Meta ebuild to pull in gst plugins for apps
-media-plugins/gst-plugins-modplug 1.14.5: MOD audio decoder plugin for GStreamer
-media-plugins/gst-plugins-mpeg2dec 1.14.3: MPEG2 decoder plugin for GStreamer
-media-plugins/gst-plugins-mpeg2enc 1.14.5: MPEG-1/2 video encoding plugin for GStreamer
-media-plugins/gst-plugins-mpg123 1.14.5: MP3 decoder plugin for GStreamer
-media-plugins/gst-plugins-mplex 1.14.5: MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer
-media-plugins/gst-plugins-neon 1.14.5: HTTP client source plugin for GStreamer
-media-plugins/gst-plugins-ofa 1.14.5: MusicIP audio fingerprinting plugin for GStreamer
-media-plugins/gst-plugins-opencv 1.14.5: OpenCV elements for Gstreamer
-media-plugins/gst-plugins-openh264 1.14.5: H.264 encoder/decoder plugin for GStreamer.
-media-plugins/gst-plugins-opus 1.14.5: Opus audio parser plugin for GStreamer
-media-plugins/gst-plugins-oss 1.14.5: OSS (Open Sound System) support plugin for GStreamer
-media-plugins/gst-plugins-pulse 1.14.5: PulseAudio sound server plugin for GStreamer
-media-plugins/gst-plugins-raw1394 1.14.5: Fiwewire DV/HDV capture plugin for GStreamer
-media-plugins/gst-plugins-resindvd 1.14.5: DVD playback support plugin for GStreamer
-media-plugins/gst-plugins-rtmp 1.14.5: RTMP source/sink plugin for GStreamer
-media-plugins/gst-plugins-shout2 1.14.5: Icecast server sink plugin for GStreamer
-media-plugins/gst-plugins-sidplay 1.14.3: Sid decoder plugin for GStreamer
-media-plugins/gst-plugins-smoothstreaming 1.14.5: Smooth Streaming plugin for GStreamer
-media-plugins/gst-plugins-soundtouch 1.14.5: Beats-per-minute detection and pitch controlling plugin for GStreamer
-media-plugins/gst-plugins-soup 1.14.5: HTTP client source/sink plugin for GStreamer
-media-plugins/gst-plugins-speex 1.14.5: Speex encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-srtp 1.14.5: SRTP encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-taglib 1.14.5: ID3v2/APEv2 tagger plugin for GStreamer
-media-plugins/gst-plugins-twolame 1.14.5: MPEG2 encoder plugin for GStreamer
-media-plugins/gst-plugins-uvch264 1.14.5: UVC compliant H264 encoding cameras plugin for GStreamer
-media-plugins/gst-plugins-v4l2 1.14.5: plugin for gstreamer
-media-plugins/gst-plugins-vaapi 1.14.5: Hardware accelerated video decoding through VA-API plugin for GStreamer
-media-plugins/gst-plugins-voaacenc 1.14.5: AAC encoder plugin for GStreamer
-media-plugins/gst-plugins-voamrwbenc 1.14.5: AMR-WB audio encoder plugin for GStreamer
-media-plugins/gst-plugins-vpx 1.14.5: VP8/VP9 video encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-wavpack 1.14.5: Wavpack audio encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-x264 1.14.3: H.264 encoder plugin for GStreamer
-media-plugins/gst-plugins-x265 1.14.5: H.265 encoder plugin for GStreamer
-media-plugins/gst-plugins-ximagesrc 1.14.5: X11 video capture stream plugin for GStreamer
-media-plugins/gst-plugins-zbar 1.14.5: Bar codes detection in video streams for GStreamer
+media-plugins/gst-plugins-modplug 1.14.5 1.16.2: MOD audio decoder plugin for GStreamer
+media-plugins/gst-plugins-mpeg2dec 1.14.3 1.16.2: MPEG2 decoder plugin for GStreamer
+media-plugins/gst-plugins-mpeg2enc 1.14.5 1.16.2: MPEG-1/2 video encoding plugin for GStreamer
+media-plugins/gst-plugins-mpg123 1.14.5 1.16.2: MP3 decoder plugin for GStreamer
+media-plugins/gst-plugins-mplex 1.14.5 1.16.2: MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer
+media-plugins/gst-plugins-neon 1.14.5 1.16.2: HTTP client source plugin for GStreamer
+media-plugins/gst-plugins-ofa 1.14.5 1.16.2: MusicIP audio fingerprinting plugin for GStreamer
+media-plugins/gst-plugins-opencv 1.14.5 1.16.2: OpenCV elements for GStreamer
+media-plugins/gst-plugins-openh264 1.14.5 1.16.2: H.264 encoder/decoder plugin for GStreamer.
+media-plugins/gst-plugins-opus 1.14.5 1.16.2: Opus audio parser plugin for GStreamer
+media-plugins/gst-plugins-oss 1.14.5 1.16.2: OSS (Open Sound System) support plugin for GStreamer
+media-plugins/gst-plugins-pulse 1.14.5 1.16.2: PulseAudio sound server plugin for GStreamer
+media-plugins/gst-plugins-raw1394 1.14.5 1.16.2: Fiwewire DV/HDV capture plugin for GStreamer
+media-plugins/gst-plugins-resindvd 1.14.5 1.16.2: DVD playback support plugin for GStreamer
+media-plugins/gst-plugins-rtmp 1.14.5 1.16.2: RTMP source/sink plugin for GStreamer
+media-plugins/gst-plugins-shout2 1.14.5 1.16.2: Icecast server sink plugin for GStreamer
+media-plugins/gst-plugins-sidplay 1.14.3 1.16.2: Sid decoder plugin for GStreamer
+media-plugins/gst-plugins-smoothstreaming 1.14.5 1.16.2: Smooth Streaming plugin for GStreamer
+media-plugins/gst-plugins-soundtouch 1.14.5 1.16.2: Beats-per-minute detection and pitch controlling plugin for GStreamer
+media-plugins/gst-plugins-soup 1.14.5 1.16.2: HTTP client source/sink plugin for GStreamer
+media-plugins/gst-plugins-speex 1.14.5 1.16.2: Speex encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-srtp 1.14.5 1.16.2: SRTP encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-taglib 1.14.5 1.16.2: ID3v2/APEv2 tagger plugin for GStreamer
+media-plugins/gst-plugins-twolame 1.14.5 1.16.2: MPEG2 encoder plugin for GStreamer
+media-plugins/gst-plugins-uvch264 1.14.5 1.16.2: UVC compliant H264 encoding cameras plugin for GStreamer
+media-plugins/gst-plugins-v4l2 1.14.5 1.16.2: plugin for gstreamer
+media-plugins/gst-plugins-vaapi 1.14.5 1.16.2: Hardware accelerated video decoding through VA-API plugin for GStreamer
+media-plugins/gst-plugins-voaacenc 1.14.5 1.16.2: AAC encoder plugin for GStreamer
+media-plugins/gst-plugins-voamrwbenc 1.14.5 1.16.2: AMR-WB audio encoder plugin for GStreamer
+media-plugins/gst-plugins-vpx 1.14.5 1.16.2: VP8/VP9 video encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-wavpack 1.14.5 1.16.2: Wavpack audio encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-x264 1.14.3 1.16.2: H.264 encoder plugin for GStreamer
+media-plugins/gst-plugins-x265 1.14.5 1.16.2: H.265 encoder plugin for GStreamer
+media-plugins/gst-plugins-ximagesrc 1.14.5 1.16.2: X11 video capture stream plugin for GStreamer
+media-plugins/gst-plugins-zbar 1.14.5 1.16.2: Bar codes detection in video streams for GStreamer
 media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
 media-plugins/hexter 1.1.0: Yamaha DX7 modeling DSSI plugin
 media-plugins/imlib2_loaders 1.6.1: Additional image loaders for Imlib2
@@ -13865,7 +13865,7 @@ media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 3.7.1-r1: Movie slideshow creator using Ken Burns effect
 media-video/pipewire 0.2.7: Multimedia processing graphs
-media-video/pitivi 0.999-r1: A non-linear video editor using the GStreamer multimedia framework
+media-video/pitivi 0.999-r2: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r1 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 9999: A Qt-based video player, which can play most formats and codecs
@@ -14369,7 +14369,7 @@ net-im/bitlbee-facebook 1.2.0 9999: Facebook protocol plugin for BitlBee
 net-im/bitlbee-steam 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.7.0: Free/Open Source micro-blogging client by KDE
-net-im/corebird 1.7.4: Native GTK+3 Twitter client
+net-im/corebird 1.7.4-r1: Native GTK+3 Twitter client
 net-im/coturn 4.5.1.1 9999: coturn TURN server project
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.4.2: Qt-based client for the pump.io distributed social network
@@ -17243,7 +17243,7 @@ sys-fs/cryptmount 5.3.2: A utility for management and user-mode mounting of encr
 sys-fs/cryptsetup 1.7.5-r1 2.2.1-r1 2.2.2 2.3.0 2.3.1 2.3.2: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
-sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
+sys-fs/dd-rescue 1.99.8-r1: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.24 1.25: Copy data from one file or block device to another with read-error recovery
 sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1-r1 332.14_p1-r2: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
@@ -17360,7 +17360,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.32 5.4.34 5.4.35 5.5.19 5.6.6 5.6.7: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.34 5.4.35 5.4.36 5.5.19 5.6.6 5.6.7 5.6.8: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.9.217 4.9.218 4.9.219 4.9.220 4.14.174 4.14.175 4.14.176 4.14.177 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.4.37 5.5.15 5.5.16 5.5.17 5.5.18 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8 5.6.9: Full sources including the Gentoo patchset for the 5.6 kernel tree
+sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.4.221 4.9.217 4.9.218 4.9.219 4.9.220 4.9.221 4.14.174 4.14.175 4.14.176 4.14.177 4.14.178 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 4.19.120 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.4.37 5.4.38 5.5.15 5.5.16 5.5.17 5.5.18 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8 5.6.9 5.6.10: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -18557,7 +18557,7 @@ x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from ann
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.23.3 1.25.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 1.4 1.5 9999: SkypeWeb Plugin for Pidgin
-x11-plugins/pidgin-telegram 1.4.2: A libpurple protocol plugin that adds support for the Telegram messenger
+x11-plugins/pidgin-telegram 1.4.2 1.4.3: A libpurple protocol plugin that adds support for the Telegram messenger
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
