@@ -22,16 +22,19 @@
 		<flag name="avresample">Use libavresample instead of libswresample</flag>
 		<flag name="cdio">Build with AudioCD module</flag>
 		<flag name="cuvid">Build with CUVID module</flag>
-		<flag name="extensions">Build with Extensions module</flag>
+		<flag name="extensions">Build with Extensions module and enable other plugins</flag>
 		<flag name="gme">Build Chiptune with GME support</flag>
 		<flag name="inputs">Build with Inputs module</flag>
 		<flag name="lastfm">Build with LastFM support</flag>
+		<flag name="libass">Build with SSA/ASS subtitles rendering support</flag>
 		<flag name="lyrics">Build with lyrics support</flag>
 		<flag name="mediabrowser">Build with MediaBrowser support</flag>
 		<flag name="mpris2">Build Extensions with MPRIS2 support</flag>
 		<flag name="notifications">Build additional notifications module</flag>
 		<flag name="sid">Build Chiptune with SIDPLAY support</flag>
+		<flag name="shaders">Compile Vulkan shaders using <pkg>media-libs/shaderc</pkg></flag>
 		<flag name="videofilters">Build with VideoFilters module</flag>
 		<flag name="visualizations">Build with Visualizations module</flag>
+		<flag name="vulkan">Build with Vulkan support</flag>
 	</use>
 </pkgmetadata>
