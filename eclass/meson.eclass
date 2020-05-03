@@ -366,22 +366,24 @@ meson_src_configure() {
 	# https://bugs.gentoo.org/625396
 	python_export_utf8_locale
 
-	# https://bugs.gentoo.org/720818
-	export -n {C,CPP,CXX,F,FC,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
+	(
+		# https://bugs.gentoo.org/720860
+		if ver_test "$(meson --version)" -lt "0.54"; then
+			local -x CFLAGS=${BUILD_CFLAGS}
+			local -x CPPFLAGS=${BUILD_CPPFLAGS}
+			local -x CXXFLAGS=${BUILD_CXXFLAGS}
+			local -x FFLAGS=${BUILD_FCFLAGS}
+			local -x OBJCFLAGS=${BUILD_OBJCFLAGS}
+			local -x OBJCXXFLAGS=${BUILD_OBJCXXFLAGS}
+			local -x LDFLAGS=${BUILD_LDFLAGS}
+		else
+			# https://bugs.gentoo.org/720818
+			export -n {C,CPP,CXX,F,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
+		fi
 
-	# https://bugs.gentoo.org/720860
-	if ver_test "$(meson --version)" -lt "0.54"; then
-		local -x CFLAGS=${BUILD_CFLAGS}
-		local -x CPPFLAGS=${BUILD_CPPFLAGS}
-		local -x CXXFLAGS=${BUILD_CXXFLAGS}
-		local -x FFLAGS=${BUILD_FCFLAGS}
-		local -x OBJCFLAGS=${BUILD_OBJCFLAGS}
-		local -x OBJCXXFLAGS=${BUILD_OBJCXXFLAGS}
-		local -x LDFLAGS=${BUILD_LDFLAGS}
-	fi
-
-	echo "${mesonargs[@]}" >&2
-	"${mesonargs[@]}" || die
+		echo "${mesonargs[@]}" >&2
+		"${mesonargs[@]}"
+	) || die
 }
 
 # @FUNCTION: meson_src_compile
