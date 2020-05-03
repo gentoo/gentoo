@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome.org meson vala virtualx xdg
+inherit gnome.org gnome2-utils meson vala virtualx xdg
 
 DESCRIPTION="A cheesy program to take pictures and videos from your webcam"
 HOMEPAGE="https://wiki.gnome.org/Apps/Cheese"
