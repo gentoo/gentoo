@@ -514,10 +514,6 @@ net-proxy/haproxy wurfl
 # dev-dotnet/zeitgeist-sharp is going to be removed, bug #582894
 net-irc/hexchat theme-manager
 
-# Pacho Ramos <pacho@gentoo.org> (2016-11-27)
-# Avoid the usage of dead net-dialup/capi4k-utils
-app-emulation/crossover-bin capi
-
 # Ulrich Müller <ulm@gentoo.org> (2016-10-15)
 # The --with-cairo option is considered as experimental by upstream
 # and causes problems with updating the X window, bug #592238
