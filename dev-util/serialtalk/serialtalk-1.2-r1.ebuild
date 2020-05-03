@@ -13,7 +13,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="simple command-line tool to talk to serial devices"
+DESCRIPTION="Simple command-line tool to talk to serial devices"
 HOMEPAGE="https://github.com/BGO-OD/serialtalk"
 
 LICENSE="GPL-3+"
