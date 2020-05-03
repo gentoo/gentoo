@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/glib:=
 SLOT=0
 SRC_URI=https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v4.3.0/libslirp-v4.3.0.tar.gz -> libslirp-4.3.0.tar.gz
-_eclasses_=meson	e59b2d9df271a3ef7c9d047284fdbe3f	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=meson	c2ddfeecb6a355fb95812be39a4bf9f5	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=761446e556af805ffe2bd904f036df13
