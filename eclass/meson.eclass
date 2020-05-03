@@ -346,7 +346,7 @@ meson_src_configure() {
 	python_export_utf8_locale
 
 	# https://bugs.gentoo.org/720818
-	unset {C,CPP,CXX,F,FC,OBJC,OBJCXX,LD}FLAGS
+	export -n {C,CPP,CXX,F,FC,OBJC,OBJCXX,LD}FLAGS
 
 	echo "${mesonargs[@]}" >&2
 	"${mesonargs[@]}" || die
