@@ -47,6 +47,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DDOC_INSTALL_DIR="${EPREFIX}"/usr/share/doc/${PF}
 		-DCMAKE_DISABLE_FIND_PACKAGE_Epydoc=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_Pygments=ON
 	)
 	cmake_src_configure
 }

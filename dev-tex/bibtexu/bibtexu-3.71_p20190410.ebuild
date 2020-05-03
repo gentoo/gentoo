@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="8-bit Implementation of BibTeX 0.99 with a Very Large Capacity"
 HOMEPAGE="http://tug.org/texlive/"
-SRC_URI="mirror://gentoo/texlive-${PV#*_p}-source.tar.xz"
+SRC_URI=" https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,12 +24,12 @@ EXTRA_TL_MODULES="bibtex8 bibtexu"
 EXTRA_TL_DOC_MODULES="bibtex8.doc bibtexu.doc"
 
 for i in ${EXTRA_TL_MODULES} ; do
-	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI}  https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 
 SRC_URI="${SRC_URI} doc? ( "
 for i in ${EXTRA_TL_DOC_MODULES} ; do
-	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI}  https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 SRC_URI="${SRC_URI} ) "
 
