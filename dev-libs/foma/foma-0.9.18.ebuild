@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A set of utilities for constructing finite-state automata and transducers"
 HOMEPAGE="https://github.com/mhulden/foma"
@@ -24,6 +24,8 @@ src_prepare() {
 
 	# Install to correct libdir
 	sed "s|/lib|/$(get_libdir)|" -i Makefile || die
+
+	append-cflags -fcommon
 }
 
 src_compile() {
