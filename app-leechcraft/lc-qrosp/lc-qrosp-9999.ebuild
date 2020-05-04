@@ -12,5 +12,6 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
-	>=dev-libs/qrosscore-0.3.2"
+	dev-libs/qrosscore
+"
 RDEPEND="${DEPEND}"
