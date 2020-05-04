@@ -6,4 +6,4 @@ EAPI=7
 inherit acct-group
 
 DESCRIPTION="Group for Subsonic"
-ACCT_GROUP_ID=403
+ACCT_GROUP_ID=385
