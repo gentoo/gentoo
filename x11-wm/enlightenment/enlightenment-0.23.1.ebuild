@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils meson xdg-utils
+inherit eutils flag-o-matic meson xdg-utils
 
 DESCRIPTION="Enlightenment window manager"
 HOMEPAGE="https://www.enlightenment.org"
@@ -81,6 +81,8 @@ src_configure() {
 			-D wl-x11=false
 		)
 	fi
+
+	append-cflags -fcommon
 
 	meson_src_configure
 }
