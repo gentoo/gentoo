@@ -13,7 +13,7 @@ SRC_URI="https://github.com/gentoo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 hppa ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+templates"
 
 RDEPEND="
