@@ -10,7 +10,4 @@
         <remote-id type="github">lepture/flask-wtf</remote-id>
         <bugs-to>https://github.com/lepture/flask-wtf/issues</bugs-to>
     </upstream>
-    <longdescription lang="en">
-        Simple integration of Flask and WTForms, including CSRF, file upload and Recaptcha integration.
-    </longdescription>
 </pkgmetadata>

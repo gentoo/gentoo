@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS="no"
 inherit distutils-r1 virtualx xdg-utils
 
 DESCRIPTION="Multiple GNOME terminals in one window"
@@ -13,8 +14,7 @@ SRC_URI="https://github.com/gnome-terminator/terminator/releases/download/v${PV}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="dbus +libnotify test"
-RESTRICT="!test? ( test )"
+IUSE="dbus +libnotify"
 
 RDEPEND="
 	>=dev-libs/glib-2.32:2
@@ -30,12 +30,14 @@ RDEPEND="
 "
 BDEPEND="
 	dev-util/intltool
-	test? ( ${RDEPEND} )
 "
+distutils_enable_tests setup.py
 
 PATCHES=(
 	"${FILESDIR}"/terminator-1.91-without-icon-cache.patch
 	"${FILESDIR}"/terminator-1.91-desktop.patch
+	"${FILESDIR}"/terminator-1.92-make-tests-fail.patch
+	"${FILESDIR}"/terminator-1.92-metainfo.patch
 )
 
 src_prepare() {
@@ -43,8 +45,8 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-python_test() {
-	virtx esetup.py test || die "tests fail with ${EPYTHON}"
+src_test() {
+	virtx distutils-r1_src_test
 }
 
 pkg_postinst() {
