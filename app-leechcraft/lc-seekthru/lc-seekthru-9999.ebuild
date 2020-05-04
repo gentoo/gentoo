@@ -16,6 +16,6 @@ DEPEND="~app-leechcraft/lc-core-${PV}
 	dev-qt/qtxml:5
 "
 RDEPEND="${DEPEND}
-		~virtual/leechcraft-search-show-${PV}
-		~virtual/leechcraft-downloader-http-${PV}
+	~virtual/leechcraft-search-show-${PV}
+	~virtual/leechcraft-downloader-http-${PV}
 "
