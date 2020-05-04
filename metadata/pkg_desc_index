@@ -7474,7 +7474,7 @@ dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/aiocontextvars 0.2.2: Asyncio support for PEP-567 contextvars backport
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aiofiles 0.4.0: File support for asyncio
-dev-python/aiohttp 3.6.1: http client/server for asyncio
+dev-python/aiohttp 3.6.1 3.6.2: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.2.2: SOCKS proxy connector for aiohttp
@@ -8471,7 +8471,7 @@ dev-python/pyswisseph 2.05.01_pre20160529: Python extension to the AstroDienst S
 dev-python/pytables 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 3.10.1 4.5.0 4.6.9 5.4.1: Simple powerful testing with Python
-dev-python/pytest-aiohttp 0.3.0: pytest plugin for aiohttp support
+dev-python/pytest-aiohttp 0.3.0 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.10.0 0.11.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
@@ -15275,7 +15275,7 @@ net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/ocserv 1.0.1: Openconnect SSL VPN server
 net-vpn/openconnect 8.06 8.08 8.09 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.13.2 1.13.3: Fortinet compatible VPN client
-net-vpn/openvpn 2.4.6 2.4.6-r1 2.4.7-r1 2.4.8 2.4.9 9999: Robust and highly flexible tunneling application compatible with many OSes
+net-vpn/openvpn 2.4.9 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - python rewrite
