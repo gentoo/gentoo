@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils meson xdg-utils
+inherit eutils flag-o-matic meson xdg-utils
 
 DESCRIPTION="Enlightenment window manager"
 HOMEPAGE="https://www.enlightenment.org"
@@ -12,7 +12,7 @@ SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${P}.tar.xz"
 LICENSE="BSD-2"
 SLOT="0.17/${PV%%_*}"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
-IUSE="acpi bluetooth connman doc geolocation nls packagekit pam systemd udisks wayland wifi xwayland"
+IUSE="acpi bluetooth connman doc geolocation nls pam systemd udisks wayland wifi xwayland"
 
 REQUIRED_USE="xwayland? ( wayland )"
 
@@ -27,7 +27,6 @@ RDEPEND="
 	bluetooth? ( net-wireless/bluez )
 	connman? ( dev-libs/efl[connman] )
 	geolocation? ( app-misc/geoclue:2.0 )
-	packagekit? ( app-admin/packagekit-base )
 	pam? ( sys-libs/pam )
 	systemd? ( sys-apps/systemd )
 	udisks? ( sys-fs/udisks:2 )
@@ -57,12 +56,13 @@ src_configure() {
 		-D install-sysactions=false
 		-D mount-eeze=false
 
+		-D packagekit=false
+
 		$(meson_use udisks mount-udisks)
 		$(meson_use bluetooth bluez5)
 		$(meson_use connman)
 		$(meson_use geolocation)
 		$(meson_use nls)
-		$(meson_use packagekit)
 		$(meson_use pam)
 		$(meson_use systemd)
 		$(meson_use wayland wl)
@@ -81,6 +81,8 @@ src_configure() {
 			-D wl-x11=false
 		)
 	fi
+
+	append-cflags -fcommon
 
 	meson_src_configure
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/flake8[${PYTHON_USEDEP}]
-	dev-python/tox[${PYTHON_USEDEP}]"
+	dev-python/tox[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
