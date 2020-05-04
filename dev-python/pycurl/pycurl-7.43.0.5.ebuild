@@ -59,6 +59,14 @@ python_configure_all() {
 	export PYCURL_SSL_LIBRARY=${CURL_SSL/libressl/openssl}
 }
 
+src_test() {
+	# upstream bundles precompiled amd64 libs
+	rm tests/fake-curl/libcurl/*.so || die
+	emake -C tests/fake-curl/libcurl
+
+	distutils-r1_src_test
+}
+
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile
