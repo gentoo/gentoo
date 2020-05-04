@@ -50,7 +50,7 @@ PROFILE_ONLY_VARIABLES="${PROFILE_ONLY_VARIABLES} ELIBC IUSE_IMPLICIT KERNEL USE
 ELIBC="glibc"
 KERNEL="linux"
 USERLAND="GNU"
-INPUT_DEVICES="keyboard mouse"
+INPUT_DEVICES="libinput"
 
 # Accept only licenses in the FREE license group, i.e., with
 # the freedom to use, share, modify and share modifications
