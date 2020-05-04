@@ -6,4 +6,4 @@ EAPI=7
 inherit acct-group
 
 DESCRIPTION="Group for Airsonic"
-ACCT_GROUP_ID=404
+ACCT_GROUP_ID=384

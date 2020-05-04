@@ -1,0 +1,12 @@
+NICELEVEL=0
+
+# Host and port to listen on
+# AIRSONIC_ADDRESS=127.0.0.1
+# AIRSONIC_PORT=8080
+
+# AIRSONIC_CONTEXT_PATH=/
+# AIRSONIC_MAX_MEMORY=200
+# AIRSONIC_LOG=/var/log/airsonic/airsonic.log
+
+# Further airsonic start script options, if ever needed from https://docs.spring.io/spring-boot/docs/1.4.5.RELEASE/reference/htmlsingle/#common-application-properties
+# AIRSONIC_OPTS=""

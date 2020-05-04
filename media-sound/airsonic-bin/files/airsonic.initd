@@ -1,0 +1,46 @@
+#!/sbin/openrc-run
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+AIRSONIC_HOME=${AIRSONIC_HOME:-/var/lib/${SVCNAME}}
+AIRSONIC_USER=${AIRSONIC_USER:-${SVCNAME}}
+AIRSONIC_ADDRESS=${AIRSONIC_ADDRESS:-128.0.0.1}
+AIRSONIC_PORT=${AIRSONIC_PORT:-8080}
+AIRSONIC_CONTEXT_PATH=${AIRSONIC_CONTEXT_PATH:-/}
+AIRSONIC_LOG=${AIRSONIC_LOG:-/var/log/${SVCNAME}/${SVCNAME}.log}
+AIRSONIC_MAX_MEMORY=${AIRSONIC_MAX_MEMORY:-200}
+PIDFILE=/run/${SVCNAME}/${SVCNAME}.pid
+
+depend() {
+	after net
+}
+
+start() {
+	checkpath -dq -o airsonic:airsonic -m 755 /run/airsonic/
+	checkpath -dq -o airsonic:airsonic -m 755 /var/log/airsonic/
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon \
+		--start --user "${AIRSONIC_USER}" --name airsonic \
+		--env HOME="${AIRSONIC_HOME}" \
+		--nicelevel "${NICELEVEL}" \
+		--background --make-pidfile --pidfile "${PIDFILE}" \
+		--exec /usr/bin/java \
+		-- \
+		-Dairsonic.home="${AIRSONIC_HOME}" \
+		-Dserver.address="${AIRSONIC_ADDRESS}" \
+		-Dserver.port="${AIRSONIC_PORT}" \
+		-Xmx${AIRSONIC_MAX_MEMORY}m \
+		-Dserver.context-path="${AIRSONIC_CONTEXT_PATH}" \
+		-Dlogging.file="${AIRSONIC_LOG}" \
+		${AIRSONIC_OPTS} \
+		-jar /usr/libexec/airsonic/airsonic.war \
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --user "${AIRSONIC_USER}" \
+		--pidfile "${PIDFILE}" \
+		--progress
+	eend $?
+}
