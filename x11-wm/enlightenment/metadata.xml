@@ -6,7 +6,6 @@
     <name>Joonas Niilola</name>
   </maintainer>
   <use>
-    <flag name="packagekit">Enable module for package manager integration</flag>
     <flag name="xwayland">Enable XWayland application support</flag>
   </use>
   <longdescription>
