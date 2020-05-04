@@ -7502,7 +7502,7 @@ dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2_cffi 19.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/args 0.1.0-r1: Command Arguments for Humans
 dev-python/arpeggio 1.9.0 1.9.2: Parser interpreter based on PEG grammars
-dev-python/arrow 0.13.1 0.15.5: Better dates and times for Python
+dev-python/arrow 0.13.1 0.15.5 0.15.6: Better dates and times for Python
 dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
@@ -8472,7 +8472,7 @@ dev-python/pytables 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 3.10.1 4.5.0 4.6.9 5.4.1: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.3.0 0.3.0-r1: pytest plugin for aiohttp support
-dev-python/pytest-asyncio 0.10.0 0.11.0: Library for testing asyncio code with pytest
+dev-python/pytest-asyncio 0.10.0 0.11.0 0.12.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.8.1: py.test plugin for coverage reporting
@@ -12122,7 +12122,7 @@ mail-client/hap 3.7-r1: A terminal mail notification program (replacement for bi
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.13.5: A small but very powerful text-based mail client
+mail-client/mutt 1.13.5 1.14.0: A small but very powerful text-based mail client
 mail-client/neomutt 20180716 20191102 20191111 20191129 20191207 20200313 20200320 20200417 20200424 20200501 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1 1.4.2 1.4.3: A browser-based multilingual IMAP client with an application-like user interface
