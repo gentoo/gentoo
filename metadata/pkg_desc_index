@@ -7473,6 +7473,7 @@ dev-python/absl-py 0.7.1 0.8.1: Abseil Python Common Libraries
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/aiocontextvars 0.2.2: Asyncio support for PEP-567 contextvars backport
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
+dev-python/aiofiles 0.4.0: File support for asyncio
 dev-python/aiohttp 3.6.1: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
