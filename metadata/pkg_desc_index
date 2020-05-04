@@ -2684,7 +2684,7 @@ app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.14.4 1.14.5: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
-app-text/master-pdf-editor 5.2.20 5.3.02 5.3.12 5.3.22 5.4.38: A complete solution for viewing and editing PDF files
+app-text/master-pdf-editor 5.2.20 5.3.22 5.4.38-r1: A complete solution for viewing and editing PDF files
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18-r3 1.2.19-r1: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
@@ -7047,7 +7047,7 @@ dev-perl/UUID 0.270.0: Perl extension for using UUID interfaces as defined in e2
 dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
 dev-perl/UltraDNS 0.60.0-r2: Client API for the NeuStar UltraDNS Transaction Protocol
 dev-perl/Unicode-EastAsianWidth 1.330.0-r1: East Asian Width properties
-dev-perl/Unicode-LineBreak 2017.4.0-r1: UAX #14 Unicode Line Breaking Algorithm
+dev-perl/Unicode-LineBreak 2017.4.0-r1 2019.1.0: UAX #14 Unicode Line Breaking Algorithm
 dev-perl/Unicode-Map 0.112.0-r1: Map charsets from and to utf16 code
 dev-perl/Unicode-Map8 0.130.0 0.130.0-r1: Convert between most 8bit encodings
 dev-perl/Unicode-MapUTF8 1.110.0-r2: Conversions to and from arbitrary character sets and UTF8
@@ -7812,7 +7812,7 @@ dev-python/flask-security 3.0.0: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 2.4.1-r1: SQLAlchemy support for Flask applications
 dev-python/flask-themes 0.1.3_p20180112: Infrastructure for theming support in Flask applications
-dev-python/flask-wtf 0.14.2-r1: Simple integration of Flask and WTForms
+dev-python/flask-wtf 0.14.2-r1 0.14.3: Simple integration of Flask and WTForms
 dev-python/fleep 1.0.1 9999: File format determination library for Python
 dev-python/flexmock 0.10.4: Testing library to create mocks, stubs and fakes
 dev-python/flexx 0.4.1: Pure Python toolkit for creating GUI's using web technology
@@ -10157,8 +10157,8 @@ dev-tcltk/togl 2.0-r2 2.0-r3: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r2: Visual Tcl is a high-quality application development environment
 dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
-dev-tex/biber 2.12: A BibTeX replacement for users of biblatex
-dev-tex/biblatex 3.12: Reimplementation of the bibliographic facilities provided by LaTeX
+dev-tex/biber 2.12 2.14: A BibTeX replacement for users of biblatex
+dev-tex/biblatex 3.12 3.14: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 7.5: APA style for BibLaTeX
 dev-tex/biblatex-gost 1.17: Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
 dev-tex/bibtex2html 1.98 1.99: A bibtex to HTML converter
@@ -17360,8 +17360,8 @@ sys-kernel/dracut 048-r1 049-r3 050 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-kernel 5.4.32 5.4.34 5.4.35 5.5.19 5.6.6 5.6.7: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.32 5.4.34 5.4.35 5.4.36 5.5.19 5.6.6 5.6.7 5.6.8: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.32 5.4.34 5.4.35 5.4.38 5.5.19 5.6.6 5.6.7 5.6.10: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.32 5.4.34 5.4.35 5.4.36 5.4.38 5.5.19 5.6.6 5.6.7 5.6.8 5.6.10: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.4.221 4.9.217 4.9.218 4.9.219 4.9.220 4.9.221 4.14.174 4.14.175 4.14.176 4.14.177 4.14.178 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 4.19.120 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.4.37 5.4.38 5.5.15 5.5.16 5.5.17 5.5.18 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8 5.6.9 5.6.10: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3 5.7_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17377,7 +17377,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
-sys-kernel/vanilla-kernel 5.4.34 5.4.35 5.5.19 5.6.6 5.6.7: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.34 5.4.35 5.4.38 5.5.19 5.6.6 5.6.7 5.6.10: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 3.16.83 4.4.221 4.9.221 4.14.178 4.19.120 5.4.38 5.5.18 5.6.10: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
