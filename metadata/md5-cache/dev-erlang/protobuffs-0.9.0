@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/basho/erlang_protobuffs/archive/0.9.0.tar.gz -> protobuffs-0.9.0.tar.gz
-_eclasses_=rebar	959acafe413bff2d60a292477182363a
+_eclasses_=rebar	66d5c5c94dc49a57018cb20cf1e542dd
 _md5_=917ef027d4227549dca80c28509d053a

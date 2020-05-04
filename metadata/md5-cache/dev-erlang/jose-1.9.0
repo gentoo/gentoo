@@ -9,5 +9,5 @@ RDEPEND=>=dev-lang/erlang-19.0 >=dev-erlang/base64url-1.0 dev-lang/erlang:=
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/potatosalad/erlang-jose/archive/1.9.0.tar.gz -> erlang-jose-1.9.0.tar.gz
-_eclasses_=rebar	959acafe413bff2d60a292477182363a
+_eclasses_=rebar	66d5c5c94dc49a57018cb20cf1e542dd
 _md5_=02d2d383c4fc22926b470a3900f5f99b

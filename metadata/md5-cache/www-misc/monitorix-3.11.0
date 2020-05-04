@@ -1,12 +1,12 @@
 BDEPEND=virtual/pkgconfig
-DEFINED_PHASES=compile install postinst prepare setup
+DEFINED_PHASES=compile install postinst prepare
 DESCRIPTION=A lightweight system monitoring tool
 EAPI=7
 HOMEPAGE=https://www.monitorix.org/
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+
-RDEPEND=dev-perl/Config-General dev-perl/DBI dev-perl/HTTP-Server-Simple dev-perl/IO-Socket-SSL dev-perl/libwww-perl dev-perl/MIME-Lite dev-perl/XML-Simple net-analyzer/rrdtool[graph,perl] dev-perl/CGI
+RDEPEND=acct-user/monitorix acct-group/monitorix dev-perl/Config-General dev-perl/DBI dev-perl/HTTP-Server-Simple dev-perl/IO-Socket-SSL dev-perl/libwww-perl dev-perl/MIME-Lite dev-perl/XML-Simple net-analyzer/rrdtool[graph,perl] dev-perl/CGI
 SLOT=0
 SRC_URI=https://www.monitorix.org/monitorix-3.11.0.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=f8557953e42bf199512dd272b515313e
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=b4fe3325b84d7f00db19c6d776e373c4

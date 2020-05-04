@@ -1,16 +1,16 @@
-BDEPEND=virtual/pkgconfig
+BDEPEND=dev-util/patchelf virtual/pkgconfig
 DEFINED_PHASES=install postinst setup unpack
 DEPEND=python_single_target_python2_7? ( dev-python/virtualenv[python_targets_python2_7(-)] )
 DESCRIPTION=A free media library that is intended for use with a plex client
 EAPI=7
 HOMEPAGE=https://www.plex.tv/
 IUSE=+python_single_target_python2_7
-KEYWORDS=-* ~amd64
+KEYWORDS=-* ~amd64 ~x86
 LICENSE=Plex
-RDEPEND=net-dns/avahi acct-user/plex acct-group/plex python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
+RDEPEND=acct-group/plex acct-user/plex net-dns/avahi python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
 REQUIRED_USE=^^ ( python_single_target_python2_7 )
 RESTRICT=bindist strip
 SLOT=0
-SRC_URI=amd64? ( https://downloads.plex.tv/plex-media-server-new/1.16.4.1469-6d5612c2f/debian/plexmediaserver_1.16.4.1469-6d5612c2f_amd64.deb )
+SRC_URI=amd64? ( https://downloads.plex.tv/plex-media-server-new/1.19.2.2737-b69929dab/debian/plexmediaserver_1.19.2.2737-b69929dab_amd64.deb ) x86? ( https://downloads.plex.tv/plex-media-server-new/1.19.2.2737-b69929dab/debian/plexmediaserver_1.19.2.2737-b69929dab_i386.deb )
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
-_md5_=9abf5d0038773db6ddd957aab1aa0105
+_md5_=a3cd9933960a62f7140c854485878fd4

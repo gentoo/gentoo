@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=dev-lang/erlang:=
 SLOT=0
 SRC_URI=https://github.com/benoitc/erlang-idna/archive/6.0.0.tar.gz -> idna-6.0.0.tar.gz
-_eclasses_=rebar	959acafe413bff2d60a292477182363a
+_eclasses_=rebar	66d5c5c94dc49a57018cb20cf1e542dd
 _md5_=3787433fe77c2223746e4218565b0056
