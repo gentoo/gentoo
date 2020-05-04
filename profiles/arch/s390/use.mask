@@ -98,8 +98,6 @@ wxwidgets
 input_devices_elographics
 input_devices_evdev
 input_devices_joystick
-input_devices_keyboard
-input_devices_mouse
 input_devices_vmmouse
 input_devices_synaptics
 input_devices_wacom
