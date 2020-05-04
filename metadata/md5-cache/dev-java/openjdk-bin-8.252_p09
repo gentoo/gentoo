@@ -4,7 +4,7 @@ DESCRIPTION=Prebuilt Java JDK binaries provided by AdoptOpenJDK
 EAPI=6
 HOMEPAGE=https://adoptopenjdk.net
 IUSE=alsa cups examples headless-awt nsplugin selinux source webstart
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64
+KEYWORDS=~amd64 ~arm arm64 ~ppc64
 LICENSE=GPL-2-with-classpath-exception
 PDEPEND=webstart? ( >=dev-java/icedtea-web-1.6.1:0 ) nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )
 RDEPEND=media-libs/fontconfig:1.0 media-libs/freetype:2 >=sys-apps/baselayout-java-0.1.0-r1 >=sys-libs/glibc-2.2.5:* sys-libs/zlib alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) selinux? ( sec-policy/selinux-java ) !headless-awt? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXtst ) >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
@@ -12,4 +12,4 @@ RESTRICT=preserve-libs strip
 SLOT=8
 SRC_URI=arm64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_aarch64_linux_hotspot_8u252b09.tar.gz ) arm? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_arm_linux_hotspot_8u252b09.tar.gz ) ppc64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_ppc64le_linux_hotspot_8u252b09.tar.gz ) amd64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_x64_linux_hotspot_8u252b09.tar.gz )
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=e45fabafcc4c57899953dc340ed82e3a
+_md5_=4a7d7c62fcfa252efad914353e49632f
