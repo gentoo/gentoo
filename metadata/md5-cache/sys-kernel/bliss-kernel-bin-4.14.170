@@ -4,11 +4,11 @@ DESCRIPTION=Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/User:Fearedbliss
 IUSE=-initramfs +initramfs test
-KEYWORDS=-* ~amd64
+KEYWORDS=-* amd64
 LICENSE=GPL-2
 RDEPEND=|| ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) initramfs? ( >=sys-kernel/dracut-049-r3 )
 RESTRICT=strip test
 SLOT=4.14.170-FC.01
 SRC_URI=https://xyinn.org/gentoo/kernels/4.14.170-FC.01/kernel-4.14.170-FC.01.tar.xz
 _eclasses_=kernel-install	ce866c49e06c27f1a5579b707ef95d9c	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d
-_md5_=094d32a5460cfeff0c856475320945df
+_md5_=c3c83579bcbbfe51949c39debffccfab

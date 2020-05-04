@@ -1,0 +1,15 @@
+BDEPEND=dev-lang/python:2.7 test? ( || ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) ~sys-devel/autoconf-2.13 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare pretend setup test
+DEPEND=>=dev-libs/icu-63.1:= >=dev-libs/nspr-4.21 sys-libs/readline:0= >=sys-libs/zlib-1.2.3
+DESCRIPTION=SpiderMonkey is Mozilla's JavaScript engine written in C and C++
+EAPI=7
+HOMEPAGE=https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
+IUSE=debug +jit test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=MPL-2.0
+RDEPEND=>=dev-libs/icu-63.1:= >=dev-libs/nspr-4.21 sys-libs/readline:0= >=sys-libs/zlib-1.2.3
+RESTRICT=!test? ( test )
+SLOT=68
+SRC_URI=https://archive.mozilla.org/pub/firefox/releases/68.8.0esr/source/firefox-68.8.0esr.source.tar.xz https://dev.gentoo.org/~anarchy/mozilla/patchsets/firefox-68.0-patches-14.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-68.0-patches-14.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/firefox-68.0-patches-14.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/firefox-68.0-patches-14.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/spidermonkey-68.6.0-patches-03.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/spidermonkey-68.6.0-patches-03.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/spidermonkey-68.6.0-patches-03.tar.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=ec1ee83112f34134b8fad0300bf00b20

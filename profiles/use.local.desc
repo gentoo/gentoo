@@ -4861,20 +4861,23 @@ media-tv/xmltv:dtvla - Latin America digital tv listing grabber
 media-tv/xmltv:es-laguiatv - Spain alternative grabber
 media-tv/xmltv:eu-dotmedia - Grabber for Europe (xmltv.se / dotmedia)
 media-tv/xmltv:eu-epg - EPG grabber for some European countries.
-media-tv/xmltv:fi - Finland tv listing grabber
+media-tv/xmltv:eu-epgdata - include fanart URLs for some European countries.
+media-tv/xmltv:eu-xmltvse - Grabbber for Europe [replaces eu-dotmedia and se-tvzon]
+media-tv/xmltv:fi - Finland tv listing grabber (0.6.1 add ampparit telsu)
 media-tv/xmltv:fi-sv - Grabber for Finland (Swedish)
 media-tv/xmltv:fr - France tv listing grabber
 media-tv/xmltv:fr-kazer - France (Kazer) tv listing grabber
 media-tv/xmltv:huro - Hungarian tv listing grabber
 media-tv/xmltv:il - Israel tv listing grabber
 media-tv/xmltv:is - Iceland tv listing grabber
-media-tv/xmltv:it - Italy tv listing grabber
+media-tv/xmltv:it - Italy tv listing grabber (RUV)
 media-tv/xmltv:na-dd - North America tv listing grabber
 media-tv/xmltv:na-dtv - North America Direct TV grabber
 media-tv/xmltv:na-tvmedia - Grabber for North America (TVMedia)
-media-tv/xmltv:nl - Netherlands tv listing grabber
+media-tv/xmltv:nl - Netherlands tv listing grabber [REMOVED 0.6.1]
 media-tv/xmltv:no-gf - Norway Gfeed tv listing grabber
 media-tv/xmltv:pt-meo - Grabber for Portugal (MEO)
+media-tv/xmltv:pt-vodafone - Grabber for Portugal (Vodafone)
 media-tv/xmltv:se-swedb - Sweden tv listing grabber
 media-tv/xmltv:se-tvzon - Sweden (tvzon.se) tv listing grabber
 media-tv/xmltv:tr - Turkey (Digiturk) tv listing grabber
@@ -4884,6 +4887,7 @@ media-tv/xmltv:tv-pick-cgi - enable CGI support
 media-tv/xmltv:uk-bleb - Britain tv listing grabber
 media-tv/xmltv:uk-tvguide - UK and Ireland tv listing grabber using TV Guide website
 media-tv/xmltv:zz-sdjson - Grabber for schedulesDirect.org SD-JSON service (many countries)
+media-tv/xmltv:zz-sdjson-sqlite - Grabber for schedulesDirect.org SD-JSON service (sqlite DB)
 media-video/aegisub:uchardet - Enable charset discovery via app-i18n/uchardet
 media-video/aravis:fast-heartbeat - Enable faster heartbeat rate.
 media-video/aravis:gstreamer - Build the GStreamer plugin.
@@ -9042,7 +9046,6 @@ x11-wm/e16:xsm - Enable X Session Management support using x11-libs/libSM
 x11-wm/e16:xsync - Enable X Sync support
 x11-wm/e16:zoom - Support resolution change of current window (zoom) usingx11-libs/libXxf86vm (xvidtune)
 x11-wm/echinus:xrandr - Enable support for multihead configuration
-x11-wm/enlightenment:packagekit - Enable module for package manager integration
 x11-wm/enlightenment:xwayland - Enable XWayland application support
 x11-wm/fluxbox:slit - Enables the Fluxbox slit (or dock)
 x11-wm/fluxbox:systray - Enables the system tray in the Fluxbox toolbar

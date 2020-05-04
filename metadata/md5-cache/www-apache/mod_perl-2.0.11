@@ -4,7 +4,7 @@ DESCRIPTION=An embedded Perl interpreter for Apache2
 EAPI=5
 HOMEPAGE=https://perl.apache.org/ https://projects.apache.org/project.html?perl-mod_perl
 IUSE=debug ithreads test
-KEYWORDS=~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86
+KEYWORDS=~alpha amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=Apache-2.0
 PDEPEND=>=dev-perl/Apache-Reload-0.130.0 >=dev-perl/Apache-SizeLimit-0.970.0
 RDEPEND=dev-lang/perl[ithreads=] >=dev-perl/Apache-Test-1.420.0 >=www-servers/apache-2.0.47 >=dev-libs/apr-util-1.4 !ithreads? ( www-servers/apache[-apache2_mpms_event,-apache2_mpms_worker,apache2_mpms_prefork] ) =www-servers/apache-2* dev-lang/perl:=[-build(-)]
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=1
 SRC_URI=mirror://apache/perl/mod_perl-2.0.11.tar.gz
 _eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	05ca915dc22ea60059f85d8d9a34d3de	desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=4db4f9b1755800748ed2a1e1aeb8992a
+_md5_=94593aa6283c2fbb214620efca6fbdd7
