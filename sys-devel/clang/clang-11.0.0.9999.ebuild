@@ -13,6 +13,7 @@ LLVM_COMPONENTS=( clang clang-tools-extra )
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils/{lit,llvm-lit,unittest}
+	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
 llvm.org_set_globals
 # We need extra level of indirection for CLANG_RESOURCE_DIR
