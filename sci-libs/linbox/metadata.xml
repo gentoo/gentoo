@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <!--
+      mjo: François maintained this package in the sage-on-gentoo overlay
+      long before I moved it into ::gentoo. You don't need an ACK from me
+      to merge his changes.
+  -->
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+
+  <use>
+    <flag name="opencl">
+      Enable the use of OpenCL in LinBox
+    </flag>
+  </use>
+
+  <longdescription lang="en">
+    LinBox is a C++ template library for exact, high-performance
+    linear algebra computation with dense, sparse, and structured
+    matrices over the integers and over finite fields. LinBox relies
+    on closely aligned libraries fflas-ffpack (exact dense matrix
+    linear algebra kernels), and Givaro (finite fields, integers, and
+    polynomials).
+  </longdescription>
+
+  <upstream>
+    <remote-id type="github">linbox-team/linbox</remote-id>
+  </upstream>
+</pkgmetadata>
