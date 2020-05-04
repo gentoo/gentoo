@@ -11,7 +11,7 @@ SRC_URI="https://www.mhonarc.org/release/MHonArc/tar/MHonArc-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~mips ~ppc x86"
 # Warrants IUSE examples, and here it is + ? IUSE doc; see also extras folder with html docs
 IUSE="examples"
 
