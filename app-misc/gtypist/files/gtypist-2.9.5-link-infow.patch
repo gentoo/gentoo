@@ -1,0 +1,15 @@
+diff --git a/configure.ac b/configure.ac
+index 8742d93..e350926 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -56,8 +56,8 @@ else
+        "further information. On Debian/Ubuntu you need to install libncursesw5-dev."
+    exit 1;
+ fi
+-AC_SEARCH_LIBS(cbreak, tinfo, [],
+-  [AC_MSG_ERROR([Can't find cbreak() in -lncursesw or -ltinfo])])
++AC_SEARCH_LIBS(cbreak, tinfow, [],
++  [AC_MSG_ERROR([Can't find cbreak() in -lncursesw or -ltinfow])])
+ 
+ 
+ # iconv
