@@ -1,15 +1,16 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl] >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
-DEFINED_PHASES=compile configure install prepare test unpack
+BDEPEND=>=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/elfutils dev-libs/glib:2 sys-apps/kmod:= sys-libs/libunwind:= sys-libs/zlib:= sys-process/procps:= virtual/libudev:= >=x11-libs/cairo-1.12.0[X?] >=x11-libs/libdrm-2.4.82[video_cards_amdgpu?,video_cards_intel?,video_cards_nouveau?] >=x11-libs/libpciaccess-0.10 x11-libs/pixman chamelium? ( dev-libs/xmlrpc-c[curl] sci-libs/gsl media-libs/alsa-lib:= ) overlay? ( >=x11-libs/libXrandr-1.3 xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXv ) ) runner? ( dev-libs/json-c:= ) unwind? ( sys-libs/libunwind ) valgrind? ( dev-util/valgrind ) doc? ( >=dev-util/gtk-doc-1.25-r1 ) man? ( dev-python/docutils ) overlay? ( >=dev-util/peg-0.1.18 x11-base/xorg-proto ) video_cards_intel? ( sys-devel/bison sys-devel/flex )
 DESCRIPTION=Intel GPU userland tools
 EAPI=7
 HOMEPAGE=https://01.org/linuxgraphics https://gitlab.freedesktop.org/drm/igt-gpu-tools
 IUSE=chamelium doc man overlay runner unwind valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xv
+KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-PROPERTIES=live
 RDEPEND=dev-libs/elfutils dev-libs/glib:2 sys-apps/kmod:= sys-libs/libunwind:= sys-libs/zlib:= sys-process/procps:= virtual/libudev:= >=x11-libs/cairo-1.12.0[X?] >=x11-libs/libdrm-2.4.82[video_cards_amdgpu?,video_cards_intel?,video_cards_nouveau?] >=x11-libs/libpciaccess-0.10 x11-libs/pixman chamelium? ( dev-libs/xmlrpc-c[curl] sci-libs/gsl media-libs/alsa-lib:= ) overlay? ( >=x11-libs/libXrandr-1.3 xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXv ) ) runner? ( dev-libs/json-c:= ) unwind? ( sys-libs/libunwind ) valgrind? ( dev-util/valgrind )
 REQUIRED_USE=|| ( video_cards_amdgpu video_cards_intel video_cards_nouveau ) overlay? ( video_cards_intel || ( X xv ) )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	meson	5c420ed2737a743967fb9e88ad25b362	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+SRC_URI=https://www.x.org/releases/individual/app/igt-gpu-tools-1.25.tar.xz
+_eclasses_=meson	5c420ed2737a743967fb9e88ad25b362	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=edb8e38729483cd47f1fd30941f38c36
