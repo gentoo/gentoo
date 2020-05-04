@@ -22,7 +22,7 @@ else
 		https://znc.in/releases/archive/${MY_P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
