@@ -10,8 +10,9 @@ DESCRIPTION="OpenCV elements for GStreamer"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+# >=opencv-4.1.2-r3 to help testing removal of older being fine
 RDEPEND="
-	>=media-libs/opencv-3.0.0[contrib(+),${MULTILIB_USEDEP}]
+	>=media-libs/opencv-4.1.2-r3:=[contrib,${MULTILIB_USEDEP}]
 	<media-libs/opencv-4.2
 "
 DEPEND="${RDEPEND}"
