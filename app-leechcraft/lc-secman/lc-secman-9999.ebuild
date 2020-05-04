@@ -9,7 +9,7 @@ DESCRIPTION="Security and personal data manager for LeechCraft"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="debug crypt exposecontents"
+IUSE="crypt debug exposecontents"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
 	dev-qt/qtwidgets:5
