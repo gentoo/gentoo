@@ -463,7 +463,7 @@ app-admin/glance 19.0.2 2019.2.9999: Services for discovering, registering, and 
 app-admin/gnome-abrt 1.2.6 1.2.7: A utility for viewing problems that have occurred with the system
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
-app-admin/gopass 1.8.6-r1: a simple but powerful password manager for the terminal
+app-admin/gopass 1.8.6-r1 1.9.0: a simple but powerful password manager for the terminal
 app-admin/graylog 2.5.1 3.1.3 3.2.4: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
@@ -10138,7 +10138,7 @@ dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.19 1.20: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
 dev-tcltk/tclpython 4.1-r6 5.0: Python package for Tcl
-dev-tcltk/tclreadline 2.1.0-r5: Readline extension to TCL
+dev-tcltk/tclreadline 2.1.0-r5 2.3.8: Readline extension to TCL
 dev-tcltk/tclx 8.4.1: A set of extensions to TCL
 dev-tcltk/tclxml 3.2-r2: Pure Tcl implementation of an XML parser
 dev-tcltk/tdom 0.8.3-r4 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
@@ -13153,7 +13153,7 @@ media-plugins/gst-plugins-mpg123 1.14.5 1.16.2: MP3 decoder plugin for GStreamer
 media-plugins/gst-plugins-mplex 1.14.5 1.16.2: MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer
 media-plugins/gst-plugins-neon 1.14.5 1.16.2: HTTP client source plugin for GStreamer
 media-plugins/gst-plugins-ofa 1.14.5 1.16.2: MusicIP audio fingerprinting plugin for GStreamer
-media-plugins/gst-plugins-opencv 1.14.5 1.16.2-r1: OpenCV elements for GStreamer
+media-plugins/gst-plugins-opencv 1.16.2-r1: OpenCV elements for GStreamer
 media-plugins/gst-plugins-openh264 1.14.5 1.16.2: H.264 encoder/decoder plugin for GStreamer.
 media-plugins/gst-plugins-opus 1.14.5 1.16.2: Opus audio parser plugin for GStreamer
 media-plugins/gst-plugins-oss 1.14.5 1.16.2: OSS (Open Sound System) support plugin for GStreamer

@@ -3,9 +3,9 @@ DEPEND=sys-apps/util-linux
 DESCRIPTION=Manipulate Android boot images.
 EAPI=6
 HOMEPAGE=https://gitlab.com/ajs124/abootimg
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm64 ~x86
 LICENSE=GPL-2
 RDEPEND=sys-apps/util-linux
 SLOT=0
 SRC_URI=https://gitlab.com/ajs124/abootimg/repository/archive.tar.gz?ref=1ebeb393252ab5aeed62e34bc439b6728444f06e -> abootimg-20150323.tar.gz
-_md5_=a02de4318ebf419ad52af4d19b57abe4
+_md5_=da0f26ddd575091e37a32e595ae91a43
