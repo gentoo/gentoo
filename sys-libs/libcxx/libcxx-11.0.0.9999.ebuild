@@ -147,7 +147,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-libcxx
+	cmake-utils_src_make check-cxx
 }
 
 # Usage: deps
