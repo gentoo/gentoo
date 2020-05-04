@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-05-04)
+# Known to be broken and removed in newer versions.
+=dev-db/mysql-5.7* static
+
 # Ben Kohler <bkohler@gentoo.org> (2020-04-29)
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
 net-fs/samba test
