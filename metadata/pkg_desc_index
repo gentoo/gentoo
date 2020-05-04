@@ -2462,7 +2462,7 @@ app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-pac
 app-portage/overlint 0.5.3-r1 0.5.3-r2: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 3.0-r2 3.0.1-r3 3.1: Searchable online file/package database for Gentoo
-app-portage/portage-utils 0.74 0.80 0.86 9999: Small and fast Portage helper tools written in C
+app-portage/portage-utils 0.80 0.87 9999: Small and fast Portage helper tools written in C
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27-r1: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
@@ -10478,7 +10478,7 @@ dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
 dev-util/jenkins-bin 2.204.6 2.222.1 2.222.3 2.228: Extensible continuous integration server
-dev-util/jfrog-cli 1.30.4 1.34.0 1.35.3: Command line utility foroperations on container images and image repositories
+dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
