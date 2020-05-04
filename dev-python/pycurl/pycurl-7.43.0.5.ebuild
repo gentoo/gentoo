@@ -49,6 +49,10 @@ DEPEND="${RDEPEND}
 # Needed for individual runs of testsuite by python impls.
 DISTUTILS_IN_SOURCE_BUILD=1
 
+PATCHES=(
+	"${FILESDIR}"/pycurl-7.43.0.5-telnet-test.patch
+)
+
 python_prepare_all() {
 	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
 	distutils-r1_python_prepare_all
@@ -57,6 +61,14 @@ python_prepare_all() {
 python_configure_all() {
 	# Override faulty detection in setup.py, bug 510974.
 	export PYCURL_SSL_LIBRARY=${CURL_SSL/libressl/openssl}
+}
+
+src_test() {
+	# upstream bundles precompiled amd64 libs
+	rm tests/fake-curl/libcurl/*.so || die
+	emake -C tests/fake-curl/libcurl
+
+	distutils-r1_src_test
 }
 
 python_compile() {
