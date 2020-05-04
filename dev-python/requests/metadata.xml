@@ -13,5 +13,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">requests</remote-id>
+    <remote-id type="cpe">cpe:/a:python-requests:requests</remote-id>
   </upstream>
 </pkgmetadata>

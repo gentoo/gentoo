@@ -7,9 +7,6 @@
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
+		<name>Proxy Maintainers</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">mikaku/Monitorix</remote-id>
-	</upstream>
 </pkgmetadata>

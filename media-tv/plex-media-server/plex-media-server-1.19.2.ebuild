@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 inherit eutils systemd unpacker pax-utils python-single-r1
 
-MINOR_VERSION="1469-6d5612c2f"
+MINOR_VERSION="2737-b69929dab"
 
 _APPNAME="plexmediaserver"
 _USERNAME="plex"
@@ -17,54 +17,60 @@ URI="https://downloads.plex.tv/plex-media-server-new"
 
 DESCRIPTION="A free media library that is intended for use with a plex client"
 HOMEPAGE="https://www.plex.tv/"
-SRC_URI="amd64? ( ${URI}/${_FULL_VERSION}/debian/plexmediaserver_${_FULL_VERSION}_amd64.deb )"
+SRC_URI="
+	amd64? ( ${URI}/${_FULL_VERSION}/debian/plexmediaserver_${_FULL_VERSION}_amd64.deb )
+	x86? ( ${URI}/${_FULL_VERSION}/debian/plexmediaserver_${_FULL_VERSION}_i386.deb )
+"
 SLOT="0"
 LICENSE="Plex"
 RESTRICT="bindist strip"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	$(python_gen_cond_dep '
 		dev-python/virtualenv[${PYTHON_MULTI_USEDEP}]
 	')"
+BDEPEND="dev-util/patchelf"
 
 RDEPEND="
-	net-dns/avahi
-	acct-user/plex
 	acct-group/plex
+	acct-user/plex
+	net-dns/avahi
 	${PYTHON_DEPS}"
 
+QA_DESKTOP_FILE="usr/share/applications/plexmediamanager.desktop"
 QA_PREBUILT="*"
 QA_MULTILIB_PATHS=(
 	"usr/lib/${_APPNAME}/.*"
 	"usr/lib/${_APPNAME}/Resources/Python/lib/python2.7/.*"
 )
 
-BINS_TO_PAX_MARK=( "${ED}/usr/lib/plexmediaserver/Plex Script Host" )
+BINS_TO_PAX_MARK=(
+	"${ED}/usr/lib/plexmediaserver/Plex Script Host"
+	"${ED}/usr/lib/plexmediaserver/Plex Media Scanner"
+)
 
 S="${WORKDIR}"
-PATCHES=( "${FILESDIR}/virtualenv_start_pms_2019.patch" )
+PATCHES=(
+	"${FILESDIR}/plexmediamanager.desktop.new.patch"
+	"${FILESDIR}/plexmediaserver.service.patch"
+)
 
 src_unpack() {
 	unpack_deb ${A}
 }
 
 src_install() {
-	# Move the config to the correct place
-	local config_vanilla="/etc/default/plexmediaserver"
-	local config_path="/etc/${_SHORTNAME}"
-	dodir "${config_path}"
-	insinto "${config_path}"
-	doins "${config_vanilla#/}"
-	sed -e "s#${config_vanilla}#${config_path}/${_APPNAME}#g" -i "${S}"/usr/sbin/start_pms || die
+	# Install base config file
+	insinto "/etc/plex/"
+	newins "${FILESDIR}/etc-plexmediaserver" "plexmediaserver"
+
+	# Remove Debian apt repo files
+	rm -r "etc/apt" || die
 
 	# Remove Debian specific files
 	rm -r "usr/share/doc" || die
-
-	# Fix QA warning about .desktop file.
-	sed -i 's|Audio;Music;Video;Player;Media;|AudioVideo;Music;Player;|g' \
-		usr/share/applications/plexmediaserver.desktop || die
 
 	# Copy main files over to image and preserve permissions so it is portable
 	cp -rp usr/ "${ED}"/ || die
@@ -89,6 +95,9 @@ src_install() {
 	# Plex has its own precompiled libraries.
 	_mask_plex_libraries_revdep
 
+	# Fix RPATH
+	patchelf --force-rpath --set-rpath '$ORIGIN:$ORIGIN/../../../../../../lib' "${ED}"/usr/lib/plexmediaserver/Resources/Python/lib/python2.7/lib-dynload/_codecs_kr.so || die
+
 	# Install systemd service file
 	systemd_newunit "${FILESDIR}/systemd/${PN}.service" "${PN}.service"
 
@@ -96,6 +105,10 @@ src_install() {
 	for f in "${BINS_TO_PAX_MARK[@]}"; do
 		pax-mark m "${f}"
 	done
+
+	# Install start_pms script
+	into /usr
+	dosbin "${FILESDIR}/start_pms"
 
 	einfo "Configuring virtualenv"
 	virtualenv -v --no-pip --no-setuptools --no-wheel "${ED}"/usr/lib/plexmediaserver/Resources/Python || die
