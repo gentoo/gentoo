@@ -49,6 +49,10 @@ DEPEND="${RDEPEND}
 # Needed for individual runs of testsuite by python impls.
 DISTUTILS_IN_SOURCE_BUILD=1
 
+PATCHES=(
+	"${FILESDIR}"/pycurl-7.43.0.5-telnet-test.patch
+)
+
 python_prepare_all() {
 	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
 	distutils-r1_python_prepare_all
