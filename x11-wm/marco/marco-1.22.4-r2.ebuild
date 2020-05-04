@@ -69,5 +69,5 @@ src_configure() {
 
 src_install() {
 	mate_src_install
-	dodoc {,doc/}*.txt
+	dodoc doc/*.txt
 }
