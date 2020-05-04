@@ -24,7 +24,7 @@ RDEPEND="
 	<dev-python/jedi-0.16.0[${PYTHON_USEDEP}]
 	dev-python/pluggy[${PYTHON_USEDEP}]
 	>=dev-python/python-jsonrpc-server-0.3.2[${PYTHON_USEDEP}]
-	<=dev-python/ujson-1.35[${PYTHON_USEDEP}]"
+	<=dev-python/ujson-1.35-r9999[${PYTHON_USEDEP}]"
 
 DEPEND="test? (
 	dev-python/autopep8[${PYTHON_USEDEP}]
