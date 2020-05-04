@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rebar.eclass
@@ -105,6 +105,8 @@ erebar() {
 	(( $# > 0 )) || die "erebar: at least one target is required"
 
 	local -x ERL_LIBS="${EPREFIX}$(get_erl_libs)"
+	[[ ${1} == eunit ]] && local -x ERL_LIBS="."
+
 	rebar -v skip_deps=true "$@" || die -n "rebar $@ failed"
 }
 
