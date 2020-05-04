@@ -11,7 +11,7 @@ SRC_URI="https://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=${PV};sf=t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ppc ~ppc64 x86"
 IUSE="systemd rbd"
 
 BDEPEND="virtual/pkgconfig"

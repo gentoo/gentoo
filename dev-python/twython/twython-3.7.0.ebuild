@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ryanmcgrath/twython/archive/${PV}.tar.gz -> ${P}.gh.
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-python/requests-2.1.0[${PYTHON_USEDEP}]
