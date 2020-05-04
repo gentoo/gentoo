@@ -3085,7 +3085,7 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Alpha/HPPA/IA64/MIPS/PPC/PPC64/S390 Release Coordinator</role>
+      <role>Alpha/HPPA/IA64/MIPS/PPC/PPC64/SPARC/S390 Release Coordinator</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
