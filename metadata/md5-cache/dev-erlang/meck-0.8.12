@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang:=
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/eproxus/meck/archive/0.8.12.tar.gz -> meck-0.8.12.tar.gz
-_eclasses_=rebar	ee156d8c3eee38348c9b4b24a03babd1
+_eclasses_=rebar	959acafe413bff2d60a292477182363a
 _md5_=25ac68a069723230fee4fa9a54ef5136

@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-lang/erlang-18.0 >=dev-erlang/p1_utils-1.0.16 dev-libs/libyaml dev-lang/erlang:=
 SLOT=0
 SRC_URI=https://github.com/processone/fast_yaml/archive/1.0.21.tar.gz -> fast_yaml-1.0.21.tar.gz
-_eclasses_=rebar	ee156d8c3eee38348c9b4b24a03babd1
+_eclasses_=rebar	959acafe413bff2d60a292477182363a
 _md5_=5ecb8afaa11ed2b991072f3a0b7a299b

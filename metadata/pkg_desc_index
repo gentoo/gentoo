@@ -653,7 +653,7 @@ app-arch/rpm 4.14.1 4.14.1-r1 4.14.2.1-r1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g-r2: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.15.2-r1 4.15.2-r2: Tools to deal with shar archives
-app-arch/snappy 1.1.7 1.1.8: A high-speed compression/decompression library by Google
+app-arch/snappy 1.1.8: A high-speed compression/decompression library by Google
 app-arch/stenc 1.0.7: SCSI Tape Encryption Manager enables AES support for LTO drives.
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tapeutils 0.4: Utilities for manipulation of tapes and tape image files
@@ -821,7 +821,7 @@ app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
-app-cdr/xfburn 0.6.1 0.6.2: GTK+ based CD and DVD burning application
+app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 1.3.0-r1 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
@@ -2416,7 +2416,7 @@ app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm devi
 app-pda/usbmuxd 1.1.0 1.1.1_pre20200121: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
-app-portage/cpuid2cpuflags 1 8 9 9999: Tool to guess CPU_FLAGS_* flags for the host
+app-portage/cpuid2cpuflags 1 9 9999: Tool to guess CPU_FLAGS_* flags for the host
 app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-archives.
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
@@ -2475,7 +2475,7 @@ app-portage/ufed 0.94 0.95 0.96 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 17-r1 9999: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4 22.5.1 22.5.3: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1 5.0_p11 5.0_p16 5.0_p17: The standard GNU Bourne again shell
-app-shells/bash-completion 2.9-r1 2.10 9999: Programmable Completion for bash
+app-shells/bash-completion 2.10 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
@@ -2636,7 +2636,7 @@ app-text/html401 19991224-r4: DTDs for the HyperText Markup Language 4.01
 app-text/htmlc 2.40.0 2.60.0: HTML template files expander
 app-text/htmldoc 1.8.30: Convert HTML pages into a PDF document
 app-text/htmlinc 1.0_beta1-r2: HTML Include System by Ulli Meybohm
-app-text/htmlmin 0.1.11_pre20170909 0.1.12: A configurable HTML Minifier with safety features
+app-text/htmlmin 0.1.12: A configurable HTML Minifier with safety features
 app-text/htmlrecode 1.3.1-r1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
 app-text/htp 1.16-r1 1.19: An HTML preprocessor
@@ -3413,7 +3413,7 @@ dev-erlang/epam 1.0.2 1.0.6 1.0.7: epam for ejabberd to help with PAM authentica
 dev-erlang/eredis 1.0.8: Erlang Redis client
 dev-erlang/esip 1.0.11 1.0.26 1.0.30 1.0.32: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.2 1.0.6 1.0.7: Native zlib driver for Erlang and Elixir
-dev-erlang/fast_tls 1.0.26 1.1.2 1.1.4: TLS/SSL native driver for Erlang and Elixir
+dev-erlang/fast_tls 1.0.26 1.1.2 1.1.4 1.1.5: TLS/SSL native driver for Erlang and Elixir
 dev-erlang/fast_xml 1.1.22 1.1.34 1.1.37 1.1.39 1.1.40: Fast Expat based Erlang XML parsing library
 dev-erlang/fast_yaml 1.0.9 1.0.20 1.0.21 1.0.24: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.9 0.2.0: Small Erlang app that provides fast event stream processing
@@ -3439,8 +3439,8 @@ dev-erlang/riak_pb 2.2.0.2: Riak Protocol Buffers messages
 dev-erlang/riakc 2.4.2: Erlang clients for Riak
 dev-erlang/sqlite3 1.1.5 1.1.6: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.8 1.0.17 1.0.19: Fast Stringprep implementation for Erlang and Elixir
-dev-erlang/stun 1.0.10 1.0.25 1.0.29 1.0.31: STUN and TURN library for Erlang and Elixir
-dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1 1.4.5: XMPP parsing and serialization library on top of Fast XML
+dev-erlang/stun 1.0.10 1.0.25 1.0.29 1.0.31 1.0.32: STUN and TURN library for Erlang and Elixir
+dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1 1.4.5 1.4.6: XMPP parsing and serialization library on top of Fast XML
 dev-erlang/yconf 1.0.1 1.0.4: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7-r1 1.1.9: Animated sprite editor & pixel art tool
@@ -4776,7 +4776,7 @@ dev-lang/luajit 2.0.5-r1 2.1.0_beta3: Just-In-Time Compiler for the Lua programm
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1 20.01 20.01.1: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 14.01.1 20.01 20.01.1: Additional libraries and tools that are not part of the Mercury standard library
-dev-lang/micropython 1.9.3 1.9.4 1.11: Python implementation for microcontrollers
+dev-lang/micropython 1.11: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2019.03-r1 2019.07-r1 2019.07.1-r1 2019.11 9999: A 6model-based VM for NQP and Rakudo Perl 6
@@ -4797,7 +4797,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.1 5.30.2: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.30 7.3.17 7.4.5: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.17-r2 2.7.18 3.6.10-r1 3.6.10-r2 3.7.7-r1 3.7.7-r2 3.8.2-r1 3.8.2-r2 3.9.0_alpha4 3.9.0_alpha5 3.9.0_alpha5-r1 3.9.0_alpha6: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.17-r2 2.7.18 3.6.10-r1 3.6.10-r2 3.7.7-r1 3.7.7-r2 3.8.2-r1 3.8.2-r2 3.9.0_alpha6: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1 10.2: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 9999: A compiler for the Perl 6 programming language
@@ -4961,7 +4961,7 @@ dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a gener
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12 0.13.1-r1 0.14: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
-dev-libs/jsoncpp 1.9.1 1.9.2-r1 1.9.2-r2 1.9.3_pre20200412: C++ JSON reader and writer
+dev-libs/jsoncpp 1.9.1 1.9.3_pre20200412: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
@@ -7442,15 +7442,15 @@ dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x synta
 dev-python/APScheduler 3.5.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.0-r1: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.8 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
-dev-python/GitPython 2.1.11 3.1.0 3.1.1: Library used to interact with Git repositories
+dev-python/GitPython 2.1.11 3.1.1: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
 dev-python/Numdifftools 0.9.17-r1: Solves automatic numerical differentiation problems in one or more variables
-dev-python/PyContracts 1.7.9 1.8.0 1.8.12 1.8.14: Declare constraints on function parameters and return values
+dev-python/PyContracts 1.8.0 1.8.12 1.8.14: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.46 1.47 1.50 1.51: Python library to access the Github API v3
+dev-python/PyGithub 1.46 1.51: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.13.2-r1 5.14.1-r1 5.14.2: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.19 4.19.21 4.19.22: Private sip module for PyQt5
@@ -7458,8 +7458,8 @@ dev-python/PyQtWebEngine 5.13.2 5.14.0: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.6: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
-dev-python/PySocks 1.6.7 1.6.8 1.7.1: SOCKS client module
-dev-python/PyUtilib 5.6.5 5.7.2: A collection of Python utilities
+dev-python/PySocks 1.6.8 1.7.1: SOCKS client module
+dev-python/PyUtilib 5.7.2: A collection of Python utilities
 dev-python/PythonQt 3.2-r1 9999: A dynamic Python binding for the Qt framework
 dev-python/QtPy 1.9.0-r1 1.9.0-r2: Abstraction layer for PyQt5/PySide
 dev-python/Rx 1.6.1: Reactive Extensions for Python
@@ -7897,14 +7897,14 @@ dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
 dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest Authentication
 dev-python/httpbin 0.7.0: HTTP Request and Response Service
 dev-python/httplib2 0.13.0 0.17.0: A comprehensive HTTP client library
-dev-python/httpretty 0.9.6 0.9.7 1.0.2 1.0.2-r1: HTTP client mock for Python
+dev-python/httpretty 0.9.6 1.0.2 1.0.2-r1: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 4.18: Human friendly output for text interfaces using Python
 dev-python/humanize 0.5.1 2.3.0 2.4.0: Common humanization utilities
 dev-python/hyper-h2 2.5.1 3.1.1 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.50.8 4.57.1 5.10.2 5.10.3 5.10.4: A library for property based testing
+dev-python/hypothesis 4.50.8 4.57.1 5.10.4: A library for property based testing
 dev-python/icalendar 4.0.3: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8 2.9: Internationalized Domain Names in Applications (IDNA)
@@ -8366,7 +8366,7 @@ dev-python/pygal 2.4.0 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6 1.9.6-r1: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r2 6.99.12.4-r3: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 1.0.3 1.2.0 1.2.1: Python bindings for libgit2
+dev-python/pygit2 1.0.3 1.2.1: Python bindings for libgit2
 dev-python/pyglet 1.2.4 1.5.3: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.5.2 2.6.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
@@ -8512,7 +8512,7 @@ dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1: Client library for Barbican API.
 dev-python/python-bibtex 1.2.7-r2: A Python extension to parse BibTeX files
 dev-python/python-blazarclient 2.1.0: This is a client for the OpenStack Blazar API
-dev-python/python-bugzilla 1.2.2 2.1.0 2.3.0: A python module for interacting with Bugzilla over XMLRPC
+dev-python/python-bugzilla 2.1.0 2.3.0: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.6.2-r2: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 4.2.2: A client for the OpenStack Cinder API
@@ -10604,8 +10604,8 @@ dev-util/strace 5.3 5.4 5.5 5.6 9999: A useful diagnostic, instructional, and de
 dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.79.0 0.88.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
-dev-util/sysdig 0.26.4 0.26.4-r1 0.26.6: A system exploration and troubleshooting tool
-dev-util/sysdig-kmod 0.26.4 0.26.6: Kernel module for dev-util/sysdig
+dev-util/sysdig 0.26.6: A system exploration and troubleshooting tool
+dev-util/sysdig-kmod 0.26.6: Kernel module for dev-util/sysdig
 dev-util/sysprof 3.34.1-r1: System-wide Linux Profiler
 dev-util/sysprof-capture 3.34.1-r1: Static library for sysprof capture data generation
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
@@ -12460,7 +12460,7 @@ media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation 
 media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts
 media-gfx/blender 2.79b-r2: 3D Creation/Animation/Publishing System
-media-gfx/cairosvg 1.0.22 2.0.3 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
+media-gfx/cairosvg 1.0.22 2.4.2: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.5 1.3.6: Grid-entry natural handwriting input panel
 media-gfx/chafa 1.4.0 1.4.1: versatile and fast Unicode/ASCII/ANSI graphics renderer
 media-gfx/clockphoto 1.1 1.2: Adjusts photo timestamps based on clock photos.
@@ -14914,7 +14914,7 @@ net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies suppo
 net-misc/mikutter 3.8.6 9999: Simple, powerful and moeful twitter client
 net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20190824: MiniSSDP Daemon
-net-misc/miniupnpd 2.1.20191006 2.1.20200329: MiniUPnP IGD Daemon
+net-misc/miniupnpd 2.1.20200329: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20190618: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2-r1 1.10.0: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
@@ -18262,7 +18262,7 @@ x11-misc/gbdfed 1.6: gbdfed Bitmap Font Editor
 x11-misc/gccmakedep 1.0.3-r1 9999: create dependencies in makefiles using 'gcc -M'
 x11-misc/gcolor2 0.4-r4: A GTK+ color selector
 x11-misc/genmenu 1.1.0-r1: menu generator for *box, WindowMaker, and Enlightenment
-x11-misc/gigolo 0.5.0 0.5.1: a frontend to easily manage connections to remote filesystems using GIO/GVfs
+x11-misc/gigolo 0.5.1: a frontend to easily manage connections to remote filesystems using GIO/GVfs
 x11-misc/gmrun 0.9.2-r1 0.9.2-r2: A GTK-2 based launcher box with bash style auto completion!
 x11-misc/gpaste 3.20.3: Clipboard management system
 x11-misc/grabc 1.1-r2: Identify color of a pixel on the screen by clicking on a pixel on the screen
@@ -18708,7 +18708,7 @@ x11-themes/e-flat-theme 0_pre20200401 0_pre20200427: A modern, flat theme for En
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
-x11-themes/elementary-xfce-icon-theme 0.14 0.15: Elementary icons forked from upstream, extended and maintained for Xfce
+x11-themes/elementary-xfce-icon-theme 0.15: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/experience 3.04-r1: GTK+2 themes which copy and improve the look of XP Luna
 x11-themes/faenza-icon-theme 1.3.1: A scalable icon theme called Faenza
 x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.1.2 31.0.4 32.1.4: A set of default and supplemental wallpapers for Fedora
@@ -18883,17 +18883,17 @@ x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2-r1 3.0.5-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.0: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.14.1 4.15.1 4.15.2: Unified widget and session management libs for Xfce
+xfce-base/libxfce4ui 4.14.1 4.15.2: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.0: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.12 1.8.14: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.14.3 4.14.4 4.15.1 4.15.2: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.14.3 4.14.4 4.15.2: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.1 4.14.2: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.2 4.14.3 4.15.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1: A configuration management system for Xfce
 xfce-base/xfdesktop 4.14.2: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.14.0-r1 4.14.1 4.14.2: Window manager for the Xfce desktop environment
+xfce-base/xfwm4 4.14.0-r1 4.14.2: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r4: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.4.0: Archive plug-in for the Thunar filemanager
@@ -18905,7 +18905,7 @@ xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation an
 xfce-extra/tumbler 0.2.8: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.2.1: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
-xfce-extra/xfce4-clipman-plugin 1.4.3 1.4.4 1.6.1: A clipboard manager plug-in for the Xfce panel
+xfce-extra/xfce4-clipman-plugin 1.4.4 1.6.1: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-cpufreq-plugin 1.2.1: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.1.0: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.8.0: A panel plug-in with date, time and embedded calender
@@ -18927,9 +18927,9 @@ xfce-extra/xfce4-notes-plugin 1.8.1-r4: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.4.4 0.6.0: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-panel-profiles 1.0.10: Simple application to manage Xfce panel layouts
 xfce-extra/xfce4-places-plugin 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
-xfce-extra/xfce4-power-manager 1.6.5 1.6.6 1.7.0: Power manager for the Xfce desktop environment
+xfce-extra/xfce4-power-manager 1.6.6 1.7.0: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.2 0.4.3: A panel plug-in for PulseAudio volume control
-xfce-extra/xfce4-screensaver 0.1.8 0.1.9 0.1.10: Screen saver and locker (port of MATE screensaver)
+xfce-extra/xfce4-screensaver 0.1.8 0.1.10: Screen saver and locker (port of MATE screensaver)
 xfce-extra/xfce4-screenshooter 1.9.7: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.92-r1: A panel plug-in for acpi, lm-sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.1: Smart bookmark plug-in for the Xfce desktop environment
@@ -18942,8 +18942,8 @@ xfce-extra/xfce4-vala 4.10.3-r7: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.10.0 0.10.1: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.3.5 2.4.3 2.4.4: Alternate application launcher for Xfce
+xfce-extra/xfce4-weather-plugin 0.10.1: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-whiskermenu-plugin 2.4.3 2.4.4: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment

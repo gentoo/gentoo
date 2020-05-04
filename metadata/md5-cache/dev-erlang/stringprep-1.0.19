@@ -8,5 +8,5 @@ LICENSE=Apache-2.0 tcltk
 RDEPEND=>=dev-lang/erlang-17.1 >=dev-erlang/p1_utils-1.0.18 dev-lang/erlang:=
 SLOT=0
 SRC_URI=https://github.com/processone/stringprep/archive/1.0.19.tar.gz -> stringprep-1.0.19.tar.gz
-_eclasses_=rebar	ee156d8c3eee38348c9b4b24a03babd1
+_eclasses_=rebar	959acafe413bff2d60a292477182363a
 _md5_=1ba4a062bca7b4f97b341b539b9240a3

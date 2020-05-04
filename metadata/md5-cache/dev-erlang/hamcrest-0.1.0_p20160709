@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~aidecoe/distfiles/dev-erlang/hamcrest/hamcrest-0.1.0_p20160709.tar.gz
-_eclasses_=rebar	ee156d8c3eee38348c9b4b24a03babd1
+_eclasses_=rebar	959acafe413bff2d60a292477182363a
 _md5_=64d57bb99e88a32ee284f2e8fc9be2fb
