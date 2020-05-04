@@ -29,7 +29,6 @@
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="bitbucket">mgorny/bashcomp2</remote-id>
 		<remote-id type="github">scop/bash-completion</remote-id>
 	</upstream>
 </pkgmetadata>
