@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit systemd toolchain-funcs user
 
@@ -57,12 +57,19 @@ src_install() {
 
 pkg_preinst() {
 	if ! has_version '>=net-vpn/peervpn-0.044-r4' && \
-		[[ -d ${EROOT}etc/${PN} &&
-		$(find "${EROOT}etc/${PN}" -user "${PN}" ! -type l -print) ]]; then
-		ewarn "Tightening '${EROOT}etc/${PN}' permissions for bug 629418"
+		[[ -d ${EROOT}/etc/${PN} && ! -L ${EROOT}/etc/${PN} &&
+		$(find "${EROOT}/etc/${PN}" -maxdepth 1 -user "${PN}" ! -type l -print) ]]; then
+		ewarn "Tightening '${EROOT}/etc/${PN}' permissions for bug 629418"
+		# Tighten the parent directory permissions first, in
+		# order to protect against race conditions involving a
+		# less-privileged user.
+		chown root:${PN} "${EROOT}/etc/${PN}"
+		chmod g+rX-w,o-rwx "${EROOT}/etc/${PN}"
+		# Don't chown/chmod the referent of a symlink
+		# owned by a less-privileged user.
 		while read -r -d ''; do
 			chown root:${PN} "${REPLY}" || die
 			chmod g+rX-w,o-rwx "${REPLY}" || die
-		done < <(find "${EROOT}etc/${PN}" -user "${PN}" ! -type l -print0)
+		done < <(find "${EROOT}/etc/${PN}" -mindepth 1 -maxdepth 1 -user "${PN}" ! -type l -print0)
 	fi
 }
