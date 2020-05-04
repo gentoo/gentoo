@@ -14951,7 +14951,7 @@ net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p13 4.2.8_p13-r2 4.2.8_p14-r2: Network Time Protocol suite/programs
 net-misc/ntpclient 2018.244-r1: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
 net-misc/ntpsec 1.1.4 1.1.6 1.1.7-r1 1.1.8 9999: The NTP reference implementation, refactored
-net-misc/nx 3.5.99.16 3.5.99.22: NX compression technology core libraries
+net-misc/nx 3.5.99.16 3.5.99.22 3.5.99.23: NX compression technology core libraries
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.0.4 2.1.0: Utility to monitor real time Tor status information
 net-misc/ofono 1.16 1.30 1.31: Open Source mobile telephony (GSM/UMTS) daemon
