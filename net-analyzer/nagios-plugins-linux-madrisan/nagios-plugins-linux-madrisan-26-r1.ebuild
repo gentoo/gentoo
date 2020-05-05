@@ -14,7 +14,7 @@ SRC_URI="https://github.com/madrisan/${MY_PN}/releases/download/v${PV}/${MY_P}.t
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="curl varlink"
 
 DEPEND="
