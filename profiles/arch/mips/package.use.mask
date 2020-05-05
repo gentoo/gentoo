@@ -78,10 +78,6 @@ dev-qt/qtchooser test
 # Requires matplotlib which requires a bit more.
 dev-python/numpydoc test
 
-# Mikle Kolyada <zlogene@gentoo.org> (2015-04-12)
-# GNOME Shell does not work on mips
-net-misc/wicd gnome-shell
-
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
