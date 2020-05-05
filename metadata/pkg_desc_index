@@ -8040,7 +8040,7 @@ dev-python/m2crypto 0.31.0-r2 0.35.2: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.1.1 1.1.2: A Python templating language
-dev-python/mamba 0.8.6-r1: ... testing tool ... Born under the banner of Behavior Driven Development
+dev-python/mamba 0.8.6-r1 0.11.0: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
 dev-python/markdown 2.6.11 3.1.1-r1 3.2.1: Python implementation of the markdown markup language
