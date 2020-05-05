@@ -3712,6 +3712,7 @@ lxqt-base/lxqt-panel:worldclock - Build worldclock plugin
 lxqt-base/lxqt-session:themes - Install LXQt themes and graphics
 mail-client/aerc:notmuch - Enable support for net-mail/notmuch
 mail-client/alot:doc - Install user manual and API documentation
+mail-client/alpine:chappa - enhance Alpine by applying Eduardo Chappa's patches
 mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with pico and/or pine
 mail-client/alpine:passfile - Adds support for caching passwords into a file between sessions
 mail-client/alpine:smime - Enable support for S/MIME

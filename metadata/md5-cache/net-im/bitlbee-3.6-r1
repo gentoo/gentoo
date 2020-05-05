@@ -1,15 +1,16 @@
-BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) virtual/pkgconfig virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install setup unpack
+BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) virtual/pkgconfig virtual/pkgconfig
+DEFINED_PHASES=compile configure install setup
 DEPEND=acct-group/bitlbee acct-user/bitlbee dev-libs/glib:2 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) selinux? ( sec-policy/selinux-bitlbee ) test? ( dev-libs/check )
 DESCRIPTION=irc to IM gateway that support multiple IM protocols
 EAPI=7
 HOMEPAGE=https://www.bitlbee.org/
 IUSE=debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd msn oscar purple twitter +xmpp
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-PROPERTIES=live
 RDEPEND=acct-group/bitlbee acct-user/bitlbee dev-libs/glib:2 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) xinetd? ( sys-apps/xinetd )
 REQUIRED_USE=|| ( purple xmpp msn oscar ) xmpp? ( !nss ) test? ( plugins )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2f4a1482dfa504af908028cd1de55a21
+SRC_URI=https://get.bitlbee.org/src/bitlbee-3.6.tar.gz
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3a12a5b3ca6ef912154a621360e18d54

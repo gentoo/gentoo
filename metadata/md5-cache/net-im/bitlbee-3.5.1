@@ -1,15 +1,15 @@
-DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND=>=dev-libs/glib-2.16 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) virtual/pkgconfig selinux? ( sec-policy/selinux-bitlbee ) test? ( dev-libs/check ) virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst
+DEPEND=acct-group/bitlbee acct-user/bitlbee >=dev-libs/glib-2.16 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) virtual/pkgconfig selinux? ( sec-policy/selinux-bitlbee ) test? ( dev-libs/check ) virtual/pkgconfig
 DESCRIPTION=irc to IM gateway that support multiple IM protocols
 EAPI=6
 HOMEPAGE=https://www.bitlbee.org/
 IUSE=debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd msn oscar purple twitter +xmpp
 KEYWORDS=amd64 ppc ~ppc64 x86
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/glib-2.16 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) virtual/logger xinetd? ( sys-apps/xinetd )
+RDEPEND=acct-group/bitlbee acct-user/bitlbee >=dev-libs/glib-2.16 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) virtual/logger xinetd? ( sys-apps/xinetd )
 REQUIRED_USE=|| ( purple xmpp msn oscar ) xmpp? ( !nss ) test? ( plugins )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://get.bitlbee.org/src/bitlbee-3.5.1.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=edaec85380b9eb331261664aa90143d5
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=323aaf090374435f1ffeea9658323fdf
