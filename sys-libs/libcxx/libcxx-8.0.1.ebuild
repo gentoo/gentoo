@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -64,12 +64,6 @@ pkg_setup() {
 		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"
 		eerror "compilers are not supported. Please set CC=gcc and CXX=g++"
 		eerror "and try again."
-		die
-	fi
-	if tc-is-gcc && [[ $(gcc-version) < 4.7 ]] ; then
-		eerror "${PN} needs to be built with gcc-4.7 or later (or other"
-		eerror "conformant compilers). Please use gcc-config to switch to"
-		eerror "gcc-4.7 or later version."
 		die
 	fi
 }
