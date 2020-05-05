@@ -5,7 +5,8 @@ EAPI=7
 
 DESCRIPTION="Readline extension to TCL"
 HOMEPAGE="https://github.com/flightaware/tclreadline"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/flightaware/tclreadline/archive/v${PV}.tar.gz
+	-> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
