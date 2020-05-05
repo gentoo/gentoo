@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils elisp-common
+EAPI=7
+inherit elisp-common autotools
 
 DESCRIPTION="Universal typing tutor"
 HOMEPAGE="https://www.gnu.org/software/gtypist/"
@@ -27,8 +27,16 @@ src_unpack() {
 	unpack ${P}.tar.xz
 }
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.8.3-xemacs-compat.patch
+
+	# solution from https://bugs.gentoo.org/698764#c0
+	"${FILESDIR}"/${PN}-2.9.5-link-infow.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.8.3-xemacs-compat.patch
+	default
+	eautoreconf
 }
 
 src_configure() {
