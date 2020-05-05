@@ -6,7 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 MY_P="${P/_p/-}"
-DESCRIPTION="mapping tool for UTF-8 strings"
+
+DESCRIPTION="A clean C Library for processing UTF-8 Unicode data"
 HOMEPAGE="http://www.netsurf-browser.org/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${MY_P}-src.tar.gz"
 
