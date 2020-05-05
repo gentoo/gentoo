@@ -7,20 +7,18 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="http://alpine.x10host.com/alpine/ https://repo.or.cz/alpine.git/"
-GIT_COMMIT="843b2f16abfd949e09b1c5465387b1b0f724994a"
-MY_P="${PN}-${GIT_COMMIT::7}"
-SRC_URI="https://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+CHAPPA_PATCH_NAME="${P}-chappa.patch"
+SRC_URI="http://alpine.x10host.com/alpine/release/src/${P}.tar.xz
+	chappa? ( http://alpine.x10host.com/alpine/patches/${P}/all.patch.gz -> ${CHAPPA_PATCH_NAME}.gz ) "
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
-IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine pam passfile smime spell ssl threads"
+IUSE="+chappa doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads"
 
 DEPEND=">=sys-libs/ncurses-5.1:0=
 	kerberos? ( app-crypt/mit-krb5 )
 	ldap? ( net-nds/openldap )
-	pam? ( sys-libs/pam )
 	spell? ( app-text/aspell )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -31,15 +29,16 @@ RDEPEND="${DEPEND}
 	app-misc/mime-types
 "
 
-HTML_DOCS=("doc/tech-notes/")
-
 PATCHES=(
-	"${FILESDIR}/${P}-nopam.patch"
+	"${FILESDIR}/${P}-cc.patch"
 )
 
 src_prepare() {
 	default
+	use chappa && eapply "${WORKDIR}/${CHAPPA_PATCH_NAME}"
 	eautoreconf
+	tc-export CC RANLIB AR
+	export CC_FOR_BUILD=$(tc-getBUILD_CC)
 }
 
 src_configure() {
@@ -56,7 +55,6 @@ src_configure() {
 		$(use_enable nls)
 		$(use_with ipv6)
 		$(use_with smime)
-		$(use_with pam)
 	)
 
 	if use ssl; then
@@ -87,7 +85,7 @@ src_install() {
 	if use doc ; then
 		dodoc doc/brochure.txt
 
-		dodoc doc/tech-notes/tech-notes.txt
+		dodoc -r doc/tech-notes/
 		newdoc "${S}/doc/mailcap.unx" mailcap.unx.sample
 		newdoc "${S}/doc/mime.types" mime.types.sample
 		docompress -x /usr/share/doc/${PF}/mailcap.unx.sample /usr/share/doc/${PF}/mime.types.sample

@@ -1,9 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit user systemd toolchain-funcs
+PYTHON_COMPAT=( python3_{6..8} )
+
+inherit python-any-r1 systemd toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/bitlbee/bitlbee.git"
@@ -30,7 +32,9 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.16
+	acct-group/bitlbee
+	acct-user/bitlbee
+	dev-libs/glib:2
 	purple? ( net-im/pidgin )
 	libevent? ( dev-libs/libevent:= )
 	otr? ( >=net-libs/libotr-4 )
@@ -44,22 +48,23 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
 	selinux? ( sec-policy/selinux-bitlbee )
-	test? ( dev-libs/check )"
+	test? ( dev-libs/check )
+"
 
 RDEPEND="${COMMON_DEPEND}
-	xinetd? ( sys-apps/xinetd )"
+	xinetd? ( sys-apps/xinetd )
+"
 
-pkg_setup() {
-	enewgroup bitlbee
-	enewuser bitlbee -1 -1 /var/lib/bitlbee bitlbee
-}
+BDEPEND="${PYTHON_DEPS}
+	virtual/pkgconfig
+"
 
-src_prepare() {
-	[[ ${PV} != "9999" ]] && eapply "${FILESDIR}"/${PN}-3.5-systemd-user.patch
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
+	"${FILESDIR}"/${PN}-3.5-libcheck.patch
+	"${FILESDIR}"/${PN}-3.5-libevent.patch
+)
 
 src_configure() {
 	local myconf
@@ -144,8 +149,4 @@ src_install() {
 
 	exeinto /usr/share/bitlbee
 	doexe utils/{convert_purple.py,bitlbee-ctl.pl}
-}
-
-pkg_postinst() {
-	chown -R bitlbee:bitlbee "${ROOT}"/var/lib/bitlbee
 }
