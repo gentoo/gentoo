@@ -2147,7 +2147,7 @@ app-misc/gramps 5.1.2-r1: Genealogical Research and Analysis Management Programm
 app-misc/graphlcd-base 1.0.2: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.11-r1: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
-app-misc/gtypist 2.9.5: Universal typing tutor
+app-misc/gtypist 2.9.5-r1: Universal typing tutor
 app-misc/hatools 2.14: High availability environment tools for shell scripting
 app-misc/hddled 0.3: Show hard disk activity using the scroll lock LED
 app-misc/hello 2.10-r1: GNU "Hello, world" application
