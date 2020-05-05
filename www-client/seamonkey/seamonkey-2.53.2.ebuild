@@ -36,7 +36,7 @@ MOZ_GENERATE_LANGPACKS=1
 MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
 inherit autotools check-reqs flag-o-matic mozcoreconf-v6 mozextension mozlinguas-v2 nsplugins pax-utils toolchain-funcs xdg-utils
 
-PATCH="${PN}-2.53.2_beta1-patches-01"
+PATCH="${PN}-2.53.2-patches-01"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
