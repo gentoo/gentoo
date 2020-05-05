@@ -1,0 +1,16 @@
+BDEPEND=|| ( dev-lang/python:3.8[threads(+)] dev-lang/python:3.7[threads(+)] dev-lang/python:3.6[threads(+)] ) systemtap? ( dev-util/systemtap ) test? ( net-misc/curl ) pax_kernel? ( sys-apps/elfix )
+DEFINED_PHASES=compile configure install postinst prepare pretend setup test
+DEPEND=>=dev-libs/libuv-1.37.0:= >=net-dns/c-ares-1.16.0 >=net-libs/nghttp2-1.40.0 sys-libs/zlib icu? ( >=dev-libs/icu-65:= ) system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
+DESCRIPTION=A JavaScript runtime built on Chrome's V8 JavaScript engine
+EAPI=7
+HOMEPAGE=https://nodejs.org/
+IUSE=cpu_flags_x86_sse2 debug doc icu inspector +npm pax_kernel +snapshot +ssl +system-ssl systemtap test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos
+LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
+RDEPEND=>=dev-libs/libuv-1.37.0:= >=net-dns/c-ares-1.16.0 >=net-libs/nghttp2-1.40.0 sys-libs/zlib icu? ( >=dev-libs/icu-65:= ) system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
+REQUIRED_USE=inspector? ( icu ssl ) npm? ( ssl ) system-ssl? ( ssl )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://nodejs.org/dist/v14.2.0/node-v14.2.0.tar.xz
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=632cbcfaeeef71fa1e839ffa88b980ee

@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst prepare
+DEFINED_PHASES=configure install prepare
 DEPEND=!sys-cluster/heartbeat infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* ) dev-libs/nss >=sys-cluster/libqb-0.14.4 virtual/pkgconfig doc? ( sys-apps/groff ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=OSI Certified implementation of a complete cluster engine
 EAPI=6
@@ -10,4 +10,4 @@ RDEPEND=!sys-cluster/heartbeat infiniband? ( sys-fabric/libibverbs:* sys-fabric/
 SLOT=0
 SRC_URI=http://build.clusterlabs.org/corosync/releases/corosync-2.3.5.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c7663b41b4e1053e03d933b066483785
+_md5_=5b0e769fbd3b0dc81365e1153d8dba3e
