@@ -1,0 +1,134 @@
+argyllcms: Fix compilation with GCC 10
+
+A common mistake in C is omitting extern when declaring a global variable
+in a header file.  If the header is included by several files it  results
+in multiple definitions of the same variable.  In previous GCC versions
+this error is ignored.  GCC 10 defaults to -fno-common,  which means a
+linker error will now be reported. To fix this, use extern in header
+files when declaring global variables, and ensure each global is defined
+in exactly one C file. As a workaround, legacy C code can be compiled
+with -fcommon.
+
+      int x;  // tentative definition - avoid in header files 
+      extern int y;  // correct declaration in a header file 
+
+References:
+https://bugzilla.opensuse.org/show_bug.cgi?id=1160244
+https://bugzilla.opensuse.org/show_bug.cgi?id=1160256
+
+In case of vinflate.c and inflate.c, both files define local variables
+with the same name as global. It is no more possible with GCC 10. To
+prevent sharing variables across files, add "static" to all local
+variables.
+
+Index: Argyll_V2.1.2/gamut/gamut.h
+===================================================================
+--- Argyll_V2.1.2.orig/gamut/gamut.h
++++ Argyll_V2.1.2/gamut/gamut.h
+@@ -36,7 +36,7 @@
+ #define MAXGAMN 10				/* Maximum gamut point neighbors returned */
+ #define NSLOTS 6				/* Number of maximum direction slots */
+ 
+-struct _vrml *wrl;				/* Declared in vrml.h, which may be #included after this */
++struct _vrml;					/* Declared in vrml.h, which may be #included after this */
+ 
+ /* ------------------------------------ */
+ #define NODE_STRUCT							\
+Index: Argyll_V2.1.2/spectro/vinflate.c
+===================================================================
+--- Argyll_V2.1.2.orig/spectro/vinflate.c
++++ Argyll_V2.1.2/spectro/vinflate.c
+@@ -92,7 +92,7 @@ int vinflate(void);
+ */
+ 
+ #define WSIZE 0x8000
+-unsigned int wp;             /* current position in slide */
++static unsigned int wp;             /* current position in slide */
+ uch slide[32768];
+ 
+ static int vflush_output(unsigned int w) {
+@@ -160,8 +160,8 @@ static ush cpdext[] = {         /* Extra
+    the stream.
+  */
+ 
+-ulg bb;                         /* bit buffer */
+-unsigned bk;                    /* bits in bit buffer */
++static ulg bb;                         /* bit buffer */
++static unsigned bk;                    /* bits in bit buffer */
+ 
+ ush vmask_bits[] = {
+     0x0000,
+@@ -230,8 +230,8 @@ ush vmask_bits[] = {
+  */
+ 
+ 
+-int vlbits = 9;          /* bits in base literal/length lookup table */
+-int vdbits = 6;          /* bits in base distance lookup table */
++static int vlbits = 9;          /* bits in base literal/length lookup table */
++static int vdbits = 6;          /* bits in base distance lookup table */
+ 
+ 
+ /* If BMAX needs to be larger than 16, then h and x[] should be ulg. */
+@@ -239,7 +239,7 @@ int vdbits = 6;          /* bits in base
+ #define N_MAX 288       /* maximum number of codes in any set */
+ 
+ 
+-unsigned hufts;         /* track memory usage */
++static unsigned hufts;  /* track memory usage */
+ 
+ /* Given a list of code lengths and a maximum table size, make a set of
+    tables to decode that set of codes.  Return zero on success, one if
+Index: Argyll_V2.1.2/spectro/inflate.c
+===================================================================
+--- Argyll_V2.1.2.orig/spectro/inflate.c
++++ Argyll_V2.1.2/spectro/inflate.c
+@@ -49,7 +49,7 @@ typedef unsigned int ulg;
+    the next table, which codes e - 16 bits, and lastly e == 99 indicates
+    an unused code.  If a code with e == 99 is looked up, this implies an
+    error in the data. */
+-struct huft {
++static struct huft {
+   uch e;                /* number of extra bits or operation */
+   uch b;                /* number of bits in this code or subcode */
+   union {
+@@ -87,7 +87,7 @@ int inflate(void);
+ /* unsigned wp;             current position in slide */
+ 
+ #define WSIZE 0x8000
+-unsigned int wp;             /* current position in slide */
++static unsigned int wp;             /* current position in slide */
+ uch slide[32768];
+ 
+ static int flush_output(unsigned int w) {
+@@ -155,8 +155,8 @@ static ush cpdext[] = {         /* Extra
+    the stream.
+  */
+ 
+-ulg bb;                         /* bit buffer */
+-unsigned bk;                    /* bits in bit buffer */
++static ulg bb;                         /* bit buffer */
++static unsigned bk;                    /* bits in bit buffer */
+ 
+ ush mask_bits[] = {
+     0x0000,
+@@ -201,8 +201,8 @@ ush mask_bits[] = {
+  */
+ 
+ 
+-int lbits = 9;          /* bits in base literal/length lookup table */
+-int dbits = 6;          /* bits in base distance lookup table */
++static int lbits = 9;          /* bits in base literal/length lookup table */
++static int dbits = 6;          /* bits in base distance lookup table */
+ 
+ 
+ /* If BMAX needs to be larger than 16, then h and x[] should be ulg. */
+@@ -210,7 +210,7 @@ int dbits = 6;          /* bits in base
+ #define N_MAX 288       /* maximum number of codes in any set */
+ 
+ 
+-unsigned hufts;         /* track memory usage */
++static unsigned hufts;         /* track memory usage */
+ 
+ 
+ static int huft_build(b, n, s, d, e, t, m)
+

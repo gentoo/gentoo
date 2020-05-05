@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,11 +13,10 @@ SRC_URI="http://www.argyllcms.com/${MY_P}_src.zip"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm64 hppa x86"
-IUSE="doc"
+KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
+IUSE="doc libressl"
 
 RDEPEND="
-	dev-libs/openssl:0=
 	media-libs/tiff:0
 	sys-libs/zlib
 	virtual/jpeg:0
@@ -28,10 +27,14 @@ RDEPEND="
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXxf86vm
-	x11-libs/libXScrnSaver"
-DEPEND="${RDEPEND}
-	app-arch/unzip
+	x11-libs/libXScrnSaver
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip
 	dev-util/ftjam"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 S="${WORKDIR}/${MY_P}"
 
