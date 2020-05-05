@@ -346,7 +346,6 @@ dev-lang/gnat-gpl go
 
 # Pacho Ramos <pacho@gentoo.org> (2018-11-11)
 # pm-utils will be removed, bug #659616
-net-misc/wicd pm-utils
 sys-apps/razercfg pm-utils
 sys-power/powermgmt-base pm-utils
 
@@ -732,12 +731,6 @@ dev-lisp/clisp svm
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
 media-sound/pulseaudio system-wide
-
-# Jeremy Olexa <darkside@gentoo.org> (2010-01-10)
-# Upsteam doesn't support ioctl backend and neither does Gentoo. ioctl USE flag
-# will eventually be removed unless the backend is re-written by upstream. bug
-# 299674
->net-misc/wicd-1.6.2.2 ioctl
 
 # These are for BSD only
 net-proxy/squid ipf-transparent pf-transparent
