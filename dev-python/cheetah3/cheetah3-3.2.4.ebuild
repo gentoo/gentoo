@@ -23,9 +23,6 @@ BDEPEND="${RDEPEND}"
 
 DOCS=( ANNOUNCE.rst README.rst TODO )
 
-# Race in the test suite
-DISTUTILS_IN_SOURCE_BUILD=1
-
 python_prepare_all() {
 	# Disable broken tests.
 	sed \
@@ -41,5 +38,5 @@ python_test() {
 	cp -r "${S}/Cheetah/Tests/ImportHooksTemplates" \
 		"${BUILD_DIR}/lib/Cheetah/Tests/ImportHooksTemplates" || die
 
-	"${PYTHON}" Cheetah/Tests/Test.py || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" Cheetah/Tests/Test.py || die "Tests fail with ${EPYTHON}"
 }
