@@ -4,8 +4,8 @@ DESCRIPTION=A shell tool for executing jobs in parallel locally or on remote mac
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/parallel/
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
-LICENSE=GPL-3
+LICENSE=GPL-3+
 RDEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO
 SLOT=0
 SRC_URI=mirror://gnu/parallel/parallel-20191022.tar.bz2
-_md5_=82e1b30711964252bb06925630217bef
+_md5_=81a4ee53a46c90ac118e5fffccd874a6

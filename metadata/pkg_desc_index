@@ -12106,8 +12106,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1 1.4.2 1.4.3: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1-r1 68.7.0-r1: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.7.0: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1-r1 68.7.0-r1 68.8.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.7.0 68.8.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0-r1 2.0.0 3.0.0: Initial tagging script for Notmuch
@@ -12525,7 +12525,7 @@ media-gfx/imagemagick 6.9.11.7 7.0.10.7-r1 9999: A collection of tools and libra
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.3 0.3.4: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
-media-gfx/inkscape 0.92.4-r2 0.92.4-r3 1.0_rc1 9999: SVG based generic vector-drawing program
+media-gfx/inkscape 0.92.4-r2 0.92.4-r3 1.0_rc1 1.0 9999: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.4.2 3.62.0: EPSON Image Scan v3 for Linux
 media-gfx/iscan-data 1.39.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-esdip 1.0.0.5-r1: Plugin for 'epkowa' backend for image manipulation
@@ -14782,7 +14782,7 @@ net-misc/cni-plugins 0.8.2 0.8.3 0.8.4 0.8.5: Standard networking plugins for co
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.38 9999: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
-net-misc/connman-json-client 1.0_p20150721: An ncurses UI for connman
+net-misc/connman-json-client 1.0_p20150721 1.0_p20150721-r1: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
@@ -14899,7 +14899,7 @@ net-misc/mosh 1.3.2 9999: Mobile shell that supports roaming and intelligent loc
 net-misc/mrouted 3.9.5-r1 3.9.8: IP multicast routing daemon
 net-misc/mulk 0.7.0: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
-net-misc/ncman 0.0.1_p20190327 0.0.1_p20190327-r1 9999: An ncurses UI for connman, forked from connman-json-client
+net-misc/ncman 0.0.1_p20190327 0.0.1_p20190327-r1 0.0.1_p20190327-r2 9999: An ncurses UI for connman, forked from connman-json-client
 net-misc/ncp 1.2.4-r1: Utility for copying files in a LAN (npoll, npush)
 net-misc/ndisc6 1.0.3: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/ndppd 0.2.5: Proxies NDP messages between interfaces
@@ -17504,7 +17504,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20191022 20200122: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20191022 20200122 20200422: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
