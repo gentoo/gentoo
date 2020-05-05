@@ -20,7 +20,6 @@ www-servers/uwsgi uwsgi_plugins_systemd_logger
 >=x11-wm/mutter-3.22 wayland
 x11-misc/xscreensaver gdm
 app-misc/workrave gnome
-net-misc/wicd gnome-shell
 x11-misc/gpaste gnome
 x11-terms/gnome-terminal gnome-shell
 x11-themes/arc-theme gnome-shell
