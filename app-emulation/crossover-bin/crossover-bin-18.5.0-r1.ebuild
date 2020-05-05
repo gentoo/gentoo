@@ -14,7 +14,7 @@ SRC_URI="https://media.codeweavers.com/pub/crossover/cxlinux/demo/install-crosso
 LICENSE="CROSSOVER-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+capi +cups doc +gphoto2 +gsm +jpeg +lcms +ldap +mp3 +nls +openal +opencl +opengl +png +scanner +ssl +v4l"
+IUSE="+capi +cups doc +gphoto2 +gsm +jpeg +lcms ldap +mp3 +nls +openal +opencl +opengl +pcap +png scanner +ssl +v4l +vulkan"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RESTRICT="bindist test"
 
@@ -52,7 +52,6 @@ RDEPEND="${DEPEND}
 		>=dev-python/pygtk-2.10:2[${PYTHON_MULTI_USEDEP}]
 		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
 	')
-	dev-util/desktop-file-utils
 	!app-emulation/crossover-office-pro-bin
 	!app-emulation/crossover-office-bin
 	capi? ( net-libs/libcapi[abi_x86_32(-)] )
@@ -70,13 +69,17 @@ RDEPEND="${DEPEND}
 		virtual/glu[abi_x86_32(-)]
 		virtual/opengl[abi_x86_32(-)]
 	)
+	pcap? ( net-libs/libpcap[abi_x86_32(-)] )
 	png? ( media-libs/libpng:0[abi_x86_32(-)] )
 	scanner? ( media-gfx/sane-backends[abi_x86_32(-)] )
-	ssl? ( dev-libs/openssl:0[abi_x86_32(-)] )
+	ssl? ( net-libs/gnutls:0/30[abi_x86_32(-)] )
 	v4l? ( media-libs/libv4l[abi_x86_32(-)] )
+	vulkan? ( media-libs/vulkan-loader[abi_x86_32(-)] )
+	dev-util/desktop-file-utils
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/freetype:2[abi_x86_32(-)]
 	media-libs/mesa[abi_x86_32(-)]
+	media-libs/tiff:0[abi_x86_32(-)]
 	sys-auth/nss-mdns[abi_x86_32(-)]
 	sys-apps/util-linux[abi_x86_32(-)]
 	sys-libs/ncurses-compat:5[abi_x86_32(-)]

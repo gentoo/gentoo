@@ -13,7 +13,7 @@ SRC_URI="https://media.codeweavers.com/pub/crossover/cxlinux/demo/install-crosso
 LICENSE="CROSSOVER-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+capi +cups doc +gphoto2 +gsm gstreamer +jpeg +lcms +ldap +mp3 +nls osmesa +openal +opencl +opengl +pcap +png +scanner +ssl +v4l vulkan"
+IUSE="+capi +cups doc +gphoto2 +gsm +gstreamer +jpeg +lcms ldap +mp3 +nls osmesa +openal +opencl +opengl +pcap +png +scanner +ssl +v4l +vulkan"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RESTRICT="bindist test"
@@ -78,7 +78,7 @@ RDEPEND="${DEPEND}
 	pcap? ( net-libs/libpcap[abi_x86_32(-)] )
 	png? ( media-libs/libpng:0[abi_x86_32(-)] )
 	scanner? ( media-gfx/sane-backends[abi_x86_32(-)] )
-	ssl? ( dev-libs/openssl:0[abi_x86_32(-)] )
+	ssl? ( net-libs/gnutls:0/30[abi_x86_32(-)] )
 	v4l? ( media-libs/libv4l[abi_x86_32(-)] )
 	vulkan? ( media-libs/vulkan-loader[abi_x86_32(-)] )
 	dev-libs/gobject-introspection
@@ -86,6 +86,7 @@ RDEPEND="${DEPEND}
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/freetype:2[abi_x86_32(-)]
 	media-libs/mesa[abi_x86_32(-),osmesa?]
+	media-libs/tiff:0[abi_x86_32(-)]
 	sys-auth/nss-mdns[abi_x86_32(-)]
 	sys-apps/util-linux[abi_x86_32(-)]
 	sys-libs/ncurses-compat:5[abi_x86_32(-)]
@@ -191,10 +192,8 @@ src_install() {
 	fi
 	# It tries to load libpcap as packaged in Debian, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=657900
 	if use pcap; then
-		bbe -e 's/libpcap.so.0.8/libpcap.so.1.9.1/' "${ED}/opt/cxoffice/lib/wine/wpcap.dll.so" >tmp || die
-		bbe -e 's/libpcap.so.0.8/libpcap.so.1.9.1/' "${ED}/opt/cxoffice/lib64/wine/wpcap.dll.so" >tmp64 || die
-		mv tmp "${ED}/opt/cxoffice/lib/wine/wpcap.dll.so" || die
-		mv tmp64 "${ED}/opt/cxoffice/lib64/wine/wpcap.dll.so" || die
+		dosym "../../../usr/lib64/libpcap.so.1.9.1" "/opt/cxoffice/lib64/libpcap.so.0.8"
+		dosym "../../../usr/lib32/libpcap.so.1.9.1" "/opt/cxoffice/lib/libpcap.so.0.8"
 	fi
 }
 
@@ -203,4 +202,28 @@ pkg_postinst() {
 	einfo "Source code can be obtained from:"
 	einfo
 	einfo "https://media.codeweavers.com/pub/crossover/source/crossover-sources-${PV}.tar.gz"
+
+	# The check done by /opt/cxoffice/bin/cxdiag is far superior to this.
+	# However, we do this check because I noticed that we could end up with a
+	# system that doesn't have a working OpenCL according to cxdiag, yet the
+	# dependencies have been installed. This is a defensive measure to reduce
+	# user frustration. A more robust check might be worthwhile.
+	if use opencl; then
+		local b32=false
+		local b64=false
+		if [[ ! -e "${EROOT}/usr/lib32/libOpenCL.so.1" ]]; then
+			b32=true
+			ewarn "32-bit libOpenCL.so.1 missing."
+		fi
+
+		if use amd64 && [[ ! -e "${EROOT}/usr/lib64/libOpenCL.so.1" ]]; then
+			b64=true
+			ewarn "64-bit libOpenCL.so.1 missing."
+		fi
+
+		if $b32 || $b64; then
+			ewarn
+			ewarn "Set OpenCL via eselect opencl to avoid problems"
+		fi
+	fi
 }
