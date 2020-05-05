@@ -705,12 +705,6 @@ dev-tcltk/tcl-mccp
 # Masked for testing
 >=dev-libs/libressl-3.1.0
 
-# Joonas Niilola <juippis@gentoo.org> (2020-04-05)
-# Not maintained in Gentoo, doesn't build for 2 years, has only
-# deprecated version present in Gentoo. Has a huge number of open
-# bugs. Removal in 30 days. #642952
-www-misc/zoneminder
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-04)
 # Package that used to provide test data for dev-python/cryptography.
 # The modern versions fetch it via SRC_URI and the last version
@@ -881,15 +875,6 @@ net-misc/gnome-remote-desktop
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
 # Mask until sys-libs/libxcrypt[system] is unmasked
 >=virtual/libcrypt-2
-
-# Joonas Niilola <juippis@gentoo.org> (2020-02-05)
-# Stagnant upstream with latest release from 2016, python2-only, no maintainer
-# in Gentoo, no notable ebuild action in years, multiple bugs open. Blocks
-# pygtk removal.
-# Switch to alternatives such as,
-# net-misc/connman, net-misc/dhcpcd, net-misc/netifrc, net-misc/NetworkManager
-# and so on. Removal in ~90 days. #708316
-net-misc/wicd
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
