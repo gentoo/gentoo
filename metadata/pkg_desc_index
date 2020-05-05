@@ -8659,7 +8659,7 @@ dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1-r1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2 2.2-r1: repoze.who is an identification and authentication framework for WSGI
 dev-python/requests 2.21.0-r1 2.23.0: HTTP library for human beings
-dev-python/requests-cache 0.4.12: Persistent cache for requests library
+dev-python/requests-cache 0.4.12 0.4.12-r1: Persistent cache for requests library
 dev-python/requests-credssp 1.0.2 1.1.1: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
 dev-python/requests-kerberos 0.12.0-r1: A Kerberos authentication handler for python-requests
@@ -8881,7 +8881,7 @@ dev-python/translate-toolkit 2.4.0 2.5.0: Toolkit to convert between many transl
 dev-python/treq 17.8.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/ttystatus 0.36: Terminal progress bar and status output for command line
-dev-python/tvdb_api 1.10_pre20150406-r1 2.0: Python interface to thetvdb.com API
+dev-python/tvdb_api 1.10_pre20150406-r1 2.0 2.0-r1: Python interface to thetvdb.com API
 dev-python/twine 1.15.0 3.1.1: Collection of utilities for publishing packages on PyPI
 dev-python/twisted 16.6.0-r3 18.4.0 19.10.0 20.3.0: An asynchronous networking framework written in Python
 dev-python/twython 3.7.0: An easy way to access Twitter data with Python
