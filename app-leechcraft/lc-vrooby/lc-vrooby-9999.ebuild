@@ -12,14 +12,17 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
-	dev-qt/qtdeclarative:5[widgets]
 	dev-qt/qtdbus:5
+	dev-qt/qtdeclarative:5[widgets]
 	dev-qt/qtwidgets:5
 "
 RDEPEND="${DEPEND}
 	sys-fs/udisks:2"
 
-mycmakeargs=(
-	-DENABLE_VROOBY_UDISKS=OFF
-	-DENABLE_VROOBY_UDISKS2=ON
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_VROOBY_UDISKS=OFF
+		-DENABLE_VROOBY_UDISKS2=ON
 	)
+	cmake_src_configure
+}
