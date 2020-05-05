@@ -25,6 +25,6 @@
     <flag name="namespaces">Enable namespaces isolation.</flag>
   </use>
   <upstream>
-    <remote-id type="github">xaionaro/clsync</remote-id>
+    <remote-id type="github">clsync/clsync</remote-id>
   </upstream>
 </pkgmetadata>
