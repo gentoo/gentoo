@@ -9,7 +9,7 @@ DESCRIPTION="Notifies about new mail in a GMail inbox for LeechCraft"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="debug notify quark"
+IUSE="debug +notify quark"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
 	dev-qt/qtdeclarative:5[widgets]
@@ -19,4 +19,7 @@ DEPEND="~app-leechcraft/lc-core-${PV}
 "
 RDEPEND="${DEPEND}
 	quark? ( ~virtual/leechcraft-quark-sideprovider-${PV} )
-	notify? ( ~virtual/leechcraft-notifier-${PV} )"
+	notify? ( ~virtual/leechcraft-notifier-${PV} )
+"
+
+REQUIRED_USE="|| ( notify quark )"
