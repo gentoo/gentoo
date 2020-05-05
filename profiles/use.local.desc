@@ -6663,13 +6663,6 @@ net-misc/wget2:openssl - Enable crypto support via dev-libs/openssl
 net-misc/wget2:psl - Use public suffix list via media-libs/libnspsl
 net-misc/wget2:valgrind - Depend on dev-util/vagrind for test suite
 net-misc/whois:xcrypt - Enable crypt through sys-libs/libxcrypt package
-net-misc/wicd:ambiance - Install icons from Ubuntu's ambiance theme
-net-misc/wicd:gnome-shell - Install gnome-shell extension
-net-misc/wicd:gtk - Installs a gtk UI. This is enabled by default because it is intended behavior. Requires dev-python/pygtk
-net-misc/wicd:ioctl - Installs additional python libraries to use as a backend. This will improve speed but is experimental.
-net-misc/wicd:mac4lin - Change default icons to mac4lin icon set
-net-misc/wicd:ncurses - Installs a ncurses UI
-net-misc/wicd:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
 net-misc/x2goserver:fuse - Use net-fs/sshfs to allow shared folders
 net-misc/youtube-viewer:gtk - Install the gtk3 GUI
 net-misc/youtube-viewer:gtk2 - Use the old gtk2 GUI instead of the gtk3 one
@@ -8720,9 +8713,6 @@ www-misc/litmus:libxml2 - Use dev-libs/libxml2 to parse XML
 www-misc/litmus:pkcs11 - Support for PKCS #11 through PaKChoiS (dev-libs/pakchois).
 www-misc/vdradmin-am:vdr - Support for media-video/vdr. Disable this if the VDR you want to control runs at a remote machine.
 www-misc/xxv:themes - Enable more themes via x11-themes/xxv-skins
-www-misc/zoneminder:curl - Enable using net-misc/curl for streaming from cameras
-www-misc/zoneminder:gcrypt - ...
-www-misc/zoneminder:vlc - Enable using media-libs/vlc for streaming from cameras
 www-plugins/adobe-flash:nsplugin - Install the Netscape Flash API plugin (for Firefox and similar browsers)
 www-plugins/adobe-flash:ppapi - Install the Pepper Flash API plugin (for Chrome and similar browsers)
 www-plugins/freshplayerplugin:v4l - Use libv4l2 for colorspace conversion
