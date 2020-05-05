@@ -10,7 +10,7 @@ SRC_URI="https://www.alsa-project.org/files/pub/plugins/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86 ~amd64-linux"
 IUSE="arcam_av debug ffmpeg jack libsamplerate +mix oss pulseaudio speex +usb_stream"
 
 RDEPEND="
