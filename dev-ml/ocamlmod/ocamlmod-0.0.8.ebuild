@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit oasis
 
 DESCRIPTION="Generate OCaml modules from source files"
 HOMEPAGE="http://forge.ocamlcore.org/projects/ocamlmod/"
-SRC_URI="https://forge.ocamlcore.org/frs/download.php/1544/ocamlmod-0.0.8.tar.gz"
+SRC_URI="https://forge.ocamlcore.org/frs/download.php/1544/${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
