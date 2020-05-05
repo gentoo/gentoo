@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 inherit toolchain-funcs
 
@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 _emake() {
 	source "${EPREFIX}"/usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
-	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
+	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared "${@}"
 }
 
 src_compile() {
