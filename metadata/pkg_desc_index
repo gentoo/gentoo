@@ -418,7 +418,7 @@ app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a saf
 app-admin/chrootuid 1.3-r2: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2 0.16: Chrpath can modify the rpath and runpath of ELF executables
 app-admin/clog 1.3.0: clog is a colorized log tail utility
-app-admin/clsync 0.4.2: Live sync tool based on inotify, written in GNU C
+app-admin/clsync 0.4.2 0.4.4: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.7.3: Python framework for efficient cluster administration
 app-admin/conky 1.10.8-r4 1.10.8-r8 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
@@ -1264,7 +1264,7 @@ app-doc/autobook 1.5: GNU Autoconf, Automake and Libtool
 app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implementations
 app-doc/cantera-docs 2.4.0: Documentation API reference for Cantera package libraries
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
-app-doc/clsync-docs 0.4.2: Clsync and libclsync API documentation
+app-doc/clsync-docs 0.4.2 0.4.4: Clsync and libclsync API documentation
 app-doc/cppman 0.4.8-r2 0.4.9: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
 app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
@@ -5007,7 +5007,7 @@ dev-libs/libcec 4.0.2-r2 4.0.4-r1: Library for communicating with the Pulse-Eigh
 dev-libs/libcgroup 0.41-r5 0.41-r6: Tools and libraries to configure and manage kernel control groups
 dev-libs/libcharon 3.4.1 3.6.0-r1 4.2.0 4.3.0: This library facilitates communication between Cura and its backend
 dev-libs/libclc 0.2.0_pre20191024: OpenCL C library
-dev-libs/libclsync 0.4.2: Control and monitoring library for clsync
+dev-libs/libclsync 0.4.2 0.4.4: Control and monitoring library for clsync
 dev-libs/libclthreads 2.4.2: POSIX threads C++ access library
 dev-libs/libconfig 1.5 1.7.1 1.7.2: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
@@ -5638,10 +5638,10 @@ dev-perl/B-Hooks-OP-Check 0.220.0: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.190.0 0.210.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.190.0 1.210.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.320.0: PL_check hacks using Perl callbacks
-dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
+dev-perl/B-Utils 0.270.0 0.270.0-r1: Helper functions for op tree manipulation
 dev-perl/BDB 1.920.0: Asynchronous Berkeley DB access
-dev-perl/BSD-Resource 1.291.100: Perl module for BSD process resource limit and priority functions
-dev-perl/BSON 1.10.2: BSON serialization and deserialization
+dev-perl/BSD-Resource 1.291.100 1.291.100-r1: Perl module for BSD process resource limit and priority functions
+dev-perl/BSON 1.10.2 1.12.1: BSON serialization and deserialization
 dev-perl/BZ-Client 4.400.200: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
@@ -13557,10 +13557,10 @@ media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.8-r2 9999: Terminal-based YouTube player and downloader
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
-media-sound/mumble 1.3.0 9999: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/mumble 1.3.0 1.3.1_rc1 9999: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/munt-mt32emu-alsadrv 2.3.0: ALSA MIDI driver for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-sound/mup 6.6: Program for printing music scores
-media-sound/murmur 1.3.0 9999: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/murmur 1.3.0 1.3.1_rc1 9999: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musescore 3.4.2 9999: WYSIWYG Music Score Typesetter
@@ -13857,7 +13857,7 @@ media-video/rtmpdump 2.4_p20161210-r3 9999: RTMP client intended to stream audio
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/shotcut 19.12.31: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/simplescreenrecorder 0.3.11-r2 0.4.0 9999: A Simple Screen Recorder
+media-video/simplescreenrecorder 0.4.0 0.4.1 9999: A Simple Screen Recorder
 media-video/smplayer 18.6.0 19.5.0 19.5.0-r1 19.10.2: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 19.6.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
