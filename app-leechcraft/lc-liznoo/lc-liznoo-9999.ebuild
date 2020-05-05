@@ -24,3 +24,5 @@ RDEPEND="${DEPEND}
 	poweractions? ( sys-power/upower )
 	powerevents? ( || ( sys-auth/consolekit sys-auth/elogind sys-power/upower ) )
 "
+
+REQUIRED_USE="|| ( battery poweractions powerevents )"
