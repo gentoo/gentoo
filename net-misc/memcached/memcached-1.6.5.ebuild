@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.4.0-fix-as-needed-linking.patch"
 	"${FILESDIR}/${PN}-1.4.4-as-needed.patch"
 	"${FILESDIR}/${PN}-1.4.17-EWOULDBLOCK.patch"
+	"${FILESDIR}/${PN}-1.6.5-ia64.patch"
 )
 
 src_prepare() {
