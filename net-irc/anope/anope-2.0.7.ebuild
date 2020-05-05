@@ -33,9 +33,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/pid-patch.patch"
-	"${FILESDIR}/example.conf-user.patch"
-	"${FILESDIR}/musl-libintl.patch"
+	"${FILESDIR}/${PN}-2.0.6-example.conf-pid-path.patch"
+	"${FILESDIR}/${PN}-2.0.7-example.conf-user.patch"
+	"${FILESDIR}/${PN}-2.0.7-musl-libintl.patch"
 )
 
 S="${WORKDIR}/${P}-source"
