@@ -2459,7 +2459,7 @@ app-portage/layman 2.4.2-r1 2.4.3 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.2.4 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.2.4 0.2.5 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1 0.5.3-r2: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -5635,8 +5635,8 @@ dev-perl/B-Debug 1.260.0: Walk Perl syntax tree, printing debug info about ops
 dev-perl/B-Flags 0.170.0: Friendlier flags for B
 dev-perl/B-Hooks-EndOfScope 0.240.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.220.0: Wrap OP check callbacks
-dev-perl/B-Hooks-Parser 0.190.0: Interface to perls parser variables
-dev-perl/B-Keywords 1.190.0: Lists of reserved barewords and symbol names
+dev-perl/B-Hooks-Parser 0.190.0 0.210.0: Interface to perls parser variables
+dev-perl/B-Keywords 1.190.0 1.210.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.320.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BDB 1.920.0: Asynchronous Berkeley DB access
@@ -17409,7 +17409,7 @@ sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked agains
 sys-libs/libtermcap-compat 2.0.8-r3 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.2.1-r3 1.4.0: Portable and efficient API to determine the call-chain of a program
-sys-libs/liburing 0.5: Efficient I/O with io_uring
+sys-libs/liburing 0.5 0.6: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds
@@ -17864,7 +17864,7 @@ www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.8.3 1.10.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.53.1-r1 2.53.2_beta1: Seamonkey Web Browser
+www-client/seamonkey 2.53.1-r1 2.53.2: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
@@ -18761,7 +18761,7 @@ x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
-x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102 20200201 20200301 20200405: icon theme for Linux
+x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102 20200201 20200301 20200405 20200430: icon theme for Linux
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme

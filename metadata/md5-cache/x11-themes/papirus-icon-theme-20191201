@@ -7,4 +7,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/20191201.tar.gz -> papirus-icon-theme-20191201.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=55fb7c8a2af40b762ae737d33eb46fb1
+_md5_=b0d9962fe0d6513b68691e08db7a81f7

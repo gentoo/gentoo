@@ -1,0 +1,15 @@
+BDEPEND=>=dev-perl/B-Hooks-OP-Check-0.180.0 virtual/perl-XSLoader virtual/perl-parent >=dev-perl/ExtUtils-Depends-0.302.0 virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/B-Hooks-EndOfScope virtual/perl-File-Spec dev-perl/Test-Fatal virtual/perl-Test-Simple ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Interface to perls parser variables
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/B-Hooks-Parser
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/B-Hooks-OP-Check-0.180.0 virtual/perl-XSLoader virtual/perl-parent dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/B-Hooks-Parser-0.21.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=ed1e40cd233ea5e5ca0b4a2415422b3a

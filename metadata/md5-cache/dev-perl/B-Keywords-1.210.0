@@ -1,0 +1,13 @@
+BDEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Lists of reserved barewords and symbol names
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/B-Keywords
+KEYWORDS=~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RU/RURBAN/B-Keywords-1.21.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=d63902075c4ed0367244b9ec732bd685
