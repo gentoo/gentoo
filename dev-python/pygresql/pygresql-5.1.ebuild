@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/P/PyGreSQL/${MY_P}.tar.gz"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~sparc ~x86"
 
 DEPEND="${POSTGRES_DEP}"
 RDEPEND="${DEPEND}"
