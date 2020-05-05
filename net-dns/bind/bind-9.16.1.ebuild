@@ -82,6 +82,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}"
 
 # bug 479092, requires networking
+# bug 710840, cmocka fails LDFLAGS='-Wl,-O1'
 RESTRICT="test"
 
 pkg_setup() {
@@ -138,6 +139,7 @@ src_configure() {
 		--enable-full-report
 		--without-readline
 		--with-openssl="${EPREFIX}"/usr
+		--without-cmocka
 		$(use_enable caps linux-caps)
 		$(use_enable dnsrps)
 		$(use_enable dnstap)
