@@ -16,7 +16,7 @@ HOMEPAGE="https://kde.org/applications/utilities/org.kde.spectacle"
 LICENSE="LGPL-2+ handbook? ( FDL-1.3 ) kipi? ( GPL-2+ )"
 SLOT="5"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
-IUSE="kipi share"
+IUSE="kipi sendto"
 
 DEPEND="
 	>=kde-frameworks/kconfig-${KFMIN}:5
@@ -43,7 +43,7 @@ DEPEND="
 	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-image
 	kipi? ( >=kde-apps/libkipi-${PVCUT}:5= )
-	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
+	sendto? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 "
 RDEPEND="${DEPEND}
 	kipi? ( >=kde-apps/kipi-plugins-${PVCUT}:5 )
@@ -54,7 +54,7 @@ RESTRICT+=" test" # bug #711664
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package kipi KF5Kipi)
-		$(cmake_use_find_package share KF5Purpose)
+		$(cmake_use_find_package sendto KF5Purpose)
 	)
 	ecm_src_configure
 }

@@ -16,7 +16,7 @@ HOMEPAGE="https://kdenlive.org/en/"
 LICENSE="GPL-2"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
-IUSE="freesound gles2-only semantic-desktop share v4l"
+IUSE="freesound gles2-only semantic-desktop sendto v4l"
 
 BDEPEND="
 	sys-devel/gettext
@@ -59,7 +59,7 @@ DEPEND="
 	>=media-libs/mlt-6.20.0[ffmpeg,frei0r,kdenlive,melt,qt5,sdl,xml]
 	freesound? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 	semantic-desktop? ( >=kde-frameworks/kfilemetadata-${KFMIN}:5 )
-	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
+	sendto? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 	v4l? ( media-libs/libv4l )
 "
 RDEPEND="${DEPEND}
@@ -73,7 +73,7 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package freesound Qt5WebKitWidgets)
 		$(cmake_use_find_package semantic-desktop KF5FileMetaData)
-		$(cmake_use_find_package share KF5Purpose)
+		$(cmake_use_find_package sendto KF5Purpose)
 		$(cmake_use_find_package v4l LibV4L2)
 	)
 
