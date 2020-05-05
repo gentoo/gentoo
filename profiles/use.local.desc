@@ -5211,10 +5211,6 @@ net-analyzer/icinga2:nano-syntax - Adds support for syntax used in the nano edit
 net-analyzer/icinga2:plugins - Adds support for nagios plugins
 net-analyzer/ipsumdump:nanotimestamp - Enable timestamps with nano-second resolution
 net-analyzer/linkchecker:sqlite - Mozilla Bookmark parsing
-net-analyzer/metasploit:development - Install dependencies needed for metasploit and exploit development
-net-analyzer/metasploit:nexpose - Enable the plugin to integrate with nexpose
-net-analyzer/metasploit:oracle - Enable restricted oracle modules which have additional deps
-net-analyzer/metasploit:pcap - Enable libpcap for packet sniffing
 net-analyzer/mk-livestatus:boost - Use dev-libs/boost for ASIO support
 net-analyzer/mk-livestatus:nagios4 - Generate a net-analyzer/nagios-4 compatible plugin
 net-analyzer/mk-livestatus:re2 - Use dev-libs/re2 for regex support
