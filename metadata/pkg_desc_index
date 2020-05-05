@@ -5170,7 +5170,7 @@ dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libus
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0: A clean C Library for processing UTF-8 Unicode data
 dev-libs/libuv 1.35.0 1.37.0 9999: Cross-platform asychronous I/O
-dev-libs/libvarlink 16 18: C implementation of the Varlink protocol and command line tool
+dev-libs/libvarlink 16 18 19: C implementation of the Varlink protocol and command line tool
 dev-libs/libverto 0.2.5-r1 0.3.0 0.3.1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvoikko 4.3: Spell checking, hyphenation and morphological analysis tool for Finnish language
@@ -12432,7 +12432,7 @@ media-gfx/apng2gif 1.8: create a GIF from an APNG
 media-gfx/apngasm 2.91: create an APNG from multiple PNG files
 media-gfx/apngdis 2.9: extract PNG frames from an APNG
 media-gfx/apngopt 1.4: optimize APNG images
-media-gfx/argyllcms 2.1.1 2.1.1-r1 2.1.2: Open source, ICC compatible color management system
+media-gfx/argyllcms 2.1.2 2.1.2-r1: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
 media-gfx/asymptote 2.61 2.62 2.65: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C

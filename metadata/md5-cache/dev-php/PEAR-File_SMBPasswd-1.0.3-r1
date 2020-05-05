@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Class for managing SAMBA style password files
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/File_SMBPasswd
-KEYWORDS=amd64 ~hppa ~sparc ~x86
+KEYWORDS=amd64 ~hppa ~ia64 ~sparc ~x86
 LICENSE=BSD
 RDEPEND=>=dev-lang/php-5.3:* >=dev-php/PEAR-Crypt_CHAP-1.0.0 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/File_SMBPasswd-1.0.3.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=26332c263236daa8412c09bbe1ff9822
+_md5_=7ae34c2d61890e816744556dbd373add
