@@ -73,14 +73,3 @@ src_install() {
 	use static-libs || rm -rf "${D}"/usr/$(get_libdir)/*.{,l}a || die
 
 }
-
-pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} < 2.0 ]]; then
-		ewarn "!! IMPORTANT !!"
-		ewarn " "
-		ewarn "Migrating from a previous version of corosync can be dangerous !"
-		ewarn " "
-		ewarn "Make sure you backup your cluster configuration before proceeding"
-		ewarn " "
-	fi
-}
