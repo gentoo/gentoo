@@ -82,7 +82,7 @@ SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
 	https://github.com/gentoo/portage/commit/9738a404e876270cbdef2514f66915bce35d7435.patch -> portage-2.3.89-bug-718578.patch"
 
 pkg_pretend() {
-	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS"
+	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
 
 	check_extra_config
 }
