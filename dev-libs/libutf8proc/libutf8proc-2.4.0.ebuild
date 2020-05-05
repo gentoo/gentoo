@@ -1,14 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 inherit toolchain-funcs
 
-MY_P="${P#lib}"
-DESCRIPTION="mapping tool for UTF-8 strings"
+DESCRIPTION="A clean C Library for processing UTF-8 Unicode data"
 HOMEPAGE="https://github.com/JuliaStrings/utf8proc"
-SRC_URI="https://github.com/JuliaStrings/utf8proc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JuliaStrings/${PN#lib}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
@@ -16,9 +15,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-cyg
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-S="${WORKDIR}/${MY_P}"
-
 BDEPEND="test? ( =app-i18n/unicode-data-12.0* )"
+
+S="${WORKDIR}/${P#lib}"
 
 PATCHES=(
 	# Don't build or install static libs
@@ -27,18 +26,17 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-tests-nofetch.patch"
 )
 
-_emake() {
-	emake CC=$(tc-getCC) AR=$(tc-getAR) "$@"
-}
-
 src_compile() {
-	_emake
+	emake \
+		AR="$(tc-getAR)" \
+		CC="$(tc-getCC)"
 }
 
 src_install() {
-	_emake DESTDIR="${D}" \
-		prefix="${EPREFIX}/usr" \
-		libdir="${EPREFIX}/usr/$(get_libdir)" \
+	emake \
+		DESTDIR="${ED}" \
+		prefix="/usr" \
+		libdir="/usr/$(get_libdir)" \
 		install
 	# This package used to use netsurf's version as an upstream, which lives in
 	# its own little world. Unlike julia's version, it puts its header file
@@ -50,5 +48,5 @@ src_install() {
 }
 
 src_test() {
-	_emake check
+	emake CC="$(tc-getCC)" check
 }
