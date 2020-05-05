@@ -36,8 +36,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-
-	eaclocal && eautomake
+	eautoreconf
 }
 
 src_configure() {
