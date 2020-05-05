@@ -14,6 +14,6 @@ IUSE="debug"
 DEPEND="~app-leechcraft/lc-core-${PV}
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	media-libs/liblastfm:=
+	media-libs/liblastfm
 "
 RDEPEND="${DEPEND}"
