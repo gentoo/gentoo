@@ -738,57 +738,6 @@ app-antivirus/clamav-unofficial-sigs
 # Masked for removal in 30 days, bug #715226
 media-fonts/symbola
 
-# Hans de Graaff <graaff@gentoo.org> (2020-03-29)
-# Old ruby24-only rails version that is no longer supported upstream
-# and has known security issues, including dependencies and slots
-# specific to Rails 4.2.
-# Migrate to Rails 5.2.
-# Masked for removal in 30 days.
-dev-ruby/rails:4.2
-dev-ruby/railties:4.2
-dev-ruby/activerecord:4.2
-dev-ruby/actionmailer:4.2
-dev-ruby/actionpack:4.2
-dev-ruby/actionview:4.2
-dev-ruby/activejob:4.2
-dev-ruby/activemodel:4.2
-dev-ruby/activesupport:4.2
-dev-ruby/arel:6.0
-dev-ruby/actionpack-xml_parser:0
-dev-ruby/jquery-rails:3
-dev-ruby/postgres_ext
-dev-ruby/protected_attributes
-dev-ruby/rails-dom-testing:1
-dev-ruby/web-console:0
-# Metasploit is a reverse dependency on Rails 4.2 Upstream shows no
-# sign of moving to a supported Rails version. Metasploit will most
-# likely be moved to an overlay.
-dev-ruby/metasploit-concern
-dev-ruby/metasploit-credential
-dev-ruby/metasploit-payloads
-dev-ruby/metasploit_payloads-mettle
-dev-ruby/metasploit-model
-dev-ruby/metasploit_data_models
-net-analyzer/metasploit
-dev-ruby/rex-arch
-dev-ruby/rex-bin_tools
-dev-ruby/rex-core
-dev-ruby/rex-encoder
-dev-ruby/rex-exploitation
-dev-ruby/rex-java
-dev-ruby/rex-mime
-dev-ruby/rex-nop
-dev-ruby/rex-ole
-dev-ruby/rex-powershell
-dev-ruby/rex-random_identifier
-dev-ruby/rex-registry
-dev-ruby/rex-rop_builder
-dev-ruby/rex-socket
-dev-ruby/rex-sslscan
-dev-ruby/rex-struct2
-dev-ruby/rex-text
-dev-ruby/rex-zip
-
 # Michał Górny <mgorny@gentoo.org> (2020-03-29)
 # Unmaintained, seriously outdated, vulnerable.  Multiple bugs reported.
 # Stuck on Python 3.6.
