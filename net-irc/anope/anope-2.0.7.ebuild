@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/pid-patch.patch"
 	"${FILESDIR}/example.conf-user.patch"
+	"${FILESDIR}/musl-libintl.patch"
 )
 
 S="${WORKDIR}/${P}-source"
@@ -65,8 +66,6 @@ src_prepare() {
 	# Any SQL implementation
 	if use sql ; then
 	   anope_enable_mod "m_sql_authentication.cpp"
-	   anope_enable_mod "m_sql.cpp"
-	   anope_enable_mod "m_sql_live.cpp"
 	fi
 
 	if use ldap ; then
