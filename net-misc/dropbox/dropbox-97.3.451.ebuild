@@ -66,7 +66,7 @@ src_prepare() {
 	if use X ; then
 		mv images/hicolor/16x16/status "${T}" || die
 	else
-		rm -vrf PyQt5* *pyqt5* images || die
+		rm -vrf images || die
 	fi
 	if use librsync-bundled ; then
 		patchelf --set-rpath '$ORIGIN' librsyncffi_native.*.so || die
