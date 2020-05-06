@@ -20,7 +20,6 @@ IUSE="doc"
 RDEPEND=">=dev-python/requests-2.6[${PYTHON_USEDEP}]"
 DEPEND="
 	app-arch/unzip
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 # Testsuite excels in tests connecting to the network via local server daemons
