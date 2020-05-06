@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
+# No keywords
+dev-python/werkzeug test
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-28)
 # Requires www-client/firefox which isn't available on sparc
 dev-ruby/capybara test
