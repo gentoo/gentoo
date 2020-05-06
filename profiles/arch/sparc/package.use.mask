@@ -4,6 +4,7 @@
 # Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
 # No keywords
 dev-python/werkzeug test
+dev-python/urllib3 test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-28)
 # Requires www-client/firefox which isn't available on sparc
