@@ -10,7 +10,4 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sp
 # depend on SLOT 0 of linux-headers, because kernel-2.eclass
 # sets a different SLOT for cross-building
 RDEPEND="
-	|| (
-		kernel_linux? ( sys-kernel/linux-headers:0 )
-		!prefix? ( sys-freebsd/freebsd-lib )
-	)"
+	kernel_linux? ( sys-kernel/linux-headers:0 )"

@@ -17,7 +17,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x
 IUSE="nls"
 
 RDEPEND="
-	!sys-freebsd/freebsd-bin
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )

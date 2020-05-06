@@ -25,9 +25,6 @@ DEPEND="
 		static? ( sys-libs/libcap-ng[static-libs] )
 		!static? ( sys-libs/libcap-ng )
 	)
-	kernel_FreeBSD? (
-		sys-freebsd/freebsd-lib[usb]
-	)
 	selinux? (
 		sys-libs/libselinux
 	)"

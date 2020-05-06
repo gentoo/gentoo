@@ -21,5 +21,4 @@ RDEPEND="!prefix-guest? (
 		!sys-libs/musl
 		!sys-libs/uclibc-ng
 		!sys-libs/uclibc
-		!sys-freebsd/freebsd-lib
 	)"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,10 +20,7 @@ RDEPEND="
 		sanitize? ( ~sys-libs/compiler-rt-sanitizers-${PV}:${SLOT} )
 	)
 	crt? (
-		|| (
-			sys-libs/netbsd-csu[${MULTILIB_USEDEP}]
-			sys-freebsd/freebsd-lib[${MULTILIB_USEDEP}]
-		)
+		sys-libs/netbsd-csu[${MULTILIB_USEDEP}]
 	)
 	libcxx? ( >=sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
 	openmp? ( >=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )"
