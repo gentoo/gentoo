@@ -48,7 +48,6 @@ RDEPEND="
 			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		)
 	)
-	elibc_FreeBSD? ( sys-freebsd/freebsd-bin )
 	elibc_glibc? ( >=sys-apps/sandbox-2.2 )
 	elibc_musl? ( >=sys-apps/sandbox-2.2 )
 	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
