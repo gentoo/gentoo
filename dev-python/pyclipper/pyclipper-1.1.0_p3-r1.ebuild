@@ -20,7 +20,10 @@ BDEPEND="
 	dev-python/setuptools-git[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest-runner[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/pytest-runner[${PYTHON_USEDEP}]
+		dev-python/unittest2[${PYTHON_USEDEP}]
+	)
 "
 RDEPEND=""
 DEPEND=""
