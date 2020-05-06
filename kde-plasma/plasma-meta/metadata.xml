@@ -15,6 +15,7 @@
 		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
 		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
 		<flag name="gtk">Enable Breeze widget style and system settings module for GTK+</flag>
+		<flag name="kwallet">Enable support for KWallet auto-unlocking via <pkg>kde-plasma/kwallet-pam</pkg></flag>
 		<flag name="legacy-systray">Add support for legacy applications using <pkg>kde-plasma/xembed-sni-proxy</pkg></flag>
 		<flag name="pam">Enable support for kwallet auto-unlocking</flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>

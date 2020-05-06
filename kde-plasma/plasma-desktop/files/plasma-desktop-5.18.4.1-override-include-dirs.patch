@@ -1,0 +1,85 @@
+From b11915786a97f55074b7bfe4eec6f3c5cc08ae78 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 6 Apr 2020 00:41:07 +0200
+Subject: [PATCH 1/2] cmake modules: Allow include dir overrides for various
+ input drivers
+
+FindEvdev - evdev-properties.h
+FindSynaptics - synaptics-properties.h
+FindXorgLibinput - libinput-properties.h
+
+Hint: Dependency for touchpad (Synaptics): xserver-properties.h (xorg-server)
+---
+ cmake/modules/FindEvdev.cmake        | 4 ++++
+ cmake/modules/FindSynaptics.cmake    | 4 ++++
+ cmake/modules/FindXorgLibinput.cmake | 4 ++++
+ 3 files changed, 12 insertions(+)
+
+diff --git a/cmake/modules/FindEvdev.cmake b/cmake/modules/FindEvdev.cmake
+index 153128a90..c19c31a96 100644
+--- a/cmake/modules/FindEvdev.cmake
++++ b/cmake/modules/FindEvdev.cmake
+@@ -31,6 +31,8 @@
+ # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ # SUCH DAMAGE.
+ 
++if(NOT Evdev_INCLUDE_DIRS)
++
+ find_package(PkgConfig)
+ pkg_check_modules(PC_EVDEV xorg-evdev>=2.8.99.1)
+ 
+@@ -39,6 +41,8 @@ find_path(Evdev_INCLUDE_DIRS
+     HINTS ${PC_EVDEV_INCLUDE_DIRS} ${PC_EVDEV_INCLUDEDIR}
+ )
+ 
++endif()
++
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(Evdev REQUIRED_VARS Evdev_INCLUDE_DIRS)
+ 
+diff --git a/cmake/modules/FindSynaptics.cmake b/cmake/modules/FindSynaptics.cmake
+index fb5f9bc3e..eb56965e0 100644
+--- a/cmake/modules/FindSynaptics.cmake
++++ b/cmake/modules/FindSynaptics.cmake
+@@ -31,6 +31,8 @@
+ # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ # SUCH DAMAGE.
+ 
++if(NOT Synaptics_INCLUDE_DIRS)
++
+ find_package(PkgConfig)
+ pkg_check_modules(PC_SYNAPTICS xorg-synaptics)
+ 
+@@ -39,6 +41,8 @@ find_path(Synaptics_INCLUDE_DIRS
+     HINTS ${PC_SYNAPTICS_INCLUDE_DIRS} ${PC_SYNAPTICS_INCLUDEDIR}
+ )
+ 
++endif()
++
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(Synaptics REQUIRED_VARS Synaptics_INCLUDE_DIRS)
+ 
+diff --git a/cmake/modules/FindXorgLibinput.cmake b/cmake/modules/FindXorgLibinput.cmake
+index 1550751ae..5b7af5e79 100644
+--- a/cmake/modules/FindXorgLibinput.cmake
++++ b/cmake/modules/FindXorgLibinput.cmake
+@@ -31,6 +31,8 @@
+ # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ # SUCH DAMAGE.
+ 
++if(NOT XORGLIBINPUT_INCLUDE_DIRS)
++
+ find_package(PkgConfig)
+ pkg_check_modules(PC_XORGLIBINPUT xorg-libinput)
+ 
+@@ -39,6 +41,8 @@ find_path(XORGLIBINPUT_INCLUDE_DIRS
+     HINTS ${PC_XORGLIBINPUT_INCLUDE_DIRS} ${PC_XORGLIBINPUT_INCLUDEDIR}
+ )
+ 
++endif()
++
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(XorgLibinput REQUIRED_VARS XORGLIBINPUT_INCLUDE_DIRS)
+ 
+-- 
+2.26.2
