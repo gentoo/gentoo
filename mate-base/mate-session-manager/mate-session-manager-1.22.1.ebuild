@@ -14,7 +14,7 @@ HOMEPAGE="https://mate-desktop.org/"
 
 LICENSE="GPL-2+ GPL-3+ HPND LGPL-2+ LGPL-2.1+"
 SLOT="0"
-IUSE="debug elibc_FreeBSD elogind gnome-keyring ipv6 systemd +xtrans"
+IUSE="debug elogind gnome-keyring ipv6 systemd +xtrans"
 
 REQUIRED_USE="?? ( elogind systemd )"
 
@@ -38,7 +38,6 @@ COMMON_DEPEND="
 	x11-libs/libXtst
 	x11-libs/pango
 	virtual/libintl
-	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	systemd? ( sys-apps/systemd )
 	!systemd? (
 		elogind? ( sys-auth/elogind )
