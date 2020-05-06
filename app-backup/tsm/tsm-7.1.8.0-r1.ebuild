@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit versionator multilib eutils readme.gentoo-r1 rpm systemd user pax-utils
+inherit versionator multilib eutils readme.gentoo-r1 rpm systemd pax-utils
 
 DESCRIPTION="IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API"
 HOMEPAGE="https://www.ibm.com/us-en/marketplace/data-protection-and-recovery"
@@ -50,8 +50,11 @@ ${MY_LANG_PV}TIVsm-msg.${lang#*:}.x86_64.rpm )"
 done
 unset lang
 
-DEPEND=""
+DEPEND="
+	acct-group/tsm
+"
 RDEPEND="
+	acct-group/tsm
 	dev-libs/expat
 	dev-libs/libxml2
 	sys-fs/fuse:0
@@ -62,7 +65,6 @@ RDEPEND="
 S="${WORKDIR}/bacli"
 
 pkg_setup() {
-	enewgroup tsm
 	DOC_CONTENTS="
 		Note that you have to be root to be able to use the Tivoli Storage Manager
 		client. The dsmtca trusted agent binary does not exist anymore.
@@ -193,7 +195,6 @@ src_install() {
 	echo 'DSM_CONFIG="/etc/tivoli/dsm.opt"' >> ${ENV_FILE}
 	echo 'DSM_DIR="/opt/tivoli/tsm/client/ba/bin"' >> ${ENV_FILE}
 	echo 'DSM_LOG="/var/log/tsm"' >> ${ENV_FILE}
-	echo 'ROOTPATH="/opt/tivoli/tsm/client/ba/bin"' >> ${ENV_FILE}
 
 	echo 'SEARCH_DIRS_MASK="/opt/tivoli/tsm/client/ba/bin"' > "${T}/80${PN}" || die
 	insinto "/etc/revdep-rebuild"
