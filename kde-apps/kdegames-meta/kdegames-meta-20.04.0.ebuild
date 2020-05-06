@@ -8,7 +8,7 @@ HOMEPAGE="https://games.kde.org/"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="opengl python"
 
 RDEPEND="

@@ -8,7 +8,7 @@ HOMEPAGE="https://kde.org/applications/utilities https://utils.kde.org"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="7zip cups floppy gpg lrz rar +webengine"
 
 RDEPEND="

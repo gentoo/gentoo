@@ -15,7 +15,7 @@ HOMEPAGE="https://kde.org/applications/utilities/org.kde.spectacle"
 
 LICENSE="LGPL-2+ handbook? ( FDL-1.3 ) kipi? ( GPL-2+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="kipi share"
 
 DEPEND="

@@ -14,7 +14,7 @@ HOMEPAGE="https://kde.org/applications/games/org.kde.granatier"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="

@@ -9,7 +9,7 @@ https://multimedia.kde.org/"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+cdrom +ffmpeg gstreamer"
 
 RDEPEND="

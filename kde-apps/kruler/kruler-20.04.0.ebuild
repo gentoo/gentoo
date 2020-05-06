@@ -13,7 +13,7 @@ HOMEPAGE="https://kde.org/applications/graphics/org.kde.kruler"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="X"
 
 DEPEND="

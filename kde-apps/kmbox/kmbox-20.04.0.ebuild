@@ -11,7 +11,7 @@ DESCRIPTION="Library for accessing MBox format mail storages"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND=">=kde-apps/kmime-${PVCUT}:5"
