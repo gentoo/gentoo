@@ -1,0 +1,15 @@
+BDEPEND=virtual/perl-Carp virtual/perl-Encode virtual/perl-Exporter >=virtual/perl-File-Spec-0.820.0 >=virtual/perl-File-Temp-0.170.0 >=dev-perl/HTML-Parser-3.690.0 virtual/perl-if >=virtual/perl-parent-0.225.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-IO >=dev-perl/Test-Deep-0.110.0 dev-perl/Test-NoWarnings >=virtual/perl-Test-Simple-0.980.0 >=dev-perl/Test-Warn-0.300.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Simple Common Gateway Interface Class
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/CGI
+IUSE=test examples
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=Artistic-2
+RDEPEND=virtual/perl-Carp virtual/perl-Encode virtual/perl-Exporter >=virtual/perl-File-Spec-0.820.0 >=virtual/perl-File-Temp-0.170.0 >=dev-perl/HTML-Parser-3.690.0 virtual/perl-if >=virtual/perl-parent-0.225.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LE/LEEJO/CGI-4.47.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=32b4884168692c2270493d41855d21c6
