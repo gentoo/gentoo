@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-05-06)
+# Bumped independently of the rest of GNOME.  Feel free to unmask
+# if you don't plan on using other eds revdeps.
+>=gnome-extra/evolution-data-server-3.36.2
+>=gnome-extra/evolution-ews-3.36.2
+>=mail-client/evolution-3.36.2
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
 # Last release in 2015, not compatible with >=media-gfx/gimp-2.10.0
 # Masked for removal in 30 days.
