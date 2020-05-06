@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Manipulate netblock lists in CIDR notation"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 hppa ~mips ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 hppa ~mips ppc ~ppc64 x86"
 IUSE=""
 
 RDEPEND="
