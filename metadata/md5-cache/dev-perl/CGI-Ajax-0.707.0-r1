@@ -1,0 +1,15 @@
+BDEPEND=dev-perl/CGI dev-perl/Class-Accessor test? ( virtual/perl-Test-Simple ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=a perl-specific system for writing Asynchronous web applications
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/CGI-Ajax
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/CGI dev-perl/Class-Accessor dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BP/BPEDERSE/CGI-Ajax-0.707.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=d28782ab24e9a921c659802c52d64aee
