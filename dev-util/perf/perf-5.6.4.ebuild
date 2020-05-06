@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
-inherit bash-completion-r1 estack eutils llvm toolchain-funcs python-r1 linux-info
+inherit bash-completion-r1 estack eutils llvm toolchain-funcs prefix python-r1 linux-info
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-pre/-git}"
@@ -76,7 +76,7 @@ S="${S_K}/tools/perf"
 CONFIG_CHECK="~PERF_EVENTS ~KALLSYMS"
 
 pkg_setup() {
-	LLVM_MAX_SLOT=9 llvm_pkg_setup
+	use clang && LLVM_MAX_SLOT=9 llvm_pkg_setup
 }
 
 src_unpack() {
@@ -130,6 +130,11 @@ src_prepare() {
 
 	# The code likes to compile local assembly files which lack ELF markings.
 	find -name '*.S' -exec sed -i '$a.section .note.GNU-stack,"",%progbits' {} +
+
+	# Fix shebang to use python from prefix
+	if [[ -n "${EPREFIX}" ]]; then
+		hprefixify ${S_K}/scripts/bpf_helpers_doc.py
+	fi
 }
 
 puse() { usex $1 "" no; }

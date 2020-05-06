@@ -64,11 +64,6 @@ app-mobilephone/ganyremote
 # Stuck on Python 2 and pygtk. Masked for removal in 30 days.
 app-office/pybliographer
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-01)
-# Wrongly adds '-*' to USE causing catastrophic system breakage.
-# Bug #649416.
-<app-portage/ufed-0.96
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Requires <OpenSSL-1.1.x. Please migrate to
 # >=dev-db/mysql-5.7. Masked for removal in 30 days.

@@ -25,14 +25,13 @@ SRC_URI+="
 	"${uri}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_amd64.deb"
 "
 done
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
-	gnome-base/gconf:2
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype
