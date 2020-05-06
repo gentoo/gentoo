@@ -8,6 +8,10 @@
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>amadio@gentoo.org</email>
+		<name>Guilherme Amadio</name>
+	</maintainer>
 	<use>
 		<flag name="clang">Enable builtin clang and LLVM support</flag>
 		<flag name="demangle">
