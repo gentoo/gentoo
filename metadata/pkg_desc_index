@@ -9008,7 +9008,7 @@ dev-qt/pixeltool 5.13.2 5.14.1 5.14.2: Qt screen magnifier
 dev-qt/qdbus 5.13.2 5.14.1 5.14.2: Interface to Qt applications communicating over D-Bus
 dev-qt/qdbusviewer 5.13.2 5.14.1 5.14.2: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.13.2 5.14.1 5.14.2: Qt documentation generator
-dev-qt/qt-creator 4.8.2 4.10.1 9999: Lightweight IDE for C++/QML development centering around Qt
+dev-qt/qt-creator 4.8.2 4.10.1 4.12.0 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.13.2_p201910220817 5.14.1_p202001241012 5.14.2_p202003291239: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qt3d 5.14.1-r1 5.14.2: 3D rendering module for the Qt5 framework
 dev-qt/qtbluetooth 5.13.2 5.14.1 5.14.2: Bluetooth support library for the Qt5 framework
