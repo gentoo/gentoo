@@ -2110,7 +2110,7 @@ app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
 app-misc/evemu 2.6.0 2.7.0: tools and bindings for kernel evdev device emulation, data capture, and replay
 app-misc/evtest 1.33 1.34: test program for capturing input device events
-app-misc/faq 0.0.2: Format agnostic jQ
+app-misc/faq 0.0.6: Format agnostic jQ
 app-misc/fdupes 1.5.1 1.6.1 1.6.1-r1 9999: Identify/delete duplicate files residing within specified directories
 app-misc/fdutils 5.5.20060227 5.5.20060227-r1: utilities for configuring and debugging the Linux floppy driver
 app-misc/fhem 5.9-r1 6.0: A GPL'd perl server for house automation
@@ -5631,6 +5631,7 @@ dev-perl/Authen-SCRAM 0.11.0 0.11.0-r1: Salted Challenge Response Authentication
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1 1.20.0-r2: Container for the AutoXS header files
+dev-perl/B-COW 0.4.0: additional B helpers to check COW status
 dev-perl/B-Debug 1.260.0: Walk Perl syntax tree, printing debug info about ops
 dev-perl/B-Flags 0.170.0: Friendlier flags for B
 dev-perl/B-Hooks-EndOfScope 0.240.0: Execute code after a scope finished compilation
@@ -5663,7 +5664,7 @@ dev-perl/Business-ISSN 1.3.0 1.4.0: Object and functions to work with Internatio
 dev-perl/Business-Tax-VAT-Validation 1.110.0 1.120.0: A class for european VAT numbers validation
 dev-perl/Business-UPS 2.10.0-r1 2.10.0-r2: A UPS Interface Module
 dev-perl/CBOR-XS 1.700.0 1.710.0: Concise Binary Object Representation (CBOR, RFC7049)
-dev-perl/CDB_File 0.990.0: Tie to CDB (Bernstein's constant DB) files
+dev-perl/CDB_File 0.990.0 1.20.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r2: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
@@ -15367,7 +15368,7 @@ net-wireless/srslte 19.09: Open source SDR LTE software suite from Software Radi
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.10.3.0 3.11.0.0 3.12.0.0 3.13.0.1 3.13.1.0 3.14.0.0 3.14.1.1 3.15.0.0-r1: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 5.6.42-r1 5.12.35 5.12.66 5.13.10 5.13.18: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 5.6.42-r1 5.12.35 5.12.66 5.13.18 5.13.22: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.8.4 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.6 0.8.0: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
@@ -18869,7 +18870,7 @@ xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.3 4.14.4 4.15.2: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.1 4.14.2: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.2 4.14.3 4.15.0: Configuration system for the Xfce desktop environment
-xfce-base/xfconf 4.14.1: A configuration management system for Xfce
+xfce-base/xfconf 4.14.1 4.14.3: A configuration management system for Xfce
 xfce-base/xfdesktop 4.14.2: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.14.0-r1 4.14.2: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
