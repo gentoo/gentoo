@@ -76,7 +76,7 @@ S="${S_K}/tools/perf"
 CONFIG_CHECK="~PERF_EVENTS ~KALLSYMS"
 
 pkg_setup() {
-	LLVM_MAX_SLOT=9 llvm_pkg_setup
+	use clang && LLVM_MAX_SLOT=9 llvm_pkg_setup
 }
 
 src_unpack() {
