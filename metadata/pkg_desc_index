@@ -1782,7 +1782,7 @@ app-forensics/radamsa 0.6: A general purpose fuzzer
 app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.6-r1: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/scalpel 2.0: A high performance file carver
-app-forensics/sleuthkit 4.5.0 4.6.5 4.6.6 4.6.7 4.7.0 4.8.0: A collection of file system and media management forensic analysis tools
+app-forensics/sleuthkit 4.5.0 4.6.5 4.6.6 4.6.7 4.7.0 4.8.0 4.9.0: A collection of file system and media management forensic analysis tools
 app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
 app-forensics/volatility 2.6-r1: Framework for analyzing volatile memory
 app-forensics/yasat 848: Security and system auditing tool
