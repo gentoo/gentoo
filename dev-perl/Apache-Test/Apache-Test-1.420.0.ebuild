@@ -11,7 +11,7 @@ DESCRIPTION="Test.pm wrapper with helpers for testing Apache"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc ~ppc64 sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc ppc64 sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
