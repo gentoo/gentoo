@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ EGO_VENDOR=(
 	"gopkg.in/yaml.v2 v2.2.1 github.com/go-yaml/yaml"
 )
 
-inherit linux-info golang-vcs-snapshot user
+inherit linux-info golang-vcs-snapshot
 
 EGO_PN="github.com/rafaelmartins/simplevirt"
 GIT_COMMIT="78d29d8fa11ce72af5f897430af7bb7d2947a32f"
@@ -30,18 +30,13 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="
+	acct-group/simplevirt
 	virtual/logger
 	app-emulation/qemu"
 
 CONFIG_CHECK="~TUN ~BRIDGE"
 ERROR_TUN="CONFIG_TUN: Universal TUN/TAP driver required to setup bridge networking"
 ERROR_BRIDGE="CONFIG_BRIDGE: 802.1d Ethernet Bridging required to setup bridge networking"
-
-pkg_setup() {
-	enewgroup simplevirt
-
-	linux-info_pkg_setup
-}
 
 src_compile() {
 	pushd src/${EGO_PN} > /dev/null || die

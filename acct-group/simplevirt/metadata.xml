@@ -5,11 +5,4 @@
 		<email>rafaelmartins@gentoo.org</email>
 		<name>Rafael G. Martins</name>
 	</maintainer>
-	<upstream>
-		<maintainer status="active">
-			<email>rafael@rafaelmartins.eng.br</email>
-			<name>Rafael G. Martins</name>
-		</maintainer>
-		<remote-id type="github">rafaelmartins/simplevirt</remote-id>
-	</upstream>
 </pkgmetadata>
