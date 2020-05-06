@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3 autotools
 else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 VPNC_VER=20200226
 SRC_URI="${ARCHIVE_URI}
@@ -37,7 +37,7 @@ DEPEND="
 		app-crypt/trousers
 		app-misc/ca-certificates
 		dev-libs/nettle
-		>=net-libs/gnutls-3:0=[static-libs?]
+		>=net-libs/gnutls-3.6.13:0=[static-libs?]
 	)
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )

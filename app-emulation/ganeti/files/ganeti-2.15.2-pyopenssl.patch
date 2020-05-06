@@ -1,0 +1,33 @@
+--- a/lib/http/__init__.py
++++ b/lib/http/__init__.py
+@@ -88,6 +88,12 @@
+ # send/receive quantum
+ SOCK_BUF_SIZE = 32768
+ 
++# OpenSSL.SSL.ConnectionType was deprecated in pyopenssl-19.1.0:
++try:
++    ssl_conn_type = OpenSSL.SSL.Connection
++except AttributeError:
++    ssl_conn_type = OpenSSL.SSL.ConnectionType
++
+ 
+ class HttpError(Exception):
+   """Internal exception for HTTP errors.
+@@ -377,7 +383,7 @@
+ 
+   # Handshake is only supported by SSL sockets
+   if (op == SOCKOP_HANDSHAKE and
+-      not isinstance(sock, OpenSSL.SSL.ConnectionType)):
++      not isinstance(sock, ssl_conn_type)):
+     return
+ 
+   # No override by default
+@@ -414,7 +420,7 @@
+           return sock.recv(arg1)
+ 
+         elif op == SOCKOP_SHUTDOWN:
+-          if isinstance(sock, OpenSSL.SSL.ConnectionType):
++          if isinstance(sock, ssl_conn_type):
+             # PyOpenSSL's shutdown() doesn't take arguments
+             return sock.shutdown()
+           else:

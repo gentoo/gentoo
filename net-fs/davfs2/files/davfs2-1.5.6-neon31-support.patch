@@ -1,0 +1,45 @@
+Update configure to support neon-0.31.1
+Bug: https://bugs.gentoo.org/719954
+
+--- a/configure
++++ b/configure
+@@ -6800,7 +6800,7 @@
+ $as_echo "$ne_cv_lib_neon" >&6; }
+     if test "$ne_cv_lib_neon" = "yes"; then
+        ne_cv_lib_neonver=no
+-       for v in 27 28 29 30; do
++       for v in 27 28 29 30 31; do
+           case $ne_libver in
+           0.$v.*) ne_cv_lib_neonver=yes ;;
+           esac
+@@ -6983,8 +6983,8 @@
+     neon_got_library=yes
+ 
+ else
+-    { $as_echo "$as_me:${as_lineno-$LINENO}: incompatible neon library version $ne_libver: wanted 0.27 28 29 30" >&5
+-$as_echo "$as_me: incompatible neon library version $ne_libver: wanted 0.27 28 29 30" >&6;}
++    { $as_echo "$as_me:${as_lineno-$LINENO}: incompatible neon library version $ne_libver: wanted 0.27 28 29 30 31" >&5
++$as_echo "$as_me: incompatible neon library version $ne_libver: wanted 0.27 28 29 30 31" >&6;}
+     neon_got_library=no
+ fi
+ 
+@@ -7040,7 +7040,7 @@
+ $as_echo "$ne_cv_lib_neon" >&6; }
+     if test "$ne_cv_lib_neon" = "yes"; then
+        ne_cv_lib_neonver=no
+-       for v in 27 28 29 30; do
++       for v in 27 28 29 30 31; do
+           case $ne_libver in
+           0.$v.*) ne_cv_lib_neonver=yes ;;
+           esac
+@@ -7223,8 +7223,8 @@
+     neon_got_library=yes
+ 
+ else
+-    { $as_echo "$as_me:${as_lineno-$LINENO}: incompatible neon library version $ne_libver: wanted 0.27 28 29 30" >&5
+-$as_echo "$as_me: incompatible neon library version $ne_libver: wanted 0.27 28 29 30" >&6;}
++    { $as_echo "$as_me:${as_lineno-$LINENO}: incompatible neon library version $ne_libver: wanted 0.27 28 29 30 31" >&5
++$as_echo "$as_me: incompatible neon library version $ne_libver: wanted 0.27 28 29 30 31" >&6;}
+     neon_got_library=no
+ fi
+ 

@@ -27,11 +27,15 @@ RDEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	# Let the package manager handle man page compression
-	sed -e '/^manual[58]_DATA/ s/\.gz//g' \
-		-i "${S}"/man/Makefile.in || die
+	local f
 
-	eapply "${FILESDIR}"/${PN}-1.5.5-gcc-10.patch
+	# Let the package manager handle man page compression
+	while IFS="" read -d $'\0' -r f ; do
+		sed -e '/^manual[58]_DATA/ s/[.]gz//g' -i "${f}" || die
+	done < <(find "${S}"/man -type f -name 'Makefile.in' -print0)
+
+	eapply "${FILESDIR}"/${PN}-1.5.5-gcc-10.patch \
+		   "${FILESDIR}"/${P}-neon31-support.patch
 
 	default
 }
