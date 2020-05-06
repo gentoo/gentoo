@@ -37,7 +37,7 @@ DEPEND="
 		app-crypt/trousers
 		app-misc/ca-certificates
 		dev-libs/nettle
-		>=net-libs/gnutls-3:0=[static-libs?]
+		>=net-libs/gnutls-3.6.13:0=[static-libs?]
 	)
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )
