@@ -11,7 +11,7 @@ SRC_URI="https://github.com/BelledonneCommunications/bcg729/archive/${PV/_/-}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="static-libs"
 
 RDEPEND="
