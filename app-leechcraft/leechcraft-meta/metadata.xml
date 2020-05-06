@@ -9,8 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>LeechCraft full package including all official plugins which are considered to be useful.</longdescription>
 	<use>
-		<flag name="de">Install components, that allow using Leechcraft as Desktop Environment</flag>
+		<flag name="de">Install components that allow using LeechCraft as Desktop Environment</flag>
 	</use>
 </pkgmetadata>
