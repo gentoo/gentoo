@@ -170,6 +170,7 @@ acct-group/telegraf 0: System group: telegraf
 acct-group/tor 0: group for tor daemon
 acct-group/tox 0: Group management for package net-libs/tox
 acct-group/transmission 0: System group: transmission
+acct-group/tsm 0: System group: tsm
 acct-group/tss 0: Trusted Software Stack for TPMs group
 acct-group/tty 0: System group: tty
 acct-group/turnserver 0: A group for a turn server like coturn
@@ -746,7 +747,7 @@ app-backup/snapper 0.5.6-r1 0.8.6 0.8.7: Command-line program for btrfs and lvm 
 app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and sharing system
 app-backup/synology-cloud-station-backup 4450: Back up your files from multiple client computers to a centralized Synology NAS
 app-backup/tarsnap 1.0.35 1.0.37 1.0.39: Online backups for the truly paranoid
-app-backup/tsm 7.1.8.0 8.1.6.0: IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API
+app-backup/tsm 7.1.8.0-r1 8.1.6.0: IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API
 app-backup/untangle-https-backup 0.0.10 0.0.10-r1: Back up Untangle configurations via the web admin UI
 app-backup/vzdump 1.2: A utility to make consistent snapshots of running OpenVZ containers
 app-backup/zbackup 1.4.4-r1 9999: A versatile deduplicating backup tool
@@ -12941,7 +12942,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
 media-libs/lv2 1.14.0-r2 1.16.0-r1: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 19.3.5 20.0.4-r1 20.0.5 20.0.6 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.3.5 20.0.4-r1 20.0.5 20.0.6 20.1.0_rc2 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.20.0 6.20.0-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -15792,7 +15793,7 @@ sci-electronics/kicad-meta 5.0.1 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic a
 sci-electronics/kicad-packages3d 5.0.1 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and PCB design tools 3D package libraries
 sci-electronics/kicad-symbols 5.0.1 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and PCB design tools symbol libraries
 sci-electronics/kicad-templates 5.0.1 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and PCB design tools project templates
-sci-electronics/klayout 0.25.6 0.25.6-r1 0.26.4-r1 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
+sci-electronics/klayout 0.26.4-r1 0.26.5 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
 sci-electronics/librepcb 0.1.0-r1 0.1.3 9999: Free EDA software to develop printed circuit boards
 sci-electronics/linsmith 0.99.30-r1 0.99.31: Smith charting program, mainly designed for educational use
