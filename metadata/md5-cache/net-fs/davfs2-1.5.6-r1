@@ -10,4 +10,4 @@ RDEPEND=dev-libs/libxml2 net-libs/neon sys-libs/zlib nls? ( virtual/libintl virt
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://nongnu/davfs2/davfs2-1.5.6.tar.gz
-_md5_=971582322b0365a53ac6fd615b178298
+_md5_=c0592a651dec57bb91e0273c929a40ce

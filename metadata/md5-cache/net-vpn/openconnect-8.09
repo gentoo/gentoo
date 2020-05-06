@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig doc? ( || ( dev-lang/python:3.7[xml] dev-lang/python:3.6[xml] ) sys-apps/groff ) nls? ( sys-devel/gettext ) test? ( net-libs/socket_wrapper net-vpn/ocserv sys-libs/uid_wrapper )
 DEFINED_PHASES=configure install prepare pretend setup test unpack
-DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) gnutls? ( app-crypt/trousers app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken )
+DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) gnutls? ( app-crypt/trousers app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3.6.13:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken )
 DESCRIPTION=Free client for Cisco AnyConnect SSL VPN software
 EAPI=7
 HOMEPAGE=http://www.infradead.org/openconnect.html
 IUSE=doc +gnutls gssapi libproxy lz4 nls smartcard static-libs stoken test kernel_linux
-KEYWORDS=~amd64 ~arm64 ~ppc64
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
 LICENSE=LGPL-2.1 GPL-2
-RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) gnutls? ( app-crypt/trousers app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken ) sys-apps/iproute2
+RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) gnutls? ( app-crypt/trousers app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3.6.13:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken ) sys-apps/iproute2
 RESTRICT=!test? ( test )
 SLOT=0/5
 SRC_URI=ftp://ftp.infradead.org/pub/openconnect/openconnect-8.09.tar.gz ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20200226.tar.gz
 _eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=12ae04aeb096c2db44a0f59ad4703e2a
+_md5_=a294194475aa4e0c3f367fe1f046689b

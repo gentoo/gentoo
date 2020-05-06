@@ -5,11 +5,11 @@ DESCRIPTION=Openconnect SSL VPN server
 EAPI=7
 HOMEPAGE=https://ocserv.gitlab.io/www/index.html
 IUSE=geoip kerberos +lz4 otp pam radius +seccomp systemd tcpd test
-KEYWORDS=~amd64 ~arm64 ~ppc64
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/libnl:3= dev-libs/libev:0= >=dev-libs/nettle-2.7:0= dev-libs/pcl:0= dev-libs/protobuf-c:0= >=net-libs/gnutls-3.3.0:0= net-libs/http-parser:0= sys-libs/readline:0= sys-libs/talloc:0= geoip? ( dev-libs/geoip:0= ) kerberos? ( virtual/krb5 ) lz4? ( app-arch/lz4:0= ) otp? ( sys-auth/oath-toolkit:0= ) pam? ( sys-libs/pam:0= ) radius? ( net-dialup/freeradius-client:0= ) seccomp? ( sys-libs/libseccomp:0= ) systemd? ( sys-apps/systemd:0= ) tcpd? ( sys-apps/tcp-wrappers:0= )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=ftp://ftp.infradead.org/pub/ocserv/ocserv-1.0.1.tar.xz
 _eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c1a93bf14912792db052584fe1160455
+_md5_=51814d12d818976e2510f4448bba811d
