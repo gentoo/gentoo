@@ -22,8 +22,7 @@ S="${WORKDIR}/${P#lib}"
 PATCHES=(
 	# Don't build or install static libs
 	"${FILESDIR}/${PN}-2.3.0-no-static.patch"
-	# use app-i18n/unicode-data for test data instead of curl
-	"${FILESDIR}/${PN}-2.3.0-tests-nofetch.patch"
+	"${FILESDIR}"/${PN}-grapheme-test.patch
 )
 
 src_compile() {
@@ -48,5 +47,7 @@ src_install() {
 }
 
 src_test() {
+	cp "${EPREFIX}"/usr/share/unicode-data/{Normalization,auxiliary/GraphemeBreak}Test.txt data || die
+
 	emake CC="$(tc-getCC)" check
 }
