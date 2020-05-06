@@ -12,7 +12,7 @@ SRC_URI="https://github.com/hawkowl/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc x86"
 IUSE="test"
 
 RDEPEND="
