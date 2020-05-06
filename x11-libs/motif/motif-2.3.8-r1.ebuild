@@ -30,7 +30,7 @@ RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 
 DEPEND="${RDEPEND}
 	sys-devel/flex
-	|| ( dev-util/byacc sys-freebsd/freebsd-ubin )
+	dev-util/byacc
 	x11-base/xorg-proto
 	x11-misc/xbitmaps"
 
