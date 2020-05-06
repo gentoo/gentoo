@@ -1,0 +1,60 @@
+diff -u -r openntpd-6.2p3-orig/include/sys/types.h openntpd-6.2p3/include/sys/types.h
+--- openntpd-6.2p3-orig/include/sys/types.h	2017-10-23 05:15:41.000000000 -0700
++++ openntpd-6.2p3/include/sys/types.h	2020-05-05 19:57:57.039447282 -0700
+@@ -22,6 +22,10 @@
+ # define __bounded__(x, y, z)
+ #endif
+ 
++#if !defined(HAVE_ATTRIBUTE__PACKED) && !defined(__packed)
++# define __packed	__attribute__((__packed__))
++#endif
++
+ /*
+  * Define BSD-style unsigned bits types for systems that do not have them.
+  */
+diff -u -r openntpd-6.2p3-orig/src/ntp.c openntpd-6.2p3/src/ntp.c
+--- openntpd-6.2p3-orig/src/ntp.c	2017-06-19 06:23:10.000000000 -0700
++++ openntpd-6.2p3/src/ntp.c	2020-05-05 19:55:01.041306344 -0700
+@@ -42,7 +42,7 @@
+ 
+ volatile sig_atomic_t	 ntp_quit = 0;
+ struct imsgbuf		*ibuf_main;
+-struct imsgbuf		*ibuf_dns;
++static struct imsgbuf	*ibuf_dns;
+ struct ntpd_conf	*conf;
+ struct ctl_conns	 ctl_conns;
+ u_int			 peer_cnt;
+diff -u -r openntpd-6.2p3-orig/src/ntp_dns.c openntpd-6.2p3/src/ntp_dns.c
+--- openntpd-6.2p3-orig/src/ntp_dns.c	2017-06-19 06:23:10.000000000 -0700
++++ openntpd-6.2p3/src/ntp_dns.c	2020-05-05 19:55:30.325662563 -0700
+@@ -33,7 +33,7 @@
+ #include "ntpd.h"
+ 
+ volatile sig_atomic_t	 quit_dns = 0;
+-struct imsgbuf		*ibuf_dns;
++static struct imsgbuf	*ibuf_dns;
+ 
+ void	sighdlr_dns(int);
+ int	dns_dispatch_imsg(void);
+diff -u -r openntpd-6.2p3-orig/src/parse.c openntpd-6.2p3/src/parse.c
+--- openntpd-6.2p3-orig/src/parse.c	2017-10-30 01:57:56.000000000 -0700
++++ openntpd-6.2p3/src/parse.c	2020-05-05 19:55:56.505981067 -0700
+@@ -101,7 +101,6 @@
+ int		 lungetc(int);
+ int		 findeol(void);
+ 
+-struct ntpd_conf		*conf;
+ struct sockaddr_in		 query_addr4;
+ struct sockaddr_in6		 query_addr6;
+ 
+diff -u -r openntpd-6.2p3-orig/src/parse.y openntpd-6.2p3/src/parse.y
+--- openntpd-6.2p3-orig/src/parse.y	2017-10-30 01:57:40.000000000 -0700
++++ openntpd-6.2p3/src/parse.y	2020-05-05 19:55:51.504920219 -0700
+@@ -57,7 +57,6 @@
+ int		 lungetc(int);
+ int		 findeol(void);
+ 
+-struct ntpd_conf		*conf;
+ struct sockaddr_in		 query_addr4;
+ struct sockaddr_in6		 query_addr6;
+ 
