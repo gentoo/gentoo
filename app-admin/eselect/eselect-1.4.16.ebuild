@@ -17,7 +17,6 @@ IUSE="doc emacs vim-syntax"
 RDEPEND="sys-apps/sed
 	|| (
 		sys-apps/coreutils
-		sys-freebsd/freebsd-bin
 		app-misc/realpath
 	)"
 DEPEND="${RDEPEND}
