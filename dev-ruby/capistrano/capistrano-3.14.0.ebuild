@@ -16,7 +16,7 @@ HOMEPAGE="https://capistranorb.com/"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend "
