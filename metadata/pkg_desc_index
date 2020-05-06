@@ -5667,7 +5667,7 @@ dev-perl/CBOR-XS 1.700.0 1.710.0: Concise Binary Object Representation (CBOR, RF
 dev-perl/CDB_File 0.990.0 1.20.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r2: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1 1.50.0-r2: Parse a CDDB/freedb data file
-dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
+dev-perl/CDDB_get 2.280.0-r1 2.280.0-r2: Read the CDDB entry for an audio CD in your drive
 dev-perl/CGI 4.220.0 4.400.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r2: Framework to build simple or complex web-apps
@@ -10442,7 +10442,7 @@ dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-community 2019.3.3.193.6494.35 2019.3.4.193.6911.18 2020.1.0.201.6668.121: A complete toolset for web, mobile and enterprise development
+dev-util/idea-community 2019.3.4.193.6911.18 2020.1.0.201.6668.121 2020.1.1.201.7223.91: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 9.0: Find unused include directives in C/C++ programs
