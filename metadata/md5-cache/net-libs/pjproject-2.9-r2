@@ -5,10 +5,10 @@ DESCRIPTION=Open source SIP, Media, and NAT Traversal Library
 EAPI=7
 HOMEPAGE=https://www.pjsip.org/
 IUSE=amr debug epoll examples ipv6 libressl opus resample silk ssl static-libs webrtc g711 g722 g7221 gsm ilbc speex l16 g729 sdl ffmpeg v4l2 openh264 libyuv alsa portaudio
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=net-libs/libsrtp:= alsa? ( media-libs/alsa-lib ) amr? ( media-libs/opencore-amr ) ffmpeg? ( media-video/ffmpeg:= ) g729? ( media-libs/bcg729 ) gsm? ( media-sound/gsm ) ilbc? ( media-libs/libilbc ) openh264? ( media-libs/openh264 ) opus? ( media-libs/opus ) portaudio? ( media-libs/portaudio ) resample? ( media-libs/libsamplerate ) sdl? ( media-libs/libsdl ) speex? ( media-libs/speexdsp ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0
 SRC_URI=https://www.pjsip.org/release/2.9/pjproject-2.9.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=81df71daac310b4f0d5f2b459f8b23c2
+_md5_=014ef36f58912fd45568d0da1eb79d6b
