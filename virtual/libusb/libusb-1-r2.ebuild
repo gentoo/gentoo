@@ -12,8 +12,5 @@ IUSE="udev"
 # We force a recent libusb so that downstream consumers of virtual/libusb
 # can depend on us directly (and not have to force >=libusb-1.0.19).
 RDEPEND="
-	|| (
-		>=dev-libs/libusb-1.0.19:1[udev(+)?,${MULTILIB_USEDEP}]
-		>=sys-freebsd/freebsd-lib-9.1-r10[usb,${MULTILIB_USEDEP}]
-	)
+	>=dev-libs/libusb-1.0.19:1[udev(+)?,${MULTILIB_USEDEP}]
 "
