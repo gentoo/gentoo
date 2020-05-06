@@ -123,6 +123,11 @@ tsk_prepare_libewf() {
 src_prepare() {
 	use ewf && tsk_prepare_libewf
 
+	# Do not pass '-Werror'. This is overkill for user builds.
+	sed -e '/AM_CXXFLAGS/ s/-Werror//g' \
+		-i tsk/util/Makefile.am \
+		-i tsk/pool/Makefile.am || die
+
 	if use java; then
 		pushd "${S}"/bindings/java &>/dev/null || die
 
