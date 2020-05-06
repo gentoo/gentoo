@@ -17,6 +17,7 @@ SLOT="0"
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	test? ( >=dev-python/pyyaml-5.1[${PYTHON_USEDEP}] )
 "
 
 PATCHES=(
