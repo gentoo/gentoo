@@ -12,18 +12,14 @@ SRC_URI="https://github.com/JuliaStrings/${PN#lib}/archive/v${PV}.tar.gz -> ${P}
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux"
-IUSE="test"
+IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( =app-i18n/unicode-data-12.0* )"
 
 S="${WORKDIR}/${P#lib}"
 
-PATCHES=(
-	# Don't build or install static libs
-	"${FILESDIR}/${PN}-2.3.0-no-static.patch"
-	"${FILESDIR}"/${PN}-grapheme-test.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-grapheme-test.patch )
 
 src_compile() {
 	emake \
@@ -37,6 +33,7 @@ src_install() {
 		prefix="/usr" \
 		libdir="/usr/$(get_libdir)" \
 		install
+	use static-libs || find "${ED}" -name '*.a' -delete || die
 	# This package used to use netsurf's version as an upstream, which lives in
 	# its own little world. Unlike julia's version, it puts its header file
 	# in libutf8proc/utf8proc.h instead of utf8proc.h. The problem is that
