@@ -7,18 +7,28 @@ inherit toolchain-funcs
 
 DESCRIPTION="A clean C Library for processing UTF-8 Unicode data"
 HOMEPAGE="https://github.com/JuliaStrings/utf8proc"
-SRC_URI="https://github.com/JuliaStrings/${PN#lib}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JuliaStrings/${PN#lib}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	cjk? ( https://dev.gentoo.org/~hattya/distfiles/${PN}-EastAsianWidth-12.1.0.xz )"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux"
-IUSE="static-libs test"
+IUSE="cjk static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( =app-i18n/unicode-data-12.0* )"
 S="${WORKDIR}/${P#lib}"
 
 PATCHES=( "${FILESDIR}"/${PN}-grapheme-test.patch )
+
+src_prepare() {
+	if use cjk; then
+		einfo "Modifying East Asian Ambiguous (A) as wide ..."
+		cp "${WORKDIR}"/${PN}-EastAsianWidth-12.1.0 ${PN#lib}_data.c || die
+	fi
+
+	default
+}
 
 src_compile() {
 	emake \
