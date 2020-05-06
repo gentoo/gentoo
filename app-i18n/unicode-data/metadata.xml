@@ -5,4 +5,8 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>hattya@gentoo.org</email>
+		<name>Akinori Hattori</name>
+	</maintainer>
 </pkgmetadata>
