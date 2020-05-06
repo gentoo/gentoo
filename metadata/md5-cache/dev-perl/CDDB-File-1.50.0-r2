@@ -1,0 +1,13 @@
+BDEPEND=dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Parse a CDDB/freedb data file
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/CDDB-File
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TM/TMTM/CDDB-File-1.05.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=b97b4392f0263b65cbdbe17722d5c3d4

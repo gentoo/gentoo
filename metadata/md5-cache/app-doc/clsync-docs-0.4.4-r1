@@ -1,4 +1,4 @@
-BDEPEND=api? ( app-doc/doxygen )
+BDEPEND=api? ( app-doc/doxygen[dot] )
 DEFINED_PHASES=compile configure install
 DESCRIPTION=Clsync and libclsync API documentation
 EAPI=7
@@ -8,4 +8,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://github.com/clsync/clsync/archive/v0.4.4.tar.gz -> clsync-0.4.4.tar.gz
-_md5_=4cc8366b43b61081705b1fd13f3584ca
+_md5_=9d42ce2bc82407aedbe06f84c600fd61
