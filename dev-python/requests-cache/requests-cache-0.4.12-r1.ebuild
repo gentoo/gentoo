@@ -19,17 +19,8 @@ IUSE="doc"
 # Portage only has versions of request >= minimum border
 RDEPEND=">=dev-python/requests-2.6[${PYTHON_USEDEP}]"
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+	app-arch/unzip"
 
+distutils_enable_sphinx docs
 # Testsuite excels in tests connecting to the network via local server daemons
 #distutils_enable_tests setup.py
-
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
-}

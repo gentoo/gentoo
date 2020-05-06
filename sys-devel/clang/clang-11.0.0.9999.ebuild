@@ -107,6 +107,10 @@ check_distribution_components() {
 					clang*|findAllSymbols)
 						continue
 						;;
+					# headers for clang-tidy static library
+					clang-tidy-headers)
+						continue
+						;;
 				esac
 
 				all_targets+=( "${l}" )
@@ -181,7 +185,6 @@ get_distribution_components() {
 			clang-query
 			clang-reorder-fields
 			clang-tidy
-			clang-tidy-headers
 			clangd
 			find-all-symbols
 			modularize
