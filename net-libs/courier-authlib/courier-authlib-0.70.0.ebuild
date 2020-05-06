@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
@@ -16,13 +16,13 @@ IUSE="berkdb crypt debug gdbm ldap libressl mysql pam postgres sqlite static-lib
 RESTRICT="!berkdb? ( test )"
 
 DEPEND="net-mail/mailbase
-		>=net-libs/courier-unicode-2.0
+		>=net-libs/courier-unicode-2.1
 		gdbm? ( sys-libs/gdbm )
 		!gdbm? ( sys-libs/db:= )
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 		ldap? ( >=net-nds/openldap-1.2.11 )
-		mysql? ( virtual/mysql )
+		mysql? ( dev-db/mysql-connector-c )
 		pam? ( sys-libs/pam )
 		postgres? ( dev-db/postgresql:= )
 		sqlite? ( dev-db/sqlite:3 )"
@@ -55,7 +55,6 @@ src_configure() {
 	econf \
 		--sysconfdir=/etc/courier \
 		--datadir=/usr/share/courier \
-		--libexecdir=/usr/$(get_libdir)/courier \
 		--localstatedir=/var/lib/courier \
 		--sharedstatedir=/var/lib/courier/com \
 		--with-authdaemonvar=/var/lib/courier/authdaemon \
@@ -135,7 +134,7 @@ src_install() {
 	fi
 	einstalldocs
 
-	newinitd "${FILESDIR}/${PN}-r1" "${PN}"
+	newinitd "${FILESDIR}/${PN}-r2" "${PN}"
 
 	use static-libs || find "${D}" -name "*.a" -delete
 }
