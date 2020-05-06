@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-05-06)
+# dev-vcs/mercurial is broken on SPARC and setuptools_scm tests
+# lack proper skipping (to be fixed).
+<=dev-python/setuptools_scm-3.5.0 test
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
 # No keywords
 dev-python/werkzeug test
