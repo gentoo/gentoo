@@ -16,7 +16,6 @@ IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( =app-i18n/unicode-data-12.0* )"
-
 S="${WORKDIR}/${P#lib}"
 
 PATCHES=( "${FILESDIR}"/${PN}-grapheme-test.patch )
