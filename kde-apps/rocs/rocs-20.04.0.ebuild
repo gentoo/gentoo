@@ -14,7 +14,7 @@ HOMEPAGE="https://kde.org/applications/education/org.kde.rocs"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="

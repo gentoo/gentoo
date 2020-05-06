@@ -11,7 +11,7 @@ DESCRIPTION="KDE utility to translate DocBook XML files using gettext po files"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="

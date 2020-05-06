@@ -11,7 +11,7 @@ DESCRIPTION="FFmpeg based thumbnail generator for video files"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 BDEPEND="
 	virtual/pkgconfig

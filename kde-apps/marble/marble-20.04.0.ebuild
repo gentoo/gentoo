@@ -15,7 +15,7 @@ HOMEPAGE="https://marble.kde.org/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="aprs +dbus designer gps +kde nls phonon +geolocation shapefile +webengine"
 
 # FIXME (new package): libwlocate, WLAN-based geolocation

@@ -12,7 +12,7 @@ HOMEPAGE="https://api.kde.org/kdepim/kontactinterface/html/index.html"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="

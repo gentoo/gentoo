@@ -16,7 +16,7 @@ HOMEPAGE="https://kde.org/applications/office/org.kde.kaddressbook"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="telemetry"
 
 DEPEND="
