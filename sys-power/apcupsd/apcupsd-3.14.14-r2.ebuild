@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,9 +15,7 @@ KEYWORDS="amd64 ~arm ppc x86"
 IUSE="snmp +usb +modbus cgi gnome kernel_linux"
 
 DEPEND="
-	||	( >=sys-apps/util-linux-2.23[tty-helpers(-)]
-		  sys-freebsd/freebsd-ubin
-		)
+	>=sys-apps/util-linux-2.23[tty-helpers(-)]
 	modbus? ( usb? ( virtual/libusb:0 ) )
 	cgi? ( >=media-libs/gd-1.8.4 )
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
