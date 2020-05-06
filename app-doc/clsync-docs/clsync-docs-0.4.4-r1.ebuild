@@ -16,7 +16,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="api +examples"
 
-BDEPEND="api? ( app-doc/doxygen )"
+BDEPEND="api? ( app-doc/doxygen[dot] )"
 
 src_configure() {
 	: # doxygen doesn't depend on configuration

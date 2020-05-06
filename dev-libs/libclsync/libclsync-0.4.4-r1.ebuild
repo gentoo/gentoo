@@ -23,7 +23,9 @@ REQUIRED_USE="
 "
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND="=app-doc/clsync-docs-0.4*"
+RDEPEND="~app-doc/clsync-docs-${PV}"
+
+PATCHES=( "${FILESDIR}/${PN}-pthreads.patch" )
 
 src_prepare() {
 	eapply_user
