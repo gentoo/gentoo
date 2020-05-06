@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-cyg
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( =app-i18n/unicode-data-12.0* )"
+BDEPEND="test? ( =app-i18n/unicode-data-13.0* )"
 S="${WORKDIR}/${P#lib}"
 
 PATCHES=( "${FILESDIR}"/${PN}-grapheme-test.patch )
@@ -33,13 +33,6 @@ src_install() {
 		libdir="/usr/$(get_libdir)" \
 		install
 	use static-libs || find "${ED}" -name '*.a' -delete || die
-	# This package used to use netsurf's version as an upstream, which lives in
-	# its own little world. Unlike julia's version, it puts its header file
-	# in libutf8proc/utf8proc.h instead of utf8proc.h. The problem is that
-	# revdeps are *already* patched to ajust to this. As a transitionary
-	# measure until we unpatch revdeps, we add a symlink to utf8proc.h.
-	dodir /usr/include/libutf8proc
-	dosym ../utf8proc.h /usr/include/libutf8proc/utf8proc.h
 }
 
 src_test() {
