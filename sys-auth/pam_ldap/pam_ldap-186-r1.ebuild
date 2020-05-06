@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="ssl sasl"
 
-DEPEND="|| ( >=sys-libs/glibc-2.1.3 >=sys-freebsd/freebsd-lib-9.1 )
+DEPEND=">=sys-libs/glibc-2.1.3
 	sys-libs/pam[${MULTILIB_USEDEP}]
 	>=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r3[${MULTILIB_USEDEP}] )"
