@@ -24,3 +24,7 @@ CHOST_hppa="${CHOST}"
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
+
+# force py36 temporary
+PYTHON_TARGETS="python3_6"
+PYTHON_SINGLE_TARGET="python3_6"
