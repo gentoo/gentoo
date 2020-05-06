@@ -17,8 +17,12 @@ IUSE=""
 
 RDEPEND=">=dev-python/fonttools-3.31.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="
+	test? (
+		dev-python/fonttools[${PYTHON_USEDEP}]
+		dev-python/fs[${PYTHON_USEDEP}]
+		dev-python/pytest-runner[${PYTHON_USEDEP}]
+	)
+"
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests pytest
