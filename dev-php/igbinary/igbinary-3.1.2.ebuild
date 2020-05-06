@@ -12,7 +12,7 @@ USE_PHP="php7-1 php7-2 php7-3 php7-4"
 
 inherit php-ext-source-r3
 
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 DESCRIPTION="A fast drop-in replacement for the standard PHP serialize"
 HOMEPAGE="https://github.com/igbinary/igbinary"
