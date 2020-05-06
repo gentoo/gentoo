@@ -44,6 +44,10 @@ BDEPEND="
 		dev-python/tblib[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.6-bashcomp.patch
+)
+
 distutils_enable_sphinx docs
 
 python_test() {
