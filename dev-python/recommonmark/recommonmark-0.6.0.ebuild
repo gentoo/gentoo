@@ -14,7 +14,7 @@ SRC_URI="https://github.com/rtfd/recommonmark/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/commonmark-0.8.1[${PYTHON_USEDEP}]
