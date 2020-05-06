@@ -11,12 +11,6 @@
     solvers as well as the ability to "finish off" a mixed-integer
     problem calling the solver library's MIP solver.
   </longdescription>
-  <use>
-    <flag name="glpk">
-      Enable GNU Linear Programming Kit
-      <pkg>sci-mathematics/glpk</pkg> support
-    </flag>
-  </use>
   <upstream>
     <remote-id type="github">coin-or/Osi</remote-id>
   </upstream>
