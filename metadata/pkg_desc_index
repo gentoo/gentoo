@@ -2699,7 +2699,7 @@ app-text/mupdf 1.16.1: a lightweight PDF viewer and toolkit written in portable 
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.26 1.27 1.27.1 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
-app-text/nuspell 3.0.0 3.1.0: Spell checker library and CLI for complex natural languages
+app-text/nuspell 3.0.0 3.1.0 3.1.1: Spell checker library and CLI for complex natural languages
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.26 0.27: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.5: A simple converter from OpenDocument Text to plain text
@@ -7373,7 +7373,7 @@ dev-php/pecl-propro 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r2: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 2.0.0-r2 2.0.1: A reusable, persistent handle and resource factory API
-dev-php/pecl-redis 3.1.6-r1 4.2.0 4.3.0 5.0.2 5.1.1 5.2.1: PHP extension for interfacing with Redis
+dev-php/pecl-redis 5.1.1 5.2.1: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 2.0.1-r3: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers
