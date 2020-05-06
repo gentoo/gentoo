@@ -1,0 +1,57 @@
+From 3e31b54d349eb136f0d96eb81309fdaf4ad35fcf Mon Sep 17 00:00:00 2001
+From: David Shepherd <davidshepherd7@gmail.com>
+Date: Sat, 15 Feb 2020 11:48:52 +0000
+Subject: [PATCH] Revert "Use fastdiff for faster diffing"
+
+This reverts commit 56d9efdaa37c39c7f644726e0d34c89b09ff9568.
+---
+ setup.py             | 2 +-
+ snapshottest/diff.py | 9 +++++----
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 1baefd8..690713e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -23,7 +23,7 @@
+         'nose.plugins.0.10':
+         ['snapshottest = snapshottest.nose:SnapshotTestPlugin']
+     },
+-    install_requires=['six>=1.10.0', 'termcolor', 'fastdiff>=0.1.4<1'],
++    install_requires=['six>=1.10.0', 'termcolor'],
+     tests_require=tests_require,
+     extras_require={
+         'test': tests_require,
+diff --git a/snapshottest/diff.py b/snapshottest/diff.py
+index 5fddf66..83c599a 100644
+--- a/snapshottest/diff.py
++++ b/snapshottest/diff.py
+@@ -1,5 +1,5 @@
++from difflib import Differ
+ from termcolor import colored
+-from fastdiff import compare
+ 
+ from .sorted_dict import SortedDict
+ from .formatter import Formatter
+@@ -23,6 +23,7 @@ def format_line(line):
+ class PrettyDiff(object):
+     def __init__(self, obj, snapshottest):
+         self.pretty = Formatter()
++        self.differ = Differ()
+         self.snapshottest = snapshottest
+         if isinstance(obj, dict):
+             obj = SortedDict(**obj)
+@@ -35,10 +36,10 @@ def __repr__(self):
+         return repr(self.obj)
+ 
+     def get_diff(self, other):
+-        text1 = 'Received \n\n' + self.pretty(self.obj)
+-        text2 = 'Snapshot \n\n' + self.pretty(other)
++        text1 = ['Received ', ''] + self.pretty(self.obj).splitlines(1)
++        text2 = ['Snapshot ', ''] + self.pretty(other).splitlines(1)
+ 
+-        lines = list(compare(text2, text1))
++        lines = list(self.differ.compare(text2, text1))
+         return [
+             format_line(line) for line in lines
+         ]
