@@ -26,7 +26,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/findutils
-	|| ( sys-apps/mlocate sys-freebsd/freebsd-ubin )
+	sys-apps/mlocate
 	!<gnome-extra/gnome-utils-3.4
 "
 # ${PN} was part of gnome-utils before 3.4
