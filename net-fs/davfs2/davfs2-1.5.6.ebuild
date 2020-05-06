@@ -31,7 +31,8 @@ src_prepare() {
 	sed -e '/^manual[58]_DATA/ s/\.gz//g' \
 		-i "${S}"/man/Makefile.in || die
 
-	eapply "${FILESDIR}"/${PN}-1.5.5-gcc-10.patch
+	eapply "${FILESDIR}"/${PN}-1.5.5-gcc-10.patch \
+		   "${FILESDIR}"/${P}-neon31-support.patch
 
 	default
 }
