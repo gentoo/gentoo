@@ -12164,7 +12164,7 @@ mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Co
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/sqlgrey 1.7.6-r2 1.8.0: A postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
-mail-filter/zdkimfilter 1.8: DKIM filter for Courier-MTA
+mail-filter/zdkimfilter 1.8 2.1: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92.3 4.93.0.4: A highly configurable, drop-in replacement for sendmail
@@ -13661,7 +13661,7 @@ media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.72-r1 1.1.10-r1 1.1.26: Spotify is a social music platform
-media-sound/strawberry 0.6.8 0.6.9 9999: Modern music player and library organizer based on Clementine and Qt
+media-sound/strawberry 0.6.9 0.6.10 9999: Modern music player and library organizer based on Clementine and Qt
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
@@ -14118,7 +14118,7 @@ net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1 2.1-r1: network scanner that gathers info on SSH protocols and versions
 net-analyzer/scapy 2.4.2 2.4.3 9999: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
-net-analyzer/sec 2.7.6-r1 2.8.1 2.8.2: Simple Event Correlator
+net-analyzer/sec 2.7.6-r1 2.8.1 2.8.2 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 3.34 3.41 5.02 5.04: sflowtool is a utility for collecting and processing sFlow data
 net-analyzer/sguil-client 0.8.0 0.9.0 1.0.0: GUI Console for sguil Network Security Monitoring
 net-analyzer/sguil-sensor 0.8.0 0.9.0 1.0.0: Sensor part of sguil Network Security Monitoring
