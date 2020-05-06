@@ -1,13 +1,13 @@
 BDEPEND=test? ( =app-i18n/unicode-data-13.0* )
-DEFINED_PHASES=compile install test
+DEFINED_PHASES=compile install prepare test
 DESCRIPTION=A clean C Library for processing UTF-8 Unicode data
 EAPI=7
 HOMEPAGE=https://github.com/JuliaStrings/utf8proc
-IUSE=static-libs test
+IUSE=cjk static-libs test
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux
 LICENSE=MIT
 RESTRICT=!test? ( test )
 SLOT=0/2.5.0
-SRC_URI=https://github.com/JuliaStrings/utf8proc/archive/v2.5.0.tar.gz -> libutf8proc-2.5.0.tar.gz
+SRC_URI=https://github.com/JuliaStrings/utf8proc/archive/v2.5.0.tar.gz -> libutf8proc-2.5.0.tar.gz cjk? ( https://dev.gentoo.org/~hattya/distfiles/libutf8proc-EastAsianWidth-13.0.0.xz )
 _eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=5b2b472d6af24dac79c5d273f6ebddc5
+_md5_=6efadc1eee2b02683889a594cf525540

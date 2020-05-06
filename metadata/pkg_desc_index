@@ -5660,8 +5660,8 @@ dev-perl/Business-ISBN 3.4.0 3.5.0: Work with ISBN as objects
 dev-perl/Business-ISBN-Data 20140910.3.0 20191107.0.0: Data pack for Business::ISBN
 dev-perl/Business-ISMN 1.132.0 1.201.0: International Standard Music Numbers
 dev-perl/Business-ISSN 1.3.0 1.4.0: Object and functions to work with International Standard Serial Numbers
-dev-perl/Business-Tax-VAT-Validation 1.110.0: A class for european VAT numbers validation
-dev-perl/Business-UPS 2.10.0-r1: A UPS Interface Module
+dev-perl/Business-Tax-VAT-Validation 1.110.0 1.120.0: A class for european VAT numbers validation
+dev-perl/Business-UPS 2.10.0-r1 2.10.0-r2: A UPS Interface Module
 dev-perl/CBOR-XS 1.700.0: Concise Binary Object Representation (CBOR, RFC7049)
 dev-perl/CDB_File 0.990.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r2: high-level interface to cddb/freedb protocol
@@ -7172,7 +7172,7 @@ dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1 1.40.0: Lets your class/object say it works like something else
 dev-perl/autobox 3.0.1: Call methods on native types
 dev-perl/autovivification 0.180.0: Lexically disable autovivification
-dev-perl/bareword-filehandles 0.5.0 0.6.0: Disables bareword filehandles
+dev-perl/bareword-filehandles 0.5.0 0.6.0 0.7.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0-r1: Save a tree AND a kitten, use common::sense!
@@ -14936,7 +14936,7 @@ net-misc/oidentd 2.4.0: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
-net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1: Lightweight NTP server ported from OpenBSD
+net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1 6.2_p3-r2: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openssh 8.1_p1-r3 8.2_p1-r5 8.2_p1-r6: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.10.2 2.11.1-r1 2.13.0: Production quality, multilayer virtual switch
