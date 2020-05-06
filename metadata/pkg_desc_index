@@ -1903,7 +1903,7 @@ app-i18n/uim 1.8.6-r1 1.8.6-r2 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-cldr 31.0.1 33.0 35.1: Unicode Common Locale Data Repository
 app-i18n/unicode-data 12.0.0 12.1.0: Unicode data from unicode.org
-app-i18n/unicode-emoji 5.0 11.0 12.0: UTS #51 Unicode Emoji
+app-i18n/unicode-emoji 11.0 12.0 13.0: UTS #51 Unicode Emoji
 app-i18n/xcin 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 3.0.0_rc1: A standalone XIM server for SunPinyin
 app-i18n/xvnkb 0.2.9a-r1: Vietnamese input keyboard for X
@@ -5658,8 +5658,8 @@ dev-perl/Business-FedEx-DirectConnect 1.10.0-r1 1.10.0-r2: Interface to FedEx Sh
 dev-perl/Business-Hours 0.120.0-r1 0.130.0: Calculate business hours in a time period
 dev-perl/Business-ISBN 3.4.0 3.5.0: Work with ISBN as objects
 dev-perl/Business-ISBN-Data 20140910.3.0 20191107.0.0: Data pack for Business::ISBN
-dev-perl/Business-ISMN 1.132.0: International Standard Music Numbers
-dev-perl/Business-ISSN 1.3.0: Object and functions to work with International Standard Serial Numbers
+dev-perl/Business-ISMN 1.132.0 1.201.0: International Standard Music Numbers
+dev-perl/Business-ISSN 1.3.0 1.4.0: Object and functions to work with International Standard Serial Numbers
 dev-perl/Business-Tax-VAT-Validation 1.110.0: A class for european VAT numbers validation
 dev-perl/Business-UPS 2.10.0-r1: A UPS Interface Module
 dev-perl/CBOR-XS 1.700.0: Concise Binary Object Representation (CBOR, RFC7049)
@@ -12107,8 +12107,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1 1.4.2 1.4.3: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1-r1 68.7.0-r1 68.8.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.7.0 68.8.0: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1-r1 68.8.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.8.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0-r1 2.0.0 3.0.0: Initial tagging script for Notmuch
@@ -17340,7 +17340,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.32 5.4.34 5.4.35 5.4.38 5.5.19 5.6.6 5.6.7 5.6.10: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.34 5.4.35 5.4.36 5.4.38 5.5.19 5.6.6 5.6.7 5.6.8 5.6.10: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.4.221 4.4.222 4.9.217 4.9.218 4.9.219 4.9.220 4.9.221 4.9.222 4.14.174 4.14.175 4.14.176 4.14.177 4.14.178 4.14.179 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 4.19.120 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.4.37 5.4.38 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8 5.6.9 5.6.10: Full sources including the Gentoo patchset for the 5.6 kernel tree
+sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.4.221 4.4.222 4.9.217 4.9.218 4.9.219 4.9.220 4.9.221 4.9.222 4.14.174 4.14.175 4.14.176 4.14.177 4.14.178 4.14.179 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 4.19.120 4.19.121 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.4.37 5.4.38 5.4.39 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8 5.6.9 5.6.10: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3 5.7_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel

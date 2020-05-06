@@ -1,0 +1,9 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=UTS #51 Unicode Emoji
+EAPI=7
+HOMEPAGE=https://unicode.org/emoji/techindex.html
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=unicode
+SLOT=0
+SRC_URI=https://unicode.org/Public/emoji/13.0/emoji-sequences.txt -> unicode-emoji-sequences-13.0.txt https://unicode.org/Public/emoji/13.0/emoji-test.txt -> unicode-emoji-test-13.0.txt https://unicode.org/Public/emoji/13.0/emoji-zwj-sequences.txt -> unicode-emoji-zwj-sequences-13.0.txt https://unicode.org/Public/13.0.0/ucd/emoji/emoji-data.txt -> unicode-emoji-data-13.0.txt https://unicode.org/Public/13.0.0/ucd/emoji/emoji-variation-sequences.txt -> unicode-emoji-variation-sequences-13.0.txt
+_md5_=4b13da4beea99edc13c8bb769ed0fea1

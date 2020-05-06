@@ -1,0 +1,15 @@
+BDEPEND=virtual/perl-Exporter >=virtual/perl-ExtUtils-MakeMaker-6.640.0 virtual/perl-File-Spec test? ( >=virtual/perl-Test-Simple-1.0.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Object and functions to work with International Standard Serial Numbers
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Business-ISSN
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=Artistic-2
+RDEPEND=virtual/perl-Exporter dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BD/BDFOY/Business-ISSN-1.004.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=33e242ff521f70ced22c1fef1a64bbc1
