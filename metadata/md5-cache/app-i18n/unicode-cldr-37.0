@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Unicode Common Locale Data Repository
+EAPI=7
+HOMEPAGE=https://cldr.unicode.org/
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=unicode
+SLOT=0
+SRC_URI=https://unicode.org/Public/cldr/37/cldr-common-37.0.zip -> unicode-cldr-common-37.0.zip
+_md5_=ff2348b2064738f4f1ef7a7ac477a6f4

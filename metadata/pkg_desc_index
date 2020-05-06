@@ -1901,8 +1901,8 @@ app-i18n/translate-shell 0.9.6.10 0.9.6.11: Online command-line translator
 app-i18n/uchardet 0.0.6-r2 9999: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.6-r2 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
-app-i18n/unicode-cldr 31.0.1 33.0 35.1: Unicode Common Locale Data Repository
-app-i18n/unicode-data 12.0.0 12.1.0: Unicode data from unicode.org
+app-i18n/unicode-cldr 33.0 35.1 37.0: Unicode Common Locale Data Repository
+app-i18n/unicode-data 12.0.0 12.1.0 13.0.0: Unicode data from unicode.org
 app-i18n/unicode-emoji 11.0 12.0 13.0: UTS #51 Unicode Emoji
 app-i18n/xcin 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 3.0.0_rc1: A standalone XIM server for SunPinyin
@@ -5168,7 +5168,7 @@ dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings acc
 dev-libs/libusb 1.0.19-r1 1.0.21-r1 1.0.22 1.0.23-r1: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
-dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0: A clean C Library for processing UTF-8 Unicode data
+dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0 2.5.0: A clean C Library for processing UTF-8 Unicode data
 dev-libs/libuv 1.35.0 1.37.0 9999: Cross-platform asychronous I/O
 dev-libs/libvarlink 16 18 19: C implementation of the Varlink protocol and command line tool
 dev-libs/libverto 0.2.5-r1 0.3.0 0.3.1: Main event loop abstraction library
@@ -17340,7 +17340,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.32 5.4.34 5.4.35 5.4.38 5.5.19 5.6.6 5.6.7 5.6.10: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.34 5.4.35 5.4.36 5.4.38 5.5.19 5.6.6 5.6.7 5.6.8 5.6.10: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.4.221 4.4.222 4.9.217 4.9.218 4.9.219 4.9.220 4.9.221 4.9.222 4.14.174 4.14.175 4.14.176 4.14.177 4.14.178 4.14.179 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 4.19.120 4.19.121 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.4.37 5.4.38 5.4.39 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8 5.6.9 5.6.10: Full sources including the Gentoo patchset for the 5.6 kernel tree
+sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.4.221 4.4.222 4.9.217 4.9.218 4.9.219 4.9.220 4.9.221 4.9.222 4.14.174 4.14.175 4.14.176 4.14.177 4.14.178 4.14.179 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 4.19.120 4.19.121 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.4.37 5.4.38 5.4.39 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8 5.6.9 5.6.10 5.6.11: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3 5.7_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
