@@ -19,6 +19,7 @@ IUSE="doc"
 # Portage only has versions of request >= minimum border
 RDEPEND=">=dev-python/requests-2.6[${PYTHON_USEDEP}]"
 DEPEND="
+	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
