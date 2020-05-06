@@ -73,7 +73,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 # use cargo-license for a more accurate license picture
 LICENSE="GPL-3 Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 CC0-1.0 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 
 DOCS=( CHANGELOG.md README.md )
 
