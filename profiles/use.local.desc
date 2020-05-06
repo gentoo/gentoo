@@ -839,6 +839,9 @@ app-leechcraft/lc-blogique:metida - Support for the LiveJournal blogging platfor
 app-leechcraft/lc-core:qwt - Support for QML plotting item through x11-libs/qwt
 app-leechcraft/lc-gmailnotifier:notify - Pull in a plugin to show notifications from GMail Notiifer
 app-leechcraft/lc-gmailnotifier:quark - Pull in a plugin to show GMail Notifier's quark
+app-leechcraft/lc-liznoo:battery - Enables battery charge level reading support.
+app-leechcraft/lc-liznoo:poweractions - Enables support for suspending and hibernating the machine.
+app-leechcraft/lc-liznoo:powerevents - Enables support for receiving events about suspending and resuming the machine (to notify other plugins).
 app-leechcraft/lc-lmp:fradj - Build FrAdj, the equalizer effect module
 app-leechcraft/lc-lmp:graffiti - Build media tags editor plugin
 app-leechcraft/lc-lmp:mp3tunes - Build plugin for supporting the mp3tunes.com music locker service
@@ -862,7 +865,7 @@ app-leechcraft/lc-poshuku:qrd - Build module for displaying the QR code of a web
 app-leechcraft/lc-poshuku:speeddial - Build SpeedDial module.
 app-leechcraft/lc-poshuku:webengine - Build WebEngine- (that is, Chromium-)based rendering backend.
 app-leechcraft/lc-secman:exposecontents - Build the GUI for viewing the stored data.
-app-leechcraft/leechcraft-meta:de - Install components, that allow using Leechcraft as Desktop Environment
+app-leechcraft/leechcraft-meta:de - Install components that allow using LeechCraft as Desktop Environment
 app-metrics/collectd:contrib - Install user-contributed files in the doc directory
 app-metrics/collectd:filecaps - When set collectd daemon will have set required capabilities to run most plugins even if run as unprivileged user
 app-metrics/collectd:java - Must be set (workaround for java-pkg-opt-2 eclass limitation) when you want java or genericjmx plugin
@@ -5058,17 +5061,20 @@ media-video/qmplay2:avdevice - Build FFmpeg module with libavdevice suport
 media-video/qmplay2:avresample - Use libavresample instead of libswresample
 media-video/qmplay2:cdio - Build with AudioCD module
 media-video/qmplay2:cuvid - Build with CUVID module
-media-video/qmplay2:extensions - Build with Extensions module
+media-video/qmplay2:extensions - Build with Extensions module and enable other plugins
 media-video/qmplay2:gme - Build Chiptune with GME support
 media-video/qmplay2:inputs - Build with Inputs module
 media-video/qmplay2:lastfm - Build with LastFM support
+media-video/qmplay2:libass - Build with SSA/ASS subtitles rendering support
 media-video/qmplay2:lyrics - Build with lyrics support
 media-video/qmplay2:mediabrowser - Build with MediaBrowser support
 media-video/qmplay2:mpris2 - Build Extensions with MPRIS2 support
 media-video/qmplay2:notifications - Build additional notifications module
+media-video/qmplay2:shaders - Compile Vulkan shaders using media-libs/shaderc
 media-video/qmplay2:sid - Build Chiptune with SIDPLAY support
 media-video/qmplay2:videofilters - Build with VideoFilters module
 media-video/qmplay2:visualizations - Build with Visualizations module
+media-video/qmplay2:vulkan - Build with Vulkan support
 media-video/rav1e:capi - Build the C-API library and header file
 media-video/simplescreenrecorder:asm - Enable x86 assembly optimisation.
 media-video/simplescreenrecorder:vpx - Enable VP8 codec support via media-libs/libvpx.
