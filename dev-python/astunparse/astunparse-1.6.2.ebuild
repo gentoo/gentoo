@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 python3_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Astun parser for python"
@@ -18,6 +18,14 @@ RDEPEND="
 	>=dev-python/six-1.6.1[${PYTHON_USEDEP}]
 	>=dev-python/wheel-0.23.0[${PYTHON_USEDEP}]
 "
+PATCHES=(
+	"${FILESDIR}/astunparse-1.6.2-tests.patch"
+
+	# https://github.com/simonpercivall/astunparse/commit/2bd946919076f993cee1173611914372a0a25f00
+	"${FILESDIR}/astunparse-1.6.2-py38.patch"
+)
+
+distutils_enable_tests setup.py
 
 python_install_all() {
 	distutils-r1_python_install_all
