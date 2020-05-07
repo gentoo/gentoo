@@ -7868,7 +7868,7 @@ dev-python/gmpy 2.0.8-r1: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/gnome-python-base 2.28.1-r1: Provides the base files for the gnome-python bindings
 dev-python/gntp 1.0.3: Python library for working with the Growl Notification Transport Protocol
 dev-python/google-api-python-client 1.6.5 1.7.9: Google API Client for Python
-dev-python/google-apitools 0.5.30: Python library to manipulate Google APIs
+dev-python/google-apitools 0.5.30 0.5.30_p20200507: Python library to manipulate Google APIs
 dev-python/google-apputils 0.4.2-r2: Collection of utilities for building Python applications
 dev-python/google-auth 1.0.1 1.6.3: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.2 0.0.3: httplib2 Transport for Google Auth
