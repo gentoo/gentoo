@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 
 USE_PHP="php7-2 php7-3 php7-4"
 PHP_EXT_ECONF_ARGS="--with-php=yes --without-lua --without-perl --without-python --without-ruby"
