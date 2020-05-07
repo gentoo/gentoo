@@ -12708,7 +12708,7 @@ media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT
 media-libs/elles_icc_profiles 20160501.0932 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 11.91 11.93 11.95: Read and write meta information in image, audio and video files
+media-libs/exiftool 11.93 11.95 11.98: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8 2.9.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.0 2.0.1: Fraunhofer AAC codec library
@@ -12860,7 +12860,7 @@ media-libs/libmad 0.15.1b-r9: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.22.0 1.24.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.5.2: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
-media-libs/libmediainfo 19.09 20.03: MediaInfo libraries
+media-libs/libmediainfo 20.03: MediaInfo libraries
 media-libs/libmetalink 0.1.3-r1: Library for handling Metalink files
 media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
@@ -12937,7 +12937,7 @@ media-libs/libxmlbird 1.2.0: XML parser written in Vala
 media-libs/libxspf 1.2.0: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
-media-libs/libzen 0.4.37 0.4.38: Shared library for libmediainfo and mediainfo
+media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.4-r1 0.24.6: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
@@ -13820,7 +13820,7 @@ media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping 
 media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
 media-video/makemkv 1.15.1: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
-media-video/mediainfo 19.09 20.03: MediaInfo supplies technical and tag information about media files
+media-video/mediainfo 20.03: MediaInfo supplies technical and tag information about media files
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
@@ -14326,7 +14326,7 @@ net-fs/s3ql 2.33: A full-featured file system for online data storage
 net-fs/samba 4.11.6-r2 4.11.8 4.11.9 4.12.1 4.12.2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
-net-fs/sshfs 2.10-r1 3.6.0 3.7.0: Fuse-filesystem utilizing the sftp service
+net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7.2-r1: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
@@ -17253,7 +17253,7 @@ sys-fs/fatcat 1.0.6 1.1.0 1.1.0-r1: FAT filesystems explore, extract, repair, an
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
 sys-fs/fatsort 1.5.0 1.6.2.605: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
-sys-fs/fuse 2.9.8 2.9.9-r1 3.8.0 3.9.0 3.9.1: An interface for filesystems implemented in userspace
+sys-fs/fuse 2.9.9-r1 3.9.1: An interface for filesystems implemented in userspace
 sys-fs/fuse-common 3.2.6 3.8.0 3.9.0 3.9.1: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.3.0: exFAT filesystem FUSE module
