@@ -67,6 +67,12 @@ multilib_src_configure() {
 		)
 	fi
 
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# undo Solaris-based defaults pointing to /usr/xpg5/bin
+		myconf+=( --disable-path-for-script )
+		export gl_cv_posix_shell=${EPREFIX}/bin/sh
+	fi
+
 	use elibc_FreeBSD && export ac_cv_header_sha256_h=no #545714
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
