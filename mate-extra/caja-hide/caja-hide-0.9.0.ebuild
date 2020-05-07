@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 inherit python-single-r1
 
 MY_PN="Caja-hide"
