@@ -61,6 +61,7 @@ src_install() {
 	dobin mksh
 	doman mksh.1
 	dodoc dot.mkshrc
+	dosym mksh /bin/rmksh
 
 	if use lksh; then
 		dobin "${S}"_lksh/lksh
