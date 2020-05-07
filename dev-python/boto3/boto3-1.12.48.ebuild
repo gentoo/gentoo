@@ -34,7 +34,7 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-distutils_enable_sphinx docs \
+distutils_enable_sphinx docs/source \
 	'dev-python/guzzle_sphinx_theme'
 
 python_prepare_all() {
