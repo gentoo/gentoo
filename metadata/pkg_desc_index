@@ -2077,7 +2077,7 @@ app-misc/ckermit 8.0.211-r4 9.0.302: combined serial and network communication s
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r3 1.2a-r4 2.0-r1: An ncurses based app to show a scrolling screen from the Matrix
 app-misc/color 1.2-r2: Easily add ANSI colouring to shell scripts
-app-misc/colordiff 1.0.18: Colorizes output of diff
+app-misc/colordiff 1.0.18 1.0.19: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
 app-misc/countrycodes 1.0.5-r3: An ISO 3166 country code finder
 app-misc/cpipe 3.0.3: Counting pipe, measures data transfered over pipe
@@ -5680,7 +5680,7 @@ dev-perl/CGI-Fast 2.130.0 2.150.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r2: High Performance Templates and Variable Interpolation
 dev-perl/CGI-FormBuilder 3.100.0 3.100.0-r1: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r1 0.150.0-r2: Adapt CGI.pm to the PSGI protocol
-dev-perl/CGI-Session 4.480.0-r2: persistent session data in CGI applications
+dev-perl/CGI-Session 4.480.0-r2 4.480.0-r3: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.115.0: A Simple totally OO CGI interface that is CGI.pm compliant
 dev-perl/CHI 0.600.0: Unified cache handling interface
 dev-perl/CPAN-Changes 0.400.2: Read and write Changes files
@@ -8430,7 +8430,7 @@ dev-python/pyopengl_accelerate 3.1.0-r1: Accelerate module for PyOpenGL
 dev-python/pyopenssl 19.1.0: Python interface to the OpenSSL library
 dev-python/pyotherside 1.5.9: Asynchronous Python 3 Bindings for Qt 5
 dev-python/pyotp 2.3.0: PyOTP is a Python library for generating and verifying one-time passwords.
-dev-python/pypam 0.5.0-r3 0.5.0-r4: Python Bindings for PAM (Pluggable Authentication Modules)
+dev-python/pypam 0.5.0-r4: Python Bindings for PAM (Pluggable Authentication Modules)
 dev-python/pyparsing 2.4.6 2.4.7: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.7 3.11.6 999999: Python bindings for sys-block/parted
 dev-python/pypax 0.9.5 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
