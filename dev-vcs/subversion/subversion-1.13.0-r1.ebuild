@@ -154,6 +154,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# https://bugs.gentoo.org/721300
+	rm "${WORKDIR}"/patches/subversion-1.10.0_rc1-utf8proc_include.patch || die
+
 	eapply "${WORKDIR}/patches"
 	eapply_user
 
@@ -259,6 +262,10 @@ src_configure() {
 		export ac_cv_python_libs='$(PYTHON_CFLAGS) -bundle -undefined dynamic_lookup $(PYTHON_LIBS)'
 		export ac_cv_python_compile="$(tc-getCC)"
 	fi
+
+	# Remove when >=dev-libs/libutf8proc-2.5.0 is stable
+	# https://bugs.gentoo.org/721300
+	append-cppflags -I"${EPREFIX}"/usr/include/libutf8proc
 
 	# allow overriding Python include directory
 	ac_cv_path_RUBY=$(usex ruby "${EPREFIX}/usr/bin/ruby${RB_VER}" "none") \
