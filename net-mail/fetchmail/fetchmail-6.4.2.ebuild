@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="tk"
 
 inherit python-single-r1 systemd toolchain-funcs autotools
