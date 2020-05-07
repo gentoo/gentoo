@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.infradead.org/pub/ocserv/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE="geoip kerberos +lz4 otp pam radius +seccomp systemd tcpd test"
 RESTRICT="!test? ( test )"
 
