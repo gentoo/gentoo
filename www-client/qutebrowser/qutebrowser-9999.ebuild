@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit desktop distutils-r1 eutils xdg-utils
 
@@ -22,36 +23,29 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="scripts test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="
-	app-text/asciidoc
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+BDEPEND="
+	app-text/asciidoc"
 RDEPEND="
 	>=dev-python/attrs-19.3.0[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.4.3[${PYTHON_USEDEP}]
 	>=dev-python/cssutils-1.0.2[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.11.1[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.5.2[${PYTHON_USEDEP}]
+	>=dev-python/jinja-2.11.2[${PYTHON_USEDEP}]
+	>=dev-python/markupsafe-1.1.1[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.6.1[${PYTHON_USEDEP}]
 	>=dev-python/pypeg2-2.15.2[${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-5.14.1[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
 	>=dev-python/PyQtWebEngine-5.14.0[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-5.3[${PYTHON_USEDEP},libyaml]
+	>=dev-python/pyyaml-5.3.1[${PYTHON_USEDEP},libyaml]
 "
+
+distutils_enable_tests setup.py
 
 # Tests restricted as the deplist (misc/requirements/requirements-tests.txt)
 # isn't complete and X11 is required in order to start up qutebrowser.
 RESTRICT="test"
 
 python_compile_all() {
-	if [[ ${PV} == "9999" ]]; then
-		"${EPYTHON}" scripts/asciidoc2html.py || die "Failed generating docs"
-	fi
-
 	a2x -f manpage doc/${PN}.1.asciidoc || die "Failed generating man page"
-}
-
-python_test() {
-	py.test tests || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
