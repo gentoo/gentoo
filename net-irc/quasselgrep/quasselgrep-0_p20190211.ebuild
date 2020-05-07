@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE=( sqlite )
 
 inherit distutils-r1 eutils
