@@ -127,8 +127,9 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.18.4.1-override-include-dirs.patch" # downstream patch
 	"${FILESDIR}/${PN}-5.18.4.1-synaptics-header.patch" # in Plasma/5.19
+	"${FILESDIR}/${P}-findxorgserver.patch" # in Plasma/5.19
+	"${FILESDIR}/${P}-override-include-dirs.patch" # downstream patch
 )
 
 src_unpack() {
@@ -149,6 +150,7 @@ src_configure() {
 		$(cmake_use_find_package fontconfig Fontconfig)
 		-DEvdev_INCLUDE_DIRS="${WORKDIR}"/include
 		-DXORGLIBINPUT_INCLUDE_DIRS="${WORKDIR}"/include
+		-DXORGSERVER_INCLUDE_DIRS="${WORKDIR}"/include
 		-DSynaptics_INCLUDE_DIRS="${WORKDIR}"/include
 		$(cmake_use_find_package ibus IBus)
 		$(cmake_use_find_package scim SCIM)

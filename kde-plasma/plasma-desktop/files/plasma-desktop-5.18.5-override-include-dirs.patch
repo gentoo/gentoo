@@ -1,19 +1,19 @@
-From b11915786a97f55074b7bfe4eec6f3c5cc08ae78 Mon Sep 17 00:00:00 2001
+From 6971b5eac2088d263527b2b4a85bb08b1a2dc792 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Mon, 6 Apr 2020 00:41:07 +0200
-Subject: [PATCH 1/2] cmake modules: Allow include dir overrides for various
- input drivers
+Subject: [PATCH] cmake modules: Allow include dir overrides for various input
+ drivers
 
 FindEvdev - evdev-properties.h
 FindSynaptics - synaptics-properties.h
 FindXorgLibinput - libinput-properties.h
-
-Hint: Dependency for touchpad (Synaptics): xserver-properties.h (xorg-server)
+FindXorgServer - xserver-properties.h
 ---
  cmake/modules/FindEvdev.cmake        | 4 ++++
  cmake/modules/FindSynaptics.cmake    | 4 ++++
  cmake/modules/FindXorgLibinput.cmake | 4 ++++
- 3 files changed, 12 insertions(+)
+ cmake/modules/FindXorgServer.cmake   | 4 ++++
+ 4 files changed, 16 insertions(+)
 
 diff --git a/cmake/modules/FindEvdev.cmake b/cmake/modules/FindEvdev.cmake
 index 153128a90..c19c31a96 100644
@@ -81,5 +81,28 @@ index 1550751ae..5b7af5e79 100644
  include(FindPackageHandleStandardArgs)
  find_package_handle_standard_args(XorgLibinput REQUIRED_VARS XORGLIBINPUT_INCLUDE_DIRS)
  
+diff --git a/cmake/modules/FindXorgServer.cmake b/cmake/modules/FindXorgServer.cmake
+index 5248c6d25..9de16dba0 100644
+--- a/cmake/modules/FindXorgServer.cmake
++++ b/cmake/modules/FindXorgServer.cmake
+@@ -31,6 +31,8 @@
+ # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ # SUCH DAMAGE.
+ 
++if(NOT XORGSERVER_INCLUDE_DIRS)
++
+ find_package(PkgConfig)
+ pkg_check_modules(PC_XORGSERVER xorg-server)
+ 
+@@ -39,6 +41,8 @@ find_path(XORGSERVER_INCLUDE_DIRS
+     HINTS ${PC_XORGSERVER_INCLUDE_DIRS} ${PC_XORGSERVER_INCLUDEDIR}
+ )
+ 
++endif()
++
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(XORGSERVER REQUIRED_VARS XORGSERVER_INCLUDE_DIRS)
+ 
 -- 
 2.26.2
+
