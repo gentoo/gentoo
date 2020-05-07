@@ -700,13 +700,6 @@ dev-tcltk/tcl-mccp
 # Masked for testing
 >=dev-libs/libressl-3.1.0
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-04)
-# Package that used to provide test data for dev-python/cryptography.
-# The modern versions fetch it via SRC_URI and the last version
-# needing split vectors has been removed.
-# Removal in 30 days.  Bug #716204.
-dev-python/cryptography-vectors
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-04-04)
 # py27-only vim plugins. Masked for removal in 30 days.
 app-vim/automatictexplugin

@@ -107,7 +107,7 @@ else
 		https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( ${EGO_SUM_SRC_URI} )
 	"
-	KEYWORDS="~amd64 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~amd64-linux ~x86-linux"
 fi
 
 HOMEPAGE="https://git-lfs.github.com/"
