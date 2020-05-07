@@ -84,7 +84,17 @@ src_install() {
 
 	insinto /opt/slack
 	doins -r usr/lib/slack/.
-	for i in $(echo -n "${QA_PREBUILT}") ; do fperms +x "$i" ; done
+
+	# this really should be done a better way than trying to parse
+	# the QA_PREBUILT variable
+	local path
+	for path in ${QA_PREBUILT}; do
+		local -a paths=(${D}/${path})
+		for path in "${paths[@]}"; do
+			fperms +x "${path#${D}/}"
+		done
+	done
+
 	use suid && fperms u+s /opt/slack/chrome-sandbox # wrt 713094
 	dosym ../../opt/slack/slack usr/bin/slack
 
