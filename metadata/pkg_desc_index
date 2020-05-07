@@ -8758,6 +8758,7 @@ dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory
 dev-python/snakeoil 0.8.8 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5.1: Python library for the snappy compression library from Google
+dev-python/snapshottest 0.5.1: Snapshot Testing utils for Python
 dev-python/snowballstemmer 1.2.1 2.0.0: Stemmer algorithms generated from Snowball algorithms
 dev-python/socketio-client 0.6.6 0.7.2: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
@@ -8791,7 +8792,8 @@ dev-python/sphinxcontrib-doxylink 1.5: Extension to link to external Doxygen API
 dev-python/sphinxcontrib-github-alt 1.1 1.1-r2: Link to GitHub issues, pull requests, commits and users from Sphinx docs
 dev-python/sphinxcontrib-googleanalytics 0.1-r2: Sphinx extension googleanalytics
 dev-python/sphinxcontrib-htmlhelp 1.0.2 1.0.3: Sphinx extension which outputs HTML help book
-dev-python/sphinxcontrib-httpdomain 1.5.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
+dev-python/sphinxcontrib-httpdomain 1.5.0 1.7.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
+dev-python/sphinxcontrib-httpexample 0.10.3: Adds example directive for sphinx-contrib httpdomain
 dev-python/sphinxcontrib-issuetracker 0.11-r1 0.11-r2: Extension to sphinx to create links to issue trackers
 dev-python/sphinxcontrib-jsmath 1.0.1 1.0.1-r1: Sphinx extension which renders display math in HTML via JavaScript
 dev-python/sphinxcontrib-napoleon 0.6.1: Allow a different format in dosctrings for better clarity
