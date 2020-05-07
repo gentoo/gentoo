@@ -5689,7 +5689,7 @@ dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version fro
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200 5.202.4.280: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
@@ -10447,7 +10447,7 @@ dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-community 2020.1.0.201.6668.121 2020.1.1.201.7223.91: A complete toolset for web, mobile and enterprise development
+dev-util/idea-community 2020.1.0.201.6668.121: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 9.0: Find unused include directives in C/C++ programs
@@ -12692,7 +12692,7 @@ media-libs/bcg729 1.0.4 1.0.4-r1 999999: encoder and decoder of the ITU G729 Ann
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
-media-libs/chromaprint 1.4.3: Library implementing a custom algorithm for extracting audio fingerprints
+media-libs/chromaprint 1.4.3 1.5.0: Library implementing a custom algorithm for extracting audio fingerprints
 media-libs/cimg 2.8.3 2.9.0: C++ template image processing toolkit
 media-libs/clutter 1.26.4: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 3.0.27-r1: GStreamer integration library for Clutter
@@ -12735,7 +12735,7 @@ media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.22 9999: A graph based image p
 media-libs/gexiv2 0.10.10-r1 0.12.0 0.12.0-r1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.1.4 5.2.1-r1: Library to handle, display and manipulate GIF images
-media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1: The OpenGL Extension Wrangler Library
+media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1 2.2.0: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.2.1 3.3.1: The Portable OpenGL FrameWork
 media-libs/glm 0.9.9.5 0.9.9.7: OpenGL Mathematics
 media-libs/glpng 1.46-r1: OpenGL PNG image library
@@ -12783,7 +12783,7 @@ media-libs/lib3ds 1.3.0-r1 1.3.0-r2 2.0.0_rc1 2.0.0_rc1-r1: library for managing
 media-libs/lib3mf 1.8.1: Implementation of the 3D Manufacturing Format file standard
 media-libs/libXcm 0.5.4 9999: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
-media-libs/libaacs 0.9.0: Open implementation of the Advanced Access Content System (AACS) specification
+media-libs/libaacs 0.9.0 0.10.0: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2 1.20-r3: Afterstep's standalone generic image manipulation library
 media-libs/libao 1.2.2 1.2.2-r1: The Audio Output library
 media-libs/libaom 1.0.0-r2 9999: Alliance for Open Media AV1 Codec SDK
@@ -12812,8 +12812,8 @@ media-libs/libdvbcsa 1.1.0: Free implementation of the DVB Common Scrambling Alg
 media-libs/libdvbpsi 1.3.1 1.3.2: library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvd-audio 1.0.0: library for extracting audio from DVD-Audio discs
 media-libs/libdvdcss 1.4.2: A portable abstraction library for DVD decryption
-media-libs/libdvdnav 6.0.0 6.0.1 9999: Library for DVD navigation tools
-media-libs/libdvdread 6.0.0 6.0.1 6.0.2 9999: Library for DVD navigation tools
+media-libs/libdvdnav 6.0.0 6.0.1 6.1.0 9999: Library for DVD navigation tools
+media-libs/libdvdread 6.0.0 6.0.1 6.0.2 6.1.0 9999: Library for DVD navigation tools
 media-libs/libebur128 1.2.4: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
@@ -13121,7 +13121,7 @@ media-plugins/gst-plugins-jpeg 1.14.5 1.16.2: JPEG image encoder/decoder plugin 
 media-plugins/gst-plugins-kate 1.14.5 1.16.2: Kate overlay codec suppport plugin for GStreamer
 media-plugins/gst-plugins-ladspa 1.14.5 1.16.2: Ladspa elements for Gstreamer
 media-plugins/gst-plugins-lame 1.14.5 1.16.2: MP3 encoder plugin for GStreamer
-media-plugins/gst-plugins-libav 1.14.4.4.1.3_p20190329 1.16.2: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libav 1.14.4.4.1.3_p20190329 1.16.2-r1: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libde265 1.14.5 1.16.2: H.265 decoder plugin for GStreamer
 media-plugins/gst-plugins-libmms 1.14.5 1.16.2: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.15-r100: GStreamer plugin for ICE (RFC 5245) support
@@ -13233,7 +13233,7 @@ media-plugins/live 2017.10.28 2018.01.29 2018.07.07 2020.03.06: Libraries for st
 media-plugins/mcp-plugins 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.2.4: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mythplugins 30.0-r2: Official WMythTV plugins
-media-plugins/qmmp-plugin-pack 1.3.0 1.3.2: A set of extra plugins for Qmmp
+media-plugins/qmmp-plugin-pack 1.3.0 1.3.2 1.4.0: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
@@ -13617,7 +13617,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.6.1 0.6.2 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.3.2-r1 1.3.6-r1 1.3.7 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.3.2-r1 1.3.7 1.4.0 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.1 0.6.2 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
@@ -15073,7 +15073,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536-r1 0.4.1270-r1 0.4.1355-r1: utility to download media contents from the web
-net-misc/youtube-dl 2020.03.24 2020.05.03 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.05.03 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
