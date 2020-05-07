@@ -3,12 +3,12 @@ DEPEND=!static? ( aio? ( dev-libs/libaio ) glusterfs? ( sys-cluster/glusterfs ) 
 DESCRIPTION=Jens Axboe's Flexible IO tester
 EAPI=6
 HOMEPAGE=http://brick.kernel.dk/snaps/
-IUSE=aio glusterfs gnuplot gtk numa rbd rdma static zlib python_targets_python2_7 python_targets_python3_6
+IUSE=aio glusterfs gnuplot gtk numa rbd rdma static zlib python_targets_python3_6
 KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=!static? ( aio? ( dev-libs/libaio ) glusterfs? ( sys-cluster/glusterfs ) gtk? ( dev-libs/glib:2 ) numa? ( sys-process/numactl ) rbd? ( sys-cluster/ceph ) rdma? ( sys-fabric/libibverbs sys-fabric/librdmacm ) zlib? ( sys-libs/zlib ) ) gtk? ( x11-libs/gtk+:2 ) gnuplot? ( sci-visualization/gnuplot python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] )
-REQUIRED_USE=gnuplot? ( || ( python_targets_python2_7 python_targets_python3_6 ) )
+RDEPEND=!static? ( aio? ( dev-libs/libaio ) glusterfs? ( sys-cluster/glusterfs ) gtk? ( dev-libs/glib:2 ) numa? ( sys-process/numactl ) rbd? ( sys-cluster/ceph ) rdma? ( sys-fabric/libibverbs sys-fabric/librdmacm ) zlib? ( sys-libs/zlib ) ) gtk? ( x11-libs/gtk+:2 ) gnuplot? ( sci-visualization/gnuplot python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] )
+REQUIRED_USE=gnuplot? ( || ( python_targets_python3_6 ) )
 SLOT=0
 SRC_URI=http://brick.kernel.dk/snaps/fio-3.7.tar.bz2
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=048a541d3083188b80f2247f0ae1dd53
+_md5_=1cf9a0dedd008d01c18527ead6df461e
