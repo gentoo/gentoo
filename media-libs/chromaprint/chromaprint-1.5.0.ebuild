@@ -10,7 +10,7 @@ inherit cmake-multilib
 DESCRIPTION="Library implementing a custom algorithm for extracting audio fingerprints"
 HOMEPAGE="https://acoustid.org/chromaprint"
 SRC_URI="https://github.com/acoustid/${PN}/releases/download/v${PV}/${P}.tar.gz
-	test? ( https://github.com/google/googletest/archive/release-${GTEST_VERSION}.tar.gz -> gtest-${GTEST_VERSION}.tar.gz )
+	test? ( https://github.com/google/googletest/archive/v$(ver_cut 1-2 ${GTEST_VERSION}).x.tar.gz -> gtest-${GTEST_VERSION}.tar.gz )
 "
 
 LICENSE="LGPL-2.1"
