@@ -3,8 +3,8 @@ DESCRIPTION=Plasma Telepathy client
 EAPI=7
 HOMEPAGE=https://community.kde.org/KTp
 IUSE=gstreamer
-KEYWORDS=~amd64 ~arm64
+KEYWORDS=~amd64 ~arm64 ~x86
 LICENSE=metapackage
 RDEPEND=>=kde-apps/ktp-accounts-kcm-20.04.0:5 >=kde-apps/ktp-approver-20.04.0:5 >=kde-apps/ktp-auth-handler-20.04.0:5 >=kde-apps/ktp-common-internals-20.04.0:5 >=kde-apps/ktp-contact-list-20.04.0:5 >=kde-apps/ktp-contact-runner-20.04.0:5 >=kde-apps/ktp-desktop-applets-20.04.0:5 >=kde-apps/ktp-filetransfer-handler-20.04.0:5 >=kde-apps/ktp-kded-module-20.04.0:5 >=kde-apps/ktp-send-file-20.04.0:5 >=kde-apps/ktp-text-ui-20.04.0:5 gstreamer? ( >=kde-apps/ktp-call-ui-20.04.0:5 )
 SLOT=5
-_md5_=7043f786ece041a28461f537c2452ada
+_md5_=131acc51a33795bedc92f869d819df46

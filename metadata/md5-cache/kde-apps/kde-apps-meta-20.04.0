@@ -3,8 +3,8 @@ DESCRIPTION=Meta package for the KDE Applications collection
 EAPI=7
 HOMEPAGE=https://kde.org/
 IUSE=accessibility pim sdk
-KEYWORDS=~amd64 ~arm64
+KEYWORDS=~amd64 ~arm64 ~x86
 LICENSE=metapackage
 RDEPEND=>=kde-apps/kdeadmin-meta-20.04.0:5 >=kde-apps/kdecore-meta-20.04.0:5 >=kde-apps/kdeedu-meta-20.04.0:5 >=kde-apps/kdegames-meta-20.04.0:5 >=kde-apps/kdegraphics-meta-20.04.0:5 >=kde-apps/kdemultimedia-meta-20.04.0:5 >=kde-apps/kdenetwork-meta-20.04.0:5 >=kde-apps/kdeutils-meta-20.04.0:5 accessibility? ( >=kde-apps/kdeaccessibility-meta-20.04.0:5 ) pim? ( >=kde-apps/kdepim-meta-20.04.0:5 ) sdk? ( >=kde-apps/kdesdk-meta-20.04.0:5 )
 SLOT=5
-_md5_=42b65cf236c3686ed9ad6adefddb5f9d
+_md5_=273fa38a70218b09e2f117bf0c2267e9

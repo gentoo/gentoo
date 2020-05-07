@@ -3,8 +3,8 @@ DESCRIPTION=kdenetwork - merge this to pull in all kdenetwork-derived packages
 EAPI=7
 HOMEPAGE=https://kde.org/
 IUSE=dropbox +telepathy
-KEYWORDS=~amd64 ~arm64
+KEYWORDS=~amd64 ~arm64 ~x86
 LICENSE=metapackage
 RDEPEND=>=kde-apps/kdenetwork-filesharing-20.04.0:5 >=kde-apps/kget-20.04.0:5 >=kde-apps/krdc-20.04.0:5 >=kde-apps/kopete-20.04.0:5 >=kde-apps/krfb-20.04.0:5 >=kde-apps/zeroconf-ioslave-20.04.0:5 dropbox? ( >=kde-apps/dolphin-plugins-dropbox-20.04.0:5 ) telepathy? ( >=kde-apps/plasma-telepathy-meta-20.04.0:5 )
 SLOT=5
-_md5_=b797da623395b92d98a26c0b38d152da
+_md5_=496ab963c834895545fbc6fc6d3bffb9

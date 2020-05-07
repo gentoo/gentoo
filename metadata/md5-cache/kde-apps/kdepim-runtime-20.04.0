@@ -5,11 +5,11 @@ DESCRIPTION=Runtime plugin collection to extend the functionality of KDE PIM
 EAPI=7
 HOMEPAGE=https://kde.org/applications/office/org.kde.kontact
 IUSE=test debug +handbook test
-KEYWORDS=~amd64 ~arm64
+KEYWORDS=~amd64 ~arm64 ~x86
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=>=app-crypt/qca-2.3.0:2 dev-libs/cyrus-sasl:2 dev-libs/libical:= >=dev-qt/qtdbus-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtnetwork-5.12.3:5 >=dev-qt/qtnetworkauth-5.12.3:5 >=dev-qt/qtspeech-5.12.3:5 >=dev-qt/qtwebengine-5.12.3:5[widgets] >=dev-qt/qtwidgets-5.12.3:5 >=dev-qt/qtxml-5.12.3:5 >=kde-apps/akonadi-20.04.0:5 >=kde-apps/akonadi-calendar-20.04.0:5 >=kde-apps/akonadi-contacts-20.04.0:5 >=kde-apps/akonadi-mime-20.04.0:5 >=kde-apps/akonadi-notes-20.04.0:5 >=kde-apps/kalarmcal-20.04.0:5 >=kde-apps/kcalutils-20.04.0:5 >=kde-apps/kdav-20.04.0:5 >=kde-apps/kidentitymanagement-20.04.0:5 >=kde-apps/kimap-20.04.0:5 >=kde-apps/kmailtransport-20.04.0:5 >=kde-apps/kmbox-20.04.0:5 >=kde-apps/kmime-20.04.0:5 >=kde-apps/libkgapi-20.04.0:5 >=kde-apps/pimcommon-20.04.0:5 >=kde-frameworks/kcalendarcore-5.69.0:5 >=kde-frameworks/kcodecs-5.69.0:5 >=kde-frameworks/kcompletion-5.69.0:5 >=kde-frameworks/kconfig-5.69.0:5 >=kde-frameworks/kconfigwidgets-5.69.0:5 >=kde-frameworks/kcontacts-5.69.0:5 >=kde-frameworks/kcoreaddons-5.69.0:5 >=kde-frameworks/kholidays-5.69.0:5 >=kde-frameworks/ki18n-5.69.0:5 >=kde-frameworks/kio-5.69.0:5 >=kde-frameworks/kitemmodels-5.69.0:5 >=kde-frameworks/kjobwidgets-5.69.0:5 >=kde-frameworks/knotifications-5.69.0:5 >=kde-frameworks/knotifyconfig-5.69.0:5 >=kde-frameworks/kservice-5.69.0:5 >=kde-frameworks/ktextwidgets-5.69.0:5 >=kde-frameworks/kwallet-5.69.0:5 >=kde-frameworks/kwidgetsaddons-5.69.0:5 >=kde-frameworks/kwindowsystem-5.69.0:5 >=kde-frameworks/kxmlgui-5.69.0:5 || ( kde-frameworks/breeze-icons:* kde-frameworks/oxygen-icons:* ) >=kde-frameworks/kf-env-4 dev-qt/qtcore:5
 RESTRICT=!test? ( test ) !test? ( test ) test
 SLOT=5
 SRC_URI=mirror://kde/stable/release-service/20.04.0/src/kdepim-runtime-20.04.0.tar.xz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	ecm	e341cb3583b4219b5c207e24915b0264	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=7bce00158dbe1d13e348b846c23f8309
+_md5_=ef48b6f8d243647581fa84097e8bc854
