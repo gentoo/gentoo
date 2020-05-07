@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
 LICENSE="GPL-3 LGPL-2.1"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="pam pskc test"
 RESTRICT="!test? ( test )"
 

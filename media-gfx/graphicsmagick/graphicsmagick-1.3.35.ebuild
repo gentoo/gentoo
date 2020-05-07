@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EHG_REPO_URI="http://hg.code.sf.net/p/${PN}/code"
 else
 	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 IUSE="bzip2 +cxx debug fpx imagemagick jbig jpeg lcms lzma modules openmp
