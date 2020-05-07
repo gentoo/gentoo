@@ -83,6 +83,7 @@ gnome-extra/cinnamon-translations
 gnome-extra/cjs
 gnome-extra/nemo
 x11-wm/muffin
+=dev-python/xapp-1.0.1-r2
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2020-04-30)
 # Does not compile with latest windowmaker, bug #717418
