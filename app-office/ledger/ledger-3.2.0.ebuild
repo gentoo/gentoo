@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit check-reqs cmake-utils python-single-r1 python-utils-r1 bash-completion-r1
+inherit bash-completion-r1 check-reqs cmake python-single-r1
 
 DESCRIPTION="A double-entry accounting system with a command-line reporting interface"
 HOMEPAGE="https://www.ledger-cli.org/"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="debug doc emacs python"
+IUSE="debug doc python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test"
 
@@ -41,13 +41,10 @@ DEPEND="
 	)
 "
 
-# Building with python integration seems to fail without 8G available
-# RAM(!)  Since the memory check in check-reqs doesn't count swap, it
-# may be unfair to fail the build entirely on the memory test alone.
-# Therefore check-reqs_pkg_pretend is deliberately omitted so that we
-# ewarn but not eerror.
 pkg_pretend() {
-	:
+	if use python; then
+		check-reqs_pkg_pretend
+	fi
 }
 
 pkg_setup() {
@@ -58,7 +55,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Want to type "info ledger" not "info ledger3"
 	sed -i -e 's/ledger3/ledger/g' \
@@ -88,20 +85,20 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PF}"
 		-DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON
 		-DBUILD_DEBUG="$(usex debug)"
-		-DUTFCPP_PATH="/usr/include/utf8cpp"
+		-DUTFCPP_PATH="${ESYSROOT}/usr/include/utf8cpp"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
-	use doc && cmake-utils_src_make doc
+	use doc && cmake_src_compile doc
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	newbashcomp contrib/${PN}-completion.bash ${PN}
 }
