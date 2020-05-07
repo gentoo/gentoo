@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] test? ( dev-python/nose[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] dev-python/mock[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] >=dev-python/setuptools-42.0.2[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)]
+DEPEND=dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] test? ( dev-python/nose[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/mock[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 DESCRIPTION=Python scripts to manipulate trash cans via the command line
 EAPI=6
 HOMEPAGE=https://github.com/andreafrancia/trash-cli
-IUSE=test python_targets_python2_7 python_targets_python3_6
+IUSE=test python_targets_python3_6
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)]
-REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_6 )
+RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_6 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/andreafrancia/trash-cli/archive/5abecd53e1d84f2a5fd3fc60d2f5d71e518826c5.tar.gz -> trash-cli-0.17.1.14_p20170816.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	distutils-r1	054fa5f0442c7ccb4d4a05410d92123b	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=27cc04cc82ac443080dab1073bfed442
+_md5_=1a6c47ad6dfebdce2d76e9c174a4e197
