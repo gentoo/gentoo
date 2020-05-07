@@ -1,0 +1,15 @@
+BDEPEND=>=dev-perl/CGI-4 virtual/perl-Carp >=dev-perl/FCGI-0.670.0 virtual/perl-if virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Temp virtual/perl-Test-Simple ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=CGI Interface for Fast CGI
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/CGI-Fast
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/CGI-4 virtual/perl-Carp >=dev-perl/FCGI-0.670.0 virtual/perl-if dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LE/LEEJO/CGI-Fast-2.15.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=6253a89f35893d60e33ea3c223bb03ee
