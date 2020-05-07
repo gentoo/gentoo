@@ -14,7 +14,7 @@ inherit toolchain
 EGIT_BRANCH=master
 
 RDEPEND=""
-DEPEND="${CATEGORY}/binutils"
+BDEPEND="${CATEGORY}/binutils"
 
 src_prepare() {
 	local p ignore_patches=(
