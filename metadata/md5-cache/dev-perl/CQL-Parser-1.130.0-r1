@@ -1,0 +1,15 @@
+BDEPEND=>=dev-perl/Class-Accessor-0.100.0 >=dev-perl/Clone-0.150.0 >=dev-perl/String-Tokenizer-0.50.0 >=virtual/perl-ExtUtils-MakeMaker-6.590.0 test? ( dev-perl/Test-Exception virtual/perl-Test-Simple ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=compiles CQL strings into parse trees of Node subtypes
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/CQL-Parser
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic
+RDEPEND=>=dev-perl/Class-Accessor-0.100.0 >=dev-perl/Clone-0.150.0 >=dev-perl/String-Tokenizer-0.50.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BR/BRICAS/CQL-Parser-1.13.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=19907b952bd2d71d30a851102ae6ad52

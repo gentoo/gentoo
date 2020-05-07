@@ -5691,7 +5691,7 @@ dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200 5.202.4.280: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
-dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
+dev-perl/CQL-Parser 1.130.0 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
 dev-perl/CSS-Packer 2.50.0: Another CSS minifier
@@ -8662,7 +8662,7 @@ dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1-r1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2 2.2-r1: repoze.who is an identification and authentication framework for WSGI
 dev-python/requests 2.21.0-r1 2.23.0: HTTP library for human beings
-dev-python/requests-cache 0.4.12-r1: Persistent cache for requests library
+dev-python/requests-cache 0.4.12 0.4.12-r1: Persistent cache for requests library
 dev-python/requests-credssp 1.0.2 1.1.1: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
 dev-python/requests-kerberos 0.12.0-r1: A Kerberos authentication handler for python-requests
@@ -10446,7 +10446,7 @@ dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-community 2020.1.0.201.6668.121: A complete toolset for web, mobile and enterprise development
+dev-util/idea-community 2020.1.0.201.6668.121 2020.1.1.201.7223.91-r1: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 9.0: Find unused include directives in C/C++ programs
@@ -12785,7 +12785,7 @@ media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the refere
 media-libs/libaacs 0.9.0 0.10.0: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2 1.20-r3: Afterstep's standalone generic image manipulation library
 media-libs/libao 1.2.2 1.2.2-r1: The Audio Output library
-media-libs/libaom 1.0.0-r2 9999: Alliance for Open Media AV1 Codec SDK
+media-libs/libaom 1.0.0-r2 1.0.0_p20200507 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.14.0: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
@@ -16300,7 +16300,7 @@ sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 4.3.0: Tool for extracting data points from graphs
 sci-visualization/yt 3.3.5 3.4.0: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.6-r1: Interactive 3D mathematical function viewer
-sec-policy/apparmor-profiles 2.13.3 2.13.4 9999: A collection of profiles for the AppArmor application security system
+sec-policy/apparmor-profiles 2.13.4 9999: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20190201-r1 2.20190609-r1 9999: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20190201-r1 2.20190609-r1 9999: SELinux policy for accountsd
 sec-policy/selinux-acct 2.20190201-r1 2.20190609-r1 9999: SELinux policy for acct
@@ -16565,8 +16565,8 @@ sys-apps/acl 2.2.53: access control list utilities, libraries and headers
 sys-apps/agedu 20190630 20200206: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.13.3 2.13.4: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.13.3 2.13.4 2.13.4-r1: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor 2.13.4: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor-utils 2.13.4-r1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.48-r3 9999: Extended attributes tools
@@ -17386,7 +17386,7 @@ sys-libs/gwenhywfar 4.20.0 4.20.2-r1 5.1.2: Multi-platform helper library for ot
 sys-libs/kpmcore 4.1.0: Library for managing partitions
 sys-libs/ldb 2.0.8 2.0.9 2.0.10 2.1.1 2.1.2: An LDAP-like embedded database
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
-sys-libs/libapparmor 2.13.3 2.13.3-r1 2.13.4: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.13.4: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.20-r2 2.22 2.23-r1 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27 2.33 2.34: POSIX 1003.1e capabilities
