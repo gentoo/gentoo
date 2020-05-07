@@ -32,6 +32,10 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 RESTRICT="test" # FIXME: tests seem to get stuck at one point; investigate properly
 
+PATCHES=(
+	"${FILESDIR}"/external-ffmpeg4-dep.patch # Automatically rescan available elements for registry when system ffmpeg changes
+)
+
 multilib_src_configure() {
 	GST_PLUGINS_BUILD=""
 
@@ -41,6 +45,7 @@ multilib_src_configure() {
 		--with-package-name="Gentoo GStreamer ebuild" \
 		--with-package-origin="https://www.gentoo.org" \
 		--disable-fatal-warnings \
+		--with-system-libav \
 		$(use_enable orc)
 }
 
