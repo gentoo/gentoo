@@ -30,7 +30,10 @@ else
 fi
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-vcs/git
+	)
 "
 
 python_test() {
