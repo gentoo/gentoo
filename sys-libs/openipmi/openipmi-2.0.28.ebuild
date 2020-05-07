@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
 inherit autotools python-single-r1
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~x86"
-IUSE="crypt snmp perl python tcl"
+IUSE="crypt snmp perl python static-libs tcl"
 S="${WORKDIR}/${MY_P}"
 RESTRICT='test'
 
@@ -31,18 +31,16 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	tcl? ( dev-lang/tcl:0= )"
 DEPEND="${RDEPEND}
-	>=dev-lang/swig-1.3.21
-	virtual/pkgconfig"
+	>=dev-lang/swig-1.3.21"
+BDEPEND="virtual/pkgconfig"
+
 # Gui is broken!
 #		python? ( tcl? ( tk? ( dev-lang/tk dev-tcltk/tix ) ) )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	# https://bugs.gentoo.org/501510
-	"${FILESDIR}/${PN}-2.0.26-tinfo.patch"
-
-	"${FILESDIR}/${PN}-2.0.26-readline.patch"
+	"${FILESDIR}/${PN}-2.0.26-tinfo.patch" #501510
 )
 
 pkg_setup() {
@@ -52,29 +50,20 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Bug #290763: The buildsys tries to compile+optimize the py file during
-	# install, when the .so might not be been added yet. We just skip the files
-	# and use python_optimize ourselves later instead.
-	sed -r -i \
-		-e '/INSTALL.*\.py[oc] /d' \
-		-e '/install-exec-local/s,OpenIPMI.pyc OpenIPMI.pyo,,g' \
-		swig/python/Makefile.{am,in}
-
 	# Bug #298250: parallel install fix.
 	sed -r -i \
 		-e '/^install-data-local:/s,$, install-exec-am,g' \
-		cmdlang/Makefile.{am,in}
+		cmdlang/Makefile.{am,in} || die
 
 	# We touch the .in and .am above because if we use the below, the Perl stuff
 	# is very fragile, and often fails to link.
-	#cd "${S}"
 	eautoreconf
 }
 
 src_configure() {
 	local myconf=(
 		# these binaries are for root!
-		--bindir=/usr/sbin
+		--bindir="${EPREFIX}"/usr/sbin
 		--with-glib
 		--with-glibver=2.0
 		--with-swig
@@ -104,4 +93,9 @@ src_install() {
 	newdoc cmdlang/README README.cmdlang
 
 	use python && python_optimize
+
+	find "${ED}" -name "*.la" -delete || die
+	if ! use static-libs ; then
+		find "${ED}" -name "*.a" -delete || die
+	fi
 }

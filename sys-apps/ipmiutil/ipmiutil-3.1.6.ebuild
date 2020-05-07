@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.8-flags.patch
 	"${FILESDIR}"/${PN}-2.9.9-lib_symlink.patch
-	"${FILESDIR}"/${PN}-3.1.4-fix_lanplus_build.patch
+	"${FILESDIR}"/${PN}-3.1.5-fix-configure.patch
 )
 
 src_prepare() {
@@ -30,7 +30,7 @@ src_prepare() {
 	sed -i -e 's|which rpm |which we_are_gentoo_rpm_is_a_guest |' configure.ac || die
 
 	# Don't compress man pages
-	sed '/gzip -f/d' -i doc/Makefile.am || die
+	sed '/gzip -nf/d' -i doc/Makefile.am || die
 
 	eautoreconf
 }
