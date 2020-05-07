@@ -1,0 +1,81 @@
+commit cfefe5a8322b40c6e7bd3cc794fd644edcc3a6d6
+Author: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date:   Mon Jan 27 20:21:15 2020 +0530
+
+    Import ABC from collections.abc instead of collections for Python 3.9 compatibility. (#286)
+
+diff --git a/apitools/base/py/extra_types.py b/apitools/base/py/extra_types.py
+index 847dc91..e40a785 100644
+--- a/apitools/base/py/extra_types.py
++++ b/apitools/base/py/extra_types.py
+@@ -16,7 +16,6 @@
+ 
+ """Extra types understood by apitools."""
+ 
+-import collections
+ import datetime
+ import json
+ import numbers
+@@ -30,6 +29,11 @@ from apitools.base.py import encoding_helper as encoding
+ from apitools.base.py import exceptions
+ from apitools.base.py import util
+ 
++if six.PY3:
++    from collections.abc import Iterable
++else:
++    from collections import Iterable
++
+ __all__ = [
+     'DateField',
+     'DateTimeMessage',
+@@ -129,7 +133,7 @@ def _PythonValueToJsonValue(py_value):
+         return JsonValue(double_value=float(py_value))
+     if isinstance(py_value, dict):
+         return JsonValue(object_value=_PythonValueToJsonObject(py_value))
+-    if isinstance(py_value, collections.Iterable):
++    if isinstance(py_value, Iterable):
+         return JsonValue(array_value=_PythonValueToJsonArray(py_value))
+     raise exceptions.InvalidDataError(
+         'Cannot convert "%s" to JsonValue' % py_value)
+@@ -212,7 +216,7 @@ def _JsonProtoToPythonValue(json_proto):
+ def _PythonValueToJsonProto(py_value):
+     if isinstance(py_value, dict):
+         return _PythonValueToJsonObject(py_value)
+-    if (isinstance(py_value, collections.Iterable) and
++    if (isinstance(py_value, Iterable) and
+             not isinstance(py_value, six.string_types)):
+         return _PythonValueToJsonArray(py_value)
+     return _PythonValueToJsonValue(py_value)
+diff --git a/apitools/base/py/util.py b/apitools/base/py/util.py
+index ac1a44c..ad086e4 100644
+--- a/apitools/base/py/util.py
++++ b/apitools/base/py/util.py
+@@ -16,7 +16,6 @@
+ 
+ """Assorted utilities shared between parts of apitools."""
+ 
+-import collections
+ import os
+ import random
+ 
+@@ -30,6 +29,11 @@ from apitools.base.protorpclite import messages
+ from apitools.base.py import encoding_helper as encoding
+ from apitools.base.py import exceptions
+ 
++if six.PY3:
++    from collections.abc import Iterable
++else:
++    from collections import Iterable
++
+ __all__ = [
+     'DetectGae',
+     'DetectGce',
+@@ -78,7 +82,7 @@ def NormalizeScopes(scope_spec):
+     if isinstance(scope_spec, six.string_types):
+         scope_spec = six.ensure_str(scope_spec)
+         return set(scope_spec.split(' '))
+-    elif isinstance(scope_spec, collections.Iterable):
++    elif isinstance(scope_spec, Iterable):
+         scope_spec = [six.ensure_str(x) for x in scope_spec]
+         return set(scope_spec)
+     raise exceptions.TypecheckError(
