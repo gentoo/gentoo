@@ -5,7 +5,7 @@ EAPI=6
 
 MATE_LA_PUNT="yes"
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit mate python-single-r1 virtualx
 
