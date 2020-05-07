@@ -4,7 +4,7 @@
 EAPI=6
 
 # jython depends on java-config, so don't add it or things will break
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
@@ -27,7 +27,10 @@ RDEPEND="
 	sys-apps/baselayout-java
 	sys-apps/portage[${PYTHON_USEDEP}]"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.2.0-prefix.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.0-prefix.patch
+	"${FILESDIR}"/${PN}-2.2.0-py38.patch
+)
 
 python_install_all() {
 	distutils-r1_python_install_all
