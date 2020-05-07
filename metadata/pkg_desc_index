@@ -2501,7 +2501,7 @@ app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/loksh 6.6: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
-app-shells/mksh 57-r2 58 9999: MirBSD Korn Shell
+app-shells/mksh 57-r2 58 59 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/mpv-bash-completion 3.3.16 3.3.17: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
@@ -5692,7 +5692,7 @@ dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200 5.202.4.280: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
-dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
+dev-perl/CSS-Minifier 0.10.0-r1 0.10.0-r2: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
 dev-perl/CSS-Packer 2.50.0: Another CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
