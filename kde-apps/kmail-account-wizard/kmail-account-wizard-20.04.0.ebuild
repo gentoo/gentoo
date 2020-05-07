@@ -16,7 +16,7 @@ HOMEPAGE+=" https://userbase.kde.org/Kmail/Account_Wizard"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="

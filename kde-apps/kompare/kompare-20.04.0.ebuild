@@ -14,7 +14,7 @@ HOMEPAGE="https://kde.org/applications/development/org.kde.kompare"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="

@@ -14,7 +14,7 @@ https://kcachegrind.github.io/html/Home.html"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="nls"
 
 BDEPEND="

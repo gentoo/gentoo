@@ -5,7 +5,6 @@ EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
-KDE_APPS_MINIMAL=19.04.3
 KFMIN=5.60.0
 QTMIN=5.12.3
 VIRTUALDBUS_TEST="true"
@@ -24,6 +23,16 @@ SLOT="5/55" # look at KDEVELOP_SOVERSION inside CMakeLists.txt
 IUSE="+gdbui hex +plasma +qmake reviewboard subversion webkit"
 
 COMMON_DEPEND="
+	dev-libs/grantlee:5
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtdeclarative-${QTMIN}:5[widgets]
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qthelp-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qttest-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
+	>=dev-util/astyle-3.1:=
 	>=kde-frameworks/karchive-${KFMIN}:5
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
 	>=kde-frameworks/kcmutils-${KFMIN}:5
@@ -53,19 +62,9 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	>=kde-frameworks/threadweaver-${KFMIN}:5
-	>=kde-apps/libkomparediff2-${KDE_APPS_MINIMAL}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtdeclarative-${QTMIN}:5[widgets]
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qthelp-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qttest-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
-	dev-libs/grantlee:5
-	>=dev-util/astyle-3.1:=
-	>=sys-devel/clang-3.8.0:=
-	gdbui? ( >=kde-plasma/libksysguard-5.16.5:5 )
+	kde-apps/libkomparediff2:5
+	>=sys-devel/clang-6.0:=
+	gdbui? ( >=kde-plasma/libksysguard-5.16.5:5= )
 	hex? ( app-editors/okteta:5 )
 	plasma? (
 		>=kde-frameworks/krunner-${KFMIN}:5
@@ -86,14 +85,14 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
 RDEPEND="${COMMON_DEPEND}
-	>=kde-apps/kapptemplate-${KDE_APPS_MINIMAL}:5
-	>=kde-apps/kio-extras-${KDE_APPS_MINIMAL}:5
 	>=dev-qt/qdbus-${QTMIN}:5
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	dev-util/ninja
+	kde-apps/kapptemplate:5
+	kde-apps/kio-extras:5
 	>=sys-devel/gdb-7.0[python]
-	reviewboard? ( >=kde-apps/ktp-accounts-kcm-${KDE_APPS_MINIMAL}:5 )
+	reviewboard? ( kde-apps/ktp-accounts-kcm:5 )
 	!dev-util/kdevelop-clang-tidy
 "
 
@@ -138,5 +137,9 @@ pkg_postinst() {
 
 	if ! has_version "dev-util/clazy" ; then
 		elog "For static C++ Qt code analysis support, please install dev-util/clazy"
+	fi
+
+	if ! has_version ">=dev-util/meson-0.51" ; then
+		elog "For the Meson Project manager plugin, please install dev-util/meson"
 	fi
 }

@@ -13,7 +13,7 @@ DESCRIPTION="Thumbnail generators for PDF/PS and RAW files"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="raw"
 
 DEPEND="
