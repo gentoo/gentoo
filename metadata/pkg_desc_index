@@ -5682,8 +5682,8 @@ dev-perl/CGI-FormBuilder 3.100.0 3.100.0-r1: Extremely fast, reliable form gener
 dev-perl/CGI-PSGI 0.150.0-r1 0.150.0-r2: Adapt CGI.pm to the PSGI protocol
 dev-perl/CGI-Session 4.480.0-r2 4.480.0-r3: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.115.0 1.250.0: A Simple totally OO CGI interface that is CGI.pm compliant
-dev-perl/CHI 0.600.0: Unified cache handling interface
-dev-perl/CPAN-Changes 0.400.2: Read and write Changes files
+dev-perl/CHI 0.600.0 0.600.0-r1: Unified cache handling interface
+dev-perl/CPAN-Changes 0.400.2 0.400.2-r1: Read and write Changes files
 dev-perl/CPAN-Checksums 2.120.0: Write a CHECKSUMS file for a directory as on CPAN
 dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version from a distribution filename
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
@@ -8663,7 +8663,7 @@ dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1-r1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2 2.2-r1: repoze.who is an identification and authentication framework for WSGI
 dev-python/requests 2.21.0-r1 2.23.0: HTTP library for human beings
-dev-python/requests-cache 0.4.12 0.4.12-r1: Persistent cache for requests library
+dev-python/requests-cache 0.4.12-r1: Persistent cache for requests library
 dev-python/requests-credssp 1.0.2 1.1.1: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
 dev-python/requests-kerberos 0.12.0-r1: A Kerberos authentication handler for python-requests
@@ -17344,8 +17344,8 @@ sys-kernel/dracut 048-r1 049-r3 050 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-kernel 5.4.32 5.4.34 5.4.35 5.4.38 5.5.19 5.6.6 5.6.7 5.6.10: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.32 5.4.34 5.4.35 5.4.36 5.4.38 5.5.19 5.6.6 5.6.7 5.6.8 5.6.10: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.32 5.4.34 5.4.35 5.4.38 5.4.39 5.5.19 5.6.6 5.6.7 5.6.10 5.6.11: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.32 5.4.34 5.4.35 5.4.36 5.4.38 5.4.39 5.5.19 5.6.6 5.6.7 5.6.8 5.6.10 5.6.11: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.217 4.4.218 4.4.219 4.4.220 4.4.221 4.4.222 4.9.217 4.9.218 4.9.219 4.9.220 4.9.221 4.9.222 4.14.174 4.14.175 4.14.176 4.14.177 4.14.178 4.14.179 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 4.19.120 4.19.121 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.4.37 5.4.38 5.4.39 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8 5.6.9 5.6.10 5.6.11: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3 5.7_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17361,7 +17361,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
-sys-kernel/vanilla-kernel 5.4.34 5.4.35 5.4.38 5.5.19 5.6.6 5.6.7 5.6.10: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.34 5.4.35 5.4.38 5.4.39 5.5.19 5.6.6 5.6.7 5.6.10 5.6.11: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 3.16.83 4.4.222 4.9.222 4.14.179 4.19.121 5.4.39 5.5.18 5.6.11: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
