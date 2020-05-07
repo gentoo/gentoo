@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python{2_7,3_6})
+PYTHON_COMPAT=(python3_6)
 
 inherit autotools python-single-r1 vala
 
