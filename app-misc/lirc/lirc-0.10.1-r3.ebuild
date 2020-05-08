@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit eutils flag-o-matic linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
-HOMEPAGE="http://www.lirc.org/"
+HOMEPAGE="https://www.lirc.org/"
 
 LIRC_DRIVER_DEVICE="/dev/lirc0"
 
@@ -17,7 +17,7 @@ MY_P=${PN}-${PV/_/-}
 if [[ "${PV/_pre/}" = "${PV}" ]]; then
 	SRC_URI="mirror://sourceforge/lirc/${MY_P}.tar.bz2"
 else
-	SRC_URI="http://www.lirc.org/software/snapshots/${MY_P}.tar.bz2"
+	SRC_URI="https://www.lirc.org/software/snapshots/${MY_P}.tar.bz2"
 fi
 
 LICENSE="GPL-2+"
