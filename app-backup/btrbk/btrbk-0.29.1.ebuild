@@ -9,10 +9,10 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/digint/btrbk.git"
 	inherit git-r3
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="~arm64"
 else
 	SRC_URI="https://digint.ch/download/btrbk/releases/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 DESCRIPTION="Tool for creating snapshots and remote backups of btrfs subvolumes"

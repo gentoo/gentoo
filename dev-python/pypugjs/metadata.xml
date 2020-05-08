@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>andy@freilandkiwis.de</email>
+			<name>Andy Grabow</name>
+		</maintainer>
+		<remote-id type="pypi">pypugjs</remote-id>
+		<remote-id type="github">kakulukia/pypugjs</remote-id>
+	</upstream>
+	<longdescription>PyPugJS is a fork of PyJade with the name Jade changed to PugJS.
+PyPuJS is a high performance port of Jade-lang for python,
+that converts any .pug source to any of the Template-language (Django,
+Jinja2, Mako or Tornado).
+	</longdescription>
+</pkgmetadata>

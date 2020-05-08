@@ -12,11 +12,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 CDEPEND=">=dev-python/pbr-1.8.0[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
 	${CDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 RDEPEND=">=dev-python/sqlalchemy-0.9.6[${PYTHON_USEDEP}]
@@ -26,7 +26,7 @@ RDEPEND=">=dev-python/sqlalchemy-0.9.6[${PYTHON_USEDEP}]
 		>=dev-python/tempita-0.4[${PYTHON_USEDEP}]"
 # Testsuite requires a missing dep and errors with poor report output
 
-PATCHES=( "${FILESDIR}/${PN}-0.11-disable-sphinx-exts.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.13-disable-sphinx-exts.patch" )
 
 python_compile_all() {
 	if use doc; then
