@@ -15,7 +15,7 @@ https://userbase.kde.org/RSIBreak"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
