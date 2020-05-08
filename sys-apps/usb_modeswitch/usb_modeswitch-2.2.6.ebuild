@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,9 +10,9 @@ MY_P=${MY_PN}-${PV/_p*}
 DATA_VER="20151101"
 
 DESCRIPTION="A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks"
-HOMEPAGE="http://www.draisberghof.de/usb_modeswitch/ http://www.draisberghof.de/usb_modeswitch/device_reference.txt"
-SRC_URI="http://www.draisberghof.de/${PN}/${MY_P}.tar.bz2
-	http://www.draisberghof.de/${PN}/${MY_PN}-data-${DATA_VER}.tar.bz2"
+HOMEPAGE="https://www.draisberghof.de/usb_modeswitch/ https://www.draisberghof.de/usb_modeswitch/device_reference.txt"
+SRC_URI="https://www.draisberghof.de/${PN}/${MY_P}.tar.bz2
+	https://www.draisberghof.de/${PN}/${MY_PN}-data-${DATA_VER}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
