@@ -8256,7 +8256,7 @@ dev-python/pilkit 2.0: A collection of utilities and processors for the Python I
 dev-python/pillow 6.2.2 7.0.0 7.1.2: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 9.0.1-r2 19.3.1-r2 20.0.2 20.1: Installs python packages -- replacement for easy_install
-dev-python/pipenv 2018.11.26: Python Development Workflow for Humans
+dev-python/pipenv 2018.11.26 2020.4.1_beta1: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.4.0 1.5.1: Interface Python with pkg-config
 dev-python/pkginfo 1.5.0.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
