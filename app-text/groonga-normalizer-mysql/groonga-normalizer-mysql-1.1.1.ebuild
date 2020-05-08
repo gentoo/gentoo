@@ -5,8 +5,8 @@ EAPI=6
 inherit eutils autotools ltprune
 
 DESCRIPTION="Groonga plugin that provides MySQL compatible normalizers"
-HOMEPAGE="http://groonga.org/"
-SRC_URI="http://packages.groonga.org/source/${PN}/${P}.tar.gz"
+HOMEPAGE="https://groonga.org/"
+SRC_URI="https://packages.groonga.org/source/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
