@@ -5,7 +5,7 @@ DESCRIPTION=The Cyrus IMAP Server
 EAPI=7
 HOMEPAGE=https://www.cyrusimap.org/
 IUSE=afs backup calalarm caps clamav http kerberos ldap lmdb mysql nntp pam perl postgres replication +server sieve snmp sqlite ssl static-libs tcpd test xapian ssl
-KEYWORDS=~amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86
+KEYWORDS=amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86
 LICENSE=BSD-with-attribution GPL-2
 RDEPEND=sys-libs/zlib:0= dev-libs/libpcre:3 >=dev-libs/cyrus-sasl-2.1.13:2 dev-libs/jansson dev-libs/icu:0= sys-libs/e2fsprogs-libs afs? ( net-fs/openafs ) calalarm? ( dev-libs/libical:0= ) caps? ( sys-libs/libcap ) clamav? ( app-antivirus/clamav ) http? ( dev-libs/libxml2:2 dev-libs/libical:0= net-libs/nghttp2 ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) lmdb? ( dev-db/lmdb:0= ) mysql? ( dev-db/mysql-connector-c:0= ) nntp? ( !net-nntp/leafnode ) pam? ( sys-libs/pam >=net-mail/mailbase-1 ) perl? ( dev-lang/perl:= ) postgres? ( dev-db/postgresql:* ) snmp? ( >=net-analyzer/net-snmp-5.2.2-r1:0= ) ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist] ) sqlite? ( dev-db/sqlite:3 ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 snmp? ( net-analyzer/net-snmp:0=[tcpd=] ) ) xapian? ( >=dev-libs/xapian-1.4.0:0= ) acct-group/mail acct-user/cyrus !mail-mta/courier !net-mail/bincimap !net-mail/courier-imap !net-mail/uw-imap !app-arch/dump
 REQUIRED_USE=afs? ( kerberos ) backup? ( sqlite ) calalarm? ( http ) http? ( sqlite )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/cyrusimap/cyrus-imapd/releases/download/cyrus-imapd-3.0.13/cyrus-imapd-3.0.13.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	pam	a1771fc1e5831c201eaf18451747d94b	ssl-cert	876f0e74ef1cc2e7c4edd9bca336d350	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ad0d98b8c74d707aa55d6d8d3ed4402b
+_md5_=50e1ea204630f56ad8a44ac7b9823520
