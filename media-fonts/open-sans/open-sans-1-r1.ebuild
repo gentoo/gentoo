@@ -5,7 +5,7 @@ EAPI=6
 inherit font
 
 DESCRIPTION="Clean and modern sans-serif typeface designed for legibility across interfaces"
-HOMEPAGE="http://www.opensans.com/"
+HOMEPAGE="https://www.opensans.com/"
 SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.zip"
 # renamed from unversioned google zip
 
