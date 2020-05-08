@@ -5970,6 +5970,10 @@ net-libs/c-client:chappa - Enable Eduardo Chappa's patches for use with mail-cli
 net-libs/c-client:doc - Install RFCs related to IMAP
 net-libs/c-client:topal - Enable support for net-mail/topal for use with mail-client/alpine
 net-libs/cvm:vpopmail - Enable vpopmail support
+net-libs/czmq:drafts - Build draft API, which may change at any time without any notice, and is therefore not recommended for normal use. (requires draft support in net-libs/zeromq as well)
+net-libs/czmq:http-client - Build support for HTTP client using net-misc/curl
+net-libs/czmq:http-server - Build support for HTTP server using net-libs/libmicrohttpd
+net-libs/czmq:uuid - Enable UUID support using sys-apps/util-linux
 net-libs/daq:afpacket - Build the AFPacket data acquisition module. Functions similar to the PCAP module but with better performance. Snort can run unprivileged when using this module. AFpacket supports both inline and passive modes.
 net-libs/daq:dump - Build the Dump data acquisition module. The dump DAQ allows you to test the various inline mode features available in 2.9 Snort like injection and normalization.
 net-libs/daq:ipq - Build the IPQ data acquisition module. IPQ is the old way to process iptables packets for inline deployments. Snort can not run unprivileged when using this module.

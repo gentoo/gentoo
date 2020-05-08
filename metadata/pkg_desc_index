@@ -547,7 +547,7 @@ app-admin/recursos 2.0-r1: Script to create html and text report about your syst
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1 0.14.4 0.15.0: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.3.3 1.4.0-r1 1.4.1 1.5.0 1.6.0 1.9.0 9999: (R)?ex, the friendly automation framework
-app-admin/rsyslog 8.1910.0-r1 8.1911.0-r1 8.2001.0 8.2002.0 8.2004.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.1911.0-r1 8.2004.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2019.2.4 3000.2-r4: Salt is a remote execution and configuration manager
@@ -5129,7 +5129,7 @@ dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing 
 dev-libs/libpwquality 1.4.2: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.3.1 3.4.0: A Qt implementation of XDG standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
-dev-libs/librdkafka 1.4.0: Apache Kafka C/C++ client library
+dev-libs/librdkafka 1.4.0 1.4.2: Apache Kafka C/C++ client library
 dev-libs/librelp 1.4.0 1.5.0 1.6.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.10.0 2.12.0 2.13.0: Generic library for reporting software bugs
@@ -14452,7 +14452,7 @@ net-libs/courier-authlib 0.69.0-r1 0.70.0: Courier authentication library
 net-libs/courier-unicode 1.3 1.4 2.1: Unicode library used by the courier mail server
 net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
-net-libs/czmq 2.2.0-r2 3.0.2: High-level C Binding for ZeroMQ
+net-libs/czmq 2.2.0-r2 3.0.2-r1 4.2.0: High-level C Binding for ZeroMQ
 net-libs/daq 2.0.6-r1 2.0.7: Data Acquisition library, for packet I/O
 net-libs/davix 0.6.7 0.7.3 0.7.4 0.7.5: High-performance file management over WebDAV/HTTP
 net-libs/dleyna-connector-dbus 0.3.0: utility library for higher level dLeyna libraries
