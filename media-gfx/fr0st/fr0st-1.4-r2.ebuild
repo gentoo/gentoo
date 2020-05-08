@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils multilib python-single-r1 wxwidgets
 
 DESCRIPTION="A fractal flame editor"
-HOMEPAGE="http://fr0st.wordpress.com/"
+HOMEPAGE="https://fr0st.wordpress.com/"
 SRC_URI="https://launchpad.net/${PN}/trunk/${PV}.0/+download/${P}-src.tgz"
 
 LICENSE="GPL-3"
