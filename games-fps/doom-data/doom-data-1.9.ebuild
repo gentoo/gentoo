@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="The IWAD used by the shareware version of Doom"
-HOMEPAGE="http://www.idsoftware.com"
+HOMEPAGE="https://www.idsoftware.com"
 SRC_URI="http://distro.ibiblio.org/pub/linux/distributions/slitaz/sources/packages/d/doom1.wad"
 
 LICENSE="freedist"
