@@ -11,7 +11,7 @@ SRC_URI="https://github.com/xrootd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~amd64-linux"
 
 DEPEND="net-libs/xrootd
 	!<net-libs/xrootd-4.10.0[rbd]
