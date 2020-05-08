@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils toolchain-funcs gnome2-utils
 
 DESCRIPTION="A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures"
-HOMEPAGE="http://www.residualvm.org/"
+HOMEPAGE="https://www.residualvm.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-sources.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
