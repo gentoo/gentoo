@@ -9,7 +9,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Data encoding library"
-HOMEPAGE="http://www.haskell.org/haskellwiki/Library/Data_encoding"
+HOMEPAGE="https://www.haskell.org/haskellwiki/Library/Data_encoding"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
