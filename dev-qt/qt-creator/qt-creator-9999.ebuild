@@ -24,7 +24,7 @@ else
 	S=${WORKDIR}/${MY_P}
 fi
 
-# TODO: unbundle sqlite and yaml-cpp
+# TODO: unbundle sqlite
 
 QTC_PLUGINS=(android +autotest baremetal beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
@@ -51,6 +51,7 @@ BDEPEND="
 	doc? ( >=dev-qt/qdoc-${QT_PV} )
 "
 CDEPEND="
+	>=dev-cpp/yaml-cpp-0.6.2:=
 	>=dev-qt/qtconcurrent-${QT_PV}
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtdeclarative-${QT_PV}[widgets]
@@ -183,6 +184,9 @@ src_prepare() {
 
 	# remove bundled syntax-highlighting
 	rm -r src/libs/3rdparty/syntax-highlighting || die
+
+	# remove bundled yaml-cpp
+	rm -r src/libs/3rdparty/yaml-cpp || die
 
 	# remove bundled qbs
 	rm -r src/shared/qbs || die
