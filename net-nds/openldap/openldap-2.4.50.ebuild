@@ -10,7 +10,7 @@ BIS_PV=20140524
 BIS_P="${BIS_PN}-${BIS_PV}"
 
 DESCRIPTION="LDAP suite of application and development tools"
-HOMEPAGE="http://www.OpenLDAP.org/"
+HOMEPAGE="https://www.OpenLDAP.org/"
 
 # upstream mirrors are mostly not working, using canonical URI
 SRC_URI="
