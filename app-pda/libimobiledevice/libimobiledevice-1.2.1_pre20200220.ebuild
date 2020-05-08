@@ -17,7 +17,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 
 SLOT="0/6" # based on SONAME of libimobiledevice.so
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ppc ~ppc64 ~x86"
 IUSE="doc gnutls libressl python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
