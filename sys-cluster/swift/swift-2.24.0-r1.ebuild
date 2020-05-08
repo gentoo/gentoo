@@ -62,12 +62,6 @@ src_prepare() {
 	distutils-r1_python_prepare_all
 }
 
-src_test() {
-	# https://bugs.launchpad.net/swift/+bug/1249727
-	find . \( -name test_wsgi.py -o -name test_locale.py -o -name test_utils.py \) -delete || die
-	SKIP_PIP_INSTALL=1 PBR_VERSION=0.6.0 sh .unittests || die
-}
-
 python_install_all() {
 	distutils-r1_python_install_all
 	keepdir /etc/swift
