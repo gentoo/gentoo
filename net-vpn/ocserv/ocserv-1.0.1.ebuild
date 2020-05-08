@@ -20,6 +20,7 @@ BDEPEND="
 	test? (
 		net-libs/gnutls[tools(+)]
 		net-libs/socket_wrapper
+		net-vpn/openconnect
 		sys-libs/nss_wrapper
 		sys-libs/uid_wrapper
 	)
