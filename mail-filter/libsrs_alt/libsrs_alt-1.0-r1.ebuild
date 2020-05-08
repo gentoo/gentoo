@@ -10,7 +10,7 @@ MY_RC=${PV}
 S=${WORKDIR}/${PN}-${MY_PV}
 
 DESCRIPTION="Sender Rewriting Scheme library for use with Exim"
-HOMEPAGE="http://opsec.eu/src/srs/"
+HOMEPAGE="https://opsec.eu/src/srs/"
 SRC_URI="https://opsec.eu/src/srs/libsrs_alt-${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2"
