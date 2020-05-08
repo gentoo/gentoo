@@ -97,6 +97,9 @@ src_compile() {
 	# For now, until the strict-aliasing breakage will be fixed
 	append-cflags -fno-strict-aliasing
 
+	# Bug #668002
+	(use ppc || use arm || use hppa) && append-libs -latomic
+
 	if use prometheus-exporter; then
 		EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o"
 	fi
