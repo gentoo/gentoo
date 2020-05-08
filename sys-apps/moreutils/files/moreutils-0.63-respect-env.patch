@@ -1,0 +1,38 @@
+From 6c88aaa6b828d7bd7c1dccb3b842594d48c1764c Mon Sep 17 00:00:00 2001
+From: Nicolas Schier <nicolas@fjasle.eu>
+Date: Wed, 27 Nov 2019 21:16:12 +0100
+Subject: is_utf8: allow propagation of compiler and linker flags
+
+Allow propagating compiler and linker flags via overrides of CFLAGS and
+LDFLAGS variables.  This allows enabling of hardening flags w/o
+modification of the original Makefile.
+
+Signed-off-by: Nicolas Schier <nicolas@fjasle.eu>
+---
+ is_utf8/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/is_utf8/Makefile b/is_utf8/Makefile
+index 4ebf8be..13b1021 100644
+--- a/is_utf8/Makefile
++++ b/is_utf8/Makefile
+@@ -38,13 +38,13 @@ SONAME = $(LINKERNAME).$(VERSION)
+ REALNAME = $(SONAME).$(MINOR).$(RELEASE)
+ 
+ CC = gcc
+-CFLAGS = -O3 -Wextra -Wall -ansi -Wstrict-prototypes
++CFLAGS ?= -O3 -Wextra -Wall -ansi -Wstrict-prototypes
+ 
+ $(NAME): $(OBJ)
+-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
++	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
+ 
+ IS_UTF8_LIB:
+-	$(CC) --shared -fPIC $(CFLAGS) $(LIB_SRC) -o $(LINKERNAME)
++	$(CC) --shared -fPIC $(CFLAGS) $(LDFLAGS) $(LIB_SRC) -o $(LINKERNAME)
+ 
+ all:
+ 		@make $(NAME)
+-- 
+cgit v1.2.3
+
