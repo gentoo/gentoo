@@ -8037,7 +8037,7 @@ dev-python/loguru 0.4.1: Python logging made (stupidly) simple
 dev-python/logutils 0.3.3-r1 0.3.5: The logutils package provides a set of handlers for the Python standard
 dev-python/lunr 0.5.6: A Python implementation of Lunr.js
 dev-python/lxml 4.5.0: A Pythonic binding for the libxml2 and libxslt libraries
-dev-python/lz4 0.8.2 2.1.6: LZ4 Bindings for Python
+dev-python/lz4 0.8.2 2.1.6 3.0.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.31.0-r2 0.35.2: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
@@ -8436,6 +8436,7 @@ dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind cal
 dev-python/pyproj 2.4.2-r1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 4: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
+dev-python/pypugjs 5.9.4: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.0 7.3.1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.0 7.3.1: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.0_p1 7.3.1_p1: PyPy executable (pre-built version)
@@ -8800,7 +8801,7 @@ dev-python/spyder-notebook 0.2.3: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.3.2: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.0: Plugin for Spyder to run tests and view the results
 dev-python/sqlalchemy 1.3.11: Python SQL toolkit and Object Relational Mapper
-dev-python/sqlalchemy-migrate 0.12.0: SQLAlchemy Schema Migration Tools
+dev-python/sqlalchemy-migrate 0.12.0 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.0 0.3.1: A non-validating SQL parser module for Python
 dev-python/squaremap 1.0.4: Hierarchic data-visualisation control for wxPython
@@ -8879,8 +8880,8 @@ dev-python/twython 3.7.0: An easy way to access Twitter data with Python
 dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using Twisted
 dev-python/txaio 2.9.0: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
-dev-python/txrequests 0.9.5-r1: Asynchronous Python HTTP for Humans
-dev-python/txtorcon 0.19.3-r1: Twisted-based Tor controller client, with state-tracking and config abstractions
+dev-python/txrequests 0.9.5-r1 0.9.6: Asynchronous Python HTTP for Humans
+dev-python/txtorcon 0.19.3-r1 20.0.0: Twisted-based Tor controller client, with state-tracking and config abstractions
 dev-python/typed-ast 1.4.1: Python typed-ast backported
 dev-python/typing 3.7.4.1: Type Hints for Python
 dev-python/typing-extensions 3.7.4.1: Type Hint extensions from Python 3.7 backported to 3.5/3.6
@@ -10106,7 +10107,7 @@ dev-tcltk/tcllib 1.19 1.20: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
 dev-tcltk/tclpython 4.1-r6 5.0: Python package for Tcl
 dev-tcltk/tclreadline 2.1.0-r5 2.3.8: Readline extension to TCL
-dev-tcltk/tclx 8.4.1: A set of extensions to TCL
+dev-tcltk/tclx 8.4.1 8.4.4: A set of extensions to TCL
 dev-tcltk/tclxml 3.2-r2: Pure Tcl implementation of an XML parser
 dev-tcltk/tdom 0.8.3-r4 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
 dev-tcltk/thread 2.8.2: Tcl Thread extension
