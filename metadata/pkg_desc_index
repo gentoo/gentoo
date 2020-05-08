@@ -4870,7 +4870,7 @@ dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.6.0 0.6.1 0.7.0: RPC/Serialization system with capabilities support
-dev-libs/capstone 4.0.1: disassembly/disassembler framework + bindings
+dev-libs/capstone 4.0.1 4.0.2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
