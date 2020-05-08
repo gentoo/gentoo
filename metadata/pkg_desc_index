@@ -5699,7 +5699,7 @@ dev-perl/CSS-Squish 0.100.0-r1 0.100.0-r2: Compact many CSS files into one big f
 dev-perl/CSS-Tiny 1.200.0: Read/Write .css files with as little code as possible
 dev-perl/Cache 2.110.0: the Cache interface
 dev-perl/Cache-Cache 1.80.0: Generic cache interface and implementations
-dev-perl/Cache-FastMmap 1.470.0: Uses an mmaped file to act as a shared memory interprocess cache
+dev-perl/Cache-FastMmap 1.470.0 1.490.0: Uses an mmaped file to act as a shared memory interprocess cache
 dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Memcached-Fast 0.250.0: Perl client for memcached, in C language
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
