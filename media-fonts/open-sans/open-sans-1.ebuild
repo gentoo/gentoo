@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit font
 
 DESCRIPTION="Clean and modern sans-serif typeface designed for legibility across interfaces"
-HOMEPAGE="http://www.opensans.com/"
+HOMEPAGE="https://www.opensans.com/"
 SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.zip"
 # renamed from unversioned google zip
 
