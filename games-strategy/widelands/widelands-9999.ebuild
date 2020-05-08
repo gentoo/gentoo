@@ -11,7 +11,7 @@ MY_PV="build$(ver_cut 2-)"
 MY_P="${PN}-${MY_PV/_/-}"
 
 DESCRIPTION="A game similar to Settlers 2"
-HOMEPAGE="http://www.widelands.org/"
+HOMEPAGE="https://www.widelands.org/"
 
 if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
