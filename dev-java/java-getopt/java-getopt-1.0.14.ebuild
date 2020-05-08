@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Java command line option parser"
-HOMEPAGE="http://www.urbanophile.com/arenn/hacking/download.html"
-SRC_URI="http://www.urbanophile.com/arenn/hacking/getopt/${P}.tar.gz"
+HOMEPAGE="https://www.urbanophile.com/arenn/hacking/download.html"
+SRC_URI="https://www.urbanophile.com/arenn/hacking/getopt/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
