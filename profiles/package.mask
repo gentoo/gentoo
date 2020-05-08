@@ -695,13 +695,6 @@ app-vim/vimpress
 # Introduced new privsep (chroot) feature. Masked for testing.
 >=net-misc/dhcpcd-9.0.0
 
-# Michael Orlitzky <mjo@gentoo.org> (2020-04-01)
-# Upstream has no idea what they're doing, and every new version
-# introduces more security issues. Freshclam itself can now fetch
-# most third-party signatures, or app-antivirus/fangfrisch serves
-# as a replacement with a sane upstream.
-app-antivirus/clamav-unofficial-sigs
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2020-03-29)
 # Old releases gone from upstream, new releases use overly restrictive
 # license. For ancient scripts and symbols, use media-fonts/quivira instead.
