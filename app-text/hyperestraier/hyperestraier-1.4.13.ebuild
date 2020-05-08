@@ -10,8 +10,8 @@ inherit autotools java-pkg-opt-2 perl-functions ruby-ng
 IUSE="bzip2 debug java lzo mecab perl ruby +zlib"
 
 DESCRIPTION="a full-text search system for communities"
-HOMEPAGE="http://fallabs.com/hyperestraier/"
-SRC_URI="http://fallabs.com/hyperestraier/${P}.tar.gz"
+HOMEPAGE="https://fallabs.com/hyperestraier/"
+SRC_URI="https://fallabs.com/hyperestraier/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86"
