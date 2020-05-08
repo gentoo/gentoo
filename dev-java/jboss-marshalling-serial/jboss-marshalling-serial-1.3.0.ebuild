@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,8 +8,8 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Serial protocol implementation for JBoss Marshalling"
-HOMEPAGE="http://jbossmarshalling.jboss.org/"
-SRC_URI="http://download.jboss.org/jbossmarshalling/${P}.CR9-sources.jar"
+HOMEPAGE="https://jbossmarshalling.jboss.org/"
+SRC_URI="https://download.jboss.org/jbossmarshalling/${P}.CR9-sources.jar"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
