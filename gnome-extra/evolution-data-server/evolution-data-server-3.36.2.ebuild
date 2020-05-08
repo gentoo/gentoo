@@ -20,14 +20,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~
 
 # gdata-0.17.7 soft required for new gdata_feed_get_next_page_token API to handle more than 100 google tasks
 # berkdb needed only for migrating old addressbook data from <3.13 versions, bug #519512
-# libical-glib currently (2020-02-29) oddly behind USE=introspection; but introspection also needed if USE=introspection for eds
 gdata_depend=">=dev-libs/libgdata-0.17.7:="
 RDEPEND="
 	>=app-crypt/gcr-3.4
 	>=app-crypt/libsecret-0.5[crypt]
 	>=dev-db/sqlite-3.7.17:=
 	>=dev-libs/glib-2.46:2
-	>=dev-libs/libical-3.0.5:=[introspection(-)]
+	>=dev-libs/libical-3.0.8:=[glib,introspection?]
 	>=dev-libs/libxml2-2
 	>=dev-libs/nspr-4.4:=
 	>=dev-libs/nss-3.9:=
@@ -67,7 +66,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	vala? ( $(vala_depend)
 		net-libs/libsoup:2.4[vala]
-		dev-libs/libical[vala(-)]
+		dev-libs/libical[vala]
 	)
 "
 
