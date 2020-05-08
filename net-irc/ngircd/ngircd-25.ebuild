@@ -13,7 +13,7 @@ SRC_URI="https://arthur.barton.de/pub/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="debug gnutls ident irc-plus +ipv6 libressl pam +ssl strict-rfc tcpd test zlib"
 
 RESTRICT="!test? ( test )"
