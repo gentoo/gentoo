@@ -7938,7 +7938,6 @@ dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
 dev-python/invoke 1.1.1: Pythonic task execution
 dev-python/iocapture 0.1.2-r2: Capture stdout, stderr easily
 dev-python/ioflo 1.7.5 2.0.0: Automated Reasoning Engine and Flow Based Programming Framework
-dev-python/ip-associations-python-novaclient-ext 0.2: Disk Config extension for python-novaclient
 dev-python/ipaddr 2.2.0: Python IP address manipulation library
 dev-python/ipaddress 1.0.23: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipdb 0.10.3: IPython-enabled pdb
@@ -8136,7 +8135,6 @@ dev-python/nose-exclude 0.5.0 0.5.0-r1: Exclude specific directories from nosete
 dev-python/nose-parameterized 0.5.0: Parameterized testing with any Python test framework
 dev-python/nose-random 1.0.0: Nose plugin to facilitate randomized unit testing
 dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their messages
-dev-python/nose-testconfig 0.10: Test Configuration plugin for nosetests
 dev-python/nose2 0.9.1-r1: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
@@ -8172,17 +8170,14 @@ dev-python/os-brick 2.8.2: OpenStack Cinder brick library for managing local vol
 dev-python/os-client-config 1.32.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-ken 0.3.1: OpenStack Cinder brick library for managing local volume attaches
-dev-python/os-networksv2-python-novaclient-ext 0.26: Adds network extension support to python-novaclient
 dev-python/os-resource-classes 0.5.0: A list of standardized resource classes for OpenStack.
 dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
 dev-python/os-testr 1.0.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-traits 0.16.0: os-traits is a library containing standardized trait strings.
 dev-python/os-vif 1.15.2: OpenStack Cinder brick library for managing local volume attaches
-dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.20: Adds Virtual Interfaces support to python-novaclient
 dev-python/os-win 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.12.1: A package of common support modules for writing OSC plugins.
-dev-python/osc-placement 1.3.0: OpenStackClient plugin for the Placement service
 dev-python/oslo-cache 1.33.3: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.29.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 6.11.2: Oslo Configuration API
@@ -8281,8 +8276,6 @@ dev-python/podcastparser 0.6.4: Podcast parser for the gpodder client
 dev-python/polib 1.1.0-r1: A library to manipulate gettext files (.po and .mo files)
 dev-python/polygon 3.0.7: Python package to handle polygonal shapes in 2D
 dev-python/portend 2.6: TCP port monitoring utilities
-dev-python/positional 1.1.2: A decorator which enforces only some args may be passed positionally.
-dev-python/posix_ipc 0.9.8: POSIX IPC primitives (semaphores, shared memory and message queues) for Python
 dev-python/potr 1.0.1: Pure Python OTR implementation
 dev-python/poyo 0.4.1 0.5.0: A lightweight YAML Parser for Python
 dev-python/precis-i18n 1.0.1: Internationalized Usernames and Passwords
@@ -8634,8 +8627,6 @@ dev-python/qtawesome 0.7.0 0.7.1: Enables iconic fonts such as Font Awesome in P
 dev-python/qtconsole 4.3.1 4.6.0: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.1.1 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
-dev-python/rackspace-auth-openstack 1.3 9999: Rackspace Auth Plugin for OpenStack Clients
-dev-python/rackspace-novaclient 2.1: A client for the OpenStack Nova API
 dev-python/radon 4.1.0: Code Metrics in Python
 dev-python/raet 0.6.8 0.6.8-r1: Reliable Asynchronous Event Transport Protocol
 dev-python/ramlfications 0.1.9_p20160718: RAML reference implementation in Python
@@ -8643,8 +8634,6 @@ dev-python/random2 1.0.1-r1: Python-2.7 random module ported to python-3
 dev-python/rarfile 3.0: Module for RAR archive reading
 dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
 dev-python/raven 5.33.0: Raven is a client for Sentry
-dev-python/rax-default-network-flags-python-novaclient-ext 0.4.0: Disk Config extension for python-novaclient
-dev-python/rax-scheduled-images-python-novaclient-ext 0.3.1: Adds backup-schedule extension support to python-novaclient
 dev-python/rdflib 4.2.2-r1: RDF library containing a triple store and parser/serializer
 dev-python/readme_renderer 25.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 1.0.3: Code specific for Read the Docs and Sphinx
@@ -8660,7 +8649,6 @@ dev-python/reno 2.7.0 2.11.3: Release notes manager, storing release notes in a 
 dev-python/reportlab 3.5.13-r1: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1-r1: Sphinx extension: auto-generates API docs from Zope interfaces
-dev-python/repoze-who 2.2 2.2-r1: repoze.who is an identification and authentication framework for WSGI
 dev-python/requests 2.21.0-r1 2.23.0: HTTP library for human beings
 dev-python/requests-cache 0.4.12 0.4.12-r1: Persistent cache for requests library
 dev-python/requests-credssp 1.0.2 1.1.1: HTTPS CredSSP authentication with the requests library
@@ -8839,7 +8827,6 @@ dev-python/sybil 1.2.2 1.3.0: Automated testing for the examples in your documen
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
 dev-python/symengine 0.5.1-r1: Python wrappers to the symengine C++ library
 dev-python/sympy 1.5.1-r1: Computer Algebra System in pure Python
-dev-python/tablib 0.12.1-r1: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.8.6: Pretty-print tabular data
 dev-python/tagpy 2018.1-r1: Python Bindings for TagLib
 dev-python/tappy 2.4-r1 3.0: Test Anything Protocol (TAP) tools
@@ -8987,7 +8974,6 @@ dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
 dev-python/yarl 1.3.0 1.4.2: Yet another URL library
 dev-python/yaswfp 0.9.3-r1: Yet Another SWF Parser
 dev-python/zVMCloudConnector 1.4.1: a development sdk for managing z/VM
-dev-python/zake 0.2.1: Set of testing utilities for the kazoo library
 dev-python/zc-lockfile 2.0: Basic inter-process locks
 dev-python/zconfig 3.5.0: A configuration library supporting a hierarchical schema-driven configuration model
 dev-python/zeep 3.4.0: A modern/fast Python SOAP client based on lxml / requests
