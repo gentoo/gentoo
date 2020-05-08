@@ -17342,7 +17342,7 @@ sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20190815 20190923 20191022 20191215 20200122 20200316 20200421 99999999: Linux firmware files
-sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.5 5.6: Linux system headers
+sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.4_p6 5.5_p8 5.6_p1 5.6_p2 5.6_p3 5.6_p4 5.6_p5 5.6_p6: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
