@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Dolbec <dolsen@gentoo.org> (2020-05-08)
+# Unmaintained.  Stuck on Python 3.6.  The only revdep
+# is masked for removal.  Newer buildbot no longer depends on it.
+# Removal in 30 days.  Bug #719518.
+dev-python/ramlfications
+
 # Matt Turner <mattst88@gentoo.org> (2020-05-08)
 # Client-side library for an X extension that has not been supported by Xorg
 # for about a decade. Masked for removal in 30 days. Bug #720150
@@ -139,13 +145,13 @@ sys-fs/pysize
 sys-cluster/openais
 
 # Jonas Stein <jstein@gentoo.org> (2020-04-28)
-# Package is no longer required after the removal of 
+# Package is no longer required after the removal of
 # net-irc/quassel-irssi. See also bug #719856.
 # Remove after 2020-06-28
 net-libs/quasselc
 
 # Jonas Stein <jstein@gentoo.org> (2020-04-28)
-# Upstream stopped development. Package should depend on 
+# Upstream stopped development. Package should depend on
 # <net-irc/quassel-0.13 which is no longer in the tree.
 # Bug #719728
 # Remove after 2020-05-28
@@ -250,6 +256,7 @@ dev-python/pyodbc
 # Michał Górny <mgorny@gentoo.org> (2020-04-25)
 # Unmaintained.  Stuck on Python 3.6.  Missing tests.  The only revdep
 # is masked for removal.
+# alternative package is dev-python/pypugjs which is a maintained fork of pyjade
 # Removal in 30 days.  Bug #719418.
 dev-python/pyjade
 
