@@ -24,7 +24,7 @@ else
 	S=${WORKDIR}/${MY_P}
 fi
 
-# TODO: unbundle sqlite, yaml-cpp, and KSyntaxHighlighting
+# TODO: unbundle sqlite and yaml-cpp
 
 QTC_PLUGINS=(android +autotest baremetal beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
@@ -64,6 +64,7 @@ CDEPEND="
 	>=dev-qt/qtwidgets-${QT_PV}
 	>=dev-qt/qtx11extras-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
+	kde-frameworks/syntax-highlighting:5
 	clang? (
 		|| (
 			sys-devel/clang:10
@@ -180,6 +181,9 @@ src_prepare() {
 	done
 	sed -i -e "/^LANGUAGES\s*=/s:=.*:=${languages}:" share/qtcreator/translations/translations.pro || die
 
+	# remove bundled syntax-highlighting
+	rm -r src/libs/3rdparty/syntax-highlighting || die
+
 	# remove bundled qbs
 	rm -r src/shared/qbs || die
 }
@@ -187,6 +191,8 @@ src_prepare() {
 src_configure() {
 	eqmake5 IDE_LIBRARY_BASENAME="$(get_libdir)" \
 		IDE_PACKAGE_MODE=1 \
+		KSYNTAXHIGHLIGHTING_LIB_DIR="${EPREFIX}/usr/$(get_libdir)" \
+		KSYNTAXHIGHLIGHTING_INCLUDE_DIR="${EPREFIX}/usr/include/KF5/KSyntaxHighlighting" \
 		$(use clang && echo LLVM_INSTALL_DIR="$(get_llvm_prefix ${LLVM_MAX_SLOT})") \
 		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
 		CONFIG+=qbs_disable_rpath \
