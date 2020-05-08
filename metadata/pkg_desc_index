@@ -5694,7 +5694,7 @@ dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1 0.10.0-r2: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
-dev-perl/CSS-Packer 2.50.0: Another CSS minifier
+dev-perl/CSS-Packer 2.50.0 2.70.0: Another CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
 dev-perl/CSS-Tiny 1.200.0: Read/Write .css files with as little code as possible
 dev-perl/Cache 2.110.0: the Cache interface
