@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="A very powerful, highly configurable, small editor with syntax coloring"
-HOMEPAGE="http://www.scintilla.org/SciTE.html"
+HOMEPAGE="https://www.scintilla.org/SciTE.html"
 SRC_URI="https://www.scintilla.org/${PN}${PV//./}.tgz -> ${P}.tgz"
 
 LICENSE="HPND lua? ( MIT )"
