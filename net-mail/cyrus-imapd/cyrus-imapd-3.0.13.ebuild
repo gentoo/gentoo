@@ -10,7 +10,7 @@ SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD-with-attribution GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="afs backup calalarm caps clamav http kerberos ldap lmdb \
 	mysql nntp pam perl postgres replication +server sieve snmp \
 	sqlite ssl static-libs tcpd test xapian"
