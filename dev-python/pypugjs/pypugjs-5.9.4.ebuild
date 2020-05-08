@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates"
 HOMEPAGE="https://github.com/kakulukia/pypugjs"
-SRC_URI="https://github.com/kakulukia/pypugjs/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/kakulukia/pypugjs/archive/v${PV}.tar.gz -> ${P}-tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
