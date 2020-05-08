@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT=777b31219179b43f56c7b95857d2fbd7f33199aa
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Multi-source social music player"
 HOMEPAGE="https://github.com/tomahawk-player/tomahawk"
@@ -15,6 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="telepathy xmpp"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -44,7 +47,6 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/designer:5
-	dev-qt/linguist-tools:5
 	dev-qt/qtconcurrent:5
 "
 RDEPEND="${COMMON_DEPEND}
@@ -56,6 +58,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-warning.patch"
 	"${FILESDIR}/${P}-cmakepolicy.patch" # bug 674826
+	"${FILESDIR}/${P}-qt-5.15.patch" # pending upstream
 )
 
 src_configure() {
@@ -70,7 +73,7 @@ src_configure() {
 
 	[[ ${PV} != *9999* ]] && mycmakeargs+=( -DBUILD_RELEASE=ON )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
