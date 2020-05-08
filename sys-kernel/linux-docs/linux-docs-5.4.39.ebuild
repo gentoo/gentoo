@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 IUSE=""
+BDEPEND="media-libs/fontconfig"
 DEPEND="<=dev-python/sphinx-2.4.4"
 RDEPEND=""
 
