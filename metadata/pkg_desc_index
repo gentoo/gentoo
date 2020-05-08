@@ -11439,6 +11439,7 @@ games-util/deutex 5.2.0: WAD composer for Doom, Heretic, Hexen, and Strife
 games-util/dfarc 3.12-r1 3.14: Frontend and .dmod installer for GNU FreeDink
 games-util/dzip 2.9-r3: compressor/uncompressor for demo recordings from id's Quake
 games-util/etswitch 0.1.14-r1: *nix minimizer for a few games
+games-util/eureka 1.27b: Graphical map editor for games using the DOOM engine
 games-util/fteqcc 2501: QC compiler
 games-util/gamemode 1.2 9999: Optimise Linux system performance on demand
 games-util/gamepick 0.35-r1: Launch opengl games with custom graphic settings
@@ -11987,13 +11988,13 @@ kde-misc/krename 5.0.0-r1: Powerful batch file renamer
 kde-misc/krusader 2.7.2: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 5.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
-kde-misc/latte-dock 0.9.9 0.9.11: Elegant dock, based on KDE Frameworks
+kde-misc/latte-dock 0.9.11: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
 kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
-kde-misc/rsibreak 0.12.11 0.12.13: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.13: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: Simple image scanning application based on libksane and KDE Frameworks
 kde-misc/tellico 3.2.3 3.3: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
