@@ -1,0 +1,14 @@
+BDEPEND=virtual/fortran virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-libs/coinor-clp:= sci-libs/coinor-cgl:= sci-libs/coinor-dylp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/coinor-vol:=
+DESCRIPTION=COIN-OR branch-and-cut mixed integer program solver
+EAPI=7
+HOMEPAGE=https://github.com/coin-or/Cbc/
+IUSE=doc examples static-libs test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sci-libs/coinor-clp:= sci-libs/coinor-cgl:= sci-libs/coinor-dylp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/coinor-vol:=
+RESTRICT=!test? ( test )
+SLOT=0/3
+SRC_URI=https://github.com/coin-or/Cbc/archive/releases/2.10.5.tar.gz -> coinor-cbc-2.10.5.tar.gz
+_md5_=732b05ef977f3e3aaaee917788404fb2

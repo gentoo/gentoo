@@ -1,0 +1,13 @@
+BDEPEND=virtual/fortran virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-libs/coinor-utils:=
+DESCRIPTION=COIN-OR Open Solver Interface
+EAPI=7
+HOMEPAGE=https://github.com/coin-or/Osi/
+IUSE=doc examples static-libs test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RESTRICT=!test? ( test )
+SLOT=0/1
+SRC_URI=https://github.com/coin-or/Osi/archive/releases/0.108.6.tar.gz -> coinor-osi-0.108.6.tar.gz
+_md5_=e5fa1f90ca83b5bd6c6e6ed7ed1d08c7

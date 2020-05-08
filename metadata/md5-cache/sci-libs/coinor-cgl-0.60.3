@@ -1,0 +1,14 @@
+BDEPEND=virtual/fortran virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-libs/coinor-clp:= sci-libs/coinor-dylp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/coinor-vol:=
+DESCRIPTION=COIN-OR cut-generation library
+EAPI=7
+HOMEPAGE=https://projects.coin-or.org/Cgl/
+IUSE=doc examples static-libs test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sci-libs/coinor-clp:= sci-libs/coinor-dylp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/coinor-vol:=
+RESTRICT=!test? ( test )
+SLOT=0/1
+SRC_URI=https://github.com/coin-or/Cgl/archive/releases/0.60.3.tar.gz -> coinor-cgl-0.60.3.tar.gz
+_md5_=718792b2cf962459c5db867621504b94

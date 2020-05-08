@@ -1,0 +1,15 @@
+BDEPEND=virtual/fortran virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/readline:0= blas? ( virtual/blas ) bzip2? ( app-arch/bzip2 ) glpk? ( sci-mathematics/glpk:= ) lapack? ( virtual/lapack ) zlib? ( sys-libs/zlib )
+DESCRIPTION=COIN-OR Matrix, Vector and other utility classes
+EAPI=7
+HOMEPAGE=https://github.com/coin-or/CoinUtils/
+IUSE=bzip2 doc glpk blas lapack static-libs test zlib
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sys-libs/readline:0= blas? ( virtual/blas ) bzip2? ( app-arch/bzip2 ) glpk? ( sci-mathematics/glpk:= ) lapack? ( virtual/lapack ) zlib? ( sys-libs/zlib )
+RESTRICT=!test? ( test )
+SLOT=0/3
+SRC_URI=https://github.com/coin-or/CoinUtils/archive/releases/2.11.4.tar.gz -> coinor-utils-2.11.4.tar.gz
+_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=b6f5c5ea445f5cb36ee31ab72f84e62e

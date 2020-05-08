@@ -12457,7 +12457,7 @@ media-gfx/engauge 10.6: Convert an image file showing a graph or map into number
 media-gfx/entangle 2.0: Tethered Camera Control & Capture
 media-gfx/eog 3.32.2: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.26.4-r1: Eye of GNOME plugins
-media-gfx/eom 1.22.1 1.22.2 1.24.0: The MATE image viewer
+media-gfx/eom 1.22.2 1.24.0: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
 media-gfx/evoluspencil 3.1.0-r1: A simple GUI prototyping tool to create mockups
@@ -15921,24 +15921,24 @@ sci-libs/coinor-bcp 1.3.8: COIN-OR Branch-Cut-Price Framework
 sci-libs/coinor-bcps 0.93.10: COIN-OR BiCEPS data handling library
 sci-libs/coinor-blis 0.93.10: COIN-OR BiCePS Linear Integer Solver
 sci-libs/coinor-bonmin 1.7.4: COIN-OR Basic Open-source Nonlinear Mixed INteger programming
-sci-libs/coinor-cbc 2.8.9: COIN-OR Branch-and-Cut Mixed Integer Programming Solver
-sci-libs/coinor-cgl 0.58.6: COIN-OR cutting-plane generators library
-sci-libs/coinor-clp 1.15.6-r1: COIN-OR Linear Programming solver
+sci-libs/coinor-cbc 2.10.5: COIN-OR branch-and-cut mixed integer program solver
+sci-libs/coinor-cgl 0.60.3: COIN-OR cut-generation library
+sci-libs/coinor-clp 1.17.6: COIN-OR linear programming solver
 sci-libs/coinor-couenne 0.4.7: COIN-OR Convex Over and Under ENvelopes for Nonlinear Estimation
 sci-libs/coinor-cppad 20140204 20140519 20140519-r1: COIN-OR C++ Algorithmic Differentiation
 sci-libs/coinor-csdp 6.1.1-r1: COIN-OR C Library for Semi-Definite Programming
 sci-libs/coinor-dip 0.9.8: COIN-OR Decomposition in Integer Programming library
-sci-libs/coinor-dylp 1.9.4: COIN-OR using the dynamic simplex linear programming solver
+sci-libs/coinor-dylp 1.10.4: COIN-OR dynamic simplex linear program solver
 sci-libs/coinor-flopcpp 1.1.7: COIN-OR algebraic modeling language for linear optimization
 sci-libs/coinor-mp 1.7.6: COIN-OR lightweight API for COIN-OR libraries CLP, CBC, and CGL
 sci-libs/coinor-netlib 1.2.6: COIN-OR netlib models
 sci-libs/coinor-os 2.10.1: COIN-OR Optimization Services
-sci-libs/coinor-osi 0.106.6: COIN-OR Open Solver Interface
-sci-libs/coinor-sample 1.2.9: COIN-OR Sample models
+sci-libs/coinor-osi 0.108.6: COIN-OR Open Solver Interface
+sci-libs/coinor-sample 1.2.12: COIN-OR Sample models
 sci-libs/coinor-smi 0.93.4: COIN-OR Stochastic modelling interface
 sci-libs/coinor-symphony 5.5.7: COIN-OR solver for mixed-integer linear programs
-sci-libs/coinor-utils 2.9.11: COIN-OR Matrix, Vector and other utility classes
-sci-libs/coinor-vol 1.4.4: COIN-OR Volume algorithm linear programming solver
+sci-libs/coinor-utils 2.11.4: COIN-OR Matrix, Vector and other utility classes
+sci-libs/coinor-vol 1.5.4: COIN-OR volume algorithm linear program solver
 sci-libs/colamd 2.8.0 2.9.6: Column approximate minimum degree ordering algorithm
 sci-libs/colpack 1.0.10: C++ algorithms for specialized vertex coloring problems
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)

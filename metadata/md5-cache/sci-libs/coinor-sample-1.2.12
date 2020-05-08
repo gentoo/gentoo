@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=COIN-OR Sample models
+EAPI=7
+HOMEPAGE=https://github.com/coin-or-tools/Data-Sample/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+SLOT=0
+SRC_URI=https://github.com/coin-or-tools/Data-Sample/archive/releases/1.2.12.tar.gz -> coinor-sample-1.2.12.tar.gz
+_md5_=dd011fe55076d604e83ad47ddfd9c049

@@ -1,0 +1,14 @@
+BDEPEND=virtual/fortran virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-libs/coinor-osi:= sci-libs/coinor-utils:=
+DESCRIPTION=COIN-OR volume algorithm linear program solver
+EAPI=7
+HOMEPAGE=https://github.com/coin-or/Vol/
+IUSE=doc examples static-libs test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sci-libs/coinor-osi:= sci-libs/coinor-utils:=
+RESTRICT=!test? ( test )
+SLOT=0/1
+SRC_URI=https://github.com/coin-or/Vol/archive/releases/1.5.4.tar.gz -> coinor-vol-1.5.4.tar.gz
+_md5_=50384ba4306d48628f36f65ab3714eaa
