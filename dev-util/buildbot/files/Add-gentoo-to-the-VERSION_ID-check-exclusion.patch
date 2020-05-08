@@ -1,0 +1,26 @@
+From f8d6fe39570a698d80d821a440219f5cd79d8314 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Tue, 5 Mar 2019 11:21:14 -0800
+Subject: [PATCH] test_buildbot_net_usage.py: Add "gentoo" to the VERSION_ID check exclusion
+
+Make the exclusions test into a list (slight speed improvement, easier to extend) and add "gentoo".
+
+Signed-off-by: Brian Dolbec <dolsen@gentoo.org>
+---
+ buildbot/test/unit/test_buildbot_net_usage_data.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/buildbot/test/unit/test_buildbot_net_usage_data.py b/buildbot/test/unit/test_buildbot_net_usage_data.py
+index c347956..e422c55 100644
+--- a/buildbot/test/unit/test_buildbot_net_usage_data.py
++++ b/buildbot/test/unit/test_buildbot_net_usage_data.py
+@@ -150,5 +150,5 @@ class Tests(unittest.TestCase):
+         self.assertEqual(len(distro), 2)
+         self.assertNotIn("unknown", distro[0])
+         # Rolling distributions like Arch Linux (arch) does not have VERSION_ID
+-        if distro[0] != "arch":
++        if distro[0] not in ["arch", "gentoo"]:
+             self.assertNotIn("unknown", distro[1])
+--
+libgit2 0.99.0
+
