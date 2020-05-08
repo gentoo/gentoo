@@ -37,6 +37,6 @@ PATCHES=(
 )
 
 python_test() {
-	unset PYTHONDONTWRITEBYTECODE
+	unset LINGUAS PYTHONDONTWRITEBYTECODE
 	"${EPYTHON}" test/auto.py -v || die "Tests fail with ${EPYTHON}"
 }
