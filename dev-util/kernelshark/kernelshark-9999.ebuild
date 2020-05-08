@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic cmake-utils
 
 DESCRIPTION="Graphical reader for trace-cmd output"
-HOMEPAGE="http://kernelshark.org/"
+HOMEPAGE="https://kernelshark.org/"
 
 if [[ ${PV} =~ [9]{4,} ]]; then
 	EGIT_REPO_URI="https://github.com/rostedt/trace-cmd.git"
