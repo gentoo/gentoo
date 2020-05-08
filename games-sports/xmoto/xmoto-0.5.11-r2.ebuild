@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ LVL_PV="0.7.0" #they unfortunately don't release both at the same time, why ~ as
 LVL="inksmoto-${LVL_PV}"
 DEB_PV=7
 DESCRIPTION="A challenging 2D motocross platform game"
-HOMEPAGE="http://xmoto.tuxfamily.org"
+HOMEPAGE="https://xmoto.tuxfamily.org"
 SRC_URI="http://download.tuxfamily.org/xmoto/xmoto/${PV}/${P}-src.tar.gz
 	mirror://debian/pool/main/x/${PN}/${PN}_${PV}+dfsg-${DEB_PV}.debian.tar.xz
 	editor? ( http://download.tuxfamily.org/xmoto/svg2lvl/${LVL_PV}/${LVL}.tar.gz )"
