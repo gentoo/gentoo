@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit cmake-utils python-single-r1 user
+inherit cmake-utils python-single-r1
 
 DESCRIPTION="Extended ROOT remote file server"
 HOMEPAGE="http://xrootd.org/"
@@ -14,20 +14,20 @@ SRC_URI="http://xrootd.org/download/v${PV}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples fuse http kerberos python readline rbd ssl test"
+IUSE="doc examples fuse http kerberos python readline ssl test"
 RESTRICT="!test? ( test )"
 
-CDEPEND="
-	!<sci-physics/root-5.32[xrootd]
+CDEPEND="acct-group/xrootd
+	acct-user/xrootd
 	sys-libs/zlib
 	fuse? ( sys-fs/fuse:= )
 	kerberos? ( virtual/krb5 )
 	python? ( ${PYTHON_DEPS} )
-	rbd? ( sys-cluster/ceph )
 	readline? ( sys-libs/readline:0= )
 	ssl? ( dev-libs/openssl:0= )
 "
-DEPEND="${CDEPEND}
+DEPEND="${CDEPEND}"
+BDEPEND="
 	doc? (
 		app-doc/doxygen[dot]
 		python? ( dev-python/sphinx )
@@ -42,25 +42,19 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-PATCHES=(
-	"${FILESDIR}"/xrootd-4.8.3-crc32.patch
-	"${FILESDIR}"/${PN}-4.8.3-Werror_only_Debug.patch
-)
+PATCHES=( "${FILESDIR}"/xrootd-4.8.3-crc32.patch )
 
 # xrootd plugins are not intended to be linked with,
 # they are to be loaded at runtime by xrootd,
 # see https://github.com/xrootd/xrootd/issues/447
-QA_SONAME="/usr/lib.*/libXrd*-4.so"
+QA_SONAME="/usr/lib.*/libXrd.*-$(ver_cut 1).so"
 
 pkg_setup() {
-	enewgroup xrootd
-	enewuser xrootd -1 -1 "${EPREFIX}"/var/spool/xrootd xrootd
 	use python && python_setup
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_CEPH=$(usex rbd)
 		-DENABLE_CRYPTO=$(usex ssl)
 		-DENABLE_FUSE=$(usex fuse)
 		-DENABLE_HTTP=$(usex http)
