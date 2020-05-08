@@ -318,24 +318,6 @@ x11-misc/obtheme
 # Remove after 2020-05-24
 games-action/rune
 
-# Matthew Thode <prometheanfire@gentoo.org> (2020-04-23)
-# not needed anymore, no revdeps
-# removal in 14 days. Bug #718996.
-dev-python/ip-associations-python-novaclient-ext
-dev-python/os-virtual-interfacesv2-python-novaclient-ext
-dev-python/os-networksv2-python-novaclient-ext
-dev-python/osc-placement
-dev-python/rackspace-novaclient
-dev-python/nose-testconfig
-dev-python/positional
-dev-python/posix_ipc
-dev-python/repoze-who
-dev-python/tablib
-dev-python/rackspace-auth-openstack
-dev-python/rax-default-network-flags-python-novaclient-ext
-dev-python/rax-scheduled-images-python-novaclient-ext
-dev-python/zake
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-23)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
 # Removal in 30 days.  Bug #719040.
