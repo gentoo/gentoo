@@ -10,7 +10,7 @@ WANT_AUTOMAKE=1.16
 inherit autotools python-single-r1 vala
 
 DESCRIPTION="File syncing and sharing software with file encryption and group sharing"
-HOMEPAGE="http://www.seafile.com/ https://github.com/haiwen/seafile/"
+HOMEPAGE="https://www.seafile.com/ https://github.com/haiwen/seafile/"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
