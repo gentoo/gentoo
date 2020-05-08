@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,8 +10,8 @@ MY_PV=${PV/_beta/-b}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="An implementation of Python written in Java"
-HOMEPAGE="http://www.jython.org"
-SRC_URI="http://search.maven.org/remotecontent?filepath=org/python/${PN}/${MY_PV}/${MY_P}-sources.jar"
+HOMEPAGE="https://www.jython.org"
+SRC_URI="https://search.maven.org/remotecontent?filepath=org/python/${PN}/${MY_PV}/${MY_P}-sources.jar"
 
 LICENSE="PSF-2"
 SLOT="2.7"
