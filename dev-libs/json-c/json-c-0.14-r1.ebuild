@@ -15,6 +15,10 @@ SLOT="0/5"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc static-libs threads"
 
+PATCHES=(
+	"${FILESDIR}/${P}_cmake-static-libs.patch"
+)
+
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/json-c/config.h
 )
@@ -26,6 +30,7 @@ src_prepare() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(multilib_native_usex doc)
+		-DBUILD_STATIC_LIBS=$(usex static-libs)
 		-DDISABLE_WERROR=ON
 		-DENABLE_THREADING=$(usex threads)
 	)
