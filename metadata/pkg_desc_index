@@ -12095,7 +12095,7 @@ mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.13.5 1.14.0: A small but very powerful text-based mail client
 mail-client/neomutt 20180716 20191102 20191111 20191129 20191207 20200313 20200320 20200417 20200424 20200501 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1 1.4.2 1.4.3: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1 1.4.2 1.4.3 1.4.4: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 52.9.1-r1 68.8.0: Thunderbird Mail Client
@@ -13497,7 +13497,7 @@ media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1 3.100-r2: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2-r3 2.19.83 9999: GNU Music Typesetter
+media-sound/lilypond 2.19.83 2.21.1 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
 media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
