@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ PATCH_LEVEL=12
 MY_PN=${PN/gtk-engines-}
 
 DESCRIPTION="A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel"
-HOMEPAGE="http://packages.ubuntu.com/search?keywords=gtk2-engines-ubuntulooks"
+HOMEPAGE="https://packages.ubuntu.com/search?keywords=gtk2-engines-ubuntulooks"
 SRC_URI="
 	mirror://ubuntu/pool/main/u/${MY_PN}/${MY_PN}_${PV}.orig.tar.gz
 	mirror://ubuntu/pool/main/u/${MY_PN}/${MY_PN}_${PV}-${PATCH_LEVEL}.diff.gz"
