@@ -8,7 +8,7 @@ GNOME_ORG_MODULE="gob2"
 inherit gnome2
 
 DESCRIPTION="Preprocessor for making GTK+ objects with inline C code"
-HOMEPAGE="http://www.jirka.org/gob.html"
+HOMEPAGE="https://www.jirka.org/gob.html"
 
 LICENSE="GPL-2+"
 SLOT="2"
