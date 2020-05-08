@@ -1,0 +1,12 @@
+diff -Naur a/COLLADAStreamWriter/src/COLLADASWLibraryAnimations.cpp b/COLLADAStreamWriter/src/COLLADASWLibraryAnimations.cpp
+--- a/COLLADAStreamWriter/src/COLLADASWLibraryAnimations.cpp	2020-05-08 01:17:06.981501609 +1000
++++ b/COLLADAStreamWriter/src/COLLADASWLibraryAnimations.cpp	2020-05-08 01:17:23.011549185 +1000
+@@ -62,7 +62,7 @@
+ 
+     //---------------------------------------------------------------
+     LibraryAnimations::LibraryAnimations ( COLLADASW::StreamWriter * streamWriter )
+-            : Library ( streamWriter, CSWC::CSW_ELEMENT_LIBRARY_ANIMATIONS ), mOpenAnimations ( NULL )
++            : Library ( streamWriter, CSWC::CSW_ELEMENT_LIBRARY_ANIMATIONS ), mOpenAnimations ( 0 )
+     {}
+ 
+     //---------------------------------------------------------------
