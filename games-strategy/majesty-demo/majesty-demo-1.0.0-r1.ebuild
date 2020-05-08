@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils unpacker
 
 DESCRIPTION="Control your own kingdom in this simulation"
-HOMEPAGE="http://www.linuxgamepublishing.com/info.php?id=8&"
+HOMEPAGE="https://www.linuxgamepublishing.com/info.php?id=8&"
 SRC_URI="http://ftp2.za.freebsd.org/pub/FreeBSD/ports/distfiles/majesty_demo.run"
 
 LICENSE="MAJESTY-DEMO"
