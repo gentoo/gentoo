@@ -57,7 +57,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	use doc && dohtml -r "${S}/docs/_build/html/"*
+	use doc && dodoc -r "${S}/docs/_build/html/"*
 	use examples && dodoc -r "${S}/examples/"
 	distutils-r1_python_install_all
 
