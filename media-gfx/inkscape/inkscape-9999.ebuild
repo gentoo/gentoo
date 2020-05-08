@@ -61,7 +61,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
 	imagemagick? (
-		!graphicsmagick? ( <media-gfx/imagemagick-7:=[cxx] )
+		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
 	jemalloc? ( dev-libs/jemalloc )
@@ -96,14 +96,9 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.65
 "
 
-S="${WORKDIR}/${MY_P}"
-
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.0_beta1-detect-imagemagick.patch
-	"${FILESDIR}"/${PN}-1.0_beta1-do-not-compress-man.patch
-)
+S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
@@ -153,6 +148,10 @@ src_install() {
 	cmake_src_install
 
 	find "${ED}" -type f -name "*.la" -delete || die
+
+	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.bz2' -exec bzip2 -d {} \; || die
+
+	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.gz' -exec gzip -d {} \; || die
 
 	# No extensions are present in beta1
 	local extdir="${ED}"/usr/share/${PN}/extensions
