@@ -58,7 +58,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.21.1-fix-font-size.patch
+	"${FILESDIR}"/${P}-fix-font-size.patch
 )
 
 DOCS=( DEDICATION HACKING README.txt ROADMAP )
