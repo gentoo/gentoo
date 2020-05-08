@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit mate python-single-r1 virtualx
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Pluma text editor for the MATE desktop"

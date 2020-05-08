@@ -13,7 +13,7 @@ fi
 
 DESCRIPTION="MATE default window manager"
 LICENSE="FDL-1.2+ GPL-2+ LGPL-2+ MIT"
-SLOT="0/1"
+SLOT="0/2"
 
 IUSE="startup-notification test xinerama"
 RESTRICT="!test? ( test )"
@@ -69,5 +69,5 @@ src_configure() {
 
 src_install() {
 	mate_src_install
-	dodoc {,doc/}*.txt
+	dodoc doc/*.txt
 }
