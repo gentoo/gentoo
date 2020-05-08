@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ MY_GENTOO_AGDA_STDLIB_V="${PV}.${MY_UPSTREAM_AGDA_STDLIB_V}"
 MY_UPSTREAM_AGDA_V="${PV%.${MY_UPSTREAM_AGDA_STDLIB_V}}"
 
 DESCRIPTION="Agda standard library"
-HOMEPAGE="http://wiki.portal.chalmers.se/agda/"
+HOMEPAGE="https://wiki.portal.chalmers.se/agda/"
 SRC_URI="https://github.com/agda/${PN}/archive/v${MY_UPSTREAM_AGDA_STDLIB_V}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
