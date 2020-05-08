@@ -8,8 +8,8 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2
 
 DESCRIPTION="ACL editor for GNOME, with Nautilus extension"
-HOMEPAGE="http://rofi.roger-ferrer.org/eiciel/"
-SRC_URI="http://rofi.roger-ferrer.org/eiciel/download/${P}.tar.bz2"
+HOMEPAGE="https://rofi.roger-ferrer.org/eiciel/"
+SRC_URI="https://rofi.roger-ferrer.org/eiciel/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
