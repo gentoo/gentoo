@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit xdg
 
 DESCRIPTION="a derivative of the standard Tango theme, using a more orange approach"
-HOMEPAGE="http://packages.ubuntu.com/gutsy/x11/tangerine-icon-theme"
+HOMEPAGE="https://packages.ubuntu.com/gutsy/x11/tangerine-icon-theme"
 SRC_URI="
 	mirror://ubuntu/pool/universe/t/${PN}/${PN}_${PV}.tar.gz
 	https://www.gentoo.org/images/gentoo-logo.svg"
