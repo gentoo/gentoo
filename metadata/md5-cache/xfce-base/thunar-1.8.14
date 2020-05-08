@@ -4,10 +4,10 @@ DESCRIPTION=File manager for the Xfce desktop environment
 EAPI=7
 HOMEPAGE=https://www.xfce.org/projects/ https://docs.xfce.org/xfce/thunar/start
 IUSE=exif introspection libnotify pcre +trash-panel-plugin udisks
-KEYWORDS=~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2+ LGPL-2+
 RDEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.42 >=x11-libs/gdk-pixbuf-2.14 >=x11-libs/gtk+-3.22:3 >=xfce-base/exo-0.12:= >=xfce-base/libxfce4ui-4.12:= >=xfce-base/libxfce4util-4.12:= >=xfce-base/xfconf-4.12:= exif? ( >=media-libs/libexif-0.6.19:= ) introspection? ( dev-libs/gobject-introspection:= ) libnotify? ( >=x11-libs/libnotify-0.7 ) pcre? ( >=dev-libs/libpcre-6:= ) trash-panel-plugin? ( >=xfce-base/xfce4-panel-4.10:= ) udisks? ( dev-libs/libgudev:= ) >=dev-util/desktop-file-utils-0.20-r1 x11-misc/shared-mime-info trash-panel-plugin? ( >=gnome-base/gvfs-1.18.3 ) udisks? ( virtual/udev >=gnome-base/gvfs-1.18.3[udisks,udev] )
 SLOT=0/3
 SRC_URI=https://archive.xfce.org/src/xfce/thunar/1.8/thunar-1.8.14.tar.bz2
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a96595ba8d5b30da0c49f9da34f8025a
+_md5_=851ff9e80ead422bfe511c76853f434f
