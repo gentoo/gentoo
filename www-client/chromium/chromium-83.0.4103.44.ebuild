@@ -170,7 +170,6 @@ PATCHES=(
 	"${FILESDIR}/chromium-78-protobuf-export.patch"
 	"${FILESDIR}/chromium-79-gcc-alignas.patch"
 	"${FILESDIR}/chromium-80-gcc-quiche.patch"
-	"${FILESDIR}/chromium-82-gcc-constexpr.patch"
 	"${FILESDIR}/chromium-82-gcc-noexcept.patch"
 	"${FILESDIR}/chromium-82-gcc-incomplete-type.patch"
 	"${FILESDIR}/chromium-82-gcc-template.patch"
