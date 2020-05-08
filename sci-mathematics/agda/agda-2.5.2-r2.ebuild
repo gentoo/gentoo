@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ MY_UPSTREAM_AGDA_STDLIB_V="0.13"
 MY_GENTOO_AGDA_STDLIB_V="${PV}.${MY_UPSTREAM_AGDA_STDLIB_V}"
 
 DESCRIPTION="A dependently typed functional programming language and proof assistant"
-HOMEPAGE="http://wiki.portal.chalmers.se/agda/"
+HOMEPAGE="https://wiki.portal.chalmers.se/agda/"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
