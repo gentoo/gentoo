@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-05-08)
+# Client-side library for an X extension that has not been supported by Xorg
+# for about a decade. Masked for removal in 30 days. Bug #720150
+x11-libs/libXxf86misc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
 # Last release in 2015, not compatible with >=media-gfx/gimp-2.10.0
 # Masked for removal in 30 days.
