@@ -8,8 +8,8 @@ inherit flag-o-matic cuda autotools-multilib multilib toolchain-funcs versionato
 MY_PV=v$(get_version_component_range 1-2)
 
 DESCRIPTION="displays the hardware topology in convenient formats"
-HOMEPAGE="http://www.open-mpi.org/projects/hwloc/"
-SRC_URI="http://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://www.open-mpi.org/projects/hwloc/"
+SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0/5"
