@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit desktop eutils
 
 DESCRIPTION="The spiritual successor of the classic Tetris mixed with physics"
-HOMEPAGE="http://stabyourself.net/nottetris2/"
-SRC_URI="http://stabyourself.net/dl.php?file=nottetris2/nottetris2-linux.zip -> ${P}.zip"
+HOMEPAGE="https://stabyourself.net/nottetris2/"
+SRC_URI="https://stabyourself.net/dl.php?file=nottetris2/nottetris2-linux.zip -> ${P}.zip"
 
 LICENSE="CC-BY-NC-SA-3.0"
 SLOT="0"
