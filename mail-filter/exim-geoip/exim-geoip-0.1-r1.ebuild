@@ -5,8 +5,8 @@ EAPI=4
 inherit eutils flag-o-matic ltprune
 
 DESCRIPTION="This is an IPv4 and IPv6 capable GeoIP dlfunc library for Exim"
-HOMEPAGE="http://dist.epipe.com/exim/"
-SRC_URI="http://dist.epipe.com/exim/exim-geoipv6-dlfunc-${PV}.tar.gz"
+HOMEPAGE="https://dist.epipe.com/exim/"
+SRC_URI="https://dist.epipe.com/exim/exim-geoipv6-dlfunc-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
