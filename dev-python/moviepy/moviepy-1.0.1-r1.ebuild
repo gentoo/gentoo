@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Video editing with Python"
-HOMEPAGE="http://zulko.github.io/moviepy/"
+HOMEPAGE="https://zulko.github.io/moviepy/"
 SRC_URI="https://github.com/Zulko/moviepy/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
