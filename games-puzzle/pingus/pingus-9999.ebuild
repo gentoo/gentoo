@@ -5,7 +5,7 @@ EAPI=7
 inherit cmake toolchain-funcs flag-o-matic xdg
 
 DESCRIPTION="free Lemmings clone"
-HOMEPAGE="http://pingus.gitlab.io/"
+HOMEPAGE="https://pingus.gitlab.io/"
 if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/pingus/pingus.git"
