@@ -68,6 +68,6 @@ src_install() {
 		install
 
 	if ! use static-libs; then
-		find "${ED}"/usr/lib* -name '*.la' -o -name '*.a' -delete || die
+		find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
 	fi
 }
