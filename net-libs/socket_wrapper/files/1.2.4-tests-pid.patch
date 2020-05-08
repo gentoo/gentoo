@@ -1,0 +1,47 @@
+From a70e32fa9d60adde861618c91618a3be80f07c22 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 7 May 2020 23:28:50 -0400
+Subject: [PATCH] tests: do not truncate pid to 16 bits
+
+On Linux, pid_t is a 32-bit type, and the kernel permits pids up to 22
+bits in length.
+
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ tests/torture.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/tests/torture.c b/tests/torture.c
+index e55ebcf..8524138 100644
+--- a/tests/torture.c
++++ b/tests/torture.c
+@@ -255,8 +255,7 @@ void torture_teardown_socket_dir(void **state)
+ void torture_teardown_echo_srv(void **state)
+ {
+ 	struct torture_state *s = *state;
+-	char buf[8] = {0};
+-	long int tmp;
++	char buf[11] = {0};
+ 	ssize_t rc;
+ 	pid_t pid;
+ 	int fd;
+@@ -277,13 +276,12 @@ void torture_teardown_echo_srv(void **state)
+ 
+ 	buf[sizeof(buf) - 1] = '\0';
+ 
+-	tmp = strtol(buf, NULL, 10);
+-	if (tmp == 0 || tmp > 0xFFFF || errno == ERANGE) {
++	errno = 0;
++	pid = strtol(buf, NULL, 10);
++	if (pid == 0 || errno != 0) {
+ 		goto done;
+ 	}
+ 
+-	pid = (pid_t)(tmp & 0xFFFF);
+-
+ 	for (count = 0; count < 10; count++) {
+ 		/* Make sure the daemon goes away! */
+ 		kill(pid, SIGTERM);
+-- 
+2.26.2
+
