@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,9 @@ DEPEND="${RDEPEND}
 	media-sound/mpg123
 	x11-base/xorg-proto"
 
-PATCHES=( "${FILESDIR}"/${P}-x_includes_n_libraries.patch )
+PATCHES=( "${FILESDIR}"/${P}-x_includes_n_libraries.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	)
 
 DOCS=( AUTHORS ChangeLog sample.wmmp3 README TODO )
 
