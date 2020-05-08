@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit xdg-utils desktop
 
 DESCRIPTION="Feature-rich screenshot program"
-HOMEPAGE="http://shutter-project.org/"
-#SRC_URI="http://shutter-project.org/wp-content/uploads/releases/tars/${P}.tar.gz"
+HOMEPAGE="https://shutter-project.org/"
+#SRC_URI="https://shutter-project.org/wp-content/uploads/releases/tars/${P}.tar.gz"
 SRC_URI="https://launchpad.net/shutter/0.9x/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
