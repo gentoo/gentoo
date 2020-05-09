@@ -5,11 +5,11 @@ DESCRIPTION=Free implementation of the Remote Desktop Protocol
 EAPI=7
 HOMEPAGE=http://www.freerdp.com/
 IUSE=alsa +client cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg libressl openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ppc ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib:0 alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) client? ( usb? ( virtual/libudev:0= sys-apps/util-linux:0= dev-libs/dbus-glib:0= virtual/libusb:1= ) X? ( x11-libs/libXcursor x11-libs/libXext x11-libs/libXi x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) xv? ( x11-libs/libXv ) ) ) ffmpeg? ( media-video/ffmpeg:0= ) !ffmpeg? ( x11-libs/cairo:0= ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 x11-libs/libXrandr ) jpeg? ( virtual/jpeg:0 ) openh264? ( media-libs/openh264 ) pulseaudio? ( media-sound/pulseaudio ) server? ( X? ( x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXtst xinerama? ( x11-libs/libXinerama ) ) ) smartcard? ( sys-apps/pcsc-lite ) systemd? ( sys-apps/systemd:0= ) wayland? ( dev-libs/wayland x11-libs/libxkbcommon ) X? ( x11-libs/libX11 x11-libs/libxkbfile )
 RESTRICT=!test? ( test )
 SLOT=0/2
 SRC_URI=https://pub.freerdp.com/releases/freerdp-2.1.0.tar.gz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=68f15b1884be80d965e0cccbf4f78036
+_md5_=c31ab57586da44e51113fa0f7545deb2
