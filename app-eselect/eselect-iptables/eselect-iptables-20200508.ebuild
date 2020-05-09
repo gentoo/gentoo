@@ -16,4 +16,9 @@ RDEPEND="app-admin/eselect"
 src_install() {
 	insinto /usr/share/eselect/modules
 	doins iptables.eselect
+
+	local symlink
+	for symlink in {eb,arp}tables; do
+		dosym iptables.eselect /usr/share/eselect/modules/${symlink}.eselect
+	done
 }
