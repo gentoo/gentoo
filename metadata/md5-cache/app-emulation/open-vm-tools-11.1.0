@@ -1,0 +1,15 @@
+BDEPEND=dev-util/glib-utils virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dev-libs/glib net-libs/libtirpc deploypkg? ( dev-libs/libmspack ) fuse? ( sys-fs/fuse:0 ) pam? ( sys-libs/pam ) ssl? ( dev-libs/openssl:0 ) vgauth? ( dev-libs/libxml2 dev-libs/xmlsec ) X? ( x11-libs/libXext multimon? ( x11-libs/libXinerama ) x11-libs/libXi x11-libs/libXrender x11-libs/libXrandr x11-libs/libXtst x11-libs/libSM x11-libs/libXcomposite x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 gtkmm? ( dev-cpp/gtkmm:3.0 dev-libs/libsigc++:2 ) ) dnet? ( dev-libs/libdnet ) icu? ( dev-libs/icu:= ) resolutionkms? ( x11-libs/libdrm[video_cards_vmware] virtual/libudev ) net-libs/rpcsvc-proto
+DESCRIPTION=Opensourced tools for VMware guests
+EAPI=7
+HOMEPAGE=https://github.com/vmware/open-vm-tools
+IUSE=X +deploypkg +dnet doc +fuse gtkmm +icu multimon pam +resolutionkms +ssl static-libs +vgauth kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/glib net-libs/libtirpc deploypkg? ( dev-libs/libmspack ) fuse? ( sys-fs/fuse:0 ) pam? ( sys-libs/pam ) ssl? ( dev-libs/openssl:0 ) vgauth? ( dev-libs/libxml2 dev-libs/xmlsec ) X? ( x11-libs/libXext multimon? ( x11-libs/libXinerama ) x11-libs/libXi x11-libs/libXrender x11-libs/libXrandr x11-libs/libXtst x11-libs/libSM x11-libs/libXcomposite x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 gtkmm? ( dev-cpp/gtkmm:3.0 dev-libs/libsigc++:2 ) ) dnet? ( dev-libs/libdnet ) icu? ( dev-libs/icu:= ) resolutionkms? ( x11-libs/libdrm[video_cards_vmware] virtual/libudev )
+REQUIRED_USE=multimon? ( X ) vgauth? ( ssl )
+SLOT=0
+SRC_URI=https://github.com/vmware/open-vm-tools/releases/download/stable-11.1.0/open-vm-tools-11.1.0-16036546.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	pam	a1771fc1e5831c201eaf18451747d94b	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=4f1be2239b30b012b0093ea5c11dc634

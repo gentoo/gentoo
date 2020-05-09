@@ -1655,7 +1655,7 @@ app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3: Old style template scripts for LXC
 app-emulation/lxd 3.14 3.16-r1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
-app-emulation/open-vm-tools 11.0.1-r1: Opensourced tools for VMware guests
+app-emulation/open-vm-tools 11.0.1-r1 11.1.0: Opensourced tools for VMware guests
 app-emulation/pcem 15-r1: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and use Windows games and software
@@ -10665,7 +10665,7 @@ dev-vcs/gitsh 0.11.2: An interactive shell for git
 dev-vcs/gitstats 0_pre131024 0_pre20151223 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface to git
-dev-vcs/hg-evolve 8.5.1 9.3.1: enables the changeset evolution feature of Mercurial
+dev-vcs/hg-evolve 10.0.0: enables the changeset evolution feature of Mercurial
 dev-vcs/hg-git 0.8.8 0.8.13: push to and pull from a Git repository using Mercurial
 dev-vcs/hub 2.13.0 2.14.1: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
@@ -16778,7 +16778,7 @@ sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2-r1: A daemon for checking your running and not running processes
 sys-apps/restorecond 2.9 3.0 9999: Daemon to watch for creation and set default SELinux fcontexts
-sys-apps/ripgrep 11.0.2 12.0.1: a search tool that combines the usability of ag with the raw speed of grep
+sys-apps/ripgrep 11.0.2 12.0.1 12.1.0: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8 6.9 6.10: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.7.0 5.9.0: Utility for advanced configuration of Roccat devices
