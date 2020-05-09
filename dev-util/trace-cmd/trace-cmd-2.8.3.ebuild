@@ -44,6 +44,7 @@ CONFIG_CHECK="
 PATCHES=(
 	"${FILESDIR}/trace-cmd-2.8-python-pkgconfig-name.patch"
 	"${FILESDIR}/trace-cmd-2.8.3-soname.patch"
+	"${FILESDIR}/trace-cmd-2.8.3-gcc10.patch"
 )
 
 pkg_setup() {
@@ -107,4 +108,6 @@ python_install() {
 		install_python
 
 	popd > /dev/null || die
+
+	python_optimize
 }
