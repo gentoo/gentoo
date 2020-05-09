@@ -37,7 +37,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz
 
 LICENSE="BSD CPL-1.0 GPL-2+ IBM java? ( Apache-2.0 )"
 SLOT="0/13" # subslot = major soname version
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~amd64 hppa ~ppc ~x86"
 IUSE="aff doc ewf java postgres static-libs test +threads zlib"
 RESTRICT="!test? ( test )"
 
