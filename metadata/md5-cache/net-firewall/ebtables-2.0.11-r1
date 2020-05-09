@@ -1,0 +1,13 @@
+BDEPEND=>=app-eselect/eselect-iptables-20200508 >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst prepare prerm setup
+DESCRIPTION=Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
+EAPI=7
+HOMEPAGE=http://ebtables.sourceforge.net/
+IUSE=+perl static
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-eselect/eselect-iptables-20200508 perl? ( dev-lang/perl ) net-misc/ethertypes
+SLOT=0
+SRC_URI=ftp://ftp.netfilter.org/pub/ebtables/ebtables-2.0.11.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=ee23c5e9eb270813b823e7679b10b463
