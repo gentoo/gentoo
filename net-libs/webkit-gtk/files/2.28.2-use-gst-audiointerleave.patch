@@ -1,0 +1,55 @@
+From 43686247013a1230d47b46d637f928eb47c99609 Mon Sep 17 00:00:00 2001
+From: "commit-queue@webkit.org"
+ <commit-queue@webkit.org@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
+Date: Wed, 29 Apr 2020 08:14:06 +0000
+Subject: [PATCH] [GStreamer] Switch to audiointerleave
+ https://bugs.webkit.org/show_bug.cgi?id=211124
+
+Patch by Philippe Normand <pnormand@igalia.com> on 2020-04-29
+Reviewed by Xabier Rodriguez-Calvar.
+
+The audiointerleave element is a drop-in replacement of
+interleave. It should behave a bit better in live.
+
+No new tests, existing webaudio tests cover this change.
+
+* platform/audio/gstreamer/WebKitWebAudioSourceGStreamer.cpp:
+(webKitWebAudioSrcConstructed):
+(webKitWebAudioSrcChangeState):
+
+git-svn-id: https://svn.webkit.org/repository/webkit/trunk@260886 268f45cc-cd09-0410-ab3c-d52691b4dbfc
+---
+ .../audio/gstreamer/WebKitWebAudioSourceGStreamer.cpp     | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Source/WebCore/platform/audio/gstreamer/WebKitWebAudioSourceGStreamer.cpp b/Source/WebCore/platform/audio/gstreamer/WebKitWebAudioSourceGStreamer.cpp
+index 2f937f677cc..ea134b7b1b2 100644
+--- a/Source/WebCore/platform/audio/gstreamer/WebKitWebAudioSourceGStreamer.cpp
++++ b/Source/WebCore/platform/audio/gstreamer/WebKitWebAudioSourceGStreamer.cpp
+@@ -211,10 +211,10 @@ static void webKitWebAudioSrcConstructed(GObject* object)
+     ASSERT(priv->provider);
+     ASSERT(priv->sampleRate);
+ 
+-    priv->interleave = gst_element_factory_make("interleave", nullptr);
++    priv->interleave = gst_element_factory_make("audiointerleave", nullptr);
+ 
+     if (!priv->interleave) {
+-        GST_ERROR_OBJECT(src, "Failed to create interleave");
++        GST_ERROR_OBJECT(src, "Failed to create audiointerleave");
+         return;
+     }
+ 
+@@ -398,8 +398,8 @@ static GstStateChangeReturn webKitWebAudioSrcChangeState(GstElement* element, Gs
+     switch (transition) {
+     case GST_STATE_CHANGE_NULL_TO_READY:
+         if (!src->priv->interleave) {
+-            gst_element_post_message(element, gst_missing_element_message_new(element, "interleave"));
+-            GST_ELEMENT_ERROR(src, CORE, MISSING_PLUGIN, (nullptr), ("no interleave"));
++            gst_element_post_message(element, gst_missing_element_message_new(element, "audiointerleave"));
++            GST_ELEMENT_ERROR(src, CORE, MISSING_PLUGIN, (nullptr), ("no audiointerleave"));
+             return GST_STATE_CHANGE_FAILURE;
+         }
+         src->priv->numberOfSamples = 0;
+-- 
+2.20.1
+
