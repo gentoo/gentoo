@@ -3070,9 +3070,8 @@
     <member>
       <email>dolsen@gentoo.org</email>
       <name>Brian Dolbec</name>
-      <role>Catalyst Lead</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
       <role>AMD64 / X86 Release Coordinator</role>
@@ -3082,10 +3081,10 @@
       <name>Matthew Marchese</name>
       <role>Documentation Helper</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Alpha/HPPA/IA64/MIPS/PPC/PPC64/SPARC/S390 Release Coordinator</role>
+      <role>Lead, Alpha/HPPA/IA64/MIPS/PPC/PPC64/SPARC/S390 Release Coordinator</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
