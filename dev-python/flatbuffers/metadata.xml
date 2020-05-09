@@ -6,7 +6,6 @@
         <name>Brian Dolbec</name>
     </maintainer>
   <upstream>
-    <remote-id type="pypi">autobahn</remote-id>
-    <remote-id type="github">crossbar/autobahn</remote-id>
+    <remote-id type="pypi">flatbuffers</remote-id>
   </upstream>
 </pkgmetadata>
