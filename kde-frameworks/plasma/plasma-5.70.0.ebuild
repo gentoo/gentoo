@@ -62,8 +62,6 @@ DEPEND="${RDEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.15-crash.patch" )
-
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package !gles2-only OpenGL)

@@ -23,6 +23,7 @@ BDEPEND="
 	>=dev-qt/linguist-tools-${QTMIN}:5
 "
 DEPEND="
+	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5=

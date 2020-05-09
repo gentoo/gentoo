@@ -17,9 +17,9 @@ BDEPEND="
 	test? ( ${PYTHON_DEPS} )
 "
 RDEPEND="
+	>=dev-qt/qtxml-${QTMIN}:5
 	=kde-frameworks/kcoreaddons-${PVCUT}*:5
 	=kde-frameworks/ki18n-${PVCUT}*:5
-	>=dev-qt/qtxml-${QTMIN}:5
 	epub? ( app-text/ebook-tools )
 	exif? ( media-gfx/exiv2:= )
 	ffmpeg? ( media-video/ffmpeg:0= )
