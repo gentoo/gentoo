@@ -1,15 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml(+),threads(+)"
 inherit distutils-r1 multilib
 
 DESCRIPTION="Daemon part of Canto-NG RSS reader"
 HOMEPAGE="https://codezen.org/canto-ng/"
-SRC_URI="https://codezen.org/static/${P}.tar.gz"
+SRC_URI="https://github.com/themoken/canto-next/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
