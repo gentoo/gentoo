@@ -45,6 +45,11 @@ src_prepare() {
 
 src_configure() {
 	use test && append-flags -g #407135
+
+	# Symbol aliases are implemented as asm statements.
+	# Will require porting: https://gcc.gnu.org/PR48200
+	filter-flags '-flto*'
+
 	multilib-minimal_src_configure
 }
 
