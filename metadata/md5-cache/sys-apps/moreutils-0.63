@@ -10,4 +10,4 @@ RDEPEND=perl? ( dev-lang/perl dev-perl/IPC-Run dev-perl/Time-Duration dev-perl/T
 SLOT=0
 SRC_URI=mirror://debian/pool/main/m/moreutils/moreutils_0.63.orig.tar.xz
 _eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=799ece3d72eccbe78d5aeb5b82d329ef
+_md5_=ebcf4ab52f890f68b6211ffa8f6decb2
