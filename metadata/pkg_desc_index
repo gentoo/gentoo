@@ -675,7 +675,7 @@ app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1: Script for unpacking various file formats
 app-arch/unrar 5.9.2: Uncompress rar files
-app-arch/unrpa 1.4.1 1.4.2 9999: Ren'Py's RPA data file extractor
+app-arch/unrpa 1.4.1 1.4.2 2.3.0 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1: unzipper for pkzip-compressed files
 app-arch/upx 3.96: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
@@ -8368,7 +8368,7 @@ dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer m
 dev-python/pyftpdlib 1.5.5-r1 1.5.6: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6 1.9.6-r1: Python bindings for SDL multimedia library
-dev-python/pygame_sdl2 6.99.12.4-r2 6.99.12.4-r3: Reimplementation of portions of the pygame API using SDL2
+dev-python/pygame_sdl2 6.99.12.4-r2 6.99.12.4-r3 7.3.5: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.0.3 1.2.1: Python bindings for libgit2
 dev-python/pyglet 1.2.4 1.5.3: Cross-platform windowing and multimedia library for Python
@@ -11035,7 +11035,7 @@ games-engines/odamex 0.8.2: Online multiplayer free software engine for DOOM
 games-engines/openmw 0.45.0: Open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0_p20180317 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 3.0.0: Multimedia interpreter for TADS text adventures
-games-engines/renpy 6.99.12.4-r4: Visual novel engine written in python
+games-engines/renpy 6.99.12.4-r4 7.3.5: Visual novel engine written in python
 games-engines/residualvm 0.2.1-r1 0.3.1-r2 9999: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 games-engines/scummvm 2.1.0: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 1.8.0-r1 2.0.0-r1: utilities for the SCUMM game engine
