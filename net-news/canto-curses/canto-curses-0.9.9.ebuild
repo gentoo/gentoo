@@ -1,23 +1,21 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
-PYTHON_REQ_USE="xml(+),threads(+)"
+PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_REQ_USE="ncurses(+),threads(+)"
 inherit distutils-r1 multilib
 
-DESCRIPTION="Daemon part of Canto-NG RSS reader"
+DESCRIPTION="The ncurses client for canto-daemon"
 HOMEPAGE="https://codezen.org/canto-ng/"
-SRC_URI="https://codezen.org/static/${P}.tar.gz"
+SRC_URI="https://github.com/themoken/canto-curses/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/feedparser[${PYTHON_USEDEP}]"
-
-S="${WORKDIR}/canto-next-${PV}"
+RDEPEND=">=net-news/canto-daemon-0.9.1[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	# Respect libdir during plugins installation
