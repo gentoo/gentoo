@@ -7534,7 +7534,7 @@ dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to 
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.11.0 1.22.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
-dev-python/awscli 1.18.16 1.18.32 1.18.48: Universal Command Line Environment for AWS
+dev-python/awscli 1.18.16 1.18.32 1.18.48 1.18.56: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0-r1: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
@@ -7575,7 +7575,7 @@ dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.2 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0 2.49.0-r1: Amazon Web Services API
 dev-python/boto3 1.9.122 1.10.2 1.12.48 9999: The AWS SDK for Python
-dev-python/botocore 1.12.122 1.15.16 1.15.32 1.15.48 9999: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.12.122 1.15.16 1.15.32 1.15.48 1.16.6 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.18 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -12520,7 +12520,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.11.7 7.0.10.7-r1 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.11.7 6.9.11.9 7.0.10.7-r1 7.0.10.9 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.3 0.3.4: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
@@ -13156,7 +13156,7 @@ media-plugins/gst-plugins-x264 1.14.3 1.16.2: H.264 encoder plugin for GStreamer
 media-plugins/gst-plugins-x265 1.14.5 1.16.2: H.265 encoder plugin for GStreamer
 media-plugins/gst-plugins-ximagesrc 1.14.5 1.16.2: X11 video capture stream plugin for GStreamer
 media-plugins/gst-plugins-zbar 1.14.5 1.16.2: Bar codes detection in video streams for GStreamer
-media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
+media-plugins/gst-transcoder 1.8.2-r1 1.14.1: GStreamer Transcoding API
 media-plugins/hexter 1.1.0: Yamaha DX7 modeling DSSI plugin
 media-plugins/imlib2_loaders 1.6.1: Additional image loaders for Imlib2
 media-plugins/ir_lv2 1.2.4 1.3.4: LV2 convolver plugin especially for creating reverb effects
@@ -13843,7 +13843,7 @@ media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 3.7.1-r1: Movie slideshow creator using Ken Burns effect
 media-video/pipewire 0.2.7: Multimedia processing graphs
-media-video/pitivi 0.999-r2: A non-linear video editor using the GStreamer multimedia framework
+media-video/pitivi 0.999-r2 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r1 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 9999: A Qt-based video player, which can play most formats and codecs
