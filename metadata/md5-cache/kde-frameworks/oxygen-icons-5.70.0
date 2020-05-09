@@ -1,0 +1,14 @@
+BDEPEND=>=dev-qt/qtcore-5.12.3:5 >=kde-frameworks/extra-cmake-modules-5.70:5 test? ( app-misc/fdupes ) dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install nofetch prepare test unpack
+DEPEND=test? ( >=dev-qt/qttest-5.12.3:5 )
+DESCRIPTION=Oxygen SVG icon theme
+EAPI=7
+HOMEPAGE=https://kde.org/products/frameworks/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-3
+RESTRICT=!test? ( test )
+SLOT=5/5.70
+SRC_URI=mirror://kde/stable/frameworks/5.70/oxygen-icons5-5.70.0.tar.xz
+_eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=fa67f40e5cdad115c76fb48030e317be

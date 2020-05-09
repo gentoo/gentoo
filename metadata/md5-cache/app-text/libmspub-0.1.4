@@ -1,7 +1,8 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen )
 DEFINED_PHASES=configure install prepare
-DEPEND=dev-libs/icu:= dev-libs/librevenge sys-libs/zlib dev-libs/boost sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen )
+DEPEND=dev-libs/icu:= dev-libs/librevenge sys-libs/zlib dev-libs/boost sys-devel/libtool
 DESCRIPTION=Library parsing Microsoft Publisher documents
-EAPI=6
+EAPI=7
 HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libmspub
 IUSE=doc static-libs
 KEYWORDS=amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86
@@ -9,5 +10,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-libs/icu:= dev-libs/librevenge sys-libs/zlib
 SLOT=0
 SRC_URI=https://dev-www.libreoffice.org/src/libmspub/libmspub-0.1.4.tar.xz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=172f3b88f82962032c70ea98ee7b8303
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=8e0fc3566a6d75590fd1677afbb133e6
