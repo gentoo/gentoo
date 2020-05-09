@@ -1,0 +1,50 @@
+https://sourceforge.net/p/linux-gpib/code/1901/
+
+Index: linux-gpib-kernel/drivers/gpib/eastwood/fluke_gpib.c
+===================================================================
+--- linux-gpib-kernel/drivers/gpib/eastwood/fluke_gpib.c	(revision 1900)
++++ linux-gpib-kernel/drivers/gpib/eastwood/fluke_gpib.c	(revision 1901)
+@@ -114,15 +114,15 @@
+ 	fluke_private_t *priv = board->private_data;
+ 	return nec7210_update_status( board, &priv->nec7210_priv, clear_mask );
+ }
+-void fluke_primary_address(gpib_board_t *board, unsigned int address)
++int fluke_primary_address(gpib_board_t *board, unsigned int address)
+ {
+ 	fluke_private_t *priv = board->private_data;
+-	nec7210_primary_address(board, &priv->nec7210_priv, address);
++	return nec7210_primary_address(board, &priv->nec7210_priv, address);
+ }
+-void fluke_secondary_address(gpib_board_t *board, unsigned int address, int enable)
++int fluke_secondary_address(gpib_board_t *board, unsigned int address, int enable)
+ {
+ 	fluke_private_t *priv = board->private_data;
+-	nec7210_secondary_address(board, &priv->nec7210_priv, address, enable);
++	return nec7210_secondary_address(board, &priv->nec7210_priv, address, enable);
+ }
+ int fluke_parallel_poll(gpib_board_t *board, uint8_t *result)
+ {
+Index: linux-gpib-kernel/drivers/gpib/fmh_gpib/fmh_gpib.c
+===================================================================
+--- linux-gpib-kernel/drivers/gpib/fmh_gpib/fmh_gpib.c	(revision 1900)
++++ linux-gpib-kernel/drivers/gpib/fmh_gpib/fmh_gpib.c	(revision 1901)
+@@ -100,15 +100,15 @@
+ 	fmh_gpib_private_t *priv = board->private_data;
+ 	return nec7210_update_status( board, &priv->nec7210_priv, clear_mask );
+ }
+-void fmh_gpib_primary_address(gpib_board_t *board, unsigned int address)
++int fmh_gpib_primary_address(gpib_board_t *board, unsigned int address)
+ {
+ 	fmh_gpib_private_t *priv = board->private_data;
+-	nec7210_primary_address(board, &priv->nec7210_priv, address);
++	return nec7210_primary_address(board, &priv->nec7210_priv, address);
+ }
+-void fmh_gpib_secondary_address(gpib_board_t *board, unsigned int address, int enable)
++int fmh_gpib_secondary_address(gpib_board_t *board, unsigned int address, int enable)
+ {
+ 	fmh_gpib_private_t *priv = board->private_data;
+-	nec7210_secondary_address(board, &priv->nec7210_priv, address, enable);
++	return nec7210_secondary_address(board, &priv->nec7210_priv, address, enable);
+ }
+ int fmh_gpib_parallel_poll(gpib_board_t *board, uint8_t *result)
+ {
