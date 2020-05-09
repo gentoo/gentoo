@@ -25,7 +25,7 @@ IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm +magic
 
 DEPEND="
 	acct-user/gerbera
-	>=net-libs/libupnp-1.8.3:=[ipv6,reuseaddr]
+	=net-libs/libupnp-1.8*:=[ipv6,reuseaddr]
 	>=dev-db/sqlite-3
 	dev-libs/expat
 	mysql? ( dev-db/mysql-connector-c )
