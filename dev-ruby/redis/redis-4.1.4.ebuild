@@ -37,6 +37,8 @@ all_ruby_prepare() {
 		test/publish_subscribe_test.rb || die "sed failed"
 
 	sed -i -e 's/git ls-files --/echo/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e '/test_connection_timeout/askip "requires network"' test/internals_test.rb || die
 }
 
 each_ruby_test() {
