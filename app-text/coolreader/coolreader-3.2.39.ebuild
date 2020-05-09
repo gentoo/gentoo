@@ -10,7 +10,6 @@ CR_PV=$(ver_rs 3 '-')
 
 if [ "${PV}" != 9999 ]
 then
-	# git tag cr3.2.2-1
 	SRC_URI="https://github.com/buggins/${PN}/archive/cr${CR_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-cr${CR_PV}"
 else
@@ -23,7 +22,7 @@ else
 fi
 
 DESCRIPTION="CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)"
-HOMEPAGE="https://sourceforge.net/projects/crengine/"
+HOMEPAGE="https://github.com/buggins/coolreader/"
 
 LICENSE="GPL-2"
 SLOT="0"
