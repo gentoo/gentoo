@@ -9,7 +9,7 @@ DESCRIPTION="Library and tool for personalization of Yubico's YubiKey"
 SRC_URI="https://github.com/Yubico/yubikey-personalization/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/Yubico/yubikey-personalization"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 SLOT="0"
 LICENSE="BSD-2"
 IUSE="consolekit static-libs"
