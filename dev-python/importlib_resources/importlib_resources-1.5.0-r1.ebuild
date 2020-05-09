@@ -26,7 +26,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/importlib_metadata[${PYTHON_USEDEP}]
 		dev-python/zipp[${PYTHON_USEDEP}]
-	' pypy3 python3_6)
+	' pypy3 python3_{6,7})
 "
 BDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]
