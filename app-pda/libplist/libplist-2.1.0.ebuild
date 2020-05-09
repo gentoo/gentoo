@@ -12,7 +12,7 @@ SRC_URI="https://cgit.libimobiledevice.org/${PN}.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm ~arm64 ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE="python static-libs"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"

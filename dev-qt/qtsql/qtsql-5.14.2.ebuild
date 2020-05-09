@@ -9,7 +9,7 @@ DESCRIPTION="SQL abstraction library for the Qt5 framework"
 SLOT=5/$(ver_cut 1-3) # bug 639140
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 arm ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86"
 fi
 
 IUSE="freetds mysql oci8 odbc postgres +sqlite"
