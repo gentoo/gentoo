@@ -568,7 +568,7 @@ qt5_base_configure() {
 		-no-libpng -no-libjpeg
 		-no-freetype -no-harfbuzz
 		-no-openssl -no-libproxy
-		$([[ ${QT5_MINOR_VERSION} -ge 14 ]] && echo -no-feature-gssapi)
+		-no-feature-gssapi
 		-no-xcb-xlib
 
 		# bug 672340
@@ -618,7 +618,6 @@ qt5_base_configure() {
 
 		# disable all platform plugins by default, override in qtgui
 		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb
-		$([[ ${QT5_MINOR_VERSION} -lt 14 ]] && echo -no-mirclient)
 
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)
