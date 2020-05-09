@@ -1,0 +1,18 @@
+diff --git a/setup.cfg b/setup.cfg
+index e3cfc2f..46f2bec 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -14,10 +14,3 @@ max-line-length = 120
+ [upload_sphinx]
+ # Requires sphinx-pypi-upload to work.
+ upload-dir = docs/build/html
+-
+-[tool:pytest]
+-addopts =
+-    --showlocals
+-    -v
+-    --cov=watchdog
+-    --cov-report=term-missing
+-- 
+2.26.2
+
