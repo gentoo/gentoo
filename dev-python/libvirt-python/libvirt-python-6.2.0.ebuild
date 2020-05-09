@@ -13,11 +13,11 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://libvirt.org/git/libvirt-python.git"
 	SRC_URI=""
-	KEYWORDS="x86"
+	KEYWORDS="amd64 x86"
 	RDEPEND="app-emulation/libvirt:=[-python(-)]"
 else
 	SRC_URI="https://libvirt.org/sources/python/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 fi
 S="${WORKDIR}/${P%_rc*}"
