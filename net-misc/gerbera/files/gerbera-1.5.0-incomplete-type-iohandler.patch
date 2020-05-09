@@ -1,0 +1,25 @@
+From 5ebc80d64bc651a3cd5de0e92f1e607b8f8ea407 Mon Sep 17 00:00:00 2001
+From: Ian Whyman <ian@gerbera.io>
+Date: Sat, 9 May 2020 11:22:47 +0100
+Subject: [PATCH] Fix incomplete type iohandler with Ninja generator
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+error: invalid application of ‘sizeof’ to incomplete type ‘IOHandler’
+---
+ src/metadata/ffmpeg_handler.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/metadata/ffmpeg_handler.h b/src/metadata/ffmpeg_handler.h
+index 7c134430..565ff773 100644
+--- a/src/metadata/ffmpeg_handler.h
++++ b/src/metadata/ffmpeg_handler.h
+@@ -42,6 +42,7 @@
+ namespace fs = std::filesystem;
+ 
+ #include "metadata_handler.h"
++#include "iohandler/io_handler.h"
+ 
+ // forward declaration
+ class AVFormatContext;
