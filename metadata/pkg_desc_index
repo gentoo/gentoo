@@ -9645,7 +9645,7 @@ dev-ruby/itextomml 1.5.8 1.6.0: Native Ruby bindings to itex2MML, which converts
 dev-ruby/jbuilder 2.9.1 2.10.0: Create JSON structures via a Builder-style DSL
 dev-ruby/jmespath 1.4.0: Implements JMESPath for Ruby
 dev-ruby/journey 1.0.4-r1: Journey is a router. It routes requests
-dev-ruby/jquery-rails 4.3.5: jQuery! For Rails! So great
+dev-ruby/jquery-rails 4.3.5 4.4.0: jQuery! For Rails! So great
 dev-ruby/jquery-ui-rails 5.0.5-r1 6.0.1-r1: The jQuery UI assets for the Rails 3.2+ asset pipeline
 dev-ruby/jsobfu 0.4.2: A Javascript code obfuscator
 dev-ruby/json 1.8.6-r1 2.3.0: A JSON implementation as a Ruby extension
