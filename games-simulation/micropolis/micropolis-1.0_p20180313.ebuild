@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,9 +27,9 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 src_prepare() {
 	default
 
-	sed -i -e "s:-O3:${CFLAGS}:" \
+	sed -i -e "s|-O3|${CFLAGS}|" \
 		src/tclx/config.mk src/{sim,tcl,tk}/makefile || die
-	sed -i -e "s:XLDFLAGS=:&${LDFLAGS}:" \
+	sed -i -e "s|XLDFLAGS=|&${LDFLAGS}|" \
 		src/tclx/config.mk || die
 }
 
