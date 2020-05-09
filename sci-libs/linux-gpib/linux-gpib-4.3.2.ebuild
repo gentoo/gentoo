@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit readme.gentoo-r1 autotools perl-functions python-single-r1 toolchain-funcs udev user
+inherit readme.gentoo-r1 autotools perl-functions python-single-r1 toolchain-funcs udev
 
 DESCRIPTION="Driver library for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/linux-gpib/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="pcmcia static guile perl php python tcl doc firmware"
 
 S="${WORKDIR}/${PN}-user-${PV}"
@@ -29,6 +29,7 @@ COMMONDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	firmware? ( sys-apps/fxload )"
 RDEPEND="${COMMONDEPEND}
+	acct-group/gpib
 	~sci-libs/linux-gpib-modules-${PV}
 "
 DEPEND="${COMMONDEPEND}
@@ -39,7 +40,7 @@ DEPEND="${COMMONDEPEND}
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.16-perl.patch
+	"${FILESDIR}"/${PN}-4.3.0-perl.patch
 )
 
 pkg_setup() {
@@ -108,7 +109,6 @@ src_install() {
 	newins util/templates/gpib.conf gpib.conf.example
 
 	if use pcmcia; then
-		dodir /etc/pcmcia
 		insinto /etc/pcmcia
 		doins "${S}"/etc/pcmcia/*
 	fi
@@ -121,6 +121,14 @@ src_install() {
 	done
 
 	DOC_CONTENTS="
+As the udev rules were changed and refactored in this release it is
+necessary to remove any manually installed pre-4.3.0 gpib udev rules files
+in /etc/udev/rules.d/. The files to remove are:
+\n
+	99-agilent_82357a.rules\n
+	99-gpib-generic.rules\n
+	99-ni_usb_gpib.rules\n
+\n
 You need to run the 'gpib_config' utility to setup the driver before
 you can use it. In order to do it automatically you can add to your
 start script something like this (supposing the appropriate driver
@@ -163,11 +171,6 @@ gpib_config --minor 0 --init-data /usr/share/linux-gpib/hp_82341/hp_82341c_fw.bi
 	fi
 
 	readme.gentoo_create_doc
-}
-
-pkg_preinst() {
-	use perl && perl_set_version
-	enewgroup gpib
 }
 
 pkg_postinst() {

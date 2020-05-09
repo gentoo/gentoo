@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit linux-info linux-mod autotools toolchain-funcs
+inherit linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Kernel modules for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
@@ -11,32 +11,28 @@ SRC_URI="mirror://sourceforge/linux-gpib/linux-gpib-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
-IUSE="isa pcmcia debug"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="debug"
 
 COMMONDEPEND=""
 RDEPEND="${COMMONDEPEND}
+	acct-group/gpib
 	!<sci-libs/linux-gpib-4.2.0_rc1
 "
 DEPEND="${COMMONDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.2.0_rc1-reallydie.patch
-)
-
 S=${WORKDIR}/linux-gpib-kernel-${PV}
+
+PATCHES=(
+	"${FILESDIR}/${P}-returntype.patch"
+)
 
 pkg_setup() {
 	linux-mod_pkg_setup
 
 	if kernel_is -lt 2 6 8; then
 		die "Kernel versions older than 2.6.8 are not supported."
-	fi
-
-	# https://sourceforge.net/p/linux-gpib/bugs/43/
-	if use pcmcia && kernel_is -ge 2 6 38; then
-		die "pcmcia support is broken on kernels newer 2.6.38"
 	fi
 }
 
@@ -45,18 +41,13 @@ src_unpack() {
 	unpack "${WORKDIR}/linux-gpib-${PV}/linux-gpib-kernel-${PV}.tar.gz"
 }
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	set_arch_to_kernel
-	econf \
-		$(use_enable isa) \
-		$(use_enable pcmcia) \
-		$(use_enable debug driver-debug) \
-		--with-linux-srcdir=${KV_DIR}
+
+	my_gpib_makeopts=''
+	use debug && my_gpib_makeopts+='GPIB-DEBUG=1 '
+
+	my_gpib_makeopts+="LINUX_SRCDIR=${KERNEL_DIR} "
 }
 
 src_compile() {
@@ -64,7 +55,8 @@ src_compile() {
 	emake \
 		DESTDIR="${D}" \
 		INSTALL_MOD_PATH="${D}" \
-		docdir=/usr/share/doc/${PF}/html
+		docdir=/usr/share/doc/${PF}/html \
+		${my_gpib_makeopts}
 }
 
 src_install() {
@@ -73,16 +65,9 @@ src_install() {
 		DESTDIR="${D}" \
 		INSTALL_MOD_PATH="${D}" \
 		DEPMOD="/bin/true" \
-		docdir=/usr/share/doc/${PF}/html install
+		docdir=/usr/share/doc/${PF}/html \
+		${my_gpib_makeopts} \
+		install
 
 	dodoc ChangeLog AUTHORS README* NEWS
-}
-
-pkg_preinst() {
-	linux-mod_pkg_preinst
-	enewgroup gpib
-}
-
-pkg_postinst() {
-	linux-mod_pkg_postinst
 }

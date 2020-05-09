@@ -12,7 +12,7 @@ HOMEPAGE="https://www.nltk.org/nltk_data/"
 # TODO: create a USE flag for free-ish subset
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="extra"
 RESTRICT="bindist mirror"
 
