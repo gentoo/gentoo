@@ -5,10 +5,10 @@ DESCRIPTION=Audio/MIDI multi-track sequencer written in C++ with the Qt framewor
 EAPI=7
 HOMEPAGE=https://qtractor.sourceforge.io
 IUSE=aubio cpu_flags_x86_sse debug dssi libsamplerate mad osc rubberband vorbis zlib
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtx11extras:5 media-libs/alsa-lib media-libs/ladspa-sdk media-libs/libsndfile >=media-libs/lilv-0.16.0 media-libs/lv2 media-libs/suil virtual/jack aubio? ( media-libs/aubio ) dssi? ( media-libs/dssi ) libsamplerate? ( media-libs/libsamplerate ) mad? ( media-libs/libmad ) osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/qtractor/qtractor-0.9.13.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=122669029b6fb5bf1e3658d5b0f24159
+_md5_=4017a1f927ea7e08011e73361de8ac9e
