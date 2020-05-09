@@ -6,7 +6,6 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="libinput">Enable support for input devices via <pkg>dev-libs/libinput</pkg></flag>
 		<flag name="vulkan">Enable support for Vulkan-based server buffer integration</flag>
 	</use>
 	<upstream>
