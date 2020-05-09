@@ -3122,6 +3122,8 @@ games-emulation/dolphin:log - Increase logging output
 games-emulation/dolphin:lto - Add support for link-time optimizations.
 games-emulation/dosbox:core-inline - Enable memory-increasing inlines for better performance but requiring more build time
 games-emulation/dosbox:glide - Enable unofficial Glide emulation via media-libs/openglide
+games-emulation/dosbox-staging:dynrec - Use recompiling cpu core instead of dynamic x86/x64 specific cpu core
+games-emulation/dosbox-staging:opus - Support compressed audio tracks (.opus) used with CDROM images
 games-emulation/fceux:logo - Enable the ability to add a logo screen when creating AVIs
 games-emulation/generator:sdlaudio - Enable SDL Audio
 games-emulation/hatari:capsimage - Use dev-libs/spsdeclib to read .IPF, .RAW, and .CTR disk images
