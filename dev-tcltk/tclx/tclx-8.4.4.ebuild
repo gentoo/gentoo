@@ -7,7 +7,8 @@ inherit multilib
 
 DESCRIPTION="A set of extensions to TCL"
 HOMEPAGE="http://tclx.sourceforge.net"
-SRC_URI="https://github.com/flightaware/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/flightaware/${PN}/archive/v${PV}.tar.gz
+	-> ${P}.tar.gz"
 
 LICENSE="BSD"
 IUSE="threads"
