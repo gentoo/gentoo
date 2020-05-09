@@ -1403,6 +1403,7 @@ downgrade_arch_flags() {
 
 	# "added" "arch" "replacement"
 	local archlist=(
+		9 znver2 znver1
 		4.9 bdver4 bdver3
 		4.9 bonnell atom
 		4.9 broadwell core-avx2
