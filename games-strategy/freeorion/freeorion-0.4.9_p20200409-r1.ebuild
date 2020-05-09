@@ -35,7 +35,7 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.67:=[python,threads,${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.67:=[nls,python,threads,${PYTHON_MULTI_USEDEP}]
 	')
 	!dedicated? (
 		media-libs/freealut
