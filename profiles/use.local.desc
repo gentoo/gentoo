@@ -7364,7 +7364,6 @@ sci-libs/libsigrok:serial - Enable drivers that are serial (RS232) based
 sci-libs/libsvm:tools - Install python based tool scripts for data selection and visualization with sci-visualization/gnuplot
 sci-libs/linbox:opencl - Enable the use of OpenCL in LinBox
 sci-libs/linux-gpib:firmware - Install firmware
-sci-libs/linux-gpib-modules:isa - Build ISA kernel modules; from 3.12 on the setting is ignored and the decision based on the kernel configuration
 sci-libs/lis:quad - Enable quadruple precision operations
 sci-libs/lis:saamg - Build the Smoothed Aggregation Algebraic MultiGrid preconditioner
 sci-libs/magma:fermi - Compile for GPU NVIDIA Fermi family (2.x cards)

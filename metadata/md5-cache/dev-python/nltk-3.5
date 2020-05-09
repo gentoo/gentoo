@@ -4,7 +4,7 @@ DESCRIPTION=Natural Language Toolkit
 EAPI=7
 HOMEPAGE=https://www.nltk.org/ https://github.com/nltk/nltk/
 IUSE=tk test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=Apache-2.0
 PDEPEND=dev-python/nltk-data
 RDEPEND=dev-python/joblib[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/regex[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/six[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_6? ( dev-lang/python:3.6[sqlite,tk?,xml(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[sqlite,tk?,xml(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[sqlite,tk?,xml(+)] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/nltk/nltk/archive/3.5.tar.gz -> nltk-3.5.tar.gz
 _eclasses_=distutils-r1	054fa5f0442c7ccb4d4a05410d92123b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=1a6633555b21339613a4971410400911
+_md5_=1aee10577786778e71be9a58f03121d4
