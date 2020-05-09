@@ -347,6 +347,7 @@ src_configure() {
 		$(use_enable mtp)
 		$(use_enable musepack mpc)
 		$(use_enable ncurses)
+		$(use_enable nfs)
 		$(use_enable ogg)
 		$(use_enable omxil)
 		$(use_enable optimisememory optimize-memory)
