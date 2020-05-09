@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VER
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
