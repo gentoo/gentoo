@@ -7525,7 +7525,7 @@ dev-python/attrs 19.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.2.0: Parse and generate Authentication-Results headers
-dev-python/autobahn 17.5.1-r2 18.3.1: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 17.5.1-r2 18.3.1 20.4.3: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.8.0-r1: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
@@ -7595,6 +7595,7 @@ dev-python/castellan 1.2.2: Generic Key Manager interface for OpenStack
 dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube Chromecast api.
 dev-python/catkin_pkg 0.4.12 0.4.13 0.4.15 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
+dev-python/cbor2 5.1.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 2019.11.28 2020.4.5.1: Python package for providing Mozilla's CA Bundle
@@ -7820,6 +7821,7 @@ dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects a
 dev-python/flask-sqlalchemy 2.4.1-r1: SQLAlchemy support for Flask applications
 dev-python/flask-themes 0.1.3_p20180112: Infrastructure for theming support in Flask applications
 dev-python/flask-wtf 0.14.2-r1 0.14.3: Simple integration of Flask and WTForms
+dev-python/flatbuffers 1.12: RFC 7049 - Concise Binary Object Representation
 dev-python/fleep 1.0.1 9999: File format determination library for Python
 dev-python/flexmock 0.10.4: Testing library to create mocks, stubs and fakes
 dev-python/flexx 0.4.1: Pure Python toolkit for creating GUI's using web technology
@@ -8722,7 +8724,7 @@ dev-python/setuptools 44.0.0 44.1.0 45.3.0 46.1.3: Collection of extensions to D
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 3.5.0: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
-dev-python/setuptools_trial 0.6.0: Setuptools plugin that makes unit tests execute with trial instead of pyunit
+dev-python/setuptools_trial 0.6.0-r1: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sh 1.12.14: Python subprocess interface
 dev-python/shutilwhich 1.1.0: A copy & paste backport of Python 3.3's shutil.which function
@@ -8878,7 +8880,7 @@ dev-python/twine 1.15.0 3.1.1: Collection of utilities for publishing packages o
 dev-python/twisted 16.6.0-r3 18.4.0 19.10.0 20.3.0: An asynchronous networking framework written in Python
 dev-python/twython 3.7.0: An easy way to access Twitter data with Python
 dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using Twisted
-dev-python/txaio 2.9.0: Compatibility API between asyncio/Twisted/Trollius
+dev-python/txaio 2.9.0 20.4.1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.5-r1 0.9.6: Asynchronous Python HTTP for Humans
 dev-python/txtorcon 0.19.3-r1 20.0.0: Twisted-based Tor controller client, with state-tracking and config abstractions
@@ -17096,7 +17098,7 @@ sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34 2.34-r1 9999: Tools necessary 
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34: Tools necessary to build programs
-sys-devel/bison 3.1 3.3.2 3.4.2 3.5.3 3.5.4: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.3.2 3.4.2 3.5.4 3.6: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20181221: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 8.0.1 9.0.1 10.0.0 10.0.0.9999 11.0.0.9999: C language family frontend for LLVM
