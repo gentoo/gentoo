@@ -10,14 +10,10 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://aomedia.googlesource.com/aom"
 else
-	if [[ ${PV} == *pre* ]]; then
-		SRC_URI="mirror://gentoo/${P}.tar.xz"
-		S="${WORKDIR}/${PN}"
-	else
-		# SRC_URI="https://aomedia.googlesource.com/aom/+archive/v${PV}.tar.gz -> ${P}.tar.gz"
-		SRC_URI="mirror://gentoo/${P}.tar.gz"
-		S="${WORKDIR}"
-	fi
+	MY_COMMIT="1e711b0aca6721da83835e3b5ceda07238e8b6ae"
+	#SRC_URI="https://aomedia.googlesource.com/aom/+archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~whissi/dist/${PN}/${P}.tar.gz"
+	S="${WORKDIR}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
@@ -25,7 +21,7 @@ DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
 HOMEPAGE="https://aomedia.org"
 
 LICENSE="BSD-2"
-SLOT="0/1.9999"
+SLOT="0/2"
 IUSE="doc examples"
 IUSE="${IUSE} cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3"
 IUSE="${IUSE} cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2"
@@ -43,8 +39,6 @@ BDEPEND="abi_x86_32? ( dev-lang/yasm )
 	amd64-fbsd? ( dev-lang/yasm )
 	doc? ( app-doc/doxygen )
 "
-
-PATCHES=( "${FILESDIR}/pthread_lib2.patch" )
 
 # the PATENTS file is required to be distributed with this package bug #682214
 DOCS=( PATENTS )
