@@ -8,4 +8,7 @@
 	<use>
 		<flag name="system-jsoncpp">Use system copy of <pkg>dev-libs/jsoncpp</pkg> instead of bundled one.</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:cmake_project:cmake</remote-id>
+	</upstream>
 </pkgmetadata>
