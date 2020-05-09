@@ -72,7 +72,7 @@ Only in exim-4.92/src: globals.h.orig
 diff -ur exim-4.92.orig/src/local_scan.c exim-4.92/src/local_scan.c
 --- exim-4.92.orig/src/local_scan.c	2019-01-30 14:59:52.000000000 +0100
 +++ exim-4.92/src/local_scan.c	2019-02-16 18:29:56.832732592 +0100
-@@ -5,61 +5,131 @@
+@@ -5,61 +5,133 @@
  /* Copyright (c) University of Cambridge 1995 - 2009 */
  /* See the file NOTICE for conditions of use and distribution. */
  
@@ -126,9 +126,11 @@ diff -ur exim-4.92.orig/src/local_scan.c exim-4.92/src/local_scan.c
 -                   is used in the rejection message.
 -*/
 +#ifdef DLOPEN_LOCAL_SCAN
++#include <stdlib.h>
 +#include <dlfcn.h>
 +static int (*local_scan_fn)(int fd, uschar **return_text) = NULL;
 +static int load_local_scan_library(void);
++extern uschar *local_scan_path;        /* Path to local_scan() library */
 +#endif
  
  int
