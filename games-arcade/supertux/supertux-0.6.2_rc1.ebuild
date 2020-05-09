@@ -6,11 +6,12 @@ EAPI=7
 : ${CMAKE_MAKEFILE_GENERATOR:=emake}
 inherit cmake flag-o-matic
 
-MY_P="SuperTux-v${PV}-Source"
+MY_PV="${PV/_rc/-rc.}"
+MY_P="SuperTux-v${MY_PV}-Source"
 
 DESCRIPTION="A game similar to Super Mario Bros."
 HOMEPAGE="https://supertux.org/"
-SRC_URI="https://github.com/SuperTux/${PN}/releases/download/v${PV}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/SuperTux/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-3+ ZLIB MIT CC-BY-SA-2.0 CC-BY-SA-3.0"
 SLOT="0"
@@ -34,6 +35,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.0-tinygettext.patch
 	"${FILESDIR}"/${PN}-0.6.0-{license,icon,obstack}.patch
+	"${FILESDIR}"/${PN}-0.6.2_rc1-boost-1.73.patch
 )
 
 src_prepare() {
@@ -53,7 +55,6 @@ src_configure() {
 		-DINSTALL_SUBDIR_DOC=share/doc/${PF}
 		-DINSTALL_SUBDIR_SHARE=share/${PN}2
 		-DENABLE_SQDBG="$(usex debug)"
-		-DENABLE_BOOST_STATIC_LIBS=OFF # bug! Please check if this is still required.
 		-DUSE_SYSTEM_PHYSFS=ON
 	)
 	cmake_src_configure
