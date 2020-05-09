@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-05-09)
+# No sys-cluster/ceph keywords on ppc.
+sys-block/tgt rbd
+
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
