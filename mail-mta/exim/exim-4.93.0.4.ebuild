@@ -114,6 +114,7 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.93-localscan_dlopen.patch
+	eapply -p2 "${FILESDIR}"/exim-4.93-radius.patch # 720364
 
 	if use maildir ; then
 		eapply "${FILESDIR}"/exim-4.20-maildir.patch
@@ -219,11 +220,11 @@ src_configure() {
 	local DB_VERS="5.3 5.1 4.8 4.7 4.6 4.5 4.4 4.3 4.2 3.2"
 	cat >> Makefile <<- EOC
 		USE_DB=yes
-		CFLAGS+=-I$(db_includedir ${DB_VERS})
-		DBMLIB=-l$(db_libname ${DB_VERS})
 		LOOKUP_CDB=yes
 		LOOKUP_PASSWD=yes
 		LOOKUP_DSEARCH=yes
+		LOOKUP_INCLUDE += -I$(db_includedir ${DB_VERS})
+		DBMLIB = -l$(db_libname ${DB_VERS})
 	EOC
 
 	if ! use dnsdb; then
@@ -255,7 +256,8 @@ src_configure() {
 		EOC
 		if use elibc_glibc ; then
 			cat >> Makefile <<- EOC
-				CFLAGS += -I"${EPREFIX}"/usr/include/tirpc
+				LOOKUP_INCLUDE += -I"${EPREFIX}"/usr/include/tirpc
+				LOOKUP_LIBS += -lnsl
 			EOC
 		fi
 	fi
