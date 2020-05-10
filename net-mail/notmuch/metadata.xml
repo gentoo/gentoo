@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>aidecoe@gentoo.org</email>
-		<name>Amadeusz Żołnowski</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="doc">Install API documentation</flag>
 		<flag name="crypt">Support decryption and verification of PGP/MIME
