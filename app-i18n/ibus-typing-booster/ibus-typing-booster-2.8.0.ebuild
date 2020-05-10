@@ -18,7 +18,7 @@ IUSE=""
 RESTRICT="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-CDEPEND="${PYTHON_DEPS}
+DEPEND="${PYTHON_DEPS}
 	dev-libs/m17n-lib
 	$(python_gen_cond_dep '
 		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
@@ -27,8 +27,7 @@ CDEPEND="${PYTHON_DEPS}
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
 	')"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	>=dev-db/m17n-db-1.7"
-DEPEND="${RDEPEND}
-	sys-devel/gettext
+BDEPEND="sys-devel/gettext
 	virtual/pkgconfig"
