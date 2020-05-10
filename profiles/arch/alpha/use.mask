@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -alpha
 
+# James Le Cuirot <chewi@gentoo.org> (2020-05-10)
+# media-libs/allegro is not keyworded.
+allegro
+
 # Matt Turner <mattst88@gentoo.org> (2020-03-16)
 # Drop support for ghc and darcs
 darcs
