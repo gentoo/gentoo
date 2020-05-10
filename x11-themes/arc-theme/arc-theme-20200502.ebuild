@@ -1,18 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+COMMIT="958b9b554cde5a8be7280bdf4a908ebe833cbd81"
+
 # USE="-* gtk2 gtk3 xfce" ebuild ${P}.ebuild clean compile
 # cd ~portage/x11-themes/${P}/work
-# make -j -C ${P}/common/gtk-3.0/3.18
-# find ${P}/common/{gtk-2.0,gtk-3.0/3.*,xfwm4} -name "*.png" ! -path "*/menubar-toolbar/*" | xargs tar Jcvf /usr/portage/distfiles/${P}-pngs.tar.xz
+# make -j -C */common/gtk-3.0/3.18
+# find */common/{gtk-2.0,gtk-3.0/3.*,xfwm4} -name "*.png" ! -path "*/menubar-toolbar/*" | xargs tar Jcvf /usr/portage/distfiles/${P}-pngs.tar.xz --owner=root --group=root
 
 inherit autotools
 
 DESCRIPTION="A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell"
-HOMEPAGE="https://github.com/arc-design/arc-theme"
-SRC_URI="https://github.com/arc-design/${PN}/releases/download/${PV}/${P}.tar.xz
+HOMEPAGE="https://github.com/jnsh/arc-theme"
+SRC_URI="https://github.com/jnsh/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
 	pre-rendered? ( https://dev.gentoo.org/~chewi/distfiles/${P}-pngs.tar.xz )"
 LICENSE="GPL-3"
 SLOT="0"
@@ -65,6 +67,8 @@ RDEPEND="
 	)
 "
 
+S="${WORKDIR}/${PN}-${COMMIT}"
+
 src_prepare() {
 	default
 	eautoreconf
@@ -84,4 +88,13 @@ src_configure() {
 		$(use_enable gnome-shell) \
 		$(use_enable mate metacity) \
 		$(use_enable xfce xfwm)
+}
+
+src_compile() {
+	# fontconfig issue?
+	# https://bugs.gentoo.org/666418#c28
+	use pre-rendered ||
+		addpredict "${BROOT}"/usr/share/inkscape/fonts/.uuid.TMP-XXXXXX
+
+	default
 }
