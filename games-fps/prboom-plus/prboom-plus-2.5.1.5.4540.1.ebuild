@@ -8,7 +8,7 @@ inherit autotools desktop xdg
 MY_PV=$(ver_rs 4 "+svn" 5 "+dfsg")
 MY_P=${PN}-${MY_PV}
 DESCRIPTION="An enhanced clone of the classic first-person shooter Doom"
-HOMEPAGE="https://prboom-plus.sourceforge.net"
+HOMEPAGE="http://prboom-plus.sourceforge.net"
 SRC_URI="http://deb.debian.org/debian/pool/main/p/prboom-plus/${PN}_${MY_PV}.orig.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-2+ BSD BSD-with-disclosure LGPL-2.1+ MIT public-domain"
