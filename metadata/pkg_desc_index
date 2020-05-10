@@ -1304,7 +1304,7 @@ app-doc/votca-csg-manual 9999: Manual for votca-csg
 app-doc/xmltoman 0.4-r1: Simple scripts for converting xml to groff or html
 app-doc/zeal 0.4.0 0.6.0 0.6.1: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0 0.9.1: Tips, tricks and examples for the Z shell
-app-editors/aee 2.2.15b 2.2.21: An easy to use text editor
+app-editors/aee 2.2.21: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
 app-editors/beaver 0.4.1-r1: Beaver is an Early AdVanced EditoR
 app-editors/bluefish 2.2.10: A GTK HTML editor for the experienced web designer or programmer
