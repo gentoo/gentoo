@@ -1,0 +1,54 @@
+From bf146f0d711ce3e48cdc8ba772039d843d590b47 Mon Sep 17 00:00:00 2001
+From: "Miouyouyou (Myy)" <myy@miouyouyou.fr>
+Date: Sun, 20 Oct 2019 05:09:29 +0200
+Subject: [PATCH] stream: Check the key before invoking g_hash_table_remove
+
+Turns out that I hit a bug where pa_stream_unref would
+call g_hash_table_remove with a NULL key.
+
+Thanks for the lightweight and smooth error handling from
+Glib, g_hash_table_remove generated an ABORT call, crashing
+some Unity3D games I was trying to start.
+Now, you also CANNOT call g_hash_table_lookup with a NULL
+key. That also generate a crash... Ugh...
+
+So, yeah, we first check that the key is not 0, then check
+if the key is actually inside the Hash table and THEN remove
+it.
+
+Note, here's my ~/.asoundrc, just in case :
+defaults.pcm.!card Audio
+defaults.ctl.!card Audio
+
+Audio being :
+card 3: Audio [DigiHug USB Audio], device 0: USB Audio [USB Audio]
+  Subdevices: 0/1
+  Subdevice #0: subdevice #0
+card 3: Audio [DigiHug USB Audio], device 1: USB Audio [USB Audio #1]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+
+I'm using a FiiO device for sound output.
+
+Signed-off-by: Miouyouyou (Myy) <myy@miouyouyou.fr>
+---
+ src/apulse-stream.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/apulse-stream.c b/src/apulse-stream.c
+index 84b18bb..1de4885 100644
+--- a/src/apulse-stream.c
++++ b/src/apulse-stream.c
+@@ -1019,7 +1019,11 @@ pa_stream_unref(pa_stream *s)
+ 
+     s->ref_cnt--;
+     if (s->ref_cnt == 0) {
+-        g_hash_table_remove(s->c->streams_ht, GINT_TO_POINTER(s->idx));
++        GHashTable * __restrict const streams_ht =
++            s->c->streams_ht;
++        void const * key = GINT_TO_POINTER(s->idx);
++        if (key && g_hash_table_lookup(streams_ht, key))
++            g_hash_table_remove(streams_ht, key);
+         ringbuffer_free(s->rb);
+         free(s->peek_buffer);
+         free(s->write_buffer);
