@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ REQUIRED_USE="X? ( opengl )
 
 RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
-	dumb? ( >=media-libs/dumb-0.9.3-r2[${MULTILIB_USEDEP}] )
+	dumb? ( >=media-libs/dumb-0.9.3-r2:=[${MULTILIB_USEDEP}] )
 	flac? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}] )
 	gtk? ( >=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}] )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
