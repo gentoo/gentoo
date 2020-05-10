@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>ruby@gentoo.org</email>
-		<name>Gentoo Ruby Project</name>
-	</maintainer>
-	<use>
-		<flag name="rubytests">Install ruby tests that can only be run after ruby is installed</flag>
-		<flag name="rdoc">Install <pkg>dev-ruby/rdoc</pkg> after installing Ruby.</flag>
-	</use>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <use>
+    <flag name="rubytests">Install ruby tests that can only be run after ruby is installed</flag>
+    <flag name="rdoc">Install <pkg>dev-ruby/rdoc</pkg> after installing Ruby.</flag>
+    <flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+  </use>
 </pkgmetadata>
