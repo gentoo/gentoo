@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -24,5 +24,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 RDEPEND=""
 
 python_test() {
-	"${PYTHON}" setup.py test
+	"${PYTHON}" setup.py test || die
 }
