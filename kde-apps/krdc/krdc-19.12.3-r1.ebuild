@@ -13,7 +13,7 @@ HOMEPAGE="https://kde.org/applications/internet/org.kde.krdc"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+rdp +vnc"
 
 # drop kbookmarks subslot operator when KFMIN >= 5.69.0

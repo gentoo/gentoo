@@ -14,7 +14,7 @@ https://utils.kde.org/projects/kcharselect/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE=""
 
 # drop kbookmarks subslot operator when KFMIN >= 5.69.0

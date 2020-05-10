@@ -16,7 +16,7 @@ https://konsole.kde.org"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="X"
 
 # drop kbookmarks subslot operator when KFMIN >= 5.69.0
