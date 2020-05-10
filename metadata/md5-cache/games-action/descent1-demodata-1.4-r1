@@ -8,5 +8,5 @@ LICENSE=free-noncomm
 RDEPEND=!games-action/descent1-data
 SLOT=0
 SRC_URI=http://icculus.org/d2x/data/desc14sw.exe ftp://ftp.funet.fi/pub/msdos/games/interplay/desc14sw.exe
-_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_eclasses_=unpacker	b5891c9326ad2e7905c011d44c927c34
 _md5_=eccd090b8ffa2f31c6dfd19a3a50b6bf

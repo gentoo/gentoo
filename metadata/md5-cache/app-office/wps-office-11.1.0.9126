@@ -9,5 +9,5 @@ RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs
 RESTRICT=strip mirror
 SLOT=0
 SRC_URI=http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9126/wps-office_11.1.0.9126.XA_amd64.deb
-_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=unpacker	b5891c9326ad2e7905c011d44c927c34	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=2cd11d7440cbf83bfb886acc255c154a

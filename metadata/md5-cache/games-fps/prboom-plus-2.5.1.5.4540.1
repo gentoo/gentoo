@@ -1,15 +1,15 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-DEPEND=media-libs/libsdl2[opengl?,joystick,sound,video] dumb? ( media-libs/dumb ) fluidsynth? ( media-sound/fluidsynth:= ) mad? ( media-libs/libmad ) net? ( media-libs/sdl2-net ) pcre? ( dev-libs/libpcre:3 ) portmidi? ( media-libs/portmidi ) sdl2-image? ( media-libs/sdl2-image ) sdl2-mixer? ( media-libs/sdl2-mixer[midi] ) vorbis? ( media-libs/libvorbis ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=media-libs/libsdl2[opengl?,joystick,sound,video] dumb? ( media-libs/dumb:= ) fluidsynth? ( media-sound/fluidsynth:= ) mad? ( media-libs/libmad ) net? ( media-libs/sdl2-net ) pcre? ( dev-libs/libpcre:3 ) portmidi? ( media-libs/portmidi ) sdl2-image? ( media-libs/sdl2-image ) sdl2-mixer? ( media-libs/sdl2-mixer[midi] ) vorbis? ( media-libs/libvorbis ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=An enhanced clone of the classic first-person shooter Doom
 EAPI=7
-HOMEPAGE=https://prboom-plus.sourceforge.net
+HOMEPAGE=http://prboom-plus.sourceforge.net
 IUSE=dumb fluidsynth mad net +opengl +pcre portmidi sdl2-image +sdl2-mixer vorbis
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+ BSD BSD-with-disclosure LGPL-2.1+ MIT public-domain
-RDEPEND=media-libs/libsdl2[opengl?,joystick,sound,video] dumb? ( media-libs/dumb ) fluidsynth? ( media-sound/fluidsynth:= ) mad? ( media-libs/libmad ) net? ( media-libs/sdl2-net ) pcre? ( dev-libs/libpcre:3 ) portmidi? ( media-libs/portmidi ) sdl2-image? ( media-libs/sdl2-image ) sdl2-mixer? ( media-libs/sdl2-mixer[midi] ) vorbis? ( media-libs/libvorbis )
+RDEPEND=media-libs/libsdl2[opengl?,joystick,sound,video] dumb? ( media-libs/dumb:= ) fluidsynth? ( media-sound/fluidsynth:= ) mad? ( media-libs/libmad ) net? ( media-libs/sdl2-net ) pcre? ( dev-libs/libpcre:3 ) portmidi? ( media-libs/portmidi ) sdl2-image? ( media-libs/sdl2-image ) sdl2-mixer? ( media-libs/sdl2-mixer[midi] ) vorbis? ( media-libs/libvorbis )
 REQUIRED_USE=sdl2-image? ( opengl )
 SLOT=0
 SRC_URI=http://deb.debian.org/debian/pool/main/p/prboom-plus/prboom-plus_2.5.1.5+svn4540+dfsg1.orig.tar.xz -> prboom-plus-2.5.1.5.4540.1.tar.xz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f3afa123c904acdfa9f828147251f72a
+_md5_=9aa38a5a6aab38d71b921d803ff96f68

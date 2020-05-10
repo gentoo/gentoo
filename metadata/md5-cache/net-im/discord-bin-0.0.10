@@ -8,5 +8,5 @@ RDEPEND=dev-libs/atk dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss m
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://dl.discordapp.net/apps/linux/0.0.10/discord-0.0.10.deb
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	unpacker	b5891c9326ad2e7905c011d44c927c34	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=2f796aae409262ae30d546ed9e0be976

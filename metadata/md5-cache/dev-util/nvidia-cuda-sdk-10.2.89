@@ -10,5 +10,5 @@ RDEPEND=~dev-util/nvidia-cuda-toolkit-10.2.89 media-libs/freeglut examples? ( me
 RESTRICT=test
 SLOT=0/10.2.89
 SRC_URI=https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
-_eclasses_=cuda	bb861e5221b7272ac90c2f12791c1e66	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	portability	e8f7ef3a41965b21a734550f8a94c1c6	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_eclasses_=cuda	bb861e5221b7272ac90c2f12791c1e66	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	portability	e8f7ef3a41965b21a734550f8a94c1c6	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	b5891c9326ad2e7905c011d44c927c34
 _md5_=6c7f1c85f8b244db12119e10a212614f

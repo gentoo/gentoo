@@ -8,5 +8,5 @@ RDEPEND=media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,threads,video] virtu
 RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=Guacamelee_linux_1393037377.sh
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	unpacker	b5891c9326ad2e7905c011d44c927c34	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=a9aa7c1257c7c14a1073935eeb35dfcc

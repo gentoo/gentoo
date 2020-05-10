@@ -7,5 +7,5 @@ LICENSE=Apache-2.0
 RESTRICT=strip
 SLOT=0
 SRC_URI=amd64? ( http://apt.puppetlabs.com/pool/stretch/puppet/p/pdk/pdk_1.8.0.0-1stretch_amd64.deb )
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	unpacker	b5891c9326ad2e7905c011d44c927c34
 _md5_=12b56245eac244f99f1a12f26559364b

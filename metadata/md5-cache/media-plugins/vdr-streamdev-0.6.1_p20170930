@@ -10,5 +10,5 @@ RDEPEND=>=media-video/vdr-2.3 >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/
 REQUIRED_USE=|| ( client server )
 SLOT=0
 SRC_URI=https://projects.vdr-developer.org/git/vdr-plugin-streamdev.git/snapshot/vdr-plugin-streamdev-e2a9b979d3fb92967c7a6a8221e674eb7e55c813.tar.bz2
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	b5891c9326ad2e7905c011d44c927c34	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f
 _md5_=b2f4e6a7829ea0c2b01e066e075b3758

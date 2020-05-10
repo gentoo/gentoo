@@ -8,5 +8,5 @@ RDEPEND=~net-print/hplip-3.19.12 virtual/libusb:0 virtual/udev
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://developers.hp.com/sites/default/files/hplip-3.19.12-plugin.run
-_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_eclasses_=unpacker	b5891c9326ad2e7905c011d44c927c34
 _md5_=13adfff7823a9cbbfb91a271b4af5292

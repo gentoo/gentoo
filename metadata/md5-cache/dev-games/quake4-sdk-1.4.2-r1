@@ -7,5 +7,5 @@ LICENSE=QUAKE4
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=mirror://idsoftware/quake4/source/linux/quake4-linux-1.4.2-sdk.x86.run
-_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_eclasses_=unpacker	b5891c9326ad2e7905c011d44c927c34
 _md5_=7fd8522f27dd4318b7e77c6307b71c21

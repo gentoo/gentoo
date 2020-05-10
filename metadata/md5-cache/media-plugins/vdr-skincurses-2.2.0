@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
 SLOT=0
 SRC_URI=mirror://gentoo/vdr-skincurses-2.2.0.tar.gz https://dev.gentoo.org/~hd_brummy/distfiles/vdr-skincurses-2.2.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	b5891c9326ad2e7905c011d44c927c34	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f
 _md5_=5619cb19cb2eb9df3b02bb91067c05cc
