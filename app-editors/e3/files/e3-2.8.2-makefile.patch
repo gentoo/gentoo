@@ -1,0 +1,36 @@
+--- e3-2.82-orig/Makefile
++++ e3-2.82/Makefile
+@@ -17,6 +17,8 @@
+ NASM_OR_YASM=nasm
+ #NASM_OR_YASM=yasm
+ 
++LD=ld
++
+ EXMODE=SED
+ 
+ #----------------------do not edit below line-------------------------------
+@@ -41,12 +43,12 @@
+ 
+ 32:	$(ASOURCES) Makefile
+ ifeq	($(OS),LINUX)
+-	nasm -O2 -f bin -l e3.lst -o e3 e3.asm -DCRIPLED_ELF=1 -D$(OS) -D$(EXMODE) 
++	nasm -O2 -f bin -l e3.lst -o e3 e3.asm -DCRIPLED_ELF=1 -D$(OS)
+ 	chmod +x e3
+ else
+ 	echo $(ASVER)
+-	nasm -O2 $(AFLAGS) -o e3.o e3.asm -l e3.lst -D$(OS) -D$(EXMODE)
+-	ld -s -o e3 e3.o
++	nasm -O2 $(AFLAGS) -o e3.o e3.asm -l e3.lst -D$(OS)
++	$(LD) -s -o e3 e3.o
+ 	strip --remove-section .comment e3
+ endif
+ 	ln -sf e3 e3ws
+@@ -60,7 +62,7 @@
+ 64:	$(ASOURCES) Makefile
+ 	cat e3.asm | sed -f e3_32to64.sed  >e3.tmp
+ 	$(ASSEMBLER64)
+-	ld -b elf64-x86-64 --oformat elf64-x86-64 -o e3 e3.o
++	$(LD) -b elf64-x86-64 --oformat elf64-x86-64 -o e3 e3.o
+ ifneq	($(DEBUG),true)
+ 	strip e3
+ endif

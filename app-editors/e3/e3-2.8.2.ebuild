@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 MY_P="${PN}-$(ver_rs 2 '')"
 DESCRIPTION="Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings"
@@ -16,14 +18,10 @@ RESTRICT="strip"
 BDEPEND=">=dev-lang/nasm-2.09.04"
 
 S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	sed -i 's/-D$(EXMODE)//' Makefile || die
-	eapply_user
-}
+PATCHES=("${FILESDIR}"/${P}-makefile.patch)
 
 src_compile() {
-	emake -- $(usex amd64 64 32)
+	emake -- $(usex amd64 64 32) LD="$(tc-getLD)"
 }
 
 src_install() {
