@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -23,7 +23,7 @@
+ dnl
+ dnl Use these compiler flags if we have gcc.
+ dnl
+-if test $ac_cv_prog_gcc = yes; then
++if test $ac_cv_prog_gcc_not_on_gentoo = yes; then
+   CCOPTS='-O2 -Wall'
+   CFLAGS="$CCOPTS"
+ fi
