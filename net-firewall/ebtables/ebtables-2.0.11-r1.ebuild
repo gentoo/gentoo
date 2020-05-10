@@ -96,7 +96,7 @@ pkg_postinst() {
 }
 
 pkg_prerm() {
-	if has_version 'net-firewall/iptables[nftables]'; then
+	if [[ -z ${REPLACED_BY_VERSION} ]] && has_version 'net-firewall/iptables[nftables]'; then
 		elog "Resetting ebtables symlinks to xtables-nft-multi before removal"
 		eselect ebtables set xtables-nft-multi
 	else
