@@ -1,0 +1,30 @@
+From 2c2bf366599d957837acbdf54eb300526fc125a1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=89rico=20Rolim?= <erico.erc@gmail.com>
+Date: Tue, 5 May 2020 14:24:52 -0300
+Subject: [PATCH] Add ENVIRONMENT to man-page.
+
+---
+ man/apulse.1 | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/man/apulse.1 b/man/apulse.1
+index cd67cf3..df75c60 100644
+--- a/man/apulse.1
++++ b/man/apulse.1
+@@ -36,6 +36,16 @@ compatibility layer between OSS programs and \fBALSA\fR, \fBapulse\fR was
+ designed to be compatibility layer between PulseAudio applications and
+ \fBALSA\fR.
+ 
++.SH ENVIRONMENT
++
++The following environment variables can be used to configure the devices used
++by \fBapulse\fR. Try \fIhw:0,0\fR, \fIplughw:0,0\fR and the like.
++Refer to the ALSA user guide for a full list of device names.
++
++\fIAPULSE_CAPTURE_DEVICE\fR: Can be used to configure the capture device.
++
++\fIAPULSE_PLAYBACK_DEVICE\fR: Can be used to configure the playback device.
++
+ .SH RETURN VALUE
+ 
+ \fBapulse\fR is a simple shell wrapper script that calls \fBexec\fR on the
