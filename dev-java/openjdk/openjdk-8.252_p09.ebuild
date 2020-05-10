@@ -27,7 +27,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 IUSE="alsa debug cups doc examples headless-awt +jbootstrap nsplugin +pch selinux source webstart"
 
 COMMON_DEPEND="
