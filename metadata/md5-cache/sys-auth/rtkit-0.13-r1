@@ -10,5 +10,5 @@ LICENSE=GPL-3 BSD
 RDEPEND=acct-group/rtkit acct-user/rtkit sys-apps/dbus sys-auth/polkit sys-libs/libcap systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=https://github.com/heftig/rtkit/releases/download/v0.13/rtkit-0.13.tar.xz
-_eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	meson	31ef5136320ea04b7cba6bfb968e39e0	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	meson	991e544bbaf3120073ededbdc1d8bf93	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=7be95faf3953449d02c7cd38cf72c7f3
