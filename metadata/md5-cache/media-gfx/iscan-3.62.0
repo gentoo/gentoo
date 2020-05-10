@@ -11,4 +11,4 @@ RDEPEND=dev-libs/boost:= media-gfx/sane-backends media-libs/tiff virtual/jpeg vi
 SLOT=0
 SRC_URI=https://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_3.62.0.orig.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c9fd53a83431ffce1725729329bc4f47
+_md5_=2e2f34d75511ea81f3fe9a32c561917f
