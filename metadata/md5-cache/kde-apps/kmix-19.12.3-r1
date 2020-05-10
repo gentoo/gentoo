@@ -5,10 +5,10 @@ DESCRIPTION=Volume control gui based on KDE Frameworks
 EAPI=7
 HOMEPAGE=https://kde.org/applications/multimedia/org.kde.kmix
 IUSE=alsa plasma pulseaudio debug +handbook
-KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+KEYWORDS=amd64 ~arm64 ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=>=kde-frameworks/kconfig-5.63.0:5 >=kde-frameworks/kconfigwidgets-5.63.0:5 >=kde-frameworks/kcoreaddons-5.63.0:5 >=kde-frameworks/kdbusaddons-5.63.0:5 >=kde-frameworks/kglobalaccel-5.63.0:5 >=kde-frameworks/ki18n-5.63.0:5 >=kde-frameworks/knotifications-5.63.0:5 >=kde-frameworks/kwidgetsaddons-5.63.0:5 >=kde-frameworks/kwindowsystem-5.63.0:5 >=kde-frameworks/kxmlgui-5.63.0:5 >=kde-frameworks/solid-5.63.0:5 >=dev-qt/qtdbus-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtwidgets-5.12.3:5 >=dev-qt/qtxml-5.12.3:5 alsa? ( >=media-libs/alsa-lib-1.0.14a ) plasma? ( >=kde-frameworks/plasma-5.63.0:5 ) pulseaudio? ( dev-libs/glib:2 media-libs/libcanberra >=media-sound/pulseaudio-0.9.12 ) >=kde-plasma/kde-cli-tools-5.16.5:5 || ( kde-frameworks/breeze-icons:* kde-frameworks/oxygen-icons:* ) >=kde-frameworks/kf-env-4 dev-qt/qtcore:5
 SLOT=5
 SRC_URI=mirror://kde/stable/release-service/19.12.3/src/kmix-19.12.3.tar.xz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	ecm	e341cb3583b4219b5c207e24915b0264	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=3bc24dddbb703f2099f92aa2128b3ff0
+_md5_=018095387d19391b471f250bc81fd784

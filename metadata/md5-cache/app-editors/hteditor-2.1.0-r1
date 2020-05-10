@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install prepare
+DEFINED_PHASES=configure install prepare
 DEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) >=dev-libs/lzo-2 virtual/yacc sys-devel/flex >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A file viewer, editor and analyzer for text, binary, and executable files
 EAPI=6
@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) >=dev-libs/lzo-2
 SLOT=0
 SRC_URI=mirror://sourceforge/hte/ht-2.1.0.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3f0e0c166bac7330c8b1751a59fd2bb1
+_md5_=479bfed0415231489a2888ca2db4f64a
