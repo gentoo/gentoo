@@ -5047,7 +5047,7 @@ dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to
 dev-libs/libfido2 1.3.1 1.4.0: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1 0.20.2 0.21.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
-dev-libs/libfmt 6.1.2 6.2.0-r1 9999: Small, safe and fast formatting library
+dev-libs/libfmt 6.1.2 6.2.0-r1 6.2.1 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
