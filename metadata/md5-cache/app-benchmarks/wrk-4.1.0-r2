@@ -1,14 +1,14 @@
-BDEPEND=virtual/pkgconfig
+BDEPEND=dev-lang/luajit:2 virtual/pkgconfig
 DEFINED_PHASES=compile install
-DEPEND=dev-lang/lua:0 dev-lang/luajit:2 libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= )
+DEPEND=dev-lang/lua:0 libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= )
 DESCRIPTION=A HTTP benchmarking tool
 EAPI=7
 HOMEPAGE=https://www.github.com/wg/wrk
 IUSE=libressl
 KEYWORDS=amd64 x86
 LICENSE=Apache-2.0 BSD MIT
-RDEPEND=dev-lang/lua:0 dev-lang/luajit:2 libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= )
+RDEPEND=dev-lang/luajit:2
 SLOT=0
 SRC_URI=https://www.github.com/wg/wrk/archive/4.1.0.tar.gz -> wrk-4.1.0.tar.gz
 _eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2c497032161ad4f99cd93daf19961fca
+_md5_=6600e1ce506654c197c355c9a599cc1f

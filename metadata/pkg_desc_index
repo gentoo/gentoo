@@ -779,7 +779,7 @@ app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POS
 app-benchmarks/stress-ng 0.11.03: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.19 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
-app-benchmarks/wrk 4.1.0-r1: A HTTP benchmarking tool
+app-benchmarks/wrk 4.1.0-r2: A HTTP benchmarking tool
 app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
 app-cdr/bchunk 1.2.0-r4 1.2.2: Convert CD images from bin/cue to iso+wav/cdr
@@ -958,7 +958,7 @@ app-crypt/signing-party 2.10-r1: A collection of several tools related to OpenPG
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
-app-crypt/ssss 0.5: Shamir's Secret Sharing Scheme
+app-crypt/ssss 0.5-r1: Shamir's Secret Sharing Scheme
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92: Software Token for Linux/UNIX
 app-crypt/swtpm 0.3.1: Libtpms-based TPM emulator
@@ -2006,7 +2006,7 @@ app-metrics/bind_exporter 0.2.0_p20190226 0.3.0: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.15.1 0.16.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/buildbot-prometheus 17.7.2-r2: A Prometheus metrics exporter for Buildbot
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
-app-metrics/collectd 5.10.0 5.11.0-r1: Collects system statistics and provides mechanisms to store the values
+app-metrics/collectd 5.10.0 5.11.0-r2: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0 0.6.0: Prometheus exporter for consul metrics
 app-metrics/dnsmasq_exporter 0.2.0 0.2.0-r1: prometheus exporter for dnsmasq
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
@@ -15247,7 +15247,7 @@ net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.10-r2: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8-r2: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0-r1: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-vpn/networkmanager-strongswan 1.4.5-r2: NetworkManager StrongSwan plugin
+net-vpn/networkmanager-strongswan 1.4.5-r2 1.5.1: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6-r2: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
@@ -17448,7 +17448,7 @@ sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 9999: C library for developing embedd
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2: Standard (de)compression library
 sys-power/acpi 1.7-r1: Displays information about ACPI devices
-sys-power/acpi_call 1.1.0 1.1.0-r1 1.1.0-r2 3.17 9999: A kernel module that enables you to call ACPI methods
+sys-power/acpi_call 1.1.0 1.1.0-r1 1.1.0-r2 3.17-r1 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.31 2.0.32 2.0.32-r1 2.0.32-r2: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.1 1.2: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
@@ -18315,7 +18315,7 @@ x11-misc/picom 7.5-r1 8 9999: A lightweight compositor for X11 (previously a com
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.4.2-r1: A fast and easy-to-use tool for creating status bars
 x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
-x11-misc/projecteur 0.7: Linux Desktop Application for the Logitech Spotlight device
+x11-misc/projecteur 0.7-r1: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.28: py3status is an extensible i3status wrapper written in python
 x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5
