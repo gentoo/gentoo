@@ -36,6 +36,10 @@ BDEPEND="
 	)
 "
 
+# This will be in the next release
+# https://github.com/thp/urlwatch/commit/44e862282d39a6e23f67c3c0240a93cccbb41a55
+PATCHES=( "${FILESDIR}/${P}-pycodestyle-requirement.patch" )
+
 DOCS=( CHANGELOG.md README.md )
 
 distutils_enable_tests nose
