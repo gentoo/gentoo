@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/dbus-glib:= dev-libs/glib:= dev-libs/libxml2:= sys-apps/dbus:= dev-util/glib-utils
+DESCRIPTION=Thermal daemon for Intel architectures
+EAPI=7
+HOMEPAGE=https://01.org/linux-thermal-daemon
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/dbus-glib:= dev-libs/glib:= dev-libs/libxml2:= sys-apps/dbus:=
+SLOT=0
+SRC_URI=https://github.com/01org/thermal_daemon/archive/v2.1.tar.gz -> thermald-2.1.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=8a07141e565b4c9fda9e97c985f3b44c
