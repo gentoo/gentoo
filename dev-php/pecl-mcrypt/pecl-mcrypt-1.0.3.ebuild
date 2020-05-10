@@ -15,7 +15,7 @@ inherit php-ext-pecl-r3
 DESCRIPTION="Bindings for the libmcrypt library"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc64 ~sparc ~x86"
 
 DEPEND="dev-libs/libmcrypt"
 RDEPEND="${DEPEND}"
