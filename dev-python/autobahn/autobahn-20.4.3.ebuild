@@ -71,8 +71,8 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	# delete the dropin.cache so we don't have collisions
-	rm "${D}"/usr/lib*/python*/site-packages/twisted/plugins//dropin.cache || die
+	# delete the dropin.cache so we don't have collisions if it exists
+	rm "${D}"/usr/lib*/python*/site-packages/twisted/plugins//dropin.cache > /dev/null
 }
 
 pkg_postinst() {
