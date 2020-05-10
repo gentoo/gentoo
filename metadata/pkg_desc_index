@@ -355,6 +355,7 @@ acct-user/tox 0: User for package net-libs/tox
 acct-user/transmission 1: System user: transmission
 acct-user/tss 0: Trusted Software Stack for TPMs user
 acct-user/turnserver 0: A user for a turn server like coturn
+acct-user/tvheadend 0: User for tvheadend
 acct-user/unifi 0: A user for the UniFi Controller
 acct-user/unrealircd 0: System user: unrealircd
 acct-user/uptimed 0: user for uptime daemon
@@ -13369,7 +13370,7 @@ media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio player
 media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
-media-sound/apulse 0.1.12-r4: PulseAudio emulation for ALSA
+media-sound/apulse 0.1.12-r4 0.1.13: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r2 1.0-r3: Music player for a wide range of formats designed for gapless playback
 media-sound/ardour 5.12 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
@@ -13739,7 +13740,7 @@ media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/plex-media-server 1.18.3 1.18.4-r1 1.19.1 1.19.2: A free media library that is intended for use with a plex client
 media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser-bin 4.0.1: Themeable and easy to use TV Guide - written in Java
-media-tv/tvheadend 4.2.8 9999: Tvheadend is a TV streaming server and digital video recorder
+media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.4 2.5: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225 0.0.1_p20170225-r2: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.10.1 1.16.3 1.16.3-r1 1.16.6 1.18.0: Separate utilities ebuild from upstream v4l-utils package
@@ -16192,7 +16193,7 @@ sci-mathematics/octave-epstk 2.4: Graphical output functions for Matlab and Octa
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
 sci-mathematics/pari 2.11.2 2.11.4: Computer-aided number theory C library and tools
 sci-mathematics/pari-data 20191216: Additional dataset packages for PARI
-sci-mathematics/petsc 3.13.0: Portable, Extensible Toolkit for Scientific Computation
+sci-mathematics/petsc 3.13.0 3.13.1: Portable, Extensible Toolkit for Scientific Computation
 sci-mathematics/planarity 3.0.0.5: The edge addition planarity suite of graph algorithms
 sci-mathematics/polymake 3.0_p2: research tool for polyhedral geometry and combinatorics
 sci-mathematics/prng 3.0.2-r2: Pseudo-Random Number Generator library

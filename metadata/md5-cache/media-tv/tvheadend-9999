@@ -1,14 +1,14 @@
 BDEPEND=sys-devel/gettext virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst setup unpack
-DEPEND=virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) dvb? ( virtual/linuxtv-dvb-headers ) ffmpeg? ( opus? ( media-libs/opus ) vpx? ( media-libs/libvpx ) x264? ( media-libs/x264 ) x265? ( media-libs/x265 ) )
+DEPEND=acct-user/tvheadend virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) dvb? ( virtual/linuxtv-dvb-headers ) ffmpeg? ( opus? ( media-libs/opus ) vpx? ( media-libs/libvpx ) x264? ( media-libs/x264 ) x265? ( media-libs/x265 ) )
 DESCRIPTION=Tvheadend is a TV streaming server and digital video recorder
 EAPI=7
 HOMEPAGE=https://tvheadend.org/
 IUSE=dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib kernel_linux
 LICENSE=GPL-3
 PROPERTIES=live
-RDEPEND=virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) dvb? ( media-tv/dtv-scan-tables ) xmltv? ( media-tv/xmltv )
+RDEPEND=acct-user/tvheadend virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) dvb? ( media-tv/dtv-scan-tables ) xmltv? ( media-tv/xmltv )
 REQUIRED_USE=ddci? ( dvb )
 SLOT=0
-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=8a2389223f028dcfe263f8972f8e3325
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=edfcb3d61663a573dde75c3269b0c626
