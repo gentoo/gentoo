@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/722036
+
+--- fe-2.0-orig/Makefile.in
++++ fe-2.0/Makefile.in
+@@ -15,6 +15,7 @@
+ CPPFLAGS=	@CPPFLAGS@ -DLOCALEDIR=\"$(localedir)\"
+ LDFLAGS=	@LDFLAGS@
+ LIBS=		@LIBS@
++AR=		ar
+ 
+ CATALOGS=	de.mo
+ OBJS=		buffer.o complete.o display.o macro.o misc.o msgline.o
+@@ -27,7 +28,7 @@
+ 		$(CC) -o $@ $(LDFLAGS) fe.o libfe.a $(LIBS)
+ 
+ libfe.a:	$(OBJS)
+-		rm -f $@; ar q $@ $(OBJS); @RANLIB@ $@
++		rm -f $@; $(AR) q $@ $(OBJS); @RANLIB@ $@
+ 
+ install-po:	install-po-@USE_NLS@
+ install-po-no:

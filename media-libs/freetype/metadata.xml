@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="adobe-cff">Use Adobe CFF as default font-renderer</flag>
+		<flag name="brotli">Enable brotli decompression support via <pkg>app-arch/brotli</pkg></flag>
 		<flag name="cleartype_hinting">New bytecode hinting mode for TrueType fonts that
 			activates subpixel hinting (a.k.a. ClearType hinting) by default</flag>
 		<flag name="bindist">Disable ClearType support (see http://freetype.org/patents.html)</flag>
