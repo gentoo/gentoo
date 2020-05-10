@@ -19,7 +19,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="amd64 ~arm arm64 ppc ppc64 -sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ppc ppc64 -sparc ~x86"
 fi
 inherit autotools flag-o-matic toolchain-funcs virtualx xdg
 
@@ -29,7 +29,7 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
-IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast
+IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
 	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate
 	libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc
@@ -37,7 +37,8 @@ IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromeca
 	nfs ogg omxil optimisememory opus png projectm pulseaudio +qt5 rdp
 	run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib
 	theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X
-	x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_x86_mmx cpu_flags_x86_sse
+	x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx
+	cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -163,7 +164,7 @@ RDEPEND="
 			x11-libs/libX11
 		)
 	)
-	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client] )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
 	sftp? ( net-libs/libssh2 )
@@ -226,7 +227,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
-	"${FILESDIR}"/${P}-qt-5.15.patch
+	"${FILESDIR}"/${PN}-3.0.8-qt-5.15.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
@@ -277,7 +278,6 @@ src_configure() {
 		--enable-vlc
 		$(use_enable a52)
 		$(use_enable alsa)
-		$(use_enable altivec)
 		$(use_enable aom)
 		$(use_enable archive)
 		$(use_enable aribsub)
@@ -289,6 +289,7 @@ src_configure() {
 		$(use_enable chromecast)
 		$(use_enable chromecast microdns)
 		$(use_enable cpu_flags_arm_neon neon)
+		$(use_enable cpu_flags_ppc_altivec altivec)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable dav1d)
