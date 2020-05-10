@@ -18,10 +18,13 @@
  #================================================================
 --- a/configure.in
 +++ b/configure.in
-@@ -20,15 +20,6 @@
- LD="ld"
- AR="ar"
- 
+@@ -17,17 +17,6 @@
+ MYDEFS=""
+ MYOPTS=""
+ MGWLIBS=""
+-LD="ld"
+-AR="ar"
+-
 -# Building paths
 -pathtmp="$PATH"
 -PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
@@ -30,16 +33,56 @@
 -LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
 -CPATH="$HOME/include:/usr/local/include:$CPATH"
 -export PATH LIBRARY_PATH LD_LIBRARY_PATH CPATH
--
  
  
- #================================================================
+ 
+@@ -186,19 +175,15 @@
+ then
+   MYOPTS="-O1 -fno-omit-frame-pointer -fno-force-addr"
+ fi
+-if gcc --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
++if $CC --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
+ then
+   MYOPTS="-O1 -fno-omit-frame-pointer -fno-force-addr"
+ fi
+ 
+ # Linker
+-printf 'checking for ld... '
+-if which ld | grep '/ld$' > /dev/null 2>&1
++AC_CHECK_TOOL(LD, ld, no)
++if test "$LD" = "no"
+ then
+-  LD=`which ld`
+-  printf '%s\n' "$LD"
+-else
+-  printf 'no\n'
+   if test "$isnowarn" != "yes"
+   then
+     printf '#================================================================\n' 1>&2
+@@ -208,13 +193,9 @@
+ fi
+ 
+ # Archiver
+-printf 'checking for ar... '
+-if which ar | grep '/ar$' > /dev/null 2>&1
++AC_CHECK_TOOL(AR, ar, no)
++if test "$AR" = "no"
+ then
+-  AR=`which ar`
+-  printf '%s\n' "$AR"
+-else
+-  printf 'no\n'
+   if test "$isnowarn" != "yes"
+   then
+     printf '#================================================================\n' 1>&2
 --- a/java/configure.in
 +++ b/java/configure.in
-@@ -25,15 +25,6 @@
+@@ -23,16 +23,6 @@
+ JAVARUN="java"
+ MYDEFS=""
  MYOPTS=""
- LD="ld"
- 
+-LD="ld"
+-
 -# Building paths
 -pathtmp="$PATH"
 -PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
@@ -48,10 +91,32 @@
 -LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
 -CPATH="$HOME/include:/usr/local/include:$CPATH"
 -export PATH LIBRARY_PATH LD_LIBRARY_PATH CPATH
--
  
  
- #================================================================
+ 
+@@ -162,19 +152,15 @@
+ then
+   MYOPTS="-O1"
+ fi
+-if gcc --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
++if $CC --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
+ then
+   MYOPTS="-O1"
+ fi
+ 
+ # Linker
+-printf 'checking for ld... '
+-if which ld | grep '/ld$' > /dev/null 2>&1
++AC_CHECK_TOOL(LD, ld, no)
++if test "$LD" = "no"
+ then
+-  LD=`which ld`
+-  printf '%s\n' "$LD"
+-else
+-  printf 'no\n'
+   printf '#================================================================\n' 1>&2
+   printf '# WARNING: ld is not found in PATH.\n' 1>&2
+   printf '#================================================================\n' 1>&2
 --- a/perl/configure.in
 +++ b/perl/configure.in
 @@ -5,15 +5,6 @@
@@ -72,10 +137,13 @@
  then
 --- a/plus/configure.in
 +++ b/plus/configure.in
-@@ -19,15 +19,6 @@
- LD="ld"
- AR="ar"
- 
+@@ -16,17 +16,6 @@
+ TARGETS="all"
+ MYDEFS=""
+ MYOPTS=""
+-LD="ld"
+-AR="ar"
+-
 -# Building paths
 -pathtmp="$PATH"
 -PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
@@ -84,10 +152,47 @@
 -LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
 -CPATH="$HOME/include:/usr/local/include:$CPATH"
 -export PATH LIBRARY_PATH LD_LIBRARY_PATH CPATH
--
  
  
- #================================================================
+ 
+@@ -75,32 +64,24 @@
+ then
+   MYOPTS="-O1"
+ fi
+-if gcc --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
++if $CXX --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
+ then
+   MYOPTS="-O1"
+ fi
+ 
+ # Linker
+-printf 'checking for ld... '
+-if which ld | grep '/ld$' > /dev/null 2>&1
++AC_CHECK_TOOL(LD, ld, no)
++if test "$LD" = "no"
+ then
+-  LD=`which ld`
+-  printf '%s\n' "$LD"
+-else
+-  printf 'no\n'
+   printf '#================================================================\n' 1>&2
+   printf '# WARNING: ld is not found in PATH.\n' 1>&2
+   printf '#================================================================\n' 1>&2
+ fi
+ 
+ # Archiver
+-printf 'checking for ar... '
+-if which ar | grep '/ar$' > /dev/null 2>&1
++AC_CHECK_TOOL(AR, ar, no)
++if test "$AR" = "no"
+ then
+-  AR=`which ar`
+-  printf '%s\n' "$AR"
+-else
+-  printf 'no\n'
+   printf '#================================================================\n' 1>&2
+   printf '# WARNING: ar is not found in PATH.\n' 1>&2
+   printf '#================================================================\n' 1>&2
 --- a/ruby/configure.in
 +++ b/ruby/configure.in
 @@ -5,15 +5,6 @@
