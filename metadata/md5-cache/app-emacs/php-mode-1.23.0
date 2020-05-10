@@ -1,0 +1,12 @@
+BDEPEND=>=app-editors/emacs-24:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=GNU Emacs major mode for editing PHP code
+EAPI=7
+HOMEPAGE=https://github.com/ejmr/php-mode
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-3+
+RDEPEND=>=app-editors/emacs-24:*
+SLOT=0
+SRC_URI=https://github.com/ejmr/php-mode/archive/v1.23.0.tar.gz -> php-mode-1.23.0.tar.gz
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_md5_=4e10537108381788cbb71acac3facfa2
