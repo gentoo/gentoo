@@ -15,7 +15,7 @@ SRC_URI="https://launchpad.net/${PN}/5.0/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc examples github +ngspice occ +oce openmp +python"
 
 REQUIRED_USE="

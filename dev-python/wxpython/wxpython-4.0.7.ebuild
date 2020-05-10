@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_PN}-${MY_PV}.tar.gz"
 
 LICENSE="wxWinLL-3"
 SLOT="4.0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test webkit"
 RESTRICT="!test? ( test )"
 
