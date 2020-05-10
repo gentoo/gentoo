@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig
-DEFINED_PHASES=configure install
+DEFINED_PHASES=compile configure install
 DEPEND=sys-libs/ncurses:0= sendmail? ( virtual/mta )
 DESCRIPTION=A small and easy to use folding editor
 EAPI=7
@@ -11,4 +11,4 @@ RDEPEND=sys-libs/ncurses:0= sendmail? ( virtual/mta )
 SLOT=0
 SRC_URI=http://www.moria.de/~michael/fe/fe-2.0.tar.gz
 _eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=fbde5aa75c8afda3d55d9afaba51d448
+_md5_=e821261e3a9575ef087bfe12c6734605

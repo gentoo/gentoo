@@ -4156,6 +4156,7 @@ media-libs/flickcurl:raptor - Use media-libs/raptor for proper RDF serializing
 media-libs/fontconfig-infinality:nyx - Additional style using croscorefonts
 media-libs/freetype:adobe-cff - Use Adobe CFF as default font-renderer
 media-libs/freetype:bindist - Disable ClearType support (see http://freetype.org/patents.html)
+media-libs/freetype:brotli - Enable brotli decompression support via app-arch/brotli
 media-libs/freetype:bzip2 - Support bzip2 compressed PCF fonts.
 media-libs/freetype:cleartype_hinting - New bytecode hinting mode for TrueType fonts that activates subpixel hinting (a.k.a. ClearType hinting) by default
 media-libs/freetype:fontforge - Install internal headers required for TrueType debugger in media-gfx/fontforge (built with USE=truetype-debugger)

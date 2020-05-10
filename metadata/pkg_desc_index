@@ -12716,7 +12716,7 @@ media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and r
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 3.2.1: A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library
 media-libs/freeimage 3.18.0-r1: Image library supporting many formats
-media-libs/freetype 2.9.1-r3 2.9.1-r4 2.10.1 2.10.2 9999: A high-quality and portable font engine
+media-libs/freetype 2.9.1-r3 2.9.1-r4 2.10.1 2.10.2-r1 9999: A high-quality and portable font engine
 media-libs/freeverb3 3.2.1-r2: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
@@ -17355,7 +17355,7 @@ sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.215_p192 4.4.220_p196 4.9.215_p138 4.9.220_p143 4.14.170_p75 4.19.94_p38 4.19.120_p52 5.4.13_p7 5.4.34_p21 5.6.4_p3 5.6.10_p5: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 5.4.34 5.4.35 5.4.38 5.4.39 5.5.19 5.6.6 5.6.7 5.6.10 5.6.11: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 3.16.83 4.4.222 4.9.222 4.14.179 4.19.121 5.4.39 5.5.18 5.6.11: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.83 4.4.223 4.9.223 4.14.180 4.19.122 5.4.40 5.5.18 5.6.12: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.13 5.6.9: The Zen Kernel Live Sources
@@ -17888,7 +17888,7 @@ www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web Ap
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r1 2.20-r2 2.20-r3 2.20-r4: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites
-www-misc/urlwatch 2.17 2.18: A tool for monitoring webpages for updates
+www-misc/urlwatch 2.17 2.18-r1: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10 3.6.10-r1: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
