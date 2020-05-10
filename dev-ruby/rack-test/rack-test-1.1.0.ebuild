@@ -25,9 +25,14 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rack-1.0:* <dev-ruby/rack-3:*"
 ruby_add_bdepend "
-	test? ( dev-ruby/sinatra:2 dev-ruby/rack:2.0 )"
+	test? ( dev-ruby/sinatra:2 || ( dev-ruby/rack:2.1 dev-ruby/rack:2.0 ) )"
 
 all_ruby_prepare() {
 	rm Gemfile* || die
-	sed -i -e '/bundler/d' -e '/[Cc]ode[Cc]limate/d' -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
+	sed -e '/bundler/d' \
+		-e '/[Cc]ode[Cc]limate/d' \
+		-e '/simplecov/,/^end/ s:^:#:' \
+		-e '1igem "rack", "<2.2"' \
+		-i spec/spec_helper.rb || die
+	sed -i -e 's/git ls-files --/find/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
