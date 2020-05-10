@@ -2978,6 +2978,10 @@ dev-util/sysdig:modules - Build kernel modules needed for tracing local events. 
 dev-util/systemtap:libvirt - Support probing of libvirt domains.
 dev-util/trace-cmd:udis86 - Enable support for dev-libs/udis86 disassembler library
 dev-util/uftrace:capstone - Use capstone to provide dynamic tracing without recompilation
+dev-util/unrpyc:module - Build un.rpyc module for run-time decompiling
+dev-util/unrpyc:proto0 - Use pickle protocol 0 for un-rpyc module. May be usefule for very old games
+dev-util/unrpyc:proto1 - Use pickle protocol 1 for un-rpyc module. Default if no protocol is selected
+dev-util/unrpyc:proto2 - Use pickle protocol 2 for un-rpyc module
 dev-util/vulkan-tools:cube - Build the cube/cubepp demos
 dev-util/vulkan-tools:vulkaninfo - Build the vulkaninfo utility
 dev-vcs/cssc:valgrind - Enable usage of dev-util/valgrind in tests

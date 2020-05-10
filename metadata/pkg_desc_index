@@ -926,7 +926,7 @@ app-crypt/openpgp-keys-gentoo-auth 20191030: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20191030: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced by certain debian versions in 2006-2008
-app-crypt/ophcrack 3.6.0 3.7.0 3.8.0: A time-memory-trade-off-cracker
+app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 2.0: Platform-independent tool for Authenticode signing of EXE/CAB files
 app-crypt/p11-kit 0.23.19-r1 0.23.20-r1: Provides a standard configuration setup for installing PKCS#11
@@ -8251,6 +8251,7 @@ dev-python/pexpect 4.6.0 4.8.0: Python module for spawning child apps and respon
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
 dev-python/phonenumbers 8.10.22 8.12.2: Python port of Google's libphonenumber
+dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.4-r1 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.0.12 1.1.3: Exif manipulation with pure Python
@@ -10596,6 +10597,7 @@ dev-util/uftrace 0.9.3: Function (graph) tracer for user-space
 dev-util/umockdev 0.9.4 0.11.3 0.12.1: Mock hardware devices for creating unit tests
 dev-util/uncrustify 0.66.1 0.68.1 0.69.0 9999: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10 2.11 2.12: remove #ifdef'ed lines from a file while otherwise leaving the file alone
+dev-util/unrpyc 1.1.3: Ren'Py's rpyc scripts decompiler
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.12.0 3.13.0 3.13.0-r1 3.13.0-r2 3.13.0-r3 3.14.0 3.15.0 9999: An open-source memory debugger for GNU/Linux
 dev-util/vbindiff 3.0_beta5: Visual binary diff utility
@@ -14017,7 +14019,7 @@ net-analyzer/mtr 0.87 0.92-r1 0.93-r1 9999: My TraceRoute, an Excellent network 
 net-analyzer/multimon-ng 1.1.8 9999: a fork of multimon, decodes multiple digital transmission modes
 net-analyzer/munin 2.0.52 2.0.56 2.0.57 2.0.59 2.0.61: Munin Server Monitoring Tool
 net-analyzer/munin-plugins-zfs 0.20170127: A Munin plugin for monitoring ZFS on Linux
-net-analyzer/nagios 4.4.5: The Nagios metapackage
+net-analyzer/nagios 4.4.5 4.4.6: The Nagios metapackage
 net-analyzer/nagios-check_dnssec 0.1_p28: check_dnssec is a set of Nagios plugins to monitor DNSSEC services
 net-analyzer/nagios-check_fail2ban 3: A nagios plugin for checking the fail2ban daemon
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
@@ -14028,7 +14030,7 @@ net-analyzer/nagios-check_multiple 0.0.1: A Nagios plugin to execute multiple ch
 net-analyzer/nagios-check_mysql_health 2.2.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
-net-analyzer/nagios-core 4.4.5-r6: Nagios core - monitoring daemon, web GUI, and documentation
+net-analyzer/nagios-core 4.4.5-r6 4.4.6: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-icinga-openvpn 0.0.1 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20191028: Nagios plugin to monitor the values of onboard sensors and disk temperatures
 net-analyzer/nagios-plugin-check_raid 4.0.8 4.0.10: Nagios/Icinga plugin to check current server's RAID status

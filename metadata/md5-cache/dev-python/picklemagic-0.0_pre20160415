@@ -1,0 +1,12 @@
+BDEPEND=doc? ( dev-python/sphinx )
+DEFINED_PHASES=compile install
+DESCRIPTION=A library for analysing python pickles safely
+EAPI=7
+HOMEPAGE=https://github.com/CensoredUsername/picklemagic
+IUSE=doc python_targets_python2_7 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
+KEYWORDS=~amd64 ~x86
+LICENSE=WTFPL-2
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~bircoph/distfiles/picklemagic-0.0_pre20160415.tar.xz
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3c2d2436e43479ff1948dacaa0b6334c
