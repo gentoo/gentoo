@@ -7,6 +7,13 @@
 	</maintainer>
 	<longdescription>
 		A set of modules for analyzing and playing with the mechanics of python pickles.
+		Features:
+			* Forgiving: Extracts as much data as possible from the pickle, even if class definitions are unavailable.
+			* Safe: You can safely unpickle data structures from unknown sources
+			* Easy to use: Tools are provided which make it possible to code around the unpickled datastructures as if they were created from the actual class definitions.
+			* Customizeable: Most functionality is easily subclassable to suit your needs.
+			* Create pickles as if you were writing python: Via a few constructs it's possible to create custom pickles with the ease of writing normal python.
+			* Works in both python 2 and 3
 	</longdescription>
 	<upstream>
 		<remote-id type="github">CensoredUsername/picklemagic</remote-id>
