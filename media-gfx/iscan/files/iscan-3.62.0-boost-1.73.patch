@@ -31,3 +31,14 @@ diff -urN a/sane/handle.cpp b/sane/handle.cpp
  
  namespace sane {
  
+--- utsushi-0.62.0/gtkmm/pump.cpp.orig	2019-11-18 03:08:48.000000000 +0100
++++ utsushi-0.62.0/gtkmm/pump.cpp	2020-05-10 21:59:32.986379049 +0200
+@@ -31,6 +31,8 @@
+ namespace utsushi {
+ namespace gtkmm {
+ 
++using namespace boost::placeholders;
++
+ pump::pump (idevice::ptr idev)
+   : utsushi::pump (idev)
+   , idev_ptr_(idev)
