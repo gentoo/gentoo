@@ -19,7 +19,7 @@ REQUIRED_USE="default-gold? ( gold )"
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
 
-PATCH_VER=3
+PATCH_VER=4
 PATCH_DEV=dilfridge
 
 case ${PV} in
