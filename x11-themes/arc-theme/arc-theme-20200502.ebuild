@@ -94,7 +94,7 @@ src_compile() {
 	# fontconfig issue?
 	# https://bugs.gentoo.org/666418#c28
 	use pre-rendered ||
-		addpredict "${EPREFIX}"/usr/share/inkscape/fonts/.uuid.TMP-XXXXXX
+		addpredict "${BROOT}"/usr/share/inkscape/fonts/.uuid.TMP-XXXXXX
 
 	default
 }
