@@ -47,10 +47,6 @@ src_configure() {
 		--enable-maintainermode
 }
 
-#src_compile() {
-#	emake AR="$(tc-getAR)" CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
-#}
-
 src_install() {
 	#For prefix
 	chmod u+x "${S}/install-sh"
