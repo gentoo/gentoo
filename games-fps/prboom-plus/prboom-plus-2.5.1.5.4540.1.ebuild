@@ -8,7 +8,7 @@ inherit autotools desktop xdg
 MY_PV=$(ver_rs 4 "+svn" 5 "+dfsg")
 MY_P=${PN}-${MY_PV}
 DESCRIPTION="An enhanced clone of the classic first-person shooter Doom"
-HOMEPAGE="https://prboom-plus.sourceforge.net"
+HOMEPAGE="http://prboom-plus.sourceforge.net"
 SRC_URI="http://deb.debian.org/debian/pool/main/p/prboom-plus/${PN}_${MY_PV}.orig.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-2+ BSD BSD-with-disclosure LGPL-2.1+ MIT public-domain"
@@ -19,7 +19,7 @@ REQUIRED_USE="sdl2-image? ( opengl )"
 
 DEPEND="
 	media-libs/libsdl2[opengl?,joystick,sound,video]
-	dumb? ( media-libs/dumb )
+	dumb? ( media-libs/dumb:= )
 	fluidsynth? ( media-sound/fluidsynth:= )
 	mad? ( media-libs/libmad )
 	net? ( media-libs/sdl2-net )

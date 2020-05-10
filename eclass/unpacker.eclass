@@ -279,7 +279,8 @@ unpack_deb() {
 			done
 		} < "${deb}"
 	else
-		ar x "${deb}"
+		local AR=${AR-ar}
+		${AR} x "${deb}" || die
 	fi
 
 	unpacker ./data.tar*

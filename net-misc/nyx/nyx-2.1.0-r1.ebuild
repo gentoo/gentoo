@@ -1,10 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+EAPI=7
 
-inherit vcs-snapshot distutils-r1
+PYTHON_COMPAT=(python3_{6,7,8} pypy3)
+PYTHON_REQ_USE='sqlite(-)'
+DISTUTILS_USE_SETUPTOOLS=rdepend
+
+inherit distutils-r1
 
 DESCRIPTION="Utility to monitor real time Tor status information"
 HOMEPAGE="https://nyx.torproject.org"
@@ -21,8 +24,6 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
-	net-libs/stem
+	net-libs/stem[${PYTHON_USEDEP}]
 	net-vpn/tor"
