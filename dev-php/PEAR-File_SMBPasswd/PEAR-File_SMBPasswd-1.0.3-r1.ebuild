@@ -7,7 +7,7 @@ inherit php-pear-r2
 DESCRIPTION="Class for managing SAMBA style password files"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ia64 ~ppc64 ~sparc ~x86"
 IUSE=""
 RDEPEND=">=dev-lang/php-5.3:*
 	>=dev-php/PEAR-Crypt_CHAP-1.0.0"
