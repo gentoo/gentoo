@@ -366,6 +366,10 @@ meson_src_configure() {
 	# https://bugs.gentoo.org/625396
 	python_export_utf8_locale
 
+	# https://bugs.gentoo.org/721786
+	local -x BOOST_INCLUDEDIR="${BOOST_INCLUDEDIR-${EPREFIX}/usr/include}"
+	local -x BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${EPREFIX}/usr/$(get_libdir)}"
+
 	(
 		# https://bugs.gentoo.org/720860
 		if ver_test "$(meson --version)" -lt "0.54"; then
