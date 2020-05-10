@@ -1,0 +1,29 @@
+From 24791dab2deb6beb064b7c0a2f23de4a37690374 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Sun, 10 May 2020 17:04:41 +0200
+Subject: [PATCH] Makefile.am: store appdata to /usr/share/metainfo
+
+The path '/usr/share/appdata' is deprecated and
+should be changed to '/usr/share/metainfo'.
+
+See section: 2.1.2. Filesystem locations
+https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/frontends/gnome/Makefile.am b/src/frontends/gnome/Makefile.am
+index 9b8c6765a3..e9fa5ca4af 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,7 +6,7 @@ nmvpnservice_DATA = nm-strongswan-service.name
+ 
+ @INTLTOOL_DESKTOP_RULE@
+ 
+-appdatadir = $(datadir)/appdata
++appdatadir = $(datadir)/metainfo
+ appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+ appdata_in_files = NetworkManager-strongswan.appdata.xml.in
+ @INTLTOOL_XML_RULE@
