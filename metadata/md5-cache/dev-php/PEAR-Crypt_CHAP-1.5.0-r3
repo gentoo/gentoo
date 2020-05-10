@@ -4,11 +4,11 @@ DESCRIPTION=Generating CHAP packets
 EAPI=7
 HOMEPAGE=https://pear.php.net/package/Crypt_CHAP
 IUSE=test
-KEYWORDS=amd64 ~arm ~hppa ~ia64 ~sparc ~x86
+KEYWORDS=amd64 ~arm ~hppa ~ia64 ~ppc64 ~sparc ~x86
 LICENSE=BSD
 RDEPEND=|| ( ( dev-php/pecl-mcrypt >=dev-lang/php-7.2:*[hash(+)] ) <dev-lang/php-7.2:*[crypt,hash] ) >=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Crypt_CHAP-1.5.0.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=51765ed50417916ca50ba6d24a461c11
+_md5_=097de6e8420366a7a276378748b14a52
