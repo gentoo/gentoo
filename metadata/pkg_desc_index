@@ -1516,7 +1516,7 @@ app-emacs/org-mode 8.3.2-r1 9.3 9.3.6: An Emacs mode for notes and project plann
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/pariemacs 3.14: sci-mathematics/pari emacs mode
-app-emacs/php-mode 1.19.1 1.22.1 1.23.0: GNU Emacs major mode for editing PHP code
+app-emacs/php-mode 1.22.1 1.23.0: GNU Emacs major mode for editing PHP code
 app-emacs/planner 3.42-r1: Maintain a local Wiki using Emacs-friendly markup
 app-emacs/po-mode 0.20.1: Major mode for GNU gettext PO files
 app-emacs/popup 0.5.3: Visual popup interface library for Emacs
@@ -1580,7 +1580,7 @@ app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.53: Window manager for GNU Emacs
 app-emacs/with-editor 2.8.3: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xclip 1.9: Emacs Interface to XClip
-app-emacs/xrdb-mode 3.0: An Emacs major mode for editing X resource database files
+app-emacs/xrdb-mode 3.0 3.0-r1: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2-r1: An Emacs major mode for editing XSL stylesheets and running XSL processes
 app-emacs/yaml-mode 0.0.13 0.0.14: A major mode for GNU Emacs for editing YAML files
 app-emacs/yasnippet 0.13.0: Yet another snippet extension for Emacs

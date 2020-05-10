@@ -1,0 +1,12 @@
+BDEPEND=>=app-editors/emacs-23.1:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=An Emacs major mode for editing X resource database files
+EAPI=7
+HOMEPAGE=https://launchpad.net/xrdb-mode https://www.emacswiki.org/emacs/ResourceFiles
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=>=app-editors/emacs-23.1:*
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/xrdb-mode-3.0.el.xz
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
+_md5_=60764659bdf3c31bfdcc9245aca08f9c
