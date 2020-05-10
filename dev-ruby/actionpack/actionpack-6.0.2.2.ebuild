@@ -41,6 +41,7 @@ ruby_add_bdepend "
 		dev-ruby/bundler
 		>=dev-ruby/capybara-2.15
 		~dev-ruby/activemodel-${PV}
+		~dev-ruby/railties-${PV}
 		>=dev-ruby/rack-cache-1.2:1.2
 		www-servers/puma
 	)"
