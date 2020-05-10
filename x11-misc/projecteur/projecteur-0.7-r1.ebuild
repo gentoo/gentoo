@@ -32,7 +32,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-BDEPEND="virtual/pkgconfig"
+# Compilation will fail, if Git is not installed.
+# It's a bug, reported to upstream: https://github.com/jahnf/Projecteur/issues/73
+BDEPEND="
+	dev-vcs/git
+	virtual/pkgconfig
+"
 
 pkg_postinst() {
 	udev_reload

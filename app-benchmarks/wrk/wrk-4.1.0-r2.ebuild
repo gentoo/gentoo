@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,15 +14,23 @@ LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 IUSE="libressl"
 
-RDEPEND="
+CBUILD="dev-lang/luajit:2"
+
+DEPEND="
 	dev-lang/lua:0
-	dev-lang/luajit:2
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( dev-libs/openssl:0= )
 "
 
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+RDEPEND="
+	${CBUILD}
+	${RDEPEND}
+"
+
+BDEPEND="
+	${CBUILD}
+	virtual/pkgconfig
+"
 
 DOCS=(
 	"CHANGES"

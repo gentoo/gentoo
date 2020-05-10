@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,8 +25,8 @@ src_prepare() {
 
 	tc-export CC
 
-	# Respect users CFLAGS and don't strip, as portage does this part.
-	sed -e 's/-O2/$(CFLAGS)/g' -e '/strip/d' -i Makefile || die
+	# Respect users [CL]FLAGS and don't strip, as portage does this part
+	sed -e 's/-O2/$(CFLAGS) -lgmp $(LDFLAGS)/g' -e '/strip/d' -i Makefile || die
 }
 
 src_install() {
