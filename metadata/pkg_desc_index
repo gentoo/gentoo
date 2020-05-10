@@ -12725,7 +12725,7 @@ media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.4.2-r1: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
-media-libs/gd 2.2.5-r2: Graphics library for fast image creation
+media-libs/gd 2.2.5-r2 2.3.0: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.22 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 0.12.0-r1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
@@ -17105,7 +17105,7 @@ sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34 2.34-r1 9999: Tools necessary 
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34: Tools necessary to build programs
-sys-devel/bison 3.1 3.3.2 3.4.2 3.5.4 3.6: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.3.2 3.4.2 3.5.4 3.6 3.6.1: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20181221: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 8.0.1 9.0.1 10.0.0 10.0.0.9999 11.0.0.9999: C language family frontend for LLVM
@@ -17921,7 +17921,7 @@ www-servers/lighttpd 1.4.53 1.4.54 1.4.55: Lightweight high-performance web serv
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.16.1-r1 1.17.10-r1 1.18.0: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.8.0 1.17.0: Dynamic web and application server
+www-servers/nginx-unit 1.17.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
