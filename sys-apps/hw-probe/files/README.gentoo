@@ -1,0 +1,7 @@
+Please keep in mind, that all results are being uploaded
+by default directly to the Linux Hardware Database
+and can be read by everyone in public.
+
+In order to identify unique computers and hard drives,
+a 32-byte prefix of a salted SHA512 hash from
+MAC addresses and serial numbers is being uploaded.
