@@ -23,8 +23,12 @@ IUSE=""
 
 ruby_add_rdepend "
 	dev-ruby/mustermann:1
-	dev-ruby/rack:2.0
+	|| ( dev-ruby/rack:2.1 dev-ruby/rack:2.0 )
 	~dev-ruby/rack-protection-${PV}
 	dev-ruby/tilt:2"
 ruby_add_bdepend "test? ( >=dev-ruby/rack-test-0.5.6 dev-ruby/erubis dev-ruby/builder dev-ruby/activesupport )"
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
+
+all_ruby_prepare() {
+	sed -i -e '1igem "rack", "<2.2"' test/helper.rb || die
+}
