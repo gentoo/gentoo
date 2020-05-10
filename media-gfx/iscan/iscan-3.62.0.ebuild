@@ -43,7 +43,7 @@ src_prepare() {
 	rm -r upstream/boost || die
 	# Workaround for deprecation warnings:
 	# https://gitlab.com/utsushi/utsushi/issues/90
-	sed -e 's|-Werror||g' -i configure.ac || die
+	sed -e 's|=-Werror|="-Werror -Wno-error=deprecated-declarations"|g' -i configure.ac || die
 	eautoreconf
 }
 
