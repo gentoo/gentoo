@@ -5,6 +5,7 @@ EAPI=7
 
 inherit desktop toolchain-funcs xdg-utils
 
+EGIT_COMMIT="0b0e9923c"
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
 MY_PV_HRP="5.4"
@@ -17,7 +18,7 @@ MY_PV_VOXELS="1.21"
 DESCRIPTION="An open source engine port of the classic PC first person shooter Duke Nukem 3D"
 HOMEPAGE="http://www.eduke32.com/"
 SRC_URI="
-	https://dukeworld.com/eduke32/synthesis/${MY_DATE}-${MY_BUILD}/${PN}_src_${MY_DATE}-${MY_BUILD}.tar.xz
+	https://dukeworld.com/eduke32/synthesis/latest/${PN}_src_${MY_DATE}-${MY_BUILD}-${EGIT_COMMIT}.tar.xz
 	https://www.eduke32.com/images/eduke32_classic.png
 	hrp? ( http://www.duke4.org/files/nightfright/hrp/duke3d_hrp.zip -> duke3d_hrp-${MY_PV_HRP}.zip )
 	offensive? ( http://www.duke4.org/files/nightfright/related/duke3d_xxx.zip -> duke3d_xxx-${MY_PV_OFFENSIVE_XXX}.zip )
@@ -50,7 +51,7 @@ REQUIRED_USE="
 # instead it tries to build a test game, which does not compile
 RESTRICT="bindist test"
 
-S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}"
+S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}-${EGIT_COMMIT}"
 
 RDEPEND="
 	media-libs/libsdl2[joystick,opengl?,sound,video]
@@ -91,7 +92,7 @@ PATCHES=(
 
 src_unpack() {
 	# Extract only the eduke32 archive
-	unpack ${PN}_src_${MY_DATE}-${MY_BUILD}.tar.xz
+	unpack ${PN}_src_${MY_DATE}-${MY_BUILD}-${EGIT_COMMIT}.tar.xz
 
 	# Unpack only the documentation
 	if use hrp; then
