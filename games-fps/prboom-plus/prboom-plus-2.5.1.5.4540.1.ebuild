@@ -19,7 +19,7 @@ REQUIRED_USE="sdl2-image? ( opengl )"
 
 DEPEND="
 	media-libs/libsdl2[opengl?,joystick,sound,video]
-	dumb? ( media-libs/dumb )
+	dumb? ( media-libs/dumb:= )
 	fluidsynth? ( media-sound/fluidsynth:= )
 	mad? ( media-libs/libmad )
 	net? ( media-libs/sdl2-net )
