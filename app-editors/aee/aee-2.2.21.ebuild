@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit toolchain-funcs
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="X"
 
 RDEPEND="X? ( x11-libs/libX11 )"
@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-ae-location.patch
 	"${FILESDIR}"/${PN}-Wformat-security.patch
+	"${FILESDIR}"/${PN}-gcc-10.patch
 )
 DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
 
