@@ -73,6 +73,8 @@ RDEPEND="${DEPEND}
 # requires running kde environment
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${PN}-19.12.3-CVE-2020-12755.patch" ) # bug 722152
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package activities KF5Activities)
