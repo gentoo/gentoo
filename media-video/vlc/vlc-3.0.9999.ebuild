@@ -164,7 +164,7 @@ RDEPEND="
 			x11-libs/libX11
 		)
 	)
-	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client] )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
 	sftp? ( net-libs/libssh2 )
