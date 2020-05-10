@@ -8,7 +8,7 @@ TVHEADEND_USER="tvheadend"
 TVHEADEND_GROUP="video"
 
 # Path to Tvheadend config.
-TVHEADEND_CONFIG="/etc/tvheadend"
+TVHEADEND_CONFIG="/var/lib/tvheadend"
 
 # Other options you want to pass to Tvheadend.
 TVHEADEND_OPTIONS=""

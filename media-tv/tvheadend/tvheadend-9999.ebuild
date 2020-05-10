@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit git-r3 linux-info systemd toolchain-funcs user
+inherit git-r3 linux-info systemd toolchain-funcs
 
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
@@ -20,6 +20,7 @@ BDEPEND="
 	virtual/pkgconfig"
 
 RDEPEND="
+	acct-user/tvheadend
 	virtual/libiconv
 	dbus? ( sys-apps/dbus )
 	dvbcsa? ( media-libs/libdvbcsa )
@@ -60,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-hdhomerun.patch
 	"${FILESDIR}"/${PN}-4.2.2-dtv_scan_tables.patch
 	"${FILESDIR}"/${PN}-4.2.7-python3.patch
+	"${FILESDIR}"/${PN}-4.2.8-no-dvb-fix.patch
 )
 
 DOCS=( README.md )
@@ -67,8 +69,6 @@ DOCS=( README.md )
 pkg_setup() {
 	use inotify &&
 		CONFIG_CHECK="~INOTIFY_USER" linux-info_pkg_setup
-
-	enewuser tvheadend -1 -1 /etc/tvheadend video
 }
 
 # We unconditionally enable codecs that do not require additional
@@ -130,10 +130,6 @@ src_install() {
 
 	use systemd &&
 		systemd_dounit "${FILESDIR}"/tvheadend.service
-
-	dodir /etc/tvheadend
-	fperms 0700 /etc/tvheadend
-	fowners tvheadend:video /etc/tvheadend
 }
 
 pkg_postinst() {
@@ -143,4 +139,15 @@ pkg_postinst() {
 	elog "Make sure that you change the default username"
 	elog "and password via the Configuration / Access control"
 	elog "tab in the web interface."
+
+	. "${EROOT}"/etc/conf.d/tvheadend &>/dev/null
+
+	if [[ ${TVHEADEND_CONFIG} = ${EPREFIX}/etc/tvheadend ]]; then
+		echo
+		ewarn "The HOME directory for the tvheadend user has changed from"
+		ewarn "${EPREFIX}/etc/tvheadend to ${EPREFIX}/var/lib/tvheadend. The daemon will continue"
+		ewarn "to use the old location until you update TVHEADEND_CONFIG in"
+		ewarn "${EPREFIX}/etc/conf.d/tvheadend. Please manually move your existing files"
+		ewarn "before you do so."
+	fi
 }
