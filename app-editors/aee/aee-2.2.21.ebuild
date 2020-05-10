@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-ae-location.patch
 	"${FILESDIR}"/${PN}-Wformat-security.patch
+	"${FILESDIR}"/${PN}-gcc-10.patch
 )
 DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
 
