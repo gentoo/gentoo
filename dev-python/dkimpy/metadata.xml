@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>aidecoe@gentoo.org</email>
-		<name>Amadeusz Żołnowski</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Python module that implements DKIM (DomainKeys Identified Mail) email
 		signing and verification. It also provides helper scripts for command

@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>aidecoe@gentoo.org</email>
-		<name>Amadeusz Żołnowski</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>guillaumeseren@gmail.com</email>
 		<name>Guillaume Seren</name>
 	</maintainer>
