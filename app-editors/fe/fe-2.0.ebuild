@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,12 +19,19 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=("${FILESDIR}"/${PN}-1.8-makefile.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8-makefile.patch
+	"${FILESDIR}"/${P}-ar.patch
+)
 
 src_configure() {
 	econf \
 		$(use_enable sendmail) \
 		LIBS="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
+}
+
+src_compile() {
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {
