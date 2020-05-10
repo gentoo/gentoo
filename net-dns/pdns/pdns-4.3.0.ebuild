@@ -48,6 +48,8 @@ BDEPEND="virtual/pkgconfig
 
 S="${WORKDIR}"/${P/_/-}
 
+PATCHES=( "${FILESDIR}"/${P}-boost-1.73-compatibility.patch )
+
 src_configure() {
 	local dynmodules="pipe bind" # the default backends, always enabled
 
