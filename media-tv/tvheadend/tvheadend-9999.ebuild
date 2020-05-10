@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-hdhomerun.patch
 	"${FILESDIR}"/${PN}-4.2.2-dtv_scan_tables.patch
 	"${FILESDIR}"/${PN}-4.2.7-python3.patch
+	"${FILESDIR}"/${PN}-4.2.8-no-dvb-fix.patch
 )
 
 DOCS=( README.md )
