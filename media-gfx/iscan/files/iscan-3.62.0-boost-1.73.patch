@@ -1,0 +1,33 @@
+diff -urN a/drivers/esci/verify.cpp b/drivers/esci/verify.cpp
+--- a/drivers/esci/verify.cpp	2019-11-18 04:08:45.000000000 +0200
++++ b/drivers/esci/verify.cpp	2020-05-09 20:22:00.899968638 +0300
+@@ -58,6 +58,7 @@
+ 
+ using namespace utsushi;
+ using namespace _drv_::esci;
++using namespace boost::placeholders;
+ 
+ using std::basic_string;
+ using std::ios_base;
+diff -urN a/lib/monitor.cpp b/lib/monitor.cpp
+--- a/lib/monitor.cpp	2019-11-18 04:08:08.000000000 +0200
++++ b/lib/monitor.cpp	2020-05-09 20:22:26.392174029 +0300
+@@ -49,6 +49,7 @@
+ namespace utsushi {
+ 
+ using boost::filesystem::exists;
++using namespace boost::placeholders;
+ 
+ class monitor::impl
+ {
+diff -urN a/sane/handle.cpp b/sane/handle.cpp
+--- a/sane/handle.cpp	2019-11-18 04:08:08.000000000 +0200
++++ b/sane/handle.cpp	2020-05-09 20:21:49.559223712 +0300
+@@ -65,6 +65,7 @@
+ using utsushi::_flt_::deskew;
+ using utsushi::_flt_::autocrop;
+ using utsushi::_flt_::pnm;
++using namespace boost::placeholders;
+ 
+ namespace sane {
+ 
