@@ -123,7 +123,7 @@ dzil_src_prep() {
 		-i dist.ini || die "Can't patch dist.ini"
 }
 dzil_env_setup() {
-	# NextVersion noise :(
+	# NextRelease noise :(
 	mkdir -p ~/.dzil/
 	local user="$(whoami)"
 	local host="$(hostname)"
