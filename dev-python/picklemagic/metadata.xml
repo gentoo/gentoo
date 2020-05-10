@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
+	<longdescription>
+		A set of modules for analyzing and playing with the mechanics of python pickles.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">CensoredUsername/picklemagic</remote-id>
+	</upstream>
+</pkgmetadata>
