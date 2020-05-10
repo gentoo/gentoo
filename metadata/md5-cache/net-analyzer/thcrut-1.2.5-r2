@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=prepare
+DEPEND=dev-libs/libpcre net-libs/libnet:1.0 net-libs/libpcap
+DESCRIPTION=Network discovery and fingerprinting tool
+EAPI=7
+HOMEPAGE=http://www.thc.org/thc-rut/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=free-noncomm PCRE GPL-1+
+RDEPEND=dev-libs/libpcre net-libs/libnet:1.0 net-libs/libpcap
+SLOT=0
+SRC_URI=http://www.thc.org/thc-rut/thcrut-1.2.5.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=85fd1ace8bb7d2a9661f5d092ddb6cf2
