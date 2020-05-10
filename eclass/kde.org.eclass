@@ -34,6 +34,53 @@ fi
 
 EXPORT_FUNCTIONS pkg_nofetch src_unpack
 
+# @ECLASS-VARIABLE: KDE_ORG_CATEGORIES
+# @INTERNAL
+# @DESCRIPTION
+# Map of ${CATEGORY}=<upstream category> key-value pairs.
+declare -A KDE_ORG_CATEGORIES=(
+	[app-accessibility]=accessibility
+	[app-admin]=system
+	[app-backup]=system
+	[app-cdr]=utilities
+	[app-editors]=utilities
+	[app-office]=office
+	[app-text]=office
+	[dev-libs]=libraries
+	[dev-util]=sdk
+	[games-board]=games
+	[games-kids]=education
+	[games-mud]=games
+	[kde-frameworks]=frameworks
+	[kde-plasma]=plasma
+	[mail-client]=pim
+	[media-gfx]=graphics
+	[media-libs]=libraries
+	[media-sound]=multimedia
+	[media-video]=multimedia
+	[net-firewall]=network
+	[net-im]=network
+	[net-irc]=network
+	[net-libs]=libraries
+	[net-misc]=network
+	[net-p2p]=network
+	[sci-astronomy]=education
+	[sci-calculators]=utilities
+	[sci-mathematics]=education
+	[sci-visualization]=education
+	[sys-block]=system
+	[sys-libs]=system
+	[www-client]=network
+	[x11-libs]=libraries
+)
+readonly KDE_ORG_CATEGORIES
+
+# @ECLASS-VARIABLE: KDE_ORG_CATEGORY
+# @DESCRIPTION:
+# If unset, default value is mapped from ${CATEGORY} to corresponding upstream
+# category on invent.kde.org, with "kde" as fallback value.
+: ${KDE_ORG_CATEGORY:=${KDE_ORG_CATEGORIES[${CATEGORY}]:-kde}}
+
 # @ECLASS-VARIABLE: KDE_ORG_NAME
 # @DESCRIPTION:
 # If unset, default value is set to ${PN}.
@@ -183,7 +230,7 @@ _kde.org_calculate_live_repo() {
 	# @DESCRIPTION:
 	# This variable allows easy overriding of default kde mirror service
 	# (anongit) with anything else you might want to use.
-	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/kde}
+	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
 
 	if [[ ${PV} == ??.??.49.9999 && ${KDE_RELEASE_SERVICE} = true ]]; then
 		EGIT_BRANCH="release/$(ver_cut 1-2)"
