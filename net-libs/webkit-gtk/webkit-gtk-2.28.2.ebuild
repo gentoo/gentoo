@@ -41,6 +41,7 @@ wpe_depend="
 	>=gui-libs/libwpe-1.3.0:1.0
 	>=gui-libs/wpebackend-fdo-1.3.1:1.0
 "
+# TODO: gst-plugins-base[X] is only needed when build configuration ends up with GLX set, but that's a bit automagic too to fix
 RDEPEND="
 	>=x11-libs/cairo-1.16.0:=[X?]
 	>=media-libs/fontconfig-2.13.0:1.0
