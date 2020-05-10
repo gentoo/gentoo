@@ -30,4 +30,5 @@ ruby_add_bdepend "
 all_ruby_prepare() {
 	rm Gemfile* || die
 	sed -i -e '/bundler/d' -e '/[Cc]ode[Cc]limate/d' -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
+	sed -i -e 's/git ls-files --/find/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
