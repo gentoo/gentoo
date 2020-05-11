@@ -7800,7 +7800,7 @@ dev-python/flake8 3.7.9: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-import-order 0.18: Flake8 plugin that checks import order against various Python Style Guides
 dev-python/flake8-polyfill 1.0.2: Polyfill package for Flake8 plugins
 dev-python/flaky 3.6.1: Plugin for nose or py.test that automatically reruns flaky tests
-dev-python/flask 0.12.2 1.1.2 9999: A microframework based on Werkzeug, Jinja2 and good intentions
+dev-python/flask 1.1.2 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-api 1.1: Browsable web APIs for Flask
 dev-python/flask-appconfig 0.11.1-r1: Configures Flask applications in a canonical way
 dev-python/flask-assets 0.12: Flask webassets integration
@@ -7976,7 +7976,7 @@ dev-python/jedi 0.14.1 0.15.2 0.17.0: Autocompletion library for Python
 dev-python/jeepney 0.4.3: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.7.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 3.4.2: Python wrapper for jikan.moe API.
-dev-python/jinja 2.8.1 2.11.1 2.11.2: A full-featured template engine for Python
+dev-python/jinja 2.11.1 2.11.2: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jira 1.0.14-r3: Python library for interacting with the JIRA REST API
@@ -8300,7 +8300,7 @@ dev-python/prompt_toolkit 2.0.10 2.0.10-r1 3.0.3: Building powerful interactive 
 dev-python/protobuf-python 3.11.4 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1 1.0.1-r1: Python library for communicating with Pocket Science Lab
-dev-python/psutil 5.6.7-r1 5.7.0: Retrieve information on running processes and system utilization
+dev-python/psutil 5.7.0: Retrieve information on running processes and system utilization
 dev-python/psycopg 2.7.7 2.8.4: PostgreSQL database adapter for Python
 dev-python/ptpython 2.0.6: Python REPL build on top of prompt_toolkit
 dev-python/ptvsd 4.3.2: Visual Studio remote debugging server for Python
@@ -8721,7 +8721,7 @@ dev-python/semantic_version 2.8.4: Python library providing a few tools handling
 dev-python/semver 2.9.0 2.9.1: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.13.2 0.14.1: Python client for Sentry
+dev-python/sentry-sdk 0.14.1: Python client for Sentry
 dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
@@ -8937,7 +8937,7 @@ dev-python/webassets 2.0: Asset management for Python web development
 dev-python/webcolors 1.10 1.11.1: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5.1-r1: Character encoding aliases for legacy web content
 dev-python/webob 1.8.5-r3: WSGI request and response object
-dev-python/websocket-client 0.56.0 0.57.0: WebSocket client for python with hybi13 support
+dev-python/websocket-client 0.57.0: WebSocket client for python with hybi13 support
 dev-python/websockets 8.1: Library for building WebSocket servers and clients in Python
 dev-python/websockify 0.9.0: WebSockets support for any application/server
 dev-python/webtest 2.0.33: Helper to test WSGI applications
