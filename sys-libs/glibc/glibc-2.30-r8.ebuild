@@ -516,27 +516,6 @@ glibc_banner() {
 	echo "${b}"
 }
 
-check_devpts() {
-	# Make sure devpts is mounted correctly for use w/out setuid pt_chown.
-
-	# If merely building the binary package, then there's nothing to verify.
-	[[ ${MERGE_TYPE} == "buildonly" ]] && return
-
-	# Only sanity check when installing the native glibc.
-	[[ -n ${ROOT} ]] && return
-
-	# If they're opting in to the old suid code, then no need to check.
-	use suid && return
-
-	if awk '$3 == "devpts" && $4 ~ /[, ]gid=5[, ]/ { exit 1 }' /proc/mounts ; then
-		eerror "In order to use glibc with USE=-suid, you must make sure that"
-		eerror "you have devpts mounted at /dev/pts with the gid=5 option."
-		eerror "Openrc should do this for you, so you should check /etc/fstab"
-		eerror "and make sure you do not have any invalid settings there."
-		die "mount & fix your /dev/pts settings"
-	fi
-}
-
 # The following Kernel version handling functions are mostly copied from portage
 # source. It's better not to use linux-info.eclass here since a) it adds too
 # much magic, see bug 326693 for some of the arguments, and b) some of the
@@ -606,9 +585,6 @@ get_kheader_version() {
 # pkg_ and src_ phases, so we call this function both in pkg_pretend and in
 # src_unpack.
 sanity_prechecks() {
-	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
-	check_devpts
-
 	# Prevent native builds from downgrading
 	if [[ ${MERGE_TYPE} != "buildonly" ]] && \
 	   [[ -z ${ROOT} ]] && \
