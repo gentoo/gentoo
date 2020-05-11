@@ -4,11 +4,11 @@ DESCRIPTION=Test.pm wrapper with helpers for testing Apache
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Apache-Test
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm ~ia64 ~mips ppc ppc64 sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~mips ppc ppc64 sparc x86
 LICENSE=Apache-2.0
 RDEPEND==www-servers/apache-2* dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SH/SHAY/Apache-Test-1.42.tar.gz
 _eclasses_=depend.apache	05ca915dc22ea60059f85d8d9a34d3de	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=3f70595030213a1b04d142330fa0c76f
+_md5_=c51bc21e96e975b525d678af92992d49

@@ -11,4 +11,4 @@ RDEPEND=ncurses? ( sys-libs/ncurses:0 ) wayland? ( dev-libs/wayland dev-libs/way
 REQUIRED_USE=|| ( ncurses wayland X )
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
-_md5_=6643cbb204654adf300ed5c32e56a660
+_md5_=002cf7b5e4d071f6ef16175b83d8a4db

@@ -5048,7 +5048,7 @@ dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for 
 dev-libs/libffi 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.1 1.4.0: Provides library functionality for FIDO 2.0
-dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1 0.20.2 0.21.0: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.20.2 0.21.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 6.1.2 6.2.0-r1 6.2.1 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
@@ -7453,8 +7453,8 @@ dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.5.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.0-r1: Collection of tools for internationalizing Python applications
-dev-python/BitVector 3.4.8 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
-dev-python/GitPython 2.1.11 3.1.1 3.1.2: Library used to interact with Git repositories
+dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
+dev-python/GitPython 3.1.1 3.1.2: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
@@ -7473,7 +7473,7 @@ dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.7.1: SOCKS client module
 dev-python/PyUtilib 5.7.2: A collection of Python utilities
 dev-python/PythonQt 3.2-r1 9999: A dynamic Python binding for the Qt framework
-dev-python/QtPy 1.9.0-r1 1.9.0-r2: Abstraction layer for PyQt5/PySide
+dev-python/QtPy 1.9.0-r2: Abstraction layer for PyQt5/PySide
 dev-python/Rx 1.6.1: Reactive Extensions for Python
 dev-python/SaltTesting 2018.1.16 2018.9.21: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3-r1 0.5.7 0.5.8: A simple Python object interface to a MySQL database schema
@@ -7557,18 +7557,18 @@ dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface
 dev-python/bcrypt 3.1.7-r2: Modern password hashing for software and servers
 dev-python/beagle 0.2.1: Command line client for Hound, the code search tool.
-dev-python/beautifulsoup 4.8.1 4.8.2: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/beautifulsoup 4.8.2: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/bert 2.2.0: BERT Serialization Library
-dev-python/betamax 0.8.0 0.8.1: python-requests HTTP exchanges recorder
+dev-python/betamax 0.8.1: python-requests HTTP exchanges recorder
 dev-python/betamax-matchers 0.4.0: A group of experimental matchers for Betamax
 dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
 dev-python/billiard 3.6.0.0: Python multiprocessing fork
 dev-python/binaryornot 0.4.3 0.4.4: Ultra-lightweight pure Python package to guess whether a file is binary or text
 dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
-dev-python/bitstring 3.1.5 3.1.6: A pure Python module for creation and analysis of binary data
+dev-python/bitstring 3.1.6: A pure Python module for creation and analysis of binary data
 dev-python/bleach 3.1.4-r1: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessed 1.17.5: Library for making terminal apps using colors, keyboard input and positioning
-dev-python/blessings 1.7 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
+dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.4: Generate block-diagram image from text
 dev-python/blosc 1.5.1: High performance compressor optimized for binary data
@@ -7609,7 +7609,7 @@ dev-python/cfn-python-lint 0.21.6 0.30.1: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.1 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
-dev-python/chameleon 2.25 3.7.0: Fast HTML/XML template compiler for Python
+dev-python/chameleon 3.7.0: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.3.0-r3: Python attributes without the boilerplate
 dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
@@ -7672,9 +7672,9 @@ dev-python/csv23 0.3.1: Python 2/3 unicode CSV compatibility layer
 dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function based on ctypes module
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.2.2: Cursive implements OpenStack-specific validation of digital signatures.
-dev-python/curtsies 0.3.0 0.3.0-r2: Curses-like terminal wrapper, with colored strings
+dev-python/curtsies 0.3.0-r2: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.2.5: Python package for convex optimization
-dev-python/cx_Freeze 5.0.2 6.1: Create standalone executables from Python scripts
+dev-python/cx_Freeze 6.1: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.15 0.29.17: A Python to C compiler
 dev-python/cytoolz 0.10.0: Cython implementation of Toolz: High performance functional utilities
@@ -7687,7 +7687,7 @@ dev-python/dbusmock 0.18.2 0.18.3: Easily create mock objects on D-Bus for softw
 dev-python/dbutils 1.3: Database connections for multi-threaded environments
 dev-python/ddt 1.2.2: A library to multiply test cases
 dev-python/debtcollector 1.21.0: Python deprecation patterns and strategies that collect technical debt
-dev-python/decorator 4.4.1 4.4.2: Simplifies the usage of decorators for the average programmer
+dev-python/decorator 4.4.2: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/defcon 0.6.0 0.6.0-r1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.6.0: XML bomb protection for Python stdlib modules, an xml serialiser
@@ -7741,7 +7741,7 @@ dev-python/docker-pycreds 0.4.0: Python bindings for the docker credentials stor
 dev-python/dockerpty 0.4.1-r1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r3: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
-dev-python/docutils 0.15.2 0.16: Python Documentation Utilities
+dev-python/docutils 0.16: Python Documentation Utilities
 dev-python/docutils-glep 1.2 9999: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.7.1 0.9.1: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: Copy-on-write locking mechanism for expensive resources
@@ -7800,7 +7800,7 @@ dev-python/flake8 3.7.9: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-import-order 0.18: Flake8 plugin that checks import order against various Python Style Guides
 dev-python/flake8-polyfill 1.0.2: Polyfill package for Flake8 plugins
 dev-python/flaky 3.6.1: Plugin for nose or py.test that automatically reruns flaky tests
-dev-python/flask 0.12.2 1.0.4 1.1.2 9999: A microframework based on Werkzeug, Jinja2 and good intentions
+dev-python/flask 0.12.2 1.1.2 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-api 1.1: Browsable web APIs for Flask
 dev-python/flask-appconfig 0.11.1-r1: Configures Flask applications in a canonical way
 dev-python/flask-assets 0.12: Flask webassets integration
@@ -7856,7 +7856,7 @@ dev-python/futurist 1.8.1: Useful additions to futures, from the future
 dev-python/fuzzywuzzy 0.18.0: Fuzzy string matching in python
 dev-python/gast 0.2.2 0.3.3: A generic AST to represent Python2 and Python3's Abstract Syntax Tree (AST)
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
-dev-python/gcs-oauth2-boto-plugin 2.5 2.5-r1: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
+dev-python/gcs-oauth2-boto-plugin 2.5-r1: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
 dev-python/genshi 0.7.3 0.7.3-r1: Python toolkit for stream-based generation of output for the web
 dev-python/genson 1.1.0: GenSON is a powerful, user-friendly JSON Schema generator built in Python
 dev-python/genty 1.3.2: Allows you to run a test with multiple data sets
@@ -14328,7 +14328,7 @@ net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7.2-r1: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.39.0 3.44.2 3.45.1 3.46.3 3.47.1 3.47.2.1 3.48.0: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.47.2.1 3.48.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
@@ -17935,7 +17935,7 @@ www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and ot
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.103 8.5.53 8.5.54 9.0.33 9.0.34: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.5.3 5.1-r1 6.0.3 6.0.4: Python web framework and asynchronous networking library
-www-servers/uwsgi 2.0.17 2.0.17.1 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
+www-servers/uwsgi 2.0.17 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 6.0.1 6.0.6 6.1.1 6.3.1 6.3.2 6.4.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
