@@ -46,8 +46,6 @@ DEPEND="${RDEPEND}
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 	)"
-# Needed for individual runs of testsuite by python impls.
-DISTUTILS_IN_SOURCE_BUILD=1
 
 PATCHES=(
 	"${FILESDIR}"/pycurl-7.43.0.5-telnet-test.patch
