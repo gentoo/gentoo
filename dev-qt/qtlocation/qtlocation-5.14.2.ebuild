@@ -37,6 +37,8 @@ QT5_TARGET_SUBDIRS=(
 	src/plugins/geoservices
 )
 
+PATCHES=( "${FILESDIR}/${P}-gcc-10.patch" ) # bug 722102
+
 src_configure() {
 	# src/plugins/geoservices requires files that are only generated when
 	# qmake is run in the root directory. Bug 633776.
