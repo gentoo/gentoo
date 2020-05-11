@@ -1,0 +1,53 @@
+From f3f78c72a5b6ef42119188ac5af73bb3a0a8bbba Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Date: Tue, 12 May 2020 13:41:53 -0400
+Subject: [PATCH] tpm2: Fix a gcc 10.1.0 complaint
+
+This PR addresses issue 133: https://github.com/stefanberger/libtpms/issues/133
+
+bin/sh ../libtool  --tag=CC   --mode=compile x86_64-pc-linux-gnu-gcc \
+  -DHAVE_CONFIG_H -I. -I..    -include tpm_library_conf.h \
+  -I../include/libtpms -I../include/libtpms -fstack-protector-strong \
+  -D_POSIX_ -DTPM_POSIX -DTPM_LIBTPMS_CALLBACKS -I ./tpm2 \
+  -I ./tpm2/crypto -I ./tpm2/crypto/openssl -g -O2 \
+  -DUSE_OPENSSL_FUNCTIONS_SYMMETRIC=1 -DUSE_OPENSSL_FUNCTIONS_EC=1 \
+  -DUSE_OPENSSL_FUNCTIONS_ECDSA=1 -DUSE_OPENSSL_FUNCTIONS_RSA=1 \
+  -Wall -Werror -Wreturn-type -Wsign-compare -Wno-self-assign \
+  -c -o tpm2/libtpms_tpm2_la-NVDynamic.lo `test -f 'tpm2/NVDynamic.c' \
+  || echo './'`tpm2/NVDynamic.c
+libtool: compile:  x86_64-pc-linux-gnu-gcc -DHAVE_CONFIG_H -I. \
+  -I.. -include tpm_library_conf.h -I../include/libtpms \
+  -I../include/libtpms -fstack-protector-strong -D_POSIX_ -DTPM_POSIX \
+  -DTPM_LIBTPMS_CALLBACKS -I ./tpm2 -I ./tpm2/crypto \
+  -I ./tpm2/crypto/openssl -g -O2 -DUSE_OPENSSL_FUNCTIONS_SYMMETRIC=1 \
+  -DUSE_OPENSSL_FUNCTIONS_EC=1 -DUSE_OPENSSL_FUNCTIONS_ECDSA=1 \
+  -DUSE_OPENSSL_FUNCTIONS_RSA=1 -Wall -Werror -Wreturn-type -Wsign-compare \
+  -Wno-self-assign -c tpm2/NVDynamic.c  -fPIC -DPIC \
+  -o tpm2/.libs/libtpms_tpm2_la-NVDynamic.o
+tpm2/NVDynamic.c: In function ?NvNextByType?:
+tpm2/NVDynamic.c:126:10: error: ?nvHandle? may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  126 |  *handle = nvHandle;
+      |  ~~~~~~~~^~~~~~~~~~
+tpm2/NVDynamic.c: At top level:
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+---
+ src/tpm2/NVDynamic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tpm2/NVDynamic.c b/src/tpm2/NVDynamic.c
+index 32f46bb..4381658 100644
+--- a/src/tpm2/NVDynamic.c
++++ b/src/tpm2/NVDynamic.c
+@@ -114,7 +114,7 @@ NvNextByType(
+ 	     )
+ {
+     NV_REF           addr;
+-    TPM_HANDLE       nvHandle;
++    TPM_HANDLE       nvHandle = 0; // libtpms changed: gcc 10.1.0 complaint
+     while((addr = NvNext(iter, &nvHandle)) != 0)
+ 	{
+ 	    // addr: the address of the location containing the handle of the value
+-- 
+2.26.2
+

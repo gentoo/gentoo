@@ -1,0 +1,74 @@
+From aab357515eda564500290a4b3f542d2b4609af4f Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Tue, 14 Jan 2020 18:05:06 -0500
+Subject: [PATCH] tpm12: Initialize some variables for gcc ppc64el compiler
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+gcc (Ubuntu 9.2.1-21ubuntu1) 9.2.1 20191130
+
+The gcc compiler on Ubuntu Focal reports several false positives for
+potentially uninitialized variables:
+
+tpm12/tpm_session.c: In function ‘TPM_Process_SaveContext’:
+tpm12/tpm_session.c:3229:19: error: ‘tpm_auth_session_data’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+ 3229 |      returnCode = TPM_AuthSessionData_Store(&r1ContextSensitive, tpm_auth_session_data);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+tpm12/tpm_delegate.c: In function ‘TPM_Process_DelegateManage’:
+tpm12/tpm_delegate.c:1787:49: error: ‘familyRow’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+ 1787 |  if ((opCode != TPM_FAMILY_CREATE) && (familyRow->flags & TPM_DELEGATE_ADMIN_LOCK)) {
+      |                                        ~~~~~~~~~^~~~~~~
+tpm12/tpm_delegate.c: In function ‘TPM_Process_DelegateUpdateVerification’:
+tpm12/tpm_delegate.c:3575:48: error: ‘d1DelegateTableRow’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+ 3575 |      d1DelegateTableRow->pub.verificationCount = familyRow->verificationCount;
+      |      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All of the variables are initialize under the same condition as they are
+accessed.
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+---
+ src/tpm12/tpm_delegate.c | 4 ++--
+ src/tpm12/tpm_session.c  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/tpm12/tpm_delegate.c b/src/tpm12/tpm_delegate.c
+index 51d12f3..37ebc02 100644
+--- a/src/tpm12/tpm_delegate.c
++++ b/src/tpm12/tpm_delegate.c
+@@ -1629,7 +1629,7 @@ TPM_RESULT TPM_Process_DelegateManage(tpm_state_t *tpm_state,
+     TPM_SECRET			*hmacKey;
+     TPM_SECRET			savedAuth;		/* saved copy for response */
+     TPM_DELEGATE_PUBLIC		*delegatePublic;	/* from DSAP session */
+-    TPM_FAMILY_TABLE_ENTRY	*familyRow;		/* family table row containing familyID */
++    TPM_FAMILY_TABLE_ENTRY	*familyRow = NULL;	/* family table row containing familyID */
+     uint32_t			nv1 = tpm_state->tpm_permanent_data.noOwnerNVWrite;
+ 							/* temp for noOwnerNVWrite, initialize to
+ 							   silence compiler */
+@@ -3360,7 +3360,7 @@ TPM_RESULT TPM_Process_DelegateUpdateVerification(tpm_state_t *tpm_state,
+     TPM_DELEGATE_INDEX		d1DelegateIndex;
+     TPM_DELEGATE_OWNER_BLOB	d1DelegateOwnerBlob;
+     TPM_DELEGATE_KEY_BLOB	d1DelegateKeyBlob;
+-    TPM_DELEGATE_TABLE_ROW	*d1DelegateTableRow;
++    TPM_DELEGATE_TABLE_ROW	*d1DelegateTableRow = NULL;
+     TPM_FAMILY_ID		familyID = 0;
+     TPM_FAMILY_TABLE_ENTRY	*familyRow;		/* family table row containing familyID */
+     TPM_DELEGATE_PUBLIC		*delegatePublic;	/* from DSAP session */
+diff --git a/src/tpm12/tpm_session.c b/src/tpm12/tpm_session.c
+index 5e7b708..15b977f 100644
+--- a/src/tpm12/tpm_session.c
++++ b/src/tpm12/tpm_session.c
+@@ -3044,7 +3044,7 @@ TPM_RESULT TPM_Process_SaveContext(tpm_state_t *tpm_state,
+     TPM_STORE_BUFFER		b1_sbuffer;		/* serialization of b1 */
+     TPM_STCLEAR_DATA		*v1StClearData = NULL;
+     TPM_KEY_HANDLE_ENTRY	*tpm_key_handle_entry;	/* key table entry for the handle */
+-    TPM_AUTH_SESSION_DATA	*tpm_auth_session_data; /* session table entry for the handle */
++    TPM_AUTH_SESSION_DATA	*tpm_auth_session_data = NULL; /* session table entry for the handle */
+     TPM_TRANSPORT_INTERNAL	*tpm_transport_internal; /* transport table entry for the handle */
+     TPM_DAA_SESSION_DATA	*tpm_daa_session_data;	/* daa session table entry for the handle */
+     TPM_NONCE			*n1ContextNonce = NULL;
+-- 
+2.26.2
+
