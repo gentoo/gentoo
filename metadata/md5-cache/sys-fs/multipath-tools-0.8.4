@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig
 DEFINED_PHASES=compile install postinst prepare setup unpack
-DEPEND=dev-libs/json-c:= dev-libs/libaio dev-libs/userspace-rcu:= >=sys-fs/lvm2-2.02.45 >=virtual/udev-171 sys-libs/readline:0= rbd? ( sys-cluster/ceph ) systemd? ( sys-apps/systemd )
+DEPEND=dev-libs/json-c:= dev-libs/libaio dev-libs/userspace-rcu:= >=sys-fs/lvm2-2.02.45 >=virtual/libudev-232-r3 sys-libs/readline:0= rbd? ( sys-cluster/ceph ) systemd? ( sys-apps/systemd )
 DESCRIPTION=Device mapper target autoconfig
 EAPI=7
 HOMEPAGE=http://christophe.varoqui.free.fr/
 IUSE=systemd rbd kernel_linux
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/json-c:= dev-libs/libaio dev-libs/userspace-rcu:= >=sys-fs/lvm2-2.02.45 >=virtual/udev-171 sys-libs/readline:0= rbd? ( sys-cluster/ceph ) systemd? ( sys-apps/systemd )
+RDEPEND=dev-libs/json-c:= dev-libs/libaio dev-libs/userspace-rcu:= >=sys-fs/lvm2-2.02.45 >=virtual/libudev-232-r3 sys-libs/readline:0= rbd? ( sys-cluster/ceph ) systemd? ( sys-apps/systemd )
 RESTRICT=test
 SLOT=0
-SRC_URI=https://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=0.8.3;sf=tgz -> multipath-tools-0.8.3.tar.gz
+SRC_URI=https://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=0.8.4;sf=tgz -> multipath-tools-0.8.4.tar.gz
 _eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
-_md5_=badbd978ac4d13580411fa191ac6287c
+_md5_=b2e96c86fc834948779323e6bea692c1

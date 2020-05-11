@@ -14225,7 +14225,7 @@ net-dns/bind 9.14.8 9.14.9 9.14.11 9.16.1: Berkeley Internet Name Domain - Name 
 net-dns/bind-tools 9.14.8 9.14.9 9.14.11 9.16.1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0 1.14.0 1.15.0 1.16.0: C library that resolves names asynchronously
 net-dns/coredns 1.6.9: A DNS server that chains middleware
-net-dns/ddclient 3.9.0-r3: Perl client used to update dynamic DNS entries
+net-dns/ddclient 3.9.0-r3 3.9.1: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r2: A caching DNS proxy server
 net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for DNS traffic
@@ -17288,7 +17288,7 @@ sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio fi
 sys-fs/mtd-utils 1.5.2 2.0.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.18-r2 4.0.23 4.0.24: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
-sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.1 0.8.2 0.8.3 0.8.3-r1 0.8.3-r2: Device mapper target autoconfig
+sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.3-r2 0.8.4: Device mapper target autoconfig
 sys-fs/ncdu 1.14.1 1.14.2: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1 2017.3.23-r2 2017.3.23-r3: Open source read-write NTFS driver that runs under FUSE
@@ -17830,7 +17830,7 @@ www-apps/radicale 1.1.6 2.1.11-r1: A simple CalDAV calendar server
 www-apps/redmine 4.0.5 4.0.5-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.5.1 1.6.1-r1: Issue-tracking system with command-line, web, and e-mail interfaces
-www-apps/rt 4.4.3 4.4.4: RT is an enterprise-grade ticketing system
+www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
 www-apps/trac 1.2.5: Enhanced wiki and issue tracking system for software development projects
