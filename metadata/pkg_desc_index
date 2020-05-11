@@ -4910,7 +4910,7 @@ dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion r
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.23.3 1.24.0: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.23.3 1.24.1: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.177 0.179: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
@@ -17790,7 +17790,7 @@ www-apps/drupal 7.69 8.7.12 8.7.13 8.8.4 8.8.5: PHP-based open-source platform a
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/gitea 1.10.6 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
-www-apps/grafana-bin 6.5.3 6.7.2: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 6.7.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.69.0: The world's fastest framework for building websites
 www-apps/icingaweb2 2.7.1 2.7.3 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
