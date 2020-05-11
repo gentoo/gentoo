@@ -5,10 +5,6 @@
 		<email>graphics@gentoo.org</email>
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>lxde@gentoo.org</email>
-		<name>Gentoo LXDE Project</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">lxde</remote-id>
 	</upstream>
