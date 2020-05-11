@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=dev-lang/mono app-arch/unzip
+DESCRIPTION=A free, open source, light-weight and easy-to-use password manager
+EAPI=7
+HOMEPAGE=https://keepass.info/
+IUSE=aot
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/mono dev-dotnet/libgdiplus[cairo]
+SLOT=0
+SRC_URI=mirror://sourceforge/keepass/KeePass-2.45-Source.zip
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=a25f2919a45b5e6ed0bf8c652598695a
