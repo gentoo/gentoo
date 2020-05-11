@@ -12,7 +12,7 @@ DESCRIPTION="A python module for interacting with Bugzilla over XMLRPC"
 HOMEPAGE="https://github.com/python-bugzilla/python-bugzilla"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"
 SLOT="0"
 
