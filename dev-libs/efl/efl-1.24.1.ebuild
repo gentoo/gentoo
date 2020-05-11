@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic meson xdg-utils
+inherit meson xdg-utils
 
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 HOMEPAGE="https://www.enlightenment.org"
@@ -243,8 +243,6 @@ src_configure() {
 		luaChoice+="lua"
 	fi
 	emesonargs+=( -D lua-interpreter="${luaChoice}" )
-
-	append-cflags -fcommon
 
 	meson_src_configure
 }
