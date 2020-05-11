@@ -1617,7 +1617,7 @@ app-emulation/docker-machine-kvm 0.10.0: KVM driver for docker-machine
 app-emulation/docker-proxy 0.8.0_p20190513 0.8.0_p20190604 0.8.0_p20190807 0.8.0_p20191011: Docker container networking
 app-emulation/docker-registry 2.7.1: Docker Registry 2.0
 app-emulation/docker-runc 1.0.0_rc4_p20180122: runc container cli tools (docker fork)
-app-emulation/docker-swarm 1.2.5: A Docker-native clustering system
+app-emulation/docker-swarm 1.2.9: Swarm Classic: a container clustering system
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/dynamips 0.2.18 0.2.21: Cisco 7200/3600 Simulator
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
