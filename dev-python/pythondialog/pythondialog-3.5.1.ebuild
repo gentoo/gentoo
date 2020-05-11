@@ -14,26 +14,20 @@ SRC_URI="mirror://sourceforge/pythondialog//${PV}/python3-${P}.tar.bz2"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
-IUSE="doc examples"
+IUSE="doc"
 
 RDEPEND="dev-util/dialog"
-DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+
+distutils_enable_sphinx doc
 
 python_prepare_all() {
-	sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	use doc && emake -C doc html
+	sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die
 }
 
 python_install_all() {
-	if use examples; then
-		dodoc -r examples
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
-	use doc && local HTML_DOCS=( doc/_build/html/. )
-
-	distutils-r1_python_install_all
+	# examples disabled in EAPI6, so we do this manually
+	dodoc -r examples
+	docompress -x /usr/share/doc/${PF}/examples
+	default
 }
