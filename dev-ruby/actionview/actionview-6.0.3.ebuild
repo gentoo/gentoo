@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -52,7 +52,7 @@ all_ruby_prepare() {
 
 	# Avoid tests failing due to missing logger setup in activerecord,
 	# most likely related to test environment setup.
-	rm -f test/activerecord/render_partial_with_record_identification_test.rb || die
+	#rm -f test/activerecord/render_partial_with_record_identification_test.rb || die
 
 	# Fix loading of activerecord integration tests. This avoids loading
 	# activerecord twice and thus redefining constants leading to
