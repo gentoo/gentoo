@@ -8,6 +8,6 @@ KEYWORDS=amd64 x86
 LICENSE=Artistic LGPL-2
 RDEPEND=sys-libs/zlib gmp? ( dev-libs/gmp:0 ) java? ( >=virtual/jdk-1.4:= ) mpi? ( virtual/mpi ) mysql? ( dev-db/mysql-connector-c:0= ) odbc? ( dev-db/unixODBC ) readline? ( sys-libs/readline:= sys-libs/ncurses:= ) R? ( dev-lang/R ) java? ( >=dev-java/java-config-2.2.0-r3 )
 SLOT=0
-SRC_URI=http://www.dcc.fc.up.pt/~vsc/Yap/yap-6.3.3.tar.gz mirror://gentoo/yap-6.3.3-gentoo-patchset-12.tar.gz
+SRC_URI=http://www.dcc.fc.up.pt/~vsc/Yap/yap-6.3.3.tar.gz https://dev.gentoo.org/~keri/distfiles/yap/yap-6.3.3-gentoo-patchset-13.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	16d46032afaca1d6d0621f82084880cb	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=38c25f60b48ca385fe3af363c1850b96
+_md5_=7b88f0e6915e09fb94d651b0850e75cd
