@@ -6,7 +6,7 @@ EAPI=7
 # The selftests fail with pypy, and urlgrabber segfaults for me.
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="python binding for curl/libcurl"
 HOMEPAGE="
@@ -51,6 +51,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 PATCHES=(
 	"${FILESDIR}"/pycurl-7.43.0.5-telnet-test.patch
+	"${FILESDIR}"/pycurl-7.43.0.5-cc-cflags.patch
 )
 
 python_prepare_all() {
@@ -66,7 +67,7 @@ python_configure_all() {
 src_test() {
 	# upstream bundles precompiled amd64 libs
 	rm tests/fake-curl/libcurl/*.so || die
-	emake -C tests/fake-curl/libcurl
+	emake -C tests/fake-curl/libcurl CC="$(tc-getCC)"
 
 	distutils-r1_src_test
 }
