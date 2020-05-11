@@ -1,0 +1,105 @@
+From 1cdd950e7342240ed8edc695372365cf57fbc6cb Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Date: Thu, 17 Oct 2019 10:19:23 -0400
+Subject: [PATCH 2/2] tpm12: Fix potential buffer overflow in filename creation
+
+Fix a potential buffer overflow bug in the creation of filenames
+that were using sprintf() rather than snprintf(). The buffer overflow
+could occurr if the buffer is longer than 4096 bytes. The state path
+may alone be 4096 bytes and could possibly trigger the overflow.
+
+Swtpm for example is not affected from this since it uses the callbacks
+that are invoked before the faulty function is called.
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+---
+ src/tpm12/tpm_nvfile.c | 43 ++++++++++++++++++++++++++++++++----------
+ 1 file changed, 33 insertions(+), 10 deletions(-)
+
+diff --git a/src/tpm12/tpm_nvfile.c b/src/tpm12/tpm_nvfile.c
+index c8e7bcf..0268bd0 100644
+--- a/src/tpm12/tpm_nvfile.c
++++ b/src/tpm12/tpm_nvfile.c
+@@ -70,7 +70,8 @@
+ 
+ /* local prototypes */
+ 
+-static void       TPM_NVRAM_GetFilenameForName(char *filename,
++static TPM_RESULT TPM_NVRAM_GetFilenameForName(char *filename,
++                                               size_t filename_len,
+ 					       uint32_t tpm_number,
+                                                const char *name);
+ 
+@@ -189,7 +190,10 @@ TPM_RESULT TPM_NVRAM_LoadData(unsigned char **data,     /* freed by caller */
+     /* open the file */
+     if (rc == 0) {
+         /* map name to the rooted filename */
+-        TPM_NVRAM_GetFilenameForName(filename, tpm_number, name);
++        rc = TPM_NVRAM_GetFilenameForName(filename, sizeof(filename),
++                                          tpm_number, name);
++    }
++    if (rc == 0) {
+         printf("  TPM_NVRAM_LoadData: Opening file %s\n", filename);
+         file = fopen(filename, "rb");                           /* closed @1 */
+         if (file == NULL) {     /* if failure, determine cause */
+@@ -297,7 +301,10 @@ TPM_RESULT TPM_NVRAM_StoreData(const unsigned char *data,
+     printf(" TPM_NVRAM_StoreData: To name %s\n", name);
+     if (rc == 0) {
+         /* map name to the rooted filename */
+-        TPM_NVRAM_GetFilenameForName(filename, tpm_number, name);
++        rc = TPM_NVRAM_GetFilenameForName(filename, sizeof(filename),
++                                          tpm_number, name);
++    }
++    if (rc == 0) {
+         /* open the file */
+         printf(" TPM_NVRAM_StoreData: Opening file %s\n", filename);
+         file = fopen(filename, "wb");                           /* closed @1 */
+@@ -339,14 +346,27 @@ TPM_RESULT TPM_NVRAM_StoreData(const unsigned char *data,
+    state_directory/tpm_number.name
+ */
+ 
+-static void TPM_NVRAM_GetFilenameForName(char *filename,        /* output: rooted filename */
+-					 uint32_t tpm_number,
+-                                         const char *name)      /* input: abstract name */
++static TPM_RESULT TPM_NVRAM_GetFilenameForName(char *filename,        /* output: rooted filename */
++					       size_t filename_len,
++					       uint32_t tpm_number,
++                                               const char *name)      /* input: abstract name */
+ {
++    int n;
++    TPM_RESULT rc = TPM_FAIL;
++
+     printf(" TPM_NVRAM_GetFilenameForName: For name %s\n", name);
+-    sprintf(filename, "%s/%02lx.%s", state_directory, (unsigned long)tpm_number, name);
+-    printf("  TPM_NVRAM_GetFilenameForName: File name %s\n", filename);
+-    return;
++    n = snprintf(filename, filename_len,
++                 "%s/%02lx.%s", state_directory, (unsigned long)tpm_number,
++                 name);
++    if (n < 0) {
++        printf(" TPM_NVRAM_GetFilenameForName: Error (fatal), snprintf failed\n");
++    } else if ((size_t)n >= filename_len) {
++        printf(" TPM_NVRAM_GetFilenameForName: Error (fatal), buffer too small\n");
++    } else {
++        printf("  TPM_NVRAM_GetFilenameForName: File name %s\n", filename);
++        rc = TPM_SUCCESS;
++    }
++    return rc;
+ }
+ 
+ /* TPM_NVRAM_DeleteName() deletes the 'name' from NVRAM
+@@ -380,7 +400,10 @@ TPM_RESULT TPM_NVRAM_DeleteName(uint32_t tpm_number,
+     
+     printf(" TPM_NVRAM_DeleteName: Name %s\n", name);
+     /* map name to the rooted filename */
+-    TPM_NVRAM_GetFilenameForName(filename, tpm_number, name);
++    if (rc == 0) {
++        rc = TPM_NVRAM_GetFilenameForName(filename, sizeof(filename),
++                                          tpm_number, name);
++    }
+     if (rc == 0) {
+         irc = remove(filename);
+         if ((irc != 0) &&               /* if the remove failed */
+-- 
+2.26.2
+

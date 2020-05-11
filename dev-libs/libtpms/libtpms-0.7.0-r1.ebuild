@@ -17,6 +17,13 @@ DEPEND=" !libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-tpm12-Initialize-some-variables-for-gcc.patch"
+	"${FILESDIR}/${P}-tpm12-Fix-potential-buffer-overflow-in-filename-creation.patch"
+	"${FILESDIR}/${P}-tpm12-Initialize-a-few-variables-for-x86-gcc-O3.patch"
+	"${FILESDIR}/${P}-tpm2-Fix-a-gcc-10.1.0-complaint.patch"
+	)
+
 src_prepare() {
 	default
 	eautoreconf
