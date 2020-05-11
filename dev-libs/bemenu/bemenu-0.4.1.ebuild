@@ -41,7 +41,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 
 src_compile() {
-	emake clients $(usex ncurses curses) $(usex X x11) $(usex wayland wayland)
+	emake clients $(usex ncurses curses "") $(usex X x11 "") $(usex wayland wayland "")
 	use doc && emake doxygen
 }
 
