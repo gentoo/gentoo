@@ -1,0 +1,62 @@
+From ec0b4397698bd358557d33641aac4beb1912f43b Mon Sep 17 00:00:00 2001
+From: wilson chen <willson.chenwx@gmail.com>
+Date: Wed, 15 Apr 2020 00:25:01 +0800
+Subject: [PATCH] Improve test cases for gdImageString16 and gdImageStringUp16
+ (#625)
+
+Fixed #623. wchar_t is 32 bits on 64-bits AIX, which will result in test case failure.
+So we replace wchar_t with unsigned short array.
+---
+ tests/gdimagestring16/gdimagestring16.c     | 6 ++----
+ tests/gdimagestringup16/gdimagestringup16.c | 6 ++----
+ 2 files changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/tests/gdimagestring16/gdimagestring16.c b/tests/gdimagestring16/gdimagestring16.c
+index 57eae978..0ca06680 100644
+--- a/tests/gdimagestring16/gdimagestring16.c
++++ b/tests/gdimagestring16/gdimagestring16.c
+@@ -9,9 +9,7 @@ int main()
+ {
+ 	/* Declare the image */
+ 	gdImagePtr im = NULL;
+-	wchar_t *wchr = L"H";
+-	unsigned short *sptr;
+-	sptr = (unsigned short *)wchr;
++	unsigned short s[2] = {'H', 0};
+ 	int foreground;
+ 	int errorcode = 0;
+ 	gdFontPtr fontptr = gdFontGetLarge();
+@@ -20,7 +18,7 @@ int main()
+ 	gdImageColorAllocate(im, 255, 255, 255);
+ 	foreground = gdImageColorAllocate(im, 22, 4, 238);
+ 
+-	gdImageString16(im, fontptr, 2, 2, sptr, foreground);
++	gdImageString16(im, fontptr, 2, 2, s, foreground);
+ 
+ 	if (!gdAssertImageEqualsToFile("gdimagestring16/gdimagestring16_exp.png", im))
+ 		errorcode = 1;
+diff --git a/tests/gdimagestringup16/gdimagestringup16.c b/tests/gdimagestringup16/gdimagestringup16.c
+index c843abec..c24639fd 100644
+--- a/tests/gdimagestringup16/gdimagestringup16.c
++++ b/tests/gdimagestringup16/gdimagestringup16.c
+@@ -9,9 +9,7 @@ int main()
+ {
+ 	/* Declare the image */
+ 	gdImagePtr im = NULL;
+-	wchar_t *wchr = L"H";
+-	unsigned short *sptr;
+-	sptr = (unsigned short *)wchr;
++	unsigned short s[2] = {'H', 0};
+ 	int foreground;
+ 	int errorcode = 0;
+ 	gdFontPtr fontptr = gdFontGetLarge();
+@@ -20,7 +18,7 @@ int main()
+ 	gdImageColorAllocate(im, 255, 255, 255);
+ 	foreground = gdImageColorAllocate(im, 22, 4, 238);
+ 
+-	gdImageStringUp16(im, fontptr, 2, 18, sptr, foreground);
++	gdImageStringUp16(im, fontptr, 2, 18, s, foreground);
+ 
+ 	if (!gdAssertImageEqualsToFile("gdimagestringup16/gdimagestringup16_exp.png", im))
+ 		errorcode = 1;
+
