@@ -2009,7 +2009,7 @@ app-metrics/buildbot-prometheus 17.7.2-r2: A Prometheus metrics exporter for Bui
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
 app-metrics/collectd 5.10.0 5.11.0-r2: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0 0.6.0: Prometheus exporter for consul metrics
-app-metrics/dnsmasq_exporter 0.2.0 0.2.0-r1: prometheus exporter for dnsmasq
+app-metrics/dnsmasq_exporter 0.2.0-r1: prometheus exporter for dnsmasq
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
 app-metrics/github-exporter 04 04-r1: Github statistics exporter for prometheus
 app-metrics/grok_exporter 0.2.6: Unstructured log data exporter for Prometheus
@@ -15267,7 +15267,7 @@ net-vpn/vpnc 0.5.3_p550 0.5.3_p550-r1: Free client for Cisco VPN routing softwar
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20200506 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
-net-vpn/wireguard-tools 1.0.20200319: Required tools for WireGuard, such as wg(8) and wg-quick(8)
+net-vpn/wireguard-tools 1.0.20200319 1.0.20200510: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.5.2 1.6-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
