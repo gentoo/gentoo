@@ -12,7 +12,7 @@ USE_RUBY="ruby23 ruby24"
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php5-6 php7-1 php7-2 php7-3" # deps must be registered separately below
+USE_PHP="php7-2 php7-3 php7-4" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
@@ -42,7 +42,7 @@ UWSGI_PLUGINS_OPT=( alarm_{curl,xmpp} clock_{monotonic,realtime} curl_cron
 	systemd_logger transformation_toupper tuntap webdav xattr xslt zabbix )
 
 LANG_SUPPORT_SIMPLE=( cgi mono perl ) # plugins which can be built in the main build process
-LANG_SUPPORT_EXTENDED=( go lua php pypy python python_asyncio python_gevent ruby )
+LANG_SUPPORT_EXTENDED=( go lua php python python_asyncio python_gevent ruby )
 
 # plugins to be ignored (for now):
 # cheaper_backlog2: example plugin
@@ -67,7 +67,6 @@ REQUIRED_USE="|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 	uwsgi_plugins_emperor_zeromq? ( zeromq )
 	uwsgi_plugins_forkptyrouter? ( uwsgi_plugins_corerouter )
 	uwsgi_plugins_router_xmldir? ( xml !expat )
-	pypy? ( python_targets_python2_7 )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	python_asyncio? ( || ( $(python_gen_useflags -3) ) python_gevent )
 	python_gevent? ( python )
@@ -111,12 +110,10 @@ CDEPEND="sys-libs/zlib
 	mono? ( =dev-lang/mono-4* )
 	perl? ( dev-lang/perl:= )
 	php? (
-		php_targets_php5-6? ( dev-lang/php:5.6[embed] )
-		php_targets_php7-1? ( dev-lang/php:7.1[embed] )
 		php_targets_php7-2? ( dev-lang/php:7.2[embed] )
 		php_targets_php7-3? ( dev-lang/php:7.3[embed] )
+		php_targets_php7-4? ( dev-lang/php:7.4[embed] )
 	)
-	pypy? ( dev-python/pypy )
 	python? ( ${PYTHON_DEPS} )
 	python_gevent? ( >=dev-python/gevent-1.2.1[${PYTHON_USEDEP}] )
 	ruby? ( $(ruby_implementations_depend) )"
@@ -248,11 +245,6 @@ python_compile_plugins() {
 	EPYV=${EPYTHON/.}
 	PYV=${EPYV/python}
 
-	if [[ ${EPYTHON} == pypy* ]]; then
-		einfo "skipping because pypy is not meant to build plugins on its own"
-		return
-	fi
-
 	${PYTHON} uwsgiconfig.py --plugin plugins/python gentoo ${EPYV} || die "building plugin for ${EPYTHON} failed"
 
 	if use python_asyncio ; then
@@ -263,15 +255,6 @@ python_compile_plugins() {
 
 	if use python_gevent ; then
 		${PYTHON} uwsgiconfig.py --plugin plugins/gevent gentoo gevent${PYV} || die "building plugin for gevent-support in ${EPYTHON} failed"
-	fi
-
-	if use pypy ; then
-		if [[ "${PYV}" == "27" ]] ; then
-			# TODO: do some proper patching ? The wiki didn't help... I gave up for now.
-			# QA: RWX --- --- usr/lib64/uwsgi/pypy_plugin.so
-			append-ldflags -Wl,-z,noexecstack
-			${PYTHON} uwsgiconfig.py --plugin plugins/pypy gentoo pypy || die "building plugin for pypy-support in ${EPYTHON} failed"
-		fi
 	fi
 }
 
@@ -381,11 +364,6 @@ pkg_postinst() {
 		local PYV
 		EPYV=${EPYTHON/.}
 		PYV=${EPYV/python}
-
-		if [[ ${EPYTHON} == pypy* ]] ; then
-			elog "  '--plugins pypy' for pypy"
-			return
-		fi
 
 		elog " "
 		elog "  '--plugins ${EPYV}' for ${EPYTHON}"
