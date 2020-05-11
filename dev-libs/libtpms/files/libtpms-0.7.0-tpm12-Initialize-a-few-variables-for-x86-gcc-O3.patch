@@ -1,0 +1,108 @@
+From 464083396ae1d242fb2a26c1ab6e39971e82f47e Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Fri, 17 Jan 2020 19:01:24 +0000
+Subject: [PATCH 3/3] tpm12: Initialize a few variables for x86 gcc -O3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
+
+The above gcc on x86 with -O3 reports the following false positives:
+
+ gcc -DHAVE_CONFIG_H -I. -I.. -include tpm_library_conf.h -I../include/libtpms -I../include/libtpms -fstack-protector-strong -DTPM_V12 -DTPM_PCCLIENT -DTPM_VOLATILE_LOAD -DTPM_ENABLE_ACTIVATE -DTPM_AES -DTPM_LIBTPMS_CALLBACKS -DTPM_NV_DISK -DTPM_POSIX -DTPM_NOMAINTENANCE_COMMANDS -O3 -DUSE_OPENSSL_FUNCTIONS_SYMMETRIC=1 -DUSE_OPENSSL_FUNCTIONS_EC=1 -DUSE_OPENSSL_FUNCTIONS_ECDSA=0 -DUSE_OPENSSL_FUNCTIONS_RSA=0 -Wall -Werror -Wreturn-type -Wsign-compare -Wno-self-assign -MT tpm12/libtpms_tpm12_la-tpm_nvram.lo -MD -MP -MF tpm12/.deps/libtpms_tpm12_la-tpm_nvram.Tpo -c tpm12/tpm_nvram.c -o tpm12/libtpms_tpm12_la-tpm_nvram.o
+tpm12/tpm_nvram.c: In function ‘TPM_Process_NVReadValue’:
+tpm12/tpm_nvram.c:1539:38: error: ‘isGPIO’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+      if ((returnCode == TPM_SUCCESS) && !isGPIO) {
+                                      ^
+tpm12/tpm_nvram.c: In function ‘TPM_Process_NVWriteValue’:
+tpm12/tpm_nvram.c:2323:6: error: ‘isGPIO’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   if (!isGPIO) {
+      ^
+
+gcc -DHAVE_CONFIG_H -I. -I.. -include tpm_library_conf.h -I../include/libtpms -I../include/libtpms -fstack-protector-strong -DTPM_V12 -DTPM_PCCLIENT -DTPM_VOLATILE_LOAD -DTPM_ENABLE_ACTIVATE -DTPM_AES -DTPM_LIBTPMS_CALLBACKS -DTPM_NV_DISK -DTPM_POSIX -DTPM_NOMAINTENANCE_COMMANDS -O3 -DUSE_OPENSSL_FUNCTIONS_SYMMETRIC=1 -DUSE_OPENSSL_FUNCTIONS_EC=1 -DUSE_OPENSSL_FUNCTIONS_ECDSA=0 -DUSE_OPENSSL_FUNCTIONS_RSA=0 -Wall -Werror -Wreturn-type -Wsign-compare -Wno-self-assign -MT tpm12/libtpms_tpm12_la-tpm_process.lo -MD -MP -MF tpm12/.deps/libtpms_tpm12_la-tpm_process.Tpo -c tpm12/tpm_process.c -o tpm12/libtpms_tpm12_la-tpm_process.o
+tpm12/tpm_process.c: In function ‘TPM_Process_GetCapabilitySigned’:
+tpm12/tpm_process.c:5089:19: error: ‘transportEncrypt’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+      returnCode = TPM_ProcessAudit(tpm_state,
+                   ^
+tpm12/tpm_process.c: In function ‘TPM_Process_SetCapability’:
+tpm12/tpm_process.c:5309:19: error: ‘transportEncrypt’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+      returnCode = TPM_ProcessAudit(tpm_state,
+                   ^
+tpm12/tpm_process.c: At top level:
+
+gcc -DHAVE_CONFIG_H -I. -I.. -include tpm_library_conf.h -I../include/libtpms -I../include/libtpms -fstack-protector-strong -DTPM_V12 -DTPM_PCCLIENT -DTPM_VOLATILE_LOAD -DTPM_ENABLE_ACTIVATE -DTPM_AES -DTPM_LIBTPMS_CALLBACKS -DTPM_NV_DISK -DTPM_POSIX -DTPM_NOMAINTENANCE_COMMANDS -O3 -DUSE_OPENSSL_FUNCTIONS_SYMMETRIC=1 -DUSE_OPENSSL_FUNCTIONS_EC=1 -DUSE_OPENSSL_FUNCTIONS_ECDSA=0 -DUSE_OPENSSL_FUNCTIONS_RSA=0 -Wall -Werror -Wreturn-type -Wsign-compare -Wno-self-assign -MT tpm12/libtpms_tpm12_la-tpm_transport.lo -MD -MP -MF tpm12/.deps/libtpms_tpm12_la-tpm_transport.Tpo -c tpm12/tpm_transport.c -o tpm12/libtpms_tpm12_la-tpm_transport.o
+tpm12/tpm_transport.c: In function ‘TPM_Process_ReleaseTransportSigned’:
+tpm12/tpm_transport.c:2810:42: error: ‘t1TpmTransportInternal’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  returnCode = TPM_TransportLogOut_Extend(t1TpmTransportInternal->transDigest,
+                                          ^
+
+This patch initializes the variables.
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+---
+ src/tpm12/tpm_nvram.c     | 4 ++--
+ src/tpm12/tpm_process.c   | 4 ++--
+ src/tpm12/tpm_transport.c | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/tpm12/tpm_nvram.c b/src/tpm12/tpm_nvram.c
+index 1b9c005..620944e 100644
+--- a/src/tpm12/tpm_nvram.c
++++ b/src/tpm12/tpm_nvram.c
+@@ -1288,7 +1288,7 @@ TPM_RESULT TPM_Process_NVReadValue(tpm_state_t *tpm_state,
+     TPM_BOOL			ignore_auth = FALSE;
+     TPM_BOOL			dir = FALSE;
+     TPM_BOOL			physicalPresence;
+-    TPM_BOOL			isGPIO;
++    TPM_BOOL			isGPIO = FALSE;
+     BYTE 			*gpioData = NULL;
+     TPM_NV_DATA_SENSITIVE	*d1NvdataSensitive;
+     uint32_t			s1Last;
+@@ -2000,7 +2000,7 @@ TPM_RESULT TPM_Process_NVWriteValue(tpm_state_t *tpm_state,
+     TPM_NV_DATA_SENSITIVE	*d1NvdataSensitive;
+     uint32_t			s1Last;
+     TPM_BOOL			physicalPresence;
+-    TPM_BOOL			isGPIO;
++    TPM_BOOL			isGPIO = FALSE;
+     uint32_t			nv1 = tpm_state->tpm_permanent_data.noOwnerNVWrite;
+ 							/* temp for noOwnerNVWrite, initialize to
+ 							   silence compiler */
+diff --git a/src/tpm12/tpm_process.c b/src/tpm12/tpm_process.c
+index d6a3b8e..c433621 100644
+--- a/src/tpm12/tpm_process.c
++++ b/src/tpm12/tpm_process.c
+@@ -4844,7 +4844,7 @@ TPM_RESULT TPM_Process_GetCapabilitySigned(tpm_state_t *tpm_state,
+     unsigned char *	inParamEnd;		/* ending point of inParam's */
+     TPM_DIGEST		inParamDigest;
+     TPM_BOOL		auditStatus;		/* audit the ordinal */
+-    TPM_BOOL		transportEncrypt;	/* wrapped in encrypted transport session */
++    TPM_BOOL		transportEncrypt = FALSE;/* wrapped in encrypted transport session */
+     TPM_BOOL		authHandleValid = FALSE;
+     TPM_AUTH_SESSION_DATA *auth_session_data;	/* session data for authHandle */
+     TPM_SECRET		*hmacKey;
+@@ -5144,7 +5144,7 @@ TPM_RESULT TPM_Process_SetCapability(tpm_state_t *tpm_state,
+     unsigned char *	inParamEnd;		/* ending point of inParam's */
+     TPM_DIGEST		inParamDigest;
+     TPM_BOOL		auditStatus;		/* audit the ordinal */
+-    TPM_BOOL		transportEncrypt;	/* wrapped in encrypted transport session */
++    TPM_BOOL		transportEncrypt = FALSE;/* wrapped in encrypted transport session */
+     TPM_BOOL		authHandleValid = FALSE;
+     TPM_AUTH_SESSION_DATA *auth_session_data;	/* session data for authHandle */
+     TPM_SECRET		*hmacKey;
+diff --git a/src/tpm12/tpm_transport.c b/src/tpm12/tpm_transport.c
+index 2261670..7b9c520 100644
+--- a/src/tpm12/tpm_transport.c
++++ b/src/tpm12/tpm_transport.c
+@@ -2599,7 +2599,7 @@ TPM_RESULT TPM_Process_ReleaseTransportSigned(tpm_state_t *tpm_state,
+     TPM_BOOL			authHandleValid = FALSE;
+     TPM_BOOL			transHandleValid = FALSE;
+     TPM_AUTH_SESSION_DATA	*auth_session_data = NULL;	/* session data for authHandle */
+-    TPM_TRANSPORT_INTERNAL	*t1TpmTransportInternal;
++    TPM_TRANSPORT_INTERNAL	*t1TpmTransportInternal = NULL;
+     TPM_SECRET			*hmacKey;
+     TPM_KEY			*sigKey = NULL;		/* the key specified by keyHandle */
+     TPM_BOOL			parentPCRStatus;
+-- 
+2.26.2
+
