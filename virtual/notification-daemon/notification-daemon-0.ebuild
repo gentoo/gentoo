@@ -15,6 +15,7 @@ RDEPEND="
 	!gnome? ( !kde? ( || (
 		x11-misc/notification-daemon
 		gnome-extra/cinnamon
+		gui-apps/mako
 		xfce-extra/xfce4-notifyd
 		x11-misc/notify-osd
 		x11-misc/dunst
