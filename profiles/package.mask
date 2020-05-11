@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-05-11)
+# Causes downgrades of multiple Python packages.  Not touched since
+# initial commit, waiting for a bump to the final release.  Maintainer
+# unresponsive.  Upstream recommends installing in a virtualenv.
+# Removal in 30 days.  Bug #710406.
+acct-group/octoprint
+acct-user/octoprint
+www-apps/octoprint
+
 # Brian Dolbec <dolsen@gentoo.org> (2020-05-08)
 # Unmaintained.  Stuck on Python 3.6.  The only revdep
 # is masked for removal.  Newer buildbot no longer depends on it.
