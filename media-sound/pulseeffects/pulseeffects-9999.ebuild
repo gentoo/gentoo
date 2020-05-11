@@ -62,11 +62,11 @@ BDEPEND="
 pkg_postinst() {
 	gnome2_gconf_install
 	gnome2_schemas_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	gnome2_gconf_uninstall
 	gnome2_schemas_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
