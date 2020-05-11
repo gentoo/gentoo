@@ -41,8 +41,8 @@ RDEPEND="${DEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 
 src_compile() {
-	emake clients $(usex ncurses curses "") $(usex X x11 "") $(usex wayland wayland "")
-	use doc && emake doxygen
+	emake clients $(usex ncurses curses "") $(usex X x11 "") $(usex wayland wayland "") PREFIX=/usr libdir=/$(get_libdir)
+	use doc && emake doxygen PREFIX=/usr libdir=/$(get_libdir)
 }
 
 src_install() {
