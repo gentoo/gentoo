@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -14,28 +14,30 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="systemd rbd"
 
+BDEPEND="virtual/pkgconfig"
+
 RDEPEND="
 	dev-libs/json-c:=
 	dev-libs/libaio
 	dev-libs/userspace-rcu:=
 	>=sys-fs/lvm2-2.02.45
-	>=virtual/udev-171
+	>=virtual/libudev-232-r3
 	sys-libs/readline:0=
 	rbd? ( sys-cluster/ceph )
 	systemd? ( sys-apps/systemd )
 "
+
 DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-"
 
 CONFIG_CHECK="~DM_MULTIPATH"
 
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.7.5-respect-flags.patch
+	"${FILESDIR}"/${PN}-0.8.4-respect-flags.patch
 	"${FILESDIR}"/${PN}-0.8.3-no-gziped-docs.patch
+	"${FILESDIR}"/${PN}-0.8.3-json-c-0.14.patch
+	"${FILESDIR}"/${PN}-0.8.4-parallel_make_fix.patch
 )
 
 get_systemd_pv() {
@@ -67,15 +69,17 @@ src_compile() {
 }
 
 src_install() {
-	dodir /sbin /usr/share/man/man{5,8}
+	dodir /sbin /usr/share/man/man{3,5,8}
 	emake \
 		DESTDIR="${D}" \
+		RUN=run \
 		SYSTEMD=$(get_systemd_pv) \
 		unitdir="$(systemd_get_systemunitdir)" \
 		libudevdir='${prefix}'/"$(get_udevdir)" \
+		pkgconfdir='${prefix}'/usr/'${LIB}'/pkgconfig \
 		install
 
-	newinitd "${FILESDIR}"/rc-multipathd multipathd
+	newinitd "${FILESDIR}"/multipathd-r1.rc multipathd
 	newinitd "${FILESDIR}"/multipath.rc multipath
 
 	einstalldocs
