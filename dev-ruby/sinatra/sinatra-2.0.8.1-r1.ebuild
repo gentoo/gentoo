@@ -18,7 +18,7 @@ SRC_URI="https://github.com/sinatra/sinatra/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend "
