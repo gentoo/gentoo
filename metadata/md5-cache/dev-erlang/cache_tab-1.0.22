@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-lang/erlang-17.1 >=dev-erlang/p1_utils-1.0.18 dev-lang/erlang:=
 SLOT=0
 SRC_URI=https://github.com/processone/cache_tab/archive/1.0.22.tar.gz -> cache_tab-1.0.22.tar.gz
-_eclasses_=rebar	66d5c5c94dc49a57018cb20cf1e542dd
+_eclasses_=rebar	43c151aeda0dc4bf44b59e949df136aa
 _md5_=40835f7a4a009afa9989bbe47611b504

@@ -11,4 +11,4 @@ REQUIRED_USE=ethlcd? ( lcd_devices_hd44780 ) freetype? ( lcd_devices_glcd ) png?
 SLOT=0
 SRC_URI=https://github.com/lcdproc/lcdproc/releases/download/v0.5.9/lcdproc-0.5.9.tar.gz https://raw.githubusercontent.com/lcdproc/lcdproc/master/docs/lcdproc-user/drivers/linux_input.docbook
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=77b62315dad9b718f2b616a73b76d1c1
+_md5_=fec199db2aa152e1e2cf824555d1b48d

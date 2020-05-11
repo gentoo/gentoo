@@ -2185,7 +2185,7 @@ app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
 app-misc/ktoblzcheck 1.49: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.11.0_pre20170527-r4: A small program that grabs information and displays it on an external LCD
-app-misc/lcdproc 0.5.9: Displays real-time system information from your Linux/*BSD box on a LCD
+app-misc/lcdproc 0.5.9-r1: Displays real-time system information from your Linux/*BSD box on a LCD
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
 app-misc/ledit 2.03 2.04: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1 3.1: Last File Manager is a powerful file manager for the console
@@ -2303,7 +2303,7 @@ app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one prog
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
 app-misc/tracker 2.2.2 2.3.4: A tagging metadata database, search tool and indexer
 app-misc/tracker-miners 2.2.2 2.3.3: Collection of data extractors for Tracker/Nepomuk
-app-misc/transfolio 1.0.1: Enables data transfer between the PC and the Atari Portfolio
+app-misc/transfolio 1.0.1-r1: Enables data transfer between the PC and the Atari Portfolio
 app-misc/trash-cli 0.17.1.14_p20170816 0.17.1.14_p20170816-r1: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal session
@@ -14697,7 +14697,7 @@ net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.4.4 1.4.7: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
 net-mail/mu 0.9.18-r3 1.0-r1 1.3.5-r1 1.3.6-r1 1.3.6-r2 1.4.1 1.4.4: Set of tools to deal with Maildirs, in particular, searching and indexing
-net-mail/muchsync 3 4 5: Synchronizes mail messages and notmuch tags across machines
+net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3 0.29.3-r1: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 7.2.4-r1 7.3.3: Powerful IMAP/Maildir synchronization and reader support
@@ -17854,8 +17854,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0-r1 68.7.0-r1 68.8.0 75.0-r3 76.0-r1 76.0.1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.7.0 68.8.0 75.0 76.0 76.0.1: Firefox Web Browser
 www-client/google-chrome 81.0.4044.138: The web browser from Google
-www-client/google-chrome-beta 83.0.4103.34: The web browser from Google
-www-client/google-chrome-unstable 84.0.4128.3: The web browser from Google
+www-client/google-chrome-beta 83.0.4103.44: The web browser from Google
+www-client/google-chrome-unstable 84.0.4136.5: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
@@ -17901,7 +17901,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.363: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 81.0.4044.138 83.0.4103.34_beta 84.0.4128.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 81.0.4044.138 83.0.4103.44_beta 84.0.4136.5_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
