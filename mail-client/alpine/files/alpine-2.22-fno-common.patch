@@ -1,0 +1,19 @@
+--- a/pith/smkeys.c
++++ b/pith/smkeys.c
+@@ -34,6 +34,7 @@ static char rcsid[] = "$Id: smkeys.c 1266 2009-07-14 18:39:12Z hubert@u.washingt
+ #include "../pith/util.h"
+ #include "../pith/mailindx.h"
+ #include "../pith/readfile.h"
++#include "../pith/options.h"
+ #include "smkeys.h"
+ 
+ #ifdef APPLEKEYCHAIN
+@@ -50,8 +51,6 @@ static int       mem_add_extra_cacerts(char *contents, X509_LOOKUP *lookup);
+ int		 compare_certs_by_name(const void *data1, const void *data2);
+ int		 password_policy_check(char *);
+ 
+-int  (*pith_smime_enter_password)(char *, char *, size_t);
+-
+ /* test if password passes a predetermined policy.
+  * return value: 0 - does not pass; 1 - it passes 
+  */
