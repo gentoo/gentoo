@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# William Hubbs <williamh@gentoo.org> (2020-05-11)
+# No reverse dependencies, upstream has superseeded this with the
+# ggoogle.golang.org/protobuf module.
+# Removal in 30 days. Bug #722542.
+dev-go/go-protobuf
+
 # Michał Górny <mgorny@gentoo.org> (2020-05-11)
 # Causes downgrades of multiple Python packages.  Not touched since
 # initial commit, waiting for a bump to the final release.  Maintainer
