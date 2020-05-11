@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jeromerobert/k4dirstat/archive/${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 BDEPEND="
