@@ -98,6 +98,7 @@ src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=netdata \
+		--disable-cloud \ # https://github.com/netdata/netdata/issues/8961
 		$(use_enable jsonc) \
 		$(use_enable cups plugin-cups) \
 		$(use_enable dbengine) \
