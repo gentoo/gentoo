@@ -13,7 +13,7 @@ SRC_URI="https://github.com/pydanny/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DOCS=( README.rst HISTORY.rst CONTRIBUTING.rst )
 
