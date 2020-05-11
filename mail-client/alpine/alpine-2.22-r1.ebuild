@@ -31,6 +31,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-cc.patch"
+	"${FILESDIR}/${P}-fno-common.patch"
 )
 
 src_prepare() {
