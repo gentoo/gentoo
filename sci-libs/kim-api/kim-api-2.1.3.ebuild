@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake-utils fortran-2
 
 DESCRIPTION="Application Programming Interface for atomistic simulations"
 HOMEPAGE="https://openkim.org"
