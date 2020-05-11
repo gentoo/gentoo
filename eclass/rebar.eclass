@@ -3,7 +3,7 @@
 
 # @ECLASS: rebar.eclass
 # @MAINTAINER:
-# Amadeusz Żołnowski <aidecoe@gentoo.org>
+# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
 # @SUPPORTED_EAPIS: 6
