@@ -17415,7 +17415,7 @@ sys-libs/libtermcap-compat 2.0.8-r3 2.0.8-r4: Compatibility package for old term
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.2.1-r3 1.4.0: Portable and efficient API to determine the call-chain of a program
 sys-libs/liburing 0.5 0.6: Efficient I/O with io_uring
-sys-libs/libutempter 1.1.6-r3: Library that allows non-privileged apps to write utmp (login) info
+sys-libs/libutempter 1.1.6-r3 1.2.0: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds
 sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.12-r3 4.4.16: Extended crypt library for descrypt, md5crypt, bcrypt, and others
@@ -18434,7 +18434,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.29 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.61 5.62 5.63_alpha0 5.63_beta: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.62 5.63: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
