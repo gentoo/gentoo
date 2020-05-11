@@ -21,6 +21,7 @@
     <flag name="mng">MNG input support</flag>
     <flag name="network">Enables network streaming support</flag>
     <flag name="nut">Enables support for the NUT container format</flag>
+    <flag name="openssl">Request OpenSSL support in <pkg>media-video/ffmpeg</pkg> to enable encrypted network protocols (TLS/HTTPS)</flag>
     <flag name="osdmenu">Enables support for on-screen display (OSD) menus</flag>
     <flag name="pnm">Add PNM video output option, to create PPM/PGM/PGMYUV images</flag>
     <flag name="pvr">Enable Video4Linux2 MPEG PVR</flag>
