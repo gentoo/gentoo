@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Amadeusz Żołnowski <aidecoe@gentoo.org> (2020-05-11)
+# Masked for removal in 30 days.  Unmaintained upstream.
+sys-boot/plymouth-openrc-plugin
+
 # William Hubbs <williamh@gentoo.org> (2020-05-11)
 # No reverse dependencies, upstream has superseeded this with the
 # ggoogle.golang.org/protobuf module.

@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,8 +18,8 @@ BDEPEND="app-arch/unzip"
 src_prepare() {
 	default
 
-	# Respect users CC, CFLAGS and disable striping
-	sed -e 's/cc/${CC}/' -e 's/-O2/${CFLAGS}/' -e '/strip/d' -i Makefile || die
+	# Respect users CC, CFLAGS, LDFLAGS and disable striping
+	sed -e 's/cc/${CC}/' -e 's/-O2/${CFLAGS} ${LDFLAGS}/' -e '/strip/d' -i Makefile || die
 
 	tc-export CC
 }

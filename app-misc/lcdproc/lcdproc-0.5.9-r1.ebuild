@@ -7,21 +7,26 @@ inherit autotools systemd
 
 DESCRIPTION="Displays real-time system information from your Linux/*BSD box on a LCD"
 HOMEPAGE="http://www.lcdproc.org/"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
-	https://raw.githubusercontent.com/lcdproc/lcdproc/master/docs/lcdproc-user/drivers/linux_input.docbook"
+SRC_URI="
+	https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
+	https://raw.githubusercontent.com/lcdproc/lcdproc/master/docs/lcdproc-user/drivers/linux_input.docbook
+"
 
 KEYWORDS="amd64 ppc ppc64 x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug doc ethlcd extra-charmaps freetype menu nfs png samba test-menu"
-REQUIRED_USE="ethlcd? ( lcd_devices_hd44780 )
+REQUIRED_USE="
+	ethlcd? ( lcd_devices_hd44780 )
 	freetype? ( lcd_devices_glcd )
-	png? ( lcd_devices_glcd )"
+	png? ( lcd_devices_glcd )
+"
 
 # Define the list of valid lcd devices.
 # Some drivers were removed from this list:
 # - svga: It needs media-libs/svgalib, which is masked and obsolete.
-IUSE_LCD_DEVICES=( bayrad CFontz CFontzPacket curses CwLnx ea65
+IUSE_LCD_DEVICES=(
+	bayrad CFontz CFontzPacket curses CwLnx ea65
 	EyeboxOne futaba g15 glcd glcdlib glk hd44780 i2500vfd
 	icp_a106 imon imonlcd IOWarrior irman irtrans
 	joy lb216 lcdm001 lcterm linux_input lirc lis MD8800 mdm166a
@@ -29,7 +34,8 @@ IUSE_LCD_DEVICES=( bayrad CFontz CFontzPacket curses CwLnx ea65
 	Olimex_MOD_LCD1x9 picolcd pyramid rawserial
 	sdeclcd sed1330 sed1520 serialPOS serialVFD
 	shuttleVFD sli stv5730 SureElec t6963 text
-	tyan ula200 vlsys_m428 xosd yard2LCD )
+	tyan ula200 vlsys_m428 xosd yard2LCD
+)
 
 # Add supported drivers from 'IUSE_LCD_DEVICES' to 'IUSE' and 'REQUIRED_USE'
 REQUIRED_USE+=" || ( "
@@ -42,22 +48,29 @@ REQUIRED_USE+=" ) "
 unset LCD_DEVICE
 
 # Define dependencies for all drivers in 'IUSE_LCD_DEVICES'
-DEPEND_LCD_DEVICES="lcd_devices_cfontz? ( dev-libs/libhid:= )
+DEPEND_LCD_DEVICES="
+	lcd_devices_cfontz? ( dev-libs/libhid:= )
 	lcd_devices_cfontzpacket? ( dev-libs/libhid:= )
 	lcd_devices_cwlnx? ( dev-libs/libhid:= )
 	lcd_devices_futaba? ( virtual/libusb:1= )
-	lcd_devices_g15? ( app-misc/g15daemon
+	lcd_devices_g15? (
+		app-misc/g15daemon
 		dev-libs/libg15render:=
-		virtual/libusb:0= )
-	lcd_devices_glcd? ( app-misc/glcdprocdriver:=
+		virtual/libusb:0=
+	)
+	lcd_devices_glcd? (
+		app-misc/glcdprocdriver:=
 		dev-embedded/libftdi:1=
 		dev-libs/libhid:=
 		dev-libs/serdisplib:=
 		virtual/libusb:0=
-		x11-libs/libX11:= )
-	lcd_devices_hd44780? ( dev-embedded/libftdi:1=
+		x11-libs/libX11:=
+	)
+	lcd_devices_hd44780? (
+		dev-embedded/libftdi:1=
 		dev-libs/libugpio:=
-		virtual/libusb:0= )
+		virtual/libusb:0=
+	)
 	lcd_devices_i2500vfd? ( dev-embedded/libftdi:1= )
 	lcd_devices_irman? ( media-libs/libirman:= )
 	lcd_devices_iowarrior? ( virtual/libusb:0= )
@@ -71,24 +84,32 @@ DEPEND_LCD_DEVICES="lcd_devices_cfontz? ( dev-libs/libhid:= )
 	lcd_devices_picolcd? ( virtual/libusb:1= )
 	lcd_devices_shuttlevfd? ( virtual/libusb:0= )
 	lcd_devices_ula200? ( dev-embedded/libftdi:1= )
-	lcd_devices_xosd? ( x11-libs/libX11:=
-		x11-libs/xosd:= )"
+	lcd_devices_xosd? (
+		x11-libs/libX11:=
+		x11-libs/xosd:=
+	)
+"
 
 RDEPEND="${DEPEND_LCD_DEVICES}"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot]
-		app-text/xmlto )
+DEPEND="
+	${RDEPEND}
+	doc? (
+		app-doc/doxygen[dot]
+		app-text/xmlto
+	)
 	freetype? ( media-libs/freetype:2= )
 	nfs? ( net-fs/nfs-utils )
 	png? ( media-libs/libpng:0= )
-	samba? ( net-fs/samba )"
+	samba? ( net-fs/samba )
+"
 
 DOCS=( "CREDITS.md" "TODO" )
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-parallel-make.patch"
-	"${FILESDIR}/${P}-use-freetype2-pkg-config.patch"
 	"${FILESDIR}/${P}-fix-fno-common-build.patch"
+	"${FILESDIR}/${P}-fix-parallel-make.patch"
+	"${FILESDIR}/${P}-respect-users-ldflags.patch"
+	"${FILESDIR}/${P}-use-freetype2-pkg-config.patch"
 )
 
 src_unpack() {
