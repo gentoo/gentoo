@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit pam multilib libtool tmpfiles
+inherit pam multilib libtool systemd tmpfiles
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
