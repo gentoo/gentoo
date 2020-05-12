@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 DISTUTILS_SINGLE_IMPL=1
 
@@ -34,7 +34,7 @@ HOMEPAGE="http://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="X blas cuda +doc -double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="X blas cuda +custom-cflags +doc -double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	X? (
@@ -159,13 +159,17 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs_pre=( ) extra fft_opts=( )
 
-	#go from slowest to fastest acceleration
-	local acce="None"
-	use cpu_flags_x86_sse2 && acce="SSE2"
-	use cpu_flags_x86_sse4_1 && acce="SSE4.1"
-	use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
-	use cpu_flags_x86_avx && acce="AVX_256"
-	use cpu_flags_x86_avx2 && acce="AVX2_256"
+	if use custom-cflags; then
+		#go from slowest to fastest acceleration
+		local acce="None"
+		use cpu_flags_x86_sse2 && acce="SSE2"
+		use cpu_flags_x86_sse4_1 && acce="SSE4.1"
+		use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
+		use cpu_flags_x86_avx && acce="AVX_256"
+		use cpu_flags_x86_avx2 && acce="AVX2_256"
+	else
+		strip-flags
+	fi
 
 	#to create man pages, build tree binaries are executed (bug #398437)
 	[[ ${CHOST} = *-darwin* ]] && \
@@ -320,7 +324,7 @@ src_install() {
 	for x in "${ED}"/usr/bin/gmx-completion-*.bash ; do
 		local n=${x##*/gmx-completion-}
 		n="${n%.bash}"
-		cat "${ED}"/usr/bin/gmx-completion-gmx.bash "$x" > "${T}/${n}" || die
+		cat "${ED}"/usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
 		newbashcomp "${T}"/"${n}" "${n}"
 	done
 	rm "${ED}"/usr/bin/gmx-completion*.bash || die
