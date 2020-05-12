@@ -3,16 +3,16 @@
 
 EAPI=7
 
-inherit flag-o-matic linux-mod toolchain-funcs
+inherit autotools flag-o-matic linux-mod toolchain-funcs
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
-HOMEPAGE="https://zfsonlinux.org/"
+HOMEPAGE="https://github.com/openzfs/zfs"
 
 if [[ ${PV} == "9999" ]]; then
-	inherit autotools git-r3
-	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
-	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
+	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 	S="${WORKDIR}/zfs-${PV}"
 	ZFS_KERNEL_COMPAT="5.6"
@@ -150,7 +150,7 @@ pkg_postinst() {
 		ewarn "at least 256M and decreasing zfs_arc_max to some value less than that."
 	fi
 
-	ewarn "This version of ZFSOnLinux includes support for new feature flags"
+	ewarn "This version of OpenZFS includes support for new feature flags"
 	ewarn "that are incompatible with previous versions. GRUB2 support for"
 	ewarn "/boot with the new feature flags is not yet available."
 	ewarn "Do *NOT* upgrade root pools to use the new feature flags."
