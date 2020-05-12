@@ -198,6 +198,7 @@ src_install() {
 	fi
 
 	pamd_mimic system-auth sudo auth account session
+	pamd_mimic system-auth sudo-i auth account session
 
 	keepdir /var/db/sudo/lectured
 	fperms 0700 /var/db/sudo/lectured
