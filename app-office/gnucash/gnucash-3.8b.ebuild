@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Gnucash/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 
 IUSE="aqbanking debug doc examples gnome-keyring +gui mysql nls ofx postgres
 	  python quotes -register2 smartcard sqlite test"
