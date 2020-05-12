@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -23,7 +23,7 @@ fi
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
-KEYWORDS="~alpha amd64 hppa ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ~sparc x86"
 IUSE="geoip ipv6"
 
 SLOT="0"
