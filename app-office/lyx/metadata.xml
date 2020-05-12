@@ -6,10 +6,6 @@
 		<name>Alexis Ballier</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>tex@gentoo.org</email>
-		<name>Gentoo TeX Project</name>
-	</maintainer>
-	<maintainer type="project">
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>

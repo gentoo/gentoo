@@ -1,0 +1,146 @@
+From 2cd1ba11c364fc0f2f06c5fa3c15ff75ee860966 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sat, 2 May 2020 16:42:38 +0000
+Subject: [PATCH] GCC: fix template specialization in WTF::VectorBuffer
+
+GCC complains that explicit specialization in non-namespace scope
+is happening for InitInlinedBuffer. However, specialization is
+not really necessary here with templates and can be moved
+into InitInlinedBuffer method without changing generated code.
+---
+ third_party/blink/renderer/platform/wtf/vector.h | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/third_party/blink/renderer/platform/wtf/vector.h b/third_party/blink/renderer/platform/wtf/vector.h
+index 81a4e7b..30ffa89 100644
+--- a/third_party/blink/renderer/platform/wtf/vector.h
++++ b/third_party/blink/renderer/platform/wtf/vector.h
+@@ -950,11 +950,10 @@ class VectorBuffer : protected VectorBufferBase<T, Allocator> {
+     return unsafe_reinterpret_cast_ptr<const T*>(inline_buffer_);
+   }
+ 
+-  template <bool = Allocator::kIsGarbageCollected>
+-  void InitInlinedBuffer() {}
+-  template <>
+-  void InitInlinedBuffer<true>() {
+-    memset(&inline_buffer_, 0, kInlineBufferSize);
++  void InitInlinedBuffer() {
++    if ( Allocator::kIsGarbageCollected ) {
++      memset(&inline_buffer_, 0, kInlineBufferSize);
++    }
+   }
+ 
+   alignas(T) char inline_buffer_[kInlineBufferSize];
+-- 
+2.26.2
+From 421aca221966c7d736c4bc5f268a730199f02fb9 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sat, 9 May 2020 14:59:07 +0000
+Subject: [PATCH] GCC: fix template specialization in TraceInCollectionTrait
+
+GCC complains that explicit specialization in non-namespace scope
+is happening for TraceImpl. Move TraceImpl implementations into
+different nested classes and select implementation using
+std::conditional.
+---
+ .../heap_hash_table_backing.h                 | 80 ++++++++++---------
+ 1 file changed, 41 insertions(+), 39 deletions(-)
+
+diff --git a/third_party/blink/renderer/platform/heap/collection_support/heap_hash_table_backing.h b/third_party/blink/renderer/platform/heap/collection_support/heap_hash_table_backing.h
+index a6c73f5..068ab8e 100644
+--- a/third_party/blink/renderer/platform/heap/collection_support/heap_hash_table_backing.h
++++ b/third_party/blink/renderer/platform/heap/collection_support/heap_hash_table_backing.h
+@@ -241,50 +241,52 @@ struct TraceInCollectionTrait<kNoWeakHandling,
+ 
+   static void Trace(blink::Visitor* visitor,
+                     const KeyValuePair<Key, Value>& self) {
+-    TraceImpl(visitor, self);
++    TraceImpl::TraceImpl(visitor, self);
+   }
+ 
+  private:
+-  template <bool = EphemeronHelper::is_ephemeron>
+-  static void TraceImpl(blink::Visitor* visitor,
+-                        const KeyValuePair<Key, Value>& self);
+-
+-  // Strongification of ephemerons, i.e., Weak/Strong and Strong/Weak.
+-  template <>
+-  static void TraceImpl<true>(blink::Visitor* visitor,
+-                              const KeyValuePair<Key, Value>& self) {
++  struct TraceImplEphemerons {
+     // Strongification of ephemerons, i.e., Weak/Strong and Strong/Weak.
+-    // The helper ensures that helper.key always refers to the weak part and
+-    // helper.value always refers to the dependent part.
+-    // We distinguish ephemeron from Weak/Weak and Strong/Strong to allow users
+-    // to override visitation behavior. An example is creating a heap snapshot,
+-    // where it is useful to annotate values as being kept alive from keys
+-    // rather than the table.
+-    EphemeronHelper helper(&self.key, &self.value);
+-    // Strongify the weak part.
+-    blink::TraceCollectionIfEnabled<
+-        kNoWeakHandling, typename EphemeronHelper::KeyType,
+-        typename EphemeronHelper::KeyTraits>::Trace(visitor, helper.key);
+-    // Strongify the dependent part.
+-    visitor->TraceEphemeron(
+-        *helper.key, helper.value,
+-        blink::TraceCollectionIfEnabled<
+-            kNoWeakHandling, typename EphemeronHelper::ValueType,
+-            typename EphemeronHelper::ValueTraits>::Trace);
+-  }
++    static void TraceImpl(blink::Visitor* visitor,
++                          const KeyValuePair<Key, Value>& self) {
++      // Strongification of ephemerons, i.e., Weak/Strong and Strong/Weak.
++      // The helper ensures that helper.key always refers to the weak part and
++      // helper.value always refers to the dependent part.
++      // We distinguish ephemeron from Weak/Weak and Strong/Strong to allow users
++      // to override visitation behavior. An example is creating a heap snapshot,
++      // where it is useful to annotate values as being kept alive from keys
++      // rather than the table.
++      EphemeronHelper helper(&self.key, &self.value);
++      // Strongify the weak part.
++      blink::TraceCollectionIfEnabled<
++          kNoWeakHandling, typename EphemeronHelper::KeyType,
++          typename EphemeronHelper::KeyTraits>::Trace(visitor, helper.key);
++      // Strongify the dependent part.
++      visitor->TraceEphemeron(
++          *helper.key, helper.value,
++          blink::TraceCollectionIfEnabled<
++              kNoWeakHandling, typename EphemeronHelper::ValueType,
++              typename EphemeronHelper::ValueTraits>::Trace);
++    }
++  };
+ 
+-  template <>
+-  static void TraceImpl<false>(blink::Visitor* visitor,
+-                               const KeyValuePair<Key, Value>& self) {
+-    // Strongification of non-ephemeron KVP, i.e., Strong/Strong or Weak/Weak.
+-    // Order does not matter here.
+-    blink::TraceCollectionIfEnabled<
+-        kNoWeakHandling, Key, typename Traits::KeyTraits>::Trace(visitor,
+-                                                                 &self.key);
+-    blink::TraceCollectionIfEnabled<
+-        kNoWeakHandling, Value,
+-        typename Traits::ValueTraits>::Trace(visitor, &self.value);
+-  }
++  struct TraceImplDefault {
++    static void TraceImpl(blink::Visitor* visitor,
++                          const KeyValuePair<Key, Value>& self) {
++      // Strongification of non-ephemeron KVP, i.e., Strong/Strong or Weak/Weak.
++      // Order does not matter here.
++      blink::TraceCollectionIfEnabled<
++          kNoWeakHandling, Key, typename Traits::KeyTraits>::Trace(visitor,
++                                                                   &self.key);
++      blink::TraceCollectionIfEnabled<
++          kNoWeakHandling, Value,
++          typename Traits::ValueTraits>::Trace(visitor, &self.value);
++    }
++  };
++
++  using TraceImpl = typename std::conditional<EphemeronHelper::is_ephemeron,
++                                              TraceImplEphemerons,
++                                              TraceImplDefault>::type;
+ };
+ 
+ template <typename Key, typename Value, typename Traits>
+-- 
+2.26.2
