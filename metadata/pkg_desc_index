@@ -752,7 +752,7 @@ app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and shari
 app-backup/synology-cloud-station-backup 4450: Back up your files from multiple client computers to a centralized Synology NAS
 app-backup/tarsnap 1.0.35 1.0.37 1.0.39: Online backups for the truly paranoid
 app-backup/tsm 7.1.8.0-r1 8.1.6.0: IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API
-app-backup/untangle-https-backup 0.0.10 0.0.10-r1: Back up Untangle configurations via the web admin UI
+app-backup/untangle-https-backup 0.0.10-r1: Back up Untangle configurations via the web admin UI
 app-backup/vzdump 1.2: A utility to make consistent snapshots of running OpenVZ containers
 app-backup/zbackup 1.4.4-r1 9999: A versatile deduplicating backup tool
 app-benchmarks/acovea 5.1.1-r2: Analysis of Compiler Options via Evolutionary Algorithm
