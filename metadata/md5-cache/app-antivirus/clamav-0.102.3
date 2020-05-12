@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare test
+DEPEND=acct-group/clamav acct-user/clamav dev-libs/libltdl dev-libs/libmspack || ( dev-libs/libpcre2 >dev-libs/libpcre-6 ) >=sys-libs/zlib-1.2.2:= bzip2? ( app-arch/bzip2 ) clamdtop? ( sys-libs/ncurses:0 ) clamsubmit? ( net-misc/curl dev-libs/json-c:= ) elibc_musl? ( sys-libs/fts-standalone ) iconv? ( virtual/libiconv ) !libclamav-only? ( net-misc/curl ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) ) xml? ( dev-libs/libxml2 ) metadata-analysis-api? ( dev-libs/json-c:* ) test? ( dev-libs/check )
+DESCRIPTION=Clam Anti-Virus Scanner
+EAPI=7
+HOMEPAGE=https://www.clamav.net/
+IUSE=bzip2 doc clamdtop clamsubmit iconv ipv6 libclamav-only libressl milter metadata-analysis-api selinux test uclibc xml
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=acct-group/clamav acct-user/clamav dev-libs/libltdl dev-libs/libmspack || ( dev-libs/libpcre2 >dev-libs/libpcre-6 ) >=sys-libs/zlib-1.2.2:= bzip2? ( app-arch/bzip2 ) clamdtop? ( sys-libs/ncurses:0 ) clamsubmit? ( net-misc/curl dev-libs/json-c:= ) elibc_musl? ( sys-libs/fts-standalone ) iconv? ( virtual/libiconv ) !libclamav-only? ( net-misc/curl ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) ) xml? ( dev-libs/libxml2 ) selinux? ( sec-policy/selinux-clamav )
+REQUIRED_USE=libclamav-only? ( !clamdtop !clamsubmit !milter !metadata-analysis-api )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://www.clamav.net/downloads/production/clamav-0.102.3.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=702b6ac86124afbf7abfbc511daaba37
