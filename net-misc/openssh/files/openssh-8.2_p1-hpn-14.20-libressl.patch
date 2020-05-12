@@ -5,7 +5,7 @@
  +evp_aes_ctr_mt(void)
  +{
 -+# if OPENSSL_VERSION_NUMBER >= 0x10100000UL
-++# if OPENSSL_VERSION_NUMBER >= 0x10100000UL || defined(HAVE_OPAQUE_STRUCTS)
+++# if (OPENSSL_VERSION_NUMBER >= 0x10100000UL || defined(HAVE_OPAQUE_STRUCTS)) && !defined(LIBRESSL_VERSION_NUMBER)
  +	static EVP_CIPHER *aes_ctr;
  +	aes_ctr = EVP_CIPHER_meth_new(NID_undef, 16/*block*/, 16/*key*/);
  +	EVP_CIPHER_meth_set_iv_length(aes_ctr, AES_BLOCK_SIZE);
