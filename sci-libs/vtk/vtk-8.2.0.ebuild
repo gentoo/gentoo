@@ -167,7 +167,7 @@ src_configure() {
 		-DVTK_USE_SYSTEM_GL2PS=OFF
 		-DVTK_USE_SYSTEM_HDF5=ON
 		-DVTK_USE_SYSTEM_JPEG=ON
-		-DVTK_USE_SYSTEM_LIBPROJ4=OFF
+		-DVTK_USE_SYSTEM_LIBPROJ=OFF
 		-DVTK_USE_SYSTEM_LIBXML2=ON
 		-DVTK_USE_SYSTEM_LibXml2=ON
 		-DVTK_USE_SYSTEM_NETCDF=ON
@@ -198,6 +198,7 @@ src_configure() {
 		-DVTK_Group_Tk=$(usex tk)
 		-DVTK_Group_Views=$(usex views)
 		-DVTK_Group_Web=$(usex web)
+		-DVTK_SMP_IMPLEMENTATION_TYPE="$(usex tbb TBB Sequential)"
 		-DVTK_WWW_DIR="${ED}/${MY_HTDOCSDIR}"
 		-DVTK_WRAP_JAVA=$(usex java)
 		-DVTK_WRAP_PYTHON=$(usex python)
@@ -230,10 +231,8 @@ src_configure() {
 		mycmakeargs+=( -DJAVAC_OPTIONS=${javacargs// /;} )
 	fi
 
-	if use tbb; then
-		mycmakeargs+=( -DVTK_SMP_IMPLEMENTATION_TYPE="TBB" )
-	else
-		mycmakeargs+=( -DVTK_SMP_IMPLEMENTATION_TYPE="Sequential" )
+	if use mpi; then
+		mycmakeargs+=( -DVTK_USE_SYSTEM_MPI4PY=ON )
 	fi
 
 	if use python; then
