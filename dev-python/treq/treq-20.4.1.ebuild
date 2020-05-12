@@ -42,7 +42,8 @@ python_compile_all() {
 }
 
 python_install_all() {
-	use doc && dohtml -r "${S}/docs/_build/html/"*
+	use doc && HTML_DOCS=( docs/_build/html/ )
+
 	distutils-r1_python_install_all
 }
 
