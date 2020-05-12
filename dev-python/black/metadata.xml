@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chr@chymera.eu</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Black is the uncompromising Python code formatter. By using it, you agree
+		to cede control over minutiae of hand-formatting. In return, Black gives
+		you speed, determinism, and freedom from pycodestyle nagging about formatting.
+		You will save time and mental energy for more important matters.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">psf/black</remote-id>
+		<remote-id type="pypi">black</remote-id>
+	</upstream>
+</pkgmetadata>
