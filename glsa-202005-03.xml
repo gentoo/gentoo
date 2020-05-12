@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-03">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Thunderbird,
+    the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">thunderbird</product>
+  <announced>2020-05-12</announced>
+  <revised count="1">2020-05-12</revised>
+  <bug>721324</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">68.8.0</unaffected>
+      <vulnerable range="lt">68.8.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">68.8.0</unaffected>
+      <vulnerable range="lt">68.8.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Thunderbird is a popular open-source email client from the
+      Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Thunderbird.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to execute arbitrary code, cause a Denial
+      of Service condition or spoof sender email address.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Thunderbird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-68.8.0"
+    </code>
+    
+    <p>All Mozilla Thunderbird binary users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/thunderbird-bin-68.8.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12387">CVE-2020-12387</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12392">CVE-2020-12392</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12395">CVE-2020-12395</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12397">CVE-2020-12397</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6831">CVE-2020-6831</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-18/">
+      MFSA-2020-18
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-06T20:22:31Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-05-12T23:34:15Z">sam_c</metadata>
+</glsa>
