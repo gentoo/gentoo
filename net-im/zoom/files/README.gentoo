@@ -1,0 +1,5 @@
+Some of Zoom's screen share features (e.g., the whiteboard) require
+display compositing. If you encounter a black window when sharing
+the screen, then one of the following actions should help:
+- Enable compositing in your window manager if it is supported
+- Alternatively, run the xcompmgr command (from x11-misc/xcompmgr)
