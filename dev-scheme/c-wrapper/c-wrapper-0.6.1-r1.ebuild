@@ -17,6 +17,7 @@ IUSE="examples"
 RDEPEND="dev-scheme/gauche:=
 	virtual/libffi"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-closure.patch
