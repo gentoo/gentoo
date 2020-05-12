@@ -1,0 +1,16 @@
+BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) >=app-misc/pax-utils-0.1.10 sys-devel/bison !<sys-devel/bison-2.7 doc? ( sys-apps/texinfo ) >=sys-devel/binutils-2.24 >=sys-devel/gcc-6 virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst preinst prepare pretend setup test unpack
+DEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) !<net-misc/openssh-8.1_p1-r2 test? ( >=net-dns/libidn2-2.3.0 ) virtual/os-headers sys-devel/gnuconfig
+DESCRIPTION=GNU libc C library
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/libc/
+IUSE=audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86
+LICENSE=LGPL-2.1+ BSD HPND ISC inner-net rc PCRE
+PDEPEND=!vanilla? ( sys-libs/timezone-data )
+RDEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) !<net-misc/openssh-8.1_p1-r2 sys-apps/gentoo-functions >=net-dns/libidn2-2.3.0 vanilla? ( !sys-libs/timezone-data )
+RESTRICT=!test? ( test )
+SLOT=2.2
+SRC_URI=mirror://gnu/glibc/glibc-2.31.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.31-patches-5.tar.xz https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-2.00.tar.gz multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20180511.tar.xz )
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=6db35bed487fdfa39148f8b1a13fa7fe
