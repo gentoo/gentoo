@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
+PATCHES=( "${FILESDIR}"/${PN}-gcc-10.patch )
 DOCS=( CREDITS README )
 
 src_prepare() {
