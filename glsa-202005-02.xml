@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-02">
+  <title>QEMU: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in QEMU, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">qemu</product>
+  <announced>2020-05-12</announced>
+  <revised count="1">2020-05-12</revised>
+  <bug>716518</bug>
+  <bug>717154</bug>
+  <bug>717770</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/qemu" auto="yes" arch="*">
+      <unaffected range="ge">4.2.0-r5</unaffected>
+      <vulnerable range="lt">4.2.0-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QEMU is a generic and open source machine emulator and virtualizer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in QEMU. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QEMU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/qemu-4.2.0-r5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11102">CVE-2020-11102</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1711">CVE-2020-1711</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7039">CVE-2020-7039</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-04T02:29:17Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2020-05-12T23:31:56Z">b-man</metadata>
+</glsa>
