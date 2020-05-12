@@ -18660,7 +18660,7 @@ x11-terms/kitty-terminfo 0.17.2 0.17.3 9999: Terminfo for kitty, an OpenGL-based
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.1 1.24.0: The MATE Terminal
-x11-terms/mlterm 3.8.7 3.8.9 3.9.0: A multi-lingual terminal emulator
+x11-terms/mlterm 3.8.9 3.9.0: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305 0.0_pre20171111: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
 x11-terms/qterminal 0.14.1-r1 9999: Qt-based multitab terminal emulator
