@@ -110,7 +110,7 @@ src_prepare() {
 
 	# prevent errors showing up on zfs-mount stop, #647688
 	# openrc will unmount all filesystems anyway.
-	sed -i "/^ZFS_UNMOUNT=/ s/yes/no/" etc/default/zfs.in || die
+	sed -i "/^ZFS_UNMOUNT=/ s/yes/no/" "etc/default/zfs.in" || die
 }
 
 src_configure() {
