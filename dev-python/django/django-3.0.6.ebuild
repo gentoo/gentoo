@@ -41,6 +41,7 @@ BDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pillow[webp,${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/selenium[${PYTHON_USEDEP}]
 		dev-python/tblib[${PYTHON_USEDEP}]
 	)"
 
