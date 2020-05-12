@@ -223,7 +223,8 @@ src_configure() {
 		LOOKUP_CDB=yes
 		LOOKUP_PASSWD=yes
 		LOOKUP_DSEARCH=yes
-		LOOKUP_INCLUDE += -I$(db_includedir ${DB_VERS})
+		# keep include in CFLAGS because exim.h -> dbstuff.h -> db.h
+		CFLAGS += -I$(db_includedir ${DB_VERS})
 		DBMLIB = -l$(db_libname ${DB_VERS})
 	EOC
 
