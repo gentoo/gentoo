@@ -10,5 +10,5 @@ RDEPEND=!games-engines/zoom dev-libs/glib:2 dev-libs/icu dev-qt/qtcore:5 dev-qt/
 RESTRICT=mirror bindist strip
 SLOT=0
 SRC_URI=amd64? ( https://zoom.us/client/5.0.403652.0509/zoom_x86_64.tar.xz -> zoom-5.0.403652.0509_x86_64.tar.xz ) x86? ( https://zoom.us/client/5.0.403652.0509/zoom_i686.tar.xz -> zoom-5.0.403652.0509_i686.tar.xz )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=600fe274966ea326f28ac6b04c2ae4a7
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=9029a946350fbb05f1ca103030e9b089
