@@ -1,42 +1,38 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit eutils
 
 MY_P=${PN}-${PV%_p*}
 
 DESCRIPTION="AWStats is short for Advanced Web Statistics"
-HOMEPAGE="http://www.awstats.org/"
-
-if [ ${MY_P} != ${P} ]; then
-	SRC_URI="https://dev.gentoo.org/~flameeyes/awstats/${P}.tar.gz"
-	# The following SRC_URI is useful only when fetching for the first time
-	# after bump; upstream does not bump the version when they change it, so
-	# we rename it to include the date and upload to our mirrors instead.
-	#SRC_URI="http://www.awstats.org/files/${MY_P}.tar.gz -> ${P}.tar.gz"
-else
-	SRC_URI="http://www.awstats.org/files/${P}.tar.gz"
-fi
-
+HOMEPAGE="https://www.awstats.org/"
+SRC_URI="https://www.awstats.org/files/${P}.tar.gz"
 S=${WORKDIR}/${MY_P}
-
-LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 hppa ppc ~sparc x86"
+LICENSE="GPL-3"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE="geoip ipv6"
 
 SLOT="0"
 
-RDEPEND=">=dev-lang/perl-5.6.1
-	virtual/perl-Time-Local
+RDEPEND="
+	>=dev-lang/perl-5.6.1
 	dev-perl/URI
-	geoip? ( dev-perl/Geo-IP )
-	ipv6? ( dev-perl/Net-IP dev-perl/Net-DNS )"
+	virtual/perl-Time-Local
+	geoip? (
+		dev-perl/Geo-IP
+	)
+	ipv6? (
+		dev-perl/Net-DNS
+		dev-perl/Net-IP
+	)
+"
 DEPEND=""
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-7.1-gentoo.diff
+	eapply "${FILESDIR}"/${PN}-7.1-gentoo.diff
 
 	# change default installation directory
 	find . -type f -exec sed \
@@ -64,11 +60,16 @@ src_prepare() {
 	fi
 
 	find "${S}" '(' -type f -not -name '*.pl' ')' -exec chmod -x {} + || die
+
+	eapply_user
 }
 
+HTML_DOCS="docs/"
+DOCS="README.md"
+
 src_install() {
-	dohtml -r docs/*
-	dodoc README.TXT
+	einstalldocs
+
 	newdoc wwwroot/cgi-bin/plugins/example/example.pm example_plugin.pm
 	dodoc -r tools/xslt
 
@@ -98,7 +99,7 @@ src_install() {
 pkg_postinst() {
 	elog "The AWStats-Manual is available either inside"
 	elog "the /usr/share/doc/${PF} - folder, or at"
-	elog "http://awstats.sourceforge.net/docs/index.html ."
+	elog "https://awstats.sourceforge.net/docs/index.html ."
 	elog
 	elog "Copy the /etc/awstats/awstats.model.conf to"
 	elog "/etc/awstats/awstats.<yourdomain>.conf and edit it."
