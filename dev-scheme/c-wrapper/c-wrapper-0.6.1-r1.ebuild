@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ia64 x86"
 IUSE="examples"
 
 RDEPEND="dev-scheme/gauche:=
-	virtual/libffi"
+	dev-libs/libffi:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
