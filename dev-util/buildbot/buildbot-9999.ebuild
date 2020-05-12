@@ -61,11 +61,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? (
 		>=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}]
+		<dev-python/sphinx-2.1.0[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-blockdiag[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
 		dev-python/pyenchant[${PYTHON_USEDEP}]
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
@@ -126,7 +128,7 @@ src_install() {
 	doman docs/buildbot.1
 
 	if use doc; then
-		dohtml -r docs/_build/html/
+		HTML_DOCS=( docs/_build/html/ )
 		# TODO: install man pages
 	fi
 
