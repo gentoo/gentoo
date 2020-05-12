@@ -165,7 +165,7 @@ DEPEND="dev-go/licenseclassifier"
 RDEPEND="${DEPEND}"
 
 # tries to go online
-RESTRICT+=" test"
+RESTRICT="test"
 
 src_prepare() {
 	eapply_user
