@@ -34,6 +34,7 @@ S="${WORKDIR}/lib${P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-disable-flaky-tests.patch"
 	"${FILESDIR}/${PN}-2.3.0-getlib.patch"
+	"${FILESDIR}/${P}-fix-tests-bug722448.patch"
 )
 
 src_prepare() {
