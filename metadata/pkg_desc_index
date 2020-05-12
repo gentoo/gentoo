@@ -1818,7 +1818,7 @@ app-i18n/fcitx-table-extra 0.3.8 4.9999: Extra Chinese table input methods for F
 app-i18n/fcitx-unikey 0.2.7 4.9999: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22 1.1.1_alpha23: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.21-r1 1.5.22: Intelligent Input Bus for Linux / Unix OS
-app-i18n/ibus-anthy 1.5.9-r1 1.5.10-r1: Japanese Anthy engine for IBus
+app-i18n/ibus-anthy 1.5.10-r1 1.5.11: Japanese Anthy engine for IBus
 app-i18n/ibus-cangjie 2.4-r1: Chinese Cangjie and Quick engines for IBus
 app-i18n/ibus-chewing 1.5.1-r1 1.6.1: Chinese Chewing engine for IBus
 app-i18n/ibus-fbterm 1.0.1: IBus client for FbTerm
@@ -9530,7 +9530,7 @@ dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons 
 dev-ruby/daemons 1.2.6 1.3.1: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.10 2.7.10-r1: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.7.0: Strategies for cleaning databases
-dev-ruby/date_validator 0.9.0 0.10.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
+dev-ruby/date_validator 0.10.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
 dev-ruby/dbf 4.1.2: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/ddmemoize 1.0.0: Adds support for memoizing functions
 dev-ruby/ddmetrics 1.0.1: Non-timeseries measurements for Ruby programs
