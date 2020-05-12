@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-05">
+  <title>Squid: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Squid, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">squid</product>
+  <announced>2020-05-12</announced>
+  <revised count="1">2020-05-12</revised>
+  <bug>719046</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/squid" auto="yes" arch="*">
+      <unaffected range="ge">4.11</unaffected>
+      <vulnerable range="lt">4.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Squid is a full-featured Web proxy cache designed to run on Unix
+      systems. It supports proxying and caching of HTTP, FTP, and other URLs,
+      as well as SSL support, cache hierarchies, transparent caching, access
+      control lists and many other features.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Squid. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Squid users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/squid-4.11"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12519">CVE-2019-12519</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12521">CVE-2019-12521</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11945">CVE-2020-11945</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-04T11:10:13Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-05-12T23:40:20Z">sam_c</metadata>
+</glsa>
