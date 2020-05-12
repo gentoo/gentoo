@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-01">
+  <title>Long Range ZIP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Long Range ZIP, the
+    worst of which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">lrzip</product>
+  <announced>2020-05-12</announced>
+  <revised count="1">2020-05-12</revised>
+  <bug>617930</bug>
+  <bug>624462</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-arch/lrzip" auto="yes" arch="*">
+      <unaffected range="ge">0.631_p20190619</unaffected>
+      <vulnerable range="lt">0.631_p20190619</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Optimized for compressing large files</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Long Range ZIP. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could entice a user to open a specially crafted
+      archive file possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Long Range ZIP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/lrzip-0.631_p20190619"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8842">CVE-2017-8842</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8843">CVE-2017-8843</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8844">CVE-2017-8844</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8845">CVE-2017-8845</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8846">CVE-2017-8846</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8847">CVE-2017-8847</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9928">CVE-2017-9928</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9929">CVE-2017-9929</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-05T23:09:43Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-05-12T23:29:01Z">b-man</metadata>
+</glsa>
