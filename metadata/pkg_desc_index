@@ -3498,6 +3498,7 @@ dev-go/go-colortext 0_pre20150720: Change the console foreground and background 
 dev-go/go-crypto 0_pre20180816 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
 dev-go/go-license-detector 3.1.0: Scan a source directory and report the license
+dev-go/go-licenses 0_pre20200227 9999: Reports on the licenses used by a Go package and its dependencies
 dev-go/go-md2man 1.0.3 1.0.6 1.0.8 2.0.0: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20180816 9999: Go supplementary network libraries
 dev-go/go-protobuf 1.3.2: Go support for Google's protocol buffers
@@ -3517,6 +3518,7 @@ dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for 
 dev-go/goptlib 1.1.0: Go Tor pluggable transports library
 dev-go/goversion 1.2.0: Print version used to build Go executables
 dev-go/gox 1.0.1: A dead simple, no frills Go cross compile tool
+dev-go/licenseclassifier 0_pre20200402 9999: A set of tools that analyzes text to determine type of license
 dev-go/qr 0_p20161121: Basic QR code library for Go
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
 dev-go/siphash 1.0.0 1.2.1: Go implementation of SipHash-2.4
@@ -4960,7 +4962,7 @@ dev-libs/icu-layoutex 65.1 66.1 67.1: External layout part of International Comp
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
-dev-libs/ilbc-rfc3951 0-r1: iLBC is a speech codec suitable for robust voice communication over IP
+dev-libs/ilbc-rfc3951 0-r1 0-r2: iLBC is a speech codec suitable for robust voice communication over IP
 dev-libs/iniparser 3.1-r1 3.1-r2 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
@@ -4970,7 +4972,7 @@ dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness 
 dev-libs/jansson 2.10 2.11 2.12: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
-dev-libs/json-c 0.12 0.13.1-r1 0.14: A JSON implementation in C
+dev-libs/json-c 0.12 0.13.1-r1 0.14-r1 9999: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 1.9.1 1.9.3_pre20200412: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
@@ -8540,7 +8542,7 @@ dev-python/python-efl 1.23.0 1.24.0: Python bindings for Enlightenment Foundatio
 dev-python/python-engineio 3.12.1: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
 dev-python/python-ethtool 0.14: Ethernet settings python bindings
-dev-python/python-evdev 1.1.2-r1: Python library for evdev bindings
+dev-python/python-evdev 1.3.0: Python library for evdev bindings
 dev-python/python-fastimport 0.9.8: Library for parsing the fastimport VCS serialization format
 dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gammu 2.11: Python bindings for Gammu
@@ -14590,7 +14592,7 @@ net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 99999: A library and tools for t
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.12-r5: library for creating vnc servers
-net-libs/libwebsockets 3.2.1 4.0.1: A flexible pure-C library for implementing network protocols
+net-libs/libwebsockets 3.2.1 4.0.7: A flexible pure-C library for implementing network protocols
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
@@ -15699,7 +15701,7 @@ sci-chemistry/gelemental 2.0.0-r1: Periodic table viewer with detailed informati
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gnome-chemistry-utils 0.14.17: Programs and library containing GTK widgets and C++ classes related to chemistry
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 2018.8 2018.9999 2019.5-r1 2019.6 2019.9999 2020-r1 2020.1 2020.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.8 2018.9999 2019.5-r1 2019.6 2019.9999 2020.1-r1 2020.2 2020.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
@@ -17869,7 +17871,7 @@ www-client/opera-beta 68.0.3618.45 68.0.3618.55: A fast and secure web browser
 www-client/opera-developer 69.0.3673.0 69.0.3679.0 69.0.3686.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
-www-client/qutebrowser 1.8.3 1.10.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
+www-client/qutebrowser 1.11.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.53.2: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC

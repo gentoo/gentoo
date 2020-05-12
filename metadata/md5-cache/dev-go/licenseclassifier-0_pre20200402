@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst prepare test unpack
+DESCRIPTION=A set of tools that analyzes text to determine type of license
+EAPI=7
+HOMEPAGE=https://github.com/google/licenseclassifier
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 MIT
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/google/licenseclassifier/archive/879cb1424de0ab6dbb3d7a0788a0e40c2515a1b7.tar.gz -> licenseclassifier-0_pre20200402.tar.gz mirror://goproxy//github.com/davecgh/go-spew/@v/v1.1.0.zip -> github.com%2Fdavecgh%2Fgo-spew%2F@v%2Fv1.1.0.zip mirror://goproxy//github.com/google/go-cmp/@v/v0.2.0.zip -> github.com%2Fgoogle%2Fgo-cmp%2F@v%2Fv0.2.0.zip mirror://goproxy//github.com/pmezard/go-difflib/@v/v1.0.0.zip -> github.com%2Fpmezard%2Fgo-difflib%2F@v%2Fv1.0.0.zip mirror://goproxy//github.com/sergi/go-diff/@v/v1.0.0.zip -> github.com%2Fsergi%2Fgo-diff%2F@v%2Fv1.0.0.zip mirror://goproxy//github.com/stretchr/testify/@v/v1.3.0.zip -> github.com%2Fstretchr%2Ftestify%2F@v%2Fv1.3.0.zip mirror://goproxy//github.com/davecgh/go-spew/@v/v1.1.0.mod -> github.com%2Fdavecgh%2Fgo-spew%2F@v%2Fv1.1.0.mod mirror://goproxy//github.com/google/go-cmp/@v/v0.2.0.mod -> github.com%2Fgoogle%2Fgo-cmp%2F@v%2Fv0.2.0.mod mirror://goproxy//github.com/pmezard/go-difflib/@v/v1.0.0.mod -> github.com%2Fpmezard%2Fgo-difflib%2F@v%2Fv1.0.0.mod mirror://goproxy//github.com/sergi/go-diff/@v/v1.0.0.mod -> github.com%2Fsergi%2Fgo-diff%2F@v%2Fv1.0.0.mod mirror://goproxy//github.com/stretchr/objx/@v/v0.1.0.mod -> github.com%2Fstretchr%2Fobjx%2F@v%2Fv0.1.0.mod mirror://goproxy//github.com/stretchr/testify/@v/v1.3.0.mod -> github.com%2Fstretchr%2Ftestify%2F@v%2Fv1.3.0.mod
+_eclasses_=go-module	cca12a5688562f107c14ffcf28195dd7
+_md5_=ff1a64f3b624d6a7c2e104850bbe1c77

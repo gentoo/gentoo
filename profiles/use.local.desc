@@ -6073,6 +6073,7 @@ net-libs/libwebsockets:lejp - With the Lightweight JSON Parser
 net-libs/libwebsockets:libev - Support event loops via dev-libs/libev
 net-libs/libwebsockets:libevent - Support event loops via dev-libs/libevent
 net-libs/libwebsockets:libuv - Support asynchronous I/O via dev-libs/libuv
+net-libs/libwebsockets:mbedtls - Use mbedTLS replacement for OpenSSL
 net-libs/libwebsockets:peer-limits - Track peers and restrict resources a single peer can allocate
 net-libs/libwebsockets:server-status - Support json + jscript server monitoring
 net-libs/libwebsockets:smtp - Provide SMTP support
