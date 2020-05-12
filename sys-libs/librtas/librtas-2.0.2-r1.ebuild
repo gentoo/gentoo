@@ -13,8 +13,6 @@ SLOT="0"
 KEYWORDS="~ppc ~ppc64"
 IUSE="static-libs"
 
-DOCS="README"
-
 src_prepare() {
 	default
 	eautoreconf
