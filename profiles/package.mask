@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <stha09@googlemail.com> (2020-05-20)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-84
+
 # Amadeusz Żołnowski <aidecoe@gentoo.org> (2020-05-11)
 # Masked for removal in 30 days.  Unmaintained upstream.
 sys-boot/plymouth-openrc-plugin
