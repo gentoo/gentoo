@@ -1313,11 +1313,15 @@ glibc_do_src_install() {
 
 	# Install misc network config files
 	insinto /etc
-	doins nscd/nscd.conf posix/gai.conf nss/nsswitch.conf
-	doins "${WORKDIR}"/extra/etc/*.conf
+	doins posix/gai.conf nss/nsswitch.conf
+
+	# Gentoo-specific
+	newins "${FILESDIR}"/host.conf-1 host.conf
 
 	if use nscd ; then
-		doinitd "$(prefixify_ro "${WORKDIR}"/extra/etc/nscd)"
+		doins nscd/nscd.conf
+
+		newinitd "$(prefixify_ro "${FILESDIR}"/nscd-1)" nscd
 
 		local nscd_args=(
 			-e "s:@PIDFILE@:$(strings "${ED}"/usr/sbin/nscd | grep nscd.pid):"
@@ -1327,9 +1331,6 @@ glibc_do_src_install() {
 
 		systemd_dounit nscd/nscd.service
 		systemd_newtmpfilesd nscd/nscd.tmpfiles nscd.conf
-	else
-		# Do this since extra/etc/*.conf above might have nscd.conf.
-		rm -f "${ED}"/etc/nscd.conf
 	fi
 
 	echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00glibc
