@@ -404,7 +404,7 @@ app-admin/abrt 2.12.0-r2 2.14.0 2.14.1: Automatic bug detection and reporting to
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.6 2.9.7 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.9.7 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -18669,7 +18669,7 @@ x11-terms/sakura 3.5.0 3.6.0-r1 3.7.0: sakura is a terminal emulator based on GT
 x11-terms/st 0.8.2 0.8.3 9999: simple terminal implementation for X
 x11-terms/terminator 1.91 1.92: Multiple GNOME terminals in one window
 x11-terms/terminology 1.6.0 1.7.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
-x11-terms/tilda 1.4.1 1.5.0 1.5.1: A drop down terminal, similar to the consoles found in first person shooters
+x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.1 0.8.9.2: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 337 351 353: Terminal Emulator for X Windows
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
