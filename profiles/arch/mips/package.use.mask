@@ -89,6 +89,7 @@ media-libs/devil	nvtt
 # Ryan Hill <dirtyepic@gentoo.org> (2014-01-07)
 # req net-libs/webkit-gtk:2
 x11-libs/wxGTK webkit
+dev-python/wxpython webkit
 
 # Markos Chandras <hwoarang@gentoo.org> (2014-01-05)
 # Perl is heavily unkeyworded on MIPS. See 497068

@@ -80,6 +80,7 @@ x11-misc/xscreensaver new-login
 # that are the only arches upstream is taking care
 >=x11-libs/wxGTK-3.0.2.0-r1 webkit
 dev-util/glade webkit
+dev-python/wxpython webkit
 
 # Justin Lecher <jlec@gentoo.org> (2015-02-21)
 # Needs stable GNOME-3
