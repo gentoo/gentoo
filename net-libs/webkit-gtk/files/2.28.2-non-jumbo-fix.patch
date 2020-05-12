@@ -1,0 +1,34 @@
+From d553de92ed238278f51b93a2c90af7d3ff7a2da2 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Tue, 12 May 2020 15:28:45 +0300
+Subject: [PATCH] Try to fix an apparent non-unified build error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Source/WebKit/WebProcess/InjectedBundle/InjectedBundleHitTestResult.cpp: In member function ‘WTF::RefPtr<WebKit::InjectedBundleNodeHandle>
+WebKit::InjectedBundleHitTestResult::urlElementHandle() const’:
+Source/WebKit/WebProcess/InjectedBundle/InjectedBundleHitTestResult.cpp:57:78: error: no matching function for call to
+‘WebKit::InjectedBundleNodeHandle::getOrCreate(WebCore::Element*)’
+   57 |     return InjectedBundleNodeHandle::getOrCreate(m_hitTestResult.URLElement());
+      |                                                                              ^
+In file included from Source/WebKit/WebProcess/InjectedBundle/InjectedBundleHitTestResult.cpp:29
+---
+ .../WebProcess/InjectedBundle/InjectedBundleHitTestResult.cpp    | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Source/WebKit/WebProcess/InjectedBundle/InjectedBundleHitTestResult.cpp b/Source/WebKit/WebProcess/InjectedBundle/InjectedBundleHitTestResult.cpp
+index df8e55df1f0..26f045bd3fc 100644
+--- a/Source/WebKit/WebProcess/InjectedBundle/InjectedBundleHitTestResult.cpp
++++ b/Source/WebKit/WebProcess/InjectedBundle/InjectedBundleHitTestResult.cpp
+@@ -32,6 +32,7 @@
+ #include "WebImage.h"
+ #include <WebCore/BitmapImage.h>
+ #include <WebCore/Document.h>
++#include <WebCore/Element.h>
+ #include <WebCore/Frame.h>
+ #include <WebCore/FrameLoader.h>
+ #include <WebCore/FrameView.h>
+-- 
+2.20.1
+
