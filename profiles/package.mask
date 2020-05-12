@@ -733,14 +733,14 @@ media-fonts/symbola
 # Stuck on Python 3.6.
 # Removal in 30 days.  Bug #711702.
 app-metrics/buildbot-prometheus
-dev-util/buildbot
-dev-util/buildbot-console-view
-dev-util/buildbot-grid-view
-dev-util/buildbot-pkg
-dev-util/buildbot-waterfall-view
-dev-util/buildbot-worker
-dev-util/buildbot-wsgi-dashboards
-dev-util/buildbot-www
+<dev-util/buildbot-2.7.0
+<dev-util/buildbot-console-view-2.7.0
+<dev-util/buildbot-grid-view-2.7.0
+<dev-util/buildbot-pkg-2.7.0
+<dev-util/buildbot-waterfall-view-2.7.0
+<dev-util/buildbot-worker-2.7.0
+<dev-util/buildbot-wsgi-dashboards-2.7.0
+<dev-util/buildbot-www-2.7.0
 
 # Joshua Kinard <kumba@gentoo.org> (2020-03-28)
 # In Linux ~4.18, IPX (Internetwork Packet eXchange) protocol and
