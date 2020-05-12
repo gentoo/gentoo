@@ -27,7 +27,7 @@ else
 	KEYWORDS="~amd64 ~amd64-linux ~x86-linux"
 fi
 
-IUSE="crypt doc docker examples irc test"
+IUSE="crypt docker examples irc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -59,14 +59,6 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	doc? (
-		>=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}]
-		dev-python/sphinxcontrib-blockdiag[${PYTHON_USEDEP}]
-		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
-		dev-python/pyenchant[${PYTHON_USEDEP}]
-		dev-python/docutils[${PYTHON_USEDEP}]
-		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
-	)
 	test? (
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
@@ -87,7 +79,6 @@ DEPEND="${RDEPEND}
 			dev-python/service_identity[${PYTHON_USEDEP}]
 		)
 	)"
-#		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
 
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
@@ -108,27 +99,10 @@ pkg_setup() {
 		The scripts can	run as a different user if desired."
 }
 
-src_compile() {
-	distutils-r1_src_compile
-
-	if use doc; then
-		einfo "Generation of documentation"
-		pushd docs > /dev/null
-		#'man' target is currently broken
-		emake html
-		popd > /dev/null
-	fi
-}
-
 src_install() {
 	distutils-r1_src_install
 
 	doman docs/buildbot.1
-
-	if use doc; then
-		dohtml -r docs/_build/html/
-		# TODO: install man pages
-	fi
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}
