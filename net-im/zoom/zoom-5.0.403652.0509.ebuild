@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg-utils
+inherit desktop eutils readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us/"
@@ -86,11 +86,18 @@ src_install() {
 	# white on a blue background
 	doicon -s scalable "${FILESDIR}"/zoom-videocam.svg
 	doicon -s 24 "${FILESDIR}"/zoom-videocam.xpm
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+
+	local FORCE_PRINT_ELOG v
+	for v in ${REPLACING_VERSIONS}; do
+		ver_test ${v} -le 5.0.403652.0509 && FORCE_PRINT_ELOG=1
+	done
+	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
