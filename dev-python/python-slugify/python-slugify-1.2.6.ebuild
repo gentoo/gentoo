@@ -14,7 +14,7 @@ SRC_URI="https://github.com/un33k/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-python/unidecode[${PYTHON_USEDEP}]"
