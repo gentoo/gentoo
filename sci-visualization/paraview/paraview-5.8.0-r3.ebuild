@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit cmake-utils desktop gnome2-utils python-single-r1 qmake-utils toolchain-funcs
 
 MAIN_PV=$(ver_cut 0-1)
