@@ -28,10 +28,14 @@ RELEASE_VER=${PV}
 
 GCC_BOOTSTRAP_VER=20180511
 
+LOCALE_GEN_VER=2.00
+
 # Gentoo patchset
 PATCH_VER=16
+PATCH_DEV=slyfox
 
-SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
+SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${LOCALE_GEN_VER}.tar.gz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
 IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla"
@@ -728,6 +732,8 @@ src_unpack() {
 
 	cd "${WORKDIR}" || die
 	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
+
+	unpack locale-gen-${LOCALE_GEN_VER}.tar.gz
 }
 
 src_prepare() {
@@ -743,6 +749,12 @@ src_prepare() {
 
 	cd "${WORKDIR}"
 	find . -name configure -exec touch {} +
+
+	# until the patchset is updated
+	rm -rf extra/locale || die
+
+	# move the external locale-gen to its old place
+	mv locale-gen-${LOCALE_GEN_VER} extra/locale || die
 
 	eprefixify extra/locale/locale-gen
 
