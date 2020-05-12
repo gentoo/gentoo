@@ -13,7 +13,7 @@ SRC_URI="https://github.com/audreyr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND=">=dev-python/chardet-3.0.2[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/hypothesis[${PYTHON_USEDEP}] )"
