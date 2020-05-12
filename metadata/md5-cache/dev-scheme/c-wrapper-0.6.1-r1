@@ -1,13 +1,14 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install prepare test
-DEPEND=dev-scheme/gauche:= virtual/libffi >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-scheme/gauche:= dev-libs/libffi:=
 DESCRIPTION=Foreign function interface for C and Objective-C libraries
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.koguro.net/prog/c-wrapper/
 IUSE=examples
-KEYWORDS=~amd64 ~ia64 x86
+KEYWORDS=amd64 ~ia64 x86
 LICENSE=MIT
-RDEPEND=dev-scheme/gauche:= virtual/libffi
+RDEPEND=dev-scheme/gauche:= dev-libs/libffi:=
 SLOT=0
 SRC_URI=http://www.koguro.net/prog/c-wrapper/c-wrapper-0.6.1.tgz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=fd1c95787eb9b855d9d56ee0880314d9
+_md5_=e57700c62cc08810d7b08184ef3b85bf
