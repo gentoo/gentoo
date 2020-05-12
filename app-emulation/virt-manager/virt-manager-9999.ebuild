@@ -33,7 +33,6 @@ RDEPEND="!app-emulation/virtinst
 	$(python_gen_cond_dep '
 		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
 		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
 		dev-python/libvirt-python[${PYTHON_MULTI_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		dev-python/requests[${PYTHON_MULTI_USEDEP}]
