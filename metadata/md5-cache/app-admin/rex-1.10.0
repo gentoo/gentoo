@@ -1,0 +1,15 @@
+BDEPEND=virtual/perl-Carp virtual/perl-Data-Dumper dev-perl/Data-Validate-IP dev-perl/DBI dev-perl/Devel-Caller dev-perl/Digest-HMAC virtual/perl-Digest-MD5 dev-perl/Expect virtual/perl-Exporter virtual/perl-File-Spec dev-perl/HTTP-Message dev-perl/Hash-Merge virtual/perl-IO dev-perl/IO-String dev-perl/IO-Tty dev-perl/IPC-Shareable dev-perl/JSON-MaybeXS dev-perl/List-MoreUtils virtual/perl-MIME-Base64 dev-perl/Net-OpenSSH dev-perl/Net-SFTP-Foreign virtual/perl-Scalar-List-Utils dev-perl/Parallel-ForkManager dev-perl/Sort-Naturally dev-perl/String-Escape virtual/perl-Storable dev-perl/TermReadKey virtual/perl-Test-Simple dev-perl/Text-Glob virtual/perl-Text-Tabs+Wrap virtual/perl-Time-HiRes dev-perl/URI dev-perl/XML-LibXML dev-perl/XML-Simple dev-perl/libwww-perl dev-perl/YAML virtual/perl-version >=virtual/perl-ExtUtils-MakeMaker-7.110.100 test? ( virtual/perl-File-Temp dev-perl/Test-Deep >=dev-perl/Test-UseAllModules-0.150.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-lang/perl
+DESCRIPTION=(R)?ex, the friendly automation framework
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Rex
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-Data-Dumper dev-perl/Data-Validate-IP dev-perl/DBI dev-perl/Devel-Caller dev-perl/Digest-HMAC virtual/perl-Digest-MD5 dev-perl/Expect virtual/perl-Exporter virtual/perl-File-Spec dev-perl/HTTP-Message dev-perl/Hash-Merge virtual/perl-IO dev-perl/IO-String dev-perl/IO-Tty dev-perl/IPC-Shareable dev-perl/JSON-MaybeXS dev-perl/List-MoreUtils virtual/perl-MIME-Base64 dev-perl/Net-OpenSSH dev-perl/Net-SFTP-Foreign virtual/perl-Scalar-List-Utils dev-perl/Parallel-ForkManager dev-perl/Sort-Naturally dev-perl/String-Escape virtual/perl-Storable dev-perl/TermReadKey virtual/perl-Test-Simple dev-perl/Text-Glob virtual/perl-Text-Tabs+Wrap virtual/perl-Time-HiRes dev-perl/URI dev-perl/XML-LibXML dev-perl/XML-Simple dev-perl/libwww-perl dev-perl/YAML virtual/perl-version dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/F/FE/FERKI/Rex-1.10.0.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=531214f0fc0ec8bff3e7a94df059667c
