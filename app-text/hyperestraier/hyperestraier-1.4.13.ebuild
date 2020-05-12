@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 USE_RUBY="ruby24 ruby25 ruby26"
 RUBY_OPTIONAL="yes"
 
@@ -11,7 +11,7 @@ IUSE="bzip2 debug java lzo mecab perl ruby +zlib"
 
 DESCRIPTION="a full-text search system for communities"
 HOMEPAGE="https://fallabs.com/hyperestraier/"
-SRC_URI="https://fallabs.com/hyperestraier/${P}.tar.gz"
+SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86"
@@ -25,8 +25,8 @@ RDEPEND="dev-db/qdbm
 	perl? ( dev-lang/perl )
 	ruby? ( $(ruby_implementations_depend) )
 	zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	java? ( >=virtual/jdk-1.4:* )"
 S="${WORKDIR}/all/${P}"
 
