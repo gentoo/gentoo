@@ -9,7 +9,7 @@ else
 	SCM="git-r3"
 fi
 
-inherit golang-base tmpfiles systemd ${SCM}
+inherit fcaps golang-base tmpfiles systemd ${SCM}
 unset SCM
 
 EGO_PN="code.gitea.io/gitea"
@@ -41,6 +41,7 @@ RDEPEND="${DEPEND}
 	dev-vcs/git"
 
 DOCS=( custom/conf/app.ini.sample CONTRIBUTING.md README.md )
+FILECAPS=( cap_net_bind_service+ep usr/bin/gitea )
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 PATCHES=( "${FILESDIR}/gitea-logflags.patch" )
