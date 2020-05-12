@@ -9,7 +9,7 @@ DESCRIPTION="An improved version of cli-crypt (encrypts data sent to it from the
 HOMEPAGE="http://xjack.org/pwcrypt/"
 SRC_URI="http://xjack.org/pwcrypt/downloads/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
