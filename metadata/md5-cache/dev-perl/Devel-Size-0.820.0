@@ -4,11 +4,11 @@ DESCRIPTION=Perl extension for finding the memory usage of Perl variables
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Devel-Size
 IUSE=test
-KEYWORDS=amd64 ~ppc64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-XSLoader dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NW/NWCLARK/Devel-Size-0.82.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=496301663f1db5d11b4e00982f9f8f2b
+_md5_=72a52aa849169d533608c217cfccff55
