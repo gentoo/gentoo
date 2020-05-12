@@ -91,8 +91,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-security-disable-PidFile.patch"
-	"${FILESDIR}/${P}-mysql8.patch"
+	"${FILESDIR}/${PN}-3.0.30-security-disable-PidFile.patch"
+	"${FILESDIR}/${PN}-3.0.30-mysql8.patch"
 )
 
 S=${WORKDIR}/${MY_P}
