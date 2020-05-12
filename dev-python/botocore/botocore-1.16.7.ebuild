@@ -10,7 +10,7 @@ DESCRIPTION="Low-level, data-driven core of boto 3."
 HOMEPAGE="https://github.com/boto/botocore"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 if [[ "${PV}" == "9999" ]]; then
@@ -22,17 +22,13 @@ else
 fi
 
 RDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
 "
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? (
-		dev-python/guzzle_sphinx_theme[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	)
+BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -41,11 +37,15 @@ DEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/1.8.6-tests-pass-all-env-vars-to-cmd-runner.patch" )
+PATCHES=(
+	"${FILESDIR}/1.8.6-tests-pass-all-env-vars-to-cmd-runner.patch"
+	"${FILESDIR}/botocore-1.16.7-unlock-deps.patch"
+)
+
+distutils_enable_sphinx docs \
+	'dev-python/guzzle_sphinx_theme'
 
 python_compile_all() {
-	use doc && emake -C docs html
-
 	# remove version locked deps
 	sed -r -e 's:([a-zA-Z0-9_-]+)[><|=].*:\1:' \
 		-i requirements.txt || die
@@ -54,10 +54,4 @@ python_compile_all() {
 python_test() {
 	PYTHONPATH="${BUILD_DIR}/lib" nosetests -v tests/unit || die "unit tests failed under ${EPYTHON}"
 	PYTHONPATH="${BUILD_DIR}/lib" nosetests -v tests/functional || die "functional tests failed under ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/build/html/. )
-
-	distutils-r1_python_install_all
 }
