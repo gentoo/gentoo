@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig v4l? ( >=sys-kernel/linux-headers-2.6.11 ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=>=media-video/ffmpeg-0.10 a52? ( media-libs/a52dec ) aac? ( media-libs/faac ) alsa? ( media-libs/alsa-lib ) dv? ( media-libs/libdv ) dvd? ( media-libs/libdvdread:0= ) iconv? ( virtual/libiconv ) imagemagick? ( media-gfx/imagemagick:= ) jpeg? ( virtual/jpeg:0= ) lzo? ( >=dev-libs/lzo-2 ) mjpeg? ( media-video/mjpegtools ) mp3? ( media-sound/lame ) mpeg? ( media-libs/libmpeg2 ) ogg? ( media-libs/libogg ) postproc? ( >=media-video/ffmpeg-0.10 ) quicktime? ( >=media-libs/libquicktime-1 ) sdl? ( >=media-libs/libsdl-1.2.5[X?] ) theora? ( media-libs/libtheora ) truetype? ( >=media-libs/freetype-2 ) v4l? ( media-libs/libv4l ) vorbis? ( media-libs/libvorbis ) X? ( x11-libs/libXpm x11-libs/libXaw x11-libs/libXv ) x264? ( media-libs/x264:= ) xml? ( dev-libs/libxml2 ) xvid? ( media-libs/xvid )
+DESCRIPTION=Utilities for transcoding video and audio codecs in different containers
+EAPI=7
+HOMEPAGE=http://www.transcoding.org/ https://bitbucket.org/france/transcode-tcforge
+IUSE=cpu_flags_x86_3dnow a52 aac alsa altivec dv dvd +iconv imagemagick jpeg lzo mjpeg cpu_flags_x86_mmx mp3 mpeg nuv ogg oss pic postproc quicktime sdl cpu_flags_x86_sse cpu_flags_x86_sse2 theora truetype v4l vorbis X x264 xml xvid
+KEYWORDS=~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-video/ffmpeg-0.10 a52? ( media-libs/a52dec ) aac? ( media-libs/faac ) alsa? ( media-libs/alsa-lib ) dv? ( media-libs/libdv ) dvd? ( media-libs/libdvdread:0= ) iconv? ( virtual/libiconv ) imagemagick? ( media-gfx/imagemagick:= ) jpeg? ( virtual/jpeg:0= ) lzo? ( >=dev-libs/lzo-2 ) mjpeg? ( media-video/mjpegtools ) mp3? ( media-sound/lame ) mpeg? ( media-libs/libmpeg2 ) ogg? ( media-libs/libogg ) postproc? ( >=media-video/ffmpeg-0.10 ) quicktime? ( >=media-libs/libquicktime-1 ) sdl? ( >=media-libs/libsdl-1.2.5[X?] ) theora? ( media-libs/libtheora ) truetype? ( >=media-libs/freetype-2 ) v4l? ( media-libs/libv4l ) vorbis? ( media-libs/libvorbis ) X? ( x11-libs/libXpm x11-libs/libXaw x11-libs/libXv ) x264? ( media-libs/x264:= ) xml? ( dev-libs/libxml2 ) xvid? ( media-libs/xvid )
+REQUIRED_USE=cpu_flags_x86_sse? ( cpu_flags_x86_mmx ) cpu_flags_x86_sse2? ( cpu_flags_x86_mmx cpu_flags_x86_sse ) cpu_flags_x86_3dnow? ( cpu_flags_x86_mmx ) nuv? ( lzo )
+SLOT=0
+SRC_URI=https://www.bitbucket.org/france/transcode-tcforge/downloads/transcode-1.1.7.tar.bz2 https://dev.gentoo.org/~mgorny/dist/transcode-1.1.7-patchset.tar.bz2
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=47ce264021170e5a504267d272ce0401
