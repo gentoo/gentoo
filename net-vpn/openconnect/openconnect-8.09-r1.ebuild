@@ -78,6 +78,9 @@ src_unpack() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/8.09-gnutls-buffer-overflow.patch
+	)
 	default
 	if [[ ${PV} == 9999 ]]; then
 		eautoreconf
