@@ -1,0 +1,57 @@
+diff --git a/third_party/blink/public/platform/cross_variant_mojo_util.h b/third_party/blink/public/platform/cross_variant_mojo_util.h
+index dee0b95..0c83580 100644
+--- a/third_party/blink/public/platform/cross_variant_mojo_util.h
++++ b/third_party/blink/public/platform/cross_variant_mojo_util.h
+@@ -124,7 +124,7 @@ class CrossVariantMojoAssociatedReceiver {
+   ~CrossVariantMojoAssociatedReceiver() = default;
+ 
+   CrossVariantMojoAssociatedReceiver(
+-      CrossVariantMojoAssociatedReceiver&&) noexcept = default;
++      CrossVariantMojoAssociatedReceiver&&) = default;
+   CrossVariantMojoAssociatedReceiver& operator=(
+       CrossVariantMojoAssociatedReceiver&&) noexcept = default;
+ 
+@@ -155,7 +155,7 @@ class CrossVariantMojoAssociatedRemote {
+   ~CrossVariantMojoAssociatedRemote() = default;
+ 
+   CrossVariantMojoAssociatedRemote(
+-      CrossVariantMojoAssociatedRemote&&) noexcept = default;
++      CrossVariantMojoAssociatedRemote&&) = default;
+   CrossVariantMojoAssociatedRemote& operator=(
+       CrossVariantMojoAssociatedRemote&&) noexcept = default;
+ 
+diff --git a/base/containers/flat_map.h b/base/containers/flat_map.h
+index ed82c5d..1af6b40 100644
+--- a/base/containers/flat_map.h
++++ b/base/containers/flat_map.h
+@@ -202,7 +202,7 @@ class flat_map : public ::base::internal::flat_tree<
+   ~flat_map() = default;
+ 
+   flat_map& operator=(const flat_map&) = default;
+-  flat_map& operator=(flat_map&&) = default;
++  flat_map& operator=(flat_map&&) noexcept = default;
+   // Takes the first if there are duplicates in the initializer list.
+   flat_map& operator=(std::initializer_list<value_type> ilist);
+ 
+diff --git a/base/containers/flat_tree.h b/base/containers/flat_tree.h
+index 9412ff6..8ecc1fa 100644
+--- a/base/containers/flat_tree.h
++++ b/base/containers/flat_tree.h
+@@ -125,7 +125,7 @@ class flat_tree {
+   // Assume that move assignment invalidates iterators and references.
+ 
+   flat_tree& operator=(const flat_tree&);
+-  flat_tree& operator=(flat_tree&&);
++  flat_tree& operator=(flat_tree&&) noexcept;
+   // Takes the first if there are duplicates in the initializer list.
+   flat_tree& operator=(std::initializer_list<value_type> ilist);
+ 
+@@ -519,7 +519,7 @@ auto flat_tree<Key, Value, GetKeyFromValue, KeyCompare>::operator=(
+ 
+ template <class Key, class Value, class GetKeyFromValue, class KeyCompare>
+ auto flat_tree<Key, Value, GetKeyFromValue, KeyCompare>::operator=(flat_tree &&)
+-    -> flat_tree& = default;
++    noexcept -> flat_tree& = default;
+ 
+ template <class Key, class Value, class GetKeyFromValue, class KeyCompare>
+ auto flat_tree<Key, Value, GetKeyFromValue, KeyCompare>::operator=(

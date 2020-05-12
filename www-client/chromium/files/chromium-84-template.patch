@@ -1,0 +1,80 @@
+From 7ea92bc4f0cbdf68bf8e04b18f560aece9666e9e Mon Sep 17 00:00:00 2001
+From: Hans Wennborg <hans@chromium.org>
+Date: Tue, 05 May 2020 18:23:40 +0000
+Subject: [PATCH] De-templatize ContentSettingsAgentImpl::GetContentSettingFromRules
+
+The template definition was not in the header, so callers from outside
+content_settings_agent_impl.cc could not instantiate the template,
+leading to link errors in some configs (see bug).
+
+Instead, provide overloads for the two types of URL parameter, and
+use a template internally (in the .cc file) as it was before
+crrev.com/759360.
+
+Bug: 1077605
+Change-Id: I5c6f1e60ab694d60f7c20ce77a435a1b03e32e08
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2181364
+Commit-Queue: Hans Wennborg <hans@chromium.org>
+Commit-Queue: Nico Weber <thakis@chromium.org>
+Reviewed-by: Clark DuVall <cduvall@chromium.org>
+Reviewed-by: Nico Weber <thakis@chromium.org>
+Reviewed-by: Balazs Engedy <engedy@chromium.org>
+Auto-Submit: Hans Wennborg <hans@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#765660}
+---
+
+diff --git a/components/content_settings/renderer/content_settings_agent_impl.cc b/components/content_settings/renderer/content_settings_agent_impl.cc
+index ffb225a..4e24dc5 100644
+--- a/components/content_settings/renderer/content_settings_agent_impl.cc
++++ b/components/content_settings/renderer/content_settings_agent_impl.cc
+@@ -169,7 +169,7 @@
+ }
+ 
+ template <typename URL>
+-ContentSetting ContentSettingsAgentImpl::GetContentSettingFromRules(
++ContentSetting GetContentSettingFromRulesImpl(
+     const ContentSettingsForOneType& rules,
+     const WebFrame* frame,
+     const URL& secondary_url) {
+@@ -192,6 +192,20 @@
+   return CONTENT_SETTING_DEFAULT;
+ }
+ 
++ContentSetting ContentSettingsAgentImpl::GetContentSettingFromRules(
++    const ContentSettingsForOneType& rules,
++    const WebFrame* frame,
++    const GURL& secondary_url) {
++  return GetContentSettingFromRulesImpl(rules, frame, secondary_url);
++}
++
++ContentSetting ContentSettingsAgentImpl::GetContentSettingFromRules(
++    const ContentSettingsForOneType& rules,
++    const WebFrame* frame,
++    const blink::WebURL& secondary_url) {
++  return GetContentSettingFromRulesImpl(rules, frame, secondary_url);
++}
++
+ void ContentSettingsAgentImpl::BindContentSettingsManager(
+     mojo::Remote<mojom::ContentSettingsManager>* manager) {
+   DCHECK(!*manager);
+diff --git a/components/content_settings/renderer/content_settings_agent_impl.h b/components/content_settings/renderer/content_settings_agent_impl.h
+index b14acfe..2522fdb 100644
+--- a/components/content_settings/renderer/content_settings_agent_impl.h
++++ b/components/content_settings/renderer/content_settings_agent_impl.h
+@@ -116,11 +116,14 @@
+ 
+   // Allow passing both WebURL and GURL here, so that we can early return
+   // without allocating a new backing string if only the default rule matches.
+-  template <typename URL>
+   ContentSetting GetContentSettingFromRules(
+       const ContentSettingsForOneType& rules,
+       const blink::WebFrame* frame,
+-      const URL& secondary_url);
++      const GURL& secondary_url);
++  ContentSetting GetContentSettingFromRules(
++      const ContentSettingsForOneType& rules,
++      const blink::WebFrame* frame,
++      const blink::WebURL& secondary_url);
+ 
+  protected:
+   // Allow this to be overridden by tests.
