@@ -50,7 +50,7 @@ pkg_setup() {
 		execute \"emerge --config =${CATEGORY}/${PF}\" to create a new instance.
 		Set up your build worker following the documentation, make sure the
 		resulting directories are owned by the \"buildbot\" user and point
-		\"${ROOT}etc/conf.d/buildbot_worker.myinstance\" at the right location.
+		\"${ROOT}/etc/conf.d/buildbot_worker.myinstance\" at the right location.
 		The scripts can	run as a different user if desired."
 }
 
