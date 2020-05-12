@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="A library and set of tools that can analyze text to determine what type of license it contains"
+DESCRIPTION="A set of tools that analyzes text to determine type of license"
 HOMEPAGE="https://github.com/google/licenseclassifier"
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
