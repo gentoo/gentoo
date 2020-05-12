@@ -1,0 +1,15 @@
+BDEPEND=python_targets_python3_6? ( dev-lang/python:3.6[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-python/setuptools-21.2.1[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] ~dev-util/buildbot-2.7.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] ~dev-util/buildbot-www-2.7.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+DESCRIPTION=Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
+EAPI=7
+HOMEPAGE=https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-wsgi-dashboards/
+IUSE=python_targets_python3_6
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_6 )
+SLOT=0
+SRC_URI=mirror://pypi/b/buildbot-wsgi-dashboards/buildbot-wsgi-dashboards-2.7.0.tar.gz
+_eclasses_=distutils-r1	054fa5f0442c7ccb4d4a05410d92123b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3c73d4e1d4b2c691a73f5681a0a0fece
