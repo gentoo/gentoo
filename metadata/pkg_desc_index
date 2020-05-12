@@ -2271,7 +2271,7 @@ app-misc/sl 5.02: sophisticated graphical program which corrects your miss typin
 app-misc/slmon 0.5.13: Colored text-based system performance monitor
 app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
 app-misc/socnetv 2.2: Qt Social Network Visualizer
-app-misc/solaar 0.9.2-r3 1.0.1 1.0.1-r1 1.0.2_rc1 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
+app-misc/solaar 1.0.1-r1 1.0.2_rc1 1.0.2_rc2 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/sonypid 1.9: tool to use the Sony Vaios jog-dial as a mouse-wheel
 app-misc/spacenavd 0.5-r5 0.5-r6 0.6 0.7 0.7.1: The spacenavd daemon provides free alternative to the 3dxserv daemon
 app-misc/sphinx 2.2.11 2.2.11-r1 2.2.11-r2: Full-text search engine with support for MySQL and PostgreSQL
