@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-04">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2020-05-12</announced>
+  <revised count="1">2020-05-12</revised>
+  <bug>721090</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">68.8.0</unaffected>
+      <vulnerable range="lt">68.8.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">68.8.0</unaffected>
+      <vulnerable range="lt">68.8.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to view a specially crafted web
+      page, possibly resulting in the execution of arbitrary code with the
+      privileges of the process, an information leak or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-68.8.0"
+    </code>
+    
+    <p>All Mozilla Firefox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-68.8.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12387">CVE-2020-12387</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12392">CVE-2020-12392</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12394">CVE-2020-12394</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12395">CVE-2020-12395</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12396">CVE-2020-12396</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6831">CVE-2020-6831</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-17/">
+      MFSA-2020-17
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-06T14:48:10Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-05-12T23:36:01Z">sam_c</metadata>
+</glsa>
