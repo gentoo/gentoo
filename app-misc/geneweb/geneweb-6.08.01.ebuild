@@ -22,6 +22,22 @@ RDEPEND="dev-lang/ocaml[ocamlopt?]
 	acct-group/geneweb"
 DEPEND="${RDEPEND}"
 
+QA_FLAGS_IGNORED=(
+	/usr/bin/gwb2ged
+	/usr/bin/update_nldb
+	/usr/bin/consang
+	/usr/bin/gwd
+	/usr/bin/gwsetup
+	/usr/bin/ged2gwb2
+	/usr/bin/gwc
+	/usr/bin/ged2gwb
+	/usr/bin/check_base
+	/usr/bin/gwu
+	/usr/bin/gwc1
+	/usr/bin/gwc2
+	/usr/lib/geneweb/gwtp
+)
+
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${PN}-6.08-parallellbuild.patch )
