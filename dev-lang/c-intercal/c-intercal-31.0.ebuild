@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools elisp-common
+inherit autotools elisp-common flag-o-matic
 
 # C-INTERCAL uses minor-major ordering of version components and
 # negative version numbers. We map version components -1, -2, ...
@@ -45,6 +45,11 @@ src_prepare() {
 	eapply "${FILESDIR}"/${P}-no-common.patch
 	eapply_user
 	eautoreconf
+}
+
+src_configure() {
+	append-flags -fno-toplevel-reorder		#722862
+	econf
 }
 
 src_compile() {
