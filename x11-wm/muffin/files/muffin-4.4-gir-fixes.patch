@@ -1,0 +1,65 @@
+From eaacd664855b03517a0406024b18eb9f5a597a9d Mon Sep 17 00:00:00 2001
+From: Michael Webster <miketwebster@gmail.com>
+Date: Tue, 14 Jan 2020 12:12:13 -0500
+Subject: [PATCH] display.c: Remove meta_display_get_atom() - it is unused, and
+ breaks the build when g-ir-scanner (with gobject-introspection ~1.62)
+
+ref:
+https://gitlab.gnome.org/GNOME/mutter/commit/edeac1de09473809debc4d0b8c416f79dde8f500
+---
+ src/core/display.c | 14 --------------
+ src/meta/display.h |  9 ---------
+ 2 files changed, 23 deletions(-)
+
+diff --git a/src/core/display.c b/src/core/display.c
+index 6c186e87..6baf2cc2 100644
+--- a/src/core/display.c
++++ b/src/core/display.c
+@@ -5640,20 +5640,6 @@ meta_display_get_shape_event_base (MetaDisplay *display)
+ }
+ #endif
+ 
+-/**
+- * meta_display_get_atom: (skip)
+- *
+- * Gets up an X atom that Muffin prefetched at startup.
+- *
+- * Return value: the X atom corresponding to the given atom enumeration
+- */
+-Atom meta_display_get_atom (MetaDisplay *display, MetaAtom meta_atom)
+-{
+-  Atom *atoms = & display->atom_WM_PROTOCOLS;
+-
+-  return atoms[meta_atom - 1];
+-}
+-
+ /**
+  * meta_display_get_leader_window:
+  * @display: a #MetaDisplay
+diff --git a/src/meta/display.h b/src/meta/display.h
+index 3f82c32b..434296f1 100644
+--- a/src/meta/display.h
++++ b/src/meta/display.h
+@@ -56,14 +56,6 @@ GType meta_display_get_type (void) G_GNUC_CONST;
+ 
+ #define meta_XFree(p) do { if ((p)) XFree ((p)); } while (0)
+ 
+-typedef enum
+-{
+-  META_ATOM_FIRST = 0,
+-#define item(x) META_ATOM_##x,
+-#include "atomnames.h"
+-#undef item
+-}MetaAtom;
+-
+ typedef enum {
+   META_LIST_DEFAULT                   = 0,      /* normal windows */
+   META_LIST_INCLUDE_OVERRIDE_REDIRECT = 1 << 0, /* normal and O-R */
+@@ -90,7 +82,6 @@ gboolean  meta_display_xwindow_is_a_no_focus_window (MetaDisplay *display,
+ 
+ int meta_display_get_damage_event_base (MetaDisplay *display);
+ int meta_display_get_shape_event_base (MetaDisplay *display);
+-Atom meta_display_get_atom (MetaDisplay *display, MetaAtom meta_atom);
+ 
+ gboolean meta_display_xserver_time_is_before (MetaDisplay *display,
+                                               guint32      time1,
