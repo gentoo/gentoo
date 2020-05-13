@@ -1,0 +1,51 @@
+From dc9d14c97fc22ad5b00c9ffb0f83931e42cf2eb0 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Fri, 2 Aug 2019 19:27:17 +0200
+Subject: [PATCH] documentation/CMakeLists.txt: force python2
+
+The patch forces to use Python-2.x to build the documentation
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ documentation/CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/documentation/CMakeLists.txt b/documentation/CMakeLists.txt
+index 32b12a3..a93414e 100644
+--- a/documentation/CMakeLists.txt
++++ b/documentation/CMakeLists.txt
+@@ -54,10 +54,10 @@ else()
+ 
+ endif()
+ 
+-find_package(PythonInterp 2.6)
++find_package(Python2 COMPONENTS Interpreter)
+ 
+ # ReST - HTML documentation
+-if (DOCUTILS_FOUND AND PYTHONINTERP_FOUND)
++if (DOCUTILS_FOUND AND Python2_Interpreter_FOUND)
+ 
+     set(HTML_FILES
+          search.html
+@@ -198,7 +198,7 @@ if (DOCUTILS_FOUND AND PYTHONINTERP_FOUND)
+             OUTPUT
+                 "${rstfile}"
+             COMMAND
+-                "${PYTHON_EXECUTABLE}"
++                "${Python2_EXECUTABLE}"
+             ARGS
+                 "${CMAKE_CURRENT_SOURCE_DIR}/processTutorials.py"
+                 "${infile}"
+@@ -291,7 +291,7 @@ if (DOCUTILS_FOUND AND PYTHONINTERP_FOUND)
+     # build search index and insert navigation tab
+     add_custom_target(search_index
+         COMMAND
+-            "${PYTHON_EXECUTABLE}"
++            "${Python2_EXECUTABLE}"
+             "${CMAKE_CURRENT_SOURCE_DIR}/processHtml.py"
+             "${CMAKE_CURRENT_BINARY_DIR}"
+             "${CMAKE_CURRENT_SOURCE_DIR}/nav_template.txt"
+-- 
+2.22.0
+
+
