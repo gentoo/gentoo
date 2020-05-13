@@ -1,0 +1,21 @@
+commit 2c5990c2de2015b251ba23617faa40ee11b8c22a
+Author: Martin Stone <martin@d7415.co.uk>
+Date:   Thu Feb 20 19:29:43 2020 +0000
+
+    Force CalendarWidget to selectable. Fixes #903.
+
+diff --git a/khal/ui/calendarwidget.py b/khal/ui/calendarwidget.py
+index c36db42a1a00..8a03c9f8ebba 100644
+--- a/khal/ui/calendarwidget.py
++++ b/khal/ui/calendarwidget.py
+@@ -643,6 +643,10 @@ class CalendarWidget(urwid.WidgetWrap):
+     def reset_styles_range(self, min_date, max_date):
+         self.walker.reset_styles_range(min_date, max_date)
+ 
++    @classmethod
++    def selectable(cls):
++        return True
++
+     @property
+     def focus_date(self):
+         return self.walker.focus_date

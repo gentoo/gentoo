@@ -3,8 +3,10 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PATCHES=( "${FILESDIR}/fix-failing-test.patch" )
 
 inherit distutils-r1
 
@@ -30,10 +32,12 @@ RDEPEND=">=dev-python/click-3.2[${PYTHON_USEDEP}]
 	dev-python/setproctitle[${PYTHON_USEDEP}]
 	zsh-completion? ( app-shells/zsh )"
 DEPEND=">dev-python/setuptools_scm-1.12.0[${PYTHON_USEDEP}]
-	dev-python/vdirsyncer[${PYTHON_USEDEP}]
-	dev-python/freezegun[${PYTHON_USEDEP}]"
+	dev-python/freezegun[${PYTHON_USEDEP}]
+	test? ( dev-python/vdirsyncer[${PYTHON_USEDEP}] )"
 
 DOCS=( AUTHORS.txt CHANGELOG.rst CONTRIBUTING.rst README.rst khal.conf.sample )
+
+distutils_enable_tests pytest
 
 src_install() {
 	distutils-r1_src_install
