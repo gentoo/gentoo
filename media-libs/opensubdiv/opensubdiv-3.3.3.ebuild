@@ -13,7 +13,9 @@ DESCRIPTION="An Open-Source subdivision surface library"
 HOMEPAGE="https://graphics.pixar.com/opensubdiv/docs/intro.html"
 SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="ZLIB"
+# Modfied Apache-2.0 license, where section 6 has been replaced.
+# See for example CMakeLists.txt for details.
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="cuda doc opencl openmp ptex tbb"
