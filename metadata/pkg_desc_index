@@ -10524,8 +10524,8 @@ dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
 dev-util/pretrace 0.4-r1: start dynamically linked applications under debugging environment
 dev-util/promu 0.5.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1 2020.1.1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 2019.3.1 2019.3.2 2019.3.3 2019.3.4 2020.1 2020.1.1: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.12.2 1.14.1 1.15.0: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
