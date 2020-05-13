@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="Perl client used to update dynamic DNS entries"
 HOMEPAGE="https://ddclient.net/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="GPL-2+"
