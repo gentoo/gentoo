@@ -43,7 +43,7 @@ pkg_setup() {
 src_prepare() {
 	local cuda_supported_gcc
 
-	cuda_supported_gcc="4.7 4.8 4.9 5.3 5.4 6.3 6.4 7.2 7.3 8.2 8.3"
+	cuda_supported_gcc="4.7 4.8 4.9 5.3 5.4 6.3 6.4 7.2 7.3 8.2 8.3 8.4"
 
 	sed \
 		-e "s:CUDA_SUPPORTED_GCC:${cuda_supported_gcc}:g" \
