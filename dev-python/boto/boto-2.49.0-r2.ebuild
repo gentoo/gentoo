@@ -24,6 +24,11 @@ RESTRICT="!test? ( test )"
 # requires Amazon Web Services keys to pass some tests
 RESTRICT+=" test"
 
+PATCHES=(
+	# taken from https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=909545
+	"${FILESDIR}/boto-try-to-add-SNI-support-v2.patch"
+)
+
 python_test() {
 	"${PYTHON}" tests/test.py -v || die "Tests fail with ${EPYTHON}"
 }
