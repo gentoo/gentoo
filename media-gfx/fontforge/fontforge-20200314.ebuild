@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	sys-devel/gettext
-	doc? ( dev-python/sphinx )
+	doc? ( >=dev-python/sphinx-2 )
 	python? ( ${PYTHON_DEPS} )
 	test? ( ${RDEPEND} )
 "
