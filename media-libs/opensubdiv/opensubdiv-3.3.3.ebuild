@@ -35,7 +35,11 @@ DEPEND="
 		dev-python/docutils
 		app-doc/doxygen
 	)
-	tbb? ( dev-cpp/tbb )"
+	tbb? ( dev-cpp/tbb )
+"
+BDEPEND="
+	cuda? ( <sys-devel/gcc-9[cxx] )
+"
 
 S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 
@@ -47,6 +51,11 @@ PATCHES=(
 )
 
 pkg_pretend() {
+	if use cuda; then
+		[[ $(gcc-major-version) -gt 8 ]] && \
+		eerror "USE=cuda requires gcc < 9. Run gcc-config to switch your default compiler" && \
+		die "Need gcc version earlier than 9"
+	fi
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
