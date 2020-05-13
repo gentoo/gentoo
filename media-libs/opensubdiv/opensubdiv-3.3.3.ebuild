@@ -18,7 +18,7 @@ SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.t
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="cuda doc opencl openmp ptex tbb"
+IUSE="cuda doc examples opencl openmp ptex tbb"
 
 RDEPEND="
 	${PYTHON_DEPENDS}
@@ -44,7 +44,6 @@ BDEPEND="
 S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.3.0-fix-quotes.patch"
 	"${FILESDIR}/${PN}-3.3.0-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${PN}-3.3.0-add-CUDA9-compatibility.patch"
 	"${FILESDIR}/${PN}-3.4.0-0001-documentation-CMakeLists.txt-force-python2.patch"
@@ -67,13 +66,13 @@ src_configure() {
 	local mycmakeargs=(
 		-DNO_CLEW=1
 		-DNO_DOC=$(usex !doc)
+		-DNO_EXAMPLES=$(usex !examples)
 		-DNO_TBB=$(usex !tbb)
 		-DNO_PTEX=$(usex !ptex)
 		-DNO_OMP=$(usex !openmp)
 		-DNO_OPENCL=$(usex !opencl)
 		-DNO_CUDA=$(usex !cuda)
 		-DNO_REGRESSION=1 # They don't work with certain settings
-		-DNO_EXAMPLES=1 # Not needed.
 		-DNO_TUTORIALS=1 # They install illegally. Need to find a better solution.
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
