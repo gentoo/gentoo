@@ -5,4 +5,7 @@
 	<name>Mikle Kolyada</name>
 	<email>zlogene@gentoo.org</email>
 </maintainer>
+<use>
+	<flag name="bundled-jdk">Use bundled jdk</flag>
+</use>
 </pkgmetadata>
