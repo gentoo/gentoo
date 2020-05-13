@@ -76,6 +76,7 @@ BDEPEND="
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
 		>=dev-python/pytest-salt-2018.12.8[${PYTHON_USEDEP}]
+		<dev-python/pytest-salt-2020.0.0[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		>=dev-python/SaltTesting-2016.5.11[${PYTHON_USEDEP}]
