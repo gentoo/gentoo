@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Joonas Niilola <juippis@gentoo.org> (2020-02-05)
-# Depends on nodejs.
-www-apps/gitea build-client
-
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-05)
 # sys-cluster/ceph no longer supports x86, versions that support
 # it no longer build thanks to python2 removals
@@ -26,6 +22,7 @@ www-servers/uwsgi uwsgi_plugins_rados
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Those packages require net-libs/nodejs.
+dev-lang/nim test
 dev-python/nbdime webtools
 dev-ruby/ammeter test
 dev-ruby/jsobfu test
@@ -33,7 +30,7 @@ dev-ruby/rails asset-pipeline
 dev-ruby/sprockets test
 dev-ruby/tilt test
 net-analyzer/netdata nodejs
-dev-lang/nim test
+www-apps/gitea build-client
 www-apps/jekyll test
 
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
