@@ -1243,7 +1243,7 @@ unipatch() {
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
-				elif [[ "${GCC_MAJOR_VER}" -eq 9 ]] && [[ ${GCC_MINOR_VER} -ge 1 ]]; then
+				elif [[ "${GCC_MAJOR_VER}" -ge 9 ]] && [[ ${GCC_MINOR_VER} -ge 1 ]]; then
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
