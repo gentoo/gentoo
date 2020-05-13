@@ -12,8 +12,9 @@ SRC_URI="http://download.jetbrains.com/python/${P}.tar.gz"
 LICENSE="PyCharm_Academic PyCharm_Classroom PyCharm PyCharm_OpenSource PyCharm_Preview"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="+bundled-jdk"
 
-RDEPEND=">=virtual/jre-1.8
+RDEPEND="!bundled-jdk? ( >=virtual/jre-1.8 )
 	dev-libs/libdbusmenu
 	dev-python/pip"
 
@@ -28,15 +29,15 @@ QA_PREBUILT="opt/${PN}/bin/fsnotifier
 MY_PN=${PN/-professional/}
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-src_prepare() {
-	default
-
-	rm -rf jre || die
-}
-
 src_install() {
 	insinto /opt/${PN}
 	doins -r *
+
+	if use bundled-jdk; then
+		fperms -R a+x /opt/pycharm-professional/jbr/bin/
+	else
+		rm -r "${D}"/opt/pycharm-professional/jbr/ || die
+	fi
 
 	fperms a+x /opt/${PN}/bin/{pycharm.sh,fsnotifier{,64},inspect.sh}
 
