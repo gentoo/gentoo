@@ -6,7 +6,6 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros/ros_comm"
 KEYWORDS="~amd64 ~arm"
 CATKIN_HAS_MESSAGES=yes
-PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 ROS_SUBDIR=clients/${PN}
 
 inherit ros-catkin
