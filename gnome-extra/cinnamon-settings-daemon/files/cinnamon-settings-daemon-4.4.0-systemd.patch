@@ -1,0 +1,36 @@
+From 4c19a41429524a2da202b919a335a646103da0fd Mon Sep 17 00:00:00 2001
+From: Leigh Scott <leigh123linux@gmail.com>
+Date: Wed, 11 Dec 2019 23:29:08 +0000
+Subject: [PATCH] Restore old check for logind
+
+---
+ cinnamon-settings-daemon/cinnamon-settings-session.c | 2 +-
+ plugins/common/csd-power-helper.c                    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cinnamon-settings-daemon/cinnamon-settings-session.c b/cinnamon-settings-daemon/cinnamon-settings-session.c
+index adbe1e7..4d52b21 100644
+--- a/cinnamon-settings-daemon/cinnamon-settings-session.c
++++ b/cinnamon-settings-daemon/cinnamon-settings-session.c
+@@ -378,7 +378,7 @@ cinnamon_settings_session_init (CinnamonSettingsSession *session)
+ 	session->priv = CINNAMON_SETTINGS_SESSION_GET_PRIVATE (session);
+ 
+ #ifdef HAVE_LOGIND
+-    if (access("/run/systemd/system/", F_OK) == 0) {    // sd_booted ()
++    if (access("/run/systemd/seats/", F_OK) == 0) {    // sd_booted ()
+         sd_pid_get_session (getpid(), &session->priv->session_id);
+         session->priv->sd_source = sd_source_new ();
+         g_source_set_callback (session->priv->sd_source, sessions_changed, session, NULL);
+diff --git a/plugins/common/csd-power-helper.c b/plugins/common/csd-power-helper.c
+index 5a83072..82c0b22 100644
+--- a/plugins/common/csd-power-helper.c
++++ b/plugins/common/csd-power-helper.c
+@@ -41,7 +41,7 @@ use_logind (void)
+     static gsize once_init_value = 0;
+ 
+     if (g_once_init_enter (&once_init_value)) {
+-        should_use_logind = access("/run/systemd/system/", F_OK) == 0; // sd_booted ()
++        should_use_logind = access("/run/systemd/seats/", F_OK) == 0; // sd_booted ()
+ 
+         g_once_init_leave (&once_init_value, 1);
+     }
