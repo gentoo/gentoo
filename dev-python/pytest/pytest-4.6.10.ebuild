@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
 inherit distutils-r1
@@ -41,7 +42,6 @@ RDEPEND="
 
 # flake cause a number of tests to fail
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/argcomplete[${PYTHON_USEDEP}]
@@ -72,6 +72,8 @@ python_prepare_all() {
 }
 
 python_test() {
+	distutils_install_for_testing
+
 	# In v4.1.1, pytest started being picky about its own verbosity options.
 	# running pytest on itself with -vv made 3 tests fail. This is why we don't
 	# have it below.
