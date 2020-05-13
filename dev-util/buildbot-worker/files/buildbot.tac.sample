@@ -29,9 +29,9 @@ maxRotatedFiles = 10
 port = 9989
 
 # worker settings
-worker_name = 'worker-1'
-passwd = 'mypasswd'
-buildmaster_host = 'mybuildbot.foobar.org'
+worker_name = 'example-worker'
+passwd = 'pass'
+buildmaster_host = 'localhost'
 keepalive = 600
 umask = None
 maxdelay = 300
