@@ -10,23 +10,25 @@ SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libressl test"
-RESTRICT="!test? ( test )"
+IUSE="+fapi libressl"
 
-RDEPEND=">=app-crypt/tpm2-tss-2.3.1:=
-	net-misc/curl:=
+# Integration test are now run as part of the testing suite, which will fail
+# because none of the supported TPM emulators are in Portage. In a future
+# version of tpm2-tools, swtpm will be supported and the tests can be run.
+RESTRICT="test"
+
+RDEPEND="net-misc/curl:=
+	fapi? ( >=app-crypt/tpm2-tss-2.4.0:=[fapi?] )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
-DEPEND="${RDEPEND}
-	test? ( dev-util/cmocka )"
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
 PATCHES=(
 	"${FILESDIR}/${P}-libressl.patch"
 )
 
 src_configure() {
 	econf \
-		$(use_enable !libressl hardening) \
-		$(use_enable test unit)
+		$(use_enable fapi) \
+		$(use_enable !libressl hardening)
 }

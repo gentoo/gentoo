@@ -9,10 +9,5 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="fapi">Enable feature API tools</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">tpm2-software/tpm2-tools</remote-id>
-	</upstream>
 </pkgmetadata>
+

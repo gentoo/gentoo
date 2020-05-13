@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info udev
+inherit linux-info tmpfiles udev
 
 DESCRIPTION="TCG Trusted Platform Module 2.0 Software Stack"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-tss"
@@ -12,20 +12,29 @@ SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc +gcrypt openssl static-libs test"
+IUSE="doc +fapi gcrypt +openssl static-libs test"
 
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="^^ ( gcrypt openssl )"
+REQUIRED_USE="^^ ( gcrypt openssl )
+		fapi ( !gcrypt )"
 
 RDEPEND="acct-group/tss
 	 acct-user/tss
+	 fapi? (
+		dev-libs/json-c
+	        net-misc/curl
+	 )
 	 gcrypt? ( dev-libs/libgcrypt:0= )
 	 openssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
 	test? ( dev-util/cmocka )"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.4.0-fix-tmpfiles-path.patch"
+)
 
 pkg_setup() {
 	local CONFIG_CHECK=" \
@@ -38,16 +47,25 @@ pkg_setup() {
 src_configure() {
 	econf \
 		$(use_enable doc doxygen-doc) \
+		$(use_enable fapi) \
 		$(use_enable static-libs static) \
 		$(use_enable test unit) \
+		--disable-tcti-mssim \
 		--disable-defaultflags \
 		--disable-weakcrypto \
 		--with-crypto="$(usex gcrypt gcrypt ossl)" \
+		--with-runstatedir=/run \
 		--with-udevrulesdir="$(get_udevdir)/rules.d" \
-		--with-udevrulesprefix=60-
+		--with-udevrulesprefix=60- \
+		--with-sysusersdir="/usr/lib/sysusers.d"
+		--with-tmpfilesdir="/usr/lib/tmpfiles.d"
 }
 
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	tmpfiles_process tpm2-tss-fapi.conf
 }

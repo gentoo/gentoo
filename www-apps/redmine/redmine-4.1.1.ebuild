@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby24"
-inherit eutils depend.apache ruby-ng
+USE_RUBY="ruby25 ruby26"
+inherit depend.apache ruby-ng
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
 HOMEPAGE="https://www.redmine.org/"
@@ -15,27 +15,31 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="imagemagick fastcgi ldap markdown mysql passenger postgres sqlite"
 
-ruby_add_rdepend "
-	imagemagick? ( dev-ruby/rmagick:0 )
+DEPS="
+	fastcgi? ( dev-ruby/fcgi )
+	imagemagick? ( dev-ruby/mini_magick )
 	ldap? ( dev-ruby/ruby-net-ldap )
-	markdown? ( >=dev-ruby/redcarpet-3.4.0 )
+	markdown? ( >=dev-ruby/redcarpet-3.5.0 )
 	mysql? ( >=dev-ruby/mysql2-0.5.0:0.5 )
+	passenger? ( www-apache/passenger )
 	postgres? ( >=dev-ruby/pg-1.1.4:1 )
-	sqlite? ( >=dev-ruby/sqlite3-1.3.12 )
-	dev-ruby/actionpack-xml_parser:*
-	dev-ruby/i18n:0.7
+	sqlite? ( >=dev-ruby/sqlite3-1.4.0 )
+	dev-ruby/actionpack-xml_parser:2
+	>=dev-ruby/i18n-1.6.0:1
 	>=dev-ruby/mail-2.7.1
 	dev-ruby/mimemagic
 	>=dev-ruby/mini_mime-1.0.1
 	>=dev-ruby/nokogiri-1.10.0
 	dev-ruby/rails:5.2
-	>=dev-ruby/rbpdf-1.19.6
-	dev-ruby/request_store:1.0.5
-	>=dev-ruby/roadie-rails-1.3.0
-	>=dev-ruby/rouge-3.6.0
+	>=dev-ruby/rbpdf-1.20.0
+	dev-ruby/request_store:0
+	>=dev-ruby/roadie-rails-2.1.0
+	>=dev-ruby/rouge-3.12.0
 	>=dev-ruby/ruby-openid-2.9.2
 	dev-ruby/rack-openid
 "
+
+ruby_add_bdepend "${DEPS}"
 
 RDEPEND="
 	acct-group/redmine
@@ -45,7 +49,7 @@ RDEPEND="
 REDMINE_DIR="/var/lib/${PN}"
 
 all_ruby_prepare() {
-	rm -r log files/delete.me .github || die
+	rm -fr log files/delete.me .github || die
 
 	# bug #406605
 	rm .{git,hg}ignore || die
@@ -57,13 +61,14 @@ all_ruby_prepare() {
 	EOF
 
 	# Fixing versions in Gemfile
-	eapply "${FILESDIR}/${P}_gemfile_versions.patch"
+	sed -i -e "s/~>/>=/g" Gemfile || die
 
+	sed -i -e "/csv/d" Gemfile || die
 	sed -i -e "/group :development do/,/end$/d" Gemfile || die
 	sed -i -e "/group :test do/,/end$/d" Gemfile || die
 
 	if ! use imagemagick ; then
-		sed -i -e "/group :rmagick do/,/end$/d" Gemfile || die
+		sed -i -e "/group :minimagick do/,/end$/d" Gemfile || die
 	fi
 	if ! use ldap ; then
 		# remove ldap stuff module if disabled to avoid #413779
