@@ -6,9 +6,9 @@ HOMEPAGE=https://www.kernel.org/
 IUSE=savedconfig +initramfs test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=!sys-kernel/vanilla-kernel-bin:5.6.7 || ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) initramfs? ( >=sys-kernel/dracut-049-r3 )
+RDEPEND=!sys-kernel/vanilla-kernel-bin:5.6.12 || ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) initramfs? ( >=sys-kernel/dracut-049-r3 )
 RESTRICT=!test? ( test ) test? ( userpriv )
-SLOT=5.6.7
-SRC_URI=test? ( amd64? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-amd64.qcow2 ) x86? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-x86.qcow2 ) ) https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.7.tar.xz amd64? ( https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=fdf9d6f7ce59ea8e64911c1a1e7992026b57f552 -> linux-5.6.5-arch2.amd64.config ) x86? ( https://git.archlinux32.org/packages/plain/core/linux/config.i686?id=e36c1ea7991eca34f6d80d325da9413a4827eabf -> linux-5.6.5-arch3.i686.config )
+SLOT=5.6.12
+SRC_URI=test? ( amd64? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-amd64.qcow2 ) x86? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-x86.qcow2 ) ) https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.12.tar.xz amd64? ( https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=7dcb86e3e6f24c6d5462c5c8d25c3fa09e7e9f55 -> linux-5.6.8-arch1.amd64.config ) x86? ( https://git.archlinux32.org/packages/plain/core/linux/config.i686?id=bc42cce2cca0d42b5cfeb8c6bcbf9f39430791f2 -> linux-5.6.8-arch1.i686.config )
 _eclasses_=kernel-build	62503a0a2c84409f29e0ffebd9756232	kernel-install	ce866c49e06c27f1a5579b707ef95d9c	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4b0b23cf674a42732166592711c2c0a4
+_md5_=de1f484547e0e88bdf215b55256c7c4c
