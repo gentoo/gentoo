@@ -23,7 +23,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa +client cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg libressl openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg libressl openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -32,21 +32,19 @@ RDEPEND="
 	sys-libs/zlib:0
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
-	client? (
-		usb? (
-			virtual/libudev:0=
-			sys-apps/util-linux:0=
-			dev-libs/dbus-glib:0=
-			virtual/libusb:1=
-		)
-		X? (
-			x11-libs/libXcursor
-			x11-libs/libXext
-			x11-libs/libXi
-			x11-libs/libXrender
-			xinerama? ( x11-libs/libXinerama )
-			xv? ( x11-libs/libXv )
-		)
+	usb? (
+		virtual/libudev:0=
+		sys-apps/util-linux:0=
+		dev-libs/dbus-glib:0=
+		virtual/libusb:1=
+	)
+	X? (
+		x11-libs/libXcursor
+		x11-libs/libXext
+		x11-libs/libXi
+		x11-libs/libXrender
+		xinerama? ( x11-libs/libXinerama )
+		xv? ( x11-libs/libXv )
 	)
 	ffmpeg? ( media-video/ffmpeg:0= )
 	!ffmpeg? (
@@ -85,10 +83,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	client? ( X? ( doc? (
+	X? ( doc? (
 		app-text/docbook-xml-dtd:4.1.2
 		app-text/xmlto
-	) ) )
+	) )
 "
 
 src_configure() {
@@ -97,7 +95,6 @@ src_configure() {
 		-DCHANNEL_URBDRC=$(usex usb ON OFF)
 		-DWITH_ALSA=$(usex alsa ON OFF)
 		-DWITH_CCACHE=OFF
-		-DWITH_CLIENT=$(usex client ON OFF)
 		-DWITH_CUPS=$(usex cups ON OFF)
 		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
 		-DWITH_MANPAGES=$(usex doc ON OFF)
