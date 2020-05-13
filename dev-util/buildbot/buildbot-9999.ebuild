@@ -201,7 +201,7 @@ pkg_config() {
 		mkdir --parents "${buildmaster_path}" || die "Unable to create directory ${buildmaster_path}"
 	fi
 	"${buildbot}" create-master "${instance_path}" &>/dev/null || die "Creating instance failed"
-	chown --recursive buildbot "${instance_path}" || die "Setting permissions for instance failed"
+	chown --recursive buildbot:buildbot "${instance_path}" || die "Setting permissions for instance failed"
 	mv "${instance_path}/master.cfg.sample" "${instance_path}/master.cfg" \
 		|| die "Moving sample configuration failed"
 	ln --symbolic --relative "/etc/init.d/buildmaster" "/etc/init.d/buildmaster.${instance_name}" \
@@ -209,6 +209,8 @@ pkg_config() {
 
 	if [[ ! -d "${instance_log_path}" ]]; then
 		mkdir --parents "${instance_log_path}" || die "Unable to create directory ${instance_log_path}"
+		chown --recursive buildbot:buildbot "${instance_log_path}" \
+			|| die "Setting permissions for instance failed"
 	fi
 	ln --symbolic --relative "${instance_log_path}/twistd.log" "${instance_path}/twistd.log" \
 		|| die "Unable to create link to log file"
