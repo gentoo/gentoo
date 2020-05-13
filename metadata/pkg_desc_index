@@ -3214,7 +3214,7 @@ dev-cpp/gtkmm 2.24.5 3.24.2: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.87: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
-dev-cpp/kokkos 3.0.00 3.1.00: Kokkos C++ Performance Portability Programming EcoSystem
+dev-cpp/kokkos 3.0.00 3.1.00 3.1.01: Kokkos C++ Performance Portability Programming EcoSystem
 dev-cpp/libcmis 0.5.2-r1 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
