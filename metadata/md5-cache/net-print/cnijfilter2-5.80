@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=virtual/libusb:1 dev-libs/libxml2 net-print/cups
+DESCRIPTION=IJ Printer Driver
+EAPI=7
+HOMEPAGE=https://www.canon.it/
+KEYWORDS=~amd64 ~x86
+LICENSE=Canon-IJ
+RDEPEND=virtual/libusb:1 dev-libs/libxml2 net-print/cups
+SLOT=0
+SRC_URI=http://gdlp01.c-wss.com/gds/3/0100010273/01/cnijfilter2-source-5.80-1.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=0bae354ffd66c4705b2d907fb0ac0c1e
