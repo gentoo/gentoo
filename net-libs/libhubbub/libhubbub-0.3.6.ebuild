@@ -11,7 +11,7 @@ SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 arm ~ppc ~ppc64 ~x86 ~m68k-mint"
+KEYWORDS="amd64 arm ~ppc ~ppc64 ~x86 ~m68k-mint"
 IUSE="doc test"
 
 BDEPEND="
