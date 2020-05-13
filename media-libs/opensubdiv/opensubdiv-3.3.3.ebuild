@@ -79,5 +79,7 @@ src_configure() {
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 	)
 
+	# fails with building cuda kernels when using multiple jobs
+	export MAKEOPTS="-j1"
 	cmake_src_configure
 }
