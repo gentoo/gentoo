@@ -1,0 +1,52 @@
+diff -Naur a/tutorials/far/CMakeLists.txt b/tutorials/far/CMakeLists.txt
+--- a/tutorials/far/CMakeLists.txt	2020-05-11 14:48:35.145797436 +1000
++++ b/tutorials/far/CMakeLists.txt	2020-05-11 14:49:39.445969003 +1000
+@@ -30,7 +30,7 @@
+         $<TARGET_OBJECTS:far_obj>
+      )
+ 
+-     install(TARGETS ${NAME} DESTINATION "${CMAKE_BINDIR_BASE}/tutorials")
++     install(TARGETS ${NAME} DESTINATION "${CMAKE_BINDIR_BASE}")
+ 
+ endmacro()
+ 
+diff -Naur a/tutorials/hbr/tutorial_0/CMakeLists.txt b/tutorials/hbr/tutorial_0/CMakeLists.txt
+--- a/tutorials/hbr/tutorial_0/CMakeLists.txt	2020-05-11 14:48:35.145797436 +1000
++++ b/tutorials/hbr/tutorial_0/CMakeLists.txt	2020-05-11 14:50:38.076125987 +1000
+@@ -30,5 +30,5 @@
+     ${SOURCE_FILES}
+ )
+ 
+-install(TARGETS hbr_tutorial_0 DESTINATION "${CMAKE_BINDIR_BASE}/tutorials")
++install(TARGETS hbr_tutorial_0 DESTINATION "${CMAKE_BINDIR_BASE}")
+ 
+diff -Naur a/tutorials/hbr/tutorial_1/CMakeLists.txt b/tutorials/hbr/tutorial_1/CMakeLists.txt
+--- a/tutorials/hbr/tutorial_1/CMakeLists.txt	2020-05-11 14:48:35.145797436 +1000
++++ b/tutorials/hbr/tutorial_1/CMakeLists.txt	2020-05-11 14:50:10.406051839 +1000
+@@ -30,5 +30,5 @@
+     ${SOURCE_FILES}
+ )
+ 
+-install(TARGETS hbr_tutorial_1 DESTINATION "${CMAKE_BINDIR_BASE}/tutorials")
++install(TARGETS hbr_tutorial_1 DESTINATION "${CMAKE_BINDIR_BASE}")
+ 
+diff -Naur a/tutorials/hbr/tutorial_2/CMakeLists.txt b/tutorials/hbr/tutorial_2/CMakeLists.txt
+--- a/tutorials/hbr/tutorial_2/CMakeLists.txt	2020-05-11 14:48:35.145797436 +1000
++++ b/tutorials/hbr/tutorial_2/CMakeLists.txt	2020-05-11 14:50:20.706079428 +1000
+@@ -30,5 +30,5 @@
+     ${SOURCE_FILES}
+ )
+ 
+-install(TARGETS hbr_tutorial_2 DESTINATION "${CMAKE_BINDIR_BASE}/tutorials")
++install(TARGETS hbr_tutorial_2 DESTINATION "${CMAKE_BINDIR_BASE}")
+ 
+diff -Naur a/tutorials/osd/tutorial_0/CMakeLists.txt b/tutorials/osd/tutorial_0/CMakeLists.txt
+--- a/tutorials/osd/tutorial_0/CMakeLists.txt	2020-05-11 14:48:35.145797436 +1000
++++ b/tutorials/osd/tutorial_0/CMakeLists.txt	2020-05-11 14:50:51.446161856 +1000
+@@ -35,5 +35,5 @@
+     osd_static_cpu
+ )
+ 
+-install(TARGETS osd_tutorial_0 DESTINATION "${CMAKE_BINDIR_BASE}/tutorials")
++install(TARGETS osd_tutorial_0 DESTINATION "${CMAKE_BINDIR_BASE}")
+ 
