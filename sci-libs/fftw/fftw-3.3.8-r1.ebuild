@@ -136,6 +136,10 @@ multilib_src_configure() {
 }
 
 src_configure() {
+	# upstream does not append proper -m flags
+	# https://bugs.gentoo.org/698572
+	use cpu_flags_x86_avx2 && append-flags -mavx2
+
 	multibuild_foreach_variant multilib-minimal_src_configure
 }
 
