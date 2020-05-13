@@ -50,6 +50,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-install-tutorials-into-bin.patch"
 )
 
+RESTRICT="!test? ( test )"
+
 pkg_pretend() {
 	if use cuda; then
 		[[ $(gcc-major-version) -gt 8 ]] && \
