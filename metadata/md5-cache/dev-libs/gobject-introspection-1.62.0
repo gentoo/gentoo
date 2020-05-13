@@ -5,7 +5,7 @@ DESCRIPTION=Introspection system for GObject-based libraries
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Projects/GObjectIntrospection
 IUSE=doctool gtk-doc test python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2+ GPL-2+
 RDEPEND=>=dev-libs/gobject-introspection-common-1.62.0 >=dev-libs/glib-2.58.0:2 dev-libs/libffi:= doctool? ( python_single_target_python3_6? ( dev-python/mako[python_targets_python3_6(-)] dev-python/markdown[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/mako[python_targets_python3_7(-)] dev-python/markdown[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/mako[python_targets_python3_8(-)] dev-python/markdown[python_targets_python3_8(-)] ) ) virtual/pkgconfig python_single_target_python3_6? ( dev-lang/python:3.6[xml] >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7[xml] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[xml] >=dev-lang/python-exec-2:=[python_targets_python3_8] )
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gobject-introspection/1.62/gobject-introspection-1.62.0.tar.xz
 _eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	meson	991e544bbaf3120073ededbdc1d8bf93	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b2e5f02aadd441f2550a79f96c613d1c
+_md5_=dc61db972eef995bbe21811b8a7b6ff7
