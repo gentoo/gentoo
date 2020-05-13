@@ -1,0 +1,15 @@
+BDEPEND=>=x11-libs/cairo-1.0.0 virtual/perl-ExtUtils-MakeMaker >=dev-perl/ExtUtils-Depends-0.200.0 >=dev-perl/ExtUtils-PkgConfig-1.0.0 test? ( dev-perl/Test-Number-Delta ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Perl interface to the cairo library
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Cairo
+IUSE=test examples
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=LGPL-2.1
+RDEPEND=>=x11-libs/cairo-1.0.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Cairo-1.107.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=b02363889613930b1b964481a4154cf2

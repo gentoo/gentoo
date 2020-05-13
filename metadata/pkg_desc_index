@@ -5712,7 +5712,7 @@ dev-perl/Cache-FastMmap 1.470.0 1.490.0: Uses an mmaped file to act as a shared 
 dev-perl/Cache-Memcached 1.300.0-r1 1.300.0-r2: Perl API for memcached
 dev-perl/Cache-Memcached-Fast 0.250.0 0.260.0: Perl client for memcached, in C language
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1 0.270.0-r2: A lightweight cache with timed expiration
-dev-perl/Cairo 1.106.0: Perl interface to the cairo library
+dev-perl/Cairo 1.106.0 1.107.0: Perl interface to the cairo library
 dev-perl/Cairo-GObject 1.4.0-r1: Integrate Cairo into the Glib type system
 dev-perl/Calendar-Simple 1.230.0: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2012.0.0: Canary to check perl compatibility for schmorp's modules
