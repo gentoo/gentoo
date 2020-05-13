@@ -31,13 +31,13 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	tbb? ( dev-cpp/tbb )
+"
+BDEPEND="
 	doc? (
 		dev-python/docutils
 		app-doc/doxygen
 	)
-	tbb? ( dev-cpp/tbb )
-"
-BDEPEND="
 	cuda? ( <sys-devel/gcc-9[cxx] )
 "
 
