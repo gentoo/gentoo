@@ -5,6 +5,14 @@
 		<email>cinnamon@gentoo.org</email>
 		<name>Cinnamon Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sparky@bluefang-logic.com</email>
+		<name>Matthew Turnbull</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">linuxmint/cinnamon-translations</remote-id>
 	</upstream>
