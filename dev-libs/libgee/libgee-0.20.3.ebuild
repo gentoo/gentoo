@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Libgee"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.8/2"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~x86-linux"
 IUSE="+introspection"
 
 # FIXME: add doc support, requires valadoc
