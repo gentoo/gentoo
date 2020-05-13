@@ -971,9 +971,10 @@ app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCryp
 app-crypt/tpm-emulator 0.7.5-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/tpm2-abrmd 2.1.1-r2 2.3.1: TPM2 Access Broker & Resource Manager
-app-crypt/tpm2-tools 3.1.4 4.1.1: Tools for the TPM 2.0 TSS
+app-crypt/tpm2-pkcs11 1.2.0: A PKCS#11 interface for TPM2 hardware
+app-crypt/tpm2-tools 4.2: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1: Attest the trustworthiness of a device against a human using time-based OTP
-app-crypt/tpm2-tss 2.2.3-r2 2.3.3: TCG Trusted Platform Module 2.0 Software Stack
+app-crypt/tpm2-tss 2.4.0: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.0.1: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
@@ -5428,6 +5429,7 @@ dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlp4 4.04_p1 4.05_p1 4.08_p1: System for writing extensible parsers for programming languages
+dev-ml/camlp5 7.11: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.3 2.3.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.06 1.07 1.10: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
@@ -8484,7 +8486,7 @@ dev-python/pysvn 1.8.0 1.9.11: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.05.01_pre20160529: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 3.10.1 4.5.0 4.6.9 4.6.10 5.4.1: Simple powerful testing with Python
+dev-python/pytest 3.10.1 4.5.0 4.6.9 4.6.10 5.4.1 5.4.2: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.3.0 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.10.0 0.11.0 0.12.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
@@ -10320,7 +10322,7 @@ dev-util/clair 2.0.8: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.6-r1: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
-dev-util/clion 2020.1: A complete toolset for C and C++ development
+dev-util/clion 2020.1.1: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
 dev-util/cmake 3.13.5 3.14.6 3.16.5 3.17.1 3.17.2: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -10495,7 +10497,7 @@ dev-util/molecule-plugins 1.0.3: A set of base plugins for Molecule
 dev-util/mpatch 0.8-r1: Patch-like tool which can resolve common causes of patch rejects when applying
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
-dev-util/netsurf-buildsystem 1.7 1.7-r1 1.8: Build system used for netsurf and its libs
+dev-util/netsurf-buildsystem 1.7 1.7-r1 1.8-r1: Build system used for netsurf and its libs
 dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 1.10.0 9999: A small build system similar to make
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
@@ -17830,7 +17832,7 @@ www-apps/piwigo 2.10.2: a photo gallery software for the web
 www-apps/postfixadmin 3.2.3 3.2.4: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.1.1: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 1.1.6 2.1.11-r1: A simple CalDAV calendar server
-www-apps/redmine 4.0.5 4.0.5-r1: Flexible project management web application using the Ruby on Rails framework
+www-apps/redmine 4.1.1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.5.1 1.6.1-r1: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
