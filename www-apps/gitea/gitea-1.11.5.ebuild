@@ -28,10 +28,10 @@ fi
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
-IUSE="+acct pam sqlite"
+IUSE="+acct build-client pam sqlite"
 
 BDEPEND="dev-lang/go
-	>=net-libs/nodejs-10[npm]"
+	build-client? ( >=net-libs/nodejs-10[npm] )"
 DEPEND="pam? ( sys-libs/pam )"
 RDEPEND="${DEPEND}
 	acct? (
@@ -90,11 +90,15 @@ src_prepare() {
 	fi
 
 	# Remove already build assets (like frontend part)
-	gitea_make clean-all
+	use build-client && gitea_make clean-all
 }
 
 src_compile() {
-	gitea_make build
+	if use build-client ; then
+		gitea_make build
+	else
+		gitea_make backend
+	fi
 }
 
 src_test() {
