@@ -1,0 +1,93 @@
+From f5e7f6c98b46ff622f60a4661ffc9ce07216d109 Mon Sep 17 00:00:00 2001
+From: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+Date: Sat, 29 Sep 2018 21:47:11 +0200
+Subject: [PATCH] boto: try to add SNI support
+
+Add SNI support. Newer OpenSSL (with TLS1.3) fail to connect if the
+hostname is missing.
+
+Link: https://bugs.debian.org/bug=909545
+Tested-by: Witold Baryluk <witold.baryluk@gmail.com>
+Signed-off-by: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+---
+ boto/connection.py       | 19 ++++++++++---------
+ boto/https_connection.py | 22 +++++++++++-----------
+ 2 files changed, 21 insertions(+), 20 deletions(-)
+
+diff --git a/boto/connection.py b/boto/connection.py
+index 34b428f101df7..b4867a7657465 100644
+--- a/boto/connection.py
++++ b/boto/connection.py
+@@ -824,23 +824,24 @@ DEFAULT_CA_CERTS_FILE = os.path.join(os.path.dirname(os.path.abspath(boto.cacert
+         h = http_client.HTTPConnection(host)
+ 
+         if self.https_validate_certificates and HAVE_HTTPS_CONNECTION:
++            context = ssl.create_default_context()
++            context.verify_mode = ssl.CERT_REQUIRED
++            context.check_hostname = True
++
+             msg = "wrapping ssl socket for proxied connection; "
+             if self.ca_certificates_file:
+                 msg += "CA certificate file=%s" % self.ca_certificates_file
++                context.load_verify_locations(cafile=self.ca_certificates_file)
+             else:
+                 msg += "using system provided SSL certs"
++                context.load_default_certs()
+             boto.log.debug(msg)
+             key_file = self.http_connection_kwargs.get('key_file', None)
+             cert_file = self.http_connection_kwargs.get('cert_file', None)
+-            sslSock = ssl.wrap_socket(sock, keyfile=key_file,
+-                                      certfile=cert_file,
+-                                      cert_reqs=ssl.CERT_REQUIRED,
+-                                      ca_certs=self.ca_certificates_file)
+-            cert = sslSock.getpeercert()
+-            hostname = self.host.split(':', 0)[0]
+-            if not https_connection.ValidateCertificateHostname(cert, hostname):
+-                raise https_connection.InvalidCertificateException(
+-                    hostname, cert, 'hostname mismatch')
++            if key_file:
++                context.load_cert_chain(certfile=cert_file, keyfile=key_file)
++
++            sslSock = context.wrap_socket(sock, server_hostname=host)
+         else:
+             # Fallback for old Python without ssl.wrap_socket
+             if hasattr(http_client, 'ssl'):
+diff --git a/boto/https_connection.py b/boto/https_connection.py
+index ddc31a152292e..a5076f6f9b261 100644
+--- a/boto/https_connection.py
++++ b/boto/https_connection.py
+@@ -119,20 +119,20 @@ from boto.compat import six, http_client
+             sock = socket.create_connection((self.host, self.port), self.timeout)
+         else:
+             sock = socket.create_connection((self.host, self.port))
++
++        context = ssl.create_default_context()
++        context.verify_mode = ssl.CERT_REQUIRED
++        context.check_hostname = True
++        if self.key_file:
++            context.load_cert_chain(certfile=self.cert_file, keyfile=self.key_file)
++
+         msg = "wrapping ssl socket; "
+         if self.ca_certs:
+             msg += "CA certificate file=%s" % self.ca_certs
++            context.load_verify_locations(cafile=self.ca_certs)
+         else:
+             msg += "using system provided SSL certs"
++            context.load_default_certs()
+         boto.log.debug(msg)
+-        self.sock = ssl.wrap_socket(sock, keyfile=self.key_file,
+-                                    certfile=self.cert_file,
+-                                    cert_reqs=ssl.CERT_REQUIRED,
+-                                    ca_certs=self.ca_certs)
+-        cert = self.sock.getpeercert()
+-        hostname = self.host.split(':', 0)[0]
+-        if not ValidateCertificateHostname(cert, hostname):
+-            raise InvalidCertificateException(hostname,
+-                                              cert,
+-                                              'remote hostname "%s" does not match '
+-                                              'certificate' % hostname)
++
++        self.sock = context.wrap_socket(sock, server_hostname=self.host)
+-- 
+2.19.0
+
