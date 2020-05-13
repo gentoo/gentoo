@@ -73,7 +73,7 @@ src_configure() {
 	)
 
 	if has_version "dev-qt/qtgui[gles2-only]"; then
-		mycmakeargs+=( $(cmake_use_find_package gles2 OpenGLES) )
+		mycmakeargs+=( $(cmake_use_find_package gles2-only OpenGLES) )
 	else
 		mycmakeargs+=( $(cmake_use_find_package opengl OpenGL) )
 	fi
