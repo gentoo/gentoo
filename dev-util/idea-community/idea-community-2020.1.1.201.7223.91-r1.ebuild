@@ -61,12 +61,8 @@ QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 
 # jbr11 binary doesn't unpack nicely into a single folder
 src_unpack() {
-	if use !jbr11 ; then
-		default_src_unpack
-	else
-		cd "${WORKDIR}"
-		unpack ${MY_PN}IC-${PV_STRING}.tar.gz
-		cd "${S}"
+	default_src_unpack
+	if use jbr11 ; then
 		mkdir jre64 && cd jre64 && unpack jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz
 	fi
 }
