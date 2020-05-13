@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/20200314-tilepath.patch
 	"${FILESDIR}"/20200314-big-endian.patch
 	"${FILESDIR}"/fontforge-doc-no-warn-error.patch
+	"${FILESDIR}"/20200314-MacServiceReadFDs.patch
 )
 
 pkg_setup() {
