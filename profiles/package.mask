@@ -670,23 +670,6 @@ dev-tcltk/combobox
 dev-tcltk/anigif
 
 # Hans de Graaff <graaff@gentoo.org> (2020-04-13)
-# ruby24-only packages. Ruby 2.4 is EOL and will be masked for removal
-# shortly. These packages either have newer ruby25 slots available, or
-# are no longer maintained and have no reverse dependencies. Masked
-# for removal in 30 days.
-dev-ruby/activeldap:4
-dev-ruby/bones
-dev-ruby/github_api
-dev-ruby/http:0.8
-dev-ruby/http-form_data:0.8
-dev-ruby/rack-test:0.6
-dev-ruby/rails-deprecated_sanitizer
-dev-ruby/riel
-dev-ruby/shoulda-matchers:0
-dev-ruby/vcr:1
-dev-ruby/webmock:2
-
-# Hans de Graaff <graaff@gentoo.org> (2020-04-13)
 # dev-ruby/libxml is ruby24-only and has known
 # bugs. sci-biology/bioruby depends on this. It looks like there is a
 # new version upstream that may not depend on libxml, but this
