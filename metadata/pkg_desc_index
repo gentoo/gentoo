@@ -4694,7 +4694,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.23 1.2.24: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.103 8.5.53 8.5.54 9.0.34: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.103 8.5.53 8.5.54 8.5.55 9.0.34 9.0.35: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -7510,7 +7510,7 @@ dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
 dev-python/aodhclient 1.2.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.5: Namespace control and lazy-import mechanism
 dev-python/apispec 0.35.0: A pluggable API specification generator.
-dev-python/appdirs 1.4.3-r1: Module for determining appropriate platform-specific dirs
+dev-python/appdirs 1.4.3-r1 1.4.4: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.25.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/argcomplete 1.11.0 1.11.1 1.11.1-r1: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
@@ -8484,7 +8484,7 @@ dev-python/pysvn 1.8.0 1.9.11: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.05.01_pre20160529: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 3.10.1 4.5.0 4.6.9 5.4.1: Simple powerful testing with Python
+dev-python/pytest 3.10.1 4.5.0 4.6.9 4.6.10 5.4.1: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.3.0 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.10.0 0.11.0 0.12.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
@@ -8898,7 +8898,7 @@ dev-python/txtorcon 0.19.3-r1 20.0.0: Twisted-based Tor controller client, with 
 dev-python/typed-ast 1.4.1: Python typed-ast backported
 dev-python/typing 3.7.4.1: Type Hints for Python
 dev-python/typing-extensions 3.7.4.1: Type Hint extensions from Python 3.7 backported to 3.5/3.6
-dev-python/tzlocal 2.0.0: tzinfo object for the local timezone
+dev-python/tzlocal 2.0.0 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.5.2: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ubelt 0.8.8: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
 dev-python/ujson 1.35-r1 2.0.3: Ultra fast JSON encoder and decoder for Python
@@ -13126,7 +13126,7 @@ media-plugins/gst-plugins-libnice 0.1.15-r100: GStreamer plugin for ICE (RFC 524
 media-plugins/gst-plugins-libpng 1.14.5 1.16.2: PNG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-libvisual 1.14.5 1.16.2: Visualization elements for GStreamer
 media-plugins/gst-plugins-lv2 1.14.5 1.16.2: Lv2 elements for Gstreamer
-media-plugins/gst-plugins-meta 1.14.3: Meta ebuild to pull in gst plugins for apps
+media-plugins/gst-plugins-meta 1.14.3 1.16.2: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 1.14.5 1.16.2: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 1.14.3 1.16.2: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 1.14.5 1.16.2: MPEG-1/2 video encoding plugin for GStreamer
@@ -15280,7 +15280,7 @@ net-wireless/bladerf 2018.08 2019.07 9999: Libraries for supporing the BladeRF h
 net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.7.3 0.11.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.3.6: A Bluetooth configuration tool
-net-wireless/blueman 2.1.2 9999: Simple and intuitive GTK+ Bluetooth Manager
+net-wireless/blueman 2.1.2 2.1.3 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 5.54: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
@@ -17934,7 +17934,7 @@ www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.103 8.5.53 8.5.54 9.0.34: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.103 8.5.53 8.5.54 8.5.55 9.0.34 9.0.35: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.5.3 5.1-r1 6.0.3 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 6.0.1 6.0.6 6.1.1 6.3.1 6.3.2 6.4.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
