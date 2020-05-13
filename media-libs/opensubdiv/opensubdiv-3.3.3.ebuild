@@ -3,7 +3,10 @@
 
 EAPI=7
 
-inherit cmake-utils toolchain-funcs
+CMAKE_MAKEFILE_GENERATOR=emake
+PYTHON_COMPAT=( python2_7 )
+
+inherit cmake python-utils-r1 toolchain-funcs
 
 MY_PV="$(ver_rs "1-3" '_')"
 DESCRIPTION="An Open-Source subdivision surface library"
@@ -15,7 +18,9 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="cuda doc opencl openmp ptex tbb"
 
-RDEPEND="media-libs/glew:=
+RDEPEND="
+	${PYTHON_DEPENDS}
+	media-libs/glew:=
 	media-libs/glfw:=
 	cuda? ( dev-util/nvidia-cuda-toolkit:* )
 	opencl? ( virtual/opencl )
@@ -34,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.3.0-fix-quotes.patch"
 	"${FILESDIR}/${PN}-3.3.0-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${PN}-3.3.0-add-CUDA9-compatibility.patch"
+	"${FILESDIR}/${PN}-3.4.0-0001-documentation-CMakeLists.txt-force-python2.patch"
 )
 
 pkg_pretend() {
@@ -60,5 +66,5 @@ src_configure() {
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
