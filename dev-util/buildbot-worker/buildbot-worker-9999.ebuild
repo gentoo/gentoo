@@ -114,7 +114,7 @@ pkg_config() {
 	if [[ ! -d "${instance_path}" ]]; then
 		mkdir --parents "${instance_path}" || die "Unable to create directory ${buildworker_path}"
 	fi
-	chown --recursive buildbot "${instance_path}" || die "Setting permissions for instance failed"
+	chown --recursive buildbot:buildbot "${instance_path}" || die "Setting permissions for instance failed"
 	cp "${buildworker_path}/buildbot.tac.sample" "${instance_path}/buildbot.tac" \
 		|| die "Moving sample configuration failed"
 	ln --symbolic --relative "/etc/init.d/buildbot_worker" "/etc/init.d/buildbot_worker.${instance_name}" \
@@ -122,6 +122,8 @@ pkg_config() {
 
 	if [[ ! -d "${instance_log_path}" ]]; then
 		mkdir --parents "${instance_log_path}" || die "Unable to create directory ${instance_log_path}"
+		chown --recursive buildbot:buildbot "${instance_log_path}" \
+			|| die "Setting permissions for instance failed"
 	fi
 	ln --symbolic --relative "${instance_log_path}/twistd.log" "${instance_path}/twistd.log" \
 		|| die "Unable to create link to log file"
