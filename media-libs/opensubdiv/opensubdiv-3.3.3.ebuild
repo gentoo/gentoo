@@ -10,7 +10,7 @@ inherit cmake python-utils-r1 toolchain-funcs
 
 MY_PV="$(ver_rs "1-3" '_')"
 DESCRIPTION="An Open-Source subdivision surface library"
-HOMEPAGE="http://graphics.pixar.com/opensubdiv/"
+HOMEPAGE="https://graphics.pixar.com/opensubdiv/docs/intro.html"
 SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
