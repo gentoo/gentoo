@@ -14086,7 +14086,7 @@ net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021-r1: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
-net-analyzer/openbsd-netcat 1.105 1.105-r1 1.190: The OpenBSD network swiss army knife
+net-analyzer/openbsd-netcat 1.105 1.105-r1 1.190 1.195: The OpenBSD network swiss army knife
 net-analyzer/openvas-scanner 6.0.1 7.0.0: Open Vulnerability Assessment Scanner
 net-analyzer/opsgenie-lamp 2.5.1_p20181102: command line client for the opsgenie service
 net-analyzer/ospd 2.0.0-r1: Base class for scanner wrappers,communication protocol for GVM
