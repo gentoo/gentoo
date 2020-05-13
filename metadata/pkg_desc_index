@@ -7511,7 +7511,7 @@ dev-python/ansimarkup 1.4.0: XML-like markup for producing colored terminal text
 dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
 dev-python/aodhclient 1.2.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.5: Namespace control and lazy-import mechanism
-dev-python/apispec 0.35.0: A pluggable API specification generator.
+dev-python/apispec 0.35.0 3.3.0: A pluggable API specification generator.
 dev-python/appdirs 1.4.3-r1 1.4.4: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.25.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/argcomplete 1.11.0 1.11.1 1.11.1-r1: Bash tab completion for argparse
@@ -12173,7 +12173,7 @@ mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.8 2.1: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5 1.0.13: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.92.3 4.93.0.4-r1: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.93.0.4-r1: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.7-r1 1.8.8 1.8.10: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
@@ -17348,7 +17348,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.32 5.4.39 5.4.40 5.6.11 5.6.12: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.39 5.4.40 5.6.11 5.6.12: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.222 4.4.223 4.9.221 4.9.222 4.9.223 4.14.178 4.14.179 4.14.180 4.19.113 4.19.114 4.19.115 4.19.116 4.19.117 4.19.118 4.19.119 4.19.120 4.19.121 4.19.122 5.4.28 5.4.29 5.4.30 5.4.31 5.4.32 5.4.33 5.4.34 5.4.35 5.4.36 5.4.37 5.4.38 5.4.39 5.4.40 5.5.19 5.6.2 5.6.3 5.6.4 5.6.5 5.6.6 5.6.7 5.6.8 5.6.9 5.6.10 5.6.11 5.6.12: Full sources including the Gentoo patchset for the 5.6 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.222 4.4.223 4.9.221 4.9.222 4.9.223 4.14.178 4.14.179 4.14.180 4.19.120 4.19.121 4.19.122 5.4.38 5.4.39 5.4.40 5.5.19 5.6.9 5.6.10 5.6.11 5.6.12: Full sources including the Gentoo patchset for the 5.6 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3 5.7_rc4 5.7_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
