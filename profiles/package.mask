@@ -834,7 +834,7 @@ www-plugins/passff
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
 # python2_7 out of default PYTHON_TARGETS first.
->=dev-python/setuptools-45.0.0
+~dev-python/setuptools-46.1.3
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-01-13)
 # Current versioning breaks portage logic and prevents
