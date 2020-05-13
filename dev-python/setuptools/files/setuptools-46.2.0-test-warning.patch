@@ -1,0 +1,82 @@
+From 56bcce894e99059a8abda29d8b919b0bee7fd1b9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Tue, 12 May 2020 13:33:04 +0200
+Subject: [PATCH] Reuse @ack_2to3 in TestDevelop.test_2to3_user_mode
+
+Fixes https://github.com/pypa/setuptools/issues/2100
+---
+ changelog.d/2105.misc.rst        | 1 +
+ setuptools/tests/__init__.py     | 4 +++-
+ setuptools/tests/test_develop.py | 2 ++
+ setuptools/tests/test_test.py    | 4 +---
+ 4 files changed, 7 insertions(+), 4 deletions(-)
+ create mode 100644 changelog.d/2105.misc.rst
+
+diff --git a/changelog.d/2105.misc.rst b/changelog.d/2105.misc.rst
+new file mode 100644
+index 000000000..75eaf2cb3
+--- /dev/null
++++ b/changelog.d/2105.misc.rst
+@@ -0,0 +1 @@
++Filter ``2to3`` deprecation warnings from ``TestDevelop.test_2to3_user_mode``.
+diff --git a/setuptools/tests/__init__.py b/setuptools/tests/__init__.py
+index 9c77b51f8..6377d7857 100644
+--- a/setuptools/tests/__init__.py
++++ b/setuptools/tests/__init__.py
+@@ -6,7 +6,7 @@
+ 
+ 
+ __all__ = [
+-    'fail_on_ascii', 'py2_only', 'py3_only'
++    'fail_on_ascii', 'py2_only', 'py3_only', 'ack_2to3'
+ ]
+ 
+ 
+@@ -16,3 +16,5 @@
+ 
+ py2_only = pytest.mark.skipif(not PY2, reason="Test runs on Python 2 only")
+ py3_only = pytest.mark.skipif(not PY3, reason="Test runs on Python 3 only")
++
++ack_2to3 = pytest.mark.filterwarnings('ignore:2to3 support is deprecated')
+diff --git a/setuptools/tests/test_develop.py b/setuptools/tests/test_develop.py
+index 792975fd1..bb89a865b 100644
+--- a/setuptools/tests/test_develop.py
++++ b/setuptools/tests/test_develop.py
+@@ -17,6 +17,7 @@
+ 
+ from setuptools.command.develop import develop
+ from setuptools.dist import Distribution
++from setuptools.tests import ack_2to3
+ from . import contexts
+ from . import namespaces
+ 
+@@ -65,6 +66,7 @@ class TestDevelop:
+     @pytest.mark.skipif(
+         in_virtualenv or in_venv,
+         reason="Cannot run when invoked in a virtualenv or venv")
++    @ack_2to3
+     def test_2to3_user_mode(self, test_env):
+         settings = dict(
+             name='foo',
+diff --git a/setuptools/tests/test_test.py b/setuptools/tests/test_test.py
+index 0f77d8ff3..892fd120d 100644
+--- a/setuptools/tests/test_test.py
++++ b/setuptools/tests/test_test.py
+@@ -10,6 +10,7 @@
+ 
+ from setuptools.command.test import test
+ from setuptools.dist import Distribution
++from setuptools.tests import ack_2to3
+ 
+ from .textwrap import DALS
+ 
+@@ -73,9 +74,6 @@ def quiet_log():
+     log.set_verbosity(0)
+ 
+ 
+-ack_2to3 = pytest.mark.filterwarnings('ignore:2to3 support is deprecated')
+-
+-
+ @pytest.mark.usefixtures('sample_test', 'quiet_log')
+ @ack_2to3
+ def test_test(capfd):
