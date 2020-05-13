@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install
 DEPEND=>=dev-libs/ucl-1.03 sys-libs/zlib !app-arch/upx-bin dev-lang/perl
 DESCRIPTION=Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
 EAPI=7
-HOMEPAGE=http://upx.github.io/
+HOMEPAGE=https://upx.github.io/
 KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2+ UPX-exception
 RDEPEND=>=dev-libs/ucl-1.03 sys-libs/zlib !app-arch/upx-bin
 SLOT=0
 SRC_URI=https://github.com/upx/upx/releases/download/v3.96/upx-3.96-src.tar.xz
 _eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=5b1faeee1ad30d0a3abe882832d064d3
+_md5_=88d1788fbff3dd44c1db59b85f1ea4f9
