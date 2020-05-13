@@ -34,3 +34,4 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
 	lz4? ( dev-ros/roslz4[${PYTHON_USEDEP}] )"
+PATCHES=( "${FILESDIR}/pycrypto.patch" )
