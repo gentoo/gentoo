@@ -18,7 +18,7 @@ SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.t
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="cuda doc examples opencl openmp ptex tbb"
+IUSE="cuda doc examples opencl openmp ptex tbb test"
 
 RDEPEND="
 	${PYTHON_DEPENDS}
@@ -49,6 +49,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-0001-documentation-CMakeLists.txt-force-python2.patch"
 )
 
+RESTRICT="!test? ( test )"
+
 pkg_pretend() {
 	if use cuda; then
 		[[ $(gcc-major-version) -gt 8 ]] && \
@@ -63,16 +65,19 @@ pkg_setup() {
 }
 
 src_configure() {
+	# GLTESTS are disabled as portage is unable to open a display during test phase
 	local mycmakeargs=(
 		-DNO_CLEW=1
 		-DNO_DOC=$(usex !doc)
 		-DNO_EXAMPLES=$(usex !examples)
+		-DNO_GLTESTS=ON
 		-DNO_TBB=$(usex !tbb)
 		-DNO_PTEX=$(usex !ptex)
 		-DNO_OMP=$(usex !openmp)
 		-DNO_OPENCL=$(usex !opencl)
 		-DNO_CUDA=$(usex !cuda)
-		-DNO_REGRESSION=1 # They don't work with certain settings
+		-DNO_REGRESSION=$(usex !test)
+		-DNO_TESTS=$(usex !test)
 		-DNO_TUTORIALS=1 # They install illegally. Need to find a better solution.
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
