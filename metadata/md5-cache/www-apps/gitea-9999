@@ -1,14 +1,14 @@
-BDEPEND=dev-lang/go >=dev-lang/go-1.10 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install prepare test unpack
+BDEPEND=dev-lang/go >=net-libs/nodejs-10[npm] filecaps? ( sys-libs/libcap ) >=dev-lang/go-1.10 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install postinst prepare test unpack
 DEPEND=pam? ( sys-libs/pam )
 DESCRIPTION=A painless self-hosted Git service
 EAPI=7
 HOMEPAGE=https://gitea.io
-IUSE=+acct pam sqlite
+IUSE=+acct pam sqlite +filecaps
 LICENSE=Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0
 PROPERTIES=live
-RDEPEND=pam? ( sys-libs/pam ) acct? ( acct-group/git acct-user/git[gitea] ) dev-vcs/git virtual/tmpfiles
+RDEPEND=pam? ( sys-libs/pam ) acct? ( acct-group/git acct-user/git[gitea] ) dev-vcs/git filecaps? ( sys-libs/libcap ) virtual/tmpfiles
 RESTRICT=strip
 SLOT=0
-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ab136d78bcb07a800f4627673e241c6b
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=37f6ba5c86e869fffabf5991372377c5

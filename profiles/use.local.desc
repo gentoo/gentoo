@@ -8609,6 +8609,7 @@ www-apps/cgit:highlight - Enable source code highlighting
 www-apps/cgit:lua - Enable support for Lua scripting
 www-apps/drupal:uploadprogress - Install dev-php/pecl-uploadprogress package
 www-apps/gitea:acct - User and group management via acct-*/git packages
+www-apps/gitea:build-client - Build the client code, instead of using a precompiled one
 www-apps/gitit:network-uri - Get Network.URI from the network-uri package.
 www-apps/gitit:plugins - enables optional plugin runtime loader
 www-apps/hugo:sass - Enable SASS/SCSS support

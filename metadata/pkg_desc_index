@@ -1369,7 +1369,7 @@ app-editors/qemacs 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX e
 app-editors/qhexedit2 0.8.4 0.8.4_p20170719 0.8.6_p20190316: Hex editor library, Qt application written in C++ with Python bindings
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
-app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
+app-editors/sandy 0.4 0.4-r1: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 4.1.3 4.2.0 4.2.1 4.3.2 4.3.3: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.15: Simple Hex EDitor
 app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup and prose
@@ -7613,7 +7613,7 @@ dev-python/cfn-python-lint 0.21.6 0.30.1: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.1 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
-dev-python/chameleon 3.7.0: Fast HTML/XML template compiler for Python
+dev-python/chameleon 3.7.0 3.7.1: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.3.0-r3: Python attributes without the boilerplate
 dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
@@ -7720,7 +7720,7 @@ dev-python/django-durationfield 0.5.4: Reusable app for adding a DurationField t
 dev-python/django-filter 2.2.0: Django app allowing declarative dynamic QuerySet filtering from URL parameters
 dev-python/django-js-asset 1.2.2: script tag with additional attributes for django.forms.Media
 dev-python/django-mptt 0.11.0: utilities for modified preorder tree traversal and trees of model instances
-dev-python/django-otp 0.9.0: Django framework adding two-factor authentication using one-time passwords
+dev-python/django-otp 0.9.0 0.9.1: Django framework adding two-factor authentication using one-time passwords
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
 dev-python/django-prometheus 2.0.0: Library to export django metrics for prometheus
 dev-python/django-redis 4.10.0: Full featured redis cache backend for Django.
@@ -8058,8 +8058,8 @@ dev-python/mako 1.1.2: A Python templating language
 dev-python/mamba 0.8.6-r1 0.11.0: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
-dev-python/markdown 2.6.11 3.1.1-r1 3.2.1: Python implementation of the markdown markup language
-dev-python/markdown2 2.3.0 2.3.8: Python Markdown language reimplementation
+dev-python/markdown 2.6.11 3.1.1-r1 3.2.1 3.2.2: Python implementation of the markdown markup language
+dev-python/markdown2 2.3.0 2.3.8 2.3.9: Python Markdown language reimplementation
 dev-python/markups 3.0.0: A wrapper around various text markups
 dev-python/markupsafe 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 2.20.5 3.0.1 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
@@ -8250,7 +8250,7 @@ dev-python/pbr 3.1.1 4.1.1 4.2.0-r1 4.2.0-r3 5.1.1: Inject some useful and sensi
 dev-python/pcapy 0.11.2: Python pcap extension
 dev-python/pdfrw 0.4: PDF file reader/writer library
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
-dev-python/pebble 4.5.2: Threading and multiprocessing eye-candy
+dev-python/pebble 4.5.2 4.5.3: Threading and multiprocessing eye-candy
 dev-python/pecan 1.3.3-r2: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
 dev-python/peewee 3.1.0 3.13.2: Small Python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
@@ -12172,7 +12172,7 @@ mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.8 2.1: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5 1.0.13: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.92.3 4.93.0.4: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.92.3 4.93.0.4-r1: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.7-r1 1.8.8 1.8.10: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
@@ -13931,7 +13931,7 @@ net-analyzer/braa 0.82 0.82-r1: Quick and dirty mass SNMP scanner
 net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
-net-analyzer/bwping 1.15 1.16: A tool to measure bandwidth and RTT between two hosts using ICMP
+net-analyzer/bwping 1.15 1.16 1.17: A tool to measure bandwidth and RTT between two hosts using ICMP
 net-analyzer/cacti 1.2.11 1.2.12: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 1.2.11 1.2.12 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
@@ -17792,7 +17792,7 @@ www-apps/dokuwiki 20160626e 20170219e 20180422a 20180422b: DokuWiki is a simple 
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.69 8.7.12 8.7.13 8.8.4 8.8.5: PHP-based open-source platform and content management system
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
-www-apps/gitea 1.10.6 9999: A painless self-hosted Git service
+www-apps/gitea 1.10.6 1.11.5 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.7.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.69.0: The world's fastest framework for building websites
