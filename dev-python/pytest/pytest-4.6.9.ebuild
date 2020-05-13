@@ -52,6 +52,9 @@ DEPEND="
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		!!dev-python/flaky
+		!!dev-python/pytest-aiohttp
+		!!dev-python/pytest-asyncio
+		!!dev-python/pytest-django
 	)"
 
 PATCHES=(
@@ -69,6 +72,8 @@ python_prepare_all() {
 }
 
 python_test() {
+	distutils_install_for_testing
+
 	# In v4.1.1, pytest started being picky about its own verbosity options.
 	# running pytest on itself with -vv made 3 tests fail. This is why we don't
 	# have it below.
