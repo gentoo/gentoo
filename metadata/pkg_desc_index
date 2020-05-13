@@ -11778,7 +11778,7 @@ kde-apps/kigo 19.12.3 20.04.0: Go game by KDE
 kde-apps/killbots 19.12.3 20.04.0: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 19.12.3 20.04.0: Generator of HTML image maps
 kde-apps/kimap 19.12.3 20.04.0: Library for interacting with IMAP servers
-kde-apps/kio-extras 19.12.3 19.12.3-r1 20.04.0-r1: KIO plugins present a filesystem-like view of arbitrary data
+kde-apps/kio-extras 19.12.3-r1 20.04.0-r1: KIO plugins present a filesystem-like view of arbitrary data
 kde-apps/kipi-plugins 19.12.3 20.04.0: Plugins for the KDE Image Plugin Interface
 kde-apps/kiriki 19.12.3 20.04.0: An addictive and fun dice game
 kde-apps/kiten 19.12.3 20.04.0: KDE Japanese dictionary and reference
