@@ -3,7 +3,7 @@
 
 EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -48,8 +48,9 @@ python_prepare_all() {
 	# don't run integration tests
 	rm setuptools/tests/test_integration.py || die
 
-	# xpass-es for me
-	sed -i -e '/xfail.*710/d' setuptools/tests/test_archive_util.py || die
+	# xpass-es for me on py3
+	sed -e '/xfail.*710/s:(:(six.PY2, :' \
+		-i setuptools/tests/test_archive_util.py || die
 
 	# avoid pointless dep on flake8
 	sed -i -e 's:--flake8::' pytest.ini || die
