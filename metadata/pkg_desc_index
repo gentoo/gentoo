@@ -17881,7 +17881,7 @@ www-client/vivaldi 3.0.1874.38_p1: A browser for our friends
 www-client/vivaldi-snapshot 3.1.1906.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
-www-misc/awstats 7.4 7.8: AWStats is short for Advanced Web Statistics
+www-misc/awstats 7.4 7.8 7.8-r1: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r3: bookmarksync synchronizes various browser bookmark files
 www-misc/buku 4.3: Powerful command-line bookmark manager
 www-misc/fcgiwrap 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
