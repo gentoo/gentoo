@@ -12,7 +12,7 @@ HOMEPAGE="https://www.awstats.org/"
 SRC_URI="https://www.awstats.org/files/${P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 LICENSE="GPL-3"
-KEYWORDS="~alpha ~amd64 ~hppa ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ppc ~sparc x86"
 IUSE="geoip ipv6"
 
 SLOT="0"
