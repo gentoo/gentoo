@@ -5,6 +5,7 @@
 		<email>grobian@gentoo.org</email>
 	</maintainer>
 	<use>
+		<flag name="autocrypt">Enable autocrypt.org support</flag>
 		<flag name="berkdb">Enable <pkg>sys-libs/db</pkg> database backend
 			for header caching</flag>
 		<flag name="gdbm">Enable <pkg>sys-libs/gdbm</pkg> database backend
