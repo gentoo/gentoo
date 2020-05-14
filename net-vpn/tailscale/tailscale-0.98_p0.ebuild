@@ -39,7 +39,7 @@ src_install() {
 
 	systemd_dounit systemd/*.service
 	insinto /etc/default
-	newins systemd/tailscaled.defaults ${PN}
+	newins systemd/tailscaled.defaults tailscaled
 	keepdir /var/lib/${PN}
 	fperms 0750 /var/lib/${PN}
 
