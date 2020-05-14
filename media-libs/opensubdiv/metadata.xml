@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		An Open-Source subdivision surface library.
+		A group of libraries for evaluating subdivision surfaces with high numerical precision and framerates.
 	</longdescription>
 	<use>
 		<flag name="cuda">
