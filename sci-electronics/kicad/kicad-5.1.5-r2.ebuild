@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	github? ( net-misc/curl:=[ssl] )
 	ngspice? (
-		sci-electronics/ngspice[shared]
+		>sci-electronics/ngspice-27[shared]
 	)
 	occ? ( >=sci-libs/opencascade-6.8.0:= )
 	oce? ( sci-libs/oce )
@@ -57,6 +57,9 @@ CHECKREQS_DISK_BUILD="800M"
 PATCHES=(
 	"${FILESDIR}"/"${PN}-5.1.5-help.patch"
 	"${FILESDIR}"/"${PN}-5.1.5-ninja-build.patch"
+	"${FILESDIR}"/"${PN}-5.1.5-strict-aliasing.patch"
+	"${FILESDIR}"/"${PN}-algorithm-header.patch"
+	"${FILESDIR}"/"${PN}-metainfo.patch"
 	"${FILESDIR}"/"ldflags.patch"
 )
 
@@ -67,11 +70,22 @@ pkg_setup() {
 	check-reqs_pkg_setup
 }
 
+src_unpack() {
+	default_src_unpack
+	# For the metainfo patch to work the kicad.appdata.xml has to be moved to
+	# avoid QA issue.  This is needed because /usr/share/appdata location is
+	# deprecated, it should not be used anymore by new software.
+	# Appdata/Metainfo files should be installed into /usr/share/metainfo
+	# directory. as per
+	# https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html
+	mv "${S}/resources/linux/appdata" "${S}/resources/linux/metainfo" || die "Appdata move failed"
+}
+
 src_configure() {
 	xdg_environment_reset
 
 	local mycmakeargs=(
-		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${P}"
+		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PF}"
 		-DKICAD_HELP="${EPREFIX}/usr/share/doc/${PN}-doc-${PV}"
 		-DBUILD_GITHUB_PLUGIN="$(usex github)"
 		-DKICAD_SCRIPTING="$(usex python)"
@@ -84,6 +98,7 @@ src_configure() {
 		-DKICAD_USE_OCC="$(usex occ)"
 		-DKICAD_USE_OCE="$(usex oce)"
 		-DKICAD_INSTALL_DEMOS="$(usex examples)"
+		-DCMAKE_SKIP_RPATH="ON"
 	)
 	use python && mycmakeargs+=(
 		-DPYTHON_DEST="$(python_get_sitedir)"
