@@ -47,7 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.7-bashcomp.patch
 )
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs --no-autodoc
 
 python_test() {
 	# Tests have non-standard assumptions about PYTHONPATH,
