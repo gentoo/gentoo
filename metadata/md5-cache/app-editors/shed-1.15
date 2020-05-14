@@ -1,5 +1,6 @@
 BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=prepare
+DEPEND=sys-libs/ncurses:0=
 DESCRIPTION=Simple Hex EDitor
 EAPI=7
 HOMEPAGE=http://shed.sourceforge.net/
@@ -9,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/shed/shed-1.15.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=46a96af7b8f7b149a7faee5cc5029174
+_md5_=5839976db81502fa68ccc525dcd60865
