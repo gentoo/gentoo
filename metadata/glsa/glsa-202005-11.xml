@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-11">
+  <title>VLC: Buffer overflow</title>
+  <synopsis>A buffer overflow in VLC might allow local or remote attacker(s) to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>2020-05-14</announced>
+  <revised count="1">2020-05-14</revised>
+  <bug>721940</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">3.0.10</unaffected>
+      <vulnerable range="lt">3.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VLC is a cross-platform media player and streaming server.</p>
+  </background>
+  <description>
+    <p>A buffer overflow in DecodeBlock in sdl_image.c was discovered.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote user could craft a specifically crafted image file that could
+      execute arbitrary code or cause denial of service.
+    </p>
+  </impact>
+  <workaround>
+    <p>The user should refrain from opening files from untrusted third parties
+      or accessing untrusted remote sites (or disable the VLC browser plugins),
+      until they upgrade.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All VLC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-3.0.10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19721">CVE-2019-19721</uri>
+    <uri link="https://git.videolan.org/?p=vlc/vlc-3.0.git;a=commit;h=72afe7ebd8305bf4f5360293b8621cde52ec506b">
+      Upstream patch
+    </uri>
+    <uri link="https://www.videolan.org/security/sb-vlc309.html">
+      VideoLAN-SB-VLC-309
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-12T16:12:42Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-05-14T22:24:24Z">sam_c</metadata>
+</glsa>

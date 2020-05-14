@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-08">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could allow privilege escalation.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2020-05-14</announced>
+  <revised count="1">2020-05-14</revised>
+  <bug>717446</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.12.2-r2</unaffected>
+      <vulnerable range="lt">4.12.2-r2</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.12.2-r2</unaffected>
+      <vulnerable range="lt">4.12.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.12.2-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11739">CVE-2020-11739</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11740">CVE-2020-11740</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11741">CVE-2020-11741</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11742">CVE-2020-11742</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11743">CVE-2020-11743</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-04T11:20:31Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-05-14T22:15:45Z">sam_c</metadata>
+</glsa>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-10">
+  <title>libmicrodns: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libmicrodns, the worst
+    of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">libmicrodns</product>
+  <announced>2020-05-14</announced>
+  <revised count="1">2020-05-14</revised>
+  <bug>714606</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libmicrodns" auto="yes" arch="*">
+      <unaffected range="ge">0.1.2</unaffected>
+      <vulnerable range="lt">0.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libmicrodns is an mDNS library, focused on being simple and
+      cross-platform.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libmicrodns. Please
+      review the CVE identifiers and the upstream advisory referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libmicrodns users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libmicrodns-0.1.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6071">CVE-2020-6071</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6072">CVE-2020-6072</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6073">CVE-2020-6073</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6077">CVE-2020-6077</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6078">CVE-2020-6078</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6079">CVE-2020-6079</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6080">CVE-2020-6080</uri>
+    <uri link="https://www.videolan.org/security/sb-vlc309.html">
+      VideoLAN-SB-VLC-309
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-13T00:35:54Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-05-14T22:21:44Z">sam_c</metadata>
+</glsa>
