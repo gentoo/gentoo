@@ -18,7 +18,7 @@ SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.t
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="cuda doc examples opencl openmp ptex tbb test"
+IUSE="cuda doc examples opencl openmp ptex tbb test tutorials"
 
 RDEPEND="
 	${PYTHON_DEPENDS}
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.3.0-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${PN}-3.3.0-add-CUDA9-compatibility.patch"
 	"${FILESDIR}/${PN}-3.4.0-0001-documentation-CMakeLists.txt-force-python2.patch"
+	"${FILESDIR}/${P}-install-tutorials-into-bin.patch"
 )
 
 RESTRICT="!test? ( test )"
@@ -78,7 +79,7 @@ src_configure() {
 		-DNO_CUDA=$(usex !cuda)
 		-DNO_REGRESSION=$(usex !test)
 		-DNO_TESTS=$(usex !test)
-		-DNO_TUTORIALS=1 # They install illegally. Need to find a better solution.
+		-DNO_TUTORIALS=$(usex !tutorials)
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 	)
