@@ -15,13 +15,17 @@ SLOT="2.2"
 
 EMULTILIB_PKG="true"
 
+# Gentoo patchset (ignored for live ebuilds)
+PATCH_VER=16
+PATCH_DEV=slyfox
+
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
 	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 	KEYWORDS=""
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 fi
 
 RELEASE_VER=${PV}
@@ -30,11 +34,6 @@ GCC_BOOTSTRAP_VER=20180511
 
 LOCALE_GEN_VER=2.00
 
-# Gentoo patchset
-PATCH_VER=16
-PATCH_DEV=slyfox
-
-SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${LOCALE_GEN_VER}.tar.gz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
@@ -724,21 +723,35 @@ src_unpack() {
 
 	setup_env
 
-	if [[ -n ${EGIT_REPO_URI} ]] ; then
+	if [[ ${PV} == 9999* ]] ; then
+		EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/toolchain/glibc-patches.git"
+		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
+		git-r3_src_unpack
+		mv patches-git/9999 patches || die
+
+		EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
+		EGIT_CHECKOUT_DIR=${S}
 		git-r3_src_unpack
 	else
 		unpack ${P}.tar.xz
+
+		cd "${WORKDIR}" || die
+		unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
 	fi
 
 	cd "${WORKDIR}" || die
-	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
-
 	unpack locale-gen-${LOCALE_GEN_VER}.tar.gz
 }
 
 src_prepare() {
+	local patchsetname
 	if ! use vanilla ; then
-		elog "Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER}"
+		if [[ ${PV} == 9999* ]] ; then
+			patchsetname="from git master"
+		else
+			patchsetname="${RELEASE_VER}-${PATCH_VER}"
+		fi
+		elog "Applying Gentoo Glibc Patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
 	fi
@@ -750,10 +763,8 @@ src_prepare() {
 	cd "${WORKDIR}"
 	find . -name configure -exec touch {} +
 
-	# until the patchset is updated
-	rm -rf extra/locale || die
-
 	# move the external locale-gen to its old place
+	mkdir extra || die
 	mv locale-gen-${LOCALE_GEN_VER} extra/locale || die
 
 	eprefixify extra/locale/locale-gen
