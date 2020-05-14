@@ -15,7 +15,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 IUSE="+alsa +dbus enchant +hunspell libressl pulseaudio +spell wayland +X"
 
 RDEPEND="
