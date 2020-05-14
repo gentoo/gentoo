@@ -19,7 +19,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="static-libs"
 
-RDEPEND=">=media-libs/libdvdread-6.0.0[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/libdvdread-6.0.0:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 # To get pkg.m4 for eautoreconf #414391
 BDEPEND="
