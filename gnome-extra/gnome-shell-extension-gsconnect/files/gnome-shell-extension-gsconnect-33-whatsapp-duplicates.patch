@@ -1,0 +1,34 @@
+From 959799d934360f95a2e49223b64ffc77bba2736e Mon Sep 17 00:00:00 2001
+From: Andy Holmes <andrew.g.r.holmes@gmail.com>
+Date: Fri, 8 May 2020 21:26:19 -0700
+Subject: [PATCH] Shell Notifications: account for apps that insert newlines in
+ IDs
+
+We need to account for the totally reasonable practice of inserting
+literal newline characters in notification IDs, like WhatsApp does.
+
+Not doing so was resulting in such notifications failing to match as
+device notifications, allowing them to be duplicated in the message tray
+
+closes #788
+---
+ src/shell/notification.js | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/shell/notification.js b/src/shell/notification.js
+index e7a5f67ce..eef623a71 100644
+--- a/src/shell/notification.js
++++ b/src/shell/notification.js
+@@ -16,10 +16,10 @@ const APP_PATH = '/org/gnome/Shell/Extensions/GSConnect';
+ 
+ 
+ // deviceId Pattern (<device-id>|<remote-id>)
+-const DEVICE_REGEX = /^([^|]+)\|(.+)$/;
++const DEVICE_REGEX = /^([^|]+)\|([\s\S]+)$/;
+ 
+ // requestReplyId Pattern (<device-id>|<remote-id>)|<reply-id>)
+-const REPLY_REGEX = /^([^|]+)\|(.+)\|([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$/i;
++const REPLY_REGEX = /^([^|]+)\|([\s\S]+)\|([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$/i;
+ 
+ 
+ /**
