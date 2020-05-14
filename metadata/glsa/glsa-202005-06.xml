@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-06">
+  <title>LIVE555 Media Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in LIVE555 Media Server,
+    the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">live555</product>
+  <announced>2020-05-14</announced>
+  <revised count="1">2020-05-14</revised>
+  <bug>669276</bug>
+  <bug>677276</bug>
+  <bug>717722</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-plugins/live" auto="yes" arch="*">
+      <unaffected range="ge">2020.03.06</unaffected>
+      <vulnerable range="lt">2020.03.06</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LIVE555 Media Server is a set of libraries for multimedia streaming.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in LIVE555 Media Server.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LIVE555 Media Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-plugins/live-2020.03.06"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4013">CVE-2018-4013</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15232">CVE-2019-15232</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6256">CVE-2019-6256</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7314">CVE-2019-7314</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7733">CVE-2019-7733</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9215">CVE-2019-9215</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-04T11:34:40Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-05-14T22:04:59Z">sam_c</metadata>
+</glsa>
