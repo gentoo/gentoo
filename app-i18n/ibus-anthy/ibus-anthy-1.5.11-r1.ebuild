@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit gnome2-utils python-single-r1
+inherit gnome2-utils python-single-r1 xdg
 
 DESCRIPTION="Japanese Anthy engine for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ibus/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -24,8 +24,7 @@ RDEPEND="${PYTHON_DEPS}
 	')
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-util/intltool
-	virtual/pkgconfig
+BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 src_prepare() {
@@ -53,10 +52,12 @@ src_install() {
 }
 
 pkg_preinst() {
+	xdg_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	gnome2_icon_cache_update
 
 	if ! has_version app-dicts/kasumi; then
@@ -65,5 +66,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	xdg_pkg_postrm
 	gnome2_icon_cache_update
 }
