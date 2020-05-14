@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	github? ( net-misc/curl:=[ssl] )
 	ngspice? (
-		sci-electronics/ngspice[shared]
+		>sci-electronics/ngspice-27[shared]
 	)
 	occ? ( >=sci-libs/opencascade-6.8.0:= )
 	oce? ( sci-libs/oce )
