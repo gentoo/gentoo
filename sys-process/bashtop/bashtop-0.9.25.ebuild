@@ -12,11 +12,6 @@ SRC_URI="https://github.com/aristocratos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-DOCS=( README.md )
-
-DEPEND="${RDEPEND}"
-RDEPEND=""
 
 src_prepare() {
 	default
@@ -26,6 +21,6 @@ src_prepare() {
 
 pkg_postinst() {
 	optfeature "CPU Temperature support" sys-apps/lm-sensors
-	optfeature "Update news and Theme Downlaod feature" net-misc/curl
+	optfeature "Update news and Theme Download feature" net-misc/curl
 	optfeature "Disk Stats support" app-admin/sysstat
 }
