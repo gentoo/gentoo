@@ -15,9 +15,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">
-Z3 is a high-performance theorem prover being developed at Microsoft Research.
-  </longdescription>
   <use>
     <flag name="isabelle">Add integration support for the Isabelle/HOL
   theorem prover.</flag>
