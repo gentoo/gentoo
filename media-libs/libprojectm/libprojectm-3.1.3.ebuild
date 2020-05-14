@@ -22,6 +22,10 @@ LICENSE="LGPL-2"
 SLOT="0/2"
 IUSE="gles2 jack qt5 sdl"
 
+PATCHES=(
+	"${FILESDIR}/${P}-bashisms.patch"
+)
+
 RDEPEND="gles2? ( media-libs/mesa[gles2] )
 	media-libs/glm
 	media-libs/mesa[X(+)]
