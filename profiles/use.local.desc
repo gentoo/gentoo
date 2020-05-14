@@ -246,6 +246,7 @@ app-backup/bacula:bacula-nodir - Disable building of director
 app-backup/bacula:bacula-nosd - Disable building of storage daemon
 app-backup/bacula:batch-insert - Enable batch insert into data base
 app-backup/bacula:logwatch - Install support files for logwatch
+app-backup/bareos:ceph - Enable ceph support
 app-backup/bareos:cephfs - Enable cephfs storage backend
 app-backup/bareos:clientonly - Only install file-daemon (client)
 app-backup/bareos:director - Install director
