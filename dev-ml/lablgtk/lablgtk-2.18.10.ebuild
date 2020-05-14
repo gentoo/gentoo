@@ -26,6 +26,10 @@ BDEPEND="dev-ml/findlib
 
 DOCS=( CHANGES README CHANGES.API )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cflags.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
@@ -46,9 +50,9 @@ src_configure() {
 
 src_compile() {
 	# parallel build crashes
-	emake -j1 all
+	emake -j1 all CFLAGS="${CFLAGS}"
 	if use ocamlopt; then
-		emake -j1 opt
+		emake -j1 opt CFLAGS="${CFLAGS}"
 	fi
 }
 
