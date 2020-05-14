@@ -22,7 +22,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	<=dev-python/commonmark-0.5.4[${PYTHON_USEDEP}]
 	>=dev-python/joblib-0.9[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.11[${PYTHON_USEDEP},lapack]
 	>=dev-python/matplotlib-1.5[${PYTHON_USEDEP}]
@@ -30,7 +29,6 @@ RDEPEND="
 	dev-python/numpydoc[${PYTHON_USEDEP}]
 	>=dev-python/pandas-0.18[${PYTHON_USEDEP}]
 	>=dev-python/patsy-0.4[${PYTHON_USEDEP}]
-	>=dev-python/recommonmark-0.4[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	>=dev-python/theano-0.9[${PYTHON_USEDEP}]
 	>=dev-python/tqdm-4.8.4[${PYTHON_USEDEP}]
