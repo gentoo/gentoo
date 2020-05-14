@@ -16,7 +16,7 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="0/7" # libdvdread.so.VERSION
+SLOT="0/8" # libdvdread.so.VERSION
 IUSE="+css static-libs"
 
 RDEPEND="css? ( >=media-libs/libdvdcss-1.3.0[${MULTILIB_USEDEP}] )"
