@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-12">
+  <title>OpenSLP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSLP, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">openslp</product>
+  <announced>2020-05-14</announced>
+  <revised count="2">2020-05-14</revised>
+  <bug>662878</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openslp" auto="yes" arch="*">
+      <vulnerable range="le">2.0.0-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSLP is an open-source implementation of Service Location Protocol
+      (SLP).
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSLP. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for OpenSLP. We recommend that users
+      unmerge OpenSLP:
+      <code>
+        # emerge --unmerge "net-libs/openslp"
+      </code>
+      
+      <p>NOTE: The Gentoo developer(s) maintaining OpenSLP have discontinued
+        support at this time. It may be possible that a new Gentoo developer
+        will update OpenSLP at a later date. No known alternatives to OpenSLP
+        are in the tree at this time.
+      </p>
+    </p>
+    </resolution>
+    <references>
+      <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17833">
+        CVE-2017-17833
+      </uri>
+      <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5544">CVE-2019-5544</uri>
+    </references>
+    <metadata tag="requester" timestamp="2020-05-13T01:13:11Z">sam_c</metadata>
+    <metadata tag="submitter" timestamp="2020-05-14T22:31:01Z">sam_c</metadata>
+  </glsa>
