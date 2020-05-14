@@ -1,0 +1,23 @@
+From 2cfab017938e1cf44f633647eec2ccc2ed1da38b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 14 May 2020 10:35:01 +0200
+Subject: [PATCH] Fix missing <limits> include
+
+Add missing <limits> include for std::numeric_limits.  This fixes
+build failure after boost stopped implicitly including it for us.
+---
+ src/script/script.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/script/script.h b/src/script/script.h
+index bc64dc232..dd4e02ff4 100644
+--- a/src/script/script.h
++++ b/src/script/script.h
+@@ -27,6 +27,7 @@
+ #include "CBot/CBot.h"
+ 
+ #include <memory>
++#include <limits>
+ #include <string>
+ #include <boost/optional.hpp>
+ 

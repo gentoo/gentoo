@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,6 +36,11 @@ DEPEND="
 	openal? ( media-libs/openal )"
 RDEPEND="${DEPEND}
 	games-strategy/colobot-data"
+
+PATCHES=(
+	# https://github.com/colobot/colobot/pull/1300
+	"${FILESDIR}"/${P}-includes.patch
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
