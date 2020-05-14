@@ -7,4 +7,4 @@ LICENSE=GPL-2 LGPL-2 BSD-2
 RDEPEND=!app-emulation/qemu[qemu_user_targets_riscv64]
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/qemu-riscv64-bin-3.1.0-r4.tar.xz
-_md5_=ac0b1d2d6bce2b99cf522e39fee7b46d
+_md5_=661e9c1aa3735c7bffc016e1794bccee
