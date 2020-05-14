@@ -1,12 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit eutils multilib python-single-r1 systemd user
+inherit python-single-r1 systemd
 
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="http://www.bareos.org/"
@@ -23,6 +23,7 @@ REQUIRED_USE="!clientonly? ( || ( mysql postgres sqlite ) )"
 
 DEPEND="
 	!app-backup/bacula
+	acct-group/${PN}
 	cephfs? ( sys-cluster/ceph )
 	rados? ( sys-cluster/ceph )
 	rados-striper? ( >=sys-cluster/ceph-0.94.2 )
@@ -30,6 +31,7 @@ DEPEND="
 	lmdb? ( dev-db/lmdb )
 	dev-libs/gmp:0
 	!clientonly? (
+		acct-user/${PN}
 		postgres? ( dev-db/postgresql:*[threads] )
 		mysql? ( dev-db/mysql-connector-c:0= )
 		sqlite? ( dev-db/sqlite:3 )
@@ -88,26 +90,6 @@ pkg_setup() {
 	use mysql && export mydbtypes+="mysql"
 	use postgres && export mydbtypes+=" postgresql"
 	use sqlite && export mydbtypes+=" sqlite"
-
-	# create the daemon group and user
-	if [ -z "$(egetent group bareos 2>/dev/null)" ]; then
-		enewgroup bareos
-		einfo
-		einfo "The group 'bareos' has been created. Any users you add to this"
-		einfo "group have access to files created by the daemons."
-		einfo
-	fi
-
-	if ! use clientonly; then
-		if [ -z "$(egetent passwd bareos 2>/dev/null)" ]; then
-			enewuser bareos -1 -1 /var/lib/bareos bareos,disk,tape,cdrom,cdrw
-			einfo
-			einfo "The user 'bareos' has been created.  Please see the bareos manual"
-			einfo "for information about running bareos as a non-root user."
-			einfo
-		fi
-	fi
-
 	use python && python-single-r1_pkg_setup
 }
 
