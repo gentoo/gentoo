@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	sys-devel/gettext
-	doc? ( dev-python/sphinx )
+	doc? ( >=dev-python/sphinx-2 )
 	python? ( ${PYTHON_DEPS} )
 	test? ( ${RDEPEND} )
 "
@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/20200314-tilepath.patch
 	"${FILESDIR}"/20200314-big-endian.patch
 	"${FILESDIR}"/fontforge-doc-no-warn-error.patch
+	"${FILESDIR}"/20200314-MacServiceReadFDs.patch
 )
 
 pkg_setup() {

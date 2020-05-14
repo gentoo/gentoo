@@ -4,11 +4,11 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python-single-r1
+inherit python-single-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/yasm/yasm.git"
-	inherit git-r3
+	inherit autotools git-r3
 else
 	SRC_URI="http://www.tortall.net/projects/yasm/releases/${P}.tar.gz"
 	KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
@@ -50,16 +50,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	if ! [[ ${PV} == 9999* ]]; then
-		sed -i -e 's:xmlto:&dIsAbLe:' configure.ac || die #459940
-	fi
-
-	# ksh doesn't grok $(xxx), makes aclocal fail
-	sed -i -e '1c\#!/usr/bin/env sh' YASM-VERSION-GEN.sh || die
-
-	eautoreconf
-
 	if [[ ${PV} == 9999* ]]; then
+		eautoreconf
 		./modules/arch/x86/gen_x86_insn.py || die
 	fi
 }
