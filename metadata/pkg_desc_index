@@ -557,7 +557,7 @@ app-admin/rex 1.9.0 1.10.0 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.1911.0-r1 8.2004.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2019.2.4 3000.2-r4: Salt is a remote execution and configuration manager
+app-admin/salt 2019.2.5 3000.2-r4 3000.3: Salt is a remote execution and configuration manager
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.2.1 4.2.2 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
@@ -12488,7 +12488,7 @@ media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.1.1: Tools and a library for creating flame fractal images
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
-media-gfx/fontforge 20170731-r5 20190801 20200314: postscript font editor and converter
+media-gfx/fontforge 20200314: postscript font editor and converter
 media-gfx/fontypython 0.4.4-r3: Font preview application
 media-gfx/fotowall 1.0: Qt5 tool for creating wallpapers
 media-gfx/fotoxx 15.05: Program for improving image files made with a digital camera
