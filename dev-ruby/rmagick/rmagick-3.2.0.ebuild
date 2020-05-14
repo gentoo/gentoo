@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/gemhome/rmagick"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 ~x86 ~x86-macos"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86 ~x86-macos"
 IUSE="doc"
 
 RDEPEND+=" >=media-gfx/imagemagick-6.9.0:= =media-gfx/imagemagick-6*"
