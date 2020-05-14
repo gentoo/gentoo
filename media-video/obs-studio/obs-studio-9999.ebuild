@@ -118,6 +118,13 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_install() {
+	cmake-utils_src_install
+	#external plugins may need some things not installed by default, install them here
+	insinto /usr/include/obs/UI/obs-frontend-api
+	doins UI/obs-frontend-api/obs-frontend-api.h
+}
+
 pkg_postinst() {
 	xdg_icon_cache_update
 
