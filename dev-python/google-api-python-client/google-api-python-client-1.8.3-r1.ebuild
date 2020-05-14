@@ -33,6 +33,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/google-auth-httplib2[${PYTHON_USEDEP}]
+		dev-python/oauth2client[${PYTHON_USEDEP}]
 		dev-python/unittest2[${PYTHON_USEDEP}]
 	)"
 
