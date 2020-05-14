@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -17,6 +17,10 @@ DEPEND=">=sys-devel/binutils-2.31.1-r4"
 RDEPEND=""
 
 DIETHOME="/usr/diet"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.34-respect-cc-env.patch"
+)
 
 src_prepare() {
 	default

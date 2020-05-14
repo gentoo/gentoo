@@ -1,0 +1,84 @@
+diff --git a/Makefile b/Makefile
+index a4a7a2b..7ca733c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -117,10 +117,10 @@ all: $(WHAT)
+ profiling: $(OBJDIR)/libgmon.a $(OBJDIR)/pstart.o
+ 
+ DEFAULTCFLAGS=-pipe -nostdinc -D_REENTRANT $(EXTRACFLAGS)
+-CFLAGS=$(DEFAULTCFLAGS)
++CFLAGS += $(DEFAULTCFLAGS)
+ CROSS=
+ 
+-CC=gcc
++CC?=gcc
+ CCC=$(CROSS)$(CC)
+ STRIP=$(COMMENT) $(CROSS)strip
+ INC=-I. -isystem include
+@@ -157,7 +157,7 @@ CFLAGS+=-O -fomit-frame-pointer
+ endif
+ 
+ ifneq ($(DEBUG),)
+-CFLAGS = -g $(EXTRACFLAGS)
++CFLAGS ?= -g $(EXTRACFLAGS)
+ STRIP = :
+ endif
+ CFLAGS += -W -Wall -Wextra -Wchar-subscripts -Wmissing-prototypes -Wmissing-declarations -Wno-switch -Wno-unused -Wredundant-decls -Wshadow
+@@ -238,34 +238,34 @@ $(OBJDIR)/__longjmp.o $(OBJDIR)/setjmp.o \
+ $(OBJDIR)/clone.o
+ 
+ $(OBJDIR)/dietlibc.a: $(DIETLIBC_OBJ) $(OBJDIR)/start.o
+-	$(CROSS)ar cru $@ $(DIETLIBC_OBJ)
++	$(CROSS)$(AR) cru $@ $(DIETLIBC_OBJ)
+ 
+ $(OBJDIR)/librpc.a: $(LIBRPCOBJ)
+-	$(CROSS)ar cru $@ $(LIBRPCOBJ)
++	$(CROSS)$(AR) cru $@ $(LIBRPCOBJ)
+ 
+ $(OBJDIR)/libcrypt.a: | $(OBJDIR)
+ 	touch dummy.c
+ 	$(CCC) -c dummy.c
+-	$(CROSS)ar cru $@ dummy.o
++	$(CROSS)$(AR) cru $@ dummy.o
+ 	rm -f dummy.c dummy.o
+ 
+ dummy.o:
+ 
+ LIBLATIN1_OBJS=$(patsubst liblatin1/%.c,$(OBJDIR)/%.o,$(sort $(wildcard liblatin1/*.c)))
+ $(OBJDIR)/liblatin1.a: $(LIBLATIN1_OBJS)
+-	$(CROSS)ar cru $@ $^
++	$(CROSS)$(AR) cru $@ $^
+ 
+ $(OBJDIR)/libgmon.a: $(LIBGMON_OBJS)
+-	$(CROSS)ar cru $@ $^
++	$(CROSS)$(AR) cru $@ $^
+ 
+ $(OBJDIR)/libpthread.a: $(LIBPTHREAD_OBJS) dietfeatures.h
+-	$(CROSS)ar cru $@ $(LIBPTHREAD_OBJS)
++	$(CROSS)$(AR) cru $@ $(LIBPTHREAD_OBJS)
+ 
+ $(OBJDIR)/libcompat.a: $(LIBCOMPATOBJ)
+-	$(CROSS)ar cru $@ $(LIBCOMPATOBJ)
++	$(CROSS)$(AR) cru $@ $(LIBCOMPATOBJ)
+ 
+ $(OBJDIR)/libm.a: $(LIBMATHOBJ)
+-	$(CROSS)ar cru $@ $(LIBMATHOBJ)
++	$(CROSS)$(AR) cru $@ $(LIBMATHOBJ)
+ 
+ $(OBJDIR)/seekdir.o $(OBJDIR)/clnt_raw.o $(OBJDIR)/clnt_udp.o \
+ $(PICODIR)/seekdir.o $(PICODIR)/clnt_raw.o $(PICODIR)/clnt_udp.o \
+@@ -278,7 +278,7 @@ dyn: dyn_lib
+ 
+ # added dynamic linker
+ $(OBJDIR)/libdl.a: $(LIBDLOBJ)
+-	$(CROSS)ar cru $@ $(LIBDLOBJ)
++	$(CROSS)$(AR) cru $@ $(LIBDLOBJ)
+ 
+ dyn_lib: $(PICODIR) $(PICODIR)/libc.so $(PICODIR)/dstart.o \
+ 	$(PICODIR)/dyn_so_start.o $(PICODIR)/dyn_start.o $(PICODIR)/dyn_stop.o \
+@@ -676,4 +676,4 @@ include/errno_definition.h: dietfeatures.h
+ 	if grep -q '^#define WANT_TLS' $<; then echo "extern __thread int errno;"; else echo "extern int errno;"; fi > $@
+ 
+ ldso: ldso.c
+-	gcc -nostdlib -shared -g -DIN_LDSO -Iinclude.ldso -I. -isystem include x86_64/start.S -o ldso ldso.c -fPIC x86_64/dyn_syscalls.S lib/errno_location.c -D__thread=
++	$(CC) -nostdlib -shared -g -DIN_LDSO -Iinclude.ldso -I. -isystem include x86_64/start.S -o ldso ldso.c -fPIC x86_64/dyn_syscalls.S lib/errno_location.c -D__thread=
