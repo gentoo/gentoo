@@ -26,7 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/intltool
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	sys-devel/gettext"
 
 src_prepare() {
 	default
