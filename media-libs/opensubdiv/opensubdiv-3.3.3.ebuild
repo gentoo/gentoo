@@ -68,7 +68,7 @@ pkg_setup() {
 src_configure() {
 	# GLTESTS are disabled as portage is unable to open a display during test phase
 	local mycmakeargs=(
-		-DNO_CLEW=1
+		-DNO_CLEW=ON
 		-DNO_DOC=$(usex !doc)
 		-DNO_EXAMPLES=$(usex !examples)
 		-DNO_GLTESTS=ON
