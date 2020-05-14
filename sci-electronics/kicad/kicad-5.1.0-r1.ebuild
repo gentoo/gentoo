@@ -37,7 +37,7 @@ COMMON_DEPEND=">=x11-libs/wxGTK-3.0.2:${WX_GTK_VER}[X,opengl]
 	media-libs/freeglut
 	media-libs/mesa[X(+)]
 	ngspice? (
-		sci-electronics/ngspice[shared]
+		>sci-electronics/ngspice-27[shared]
 	)
 	occ? ( >=sci-libs/opencascade-6.8.0:= )
 	oce? ( sci-libs/oce )
