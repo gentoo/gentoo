@@ -1906,7 +1906,7 @@ app-i18n/tagainijisho 1.2.0_pre20191230120610_p20200101_p20200101 1.2.0_pre20200
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r6: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r6: Tomoe GTK+ interface widget library
-app-i18n/transifex-client 0.12.4 0.13.9: A command line interface for Transifex
+app-i18n/transifex-client 0.13.9: A command line interface for Transifex
 app-i18n/translate-shell 0.9.6.10 0.9.6.11: Online command-line translator
 app-i18n/uchardet 0.0.6-r2 9999: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.6-r2 1.8.8: A multilingual input method framework
@@ -5255,7 +5255,7 @@ dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12-r1: Portable Coroutine Library
 dev-libs/pegtl 1.3.1-r1 2.0_pre1 2.0.0 2.1.4: header-only library for creating parsers according to Parsing Expression Grammar
-dev-libs/pigpio 72 73 74 76: A library for the Raspberry which allows control of the GPIOs
+dev-libs/pigpio 76: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/plasma-wayland-protocols 1.0: Plasma Specific Protocols for Wayland
 dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
@@ -13233,7 +13233,7 @@ media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 3.1.0 3.1.1 9999: Waveform
 media-plugins/ladspa-bs2b 0.9.1-r1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2017.10.28 2018.01.29 2018.07.07 2020.03.06: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2020.03.06: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.2.4: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mythplugins 30.0-r2: Official WMythTV plugins
@@ -13905,7 +13905,7 @@ media-video/vdrsync 0.1.3_pre050322-r1 0.1.3_pre050322-r2: converting vdr-record
 media-video/vdrtools-genindex 0.1.3-r1 0.1.3-r2: VDR: genindex Script
 media-video/vidcutter 6.0.0 9999: FFmpeg-based simple video cutter & joiner with a modern PyQt5 GUI
 media-video/videotrans 1.6.1-r2: A package to convert movies to DVD format and to build DVDs with
-media-video/vlc 3.0.8-r1 3.0.10-r1 3.0.9999 9999: Media player and framework with support for most multimedia files and streaming
+media-video/vlc 3.0.10-r1 3.0.9999 9999: Media player and framework with support for most multimedia files and streaming
 media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on the way
 media-video/vstrip 0.8f: A program to split non-css dvd vobs into individual chapters
 media-video/webcamoid 8.1.0: A full featured webcam capture application
@@ -14757,7 +14757,7 @@ net-misc/apt-cacher-ng 3.3.1_p2 3.4_p1 3.5_p1 9999999: Yet another caching HTTP 
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 11.25.3 13.32.0-r1 13.33.0 16.9.0 16.10.0: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.25.3 13.33.0 16.10.0: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22 1.6.1 1.6.1-r1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11-r1 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9 13.0.3.1.9 16.0.3.1.9: G.729 codec and supporting files for asterisk
@@ -14835,7 +14835,7 @@ net-misc/exabgp 3.2.17 3.4.26-r1 4.0.10: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
-net-misc/freerdp 2.0.0-r1 2.1.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 2.1.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol

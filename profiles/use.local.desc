@@ -6415,7 +6415,6 @@ net-misc/eventd:webhook - Enable plugin to send payloads to webhook handlers
 net-misc/eventd:websocket - Enable support for WebSocket protocol
 net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/libtorrent-rasterbar.
 net-misc/felix:bird - Use BIRD, e.g. for route reflection
-net-misc/freerdp:client - Build client binaries
 net-misc/freerdp:openh264 - Enable H.264 support using media-libs/openh264
 net-misc/freerdp:server - Build server binaries
 net-misc/gerbera:curl - Support HTTP media sources (e.g. internet radio)
