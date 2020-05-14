@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_MAKEFILE_GENERATOR=emake
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-utils-r1 toolchain-funcs
+inherit cmake python-utils-r1 toolchain-funcs
 
 MY_PV="$(ver_rs "1-3" '_')"
 DESCRIPTION="An Open-Source subdivision surface library"
@@ -86,5 +86,5 @@ src_configure() {
 
 	# fails with building cuda kernels when using multiple jobs
 	export MAKEOPTS="-j1"
-	cmake-utils_src_configure
+	cmake_src_configure
 }
