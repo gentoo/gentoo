@@ -80,6 +80,7 @@ acct-group/locate 0: System group: locate
 acct-group/logstash 0: Logstash program group
 acct-group/lp 0: System group: lp
 acct-group/lpadmin 0: System group: lpadmin
+acct-group/lxd 0: Group for app-emulation/lxd
 acct-group/mail 0: Mail program group
 acct-group/man 0: System group: man
 acct-group/memcached 0: System group: memcached
@@ -14190,7 +14191,7 @@ net-analyzer/wireshark 3.2.1 3.2.3 99999999: A network protocol analyzer formerl
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.30 3.0.31 4.0.18 4.0.19 4.0.20 4.4.6 4.4.7 4.4.8: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.30 3.0.31 4.0.19 4.0.20 4.4.7 4.4.8: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
@@ -14897,7 +14898,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4 1.0.5-r1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.3: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.22 1.6.2 1.6.3 1.6.5 1.6.6: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.22 1.6.6: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.8.6 9999: Simple, powerful and moeful twitter client
