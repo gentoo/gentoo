@@ -68,20 +68,20 @@ pkg_setup() {
 src_configure() {
 	# GLTESTS are disabled as portage is unable to open a display during test phase
 	local mycmakeargs=(
+		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
+		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DNO_CLEW=ON
+		-DNO_CUDA=$(usex !cuda)
 		-DNO_DOC=$(usex !doc)
 		-DNO_EXAMPLES=$(usex !examples)
 		-DNO_GLTESTS=ON
-		-DNO_TBB=$(usex !tbb)
-		-DNO_PTEX=$(usex !ptex)
 		-DNO_OMP=$(usex !openmp)
 		-DNO_OPENCL=$(usex !opencl)
-		-DNO_CUDA=$(usex !cuda)
+		-DNO_PTEX=$(usex !ptex)
 		-DNO_REGRESSION=$(usex !test)
+		-DNO_TBB=$(usex !tbb)
 		-DNO_TESTS=$(usex !test)
 		-DNO_TUTORIALS=$(usex !tutorials)
-		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
-		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 	)
 
 	# fails with building cuda kernels when using multiple jobs
