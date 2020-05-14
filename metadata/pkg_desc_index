@@ -4874,7 +4874,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r1 1.73.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 1.10.17-r2 2.9.0 2.11.0 2.14.0: C++ crypto library
+dev-libs/botan 1.10.17-r2 2.9.0 2.11.0 2.14.0 2.14.0-r1: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
@@ -14393,7 +14393,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.33.4: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.34.0: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.59.0.77: Instant messaging client, with support for audio and video
 net-im/slack 4.3.2-r2 4.4.2: Team collaboration tool
