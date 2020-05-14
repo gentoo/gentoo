@@ -3754,6 +3754,7 @@ mail-client/evolution:spamassassin - Build mail-filter/spamassassin plugin
 mail-client/evolution:weather - Enable optional weather calendar support
 mail-client/evolution:ytnef - Enable optional TNEF attachments parser support using net-mail/ytnef
 mail-client/geary:ytnef - Enable optional TNEF attachments parser support using net-mail/ytnef
+mail-client/mutt:autocrypt - Enable autocrypt.org support
 mail-client/mutt:berkdb - Enable sys-libs/db database backend for header caching
 mail-client/mutt:gdbm - Enable sys-libs/gdbm database backend for header caching
 mail-client/mutt:gpgme - Build gpgme backend to support S/MIME, PGP/MIME and traditional/inline PGP
