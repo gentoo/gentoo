@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.82.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.61.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
+	"${FILESDIR}/${P}-pdfsig-crash.patch"
 )
 
 src_prepare() {

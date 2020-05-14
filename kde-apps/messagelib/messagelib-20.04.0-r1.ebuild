@@ -69,3 +69,5 @@ RDEPEND="${DEPEND}"
 
 # bug 579630
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
