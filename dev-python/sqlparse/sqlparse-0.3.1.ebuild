@@ -19,5 +19,5 @@ KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 s390 sparc x86 ~amd64-lin
 LICENSE="BSD-2"
 IUSE="doc"
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs/source
 distutils_enable_tests pytest
