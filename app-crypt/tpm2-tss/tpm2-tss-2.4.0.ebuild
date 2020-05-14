@@ -34,7 +34,8 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4.0-fix-tmpfiles-path.patch"
-)
+	"${FILESDIR}/${PN}-2.4.0-Dont-run-systemd-sysusers-in-Makefile.patch"
+	)
 
 pkg_setup() {
 	local CONFIG_CHECK=" \
@@ -57,7 +58,7 @@ src_configure() {
 		--with-runstatedir=/run \
 		--with-udevrulesdir="$(get_udevdir)/rules.d" \
 		--with-udevrulesprefix=60- \
-		--with-sysusersdir="/usr/lib/sysusers.d"
+		--with-sysusersdir="/usr/lib/sysusers.d" \
 		--with-tmpfilesdir="/usr/lib/tmpfiles.d"
 }
 
