@@ -11,4 +11,4 @@ RDEPEND=app-text/liblangtag dev-libs/librevenge dev-libs/libxml2 >=dev-util/mdds
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://dev-www.libreoffice.org/src/libetonyek/libetonyek-0.1.9.tar.xz
-_md5_=5b163cc1da08371076668831a69490b4
+_md5_=67a1dc34c081826d98a5445919c0173f

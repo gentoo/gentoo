@@ -11560,7 +11560,7 @@ gnome-extra/gnome-shell-extension-applications-overview-tooltip 6 7: Show toolti
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 10: Allow to connect bluetooth paired devices from gnome control panel
 gnome-extra/gnome-shell-extension-dash-to-panel 26 35 37: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.4 19.10.2 20.04.0: A GNOME Shell extension for providing desktop icons
-gnome-extra/gnome-shell-extension-gsconnect 28-r1 33 33-r1: KDE Connect implementation for Gnome Shell
+gnome-extra/gnome-shell-extension-gsconnect 28-r1 33 33-r1 33-r2: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.34.2: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 22_p20190929 27: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.34.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
@@ -12948,7 +12948,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
 media-libs/lv2 1.14.0-r2 1.16.0-r1: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 19.3.5 20.0.4-r1 20.0.5 20.0.6 20.1.0_rc2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.3.5 20.0.4-r1 20.0.5 20.0.6 20.0.7 20.1.0_rc2 20.1.0_rc3 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.20.0 6.20.0-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
