@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils flag-o-matic gnome2-utils cmake-utils
 
 DESCRIPTION="Lets you easily share a single mouse and keyboard between multiple computers"
-HOMEPAGE="http://synergy-project.org/ https://github.com/symless/synergy-core"
+HOMEPAGE="https://symless.com/synergy https://github.com/symless/synergy-core"
 SRC_URI="
 	https://github.com/symless/${PN}-core/archive/v${PV}-stable.tar.gz -> ${P}.tar.gz
 "

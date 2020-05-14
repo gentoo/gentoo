@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ MY_PN="pcsc-${PN}"
 MY_PV="${PV/_p/final.SP}"
 MY_P="${MY_PN}_${MY_PV}"
 
-inherit autotools linux-info toolchain-funcs udev
+inherit autotools flag-o-matic linux-info toolchain-funcs udev
 
 DESCRIPTION="REINER SCT cyberJack USB chipcard reader user space driver"
 HOMEPAGE="https://www.reiner-sct.de/"
@@ -31,6 +31,12 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/${MY_P/_/-}"
 
 CONFIG_CHECK="~USB_SERIAL_CYBERJACK"
+
+pkg_setup() {
+	# Add workaround for GCC-10,
+	# by defining narrowing as warning like GCC-9 did.
+	append-cxxflags -Wno-narrowing
+}
 
 src_prepare() {
 	default

@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=1
 inherit linux-info python-r1 toolchain-funcs
 
 DESCRIPTION="User-space front-end for Ftrace"
-HOMEPAGE="http://trace-cmd.org/"
+HOMEPAGE="https://trace-cmd.org/"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git"

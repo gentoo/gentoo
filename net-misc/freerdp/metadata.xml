@@ -6,7 +6,6 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<use>
-		<flag name="client">Build client binaries</flag>
 		<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
 		<flag name="server">Build server binaries</flag>
 	</use>
