@@ -16,7 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 IUSE="doc static-libs threads"
 
 PATCHES=(
-	"${FILESDIR}/${P}_cmake-static-libs.patch"
+	"${FILESDIR}/${PN}-0.14-cmake-static-libs.patch"
 )
 
 MULTILIB_WRAPPED_HEADERS=(
