@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Network discovery and fingerprinting tool"
 HOMEPAGE="http://www.thc.org/thc-rut/"
-SRC_URI="http://www.thc.org/thc-rut/${P}.tar.gz"
+SRC_URI="https://github.com/vanhauser-thc/THC-Archive/raw/master/Tools/${P}.tar.gz"
 
 LICENSE="free-noncomm PCRE GPL-1+"
 SLOT="0"
