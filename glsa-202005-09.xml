@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202005-09">
+  <title>Python: Denial of Service</title>
+  <synopsis>A vulnerability in Python could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">python</product>
+  <announced>2020-05-14</announced>
+  <revised count="1">2020-05-14</revised>
+  <bug>707822</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge" slot="2.7">2.7.18</unaffected>
+      <unaffected range="ge" slot="3.6">3.6.10-r2</unaffected>
+      <unaffected range="ge" slot="3.7">3.7.7-r2</unaffected>
+      <unaffected range="ge" slot="3.8">3.8.2-r2</unaffected>
+      <vulnerable range="lt" slot="2.7">2.7.18</vulnerable>
+      <vulnerable range="lt" slot="3.6">3.6.10-r2</vulnerable>
+      <vulnerable range="lt" slot="3.7">3.7.7-r2</vulnerable>
+      <vulnerable range="lt" slot="3.8">3.8.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Python is an interpreted, interactive, object-oriented programming
+      language.
+    </p>
+  </background>
+  <description>
+    <p>An issue was discovered in urllib.request.AbstractBasicAuthHandler which
+      allowed a remote attacker to send malicious data causing extensive
+      regular expression backtracking.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Python 2.7 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.7.18:2.7"
+    </code>
+    
+    <p>All Python 3.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.6.10-r2:3.6"
+    </code>
+    
+    <p>All Python 3.7 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.7.7-r2:3.7"
+    </code>
+    
+    <p>All Python 3.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.8.2-r2:3.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8492">CVE-2020-8492</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-07T23:04:03Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-05-14T22:18:15Z">sam_c</metadata>
+</glsa>
