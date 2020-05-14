@@ -7,18 +7,10 @@ CMAKE_MAKEFILE_GENERATOR="ninja"
 
 inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
-if [[ $PV = *9999* ]]; then
-	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
-		https://gerrit.gromacs.org/gromacs.git
-		https://github.com/gromacs/gromacs.git
-		https://repo.or.cz/r/gromacs.git"
-	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
-	inherit git-r3
-else
-	SRC_URI="ftp://ftp.gromacs.org/pub/${PN}/${PN}-${PV/_/-}.tar.gz
+SRC_URI="ftp://ftp.gromacs.org/pub/${PN}/${PN}-${PV/_/-}.tar.gz
+		doc? ( ftp://ftp.gromacs.org/pub/manual/manual-${PV/_/-}.pdf )
 		test? ( http://gerrit.gromacs.org/download/regressiontests-${PV/_/-}.tar.gz )"
-	KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-fi
+KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2"
 
@@ -49,12 +41,7 @@ CDEPEND="
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
-	doc? (
-		app-doc/doxygen
-		dev-texlive/texlive-latex
-		dev-texlive/texlive-latexextra
-		media-gfx/imagemagick
-	)"
+	"
 RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="
@@ -67,28 +54,12 @@ DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
 
-if [[ ${PV} != *9999 ]]; then
-	S="${WORKDIR}/${PN}-${PV/_/-}"
-fi
+S="${WORKDIR}/${PN}-${PV/_/-}"
 
 pkg_pretend() {
 	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
 	use openmp && ! tc-has-openmp && \
 		die "Please switch to an openmp compatible compiler"
-}
-
-src_unpack() {
-	if [[ ${PV} != *9999 ]]; then
-		default
-	else
-		git-r3_src_unpack
-		if use test; then
-			EGIT_REPO_URI="git://git.gromacs.org/regressiontests.git" \
-			EGIT_BRANCH="${EGIT_BRANCH}" \
-			EGIT_CHECKOUT_DIR="${WORKDIR}/regressiontests"\
-				git-r3_src_unpack
-		fi
-	fi
 }
 
 src_prepare() {
@@ -113,27 +84,6 @@ src_prepare() {
 	fi
 
 	DOC_CONTENTS="Gromacs can use sci-chemistry/vmd to read additional file formats"
-	# try to create policy for imagemagik
-	mkdir -p ${HOME}/.config/ImageMagick
-	cat >> ${HOME}/.config/ImageMagick/policy.xml <<- EOF
-	<?xml version="1.0" encoding="UTF-8"?>
-	<!DOCTYPE policymap [
-	<!ELEMENT policymap (policy)+>
-	!ATTLIST policymap xmlns CDATA #FIXED ''>
-	<!ELEMENT policy EMPTY>
-	<!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
-			name NMTOKEN #IMPLIED pattern CDATA #IMPLIED rights NMTOKEN #IMPLIED
-			stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
-	]>
-	<policymap>
-		<policy domain="coder" rights="read | write" pattern="PS" />
-		<policy domain="coder" rights="read | write" pattern="PS2" />
-		<policy domain="coder" rights="read | write" pattern="PS3" />
-		<policy domain="coder" rights="read | write" pattern="EPS" />
-		<policy domain="coder" rights="read | write" pattern="PDF" />
-		<policy domain="coder" rights="read | write" pattern="XPS" />
-	</policymap>
-	EOF
 }
 
 src_configure() {
@@ -176,7 +126,6 @@ src_configure() {
 		-DGMX_OPENMP=$(usex openmp)
 		-DGMX_COOL_QUOTES=$(usex offensive)
 		-DGMX_USE_TNG=$(usex tng)
-		-DGMX_BUILD_MANUAL=$(usex doc)
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
@@ -238,11 +187,6 @@ src_compile() {
 		einfo "Compiling for ${x} precision"
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
 			cmake-utils_src_compile
-		# not 100% necessary for rel ebuilds as available from website
-		if use doc; then
-			BUILD_DIR="${WORKDIR}/${P}_${x}"\
-				cmake-utils_src_compile manual
-		fi
 		use mpi || continue
 		einfo "Compiling for ${x} precision with mpi"
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi"\
@@ -262,7 +206,7 @@ src_install() {
 		BUILD_DIR="${WORKDIR}/${P}_${x}" \
 			cmake-utils_src_install
 		if use doc; then
-			newdoc "${WORKDIR}/${P}_${x}"/docs/manual/gromacs.pdf "${PN}-manual-${PV}.pdf"
+			newdoc "${DISTDIR}/manual-${PV/_/-}.pdf" "${PN}-manual-${PV}.pdf"
 		fi
 		use mpi || continue
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" \
