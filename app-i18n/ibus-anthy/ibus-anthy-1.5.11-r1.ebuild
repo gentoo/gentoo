@@ -25,7 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	sys-devel/gettext"
 
 src_prepare() {
 	default
