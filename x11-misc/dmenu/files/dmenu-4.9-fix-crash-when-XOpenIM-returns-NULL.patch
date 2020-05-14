@@ -1,0 +1,37 @@
+From f5036b90efd9423d805923a0bc73cd54e30e72ab Mon Sep 17 00:00:00 2001
+From: Hiltjo Posthuma <hiltjo@codemadness.org>
+Date: Tue, 12 Feb 2019 19:10:43 +0100
+Subject: [PATCH] fix crash when XOpenIM returns NULL
+
+for example when IME variables are set, but the program is not started (yet).
+---
+ dmenu.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/dmenu.c b/dmenu.c
+index f803149..ae56f4f 100644
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -664,8 +664,17 @@ setup(void)
+ 	                    CWOverrideRedirect | CWBackPixel | CWEventMask, &swa);
+ 	XSetClassHint(dpy, win, &ch);
+ 
+-	/* open input methods */
+-	xim = XOpenIM(dpy, NULL, NULL, NULL);
++
++	/* input methods */
++	if ((xim = XOpenIM(dpy, NULL, NULL, NULL)) == NULL) {
++		XSetLocaleModifiers("@im=local");
++		if ((xim = XOpenIM(dpy, NULL, NULL, NULL)) == NULL) {
++			XSetLocaleModifiers("@im=");
++			if ((xim = XOpenIM(dpy, NULL, NULL, NULL)) == NULL)
++				die("XOpenIM failed. Could not open input device.\n");
++		}
++	}
++
+ 	xic = XCreateIC(xim, XNInputStyle, XIMPreeditNothing | XIMStatusNothing,
+ 	                XNClientWindow, win, XNFocusWindow, win, NULL);
+ 
+-- 
+2.26.2
+
