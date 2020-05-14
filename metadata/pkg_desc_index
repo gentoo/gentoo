@@ -2738,7 +2738,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1 0.56 0.57: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.85.0 0.87.0 0.88.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.85.0 0.87.0 0.88.0-r1 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20190410 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -11881,7 +11881,7 @@ kde-apps/mailcommon 19.12.3 20.04.0: Common mail library
 kde-apps/mailimporter 19.12.3 20.04.0: Library to import mail from various sources
 kde-apps/marble 19.12.3 20.04.0: Virtual Globe and World Atlas to learn more about Earth
 kde-apps/mbox-importer 19.12.3 20.04.0: Import mbox email archives from various sources into Akonadi
-kde-apps/messagelib 19.12.3 20.04.0: Libraries for messaging functions
+kde-apps/messagelib 19.12.3 20.04.0-r1: Libraries for messaging functions
 kde-apps/minuet 19.12.3 20.04.0: Music Education software by KDE
 kde-apps/okular 19.12.3-r1 20.04.0: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 19.12.3 20.04.0: Jigsaw puzzle game by KDE
@@ -11978,7 +11978,7 @@ kde-frameworks/kxmlrpcclient 5.67.0 5.70.0: Framework providing client-side supp
 kde-frameworks/modemmanager-qt 5.67.0 5.70.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.67.0 5.70.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.67.0 5.70.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.67.0-r3 5.70.0: Plasma framework
+kde-frameworks/plasma 5.67.0-r3 5.70.1: Plasma framework
 kde-frameworks/prison 5.67.0 5.70.0: QRCode and data matrix barcode library
 kde-frameworks/purpose 5.67.0 5.70.0: Library for providing abstractions to get the developer's purposes fulfilled
 kde-frameworks/qqc2-desktop-style 5.67.1 5.70.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
@@ -14653,7 +14653,7 @@ net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.24.4 2.26.4-r1 2.28.1 2.28.2: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 4.8.3 4.11.1 4.12.0: Extended ROOT remote file server
+net-libs/xrootd 4.8.3 4.11.1 4.12.0 4.12.1: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.0: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
@@ -15156,7 +15156,7 @@ net-p2p/qbittorrent 4.2.1 4.2.3 4.2.5 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.3-r2 0.6.4-r1 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/syncthing 1.3.4-r1 1.4.2: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.3.4-r1 1.4.2 1.5.0: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r1 1.8.6-r2: A torrent file parser
 net-p2p/transmission 2.94-r1 9999: A fast, easy, and free BitTorrent client
