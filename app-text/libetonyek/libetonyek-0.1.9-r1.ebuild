@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
 
+PATCHES=( "${FILESDIR}/${P}-boost-1.73.patch" ) # bug 722042
+
 src_prepare() {
 	default
 	[[ -d m4 ]] || mkdir "m4"
