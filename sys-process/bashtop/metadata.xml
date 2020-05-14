@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+   <maintainer type="person">
+        <email>zshzero@protonmail.com</email>
+        <name>Ashwin A Kumar</name>
+   </maintainer>
+   <maintainer type="person">
+        <email>dolsen@gentoo.org</email>
+        <name>Brian Dolbec</name>
+   </maintainer>
+</pkgmetadata>
