@@ -1,0 +1,25 @@
+From 1f2548805df60707ffba2bba27d35d441232d140 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Thu, 14 May 2020 13:27:14 +0200
+Subject: Fix load header with qt5.15
+
+---
+ messageviewer/src/viewer/webengine/mailwebenginepage.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/messageviewer/src/viewer/webengine/mailwebenginepage.cpp b/messageviewer/src/viewer/webengine/mailwebenginepage.cpp
+index b9d7b9f..f1c3eab 100644
+--- a/messageviewer/src/viewer/webengine/mailwebenginepage.cpp
++++ b/messageviewer/src/viewer/webengine/mailwebenginepage.cpp
+@@ -40,7 +40,8 @@ void MailWebEnginePage::initialize()
+     settings()->setAttribute(QWebEngineSettings::LocalStorageEnabled, enableElement);
+     settings()->setAttribute(QWebEngineSettings::XSSAuditingEnabled, enableElement);
+     settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, enableElement);
+-    settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, enableElement);
++    //We need to activate it in qt5.15 otherwise we can't load local css file and co
++    //settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, enableElement);
+     settings()->setAttribute(QWebEngineSettings::ErrorPageEnabled, enableElement);
+     settings()->setAttribute(QWebEngineSettings::HyperlinkAuditingEnabled, enableElement);
+     settings()->setAttribute(QWebEngineSettings::FullScreenSupportEnabled, enableElement);
+-- 
+cgit v1.1
