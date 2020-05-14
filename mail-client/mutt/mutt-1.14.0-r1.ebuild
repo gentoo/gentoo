@@ -14,7 +14,7 @@ MUTT_G_PATCHES="mutt-gentoo-${PV}-patches-${PATCHREV}.tar.xz"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
-IUSE="berkdb debug doc gdbm gnutls gpgme +hcache idn +imap kerberos libressl +lmdb mbox nls pgp-classic pop qdbm +sasl selinux slang smime-classic +smtp +ssl tokyocabinet vanilla prefix"
+IUSE="autocrypt berkdb debug doc gdbm gnutls gpgme +hcache idn +imap kerberos libressl +lmdb mbox nls pgp-classic pop qdbm +sasl selinux slang smime-classic +smtp +ssl tokyocabinet vanilla prefix"
 # hcache: allow multiple, bug #607360
 REQUIRED_USE="
 	hcache?           ( || ( berkdb gdbm lmdb qdbm tokyocabinet ) )
@@ -23,7 +23,8 @@ REQUIRED_USE="
 	smime-classic?    ( ssl !gnutls )
 	smtp?             ( ssl sasl )
 	sasl?             ( || ( imap pop smtp ) )
-	kerberos?         ( || ( imap pop smtp ) )"
+	kerberos?         ( || ( imap pop smtp ) )
+	autocrypt?        ( gpgme )"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
@@ -52,6 +53,7 @@ CDEPEND="
 	kerberos?      ( virtual/krb5 )
 	idn?           ( net-dns/libidn2 )
 	gpgme?         ( >=app-crypt/gpgme-0.9.0:= )
+	autocrypt?     ( >=dev-db/sqlite-3 )
 	slang?         ( sys-libs/slang )
 	!slang?        ( >=sys-libs/ncurses-5.2:0= )
 "
@@ -118,6 +120,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		# signing and encryption
+		$(use_enable autocrypt) $(use_with autocrypt sqlite3)
 		$(use_enable pgp-classic pgp)
 		$(use_enable smime-classic smime)
 		$(use_enable gpgme)
@@ -215,13 +218,23 @@ src_install() {
 	} >> "${ED}"/etc/${PN}/Muttrc
 
 	# add setting to actually enable gpgme usage
-	if use gpgme ; then
+	if use gpgme || use autocrypt ; then
 		{
 		echo
 		echo "# this setting enables the gpgme backend (via USE=gpgme)"
 		# https is broken due to a certificate mismatch :(
 		echo "# see http://www.mutt.org/doc/manual/#crypt-use-gpgme"
 		echo "set crypt_use_gpgme = yes"
+		} >> "${ED}"/etc/${PN}/Muttrc
+	fi
+
+	# similar for autocrypt
+	if use autocrypt ; then
+		{
+			echo
+			echo "# enables autocrypt (via USE=autocrypt)"
+			echo "# see http://www.mutt.org/doc/manual/#autocryptdoc"
+			echo "set autocrypt = yes"
 		} >> "${ED}"/etc/${PN}/Muttrc
 	fi
 
