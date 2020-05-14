@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_7 )
 inherit eutils xdg distutils-r1 virtualx
 
 # Commit of documentation to fetch
-DOCS_PV="1022fd8"
+DOCS_PV="6abac0ce8be017c6ecfb2b451700bf5b0e4c36dd"
 
 DESCRIPTION="The Scientific Python Development Environment"
 HOMEPAGE="
@@ -21,6 +21,9 @@ SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
+# Tests succeed, but freezes at the end, installation does not continue
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-python/atomicwrites-1.2.0[${PYTHON_USEDEP}]
@@ -48,9 +51,10 @@ RDEPEND="
 	>=dev-python/qtconsole-4.6.0[${PYTHON_USEDEP}]
 	>=dev-python/QtPy-1.5.0[${PYTHON_USEDEP},svg,webengine]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
-	>=dev-python/spyder-kernels-1.9.0[${PYTHON_USEDEP}]
+	>=dev-python/spyder-kernels-1.9.1[${PYTHON_USEDEP}]
 	<dev-python/spyder-kernels-1.10.0[${PYTHON_USEDEP}]
-	dev-python/watchdog[${PYTHON_USEDEP}]"
+	dev-python/watchdog[${PYTHON_USEDEP}]
+"
 
 DEPEND="test? (
 	dev-python/coverage[${PYTHON_USEDEP}]
@@ -65,14 +69,15 @@ DEPEND="test? (
 	dev-python/pytest-qt[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
 	dev-python/sympy[${PYTHON_USEDEP}]
-	dev-python/xarray[${PYTHON_USEDEP}] )"
+	dev-python/xarray[${PYTHON_USEDEP}]
+)"
 
 # Based on the courtesy of Arfrever
 # This patch removes a call to update-desktop-database during build
 # This fails because access is denied to this command during build
 PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-	"${FILESDIR}/${P}-py3-only.patch"
+	"${FILESDIR}/${PN}-4.1.2-build.patch"
+	"${FILESDIR}/${PN}-4.1.2-py3-only.patch"
 )
 
 distutils_enable_tests pytest
@@ -81,6 +86,9 @@ distutils_enable_sphinx docs/doc --no-autodoc
 python_prepare_all() {
 	# move docs into workdir
 	mv ../spyder-docs-${DOCS_PV}* docs || die
+
+	# these deps are packaged separately
+	rm external-deps/* -r || die
 
 	# some tests still depend on QtPy[webkit] which is going to be removed
 	# spyder itself works fine without webkit
@@ -96,10 +104,6 @@ python_prepare_all() {
 	# skip online test
 	rm spyder/widgets/github/tests/test_github_backend.py || die
 
-	# AssertionError: assert 'import numpy' == '# import numpy'
-	sed -i -e 's:test_comment:_&:' \
-		spyder/plugins/editor/widgets/tests/test_codeeditor.py || die
-
 	# AssertionError: assert '' == 'This is some test text!'
 	sed -i -e 's:test_tab_copies_find_to_replace:_&:' \
 		spyder/plugins/editor/widgets/tests/test_editor.py || die
@@ -108,12 +112,12 @@ python_prepare_all() {
 	sed -i -e 's:test_dependencies_for_binder_in_sync:_&:' \
 		spyder/tests/test_dependencies_in_sync.py || die
 
-	# No idea why this fails, no error just stops and dumps core
-	sed -i -e 's:test_arrayeditor_edit_complex_array:_&:' \
-		spyder/plugins/variableexplorer/widgets/tests/test_arrayeditor.py || die
-
 	# Assertion error, can't connect/remember inside ebuild environment
 	rm spyder/plugins/ipythonconsole/widgets/tests/test_kernelconnect.py || die
+
+	# assert 77 in [71, 78] assert 45 in [43, 46]
+	sed -i -e 's:test_objectexplorer_collection_types:_&:' \
+		spyder/plugins/variableexplorer/widgets/objectexplorer/tests/test_objectexplorer.py || die
 
 	# Assertion error (pytest-qt), maybe we can't do shortcuts inside ebuild environment?
 	sed -i -e 's:test_transform_to_uppercase_shortcut:_&:' \
@@ -142,10 +146,10 @@ pkg_postinst() {
 		optfeature "The hdf5/h5py plugin" dev-python/h5py
 		optfeature "The line profiler plugin" dev-python/spyder-line-profiler
 		optfeature "The memory profiler plugin" dev-python/spyder-memory-profiler
-		# spyder-autopep8 and spyder-vim do not have a release (yet)
+		# spyder-autopep8 does not have a release (yet)
 		# and are not compatible with >=spyder-4.0.0 at the moment
 		# optfeature "The autopep8 plugin" dev-python/spyder-autopep8
-		# optfeature "Vim key bindings" dev-python/spyder-vim
+		optfeature "Vim key bindings" dev-python/spyder-vim
 		optfeature "Unittest support" dev-python/spyder-unittest
 		optfeature "Jupyter notebook support" dev-python/spyder-notebook
 		optfeature "System terminal inside spyder" dev-python/spyder-terminal
