@@ -64,6 +64,11 @@ DEPEND="
 # Tests are currently restricted, as they do completly fail
 RESTRICT="test"
 
+PATCHES="
+	"${FILESDIR}/${P}-boost-173-compatibility.patch"
+	"${FILESDIR}/${P}-gcc-10-compatibility.patch"
+"
+
 python_check_deps() {
 	has_version "dev-python/sleekxmpp[${PYTHON_USEDEP}]"
 }
