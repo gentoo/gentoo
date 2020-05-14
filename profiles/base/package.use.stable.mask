@@ -22,14 +22,6 @@ mate-base/mate bluetooth
 # on stable systems or force a stable upgrade.
 dev-libs/boost numpy
 
-# Brian Evans <grknight@gentoo.org> (2020-02-27)
-# Two packages are delayed during stable of PHP 7.4
-# arm, arm64 and hppa necessary to not disruput consistency
-# but this will allow all other packages to be used
-# Bug 706180, 710942
-dev-php/pecl-apcu php_targets_php7-4
-dev-php/pecl-yaz php_targets_php7-4
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # For bleeding edge features and testing, not generally suitable
 # for stable systems
