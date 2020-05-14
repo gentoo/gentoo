@@ -1,0 +1,64 @@
+From f6e84fa97536812867be6f4c2162f5b86547477f Mon Sep 17 00:00:00 2001
+From: Jimi Huotari <chiitoo@gentoo.org>
+Date: Tue, 5 May 2020 07:50:18 +0300
+Subject: [PATCH] Fix build with GCC 10
+
+Change-Id: I4101211163f3bb3f9a5fa673169aa41fa000ccca
+---
+ chromium/media/cdm/supported_cdm_versions.h                      | 1 +
+ .../third_party/perfetto/include/perfetto/base/task_runner.h     | 1 +
+ chromium/third_party/webrtc/call/rtx_receive_stream.h            | 1 +
+ .../webrtc/modules/audio_processing/aec3/clockdrift_detector.h   | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/chromium/media/cdm/supported_cdm_versions.h b/chromium/media/cdm/supported_cdm_versions.h
+index dbe59ba5ea7..5216cfe3ee9 100644
+--- a/src/3rdparty/chromium/media/cdm/supported_cdm_versions.h
++++ b/src/3rdparty/chromium/media/cdm/supported_cdm_versions.h
+@@ -6,6 +6,7 @@
+ #define MEDIA_CDM_SUPPORTED_CDM_VERSIONS_H_
+ 
+ #include <array>
++#include <cstddef>
+ 
+ #include "media/base/media_export.h"
+ #include "media/cdm/api/content_decryption_module.h"
+diff --git a/chromium/third_party/perfetto/include/perfetto/base/task_runner.h b/chromium/third_party/perfetto/include/perfetto/base/task_runner.h
+index cf60401238f..ee4ad255dea 100644
+--- a/src/3rdparty/chromium/third_party/perfetto/include/perfetto/base/task_runner.h
++++ b/src/3rdparty/chromium/third_party/perfetto/include/perfetto/base/task_runner.h
+@@ -18,6 +18,7 @@
+ #define INCLUDE_PERFETTO_BASE_TASK_RUNNER_H_
+ 
+ #include <functional>
++#include <stdint.h>
+ 
+ #include "perfetto/base/export.h"
+ 
+diff --git a/chromium/third_party/webrtc/call/rtx_receive_stream.h b/chromium/third_party/webrtc/call/rtx_receive_stream.h
+index 8ffa4400a9c..66cc46dc091 100644
+--- a/src/3rdparty/chromium/third_party/webrtc/call/rtx_receive_stream.h
++++ b/src/3rdparty/chromium/third_party/webrtc/call/rtx_receive_stream.h
+@@ -12,6 +12,7 @@
+ #define CALL_RTX_RECEIVE_STREAM_H_
+ 
+ #include <map>
++#include <stdint.h>
+ 
+ #include "call/rtp_packet_sink_interface.h"
+ 
+diff --git a/chromium/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h b/chromium/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h
+index 22528c94892..69e624e8b19 100644
+--- a/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h
++++ b/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/clockdrift_detector.h
+@@ -12,6 +12,7 @@
+ #define MODULES_AUDIO_PROCESSING_AEC3_CLOCKDRIFT_DETECTOR_H_
+ 
+ #include <array>
++#include <cstddef>
+ 
+ namespace webrtc {
+ 
+-- 
+2.26.2
+
