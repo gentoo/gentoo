@@ -1429,7 +1429,7 @@ dev-db/postgis:gtk - Build graphical interface for shp2pgsql (shp2pgsql-gui)
 dev-db/postgis:mapbox - Add capability to transform geometry into Mapbox Vector Tile
 dev-db/postgis:topology - Build topology spatial types and functions
 dev-db/postgresql:llvm - Add support for llvm JIT engine
-dev-db/postgresql:pg_legacytimestamp - Use double precision floating-point numbers instead of 64-bit integers for timestamp storage.
+dev-db/postgresql:pg-legacytimestamp - Use double precision floating-point numbers instead of 64-bit integers for timestamp storage.
 dev-db/postgresql:server - Disable to build and install the clients and libraries only.
 dev-db/postgresql:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid).
 dev-db/psqlodbc:iodbc - Use dev-db/libiodbc. Disable to use dev-db/unixODBC.

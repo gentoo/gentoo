@@ -10,5 +10,5 @@ RDEPEND=postgres_targets_postgres11? ( dev-db/postgresql:11= ) postgres_targets_
 RESTRICT=test
 SLOT=0
 SRC_URI=https://api.pgxn.org/dist/pgtap/0.99.0/pgtap-0.99.0.zip
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	postgres	0f69f5b2817c4dbd525e67890fdc86e2	postgres-multi	b784ac6c30437f2ded3f16482b56374c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	postgres	9613fb90112e2a521b6a8315187c2966	postgres-multi	b784ac6c30437f2ded3f16482b56374c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=7c66065e1a538d264302ee86631ee445
