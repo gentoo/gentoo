@@ -79,13 +79,15 @@ common_op() {
 src_prepare() {
 	default
 
+	export GOPATH="${S}/_dist"
+
 	sed -i \
 		-e "s:\./configure:./configure --prefix=/usr --libdir=${EPREFIX}/usr/lib/lxd:g" \
 		-e "s:make:make ${MAKEOPTS}:g" \
 		Makefile || die
 
-	cd "${GOPATH}"/deps/libco || die
-	sed -i 's#lib$#lib/lxd#' Makefile || die
+	sed -i 's#lib$#lib/lxd#' "${GOPATH}"/deps/libco/Makefile || die
+	sed -i 's#zfs version | cut -f 2#< /sys/module/zfs/version cut -f 1#' "${GOPATH}"/deps/raft/configure.ac || die
 
 	common_op eautoreconf
 }
