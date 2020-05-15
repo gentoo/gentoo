@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_6 python3_7 )
 
 inherit python-single-r1 xdg
 
@@ -17,9 +17,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="notification python qrcode +sound +video +X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="
-	dev-libs/libconfig
-	>=net-libs/tox-0.2.8:*
+BDEPEND="dev-libs/libconfig"
+
+RDEPEND=">=net-libs/tox-0.2.8:*
 	net-misc/curl
 	sys-libs/ncurses:*
 	notification? ( x11-libs/libnotify )
@@ -35,9 +35,7 @@ RDEPEND="
 		net-libs/tox[av]
 		x11-libs/libX11 )"
 
-DEPEND="
-	virtual/pkgconfig
-	${RDEPEND}"
+DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -79,6 +77,6 @@ src_configure() {
 src_install() {
 	default
 	if ! use sound; then
-		rm -r "${ED%/}"/usr/share/${PN}/sounds || die "Could not remove sounds directory"
+		rm -r "${ED}"/usr/share/${PN}/sounds || die "Could not remove sounds directory"
 	fi
 }
