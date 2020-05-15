@@ -1,4 +1,4 @@
-BDEPEND=sys-apps/help2man virtual/pkgconfig
+BDEPEND=sys-apps/help2man >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DEFINED_PHASES=configure install prepare test
 DEPEND=dev-libs/glib:2 sys-fs/fuse:0
 DESCRIPTION=FUSE filesystem for LXC
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 sys-fs/fuse:0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/lxc/lxcfs/archive/lxcfs-4.0.3.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=06e27b4b9a99ca400ac8c87ee5c19d13
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=bef0c9b185ab468090988dbfc83b3905
