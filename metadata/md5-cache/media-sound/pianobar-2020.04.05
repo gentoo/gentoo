@@ -1,12 +1,13 @@
-BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install unpack
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install
 DEPEND=dev-libs/json-c:= dev-libs/libgcrypt:0= media-libs/libao >=media-video/ffmpeg-3.3:0= net-misc/curl
 DESCRIPTION=A console-based replacement for Pandora's flash player
 EAPI=7
 HOMEPAGE=https://6xq.net/pianobar/
+KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-PROPERTIES=live
 RDEPEND=dev-libs/json-c:= dev-libs/libgcrypt:0= media-libs/libao >=media-video/ffmpeg-3.3:0= net-misc/curl
 SLOT=0
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+SRC_URI=https://6xq.net/pianobar/pianobar-2020.04.05.tar.bz2
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9158190fc29b3581789214ccd35eb043
