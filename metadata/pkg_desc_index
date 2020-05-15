@@ -7363,8 +7363,8 @@ dev-php/mockery 0.9.0-r1: Simple yet flexible PHP mock object framework for use 
 dev-php/myclabs-deepcopy 1.6.0 1.6.1 1.9.4: Create deep copies (clones) of your objects
 dev-php/onphp 1.0.11_pre20141124: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
-dev-php/pecl-amqp 1.9.4 1.9.4-r1 1.10.2: PHP Bindings for AMQP 0-9-1 compatible brokers
-dev-php/pecl-apcu 5.1.12 5.1.17-r1 5.1.18: Stripped down version of APC supporting only user cache
+dev-php/pecl-amqp 1.10.2: PHP Bindings for AMQP 0-9-1 compatible brokers
+dev-php/pecl-apcu 5.1.18: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-crack 0.4-r7: PHP interface to the cracklib libraries
 dev-php/pecl-dbase 7.0.1: dBase database file access functions
@@ -7376,7 +7376,7 @@ dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
 dev-php/pecl-http 3.2.1 3.2.3: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-lzf 1.6.7 1.6.8: This package handles LZF de/compression
-dev-php/pecl-mailparse 3.0.2-r1 3.0.3-r1 3.0.4: PHP extension for parsing and working with RFC822 and MIME compliant messages
+dev-php/pecl-mailparse 3.0.4: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 4.0.5.2: PHP extension for using memcached
 dev-php/pecl-memcached 3.1.3-r1 3.1.5-r1: Interface PHP with memcached via libmemcached library
@@ -14651,7 +14651,7 @@ net-libs/tox 0.2.10 0.2.11 9999: Encrypted P2P, messaging, and audio/video calli
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1: C library for simple and efficient file IO
-net-libs/webkit-gtk 2.24.4 2.26.4-r1 2.28.1 2.28.2: Open source web browser engine
+net-libs/webkit-gtk 2.24.4 2.26.4-r1 2.28.2: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.8.3 4.11.1 4.12.0 4.12.1: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.0: xrootd OSS plug-in for interfacing with Ceph storage platform
