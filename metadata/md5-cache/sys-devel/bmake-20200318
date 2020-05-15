@@ -5,5 +5,5 @@ HOMEPAGE=http://www.crufty.net/help/sjg/bmake.html
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=BSD
 SLOT=0
-SRC_URI=http://void.crufty.net/ftp/pub/sjg/bmake-20181221.tar.gz http://void.crufty.net/ftp/pub/sjg/mk-20191111.tar.gz
+SRC_URI=http://void.crufty.net/ftp/pub/sjg/bmake-20200318.tar.gz http://void.crufty.net/ftp/pub/sjg/mk-20191111.tar.gz
 _md5_=3bb83078a0dc14c05c364130fba4a2a9
