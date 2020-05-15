@@ -14,3 +14,7 @@ RDEPEND="
 	net-libs/srt[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.16.2-make43.patch # remove when bumping and switching to Meson
+)
