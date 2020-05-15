@@ -976,7 +976,7 @@ app-crypt/tpm2-pkcs11 1.2.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.2: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.0: TCG Trusted Platform Module 2.0 Software Stack
-app-crypt/tpm2-tss-engine 1.0.1: OpenSSL Engine for TPM2 devices
+app-crypt/tpm2-tss-engine 1.1.0_rc0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
@@ -2435,7 +2435,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.33.9-r1 0.33.11: Search and query ebuilds
+app-portage/eix 0.33.9-r1 0.33.11 0.34.1: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 2.9-r1 3.0-r2: Elog viewer for Gentoo
