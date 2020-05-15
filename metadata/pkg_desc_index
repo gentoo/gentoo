@@ -804,7 +804,7 @@ app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI fronten
 app-cdr/cdrtools 3.02_alpha09 3.02_alpha09-r2: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdw 0.8.1 0.8.1-r1 9999: An ncurses based console frontend for cdrtools and dvd+rw-tools
 app-cdr/cue2toc 0.4: Convert CUE files to cdrdao's TOC format
-app-cdr/cuecue 0.2.2-r2: Cuecue converts .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin
+app-cdr/cuecue 0.2.2-r2 0.2.2-r3: Cuecue converts .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin
 app-cdr/cuegen 1.2.0: CUEgen is a FLAC-compatible cuesheet generator for Linux
 app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
@@ -8454,7 +8454,7 @@ dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind cal
 dev-python/pyproj 2.4.2-r1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 4: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
-dev-python/pypugjs 5.9.4: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
+dev-python/pypugjs 5.9.4-r1: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.0 7.3.1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.0 7.3.1: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.0_p1 7.3.1_p1: PyPy executable (pre-built version)

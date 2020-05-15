@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/arc/arc-5.21p.tar.gz
 _eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a39da3950358c4a24e1007ffd50fcfe7
+_md5_=6423cacd9c1c4844ce6b0f1a9ea193ca
