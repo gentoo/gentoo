@@ -1658,9 +1658,9 @@ app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.0.0-r3 6.1.0-r1 6.2.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1: LinuX Containers userspace utilities
-app-emulation/lxc-templates 3.0.3: Old style template scripts for LXC
-app-emulation/lxd 3.14 3.16-r1: Fast, dense and secure container management
+app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.1: LinuX Containers userspace utilities
+app-emulation/lxc-templates 3.0.3 3.0.4: Old style template scripts for LXC
+app-emulation/lxd 3.14 3.16-r1 4.0.1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.0.1-r1 11.1.0: Opensourced tools for VMware guests
 app-emulation/pcem 15-r1: A PC emulator that specializes in running old operating systems and software
@@ -12712,7 +12712,7 @@ media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT
 media-libs/elles_icc_profiles 20160501.0932 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 11.93 11.95 11.98: Read and write meta information in image, audio and video files
+media-libs/exiftool 11.93 11.95 11.98 11.99: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8 2.9.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.0 2.0.1: Fraunhofer AAC codec library
@@ -13830,7 +13830,7 @@ media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.5.2: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 37.0.0 42.0.0 43.0.0 45.0.0 9999: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 37.0.0 42.0.0 43.0.0 45.0.0 46.0.0 9999: Tools to create, alter, and inspect Matroska files
 media-video/motion 4.1.1-r1: A software motion detector
 media-video/motiontrack 0.1.3-r2: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.6.1 1.6.2: Modern Video Toolkit
@@ -17290,7 +17290,7 @@ sys-fs/lsscsi 0.29 0.30 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.09: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
+sys-fs/lxcfs 3.0.3 4.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1 2.29.0: A featureful union filesystem
@@ -17364,7 +17364,7 @@ sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from th
 sys-kernel/linux-firmware 20190815 20190923 20191022 20191215 20200122 20200316 20200421 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.4_p6 5.5_p8 5.6_p1 5.6_p2 5.6_p3 5.6_p4 5.6_p5 5.6_p6: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.4_p6 5.5_p8 5.6_p1 5.6_p2 5.6_p3 5.6_p4 5.6_p5 5.6_p6 5.6_p7: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.215_p192 4.4.220_p196 4.9.215_p138 4.9.220_p143 4.14.170_p75 4.19.94_p38 4.19.120_p52 5.4.13_p7 5.4.34_p21 5.6.4_p3 5.6.10_p5: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch

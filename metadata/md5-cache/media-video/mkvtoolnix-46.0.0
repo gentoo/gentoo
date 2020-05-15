@@ -1,0 +1,15 @@
+BDEPEND=app-text/docbook-xsl-stylesheets dev-libs/libxslt dev-ruby/rake virtual/pkgconfig nls? ( sys-devel/gettext app-text/po4a )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-libs/boost-1.60:= >=dev-libs/libebml-1.3.7:= >=dev-libs/libfmt-5.3.0:= dev-libs/pugixml:= media-libs/flac:= >=media-libs/libmatroska-1.5.0:= media-libs/libogg:= media-libs/libvorbis:= sys-apps/file sys-libs/zlib qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5 app-text/cmark:0= ) dev-cpp/nlohmann_json dev-libs/utfcpp test? ( dev-cpp/gtest ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Tools to create, alter, and inspect Matroska files
+EAPI=7
+HOMEPAGE=https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix
+IUSE=debug nls pch test qt5
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/boost-1.60:= >=dev-libs/libebml-1.3.7:= >=dev-libs/libfmt-5.3.0:= dev-libs/pugixml:= media-libs/flac:= >=media-libs/libmatroska-1.5.0:= media-libs/libogg:= media-libs/libvorbis:= sys-apps/file sys-libs/zlib qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5 app-text/cmark:0= )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://mkvtoolnix.download/sources/mkvtoolnix-46.0.0.tar.xz
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=91632d046eb7bb0e04a724ad4573cf73
