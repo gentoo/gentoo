@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit autotools systemd
 
 DESCRIPTION="FUSE filesystem for LXC"
 HOMEPAGE="https://linuxcontainers.org/lxcfs/introduction/ https://github.com/lxc/lxcfs/"
@@ -28,7 +28,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 src_prepare() {
 	default
-	./bootstrap.sh || die "Failed to bootstrap configure files"
+	eautoreconf
 }
 
 src_configure() {
