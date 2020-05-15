@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_P="${P/-/_}"
-inherit eutils elisp-common
+inherit autotools elisp-common eutils xdg-utils
 
 DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
 HOMEPAGE="https://sawfish.fandom.com/wiki/Main_Page"
@@ -12,7 +12,7 @@ SRC_URI="https://download.tuxfamily.org/sawfish/${MY_P}.tar.xz"
 
 LICENSE="GPL-2 Artistic-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="emacs kde nls xinerama"
 
 RDEPEND="
@@ -26,19 +26,25 @@ RDEPEND="
 	nls? ( sys-devel/gettext )
 	xinerama? ( x11-libs/libXinerama )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	virtual/pkgconfig
 "
-
 S="${WORKDIR}/${MY_P}"
-
 PATCHES=(
 	# From Fedora
 	"${FILESDIR}"/${PN}-1.12.0-desktop.patch
 	"${FILESDIR}"/${PN}-1.12.0-fno-common.patch
 )
+DOCS=(
+	AUTHORS ChangeLog CONTRIBUTING doc/AUTOSTART doc/KEYBINDINGS doc/OPTIONS
+	doc/XSettings MAINTAINERS NEWS README README.IMPORTANT TODO
+)
 
-DOCS=( AUTHORS ChangeLog CONTRIBUTING doc/AUTOSTART doc/KEYBINDINGS doc/OPTIONS doc/XSettings MAINTAINERS NEWS README README.IMPORTANT TODO )
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	set -- \
@@ -71,7 +77,10 @@ src_compile() {
 
 src_install() {
 	default
+
 	find "${D}" -name '*.la' -delete || die
+
+	find "${D}/usr/share/man" -name '*.gz' -exec gunzip {} \; || die
 
 	if use emacs; then
 		elisp-install ${PN} sawfish.{el,elc}
@@ -81,8 +90,10 @@ src_install() {
 
 pkg_postinst() {
 	use emacs && elisp-site-regen
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	use emacs && elisp-site-regen
+	xdg_icon_cache_update
 }

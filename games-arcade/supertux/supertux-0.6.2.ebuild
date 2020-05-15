@@ -35,7 +35,6 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.0-tinygettext.patch
 	"${FILESDIR}"/${PN}-0.6.0-{license,icon,obstack}.patch
-	"${FILESDIR}"/${PN}-0.6.2_rc1-boost-1.73.patch
 )
 
 src_prepare() {
