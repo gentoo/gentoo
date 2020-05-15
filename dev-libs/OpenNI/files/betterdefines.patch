@@ -1,0 +1,16 @@
+Index: OpenNI-Stable-1.5.7.10/Include/XnPlatform.h
+===================================================================
+--- OpenNI-Stable-1.5.7.10.orig/Include/XnPlatform.h
++++ OpenNI-Stable-1.5.7.10/Include/XnPlatform.h
+@@ -61,9 +61,9 @@
+ 	#include "Win32/XnPlatformWin32.h"
+ #elif defined(ANDROID) && defined(__arm__)
+ 	#include "Android-Arm/XnPlatformAndroid-Arm.h"
+-#elif (linux && (i386 || __x86_64__))
++#elif (defined(__linux__) && (i386 || __x86_64__))
+ 	#include "Linux-x86/XnPlatformLinux-x86.h"
+-#elif (linux && __arm__)
++#elif (defined(__linux__) && __arm__)
+ 	#include "Linux-Arm/XnPlatformLinux-Arm.h"
+ #elif _ARC
+ 	#include "ARC/XnPlatformARC.h"

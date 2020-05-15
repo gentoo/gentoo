@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="ViSP images data set"
 HOMEPAGE="http://www.irisa.fr/lagadic/visp/"
-SRC_URI="http://visp-doc.inria.fr/download/dataset/${P}.zip"
+SRC_URI="http://visp-doc.inria.fr/download/dataset/visp-images-${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,6 +14,8 @@ IUSE=""
 
 DEPEND="app-arch/unzip"
 RDEPEND=""
+
+S="${WORKDIR}/visp-images-${PV}"
 
 src_install() {
 	dodoc README.md
