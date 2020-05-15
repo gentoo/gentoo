@@ -2279,7 +2279,7 @@ app-misc/solaar 1.0.1-r1 1.0.2_rc1 1.0.2_rc2 9999: A Linux device manager for Lo
 app-misc/sonypid 1.9: tool to use the Sony Vaios jog-dial as a mouse-wheel
 app-misc/spacenavd 0.5-r5 0.5-r6 0.6 0.7 0.7.1: The spacenavd daemon provides free alternative to the 3dxserv daemon
 app-misc/sphinx 2.2.11 2.2.11-r1 2.2.11-r2: Full-text search engine with support for MySQL and PostgreSQL
-app-misc/spire 0.8.1: the spiffe runtime environment
+app-misc/spire 0.8.1 0.10.0: the spiffe runtime environment
 app-misc/splitvt 1.6.6-r3: Splitting terminals into two shells
 app-misc/srm 1.2.15: A command-line compatible rm which destroys file contents before unlinking
 app-misc/supercat 0.5.5-r2 0.5.6: A text file colorizer using powerful regular expressions
