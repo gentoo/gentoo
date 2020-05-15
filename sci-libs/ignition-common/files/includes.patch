@@ -1,0 +1,12 @@
+Index: ignition-math6_6.4.0/src/RollingMean.cc
+===================================================================
+--- ignition-math6_6.4.0.orig/src/RollingMean.cc
++++ ignition-math6_6.4.0/src/RollingMean.cc
+@@ -17,6 +17,7 @@
+ 
+ #include <numeric>
+ #include <deque>
++#include <limits>
+ #include "ignition/math/RollingMean.hh"
+ 
+ using namespace ignition::math;
