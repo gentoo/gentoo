@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-multilib
+inherit cmake-utils
 
 DESCRIPTION="CMake modules to be used by the Ignition projects."
 HOMEPAGE="https://bitbucket.org/ignitionrobotics/ign-cmake"
@@ -21,5 +21,5 @@ src_configure() {
 	local mycmakeargs=(
 		"-DBUILD_TESTING=OFF"
 	)
-	cmake-multilib_src_configure
+	cmake-utils_src_configure
 }
