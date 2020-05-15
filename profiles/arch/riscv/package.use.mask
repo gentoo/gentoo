@@ -1,6 +1,10 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-05-16)
+# missing keywords
+dev-libs/protobuf test
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-05-10)
 # Missing keyword
 media-libs/freetype brotli
@@ -8,14 +12,6 @@ media-libs/freetype brotli
 # Zac Medico <zmedico@gentoo.org> (2020-05-09)
 # Mask until app-arch/lz4 is keyworded
 app-arch/zstd lz4
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-05-07)
-# Mask until app-arch/zstd is keyworded
-sys-devel/gcc zstd
-
-# Zac Medico <zmedico@gentoo.org> (2020-05-07)
-# Mask until app-arch/zstd is keyworded
-sys-apps/portage binpkg-zstd
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
 # Lots of python dependencies, mask to facilitate keywording
@@ -54,7 +50,7 @@ dev-vcs/git pcre-jit
 
 app-admin/syslog-ng amqp dbi geoip geoip2 json kafka mongodb python redis spoof-source smtp snmp test
 app-admin/sysstat lm-sensors
-app-arch/libarchive lz4 lzo zstd
+app-arch/libarchive lz4 lzo 
 app-arch/unzip natspec
 app-crypt/gnupg smartcard tofu wks-server
 app-crypt/mit-krb5 doc test xinetd
@@ -66,7 +62,7 @@ app-text/asciidoc graphviz test
 app-text/po4a test
 app-text/xmlto text
 dev-lang/python tk
-dev-libs/boost mpi numpy zstd
+dev-libs/boost mpi numpy
 dev-libs/check doc subunit
 dev-libs/glib gtk-doc test
 dev-libs/icu doc
@@ -89,7 +85,7 @@ dev-util/pkgconf test
 dev-util/strace unwind
 dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
 media-libs/freetype harfbuzz png
-media-libs/tiff jbig jpeg test webp zstd
+media-libs/tiff jbig jpeg test webp
 net-fs/nfs-utils nfsv41
 net-libs/gnutls doc test-full
 net-libs/ldns doc python
@@ -105,8 +101,8 @@ sys-block/thin-provisioning-tools test
 sys-devel/automake test
 sys-devel/gdb source-highlight
 sys-devel/gettext cvs
-sys-fs/squashfs-tools lz4 lzma lzo zstd
+sys-fs/squashfs-tools lz4 lzma lzo
 sys-libs/libcap-ng python
 sys-process/audit gssapi python
 sys-process/procps test
-sys-fs/squashfs-tools-ng lz4 lzo zstd
+sys-fs/squashfs-tools-ng lz4 lzo
