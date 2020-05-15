@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools python-any-r1 readme.gentoo-r1 xdg-utils
+inherit readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="https://www.spice-space.org/"
@@ -13,7 +12,7 @@ SRC_URI="https://www.spice-space.org/download/releases/spice-server/${P}.tar.bz2
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
+IUSE="gstreamer libressl lz4 sasl smartcard static-libs"
 
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
@@ -35,27 +34,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=app-emulation/spice-protocol-0.14.0
 	smartcard? ( app-emulation/qemu[smartcard] )"
-BDEPEND="${PYTHON_DEPS}
-	virtual/pkgconfig
-	$(python_gen_any_dep '
-		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]
-	')"
-
-python_check_deps() {
-	has_version -b ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
-	has_version -b "dev-python/six[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	default
-
-	eautoreconf
-}
+BDEPEND="
+	virtual/pkgconfig"
 
 src_configure() {
 	# Prevent sandbox violations, bug #586560
@@ -65,15 +45,15 @@ src_configure() {
 
 	xdg_environment_reset
 
-	local myconf="
+	local myconf=(
 		$(use_enable static-libs static)
 		$(use_enable lz4)
 		$(use_with sasl)
 		$(use_enable smartcard)
 		--enable-gstreamer=$(usex gstreamer "1.0" "no")
 		--disable-celt051
-		"
-	econf ${myconf}
+	)
+	econf "${myconf[@]}"
 }
 
 src_compile() {
