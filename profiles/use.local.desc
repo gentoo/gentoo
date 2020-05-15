@@ -7255,6 +7255,7 @@ sci-libs/ViSP:demos - Installs demo programs.
 sci-libs/ViSP:dmtx - Enables barcode data matrix support.
 sci-libs/ViSP:ogre - Enables dev-games/ogre support.
 sci-libs/ViSP:opencv - Enables media-libs/opencv support.
+sci-libs/ViSP:pcl - Enables sci-libs/pcl support.
 sci-libs/ViSP:tutorials - Installs tutorials.
 sci-libs/ViSP:zbar - Enables barcodes reading.
 sci-libs/adolc:boost - Use the boost allocator from dev-libs/boost
