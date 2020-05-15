@@ -19,7 +19,7 @@ RDEPEND=">=net-analyzer/p0f-3.05_beta
 S="${WORKDIR}/exim-p0f3-dlfunc-${PV}"
 
 src_configure() {
-	append-cppflags "-I/usr/include/exim"
+	append-cppflags "-I/usr/include/exim -DDLFUNC_IMPL"
 	econf
 }
 
