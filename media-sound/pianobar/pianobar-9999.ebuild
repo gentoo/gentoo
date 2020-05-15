@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs flag-o-matic
 
 if [[ ${PV} == 9999 ]]; then
@@ -19,14 +20,15 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="static-libs"
 
-RDEPEND="media-libs/libao
-	net-misc/curl
-	dev-libs/libgcrypt:0=
+BDEPEND="virtual/pkgconfig"
+RDEPEND="
 	dev-libs/json-c:=
-	>=media-video/ffmpeg-3.1:0=
+	dev-libs/libgcrypt:0=
+	media-libs/libao
+	>=media-video/ffmpeg-3.3:0=
+	net-misc/curl
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 src_compile() {
 	append-cflags -std=c99
@@ -38,7 +40,9 @@ src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr LIBDIR=/usr/$(get_libdir) DYNLINK=1 install
 	dodoc ChangeLog README.md
 
-	use static-libs || { rm "${D}"/usr/lib*/*.a || die; }
+	if ! use static-libs; then
+		rm "${D}"/usr/lib*/*.a || die
+	fi
 
 	docinto contrib
 	dodoc -r contrib/{config-example,*.sh,eventcmd-examples}
