@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/vimoutliner/vimoutliner"
 SRC_URI="https://github.com/vimoutliner/vimoutliner/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
