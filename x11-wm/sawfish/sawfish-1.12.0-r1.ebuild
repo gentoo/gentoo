@@ -34,7 +34,8 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	# From Fedora
-	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/${PN}-1.12.0-desktop.patch
+	"${FILESDIR}"/${PN}-1.12.0-fno-common.patch
 )
 
 DOCS=( AUTHORS ChangeLog CONTRIBUTING doc/AUTOSTART doc/KEYBINDINGS doc/OPTIONS doc/XSettings MAINTAINERS NEWS README README.IMPORTANT TODO )
