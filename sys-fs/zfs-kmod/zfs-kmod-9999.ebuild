@@ -66,8 +66,6 @@ pkg_setup() {
 
 	kernel_is -lt 5 && CONFIG_CHECK="${CONFIG_CHECK} IOSCHED_NOOP"
 
-	kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
-
 	if [[ ${PV} != "9999" ]]; then
 		local kv_major_max kv_minor_max zcompat
 		zcompat="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
@@ -76,6 +74,12 @@ pkg_setup() {
 		kv_minor_max="${zcompat%%.*}"
 		kernel_is -le "${kv_major_max}" "${kv_minor_max}" || die \
 			"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
+		
+		# 0.8.x requires at least 2.6.32
+		kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
+	else
+		# git master requires at least 3.10
+		kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
 	fi
 
 	linux-mod_pkg_setup
