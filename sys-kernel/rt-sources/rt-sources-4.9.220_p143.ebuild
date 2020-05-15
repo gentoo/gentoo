@@ -3,7 +3,7 @@
 
 EAPI="6"
 ETYPE="sources"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 HOMEPAGE="https://www.kernel.org/pub/linux/kernel/projects/rt/"
 
