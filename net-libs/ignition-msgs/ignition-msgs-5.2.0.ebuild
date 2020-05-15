@@ -19,7 +19,7 @@ RDEPEND="dev-libs/protobuf:=
 	dev-libs/tinyxml2:=
 "
 DEPEND="${RDEPEND}
-	dev-util/ignition-cmake"
-BDEPEND="dev-util/ignition-cmake"
+	dev-util/ignition-cmake:2"
+BDEPEND="dev-util/ignition-cmake:2"
 CMAKE_BUILD_TYPE=RelWithDebInfo
 S="${WORKDIR}/ign-msgs-${PN}5_${PV}"
