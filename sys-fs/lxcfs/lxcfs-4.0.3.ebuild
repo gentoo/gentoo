@@ -44,7 +44,6 @@ src_test() {
 src_install() {
 	default
 
-	dodir /var/lib/lxcfs
 	keepdir /var/lib/lxcfs
 
 	newconfd "${FILESDIR}"/lxcfs-4.0.0.confd lxcfs
