@@ -96,6 +96,8 @@ src_prepare() {
 		# gentoo's version requires exception support.
 		# dolphin disables exceptions and fails the build.
 		picojson
+		# No code to detect shared library.
+		zstd
 	)
 	local s
 	for s in "${KEEP_SOURCES[@]}"; do
