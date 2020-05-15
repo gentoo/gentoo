@@ -37,6 +37,9 @@ python_prepare_all() {
 	sed -i -e '/randomly/d' -e '/rednose/d' setup.cfg || die
 	# tests requiring network access
 	rm tests/functional/test_passthrough.py || die
+	# requires running redis server
+	# it is skipped correctly but it causes unnecessary dep on redis-py
+	rm tests/functional/bugfixes/test_redis.py || die
 
 	distutils-r1_python_prepare_all
 }

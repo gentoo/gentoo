@@ -15,11 +15,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}/zlog_no_werr.patch"
-	"${FILESDIR}/zlog-testsuite-flags.patch"
-)
-
 src_compile() {
 	emake CC="$(tc-getCC)"
 }
