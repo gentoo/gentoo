@@ -87,7 +87,7 @@ src_prepare() {
 		Makefile || die
 
 	sed -i 's#lib$#lib/lxd#' "${GOPATH}"/deps/libco/Makefile || die
-	sed -i 's#zfs version | cut -f 2#< /sys/module/zfs/version cut -f 1#' "${GOPATH}"/deps/raft/configure.ac || die
+	sed -i 's#zfs version 2>/dev/null | cut -f 2 -d - | head -1#< /sys/module/zfs/version cut -f 1#' "${GOPATH}"/deps/raft/configure.ac || die
 
 	common_op eautoreconf
 }
