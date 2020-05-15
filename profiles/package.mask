@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
+# PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
+# version.
+# Removal after 2020-06-14.
+<dev-db/postgresql-9.5
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-14)
 # Unsupported releases with known security issues
 # Please migrate to zfs-0.8.x

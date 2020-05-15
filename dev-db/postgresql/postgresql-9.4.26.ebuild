@@ -22,7 +22,7 @@ DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
 IUSE="debug doc kerberos kernel_linux ldap libressl nls pam perl
-	  -pg_legacytimestamp python +readline selinux +server systemd ssl
+	  -pg-legacytimestamp python +readline selinux +server systemd ssl
 	  static-libs tcl threads uuid xml zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -147,7 +147,7 @@ src_configure() {
 		--mandir="${PO}/usr/share/postgresql-${SLOT}/man" \
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
-		$(use_enable !pg_legacytimestamp integer-datetimes) \
+		$(use_enable !pg-legacytimestamp integer-datetimes) \
 		$(use_enable debug) \
 		$(use_enable threads thread-safety) \
 		$(use_with kerberos gssapi) \
