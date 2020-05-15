@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXau-1.0.7-r
 SLOT=0
 SRC_URI=mirror://sourceforge/nas/nas-1.9.4.src.tar.gz
 _eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=fe07ab9247baed1cf2e1c9dbee7d8a43
+_md5_=eefc0ab06fb3a70c4e57109b433210e1
