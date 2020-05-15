@@ -9,7 +9,7 @@ HOMEPAGE="http://faculty.cse.tamu.edu/davis/suitesparse.html"
 LICENSE="metapackage"
 SLOT="0"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cuda doc lapack partition tbb"
 DEPEND=""
 RDEPEND="
