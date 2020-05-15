@@ -5,13 +5,9 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
-		  zh_TW"
+inherit flag-o-matic linux-info multilib pam prefix python-single-r1 systemd
 
-inherit flag-o-matic l10n linux-info multilib pam prefix python-single-r1 \
-		systemd user
-
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos ~x86-solaris"
 
 SLOT=$(ver_cut 1-2)
 
@@ -29,6 +25,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="
 >=app-eselect/eselect-postgresql-2.0
+acct-group/postgres
+acct-user/postgres
 sys-apps/less
 virtual/libintl
 kerberos? ( virtual/krb5 )
@@ -70,7 +68,6 @@ uuid? (
 )"
 
 DEPEND="${CDEPEND}
-!!<sys-apps/sandbox-2.0
 sys-devel/bison
 sys-devel/flex
 nls? ( sys-devel/gettext )
@@ -78,17 +75,11 @@ xml? ( virtual/pkgconfig )
 "
 
 RDEPEND="${CDEPEND}
-!dev-db/postgresql-docs:${SLOT}
-!dev-db/postgresql-base:${SLOT}
-!dev-db/postgresql-server:${SLOT}
 selinux? ( sec-policy/selinux-postgresql )
 "
 
 pkg_setup() {
 	use server && CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
-
-	enewgroup postgres 70
-	enewuser postgres 70 /bin/sh /var/lib/postgresql postgres
 
 	use python && python-single-r1_pkg_setup
 }
@@ -163,7 +154,7 @@ src_configure() {
 		$(use_with xml libxml) \
 		$(use_with xml libxslt) \
 		$(use_with zlib) \
-		$(use_enable nls nls "'$(l10n_get_locales)'")
+		$(use_enable nls)
 }
 
 src_compile() {

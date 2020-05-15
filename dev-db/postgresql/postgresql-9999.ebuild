@@ -5,17 +5,12 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
-		 zh_TW"
-PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt-BR ro ru sk sl sv tr zh-CN
-		 zh-TW"
 inherit flag-o-matic git-r3 linux-info multilib pam prefix python-single-r1 \
-		systemd user
+		systemd
 
 KEYWORDS=""
 
-# Bump when rc released.
-SLOT="13"
+SLOT="9999"
 
 EGIT_REPO_URI="https://git.postgresql.org/git/postgresql.git"
 
@@ -24,16 +19,15 @@ DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
 IUSE="debug icu kerberos kernel_linux ldap libressl llvm nls pam perl
-	  python +readline selinux systemd ssl static-libs tcl threads uuid
-	  xml zlib"
-for my_locale in ${PLOCALES}; do
-	IUSE+=" l10n_${my_locale}"
-done
+	  python +readline selinux server systemd ssl static-libs tcl
+	  threads uuid xml zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="
 >=app-eselect/eselect-postgresql-2.0
+acct-group/postgres
+acct-user/postgres
 sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
@@ -82,7 +76,6 @@ uuid? (
 )"
 
 DEPEND="${CDEPEND}
-!!<sys-apps/sandbox-2.0
 >=dev-lang/perl-5.8
 app-text/docbook-dsssl-stylesheets
 app-text/docbook-sgml-dtd:4.2
@@ -97,34 +90,23 @@ nls? ( sys-devel/gettext )
 xml? ( virtual/pkgconfig )
 "
 RDEPEND="${CDEPEND}
-!dev-db/postgresql-docs:${SLOT}
-!dev-db/postgresql-base:${SLOT}
-!dev-db/postgresql-server:${SLOT}
 selinux? ( sec-policy/selinux-postgresql )
 "
 
-my_get_locales() {
-	local my_locale locale_list
-	for my_locale in ${PLOCALES[@]}; do
-		use l10n_${my_locale} && locale_list+=( ${my_locale} )
-	done
-	echo -n ${locale_list[@]}
-}
-
 pkg_pretend() {
-	ewarn "You are using a live ebuild that uses the current source code as it is"
-	ewarn "available from PostgreSQL's Git repository at emerge time. Given such,"
-	ewarn "the GNU Makefiles may be altered by upstream without notice and the"
-	ewarn "documentation for this live version is not readily available"
-	ewarn "online. Ergo, the ebuild maintainers will not support building a"
-	ewarn "client-only and/or document-free version."
+	if ! use server; then
+		elog "You are using a live ebuild that uses the current source code as it is"
+		elog "available from PostgreSQL's Git repository at emerge time. Given such,"
+		elog "the GNU Makefiles may be altered by upstream without notice and the"
+		elog "documentation for this live version is not readily available"
+		elog "online. Ergo, the ebuild maintainers will not support building a"
+		elog "client-only and/or document-free version."
+		ewarn "Building server anyway."
+	fi
 }
 
 pkg_setup() {
 	CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
-
-	enewgroup postgres 70
-	enewuser postgres 70 /bin/sh /var/lib/postgresql postgres
 
 	use python && python-single-r1_pkg_setup
 }
@@ -180,7 +162,7 @@ src_configure() {
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
 		$(use_enable !alpha spinlocks) \
 		$(use_enable debug) \
-		$(use_enable nls nls "'$(my_get_locales)'") \
+		$(use_enable nls) \
 		$(use_enable threads thread-safety) \
 		$(use_with icu) \
 		$(use_with kerberos gssapi) \
@@ -206,7 +188,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install-world
 
-	dodoc README HISTORY doc/{TODO,bug.template}
+	dodoc README HISTORY doc/TODO
 
 	insinto /etc/postgresql-${SLOT}
 	newins src/bin/psql/psqlrc.sample psqlrc
