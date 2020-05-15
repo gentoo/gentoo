@@ -30,7 +30,7 @@ IUSE=""
 
 DEPEND="
 	>=media-libs/gmmlib-${PV}
-	>=x11-libs/libva-2.7.1
+	>=x11-libs/libva-2.6.1
 	x11-libs/libpciaccess
 "
 RDEPEND="${DEPEND}"
