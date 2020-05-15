@@ -18,7 +18,7 @@ HOMEPAGE="https://6xq.net/pianobar/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="static-libs"
+IUSE=""
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
@@ -40,9 +40,7 @@ src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr LIBDIR=/usr/$(get_libdir) DYNLINK=1 install
 	dodoc ChangeLog README.md
 
-	if ! use static-libs; then
-		rm "${D}"/usr/lib*/*.a || die
-	fi
+	rm "${D}"/usr/lib*/*.a || die
 
 	docinto contrib
 	dodoc -r contrib/{config-example,*.sh,eventcmd-examples}
