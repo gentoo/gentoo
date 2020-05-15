@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-14)
+# Unsupported releases with known security issues
+# Please migrate to zfs-0.8.x
+# Removal of old versions in 30 days. Bug #723120
+<=sys-fs/zfs-0.8.3
+<=sys-fs/zfs-kmod-0.8.3
+sys-kernel/spl
+
 # Stephan Hartmann <stha09@googlemail.com> (2020-05-20)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
