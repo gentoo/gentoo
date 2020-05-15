@@ -1,0 +1,54 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+DAEMON=/usr/sbin/lxd
+PIDFILE=/run/lxd.pid
+TIMEOUT=10
+
+extra_commands="stopall"
+
+depend() {
+	need net
+	need lxcfs
+}
+
+start() {
+	ebegin "Starting lxd service"
+
+	modprobe -f loop > /dev/null 2>&1
+
+	# fix permissions on /var/lib/lxd and make sure it exists
+	install -d /var/lib/lxd --group lxd --owner root --mode 0775
+	start-stop-daemon --start \
+		--pidfile ${PIDFILE} \
+		--exec ${DAEMON} \
+		--background \
+		--make-pidfile \
+		-- \
+		${LXD_OPTIONS}
+	eend ${?}
+}
+
+stop() {
+	if [[ ${RC_GOINGDOWN} = YES ]] || [[ ${RC_REBOOT} = YES ]]; then
+		stopall
+	else
+		ebegin "Stopping lxd service (but not containers)."
+		start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+		eend ${?}
+	fi
+}
+
+stopall() {
+	ebegin "Stopping lxd service and containers."
+	lxc stop --all --timeout $TIMEOUT >/dev/null 2>&1
+	if [[ ${?} -ne 0 ]]; then
+		lxc stop --all --force || eerror "Could not stop all containers."
+	fi
+	if "${DAEMON}" shutdown; then
+		rm -f ${PIDFILE}
+		eend 0
+	fi
+	eend ${?}
+}

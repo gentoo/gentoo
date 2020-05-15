@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2020-05-14)
+# Dependency not keyworded on this arch.
+app-emulation/lxc apparmor
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # sys-cluster/slurm is keyworded on x86
 app-metrics/collectd -collectd_plugins_slurm
