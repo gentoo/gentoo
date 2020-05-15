@@ -4,11 +4,11 @@ DESCRIPTION=Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 EAPI=6
 HOMEPAGE=https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel https://www.kernel.org/pub/linux/kernel/projects/rt/ https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
 IUSE=symlink build deblob
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~arm64
 LICENSE=GPL-2
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf )
 RESTRICT=binchecks strip
 SLOT=5.6.10_p5
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.6.10.xz https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.6-gnu/deblob-5.6 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.6-gnu/deblob-check -> deblob-check-5.6 ) https://www.kernel.org/pub/linux/kernel/projects/rt/5.6/patch-5.6.10-rt5.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/5.6/older/patch-5.6.10-rt5.patch.xz
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	51166f4011c40ba947ae50ae7184139f	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=27106b82c432dcf8f4d8955afd05aaad
+_md5_=2524629bd8b115fb50d4edeee9c7bf5c
