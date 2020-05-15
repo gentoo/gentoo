@@ -4,7 +4,7 @@
 EAPI=6
 
 # Set this var for any releases except stable
-RC_SUFFIX="-0bbca4291e"
+#RC_SUFFIX=""
 
 inherit systemd
 
@@ -12,7 +12,7 @@ DESCRIPTION="A Management Controller for Ubiquiti Networks UniFi APs"
 HOMEPAGE="https://www.ubnt.com"
 SRC_URI="https://dl.ui.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
 SLOT="0/5.12"
 IUSE="systemd"
