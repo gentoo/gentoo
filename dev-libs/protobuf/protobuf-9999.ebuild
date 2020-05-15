@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/22"
-KEYWORDS="~riscv"
+KEYWORDS=""
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
