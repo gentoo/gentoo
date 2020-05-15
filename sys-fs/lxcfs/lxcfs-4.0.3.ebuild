@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit autotools systemd
 
 DESCRIPTION="FUSE filesystem for LXC"
 HOMEPAGE="https://linuxcontainers.org/lxcfs/introduction/ https://github.com/lxc/lxcfs/"
@@ -15,10 +15,9 @@ KEYWORDS="~amd64"
 
 # Omit all dbus.  Upstream appears to require it because systemd, but
 # lxcfs makes no direct use of dbus.
-RDEPEND="
-	dev-libs/glib:2
-	sys-fs/fuse:0
-"
+# acct-group/lxd needed for the fowners below.
+RDEPEND="dev-libs/glib:2
+	sys-fs/fuse:0"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-apps/help2man"
 
@@ -28,7 +27,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 src_prepare() {
 	default
-	./bootstrap.sh || die "Failed to bootstrap configure files"
+	eautoreconf
 }
 
 src_configure() {
@@ -44,7 +43,9 @@ src_test() {
 src_install() {
 	default
 
-	keepdir /var/lib/lxcfs
+	# Getting weird file collisions, 
+	# keepdir /var/lib/lxcfs
+	# fowners -R root:lxd /var/lib/lxcfs
 
 	newconfd "${FILESDIR}"/lxcfs-4.0.0.confd lxcfs
 	newinitd "${FILESDIR}"/lxcfs-4.0.0.initd lxcfs
