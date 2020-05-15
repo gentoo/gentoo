@@ -29,7 +29,7 @@ HOMEPAGE="http://icedtea.classpath.org"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="8"
-KEYWORDS="-* amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="-* amd64 ~arm arm64 ppc64 x86"
 IUSE="+alsa big-endian cups doc examples +gtk headless-awt nsplugin pulseaudio selinux source webstart"
 
 REQUIRED_USE="
