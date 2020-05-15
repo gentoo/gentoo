@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/exim-geoipv6-dlfunc-${PV}"
 
 src_configure() {
-	append-cppflags "-I/usr/include/exim"
+	append-cppflags "-I/usr/include/exim -DDLFUNC_IMPL"
 	econf
 }
 
