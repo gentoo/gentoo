@@ -121,6 +121,9 @@ RDEPEND="${COMMON_DEPEND}
 	>=app-text/dvipsk-5.997
 	>=dev-tex/bibtexu-3.71_p20170524
 	virtual/perl-Getopt-Long
+	dev-perl/File-HomeDir
+	dev-perl/Log-Dispatch
+	dev-perl/YAML-Tiny
 	tk? ( dev-perl/Tk )"
 
 S="${WORKDIR}/${P}_build"
