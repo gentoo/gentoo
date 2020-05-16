@@ -1720,7 +1720,7 @@ app-emulation/xen-pvgrub 4.12.2 4.13.0: allows to boot Xen domU kernels from a m
 app-emulation/xen-tools 4.12.2-r1 4.13.0-r2: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
-app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
+app-eselect/eselect-awk 0.2 0.3: Manages the {,/usr}/bin/awk symlink
 app-eselect/eselect-blas 0.1 0.2: BLAS/CBLAS module for eselect
 app-eselect/eselect-cblas 0.1: C-language BLAS module for eselect
 app-eselect/eselect-cdparanoia 0.1: Manage /usr/bin/cdparanoia symlink
@@ -10622,7 +10622,7 @@ dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-util/ydiff 1.1: Colored, side-by-side diff terminal viewer (ex. cdiff)
 dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/bfg 1.13.0: a faster alternative to git-filter-branch for removing bad data from git repos
-dev-vcs/cli 0.5.5 0.6.1 0.6.2 0.6.4 0.7.0 9999: GitHub CLI
+dev-vcs/cli 0.5.5 0.6.1 0.6.2 0.6.4 0.7.0 0.8.0 9999: GitHub CLI
 dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0 1.4.1: The GNU Project's replacement for SCCS
@@ -13185,23 +13185,23 @@ media-plugins/kodi-inputstream-adaptive 2.4.4 9999: Kodi's Adaptive inputstream 
 media-plugins/kodi-inputstream-rtmp 2.0.9 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 1.4.9 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
-media-plugins/kodi-pvr-argustv 3.5.4 9999: Kodi's ARGUS TV client addon
+media-plugins/kodi-pvr-argustv 3.5.4 3.5.6 9999: Kodi's ARGUS TV client addon
 media-plugins/kodi-pvr-demo 3.6.1 9999: Demo PVR for Kodi
 media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 3.7.5 3.7.8 3.7.11 9999: Kodi's DVBViewer client addon
-media-plugins/kodi-pvr-filmon 2.4.4 9999: Kodi's Filmon client addon
+media-plugins/kodi-pvr-filmon 2.4.4 2.4.6 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 3.8.8 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 5.10.15 9999: MythTV PVR for Kodi
 media-plugins/kodi-pvr-nextpvr 3.3.17 3.3.18 3.3.19 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 3.4.2 9999: Kodi's Njoy N7 client addon
-media-plugins/kodi-pvr-pctv 2.4.5 9999: Kodi's PCTV client addon
+media-plugins/kodi-pvr-pctv 2.4.5 2.4.7 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 3.4.10 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 4.5.0 4.6.0 4.7.0 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 9999: Kodi PVR addon VNSI
 media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 3.28.7 3.28.8 3.28.9 9999: Kodi's VuPlus client addon
-media-plugins/kodi-pvr-wmc 2.4.4 2.4.5 9999: Kodi's Windows Media Center client addon
+media-plugins/kodi-pvr-wmc 2.4.4 2.4.5 2.4.6 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.1.0 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 1.1.0 2.0.0 9999: Biogenesis screensaver for Kodi
 media-plugins/kodi-screensaver-crystalmorph 9999: Crystalmorph screensaver for Kodi
