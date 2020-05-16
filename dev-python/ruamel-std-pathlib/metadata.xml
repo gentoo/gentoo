@@ -5,10 +5,6 @@
 		<email>andrey_utkin@gentoo.org</email>
 		<name>Andrey Utkin</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>fkmclane@gmail.com</email>
-		<name>Foster McLane</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="bitbucket">ruamel/std.pathlib</remote-id>
 		<remote-id type="pypi">ruamel.std.pathlib</remote-id>
