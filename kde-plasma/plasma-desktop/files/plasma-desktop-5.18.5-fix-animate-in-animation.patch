@@ -1,0 +1,49 @@
+From 977665254990892411c74e8a04a8fdb10ef68547 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Fri, 17 Jan 2020 14:41:42 +0000
+Subject: [widgetexplorer] Fix animate in animation
+
+Summary:
+The animation in comes in from offscreen on the left.
+
+"to: 0" was correct when we had one column. With the 2 column view it
+means we animate two items on top of each other and jump when the
+animation completes. We want to animate to the final position the item
+will end up in.
+
+It bugs me more than it probably should.
+
+Test Plan:
+Search for "asdfasdfsadfsadf"
+Remove search
+Animation now looks ok, instead of horrific
+
+Reviewers: #plasma, ngraham
+
+Reviewed By: ngraham
+
+Subscribers: ngraham, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D26698
+---
+ desktoppackage/contents/explorer/WidgetExplorer.qml | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/desktoppackage/contents/explorer/WidgetExplorer.qml b/desktoppackage/contents/explorer/WidgetExplorer.qml
+index b7bbce8..1d98e59 100644
+--- a/desktoppackage/contents/explorer/WidgetExplorer.qml
++++ b/desktoppackage/contents/explorer/WidgetExplorer.qml
+@@ -305,9 +305,7 @@ Item {
+                 NumberAnimation {
+                     properties: "x"
+                     from: -list.width
+-                    to: 0
+                     duration: units.shortDuration * 3
+-
+                 }
+             }
+ 
+-- 
+cgit v1.1
