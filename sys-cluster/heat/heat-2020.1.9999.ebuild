@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_7 )
 
 inherit distutils-r1 eutils linux-info
 
@@ -11,11 +11,11 @@ HOMEPAGE="https://launchpad.net/heat"
 
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
-	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.train -> heat.conf.sample-${PV}"
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.ussuri -> heat.conf.sample-${PV}"
 	EGIT_REPO_URI="https://github.com/openstack/heat.git"
-	EGIT_BRANCH="stable/train"
+	EGIT_BRANCH="stable/ussuri"
 else
-	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.train -> heat.conf.sample-${PV}
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.ussuri -> heat.conf.sample-${PV}
 		https://tarballs.openstack.org/${PN}/openstack-${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
@@ -42,7 +42,7 @@ RDEPEND="
 	!~dev-python/eventlet-0.21.0[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.23.0[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.25.0[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.4.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth-3.18.0[${PYTHON_USEDEP}]
 	>=dev-python/keystonemiddleware-4.17.0[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.4.1[${PYTHON_USEDEP}]
 	!~dev-python/lxml-3.7.0[${PYTHON_USEDEP}]
@@ -76,21 +76,23 @@ RDEPEND="
 	>=dev-python/python-designateclient-2.7.0[${PYTHON_USEDEP}]
 	>=dev-python/python-glanceclient-2.8.0[${PYTHON_USEDEP}]
 	>=dev-python/python-heatclient-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/python-ironicclient-2.8.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/python-magnumclient-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/python-manilaclient-1.16.0[${PYTHON_USEDEP}]
 	>=dev-python/python-mistralclient-3.1.0[${PYTHON_USEDEP}]
 	!~dev-python/python-mistralclient-3.2.0[${PYTHON_USEDEP}]
 	>=dev-python/python-monascaclient-1.12.0[${PYTHON_USEDEP}]
-	>=dev-python/python-neutronclient-6.7.0[${PYTHON_USEDEP}]
+	>=dev-python/python-neutronclient-6.14.0[${PYTHON_USEDEP}]
 	>=dev-python/python-novaclient-9.1.0[${PYTHON_USEDEP}]
-	>=dev-python/python-octaviaclient-1.3.0[${PYTHON_USEDEP}]
+	>=dev-python/python-octaviaclient-1.8.0[${PYTHON_USEDEP}]
 	>=dev-python/python-openstackclient-3.12.0[${PYTHON_USEDEP}]
 	>=dev-python/python-saharaclient-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/python-swiftclient-3.2.0[${PYTHON_USEDEP}]
 	>=dev-python/python-troveclient-2.2.0[${PYTHON_USEDEP}]
+	>=dev-python/python-vitrageclient-2.7.0[${PYTHON_USEDEP}]
 	>=dev-python/python-zaqarclient-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/python-zunclient-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/python-zunclient-3.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2013.6[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.12.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
