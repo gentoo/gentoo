@@ -20,6 +20,13 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2-0000-Check-NULL-strings-in-ndpi_serialize_string_string.patch
+	"${FILESDIR}"/${PN}-3.2-0001-Added-fix-for-serialization-loop.patch
+	"${FILESDIR}"/${PN}-3.2-0002-Refresh-of-ndpi_netbios_name_interpret.patch
+	"${FILESDIR}"/${PN}-3.2-0003-Fixed-invalid-allocation.patch
+	"${FILESDIR}"/${PN}-3.2-0004-Fix-for-serialization-of-strings-where-the-first-element-is-a-zero-le.patch
+)
 
 src_prepare() {
 	eval $(grep '^NDPI_MAJOR=' autogen.sh)
