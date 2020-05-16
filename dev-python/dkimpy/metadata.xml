@@ -13,5 +13,7 @@
 		<remote-id type="pypi"> dkimpy </remote-id>
 		<remote-id type="launchpad"> dkimpy </remote-id>
 	</upstream>
+	<use>
+		<flag name="extras"> Optionally add dev-python/aiodns, dev-python/pynacl and dev-python/authres </flag>
+	</use>
 </pkgmetadata>
-
