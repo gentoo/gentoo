@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Python language binding for Selenium Remote Control"
-HOMEPAGE="http://www.seleniumhq.org"
+HOMEPAGE="https://www.seleniumhq.org"
 # pypi tarball misses tests, github tarball misses generated files
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	test? (
@@ -23,6 +23,9 @@ SLOT="0"
 DOCS=( CHANGES README.rst )
 
 QA_PREBUILT="/usr/lib*/python*/site-packages/${PN}/webdriver/firefox/*/x_ignore_nofocus.so"
+
+BDEPEND="
+	test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 

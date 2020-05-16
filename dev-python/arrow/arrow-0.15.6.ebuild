@@ -20,6 +20,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 	)"
 
