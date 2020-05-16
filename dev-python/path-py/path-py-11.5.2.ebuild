@@ -44,6 +44,9 @@ python_prepare_all() {
 	sed -i -r 's: --flake8:: ; s: --black:: ; s: --cov::' \
 		pytest.ini || die
 
+	# fragile test for import time
+	sed -i -e 's:test_import_time:_&:' test_path.py || die
+
 	distutils-r1_python_prepare_all
 }
 
