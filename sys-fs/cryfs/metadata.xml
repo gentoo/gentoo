@@ -5,5 +5,4 @@
   <use>
     <flag name="custom-optimization">Use user-defined compiler optimization level</flag>
   </use>
-  <longdescription>Encrypted FUSE filesystem that conceals metadata</longdescription>
 </pkgmetadata>
