@@ -1,0 +1,16 @@
+BDEPEND=ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby24(-)] ) ) ruby_targets_ruby25? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby25(-)] ) ) ruby_targets_ruby26? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby26(-)] ) ) ruby_targets_ruby24? ( test? ( dev-ruby/rake[ruby_targets_ruby24(-)] ) ) ruby_targets_ruby25? ( test? ( dev-ruby/rake[ruby_targets_ruby25(-)] ) ) ruby_targets_ruby26? ( test? ( dev-ruby/rake[ruby_targets_ruby26(-)] ) ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24(-)] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] ) test? ( ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24(-)] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] ) )
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=test? ( >=dev-libs/protobuf-3.7.0 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24(-)] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] )
+DESCRIPTION=Protocol Buffers are Google's data interchange format
+EAPI=7
+HOMEPAGE=https://developers.google.com/protocol-buffers
+IUSE=ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 doc test test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24(-)] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] )
+REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 )
+RESTRICT=!test? ( test ) !test? ( test )
+SLOT=3
+SRC_URI=https://github.com/protocolbuffers/protobuf/archive/v3.11.3.tar.gz -> google-protobuf-3.11.3-ruby.tar.gz
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	ruby-fakegem	cca036a1477f29b926bf994faddf4099	ruby-ng	a1c89995f9f6dd045e93d13a92ca81a9	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=38e21e37356cf0c58f98d0f44bf63da3
