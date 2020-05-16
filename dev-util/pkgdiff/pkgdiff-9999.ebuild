@@ -28,6 +28,6 @@ src_compile() {
 PREFIX="/usr"
 
 src_install() {
-	mkdir -p "${D}${PREFIX}"
+	dodir ${PREFIX}
 	perl Makefile.pl -install --destdir "${ED}" || die "install failed"
 }
