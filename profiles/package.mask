@@ -723,10 +723,6 @@ sys-apps/fwupdate
 # No reverse dependency
 dev-tcltk/tcl-mccp
 
-# Stefan Strogin <steils@gentoo.org> (2020-04-09)
-# Masked for testing
->=dev-libs/libressl-3.1.0
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-04-04)
 # py27-only vim plugins. Masked for removal in 30 days.
 app-vim/automatictexplugin
