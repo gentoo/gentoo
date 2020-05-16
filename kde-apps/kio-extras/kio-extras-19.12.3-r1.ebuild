@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
-HOMEPAGE="https://cgit.kde.org/kio-extras.git"
+HOMEPAGE="https://invent.kde.org/network/kio-extras"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
