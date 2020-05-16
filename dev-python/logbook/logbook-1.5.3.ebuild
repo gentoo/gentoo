@@ -23,6 +23,7 @@ BDEPEND="
 		app-arch/brotli[${PYTHON_USEDEP},python]
 		dev-python/execnet[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pyzmq[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	)"
