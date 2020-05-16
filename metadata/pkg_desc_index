@@ -7746,8 +7746,8 @@ dev-python/docutils 0.16: Python Documentation Utilities
 dev-python/docutils-glep 1.2 9999: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.7.1 0.9.1: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: Copy-on-write locking mechanism for expensive resources
-dev-python/doit 0.29.0 0.32.0: Automation tool
-dev-python/doit-py 0.4.0 0.4.0-r1: doit tasks for python stuff
+dev-python/doit 0.29.0 0.32.0 0.32.0-r1: Automation tool
+dev-python/doit-py 0.4.0 0.4.0-r1 0.4.0-r2: doit tasks for python stuff
 dev-python/dominate 2.3.1 2.4.0 2.5.1: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/doublex 1.9.2: Python test doubles
 dev-python/doublex-expects 0.7.0_rc2-r1: Expects matchers for Doublex test doubles assertions
@@ -13662,7 +13662,7 @@ media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.72-r1 1.1.10-r1 1.1.26: Spotify is a social music platform
-media-sound/strawberry 0.6.9 0.6.10 9999: Modern music player and library organizer based on Clementine and Qt
+media-sound/strawberry 0.6.10 0.6.11 9999: Modern music player and library organizer based on Clementine and Qt
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
