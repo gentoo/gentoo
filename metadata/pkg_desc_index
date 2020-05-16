@@ -10946,7 +10946,7 @@ games-board/pioneers 15.3-r1: A clone of the popular board game The Settlers of 
 games-board/pokerth 1.1.2: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r3: Protocol adapter to run UCI chess engines under xboard
 games-board/pouetchess 0.2.0-r2: 3D and open source chess game
-games-board/pychess 1.0.0: A chess client for GNOME
+games-board/pychess 1.0.0 1.0.2: A chess client for GNOME
 games-board/pysolfc 2.6.4-r1: An exciting collection of more than 1000 solitaire card games
 games-board/scid 4.6.2-r1: a free chess database application
 games-board/simsu 1.3.6: A basic sudoku game
