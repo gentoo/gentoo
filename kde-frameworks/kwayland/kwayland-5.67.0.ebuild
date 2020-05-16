@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Qt-style client and server library wrapper for Wayland libraries"
-HOMEPAGE="https://cgit.kde.org/kwayland.git"
+HOMEPAGE="https://invent.kde.org/frameworks/kwayland"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
