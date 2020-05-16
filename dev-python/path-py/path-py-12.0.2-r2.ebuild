@@ -20,7 +20,9 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 IUSE="test"
 
 RDEPEND="$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' python3_{5,6,7} pypy3)
-	dev-python/appdirs[${PYTHON_USEDEP}]"
+	dev-python/appdirs[${PYTHON_USEDEP}]
+	!<dev-python/pytest-shutil-1.7.0-r1
+	!<dev-python/pytest-virtualenv-1.7.0-r1"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/packaging[${PYTHON_USEDEP}]
@@ -44,6 +46,9 @@ python_prepare_all() {
 	# disable flake8 tests
 	sed -i -r 's: --flake8:: ; s: --black:: ; s: --cov::' \
 		pytest.ini || die
+
+	# fragile test for import time
+	sed -i -e 's:test_import_time:_&:' test_path.py || die
 
 	distutils-r1_python_prepare_all
 }
