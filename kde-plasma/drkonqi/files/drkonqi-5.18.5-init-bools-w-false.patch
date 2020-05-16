@@ -1,0 +1,50 @@
+From c517b795936fdab641849ca83ec8c3e253e32de8 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Tue, 12 May 2020 12:25:52 +0200
+Subject: initialize bools to false by default
+
+Summary:
+This should fix random 113 errors (user_not_insider) coming out of the api
+
+I can't really reproduce the problem other than by setting the bools
+explicitly to true. Seeing as they were previously not set explicitly
+they could very well end up true accidentally.
+To fix this let's set them explicitly false.
+
+BUG: 421187
+FIXED-IN: 5.18.6
+
+Test Plan:
+hoping for the best!
+tests still pass tho
+
+Reviewers: davidedmundson, apol
+
+Reviewed By: apol
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D29675
+---
+ src/bugzillaintegration/libbugzilla/clients/commands/newattachment.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/bugzillaintegration/libbugzilla/clients/commands/newattachment.h b/src/bugzillaintegration/libbugzilla/clients/commands/newattachment.h
+index d30f379..8b4e4bb 100644
+--- a/src/bugzillaintegration/libbugzilla/clients/commands/newattachment.h
++++ b/src/bugzillaintegration/libbugzilla/clients/commands/newattachment.h
+@@ -34,8 +34,8 @@ class NewAttachment : public JsonCommand
+     BUGZILLA_MEMBER_PROPERTY(QString, summary);
+     BUGZILLA_MEMBER_PROPERTY(QString, content_type);
+     BUGZILLA_MEMBER_PROPERTY(QString, comment);
+-    BUGZILLA_MEMBER_PROPERTY(bool, is_patch);
+-    BUGZILLA_MEMBER_PROPERTY(bool, is_private);
++    BUGZILLA_MEMBER_PROPERTY(bool, is_patch) = false;
++    BUGZILLA_MEMBER_PROPERTY(bool, is_private) = false;
+ 
+     // flags property is not supported at this time
+ 
+-- 
+cgit v1.1
