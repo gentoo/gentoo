@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="KDE Plasma screen management"
-HOMEPAGE="https://cgit.kde.org/kscreen.git"
+HOMEPAGE="https://invent.kde.org/plasma/kscreen"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
