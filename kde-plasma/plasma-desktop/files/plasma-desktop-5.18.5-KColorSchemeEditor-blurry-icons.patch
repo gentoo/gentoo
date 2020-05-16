@@ -1,0 +1,44 @@
+From 2c46f28170c785f04fa396803037a608c8077025 Mon Sep 17 00:00:00 2001
+From: Matej Mrenica <matejm98mthw@gmail.com>
+Date: Wed, 6 May 2020 07:50:01 -0600
+Subject: Fix blurry icons in KColorSchemeEditor
+
+Summary:
+When using fractional scaling, bottom icons are blurred. This patch fixes the issue.
+
+BUG: 418165
+
+Test Plan:
+No side effects.
+
+Before:
+{F8289358}
+After:
+{F8289369}
+
+Reviewers: #plasma
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D29481
+---
+ kcms/colors/editor/kcolorschemeeditor.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/kcms/colors/editor/kcolorschemeeditor.cpp b/kcms/colors/editor/kcolorschemeeditor.cpp
+index 774d66e..03caa51 100644
+--- a/kcms/colors/editor/kcolorschemeeditor.cpp
++++ b/kcms/colors/editor/kcolorschemeeditor.cpp
+@@ -28,6 +28,8 @@
+ 
+ int main(int argc, char* argv[])
+ {
++    // Fixes blurry icons with fractional scaling
++    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+     QApplication app(argc, argv);
+ 
+     KAboutData aboutData(
+-- 
+cgit v1.1
