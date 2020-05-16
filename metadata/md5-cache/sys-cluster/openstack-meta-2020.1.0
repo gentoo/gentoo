@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=A openstack meta-package for installing the various openstack pieces
+EAPI=7
+HOMEPAGE=https://openstack.org
+IUSE=cinder glance heat keystone neutron nova placement swift
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=keystone? ( >=sys-auth/keystone-17.0.0 <sys-auth/keystone-18 ) swift? ( ~sys-cluster/swift-2.25.0 ) neutron? ( >=sys-cluster/neutron-16.0.0 <sys-cluster/neutron-17 ) glance? ( >=app-admin/glance-20.0.0 <app-admin/glance-21 ) cinder? ( >=sys-cluster/cinder-16.0.0 <sys-cluster/cinder-17 ) nova? ( >=sys-cluster/nova-21.0.0 <sys-cluster/nova-22 ) heat? ( >=sys-cluster/heat-14.0.0 <sys-cluster/heat-15 ) placement? ( >=sys-cluster/placement-3.0.0 <sys-cluster/placement-4 )
+SLOT=0
+_md5_=ad740016b876a621bf7c43605924b025

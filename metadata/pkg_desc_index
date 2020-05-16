@@ -3352,7 +3352,7 @@ dev-dotnet/gio-sharp 0.3-r1: GIO API C# binding
 dev-dotnet/gkeyfile-sharp 0.1-r1: C# binding for gkeyfile
 dev-dotnet/gtk-sharp 2.12.21: gtk bindings for mono
 dev-dotnet/ikvm-bin 7.1.4532.2: Java VM for .NET
-dev-dotnet/libgdiplus 2.10.9-r1 2.10.9-r2 2.10.9-r3 4.2-r2 4.2-r3 5.6.1-r1 6.0.2: Library for using System.Drawing with Mono
+dev-dotnet/libgdiplus 6.0.2: Library for using System.Drawing with Mono
 dev-dotnet/log4net 1.2.11: tool to help the programmer output log statements to a variety of output targets
 dev-dotnet/mono-addins 0.6.2 1.0-r1: A generic framework for creating extensible applications
 dev-dotnet/monocalendar 0.7.2: iCal clone for .NET
@@ -4790,7 +4790,7 @@ dev-lang/micropython 1.11: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2019.03-r1 2019.07-r1 2019.07.1-r1 2019.11 9999: A 6model-based VM for NQP and Rakudo Perl 6
-dev-lang/mono 4.4.1.0 4.8.0.524 5.14.0.177 5.16.0.220 5.18.1.0 5.20.1.19-r1 6.0.0.334 6.4.0.198 6.6.0.161: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 6.6.0.161: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 1.4.0-r3 1.4.0-r4: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r2: The Mozart Standard Library
@@ -8011,12 +8011,12 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.6.1 2.7.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keyring 19.3.0: Provides access to the system keyring service
-dev-python/keystoneauth 3.17.2: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystoneauth 3.17.2 4.0.0: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.4: Kivys Garden tool to manage flowers
 dev-python/kiwisolver 1.0.1 1.1.0 1.2.0: An efficient C++ implementation of the Cassowary constraint solving algorithm
-dev-python/kombu 4.6.3: AMQP Messaging Framework for Python
+dev-python/kombu 4.6.3 4.6.8: AMQP Messaging Framework for Python
 dev-python/lark-parser 0.7.8: Python module to propose a modern general-purpose parsing library for Python
 dev-python/lazr-config 2.2.2: Create configuration schemas, and process and validate configurations.
 dev-python/lazr-delegates 2.0.4: Easily write objects that delegate behavior
@@ -8131,7 +8131,7 @@ dev-python/netaddr 0.7.19: Network address representation and manipulation libra
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
 dev-python/networkx 2.4 2.4-r1: Python tools to manipulate graphs and complex networks
-dev-python/neutron-lib 1.29.2: Neutron shared routines and utilities.
+dev-python/neutron-lib 1.29.2 2.3.0: Neutron shared routines and utilities.
 dev-python/nltk 3.5: Natural Language Toolkit
 dev-python/nltk-data 20200312-r1: Data files for NLTK
 dev-python/nnpy 1.4.2: cffi-based Python bindings for nanomsg
@@ -8175,14 +8175,14 @@ dev-python/openstackdocstheme 1.18.1: Theme and extension support for Sphinx doc
 dev-python/openstacksdk 0.36.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/opt-einsum 3.0.1: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 3.1.1: A mutable set that remembers the order of its entries
-dev-python/os-brick 2.8.2: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-brick 2.8.2 3.0.1: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 1.32.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-ken 0.3.1: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-resource-classes 0.5.0: A list of standardized resource classes for OpenStack.
 dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
 dev-python/os-testr 1.0.0: A testr wrapper to provide functionality for OpenStack projects
-dev-python/os-traits 0.16.0: os-traits is a library containing standardized trait strings.
+dev-python/os-traits 0.16.0 2.3.0: os-traits is a library containing standardized trait strings.
 dev-python/os-vif 1.15.2: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
@@ -8194,7 +8194,7 @@ dev-python/oslo-context 2.22.1: Helpers to maintain useful information about a r
 dev-python/oslo-db 4.45.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.23.1: Oslo i18n library
 dev-python/oslo-log 3.44.1: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 10.2.0: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-messaging 10.2.0 12.1.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.37.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 2.3.3 3.1.0: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.33.3: OpenStack library for privilege separation.
@@ -8204,13 +8204,13 @@ dev-python/oslo-serialization 2.28.2: Oslo Serialization library
 dev-python/oslo-service 1.40.2: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 0.2.1: Oslo i18n library
-dev-python/oslo-utils 3.41.5: Oslo Utility library
+dev-python/oslo-utils 3.41.5 4.1.1: Oslo Utility library
 dev-python/oslo-versionedobjects 1.35.1: A library that provides a generic versioned and RPC-friendly object model.
-dev-python/oslo-vmware 2.32.2: Oslo VMware library for OpenStack projects
+dev-python/oslo-vmware 2.32.2 3.3.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.7.1: Oslo test framework
 dev-python/osprofiler 2.6.0: OpenStack Profiler Library
 dev-python/ovs 2.10.0-r1 2.11.0 2.13.0: OVS bindings for python.
-dev-python/ovsdbapp 0.17.2: A library for creating OVSDB applications
+dev-python/ovsdbapp 0.17.2 1.1.0: A library for creating OVSDB applications
 dev-python/owslib 0.17.1-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 20.3: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
@@ -8315,7 +8315,7 @@ dev-python/pure-sasl 0.6.1: High-level SASL client written in pure Python
 dev-python/pushbullet-py 0.11.0 0.11.0-r1: A simple python client for pushbullet.com
 dev-python/pweave 0.30.3: Scientific report generator and literate programming tool
 dev-python/py 1.8.0: library with cross-python path, ini-parsing, io, code, log facilities
-dev-python/py-amqp 2.5.0: Low-level AMQP client for Python (fork of amqplib)
+dev-python/py-amqp 2.5.0 2.5.2: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-cpuinfo 5.0.0-r1: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.4: Github-Flavored Markdown for Python-Markdown
 dev-python/py-ubjson 0.15.0 0.16.1: Universal Binary JSON encoder/decoder
@@ -8576,7 +8576,7 @@ dev-python/python-mpd 1.0.0: Python MPD client library
 dev-python/python-musicbrainz-ngs 0.6 0.7.1: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.6.10-r1: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
-dev-python/python-neutronclient 6.12.1: A client for the OpenStack Quantum API
+dev-python/python-neutronclient 6.12.1 7.1.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 13.0.2: A client for the OpenStack Nova API
 dev-python/python-ntpdshm 0.2.1: Python interface to ntpd shared memory driver 28
 dev-python/python-octaviaclient 1.8.0: A client for the OpenStack Zun API
@@ -8600,13 +8600,14 @@ dev-python/python-troveclient 2.17.0: A client for the OpenStack Trove API, a sc
 dev-python/python-urljr 1.0.1-r1: JanRain's URL Utilities
 dev-python/python-utils 2.3.0: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
+dev-python/python-vitrageclient 4.0.1: A client for the OpenStack Vitrage API
 dev-python/python-wpactrl 20081102-r1: A Python extension for wpa_supplicant/hostapd control interface access
 dev-python/python-xlib 0.27: A fully functional X client library for Python, written in Python
 dev-python/python-xmlsec 1.3.6: Python bindings for the XML Security Library
 dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
 dev-python/python-zaqarclient 1.11.0 1.13.1: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
-dev-python/python-zunclient 3.3.0: A client for the OpenStack Zun API
+dev-python/python-zunclient 3.3.0 4.0.1: A client for the OpenStack Zun API
 dev-python/python3-lxc 3.0.2: Python bindings for LXC
 dev-python/python3-saml 1.9.0: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
@@ -12728,7 +12729,7 @@ media-libs/gd 2.2.5-r2 2.3.0: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.22 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 0.12.0-r1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
-media-libs/giflib 5.1.4 5.2.1-r1: Library to handle, display and manipulate GIF images
+media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
 media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1 2.2.0: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.2.1 3.3.1: The Portable OpenGL FrameWork
 media-libs/glm 0.9.9.5 0.9.9.7: OpenGL Mathematics
@@ -17024,7 +17025,7 @@ sys-cluster/ceph 12.2.12-r3 14.2.7-r1 14.2.9-r1 15.2.1-r1: Ceph distributed file
 sys-cluster/charliecloud 0.9.6 0.9.10 0.10-r1 0.15 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 15.1.0-r1 2019.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 15.1.0-r1 16.0.0 2019.2.9999 2020.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/corosync 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
@@ -17038,7 +17039,7 @@ sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/glusterfs 4.1.8 6.5 6.7-r1 6.8 7.2-r1 7.3 7.5 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6 3.0.6-r1: Heartbeat high availability cluster manager
-sys-cluster/heat 13.0.0 2019.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
+sys-cluster/heat 13.0.0 14.0.0 2019.2.9999 2020.1.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
@@ -17065,17 +17066,17 @@ sys-cluster/mpich 3.0.4 3.3: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 15.0.2 2019.2.9999: A virtual network service for Openstack
-sys-cluster/nova 20.2.0 2019.2.9999: Cloud computing fabric controller
+sys-cluster/neutron 15.0.2 16.0.0 2019.2.9999 2020.1.9999: A virtual network service for Openstack
+sys-cluster/nova 20.2.0 21.0.0 2019.2.9999 2020.1.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3: A high-performance message passing library (MPI)
-sys-cluster/openstack-meta 2019.2.2 2019.2.9999: A openstack meta-package for installing the various openstack pieces
+sys-cluster/openstack-meta 2019.2.2 2019.2.9999 2020.1.0 2020.1.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1: Pacemaker CRM
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
-sys-cluster/placement 2.0.0 2019.2.9999: A HTTP service for managing, selecting, and claiming cloud resources.
+sys-cluster/placement 2.0.0 3.0.0 2019.2.9999 2020.1.9999: A HTTP service for managing, selecting, and claiming cloud resources.
 sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devices
 sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
