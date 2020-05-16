@@ -6,6 +6,8 @@ USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
+RUBY_FAKEGEM_GEMSPEC="loofah.gemspec"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Library for manipulating and transforming HTML/XML documents and fragments."
