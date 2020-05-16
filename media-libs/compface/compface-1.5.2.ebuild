@@ -1,7 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
+
+inherit autotools
 
 DESCRIPTION="Utilities and library to convert to/from X-Face format"
 HOMEPAGE="http://www.xemacs.org/Download/optLibs.html"
@@ -13,7 +15,12 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x8
 
 RDEPEND="dev-lang/perl"
 
-PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
+PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
 	default

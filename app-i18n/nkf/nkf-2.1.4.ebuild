@@ -1,8 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PYTHON_COMPAT=( python3_6 )
+EAPI="7"
+PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_OPTIONAL="1"
+DISTUTILS_USE_SETUPTOOLS="no"
 
 inherit distutils-r1 perl-module toolchain-funcs vcs-snapshot
 
@@ -10,7 +12,7 @@ PY_P="python-${PN}-0.2.0_p20141211"
 PY_COMMIT="000915e115acac57a1fdbceb1e6361788af83a3d"
 
 DESCRIPTION="Network Kanji code conversion Filter with UTF-8/16 support"
-HOMEPAGE="https://ja.osdn.net/projects/nkf/"
+HOMEPAGE="https://osdn.net/projects/nkf/"
 SRC_URI="mirror://sourceforge.jp/${PN}/64158/${P}.tar.gz
 	python? ( https://github.com/fumiyas/python-${PN}/archive/${PY_COMMIT}.tar.gz -> ${PY_P}.tar.gz )"
 
@@ -18,6 +20,21 @@ LICENSE="ZLIB python? ( BSD )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-macos"
 IUSE="perl python l10n_ja"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+RDEPEND="python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_USEDEP}]
+		')
+	)"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
+
+src_unpack() {
+	use python && vcs-snapshot_src_unpack || default
+}
 
 src_prepare() {
 	sed -i \
@@ -26,7 +43,10 @@ src_prepare() {
 		Makefile
 	if use python; then
 		mv "${WORKDIR}"/${PY_P} NKF.python || die
-		eapply "${FILESDIR}"/${P}-python.patch
+		eapply "${FILESDIR}"/${PN}-python.patch
+		cd NKF.python
+		distutils-r1_src_prepare
+		cd - >/dev/null
 	fi
 
 	default
@@ -37,6 +57,11 @@ src_configure() {
 	if use perl; then
 		cd NKF.mod
 		perl-module_src_configure
+		cd - >/dev/null
+	fi
+	if use python; then
+		cd NKF.python
+		distutils-r1_src_configure
 		cd - >/dev/null
 	fi
 }
