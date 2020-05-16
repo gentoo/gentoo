@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bidi debug devil doc freeimage expat irrlicht lua ogre opengl pcre python static-libs tinyxml truetype xerces-c +xml zip"
 REQUIRED_USE="|| ( expat tinyxml xerces-c xml )
-	${PYTHON_REQUIRED_USE}" # bug 362223
+	python? ( ${PYTHON_REQUIRED_USE} )" # bug 362223
 
 # gles broken
 #	gles? ( media-libs/mesa[gles1] )
@@ -59,6 +59,10 @@ DEPEND="${RDEPEND}
 	opengl? ( media-libs/glm )"
 
 PATCHES=( "${FILESDIR}"/${P}-icu-59.patch )
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_configure() {
 	# http://www.cegui.org.uk/mantis/view.php?id=991
