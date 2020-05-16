@@ -4,7 +4,7 @@
 EAPI=5
 
 # TODO: multiple ABI?
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_8 )
 inherit eutils flag-o-matic cmake-utils python-single-r1
 
 DESCRIPTION="Crazy Eddie's GUI System"
@@ -58,7 +58,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	opengl? ( media-libs/glm )"
 
-PATCHES=( "${FILESDIR}"/${P}-icu-59.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-icu-59.patch
+	"${FILESDIR}"/${P}-python3.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
