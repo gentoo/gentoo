@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>adebeus@gmail.com</email>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-  </maintainer>
+  <!--maintainer-needed-->
   <use>
     <flag name="custom-optimization">Use user-defined compiler optimization level</flag>
   </use>
-  <longdescription>Encrypted FUSE filesystem that conceals metadata</longdescription>
 </pkgmetadata>
