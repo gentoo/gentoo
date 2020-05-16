@@ -21,6 +21,7 @@ BDEPEND="
 	test? (
 		dev-python/chai[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 	)"
 
