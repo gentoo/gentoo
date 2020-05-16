@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-icu-59.patch
 	"${FILESDIR}"/${P}-python3.patch
+	"${FILESDIR}"/${P}-musl.patch
 )
 
 pkg_setup() {
