@@ -17,6 +17,7 @@ IUSE="X"
 
 RDEPEND="X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-ae-location.patch
@@ -36,6 +37,7 @@ src_prepare() {
 		-e "s/\([\t ]\)cc /\1\\\\\$(CC) /" \
 		-e "/CFLAGS =/s/\" >/ \\\\\$(LDFLAGS)\" >/" \
 		-e "/other_cflag/s/ \${strip_option}//" \
+		-e "s/-lcurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
 		create.mk.{aee,xae}
 
 	default

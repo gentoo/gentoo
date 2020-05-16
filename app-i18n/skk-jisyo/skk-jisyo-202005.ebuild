@@ -2,24 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-USE_RUBY="ruby24 ruby25 ruby26"
-
-inherit git-r3 ruby-single
 
 MY_PN=${PN^^}
 
 DESCRIPTION="Jisyo (dictionary) files for the SKK Japanese-input software"
 HOMEPAGE="http://openlab.ring.gr.jp/skk/dic.html"
-EGIT_REPO_URI="https://github.com/skk-dev/dict"
+SRC_URI="mirror://gentoo/${P}.tar.xz
+	https://dev.gentoo.org/~hattya/distfiles/${P}.tar.xz"
 
 LICENSE="CC-BY-SA-3.0 GPL-2+ public-domain unicode"
 SLOT="0"
-KEYWORDS=""
-IUSE="cdb ${USE_RUBY//ruby/ruby_targets_ruby}"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+IUSE="cdb"
 
-DEPEND="${RUBY_DEPS}
-	app-i18n/skktools
-	virtual/awk
+DEPEND="virtual/awk
 	cdb? (
 		|| (
 			dev-db/tinycdb
@@ -30,8 +26,6 @@ RDEPEND=""
 
 DOCS=( ChangeLog{,.{1..3}} committers.md )
 HTML_DOCS=( edict_doc.html )
-
-SKKTOOLS_DIR="${EPREFIX}/usr/share/skktools/convert2skk"
 
 src_prepare() {
 	rm -f ${MY_PN}.{hukugougo,noregist,notes,pubdic+,requested,unannotated,*wrong*}
@@ -48,15 +42,6 @@ tinycdb_make() {
 }
 
 src_compile() {
-	local ctdic="${MY_PN}.china_taiwan" ruby
-	mv ${ctdic}{.header,}
-	for ruby in ${RUBY_TARGETS_PREFERENCE}; do
-		if use ruby_targets_${ruby}; then
-			${ruby} ${SKKTOOLS_DIR}/ctdicconv.rb csv/${ctdic##*.}.csv | skkdic-expr2 >> ${ctdic}
-			break
-		fi
-	done
-
 	if use cdb; then
 		local cdbmake=cdb_make f
 		if has_version dev-db/tinycdb; then
