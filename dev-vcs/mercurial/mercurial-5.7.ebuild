@@ -130,7 +130,7 @@ LICENSE="GPL-2+
 	rust? ( BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 ISC MIT PSF-2 Unlicense )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+chg emacs gpg test tk rust zsh-completion"
+IUSE="+chg emacs gpg test tk rust"
 
 BDEPEND="rust? ( ${RUST_DEPEND} )"
 RDEPEND="
@@ -138,8 +138,7 @@ RDEPEND="
 	dev-python/zstandard[${PYTHON_USEDEP}]
 	gpg? ( app-crypt/gnupg )
 	tk? ( dev-lang/tk )
-	zsh-completion? ( app-shells/zsh )"
-
+"
 DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	test? (
 		app-arch/unzip
@@ -217,10 +216,8 @@ python_install_all() {
 
 	newbashcomp contrib/bash_completion hg
 
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		newins contrib/zsh_completion _hg
-	fi
+	insinto /usr/share/zsh/site-functions
+	newins contrib/zsh_completion _hg
 
 	dobin hgeditor
 	if use tk; then
