@@ -11,7 +11,7 @@ DESCRIPTION="Completion input method for IBus"
 HOMEPAGE="https://mike-fabian.github.io/ibus-typing-booster"
 SRC_URI="https://github.com/mike-fabian/${PN}/releases/download/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
