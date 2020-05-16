@@ -41,7 +41,7 @@ UWSGI_PLUGINS_OPT=( alarm_{curl,xmpp} clock_{monotonic,realtime} curl_cron
 	sqlite ssi stats_pusher_statsd
 	systemd_logger transformation_toupper tuntap webdav xattr xslt zabbix )
 
-LANG_SUPPORT_SIMPLE=( cgi mono perl ) # plugins which can be built in the main build process
+LANG_SUPPORT_SIMPLE=( cgi perl ) # plugins which can be built in the main build process
 LANG_SUPPORT_EXTENDED=( go lua php python python_asyncio python_gevent ruby )
 
 # plugins to be ignored (for now):
@@ -107,7 +107,6 @@ CDEPEND="sys-libs/zlib
 	uwsgi_plugins_xslt? ( dev-libs/libxslt )
 	go? ( sys-devel/gcc:=[go] )
 	lua? ( dev-lang/lua:= )
-	mono? ( =dev-lang/mono-4* )
 	perl? ( dev-lang/perl:= )
 	php? (
 		php_targets_php7-2? ( dev-lang/php:7.2[embed] )
@@ -309,7 +308,6 @@ src_install() {
 	use cgi && dosym uwsgi /usr/bin/uwsgi_cgi
 	use go && dosym uwsgi /usr/bin/uwsgi_go
 	use lua && dosym uwsgi /usr/bin/uwsgi_lua
-	use mono && dosym uwsgi /usr/bin/uwsgi_mono
 	use perl && dosym uwsgi /usr/bin/uwsgi_psgi
 
 	if use php ; then
@@ -350,7 +348,6 @@ pkg_postinst() {
 	elog "Append the following options to the uwsgi call to load the respective language plugin:"
 	use cgi    && elog "  '--plugins cgi' for cgi"
 	use lua    && elog "  '--plugins lua' for lua"
-	use mono   && elog "  '--plugins mono' for mono"
 	use perl   && elog "  '--plugins psgi' for perl"
 
 	if use php ; then
