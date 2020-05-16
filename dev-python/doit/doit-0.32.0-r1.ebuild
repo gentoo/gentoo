@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -20,7 +21,6 @@ RDEPEND="
 	dev-python/pyinotify[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="
-	doc? ( dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}] )
 	test? (
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -30,7 +30,7 @@ DEPEND="
 PDEPEND=">=dev-python/doit-py-0.4.0[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
-distutils_enable_sphinx doc
+distutils_enable_sphinx doc dev-python/sphinx_rtd_theme
 
 PATCHES=(
 	"${FILESDIR}/${P}_pytest5.4.patch"
