@@ -16,6 +16,7 @@ KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux 
 IUSE=""
 
 RDEPEND="!app-editors/ersatz-emacs"
+BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/easyedit-${PV}"
 
 PATCHES=(
@@ -36,6 +37,7 @@ src_prepare() {
 		-e "s/\tcc /\t\\\\\$(CC) /" \
 		-e "/CFLAGS =/s/\" >/ \\\\\$(LDFLAGS)\" >/" \
 		-e "/other_cflag/s/ *-s//" \
+		-e "s/-lcurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
 		create.make
 
 	default
