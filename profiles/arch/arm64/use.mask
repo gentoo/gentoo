@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# David Seifert <soap@gentoo.org (2020-05-17)
+# Mono is hopelessly broken on arm64
+mono
+
 # Aaron Bauman <bman@gentoo.org> (2019-12-27)
 # Mask cpu_flags_arm_neon for all of arm64
 # A neon64 USE is being discussed
