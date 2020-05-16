@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit cmake-utils python-single-r1 readme.gentoo-r1 systemd user
+inherit cmake python-single-r1 readme.gentoo-r1 systemd
 
 GTEST_VER="1.8.1"
 GTEST_URL="https://github.com/google/googletest/archive/${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
@@ -22,7 +22,7 @@ else
 		https://znc.in/releases/archive/${MY_P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} icu )"
 
-RDEPEND="
+DEPEND="
 	icu? ( dev-libs/icu:= )
 	nls? ( dev-libs/boost:=[nls] )
 	perl? ( >=dev-lang/perl-5.10:= )
@@ -47,13 +47,26 @@ RDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 	zlib? ( sys-libs/zlib:0= )
 "
-DEPEND="
-	${RDEPEND}
+RDEPEND="
+	${DEPEND}
+	acct-user/znc
+	acct-group/znc
+"
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	perl? ( >=dev-lang/swig-3.0.0 )
-	python? ( >=dev-lang/swig-3.0.0 )
-	test? ( dev-qt/qtnetwork:5 )
+	perl? (
+		>=dev-lang/swig-3.0.0
+		>=dev-lang/perl-5.10
+	)
+	python? (
+		>=dev-lang/swig-3.0.0
+		>=dev-lang/perl-5.10
+	)
+	test? (
+		${PYTHON_DEPS}
+		dev-qt/qtnetwork:5
+	)
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-1.7.1-inttest-dir.patch )
@@ -62,13 +75,6 @@ pkg_setup() {
 	if use python; then
 		python-single-r1_pkg_setup
 	fi
-
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
-	# The home directory was previously set to /dev/null
-	# This caused a bug with the systemd unit
-	# https://bugs.gentoo.org/521916
-	esethome ${PN} /var/lib/${PN}
 }
 
 src_prepare() {
@@ -81,7 +87,7 @@ src_prepare() {
 	sed -i -e "s|DZNC_BIN_DIR:path=|DZNC_BIN_DIR:path=${T}/inttest|" \
 		test/CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -104,36 +110,29 @@ src_configure() {
 		export GMOCK_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googlemock"
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	cmake-utils_src_make unittest
-	if has network-sandbox ${FEATURES}; then
-		DESTDIR="${T}/inttest" cmake-utils_src_make install
-		local filter='-'
-		if ! use perl; then
-			filter="${filter}:ZNCTest.Modperl*"
-		fi
-		if ! use python; then
-			filter="${filter}:ZNCTest.Modpython*"
-		fi
-		# CMAKE_PREFIX_PATH and CXXFLAGS are needed for znc-buildmod
-		# invocations from inside the test
-		GTEST_FILTER="${filter}" ZNC_UNUSUAL_ROOT="${T}/inttest" \
-			CMAKE_PREFIX_PATH="${T}/inttest/usr/share/znc/cmake" \
-			CXXFLAGS="${CXXFLAGS} -isystem ${T}/inttest/usr/include" \
-			cmake-utils_src_make inttest
-	else
-		# TODO: don't require sandbox after
-		# https://github.com/znc/znc/pull/1363 is implemented
-		ewarn "FEATURES=-network-sandbox; skipping integration tests which"
-		ewarn "temporary open local ports."
+	cmake_build unittest
+	DESTDIR="${T}/inttest" cmake_build install
+	local filter='-'
+	if ! use perl; then
+		filter="${filter}:ZNCTest.Modperl*"
 	fi
+	if ! use python; then
+		filter="${filter}:ZNCTest.Modpython*"
+	fi
+	# CMAKE_PREFIX_PATH and CXXFLAGS are needed for znc-buildmod
+	# invocations from inside the test
+	GTEST_FILTER="${filter}" ZNC_UNUSUAL_ROOT="${T}/inttest" \
+		CMAKE_PREFIX_PATH="${T}/inttest/usr/share/znc/cmake" \
+		CXXFLAGS="${CXXFLAGS} -isystem ${T}/inttest/usr/include" \
+		cmake_build inttest
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	dodoc NOTICE
 	newinitd "${FILESDIR}"/znc.initd-r2 znc
