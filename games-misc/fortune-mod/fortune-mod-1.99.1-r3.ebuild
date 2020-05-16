@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~m68k ~mips ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="offensive elibc_glibc"
 
-DEPEND="app-text/recode"
+DEPEND="app-text/recode:0="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
