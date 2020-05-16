@@ -303,7 +303,8 @@ setup_target_flags() {
 			# Workaround GPREL22 overflow by slightly pessimizing global
 			# references to go via 64-bit relocations instead of 22-bit ones.
 			# This allows building glibc on ia64 without an overflow: #723268
-			append-flags -fcommon
+			append-flags -mno-sdata
+			:
 		;;
 		mips)
 			# The mips abi cannot support the GNU style hashes. #233233
