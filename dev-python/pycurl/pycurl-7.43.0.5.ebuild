@@ -54,6 +54,8 @@ PATCHES=(
 
 python_prepare_all() {
 	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
+	# these tests are broken with newer versions of bottle
+	sed -e 's:test.*_invalid_utf8:_&:' -i tests/getinfo_test.py || die
 	distutils-r1_python_prepare_all
 }
 

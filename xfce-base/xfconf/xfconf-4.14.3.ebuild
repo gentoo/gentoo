@@ -16,6 +16,7 @@ IUSE="debug introspection perl vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND=">=dev-libs/glib-2.42
+	sys-apps/dbus
 	>=xfce-base/libxfce4util-4.10:=
 	introspection? ( dev-libs/gobject-introspection:= )
 	perl? (
