@@ -5,7 +5,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite(+)"
 
-inherit python-single-r1
+inherit python-single-r1 xdg
 
 DESCRIPTION="Completion input method for IBus"
 HOMEPAGE="https://mike-fabian.github.io/ibus-typing-booster"
@@ -31,3 +31,15 @@ RDEPEND="${DEPEND}
 	>=dev-db/m17n-db-1.7"
 BDEPEND="sys-devel/gettext
 	virtual/pkgconfig"
+
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+}
