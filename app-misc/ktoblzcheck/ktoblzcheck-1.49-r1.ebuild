@@ -18,7 +18,7 @@ IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	app-text/recode
+	app-text/recode:0=
 	sys-apps/grep
 	sys-apps/sed
 	virtual/awk
