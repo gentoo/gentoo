@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/Lawouach/WebSocket-for-Python/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 arm ~x86"
 fi
 
 DESCRIPTION="WebSocket client and server library for Python 2 and 3 as well as PyPy"
