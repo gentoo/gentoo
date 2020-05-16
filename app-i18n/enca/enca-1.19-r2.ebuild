@@ -16,7 +16,7 @@ IUSE="doc +iconv recode static-libs"
 
 RDEPEND="
 	iconv? ( virtual/libiconv[${MULTILIB_USEDEP}] )
-	recode? ( app-text/recode[${MULTILIB_USEDEP}] )
+	recode? ( app-text/recode:0=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
