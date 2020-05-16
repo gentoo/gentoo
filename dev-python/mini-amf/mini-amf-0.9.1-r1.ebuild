@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -28,6 +27,8 @@ DEPEND="${RDEPEND}
 	)"
 
 distutils_enable_sphinx doc
+
+PATCHES=( "${FILESDIR}"/mini-amf-0.9.1-setuptools-46-fix.patch )
 
 python_test() {
 	coverage run --source=miniamf setup.py test || die
