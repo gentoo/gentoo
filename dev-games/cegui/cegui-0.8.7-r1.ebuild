@@ -50,7 +50,7 @@ RDEPEND="
 	tinyxml? ( dev-libs/tinyxml )
 	truetype? ( media-libs/freetype:2 )
 	xerces-c? ( dev-libs/xerces-c )
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:2 )
 	zip? ( sys-libs/zlib[minizip] )"
 
 DEPEND="${RDEPEND}
