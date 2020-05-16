@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Plugins for the KDE Image Plugin Interface"
-HOMEPAGE="https://userbase.kde.org/KIPI https://cgit.kde.org/kipi-plugins.git/"
+HOMEPAGE="https://userbase.kde.org/KIPI https://invent.kde.org/graphics/kipi-plugins"
 
 LICENSE="GPL-2+"
 SLOT="5"

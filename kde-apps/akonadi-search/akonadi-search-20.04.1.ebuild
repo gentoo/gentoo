@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Libraries and daemons to implement searching in Akonadi"
-HOMEPAGE="https://cgit.kde.org/akonadi-search.git"
+HOMEPAGE="https://invent.kde.org/pim/akonadi-search"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
