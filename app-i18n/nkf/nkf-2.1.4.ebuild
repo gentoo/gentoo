@@ -30,6 +30,8 @@ RDEPEND="python? (
 	)"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
+
 src_unpack() {
 	use python && vcs-snapshot_src_unpack || default
 }
