@@ -3,6 +3,8 @@
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
+DISTUTILS_OPTIONAL="1"
+DISTUTILS_USE_SETUPTOOLS="no"
 
 inherit distutils-r1 perl-module toolchain-funcs
 
@@ -16,6 +18,15 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86 ~x86-macos"
 IUSE="perl python l10n_ja"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+RDEPEND="python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_USEDEP}]
+		')
+	)"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed -i \
@@ -28,6 +39,9 @@ src_prepare() {
 	if use python; then
 		mv "${WORKDIR}"/NKF.python . || die
 		eapply "${FILESDIR}"/${P}-strip.patch
+		cd NKF.python
+		distutils-r1_src_prepare
+		cd - >/dev/null
 	fi
 
 	default
@@ -38,6 +52,11 @@ src_configure() {
 	if use perl; then
 		cd NKF.mod
 		perl-module_src_configure
+		cd - >/dev/null
+	fi
+	if use python; then
+		cd NKF.python
+		distutils-r1_src_configure
 		cd - >/dev/null
 	fi
 }
