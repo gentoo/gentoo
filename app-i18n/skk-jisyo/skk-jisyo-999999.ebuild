@@ -9,7 +9,7 @@ inherit git-r3 ruby-single
 MY_PN=${PN^^}
 
 DESCRIPTION="Jisyo (dictionary) files for the SKK Japanese-input software"
-HOMEPAGE="https://skk-dev.github.io/dict"
+HOMEPAGE="http://openlab.ring.gr.jp/skk/dic.html"
 EGIT_REPO_URI="https://github.com/skk-dev/dict"
 
 LICENSE="CC-BY-SA-3.0 GPL-2+ public-domain unicode"
@@ -34,7 +34,7 @@ HTML_DOCS=( edict_doc.html )
 SKKTOOLS_DIR="${EPREFIX}/usr/share/skktools/convert2skk"
 
 src_prepare() {
-	rm -f ${MY_PN}.{wrong*,noregist,not_wrong,hukugougo,notes,requested,pubdic+}
+	rm -f ${MY_PN}.{hukugougo,noregist,notes,pubdic+,requested,unannotated,*wrong*}
 
 	default
 }
