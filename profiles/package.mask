@@ -123,6 +123,7 @@ app-mobilephone/ganyremote
 # Last release in 2018, wip/gtk3 branch untouched since 2017. Bug #598906
 # Stuck on Python 2 and pygtk. Masked for removal in 30 days.
 app-office/pybliographer
+dev-python/python-bibtex
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Requires <OpenSSL-1.1.x. Please migrate to
