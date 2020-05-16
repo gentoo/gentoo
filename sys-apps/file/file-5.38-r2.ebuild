@@ -1,14 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
 
 inherit distutils-r1 libtool toolchain-funcs multilib-minimal
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/glensc/file.git"
 	inherit autotools git-r3
 else
@@ -17,29 +17,33 @@ else
 fi
 
 DESCRIPTION="identify a file's format by scanning binary data for patterns"
-HOMEPAGE="https://www.darwinsys.com/file/"
+HOMEPAGE="https://www.darwinsys.com/file"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="bzip2 lzma python seccomp zlib"
+IUSE="bzip2 lzma python zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
 	lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )
-	python? (
-		${PYTHON_DEPS}
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	)
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
-RDEPEND="${DEPEND}
+	python? ( ${PYTHON_DEPS} )
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+"
+RDEPEND="
+	${DEPEND}
 	python? ( !dev-python/python-magic )
-	seccomp? ( sys-libs/libseccomp[${MULTILIB_USEDEP}] )"
+"
+PATCHES=(
+	"${FILESDIR}/${P}-Revert-PR-93-iaeiaeiaeiae-Do-as-the-comment-says-and.patch"
+	"${FILESDIR}/${P}-td-is-for-ptrdiff_t-not-for-off_t.patch"
+	"${FILESDIR}/${P}-The-executable-bit-is-only-set-when-DF_1_PIE-bit-is-.patch"
+)
 
 src_prepare() {
 	default
 
-	[[ ${PV} == "9999" ]] && eautoreconf
+	[[ "${PV}" == "9999" ]] && eautoreconf
 	elibtoolize
 
 	# don't let python README kill main README #60043
@@ -49,11 +53,11 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
+		--disable-libseccomp
 		--disable-static
 		--enable-fsect-man5
 		$(use_enable bzip2 bzlib)
 		$(use_enable lzma xzlib)
-		$(use_enable seccomp libseccomp)
 		$(use_enable zlib)
 	)
 	econf "${myeconfargs[@]}"
@@ -78,7 +82,7 @@ need_build_file() {
 }
 
 src_configure() {
-	local ECONF_SOURCE=${S}
+	local ECONF_SOURCE="${S}"
 
 	if need_build_file; then
 		mkdir -p "${WORKDIR}"/build || die
