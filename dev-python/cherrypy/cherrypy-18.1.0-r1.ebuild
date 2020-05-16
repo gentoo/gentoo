@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/C/CherryPy/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm ~arm64 ~ppc64"
 IUSE="ssl"
 # IUSE="ssl test"
 # See below to see what needs to be done before testing can be enabled
