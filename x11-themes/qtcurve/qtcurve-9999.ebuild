@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake kde.org
 
 DESCRIPTION="Widget styles for Qt and GTK2"
-HOMEPAGE="https://cgit.kde.org/qtcurve.git"
+HOMEPAGE="https://invent.kde.org/system/qtcurve"
 
 LICENSE="LGPL-2+"
 SLOT="0"

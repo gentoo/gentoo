@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake font kde.org xdg-utils
 
 DESCRIPTION="Desktop/GUI font family for integrated use with the KDE Plasma desktop"
-HOMEPAGE="https://cgit.kde.org/oxygen-fonts.git"
+HOMEPAGE="https://invent.kde.org/unmaintained/oxygen-fonts"
 SRC_URI="mirror://kde/unstable/plasma/$(ver_cut 1-3)/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
