@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KDE contact person abstraction library"
-HOMEPAGE="https://cgit.kde.org/kpeople.git"
+HOMEPAGE="https://invent.kde.org/frameworks/kpeople"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"

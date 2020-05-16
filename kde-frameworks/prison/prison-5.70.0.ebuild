@@ -7,7 +7,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="QRCode and data matrix barcode library"
-HOMEPAGE="https://cgit.kde.org/prison.git"
+HOMEPAGE="https://invent.kde.org/frameworks/prison"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
