@@ -8085,7 +8085,7 @@ dev-python/micawber 0.5.1: A small library for extracting rich content from urls
 dev-python/microversion-parse 0.2.1: A simple parser for OpenStack microversion headers
 dev-python/mimeparse 1.6.0: Basic functions for handling mime-types in python
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
-dev-python/mini-amf 0.9.1: Minimal AMF encoder and decoder for Python
+dev-python/mini-amf 0.9.1-r1: Minimal AMF encoder and decoder for Python
 dev-python/minidb 2.0.2-r1 2.0.3 2.0.4: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 2.1.20191224: Python bindings for UPnP client library
