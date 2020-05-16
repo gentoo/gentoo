@@ -41,7 +41,7 @@ src_prepare() {
 		Makefile
 	if use python; then
 		mv "${WORKDIR}"/${PY_P} NKF.python || die
-		eapply "${FILESDIR}"/${P}-python.patch
+		eapply "${FILESDIR}"/${PN}-python.patch
 		cd NKF.python
 		distutils-r1_src_prepare
 		cd - >/dev/null
