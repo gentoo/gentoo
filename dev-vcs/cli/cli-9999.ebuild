@@ -34,8 +34,8 @@ EGO_SUM=(
 	"github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6/go.mod"
 	"github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod"
 	"github.com/beorn7/perks v1.0.0/go.mod"
-	"github.com/briandowns/spinner v1.9.0"
-	"github.com/briandowns/spinner v1.9.0/go.mod"
+	"github.com/briandowns/spinner v1.10.1-0.20200410162419-bf6cf7ae6727"
+	"github.com/briandowns/spinner v1.10.1-0.20200410162419-bf6cf7ae6727/go.mod"
 	"github.com/cespare/xxhash v1.1.0/go.mod"
 	"github.com/charmbracelet/glamour v0.1.1-0.20200320173916-301d3bcf3058"
 	"github.com/charmbracelet/glamour v0.1.1-0.20200320173916-301d3bcf3058/go.mod"
@@ -75,6 +75,7 @@ EGO_SUM=(
 	"github.com/golang/protobuf v1.3.1"
 	"github.com/golang/protobuf v1.3.1/go.mod"
 	"github.com/google/btree v1.0.0/go.mod"
+	"github.com/google/go-cmp v0.2.0"
 	"github.com/google/go-cmp v0.2.0/go.mod"
 	"github.com/google/goterm v0.0.0-20190703233501-fc88cf888a3f"
 	"github.com/google/goterm v0.0.0-20190703233501-fc88cf888a3f/go.mod"
@@ -285,7 +286,8 @@ src_unpack() {
 src_compile() {
 	has live "${PROPERTIES}" || export GH_VERSION="v${PV}"
 	# Golang LDFLAGS are not the same as GCC/Binutils LDFLAGS
-	LDFLAGS="" emake bin/gh
+	unset LDFLAGS
+	emake
 }
 
 src_install() {
