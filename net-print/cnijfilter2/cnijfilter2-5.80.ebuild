@@ -34,6 +34,7 @@ S="${WORKDIR}"/${MY_P}
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.70-gentoo.patch
 	"${FILESDIR}"/${P}-cflags.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
