@@ -4,6 +4,10 @@
 # PPC Specific use flags
 #
 
+# David Seifert <soap@gentoo.org (2020-05-17)
+# Mono is hopelessly broken on ppc32
+mono
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # Requires qtwebengine, which is not ported to any of powerpc arches yet
 webengine
