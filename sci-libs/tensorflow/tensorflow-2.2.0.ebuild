@@ -74,7 +74,7 @@ RDEPEND="
 	media-libs/giflib
 	media-libs/libjpeg-turbo
 	media-libs/libpng:0
-	>=net-libs/grpc-1.22.0
+	>=net-libs/grpc-1.28
 	net-misc/curl
 	sys-libs/zlib
 	>=sys-apps/hwloc-2
@@ -91,12 +91,12 @@ RDEPEND="
 		dev-python/astunparse[${PYTHON_USEDEP}]
 		>=dev-python/gast-0.3.3[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.16[${PYTHON_USEDEP}]
-		dev-python/google-pasta[${PYTHON_USEDEP}]
+		>=dev-python/google-pasta-0.1.8[${PYTHON_USEDEP}]
 		dev-python/opt-einsum[${PYTHON_USEDEP}]
 		>=dev-python/protobuf-python-3.8.0[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
-		>=dev-python/grpcio-1.22.0[${PYTHON_USEDEP}]
+		>=dev-python/grpcio-1.28[${PYTHON_USEDEP}]
 		>=dev-python/wrapt-1.11.1[${PYTHON_USEDEP}]
 		>=net-libs/google-cloud-cpp-0.10.0
 		>=sci-libs/keras-applications-1.0.8[${PYTHON_USEDEP}]
@@ -124,7 +124,7 @@ BDEPEND="
 	python? (
 		dev-python/cython
 		dev-python/mock
-		>=dev-python/grpcio-tools-1.22.0
+		>=dev-python/grpcio-tools-1.28
 	)"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -176,6 +176,9 @@ src_prepare() {
 
 	eapply "${WORKDIR}"/patches/*.patch
 
+	# Relax version checks in setup.py
+	sed -i "/^    '/s/==/>=/g" tensorflow/tools/pip_package/setup.py
+
 	default
 	use python && python_copy_sources
 
@@ -214,6 +217,14 @@ src_configure() {
 			export TF_CUDNN_VERSION="$(cuda_cudnn_version)"
 			einfo "Setting CUDA version: $TF_CUDA_VERSION"
 			einfo "Setting CUDNN version: $TF_CUDNN_VERSION"
+
+			if [[ *$(gcc-version)* != $(cuda-config -s) ]]; then
+				ewarn "TensorFlow is being built with Nvidia CUDA support. Your default compiler"
+				ewarn "version is not supported by the currently installed CUDA. TensorFlow will"
+				ewarn "instead be compiled using: ${GCC_HOST_COMPILER_PATH}."
+				ewarn "If the build fails with linker errors try rebuilding the relevant"
+				ewarn "dependencies using the same compiler version."
+			fi
 
 			if [[ -z "$TF_CUDA_COMPUTE_CAPABILITIES" ]]; then
 				ewarn "WARNING: Tensorflow is being built with its default CUDA compute capabilities: 3.5 and 7.0."
