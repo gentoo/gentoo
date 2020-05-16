@@ -8196,7 +8196,7 @@ dev-python/oslo-i18n 3.23.1: Oslo i18n library
 dev-python/oslo-log 3.44.1: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 10.2.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.37.1: Components injected into wsgi pipelines to intercept request/response flows.
-dev-python/oslo-policy 2.3.3: Support for RBAC policy enforcement across all OpenStack services
+dev-python/oslo-policy 2.3.3 3.1.0: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.33.3: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.29.2: generified reports for openstack
 dev-python/oslo-rootwrap 5.15.2: Allows fine filtering of shell commands to run as root from OpenStack services
@@ -16866,7 +16866,7 @@ sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.08 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
-sys-auth/keystone 16.0.0 16.0.1 2019.2.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 16.0.0 16.0.1 17.0.0 2019.2.9999 2020.1.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.99.0 1.0 1.90.0 1.90.1: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
