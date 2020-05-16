@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Provides integration plugins for various KDE frameworks for Wayland"
-HOMEPAGE="https://cgit.kde.org/kwayland-integration.git"
+HOMEPAGE="https://invent.kde.org/plasma/kwayland-integration"
 
 LICENSE="LGPL-2.1"
 SLOT="5"

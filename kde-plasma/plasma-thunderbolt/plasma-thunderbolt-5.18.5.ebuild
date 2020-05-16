@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Plasma integration for controlling Thunderbolt devices"
-HOMEPAGE="https://cgit.kde.org/plasma-thunderbolt.git"
+HOMEPAGE="https://invent.kde.org/plasma/plasma-thunderbolt"
 
 LICENSE="|| ( GPL-2 GPL-3+ )"
 SLOT="5"

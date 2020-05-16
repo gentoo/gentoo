@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Dedicated search application built on top of Baloo"
-HOMEPAGE="https://cgit.kde.org/milou.git"
+HOMEPAGE="https://invent.kde.org/plasma/milou"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="5"

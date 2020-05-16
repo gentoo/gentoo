@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="KDE Plasma control module for Plymouth"
-HOMEPAGE="https://cgit.kde.org/plymouth-kcm.git"
+HOMEPAGE="https://invent.kde.org/plasma/plymouth-kcm"
 
 LICENSE="GPL-2+"
 SLOT="5"
