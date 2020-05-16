@@ -1,0 +1,81 @@
+From 159b7baebfefeacb443f55f2d12cbf0876628cbc Mon Sep 17 00:00:00 2001
+From: Eduardo Schettino <schettino72@gmail.com>
+Date: Wed, 22 Apr 2020 04:48:36 +0800
+Subject: [PATCH] fix tests for pytest 5.4
+
+---
+ dev_requirements.txt     |  2 +-
+ tests/conftest.py        | 22 +++++++---------------
+ tests/test_dependency.py |  4 ++--
+ 3 files changed, 10 insertions(+), 18 deletions(-)
+
+diff --git a/dev_requirements.txt b/dev_requirements.txt
+index 1e31e4f..f16ba86 100644
+--- a/dev_requirements.txt
++++ b/dev_requirements.txt
+@@ -2,6 +2,6 @@
+ # $ pip install --requirement dev_requirements.txt
+ 
+ pyflakes
+-pytest>=4.0
++pytest>=5.4.1
+ coverage>=4.0
+ doit-py>=0.4.0
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 5c4da9f..9eab396 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -78,12 +78,9 @@ def remove_db(filename):
+     'dbm.ndbm': ['.db'],
+ }
+ 
+-def dep_manager_fixture(request, dep_class):
+-    # copied from tempdir plugin
+-    name = request._pyfuncitem.name
+-    name = py.std.re.sub("[\W]", "_", name)
+-    my_tmpdir = request.config._tmpdirhandler.mktemp(name, numbered=True)
+-    dep_file = Dependency(dep_class, os.path.join(my_tmpdir.strpath, "testdb"))
++def dep_manager_fixture(request, dep_class, tmp_path_factory):
++    filename = str(tmp_path_factory.mktemp('x', True) / 'testdb')
++    dep_file = Dependency(dep_class, filename)
+     dep_file.whichdb = whichdb(dep_file.name) if dep_class is DbmDB else 'XXX'
+     dep_file.name_ext = db_ext.get(dep_file.whichdb, [''])
+ 
+@@ -97,18 +94,13 @@ def remove_depfile():
+ 
+ 
+ @pytest.fixture
+-def dep_manager(request):
+-    return dep_manager_fixture(request, DbmDB)
++def dep_manager(request, tmp_path_factory):
++    return dep_manager_fixture(request, DbmDB, tmp_path_factory)
+ 
+ 
+ @pytest.fixture
+-def depfile_name(request):
+-    # copied from tempdir plugin
+-    name = request._pyfuncitem.name
+-    name = py.std.re.sub("[\W]", "_", name)
+-    my_tmpdir = request.config._tmpdirhandler.mktemp(name, numbered=True)
+-    depfile_name = (os.path.join(my_tmpdir.strpath, "testdb"))
+-
++def depfile_name(request, tmp_path_factory):
++    depfile_name = str(tmp_path_factory.mktemp('x', True) / 'testdb')
+     def remove_depfile():
+         remove_db(depfile_name)
+     request.addfinalizer(remove_depfile)
+diff --git a/tests/test_dependency.py b/tests/test_dependency.py
+index 3fc2a14..f84e002 100644
+--- a/tests/test_dependency.py
++++ b/tests/test_dependency.py
+@@ -68,8 +68,8 @@ def test_sqlite_import():
+ # create a separate fixture to be used only by this module
+ # because only here it is required to test with all backends
+ @pytest.fixture(params=[JsonDB, DbmDB, SqliteDB])
+-def pdep_manager(request):
+-    return dep_manager_fixture(request, request.param)
++def pdep_manager(request, tmp_path_factory):
++    return dep_manager_fixture(request, request.param, tmp_path_factory)
+ 
+ 
+ 

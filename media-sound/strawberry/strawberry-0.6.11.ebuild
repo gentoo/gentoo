@@ -98,6 +98,7 @@ src_configure() {
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
+		-DUSE_SYSTEM_TAGLIB=ON
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
