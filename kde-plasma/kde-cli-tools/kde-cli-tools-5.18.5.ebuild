@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Tools based on KDE Frameworks 5 to better interact with the system"
-HOMEPAGE="https://cgit.kde.org/kde-cli-tools.git"
+HOMEPAGE="https://invent.kde.org/plasma/kde-cli-tools"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

@@ -8,7 +8,7 @@ KFMIN=5.69.0
 inherit ecm kde.org
 
 DESCRIPTION="Plasma Specific Protocols for Wayland"
-HOMEPAGE="https://cgit.kde.org/plasma-wayland-protocols.git"
+HOMEPAGE="https://invent.kde.org/libraries/plasma-wayland-protocols"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"

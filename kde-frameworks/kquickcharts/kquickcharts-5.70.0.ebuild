@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="QtQuick plugin providing high-performance charts"
-HOMEPAGE="https://cgit.kde.org/kquickcharts.git"
+HOMEPAGE="https://invent.kde.org/frameworks/kquickcharts"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"

@@ -8,7 +8,7 @@ QTMIN=5.12.3
 inherit ecm kde.org python-any-r1
 
 DESCRIPTION="Qt bindings for the Telepathy logger"
-HOMEPAGE="https://cgit.kde.org/telepathy-logger-qt.git"
+HOMEPAGE="https://invent.kde.org/network/telepathy-logger-qt"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/telepathy-logger-qt/${PV%.*}/src/${P}.tar.xz"

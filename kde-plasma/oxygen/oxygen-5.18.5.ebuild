@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Oxygen visual style for the Plasma desktop"
-HOMEPAGE="https://cgit.kde.org/oxygen.git"
+HOMEPAGE="https://invent.kde.org/plasma/oxygen"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
