@@ -8033,7 +8033,7 @@ dev-python/ldappool 2.4.1: A connection pool for python-ldap
 dev-python/lesscpy 0.14.0: A compiler written in Python for the LESS language
 dev-python/libarchive-c 2.8 2.9: A Python interface to libarchive
 dev-python/libcloud 2.3.0 2.8.2 3.0.0: Unified Interface to the Cloud - python support libs
-dev-python/liblarch 2.1.0: Library to handle directed acyclic graphs
+dev-python/liblarch 2.1.0 3.0: Library to handle directed acyclic graphs
 dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
 dev-python/libsass 0.20.0: A straightforward binding of libsass for Python
