@@ -400,7 +400,6 @@ src_configure() {
 		--disable-kai
 		--disable-kva
 		--disable-libplacebo
-		--disable-macosx-qtkit
 		--disable-maintainer-mode
 		--disable-merge-ffmpeg
 		--disable-mfx

@@ -12,20 +12,8 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KDE Plasma desktop"
-
-# Avoid pulling in xf86-input-{evdev,libinput,synaptics} DEPENDs
-# just for 1 header each. touchpad also uses a header from xorg-server.
-SHA_EVDEV="425ed601"
-SHA_LIBINPUT="e52daf20"
-SHA_SYNAPTICS="383355fa"
-SHA_XSERVER="d511a301"
-XORG_URI="https://gitlab.freedesktop.org/xorg/driver/PKG/-/raw"
-SRC_URI+="
-	${XORG_URI/PKG/xf86-input-evdev}/${SHA_EVDEV}/include/evdev-properties.h -> evdev-properties.h-${SHA_EVDEV}
-	${XORG_URI/PKG/xf86-input-libinput}/${SHA_LIBINPUT}/include/libinput-properties.h -> libinput-properties.h-${SHA_LIBINPUT}
-	${XORG_URI/PKG/xf86-input-synaptics}/${SHA_SYNAPTICS}/include/synaptics-properties.h -> synaptics-properties.h-${SHA_SYNAPTICS}
-	${XORG_URI/driver\/PKG/xserver}/${SHA_XSERVER}/include/xserver-properties.h -> xserver-properties.h-${SHA_XSERVER}
-"
+XORGHDRS="${PN}-override-include-dirs-0"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${XORGHDRS}.tar.xz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
@@ -129,29 +117,24 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-5.18.4.1-synaptics-header.patch" # in Plasma/5.19
 	"${FILESDIR}/${P}-findxorgserver.patch" # in Plasma/5.19
-	"${FILESDIR}/${P}-override-include-dirs.patch" # downstream patch
-)
+	"${WORKDIR}/${XORGHDRS}/override-include-dirs.patch" # downstream patch
 
-src_unpack() {
-	kde.org_src_unpack
-	mkdir "${WORKDIR}/include" || die "Failed to prepare evdev/libinput dir"
-	cp "${DISTDIR}"/evdev-properties.h-${SHA_EVDEV} \
-		"${WORKDIR}"/include/evdev-properties.h || die "Failed to copy evdev"
-	cp "${DISTDIR}"/libinput-properties.h-${SHA_LIBINPUT} \
-		"${WORKDIR}"/include/libinput-properties.h || die "Failed to copy libinput"
-	cp "${DISTDIR}"/synaptics-properties.h-${SHA_SYNAPTICS} \
-		"${WORKDIR}"/include/synaptics-properties.h || die "Failed to copy synaptics"
-	cp "${DISTDIR}"/xserver-properties.h-${SHA_XSERVER} \
-		"${WORKDIR}"/include/xserver-properties.h || die "Failed to copy xserver"
-}
+	"${FILESDIR}/${P}-KColorSchemeEditor-blurry-icons.patch" # in Plasma/5.18
+
+	# Fix animation duration w/ KDE Frameworks 5.70 (Plasma/5.19 backports):
+	# https://pointieststick.com/2020/05/10/why-the-animations-in-your-plasma-5-18-feel-slow-now-and-when-it-will-be-fixed/
+	"${FILESDIR}/${P}-fix-animate-in-animation.patch"
+	"${FILESDIR}/${P}-animate-column-moves.patch"
+	"${FILESDIR}/${P}-stop-multiplying-duration-values.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package fontconfig Fontconfig)
-		-DEvdev_INCLUDE_DIRS="${WORKDIR}"/include
-		-DXORGLIBINPUT_INCLUDE_DIRS="${WORKDIR}"/include
-		-DXORGSERVER_INCLUDE_DIRS="${WORKDIR}"/include
-		-DSynaptics_INCLUDE_DIRS="${WORKDIR}"/include
+		-DEvdev_INCLUDE_DIRS="${WORKDIR}/${XORGHDRS}"/include
+		-DXORGLIBINPUT_INCLUDE_DIRS="${WORKDIR}/${XORGHDRS}"/include
+		-DXORGSERVER_INCLUDE_DIRS="${WORKDIR}/${XORGHDRS}"/include
+		-DSynaptics_INCLUDE_DIRS="${WORKDIR}/${XORGHDRS}"/include
 		$(cmake_use_find_package ibus IBus)
 		$(cmake_use_find_package scim SCIM)
 		$(cmake_use_find_package semantic-desktop KF5Baloo)

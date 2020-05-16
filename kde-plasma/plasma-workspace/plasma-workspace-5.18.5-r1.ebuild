@@ -124,7 +124,15 @@ PDEPEND="
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch" # downstream patch
+
+	"${FILESDIR}/${P}-sddm-theme-prevent-logo-leaking.patch" # in Plasma/5.18
+
+	# Fix animation duration w/ KDE Frameworks 5.70 (Plasma/5.19 backport):
+	# https://pointieststick.com/2020/05/10/why-the-animations-in-your-plasma-5-18-feel-slow-now-and-when-it-will-be-fixed/
+	"${FILESDIR}/${P}-stop-multiplying-duration-values.patch"
+)
 
 RESTRICT+=" test"
 

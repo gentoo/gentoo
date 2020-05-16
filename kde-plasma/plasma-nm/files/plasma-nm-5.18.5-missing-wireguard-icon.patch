@@ -1,0 +1,50 @@
+From da52d01788f5f07aa60ed7a6f21d7943a2e0c8d3 Mon Sep 17 00:00:00 2001
+From: Bruce Anderson <banderson19com@san.rr.com>
+Date: Wed, 6 May 2020 08:03:11 +0200
+Subject: Icon in system tray missing when WireGuard connection active on
+ startup
+
+Summary:
+If a WireGuard connection is made prior to start of the
+plasma-nm applet, no icon is displayed in the system tray.
+
+BUG: 420983
+
+Test Plan:
+1. Setup a Wired connection to autostart
+2. Setup a WireGuard connection which uses the Wired
+   connection and set to autostart
+3. Logout and login to start a new Plasma session
+4. Verify that the standard Wired connection icon with a
+   padlock symbol on it is shown in the system tray
+
+Reviewers: jgrulich
+
+Reviewed By: jgrulich
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D29469
+---
+ libs/declarative/connectionicon.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libs/declarative/connectionicon.cpp b/libs/declarative/connectionicon.cpp
+index cefe6df..58c0cce 100644
+--- a/libs/declarative/connectionicon.cpp
++++ b/libs/declarative/connectionicon.cpp
+@@ -317,7 +317,9 @@ void ConnectionIcon::setIcons()
+ 
+     // Set icon based on the current primary connection if the activating connection is virtual
+     // since we're not setting icons for virtual connections
+-    if (!connection || (connection && UiUtils::isConnectionTypeVirtual(connection->type()))) {
++    if (!connection
++        || (connection && UiUtils::isConnectionTypeVirtual(connection->type()))
++        || connection->type() == NetworkManager::ConnectionSettings::WireGuard) {
+         connection = NetworkManager::primaryConnection();
+     }
+ 
+-- 
+cgit v1.1

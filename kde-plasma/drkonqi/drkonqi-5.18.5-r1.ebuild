@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-init-bools-w-false.patch" # in Plasma/5.18, KDE-bug 421187
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package X Qt5X11Extras)

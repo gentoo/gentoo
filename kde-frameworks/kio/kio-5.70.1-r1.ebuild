@@ -71,6 +71,8 @@ PDEPEND="
 # tests hang
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}"/${PN}-5.70.0-fix-run-in-terminal.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package acl ACL)

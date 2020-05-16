@@ -60,6 +60,8 @@ RDEPEND="${DEPEND}
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-wireguard-icon.patch" ) # in Plasma/5.18
+
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_MODEMMANAGER_SUPPORT=$(usex !modemmanager)
