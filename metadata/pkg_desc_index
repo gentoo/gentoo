@@ -1803,7 +1803,7 @@ app-i18n/canfep 1.0 1.0-r1: Canna Japanese kana-kanji frontend processor on cons
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2 3.7_p3-r3: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42-r1: A charset conversion tool cstocs and two Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
-app-i18n/enca 1.19-r1: Detect and convert encoding of text files
+app-i18n/enca 1.19-r2: Detect and convert encoding of text files
 app-i18n/fbterm 1.7-r4 1.7-r5: Fast terminal emulator for the Linux framebuffer
 app-i18n/fcitx 4.2.9.6 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.2.3 4.9999: Japanese Anthy input methods for Fcitx
@@ -1874,7 +1874,7 @@ app-i18n/mecab-skkserv 0.03: mecab-skkserv is a Kana-Kanji conversion server usi
 app-i18n/mozc 2.23.2815.102 9999: Mozc - Japanese input method editor
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nabi 1.0.0: Simple Hanguk X Input Method
-app-i18n/nkf 2.1.3-r2 2.1.4: Network Kanji code conversion Filter with UTF-8/16 support
+app-i18n/nkf 2.1.3-r2 2.1.4 2.1.5: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 1.0.5 9999: Libraries for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 2.2.3 2.2.4: GUI gettext translations editor
 app-i18n/pology 0.12-r2 9999: A framework for custom processing of PO files
@@ -2185,7 +2185,7 @@ app-misc/khal 0.9.10 0.10.1-r1: A CalDAV based calendar
 app-misc/khard 0.11.4 0.12.2 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
-app-misc/ktoblzcheck 1.49: Library to check account numbers and bank codes of German banks
+app-misc/ktoblzcheck 1.49-r1: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.11.0_pre20170527-r4: A small program that grabs information and displays it on an external LCD
 app-misc/lcdproc 0.5.9-r1: Displays real-time system information from your Linux/*BSD box on a LCD
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
@@ -2752,7 +2752,7 @@ app-text/qpdf 9.0.2 9.1.0 9.1.1-r1: Command-line tool for structural, content-pr
 app-text/qpdfview 0.4.18: A tabbed document viewer
 app-text/queequeg 0.91-r2: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r3: A documentation metadata library
-app-text/recode 3.6_p20-r1 3.7.6: Convert files between various character sets
+app-text/recode 3.6_p20-r1 3.7.6-r1: Convert files between various character sets
 app-text/reed 5.4: This is a text pager (text file viewer), used to display etexts
 app-text/refbase 0.9.6_p20180223: Web-based solution for managing scientific literature, references and citations
 app-text/referencer 1.2.2-r1: Application to organise documents or references, and to generate BibTeX files
@@ -11126,7 +11126,7 @@ games-misc/c++robots 0-r1: ongoing 'King of the Hill' (KotH) tournament
 games-misc/cowsay 3.04: Configurable talking ASCII cow (and other characters)
 games-misc/doge 3.6.0: wow very terminal doge
 games-misc/exult-sound 0-r2: Sound data for games-engines/exult
-games-misc/fortune-mod 1.99.1-r2: The notorious fortune program
+games-misc/fortune-mod 1.99.1-r3: The notorious fortune program
 games-misc/fortune-mod-all 4: Meta package for all fortune-mod packages
 games-misc/fortune-mod-at-linux 20030120: Quotes from at.linux
 games-misc/fortune-mod-bofh-excuses 1.2-r1: Excuses from Bastard Operator from Hell
@@ -14225,7 +14225,7 @@ net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the La
 net-dns/avahi 0.7-r2 0.7-r4 0.7-r5 0.8-r2: System which facilitates service discovery on a local network
 net-dns/bind 9.14.8 9.14.9 9.14.11 9.16.1: Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.14.8 9.14.9 9.14.11 9.16.1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
-net-dns/c-ares 1.13.0 1.14.0 1.15.0 1.16.0: C library that resolves names asynchronously
+net-dns/c-ares 1.13.0 1.14.0 1.15.0 1.16.0 1.16.1: C library that resolves names asynchronously
 net-dns/coredns 1.6.9: A DNS server that chains middleware
 net-dns/ddclient 3.9.0-r3 3.9.1: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software

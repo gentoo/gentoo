@@ -1,4 +1,5 @@
-DEFINED_PHASES=install
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare
 DESCRIPTION=Utilities and library to convert to/from X-Face format
 EAPI=7
 HOMEPAGE=http://www.xemacs.org/Download/optLibs.html
@@ -7,4 +8,5 @@ LICENSE=MIT
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/aux/compface-1.5.2.tar.gz
-_md5_=f204b42675e205960fd22adecd579752
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=a8821e574e6a39fad9e07c7fd85158e6
