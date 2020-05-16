@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 perl-module toolchain-funcs vcs-snapshot
@@ -18,6 +18,10 @@ LICENSE="ZLIB python? ( BSD )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-macos"
 IUSE="perl python l10n_ja"
+
+src_unpack() {
+	use python && vcs-snapshot_src_unpack || default
+}
 
 src_prepare() {
 	sed -i \
