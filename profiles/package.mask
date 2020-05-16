@@ -668,36 +668,6 @@ dev-python/invoke
 # Removal in 30 days.  Bug #701820.
 net-misc/ssvnc
 
-# Ulrich Müller <ulm@gentoo.org> (2020-04-15)
-# Last upstream release in 2001. HOMEPAGE disappeared in 2010.
-# Use app-i18n/man-pages-l10n[l10n_nl] as replacement.
-# Masked for removal in 30 days. Bug #713590.
-app-i18n/man-pages-nl
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-15)
-# Temporary fork of app-emulation/runc used by Docker.  The latter
-# switched back to the original which is now blocking this package.
-# Most likely carries old vulnerabilities of runc.
-# Removal in 14 days.  Bug #711620.
-app-emulation/docker-runc
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-15)
-# Unmaintained.  Python 2 only.  Superseded by net-p2p/tremc.
-# Removal in 30 days.  Bug #713518.
-net-p2p/transmission-remote-cli
-
-# Alfredo Tupone <tupone@gentoo.org> (2020-04-14)
-# Masked for removal
-# Upstream url non existent
-# No reverse dependency
-dev-tcltk/combobox
-
-# Alfredo Tupone <tupone@gentoo.org> (2020-04-13)
-# Masked for removal
-# Last release 2002
-# No reverse dependency
-dev-tcltk/anigif
-
 # Hans de Graaff <graaff@gentoo.org> (2020-04-13)
 # dev-ruby/libxml is ruby24-only and has known
 # bugs. sci-biology/bioruby depends on this. It looks like there is a
@@ -722,14 +692,6 @@ sys-apps/fwupdate
 # Last release 2002
 # No reverse dependency
 dev-tcltk/tcl-mccp
-
-# Mikle Kolyada <zlogene@gentoo.org> (2020-04-04)
-# py27-only vim plugins. Masked for removal in 30 days.
-app-vim/automatictexplugin
-app-vim/colorv
-app-vim/slimv
-app-vim/vimcalc
-app-vim/vimpress
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-02)
 # Introduced new privsep (chroot) feature. Masked for testing.
