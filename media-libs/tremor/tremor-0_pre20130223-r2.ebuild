@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc ~x86"
 IUSE="low-accuracy static-libs"
 
 RDEPEND=">=media-libs/libogg-1.3.0:=[${MULTILIB_USEDEP}]"
