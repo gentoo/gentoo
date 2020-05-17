@@ -18,7 +18,9 @@ LICENSE="MIT"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
-RDEPEND="$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' python3_{5,6,7} pypy3)
+RDEPEND="
+	$(python_gen_cond_dep 'dev-python/backports-os[${PYTHON_USEDEP}]' -2)
+	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' python3_{5,6,7} pypy3)
 	dev-python/appdirs[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
