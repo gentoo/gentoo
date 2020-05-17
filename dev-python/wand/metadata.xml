@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">Wand</remote-id>
+		<remote-id type="github">emcconville/wand</remote-id>
+		<bugs-to>https://github.com/emcconville/wand/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
