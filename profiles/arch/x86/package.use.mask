@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Christoph Junghans <junghans@gentoo.org> (2020-05-16)
+# restrict USE=kokkos for x86 as kokkos doesn't support 32-bit archs
+# https://github.com/kokkos/kokkos/issues/2312
+sci-physics/lammps kokkos
+
 # Joonas Niilola <juippis@gentoo.org> (2020-05-14)
 # Dependency not keyworded on this arch.
 app-emulation/lxc apparmor
