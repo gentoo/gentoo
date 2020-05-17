@@ -1316,7 +1316,7 @@ app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
 app-editors/beaver 0.4.1-r1: Beaver is an Early AdVanced EditoR
 app-editors/bluefish 2.2.10: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.4.1: Display-oriented editor for binary files, based on the vi texteditor
-app-editors/curses-hexedit 0.9.7: full screen curses hex editor (with insert/delete support)
+app-editors/curses-hexedit 0.9.7 0.9.7-r1: full screen curses hex editor (with insert/delete support)
 app-editors/dav 0.8.5-r2: A minimal console text editor
 app-editors/dhex 0.68: ncurses-based hex-editor with diff mode
 app-editors/diakonos 0.9.4: A Linux editor for the masses
