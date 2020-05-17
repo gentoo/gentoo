@@ -418,12 +418,6 @@ dev-python/ipdbplugin
 # Removal in 30 days.  Bug #718896.
 dev-python/cligj
 
-# Ulrich Müller <ulm@gentoo.org> (2020-04-22)
-# Package is no longer being updated upstream.
-# Replaced by app-i18n/man-pages-l10n[l10n_pl].
-# Masked for removal in 30 days. Bug #717744.
-app-i18n/man-pages-pl
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Unmaintained.  Stuck at Python 3.6.  The only revdep was last rited
 # already.
@@ -645,20 +639,6 @@ dev-python/pycrypto
 # Upstream is struggling to port away from it for 3 years now.
 # Removal in 30 days.  Bug #611608.
 dev-python/potr
-
-# Ulrich Müller <ulm@gentoo.org> (2020-04-17)
-# Upstream has moved the manpages-de project to manpages-l10n.
-# We cannot move multiple packages to one, therefore removing the
-# old package. Use app-i18n/man-pages-l10n[l10n_de] as replacement.
-# Masked for removal in 30 days. Bug #717744.
-app-i18n/man-pages-de
-
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2020-04-17)
-# Very little activity for almost a year and the link to download the
-# "compiled" man-pages is dead.
-# Use app-i18n/man-pages-l10n[l10n_fr] as replacement.
-# Masked for removal in 30 days (bug #717744).
-app-i18n/man-pages-fr
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-16)
 # Both packages have been last bumped mid-2018.  They depend
