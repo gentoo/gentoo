@@ -17,7 +17,7 @@ IUSE="doc +fapi gcrypt +openssl static-libs test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="^^ ( gcrypt openssl )
-		fapi ( !gcrypt )"
+		fapi? ( openssl !gcrypt )"
 
 RDEPEND="acct-group/tss
 	 acct-user/tss
