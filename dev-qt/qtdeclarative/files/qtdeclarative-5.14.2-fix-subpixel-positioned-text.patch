@@ -1,0 +1,64 @@
+From e807f9d1d80559b8ff91f1c3cfdd755b3da56a6d Mon Sep 17 00:00:00 2001
+From: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+Date: Tue, 5 May 2020 11:36:24 +0200
+Subject: [PATCH] Fix subpixel positioned text with Text.NativeRendering
+
+We would be generating subpixel positioned glyphs based on the
+relative positions of the glyphs, ignoring the fractional part
+contributed by the origin of the text. So if the text origin was
+inside a pixel, the subpixel antialiasing would be wrong and we
+would see kerning errors.
+
+This was especially visible when using AlignHCenter on text
+with hinting disabled and resizing the item it was aligning to.
+
+Pick-to: 5.15
+Task-number: QTBUG-49646
+Change-Id: I0e709ba2b5d2440e34c94c6f819befe0a65a113a
+Reviewed-by: Lars Knoll <lars.knoll@qt.io>
+Reviewed-by: Konstantin Ritt <ritt.ks@gmail.com>
+---
+ src/quick/scenegraph/qsgdefaultglyphnode_p.cpp | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/quick/scenegraph/qsgdefaultglyphnode_p.cpp b/src/quick/scenegraph/qsgdefaultglyphnode_p.cpp
+index cfa645bfd03..f73b64f537f 100644
+--- a/src/quick/scenegraph/qsgdefaultglyphnode_p.cpp
++++ b/src/quick/scenegraph/qsgdefaultglyphnode_p.cpp
+@@ -789,11 +789,12 @@ void QSGTextMaskMaterial::populate(const QPointF &p,
+                                    const QMargins &margins)
+ {
+     Q_ASSERT(m_font.isValid());
++    QPointF position(p.x(), p.y() - m_font.ascent());
+     QVector<QFixedPoint> fixedPointPositions;
+     const int glyphPositionsSize = glyphPositions.size();
+     fixedPointPositions.reserve(glyphPositionsSize);
+     for (int i=0; i < glyphPositionsSize; ++i)
+-        fixedPointPositions.append(QFixedPoint::fromPointF(glyphPositions.at(i)));
++        fixedPointPositions.append(QFixedPoint::fromPointF(position + glyphPositions.at(i)));
+ 
+     QTextureGlyphCache *cache = glyphCache();
+ 
+@@ -815,18 +816,16 @@ void QSGTextMaskMaterial::populate(const QPointF &p,
+     Q_ASSERT(geometry->sizeOfVertex() == sizeof(QVector4D));
+     ushort *ip = geometry->indexDataAsUShort();
+ 
+-    QPointF position(p.x(), p.y() - m_font.ascent());
+     bool supportsSubPixelPositions = fontD->fontEngine->supportsSubPixelPositions();
+     for (int i=0; i<glyphIndexes.size(); ++i) {
++         QPointF glyphPosition = glyphPositions.at(i) + position;
+          QFixed subPixelPosition;
+          if (supportsSubPixelPositions)
+-             subPixelPosition = fontD->fontEngine->subPixelPositionForX(QFixed::fromReal(glyphPositions.at(i).x()));
++             subPixelPosition = fontD->fontEngine->subPixelPositionForX(QFixed::fromReal(glyphPosition.x()));
+ 
+          QTextureGlyphCache::GlyphAndSubPixelPosition glyph(glyphIndexes.at(i), subPixelPosition);
+          const QTextureGlyphCache::Coord &c = cache->coords.value(glyph);
+ 
+-         QPointF glyphPosition = glyphPositions.at(i) + position;
+-
+          // On a retina screen the glyph positions are not pre-scaled (as opposed to
+          // eg. the raster paint engine). To ensure that we get the same behavior as
+          // the raster engine (and CoreText itself) when it comes to rounding of the
+-- 
+2.16.3
