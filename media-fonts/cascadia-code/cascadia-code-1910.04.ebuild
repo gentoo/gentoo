@@ -11,6 +11,6 @@ SRC_URI="https://github.com/microsoft/cascadia-code/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 
 FONT_SUFFIX="ttf"
