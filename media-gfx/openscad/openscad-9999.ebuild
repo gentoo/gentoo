@@ -8,45 +8,67 @@ inherit elisp-common git-r3 qmake-utils xdg
 SITEFILE="50${PN}-gentoo.el"
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
-HOMEPAGE="http://www.openscad.org/"
+HOMEPAGE="https://www.openscad.org/"
 EGIT_REPO_URI="https://github.com/openscad/openscad.git"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="emacs"
+IUSE="ccache emacs"
+RESTRICT="test"
 
-DEPEND="
+PATCHES=(
+	"${FILESDIR}/${PN}-2019.05-0001-Fix-build-with-boost-1.73.patch"
+)
+
+RDEPEND="
 	dev-cpp/eigen:3
 	dev-libs/boost:=
+	dev-libs/double-conversion:=
 	dev-libs/glib:2
 	dev-libs/gmp:0=
+	dev-libs/hidapi
+	dev-libs/libspnav
 	dev-libs/libzip:=
 	dev-libs/mpfr:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5[-gles2-only]
-	dev-qt/qtmultimedia:5[-gles2-only]
+	dev-qt/qtmultimedia:5
+	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
+	dev-qt/qtwidgets:5
 	media-gfx/opencsg
-	media-libs/fontconfig:1.0
-	media-libs/freetype:2
-	>=media-libs/glew-2.0.0:*
-	media-libs/harfbuzz
+	media-libs/fontconfig
+	media-libs/freetype
+	>=media-libs/glew-2.0.0:0=
+	media-libs/harfbuzz:=
+	media-libs/lib3mf
 	sci-mathematics/cgal:=
-	>=x11-libs/qscintilla-2.9.4:=[qt5(+)]
+	>=x11-libs/qscintilla-2.10.3:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-util/itstool
+	sys-devel/bison
+	sys-devel/flex
+	sys-devel/gettext
+	virtual/pkgconfig
+	ccache? ( dev-util/ccache )
+"
 
 src_prepare() {
 	default
 
+	# fix path prefix
 	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro || die
 
-	# tries to call ccache even if it's not present otherwise
-	sed -i '/CONFIG += ccache/d' ${PN}.pro || die
+	# disable ccache
+	if ! use ccache; then
+		eapply "${FILESDIR}/${P}-0002-Gentoo-specific-Disable-ccache-building.patch"
+	fi
 }
 
 src_configure() {
@@ -70,4 +92,16 @@ src_install() {
 	fi
 
 	einstalldocs
+}
+
+pkg_postinst() {
+	use emacs && elisp-site-regen
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	use emacs && elisp-site-regen
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
