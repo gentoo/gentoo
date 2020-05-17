@@ -3462,6 +3462,10 @@ gui-wm/sway:swaymsg - Install 'swaymsg': tool for communicating with a running s
 gui-wm/sway:swaynag - Install 'swaynag': shows a message with buttons
 gui-wm/sway:tray - Enable support for StatusNotifierItem tray specification
 gui-wm/sway:wallpapers - Install sway's default wallpaper image
+gui-wm/wayfire:debug - add debugging symbols for error reporting. DISABLE ALL SYSTEM USE FLAGS BEFORE REPORTING BUGS.
+gui-wm/wayfire:gles2 - use libglvnd to do animations more efficiently
+gui-wm/wayfire:system-wfconfig - use the system-wide wf-config, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.
+gui-wm/wayfire:system-wlroots - use the system wide wlroots, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.
 kde-apps/akonadi:designer - Install plugin for dev-qt/designer
 kde-apps/akonadi:kaccounts - Enable support for system-wide defined KAccounts
 kde-apps/akonadi:tools - Install tools for developers and testing
