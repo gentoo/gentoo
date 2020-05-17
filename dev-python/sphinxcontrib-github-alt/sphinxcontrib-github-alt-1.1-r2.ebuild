@@ -16,7 +16,7 @@ SRC_URI="https://github.com/jupyter/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 BDEPEND=${RDEPEND}
