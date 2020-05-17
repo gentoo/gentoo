@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="LXQT session manager"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 MY_PV="$(ver_cut 1-2)*"
 

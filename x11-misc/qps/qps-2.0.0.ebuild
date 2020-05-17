@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake xdg-utils
 
 DESCRIPTION="Visual process manager - Qt version of ps/top"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+ QPL-1.0"

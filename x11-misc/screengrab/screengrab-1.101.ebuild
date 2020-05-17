@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake xdg-utils
 
 DESCRIPTION="Qt application for getting screenshots"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
