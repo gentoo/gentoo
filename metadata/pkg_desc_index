@@ -14689,7 +14689,7 @@ net-mail/mailman 2.1.29-r3 2.1.29-r4 3.3.0 3.3.1: Mailman -- the GNU mailing lis
 net-mail/mailshears 0.0.3-r2: Mangle your mail garden
 net-mail/mailutils 3.8 3.9: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.24: Indexes and searches Maildir/MH folders
-net-mail/mboxgrep 0.7.9-r1: Grep for mbox files
+net-mail/mboxgrep 0.7.9-r1 0.7.9-r2: Grep for mbox files
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
 net-mail/metamail 2.7.53.3-r2: Metamail (with Debian patches) - Generic MIME package
 net-mail/mhonarc 2.6.18-r2 2.6.19: Perl Mail-to-HTML Converter
@@ -16219,7 +16219,7 @@ sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations 
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019 2019-r1: Platform for deductive program verification
-sci-mathematics/wxmaxima 18.11.4 20.01.1 20.01.3 20.02.4: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 18.11.4 20.01.1 20.01.3 20.02.4 20.04.0: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-mathematics/z3 4.8.6 4.8.8: An efficient theorem prover

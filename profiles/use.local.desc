@@ -6182,6 +6182,7 @@ net-mail/mailutils:clients - Build client programs - frm maidag mail sieve messa
 net-mail/mailutils:kyotocabinet - Enable Kyoto Cabinet database support
 net-mail/mailutils:servers - Build server programs - imap4d pop3d comsatd
 net-mail/mailutils:tokyocabinet - Enable Tokyo Cabinet database support
+net-mail/mboxgrep:dmalloc - Enable debugging using dev-libs/dmalloc
 net-mail/mu:emacs - Install the mu4e mail client
 net-mail/mu:mug - Install the mug toy client, not for normal use
 net-mail/notmuch:crypt - Support decryption and verification of PGP/MIME messages and in Emacs UI - encryption; support also S/MIME signature verification since version 0.22

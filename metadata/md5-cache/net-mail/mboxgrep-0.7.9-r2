@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=app-arch/bzip2 dev-libs/libpcre sys-libs/zlib dmalloc? ( dev-libs/dmalloc )
+DESCRIPTION=Grep for mbox files
+EAPI=7
+HOMEPAGE=https://datatipp.se/mboxgrep/
+IUSE=dmalloc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=app-arch/bzip2 dev-libs/libpcre sys-libs/zlib dmalloc? ( dev-libs/dmalloc )
+SLOT=0
+SRC_URI=mirror://sourceforge/mboxgrep/mboxgrep-0.7.9.tar.gz
+_md5_=fd94c207763b52ec380fb04caa400101
