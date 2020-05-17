@@ -22,7 +22,7 @@ if [[ ${PV} == *9999* ]]; then
 	}
 else
 	KEYWORDS="~amd64"
-	EGIT_COMMIT="0fa8c766a59182ce9fd94169ddb52abe568b7f4e"
+	EGIT_COMMIT="e4cf7a36ee79ac1f69725aa13111ae9383447ba3"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 	EGO_SUM=(
@@ -42,9 +42,9 @@ else
 		"github.com/kr/pretty v0.1.0"
 		"github.com/kr/text v0.1.0"
 		"github.com/mitchellh/go-homedir v1.1.0"
-		"github.com/otiai10/copy v1.0.2"
-		"github.com/otiai10/curr v0.0.0-20150429015615-9b4961190c95"
-		"github.com/otiai10/mint v1.3.0"
+		"github.com/otiai10/copy v1.1.1"
+		"github.com/otiai10/curr v1.0.0"
+		"github.com/otiai10/mint v1.3.1"
 		"github.com/pkg/errors v0.8.1"
 		"github.com/pmezard/go-difflib v1.0.0"
 		"github.com/sergi/go-diff v1.0.0"
@@ -100,9 +100,11 @@ else
 		"github.com/magiconair/properties v1.8.0/go.mod"
 		"github.com/mitchellh/go-homedir v1.1.0/go.mod"
 		"github.com/mitchellh/mapstructure v1.1.2/go.mod"
-		"github.com/otiai10/copy v1.0.2/go.mod"
+		"github.com/otiai10/copy v1.1.1/go.mod"
 		"github.com/otiai10/curr v0.0.0-20150429015615-9b4961190c95/go.mod"
+		"github.com/otiai10/curr v1.0.0/go.mod"
 		"github.com/otiai10/mint v1.3.0/go.mod"
+		"github.com/otiai10/mint v1.3.1/go.mod"
 		"github.com/pelletier/go-buffruneio v0.2.0/go.mod"
 		"github.com/pelletier/go-toml v1.2.0/go.mod"
 		"github.com/pkg/errors v0.8.1/go.mod"
@@ -173,9 +175,7 @@ src_prepare() {
 	local share="${EROOT}/usr/share/licenseclassifier"
 
 	local vendored_const_path="vendor/github.com/google/licenseclassifier"
-	if [[ ${PV} != *9999* ]]; then
-		go mod vendor || die
-	fi
+	go mod vendor || die
 
 	sed -i "s@= lcRoot()@= \"${share}\", error(nil)@" \
 		"${vendored_const_path}"*/file_system_resources.go || die
@@ -183,7 +183,7 @@ src_prepare() {
 
 src_compile() {
 	mkdir build || die
-	go build -o build ./... || die
+	GOFLAGS="-mod=vendor -v -x" go build -o build ./... || die
 }
 
 src_test() {

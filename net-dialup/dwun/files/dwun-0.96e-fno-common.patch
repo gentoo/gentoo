@@ -1,0 +1,41 @@
+--- a/src/main.c
++++ b/src/main.c
+@@ -37,11 +37,11 @@
+ /* extern'ed in main.h */
+ struct settings set;
+ char *error_messages;
++enum MYLOG_OPTIONS MYLOG_OPTIONS = MYLOG_STDERR;
+ 
+ int main(int argc, char *argv[]) 
+ {
+ 	char orig_work_dir[MAXPATHLEN];
+-	MYLOG_OPTIONS = MYLOG_STDERR;
+ 	umask(022); /* -rw-r--r- */
+ 
+ 	if (!(error_messages = xmalloc(MAX_LOG_LENGTH)))
+--- a/src/shared.h
++++ b/src/shared.h
+@@ -56,10 +56,11 @@
+ 	char *external;			/* named pipe (optional) */
+ };
+ 
+-enum {
++enum MYLOG_OPTIONS {
+ 	MYLOG_STDERR,
+ 	MYLOG_STDERR_DATEPID,
+ 	MYLOG_SYSLOG
+-} MYLOG_OPTIONS;
++};
++extern enum MYLOG_OPTIONS MYLOG_OPTIONS;
+ 
+ #endif
+--- a/src/util.c
++++ b/src/util.c
+@@ -26,6 +26,7 @@
+ #include "util.h"
+ #include "child.h"
+ #include "main.h"
++#include "shared.h"
+ 
+ static bool create_file(char *file, int options);
+ static void print_date_pid(void);
