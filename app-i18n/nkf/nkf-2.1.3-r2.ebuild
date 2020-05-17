@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/59912/${P}.tar.gz
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86 ~x86-macos"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86 ~x86-macos"
 IUSE="perl python l10n_ja"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
