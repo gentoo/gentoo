@@ -8933,6 +8933,7 @@ dev-python/vobject 0.9.6.1-r1: Python package for parsing and generating vCard a
 dev-python/voluptuous 0.11.5: A Python data validation library.
 dev-python/vpython 7.4.6: VPython for Jupyter notebook
 dev-python/waitress 1.3.1: A pure-Python WSGI server
+dev-python/wand 0.6.1: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.3-r2 0.9.0-r1: Python API and shell utilities to monitor file system events
 dev-python/wcwidth 0.1.8 0.1.9: Measures number of Terminal column cells of wide-character codes
@@ -18838,7 +18839,7 @@ x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebar
 x11-wm/metacity 3.34.1: GNOME Flashback window manager
 x11-wm/muffin 4.0.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.34.5 3.34.6: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.34.5 3.34.6 3.34.6-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1 3.6.1-r3 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
