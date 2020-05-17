@@ -5,6 +5,10 @@
 		<email>rafspiny@gmail.com</email>
 		<name>Raffaele Spinelli</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>consus@ftml.net</email>
+		<name>Olaf Torvaldsson</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
