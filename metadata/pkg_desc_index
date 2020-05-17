@@ -12649,7 +12649,7 @@ media-gfx/viewer 0.8.0-r1: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.6 1.7-r1: Fast and simple image viewer
 media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
 media-gfx/waifu2x-ncnn-vulkan 20200224 20200414: waifu2x converter using ncnn and vulkan
-media-gfx/wings 2.1.5 2.1.6 2.1.7 2.2.5: Wings 3D is an advanced subdivision modeler
+media-gfx/wings 2.1.5 2.1.6 2.1.7 2.2.5 2.2.6.1: Wings 3D is an advanced subdivision modeler
 media-gfx/wkhtmltopdf 0.12.5: Convert html to pdf (and various image formats) using webkit
 media-gfx/word_cloud 1.6.0: A little word cloud generator in Python
 media-gfx/xdot 1.1 9999: Interactive viewer for Graphviz dot files
@@ -18655,8 +18655,8 @@ x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and 
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2 3.34.2: The Gnome Terminal
 x11-terms/guake 3.3.2-r1 3.6.3-r1 3.7.0 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.17.2-r1 0.17.3 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
-x11-terms/kitty-terminfo 0.17.2 0.17.3 9999: Terminfo for kitty, an OpenGL-based terminal emulator
+x11-terms/kitty 0.17.2-r1 0.17.3 0.17.4 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty-terminfo 0.17.2 0.17.3 0.17.4 9999: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.1 1.24.0: The MATE Terminal
