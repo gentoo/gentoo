@@ -12,8 +12,8 @@ dev-lang/gforth check
 # See bug #604542
 net-misc/iputils idn
 
-# See bug #504200
-sys-devel/gcc sanitize vtv
+# See bug #504200, #723370
+sys-devel/gcc sanitize nls vtv
 
 # These cause collisions with <libintl.h>
 # even with --without-included-gettext

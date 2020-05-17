@@ -30,12 +30,6 @@ www-apps/nikola ghpages
 # oracle-jdk-bin masked for removal, mask revdep useflag.
 =app-forensics/sleuthkit-4.7.0 java
 
-# Ulrich Müller <ulm@gentoo.org> (2020-04-15, updated 2020-04-22)
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2020-04-17)
-# app-i18n/man-pages-{de,fr,nl,pl} masked for removal.
-# Bug #713590, bug #717744.
-<sys-apps/man-pages-5.05-r1 l10n_de l10n_fr l10n_nl l10n_pl
-
 # Ulrich Müller <ulm@gentoo.org> (2020-04-08)
 # Old versions of libjpeg-turbo have known security issues.
 # Use the bundled lib on your own risk. Bug #715106.
