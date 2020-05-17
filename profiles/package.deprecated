@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-17)
+# Abandoned upstream, countless bugs. Removal tracked in bug #659616
+sys-power/pm-utils
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
 # Obsolete package gets in the way of unmasking >=x11-libs/pango-1.44
 # Bug #698922
