@@ -51,8 +51,10 @@ pkg_setup() {
 
 	case ${CTARGET} in
 		msp430*)
-			# bug #717610
-			die "gcc on ${CTARGET} needs older newlib. Use newlib-3.1.0."
+			if ver_test $(gcc-version ${CTARGET}) -lt 10.1; then
+				# bug #717610
+				die "gcc for ${CTARGET} has to be 10.1 or above"
+			fi
 			;;
 	esac
 }
