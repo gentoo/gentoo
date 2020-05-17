@@ -1,0 +1,36 @@
+diff --git a/src/widgets/ColorPicker.cpp b/src/widgets/ColorPicker.cpp
+index 25df2e3ac..fd9ce0875 100644
+--- a/src/widgets/ColorPicker.cpp
++++ b/src/widgets/ColorPicker.cpp
+@@ -3,6 +3,7 @@
+ 
+ #include <QPaintEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QMouseEvent>
+ #include <QDesktopWidget>
+ #include <QPixmap>
+diff --git a/src/widgets/ColorThemeListView.cpp b/src/widgets/ColorThemeListView.cpp
+index d79b7eb51..6013fa4da 100644
+--- a/src/widgets/ColorThemeListView.cpp
++++ b/src/widgets/ColorThemeListView.cpp
+@@ -3,6 +3,7 @@
+ #include <QJsonArray>
+ #include <QMap>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QFontMetrics>
+ #include <QScreen>
+ #include <QJsonArray>
+diff --git a/src/widgets/DisassemblyWidget.cpp b/src/widgets/DisassemblyWidget.cpp
+index 34c1efbe7..25e917e96 100644
+--- a/src/widgets/DisassemblyWidget.cpp
++++ b/src/widgets/DisassemblyWidget.cpp
+@@ -14,6 +14,7 @@
+ #include <QRegularExpression>
+ #include <QTextBlockUserData>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QSplitter>
+ 
+ 
