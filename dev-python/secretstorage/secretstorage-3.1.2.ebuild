@@ -12,6 +12,7 @@ MY_PN="SecretStorage"
 DESCRIPTION="Python bindings to FreeDesktop.org Secret Service API."
 HOMEPAGE="https://github.com/mitya57/secretstorage https://pypi.org/project/SecretStorage/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,8 +22,9 @@ RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	>=dev-python/jeepney-0.4.2[${PYTHON_USEDEP}]
 "
-
-S="${WORKDIR}/${MY_PN}-${PV}"
+BDEPEND="
+	test? ( gnome-base/gnome-keyring )
+"
 
 distutils_enable_tests unittest
 distutils_enable_sphinx docs \
