@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x8
 RDEPEND="
 	>=dev-python/commonmark-0.8.1[${PYTHON_USEDEP}]
 	>=dev-python/docutils-0.14[${PYTHON_USEDEP}]
-	>=dev-python/sphinx-1.3.1[${PYTHON_USEDEP}]
+	<dev-python/sphinx-3[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
