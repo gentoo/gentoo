@@ -40,6 +40,7 @@ app-editors/emacs xwidgets
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-06-20)
 # dev-python/PyQt5 is not stable.
 dev-python/matplotlib qt5 test
+dev-python/matplotlib-python2 qt5 test
 media-sound/pulseaudio qt5
 net-print/hplip qt5
 
