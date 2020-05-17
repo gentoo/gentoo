@@ -13953,7 +13953,7 @@ net-analyzer/dosdetector 20060621 20060621-r1: Tool to analyze and detect suspic
 net-analyzer/driftnet 0.1.6_p20090401 0.1.6_p20090401-r1: Listen to network traffic and pick out images from TCP streams observed
 net-analyzer/echoping 6.0.2_p434-r2 6.0.2_p434-r3 6.0.2_p434-r4: Small program to test performances of remote servers
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
-net-analyzer/etherape 0.9.14 0.9.17 0.9.18: A graphical network monitor for Unix modeled after etherman
+net-analyzer/etherape 0.9.14 0.9.18 0.9.19: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3 10-r4: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.3 9999: A suite for man in the middle attacks
 net-analyzer/fail2ban 0.11.1-r2 99999999: scans log files and bans IPs that show malicious signs
