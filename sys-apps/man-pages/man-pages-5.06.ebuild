@@ -26,12 +26,12 @@ RDEPEND="
 	!<dev-libs/libbsd-0.8.3-r1
 "
 PDEPEND="
-	l10n_de? ( || ( app-i18n/man-pages-l10n[l10n_de] app-i18n/man-pages-de ) )
-	l10n_fr? ( || ( app-i18n/man-pages-l10n[l10n_fr] app-i18n/man-pages-fr ) )
+	l10n_de? ( app-i18n/man-pages-l10n[l10n_de] )
+	l10n_fr? ( app-i18n/man-pages-l10n[l10n_fr] )
 	l10n_it? ( app-i18n/man-pages-it )
 	l10n_ja? ( app-i18n/man-pages-ja )
-	l10n_nl? ( || ( app-i18n/man-pages-l10n[l10n_nl] app-i18n/man-pages-nl ) )
-	l10n_pl? ( || ( app-i18n/man-pages-l10n[l10n_pl] app-i18n/man-pages-pl ) )
+	l10n_nl? ( app-i18n/man-pages-l10n[l10n_nl] )
+	l10n_pl? ( app-i18n/man-pages-l10n[l10n_pl] )
 	l10n_ru? ( app-i18n/man-pages-ru )
 	l10n_zh-CN? ( app-i18n/man-pages-zh_CN )
 	sys-apps/man-pages-posix
