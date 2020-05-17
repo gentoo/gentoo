@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
+# Depends on deprecated x11-libs/pangox-compat, commercial software that
+# since 2017 does no longer support Linux. Bugs #694920, #720848
+# Masked for removal in 30 days.
+app-i18n/atokx3
+
 # Michał Górny <mgorny@gentoo.org> (2020-05-15)
 # Dead split packages from the dead PEAK project.  All but one had last
 # release in 2010 or earlier, bytecodeassembler had one bugfix release
