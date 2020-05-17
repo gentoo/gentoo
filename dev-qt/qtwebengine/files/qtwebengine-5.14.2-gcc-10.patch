@@ -1,18 +1,32 @@
-From f6e84fa97536812867be6f4c2162f5b86547477f Mon Sep 17 00:00:00 2001
+From cf83347e6fa9c086b5df022d23ca666245bf1989 Mon Sep 17 00:00:00 2001
 From: Jimi Huotari <chiitoo@gentoo.org>
-Date: Tue, 5 May 2020 07:50:18 +0300
+Date: Sun, 10 May 2020 06:02:59 +0300
 Subject: [PATCH] Fix build with GCC 10
 
-Change-Id: I4101211163f3bb3f9a5fa673169aa41fa000ccca
+Change-Id: I733b8e8a00c49766effbee08c8b1f6f5d31a2dbf
 ---
+ chromium/base/trace_event/trace_event_memory_overhead.h          | 1 +
  chromium/media/cdm/supported_cdm_versions.h                      | 1 +
  .../third_party/perfetto/include/perfetto/base/task_runner.h     | 1 +
  chromium/third_party/webrtc/call/rtx_receive_stream.h            | 1 +
  .../webrtc/modules/audio_processing/aec3/clockdrift_detector.h   | 1 +
- 4 files changed, 4 insertions(+)
+ .../third_party/webrtc/modules/video_coding/decoding_state.h     | 1 +
+ 6 files changed, 6 insertions(+)
 
+diff --git a/chromium/base/trace_event/trace_event_memory_overhead.h b/chromium/base/trace_event/trace_event_memory_overhead.h
+index 69468d46409..e10a3eca667 100644
+--- a/src/3rdparty/chromium/base/trace_event/trace_event_memory_overhead.h
++++ b/src/3rdparty/chromium/base/trace_event/trace_event_memory_overhead.h
+@@ -8,6 +8,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ 
++#include <string>
+ #include <unordered_map>
+ 
+ #include "base/base_export.h"
 diff --git a/chromium/media/cdm/supported_cdm_versions.h b/chromium/media/cdm/supported_cdm_versions.h
-index dbe59ba5ea7..5216cfe3ee9 100644
+index 3f220da8c71..c54e3bb7d30 100644
 --- a/src/3rdparty/chromium/media/cdm/supported_cdm_versions.h
 +++ b/src/3rdparty/chromium/media/cdm/supported_cdm_versions.h
 @@ -6,6 +6,7 @@
@@ -59,6 +73,17 @@ index 22528c94892..69e624e8b19 100644
  
  namespace webrtc {
  
+diff --git a/chromium/third_party/webrtc/modules/video_coding/decoding_state.h b/chromium/third_party/webrtc/modules/video_coding/decoding_state.h
+index b87fb2d0345..e6c5e2855de 100644
+--- a/src/3rdparty/chromium/third_party/webrtc/modules/video_coding/decoding_state.h
++++ b/src/3rdparty/chromium/third_party/webrtc/modules/video_coding/decoding_state.h
+@@ -13,6 +13,7 @@
+ 
+ #include <map>
+ #include <set>
++#include <stdint.h>
+ #include <vector>
+ 
+ namespace webrtc {
 -- 
 2.26.2
-
