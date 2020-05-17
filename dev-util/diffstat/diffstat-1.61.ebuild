@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Display a histogram of diff changes"
-HOMEPAGE="http://invisible-island.net/diffstat/"
+HOMEPAGE="https://invisible-island.net/diffstat/"
 SRC_URI="ftp://invisible-island.net/diffstat/${P}.tgz"
 
 LICENSE="HPND"
