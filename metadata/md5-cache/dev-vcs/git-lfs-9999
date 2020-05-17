@@ -1,5 +1,5 @@
 BDEPEND=dev-lang/go doc? ( app-text/ronn ) >=dev-lang/go-1.10 >=dev-lang/go-1.12 app-arch/unzip
-DEFINED_PHASES=compile install postinst unpack
+DEFINED_PHASES=compile install postinst test unpack
 DESCRIPTION=Command line extension and specification for managing large files with git
 EAPI=7
 HOMEPAGE=https://git-lfs.github.com/
@@ -10,4 +10,4 @@ RDEPEND=dev-vcs/git
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	go-module	cca12a5688562f107c14ffcf28195dd7	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs	0e8809b1209227170eeeb5af907dbcd0
-_md5_=6207c7a121f8b74ca14c2fc58ec6a3a1
+_md5_=325948a406b7314dfe295b1e93e357c5
