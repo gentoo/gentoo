@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install preinst prepare pretend setup test unpack
 DEPEND=dev-java/ant-core:0 dev-java/jline:2 !binary? ( >=virtual/jdk-1.8:* >=dev-java/sbt-0.13.18:0 media-gfx/graphviz ) binary? ( >=virtual/jdk-1.8:* ) app-arch/xz-utils:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 DESCRIPTION=The Scala Programming Language
 EAPI=7
-HOMEPAGE=http://www.scala-lang.org/
+HOMEPAGE=https://www.scala-lang.org/
 IUSE=binary emacs elibc_FreeBSD doc source
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=BSD
@@ -11,4 +11,4 @@ RDEPEND=dev-java/ant-core:0 dev-java/jline:2 >=virtual/jre-1.8:* app-eselect/ese
 SLOT=2.12/2.12.10
 SRC_URI=!binary? ( https://github.com/scala/scala/archive/v2.12.10.tar.gz -> scala-2.12.10.tar.gz https://dev.gentoo.org/~gienah/snapshots/scala-2.12.10-ivy2-deps.tar.xz https://dev.gentoo.org/~gienah/snapshots/scala-2.12.10-sbt-deps.tar.xz ) binary? ( https://dev.gentoo.org/~gienah/files/dist/scala-2.12.10-gentoo-binary.tar.xz )
 _eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb
-_md5_=d504e372162ec96270c26e66f848c64d
+_md5_=80bcf235c5c773fbccab6caa4451c79a

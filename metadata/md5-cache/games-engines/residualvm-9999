@@ -3,11 +3,11 @@ DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
 DEPEND=media-libs/glew:0= media-libs/libsdl2[X,sound,alsa,joystick,opengl,video] virtual/glu alsa? ( media-libs/alsa-lib ) jpeg? ( virtual/jpeg:0 ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) opengl? ( virtual/opengl ) png? ( media-libs/libpng:0= ) truetype? ( media-libs/freetype:2 ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 EAPI=7
-HOMEPAGE=http://www.residualvm.org/
+HOMEPAGE=https://www.residualvm.org/
 IUSE=alsa debug jpeg mpeg2 mp3 opengl png truetype vorbis zlib
 LICENSE=GPL-2 LGPL-2.1
 PROPERTIES=live
 RDEPEND=media-libs/glew:0= media-libs/libsdl2[X,sound,alsa,joystick,opengl,video] virtual/glu alsa? ( media-libs/alsa-lib ) jpeg? ( virtual/jpeg:0 ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) opengl? ( virtual/opengl ) png? ( media-libs/libpng:0= ) truetype? ( media-libs/freetype:2 ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib:= )
 SLOT=0
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=13c45a57159758b6a1c81b3776762a5c
+_md5_=2346a1d09635c8911c3ac8717668ee05

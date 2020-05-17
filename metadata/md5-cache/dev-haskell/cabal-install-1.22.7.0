@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup test
 DEPEND=>=dev-haskell/cabal-1.22.2:= <dev-haskell/cabal-1.23:= >=dev-haskell/http-4000.2.5:= <dev-haskell/http-4000.3:= >=dev-haskell/mtl-2.0:= <dev-haskell/mtl-3:= >=dev-haskell/old-time-1:= <dev-haskell/old-time-1.2:= >=dev-haskell/random-1:= <dev-haskell/random-1.2:= >=dev-haskell/stm-2.0:= <dev-haskell/stm-3:= >=dev-haskell/zlib-0.5.3:= <dev-haskell/zlib-0.7:= >=dev-lang/ghc-7.4.1:= network-uri? ( >=dev-haskell/network-2.6:= >=dev-haskell/network-uri-2.6:= ) !network-uri? ( >=dev-haskell/network-2.4:= <dev-haskell/network-2.6:= ) >=dev-haskell/cabal-1.10 test? ( dev-haskell/extensible-exceptions dev-haskell/hunit >=dev-haskell/quickcheck-2.5 dev-haskell/regex-posix dev-haskell/test-framework dev-haskell/test-framework-hunit >=dev-haskell/test-framework-quickcheck2-0.3 !network-uri? ( <dev-haskell/network-uri-2.6 ) )
 DESCRIPTION=The command-line interface for Cabal and Hackage
 EAPI=5
-HOMEPAGE=http://www.haskell.org/cabal/
+HOMEPAGE=https://www.haskell.org/cabal/
 IUSE=+network-uri +noprefs test
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=BSD
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://hackage.haskell.org/package/cabal-install-1.22.7.0/cabal-install-1.22.7.0.tar.gz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	aad3bcc521d54cb9a8e23a78ff7b48b7	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=9e903fdf6ee6c46f18a5af0769d6b8a4
+_md5_=bb2bf8fae7af507e101c0baa63a3e7af

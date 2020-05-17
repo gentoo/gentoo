@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm setup test
 DEPEND=dev-haskell/aeson:=[profile?] dev-haskell/blaze-html:=[profile?] dev-haskell/blaze-markup:=[profile?] dev-haskell/exceptions:=[profile?] >=dev-haskell/parsec-2:=[profile?] <dev-haskell/parsec-4:=[profile?] >=dev-haskell/scientific-0.3.0.0:=[profile?] >=dev-haskell/text-0.7:=[profile?] dev-haskell/unordered-containers:=[profile?] dev-haskell/vector:=[profile?] >=dev-lang/ghc-8.0.1:= >=dev-haskell/cabal-1.24.0.0 test? ( >=dev-haskell/hspec-2 <dev-haskell/hspec-3 dev-haskell/hunit ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=A toolkit for making compile-time interpolated templates
 EAPI=7
-HOMEPAGE=http://www.yesodweb.com/book/shakespearean-templates
+HOMEPAGE=https://www.yesodweb.com/book/shakespearean-templates
 IUSE=test-coffee test-export test-roy doc hscolour profile test
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0/2.0.21
 SRC_URI=https://hackage.haskell.org/package/shakespeare-2.0.21/shakespeare-2.0.21.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	aad3bcc521d54cb9a8e23a78ff7b48b7	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3b31de5ce8c4df063f2611f0408e16c8
+_md5_=20e8db0b0a5170754f8f560b25ae4dbe

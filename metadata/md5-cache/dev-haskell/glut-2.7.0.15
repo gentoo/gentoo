@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm setup test
 DEPEND=>=dev-haskell/opengl-2.12:=[profile?] <dev-haskell/opengl-3.1:=[profile?] >=dev-haskell/statevar-1.1:=[profile?] <dev-haskell/statevar-1.3:=[profile?] >=dev-lang/ghc-7.8.2:= examples? ( >=dev-haskell/openglraw-1.0:=[profile?] <dev-haskell/openglraw-3.4:=[profile?] >=dev-haskell/random-1.0:=[profile?] <dev-haskell/random-1.2:=[profile?] ) >=dev-haskell/cabal-1.18.1.3 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=A binding for the OpenGL Utility Toolkit
 EAPI=7
-HOMEPAGE=http://www.haskell.org/haskellwiki/Opengl
+HOMEPAGE=https://www.haskell.org/haskellwiki/Opengl
 IUSE=examples doc hscolour profile
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
@@ -10,4 +10,4 @@ RDEPEND=>=dev-haskell/opengl-2.12:=[profile?] <dev-haskell/opengl-3.1:=[profile?
 SLOT=0/2.7.0.15
 SRC_URI=https://hackage.haskell.org/package/GLUT-2.7.0.15/GLUT-2.7.0.15.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	aad3bcc521d54cb9a8e23a78ff7b48b7	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=6520541fe1ba26ed115e1b9fb51b1ad5
+_md5_=839bce0e3ac90dd0440c6a334df55f90

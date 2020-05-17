@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install
 DEPEND=sys-devel/gcc:* sys-devel/clang:=
 DESCRIPTION=american fuzzy lop - compile-time instrumentation fuzzer
 EAPI=7
-HOMEPAGE=http://lcamtuf.coredump.cx/afl/
+HOMEPAGE=https://lcamtuf.coredump.cx/afl/
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RDEPEND=sys-devel/gcc:* sys-devel/clang:=
 SLOT=0
 SRC_URI=https://github.com/google/AFL/archive/v2.56b.tar.gz -> afl-2.56b.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2173d1d74a83d54e1ced52d14631d731
+_md5_=05b7ac7ae5e7e3caee0c1d04d74f7a48

@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install prepare setup
 DEPEND=media-libs/t1lib media-libs/tiff:0 sys-libs/zlib >=x11-libs/motif-2.3:0 x11-libs/xbae fftw? ( sci-libs/fftw:3.0= ) jpeg? ( virtual/jpeg:0 ) netcdf? ( sci-libs/netcdf ) png? ( media-libs/libpng:0= ) fortran? ( virtual/fortran )
 DESCRIPTION=Motif based XY-plotting tool
 EAPI=7
-HOMEPAGE=http://plasma-gate.weizmann.ac.il/Grace/
+HOMEPAGE=https://plasma-gate.weizmann.ac.il/Grace/
 IUSE=fftw fortran jpeg netcdf png
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2 LGPL-2
@@ -10,4 +10,4 @@ RDEPEND=media-libs/t1lib media-libs/tiff:0 sys-libs/zlib >=x11-libs/motif-2.3:0 
 SLOT=0
 SRC_URI=ftp://plasma-gate.weizmann.ac.il/pub/grace/src/stable/grace-5.1.25.tar.gz mirror://debian/pool/main/g/grace/grace_5.1.25-7.debian.tar.xz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=69a5198051200ac2d3978bdb3e383990
+_md5_=4c8d2422fb94a425747f69e4f12fd888

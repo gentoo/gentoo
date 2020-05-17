@@ -2,11 +2,11 @@ DEFINED_PHASES=install postinst postrm preinst
 DEPEND=app-arch/unzip
 DESCRIPTION=A mashup of "Not" and "Pacman"
 EAPI=6
-HOMEPAGE=http://stabyourself.net/notpacman/
+HOMEPAGE=https://stabyourself.net/notpacman/
 KEYWORDS=~amd64 ~x86
 LICENSE=WTFPL-2
 RDEPEND=>=games-engines/love-0.7.2:0.7 media-libs/devil[png]
 SLOT=0
-SRC_URI=http://stabyourself.net/dl.php?file=notpacman-1004/notpacman-linux.zip -> notpacman-1.0.4.zip https://dev.gentoo.org/~chewi/distfiles/notpacman.png
+SRC_URI=https://stabyourself.net/dl.php?file=notpacman-1004/notpacman-linux.zip -> notpacman-1.0.4.zip https://dev.gentoo.org/~chewi/distfiles/notpacman.png
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=6d615a2edd3a44ccc145eaf82c3c3ad2
+_md5_=a51322c545b1e6367fd3313c6492fd03

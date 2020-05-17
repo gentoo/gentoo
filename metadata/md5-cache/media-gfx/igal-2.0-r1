@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=Static HTML image gallery generator
 EAPI=7
-HOMEPAGE=http://igal.trexler.at
+HOMEPAGE=https://igal.trexler.at
 KEYWORDS=~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=dev-lang/perl virtual/imagemagick-tools virtual/jpeg
 SLOT=0
-SRC_URI=http://igal.trexler.at/igal2-2.0.tar.gz
-_md5_=9344d68be9c22377e136df6a913b5f06
+SRC_URI=https://igal.trexler.at/igal2-2.0.tar.gz
+_md5_=e4a8786b75bb11a5d9d401f7419a1366
