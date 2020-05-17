@@ -266,6 +266,7 @@ go-module_set_globals
 	SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz
 			${EGO_SUM_SRC_URI}"
 	KEYWORDS="~amd64"
+	S="${WORKDIR}/cli-${PV}"
 fi
 
 LICENSE="MIT Apache-2.0 BSD BSD-2 MPL-2.0"
