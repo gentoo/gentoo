@@ -8235,7 +8235,7 @@ dev-python/pastescript 2.0.2-r1: A pluggable command-line frontend, including co
 dev-python/patch 1.16: Library to parse and apply unified diffs
 dev-python/patch-ng 1.17.3 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
-dev-python/path-py 11.5.2 12.0.2-r2: A module wrapper for os.path
+dev-python/path-py 11.5.2-r1 12.0.2-r2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathlib2 2.3.5: Fork of pathlib aiming to support the full stdlib Python API
 dev-python/pathspec 0.7.0 0.8.0: Utility library for gitignore style pattern matching of file paths.
