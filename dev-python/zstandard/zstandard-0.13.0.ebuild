@@ -14,19 +14,19 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/cffi:=[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? ( dev-python/hypothesis[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests setup.py
+
+PATCHES=(
+	# https://github.com/indygreg/python-zstandard/issues/103
+	"${FILESDIR}"/zstandard-0.13.0-compiler.patch
+)
 
 python_compile() {
 	local MAKEOPTS=-j1
 	distutils-r1_python_compile
-}
-
-python_test() {
-	esetup.py test
 }
