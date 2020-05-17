@@ -17432,7 +17432,7 @@ sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.1_p20181020 6.1_p20190609 6.2-r1: console display library
 sys-libs/ncurses-compat 5.9 6.1_p20190609: console display library (ABI version 5)
 sys-libs/netbsd-csu 9.0_beta: crtbegin.o/crtend.o from NetBSD CSU for GCC-free toolchain
-sys-libs/newlib 3.1.0 3.3.0 9999: Newlib is a C library intended for use on embedded systems
+sys-libs/newlib 3.3.0 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
 sys-libs/nss_wrapper 1.1.6 1.1.10: Wrapper for the user, group and hosts NSS API
 sys-libs/obstack-standalone 1.1: A standalone library to implement GNU libc's obstack.
