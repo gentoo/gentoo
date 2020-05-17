@@ -145,10 +145,11 @@ src_configure() {
 
 src_test() {
 	# parallel tests fail, foldermodeltest,positionertest hang, bug #646890
-	# needs D-Bus, bug #634166
+	# test_kio_fonts needs D-Bus, bug #634166
+	# lookandfeel-kcmTest is unreliable for a long time, bug #607918
 	local myctestargs=(
 		-j1
-		-E "(foldermodeltest|positionertest|test_kio_fonts)"
+		-E "(foldermodeltest|positionertest|test_kio_fonts|lookandfeel-kcmTest)"
 	)
 
 	ecm_src_test
