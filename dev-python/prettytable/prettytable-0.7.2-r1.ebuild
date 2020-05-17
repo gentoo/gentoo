@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/P/PrettyTable/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 hppa ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 hppa ~ia64 ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
