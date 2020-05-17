@@ -4,10 +4,10 @@ DESCRIPTION=Converts, splits and demuxes DVB and other MPEG recordings
 EAPI=7
 HOMEPAGE=http://project-x.sourceforge.net/
 IUSE=X cpu_flags_x86_mmx cpu_flags_x86_sse elibc_FreeBSD doc source elibc_FreeBSD
-KEYWORDS=~amd64 ~ppc64 ~x86
+KEYWORDS=~amd64 ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-java/commons-net:0 X? ( dev-java/browserlauncher2:1.0 ) >=virtual/jre-1.5 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~billie/distfiles/projectx-0.91.0.10.tar.xz https://dev.gentoo.org/~billie/distfiles/projectx-idctfast.tar.xz https://dev.gentoo.org/~billie/distfiles/xdg-20100731.java.xz https://dev.gentoo.org/~billie/distfiles/projectx-icon.png
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=5d7f9c8577c9780ccc052b442e5df336
+_md5_=03c1b994085fe5ab5c84ff3a5219d0f0
