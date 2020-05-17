@@ -9021,7 +9021,7 @@ dev-qt/qtconcurrent 5.14.1 5.14.2: Multi-threading concurrence support library f
 dev-qt/qtcore 5.14.1-r1 5.14.2: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.14.1-r1 5.14.2: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.14.1 5.14.2: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 5.14.1-r2 5.14.2: The QML and Quick modules for the Qt5 framework
+dev-qt/qtdeclarative 5.14.1-r2 5.14.2 5.14.2-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdiag 5.14.1 5.14.2: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgamepad 5.14.1 5.14.2: Qt module to support gamepad hardware
 dev-qt/qtgraphicaleffects 5.14.1 5.14.2: Set of QML types for adding visual effects to user interfaces
