@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ inherit autotools versionator eutils games
 MY_PV=$(replace_version_separator 2 '-' )
 MY_P=${PN}-${MY_PV}
 DESCRIPTION="SDL logical clone"
-HOMEPAGE="http://changeling.ixionstudios.com/xlogical/"
-SRC_URI="http://changeling.ixionstudios.com/xlogical/downloads/${MY_P}.tar.bz2
+HOMEPAGE="https://changeling.ixionstudios.com/xlogical/"
+SRC_URI="https://changeling.ixionstudios.com/xlogical/downloads/${MY_P}.tar.bz2
 	alt_gfx? ( http://changeling.ixionstudios.com/xlogical/downloads/xlogical_gfx.zip )"
 
 LICENSE="GPL-2"

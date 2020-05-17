@@ -10,7 +10,7 @@ CABAL_FEATURES+=" nocabaldep"
 inherit haskell-cabal pax-utils
 
 DESCRIPTION="A documentation-generation tool for Haskell libraries"
-HOMEPAGE="http://www.haskell.org/haddock/"
+HOMEPAGE="https://www.haskell.org/haddock/"
 #SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 SRC_URI="http://code.haskell.org/~slyfox/snapshots/${P}.tar.gz"
 

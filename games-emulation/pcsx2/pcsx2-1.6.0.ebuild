@@ -34,7 +34,6 @@ RDEPEND="
 	x11-libs/libXext[abi_x86_32(-)]
 	>=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X]
 "
-# Ensure no incompatible headers from eselect-opengl are installed, bug #510730
 DEPEND="${RDEPEND}
 	dev-cpp/pngpp
 	dev-cpp/sparsehash
@@ -54,6 +53,9 @@ pkg_setup() {
 
 src_configure() {
 	multilib_toolchain_setup x86
+	# Build with ld.gold fails
+	# https://github.com/PCSX2/pcsx2/issues/1671
+	tc-ld-disable-gold
 
 	# pcsx2 build scripts will force CMAKE_BUILD_TYPE=Devel
 	# if it something other than "Devel|Debug|Release"

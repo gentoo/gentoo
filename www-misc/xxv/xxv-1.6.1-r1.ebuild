@@ -8,7 +8,7 @@ inherit eutils
 VERSION="718" # every bump, new version
 
 DESCRIPTION="WWW Admin for the VDR (Video Disk Recorder)"
-HOMEPAGE="http://projects.vdr-developer.org/projects/xxv"
+HOMEPAGE="https://projects.vdr-developer.org/projects/xxv"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz
 		mirror://gentoo/${P}.tgz"
 

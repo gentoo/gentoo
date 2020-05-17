@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: if installing off of the 1.01 cd, need to fetch the
@@ -10,7 +10,7 @@ EAPI=5
 inherit eutils cdrom games
 
 DESCRIPTION="iD Software's Quake 1 ... the data files"
-HOMEPAGE="http://www.idsoftware.com/games/quake/quake/"
+HOMEPAGE="https://www.idsoftware.com/games/quake/quake/"
 SRC_URI=""
 
 LICENSE="all-rights-reserved"

@@ -5,8 +5,8 @@ EAPI=7
 inherit autotools multilib toolchain-funcs
 
 DESCRIPTION="A Debug Malloc Library"
-HOMEPAGE="http://dmalloc.com"
-SRC_URI="http://dmalloc.com/releases/${P}.tgz"
+HOMEPAGE="https://dmalloc.com"
+SRC_URI="https://dmalloc.com/releases/${P}.tgz"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"

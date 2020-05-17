@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source"
 inherit eutils java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A Java template engine"
-HOMEPAGE="http://www.stringtemplate.org/"
+HOMEPAGE="https://www.stringtemplate.org/"
 SRC_URI="https://github.com/antlr/${PN}4/archive/${PV}.tar.gz -> ${P}.tar.gz
 	http://www.antlr3.org/download/antlr-${ANTLR3}-complete.jar"
 LICENSE="BSD"

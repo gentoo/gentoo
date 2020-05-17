@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake xdg-utils
 
 DESCRIPTION="Seafile desktop client"
-HOMEPAGE="http://www.seafile.com/ https://github.com/haiwen/seafile-client/"
+HOMEPAGE="https://www.seafile.com/ https://github.com/haiwen/seafile-client/"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
