@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
 
@@ -25,6 +26,8 @@ DEPEND="${RDEPEND}
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
 	)"
+
+REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )"
 
 distutils_enable_sphinx doc
 

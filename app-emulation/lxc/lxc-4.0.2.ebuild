@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools bash-completion-r1 linux-info flag-o-matic systemd readme.gentoo-r1 pam
+inherit autotools bash-completion-r1 linux-info flag-o-matic pam readme.gentoo-r1 systemd
 
 DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/ https://github.com/lxc/lxc"
@@ -82,6 +82,7 @@ src_configure() {
 		--with-runtime-path=/run
 		--disable-werror
 		--enable-doc
+		--with-systemdsystemunitdir=$(systemd_get_systemunitdir)
 		$(use_enable apparmor)
 		$(use_enable examples)
 		$(use_enable pam)
@@ -102,14 +103,14 @@ src_install() {
 	keepdir /etc/lxc /var/lib/lxc/rootfs /var/log/lxc
 	rmdir "${D}"/var/cache/lxc "${D}"/var/cache || die "rmdir failed"
 
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -delete -o -name '*.a' -delete || die
 
 	# Gentoo-specific additions!
 	newinitd "${FILESDIR}/${PN}.initd.8" ${PN}
 
 	# Remember to compare our systemd unit file with the upstream one
 	# config/init/systemd/lxc.service.in
-	systemd_newunit "${FILESDIR}"/${PN}_at.service.4 "lxc@.service"
+	systemd_newunit "${FILESDIR}"/${PN}_at.service.4.0.0 "lxc@.service"
 
 	DOC_CONTENTS="
 	For openrc, there is an init script provided with the package.
