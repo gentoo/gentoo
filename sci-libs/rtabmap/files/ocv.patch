@@ -1,0 +1,24 @@
+From 7041d5fd34fb34851ad3287891aa5c383d73b5c2 Mon Sep 17 00:00:00 2001
+From: matlabbe <matlabbe@gmail.com>
+Date: Sun, 3 May 2020 22:59:35 -0400
+Subject: [PATCH] Fixed #541
+
+---
+ corelib/include/rtabmap/core/stereo/stereoRectifyFisheye.h | 3 ---
+ 1 file changed, 3 deletions(-)
+
+Index: rtabmap-0.19.7/corelib/include/rtabmap/core/stereo/stereoRectifyFisheye.h
+===================================================================
+--- rtabmap-0.19.7.orig/corelib/include/rtabmap/core/stereo/stereoRectifyFisheye.h
++++ rtabmap-0.19.7/corelib/include/rtabmap/core/stereo/stereoRectifyFisheye.h
+@@ -37,10 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBI
+ #include <opencv2/calib3d/calib3d_c.h>
+ 
+ #if CV_MAJOR_VERSION >= 4
+-
+-#if CV_MINOR_VERSION >= 3
+ #include <opencv2/core/core_c.h>
+-#endif
+ 
+ // Opencv4 doesn't expose those functions below anymore, we should recopy all of them!
+ int cvRodrigues2( const CvMat* src, CvMat* dst, CvMat* jacobian CV_DEFAULT(0))
