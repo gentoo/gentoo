@@ -21,7 +21,11 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
-BDEPEND="test? ( ${RDEPEND} )"
+BDEPEND="
+	test? (
+		$(python_gen_impl_dep sqlite)
+		${RDEPEND}
+	)"
 
 python_test() {
 	local -x PYTHONPATH=test_project:${PYTHONPATH}

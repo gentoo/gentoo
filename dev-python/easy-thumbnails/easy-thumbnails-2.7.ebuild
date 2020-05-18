@@ -23,6 +23,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		$(python_gen_impl_dep sqlite)
 		${RDEPEND}
 		dev-python/testfixtures[${PYTHON_USEDEP}]
 	)
