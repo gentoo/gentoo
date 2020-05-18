@@ -4966,7 +4966,7 @@ dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness 
 dev-libs/jansson 2.10 2.11 2.12: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1 2.0.0-r2: A Library in C Facilitating Erasure Coding for Storage Applications
-dev-libs/json-c 0.12 0.13.1-r1 0.14-r1 0.14-r2 9999: A JSON implementation in C
+dev-libs/json-c 0.12 0.13.1-r1 0.14-r1 0.14-r2 0.14-r3 9999: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 1.9.1 1.9.3_pre20200412: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
@@ -11632,6 +11632,7 @@ gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user i
 gnustep-libs/sope 4.1.1: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
 gui-apps/grim 1.2.0 9999: Grab images from a Wayland compositor.
+gui-apps/kanshi 1.1.0 9999: dynamic display configuration (autorandr for wayland)
 gui-apps/mako 1.4.1 9999: A lightweight notification daemon for Wayland. Works on Sway.
 gui-apps/nm-tray 0.4.3: A simple Qt-based NetworkManager front-end
 gui-apps/slurp 1.2.0 9999: Select a region in a Wayland compositor and print it to the standard output.
@@ -14981,7 +14982,7 @@ net-misc/rclone 1.50.0 1.51.0 9999: A program to sync files to and from various 
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.3.6-r1 1.4.3: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.4.3 1.4.3-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
@@ -17850,7 +17851,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 81.0.4044.138 83.0.4103.56 84.0.4136.5: Open-source version of Google Chrome web browser
+www-client/chromium 81.0.4044.138 83.0.4103.61 84.0.4136.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
@@ -17859,7 +17860,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0-r1 68.8.0 76.0-r1 76.0.1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.8.0 76.0 76.0.1: Firefox Web Browser
 www-client/google-chrome 81.0.4044.138: The web browser from Google
-www-client/google-chrome-beta 83.0.4103.56: The web browser from Google
+www-client/google-chrome-beta 83.0.4103.61: The web browser from Google
 www-client/google-chrome-unstable 84.0.4143.2: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -17906,7 +17907,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.371: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 81.0.4044.138 83.0.4103.56_beta 84.0.4143.2_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 81.0.4044.138 83.0.4103.61_beta 84.0.4143.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player

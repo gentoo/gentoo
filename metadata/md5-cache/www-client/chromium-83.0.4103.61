@@ -11,6 +11,6 @@ RDEPEND=>=app-accessibility/at-spi2-atk-2.26:2 app-arch/bzip2:= cups? ( >=net-pr
 REQUIRED_USE=component-build? ( !suid )
 RESTRICT=!system-ffmpeg? ( proprietary-codecs? ( bindist ) )
 SLOT=0
-SRC_URI=https://commondatastorage.googleapis.com/chromium-browser-official/chromium-83.0.4103.56.tar.xz https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
+SRC_URI=https://commondatastorage.googleapis.com/chromium-browser-official/chromium-83.0.4103.61.tar.xz https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
 _eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	chromium-2	92ff174aa2b13d6ea0c4539533f0b2de	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	portability	e8f7ef3a41965b21a734550f8a94c1c6	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=f7b158e24e36782bdfffa147633ffbf4

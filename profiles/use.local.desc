@@ -3431,6 +3431,7 @@ gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objectiv
 gnustep-base/libobjc2:boehm-gc - Enable Hans Boehm's garbage collector (dev-libs/boehm-gc). Not recommended by upstream
 gui-apps/grim:jpeg - Enable JPEG support.
 gui-apps/grim:man - Generate and install man pages.
+gui-apps/kanshi:man - build and install man pages
 gui-apps/mako:icons - Enable support for icons
 gui-apps/slurp:man - Generate and install man pages.
 gui-apps/swaybg:man - Build and install man pages
