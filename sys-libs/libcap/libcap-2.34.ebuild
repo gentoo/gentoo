@@ -51,11 +51,13 @@ run_emake() {
 	emake "${args[@]}" "$@"
 }
 
-multilib_src_compile() {
+src_configure() {
 	tc-export AR CC RANLIB
-	local BUILD_CC
 	tc-export_build_env BUILD_CC
+	multilib-minimal_src_configure
+}
 
+multilib_src_compile() {
 	run_emake
 }
 
