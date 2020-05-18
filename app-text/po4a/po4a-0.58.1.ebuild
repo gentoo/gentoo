@@ -1,16 +1,18 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PLOCALES="af ar ca cs da de eo es et eu fr hr id it ja kn ko nb nl pl pt pt_BR ru sl sv uk vi zh_CN zh_HK"
+EAPI="7"
+PLOCALES="af ar ca cs da de eo es et eu fr hr hu id it ja kn ko nb nl pl pt pt_BR ru sl sr_Cyrl sv uk vi zh_CN zh_HK"
 
-inherit perl-module l10n
+inherit l10n perl-module
+
+MY_P="${P/-/-v}"
 
 DESCRIPTION="Tools to ease the translation of documentation"
 HOMEPAGE="https://po4a.org/"
-SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE="test"
@@ -31,14 +33,13 @@ DEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? (
 		app-text/docbook-sgml-dtd:4.1
+		dev-perl/Test-Pod
 		virtual/latex-base
 	)"
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}"/${PN}-man.patch )
 
-PERL_RM_FILES=(
-	t/09-html.t
-)
 DIST_TEST="do"
 
 src_prepare() {
