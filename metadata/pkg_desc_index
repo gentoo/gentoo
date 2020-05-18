@@ -9133,12 +9133,12 @@ dev-ros/gazebo_msgs 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: Message and servic
 dev-ros/gazebo_plugins 2.8.7 9999: Robot-independent Gazebo plugins
 dev-ros/gazebo_ros 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
 dev-ros/gazebo_ros_control 2.6.2-r1 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: ROS control plugins for gazebo
-dev-ros/gencpp 0.6.0 0.6.2 9999: ROS C++ message definition and serialization generators
-dev-ros/geneus 2.2.5 2.2.6 9999: EusLisp ROS message and service generators
-dev-ros/genlisp 0.4.16 0.4.17 9999: Common-Lisp ROS message and service generators
+dev-ros/gencpp 0.6.5 9999: ROS C++ message definition and serialization generators
+dev-ros/geneus 3.0.0 9999: EusLisp ROS message and service generators
+dev-ros/genlisp 0.4.18 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.16 9999: Python library for generating ROS message and service data structures
 dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
-dev-ros/genpy 0.6.7 0.6.8 9999: Python ROS message and service generators
+dev-ros/genpy 0.6.11 9999: Python ROS message and service generators
 dev-ros/geodesy 0.5.2 0.5.3 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.5.0 0.5.2 0.5.3 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.6.1 9999: Generic definitions of geometric shapes and bodies
@@ -9171,7 +9171,7 @@ dev-ros/imu_complementary_filter 1.1.5 1.2.0 1.2.1 9999: Fuses angular velocitie
 dev-ros/imu_filter_madgwick 1.2.1 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
 dev-ros/imu_processors 0.2.1 0.2.2 0.2.3 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.2-r1 0.2.3 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
-dev-ros/interactive_marker_tutorials 0.10.3-r1 9999: Interactive marker tutorials
+dev-ros/interactive_marker_tutorials 0.10.3-r1 0.11.0 9999: Interactive marker tutorials
 dev-ros/interactive_markers 1.11.3 1.11.4 9999: 3D interactive marker communication library for RViz and similar tools
 dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 0.1.6 0.1.7 9999: Mesh Conversion Utility
@@ -9187,7 +9187,7 @@ dev-ros/laser_filters 1.8.6 1.8.7 9999: Assorted filters designed to operate on 
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.5 9999: Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
 dev-ros/libmavconn 0.19.0-r1 9999: MAVLink communication library
-dev-ros/librviz_tutorial 0.10.1 0.10.2 0.10.3 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
+dev-ros/librviz_tutorial 0.10.1 0.10.2 0.10.3 0.11.0 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.15.2-r1 1.16.0 1.16.1 1.16.2 1.16.3 1.16.6 9999: Offers map data as a ROS service
 dev-ros/mavlink-gbp-release 2017.2.7-r1 2017.5.5 2019.11.11: MAVLink message marshaling library
@@ -9335,8 +9335,8 @@ dev-ros/rqt_topic 0.4.9 0.4.10 9999: GUI plugin for displaying debug information
 dev-ros/rqt_web 0.4.7 0.4.8 9999: Simple web content viewer for rqt
 dev-ros/rviz 1.13.6-r1 1.14.0 9999: 3D visualization tool for ROS
 dev-ros/rviz_imu_plugin 1.1.5-r1 1.2.0 1.2.1 9999: RVIZ plugin for IMU visualization
-dev-ros/rviz_plugin_tutorials 0.10.1-r4 0.10.2 0.10.3 9999: Tutorials showing how to write plugins for RViz
-dev-ros/rviz_python_tutorial 0.9.2 0.10.1 0.10.2 0.10.3 9999: Tutorials showing how to call into rviz internals from python scripts
+dev-ros/rviz_plugin_tutorials 0.10.1-r4 0.10.2 0.10.3 0.11.0 9999: Tutorials showing how to write plugins for RViz
+dev-ros/rviz_python_tutorial 0.9.2 0.10.1 0.10.2 0.10.3 0.11.0 9999: Tutorials showing how to call into rviz internals from python scripts
 dev-ros/self_test 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 9999: Robot self-test node
 dev-ros/sensor_msgs 1.12.5 1.12.6 1.12.7 9999: Messages for commonly used sensors, including cameras and scanning laser rangefinders
 dev-ros/settlerlib 0.10.14 9999: Helper functions and routines to help creating a settler for a specific sensor channel
@@ -9392,18 +9392,18 @@ dev-ros/urdf 1.13.1-r1 9999: C++ parser for the Unified Robot Description Format
 dev-ros/urdf_parser_plugin 1.12.11 1.13.1 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.3.0 0.4.0 9999: URDF tutorials
 dev-ros/urg_c 1.0.405 9999: URG Helper / URG Widget / URG Library / urg_c
-dev-ros/urg_node 0.1.10 0.1.11 9999: ROS wrapper for the Hokuyo urg_c library
+dev-ros/urg_node 0.1.13 9999: ROS wrapper for the Hokuyo urg_c library
 dev-ros/uuid_msgs 1.0.6 9999: ROS messages for universally unique identifiers
-dev-ros/visp_auto_tracker 0.10.0 0.11.1-r1 9999: Online automated pattern-based object tracker relying on visual servoing
+dev-ros/visp_auto_tracker 0.11.1-r1 9999: Online automated pattern-based object tracker relying on visual servoing
 dev-ros/visp_bridge 0.11.1 9999: Converts between ROS structures and ViSP structures
-dev-ros/visp_camera_calibration 0.10.0 0.11.1 9999: Calibration of cameras using a customizable pattern and ViSP library
-dev-ros/visp_hand2eye_calibration 0.10.0 0.11.1 9999: Estimates the camera position with respect to its effector using the ViSP library
-dev-ros/visp_tracker 0.10.0-r2 0.11.1 9999: Wraps the ViSP moving edge tracker provided by the ViSP visual servoing library into a ROS package
-dev-ros/visualization_marker_tutorials 0.9.2 0.10.1 0.10.2 0.10.3 9999: Visualization marker tutorials
-dev-ros/visualization_msgs 1.12.5 1.12.6 1.12.7 9999: Messages used by higher level packages that deal in visualization-specific data.
-dev-ros/voxel_grid 1.15.2 1.16.0 1.16.1 1.16.2 1.16.3 1.16.6 9999: Implementation of an efficient 3D voxel grid
-dev-ros/xacro 1.13.2 1.13.3 9999: XML macro language
-dev-ros/xmlrpcpp 1.14.2 1.14.3 1.15.4 9999: C++ implementation of the XML-RPC protocol
+dev-ros/visp_camera_calibration 0.11.1 9999: Calibration of cameras using a customizable pattern and ViSP library
+dev-ros/visp_hand2eye_calibration 0.11.1 9999: Estimates the camera position with respect to its effector using ViSP
+dev-ros/visp_tracker 0.11.1 9999: Wraps the ViSP moving edge tracker provided by the ViSP library
+dev-ros/visualization_marker_tutorials 0.11.0 9999: Visualization marker tutorials
+dev-ros/visualization_msgs 1.12.7 9999: Messages used by higher level packages that deal in visualization-specific data.
+dev-ros/voxel_grid 1.16.6 9999: Implementation of an efficient 3D voxel grid
+dev-ros/xacro 1.14.1 9999: XML macro language
+dev-ros/xmlrpcpp 1.15.4 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/acme-client 2.0.4 2.0.5 2.0.6: A Ruby client for the letsencrypt's ACME protocol.
@@ -15478,7 +15478,7 @@ ros-meta/slam_gmapping 1.3.10 1.4.0 9999: ROS wrapper for OpenSlam's Gmapping
 ros-meta/unique_identifier 1.0.5 1.0.6 9999: ROS messages and interfaces for universally unique identifiers
 ros-meta/vision_opencv 1.12.4 1.12.5 1.12.7 1.12.8 1.13.0 9999: Converts between ROS Image messages and OpenCV images
 ros-meta/vision_visp 0.9.3 0.10.0 0.11.1 9999: Virtual package providing ViSP related packages
-ros-meta/visualization_tutorials 0.9.2 0.10.1 0.10.2 0.10.3 9999: Metapackage referencing tutorials related to rviz and visualization
+ros-meta/visualization_tutorials 0.9.2 0.10.1 0.10.2 0.10.3 0.11.0 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.4.0 1.4.1 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.6: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/casa-data 99999 20160222 20170703: Data and tables for the CASA software
