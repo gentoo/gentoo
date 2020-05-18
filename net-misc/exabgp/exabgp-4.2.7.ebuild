@@ -28,7 +28,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/exabgp-4.2.6-paths.patch"
+	"${FILESDIR}/exabgp-4.2.7-paths.patch"
 )
 
 python_test() {
