@@ -23,7 +23,7 @@ PATCHES=(
 	"${FILESDIR}/ioflo-1.7.8-network-test.patch"
 )
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -e 's:"setuptools_git[^"]*",::' -i setup.py || die
