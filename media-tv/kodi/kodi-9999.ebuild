@@ -298,7 +298,8 @@ src_compile() {
 }
 
 src_test() {
-	cmake_build check
+	# see https://github.com/xbmc/xbmc/issues/17860#issuecomment-630120213
+	KODI_HOME="${BUILD_DIR}" cmake_build check
 }
 
 src_install() {
