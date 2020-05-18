@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,13 +8,14 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Visualization marker tutorials"
+DESCRIPTION="Tutorial showing how to compile your own C++ program with RViz displays and features"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/rviz
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
