@@ -24,6 +24,8 @@ DOCS=( CHANGES README.rst )
 
 QA_PREBUILT="/usr/lib*/python*/site-packages/${PN}/webdriver/firefox/*/x_ignore_nofocus.so"
 
+RDEPEND="
+	dev-python/urllib3[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
