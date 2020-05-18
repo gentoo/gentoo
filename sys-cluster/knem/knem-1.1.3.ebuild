@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,10 +6,10 @@ EAPI=6
 inherit autotools linux-mod linux-info toolchain-funcs udev multilib
 
 DESCRIPTION="High-Performance Intra-Node MPI Communication"
-HOMEPAGE="http://runtime.bordeaux.inria.fr/knem/"
+HOMEPAGE="http://knem.gforge.inria.fr/"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gforge.inria.fr/git/knem/knem.git"
-	inherit git-2
+	inherit git-r3
 	KEYWORDS=""
 else
 	SRC_URI="http://gforge.inria.fr/frs/download.php/37186/${P}.tar.gz"

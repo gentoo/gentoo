@@ -15,4 +15,7 @@
 		<flag name="ssh">Build helper to let <pkg>net-misc/openssh</pkg> use sssd provided information</flag>
 		<flag name="sudo">Build helper to let <pkg>app-admin/sudo</pkg> use sssd provided information</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:fedorahosted:sssd</remote-id>
+	</upstream>
 </pkgmetadata>
