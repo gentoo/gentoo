@@ -11,7 +11,7 @@ CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="Estimates the camera position with respect to its effector using the ViSP library"
+DESCRIPTION="Estimates the camera position with respect to its effector using ViSP"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
