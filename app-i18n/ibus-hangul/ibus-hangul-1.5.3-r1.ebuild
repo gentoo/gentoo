@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit gnome2-utils python-single-r1
+inherit gnome2-utils python-single-r1 xdg
 
 DESCRIPTION="Korean Hangul engine for IBus"
 HOMEPAGE="https://github.com/libhangul/ibus-hangul/wiki"
@@ -33,10 +33,16 @@ src_configure() {
 		--with-python=${EPYTHON}
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
+	xdg_pkg_postinst
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
+	xdg_pkg_postrm
 	gnome2_icon_cache_update
 }
