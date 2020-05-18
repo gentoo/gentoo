@@ -38,7 +38,7 @@ DEPEND="
 	gles2? ( media-libs/libglvnd[X] )
 	system-wfconfig? ( ~gui-libs/wf-config-${PV}[debug=] )
 	!system-wfconfig? ( !gui-libs/wf-config )
-	system-wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
+	system-wlroots? ( >=gui-libs/wlroots-0.10.1[elogind=,systemd=,X] )
 	!system-wlroots? ( !gui-libs/wlroots )
 "
 
@@ -55,7 +55,7 @@ BDEPEND="
 	>=dev-libs/wayland-protocols-1.18
 "
 
-src_compile(){
+src_configure() {
 	local emesonargs=(
 		$(meson_feature system-wfconfig use_system_wfconfig)
 		$(meson_feature system-wlroots use_system_wlroots)
@@ -66,7 +66,7 @@ src_compile(){
 			"-Db_sanitize=address,undefined"
 		)
 	fi
-	meson_src_compile
+	meson_src_configure
 }
 
 src_install() {
