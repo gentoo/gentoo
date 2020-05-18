@@ -9,7 +9,7 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components"
+DESCRIPTION="Robot-independent Gazebo plugins"
 LICENSE="BSD Apache-2.0"
 SLOT="0"
 IUSE=""
