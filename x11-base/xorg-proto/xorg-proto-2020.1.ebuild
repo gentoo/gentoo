@@ -27,8 +27,3 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
-
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
-}
