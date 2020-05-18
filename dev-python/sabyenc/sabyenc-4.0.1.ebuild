@@ -13,7 +13,13 @@ SRC_URI="https://github.com/sabnzbd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DOCS=( CHANGES.md README.md doc/yenc-draft.1.3.txt )
+
+DEPEND="test? (
+		dev-python/chardet[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
