@@ -38,6 +38,7 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/python-jose[${PYTHON_USEDEP}]
+	dev-python/python-sshpubkeys[${PYTHON_USEDEP}]
 	>=dev-python/responses-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]
