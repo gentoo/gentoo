@@ -9309,7 +9309,7 @@ dev-ros/rqt_graph 0.4.9 0.4.10 9999: GUI plugin for visualizing the ROS computat
 dev-ros/rqt_gui 0.5.0 9999: Main to start an instance of the ROS integrated graphical user interface provided by qt_gui
 dev-ros/rqt_gui_cpp 0.5.0-r1 9999: Enables GUI plugins to use the C++ client library for ROS
 dev-ros/rqt_gui_py 0.3.2 0.5.0 9999: Enables GUI plugins to use the Python client library for ROS
-dev-ros/rqt_image_view 0.4.11-r1 0.4.13 9999: GUI plugin for displaying images using image_transport
+dev-ros/rqt_image_view 0.4.15 9999: GUI plugin for displaying images using image_transport
 dev-ros/rqt_launch 0.4.7 0.4.8 9999: Easy view of .launch files
 dev-ros/rqt_logger_level 0.4.7 0.4.8 9999: GUI plugin for configuring the logger level of ROS nodes
 dev-ros/rqt_moveit 0.5.6 0.5.7 9999: Assists monitoring tasks for MoveIt! motion planner
