@@ -78,6 +78,6 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	default
-	systemd_dounit "${D}/usr/share/hwloc/hwloc-dump-hwdata.service"
-	find "${D}" -name '*.la' -delete || die
+	systemd_dounit "${ED}/usr/share/hwloc/hwloc-dump-hwdata.service"
+	find "${ED}" -name '*.la' -delete || die
 }

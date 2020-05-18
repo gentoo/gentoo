@@ -266,6 +266,7 @@ go-module_set_globals
 	SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz
 			${EGO_SUM_SRC_URI}"
 	KEYWORDS="~amd64"
+	S="${WORKDIR}/cli-${PV}"
 fi
 
 LICENSE="MIT Apache-2.0 BSD BSD-2 MPL-2.0"
@@ -275,7 +276,7 @@ RDEPEND=">=dev-vcs/git-1.7.3"
 BDEPEND=">=dev-lang/go-1.13"
 
 src_unpack() {
-	if has live "${PROPERTIES}"; then
+	if [[ ${PV} == *9999 ]]; then
 		git-r3_src_unpack
 		go-module_live_vendor
 	else
@@ -284,7 +285,7 @@ src_unpack() {
 }
 
 src_compile() {
-	has live "${PROPERTIES}" || export GH_VERSION="v${PV}"
+	[[ ${PV} == *9999 ]] || export GH_VERSION="v${PV}"
 	# Golang LDFLAGS are not the same as GCC/Binutils LDFLAGS
 	unset LDFLAGS
 	emake
