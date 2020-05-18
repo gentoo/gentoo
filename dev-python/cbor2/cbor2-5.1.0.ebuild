@@ -19,12 +19,23 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 DEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+"
+BDEPEND="
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 	)
 "
 
 RDEPEND="${DEPEND}"
+
+python_prepare_all() {
+
+	# remove pytest-cov dep
+	sed -e "s/pytest-cov//" \
+		-e "s/--cov //" \
+		-i setup.cfg || die
+
+	distutils-r1_python_prepare_all
+}
 
 distutils_enable_tests pytest
