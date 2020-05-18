@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-05-18)
+# Unmaintained and vulnerable.  Last commit in 2015.  Stuck on Python 2.
+# All reverse dependencies removed restkit support upstream.
+# Removal in 30 days.  Bug #544228.
+dev-python/restkit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-17)
 # Depends on deprecated x11-libs/pangox-compat, commercial software that
 # since 2017 does no longer support Linux. Bugs #694920, #720848
