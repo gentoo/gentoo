@@ -20,10 +20,9 @@ RDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	${RDEPEND}
 	test? (
 		>=dev-python/matplotlib-3.2.1[${PYTHON_USEDEP}]
 	)
 "
 
-distutils_enable_tests nose
+distutils_enable_tests pytest

@@ -27,7 +27,6 @@ DEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/restkit[${PYTHON_USEDEP}]' 'python2_7')
 	)"
 
 RESTRICT+=" !test? ( test )"
