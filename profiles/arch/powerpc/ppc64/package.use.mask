@@ -8,7 +8,6 @@ net-analyzer/pnp4nagios icinga
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # bolt not keyworded on ~ppc64
 kde-plasma/plasma-meta crypt thunderbolt
-kde-plasma/powerdevil brightness-control
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-28)
 # not keyworded or irrelevant on ~ppc64, bug 679888

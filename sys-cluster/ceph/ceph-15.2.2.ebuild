@@ -192,13 +192,8 @@ PATCHES=(
 )
 
 check-reqs_export_vars() {
-	if use amd64; then
-		CHECKREQS_DISK_BUILD="12G"
-		CHECKREQS_DISK_USR="460M"
-	else
-		CHECKREQS_DISK_BUILD="1400M"
-		CHECKREQS_DISK_USR="450M"
-	fi
+	CHECKREQS_DISK_BUILD="5.2G"
+	CHECKREQS_DISK_USR="510M"
 
 	export CHECKREQS_DISK_BUILD CHECKREQS_DISK_USR
 }
@@ -209,7 +204,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	python_setup 'python3*'
+	python_setup
 	check-reqs_export_vars
 	check-reqs_pkg_setup
 }
