@@ -1,9 +1,9 @@
-DEFINED_PHASES=compile install postinst prepare test
+DEFINED_PHASES=compile install postinst test
 DEPEND=care? ( app-arch/libarchive:0= ) sys-libs/talloc care? ( dev-libs/uthash ) test? ( dev-util/valgrind )
 DESCRIPTION=User-space implementation of chroot, mount --bind, and binfmt_misc
 EAPI=7
 HOMEPAGE=https://proot-me.github.io
-IUSE=care static test
+IUSE=care test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=care? ( app-arch/libarchive:0= ) sys-libs/talloc
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/proot-me/PRoot/archive/v5.1.0.tar.gz -> proot-5.1.0.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=695ef71f24e24ec93a18a8c71198b401
+_md5_=81d044891a05f7132db8c61de46208c8

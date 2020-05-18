@@ -10409,6 +10409,7 @@ dev-util/geany 1.36 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.36-r2: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
+dev-util/github-cli 0.8.0 9999: GitHub CLI
 dev-util/glade 3.22.1-r1 3.22.2: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.60.7 2.62.5 2.62.6 2.64.1 2.64.2: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
@@ -10621,7 +10622,6 @@ dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-util/ydiff 1.1: Colored, side-by-side diff terminal viewer (ex. cdiff)
 dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/bfg 1.13.0: a faster alternative to git-filter-branch for removing bad data from git repos
-dev-vcs/cli 0.5.5 0.6.1 0.6.2 0.6.4 0.7.0 0.8.0 9999: GitHub CLI
 dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0 1.4.1: The GNU Project's replacement for SCCS
