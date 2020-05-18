@@ -4,7 +4,6 @@
 EAPI=7
 ROS_REPO_URI="https://github.com/ros-simulation/gazebo_ros_pkgs"
 KEYWORDS="~amd64"
-PYTHON_COMPAT=( python2_7 )
 CATKIN_HAS_MESSAGES=yes
 ROS_SUBDIR=${PN}
 
