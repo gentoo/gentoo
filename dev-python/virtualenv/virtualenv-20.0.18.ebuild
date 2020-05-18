@@ -41,6 +41,7 @@ RDEPEND="
 # coverage is used somehow magically in virtualenv, maybe it actually
 # tests something useful
 BDEPEND="${RDEPEND}
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		>=dev-python/pip-20.0.2[${PYTHON_USEDEP}]
