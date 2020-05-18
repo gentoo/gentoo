@@ -3,6 +3,7 @@ acct-group/adm 0: System group: adm
 acct-group/amavis 0: Group for mail-filter/amavisd-new
 acct-group/amule 0: Group for net-p2p/amule
 acct-group/anope 0: Group for Anope IRC services
+acct-group/apache 0: System group: apache
 acct-group/asterisk 0: Group for asterisk
 acct-group/atheme-services 0: Group for Atheme IRC services
 acct-group/audio 0: System group: audio
@@ -160,6 +161,7 @@ acct-group/stubby 0: Stubby program group (from net-dns/getdns)
 acct-group/stunnel 0: group for stunnel
 acct-group/supervisor 0: Group to grant access to app-admin/supervisor's management
 acct-group/suricata 0: Group for Suricata IDS
+acct-group/svnusers 0: System group: svnusers
 acct-group/swift 0: System group: swift
 acct-group/syncthing 0: Group for the system-wide net-p2p/syncthing server
 acct-group/systemd-coredump 0: System group: systemd-coredump
@@ -201,6 +203,7 @@ acct-user/alias 0: alias user for qmail mail delivery
 acct-user/amavis 0: User for mail-filter/amavisd-new
 acct-user/amule 0: User for net-p2p/amule
 acct-user/anope 0: User for Anope IRC services
+acct-user/apache 0: System user: apache
 acct-user/asterisk 0: User for asterisk
 acct-user/atheme-services 0: User for Atheme IRC services
 acct-user/automx2 0: User for net-mail/automx2
@@ -346,6 +349,7 @@ acct-user/strelaysrv 0: User for the Syncthing relay server
 acct-user/stubby 0: Stubby program user (from net-dns/getdns)
 acct-user/stunnel 0: user for stunnel
 acct-user/suricata 0: User for Suricata IDS
+acct-user/svn 0: System user: svn
 acct-user/swift 0: USER for swift - Openstack object storage backend
 acct-user/syncthing 0: User for the system-wide net-p2p/syncthing server
 acct-user/systemd-coredump 0: System user: systemd-coredump
@@ -10682,7 +10686,7 @@ dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 1.26 1.27 2.4: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/stgit 0.19 0.20 0.21: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.12.2 1.13.0-r1: Advanced version control system
+dev-vcs/subversion 1.12.2 1.13.0-r1 1.14.0_rc2: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.11-r1 1.0.12 1.0.13 1.0.13-r1 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.3.2 1.4.2 1.5.0: Tool collecting path entries across SVN history
