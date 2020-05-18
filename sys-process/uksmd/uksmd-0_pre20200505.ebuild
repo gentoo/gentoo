@@ -5,7 +5,7 @@ EAPI=7
 
 inherit linux-info systemd
 
-MY_COMMIT="5325ae51733ebb010862365c5a474f0d68f1ca1f"
+MY_COMMIT="b6af35cb9a772f643fd1bd703f4d1f6c6c6d3b79"
 MY_P="${PN}-${MY_COMMIT}"
 
 DESCRIPTION="Userspace KSM helper daemon"
