@@ -5,7 +5,6 @@ EAPI=7
 
 KEYWORDS="~amd64"
 ROS_REPO_URI="https://github.com/ros-visualization/rqt_image_view"
-PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
