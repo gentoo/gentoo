@@ -28,9 +28,7 @@ BDEPEND="${RDEPEND}
 	test? (
 		>=dev-python/webtest-2.0.17[${PYTHON_USEDEP}]
 		dev-python/socketpool[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/restkit[${PYTHON_USEDEP}]' -2)
 	)"
-# Tests needing restkit are skipped under py3
 # Testing also revealed the suite needs latest webtest
 
 S="${WORKDIR}/${MY_PN}-${PV}"
