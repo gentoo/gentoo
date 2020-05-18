@@ -4,7 +4,6 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/perception_pcl"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
