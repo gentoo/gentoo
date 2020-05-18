@@ -6,7 +6,7 @@ EAPI=7
 inherit systemd toolchain-funcs
 
 SRC_URI="https://download.libreswan.org/${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 
 DESCRIPTION="IPsec implementation for Linux, fork of Openswan"
 HOMEPAGE="https://libreswan.org/"
