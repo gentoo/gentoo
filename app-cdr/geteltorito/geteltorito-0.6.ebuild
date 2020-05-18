@@ -9,7 +9,7 @@ SRC_URI="https://userpages.uni-koblenz.de/~krienke/ftp/noarch/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-lang/perl"
 
