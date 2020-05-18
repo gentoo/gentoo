@@ -24,6 +24,7 @@ BDEPEND="
 	test? (
 		dev-python/fixtures[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
 	)
 "
