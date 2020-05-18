@@ -12,12 +12,12 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
 	BDEPEND=""
-	KEYWORDS="arm"
+	KEYWORDS="amd64 arm"
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
 	RESTRICT="mirror"
 	BDEPEND=""
-	KEYWORDS="~amd64 arm ~arm64 ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~x86"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"

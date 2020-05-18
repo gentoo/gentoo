@@ -37,7 +37,7 @@ database tables, then run the initdb command as shown above."
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND=">=dev-python/requests-2.22.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.3.11[${PYTHON_USEDEP}]"
