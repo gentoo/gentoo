@@ -158,7 +158,7 @@ ros-catkin_src_prepare() {
 
 	# Most packages require C++11 these days. Do it here, in src_prepare so that
 	# ebuilds can override it in src_configure.
-	append-cxxflags '-std=c++11'
+	append-cxxflags '-std=c++14'
 }
 
 # @FUNCTION: ros-catkin_python_setup
