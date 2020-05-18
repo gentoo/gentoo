@@ -17,13 +17,14 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="dev-python/versioneer[${PYTHON_USEDEP}]"
 
-RDEPEND="dev-python/ujson[${PYTHON_USEDEP}]"
+RDEPEND="~dev-python/ujson-1.35[${PYTHON_USEDEP}]"
 
 DEPEND="test? (
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/pycodestyle[${PYTHON_USEDEP}]
 	dev-python/pyflakes[${PYTHON_USEDEP}]
-	dev-python/pylint[${PYTHON_USEDEP}] )"
+	dev-python/pylint[${PYTHON_USEDEP}]
+)"
 
 PATCHES=( "${FILESDIR}/${P}-remove-pytest-cov-dep.patch" )
 
