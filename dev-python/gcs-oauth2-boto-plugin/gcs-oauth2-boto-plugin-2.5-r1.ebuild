@@ -23,7 +23,10 @@ PATCHES=(
 
 # Keep versions in sync with setup.py.
 BDEPEND="
-	test? (	dev-python/freezegun[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/freezegun[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
 "
 RDEPEND="${PYTHON_DEPS}
 	>=dev-python/boto-2.29.1[${PYTHON_USEDEP}]
