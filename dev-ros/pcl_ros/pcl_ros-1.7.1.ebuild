@@ -38,3 +38,4 @@ RDEPEND="
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/pcl111.patch" )
