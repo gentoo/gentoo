@@ -14,10 +14,12 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD-2"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc x86"
 SLOT="0"
-IUSE="test doc"
+IUSE="libressl"
 
-RDEPEND="dev-libs/openssl:0="
+RDEPEND="
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 distutils_enable_tests unittest
