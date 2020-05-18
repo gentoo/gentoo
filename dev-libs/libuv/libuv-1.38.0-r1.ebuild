@@ -14,8 +14,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 IUSE="static-libs"
 RESTRICT="test"
 
-DEPEND="sys-devel/libtool
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+BDEPEND="
+	sys-devel/libtool
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
+"
 
 src_prepare() {
 	default
