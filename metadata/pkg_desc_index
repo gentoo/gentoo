@@ -1657,7 +1657,7 @@ app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.0.0-r3 6.1.0-r1 6.2.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.1: LinuX Containers userspace utilities
+app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.2: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 3.14 3.16-r1 4.0.1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
@@ -10563,7 +10563,7 @@ dev-util/shelltestrunner 1.3.5-r1 1.9: A tool for testing command-line programs
 dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
-dev-util/smem 1.4 1.5: A tool that can give numerous reports on memory usage on Linux systems
+dev-util/smem 1.5: A tool that can give numerous reports on memory usage on Linux systems
 dev-util/source-highlight 3.1.8 3.1.9: Generate highlighted source code as an (x)html document
 dev-util/spec-cleaner 1.0.7 9999: SUSE spec file cleaner and formatter
 dev-util/spirv-headers 1.5.1 1.5.3 9999: Machine-readable files for the SPIR-V Registry
@@ -13196,7 +13196,7 @@ media-plugins/kodi-pvr-filmon 2.4.4 2.4.6 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 3.8.8 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 9999: Kodi's MediaPortal TVServer client addon
-media-plugins/kodi-pvr-mythtv 5.10.15 9999: MythTV PVR for Kodi
+media-plugins/kodi-pvr-mythtv 5.10.15 5.10.16 9999: MythTV PVR for Kodi
 media-plugins/kodi-pvr-nextpvr 3.3.17 3.3.18 3.3.19 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 3.4.2 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 2.4.5 2.4.7 9999: Kodi's PCTV client addon
