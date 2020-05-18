@@ -1826,7 +1826,7 @@ app-i18n/ibus-cangjie 2.4-r1: Chinese Cangjie and Quick engines for IBus
 app-i18n/ibus-chewing 1.5.1-r1 1.6.1: Chinese Chewing engine for IBus
 app-i18n/ibus-fbterm 1.0.1: IBus client for FbTerm
 app-i18n/ibus-handwrite 3.0.0: Hand write recognition/input for IBus
-app-i18n/ibus-hangul 1.5.1-r1 1.5.3: Korean Hangul engine for IBus
+app-i18n/ibus-hangul 1.5.3-r1: Korean Hangul engine for IBus
 app-i18n/ibus-input-pad 1.4.99_pre20140916: Input Pad for IBus
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
 app-i18n/ibus-libpinyin 1.10.0-r1 1.11.1-r1: Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
