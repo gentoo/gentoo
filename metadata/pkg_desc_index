@@ -17112,7 +17112,7 @@ sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34 2.34-r1 9999: Tools necessary 
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34: Tools necessary to build programs
-sys-devel/bison 3.1 3.3.2 3.4.2 3.5.4 3.6 3.6.1: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.3.2 3.4.2 3.5.4 3.6.1 3.6.2: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 8.0.1 9.0.1 10.0.0 10.0.0.9999 11.0.0.9999: C language family frontend for LLVM
@@ -17351,7 +17351,7 @@ sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloa
 sys-kernel/gentoo-kernel 5.4.32 5.4.39 5.4.40 5.6.11 5.6.12: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.39 5.4.40 5.6.11 5.6.12: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.221 4.4.222 4.4.223 4.9.221 4.9.222 4.9.223 4.14.178 4.14.179 4.14.180 4.19.120 4.19.121 4.19.122 4.19.123 5.4.38 5.4.39 5.4.40 5.4.41 5.5.19 5.6.9 5.6.10 5.6.11 5.6.12 5.6.13: Full sources including the Gentoo patchset for the 5.6 kernel tree
-sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3 5.7_rc4 5.7_rc5: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3 5.7_rc4 5.7_rc5 5.7_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.4: Kernel config generator
