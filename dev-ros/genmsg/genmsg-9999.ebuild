@@ -7,7 +7,7 @@ KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
 
-DESCRIPTION="Python library for generating ROS message and service data structures for various languages"
+DESCRIPTION="Python library for generating ROS message and service data structures"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
