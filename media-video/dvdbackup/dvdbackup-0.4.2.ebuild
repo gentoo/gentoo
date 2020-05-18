@@ -16,6 +16,7 @@ RDEPEND=">=media-libs/libdvdread-4.2.0_pre
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
+PATCHES=( "${FILESDIR}/libdvdread-6.1.0.diff" )
 
 src_configure() {
 	econf \
