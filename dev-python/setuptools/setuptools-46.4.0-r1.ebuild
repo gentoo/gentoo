@@ -41,6 +41,11 @@ DISTUTILS_IN_SOURCE_BUILD=1
 DOCS=( {CHANGES,README}.rst docs/{easy_install.txt,pkg_resources.txt,setuptools.txt} )
 
 python_prepare_all() {
+	# silence the py2 warning that is awfully verbose and breaks some
+	# packages by adding unexpected output
+	# (also, we know!)
+	sed -i -e '/py2_warn/d' pkg_resources/__init__.py || die
+
 	# disable tests requiring a network connection
 	rm setuptools/tests/test_packageindex.py || die
 
