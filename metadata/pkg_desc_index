@@ -9263,7 +9263,7 @@ dev-ros/rosconsole_bridge 0.5.2 9999: Connects console_bridge-based logging to r
 dev-ros/roscpp 1.14.3-r1 1.15.4 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.6.11 0.6.12 0.6.13 9999: Code for serialization
 dev-ros/roscpp_traits 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 0.6.7 0.6.8 0.6.9 0.6.10 0.6.11 0.6.12 0.6.13 9999: Message traits code
-dev-ros/roscpp_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 0.9.0 0.9.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
+dev-ros/roscpp_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 0.9.0 0.9.1 0.10.0 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/roscreate 1.14.7 9999: Tool that assists in the creation of ROS filesystem resources
 dev-ros/rosdiagnostic 1.9.0 1.9.2 1.9.3 9999: Command to print aggregated diagnostic contents to the command line
 dev-ros/rosgraph 1.14.3-r1 1.15.4 9999: Prints information about the ROS Computation Graph
@@ -9282,7 +9282,7 @@ dev-ros/rosout 1.13.0 1.13.1 1.13.2 1.13.4 1.13.5 1.13.6 1.14.2 1.14.3 1.15.4 99
 dev-ros/rospack 2.4.3 2.5.0 2.5.1 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.14.3-r1 1.15.4 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.14.3-r1 1.15.4 9999: Python client library for ROS
-dev-ros/rospy_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 0.9.0 0.9.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
+dev-ros/rospy_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 0.9.0 0.9.1 0.10.0 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/rosserial_arduino 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
 dev-ros/rosserial_client 0.7.7 0.8.0 9999: Generalized client side source for rosserial
 dev-ros/rosserial_embeddedlinux 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: Libraries and examples for ROSserial usage on Embedded Linux Enviroments
@@ -9384,9 +9384,9 @@ dev-ros/topic_tools 1.14.3-r1 1.15.4 9999: Tools for directing, throttling and s
 dev-ros/trajectory_msgs 1.12.5 1.12.6 1.12.7 9999: Messages for defining robot trajectories
 dev-ros/transmission_interface 0.14.2 0.15.0 0.15.1 9999: Transmission Interface
 dev-ros/turtle_actionlib 0.1.10 0.1.11 9999: Demonstrates how to write an action server and client with the turtlesim
-dev-ros/turtle_tf 0.2.2-r1 9999: Demonstrates how to write a tf broadcaster and listener with the turtlesim
-dev-ros/turtle_tf2 0.2.2-r1 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
-dev-ros/turtlesim 0.8.1 0.9.0 0.9.1 9999: Tool made for teaching ROS and ROS packages
+dev-ros/turtle_tf 0.2.3 9999: Demonstrates how to write a tf broadcaster and listener with the turtlesim
+dev-ros/turtle_tf2 0.2.3 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
+dev-ros/turtlesim 0.10.0 9999: Tool made for teaching ROS and ROS packages
 dev-ros/unique_id 1.0.6 9999: ROS Python and C++ interfaces for universally unique identifiers
 dev-ros/urdf 1.13.1-r1 9999: C++ parser for the Unified Robot Description Format (URDF)
 dev-ros/urdf_parser_plugin 1.12.11 1.13.1 9999: C++ base class for URDF parsers
@@ -15264,7 +15264,7 @@ net-vpn/peervpn 0.044-r5: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.8.1 5.8.2 5.8.4: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
-net-vpn/tailscale 0.98_p0: Tailscale vpn client
+net-vpn/tailscale 0.98 0.98_p0: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.4.2.7 0.4.3.4_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550 0.5.3_p550-r1: Free client for Cisco VPN routing software
@@ -15443,7 +15443,7 @@ ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: Interfa
 ros-meta/geographic_info 0.4.0 0.5.0 0.5.2 0.5.3 9999: Geographic information metapackage
 ros-meta/geometry 1.11.7 1.11.8 1.11.9 1.12.0 9999: Common geometric calculations
 ros-meta/geometry2 0.6.2 0.6.3 0.6.5 9999: The second generation Transform Library in ros
-ros-meta/geometry_tutorials 0.2.2 9999: Metapackage of geometry tutorials ROS
+ros-meta/geometry_tutorials 0.2.2 0.2.3 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 0.3.5 0.4.0 9999: hector_mapping and related packages
 ros-meta/image_common 1.11.12 1.11.13 9999: Common code for working with images in ROS
@@ -15466,7 +15466,7 @@ ros-meta/ros_base 1.4.0 1.4.1 9999: Metapackage which extends ros_core and inclu
 ros-meta/ros_comm 1.13.6 1.14.2 1.14.3 1.15.4 9999: ROS communications-related packages
 ros-meta/ros_control 0.14.1 0.14.2 0.15.0 0.15.1 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
 ros-meta/ros_core 1.4.0 1.4.1 9999: Metapackage to aggregate the packages required to use core ROS concepts
-ros-meta/ros_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 0.9.0 0.9.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
+ros-meta/ros_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 0.9.0 0.9.1 0.10.0 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
 ros-meta/rosbridge_suite 0.9.0 0.10.1 0.11.1 0.11.3 9999: JSON API to ROS functionality for non-ROS programs
 ros-meta/roscpp_core 0.6.5 0.6.7 0.6.8 0.6.9 0.6.10 0.6.11 0.6.12 0.6.13 9999: Underlying data libraries for roscpp messages
 ros-meta/rosserial 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: Metapackage for core of rosserial
