@@ -23,9 +23,9 @@ RDEPEND="${PYTHON_DEPS}
 	')
 	>=app-i18n/libhangul-0.1
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext
+	virtual/pkgconfig"
 
 src_configure() {
 	econf \

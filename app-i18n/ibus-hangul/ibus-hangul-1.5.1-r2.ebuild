@@ -23,10 +23,10 @@ RDEPEND="${PYTHON_DEPS}
 	')
 	>=app-i18n/libhangul-0.1
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	dev-util/intltool
-	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/intltool
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 src_configure() {
 	econf \
