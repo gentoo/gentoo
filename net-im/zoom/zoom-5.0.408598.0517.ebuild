@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg-utils
+inherit desktop eutils readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us/"
@@ -22,6 +22,8 @@ RDEPEND="!games-engines/zoom
 	dev-libs/icu
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
+	amd64? ( dev-qt/qtdeclarative:5[widgets] )
+	x86? ( dev-qt/qtdeclarative:5 )
 	dev-qt/qtdiag:5
 	dev-qt/qtgraphicaleffects:5
 	dev-qt/qtgui:5
@@ -41,17 +43,6 @@ RDEPEND="!games-engines/zoom
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
-	amd64? (
-		dev-qt/qtdeclarative:5[widgets]
-		dev-qt/qtpositioning:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtwebchannel:5
-		dev-qt/qtwebengine:5[widgets]
-	)
-	x86? (
-		dev-qt/qtdeclarative:5
-		dev-qt/qtwebkit:5
-	)
 	!bundled-libjpeg-turbo? ( media-libs/libjpeg-turbo )
 	pulseaudio? ( media-sound/pulseaudio )
 	!pulseaudio? ( media-libs/alsa-lib )"
@@ -95,11 +86,18 @@ src_install() {
 	# white on a blue background
 	doicon -s scalable "${FILESDIR}"/zoom-videocam.svg
 	doicon -s 24 "${FILESDIR}"/zoom-videocam.xpm
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+
+	local FORCE_PRINT_ELOG v
+	for v in ${REPLACING_VERSIONS}; do
+		ver_test ${v} -le 5.0.403652.0509 && FORCE_PRINT_ELOG=1
+	done
+	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
