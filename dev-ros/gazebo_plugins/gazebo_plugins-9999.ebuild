@@ -51,3 +51,4 @@ RDEPEND="
 	dev-ros/roslib[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/ocv4.patch" )
