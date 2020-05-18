@@ -23,7 +23,7 @@ IUSE="+pulseaudio debug"
 DEPEND="
 	dev-cpp/gtkmm:3.0=[wayland]
 	dev-libs/gobject-introspection
-	~gui-wm/wayfire-${PV}
+	~gui-wm/wayfire-${PV}[debug=]
 	>=gui-libs/gtk-layer-shell-0.1
 	pulseaudio? ( media-sound/pulseaudio )
 "
@@ -36,7 +36,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_compile () {
+src_configure () {
 	local emesonargs=(
 		"$(meson_feature pulseaudio pulse)"
 	)
@@ -45,5 +45,5 @@ src_compile () {
 			"-Db_sanitize=address,undefined"
 		)
 	fi
-	meson_src_compile
+	meson_src_configure
 }
