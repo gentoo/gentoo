@@ -9220,9 +9220,9 @@ dev-ros/opencv_tests 1.12.1-r1 1.12.2 1.12.3 1.12.4 1.12.5 1.12.7 1.12.8 1.13.0 
 dev-ros/openni2_camera 0.3.0-r1 0.4.0 0.4.2 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.4.0 0.4.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
 dev-ros/openslam_gmapping 0.1.1 0.1.2 9999: ROS-ified version of gmapping SLAM
-dev-ros/pcl_conversions 0.2.1-r1 1.6.1 1.6.2 1.7.0 9999: Provides conversions from PCL data types and ROS message types
+dev-ros/pcl_conversions 1.7.1 9999: Provides conversions from PCL data types and ROS message types
 dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
-dev-ros/pcl_ros 1.5.4 1.6.1 1.6.2 1.7.0 9999: PCL (Point Cloud Library) ROS interface stack
+dev-ros/pcl_ros 1.7.1 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.12.0-r1 1.12.1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.10-r1 0.1.11 9999: Pluginlib tutorials
 dev-ros/poco_vendor 1.2.0 9999: CMake shim over the poco library
@@ -15456,7 +15456,7 @@ ros-meta/mavros 0.18.7 0.19.0 9999: Metapackage for mavros packages
 ros-meta/navigation 1.15.1 1.15.2 1.16.0 1.16.1 1.16.2 1.16.3 9999: 2D navigation stack
 ros-meta/nodelet_core 1.9.15 1.9.16 9999: Nodelet Core Metapackage
 ros-meta/perception 1.4.0 1.4.1 9999: Metapackage for ROS perception stack
-ros-meta/perception_pcl 1.5.4 1.6.1 1.6.2 1.7.0 9999: PCL (Point Cloud Library) ROS interface stack
+ros-meta/perception_pcl 1.5.4 1.6.1 1.6.2 1.7.0 1.7.1 9999: PCL (Point Cloud Library) ROS interface stack
 ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: URDF description and 3D models of robot components of the PR2 robot
 ros-meta/qt_gui_core 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 0.3.16 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.4.0 1.4.1 9999: Metapackage which extends ros_base and includes ROS libaries for any robot hardware
@@ -16102,7 +16102,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.19.3-r1 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.19.3-r1 0.19.7 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2-r1 2.1.0: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
 sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
