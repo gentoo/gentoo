@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/lagadic/vision_visp"
 KEYWORDS="~amd64 ~arm"
 VER_PREFIX="kinetic-"
@@ -15,19 +15,20 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/message_filters
 	dev-ros/resource_retriever
 	dev-ros/roscpp
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/visp_bridge
 	dev-ros/visp_tracker
 	sci-libs/ViSP:=[dmtx,zbar]
 	dev-libs/boost:=[threads]
 	media-libs/opencv:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	S="${WORKDIR}/vision_visp-kinetic-${PV}/${ROS_SUBDIR}"
 fi
