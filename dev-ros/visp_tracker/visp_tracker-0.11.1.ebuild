@@ -11,7 +11,7 @@ CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="Wraps the ViSP moving edge tracker provided by the ViSP visual servoing library into a ROS package"
+DESCRIPTION="Wraps the ViSP moving edge tracker provided by the ViSP library"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
