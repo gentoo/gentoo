@@ -1,13 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 ROS_REPO_URI="https://github.com/ros-visualization/rviz"
-KEYWORDS="~amd64"
-PYTHON_COMPAT=( python2_7 )
+KEYWORDS=""
 
-inherit ros-catkin
+inherit ros-catkin virtualx
 
 DESCRIPTION="3D visualization tool for ROS"
 LICENSE="BSD"
@@ -17,7 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-libs/boost:=[threads]
 	media-libs/assimp
-	<dev-games/ogre-1.10:=
+	<dev-games/ogre-1.10:=[-double-precision]
 	virtual/opengl
 	dev-qt/qtwidgets:5
 	dev-qt/qtcore:5
@@ -65,4 +64,8 @@ DEPEND="${RDEPEND}
 src_configure() {
 	local mycatkincmakeargs=( "-DUseQt5=ON" )
 	ros-catkin_src_configure
+}
+
+src_test() {
+	virtx ros-catkin_src_test
 }
