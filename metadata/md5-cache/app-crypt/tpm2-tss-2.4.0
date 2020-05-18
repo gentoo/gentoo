@@ -1,5 +1,5 @@
-BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) virtual/pkgconfig
-DEFINED_PHASES=configure install postinst setup
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare setup
 DEPEND=acct-group/tss acct-user/tss fapi? ( dev-libs/json-c net-misc/curl ) gcrypt? ( dev-libs/libgcrypt:0= ) openssl? ( dev-libs/openssl:0= ) test? ( dev-util/cmocka )
 DESCRIPTION=TCG Trusted Platform Module 2.0 Software Stack
 EAPI=7
@@ -8,9 +8,9 @@ IUSE=doc +fapi gcrypt +openssl static-libs test kernel_linux
 KEYWORDS=~amd64 ~arm64 ~x86
 LICENSE=BSD-2
 RDEPEND=acct-group/tss acct-user/tss fapi? ( dev-libs/json-c net-misc/curl ) gcrypt? ( dev-libs/libgcrypt:0= ) openssl? ( dev-libs/openssl:0= ) virtual/tmpfiles
-REQUIRED_USE=^^ ( gcrypt openssl ) fapi ( !gcrypt )
+REQUIRED_USE=^^ ( gcrypt openssl ) fapi? ( openssl !gcrypt )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tpm2-software/tpm2-tss/releases/download/2.4.0/tpm2-tss-2.4.0.tar.gz
-_eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=ba515aa2d367d7b1c5775c51400603b7
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=86f2292b95421e8db94a6283dc99d578
