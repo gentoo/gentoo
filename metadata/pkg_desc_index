@@ -16216,6 +16216,7 @@ sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from t
 sci-mathematics/singular 4.0.2 4.0.3: Computer algebra system for polynomial computations
 sci-mathematics/slepc 3.13.1: Scalable Library for Eigenvalue Problem Computations
 sci-mathematics/spin 6.4.5: Tool for formal verification of distributed software systems
+sci-mathematics/sympow 2.023.6: Symmetric power elliptic curve L-functions
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
