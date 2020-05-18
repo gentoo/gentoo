@@ -21,6 +21,5 @@ RDEPEND="
 	libressl? ( dev-libs/libressl:0= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 distutils_enable_tests unittest
