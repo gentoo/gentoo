@@ -1,0 +1,15 @@
+BDEPEND=sys-devel/gettext virtual/pkgconfig
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=app-i18n/ibus dev-libs/m17n-lib gtk? ( gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) nls? ( virtual/libintl ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=M17N engine for IBus
+EAPI=7
+HOMEPAGE=https://github.com/ibus/ibus/wiki
+IUSE=gtk gtk2 nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=app-i18n/ibus dev-libs/m17n-lib gtk? ( gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) nls? ( virtual/libintl ) >=dev-db/m17n-db-1.7
+REQUIRED_USE=gtk2? ( gtk )
+SLOT=0
+SRC_URI=https://github.com/ibus/ibus-m17n/releases/download/1.4.2/ibus-m17n-1.4.2.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=6afcf49c30e3da7efd3920eb38f4ae6b
