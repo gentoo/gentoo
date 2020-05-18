@@ -10298,7 +10298,7 @@ dev-util/byacc 20190617 20191125 20200330: the best variant of the Yacc parser g
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.2.0 0.3.0: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-tree 0.28.0 0.29.0: Cargo subcommand that visualizes crate dependency graph in a tree-like format
-dev-util/catalyst 3.0.9 3.0.10 9999: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 3.0.9 3.0.11 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 0.8.3 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.13.2 0.14.2: A tool for generating C bindings to Rust code

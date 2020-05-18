@@ -1337,11 +1337,6 @@
     <name>Geosciences Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Geosciences</url>
     <description>The Geosciences Project handles all geosciences activities in Gentoo.</description>
-    <member is-lead="1">
-      <email>amynka@gentoo.org</email>
-      <name>Amy Liffey</name>
-      <role>Member</role>
-    </member>
     <member>
       <email>wraeth@gentoo.org</email>
       <name>Sam Jorna</name>
@@ -2920,11 +2915,6 @@
     <subproject ref="devmanual@gentoo.org"/>
     <subproject ref="pms@gentoo.org"/>
     <subproject ref="treecleaner@gentoo.org"/>
-    <member>
-      <email>amynka@gentoo.org</email>
-      <name>Amy Liffey</name>
-      <role>Developer</role>
-    </member>
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
