@@ -19,10 +19,6 @@ dev-ruby/capybara test
 # app-shells/fish dependency is broken on sparc, bug #709662
 dev-python/argcomplete test
 
-# Benda Xu <heroxbd@gentoo.org> (2020-04-27)
-# tests optionally depend on dev-python/hypothesis
-dev-python/numpy test
-
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-26)
 # tests optionally depend on dev-ruby/coffee-script needing nodejs
 dev-ruby/tilt test
@@ -54,6 +50,7 @@ dev-ruby/rack-cache test
 dev-ruby/activemodel test
 dev-ruby/activerecord test
 dev-ruby/activesupport test
+dev-ruby/globalid test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
 # dev-ruby/asciidoctor is not keyworded on sparc

@@ -16,21 +16,17 @@ HOMEPAGE="https://matplotlib.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
-SLOT="0"
 # Main license: matplotlib
 # Some modules: BSD
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="cairo excel gtk2 gtk3 latex qt5 test tk wxwidgets"
-RESTRICT="!test? ( test )"
+IUSE="cairo excel gtk3 latex qt5 test tk wxwidgets"
+REQUIRED_USE="test? ( cairo gtk3 latex qt5 tk wxwidgets )"
 
-REQUIRED_USE="
-	test? (
-		cairo latex qt5 tk wxwidgets
-		|| ( gtk2 gtk3 )
-		)"
+RESTRICT="!test? ( test )"
 
 # #456704 -- a lot of py2-only deps
 COMMON_DEPEND="
@@ -39,7 +35,7 @@ COMMON_DEPEND="
 	dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]
 	dev-python/cycler[${PYTHON_USEDEP}]
 	|| (
-		>=dev-python/numpy-python2-1.7.1[${PYTHON_USEDEP}]
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]
 	)
 	dev-python/python-dateutil:0[${PYTHON_USEDEP}]
@@ -51,11 +47,6 @@ COMMON_DEPEND="
 	>=media-libs/qhull-2013
 	>=dev-python/kiwisolver-1.0.0[${PYTHON_USEDEP}]
 	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
-	gtk2? (
-		dev-libs/glib:2=
-		x11-libs/gdk-pixbuf
-		x11-libs/gtk+:2
-		dev-python/pygtk[${PYTHON_USEDEP}] )
 	wxwidgets? ( >=dev-python/wxpython-2.8:*[${PYTHON_USEDEP}] )"
 
 # internal copy of pycxx highly patched
@@ -68,7 +59,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/nose-0.11.1[${PYTHON_USEDEP}]
-		)"
+	)"
 
 RDEPEND="${COMMON_DEPEND}
 	!<dev-python/matplotlib-3
@@ -76,7 +67,8 @@ RDEPEND="${COMMON_DEPEND}
 	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
 	gtk3? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		x11-libs/gtk+:3[introspection] )
+		x11-libs/gtk+:3[introspection]
+	)
 	latex? (
 		virtual/latex-base
 		app-text/ghostscript-gpl
@@ -178,7 +170,8 @@ python_configure() {
 	fi
 
 	cat >> "${BUILD_DIR}"/setup.cfg <<-EOF || die
-		$(use_setup gtk2 gtk)
+		gtk = False
+		gtkagg = False
 		$(use_setup wxwidgets wx)
 	EOF
 }

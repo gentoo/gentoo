@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-19)
+# Stuck on Python 2 and pygtk, last revdep on dev-python/matplotlib[gtk2],
+# last release in 2011, bug #705650. Masked for removal in 30 days.
+sci-chemistry/nmrdepaker
+
 # Michał Górny <mgorny@gentoo.org> (2020-05-18)
 # Unmaintained and vulnerable.  Last commit in 2015.  Stuck on Python 2.
 # All reverse dependencies removed restkit support upstream.
