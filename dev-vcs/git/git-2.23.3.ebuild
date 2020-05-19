@@ -94,7 +94,7 @@ RDEPEND="${CDEPEND}
 			dev-perl/MediaWiki-API
 		)
 		subversion? (
-			dev-vcs/subversion[-dso,perl]
+			dev-vcs/subversion[-dso(-),perl]
 			dev-perl/libwww-perl
 			dev-perl/TermReadKey
 		)
