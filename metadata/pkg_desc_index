@@ -603,7 +603,7 @@ app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.2-r1 0.102.2-r3 0.102.3: Clam Anti-Virus Scanner
 app-antivirus/clamtk 6.02-r1 6.03: A graphical front-end for ClamAV
-app-antivirus/fangfrisch 1.2.0 1.2.0-r1: Update and verify unofficial Clam Anti-Virus signatures
+app-antivirus/fangfrisch 1.2.0-r1: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
 app-arch/alien 8.95 8.95-r1: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
