@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake-utils
 
 DESCRIPTION="Software defined radio receiver powered by GNU Radio and Qt"
-HOMEPAGE="http://gqrx.dk/"
+HOMEPAGE="https://gqrx.dk/"
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/csete/gqrx.git"
