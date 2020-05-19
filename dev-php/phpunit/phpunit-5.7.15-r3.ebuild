@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="A PHP Unit Testing framework"
-HOMEPAGE="http://phpunit.de"
+HOMEPAGE="https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
