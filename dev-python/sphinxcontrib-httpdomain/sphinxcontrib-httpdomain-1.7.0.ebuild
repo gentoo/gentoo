@@ -21,7 +21,10 @@ RDEPEND="
 	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}"
+BDEPEND="
+	test? (
+		dev-python/bottle[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
