@@ -24,6 +24,7 @@ RDEPEND="
 
 DEPEND="
 	test? (
+		$(python_gen_impl_dep sqlite)
 		${RDEPEND}
 		dev-python/dj-database-url[${PYTHON_USEDEP}]
 	)
