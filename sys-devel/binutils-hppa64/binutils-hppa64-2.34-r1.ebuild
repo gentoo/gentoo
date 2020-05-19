@@ -3,6 +3,8 @@
 
 EAPI=7
 
+export CTARGET=hppa64-${CHOST#*-}
+
 inherit eutils libtool flag-o-matic gnuconfig multilib toolchain-funcs
 
 DESCRIPTION="Tools necessary to build programs"
@@ -42,7 +44,7 @@ case ${PV} in
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
 		SLOT=$(ver_cut 1-2)
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="-* ~hppa"
 		;;
 esac
 
@@ -84,12 +86,8 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.33-gcc-10.patch
-	"${FILESDIR}"/${PN}-2.34-riscv-SEGV.patch
-)
-
 MY_BUILDDIR=${WORKDIR}/build
+S=${WORKDIR}/${P/-hppa64/}
 
 src_unpack() {
 	case ${PV} in
@@ -292,10 +290,8 @@ src_compile() {
 
 src_test() {
 	cd "${MY_BUILDDIR}"
-
 	# bug 637066
 	filter-flags -Wall -Wreturn-type
-
 	emake -k check
 }
 
@@ -382,6 +378,11 @@ src_install() {
 
 	# Trim all empty dirs
 	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null
+
+	# the hppa64 hack; this should go into 9999 as a PN-conditional
+	# tweak the default fake list a little bit
+	cd "${D}"/etc/env.d/binutils
+	sed -i '/FAKE_TARGETS=/s:"$: hppa64-linux":' ${CTARGET}-${PV} || die
 }
 
 pkg_postinst() {
@@ -412,7 +413,6 @@ pkg_postrm() {
 		binutils-config ${CTARGET}-${PV}
 	fi
 }
-
 # Note [slotting support]
 # -----------------------
 # Gentoo's layout for binutils files is non-standard as Gentoo
