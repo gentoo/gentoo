@@ -32,7 +32,7 @@ DEPEND="${DEPEND}"
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-respect-cflags.patch" )
+PATCHES=( "${FILESDIR}/${PN}-15-respect-cflags.patch" )
 
 src_prepare() {
 	default

@@ -33,8 +33,6 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES="${FILESDIR}/${P}-change-appdata-location.patch"
-
 src_prepare() {
 	default
 

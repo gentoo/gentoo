@@ -90,6 +90,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
+	"${FILESDIR}"/${PN}-9.1-ia64.patch
 )
 
 GDB_BUILD_DIR="${WORKDIR}"/${P}-build
