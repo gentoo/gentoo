@@ -786,7 +786,7 @@ app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communicati
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4 4.0.5: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.11.03: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.11.10: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.19 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r2: A HTTP benchmarking tool
@@ -1666,7 +1666,7 @@ app-emulation/lxc-templates 3.0.3 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 3.14 3.16-r1 4.0.1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.0.1-r1 11.1.0: Opensourced tools for VMware guests
-app-emulation/pcem 15-r1: A PC emulator that specializes in running old operating systems and software
+app-emulation/pcem 16: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and use Windows games and software
 app-emulation/protontricks 1.4.1 1.4.1-r1: app-emulation/winetricks wrapper for Proton (Steam Play) games
@@ -4897,7 +4897,7 @@ dev-libs/crypto++ 5.6.5-r1 7.0.0-r3 8.2.0 8.2.0-r2: C++ class library of cryptog
 dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.6.2.24 7.6.5.32 7.6.5.32-r2: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
-dev-libs/cyberjack 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
+dev-libs/cyberjack 3.99.5_p13 3.99.5_p14: REINER SCT cyberJack USB chipcard reader user space driver
 dev-libs/cyrus-sasl 2.1.27-r3: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
@@ -8882,7 +8882,7 @@ dev-python/tox 2.9.1 3.2.1 3.12.1 3.14.4 3.14.5 3.15.0: virtualenv-based automat
 dev-python/tqdm 4.23.3 4.33.0 4.40.0 4.45.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2 4.3.3: A configuration system for Python applications
-dev-python/transitions 0.7.1 0.7.2: A lightweight, object-oriented state machine implementation in Python
+dev-python/transitions 0.7.1 0.8.1: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 2.4.0 2.5.0: Toolkit to convert between many translation formats
 dev-python/treq 17.8.0 20.4.1: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0: #1 quality TLS certs while you wait, for the discerning tester
@@ -14614,7 +14614,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 13.13.0 13.14.0 14.0.0 14.1.0 14.2.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 13.13.0 13.14.0 14.0.0 14.1.0 14.2.0 14.3.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -14868,7 +14868,7 @@ net-misc/icaclient 19.12.0.19 20.04.0.21: ICA Client for Citrix Presentation ser
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
-net-misc/igmpproxy 0.2.1-r2: A multicast routing daemon which uses IGMP forwarding
+net-misc/igmpproxy 0.2.1-r2 0.2.1_p20200508: A multicast routing daemon which uses IGMP forwarding
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.7 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
@@ -15258,7 +15258,7 @@ net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.10-r2: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8-r2: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0-r1: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-vpn/networkmanager-strongswan 1.4.5-r2 1.5.1: NetworkManager StrongSwan plugin
+net-vpn/networkmanager-strongswan 1.4.5-r2 1.5.2: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6-r2: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
@@ -16607,7 +16607,7 @@ sys-apps/consolation 0.0.7: libinput based console mouse daemon
 sys-apps/conspy 1.10 1.14: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.30 8.31-r1 8.32-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
-sys-apps/cpuid 20180519 20200211: Linux tool to dump x86 CPUID information about the CPUs
+sys-apps/cpuid 20180519 20200427: Linux tool to dump x86 CPUID information about the CPUs
 sys-apps/cracklib-words 2.9.6: large set of crack/cracklib dictionaries
 sys-apps/crazydiskinfo 1.0.2 1.1.0: Interactive TUI S.M.A.R.T viewer
 sys-apps/daemonize 1.7.8: Runs a command as a Unix daemon
