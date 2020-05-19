@@ -5,11 +5,11 @@ DESCRIPTION=Plasma filemanager focusing on usability
 EAPI=7
 HOMEPAGE=https://kde.org/applications/system/org.kde.dolphin https://userbase.kde.org/Dolphin
 IUSE=activities semantic-desktop test debug +handbook test
-KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+KEYWORDS=amd64 ~arm64 ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=kde-frameworks/kbookmarks-5.63.0:5 >=kde-frameworks/kcmutils-5.63.0:5 >=kde-frameworks/kcodecs-5.63.0:5 >=kde-frameworks/kcompletion-5.63.0:5 >=kde-frameworks/kconfig-5.63.0:5 >=kde-frameworks/kconfigwidgets-5.63.0:5 >=kde-frameworks/kcoreaddons-5.63.0:5 >=kde-frameworks/kcrash-5.63.0:5 >=kde-frameworks/kdbusaddons-5.63.0:5 >=kde-frameworks/ki18n-5.63.0:5 >=kde-frameworks/kiconthemes-5.63.0:5 >=kde-frameworks/kinit-5.63.0:5 >=kde-frameworks/kio-5.63.0:5 >=kde-frameworks/kitemviews-5.63.0:5 >=kde-frameworks/kjobwidgets-5.63.0:5 >=kde-frameworks/knewstuff-5.63.0:5 >=kde-frameworks/knotifications-5.63.0:5 >=kde-frameworks/kparts-5.63.0:5 >=kde-frameworks/kservice-5.63.0:5 >=kde-frameworks/ktextwidgets-5.63.0:5 >=kde-frameworks/kwidgetsaddons-5.63.0:5 >=kde-frameworks/kwindowsystem-5.63.0:5 >=kde-frameworks/kxmlgui-5.63.0:5 >=kde-frameworks/solid-5.63.0:5 >=dev-qt/qtconcurrent-5.12.3:5 >=dev-qt/qtdbus-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtwidgets-5.12.3:5 >=dev-qt/qtxml-5.12.3:5 media-libs/phonon[qt5(+)] activities? ( >=kde-frameworks/kactivities-5.63.0:5 ) semantic-desktop? ( >=kde-frameworks/baloo-5.63.0:5 >=kde-frameworks/kfilemetadata-5.63.0:5 >=kde-apps/baloo-widgets-19.12.3:5 ) >=kde-apps/kio-extras-19.12.3:5 || ( kde-frameworks/breeze-icons:* kde-frameworks/oxygen-icons:* ) >=kde-frameworks/kf-env-4 dev-qt/qtcore:5
 RESTRICT=!test? ( test ) !test? ( test ) test
 SLOT=5
 SRC_URI=mirror://kde/stable/release-service/19.12.3/src/dolphin-19.12.3.tar.xz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	ecm	e341cb3583b4219b5c207e24915b0264	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=11e37bc87a132464cafdae48824d7e0b
+_md5_=0e9c8a226712bebdc82db6d6666fe3d6

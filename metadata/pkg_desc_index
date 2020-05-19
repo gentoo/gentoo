@@ -10684,7 +10684,7 @@ dev-vcs/qgit 2.9: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
-dev-vcs/repo 1.26 1.27 2.4: Google tool for managing git, particularly multiple repos
+dev-vcs/repo 1.26 1.27 2.4 2.5: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/stgit 0.19 0.20 0.21: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.12.2 1.13.0-r1 1.14.0_rc2: Advanced version control system
@@ -12556,7 +12556,7 @@ media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion too
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.6.1: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.2.8.2-r3 4.2.9: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.2.9: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
@@ -17118,7 +17118,7 @@ sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel b
 sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34 2.34-r1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.2: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34: Tools necessary to build programs
+sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34 2.34-r1: Tools necessary to build programs
 sys-devel/bison 3.1 3.3.2 3.4.2 3.5.4 3.6.1 3.6.2: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -17378,7 +17378,7 @@ sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.13 5.6.9: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.32-r1 2.33.1-r1 2.34: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.32-r1 2.33.1-r1 2.34 2.34-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 8.0.1 9.0.1 10.0.0 10.0.0.9999 11.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 8.0.1 9.0.1 10.0.0 10.0.0.9999 11.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
