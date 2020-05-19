@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r1
 
 DESCRIPTION="C parser and AST generator written in Python"
 HOMEPAGE="https://github.com/eliben/pycparser"
@@ -41,20 +41,9 @@ python_compile() {
 }
 
 python_test() {
-	# Trick the tests into using CPP variable
-	# https://bugs.gentoo.org/719934
-	local CPP="$(tc-getCPP)"
-	mkdir -p "${T}"/bin || die
-	cat > "${T}"/bin/cpp <<-EOF || die
-	#!/bin/sh
-	exec ${CPP} "\$@"
-	EOF
-	chmod +x "${T}"/bin/cpp || die
-	local -x PATH="${T}/bin:${PATH}"
-
 	# change workdir to avoid '.' import
 	cd tests || die
-	${EPYTHON} -m unittest discover -v || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
