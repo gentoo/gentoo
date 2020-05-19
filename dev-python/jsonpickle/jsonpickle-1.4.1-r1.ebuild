@@ -30,18 +30,18 @@ BDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]"
 
 distutils_enable_sphinx "docs/source"
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# too many dependencies
 	rm tests/pandas_test.py || die
 	sed -e '/pandas/ d' -i tests/runtests.py || die
 
+	sed -i -e 's:--flake8 --black --cov --cov-append::' pytest.ini || die
+
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	# An apparent regression in tests
-	# https://github.com/jsonpickle/jsonpickle/issues/124
-	einfo "testsuite has optional tests for package demjson"
-	"${EPYTHON}" tests/runtests.py || die "tests failed with ${EPYTHON}"
+	pytest -vv tests || die "Tests failed with ${EPYTHON}"
 }
