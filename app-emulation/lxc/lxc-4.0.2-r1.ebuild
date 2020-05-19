@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="apparmor +caps examples pam seccomp selinux +ssl +templates +tools"
+IUSE="apparmor +caps doc examples pam seccomp selinux +ssl +templates +tools"
 
 RDEPEND="app-misc/pax-utils
 	net-libs/gnutls
@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 	>=app-text/docbook-sgml-utils-0.6.14-r2
 	>=sys-kernel/linux-headers-3.2
 	apparmor? ( sys-apps/apparmor )"
+BDEPEND="doc? ( app-doc/doxygen )"
 PDEPEND="templates? ( app-emulation/lxc-templates )"
 
 CONFIG_CHECK="~CGROUPS ~CGROUP_DEVICE
@@ -95,7 +96,6 @@ src_configure() {
 		--disable-ubsan
 		--disable-werror
 
-		--enable-api-docs
 		--enable-bash
 		--enable-commands
 		--enable-doc
@@ -104,6 +104,7 @@ src_configure() {
 
 		$(use_enable apparmor)
 		$(use_enable caps capabilities)
+		$(use_enable doc api-docs)
 		$(use_enable examples)
 		$(use_enable pam)
 		$(use_enable seccomp)
