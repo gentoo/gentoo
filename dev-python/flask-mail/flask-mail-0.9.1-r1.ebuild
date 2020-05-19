@@ -23,6 +23,7 @@ RDEPEND="dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/blinker[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/speaklater[${PYTHON_USEDEP}] )"
 
