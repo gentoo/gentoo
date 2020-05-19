@@ -24,7 +24,10 @@ DEPEND="
 		>=dev-python/alabaster-0.6.2[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
-	test? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
+	)
 "
 
 python_prepare_all() {
