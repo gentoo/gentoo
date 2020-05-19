@@ -1661,7 +1661,7 @@ app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.0.0-r3 6.1.0-r1 6.2.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.2: LinuX Containers userspace utilities
+app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.2 4.0.2-r1: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 3.14 3.16-r1 4.0.1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
