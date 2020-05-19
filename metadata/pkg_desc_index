@@ -13189,7 +13189,7 @@ media-plugins/kodi-game-libretro-fceumm 0.0.1.9 9999: FCEU-Next GameClient for K
 media-plugins/kodi-game-libretro-nestopia 1.50.0.8 1.50.0.9 9999: Nestopia GameClient for Kodi
 media-plugins/kodi-game-libretro-snes9x 1.60.0.10 1.60.0.11 9999: Snes9x GameClient for Kodi
 media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.111 9999: 2048 for Kodi
-media-plugins/kodi-inputstream-adaptive 2.4.4 9999: Kodi's Adaptive inputstream addon
+media-plugins/kodi-inputstream-adaptive 2.4.4 2.4.5 9999: Kodi's Adaptive inputstream addon
 media-plugins/kodi-inputstream-rtmp 2.0.9 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 1.4.9 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
