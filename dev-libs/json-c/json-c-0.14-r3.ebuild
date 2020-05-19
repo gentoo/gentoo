@@ -12,7 +12,7 @@ SRC_URI="https://s3.amazonaws.com/json-c_releases/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/5"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc static-libs threads"
 
 PATCHES=(
