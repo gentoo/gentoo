@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://www.maier-komor.de/mbuffer.html
 IUSE=debug ssl test
 KEYWORDS=amd64 ~arm ~arm64 ppc x86
-LICENSE=GPL-2
+LICENSE=GPL-3
 RDEPEND=ssl? ( dev-libs/openssl:0= )
 REQUIRED_USE=test? ( ssl )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.maier-komor.de/software/mbuffer/mbuffer-20191016.tgz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=629d2d08787af330fb101f51e49d76d4
+_md5_=5ac4343910f8e6169c5ee92e7ed5f651

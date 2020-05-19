@@ -4808,7 +4808,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.1 5.30.2 5.30.2-r1 5.30.2-r2: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.30 7.2.31 7.3.17 7.3.18 7.4.5 7.4.6: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.17-r2 2.7.18 3.6.10-r1 3.6.10-r2 3.7.7-r1 3.7.7-r2 3.8.2-r1 3.8.2-r2 3.8.3 3.9.0_alpha6: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.17-r2 2.7.18 3.6.10-r1 3.6.10-r2 3.7.7-r1 3.7.7-r2 3.8.2-r1 3.8.2-r2 3.8.3 3.9.0_alpha6 3.9.0_beta1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1 10.2: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 9999: A compiler for the Perl 6 programming language
@@ -4970,7 +4970,7 @@ dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness 
 dev-libs/jansson 2.10 2.11 2.12: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1 2.0.0-r2: A Library in C Facilitating Erasure Coding for Storage Applications
-dev-libs/json-c 0.12 0.13.1-r1 0.14-r1 0.14-r2 0.14-r3 9999: A JSON implementation in C
+dev-libs/json-c 0.12 0.13.1-r1 0.14-r3 9999: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 1.9.1 1.9.3_pre20200412: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
@@ -5242,7 +5242,7 @@ dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used fo
 dev-libs/opensc 0.20.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
 dev-libs/openssl 1.0.2u 1.1.0l 1.1.1d-r3 1.1.1f 1.1.1g: full-strength general purpose cryptography library (including SSL and TLS)
-dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2u 1.0.2u-r1: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2u-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
@@ -7339,7 +7339,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.9.3 1.10.1 1.10.5: Dependency Manager for PHP
+dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0: Utility to instantiate objects in PHP without invoking their constructors
@@ -7538,7 +7538,7 @@ dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to 
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.11.0 1.22.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
-dev-python/awscli 1.18.48 1.18.56: Universal Command Line Environment for AWS
+dev-python/awscli 1.18.48 1.18.56 1.18.62: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0-r1: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
@@ -7580,7 +7580,7 @@ dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.2 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0 2.49.0-r2: Amazon Web Services API
 dev-python/boto3 1.9.122 1.10.2 1.12.48 9999: The AWS SDK for Python
-dev-python/botocore 1.12.122 1.15.16 1.15.32 1.15.48 1.16.6 1.16.7 9999: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.12.122 1.15.16 1.15.32 1.15.48 1.16.6 1.16.7 1.16.12 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -7678,7 +7678,7 @@ dev-python/curtsies 0.3.0-r2: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.2.5 1.2.5-r1: Python package for convex optimization
 dev-python/cx_Freeze 6.1: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0 0.10.0-r1: Composable style cycles
-dev-python/cython 0.29.15 0.29.17: A Python to C compiler
+dev-python/cython 0.29.15 0.29.17 0.29.18: A Python to C compiler
 dev-python/cytoolz 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
@@ -9420,7 +9420,7 @@ dev-ruby/actionpack-xml_parser 2.0.1: XML parameters parser for Action Pack (rem
 dev-ruby/actiontext 6.0.2.2 6.0.3 6.0.3.1: Edit and display rich text in Rails applications
 dev-ruby/actionview 5.2.4.2 5.2.4.3 6.0.2.2 6.0.3 6.0.3.1: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 5.2.4.2 5.2.4.3 6.0.2.2 6.0.3 6.0.3.1: Job framework with pluggable queues
-dev-ruby/activeldap 5.2.4 6.0.0 6.0.1: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
+dev-ruby/activeldap 5.2.4 6.0.0 6.0.1 6.0.2: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
 dev-ruby/activemodel 5.2.4.2 5.2.4.3 6.0.2.2 6.0.3 6.0.3.1: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Model objects and Active Record models
 dev-ruby/activerecord 5.2.4.2 5.2.4.3 6.0.2.2 6.0.3 6.0.3.1: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
@@ -12021,7 +12021,7 @@ kde-plasma/breeze-grub 5.17.5 5.18.5: Breeze theme for GRUB
 kde-plasma/breeze-gtk 5.17.5 5.18.5: Official GTK+ port of Plasma's Breeze widget style
 kde-plasma/breeze-plymouth 5.17.5 5.18.5: Breeze theme for Plymouth
 kde-plasma/discover 5.17.5 5.18.5: KDE Plasma resources management GUI
-kde-plasma/drkonqi 5.17.5 5.18.5-r1: Plasma crash handler, gives the user feedback if a program crashed
+kde-plasma/drkonqi 5.17.5 5.18.5-r2: Plasma crash handler, gives the user feedback if a program crashed
 kde-plasma/kactivitymanagerd 5.17.5 5.18.5: System service to manage user's activities, track the usage patterns etc.
 kde-plasma/kde-cli-tools 5.17.5 5.18.5: Tools based on KDE Frameworks 5 to better interact with the system
 kde-plasma/kde-gtk-config 5.17.5 5.18.5: GTK2 and GTK3 configurator for KDE Plasma
@@ -12258,7 +12258,7 @@ media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed wi
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6-r1: Simplistic, technical sans serif - openSUSE font
-media-fonts/fira-code 1.207 2 3 3.1: Monospaced font with programming ligatures
+media-fonts/fira-code 2 3 3.1 4: Monospaced font with programming ligatures
 media-fonts/fira-mono 3.205: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105: Default typeface for FirefoxOS, designed for legibility
 media-fonts/font-adobe-100dpi 1.0.3-r1: X.Org Adobe bitmap fonts
@@ -14277,7 +14277,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.10.0: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.10.0 1.10.1: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/valtz 0.7-r3: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.3 2.1.0: Arno's iptables firewall script
@@ -14304,7 +14304,7 @@ net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1 4.18: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
-net-firewall/shorewall 5.2.4.4: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.4.4 5.2.4.5: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 2.13 3.7 3.8 3.9: iptables extensions not yet accepted in the main kernel
@@ -16949,7 +16949,7 @@ sys-block/hpssacli 2.40.13.0-r1 3.10.3.0: HPE Smart Storage Administrator (HPE S
 sys-block/io-scheduler-udev-rules 1: Udev rules to allow easier customization of kernel I/O schedulers
 sys-block/libzbc 5.5.1: A library and tools for working with ZBC and ZAC disks
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
-sys-block/mbuffer 20150412 20171011 20181119 20190127 20190725 20191016: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20191016 20200505: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.10 8.07.14 8.07.14-r1 8.07.14-r2: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool

@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst prepare pretend setup
+DESCRIPTION=A high-level tool for configuring Netfilter
+EAPI=7
+HOMEPAGE=https://shorewall.org/
+IUSE=doc +init +ipv4 ipv6 lite4 lite6 selinux kernel_linux
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-firewall/iptables-1.4.20 >=sys-apps/iproute2-3.8.0[-minimal] >=sys-devel/bc-1.06.95 ipv4? ( >=dev-lang/perl-5.16 virtual/perl-Digest-SHA ) ipv6? ( >=dev-perl/Socket6-0.230.0 >=net-firewall/iptables-1.4.20[ipv6] >=sys-apps/iproute2-3.8.0[ipv6] ) lite6? ( >=net-firewall/iptables-1.4.20[ipv6] >=sys-apps/iproute2-3.8.0[ipv6] ) init? ( >=sys-apps/coreutils-8.20 ) selinux? ( >=sec-policy/selinux-shorewall-2.20161023-r3 ) !net-firewall/shorewall-core !net-firewall/shorewall6 !net-firewall/shorewall-lite !net-firewall/shorewall6-lite !net-firewall/shorewall-init !<sys-apps/systemd-214
+REQUIRED_USE=ipv6? ( ipv4 ) || ( ipv4 lite4 lite6 )
+SLOT=0
+SRC_URI=https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/shorewall-core-5.2.4.5.tar.bz2 ipv4? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/shorewall-5.2.4.5.tar.bz2 ) ipv6? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/shorewall6-5.2.4.5.tar.bz2 ) lite4? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/shorewall-lite-5.2.4.5.tar.bz2 ) lite6? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/shorewall6-lite-5.2.4.5.tar.bz2 ) init? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/shorewall-init-5.2.4.5.tar.bz2 ) doc? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/shorewall-docs-html-5.2.4.5.tar.bz2 )
+_eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	prefix	c2993e4c430c1ee24f278983d6189501	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=1e4c8c77c1edf6f4a7be7f6da92c8930
