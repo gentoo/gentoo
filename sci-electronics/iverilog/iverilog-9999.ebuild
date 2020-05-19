@@ -29,7 +29,7 @@ IUSE="examples"
 # If you are building from git, you will also need gperf to generate
 # the configure scripts.
 RDEPEND="
-	sys-libs/readline:0
+	sys-libs/readline:=
 	sys-libs/zlib
 "
 
