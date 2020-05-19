@@ -68,8 +68,10 @@ CDEPEND="
 	kde-frameworks/syntax-highlighting:5
 	clang? (
 		|| (
-			sys-devel/clang:10
-			sys-devel/clang:9
+			( sys-devel/clang:10
+				dev-libs/libclangformat-ide:10 )
+			( sys-devel/clang:9
+				dev-libs/libclangformat-ide:9 )
 		)
 		<sys-devel/clang-$((LLVM_MAX_SLOT + 1)):=
 	)
@@ -110,10 +112,14 @@ for x in ${PLOCALES}; do
 done
 unset x
 
-PATCHES=( "${FILESDIR}"/${PN}-4.12.0-dylib-fix.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.12.0-dylib-fix.patch
+	"${FILESDIR}"/${PN}-4.12.0-libclangformat-ide.patch
+)
 
 llvm_check_deps() {
-	has_version -d "sys-devel/clang:${LLVM_SLOT}"
+	has_version -d "sys-devel/clang:${LLVM_SLOT}" && \
+		has_version -d "dev-libs/libclangformat-ide:${LLVM_SLOT}"
 }
 
 pkg_setup() {
