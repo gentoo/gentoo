@@ -9,7 +9,7 @@ DESCRIPTION="M(easuring)buffer is a replacement for buffer with additional funct
 HOMEPAGE="https://www.maier-komor.de/mbuffer.html"
 SRC_URI="https://www.maier-komor.de/software/mbuffer/${P}.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 IUSE="debug ssl test"
