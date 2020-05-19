@@ -51,6 +51,8 @@ src_configure() {
 	# Workaround for:
 	# /usr/lib64/utsushi/libutsushi.so.0: undefined symbol: libcnx_usb_LTX_factory
 	append-ldflags $(no-as-needed)
+	# https://bugs.gentoo.org/720994
+	append-ldflags -pthread
 	local myconf=(
 		$(use_with gui gtkmm)
 		--enable-sane-config
