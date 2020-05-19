@@ -49,6 +49,7 @@ src_prepare() {
 
 src_install() {
 	dobin ${PN}
+	dobin hfuzz_cc/hfuzz-cc
 
 	einstalldocs
 }
