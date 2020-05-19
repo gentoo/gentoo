@@ -21,7 +21,11 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/django-1.11[${PYTHON_USEDEP}]"
-BDEPEND="test? ( ${RDEPEND} )"
+BDEPEND="
+	test? (
+		$(python_gen_impl_dep sqlite)
+		${RDEPEND}
+	)"
 
 python_test() {
 	local -x PYTHONPATH=test:${PYTHONPATH}
