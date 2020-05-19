@@ -7,7 +7,7 @@ USE_PHP="php7-2 php7-3 php7-4"
 MY_PN="php-code-coverage"
 
 DESCRIPTION="Collection, processing, and rendering for PHP code coverage"
-HOMEPAGE="http://phpunit.de"
+HOMEPAGE="https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
