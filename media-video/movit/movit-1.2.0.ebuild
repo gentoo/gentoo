@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,9 +7,9 @@ EAPI=5
 RESTRICT="test"
 
 DESCRIPTION="Modern Video Toolkit"
-HOMEPAGE="http://movit.sesse.net/"
+HOMEPAGE="https://movit.sesse.net/"
 # Tests need gtest, makefile unconditionally builds tests, so ... yey!
-SRC_URI="http://movit.sesse.net/${P}.tar.gz
+SRC_URI="https://movit.sesse.net/${P}.tar.gz
 	https://googletest.googlecode.com/files/gtest-1.7.0.zip"
 LICENSE="GPL-2+"
 SLOT="0"
