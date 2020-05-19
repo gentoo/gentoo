@@ -28,19 +28,19 @@ RDEPEND="${RDEPEND}
 
 ruby_add_rdepend "
 	>=dev-ruby/bcrypt_pbkdf-1.0.0
-	>=dev-ruby/childprocess-0.6.0
+	>=dev-ruby/childprocess-3.0.0
 	>=dev-ruby/ed25519-1.2.4
 	>=dev-ruby/erubis-2.7.0
 	>=dev-ruby/hashicorp-checkpoint-0.1.5
-	>=dev-ruby/i18n-1.1.1:1
+	>=dev-ruby/i18n-1.8:1
 	>=dev-ruby/listen-3.1.5
 	<dev-ruby/log4r-1.1.11
 	<dev-ruby/mime-types-3:*
-	>=dev-ruby/net-ssh-5.1.0:*
+	>=dev-ruby/net-ssh-5.2.0:*
 	>=dev-ruby/net-sftp-2.1
 	>=dev-ruby/net-scp-1.2.0
 	dev-ruby/rest-client:2
-	>=dev-ruby/rubyzip-1.2.2:*
+	dev-ruby/rubyzip:2
 	>=dev-ruby/vagrant_cloud-2.0.3
 "
 
@@ -52,8 +52,6 @@ ruby_add_bdepend "
 	>=dev-ruby/rake-10.5.0
 "
 
-PATCHES="${FILESDIR}/support-vbox-6.1.patch"
-
 all_ruby_prepare() {
 	# remove bundler support
 	sed -i '/[Bb]undler/d' Rakefile || die
@@ -61,7 +59,6 @@ all_ruby_prepare() {
 
 	# loosen dependencies
 	sed -e '/hashicorp-checkpoint\|i18n\|listen\|net-ssh\|net-scp\|rake\|childprocess/s/~>/>=/' \
-		-e '/ruby_dep/s/<=/>=/' \
 		-i ${PN}.gemspec || die
 
 	# remove windows-specific gems
@@ -70,6 +67,10 @@ all_ruby_prepare() {
 
 	# remove bsd-specific gems
 	sed -e '/rb-kqueue/d' \
+		-i ${PN}.gemspec || die
+
+	# remove ruby_dep, it's unused and only listed to loosen ruby implementation deps
+	sed -e '/ruby_dep/d' \
 		-i ${PN}.gemspec || die
 
 	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}.in" > "${PN}" || die
