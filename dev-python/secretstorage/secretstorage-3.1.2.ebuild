@@ -23,7 +23,10 @@ RDEPEND="
 	>=dev-python/jeepney-0.4.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	test? ( gnome-base/gnome-keyring )
+	test? (
+		gnome-base/gnome-keyring
+		sys-apps/dbus
+	)
 "
 
 distutils_enable_tests unittest
