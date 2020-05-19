@@ -4,7 +4,7 @@ DESCRIPTION=Reference models by URI
 EAPI=6
 HOMEPAGE=https://github.com/rails/globalid
 IUSE=test ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 doc test test
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby24? ( >=dev-ruby/activesupport-4.2.0:*[ruby_targets_ruby24(-)] ) ruby_targets_ruby25? ( >=dev-ruby/activesupport-4.2.0:*[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/activesupport-4.2.0:*[ruby_targets_ruby26(-)] ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24(-)] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] )
 REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test ) !test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://github.com/rails/globalid/archive/v0.4.2.tar.gz -> globalid-0.4.2.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	ruby-fakegem	cca036a1477f29b926bf994faddf4099	ruby-ng	a1c89995f9f6dd045e93d13a92ca81a9	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0ae9a8750d11edc148b37245cb711a9d
+_md5_=4676798cd1a1563ba152a298416e6673
