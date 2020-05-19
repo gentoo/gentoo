@@ -15177,7 +15177,7 @@ net-print/cnrdrvcups-lb 5.10: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.2.13 2.3.1 2.3.3-r1 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.25.11 1.25.13 1.26.2 1.27.2 1.27.4 9999: Cups filters
-net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
+net-print/cups-pdf 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.4.0 1.4.0-r1: Dymo SDK for LabelWriter/LabelManager printers
@@ -15274,7 +15274,7 @@ net-vpn/tailscale 0.98 0.98_p0: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.4.2.7 0.4.3.4_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550 0.5.3_p550-r1: Free client for Cisco VPN routing software
-net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
+net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20200506 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200319 1.0.20200513: Required tools for WireGuard, such as wg(8) and wg-quick(8)
