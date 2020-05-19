@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile config install postinst preinst prepare setup unpack
+DEPEND=acct-group/nofiles acct-group/qmail acct-user/alias acct-user/qmaild acct-user/qmaill acct-user/qmailp acct-user/qmailq acct-user/qmailr acct-user/qmails net-dns/libidn2 net-mail/queue-repair sys-apps/gentoo-functions sys-apps/groff ssl? ( !libressl? ( >=dev-libs/openssl-1.1:0= ) libressl? ( dev-libs/libressl:= ) )
+DESCRIPTION=qmail -- a secure, reliable, efficient, simple message transfer agent
+EAPI=7
+HOMEPAGE=http://netqmail.org https://cr.yp.to/qmail.html http://qmail.org
+IUSE=authcram gencertdaily highvolume libressl pop3 qmail-spp ssl vanilla
+KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc ~x86
+LICENSE=public-domain
+RDEPEND=acct-group/nofiles acct-group/qmail acct-user/alias acct-user/qmaild acct-user/qmaill acct-user/qmailp acct-user/qmailq acct-user/qmailr acct-user/qmails net-dns/libidn2 net-mail/queue-repair sys-apps/gentoo-functions sys-apps/groff ssl? ( !libressl? ( >=dev-libs/openssl-1.1:0= ) libressl? ( dev-libs/libressl:= ) ) sys-apps/ucspi-tcp virtual/checkpassword virtual/daemontools authcram? ( >=net-mail/cmd5checkpw-0.30 ) ssl? ( pop3? ( sys-apps/ucspi-ssl ) ) !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/nullmailer !mail-mta/opensmtpd !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp[mta]
+REQUIRED_USE=vanilla? ( !ssl !qmail-spp !highvolume )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://qmail/netqmail-1.06.tar.gz https://github.com/DerDakon/genqmail/releases/download/genqmail-20191010/genqmail-20191010.tar.bz2 https://www.ckdhr.com/ckd/qmail-103.patch !vanilla? ( highvolume? ( mirror://qmail/big-todo.103.patch ) qmail-spp? ( mirror://sourceforge/qmail-spp/qmail-spp-0.42.tar.gz ) ssl? ( https://mirror.alexh.name/qmail/netqmail/netqmail-1.05-tls-smtpauth-20190114.patch http://inoa.net/qmail-tls/vu555316.patch https://arnt.gulbrandsen.priv.no/qmail/qmail-smtputf8.patch ) )
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	fixheadtails	662e80584ee2337b981d7188078e7c74	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	qmail	83a4685f5044b0b067cb7e6f0e9c909c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=b69b53b802c5fe2a888bf1f9f99f8d6a
