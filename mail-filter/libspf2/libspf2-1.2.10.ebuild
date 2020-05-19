@@ -5,8 +5,8 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols"
-HOMEPAGE="http://www.libspf2.org"
-SRC_URI="http://www.libspf2.org/spf/libspf2-${PV}.tar.gz"
+HOMEPAGE="https://www.libspf2.org"
+SRC_URI="https://www.libspf2.org/spf/libspf2-${PV}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 BSD-2 )"
 SLOT="0"
