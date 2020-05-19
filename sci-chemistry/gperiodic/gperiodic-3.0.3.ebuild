@@ -3,49 +3,35 @@
 
 EAPI=7
 
-inherit eutils toolchain-funcs xdg-utils
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="Periodic table application for Linux"
 HOMEPAGE="https://sourceforge.net/projects/gperiodic/"
 SRC_URI="https://downloads.sourceforge.net/project/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
-MY_AVAILABLE_LINGUAS=" be bg cs da de es fi fr gl id is it lt ms nl pl pt_BR pt ru sv tr uk"
 
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
 RDEPEND="
 	sys-libs/ncurses:0
 	x11-libs/gtk+:2
-	x11-libs/cairo[X]
-	nls? ( sys-devel/gettext )"
-DEPEND="${RDEPEND}
-		virtual/pkgconfig"
-
-src_prepare() {
-	default
-	for lang in ${MY_AVAILABLE_LINGUAS}; do
-		if ! has ${lang} ${LINGUAS-${lang}}; then
-			einfo "Cleaning translation for ${lang}"
-			rm po/${lang}.po || die
-		fi
-	done
-}
+	x11-libs/cairo[X]"
+DEPEND="${RDEPEND}"
 
 src_compile() {
-	local myopts
-	use nls && myopts="enable_nls=1" || myopts="enable_nls=0"
 	emake \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
-		CC=$(tc-getCC) ${myopts}
+		CC=$(tc-getCC) "enable_nls=$(usex nls 1 0)"
 }
 
 src_install() {
-	local myopts
-	use nls && myopts="enable_nls=1" || myopts="enable_nls=0"
-	emake DESTDIR="${D}" ${myopts} install
+	emake DESTDIR="${D}" "enable_nls=$(usex nls 1 0)" install
 	dodoc AUTHORS ChangeLog README
 	newdoc po/README README.translation
 }
