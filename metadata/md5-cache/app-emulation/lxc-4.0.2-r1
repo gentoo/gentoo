@@ -1,15 +1,15 @@
 BDEPEND=doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=app-misc/pax-utils net-libs/gnutls sys-apps/util-linux sys-libs/libcap virtual/awk caps? ( sys-libs/libcap ) pam? ( sys-libs/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) ssl? ( dev-libs/openssl:0= ) >=app-text/docbook-sgml-utils-0.6.14-r2 >=sys-kernel/linux-headers-3.2 apparmor? ( sys-apps/apparmor )
+DEPEND=app-misc/pax-utils net-libs/gnutls sys-apps/util-linux sys-libs/libcap virtual/awk caps? ( sys-libs/libcap ) pam? ( sys-libs/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) >=app-text/docbook-sgml-utils-0.6.14-r2 >=sys-kernel/linux-headers-3.2 apparmor? ( sys-apps/apparmor )
 DESCRIPTION=LinuX Containers userspace utilities
 EAPI=7
 HOMEPAGE=https://linuxcontainers.org/ https://github.com/lxc/lxc
-IUSE=apparmor +caps doc examples pam seccomp selinux +ssl +templates +tools kernel_linux
+IUSE=apparmor +caps doc examples libressl pam seccomp selinux +ssl +templates +tools kernel_linux
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
 LICENSE=LGPL-3
 PDEPEND=templates? ( app-emulation/lxc-templates )
-RDEPEND=app-misc/pax-utils net-libs/gnutls sys-apps/util-linux sys-libs/libcap virtual/awk caps? ( sys-libs/libcap ) pam? ( sys-libs/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) ssl? ( dev-libs/openssl:0= )
+RDEPEND=app-misc/pax-utils net-libs/gnutls sys-apps/util-linux sys-libs/libcap virtual/awk caps? ( sys-libs/libcap ) pam? ( sys-libs/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxc/lxc-4.0.2.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	pam	a1771fc1e5831c201eaf18451747d94b	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=909092dcb041aa0131ad12d4a98d190f
+_md5_=6f7bb18dc9e0f58092bbb26c73e2e75e
