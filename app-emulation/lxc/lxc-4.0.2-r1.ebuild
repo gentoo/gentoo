@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="apparmor +caps doc examples pam seccomp selinux +ssl +templates +tools"
+IUSE="apparmor +caps doc examples libressl pam seccomp selinux +ssl +templates +tools"
 
 RDEPEND="app-misc/pax-utils
 	net-libs/gnutls
@@ -24,7 +24,10 @@ RDEPEND="app-misc/pax-utils
 	pam? ( sys-libs/pam )
 	seccomp? ( sys-libs/libseccomp )
 	selinux? ( sys-libs/libselinux )
-	ssl? ( dev-libs/openssl:0= )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 DEPEND="${RDEPEND}
 	>=app-text/docbook-sgml-utils-0.6.14-r2
 	>=sys-kernel/linux-headers-3.2
