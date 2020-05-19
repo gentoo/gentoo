@@ -2450,6 +2450,7 @@ app-portage/fquery 0.2.2 0.2.3: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.9-r1 0.17.0 9999: Autogenerate and install ebuilds for CPAN modules
 app-portage/g-octave 0.4.1-r7: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.2.1-r1 9999: framework for ebuild generators
+app-portage/gander 0.0.1: Statistic submission client for Goose (anser.gentoo.org)
 app-portage/gemato 14.3 14.4 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.4.6 0.4.7 0.4.8 0.5.0 9999: Collection of administration scripts for Gentoo
@@ -18447,7 +18448,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.29 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.62 5.63: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.62 5.63 5.64_alpha0: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
