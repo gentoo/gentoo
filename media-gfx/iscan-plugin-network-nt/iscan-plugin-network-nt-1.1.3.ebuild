@@ -13,10 +13,12 @@ HOMEPAGE="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 
 ISCAN_VERSION="3.62.0"
 
-SRC_URI="https://download2.ebz.epson.net/imagescanv3/centos/latest1/rpm/x64/imagescan-bundle-centos-8-${ISCAN_VERSION}.x64.rpm.tar.gz"
+SRC_URI="
+	amd64?	( https://download2.ebz.epson.net/imagescanv3/fedora/latest2/rpm/x64/imagescan-bundle-fedora-30-${ISCAN_VERSION}.x64.rpm.tar.gz )
+	x86?	( https://download2.ebz.epson.net/imagescanv3/fedora/latest2/rpm/x86/imagescan-bundle-fedora-30-${ISCAN_VERSION}.x86.rpm.tar.gz )"
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="media-gfx/iscan"
 RESTRICT="bindist mirror strip"
@@ -26,7 +28,11 @@ S=${WORKDIR}
 
 src_unpack() {
 	default
-	rpm_unpack ./imagescan-bundle-centos-8-${ISCAN_VERSION}.x64.rpm/plugins/imagescan-plugin-networkscan-${PV}-1epson4centos8.x86_64.rpm
+	if use x86; then
+		rpm_unpack ./imagescan-bundle-fedora-30-${ISCAN_VERSION}.x86.rpm/plugins/imagescan-plugin-networkscan-${PV}-1epson4fedora30.i686.rpm
+	else
+		rpm_unpack ./imagescan-bundle-fedora-30-${ISCAN_VERSION}.x64.rpm/plugins/imagescan-plugin-networkscan-${PV}-1epson4fedora30.x86_64.rpm
+	fi
 }
 
 src_install() {
