@@ -8,7 +8,7 @@ if [[ ${PV} = 9999 ]]; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://dev-www.libreoffice.org/src/libcdr/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Library parsing the Corel cdr documents"
