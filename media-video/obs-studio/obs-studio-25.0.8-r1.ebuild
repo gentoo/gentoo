@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
