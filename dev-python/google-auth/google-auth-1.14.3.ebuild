@@ -15,7 +15,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+# Test deps need keywords. See #723554 and #723912.
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/namespace-google[${PYTHON_USEDEP}]
