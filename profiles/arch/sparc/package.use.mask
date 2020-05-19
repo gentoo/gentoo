@@ -54,6 +54,7 @@ dev-ruby/rack-cache test
 dev-ruby/activemodel test
 dev-ruby/activerecord test
 dev-ruby/activesupport test
+dev-ruby/globalid test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
 # dev-ruby/asciidoctor is not keyworded on sparc
