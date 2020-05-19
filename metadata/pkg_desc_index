@@ -10496,7 +10496,7 @@ dev-util/molecule-plugins 1.0.3: A set of base plugins for Molecule
 dev-util/mpatch 0.8-r1: Patch-like tool which can resolve common causes of patch rejects when applying
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
-dev-util/netsurf-buildsystem 1.7 1.7-r1 1.8-r1: Build system used for netsurf and its libs
+dev-util/netsurf-buildsystem 1.8-r1: Build system used for netsurf and its libs
 dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 1.10.0 9999: A small build system similar to make
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
