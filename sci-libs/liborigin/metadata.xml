@@ -5,7 +5,7 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<longdescription>
-		A library providing IO for Microcal Origin files.
-	</longdescription>
+	<use>
+		<flag name="tools">Install opj2dat command line util</flag>
+	</use>
 </pkgmetadata>

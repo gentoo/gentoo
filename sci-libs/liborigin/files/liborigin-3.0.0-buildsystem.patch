@@ -1,0 +1,166 @@
+From a751f00ebba9fa226860ed4e2c1ae5fa35622e89 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 20 May 2020 22:33:08 +0200
+Subject: [PATCH 1/4] Don't install bundled tree.hh
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 17c613b..a6b4b8a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,6 @@ set (devel-headers
+ 	OriginObj.h
+ 	OriginFile.h
+ 	OriginParser.h
+-	tree.hh
+ 	)
+ 
+ # LIB_SUFFIX can either be defined at cmake command line: cmake -DLIB_SUFFIX:STRING=64 ...
+-- 
+2.26.2
+
+
+From 0b4fa1ce0946bc293d798484c609c6a7ac5ab50a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 20 May 2020 22:35:02 +0200
+Subject: [PATCH 2/4] No static target, compile opj2dat against the shared lib
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a6b4b8a..6f2d87b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,22 +52,16 @@ set_target_properties(origin PROPERTIES
+ 	VERSION ${LIBORIGIN_VERSION_MAJOR}.${LIBORIGIN_VERSION_MINOR}.${LIBORIGIN_VERSION_BUGFIX}
+ 	SOVERSION ${LIBORIGIN_VERSION_MAJOR} )
+ 
+-# static library
+-add_library (origin-static STATIC ${sources})
+-set_target_properties(origin-static PROPERTIES OUTPUT_NAME "origin" POSITION_INDEPENDENT_CODE ON)
+-
+ # inform on log setting
+ if (DEFINED GENERATE_CODE_FOR_LOG)
+     message("File parsing will be logged.")
+     target_compile_definitions(origin PRIVATE GENERATE_CODE_FOR_LOG=${GENERATE_CODE_FOR_LOG})
+-    target_compile_definitions(origin-static PRIVATE GENERATE_CODE_FOR_LOG=${GENERATE_CODE_FOR_LOG})
+ else()
+     message("File parsing will NOT be logged. Define GENERATE_CODE_FOR_LOG to activate logging.")
+ endif ()
+ 
+ # install libraries
+ install(TARGETS origin DESTINATION lib${LIB_SUFFIX} OPTIONAL)
+-install(TARGETS origin-static DESTINATION lib${LIB_SUFFIX} OPTIONAL)
+ 
+ # install headers
+ install(FILES ${devel-headers} DESTINATION include/liborigin)
+@@ -77,7 +71,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/liborigin.pc DESTINATION lib${LIB_SUFF
+ 
+ # command line util
+ add_executable(opj2dat opj2dat.cpp)
+-target_link_libraries (opj2dat origin-static)
++target_link_libraries (opj2dat origin)
+ 
+ install(TARGETS opj2dat DESTINATION bin OPTIONAL)
+ 
+-- 
+2.26.2
+
+
+From 5f4c497408a6f144e581dd17fb3e49963e8b6b2b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 20 May 2020 22:43:52 +0200
+Subject: [PATCH 3/4] Don't install README COPYING etc., distro package does
+ that
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6f2d87b..4fc16e0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -76,7 +76,6 @@ target_link_libraries (opj2dat origin)
+ install(TARGETS opj2dat DESTINATION bin OPTIONAL)
+ 
+ # documentation
+-install(FILES COPYING FORMAT README DESTINATION share/doc/liborigin OPTIONAL)
+ configure_file(doc/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+ find_package(Doxygen)
+ if(DOXYGEN_FOUND)
+-- 
+2.26.2
+
+
+From bb554d88b78e7575c04cf3e79098f35b776c3878 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 20 May 2020 22:47:22 +0200
+Subject: [PATCH 4/4] Drop 'OPTIONAL' from install targets, add ENABLE_TOOLS
+ option
+
+I've never seen an optional install of library.
+ENABLE_TOOLS takes care of the binary.
+Doxygen is already optional.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4fc16e0..1759eee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,6 +9,8 @@ set(LIBORIGIN_VERSION_MAJOR 3)
+ set(LIBORIGIN_VERSION_MINOR 0)
+ set(LIBORIGIN_VERSION_BUGFIX 0)
+ 
++option(ENABLE_TOOLS "Install opj2dat command line util" ON)
++
+ # compile-time configuration variables to be linked in
+ configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+@@ -61,7 +63,7 @@ else()
+ endif ()
+ 
+ # install libraries
+-install(TARGETS origin DESTINATION lib${LIB_SUFFIX} OPTIONAL)
++install(TARGETS origin DESTINATION lib${LIB_SUFFIX})
+ 
+ # install headers
+ install(FILES ${devel-headers} DESTINATION include/liborigin)
+@@ -70,10 +72,12 @@ install(FILES ${devel-headers} DESTINATION include/liborigin)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/liborigin.pc DESTINATION lib${LIB_SUFFIX}/pkgconfig)
+ 
+ # command line util
+-add_executable(opj2dat opj2dat.cpp)
+-target_link_libraries (opj2dat origin)
++if(ENABLE_TOOLS)
++    add_executable(opj2dat opj2dat.cpp)
++    target_link_libraries (opj2dat origin)
+ 
+-install(TARGETS opj2dat DESTINATION bin OPTIONAL)
++    install(TARGETS opj2dat DESTINATION bin)
++endif()
+ 
+ # documentation
+ configure_file(doc/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+@@ -82,5 +86,5 @@ if(DOXYGEN_FOUND)
+ 	add_custom_target(doc ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+ 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+ 	set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/html)
+-	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION share/doc/liborigin OPTIONAL)
++	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION share/doc/liborigin)
+ endif(DOXYGEN_FOUND)
+-- 
+2.26.2
+
