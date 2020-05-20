@@ -1,4 +1,4 @@
-BDEPEND=>=app-text/scdoc-1.9.7 >=dev-vcs/git-1.8.2.1[curl] >=dev-lang/go-1.12 app-arch/unzip
+BDEPEND=>=app-text/scdoc-1.9.7 >=dev-lang/go-1.13 >=dev-lang/go-1.12 app-arch/unzip >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst unpack
 DEPEND=notmuch? ( net-mail/notmuch:= )
 DESCRIPTION=Email client for your terminal
@@ -11,4 +11,4 @@ RDEPEND=notmuch? ( net-mail/notmuch:= )
 RESTRICT=strip
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	cca12a5688562f107c14ffcf28195dd7
-_md5_=84ad324b31557ec93c193eb598b4c6fe
+_md5_=b2de5d2205611f037ecc5ab45c17545d
