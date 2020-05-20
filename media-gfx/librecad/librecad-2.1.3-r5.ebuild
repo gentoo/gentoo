@@ -37,6 +37,7 @@ S="${WORKDIR}/LibreCAD-${PV}"
 PATCHES=(
 	"${FILESDIR}/${P}-qt-5.11.patch"
 	"${FILESDIR}/${P}-gcc-9.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch" # pending upstream PR#1224
 )
 
 src_configure() {
