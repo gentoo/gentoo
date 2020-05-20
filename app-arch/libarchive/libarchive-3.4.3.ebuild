@@ -41,10 +41,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.3-libressl.patch
 )
 
-# Various test problems, starting with the fact that sandbox
-# explodes on long paths. https://bugs.gentoo.org/598806
-RESTRICT="test"
-
 src_prepare() {
 	default
 	elibtoolize  # is required for Solaris sol2_ld linker fix
@@ -97,9 +93,19 @@ multilib_src_compile() {
 	fi
 }
 
+src_test() {
+	mkdir -p "${T}"/bin || die
+	# tests fail when lbzip2[symlink] is used in place of ref bunzip2
+	ln -s "${BROOT}/bin/bunzip2" "${T}"/bin || die
+	local -x PATH=${T}/bin:${PATH}
+	multilib-minimal_src_test
+}
+
 multilib_src_test() {
-	# Replace the default src_test so that it builds tests in parallel
-	multilib_is_native_abi && emake check
+	# sandbox is breaking long symlink behavior
+	local -x SANDBOX_ON=0
+	local -x LD_PRELOAD=
+	emake check
 }
 
 multilib_src_install() {
