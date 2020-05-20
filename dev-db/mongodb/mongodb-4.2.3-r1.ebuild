@@ -42,12 +42,11 @@ RDEPEND="acct-group/mongodb
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
-		test? ( dev-python/pymongo[${PYTHON_USEDEP}] )
+		test? ( dev-python/pymongo[${PYTHON_USEDEP}] dev-python/pymongo[${PYTHON_USEDEP}] )
 		>=dev-util/scons-2.5.0[${PYTHON_USEDEP}]
 		dev-python/cheetah3[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		virtual/python-typing[${PYTHON_USEDEP}]
 	')
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
@@ -63,15 +62,14 @@ S="${WORKDIR}/${MY_P}"
 
 python_check_deps() {
 	if use test; then
-		has_version "dev-python/pymongo[${PYTHON_USEDEP}]" ||
-			return 1
+		has_version "dev-python/pymongo[${PYTHON_USEDEP}]" || return 1
+		has_version "dev-python/requests[${PYTHON_USEDEP}]" || return 1
 	fi
 
 	has_version ">=dev-util/scons-2.5.0[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/cheetah3[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/psutil[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
-	has_version "virtual/python-typing[${PYTHON_USEDEP}]"
+	has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {

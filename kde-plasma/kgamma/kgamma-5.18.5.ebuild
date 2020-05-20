@@ -14,7 +14,7 @@ DESCRIPTION="Screen gamma values kcontrol module"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE=""
 
 RDEPEND="
