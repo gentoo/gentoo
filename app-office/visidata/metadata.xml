@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chr@chymera.eu</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		VisiData is an interactive multitool for tabular data. It combines the
+		clarity of a spreadsheet, the efficiency of the terminal, and the power
+		of Python, into a lightweight utility which can handle millions of rows
+		with ease.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">saulpw/visidata</remote-id>
+		<remote-id type="pypi">visidata</remote-id>
+	</upstream>
+</pkgmetadata>
