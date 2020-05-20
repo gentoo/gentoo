@@ -8,7 +8,7 @@ if [[ ${PV} = 9999 ]]; then
 	inherit autotools git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Library parsing many pre-OSX MAC text formats"
