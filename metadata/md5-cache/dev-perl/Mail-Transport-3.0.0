@@ -4,11 +4,11 @@ DESCRIPTION=Base class for Email Message Exchange
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Mail-Transport
 IUSE=test
-KEYWORDS=~alpha amd64 x86
+KEYWORDS=~alpha amd64 ~ppc64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=virtual/perl-File-Spec-0.700.0 virtual/perl-IO >=dev-perl/Mail-Message-3 virtual/perl-Scalar-List-Utils virtual/perl-libnet !!<dev-perl/Mail-Box-3 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MARKOV/Mail-Transport-3.000.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=9fa2f3a4232691bf70b31782e99afe50
+_md5_=f1c2ad0016bb8a03838649df553412a5
