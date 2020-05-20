@@ -6,11 +6,9 @@ PLOCALES="af ar ca cs da de eo es et eu fr hr hu id it ja kn ko nb nl pl pt pt_B
 
 inherit l10n perl-module
 
-MY_P="${P/-/-v}"
-
 DESCRIPTION="Tools to ease the translation of documentation"
 HOMEPAGE="https://po4a.org/"
-SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -36,7 +34,6 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Pod
 		virtual/latex-base
 	)"
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}"/${PN}-man.patch )
 
