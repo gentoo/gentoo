@@ -17,6 +17,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	acct-group/exabgp
+	acct-user/exabgp
 	dev-python/ipaddr[${PYTHON_USEDEP}]
 "
 BDEPEND="
