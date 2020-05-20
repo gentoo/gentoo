@@ -1,0 +1,145 @@
+From 450ba2c898303cea2cba9a5efa99c7d919fc9e55 Mon Sep 17 00:00:00 2001
+From: Arkadiusz Bokowy <arkadiusz.bokowy@gmail.com>
+Date: Sun, 9 Feb 2020 22:26:16 +0100
+Subject: [PATCH] Fix linkage - mark external variable as extern
+
+---
+ src/bluealsa-iface.h | 6 +++---
+ src/bluez-a2dp.h     | 4 ++--
+ src/bluez-iface.h    | 6 +++---
+ src/ofono-iface.h    | 4 ++--
+ test/server-mock.c   | 1 +
+ test/test-ba.c       | 1 +
+ test/test-io.c       | 1 +
+ test/test-rfcomm.c   | 1 +
+ 8 files changed, 14 insertions(+), 10 deletions(-)
+
+diff --git a/src/bluealsa-iface.h b/src/bluealsa-iface.h
+index 262fb76..1d3366d 100644
+--- a/src/bluealsa-iface.h
++++ b/src/bluealsa-iface.h
+@@ -32,8 +32,8 @@
+ #define BLUEALSA_RFCOMM_MODE_HSP_AG "HSP-AG"
+ #define BLUEALSA_RFCOMM_MODE_HSP_HS "HSP-HS"
+ 
+-const GDBusInterfaceInfo bluealsa_iface_manager;
+-const GDBusInterfaceInfo bluealsa_iface_pcm;
+-const GDBusInterfaceInfo bluealsa_iface_rfcomm;
++extern const GDBusInterfaceInfo bluealsa_iface_manager;
++extern const GDBusInterfaceInfo bluealsa_iface_pcm;
++extern const GDBusInterfaceInfo bluealsa_iface_rfcomm;
+ 
+ #endif
+diff --git a/src/bluez-a2dp.h b/src/bluez-a2dp.h
+index 7c0e33b..4a695d9 100644
+--- a/src/bluez-a2dp.h
++++ b/src/bluez-a2dp.h
+@@ -1,6 +1,6 @@
+ /*
+  * BlueALSA - bluez-a2dp.h
+- * Copyright (c) 2016-2019 Arkadiusz Bokowy
++ * Copyright (c) 2016-2020 Arkadiusz Bokowy
+  *
+  * This file is a part of bluez-alsa.
+  *
+@@ -58,6 +58,6 @@ struct bluez_a2dp_codec {
+ };
+ 
+ /* NULL-terminated list of available A2DP codecs */
+-const struct bluez_a2dp_codec **bluez_a2dp_codecs;
++extern const struct bluez_a2dp_codec **bluez_a2dp_codecs;
+ 
+ #endif
+diff --git a/src/bluez-iface.h b/src/bluez-iface.h
+index 34269c5..ca8fba5 100644
+--- a/src/bluez-iface.h
++++ b/src/bluez-iface.h
+@@ -1,6 +1,6 @@
+ /*
+  * BlueALSA - bluez-iface.h
+- * Copyright (c) 2016-2019 Arkadiusz Bokowy
++ * Copyright (c) 2016-2020 Arkadiusz Bokowy
+  *
+  * This file is a part of bluez-alsa.
+  *
+@@ -27,7 +27,7 @@
+ #define BLUEZ_TRANSPORT_STATE_PENDING "pending"
+ #define BLUEZ_TRANSPORT_STATE_ACTIVE  "active"
+ 
+-const GDBusInterfaceInfo bluez_iface_endpoint;
+-const GDBusInterfaceInfo bluez_iface_profile;
++extern const GDBusInterfaceInfo bluez_iface_endpoint;
++extern const GDBusInterfaceInfo bluez_iface_profile;
+ 
+ #endif
+diff --git a/src/ofono-iface.h b/src/ofono-iface.h
+index d5a6715..d5b9065 100644
+--- a/src/ofono-iface.h
++++ b/src/ofono-iface.h
+@@ -1,6 +1,6 @@
+ /*
+  * BlueALSA - ofono-iface.h
+- * Copyright (c) 2016-2019 Arkadiusz Bokowy
++ * Copyright (c) 2016-2020 Arkadiusz Bokowy
+  *               2018 Thierry Bultel
+  *
+  * This file is a part of bluez-alsa.
+@@ -27,6 +27,6 @@
+ #define OFONO_AUDIO_CODEC_CVSD 0x01
+ #define OFONO_AUDIO_CODEC_MSBC 0x02
+ 
+-const GDBusInterfaceInfo ofono_iface_hf_audio_agent;
++extern const GDBusInterfaceInfo ofono_iface_hf_audio_agent;
+ 
+ #endif
+diff --git a/test/server-mock.c b/test/server-mock.c
+index 34934e8..a42e845 100644
+--- a/test/server-mock.c
++++ b/test/server-mock.c
+@@ -36,6 +36,7 @@
+ #include "../src/ba-adapter.c"
+ #include "../src/ba-device.c"
+ #include "../src/ba-transport.c"
++#include "../src/bluez-a2dp.c"
+ #include "../src/hci.c"
+ #include "../src/msbc.c"
+ #include "../src/rfcomm.c"
+diff --git a/test/test-ba.c b/test/test-ba.c
+index f9eb145..97d57d6 100644
+--- a/test/test-ba.c
++++ b/test/test-ba.c
+@@ -22,6 +22,7 @@
+ #include "../src/utils.c"
+ #include "../src/shared/log.c"
+ 
++const struct bluez_a2dp_codec **bluez_a2dp_codecs = NULL;
+ int a2dp_thread_create(struct ba_transport *t) { (void)t; return 0; }
+ void *rfcomm_thread(struct ba_transport *t) { (void)t; return 0; }
+ void *sco_thread(struct ba_transport *t) { (void)t; return 0; }
+diff --git a/test/test-io.c b/test/test-io.c
+index 9dbd0e9..85d3fe7 100644
+--- a/test/test-io.c
++++ b/test/test-io.c
+@@ -33,6 +33,7 @@
+ #include "../src/shared/log.c"
+ #include "../src/shared/rt.c"
+ 
++const struct bluez_a2dp_codec **bluez_a2dp_codecs = NULL;
+ unsigned int bluealsa_dbus_pcm_register(struct ba_transport *t, GError **error) {
+ 	debug("%s: %p", __func__, (void *)t); (void)error; return 0; }
+ void bluealsa_dbus_pcm_update(struct ba_transport *t, unsigned int mask) {
+diff --git a/test/test-rfcomm.c b/test/test-rfcomm.c
+index d14a7bd..248939f 100644
+--- a/test/test-rfcomm.c
++++ b/test/test-rfcomm.c
+@@ -34,6 +34,7 @@ static pthread_mutex_t transport_codec_updated_mtx = PTHREAD_MUTEX_INITIALIZER;
+ static pthread_cond_t transport_codec_updated = PTHREAD_COND_INITIALIZER;
+ static unsigned int transport_codec_updated_cnt = 0;
+ 
++const struct bluez_a2dp_codec **bluez_a2dp_codecs = NULL;
+ unsigned int bluealsa_dbus_pcm_register(struct ba_transport *t, GError **error) {
+ 	debug("%s: %p", __func__, (void *)t); (void)error; return 0; }
+ void bluealsa_dbus_pcm_update(struct ba_transport *t, unsigned int mask) {
+-- 
+2.24.1
+
