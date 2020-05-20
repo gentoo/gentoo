@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop qmake-utils
 
@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
+BDEPEND="dev-qt/linguist-tools:5"
 RDEPEND="
 	app-text/poppler[qt5]
 	dev-qt/qtcore:5
@@ -21,9 +22,7 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-qt5.patch )
 
