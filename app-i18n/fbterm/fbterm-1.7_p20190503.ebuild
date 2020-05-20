@@ -9,8 +9,7 @@ EGIT_COMMIT="ccea326dd73f4d6b6442fde7ba7c2be9cd35c6df"
 
 DESCRIPTION="Fast terminal emulator for the Linux framebuffer"
 HOMEPAGE="https://github.com/gjedeer/fbterm"
-
-SRC_URI="https://github.com/gjedeer/fbterm/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gjedeer/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
