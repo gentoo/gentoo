@@ -91,6 +91,7 @@ src_configure() {
 		--docdir=share/doc \
 		--libdir=$(get_libdir) \
 		--os=${myos} \
+		--distribution-info="Gentoo ${PVR}" \
 		--prefix="${EPREFIX}/usr" \
 		--with-endian="$(tc-endian)" \
 		--with-python-version=$(IFS=","; echo "${pythonvers[*]}" ) \
