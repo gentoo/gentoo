@@ -42,7 +42,7 @@ RDEPEND="acct-group/mongodb
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
-		test? ( dev-python/pymongo[${PYTHON_USEDEP}] dev-python/pymongo[${PYTHON_USEDEP}] )
+		test? ( dev-python/pymongo[${PYTHON_USEDEP}] dev-python/requests[${PYTHON_USEDEP}] )
 		>=dev-util/scons-2.5.0[${PYTHON_USEDEP}]
 		dev-python/cheetah3[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
