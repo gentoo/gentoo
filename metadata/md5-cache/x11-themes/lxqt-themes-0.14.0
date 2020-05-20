@@ -2,10 +2,10 @@ BDEPEND=>=dev-util/lxqt-build-tools-0.6.0 dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=Themes, graphics and icons for LXQt
 EAPI=7
-HOMEPAGE=https://lxqt.org/
+HOMEPAGE=https://lxqt.github.io/
 KEYWORDS=amd64 ~arm ~arm64 ~ppc64 x86
 LICENSE=LGPL-2.1+
 SLOT=0
 SRC_URI=https://downloads.lxqt.org/downloads/lxqt-themes/0.14.0/lxqt-themes-0.14.0.tar.xz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=de159bda1fc979e7727079dff5ad7d50
+_md5_=79f98f657b77c3d40ba821ff17a7cb3a

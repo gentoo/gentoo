@@ -1,11 +1,11 @@
 DEFINED_PHASES=-
 DESCRIPTION=Meta ebuild for LXQt, the Lightweight Desktop Environment
 EAPI=7
-HOMEPAGE=https://lxqt.org/
+HOMEPAGE=https://lxqt.github.io/
 IUSE=+about admin +filemanager lightdm lximage minimal nls +policykit powermanagement processviewer screenshot sddm ssh-askpass sudo terminal +trash
 KEYWORDS=amd64 ~arm ~arm64 ~ppc64 x86
 LICENSE=metapackage
 RDEPEND=kde-frameworks/oxygen-icons >=lxde-base/lxmenu-data-0.1.5 =lxqt-base/lxqt-config-0.14* =lxqt-base/lxqt-globalkeys-0.14* =lxqt-base/lxqt-notificationd-0.14* =lxqt-base/lxqt-panel-0.14* =lxqt-base/lxqt-qtplugin-0.14* =lxqt-base/lxqt-runner-0.14* =lxqt-base/lxqt-session-0.14* virtual/ttf-fonts =x11-themes/lxqt-themes-0.14* about? ( =lxqt-base/lxqt-about-0.14* ) admin? ( =lxqt-base/lxqt-admin-0.14* ) filemanager? ( =x11-misc/pcmanfm-qt-0.14* ) lightdm? ( x11-misc/lightdm ) lximage? ( media-gfx/lximage-qt ) !minimal? ( x11-wm/openbox x11-misc/obconf-qt ) nls? ( dev-qt/qttranslations:5 ) policykit? ( =lxqt-base/lxqt-policykit-0.14* ) powermanagement? ( =lxqt-base/lxqt-powermanagement-0.14* ) processviewer? ( x11-misc/qps:0 ) screenshot? ( x11-misc/screengrab:0 ) sddm? ( >=x11-misc/sddm-0.11.0 ) ssh-askpass? ( =lxqt-base/lxqt-openssh-askpass-0.14* ) sudo? ( =lxqt-base/lxqt-sudo-0.14* ) terminal? ( x11-terms/qterminal:0 ) trash? ( gnome-base/gvfs )
 REQUIRED_USE=trash? ( filemanager )
 SLOT=0
-_md5_=cbd047bece4e217f15a51270b860a939
+_md5_=7ca90130d0b69636dea5f893e79700d7
