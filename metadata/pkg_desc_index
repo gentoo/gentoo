@@ -43,6 +43,7 @@ acct-group/dovenull 0: System group: dovenull
 acct-group/elasticsearch 0: Elasticsearch program group
 acct-group/epmd 0: Group for Erlang Portmapper Daemon
 acct-group/etcd 0: System group: etcd
+acct-group/exabgp 0: System group: exabgp
 acct-group/fetchmail 0: Group for net-mail/fetchmail
 acct-group/fhem 0: A group for the FHEM perl server for house automation
 acct-group/ftp 0: File Transfer Protocol server user
@@ -239,6 +240,7 @@ acct-user/dovenull 0: user for dovecot daemon
 acct-user/elasticsearch 0: Elasticsearch program user
 acct-user/epmd 0: User for Erlang Protmapper Daemon
 acct-user/etcd 0: User for etcd
+acct-user/exabgp 0: User for net-misc/exabgp
 acct-user/fetchmail 0: User for net-mail/fetchmail
 acct-user/fhem 0: A user for the FHEM perl server for house automation
 acct-user/ftp 0: File Transfer Protocol server user
@@ -14831,7 +14833,7 @@ net-misc/etherdfs 20180203: An ethernet-based file system for DOS
 net-misc/ethertypes 0: Maps ethernet frame ids to symbolic names
 net-misc/ethflop 20191003: A network-backed floppy emulator for DOS
 net-misc/eventd 0.27.0-r1: A small daemon to act on remote or local events
-net-misc/exabgp 3.2.17 3.4.26-r1 3.4.28 4.0.10 4.2.7: The BGP swiss army knife of networking
+net-misc/exabgp 3.4.28-r2 4.2.7-r2: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
