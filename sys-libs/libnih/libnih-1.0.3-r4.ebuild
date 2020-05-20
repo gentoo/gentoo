@@ -23,10 +23,12 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.0.3-optional-dbus.patch
-	"${FILESDIR}"/${PN}-1.0.3-pkg-config.patch
-	"${FILESDIR}"/${PN}-1.0.3-signal-race.patch
-	"${FILESDIR}"/${PN}-1.0.3-fno-common.patch
+	"${FILESDIR}"/${P}-optional-dbus.patch
+	"${FILESDIR}"/${P}-pkg-config.patch
+	"${FILESDIR}"/${P}-signal-race.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-expat-2.2.5.patch
+	"${FILESDIR}"/${P}-glibc-2.24.patch
 )
 
 src_prepare() {

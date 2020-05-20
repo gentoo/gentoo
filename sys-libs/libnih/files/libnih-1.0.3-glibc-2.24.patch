@@ -1,0 +1,57 @@
+With glibc >= 2.24, raise() temporarily blocks signals to make this
+function async-signal-safe. This has the consequence that the SIGCONT
+signal send by the call to PTRACE_CONT is delivered slightly later. In
+turn it means the next ptrace event received is the SIGCONT signal
+instead of the expected one.
+
+Unfortunately the libnih testsuite has very precise expectations, and
+do not expect such an event. Fix that by catching it and waiting for the
+following event.
+
+--- libnih-1.0.3.orig/nih/tests/test_child.c
++++ libnih-1.0.3/nih/tests/test_child.c
+@@ -360,6 +360,14 @@ test_poll (void)
+ 
+ 	waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
+ 
++	/* ptrace might catch the SIGCONT emitted with PTRACE_CONT, catch it 
++	   and wait for the next event.
++	 */
++	if (siginfo.si_code == CLD_TRAPPED && siginfo.si_status == SIGCONT) {
++		assert0 (ptrace (PTRACE_CONT, pid, NULL, NULL));
++		waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
++	}
++
+ 	watch = nih_child_add_watch (NULL, pid, NIH_CHILD_TRAPPED,
+ 				     my_handler, &watch);
+ 
+@@ -420,6 +428,14 @@ test_poll (void)
+ 	/* Wait for ptrace to stop the parent (signalling the fork) */
+ 	waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
+ 
++	/* ptrace might catch the SIGCONT emitted with PTRACE_CONT, catch it
++	   and wait for the next event.
++	 */
++	if (siginfo.si_code == CLD_TRAPPED && siginfo.si_status == SIGCONT) {
++		assert0 (ptrace (PTRACE_CONT, pid, NULL, NULL));
++		waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
++	}
++
+ 	/* Will be able to get the child pid now, we have to do it here
+ 	 * because we want to wait on it to ensure the test is synchronous;
+ 	 * otherwise nih_child_poll() could actually eat the child event
+@@ -489,6 +505,14 @@ test_poll (void)
+ 
+ 	waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
+ 
++	/* ptrace might catch the SIGCONT emitted with PTRACE_CONT, catch it
++	   and wait for the next event.
++	 */
++	if (siginfo.si_code == CLD_TRAPPED && siginfo.si_status == SIGCONT) {
++		assert0 (ptrace (PTRACE_CONT, pid, NULL, NULL));
++		waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
++	}
++
+ 	watch = nih_child_add_watch (NULL, pid, NIH_CHILD_PTRACE,
+ 				     my_handler, &watch);
+ 

@@ -1,0 +1,15 @@
+Description: Adapt test suite to expat 2.2.5
+Author: Axel Beckert <abe@debian.org>
+Bug-Debian: https://bugs.debian.org/886416
+
+--- a/nih-dbus-tool/tests/test_parse.c
++++ b/nih-dbus-tool/tests/test_parse.c
+@@ -7950,7 +7950,7 @@
+ 
+ 		TEST_EQ_P (node, NULL);
+ 
+-		TEST_FILE_EQ (output, ("test:foo:2:0: "
++		TEST_FILE_EQ (output, ("test:foo:1:36: "
+ 				       "Invalid object path in <node> name attribute\n"));
+ 		TEST_FILE_END (output);
+ 		TEST_FILE_RESET (output);
