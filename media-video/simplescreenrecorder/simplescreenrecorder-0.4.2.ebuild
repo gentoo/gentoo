@@ -45,10 +45,6 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.4.0-metainfo.patch"
-)
-
 pkg_pretend() {
 	if [[ "${ABI}" == amd64 ]]; then
 		elog "You may want to add USE flag 'abi_x86_32' when running a 64bit system"
