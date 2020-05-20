@@ -123,6 +123,7 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/perl-Getopt-Long
 	dev-perl/File-HomeDir
 	dev-perl/Log-Dispatch
+	dev-perl/Unicode-LineBreak
 	dev-perl/YAML-Tiny
 	tk? ( dev-perl/Tk )"
 
