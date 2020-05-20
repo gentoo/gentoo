@@ -5,10 +5,10 @@ DESCRIPTION=Library parsing Apple Keynote presentations
 EAPI=7
 HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
 IUSE=doc static-libs test
-KEYWORDS=amd64 ~arm ~arm64 ~ppc64 ~x86
+KEYWORDS=amd64 ~arm arm64 ~ppc64 ~x86
 LICENSE=|| ( GPL-2+ LGPL-2.1 MPL-1.1 )
 RDEPEND=app-text/liblangtag dev-libs/librevenge dev-libs/libxml2 >=dev-util/mdds-1.4.3:1= sys-libs/zlib
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://dev-www.libreoffice.org/src/libetonyek/libetonyek-0.1.9.tar.xz
-_md5_=0fc8a80ae9ebd9950e478228b35c25b8
+_md5_=4b7ab0ac4c274b61e558a7d47a082246
