@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools gnome2-utils flag-o-matic nsplugins qmake-utils toolchain-funcs versionator xdg-utils
+inherit autotools flag-o-matic nsplugins qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Portable DjVu viewer using Qt"
 HOMEPAGE="http://djvu.sourceforge.net/djview4.html"
@@ -23,6 +23,7 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5"
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	>=sys-devel/autoconf-2.67
 	virtual/pkgconfig
 	nsplugin? ( dev-libs/glib:2 )"
@@ -76,10 +77,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
