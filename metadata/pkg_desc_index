@@ -497,7 +497,7 @@ app-admin/keepassxc 2.5.3 2.5.4 9999: KeePassXC - KeePass Cross-platform Communi
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.3 3.4: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
-app-admin/kubectx 0.6.3 0.7.1: Fast way to switch between clusters and namespaces in kubectl
+app-admin/kubectx 0.6.3 0.7.1 0.9.0: Fast way to switch between clusters and namespaces in kubectl
 app-admin/lastpass-binary-component 4.19.0-r1: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.3.1-r1 1.3.2 1.3.3: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.14: Check for mapped libs and open files that are marked as deleted
@@ -518,7 +518,7 @@ app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.0 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.6.13 3.6.14 3.6.16 3.6.17 4.0.12 4.0.13 4.0.14 4.0.16 4.2.1 4.2.2 4.2.3: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.6.13 3.6.17 4.0.12 4.0.16 4.2.3 4.2.6: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.25.3 5.26.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc35: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
@@ -3280,7 +3280,7 @@ dev-db/mariadb 5.5.66 5.5.67 10.1.38-r1 10.1.43 10.1.44-r1 10.2.22-r1 10.2.29 10
 dev-db/mariadb-connector-c 3.1.6 3.1.7 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 3.6.13 3.6.14 3.6.16 3.6.17 4.0.12 4.0.13 4.0.14 4.0.16 4.0.16-r1 4.2.1 4.2.2 4.2.3 4.2.3-r1: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 3.6.13 3.6.17 4.0.12 4.0.16-r1 4.2.3-r1 4.2.6: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
@@ -7498,7 +7498,7 @@ dev-python/aiorpcX 0.18.4: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23: alabaster sub-theme used on git-pull docs
-dev-python/alembic 1.0.8: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 1.0.8 1.4.2: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/ament_package 0.8.8: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.0: Transmit data between two computers using audio
