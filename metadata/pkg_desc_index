@@ -13403,7 +13403,7 @@ media-sound/beets 1.4.9-r1: Media library management system for obsessive-compul
 media-sound/bempc 0.11_p20160207: Qt5 MPD client with experimental UI
 media-sound/bitmeter 1.2-r2: Diagnosis tool for JACK audio software
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
-media-sound/bluez-alsa 2.0.0 2.1.0 9999: Bluetooth Audio ALSA Backend
+media-sound/bluez-alsa 2.1.0 9999: Bluetooth Audio ALSA Backend
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
 media-sound/bpmdetect 0.7.0_pre20170810: Automatic BPM detection utility
 media-sound/bristol 0.60.11-r1: Synthesizer keyboard emulation package: Moog, Hammond and others
