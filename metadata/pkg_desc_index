@@ -2478,7 +2478,7 @@ app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugrepo
 app-portage/pfl 3.0.1-r3 3.1: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.80 0.87 9999: Small and fast Portage helper tools written in C
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.1.27-r1: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.1.27-r1 2.1.29: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/pram 8 9: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
