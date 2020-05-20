@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit qmake-utils
 
 DESCRIPTION="Fractal planet and terrain generator"
@@ -15,6 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="dev-libs/libxslt"
 RDEPEND="
 	dev-libs/boost:=
 	dev-qt/qtcore:5
@@ -24,10 +26,8 @@ RDEPEND="
 	virtual/glu
 	virtual/opengl
 "
-DEPEND="
-	${RDEPEND}
-	dev-libs/libxslt
-"
+DEPEND="${RDEPEND}"
+
 HTML_DOCS=( fracplanet.{htm,css} )
 
 src_configure() {
