@@ -12,6 +12,7 @@ SRC_URI="https://github.com/iovisor/ply/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+IUSE="static-libs"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~NET_CLS_BPF ~NET_ACT_BPF
@@ -29,4 +30,8 @@ src_prepare() {
 src_install() {
 	default
 	rm -f "${ED}/usr/share/doc/${P}/COPYING"
+
+	if ! use static-libs; then
+		find "${D}" -type f -name '*.a' -delete || die
+	fi
 }
