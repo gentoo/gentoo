@@ -7,7 +7,7 @@ MY_PN="phonon-backend-gstreamer"
 inherit ecm kde.org
 
 DESCRIPTION="GStreamer backend for the Phonon multimedia library"
-HOMEPAGE="https://phonon.kde.org/"
+HOMEPAGE="https://community.kde.org/Phonon"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_PN}-${PV}.tar.xz"
