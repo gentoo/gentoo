@@ -1,0 +1,37 @@
+From 81741a875847c806c05f0f3a4610e69b3c3002aa Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 20 May 2020 14:12:15 +0200
+Subject: [PATCH] Fix build with Qt 5.15 (missing QPainterPath include)
+
+---
+ librecad/src/lib/engine/lc_splinepoints.cpp | 1 +
+ librecad/src/lib/gui/rs_painterqt.h         | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/librecad/src/lib/engine/lc_splinepoints.cpp b/librecad/src/lib/engine/lc_splinepoints.cpp
+index 5eaed81b..e6324ec1 100644
+--- a/librecad/src/lib/engine/lc_splinepoints.cpp
++++ b/librecad/src/lib/engine/lc_splinepoints.cpp
+@@ -21,6 +21,7 @@ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ **********************************************************************/
+ 
++#include <QPainterPath>
+ #include <QPolygonF>
+ #include "lc_splinepoints.h"
+ 
+diff --git a/librecad/src/lib/gui/rs_painterqt.h b/librecad/src/lib/gui/rs_painterqt.h
+index 878753cb..a0b432e0 100644
+--- a/librecad/src/lib/gui/rs_painterqt.h
++++ b/librecad/src/lib/gui/rs_painterqt.h
+@@ -29,6 +29,7 @@
+ #define RS_PAINTERQT_H
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ #include "rs_painter.h"
+ #include "rs_pen.h"
+-- 
+2.26.2
+
