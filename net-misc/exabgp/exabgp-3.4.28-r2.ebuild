@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
+	acct-group/exabgp
+	acct-user/exabgp
 	dev-python/ipaddr[${PYTHON_USEDEP}]
 "
 
