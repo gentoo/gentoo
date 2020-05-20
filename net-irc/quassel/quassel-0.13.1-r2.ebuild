@@ -8,7 +8,7 @@ inherit cmake xdg-utils pax-utils systemd
 if [[ ${PV} != *9999* ]]; then
 	MY_P=${PN}-${PV/_/-}
 	SRC_URI="https://quassel-irc.org/pub/${MY_P}.tar.bz2"
-	KEYWORDS="amd64 ~arm x86 ~amd64-linux ~sparc-solaris"
+	KEYWORDS="amd64 ~arm ~ppc64 x86 ~amd64-linux ~sparc-solaris"
 	S="${WORKDIR}/${MY_P}"
 else
 	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" )
