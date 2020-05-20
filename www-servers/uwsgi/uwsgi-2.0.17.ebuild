@@ -42,7 +42,7 @@ UWSGI_PLUGINS_OPT=( alarm_{curl,xmpp} clock_{monotonic,realtime} curl_cron
 	systemd_logger transformation_toupper tuntap webdav xattr xslt zabbix )
 
 LANG_SUPPORT_SIMPLE=( cgi perl ) # plugins which can be built in the main build process
-LANG_SUPPORT_EXTENDED=( go lua php python python_asyncio python_gevent ruby )
+LANG_SUPPORT_EXTENDED=( go lua php python python-asyncio python-gevent ruby )
 
 # plugins to be ignored (for now):
 # cheaper_backlog2: example plugin
@@ -68,8 +68,8 @@ REQUIRED_USE="|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 	uwsgi_plugins_forkptyrouter? ( uwsgi_plugins_corerouter )
 	uwsgi_plugins_router_xmldir? ( xml !expat )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	python_asyncio? ( || ( $(python_gen_useflags -3) ) python_gevent )
-	python_gevent? ( python )
+	python-asyncio? ( || ( $(python_gen_useflags -3) ) python-gevent )
+	python-gevent? ( python )
 	expat? ( xml )"
 
 # util-linux is required for libuuid when requesting zeromq support
@@ -114,7 +114,7 @@ CDEPEND="sys-libs/zlib
 		php_targets_php7-4? ( dev-lang/php:7.4[embed] )
 	)
 	python? ( ${PYTHON_DEPS} )
-	python_gevent? ( >=dev-python/gevent-1.2.1[${PYTHON_USEDEP}] )
+	python-gevent? ( >=dev-python/gevent-1.2.1[${PYTHON_USEDEP}] )
 	ruby? ( $(ruby_implementations_depend) )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
@@ -246,13 +246,13 @@ python_compile_plugins() {
 
 	${PYTHON} uwsgiconfig.py --plugin plugins/python gentoo ${EPYV} || die "building plugin for ${EPYTHON} failed"
 
-	if use python_asyncio ; then
+	if use python-asyncio ; then
 		if [[ "${PYV}" == "34" || "${PYV}" == "35" ]] ; then
 			${PYTHON} uwsgiconfig.py --plugin plugins/asyncio gentoo asyncio${PYV} || die "building plugin for asyncio-support in ${EPYTHON} failed"
 		fi
 	fi
 
-	if use python_gevent ; then
+	if use python-gevent ; then
 		${PYTHON} uwsgiconfig.py --plugin plugins/gevent gentoo gevent${PYV} || die "building plugin for gevent-support in ${EPYTHON} failed"
 	fi
 }
@@ -364,14 +364,14 @@ pkg_postinst() {
 
 		elog " "
 		elog "  '--plugins ${EPYV}' for ${EPYTHON}"
-		if use python_asyncio ; then
+		if use python-asyncio ; then
 			if [[ ${EPYV} == python34 ]] ; then
 				elog "  '--plugins ${EPYV},asyncio${PYV}' for asyncio support in ${EPYTHON}"
 			else
 				elog "  (asyncio is only supported in python3.4)"
 			fi
 		fi
-		if use python_gevent ; then
+		if use python-gevent ; then
 			elog "  '--plugins ${EPYV},gevent${PYV}' for gevent support in ${EPYTHON}"
 		fi
 	}
