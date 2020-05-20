@@ -13,7 +13,7 @@ SRC_URI="http://alpine.x10host.com/alpine/release/src/${P}.tar.xz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+chappa doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads"
 
 DEPEND=">=sys-libs/ncurses-5.1:0=

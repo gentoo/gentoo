@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~ppc x86"
+	KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 fi
 
 IUSE="libressl sasl ssl zlib"

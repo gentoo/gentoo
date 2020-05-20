@@ -98,7 +98,11 @@ src_install() {
 	dosym ${sysroot}/lib/${ldso} ${sysroot}/usr/bin/ldd
 
 	if [[ ${CATEGORY} != cross-* ]] ; then
-		local arch=$("${D}"usr/lib/libc.so 2>&1 | sed -n '1s/^musl libc (\(.*\))$/\1/p')
+		# Fish out of config:
+		#   ARCH = ...
+		#   SUBARCH = ...
+		# and print $(ARCH)$(SUBARCH).
+		local arch=$(awk '{ k[$1] = $3 } END { printf("%s%s", k["ARCH"], k["SUBARCH"]); }' config.mak)
 		[[ -e "${D}"/lib/ld-musl-${arch}.so.1 ]] || die
 		cp "${FILESDIR}"/ldconfig.in "${T}" || die
 		sed -e "s|@@ARCH@@|${arch}|" "${T}"/ldconfig.in > "${T}"/ldconfig || die
