@@ -1663,7 +1663,7 @@ app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.0.0-r3 6.1.0-r1 6.2.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.2 4.0.2-r1: LinuX Containers userspace utilities
+app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.2 4.0.2-r2: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 3.14 3.16-r1 4.0.1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
@@ -10112,7 +10112,6 @@ dev-tcltk/mysqltcl 3.052-r1: TCL MySQL Interface
 dev-tcltk/scwoop 4.1-r1: Simple Composite Widget Object Oriented Package
 dev-tcltk/snack 2.2.10-r8: The Snack Sound Toolkit (Tcl)
 dev-tcltk/tablelist 5.8 6.3 6.8: Multi-Column Listbox Package
-dev-tcltk/tcl-mccp 0.6: mccp extension to TCL
 dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.19 1.20: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
@@ -13621,13 +13620,13 @@ media-sound/pulsemixer 1.5.0 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.6.2 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
-media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO for ALSA
+media-sound/qmidiarp 0.6.4-r1: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.3.2-r1 1.3.7 1.4.0 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.2 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
-media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
+media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.13: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
