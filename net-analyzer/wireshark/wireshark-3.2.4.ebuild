@@ -226,7 +226,9 @@ src_install() {
 		done
 	fi
 
-	rm -r "${D}"/usr/share/appdata || die
+	if [[ -d "${D}"/usr/share/appdata ]]; then
+		rm -r "${D}"/usr/share/appdata || die
+	fi
 }
 
 pkg_postinst() {
