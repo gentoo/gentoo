@@ -5,7 +5,6 @@ EAPI=7
 inherit go-module
 GIT_COMMIT=63ab801ac27e5742ae442ce36dff7877dcccb278
 
-
 DESCRIPTION="Single Node Kubernetes Cluster"
 HOMEPAGE="https://github.com/kubernetes/minikube https://kubernetes.io"
 
