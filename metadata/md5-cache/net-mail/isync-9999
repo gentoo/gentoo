@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=>=sys-libs/db-4.2:= sasl? ( dev-libs/cyrus-sasl ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6:0= ) libressl? ( dev-libs/libressl:0= ) ) zlib? ( sys-libs/zlib:0= )
 SLOT=0
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3467e0be0ef2a3c558600c93c5c2e239
+_md5_=764606021598ca307da693aea6c376fd

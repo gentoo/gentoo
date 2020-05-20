@@ -8875,7 +8875,7 @@ dev-python/tinycss2 1.0.2: A complete yet simple CSS parser for Python
 dev-python/tinyrpc 1.0.1: A protocol neutral RPC library that supports JSON-RPC and zmq.
 dev-python/tld 0.12.1: Extract the top level domain (TLD) from the URL given
 dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered domain and subdomains of a URL.
-dev-python/toml 0.10.0-r1: Python library for handling TOML files
+dev-python/toml 0.10.0-r1 0.10.1: Python library for handling TOML files
 dev-python/toolz 0.9.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
@@ -10521,7 +10521,7 @@ dev-util/pkgconf 1.6.3 9999: pkg-config compatible replacement with no dependenc
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
 dev-util/plan9port 20140306-r4: Port of many Plan 9 programs and libraries
-dev-util/ply 0_pre20160313 2.1.1: Dynamic instrumentation of the Linux kernel with BPF and kprobes
+dev-util/ply 2.1.1: Dynamic instrumentation of the Linux kernel with BPF and kprobes
 dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
 dev-util/pretrace 0.4-r1: start dynamically linked applications under debugging environment
 dev-util/promu 0.5.0: Prometheus Utility Tool
@@ -16036,7 +16036,7 @@ sci-libs/libint 1.1.6 2.0.5: Matrix elements (integrals) evaluation over Cartesi
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
 sci-libs/libnova 0.16.0: Celestial Mechanics and Astronomical Calculation Library
-sci-libs/liborigin 20110829-r1: Library for reading OriginLab OPJ project files
+sci-libs/liborigin 3.0.0: Library for reading OriginLab OPJ project files
 sci-libs/libpdb 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728-r1: PDB Record I/O Libraries -- c++ version
 sci-libs/libqalculate 0.9.9 2.2.0 2.8.1 3.2.0-r1: A modern multi-purpose calculator library
