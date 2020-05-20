@@ -7613,9 +7613,13 @@ sci-physics/geant:geant3 - Add compatibility for geant321 to geant4
 sci-physics/geant:inventor - Add support for Open Inventor SGI toolkit via Coin3D
 sci-physics/geant:raytracerx - Enable raytracing for physics events
 sci-physics/geant:vrml - Enable output of geant4 in vrml formats
+sci-physics/geant-vmc:c++11 - Build using the C++11 standard
+sci-physics/geant-vmc:c++14 - Build using the C++14 standard
+sci-physics/geant-vmc:c++17 - Build using the C++17 standard
 sci-physics/geant-vmc:g4root - Build G4Root (interface for GEANT4 simulation with a ROOT geometry)
 sci-physics/geant-vmc:geant3 - Build with Geant4 G3toG4 library
 sci-physics/geant-vmc:mtroot - Build MTRoot (provides ROOT IO manager classes with multi-threading support)
+sci-physics/geant-vmc:rootvmc - Use sci-physics/root[vmc] (deprecated) instead of sci-physics/vmc as VMC provider
 sci-physics/geant-vmc:vgm - Enable the Virtual Geometry Model (sci-physics/vgm)
 sci-physics/hepmc:cm - Build with cm instead of default mm for length units
 sci-physics/hepmc:gev - Build with GeV instead of default MeV for momentum units
@@ -7662,8 +7666,14 @@ sci-physics/thepeg:fastjet - Adds support for sci-physics/fastjet
 sci-physics/thepeg:hepmc - Adds support for High Energy Physics Monte Carlo Generators sci-physics/hepmc
 sci-physics/thepeg:lhapdf - Adds support for sci-physics/lhapdf
 sci-physics/thepeg:rivet - Adds support for sci-physics/rivet
+sci-physics/vgm:c++11 - Build using the C++11 standard
+sci-physics/vgm:c++14 - Build using the C++14 standard
+sci-physics/vgm:c++17 - Build using the C++17 standard
 sci-physics/vgm:geant4 - Enable interaction with Geant4(sci-physics/geant:4)
 sci-physics/vgm:root - Enable interaction with ROOT (sci-physics/root)
+sci-physics/vmc:c++11 - Build using the C++11 standard
+sci-physics/vmc:c++14 - Build using the C++14 standard
+sci-physics/vmc:c++17 - Build using the C++17 standard
 sci-physics/yoda:root - Adds support for sci-physics/root
 sci-visualization/fityk:nlopt - Enable optimization with sci-libs/nlopt
 sci-visualization/gnuplot:bitmap - Enable dot-matrix printers and pbm terminal
