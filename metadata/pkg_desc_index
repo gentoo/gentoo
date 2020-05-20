@@ -12201,7 +12201,7 @@ mate-base/mate-session-manager 1.22.3-r2 1.24.0-r2: MATE session manager
 mate-base/mate-settings-daemon 1.22.1 1.24.0: MATE Settings Daemon
 mate-extra/caja-admin 0.0.1 0.0.2 0.0.2_p20200328 9999: Caja Admin Extension
 mate-extra/caja-dropbox 1.22.1-r1 1.24.0: Store, Sync and Share Files Online
-mate-extra/caja-extensions 1.22.1 1.24.0: Several Caja extensions
+mate-extra/caja-extensions 1.22.1 1.24.0 1.24.0-r1: Several Caja extensions
 mate-extra/caja-hide 0.9.0: Hide files without renaming them in MATE's Caja
 mate-extra/mate-calc 1.22.2 1.24.0: Calculator for MATE
 mate-extra/mate-indicator-applet 1.22.1 1.24.0: MATE indicator applet
@@ -17012,7 +17012,7 @@ sys-boot/mokutil 0.3.0_p20170404: The utility to manipulate machines owner keys 
 sys-boot/netboot 0.10.2-r1: Allows to remote boot a computer over an IP network
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
 sys-boot/os-prober 1.77: Utility to detect other OSs on a set of drives
-sys-boot/palo 2.12-r1 9999: PALO : PArisc Linux Loader
+sys-boot/palo 2.12-r1 2.13 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.9.3-r1 0.9.3-r2 0.9.4-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.2-r1: Plymouth plugin for OpenRC
 sys-boot/raspberrypi-firmware 1.20190215 1.20190709 1.20190925 9999: Raspberry Pi (all versions) bootloader and GPU firmware
