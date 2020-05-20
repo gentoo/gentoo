@@ -8850,7 +8850,7 @@ dev-python/taskflow 3.5.0 4.1.0: A library to do [jobs, tasks, flows] in a HA ma
 dev-python/tblib 1.6.0: Traceback fiddling library for Python
 dev-python/tempita 0.5.3-r2: A very small text templating language
 dev-python/tempora 1.14.1-r1 3.0.0: Objects and routines pertaining to date and time
-dev-python/tenacity 4.8.0: General-purpose retrying library
+dev-python/tenacity 4.8.0 6.1.0: General-purpose retrying library
 dev-python/termcolor 1.1.0-r1 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.8.1 0.8.3: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
