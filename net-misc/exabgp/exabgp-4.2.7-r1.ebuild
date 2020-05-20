@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
-inherit distutils-r1
+inherit tmpfiles systemd distutils-r1
 
 DESCRIPTION="The BGP swiss army knife of networking"
 HOMEPAGE="https://github.com/Exa-Networks/exabgp"
@@ -34,4 +34,19 @@ PATCHES=(
 python_test() {
 	./qa/bin/parsing || die "tests fail with ${EPYTHON}"
 	nosetests -v ./qa/tests/*_test.py || die "tests fail with ${EPYTHON}"
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd" ${PN}
+
+	newtmpfiles "${FILESDIR}/exabgp.tmpfiles" ${PN}.conf
+	systemd_dounit etc/systemd/*
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotate" ${PN}
+
+	keepdir /etc/exabgp
 }
