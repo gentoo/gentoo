@@ -11,7 +11,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="bluetooth +browser-integration crypt +desktop-portal discover
 +display-manager elogind grub gtk +handbook +kwallet +legacy-systray
-networkmanager plymouth pulseaudio qrcode +sddm sdk systemd thunderbolt +wallpapers"
++networkmanager plymouth pulseaudio qrcode +sddm sdk systemd thunderbolt +wallpapers"
 
 REQUIRED_USE="?? ( elogind systemd )"
 
