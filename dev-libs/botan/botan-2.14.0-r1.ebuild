@@ -37,6 +37,10 @@ BDEPEND="
 	doc? ( dev-python/sphinx )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-bindist-test-fix.patch"
+)
+
 src_configure() {
 	local disable_modules=()
 	use boost || disable_modules+=( "boost" )
