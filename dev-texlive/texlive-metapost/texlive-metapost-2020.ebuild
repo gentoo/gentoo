@@ -12,7 +12,7 @@ DESCRIPTION="TeXLive MetaPost and Metafont packages"
 
 LICENSE=" CC-BY-SA-4.0 GPL-1 GPL-2 GPL-3+ LGPL-2 LPPL-1.3 MIT public-domain TeX-other-free "
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 DEPEND=">=dev-texlive/texlive-basic-2020
 "
