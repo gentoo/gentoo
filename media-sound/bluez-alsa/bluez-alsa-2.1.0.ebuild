@@ -40,6 +40,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch" #706680
+)
+
 src_prepare() {
 	default
 	eautoreconf
