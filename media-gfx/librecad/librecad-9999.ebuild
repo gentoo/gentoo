@@ -3,11 +3,18 @@
 
 EAPI=7
 
-inherit desktop git-r3 qmake-utils
+inherit desktop qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
 HOMEPAGE="https://www.librecad.org/"
-EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/LibreCAD-${PV}"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,8 +38,6 @@ DEPEND="${RDEPEND}
 	dev-qt/qthelp:5
 	dev-qt/qtxml:5
 "
-
-S="${WORKDIR}/LibreCAD-${PV}"
 
 src_configure() {
 	eqmake5 -r
