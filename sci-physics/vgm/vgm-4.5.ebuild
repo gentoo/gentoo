@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,9 +9,10 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vmc-project/${PN}.git"
 else
-	SRC_URI="http://ivana.home.cern.ch/ivana/${PN}.${PV}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${PN}"
+	MY_PV=$(ver_rs 1- -)
+	SRC_URI="https://github.com/vmc-project/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 DESCRIPTION="Virtual Geometry Model for High Energy Physics Experiments"
@@ -24,7 +25,7 @@ IUSE="doc examples +geant4 +root test"
 # sci-physics/root[c++11] required to match sci-physics/geant
 RDEPEND="
 	sci-physics/clhep:=
-	root? ( sci-physics/root:=[c++11] )
+	root? ( >=sci-physics/root-6.14:=[c++11] )
 	geant4? ( >=sci-physics/geant-4.10.03 )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )

@@ -4,7 +4,10 @@
   <maintainer type="person">
     <email>o.freyermuth@googlemail.com</email>
     <name>Oliver Freyermuth</name>
-    <description>Proxy-maintainer, assign bugs</description>
+  </maintainer>
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
@@ -15,6 +18,9 @@
     abstraction layer between the Geant4 and ROOT software.
   </longdescription>
   <use>
+    <flag name="c++11">Build using the C++11 standard</flag>
+    <flag name="c++14">Build using the C++14 standard</flag>
+    <flag name="c++17">Build using the C++17 standard</flag>
     <flag name="geant4">Enable interaction with Geant4(<pkg>sci-physics/geant</pkg>:4)</flag>
     <flag name="root">Enable interaction with ROOT (<pkg>sci-physics/root</pkg>)</flag>
   </use>

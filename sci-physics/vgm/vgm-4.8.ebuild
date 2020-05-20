@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,10 +8,12 @@ inherit cmake
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vmc-project/${PN}.git"
+	KEYWORDS=""
 else
-	SRC_URI="http://ivana.home.cern.ch/ivana/${PN}.${PV}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${PN}.${PV}"
+	MY_PV=$(ver_rs 1- -)
+	SRC_URI="https://github.com/vmc-project/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 DESCRIPTION="Virtual Geometry Model for High Energy Physics Experiments"
@@ -19,13 +21,14 @@ HOMEPAGE="http://ivana.home.cern.ch/ivana/VGM.html"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="doc examples +geant4 +root test"
+IUSE="+c++11 c++14 c++17 doc examples +geant4 +root test"
 
-# sci-physics/root[c++11] required to match sci-physics/geant
+REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
+
 RDEPEND="
 	sci-physics/clhep:=
-	root? ( sci-physics/root:=[c++11] )
-	geant4? ( >=sci-physics/geant-4.10.03 )"
+	geant4? ( >=sci-physics/geant-4.10.6[c++11?,c++14?,c++17?] )
+	root? ( >=sci-physics/root-6.14:=[c++11?,c++14?,c++17?] )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 	test? ( sci-physics/geant-vmc[g4root] )"
@@ -40,9 +43,6 @@ DOCS=(
 	doc/VGMhistory.txt
 	doc/VGM.html
 	doc/VGMversions.html
-)
-PATCHES=(
-	"${FILESDIR}"/"${PN}-fix-FindCLHEP.patch"
 )
 
 src_configure() {

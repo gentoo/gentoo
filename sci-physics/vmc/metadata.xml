@@ -13,17 +13,12 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <upstream>
-    <remote-id type="github">vmc-project/geant4_vmc</remote-id>
-  </upstream>
   <use>
     <flag name="c++11">Build using the C++11 standard</flag>
     <flag name="c++14">Build using the C++14 standard</flag>
     <flag name="c++17">Build using the C++17 standard</flag>
-    <flag name="vgm">Enable the Virtual Geometry Model (<pkg>sci-physics/vgm</pkg>)</flag>
-    <flag name="g4root">Build G4Root (interface for GEANT4 simulation with a ROOT geometry)</flag>
-    <flag name="geant3">Build with Geant4 G3toG4 library</flag>
-    <flag name="mtroot">Build MTRoot (provides ROOT IO manager classes with multi-threading support)</flag>
-    <flag name="rootvmc">Use sci-physics/root[vmc] (deprecated) instead of sci-physics/vmc as VMC provider</flag>
   </use>
+  <upstream>
+    <remote-id type="github">vmc-project/vmc</remote-id>
+  </upstream>
 </pkgmetadata>
