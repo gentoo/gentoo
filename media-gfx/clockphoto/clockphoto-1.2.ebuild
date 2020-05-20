@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils
 
-DESCRIPTION="Adjusts photo timestamps based on clock photos."
+DESCRIPTION="Adjusts photo timestamps based on clock photos"
 HOMEPAGE="https://git.zx2c4.com/clockphoto/about/"
 SRC_URI="https://git.zx2c4.com/clockphoto/snapshot/${P}.tar.xz"
 
@@ -14,8 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5"
-RDEPEND="media-gfx/exiv2 ${DEPEND}"
+DEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+"
+RDEPEND="${DEPEND}
+	media-gfx/exiv2
+"
 
 src_configure() {
 	eqmake5
