@@ -10,5 +10,6 @@
 	</use>
 	<longdescription lang="en">
 		Terminal email client with Vim-style keybindings, git awareness and other advanced features.
+		Works with multiple accounts, with support for IMAP, Maildir, SMTP, and sendmail transfer protocols.
 	</longdescription>
 </pkgmetadata>
