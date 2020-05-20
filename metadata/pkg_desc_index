@@ -5051,7 +5051,7 @@ dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for 
 dev-libs/libffi 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.1 1.4.0: Provides library functionality for FIDO 2.0
-dev-libs/libfilezilla 0.20.2 0.21.0: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 6.1.2 6.2.0-r1 6.2.1 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
@@ -5085,7 +5085,7 @@ dev-libs/libite 2.1.0 2.1.2 2.2.0: A collection of useful BSD APIs
 dev-libs/libixion 0.14.1 0.15.0 9999: General purpose formula parser & interpreter
 dev-libs/libjcat 0.1.1 0.1.2: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
-dev-libs/libksba 1.3.5-r1 1.3.5-r2: X.509 and CMS (PKCS#7) library
+dev-libs/libksba 1.3.5-r1 1.3.5-r2 1.4.0: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 210-r1 221 230: A Library for Large Linear Classification
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
@@ -10644,7 +10644,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, int
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.8 2.9 2.10 2.10-r1: Simple, high-reliability, source control management, and more
 dev-vcs/ghp-import 0.4.1-r1: Copy your docs directly to the gh-pages branch
-dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0_rc0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818 6.20170818-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
 dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
@@ -13870,7 +13870,7 @@ media-video/rtmpdump 2.4_p20161210-r3 9999: RTMP client intended to stream audio
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/shotcut 19.12.31: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/simplescreenrecorder 0.4.0 0.4.1 9999: A Simple Screen Recorder
+media-video/simplescreenrecorder 0.4.1 0.4.2 9999: A Simple Screen Recorder
 media-video/smplayer 18.6.0 19.10.2 20.4.2: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 19.6.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
@@ -14338,7 +14338,7 @@ net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7.2-r1: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.47.2.1 3.48.0: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.47.2.1 3.48.0 3.48.1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
@@ -16715,7 +16715,7 @@ sys-apps/kmscon 8-r1 8_p20180906: KMS/DRM based virtual Console Emulator
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2-r1: (Sun) Cobalt Qube/RaQ button reading and LCD writing utilities
-sys-apps/less 551 557 560 561: Excellent text file viewer
+sys-apps/less 551 561 562: Excellent text file viewer
 sys-apps/likwid 4.3.3 4.3.4: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 3.6-r2 3.18 4.4 4.4-r1 4.19 5.6: Misc tools bundled with kernel sources
 sys-apps/lm-sensors 3.5.0 3.5.0_p20190505 3.6.0: Hardware Monitoring user-space utilities
@@ -16858,7 +16858,7 @@ sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set
 sys-apps/usbutils 009 010-r1 012: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3 20070815-r4: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.33.2 2.34-r3 2.35.1-r2 9999: Various useful Linux utilities
+sys-apps/util-linux 2.33.2 2.34-r3 2.35.1-r2 2.35.2 9999: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
