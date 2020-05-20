@@ -16,7 +16,6 @@ SLOT="0"
 IUSE="apparmor +caps doc examples libressl pam seccomp selinux +ssl +templates +tools"
 
 RDEPEND="app-misc/pax-utils
-	net-libs/gnutls
 	sys-apps/util-linux
 	sys-libs/libcap
 	virtual/awk
