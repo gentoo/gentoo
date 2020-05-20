@@ -13,6 +13,9 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <use>
+    <flag name="cpu-flags-x86-rdrand">Enable RDRAND Hardware RNG Hash Seed</flag>
+  </use>
   <longdescription lang="en">
 "A JSON implementation in C" is probably the better description, and then
 "JSON-C implements a reference counting object model that allows you to 

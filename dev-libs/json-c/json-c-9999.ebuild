@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/json-c/json-c.git"
 
 LICENSE="MIT"
 SLOT="0/5"
-IUSE="doc static-libs threads"
+IUSE="cpu-flags-x86-rdrand doc static-libs threads"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/json-c/config.h
@@ -27,6 +27,7 @@ multilib_src_configure() {
 		-DBUILD_DOCUMENTATION=$(multilib_native_usex doc)
 		-DDISABLE_WERROR=ON
 		-DENABLE_THREADING=$(usex threads)
+		-DENABLE_RDRAND=$(usex cpu-flags-x86-rdrand)
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
 	)
 
