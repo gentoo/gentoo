@@ -3,24 +3,43 @@
 
 EAPI=7
 
-inherit git-r3 go-module
+inherit go-module
 
 DESCRIPTION="Email client for your terminal"
 HOMEPAGE="https://aerc-mail.org"
 
-EGIT_REPO_URI="https://git.sr.ht/~sircmpwn/aerc"
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.sr.ht/~sircmpwn/aerc"
+else
+	EGO_SUM=(
+		# to be filled on bumps
+	)
+	go-module_set_globals
+	SRC_URI="https://git.sr.ht/~sircmpwn/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+		${EGO_SUM_SRC_URI}"
+	KEYWORDS="~amd64 ~ppc64"
+fi
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 IUSE="notmuch"
 
-BDEPEND=">=app-text/scdoc-1.9.7"
+BDEPEND="
+	>=app-text/scdoc-1.9.7
+	>=dev-lang/go-1.13
+"
+
 DEPEND="notmuch? ( net-mail/notmuch:= )"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
+	if [[ ${PV} == *9999 ]]; then
+		git-r3_src_unpack
+		go-module_live_vendor
+	else
+		go-module_src_unpack
+	fi
 }
 
 src_compile() {
