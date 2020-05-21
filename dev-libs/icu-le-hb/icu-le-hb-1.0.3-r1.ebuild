@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools multilib-minimal
 
@@ -22,8 +22,8 @@ RDEPEND="
 	media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
 "
 
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 "
 
@@ -33,5 +33,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf
+	ECONF_SOURCE="${S}" econf --disable-static
+}
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name "*.la" -delete || die
 }
