@@ -8545,6 +8545,7 @@ dev-python/python-djvulibre 0.8: Set of Python bindings for the DjVuLibre librar
 dev-python/python-docs 2.7.17 3.6.10 3.7.6 3.7.7 3.8.2: HTML documentation for Python
 dev-python/python-editor 1.0.4: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.23.0 1.24.0: Python bindings for Enlightenment Foundation Libraries
+dev-python/python-email-validator 1.1.1: A robust email syntax and deliverability validation library
 dev-python/python-engineio 3.12.1: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
 dev-python/python-ethtool 0.14: Ethernet settings python bindings
