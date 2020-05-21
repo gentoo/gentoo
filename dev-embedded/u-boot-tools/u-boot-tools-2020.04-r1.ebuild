@@ -22,13 +22,26 @@ BDEPEND="
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	default
+	sed -i 's:\bpkg-config\b:${PKG_CONFIG}:g' \
+		scripts/kconfig/lxdialog/check-lxdialog.sh \
+		scripts/kconfig/Makefile \
+		tools/Makefile || die
+}
+
+src_configure() {
+	tc-export CC PKG_CONFIG
+}
+
 src_compile() {
 	# Unset a few KBUILD variables. Bug #540476
 	unset KBUILD_OUTPUT KBUILD_SRC
 
 	emake \
 		V=1 \
-		HOSTCC="$(tc-getCC)" \
+		CC="${CC}" \
+		HOSTCC="${CC}" \
 		HOSTCFLAGS="${CFLAGS} ${CPPFLAGS}"' $(HOSTCPPFLAGS)' \
 		HOSTLDFLAGS="${LDFLAGS}" \
 		tools-only_defconfig
@@ -38,7 +51,8 @@ src_compile() {
 		NO_SDL=1 \
 		HOSTSTRIP=: \
 		STRIP=: \
-		HOSTCC="$(tc-getCC)" \
+		CC="${CC}" \
+		HOSTCC="${CC}" \
 		HOSTCFLAGS="${CFLAGS} ${CPPFLAGS}"' $(HOSTCPPFLAGS)' \
 		HOSTLDFLAGS="${LDFLAGS}" \
 		CONFIG_ENV_OVERWRITE=y \
