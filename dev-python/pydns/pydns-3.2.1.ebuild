@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="CNRI"
 SLOT="3"
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ia64 ~ppc sparc x86"
 IUSE="examples"
 
 # Tests require network access
