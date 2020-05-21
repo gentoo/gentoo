@@ -1781,7 +1781,7 @@ app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
 app-forensics/chkrootkit 0.52 0.53: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1-r1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
-app-forensics/examiner 0.5-r2 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
+app-forensics/examiner 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
 app-forensics/honggfuzz 2.2: A general purpose fuzzer with feedback support
@@ -1926,7 +1926,7 @@ app-laptop/batti 0.3.8-r4: A upower based battery monitor for the system tray, s
 app-laptop/dispad 0.3.1-r1: Daemon to disable trackpads while typing
 app-laptop/hdaps-gl 0.0.7: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
-app-laptop/i8kutils 1.33-r1 1.42: Dell Inspiron and Latitude utilities
+app-laptop/i8kutils 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r4: Intelligent Battery Monitor
 app-laptop/laptop-mode-tools 1.72.2-r1: Linux kernel laptop_mode user-space utilities
 app-laptop/mbpfan 2.1.1 2.2.1 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
@@ -15131,7 +15131,7 @@ net-p2p/bisq 0.6.3: The decentralized bitcoin exchange (non-atomic, with arbitra
 net-p2p/bitcoin-cli 0.16.3 0.19.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
 net-p2p/bitcoin-qt 0.16.3 0.19.1: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.16.3 0.19.1: Original Bitcoin crypto-currency wallet for automated services
-net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
+net-p2p/bitflu 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.4.1_p20160925-r2: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.13: Program for displaying classified advertisement items
 net-p2p/cpuminer-opt 3.12.4.2 3.12.13 9999: Optimized multi algo CPU miner
@@ -15726,7 +15726,7 @@ sci-chemistry/molsketch 0.4.1-r1: A drawing tool for 2D molecular structures
 sci-chemistry/mopac7 1.15 1.15-r1: Autotooled, updated version of a powerful, fast semi-empirical package
 sci-chemistry/mpqc 2.3.1-r4: The Massively Parallel Quantum Chemistry Program
 sci-chemistry/msms-bin 2.6.1-r1: MSMS very efficiently computes triangulations of Solvent Excluded Surfaces
-sci-chemistry/mustang 3.2.1 3.2.2: MUltiple STructural AligNment AlGorithm
+sci-chemistry/mustang 3.2.2: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.10: A powerful and highly parallelized molecular dynamics code
 sci-chemistry/nmrdepaker 1.0-r3: Program to perform NMR spectra 'De-Pake-ing' and moment calculation
 sci-chemistry/nmrglue 0.5-r1: A module for working with NMR data in Python
