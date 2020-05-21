@@ -10687,7 +10687,7 @@ dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revi
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 1.26 1.27 2.4 2.5: Google tool for managing git, particularly multiple repos
-dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
+dev-vcs/rsvndump 0.6 0.6-r1: Dump a remote Subversion repository
 dev-vcs/stgit 0.19 0.20 0.21: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.12.2 1.13.0-r1 1.14.0_rc2: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
@@ -16833,7 +16833,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 243-r2 244 244.3 245-r5 9999: System and service manager for Linux
+sys-apps/systemd 244 244.3 245-r5 245.5 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93 2.95-r1 2.96: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
