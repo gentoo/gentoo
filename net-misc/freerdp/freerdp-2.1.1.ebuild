@@ -15,7 +15,7 @@ else
 	MY_P=${P/_/-}
 	S="${WORKDIR}/FreeRDP-${PV}"
 	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~ppc ~ppc64 x86"
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
