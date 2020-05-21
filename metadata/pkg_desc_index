@@ -12095,7 +12095,7 @@ lxqt-base/lxqt-openssh-askpass 0.14.1 0.15.0: LXQt OpenSSH user password prompt 
 lxqt-base/lxqt-panel 0.14.1 0.15.1: LXQt desktop panel and plugins
 lxqt-base/lxqt-policykit 0.14.1 0.15.0: LXQt PolKit authentication agent
 lxqt-base/lxqt-powermanagement 0.14.1 0.15.0: LXQt daemon for power management and auto-suspend
-lxqt-base/lxqt-qtplugin 0.14.0 0.15.0: LXQt system integration plugin for Qt
+lxqt-base/lxqt-qtplugin 0.14.0 0.15.0-r1: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.14.1 0.15.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.14.1 0.15.0: LXQt Session Manager
 lxqt-base/lxqt-sudo 0.14.1 0.15.0: LXQt GUI frontend for sudo
@@ -18290,7 +18290,7 @@ x11-misc/imake 1.0.8: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/ipager 1.1.0-r1: A themable desktop pager for fluxbox and other window managers
 x11-misc/j4-dmenu-desktop 2.17: A fast desktop replacement for i3-dmenu-desktop
-x11-misc/kapow 1.5.8 1.5.9 1.5.10: A punch clock program designed to easily keep track of your hours
+x11-misc/kapow 1.5.9 1.5.10: A punch clock program designed to easily keep track of your hours
 x11-misc/kaqaz 1.2.0-r4: Modern note manager
 x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 5.2 5.3: Helper to dock any application into the system tray
