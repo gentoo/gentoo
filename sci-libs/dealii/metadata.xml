@@ -36,8 +36,9 @@ and extra output. If you want to get meaningful backtraces see
 		<flag name="tbb">Add threading support with the help of the tbb library (<pkg>dev-cpp/tbb</pkg>)</flag>
 		<flag name="trilinos">Add support for trilinos (<pkg>sci-libs/trilinos</pkg>)</flag>
 		<flag name="assimp">Add support for assimp (<pkg>media-libs/assimp</pkg>)</flag>
-		<flag name="cuda">Add support for cuda assimp (<pkg>dev-util/nvidia-cuda-sdk</pkg>)</flag>
-		<flag name="sundials">Add support for sundials assimp (<pkg>sci-libs/sundials</pkg>)</flag>
+		<flag name="cuda">Add support for cuda (<pkg>dev-util/nvidia-cuda-sdk</pkg>)</flag>
+		<flag name="ginkgo">Add support for ginkgo (<pkg>sci-libs/ginkgo</pkg>)</flag>
+		<flag name="sundials">Add support for sundials (<pkg>sci-libs/sundials</pkg>)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">dealii/dealii</remote-id>
