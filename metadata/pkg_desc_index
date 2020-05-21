@@ -1292,7 +1292,7 @@ app-doc/eclass-manpages 20200213 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.05 4.10.5_p2 4.10.6: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.8.2 2.10.0: GNU Image Manipulation Program help files
-app-doc/gnucash-docs 3.2-r2 3.3-r1 3.4-r1 3.5-r1 3.6-r1 3.7 3.8b: Documentation package for GnuCash
+app-doc/gnucash-docs 3.8b: Documentation package for GnuCash
 app-doc/halibut 1.1 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.7 4.0.7-r1 5.0.0 5.0.1 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and PCB design tools manuals
@@ -2366,7 +2366,7 @@ app-office/dia 0.97.3-r1: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
 app-office/glabels 3.4.1: Program for creating labels and business cards
 app-office/gnome-todo 3.28.1-r1: Personal task manager
-app-office/gnucash 3.2-r2 3.3 3.3-r1 3.4 3.5 3.6 3.7 3.8b 3.8b-r1: A personal finance manager
+app-office/gnucash 3.8b 3.8b-r1: A personal finance manager
 app-office/gnumeric 1.12.46: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3.1: Personal organizer for the GNOME desktop environment
@@ -2437,7 +2437,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.33.9-r1 0.33.11 0.34.1: Search and query ebuilds
+app-portage/eix 0.33.9-r1 0.33.11 0.34.1 0.34.2: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 2.9-r1 3.0-r2: Elog viewer for Gentoo
@@ -14463,7 +14463,7 @@ net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
 net-libs/accounts-qml 0.7-r1: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
-net-libs/aqbanking 5.7.8 6.0.1: Generic Online Banking Interface
+net-libs/aqbanking 6.0.1: Generic Online Banking Interface
 net-libs/axtls 2.1.5: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
@@ -17398,7 +17398,7 @@ sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
 sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.31-r2 2.31-r3 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
-sys-libs/gwenhywfar 4.20.0 4.20.2-r1 5.1.2: Multi-platform helper library for other libraries
+sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.1.0: Library for managing partitions
 sys-libs/ldb 2.0.8 2.0.9 2.0.10 2.1.2 2.1.3: An LDAP-like embedded database
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
