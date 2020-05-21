@@ -15969,7 +15969,7 @@ sci-libs/colpack 1.0.10: C++ algorithms for specialized vertex coloring problems
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
 sci-libs/cxsparse 3.1.2-r1 3.2.0: Extended sparse matrix package
 sci-libs/dcmtk 3.6.3 3.6.4-r1 3.6.5: The DICOM Toolkit
-sci-libs/dealii 9.1.1 9999: Solving partial differential equations with the finite element method
+sci-libs/dealii 9.1.1 9.2.0 9999: Solving partial differential equations with the finite element method
 sci-libs/deap 0.9.1 1.0.0 1.0.1: Novel evolutionary computation framework
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/dlib 19.4 19.7 19.9 19.16: Numerical and networking C++ library
