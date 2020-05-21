@@ -29,6 +29,7 @@ RDEPEND="
 	app-arch/zip
 "
 BDEPEND="
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	x86? ( >=dev-lang/nasm-0.98 )
 "
