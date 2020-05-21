@@ -1375,7 +1375,7 @@ app-editors/okteta 0.26.3: Hex editor by KDE
 app-editors/padre 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.22.2 1.24.0: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
-app-editors/qhexedit2 0.8.4 0.8.4_p20170719 0.8.6_p20190316: Hex editor library, Qt application written in C++ with Python bindings
+app-editors/qhexedit2 0.8.6_p20190316: Hex editor library, Qt application written in C++ with Python bindings
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4 0.4-r1: an ncurses text editor with an easy-to-read, hackable C source
@@ -5806,7 +5806,7 @@ dev-perl/Convert-Binary-C 0.780.0-r1: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
-dev-perl/Convert-UUlib 1.400.0-r1 1.500.0-r1: A Perl interface to the uulib library
+dev-perl/Convert-UUlib 1.400.0-r1 1.500.0-r1 1.710.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.80.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.514.0: The only real threads in perl
@@ -14294,7 +14294,7 @@ net-firewall/ebtables 2.0.10.4 2.0.10.4-r1 2.0.10.4-r2 2.0.11 2.0.11-r1: Control
 net-firewall/ferm 2.4.1 2.5 2.5.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6: iptables firewall generator
 net-firewall/firewalld 0.7.1-r3 0.7.3-r1: A firewall daemon with D-BUS interface providing a dynamic firewall
-net-firewall/fwbuilder 5.3.7: A firewall GUI
+net-firewall/fwbuilder 5.3.7: GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more
 net-firewall/fwknop 2.6.9-r1 2.6.10-r1: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipset 6.29 6.38 7.5 7.6: IPset tool for iptables, successor to ippool
