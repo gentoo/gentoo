@@ -9463,7 +9463,7 @@ dev-ruby/aws-sdk-core 2.11.79 2.11.488 3.94.0: Provides API clients for AWS
 dev-ruby/aws-sdk-resources 2.11.79 2.11.488: Official SDK for Amazon Web Services
 dev-ruby/aws-sigv4 1.0.3 1.1.0 1.1.1 1.1.2: Amazon Web Services Signature Version 4 signing library
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
-dev-ruby/backports 3.15.0 3.16.0 3.16.1 3.17.0 3.17.1: Backports of Ruby features for older Ruby
+dev-ruby/backports 3.15.0 3.16.0 3.16.1 3.17.0 3.17.1 3.17.2: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2: A library which provides base32 decoding and encoding
@@ -9828,7 +9828,7 @@ dev-ruby/rb-inotify 0.10.0 0.10.1: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.5: Ruby implementation of the GNU readline C library
 dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
 dev-ruby/rbnacl 4.0.2-r1 5.0.0-r1 6.0.1 7.0.0 7.1.0 7.1.1: Provides a high-level toolkit for building cryptographic systems and protocols
-dev-ruby/rbpdf 1.19.8-r1 1.20.0-r1 1.20.1-r1: Ruby on Rails RBPDF plugin
+dev-ruby/rbpdf 1.20.1-r2: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbst 0.5.1: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rcairo 1.16.2 1.16.4 1.16.5: Ruby bindings for cairo
@@ -9929,7 +9929,7 @@ dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitab
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.13.1 3.14.0 3.14.1 3.14.2: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.0.5 1.1.0: pure Ruby implementation of the SMB Protocol Family
-dev-ruby/rubygems 2.7.10 3.0.3 3.0.4-r1 3.0.6 3.0.8 3.1.2: Centralized Ruby extension management system
+dev-ruby/rubygems 2.7.10 3.0.3 3.0.4-r1 3.0.6 3.0.8 3.1.2 3.1.3: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
