@@ -2,11 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="sqlite,xml"
-inherit autotools desktop flag-o-matic python-single-r1 toolchain-funcs user
 
 MY_P=${P/_beta/BETA}
+inherit autotools desktop flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A utility for network discovery and security auditing"
 HOMEPAGE="https://nmap.org/"
@@ -14,21 +12,13 @@ SRC_URI="
 	https://nmap.org/dist/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~jer/nmap-logo-64.png
 "
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="ipv6 libressl libssh2 ncat ndiff nmap-update nping +nse ssl system-lua"
+REQUIRED_USE="system-lua? ( nse )"
 
-IUSE="
-	ipv6 libressl libssh2 ncat ndiff nls nmap-update nping +nse ssl system-lua
-	zenmap
-"
-NMAP_LINGUAS=( de fr hi hr it ja pl pt_BR ru zh )
-REQUIRED_USE="
-	system-lua? ( nse )
-	ndiff? ( ${PYTHON_REQUIRED_USE} )
-	zenmap? ( ${PYTHON_REQUIRED_USE} )
-"
 RDEPEND="
 	dev-libs/liblinear:=
 	dev-libs/libpcre
@@ -37,8 +27,6 @@ RDEPEND="
 		net-libs/libssh2[zlib]
 		sys-libs/zlib
 	)
-	ndiff? ( ${PYTHON_DEPS} )
-	nls? ( virtual/libintl )
 	nmap-update? (
 		dev-libs/apr
 		dev-vcs/subversion
@@ -49,17 +37,9 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:= )
 	)
 	system-lua? ( >=dev-lang/lua-5.2:*[deprecated] )
-	zenmap? (
-		$(python_gen_cond_dep '
-			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
-		')
-		${PYTHON_DEPS}
-	)
 "
-DEPEND="
-	${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+DEPEND="${RDEPEND}"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.10_beta1-string.patch
 	"${FILESDIR}"/${PN}-5.21-python.patch
@@ -73,34 +53,12 @@ PATCHES=(
 )
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	if use ndiff || use zenmap; then
-		python-single-r1_pkg_setup
-	fi
-}
-
 src_prepare() {
 	rm -r liblinear/ libpcap/ libpcre/ libssh2/ libz/ || die
 
 	cat "${FILESDIR}"/nls.m4 >> "${S}"/acinclude.m4 || die
 
 	default
-
-	local lingua
-	if use nls; then
-		for lingua in ${NMAP_LINGUAS[@]}; do
-			if ! has ${lingua} ${LINGUAS-${lingua}}; then
-				rm -r zenmap/share/zenmap/locale/${lingua} || die
-				rm zenmap/share/zenmap/locale/${lingua}.po || die
-			fi
-		done
-	else
-		# configure/make ignores --disable-nls
-		for lingua in ${NMAP_LINGUAS[@]}; do
-			rm -r zenmap/share/zenmap/locale/${lingua} || die
-			rm zenmap/share/zenmap/locale/${lingua}.po || die
-		done
-	fi
 
 	sed -i \
 		-e '/^ALL_LINGUAS =/{s|$| id|g;s|jp|ja|g}' \
@@ -126,14 +84,13 @@ src_configure() {
 	# tree, so we cannot use the system library here.
 	econf \
 		$(use_enable ipv6) \
-		$(use_enable nls) \
 		$(use_with libssh2) \
 		$(use_with ncat) \
-		$(use_with ndiff) \
+		--without-ndiff \
 		$(use_with nmap-update) \
 		$(use_with nping) \
 		$(use_with ssl openssl) \
-		$(use_with zenmap) \
+		--without-zenmap \
 		$(usex libssh2 --with-zlib) \
 		$(usex nse --with-zlib) \
 		$(usex nse --with-liblua=$(usex system-lua /usr included '' '') --without-liblua) \
@@ -175,9 +132,4 @@ src_install() {
 	fi
 
 	dodoc CHANGELOG HACKING docs/README docs/*.txt
-
-	if use zenmap; then
-		doicon "${DISTDIR}/nmap-logo-64.png"
-		python_optimize
-	fi
 }
