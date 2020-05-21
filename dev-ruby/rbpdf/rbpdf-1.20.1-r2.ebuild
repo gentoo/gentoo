@@ -27,7 +27,9 @@ ruby_add_bdepend "test? ( >=dev-ruby/test-unit-3 )"
 ruby_add_rdepend "
 	dev-ruby/actionview
 	dev-ruby/htmlentities
-	=dev-ruby/rbpdf-font-1.19*"
+	=dev-ruby/rbpdf-font-1.19*
+	|| ( dev-ruby/mini_magick dev-ruby/rmagick )
+"
 
 all_ruby_prepare() {
 	default
