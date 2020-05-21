@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="browser-integration">Enable integration with Chrome/Firefox with browser extensions</flag>
-		<flag name="consolekit">Enable <pkg>sys-auth/consolekit</pkg> support instead of logind session tracking</flag>
 		<flag name="crypt">Pull in <pkg>kde-plasma/plasma-vault</pkg> for encrypted vaults integration</flag>
 		<flag name="desktop-portal">Enable <pkg>sys-apps/xdg-desktop-portal</pkg> backend implementation for Plasma</flag>
 		<flag name="discover">Pull in resources management GUI; a centralised GHNS alternative and optional <pkg>sys-apps/fwupd</pkg> frontend</flag>
@@ -17,9 +16,7 @@
 		<flag name="gtk">Enable Breeze widget style and system settings module for GTK+</flag>
 		<flag name="kwallet">Enable support for KWallet auto-unlocking via <pkg>kde-plasma/kwallet-pam</pkg></flag>
 		<flag name="legacy-systray">Add support for legacy applications using <pkg>kde-plasma/xembed-sni-proxy</pkg></flag>
-		<flag name="pam">Enable support for kwallet auto-unlocking</flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
-		<flag name="pm-utils">Enable support for suspend/resume with <pkg>sys-power/pm-utils</pkg> when using <pkg>sys-auth/consolekit</pkg></flag>
 		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
 		<flag name="qrcode">Enable support for easy WiFi network sharing using QR codes with <pkg>kde-plasma/plasma-nm</pkg></flag>
 		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and system settings module</flag>
