@@ -9,7 +9,7 @@ SRC_URI="https://minecraft.azureedge.net/bin-linux/${P}.zip"
 
 LICENSE="Mojang"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 RDEPEND="
 	acct-group/bedrock
