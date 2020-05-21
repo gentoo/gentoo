@@ -13,8 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	esac
 else
 	MY_P=${P/_/-}
-	S="${WORKDIR}/FreeRDP-${PV}"
-	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
 	KEYWORDS="~alpha amd64 arm ~arm64 ~ppc ~ppc64 x86"
 fi
 
