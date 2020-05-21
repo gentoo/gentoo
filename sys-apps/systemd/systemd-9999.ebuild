@@ -205,8 +205,6 @@ src_prepare() {
 
 	if ! use vanilla; then
 		PATCHES+=(
-			"${FILESDIR}/gentoo-Dont-enable-audit-by-default.patch"
-			"${FILESDIR}/gentoo-systemd-user-pam.patch"
 			"${FILESDIR}/gentoo-generator-path-r2.patch"
 			"${FILESDIR}/gentoo-systemctl-disable-sysv-sync.patch"
 		)
