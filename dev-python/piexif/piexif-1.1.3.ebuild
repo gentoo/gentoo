@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	app-arch/unzip
-	test? ( dev-python/pillow )"
+	test? ( dev-python/pillow[jpeg] )"
 RDEPEND=""
 
 python_test() {
