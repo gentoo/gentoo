@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Library implementation of ECMA-234 API for the generation of enhanced metafiles
+EAPI=7
+HOMEPAGE=http://libemf.sourceforge.net/
+IUSE=doc static-libs
+KEYWORDS=~amd64 -arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1 GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/libemf/libemf-1.0.12.tar.gz
+_md5_=c6ea10bff57c410d46a713805ec7f426
