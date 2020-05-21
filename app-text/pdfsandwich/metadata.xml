@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
 	<longdescription>
 pdfsandwich generates "sandwich" OCR pdf files, i.e. pdf files which
 contain only images (no text) will be processed by optical character
