@@ -4694,7 +4694,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.23 1.2.24: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.104 8.5.55 9.0.34 9.0.35: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.103 7.0.104 8.5.54 8.5.55 9.0.34 9.0.35: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -5715,7 +5715,7 @@ dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1 0.270.0-r2: A lightweight cache wit
 dev-perl/Cairo 1.106.0 1.107.0: Perl interface to the cairo library
 dev-perl/Cairo-GObject 1.4.0-r1 1.5.0: Integrate Cairo into the Glib type system
 dev-perl/Calendar-Simple 1.230.0: Perl extension to create simple calendars
-dev-perl/Canary-Stability 2012.0.0: Canary to check perl compatibility for schmorp's modules
+dev-perl/Canary-Stability 2012.0.0 2013.0.0: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.460.0 0.480.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
@@ -12709,7 +12709,7 @@ media-libs/cogl 1.22.6: A library for using 3D graphics hardware to draw pretty 
 media-libs/coin 3.1.3-r2 4.0.0a_pre20191109: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
 media-libs/ctl 1.5.2-r1: AMPAS' Color Transformation Language
-media-libs/dav1d 0.1.0 0.2.0-r1 0.2.1 0.3.0 0.3.1 0.4.0 0.5.1 0.5.2 0.6.0-r1 9999: dav1d is an AV1 Decoder :)
+media-libs/dav1d 0.5.2 0.7.0 9999: dav1d is an AV1 Decoder :)
 media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT filters
@@ -14085,7 +14085,7 @@ net-analyzer/nikto 2.1.6_p20180122: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4 0.7.4-r1: Real time network traffic monitor for the command line interface
 net-analyzer/nmap 7.80-r1 9999: A utility for network discovery and security auditing
-net-analyzer/nmapsi 0.5_alpha1: A Qt frontend to nmap
+net-analyzer/nmapsi 0.5_alpha2: Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 4.0.0 4.0.2: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level network security scanner
@@ -15281,7 +15281,7 @@ net-vpn/tor 0.4.2.7 0.4.3.4_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550 0.5.3_p550-r1: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard-modules 1.0.20200506 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard-modules 1.0.20200520 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200319 1.0.20200513: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.5.2 1.6-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
