@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit gnome2-utils meson xdg-utils
+inherit meson xdg
 
 MY_PN=Viewnior
 DESCRIPTION="Fast and simple image viewer"
@@ -34,7 +34,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	xdg_src_prepare
+
 	# That script would update icon cache and desktop database
 	sed -i "s/meson.add_install_script('meson_post_install.py')//" meson.build || die 'Failed to remove post-install-script invocation from meson.build'
 	# Don't let meson compress the manpage
@@ -44,14 +45,4 @@ src_prepare() {
 src_install() {
 	meson_src_install
 	doman man/viewnior.1
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }
