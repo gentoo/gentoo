@@ -40,6 +40,11 @@ src_prepare() {
 		-i src/eix-functions.sh.in || die
 	sed -e "s:'\$(bindir)/eix-functions.sh':cat \\\\\"${EPREFIX}/usr/share/eix/eix-functions\\\\\":" \
 		-i src/Makefile.am || die
+
+	# workaround unconditional protobuf use
+	# https://bugs.gentoo.org/724366
+	sed -e '/eix-proto\.cc/d' -i src/Makefile.am || die
+
 	eautoreconf
 }
 
