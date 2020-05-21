@@ -1,0 +1,15 @@
+BDEPEND=virtual/perl-Carp dev-perl/Carp-Assert virtual/perl-Scalar-List-Utils virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/Test-Exception ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=convenience wrappers around Carp::Assert
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Carp-Assert-More
+IUSE=test
+KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Carp-Assert virtual/perl-Scalar-List-Utils dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PE/PETDANCE/Carp-Assert-More-1.20.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=d9246804be2073901310d9bf2498e6a0
