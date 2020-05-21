@@ -25,6 +25,6 @@ ruby_add_rdepend ">=dev-ruby/i18n-1.6 !!<dev-ruby/faker-1.9.6-r1"
 ruby_add_bdepend "test? ( dev-ruby/timecop )"
 
 all_ruby_prepare() {
-	sed -i -e '/rubocop/I s:^:#:' Rakefile || die
+	sed -i -e '/\(bundler\|rubocop\)/I s:^:#:' Rakefile || die
 	sed -i -e '/simplecov/,/^end/ s:^:#:' test/test_helper.rb || die
 }
