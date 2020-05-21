@@ -74,8 +74,8 @@ kernel-build_src_configure() {
 		ARCH=$(tc-arch-kernel)
 	)
 
-	[[ -f .config ]] || die "Ebuild error: please copy default config into .config"
 	restore_config .config
+	[[ -f .config ]] || die "Ebuild error: please copy default config into .config"
 
 	mkdir -p "${WORKDIR}"/modprep || die
 	mv .config "${WORKDIR}"/modprep/ || die
