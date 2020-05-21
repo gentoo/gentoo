@@ -9,7 +9,7 @@ SRC_URI="http://people.via.ecp.fr/~rem/libident/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE=""
 
 RDEPEND=""
