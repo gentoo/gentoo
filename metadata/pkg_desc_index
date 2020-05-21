@@ -13876,7 +13876,7 @@ media-video/shotcut 19.12.31: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.4.1 0.4.2 9999: A Simple Screen Recorder
 media-video/smplayer 18.6.0 19.10.2 20.4.2: Great Qt GUI front-end for mplayer/mpv
-media-video/smtube 19.6.0: YouTube Browser for SMPlayer
+media-video/smtube 19.6.0 20.1.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
 media-video/streamdvd 0.4-r2: fast tool to backup Video DVDs 'on the fly'
