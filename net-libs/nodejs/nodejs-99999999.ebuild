@@ -195,12 +195,3 @@ src_test() {
 	out/${BUILDTYPE}/cctest || die
 	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
 }
-
-pkg_postinst() {
-	elog "The global npm config lives in /etc/npm. This deviates slightly"
-	elog "from upstream which otherwise would have it live in /usr/etc/."
-	elog ""
-	elog "Protip: When using node-gyp to install native modules, you can"
-	elog "avoid having to download extras by doing the following:"
-	elog "$ node-gyp --nodedir /usr/include/node <command>"
-}
