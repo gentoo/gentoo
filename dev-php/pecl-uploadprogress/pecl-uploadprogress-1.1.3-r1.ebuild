@@ -18,8 +18,3 @@ RDEPEND="
 	php_targets_php7-3? ( dev-lang/php:7.3[apache2] )
 	php_targets_php7-4? ( dev-lang/php:7.4[apache2] )
 "
-
-src_install() {
-	default
-	use examples && dodoc -r examples
-}
