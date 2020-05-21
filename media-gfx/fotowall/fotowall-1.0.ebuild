@@ -28,7 +28,10 @@ DEPEND="${RDEPEND}
 	webcam? ( media-libs/libv4l )
 "
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
+)
 
 src_prepare() {
 	default

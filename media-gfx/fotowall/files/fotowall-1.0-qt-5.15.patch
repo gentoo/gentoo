@@ -1,0 +1,24 @@
+From 72f7a502cb2397b0ef459e6e8f429db1d3482be6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 21 May 2020 02:33:38 +0200
+Subject: [PATCH] Fix build with Qt 5.15 (missing QPainterPath include)
+
+---
+ 3rdparty/posterazor/paintcanvas.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/3rdparty/posterazor/paintcanvas.cpp b/3rdparty/posterazor/paintcanvas.cpp
+index df33b8a..fd0f319 100644
+--- a/3rdparty/posterazor/paintcanvas.cpp
++++ b/3rdparty/posterazor/paintcanvas.cpp
+@@ -23,6 +23,7 @@
+ #include "paintcanvas.h"
+ #include <QImage>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ PaintCanvas::PaintCanvas(QWidget *parent)
+     : QWidget(parent)
+-- 
+2.26.2
+
