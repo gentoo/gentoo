@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils qmake-utils
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="A peg solitaire game"
 HOMEPAGE="https://gottcode.org/peg-e/"
@@ -14,16 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=( "${FILESDIR}"/${PN}-1.2.5-gentoo.patch )
 
 src_configure() {
 	eqmake5
@@ -35,9 +36,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

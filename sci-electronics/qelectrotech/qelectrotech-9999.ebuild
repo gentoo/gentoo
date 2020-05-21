@@ -1,11 +1,10 @@
-# Copyright 2001-2018 Gentoo Authors
+# Copyright 2001-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit gnome2-utils qmake-utils subversion xdg-utils
+EAPI=7
 
 MY_P=${PN}-${PV%0}-src
+inherit qmake-utils subversion xdg-utils
 
 DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="https://qelectrotech.org/"
@@ -16,6 +15,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc"
 
+BDEPEND="
+	doc? ( app-doc/doxygen )
+"
 RDEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -27,13 +29,12 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 "
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
-"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
 DOCS=( CREDIT ChangeLog README )
+
 PATCHES=( "${FILESDIR}/${PN}-0.3-fix-paths.patch" )
 
 src_configure() {
@@ -43,22 +44,22 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 
-	einstalldocs
-
 	if use doc; then
 		doxygen Doxyfile || die
-		dodoc -r doc/html
+		local HTML_DOCS=( doc/html/. )
 	fi
+
+	einstalldocs
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
