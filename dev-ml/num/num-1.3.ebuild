@@ -19,6 +19,14 @@ DEPEND=">=dev-lang/ocaml-4.09.0[ocamlopt]
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cflags.patch
+)
+
+src_compile() {
+	emake CFLAGS="${CFLAGS}"
+}
+
 src_install() {
 	findlib_src_preinst
 	OCAMLPATH="${OCAMLFIND_DESTDIR}" emake install DESTDIR="${D}"
