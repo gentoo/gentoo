@@ -45,7 +45,7 @@ src_configure() {
 		$(use_enable ipv6)
 		$(use_enable privsep)
 		$(usex elibc_glibc '--with-hook=yp.conf' '')
-		$(usex kernel_linux '--rundir=${EPREFIX}/run' '')
+		--rundir=$(usex kernel_linux "${EPREFIX}/run/dhcpcd" "${EPREFIX}/var/run/dhcpcd")
 		$(usex privsep '--privsepuser=dhcpcd' '')
 		$(usex udev '' '--without-dev --without-udev')
 		CC="$(tc-getCC)"
@@ -56,8 +56,8 @@ src_configure() {
 src_install() {
 	default
 	keepdir /var/lib/dhcpcd
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	newinitd "${FILESDIR}"/dhcpcd.initd-r1 dhcpcd
+	systemd_newunit "${FILESDIR}"/dhcpcd.service-r1 dhcpcd.service
 }
 
 pkg_postinst() {
