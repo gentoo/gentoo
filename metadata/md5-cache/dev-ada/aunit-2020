@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install setup test
+DEPEND=ada_target_gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) ada_target_gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) ada_target_gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) ada_target_gnat_2019? ( dev-lang/gnat-gpl:8.3.1 ) dev-ada/gprbuild[ada_target_gnat_2016(-)?,ada_target_gnat_2017(-)?,ada_target_gnat_2018(-)?,ada_target_gnat_2019(-)?]
+DESCRIPTION=Ada unit testing framework
+EAPI=7
+HOMEPAGE=http://libre.adacore.com/tools/aunit/
+IUSE=ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=ada_target_gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) ada_target_gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) ada_target_gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) ada_target_gnat_2019? ( dev-lang/gnat-gpl:8.3.1 )
+REQUIRED_USE=^^ ( ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
+SLOT=0
+SRC_URI=https://community.download.adacore.com/v1/6c8702d4a3c4a39f5da077716e44bef980377ba8?filename=aunit-2020-20200429-19B6C-src}.tar.gz -> aunit-2020-20200429-19B6C-src.tar.gz
+_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multiprocessing	cac3169468f893670dac3e7cb940e045
+_md5_=296c13a484f6ea8928ca7674ce0b7ea1

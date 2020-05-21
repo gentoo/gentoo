@@ -2246,7 +2246,7 @@ app-misc/prog-express 3.8.5 3.8.8: A modern and intuitive control software for t
 app-misc/ps3pf_utils 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/qcma 0.4.1 0.4.2_pre20181227 9999: Cross-platform content manager assistant for the PS Vita
-app-misc/qlcplus 4.11.1 4.12.2 5.0.0_alpha3: A software to control DMX or analog lighting systems
+app-misc/qlcplus 4.12.2 5.0.0_alpha3: A software to control DMX or analog lighting systems
 app-misc/radeontop 1.2 9999: Utility to view Radeon GPU utilization
 app-misc/ranger 1.9.2 1.9.3 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
@@ -3174,7 +3174,7 @@ app-xemacs/xslt-process 1.14: XSLT processing support
 app-xemacs/xwem 1.22 1.23 1.26: X Emacs Window Manager
 app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
 dev-ada/asis 2016-r1 2019-r1: To develop tools for Ada software
-dev-ada/aunit 2019-r1: Ada unit testing framework
+dev-ada/aunit 2019-r1 2020: Ada unit testing framework
 dev-ada/aws 2018-r2 2019-r1: A complete Web development framework
 dev-ada/gnat-suite-bin 2014 2016 2017 2018 2019: GNAT Ada suite
 dev-ada/gnat_util 2017-r2 2018-r2 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
@@ -15159,7 +15159,7 @@ net-p2p/nicotine+ 1.4.1-r2: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.2.1 4.2.3 4.2.5 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
-net-p2p/retroshare 0.6.3-r2 0.6.4-r1 0.6.5: P2P private sharing application
+net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
 net-p2p/syncthing 1.3.4-r1 1.4.2 1.5.0: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
@@ -15809,7 +15809,7 @@ sci-electronics/kicad-symbols 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and 
 sci-electronics/kicad-templates 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and PCB design tools project templates
 sci-electronics/klayout 0.26.4-r1 0.26.5 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
-sci-electronics/librepcb 0.1.0-r1 0.1.3 9999: Free EDA software to develop printed circuit boards
+sci-electronics/librepcb 0.1.3: Free EDA software to develop printed circuit boards
 sci-electronics/linsmith 0.99.30-r1 0.99.31: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
 sci-electronics/netgen 1.4.52: LVS tool (layout versus schematic comparison)
@@ -17123,7 +17123,7 @@ sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34 2.34-r1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
-sys-devel/binutils-config 5.2: Utility to change the binutils version being used
+sys-devel/binutils-config 5.2 5.2.1: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34 2.34-r1: Tools necessary to build programs
 sys-devel/bison 3.1 3.3.2 3.4.2 3.5.4 3.6.1 3.6.2: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
