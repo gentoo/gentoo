@@ -7505,7 +7505,7 @@ dev-python/ament_package 0.8.8: Parser for the manifest files in the ament build
 dev-python/amodem 1.15.0: Transmit data between two computers using audio
 dev-python/aniso8601 4.0.1 8.0.0: A library for parsing ISO 8601 strings
 dev-python/ansi 0.1.3: ANSI cursor movement and graphics in Python
-dev-python/ansi2html 1.4.2 1.5.1 1.5.2: Convert text with ANSI color codes to HTML
+dev-python/ansi2html 1.4.2 1.5.1 1.5.2 1.5.2-r1: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.6-r1 9999: Produce ansi color output and colored highlighting and diffing
 dev-python/ansimarkup 1.4.0: XML-like markup for producing colored terminal text
 dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
@@ -14837,7 +14837,7 @@ net-misc/exabgp 3.4.28-r2 4.2.7-r2: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
-net-misc/freerdp 2.1.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 2.1.0 2.1.1 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol
