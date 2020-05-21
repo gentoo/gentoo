@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2017-12-30)
+# Require user configs unless we supply our own .config.
+sys-kernel/gentoo-kernel savedconfig
+sys-kernel/vanilla-kernel savedconfig
+
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-06)
 # USE=ada is mandatory to build a gnat compiler
 sys-devel/gnat-gpl ada
