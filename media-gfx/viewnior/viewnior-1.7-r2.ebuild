@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit meson xdg
 
@@ -20,10 +20,10 @@ RDEPEND="
 	media-gfx/exiv2:0=
 	x11-libs/gtk+:2
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
-	x11-misc/shared-mime-info
 "
 
 S="${WORKDIR}/${MY_PN}-${P}"
