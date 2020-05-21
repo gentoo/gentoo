@@ -1700,7 +1700,7 @@ app-emulation/spice-vdagent 0.19.0-r1 0.20.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
-app-emulation/vagrant 2.2.7-r1 2.2.9: A tool for building and distributing development environments
+app-emulation/vagrant 2.2.7-r1 2.2.9-r1: A tool for building and distributing development environments
 app-emulation/vice 3.4_p37498 3.4_p37605: The Versatile Commodore Emulator
 app-emulation/virt-manager 2.2.1-r3 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
@@ -14617,7 +14617,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 13.13.0 13.14.0 14.0.0 14.1.0 14.2.0 14.3.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 14.2.0 14.3.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
