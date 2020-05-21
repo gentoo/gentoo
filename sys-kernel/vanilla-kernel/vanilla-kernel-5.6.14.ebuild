@@ -27,7 +27,10 @@ SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.x
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+REQUIRED_USE="
+	arm? ( savedconfig )
+	arm64? ( savedconfig )"
 
 RDEPEND="
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
@@ -42,6 +45,9 @@ src_prepare() {
 			;;
 		x86)
 			cp "${DISTDIR}"/linux-${I686_CONFIG_VER}.i686.config .config || die
+			;;
+		arm|arm64)
+			return
 			;;
 		*)
 			die "Unsupported arch ${ARCH}"
