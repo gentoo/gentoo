@@ -92,6 +92,12 @@ kernel-install_get_image_path() {
 		amd64|x86)
 			echo arch/x86/boot/bzImage
 			;;
+		arm64)
+			echo arch/arm64/boot/Image.gz
+			;;
+		arm)
+			echo arch/arm/boot/zImage
+			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
 			;;
@@ -175,6 +181,12 @@ kernel-install_get_qemu_arch() {
 			;;
 		x86)
 			echo i386
+			;;
+		arm)
+			echo arm
+			;;
+		arm64)
+			echo aarch64
 			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"

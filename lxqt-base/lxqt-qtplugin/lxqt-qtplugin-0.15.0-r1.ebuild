@@ -25,7 +25,7 @@ BDEPEND="
 "
 DEPEND="
 	dev-libs/libdbusmenu-qt:=[qt5(+)]
-	>=dev-libs/libqtxdg-3.3.1
+	>=dev-libs/libqtxdg-3.5.0
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5=
