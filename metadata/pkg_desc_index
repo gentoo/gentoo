@@ -3323,7 +3323,7 @@ dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.9.5 5.0.2: Web-based administration for MySQL database in PHP
 dev-db/plr 8.3.0.17: R language extension for postgresql database
 dev-db/postgis 2.5.3-r1 3.0.0-r1 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.4.26 9.5.21 9.5.22 9.6.17 9.6.18 10.12 10.13 11.7 11.8 12.2 12.3 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.4.26 9.5.21 9.5.22 9.6.17 9.6.18 10.12 10.13 11.7 11.8 12.2 12.3 13_beta1 9999: PostgreSQL RDBMS
 dev-db/pspg 1.6.5 1.6.8 2.5.4 2.5.5 2.6.6: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
