@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils
 
@@ -30,10 +30,10 @@ src_prepare() {
 	# prevent tests from beeing built at src_compile
 	sed -i -e '/SUBDIRS/s/ tests//' ${PN}.pro || die "sed on ${PN}.pro failed"
 	# respect libdir
-	sed -e 's:{INSTALL_PREFIX}/lib:[QT_INSTALL_LIBS]:g' -i src/src.pro || die "sed on src.pro failed"
+	sed -e 's:{INSTALL_PREFIX}/lib:[QT_INSTALL_LIBS]:g'\
+		-i src/src.pro || die "sed on src.pro failed"
 
-	sed \
-		-e "s/TARGET = kqoauth/TARGET = kqoauth-qt5/g" \
+	sed -e "s/TARGET = kqoauth/TARGET = kqoauth-qt5/g" \
 		-i src/src.pro || die
 }
 
