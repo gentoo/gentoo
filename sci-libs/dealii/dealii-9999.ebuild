@@ -19,15 +19,11 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	MY_PV="${PV//0_rc/rc}"
-	MY_P="${PN}-${MY_PV}"
-	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
 		doc? (
-			https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}-offline_documentation.tar.gz
-			-> ${P}-offline_documentation.tar.gz
+			https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}-offline_documentation.tar.gz
 			)"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 LICENSE="LGPL-2.1+"
