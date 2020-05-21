@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils
 
@@ -13,14 +13,17 @@ LICENSE="LGPL-2.1"
 SLOT="5"
 KEYWORDS="amd64 ~ppc64 x86"
 IUSE="debug doc test"
+
 RESTRICT="!test? ( test )"
 
+BDEPEND="
+	doc? ( app-doc/doxygen )
+"
 COMMON_DEPEND="
 	app-crypt/qca:2[debug?,qt5(+)]
 	dev-qt/qtnetwork:5
 "
 DEPEND="${COMMON_DEPEND}
-	doc? ( app-doc/doxygen )
 	test? ( dev-qt/qttest:5 )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -57,7 +60,7 @@ src_configure() {
 src_install() {
 	if use doc; then
 		doxygen "${S}"/Doxyfile || die "failed to generate documentation"
-		HTML_DOCS=( "${S}"/doc/html/. )
+		local HTML_DOCS=( "${S}"/doc/html/. )
 	fi
 
 	INSTALL_ROOT="${D}" default
