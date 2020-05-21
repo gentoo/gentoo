@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop toolchain-funcs xdg cmake
+inherit desktop flag-o-matic toolchain-funcs xdg cmake
 
 DESCRIPTION="Open source remake of The Settlers II: Gold Edition (needs original data files)"
 HOMEPAGE="https://www.siedler25.org/"
