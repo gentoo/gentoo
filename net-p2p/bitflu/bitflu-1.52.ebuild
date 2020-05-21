@@ -11,7 +11,7 @@ SRC_URI="http://bitflu.workaround.ch/bitflu/${P}.tgz"
 
 LICENSE="Artistic-2 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
