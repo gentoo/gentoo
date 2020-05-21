@@ -7,6 +7,9 @@ Before=network.target network-online.target
 Type=forking
 ExecStart=/sbin/dhcpcd -q
 PIDFile=/run/dhcpcd.pid
+# Avoid duplicate output on stderr/syslog
+StandardOutput=null
+StandardError=null
 
 [Install]
 WantedBy=multi-user.target
