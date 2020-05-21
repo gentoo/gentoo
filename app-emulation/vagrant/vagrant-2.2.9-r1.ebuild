@@ -58,7 +58,7 @@ all_ruby_prepare() {
 	rm Gemfile || die
 
 	# loosen dependencies
-	sed -e '/hashicorp-checkpoint\|i18n\|listen\|net-ssh\|net-scp\|rake\|childprocess/s/~>/>=/' \
+	sed -e '/hashicorp-checkpoint\|i18n\|listen\|net-ssh\|net-scp\|net-sftp\|rake\|childprocess/s/~>/>=/' \
 		-i ${PN}.gemspec || die
 
 	# remove windows-specific gems
