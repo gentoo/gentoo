@@ -21,7 +21,7 @@ LICENSE="BSD-2"
 SLOT="0/4"
 IUSE="+8bit +10bit +asm"
 
-ASM_DEPEND=">=dev-lang/nasm-2.13.02"
+ASM_DEPEND=">=dev-lang/nasm-2.14.02"
 BDEPEND="asm? (
 		abi_x86_32? ( ${ASM_DEPEND} )
 		abi_x86_64? ( ${ASM_DEPEND} )
