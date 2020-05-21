@@ -72,7 +72,7 @@ src_install() {
 	newins desktopfiles/djview.svg djvulibre-djview4.svg
 	sed -e 's/Exec=djview4/Exec=djview/' \
 		-i desktopfiles/djvulibre-djview4.desktop || die
-	domenu djvulibre-djview4.desktop
+	domenu desktopfiles/djvulibre-djview4.desktop
 }
 
 pkg_postinst() {
