@@ -45,7 +45,9 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	# Parallel build fails, bug #343617
+	MAKEOPTS+=" -j1" default
+
 	if use doc; then
 		emake -C doc/latex pdf
 	fi
