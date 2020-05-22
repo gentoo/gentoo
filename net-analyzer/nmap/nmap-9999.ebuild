@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~jer/nmap-logo-64.png"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ipv6 libressl libssh2 ncat ndiff nmap-update nping +nse ssl system-lua"
+IUSE="ipv6 libressl libssh2 ncat nmap-update nping +nse ssl system-lua"
 REQUIRED_USE="system-lua? ( nse )"
 
 RDEPEND="
