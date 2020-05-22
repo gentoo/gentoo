@@ -6,6 +6,6 @@
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
 	<use>
-		<flag name="native-symlinks">Install native symlinks like 'as' or 'ar' to /usr/bin. Otherwise keep only ${CHOST}-as and friends.</flag>
+		<flag name="native-symlinks">Install native symlinks like 'as' or 'ar' to /usr/bin. Otherwise keep only ${CTARGET}-as and friends.</flag>
 	</use>
 </pkgmetadata>
