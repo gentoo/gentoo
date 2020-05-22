@@ -19,7 +19,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0"
 SLOT="0"
 IUSE=""
 
@@ -30,3 +30,15 @@ DEPEND="${PYTHON_DEPS}
 		media-libs/elgato-streamdeck[${PYTHON_USEDEP}]
 		dev-libs/hidapi"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	sed -i "s#os.path.dirname(os.path.abspath(__file__))#'/usr/share/streamdeck-ui'#" streamdeck_ui/config.py
+	distutils-r1_src_prepare
+}
+
+src_install() {
+	insinto /usr/share/streamdeck-ui
+	doins streamdeck_ui/logo.png
+	doins -r streamdeck_ui/fonts
+	distutils-r1_src_install
+}
