@@ -29,6 +29,10 @@ BDEPEND="
 	)
 "
 
+# Do not install tests
+# https://github.com/gwik/geventhttpclient/pull/126
+PATCHES=( "${FILESDIR}/${P}-dont-install-tests.patch" )
+
 python_prepare_all() {
 	# Skip SNI tests which require dpkt
 	sed -i '/^import dpkt.ssl/d' src/geventhttpclient/tests/test_ssl.py || die
@@ -37,14 +41,6 @@ python_prepare_all() {
 
 python_test() {
 	local skipped_tests=(
-		# Require network access
-		src/geventhttpclient/tests/test_client.py::test_client_simple
-		src/geventhttpclient/tests/test_client.py::test_client_without_leading_slash
-		src/geventhttpclient/tests/test_client.py::test_request_with_headers
-		src/geventhttpclient/tests/test_client.py::test_response_context_manager
-		src/geventhttpclient/tests/test_client.py::test_client_ssl
-		src/geventhttpclient/tests/test_client.py::test_ssl_fail_invalid_certificate
-		src/geventhttpclient/tests/test_client.py::test_multi_queries_greenlet_safe
 		# Require dpkg
 		src/geventhttpclient/tests/test_ssl.py::test_implicit_sni_from_host_in_ssl
 		src/geventhttpclient/tests/test_ssl.py::test_implicit_sni_from_header_in_ssl
@@ -52,6 +48,7 @@ python_test() {
 	)
 	# Append to sys.path to avoid ImportError
 	# https://bugs.gentoo.org/667758
+	# Skip tests which require internet access
 	pytest --import-mode=append -vv ${skipped_tests[@]/#/--deselect } \
-		|| die "Tests failed with ${EPYTHON}"
+		-m "not online" || die "Tests failed with ${EPYTHON}"
 }

@@ -1,0 +1,18 @@
+commit 6577190f64072c669c579c78225e23fe79edd90e
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Fri May 22 23:36:38 2020 +0200
+
+    Do not install tests
+
+diff --git a/setup.py b/setup.py
+index 6e7a924..c896644 100644
+--- a/setup.py
++++ b/setup.py
+@@ -50,6 +50,7 @@ setup(name='geventhttpclient',
+       author="Antonin Amand",
+       author_email="antonin.amand@gmail.com",
+       packages=find_packages('src'),
++      exclude_package_data={'geventhttpclient': ['tests/*']},
+       license='LICENSE-MIT',
+       package_dir={'': 'src'},
+       ext_modules = [httpparser],
