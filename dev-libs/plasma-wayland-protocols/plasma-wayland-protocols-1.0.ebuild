@@ -12,7 +12,7 @@ HOMEPAGE="https://invent.kde.org/libraries/plasma-wayland-protocols"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 fi
 
 LICENSE="LGPL-2.1"
