@@ -8223,7 +8223,7 @@ sys-devel/binutils-apple:libcxx - Add support for libcxx
 sys-devel/binutils-apple:lto - Add support for Link-Time Optimization with LLVM
 sys-devel/binutils-apple:multitarget - Compile for non-standard target architectures (ppc and ppc64) -- experimental, Gentoo only
 sys-devel/binutils-apple:tapi - Build against sys-libs/tapi
-sys-devel/binutils-config:native-symlinks - Install native symlinks like 'as' or 'ar' to /usr/bin. Otherwise keep only ${CHOST}-as and friends.
+sys-devel/binutils-config:native-symlinks - Install native symlinks like 'as' or 'ar' to /usr/bin. Otherwise keep only ${CTARGET}-as and friends.
 sys-devel/binutils-hppa64:default-gold - Set ld to point to ld.gold instead of ld.bfd
 sys-devel/binutils-hppa64:gold - Build ld.gold linker
 sys-devel/binutils-hppa64:multitarget - Adds support to binutils for cross compiling (does not work with gas)
@@ -8264,6 +8264,7 @@ sys-devel/gcc:vtv - Build support for virtual table verification (a C++ hardenin
 sys-devel/gcc-apple:bootstrap - !DO NOT SET THIS FLAG YOURSELF! avoids need for autoconf during bootstrap stage2
 sys-devel/gcc-apple:objc - Build support for the Objective C code language
 sys-devel/gcc-apple:objc++ - Build support for the Objective C++ language
+sys-devel/gcc-config:native-symlinks - Install native symlinks like 'gcc' or 'g++' to /usr/bin. Otherwise keep only ${CTARGET}-gcc and friends.
 sys-devel/gdb:client - Install the main "gdb" program (most people want this)
 sys-devel/gdb:lzma - Support lzma compression in ELF debug info
 sys-devel/gdb:multitarget - Support all known targets in one gdb binary
