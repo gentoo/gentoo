@@ -1,0 +1,60 @@
+diff -urN libSavitar-4.2.0_old/CMakeLists.txt libSavitar-4.2.0/CMakeLists.txt
+--- libSavitar-4.2.0_old/CMakeLists.txt	2019-07-30 09:03:53.000000000 +0300
++++ libSavitar-4.2.0/CMakeLists.txt	2019-08-04 17:23:27.099395645 +0300
+@@ -15,7 +15,7 @@
+     find_package(Threads QUIET)
+ endif()
+ 
+-add_subdirectory(pugixml)
++find_package(pugixml REQUIRED)
+ 
+ if(BUILD_PYTHON)
+     list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+diff -urN libSavitar-4.2.0_old/src/MeshData.cpp libSavitar-4.2.0/src/MeshData.cpp
+--- libSavitar-4.2.0_old/src/MeshData.cpp	2019-07-30 09:03:53.000000000 +0300
++++ libSavitar-4.2.0/src/MeshData.cpp	2019-08-04 17:23:59.891051757 +0300
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include "MeshData.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ #include <cstring>
+ #include <iostream>
+ #include <stdexcept> //For std::runtime_error.
+diff -urN libSavitar-4.2.0_old/src/Scene.cpp libSavitar-4.2.0/src/Scene.cpp
+--- libSavitar-4.2.0_old/src/Scene.cpp	2019-07-30 09:03:53.000000000 +0300
++++ libSavitar-4.2.0/src/Scene.cpp	2019-08-04 17:24:10.425265944 +0300
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include "Scene.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ #include <iostream>
+ #include <string>
+ using namespace Savitar;
+diff -urN libSavitar-4.2.0_old/src/SceneNode.cpp libSavitar-4.2.0/src/SceneNode.cpp
+--- libSavitar-4.2.0_old/src/SceneNode.cpp	2019-07-30 09:03:53.000000000 +0300
++++ libSavitar-4.2.0/src/SceneNode.cpp	2019-08-04 17:24:31.617696840 +0300
+@@ -18,7 +18,7 @@
+ 
+ #include "SceneNode.h"
+ #include "Namespace.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ #include <iostream>
+ using namespace Savitar;
+ 
+diff -urN libSavitar-4.2.0_old/src/ThreeMFParser.h libSavitar-4.2.0/src/ThreeMFParser.h
+--- libSavitar-4.2.0_old/src/ThreeMFParser.h	2019-07-30 09:03:53.000000000 +0300
++++ libSavitar-4.2.0/src/ThreeMFParser.h	2019-08-04 17:24:53.996151843 +0300
+@@ -21,7 +21,7 @@
+ 
+ #include "SavitarExport.h"
+ #include "SceneNode.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ 
+ #include <string>
+ namespace Savitar
