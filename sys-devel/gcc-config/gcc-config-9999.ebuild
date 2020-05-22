@@ -18,14 +18,15 @@ DESCRIPTION="Utility to manage compilers"
 HOMEPAGE="https://gitweb.gentoo.org/proj/gcc-config.git/"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="+native-symlinks"
 
 RDEPEND=">=sys-apps/gentoo-functions-0.10"
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
 		PV="${PV}" \
-		SUBLIBDIR="$(get_libdir)"
+		SUBLIBDIR="$(get_libdir)" \
+		USE_NATIVE_LINKS="$(usex native-symlinks)"
 }
 
 src_install() {
