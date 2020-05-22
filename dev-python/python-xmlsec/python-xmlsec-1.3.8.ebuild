@@ -32,7 +32,7 @@ RESTRICT=test
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -e "s:use_scm_version=.*:version='${PN}',:" \
+	sed -e "s:use_scm_version=.*:version='${PV}',:" \
 		-e "/setup_requires/ d" \
 		-i setup.py || die
 
