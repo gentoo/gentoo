@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="High availability environment tools for shell scripting"
 HOMEPAGE="http://www.fatalmind.com/software/hatools/"
@@ -14,5 +14,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 src_prepare() {
+	default
 	sed 's:ksh:bash:g' -i test.sh || die
 }
