@@ -175,7 +175,7 @@ dxx_scons() {
 	)
 	if use editor; then
 		scons_build_profile+=+e
-		mysconsargs+=( 
+		mysconsargs+=(
 			e_builddir=build/editor/
 			e_editor=1
 		)
