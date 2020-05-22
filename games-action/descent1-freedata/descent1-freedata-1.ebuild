@@ -1,4 +1,11 @@
+# Copyright 1999-2019 DXX Rebirth project contributors
 # Distributed under the terms of the GNU General Public License v2
+
+# This file is part of the DXX-Rebirth project.
+#
+# It is copyright by its individual contributors, as recorded in the
+# project's Git history.  See COPYING.txt at the top level for license
+# terms and a link to the Git history.
 
 EAPI=6
 
