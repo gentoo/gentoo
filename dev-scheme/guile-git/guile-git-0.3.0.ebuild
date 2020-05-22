@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}"
 
 RESTRICT=test # Tets suite needs a fix: https://gitlab.com/guile-git/guile-git/issues/18
 
+# guile generates ELF files without use of C or machine code
+# It's a portage's false positive. bug #677600
+QA_FLAGS_IGNORED='.*[.]go'
+
 src_prepare() {
 	default
 
