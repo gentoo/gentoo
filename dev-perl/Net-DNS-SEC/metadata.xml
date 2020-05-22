@@ -9,8 +9,10 @@
 		<remote-id type="cpan">Net-DNS-SEC</remote-id>
 		<remote-id type="cpan-module">Net::DNS::SEC</remote-id>
 		<remote-id type="cpan-module">Net::DNS::SEC::DSA</remote-id>
+		<remote-id type="cpan-module">Net::DNS::SEC::Digest</remote-id>
 		<remote-id type="cpan-module">Net::DNS::SEC::ECCGOST</remote-id>
 		<remote-id type="cpan-module">Net::DNS::SEC::ECDSA</remote-id>
+		<remote-id type="cpan-module">Net::DNS::SEC::EdDSA</remote-id>
 		<remote-id type="cpan-module">Net::DNS::SEC::Keyset</remote-id>
 		<remote-id type="cpan-module">Net::DNS::SEC::Private</remote-id>
 		<remote-id type="cpan-module">Net::DNS::SEC::RSA</remote-id>
