@@ -5,8 +5,8 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES_LIST=( none )
-inherit bash-completion-r1 elisp-common flag-o-matic multiprocessing \
-	toolchain-funcs virtualx xdg cmake
+inherit bash-completion-r1 cmake elisp-common flag-o-matic multiprocessing \
+	toolchain-funcs virtualx xdg-utils
 
 MY_P="${P/_/-}"
 
@@ -201,16 +201,20 @@ src_install() {
 	rm -r "${ED}"/usr/share/cmake/{completions,editors} || die
 }
 
-pkg_preinst() {
-	use qt5 && xdg_pkg_preinst
-}
-
 pkg_postinst() {
 	use emacs && elisp-site-regen
-	use qt5 && xdg_pkg_postinst
+	if use qt5; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+	fi
 }
 
 pkg_postrm() {
 	use emacs && elisp-site-regen
-	use qt5 && xdg_pkg_postrm
+	if use qt5; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+	fi
 }
