@@ -7869,7 +7869,7 @@ dev-python/genty 1.3.2: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2-r1: Python bindings for GeoIP
 dev-python/gevent 1.4.0: Coroutine-based network library
 dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi server
-dev-python/geventhttpclient 1.3.1-r1 1.4.0: A high performance, concurrent HTTP client library for Python using gevent
+dev-python/geventhttpclient 1.3.1-r1 1.4.0-r1: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/girder-client 2.3.0: Python libraries and CLI to interact with the REST API of a Girder server
 dev-python/git-review 1.28.0: Tool to submit code to Gerrit
 dev-python/gitdb 4.0.4 4.0.5: GitDB is a pure-Python git object database
