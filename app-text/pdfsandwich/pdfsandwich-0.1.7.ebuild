@@ -12,10 +12,11 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="png"
 
-RDEPEND=">=app-text/tesseract-3.00
+RDEPEND="app-text/tesseract
 	media-gfx/exact-image
 	app-text/unpaper
 	app-text/ghostscript-gpl
+	app-text/poppler
 	virtual/imagemagick-tools[png?]"
 DEPEND="sys-apps/gawk
 	>=dev-lang/ocaml-3.10[ocamlopt]"
