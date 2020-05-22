@@ -16,7 +16,7 @@ if [[ "$PV" = 9999 ]]; then
 else
 	MY_COMMIT='a17792c89fd49dd12fdf5981670dd7f64b42850f'
 	S="$WORKDIR/$PN-$MY_COMMIT"
-	SRC_URI="https://github.com/dxx-rebirth/dxx-rebirth/archive/$MY_COMMIT.zip -> $PN-$PVR.zip"
+	SRC_URI="https://github.com/dxx-rebirth/dxx-rebirth/archive/$MY_COMMIT.tar.gz -> $PN-$PVR.tar.gz"
 	unset MY_COMMIT
 fi
 
