@@ -8,20 +8,23 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit linux-info udev xdg distutils-r1
 
-DESCRIPTION="A Linux device manager for Logitech's Unifying Receiver peripherals"
+DESCRIPTION="Linux Device Manager for Logitech Unifying Receivers and Paired Devices"
 HOMEPAGE="https://pwr-solaar.github.io/Solaar/"
 SRC_URI="https://github.com/pwr-Solaar/Solaar/archive/${PV/_rc/rc}.tar.gz -> ${P/_rc/rc}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="doc"
+IUSE="doc appindicator libnotify"
 
 RDEPEND="
 	acct-group/plugdev
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
-	x11-libs/gtk+:3[introspection]"
+	x11-libs/gtk+:3[introspection]
+	appindicator? ( dev-libs/libappindicator:3 )
+	libnotify? ( x11-libs/libnotify )"
+# libappindicator & libnotify are entirely optional and detected at runtime
 
 S="${WORKDIR}"/Solaar-${PV/_rc/rc}
 
@@ -49,5 +52,7 @@ python_install_all() {
 	dodoc docs/devices.md
 	if use doc; then
 		dodoc -r docs/*
+	else
+		newdoc docs/index.md README.md
 	fi
 }
