@@ -28,9 +28,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check[${MULTILIB_USEDEP}] )
 	doc? ( app-doc/doxygen[dot] )
 	dev-libs/libxslt
-	${PYTHON_DEPS}
-	$(python_gen_any_dep \
-		">=x11-base/xcb-proto-1.14[${MULTILIB_USEDEP},\${PYTHON_USEDEP}]")"
+"
+BDEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep '>=x11-base/xcb-proto-1.14[${PYTHON_USEDEP}]')
+"
 
 python_check_deps() {
 	has_version -b ">=x11-base/xcb-proto-1.14[${PYTHON_USEDEP}]"
