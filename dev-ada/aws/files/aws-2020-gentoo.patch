@@ -1,0 +1,11 @@
+--- a/include/include.gpr	2017-02-17 22:09:14.361695926 +0100
++++ b/include/include.gpr	2017-02-17 22:11:36.497215517 +0100
+@@ -54,7 +54,7 @@
+ 
+          when "Release" =>
+             for Default_Switches ("Ada") use
+-              ("-gnat2012", "-O2", "-gnatws", "-gnatn") & Shared.Global_Options;
++              ("-gnat2012", "-O2", "-gnatws", "-gnatn") & Shared.Adaflags & Shared.Global_Options;
+       end case;
+ 
+       case Shared.S_Target is
