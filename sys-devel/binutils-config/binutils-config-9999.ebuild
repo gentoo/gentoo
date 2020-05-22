@@ -33,14 +33,11 @@ src_install() {
 	use prefix && eprefixify "${ED}"/usr/bin/${PN}
 }
 
-pkg_preinst() {
-	# Force a refresh when upgrading from an older version that symlinked
-	# in all the libs & includes that binutils-libs handles. #528088
-	if has_version "<${CATEGORY}/${PN}-5" ; then
-		local bc current
-		bc="${ED}/usr/bin/binutils-config"
-		if current=$("${bc}" -c) ; then
-			"${bc}" "${current}"
-		fi
-	fi
+pkg_postinst() {
+	# Re-register all targets. USE flags or new versions can change
+	# installed symlinks.
+	local x
+	for x in $(binutils-config -C -l 2>/dev/null | awk '$NF == "*" { print $2 }') ; do
+		binutils-config ${x}
+	done
 }
