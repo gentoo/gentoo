@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure setup
+DEPEND=dev-ada/xmlada[ada_target_gnat_2019(-)?,-ada_target_gnat_2016(-),-ada_target_gnat_2017(-),-ada_target_gnat_2018(-),shared,static-libs] dev-ada/asis[ada_target_gnat_2019(-)?,-ada_target_gnat_2016(-),-ada_target_gnat_2017(-),-ada_target_gnat_2018(-)] dev-ada/gprbuild[ada_target_gnat_2019(-)?,-ada_target_gnat_2016(-),-ada_target_gnat_2017(-),-ada_target_gnat_2018(-)]
+DESCRIPTION=A complete Web development framework
+EAPI=7
+HOMEPAGE=http://libre.adacore.com/tools/aws/
+IUSE=ada_target_gnat_2019 -ada_target_gnat_2016 -ada_target_gnat_2017 -ada_target_gnat_2018
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-ada/xmlada[ada_target_gnat_2019(-)?,-ada_target_gnat_2016(-),-ada_target_gnat_2017(-),-ada_target_gnat_2018(-),shared,static-libs]
+REQUIRED_USE=ada_target_gnat_2019
+SLOT=0
+SRC_URI=https://community.download.adacore.com/v1/c1b0f6863d1a30acaee1df022a65ad11d5737a84?filename=aws-2020-20200429-19A9F-src.tar.gz -> aws-2020-20200429-19A9F-src.tar.gz
+_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multiprocessing	cac3169468f893670dac3e7cb940e045
+_md5_=415bef59b03759c149e9840f8b44f4f7
