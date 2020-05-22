@@ -1015,7 +1015,7 @@ postinst_sources() {
 	#	K_SECURITY_UNSUPPORTED=deblob
 
 	# if we are to forcably symlink, delete it if it already exists first.
-	if [[ ${K_SYMLINK} > 0 ]]; then
+	if [[ ${K_SYMLINK} -gt 0 ]]; then
 		[[ -h ${EROOT}usr/src/linux ]] && { rm "${EROOT}"usr/src/linux || die; }
 		MAKELINK=1
 	fi
@@ -1078,7 +1078,7 @@ postinst_sources() {
 	KV_PATCH=$(ver_cut 3 ${OKV})
 	if [[ "$(tc-arch)" = "sparc" ]]; then
 		if [[ $(gcc-major-version) -lt 4 && $(gcc-minor-version) -lt 4 ]]; then
-			if [[ ${KV_MAJOR} -ge 3 || ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} > 2.6.24 ]] ; then
+			if [[ ${KV_MAJOR} -ge 3 ]] || ver_test ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} -gt 2.6.24 ; then
 				echo
 				elog "NOTE: Since 2.6.25 the kernel Makefile has changed in a way that"
 				elog "you now need to do"
@@ -1272,7 +1272,7 @@ unipatch() {
 	# do not apply fbcondecor patch to sparc/sparc64 as it breaks boot
 	# bug #272676
 	if [[ "$(tc-arch)" = "sparc" || "$(tc-arch)" = "sparc64" ]]; then
-		if [[ ${KV_MAJOR} -ge 3 || ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} > 2.6.28 ]]; then
+		if [[ ${KV_MAJOR} -ge 3 ]] || ver_test ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} -gt 2.6.28 ; then
 			if [[ ! -z ${K_WANT_GENPATCHES} ]] ; then
 				UNIPATCH_DROP="${UNIPATCH_DROP} *_fbcondecor*.patch"
 				echo
@@ -1521,7 +1521,7 @@ kernel-2_src_unpack() {
 	# fix a problem on ppc where TOUT writes to /usr/src/linux breaking sandbox
 	# only do this for kernel < 2.6.27 since this file does not exist in later
 	# kernels
-	if [[ -n ${KV_MINOR} &&  ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} < 2.6.27 ]] ; then
+	if [[ -n ${KV_MINOR} ]] && ver_test ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} -lt 2.6.27 ; then
 		sed -i \
 			-e 's|TOUT      := .tmp_gas_check|TOUT  := $(T).tmp_gas_check|' \
 			"${S}"/arch/ppc/Makefile
