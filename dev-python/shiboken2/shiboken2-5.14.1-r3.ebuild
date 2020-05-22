@@ -4,8 +4,6 @@
 EAPI=7
 
 # TODO: Remove the shiboken2 5.14.1-specific "sed" kludge on the next bump.
-# TODO: Remove Python 2.7 support on the next bump. Gentoo support for Python
-# 2.7 effectively ceases in April 2020.
 # TODO: Split the "/usr/bin/shiboken2" binding generator from the
 # "/usr/lib64/libshiboken2-*.so" family of shared libraries. The former
 # requires everything (including Clang) at runtime; the latter only requires
@@ -15,7 +13,7 @@ EAPI=7
 # "/usr/bin/shiboken2" at build time and "libshiboken2-*.so" at runtime.
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit cmake-utils llvm python-r1
 
