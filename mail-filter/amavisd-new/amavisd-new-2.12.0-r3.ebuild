@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/amavis/amavis/-/archive/v${PV}/amavis-v${PV}.tar.bz2
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 sparc ~x86"
+KEYWORDS="~amd64 ~ppc ppc64 sparc ~x86"
 IUSE="clamav courier dkim ldap mysql postgres qmail razor rspamd rspamd-https snmp spamassassin zmq"
 
 MY_RSPAMD_DEPEND="dev-perl/HTTP-Message
