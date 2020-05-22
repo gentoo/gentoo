@@ -24,6 +24,7 @@ IUSE=""
 
 RDEPEND="dev-db/sqlite"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${P}-7a4fdad
 
@@ -32,6 +33,7 @@ src_prepare() {
 
 	sed -i \
 		-e '/^CFLAGS =/{s:=:+=:;s:-O2 -finline-functions:${CPPFLAGS}:}' \
+		-e 's:pkg-config:$(PKG_CONFIG):' \
 		Makefile || die
 }
 
@@ -43,6 +45,7 @@ _emake() {
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
 		LD='$(CC)' \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		HAVE_GTK2=no \
 		HAVE_LLVM=no \
 		HAVE_LIBXML=no \
