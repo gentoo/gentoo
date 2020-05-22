@@ -1,12 +1,11 @@
+# Copyright 1999-2019 DXX Rebirth project contributors
 # Distributed under the terms of the GNU General Public License v2
+
+# This file is part of the DXX-Rebirth project.
 #
-# After release 0.58.1 and before beta release 0.59.100, upstream
-# combined the source for the Descent 1 and Descent 2 engines into a
-# single tree.  The combined tree builds common code into a static
-# library, which is linked into both games, but not installed.  Users
-# who want both engines benefit from this because they can build the
-# common code once, rather than once per game.  This ebuild supports
-# building one or both engines, depending on USE=d1x and USE=d2x.
+# It is copyright by its individual contributors, as recorded in the
+# project's Git history.  See COPYING.txt at the top level for license
+# terms and a link to the Git history.
 
 EAPI=6
 
@@ -33,7 +32,7 @@ SLOT="0"
 # fixes are merged into the main source by upstream.
 #
 # Cross-compilation to Windows is also supported.
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 # Default to building both game engines.  The total size is relatively
 # small.
 IUSE="+d1x +d2x debug editor +flac ipv6 +joystick l10n_de +midi +mp3 +music +opengl opl3-musicpack +png sc55-musicpack sdl2 tracker +vorbis"
