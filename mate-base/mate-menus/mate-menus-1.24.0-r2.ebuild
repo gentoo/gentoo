@@ -30,6 +30,7 @@ src_configure() {
 	# Do NOT compile with --disable-debug/--enable-debug=no as it disables API
 	# usage checks.
 	mate_src_configure \
+		--disable-static \
 		--enable-debug=$(usex debug yes minimum) \
 		$(use_enable introspection)
 }
