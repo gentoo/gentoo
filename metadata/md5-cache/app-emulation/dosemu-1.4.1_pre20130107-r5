@@ -11,4 +11,4 @@ RDEPEND=media-libs/libsdl >=sys-libs/slang-1.4 X? ( x11-libs/libX11 x11-libs/lib
 SLOT=0
 SRC_URI=mirror://sourceforge/dosemu/dosemu-freedos-1.0-bin.tgz https://dev.gentoo.org/~slyfox/distfiles/dosemu-1.4.1_pre20130107.zip
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=65fa423386db3c93d249aa34ba03db4b
+_md5_=c0379a2458025a2ee11405a088c6cbdc

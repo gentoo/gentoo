@@ -8425,6 +8425,7 @@ dev-python/pympler 0.6: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1 2.1.3: Simple MSSQL python extension module
 dev-python/pymysql 0.9.3: Pure-Python MySQL Driver
 dev-python/pynacl 1.2.1 1.3.0: Python binding to the Networking and Cryptography (NaCl) library
+dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.1: Python client for Neovim
 dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
 dev-python/pyodbc 4.0.23: python ODBC module to connect to almost any database
@@ -8475,6 +8476,7 @@ dev-python/pyscard 1.9.9: Smart cards support in python
 dev-python/pysendfile 2.0.1-r1: A python interface to the sendfile(2) system call
 dev-python/pyserial 3.4: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
+dev-python/pyside2 5.14.1-r2 5.14.2: Python bindings for the Qt framework
 dev-python/pysmi 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
@@ -8743,6 +8745,7 @@ dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git a
 dev-python/setuptools_trial 0.6.0-r1: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sh 1.12.14: Python subprocess interface
+dev-python/shiboken2 5.14.1-r3 5.14.2: Python binding generator for C++ libraries
 dev-python/shutilwhich 1.1.0: A copy & paste backport of Python 3.3's shutil.which function
 dev-python/simplebayes 1.5.7: memory-based, optional-persistence naive bayesian text classifier
 dev-python/simpleeval 0.9.8 0.9.10: A simple, safe single expression evaluator library
@@ -13879,6 +13882,7 @@ media-video/smplayer 18.6.0 19.10.2 20.4.2: Great Qt GUI front-end for mplayer/m
 media-video/smtube 19.6.0 20.1.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
+media-video/streamdeck-ui 0.0_p20200102 9999: A Linux compatible UI for the Elgato Stream Deck
 media-video/streamdvd 0.4-r2: fast tool to backup Video DVDs 'on the fly'
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
 media-video/subcheck 0.78.2-r1: Subcheck checks srt subtitle files for errors
