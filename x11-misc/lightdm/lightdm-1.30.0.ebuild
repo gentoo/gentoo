@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/CanonicalLtd/lightdm/releases/download/${PV}/${P}.ta
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ppc64 ~x86"
 IUSE="audit +gnome +gtk +introspection non_root qt5 vala"
 
 COMMON_DEPEND="
