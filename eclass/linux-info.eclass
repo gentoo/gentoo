@@ -813,7 +813,7 @@ check_extra_config() {
 			linux_chkconfig_present ${config} || error=1
 		fi
 
-		if [[ ${error} > 0 ]]; then
+		if [[ ${error} -gt 0 ]]; then
 			local report_func="eerror" local_error
 			local_error="ERROR_${config}"
 			local_error="${!local_error}"
@@ -848,14 +848,14 @@ check_extra_config() {
 		fi
 	done
 
-	if [[ ${hard_errors_count} > 0 ]]; then
+	if [[ ${hard_errors_count} -gt 0 ]]; then
 		eerror "Please check to make sure these options are set correctly."
 		eerror "Failure to do so may cause unexpected problems."
 		eerror "Once you have satisfied these options, please try merging"
 		eerror "this package again."
 		export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
 		die "Incorrect kernel configuration options"
-	elif [[ ${soft_errors_count} > 0 ]]; then
+	elif [[ ${soft_errors_count} -gt 0 ]]; then
 		ewarn "Please check to make sure these options are set correctly."
 		ewarn "Failure to do so may cause unexpected problems."
 	else
