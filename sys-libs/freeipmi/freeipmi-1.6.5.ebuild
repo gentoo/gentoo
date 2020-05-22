@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Provides Remote-Console and System Management Software as per IPMI 
 HOMEPAGE="https://www.gnu.org/software/freeipmi/"
 
 MY_P="${P/_/.}"
-S="${WORKDIR}"/${MY_P}
+S="${WORKDIR}/${MY_P}"
 [[ ${MY_P} == *.beta* ]] && ALPHA="-alpha"
 SRC_URI="mirror://gnu${ALPHA}/${PN}/${MY_P}.tar.gz"
 
@@ -49,14 +49,15 @@ src_install() {
 	# quite a few can be run remotely as standard user, so move them
 	# in /usr/bin afterwards.
 	dodir /usr/bin
-	for file in ipmi{detect,ping,power,console}; do
-		mv "${ED}"/usr/{s,}bin/${file} || die
+	local prog
+	for prog in ipmi{detect,ping,power,console}; do
+		mv "${ED}"/usr/{s,}bin/${prog} || die
 
 		# The default install symlinks these commands to add a dash
 		# after the ipmi prefix; we repeat those after move for
 		# consistency.
-		rm "${ED}"/usr/sbin/${file/ipmi/ipmi-}
-		dosym ${file} /usr/bin/${file/ipmi/ipmi-}
+		rm "${ED}"/usr/sbin/${prog/ipmi/ipmi-}
+		dosym ${prog} /usr/bin/${prog/ipmi/ipmi-}
 	done
 
 	# Install the nagios plugin in its proper place, if desired
@@ -87,5 +88,5 @@ src_install() {
 	newinitd "${FILESDIR}"/bmc-watchdog.initd.4 ipmiseld
 	newconfd "${FILESDIR}"/ipmiseld.confd ipmiseld
 
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }
