@@ -3,17 +3,16 @@
 
 EAPI=7
 
-MY_P="${PN}-${PV/_/-}"
-inherit multibuild qmake-utils
+inherit qmake-utils
 
 DESCRIPTION="2D plotting library for Qt5"
 HOMEPAGE="https://qwt.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV/_/-}/${MY_P}.tar.bz2"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="qwt mathml? ( LGPL-2.1 Nokia-Qt-LGPL-Exception-1.1 )"
-KEYWORDS="amd64 ~arm ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
-SLOT="6/1.3"
-IUSE="designer doc examples mathml opengl static-libs svg"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+SLOT="6/1.4"
+IUSE="designer doc examples mathml opengl svg"
 
 DEPEND="
 	dev-qt/qtconcurrent:5
@@ -28,26 +27,19 @@ DEPEND="
 	)
 	svg? ( dev-qt/qtsvg:5 )
 "
-RDEPEND="${DEPEND}
-	!<x11-libs/qwt-5.2.3
-	!x11-libs/qwt:5[doc]
-	doc? ( !<media-libs/coin-3.1.3[doc] )
-"
-
-S="${WORKDIR}"/${MY_P}
+RDEPEND="${DEPEND}"
 
 DOCS=( CHANGES-6.1 README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2-invalid-read.patch
 	"${FILESDIR}"/${PN}-6.1.1-pc-destdir.patch
+	"${FILESDIR}"/${P}-qt-5.15.patch # trunk
 )
 
-pkg_setup() {
-	MULTIBUILD_VARIANTS=( shared $(usev static-libs) )
-}
-
 src_prepare() {
+	default
+
 	cat > qwtconfig.pri <<-EOF
 		QWT_INSTALL_LIBS = "${EPREFIX}/usr/$(get_libdir)"
 		QWT_INSTALL_HEADERS = "${EPREFIX}/usr/include/qwt6"
@@ -66,56 +58,41 @@ src_prepare() {
 		QWT_CONFIG += qt warn_on thread release no_keywords
 	EOF
 
-	multibuild_copy_sources
+	echo "QWT_CONFIG += QwtDll" >> qwtconfig.pri
 
-	preparation() {
-		if [[ ${MULTIBUILD_VARIANT} == shared ]]; then
-			echo "QWT_CONFIG += QwtDll" >> qwtconfig.pri
-		fi
+	cat >> qwtconfig.pri <<-EOF
+		QWT_INSTALL_PLUGINS   = "${EPREFIX}$(qt5_get_plugindir)/designer"
+		QWT_INSTALL_FEATURES  = "${EPREFIX}$(qt5_get_mkspecsdir)/features"
+	EOF
+	sed \
+		-e 's/target doc/target/' \
+		-e "/^TARGET/s:(qwt):(qwt6-qt5):g" \
+		-e "/^TARGET/s:qwt):qwt6-qt5):g" \
+		-i src/src.pro || die
 
-		cat >> qwtconfig.pri <<-EOF
-			QWT_INSTALL_PLUGINS   = "${EPREFIX}$(qt5_get_plugindir)/designer"
-			QWT_INSTALL_FEATURES  = "${EPREFIX}$(qt5_get_mkspecsdir)/features"
-		EOF
-		sed \
-			-e 's/target doc/target/' \
-			-e "/^TARGET/s:(qwt):(qwt6-qt5):g" \
-			-e "/^TARGET/s:qwt):qwt6-qt5):g" \
-			-i src/src.pro || die
-
-		sed \
-			-e '/qwtAddLibrary/s:(qwt):(qwt6-qt5):g' \
-			-e '/qwtAddLibrary/s:qwt):qwt6-qt5):g' \
-			-i qwt.prf designer/designer.pro examples/examples.pri \
-			textengines/mathml/qwtmathml.prf textengines/textengines.pri || die
-
-		default
-	}
-
-	multibuild_foreach_variant run_in_build_dir preparation
+	sed \
+		-e '/qwtAddLibrary/s:(qwt):(qwt6-qt5):g' \
+		-e '/qwtAddLibrary/s:qwt):qwt6-qt5):g' \
+		-i qwt.prf designer/designer.pro examples/examples.pri \
+		textengines/mathml/qwtmathml.prf textengines/textengines.pri || die
 }
 
 src_configure() {
-	multibuild_foreach_variant run_in_build_dir eqmake5
+	eqmake5
 }
 
 src_compile() {
-	multibuild_foreach_variant run_in_build_dir default
+	default
 }
 
 src_test() {
-	testing() {
-		cd examples || die
-		eqmake5 examples.pro
-		emake
-	}
-	multibuild_foreach_variant run_in_build_dir testing
+	cd examples || die
+	eqmake5 examples.pro
+	emake
 }
 
 src_install() {
-	rm -f doc/man/*/{_,deprecated}* || die
-
-	multibuild_foreach_variant run_in_build_dir emake INSTALL_ROOT="${D}" install
+	emake INSTALL_ROOT="${D}" install
 
 	if use mathml; then
 		sed \
@@ -126,7 +103,7 @@ src_install() {
 	if use doc; then
 		local HTML_DOCS=( doc/html/. )
 	else
-		rm -rf "${ED}"/usr/share/doc/${PF}/html || die
+		rm -r "${ED}"/usr/share/doc/${PF}/html || die
 	fi
 
 	einstalldocs
