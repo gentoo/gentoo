@@ -22,3 +22,9 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
+
+RDEPEND="
+	x11-libs/libX11
+	x11-libs/libXrandr"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
