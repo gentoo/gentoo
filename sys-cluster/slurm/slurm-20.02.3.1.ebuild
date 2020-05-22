@@ -11,7 +11,7 @@ else
 	if [[ ${PV} == *pre* || ${PV} == *rc* ]]; then
 		MY_PV=$(ver_rs '-0.') # pre-releases or release-candidate
 	else
-		MY_PV=$(ver_rs 1-3 '-') # stable releases
+		MY_PV=$(ver_rs 1-4 '-') # stable releases
 	fi
 	MY_P="${PN}-${MY_PV}"
 	INHERIT_GIT=""
@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	!lua? ( !dev-lang/lua )
 	ipmi? ( sys-libs/freeipmi )
 	json? ( dev-libs/json-c:= )
-	amd64? ( netloc? ( sys-apps/netloc ) )
+	amd64? ( netloc? ( || ( sys-apps/netloc >=sys-apps/hwloc-2.1.0[netloc] ) ) )
 	hdf5? ( sci-libs/hdf5:= )
 	numa? ( sys-process/numactl )
 	ofed? ( sys-fabric/ofed )
@@ -53,8 +53,10 @@ COMMON_DEPEND="
 	sys-libs/ncurses:0=
 	app-arch/lz4:0=
 	sys-libs/readline:0="
+
 DEPEND="${COMMON_DEPEND}
 	html? ( sys-apps/man2html )"
+
 RDEPEND="${OMMON_DEPEND}
 	acct-user/slurm
 	acct-group/slurm
