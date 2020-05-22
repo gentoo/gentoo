@@ -26,7 +26,7 @@ IUSE=""
 DEPEND="${PYTHON_DEPS}
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pynput[${PYTHON_USEDEP}]
-		dev-python/pyside2[${PYTHON_USEDEP}]
+		dev-python/pyside2[${PYTHON_USEDEP},designer]
 		media-libs/elgato-streamdeck[${PYTHON_USEDEP}]
 		dev-libs/hidapi"
 RDEPEND="${DEPEND}"
