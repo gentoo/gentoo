@@ -16,8 +16,7 @@ OCR scanned books or journals. It is able to recognize the page layout
 even for multicolumn text.
 
 Essentially, pdfsandwich is a wrapper script which calls the following
-binaries: convert, cuneiform, gs, and hocr2pdf. It is known to run on
-Unix systems and has been tested on Linux and MacOS X. It supports
+binaries: unpaper, convert, gs, and tesseract. It supports
 parallel processing on multiprocessor systems.
 </longdescription>
 	<upstream>
