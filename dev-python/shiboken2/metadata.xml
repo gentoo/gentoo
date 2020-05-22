@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<use>
+		<flag name="docstrings">Expose documentation as Python docstrings (recommended)</flag>
+		<flag name="numpy">Implicitly convert passed NumPy arrays to Qt lists</flag>
+		<flag name="vulkan">Generate "QSurface::VulkanSurface" bindings</flag>
+	</use>
+</pkgmetadata>
