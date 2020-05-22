@@ -4,7 +4,7 @@ DEPEND=dev-libs/liblinear:= dev-libs/libpcre net-libs/libpcap libssh2? ( net-lib
 DESCRIPTION=A utility for network discovery and security auditing
 EAPI=7
 HOMEPAGE=https://nmap.org/
-IUSE=ipv6 libressl libssh2 ncat ndiff nmap-update nping +nse ssl system-lua
+IUSE=ipv6 libressl libssh2 ncat nmap-update nping +nse ssl system-lua
 KEYWORDS=~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=dev-libs/liblinear:= dev-libs/libpcre net-libs/libpcap libssh2? ( net-libs/libssh2[zlib] sys-libs/zlib ) nmap-update? ( dev-libs/apr dev-vcs/subversion ) nse? ( sys-libs/zlib ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) system-lua? ( >=dev-lang/lua-5.2:*[deprecated] )
@@ -12,4 +12,4 @@ REQUIRED_USE=system-lua? ( nse )
 SLOT=0
 SRC_URI=https://nmap.org/dist/nmap-7.80.tar.bz2 https://dev.gentoo.org/~jer/nmap-logo-64.png
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=574b75ae1a209d7d42d5f7499f9146b5
+_md5_=90b9a1eeae93875e74ec13fc15c4dc2c
