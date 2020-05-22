@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="appindicator crypt cups examples gnome-keyring kwallet libressl nls spice ssh rdp telepathy vnc webkit zeroconf"
 
-CDEPEND="
+DEPEND="
 	dev-libs/glib:2
 	dev-libs/json-glib
 	dev-libs/libsodium:=
@@ -47,11 +47,9 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
-DEPEND="
-	${CDEPEND}
-"
+
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	virtual/freedesktop-icon-theme
 "
 
