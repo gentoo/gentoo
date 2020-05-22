@@ -12198,7 +12198,7 @@ mate-base/mate-applets-meta 1.22.0 1.24.0: Meta package for MATE panel applets
 mate-base/mate-common 1.22.2 1.24.1: Common files for development of MATE packages
 mate-base/mate-control-center 1.22.2-r1 1.24.0: The MATE Desktop configuration tool
 mate-base/mate-desktop 1.22.2 1.24.0: Libraries for the MATE desktop that are not part of the UI
-mate-base/mate-menus 1.22.1-r1 1.24.0-r1: MATE menu system, implementing the F.D.O cross-desktop spec
+mate-base/mate-menus 1.22.1-r1 1.24.0-r2: MATE menu system, implementing the F.D.O cross-desktop spec
 mate-base/mate-panel 1.22.2-r1 1.24.0-r1: The MATE panel
 mate-base/mate-session-manager 1.22.3-r2 1.24.0-r2: MATE session manager
 mate-base/mate-settings-daemon 1.22.1 1.24.0: MATE Settings Daemon
