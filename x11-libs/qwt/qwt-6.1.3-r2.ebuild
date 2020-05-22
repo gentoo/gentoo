@@ -1,14 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit multibuild qmake-utils
+EAPI=7
 
 MY_P="${PN}-${PV/_/-}"
+inherit multibuild qmake-utils
 
 DESCRIPTION="2D plotting library for Qt5"
-HOMEPAGE="http://qwt.sourceforge.net/"
+HOMEPAGE="https://qwt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV/_/-}/${MY_P}.tar.bz2"
 
 LICENSE="qwt mathml? ( LGPL-2.1 Nokia-Qt-LGPL-Exception-1.1 )"
@@ -125,7 +124,7 @@ src_install() {
 	fi
 
 	if use doc; then
-		HTML_DOCS=( doc/html/. )
+		local HTML_DOCS=( doc/html/. )
 	else
 		rm -rf "${ED}"/usr/share/doc/${PF}/html || die
 	fi
