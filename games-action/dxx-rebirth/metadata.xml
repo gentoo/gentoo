@@ -40,11 +40,3 @@
 		<remote-id type="github">dxx-rebirth/dxx-rebirth</remote-id>
 	</upstream>
 </pkgmetadata>
-
-
-
-    midi: enforce that SDL-mixer is used and has midi support
-    editor: yes
-    debug: enable various debugging code paths and sanity checks, not just output. Some of these checks date back to the retail build, and choke on some custom levels because the game was never coded to sufficiently distrust inputs.
-    sdl2: use libSDL2, SDL2-mixer instead of libSDL-1* and SDL-mixer-1*
-    tracker: enable support for @Mako88's PHP-based multiplayer game tracker.
