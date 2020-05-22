@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/lightdm-gtk-greeter/$(ver_cut 1-2)/${PV}/+downloa
 LICENSE="GPL-3 LGPL-3
 	branding? ( CC-BY-3.0 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ppc64 ~x86"
 IUSE="ayatana branding"
 
 COMMON_DEPEND="ayatana? ( dev-libs/libindicator:3 )
