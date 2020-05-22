@@ -9,4 +9,4 @@ RDEPEND=>=dev-scheme/guile-2.0.11:= dev-scheme/bytestructures >=dev-libs/libgit2
 RESTRICT=test
 SLOT=0
 SRC_URI=https://gitlab.com/guile-git/guile-git/uploads/4c563d8e7e1ff84396abe8ca7011bcaf/guile-git-0.3.0.tar.gz
-_md5_=dff4104b1e3af0a54be3dd729456e473
+_md5_=3e16cf8385bd24fd0ac2acbe2bb9be0a
