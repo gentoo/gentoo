@@ -1,4 +1,4 @@
-# Copyright 2002-2019 Gentoo Authors
+# Copyright 2002-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ia16-ldflags.patch
 	"${FILESDIR}"/${P}-fix-inline.patch
 	"${FILESDIR}"/${P}-lto.patch
+	"${FILESDIR}"/${P}-as.patch
 )
 
 src_prepare() {
@@ -97,6 +98,7 @@ src_configure() {
 }
 
 src_compile() {
+	# src/makefile.common is fritten manually, uses AR=ar
 	emake AR=$(tc-getAR)
 }
 
