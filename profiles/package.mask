@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-05-21)
+# Mask for initial testing. Symlink removal might be too aggressive: #724454#c20
+>=sys-devel/binutils-config-5.3
+>=sys-devel/gcc-config-2.3
+
 # Christoph Junghans <junghans@gentoo.org> (2020-05-19)
 # multiple vulnerabilities (CVE-2019-{3463,3464,1000018})
 # bug #699842. Masked for removal in 30 days.
