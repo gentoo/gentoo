@@ -421,7 +421,6 @@ dev-python/PyDbLite
 # Unmaintained.  Stuck on Python 2.
 # Removal in 30 days.  Bug #713366.
 app-backup/bup
-app-backup/kup
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
