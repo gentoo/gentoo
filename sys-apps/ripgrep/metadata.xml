@@ -13,6 +13,7 @@
 		<flag name="man" restrict="&gt;=sys-apps/ripgrep-0.10.0-r1">
 			Build and install man pages.
 		</flag>
+		<flag name="fish-completion">Enable fish completion support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">BurntSushi/ripgrep</remote-id>

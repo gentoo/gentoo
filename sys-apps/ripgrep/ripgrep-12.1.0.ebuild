@@ -71,7 +71,7 @@ winapi-util-0.1.5
 winapi-x86_64-pc-windows-gnu-0.4.0
 "
 
-inherit cargo bash-completion-r1
+inherit cargo
 
 DESCRIPTION="a search tool that combines the usability of ag with the raw speed of grep"
 HOMEPAGE="https://github.com/BurntSushi/ripgrep"
@@ -82,7 +82,7 @@ SRC_URI="https://github.com/BurntSushi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Apache-2.0 BSD-2 Boost-1.0 || ( MIT Unlicense )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="pcre"
+IUSE="pcre bash-completion fish-completion zsh-completion"
 
 DEPEND=""
 
@@ -109,13 +109,20 @@ src_install() {
 	# so grab fist match only
 	local BUILD_DIR="$(dirname $(find target/release -name ripgrep-stamp -print -quit))"
 
-	newbashcomp "${BUILD_DIR}"/rg.bash rg
+	if use bash-completion ; then
+		inherit bash-completion-r1
+		newbashcomp "${BUILD_DIR}"/rg.bash rg
+	fi
 
-	insinto /usr/share/fish/vendor_completions.d
-	doins "${BUILD_DIR}"/rg.fish
+	if use fish-completion ; then
+		insinto /usr/share/fish/vendor_completions.d
+		doins "${BUILD_DIR}"/rg.fish
+	fi
 
-	insinto /usr/share/zsh/site-functions
-	doins complete/_rg
+	if use zsh-completion ; then
+		insinto /usr/share/zsh/site-functions
+		doins complete/_rg
+	fi
 
 	dodoc CHANGELOG.md FAQ.md GUIDE.md README.md
 
