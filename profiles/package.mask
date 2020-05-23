@@ -661,14 +661,6 @@ dev-python/pycrypto
 # Removal in 30 days.  Bug #611608.
 dev-python/potr
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-16)
-# Both packages have been last bumped mid-2018.  They depend
-# on pytest-relaxed plugin that has been removed due to breaking pretty
-# much everything.  They do not have a dedicated maintainer, and they
-# don't fit python@.  No revdeps.
-# Removal in 30 days.  Bug #717670.
-dev-python/invoke
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-12)
 # In conjunction with Firefox's sandbox, breaks loading of i965 driver.
 # Bug #716574
