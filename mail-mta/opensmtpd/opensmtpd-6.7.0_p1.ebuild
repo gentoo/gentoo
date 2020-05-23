@@ -71,11 +71,3 @@ src_install() {
 		ln -s --relative "${ED}"/usr/sbin/smtpctl "${ED}"/usr/$(get_libdir)/sendmail || die
 	fi
 }
-
-pkg_postinst() {
-	ewarn
-	ewarn "If you're upgrading from version 6.0, note that the"
-	ewarn "configuration syntax has changed, and config files"
-	ewarn "now live in /etc/smtpd instead of /etc/opensmtpd."
-	ewarn
-}
