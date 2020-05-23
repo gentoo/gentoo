@@ -131,7 +131,7 @@ src_prepare() {
 		sed -i -e '/modelinglib/d' src/libs/libs.pro || die
 	fi
 	if ! use perfprofiler; then
-		rm -rf src/tools/perfparser || die
+		rm -r src/tools/perfparser || die
 		if ! use ctfvisualizer && ! use qmlprofiler; then
 			sed -i -e '/tracing/d' src/libs/libs.pro tests/auto/auto.pro || die
 		fi
@@ -170,7 +170,7 @@ src_prepare() {
 	sed -i -e "/^LANGUAGES\s*=/s:=.*:=${languages}:" share/qtcreator/translations/translations.pro || die
 
 	# remove bundled qbs
-	rm -rf src/shared/qbs || die
+	rm -r src/shared/qbs || die
 }
 
 src_configure() {
