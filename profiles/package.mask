@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-23)
+# Obsolete GNOME 2 era packages, stuck on Python 2 and pygtk,
+# bugs #640022, #708094. Masked for removal in 30 days.
+dev-python/gconf-python
+dev-python/gnome-python-base
+dev-python/pygtksourceview
+<app-text/cherrytree-0.39.2
+
 # Hans de Graaff <graaff@gentoo.org> (2020-05023)
 # Masked for removal in 30 days.
 # Not useful anymore now that metasploit has been removed.

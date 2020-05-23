@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
+USE_RUBY="ruby24 ruby25 ruby26"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_GEMSPEC="gh.gemspec"
@@ -25,12 +24,13 @@ ruby_add_bdepend "
 "
 
 ruby_add_rdepend "
+	dev-ruby/activesupport:5.2
 	>=dev-ruby/addressable-2.4.0:0
-	dev-ruby/backports
-	>dev-ruby/faraday-0.8
+	dev-ruby/faraday:1
+	dev-ruby/faraday_middleware:1
 	>dev-ruby/multi_json-1.0
 	dev-ruby/net-http-pipeline
-	dev-ruby/net-http-persistent:*
+	>=dev-ruby/net-http-persistent-2.9:*
 "
 
 all_ruby_prepare() {
