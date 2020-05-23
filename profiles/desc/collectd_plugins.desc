@@ -126,7 +126,6 @@ teamspeak2 - Build the teamspeak2 input plugin (collects traffic statistics from
 ted - Build the ted input plugin (connects to The Energy Detective and reads the current power over connected power lines)
 thermal - Build the thermal input plugin (reads ACPI thermal zone information)
 threshold - Build the threshold plugin (checks values against configured thresholds and creates notifications if values are out of bounds)
-tokyotyrant - Build the tokyotyrant input plugin (collects number of records and file size from a running Tokyo Tyrant server)
 turbostat - Build the turbostat input plugin (reads CPU frequency and C-state residency on modern Intel turbo-capable processors)
 unixsock - Build the unixsock input/output plugin (opens a UNIX domain socket and accepts connections)
 uptime - Build the uptime input plugin (keeps track of the system uptime)
