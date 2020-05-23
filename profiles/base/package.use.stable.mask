@@ -149,7 +149,7 @@ dev-php/PEAR-Text_Password test
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-10-22)
 # Requires unmaintained unstable dependency net-libs/gloox.
 # The go flag requires stable masked dev-lang/go[gccgo].
-www-servers/uwsgi go pypy uwsgi_plugins_alarm_xmpp
+www-servers/uwsgi go uwsgi_plugins_alarm_xmpp
 
 # Michael Palimaka <kensington@gentoo.org> (2017-09-30)
 # Required dependeny is not stable

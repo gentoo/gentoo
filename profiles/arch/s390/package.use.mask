@@ -16,10 +16,8 @@ dev-python/cssselect doc
 dev-vcs/subversion kwallet
 # not really interested in supporting alternative
 # VCS for oberlays yet.
-app-portage/layman bazaar darcs mercurial
-dev-python/setuptools_scm mercurial test
-# no nmap gui
-net-analyzer/nmap zenmap
+app-portage/layman darcs mercurial
+dev-python/setuptools_scm test
 # no lua support for vim
 app-editors/vim luajit lua
 # not keyworded yet

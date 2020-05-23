@@ -135,9 +135,7 @@ media-video/mplayer ladspa
 dev-lang/ruby xemacs
 
 # Sebastian Pipping <sping@gentoo.org> (2010-01-27)
-# dev-vcs/bzr is not keyworded on this arch
 # dev-vcs/darcs is not keyworded on this arch
-app-portage/layman bazaar
 app-portage/layman darcs
 
 # deps missing keywords
@@ -159,10 +157,6 @@ www-client/elinks javascript
 # Matt Turner <mattst88@gentoo.org> (2010-12-26)
 # media-gfx/ufraw not keyworded
 media-gfx/imagemagick raw
-
-# Matt Turner <mattst88@gentoo.org> (2011-06-12)
-# dev-python/mysql-python not keyworded
-dev-vcs/mercurial bugzilla
 
 # Matt Turner <mattst88@gentoo.org> (2012-02-09)
 # dev-vcs/git[cgi] requires app-text/highlight which requires boost

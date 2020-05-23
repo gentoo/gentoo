@@ -128,10 +128,6 @@ app-emulation/fuse -backend-svga
 # Requires dev-db/mongodb which has dropped x86 support
 dev-libs/mongo-c-driver test
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-01-05)
-# Requires dev-python/neovim-remote, which is not keyworded on x86.
-app-editors/neovim remote
-
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since it is a flag local to one package:
 # pbbuttonsd and macbook for KDE and pbuttonsd it

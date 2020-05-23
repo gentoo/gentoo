@@ -105,7 +105,6 @@ app-metrics/collectd collectd_plugins_onewire
 app-metrics/collectd collectd_plugins_oracle
 app-metrics/collectd collectd_plugins_routeros
 app-metrics/collectd collectd_plugins_sigrok
-app-metrics/collectd collectd_plugins_tokyotyrant
 app-metrics/collectd collectd_plugins_varnish
 app-metrics/collectd collectd_plugins_virt
 app-metrics/collectd collectd_plugins_write_kafka
@@ -264,7 +263,6 @@ dev-haskell/vector test
 
 # Tobias Klausmann <klausman@gentoo.org> (2014-11-20)
 # OpenCV likely will never work on Alpha
-media-video/vlc opencv
 media-gfx/shotwell opencv
 
 # Tobias Klausmann <klausman@gentoo.org> (2014-10-11)
