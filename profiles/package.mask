@@ -649,12 +649,6 @@ games-util/pogo-manager-bin
 net-p2p/bisq
 sci-mathematics/geogebra
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-18)
-# Long dead, vulnerable.  All revdeps have either been ported away,
-# removed or had their optional deps removed.
-# Removal in 30 days.  Bug #703682.
-dev-python/pycrypto
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-12)
 # In conjunction with Firefox's sandbox, breaks loading of i965 driver.
 # Bug #716574
