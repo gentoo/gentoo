@@ -493,11 +493,6 @@ dev-python/dexml
 # Removal in 30 days.  Bug #718638.
 dev-python/demjson
 
-# Louis Sautier <sbraz@gentoo.org> (2020-04-20)
-# No revdeps, no release in 3 years, doesn't support Bootstrap 4.
-# Removal in 30 days. Bug #718832
-dev-python/flask-bootstrap
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
