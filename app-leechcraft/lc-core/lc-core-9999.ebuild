@@ -3,8 +3,6 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/0xd34df00d/leechcraft.git"
-
 inherit leechcraft
 
 DESCRIPTION="Core of LeechCraft, the modular network client"
