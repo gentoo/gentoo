@@ -571,12 +571,6 @@ media-sound/lyvi
 # Removal in 30 days.  Bug #718398.
 media-sound/beets
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  No revdeps.  Last release
-# in 2016.
-# Removal in 30 days.  Bug #718340.
-media-gfx/qrencode-python
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
 # Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
 # requires agreement to restrictive license
