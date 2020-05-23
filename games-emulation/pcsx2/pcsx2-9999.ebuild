@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake git-r3 multilib toolchain-funcs wxwidgets
+inherit cmake flag-o-matic git-r3 multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://www.pcsx2.net"
