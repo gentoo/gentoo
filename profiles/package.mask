@@ -498,12 +498,6 @@ dev-python/demjson
 # Removal in 30 days. Bug #718832
 dev-python/flask-bootstrap
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Effectively unmaintained.  Stuck on Python 2 and pygtk.  Last bumped
-# in 2014.
-# Removal in 30 days.  Bug #708168.
-media-video/griffith
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
