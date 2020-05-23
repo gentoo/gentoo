@@ -529,11 +529,6 @@ sys-boot/raspberrypi-mkimage
 sci-libs/Fiona
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718488.
-sci-geosciences/seawater
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.  Needs version bump.
 # Removal in 30 days.  Bug #718458.
 net-proxy/mitmproxy
