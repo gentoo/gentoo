@@ -458,12 +458,6 @@ dev-python/URLObject
 dev-python/bokeh
 dev-python/flexx
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-22)
-# Unmaintained.  After adding tests, it turns out it's completely
-# broken (can't find magic file).
-# Removal in 30 days.  Bug #718822.
-dev-python/filemagic
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
