@@ -429,11 +429,6 @@ app-backup/kup
 # Removal in 30 days.  Bug #719008.
 dev-python/junit-xml
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Unmaintained.  Stuck on Python 3.6.  Nose plugin with no revdeps.
-# Removal in 30 days.  Bug #719000.
-dev-python/ipdbplugin
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
