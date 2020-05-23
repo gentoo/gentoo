@@ -88,6 +88,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-20190419.7615-wad2map-buildfix.patch"
 	"${FILESDIR}/${PN}-20190820.8043-log-to-tmpdir.patch"
 	"${FILESDIR}/${PN}-20190820.8043-search-duke3d-path.patch"
+	"${FILESDIR}/${PN}-20200505.8904-gcc10.patch"
 )
 
 src_unpack() {
