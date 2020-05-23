@@ -744,13 +744,6 @@ net-misc/gns3-converter
 net-misc/gns3-gui
 net-misc/gns3-server
 
-# Jonas Stein <jstein@gentoo.org> (2020-03-21)
-# Package masked for removal. Broken SRC_URI,
-# upstream is dead.
-# Bug #458662
-# Removal after 2020-05-01
-games-misc/OilWar
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
