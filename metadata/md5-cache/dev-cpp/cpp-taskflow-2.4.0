@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Modern C++ Parallel Task Programming
+EAPI=7
+HOMEPAGE=https://cpp-taskflow.github.io
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/cpp-taskflow/cpp-taskflow/archive/v2.4.0.tar.gz -> cpp-taskflow-2.4.0.tar.gz
+_md5_=520532ed61232e9957dffc5fda560fb6
