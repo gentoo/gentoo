@@ -504,12 +504,6 @@ dev-python/flask-bootstrap
 # Removal in 30 days.  Bug #708168.
 media-video/griffith
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Unmaintained.  Stuck on Python 2.  rst2pdf depends on dev-python/pdfrw
-# that is dead and broken with py3.7+.  svg2rlg is only used by pdfrw.
-# Removal in 30 days.  Bug #718572.
-dev-python/rst2pdf
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
