@@ -670,12 +670,6 @@ dev-python/potr
 dev-python/fabric
 dev-python/invoke
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-16)
-# Unmaintained.  Last release in 2011.  Multiple vulnerabilities
-# via bundled code.
-# Removal in 30 days.  Bug #701820.
-net-misc/ssvnc
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-12)
 # In conjunction with Firefox's sandbox, breaks loading of i965 driver.
 # Bug #716574
