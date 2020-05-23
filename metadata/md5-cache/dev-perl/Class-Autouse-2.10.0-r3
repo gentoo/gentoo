@@ -1,0 +1,15 @@
+BDEPEND=>=virtual/perl-File-Spec-0.800.0 >=virtual/perl-Scalar-List-Utils-1.180.0 >=virtual/perl-ExtUtils-MakeMaker-6.620.0 test? ( >=virtual/perl-File-Temp-0.170.0 >=virtual/perl-Test-Simple-0.470.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Runtime aspect loading of one or more classes
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Class-Autouse
+IUSE=test
+KEYWORDS=~amd64 ~hppa ~mips ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-File-Spec-0.800.0 >=virtual/perl-Scalar-List-Utils-1.180.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/Class-Autouse-2.01.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=2b441ce6a2ec2c3208e94e8281d88dd0

@@ -3269,7 +3269,7 @@ dev-db/libzdb 3.1 3.1-r1: A thread safe high level multi-database connection poo
 dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
-dev-db/mariadb 5.5.66 5.5.67 10.1.38-r1 10.1.43 10.1.44-r1 10.2.22-r1 10.2.29 10.2.31-r1 10.3.20 10.3.22-r1 10.4.10 10.4.12: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.66 5.5.67 5.5.68 10.1.38-r1 10.1.43 10.1.44-r1 10.1.45 10.2.22-r1 10.2.29 10.2.31-r1 10.2.32 10.3.20 10.3.22-r1 10.3.23 10.4.10 10.4.12 10.4.13: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.1.6 3.1.7 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -5723,7 +5723,7 @@ dev-perl/Class-Accessor-Chained 0.10.0-r1 0.10.0-r2: Perl module to make chained
 dev-perl/Class-Accessor-Grouped 0.100.120 0.100.140: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.80.0 0.80.0-r1: A minimalistic variant of Class::Accessor
 dev-perl/Class-Adapter 1.80.0-r1 1.90.0: Implementation of the 'Adapter' Design Pattern
-dev-perl/Class-Autouse 2.10.0-r2: Runtime aspect loading of one or more classes
+dev-perl/Class-Autouse 2.10.0-r2 2.10.0-r3: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.80.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.330.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-based class
