@@ -209,7 +209,6 @@ src_install() {
 	cmake-utils_src_install
 	use dedicated || pax-mark m "${ED}/usr/bin/rstudio"
 	doconfd "${FILESDIR}"/rstudio-server.conf
-	dodir /etc/rstudio
 	insinto /etc/rstudio
 	doins "${FILESDIR}"/rsession.conf
 	dosym ../conf.d/rstudio-server.conf /etc/rstudio/rserver.conf

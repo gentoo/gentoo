@@ -99,6 +99,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1335-core.patch
 	"${FILESDIR}"/${PN}-1.2.1335-boost-1.70.0_p1.patch
 	"${FILESDIR}"/${PN}-1.2.1335-boost-1.70.0_p2.patch
+	"${FILESDIR}"/${PN}-1.2.5042-boost-1.73.0.patch
 )
 
 src_unpack() {
@@ -208,7 +209,6 @@ src_install() {
 	cmake-utils_src_install
 	use dedicated || pax-mark m "${ED}/usr/bin/rstudio"
 	doconfd "${FILESDIR}"/rstudio-server.conf
-	dodir /etc/rstudio
 	insinto /etc/rstudio
 	doins "${FILESDIR}"/rsession.conf
 	dosym ../conf.d/rstudio-server.conf /etc/rstudio/rserver.conf
