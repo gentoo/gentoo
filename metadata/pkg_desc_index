@@ -2510,7 +2510,7 @@ app-shells/hstr 2.0 2.1: Shell history suggest box
 app-shells/ksh 2020.0.0-r1 9999: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
-app-shells/loksh 6.6: Linux port of OpenBSD's ksh
+app-shells/loksh 6.6 6.7: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
 app-shells/mksh 57-r2 58 59 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
@@ -9582,7 +9582,7 @@ dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defin
 dev-ruby/fakefs 0.19.2 0.20.0 0.20.1 1.0.0 1.2.0 1.2.1: A fake filesystem. Use it in your tests
 dev-ruby/faker 1.9.6-r1 2.11.0: A library for generating fake data such as names, addresses, and phone numbers
 dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
-dev-ruby/faraday 0.15.4 0.17.1 0.17.3: HTTP/REST API client library with pluggable components
+dev-ruby/faraday 0.17.3: HTTP/REST API client library with pluggable components
 dev-ruby/faraday_middleware 0.13.1 0.14.0: Various middleware for Faraday
 dev-ruby/faraday_middleware-multi_json 0.0.6-r1: Response JSON parser using MultiJson and FaradayMiddleware
 dev-ruby/fast-stemmer 1.0.2-r2: Simple wrapper around multithreaded Porter stemming algorithm
@@ -9665,7 +9665,7 @@ dev-ruby/jquery-rails 4.3.5 4.4.0: jQuery! For Rails! So great
 dev-ruby/jquery-ui-rails 5.0.5-r1 6.0.1-r1: The jQuery UI assets for the Rails 3.2+ asset pipeline
 dev-ruby/jsobfu 0.4.2: A Javascript code obfuscator
 dev-ruby/json 1.8.6-r1 2.3.0: A JSON implementation as a Ruby extension
-dev-ruby/json_schema 0.20.6 0.20.7 0.20.8: A JSON Schema V4 and Hyperschema V4 parser and validator
+dev-ruby/json_schema 0.20.8: A JSON Schema V4 and Hyperschema V4 parser and validator
 dev-ruby/jwt 1.5.6 2.1.0 2.2.0 2.2.1: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
