@@ -280,7 +280,6 @@ src_prepare() {
 
 	# Don't clash with dev-db/mysql-connector-c
 	sed -i -e 's/ my_print_defaults.1//' \
-		-e 's/ perror.1//' \
 		"${S}"/man/CMakeLists.txt || die
 
 	# Fix galera_recovery.sh script
