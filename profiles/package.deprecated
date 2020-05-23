@@ -54,10 +54,7 @@ dev-python/pytest-runner
 # Matt Turner <mattst88@gentoo.org> (2020-03-17)
 # Deprecated GNOME 2 era packages
 # Bugs #640022, #713010
-dev-python/gconf-python
-dev-python/gnome-python-base
 dev-python/pygobject:2
-dev-python/pygtksourceview
 gnome-base/gnome-vfs
 gnome-base/libbonobo
 gnome-base/libbonoboui
