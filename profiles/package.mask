@@ -671,11 +671,6 @@ dev-python/invoke
 # Removal in 30 days.  Bug #701820.
 net-misc/ssvnc
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-13)
-# Discontinued by upstream. Superseded by sys-apps/fwupd.
-# Masked for removal in 30 days.
-sys-apps/fwupdate
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-12)
 # In conjunction with Firefox's sandbox, breaks loading of i965 driver.
 # Bug #716574
