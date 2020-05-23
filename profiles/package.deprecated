@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-22)
+# virtual/libstdc++ has only one sys-libs/libstdc++-v3 provider.
+# Use that instead. Or even better use none of them. It's a
+# library from 2005.
+virtual/libstdc++
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-17)
 # Abandoned upstream, countless bugs. Removal tracked in bug #659616
 sys-power/pm-utils
