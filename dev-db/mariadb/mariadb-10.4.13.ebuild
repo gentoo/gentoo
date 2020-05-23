@@ -10,7 +10,7 @@ inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.4.13-patches-02.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.4.13-patches-03.tar.xz"
 
 SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz
 	${PATCH_SET}"
@@ -277,10 +277,6 @@ src_prepare() {
 		"${S}"/wsrep-lib/wsrep-API/CMakeLists.txt || die
 	sed -i -e 's~add_library(wsrep-lib$~add_library(wsrep-lib STATIC~' \
 		"${S}"/wsrep-lib/src/CMakeLists.txt || die
-
-	# Don't clash with dev-db/mysql-connector-c
-	sed -i -e 's/ my_print_defaults.1//' \
-		"${S}"/man/CMakeLists.txt || die
 
 	# Fix galera_recovery.sh script
 	sed -i -e "s~@bindir@/my_print_defaults~${EPREFIX}/usr/libexec/mariadb/my_print_defaults~" \
