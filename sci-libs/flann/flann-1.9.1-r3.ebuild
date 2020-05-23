@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake cuda flag-o-matic toolchain-funcs
 
 DESCRIPTION="Fast approximate nearest neighbor searches in high dimensional spaces"
-HOMEPAGE="https://www.cs.ubc.ca/research/flann/"
+HOMEPAGE="https://github.com/mariusmuja/flann"
 SRC_URI="https://github.com/mariusmuja/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
