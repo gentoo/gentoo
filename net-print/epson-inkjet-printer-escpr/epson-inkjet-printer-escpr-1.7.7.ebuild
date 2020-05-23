@@ -14,7 +14,10 @@ KEYWORDS="amd64 ~ppc64"
 DEPEND="net-print/cups"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/1.6.5-warnings.patch" )
+PATCHES=(
+	"${FILESDIR}/1.6.5-warnings.patch"
+	"${FILESDIR}/${P}-fnocommon.patch"
+)
 
 src_configure() {
 	econf --disable-shared
