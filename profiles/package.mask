@@ -655,12 +655,6 @@ sci-mathematics/geogebra
 # Removal in 30 days.  Bug #703682.
 dev-python/pycrypto
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-18)
-# Practically dead.  Last blocker for dev-python/pycrypto removal.
-# Upstream is struggling to port away from it for 3 years now.
-# Removal in 30 days.  Bug #611608.
-dev-python/potr
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-12)
 # In conjunction with Firefox's sandbox, breaks loading of i965 driver.
 # Bug #716574
