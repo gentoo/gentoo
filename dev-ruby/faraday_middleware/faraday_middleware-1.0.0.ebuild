@@ -47,6 +47,7 @@ all_ruby_prepare() {
 	sed -i -e '/\(cane\|parallel\|simplecov\)/ s:^:#:' \
 		-e '/rspec/ s/>=/~>/' \
 		-e "/addressable/ s/, '< 2.4'//" \
+		-e "/rack/ s/< 2/< 2.1/" \
 		-e "/rack-cache/ s/, '< 1.3'//" \
 		-e "/simple_oauth/ s/, '< 0.3'//" \
 		-e "/webmock/ s/< 2/~> 3.0/" Gemfile || die
