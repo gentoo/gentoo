@@ -26,3 +26,8 @@ src_prepare() {
 	default
 	sed -i "/install_dir/s@loksh@${PF}@" meson.build || die
 }
+
+src_configure() {
+	# we want it as /bin/ksh
+	meson_src_configure --bindir=../bin
+}
