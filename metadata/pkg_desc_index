@@ -2502,7 +2502,7 @@ app-shells/hstr 2.0 2.1: Shell history suggest box
 app-shells/ksh 2020.0.0-r1 9999: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
-app-shells/loksh 6.6 6.7: Linux port of OpenBSD's ksh
+app-shells/loksh 6.6 6.7.1: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
 app-shells/mksh 57-r2 58 59 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
@@ -3169,7 +3169,7 @@ dev-ada/aunit 2019-r1 2020: Ada unit testing framework
 dev-ada/aws 2018-r2 2019-r1 2020: A complete Web development framework
 dev-ada/gnat-suite-bin 2014 2016 2017 2018 2019: GNAT Ada suite
 dev-ada/gnat_util 2017-r2 2018-r2 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
-dev-ada/gnatcoll-bindings 2019-r1: GNAT Component Collection
+dev-ada/gnatcoll-bindings 2019-r1 2020: GNAT Component Collection
 dev-ada/gnatcoll-core 2019-r1: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2019: GNAT Component Collection
 dev-ada/gnatmem 2019-r1: Monitors dynamic allocation and deallocation activity in a program
@@ -9538,9 +9538,9 @@ dev-ruby/dotenv 2.7.3 2.7.4 2.7.5: Loads environment variables from .env into EN
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/ecma-re-validator 0.2.0 0.2.1: Validate a regular expression string against what ECMA-262 can actually do
 dev-ruby/ed25519 1.2.4: Library for the Ed25519 public-key signature system
-dev-ruby/elasticsearch 6.8.0 6.8.1: Ruby integrations for ES, elasticsearch module
-dev-ruby/elasticsearch-api 6.8.0 6.8.1: Ruby integrations for ES, elasticsearch-api module
-dev-ruby/elasticsearch-transport 6.8.0 6.8.1: Ruby integrations for ES, elasticsearch-transport module
+dev-ruby/elasticsearch 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elasticsearch module
+dev-ruby/elasticsearch-api 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elasticsearch-api module
+dev-ruby/elasticsearch-transport 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elasticsearch-transport module
 dev-ruby/em-websocket 0.5.1: EventMachine based WebSocket server
 dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
 dev-ruby/equatable 0.5.0 0.6.0 0.6.1: Allows ruby objects to implement equality comparison and inspection methods
@@ -9581,7 +9581,7 @@ dev-ruby/forwardable-extended 2.6.0-r1: Forwardable with hash, and instance vari
 dev-ruby/fuubar 2.3.2 2.4.0 2.4.1 2.5.0 2.5.0-r1: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.30 0.31 0.34 0.34-r1: A gem to ease i18n
 dev-ruby/gettext_i18n_rails 1.8.0 1.8.1: FastGettext / Rails integration
-dev-ruby/gh 0.15.1-r2 0.16.0: multi-layer client for the github api v3
+dev-ruby/gh 0.16.0 0.17.0: multi-layer client for the github api v3
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/gist 5.1.0: Potentially the best command line gister.
 dev-ruby/git 1.5.0 1.7.0: Library for using Git in Ruby
@@ -9596,7 +9596,7 @@ dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes 
 dev-ruby/hashdiff 1.0.0 1.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.5: Internal HashiCorp service to check version information
-dev-ruby/hashie 2.1.2-r1 3.6.0 4.0.0 4.1.0: Hashie is a small collection of tools that make hashes more powerful
+dev-ruby/hashie 2.1.2-r1 3.6.0 4.0.0 4.1.0 4.1.0-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 3.4.3 3.6.0: A simple pluggable Hierarchical Database
@@ -13866,7 +13866,7 @@ media-video/totem 3.34.1: Media player for GNOME
 media-video/tovid 0.35.2-r2: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r4 1.1.7-r5: Utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
-media-video/ttcut 0.19.6_p1 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
+media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
 media-video/unifi-video 3.10.10 3.10.11 3.10.12: UniFi Video Server
 media-video/ushare 1.1a-r9: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.12.0 0.12.1.1_pre 9999: v4l2 loopback device which output is it's own input
