@@ -667,7 +667,6 @@ dev-python/potr
 # much everything.  They do not have a dedicated maintainer, and they
 # don't fit python@.  No revdeps.
 # Removal in 30 days.  Bug #717670.
-dev-python/fabric
 dev-python/invoke
 
 # Matt Turner <mattst88@gentoo.org> (2020-04-12)
