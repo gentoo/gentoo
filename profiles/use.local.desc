@@ -263,7 +263,6 @@ app-backup/bareos:sql-pooling - Enable SQL pooling support
 app-backup/bareos:storage-daemon - Install storage daemon (bareos-sd)
 app-backup/btrbk:mbuffer - Use sys-block/mbuffer to enable progress bar and buffering/limiting functionality
 app-backup/btrbk:pv - Use sys-apps/pv to enable progress bar functionality
-app-backup/bup:web - Support browsing backups via a web interface
 app-backup/dar:dar32 - Enables --enable-mode=32 option, which replace infinite by 32 bit integers
 app-backup/dar:dar64 - Enables --enable-mode=64 option, which replace infinite by 64 bit integers
 app-backup/dar:gcrypt - Enables strong encryption support
@@ -974,8 +973,6 @@ app-misc/muttprint:doc - Builds documentation
 app-misc/neofetch:X - Enable support for detecting DEs, WMs, screen resolutions, and showing images from an X terminal
 app-misc/note:general - Add support for ascii flatfile backend
 app-misc/note:text - Add support for text backend
-app-misc/openastro:jpeg - Enable exporting Astrological Charts to jpeg
-app-misc/openastro:png - Enable exporting Astrological Charts to png
 app-misc/pax-utils:python - Install a more powerful/faster version of lddtree
 app-misc/recoll:camelcase - Enable indexing for camelCase sentences and words
 app-misc/recoll:chm - Enable CHM file support via dev-python/pychm
@@ -2522,7 +2519,6 @@ dev-python/dap:server - Enable OpenDAP server support
 dev-python/dask:distributed - Add support for distributed computing with dev-python/distributed
 dev-python/drf-yasg:validation - Enable swagger spec validation using swagger-spec-validator
 dev-python/editorconfig-core-py:cli - Install command line interface as well as python library
-dev-python/fabric:fab2 - Install as "fab2", allowing side-by-side install with fabric 1.x
 dev-python/falcon:cython - Build cython-based python modules
 dev-python/fastparquet:brotli - Enable support for brotli compression
 dev-python/glance_store:cinder - enable cinder backend supprt
@@ -4649,7 +4645,6 @@ media-sound/lmms:vst - Enables the VeSTige plugin to run VST plugins through Win
 media-sound/loudness-scanner:mpg123 - build the mpg123 plugin
 media-sound/loudness-scanner:musepack - build the musepack plugin
 media-sound/loudness-scanner:sndfile - build the sndfile plugin
-media-sound/lyvi:mpris - Enable MPRIS support
 media-sound/mangler:espeak - Text to speech engine
 media-sound/mangler:g15 - Logitech g15 lcd support
 media-sound/mixxx:hid - Enable HID controller support
@@ -6687,8 +6682,6 @@ net-misc/tigervnc:dri3 - Build with DRI3 support
 net-misc/tigervnc:drm - Build with DRM support
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
-net-misc/trackma:cli - Enable cli version
-net-misc/trackma:ncurses - Enable curses version
 net-misc/uftp:server - Install uftp server daemon
 net-misc/vde:pcap - Enable the pcap-based plugin that allows creating a switch against a real interface.
 net-misc/vde:ssl - Enable the cryptcab plugin that allows creating an encrypted virtual cable.
