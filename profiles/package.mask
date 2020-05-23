@@ -487,12 +487,6 @@ dev-python/django-durationfield
 # Removal in 30 days.  Bug #718646.
 dev-python/dexml
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Stuck on Python 3.6.  Relies on 2to3.  Last release in 2015.
-# No revdeps.  'json' is built-in in all modern Python versions.
-# Removal in 30 days.  Bug #718638.
-dev-python/demjson
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
