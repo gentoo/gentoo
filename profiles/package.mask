@@ -423,12 +423,6 @@ dev-python/PyDbLite
 app-backup/bup
 app-backup/kup
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-23)
-# Effectively unmaintained.  Stuck on Python 3.6, broken with 3.8.
-# The only revdep is masked for removal.
-# Removal in 30 days.  Bug #719008.
-dev-python/junit-xml
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
