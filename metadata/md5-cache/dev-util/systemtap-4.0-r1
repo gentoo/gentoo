@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=configure prepare setup
+DEFINED_PHASES=configure install prepare setup
 DEPEND=>=dev-libs/elfutils-0.142 dev-libs/json-c:= sys-libs/ncurses:0= sys-libs/readline:0= python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) libvirt? ( >=app-emulation/libvirt-1.0.2 ) selinux? ( sys-libs/libselinux ) sqlite? ( dev-db/sqlite:3 ) ssl? ( dev-libs/nspr dev-libs/nss ) zeroconf? ( net-dns/avahi ) app-arch/cpio app-text/xmlto >=sys-devel/gettext-0.18.2 libvirt? ( dev-libs/libxml2 )
 DESCRIPTION=A linux trace/probe tool
 EAPI=7
@@ -12,4 +12,4 @@ REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 
 SLOT=0
 SRC_URI=https://www.sourceware.org/systemtap/ftp/releases/systemtap-4.0.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	797cda3549becfe50afdfa35192ca137	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=36012592cc69c2e33650e91694633f3b
+_md5_=d84394a6cba4211c07b0c3dad96cebb8
