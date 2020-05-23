@@ -36,17 +36,14 @@ net-im/slack
 # Masked packages containing V8.
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # ...and their reverse dependencies.
-app-editors/atom
 dev-lang/coffee-script
 dev-python/bokeh
-dev-python/blaze
 dev-ruby/autoprefixer-rails
 dev-ruby/coffee-rails
 dev-ruby/coffee-script
 dev-ruby/execjs
 dev-ruby/turbolinks
 dev-ruby/uglifier
-dev-util/electron
 net-libs/nodejs
 sys-apps/yarn
 www-apps/jekyll-coffeescript

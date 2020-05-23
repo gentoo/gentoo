@@ -19,6 +19,4 @@ sys-apps/systemd-readahead
 sys-kernel/installkernel-systemd-boot
 sys-process/systemd-cron
 www-misc/profile-sync-daemon
-<x11-wm/mutter-3.30
-<gnome-base/gnome-shell-3.30
 <virtual/service-manager-1

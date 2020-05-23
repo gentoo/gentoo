@@ -116,12 +116,6 @@ kde-frameworks/frameworkintegration appstream
 # The dependency is python-single-r1 while the package (and its revdeps)
 # are python-r1.
 dev-python/rdflib redland
-www-apps/venus redland
-
-# Michał Górny <mgorny@gentoo.org> (2020-02-05)
-# Requires google-api-python-client with Python 2 which is no longer
-# supported by its dependencies.
-www-client/weboob X
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-04)
 # Unsatisfiable dep due to missing impls.
@@ -134,16 +128,9 @@ dev-python/zeep tornado
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Require dev-python/epydoc which is being removed.
-<=dev-python/cosmolopy-0.1.104-r2 doc
-<=dev-python/dbus-python-1.2.4 doc
 <=dev-python/pycrypto-2.6.1-r2 doc
-<=dev-python/pygene-0.2.1-r1 doc
-<=dev-python/python-musicbrainz-0.7.4-r1 doc
-<=dev-python/python-nss-0.16.0 doc
-<=dev-python/qpid-python-0.20 doc
 <=dev-python/restkit-4.2.2 doc
 <=dev-python/suds-0.6-r1 doc
-<=sci-libs/pymmlib-1.2.1-r1 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Requires old split dev-python/twisted-*.
@@ -188,7 +175,6 @@ dev-python/restkit cli
 # using any-r1 API to build docs or cond-deps.
 dev-python/matplotlib doc
 dev-python/pandas doc
-<dev-python/pandas-0.24.2 full-support test
 dev-python/pandas-datareader doc
 dev-python/patsy doc
 dev-python/statsmodels doc
@@ -406,11 +392,6 @@ net-analyzer/nrpe command-args
 # sys-kernel/openvz-sources is being treecleaned wrt #580516.
 app-emulation/libvirt openvz
 
-# Michał Górny <mgorny@gentoo.org> (2017-07-30)
-# The Z3 backend is unstable and causes assertion failures. Mask it
-# until upstream fixes it properly.
-<sys-devel/clang-8 z3
-
 # Mike Gilbert <floppym@gentoo.org> (2017-07-09)
 # Matthias Dahl <matthias.dahl@binary-island.eu> (2017-07-05)
 # Both are not your typical garden-variety Linux programs and are
@@ -580,11 +561,6 @@ app-leechcraft/lc-azoth sarin
 # Pacho Ramos <pacho@gentoo.org> (2014-06-01)
 # Needs hardmasked lua-5.2
 >=media-plugins/grilo-plugins-0.2.12 lua
-
-# Rick Farina <zerochaos@gentoo.org> (2015-12-30)
-# mask test use flag since tests do not pass
-# mask development use flag since most of it isn't packaged (or useful)
-net-analyzer/metasploit development test
 
 # Tom Wijsman <TomWij@gentoo.org> (2014-05-14)
 # Documentation generation needs APIviz which is not in the Portage tree yet.

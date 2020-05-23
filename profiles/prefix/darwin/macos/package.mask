@@ -11,16 +11,6 @@ sys-libs/darwin-libc-headers:10.13
 sys-kernel/xnu-headers:10.14
 sys-libs/darwin-libc-headers:10.14
 
-# Fabian Groffen <grobian@gentoo.org> (2019-04-30)
-# Fails to install, bug #684030
-=dev-lang/perl-5.28.2*
-
-# Fabian Groffen <grobian@gentoo.org> (2019-04-26)
-# LLVM/clang 7.1 crashes at runtime
-# llvm::optional_detail::OptionalStorage<llvm::ArrayRef<llvm::StringRef>,
-=sys-devel/clang-7.1.0*
-=sys-devel/llvm-7.1.0*
-
 # Fabian Groffen <grobian@gentoo.org> (2019-03-22)
 # Newer versions break because they insist on sysroot usage lacking
 # -lSystem as looked for by clang/llvm.  If your system got this
