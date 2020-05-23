@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/network-manager-applet/-/archive/${PV}-d
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ayatana doc introspection lto modemmanager selinux teamd test wwan"
+IUSE="appindicator doc introspection lto modemmanager selinux teamd test wwan"
 
 DEPEND="
 	app-crypt/libsecret
@@ -22,7 +22,7 @@ DEPEND="
 	net-misc/networkmanager
 	x11-libs/gtk+:3[introspection?]
 	x11-libs/libnotify
-	ayatana? (
+	appindicator? (
 		dev-libs/libappindicator:3
 		dev-libs/libdbusmenu
 	)
@@ -44,7 +44,7 @@ src_configure() {
 	local emesonargs=(
 		-Dlibnm_gtk=false
 		-Dlibnma_gtk4=false
-		-Dappindicator=$(usex ayatana yes no)
+		$(meson_use appindicator)
 		$(meson_use wwan)
 		$(meson_use selinux)
 		$(meson_use teamd team)
