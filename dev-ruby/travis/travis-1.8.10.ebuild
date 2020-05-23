@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,8 +29,8 @@ ruby_add_bdepend "
 
 ruby_add_rdepend "
 	dev-ruby/backports
-	>dev-ruby/faraday-0.9
-	>=dev-ruby/faraday_middleware-0.9.1
+	>dev-ruby/faraday-0.9:*
+	>=dev-ruby/faraday_middleware-0.9.1:*
 	>dev-ruby/gh-0.13
 	>=dev-ruby/highline-1.6:0
 	>dev-ruby/launchy-2.1
