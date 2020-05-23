@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=sys-libs/libcap >=www-servers/apache-2.4.7[-threads] =www-servers/apache-2.4*
 SLOT=0
 SRC_URI=http://mpm-itk.sesse.net/mpm-itk-2.4.7-04.tar.gz
-_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	05ca915dc22ea60059f85d8d9a34d3de	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	05ca915dc22ea60059f85d8d9a34d3de	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e2302fb4dc670544053645a47efc57a2

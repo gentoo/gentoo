@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=selinux? ( sec-policy/selinux-apm )
 SLOT=0
 SRC_URI=mirror://sourceforge/acpid2/acpid-2.0.31.tar.xz https://dev.gentoo.org/~andrey_utkin/distfiles/sys-power_acpid_2.0.29-r1_extras.tar.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=adbec279148571a51583f0d0d571d83c

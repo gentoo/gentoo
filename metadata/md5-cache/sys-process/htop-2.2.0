@@ -9,5 +9,5 @@ LICENSE=BSD GPL-2
 RDEPEND=sys-libs/ncurses:0=[unicode?]
 SLOT=0
 SRC_URI=https://hisham.hm/htop/releases/2.2.0/htop-2.2.0.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	797cda3549becfe50afdfa35192ca137	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	797cda3549becfe50afdfa35192ca137	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=4bf0951da68f895157acde1f4f2b6996

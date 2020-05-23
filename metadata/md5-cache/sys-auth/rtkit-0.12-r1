@@ -10,5 +10,5 @@ LICENSE=GPL-3 BSD
 RDEPEND=acct-group/rtkit acct-user/rtkit sys-apps/dbus sys-auth/polkit sys-libs/libcap systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=https://github.com/heftig/rtkit/releases/download/v0.12/rtkit-0.12.tar.xz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0049266179dca24bbdfe3aac60cd2070

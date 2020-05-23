@@ -11,5 +11,5 @@ RDEPEND=dev-libs/json-c:= dev-libs/libaio dev-libs/userspace-rcu:= >=sys-fs/lvm2
 RESTRICT=test
 SLOT=0
 SRC_URI=https://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=0.8.3;sf=tgz -> multipath-tools-0.8.3.tar.gz
-_eclasses_=linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=b2265ef09098f8c85dbdec72e5bbd6ed

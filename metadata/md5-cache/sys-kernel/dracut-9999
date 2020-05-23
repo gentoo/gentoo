@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=app-arch/cpio >=app-shells/bash-4.0:0 sys-apps/coreutils[xattr(-)] >=sys-apps/kmod-23[tools] || ( >=sys-apps/sysvinit-2.87-r3 sys-apps/openrc[sysv-utils(-),selinux?] sys-apps/systemd[sysv-utils] ) >=sys-apps/util-linux-2.21 virtual/pkgconfig virtual/udev elibc_musl? ( sys-libs/fts-standalone ) selinux? ( sec-policy/selinux-dracut sys-libs/libselinux sys-libs/libsepol )
 RESTRICT=test
 SLOT=0
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b19f0764e43c5881d8c2f24e7a0cf767
