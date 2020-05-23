@@ -38,7 +38,7 @@
 dev-python/gconf-python
 dev-python/gnome-python-base
 dev-python/pygtksourceview
-<app-text/cherrytree-0.99
+<app-text/cherrytree-0.39.2
 
 # Hans de Graaff <graaff@gentoo.org> (2020-05023)
 # Masked for removal in 30 days.
