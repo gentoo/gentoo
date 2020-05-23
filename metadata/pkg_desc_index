@@ -12093,8 +12093,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.3.11 1.4.0 1.4.1 1.4.2 1.4.3 1.4.4: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1-r1 68.8.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.8.0: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1-r1 68.8.1: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.8.0 68.8.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0-r1 2.0.0 3.0.0: Initial tagging script for Notmuch
@@ -14682,7 +14682,7 @@ net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiat
 net-mail/mu 0.9.18-r3 1.0-r1 1.3.5-r1 1.3.6-r1 1.3.6-r2 1.4.1 1.4.4: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.29.3 0.29.3-r1: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.29.3 0.29.3-r1 0.29.3-r2: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 7.2.4-r1 7.3.3: Powerful IMAP/Maildir synchronization and reader support
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
@@ -18326,7 +18326,7 @@ x11-misc/sddm 0.15.0 0.18.1-r1: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 1-r1 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
-x11-misc/shared-mime-info 1.10 1.10-r1 1.15: The Shared MIME-info Database specification
+x11-misc/shared-mime-info 1.10-r1 1.15: The Shared MIME-info Database specification
 x11-misc/shutter 0.94.3: Feature-rich screenshot program
 x11-misc/simpleswitcher 20140219 99999999: lightweight EWMH window switcher with features and looks of dmenu
 x11-misc/sisctrl 0.0.20051202 0.0.20051202-r1: tool that allows you to tune SiS drivers from X
