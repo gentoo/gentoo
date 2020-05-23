@@ -691,13 +691,6 @@ dev-tcltk/tcl-mccp
 # Introduced new privsep (chroot) feature. Masked for testing.
 >=net-misc/dhcpcd-9.0.0
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2020-03-29)
-# Old releases gone from upstream, new releases use overly restrictive
-# license. For ancient scripts and symbols, use media-fonts/quivira instead.
-# For emojis and pictographs, use media-fonts/noto-emoji instead.
-# Masked for removal in 30 days, bug #715226
-media-fonts/symbola
-
 # Michał Górny <mgorny@gentoo.org> (2020-03-29)
 # Unmaintained, seriously outdated, vulnerable.  Multiple bugs reported.
 # Stuck on Python 3.6.
