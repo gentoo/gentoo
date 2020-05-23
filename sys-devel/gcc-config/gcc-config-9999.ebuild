@@ -53,7 +53,7 @@ pkg_postinst() {
 	done
 
 	# USE flag change can add or delete files in /usr/bin worth recaching
-	if [[ ! ${ROOT%/} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+	if [[ ! ${ROOT} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow update all
 	fi
 }
