@@ -13,9 +13,9 @@ EGIT_REPO_URI="https://github.com/psi-im/psimedia.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="extras"
+IUSE="demo extras +psi"
+REQUIRED_USE="extras? ( psi )"
 
-BDEPEND="sys-devel/qconf"
 DEPEND="
 	dev-libs/glib
 	dev-qt/qtcore:5
@@ -29,13 +29,15 @@ RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-jpeg:1.0
 	media-plugins/gst-plugins-opus:1.0
 	media-plugins/gst-plugins-v4l2:1.0
-	~net-im/psi-${PV}[extras?]
+	psi? ( ~net-im/psi-${PV}[extras?] )
 "
+# and optional media-plugins/gst-plugins-webrtcdsp:1.0 for echo cancellation
 
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_PSI=$(usex extras 0 1)
-		-DBUILD_DEMO=0
+		-DUSE_PSI=$(usex extras)
+		-DBUILD_DEMO=$(usex demo)
+		-DBUILD_PSIPLUGIN=$(usex psi)
 	)
 	cmake_src_configure
 }
