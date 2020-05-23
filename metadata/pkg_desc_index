@@ -5722,7 +5722,7 @@ dev-perl/Class-Accessor 0.340.0-r1 0.500.0 0.510.0: Automated accessor generatio
 dev-perl/Class-Accessor-Chained 0.10.0-r1 0.10.0-r2: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.120 0.100.140: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.80.0 0.80.0-r1: A minimalistic variant of Class::Accessor
-dev-perl/Class-Adapter 1.80.0-r1: Implementation of the "Adapter" Design Pattern
+dev-perl/Class-Adapter 1.80.0-r1 1.90.0: Implementation of the 'Adapter' Design Pattern
 dev-perl/Class-Autouse 2.10.0-r2: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.80.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.330.0: A pragma to use the C3 method resolution order algortihm
@@ -10512,7 +10512,7 @@ dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
-dev-util/radare2 4.4.0 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.4.0 4.4.0-r1 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2 1.0.3: Command line tools for use with Review Board
@@ -17340,7 +17340,7 @@ sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.215_p192 4.4.220_p196 4.9.215_p138 4.9.220_p143 4.14.170_p75 4.19.94_p38 4.19.120_p52 5.4.13_p7 5.4.34_p21 5.6.4_p3 5.6.10_p5: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 5.4.39 5.4.40 5.4.42 5.6.11 5.6.12 5.6.14: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 3.16.83 4.4.224 4.9.224 4.14.181 4.19.124 5.4.42 5.6.14: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.84 4.4.224 4.9.224 4.14.181 4.19.124 5.4.42 5.6.14: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.13 5.6.9: The Zen Kernel Live Sources
