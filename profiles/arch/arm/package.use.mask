@@ -101,10 +101,6 @@ sys-apps/fwupd dell thunderbolt
 # Requires dev-php/pecl-imagick which is not keyworded on arm
 www-apps/nextcloud imagemagick
 
-# Corentin Pazdera <nado@troglodyte.be> (2018-12-28)
-# Requires dev-python/pypy which isn't keyworded for ARM.
-www-servers/uwsgi pypy
-
 # Davide Pesavento <pesa@gentoo.org> (2018-12-27)
 # The corresponding Qt5 modules are not keyworded on arm, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
@@ -275,7 +271,6 @@ app-metrics/collectd collectd_plugins_modbus
 app-metrics/collectd collectd_plugins_oracle
 app-metrics/collectd collectd_plugins_routeros
 app-metrics/collectd collectd_plugins_sigrok
-app-metrics/collectd collectd_plugins_tokyotyrant
 app-metrics/collectd collectd_plugins_varnish
 app-metrics/collectd collectd_plugins_virt
 app-metrics/collectd collectd_plugins_write_mongodb
@@ -413,10 +408,6 @@ dev-libs/efl physics
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2014-01-27)
 # luajit isn't keyworded for arm yet, which is a bummer
 net-im/prosody jit
-
-# Rick Farina <zerochaos@gentoo.org> (2014-01-09)
-# rjb doesn't work on arm, so no java hacks for metasploit
-net-analyzer/metasploit java
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724

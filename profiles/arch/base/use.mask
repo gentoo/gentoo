@@ -47,7 +47,6 @@ sane_backends_qcam
 lilo
 mpx
 svga
-nvram
 cpu_flags_x86_3dnow
 cpu_flags_x86_3dnowext
 cpu_flags_x86_aes
@@ -109,10 +108,6 @@ cpu_flags_arm_vfpv4
 cpu_flags_arm_vfp-d32
 
 # [old] arm arch specific USE flags
-armvfp
-armv5te
-armv6
-armv6t2
 neon
 
 # nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers

@@ -98,7 +98,7 @@ net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp 
 net-misc/ntp openntpd snmp vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
-sys-apps/portage apidoc epydoc
+sys-apps/portage apidoc
 sys-apps/rng-tools nistbeacon pkcs11
 sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
 sys-block/thin-provisioning-tools test

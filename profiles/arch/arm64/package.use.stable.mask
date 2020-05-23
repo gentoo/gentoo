@@ -106,7 +106,6 @@ net-fs/samba ads
 # Masked due to unstable deps.
 dev-db/redis tcmalloc
 dev-python/hgdistver test
-dev-python/setuptools_scm mercurial test
 dev-python/sphinx latex test
 net-analyzer/netcat crypt
 

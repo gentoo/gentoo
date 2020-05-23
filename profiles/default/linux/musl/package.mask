@@ -59,8 +59,8 @@ games-fps/ut2004-data
 games-fps/ut2004-demo
 games-misc/little-inferno
 games-misc/papers-please
-games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
+games-puzzle/world-of-goo-hb
 games-roguelike/adom
 games-roguelike/neon-chrome
 games-rpg/costume-quest

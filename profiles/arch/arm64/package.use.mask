@@ -224,7 +224,6 @@ dev-python/ipython notebook
 dev-python/networkx scipy
 dev-ruby/haml test
 media-libs/opencv contribdnn
-net-analyzer/icinga2 classicui
 
 # Matthew Thode <prometheanfire@gentoo.org> (2018-02-16)
 # USE=test requires dev-db/mongodb which is not keyworded
@@ -343,10 +342,6 @@ app-crypt/heimdal afs
 # James Le Cuirot <chewi@gentoo.org> (2017-05-22)
 # Only available on some architectures.
 dev-java/icedtea -shenandoah
-
-# Michael Weber <xmw@gentoo.org> (2017-05-18)
-# mask due missing keywords on dev-python/epydoc[latex]
-sys-apps/portage epydoc
 
 # Jason Zaman <perfinion@gentoo.org> (2017-05-09)
 # x11-libs/libXpresent is not keyworded on arm64

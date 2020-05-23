@@ -40,7 +40,6 @@ sci-libs/plplot ocaml
 
 # Pacho Ramos <pacho@gentoo.org> (2014-07-02)
 # Mask due Gnome3 not going to be stabilized on this arch
->=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 mail-client/balsa webkit
 net-libs/libproxy webkit

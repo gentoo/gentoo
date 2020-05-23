@@ -59,12 +59,5 @@ gnome-extra/gnome-user-share
 # SELinux userspace 3.0 dropped python2_7 support
 # python2_7-only packages that depend on portage
 # cause unresolvable deps
-=app-admin/bcfg2-1.2.4-r1
-<app-admin/salt-2018
-<app-admin/webapp-config-1.55
 app-portage/distpatch
-<app-portage/g-sorcery-0.2.1-r1
-=app-portage/gs-elpa-0.1.3
-<app-portage/layman-2.4.2
 app-portage/metagen
-=app-portage/overlint-0.5.2

@@ -68,7 +68,6 @@ dev-util/geany-plugins gtkspell
 # Michael Palimaka <kensington@gentoo.org> (2016-10-21)
 # Requires media-libs/opencv which is not stable
 media-plugins/frei0r-plugins facedetect
-media-video/vlc opencv
 
 # Michael Palimaka <kensington@gentoo.org> (2016-05-25)
 # Dependencies not stable

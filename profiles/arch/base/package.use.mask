@@ -111,10 +111,6 @@ app-laptop/pbbuttonsd macbook
 # Requires [cuda] which is masked in most of the profiles.
 media-libs/opencv contribxfeatures2d
 
-# Rick Farina <zerochaos@gentoo.org> (2017-05-11)
-# the needed deps are amd64/x86 only
-net-analyzer/metasploit nexpose
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # dev-libs/libmaxminddb is only keyworded on amd64 and x86 at the moment
 app-admin/rsyslog mdblookup
@@ -196,10 +192,6 @@ media-libs/libbluray bdplus
 # Michał Górny <mgorny@gentoo.org> (2015-03-01)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers steam
-
-# Ben de Groot <yngwin@gentoo.org> (2015-02-07)
-# Mask for all arches, can be unmasked on arm once keyworded there
-games-board/stockfish armv7
 
 # Mike Frysinger <vapier@gentoo.org> (2014-08-04)
 # Mask flashrom drivers that only work on x86 due to in/out asm insns #454024
