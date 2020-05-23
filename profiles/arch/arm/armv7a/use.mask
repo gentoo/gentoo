@@ -1,9 +1,5 @@
 # Unmask armv7 specific USE flags
 -neon
--armvfp
--armv5te
--armv6
--armv6t2
 
 -cpu_flags_arm_v4
 -cpu_flags_arm_v5

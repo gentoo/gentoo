@@ -48,7 +48,6 @@ qt5
 apcupsd
 bluetooth
 bluray
-chipcard
 dvb
 gps
 hbci
@@ -152,10 +151,6 @@ llvm
 # Matt Turner <mattst88@gentoo.org (2012-05-27)
 # net-misc/connman is not keyworded
 connman
-
-# Matt Turner <mattst88@gentoo.org (2012-05-27)
-# sys-apps/entropy is not keyworded
-entropy
 
 # Anthony G. Basile <blueness@gentoo.org> (2012-04-15)
 # Pulls in net-libs/axtls which is not keyworded for arch

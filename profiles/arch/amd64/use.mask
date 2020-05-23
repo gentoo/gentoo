@@ -100,10 +100,6 @@
 # Lilo works on amd64, so ...
 -lilo
 
-# Mike Frysinger <vapier@gentoo.org> (2007-03-10)
-# NVRAM works on x86/amd64 hosts
--nvram
-
 # Diego Pettenò <flameeyes@gentoo.org> (2005-09-14)
 # nVidia XvMC support works on amd64
 -nvidia

@@ -95,7 +95,6 @@
 -lilo
 -mpx
 -svga
--nvram
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes
