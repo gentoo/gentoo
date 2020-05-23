@@ -509,7 +509,6 @@ media-video/griffith
 # that is dead and broken with py3.7+.  svg2rlg is only used by pdfrw.
 # Removal in 30 days.  Bug #718572.
 dev-python/rst2pdf
-media-gfx/svg2rlg
 
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
