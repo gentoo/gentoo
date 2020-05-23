@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend "
-	dev-ruby/faraday_middleware
+	dev-ruby/faraday_middleware:*
 	dev-ruby/multi_json"
 
 all_ruby_prepare() {
