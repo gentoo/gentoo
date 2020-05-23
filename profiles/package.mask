@@ -435,11 +435,6 @@ dev-python/junit-xml
 dev-python/ipdbplugin
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
-# Unmaintained.  Stuck at Python 3.6.  The only revdep last rited.
-# Removal in 30 days.  Bug #718896.
-dev-python/cligj
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
 # dev-python/bokeh does not work because of missing dependencies
