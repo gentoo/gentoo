@@ -1,0 +1,22 @@
+From 8623694ee180732cbcc1e8dcc9225da850d91b24 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 23 May 2020 21:19:49 +1200
+Subject: Include '.' in @INC on perl 5.26+
+
+---
+ Makefile.PL | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index cdc11bb..08b392f 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,4 +1,5 @@
+ use strict;
++use lib '.';
+ use inc::Module::Install;
+ 
+ name('Class-Accessor-Lite');
+-- 
+2.26.2
+
