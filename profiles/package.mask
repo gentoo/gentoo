@@ -544,11 +544,6 @@ sci-geosciences/gpxpy
 net-proxy/mitmproxy
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718452.
-net-misc/trackma
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.  In need of bump since 2016.
 # Removal in 30 days.  Bug #718426.
 net-analyzer/ripe-atlas-tools
