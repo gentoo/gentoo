@@ -136,8 +136,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext
 	sys-libs/zlib
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( <dev-libs/openssl-1.1.2:0= )
+	libressl? ( <dev-libs/libressl-3.1:0= )
 "
 
 PATCHES=(
