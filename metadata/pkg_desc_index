@@ -9676,7 +9676,6 @@ dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.7.0: Preview mail in the browser instead of sending
 dev-ruby/levenshtein 0.2.2-r2: Levenshtein distance algorithm
 dev-ruby/libusb 0.6.4: binding that gives Ruby programmers access to arbitrary USB devices
-dev-ruby/libxml 2.9.0: Ruby libxml with a user friendly API, akin to REXML
 dev-ruby/liquid 2.6.2 3.0.6 4.0.1 4.0.2 4.0.3: Template engine for Ruby
 dev-ruby/liquid-c 3.0.0 4.0.0: Liquid performance extension in C
 dev-ruby/listen 0.7.3-r2 1.3.1-r4 3.1.5-r3 3.2.0 3.2.1: Listens to file modifications and notifies you about the changes
@@ -15553,7 +15552,6 @@ sci-biology/bioperl-db 1.6.9 1.6.9-r1: Perl tools for bioinformatics - Perl API 
 sci-biology/bioperl-network 1.6.9: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
 sci-biology/bioperl-run 1.6.9: Perl wrapper modules for key bioinformatics applications
 sci-biology/biopython 1.73: Python modules for computational molecular biology
-sci-biology/bioruby 1.5.1 1.5.2: An integrated environment for bioinformatics using the Ruby language
 sci-biology/biosql 1.0.1-r1: A generic bioinformatics relational database model
 sci-biology/blat 34-r2: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
 sci-biology/bowtie 1.1.2-r1 2.2.9: Popular short read aligner for Next-generation sequencing data
