@@ -2,9 +2,9 @@ DEFINED_PHASES=compile install postinst
 DESCRIPTION=Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
 EAPI=7
 HOMEPAGE=https://github.com/ubuntu/gnome-shell-extension-appindicator
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=app-eselect/eselect-gnome-shell-extensions dev-libs/libappindicator:3 >=gnome-base/gnome-shell-3.34
 SLOT=0
 SRC_URI=https://github.com/ubuntu/gnome-shell-extension-appindicator/archive/v33.tar.gz -> gnome-shell-extension-appindicator-33.tar.gz
-_md5_=1494c0662409e38cec8f863114528280
+_md5_=e97db1e4959f186c88054a01daacbbaf

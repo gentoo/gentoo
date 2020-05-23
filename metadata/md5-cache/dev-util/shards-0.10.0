@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=>dev-lang/crystal-0.11.1[yaml]
+DESCRIPTION=Dependency manager for the Crystal language
+EAPI=7
+HOMEPAGE=https://github.com/crystal-lang/shards
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>dev-lang/crystal-0.11.1[yaml]
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/crystal-lang/shards/archive/v0.10.0.tar.gz -> shards-0.10.0.tar.gz https://github.com/crystal-lang/crystal-molinillo/archive/v0.1.0.tar.gz -> crystal-molinillo-0.1.0.tar.gz
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=c579e4793b4391d1a97ce08b38295ca2

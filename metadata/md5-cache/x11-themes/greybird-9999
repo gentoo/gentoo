@@ -4,11 +4,11 @@ DEPEND=>=x11-libs/gtk+-3.22:3 >=x11-themes/gtk-engines-murrine-0.90 dev-lang/sas
 DESCRIPTION=The default theme from Xubuntu
 EAPI=7
 HOMEPAGE=http://shimmerproject.org/project/greybird/ https://github.com/shimmerproject/Greybird
-IUSE=ayatana gnome gtk2 gtk3 xfce
+IUSE=appindicator gnome gtk2 gtk3 xfce
 LICENSE=CC-BY-SA-3.0 GPL-2+
 PROPERTIES=live
 RDEPEND=>=x11-libs/gtk+-3.22:3 >=x11-themes/gtk-engines-murrine-0.90
-REQUIRED_USE=|| ( ayatana gnome gtk2 gtk3 xfce )
+REQUIRED_USE=|| ( appindicator gnome gtk2 gtk3 xfce )
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	meson	991e544bbaf3120073ededbdc1d8bf93	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=dc0c00d33ba254216d4d075ecdb2a1cd
+_md5_=0d9499881a32dbbe8b0216d6e1e4ff7f
