@@ -6,7 +6,6 @@
 # errors, probably a versioning problem, confirmed on Solaris 10 and
 # OpenIndiana (11)
 # For instance XML-Parser generates lookup errors when importing from Perl
-=sys-devel/binutils-2.31.1*
 =sys-devel/binutils-2.32*
 
 # Fabian Groffen <grobian@gentoo.org> (2014-01-14)
@@ -17,10 +16,6 @@ sys-apps/util-linux
 # Installing libelf will hurt your system.  In particular libkvm needs
 # the system libelf to function properly.
 dev-libs/libelf
-
-# Fabian Groffen <grobian@gentoo.org> (2011-08-25)
-# Fails to compile, and not worth fixing, bug #379723
-=sys-devel/gcc-4.3.6*
 
 # Fabian Groffen <grobian@gentoo.org> (2007-01-21)
 # doesn't understand arguments on Solaris

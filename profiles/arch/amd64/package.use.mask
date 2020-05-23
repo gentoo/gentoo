@@ -123,10 +123,6 @@ dev-util/catalyst -system-bootloader
 # Mask everywhere, unmask where appropriate.
 media-video/mpv -vulkan
 
-# Mikle Kolyada <zlogene@gentoo.org> (2018-06-02)
-# Too many untested ruby dependencies
-<dev-ruby/haml-5 test
-
 # Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
 # media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
 app-emulation/wine-staging -vkd3d -vulkan
@@ -144,10 +140,6 @@ media-libs/opencv -contribxfeatures2d
 # David Seifert <soap@gentoo.org> (2017-05-20)
 # cpyrit-cuda does not support GCC 4.9 or later
 net-wireless/pyrit cuda
-
-# Rick Farina <zerochaos@gentoo.org> (2017-05-11)
-# nexpose work on amd64
-net-analyzer/metasploit -nexpose
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # dev-libs/libmaxminddb is keyworded on amd64

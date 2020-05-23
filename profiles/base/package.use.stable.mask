@@ -44,10 +44,6 @@ media-libs/opencv vtk
 # instead if you can.
 dev-perl/DBD-mysql mariadb
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-16)
-# dev-libs/libical[glib] was not stable tested, bug #689434
-=dev-libs/libical-3.0.5 glib
-
 # Michał Górny <mgorny@gentoo.org> (2019-07-31)
 # Freshly added test dependency for a test-restricted package.  Mask
 # the flag to avoid stabilizing it for the time being.

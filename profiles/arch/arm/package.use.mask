@@ -409,10 +409,6 @@ dev-libs/efl physics
 # luajit isn't keyworded for arm yet, which is a bummer
 net-im/prosody jit
 
-# Rick Farina <zerochaos@gentoo.org> (2014-01-09)
-# rjb doesn't work on arm, so no java hacks for metasploit
-net-analyzer/metasploit java
-
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
 app-office/gnumeric libgda
