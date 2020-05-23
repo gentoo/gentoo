@@ -5297,7 +5297,7 @@ dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.2.6: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stb 20180211: single-file public domain (or MIT licensed) libraries for C/C++
-dev-libs/stfl 0.24: A library which implements a curses-based widget set for text terminals
+dev-libs/stfl 0.24 0.24-r1: A library which implements a curses-based widget set for text terminals
 dev-libs/stp 2.3.3: Simple Theorem Prover, an efficient SMT solver for bitvectors
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
 dev-libs/template-glib 3.32.0: Templating library for GLib
@@ -15075,7 +15075,7 @@ net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
 net-news/canto-curses 0.9.9: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.7: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.3 1.12.7-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
-net-news/newsboat 2.13 2.18 2.19-r1: An RSS/Atom feed reader for text terminals
+net-news/newsboat 2.13 2.19-r1: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.19.3 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
