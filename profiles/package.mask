@@ -605,7 +605,6 @@ app-text/doconce
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.
 # Removal in 30 days.  Bug #718238.
-app-misc/openastro
 app-misc/openastro-data
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
