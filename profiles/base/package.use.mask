@@ -128,7 +128,6 @@ dev-python/zeep tornado
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Require dev-python/epydoc which is being removed.
-<=dev-python/pycrypto-2.6.1-r2 doc
 <=dev-python/restkit-4.2.2 doc
 <=dev-python/suds-0.6-r1 doc
 
