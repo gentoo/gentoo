@@ -75,10 +75,6 @@ dev-util/buildbot doc
 # Requires deprecated python2 and pygtk
 mail-client/claws-mail python
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-25)
-# Requires www-servers/tornado with py2.
-app-backup/bup web
-
 # Michał Górny <mgorny@gentoo.org> (2020-03-24)
 # Require dev-python/recommonmark with py2.
 <sys-devel/llvm-9 doc
