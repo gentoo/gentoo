@@ -31,6 +31,9 @@ DOCS=( AUTHORS CONTRIBUTORS README doc/syntax.txt )
 HTML_DOCS=( doc/syntax.html )
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/0.2020.05.01-test-memory-budget.patch
+	)
 	default
 	grep -q "^SONAME=${SONAME}\$" Makefile || die "SONAME mismatch"
 	if use icu; then
