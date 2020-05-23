@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2020-05023)
+# Masked for removal in 30 days.
+# Not useful anymore now that metasploit has been removed.
+app-eselect/eselect-metasploit
+
 # Christoph Junghans <junghans@gentoo.org> (2020-05-19)
 # multiple vulnerabilities (CVE-2019-{3463,3464,1000018})
 # bug #699842. Masked for removal in 30 days.
