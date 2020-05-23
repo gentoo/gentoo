@@ -27,6 +27,10 @@ IUSE=""
 ruby_add_rdepend "=dev-ruby/tins-1*"
 ruby_add_bdepend "test? ( >=dev-ruby/test-unit-2.5.1-r1 )"
 
+all_ruby_prepare() {
+	sed -i -e '/test_tail_change2/aomit "has race condition"' tests/file_tail_test.rb || die
+}
+
 each_ruby_test() {
 	ruby-ng_testrb-2 -Ilib tests/*_test.rb
 
