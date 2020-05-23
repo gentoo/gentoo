@@ -1,0 +1,24 @@
+--- a/mk/clang.mk
++++ b/mk/clang.mk
+@@ -1,7 +1,7 @@
+ ifeq (${_INCLUDE_MK_CLANG_},)
+ _INCLUDE_MK_CLANG_=1
+ CC?=clang
+-RANLIB=ranlib
++RANLIB?=ranlib
+ ONELIB=0
+ AR?=ar
+ CC_AR=$(AR) q ${LIBAR}
+--- a/mk/gcc.mk
++++ b/mk/gcc.mk
+@@ -1,8 +1,8 @@
+ ifeq (${_INCLUDE_MK_GCC_},)
+ _INCLUDE_MK_GCC_=1
+ CC?=gcc
+-OBJCOPY=objcopy
+-RANLIB=ranlib
++OBJCOPY?=objcopy
++RANLIB?=ranlib
+ ONELIB=0
+ AR?=ar
+ CC_AR=$(AR) q ${LIBAR}
