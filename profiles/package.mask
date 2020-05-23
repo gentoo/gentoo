@@ -519,11 +519,6 @@ media-gfx/svg2rlg
 mail-filter/pyzor
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.
-# Removal in 30 days.  Bug #718530.
-sys-boot/raspberrypi-mkimage
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.  Needs version bump.
 # Removal in 30 days.  Bug #718458.
 net-proxy/mitmproxy
