@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=fuse? ( sys-fs/fuse:0= ) sys-libs/readline:0=
 SLOT=0
 SRC_URI=http://user-mode-linux.sourceforge.net/uml_utilities_20070815.tar.bz2
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e8472c8c9cca2e274935b9eef5944cfd

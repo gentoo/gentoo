@@ -11,5 +11,5 @@ RDEPEND=iconv? ( virtual/libiconv ) idn? ( net-dns/libidn2:= ) nls? ( virtual/li
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/rfc1036/whois/archive/v5.5.6.tar.gz -> whois-5.5.6.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bf2aabfae78db55d98045f172bafab8d

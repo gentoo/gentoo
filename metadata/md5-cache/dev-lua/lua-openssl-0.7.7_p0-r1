@@ -9,5 +9,5 @@ LICENSE=MIT openssl PHP-3
 RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1:0 ) libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) !dev-lua/luaossl !dev-lua/luacrypto
 SLOT=0
 SRC_URI=https://github.com/zhaozg/lua-openssl/archive/0.7.7-0.tar.gz -> lua-openssl-0.7.7_p0.tar.gz https://github.com/zhaozg/lua-auxiliar/archive/b56f6937096acea34ddf241ec7ea08ac52414d18.tar.gz -> lua-openssl-aux-b56f6937096acea34ddf241ec7ea08ac52414d18.tar.gz https://github.com/keplerproject/lua-compat-5.3/archive/a1735f6e6bd17588fcaf98720f0548c4caa23b34.tar.gz -> lua-openssl-compat-a1735f6e6bd17588fcaf98720f0548c4caa23b34.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=025cea15edc28c977da7ab086751a61b

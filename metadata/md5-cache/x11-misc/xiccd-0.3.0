@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=dev-libs/glib:2 x11-apps/xrandr x11-misc/colord
 SLOT=0
 SRC_URI=https://github.com/agalakhov/xiccd/archive/v0.3.0.tar.gz -> xiccd-0.3.0.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b0a5ba6b2894e1c8bf04e12b8e71e035

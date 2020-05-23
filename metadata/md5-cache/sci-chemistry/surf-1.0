@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=SURF
 SLOT=0
 SRC_URI=http://www.ks.uiuc.edu/Research/vmd/extsrcs/surf.tar.Z -> surf-1.0.tar.Z
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9e457a60ca1a2aa1dc6e1838ffc04c34

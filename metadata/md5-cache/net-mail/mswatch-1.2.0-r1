@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.6:2
 SLOT=0
 SRC_URI=mirror://sourceforge/mswatch/mswatch-1.2.0.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	ed97304af323c7b2f6934f229982cb7d	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	ed97304af323c7b2f6934f229982cb7d	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c2839b7fa153f24e839641fffb56e6b8

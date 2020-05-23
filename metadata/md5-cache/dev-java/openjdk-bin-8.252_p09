@@ -11,5 +11,5 @@ RDEPEND=media-libs/fontconfig:1.0 media-libs/freetype:2 >=sys-apps/baselayout-ja
 RESTRICT=preserve-libs strip
 SLOT=8
 SRC_URI=arm64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_aarch64_linux_hotspot_8u252b09.tar.gz ) arm? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_arm_linux_hotspot_8u252b09.tar.gz ) ppc64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_ppc64le_linux_hotspot_8u252b09.tar.gz ) amd64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_x64_linux_hotspot_8u252b09.tar.gz )
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	797cda3549becfe50afdfa35192ca137	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=14a7135afcee0e805e9c3a59f8de9758

@@ -11,5 +11,5 @@ RDEPEND=>=x11-libs/libdrm-2.4.52[video_cards_intel,abi_x86_32(-)?,abi_x86_64(-)?
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/intel/intel-vaapi-driver/releases/download/2.4.0.pre1/intel-vaapi-driver-2.4.0.pre1.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	797cda3549becfe50afdfa35192ca137	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f9555a74be70eea0b25e3434637362c6

@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/ladspa-sdk virtual/jack virtual/libintl x11-libs/gtk+:2 alsa? ( media-libs/alsa-lib:= ) gnome? ( gnome-base/libgnomeui:= ) lash? ( media-sound/lash:= ) xml? ( dev-libs/libxml2:= media-libs/liblrdf:= )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/j/jack-rack/jack-rack_1.4.8~rc1.orig.tar.gz mirror://debian/pool/main/j/jack-rack/jack-rack_1.4.8~rc1-1.debian.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0aba7ed00708199a8e31164d50946cb1

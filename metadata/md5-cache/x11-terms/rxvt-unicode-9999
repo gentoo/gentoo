@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=>=sys-libs/ncurses-5.7-r6:= media-libs/fontconfig x11-libs/libX11 x11-libs/libXrender gdk-pixbuf? ( x11-libs/gdk-pixbuf ) kernel_Darwin? ( dev-perl/Mac-Pasteboard ) perl? ( dev-lang/perl:= ) startup-notification? ( x11-libs/startup-notification ) xft? ( x11-libs/libXft )
 RESTRICT=test
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	cvs	6625b4ea3655a11531b433946cebd6b3	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	cvs	6625b4ea3655a11531b433946cebd6b3	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=d85821d0724bca65dd70b27e22507b44

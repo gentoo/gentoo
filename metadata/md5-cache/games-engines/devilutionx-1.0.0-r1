@@ -10,5 +10,5 @@ LICENSE=public-domain
 RDEPEND=dev-libs/libsodium media-fonts/sil-charis media-libs/libsdl2[haptic] media-libs/sdl2-mixer media-libs/sdl2-ttf
 SLOT=0
 SRC_URI=https://github.com/diasurgical/devilutionX/archive/1.0.0.tar.gz -> devilutionx-1.0.0.tar.gz
-_eclasses_=cmake	19b0421555865baefd505831dd4303e3	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake	19b0421555865baefd505831dd4303e3	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=820932a677b8a7f46aaf5142c51612b5

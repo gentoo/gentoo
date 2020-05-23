@@ -9,5 +9,5 @@ RDEPEND=x11-libs/gtk+:2
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.fluxcode.net/files/gbase-0.5.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9845afd9a2d1f8f82cec3d48a51d59a8

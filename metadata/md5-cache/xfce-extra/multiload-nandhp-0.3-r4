@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.14:2= x11-libs/cairo:= >=gnome-base/libgtop-2.11.92:= <xfce-base/libxfce4ui-4.15:=[gtk2(+)] >=xfce-base/libxfce4util-4.10:= <xfce-base/xfce4-panel-4.15:=[gtk2(+)]
 SLOT=0
 SRC_URI=https://github.com/nandhp/multiload-nandhp/archive/version-0-3.tar.gz -> multiload-nandhp-0.3.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d3799ba0bd32b1f8ff3b0c84a9d16d8a

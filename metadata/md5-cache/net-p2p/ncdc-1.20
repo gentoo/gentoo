@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls sys-libs/ncurses:0[unicode] sys-libs/zlib geoip? ( dev-libs/geoip )
 SLOT=0
 SRC_URI=https://dev.yorhel.nl/download/ncdc-1.20.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d0597bb8688c0aa518868ea0e6f0923b

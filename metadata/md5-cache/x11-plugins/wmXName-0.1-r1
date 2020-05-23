@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/libXpm-3.5.7 >=x11-libs/libX11-1.1.4 >=x11-libs/libXext-1.0.3 >=dev-lang/perl-5.8.8-r5 >=www-client/lynx-2.8.6-r2
 SLOT=0
 SRC_URI=http://source.xname.org/wmXName-0.01.tgz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=80484a6b2326de934898c09f85e6dde5

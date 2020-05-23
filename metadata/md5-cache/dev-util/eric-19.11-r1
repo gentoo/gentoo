@@ -10,5 +10,5 @@ RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6[sqlite,xml] >=dev-
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 )
 SLOT=6
 SRC_URI=mirror://sourceforge/eric-ide/eric6/stable/19.11/eric6-19.11.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=94a22d88913aa2f56555627f0d439c6b

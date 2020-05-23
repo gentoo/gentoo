@@ -11,5 +11,5 @@ RDEPEND=virtual/jpeg:* sys-libs/libcap >=media-libs/fontconfig-2.4.2 >=media-lib
 REQUIRED_USE=pinplugin? ( !mainmenuhooks ) permashift? ( !naludump !pinplugin )
 SLOT=0
 SRC_URI=ftp://ftp.tvdr.de/vdr/vdr-2.4.1.tar.bz2 mainmenuhooks? ( http://vdr.websitec.de/download/vdr/vdr-2.4.1/vdr-2.4.1_mainmenuhook-1.0.1.patch.bz2 ) menuorg? ( https://projects.vdr-developer.org/projects/plg-menuorg/repository/revisions/master/raw/vdr-patch/vdr-menuorg-2.3.x.diff ) naludump? ( http://www.udo-richter.de/vdr/files/vdr-2.1.5-naludump-0.1.diff ) pinplugin? ( http://vdr.websitec.de/download/vdr/vdr-2.4.1/vdr-2.4.1_pinplugin.patch.bz2 ) ttxtsubs? ( http://vdr.websitec.de/download/vdr/vdr-2.4.1/vdr-2.4.0-ttxtsubs.patch.bz2 ) permashift? ( https://raw.githubusercontent.com/eikesauer/Permashift/master/vdr-2.4-patch-for-permashift.diff )
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a9e6f81efeb8cae83bd2abf02567922b

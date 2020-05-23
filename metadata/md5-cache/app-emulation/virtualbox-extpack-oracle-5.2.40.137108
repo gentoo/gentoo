@@ -8,5 +8,5 @@ RDEPEND=~app-emulation/virtualbox-5.2.40
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=https://download.virtualbox.org/virtualbox/5.2.40/Oracle_VM_VirtualBox_Extension_Pack-5.2.40-137108.vbox-extpack -> Oracle_VM_VirtualBox_Extension_Pack-5.2.40-137108.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=740e5a893b7db9cc04203bcd69478886

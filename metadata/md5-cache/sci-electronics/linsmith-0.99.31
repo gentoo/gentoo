@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 dev-libs/libxml2:2 dev-libs/glib:2 dev-libs/atk gnome-base/libgnome gnome-base/libgnomecanvas gnome-base/libgnomeui
 SLOT=0
 SRC_URI=mirror://sourceforge/linsmith/linsmith-0.99.31.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c97fe6ff53c15f7bc1a712ea7c020bc8

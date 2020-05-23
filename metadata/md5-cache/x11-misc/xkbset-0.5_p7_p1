@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=x11-libs/libX11 tk? ( dev-perl/Tk )
 SLOT=0
 SRC_URI=https://faculty.missouri.edu/~stephen/software/xkbset/xkbset-0.5.tar.gz mirror://debian/pool/main/x/xkbset/xkbset_0.5-7.1.debian.tar.xz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e16e4d9887c615fc330a0ef2a9e86005

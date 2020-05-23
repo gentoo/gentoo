@@ -9,5 +9,5 @@ LICENSE=BSD-2
 RDEPEND=!app-text/agrep !dev-ruby/amatch !app-misc/glimpse
 SLOT=0
 SRC_URI=https://laurikari.net/tre/tre-0.8.0.tar.bz2
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8fdf8f744ef9d2a8d00935b8e671c0f3

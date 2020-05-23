@@ -9,5 +9,5 @@ LICENSE=public-domain MIT ISC BSD-2 LGPL-2.1+
 RDEPEND=virtual/fortran
 SLOT=0/0.7.0.0
 SRC_URI=https://codeload.github.com/JuliaMath/openlibm/tar.gz/v0.7.0 -> openlibm-0.7.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0846860a7172dc2fe0dc209b24688acf

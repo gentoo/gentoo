@@ -10,5 +10,5 @@ LICENSE=Apache-2.0 GPL-2 LGPL-2.1
 RDEPEND=dev-libs/libxml2 dev-libs/libxslt curl? ( net-misc/curl ) json? ( dev-libs/yajl ) unicode? ( dev-libs/icu:= ) !media-libs/raptor:0
 SLOT=2
 SRC_URI=http://download.librdf.org/source/raptor2-2.0.15.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=2cb7e6d6a9b302d71db0c6fcd38e8f5a

@@ -9,5 +9,5 @@ RDEPEND=sys-libs/zlib
 RESTRICT=test
 SLOT=3
 SRC_URI=http://www.catb.org/~esr/cvsps/cvsps-3.13.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=fc5f8fceb2c0589f89f6ae296abd2748

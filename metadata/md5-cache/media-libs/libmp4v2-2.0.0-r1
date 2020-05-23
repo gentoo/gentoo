@@ -9,5 +9,5 @@ LICENSE=MPL-1.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://mp4v2.googlecode.com/files/mp4v2-2.0.0.tar.bz2
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=90e9f0ba2a917a3d7f3c877dbb17a5b2

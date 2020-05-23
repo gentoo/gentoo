@@ -10,5 +10,5 @@ RDEPEND=!net-misc/hamachi
 RESTRICT=mirror
 SLOT=0
 SRC_URI=x86? ( https://www.vpn.net/installers/logmein-hamachi-2.1.0.174-x86.tgz ) amd64? ( https://www.vpn.net/installers/logmein-hamachi-2.1.0.174-x64.tgz )
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=093e7870b29c6a6912b221cc97aa88d7

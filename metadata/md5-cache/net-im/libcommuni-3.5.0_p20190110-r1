@@ -10,5 +10,5 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 examples? ( || ( dev-qt/qtgui:5[X
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/communi/libcommuni/archive/88bb0fcdaab5bdd1176a3b6b485a6415a137ec27.tar.gz -> libcommuni-3.5.0_p20190110.tar.gz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	797cda3549becfe50afdfa35192ca137	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=5e54169266e7d244a7ff5fd4d6fae3ea

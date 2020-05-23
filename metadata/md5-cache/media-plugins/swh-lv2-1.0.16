@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sci-libs/fftw:3.0
 SLOT=0
 SRC_URI=https://github.com/swh/lv2/archive/v1.0.16.tar.gz -> swh-lv2-1.0.16.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0b9c07ac31d8c0b95f76189641bce734

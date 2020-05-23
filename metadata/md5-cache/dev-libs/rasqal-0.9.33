@@ -11,5 +11,5 @@ RDEPEND=>=media-libs/raptor-2.0.15 crypt? ( !mhash? ( dev-libs/libgcrypt:0 ) mha
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.librdf.org/source/rasqal-0.9.33.tar.gz
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=15f23a056743183b24add971a230dea8

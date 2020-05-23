@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 app-arch/p7zip sys-boot/syslinux sys-fs/mtools
 SLOT=0
 SRC_URI=https://github.com/unetbootin/unetbootin/archive/661.tar.gz -> unetbootin-661.tar.gz https://dev.gentoo.org/~asturm/distfiles/unetbootin-661-qt5.patch.tar.xz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	estack	686eaab303305a908fd57b2fd7617800	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	estack	686eaab303305a908fd57b2fd7617800	multilib	797cda3549becfe50afdfa35192ca137	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=41c5acd970639d82f79dfe2d8329f063

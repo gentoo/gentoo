@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-text/libspectre-0.2.6:= >=dev-libs/glib-2.40.0:2 >=dev-libs/libxml2-2.4.12:2 dev-libs/libxslt >=gnome-base/librsvg-2.22:2 >=gnome-extra/libgsf-1.14.24:=[introspection?] >=x11-libs/cairo-1.10:=[svg] >=x11-libs/gdk-pixbuf-2.22:2 >=x11-libs/gtk+-3.20:3 >=x11-libs/pango-1.24:= x11-libs/libXext:= x11-libs/libXrender:= introspection? ( >=dev-libs/gobject-introspection-1:= >=gnome-extra/libgsf-1.14.23:= )
 SLOT=0.10
 SRC_URI=mirror://gnome/sources/goffice/0.10/goffice-0.10.46.tar.xz
-_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b706681372d7ed776bf639d73b26847b

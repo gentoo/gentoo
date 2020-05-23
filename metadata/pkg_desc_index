@@ -1885,7 +1885,7 @@ app-i18n/pology 0.12-r2 9999: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.35 0.38.20180515: Data resources for Rime Input Method Engine
-app-i18n/scim 1.4.17 1.4.18: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
+app-i18n/scim 1.4.18: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
 app-i18n/scim-anthy 1.2.7-r1: Japanese input method Anthy IMEngine for SCIM
 app-i18n/scim-bridge 0.4.16-r3: Yet another IM-client of SCIM
 app-i18n/scim-hangul 0.4.0: Hangul IMEngine for SCIM ported from imhangul
@@ -1911,7 +1911,7 @@ app-i18n/tomoe-gtk 0.6.0-r6: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.13.9: A command line interface for Transifex
 app-i18n/translate-shell 0.9.6.10 0.9.6.11: Online command-line translator
 app-i18n/uchardet 0.0.6-r2 9999: An encoding detector library
-app-i18n/uim 1.8.6-r1 1.8.6-r2 1.8.8: A multilingual input method framework
+app-i18n/uim 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-cldr 33.0 35.1 37.0: Unicode Common Locale Data Repository
 app-i18n/unicode-data 12.0.0 12.1.0 13.0.0: Unicode data from unicode.org
@@ -5727,7 +5727,7 @@ dev-perl/Chart-Math-Axis 1.60.0-r2 1.60.0-r3: Implements an algorithm to find go
 dev-perl/Chatbot-Eliza 1.80.0: A clone of the classic Eliza program
 dev-perl/Cisco-IPPhone 0.50.0-r2: Cisco IP Phone interface using XML Objects
 dev-perl/Cisco-Reconfig 0.912.0: Parse and generate Cisco configuration files
-dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
+dev-perl/Class-Accessor 0.340.0-r1 0.500.0: Automated accessor generation
 dev-perl/Class-Accessor-Chained 0.10.0-r1: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.120: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.80.0: A minimalistic variant of Class::Accessor
@@ -9486,6 +9486,7 @@ dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
 dev-ruby/bogus 0.1.6: Ensuring that the things you stub or mock actually exist
 dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and mock invocations
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
+dev-ruby/brotli 0.2.3: Brotli compressor/decompressor
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 4.6.0 4.7.0 4.7.1 4.8.0 4.8.2: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
@@ -9584,7 +9585,7 @@ dev-ruby/fakefs 0.19.2 0.20.0 0.20.1 1.0.0 1.2.0 1.2.1: A fake filesystem. Use i
 dev-ruby/faker 1.9.6-r1 2.11.0: A library for generating fake data such as names, addresses, and phone numbers
 dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/faraday 0.17.3 1.0.1: HTTP/REST API client library with pluggable components
-dev-ruby/faraday_middleware 0.13.1 0.14.0: Various middleware for Faraday
+dev-ruby/faraday_middleware 0.14.0 1.0.0: Various middleware for Faraday
 dev-ruby/faraday_middleware-multi_json 0.0.6-r1: Response JSON parser using MultiJson and FaradayMiddleware
 dev-ruby/fast-stemmer 1.0.2-r2: Simple wrapper around multithreaded Porter stemming algorithm
 dev-ruby/fast_gettext 1.6.0 1.8.0 2.0.0 2.0.1 2.0.2: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
@@ -9825,6 +9826,7 @@ dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.7 1.1.0: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.4.3: Extends Rake with remote task goodness
+dev-ruby/rantly 2.0.0: Ruby Imperative Random Data Generator and Quickcheck
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rash_alt 0.4.7 0.4.8: Rash alt version for Hashie's own Rash
 dev-ruby/rb-gsl 2.1.0.2: Ruby interface to GNU Scientific Library
@@ -11128,7 +11130,6 @@ games-kids/lletters 0.1.95-r3: Game that helps young kids learn their letters an
 games-kids/memonix 1.6-r1: Brain teasers, puzzle and memory games for kid's in one pack
 games-kids/tuxmath 2.0.3-r1: Educational arcade game where you have to solve maths problems
 games-kids/tuxtype 1.8.3-r1: Typing tutorial with lots of eye-candy
-games-misc/OilWar 1.2.1-r2: Evil army is attacking your country and tries to steal your oil
 games-misc/asr-manpages 1.3_rc6: set of humorous manual pages developed on alt.sysadmin.recovery
 games-misc/ballerburg 1.2.0: Linux port of the classical Atari ST game Ballerburg
 games-misc/bsd-games 2.17-r5: collection of games from NetBSD
@@ -12411,7 +12412,6 @@ media-fonts/sophia-nubian 1.0: Unicode sans-serif typeface for Coptic/Nubian lan
 media-fonts/source-han-sans 1.001 1.004: Pan-CJK OpenType/CFF font family
 media-fonts/source-pro 20141211 20160608 20170111: Adobe's open source typeface family designed for UI environments
 media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
-media-fonts/symbola 8.00 9.17: Unicode font for Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
 media-fonts/terminus-font 4.46 4.47 4.48: A clean fixed font for the console and X11
@@ -16662,7 +16662,6 @@ sys-apps/flashrom 0.9.8 1.2-r1 9999: Utility for reading, writing, erasing and v
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 17.02.00: Firmware Test Suite
 sys-apps/fwupd 1.2.11 1.3.8 1.3.9-r1 1.4.1 1.4.2: Aims to make updating firmware on Linux automatic, safe and reliable
-sys-apps/fwupdate 10 12: Tools for using the ESRT and UpdateCapsule() to apply firmware updates
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator

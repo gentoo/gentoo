@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=!sci-chemistry/surf dev-libs/glib:2 net-libs/libsoup net-libs/webkit-gtk:4 x11-libs/gtk+:3 x11-libs/libX11 !savedconfig? ( net-misc/curl x11-apps/xprop x11-misc/dmenu x11-terms/st )
 SLOT=0
 SRC_URI=https://dl.suckless.org/surf/surf-2.0.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=20fb9ca4632475f3926fa2178bbfcb8c

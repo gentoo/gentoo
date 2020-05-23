@@ -9,5 +9,5 @@ RDEPEND=!dev-scheme/scheme48
 RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.scsh.net/pub/scsh/0.6/scsh-0.6.7.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=562b5610d6dcf17ab7406f3bf5bdaf08

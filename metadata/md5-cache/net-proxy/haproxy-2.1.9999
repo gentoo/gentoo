@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=pcre? ( dev-libs/libpcre pcre-jit? ( dev-libs/libpcre[jit] ) ) pcre2? ( dev-libs/libpcre pcre2-jit? ( dev-libs/libpcre2[jit] ) ) ssl? ( !libressl? ( dev-libs/openssl:0=[zlib?] ) libressl? ( dev-libs/libressl:0= ) ) slz? ( dev-libs/libslz:= ) zlib? ( sys-libs/zlib ) lua? ( dev-lang/lua:5.3 ) device-atlas? ( dev-libs/device-atlas-api-c ) acct-group/haproxy acct-user/haproxy
 REQUIRED_USE=pcre-jit? ( pcre ) pcre2-jit? ( pcre2 ) pcre? ( !pcre2 ) device-atlas? ( pcre ) ?? ( slz zlib )
 SLOT=0
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	ed97304af323c7b2f6934f229982cb7d	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=89ca85e3796c2b483ba40cc436183d3a

@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=x11-libs/libXext x11-libs/libX11 xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama )
 SLOT=0
 SRC_URI=https://github.com/segin/matwm2/archive/0.1.2pre3.tar.gz -> matwm2-0.1.2_pre3.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bb7645f716c4651bda79beea7ac6c34d

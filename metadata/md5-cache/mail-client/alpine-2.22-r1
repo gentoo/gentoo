@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=sys-libs/ncurses-5.1:0= kerberos? ( app-crypt/mit-krb5 ) ldap? ( net-nds/openldap ) spell? ( app-text/aspell ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) app-misc/mime-types
 SLOT=0
 SRC_URI=http://alpine.x10host.com/alpine/release/src/alpine-2.22.tar.xz chappa? ( http://alpine.x10host.com/alpine/patches/alpine-2.22/all.patch.gz -> alpine-2.22-chappa.patch.gz )
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b22a94616573b0c9f3392a6d1023ed0b

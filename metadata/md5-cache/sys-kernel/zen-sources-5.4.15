@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=5.4.15
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.4-1.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.4-1.base.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.4-1.base.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.4-1.extras.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.4-1.extras.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.4-1.extras.tar.xz https://github.com/zen-kernel/zen-kernel/releases/download/v5.4.15-zen1/v5.4.15-zen1.patch.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	51166f4011c40ba947ae50ae7184139f	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	51166f4011c40ba947ae50ae7184139f	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=2148a6c5380c17b8ef37514d78fd60a1

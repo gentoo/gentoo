@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/varlink/libvarlink/archive/18.tar.gz -> libvarlink-18.tar.gz
-_eclasses_=meson	991e544bbaf3120073ededbdc1d8bf93	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=meson	991e544bbaf3120073ededbdc1d8bf93	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=807ad263c2855f764cbb6e3665bd21e2

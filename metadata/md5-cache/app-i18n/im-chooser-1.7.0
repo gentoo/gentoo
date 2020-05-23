@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-i18n/imsettings virtual/libintl x11-libs/libSM gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) xfce? ( xfce-base/libxfce4util )
 SLOT=0
 SRC_URI=https://releases.pagure.org/im-chooser/im-chooser-1.7.0.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0ea9f3e10927868edd1f5a9ba7cb52fb

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXext
 SLOT=0
 SRC_URI=https://github.com/JNRowe-retired/bfm/archive/0.6.4.tar.gz -> bfm-0.6.4.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=36decde9085a0009e179485be718911c

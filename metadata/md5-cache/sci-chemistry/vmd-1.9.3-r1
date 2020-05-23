@@ -12,5 +12,5 @@ REQUIRED_USE=^^ ( python_single_target_python2_7 )
 RESTRICT=fetch
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/vmd-1.9.3-gentoo-patches.tar.xz vmd-1.9.3.src.tar
-_eclasses_=cuda	bb861e5221b7272ac90c2f12791c1e66	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	prefix	c2993e4c430c1ee24f278983d6189501	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=cuda	bb861e5221b7272ac90c2f12791c1e66	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	797cda3549becfe50afdfa35192ca137	prefix	c2993e4c430c1ee24f278983d6189501	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bf88bc8b1ce8870a84f794ca5b17274f

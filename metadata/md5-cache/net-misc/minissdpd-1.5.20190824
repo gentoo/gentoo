@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=net-libs/libnfnetlink || ( net-misc/miniupnpd net-libs/miniupnpc )
 SLOT=0
 SRC_URI=http://miniupnp.free.fr/files/minissdpd-1.5.20190824.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=87dfd68198bf69fbaea09175cc9c36c1

@@ -7,5 +7,5 @@ LICENSE=BSD
 RDEPEND=>=app-cdr/cdrtools-1.11.28
 SLOT=0
 SRC_URI=http://www.muempf.de/down/cdbackup-0.7.1.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bf59857b392b2735ce902b0bc54dd0dc

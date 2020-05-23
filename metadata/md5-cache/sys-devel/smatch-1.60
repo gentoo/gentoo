@@ -9,5 +9,5 @@ LICENSE=OSL-1.1
 RDEPEND=dev-db/sqlite
 SLOT=0
 SRC_URI=http://repo.or.cz/w/smatch.git/snapshot/1.60.tar.gz -> smatch-1.60.tar.gz mirror://gentoo/smatch-1.60.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=aa845c6c79716fbfaf52ac525b3aef75

@@ -6,5 +6,5 @@ KEYWORDS=amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=public-domain
 SLOT=0
 SRC_URI=mirror://sourceforge/byaccj/byaccj1.15_src.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e414020d8d1030f9b8fc93c311d70dea

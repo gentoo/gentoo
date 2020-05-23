@@ -8,5 +8,5 @@ LICENSE=CC-BY-SA-2.5 GPL-3
 RDEPEND=media-libs/libsdl[sound,video,opengl,X] media-libs/sdl-image[png] media-libs/sdl-mixer[wav] virtual/opengl
 SLOT=0
 SRC_URI=mirror://sourceforge/fishsupper/fishsupper-0.1.6.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ad7b9f2b13c17a7e5ccd699e03c5a44d

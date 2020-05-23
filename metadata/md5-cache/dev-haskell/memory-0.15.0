@@ -10,5 +10,5 @@ RDEPEND=>=dev-haskell/basement-0.0.7:=[profile?] >=dev-lang/ghc-8.0.1:=
 RESTRICT=!test? ( test )
 SLOT=0/0.15.0
 SRC_URI=https://hackage.haskell.org/package/memory-0.15.0/memory-0.15.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	aad3bcc521d54cb9a8e23a78ff7b48b7	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	aad3bcc521d54cb9a8e23a78ff7b48b7	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=77a9e58de8acf67f9eba7ce28249fc93

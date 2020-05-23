@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=games-emulation/mupen64plus-core-2.5:0=[gles2-only=] media-libs/libpng:0= media-libs/libsdl2:0=[video] sys-libs/zlib:0= virtual/opengl:0= gles2-only? ( media-libs/libsdl2:0[gles2] ) hires? ( dev-libs/boost:0= )
 SLOT=0
 SRC_URI=https://github.com/mupen64plus/mupen64plus-video-glide64mk2/releases/download/2.5.9/mupen64plus-video-glide64mk2-src-2.5.9.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=85bc27a1130c0612e497cb75fd665657

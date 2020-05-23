@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/gmp:0=
 SLOT=0
 SRC_URI=http://point-at-infinity.org/ssss/ssss-0.5.tar.gz
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9ecb8a5301ab9a62c9a0de42181e0e99

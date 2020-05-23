@@ -11,5 +11,5 @@ RDEPEND=ncurses? ( sys-libs/ncurses:0=[unicode?] sound? ( media-libs/libao media
 REQUIRED_USE=sound? ( || ( ncurses sdl ) )
 SLOT=0
 SRC_URI=https://gitlab.com/DavidGriffith/frotz/-/archive/2.50b2/frotz-2.50b2.tar.bz2
-_eclasses_=multilib	318e8ae683e57fd3ccd0d31a769d8ee8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=be6559e32c116d48613905df41072d33
