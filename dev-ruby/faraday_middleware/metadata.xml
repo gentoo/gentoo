@@ -9,9 +9,6 @@
 		<email>ruby@gentoo.org</email>
 		<name>Gentoo Ruby Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		A collection of useful Faraday middleware.
-	</longdescription>
 	<use>
 		<flag name="parsexml">Include FaradayMiddleware::ParseXml</flag>
 		<flag name="oauth">Include FaradayMiddleware::OAuth</flag>
