@@ -22,7 +22,7 @@
 # Only EAPI >=6 is supported
 
 case ${EAPI:-0} in
-	6) inherit cmake-utils ;;
+	6) inherit eapi7-ver cmake-utils ;;
 	7) inherit cmake ;;
 	*) die "EAPI not supported, bug ebuild mantainer" ;;
 esac
@@ -32,7 +32,7 @@ if [[ ${PV} == 9999 ]]; then
 
 	inherit git-r3
 else
-	SRC_URI="https://dist.leechcraft.org/LeechCraft/${PV}/leechcraft-${PV}.tar.xz"
+	SRC_URI="https://dist.leechcraft.org/LeechCraft/gentoo/leechcraft-${PV}.tar.xz"
 	S="${WORKDIR}/leechcraft-${PV}"
 fi
 
