@@ -561,11 +561,6 @@ www-client/ripe-atlas-cousteau
 media-video/subliminal
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Last release in 2014.
-# Removal in 30 days.  Bug #718402.
-media-sound/lyvi
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.  Has a few bugs reported,
 # including indication of poor ebuild state.
 # Removal in 30 days.  Bug #718398.
