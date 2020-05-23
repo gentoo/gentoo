@@ -33,7 +33,10 @@ DEPEND="${BDEPEND}
 RDEPEND="${CDEPEND}"
 
 # Respect {C,LD}FLAGS.
-PATCHES=( "${FILESDIR}/galera-4.1-strip-extra-cflags.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.1-strip-extra-cflags.patch
+	"${FILESDIR}"/${PN}-26.4.4-respect-AR.patch
+)
 
 src_prepare() {
 	default
@@ -48,7 +51,7 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC CXX
+	tc-export AR CC CXX
 	# Uses hardware specific code that seems to depend on SSE4.2
 	if use cpu_flags_x86_sse4_2 ; then
 		append-cflags -msse4.2
