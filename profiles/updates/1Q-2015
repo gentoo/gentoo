@@ -1,5 +1,3 @@
-slotmove sci-libs/Fiona 1.1 0
-slotmove sci-libs/Fiona 1.4 0
 slotmove sys-firmware/iwl3160-ucode 0 7
 slotmove sys-firmware/iwl3160-ucode 1 8
 slotmove sys-firmware/iwl3160-ucode 2 9
