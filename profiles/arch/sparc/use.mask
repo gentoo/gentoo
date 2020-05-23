@@ -161,7 +161,6 @@ zmq
 
 # No hardware to test
 ifp
-chipcard
 hbci
 lm-sensors
 openct
