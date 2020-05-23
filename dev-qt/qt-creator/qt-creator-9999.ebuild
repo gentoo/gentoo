@@ -45,6 +45,11 @@ REQUIRED_USE="
 # minimum Qt version required
 QT_PV="5.12.3:5"
 
+BDEPEND="
+	>=dev-qt/linguist-tools-${QT_PV}
+	virtual/pkgconfig
+	doc? ( >=dev-qt/qdoc-${QT_PV} )
+"
 CDEPEND="
 	>=dev-qt/qtconcurrent-${QT_PV}
 	>=dev-qt/qtcore-${QT_PV}
@@ -71,9 +76,6 @@ CDEPEND="
 	systemd? ( sys-apps/systemd:= )
 "
 DEPEND="${CDEPEND}
-	>=dev-qt/linguist-tools-${QT_PV}
-	virtual/pkgconfig
-	doc? ( >=dev-qt/qdoc-${QT_PV} )
 	test? (
 		>=dev-qt/qtdeclarative-${QT_PV}[localstorage]
 		>=dev-qt/qtquickcontrols2-${QT_PV}
