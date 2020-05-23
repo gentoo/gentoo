@@ -582,11 +582,6 @@ media-gfx/qrencode-python
 # Removal in 30 days.  Bug #718308.
 dev-vcs/git-imerge
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck at Python 3.6.  Many versions behind upstream.
-# Removal in 30 days.  Bug #718300.
-dev-vcs/ghp-import
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
 # Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
 # requires agreement to restrictive license
