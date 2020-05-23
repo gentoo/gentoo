@@ -14,6 +14,14 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
 IUSE="+installkernel static"
 
+PDEPEND="
+	installkernel? (
+		|| (
+			sys-kernel/installkernel-gentoo
+			sys-kernel/installkernel-systemd-boot
+		)
+	)"
+
 PATCHES=( "${FILESDIR}"/${PN}-3.4.2-no-bs-namespace.patch )
 
 src_configure() {
@@ -24,16 +32,12 @@ src_configure() {
 src_install() {
 	into /
 	dobin tempfile run-parts
-	if use installkernel ; then
-		dosbin installkernel
-	fi
 
 	into /usr
+	dobin ischroot
 	dosbin savelog
 
-	doman tempfile.1 run-parts.8 savelog.8
-	use installkernel && doman installkernel.8
+	doman ischroot.1 tempfile.1 run-parts.8 savelog.8
 	cd debian || die
 	dodoc changelog control
-	keepdir /etc/kernel/postinst.d
 }
