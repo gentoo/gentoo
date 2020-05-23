@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="ayatana +introspection +gcr +modemmanager selinux teamd"
+IUSE="appindicator +introspection +gcr +modemmanager selinux teamd"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~sparc x86"
 
 RDEPEND="
@@ -30,7 +30,7 @@ RDEPEND="
 	>=net-misc/networkmanager-1.7:=[introspection?,modemmanager?,teamd?]
 	net-misc/mobile-broadband-provider-info
 
-	ayatana? (
+	appindicator? (
 		dev-libs/libappindicator:3
 		>=dev-libs/libdbusmenu-16.04.0 )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
@@ -54,7 +54,7 @@ PATCHES=(
 
 src_configure() {
 	local myconf=(
-		--with-appindicator=$(usex ayatana ubuntu no)
+		--with-appindicator=$(usex appindicator ubuntu no)
 		--without-libnm-gtk
 		--without-libnma-gtk4
 		--disable-lto
