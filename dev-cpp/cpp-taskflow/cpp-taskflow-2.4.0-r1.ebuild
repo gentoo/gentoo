@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit cmake-utils
+
 DESCRIPTION="Modern C++ Parallel Task Programming"
 HOMEPAGE="https://cpp-taskflow.github.io"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -15,11 +17,15 @@ IUSE="doc"
 RDEPEND=""
 DEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${P}-do_not_compile_examples.patch
+	"${FILESDIR}"/${P}-fix_installation_path.patch
+)
+
 HTML_DOCS=( docs/. )
 
 src_install() {
-	insinto /usr/include
-	doins -r taskflow
+	cmake-utils_src_install
 
 	if $(use doc); then
 		einstalldocs
