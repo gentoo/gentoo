@@ -481,12 +481,6 @@ dev-python/django-setuptest
 # Removal in 30 days.  Bug #718724.
 dev-python/django-durationfield
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-20)
-# Stuck on Python 3.6.  Last release in 2012.  No revdeps.
-# dev-python/lxml is the recommended XML handling package.
-# Removal in 30 days.  Bug #718646.
-dev-python/dexml
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
