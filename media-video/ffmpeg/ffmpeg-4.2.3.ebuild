@@ -30,7 +30,10 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 else # Release
-	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.bz2"
+	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.bz2
+		https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-4.2.2-ppc64-altivec.patch.gz
+		https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-4.2.2-ppc64-gcc.patch.gz
+	"
 fi
 FFMPEG_REVISION="${PV#*_p}"
 
@@ -127,8 +130,7 @@ ARM_CPU_REQUIRED_USE="
 	cpu_flags_arm_v6? ( cpu_flags_arm_thumb )
 "
 MIPS_CPU_FEATURES=( mipsdspr1:mipsdsp mipsdspr2 mipsfpu )
-PPC_CPU_FEATURES=( cpu_flags_ppc_altivec:altivec cpu_flags_ppc_vsx:vsx )
-PPC_CPU_REQUIRED_USE="cpu_flags_ppc_vsx? ( cpu_flags_ppc_altivec )"
+PPC_CPU_FEATURES=( altivec )
 X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
 X86_CPU_FEATURES=( ${X86_CPU_FEATURES_RAW[@]/#/cpu_flags_x86_} )
 X86_CPU_REQUIRED_USE="
@@ -160,7 +162,6 @@ IUSE="${IUSE}
 
 CPU_REQUIRED_USE="
 	${ARM_CPU_REQUIRED_USE}
-	${PPC_CPU_REQUIRED_USE}
 	${X86_CPU_REQUIRED_USE}
 "
 
@@ -320,6 +321,9 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${WORKDIR}/${PN}"-4.2.2-ppc64-gcc.patch     # both ppc patches from
+	"${WORKDIR}/${PN}"-4.2.2-ppc64-altivec.patch # https://trac.ffmpeg.org/ticket/7861
+
 )
 
 MULTILIB_WRAPPED_HEADERS=(
