@@ -193,4 +193,9 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc -r "${S}/../doc/"*
+
+	# we don't install *.a files for all variants,
+	# so just delete these files instead of pretending
+	# real USE=static-libs support
+	find "${ED}" -name "*.a" -delete || die
 }
