@@ -676,15 +676,6 @@ dev-python/invoke
 # Removal in 30 days.  Bug #701820.
 net-misc/ssvnc
 
-# Hans de Graaff <graaff@gentoo.org> (2020-04-13)
-# dev-ruby/libxml is ruby24-only and has known
-# bugs. sci-biology/bioruby depends on this. It looks like there is a
-# new version upstream that may not depend on libxml, but this
-# requires a dedicated maintainer to test and sort out. Masked for
-# removal in 30 days.
-dev-ruby/libxml
-sci-biology/bioruby
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-13)
 # Discontinued by upstream. Superseded by sys-apps/fwupd.
 # Masked for removal in 30 days.
