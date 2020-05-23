@@ -464,12 +464,6 @@ dev-python/flexx
 # Removal in 30 days.  Bug #718822.
 dev-python/filemagic
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-21)
-# Unmaintained.  Stuck on Python 3.6.  Missing tests.  Bad quality
-# package.  No revdeps.
-# Removal in 30 days.  Bug #718744.
-dev-python/django-spurl
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
