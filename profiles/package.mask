@@ -671,11 +671,6 @@ dev-python/invoke
 # Removal in 30 days.  Bug #701820.
 net-misc/ssvnc
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-13)
-# Discontinued by upstream. Superseded by sys-apps/fwupd.
-# Masked for removal in 30 days.
-sys-apps/fwupdate
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-12)
 # In conjunction with Firefox's sandbox, breaks loading of i965 driver.
 # Bug #716574
@@ -690,13 +685,6 @@ dev-tcltk/tcl-mccp
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-02)
 # Introduced new privsep (chroot) feature. Masked for testing.
 >=net-misc/dhcpcd-9.0.0
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2020-03-29)
-# Old releases gone from upstream, new releases use overly restrictive
-# license. For ancient scripts and symbols, use media-fonts/quivira instead.
-# For emojis and pictographs, use media-fonts/noto-emoji instead.
-# Masked for removal in 30 days, bug #715226
-media-fonts/symbola
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-29)
 # Unmaintained, seriously outdated, vulnerable.  Multiple bugs reported.
@@ -743,13 +731,6 @@ dev-java/icedtea-web
 net-misc/gns3-converter
 net-misc/gns3-gui
 net-misc/gns3-server
-
-# Jonas Stein <jstein@gentoo.org> (2020-03-21)
-# Package masked for removal. Broken SRC_URI,
-# upstream is dead.
-# Bug #458662
-# Removal after 2020-05-01
-games-misc/OilWar
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
