@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,9 +14,9 @@ LICENSE="GPL-3 LGPL-3
 	branding? ( CC-BY-3.0 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 x86"
-IUSE="ayatana branding"
+IUSE="appindicator branding"
 
-COMMON_DEPEND="ayatana? ( dev-libs/libindicator:3 )
+COMMON_DEPEND="appindicator? ( dev-libs/libindicator:3 )
 	x11-libs/gtk+:3
 	>=x11-misc/lightdm-1.2.2"
 
@@ -56,7 +56,7 @@ src_configure() {
 	local myeconfargs=(
 		--enable-kill-on-sigterm
 		--enable-at-spi-command="${EPREFIX}/usr/libexec/at-spi-bus-launcher --launch-immediately"
-		$(use_enable ayatana libindicator)
+		$(use_enable appindicator libindicator)
 	)
 	econf "${myeconfargs[@]}"
 }
