@@ -476,11 +476,6 @@ dev-python/django-spurl
 # Removal in 30 days.  Bug #718734.
 dev-python/django-setuptest
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-21)
-# Django has a native DurationField since 1.8.  No revdeps.
-# Removal in 30 days.  Bug #718724.
-dev-python/django-durationfield
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
