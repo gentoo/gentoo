@@ -104,3 +104,8 @@ src_configure() {
 	PYTHON3="${PYTHON}" \
 	econf "${myeconfargs[@]}"
 }
+
+src_install() {
+	default
+	python_optimize
+}
