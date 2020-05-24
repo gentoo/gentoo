@@ -1,0 +1,53 @@
+From 94cc338b0c5b97702e994ec628d684ee2c114547 Mon Sep 17 00:00:00 2001
+From: Tadeusz Struk <tadeusz.struk@intel.com>
+Date: Tue, 24 Mar 2020 16:42:14 -0700
+Subject: [PATCH] configure.ac: wrap PKG_CHECK_MODULES in braces
+
+PKG_CHECK_MODULES needs to be wrapped inside squere
+brackets when inside AS_IF, or it spit out errors:
+
+./configure: line 13054: JSONC_CFLAGS: command not found
+./configure: line 13055: C: command not found
+./configure: line 13056: JSONC_LIBS: command not found
+./configure: line 13155: CURL_CFLAGS: command not found
+./configure: line 13156: CURL_LIBS: command not found
+
+Signed-off-by: Tadeusz Struk <tadeusz.struk@intel.com>
+---
+ Makefile.am  | 2 +-
+ configure.ac | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 85683f9b..9144a5ad 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -467,7 +467,7 @@ src_tss2_fapi_libtss2_fapi_la_LIBADD  = $(libtss2_sys) $(libtss2_mu) $(libtss2_e
+ 
+ src_tss2_fapi_libtss2_fapi_la_SOURCES = $(TSS2_FAPI_SRC)
+ src_tss2_fapi_libtss2_fapi_la_CFLAGS  = $(AM_CFLAGS) -I$(srcdir)/src/tss2-fapi
+-src_tss2_fapi_libtss2_fapi_la_LDFLAGS = $(AM_LDFLAGS) $(LIBCRYPTO_LIBS) $(JSON_C_LIBS) $(CURL_LIBS)
++src_tss2_fapi_libtss2_fapi_la_LDFLAGS = $(AM_LDFLAGS) $(LIBCRYPTO_LIBS) $(JSONC_LIBS) $(CURL_LIBS)
+ if HAVE_LD_VERSION_SCRIPT
+ src_tss2_fapi_libtss2_fapi_la_LDFLAGS += -Wl,--version-script=$(srcdir)/lib/tss2-fapi.map
+ endif # HAVE_LD_VERSION_SCRIPT
+diff --git a/configure.ac b/configure.ac
+index a202d4a6..2edf609e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -165,10 +165,10 @@ AS_IF([test "x$enable_fapi" != xno -a "x$with_crypto" != "xossl"],
+     AC_MSG_ERROR([FAPI has to be compiled with OpenSSL]))
+ 
+ AS_IF([test "x$enable_fapi" = xyes ],
+-    PKG_CHECK_MODULES([JSON_C], [json-c]))
++      [PKG_CHECK_MODULES([JSONC], [json-c])])
+ 
+ AS_IF([test "x$enable_fapi" = xyes ],
+-    PKG_CHECK_MODULES([CURL], [libcurl]))
++      [PKG_CHECK_MODULES([CURL], [libcurl])])
+ 
+ AC_ARG_WITH([tctidefaultmodule],
+             [AS_HELP_STRING([--with-tctidefaultmodule],
+-- 
+2.26.2
+
