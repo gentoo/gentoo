@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gimp.org/"
 SRC_URI="mirror://gimp/v2.10/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
-KEYWORDS="amd64 arm64 ~ia64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~hppa ~ia64 ~ppc64 x86"
 
 IUSE="aalib alsa altivec aqua debug doc gnome heif jpeg2k mng openexr postscript python udev unwind vector-icons webp wmf xpm cpu_flags_x86_mmx cpu_flags_x86_sse"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
