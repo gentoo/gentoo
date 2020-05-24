@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug natevents snmp"
+IUSE="debug dot1q natevents snmp"
 
 RDEPEND="
 	net-firewall/iptables:0=
@@ -33,8 +33,9 @@ PATCHES=(
 pkg_setup() {
 	linux-info_pkg_setup
 
-	local CONFIG_CHECK="BRIDGE_NETFILTER ~IP_NF_IPTABLES VLAN_8021Q"
+	local CONFIG_CHECK="BRIDGE_NETFILTER ~IP_NF_IPTABLES"
 	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
+	use dot1q && CONFIG_CHECK+=" VLAN_8021Q"
 	if use natevents; then
 		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
 		if kernel_is lt 5 2; then
@@ -79,13 +80,13 @@ src_configure() {
 		--enable-aggregation \
 		--enable-direction \
 		--enable-macaddress \
-		--enable-vlan \
 		--ipt-lib="${IPT_LIB}" \
 		--ipt-src="/usr/" \
 		--ipt-ver="${IPT_VERSION}" \
 		--kdir="${KV_DIR}" \
 		--kver="${KV_FULL}" \
 		$(use debug && echo '--enable-debugfs') \
+		$(use dot1q && echo '--enable-vlan') \
 		$(use natevents && echo '--enable-natevents') \
 		$(use snmp && echo '--enable-snmp-rules' || echo '--disable-snmp-agent')
 }
@@ -98,6 +99,7 @@ src_install() {
 	linux-mod_src_install
 	exeinto "${IPT_LIB}"
 	doexe libipt_NETFLOW.so
+	doexe libip6t_NETFLOW.so
 	use snmp && emake DESTDIR="${D}" SNMPTGSO="/usr/$(get_libdir)/snmp/dlmod/snmp_NETFLOW.so" sinstall
 	doheader ipt_NETFLOW.h
 	dodoc README*

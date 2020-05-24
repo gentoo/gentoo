@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="natevents">Netflow NAT translation events (NEL) support</flag>
+		<flag name="dot1q">Enable tagged VLAN support</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">ipt-netflow</remote-id>
