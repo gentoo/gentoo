@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
-HOMEPAGE="http://x265.org/"
+HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
