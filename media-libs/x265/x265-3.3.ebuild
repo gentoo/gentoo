@@ -19,7 +19,7 @@ HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/188"
-IUSE="+asm +10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_altivec numa pic power8 test"
+IUSE="+asm +10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_altivec numa power8 test"
 
 # Test suite requires assembly support and is known to be broken
 RESTRICT="test"
@@ -122,11 +122,9 @@ x265_variant_src_configure() {
 }
 
 multilib_src_configure() {
-	append-cflags -fPIC
-	append-cxxflags -fPIC
-
 	local myabicmakeargs=(
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
+		-DENABLE_PIC=ON
 		-DENABLE_LIBNUMA=$(usex numa ON OFF)
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
@@ -134,9 +132,9 @@ multilib_src_configure() {
 	local supports_asm=yes
 
 	if [[ ${ABI} = x86 ]] ; then
-		if use asm && use pic ; then
+		if use asm ; then
 			# Bug #528202
-			ewarn "PIC has been requested but x86 asm is not PIC-safe, disabling it."
+			ewarn "x86 asm is not PIC-safe, disabling it."
 			supports_asm=no
 		fi
 	elif [[ ${ABI} = x32 ]] ; then
@@ -146,12 +144,10 @@ multilib_src_configure() {
 			supports_asm=no
 		fi
 	elif [[ ${ABI} = arm ]] ; then
-		if use asm && use pic ; then
-			ewarn "PIC has been requested but arm neon asm is not PIC-safe, disabling it."
-			supports_asm=no
-		elif use asm && use cpu_flags_arm_neon ; then
+		if use asm && use cpu_flags_arm_neon ; then
 			supports_asm=yes
 		elif use asm ; then
+			ewarn "arm asm is not PIC-safe, disabling it."
 			supports_asm=no
 		fi
 	elif [[ ${ABI} = ppc* ]] ; then
