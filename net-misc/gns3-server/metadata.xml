@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>onigino@protonmail.com</email>
-		<name>Gino McCarty</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>bman@gentoo.org</email>
+		<name>Aaron Bauman</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">gns-3</remote-id>
