@@ -1,0 +1,181 @@
+From 9dc3ca2c1c9fbb47e731551c6432df144f725261 Mon Sep 17 00:00:00 2001
+From: Yevhenii Kolesnikov <yevhenii.kolesnikov@globallogic.com>
+Date: Thu, 21 May 2020 18:58:47 +0300
+Subject: [PATCH] compilers: add fetching of define list for clang
+
+Simmilar to gcc, the list of pre-processor defines can be fetched with
+`-dM -E` option. The way cpu_family is determined on linux relies on
+this list.
+
+Fixes incorrect value of cpu_family on linux, when crosscompiling:
+
+```
+CC="clang -m32" meson ./build
+```
+
+Signed-off-by: Yevhenii Kolesnikov <yevhenii.kolesnikov@globallogic.com>
+Co-authored-by: Dylan Baker <dylan@pnwbakers.com>
+---
+ mesonbuild/compilers/c.py            |  5 +++--
+ mesonbuild/compilers/cpp.py          |  5 +++--
+ mesonbuild/compilers/fortran.py      |  2 +-
+ mesonbuild/compilers/mixins/clang.py |  9 ++++++++-
+ mesonbuild/compilers/objc.py         |  2 +-
+ mesonbuild/compilers/objcpp.py       |  2 +-
+ mesonbuild/environment.py            | 26 +++++++++++++++++++++++++-
+ 7 files changed, 42 insertions(+), 9 deletions(-)
+
+diff --git a/mesonbuild/compilers/c.py b/mesonbuild/compilers/c.py
+index 1bc9e84998..aac99b4269 100644
+--- a/mesonbuild/compilers/c.py
++++ b/mesonbuild/compilers/c.py
+@@ -86,9 +86,10 @@ class ClangCCompiler(ClangCompiler, CCompiler):
+     _C18_VERSION = '>=8.0.0'
+ 
+     def __init__(self, exelist, version, for_machine: MachineChoice,
+-                 is_cross, info: 'MachineInfo', exe_wrapper=None, **kwargs):
++                 is_cross, info: 'MachineInfo', exe_wrapper=None,
++                 defines: T.Optional[T.List[str]] = None, **kwargs):
+         CCompiler.__init__(self, exelist, version, for_machine, is_cross, info, exe_wrapper, **kwargs)
+-        ClangCompiler.__init__(self)
++        ClangCompiler.__init__(self, defines)
+         default_warn_args = ['-Wall', '-Winvalid-pch']
+         self.warn_args = {'0': [],
+                           '1': default_warn_args,
+diff --git a/mesonbuild/compilers/cpp.py b/mesonbuild/compilers/cpp.py
+index f4bcfa9f89..478a68c13c 100644
+--- a/mesonbuild/compilers/cpp.py
++++ b/mesonbuild/compilers/cpp.py
+@@ -155,10 +155,11 @@ def _find_best_cpp_std(self, cpp_std):
+ 
+ class ClangCPPCompiler(ClangCompiler, CPPCompiler):
+     def __init__(self, exelist, version, for_machine: MachineChoice,
+-                 is_cross, info: 'MachineInfo', exe_wrapper=None, **kwargs):
++                 is_cross, info: 'MachineInfo', exe_wrapper=None,
++                 defines : T.Optional[T.List[str]] = None, **kwargs):
+         CPPCompiler.__init__(self, exelist, version, for_machine, is_cross,
+                              info, exe_wrapper, **kwargs)
+-        ClangCompiler.__init__(self)
++        ClangCompiler.__init__(self, defines)
+         default_warn_args = ['-Wall', '-Winvalid-pch', '-Wnon-virtual-dtor']
+         self.warn_args = {'0': [],
+                           '1': default_warn_args,
+diff --git a/mesonbuild/compilers/fortran.py b/mesonbuild/compilers/fortran.py
+index c155b5b4f3..af83c0e564 100644
+--- a/mesonbuild/compilers/fortran.py
++++ b/mesonbuild/compilers/fortran.py
+@@ -424,7 +424,7 @@ def __init__(self, exelist, version, for_machine: MachineChoice,
+                  **kwargs):
+         FortranCompiler.__init__(self, exelist, version, for_machine,
+                                  is_cross, info, exe_wrapper, **kwargs)
+-        ClangCompiler.__init__(self)
++        ClangCompiler.__init__(self, [])
+         self.id = 'flang'
+         default_warn_args = ['-Minform=inform']
+         self.warn_args = {'0': [],
+diff --git a/mesonbuild/compilers/mixins/clang.py b/mesonbuild/compilers/mixins/clang.py
+index 1c0ee452f4..0ee10ad5d5 100644
+--- a/mesonbuild/compilers/mixins/clang.py
++++ b/mesonbuild/compilers/mixins/clang.py
+@@ -42,9 +42,10 @@
+ }  # type: T.Dict[str, T.List[str]]
+ 
+ class ClangCompiler(GnuLikeCompiler):
+-    def __init__(self):
++    def __init__(self, defines: T.Optional[T.Dict[str, str]]):
+         super().__init__()
+         self.id = 'clang'
++        self.defines = defines or {}
+         self.base_options.append('b_colorout')
+         # TODO: this really should be part of the linker base_options, but
+         # linkers don't have base_options.
+@@ -56,6 +57,12 @@ def __init__(self):
+     def get_colorout_args(self, colortype: str) -> T.List[str]:
+         return clang_color_args[colortype][:]
+ 
++    def has_builtin_define(self, define: str) -> bool:
++        return define in self.defines
++
++    def get_builtin_define(self, define: str) -> T.Optional[str]:
++        return self.defines.get(define)
++
+     def get_optimization_args(self, optimization_level: str) -> T.List[str]:
+         return clang_optimization_args[optimization_level]
+ 
+diff --git a/mesonbuild/compilers/objc.py b/mesonbuild/compilers/objc.py
+index 52d258dcdb..d351c8826a 100644
+--- a/mesonbuild/compilers/objc.py
++++ b/mesonbuild/compilers/objc.py
+@@ -86,7 +86,7 @@ def __init__(self, exelist, version, for_machine: MachineChoice,
+                  **kwargs):
+         ObjCCompiler.__init__(self, exelist, version, for_machine, is_cross,
+                               info, exe_wrapper, **kwargs)
+-        ClangCompiler.__init__(self)
++        ClangCompiler.__init__(self, [])
+         default_warn_args = ['-Wall', '-Winvalid-pch']
+         self.warn_args = {'0': [],
+                           '1': default_warn_args,
+diff --git a/mesonbuild/compilers/objcpp.py b/mesonbuild/compilers/objcpp.py
+index c8b422b35d..10555b4551 100644
+--- a/mesonbuild/compilers/objcpp.py
++++ b/mesonbuild/compilers/objcpp.py
+@@ -84,7 +84,7 @@ def __init__(self, exelist, version, for_machine: MachineChoice,
+                  is_cross, info: 'MachineInfo', exe_wrapper=None,
+                  **kwargs):
+         ObjCPPCompiler.__init__(self, exelist, version, for_machine, is_cross, info, exe_wrapper, **kwargs)
+-        ClangCompiler.__init__(self)
++        ClangCompiler.__init__(self, [])
+         default_warn_args = ['-Wall', '-Winvalid-pch', '-Wnon-virtual-dtor']
+         self.warn_args = {'0': [],
+                           '1': default_warn_args,
+diff --git a/mesonbuild/environment.py b/mesonbuild/environment.py
+index 8fad6288b1..cb6ae7d514 100644
+--- a/mesonbuild/environment.py
++++ b/mesonbuild/environment.py
+@@ -726,6 +726,28 @@ def get_lcc_version_from_defines(defines):
+         minor = defines.get('__LCC_MINOR__', '0')
+         return dot.join((generation, major, minor))
+ 
++    @staticmethod
++    def get_clang_compiler_defines(compiler):
++        """
++        Get the list of Clang pre-processor defines
++        """
++        args = compiler + ['-E', '-dM', '-']
++        p, output, error = Popen_safe(args, write='', stdin=subprocess.PIPE)
++        if p.returncode != 0:
++            raise EnvironmentException('Unable to get clang pre-processor defines:\n' + output + error)
++        defines = {}
++        for line in output.split('\n'):
++            if not line:
++                continue
++            d, *rest = line.split(' ', 2)
++            if d != '#define':
++                continue
++            if len(rest) == 1:
++                defines[rest] = True
++            if len(rest) == 2:
++                defines[rest[0]] = rest[1]
++        return defines
++
+     def _get_compilers(self, lang, for_machine):
+         '''
+         The list of compilers is detected in the exact same way for
+@@ -1043,6 +1065,8 @@ def sanitize(p):
+             if 'clang' in out:
+                 linker = None
+ 
++                defines = self.get_clang_compiler_defines(compiler)
++
+                 # Even if the for_machine is darwin, we could be using vanilla
+                 # clang.
+                 if 'Apple' in out:
+@@ -1063,7 +1087,7 @@ def sanitize(p):
+ 
+                 return cls(
+                     ccache + compiler, version, for_machine, is_cross, info,
+-                    exe_wrap, full_version=full_version, linker=linker)
++                    exe_wrap, defines, full_version=full_version, linker=linker)
+ 
+             if 'Intel(R) C++ Intel(R)' in err:
+                 version = search_version(err)
