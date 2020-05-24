@@ -116,6 +116,7 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.93-localscan_dlopen.patch
 	eapply -p2 "${FILESDIR}"/exim-4.93-radius.patch # 720364
 	eapply     "${FILESDIR}"/exim-4.93-CVE-2020-12783.patch # 722484
+	eapply     "${FILESDIR}"/exim-4.93-fno-common.patch # 723430
 
 	if use maildir ; then
 		eapply "${FILESDIR}"/exim-4.20-maildir.patch
