@@ -456,9 +456,21 @@ multilib_toolchain_setup() {
 
 	export ABI=$1
 
+	local save_restore_variables=(
+		CBUILD
+		CHOST
+		CC
+		CXX
+		F77
+		FC
+		LD
+		PKG_CONFIG_LIBDIR
+		PKG_CONFIG_PATH
+	)
+
 	# First restore any saved state we have laying around.
 	if [[ ${_DEFAULT_ABI_SAVED} == "true" ]] ; then
-		for v in CHOST CBUILD CC CXX F77 FC LD PKG_CONFIG_{LIBDIR,PATH} ; do
+		for v in "${save_restore_variables[@]}" ; do
 			vv="_abi_saved_${v}"
 			[[ ${!vv+set} == "set" ]] && export ${v}="${!vv}" || unset ${v}
 			unset ${vv}
@@ -468,7 +480,7 @@ multilib_toolchain_setup() {
 
 	if [[ ${ABI} != ${DEFAULT_ABI} ]] ; then
 		# Back that multilib-ass up so we can restore it later
-		for v in CHOST CBUILD CC CXX F77 FC LD PKG_CONFIG_{LIBDIR,PATH} ; do
+		for v in "${save_restore_variables[@]}" ; do
 			vv="_abi_saved_${v}"
 			[[ ${!v+set} == "set" ]] && export ${vv}="${!v}" || unset ${vv}
 		done
@@ -481,6 +493,8 @@ multilib_toolchain_setup() {
 
 		# Set the CHOST native first so that we pick up the native
 		# toolchain and not a cross-compiler by accident #202811.
+		#
+		# Make sure ${save_restore_variables[@]} list matches below.
 		export CHOST=$(get_abi_CHOST ${DEFAULT_ABI})
 		export AR="$(tc-getAR)" # Avoid 'ar', use '${CHOST}-ar'
 		export CC="$(tc-getCC) $(get_abi_CFLAGS)"
