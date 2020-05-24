@@ -4413,6 +4413,7 @@ media-libs/x264:opencl - Add support for OpenCL.
 media-libs/x264:pic - disable optimized assembly code that is not PIC friendly
 media-libs/x265:10bit - Add support for producing 10bits HEVC.
 media-libs/x265:12bit - Add support for producing 12bits HEVC.
+media-libs/x265:asm - Enable x86_64 assembly optimizations.
 media-libs/x265:numa - Build with support for NUMA nodes.
 media-libs/x265:pic - Disable optimized assembly code that is not PIC friendly
 media-libs/x265:power8 - Enable support for Power 8 assembly optimizations.

@@ -1,4 +1,4 @@
-BDEPEND=dev-lang/go doc? ( app-text/ronn ) >=dev-lang/go-1.10 >=dev-lang/go-1.12 app-arch/unzip
+BDEPEND=doc? ( app-text/ronn ) >=dev-lang/go-1.12 app-arch/unzip >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst test unpack
 DESCRIPTION=Command line extension and specification for managing large files with git
 EAPI=7
@@ -7,7 +7,7 @@ IUSE=doc test
 LICENSE=Apache-2.0 BSD BSD-2 BSD-4 ISC MIT
 PROPERTIES=live
 RDEPEND=dev-vcs/git
-RESTRICT=!test? ( test )
+RESTRICT=strip !test? ( test )
 SLOT=0
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	go-module	cca12a5688562f107c14ffcf28195dd7	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs	0e8809b1209227170eeeb5af907dbcd0
-_md5_=325948a406b7314dfe295b1e93e357c5
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	cca12a5688562f107c14ffcf28195dd7
+_md5_=7b4ed91e78650c01a2fa2938b8e9ab68

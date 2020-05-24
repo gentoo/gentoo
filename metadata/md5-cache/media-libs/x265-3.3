@@ -1,0 +1,15 @@
+BDEPEND=asm? ( abi_x86_32? ( >=dev-lang/nasm-2.13 ) abi_x86_64? ( >=dev-lang/nasm-2.13 ) ) dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=numa? ( >=sys-process/numactl-2.0.10-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
+DESCRIPTION=Library for encoding video streams into the H.265/HEVC format
+EAPI=7
+HOMEPAGE=http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home
+IUSE=+asm +10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_altivec numa power8 test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=numa? ( >=sys-process/numactl-2.0.10-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
+RESTRICT=test
+SLOT=0/188
+SRC_URI=https://bitbucket.org/multicoreware/x265/downloads/x265_3.3.tar.gz
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multibuild	40fe59465edacd730c644ec2bc197809	multilib	797cda3549becfe50afdfa35192ca137	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=fb155fad895ffa52d9d42498dc101ff6
