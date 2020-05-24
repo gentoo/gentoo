@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,4 +26,5 @@ ruby_add_rdepend ">=dev-ruby/net-ssh-4.0.0:*"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile test/net/ssh/gateway_test.rb || die
+	sed -i -e 's:mocha/mini_test:mocha/minitest:' test/net/ssh/gateway_test.rb || die
 }
