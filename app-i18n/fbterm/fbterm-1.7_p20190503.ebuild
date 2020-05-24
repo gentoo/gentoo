@@ -16,12 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="gpm video_cards_vesa"
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="media-libs/fontconfig
 	media-libs/freetype:2
 	>=sys-libs/ncurses-6.1
 	gpm? ( sys-libs/gpm )
 	video_cards_vesa? ( dev-libs/libx86 )"
-BDEPEND="virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 FILECAPS=(
 	cap_sys_tty_config+ep usr/bin/${PN}
