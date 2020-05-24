@@ -13776,7 +13776,7 @@ media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially suited for stop motion animation
-media-video/gaupol 1.6 1.7 1.8: A subtitle editor for text-based subtitles
+media-video/gaupol 1.7 1.8-r1: A subtitle editor for text-based subtitles
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
 media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
 media-video/gpac 0.7.1-r1 9999: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C

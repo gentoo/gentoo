@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig nls? ( sys-devel/gettext ) plasma? ( kde-frameworks/extra-cmake-modules:5 ) dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install nofetch prepare test unpack
-DEPEND=gtk? ( x11-libs/gtk+:2 ) plasma? ( dev-qt/qtprintsupport:5 kde-frameworks/frameworkintegration:5 kde-frameworks/karchive:5 kde-frameworks/kcompletion:5 kde-frameworks/kconfig:5 kde-frameworks/kconfigwidgets:5 kde-frameworks/kcoreaddons:5 kde-frameworks/kdelibs4support:5 kde-frameworks/kguiaddons:5 kde-frameworks/ki18n:5 kde-frameworks/kiconthemes:5 kde-frameworks/kio:5 kde-frameworks/kwidgetsaddons:5 kde-frameworks/kwindowsystem:5 kde-frameworks/kxmlgui:5 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 X? ( dev-qt/qtx11extras:5 ) ) X? ( x11-libs/libX11 x11-libs/libxcb )
+DEPEND=gtk? ( x11-libs/gtk+:2 ) plasma? ( dev-qt/qtprintsupport:5 kde-frameworks/frameworkintegration:5 kde-frameworks/karchive:5 kde-frameworks/kcompletion:5 kde-frameworks/kconfig:5 kde-frameworks/kconfigwidgets:5 kde-frameworks/kcoreaddons:5 kde-frameworks/kguiaddons:5 kde-frameworks/ki18n:5 kde-frameworks/kiconthemes:5 kde-frameworks/kio:5 kde-frameworks/kwidgetsaddons:5 kde-frameworks/kwindowsystem:5 kde-frameworks/kxmlgui:5 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 X? ( dev-qt/qtx11extras:5 ) ) X? ( x11-libs/libX11 x11-libs/libxcb )
 DESCRIPTION=Widget styles for Qt and GTK2
 EAPI=7
 HOMEPAGE=https://invent.kde.org/system/qtcurve
 IUSE=gtk nls plasma +qt5 test +X
 LICENSE=LGPL-2+
 PROPERTIES=live
-RDEPEND=gtk? ( x11-libs/gtk+:2 ) plasma? ( dev-qt/qtprintsupport:5 kde-frameworks/frameworkintegration:5 kde-frameworks/karchive:5 kde-frameworks/kcompletion:5 kde-frameworks/kconfig:5 kde-frameworks/kconfigwidgets:5 kde-frameworks/kcoreaddons:5 kde-frameworks/kdelibs4support:5 kde-frameworks/kguiaddons:5 kde-frameworks/ki18n:5 kde-frameworks/kiconthemes:5 kde-frameworks/kio:5 kde-frameworks/kwidgetsaddons:5 kde-frameworks/kwindowsystem:5 kde-frameworks/kxmlgui:5 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 X? ( dev-qt/qtx11extras:5 ) ) X? ( x11-libs/libX11 x11-libs/libxcb )
+RDEPEND=gtk? ( x11-libs/gtk+:2 ) plasma? ( dev-qt/qtprintsupport:5 kde-frameworks/frameworkintegration:5 kde-frameworks/karchive:5 kde-frameworks/kcompletion:5 kde-frameworks/kconfig:5 kde-frameworks/kconfigwidgets:5 kde-frameworks/kcoreaddons:5 kde-frameworks/kguiaddons:5 kde-frameworks/ki18n:5 kde-frameworks/kiconthemes:5 kde-frameworks/kio:5 kde-frameworks/kwidgetsaddons:5 kde-frameworks/kwindowsystem:5 kde-frameworks/kxmlgui:5 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 X? ( dev-qt/qtx11extras:5 ) ) X? ( x11-libs/libX11 x11-libs/libxcb )
 REQUIRED_USE=gtk? ( X ) || ( gtk qt5 ) plasma? ( qt5 )
 RESTRICT=test
 SLOT=0
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f1b4c5141b467f04b8eec63836ebbbcd
+_md5_=53b1d9c047b2a7e5798b995ea67b4429
