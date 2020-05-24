@@ -17,21 +17,25 @@ SRC_URI="https://github.com/octokit/octokit.rb/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RUBY_S=octokit.rb-${PV}
 
 ruby_add_rdepend "
 	>=dev-ruby/faraday-0.9
-	>=dev-ruby/sawyer-0.8.0
+	=dev-ruby/sawyer-0.8*
 "
 
-ruby_add_bdepend "test? ( dev-ruby/mime-types
+ruby_add_bdepend "test? (
+	dev-ruby/jwt
+	dev-ruby/mime-types
 	>=dev-ruby/netrc-0.7.7
 	dev-ruby/vcr:3
 	dev-ruby/webmock:3 )"
 
 all_ruby_prepare() {
-	sed -i -e '/if RUBY_ENGINE/,/^end/ s:^:#: ; 1igem "webmock", "~>3.0"' spec/helper.rb || die
+	sed -e '/if RUBY_ENGINE/,/^end/ s:^:#: ; 1igem "webmock", "~>3.0"' \
+		-e '/pry/ s:^:#:' \
+		-i spec/helper.rb || die
 }
