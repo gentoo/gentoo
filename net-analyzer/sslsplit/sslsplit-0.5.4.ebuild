@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,10 +26,11 @@ RDEPEND="
 	dev-libs/libevent[ssl,threads]
 	dev-libs/openssl:0=
 	net-libs/libnet:1.1
+	net-libs/libpcap
 	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
-BDEPEND=""
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-install.patch"
