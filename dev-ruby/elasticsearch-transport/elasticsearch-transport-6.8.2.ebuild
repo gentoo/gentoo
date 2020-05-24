@@ -30,6 +30,7 @@ ruby_add_bdepend "
 		dev-ruby/ansi
 		dev-ruby/mocha:1.0
 		dev-ruby/pry
+		dev-ruby/rspec:3
 		dev-ruby/shoulda-context
 		dev-ruby/curb
 		dev-ruby/patron
