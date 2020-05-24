@@ -38,9 +38,16 @@ nim_use_enable() {
 	use $1 && echo "-d:$2"
 }
 
-src_compile() {
+src_configure() {
 	export XDG_CACHE_HOME=${T}/cache #667182
 	tc-export CC LD
+
+	# Override default CC=gcc.
+	echo "gcc.exe            = \"$(tc-getCC)\"" >> config/nim.cfg || die
+	echo "gcc.linkerexe      = \"$(tc-getCC)\"" >> config/nim.cfg || die
+}
+
+src_compile() {
 
 	_run ./build.sh
 
