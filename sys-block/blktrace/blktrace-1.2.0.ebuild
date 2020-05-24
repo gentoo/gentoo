@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -47,7 +47,7 @@ src_compile() {
 }
 
 src_install() {
-	emake install DESTDIR="${ED}" prefix="/usr" mandir="/usr/share/man"
+	emake install CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${CPPFLAGS}" DESTDIR="${ED}" prefix="/usr" mandir="/usr/share/man"
 	einstalldocs
 	use doc && dodoc doc/blktrace.pdf btt/doc/btt.pdf
 }
