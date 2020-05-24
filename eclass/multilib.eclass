@@ -458,7 +458,7 @@ multilib_toolchain_setup() {
 
 	# First restore any saved state we have laying around.
 	if [[ ${_DEFAULT_ABI_SAVED} == "true" ]] ; then
-		for v in CHOST CBUILD AS CC CXX F77 FC LD PKG_CONFIG_{LIBDIR,PATH} ; do
+		for v in CHOST CBUILD CC CXX F77 FC LD PKG_CONFIG_{LIBDIR,PATH} ; do
 			vv="_abi_saved_${v}"
 			[[ ${!vv+set} == "set" ]] && export ${v}="${!vv}" || unset ${v}
 			unset ${vv}
@@ -466,11 +466,9 @@ multilib_toolchain_setup() {
 		unset _DEFAULT_ABI_SAVED
 	fi
 
-	# We want to avoid the behind-the-back magic of gcc-config as it
-	# screws up ccache and distcc.  See #196243 for more info.
 	if [[ ${ABI} != ${DEFAULT_ABI} ]] ; then
 		# Back that multilib-ass up so we can restore it later
-		for v in CHOST CBUILD AS CC CXX F77 FC LD PKG_CONFIG_{LIBDIR,PATH} ; do
+		for v in CHOST CBUILD CC CXX F77 FC LD PKG_CONFIG_{LIBDIR,PATH} ; do
 			vv="_abi_saved_${v}"
 			[[ ${!v+set} == "set" ]] && export ${vv}="${!v}" || unset ${vv}
 		done
