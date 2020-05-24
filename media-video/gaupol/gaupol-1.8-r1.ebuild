@@ -37,6 +37,8 @@ DEPEND="
 
 DOCS=( AUTHORS.md NEWS.md TODO.md README.md README.aeidon.md )
 
+PATCHES=( "${FILESDIR}/${P}-fix-audio-tracks-order.patch" )
+
 python_test() {
 	virtx pytest -vv
 }
@@ -45,7 +47,9 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog "Previewing support requires MPV, MPlayer or VLC."
+		elog "The integrated video player requires media-plugins/gst-plugins-gtk."
+		elog ""
+		elog "External video previewing support requires MPV, MPlayer or VLC."
 		if use spell; then
 			elog ""
 			elog "Spell-checking requires a dictionary, any of app-dicts/myspell-*"
