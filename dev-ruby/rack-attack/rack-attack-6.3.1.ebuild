@@ -26,6 +26,7 @@ ruby_add_rdepend "dev-ruby/rack:*"
 ruby_add_bdepend "test? (
 	dev-ruby/actionpack
 	dev-ruby/activesupport
+	dev-ruby/railties
 	dev-ruby/rack-test
 	dev-ruby/minitest )"
 
