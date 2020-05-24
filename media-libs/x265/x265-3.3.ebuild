@@ -24,7 +24,7 @@ IUSE="+asm +10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_altivec numa pic power
 # Test suite requires assembly support and is known to be broken
 RESTRICT="test"
 
-ASM_DEPEND=">=dev-lang/yasm-1.2.0"
+ASM_DEPEND=">=dev-lang/nasm-2.13"
 
 BDEPEND="asm? (
 		abi_x86_32? ( ${ASM_DEPEND} )
