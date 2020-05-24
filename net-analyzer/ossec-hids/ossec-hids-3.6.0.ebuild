@@ -29,9 +29,16 @@ DEPEND="${RDEPEND}
 		dev-python/subunit
 	)"
 S="${WORKDIR}/${P}/src"
-PATCHES=( "${FILESDIR}/makefile-${PV}.patch" )
 
 declare -a MY_OPT
+
+src_prepare() {
+	# Patch for the GCC version 10 -fno-common change. See
+	# https://github.com/ossec/ossec-hids/pull/1875
+	eapply -p2 "${FILESDIR}/gcc-fno-common-${PV}.patch"
+	eapply -p1 "${FILESDIR}/makefile-${PV}.patch"
+	eapply_user
+}
 
 src_configure() {
 	local target="local"
