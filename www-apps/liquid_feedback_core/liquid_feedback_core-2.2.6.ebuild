@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=${PN}-v${PV}
 
@@ -16,14 +16,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="dev-db/postgresql"
+RDEPEND="dev-db/postgresql:="
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.2.3-gentoo.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-2.2.3-gentoo.patch )
 
 src_compile() {
 	emake \
