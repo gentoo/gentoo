@@ -3,18 +3,20 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
-
+PYTHON_COMPAT=( python3_{6,7,8} )
+CMAKE_REMOVE_MODULES_LIST=( FindPython Support )
 inherit bash-completion-r1 check-reqs cmake python-single-r1
 
-DESCRIPTION="A double-entry accounting system with a command-line reporting interface"
+DESCRIPTION="Double-entry accounting system with a command-line reporting interface"
 HOMEPAGE="https://www.ledger-cli.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
 RESTRICT="test"
 
 CHECKREQS_MEMORY=8G
@@ -31,13 +33,12 @@ RDEPEND="
 		${PYTHON_DEPS}
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	dev-libs/utfcpp
 	doc? (
+		dev-texlive/texlive-fontsrecommended
 		sys-apps/texinfo
 		virtual/texi2dvi
-		dev-texlive/texlive-fontsrecommended
 	)
 "
 
@@ -59,20 +60,13 @@ src_prepare() {
 
 	# Want to type "info ledger" not "info ledger3"
 	sed -i -e 's/ledger3/ledger/g' \
-		doc/ledger3.texi \
-		doc/CMakeLists.txt \
-		test/CheckTexinfo.py \
-		tools/cleanup.sh \
-		tools/gendocs.sh \
-		tools/prepare-commit-msg \
-		tools/spellcheck.sh \
+		doc/{CMakeLists.txt,ledger3.texi} test/CheckTexinfo.py \
+		tools/{cleanup.sh,gendocs.sh,prepare-commit-msg,spellcheck.sh} \
 		|| die "Failed to update info file name in file contents"
 
 	mv doc/ledger{3,}.texi || die "Failed to rename info file name"
 
 	rm -r lib/utfcpp || die
-	rm cmake/FindPython.cmake || die
-	rm -r cmake/FindPython || die
 }
 
 src_configure() {
@@ -80,13 +74,17 @@ src_configure() {
 		-DBUILD_DOCS="$(usex doc)"
 		-DBUILD_WEB_DOCS="$(usex doc)"
 		-DUSE_PYTHON="$(usex python)"
-		-DPython_EXECUTABLE="${PYTHON}"
-		-DPython_INCLUDE_DIR="$(python_get_includedir)"
 		-DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PF}"
 		-DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON
 		-DBUILD_DEBUG="$(usex debug)"
 		-DUTFCPP_PATH="${ESYSROOT}/usr/include/utf8cpp"
 	)
+	if use python; then
+		mycmakeargs+=(
+			-DPython_EXECUTABLE="${PYTHON}"
+			-DPython_INCLUDE_DIR="$(python_get_includedir)"
+		)
+	fi
 
 	cmake_src_configure
 }
