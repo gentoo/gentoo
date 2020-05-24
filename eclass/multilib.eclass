@@ -459,11 +459,16 @@ multilib_toolchain_setup() {
 	local save_restore_variables=(
 		CBUILD
 		CHOST
+		AR
 		CC
 		CXX
 		F77
 		FC
 		LD
+		NM
+		OBJDUMP
+		RANLIB
+		STRIP
 		PKG_CONFIG_LIBDIR
 		PKG_CONFIG_PATH
 	)
