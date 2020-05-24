@@ -1337,7 +1337,7 @@ app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0 1.8.1: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.32.0: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2 0.8.1: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.2.0360 8.2.0508 8.2.0638 9999: GUI version of the Vim text editor
+app-editors/gvim 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0-r1: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1382,8 +1382,8 @@ app-editors/ted 2.23: X-based rich text editor
 app-editors/texworks 0.6.3 0.6.5: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.2.0360 8.2.0508 8.2.0638 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 8.2.0360 8.2.0508 8.2.0638 9999: vim and gvim shared files
+app-editors/vim 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: vim and gvim shared files
 app-editors/vis 0.5 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
@@ -10355,7 +10355,7 @@ dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 143 144: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 143 144 145: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
