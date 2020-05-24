@@ -1,0 +1,45 @@
+diff --git a/makefile.shared b/makefile.shared
+index 47c35d9..cebaa04 100644
+--- a/makefile.shared
++++ b/makefile.shared
+@@ -1,7 +1,8 @@
+ #makefile for TomsFastMath
+ #
+ #
+-VERSION=1:0:0
++VERSION=0.13.1
++VERSION_LIB=1:0:0
+ 
+ LT  ?= libtool
+ LTCOMPILE = $(LT) --mode=compile --tag=CC $(CC)
+@@ -89,13 +90,16 @@ $(OBJECTS): $(HEADERS)
+ 	$(LTCOMPILE) $(CFLAGS) $(LDFLAGS) -o $@ -c $<
+ 
+ $(LIBNAME): $(OBJECTS)
+-	libtool --mode=link --tag=CC $(CC) $(CFLAGS) $(LDFLAGS) `find . -type f | LC_ALL=C sort | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION) -export-symbols libtfm.symbols
++	libtool --mode=link --tag=CC $(CC) $(CFLAGS) $(LDFLAGS) `find . -type f | LC_ALL=C sort | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION_LIB) -export-symbols libtfm.symbols
+ 
+ install: $(LIBNAME)
+ 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
+ 	libtool --mode=install install -c $(LIBNAME) $(DESTDIR)$(LIBPATH)/$(LIBNAME)
+ 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(INCPATH)
+ 	install -g $(GROUP) -o $(USER) $(HEADERS_PUB) $(DESTDIR)$(INCPATH)
++	sed -e 's,^Version:.*,Version: $(VERSION),' tomsfastmath.pc.in > tomsfastmath.pc
++	install -d $(DESTDIR)$(LIBPATH)/pkgconfig
++	install -m 644 tomsfastmath.pc $(DESTDIR)$(LIBPATH)/pkgconfig/
+ 
+ HEADER_FILES=$(notdir $(HEADERS_PUB))
+ uninstall:
+diff --git a/tomsfastmath.pc.in b/tomsfastmath.pc.in
+new file mode 100644
+index 0000000..a0275ab
+--- /dev/null
++++ b/tomsfastmath.pc.in
+@@ -0,0 +1,7 @@
++# TomsFastMath, a fast ISO C bignum library. -- Tom St Denis
++# SPDX-License-Identifier: Unlicense
++
++Name: TomFastMath
++Description: Fast multiple-precision integer library
++Version: @VERSION@
++Libs: -ltfm
