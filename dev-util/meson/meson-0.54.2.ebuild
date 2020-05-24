@@ -34,6 +34,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/0.54.2-multilib-clang.patch
+)
+
 python_prepare_all() {
 	# ASAN and sandbox both want control over LD_PRELOAD
 	# https://bugs.gentoo.org/673016
