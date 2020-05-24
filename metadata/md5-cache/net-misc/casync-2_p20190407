@@ -11,5 +11,5 @@ RDEPEND=app-arch/xz-utils:= app-arch/zstd:= dev-libs/openssl:0= net-misc/curl:= 
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/systemd/casync/archive/6d185a540c54195a919d4b44f9bf28c341da3bf1.tar.gz -> casync-2_p20190407.tar.gz
-_eclasses_=meson	991e544bbaf3120073ededbdc1d8bf93	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=meson	bac85318d0e136fd700e3e1c51afdba7	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f0217de4b47ff5e1cab86b8fc04352ab

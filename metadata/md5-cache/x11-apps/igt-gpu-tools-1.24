@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( video_cards_amdgpu video_cards_intel video_cards_nouveau ) ove
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/app/igt-gpu-tools-1.24.tar.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	meson	991e544bbaf3120073ededbdc1d8bf93	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	meson	bac85318d0e136fd700e3e1c51afdba7	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=685d8e9d10dcb4d60750b4f223856835

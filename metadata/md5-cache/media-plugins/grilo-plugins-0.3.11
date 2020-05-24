@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/glib-2.44:2 >=media-libs/grilo-0.3.8:0.3=[network,playlist] f
 RESTRICT=!test? ( test )
 SLOT=0.3
 SRC_URI=mirror://gnome/sources/grilo-plugins/0.3/grilo-plugins-0.3.11.tar.xz
-_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	meson	991e544bbaf3120073ededbdc1d8bf93	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	meson	bac85318d0e136fd700e3e1c51afdba7	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=c33cc43f3e4962270400bc1101ed9ab3

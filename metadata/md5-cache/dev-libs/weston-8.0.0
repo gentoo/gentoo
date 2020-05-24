@@ -12,5 +12,5 @@ REQUIRED_USE=colord? ( lcms ) drm? ( gles2 ) pipewire? ( drm ) screen-sharing? (
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://wayland.freedesktop.org/releases/weston-8.0.0.tar.xz
-_eclasses_=meson	991e544bbaf3120073ededbdc1d8bf93	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=meson	bac85318d0e136fd700e3e1c51afdba7	multilib	797cda3549becfe50afdfa35192ca137	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=53d4ac20610f6d3c81475f50322c53f8
