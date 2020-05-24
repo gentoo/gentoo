@@ -10,5 +10,5 @@ RDEPEND=acct-group/dnscrypt-proxy acct-user/dnscrypt-proxy filecaps? ( sys-libs/
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/DNSCrypt/dnscrypt-proxy/archive/2.0.42.tar.gz -> dnscrypt-proxy-2.0.42.tar.gz
-_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a124b76cb129f7114c5e7ec0355c2ca7

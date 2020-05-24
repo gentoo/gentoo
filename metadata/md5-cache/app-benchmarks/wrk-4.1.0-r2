@@ -10,5 +10,5 @@ LICENSE=Apache-2.0 BSD MIT
 RDEPEND=dev-lang/luajit:2
 SLOT=0
 SRC_URI=https://www.github.com/wg/wrk/archive/4.1.0.tar.gz -> wrk-4.1.0.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6600e1ce506654c197c355c9a599cc1f

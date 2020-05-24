@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=app-text/texlive[dvi2tty,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,publishers] app-text/poppler:= dev-perl/XML-LibXML media-libs/netpbm media-libs/opencv l10n_fr? ( app-text/texlive[l10n_fr] ) l10n_ja? ( app-text/texlive[l10n_ja] ) app-text/pdftk dev-lang/perl:= dev-perl/Glib-Object-Introspection dev-perl/Gtk2 dev-perl/Gtk2-Notify media-gfx/imagemagick dev-perl/XML-Writer dev-perl/Archive-Zip dev-perl/DBI dev-perl/Text-CSV dev-perl/DBD-SQLite dev-perl/Net-CUPS dev-perl/Email-Address dev-perl/Email-MIME dev-perl/Email-Sender virtual/latex-base
 SLOT=0
 SRC_URI=http://download.gna.org/auto-qcm/auto-multiple-choice_1.3.0_sources.tar.gz
-_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	multilib	797cda3549becfe50afdfa35192ca137	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	multilib	ac7989ababbeabdef6fdc6e465b21644	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=3cab963e09289b2e02d2f322c1329d96

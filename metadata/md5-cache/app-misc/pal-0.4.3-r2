@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.0 nls? ( virtual/libintl ) sys-libs/ncurses:0 sys-libs
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/palcal/pal-0.4.3.tgz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a2d7f4c0f1571122fbb124cced8d86f8

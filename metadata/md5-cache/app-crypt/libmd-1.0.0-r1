@@ -7,5 +7,5 @@ KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( BSD BSD-2 ISC BEER-WARE public-domain )
 SLOT=0
 SRC_URI=https://archive.hadrons.org/software/libmd/libmd-1.0.0.tar.xz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8b2b2550c7321c665fbc20de5324b9fc

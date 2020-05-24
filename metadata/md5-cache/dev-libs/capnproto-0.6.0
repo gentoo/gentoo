@@ -9,5 +9,5 @@ LICENSE=MIT
 RESTRICT=!test? ( test )
 SLOT=0/060
 SRC_URI=https://github.com/sandstorm-io/capnproto/archive/v0.6.0.tar.gz -> capnproto-0.6.0.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=1aec681d65d5ee91477cec7398cb551f

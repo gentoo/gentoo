@@ -11,5 +11,5 @@ REQUIRED_USE=ssl? ( !miniz )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.fossil-scm.org/index.html/uv/fossil-src-2.10.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=af0ac6b001717bdeb712dcafabf7884a

@@ -8,5 +8,5 @@ KEYWORDS=amd64 ~mips ppc x86
 LICENSE=BSD-2 GPL-2
 SLOT=0
 SRC_URI=http://www.maradns.org/download/2.0/2.0.09/maradns-2.0.09.tar.bz2
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=71d3304af097f4f44688844b8e13d9c5

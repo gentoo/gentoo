@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=media-sound/pulseaudio:=
 SLOT=0
 SRC_URI=https://github.com/russinnes/fsync-mdc1200-decode/archive/1.0.tar.gz -> fsync-mdc1200-decode-1.0.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=acf6498009dde50f3dbc74a0c5cecc61

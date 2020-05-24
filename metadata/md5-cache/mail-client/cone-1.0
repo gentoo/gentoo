@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/libxml2 sys-libs/ncurses:0= >=net-libs/courier-unicode-2 spell? ( app-text/aspell ) crypt? ( >=app-crypt/gnupg-1.0.4 ) fam? ( virtual/fam ) gnutls? ( net-libs/gnutls:0= dev-libs/libgcrypt:0= dev-libs/libgpg-error ) !gnutls? ( >=dev-libs/openssl-0.9.6:0= ) idn? ( net-dns/libidn:0= ) ipv6? ( net-dns/libidn:0= ) ldap? ( net-nds/openldap )
 SLOT=0
 SRC_URI=mirror://sourceforge/courier/cone-1.0.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=39bd33cd26b2b52a80630e46ec6986dc

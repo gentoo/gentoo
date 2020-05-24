@@ -10,5 +10,5 @@ RDEPEND=dev-java/spec-alpha:0.1 dev-java/core-specs-alpha:0.1 dev-java/ant-core:
 RESTRICT=!test? ( test )
 SLOT=1.9
 SRC_URI=https://github.com/clojure/clojure/archive/clojure-1.9.0.tar.gz
-_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=fe546513cd8f69f344ef9b6cbc368f5a

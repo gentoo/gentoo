@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5 app-text/docbook-dsssl-stylesheets app-text/openjade dev-perl/SGMLSpm ~app-text/docbook-xml-simple-dtd-4.1.2.4 ~app-text/docbook-xml-simple-dtd-1.0 app-text/docbook-xml-dtd ~app-text/docbook-sgml-dtd-3.0 ~app-text/docbook-sgml-dtd-3.1 ~app-text/docbook-sgml-dtd-4.0 ~app-text/docbook-sgml-dtd-4.1 ~app-text/docbook-sgml-dtd-4.2 ~app-text/docbook-sgml-dtd-4.4 jadetex? ( app-text/jadetex ) userland_GNU? ( sys-apps/which ) || ( www-client/lynx www-client/links www-client/elinks virtual/w3m )
 SLOT=0
 SRC_URI=https://sourceware.org/pub/docbook-tools/new-trials/SOURCES/docbook-utils-0.6.14.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f135bba975039865ac94d1bd0d1fcb9d

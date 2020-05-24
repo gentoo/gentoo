@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=http://efeu.cybertec.at/dist/dvipost-1.1.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	latex-package	e5f296c98696dd02059bc6a5a03282e2	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	latex-package	e5f296c98696dd02059bc6a5a03282e2	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0cc5521aab7623d1c9358e61a70103e8

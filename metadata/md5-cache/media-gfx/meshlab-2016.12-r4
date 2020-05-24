@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-cpp/eigen:3 dev-cpp/muParser dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtxmlpatterns:5 >=media-gfx/jhead-3.00-r2 media-libs/glew:0 media-libs/qhull =media-libs/lib3ds-1* media-libs/openctm sci-libs/levmar sci-libs/mpir
 SLOT=0
 SRC_URI=https://github.com/cnr-isti-vclab/meshlab/archive/v2016.12.tar.gz -> meshlab-2016.12.tar.gz https://github.com/cnr-isti-vclab/vcglib/archive/v1.0.1.tar.gz -> vcglib-1.0.1.tar.gz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	797cda3549becfe50afdfa35192ca137	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	ac7989ababbeabdef6fdc6e465b21644	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=22ce530a642d76f8ecacc859aea2a427

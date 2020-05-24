@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=|| ( sys-libs/gdbm sys-libs/db:* ) !net-mail/safecat
 SLOT=0
 SRC_URI=https://github.com/jbj/magicrescue/archive/v1.1.10.tar.gz -> magicrescue-1.1.10.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=274cd7677fccd882e1bf63aaa463ac4b

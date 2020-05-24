@@ -9,5 +9,5 @@ LICENSE=Microsemi
 RESTRICT=fetch mirror bindist
 SLOT=0
 SRC_URI=https://download.adaptec.com/raid/storage_manager/arcconf_v3_01_23531.zip
-_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=88e291eed4413db9eb461df98afb5dac

@@ -6,5 +6,5 @@ KEYWORDS=~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://tsx-11.mit.edu/pub/linux/sources/sbin/setserial-2.17.tar.gz ftp://ftp.sunsite.org.uk/Mirrors/tsx-11.mit.edu/pub/linux/sources/sbin/setserial-2.17.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bfd8ee72a99a13c774b7ba155cce1856

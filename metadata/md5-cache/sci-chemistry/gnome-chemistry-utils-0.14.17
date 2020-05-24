@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=>=app-text/gnome-doc-utils-0.3.2 >=dev-libs/glib-2.36.0:2 >=dev-libs/libxml2-2.4.16:2 >=gnome-extra/libgsf-1.14.9 >=sci-chemistry/bodr-5 >=sci-chemistry/chemical-mime-data-0.1.94 >=sci-chemistry/openbabel-2.3.0:0 >=x11-libs/cairo-1.6.0 >=x11-libs/gdk-pixbuf-2.22.0 >=x11-libs/goffice-0.10.12 x11-libs/gtk+:3 >=x11-libs/libX11-1.0.0 gnumeric? ( >=app-office/gnumeric-1.12.42 )
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/gchemutils/0.14/gnome-chemistry-utils-0.14.17.tar.xz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=acb40cfeef03de4c4bdba011193ec2de

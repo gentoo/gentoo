@@ -12,5 +12,5 @@ RDEPEND=>=x11-libs/libdrm-2.4.46[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,a
 REQUIRED_USE=|| ( drm wayland X ) opengl? ( X )
 SLOT=0/2
 SRC_URI=https://github.com/intel/libva/releases/download/2.5.0/libva-2.5.0.tar.bz2
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	797cda3549becfe50afdfa35192ca137	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d6881c1cffbb09b64cc1b175bde46b85

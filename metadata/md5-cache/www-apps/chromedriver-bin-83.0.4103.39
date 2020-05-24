@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=WebDriver for Chrome
+EAPI=7
+HOMEPAGE=https://sites.google.com/a/chromium.org/chromedriver
+KEYWORDS=~amd64
+LICENSE=google-chrome
+RDEPEND=!www-client/chromium www-client/google-chrome
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip -> chromedriver-bin-83.0.4103.39.linux64.zip )
+_md5_=884a68f99111bd33819a5e9fafd99539

@@ -6,5 +6,5 @@ KEYWORDS=amd64 ppc x86
 LICENSE=Sendmail
 SLOT=0
 SRC_URI=https://www.pldaniels.com/altermime/altermime-0.3.11.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=281cfbf96ae3ee5023bf18d98ff7ca08

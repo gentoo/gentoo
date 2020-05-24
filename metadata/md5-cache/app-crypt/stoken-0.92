@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=dev-libs/nettle gtk? ( >=x11-libs/gtk+-3.12:3 )
 SLOT=0
 SRC_URI=https://github.com/cernekee/stoken/archive/v0.92.tar.gz -> stoken-0.92.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=5669af1a1c0e1beab38d61c9a34ce365

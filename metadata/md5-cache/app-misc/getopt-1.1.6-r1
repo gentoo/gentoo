@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=http://frodo.looijaard.name/system/files/software/getopt/getopt-1.1.6.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a1cc80b5414dcc9b5dc4d9d5099aa74c

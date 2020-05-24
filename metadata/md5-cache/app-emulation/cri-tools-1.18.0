@@ -8,5 +8,5 @@ LICENSE=Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0
 RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/kubernetes-sigs/cri-tools/archive/v1.18.0.tar.gz -> cri-tools-1.18.0.tar.gz
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=16c4a620c6ea533a4e8c7b9c3e37ddbe

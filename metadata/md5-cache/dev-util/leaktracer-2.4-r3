@@ -9,5 +9,5 @@ RDEPEND=dev-lang/perl sys-devel/gdb
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gentoo/leaktracer-2.4-gentoo_p2.tbz2
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ea1e2f1463df9bcb931aa1dd42d80259

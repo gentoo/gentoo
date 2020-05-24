@@ -8,5 +8,5 @@ LICENSE=ISC
 RDEPEND=!x11-wm/scrotwm x11-misc/dmenu
 SLOT=0
 SRC_URI=https://github.com/conformal/spectrwm/archive/SPECTRWM_3_2_0.tar.gz -> spectrwm-3.2.0.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6d953b243f619116926cbf47c14340cc

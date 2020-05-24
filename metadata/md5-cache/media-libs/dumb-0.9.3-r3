@@ -7,5 +7,5 @@ KEYWORDS=~alpha amd64 ~ia64 ppc ppc64 sparc x86
 LICENSE=DUMB-0.9.3
 SLOT=0
 SRC_URI=mirror://sourceforge/dumb/dumb-0.9.3.tar.gz
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	797cda3549becfe50afdfa35192ca137	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=56950e24f59e46f441cb3c645bf7a25d

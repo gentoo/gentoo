@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=alsa? ( media-libs/alsa-lib ) debug? ( sys-libs/ncurses:0= ) opengl? ( virtual/opengl ) opus? ( media-libs/opus ) media-libs/libpng:0= media-libs/libsdl2[joystick,opengl?,video,X] media-libs/sdl-net sys-libs/zlib !games-emulation/dosbox
 SLOT=0
 SRC_URI=https://github.com/dosbox-staging/dosbox-staging/archive/v0.75.0.tar.gz -> dosbox-staging-0.75.0.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d56ee2b4a9ceb2dbb986efbf1f486b96

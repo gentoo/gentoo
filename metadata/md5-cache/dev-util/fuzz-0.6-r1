@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/readline:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/fuzz/fuzz-0.6.tar.gz mirror://debian/pool/main/f/fuzz/fuzz_0.6-7.3.diff.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=76e57cd7cc7fec8e7a0e52a7f98e7845

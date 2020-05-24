@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=virtual/libusb:1 dev-libs/libxml2
 SLOT=0
 SRC_URI=https://github.com/codestation/vitamtp/archive/7ab537a4f45e34984cbeb9cf1b1af543a75a3dc0.tar.gz -> vitamtp-2.5.9_pre20160829.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=c8e10ad35ccef741ce628dce589ae919

@@ -9,5 +9,5 @@ RDEPEND=sys-apps/util-linux
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/graeme-hill/crossguid/archive/8f399e8bd4252be9952f3dfa8199924cc8487ca4.tar.gz -> crossguid-0_pre20150817.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=46a09457f1311a9abe5b564ccf1142a3

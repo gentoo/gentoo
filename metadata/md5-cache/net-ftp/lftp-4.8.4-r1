@@ -11,5 +11,5 @@ RDEPEND=>=sys-libs/ncurses-5.1:= >=sys-libs/readline-5.1:= dev-libs/expat sys-li
 RESTRICT=test
 SLOT=0
 SRC_URI=https://lftp.tech/ftp/lftp-4.8.4.tar.xz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=d59a1e47e36dd3d24d71e5bbd36cd4a2

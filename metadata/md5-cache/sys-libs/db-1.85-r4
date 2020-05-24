@@ -6,5 +6,5 @@ KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 LICENSE=Sleepycat
 SLOT=1
 SRC_URI=http://download.oracle.com/berkeley-db/db.1.85.tar.gz mirror://gentoo/db-1.85-r3.1.patch.bz2
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=436cc84582a6bfb79edd1c575a092604

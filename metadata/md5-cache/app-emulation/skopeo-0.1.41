@@ -10,5 +10,5 @@ RDEPEND=>=app-crypt/gpgme-1.5.5:= >=dev-libs/libassuan-2.4.3:= dev-libs/libgpg-e
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/skopeo/archive/v0.1.41.tar.gz -> skopeo-0.1.41.tar.gz
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0b2d22acb4beee5267650039d94fd0f8

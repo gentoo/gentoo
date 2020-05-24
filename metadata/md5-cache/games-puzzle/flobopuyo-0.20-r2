@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[mod] opengl? ( virtual/opengl )
 SLOT=0
 SRC_URI=http://www.ios-software.com/flobopuyo/flobopuyo-0.20.tgz mirror://gentoo/flobopuyo.png
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9c1913e1218eadf4834395984828771a

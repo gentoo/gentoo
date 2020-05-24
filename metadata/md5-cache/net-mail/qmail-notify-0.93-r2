@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/cron virtual/qmail
 SLOT=0
 SRC_URI=http://untroubled.org/qmail-notify/archive/qmail-notify-0.93.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=98245399ffc776c78763e045f5034bfb

@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://github.com/amireh/lua_cliargs/archive/v3.0-2.tar.gz -> lua_cliargs-3.0_p2.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=7a933b05d703b6481d299501d838522f

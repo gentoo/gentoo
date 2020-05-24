@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=>=virtual/jre-1.4:* =dev-java/commons-logging-1*:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=1
 SRC_URI=ftp://snipsnap.org/radeox/radeox-1.0-BETA-2-src.tgz
-_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d76dac2a4bb88aa3a18547c237a56984

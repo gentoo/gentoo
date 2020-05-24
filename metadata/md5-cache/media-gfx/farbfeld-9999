@@ -8,5 +8,5 @@ LICENSE=ISC
 PROPERTIES=live
 RDEPEND=media-libs/libjpeg-turbo media-libs/libpng:*
 SLOT=0
-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b48a89dd6aa52ab455db4f86caf9528c

@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=net-libs/libpcap[ipv6(+)] sys-apps/hwids
 SLOT=0
 SRC_URI=https://github.com/fgont/ipv6toolkit/archive/623a0fbc0422cdc0a4b833d7b5ec58a2eaa9bddf.tar.gz -> ipv6toolkit-2.1_p20200412.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=acde5ca20c9592e2219eeb9caa52adc2

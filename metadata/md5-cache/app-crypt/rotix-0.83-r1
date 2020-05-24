@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sys-devel/gettext
 SLOT=0
 SRC_URI=https://github.com/shemminga/rotix/releases/download/0.83/rotix_0.83.tar.gz -> rotix-0.83.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f6dc33db408c3a041928cb113771041b

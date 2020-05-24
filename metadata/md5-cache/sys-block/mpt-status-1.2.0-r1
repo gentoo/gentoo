@@ -6,5 +6,5 @@ KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/mpt-status-1.2.0.tar.bz2 mirror://gentoo/mpt-status-1.2.0-linux-sources.tar.bz2
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e77a8c01f198f4e227f82b919f87837b

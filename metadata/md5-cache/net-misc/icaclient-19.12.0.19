@@ -9,5 +9,5 @@ RDEPEND=dev-libs/atk dev-libs/glib:2 dev-libs/libxml2 dev-libs/openssl-compat:1.
 RESTRICT=mirror strip userpriv fetch
 SLOT=0
 SRC_URI=amd64? ( linuxx64-19.12.0.19.tar.gz ) x86? ( linuxx86-19.12.0.19.tar.gz )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=320604ffa389f6042e8416cd55842b02

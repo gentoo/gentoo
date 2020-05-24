@@ -6,5 +6,5 @@ KEYWORDS=amd64 arm64 ~ppc64 x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://git.sr.ht/~sircmpwn/scdoc/archive/1.9.3.tar.gz -> scdoc-1.9.3.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=7cfe9d430b9765315d1a95ce270705d2

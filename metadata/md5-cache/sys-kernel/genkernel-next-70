@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-text/asciidoc sys-fs/e2fsprogs !sys-fs/eudev[-kmod,modutils] selinux? ( sys-libs/libselinux ) !sys-kernel/genkernel cryptsetup? ( sys-fs/cryptsetup ) dmraid? ( >=sys-fs/dmraid-1.0.0_rc16 ) gpg? ( app-crypt/gnupg ) iscsi? ( sys-block/open-iscsi ) mdadm? ( sys-fs/mdadm ) plymouth? ( sys-boot/plymouth ) app-portage/portage-utils app-arch/cpio >=app-misc/pax-utils-0.6 !<sys-apps/openrc-0.9.9 sys-apps/util-linux sys-block/thin-provisioning-tools sys-fs/lvm2
 SLOT=0
 SRC_URI=https://github.com/Sabayon/genkernel-next/archive/v70.tar.gz -> genkernel-next-70.tar.gz
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e05bce95ae8bbdbdd6b6bbd702b34e63

@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=mirror://sourceforge/etherdfs/ethersrv-linux-20180203.tar.xz tsr? ( mirror://sourceforge/etherdfs/v0.8.2/etherdfs.zip -> etherdfs-20180203.zip )
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a72312b0bed1a41bb19fa1e02eb9140b

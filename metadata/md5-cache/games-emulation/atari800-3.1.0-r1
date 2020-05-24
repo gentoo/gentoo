@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=sdl? ( >=media-libs/libsdl-1.2.0[opengl?,sound?,video] ) ncurses? ( sys-libs/ncurses:0= sound? ( !oss? ( media-libs/libsdl[sound] ) ) ) !sdl? ( !ncurses? ( sys-libs/ncurses:0= sound? ( !oss? ( media-libs/libsdl[sound] ) ) ) ) readline? ( sys-libs/readline:0= sys-libs/ncurses:0= ) media-libs/libpng:0= sys-libs/zlib
 SLOT=0
 SRC_URI=https://sourceforge.net/projects/atari800/files/atari800/3.1.0/atari800-3.1.0.tar.gz https://sourceforge.net/projects/atari800/files/ROM/Original%20XL%20ROM/xf25.zip
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=eb35394a6a2feed16fda0306d3b4ccf5

@@ -10,5 +10,5 @@ LICENSE=ZLIB
 RDEPEND=app-arch/bzip2 ~dev-games/irrlicht-headers-1.8.4 media-libs/libpng:0= sys-libs/zlib virtual/jpeg:0 virtual/opengl x11-libs/libX11 x11-libs/libXxf86vm
 SLOT=0
 SRC_URI=mirror://sourceforge/irrlicht/irrlicht-1.8.4.zip https://dev.gentoo.org/~mgorny/dist/irrlicht-1.8.4-patchset.tar.bz2
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=dd1ad66baf8fc137fbcf96fb7e721763

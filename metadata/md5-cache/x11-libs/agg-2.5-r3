@@ -10,5 +10,5 @@ LICENSE=GPL-2 gpc? ( free-noncomm )
 RDEPEND=sdl? ( >=media-libs/libsdl-1.2.0[X?] ) X? ( >=x11-libs/libX11-1.3.99.901 ) truetype? ( media-libs/freetype:2 )
 SLOT=0
 SRC_URI=http://antigrain.com/agg-2.5.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=de9a85bd0edefd9722a64b040243d57d

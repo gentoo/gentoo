@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/libhugetlbfs/libhugetlbfs/archive/2.21.tar.gz -> libhugetlbfs-2.21.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bf313e97298617299d37080944d1463f

@@ -9,5 +9,5 @@ LICENSE=BSD LGrind-Jacobson
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/lgrind-3.67.tgz
-_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b31af23f289c083ce0af97ffcbec55b5

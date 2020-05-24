@@ -10,5 +10,5 @@ RDEPEND=sys-apps/sed net-misc/openssh quota? ( sys-fs/quota ) rsync? ( net-misc/
 REQUIRED_USE=|| ( sftp scp winscp rsync unison subversion )
 SLOT=0
 SRC_URI=mirror://sourceforge/scponly/scponly-4.8.tgz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=13e15c882b357fa3301414f84600338f

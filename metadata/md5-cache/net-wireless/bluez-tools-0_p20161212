@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/dbus-glib dev-libs/glib:2 net-wireless/bluez[obex] sys-libs/readline:0
 SLOT=0
 SRC_URI=https://github.com/khvzak/bluez-tools/archive/97efd293491ad7ec96a655665339908f2478b3d1.tar.gz -> bluez-tools-0_p20161212.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b4fa1e8541010a969afea264ef510c68

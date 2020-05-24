@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=x11-libs/libxkbcommon-0.5.0[X] dev-libs/libev sys-libs/pam x11-libs/cairo[X,xcb(+)] x11-libs/libxcb[xkb] x11-libs/xcb-util x11-libs/xcb-util-xrm
 SLOT=0
 SRC_URI=https://i3wm.org/i3lock/i3lock-2.11.1.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e26642f2522790e5dcaf143bab02933f

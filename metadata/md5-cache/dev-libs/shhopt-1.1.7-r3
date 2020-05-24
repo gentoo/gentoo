@@ -6,5 +6,5 @@ KEYWORDS=amd64 ppc x86
 LICENSE=Artistic
 SLOT=0
 SRC_URI=https://shh.thathost.com/pub-unix/files/shhopt-1.1.7.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=24cb6ae0707dfbdb999876909898ab15

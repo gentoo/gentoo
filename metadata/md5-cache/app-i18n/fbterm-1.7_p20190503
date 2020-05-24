@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://github.com/gjedeer/fbterm/archive/ccea326dd73f4d6b6442fde7ba7c2be9cd35c6df.tar.gz -> fbterm-1.7_p20190503.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=d322b7f317d1e8fc93c8ddf7d107671d

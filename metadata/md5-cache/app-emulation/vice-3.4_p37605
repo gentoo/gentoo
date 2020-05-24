@@ -11,5 +11,5 @@ RDEPEND=sys-libs/readline:0= virtual/libintl alsa? ( media-libs/alsa-lib ) ether
 REQUIRED_USE=|| ( gtk headless sdl ) gtk? ( zlib )
 SLOT=0
 SRC_URI=https://sourceforge.net/code-snapshots/svn/v/vi/vice-emu/code/vice-emu-code-r37605-trunk-vice.zip
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bc9382cfa8ada43746b2e4309898ecae

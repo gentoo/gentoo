@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!sys-apps/rescan-scsi-bus
 SLOT=0
 SRC_URI=http://sg.danny.cz/sg/p/sg3_utils-1.45.tar.xz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b576aee08511e936ba9c77f2f13747b8

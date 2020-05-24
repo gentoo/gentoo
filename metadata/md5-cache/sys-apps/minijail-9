@@ -10,5 +10,5 @@ RDEPEND=sys-libs/libcap-ng:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/google/minijail/archive/linux-v9.tar.gz -> minijail-9.tar.gz
-_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d674f55d033b892ec0af64e7ce8769e9

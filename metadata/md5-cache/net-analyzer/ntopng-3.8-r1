@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-db/sqlite:3 dev-python/pyzmq dev-lang/luajit:2 dev-libs/json-c:= dev-libs/geoip dev-libs/glib:2 dev-libs/hiredis dev-libs/libsodium:= dev-libs/libxml2 dev-libs/libmaxminddb net-analyzer/rrdtool net-libs/libpcap >=net-libs/nDPI-2.4:= net-misc/curl sys-libs/binutils-libs dev-db/mysql-connector-c:= dev-db/redis
 SLOT=0
 SRC_URI=https://github.com/ntop/ntopng/archive/3.8.tar.gz -> ntopng-3.8.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=a1c7fdebfadaf7959176aef7c1dc817a

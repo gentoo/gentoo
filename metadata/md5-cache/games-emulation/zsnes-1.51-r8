@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses:0=[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0=[abi_x86_32(-)] )
 SLOT=0
 SRC_URI=mirror://sourceforge/zsnes/zsnes151src.tar.bz2 -> zsnes-1.51-20071031.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c1849e6bafd47d7f282c788236667f81

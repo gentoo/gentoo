@@ -8,5 +8,5 @@ LICENSE=BSD-2
 RDEPEND=net-libs/libnet:1.1 net-libs/libpcap
 SLOT=0
 SRC_URI=http://ipguard.deep.perm.ru/files/ipguard-1.04.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=4e5941f637e9d60567a040b5e9bbde49

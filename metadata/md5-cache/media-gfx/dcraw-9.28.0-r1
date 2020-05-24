@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) gimp? ( media-gfx/gimp ) media-libs/netpbm
 SLOT=0
 SRC_URI=https://www.cybercom.net/~dcoffin/dcraw/archive/dcraw-9.28.0.tar.gz mirror://gentoo/parse-1.73.tar.bz2 gimp? ( mirror://gentoo/rawphoto-1.32.tar.bz2 )
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8f2321b9c193e0528293832ad86c7e2d

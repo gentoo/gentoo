@@ -11,5 +11,5 @@ RDEPEND=>=dev-lang/lua-5.1:= luajit? ( dev-lang/luajit:2 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/mpeterv/argparse/archive/0.6.0.tar.gz -> lua-argparse-0.6.0.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=81c1ac5edc118e12885e63c2759116c1

@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-libs/libpcre dev-lang/lua:*
 SLOT=0
 SRC_URI=https://github.com/lefcha/imapfilter/archive/v2.6.16.tar.gz -> imapfilter-2.6.16.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=36377b2891748b77a75716e65a92e487

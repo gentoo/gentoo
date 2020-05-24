@@ -10,5 +10,5 @@ RDEPEND=>=app-admin/pass-1.7 sys-auth/oath-toolkit qrcode? ( media-gfx/qrencode 
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tadfisher/pass-otp/releases/download/v1.2.0/pass-otp-1.2.0.tar.gz
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=51747febbd0196bc8c7e1a07850ec14c

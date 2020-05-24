@@ -8,5 +8,5 @@ RDEPEND=dev-lang/perl dev-perl/Tk
 RESTRICT=fetch
 SLOT=0
 SRC_URI=phrap-1.080812-distrib.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8f5aa73e6a49ffbd5804d4ddea05b2b8

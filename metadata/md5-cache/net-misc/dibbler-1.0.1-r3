@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=resolvconf? ( virtual/resolvconf )
 SLOT=0
 SRC_URI=http://klub.com.pl/dhcpv6/dibbler/dibbler-1.0.1.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9691f50502dd75f48215c5758c73bda4

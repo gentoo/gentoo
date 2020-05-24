@@ -10,5 +10,5 @@ RDEPEND=audit? ( sys-process/audit ) crypt? ( dev-libs/openssl:0= ) clang? ( <sy
 REQUIRED_USE=python? ( || ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 ) )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.6.14.xz https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	llvm	8f3e93d3465cc38eb38d404e0c799ccd	multibuild	40fe59465edacd730c644ec2bc197809	multilib	797cda3549becfe50afdfa35192ca137	prefix	c2993e4c430c1ee24f278983d6189501	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	llvm	8f3e93d3465cc38eb38d404e0c799ccd	multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	prefix	c2993e4c430c1ee24f278983d6189501	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f23782fe7ab15a1fa3ffb910c5d89b14

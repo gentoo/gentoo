@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=gd? ( media-libs/gd[png,truetype] ) ldap? ( net-nds/openldap ) pcre? ( dev-libs/libpcre )
 SLOT=0
 SRC_URI=mirror://sourceforge/sarg/sarg-2.3.11.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b8ea2f4cb319d9a20ef062b260b1cb56

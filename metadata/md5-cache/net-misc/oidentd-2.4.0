@@ -10,5 +10,5 @@ LICENSE=BSD-2 GPL-2 LGPL-2+ MIT
 RDEPEND=acct-user/oidentd acct-group/oidentd selinux? ( sec-policy/selinux-oident ) masquerade? ( net-libs/libnetfilter_conntrack )
 SLOT=0
 SRC_URI=https://files.janikrabe.com/pub/oidentd/releases/2.4.0/oidentd-2.4.0.tar.xz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6db632090f2b2d1569c3b2b8838791bc

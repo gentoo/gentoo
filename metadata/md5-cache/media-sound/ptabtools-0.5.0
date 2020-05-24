@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/popt:= dev-libs/libxml2:= dev-libs/libxslt:=
 SLOT=0
 SRC_URI=https://www.samba.org/~jelmer/ptabtools/ptabtools-0.5.0.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6d2a03a37c9762e34d7631bedc01d925

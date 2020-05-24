@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-shells/push-2.0 !<sys-apps/openrc-0.13
 SLOT=0
 SRC_URI=https://github.com/vaeth/zram-init/archive/v8.1.tar.gz -> zram-init-8.1.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b8dec58d5dd3252e80033bf64d44d149

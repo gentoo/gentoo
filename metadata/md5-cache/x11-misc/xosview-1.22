@@ -9,5 +9,5 @@ LICENSE=GPL-2 BSD
 RDEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXt media-fonts/font-misc-misc
 SLOT=0
 SRC_URI=http://www.pogo.org.uk/~mark/xosview/releases/xosview-1.22.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=f422f6cdebe2b5e7f0834b0c5248cbd0

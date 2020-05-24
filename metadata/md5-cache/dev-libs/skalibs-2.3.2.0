@@ -8,5 +8,5 @@ KEYWORDS=amd64 x86
 LICENSE=ISC
 SLOT=0
 SRC_URI=http://www.skarnet.org/software/skalibs/skalibs-2.3.2.0.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=88183255ae2e27f6a3228a4869491cc6

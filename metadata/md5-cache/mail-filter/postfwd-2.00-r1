@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/perl-5.16.3 dev-perl/Net-CIDR-Lite dev-perl/Net-DNS dev-perl/Net-Server dev-perl/NetAddr-IP virtual/perl-Digest-MD5 virtual/perl-Storable virtual/perl-Sys-Syslog virtual/perl-Time-HiRes
 SLOT=0
 SRC_URI=https://www.postfwd.org/postfwd-2.00.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=0034452284c972a10f35cadbeb813cf0

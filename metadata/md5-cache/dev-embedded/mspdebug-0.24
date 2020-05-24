@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=readline? ( sys-libs/readline:0= ) virtual/libusb:0
 SLOT=0
 SRC_URI=https://github.com/dlbeer/mspdebug/archive/v0.24.tar.gz -> mspdebug-0.24.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=1d0a80edf5f7861d29014bedad0d8492

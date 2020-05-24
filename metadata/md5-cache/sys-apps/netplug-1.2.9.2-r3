@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://www.red-bean.com/~bos/netplug/netplug-1.2.9.2.tar.bz2
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8fd2d4e63d1feae1709412102c50b7e8

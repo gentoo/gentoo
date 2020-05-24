@@ -8,5 +8,5 @@ KEYWORDS=amd64 x86
 LICENSE=ISC
 SLOT=0
 SRC_URI=mirror://sourceforge/ethflop/ethflop-20191003.zip
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=db36e1e939e83c4e9b23278fea8dd4e7

@@ -10,5 +10,5 @@ LICENSE=LGPL-2
 RDEPEND=gles2? ( media-libs/mesa[gles2] ) media-libs/glm media-libs/mesa[X(+)] qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtopengl:5 media-sound/pulseaudio ) sdl? ( >=media-libs/libsdl2-2.0.5 ) sys-libs/zlib
 SLOT=0/2
 SRC_URI=https://github.com/projectM-visualizer/projectm/archive/v3.1.1-rc8.tar.gz -> libprojectm-3.1.1_rc8.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=cc594a21f9d804d0a4b8a4ee2bf89ed5

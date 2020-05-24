@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11:= xft? ( x11-libs/libXft:= )
 SLOT=0
 SRC_URI=http://xvnkb.sourceforge.net/xvnkb-0.2.9a.tar.bz2
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=2076482ef0caa1846df6a06c0cd71e6f

@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=dev-libs/glib:2 sys-libs/db:=
 SLOT=0/13
 SRC_URI=https://github.com/libpinyin/libpinyin/archive/2.3.0.tar.gz -> libpinyin-2.3.0.tar.gz mirror://sourceforge/libpinyin/models/model17.text.tar.gz -> libpinyin-model17.text.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=40c5d976ab9479ec6638594db4359632

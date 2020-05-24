@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl >=sys-libs/slang-1.4 X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) alsa? ( media-libs/alsa-lib ) fluidsynth? ( media-sound/fluid-soundfont media-sound/fluidsynth ) gpm? ( sys-libs/gpm ) svga? ( media-libs/svgalib ) X? ( x11-apps/xset )
 SLOT=0
 SRC_URI=mirror://sourceforge/dosemu/dosemu-freedos-1.0-bin.tgz https://dev.gentoo.org/~slyfox/distfiles/dosemu-1.4.1_pre20130107.zip
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c0379a2458025a2ee11405a088c6cbdc

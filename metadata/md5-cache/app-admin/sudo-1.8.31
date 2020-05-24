@@ -11,5 +11,5 @@ RDEPEND=sys-libs/zlib:= ldap? ( >=net-nds/openldap-2.1.30-r1 sasl? ( dev-libs/cy
 REQUIRED_USE=pam? ( !skey ) skey? ( !pam )
 SLOT=0
 SRC_URI=https://www.sudo.ws/sudo/dist/sudo-1.8.31.tar.gz ftp://ftp.sudo.ws/pub/sudo/sudo-1.8.31.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	pam	a1771fc1e5831c201eaf18451747d94b	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	pam	a1771fc1e5831c201eaf18451747d94b	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=46e26539b39344c81305854230c1e6e1

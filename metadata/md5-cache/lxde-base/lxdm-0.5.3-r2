@@ -11,5 +11,5 @@ RDEPEND=consolekit? ( sys-auth/consolekit ) x11-libs/libxcb gtk3? ( x11-libs/gtk
 REQUIRED_USE=?? ( consolekit elogind systemd ) elogind? ( pam ) systemd? ( pam )
 SLOT=0
 SRC_URI=mirror://sourceforge/lxde/lxdm-0.5.3.tar.xz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	797cda3549becfe50afdfa35192ca137	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=77bef2d0555fa4475ac17a2005a5cccb

@@ -10,5 +10,5 @@ RDEPEND=!app-text/hd2u virtual/libintl
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://www.xs4all.nl/~waterlan/dos2unix/dos2unix-7.4.2-beta1.tar.gz mirror://sourceforge/dos2unix/dos2unix-7.4.2-beta1.tar.gz
-_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c8b68ebf06bbfecc5fbb18ada3a7c4b1

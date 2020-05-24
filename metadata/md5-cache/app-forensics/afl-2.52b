@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=sys-devel/gcc:* sys-devel/clang:=
 SLOT=0
 SRC_URI=https://lcamtuf.coredump.cx/afl/releases/afl-2.52b.tgz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f833e285a6506a7306332e0b38a0f799

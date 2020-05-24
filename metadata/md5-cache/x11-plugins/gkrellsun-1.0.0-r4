@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-admin/gkrellm:2[X]
 SLOT=1
 SRC_URI=mirror://sourceforge/gkrellsun/gkrellsun-1.0.0.tar.gz
-_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b3b12609abf09b1ec37cd7a86b39b26c

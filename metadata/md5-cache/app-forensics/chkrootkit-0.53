@@ -8,5 +8,5 @@ LICENSE=BSD-2
 RDEPEND=cron? ( virtual/cron )
 SLOT=0
 SRC_URI=ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit-0.53.tar.gz https://dev.gentoo.org/~polynomial-c/chkrootkit-0.53-gentoo.diff.xz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=20008b8c7273b408c5ed903338e53502
