@@ -29,10 +29,6 @@ BDEPEND="
 	)
 "
 
-# Do not install tests
-# https://github.com/gwik/geventhttpclient/pull/126
-PATCHES=( "${FILESDIR}/${P}-dont-install-tests.patch" )
-
 python_prepare_all() {
 	# Skip SNI tests which require dpkt
 	sed -i '/^import dpkt.ssl/d' src/geventhttpclient/tests/test_ssl.py || die
