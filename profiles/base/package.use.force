@@ -1,6 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-05-24)
+# Many base packages still rely on unqualified tools.
+# To contain the breakage flags are masked. Once most packages
+# build with unqualified tools missing we will lift
+# the force flag. More details are at:
+#    https://wiki.gentoo.org/wiki/Project:Toolchain/use_native_symlinks
+sys-devel/binutils-config native-symlinks
+sys-devel/gcc-config      native-symlinks
+
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Require user configs unless we supply our own .config.
 sys-kernel/gentoo-kernel savedconfig
