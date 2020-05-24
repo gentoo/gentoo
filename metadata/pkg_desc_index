@@ -7686,7 +7686,7 @@ dev-python/decorator 4.4.2: Simplifies the usage of decorators for the average p
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/defcon 0.6.0 0.6.0-r1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.6.0: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.8.1: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.8.1 0.9.1: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.7 1.2.9 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.0.7: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
@@ -8707,7 +8707,7 @@ dev-python/semantic_version 2.8.4: Python library providing a few tools handling
 dev-python/semver 2.9.0 2.9.1: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.14.1: Python client for Sentry
+dev-python/sentry-sdk 0.14.1 0.14.4: Python client for Sentry
 dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
@@ -14817,9 +14817,8 @@ net-misc/gerbera 1.4.0-r1 1.5.0 9999: UPnP Media Server
 net-misc/getdate 1.2-r1 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7: Remote desktop daemon for GNOME using pipewire
-net-misc/gns3-converter 1.3.0: Designed to convert old ini-style GNS3 topologies
-net-misc/gns3-gui 2.1.21: Graphical Network Simulator
-net-misc/gns3-server 2.1.21: GNS3 server to asynchronously manage emulators
+net-misc/gns3-gui 2.2.8: Graphical Network Simulator
+net-misc/gns3-server 2.2.8: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
 net-misc/grive 0.5.1_pre20171005: An open source Linux client for Google Drive
@@ -15487,7 +15486,7 @@ sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astr
 sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
-sci-astronomy/stellarium 0.19.3: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.19.3 0.20.1: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images

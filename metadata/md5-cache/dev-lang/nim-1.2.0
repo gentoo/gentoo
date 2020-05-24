@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install test
+DEFINED_PHASES=compile configure install test
 DEPEND=test? ( net-libs/nodejs )
 DESCRIPTION=compiled, garbage-collected systems programming language
 EAPI=7
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://nim-lang.org/download/nim-1.2.0.tar.xz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0d08243e2e78bb87d47af66bd2a7566b
+_md5_=4e08ee9588127859fba175003763ac49
