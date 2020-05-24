@@ -522,21 +522,6 @@ net-misc/ipx-utils
 # for security. unmask as needed.
 dev-java/icedtea-web
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-26)
-# dev-python/aiohttp-cors is dead upstream and does not support
-# Python 3.7 and newer.
-#
-# net-misc/gns3-* are effectively unmaintained and stuck with py3.6.
-# gns3-server is the only revdep of aiohttp-cors, as well as the only
-# blocker for removal of old dev-python/{aiohttp,async_timeout}
-# (bug #714840).  Some of those issues might be fixed by a version bump
-# that's pending for a long time (bug #688016) but not aiohttp-cors dep.
-#
-# Removal in 30 days.  Bug #712964.
-net-misc/gns3-converter
-net-misc/gns3-gui
-net-misc/gns3-server
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5

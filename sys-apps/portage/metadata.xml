@@ -12,7 +12,6 @@
   </maintainer>
   <use>
     <flag name="apidoc">Build html API documentation with sphinx-apidoc.</flag>
-    <flag name="binpkg-zstd">Use zstd compression with creating binary packages.</flag>
     <flag name="gentoo-dev">Enable features required for Gentoo ebuild development.</flag>
     <flag name="ipc">Use inter-process communication between portage and
         running ebuilds.
