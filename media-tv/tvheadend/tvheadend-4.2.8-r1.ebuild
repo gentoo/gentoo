@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.7-python3.patch
 	"${FILESDIR}"/${PN}-4.2.8-gcc9.patch
 	"${FILESDIR}"/${PN}-4.2.8-no-dvb-fix.patch
+	"${FILESDIR}"/${PN}-4.2.8-fno-common.patch
 )
 
 DOCS=( README.md )
