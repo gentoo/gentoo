@@ -20,7 +20,9 @@ LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/188"
 IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
-RESTRICT="!test? ( test )"
+
+# Test suite requires assembly support and is known to be broken
+RESTRICT="test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
