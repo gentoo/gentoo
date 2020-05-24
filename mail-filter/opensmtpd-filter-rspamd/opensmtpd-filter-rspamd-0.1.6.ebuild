@@ -7,7 +7,7 @@ inherit golang-base
 
 DESCRIPTION="OpenSMTPD filter for putting emails through rspamd"
 HOMEPAGE="https://github.com/poolpOrg/filter-rspamd"
-SRC_URI="https://github.com/poolpOrg/filter-rspamd/releases/download/0.1.5/filter-rspamd-0.1.5.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/poolpOrg/filter-rspamd/releases/download/${PV}/filter-rspamd-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
@@ -22,7 +22,7 @@ S=${WORKDIR}/${P#opensmtpd-}
 DOCS=( README.md )
 
 src_compile() {
-	go build -ldflags="-s -w" -buildmode=pie filter-rspamd.go || die
+	go build -ldflags="-s -w" -buildmode=pie -o filter-rspamd || die
 }
 
 src_install() {
