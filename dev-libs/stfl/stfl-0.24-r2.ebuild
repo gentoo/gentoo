@@ -42,6 +42,8 @@ src_prepare() {
 		-e 's/$(CC) -shared/$(CC) $(LDFLAGS) -shared/' \
 		-e 's/ -o $@ $(LDLIBS) $^/ $^ $(LDLIBS) -o $@/' \
 		-e 's/-lncursesw/-lncursesw -pthread/' \
+		-e 's/\<ar\>/$(AR)/' \
+		-e 's/\<ranlib\>/$(RANLIB)/' \
 		Makefile || die "sed failed"
 
 	if ! use static-libs ; then
@@ -66,7 +68,7 @@ src_prepare() {
 src_configure() { :; }
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 
 	if use python ; then
 		local BUILD_DIR="${S}/python"
