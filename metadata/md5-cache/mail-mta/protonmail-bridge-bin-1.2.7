@@ -1,5 +1,5 @@
 BDEPEND=dev-util/patchelf >=app-arch/rpm2targz-9.0.0.3g
-DEFINED_PHASES=install prepare unpack
+DEFINED_PHASES=install postinst postrm prepare unpack
 DESCRIPTION=Serves ProtonMail to IMAP/SMTP clients
 EAPI=7
 HOMEPAGE=https://protonmail.com/bridge/
@@ -8,6 +8,6 @@ LICENSE=MIT protonmail-bridge-EULA
 RDEPEND=app-crypt/libsecret dev-libs/glib:2 media-sound/pulseaudio[glib] sys-apps/dbus virtual/opengl media-libs/fontconfig media-libs/freetype x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libxcb x11-libs/libXext x11-libs/libXi
 RESTRICT=bindist mirror
 SLOT=0
-SRC_URI=https://protonmail.com/download/protonmail-bridge-1.2.3-1.x86_64.rpm
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	rpm	760ff223c2c4299b68ea901e24c4cabd
-_md5_=4a6f767dd1173f194cf3962648fbda0f
+SRC_URI=https://protonmail.com/download/protonmail-bridge-1.2.7-1.x86_64.rpm
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	rpm	760ff223c2c4299b68ea901e24c4cabd	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=5af82226962d888060209366b640847b
