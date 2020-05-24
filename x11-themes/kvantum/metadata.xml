@@ -6,6 +6,6 @@
     <name>Ian Whyman</name>
   </maintainer>
   <use>
-    <flag name="bundled-themes">Build and intall the bundled themes. The base 'Kvantum' theme will allways be installed.</flag>
+    <flag name="bundled-themes">Build and install the bundled themes. The base 'Kvantum' theme will allways be installed.</flag>
   </use>
 </pkgmetadata>
