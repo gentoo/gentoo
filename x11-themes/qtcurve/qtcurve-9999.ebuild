@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,6 @@ DEPEND="
 		kde-frameworks/kconfig:5
 		kde-frameworks/kconfigwidgets:5
 		kde-frameworks/kcoreaddons:5
-		kde-frameworks/kdelibs4support:5
 		kde-frameworks/kguiaddons:5
 		kde-frameworks/ki18n:5
 		kde-frameworks/kiconthemes:5
