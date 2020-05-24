@@ -1,21 +1,22 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://github.com/mgorny/eclean-kernel2.git"
-inherit autotools git-r3
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-DESCRIPTION="Clean up old and stale kernel files"
-HOMEPAGE="https://github.com/mgorny/eclean-kernel2"
-SRC_URI=""
+inherit distutils-r1 git-r3
+
+DESCRIPTION="Remove outdated built kernels"
+HOMEPAGE="https://github.com/mgorny/eclean-kernel/"
+EGIT_REPO_URI="https://github.com/mgorny/eclean-kernel.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-src_prepare() {
-	default
-	eautoreconf
-}
+RDEPEND="kernel_linux? ( dev-python/pymountboot[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
