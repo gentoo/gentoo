@@ -5,10 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>totktonada.ru@gmail.com</email>
-		<name>Alexander Turenko</name>
-	</maintainer>
 	<longdescription>
 		Descent 1 is a classic first-person shooter released in 1995
 		by Interplay and Parallax. Descent 2 released for the PC in
