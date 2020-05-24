@@ -5,6 +5,7 @@
     <email>media-video@gentoo.org</email>
   </maintainer>
   <use>
+    <flag name="asm">Enable x86_64 assembly optimizations.</flag>
     <flag name="10bit">Add support for producing 10bits HEVC.</flag>
     <flag name="12bit">Add support for producing 12bits HEVC.</flag>
     <flag name="numa">Build with support for NUMA nodes.</flag>

@@ -19,15 +19,17 @@ HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/188"
-IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
+IUSE="+asm +10bit +12bit cpu_flags_arm_neon numa pic power8 test"
 
 # Test suite requires assembly support and is known to be broken
 RESTRICT="test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 
-BDEPEND="abi_x86_32? ( ${ASM_DEPEND} )
-	abi_x86_64? ( ${ASM_DEPEND} )"
+BDEPEND="asm? (
+		abi_x86_32? ( ${ASM_DEPEND} )
+		abi_x86_64? ( ${ASM_DEPEND} )
+	)"
 
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
 
@@ -85,17 +87,6 @@ x265_variant_src_configure() {
 				-DENABLE_CLI=OFF
 				-DMAIN12=ON
 			)
-			if [[ ${ABI} = x86 ]] ; then
-				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
-			fi
-			if [[ ${ABI} = arm ]] ; then
-				# 589674
-				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
-			fi
-			if [[ ${ABI} = ppc64 ]] ; then
-				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
-				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
-			fi
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -104,17 +95,6 @@ x265_variant_src_configure() {
 				-DENABLE_SHARED=OFF
 				-DENABLE_CLI=OFF
 			)
-			if [[ ${ABI} = x86 ]] ; then
-				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
-			fi
-			if [[ ${ABI} = arm ]] ; then
-				# 589674
-				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
-			fi
-			if [[ ${ABI} = ppc64 ]] ; then
-				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
-				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
-			fi
 			;;
 		"main")
 			if (( "${#MULTIBUILD_VARIANTS[@]}" > 1 )) ; then
@@ -146,7 +126,6 @@ multilib_src_configure() {
 	append-cxxflags -fPIC
 
 	local myabicmakeargs=(
-		-DENABLE_TESTS=$(usex test ON OFF)
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
 		-DENABLE_LIBNUMA=$(usex numa ON OFF)
 		-DCPU_POWER8=$(usex power8 ON OFF)
@@ -154,18 +133,39 @@ multilib_src_configure() {
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 
+	local supports_asm=yes
+
 	if [[ ${ABI} = x86 ]] ; then
-		# Bug #528202
-		if use pic ; then
+		if use asm && use pic ; then
+			# Bug #528202
 			ewarn "PIC has been requested but x86 asm is not PIC-safe, disabling it."
-			myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+			supports_asm=no
 		fi
 	elif [[ ${ABI} = x32 ]] ; then
-		# bug #510890
-		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+		if use asm ; then
+			# bug #510890
+			ewarn "x32 ABI doesn't support asm"
+			supports_asm=no
+		fi
 	elif [[ ${ABI} = arm ]] ; then
-		myabicmakeargs+=( -DENABLE_ASSEMBLY=$(usex pic OFF $(usex cpu_flags_arm_neon ON OFF)) )
-		use cpu_flags_arm_neon && use pic && ewarn "PIC has been requested but arm neon asm is not PIC-safe, disabling it."
+		if use asm && use pic ; then
+			ewarn "PIC has been requested but arm neon asm is not PIC-safe, disabling it."
+			supports_asm=no
+		elif use asm && use cpu_flags_arm_neon ; then
+			supports_asm=yes
+		elif use asm ; then
+			supports_asm=no
+		fi
+	fi
+
+	if [[ "${supports_asm}" = yes ]] && use asm ; then
+		myabicmakeargs+=( -DENABLE_ASSEMBLY=ON )
+
+		if multilib_is_native_abi ; then
+			myabicmakeargs+=( -DENABLE_TESTS=$(usex test ON OFF) )
+		fi
+	else
+		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 	fi
 
 	local MULTIBUILD_VARIANTS=( $(x265_get_variants) )
