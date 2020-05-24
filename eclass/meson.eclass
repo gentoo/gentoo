@@ -253,12 +253,6 @@ _meson_create_native_file() {
 	cpu_family = '${cpu_family}'
 	cpu = '${cpu}'
 	endian = '$(tc-endian "${CBUILD}")'
-
-	[host_machine]
-	system = '${system}'
-	cpu_family = '${cpu_family}'
-	cpu = '${cpu}'
-	endian = '$(tc-endian "${CBUILD}")'
 	EOF
 
 	echo "${fn}"
