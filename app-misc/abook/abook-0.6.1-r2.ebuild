@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,7 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( BUGS ChangeLog FAQ README TODO sample.abookrc )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.1-tinfo.patch
+	"${FILESDIR}"/${PN}-0.6.1-vformat.patch
 )
 
 src_prepare() {

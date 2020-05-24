@@ -1,0 +1,11 @@
+diff -ru abook-0.6.1.orig/configure.ac abook-0.6.1/configure.ac
+--- abook-0.6.1.orig/configure.ac	2020-05-24 19:10:09.826143646 +0200
++++ abook-0.6.1/configure.ac	2020-05-24 19:10:52.088381318 +0200
+@@ -140,6 +140,7 @@
+ if test x$vformat = xtrue; then
+    AC_CHECK_HEADER([vf_iface.h], [
+      AC_CHECK_LIB([vformat], [vf_read_file], [
++     LIBS="$LIBS -lvformat"
+      MODULES="$MODULES m_vcf"
+      AC_DEFINE(HAVE_VFORMAT,1,[Defined if the vformat library is available])
+      have_vformat=yes
