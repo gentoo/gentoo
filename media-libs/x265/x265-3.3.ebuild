@@ -19,7 +19,7 @@ HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/188"
-IUSE="+asm +10bit +12bit cpu_flags_arm_neon numa pic power8 test"
+IUSE="+asm +10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_altivec numa pic power8 test"
 
 # Test suite requires assembly support and is known to be broken
 RESTRICT="test"
@@ -128,8 +128,6 @@ multilib_src_configure() {
 	local myabicmakeargs=(
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
 		-DENABLE_LIBNUMA=$(usex numa ON OFF)
-		-DCPU_POWER8=$(usex power8 ON OFF)
-		-DENABLE_ALTIVEC=$(usex power8 ON OFF)
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 
@@ -156,6 +154,11 @@ multilib_src_configure() {
 		elif use asm ; then
 			supports_asm=no
 		fi
+	elif [[ ${ABI} = ppc* ]] ; then
+		myabicmakeargs+=(
+			-DCPU_POWER8=$(usex power8 ON OFF)
+			-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_altivec ON OFF)
+		)
 	fi
 
 	if [[ "${supports_asm}" = yes ]] && use asm ; then
