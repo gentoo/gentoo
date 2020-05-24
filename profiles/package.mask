@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2020-05-24)
+# No releases since 2011, upstream is gone, fails tests,
+# no reverse dependencies.
+# Masked for removal in 30 days.
+dev-ruby/rack-mount
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-23)
 # Obsolete GNOME 2 era packages, stuck on Python 2 and pygtk,
 # bugs #640022, #708094. Masked for removal in 30 days.
