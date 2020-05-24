@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="7"
 
 inherit cmake-utils multilib-minimal multilib multibuild flag-o-matic
 
@@ -25,19 +25,22 @@ IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
 RESTRICT="test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
-RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
-	abi_x86_32? ( ${ASM_DEPEND} )
+
+BDEPEND="abi_x86_32? ( ${ASM_DEPEND} )
 	abi_x86_64? ( ${ASM_DEPEND} )"
 
+RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
+
+DEPEND="${RDEPEND}"
+
 PATCHES=(
-	"${FILESDIR}/arm.patch"
-	"${FILESDIR}/neon.patch"
-	"${FILESDIR}/ppc64.patch"
+	"${FILESDIR}"/${PN}-3.3-arm.patch
+	"${FILESDIR}"/${PN}-3.3-neon.patch
+	"${FILESDIR}"/${PN}-3.3-ppc64.patch
 )
 
 src_unpack() {
-	if [[ ${PV} = 9999* ]]; then
+	if [[ ${PV} = 9999* ]] ; then
 		mercurial_src_unpack
 		# Can't set it at global scope due to mercurial.eclass limitations...
 		export S=${WORKDIR}/${P}/source
@@ -61,11 +64,11 @@ src_unpack() {
 # allow disabling it: "main" *MUST* come last in the following list.
 
 x265_get_variants() {
-	local variants=""
-	use 12bit && variants+="main12 "
-	use 10bit && variants+="main10 "
-	variants+="main"
-	echo "${variants}"
+	local -a variants=()
+	use 12bit && variants+=( main12 )
+	use 10bit && variants+=( main10 )
+	variants+=( main )
+	echo "${variants[@]}"
 }
 
 x265_variant_src_configure() {
@@ -117,9 +120,9 @@ x265_variant_src_configure() {
 			if (( "${#MULTIBUILD_VARIANTS[@]}" > 1 )) ; then
 				local myvariants=( "${MULTIBUILD_VARIANTS[@]}" )
 				unset myvariants[${#MULTIBUILD_VARIANTS[@]}-1]
-				local liblist=""
+				local liblist="" v=
 				for v in "${myvariants[@]}" ; do
-					ln -s "${BUILD_DIR%-*}-${v}/libx265.a" "libx265_${v}.a" ||	die
+					ln -s "${BUILD_DIR%-*}-${v}/libx265.a" "libx265_${v}.a" || die
 					liblist+="libx265_${v}.a;"
 				done
 				mycmakeargs+=(
@@ -133,6 +136,7 @@ x265_variant_src_configure() {
 		*)
 			die "Unknown variant: ${MULTIBUILD_VARIANT}";;
 	esac
+
 	cmake-utils_src_configure
 	popd >/dev/null || die
 }
@@ -140,8 +144,9 @@ x265_variant_src_configure() {
 multilib_src_configure() {
 	append-cflags -fPIC
 	append-cxxflags -fPIC
+
 	local myabicmakeargs=(
-		$(cmake-utils_use_enable test TESTS)
+		-DENABLE_TESTS=$(usex test ON OFF)
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
 		-DENABLE_LIBNUMA=$(usex numa ON OFF)
 		-DCPU_POWER8=$(usex power8 ON OFF)
@@ -173,7 +178,7 @@ multilib_src_compile() {
 }
 
 x265_variant_src_test() {
-	if [ -x "${BUILD_DIR}/test/TestBench" ] ; then
+	if [[ -x "${BUILD_DIR}/test/TestBench" ]] ; then
 		"${BUILD_DIR}/test/TestBench" || die
 	else
 		einfo "Unit tests check only assembly."
