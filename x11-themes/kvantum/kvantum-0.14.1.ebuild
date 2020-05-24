@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake-utils
 
 DESCRIPTION="SVG-based theme engine for Qt5, KDE Plasma and LXQt"
 HOMEPAGE="https://github.com/tsujan/Kvantum"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/tsujan/${PN^}/archive/V${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+bundled-themes"
 
 DEPEND="
 	dev-qt/qtcore:5
@@ -28,3 +28,10 @@ RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
 S="${WORKDIR}/${PN^}-${PV}/${PN^}"
+
+src_prepare() {
+	cmake-utils_src_prepare
+	# If bundled-themes is false, we patch it out
+	use bundled-themes || eapply "${FILESDIR}/${PN}-disable-bundled-themes.patch"
+	eapply_user
+}

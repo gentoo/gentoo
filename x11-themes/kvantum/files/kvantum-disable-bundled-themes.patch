@@ -1,0 +1,10 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6fc9178..8c60ec6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,5 +13,4 @@ add_subdirectory(style)
+ if(NOT ENABLE_QT4)
+   add_subdirectory(kvantumpreview)
+   add_subdirectory(kvantummanager)
+-  add_subdirectory(themes)
+ endif()

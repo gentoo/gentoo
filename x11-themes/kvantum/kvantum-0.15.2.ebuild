@@ -14,7 +14,7 @@ SRC_URI="https://github.com/tsujan/${MY_PN}/archive/V${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+bundled-themes"
 
 DEPEND="
 	dev-qt/qtcore:5
@@ -30,3 +30,10 @@ RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
 S="${WORKDIR}/${MY_PN}-${PV}/${MY_PN}"
+
+src_prepare() {
+	cmake-utils_src_prepare
+	# If bundled-themes is false, we patch it out
+	use bundled-themes || eapply "${FILESDIR}/${PN}-disable-bundled-themes.patch"
+	eapply_user
+}
