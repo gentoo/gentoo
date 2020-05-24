@@ -20,6 +20,8 @@ KEYWORDS="~amd64"
 SLOT="2"
 IUSE="test"
 
+ruby_add_rdepend "dev-ruby/activesupport:*"
+
 ruby_add_bdepend "
 	test? ( >=dev-ruby/fakefs-0.3.2 dev-ruby/mail dev-ruby/shoulda-context dev-ruby/test-unit:2 )"
 
