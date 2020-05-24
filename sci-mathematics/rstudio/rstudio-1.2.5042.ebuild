@@ -100,6 +100,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1335-boost-1.70.0_p1.patch
 	"${FILESDIR}"/${PN}-1.2.1335-boost-1.70.0_p2.patch
 	"${FILESDIR}"/${PN}-1.2.5042-boost-1.73.0.patch
+	"${FILESDIR}"/${PN}-1.2.5042-R-4.0.0.patch
 )
 
 src_unpack() {
