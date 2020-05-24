@@ -84,6 +84,10 @@ RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}"/cmake-unused-command-line.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
