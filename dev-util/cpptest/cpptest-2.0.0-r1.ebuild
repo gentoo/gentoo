@@ -9,7 +9,7 @@ SRC_URI="https://github.com/cpptest/cpptest/releases/download/${PV}/${P}.tar.bz2
 
 LICENSE="LGPL-2.1"
 SLOT="1"  # for soversion 1.x.x
-KEYWORDS="amd64 ~arm ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="doc static-libs"
 
 DEPEND="doc? ( app-doc/doxygen )"
