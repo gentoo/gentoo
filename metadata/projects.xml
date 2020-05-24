@@ -244,7 +244,7 @@
     <email>artwork@gentoo.org</email>
     <name>Artwork</name>
     <url>https://wiki.gentoo.org/wiki/Project:Artwork</url>
-    <description>The Artwork project manages Gentoo artwork and related assets. This includes wallpapers, logos, themes, icons sets.</description>
+    <description>The Artwork project manages Gentoo artwork and related assets. This includes wallpapers, logos, themes, icons.</description>
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
@@ -260,10 +260,10 @@
       <name>David Abbott</name>
       <role>Developer</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Developer</role>
+      <role>Team Leader</role>
     </member>
     <member>
       <email>maffblaster@gentoo.org</email>
