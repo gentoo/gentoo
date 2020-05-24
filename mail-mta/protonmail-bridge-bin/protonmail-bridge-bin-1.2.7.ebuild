@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit rpm
+inherit rpm xdg-utils
 
 DESCRIPTION="Serves ProtonMail to IMAP/SMTP clients"
 HOMEPAGE="https://protonmail.com/bridge/"
@@ -237,4 +237,12 @@ src_install() {
 	newins - "50-${PN}" <<-EOF
 		SEARCH_DIRS_MASK="/usr/lib*/protonmail/bridge"
 	EOF
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
