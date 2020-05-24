@@ -3,7 +3,8 @@
 
 EAPI="7"
 
-inherit cmake-utils multilib-minimal multilib multibuild flag-o-matic
+CMAKE_ECLASS=cmake
+inherit flag-o-matic multibuild cmake-multilib
 
 if [[ ${PV} = 9999* ]]; then
 	inherit mercurial
@@ -117,7 +118,7 @@ x265_variant_src_configure() {
 			die "Unknown variant: ${MULTIBUILD_VARIANT}";;
 	esac
 
-	cmake-utils_src_configure
+	cmake_src_configure
 	popd >/dev/null || die
 }
 
@@ -173,7 +174,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	local MULTIBUILD_VARIANTS=( $(x265_get_variants) )
-	multibuild_foreach_variant cmake-utils_src_compile
+	multibuild_foreach_variant cmake_src_compile
 }
 
 x265_variant_src_test() {
@@ -194,7 +195,7 @@ multilib_src_test() {
 multilib_src_install() {
 	# Install only "main" variant since the others are already linked into it.
 	local MULTIBUILD_VARIANTS=( "main" )
-	multibuild_foreach_variant cmake-utils_src_install
+	multibuild_foreach_variant cmake_src_install
 }
 
 multilib_src_install_all() {
