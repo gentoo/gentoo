@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-text/asciidoc
+DESCRIPTION=fast-export history from a CVS repository or RCS collection
+EAPI=7
+HOMEPAGE=http://www.catb.org/~esr/cvs-fast-export/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.catb.org/~esr/cvs-fast-export/cvs-fast-export-1.55.tar.gz
+_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=dc1f13b1542605ebc9fb82e11798b74b
