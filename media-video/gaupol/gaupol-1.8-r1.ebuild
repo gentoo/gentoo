@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 gnome2-utils virtualx xdg-utils
+inherit distutils-r1 virtualx xdg-utils
 
 DESCRIPTION="A subtitle editor for text-based subtitles"
 HOMEPAGE="https://otsaloma.io/gaupol/"
@@ -22,21 +22,22 @@ RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
-	spell? (
-		app-text/gtkspell:3
-		>=dev-python/pyenchant-1.4[${PYTHON_USEDEP}]
-	)
+	spell? ( app-text/gspell[introspection] )
 "
 DEPEND="
 	sys-devel/gettext
 	test? (
 		${RDEPEND}
-		dev-python/pyenchant[${PYTHON_USEDEP}]
+		app-dicts/myspell-en
+		app-text/enchant[hunspell]
+		app-text/gspell[introspection]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 
 DOCS=( AUTHORS.md NEWS.md TODO.md README.md README.aeidon.md )
+
+PATCHES=( "${FILESDIR}/${P}-fix-audio-tracks-order.patch" )
 
 python_test() {
 	virtx pytest -vv
@@ -44,20 +45,23 @@ python_test() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog "Previewing support needs MPV, MPlayer or VLC."
-
+		elog "The integrated video player requires media-plugins/gst-plugins-gtk."
+		elog ""
+		elog "External video previewing support requires MPV, MPlayer or VLC."
 		if use spell; then
-			elog "Additionally, spell-checking requires a dictionary, any of"
-			elog "Aspell/Pspell, Ispell, MySpell, Uspell, Hspell or AppleSpell."
+			elog ""
+			elog "Spell-checking requires a dictionary, any of app-dicts/myspell-*"
+			elog "or app-text/aspell with the appropriate L10N variable."
+			elog ""
+			elog "Additionally, make sure that app-text/enchant has the correct flags enabled:"
+			elog "USE=hunspell for myspell dictionaries and USE=aspell for aspell dictionaries."
 		fi
 	fi
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
