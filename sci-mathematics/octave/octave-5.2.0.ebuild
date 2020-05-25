@@ -14,7 +14,7 @@ SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot gui hdf5 java libressl opengl
 	portaudio postscript +qhull +qrupdate readline sndfile +sparse
 	ssl static-libs X zlib"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-arch/bzip2
