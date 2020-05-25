@@ -598,43 +598,6 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	local mysqld_binary="${EROOT}/usr/sbin/mysqld"
-	if [[ ! -x "${mysqld_binary}" ]] ; then
-		die "'${mysqld_binary}' not found! Please re-install ${CATEGORY}/${PN}!"
-	fi
-
-	local mysql_binary="${EROOT}/usr/bin/mysql"
-	if [[ ! -x "${mysql_binary}" ]] ; then
-		die "'${mysql_binary}' not found! Please re-install ${CATEGORY}/${PN}!"
-	fi
-
-	local my_print_defaults_binary="${EROOT}/usr/bin/my_print_defaults"
-	if [[ ! -x "${my_print_defaults_binary}" ]] ; then
-		die "'${my_print_defaults_binary}' not found! Please re-install dev-db/mysql-connector-c!"
-	fi
-
-	if [[ -z "${MYSQL_USER}" ]] ; then
-		MYSQL_USER=mysql
-		if use prefix ; then
-			MYSQL_USER=$(id -u -n 2>/dev/null)
-			if [[ -z "${MYSQL_USER}" ]] ; then
-				die "Failed to determine current username!"
-			fi
-		fi
-	fi
-
-	if [[ -z "${MYSQL_GROUP}" ]] ; then
-		MYSQL_GROUP=mysql
-		if use prefix ; then
-			MYSQL_GROUP=$(id -g -n 2>/dev/null)
-			if [[ -z "${MYSQL_GROUP}" ]] ; then
-				die "Failed to determine current user groupname!"
-			fi
-		fi
-	fi
-
-	einfo "Will use username '${MYSQL_USER}' and group '${MYSQL_GROUP}' ..."
-
 	_getoptval() {
 		local section="$1"
 		local flag="--${2}="
@@ -699,6 +662,41 @@ pkg_config() {
 		done
 	}
 
+	local mysqld_binary="${EROOT}/usr/sbin/mysqld"
+	if [[ ! -x "${mysqld_binary}" ]] ; then
+		die "'${mysqld_binary}' not found! Please re-install ${CATEGORY}/${PN}!"
+	fi
+
+	local mysql_binary="${EROOT}/usr/bin/mysql"
+	if [[ ! -x "${mysql_binary}" ]] ; then
+		die "'${mysql_binary}' not found! Please re-install ${CATEGORY}/${PN}!"
+	fi
+
+	local my_print_defaults_binary="${EROOT}/usr/bin/my_print_defaults"
+	if [[ ! -x "${my_print_defaults_binary}" ]] ; then
+		die "'${my_print_defaults_binary}' not found! Please re-install dev-db/mysql-connector-c!"
+	fi
+
+	if [[ -z "${MYSQL_USER}" ]] ; then
+		MYSQL_USER=mysql
+		if use prefix ; then
+			MYSQL_USER=$(id -u -n 2>/dev/null)
+			if [[ -z "${MYSQL_USER}" ]] ; then
+				die "Failed to determine current username!"
+			fi
+		fi
+	fi
+
+	if [[ -z "${MYSQL_GROUP}" ]] ; then
+		MYSQL_GROUP=mysql
+		if use prefix ; then
+			MYSQL_GROUP=$(id -g -n 2>/dev/null)
+			if [[ -z "${MYSQL_GROUP}" ]] ; then
+				die "Failed to determine current user groupname!"
+			fi
+		fi
+	fi
+
 	# my_print_defaults needs to read stuff in $HOME/.my.cnf
 	local -x HOME="${EROOT}/root"
 
@@ -718,8 +716,6 @@ pkg_config() {
 		ewarn "Looks like your data directory '${MY_DATADIR}' is already initialized!"
 		ewarn "Please rename or delete its content if you wish to initialize a new data directory."
 		die "${PN} data directory at '${MY_DATADIR}' looks already initialized!"
-	else
-		einfo "${PN} data directory detected as '${MY_DATADIR}' ..."
 	fi
 
 	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir "--defaults-file='${MY_SYSCONFDIR}/my.cnf'")"
@@ -773,7 +769,7 @@ pkg_config() {
 		su -s /bin/sh -c "touch ${_my_datadir_testfile}" ${MYSQL_USER} &>/dev/null
 	fi
 
-	if [[ $? -ne 0 ]]; then
+	if [[ $? -ne 0 ]] ; then
 		die "${MYSQL_USER} user cannot write into data directory '${MY_DATADIR}'!"
 	else
 		rm "${_my_datadir_testfile}" || die
@@ -786,33 +782,31 @@ pkg_config() {
 			|| die "Failed to create ${PN} tmpdir '${MYSQL_TMPDIR}'!"
 	fi
 
-	if [[ -n "${MYSQL_TMPDIR}" ]] ; then
-		local _my_tmpdir_testfile="$(_mktemp_dry "${MYSQL_TMPDIR}/.pkg_config-access-test.XXXXXXXXX")"
-		[[ -z "${_my_tmpdir_testfile}" ]] \
-			&& die "_mktemp_dry() for '${MYSQL_TMPDIR}/.pkg_config-access-test.XXXXXXXXX' failed!"
-
-		if use prefix ; then
-			touch "${_my_tmpdir_testfile}" &>/dev/null
-		else
-			su -s /bin/sh -c "touch ${_my_tmpdir_testfile}" ${MYSQL_USER} &>/dev/null
-		fi
-
-		if [[ $? -ne 0 ]]; then
-			die "${MYSQL_USER} user cannot write into data directory '${MYSQL_TMPDIR}'!"
-		else
-			rm "${_my_tmpdir_testfile}" || die
-			unset _my_tmpdir_testfile
-		fi
-	else
-		# If no tmpdir is set, mysqld will use default system tmpdir.
-		# However, we are using tmpdir from package manager at the
-		# moment which maybe isn't writeable for $MYSQL_USER...
-		MYSQL_TMPDIR="$(_mktemp_dry "${T}/mysqld-tmp.XXXXXXXXX")"
+	if [[ -z "${MYSQL_TMPDIR}" ]] ; then
+		MYSQL_TMPDIR="$(_mktemp_dry "${EROOT}/tmp/mysqld-tmp.XXXXXXXXX")"
 		[[ -z "${MYSQL_TMPDIR}" ]] \
 			&& die "_mktemp_dry() for '${MYSQL_TMPDIR}' failed!"
 
 		mkdir "${MYSQL_TMPDIR}" || die
 		chown ${MYSQL_USER} "${MYSQL_TMPDIR}" || die
+	fi
+
+	# Now we need to test MYSQL_TMPDIR...
+	local _my_tmpdir_testfile="$(_mktemp_dry "${MYSQL_TMPDIR}/.pkg_config-access-test.XXXXXXXXX")"
+	[[ -z "${_my_tmpdir_testfile}" ]] \
+		&& die "_mktemp_dry() for '${MYSQL_TMPDIR}/.pkg_config-access-test.XXXXXXXXX' failed!"
+
+	if use prefix ; then
+		touch "${_my_tmpdir_testfile}" &>/dev/null
+	else
+		su -s /bin/sh -c "touch ${_my_tmpdir_testfile}" ${MYSQL_USER} &>/dev/null
+	fi
+
+	if [[ $? -ne 0 ]] ; then
+		die "${MYSQL_USER} user cannot write into tmpdir '${MYSQL_TMPDIR}'!"
+	else
+		rm "${_my_tmpdir_testfile}" || die
+		unset _my_tmpdir_testfile
 	fi
 
 	if [[ -n "${MYSQL_LOG_BIN}" && ! -d "${MYSQL_LOG_BIN}" ]] ; then
@@ -832,7 +826,7 @@ pkg_config() {
 			su -s /bin/sh -c "touch ${_my_logbin_testfile}" ${MYSQL_USER} &>/dev/null
 		fi
 
-		if [[ $? -ne 0 ]]; then
+		if [[ $? -ne 0 ]] ; then
 			die "${MYSQL_USER} user cannot write into log-bin directory '${MYSQL_LOG_BIN}'!"
 		else
 			rm "${_my_logbin_testfile}" || die
@@ -857,13 +851,51 @@ pkg_config() {
 			su -s /bin/sh -c "touch ${_my_relaylog_testfile}" ${MYSQL_USER} &>/dev/null
 		fi
 
-		if [[ $? -ne 0 ]]; then
+		if [[ $? -ne 0 ]] ; then
 			die "${MYSQL_USER} user cannot write into relay-log directory '${MYSQL_RELAY_LOG}'!"
 		else
 			rm "${_my_relaylog_testfile}" || die
 			unset _my_relaylog_testfile
 		fi
 	fi
+
+	local mysql_install_log="$(_mktemp_dry "${MYSQL_TMPDIR}/install_db.XXXXXXXXX.log")"
+	if [[ -z "${mysql_install_log}" ]] ; then
+		die "_mktemp_dry() for '${MYSQL_TMPDIR}/install_db.XXXXXXXXX.log' failed!"
+	else
+		# make sure file is writable for MYSQL_USER...
+		touch "${mysql_install_log}" || die
+		chown ${MYSQL_USER} "${mysql_install_log}" || die
+	fi
+
+	local mysqld_logfile="$(_mktemp_dry "${MYSQL_TMPDIR}/install_mysqld.XXXXXXXXX.log")"
+	if [[ -z "${mysqld_logfile}" ]] ; then
+		die "_mktemp_dry() for '${MYSQL_TMPDIR}/install_mysqld.XXXXXXXXX.log' failed!"
+	else
+		# make sure file is writable for MYSQL_USER...
+		touch "${mysqld_logfile}" || die
+		chown ${MYSQL_USER} "${mysqld_logfile}" || die
+	fi
+
+	echo ""
+	einfo "Detected settings:"
+	einfo "=================="
+	einfo "MySQL User:\t\t\t\t${MYSQL_USER}"
+	einfo "MySQL Group:\t\t\t\t${MYSQL_GROUP}"
+	einfo "MySQL DATA directory:\t\t${MY_DATADIR}"
+	einfo "MySQL TMP directory:\t\t\t${MYSQL_TMPDIR}"
+
+	if [[ -n "${MYSQL_LOG_BIN}" ]] ; then
+		einfo "MySQL Binary Log File location:\t${MYSQL_LOG_BIN}"
+	fi
+
+	if [[ -n "${MYSQL_RELAY_LOG}" ]] ; then
+		einfo "MySQL Relay Log File location:\t${MYSQL_RELAY_LOG}"
+	fi
+
+	einfo "PID DIR:\t\t\t\t${PID_DIR}"
+	einfo "Install db log:\t\t\t${mysql_install_log}"
+	einfo "Install server log:\t\t\t${mysqld_logfile}"
 
 	local -a config_files
 
@@ -909,6 +941,8 @@ pkg_config() {
 					die "Authentication plugin '${user_answer}' is unknown/unsupported!"
 					;;
 			esac
+
+			echo "Selected authentication plugin: ${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}" >> "${mysql_install_log}"
 
 			unset user_answer
 		fi
@@ -1015,18 +1049,15 @@ pkg_config() {
 
 	# Prepare timezones, see
 	# https://dev.mysql.com/doc/mysql/en/time-zone-support.html
-	local tz_sql="${TMPDIR}/tz.sql"
+	local tz_sql="$(_mktemp_dry "${MYSQL_TMPDIR}/tz.XXXXXXXXX.sql")"
+	[[ -z "${tz_sql}" ]] \
+		&& die "_mktemp_dry() for '${MYSQL_TMPDIR}/tz.XXXXXXXXX.sql' failed!"
+
 	echo "USE mysql;" >"${tz_sql}"
 	"${EROOT}/usr/bin/mysql_tzinfo_to_sql" "${EROOT}/usr/share/zoneinfo" >> "${tz_sql}" 2>/dev/null
 	if [[ $? -ne 0 ]] ; then
 		die "mysql_tzinfo_to_sql failed!"
 	fi
-
-	chown ${MYSQL_USER} "${tz_sql}" || die
-
-	local mysql_install_log="${TMPDIR}/mysql_install_db.log"
-	touch "${mysql_install_log}" || die
-	chown ${MYSQL_USER} "${mysql_install_log}" || die
 
 	# --initialize-insecure will not set root password
 	# --initialize would set a random one in the log which we don't need as we set it ourselves
@@ -1050,14 +1081,12 @@ pkg_config() {
 		die "Failed to initialize ${PN} data directory. Please review '${mysql_install_log}'!"
 	fi
 
-	local x=${RANDOM}
-	local socket="${EROOT}/run/mysqld/mysqld${x}.sock"
-	local pidfile="${EROOT}/run/mysqld/mysqld${x}.pid"
-	unset x
+	rm "${tz_sql}" || die
 
-	local mysqld_logfile="${TMPDIR}/mysqld.log"
-	touch "${mysqld_logfile}" || die
-	chown ${MYSQL_USER} "${mysqld_logfile}" || die
+	local x=${RANDOM}
+	local socket="${EROOT}${PID_DIR}/mysqld${x}.sock"
+	local pidfile="${EROOT}${PID_DIR}/mysqld${x}.pid"
+	unset x
 
 	cmd=(
 		"${mysqld_binary}"
