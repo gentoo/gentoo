@@ -3270,7 +3270,7 @@ dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data 
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 5.5.66 5.5.67 5.5.68 10.1.38-r1 10.1.43 10.1.44-r1 10.1.45 10.2.22-r1 10.2.29 10.2.31-r1 10.2.32 10.3.20 10.3.22-r1 10.3.23 10.4.10 10.4.12 10.4.13: An enhanced, drop-in replacement for MySQL
-dev-db/mariadb-connector-c 3.1.6 3.1.7 9999: C client library for MariaDB/MySQL
+dev-db/mariadb-connector-c 3.1.6 3.1.7 3.1.8 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.13 3.6.17 4.0.12 4.0.16-r1 4.2.3-r1 4.2.6: A high-performance, open source, schema-free document-oriented database
@@ -3295,7 +3295,7 @@ dev-db/oracle-instantclient-basic 11.2.0.3 11.2.0.4 12: Transition package movin
 dev-db/oracle-instantclient-jdbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.7.27.30 8.0.18.9 8.0.19.10: Fully compatible, enhanced and open source drop-in replacement for MySQL
+dev-db/percona-server 5.7.27.30 8.0.19.10: Fully compatible, enhanced and open source drop-in replacement for MySQL
 dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.15 8.0.7: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
@@ -7599,7 +7599,7 @@ dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
-dev-python/certifi 2019.11.28 2020.4.5.1: Python package for providing Mozilla's CA Bundle
+dev-python/certifi 2020.4.5.1: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.14.0: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.21.6 0.30.1: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
@@ -8712,7 +8712,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 44.0.0 44.1.0 46.1.3 46.2.0 46.3.0 46.3.1 46.4.0-r1: Collection of extensions to Distutils
+dev-python/setuptools 44.0.0 44.1.0 46.4.0-r1: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 3.5.0: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
@@ -14960,7 +14960,7 @@ net-misc/rclone 1.50.0 1.51.0 9999: A program to sync files to and from various 
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.4.3 1.4.4 1.4.4-r1 1.4.4-r2: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.4.3 1.4.4 1.4.4-r1 1.4.4-r2 1.4.5: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
@@ -16183,7 +16183,7 @@ sci-mathematics/pymc3 3.1-r1: Bayesian Modeling and Probabilistic Machine Learni
 sci-mathematics/relational 2.5-r2: Educational tool for relational algebra
 sci-mathematics/rkward 0.7.1: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 1.2.5033 1.2.5042: IDE for the R language
+sci-mathematics/rstudio 1.2.5033 1.2.5042 1.3.959: IDE for the R language
 sci-mathematics/rw 0.8-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 4.0.2 4.0.3: Computer algebra system for polynomial computations
