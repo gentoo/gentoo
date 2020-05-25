@@ -24,7 +24,7 @@ RDEPEND="sci-libs/hdf5:=[hl(+)]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 
-BDEPEND="dev-python/pkgconfig"
+BDEPEND="dev-python/pkgconfig[${PYTHON_USEDEP}]"
 #	mpi? ( virtual/mpi )
 
 DEPEND="dev-python/cython[${PYTHON_USEDEP}]
