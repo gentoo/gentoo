@@ -21,6 +21,7 @@
 		<flag name="iprint">Enabling iPrint technology by Novell</flag>
 		<flag name="profiling-data">Enables support for collecting profiling data</flag>
 		<flag name="quota">Enables support for user quotas</flag>
+		<flag name="snapper">Enable vfs_snapper module (requires <pkg>sys-apps/dbus</pkg>)</flag>
 		<flag name="system-heimdal">Use <pkg>app-crypt/heimdal</pkg> instead of
 			bundled heimdal.</flag>
 		<flag name="system-mitkrb5">Use <pkg>app-crypt/mit-krb5</pkg> instead of
