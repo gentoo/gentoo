@@ -1,0 +1,37 @@
+From 93901215b45db2ab9d50987ac109c29acbe34600 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 25 May 2020 16:38:17 +0200
+Subject: [PATCH] Skip numpy tests when numpy is not available
+
+Make it possible to successfully run tests without numpy installed.
+This package is becoming quite hard profile, and being able to test it
+without building numpy first would be a nice feature.
+---
+ tests/test_api.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_api.py b/tests/test_api.py
+index dd12eb3..67bcd88 100644
+--- a/tests/test_api.py
++++ b/tests/test_api.py
+@@ -103,7 +103,7 @@ def test_array_sep():
+ 
+ 
+ def test_numpy_floats():
+-    import numpy as np
++    np = pytest.importorskip('numpy')
+ 
+     encoder = toml.TomlNumpyEncoder()
+     d = {'a': np.array([1, .3], dtype=np.float64)}
+@@ -120,7 +120,7 @@ def test_numpy_floats():
+ 
+ 
+ def test_numpy_ints():
+-    import numpy as np
++    np = pytest.importorskip('numpy')
+ 
+     encoder = toml.TomlNumpyEncoder()
+     d = {'a': np.array([1, 3], dtype=np.int64)}
+-- 
+2.26.2
+
