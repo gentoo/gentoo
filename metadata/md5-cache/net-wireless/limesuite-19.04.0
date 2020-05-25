@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=x11-libs/fltk x11-libs/wxGTK:3.0-gtk3 net-wireless/soapysdr:= virtual/opengl virtual/libusb:1
 SLOT=0
 SRC_URI=https://github.com/myriadrf/LimeSuite/archive/v19.04.0.tar.gz -> limesuite-19.04.0.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=31af4fedc4eb6c94ccdfcc9432c288a7

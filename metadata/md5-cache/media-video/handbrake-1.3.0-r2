@@ -11,5 +11,5 @@ RDEPEND=app-arch/xz-utils media-libs/speex dev-libs/jansson dev-libs/libxml2 med
 REQUIRED_USE=^^ ( fdk libav-aac )
 SLOT=0
 SRC_URI=https://download2.handbrake.fr/1.3.0/HandBrake-1.3.0-source.tar.bz2 -> handbrake-1.3.0.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=9afb8f8ae6848f93848ce83be33430e7

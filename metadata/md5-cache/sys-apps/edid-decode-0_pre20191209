@@ -7,5 +7,5 @@ KEYWORDS=amd64 x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~conikost/files/edid-decode-e719d04077d098eb51d9494f41060eba2419d4bc.tar.gz -> edid-decode-0_pre20191209.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=f3f3bbcbe660fcd842062e5bbda4f491

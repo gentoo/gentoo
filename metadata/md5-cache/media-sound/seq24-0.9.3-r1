@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-cpp/gtkmm:2.4 dev-libs/libsigc++:2 media-libs/alsa-lib jack? ( virtual/jack ) lash? ( media-sound/lash )
 SLOT=0
 SRC_URI=https://edge.launchpad.net/seq24/trunk/0.9.3/+download/seq24-0.9.3.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=1e86885f570c94a1f3f1cfc7fbd3de85

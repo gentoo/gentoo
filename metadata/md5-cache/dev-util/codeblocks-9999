@@ -9,5 +9,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=app-arch/zip >=dev-libs/tinyxml-2.6.2-r3 >=dev-util/astyle-3.1-r2:0/3.1 x11-libs/wxGTK:3.0-gtk3[X] contrib? ( app-admin/gamin app-text/hunspell dev-libs/boost:= )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	subversion	4beaac7ba954403d7bbe4d4b8befdb82	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	subversion	4beaac7ba954403d7bbe4d4b8befdb82	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=33bcc68ac0c5dce7f43aa03616e5260d

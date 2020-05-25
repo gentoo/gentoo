@@ -9,5 +9,5 @@ RDEPEND=|| ( app-emulation/virtualbox app-emulation/virtualbox-bin ) || ( dev-li
 RESTRICT=bindist fetch
 SLOT=0
 SRC_URI=genymotion-3.1.0-linux_x64.bin
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	ac7989ababbeabdef6fdc6e465b21644	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	0914eab919f4f11dd9e0407b92af4726	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=877890b3f6dddd108b746270471e062f

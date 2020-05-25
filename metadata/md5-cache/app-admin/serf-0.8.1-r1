@@ -8,5 +8,5 @@ LICENSE=MPL-2.0 Apache-2.0 BSD MIT
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/hashicorp/serf/archive/v0.8.1.tar.gz -> serf-0.8.1.tar.gz https://github.com/mitchellh/gox/archive/c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz -> github.com-mitchellh-gox-c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz https://github.com/mitchellh/iochan/archive/87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz -> github.com-mitchellh-iochan-87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=c437d68a75b1add11d9a3bd0b68fcdf0

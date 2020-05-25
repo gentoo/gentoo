@@ -9,5 +9,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=app-arch/gzip dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 virtual/jack alsa? ( media-libs/alsa-lib ) dbus? ( dev-qt/qtdbus:5 ) portaudio? ( media-libs/portaudio )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=a25d61cab64d13cbe03622e0c35d838a

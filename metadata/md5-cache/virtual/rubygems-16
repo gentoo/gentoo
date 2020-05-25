@@ -8,5 +8,5 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~pp
 RDEPEND=ruby_targets_ruby24? ( >=dev-ruby/rubygems-2.6.11[ruby_targets_ruby24] ) ruby_targets_ruby25? ( >=dev-ruby/rubygems-2.7.3[ruby_targets_ruby25] ) ruby_targets_ruby26? ( >=dev-ruby/rubygems-3.0.1[ruby_targets_ruby26] ) ruby_targets_ruby27? ( >=dev-ruby/rubygems-3.1.0[ruby_targets_ruby27] ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 )
 REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
 SLOT=0
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	ac7989ababbeabdef6fdc6e465b21644	ruby-ng	a1c89995f9f6dd045e93d13a92ca81a9	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	0914eab919f4f11dd9e0407b92af4726	ruby-ng	a1c89995f9f6dd045e93d13a92ca81a9	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=f35ab0444d0fb4c7cedf6834206020ec

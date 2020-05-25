@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=acct-group/murmur acct-user/murmur >=dev-libs/openssl-1.0.0b:0= >=dev-libs/protobuf-2.2.0:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 || ( dev-qt/qtsql:5[sqlite] dev-qt/qtsql:5[mysql] ) dev-qt/qtxml:5 sys-apps/lsb-release >=sys-libs/libcap-2.15 dbus? ( dev-qt/qtdbus:5 ) ice? ( dev-libs/Ice:= ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 SLOT=0
 SRC_URI=https://github.com/mumble-voip/mumble/releases/download/1.3.0/mumble-1.3.0.tar.gz https://dl.mumble.info/mumble-1.3.0.tar.gz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	ac7989ababbeabdef6fdc6e465b21644	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	0914eab919f4f11dd9e0407b92af4726	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=b04793b74cd21ece196cfb4f91e4b0bb

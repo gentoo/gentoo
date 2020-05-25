@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-admin/gkrellm:2[X] dev-libs/openssl:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/gkwebmon/gkwebmon-0.2.tgz
-_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=1bb1be6f9a516771796a232501c665df

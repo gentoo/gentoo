@@ -11,5 +11,5 @@ PDEPEND=>=dev-ruby/minitest-5.13.0[ruby_targets_ruby27] >=dev-ruby/net-telnet-0.
 RDEPEND=berkdb? ( sys-libs/db:= ) gdbm? ( sys-libs/gdbm:= ) jemalloc? ( dev-libs/jemalloc ) jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) ) socks5? ( >=net-proxy/dante-1.1.13 ) tk? ( dev-lang/tcl:0=[threads] dev-lang/tk:0=[threads] ) dev-libs/libyaml dev-libs/libffi:= sys-libs/readline:0= sys-libs/zlib >=app-eselect/eselect-ruby-20191222
 SLOT=2.7
 SRC_URI=https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.1.tar.xz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=8c6ec42fe733dc8cc97eec29fc64f643

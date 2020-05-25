@@ -10,5 +10,5 @@ RDEPEND=dev-libs/apr:1= dev-libs/openssl:0= >=virtual/jre-1.8 >=dev-java/java-co
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://apache/tomcat/tomcat-connectors/native/1.2.24/source/tomcat-native-1.2.24-src.tar.gz
-_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=38e20351abf2cc2d5662dcc017a74880

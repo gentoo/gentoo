@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=BSD-2
 SLOT=0/4
 SRC_URI=https://code.videolan.org/videolan/dav1d/-/archive/0.7.0/dav1d-0.7.0.tar.bz2
-_eclasses_=meson	991e544bbaf3120073ededbdc1d8bf93	multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=meson	991e544bbaf3120073ededbdc1d8bf93	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=bc45c7e10adbea0ddcdd817e4cbb1100

@@ -9,5 +9,5 @@ PROPERTIES=live
 RDEPEND=acct-group/dnscrypt-proxy acct-user/dnscrypt-proxy filecaps? ( sys-libs/libcap )
 RESTRICT=strip
 SLOT=0
-_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=f002a44d9ff5ae419e44e7409bc1011a

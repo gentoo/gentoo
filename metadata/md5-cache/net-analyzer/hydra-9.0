@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=gtk? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) firebird? ( dev-db/firebird ) gcrypt? ( dev-libs/libgcrypt ) idn? ( net-dns/libidn:0= ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) memcached? ( dev-libs/libmemcached[sasl] ) mongodb? ( dev-libs/mongo-c-driver ) mysql? ( dev-db/mysql-connector-c:0= ) ncp? ( net-fs/ncpfs ) ncurses? ( sys-libs/ncurses:= ) oracle? ( dev-db/oracle-instantclient-basic ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql:* ) rdp? ( net-misc/freerdp ) libssh? ( >=net-libs/libssh-0.4.0 ) subversion? ( dev-vcs/subversion ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/vanhauser-thc/thc-hydra/archive/v9.0.tar.gz -> hydra-9.0.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=b008a45bea0e2ec728897ed5c598775c

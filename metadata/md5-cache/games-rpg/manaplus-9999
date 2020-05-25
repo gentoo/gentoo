@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=>=dev-games/physfs-1.0.0 media-fonts/dejavu media-fonts/liberation-fonts media-fonts/mplus-outline-fonts media-fonts/wqy-microhei media-libs/libpng:0= net-misc/curl sys-libs/zlib x11-apps/xmessage x11-libs/libX11 x11-misc/xdg-utils mumble? ( media-sound/mumble ) nls? ( virtual/libintl ) opengl? ( virtual/opengl ) pugixml? ( dev-libs/pugixml ) !pugixml? ( dev-libs/libxml2 ) sdl2? ( media-libs/libsdl2[X,opengl?,video] media-libs/sdl2-gfx media-libs/sdl2-image[png] media-libs/sdl2-mixer[vorbis] media-libs/sdl2-net media-libs/sdl2-ttf ) !sdl2? ( media-libs/libsdl[X,opengl?,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-net media-libs/sdl-ttf )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=279033b238057c603338d092dd40418d

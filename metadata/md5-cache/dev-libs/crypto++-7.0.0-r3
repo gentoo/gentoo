@@ -8,5 +8,5 @@ KEYWORDS=~alpha amd64 ~arm arm64 hppa ppc ppc64 sparc x86 ~x64-macos
 LICENSE=Boost-1.0
 SLOT=0/7
 SRC_URI=https://www.cryptopp.com/cryptopp700.zip
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=9ad0515b0d1ca2e75624bf03e4c0352a

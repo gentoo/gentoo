@@ -11,5 +11,5 @@ PROPERTIES=live
 RDEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.28 >=x11-libs/cairo-1.2.6 >=x11-libs/pango-1.8.0 virtual/freedesktop-icon-theme gtk? ( x11-libs/gtk+:2 ) !gtk? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
 SLOT=0
 SRC_URI=mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=c91e6540d5c43c549d409d71e9d906ee

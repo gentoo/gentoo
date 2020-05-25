@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=virtual/libintl doc? ( app-text/gnome-doc-utils ) ffmpegthumbnailer? ( media-video/ffmpegthumbnailer ) gpu-accel? ( media-libs/clutter-gtk ) gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) lirc? ( app-misc/lirc ) lua? ( >=dev-lang/lua-5.1:= ) map? ( media-libs/libchamplain:0.12 ) pdf? ( >=app-text/poppler-0.62[cairo] ) tiff? ( media-libs/tiff:0 ) xmp? ( >=media-gfx/exiv2-0.17:=[xmp] ) !xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )
 REQUIRED_USE=gpu-accel? ( gtk3 ) map? ( gpu-accel )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=82f33481b18be719ff82e5fc0e2be789

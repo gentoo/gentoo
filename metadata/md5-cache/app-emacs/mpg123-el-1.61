@@ -8,5 +8,5 @@ LICENSE=mpg123-el
 RDEPEND=media-sound/mpg123 media-sound/alsa-utils >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/mpg123-el-1.61.tar.xz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=c2df5a5d31240af5a83095b6ff566981

@@ -5,5 +5,5 @@ IUSE=introspection static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 ab
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86
 RDEPEND=>=dev-libs/libgudev-232:0/0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?,introspection?,static-libs?]
 SLOT=0/0
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	multilib-build	dfda7934df092a96e439c05b4aeac519	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multilib-build	dfda7934df092a96e439c05b4aeac519	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=8966e7ec1f764900403e5511b0c8cd1d

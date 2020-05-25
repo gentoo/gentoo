@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/chmlib-0.36 x11-libs/wxGTK:3.0-gtk3[X] nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=https://github.com/rzvncj/xCHM/releases/download/1.31/xchm-1.31.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=c6f9c5ec6cdd5bdb95dc3741b738d72e

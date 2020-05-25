@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=5.4.13_p7
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.4.13.xz https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-5.4 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-check -> deblob-check-5.4 ) https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-5.4.13-rt7.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.13-rt7.patch.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	51166f4011c40ba947ae50ae7184139f	multilib	ac7989ababbeabdef6fdc6e465b21644	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	51166f4011c40ba947ae50ae7184139f	multilib	0914eab919f4f11dd9e0407b92af4726	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=2524629bd8b115fb50d4edeee9c7bf5c

@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=net-firewall/iptables virtual/tmpfiles
 SLOT=0
 SRC_URI=amd64? ( https://pkgs.tailscale.com/stable/tailscale_0.98-0_amd64.tgz ) arm? ( https://pkgs.tailscale.com/stable/tailscale_0.98-0_arm.tgz ) arm64? ( https://pkgs.tailscale.com/stable/tailscale_0.98-0_arm64.tgz ) x86? ( https://pkgs.tailscale.com/stable/tailscale_0.98-0_386.tgz )
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=f383a42f538ddf4038f19fb6258d1201

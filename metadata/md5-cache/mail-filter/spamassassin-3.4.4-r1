@@ -10,5 +10,5 @@ RDEPEND=acct-user/spamd acct-group/spamd dev-lang/perl:= dev-perl/HTML-Parser de
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://apache/spamassassin/source/Mail-SpamAssassin-3.4.4.tar.bz2
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	multilib	ac7989ababbeabdef6fdc6e465b21644	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	multilib	0914eab919f4f11dd9e0407b92af4726	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=fb28188036e623d2b4373c8c4379c1c7

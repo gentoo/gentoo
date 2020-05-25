@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=net-firewall/iptables[ipv6] sys-apps/iproute2[-minimal] sys-apps/net-tools virtual/modutils || ( net-misc/wget net-misc/curl )
 SLOT=0
 SRC_URI=https://download.sanewall.org/releases/1.1.6/sanewall-1.1.6.tar.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=a5c1b5431209e08d505e3ae3fb5368a9

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=app-text/poppler dev-qt/linguist:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5
 SLOT=0
 SRC_URI=https://bitbucket.org/dismine/valentina/get/v0.6.1.zip -> valentina-0.6.1.zip https://dev.gentoo.org/~fordfrog/distfiles/valentina-5858.patch.bz2
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	multilib	ac7989ababbeabdef6fdc6e465b21644	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	multilib	0914eab919f4f11dd9e0407b92af4726	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=9c7e50de56c12b7b80418f858d4cf8cb

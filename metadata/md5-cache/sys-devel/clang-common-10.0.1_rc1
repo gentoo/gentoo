@@ -6,5 +6,5 @@ LICENSE=Apache-2.0-with-LLVM-exceptions UoI-NCSA
 PDEPEND=sys-devel/clang:*
 SLOT=0
 SRC_URI=https://github.com/llvm/llvm-project/archive/llvmorg-10.0.1-rc1.tar.gz
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	llvm.org	4e92588f6138c82063258a2d303eaed8	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	llvm.org	4e92588f6138c82063258a2d303eaed8	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=a6513b1aae1caeb77b1491bb87b5058a

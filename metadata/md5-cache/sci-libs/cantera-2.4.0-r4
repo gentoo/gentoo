@@ -12,5 +12,5 @@ REQUIRED_USE=python? ( cti ) ^^ ( python_single_target_python3_6 python_single_t
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Cantera/cantera/archive/v2.4.0.tar.gz -> cantera-2.4.0.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	scons-utils	7fa3bb47972ff4c5fa8004463ec6f023	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	fortran-2	1a8c9d0b2d30f756bae6be4e9b39e46b	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	scons-utils	7fa3bb47972ff4c5fa8004463ec6f023	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=db6e4d04ff32f6d12cd85597091700c4

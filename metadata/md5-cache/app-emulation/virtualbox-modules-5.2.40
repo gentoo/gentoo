@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!=app-emulation/virtualbox-9999 kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~polynomial-c/virtualbox/vbox-kernel-module-src-5.2.40.tar.xz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	linux-mod	9991808b521b5a8c569c9c4ccf8893f6	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	linux-mod	9991808b521b5a8c569c9c4ccf8893f6	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=45d0bbf31e31a501122156d16eefe77e

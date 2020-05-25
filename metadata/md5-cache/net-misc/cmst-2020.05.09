@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 net-misc/connman
 SLOT=0
 SRC_URI=https://github.com/andrew-bibb/cmst/archive/2020.05.09.tar.gz -> cmst-2020.05.09.tar.gz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	ac7989ababbeabdef6fdc6e465b21644	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	0914eab919f4f11dd9e0407b92af4726	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=61a51b84627e74bba5b2226b9c0e95f1

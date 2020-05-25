@@ -8,5 +8,5 @@ LICENSE=ipw3945
 RDEPEND=bluetooth? ( sys-firmware/iwl3160-7260-bt-ucode ) !sys-kernel/linux-firmware[-savedconfig]
 SLOT=9
 SRC_URI=https://wireless.kernel.org/en/users/Drivers/iwlwifi?action=AttachFile&do=get&target=iwlwifi-3160-ucode-25.228.9.0.tgz -> iwl3160-ucode-0.9.228.25.tgz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=b152ad27535f63c79852edc812e7b5ea

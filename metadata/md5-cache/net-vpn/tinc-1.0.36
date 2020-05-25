@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) lzo? ( dev-libs/lzo:2 ) zlib? ( sys-libs/zlib ) vde? ( net-misc/vde )
 SLOT=0
 SRC_URI=http://www.tinc-vpn.org/packages/tinc-1.0.36.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=01cf8df0766b29804de8e7f647dcc827

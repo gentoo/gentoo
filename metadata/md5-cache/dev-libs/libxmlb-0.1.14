@@ -11,5 +11,5 @@ RDEPEND=dev-libs/glib:2 sys-apps/util-linux stemmer? ( dev-libs/snowball-stemmer
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/hughsie/libxmlb/archive/0.1.14.tar.gz -> libxmlb-0.1.14.tar.gz
-_eclasses_=meson	991e544bbaf3120073ededbdc1d8bf93	multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=meson	991e544bbaf3120073ededbdc1d8bf93	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=a384f01331e0f33a5ddf00610fcdf9f6

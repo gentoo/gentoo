@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-db/mysql-connector-c:=
 SLOT=0
 SRC_URI=http://libnss-mysql.sourceforge.net/snapshot/libnss-mysql-20060915.tgz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=8bd9a4f7b490bcc68d8b83e30bbaa0ae

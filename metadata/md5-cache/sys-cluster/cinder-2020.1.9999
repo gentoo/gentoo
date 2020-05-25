@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( mysql postgres sqlite ) iscsi? ( tgt ) infiniband? ( rdma ) ||
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~prometheanfire/dist/openstack/cinder/ussuri/cinder.conf.sample -> cinder.conf.sample-2020.1.9999
-_eclasses_=distutils-r1	054fa5f0442c7ccb4d4a05410d92123b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=distutils-r1	054fa5f0442c7ccb4d4a05410d92123b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=3acf7b62bdf1f07e81dbb1bc759faba7

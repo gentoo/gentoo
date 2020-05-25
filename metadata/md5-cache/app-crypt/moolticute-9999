@@ -7,5 +7,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=>=dev-libs/libusb-1.0.20 dev-qt/qtdbus:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qttest:5 dev-qt/qtwebsockets:5 dev-qt/qtwidgets:5
 SLOT=0
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	ac7989ababbeabdef6fdc6e465b21644	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	0914eab919f4f11dd9e0407b92af4726	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	udev	452708c3f55cf6e918b045adb949a9e6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=e456d387de4cf0b095eac78a1989c9a8

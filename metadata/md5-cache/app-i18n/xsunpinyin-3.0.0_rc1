@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1 CDDL
 RDEPEND=~app-i18n/sunpinyin-3.0.0_rc1:= x11-libs/gtk+:2 x11-libs/libX11
 SLOT=0
 SRC_URI=https://github.com/xsunpinyin/xsunpinyin/archive/v3.0.0-rc1.tar.gz -> sunpinyin-3.0.0_rc1.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	scons-utils	7fa3bb47972ff4c5fa8004463ec6f023	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	scons-utils	7fa3bb47972ff4c5fa8004463ec6f023	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=5b41b9e2741d388d574ab50fcb0638ed

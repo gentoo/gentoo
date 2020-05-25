@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/iniparser-4.1:4 x11-libs/gtk+:2
 SLOT=0
 SRC_URI=http://littlesvr.ca/isomaster/releases/isomaster-1.3.15.tar.bz2
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=243b250b6ab85a2a2d75410e2aeba09d

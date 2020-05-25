@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=www-apache/mod_backtrace-2.01 =www-servers/apache-2*[debug] =www-servers/apache-2*
 SLOT=0
 SRC_URI=https://emptyhammock.com/downloads/wku_bt-2.01.zip
-_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	05ca915dc22ea60059f85d8d9a34d3de	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	05ca915dc22ea60059f85d8d9a34d3de	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=c97741559b7b8eb911b575cf5cac5205

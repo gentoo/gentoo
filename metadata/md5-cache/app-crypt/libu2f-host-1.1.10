@@ -10,5 +10,5 @@ LICENSE=LGPL-2
 RDEPEND=dev-libs/hidapi dev-libs/json-c:= !systemd? ( acct-group/plugdev ) systemd? ( sys-apps/systemd[acl] )
 SLOT=0
 SRC_URI=https://developers.yubico.com/libu2f-host/Releases/libu2f-host-1.1.10.tar.xz
-_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=bdfb2be01ca190617cb02e0502b08d0d

@@ -10,5 +10,5 @@ LICENSE=BSD GPL-2
 RDEPEND=!net-misc/ntp[-openntpd] libressl? ( dev-libs/libressl:0= ) acct-group/openntpd acct-user/openntpd selinux? ( sec-policy/selinux-ntp )
 SLOT=0
 SRC_URI=mirror://openbsd/OpenNTPD/openntpd-6.2p3.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=e178317a289344b6b11e50614714ba2c

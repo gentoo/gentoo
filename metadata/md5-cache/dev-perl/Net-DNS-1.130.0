@@ -11,5 +11,5 @@ RDEPEND=>=dev-perl/Digest-HMAC-1.30.0 >=virtual/perl-Digest-MD5-2.130.0 >=virtua
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NL/NLNETLABS/Net-DNS-1.13.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=4dc63da97ad27f4f84adf86e52e848be

@@ -7,5 +7,5 @@ KEYWORDS=~amd64 sparc x86
 LICENSE=freedist public-domain
 SLOT=0
 SRC_URI=http://cr.yp.to/software/qmailanalog-0.70.tar.gz
-_eclasses_=fixheadtails	662e80584ee2337b981d7188078e7c74	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=fixheadtails	662e80584ee2337b981d7188078e7c74	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=42ba6111f1b5815fe666c9ba1d8cb602

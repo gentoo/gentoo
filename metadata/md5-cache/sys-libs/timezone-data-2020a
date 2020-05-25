@@ -9,5 +9,5 @@ LICENSE=BSD public-domain
 RDEPEND=nls? ( virtual/libintl ) !sys-libs/glibc[vanilla(+)]
 SLOT=0
 SRC_URI=https://www.iana.org/time-zones/repository/releases/tzdata2020a.tar.gz https://www.iana.org/time-zones/repository/releases/tzcode2020a.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=ab9fa4a2f264cdadd20ccec59020a913

@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=sys-libs/ncurses:=
 SLOT=0
 SRC_URI=https://opensource.apple.com/tarballs/misc_cmds/misc_cmds-34.tar.gz https://opensource.apple.com/tarballs/shell_cmds/shell_cmds-203.tar.gz https://opensource.apple.com/tarballs/developer_cmds/developer_cmds-63.tar.gz https://opensource.apple.com/source/adv_cmds/adv_cmds-147/md/md.c -> adv_cmds-md-147.c https://opensource.apple.com/source/adv_cmds/adv_cmds-147/md/md.1 -> adv_cmds-md-147.1 https://642666.bugs.gentoo.org/attachment.cgi?id=511988 -> adv_cmds-md-147-compile.patch
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=73f75de7127ed0a03258ceb0d52dcab0

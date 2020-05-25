@@ -11,5 +11,5 @@ RDEPEND=X? ( dev-libs/glib:2 media-libs/fontconfig media-libs/freetype virtual/j
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=amd64? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-97.3.451.tar.gz ) x86? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-97.3.451.tar.gz )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	ac7989ababbeabdef6fdc6e465b21644	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	0914eab919f4f11dd9e0407b92af4726	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=2af051a87d6d9d6d2a797b4fab1582ae

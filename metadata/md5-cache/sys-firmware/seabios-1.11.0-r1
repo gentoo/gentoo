@@ -9,5 +9,5 @@ LICENSE=LGPL-3 GPL-3
 REQUIRED_USE=debug? ( !binary )
 SLOT=0
 SRC_URI=!binary? ( https://code.coreboot.org/p/seabios/downloads/get/seabios-1.11.0.tar.gz ) binary? ( https://dev.gentoo.org/~tamiko/distfiles/seabios-1.11.0-bin.tar.xz )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	ac7989ababbeabdef6fdc6e465b21644	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	0914eab919f4f11dd9e0407b92af4726	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=6aa46c0ebde184650dedee246ca2d996

@@ -8,5 +8,5 @@ LICENSE=BSD
 PROPERTIES=live
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtsvg:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtgui:5 dev-qt/qtdeclarative:5 x11-libs/libxcb:0 x11-libs/xcb-util x11-libs/xcb-util-image x11-libs/xcb-util-wm sys-fs/inotify-tools x11-misc/numlockx x11-wm/fluxbox || ( x11-apps/xbacklight sys-power/acpilight ) media-sound/alsa-utils sys-power/acpi app-admin/sysstat
 SLOT=0
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	ac7989ababbeabdef6fdc6e465b21644	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	0914eab919f4f11dd9e0407b92af4726	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=c8db7f79d5149a5080fee3ff6d27f0a3

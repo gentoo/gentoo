@@ -10,5 +10,5 @@ RDEPEND=brotli? ( app-arch/brotli ) bzip2? ( app-arch/bzip2 ) fbcon? ( media-lib
 REQUIRED_USE=!livecd? ( fbcon? ( gpm ) ) svga? ( suid )
 SLOT=2
 SRC_URI=http://links.twibright.com/download/links-2.20.2.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=78e76060b2ee28fbaa39b67d234e8144

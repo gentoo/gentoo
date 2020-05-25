@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/openssl:0= net-misc/curl sys-libs/zlib[minizip] x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/wxGTK:3.0[X] libnotify? ( x11-libs/libnotify ) sound? ( media-libs/alure media-libs/openal )
 SLOT=0
 SRC_URI=https://springlobby.springrts.com/dl/stable/springlobby-0.269.tar.bz2
-_eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=2c6f9d7aa74c47c27b91e55e77ea3d4f

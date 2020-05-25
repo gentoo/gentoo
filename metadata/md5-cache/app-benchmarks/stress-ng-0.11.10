@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/libaio dev-libs/libbsd dev-libs/libgcrypt:0= net-misc/lksctp-tools sys-apps/attr sys-apps/keyutils:= sys-libs/libapparmor sys-libs/libcap sys-libs/zlib
 SLOT=0
 SRC_URI=https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.11.10.tar.xz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=d702ec1f5efe02a2ef314cc9709a6551

@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/fcgi systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=https://github.com/gnosek/fcgiwrap/archive/1.1.0.tar.gz -> fcgiwrap-1.1.0.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=9eb91debe6007cb524505361e26a403f

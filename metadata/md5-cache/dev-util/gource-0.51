@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/boost-1.46:=[threads(+)] >=media-libs/glew-1.5:0= >=media-libs/libpng-1.2:0= media-libs/libsdl2[video,opengl,X] media-libs/sdl2-image[jpeg,png] dev-libs/libpcre:3 dev-libs/tinyxml media-libs/freetype:2 media-libs/mesa[X(+)] virtual/glu:0 media-fonts/freefont
 SLOT=0
 SRC_URI=https://github.com/acaudwell/Gource/releases/download/gource-0.51/gource-0.51.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=ddf2ccb731fa23a22473669efe098d68

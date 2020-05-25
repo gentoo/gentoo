@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=>=sys-apps/util-linux-2.30.2 >=sys-fs/btrfs-progs-4.20.2
 SLOT=0
 SRC_URI=https://github.com/Zygo/bees/archive/v0.6.1.tar.gz -> bees-0.6.1.tar.gz
-_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=554ff15325964f36b6dcead1c4f4127a

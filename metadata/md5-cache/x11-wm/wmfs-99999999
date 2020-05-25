@@ -9,5 +9,5 @@ LICENSE=BSD
 PROPERTIES=live
 RDEPEND=media-libs/freetype media-libs/imlib2[X] x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr
 SLOT=0
-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=3a38a4ab673870bd54f0886d7ed97d99

@@ -7,5 +7,5 @@ LICENSE=STRIDE
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=ftp://ftp.ebi.ac.uk/pub/software/unix/stride/src/stride.tar.gz -> stride-20011129.tar.gz https://dev.gentoo.org/~jlec/distfiles/stride-20060723-update.patch.bz2
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=897f9fd1d73b5a7779f29a7ca161cb75

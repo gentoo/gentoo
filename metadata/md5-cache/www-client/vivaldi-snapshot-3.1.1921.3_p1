@@ -10,5 +10,5 @@ RDEPEND=dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss media-libs/als
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=amd64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_3.1.1921.3-1_amd64.deb -> vivaldi-snapshot-3.1.1921.3_p1-amd64.deb ) arm64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_3.1.1921.3-1_arm64.deb -> vivaldi-snapshot-3.1.1921.3_p1-arm64.deb ) arm? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_3.1.1921.3-1_armhf.deb -> vivaldi-snapshot-3.1.1921.3_p1-armhf.deb ) x86? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_3.1.1921.3-1_i386.deb -> vivaldi-snapshot-3.1.1921.3_p1-i386.deb )
-_eclasses_=chromium-2	92ff174aa2b13d6ea0c4539533f0b2de	eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	b5891c9326ad2e7905c011d44c927c34	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=chromium-2	92ff174aa2b13d6ea0c4539533f0b2de	eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	unpacker	b5891c9326ad2e7905c011d44c927c34	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=8ef3b4bd883acc7a7dbc0824c73ebbbf

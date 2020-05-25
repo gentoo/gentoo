@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/hidapi
 SLOT=0
 SRC_URI=https://github.com/makkarpov/msi-keyboard/archive/v1.0.tar.gz -> msi-keyboard-1.0.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=33a1217ab9ce1c71f6822f2712b6f052

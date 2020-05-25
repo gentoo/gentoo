@@ -10,5 +10,5 @@ RDEPEND=apparmor? ( sys-libs/libapparmor ) seccomp? ( sys-libs/libseccomp ) !app
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/opencontainers/runc/archive/dc9208a3303feef5b3839f4323d9beb36df0a9dd.tar.gz -> runc-1.0.0_rc10.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=91df14aa93043dcdaafc0e5bcb802a80

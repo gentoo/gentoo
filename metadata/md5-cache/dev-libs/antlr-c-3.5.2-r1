@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=https://github.com/antlr/antlr3/archive/3.5.2.tar.gz -> antlr-3.5.2.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=0fb15d153dd434fc700e9c3b2e4efbc2

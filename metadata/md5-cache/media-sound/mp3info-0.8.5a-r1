@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= gtk? ( >=x11-libs/gtk+-2.6.10:2 )
 SLOT=0
 SRC_URI=https://ibiblio.org/pub/linux/apps/sound/mp3-utils/mp3info/mp3info-0.8.5a.tgz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=bb1786909c1a385ec4ed08a12375584a

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=alevt? ( !media-video/alevt media-libs/libpng:0= media-libs/zvbi[v4l] sys-libs/zlib x11-libs/libX11 ) usb? ( virtual/libusb:0 ) media-tv/dtv-scan-tables
 SLOT=0
 SRC_URI=https://www.linuxtv.org/hg/dvb-apps/archive/3d43b280298c.tar.bz2 -> linuxtv-dvb-apps-1.1.1.20140321.tar.bz2
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=a94ce934ed189e8d55e2694309a80c9b

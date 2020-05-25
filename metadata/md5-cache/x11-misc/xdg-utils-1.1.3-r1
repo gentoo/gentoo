@@ -10,5 +10,5 @@ RDEPEND=dev-util/desktop-file-utils dev-perl/File-MimeInfo dev-perl/Net-DBus dev
 RESTRICT=test
 SLOT=0
 SRC_URI=https://portland.freedesktop.org/download/xdg-utils-1.1.3.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=2db35adca88a4910fe7027fc4d8a1ba1

@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.15.11.tar.gz -> kubernetes-1.15.11.tar.gz
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=591988dbcf253dec51fb7f5e6a7516b2

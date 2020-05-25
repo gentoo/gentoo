@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 x11-libs/gdk-pixbuf dev-libs/libxml2 dev-libs/glib:2
 SLOT=0
 SRC_URI=http://apwal.free.fr/download/apwal-0.4.5.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=04a4a7228a7b6c9ebd712f4b7aa18fe7

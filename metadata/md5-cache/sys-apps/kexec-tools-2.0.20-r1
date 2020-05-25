@@ -11,5 +11,5 @@ RDEPEND=lzma? ( app-arch/xz-utils ) zlib? ( sys-libs/zlib )
 REQUIRED_USE=lzma? ( zlib )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/kernel/kexec/kexec-tools-2.0.20.tar.xz
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=aa7f701271c710f43e325ac4af4b0d5e

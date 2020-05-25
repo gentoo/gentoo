@@ -11,5 +11,5 @@ RDEPEND=!minimal? ( >=media-libs/flac-1.2.1-r5[abi_x86_32(-)?,abi_x86_64(-)?,abi
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=545df675b0906db35c00740d08598108

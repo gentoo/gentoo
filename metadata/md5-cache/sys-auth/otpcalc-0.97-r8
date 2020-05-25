@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=x11-libs/gtk+:2 dev-libs/openssl:0=
 SLOT=0
 SRC_URI=http://killa.net/infosec/otpCalc/otpCalc-0.97.tar.gz https://dev.gentoo.org/~ulm/distfiles/otpcalc-0.97-patches-1.tar.xz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=e4dc5bf648b8993d244136dcb1c011d0

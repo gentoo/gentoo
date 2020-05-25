@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/libX11 x11-libs/pango gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3[X] ) ) gssapi? ( virtual/krb5 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jer/putty-icons.tar.bz2 https://the.earth.li/~sgtatham/putty/0.73/putty-0.73.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=298bf89603ccbf6c22fbdcce85f1efd9

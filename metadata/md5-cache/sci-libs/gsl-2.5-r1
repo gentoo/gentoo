@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=cblas-external? ( virtual/cblas:= )
 SLOT=0/23
 SRC_URI=mirror://gnu/gsl/gsl-2.5.tar.gz https://dev.gentoo.org/~mgorny/dist/gsl-2.3-cblas.patch.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=227e958e05c15b8afd2e09077d4eaa37

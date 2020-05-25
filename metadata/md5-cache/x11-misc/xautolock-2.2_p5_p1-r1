@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libXScrnSaver
 SLOT=0
 SRC_URI=http://www.ibiblio.org/pub/Linux/X11/screensavers/xautolock-2.2.tgz mirror://debian/pool/main/x/xautolock/xautolock_2.2-5.1.debian.tar.xz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=8a4af5c486c5ff49dd189b3d85c7a1ca

@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=sys-libs/libcap-ng sys-process/procps:=
 SLOT=0
 SRC_URI=https://gitlab.com/post-factum/uksmd/-/archive/b6af35cb9a772f643fd1bd703f4d1f6c6c6d3b79/uksmd-b6af35cb9a772f643fd1bd703f4d1f6c6c6d3b79.tar.bz2 -> uksmd-0_pre20200505.tar.bz2
-_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=ddcef07fb81db9553ceadf4b7a8f3b60

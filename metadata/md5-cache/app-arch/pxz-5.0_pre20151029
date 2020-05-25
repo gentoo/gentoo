@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-arch/xz-utils sys-devel/gcc:*[openmp]
 SLOT=0
 SRC_URI=https://github.com/jnovy/pxz/archive/fcfea93957d96b7661d1439cf4b767ecfd341eed.tar.gz -> pxz-5.0_pre20151029.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=a1994b8a849c798199b32db18039ec9f

@@ -11,5 +11,5 @@ RDEPEND=>=sys-fs/fuse-2.8.0:0 >=net-misc/curl-7.22.0 dev-libs/boost:= >=net-libs
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/johang/btfs/archive/v2.19.tar.gz -> btfs-2.19.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=ed495021de126e92a488a00f9aba4086

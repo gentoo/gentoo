@@ -11,5 +11,5 @@ RDEPEND=media-libs/gd[jpeg,png,tiff] lcd_devices_acoolsdcm? ( virtual/libusb:1= 
 REQUIRED_USE=|| ( lcd_devices_acoolsdcm lcd_devices_ddusbt lcd_devices_directgfx lcd_devices_displaylink lcd_devices_framebuffer lcd_devices_glcd2usb lcd_devices_goldelox lcd_devices_i2c lcd_devices_ks0108 lcd_devices_l4m lcd_devices_lc7981 lcd_devices_lh155 lcd_devices_nokcol lcd_devices_pcd8544 lcd_devices_remote lcd_devices_rs232 lcd_devices_sed133x lcd_devices_sed153x lcd_devices_sed156x lcd_devices_ssdoled lcd_devices_stv8105 lcd_devices_t6963 ) lcd_devices_framebuffer? ( threads )
 SLOT=0
 SRC_URI=mirror://sourceforge/serdisplib/serdisplib-2.01.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=ec599b98a23fb62e248a1c21b175a421

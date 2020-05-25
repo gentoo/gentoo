@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-admin/gkrellm:2[X]
 SLOT=0
 SRC_URI=ftp://ftp.freebsd.org/pub/FreeBSD/ports/distfiles/gkrellfire-0.4.2.tgz
-_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=a6bca139d1ecaa561ce12c917df9b819

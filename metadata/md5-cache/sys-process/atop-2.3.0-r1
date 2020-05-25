@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= >=sys-process/acct-6.6.4-r1
 SLOT=0
 SRC_URI=https://github.com/Atoptool/atop/archive/v2.3.0.tar.gz -> atop-2.3.0.tar.gz https://github.com/Atoptool/atop/commit/42e86fcc42ce60f8c92f3c7d5f3a6ccde47c0b33.patch -> atop-2.3.0-version_h.patch https://github.com/Atoptool/atop/commit/a8d850d06efc8d70a19f55ec93fe83df51e99077.patch -> atop-2.3.0-version_c.patch https://github.com/Atoptool/atop/commit/5f101e656a24271726d1e9cd672631b6033c36c1.patch -> atop-2.3.0-netatop_h.patch
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=188bb80ee3cc4491e42cda9ac2dc1774

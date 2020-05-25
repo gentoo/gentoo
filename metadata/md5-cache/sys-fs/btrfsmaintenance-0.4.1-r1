@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-fs/btrfs-progs virtual/cron systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=https://github.com/kdave/btrfsmaintenance/archive/v0.4.1.tar.gz -> btrfsmaintenance-0.4.1.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=bff005a8261c6f37d92ffc54ec023d68

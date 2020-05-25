@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-video/vdr-2 >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
 SLOT=0
 SRC_URI=http://www.fepg.org/files/vdr-atscepg-0.3.0.tgz mirror://gentoo/atscepg-0.3.0_vdr-1.7.13.tbz https://dev.gentoo.org/~hd_brummy/distfiles/atscepg-0.3.0_vdr-1.7.13.tbz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	b5891c9326ad2e7905c011d44c927c34	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	unpacker	b5891c9326ad2e7905c011d44c927c34	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f
 _md5_=f44b37a6f843aec0e8ae429bdd63964a

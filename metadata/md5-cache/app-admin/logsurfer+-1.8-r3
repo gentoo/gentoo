@@ -7,5 +7,5 @@ LICENSE=freedist GPL-2+
 RESTRICT=bindist
 SLOT=0
 SRC_URI=mirror://sourceforge/logsurfer/logsurfer-1.8.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=38b43bdb88cbb21a00fdba34d9c3ca06

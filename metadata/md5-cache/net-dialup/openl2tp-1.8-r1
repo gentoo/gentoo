@@ -11,5 +11,5 @@ RDEPEND=>=net-dialup/ppp-2.4.5 >=net-libs/libtirpc-1.0.3 sys-libs/readline:= dma
 REQUIRED_USE=|| ( client server )
 SLOT=0
 SRC_URI=mirror://sourceforge/openl2tp/openl2tp-1.8.tar.gz
-_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=ade8a3c65ab389a69e75266a39fba456

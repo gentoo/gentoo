@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=x11-libs/libX11[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/lib/libxkbfile-1.1.0.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	ac7989ababbeabdef6fdc6e465b21644	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xorg-3	f7ca8dca6425a439b1b40844e6eb1ae7
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xorg-3	f7ca8dca6425a439b1b40844e6eb1ae7
 _md5_=bbf817224bb8c62ecff8b2c431dcbad2

@@ -8,5 +8,5 @@ RDEPEND=dev-libs/glib:2 dev-libs/nspr dev-libs/nss !www-plugins/chrome-binary-pl
 RESTRICT=bindist mirror strip
 SLOT=stable
 SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_83.0.4103.61-1_amd64.deb
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	b5891c9326ad2e7905c011d44c927c34
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	unpacker	b5891c9326ad2e7905c011d44c927c34
 _md5_=7f234fc06525712a546b072b4c50509f

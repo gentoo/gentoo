@@ -9,5 +9,5 @@ LICENSE=GPL-2+ CC-BY-SA-3.0
 RDEPEND=>=dev-libs/glib-2.38.0:2 >=x11-libs/gtk+-3.13.4:3 >=media-libs/clutter-1.14.0:1.0 >=media-libs/clutter-gtk-1.5.5:1.0 >=gnome-base/librsvg-2.32.0:2
 SLOT=0
 SRC_URI=mirror://gnome/sources/lightsoff/3.34/lightsoff-3.34.0.tar.xz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	meson	991e544bbaf3120073ededbdc1d8bf93	multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	meson	991e544bbaf3120073ededbdc1d8bf93	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=314df5346d33359165b5b4d835c000f2

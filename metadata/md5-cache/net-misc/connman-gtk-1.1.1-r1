@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.0:2 >=x11-libs/gtk+-3.10:3 openconnect? ( >=net-vpn/openconnect-5.99 ) net-misc/connman
 SLOT=0
 SRC_URI=https://github.com/jgke/connman-gtk/archive/v1.1.1.tar.gz -> connman-gtk-1.1.1.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=cca9aabd510f5bc7e9942b7478fb9242

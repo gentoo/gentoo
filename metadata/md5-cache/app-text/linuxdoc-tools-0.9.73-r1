@@ -10,5 +10,5 @@ LICENSE=GPL-3+ MIT SGMLUG
 RDEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/perl:= sys-apps/groff virtual/latex-base >=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=https://gitlab.com/agmartin/linuxdoc-tools/-/archive/0.9.73/linuxdoc-tools-0.9.73.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	latex-package	e5f296c98696dd02059bc6a5a03282e2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	latex-package	e5f296c98696dd02059bc6a5a03282e2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=66c0c6261850b64fa14be1a728a2ad31

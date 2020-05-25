@@ -10,5 +10,5 @@ RDEPEND=python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2
 REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 ) ) ^^ ( ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
 SLOT=0
 SRC_URI=https://community.download.adacore.com/v1/3c54db553121bf88877e2f56ac4fca36765186eb?filename=gnatcoll-bindings-20.0-20191009-1B2EA-src.tar.gz -> gnatcoll-bindings-20.0-20191009-1B2EA-src.tar.gz
-_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=92e3efd7a017a702c3844443b9ac4b6c

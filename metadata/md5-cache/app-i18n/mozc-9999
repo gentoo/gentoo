@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/protobuf-3.0.0:= emacs? ( app-editors/emacs:* ) fcitx4? ( app
 REQUIRED_USE=|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=elisp-common	504a3383c45504fde86b00426619a709	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	ac7989ababbeabdef6fdc6e465b21644	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=elisp-common	504a3383c45504fde86b00426619a709	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=b80aeb5d0182a0699ac24a2b9b018a3d

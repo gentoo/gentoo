@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-libs/expat >=dev-libs/apr-1.6.2:1= berkdb? ( >=sys-libs/db-4:= ) gdbm? ( sys-libs/gdbm:= ) ldap? ( =net-nds/openldap-2* ) mysql? ( || ( dev-db/mariadb-connector-c dev-db/mysql-connector-c ) ) nss? ( dev-libs/nss ) odbc? ( dev-db/unixODBC ) openssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite:3 )
 SLOT=1
 SRC_URI=mirror://apache/apr/apr-util-1.6.1.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	db-use	501a5d0963e0d17f30260023f292ae8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	db-use	501a5d0963e0d17f30260023f292ae8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=cf6ef862b6f92af0d6438602beded77f
