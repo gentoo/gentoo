@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="ff9d97a08d7a4b58267ac03719786e4e7258cecf"
+EGIT_COMMIT="a97780984207f29652af90fa3dc4e8e7576548e7"
 DESCRIPTION="An OCI container runtime monitor"
 HOMEPAGE="https://github.com/containers/conmon"
 SRC_URI="https://github.com/containers/conmon/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
