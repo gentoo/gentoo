@@ -84,8 +84,7 @@ src_configure() {
 
 src_compile() {
 	cmake-utils_src_compile
-	cd "${BUILD_DIR}"
-	use doc && emake visp_doc
+	use doc && cmake-utils_src_compile visp_doc
 }
 
 src_install() {
@@ -95,5 +94,5 @@ src_install() {
 		docompress -x /usr/share/doc/${PF}/tutorial
 	fi
 	cd "${BUILD_DIR}"
-	use doc && dohtml -r doc/html/*
+	use doc && dodoc -r doc/html
 }

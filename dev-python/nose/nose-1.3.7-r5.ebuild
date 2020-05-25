@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -18,19 +18,19 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="coverage doc examples test"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="coverage examples test"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="
-	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
-
-RDEPEND="
-	coverage? ( dev-python/coverage[${PYTHON_USEDEP}] )"
-DEPEND="${RDEPEND}
-	doc? ( >=dev-python/sphinx-0.6[$(python_gen_usedep 'python2*')] )
-	test? (
+COV_DEP="
+	$(python_gen_cond_dep '
 		dev-python/coverage[${PYTHON_USEDEP}]
+	' python2_7 python3_{6,7,8} pypy3)"
+RDEPEND="
+	coverage? ( ${COV_DEP} )"
+DEPEND="${RDEPEND}
+	test? (
+		${COV_DEP}
 		$(python_gen_cond_dep '
 			dev-python/twisted[${PYTHON_USEDEP}]
 		' python2_7 python3_{6,7,8})
@@ -45,10 +45,6 @@ PATCHES=(
 
 	"${FILESDIR}"/${P}-python-3.6-test.patch
 )
-
-pkg_setup() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
-}
 
 python_prepare_all() {
 	# Tests need to be converted, and they don't respect BUILD_DIR.
@@ -65,9 +61,6 @@ python_prepare_all() {
 	sed -e "/'nosetests%s = nose:run_exit' % py_vers_tag,/d" \
 		-i setup.py || die "sed2 failed"
 
-	# Prevent un-needed d'loading during doc build
-	sed -e "s/, 'sphinx.ext.intersphinx'//" -i doc/conf.py || die
-
 	distutils-r1_python_prepare_all
 }
 
@@ -79,23 +72,14 @@ python_compile() {
 		python_is_python3 && add_targets+=( build_tests )
 	fi
 
-	distutils-r1_python_compile ${add_targets[@]}
-}
-
-python_compile_all() {
-	use doc && emake -C doc html
+	distutils-r1_python_compile "${add_targets[@]}"
 }
 
 python_test() {
 	"${EPYTHON}" selftest.py -v || die "Tests fail with ${EPYTHON}"
 }
 
-python_install() {
-	distutils-r1_python_install --install-data "${EPREFIX}/usr/share"
-}
-
 python_install_all() {
 	use examples && dodoc -r examples
-	use doc && HTML_DOCS=( doc/.build/html/. )
 	distutils-r1_python_install_all
 }

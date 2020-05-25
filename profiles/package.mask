@@ -32,13 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-05-25)
-# On behalf of Arfrever Frehtes Taifersar Arahesis <Arfrever@Apache.Org>
-# Fails to apply a patch with tcl/test/tools USE flags being enabled due to
-# non-maintainer commit
-# https://bugs.gentoo.org/725302
-=dev-db/sqlite-3.32.0
-
 # Hans de Graaff <graaff@gentoo.org> (2020-05-24)
 # No releases since 2011, upstream is gone, fails tests,
 # no reverse dependencies.
