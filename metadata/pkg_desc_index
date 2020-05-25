@@ -10425,7 +10425,7 @@ dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scrip
 dev-util/idea-community 2020.1.0.201.6668.121 2020.1.1.201.7223.91-r2: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0 2.2.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
-dev-util/include-what-you-use 9.0: Find unused include directives in C/C++ programs
+dev-util/include-what-you-use 9.0 10.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
 dev-util/intel-graphics-compiler 1.0.3151 1.0.3445 1.0.3826: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1 4.4.0.117-r2: Intel's implementation of the OpenCL standard
