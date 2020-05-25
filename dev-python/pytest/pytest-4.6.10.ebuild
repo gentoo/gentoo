@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -27,8 +27,9 @@ RDEPEND="
 	>=dev-python/atomicwrites-1.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' \
-		-2 python3_{5,6,7} pypy3)
+	$(python_gen_cond_dep '
+		dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	' -2 python3_{5,6,7} pypy3)
 	$(python_gen_cond_dep '
 		dev-python/pathlib2[${PYTHON_USEDEP}]
 		dev-python/funcsigs[${PYTHON_USEDEP}]
@@ -44,17 +45,19 @@ RDEPEND="
 DEPEND="
 	test? (
 		${RDEPEND}
-		dev-python/argcomplete[${PYTHON_USEDEP}]
-		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/argcomplete[${PYTHON_USEDEP}]
+			>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
+			dev-python/nose[${PYTHON_USEDEP}]
+			dev-python/pexpect[${PYTHON_USEDEP}]
+			dev-python/pytest-xdist[${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
+			!!dev-python/flaky
+			!!dev-python/pytest-aiohttp
+			!!dev-python/pytest-asyncio
+			!!dev-python/pytest-django
+		' python2_7 python3_{6,7,8} pypy3)
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
-		dev-python/pexpect[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		!!dev-python/flaky
-		!!dev-python/pytest-aiohttp
-		!!dev-python/pytest-asyncio
-		!!dev-python/pytest-django
 	)"
 
 PATCHES=(
@@ -72,6 +75,11 @@ python_prepare_all() {
 }
 
 python_test() {
+	if [[ ${EPYTHON} == python3.9 ]]; then
+		einfo "Skipping py3.9 due to unported deps"
+		return
+	fi
+
 	distutils_install_for_testing
 
 	# In v4.1.1, pytest started being picky about its own verbosity options.
