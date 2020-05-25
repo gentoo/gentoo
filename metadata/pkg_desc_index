@@ -438,7 +438,7 @@ app-admin/clustershell 1.7.3: Python framework for efficient cluster administrat
 app-admin/conky 1.10.8-r4 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4: Serial Console Manager
-app-admin/consul 1.6.2 1.6.3 1.7.0 1.7.2: A tool for service discovery, monitoring and configuration
+app-admin/consul 1.7.2: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.25.0: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -14821,7 +14821,7 @@ net-misc/gns3-gui 2.2.8: Graphical Network Simulator
 net-misc/gns3-server 2.2.8: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
-net-misc/grive 0.5.1_pre20171005: An open source Linux client for Google Drive
+net-misc/grive 0.5.1_pre20171005 0.5.1: An open source Linux client for Google Drive
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
 net-misc/gsutil 4.41 4.45 4.47 4.50: command line tool for interacting with cloud storage services
 net-misc/gupnp-tools 0.10.0: Collection of developer-oriented UPnP tools
@@ -17295,7 +17295,7 @@ sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/tmsu 0.6.1 0.7.0 0.7.4: Files tagger and virtual tag-based filesystem
 sys-fs/traydevice 1.6.2-r2: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
-sys-fs/udev 242 243 243-r2 245 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 242 243 243-r2 245 245.5 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 2.1.0 2.1.1 2.2.0: An automatic disk mounting service using udisks
