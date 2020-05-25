@@ -23,9 +23,10 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-jpeg-9a.patch )
 
 src_prepare() {
-	eautoreconf
-	emake distclean
 	default
+	# effect of 'make distclean'
+	rm Makefile config.h config.log config.status libmng.pc stamp-h1 || die
+	eautoreconf
 }
 
 multilib_src_configure() {
