@@ -75,6 +75,7 @@ pkg_setup() {
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
 	"${FILESDIR}"/${PN}-0.3.34-failing-tests.patch       # bug 631930, 686202
+	"${FILESDIR}"/${PN}-0.3.34-fno-common.patch          # bug 719198
 	"${FILESDIR}"/${PN}-0.4.0-ffmpeg-4-0-compat-1.patch  # bug 654172
 	"${FILESDIR}"/${PN}-0.4.0-ffmpeg-4-0-compat-2.patch  # bug 654172
 )
