@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-libs/glib:= systemd? ( sys-apps/systemd:= )
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/containers/conmon/archive/ff9d97a08d7a4b58267ac03719786e4e7258cecf.tar.gz -> conmon-2.0.11.tar.gz
-_md5_=1a7939cc2aed7c45bedd0d3342d31df0
+SRC_URI=https://github.com/containers/conmon/archive/a97780984207f29652af90fa3dc4e8e7576548e7.tar.gz -> conmon-2.0.16.tar.gz
+_md5_=2b6c6914893c775c68c4c2b0a4b0301e

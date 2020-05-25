@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst preinst prepare unpack
+DEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 || ( >=app-emulation/runc-1.0.0_rc6 app-emulation/crun ) dev-libs/libassuan:= dev-libs/libgpg-error:= net-misc/cni-plugins sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) rootless? ( app-emulation/slirp4netns ) selinux? ( sys-libs/libselinux:= ) dev-go/go-md2man
+DESCRIPTION=Library and podman tool for running OCI-based containers in Pods
+EAPI=7
+HOMEPAGE=https://github.com/containers/libpod/
+IUSE=apparmor btrfs +fuse +rootless selinux
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0
+RDEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 || ( >=app-emulation/runc-1.0.0_rc6 app-emulation/crun ) dev-libs/libassuan:= dev-libs/libgpg-error:= net-misc/cni-plugins sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) rootless? ( app-emulation/slirp4netns ) selinux? ( sys-libs/libselinux:= ) fuse? ( sys-fs/fuse-overlayfs )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/containers/libpod/archive/v1.9.3.tar.gz -> libpod-1.9.3.tar.gz
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=83140e80d361f622c0f55d11b19d6927
