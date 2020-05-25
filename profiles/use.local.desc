@@ -5691,6 +5691,7 @@ net-fs/samba:iprint - Enabling iPrint technology by Novell
 net-fs/samba:json - Enable json audit support through dev-libs/jansson
 net-fs/samba:profiling-data - Enables support for collecting profiling data
 net-fs/samba:quota - Enables support for user quotas
+net-fs/samba:snapper - Enable vfs_snapper module (requires sys-apps/dbus)
 net-fs/samba:system-heimdal - Use app-crypt/heimdal instead of bundled heimdal.
 net-fs/samba:system-mitkrb5 - Use app-crypt/mit-krb5 instead of app-crypt/heimdal.
 net-fs/samba:winbind - Enables support for the winbind auth daemon

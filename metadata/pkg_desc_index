@@ -14304,7 +14304,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
 net-fs/s3ql 2.33: A full-featured file system for online data storage
-net-fs/samba 4.11.6-r2 4.11.8 4.11.9 4.12.2 4.12.3: Samba Suite Version 4
+net-fs/samba 4.11.6-r2 4.11.8 4.11.9 4.11.9-r1 4.12.2 4.12.3 4.12.3-r1: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
@@ -15500,7 +15500,7 @@ sci-biology/GBrowse 2.48-r1: Generic Model Organism Database Project - The Gener
 sci-biology/HTSeq 0.9.1 9999: Python support for SAM/BAM/Bowtie/FASTA/Q/GFF/GTF files
 sci-biology/STAR 2.5.3a: STAR aligner: align RNA-seq reads to reference genome uncompressed suffix arrays
 sci-biology/aaindex 9.1-r1: Amino acid indices and similarity matrices
-sci-biology/abyss 2.0.2-r1 2.0.3: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
+sci-biology/abyss 2.0.2-r1 2.0.3 2.0.3-r1: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
 sci-biology/amap 2.2-r3: Protein multiple-alignment-based sequence annealing
 sci-biology/amos 3.1.0-r4: A Modular, Open-Source whole genome assembler
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
