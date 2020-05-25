@@ -28,6 +28,10 @@ src_prepare() {
 	eautoreconf
 }
 
+src_compile() {
+	emake CFLAGS="${CFLAGS}"
+}
+
 src_install() {
 	default
 	dobin connman_ncurses
