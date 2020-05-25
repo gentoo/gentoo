@@ -114,6 +114,9 @@ src_install() {
 
 		newconfd "${T}"/minetestserver.confd minetest-server
 		newinitd "${FILESDIR}"/minetestserver.initd minetest-server
+
+		insinto /etc/logrotate.d
+		newins "${FILESDIR}"/minetestserver.logrotate minetest-server
 	fi
 }
 
