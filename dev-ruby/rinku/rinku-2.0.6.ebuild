@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,10 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+
+all_ruby_prepare() {
+	sed -i -e '/bundler/ s:^:#:' test/autolink_test.rb || die
+}
 
 each_ruby_configure() {
 	${RUBY} -Cext/${PN} extconf.rb || die
