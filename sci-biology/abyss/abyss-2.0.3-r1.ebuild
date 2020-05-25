@@ -29,6 +29,14 @@ DEPEND="${RDEPEND}
 
 PATCHES=("${FILESDIR}"/${PN}-2.0.3-prog-AR.patch)
 
+# GHC uses it's own native code generator. Portage's
+# QA check generates false positive because it assumes
+# presence of GCC-specific sections.
+#
+# Workaround false positiove by disabling the check completely.
+# bug #677600
+QA_FLAGS_IGNORED='/usr/bin/abyss-samtobreak'
+
 # todo: --enable-maxk=N configure option
 # todo: fix automagic mpi toggling
 
