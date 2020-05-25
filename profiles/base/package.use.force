@@ -127,6 +127,7 @@ dev-lang/python-exec python_targets_python2_7
 dev-lang/python-exec python_targets_python3_6
 dev-lang/python-exec python_targets_python3_7
 dev-lang/python-exec python_targets_python3_8
+dev-lang/python-exec python_targets_python3_9
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)
