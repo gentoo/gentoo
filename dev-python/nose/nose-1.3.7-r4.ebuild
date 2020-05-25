@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 		dev-python/coverage[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/twisted[${PYTHON_USEDEP}]
-		' python2_7 python3_{6,7})
+		' python2_7 python3_{6,7,8})
 	)"
 
 PATCHES=(
