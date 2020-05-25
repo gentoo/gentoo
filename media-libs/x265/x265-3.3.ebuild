@@ -88,6 +88,8 @@ x265_variant_src_configure() {
 				-DENABLE_CLI=OFF
 				-DMAIN12=ON
 			)
+			# disable altivec for 12bit build #607802#c5
+			[[ ${ABI} = ppc* ]] && mycmakeargs+=( -DENABLE_ALTIVEC=OFF )
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -96,6 +98,8 @@ x265_variant_src_configure() {
 				-DENABLE_SHARED=OFF
 				-DENABLE_CLI=OFF
 			)
+			# disable altivec for 10bit build #607802#c5
+			[[ ${ABI} = ppc* ]] && mycmakeargs+=( -DENABLE_ALTIVEC=OFF )
 			;;
 		"main")
 			if (( "${#MULTIBUILD_VARIANTS[@]}" > 1 )) ; then
@@ -112,6 +116,14 @@ x265_variant_src_configure() {
 					-DLINKED_10BIT=$(usex 10bit)
 					-DLINKED_12BIT=$(usex 12bit)
 				)
+				# we have to handle ppc here and not in multilib_src_configure
+				# because we want those flags apply ONLY to "main" variant
+				if [[ ${ABI} = ppc* ]] ; then
+					myabicmakeargs+=(
+						-DCPU_POWER8=$(usex power8 ON OFF)
+						-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_altivec ON OFF)
+					)
+				fi
 			fi
 			;;
 		*)
@@ -152,10 +164,10 @@ multilib_src_configure() {
 			supports_asm=no
 		fi
 	elif [[ ${ABI} = ppc* ]] ; then
-		myabicmakeargs+=(
-			-DCPU_POWER8=$(usex power8 ON OFF)
-			-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_altivec ON OFF)
-		)
+		if use asm ; then
+			ewarn "ppc64 uses altivec instead of asm, disabling it."
+			supports_asm=no
+		fi
 	fi
 
 	if [[ "${supports_asm}" = yes ]] && use asm ; then
