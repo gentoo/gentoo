@@ -15,7 +15,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="+alsa +dbus enchant +hunspell libressl pulseaudio +spell wayland +X"
 
 RDEPEND="
@@ -24,7 +24,6 @@ RDEPEND="
 	app-arch/xz-utils
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	>=dev-cpp/ms-gsl-2.1.0
 	dev-cpp/range-v3
 	dev-libs/xxhash
 	dev-qt/qtcore:5
@@ -35,7 +34,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5[png,X(-)?]
 	media-fonts/open-sans
 	media-libs/fontconfig:=
-	>=media-libs/libtgvoip-2.4.4_p20200301[alsa?,pulseaudio?]
+	>=media-libs/libtgvoip-2.4.4_p20200430[alsa?,pulseaudio?]
 	media-libs/openal[alsa?,pulseaudio?]
 	media-libs/opus:=
 	media-video/ffmpeg:=[alsa?,opus,pulseaudio?]
@@ -70,6 +69,16 @@ REQUIRED_USE="
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_pretend() {
+	if has ccache ${FEATURES}; then
+		ewarn
+		ewarn "ccache does not work with ${PN} out of the box"
+		ewarn "due to usage of precompiled headers"
+		ewarn "check bug https://bugs.gentoo.org/715114 for more info"
+		ewarn
+	fi
+}
+
 src_configure() {
 	local mycxxflags=(
 		-Wno-deprecated-declarations
@@ -82,11 +91,13 @@ src_configure() {
 	# TODO: unbundle header-only libs, ofc telegram uses git versions...
 	# it fals with tl-expected-1.0.0, so we use bundled for now to avoid git rev snapshots
 	# EXPECTED VARIANT
+	# TODO: unbundle GSL, version 3.0.1 required and has nasty googletest dep
 	local mycmakeargs=(
 		-DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON
 		-DDESKTOP_APP_USE_GLIBC_WRAPS=OFF
 		-DDESKTOP_APP_USE_PACKAGED=ON
 		-DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF
+		-DDESKTOP_APP_USE_PACKAGED_GSL=OFF
 		-DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF
 		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
