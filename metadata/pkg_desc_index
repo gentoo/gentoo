@@ -9798,7 +9798,7 @@ dev-ruby/railties 5.2.4.2 5.2.4.3 6.0.2.2 6.0.3 6.0.3.1: Tools for creating, wor
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.7 1.1.0: Provide a standard and simplified way to build and package Ruby extensions
-dev-ruby/rake-remote_task 2.4.3: Extends Rake with remote task goodness
+dev-ruby/rake-remote_task 2.4.3 2.4.3-r1: Extends Rake with remote task goodness
 dev-ruby/rantly 2.0.0: Ruby Imperative Random Data Generator and Quickcheck
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rash_alt 0.4.7 0.4.8: Rash alt version for Hashie's own Rash
@@ -9827,7 +9827,7 @@ dev-ruby/rest-client 2.1.0: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rexical 1.0.7: Rexical is a lexical scanner generator
 dev-ruby/rexml 3.2.4: An XML toolkit for Ruby
 dev-ruby/rgen 0.8.3 0.8.4: Ruby Modelling and Generator Framework
-dev-ruby/rinku 2.0.4 2.0.5 2.0.6: A Ruby library that does autolinking
+dev-ruby/rinku 2.0.6: A Ruby library that does autolinking
 dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.5.7 1.6.1: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
