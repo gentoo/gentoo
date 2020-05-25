@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
-	>=media-libs/babl-0.1.66
+	>=media-libs/babl-0.1.66[introspection(-)?,lcms(-)?]
 	sys-libs/zlib
 	>=x11-libs/gdk-pixbuf-2.32:2
 	x11-libs/pango
