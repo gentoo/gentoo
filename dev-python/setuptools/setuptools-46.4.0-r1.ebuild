@@ -3,7 +3,7 @@
 
 EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -21,12 +21,14 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	app-arch/unzip
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pip[${PYTHON_USEDEP}]
-		>=dev-python/pytest-3.7.0[${PYTHON_USEDEP}]
-		dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
-		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/pip[${PYTHON_USEDEP}]
+			>=dev-python/pytest-3.7.0[${PYTHON_USEDEP}]
+			dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
+			dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+		' python2_7 python3_{6,7,8} pypy3)
 		$(python_gen_cond_dep '
 			dev-python/futures[${PYTHON_USEDEP}]
 		' -2)
@@ -63,6 +65,11 @@ python_prepare_all() {
 }
 
 python_test() {
+	if [[ ${EPYTHON} == python3.9 ]]; then
+		einfo "Tests are skipped on py3.9 due to unported deps"
+		return
+	fi
+
 	distutils_install_for_testing
 	# test_easy_install raises a SandboxViolation due to ${HOME}/.pydistutils.cfg
 	# It tries to sandbox the test in a tempdir

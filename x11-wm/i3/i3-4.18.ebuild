@@ -11,7 +11,7 @@ SRC_URI="https://i3wm.org/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="doc debug test"
 
 CDEPEND="dev-libs/libev
