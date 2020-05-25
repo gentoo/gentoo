@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-PYTHON_REQ_USE='ncurses,xml,threads(+)'
+PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE='ncurses,xml,threads'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs
 
@@ -17,20 +17,18 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=0
+	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=20
+	GENTOO_VER=21
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
 	OVMF_VER=
 
-	SEABIOS_VER="1.12.1"
-	EDK2_COMMIT="20d2e5a125e34fc8501026613a71549b2a1a3e54"
-	EDK2_OPENSSL_VERSION="1_1_1b"
-	EDK2_SOFTFLOAT_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
-	IPXE_COMMIT="1dd56dbd11082fb622c2ed21cfaced4f47d798a6"
+	SEABIOS_VER=1.12.0
+	EDK2_COMMIT=ef529e6ab7c31290a33045bb1f1837447cc0eb56
+	IPXE_COMMIT=d2063b7693e0e35db97b2264aa987eb6341ae779
 
 	[[ -n ${UPSTREAM_VER} ]] && \
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz
@@ -44,11 +42,9 @@ else
 		OVMF_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN/-tools}-ovmf-patches-${OVMF_VER}.tar.xz"
 
 	SRC_URI="https://downloads.xenproject.org/release/xen/${MY_PV}/xen-${MY_PV}.tar.gz
-	https://github.com/qemu/seabios/archive/rel-${SEABIOS_VER}.tar.gz -> seabios-${SEABIOS_VER}.tar.gz
+	https://www.seabios.org/downloads/seabios-${SEABIOS_VER}.tar.gz
 	ipxe? ( http://xenbits.xen.org/xen-extfiles/ipxe-git-${IPXE_COMMIT}.tar.gz )
 	ovmf? ( https://github.com/tianocore/edk2/archive/${EDK2_COMMIT}.tar.gz -> edk2-${EDK2_COMMIT}.tar.gz
-		https://github.com/openssl/openssl/archive/OpenSSL_${EDK2_OPENSSL_VERSION}.tar.gz
-		https://github.com/ucb-bar/berkeley-softfloat-3/archive/${EDK2_SOFTFLOAT_COMMIT}.tar.gz -> berkeley-softfloat-${EDK2_SOFTFLOAT_COMMIT}.tar.gz
 		${OVMF_PATCHSET_URI} )
 	${UPSTREAM_PATCHSET_URI}
 	${SECURITY_PATCHSET_URI}
@@ -100,7 +96,6 @@ DEPEND="${COMMON_DEPEND}
 		sys-power/iasl )
 	api? ( dev-libs/libxml2
 		net-misc/curl )
-
 	ovmf? (
 		!arm? ( !arm64? ( dev-lang/nasm ) )
 		$(python_gen_impl_dep sqlite)
@@ -133,7 +128,7 @@ DEPEND="${COMMON_DEPEND}
 	system-qemu? ( app-emulation/qemu[xen] )
 	ocaml? ( dev-ml/findlib
 		>=dev-lang/ocaml-4 )
-	python? ( >=dev-lang/swig-4.0.0 )"
+	python? ( dev-lang/swig )"
 
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/iproute2[-minimal]
@@ -153,10 +148,8 @@ QA_WX_LOAD="
 "
 
 QA_PREBUILT="
-	usr/libexec/xen/bin/elf2dmp
 	usr/libexec/xen/bin/ivshmem-client
 	usr/libexec/xen/bin/ivshmem-server
-	usr/libexec/xen/bin/qemu-edid
 	usr/libexec/xen/bin/qemu-img
 	usr/libexec/xen/bin/qemu-io
 	usr/libexec/xen/bin/qemu-keymap
@@ -236,7 +229,7 @@ src_prepare() {
 	fi
 
 	# move before Gentoo patch, one patch should apply to seabios, to fix gcc-4.5.x build err
-	mv ../seabios-rel-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
+	mv ../seabios-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
 	pushd tools/firmware/ > /dev/null
 	ln -s seabios-dir-remote seabios-dir || die
 	popd > /dev/null
@@ -260,16 +253,22 @@ src_prepare() {
 			popd > /dev/null
 		fi
 		mv ../edk2-${EDK2_COMMIT} tools/firmware/ovmf-dir-remote || die
-		rm -r tools/firmware/ovmf-dir-remote/CryptoPkg/Library/OpensslLib/openssl || die
-		rm -r tools/firmware/ovmf-dir-remote/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3 || die
-		mv ../openssl-OpenSSL_${EDK2_OPENSSL_VERSION} tools/firmware/ovmf-dir-remote/CryptoPkg/Library/OpensslLib/openssl || die
-		mv ../berkeley-softfloat-3-${EDK2_SOFTFLOAT_COMMIT} tools/firmware/ovmf-dir-remote/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3 || die
 		cp tools/firmware/ovmf-makefile tools/firmware/ovmf-dir-remote/Makefile || die
 	fi
 
 	# ipxe
 	if use ipxe; then
 		cp "${DISTDIR}/ipxe-git-${IPXE_COMMIT}.tar.gz" tools/firmware/etherboot/_ipxe.tar.gz || die
+
+		# gcc 9
+		cp "${WORKDIR}/patches-gentoo/${PN}-4.12.0-ipxe-gcc9.patch" \
+			tools/firmware/etherboot/patches/ipxe-gcc9.patch || die
+		echo "ipxe-gcc9.patch" >> tools/firmware/etherboot/patches/series || die
+
+		# gcc 10
+		cp "${WORKDIR}/patches-gentoo/xen-tools-4.13.0-ipxe-gcc10.patch" \
+			tools/firmware/etherboot/patches/ipxe-gcc10.patch || die
+		echo ipxe-gcc10.patch >> tools/firmware/etherboot/patches/series || die
 	fi
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
@@ -319,7 +318,7 @@ src_prepare() {
 		fi
 	else
 		# Don't bother with qemu, only needed for fully virtualised guests
-		sed -e "s:install-tools\: tools/qemu-xen-traditional-dir:install-tools\: :g" -i Makefile || die
+		sed -i '/SUBDIRS-$(CONFIG_QEMU_XEN)/s/^/#/g' tools/Makefile || die
 	fi
 
 	# Reset bash completion dir; Bug 472438
