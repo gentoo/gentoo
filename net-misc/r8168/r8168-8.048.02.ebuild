@@ -8,7 +8,7 @@ inherit linux-info linux-mod
 DESCRIPTION="r8168 driver for Realtek 8111/8168 PCI-E NICs"
 HOMEPAGE="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software"
 
-# "GBE Ethernet LINUX driver r8168 for kernel up to 4.15" from above link,
+# "GBE Ethernet LINUX driver r8168 for kernel up to 5.6" from above link,
 # we need to mirror it to avoid users from needing to fill a captcha to
 # download
 SRC_URI="https://dev.gentoo.org/~pacho/${PN}/${P}.tar.bz2"
