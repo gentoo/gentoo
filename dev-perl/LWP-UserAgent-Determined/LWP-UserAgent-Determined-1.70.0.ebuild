@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A virtual browser that retries errors"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~amd64 ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
 RDEPEND="dev-perl/libwww-perl"
