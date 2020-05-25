@@ -5,10 +5,10 @@ DESCRIPTION=High-performance interface between the MTA and content checkers
 EAPI=7
 HOMEPAGE=https://gitlab.com/amavis/amavis
 IUSE=clamav courier dkim ldap mysql postgres qmail razor rspamd rspamd-https snmp spamassassin zmq
-KEYWORDS=~amd64 ~ppc ppc64 sparc ~x86
+KEYWORDS=~amd64 ppc ppc64 sparc ~x86
 LICENSE=GPL-2 BSD-2
 RDEPEND=acct-user/amavis app-arch/arc app-arch/bzip2 app-arch/cabextract app-arch/cpio app-arch/gzip app-arch/lha app-arch/lrzip app-arch/lzop app-arch/ncompress app-arch/p7zip app-arch/pax app-arch/unarj app-arch/unrar app-arch/xz-utils app-arch/zoo dev-lang/perl:* dev-perl/Archive-Zip dev-perl/BerkeleyDB dev-perl/Convert-BinHex dev-perl/File-LibMagic dev-perl/IO-Socket-SSL dev-perl/IO-stringy >=dev-perl/Mail-DKIM-0.31 >=dev-perl/MailTools-1.58 >=dev-perl/MIME-tools-5.415 dev-perl/Net-LibIDN >=dev-perl/Net-Server-0.91 dev-perl/Net-SSLeay dev-perl/Unix-Syslog net-mail/ripole net-mail/tnef >=sys-apps/coreutils-5.0-r3 >=sys-libs/db-4.4.20 virtual/mta virtual/perl-Compress-Raw-Zlib virtual/perl-Digest-MD5 virtual/perl-File-Temp virtual/perl-IO-Compress virtual/perl-IO-Socket-IP virtual/perl-MIME-Base64 virtual/perl-Time-HiRes clamav? ( app-antivirus/clamav ) ldap? ( >=dev-perl/perl-ldap-0.33 ) mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) razor? ( mail-filter/razor ) rspamd? ( dev-perl/HTTP-Message dev-perl/JSON dev-perl/LWP-UserAgent-Determined ) rspamd-https? ( dev-perl/HTTP-Message dev-perl/JSON dev-perl/LWP-UserAgent-Determined dev-perl/LWP-Protocol-https dev-perl/Net-SSLeay ) snmp? ( net-analyzer/net-snmp[perl] ) spamassassin? ( mail-filter/spamassassin dev-perl/Image-Info ) zmq? ( dev-perl/ZMQ-LibZMQ3 )
 SLOT=0
 SRC_URI=https://gitlab.com/amavis/amavis/-/archive/v2.12.0/amavis-v2.12.0.tar.bz2
 _eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=7f597008bbb078342d922d5e02c381f5
+_md5_=895727d9c224e8ba0163ced8108b1663

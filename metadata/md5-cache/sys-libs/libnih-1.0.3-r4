@@ -5,10 +5,10 @@ DESCRIPTION=Light-weight 'standard library' of C functions
 EAPI=7
 HOMEPAGE=https://launchpad.net/libnih
 IUSE=+dbus nls static-libs +threads split-usr
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=dbus? ( dev-libs/expat >=sys-apps/dbus-1.2.16 )
 SLOT=0
 SRC_URI=https://launchpad.net/libnih/1.0/1.0.3/+download/libnih-1.0.3.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	usr-ldscript	766f0a506b45f02361ad1b8ca205b7e1
-_md5_=1efb8ea583a38c9e7af0f3fb22062e01
+_md5_=01398a90709db75fca361a0333cf8e55
