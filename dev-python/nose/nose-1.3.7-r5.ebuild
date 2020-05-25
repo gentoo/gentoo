@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -22,11 +22,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="coverage examples test"
 RESTRICT="!test? ( test )"
 
+COV_DEP="
+	$(python_gen_cond_dep '
+		dev-python/coverage[${PYTHON_USEDEP}]
+	' python2_7 python3_{6,7,8} pypy3)"
 RDEPEND="
-	coverage? ( dev-python/coverage[${PYTHON_USEDEP}] )"
+	coverage? ( ${COV_DEP} )"
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/coverage[${PYTHON_USEDEP}]
+		${COV_DEP}
 		$(python_gen_cond_dep '
 			dev-python/twisted[${PYTHON_USEDEP}]
 		' python2_7 python3_{6,7,8})
