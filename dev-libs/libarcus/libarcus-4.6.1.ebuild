@@ -16,7 +16,7 @@ SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="LGPL-3"
 SLOT="0/3"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples python static-libs"
+IUSE="examples +python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="${PYTHON_DEPS}
@@ -38,7 +38,7 @@ src_prepare() {
 
 	# Find SIP for current python version, not the latest installed
 	sed -i "s/find_package(Python3 3.4 REQUIRED/find_package(Python3 ${EPYTHON##python} EXACT REQUIRED/g" \
-        CMakeLists.txt || die
+		CMakeLists.txt || die
 	sed -i "s/find_package(Python3 3.4 REQUIRED/find_package(Python3 ${EPYTHON##python} EXACT REQUIRED/g" \
 		cmake/FindSIP.cmake || die
 
