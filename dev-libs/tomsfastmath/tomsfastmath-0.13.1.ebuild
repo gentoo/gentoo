@@ -5,8 +5,9 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="TomsFastMath is a fast public domain large integer arithmetic library"
-HOMEPAGE="https://www.libtom.net/TomsFastMath/ https://github.com/libtom/tomsfastmath"
+DESCRIPTION="Fast public domain large integer arithmetic library"
+HOMEPAGE="https://www.libtom.net/TomsFastMath/
+	https://github.com/libtom/tomsfastmath"
 SRC_URI="https://github.com/libtom/tomsfastmath/releases/download/v${PV}/tfm-${PV}.tar.xz"
 LICENSE="Unlicense"
 
@@ -47,8 +48,9 @@ src_test() {
 	# We choose to be verbose during the test process
 	# because the output is quite repetitive with no
 	# clear demarcation b/t tests
-	tests=( "test" "stest" "rsatest" )
+	local tests=( "test" "stest" "rsatest" )
 
+	local test
 	for test in "${tests[@]}"; do
 		einfo "Running test (${test})"
 		./${test} || die "Test (${test}) failed"
