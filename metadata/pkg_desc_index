@@ -4989,7 +4989,7 @@ dev-libs/leveldb 1.18-r2 1.20: a fast key-value storage library written at Googl
 dev-libs/libIDL 0.8.14-r2: CORBA tree builder
 dev-libs/libaio 0.3.110 0.3.111 0.3.112 9999: Asynchronous input/output library that uses the kernels native interface
 dev-libs/libappindicator 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
-dev-libs/libarcus 3.4.1 3.6.0 4.2.0 4.3.0-r1: This library facilitates communication between Cura and its backend
+dev-libs/libarcus 3.4.1 3.6.0 4.2.0 4.3.0-r1 4.6.1: This library facilitates communication between Cura and its backend
 dev-libs/libassuan 2.5.1 2.5.1-r1 2.5.3: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19_p5: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 7.6.10: Implementation for atomic memory update operations
@@ -5008,7 +5008,7 @@ dev-libs/libcdio 0.93 0.94-r1 1.1.0 2.0.0 2.0.0-r1 2.1.0-r1: A library to encaps
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.2-r2 4.0.4-r1: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41-r5 0.41-r6: Tools and libraries to configure and manage kernel control groups
-dev-libs/libcharon 3.4.1 3.6.0-r1 4.2.0 4.3.0: This library facilitates communication between Cura and its backend
+dev-libs/libcharon 3.4.1 3.6.0-r1 4.2.0 4.3.0 4.6.1: This library facilitates communication between Cura and its backend
 dev-libs/libclc 0.2.0_pre20191024: OpenCL C library
 dev-libs/libclsync 0.4.2 0.4.4-r1: Control and monitoring library for clsync
 dev-libs/libclthreads 2.4.2: POSIX threads C++ access library
@@ -5137,7 +5137,7 @@ dev-libs/libreport 2.10.0 2.12.0 2.13.0: Generic library for reporting software 
 dev-libs/libressl 2.6.5 2.8.3 2.9.2 3.0.2 3.1.1 3.1.2: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.6.1 3.6.4 9999: A C/C++ implementation of a Sass CSS compiler
-dev-libs/libsavitar 3.4.1 3.6.0 4.2.0 4.3.0-r1: C++ implementation of 3mf loading with SIP python bindings
+dev-libs/libsavitar 3.4.1 3.6.0 4.2.0 4.3.0-r1 4.6.1: C++ implementation of 3mf loading with SIP python bindings
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 0.1_pre20170928 0.1_pre20190401: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserdes 5.4.0: Avro SerializationDeserialization w/ Confluent schema-registry support
 dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
@@ -8889,7 +8889,7 @@ dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv modul
 dev-python/unidecode 0.04.21 1.1.1: Module providing ASCII transliterations of Unicode text
 dev-python/unittest-mixins 1.6: A set of mixin classes and other helpers for unittest test case classes
 dev-python/unittest2 1.1.0: The new features in unittest backported to Python 2.4+
-dev-python/uranium 4.3.0-r1: A Python framework for building 3D printing related applications
+dev-python/uranium 4.3.0-r1 4.6.1: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.1 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.10.1-r1: Python module for downloading files
@@ -12433,8 +12433,8 @@ media-gfx/converseen 0.9.6.2: Batch image converter and resizer based on ImageMa
 media-gfx/cptutils 1.72: A number of utilities for the manipulation of color gradient files
 media-gfx/cropgui 0.4.1: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
-media-gfx/cura 3.4.1 3.6.0 4.2.1 4.3.0-r1: A 3D model slicing application for 3D printing
-media-gfx/curaengine 3.4.1 3.6.0 4.2.0 4.3.0: A 3D model slicing engine for 3D printing
+media-gfx/cura 3.4.1 3.6.0 4.2.1 4.3.0-r1 4.6.1: A 3D model slicing application for 3D printing
+media-gfx/curaengine 3.4.1 3.6.0 4.2.0 4.3.0 4.6.1: A 3D model slicing engine for 3D printing
 media-gfx/darktable 2.6.2 2.6.3 3.0.0 3.0.1 3.0.2 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
@@ -12460,7 +12460,7 @@ media-gfx/exiv2 0.27.2 0.27.3_rc1: EXIF, IPTC and XMP metadata C++ library and c
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3 1.3.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
-media-gfx/fdm-materials 3.4.1 3.6.0 4.2.0 4.3.0: FDM materials for media-gfx/cura
+media-gfx/fdm-materials 3.4.1 3.6.0 4.2.0 4.3.0 4.6.1: FDM materials for media-gfx/cura
 media-gfx/feh 3.3 3.4: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
@@ -12614,7 +12614,7 @@ media-gfx/springgraph 88: Generate spring graphs from graphviz input files
 media-gfx/sxiv 25 26 9999: Simple (or small or suckless) X Image Viewer
 media-gfx/symboleditor 2.1.0: Application to create libraries of QPainterPath objects with rendering hints
 media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
-media-gfx/tachyon 0.99_beta6-r1: A portable, high performance parallel ray tracing system
+media-gfx/tachyon 0.99_beta6-r1 0.99_beta6-r2: A portable, high performance parallel ray tracing system
 media-gfx/termtosvg 0.7.0 0.8.0 1.1.0: Record terminal sessions as SVG animations
 media-gfx/tgif 4.2.5-r2: Xlib base 2-D drawing facility under X11
 media-gfx/tif22pnm 0.14: tif22pnm and png22pnm command-line converters
@@ -17062,7 +17062,7 @@ sys-cluster/rdma-core 26.0-r1 26.1 27.0-r1 28.0 29.0 9999: Userspace components 
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1 3.5.3-r1: Application containers for Linux
-sys-cluster/slurm 20.02.3.1: A Highly Scalable Resource Manager
+sys-cluster/slurm 20.02.2.1-r1 20.02.3.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.3.1-r1 2.4.5: Lightning-fast unified analytics engine
 sys-cluster/swift 2.23.1-r2 2.24.0-r1 2.25.0 2019.2.9999 2020.1.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
