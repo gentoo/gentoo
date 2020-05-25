@@ -10,8 +10,8 @@ HOMEPAGE="https://www.libressl.org/"
 SRC_URI="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${P}.tar.gz"
 
 LICENSE="ISC openssl"
-# Reflects ABI of libcrypto.so and libssl.so.  Since these can differ,
-# we'll try to use the max of either.  However, if either change between
+# Reflects ABI of libcrypto.so and libssl.so. Since these can differ,
+# we'll try to use the max of either. However, if either change between
 # versions, we have to change the subslot to trigger rebuild of consumers.
 SLOT="0/48"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
