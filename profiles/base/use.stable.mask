@@ -1,8 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
+
+# Michał Górny <mgorny@gentoo.org> (2020-05-25)
+# Python 3.9 is not yet stable.
+python_targets_python3_9
+python_single_target_python3_9
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # dev-vcs/darcs (dev-lang/ghc) has no stable keywords.
