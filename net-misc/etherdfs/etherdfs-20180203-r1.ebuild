@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,6 +28,13 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
 
 DOCS=( "ethersrv-linux.txt" "history.txt" )
+
+src_prepare() {
+	default
+
+	# Respect users LDFLAGS
+	sed -e 's/$(CFLAGS)/& $(LDFLAGS)/' -i Makefile || die
+}
 
 src_compile() {
 	tc-export CC
