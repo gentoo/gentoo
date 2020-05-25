@@ -9,9 +9,6 @@
     <email>python@gentoo.org</email>
     <name>Python</name>
   </maintainer>
-  <longdescription lang="en">
-    ANSII Color formatting for output in terminal.
-  </longdescription>
   <upstream>
     <remote-id type="pypi">termcolor</remote-id>
   </upstream>
