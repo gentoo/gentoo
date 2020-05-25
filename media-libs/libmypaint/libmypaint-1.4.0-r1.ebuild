@@ -15,7 +15,7 @@ SRC_URI="https://github.com/mypaint/libmypaint/releases/download/v${MY_PV}/${MY_
 
 LICENSE="ISC"
 SLOT="0/$(ver_cut 1-2)"  # https://github.com/mypaint/libmypaint/wiki/Versioning
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~x86"
 IUSE="gegl introspection nls openmp"
 
 CDEPEND="
