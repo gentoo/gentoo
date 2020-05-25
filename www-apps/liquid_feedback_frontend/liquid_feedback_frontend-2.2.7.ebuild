@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit estack eutils toolchain-funcs
 
@@ -35,6 +35,7 @@ src_prepare() {
 			rm -f locale/help/*.${lang}.txt
 		fi
 	done
+	default
 }
 
 src_compile() {
@@ -59,7 +60,7 @@ src_install() {
 
 	insinto /etc/${PN}
 	doins "${FILESDIR}"/myconfig.lua config/*
-	dosym /etc/${PN} /var/lib/${PN}/config
+	dosym ../../../etc/${PN} /var/lib/${PN}/config
 
 	insinto /usr/share/${PN}
 	doins "${FILESDIR}"/lqfb-apache.conf
