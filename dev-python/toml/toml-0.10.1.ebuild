@@ -23,6 +23,9 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( $(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' 'python3*') )"
 
 DOCS=( README.rst )
+PATCHES=(
+	"${FILESDIR}"/toml-0.10.1-skip-numpy.patch
+)
 
 distutils_enable_tests pytest
 
