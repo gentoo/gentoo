@@ -13,10 +13,6 @@ app-arch/zstd lz4
 # Mask until app-arch/zstd is keyworded
 sys-devel/gcc zstd
 
-# Zac Medico <zmedico@gentoo.org> (2020-05-07)
-# Mask until app-arch/zstd is keyworded
-sys-apps/portage binpkg-zstd
-
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
 # Lots of python dependencies, mask to facilitate keywording
 # keywording dev-libs/libfido2
