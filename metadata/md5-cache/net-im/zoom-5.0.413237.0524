@@ -9,6 +9,6 @@ LICENSE=all-rights-reserved Apache-2.0
 RDEPEND=!games-engines/zoom dev-libs/glib:2 dev-libs/icu dev-qt/qtcore:5 dev-qt/qtdbus:5 amd64? ( dev-qt/qtdeclarative:5[widgets] ) x86? ( dev-qt/qtdeclarative:5 ) dev-qt/qtdiag:5 dev-qt/qtgraphicaleffects:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtquickcontrols:5[widgets] dev-qt/qtscript:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-sound/mpg123 sys-apps/dbus sys-apps/util-linux virtual/opengl x11-libs/libX11 x11-libs/libxcb x11-libs/libXext x11-libs/libXfixes x11-libs/libXtst x11-libs/xcb-util-image x11-libs/xcb-util-keysyms !bundled-libjpeg-turbo? ( media-libs/libjpeg-turbo ) pulseaudio? ( media-sound/pulseaudio ) !pulseaudio? ( media-libs/alsa-lib )
 RESTRICT=mirror bindist strip
 SLOT=0
-SRC_URI=amd64? ( https://zoom.us/client/5.0.403652.0509/zoom_x86_64.tar.xz -> zoom-5.0.403652.0509_x86_64.tar.xz ) x86? ( https://zoom.us/client/5.0.403652.0509/zoom_i686.tar.xz -> zoom-5.0.403652.0509_i686.tar.xz )
+SRC_URI=amd64? ( https://zoom.us/client/5.0.413237.0524/zoom_x86_64.tar.xz -> zoom-5.0.413237.0524_x86_64.tar.xz ) x86? ( https://zoom.us/client/5.0.413237.0524/zoom_i686.tar.xz -> zoom-5.0.413237.0524_i686.tar.xz )
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=9029a946350fbb05f1ca103030e9b089
