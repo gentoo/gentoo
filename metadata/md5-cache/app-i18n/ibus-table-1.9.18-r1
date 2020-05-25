@@ -10,5 +10,5 @@ RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6[sqlite(+)] >=dev-l
 REQUIRED_USE=^^ ( python_single_target_python3_6 )
 SLOT=0
 SRC_URI=https://github.com/kaio/ibus-table/releases/download/1.9.18/ibus-table-1.9.18.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=70c4b0c4151b7f7c26bdd95e69420b07

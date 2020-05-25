@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=|| ( dev-python/pypy-exe:7.3.0[bzip2?,ncurses?] dev-python/pypy-exe-bin:7.3.0 ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) gdbm? ( sys-libs/gdbm:0= ) sqlite? ( dev-db/sqlite:3= ) tk? ( dev-lang/tk:0= dev-tcltk/tix:0= ) !<dev-python/pypy-bin-7.3.0:0
 SLOT=0/73
 SRC_URI=https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v7.3.0-src.tar.bz2 https://dev.gentoo.org/~mgorny/dist/python/python-gentoo-patches-2.7.17-r1.tar.xz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b7d1a54af2d64e91b76249c890325985

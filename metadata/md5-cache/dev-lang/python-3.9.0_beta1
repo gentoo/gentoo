@@ -12,5 +12,5 @@ RDEPEND=app-arch/bzip2:= app-arch/xz-utils:= dev-libs/libffi:= sys-apps/util-lin
 RESTRICT=!test? ( test )
 SLOT=3.9
 SRC_URI=https://www.python.org/ftp/python/3.9.0/Python-3.9.0b1.tar.xz https://dev.gentoo.org/~mgorny/dist/python/python-gentoo-patches-3.9.0_alpha6.tar.xz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=2ff1c263ccdb7e821454a630e0b7ca6b

@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/redland-1.0.14 lua? ( >=dev-lang/lua-5.1 ) perl? ( dev-lang/p
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) ) php? ( || ( php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 ) )
 SLOT=0
 SRC_URI=http://download.librdf.org/source/redland-bindings-1.0.17.1.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	php-ext-source-r3	1aa741f0d0128470481dff5011ba00c4	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ac7989ababbeabdef6fdc6e465b21644	php-ext-source-r3	1aa741f0d0128470481dff5011ba00c4	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=30feb7c5d3a76ed9184ef4d75c52988b

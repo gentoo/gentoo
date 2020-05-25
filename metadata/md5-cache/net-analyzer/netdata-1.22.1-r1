@@ -11,5 +11,5 @@ RDEPEND=acct-group/netdata acct-user/netdata app-misc/jq >=app-shells/bash-4:0 |
 REQUIRED_USE=mysql? ( python ) python? ( ^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) ) tor? ( python )
 SLOT=0
 SRC_URI=https://github.com/netdata/netdata/archive/v1.22.1.tar.gz -> netdata-1.22.1.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ac7989ababbeabdef6fdc6e465b21644	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=070261960b3840458460e4d2cd23c73c

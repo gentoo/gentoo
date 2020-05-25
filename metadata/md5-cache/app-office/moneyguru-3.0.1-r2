@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://download.hardcoded.net/moneyguru-3.0.1.tar.gz
-_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	dd532a387632f19bfc5523fc2289a9a0	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=1d412c1922cda25b9b470c7a6640de42
