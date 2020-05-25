@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/cpuguy83/go-md2man"
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 
 src_compile() {
 	emake BUILD_FLAGS="-mod=vendor" build
