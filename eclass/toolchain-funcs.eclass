@@ -85,6 +85,10 @@ tc-getNM() { tc-getPROG NM nm "$@"; }
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the archiver indexer
 tc-getRANLIB() { tc-getPROG RANLIB ranlib "$@"; }
+# @FUNCTION: tc-getREADELF
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the ELF reader
+tc-getREADELF() { tc-getPROG READELF readelf "$@"; }
 # @FUNCTION: tc-getOBJCOPY
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the object copier
@@ -158,6 +162,10 @@ tc-getBUILD_NM() { tc-getBUILD_PROG NM nm "$@"; }
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the archiver indexer for building binaries to run on the build machine
 tc-getBUILD_RANLIB() { tc-getBUILD_PROG RANLIB ranlib "$@"; }
+# @FUNCTION: tc-getBUILD_READELF
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the ELF reader for building binaries to run on the build machine
+tc-getBUILD_READELF() { tc-getBUILD_PROG READELF readelf "$@"; }
 # @FUNCTION: tc-getBUILD_OBJCOPY
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the object copier for building binaries to run on the build machine
@@ -376,6 +384,7 @@ tc-env_build() {
 	NM=$(tc-getBUILD_NM) \
 	PKG_CONFIG=$(tc-getBUILD_PKG_CONFIG) \
 	RANLIB=$(tc-getBUILD_RANLIB) \
+	READELF=$(tc-getBUILD_READELF) \
 	"$@"
 }
 
