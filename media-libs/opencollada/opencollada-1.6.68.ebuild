@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils eutils flag-o-matic
+inherit cmake eutils flag-o-matic
 
 DESCRIPTION="Stream based read/write library for COLLADA files"
 HOMEPAGE="http://www.opencollada.org/"
@@ -14,16 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="static-libs"
 
-RDEPEND="dev-libs/libpcre
-	dev-libs/libxml2
+RDEPEND="
+	dev-libs/libpcre:=
+	dev-libs/libxml2:=
 	dev-libs/zziplib
 	media-libs/lib3ds
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/pkgconfig
 	app-admin/chrpath
+	virtual/pkgconfig
 "
 
 S="${WORKDIR}/OpenCOLLADA-${PV}"
@@ -37,7 +38,7 @@ PATCHES=(
 src_prepare() {
 	edos2unix CMakeLists.txt
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Remove bundled depends that have portage equivalents
 	rm -rv Externals/{expat,lib3ds,LibXML,pcre,zziplib} || die
@@ -57,18 +58,19 @@ src_configure() {
 		-DUSE_LIBXML=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
-	echo "LDPATH=/usr/$(get_libdir)/opencollada" > "${T}"/99${PN} || die "echo failed"
-	doenvd "${T}"/99${PN}
+	newenvd - 99opencollada <<- _EOF_
+		LDPATH=/usr/$(get_libdir)/opencollada
+	_EOF_
 
 	# Remove insecure DAEValidator RUNPATH and install DAEValidator library
 	dolib.so "${BUILD_DIR}/lib/libDAEValidatorLibrary.so"
-	/usr/bin/chrpath -d "${BUILD_DIR}/bin/DAEValidator"
+	chrpath -d "${BUILD_DIR}/bin/DAEValidator" || die
 
 	dobin "${BUILD_DIR}/bin/DAEValidator"
 	dobin "${BUILD_DIR}/bin/OpenCOLLADAValidator"
