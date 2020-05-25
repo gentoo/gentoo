@@ -468,6 +468,7 @@ multilib_toolchain_setup() {
 		NM
 		OBJDUMP
 		RANLIB
+		READELF
 		STRIP
 		PKG_CONFIG_LIBDIR
 		PKG_CONFIG_PATH
@@ -510,6 +511,7 @@ multilib_toolchain_setup() {
 		export NM="$(tc-getNM)" # Avoid 'nm', use '${CHOST}-nm'
 		export OBJDUMP="$(tc-getOBJDUMP)" # Avoid 'objdump', use '${CHOST}-objdump'
 		export RANLIB="$(tc-getRANLIB)" # Avoid 'ranlib', use '${CHOST}-ranlib'
+		export READELF="$(tc-getREADELF)" # Avoid 'readelf', use '${CHOST}-readelf'
 		export STRIP="$(tc-getSTRIP)" # Avoid 'strip', use '${CHOST}-strip'
 		export CHOST=$(get_abi_CHOST $1)
 		export PKG_CONFIG_LIBDIR=${EPREFIX}/usr/$(get_libdir)/pkgconfig
