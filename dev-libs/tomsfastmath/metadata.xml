@@ -9,4 +9,8 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
 </pkgmetadata>
