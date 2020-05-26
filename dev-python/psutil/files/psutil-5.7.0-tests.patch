@@ -111,3 +111,48 @@ index 3834209f..b07b5883 100755
 -- 
 2.25.1
 
+From 026e4b0076a352fcb1e8de71f1393ae0d50ac06d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 26 May 2020 12:28:59 +0200
+Subject: [PATCH] Sort results in test_cpu_affinity_all_combinations
+
+Fix test_cpu_affinity_all_combinations to permit any CPU order
+in results.  This fixes test failure due to affinity being reported
+out of order:
+
+    ======================================================================
+    FAIL: psutil.tests.test_process.TestProcess.test_cpu_affinity_all_combinations
+    ----------------------------------------------------------------------
+    Traceback (most recent call last):
+      File "/tmp/psutil/psutil/tests/test_process.py", line 940, in test_cpu_affinity_all_combinations
+        self.assertEqual(p.cpu_affinity(), combo)
+    AssertionError: Lists differ: [8, 1] != [1, 8]
+
+    First differing element 0:
+    8
+    1
+
+    - [8, 1]
+    + [1, 8]
+
+    ----------------------------------------------------------------------
+---
+ psutil/tests/test_process.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/psutil/tests/test_process.py b/psutil/tests/test_process.py
+index a0b21c6e..e3394799 100755
+--- a/psutil/tests/test_process.py
++++ b/psutil/tests/test_process.py
+@@ -937,7 +937,7 @@ class TestProcess(PsutilTestCase):
+ 
+         for combo in combos:
+             p.cpu_affinity(combo)
+-            self.assertEqual(p.cpu_affinity(), combo)
++            self.assertEqual(sorted(p.cpu_affinity()), sorted(combo))
+ 
+     # TODO: #595
+     @unittest.skipIf(BSD, "broken on BSD")
+-- 
+2.26.2
+
