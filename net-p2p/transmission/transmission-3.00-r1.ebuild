@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/transmission/transmission"
 else
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux"
 fi
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"
@@ -41,7 +41,6 @@ BDEPEND="${ACCT_DEPEND}
 	)
 "
 COMMON_DEPEND="
-	dev-libs/libb64:0=
 	>=dev-libs/libevent-2.0.10:=
 	!mbedtls? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -103,7 +102,7 @@ src_configure() {
 		-DUSE_SYSTEM_MINIUPNPC=ON
 		-DUSE_SYSTEM_NATPMP=ON
 		-DUSE_SYSTEM_UTP=OFF
-		-DUSE_SYSTEM_B64=ON
+		-DUSE_SYSTEM_B64=OFF
 
 		-DWITH_CRYPTO=$(usex mbedtls polarssl openssl)
 		-DWITH_INOTIFY=ON
