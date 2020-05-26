@@ -1778,7 +1778,7 @@ app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 2.2: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 2.2 2.2-r1: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 2.7.5: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
@@ -3404,7 +3404,7 @@ dev-embedded/srecord 1.64: A collection of powerful tools for manipulating EPROM
 dev-embedded/stlink 1.6.0 9999: stm32 discovery line linux programmer
 dev-embedded/stm32flash 0.5: Open source flash program for STM32 using the ST serial bootloader
 dev-embedded/sunxi-tools 1.2 1.3: Tools for Allwinner A10 devices.
-dev-embedded/u-boot-tools 2019.10 2020.01 2020.04 2020.04-r1: utilities for working with Das U-Boot
+dev-embedded/u-boot-tools 2019.10 2020.01 2020.04 2020.04-r1 2020.04-r2: utilities for working with Das U-Boot
 dev-embedded/uisp 20050207-r1: Tool for programming AVR microcontroller through the parallel port
 dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
 dev-embedded/urjtag 0.10-r1 9999: Tool for communicating over JTAG with flash chips, CPUs, and many more
@@ -5119,7 +5119,7 @@ dev-libs/libpcre 8.42 8.43 8.44: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.34 10.35: Perl-compatible regular expression library
 dev-libs/libpeas 1.26.0: A GObject plugins library
-dev-libs/libpfm 4.4.0 4.6.0 4.8.0 4.10.1: Hardware-based performance monitoring interface for Linux
+dev-libs/libpfm 4.8.0 4.10.1 4.10.1-r1: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.5.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
@@ -10499,7 +10499,7 @@ dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33-r1 4.20.3 5.4.20 5.6.14: Userland tools for Linux Performance Counters
 dev-util/pkgcheck 0.7.6-r1 9999: pkgcore-based QA utility for ebuild repos
-dev-util/pkgconf 1.6.3 1.7.0 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
+dev-util/pkgconf 1.6.3 1.7.0 1.7.1 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
 dev-util/plan9port 20140306-r4: Port of many Plan 9 programs and libraries
@@ -13026,7 +13026,7 @@ media-libs/vo-aacenc 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.3 9999: VisualOn AMR-WB encoder library
 media-libs/volpack 1.0_p7-r1: Volume rendering library
 media-libs/vulkan-layers 1.1.125-r2 1.2.133-r1 1.2.135 1.2.137 9999: Vulkan Validation Layers
-media-libs/vulkan-loader 1.1.125 1.2.133 1.2.135 1.2.137 9999: Vulkan Installable Client Driver (ICD) Loader
+media-libs/vulkan-loader 1.1.125 1.1.125-r1 1.2.133 1.2.135 1.2.137 9999: Vulkan Installable Client Driver (ICD) Loader
 media-libs/waffle 1.6.0-r1 1.6.1-r1 9999: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/webvfx 1.1.0: Video effects library based on web technologies
