@@ -20,7 +20,8 @@ RDEPEND="dev-python/cloudpickle[${PYTHON_USEDEP}]
 	>=dev-python/ipykernel-5.1.3[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_client-5.3.4[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17[${PYTHON_USEDEP}]
-	>=dev-python/wurlitzer-1.0.3[${PYTHON_USEDEP}]"
+	>=dev-python/wurlitzer-1.0.3[${PYTHON_USEDEP}]
+"
 
 DEPEND="test? (
 	dev-python/cython[${PYTHON_USEDEP}]
@@ -30,16 +31,15 @@ DEPEND="test? (
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	dev-python/xarray[${PYTHON_USEDEP}] )"
+	dev-python/xarray[${PYTHON_USEDEP}]
+)"
 
 distutils_enable_tests pytest
 
-python_test() {
-	if [[ ${EPYTHON} = python3.6 ]]; then
-		# this fails in py3.6 for some reason
-		sed -i -e 's:test_turtle_launch:_&:' \
-			spyder_kernels/console/tests/test_console_kernel.py || die
-	fi
+python_prepare_all() {
+	# assert False
+	sed -i -e 's:test_turtle_launch:_&:' \
+		spyder_kernels/console/tests/test_console_kernel.py || die
 
-	pytest -vv || die "Tests fail with ${EPYTHON}"
+	distutils-r1_python_prepare_all
 }
