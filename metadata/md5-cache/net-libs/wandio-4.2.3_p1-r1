@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=configure prepare test
+DEFINED_PHASES=configure install prepare test
 DEPEND=!<net-libs/libtrace-4 bzip2? ( app-arch/bzip2 ) lzma? ( app-arch/xz-utils ) lzo? ( dev-libs/lzo ) http? ( net-misc/curl ) zlib? ( sys-libs/zlib ) test? ( app-arch/lzop )
 DESCRIPTION=C library for simple and efficient file IO
 EAPI=7
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0/6
 SRC_URI=https://github.com/wanduow/wandio/archive/4.2.3-1.tar.gz -> wandio-4.2.3_p1.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=2f90a35c4d966b71f8ae7aaf2e3870fd
+_md5_=a43e5b49301e59b71b90fc5860647cb3
