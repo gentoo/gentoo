@@ -59,6 +59,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/patch-4.7.2-gcc10.patch"
+)
+
 pkg_postinst() {
 	gnome2_gconf_install
 	gnome2_schemas_update
