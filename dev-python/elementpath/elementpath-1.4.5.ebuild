@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="XPath 1.0/2.0 parsers and selectors for ElementTree and lxml"
@@ -18,7 +18,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/xmlschema[${PYTHON_USEDEP}]
