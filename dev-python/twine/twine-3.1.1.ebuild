@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -15,9 +16,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-BDEPEND="${CDEPEND}
+BDEPEND="
 	test? (
 		dev-python/jaraco-envs[${PYTHON_USEDEP}]
 		dev-python/jaraco-functools[${PYTHON_USEDEP}]
@@ -28,7 +29,7 @@ BDEPEND="${CDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
-RDEPEND="${CDEPEND}
+RDEPEND="
 	>=dev-python/tqdm-4.14[${PYTHON_USEDEP}]
 	>=dev-python/pkginfo-1.4.2[${PYTHON_USEDEP}]
 	>=dev-python/readme_renderer-21.0[${PYTHON_USEDEP}]
@@ -37,8 +38,6 @@ RDEPEND="${CDEPEND}
 	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' python3_{6,7} pypy{,3})
 	>=dev-python/keyring-15.1[${PYTHON_USEDEP}]
 "
-
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/twine-3.0.0-tests.patch"

@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
 
 inherit distutils-r1
 
@@ -15,15 +16,15 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ~sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${CDEPEND}
+DEPEND="
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pretend[${PYTHON_USEDEP}]
 	)
 "
-RDEPEND="${CDEPEND}
+RDEPEND="
 	>=dev-python/tqdm-4.14[${PYTHON_USEDEP}]
 	>=dev-python/pkginfo-1.4.2[${PYTHON_USEDEP}]
 	>=dev-python/readme_renderer-21.0[${PYTHON_USEDEP}]
@@ -31,8 +32,6 @@ RDEPEND="${CDEPEND}
 	>=dev-python/requests-toolbelt-0.8.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_5})
 "
-
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/twine-1.15.0-tests.patch"
