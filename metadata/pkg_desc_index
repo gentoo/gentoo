@@ -7747,7 +7747,7 @@ dev-python/dugong 3.7.3: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.19.6 0.19.15: Pure-Python implementation of the Git file formats and protocols
 dev-python/easy-thumbnails 2.7: Easy thumbnails for Django
 dev-python/ebuildtester 0.1.12 0.1.13 0.1.14 0.1.16: A dockerized approach to test a Gentoo package within a clean stage3 container
-dev-python/ecdsa 0.14.1-r1: ECDSA cryptographic signature library in pure Python
+dev-python/ecdsa 0.14.1-r1 0.15: ECDSA cryptographic signature library in pure Python
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.8.1 5.8.1-r1: Tending time-series indices in Elasticsearch
@@ -7849,7 +7849,7 @@ dev-python/genshi 0.7.3 0.7.3-r1: Python toolkit for stream-based generation of 
 dev-python/genson 1.1.0: GenSON is a powerful, user-friendly JSON Schema generator built in Python
 dev-python/genty 1.3.2: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2-r1: Python bindings for GeoIP
-dev-python/gevent 1.4.0: Coroutine-based network library
+dev-python/gevent 1.4.0 20.5.1: Coroutine-based network library
 dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.3.1-r1 1.4.2: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/girder-client 2.3.0: Python libraries and CLI to interact with the REST API of a Girder server
@@ -12958,7 +12958,7 @@ media-libs/phonon-vlc 0.11.1: VLC backend for the Phonon multimedia library
 media-libs/plib 1.8.5-r1 1.8.5-r2: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
-media-libs/portaudio 19.06.00-r1 19.06.00-r2: A free, cross-platform, open-source, audio I/O library
+media-libs/portaudio 19.06.00-r1 19.06.00-r2 19.06.00-r3: A free, cross-platform, open-source, audio I/O library
 media-libs/portmidi 217-r3: Library for real time MIDI input and output
 media-libs/ptex 2.3.2: Per-Face Texture Mapping for Production Rendering
 media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
