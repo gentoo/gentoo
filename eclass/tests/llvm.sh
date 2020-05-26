@@ -91,17 +91,17 @@ eindent
 	LLVM_MAX_SLOT=11 \
 	LLVM_INSTALLED_SLOT=1* \
 	PATH=${BASEPATH}:/usr/lib/llvm/11/bin \
-	check_setup_path "/usr/lib/llvm/11/bin:${BASEPATH}:/usr/lib/llvm/11/bin"
+	check_setup_path "${BASEPATH}:/usr/lib/llvm/11/bin"
 
 	LLVM_MAX_SLOT=10 \
 	LLVM_INSTALLED_SLOT=1* \
 	PATH=${BASEPATH}:/usr/lib/llvm/11/bin:/usr/lib/llvm/10/bin \
-	check_setup_path "/usr/lib/llvm/10/bin:${BASEPATH}:/usr/lib/llvm/11/bin:/usr/lib/llvm/10/bin"
+	check_setup_path "${BASEPATH}:/usr/lib/llvm/10/bin:/usr/lib/llvm/11/bin"
 
 	LLVM_MAX_SLOT=11 \
 	LLVM_INSTALLED_SLOT=10 \
 	PATH=${BASEPATH}:/usr/lib/llvm/10/bin \
-	check_setup_path "/usr/lib/llvm/10/bin:${BASEPATH}:/usr/lib/llvm/10/bin"
+	check_setup_path "${BASEPATH}:/usr/lib/llvm/10/bin"
 eoutdent
 
 ebegin "Testing pkg_setup with the other LLVM version in PATH"
@@ -109,12 +109,12 @@ eindent
 	LLVM_MAX_SLOT=11 \
 	LLVM_INSTALLED_SLOT=1* \
 	PATH=${BASEPATH}:/usr/lib/llvm/10/bin \
-	check_setup_path "/usr/lib/llvm/11/bin:${BASEPATH}:/usr/lib/llvm/10/bin"
+	check_setup_path "${BASEPATH}:/usr/lib/llvm/11/bin:/usr/lib/llvm/10/bin"
 
 	LLVM_MAX_SLOT=10 \
 	LLVM_INSTALLED_SLOT=1* \
 	PATH=${BASEPATH}:/usr/lib/llvm/11/bin \
-	check_setup_path "/usr/lib/llvm/10/bin:${BASEPATH}:/usr/lib/llvm/11/bin"
+	check_setup_path "${BASEPATH}:/usr/lib/llvm/10/bin:/usr/lib/llvm/11/bin"
 eoutdent
 
 ebegin "Testing pkg_setup with LLVM missing from PATH"
@@ -122,17 +122,17 @@ eindent
 	LLVM_MAX_SLOT=11 \
 	LLVM_INSTALLED_SLOT=1* \
 	PATH=${BASEPATH} \
-	check_setup_path "/usr/lib/llvm/11/bin:${BASEPATH}"
+	check_setup_path "${BASEPATH}:/usr/lib/llvm/11/bin"
 
 	LLVM_MAX_SLOT=10 \
 	LLVM_INSTALLED_SLOT=1* \
 	PATH=${BASEPATH} \
-	check_setup_path "/usr/lib/llvm/10/bin:${BASEPATH}"
+	check_setup_path "${BASEPATH}:/usr/lib/llvm/10/bin"
 
 	LLVM_MAX_SLOT=11 \
 	LLVM_INSTALLED_SLOT=10 \
 	PATH=${BASEPATH} \
-	check_setup_path "/usr/lib/llvm/10/bin:${BASEPATH}"
+	check_setup_path "${BASEPATH}:/usr/lib/llvm/10/bin"
 eoutdent
 
 texit
