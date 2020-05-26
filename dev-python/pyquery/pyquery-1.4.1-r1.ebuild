@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1 eutils
 
@@ -21,7 +21,6 @@ RDEPEND="
 	>dev-python/cssselect-0.7.9[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.1.9[${PYTHON_USEDEP}]"
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		dev-python/beautifulsoup[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
