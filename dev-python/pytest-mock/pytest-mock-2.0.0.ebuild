@@ -24,6 +24,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/pytest-mock-2.0.0-warnings.patch
+)
+
 src_prepare() {
 	if has_version dev-python/mock; then
 		# test fails when standalone mock is installed
