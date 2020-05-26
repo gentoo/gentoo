@@ -8,7 +8,7 @@ inherit ecm kde.org
 
 DESCRIPTION="IDE for the R-project"
 HOMEPAGE="https://rkward.kde.org/"
-SRC_URI="mirror://kde/stable/${PN}/${PV/b}/src/${P}.tar.gz"
+SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2"
 SLOT="5"

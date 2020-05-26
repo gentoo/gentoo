@@ -73,6 +73,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-cfitsio-optional.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DFETCH_TRANSLATIONS=OFF
