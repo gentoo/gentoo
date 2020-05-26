@@ -23,6 +23,12 @@ RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	!dev-python/dnspython:py2
 	!dev-python/dnspython:py3"
 
+src_prepare() {
+	sed -i -e '/network_avail/s:True:False:' \
+		tests/test_resolver.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	pushd tests >/dev/null || die
 	"${EPYTHON}" utest.py || die "tests failed under ${EPYTHON}"
