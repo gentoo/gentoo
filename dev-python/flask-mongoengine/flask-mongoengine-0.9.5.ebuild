@@ -34,7 +34,11 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	# fix distutils sandbox violation due to missing test-deps in normal build
-	sed -i '/test_requirements/d' setup.py || die
+	#sed -i '/test_requirements/d' setup.py || die
+	#remove coverage config
+	sed -i -e '/cover-/d' setup.cfg || die
+	sed -i -e 's:--cov=flask_mongoengine::' setup.cfg || die
+	sed -i -e 's:--cov-config=setup.cfg::' setup.cfg || die
 	distutils-r1_python_prepare_all
 }
 
@@ -84,11 +88,11 @@ python_test() {
 
 	local failed
 	#https://jira.mongodb.org/browse/PYTHON-521, py2.[6-7] has intermittent failure with gevent
-	pushd "${BUILD_DIR}"/../ > /dev/null
+	#pushd "${BUILD_DIR}"/../ > /dev/null
 	#if [[ "${EPYTHON}" == python3* ]]; then
 	#	2to3 --no-diffs -w test
 	#fi
-	DB_PORT2=$(( DB_PORT + 1 )) DB_PORT3=$(( DB_PORT + 2 )) esetup.py tests || failed=1
+	DB_PORT2=$(( DB_PORT + 1 )) DB_PORT3=$(( DB_PORT + 2 )) esetup.py test || failed=1
 
 	mongod --dbpath "${dbpath}" --shutdown || die
 
@@ -96,3 +100,4 @@ python_test() {
 
 	rm -rf "${dbpath}" || die
 }
+
