@@ -1,0 +1,10 @@
+--- a/src/buildtools/config/common.pri	2020-02-28 22:21:09.341072620 +0200
++++ b/src/buildtools/config/common.pri	2020-02-28 22:20:26.702399180 +0200
+@@ -25,6 +25,7 @@
+     strip_absolute_paths_from_debug_symbols=false \
+     toolkit_views=false \
+     treat_warnings_as_errors=false \
++    fatal_linker_warnings=false \
+     use_allocator_shim=false \
+     use_allocator=\"none\" \
+     use_custom_libcxx=false \
