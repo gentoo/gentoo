@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8,9}} )
 
 inherit distutils-r1
 
@@ -21,3 +21,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~a
 
 distutils_enable_sphinx docs 'dev-python/alabaster'
 distutils_enable_tests pytest
+
+src_prepare() {
+	# py3.9
+	sed -i -e 's:isAlive:is_alive:' tests/conftest.py || die
+	distutils-r1_src_prepare
+}
