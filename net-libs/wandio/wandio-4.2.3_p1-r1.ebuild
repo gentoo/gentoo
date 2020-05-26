@@ -43,6 +43,11 @@ src_configure() {
 		$(use_with zlib)
 }
 
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
+}
+
 src_test() {
 	pushd test || die
 	sh do-basic-tests.sh
