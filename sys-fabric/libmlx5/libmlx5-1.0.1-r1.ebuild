@@ -20,3 +20,9 @@ DEPEND="
 RDEPEND="
 		!sys-fabric/openib-userspace"
 block_other_ofed_versions
+
+src_prepare() {
+	default
+
+	sed -i -e '/CFLAGS=\"$CFLAGS -Werror\"/d' configure
+}
