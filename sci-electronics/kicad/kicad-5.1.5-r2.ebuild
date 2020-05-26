@@ -55,12 +55,12 @@ BDEPEND="doc? ( app-doc/doxygen )"
 CHECKREQS_DISK_BUILD="800M"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}-5.1.5-help.patch"
-	"${FILESDIR}"/"${PN}-5.1.5-ninja-build.patch"
-	"${FILESDIR}"/"${PN}-5.1.5-strict-aliasing.patch"
-	"${FILESDIR}"/"${PN}-algorithm-header.patch"
-	"${FILESDIR}"/"${PN}-metainfo.patch"
-	"${FILESDIR}"/"ldflags.patch"
+	"${FILESDIR}/${P}-help.patch"
+	"${FILESDIR}/${P}-ninja-build.patch"
+	"${FILESDIR}/${P}-strict-aliasing.patch"
+	"${FILESDIR}/${P}-algorithm-header.patch"
+	"${FILESDIR}/${P}-metainfo.patch"
+	"${FILESDIR}/${P}-ldflags.patch"
 )
 
 pkg_setup() {
