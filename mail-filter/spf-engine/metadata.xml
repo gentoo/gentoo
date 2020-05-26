@@ -5,7 +5,7 @@
     <email>mjo@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="launchpad">pypolicyd-spf</remote-id>
-    <remote-id type="pypi">pypolicyd-spf</remote-id>
+    <remote-id type="launchpad">spf-engine</remote-id>
+    <remote-id type="pypi">spf-engine</remote-id>
   </upstream>
 </pkgmetadata>

@@ -14,9 +14,12 @@ PYTHON_REQ_USE="ipv6"
 DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
 
+OLD_PN="pypolicyd-spf"
+OLD_P="${OLD_PN}-${PV}"
+OLD_PF="${PN}-${PVR}"
 DESCRIPTION="Python-based policy daemon for Postfix SPF verification"
 HOMEPAGE="https://launchpad.net/pypolicyd-spf"
-SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/p/${OLD_PN}/${OLD_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -28,13 +31,15 @@ DEPEND="dev-python/pyspf[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	dev-python/authres[${PYTHON_USEDEP}]"
 
+S="${WORKDIR}/${OLD_P}"
+
 DOCS=( CHANGES policyd-spf.conf.commented README README.per_user_whitelisting )
 
 python_prepare_all() {
 	# The "real" config file mentions the commented one, so we point
 	# users in the right direction.
 	local oldconf="policyd-spf.conf.commented"
-	local newconf="/usr/share/doc/${PF}/${oldconf}"
+	local newconf="/usr/share/doc/${OLD_PF}/${oldconf}"
 
 	sed -i "1 s~ ${oldconf}~,\n#  ${newconf}~" policyd-spf.conf \
 		|| die 'failed to update commented config file path'
