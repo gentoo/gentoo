@@ -9883,7 +9883,7 @@ dev-ruby/ruby-mp3info 0.8.10: A pure Ruby library for access to mp3 files (inter
 dev-ruby/ruby-net-ldap 0.16.2: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.2.7 2.2.8: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99999: RubyODBC - For accessing ODBC data sources from the Ruby language
-dev-ruby/ruby-oembed 0.13.0: An oEmbed consumer library written in Ruby.
+dev-ruby/ruby-oembed 0.13.0 0.13.1: An oEmbed consumer library written in Ruby.
 dev-ruby/ruby-ole 1.2.12.1 1.2.12.2: Ruby library for easy read/write access to OLE compound documents
 dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.9.2: A robust library for verifying and serving OpenID identities
