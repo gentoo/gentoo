@@ -1,0 +1,12 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=Compute rank-width decompositions of graphs
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/rankwidth/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-2+
+RDEPEND=!media-gfx/xpaint
+SLOT=0
+SRC_URI=https://downloads.sourceforge.net/project/rankwidth/rw-0.8.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=54e3591ba349ba1b7182b6ec1e10a16a
