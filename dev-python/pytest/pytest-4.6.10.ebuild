@@ -45,18 +45,16 @@ RDEPEND="
 DEPEND="
 	test? (
 		${RDEPEND}
-		$(python_gen_cond_dep '
-			dev-python/argcomplete[${PYTHON_USEDEP}]
-			>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
-			dev-python/nose[${PYTHON_USEDEP}]
-			dev-python/pexpect[${PYTHON_USEDEP}]
-			dev-python/pytest-xdist[${PYTHON_USEDEP}]
-			dev-python/requests[${PYTHON_USEDEP}]
-			!!dev-python/flaky
-			!!dev-python/pytest-aiohttp
-			!!dev-python/pytest-asyncio
-			!!dev-python/pytest-django
-		' python2_7 python3_{6,7,8} pypy3)
+		dev-python/argcomplete[${PYTHON_USEDEP}]
+		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pexpect[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		!!dev-python/flaky
+		!!dev-python/pytest-aiohttp
+		!!dev-python/pytest-asyncio
+		!!dev-python/pytest-django
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
 	)"
 
@@ -75,11 +73,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} == python3.9 ]]; then
-		einfo "Skipping py3.9 due to unported deps"
-		return
-	fi
-
 	distutils_install_for_testing
 
 	# In v4.1.1, pytest started being picky about its own verbosity options.
