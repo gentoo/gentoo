@@ -115,7 +115,7 @@ src_install() {
 	# perl daily cron script
 	dosbin scripts/expire-caller.pl
 	insinto /etc/cron.daily
-	doins "${FILESDIR}"/cron.daily ${PN}
+	newins "${FILESDIR}"/cron.daily ${PN}
 
 	# default configuration
 	insinto /etc/${PN}
