@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit python-single-r1
 
 DESCRIPTION="Convert your system to SYMLINK_LIB=no"
