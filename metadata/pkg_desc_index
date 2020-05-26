@@ -2013,6 +2013,7 @@ app-metrics/collectd 5.10.0 5.11.0-r2: Collects system statistics and provides m
 app-metrics/consul_exporter 0.4.0 0.6.0: Prometheus exporter for consul metrics
 app-metrics/dnsmasq_exporter 0.2.0-r1: prometheus exporter for dnsmasq
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
+app-metrics/fusioninventory-agent 2.5.2: The FusionInventory agent is a generic management agent
 app-metrics/github-exporter 04 04-r1: Github statistics exporter for prometheus
 app-metrics/grok_exporter 0.2.6: Unstructured log data exporter for Prometheus
 app-metrics/memcached_exporter 0.5.0: Prometheus exporter for memcached
@@ -16988,7 +16989,7 @@ sys-boot/refind 0.11.4 0.12.0: The UEFI Boot Manager by Rod Smith
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
 sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
-sys-boot/syslinux 5.10 6.03 6.04_pre1 6.04_pre1-r1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+sys-boot/syslinux 5.10 6.03 6.04_pre1 6.04_pre1-r1 6.04_pre1-r2: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 243 245: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015-r1 2018-r1: Tianocore UEFI Development kit
