@@ -11,16 +11,20 @@ SRC_URI="https://github.com/flightaware/tclreadline/archive/v${PV}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="tk"
 
 DEPEND="dev-lang/tcl:0=
-	sys-libs/readline:0="
+	sys-libs/readline:0=
+	tk? ( dev-lang/tk:0= )"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
 src_configure() {
-	econf \
-		--with-tcl="${EPREFIX}/usr/$(get_libdir)"
+	local myConf=--with-tcl="${EPREFIX}/usr/$(get_libdir)"
+	if ! use tk; then
+		myConf="$myConf --without-tk"
+	fi
+	econf $myConf
 }
 
 src_install() {
