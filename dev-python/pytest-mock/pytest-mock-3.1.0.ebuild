@@ -14,14 +14,18 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~sparc ~x86"
 IUSE=""
 
-RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/pytest-5[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/pytest-mock-3.1.0-warnings.patch
+)
 
 src_prepare() {
 	if has_version dev-python/mock; then
