@@ -9,6 +9,6 @@ KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+ LGPL-2
 RDEPEND=dev-lang/R dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 >=dev-qt/qtwebkit-5.212.0_pre20180120:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 kde-frameworks/kcompletion:5 kde-frameworks/kconfig:5 kde-frameworks/kconfigwidgets:5 kde-frameworks/kcoreaddons:5 kde-frameworks/kcrash:5 kde-frameworks/kdewebkit:5 kde-frameworks/ki18n:5 kde-frameworks/kio:5 kde-frameworks/kjobwidgets:5 kde-frameworks/knotifications:5 kde-frameworks/kparts:5 kde-frameworks/kservice:5 kde-frameworks/ktexteditor:5 kde-frameworks/kwidgetsaddons:5 kde-frameworks/kwindowsystem:5 kde-frameworks/kxmlgui:5 virtual/libintl || ( kde-frameworks/breeze-icons:* kde-frameworks/oxygen-icons:* ) >=kde-frameworks/kf-env-4 dev-qt/qtcore:5
 SLOT=5
-SRC_URI=mirror://kde/stable/rkward/0.7.1/src/rkward-0.7.1.tar.gz
+SRC_URI=mirror://kde/stable/rkward/0.7.1b/src/rkward-0.7.1b.tar.gz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	ecm	e341cb3583b4219b5c207e24915b0264	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9c676a5de4925f6c9887b88ead561e15
+_md5_=4999c72965fd0cd29575f9cf32ef5c5c
