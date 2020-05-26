@@ -1,0 +1,38 @@
+From f66d634768fb8d18caded24646946f134b8e70c2 Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Sun, 3 May 2020 20:13:15 +0300
+Subject: Don't run fitsviewer test if no fitsio
+
+Summary: Should fix https://build.kde.org/view/Failing/job/Extragear/job/kstars/job/kf5-qt5%20WindowsMSVCQt5.14/ (tests are not working as fitsio not available on Windows)
+
+Reviewers: #kstars, TallFurryMan, mutlaqja
+
+Reviewed By: #kstars, TallFurryMan, mutlaqja
+
+Subscribers: TallFurryMan, kde-edu
+
+Tags: #kstars, #kde_edu
+
+Differential Revision: https://phabricator.kde.org/D29388
+---
+ Tests/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Tests/CMakeLists.txt b/Tests/CMakeLists.txt
+index 020f697..1e3a09a 100644
+--- a/Tests/CMakeLists.txt
++++ b/Tests/CMakeLists.txt
+@@ -32,7 +32,10 @@ SET( TEST_KSLITE_LIBRARIES
+ 
+ add_subdirectory(auxiliary)
+ add_subdirectory(skyobjects)
+-add_subdirectory(fitsviewer)
++
++IF (CFITSIO_FOUND)
++    add_subdirectory(fitsviewer)
++ENDIF ()
+ 
+ IF (UNIX AND NOT APPLE AND CFITSIO_FOUND)
+     IF (BUILD_KSTARS_LITE)
+-- 
+cgit v1.1
