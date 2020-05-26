@@ -1,0 +1,16 @@
+BDEPEND=test? ( >dev-python/spyder-4.0.0[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] dev-python/pytest[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=test? ( dev-python/mock[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] dev-python/pytest-qt[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] )
+DESCRIPTION=Plugin for Spyder to enable Vim keybindings
+EAPI=7
+HOMEPAGE=https://github.com/spyder-ide/spyder-vim
+IUSE=test python_targets_python3_7 test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>dev-python/spyder-4.0.0[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,-python_single_target_python3_7(-)]
+REQUIRED_USE=|| ( python_targets_python3_7 )
+RESTRICT=!test? ( test ) !test? ( test )
+SLOT=0
+SRC_URI=https://github.com/spyder-ide/spyder-vim/archive/0a5f982392a03a0f6448f2cfdfa116d027dc52b1.tar.gz -> spyder-vim-0_pre20200514.tar.gz
+_eclasses_=distutils-r1	054fa5f0442c7ccb4d4a05410d92123b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	virtualx	e49dbce7ac14426e1155497476915307
+_md5_=8711c38475445dbb7bc832d97c44f286

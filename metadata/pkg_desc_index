@@ -3320,7 +3320,7 @@ dev-db/pspg 1.6.5 1.6.8 2.5.4 2.5.5 2.6.6: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.1_p20191025-r1 1.0.10: Qt SQL driver plugin for SQLCipher
-dev-db/redis 4.0.2-r1 4.0.14 5.0.5 5.0.7 5.0.8 5.0.9: A persistent caching system, key-value and data structures database
+dev-db/redis 4.0.2-r1 4.0.14 5.0.5 5.0.7 5.0.8 5.0.9 6.0.3: A persistent caching system, key-value and data structures database
 dev-db/repmgr 3.0.1 3.3.2: PostgreSQL Replication Manager
 dev-db/rqlite 5.2.0: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
@@ -7785,7 +7785,7 @@ dev-python/filelock 3.0.12: A platform independent file lock for Python
 dev-python/filetype 1.0.5: Small, dependency-free, fast Python package to infer binary file types checking
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
 dev-python/fixtures 3.0.0: Fixtures, reusable state for writing clean tests and more
-dev-python/flake8 3.7.9: A wrapper around PyFlakes, pep8 & mccabe
+dev-python/flake8 3.7.9 3.8.1: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-import-order 0.18: Flake8 plugin that checks import order against various Python Style Guides
 dev-python/flake8-polyfill 1.0.2: Polyfill package for Flake8 plugins
 dev-python/flaky 3.6.1: Plugin for nose or py.test that automatically reruns flaky tests
@@ -8327,7 +8327,7 @@ dev-python/pychm 0.8.6: Python bindings for the chmlib library
 dev-python/pychromecast 4.1.0: Python module to talk to Google Chromecast.
 dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chroot handling
 dev-python/pyclipper 1.1.0 1.1.0_p3-r1: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
-dev-python/pycodestyle 2.5.0-r1: Python style guide checker (fka pep8)
+dev-python/pycodestyle 2.5.0-r1 2.6.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20: C parser and AST generator written in Python
@@ -8349,7 +8349,7 @@ dev-python/pyelftools 0.25 0.26: pure-Python library for analyzing ELF files and
 dev-python/pyenchant 2.0.0 3.0.1-r1 3.1.0: Python bindings for the Enchant spellchecking system
 dev-python/pyfakefs 3.7.1 3.7.2 4.0.2: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
-dev-python/pyflakes 2.1.1: Passive checker for Python programs
+dev-python/pyflakes 2.1.1 2.2.0: Passive checker for Python programs
 dev-python/pyflann 1.9.1: Python bindings for FLANN artificial neural network library
 dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
@@ -8541,7 +8541,7 @@ dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
 dev-python/python-jose 3.0.1 3.1.0: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.3.4: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 3.21.0: Client Library for OpenStack Identity
-dev-python/python-language-server 0.31.9: An implementation of the Language Server Protocol for Python
+dev-python/python-language-server 0.31.9 0.31.10 0.32.0: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.2.0 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
@@ -8619,7 +8619,7 @@ dev-python/pyzmq 16.0.2 19.0.0: Lightweight and super-fast messaging library bui
 dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.4: Python bindings for QScintilla
-dev-python/qtawesome 0.7.1: Enables iconic fonts such as Font Awesome in PyQt
+dev-python/qtawesome 0.7.1 0.7.2: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.1 4.6.0: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.1.1 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
@@ -8762,6 +8762,7 @@ dev-python/sphinx-gallery 0.3.1-r1: Sphinx extension to automatically generate a
 dev-python/sphinx-issues 1.2.0: A Sphinx extension for linking to your project's issue tracker
 dev-python/sphinx-jinja 0.3.0: A sphinx extension to include jinja based templates into a sphinx doc
 dev-python/sphinx-notfound-page 0.4: Create a custom 404 page with absolute URLs hardcoded.
+dev-python/sphinx-prompt 1.2.0: Sphinx directive to add unselectable prompt
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2-r1: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-testing 1.0.1-r1: Testing utility classes and functions for Sphinx extensions
 dev-python/sphinx_celery 2.0.0-r1: Celery Sphinx Theme and Utilities
@@ -8789,13 +8790,14 @@ dev-python/sphinxcontrib-serializinghtml 1.1.3 1.1.4: Sphinx extension which out
 dev-python/sphinxcontrib-spelling 4.3.0 5.0.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.1.0 1.2.1 1.2.2: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
-dev-python/spyder 4.1.2: The Scientific Python Development Environment
-dev-python/spyder-kernels 1.9.0: Kernels used by spyder on its ipython console
+dev-python/spyder 4.1.2 4.1.3: The Scientific Python Development Environment
+dev-python/spyder-kernels 1.9.0 1.9.1: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
 dev-python/spyder-notebook 0.2.3: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.3.2: Run system terminals inside Spyder
-dev-python/spyder-unittest 0.4.0: Plugin for Spyder to run tests and view the results
+dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
+dev-python/spyder-vim 0_pre20200514: Plugin for Spyder to enable Vim keybindings
 dev-python/sqlalchemy 1.3.11 1.3.17: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.12.0 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
@@ -14955,7 +14957,7 @@ net-misc/pytvshows 0.2-r4: downloads torrents for TV shows from RSS feeds provid
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.048.00 8.048.02: r8168 driver for Realtek 8111/8168 PCI-E NICs
-net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.13 3.7.24 3.8.2 3.8.3: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
+net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.13 3.7.24 3.8.2 3.8.3 3.8.4: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18 2.18-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.50.0 1.51.0 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
@@ -17490,7 +17492,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20191022 20200122 20200422: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20200122 20200422 20200522: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment

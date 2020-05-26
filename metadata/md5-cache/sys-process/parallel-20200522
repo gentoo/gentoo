@@ -1,11 +1,11 @@
-DEFINED_PHASES=configure install postinst
+DEFINED_PHASES=configure
 DEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO
 DESCRIPTION=A shell tool for executing jobs in parallel locally or on remote machines
 EAPI=7
-HOMEPAGE=https://www.gnu.org/software/parallel/
-KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+HOMEPAGE=https://www.gnu.org/software/parallel/ https://git.savannah.gnu.org/cgit/parallel.git
+KEYWORDS=~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3+
 RDEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO
 SLOT=0
-SRC_URI=mirror://gnu/parallel/parallel-20191022.tar.bz2
-_md5_=81a4ee53a46c90ac118e5fffccd874a6
+SRC_URI=mirror://gnu/parallel/parallel-20200522.tar.bz2
+_md5_=18ef1a677f1ac58855d8cc2977a48f79
