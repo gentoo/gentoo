@@ -4821,7 +4821,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3 60.5.2_p0-r4 68.7.0 68.8.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.0.3 8.1.29 8.1.30 8.1.31: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.0.3 8.1.29 8.1.30 8.1.31 8.1.32: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9: Tool Command Language
@@ -8925,7 +8925,7 @@ dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can expo
 dev-python/webassets 2.0: Asset management for Python web development
 dev-python/webcolors 1.10 1.11.1: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5.1-r1: Character encoding aliases for legacy web content
-dev-python/webob 1.8.5-r3: WSGI request and response object
+dev-python/webob 1.8.5-r3 1.8.6: WSGI request and response object
 dev-python/websocket-client 0.57.0: WebSocket client for python with hybi13 support
 dev-python/websockets 8.1: Library for building WebSocket servers and clients in Python
 dev-python/websockify 0.9.0: WebSockets support for any application/server
@@ -8997,7 +8997,7 @@ dev-qt/qdbus 5.14.1 5.14.2 5.15.0: Interface to Qt applications communicating ov
 dev-qt/qdbusviewer 5.14.1 5.14.2 5.15.0: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.14.1 5.14.2 5.15.0: Qt documentation generator
 dev-qt/qt-creator 4.8.2 4.10.1 4.12.0 9999: Lightweight IDE for C++/QML development centering around Qt
-dev-qt/qt-docs 5.14.1_p202001241012 5.14.2_p202003291239: Qt5 documentation, for use with Qt Creator and other tools
+dev-qt/qt-docs 5.14.1_p202001241012 5.14.2_p202003291239 5.15.0_p202005140838: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qt3d 5.14.1-r1 5.14.2 5.15.0: 3D rendering module for the Qt5 framework
 dev-qt/qtbluetooth 5.14.1 5.14.2 5.15.0: Bluetooth support library for the Qt5 framework
 dev-qt/qtcharts 5.14.1 5.14.2 5.15.0: Chart component library for the Qt5 framework
@@ -17901,7 +17901,7 @@ www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.53 1.4.54 1.4.55: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.16.1-r1 1.17.10-r1 1.18.0: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.18.0-r1 1.19.0: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.17.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
@@ -18529,7 +18529,7 @@ x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions
 x11-plugins/purple-facebook 20170608 20170831 20190113: Facebook protocol plugin for libpurple
 x11-plugins/purple-hangouts 0_p20181024 0_p20181108 0_p20181202 9999: Hangouts Plugin for libpurple
 x11-plugins/purple-libnotify-plus 2.99.1: Provide libnotify interface to Pidgin and Finch
-x11-plugins/purple-mattermost 1.2: A libpurple/Pidgin plugin for Mattermost
+x11-plugins/purple-mattermost 1.2 1.2-r1: A libpurple/Pidgin plugin for Mattermost
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/vicious 2.3.1 2.3.3: Modular widget library for x11-wm/awesome
 x11-plugins/wmCalClock 1.25-r3: WMaker DockApp: A Calendar clock with antialiased text
