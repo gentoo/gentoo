@@ -493,7 +493,7 @@ app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.44 2.45: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.5.3 2.5.4 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
-app-admin/kpcli 3.3 3.4: A command line interface to KeePass database files
+app-admin/kpcli 3.4: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.6.3 0.7.1 0.9.0: Fast way to switch between clusters and namespaces in kubectl
 app-admin/lastpass-binary-component 4.19.0-r1: Binary component required by the LastPass Password Manager browser extension
@@ -1658,7 +1658,7 @@ app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.0.0-r3 6.1.0-r1 6.2.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.2 4.0.2-r2: LinuX Containers userspace utilities
+app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.2-r2: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 3.14 3.16-r1 4.0.1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
