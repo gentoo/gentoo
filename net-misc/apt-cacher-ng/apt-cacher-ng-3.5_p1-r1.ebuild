@@ -43,6 +43,7 @@ RDEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.1-flags.patch
+	"${FILESDIR}"/${PN}-3.5-perl-syntax.patch
 	"${WORKDIR}"/debian/patches/debian-changes
 )
 S=${WORKDIR}/${P/_*}
@@ -121,8 +122,8 @@ src_install() {
 
 	# perl daily cron script
 	dosbin scripts/expire-caller.pl
-	exeinto /etc/cron.daily
-	newexe "${FILESDIR}"/cron.daily ${PN}
+	insinto /etc/cron.daily
+	doins "${FILESDIR}"/cron.daily ${PN}
 
 	# default configuration
 	insinto /etc/${PN}
