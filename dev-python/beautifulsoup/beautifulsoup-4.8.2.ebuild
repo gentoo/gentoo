@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
 
 inherit distutils-r1
 
@@ -18,11 +18,10 @@ LICENSE="MIT"
 SLOT="4"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 
-# html5lib is optional however hard coding since its use is actively discouraged in the devmanual
 RDEPEND="
 	dev-python/soupsieve[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/html5lib[${PYTHON_USEDEP}]' python2_7 pypy)
-	$(python_gen_cond_dep 'dev-python/lxml[${PYTHON_USEDEP}]' python2_7 'python3*')
+	dev-python/html5lib[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}"
 

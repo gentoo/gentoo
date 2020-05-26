@@ -1,0 +1,32 @@
+From dbaea05da683f7bfcd7960c88b1b7d13379435c0 Mon Sep 17 00:00:00 2001
+From: Vasiliy Glazov <vascom2@gmail.com>
+Date: Tue, 24 Mar 2020 10:54:09 +0300
+Subject: [PATCH] Fix build with GCC 10
+
+This fix build error:
+```
+../include/plugin_base.hpp:10:25: error: expected ')' before 'tag'
+   10 |   PluginBase(std::string tag, std::string plugin_name, const std::string& schema);
+      |             ~           ^~~~
+      |                         )
+../include/plugin_base.hpp:17:8: error: 'string' in namespace 'std' does not name a type
+   17 |   std::string log_tag, name;
+      |        ^~~~~~
+../include/plugin_base.hpp:7:1: note: 'std::string' is defined in header '<string>'; did you forget to '#include <string>'?
+```
+---
+ include/plugin_base.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/plugin_base.hpp b/include/plugin_base.hpp
+index a2356fbf..79fd5452 100644
+--- a/include/plugin_base.hpp
++++ b/include/plugin_base.hpp
+@@ -4,6 +4,7 @@
+ #include <gio/gio.h>
+ #include <gst/gst.h>
+ #include <sigc++/sigc++.h>
++#include <string>
+ 
+ class PluginBase {
+  public:
