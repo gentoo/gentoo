@@ -16148,7 +16148,7 @@ sci-mathematics/geogebra 5.0.339.0_p20170308-r1: Mathematics software for geomet
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2: Compute Groebner fans and tropical varieties
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 29.8.6: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 29.8.6-r1: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.2 1.7.4 1.7.8: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
