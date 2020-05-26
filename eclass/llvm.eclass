@@ -198,8 +198,29 @@ llvm_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		local llvm_prefix=$(get_llvm_prefix "${LLVM_MAX_SLOT}")
-		export PATH=${llvm_prefix}/bin:${PATH}
+		local llvm_path=$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin
+		local IFS=:
+		local split_path=( ${PATH} )
+		local new_path=()
+		local x added=
+
+		# prepend new path before first LLVM version found
+		for x in "${split_path[@]}"; do
+			if [[ ${x} == */usr/lib/llvm/*/bin ]]; then
+				if [[ ${x} != ${llvm_path} ]]; then
+					new_path+=( "${llvm_path}" )
+				elif [[ ${added} && ${x} == ${llvm_path} ]]; then
+					# deduplicate
+					continue
+				fi
+				added=1
+			fi
+			new_path+=( "${x}" )
+		done
+		# ...or to the end of PATH
+		[[ ${added} ]] || new_path+=( "${llvm_path}" )
+
+		export PATH=${new_path[*]}
 	fi
 }
 
