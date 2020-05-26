@@ -27,6 +27,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	default
+	sed -i -e "/^AC_PROG_CC/ a AM_PROG_AR" configure.ac || die
 	eautoreconf
 }
 
@@ -35,5 +36,4 @@ src_configure() {
 	econf \
 		--disable-maintainer-mode \
 		--disable-warnings
-
 }
