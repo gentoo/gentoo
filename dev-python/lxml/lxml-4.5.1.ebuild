@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1 eutils toolchain-funcs
 
@@ -34,6 +34,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.5.0-tests-pypy.patch
+	"${FILESDIR}"/lxml-4.5.1-py39.patch
 )
 
 python_prepare_all() {
