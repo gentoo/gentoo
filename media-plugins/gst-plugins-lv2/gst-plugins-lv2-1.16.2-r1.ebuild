@@ -15,3 +15,7 @@ RDEPEND="
 	>=media-libs/lilv-0.24.2-r2[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/patch-1.16.2-gcc10.patch"
+)
