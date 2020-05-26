@@ -13106,7 +13106,7 @@ media-plugins/gst-plugins-libmms 1.14.5 1.16.2: Microsoft Multi Media Server sou
 media-plugins/gst-plugins-libnice 0.1.15-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 1.14.5 1.16.2: PNG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-libvisual 1.14.5 1.16.2: Visualization elements for GStreamer
-media-plugins/gst-plugins-lv2 1.14.5 1.16.2: Lv2 elements for Gstreamer
+media-plugins/gst-plugins-lv2 1.14.5 1.16.2-r1: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-meta 1.14.3 1.16.2: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 1.14.5 1.16.2: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 1.14.3 1.16.2: MPEG2 decoder plugin for GStreamer
@@ -13589,7 +13589,7 @@ media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.66: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3-r2 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
-media-sound/pulseeffects 4.7.2 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 4.7.2-r1 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.0 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
