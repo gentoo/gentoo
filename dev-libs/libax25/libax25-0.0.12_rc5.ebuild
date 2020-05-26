@@ -11,7 +11,7 @@ SRC_URI="http://www.linux-ax25.org/pub/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 IUSE="static-libs"
 
 S=${WORKDIR}/${MY_P}
