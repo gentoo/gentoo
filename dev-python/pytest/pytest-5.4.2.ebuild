@@ -42,6 +42,7 @@ DEPEND="${RDEPEND}
 		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/xmlschema[${PYTHON_USEDEP}]
 		!!dev-python/flaky
