@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -43,6 +43,13 @@ BDEPEND="
 PATCHES=( "${FILESDIR}"/${PN}-0.5.2-locale.patch )
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# py3.9
+	sed -i -e 's:isAlive:is_alive:' socketpool/backend_thread.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	cp -r examples tests "${BUILD_DIR}" || die

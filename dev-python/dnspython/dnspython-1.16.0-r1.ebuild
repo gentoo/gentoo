@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -22,6 +22,12 @@ RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' -2)
 	!dev-python/dnspython:py2
 	!dev-python/dnspython:py3"
+
+src_prepare() {
+	sed -i -e '/network_avail/s:True:False:' \
+		tests/test_resolver.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	pushd tests >/dev/null || die
