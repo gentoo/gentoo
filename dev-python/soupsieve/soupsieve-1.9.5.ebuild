@@ -24,7 +24,7 @@ RDEPEND="
 BDEPEND="${RDEPEND}
 	test? (
 		dev-python/beautifulsoup[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/lxml[${PYTHON_USEDEP}]' python2_7 'python3*')
+		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 	)
 "
