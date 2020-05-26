@@ -40,6 +40,7 @@ RDEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-perl-syntax.patch
 	"${FILESDIR}"/${PN}-9999999-flags.patch
 )
 S=${WORKDIR}/${P/_*}
@@ -113,8 +114,8 @@ src_install() {
 
 	# perl daily cron script
 	dosbin scripts/expire-caller.pl
-	exeinto /etc/cron.daily
-	newexe "${FILESDIR}"/cron.daily ${PN}
+	insinto /etc/cron.daily
+	doins "${FILESDIR}"/cron.daily ${PN}
 
 	# default configuration
 	insinto /etc/${PN}
