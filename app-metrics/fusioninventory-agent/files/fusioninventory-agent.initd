@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile=${RC_PREFIX%/}/run/${SVCNAME}.pid
+
+name="fusioninventory-agent daemon"
+description="FusionInventroy agent"
+command=/usr/bin/fusioninventory-agent
+command_args="--daemon --pidfile ${pidfile} ${FUSIONINVENTORY_OPTIONS}"
+extra_started_commands="reload"
+
+depend() {
+	need net
+}
+
+reload() {
+        ebegin "Reloading ${SVCNAME}"
+        start-stop-daemon --signal HUP --pidfile "${pidfile}"
+        eend $?
+}
