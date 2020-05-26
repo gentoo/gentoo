@@ -12,6 +12,10 @@ LICENSE="BSD-2 MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 
+# restrict tests because they need network-sandbox disabled
+# bug https://bugs.gentoo.org/715028
+RESTRICT+=" test"
+
 src_compile() {
 	emake BUILD_FLAGS="-mod=vendor" build
 }
