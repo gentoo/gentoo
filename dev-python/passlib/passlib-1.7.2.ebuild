@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
 
 inherit distutils-r1
 
@@ -18,11 +18,16 @@ IUSE="+bcrypt doc +scrypt +totp"
 RDEPEND="bcrypt? ( dev-python/bcrypt[${PYTHON_USEDEP}] )
 	totp? ( dev-python/cryptography[${PYTHON_USEDEP}] )
 	scrypt? ( dev-python/scrypt[${PYTHON_USEDEP}] )"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+BDEPEND="
+	test? (
+		dev-python/bcrypt[${PYTHON_USEDEP}]
+		dev-python/cryptography[${PYTHON_USEDEP}]
+		dev-python/scrypt[${PYTHON_USEDEP}]
+	)"
 
 PATCHES=(
 	"${FILESDIR}/passlib-1.7.2-pypy3.patch"
+	"${FILESDIR}/passlib-1.7.2-py39.patch"
 )
 
 distutils_enable_tests nose
