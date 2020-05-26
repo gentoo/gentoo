@@ -1,0 +1,51 @@
+From 10fd663f43148fc96ed3afeecf70de15cadd0f8a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 19 Apr 2020 09:55:03 +0200
+Subject: [PATCH] Fix build with Qt 5.15.0
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ .../dplugins/generic/view/presentation/opengl/presentationgl.cpp | 1 +
+ core/libs/dimg/filters/curves/curveswidget.cpp                   | 1 +
+ core/libs/dimg/filters/levels/histogrampainter.cpp               | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/core/dplugins/generic/view/presentation/opengl/presentationgl.cpp b/core/dplugins/generic/view/presentation/opengl/presentationgl.cpp
+index b37699436e..6a4f173ab0 100644
+--- a/core/dplugins/generic/view/presentation/opengl/presentationgl.cpp
++++ b/core/dplugins/generic/view/presentation/opengl/presentationgl.cpp
+@@ -44,6 +44,7 @@
+ #include <QMatrix>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPixmap>
+ #include <QTimer>
+ #include <QWheelEvent>
+diff --git a/core/libs/dimg/filters/curves/curveswidget.cpp b/core/libs/dimg/filters/curves/curveswidget.cpp
+index cccccbd156..d0beef9bf2 100644
+--- a/core/libs/dimg/filters/curves/curveswidget.cpp
++++ b/core/libs/dimg/filters/curves/curveswidget.cpp
+@@ -40,6 +40,7 @@
+ #include <QColor>
+ #include <QFont>
+ #include <QFontMetrics>
++#include <QPainterPath>
+ #include <QPaintEvent>
+ #include <QMouseEvent>
+ 
+diff --git a/core/libs/dimg/filters/levels/histogrampainter.cpp b/core/libs/dimg/filters/levels/histogrampainter.cpp
+index 241d5fc4c8..f11ad4b560 100644
+--- a/core/libs/dimg/filters/levels/histogrampainter.cpp
++++ b/core/libs/dimg/filters/levels/histogrampainter.cpp
+@@ -30,6 +30,7 @@
+ // Qt includes
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ // KDE includes
+ 
+-- 
+2.26.1
+
