@@ -71,6 +71,10 @@ EXPORT_FUNCTIONS pkg_setup
 
 if [[ ! ${_LLVM_ECLASS} ]]; then
 
+# make sure that the versions installing straight into /usr/bin
+# are uninstalled
+DEPEND="!!sys-devel/llvm:0"
+
 # @ECLASS-VARIABLE: LLVM_MAX_SLOT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -173,13 +177,6 @@ get_llvm_prefix() {
 		die "${FUNCNAME}: invalid max_slot=${max_slot}"
 	fi
 
-	# fallback to :0
-	# assume it's always <= 4 (the lower max_slot allowed)
-	if has_version ${hv_switch} "sys-devel/llvm:0"; then
-		echo "${prefix}/usr"
-		return
-	fi
-
 	die "No LLVM slot${1:+ <= ${1}} found installed!"
 }
 
@@ -202,12 +199,7 @@ llvm_pkg_setup() {
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local llvm_prefix=$(get_llvm_prefix "${LLVM_MAX_SLOT}")
-
-		# do not prepend /usr/bin, it's not necessary and breaks other
-		# prepends, https://bugs.gentoo.org/622866
-		if [[ ${llvm_prefix} != ${EPREFIX}/usr ]]; then
-			export PATH=${llvm_prefix}/bin:${PATH}
-		fi
+		export PATH=${llvm_prefix}/bin:${PATH}
 	fi
 }
 
