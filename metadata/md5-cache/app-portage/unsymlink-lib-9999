@@ -3,11 +3,11 @@ DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Convert your system to SYMLINK_LIB=no
 EAPI=6
 HOMEPAGE=https://github.com/mgorny/unsymlink-lib
-IUSE=+python_single_target_python3_6
+IUSE=python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
 LICENSE=BSD-2
 PROPERTIES=live
-RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_6? ( sys-apps/portage[python_targets_python3_6(-)] )
-REQUIRED_USE=^^ ( python_single_target_python3_6 )
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_6? ( sys-apps/portage[python_targets_python3_6(-)] ) python_single_target_python3_7? ( sys-apps/portage[python_targets_python3_7(-)] ) python_single_target_python3_8? ( sys-apps/portage[python_targets_python3_8(-)] )
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	0914eab919f4f11dd9e0407b92af4726	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=074120acc074b1dad9d3bec43d82ceb7
+_md5_=09ecd72d92a5cf797b60abd4307f22ca
