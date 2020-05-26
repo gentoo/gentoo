@@ -5,11 +5,6 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>jpizarrocallejas@gmail.com</email>
-		<name>Jorge Pizarro Callejas</name>
-		<description>Jorgicio Gentoo Overlay</description>
-	</maintainer>
 	<use>
 		<flag name="bs2b">Enable use of media-libs/libbs2b</flag>
 		<flag name="calf">Enable use of media-plugins/calf for adding various FX</flag>
