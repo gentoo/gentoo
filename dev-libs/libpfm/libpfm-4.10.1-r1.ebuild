@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit multilib toolchain-funcs
 
@@ -11,13 +11,15 @@ SRC_URI="mirror://sourceforge/perfmon2/${PN}4/${P}.tar.gz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0/4"
-KEYWORDS="~amd64 ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="static-libs"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
 	sed -e "s:SLDFLAGS=:SLDFLAGS=\$(LDFLAGS) :g" \
 		-i lib/Makefile || die
 	sed -e "s:LIBDIR=\$(PREFIX)/lib:LIBDIR=\$(PREFIX)/$(get_libdir):g" \
@@ -26,7 +28,7 @@ src_prepare() {
 
 src_compile() {
 	# 'DBG=' unsets '-Werror' and other optional flags, bug #664294
-	emake CC=$(tc-getCC) DBG=
+	emake AR=$(tc-getAR) CC=$(tc-getCC) DBG=
 }
 
 src_install() {
