@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{6..9}} pypy3 )
 
 inherit distutils-r1
 
@@ -23,7 +23,6 @@ RDEPEND="
 	' -2 python3_{5,6,7} pypy3)"
 # pip is called as an external tool
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		app-shells/fish
 		app-shells/tcsh

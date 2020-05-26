@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1 bash-completion-r1
 
@@ -32,7 +32,7 @@ distutils_enable_sphinx doc
 
 python_test() {
 	cp -r -l tests "${BUILD_DIR}"/ || die
-	pytest "${BUILD_DIR}"/tests || die "Tests fail with ${EPYTHON}"
+	pytest -vv "${BUILD_DIR}"/tests || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {

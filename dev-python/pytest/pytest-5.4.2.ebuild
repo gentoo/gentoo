@@ -39,14 +39,13 @@ RDEPEND="
 # flake cause a number of tests to fail
 DEPEND="${RDEPEND}
 	test? (
-		$(python_gen_cond_dep '
-			>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
-			dev-python/nose[${PYTHON_USEDEP}]
-			dev-python/mock[${PYTHON_USEDEP}]
-			dev-python/requests[${PYTHON_USEDEP}]
-			dev-python/xmlschema[${PYTHON_USEDEP}]
-			!!dev-python/flaky
-		' python2_7 python3_{6,7,8} pypy3)
+		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/xmlschema[${PYTHON_USEDEP}]
+		!!dev-python/flaky
 	)"
 
 PATCHES=(
@@ -65,11 +64,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} == python3.9 ]]; then
-		einfo "Skipping py3.9 due to unported deps"
-		return
-	fi
-
 	distutils_install_for_testing
 
 	"${EPYTHON}" -m pytest -vv --lsof -rfsxX \
