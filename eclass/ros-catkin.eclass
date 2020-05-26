@@ -57,7 +57,7 @@ fi
 # version. The idea here is to have a ROS_COMPAT in the same vein as
 # PYTHON_COMPAT where packages would define what distro they can work on, then
 # we'd have ros_distro_gentoo_python_2_7 & co plus the OSRF ones (lunar, etc.).
-# Note that this uncondtionally pulls python but in the ROS world there will
+# Note that this unconditionally pulls python but in the ROS world there will
 # most certainly be something pulling python anyway.
 PYTHON_COMPAT=( python3_6 )
 
