@@ -26,11 +26,11 @@ RDEPEND="${DEPEND}"
 
 DOCS=( CHANGES INSTALL.md README.md )
 
-QA_FLAGS_IGNORED="
-	/usr/lib*/alt-ergo-parsers/AltErgoParsers.cmxs
-	/usr/lib*/alt-ergo-lib/AltErgoLib.cmxs
+QA_FLAGS_IGNORED=(
+	/usr/lib64/alt-ergo-parsers/AltErgoParsers.cmxs
+	/usr/lib64/alt-ergo-lib/AltErgoLib.cmxs
 	/usr/bin/alt-ergo
-"
+)
 
 src_prepare() {
 	default
