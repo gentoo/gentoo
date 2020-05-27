@@ -60,6 +60,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.5.0-strip-setuptools_scm.patch"
+	"${FILESDIR}/${P}-timeout.patch"
 )
 
 python_prepare_all() {
