@@ -38,6 +38,8 @@ distutils_enable_tests setup.py
 # isn't complete and X11 is required in order to start up qutebrowser.
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}"/${P}-session-restore.patch )
+
 python_compile_all() {
 	a2x -f manpage doc/${PN}.1.asciidoc || die "Failed generating man page"
 }
