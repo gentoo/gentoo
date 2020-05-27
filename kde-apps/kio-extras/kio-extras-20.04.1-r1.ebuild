@@ -5,7 +5,7 @@ EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="optional"
-KFMIN=5.63.0
+KFMIN=5.70.0
 QTMIN=5.12.3
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
@@ -15,14 +15,20 @@ HOMEPAGE="https://invent.kde.org/network/kio-extras"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
-IUSE="activities +man mtp nfs openexr phonon samba +sftp taglib"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+IUSE="activities +man mtp nfs openexr phonon samba +sftp taglib X"
 
 BDEPEND="
 	man? ( dev-util/gperf )
 "
 DEPEND="
-	>=kde-frameworks/karchive-${KFMIN}:5[bzip2,lzma]
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
+	>=kde-frameworks/karchive-${KFMIN}:5[bzip2(+),lzma(+)]
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
 	>=kde-frameworks/kcodecs-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
@@ -40,24 +46,25 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtsvg-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
 	activities? (
+		>=dev-qt/qtsql-${QTMIN}:5
 		>=kde-frameworks/kactivities-${KFMIN}:5
 		>=kde-frameworks/kactivities-stats-${KFMIN}:5
-		>=dev-qt/qtsql-${QTMIN}:5
 	)
 	mtp? ( >=media-libs/libmtp-1.1.16:= )
 	nfs? ( net-libs/libtirpc:= )
 	openexr? ( media-libs/openexr:= )
 	phonon? ( media-libs/phonon[qt5(+)] )
-	samba? ( net-fs/samba[client] )
+	samba? (
+		net-fs/samba[client]
+		net-libs/kdsoap-ws-discovery-client
+	)
 	sftp? ( net-libs/libssh:=[sftp] )
 	taglib? ( >=media-libs/taglib-1.11.1 )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXcursor
+	)
 "
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kded-${KFMIN}:5
@@ -65,11 +72,6 @@ RDEPEND="${DEPEND}
 
 # requires running kde environment
 RESTRICT+=" test"
-
-PATCHES=(
-	"${FILESDIR}/${P}-kio_nfs.patch"
-	"${FILESDIR}/${P}-CVE-2020-12755.patch" # bug 722152
-)
 
 src_configure() {
 	local mycmakeargs=(
@@ -83,6 +85,10 @@ src_configure() {
 		$(cmake_use_find_package samba Samba)
 		$(cmake_use_find_package sftp libssh)
 		$(cmake_use_find_package taglib Taglib)
+		$(cmake_use_find_package X X11)
+	)
+	use samba && mycmakeargs+=(
+		-DBUILD_KDSoapWSDiscoveryClient=OFF # disable bundled stuff
 	)
 
 	ecm_src_configure
