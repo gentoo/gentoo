@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
 
 inherit distutils-r1
 
@@ -16,17 +17,28 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc x86"
 IUSE="test"
 
 RDEPEND="dev-python/requests[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
 	test? (
+		${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy)
 	)"
-
-# Tests require Internet access
-RESTRICT=test
 
 PATCHES=(
 	"${FILESDIR}/betamax-0.8.1-tests.patch"
 )
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	rm tests/integration/test_hooks.py || die
+	rm tests/integration/test_placeholders.py || die
+	sed -e 's:test_records:_&:' \
+		-e 's:test_replaces:_&:' \
+		-e 's:test_replays:_&:' \
+		-e 's:test_creates:_&:' \
+		-i tests/integration/test_record_modes.py || die
+	rm tests/integration/test_unicode.py || die
+	rm tests/regression/test_gzip_compression.py || die
+	rm tests/regression/test_requests_2_11_body_matcher.py || die
+	distutils-r1_src_prepare
+}

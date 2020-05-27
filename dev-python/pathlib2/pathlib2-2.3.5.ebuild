@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8,9}} )
 
 inherit distutils-r1
 
@@ -18,11 +19,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/scandir[${PYTHON_USEDEP}]' -2 )
+	$(python_gen_cond_dep 'dev-python/scandir[${PYTHON_USEDEP}]' -2)
 	dev-python/six[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
