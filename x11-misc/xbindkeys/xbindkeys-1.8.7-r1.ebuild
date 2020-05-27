@@ -21,6 +21,9 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
+DOCS="
+	AUTHORS BUGS ChangeLog README TODO xbindkeysrc
+"
 
 src_configure() {
 	econf \
