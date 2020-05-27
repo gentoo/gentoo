@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -13,26 +14,21 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc"
+#IUSE="test"
+# The tests are impossible to appease.  Please run them externally
+# via tox.  Or fix the ebuild if you have hours of time to spend
+# on something utterly useless.
+RESTRICT="test"
 
-RDEPEND=""
-BDEPEND="
-	>=dev-python/setuptools-18.4[${PYTHON_USEDEP}]
-	test? (
-		dev-python/PyContracts[${PYTHON_USEDEP}]
-		dev-python/flaky[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		>=dev-python/unittest-mixins-1.4[${PYTHON_USEDEP}]
-	)
-"
-
-DISTUTILS_IN_SOURCE_BUILD=1
-
-PATCHES=(
-	"${FILESDIR}/coverage-4.5.4-tests.patch"
-)
+#BDEPEND="
+#	test? (
+#		dev-python/PyContracts[${PYTHON_USEDEP}]
+#		dev-python/flaky[${PYTHON_USEDEP}]
+#		dev-python/mock[${PYTHON_USEDEP}]
+#		>=dev-python/unittest-mixins-1.4[${PYTHON_USEDEP}]
+#	)
+#"
 
 src_prepare() {
 	# avoid the dep on xdist, run tests verbosely
