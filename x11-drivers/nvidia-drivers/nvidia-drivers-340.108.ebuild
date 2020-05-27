@@ -24,7 +24,7 @@ SRC_URI="
 "
 
 EMULTILIB_PKG="true"
-IUSE="acpi multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
+IUSE="multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
 KEYWORDS="-* amd64 x86"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
@@ -57,7 +57,6 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON}
-	acpi? ( sys-power/acpid )
 	tools? ( !media-video/nvidia-settings )
 	X? (
 		<x11-base/xorg-server-1.20.99:=
