@@ -4876,7 +4876,7 @@ dev-libs/capstone 4.0.1 4.0.2 4.0.2-r1: disassembly/disassembler framework + bin
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
-dev-libs/check 0.14.0 0.14.0-r2: A unit test framework for C
+dev-libs/check 0.14.0-r2: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cl 1.2.3 1.2.4 9999: OpenCL bindings for Erlang
 dev-libs/clhpp 2.0.11-r1: Khronos OpenCL C++ bindings
@@ -7564,7 +7564,7 @@ dev-python/billiard 3.6.0.0: Python multiprocessing fork
 dev-python/binaryornot 0.4.4: Ultra-lightweight pure Python package to guess whether a file is binary or text
 dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.6: A pure Python module for creation and analysis of binary data
-dev-python/bleach 3.1.4-r1: an easy whitelist-based HTML-sanitizing tool
+dev-python/bleach 3.1.4-r1 3.1.5: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessed 1.17.5: Library for making terminal apps using colors, keyboard input and positioning
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
