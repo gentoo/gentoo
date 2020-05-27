@@ -920,7 +920,7 @@ app-crypt/md5deep 4.4: Expanded md5sum program with recursive and comparison opt
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
 app-crypt/minisign 0.8 9999: Dead simple tool to sign files and verify signatures
-app-crypt/mit-krb5 1.17-r1 1.17.1 1.18 1.18.1: MIT Kerberos V
+app-crypt/mit-krb5 1.17-r1 1.17.1 1.18 1.18.1 1.18.2: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41 0.42: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.43.3 9999: Mooltipass crossplatform daemon/tools
@@ -1841,7 +1841,7 @@ app-i18n/ibus-table-chinese 1.8.2: Chinese tables for IBus-Table
 app-i18n/ibus-table-extraphrase 1.3.9.20110826: Chinese extra phrases for IBus-Table
 app-i18n/ibus-table-latin 1.2.0.20100305: Latin tables for IBus-Table
 app-i18n/ibus-table-others 1.3.9: Various tables for IBus-Table
-app-i18n/ibus-typing-booster 2.8.2 2.8.3: Completion input method for IBus
+app-i18n/ibus-typing-booster 2.8.3 2.9.0: Completion input method for IBus
 app-i18n/ibus-unikey 0.6.1-r2: Vietnamese UniKey engine for IBus
 app-i18n/im-canna 0.3.2.2 0.3.2.2-r1: Japanese Canna input method module for GTK+2
 app-i18n/im-chooser 1.7.0: Desktop Input Method configuration tool
@@ -2731,7 +2731,7 @@ app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG gramm
 app-text/pelican 3.7.1 4.0.0 4.0.1 4.1.2 4.2.0 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
-app-text/po4a 0.47-r1 0.57 0.59: Tools to ease the translation of documentation
+app-text/po4a 0.47-r1 0.57 0.59.1: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.85.0 0.87.0 0.88.0-r1 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
@@ -7528,7 +7528,7 @@ dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or G
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.2.0: Parse and generate Authentication-Results headers
 dev-python/autobahn 17.5.1-r2 18.3.1 20.4.3: WebSocket and WAMP for Twisted and Asyncio
-dev-python/automat 0.8.0-r1: Self-service finite-state machines for the programmer on the go
+dev-python/automat 0.8.0-r1 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
