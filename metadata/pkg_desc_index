@@ -7901,7 +7901,7 @@ dev-python/httmock 1.2.5: A mocking library for requests
 dev-python/http-parser 0.8.3 0.9.0: HTTP request/response parser for python in C
 dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest Authentication
 dev-python/httpbin 0.7.0: HTTP Request and Response Service
-dev-python/httplib2 0.13.0 0.17.0: A comprehensive HTTP client library
+dev-python/httplib2 0.13.0 0.17.0 0.18.1: A comprehensive HTTP client library
 dev-python/httpretty 0.9.6 1.0.2 1.0.2-r1: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 4.18: Human friendly output for text interfaces using Python
