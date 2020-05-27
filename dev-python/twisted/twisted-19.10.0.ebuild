@@ -83,7 +83,7 @@ DEPEND="
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/${P}-py38.patch
-		"${FILESDIR}"/twisted-20.3.0-py38-cgi.patch
+		"${FILESDIR}"/twisted-19.10.0-py38-cgi.patch
 		"${FILESDIR}"/twisted-20.3.0-py38-hmac.patch
 	)
 
