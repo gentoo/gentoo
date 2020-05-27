@@ -21,6 +21,7 @@ DEPEND="
 	dev-perl/Text-Template
 	dev-perl/UNIVERSAL-require
 	dev-perl/XML-TreePP
+	dev-perl/XML-XPath
 	virtual/perl-IO-Compress
 	dev-perl/HTTP-Daemon
 	dev-perl/IO-Socket-SSL
