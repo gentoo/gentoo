@@ -5303,7 +5303,7 @@ dev-libs/stp 2.3.3: Simple Theorem Prover, an efficient SMT solver for bitvector
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
 dev-libs/template-glib 3.32.0: Templating library for GLib
 dev-libs/tinyxml 2.6.2-r3: Simple and small C++ XML parser
-dev-libs/tinyxml2 7.1.0: A simple, small, efficient, C++ XML parser
+dev-libs/tinyxml2 7.1.0 8.0.0: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1 2.2.1-r2: Modular, multithreaded web application server extensible with C++
 dev-libs/tomsfastmath 0.13.1: Fast public domain large integer arithmetic library
 dev-libs/totem-pl-parser 3.26.4 3.26.5: Playlist parsing library
@@ -8632,7 +8632,7 @@ dev-python/rarfile 3.0 3.0-r1: Module for RAR archive reading
 dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
 dev-python/raven 5.33.0: Raven is a client for Sentry
 dev-python/rdflib 4.2.2-r1: RDF library containing a triple store and parser/serializer
-dev-python/readme_renderer 25.0: a library for rendering "readme" descriptions for Warehouse
+dev-python/readme_renderer 25.0 26.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 1.0.3 1.0.4: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 0.9.0 2.0.1: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
@@ -10226,7 +10226,7 @@ dev-texlive/texlive-luatex 2019 2020: TeXLive LuaTeX packages
 dev-texlive/texlive-mathscience 2019 2020: TeXLive Mathematics, natural sciences, computer science packages
 dev-texlive/texlive-metapost 2019 2020: TeXLive MetaPost and Metafont packages
 dev-texlive/texlive-music 2019 2020: TeXLive Music packages
-dev-texlive/texlive-pictures 2019 2020: TeXLive Graphics, pictures, diagrams
+dev-texlive/texlive-pictures 2019 2020-r1: TeXLive Graphics, pictures, diagrams
 dev-texlive/texlive-plaingeneric 2019 2020: TeXLive Plain (La)TeX packages
 dev-texlive/texlive-pstricks 2019 2020: TeXLive PSTricks
 dev-texlive/texlive-publishers 2019 2020: TeXLive Publisher styles, theses, etc.
