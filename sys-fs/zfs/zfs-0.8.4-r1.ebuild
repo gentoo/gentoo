@@ -68,7 +68,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/bash-completion-sudo.patch" )
+PATCHES=( 
+	"${FILESDIR}/bash-completion-sudo.patch"
+	"${FILESDIR}/${PV}-initconfdir.patch"
+)
 
 pkg_setup() {
 	if use kernel_linux && use test-suite; then

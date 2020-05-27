@@ -1,0 +1,23 @@
+--- a/Makefile.PL	2020-05-27 02:16:42.106531746 +0300
++++ b/Makefile.PL	2020-05-27 02:17:30.568531767 +0300
+@@ -170,18 +170,15 @@
+         INSTALLSCRIPT        => '$(PREFIX)/bin',
+         INSTALLSITESCRIPT    => '$(PREFIX)/bin',
+         INSTALLVENDORSCRIPT  => '$(PREFIX)/bin',
+-        INSTALLLIB           => '$(DATADIR)/lib',
+-        INSTALLSITELIB       => '$(DATADIR)/lib',
+-        INSTALLVENDORLIB     => '$(DATADIR)/lib',
+         INSTALLMAN1DIR       => '$(PREFIX)/share/man/man1',
+         INSTALLSITEMAN1DIR   => '$(PREFIX)/share/man/man1',
+         INSTALLVENDORMAN1DIR => '$(PREFIX)/share/man/man1',
+         INSTALLMAN3DIR       => '$(PREFIX)/share/man/man3',
+         INSTALLSITEMAN3DIR   => '$(PREFIX)/share/man/man3',
+         INSTALLVENDORMAN3DIR => '$(PREFIX)/share/man/man3',
+-        SYSCONFDIR           => '$(PREFIX)/etc/fusioninventory',
++        SYSCONFDIR           => '/etc/fusioninventory',
+         DATADIR              => '$(PREFIX)/share/fusioninventory',
+-        LOCALSTATEDIR        => '$(PREFIX)/var/fusioninventory',
++        LOCALSTATEDIR        => '/var/lib/fusioninventory',
+     );
+ 
+     # allow variables defined on command line to override defaults
