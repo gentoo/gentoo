@@ -218,6 +218,7 @@ app-arch/file-roller:packagekit - Enable support for the distro-neutral package 
 app-arch/gzip:pic - disable optimized assembly code that is not PIC friendly
 app-arch/innoextract:debug - Enable debug logging and the --debug command-line option
 app-arch/innoextract:lzma - Enable support for extracting lzma-compressed installers using app-arch/xz-utils
+app-arch/lbzip2:symlink - Install symlinks which override app-arch/bzip2 implementation
 app-arch/libarchive:blake2 - Enable Blake2 hash support via app-crypt/libb2.
 app-arch/libarchive:bzip2 - Allow accessing bzip2-compressed archives through libbz2 (which comes with app-arch/bzip2). This only affects libarchive's native support: bsdtar will keep using bunzip2 as a filter if that's not built-in.
 app-arch/libarchive:e2fsprogs - Use file flags from sys-fs/e2fsprogs headers instead of virtual/os-headers headers
