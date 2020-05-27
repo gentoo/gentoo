@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 virtualx
@@ -83,8 +83,10 @@ DEPEND="
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/${P}-py38.patch
-		"${FILESDIR}"/twisted-20.3.0-py38-cgi.patch
+		"${FILESDIR}"/twisted-19.10.0-py38-cgi.patch
 		"${FILESDIR}"/twisted-20.3.0-py38-hmac.patch
+		"${FILESDIR}"/twisted-19.10.0-py39-b64.patch
+		"${FILESDIR}"/twisted-20.3.0-py39-combined.patch
 	)
 
 	# upstream test for making releases; not very useful and requires
