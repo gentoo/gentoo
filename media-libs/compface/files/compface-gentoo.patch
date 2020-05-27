@@ -1,6 +1,6 @@
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -1,10 +1,10 @@
+@@ -1,15 +1,16 @@
  prefix          = @prefix@
  exec_prefix     = @exec_prefix@
  srcdir          = @srcdir@
@@ -15,7 +15,22 @@
  
  @SET_MAKE@
  
-@@ -77,10 +77,8 @@
+ RM              = rm -f
+ LN_S            = @LN_S@
++AR              = @AR@
+ RANLIB          = @RANLIB@
+ INSTALL         = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+@@ -52,7 +53,7 @@
+ 		$(CC) $(LDFLAGS) -o $@ uncmain.o $(LIBNAME)
+ 
+ $(LIBNAME) :	$(OBJECTS)
+-		ar rc $(LIBNAME) $(OBJECTS)
++		$(AR) rc $(LIBNAME) $(OBJECTS)
+ 		-$(RANLIB) $(LIBNAME)
+ 
+ lint :
+@@ -77,10 +78,8 @@
  		$(INSTALL_PROGRAM) -d $(BINDIR) $(LIBDIR) $(MAN1DIR) $(MAN3DIR) $(INCLUDEDIR)
  		$(INSTALL_PROGRAM) $(srcdir)/$(NAMEEXE) $(EXECUTABLE) 
  		-chmod 0755 $(EXECUTABLE)
@@ -26,3 +41,13 @@
  		$(INSTALL_DATA) $(srcdir)/$(NAME).1 $(MAN1DIR)/$(NAME).1
  		cd $(MAN1DIR) && $(RM) ./$(UNNAME).1 && $(LN_S) $(NAME).1 $(UNNAME).1
  		$(INSTALL_DATA) $(srcdir)/$(NAME).3 $(MAN3DIR)/$(NAME).3
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,6 +8,7 @@
+ AC_PROG_RANLIB
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
++AC_CHECK_TOOL(AR, ar)
+ 
+ dnl Checks for libraries.
+ 
