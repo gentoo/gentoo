@@ -1,0 +1,9 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
+EAPI=7
+HOMEPAGE=https://github.com/slimm609/checksec.sh
+KEYWORDS=~amd64 ~mips ~ppc ~ppc64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/slimm609/checksec.sh/archive/2.2.0.tar.gz -> checksec-2.2.0.tar.gz
+_md5_=9e8f34953d066ac9a3ac97fbe21f2973
