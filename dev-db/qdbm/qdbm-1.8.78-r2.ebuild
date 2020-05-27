@@ -14,7 +14,7 @@ SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
-IUSE="bzip2 cxx debug java lzo perl ruby zlib"
+IUSE="bzip2 cxx debug java lzo perl ruby static-libs zlib"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
 	java? ( >=virtual/jre-1.4:* )
@@ -153,6 +153,7 @@ each_ruby_test() {
 src_install() {
 	default
 	qdbm_foreach_api
+	use static-libs || find "${ED}" -name '*.a' -delete || die
 
 	rm -rf "${ED}"/usr/share/${PN}
 
