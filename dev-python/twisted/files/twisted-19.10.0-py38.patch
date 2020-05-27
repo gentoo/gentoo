@@ -1,0 +1,110 @@
+From d33b90880b8eb024daa73bc3fd39aca0bc791ff1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lucas=20Treffenst=C3=A4dt?= <lucas@treffenstaedt.de>
+Date: Mon, 13 Jan 2020 13:54:08 +0100
+Subject: [PATCH 1/2] CramMD5ClientAuthenticator now specifies the digestmod
+ argument to hmac.HMAC constructor explicitly.
+
+---
+ src/twisted/mail/_cred.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/twisted/mail/_cred.py b/src/twisted/mail/_cred.py
+index 9d3646948..43c406f90 100644
+--- a/src/twisted/mail/_cred.py
++++ b/src/twisted/mail/_cred.py
+@@ -8,6 +8,7 @@ Credential managers for L{twisted.mail}.
+ from __future__ import absolute_import, division
+ 
+ import hmac
++import hashlib
+ 
+ from zope.interface import implementer
+ 
+@@ -28,7 +29,7 @@ class CramMD5ClientAuthenticator:
+ 
+ 
+     def challengeResponse(self, secret, chal):
+-        response = hmac.HMAC(secret, chal).hexdigest().encode('ascii')
++        response = hmac.HMAC(secret, chal, digestmod = hashlib.md5).hexdigest().encode('ascii')
+         return self.user + b' ' + response
+ 
+ 
+-- 
+2.26.2
+
+From 694bc67f3cf7d36a6f512f0b76882e85d0966dd2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=A9r=C3=B4me=20Poisson?= <goffi@goffi.org>
+Date: Sun, 17 Nov 2019 19:48:53 +0100
+Subject: [PATCH 2/2] Fix parsing of namespaced attributes with Python 3.8 in
+ twisted.words.xish.domish.ExpatElementStream
+
+---
+ src/twisted/words/newsfragments/9730.bugfix |  1 +
+ src/twisted/words/test/test_domish.py       | 17 +++++++++++++++++
+ src/twisted/words/xish/domish.py            | 11 +++++++++--
+ 3 files changed, 27 insertions(+), 2 deletions(-)
+ create mode 100644 src/twisted/words/newsfragments/9730.bugfix
+
+diff --git a/src/twisted/words/newsfragments/9730.bugfix b/src/twisted/words/newsfragments/9730.bugfix
+new file mode 100644
+index 000000000..5c91305c8
+--- /dev/null
++++ b/src/twisted/words/newsfragments/9730.bugfix
+@@ -0,0 +1 @@
++Fixed parsing of streams with Python 3.8 when there are spaces in namespaces or namespaced attributes in twisted.words.xish.domish.ExpatElementStream
+diff --git a/src/twisted/words/test/test_domish.py b/src/twisted/words/test/test_domish.py
+index a8f8fa76b..cd16e3a4d 100644
+--- a/src/twisted/words/test/test_domish.py
++++ b/src/twisted/words/test/test_domish.py
+@@ -350,6 +350,23 @@ class DomishStreamTestsMixin:
+             self.elements[0].attributes, {(" bar baz ", "baz"): "quux"})
+ 
+ 
++    def test_attributesWithNamespaces(self):
++        """
++        Attributes with namespace are parsed without Exception.
++        (https://twistedmatrix.com/trac/ticket/9730 regression test)
++        """
++
++        xml = b"""<root xmlns:test='http://example.org' xml:lang='en'>
++                    <test:test>test</test:test>
++                  </root>"""
++
++        # with Python 3.8 and without #9730 fix, the following error would
++        # happen at next line:
++        # ``RuntimeError: dictionary keys changed during iteration``
++        self.stream.parse(xml)
++        self.assertEqual(self.elements[0].uri, "http://example.org")
++
++
+     def testChildPrefix(self):
+         xml = b"<root xmlns='testns' xmlns:foo='testns2'><foo:child/></root>"
+ 
+diff --git a/src/twisted/words/xish/domish.py b/src/twisted/words/xish/domish.py
+index 2063c410a..fc49285f5 100644
+--- a/src/twisted/words/xish/domish.py
++++ b/src/twisted/words/xish/domish.py
+@@ -807,11 +807,18 @@ class ExpatElementStream:
+             qname = ('', name)
+ 
+         # Process attributes
++        newAttrs = {}
++        toDelete = []
+         for k, v in attrs.items():
+             if " " in k:
+                 aqname = k.rsplit(" ", 1)
+-                attrs[(aqname[0], aqname[1])] = v
+-                del attrs[k]
++                newAttrs[(aqname[0], aqname[1])] = v
++                toDelete.append(k)
++
++        attrs.update(newAttrs)
++
++        for k in toDelete:
++            del attrs[k]
+ 
+         # Construct the new element
+         e = Element(qname, self.defaultNsStack[-1], attrs, self.localPrefixes)
+-- 
+2.26.2
+
