@@ -1,0 +1,15 @@
+BDEPEND=dev-util/patchelf
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=dev-java/commons-logging:0 dev-java/log4j:0 >=dev-java/java-config-2.2.0-r3
+DESCRIPTION=Android development environment based on IntelliJ IDEA
+EAPI=7
+HOMEPAGE=http://developer.android.com/sdk/installing/studio.html
+IUSE=custom-jdk selinux elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-java/commons-logging:0 dev-java/log4j:0 >=virtual/jdk-1.7 selinux? ( sec-policy/selinux-android ) >=app-arch/bzip2-1.0.6-r4 dev-java/commons-logging:0 dev-java/log4j:0 >=dev-libs/expat-2.1.0-r3 >=dev-libs/libffi-3.0.13-r1 >=media-libs/fontconfig-2.10.92 >=media-libs/freetype-2.5.5 >=media-libs/libpng-1.2.51 >=media-libs/mesa-10.2.8[X(+)] || ( gnome-extra/zenity kde-apps/kdialog x11-apps/xmessage x11-libs/libnotify ) sys-libs/ncurses-compat:5[tinfo] >=sys-libs/zlib-1.2.8-r1 >=x11-libs/libX11-1.6.2 >=x11-libs/libXau-1.0.7-r1 >=x11-libs/libXdamage-1.1.4-r1 >=x11-libs/libXdmcp-1.1.1-r1 >=x11-libs/libXext-1.3.2 >=x11-libs/libXfixes-5.0.1 >=x11-libs/libXrender-0.9.8 >=x11-libs/libXxf86vm-1.1.3 >=x11-libs/libdrm-2.4.46 >=x11-libs/libxcb-1.9.1 >=x11-libs/libxshmfence-1.1 >=dev-java/java-config-2.2.0-r3
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://dl.google.com/dl/android/studio/ide-zips/3.6.3.0/android-studio-ide-192.6392135-linux.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb
+_md5_=856ea7412fefd7e2be6a8d0cad9b326e
