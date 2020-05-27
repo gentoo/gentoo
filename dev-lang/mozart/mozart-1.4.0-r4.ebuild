@@ -1,18 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit elisp-common
+inherit elisp-common flag-o-matic
 
-PATCHSET_VER="5"
+PATCHSET_VER="6"
 MY_P="mozart-${PV}.20080704"
 
 DESCRIPTION="Advanced development platform for intelligent, distributed applications"
 HOMEPAGE="https://mozart.github.io/ https://github.com/mozart/mozart"
 SRC_URI="
 	mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}-src.tar.gz
-	mirror://gentoo/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz
+	https://dev.gentoo.org/~keri/distfiles/mozart/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz
 	doc? ( mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}-doc.tar.gz )"
 
 SLOT="0"
@@ -43,9 +43,15 @@ S="${WORKDIR}"/${MY_P}
 src_prepare() {
 	default
 	eapply "${WORKDIR}"/${PV}
+
+	mkdir -p "${S}"/build/contrib
+	ln -s "${S}"/configure "${S}"/build/configure
 }
 
 src_configure() {
+	cd "${S}"/build
+
+	append-flags -fno-tree-vrp
 	local myconf="\
 			--without-global-oz \
 			--enable-opt=none"
@@ -70,6 +76,7 @@ src_configure() {
 }
 
 src_compile() {
+	cd "${S}"/build
 	emake bootstrap
 }
 
@@ -81,24 +88,26 @@ src_test() {
 }
 
 src_install() {
+	cd "${S}"/build
+
 	emake \
 		PREFIX="${D}"/usr/lib/mozart \
 		ELISPDIR="${D}${SITELISP}/${PN}" \
 		install
 
-	dosym /usr/lib/mozart/bin/convertTextPickle /usr/bin/convertTextPickle
-	dosym /usr/lib/mozart/bin/oldpickle2text /usr/bin/oldpickle2text
-	dosym /usr/lib/mozart/bin/ozc /usr/bin/ozc
-	dosym /usr/lib/mozart/bin/ozd /usr/bin/ozd
-	dosym /usr/lib/mozart/bin/ozengine /usr/bin/ozengine
-	dosym /usr/lib/mozart/bin/ozl /usr/bin/ozl
-	dosym /usr/lib/mozart/bin/ozplatform /usr/bin/ozplatform
-	dosym /usr/lib/mozart/bin/oztool /usr/bin/oztool
-	dosym /usr/lib/mozart/bin/pickle2text /usr/bin/pickle2text
-	dosym /usr/lib/mozart/bin/text2pickle /usr/bin/text2pickle
+	dosym ../lib/mozart/bin/convertTextPickle /usr/bin/convertTextPickle
+	dosym ../lib/mozart/bin/oldpickle2text /usr/bin/oldpickle2text
+	dosym ../lib/mozart/bin/ozc /usr/bin/ozc
+	dosym ../lib/mozart/bin/ozd /usr/bin/ozd
+	dosym ../lib/mozart/bin/ozengine /usr/bin/ozengine
+	dosym ../lib/mozart/bin/ozl /usr/bin/ozl
+	dosym ../lib/mozart/bin/ozplatform /usr/bin/ozplatform
+	dosym ../lib/mozart/bin/oztool /usr/bin/oztool
+	dosym ../lib/mozart/bin/pickle2text /usr/bin/pickle2text
+	dosym ../lib/mozart/bin/text2pickle /usr/bin/text2pickle
 
 	if use emacs; then
-		dosym /usr/lib/mozart/bin/oz /usr/bin/oz
+		dosym ../lib/mozart/bin/oz /usr/bin/oz
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	fi
 
