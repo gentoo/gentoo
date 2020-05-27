@@ -21,3 +21,15 @@
      );
  
      # allow variables defined on command line to override defaults
+--- a/lib/FusionInventory/Agent/Config.pm     2020-05-27 10:06:21.248964808 +0300
++++ b/lib/FusionInventory/Agent/Config.pm     2020-05-27 10:06:57.324964823 +0300
+@@ -67,7 +67,7 @@
+     my ($class, %params) = @_;
+ 
+     my $self = {
+-        '_confdir' => undef, # SYSCONFDIR replaced here from Makefile
++        '_confdir' => '/etc/fusioninventory', # SYSCONFDIR replaced here from Makefile
+     };
+     bless $self, $class;
+     $self->_loadDefaults();
+
