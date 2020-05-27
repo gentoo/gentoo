@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 DESCRIPTION="Tool for launching commands on keystrokes"
-SRC_URI="http://www.nongnu.org/${PN}/${P}.tar.gz"
-HOMEPAGE="http://www.nongnu.org/xbindkeys/xbindkeys.html"
+SRC_URI="https://www.nongnu.org/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.nongnu.org/xbindkeys/xbindkeys.html"
 
 LICENSE="GPL-2"
 SLOT="0"
