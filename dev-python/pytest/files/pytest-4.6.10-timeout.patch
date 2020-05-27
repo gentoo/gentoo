@@ -1,0 +1,35 @@
+diff --git a/src/_pytest/pytester.py b/src/_pytest/pytester.py
+index f1d739c99..72406b85d 100644
+--- a/src/_pytest/pytester.py
++++ b/src/_pytest/pytester.py
+@@ -1209,7 +1209,7 @@ class Testdir(object):
+         args = self._getpytestargs() + args
+         return self.run(*args, timeout=timeout)
+ 
+-    def spawn_pytest(self, string, expect_timeout=10.0):
++    def spawn_pytest(self, string, expect_timeout=60.0):
+         """Run pytest using pexpect.
+ 
+         This makes sure to use the right pytest and sets up the temporary
+@@ -1223,7 +1223,7 @@ class Testdir(object):
+         cmd = "%s --basetemp=%s %s" % (invoke, basetemp, string)
+         return self.spawn(cmd, expect_timeout=expect_timeout)
+ 
+-    def spawn(self, cmd, expect_timeout=10.0):
++    def spawn(self, cmd, expect_timeout=60.0):
+         """Run a command using pexpect.
+ 
+         The pexpect child is returned.
+diff --git a/testing/test_terminal.py b/testing/test_terminal.py
+index 1b2e46c7c..52ba80f46 100644
+--- a/testing/test_terminal.py
++++ b/testing/test_terminal.py
+@@ -138,7 +138,7 @@ class TestTerminal(object):
+             """
+             def test_1():
+                 import time
+-                time.sleep(20)
++                time.sleep(120)
+         """
+         )
+         child = testdir.spawn_pytest("")
