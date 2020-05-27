@@ -1,0 +1,45 @@
+From 22e15acc1e617174a9fde3e53100a1b71ca7f462 Mon Sep 17 00:00:00 2001
+From: Florian Bruhin <me@the-compiler.org>
+Date: Tue, 26 May 2020 16:48:00 +0200
+Subject: [PATCH] Update Qt 5.15 session workaround for lazy_restore
+
+See #5359
+
+(cherry picked from commit 093a454bf4e386eda8715bc3ea2b217760d5f070)
+Upstream-Status: Accepted
+[https://github.com/qutebrowser/qutebrowser/commit/093a454bf4e386eda8715bc3ea2b217760d5f070
+expected in v1.12.0]
+---
+ qutebrowser/browser/webengine/webenginetab.py | 6 +++++-
+ qutebrowser/html/warning-sessions.html        | 1 +
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/qutebrowser/browser/webengine/webenginetab.py b/qutebrowser/browser/webengine/webenginetab.py
+index 647fa60abc..f61404f4ea 100644
+--- a/qutebrowser/browser/webengine/webenginetab.py
++++ b/qutebrowser/browser/webengine/webenginetab.py
+@@ -648,7 +648,11 @@ def load_items(self, items):
+         if qtutils.version_check('5.15', compiled=False):
+             # WORKAROUND for https://github.com/qutebrowser/qutebrowser/issues/5359
+             if items:
+-                self._tab.load_url(items[-1].url)
++                url = items[-1].url
++                if ((url.scheme(), url.host()) == ('qute', 'back') and
++                        len(items) >= 2):
++                    url = items[-2].url
++                self._tab.load_url(url)
+             return
+ 
+         if items:
+diff --git a/qutebrowser/html/warning-sessions.html b/qutebrowser/html/warning-sessions.html
+index f93971c6ab..dd0c4127b6 100644
+--- a/qutebrowser/html/warning-sessions.html
++++ b/qutebrowser/html/warning-sessions.html
+@@ -15,6 +15,7 @@ <h1>{{ title }}</h1>
+ 
+ <ul>
+     <li>Loading a session with this release will <b>only load the most recently opened page</b> for every tab. As a result, the back/forward-history of every tab <b>will be lost</b> as soon as the session is saved again.</li>
++    <li>Due to that, the <span class="mono">session.lazy_restore</span> setting does not have any effect.</li>
+     <li>A one-time backup of the session folder has been created at <span class="mono">{{ datadir }}{{ sep }}sessions{{ sep }}before-qt-515</span>.</li>
+ </ul>
+ 
