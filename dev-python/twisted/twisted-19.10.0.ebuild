@@ -80,7 +80,6 @@ DEPEND="
 	)
 "
 
-
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/${P}-py38.patch
