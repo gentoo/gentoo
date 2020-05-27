@@ -39,7 +39,7 @@ BDEPEND="
 			dev-python/pytest[\${PYTHON_USEDEP}]
 			>=dev-python/trustme-0.5.3[\${PYTHON_USEDEP}]
 			>=www-servers/tornado-4.2.1[\${PYTHON_USEDEP}]
-		" python3_{6,7,8})
+		" python3_{6,7,8,9})
 	)
 "
 
@@ -68,9 +68,6 @@ python_test() {
 			ewarn "Tests are being skipped for Python 2 in order to reduce the number"
 			ewarn "of circular dependencies for Python 2 removal.  Please test"
 			ewarn "manually in a virtualenv."
-			;;
-		python3.9)
-			einfo "Tests not yet ported to py3.9"
 			;;
 		python3*)
 			pytest -vv || die "Tests fail with ${EPYTHON}"
