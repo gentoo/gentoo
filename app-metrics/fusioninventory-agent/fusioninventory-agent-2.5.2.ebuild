@@ -36,7 +36,7 @@ PATCHES=( "${FILESDIR}/${P}-dirs.patch" )
 src_install() {
 	default
 	systemd_dounit contrib/unix/fusioninventory-agent.service
-	doinitd "${FILESDIR}/${PN}.initd"
-	doconfd "${FILESDIR}/${PN}.confd"
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd" ${PN}
 	keepdir /var/lib/fusioninventory
 }
