@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
 
 inherit distutils-r1
 
@@ -17,7 +17,6 @@ IUSE="test"
 
 RDEPEND="<dev-python/requests-3.0.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/betamax[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
