@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -23,6 +23,10 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py39.patch
+)
 
 src_prepare() {
 	# unbundle unpatched broken html5lib
