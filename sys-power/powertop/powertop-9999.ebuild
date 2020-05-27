@@ -100,10 +100,7 @@ src_prepare() {
 	default
 
 	# Bug 599114
-	sed -i '1s|^|AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX_11])|' configure.ac || die
-
-	chmod +x scripts/version || die "Failed to make 'scripts/version' executable"
-	scripts/version || die "Failed to extract version information"
+	sed -i '1s|^|AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX])|' configure.ac || die
 
 	eautoreconf
 }
