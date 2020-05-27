@@ -1,5 +1,33 @@
---- a/Makefile.PL	2020-05-27 02:16:42.106531746 +0300
-+++ b/Makefile.PL	2020-05-27 02:17:30.568531767 +0300
+diff -urN a/lib/FusionInventory/Agent/Config.pm b/lib/FusionInventory/Agent/Config.pm
+--- a/lib/FusionInventory/Agent/Config.pm	2020-05-27 11:09:31.969999393 -0000
++++ b/lib/FusionInventory/Agent/Config.pm	2020-05-27 11:09:39.833332729 -0000
+@@ -67,7 +67,7 @@
+     my ($class, %params) = @_;
+ 
+     my $self = {
+-        '_confdir' => undef, # SYSCONFDIR replaced here from Makefile
++        '_confdir' => '/etc/fusioninventory', # SYSCONFDIR replaced here from Makefile
+     };
+     bless $self, $class;
+     $self->_loadDefaults();
+diff -urN a/lib/setup.pm b/lib/setup.pm
+--- a/lib/setup.pm	2020-05-27 11:09:31.989999393 -0000
++++ b/lib/setup.pm	2020-05-27 11:11:02.233332727 -0000
+@@ -11,9 +11,9 @@
+ our @EXPORT = ('%setup');
+ 
+ our %setup = (
+-    datadir => './share',
++    datadir => '/usr/share/fusioninventory',
+     libdir  => './lib',
+-    vardir  => './var',
++    vardir  => '/var/lib/fusioninventory',
+ );
+ 
+ # Compute directly libdir from this setup file as it should be installed
+diff -urN a/Makefile.PL b/Makefile.PL
+--- a/Makefile.PL	2020-05-27 11:09:31.966666059 -0000
++++ b/Makefile.PL	2020-05-27 11:09:39.833332729 -0000
 @@ -170,18 +170,15 @@
          INSTALLSCRIPT        => '$(PREFIX)/bin',
          INSTALLSITESCRIPT    => '$(PREFIX)/bin',
@@ -21,15 +49,3 @@
      );
  
      # allow variables defined on command line to override defaults
---- a/lib/FusionInventory/Agent/Config.pm     2020-05-27 10:06:21.248964808 +0300
-+++ b/lib/FusionInventory/Agent/Config.pm     2020-05-27 10:06:57.324964823 +0300
-@@ -67,7 +67,7 @@
-     my ($class, %params) = @_;
- 
-     my $self = {
--        '_confdir' => undef, # SYSCONFDIR replaced here from Makefile
-+        '_confdir' => '/etc/fusioninventory', # SYSCONFDIR replaced here from Makefile
-     };
-     bless $self, $class;
-     $self->_loadDefaults();
-

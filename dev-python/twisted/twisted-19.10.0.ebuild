@@ -17,6 +17,7 @@ HOMEPAGE="https://www.twistedmatrix.com/trac/"
 SRC_URI="https://twistedmatrix.com/Releases/${TWISTED_PN}"
 SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
+S=${WORKDIR}/${TWISTED_P}
 
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 
@@ -79,9 +80,14 @@ DEPEND="
 	)
 "
 
-S=${WORKDIR}/${TWISTED_P}
 
 python_prepare_all() {
+	local PATCHES=(
+		"${FILESDIR}"/${P}-py38.patch
+		"${FILESDIR}"/twisted-20.3.0-py38-cgi.patch
+		"${FILESDIR}"/twisted-20.3.0-py38-hmac.patch
+	)
+
 	# upstream test for making releases; not very useful and requires
 	# sphinx (including on py2)
 	rm src/twisted/python/test/test_release.py || die
