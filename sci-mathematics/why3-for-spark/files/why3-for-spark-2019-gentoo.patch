@@ -12,3 +12,13 @@
  
  let rec file_concat l =
    match l with
+--- a/Makefile.in	2020-05-27 21:19:08.736241502 +0200
++++ b/Makefile.in	2020-05-27 21:19:14.042156954 +0200
+@@ -50,7 +50,6 @@
+ OCAMLINSTALLLIB  = $(DESTDIR)@OCAMLINSTALLLIB@
+ OCAMLBEST = @OCAMLBEST@
+ OCAMLVERSION = @OCAMLVERSION@
+-CC        = gcc
+ COQC      = @COQC@
+ COQDEP    = @COQDEP@
+ FRAMAC_LIBDIR = $(DESTDIR)@FRAMAC_LIBDIR@
