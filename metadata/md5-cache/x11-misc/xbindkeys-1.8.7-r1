@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 guile? ( >=dev-scheme/guile-1.8.4[deprecated] ) tk? ( dev-lang/tk )
 SLOT=0
 SRC_URI=https://www.nongnu.org/xbindkeys/xbindkeys-1.8.7.tar.gz
-_md5_=3da6892d6521c158afae7cd218f43cd4
+_md5_=f5c65d2cce9c3009a8901ea0c7108272

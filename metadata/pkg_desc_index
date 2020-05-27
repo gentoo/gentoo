@@ -18386,7 +18386,7 @@ x11-misc/xautolock 2.2_p5_p1 2.2_p5_p1-r1 2.2_p5_p2 2.2_p6: An automatic X scree
 x11-misc/xautomation 1.09-r1: Control X from command line and find things on screen
 x11-misc/xbatt 1.3_rc1: Notebook battery indicator for X
 x11-misc/xbattbar 1.4.8 1.4.9: Advanced Power Management battery status display for X
-x11-misc/xbindkeys 1.8.6-r1 1.8.7: Tool for launching commands on keystrokes
+x11-misc/xbindkeys 1.8.6-r1 1.8.7-r1: Tool for launching commands on keystrokes
 x11-misc/xbitmaps 1.1.2-r1: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r2: A simple interactive calendar program with a notebook capability
 x11-misc/xcalib 0.10: Tiny monitor calibration loader for X.org
