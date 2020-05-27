@@ -7,7 +7,7 @@ EGIT_NONSHALLOW=true
 
 inherit git-r3 toolchain-funcs udev
 
-DESCRIPTION="Tools for bcachefs"
+DESCRIPTION="Tools for bcache"
 HOMEPAGE="https://bcache.evilpiepirate.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/g2p/bcache-tools.git"
