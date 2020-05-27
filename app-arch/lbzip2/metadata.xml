@@ -10,6 +10,9 @@
 		input-bound splitter even when decompressing .bz2 files created by standard
 		bzip2
 	</longdescription>
+	<use>
+		<flag name="symlink">Install symlinks which override <pkg>app-arch/bzip2</pkg> implementation</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">kjn/lbzip2</remote-id>
 	</upstream>
