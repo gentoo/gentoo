@@ -8,6 +8,6 @@ KEYWORDS=-amd64 ~ppc -ppc64 ~x86
 LICENSE=Mozart
 RDEPEND=dev-lang/perl dev-libs/gmp:0= sys-libs/zlib emacs? ( >=app-editors/emacs-23.1:* ) gdbm? ( sys-libs/gdbm ) tcl? ( tk? ( dev-lang/tk:0= dev-lang/tcl:0= ) )
 SLOT=0
-SRC_URI=mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-src.tar.gz mirror://gentoo/mozart-1.4.0-gentoo-patchset-5.tar.gz doc? ( mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-doc.tar.gz )
-_eclasses_=elisp-common	504a3383c45504fde86b00426619a709
-_md5_=92a95dca6977b03529c1d5aa5b2b75e6
+SRC_URI=mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-src.tar.gz https://dev.gentoo.org/~keri/distfiles/mozart/mozart-1.4.0-gentoo-patchset-6.tar.gz doc? ( mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-doc.tar.gz )
+_eclasses_=elisp-common	504a3383c45504fde86b00426619a709	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=0f01c0195f7b961d79e106f2f7708ef0
