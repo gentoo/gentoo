@@ -69,6 +69,10 @@ REQUIRED_USE="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-qt5.15.patch"
+)
+
 pkg_pretend() {
 	if has ccache ${FEATURES}; then
 		ewarn
