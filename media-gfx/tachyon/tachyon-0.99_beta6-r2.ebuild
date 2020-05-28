@@ -58,7 +58,7 @@ src_prepare() {
 
 	LIBSLINE='"'
 	CFLAGSLINE='"'
-	use mpi || CCLINE='"CC = $(tc-getCC)"'
+	use mpi || CCLINE='"CC = '$(tc-getCC)'"'
 	use mpi && CCLINE='"CC = mpicc"'
 	LIBSLINE+="LIBS = -L. -ltachyon \$(MISCLIB) -lm"
 	CFLAGSLINE+="CFLAGS = -DLinux \$(MISCFLAGS)"
