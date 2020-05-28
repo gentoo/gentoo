@@ -12,7 +12,7 @@ SRC_URI="http://abook.sourceforge.net/devel/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc ~x86"
 IUSE="nls"
 
 RDEPEND="
