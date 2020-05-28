@@ -1,17 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 inherit autotools flag-o-matic toolchain-funcs multilib pax-utils
 
 DESCRIPTION="An open-source memory debugger for GNU/Linux"
 HOMEPAGE="http://www.valgrind.org"
-SRC_URI="ftp://sourceware.org/pub/valgrind/${P}.tar.bz2"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="mpi"
+
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="https://sourceware.org/git/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI="ftp://sourceware.org/pub/valgrind/${P}.tar.bz2"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
+fi
 
 DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
@@ -26,8 +31,16 @@ src_prepare() {
 	# Respect CFLAGS, LDFLAGS
 	eapply "${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 
-	# Changing Makefile.all.am to disable SSP
-	eapply "${FILESDIR}"/${PN}-3.7.0-fno-stack-protector.patch
+	eapply "${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# upstream doesn't support this, but we don't build with
+		# Sun/Oracle ld, we have a GNU toolchain, so get some things
+		# working the Linux/GNU way
+		find "${S}" -name "Makefile.am" -o -name "Makefile.tool.am" | xargs \
+			sed -i -e 's:-M,/usr/lib/ld/map.noexstk:-z,noexecstack:' || die
+		cp "${S}"/coregrind/link_tool_exe_{linux,solaris}.in
+	fi
 
 	# Allow users to test their own patches
 	eapply_user
@@ -37,7 +50,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=()
 
 	# Respect ar, bug #468114
 	tc-export AR
@@ -46,32 +59,44 @@ src_configure() {
 	#                       while compiling insn_sse.c in none/tests/x86
 	# -fstack-protector     more undefined references to __guard and __stack_smash_handler
 	#                       because valgrind doesn't link to glibc (bug #114347)
+	# -fstack-protector-all    Fails same way as -fstack-protector/-fstack-protector-strong.
+	#                          Note: -fstack-protector-explicit is a no-op for Valgrind, no need to strip it
+	# -fstack-protector-strong See -fstack-protector (bug #620402)
 	# -m64 -mx32			for multilib-portage, bug #398825
 	# -ggdb3                segmentation fault on startup
 	filter-flags -fomit-frame-pointer
 	filter-flags -fstack-protector
+	filter-flags -fstack-protector-all
+	filter-flags -fstack-protector-strong
 	filter-flags -m64 -mx32
 	replace-flags -ggdb3 -ggdb2
 
 	if use amd64 || use ppc64; then
-		! has_multilib_profile && myconf="${myconf} --enable-only64bit"
+		! has_multilib_profile && myconf+=("--enable-only64bit")
 	fi
 
 	# Force bitness on darwin, bug #306467
-	use x86-macos && myconf="${myconf} --enable-only32bit"
-	use x64-macos && myconf="${myconf} --enable-only64bit"
+	use x86-macos && myconf+=("--enable-only32bit")
+	use x64-macos && myconf+=("--enable-only64bit")
 
 	# Don't use mpicc unless the user asked for it (bug #258832)
 	if ! use mpi; then
-		myconf="${myconf} --without-mpicc"
+		myconf+=("--without-mpicc")
 	fi
 
-	econf ${myconf}
+	econf "${myconf[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS FAQ.txt NEWS README*
+	default
+
+	if [[ ${PV} == "9999" ]]; then
+		# Otherwise FAQ.txt won't exist:
+		emake -C docs FAQ.txt
+		mv docs/FAQ.txt . || die "Couldn't move FAQ.txt"
+	fi
+
+	dodoc FAQ.txt
 
 	pax-mark m "${ED}"/usr/$(get_libdir)/valgrind/*-*-linux
 
