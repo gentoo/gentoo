@@ -30,7 +30,10 @@ BDEPEND="
 DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-1.5.0-buildsystem.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.5.0-buildsystem.patch"
+	"${FILESDIR}/${P}-bashism.patch" # bug 723094
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
