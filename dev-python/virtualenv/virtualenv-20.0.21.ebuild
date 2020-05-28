@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
@@ -57,6 +57,10 @@ distutils_enable_sphinx docs \
 	dev-python/sphinx_rtd_theme \
 	dev-python/towncrier
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py39.patch
+)
 
 src_prepare() {
 	# we don't have xonsh

@@ -1,0 +1,27 @@
+From a8717bf6ac3375d7f26738189c32e3bae04d280a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bern=C3=A1t=20G=C3=A1bor?= <bgabor8@bloomberg.net>
+Date: Fri, 22 May 2020 12:41:32 +0100
+Subject: [PATCH] Add 3.9 on Linux to the test suite (#1839)
+
+---
+ azure-pipelines.yml                  | 10 ++++++----
+ setup.cfg                            |  3 ++-
+ tests/integration/test_zipapp.py     |  2 ++
+ tests/unit/activation/test_xonsh.py  |  3 +++
+ tests/unit/discovery/test_py_spec.py |  2 ++
+ tox.ini                              |  2 +-
+ 6 files changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/tests/unit/discovery/test_py_spec.py b/tests/unit/discovery/test_py_spec.py
+index 445412773..52154f14c 100644
+--- a/tests/unit/discovery/test_py_spec.py
++++ b/tests/unit/discovery/test_py_spec.py
+@@ -95,6 +95,8 @@ def _version_not_satisfies_pairs():
+                 for o in [1, -1]:
+                     temp = copy(sat_ver)
+                     temp[patch] += o
++                    if temp[patch] < 0:
++                        continue
+                     sat = ".".join(str(i) for i in temp)
+                     target.add((req, sat))
+     return sorted(target)
