@@ -8080,6 +8080,7 @@ sys-boot/vboot-utils:libzip - Use dev-libs/libzip.
 sys-boot/woeusb:minimal - Install only woeusb tool
 sys-cluster/ceph:babeltrace - Add support for LTTng babeltrace
 sys-cluster/ceph:cephfs - Build support for cephfs, a POSIX compatible filesystem built on top of ceph
+sys-cluster/ceph:diskprediction - Enable local diskprediction module to predict disk failures
 sys-cluster/ceph:dpdk - Enable DPDK messaging
 sys-cluster/ceph:fuse - Build fuse client
 sys-cluster/ceph:grafana - Install grafana dashboards

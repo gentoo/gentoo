@@ -12460,7 +12460,7 @@ media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugi
 media-gfx/evoluspencil 3.1.0-r1: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r3: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
-media-gfx/exiv2 0.27.2 0.27.3_rc1: EXIF, IPTC and XMP metadata C++ library and command line utility
+media-gfx/exiv2 0.27.2 0.27.3_rc2: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3 1.3.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
@@ -17001,7 +17001,7 @@ sys-boot/yaboot 1.3.14-r2 1.3.16 1.3.17-r2 1.3.17-r3: PPC Bootloader
 sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loader for machines with open firmware
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
-sys-cluster/ceph 12.2.12-r3 14.2.7-r1 14.2.9-r1 15.2.2: Ceph distributed filesystem
+sys-cluster/ceph 12.2.12-r3 14.2.7-r1 14.2.9-r1 15.2.2-r1: Ceph distributed filesystem
 sys-cluster/charliecloud 0.9.6 0.9.10 0.10-r1 0.15 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
@@ -17731,7 +17731,7 @@ www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Rewrites X-Forwarded-For t
 www-apache/mod_fastcgi_handler 0.6-r1: A simple FastCGI handler module
 www-apache/mod_fcgid 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_gnutls 0.8.2-r1 0.8.4 0.9.0: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
-www-apache/mod_h2 1.15.7 1.15.8 1.15.9 9999: HTTP/2 module for Apache
+www-apache/mod_h2 1.15.7 1.15.8 1.15.9 1.15.10 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
 www-apache/mod_limitipconn 0.24-r3: Limit the number of simultaneous apache connections
