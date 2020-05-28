@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Michał Górny <mgorny@gentoo.org> (2020-05-28)
+# Unmask once arm64 is FINALLY done with bug #719700.
+python_targets_python3_9
+
 # David Seifert <soap@gentoo.org (2020-05-17)
 # Mono is hopelessly broken on arm64
 mono
