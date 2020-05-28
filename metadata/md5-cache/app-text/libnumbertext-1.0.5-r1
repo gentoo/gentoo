@@ -6,4 +6,4 @@ KEYWORDS=amd64 ~arm arm64 ~ppc64 x86
 LICENSE=LGPL-3+
 SLOT=0
 SRC_URI=https://github.com/Numbertext/libnumbertext/releases/download/1.0.5/libnumbertext-1.0.5.tar.xz
-_md5_=3db110d7e02f4bfd5480d437d3ae5881
+_md5_=fc01b5a879f25011714e33de1cf40fcd
