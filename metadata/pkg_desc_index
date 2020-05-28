@@ -11794,7 +11794,7 @@ kde-apps/kolourpaint 19.12.3 20.04.1: Paint Program by KDE
 kde-apps/kompare 19.12.3 20.04.1: A program to view the differences between files
 kde-apps/konqueror 19.12.3 20.04.1: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 19.12.3 20.04.1: Galactic Strategy KDE Game
-kde-apps/konsole 19.12.3-r1 20.04.1-r1: KDE's terminal emulator
+kde-apps/konsole 19.12.3-r1 20.04.1-r2: KDE's terminal emulator
 kde-apps/konsolekalendar 19.12.3 20.04.1: Command line interface to KDE calendars
 kde-apps/kontact 19.12.3 20.04.1: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 19.12.3 20.04.1: Library for embedding KParts in a Kontact component
