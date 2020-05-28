@@ -1,0 +1,44 @@
+From 5e5129d51fa85036832f1af44ec5b875d426392f Mon Sep 17 00:00:00 2001
+From: Maximilian Schiller <manimax3@outlook.de>
+Date: Thu, 28 May 2020 22:57:29 +0200
+Subject: [PATCH] Fix konsolepart Segfault when closed
+
+Assign the _view as the parent to the KXMLGuiFactory because the factory
+is referencing the view widget as its associated widget. Since the
+TerminalDisplay gets destructed first this is now a dangling pointer.
+If the view is set as the parent the factory gets cleaned up correctly.
+
+Also cleanup the created clientBuilder after destruction because it
+cant have a parent and would probably leak memory.
+
+BUG: 415762
+BUG: 421226
+BUG: 421194
+BUG: 421138
+---
+ src/SessionController.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/SessionController.cpp b/src/SessionController.cpp
+index e72f342c4..99e185f5e 100644
+--- a/src/SessionController.cpp
++++ b/src/SessionController.cpp
+@@ -1732,11 +1732,13 @@ void SessionController::showDisplayContextMenu(const QPoint& position)
+     if (factory() == nullptr) {
+         if (clientBuilder() == nullptr) {
+             setClientBuilder(new KXMLGUIBuilder(_view));
++
++            // Client builder does not get delted automatically
++            connect(this, &QObject::destroyed, this, [this]{ delete clientBuilder(); });
+         }
+ 
+-        auto factory = new KXMLGUIFactory(clientBuilder(), this);
++        auto factory = new KXMLGUIFactory(clientBuilder(), _view);
+         factory->addClient(this);
+-        ////qDebug() << "Created xmlgui factory" << factory;
+     }
+ 
+     QPointer<QMenu> popup = qobject_cast<QMenu*>(factory()->container(QStringLiteral("session-popup-menu"), this));
+-- 
+2.26.2
+
