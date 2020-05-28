@@ -1,23 +1,23 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+#not sure why, but eapi 7 fails
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit versionator python-single-r1 gnome2-utils cmake-utils multilib
+inherit eapi7-ver python-single-r1 gnome2-utils cmake-utils multilib
 
 DESCRIPTION="Universal Software Radio Peripheral (USRP) Hardware Driver"
 HOMEPAGE="https://kb.ettus.com"
 
-image_version=uhd-images_00$(get_version_component_range 1).0$(get_version_component_range 2).00$(get_version_component_range 3).00$(get_version_component_range 4)-release
 SRC_URI="https://github.com/EttusResearch/uhd/archive/v${PV}.tar.gz -> EttusResearch-UHD-${PV}.tar.gz \
 	https://github.com/EttusResearch/uhd/releases/download/v${PV}/uhd-images_${PV}.tar.xz"
 #https://github.com/EttusResearch/UHD-Mirror/tags
 #http://files.ettus.com/binaries/images/
 
 LICENSE="GPL-3"
-SLOT="0/$(get_version_component_range 1).$(get_version_component_range 2)"
+SLOT="0/$(ver_cut 1-3)"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="b100 b200 doc e300 examples mpmd octoclock n230 test usb usrp1 usrp2 +utils x300"
 RESTRICT="!test? ( test )"
@@ -33,16 +33,25 @@ RDEPEND="${PYTHON_DEPS}
 	usb? ( virtual/libusb:1 )
 	dev-libs/boost:=
 	sys-libs/ncurses:0[tinfo]
+	$(python_gen_cond_dep '
+	|| (
+		dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	)
+	dev-python/requests[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	dev-python/mako
+	$(python_gen_cond_dep '
+	dev-python/mako[${PYTHON_MULTI_USEDEP}]
+	')
 	app-arch/unzip
 	app-arch/gzip
 "
 
-PATCHES=( "${FILESDIR}/${PN}-3.10.3.0-tinfo.patch" )
+PATCHES=( "${FILESDIR}/${PN}-3.13.1.0-tinfo.patch" )
 
 S="${WORKDIR}/${P}/host"
 
@@ -58,6 +67,9 @@ src_prepare() {
 
 	#this may not be needed in 3.4.3 and above, please verify
 	sed -i 's#SET(PKG_LIB_DIR ${PKG_DATA_DIR})#SET(PKG_LIB_DIR ${LIBRARY_DIR}/uhd)#g' CMakeLists.txt || die
+
+	#rpath is set for apple and no one else, just remove the conditional
+	sed -i -e '/if(APPLE)/d' -e '/endif(APPLE)/d' CMakeLists.txt || die
 }
 
 src_configure() {
@@ -66,7 +78,7 @@ src_configure() {
 		-DENABLE_C_API=ON
 		-DENABLE_LIBERIO=OFF
 		-DENABLE_MAN_PAGES=ON
-		-DENABLE_GPSD=OFF
+		-DENABLE_MAN_PAGE_COMPRESSION=OFF
 		-DENABLE_EXAMPLES="$(usex examples)"
 		-DENABLE_TESTS="$(usex test)"
 		-DENABLE_USB="$(usex usb)"
@@ -82,15 +94,18 @@ src_configure() {
 		-DENABLE_N230="$(usex n230)"
 		-DENABLE_MPMD="$(usex mpmd)"
 		-DENABLE_OCTOCLOCK="$(usex octoclock)"
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DPKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
 	cmake-utils_src_configure
 }
 src_install() {
 	cmake-utils_src_install
+	python_optimize
 	use utils && python_fix_shebang "${ED}"/usr/$(get_libdir)/${PN}/utils/
 	if [ "${PV}" != "9999" ]; then
 		rm -rf "${ED}/usr/bin/uhd_images_downloader"
-		rm -rf "${ED}/usr/share/man/man1/uhd_images_downloader.1.gz"
+		rm -rf "${ED}/usr/share/man/man1/uhd_images_downloader.1"
 	fi
 
 	insinto /lib/udev/rules.d/
