@@ -8457,7 +8457,7 @@ dev-python/pyside2 5.14.1-r2 5.14.2: Python bindings for the Qt framework
 dev-python/pysmi 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
-dev-python/pysol_cards 0.8.9 0.8.15: Deal PySol FreeCell cards
+dev-python/pysol_cards 0.8.9 0.8.16: Deal PySol FreeCell cards
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
 dev-python/pyspf 2.0.12 2.0.14: Python implementation of the Sender Policy Framework (SPF)
 dev-python/pysrt 1.1.1 1.1.2 9999: Python library used to edit or create SubRip files
@@ -11794,7 +11794,7 @@ kde-apps/kolourpaint 19.12.3 20.04.1: Paint Program by KDE
 kde-apps/kompare 19.12.3 20.04.1: A program to view the differences between files
 kde-apps/konqueror 19.12.3 20.04.1: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 19.12.3 20.04.1: Galactic Strategy KDE Game
-kde-apps/konsole 19.12.3-r1 20.04.1: KDE's terminal emulator
+kde-apps/konsole 19.12.3-r1 20.04.1-r1: KDE's terminal emulator
 kde-apps/konsolekalendar 19.12.3 20.04.1: Command line interface to KDE calendars
 kde-apps/kontact 19.12.3 20.04.1: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 19.12.3 20.04.1: Library for embedding KParts in a Kontact component
@@ -17848,7 +17848,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
 www-client/opera 68.0.3618.104 68.0.3618.125: A fast and secure web browser
-www-client/opera-beta 69.0.3686.2 69.0.3686.7: A fast and secure web browser
+www-client/opera-beta 69.0.3686.7 69.0.3686.12: A fast and secure web browser
 www-client/opera-developer 70.0.3693.0 70.0.3701.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
