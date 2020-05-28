@@ -109,6 +109,8 @@ src_prepare() {
 		-e "s|^(PKGVER =).*|\\1 ${MY_PV}|g" \
 		-i build.ninja || die
 
+	grep -rlZ -- -Werror . | xargs -0 sed -e 's:-Werror ::g' -e 's: -Werror::g' -i || die #706946
+
 	# The pregenerated ninja file expects the build/ dir.
 	BUILD_DIR="${CMAKE_USE_DIR}/build"
 	cmake-utils_src_prepare
