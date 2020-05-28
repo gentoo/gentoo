@@ -17,7 +17,7 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +alsa bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify libsamplerate
+IUSE="aac +alsa bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libnotify libsamplerate
 	lirc mms modplug mp3 nls opengl pulseaudio scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="|| ( alsa jack pulseaudio sdl )"
 
@@ -148,7 +148,7 @@ src_configure() {
 		$(use_enable speedpitch)
 		$(use_enable vorbis)
 		$(use_enable wavpack)
-		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
+		$(use_with ffmpeg ffmpeg ffmpeg)
 	)
 
 	econf "${myeconfargs[@]}"
