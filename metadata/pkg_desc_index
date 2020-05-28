@@ -17035,7 +17035,7 @@ sys-cluster/kubelet 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kuberne
 sys-cluster/kubeletctl 1.2 1.5: A client for kubelet
 sys-cluster/kubernetes 1.16.8 1.16.9 1.16.10 1.17.4 1.17.5 1.17.6 1.18.0 1.18.1 1.18.2 1.18.3: production-grade container orchestration
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
-sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
+sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.2 1.0.1 1.0.5 1.9.0: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4-r1 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lustre 2.13.0: Lustre is a parallel distributed file system
@@ -17859,7 +17859,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.0.1874.38_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.1.1906.3_p1 3.1.1916.3_p1 3.1.1921.3_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.1.1921.3_p1 3.1.1929.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.4 7.8 7.8-r1: AWStats is short for Advanced Web Statistics
