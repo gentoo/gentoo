@@ -1,0 +1,57 @@
+From fdfae25665731882687da8721e58c3c56a3babf8 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 28 May 2020 09:28:06 -0400
+Subject: Fix crash when closing session in KonsolePart via menu
+
+This close method is also used when closing a Konsole session
+via the X on the tabbar and tabheader.
+
+FIXED-IN: 20.08.0
+BUG: 420817
+BUG: 420695
+BUG: 415762
+
+See merge request !87
+---
+ src/SessionController.cpp | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/src/SessionController.cpp b/src/SessionController.cpp
+index 006ba8b..e72f342 100644
+--- a/src/SessionController.cpp
++++ b/src/SessionController.cpp
+@@ -999,16 +999,23 @@ void SessionController::closeSession()
+         return;
+     }
+ 
+-    if (confirmClose()) {
+-        if (_session->closeInNormalWay()) {
++    if (!confirmClose()) {
++        return;
++    }
++
++    if (!_session->closeInNormalWay()) {
++        if (!confirmForceClose()) {
+             return;
+-        } else if (confirmForceClose()) {
+-            if (_session->closeInForceWay()) {
+-                return;
+-            } else {
+-                qCDebug(KonsoleDebug) << "Konsole failed to close a session in any way.";
+-            }
+         }
++
++        if (!_session->closeInForceWay()) {
++            qCDebug(KonsoleDebug) << "Konsole failed to close a session in any way.";
++            return;
++        }
++    }
++
++    if (factory()) {
++        factory()->removeClient(this);
+     }
+ }
+ 
+-- 
+cgit v1.1
+
