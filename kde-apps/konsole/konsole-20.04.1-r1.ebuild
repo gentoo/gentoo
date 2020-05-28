@@ -53,7 +53,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-crash-on-close.patch" ) # bug 723214
+PATCHES=(
+	"${FILESDIR}/${P}-crash-on-close.patch" # bug 723214, in 20.04.2
+	"${FILESDIR}/${P}-qt-5.15-set-text-encoding-crash.patch" # KDE-Bug 419526; pending
+)
 
 src_configure() {
 	local mycmakeargs=(

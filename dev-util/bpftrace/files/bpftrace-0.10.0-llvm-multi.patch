@@ -1,0 +1,60 @@
+diff -ru a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-05-20 21:00:22.789744736 -0500
++++ b/CMakeLists.txt	2020-05-20 18:52:38.241091110 -0500
+@@ -30,6 +30,11 @@
+   elseif(STATIC_LIBC)
+     message(WARNING "static libc is known to cause problems, consider STATIC_LIBC=OFF. Proceed at your own risk") #iovisor/bpftrace/issues/266
+   endif()
++else()
++  find_package(LLVM 9 REQUIRED CONFIG)
++
++  message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
++  message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+ endif()
+
+ if(EMBED_LIBCLANG_ONLY AND NOT EMBED_CLANG)
+diff -ru a/src/ast/CMakeLists.txt b/src/ast/CMakeLists.txt
+--- a/src/ast/CMakeLists.txt	2020-05-20 21:00:22.777744534 -0500
++++ b/src/ast/CMakeLists.txt	2020-05-20 20:52:39.657888690 -0500
+@@ -42,26 +41,29 @@
+     if(EMBED_LIBCLANG_ONLY)
+       unlink_transitive_dependency("${CLANG_EXPORTED_TARGETS}" "LLVM")
+     endif()
+-    target_link_libraries(bpftraceast ${CLANG_EMBEDDED_CMAKE_TARGETS})
++    target_link_libraries(bpftraceast ${CLANG_EMBEDDED_CMAKE_TARGETS})
+   else()
+     list(INSERT clang_libs 0 libclang.a)
+   endif()
+
+   if(EMBED_LLVM)
+-    target_link_libraries(bpftraceast ${LLVM_EMBEDDED_CMAKE_TARGETS})
++    target_link_libraries(bpftraceast ${LLVM_EMBEDDED_CMAKE_TARGETS})
+   else()
+     llvm_map_components_to_libnames(llvm_libs bpfcodegen ipo irreader mcjit orcjit ${LLVM_TARGETS_TO_BUILD})
+-    target_link_libraries(bpftraceast ${clang_libs})
+-    target_link_libraries(bpftraceast ${llvm_libs})
++    target_link_libraries(bpftraceast ${clang_libs})
++    target_link_libraries(bpftraceast ${llvm_libs})
+   endif()
+ else()
+-  find_library(found_LLVM LLVM HINTS ${LLVM_LIBRARY_DIRS})
+-  if(found_LLVM)
+-    target_link_libraries(bpftraceast LLVM)
+-  else()
+-    llvm_map_components_to_libnames(_llvm_libs bpfcodegen ipo irreader mcjit orcjit ${LLVM_TARGETS_TO_BUILD})
+-    llvm_expand_dependencies(llvm_libs ${_llvm_libs})
+-    target_link_libraries(bpftraceast ${llvm_libs})
++  find_package(LLVM 9 REQUIRED CONFIG)
++
++  include_directories(${LLVM_INCLUDE_DIRS})
++  add_definitions(${LLVM_DEFINITIONS})
++
++  find_library(found_clang clang HINTS ${LLVM_LIBRARY_DIRS})
++  if(found_clang)
++    target_link_libraries(bpftraceast ${found_clang})
+   endif()
+-  target_link_libraries(bpftraceast libclang)
++  llvm_map_components_to_libnames(_llvm_libs bpfcodegen ipo irreader mcjit orcjit ${LLVM_TARGETS_TO_BUILD})
++  llvm_expand_dependencies(llvm_libs ${_llvm_libs})
++  target_link_libraries(bpftraceast ${llvm_libs})
+ endif()
