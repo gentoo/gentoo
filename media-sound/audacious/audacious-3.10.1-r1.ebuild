@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="nls qt5"
+IUSE="nls"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -30,14 +30,9 @@ DEPEND="
 	>=dev-libs/dbus-glib-0.60
 	>=dev-libs/glib-2.28
 	>=x11-libs/cairo-1.2.6
+	x11-libs/gtk+:2
 	>=x11-libs/pango-1.8.0
 	virtual/freedesktop-icon-theme
-	!qt5? ( x11-libs/gtk+:2 )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-	)
 "
 RDEPEND="${DEPEND}"
 PDEPEND="~media-plugins/audacious-plugins-${PV}"
@@ -66,9 +61,9 @@ src_configure() {
 	econf \
 		--disable-valgrind \
 		--enable-dbus \
-		$(use_enable nls) \
-		$(use_enable !qt5 gtk) \
-		$(use_enable qt5 qt)
+		--enable-gtk \
+		--disable-qt \
+		$(use_enable nls)
 }
 
 src_install() {

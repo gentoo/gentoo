@@ -2,14 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>asturm@gentoo.org</email>
-		<name>Andreas Sturmlechner</name>
+		<email>paul.kalug@gmail.com</email>
+		<name>Pavel Kalugin</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>sound@gentoo.org</email>
-		<name>Gentoo Sound project</name>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="gtk">Build with GTK interface instead of Qt5</flag>
-	</use>
 </pkgmetadata>

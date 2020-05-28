@@ -17,11 +17,9 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify libsamplerate
-	lirc mms modplug mp3 nls opengl pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
-REQUIRED_USE="
-	|| ( alsa jack pulseaudio qtmedia sdl )
-	ampache? ( qt5 http ) qtmedia? ( qt5 )"
+IUSE="aac +alsa bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libnotify libsamplerate
+	lirc mms modplug mp3 nls opengl pulseaudio scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+REQUIRED_USE="|| ( alsa jack pulseaudio sdl )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -50,10 +48,12 @@ DEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib
 	dev-libs/libxml2:2
-	~media-sound/audacious-${PV}[qt5=]
+	~media-sound/audacious-${PV}[-qt5(-)]
+	x11-libs/gtk+:2
+	x11-libs/libXcomposite
+	x11-libs/libXrender
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
-	ampache? ( =media-libs/ampache_browser-1* )
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
 		dev-libs/libcdio:=
@@ -80,18 +80,6 @@ DEPEND="
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
-	!qt5? (
-		x11-libs/gtk+:2
-		x11-libs/libXcomposite
-		x11-libs/libXrender
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		opengl? ( dev-qt/qtopengl:5 )
-	)
-	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
 	sid? ( >=media-libs/libsidplayfp-1.0.0 )
@@ -122,13 +110,18 @@ src_configure() {
 	local myeconfargs=(
 		--enable-mpris2
 		--enable-songchange
+		--enable-aosd
+		--enable-gtk
+		--enable-hotkey
 		--disable-adplug # not packaged
-		--disable-oss4
+		--disable-ampache # needs Qt5
 		--disable-coreaudio
+		--disable-oss4
+		--disable-qt
+		--disable-qtaudio
 		--disable-sndio
 		$(use_enable aac)
 		$(use_enable alsa)
-		$(use_enable ampache)
 		$(use_enable bs2b)
 		$(use_enable cdda cdaudio)
 		$(use_enable cue)
@@ -147,11 +140,6 @@ src_configure() {
 		$(use_enable mp3 mpg123)
 		$(use_enable nls)
 		$(use_enable pulseaudio pulse)
-		$(use_enable !qt5 aosd)
-		$(use_enable !qt5 gtk)
-		$(use_enable !qt5 hotkey)
-		$(use_enable qt5 qt)
-		$(use_enable qtmedia qtaudio)
 		$(use_enable scrobbler scrobbler2)
 		$(use_enable sdl sdlout)
 		$(use_enable sid)
@@ -160,9 +148,8 @@ src_configure() {
 		$(use_enable speedpitch)
 		$(use_enable vorbis)
 		$(use_enable wavpack)
-		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
+		$(use_with ffmpeg ffmpeg ffmpeg)
 	)
-	use qt5 && myeconfargs+=( $(usex opengl --enable-qtglspectrum --disable-qtglspectrum) )
 
 	econf "${myeconfargs[@]}"
 }
