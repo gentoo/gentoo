@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-#this doesn't work in eapi 7, even with emake
+#this doesn't work in eapi 7, even with emake or cmake.eclass
 EAPI=6
 
 inherit cmake-utils
@@ -13,7 +13,7 @@ if [[ $PV == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/merbanan/rtl_433"
 	KEYWORDS=""
 else
-	COMMIT="f8d9a01e68a6578289cda0dae383942c4779a4b5"
+	COMMIT="f82c02561dcde055143903d0f65257eb3211d45b"
 	SRC_URI="https://github.com/merbanan/rtl_433/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	#SRC_URI="https://github.com/merbanan/rtl_433/archive/${PV}.tar.gz -> ${P}.tar.gz"
