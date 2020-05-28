@@ -55,6 +55,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-boost.patch"
 	"${FILESDIR}/${P}-disable-failing-tests.patch"
+	"${FILESDIR}/${P}-placeholder.patch"
 	"${FILESDIR}/${P}-python.patch"
 )
 
