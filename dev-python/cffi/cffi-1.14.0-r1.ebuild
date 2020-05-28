@@ -20,7 +20,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="virtual/libffi:="
+DEPEND="dev-libs/libffi:="
 RDEPEND="${DEPEND}
 	dev-python/pycparser[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
@@ -28,6 +28,10 @@ BDEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 distutils_enable_sphinx doc/source
+
+PATCHES=(
+	"${FILESDIR}"/cffi-0.14.0-g-line.patch
+)
 
 src_configure() {
 	tc-export PKG_CONFIG
