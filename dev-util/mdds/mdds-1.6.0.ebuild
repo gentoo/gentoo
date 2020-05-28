@@ -16,8 +16,8 @@ DESCRIPTION="A collection of multi-dimensional data structure and indexing algor
 HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
-SLOT="1/1.5"
-IUSE="doc valgrind test"
+SLOT="1/1.5" # Check API version on version bumps!
+IUSE="doc openmp valgrind test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -30,11 +30,21 @@ BDEPEND="
 DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-1.5.0-buildsystem.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.5.0-buildsystem.patch"
+	"${FILESDIR}/${P}-bashism.patch" # bug 723094
+)
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
@@ -43,6 +53,12 @@ src_configure() {
 		$(use_enable doc docs)
 		$(use_enable valgrind memory_tests)
 	)
+	if use openmp && tc-has-openmp; then
+		myeconfargs+=( --enable-openmp )
+	else
+		myeconfargs+=( --disable-openmp )
+	fi
+
 	econf "${myeconfargs[@]}"
 }
 
