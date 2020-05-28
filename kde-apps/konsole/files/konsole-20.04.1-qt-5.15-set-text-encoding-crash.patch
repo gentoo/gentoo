@@ -1,0 +1,109 @@
+From 72e76de072aa4c7960396856e72681a00c4f67d9 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Thu, 28 May 2020 21:40:29 +0200
+Subject: [PATCH] [SessionController] Fix crash caused by text encoding menu
+
+QMenu since 5.15 is hidden when an action is triggered, this caused a
+crash in Konsole when trying to access the text encoding menu.
+
+Now Session emits a signal when the text encoding is changed, the
+SessionController can connect to that singal to set the current codec in
+the KCodecAction object.
+
+Also fix the EditProfileDialog so that when the KCodecAction menu is
+shown the currently set codec is selected.
+
+BUG: 419526
+
+FIXED-IN: 20.08
+---
+ src/EditProfileDialog.cpp | 1 +
+ src/Session.cpp           | 2 ++
+ src/Session.h             | 5 +++++
+ src/SessionController.cpp | 7 ++++---
+ src/SessionController.h   | 2 +-
+ 5 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/src/EditProfileDialog.cpp b/src/EditProfileDialog.cpp
+index a64136934..f93e9e166 100644
+--- a/src/EditProfileDialog.cpp
++++ b/src/EditProfileDialog.cpp
+@@ -1725,6 +1725,7 @@ void EditProfileDialog::setupAdvancedPage(const Profile::Ptr &profile)
+ 
+     // encoding options
+     auto codecAction = new KCodecAction(this);
++    codecAction->setCurrentCodec(profile->defaultEncoding());
+     _advancedUi->selectEncodingButton->setMenu(codecAction->menu());
+     connect(codecAction,
+             QOverload<QTextCodec *>::of(&KCodecAction::triggered), this,
+diff --git a/src/Session.cpp b/src/Session.cpp
+index 1103f6e1b..483d8fd6a 100644
+--- a/src/Session.cpp
++++ b/src/Session.cpp
+@@ -252,6 +252,8 @@ void Session::setCodec(QTextCodec* codec)
+     }
+ 
+     emulation()->setCodec(codec);
++
++    emit sessionCodecChanged(codec);
+ }
+ 
+ bool Session::setCodec(const QByteArray& name)
+diff --git a/src/Session.h b/src/Session.h
+index 1b7da1b3b..c1af3c05d 100644
+--- a/src/Session.h
++++ b/src/Session.h
+@@ -661,6 +661,11 @@ Q_SIGNALS:
+      */
+     void currentDirectoryChanged(const QString &dir);
+ 
++    /**
++     * Emitted when the session text encoding changes.
++     */
++    void sessionCodecChanged(QTextCodec *codec);
++
+     /** Emitted when a bell event occurs in the session. */
+     void bellRequest(const QString &message);
+ 
+diff --git a/src/SessionController.cpp b/src/SessionController.cpp
+index e72f342c4..f74969f85 100644
+--- a/src/SessionController.cpp
++++ b/src/SessionController.cpp
+@@ -691,7 +691,8 @@ void SessionController::setupCommonActions()
+     _codecAction = new KCodecAction(i18n("Set &Encoding"), this);
+     _codecAction->setIcon(QIcon::fromTheme(QStringLiteral("character-set")));
+     collection->addAction(QStringLiteral("set-encoding"), _codecAction);
+-    connect(_codecAction->menu(), &QMenu::aboutToShow, this, &Konsole::SessionController::updateCodecAction);
++    _codecAction->setCurrentCodec(QString::fromUtf8(_session->codec()));
++    connect(_session.data(), &Konsole::Session::sessionCodecChanged, this, &Konsole::SessionController::updateCodecAction);
+     connect(_codecAction,
+             QOverload<QTextCodec*>::of(&KCodecAction::triggered), this,
+             &Konsole::SessionController::changeCodec);
+@@ -846,9 +847,9 @@ void SessionController::prepareSwitchProfileMenu()
+     _switchProfileMenu->menu()->clear();
+     _switchProfileMenu->menu()->addActions(_profileList->actions());
+ }
+-void SessionController::updateCodecAction()
++void SessionController::updateCodecAction(QTextCodec *codec)
+ {
+-    _codecAction->setCurrentCodec(QString::fromUtf8(_session->codec()));
++    _codecAction->setCurrentCodec(codec);
+ }
+ 
+ void SessionController::changeCodec(QTextCodec* codec)
+diff --git a/src/SessionController.h b/src/SessionController.h
+index 057a31446..5062833b7 100644
+--- a/src/SessionController.h
++++ b/src/SessionController.h
+@@ -260,7 +260,7 @@ private Q_SLOTS:
+     // other
+     void setupSearchBar();
+     void prepareSwitchProfileMenu();
+-    void updateCodecAction();
++    void updateCodecAction(QTextCodec *codec);
+     void showDisplayContextMenu(const QPoint &position);
+     void movementKeyFromSearchBarReceived(QKeyEvent *event);
+     void sessionNotificationsChanged(Session::Notification notification, bool enabled);
+-- 
+2.26.2
+
