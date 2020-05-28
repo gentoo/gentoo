@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils python-single-r1
 
@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="glfw qt5"
+IUSE="glfw qt5 wxwidgets"
 
 RDEPEND="qt5? (
 		dev-qt/qtcore:5
@@ -31,7 +31,7 @@ RDEPEND="qt5? (
 		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
 	)
-	=net-wireless/gnuradio-3.8*:0=[qt5,${PYTHON_SINGLE_USEDEP}]
+	=net-wireless/gnuradio-3.7*:0=[qt5,wxwidgets?,${PYTHON_SINGLE_USEDEP}]
 	media-libs/freetype
 	dev-libs/boost:=
 	glfw? ( >=media-libs/glfw-3 )
