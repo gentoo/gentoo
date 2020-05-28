@@ -20,7 +20,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="virtual/libffi:="
+DEPEND="dev-libs/libffi:="
 RDEPEND="${DEPEND}
 	dev-python/pycparser[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
