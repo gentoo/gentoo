@@ -70,7 +70,10 @@ REQUIRED_USE="
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PV}-kde-dir.patch" )
+PATCHES=( 
+	"${FILESDIR}/${PV}-kde-dir.patch"
+	"${FILESDIR}/${PN}-qt5.15.patch"
+)
 
 src_configure() {
 	local mycxxflags=(
