@@ -66,6 +66,9 @@ RDEPEND="${COMMON_DEPEND}
 	net-libs/glib-networking[ssl]
 "
 BDEPEND="virtual/pkgconfig"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.27.0-fno-common.patch
+)
 
 pkg_setup() {
 	if use ipv6; then
