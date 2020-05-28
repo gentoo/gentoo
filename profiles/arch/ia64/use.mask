@@ -5,6 +5,11 @@
 -ia64
 
 # Michał Górny <mgorny@gentoo.org> (2020-05-28)
+# Moving from arch/base.
+python_targets_python3_8
+python_single_target_python3_8
+
+# Michał Górny <mgorny@gentoo.org> (2020-05-28)
 # Unmask once alpha is FINALLY done with bug #719700.
 python_targets_python3_9
 

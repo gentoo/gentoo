@@ -1,12 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-13)
-# Python 3.8 is masked on the majority of arches because we failed
-# at keywording new versions of packages.
-python_targets_python3_8
-python_single_target_python3_8
-
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Forced and masked by default. Unmask where necessary.
