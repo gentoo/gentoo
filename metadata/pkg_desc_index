@@ -7665,7 +7665,7 @@ dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cs
 dev-python/cssselect 1.1.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.3.0: Parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.2-r2: A CSS Cascading Style Sheets library
-dev-python/csv23 0.3.1: Python 2/3 unicode CSV compatibility layer
+dev-python/csv23 0.3.2: Python 2/3 unicode CSV compatibility layer
 dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function based on ctypes module
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.2.2: Cursive implements OpenStack-specific validation of digital signatures.
@@ -12469,6 +12469,7 @@ media-gfx/feh 3.3 3.4: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.1.1: Tools and a library for creating flame fractal images
+media-gfx/flameshot 0.6.0: Powerful yet simple to use screenshot software
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
 media-gfx/fontforge 20200314: postscript font editor and converter
 media-gfx/fontypython 0.4.4-r3: Font preview application
@@ -13047,7 +13048,7 @@ media-plugins/alsa-plugins 1.2.1 1.2.2: ALSA extra plugins
 media-plugins/alsaequal 0.7.1: A real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/ams-lv2 1.1.0 1.2.1: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
-media-plugins/audacious-plugins 3.10.1-r2 4.0.3 9999: Lightweight and versatile audio player
+media-plugins/audacious-plugins 3.10.1-r3 4.0.3 9999: Lightweight and versatile audio player
 media-plugins/calf 0.90.3 9999: A set of open source instruments and effects for digital audio workstations
 media-plugins/caps-plugins 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
 media-plugins/fil-plugins 0.3.0-r1: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
@@ -13365,7 +13366,7 @@ media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter 
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.4 2.9.5: Graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
-media-sound/audacious 3.10.1 4.0.3 9999: Lightweight and versatile audio player
+media-sound/audacious 3.10.1-r1 4.0.3 9999: Lightweight and versatile audio player
 media-sound/audacity 2.2.2 2.3.2 2.3.3: Free crossplatform audio editor
 media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
