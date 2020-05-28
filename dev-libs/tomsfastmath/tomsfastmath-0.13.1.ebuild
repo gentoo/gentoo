@@ -17,7 +17,7 @@ LICENSE="Unlicense"
 # https://abi-laboratory.pro/index.php?view=timeline&l=tomsfastmath
 SLOT="0/1"
 
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~sparc"
 
 PATCHES=(
 	"${FILESDIR}/${P}-makefile-fix.patch"
