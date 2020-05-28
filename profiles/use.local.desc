@@ -4531,6 +4531,7 @@ media-sound/aqualung:lua - Enable support for programmable title formatting with
 media-sound/aqualung:mac - Enable support for decoding Monkey's Audio files
 media-sound/aqualung:podcast - Enable podcast support
 media-sound/aqualung:systray - Enable system tray support
+media-sound/ardour:phonehome - contact ardour.org at startup for new announcements
 media-sound/ario:idle - Enable experimental support for MPD's idle command to reduce bandwidth and cpu usage, requires MPD 0.14
 media-sound/asunder:mac - Support for creation of Monkey's Audio files (APE)
 media-sound/audacious:gtk - Build with GTK interface instead of Qt5
