@@ -29,6 +29,10 @@ BDEPEND="${RDEPEND}
 
 distutils_enable_sphinx doc/source
 
+PATCHES=(
+	"${FILESDIR}"/cffi-0.14.0-g-line.patch
+)
+
 src_configure() {
 	tc-export PKG_CONFIG
 }
