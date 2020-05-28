@@ -1,8 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -ia64
+
+# Michał Górny <mgorny@gentoo.org> (2020-05-28)
+# Unmask once alpha is FINALLY done with bug #719700.
+python_targets_python3_9
 
 # James Le Cuirot <chewi@gentoo.org> (2020-05-10)
 # media-libs/allegro is not keyworded.
