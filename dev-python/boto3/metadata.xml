@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>andrey_utkin@gentoo.org</email>
-		<name>Andrey Utkin</name>
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">boto/boto3</remote-id>
