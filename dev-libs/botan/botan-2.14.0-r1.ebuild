@@ -14,7 +14,7 @@ SRC_URI="https://botan.randombit.net/releases/${MY_P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="2/$(ver_cut 1-2)" # soname version
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~sparc ~x86 ~ppc-macos"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos"
 IUSE="bindist bzip2 boost doc libressl lzma python sqlite ssl static-libs zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
