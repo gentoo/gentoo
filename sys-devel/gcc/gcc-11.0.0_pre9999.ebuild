@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PATCH_GCC_VER="10.1.0" # reuse subset of patches for latest for live ebuilds gcc
+PATCH_GCC_VER="11.0.0"
 PATCH_VER="1"
 
 inherit toolchain
