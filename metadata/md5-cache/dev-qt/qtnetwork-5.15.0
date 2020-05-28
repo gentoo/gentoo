@@ -1,15 +1,15 @@
 BDEPEND=dev-lang/perl virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
-DEPEND=~dev-qt/qtcore-5.15.0:5= sys-libs/zlib:= connman? ( ~dev-qt/qtdbus-5.15.0 ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) networkmanager? ( ~dev-qt/qtdbus-5.15.0 ) sctp? ( kernel_linux? ( net-misc/lksctp-tools ) ) ssl? ( dev-libs/openssl:0=[bindist=] ) test? ( ~dev-qt/qttest-5.15.0 )
+DEPEND=~dev-qt/qtcore-5.15.0:5= sys-libs/zlib:= connman? ( ~dev-qt/qtdbus-5.15.0 ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) networkmanager? ( ~dev-qt/qtdbus-5.15.0 ) sctp? ( kernel_linux? ( net-misc/lksctp-tools ) ) ssl? ( !libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) ) test? ( ~dev-qt/qttest-5.15.0 )
 DESCRIPTION=Network abstraction library for the Qt5 framework
 EAPI=7
 HOMEPAGE=https://www.qt.io/
-IUSE=bindist connman gssapi libproxy networkmanager sctp +ssl debug test
+IUSE=bindist connman gssapi libproxy libressl networkmanager sctp +ssl debug test
 KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3
-RDEPEND=~dev-qt/qtcore-5.15.0:5= sys-libs/zlib:= connman? ( ~dev-qt/qtdbus-5.15.0 ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) networkmanager? ( ~dev-qt/qtdbus-5.15.0 ) sctp? ( kernel_linux? ( net-misc/lksctp-tools ) ) ssl? ( dev-libs/openssl:0=[bindist=] ) connman? ( net-misc/connman ) networkmanager? ( net-misc/networkmanager ) dev-qt/qtchooser
+RDEPEND=~dev-qt/qtcore-5.15.0:5= sys-libs/zlib:= connman? ( ~dev-qt/qtdbus-5.15.0 ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) networkmanager? ( ~dev-qt/qtdbus-5.15.0 ) sctp? ( kernel_linux? ( net-misc/lksctp-tools ) ) ssl? ( !libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) ) connman? ( net-misc/connman ) networkmanager? ( net-misc/networkmanager ) dev-qt/qtchooser
 RESTRICT=test
 SLOT=5/5.15
 SRC_URI=https://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtbase-everywhere-src-5.15.0.tar.xz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	qt5-build	46a8751c47d741c45a1f56f739b4de63	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	virtualx	e49dbce7ac14426e1155497476915307
-_md5_=05310d881647f2fb6e5788dde1ea0c9d
+_md5_=82c0c131ea677c79cac8e93135384bf8

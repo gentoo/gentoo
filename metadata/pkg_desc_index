@@ -1577,7 +1577,7 @@ app-emacs/undo-tree 0.6.6: Undo trees and visualization
 app-emacs/uptimes 3.7: Track and display emacs session uptimes
 app-emacs/vhdl-mode 3.38.1: VHDL-mode for Emacs
 app-emacs/visual-basic-mode 1.5: A mode for editing Visual Basic programs
-app-emacs/vm 8.2.0_beta-r1 9999: The VM mail reader for Emacs
+app-emacs/vm 8.2.0_beta-r1: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
 app-emacs/wanderlust 2.15.9_p20180814 2.15.9_p20190623: Yet Another Message Interface on Emacsen
