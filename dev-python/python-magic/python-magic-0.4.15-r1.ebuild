@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/file[-python]"
 BDEPEND="
-	test? ( ${RDEPEND} )
+	test? ( sys-apps/file )
 "
 
 PATCHES=(
