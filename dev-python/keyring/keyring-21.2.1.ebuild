@@ -27,13 +27,8 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 "
-
-PATCHES=(
-#	"${FILESDIR}/keyring-19.1.0-tests.patch"
-	# https://github.com/jaraco/keyring/commit/411204df606bdf02c99f3360ec033e3c235d5f67
-#	"${FILESDIR}/keyring-19.3.0-tests.patch"
-)
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \
