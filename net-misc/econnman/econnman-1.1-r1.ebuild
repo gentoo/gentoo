@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit python-single-r1
 
@@ -18,13 +18,11 @@ KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
-RDEPEND="
-	${DEPEND}
+RDEPEND="${DEPEND}
 	dev-libs/efl[X,connman]
 	$(python_gen_cond_dep '
-		dev-python/python-efl[${PYTHON_MULTI_USEDEP}]
-	')
-"
+		dev-python/python-efl[${PYTHON_USEDEP}]
+	')"
 
 src_prepare() {
 	default
