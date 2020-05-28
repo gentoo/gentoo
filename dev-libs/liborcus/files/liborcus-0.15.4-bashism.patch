@@ -1,0 +1,26 @@
+From 7d2ae0b6e47aa0c1fc43a91300d82c5394420162 Mon Sep 17 00:00:00 2001
+From: Ryo ONODERA <ryo@tetera.org>
+Date: Sat, 11 Jan 2020 23:01:29 +0900
+Subject: [PATCH] Improve POSIX shell portability
+
+DO not use bash syntax.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index bc5dc195..a854c0c9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -322,7 +322,7 @@ AC_ARG_ENABLE([werror],
+ 	[enable_werror="$enableval"],
+ 	[enable_werror=no]
+ )
+-AS_IF([test x"$enable_werror" == "xyes"], [
++AS_IF([test x"$enable_werror" = "xyes"], [
+ 	CXXFLAGS="$CXXFLAGS -Werror"
+ ])
+ 
+-- 
+2.26.2
+
