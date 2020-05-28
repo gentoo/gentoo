@@ -1,0 +1,20 @@
+Restored configure.in based on tarball's configure
+--- /dev/null
++++ b/configure.in
+@@ -0,0 +1,16 @@
++AC_INIT(prctl.c)
++
++AC_PROG_LN_S
++AC_PROG_CC
++AC_PROG_CPP
++AC_PROG_INSTALL
++
++
++AC_HEADER_STDC
++AC_CHECK_HEADERS(unistd.h)
++
++
++AC_CHECK_FUNCS(strerror)
++AC_SUBST(ASCPP)
++AC_SUBST(INSTALL)
++AC_OUTPUT(Makefile)
