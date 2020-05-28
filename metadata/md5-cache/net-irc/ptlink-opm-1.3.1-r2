@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=PTlink Open Proxy Monitor
+EAPI=7
+HOMEPAGE=http://www.ptlink.net/
+KEYWORDS=~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://ftp.sunsite.dk/projects/ptlink/ptopm/PTlink.OPM1.3.1.tar.gz
+_eclasses_=user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_md5_=7e1ef6149be3f10badfe33f8d162fce0
