@@ -1,0 +1,32 @@
+From 076f6576e7398842457d34fd68140512795c7e00 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Fri, 15 May 2020 12:42:20 +0200
+Subject: [PATCH] configure.ac: avoid bashisms
+
+or else we end up with unpredictable results if shell != /bin/bash:
+
+  ./configure: 19427: test: xno: unexpected operator
+
+Reported-by: Matt Whitlock <gentoo@mattwhitlock.name>
+Gentoo-bug: https://bugs.gentoo.org/723128
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3a07dd8..505aeba 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -182,7 +182,7 @@ AC_ARG_ENABLE([werror],
+ 	[enable_werror="$enableval"],
+ 	[enable_werror=no]
+ )
+-AS_IF([test x"$enable_werror" == "xyes"], [
++AS_IF([test x"$enable_werror" = "xyes"], [
+ 	CXXFLAGS="$CXXFLAGS -Werror"
+ ])
+ 
+-- 
+2.26.2
+
