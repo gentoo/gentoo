@@ -1,5 +1,6 @@
 BDEPEND=|| ( sys-devel/clang:10 sys-devel/clang:9 sys-devel/clang:8 ) || ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 )
 DEFINED_PHASES=compile configure prepare setup
+DEPEND=!!sys-devel/llvm:0
 DESCRIPTION=OpenCL C library
 EAPI=7
 HOMEPAGE=https://libclc.llvm.org/
@@ -9,5 +10,5 @@ LICENSE=Apache-2.0-with-LLVM-exceptions || ( MIT BSD )
 REQUIRED_USE=|| ( video_cards_nvidia video_cards_r600 video_cards_radeonsi )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/libclc-0.2.0_pre20191024.tar.xz
-_eclasses_=llvm	8f3e93d3465cc38eb38d404e0c799ccd	multilib	0914eab919f4f11dd9e0407b92af4726	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_eclasses_=llvm	78f8b6f29bd3b0263a4c9a3785e5af71	multilib	0914eab919f4f11dd9e0407b92af4726	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=f93be4b380c5ec1da6d7921a6fa5ed58
