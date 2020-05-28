@@ -9,7 +9,7 @@ DISTUTILS_OPTIONAL=1
 
 inherit check-reqs bash-completion-r1 cmake-utils distutils-r1 flag-o-matic \
 		multiprocessing python-r1 udev readme.gentoo-r1 toolchain-funcs \
-		systemd
+		systemd tmpfiles
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -28,9 +28,9 @@ SLOT="0"
 
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
-IUSE="babeltrace +cephfs custom-cflags dpdk fuse grafana jemalloc kafka kerberos ldap
-	libressl lttng +mgr numa +openssl pmdk rabbitmq +radosgw rbd-rwl +ssl spdk
-	system-boost systemd +tcmalloc test uring xfs zfs"
+IUSE="babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana jemalloc
+	kafka kerberos ldap libressl lttng +mgr numa +openssl pmdk rabbitmq +radosgw
+	rbd-rwl +ssl spdk system-boost systemd +tcmalloc test uring xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
 COMMON_DEPEND="
@@ -153,18 +153,22 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/pyjwt[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/routes[${PYTHON_USEDEP}]
-		sci-libs/scipy[${PYTHON_USEDEP}]
+		diskprediction? (
+			$(python_gen_cond_dep '<sci-libs/scipy-1.4.0[${PYTHON_USEDEP}]' python3_{6,7})
+		)
 		sci-libs/scikits_learn[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)
 "
+# diskprediction needs older scipy not compatible with py38
+# bug #724438
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	^^ ( openssl libressl )
-	kafka? ( radosgw )
-	rabbitmq? ( radosgw )
-	mgr? ( cephfs )
 	?? ( jemalloc tcmalloc )
+	^^ ( openssl libressl )
+	diskprediction? ( mgr !python_targets_python3_8 )
+	kafka? ( radosgw )
+	mgr? ( cephfs )
 	rabbitmq? ( radosgw )
 "
 RESTRICT="!test? ( test )"
@@ -189,10 +193,11 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
 	"${FILESDIR}/ceph-15.2.0-rocksdb-cmake.patch"
+	"${FILESDIR}/ceph-15.2.2-systemd-unit.patch"
 )
 
 check-reqs_export_vars() {
-	CHECKREQS_DISK_BUILD="5.2G"
+	CHECKREQS_DISK_BUILD="5200M"
 	CHECKREQS_DISK_USR="510M"
 
 	export CHECKREQS_DISK_BUILD CHECKREQS_DISK_USR
@@ -222,6 +227,10 @@ src_prepare() {
 
 	sed -i -r "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
 		src/bash_completion/CMakeLists.txt || die
+
+	if ! use diskprediction; then
+		rm -rf src/pybind/mgr/diskprediction_local || die
+	fi
 
 	# remove tests that need root access
 	rm src/test/cli/ceph-authtool/cap*.t || die
@@ -262,6 +271,7 @@ ceph_src_configure() {
 		-DWITH_RDMA=OFF
 		-DWITH_TBB=OFF
 		-DSYSTEMD_UNITDIR=$(systemd_get_systemunitdir)
+		-DCMAKE_INSTALL_SYSTEMD_SERVICEDIR=$(systemd_get_systemunitdir)
 		-DEPYTHON_VERSION="${EPYTHON#python}"
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PN}-${PVR}"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
@@ -356,13 +366,15 @@ src_install() {
 
 		systemd_install_serviced "${FILESDIR}/ceph-osd_at.service.conf" \
 			"ceph-osd@.service"
+
 	fi
 
 	udev_dorules udev/*.rules
+	newtmpfiles "${FILESDIR}"/ceph-tmpfilesd ${PN}.conf
 
 	readme.gentoo_create_doc
 
-	python_setup 'python3*'
+	python_setup
 
 	# bug #630232
 	sed -i -r "s:${T//:/\\:}/${EPYTHON}:/usr:" "${ED}"/usr/bin/ceph{,-crash} \
