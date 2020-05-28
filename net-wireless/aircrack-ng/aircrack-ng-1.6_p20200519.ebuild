@@ -15,8 +15,10 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/aircrack-ng/aircrack-ng.git"
 else
-	MY_PV=${PV/_/-}
-	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
+	#SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
+	COMMIT="225993949cd1c8228227ab4e6d315538a908c101"
+	SRC_URI="https://github.com/aircrack-ng/aircrack-ng/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 fi
 
