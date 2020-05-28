@@ -1,0 +1,20 @@
+Successfully installed update-systemd-resolved to /etc/openvpn/scripts/update-systemd-resolved.
+
+Now would be a good time to update /etc/nsswitch.conf:
+
+  # Use systemd-resolved first, then fall back to /etc/resolv.conf
+  hosts: files resolve dns myhostname
+  # Use /etc/resolv.conf first, then fall back to systemd-resolved
+  hosts: files dns resolve myhostname
+
+You should also update your OpenVPN configuration:
+
+  setenv PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  script-security 2
+  up /etc/openvpn/scripts/update-systemd-resolved
+  up-restart
+  down /etc/openvpn/scripts/update-systemd-resolved
+  down-pre
+
+or pass --config /etc/openvpn/scripts/update-systemd-resolved.conf
+in addition to any other --config arguments to your openvpn command.

@@ -61,3 +61,7 @@ gnome-extra/gnome-user-share
 # cause unresolvable deps
 app-portage/distpatch
 app-portage/metagen
+
+# Paolo Pedroni <paolo.pedroni@iol.it> (2020-05-18)
+# Package uses systemd unconditionally
+net-misc/update-systemd-resolved

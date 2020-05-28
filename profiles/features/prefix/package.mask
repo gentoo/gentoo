@@ -20,3 +20,7 @@ sys-kernel/installkernel-systemd-boot
 sys-process/systemd-cron
 www-misc/profile-sync-daemon
 <virtual/service-manager-1
+
+# Paolo Pedroni <paolo.pedroni@iol.it> (2020-06-17)
+# Depends unconditionally on sys-apps/systemd
+net-misc/update-systemd-resolved
