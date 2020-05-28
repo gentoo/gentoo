@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm
 
+# Michał Górny <mgorny@gentoo.org> (2020-05-28)
+# Unmask once arm is FINALLY done with bug #719700.
+python_targets_python3_9
+
 # Unmask arm arch specific flags
 -cpu_flags_arm_iwmmxt
 -cpu_flags_arm_iwmmxt2
