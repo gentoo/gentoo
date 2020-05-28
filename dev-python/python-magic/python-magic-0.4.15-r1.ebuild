@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_{6..9}} )
 
 inherit distutils-r1
 
@@ -20,8 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/file[-python]"
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( ${RDEPEND} )
+	test? ( sys-apps/file )
 "
 
 PATCHES=(

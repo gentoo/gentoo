@@ -53,6 +53,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-crash-on-close.patch" ) # bug 723214
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package X X11)
