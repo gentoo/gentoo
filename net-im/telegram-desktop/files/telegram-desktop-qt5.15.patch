@@ -1,0 +1,23 @@
+diff -ru tdesktop-2.1.7-full.orig/Telegram/lib_ui/ui/effects/animation_value.h tdesktop-2.1.7-full/Telegram/lib_ui/ui/effects/animation_value.h
+--- tdesktop-2.1.7-full.orig/Telegram/lib_ui/ui/effects/animation_value.h	2020-05-24 09:44:41.000000000 +0200
++++ tdesktop-2.1.7-full/Telegram/lib_ui/ui/effects/animation_value.h	2020-05-26 20:31:34.381796057 +0200
+@@ -10,6 +10,8 @@
+ 
+ #include "ui/style/style_core.h"
+ 
++#include <QPainterPath>
++
+ namespace anim {
+ 
+ enum class type {
+diff -ru tdesktop-2.1.7-full.orig/Telegram/lib_ui/ui/effects/cross_animation.cpp tdesktop-2.1.7-full/Telegram/lib_ui/ui/effects/cross_animation.cpp
+--- tdesktop-2.1.7-full.orig/Telegram/lib_ui/ui/effects/cross_animation.cpp	2020-05-24 09:44:41.000000000 +0200
++++ tdesktop-2.1.7-full/Telegram/lib_ui/ui/effects/cross_animation.cpp	2020-05-26 20:32:16.340015129 +0200
+@@ -10,6 +10,7 @@
+ #include "ui/painter.h"
+ 
+ #include <QtCore/QtMath>
++#include <QPainterPath>
+ 
+ namespace Ui {
+ namespace {
