@@ -106,6 +106,10 @@ RESTRICT="test"
 
 DOCS=( Changelog README.md )
 
+PATCHES=(
+	"${FILESDIR}/${P}-QPainterPath_include.patch" #725678
+)
+
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
