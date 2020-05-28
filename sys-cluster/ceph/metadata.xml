@@ -20,6 +20,7 @@
     <flag name="babeltrace">Add support for LTTng babeltrace</flag>
     <flag name="cephfs">Build support for cephfs, a POSIX compatible filesystem built on top of ceph</flag>
     <flag name="dpdk">Enable DPDK messaging</flag>
+    <flag name="diskprediction">Enable local diskprediction module to predict disk failures</flag>
     <flag name="spdk">Enable SPDK user-mode storage driver toolkit</flag>
     <flag name="fuse">Build fuse client</flag>
     <flag name="grafana">Install grafana dashboards</flag>
