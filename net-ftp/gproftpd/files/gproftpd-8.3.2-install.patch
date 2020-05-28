@@ -1,0 +1,39 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -19,26 +19,28 @@
+ 	     fi \
+ 	   done \
+ 	fi;
+-	if test -d $(DESTDIR)$(datadir)/pixmaps; then \
++	if test -d $(datadir)/pixmaps; then \
+ 	   cp pixmaps/gproftpd.png $(DESTDIR)$(datadir)/pixmaps/; \
+ 	fi;
+-	if test -f $(DESTDIR)$(bindir)/consolehelper && test ! -f $(DESTDIR)$(bindir)/gproftpd; then \
++	if test -f $(bindir)/consolehelper && test ! -f $(DESTDIR)$(bindir)/gproftpd; then \
+ 	   ln -s $(DESTDIR)$(bindir)/consolehelper $(DESTDIR)$(bindir)/gproftpd; \
+ 	fi;
+ 	@echo "Failsafe for a mixed environment"
+ 	if test -f $(DESTDIR)/usr/local/bin/consolehelper && test ! -f $(DESTDIR)/usr/local/bin/gproftpd; then \
+ 	   ln -s $(DESTDIR)/usr/local/bin/consolehelper $(DESTDIR)/usr/local/bin/gproftpd; \
+ 	fi;
+-	if test -d $(DESTDIR)$(sysconfdir)/pam.d; then \
++	if test -d $(sysconfdir)/pam.d; then \
++	   $(mkinstalldirs) $(DESTDIR)$(sysconfdir)/pam.d; \
+ 	   cp etc/pam.d/gproftpd $(DESTDIR)$(sysconfdir)/pam.d/; \
+ 	fi;
+-	if test -d $(DESTDIR)$(sysconfdir)/security/console.apps; then \
++	if test -d $(sysconfdir)/security/console.apps; then \
+ 	   cp etc/security/console.apps/gproftpd $(DESTDIR)$(sysconfdir)/security/console.apps/; \
+-	fi;   
+-	if test -d $(DESTDIR)$(datadir)/applications; then \
+-	   cp desktop/net-gproftpd.desktop $(DESTDIR)$(datadir)/applications/; \
+ 	fi;
+-	if test -d $(DESTDIR)$(datadir)/gnome/apps/Internet; then \
++	if test -d $(datadir)/applications; then \
++	   $(mkinstalldirs) $(DESTDIR)$(datadir)/applications/; \
++	   cp desktop/net-gproftpd.desktop $(DESTDIR)$(datadir)/applications/gproftpd.desktop; \
++	fi;
++	if test -d $(datadir)/gnome/apps/Internet; then \
+ 	   cp desktop/net-gproftpd.desktop $(DESTDIR)$(datadir)/gnome/apps/Internet/; \
+ 	fi;
+ 	if test ! -d $(DESTDIR)$(datadir)/doc/gproftpd; then \
