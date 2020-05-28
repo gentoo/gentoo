@@ -27,6 +27,8 @@ COMMON_DEPEND="dev-util/systemtap
 	sys-devel/clang:=
 	dev-libs/libbpf:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
+	<sys-devel/clang-10:=
+	<sys-devel/llvm-10:=[llvm_targets_BPF(+)]
 	>=dev-util/bcc-0.12.0:=
 	virtual/libelf"
 DEPEND="${COMMON_DEPEND}
@@ -42,6 +44,7 @@ QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
 PATCHES=(
 	"${FILESDIR}/bpftrace-0.10.0-install-libs.patch"
 	"${FILESDIR}/bpftrace-0.10.0-dont-compress-man.patch"
+	"${FILESDIR}/bpftrace-0.10.0-llvm-multi.patch"
 )
 
 # lots of fixing needed
