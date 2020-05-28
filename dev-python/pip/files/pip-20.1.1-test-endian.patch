@@ -1,0 +1,78 @@
+From b30dd1e04e1f37901733f1be0a5a1e02c466ad0c Mon Sep 17 00:00:00 2001
+From: gutsytechster <prashantsharma161198@gmail.com>
+Date: Wed, 15 Apr 2020 19:54:48 +0530
+Subject: [PATCH] fix(tests/unit): Update tests to be endian safe
+
+This updates `test_path_to_display` and `test_str_to_display__encoding`
+to use the endian safe expected result instead of the hardcoded one.
+
+This fixes https://github.com/pypa/pip/issues/7921
+---
+ tests/unit/test_compat.py |  8 +++++++-
+ tests/unit/test_utils.py  | 16 +++++++++++++---
+ 2 files changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/tests/unit/test_compat.py b/tests/unit/test_compat.py
+index 1f31bc5c..b13087a1 100644
+--- a/tests/unit/test_compat.py
++++ b/tests/unit/test_compat.py
+@@ -2,6 +2,7 @@
+ 
+ import locale
+ import os
++import sys
+ 
+ import pytest
+ 
+@@ -91,8 +92,13 @@ def test_str_to_display__decode_error(monkeypatch, caplog):
+     # Encode with an incompatible encoding.
+     data = u'ab'.encode('utf-16')
+     actual = str_to_display(data)
++    # Keep the expected value endian safe
++    if sys.byteorder == "little":
++        expected = "\\xff\\xfea\x00b\x00"
++    elif sys.byteorder == "big":
++        expected = "\\xfe\\xff\x00a\x00b"
+ 
+-    assert actual == u'\\xff\\xfea\x00b\x00', (
++    assert actual == expected, (
+         # Show the encoding for easier troubleshooting.
+         'encoding: {!r}'.format(locale.getpreferredencoding())
+     )
+diff --git a/tests/unit/test_utils.py b/tests/unit/test_utils.py
+index 7d74a664..ebabd29e 100644
+--- a/tests/unit/test_utils.py
++++ b/tests/unit/test_utils.py
+@@ -375,6 +375,18 @@ def test_rmtree_retries_for_3sec(tmpdir, monkeypatch):
+         rmtree('foo')
+ 
+ 
++if sys.byteorder == "little":
++    expected_byte_string = (
++        u"b'\\xff\\xfe/\\x00p\\x00a\\x00t\\x00h\\x00/"
++        "\\x00d\\x00\\xe9\\x00f\\x00'"
++    )
++elif sys.byteorder == "big":
++    expected_byte_string = (
++        u"b'\\xfe\\xff\\x00/\\x00p\\x00a\\x00t\\x00h\\"
++        "x00/\\x00d\\x00\\xe9\\x00f'"
++    )
++
++
+ @pytest.mark.parametrize('path, fs_encoding, expected', [
+     (None, None, None),
+     # Test passing a text (unicode) string.
+@@ -383,9 +395,7 @@ def test_rmtree_retries_for_3sec(tmpdir, monkeypatch):
+     (u'/path/déf'.encode('utf-8'), 'utf-8', u'/path/déf'),
+     # Test a bytes object with a character that can't be decoded.
+     (u'/path/déf'.encode('utf-8'), 'ascii', u"b'/path/d\\xc3\\xa9f'"),
+-    (u'/path/déf'.encode('utf-16'), 'utf-8',
+-     u"b'\\xff\\xfe/\\x00p\\x00a\\x00t\\x00h\\x00/"
+-     "\\x00d\\x00\\xe9\\x00f\\x00'"),
++    (u'/path/déf'.encode('utf-16'), 'utf-8', expected_byte_string),
+ ])
+ def test_path_to_display(monkeypatch, path, fs_encoding, expected):
+     monkeypatch.setattr(sys, 'getfilesystemencoding', lambda: fs_encoding)
+-- 
+2.26.2
+
