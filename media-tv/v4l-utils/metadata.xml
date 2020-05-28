@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>andrey_utkin@gentoo.org</email>
-		<name>Andrey Utkin</name>
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
 	</maintainer>
 <use>
 	<flag name="bpf">Enables support for IR BPF decoders.</flag>
