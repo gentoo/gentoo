@@ -13,8 +13,7 @@ LICENSE="GPL-3+ LGPL-3+ ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug fbcon +introspection ipv6 libcanberra libnotify +notification
-	pulseaudio purple speech systemd test upnp wayland webhook websocket
-	+X zeroconf"
+	pulseaudio purple speech systemd test upnp webhook websocket +X zeroconf"
 
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -51,7 +50,6 @@ COMMON_DEPEND="
 	speech? ( app-accessibility/speech-dispatcher )
 	systemd? ( sys-apps/systemd:= )
 	upnp? ( >=net-libs/gssdp-1.2:0= )
-	wayland? ( dev-libs/wayland )
 	webhook? ( net-libs/libsoup:2.4 )
 	websocket? ( net-libs/libsoup:2.4 )
 	zeroconf? ( net-dns/avahi[dbus] )
@@ -78,17 +76,18 @@ pkg_setup() {
 }
 
 src_configure() {
+	# wayland disabled due to missing dep in ::gentoo, wayland-wall
 	local emesonargs=(
 		-Dsystemduserunitdir="$(systemd_get_userunitdir)"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 		-Ddbussessionservicedir="${EPREFIX}/usr/share/dbus-1/services"
+		-Dnd-wayland=false
 		$(meson_feature websocket)
 		$(meson_feature zeroconf dns-sd)
 		$(meson_feature upnp ssdp)
 		$(meson_use ipv6)
 		$(meson_use systemd)
 		$(meson_use notification notification-daemon)
-		$(meson_use wayland nd-wayland)
 		$(meson_use X nd-xcb)
 		$(meson_use fbcon nd-fbdev)
 		$(meson_use purple im)
