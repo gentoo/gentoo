@@ -6,6 +6,7 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <use>
+	<flag name="forced-sandbox">Always enable --sandbox mode for simpler/secure runtime (disables e/r/w commands)</flag>
 	<flag name="mpfr">use mpfr for high precision arithmetic (-M / --bignum)</flag>
 </use>
 </pkgmetadata>
