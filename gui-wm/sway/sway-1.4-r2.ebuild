@@ -40,6 +40,7 @@ DEPEND="
 	swayidle? ( gui-apps/swayidle )
 	swaylock? ( gui-apps/swaylock )
 	systemd? ( >=sys-apps/systemd-239 )
+	wallpapers? ( x11-libs/gdk-pixbuf:2[jpeg] )
 	X? ( x11-libs/libxcb:0= )
 "
 if [[ ${PV} == 9999 ]]; then
