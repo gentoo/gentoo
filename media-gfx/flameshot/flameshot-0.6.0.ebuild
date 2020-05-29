@@ -25,7 +25,10 @@ DEPEND="
 	sys-apps/dbus
 "
 RDEPEND="${DEPEND}"
-PATCHES=( "${FILESDIR}/${P}-unbundle-qtsingleapplication.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-unbundle-qtsingleapplication.patch"
+	"${FILESDIR}/${P}-missing-include-fix.patch"
+)
 
 src_prepare() {
 	rm -r src/third-party/singleapplication || die
