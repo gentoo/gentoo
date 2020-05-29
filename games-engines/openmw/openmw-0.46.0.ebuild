@@ -12,7 +12,10 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OpenMW/openmw.git"
 else
-	SRC_URI="https://github.com/OpenMW/openmw/archive/${P}.tar.gz"
+	SRC_URI="
+		https://github.com/OpenMW/openmw/archive/${P}.tar.gz
+		https://gitlab.com/OpenMW/openmw/-/merge_requests/163.patch -> ${P}-floattest.patch
+	"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${P}"
 fi
@@ -63,6 +66,12 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/openmw-0.46.0-mygui-license.patch
 	"${FILESDIR}"/openmw-0.46.0-recastnavigation.patch
+	"${FILESDIR}"/openmw-0.46.0-missing-include.patch
+	"${FILESDIR}"/openmw-0.46.0-fix-cast.patch
+	"${FILESDIR}"/openmw-0.46.0-nifbullet-test.patch
+	# https://gitlab.com/OpenMW/openmw/-/merge_requests/163
+	"${DISTDIR}"/openmw-0.46.0-floattest.patch
+	"${FILESDIR}"/openmw-0.46.0-floattest2.patch
 )
 
 src_prepare() {

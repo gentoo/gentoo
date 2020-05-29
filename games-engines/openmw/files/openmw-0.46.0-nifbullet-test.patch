@@ -1,0 +1,335 @@
+Fixes test on i686 system, patch from upstream, to be dropped for 0.47
+
+From 14d0ca4cd3e9aa9e329590913d5f8fb55077587d Mon Sep 17 00:00:00 2001
+From: elsid <elsid.mail@gmail.com>
+Date: Sun, 25 Nov 2018 11:42:26 +0300
+Subject: [PATCH 1/4] Cast float to btScalar
+
+---
+ .../detournavigator/recastmeshbuilder.cpp      | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/components/detournavigator/recastmeshbuilder.cpp b/components/detournavigator/recastmeshbuilder.cpp
+index d96ba2f29c..f613683571 100644
+--- a/components/detournavigator/recastmeshbuilder.cpp
++++ b/components/detournavigator/recastmeshbuilder.cpp
+@@ -163,15 +163,15 @@ namespace DetourNavigator
+ 
+         transformBoundingBox(transform, aabbMin, aabbMax);
+ 
+-        aabbMin.setX(std::max(mBounds.mMin.x(), aabbMin.x()));
+-        aabbMin.setX(std::min(mBounds.mMax.x(), aabbMin.x()));
+-        aabbMin.setY(std::max(mBounds.mMin.y(), aabbMin.y()));
+-        aabbMin.setY(std::min(mBounds.mMax.y(), aabbMin.y()));
+-
+-        aabbMax.setX(std::max(mBounds.mMin.x(), aabbMax.x()));
+-        aabbMax.setX(std::min(mBounds.mMax.x(), aabbMax.x()));
+-        aabbMax.setY(std::max(mBounds.mMin.y(), aabbMax.y()));
+-        aabbMax.setY(std::min(mBounds.mMax.y(), aabbMax.y()));
++        aabbMin.setX(std::max(static_cast<btScalar>(mBounds.mMin.x()), aabbMin.x()));
++        aabbMin.setX(std::min(static_cast<btScalar>(mBounds.mMax.x()), aabbMin.x()));
++        aabbMin.setY(std::max(static_cast<btScalar>(mBounds.mMin.y()), aabbMin.y()));
++        aabbMin.setY(std::min(static_cast<btScalar>(mBounds.mMax.y()), aabbMin.y()));
++
++        aabbMax.setX(std::max(static_cast<btScalar>(mBounds.mMin.x()), aabbMax.x()));
++        aabbMax.setX(std::min(static_cast<btScalar>(mBounds.mMax.x()), aabbMax.x()));
++        aabbMax.setY(std::max(static_cast<btScalar>(mBounds.mMin.y()), aabbMax.y()));
++        aabbMax.setY(std::min(static_cast<btScalar>(mBounds.mMax.y()), aabbMax.y()));
+ 
+         transformBoundingBox(transform.inverse(), aabbMin, aabbMax);
+ 
+
+From ef5a5ef43f9a91795339ef3ea97c505c1e9dc28d Mon Sep 17 00:00:00 2001
+From: elsid <elsid.mail@gmail.com>
+Date: Sun, 25 Nov 2018 14:03:28 +0300
+Subject: [PATCH 2/4] Print not matched values with full precision
+
+---
+ .../detournavigator/operators.hpp             | 62 +++++++++++++++----
+ 1 file changed, 51 insertions(+), 11 deletions(-)
+
+diff --git a/apps/openmw_test_suite/detournavigator/operators.hpp b/apps/openmw_test_suite/detournavigator/operators.hpp
+index a473632bab..e34d6278a7 100644
+--- a/apps/openmw_test_suite/detournavigator/operators.hpp
++++ b/apps/openmw_test_suite/detournavigator/operators.hpp
+@@ -20,22 +20,62 @@ namespace DetourNavigator
+     }
+ }
+ 
++namespace
++{
++    template <class T>
++    struct Wrapper {
++        const T& mValue;
++    };
++
++    template <class Range>
++    inline testing::Message& writeRange(testing::Message& message, const Range& range)
++    {
++        message << "{\n";
++        for (const auto& v : range)
++            message << Wrapper<typename std::decay<decltype(v)>::type> {v} << ",\n";
++        return message << "}";
++    }
++}
++
+ namespace testing
+ {
++    template <>
++    inline testing::Message& Message::operator <<(const osg::Vec3f& value)
++    {
++        return (*this) << "osg::Vec3f(" << std::setprecision(std::numeric_limits<float>::max_exponent10) << value.x()
++            << ", " << std::setprecision(std::numeric_limits<float>::max_exponent10) << value.y()
++            << ", " << std::setprecision(std::numeric_limits<float>::max_exponent10) << value.z()
++            << ')';
++    }
++
++    template <>
++    inline testing::Message& Message::operator <<(const Wrapper<osg::Vec3f>& value)
++    {
++        return (*this) << value.mValue;
++    }
++
++    template <>
++    inline testing::Message& Message::operator <<(const Wrapper<float>& value)
++    {
++        return (*this) << std::setprecision(std::numeric_limits<float>::max_exponent10) << value.mValue;
++    }
++
+     template <>
+     inline testing::Message& Message::operator <<(const std::deque<osg::Vec3f>& value)
+     {
+-        (*this) << "{\n";
+-        for (const auto& v : value)
+-        {
+-            std::ostringstream stream;
+-            stream << "osg::Vec3f("
+-                   << std::setprecision(std::numeric_limits<float>::max_exponent10) << v.x() << ", "
+-                   << std::setprecision(std::numeric_limits<float>::max_exponent10) << v.y() << ", "
+-                   << std::setprecision(std::numeric_limits<float>::max_exponent10) << v.z() << ")";
+-            (*this) << stream.str() << ",\n";
+-        }
+-        return (*this) << "}";
++        return writeRange(*this, value);
++    }
++
++    template <>
++    inline testing::Message& Message::operator <<(const std::vector<osg::Vec3f>& value)
++    {
++        return writeRange(*this, value);
++    }
++
++    template <>
++    inline testing::Message& Message::operator <<(const std::vector<float>& value)
++    {
++        return writeRange(*this, value);
+     }
+ }
+ 
+
+From 2d7c3bae6127fc3717d5e3a8e8830215450fb47f Mon Sep 17 00:00:00 2001
+From: elsid <elsid.mail@gmail.com>
+Date: Sun, 25 Nov 2018 11:46:09 +0300
+Subject: [PATCH 3/4] Support bullet with double precision
+
+---
+ apps/openmw/mwphysics/heightfield.cpp         | 38 ++++++++++++++++++-
+ apps/openmw/mwphysics/heightfield.hpp         |  5 +++
+ .../detournavigator/recastmeshbuilder.cpp     |  4 +-
+ .../nifloader/testbulletnifloader.cpp         | 36 ++++++++++++++++--
+ 4 files changed, 77 insertions(+), 6 deletions(-)
+
+diff --git a/apps/openmw/mwphysics/heightfield.cpp b/apps/openmw/mwphysics/heightfield.cpp
+index 52aed9c072..e1448116bf 100644
+--- a/apps/openmw/mwphysics/heightfield.cpp
++++ b/apps/openmw/mwphysics/heightfield.cpp
+@@ -7,12 +7,48 @@
+ 
+ #include <LinearMath/btTransform.h>
+ 
++#include <type_traits>
++
++namespace
++{
++    template <class T>
++    auto makeHeights(const T* heights, float sqrtVerts)
++        -> std::enable_if_t<std::is_same<btScalar, T>::value, std::vector<btScalar>>
++    {
++        return {};
++    }
++
++    template <class T>
++    auto makeHeights(const T* heights, float sqrtVerts)
++        -> std::enable_if_t<!std::is_same<btScalar, T>::value, std::vector<btScalar>>
++    {
++        return std::vector<btScalar>(heights, heights + static_cast<std::ptrdiff_t>(sqrtVerts * sqrtVerts));
++    }
++
++    template <class T>
++    auto getHeights(const T* floatHeights, const std::vector<btScalar>&)
++        -> std::enable_if_t<std::is_same<btScalar, T>::value, const btScalar*>
++    {
++        return floatHeights;
++    }
++
++    template <class T>
++    auto getHeights(const T*, const std::vector<btScalar>& btScalarHeights)
++        -> std::enable_if_t<!std::is_same<btScalar, T>::value, const btScalar*>
++    {
++        return btScalarHeights.data();
++    }
++}
++
+ namespace MWPhysics
+ {
+     HeightField::HeightField(const float* heights, int x, int y, float triSize, float sqrtVerts, float minH, float maxH, const osg::Object* holdObject)
++        : mHeights(makeHeights(heights, sqrtVerts))
+     {
+         mShape = new btHeightfieldTerrainShape(
+-            sqrtVerts, sqrtVerts, heights, 1,
++            sqrtVerts, sqrtVerts,
++            getHeights(heights, mHeights),
++            1,
+             minH, maxH, 2,
+             PHY_FLOAT, false
+         );
+diff --git a/apps/openmw/mwphysics/heightfield.hpp b/apps/openmw/mwphysics/heightfield.hpp
+index f248186db3..2ba58afff8 100644
+--- a/apps/openmw/mwphysics/heightfield.hpp
++++ b/apps/openmw/mwphysics/heightfield.hpp
+@@ -3,6 +3,10 @@
+ 
+ #include <osg/ref_ptr>
+ 
++#include <LinearMath/btScalar.h>
++
++#include <vector>
++
+ class btCollisionObject;
+ class btHeightfieldTerrainShape;
+ 
+@@ -27,6 +31,7 @@ namespace MWPhysics
+         btHeightfieldTerrainShape* mShape;
+         btCollisionObject* mCollisionObject;
+         osg::ref_ptr<const osg::Object> mHoldObject;
++        std::vector<btScalar> mHeights;
+ 
+         void operator=(const HeightField&);
+         HeightField(const HeightField&);
+diff --git a/apps/openmw_test_suite/detournavigator/recastmeshbuilder.cpp b/apps/openmw_test_suite/detournavigator/recastmeshbuilder.cpp
+index 6c474765de..c86dee6e55 100644
+--- a/apps/openmw_test_suite/detournavigator/recastmeshbuilder.cpp
++++ b/apps/openmw_test_suite/detournavigator/recastmeshbuilder.cpp
+@@ -363,11 +363,11 @@ namespace
+             AreaType_ground
+         );
+         const auto recastMesh = builder.create(mGeneration, mRevision);
+-        EXPECT_EQ(recastMesh->getVertices(), std::vector<float>({
++        EXPECT_THAT(recastMesh->getVertices(), Pointwise(FloatNear(1e-5), std::vector<float>({
+             1.41421353816986083984375, 0, 1.1920928955078125e-07,
+             -1.41421353816986083984375, 0, -1.1920928955078125e-07,
+             1.1920928955078125e-07, 0, -1.41421353816986083984375,
+-        }));
++        })));
+         EXPECT_EQ(recastMesh->getIndices(), std::vector<int>({0, 1, 2}));
+         EXPECT_EQ(recastMesh->getAreaTypes(), std::vector<AreaType>({AreaType_ground}));
+     }
+diff --git a/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp b/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp
+index 36f2512462..6ec94fd68f 100644
+--- a/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp
++++ b/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp
+@@ -9,6 +9,8 @@
+ #include <gtest/gtest.h>
+ #include <gmock/gmock.h>
+ 
++#include <algorithm>
++
+ namespace
+ {
+     template <class T>
+@@ -30,6 +32,34 @@ namespace
+         shape.processAllTriangles(&callback, aabbMin, aabbMax);
+         return result;
+     }
++
++    bool isNear(btScalar lhs, btScalar rhs)
++    {
++        return std::abs(lhs - rhs) <= 1e-5;
++    }
++
++    bool isNear(const btVector3& lhs, const btVector3& rhs)
++    {
++        return std::equal(
++            static_cast<const btScalar*>(lhs),
++            static_cast<const btScalar*>(lhs) + 3,
++            static_cast<const btScalar*>(rhs),
++            [] (btScalar lhs, btScalar rhs) { return isNear(lhs, rhs); }
++        );
++    }
++
++    bool isNear(const btMatrix3x3& lhs, const btMatrix3x3& rhs)
++    {
++        for (int i = 0; i < 3; ++i)
++            if (!isNear(lhs[i], rhs[i]))
++                return false;
++        return true;
++    }
++
++    bool isNear(const btTransform& lhs, const btTransform& rhs)
++    {
++        return isNear(lhs.getOrigin(), rhs.getOrigin()) && isNear(lhs.getBasis(), rhs.getBasis());
++    }
+ }
+ 
+ static std::ostream& operator <<(std::ostream& stream, const btVector3& value)
+@@ -157,7 +187,7 @@ static bool operator ==(const btCompoundShape& lhs, const btCompoundShape& rhs)
+     for (int i = 0; i < lhs.getNumChildShapes(); ++i)
+     {
+         if (!compareObjects(lhs.getChildShape(i), rhs.getChildShape(i))
+-                || !(lhs.getChildTransform(i) == rhs.getChildTransform(i)))
++                || !isNear(lhs.getChildTransform(i), rhs.getChildTransform(i)))
+             return false;
+     }
+     return true;
+@@ -165,13 +195,13 @@ static bool operator ==(const btCompoundShape& lhs, const btCompoundShape& rhs)
+ 
+ static bool operator ==(const btBoxShape& lhs, const btBoxShape& rhs)
+ {
+-    return lhs.getLocalScaling() == rhs.getLocalScaling()
++    return isNear(lhs.getLocalScaling(), rhs.getLocalScaling())
+         && lhs.getHalfExtentsWithoutMargin() == rhs.getHalfExtentsWithoutMargin();
+ }
+ 
+ static bool operator ==(const btBvhTriangleMeshShape& lhs, const btBvhTriangleMeshShape& rhs)
+ {
+-    return lhs.getLocalScaling() == rhs.getLocalScaling()
++    return isNear(lhs.getLocalScaling(), rhs.getLocalScaling())
+         && lhs.usesQuantizedAabbCompression() == rhs.usesQuantizedAabbCompression()
+         && lhs.getOwnsBvh() == rhs.getOwnsBvh()
+         && getTriangles(lhs) == getTriangles(rhs);
+
+From 66da72048a5893bc8c9b20f6f7210fd45b6a74bf Mon Sep 17 00:00:00 2001
+From: elsid <elsid.mail@gmail.com>
+Date: Wed, 20 Feb 2019 23:41:16 +0300
+Subject: [PATCH 4/4] Update bullet for windows up to 2.87
+
+---
+ CI/before_script.msvc.sh | 12 ++++++------
+ appveyor.yml             |  4 ++--
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/appveyor.yml b/appveyor.yml
+index 3057cc7257..e2c13ed948 100644
+--- a/appveyor.yml
++++ b/appveyor.yml
+@@ -30,8 +30,8 @@ configuration:
+ clone_depth: 1
+ 
+ cache:
+-    - C:\projects\openmw\deps\Bullet-2.86-msvc2015-win32.7z
+-    - C:\projects\openmw\deps\Bullet-2.86-msvc2015-win64.7z
++    - C:\projects\openmw\deps\Bullet-2.87-msvc2015-win32.7z
++    - C:\projects\openmw\deps\Bullet-2.87-msvc2015-win64.7z
+     - C:\projects\openmw\deps\MyGUI-3.2.2-msvc2015-win32.7z
+     - C:\projects\openmw\deps\MyGUI-3.2.2-msvc2015-win64.7z
+     - C:\projects\openmw\deps\OSG-3.4.1-scrawl-msvc2015-win32.7z
