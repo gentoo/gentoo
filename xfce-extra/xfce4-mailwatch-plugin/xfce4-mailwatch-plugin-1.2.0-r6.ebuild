@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome2-utils
 
 DESCRIPTION="An mail notification panel plug-in for the Xfce desktop environment"
-HOMEPAGE="http://spuriousinterrupt.org/projects/xfce4-mailwatch-plugin/"
+HOMEPAGE="https://spuriousinterrupt.org/projects/xfce4-mailwatch-plugin/"
 SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
