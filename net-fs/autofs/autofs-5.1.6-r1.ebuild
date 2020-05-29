@@ -11,7 +11,7 @@ SRC_URI="https://www.kernel.org/pub/linux/daemons/${PN}/v5/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="-dmalloc ldap +libtirpc mount-locking sasl systemd"
 
 # currently, sasl code assumes the presence of kerberosV
@@ -35,6 +35,11 @@ BDEPEND="
 	sys-devel/flex
 	virtual/yacc
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-glibc.patch"
+	"${FILESDIR}/${P}-pid.patch"
+)
 
 pkg_setup() {
 	linux-info_pkg_setup

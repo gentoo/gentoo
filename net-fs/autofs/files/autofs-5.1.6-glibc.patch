@@ -1,0 +1,110 @@
+diff --git a/daemon/lookup.c b/daemon/lookup.c
+index 60a48f3..bbd65e0 100644
+--- a/daemon/lookup.c
++++ b/daemon/lookup.c
+@@ -382,7 +382,7 @@ static int read_file_source_instance(struct autofs_point *ap, struct map_source
+ 	if (!S_ISREG(st.st_mode))
+ 		return NSS_STATUS_NOTFOUND;
+ 
+-	if (st.st_mode & __S_IEXEC)
++	if (st.st_mode & S_IEXEC)
+ 		type = src_prog;
+ 	else
+ 		type = src_file;
+@@ -937,7 +937,7 @@ static int lookup_name_file_source_instance(struct autofs_point *ap, struct map_
+ 	if (!S_ISREG(st.st_mode))
+ 		return NSS_STATUS_NOTFOUND;
+ 
+-	if (st.st_mode & __S_IEXEC)
++	if (st.st_mode & S_IEXEC)
+ 		type = src_prog;
+ 	else
+ 		type = src_file;
+@@ -1113,7 +1113,7 @@ static struct map_source *lookup_get_map_source(struct master_mapent *entry)
+ 	if (!S_ISREG(st.st_mode))
+ 		return NULL;
+ 
+-	if (st.st_mode & __S_IEXEC)
++	if (st.st_mode & S_IEXEC)
+ 		type = "program";
+ 	else
+ 		type = "file";
+diff --git a/include/automount.h b/include/automount.h
+index 4fd0ba9..7b855a7 100644
+--- a/include/automount.h
++++ b/include/automount.h
+@@ -13,6 +13,7 @@
+ #include <limits.h>
+ #include <time.h>
+ #include <syslog.h>
++#include <sys/procfs.h>
+ #include <sys/types.h>
+ #include <pthread.h>
+ #include <sched.h>
+@@ -142,6 +143,16 @@ struct autofs_point;
+ #define UMOUNT_RETRIES		8
+ #define EXPIRE_RETRIES		3
+ 
++#ifndef __SWORD_TYPE
++#if __WORDSIZE == 32
++# define __SWORD_TYPE		int
++#elif __WORDSIZE == 64
++# define __SWORD_TYPE		long int
++#else
++#error
++#endif
++#endif
++
+ static u_int32_t inline hash(const char *key, unsigned int size)
+ {
+ 	u_int32_t hashval;
+diff --git a/include/nsswitch.h b/include/nsswitch.h
+index d3e4027..8376113 100644
+--- a/include/nsswitch.h
++++ b/include/nsswitch.h
+@@ -24,6 +24,10 @@
+ #include <netdb.h>
+ #include "list.h"
+ 
++#ifndef _PATH_NSSWITCH_CONF
++#define _PATH_NSSWITCH_CONF "/dev/null"
++#endif
++
+ #define NSSWITCH_FILE _PATH_NSSWITCH_CONF
+ 
+ enum nsswitch_status {
+diff --git a/include/rpc_subs.h b/include/rpc_subs.h
+index 6e35eed..7ba4b93 100644
+--- a/include/rpc_subs.h
++++ b/include/rpc_subs.h
+@@ -18,7 +18,7 @@
+ 
+ #include <rpc/rpc.h>
+ #include <rpc/pmap_prot.h>
+-#include <nfs/nfs.h>
++#include <linux/nfs.h>
+ #include <linux/nfs2.h>
+ #include <linux/nfs3.h>
+ 
+diff --git a/modules/lookup_multi.c b/modules/lookup_multi.c
+index fadd2ea..cf109de 100644
+--- a/modules/lookup_multi.c
++++ b/modules/lookup_multi.c
+@@ -247,7 +247,7 @@ static struct lookup_mod *nss_open_lookup(const char *format, int argc, const ch
+ 				continue;
+ 			}
+ 
+-			if (st.st_mode & __S_IEXEC)
++			if (st.st_mode & S_IEXEC)
+ 				type = src_prog;
+ 			else
+ 				type = src_file;
+@@ -452,7 +452,7 @@ int lookup_reinit(const char *my_mapfmt,
+ 					continue;
+ 				}
+ 
+-				if (st.st_mode & __S_IEXEC)
++				if (st.st_mode & S_IEXEC)
+ 					type = src_prog;
+ 				else
+ 					type = src_file;

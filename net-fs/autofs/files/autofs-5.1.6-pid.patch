@@ -1,0 +1,14 @@
+diff --git a/include/log.h b/include/log.h
+index 69eed96..14051cc 100644
+--- a/include/log.h
++++ b/include/log.h
+@@ -46,6 +46,8 @@ extern void log_crit(unsigned, const char* msg, ...);
+ extern void log_debug(unsigned int, const char* msg, ...);
+ extern void logmsg(const char* msg, ...);
+ 
++#include <unistd.h> /* Required for pid_t */
++
+ extern pid_t log_pidinfo(struct autofs_point *ap, pid_t pid, char *label);
+ 
+ #define debug(opt, msg, args...)	\
+
