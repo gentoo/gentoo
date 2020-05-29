@@ -5,7 +5,7 @@ DESCRIPTION=full-strength general purpose cryptography library (including SSL an
 EAPI=7
 HOMEPAGE=https://www.openssl.org/
 IUSE=+asm bindist elibc_musl rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-heartbeat vanilla zlib abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv s390 sparc x86 ~x86-linux
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x86-linux
 LICENSE=openssl
 PDEPEND=app-misc/ca-certificates
 RDEPEND=>=app-misc/c_rehash-1.7-r1 zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !<net-misc/openssh-8.0_p1-r3
@@ -13,4 +13,4 @@ RESTRICT=!bindist? ( bindist ) !test? ( test )
 SLOT=0/1.1
 SRC_URI=mirror://openssl/source/openssl-1.1.1g.tar.gz bindist? ( mirror://gentoo/openssl-1.1.1e-bindist-1.0.tar.xz https://dev.gentoo.org/~whissi/dist/openssl/openssl-1.1.1e-bindist-1.0.tar.xz )
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=376cead648a35d9fe1af2185a1d609ea
+_md5_=40c126e5806a862472628918021d400b
