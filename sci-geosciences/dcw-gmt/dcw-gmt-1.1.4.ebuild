@@ -9,7 +9,7 @@ SRC_URI="https://www.soest.hawaii.edu/pwessel/dcw/${P}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 src_install() {
 	dodoc README.TXT ChangeLog
