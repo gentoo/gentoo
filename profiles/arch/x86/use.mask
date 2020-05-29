@@ -4,15 +4,6 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-28)
-# Moving from arch/base.
-python_targets_python3_8
-python_single_target_python3_8
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-28)
-# Unmask once alpha is FINALLY done with bug #700194.
-python_targets_python3_9
-
 # Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 works on x86
 -d3d9
