@@ -267,8 +267,10 @@ zip-0.5.5
 "
 
 MY_PV="${PV//_rc/-rc}"
+# https://bugs.gentoo.org/725962
+PYTHON_COMPAT=( python3_{7,8} )
 
-inherit bash-completion-r1 cargo desktop
+inherit bash-completion-r1 cargo desktop python-any-r1
 
 DESCRIPTION="GPU-accelerated terminal emulator"
 HOMEPAGE="https://github.com/alacritty/alacritty"
@@ -288,7 +290,7 @@ IUSE="wayland +X"
 
 REQUIRED_USE="|| ( wayland X )"
 
-DEPEND="
+DEPEND="${PYTHON_DEPS}
 	media-libs/fontconfig:=
 	media-libs/freetype:2
 	X? ( x11-libs/libxcb:=[xkb] )
