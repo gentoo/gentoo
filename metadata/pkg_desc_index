@@ -4054,7 +4054,7 @@ dev-haskell/stack 1.3.2: The Haskell Tool Stack
 dev-haskell/stack-bin 1.5.1 1.6.1 1.7.1 2.1.3: The Haskell Tool Stack (Binary)
 dev-haskell/statevar 1.0.0.0-r1 1.0.1.0 1.1.0.3 1.1.0.4 1.1.1.1: State variables
 dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0: A library of statistical types, data, and functions
-dev-haskell/stm 2.4.2 2.4.4.1: Software Transactional Memory
+dev-haskell/stm 2.4.2 2.4.4.1 2.5.0.0: Software Transactional Memory
 dev-haskell/stm-chans 3.0.0.4: Additional types of channels for STM
 dev-haskell/stmonadtrans 0.3.3 0.3.4: A monad transformer version of the ST monad
 dev-haskell/store 0.3.1: Fast binary serialization
@@ -15057,7 +15057,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536-r1 0.4.1270-r1 0.4.1355-r1: utility to download media contents from the web
-net-misc/youtube-dl 2020.05.08 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.05.08 2020.05.29 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
