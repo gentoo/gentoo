@@ -14,12 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+orc"
 
-RDEPEND="dev-libs/boost"
-DEPEND="${RDEPEND}
-	!net-wireless/gnuradio[-system-volk]
-	dev-python/mako
-	dev-python/six
+RDEPEND="!<net-wireless/gnuradio-3.8
+	dev-libs/boost
 	dev-lang/orc"
+DEPEND="${RDEPEND}
+	dev-python/mako
+	dev-python/six"
 
 #https://github.com/gnuradio/volk/issues/382
 RESTRICT=test
