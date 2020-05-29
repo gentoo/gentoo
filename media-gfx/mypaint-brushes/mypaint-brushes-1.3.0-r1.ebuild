@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Default MyPaint brushes"
-HOMEPAGE="https://github.com/Jehan/mypaint-brushes"
-SRC_URI="https://github.com/Jehan/mypaint-brushes/archive/v1.3.0.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/mypaint/mypaint-brushes"
+SRC_URI="https://github.com/mypaint/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0"
 SLOT="1.0"  # due to pkgconfig name "mypaint-brushes-1.0"
