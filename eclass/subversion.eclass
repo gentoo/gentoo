@@ -30,11 +30,8 @@ esac
 
 PROPERTIES+=" live"
 
-DEPEND="|| (
-		dev-vcs/subversion[http]
-		dev-vcs/subversion[webdav-neon]
-		dev-vcs/subversion[webdav-serf]
-	)
+DEPEND="
+	dev-vcs/subversion[http(+)]
 	net-misc/rsync"
 
 case ${EAPI} in
