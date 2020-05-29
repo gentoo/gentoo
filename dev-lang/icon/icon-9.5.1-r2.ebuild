@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -95,7 +95,9 @@ src_install() {
 	dosym ../$(get_libdir)/icon/bin/icont /usr/bin/icont
 	dosym ../$(get_libdir)/icon/bin/iconx /usr/bin/iconx
 	dosym ../$(get_libdir)/icon/bin/icon  /usr/bin/icon
-	dosym ../$(get_libdir)/icon/bin/vib   /usr/bin/vib
+	if use X; then
+		dosym ../$(get_libdir)/icon/bin/vib /usr/bin/vib
+	fi
 
 	cd "${S}/man/man1" || die
 	doman "${PN}"t.1
