@@ -1,4 +1,4 @@
-BDEPEND=doc? ( app-text/docbook-sgml-utils ) sys-apps/sed >=app-text/opensp-1.5 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+BDEPEND=doc? ( app-text/docbook-sgml-utils ) sys-apps/sed >=app-text/opensp-1.5 dev-vcs/subversion[http(+)] net-misc/rsync
 DEFINED_PHASES=configure preinst prepare unpack
 DEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) readline? ( sys-libs/readline:= ) ncurses? ( sys-libs/ncurses:= ) X? ( x11-base/xorg-proto )
 DESCRIPTION=LGPL-ed pc emulator
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) readline? ( sys-libs/readline:= ) ncurses? ( sys-libs/ncurses:= )
 REQUIRED_USE=avx? ( x86-64 ) gdb? ( !debugger !smp ) debugger? ( !gdb )
 SLOT=0
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	subversion	4beaac7ba954403d7bbe4d4b8befdb82
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	subversion	ed3498da4fb92dcfb0d6089c85d1465f
 _md5_=06d5ea22735ec2185c21604b4b897575

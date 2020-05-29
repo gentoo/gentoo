@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install preinst prepare setup test unpack
-DEPEND=icu? ( dev-libs/icu:0= ) curl? ( net-misc/curl ) virtual/libiconv doc? ( app-doc/doxygen ) test? ( dev-lang/perl ) dev-util/ninja >=dev-util/cmake-3.9.6 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DEPEND=icu? ( dev-libs/icu:0= ) curl? ( net-misc/curl ) virtual/libiconv doc? ( app-doc/doxygen ) test? ( dev-lang/perl ) dev-util/ninja >=dev-util/cmake-3.9.6 dev-vcs/subversion[http(+)] net-misc/rsync
 DESCRIPTION=A validating XML parser written in a portable subset of C++
 EAPI=6
 HOMEPAGE=https://xerces.apache.org/xerces-c/
@@ -9,5 +9,5 @@ PROPERTIES=live
 RDEPEND=icu? ( dev-libs/icu:0= ) curl? ( net-misc/curl ) virtual/libiconv
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	prefix	c2993e4c430c1ee24f278983d6189501	preserve-libs	ef207dc62baddfddfd39a164d9797648	subversion	4beaac7ba954403d7bbe4d4b8befdb82	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	prefix	c2993e4c430c1ee24f278983d6189501	preserve-libs	ef207dc62baddfddfd39a164d9797648	subversion	ed3498da4fb92dcfb0d6089c85d1465f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=404155e7bb9d0d93e81b39fe773f260e
