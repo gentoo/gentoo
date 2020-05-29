@@ -224,11 +224,6 @@ dev-embedded/pk2-la
 # Stuck on Python 2 and pygtk. Masked for removal in 30 days.
 app-misc/metromap
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release in 2011, bug #708114
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-app-laptop/batti
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-29)
 # Masked for testing
 >=dev-libs/gjs-1.64
