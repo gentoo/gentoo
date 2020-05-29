@@ -20,7 +20,7 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="cairo doc excel examples gtk3 latex qt5 tk wxwidgets"
 
 REQUIRED_USE="
