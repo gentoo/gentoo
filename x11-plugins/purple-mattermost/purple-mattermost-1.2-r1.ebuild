@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A libpurple/Pidgin plugin for Mattermost"
 HOMEPAGE="https://github.com/EionRobb/purple-mattermost"

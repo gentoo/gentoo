@@ -199,41 +199,6 @@ x11-plugins/fsviewer
 # Last release in 2007. Masked for removal in 30 days.
 x11-misc/wmakerconf
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Py3 porting "not in the near future", bug #708152
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-net-firewall/ufw-frontends
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release unknown, bug #708144
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-x11-misc/wbarconf
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release in 2005, bug #708138
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-x11-misc/icewmcp
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release in 2010, bug #708128
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-dev-embedded/pk2-la
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release unknown, bug #708122
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-app-misc/metromap
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release in 2011, bug #708114
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-app-laptop/batti
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release in 2009, bug #708068
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-sys-fs/pysize
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-29)
 # Masked for testing
 >=dev-libs/gjs-1.64
