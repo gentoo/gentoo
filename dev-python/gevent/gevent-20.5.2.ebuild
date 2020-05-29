@@ -20,8 +20,9 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/libev-4.23
-	>=net-dns/c-ares-1.12
+	>=dev-libs/libev-4.23:=
+	dev-libs/libuv:=
+	>=net-dns/c-ares-1.12:=
 	>=dev-python/greenlet-0.4.14
 	virtual/python-greenlet[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
