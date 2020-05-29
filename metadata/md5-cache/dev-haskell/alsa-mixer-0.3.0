@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/alsa-core-0.5:=[profile?] <dev-haskell/alsa-core-0.6:=[profile?] >=dev-lang/ghc-7.6.1:= media-libs/alsa-lib dev-haskell/c2hs >=dev-haskell/cabal-1.16.0 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Bindings to the ALSA simple mixer API
+EAPI=7
+HOMEPAGE=https://github.com/ttuegel/alsa-mixer
+IUSE=doc hscolour profile
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/alsa-core-0.5:=[profile?] <dev-haskell/alsa-core-0.6:=[profile?] >=dev-lang/ghc-7.6.1:= media-libs/alsa-lib
+SLOT=0/0.3.0
+SRC_URI=https://hackage.haskell.org/package/alsa-mixer-0.3.0/alsa-mixer-0.3.0.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=ea867112cc1b18015ddb4a5c2db107de

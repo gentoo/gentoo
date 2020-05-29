@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/wmacpi-2.3.tar.gz
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=3feda72fb9f4ccc9590a622d1ff41c56
+_md5_=d33ce4956ebd928c623b6f327327ae8d

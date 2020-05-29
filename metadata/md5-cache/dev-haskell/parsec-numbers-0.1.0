@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-lang/ghc-7.4.1:= parsec1? ( dev-haskell/parsec1:=[profile?] ) !parsec1? ( dev-haskell/parsec:=[profile?] ) >=dev-haskell/cabal-1.6 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Utilities for parsing numbers from strings
+EAPI=6
+HOMEPAGE=http://hackage.haskell.org/package/parsec-numbers
+IUSE=parsec1 doc hscolour profile
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/ghc-7.4.1:= parsec1? ( dev-haskell/parsec1:=[profile?] ) !parsec1? ( dev-haskell/parsec:=[profile?] )
+SLOT=0/0.1.0
+SRC_URI=https://hackage.haskell.org/package/parsec-numbers-0.1.0/parsec-numbers-0.1.0.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=3d53ea4161dc05af7f06d9bd4afe09fe
