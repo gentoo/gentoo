@@ -11,7 +11,7 @@ SRC_URI="https://github.com/psi-im/qconf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ppc ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 ~sparc ~x86"
 IUSE=""
 
 DEPEND="
