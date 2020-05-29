@@ -41,6 +41,7 @@ REQUIRED_USE="graph? ( doc )"
 
 PATCHES=(
 	"${FILESDIR}/lldpd-1.0.5-seccomp.patch"
+	"${FILESDIR}/lldpd-1.0.5-cpp.patch"
 )
 
 src_prepare() {
