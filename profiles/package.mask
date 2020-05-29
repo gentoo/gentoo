@@ -214,11 +214,6 @@ x11-misc/wbarconf
 # Stuck on Python 2 and pygtk. Masked for removal in 30 days.
 x11-misc/icewmcp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release in 2010, bug #708128
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-dev-embedded/pk2-la
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-29)
 # Masked for testing
 >=dev-libs/gjs-1.64
