@@ -1,0 +1,79 @@
+From 08b43b716a44e91f94e66135266cf2ad729a7821 Mon Sep 17 00:00:00 2001
+From: KTB <ktb83@users.noreply.github.com>
+Date: Fri, 15 Nov 2019 07:56:27 -0500
+Subject: [PATCH 1/3] Updates Makefile to replace Ruby Sass with SassC
+
+This commit replaces the use of the Ruby Sass scss command with SassC's sassc command. Due to the more limited functionality of sassc, output directories must be created prior to running the command and only one file may be processed at a time unlike the many-to-many mode functionality of the scss command.
+---
+ Makefile | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index d2735a91..c580a2a7 100755
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+-SASS=scss
+-SASSFLAGS=--sourcemap=none
++SASS=sassc
++SASSFLAGS=-M -t expanded
+ GLIB_COMPILE_RESOURCES=glib-compile-resources
+ RES_DIR=src/gtk-3.0
+ SCSS_DIR=$(RES_DIR)/scss
+@@ -14,8 +14,12 @@ UTILS=scripts/utils.sh
+ all: clean gresource
+ 
+ css:
+-	$(SASS) --update $(SASSFLAGS) $(SCSS_DIR):$(DIST_DIR)
+-	$(SASS) --update $(SASSFLAGS) $(SCSS_DIR320):$(DIST_DIR320)
++	mkdir $(DIST_DIR)
++	$(SASS) $(SASSFLAGS) $(SCSS_DIR)/gtk.scss $(DIST_DIR)/gtk.css
++	$(SASS) $(SASSFLAGS) $(SCSS_DIR)/gtk-dark.scss $(DIST_DIR)/gtk-dark.css
++	mkdir $(DIST_DIR320)
++	$(SASS) $(SASSFLAGS) $(SCSS_DIR320)/gtk.scss $(DIST_DIR320)/gtk.css
++	$(SASS) $(SASSFLAGS) $(SCSS_DIR320)/gtk-dark.scss $(DIST_DIR320)/gtk-dark.css
+ 
+ gresource: css
+ 	$(GLIB_COMPILE_RESOURCES) --sourcedir=$(RES_DIR) $(RES_DIR)/gtk.gresource.xml
+
+From 6ba019fae4b8c90ed721dfe2dad279752f454968 Mon Sep 17 00:00:00 2001
+From: KTB <ktb83@users.noreply.github.com>
+Date: Fri, 15 Nov 2019 08:19:32 -0500
+Subject: [PATCH 2/3] Makes import directive relative in _gnome-terminal.scss
+
+This commit changes the "widgets/button" import directive to be relative in the gtk-3.20 _gnome-terminal.scss file which is necessary when using SassC.
+---
+ src/gtk-3.20/scss/apps/_gnome-terminal.scss | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gtk-3.20/scss/apps/_gnome-terminal.scss b/src/gtk-3.20/scss/apps/_gnome-terminal.scss
+index fd3af1c5..704faf5d 100644
+--- a/src/gtk-3.20/scss/apps/_gnome-terminal.scss
++++ b/src/gtk-3.20/scss/apps/_gnome-terminal.scss
+@@ -1,4 +1,4 @@
+-@import "widgets/button";
++@import "../widgets/button";
+ 
+ /**********************
+  ! Genome Terminal *
+
+From 0d3fd3f2ce5e5e7079b8a87ee3ddbf5d8923c67b Mon Sep 17 00:00:00 2001
+From: KTB <ktb83@users.noreply.github.com>
+Date: Thu, 12 Dec 2019 23:46:09 -0500
+Subject: [PATCH 3/3] Removes import directive in _gnome-terminal.scss
+
+This commit removes the "widgets/button" import directive in the gtk-3.20 _gnome-terminal.scss file which is unnecessary.
+---
+ src/gtk-3.20/scss/apps/_gnome-terminal.scss | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/gtk-3.20/scss/apps/_gnome-terminal.scss b/src/gtk-3.20/scss/apps/_gnome-terminal.scss
+index 704faf5d..6e9ee4e4 100644
+--- a/src/gtk-3.20/scss/apps/_gnome-terminal.scss
++++ b/src/gtk-3.20/scss/apps/_gnome-terminal.scss
+@@ -1,5 +1,3 @@
+-@import "../widgets/button";
+-
+ /**********************
+  ! Genome Terminal *
+ ***********************/
