@@ -5,7 +5,7 @@ DESCRIPTION=MongoDB database driver for PHP
 EAPI=7
 HOMEPAGE=https://pecl.php.net/mongodb
 IUSE=libressl sasl test php_targets_php7-2 php_targets_php7-3 php_targets_php7-4
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=Apache-2.0
 RDEPEND=php_targets_php7-2? ( dev-lang/php:7.2[json,ssl,zlib] ) php_targets_php7-3? ( dev-lang/php:7.3[json,ssl,zlib] ) php_targets_php7-4? ( dev-lang/php:7.4[json,ssl,zlib] ) >=dev-libs/libbson-1.16.2 >=dev-libs/mongo-c-driver-1.16.2[sasl?,ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sasl? ( dev-libs/cyrus-sasl ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
 REQUIRED_USE=|| ( php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 )
@@ -13,4 +13,4 @@ RESTRICT=x86? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://pecl.php.net/get/mongodb-1.7.4.tgz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	php-ext-pecl-r3	a59741d3df8ea9f17afcdcfb7edaee6d	php-ext-source-r3	1aa741f0d0128470481dff5011ba00c4	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=dbb1219cd4c582555453fee208dfd1a3
+_md5_=4d1d6d7e8e95f7c455b8fdf55a7954aa
