@@ -29,7 +29,7 @@ BDEPEND=""
 S="${WORKDIR}/sddm-sugar-candy-${PV}"
 
 src_install() {
-	local DOCS=( AUTHORS COPYING CHANGELOG.md README.md )
+	DOCS=( AUTHORS COPYING CHANGELOG.md README.md )
 	einstalldocs
 	local target="${ROOT}/usr/share/sddm/themes/${PN}"
 	insinto ${target}
@@ -37,11 +37,13 @@ src_install() {
 }
 
 pkg_postinst () {
-	elog "This theme can be customised by editing"
-	elog "${ROOT}/usr/share/sddm/themes/sugar-candy/theme.conf"
-	elog "You will need to configure your ${ROOT}/etc/sddm.conf before"
-	elog "this theme will be applied. If the file does not exist"
-	elog "it is safe to create it with the following configuration:"
-	elog "[Theme]"
-	elog "Current=sugar-candy"
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		elog "This theme can be customised by editing"
+		elog "${ROOT}/usr/share/sddm/themes/sugar-candy/theme.conf"
+		elog "You will need to configure your ${ROOT}/etc/sddm.conf before"
+		elog "this theme will be applied. If the file does not exist"
+		elog "it is safe to create it with the following configuration:"
+		elog "[Theme]"
+		elog "Current=sugar-candy"
+	fi
 }
