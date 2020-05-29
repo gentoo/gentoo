@@ -589,6 +589,7 @@ www-plugins/passff
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
 # python2_7 out of default PYTHON_TARGETS first.
 ~dev-python/setuptools-46.1.3
+>=dev-python/setuptools-47
 
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # Snapshots from Git and pretest versions, masked for testing.
