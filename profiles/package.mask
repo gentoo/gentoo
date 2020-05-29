@@ -209,11 +209,6 @@ net-firewall/ufw-frontends
 # Stuck on Python 2 and pygtk. Masked for removal in 30 days.
 x11-misc/wbarconf
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release in 2005, bug #708138
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-x11-misc/icewmcp
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-29)
 # Masked for testing
 >=dev-libs/gjs-1.64
