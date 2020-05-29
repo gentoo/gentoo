@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE="ipv6 ssl"
 RDEPEND=">=dev-libs/glib-2:=
 	>=x11-libs/gtk+-2.18:2=
 	x11-libs/libX11:=
-	xfce-base/exo[gtk2(+)]
+	<xfce-base/exo-4.15[gtk2(+)]
 	<xfce-base/libxfce4ui-4.15:=[gtk2(+)]
 	>=xfce-base/libxfce4util-4.10:=
 	<xfce-base/xfce4-panel-4.15:=[gtk2(+)]
