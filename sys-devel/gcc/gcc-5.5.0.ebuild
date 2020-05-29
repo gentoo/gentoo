@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PATCH_VER="2"
+PATCH_VER="3"
 UCLIBC_VER="1.0"
 
 # Hardened gcc 4 stuff
