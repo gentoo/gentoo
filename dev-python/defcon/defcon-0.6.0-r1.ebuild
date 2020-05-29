@@ -16,12 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-python/fonttools-3.31.0[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
-		dev-python/fonttools[${PYTHON_USEDEP}]
 		dev-python/fs[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
 "
 
