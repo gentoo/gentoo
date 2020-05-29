@@ -9,4 +9,4 @@ RDEPEND=app-text/discount dev-libs/glib dev-libs/json-glib net-im/pidgin
 SLOT=0
 SRC_URI=https://github.com/EionRobb/purple-mattermost/archive/v1.2.tar.gz -> purple-mattermost-1.2.tar.gz
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=1b0a91559e1a3a4d348db3cc62579396
+_md5_=e8266bbf0802ef3b041657553bd1ccb2

@@ -5636,8 +5636,6 @@ net-firewall/shorewall:lite4 - Installs everything needed to just *run* an IPv4 
 net-firewall/shorewall:lite6 - Installs everything needed to just *run* an IPv6 compiled firewall script created with net-firewall/shorewall ipv6 USE flag
 net-firewall/ufw:examples - Example ufw config files
 net-firewall/ufw:ipv6 - IPv6 support for iptables
-net-firewall/ufw-frontends:kde - Use kdesu to gain root privileges (note: the flag has lower priority than "policykit")
-net-firewall/ufw-frontends:policykit - Use pkexec to gain root privileges
 net-fs/autofs:dmalloc - Enable debugging with the dmalloc library
 net-fs/autofs:ldap - Install LDAP module
 net-fs/autofs:libtirpc - Use TiRPC library instead of SunRPC
