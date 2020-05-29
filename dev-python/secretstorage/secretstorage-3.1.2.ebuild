@@ -16,22 +16,33 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	>=dev-python/jeepney-0.4.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	test? (
+	test? ( !hppa? ( !sparc? (
 		gnome-base/gnome-keyring
 		sys-apps/dbus
-	)
+	) ) )
 "
 
 distutils_enable_tests unittest
 distutils_enable_sphinx docs \
 	dev-python/alabaster
+
+src_test() {
+	case ${ARCH} in
+		hppa|sparc)
+			einfo "gnome-keyring is not supported on ${ARCH}, skipping tests"
+			return
+			;;
+	esac
+
+	distutils-r1_src_test
+}
 
 python_test() {
 	dbus-run-session "${EPYTHON}" -m unittest discover -v -s tests \
