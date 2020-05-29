@@ -22,16 +22,7 @@ encoding_rs_io-0.1.7
 fnv-1.0.6
 fs_extra-1.1.0
 glob-0.3.0
-globset-0.4.5
-grep-0.2.6
-grep-cli-0.1.4
-grep-matcher-0.1.4
-grep-pcre2-0.1.4
-grep-printer-0.1.5
-grep-regex-0.1.8
-grep-searcher-0.1.7
 hermit-abi-0.1.12
-ignore-0.4.15
 itoa-0.4.5
 jemalloc-sys-0.3.2
 jemallocator-0.3.2
@@ -51,7 +42,6 @@ quote-1.0.4
 regex-1.3.7
 regex-automata-0.1.9
 regex-syntax-0.6.17
-ripgrep-12.1.0
 ryu-1.0.4
 same-file-1.0.6
 serde-1.0.107
