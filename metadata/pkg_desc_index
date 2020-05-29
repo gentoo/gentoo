@@ -1658,9 +1658,9 @@ app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.0.0-r3 6.1.0-r1 6.2.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1 4.0.2-r2: LinuX Containers userspace utilities
+app-emulation/lxc 3.0.3 4.0.2-r2: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 3.14 3.16-r1 4.0.1: Fast, dense and secure container management
+app-emulation/lxd 3.14 4.0.1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.0.1-r1 11.1.0: Opensourced tools for VMware guests
 app-emulation/pcem 16: A PC emulator that specializes in running old operating systems and software
@@ -15056,7 +15056,7 @@ net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with Op
 net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
-net-misc/you-get 0.4.536-r1 0.4.1270-r1 0.4.1355-r1: utility to download media contents from the web
+net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
 net-misc/youtube-dl 2020.05.08 2020.05.29 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
