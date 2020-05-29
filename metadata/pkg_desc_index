@@ -12978,7 +12978,7 @@ media-libs/raspberrypi-userland 0_pre20160424 9999: Raspberry Pi userspace tools
 media-libs/raspberrypi-userland-bin 1.20170303 1.20190709: Raspberry Pi userspace tools and libraries
 media-libs/raul 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
-media-libs/rlottie 0.0.1_pre20200110 0.0.1_pre20200424: A platform independent standalone library that plays Lottie Animations
+media-libs/rlottie 0.0.1_pre20200424: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.8.2: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sbc 1.4: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
@@ -17490,7 +17490,7 @@ sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5-r1: tool for identifying where in the system latency is happening
 sys-process/lsof 4.91 4.93.2-r1: Lists open files for running Unix processes
 sys-process/memwatch 0.1.0 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.3.1 0.3.2 0.3.3: Interactive memory viewer
-sys-process/minicoredumper 2.0.1: Core dump file processor
+sys-process/minicoredumper 2.0.1-r1: Core dump file processor
 sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems

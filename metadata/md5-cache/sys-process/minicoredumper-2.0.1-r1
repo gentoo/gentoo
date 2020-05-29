@@ -9,4 +9,4 @@ LICENSE=BSD BSD-2 LGPL-2.1
 RDEPEND=dev-libs/json-c:= virtual/libelf
 SLOT=0
 SRC_URI=https://linutronix.de/minicoredumper/files/minicoredumper-2.0.1.tar.xz
-_md5_=4acd9d64f15d49627a9281dfc5014ee4
+_md5_=ec212540a2cb4ee58f84540e4b90214b
