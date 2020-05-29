@@ -21,6 +21,9 @@ DEPEND="${RDEPEND}
 	dev-python/six
 	dev-lang/orc"
 
+#https://github.com/gnuradio/volk/issues/382
+RESTRICT=test
+
 CMAKE_BUILD_TYPE=Release
 
 src_configure() {
