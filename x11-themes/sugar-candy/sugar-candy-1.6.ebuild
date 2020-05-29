@@ -15,14 +15,14 @@ IUSE="svg jpeg"
 
 # Require at least one kind of image support. Kind of useless otherwise.
 REQUIRED_USE="!jpeg? ( svg )
-!svg? ( jpeg )"
+	!svg? ( jpeg )"
 
 DEPEND=">=dev-qt/qtquickcontrols2-5.11
-svg? ( >=dev-qt/qtsvg-5.11 )
->=dev-qt/qtgraphicaleffects-5.11
->=dev-qt/qtdeclarative-5.11
->=dev-qt/qtgui-5.11[jpeg?]
->=x11-misc/sddm-0.18"
+	svg? ( >=dev-qt/qtsvg-5.11 )
+	>=dev-qt/qtgraphicaleffects-5.11
+	>=dev-qt/qtdeclarative-5.11
+	>=dev-qt/qtgui-5.11[jpeg?]
+	>=x11-misc/sddm-0.18"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
