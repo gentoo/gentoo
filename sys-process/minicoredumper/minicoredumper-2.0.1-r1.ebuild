@@ -23,6 +23,7 @@ BDEPEND="virtual/pkgconfig"
 src_configure() {
 	# TODO: regd daemon is disabled as there are no known consumers
 	local myconf=(
+		--enable-static=no
 		--runstatedir="${EPREFIX}/run"
 		--without-werror
 		--without-minicoredumper_trigger
@@ -44,4 +45,6 @@ src_install() {
 	# it installs some files/dirs we don't want
 	rmdir -v "${ED}/run" || die
 	rm -rv "${ED}"/etc/{init.d,default} || die
+
+	find "${ED}" -name '*.la' -delete || die
 }
