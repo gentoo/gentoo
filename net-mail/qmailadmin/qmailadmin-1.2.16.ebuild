@@ -20,7 +20,7 @@ IUSE="maildrop"
 # and non-root can't access them.
 RESTRICT="userpriv"
 
-DEPEND="virtual/qmail
+RDEPEND="virtual/qmail
 	>=net-mail/vpopmail-5.4.33
 	net-mail/autorespond
 	maildrop? ( >=mail-filter/maildrop-2.0.1 )"
