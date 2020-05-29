@@ -385,7 +385,7 @@ app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.32.0 2.34.2: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.32.1 2.34.0 2.36.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
-app-accessibility/caribou 0.4.21: Input assistive technology intended for switch and pointer users
+app-accessibility/caribou 0.4.21 0.4.21-r1: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.7.5.1: Combination editor, browser, and mail client that is 100% text based
 app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to interact with festival lite
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
@@ -5155,6 +5155,7 @@ dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13 4.15.0-r1 4.16.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
+dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
 dev-libs/libtommath 1.1.0: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04-r1: portable ISO C library for polynomial basis arithmetic
@@ -11502,15 +11503,15 @@ gnome-base/librsvg 2.40.21: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.32.3 3.34.2 3.34.3: Default file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/chrome-gnome-shell 10-r3 10-r4: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
-gnome-extra/cinnamon 4.0.3-r2: A fork of GNOME Shell with layout similar to GNOME 2
-gnome-extra/cinnamon-control-center 4.0.0: Cinnamons's main interface to configure various aspects of the desktop
-gnome-extra/cinnamon-desktop 4.0.1-r1: A collection of libraries and utilites used by Cinnamon
-gnome-extra/cinnamon-menus 4.0.0: Cinnamon's library for the Desktop Menu fd.o specification
-gnome-extra/cinnamon-screensaver 4.0.1-r1: Screensaver for Cinnamon
-gnome-extra/cinnamon-session 4.0.0-r1: Cinnamon session manager
-gnome-extra/cinnamon-settings-daemon 4.0.2: Cinnamon's settings daemon
-gnome-extra/cinnamon-translations 4.0.0: Translation data for Cinnamon
-gnome-extra/cjs 4.0.0-r1: Linux Mint's fork of gjs for Cinnamon
+gnome-extra/cinnamon 4.0.3-r2 4.4.8: A fork of GNOME Shell with layout similar to GNOME 2
+gnome-extra/cinnamon-control-center 4.0.0 4.4.0: Cinnamons's main interface to configure various aspects of the desktop
+gnome-extra/cinnamon-desktop 4.0.1-r1 4.4.1: A collection of libraries and utilites used by Cinnamon
+gnome-extra/cinnamon-menus 4.0.0 4.4.0: Cinnamon's library for the Desktop Menu fd.o specification
+gnome-extra/cinnamon-screensaver 4.0.1-r1 4.4.1: Screensaver for Cinnamon
+gnome-extra/cinnamon-session 4.0.0-r1 4.4.1: Cinnamon session manager
+gnome-extra/cinnamon-settings-daemon 4.0.2 4.4.0: Cinnamon's settings daemon
+gnome-extra/cinnamon-translations 4.0.0 4.4.2: Translation data for Cinnamon
+gnome-extra/cjs 4.0.0-r1 4.4.0: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/eiciel 0.9.12.1-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.34.4 3.36.2: Evolution groupware backend
 gnome-extra/evolution-ews 3.34.4 3.36.2: Evolution module for connecting to Microsoft Exchange Web Services
@@ -11555,7 +11556,7 @@ gnome-extra/mousetweaks 3.32.0: Mouse accessibility enhancements for the GNOME d
 gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 2019.02.14: Dropbox Nautilus Extension
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
-gnome-extra/nemo 4.0.6: A file manager for Cinnamon, forked from Nautilus
+gnome-extra/nemo 4.0.6 4.4.2: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.24-r1 1.8.25: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/pch-session 3.32.0 3.34.3: Unofficial gnome based session with different default settings and extensions
@@ -18156,7 +18157,7 @@ x11-libs/startup-notification 0.12-r1: Application startup notification and feed
 x11-libs/tslib 1.21: Touchscreen Access Library
 x11-libs/vte 0.28.2-r208 0.56.4 0.58.3: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 3.0.4-r2 3.0.4-r302: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
-x11-libs/xapps 1.4.2: Cross-desktop libraries and common resources
+x11-libs/xapps 1.4.2 1.8.4: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0-r1: X C-language Bindings sample implementations
 x11-libs/xcb-util-cursor 0.1.3-r2: X C-language Bindings sample implementations
@@ -18819,7 +18820,7 @@ x11-wm/lwm 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.22.4-r2 1.24.0 1.24.0-r1: MATE default window manager
 x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/metacity 3.34.1: GNOME Flashback window manager
-x11-wm/muffin 4.0.3: Compositing window manager forked from Mutter for use with Cinnamon
+x11-wm/muffin 4.0.3 4.4.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.34.5 3.34.6 3.34.6-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system

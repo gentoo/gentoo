@@ -3414,6 +3414,7 @@ gnome-base/nautilus:packagekit - Use packagekit to search for programs to open u
 gnome-base/nautilus:previewer - Use gnome-extra/sushi to preview files from the file mananger
 gnome-base/nautilus:sendto - Enable the nautilus-sendto extension to send files to various locations/devices
 gnome-base/orbit:pic - Force libname-server-2 to be built as PIC; needed on hardened systems
+gnome-extra/cinnamon-control-center:modemmanager - Enable support for mobile broadband devices using net-misc/modemmanager
 gnome-extra/cinnamon-session:elogind - Rely on sys-auth/elogind as runtime logind provider
 gnome-extra/eiciel:nautilus - Build gnome-base/nautilus extension
 gnome-extra/evolution-data-server:berkdb - sys-libs/db support needed to migrate old (pre-3.13 evolution versions) addressbook data
