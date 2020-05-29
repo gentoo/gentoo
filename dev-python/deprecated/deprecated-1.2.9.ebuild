@@ -15,6 +15,5 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/wrapt[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
