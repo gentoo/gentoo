@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index db08eeb7..46be6fab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -907,8 +907,8 @@ if(GR_INSTALL)
+     install(FILES lib/gr/qtgr/grwidget.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/)
+   endif()
+   install(
+-    DIRECTORY lib/gks/fonts
+-    DESTINATION ${CMAKE_INSTALL_PREFIX}/
++    DIRECTORY lib/gks/fonts/
++    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/fonts/gks
+     USE_SOURCE_PERMISSIONS
+   )
+ endif()
