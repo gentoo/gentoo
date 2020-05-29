@@ -1,0 +1,182 @@
+From 33708e76578c173333d1879a4a21baddf8fcdb6a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 29 May 2020 16:06:07 +0200
+Subject: [PATCH] Update for fixed outer @classmethod behavior in Python 3.9
+
+Fixes #160
+---
+ docs/decorators.rst             | 18 ++++++-------
+ tests/test_outer_classmethod.py | 45 +++++++++++++++++++++------------
+ tests/test_synchronized_lock.py | 22 ++++++++--------
+ 3 files changed, 49 insertions(+), 36 deletions(-)
+
+diff --git a/docs/decorators.rst b/docs/decorators.rst
+index b8200d6..94201de 100644
+--- a/docs/decorators.rst
++++ b/docs/decorators.rst
+@@ -641,15 +641,15 @@ When calling the wrapped function in the decorator wrapper function, the
+ instance is already bound to ``wrapped`` and will be passed automatically
+ as the first argument to the original wrapped function.
+ 
+-Note that due to a bug in Python ``classmethod.__get__()``, whereby it does
+-not apply the descriptor protocol to the function wrapped by ``@classmethod``,
+-the above only applies where the decorator wraps the ``@classmethod``
+-decorator. If the decorator is placed inside of the ``@classmethod``
+-decorator, then ``instance`` will be ``None`` and the decorator wrapper
+-function will see the call as being the same as a normal function. As a
+-result, always place any decorator outside of the ``@classmethod``
+-decorator. Hopefully this issue in Python can be addressed in a future
+-Python version.
++Note that due to a bug in Python prior to 3.9 ``classmethod.__get__()``,
++whereby it does not apply the descriptor protocol to the function
++wrapped by ``@classmethod``, the above only applies where the decorator
++wraps the ``@classmethod`` decorator. If the decorator is placed inside
++of the ``@classmethod`` decorator, then ``instance`` will be ``None``
++and the decorator wrapper function will see the call as being the same
++as a normal function. As a result, always place any decorator outside of
++the ``@classmethod`` decorator if you need to support earlier Python
++versions.
+ 
+ Decorating Static Methods
+ -------------------------
+diff --git a/tests/test_outer_classmethod.py b/tests/test_outer_classmethod.py
+index 6b4af4f..9c2fcb8 100644
+--- a/tests/test_outer_classmethod.py
++++ b/tests/test_outer_classmethod.py
+@@ -3,6 +3,7 @@ from __future__ import print_function
+ import unittest
+ import inspect
+ import imp
++import sys
+ 
+ import wrapt
+ 
+@@ -121,20 +122,26 @@ class TestNamingOuterClassMethod(unittest.TestCase):
+ class TestCallingOuterClassMethod(unittest.TestCase):
+ 
+     def test_class_call_function(self):
+-        # Test calling classmethod. The instance and class passed to the
+-        # wrapper will both be None because our decorator is surrounded
+-        # by the classmethod decorator. The classmethod decorator
+-        # doesn't bind the method and treats it like a normal function,
+-        # explicitly passing the class as the first argument with the
+-        # actual arguments following that.
++        # Test calling classmethod. In Python 3.9, the class will be
++        # passed as instance.  In older versions of Python, the instance
++        # and class passed to the wrapper will both be None because our
++        # decorator is surrounded by the classmethod decorator.
++        # The classmethod decorator doesn't bind the method and treats
++        # it like a normal function, explicitly passing the class
++        # as the first argument with the actual arguments following
++        # that.
+ 
+         _args = (1, 2)
+         _kwargs = {'one': 1, 'two': 2}
+ 
+         @wrapt.decorator
+         def _decorator(wrapped, instance, args, kwargs):
+-            self.assertEqual(instance, None)
+-            self.assertEqual(args, (Class,)+_args)
++            if sys.hexversion >= 0x03090000:
++                self.assertEqual(instance, Class)
++                self.assertEqual(args, _args)
++            else:
++                self.assertEqual(instance, None)
++                self.assertEqual(args, (Class,)+_args)
+             self.assertEqual(kwargs, _kwargs)
+             self.assertEqual(wrapped.__module__, _function.__module__)
+             self.assertEqual(wrapped.__name__, _function.__name__)
+@@ -155,20 +162,26 @@ class TestCallingOuterClassMethod(unittest.TestCase):
+         self.assertEqual(result, (_args, _kwargs))
+ 
+     def test_instance_call_function(self):
+-        # Test calling classmethod via class instance. The instance
+-        # and class passed to the wrapper will both be None because our
+-        # decorator is surrounded by the classmethod decorator. The
+-        # classmethod decorator doesn't bind the method and treats it
+-        # like a normal function, explicitly passing the class as the
+-        # first argument with the actual arguments following that.
++        # Test calling classmethod via class instance. In Python 3.9,
++        # the class will be passed as instance.  In older versions
++        # of Python, the instance and class passed to the wrapper will
++        # both be None because our decorator is surrounded
++        # by the classmethod decorator. The classmethod decorator
++        # doesn't bind the method and treats it like a normal function,
++        # explicitly passing the class as the first argument with
++        # the actual arguments following that.
+ 
+         _args = (1, 2)
+         _kwargs = {'one': 1, 'two': 2}
+ 
+         @wrapt.decorator
+         def _decorator(wrapped, instance, args, kwargs):
+-            self.assertEqual(instance, None)
+-            self.assertEqual(args, (Class,)+_args)
++            if sys.hexversion >= 0x03090000:
++                self.assertEqual(instance, Class)
++                self.assertEqual(args, _args)
++            else:
++                self.assertEqual(instance, None)
++                self.assertEqual(args, (Class,)+_args)
+             self.assertEqual(kwargs, _kwargs)
+             self.assertEqual(wrapped.__module__, _function.__module__)
+             self.assertEqual(wrapped.__name__, _function.__name__)
+diff --git a/tests/test_synchronized_lock.py b/tests/test_synchronized_lock.py
+index 6e7eb12..b8f60f3 100644
+--- a/tests/test_synchronized_lock.py
++++ b/tests/test_synchronized_lock.py
+@@ -1,5 +1,6 @@
+ from __future__ import print_function
+ 
++import sys
+ import unittest
+ 
+ import wrapt
+@@ -157,34 +158,33 @@ class TestSynchronized(unittest.TestCase):
+         self.assertEqual(_lock3, _lock2)
+ 
+     def test_synchronized_outer_classmethod(self):
+-        # XXX If all was good, this would be detected as a class
++        # Bug in Python < 3.9:
++        # If all was good, this would be detected as a class
+         # method call, but the classmethod decorator doesn't bind
+         # the wrapped function to the class before calling and
+         # just calls it direct, explicitly passing the class as
+-        # first argument. This screws things up. Would be nice if
+-        # Python were fixed, but that isn't likely to happen.
++        # first argument. This screws things up.
+ 
+-        #_lock0 = getattr(C4, '_synchronized_lock', None)
+-        _lock0 = getattr(C4.function2, '_synchronized_lock', None)
++        lock_target = (C4 if sys.hexversion >= 0x03090000
++                       else C4.function2)
++
++        _lock0 = getattr(lock_target, '_synchronized_lock', None)
+         self.assertEqual(_lock0, None)
+ 
+         c4.function2()
+ 
+-        #_lock1 = getattr(C4, '_synchronized_lock', None)
+-        _lock1 = getattr(C4.function2, '_synchronized_lock', None)
++        _lock1 = getattr(lock_target, '_synchronized_lock', None)
+         self.assertNotEqual(_lock1, None)
+ 
+         C4.function2()
+ 
+-        #_lock2 = getattr(C4, '_synchronized_lock', None)
+-        _lock2 = getattr(C4.function2, '_synchronized_lock', None)
++        _lock2 = getattr(lock_target, '_synchronized_lock', None)
+         self.assertNotEqual(_lock2, None)
+         self.assertEqual(_lock2, _lock1)
+ 
+         C4.function2()
+ 
+-        #_lock3 = getattr(C4, '_synchronized_lock', None)
+-        _lock3 = getattr(C4.function2, '_synchronized_lock', None)
++        _lock3 = getattr(lock_target, '_synchronized_lock', None)
+         self.assertNotEqual(_lock3, None)
+         self.assertEqual(_lock3, _lock2)
+ 
+-- 
+2.26.2
+
