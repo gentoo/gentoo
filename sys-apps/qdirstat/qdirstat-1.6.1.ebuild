@@ -11,7 +11,7 @@ SRC_URI="https://github.com/shundhammer/qdirstat/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="
 	dev-qt/qtgui:5
