@@ -11,7 +11,7 @@ SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc tools"
 
 BDEPEND="
