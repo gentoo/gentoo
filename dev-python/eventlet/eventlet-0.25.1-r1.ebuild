@@ -26,6 +26,7 @@ DEPEND="doc? ( >=dev-python/python-docs-2.7.6-r1:2.7 )
 		dev-python/nose[${PYTHON_USEDEP}] )"
 
 PATCHES=(
+	"${FILESDIR}/eventlet-0.25.1-sparc.patch"
 	"${FILESDIR}/eventlet-0.25.1-tests.patch"
 )
 
