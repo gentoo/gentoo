@@ -10440,7 +10440,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.204.6 2.222.1 2.222.3 2.228: Extensible continuous integration server
+dev-util/jenkins-bin 2.222.1 2.222.3 2.222.4 2.228: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -14289,7 +14289,7 @@ net-firewall/shorewall 5.2.4.4 5.2.4.5: A high-level tool for configuring Netfil
 net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 2.13 3.7 3.8 3.9: iptables extensions not yet accepted in the main kernel
-net-fs/autofs 5.1.5-r2 5.1.6: Kernel based automounter
+net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
 net-fs/btfs 2.19 2.20: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.9-r1 6.10-r1: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r4: File system for accessing ftp hosts based on FUSE
