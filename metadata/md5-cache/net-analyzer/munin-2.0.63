@@ -5,12 +5,12 @@ DESCRIPTION=Munin Server Monitoring Tool
 EAPI=7
 HOMEPAGE=http://munin-monitoring.org/
 IUSE=asterisk irc java ldap memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache2 elibc_FreeBSD java
-KEYWORDS=~amd64 ~arm ~ppc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=acct-user/munin acct-user/munin-async acct-group/munin dev-lang/perl:=[berkdb] dev-perl/DBI dev-perl/Date-Manip dev-perl/File-Copy-Recursive dev-perl/List-MoreUtils dev-perl/Log-Log4perl dev-perl/Net-CIDR dev-perl/Net-DNS dev-perl/Net-Netmask dev-perl/Net-SNMP dev-perl/Net-Server[ipv6(-)?] virtual/perl-Digest-MD5 virtual/perl-Getopt-Long virtual/perl-MIME-Base64 virtual/perl-Storable virtual/perl-Text-Balanced virtual/perl-Time-HiRes apache2? ( www-servers/apache[apache2_modules_cgi,apache2_modules_cgid,apache2_modules_rewrite] ) asterisk? ( dev-perl/Net-Telnet ) cgi? ( dev-perl/FCGI dev-perl/CGI-Fast ) dhcpd? ( >=net-misc/dhcp-3[server] dev-perl/Net-IP dev-perl/HTTP-Date ) doc? ( dev-python/sphinx ) http? ( dev-perl/libwww-perl ) irc? ( dev-perl/Net-IRC ) ldap? ( dev-perl/perl-ldap ) kernel_linux? ( sys-process/procps ) memcached? ( dev-perl/Cache-Memcached ) mysql? ( virtual/mysql dev-perl/Cache-Cache dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg dev-db/postgresql:* ) ssl? ( dev-perl/Net-SSLeay ) syslog? ( virtual/perl-Sys-Syslog ) !minimal? ( dev-perl/HTML-Template dev-perl/IO-Socket-INET6 dev-perl/URI >=net-analyzer/rrdtool-1.3[graph,perl] virtual/ssh ) virtual/awk ipmi? ( >=sys-libs/freeipmi-1.1.6-r1 ) java? ( >=virtual/jre-1.5 || ( net-analyzer/netcat net-analyzer/openbsd-netcat ) ) !minimal? ( virtual/cron media-fonts/dejavu ) selinux? ( sec-policy/selinux-munin ) java? ( >=dev-java/java-config-2.2.0-r3 )
 REQUIRED_USE=cgi? ( !minimal ) apache2? ( cgi )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/munin-monitoring/munin/archive/2.0.57.tar.gz -> munin-2.0.57.tar.gz https://dev.gentoo.org/~graaff/munin/munin-2.0.57-gentoo-1.tar.xz
+SRC_URI=https://github.com/munin-monitoring/munin/archive/2.0.63.tar.gz -> munin-2.0.63.tar.gz https://dev.gentoo.org/~graaff/munin/munin-2.0.63-gentoo-1.tar.xz
 _eclasses_=java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=e2159b82b98616e41de050684cd548e8
+_md5_=4403ac53b9496cefc084ba20a8dc5615
