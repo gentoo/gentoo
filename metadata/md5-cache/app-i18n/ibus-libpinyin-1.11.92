@@ -1,0 +1,15 @@
+BDEPEND=dev-db/sqlite:3 virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure postinst postrm prepare setup
+DEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) >=app-i18n/libpinyin-2.1.0:= dev-db/sqlite:3 dev-libs/glib:2 virtual/libintl python_single_target_python3_6? ( app-i18n/ibus[python(+),python_targets_python3_6(-)] dev-python/pygobject:3[python_targets_python3_6(-)] ) python_single_target_python3_7? ( app-i18n/ibus[python(+),python_targets_python3_7(-)] dev-python/pygobject:3[python_targets_python3_7(-)] ) python_single_target_python3_8? ( app-i18n/ibus[python(+),python_targets_python3_8(-)] dev-python/pygobject:3[python_targets_python3_8(-)] ) boost? ( dev-libs/boost:= ) lua? ( dev-lang/lua:0 ) opencc? ( app-i18n/opencc:= )
+DESCRIPTION=Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
+EAPI=7
+HOMEPAGE=https://github.com/libpinyin/ibus-libpinyin https://sourceforge.net/projects/libpinyin/
+IUSE=boost lua opencc python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) >=app-i18n/libpinyin-2.1.0:= dev-db/sqlite:3 dev-libs/glib:2 virtual/libintl python_single_target_python3_6? ( app-i18n/ibus[python(+),python_targets_python3_6(-)] dev-python/pygobject:3[python_targets_python3_6(-)] ) python_single_target_python3_7? ( app-i18n/ibus[python(+),python_targets_python3_7(-)] dev-python/pygobject:3[python_targets_python3_7(-)] ) python_single_target_python3_8? ( app-i18n/ibus[python(+),python_targets_python3_8(-)] dev-python/pygobject:3[python_targets_python3_8(-)] ) boost? ( dev-libs/boost:= ) lua? ( dev-lang/lua:0 ) opencc? ( app-i18n/opencc:= )
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
+SLOT=0
+SRC_URI=https://github.com/libpinyin/ibus-libpinyin/archive/1.11.92.tar.gz -> ibus-libpinyin-1.11.92.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=d1d4c61fbce3271d910fe6a6516a3337
