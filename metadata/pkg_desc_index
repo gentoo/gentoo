@@ -16698,7 +16698,7 @@ sys-apps/lsb-release 1.4-r3: LSB version query program
 sys-apps/lsd 0.16.0 0.17.0: A modern ls with a lot of pretty colors and awesome icons
 sys-apps/lshw 02.18b 02.18b-r1: Hardware Lister
 sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
-sys-apps/lsvpd 1.7.10: Utility to List Device Vital Product Data (VPD)
+sys-apps/lsvpd 1.7.10 1.7.11: Utility to List Device Vital Product Data (VPD)
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
 sys-apps/man-db 2.8.7 2.9.1 9999: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 5.05-r2 5.06: A somewhat comprehensive collection of Linux man pages
