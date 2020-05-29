@@ -219,11 +219,6 @@ x11-misc/icewmcp
 # Stuck on Python 2 and pygtk. Masked for removal in 30 days.
 dev-embedded/pk2-la
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-30)
-# Maintainer timeout, unmaintained upstream, last release unknown, bug #708122
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-app-misc/metromap
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-29)
 # Masked for testing
 >=dev-libs/gjs-1.64
