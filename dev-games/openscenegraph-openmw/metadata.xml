@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		OpenSceneGraph on steroids. This fork was created to experiment with performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project - either for design reasons or backward compatibility reasons. OpenMW still works with "vanilla" OpenSceneGraph, but it is recommended to use the fork for better performance (around 10-15% on most devices). Note that the improvements are very specific to OpenMW and its animation code in particular; other OpenSceneGraph applications are not likely to see the same speed-up, or any speed-up at all if they are already GPU limited.
+	</longdescription>
+	<use>
+		<flag name="egl">Enable EGL support</flag>
+		<flag name="fox">Build examples using <pkg>x11-libs/fox</pkg> library</flag>
+		<flag name="gdal">Enable support for <pkg>sci-libs/gdal</pkg> library</flag>
+		<flag name="openinventor">Build OpenInventor plugin</flag>
+		<flag name="osgapps">Build osg applications</flag>
+		<flag name="sdl2">Use <pkg>media-libs/libsdl2</pkg> additionally to <pkg>media-libs/libsdl</pkg></flag>
+		<flag name="xrandr">Enable support for the X xrandr extension</flag>
+	</use>
+</pkgmetadata>
