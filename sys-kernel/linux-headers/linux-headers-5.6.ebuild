@@ -42,5 +42,5 @@ src_install() {
 }
 
 src_test() {
-	emake ARCH=$(tc-arch-kernel) headers_check
+	emake headers_check ${xmakeopts}
 }
