@@ -15,7 +15,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
-RDEPEND="dev-python/cffi:=[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/cffi-1.14.0-r2:=[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? ( dev-python/hypothesis[${PYTHON_USEDEP}] )"
 
