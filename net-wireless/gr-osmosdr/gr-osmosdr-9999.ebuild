@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit cmake-utils python-single-r1
 
@@ -19,11 +19,11 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="airspy bladerf fcd hackrf iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
+IUSE="airspy bladerf hackrf iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
-	>=net-wireless/gnuradio-3.7_rc:0=[fcd?,${PYTHON_SINGLE_USEDEP}]
+	=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
 	airspy? ( net-wireless/airspy )
 	bladerf? ( >=net-wireless/bladerf-2018.08_rc1:= )
 	hackrf? ( net-libs/libhackrf:= )
@@ -33,8 +33,7 @@ RDEPEND="${PYTHON_DEPS}
 	sdrplay? ( net-wireless/sdrplay )
 	soapy? ( net-wireless/soapysdr:= )
 	uhd? ( net-wireless/uhd:=[${PYTHON_SINGLE_USEDEP}] )"
-DEPEND="${RDEPEND}
-	dev-python/cheetah"
+DEPEND="${RDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -45,7 +44,6 @@ src_configure() {
 		-DENABLE_FILE=ON
 		-DENABLE_AIRSPY="$(usex airspy)"
 		-DENABLE_BLADERF="$(usex bladerf)"
-		-DENABLE_FCD="$(usex fcd)"
 		-DENABLE_HACKRF="$(usex hackrf)"
 		-DENABLE_IQBALANCE="$(usex iqbalance)"
 		-DENABLE_MIRI="$(usex mirisdr)"
