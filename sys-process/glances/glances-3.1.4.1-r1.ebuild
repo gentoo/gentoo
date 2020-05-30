@@ -21,6 +21,9 @@ IUSE=""
 RDEPEND="dev-python/future[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.4.3[${PYTHON_USEDEP}]"
 
+# PYTHON_USEDEP omitted on purpose
+BDEPEND="doc? ( dev-python/sphinx_rtd_theme )"
+
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS"
 
 PATCHES=(
