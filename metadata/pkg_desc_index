@@ -22,6 +22,7 @@ acct-group/cadvisor 0: System group: cadvisor
 acct-group/cdrom 0: System group: cdrom
 acct-group/ceph 0: System group: ceph
 acct-group/cinder 0: System group: cinder
+acct-group/clair 0: System group: clair
 acct-group/clamav 0: System group: clamav
 acct-group/cmd5checkpw 0: System group: cmd5checkpw
 acct-group/consul 0: System group: consul
@@ -221,6 +222,7 @@ acct-user/burp 0: User for the app-backup/burp server
 acct-user/cadvisor 0: User for cadvisor
 acct-user/ceph 0: User for ceph
 acct-user/cinder 0: user for the openstack cinder service
+acct-user/clair 0: User for clair
 acct-user/clamav 0: System user: clamav
 acct-user/cmd5checkpw 0: User for cmd5checkpw
 acct-user/consul 0: User for consul
@@ -10300,7 +10302,7 @@ dev-util/cgdb 0.6.8 0.7.0-r1 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.3: Minimal command-line source browsing tool similar to cscope
 dev-util/checkbashisms 2.19.7 2.20.1 2.20.2 2.20.3: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
-dev-util/clair 2.0.8: Vulnerability Static Analysis for Containers
+dev-util/clair 2.0.8 2.1.3: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.6-r1: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
@@ -10654,7 +10656,7 @@ dev-vcs/gitstats 0_pre131024 0_pre20151223 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-evolve 10.0.0: enables the changeset evolution feature of Mercurial
-dev-vcs/hg-git 0.8.8 0.8.13: push to and pull from a Git repository using Mercurial
+dev-vcs/hg-git 0.8.8 0.8.13 0.9.0_rc1: push to and pull from a Git repository using Mercurial
 dev-vcs/hub 2.13.0 2.14.1: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
 dev-vcs/lab 0.17.2: Lab wraps Git or Hub, making it simple to interact with repositories on GitLab
