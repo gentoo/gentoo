@@ -12,7 +12,7 @@ SRC_URI="https://github.com/pytest-dev/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-python/requests[${PYTHON_USEDEP}]
