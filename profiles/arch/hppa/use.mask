@@ -8,13 +8,11 @@
 # request bug for the hppa arch.
 
 # Michał Górny <mgorny@gentoo.org> (2020-05-28)
-# Moving from arch/base.
+# Target flags masked because of pending keywording requests.
 python_targets_python3_8
 python_single_target_python3_8
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-26)
-# Unmask once hppa is FINALLY done with bug #700940.
 python_targets_python3_9
+python_single_target_python3_9
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-21)
 # ruby2.4 will go away soon, avoid keywording older packages
