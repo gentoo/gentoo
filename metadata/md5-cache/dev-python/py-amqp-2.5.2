@@ -5,7 +5,7 @@ DESCRIPTION=Low-level AMQP client for Python (fork of amqplib)
 EAPI=7
 HOMEPAGE=https://github.com/celery/py-amqp https://pypi.org/project/amqp/
 IUSE=doc extras test python_targets_python3_6 python_targets_python3_7
-KEYWORDS=~amd64 ~arm64 ~x86
+KEYWORDS=amd64 ~arm64 x86
 LICENSE=BSD
 RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/a/amqp/amqp-2.5.2.tar.gz
 _eclasses_=distutils-r1	054fa5f0442c7ccb4d4a05410d92123b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=df744a5bb660db7c0196c24a3bff9c33
+_md5_=e35fd48354a36a62d39c1efe21b5f17e
