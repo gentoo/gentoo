@@ -4,15 +4,6 @@
 # PPC Specific use flags
 #
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-28)
-# Moving from arch/base.
-python_targets_python3_8
-python_single_target_python3_8
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-25)
-# Unmask once PPC* is FINALLY done with bug #703174.
-python_targets_python3_9
-
 # David Seifert <soap@gentoo.org (2020-05-17)
 # Mono is hopelessly broken on ppc32
 mono
