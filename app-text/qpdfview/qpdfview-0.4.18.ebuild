@@ -42,6 +42,8 @@ DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES CONTRIBUTORS README TODO )
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" ) # bug 726064
+
 src_prepare() {
 	default
 
