@@ -5059,7 +5059,7 @@ dev-libs/libgee 0.6.8 0.20.2 0.20.3: GObject-based interfaces and classes for co
 dev-libs/libgit2 0.28.4 0.28.5 1.0.0-r1: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1 0.28.0.1-r1 0.99.0.1-r1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.4: Library for code common to Gnome games
-dev-libs/libgpg-error 1.36 1.37: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.36 1.37 1.38: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1: GObject bindings for libudev
@@ -10306,7 +10306,7 @@ dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.1.1: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
-dev-util/cmake 3.13.5 3.16.5 3.17.2: Cross platform Make
+dev-util/cmake 3.13.5 3.16.5 3.17.2 3.17.3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
@@ -18808,7 +18808,7 @@ x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.8.0 0.8.1 0.8.2 9999: A manual tiling window manager for X
 x11-wm/i3 4.14-r1 4.15-r1 4.16-r1 4.16.1-r1 4.17.1-r1 4.18 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.16.1-r2 4.17.1-r1: i3 fork with gaps and some more features
-x11-wm/icewm 1.5.5 1.6.4 1.6.5: Ice Window Manager with Themes
+x11-wm/icewm 1.5.5 1.6.5 1.6.6: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.5.0-r1 1.6.0 9999: Lumina desktop environment
