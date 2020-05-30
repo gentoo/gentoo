@@ -17,6 +17,7 @@
 		<flag name="filter">enable filter signal processing blocks</flag>
 		<flag name="grc">enable GNU Radio Companion graphical tool to design signal processing flow graphs</flag>
 		<flag name="log">enable logging to console and files</flag>
+		<flag name="modtool">enable modtool for editing GNU Radio modules and components</flag>
 		<flag name="noaa">enable NOAA POES HRPT receiver blocks</flag>
 		<flag name="pager">enable pager signal processing blocks</flag>
 		<flag name="performance-counters">enable block performance counters</flag>
