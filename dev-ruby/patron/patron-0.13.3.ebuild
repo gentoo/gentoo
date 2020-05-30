@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ IUSE=""
 DEPEND+=" net-misc/curl"
 RDEPEND+=" net-misc/curl"
 
-ruby_add_bdepend "test? ( www-servers/puma )"
+ruby_add_bdepend "test? ( dev-ruby/rack www-servers/puma )"
 
 all_ruby_prepare() {
 	# Fix Rakefile
