@@ -14,7 +14,7 @@ SRC_URI="https://github.com/xflr6/csv23/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 # note: upstream really uses mock at runtime
 RDEPEND="
