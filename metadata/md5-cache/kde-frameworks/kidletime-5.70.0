@@ -5,11 +5,11 @@ DESCRIPTION=Framework for detection and notification of device idle time
 EAPI=7
 HOMEPAGE=https://kde.org/products/frameworks/
 IUSE=X xscreensaver debug doc
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc64 x86
 LICENSE=LGPL-2+
 RDEPEND=>=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtwidgets-5.12.3:5 X? ( >=dev-qt/qtx11extras-5.12.3:5 x11-libs/libX11 x11-libs/libxcb x11-libs/libXext ) xscreensaver? ( >=dev-qt/qtdbus-5.12.3:5 x11-libs/libXScrnSaver ) >=kde-frameworks/kf-env-4 doc? ( dev-qt/qt-docs:5 ) dev-qt/qtcore:5
 REQUIRED_USE=xscreensaver? ( X )
 SLOT=5/5.70
 SRC_URI=mirror://kde/stable/frameworks/5.70/kidletime-5.70.0.tar.xz
 _eclasses_=cmake	19b0421555865baefd505831dd4303e3	ecm	e341cb3583b4219b5c207e24915b0264	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=61d0e1df5eb9962d0626238568110a56
+_md5_=dc4a84965c46b2b52f3b4c691ef67058
