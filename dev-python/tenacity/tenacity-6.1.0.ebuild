@@ -20,6 +20,7 @@ DEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
