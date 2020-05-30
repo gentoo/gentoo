@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/718872
+--- a/tests/run-disasm-x86-64.sh
++++ b/tests/run-disasm-x86-64.sh
+@@ -22,7 +22,7 @@ case "`uname -m`" in
+   x86_64)
+     tempfiles testfile45.o
+     testfiles testfile45.S testfile45.expect
+-    gcc -m64 -c -o testfile45.o testfile45.S
++    ${CC-gcc} -m64 -c -o testfile45.o testfile45.S
+     testrun_compare ${abs_top_builddir}/src/objdump -d testfile45.o < testfile45.expect
+     ;;
+ esac
+--- a/tests/run-disasm-x86.sh
++++ b/tests/run-disasm-x86.sh
+@@ -22,7 +22,7 @@ case "`uname -m`" in
+   x86_64 | i?86 )
+     tempfiles testfile44.o
+     testfiles testfile44.S testfile44.expect
+-    gcc -m32 -c -o testfile44.o testfile44.S
++    ${CC-gcc} -m32 -c -o testfile44.o testfile44.S
+     testrun_compare ${abs_top_builddir}/src/objdump -d testfile44.o < testfile44.expect
+     ;;
+ esac
+--- a/tests/run-strip-g.sh
++++ b/tests/run-strip-g.sh
+@@ -25,7 +25,7 @@
+ tempfiles a.out strip.out debug.out readelf.out
+ 
+ echo Create debug a.out.
+-echo "int main() { return 1; }" | gcc -g -xc -
++echo "int main() { return 1; }" | ${CC-gcc} -g -xc -
+ 
+ echo strip -g to file with debug file
+ testrun ${abs_top_builddir}/src/strip -g -o strip.out -f debug.out ||
+--- a/tests/run-strip-nothing.sh
++++ b/tests/run-strip-nothing.sh
+@@ -23,7 +23,7 @@
+ tempfiles a.out strip.out debug.out
+ 
+ # Create no-debug a.out.
+-echo "int main() { return 1; }" | gcc -s -xc -
++echo "int main() { return 1; }" | ${CC-gcc} -s -xc -
+ 
+ # strip to file
+ testrun ${abs_top_builddir}/src/strip -g -o strip.out ||
