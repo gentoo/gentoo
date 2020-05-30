@@ -13,7 +13,7 @@ S=${WORKDIR}/${PN}-${P/_p/-fix}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 # Tests fail with network-sandbox, since they try to resolve google.com
 RESTRICT="test"
