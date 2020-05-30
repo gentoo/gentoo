@@ -11761,7 +11761,7 @@ kde-apps/kigo 19.12.3 20.04.1: Go game by KDE
 kde-apps/killbots 19.12.3 20.04.1: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 19.12.3 20.04.1: Generator of HTML image maps
 kde-apps/kimap 19.12.3 20.04.1: Library for interacting with IMAP servers
-kde-apps/kio-extras 19.12.3-r1 20.04.1: KIO plugins present a filesystem-like view of arbitrary data
+kde-apps/kio-extras 19.12.3-r2 20.04.1-r1: KIO plugins present a filesystem-like view of arbitrary data
 kde-apps/kipi-plugins 19.12.3 20.04.1: Plugins for the KDE Image Plugin Interface
 kde-apps/kiriki 19.12.3 20.04.1: An addictive and fun dice game
 kde-apps/kiten 19.12.3 20.04.1: KDE Japanese dictionary and reference
@@ -11894,7 +11894,7 @@ kde-frameworks/frameworkintegration 5.67.0 5.70.0: Framework for integrating Qt 
 kde-frameworks/kactivities 5.67.0 5.70.0: Framework for working with KDE activities
 kde-frameworks/kactivities-stats 5.67.0 5.70.0: Framework for getting the usage statistics collected by the activities service
 kde-frameworks/kapidox 5.67.0-r1 5.70.0: Framework for building KDE API documentation in a standard format and style
-kde-frameworks/karchive 5.67.0 5.70.0: Framework for reading, creation, and manipulation of various archive formats
+kde-frameworks/karchive 5.67.0 5.70.0-r1: Framework for reading, creation, and manipulation of various archive formats
 kde-frameworks/kauth 5.67.0 5.70.0: Framework to let applications perform actions as a privileged user
 kde-frameworks/kbookmarks 5.67.0 5.70.0: Framework for managing bookmarks stored in XBEL format
 kde-frameworks/kcalendarcore 5.67.0 5.70.0: Library for interfacing with calendars
