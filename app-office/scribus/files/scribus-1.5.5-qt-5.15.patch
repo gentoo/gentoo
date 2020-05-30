@@ -1,0 +1,22 @@
+From 17d6a9833488163d7c33c3f2233916b18550e253 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Sun, 29 Mar 2020 10:55:06 +0000
+Subject: [PATCH] #16076: Fix build with Qt 5.15 <heirecka>
+
+git-svn-id: svn://scribus.net/trunk/Scribus@23541 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/ui/scresizecursor.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/scribus/ui/scresizecursor.cpp b/scribus/ui/scresizecursor.cpp
+index f2c78e5ae7..85271ed861 100644
+--- a/scribus/ui/scresizecursor.cpp
++++ b/scribus/ui/scresizecursor.cpp
+@@ -12,6 +12,7 @@
+ 
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPixmap>
+ #include <QPen>
+ #include <QBrush>
