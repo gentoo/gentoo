@@ -1,0 +1,13 @@
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) doc? ( app-doc/doxygen ) >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+DEFINED_PHASES=compile configure install setup test
+DESCRIPTION=C++ JSON reader and writer
+EAPI=7
+HOMEPAGE=https://github.com/open-source-parsers/jsoncpp
+IUSE=doc test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=|| ( public-domain MIT )
+RESTRICT=!test? ( test )
+SLOT=0/24
+SRC_URI=https://github.com/open-source-parsers/jsoncpp/archive/v1.9.3.tar.gz -> jsoncpp-1.9.3.tar.gz
+_eclasses_=meson	991e544bbaf3120073ededbdc1d8bf93	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=beacfa2e081b80d1cfcc2cbc239405e7
