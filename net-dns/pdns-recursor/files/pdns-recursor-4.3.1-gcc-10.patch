@@ -1,0 +1,61 @@
+commit b35614ed8b45adba304bcddcb3f2db6cb36b1462
+Author: Sander Hoentjen <shoentjen@antagonist.nl>
+Date:   Mon Dec 16 22:44:43 2019 +0100
+
+    Fix build with gcc-10
+    
+    From an e-mail from Jeff Law <law@redhat.com>:
+    
+    Subject: Minor problem in pdns, dnsdist and pdns-recursor packages in Fedora
+    
+    [ All three packages have embedded copies of the same problematic code
+    and the same patch fixes all three. ]
+    
+    Red Hat's compiler team continues to try and be proactive in identifying
+    issues that will arise as a result of the introduction of a new GCC
+    release into Fedora each spring.
+    
+    You're being contacted because a package you maintain in Fedora is going
+    to fail to build with gcc-10 in the spring.  Yes, I know that's a few
+    months away, but it's far easier to fix this stuff proactively now than
+    wait.
+    
+    Fixing it now also means that your package will continue to be built
+    with testing versions of gcc-10 as we proceed through the development
+    process thus allowing additional issues to be caught early.
+    
+    Your particular package will fail due to an uninstantiated template for
+    AsyncLoader<Request>.  These kinds of problems are relatively common due to
+    changes in the tuning of the inliner for gcc-10:
+    
+    > BUILDSTDERR: /usr/bin/ld: webserver.o: in function `WebServer::serveConnection(std::shared_ptr<Socket>) const':
+    > BUILDSTDERR: /builddir/build/BUILD/pdns-4.2.1/pdns/webserver.cc:373: undefined reference to `YaHTTP::AsyncLoader<YaHTTP::Request>::feed(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
+    > BUILDSTDERR: collect2: error: ld returned 1 exit status
+    > BUILDSTDERR: make[3]: *** [Makefile:2751: ixfrdist] Error 1
+    >
+    
+    The attached patch arranges for an instance to be instantiated when
+    compiling reqresp.cpp and is sufficient to fix this problem.  The
+    choice of reqresp.cpp fairly arbitrary IIRC.
+    
+    Ideally you'll with upstream to get this fixed, but a Fedora patch is
+    clearly OK as well.   I'll install the attached fix into Fedora in a
+    week or so if I haven't heard from you.
+    
+    Jeff
+    
+    (cherry picked from commit ffb885e937c27bb1c62dee8f18c58ae0d5d52d39)
+
+diff --git a/ext/yahttp/yahttp/reqresp.cpp b/ext/yahttp/yahttp/reqresp.cpp
+index 686a6c7bd..ca2154f6a 100644
+--- a/ext/yahttp/yahttp/reqresp.cpp
++++ b/ext/yahttp/yahttp/reqresp.cpp
+@@ -2,6 +2,8 @@
+ 
+ namespace YaHTTP {
+ 
++  template class AsyncLoader<Request>;
++
+   bool isspace(char c) {
+     return std::isspace(c) != 0;
+   }
