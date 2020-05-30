@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Robpol86/colorclass/archive/v${PV}.tar.gz -> ${P}.gh
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
