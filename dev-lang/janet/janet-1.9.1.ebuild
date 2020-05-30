@@ -31,13 +31,13 @@ src_compile() {
 
 src_install() {
 	dobin "build/janet"
-	dobin "auxbin/jpm"
+	dobin "jpm"
 
 	doheader "src/include/janet.h"
 	doheader "src/conf/janetconf.h"
 
 	dolib.so "build/libjanet.so"
-	dosym libjanet.so /usr/$(get_libdir)/libjanet.so.0
+	dosym libjanet.so /usr/$(get_libdir)/libjanet.so.1.9
 
 	if use static-libs; then
 		dolib.a "build/libjanet.a"
