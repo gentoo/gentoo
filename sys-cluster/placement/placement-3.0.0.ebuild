@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]];then
 else
 	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/placement/ussuri/placement.conf.sample -> placement.conf.sample-${PV}
 	https://tarballs.openstack.org/${PN}/openstack-${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	S="${WORKDIR}/openstack-${P}"
 fi
 
