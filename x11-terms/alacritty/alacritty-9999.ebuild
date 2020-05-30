@@ -6,8 +6,9 @@ EAPI=7
 CRATES=""
 
 MY_PV="${PV//_rc/-rc}"
+PYTHON_COMPAT=( python3_{7,8} ) # https://bugs.gentoo.org/725962
 
-inherit bash-completion-r1 cargo desktop
+inherit bash-completion-r1 cargo desktop python-any-r1
 
 DESCRIPTION="GPU-accelerated terminal emulator"
 HOMEPAGE="https://github.com/alacritty/alacritty"
@@ -27,13 +28,16 @@ IUSE="wayland +X"
 
 REQUIRED_USE="|| ( wayland X )"
 
-DEPEND="
+DEPEND="${PYTHON_DEPS}"
+BDEPEND="dev-util/cmake"
+
+COMMON_DEPEND="
 	media-libs/fontconfig:=
 	media-libs/freetype:2
 	X? ( x11-libs/libxcb:=[xkb] )
 "
 
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	media-libs/mesa[X?,wayland?]
 	sys-libs/zlib
 	sys-libs/ncurses:0
@@ -44,8 +48,6 @@ RDEPEND="${DEPEND}
 		x11-libs/libXrandr
 	)
 "
-
-BDEPEND="dev-util/cmake"
 
 DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
 
