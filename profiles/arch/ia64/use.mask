@@ -6,6 +6,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (2020-05-28)
 # Target flags masked because of pending keywording requests.
+# bug #726330: <dev-python/virtualenv-20
 python_targets_python3_8
 python_single_target_python3_8
 python_targets_python3_9
