@@ -8,7 +8,7 @@ inherit ecm kde.org
 
 DESCRIPTION="NetworkManager bindings for Qt"
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="teamd"
 
 BDEPEND="

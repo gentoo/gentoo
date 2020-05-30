@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework providing a common interface for KParts that can play media files"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE=""
 
 DEPEND="

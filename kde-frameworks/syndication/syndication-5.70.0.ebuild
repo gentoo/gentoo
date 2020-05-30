@@ -10,7 +10,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Library for parsing RSS and Atom feeds"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE=""
 
 COMMON_DEPEND="

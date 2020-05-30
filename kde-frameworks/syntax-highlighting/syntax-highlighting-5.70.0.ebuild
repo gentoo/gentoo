@@ -9,7 +9,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework for syntax highlighting"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="nls"
 
 BDEPEND="
