@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="
