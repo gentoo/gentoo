@@ -25,6 +25,7 @@ RDEPEND="
 	>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]"
 # Note: ${PYTHON_USEDEP} needs to go verbatim
 DEPEND="${RDEPEND}
+	>=x11-base/xcb-proto-1.14[${MULTILIB_USEDEP}]
 	test? ( dev-libs/check[${MULTILIB_USEDEP}] )
 	doc? ( app-doc/doxygen[dot] )
 	dev-libs/libxslt
