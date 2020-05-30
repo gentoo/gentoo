@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,7 @@ src_configure() {
 	local myeconfargs=(
 		# --with/without-x is ignored by configure script and X is used.
 		--with-x
+		--disable-static
 		$(use_enable debug)
 		$(use_enable doc doxygen-docs)
 	)
@@ -43,4 +44,5 @@ src_configure() {
 src_install() {
 	use doc && local HTML_DOCS=( doc/html/. )
 	default
+	find "${D}" -name '*.la' -type f -delete || die
 }
