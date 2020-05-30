@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc64 ~sparc ~x86"
 
 RDEPEND="dev-python/namespace-jaraco[${PYTHON_USEDEP}]
 	dev-python/path-py[${PYTHON_USEDEP}]
