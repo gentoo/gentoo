@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8})
+PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils python-single-r1
 
@@ -22,7 +22,7 @@ SLOT="0/${PV}"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RDEPEND="=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
+RDEPEND="=net-wireless/gnuradio-3.7*:0=[${PYTHON_SINGLE_USEDEP}]
 	net-libs/libosmo-dsp:=
 	dev-libs/boost:=
 	${PYTHON_DEPS}"

@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8})
 
 inherit cmake-utils python-single-r1
 
@@ -11,11 +11,9 @@ HOMEPAGE="http://git.osmocom.org/gr-iqbal/"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	SRC_URI=""
-	EGIT_REPO_URI="https://git.osmocom.org/gr-iqbal"
-	KEYWORDS=""
+	EGIT_REPO_URI="https://github.com/osmocom/gr-iqbal.git"
 else
-	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
+	SRC_URI="https://github.com/osmocom/gr-iqbal/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -23,9 +21,9 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 IUSE=""
 
-RDEPEND=">=net-wireless/gnuradio-3.7_rc:0=[${PYTHON_SINGLE_USEDEP}]
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RDEPEND="=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
 	net-libs/libosmo-dsp:=
 	dev-libs/boost:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
