@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=A selection of tools from Debian
+EAPI=7
+HOMEPAGE=https://packages.qa.debian.org/d/debianutils.html
+IUSE=+installkernel static
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux
+LICENSE=BSD GPL-2 SMAIL
+PDEPEND=installkernel? ( || ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) )
+SLOT=0
+SRC_URI=mirror://debian/pool/main/d/debianutils/debianutils_4.11.tar.xz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=2df87e7512ba2a22e9aee3a9065c82d1
