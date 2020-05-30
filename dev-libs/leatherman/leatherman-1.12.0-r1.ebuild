@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0/${PV}"
 
 RDEPEND="net-misc/curl"
-DEPEND=">=dev-libs/boost-1.54:=[nls]
+DEPEND=">=dev-libs/boost-1.73:=[nls]
 	net-misc/curl
 	>=sys-devel/gcc-4.8:*"
 
@@ -24,6 +24,7 @@ PATCHES=( "${FILESDIR}"/portage-sandbox-test-fix.patch )
 
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "cmake/cflags.cmake" || die
+	sed -i '/nowide/d' CMakeLists.txt || die  # vendored boost lib conflicts with boost 1.73 and above
 	cmake-utils_src_prepare
 }
 
