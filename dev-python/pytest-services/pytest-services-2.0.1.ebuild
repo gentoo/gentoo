@@ -23,6 +23,7 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pylibmc[${PYTHON_USEDEP}]
+		x11-base/xorg-server[xvfb]
 	)"
 
 RESTRICT="!test? ( test )"
