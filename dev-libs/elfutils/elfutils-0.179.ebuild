@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.175-disable-biarch-test-PR24158.patch
 	"${FILESDIR}"/${PN}-0.177-disable-large.patch
 	"${FILESDIR}"/${PN}-0.179-PaX-support.patch
+	"${FILESDIR}"/${PN}-0.179-CC-in-tests.patch
 )
 
 src_prepare() {
@@ -66,8 +67,10 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	# CC is a workaround for tests using ${CC-gcc}
 	env	LD_LIBRARY_PATH="${BUILD_DIR}/libelf:${BUILD_DIR}/libebl:${BUILD_DIR}/libdw:${BUILD_DIR}/libasm" \
 		LC_ALL="C" \
+		CC="$(gc-getCC)" \
 		emake check VERBOSE=1
 }
 
