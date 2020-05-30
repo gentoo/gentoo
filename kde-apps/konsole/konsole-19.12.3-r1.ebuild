@@ -67,3 +67,12 @@ src_configure() {
 
 	ecm_src_configure
 }
+
+src_test() {
+	# drkonqi process interferes. bug 702690
+	local myctestargs=(
+		-E "(DBusTest)"
+	)
+
+	ecm_src_test
+}
