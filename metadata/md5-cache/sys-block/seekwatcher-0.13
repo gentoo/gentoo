@@ -1,14 +1,14 @@
-BDEPEND=python_single_target_python3_6? ( dev-python/cython[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/cython[python_targets_python3_7(-)] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] )
+BDEPEND=python_single_target_python3_6? ( dev-python/cython[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/cython[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/cython[python_targets_python3_8(-)] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] )
 DEFINED_PHASES=compile configure install prepare setup test
 DESCRIPTION=generates graphs from blktrace to help visualize IO patterns and performance
 EAPI=7
 HOMEPAGE=https://github.com/trofi/seekwatcher
-IUSE=python_single_target_python3_6 python_single_target_python3_7
+IUSE=python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=python_single_target_python3_6? ( dev-python/matplotlib[python_targets_python3_6(-)] dev-python/numpy[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/matplotlib[python_targets_python3_7(-)] dev-python/numpy[python_targets_python3_7(-)] ) sys-block/blktrace python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] )
-REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 ) ^^ ( python_single_target_python3_6 python_single_target_python3_7 )
+RDEPEND=python_single_target_python3_6? ( dev-python/matplotlib[python_targets_python3_6(-)] dev-python/numpy[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/matplotlib[python_targets_python3_7(-)] dev-python/numpy[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/matplotlib[python_targets_python3_8(-)] dev-python/numpy[python_targets_python3_8(-)] ) sys-block/blktrace python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] )
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) ^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=https://github.com/trofi/seekwatcher/archive/v0.13.tar.gz -> seekwatcher-0.13.tar.gz
 _eclasses_=distutils-r1	054fa5f0442c7ccb4d4a05410d92123b	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=f2b285fdfff584a4b98f086a3fb48cfb
+_md5_=93690e23d15e1b7f60596da5f8f07ca3
