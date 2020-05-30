@@ -6,7 +6,7 @@ EAPI=7
 MY_PN=Vulkan-Loader
 CMAKE_ECLASS="cmake"
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-multilib python-any-r1 toolchain-funcs
+inherit flag-o-matic cmake-multilib python-any-r1 toolchain-funcs
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/${MY_PN}.git"
