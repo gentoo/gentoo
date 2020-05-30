@@ -8240,7 +8240,7 @@ dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.6.0 4.8.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/pgspecial 1.11.9: Python implementation of postgres meta commands
-dev-python/phonenumbers 8.10.22 8.12.2: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.10.22 8.12.2 8.12.4: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.4-r1 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
