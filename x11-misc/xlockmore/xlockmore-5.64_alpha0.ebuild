@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.46-freetype261.patch
 	"${FILESDIR}"/${PN}-5.47-CXX.patch
 	"${FILESDIR}"/${PN}-5.47-strip.patch
+	"${FILESDIR}"/${PN}-5.64_alpha0-LDFLAGS.patch
 )
 S=${WORKDIR}/${P/_alpha/ALPHA}
 
