@@ -290,13 +290,15 @@ IUSE="wayland +X"
 
 REQUIRED_USE="|| ( wayland X )"
 
-DEPEND="${PYTHON_DEPS}
+DEPEND="${PYTHON_DEPS}"
+
+COMMON_DEPEND="
 	media-libs/fontconfig:=
 	media-libs/freetype:2
 	X? ( x11-libs/libxcb:=[xkb] )
 "
 
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	media-libs/mesa[X?,wayland?]
 	sys-libs/zlib
 	sys-libs/ncurses:0
