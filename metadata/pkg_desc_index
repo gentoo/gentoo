@@ -10827,7 +10827,7 @@ games-arcade/moleinvasion 0.4-r2: Mole infested 2D platform game
 games-arcade/mrrescue 1.02b-r1 1.02b-r2: Arcade 2d action game based around evacuating civilians from burning buildings
 games-arcade/netris 0.52-r3: Classic networked version of T*tris
 games-arcade/nibbles 0.0.4-r1: An ncurses-based Nibbles clone
-games-arcade/ninvaders 0.1.1-r1: ASCII space invaders clone
+games-arcade/ninvaders 0.1.2: a Space Invaders clone based on ncurses for ASCII output
 games-arcade/njam 1.25-r1: Multi or single-player network Pacman-like game in SDL
 games-arcade/notpacman 1.0.4-r1: A mashup of "Not" and "Pacman"
 games-arcade/nottetris2 1-r1: The spiritual successor of the classic Tetris mixed with physics
