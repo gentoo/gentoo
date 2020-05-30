@@ -712,6 +712,7 @@ env_setup_xmakeopts() {
 	elif type -p ${CHOST}-ar > /dev/null ; then
 		xmakeopts="${xmakeopts} CROSS_COMPILE=${CHOST}-"
 	fi
+	xmakeopts="${xmakeopts} HOSTCC=$(tc-getBUILD_CC)"
 	export xmakeopts
 }
 
