@@ -5,7 +5,7 @@ DESCRIPTION=The PowerDNS Daemon
 EAPI=7
 HOMEPAGE=https://www.powerdns.com/
 IUSE=debug doc geoip ldap libressl luajit lua-records mydns mysql postgres protobuf remote sodium sqlite systemd tools tinydns test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:= ) >=dev-libs/boost-1.35:= !luajit? ( dev-lang/lua:= ) luajit? ( dev-lang/luajit:= ) lua-records? ( >=net-misc/curl-7.21.3 ) mysql? ( dev-db/mysql-connector-c:= ) postgres? ( dev-db/postgresql:= ) ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 ) sqlite? ( dev-db/sqlite:3 ) geoip? ( >=dev-cpp/yaml-cpp-0.5.1:= dev-libs/geoip ) sodium? ( dev-libs/libsodium:= ) tinydns? ( >=dev-db/tinycdb-0.77 ) protobuf? ( dev-libs/protobuf ) acct-user/pdns acct-group/pdns
 REQUIRED_USE=mydns? ( mysql )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://downloads.powerdns.com/releases/pdns-4.3.0.tar.bz2
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=7b99c84e4dc07d057d1efa546923601c
+_md5_=16b14c8d27382065669fe5f2480354bc
