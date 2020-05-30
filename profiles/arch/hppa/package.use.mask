@@ -62,10 +62,6 @@ net-misc/openssh security-key
 # net-libs/libgadu is not keyworded
 net-im/pidgin gadu
 
-# Joonas Niilola <juippis@gentoo.org> (2020-02-02)
-# luajit is not keyworded on this arch.
-dev-libs/efl luajit
-
 # Jeroen Roovers <jer@gentoo.org> (2020-01-28)
 # sys-apps/systemd is not stable
 net-analyzer/wireshark sdjournal
@@ -176,11 +172,6 @@ kde-frameworks/extra-cmake-modules doc
 # Jeroen Roovers <jer@gentoo.org> (2016-05-19)
 # pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
 net-misc/chrony html
-
-# Jeroen Roovers <jer@gentoo.org> (2015-08-16)
-# Bundles luajit which has not been ported to HPPA (bug #554376)
-app-text/texlive-core luajittex
-dev-texlive/texlive-basic luajittex
 
 # Jeroen Roovers <jer@gentoo.org> (2015-07-03)
 # net-libs/nghttp2 fails to compile (bug #552898)
