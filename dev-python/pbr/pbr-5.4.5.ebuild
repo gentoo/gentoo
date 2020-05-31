@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6..9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -30,13 +30,14 @@ BDEPEND="
 			>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 			>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 			>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
 			>=dev-python/testresources-2.0.0[${PYTHON_USEDEP}]
 			>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 			>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 			<dev-python/virtualenv-20[${PYTHON_USEDEP}]
 			>=dev-python/stestr-2.1.0
 			dev-vcs/git
-		' -3)
+		' python3_{6,7,8})
 	)"
 PDEPEND=""
 
@@ -56,6 +57,12 @@ python_prepare_all() {
 }
 
 python_test() {
+	# TODO
+	if [[ ${EPYTHON} == python3.9 ]]; then
+		einfo "Skipping py3.9 due to unported sphinx"
+		return
+	fi
+
 	if ! python_is_python3; then
 		ewarn "Skipping tests on ${EPYTHON} to unblock circular deps."
 		ewarn "Please run tests manually."
