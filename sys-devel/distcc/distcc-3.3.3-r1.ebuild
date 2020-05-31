@@ -28,7 +28,6 @@ DEPEND="${CDEPEND}
 	sys-libs/binutils-libs
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
-	!net-misc/pump
 	dev-util/shadowman
 	>=sys-devel/gcc-config-1.4.1
 	selinux? ( sec-policy/selinux-distcc )
