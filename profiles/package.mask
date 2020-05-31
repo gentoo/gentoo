@@ -358,11 +358,6 @@ dev-python/nose-descriptionfixer
 # Removal in 30 days.  Bug #719362.
 dev-python/placefinder
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Old transitional package.  No revdeps.
-# Removal in 30 days.  Bug #719360.
-dev-python/pillowfight
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
