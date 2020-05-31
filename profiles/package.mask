@@ -363,11 +363,6 @@ dev-python/placefinder
 # Removal in 30 days.  Bug #719360.
 dev-python/pillowfight
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Stuck on Python 3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719356.
-dev-python/pgpdump
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
