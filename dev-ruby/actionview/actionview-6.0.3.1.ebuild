@@ -40,6 +40,7 @@ ruby_add_bdepend "
 		~dev-ruby/actionpack-${PV}
 		~dev-ruby/activemodel-${PV}
 		~dev-ruby/activerecord-${PV}
+		dev-ruby/sqlite3
 	)"
 
 all_ruby_prepare() {
