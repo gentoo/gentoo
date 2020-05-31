@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ SLOT="1"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-util/cucumber )"
+ruby_add_bdepend "test? ( dev-ruby/rspec dev-util/cucumber )"
 
 each_ruby_test() {
 	${RUBY} -S cucumber --format progress features || die
