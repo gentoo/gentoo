@@ -324,12 +324,6 @@ dev-python/pythonmagick
 app-text/djvusmooth
 dev-python/python-djvulibre
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Unmaintained.  Stuck on py3.6.  Tests missing.  The only revdep masked
-# for removal.
-# Removal in 30 days.  Bug #719432.
-dev-python/pyswisseph
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
