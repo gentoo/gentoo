@@ -13,10 +13,6 @@
 		<email>sparky@bluefang-logic.com</email>
 		<name>Matthew Turnbull</name>
 	</maintainer>
-	<use>
-		<flag name="packagekit">Use packagekit to search for programs to open unknown file types</flag>
-		<flag name="tracker">Add support for <pkg>app-misc/tracker</pkg> search</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">linuxmint/nemo</remote-id>
 	</upstream>
