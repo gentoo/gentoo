@@ -3,10 +3,10 @@ DEPEND=dev-perl/MIME-Charset virtual/perl-Encode dev-lang/perl
 DESCRIPTION=UAX #14 Unicode Line Breaking Algorithm
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Unicode-LineBreak
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/MIME-Charset virtual/perl-Encode dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NE/NEZUMI/Unicode-LineBreak-2017.004.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=f653c3c87ac75c0b945117d67edb5eab
+_md5_=92025aff86f1e8a05a4a50f73716c381
