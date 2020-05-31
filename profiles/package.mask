@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-05-31)
+# Suspected to crash at start for some users. Mask until investigated.
+=net-ftp/proftpd-1.3.7_rc4
+
 # Michał Górny <mgorny@gentoo.org> (2020-05-31)
 # The following packages are either unmaintained, or their deps
 # are unmaintained.  They are stuck on Python 3.6 and have no reverse
