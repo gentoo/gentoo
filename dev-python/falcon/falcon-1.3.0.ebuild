@@ -21,7 +21,7 @@ IUSE="+cython test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]
-	dev-python/mimeparse[${PYTHON_USEDEP}]
+	dev-python/python-mimeparse[${PYTHON_USEDEP}]
 	cython? ( dev-python/cython[${PYTHON_USEDEP}] )"
 
 DEPEND="${RDEPEND}
