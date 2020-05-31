@@ -1,0 +1,25 @@
+From 44e2a35ebb164dcab0bad1a9158b1219a3ff6504 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 31 May 2020 23:33:30 +0200
+Subject: [PATCH] Fix build with Qt 5.15 (missing QPainterPath include)
+
+---
+ qt5/style/qtcurve.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/qt5/style/qtcurve.h b/qt5/style/qtcurve.h
+index 9a50db00..00072d4e 100644
+--- a/qt5/style/qtcurve.h
++++ b/qt5/style/qtcurve.h
+@@ -31,6 +31,8 @@
+ #include <QCache>
+ #include <QColor>
+ #include <QFont>
++#include <QPainter>
++#include <QPainterPath>
+ #include <QStyleOption>
+ #include <QtGlobal>
+ #include <QCommonStyle>
+-- 
+2.26.2
+
