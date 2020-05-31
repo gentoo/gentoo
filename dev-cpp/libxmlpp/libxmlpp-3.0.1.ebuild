@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-cpp/glibmm-2.32[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 multilib_src_prepare() {

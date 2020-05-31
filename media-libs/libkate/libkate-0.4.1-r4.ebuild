@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	sys-devel/flex[${MULTILIB_USEDEP}]
 	sys-devel/bison
 	doc? ( app-doc/doxygen )

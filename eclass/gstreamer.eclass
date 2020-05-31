@@ -95,7 +95,7 @@ RDEPEND="
 "
 DEPEND="
 	>=sys-apps/sed-4
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # Export common multilib phases.

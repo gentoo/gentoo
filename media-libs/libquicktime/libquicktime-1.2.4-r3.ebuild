@@ -43,7 +43,7 @@ RDEPEND="
 	x264? ( >=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
 	X? ( x11-base/xorg-proto )"

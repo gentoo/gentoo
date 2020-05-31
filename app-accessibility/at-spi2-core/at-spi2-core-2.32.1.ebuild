@@ -30,7 +30,7 @@ BDEPEND="
 		>=dev-util/gtk-doc-1.25
 		app-text/docbook-xml-dtd:4.3 )
 	>=sys-devel/gettext-0.19.8
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 PATCHES=(
