@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -44,13 +44,13 @@ RDEPEND="
 		dev-texlive/texlive-luatex
 		app-text/dvipng
 	)"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	doc? (
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
 		media-gfx/graphviz
 	)
 	test? (
+		${RDEPEND}
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		virtual/imagemagick-tools[jpeg,png,svg]
