@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit go-module
+inherit bash-completion-r1 go-module
 
 DESCRIPTION="GitHub CLI"
 HOMEPAGE="https://github.com/cli/cli"
@@ -275,6 +275,12 @@ SLOT="0"
 RDEPEND=">=dev-vcs/git-1.7.3"
 BDEPEND=">=dev-lang/go-1.13"
 
+unset GOBIN GOPATH GOCODE
+
+PATCHES=(
+	"${FILESDIR}/cli-0.9.0-manpage-build-gen-docs.patch"
+)
+
 src_unpack() {
 	if [[ ${PV} == *9999 ]]; then
 		git-r3_src_unpack
@@ -288,10 +294,24 @@ src_compile() {
 	[[ ${PV} == *9999 ]] || export GH_VERSION="v${PV}"
 	# Golang LDFLAGS are not the same as GCC/Binutils LDFLAGS
 	unset LDFLAGS
-	emake
+
+	emake bin/gh # default target
+
+	einfo "Building manpage"
+	emake manpages
+
+	einfo "Building completion"
+	bin/gh completion -s bash > gh.bash-completion || die
+	bin/gh completion -s zsh > gh.zsh-completion || die
 }
 
 src_install() {
 	dobin bin/gh
 	dodoc README.md
+
+	doman share/man/man?/gh*.?
+
+	newbashcomp gh.bash-completion gh
+	insinto /usr/share/zsh/site-functions
+	newins gh.zsh-completion _gh
 }

@@ -122,8 +122,8 @@ src_compile() {
 		myconf+="MALLOC=libc"
 	fi
 
-	tc-export CC
-	emake V=1 ${myconf} CC="${CC}"
+	tc-export AR CC RANLIB
+	emake V=1 ${myconf} AR="${AR}" CC="${CC}" RANLIB="${RANLIB}"
 }
 
 src_install() {

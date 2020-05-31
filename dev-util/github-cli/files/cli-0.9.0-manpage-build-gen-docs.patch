@@ -1,0 +1,15 @@
+--- cli-0.9.0/Makefile.orig	2020-05-30 20:59:44.372628296 -0700
++++ cli-0.9.0/Makefile	2020-05-30 21:02:17.172650230 -0700
+@@ -46,6 +46,10 @@
+ .PHONY: site-publish
+ 
+ 
++bin/gen-docs:
++	@go build -trimpath -ldflags "$(LDFLAGS)" -o "$@" ./cmd/gen-docs
++
+ .PHONY: manpages
+-manpages:
+-	go run ./cmd/gen-docs --man-page --doc-path ./share/man/man1/
++manpages: bin/gen-docs
++	bin/gen-docs --man-page --doc-path ./share/man/man1/
++
