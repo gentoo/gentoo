@@ -335,13 +335,6 @@ dev-python/pyswisseph
 # Removal in 30 days.  Bug #719424.
 dev-python/pyodbc
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Unmaintained.  Stuck on Python 3.6.  Missing tests.  The only revdep
-# is masked for removal.
-# alternative package is dev-python/pypugjs which is a maintained fork of pyjade
-# Removal in 30 days.  Bug #719418.
-dev-python/pyjade
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
