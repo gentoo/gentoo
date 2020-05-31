@@ -226,12 +226,6 @@ x11-misc/wmakerconf
 # Dead upstream. Removal in 30 days
 sys-cluster/openais
 
-# Jonas Stein <jstein@gentoo.org> (2020-04-28)
-# Package is no longer required after the removal of
-# net-irc/quassel-irssi. See also bug #719856.
-# Remove after 2020-06-28
-net-libs/quasselc
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-26)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
 # Removal in 30 days.  Bug #719604.
