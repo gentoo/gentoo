@@ -193,7 +193,6 @@ multilib_src_install() {
 			rm -rf "${ED}/usr/$(get_libdir)/java" || die
 			docinto "java"
 			dodoc "${S}/java/README" "${FILESDIR}/java.README.gentoo" "${S}"/java/doc/*
-			dodir "/usr/share/doc/${PF}/java/Test"
 			insinto "/usr/share/doc/${PF}/java/Test"
 			doins "${S}"/java/Test/*.java
 		fi
