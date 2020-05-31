@@ -283,11 +283,6 @@ dev-python/xstatic-patternfly
 dev-python/xstatic-patternfly-bootstrap-treeview
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Stuck on py3.6.  Failing tests.  No revdeps.
-# Removal in 30 days.  Bug #639520.
-dev-python/versiontools
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
 # Removal in 30 days.  Bug #719604.
 dev-python/txtorcon
