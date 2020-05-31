@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="https://freaklabs.org/chibiarduino/"
 #S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 S="${WORKDIR}/freaklabs-v1.0.0"
 
-SRC_URI="https://freaklabs.org/pub/chibiArduino/boards/freaklabs-v${PV}-manual%20install.zip"
+SRC_URI="https://freaklabs.org/pub/chibiArduino/boards/freaklabs-v${PV}-manual%20install.zip -> freaklabs-v${PV}-manual-install.zip"
 
 LICENSE="BSD"
 SLOT="0"
