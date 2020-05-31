@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

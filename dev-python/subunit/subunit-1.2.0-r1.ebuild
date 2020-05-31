@@ -27,7 +27,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-libs/check-0.9.11[${MULTILIB_USEDEP}]
 	>=dev-util/cppunit-1.13.2[${MULTILIB_USEDEP}]
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	test? (
 		dev-python/fixtures[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]

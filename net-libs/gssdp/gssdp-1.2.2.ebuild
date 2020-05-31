@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	gtk-doc? ( >=dev-util/gtk-doc-1.14
 		app-text/docbook-xml-dtd:4.1.2 )
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	vala? (
 		$(vala_depend)
 		net-libs/libsoup:2.4[vala]

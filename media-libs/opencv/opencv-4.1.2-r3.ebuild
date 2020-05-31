@@ -99,7 +99,7 @@ DEPEND="${RDEPEND}
 	vaapi? ( x11-libs/libva )"
 BDEPEND="
 	java? ( >=virtual/jdk-1.6 )
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvconfig.h

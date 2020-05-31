@@ -57,7 +57,7 @@ DEPEND="${CDEPEND}"
 BDEPEND="
 	acct-group/lp
 	acct-group/lpadmin
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 RDEPEND="${CDEPEND}

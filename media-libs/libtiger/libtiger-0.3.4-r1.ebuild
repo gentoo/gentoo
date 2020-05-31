@@ -17,7 +17,7 @@ RDEPEND="x11-libs/pango[${MULTILIB_USEDEP}]
 	>=media-libs/libkate-0.2.0[${MULTILIB_USEDEP}]
 	x11-libs/cairo[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 src_prepare() {

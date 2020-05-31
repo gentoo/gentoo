@@ -13,7 +13,7 @@ SLOT="0/24" # based on SONAME
 KEYWORDS="amd64 -arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="static-libs"
 
-DEPEND="virtual/pkgconfig[${MULTILIB_USEDEP}]"
+DEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.3.0-testBox.patch )
 

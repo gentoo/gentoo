@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/libsigc++-2.3.2:2[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	doc? (
 		media-gfx/graphviz
 		dev-libs/libxslt

@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 		dev-libs/libgudev:=[${MULTILIB_USEDEP}] )
 	app-arch/xz-utils
 	>=dev-util/gtk-doc-am-1.14
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # Tests seem to hang forever

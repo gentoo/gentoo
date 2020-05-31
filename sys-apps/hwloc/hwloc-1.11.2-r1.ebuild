@@ -33,7 +33,7 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 	numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )
 	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 DOCS=( AUTHORS NEWS README VERSION )
 

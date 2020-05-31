@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-3.eclass
@@ -149,11 +149,7 @@ if [[ ${XORG_STATIC} == yes \
 	IUSE+=" static-libs"
 fi
 
-if [[ ${XORG_MULTILIB} == yes ]]; then
-	BDEPEND+=" virtual/pkgconfig[${MULTILIB_USEDEP}]"
-else
-	BDEPEND+=" virtual/pkgconfig"
-fi
+BDEPEND+=" virtual/pkgconfig"
 
 # @ECLASS-VARIABLE: XORG_DRI
 # @DESCRIPTION:

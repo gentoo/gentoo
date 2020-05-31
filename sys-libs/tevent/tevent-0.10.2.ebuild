@@ -21,7 +21,7 @@ RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )"
 
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	elibc_glibc? (
 		net-libs/libtirpc[${MULTILIB_USEDEP}]
 		|| (

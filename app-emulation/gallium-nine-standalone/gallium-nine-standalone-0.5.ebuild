@@ -32,7 +32,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	virtual/wine[${MULTILIB_USEDEP}]
 	>=dev-util/meson-0.50.1
 "

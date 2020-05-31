@@ -99,7 +99,7 @@ RDEPEND="
 	webp? ( media-libs/libwebp[${MULTILIB_USEDEP}] )
 	xine? ( media-libs/xine-lib )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	eigen? ( dev-cpp/eigen:3 )
 	java?  ( >=virtual/jdk-1.6 )
 	vaapi?  ( x11-libs/libva )"

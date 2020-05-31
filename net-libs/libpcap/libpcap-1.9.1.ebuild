@@ -27,7 +27,7 @@ DEPEND="
 	${RDEPEND}
 	sys-devel/flex
 	virtual/yacc
-	dbus? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
+	dbus? ( virtual/pkgconfig )
 "
 
 S=${WORKDIR}/${PN}-${P/_}

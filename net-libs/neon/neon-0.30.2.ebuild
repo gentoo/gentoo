@@ -33,7 +33,7 @@ RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 	)
 	zlib? ( sys-libs/zlib:0=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/neon-config
