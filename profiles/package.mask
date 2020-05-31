@@ -378,12 +378,6 @@ dev-python/patch
 # Removal in 30 days.  Bug #719350.
 dev-python/pastescript
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Stuck on Python 2.  Last release in 2008.  The only revdep is probably
-# wrong and last rited anyway.
-# Removal in 30 days.  Bug #719348.
-dev-python/dap
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
