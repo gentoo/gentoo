@@ -14706,7 +14706,7 @@ net-mail/qtools 0.56: Utilities for use with qmail, typically as part of .qmail 
 net-mail/queue-fix 1.4-r3: Qmail Queue Repair Application with support for big-todo
 net-mail/queue-repair 0.9.0-r1: A toolkit for dealing with the qmail queue directory structure
 net-mail/randomsig 1.10.0: randomsig - perl script for generating random .signature files
-net-mail/relay-ctrl 3.1.1-r2: SMTP Relaying Control designed for qmail & tcpserver
+net-mail/relay-ctrl 3.1.1-r2 3.1.1-r3 3.2: SMTP Relaying Control designed for qmail & tcpserver
 net-mail/renattach 1.2.4-r1: Filter that renames/deletes dangerous email attachments
 net-mail/ripmime 1.4.0.10: extract attachment files out of a MIME-encoded email pack
 net-mail/ripole 0.2.2: Program/library to pull out attachment from OLE2 data files

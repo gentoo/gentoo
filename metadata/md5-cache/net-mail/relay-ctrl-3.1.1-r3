@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install postinst prepare
+DESCRIPTION=SMTP Relaying Control designed for qmail & tcpserver
+EAPI=7
+HOMEPAGE=http://untroubled.org/relay-ctrl/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/ucspi-tcp virtual/daemontools
+SLOT=0
+SRC_URI=http://untroubled.org/relay-ctrl/archive/relay-ctrl-3.1.1.tar.gz
+_eclasses_=fixheadtails	662e80584ee2337b981d7188078e7c74	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=094cf0c8dd745ec29dc57ca62aa90fbf
