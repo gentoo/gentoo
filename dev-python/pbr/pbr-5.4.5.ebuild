@@ -37,7 +37,7 @@ BDEPEND="
 			<dev-python/virtualenv-20[${PYTHON_USEDEP}]
 			>=dev-python/stestr-2.1.0
 			dev-vcs/git
-		' python3_{6,7,8})
+		' -3)
 	)"
 PDEPEND=""
 
@@ -57,12 +57,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	# TODO
-	if [[ ${EPYTHON} == python3.9 ]]; then
-		einfo "Skipping py3.9 due to unported sphinx"
-		return
-	fi
-
 	if ! python_is_python3; then
 		ewarn "Skipping tests on ${EPYTHON} to unblock circular deps."
 		ewarn "Please run tests manually."
