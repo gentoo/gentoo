@@ -394,12 +394,6 @@ dev-python/parsley
 # Removal in 30 days.  Bug #719296.
 dev-python/paramunittest
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-24)
-# Stuck on Python 2.  Last release of obmenu in 2006, obtheme in 2013.
-# Require dead dev-python/pygtk.
-# Removal in 30 days.  Bug #708140.
-x11-misc/obmenu
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
