@@ -11,7 +11,7 @@ HOMEPAGE="https://bitbucket.org/ecollins/passlib/wiki/Home/"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 SLOT="0"
 IUSE="+bcrypt doc +scrypt +totp"
 
