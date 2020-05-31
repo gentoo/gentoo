@@ -2334,7 +2334,6 @@ app-mobilephone/adb-sync 0_p20181127-r1: Synchronize files between a PC and an A
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/dfu-util 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/gammu 1.38.5 1.39.0-r1 1.40.0 1.41.0: A tool to handle your cellular phone
-app-mobilephone/ganyremote 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.31-r1 0.6.31-r2 0.6.31-r3 9999: User space driver and tools for use with mobile phones
 app-mobilephone/heimdall 1.4.2 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
@@ -2390,7 +2389,6 @@ app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentatio
 app-office/plan 1.10: Motif based schedule planner
 app-office/planner 0.14.6_p20130520-r2: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
-app-office/pybliographer 1.4.0-r3: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.5-r1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.22.1: Personal finances manager, aiming at being simple and intuitive
@@ -8508,7 +8506,6 @@ dev-python/python-axolotl 0.2.3: A python module for the axolotl protocol
 dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve25519 library with ed25519 signatures
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1: Client library for Barbican API.
-dev-python/python-bibtex 1.2.7-r2: A Python extension to parse BibTeX files
 dev-python/python-blazarclient 2.1.0: This is a client for the OpenStack Blazar API
 dev-python/python-bugzilla 2.1.0 2.3.0: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0: Python bindings for the Caja file manager
