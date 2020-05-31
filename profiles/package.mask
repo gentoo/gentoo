@@ -34,7 +34,8 @@
 
 # James Le Cuirot <chewi@gentoo.org> (2020-05-31)
 # Now merged into media-libs/dumb with the allegro USE flag. This
-# package was added before EAPI 2 and USE-dependencies.
+# package was added before EAPI 2 and USE-dependencies. Removal in 30
+# days.
 media-libs/aldumb
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-05-31)
