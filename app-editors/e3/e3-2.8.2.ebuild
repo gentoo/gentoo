@@ -19,6 +19,7 @@ BDEPEND=">=dev-lang/nasm-2.09.04"
 
 S="${WORKDIR}/${MY_P}"
 PATCHES=("${FILESDIR}"/${P}-makefile.patch)
+QA_FLAGS_IGNORED="/usr/bin/e3"	#726484
 
 src_compile() {
 	emake -- $(usex amd64 64 32) LD="$(tc-getLD)"
