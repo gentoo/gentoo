@@ -401,12 +401,6 @@ dev-python/paramunittest
 x11-misc/obmenu
 x11-misc/obtheme
 
-# Jonas Stein <jstein@gentoo.org> (2020-04-24)
-# Fails to install. Bug #154735
-# Developers do not have access to the cd.
-# Remove after 2020-05-24
-games-action/rune
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
