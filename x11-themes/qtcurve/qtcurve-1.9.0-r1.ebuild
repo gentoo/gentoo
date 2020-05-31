@@ -72,6 +72,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.0-no-X-buildfix.patch"
 	"${FILESDIR}/${PN}-1.9.0-gcc9.patch"
 	"${FILESDIR}/${PN}-1.9.0-libreoffice-crashfix.patch"
+	"${FILESDIR}/${PN}-1.9.0-qt-5.15.patch"
 )
 
 src_configure() {
