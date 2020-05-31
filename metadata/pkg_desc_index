@@ -435,7 +435,7 @@ app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a saf
 app-admin/chrootuid 1.3-r2: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2 0.16: Chrpath can modify the rpath and runpath of ELF executables
 app-admin/clog 1.3.0: clog is a colorized log tail utility
-app-admin/clsync 0.4.2 0.4.4: Live sync tool based on inotify, written in GNU C
+app-admin/clsync 0.4.2 0.4.4 9999: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.7.3: Python framework for efficient cluster administration
 app-admin/conky 1.10.8-r4 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
@@ -9475,7 +9475,7 @@ dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicke
 dev-ruby/capistrano 2.15.5-r2 3.11.2 3.12.0 3.12.1 3.13.0 3.14.0: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
 dev-ruby/capybara 2.18.0 3.30.0 3.31.0 3.32.0 3.32.1 3.32.2: Capybara aims to simplify the process of integration testing Rack applications
-dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
+dev-ruby/certificate_authority 0.1.6-r2 1.0.0: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.6 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
 dev-ruby/childprocess 0.9.0 1.0.1-r1 2.0.0 3.0.0: Solution for controlling external programs running in the background
@@ -9719,7 +9719,7 @@ dev-ruby/narray 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/naught 1.1.0: A toolkit for building Null Objects in Ruby
 dev-ruby/necromancer 0.5.0 0.5.1: Conversion from one object type to another with a bit of black magic
 dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
-dev-ruby/neovim-ruby-client 0.8.1 0.8.1-r1: Ruby bindings for Neovim
+dev-ruby/neovim-ruby-client 0.8.1-r1: Ruby bindings for Neovim
 dev-ruby/net-http-digest_auth 1.4.1: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 3.0.0 3.0.1 3.1.0: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
@@ -17750,7 +17750,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE head
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 3.0.2 3.1.0: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 6.0.2 6.0.3 6.0.4: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 6.0.2 6.0.4 6.0.5: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 2.2.0: multilanguage CalDAV web client

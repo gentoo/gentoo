@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig apidoc? ( app-doc/doxygen[dot] ) >=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst prepare pretend setup unpack
+DEPEND=caps? ( sys-libs/libcap ) cgroups? ( dev-libs/libcgroup ) clsync? ( dev-libs/glib:2 ) mhash? ( app-crypt/mhash )
+DESCRIPTION=Live sync tool based on inotify, written in GNU C
+EAPI=7
+HOMEPAGE=https://github.com/clsync/clsync http://ut.mephi.ru/oss/clsync
+IUSE=apidoc +caps +clsync cluster control-socket cgroups doc debug examples extra-debug extra-hardened gio +hardened +highload-locks +inotify mhash namespaces seccomp socket-library static-libs kernel_linux
+LICENSE=GPL-3+
+PROPERTIES=live
+RDEPEND=caps? ( sys-libs/libcap ) cgroups? ( dev-libs/libcgroup ) clsync? ( dev-libs/glib:2 ) mhash? ( app-crypt/mhash ) !app-doc/clsync-docs !dev-libs/libclsync
+REQUIRED_USE=|| ( clsync socket-library ) || ( gio inotify ) mhash? ( cluster ) seccomp? ( caps )
+SLOT=0
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=bab4b4d18a45e9bc41cc9318a1a0b72c

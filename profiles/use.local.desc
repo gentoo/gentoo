@@ -25,7 +25,9 @@ app-accessibility/speech-dispatcher:espeak - Adds support for espeak speech engi
 app-accessibility/speech-dispatcher:flite - Adds support for flite speech engine
 app-accessibility/speechd-el:brltty - brltty support
 app-admin/calamares:pythonqt - Enable PythonQt-based module interface
+app-admin/clsync:apidoc - Provide doxygen generated API docs.
 app-admin/clsync:cgroups - Use cgroups to limit /dev access.
+app-admin/clsync:clsync - Build clsync binary. Most likely you want it. However it is possible to build only libclsync without clsync itself.
 app-admin/clsync:cluster - Enable clustering support (allows master-master clsync on multiple hosts). Not fully implemented yet.
 app-admin/clsync:control-socket - Enable AF_UNIX control socket support.
 app-admin/clsync:extra-debug - Enable extra debugging. This will hurt performance badly. Be ready for tons of output.
@@ -33,6 +35,7 @@ app-admin/clsync:extra-hardened - Enable extra security checks. This will hurt p
 app-admin/clsync:gio - Enable GIO for FS monitoring (glib based alternative to inotify interface, not recommended; if both are compiled, may be selected at runtime).
 app-admin/clsync:highload-locks - Allows to use spinlocks for short delays instead of mutexes, but only on SMP systems.
 app-admin/clsync:namespaces - Enable namespaces isolation.
+app-admin/clsync:socket-library - Build the control and monitoring socket library: libclsync.
 app-admin/conky:apcupsd - Enable support for sys-power/apcupsd
 app-admin/conky:bundled-toluapp - Enable support for bundled toluapp. This only makes sense in combination with the lua-* flags
 app-admin/conky:cmus - Enable monitoring of music played by media-sound/cmus
