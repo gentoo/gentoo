@@ -24,7 +24,13 @@ PATCHES=( "${FILESDIR}"/portage-sandbox-test-fix.patch )
 
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "cmake/cflags.cmake" || die
-	sed -i '/nowide/d' CMakeLists.txt || die  # vendored boost lib conflicts with boost 1.73 and above
+	# vendored boost lib conflicts with boost 1.73 and above
+	sed -i '/nowide/d' CMakeLists.txt
+	sed -i '/nowide/d' file_util/CMakeLists.txt || die
+	sed -i '/nowide/d' windows/CMakeLists.txt || die
+	sed -i '/nowide/d' execution/CMakeLists.txt || die
+	sed -i '/nowide/d' logging/CMakeLists.txt || die
+	sed -i '/nowide/d' util/CMakeLists.txt || die
 	cmake-utils_src_prepare
 }
 
