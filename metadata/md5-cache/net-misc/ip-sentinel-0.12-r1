@@ -1,0 +1,10 @@
+DEFINED_PHASES=config install postinst prepare setup
+DESCRIPTION=Prevent unauthorized usage of IP addresses
+EAPI=7
+HOMEPAGE=https://www.nongnu.org/ip-sentinel/
+KEYWORDS=~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://savannah.nongnu.org/download/ip-sentinel/ip-sentinel-0.12.tar.bz2
+_eclasses_=user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_md5_=2323cb5763a303ca2d7f0c06277aef78
