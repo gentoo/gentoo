@@ -1070,7 +1070,6 @@ app-office/kmymoney:weboob - Enable import of online banking transactions extrac
 app-office/kraft:pim - Enable support for KDE PIM resources integration
 app-office/libreoffice:coinmp - Use sci-libs/coinor-mp as alternative solver
 app-office/libreoffice:googledrive - Enable support for remote files on Google Drive
-app-office/libreoffice:gtk2 - Enable legacy gtk2 frontend
 app-office/libreoffice:mariadb - Prefer mariadb connector over mysql connector
 app-office/libreoffice:odk - Build the Office Development Kit
 app-office/libreoffice:pdfimport - Enable PDF import via the Poppler library
@@ -3371,6 +3370,7 @@ games-strategy/wesnoth:server - Enable compilation of server
 games-util/deutex:man - Build and install man pages
 games-util/gslist:web - Enable the web interface
 games-util/lgogdownloader:gui - Enable GUI login support for passing reCAPTCHA
+games-util/slade:fluidsynth - Enable MIDI software synthesis using media-sound/fluidsynth
 games-util/wit:fuse - Enable image mount support via fuse
 gnome-base/gconf:ldap - Build backend which enables default mail accounts, addressbooks and calendars for Evolution to be configured using each user's LDAP entry."
 gnome-base/gdm:bluetooth-sound - Allow loading of bluetooth sound modules. This may be necessary for accessibility screen readers, but may cause bluetooth sound issues for users logging in.
@@ -3624,7 +3624,6 @@ kde-apps/spectacle:share - Enable support for a share menu using kde-frameworks/
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-apps/umbrello:php - Enable PHP import support using dev-util/kdevelop and dev-util/kdevelop-pg-qt
 kde-apps/yakuake:absolute-position - Use kde-frameworks/kwayland for absolute window positioning in KWin
-kde-frameworks/frameworkintegration:appstream - Enable AppStream software metadata support
 kde-frameworks/kcompletion:designer - Build plugins for dev-qt/designer
 kde-frameworks/kconfigwidgets:designer - Build plugins for dev-qt/designer
 kde-frameworks/kconfigwidgets:man - Build and install man pages
