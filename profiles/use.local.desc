@@ -3441,8 +3441,6 @@ gnome-extra/libgda:mdb - Enable support for Microsoft Access database using app-
 gnome-extra/libgda:reports - Install tools for generating graphical reports
 gnome-extra/libgda:sourceview - Enable support for x11-libs/gtksourceview
 gnome-extra/libgsf:gtk - Enable use of gdk in thumbnailer
-gnome-extra/nemo:packagekit - Use packagekit to search for programs to open unknown file types
-gnome-extra/nemo:tracker - Add support for app-misc/tracker search
 gnome-extra/nm-applet:gcr - Enable advanced certificate chooser, requires app-crypt/gcr
 gnome-extra/nm-applet:lto - Enable link time optimization
 gnome-extra/nm-applet:modemmanager - Enable support for mobile broadband devices using net-misc/modemmanager

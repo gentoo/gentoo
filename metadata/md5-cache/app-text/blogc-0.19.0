@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=git? ( dev-vcs/git ) !dev-vcs/blogc-git-receiver !www-servers/blogc-runserver
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/blogc/blogc/releases/download/v0.18.0/blogc-0.18.0.tar.xz
-_md5_=928d947907214a22d2063851a3bd17b0
+SRC_URI=https://github.com/blogc/blogc/releases/download/v0.19.0/blogc-0.19.0.tar.xz
+_md5_=8bc486ad19f972d9ab1bd183a8a2edf5

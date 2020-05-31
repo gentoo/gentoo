@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst prepare setup unpack
+DEPEND=x11-libs/libXext x11-libs/libXfixes x11-libs/libXScrnSaver >=x11-libs/pixman-0.27.1 >=x11-libs/libdrm-2.4.52[video_cards_intel] >=x11-base/xorg-server-1.18 tools? ( x11-libs/libX11 x11-libs/libxcb x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXrender x11-libs/libxshmfence x11-libs/libXtst ) udev? ( virtual/libudev:= ) xvmc? ( x11-libs/libXvMC >=x11-libs/libxcb-1.5 x11-libs/xcb-util ) x11-base/xorg-proto x11-base/xorg-proto dri? ( x11-base/xorg-server[-minimal] x11-libs/libdrm ) >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
+DESCRIPTION=X.Org driver for Intel cards
+EAPI=7
+HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel
+IUSE=debug +sna tools +udev uxa xvmc kernel_linux dri
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libXext x11-libs/libXfixes x11-libs/libXScrnSaver >=x11-libs/pixman-0.27.1 >=x11-libs/libdrm-2.4.52[video_cards_intel] >=x11-base/xorg-server-1.18 tools? ( x11-libs/libX11 x11-libs/libxcb x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXrender x11-libs/libxshmfence x11-libs/libXtst ) udev? ( virtual/libudev:= ) xvmc? ( x11-libs/libXvMC >=x11-libs/libxcb-1.5 x11-libs/xcb-util ) x11-base/xorg-server:= dri? ( x11-base/xorg-server[-minimal] x11-libs/libdrm ) >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
+REQUIRED_USE=|| ( sna uxa )
+SLOT=0
+SRC_URI=https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/5ca3ac1a90af177eb111a965e9b4dd8a27cc58fc/xf86-video-intel-2.99.917_p20200515.tar.bz2
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xorg-3	f7ca8dca6425a439b1b40844e6eb1ae7
+_md5_=792626e5493fd7d3f68cf5bf5afba492
