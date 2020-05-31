@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit autotools flag-o-matic python-single-r1 systemd \
 	toolchain-funcs user xdg-utils prefix
@@ -53,6 +53,8 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-3.3.2-freedesktop.patch"
 	# SOCKSv5 support needed for Portage, bug #537616
 	eapply "${FILESDIR}/${PN}-3.2_rc1-socks5.patch"
+	# backport py3.8 fixes
+	eapply "${FILESDIR}/${P}-py38.patch"
 	eapply_user
 
 	# Bugs #120001, #167844 and probably more. See patch for description.
