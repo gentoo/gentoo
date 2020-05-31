@@ -11,7 +11,7 @@ SRC_URI="https://github.com/axel-download-accelerator/axel/releases/download/v${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ppc64 sparc ~x86"
 IUSE="debug libressl nls ssl"
 
 CDEPEND="
