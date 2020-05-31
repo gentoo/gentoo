@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit go-module
+inherit bash-completion-r1 go-module
 
 DESCRIPTION="GitHub CLI"
 HOMEPAGE="https://github.com/cli/cli"
@@ -294,4 +294,10 @@ src_compile() {
 src_install() {
 	dobin bin/gh
 	dodoc README.md
+
+	make manpages
+	doman share/man/man1/gh*.1
+
+	bin/gh completion -s bash > gh
+	dobashcomp gh
 }
