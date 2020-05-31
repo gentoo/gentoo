@@ -76,6 +76,10 @@ src_prepare() {
 			test/api/Makefile.in || die
 	fi
 
+	sed -i \
+		-e 's:tests/macos.tests::' \
+		test/shaping/data/in-house/Makefile.sources || die # bug 726120
+
 	[[ ${PV} == 9999 ]] && eautoreconf
 	elibtoolize # for Solaris
 
