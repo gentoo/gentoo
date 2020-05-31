@@ -1,5 +1,19 @@
 --- a/Makefile	2018-10-28 17:21:20.274137396 +0100
 +++ b/Makefile	2018-10-28 17:21:47.696694473 +0100
+@@ -16,11 +16,11 @@
+ LIBRARY:= $(PKG_NAME).so.$(PKG_VERSION)
+ 
+ TCL_VERSION=$(shell echo 'puts $\$$tcl_version' | tclsh)
+-CFLAGS:= -O2 -Wall -fPIC -DUSE_TCL_STUBS
++CFLAGS:= @CFLAGS@ -fPIC -DUSE_TCL_STUBS
+ CFLAGS+= $(shell $(PYTHON_CONFIG) --includes)
+ CFLAGS+= -I/usr/include/tcl$(TCL_VERSION)
+ CFLAGS+= -DTCLPYTHON_VERSION=$(PKG_VERSION)
+-LDFLAGS:= -shared -s
++LDFLAGS:= @LDFLAGS@ -shared
+ LDFLAGS+= $(shell $(PYTHON_CONFIG) --libs)
+ LDFLAGS+= -ltclstub$(TCL_VERSION)
+ 
 @@ -62,7 +62,8 @@
  $(OUTPUT_DIR)/pkgIndex.tcl:pkg/pkgIndex.tcl
  	cp -t $(dir $@) $^
