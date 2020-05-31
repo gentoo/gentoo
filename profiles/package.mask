@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-05-31)
+# Outdated.  Not touched since the initial commit.  Lacks py3.7 support.
+# No reverse dependencies outside the three packages.
+# Removal in 30 days.  Bug #708270.
+dev-python/Rx
+dev-python/graphql-core
+dev-python/gql
+
 # Hans de Graaff <graaff@gentoo.org> (2020-05-24)
 # No releases since 2011, upstream is gone, fails tests,
 # no reverse dependencies.
