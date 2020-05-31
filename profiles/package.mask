@@ -389,11 +389,6 @@ dev-python/dap
 # Removal in 30 days.  Bug #719298.
 dev-python/parsley
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-24)
-# Unmaintained.  Stuck at py3.6.  Missing tests.  No revdeps.
-# Removal in 30 days.  Bug #719296.
-dev-python/paramunittest
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
