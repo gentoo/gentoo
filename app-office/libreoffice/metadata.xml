@@ -13,7 +13,6 @@ version</longdescription>
   <use>
     <flag name="coinmp">Use sci-libs/coinor-mp as alternative solver</flag>
     <flag name="googledrive">Enable support for remote files on Google Drive</flag>
-    <flag name="gtk2">Enable legacy gtk2 frontend</flag>
     <flag name="mariadb">Prefer mariadb connector over mysql connector</flag>
     <flag name="odk">Build the Office Development Kit</flag>
     <flag name="pdfimport">Enable PDF import via the Poppler library</flag>
