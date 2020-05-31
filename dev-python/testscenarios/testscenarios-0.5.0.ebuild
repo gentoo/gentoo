@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -22,17 +22,12 @@ RDEPEND="
 
 # using pytest for tests since unittest loader fails with py3.5+
 DEPEND="
-	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]"
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# Remove a faulty file from tests, missing a required attribute
 	rm ${PN}/tests/test_testcase.py || die
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
