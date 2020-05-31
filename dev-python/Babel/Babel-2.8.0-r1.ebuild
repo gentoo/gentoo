@@ -10,7 +10,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Collection of tools for internationalizing Python applications"
-HOMEPAGE="http://babel.pocoo.org/ https://pypi.org/project/Babel/"
+HOMEPAGE="https://babel.pocoo.org/ https://pypi.org/project/Babel/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
