@@ -23,6 +23,7 @@ ruby_add_rdepend "|| ( dev-ruby/net-ssh:6 dev-ruby/net-ssh:5 )"
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/bundler
 		>=dev-ruby/mocha-0.13
 	)"
 
