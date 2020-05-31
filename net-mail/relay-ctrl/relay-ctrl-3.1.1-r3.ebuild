@@ -46,7 +46,8 @@ src_install() {
 
 	keepdir ${RELAYCTRL_BASE} ${RELAYCTRL_BASE}/${RELAYCTRL_STORAGE}
 	fperms 700 ${RELAYCTRL_BASE}
-	fperms 1777 ${RELAYCTRL_BASE}/${RELAYCTRL_STORAGE}
+	# perm 777 is intentional, see http://untroubled.org/relay-ctrl/
+	fperms 777 ${RELAYCTRL_BASE}/${RELAYCTRL_STORAGE}
 
 	dodir ${RELAYCTRL_CONFDIR}
 
@@ -70,4 +71,7 @@ pkg_postinst() {
 	fi
 	elog "Please see the instructions in /usr/share/doc/${PF}/README"
 	elog "for setup instructions with Courier-IMAP and Qmail"
+
+	einfo "Ensure that the relay-ctrl-age cronjob is running"
+	einfo "otherwise your system may accumulate old relay entries."
 }
