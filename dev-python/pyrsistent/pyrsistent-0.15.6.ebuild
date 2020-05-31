@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{6..9}} pypy3 )
 
 inherit distutils-r1
 
@@ -19,8 +19,8 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]"
 
 DEPEND="
-	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (	dev-python/hypothesis[${PYTHON_USEDEP}]	)"
+	test? (
+		dev-python/hypothesis[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
