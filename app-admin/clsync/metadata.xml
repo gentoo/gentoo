@@ -15,6 +15,8 @@
   namespaces, seccomp, code hardening.
 </longdescription>
   <use>
+    <flag name="apidoc">Provide doxygen generated API docs.</flag>
+    <flag name="clsync">Build clsync binary. Most likely you want it. However it is possible to build only libclsync without clsync itself. </flag>
     <flag name="cluster">Enable clustering support (allows master-master clsync on multiple hosts). Not fully implemented yet.</flag>
     <flag name="control-socket">Enable AF_UNIX control socket support.</flag>
     <flag name="cgroups">Use cgroups to limit /dev access.</flag>
@@ -23,6 +25,7 @@
     <flag name="gio">Enable GIO for FS monitoring (glib based alternative to inotify interface, not recommended; if both are compiled, may be selected at runtime).</flag>
     <flag name="highload-locks">Allows to use spinlocks for short delays instead of mutexes, but only on SMP systems.</flag>
     <flag name="namespaces">Enable namespaces isolation.</flag>
+    <flag name="socket-library">Build the control and monitoring socket library: libclsync.</flag>
   </use>
   <upstream>
     <remote-id type="github">clsync/clsync</remote-id>
