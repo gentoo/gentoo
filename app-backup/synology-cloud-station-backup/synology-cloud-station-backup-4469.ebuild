@@ -4,7 +4,7 @@
 EAPI=7
 inherit xdg
 
-SVER="4.3.2"
+SVER="4.3.3"
 
 DESCRIPTION="Back up your files from multiple client computers to a centralized Synology NAS"
 HOMEPAGE="https://www.synology.com/en-global/releaseNote/CloudStationBackup"
@@ -23,6 +23,8 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 RESTRICT="bindist mirror strip"
+QA_PREBUILT="*"
+
 S="${WORKDIR}"
 
 src_unpack() {
