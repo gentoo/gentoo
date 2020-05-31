@@ -65,7 +65,7 @@ COMMON_DEPEND="
 	net-misc/curl:=[ssl]
 	sys-libs/zlib:=
 	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	libressl? ( <dev-libs/libressl-3.1:0= )
 	elibc_musl? ( sys-libs/libunwind )
 	system-llvm? (
 		${LLVM_DEPEND}
