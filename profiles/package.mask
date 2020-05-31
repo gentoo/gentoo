@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Thode <prometheanfire@gentoo.org> (2020-05-31)
+# remove unused package on 2020-06-14
+app-admin/pdk
+
 # James Le Cuirot <chewi@gentoo.org> (2020-05-31)
 # Now merged into media-libs/dumb with the allegro USE flag. This
 # package was added before EAPI 2 and USE-dependencies. Removal in 30
