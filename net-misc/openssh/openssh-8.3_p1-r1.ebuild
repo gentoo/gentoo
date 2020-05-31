@@ -21,7 +21,7 @@ HPN_PATCHES=(
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-#X509_VER="12.4.3" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="12.5" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
@@ -147,7 +147,6 @@ src_prepare() {
 		popd &>/dev/null || die
 
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
-		eapply "${FILESDIR}"/${P}-X509-${X509_VER}-tests.patch
 
 		# We need to patch package version or any X.509 sshd will reject our ssh client
 		# with "userauth_pubkey: could not parse key: string is too large [preauth]"
@@ -190,7 +189,8 @@ src_prepare() {
 		#	einfo "Will disable MT AES cipher due to incompatbility caused by X509 patch set"
 		#	# X509 and AES-CTR-MT don't get along, let's just drop it
 		#	rm openssh-${HPN_PV//./_}-hpn-AES-CTR-${HPN_VER}.diff || die
-			eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-X509-glue.patch
+
+			eapply "${FILESDIR}"/${PN}-8.2_p1-hpn-${HPN_VER}-X509-glue.patch
 		fi
 		use sctp && eapply "${FILESDIR}"/${PN}-8.2_p1-hpn-${HPN_VER}-sctp-glue.patch
 		popd &>/dev/null || die
@@ -305,7 +305,7 @@ src_configure() {
 		$(use_with pam)
 		$(use_with pie)
 		$(use_with selinux)
-		$(use_with security-key security-key-builtin)
+		$(usex X509 '' "$(use_with security-key security-key-builtin)")
 		$(use_with ssl openssl)
 		$(use_with ssl md5-passwords)
 		$(use_with ssl ssl-engine)

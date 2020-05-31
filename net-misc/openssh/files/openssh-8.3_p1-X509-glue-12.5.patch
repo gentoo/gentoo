@@ -1,0 +1,33 @@
+--- a/openssh-8.3p1+x509-12.5.diff	2020-05-31 11:50:58.817094112 -0700
++++ b/openssh-8.3p1+x509-12.5.diff	2020-05-31 12:29:49.165030176 -0700
+@@ -35457,12 +35457,11 @@
+  
+  install: $(CONFIGFILES) $(MANPAGES) $(TARGETS) install-files install-sysconf host-key check-config
+  install-nokeys: $(CONFIGFILES) $(MANPAGES) $(TARGETS) install-files install-sysconf
+-@@ -382,6 +361,8 @@
++@@ -382,6 +361,7 @@
+  	$(MKDIR_P) $(DESTDIR)$(mandir)/$(mansubdir)5
+  	$(MKDIR_P) $(DESTDIR)$(mandir)/$(mansubdir)8
+  	$(MKDIR_P) $(DESTDIR)$(libexecdir)
+ +	$(MKDIR_P) $(DESTDIR)$(sshcadir)
+-+	$(MKDIR_P) $(DESTDIR)$(piddir)
+  	$(MKDIR_P) -m 0755 $(DESTDIR)$(PRIVSEP_PATH)
+  	$(INSTALL) -m 0755 $(STRIP_OPT) ssh$(EXEEXT) $(DESTDIR)$(bindir)/ssh$(EXEEXT)
+  	$(INSTALL) -m 0755 $(STRIP_OPT) scp$(EXEEXT) $(DESTDIR)$(bindir)/scp$(EXEEXT)
+@@ -96530,16 +96529,6 @@
+ +int	 asnmprintf(char **, size_t, int *, const char *, ...)
+  	     __attribute__((format(printf, 4, 5)));
+  void	 msetlocale(void);
+-diff -ruN openssh-8.3p1/version.h openssh-8.3p1+x509-12.5/version.h
+---- openssh-8.3p1/version.h	2020-05-27 03:38:00.000000000 +0300
+-+++ openssh-8.3p1+x509-12.5/version.h	2020-05-31 18:07:00.000000000 +0300
+-@@ -2,5 +2,4 @@
+- 
+- #define SSH_VERSION	"OpenSSH_8.3"
+- 
+--#define SSH_PORTABLE	"p1"
+--#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
+-+#define SSH_RELEASE	PACKAGE_STRING ", " SSH_VERSION "p1"
+ diff -ruN openssh-8.3p1/version.m4 openssh-8.3p1+x509-12.5/version.m4
+ --- openssh-8.3p1/version.m4	1970-01-01 02:00:00.000000000 +0200
+ +++ openssh-8.3p1+x509-12.5/version.m4	2020-05-31 18:07:00.000000000 +0300
