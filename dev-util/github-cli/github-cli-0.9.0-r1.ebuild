@@ -277,6 +277,10 @@ BDEPEND=">=dev-lang/go-1.13"
 
 unset GOBIN GOPATH GOCODE
 
+PATCHES=(
+	"${FILESDIR}/cli-0.9.0-manpage-build-gen-docs.patch"
+)
+
 src_unpack() {
 	if [[ ${PV} == *9999 ]]; then
 		git-r3_src_unpack
@@ -290,16 +294,24 @@ src_compile() {
 	[[ ${PV} == *9999 ]] || export GH_VERSION="v${PV}"
 	# Golang LDFLAGS are not the same as GCC/Binutils LDFLAGS
 	unset LDFLAGS
-	emake
+
+	emake bin/gh # default target
+
+	einfo "Building manpage"
+	emake manpages
+
+	einfo "Building completion"
+	bin/gh completion -s bash > gh.bash-completion || die
+	bin/gh completion -s zsh > gh.zsh-completion || die
 }
 
 src_install() {
 	dobin bin/gh
 	dodoc README.md
 
-	make manpages
-	doman share/man/man1/gh*.1
+	doman share/man/man?/gh*.?
 
-	bin/gh completion -s bash > gh
-	dobashcomp gh
+	newbashcomp gh.bash-completion gh
+	insinto /usr/share/zsh/site-functions
+	newins gh.zsh-completion _gh
 }
