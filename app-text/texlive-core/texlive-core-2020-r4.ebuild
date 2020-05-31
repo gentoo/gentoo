@@ -243,6 +243,7 @@ src_configure() {
 		--disable-build-in-source-tree \
 		--with-banner-add=" Gentoo Linux" \
 		$(use_enable luajittex) \
+		$(use_enable luajittex luajithbtex) \
 		$(use_enable luajittex mfluajit) \
 		$(use_enable xetex) \
 		$(use_enable cjk dviout-util) \
