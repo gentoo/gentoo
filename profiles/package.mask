@@ -312,11 +312,6 @@ dev-python/sdnotify
 # Removal in 30 days.  Bug #719546.
 dev-python/scoop
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  Stuck on Python 3.6.  No tests.  No revdeps.
-# Removal in 30 days.  Bug #719504.
-dev-python/pythonmagick
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
