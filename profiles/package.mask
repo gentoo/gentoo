@@ -317,12 +317,6 @@ dev-python/scoop
 # Removal in 30 days.  Bug #719504.
 dev-python/pythonmagick
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  djvusmooth is stuck on py2, python-djvulibre on py3.6.
-# Unresolved test failures.  No other revdeps.
-# Removal in 30 days.  Bug #719488.
-dev-python/python-djvulibre
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
