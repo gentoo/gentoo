@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 RDEPEND="dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]"
 PDEPEND="
 	>=dev-python/sphinx-2.0[${PYTHON_USEDEP}]"
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${PDEPEND} )"
 
