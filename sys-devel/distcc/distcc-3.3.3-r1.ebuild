@@ -17,8 +17,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE="gnome gssapi gtk hardened ipv6 selinux xinetd zeroconf"
 
-RESTRICT="test"
-
 CDEPEND="${PYTHON_DEPS}
 	dev-libs/popt
 	gnome? (
@@ -70,6 +68,9 @@ src_prepare() {
 		-e "s:@libdir@:/usr/lib:" \
 		"${FILESDIR}/distcc-config" > "${T}/distcc-config" || die
 
+	# TODO: gdb tests fail due to gdb failing to find .c file
+	sed -i -e '/Gdb.*Case,/d' test/testdistcc.py || die
+
 	hprefixify update-distcc-symlinks.py src/{serve,daemon}.c
 	python_fix_shebang update-distcc-symlinks.py "${T}/distcc-config"
 	eautoreconf
@@ -87,6 +88,13 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+src_test() {
+	# sandbox breaks some tests, and hangs some too
+	# retest once #590084 is fixed
+	local -x SANDBOX_ON=0
+	emake -j1 check
 }
 
 src_install() {
