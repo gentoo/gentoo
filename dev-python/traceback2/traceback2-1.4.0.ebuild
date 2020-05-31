@@ -18,4 +18,17 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 RDEPEND="
 	dev-python/linecache2[${PYTHON_USEDEP}]"
 BDEPEND="
-	dev-python/pbr[${PYTHON_USEDEP}]"
+	dev-python/pbr[${PYTHON_USEDEP}]
+	test? ( dev-python/unittest2[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests unittest
+
+src_prepare() {
+	# fails by line numbers on various py3 versions
+	sed -i -e 's:test_context_suppression:_&:' \
+		-e 's:test_format_locals:_&:' \
+		-e 's:test_bad_indentation:_&:' \
+		-e 's:test_encoded_file:_&:' \
+		traceback2/tests/test_traceback.py || die
+	distutils-r1_src_prepare
+}
