@@ -15,16 +15,10 @@ SRC_URI="https://github.com/distcc/distcc/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
-IUSE="gnome gssapi gtk hardened ipv6 selinux xinetd zeroconf"
+IUSE="gssapi gtk hardened ipv6 selinux xinetd zeroconf"
 
 CDEPEND="${PYTHON_DEPS}
 	dev-libs/popt
-	gnome? (
-		>=gnome-base/libgnome-2
-		>=gnome-base/libgnomeui-2
-		x11-libs/gtk+:2
-		x11-libs/pango
-	)
 	gssapi? ( net-libs/libgssglue )
 	gtk? ( x11-libs/gtk+:2 )
 	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
@@ -84,7 +78,7 @@ src_configure() {
 		--libdir=/usr/lib
 		$(use_enable ipv6 rfc2553)
 		$(use_with gtk)
-		$(use_with gnome)
+		--without-gnome
 		$(use_with gssapi auth)
 		$(use_with zeroconf avahi)
 	)
@@ -137,7 +131,7 @@ src_install() {
 
 	dobin "${T}/distcc-config"
 
-	if use gnome || use gtk; then
+	if use gtk; then
 		einfo "Renaming /usr/bin/distccmon-gnome to /usr/bin/distccmon-gui"
 		einfo "This is to have a little sensability in naming schemes between distccmon programs"
 		mv "${ED}/usr/bin/distccmon-gnome" "${ED}/usr/bin/distccmon-gui" || die
@@ -170,8 +164,6 @@ pkg_postinst() {
 		eselect compiler-shadow update distccd
 	fi
 
-	use gnome && xdg_desktop_database_update
-
 	elog
 	elog "Tips on using distcc with Gentoo can be found at"
 	elog "https://wiki.gentoo.org/wiki/Distcc"
@@ -182,7 +174,7 @@ pkg_postinst() {
 	elog "To use the distccmon programs with Gentoo you should use this command:"
 	elog "# DISTCC_DIR=\"${DISTCC_DIR:-${BUILD_PREFIX}/.distcc}\" distccmon-text 5"
 
-	if use gnome || use gtk; then
+	if use gtk; then
 		elog "Or:"
 		elog "# DISTCC_DIR=\"${DISTCC_DIR:-${BUILD_PREFIX}/.distcc}\" distccmon-gnome"
 	fi
@@ -199,8 +191,4 @@ pkg_prerm() {
 	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT} == / ]]; then
 		eselect compiler-shadow remove distcc
 	fi
-}
-
-pkg_postrm() {
-	use gnome && xdg_desktop_database_update
 }
