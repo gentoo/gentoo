@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
@@ -23,8 +23,7 @@ RESTRICT="!test? ( test )"
 # git is needed for tests, see https://bugs.launchpad.net/pbr/+bug/1326682 and https://bugs.gentoo.org/show_bug.cgi?id=561038
 # docutils is needed for sphinx exceptions... https://bugs.gentoo.org/show_bug.cgi?id=603848
 # stestr is run as external tool
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			>=dev-python/wheel-0.32.0[${PYTHON_USEDEP}]
