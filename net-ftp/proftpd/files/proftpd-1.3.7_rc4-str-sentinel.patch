@@ -1,0 +1,43 @@
+https://github.com/proftpd/proftpd/issues/1027
+https://bugs.gentoo.org/726460
+
+From c5f98b6e047e0e5ca841372d78d06c05fe8770c6 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sun, 31 May 2020 18:03:29 +0100
+Subject: [PATCH 2/2] include/str.h: add __attribute__((sentinel)) to variadic
+ concats
+
+`pstrcat()` needs to always have literal trailing `NULL`.
+
+Bug: https://github.com/proftpd/proftpd/issues/1027
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ include/str.h | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+--- a/include/str.h
++++ b/include/str.h
+@@ -39,8 +39,18 @@ const char *quote_dir(pool *p, char *dir);
+ char *sstrcat(char *, const char *, size_t);
+ const char *sreplace(pool *, const char *, ...);
+ 
+-char *pdircat(pool *, ...);
+-char *pstrcat(pool *, ...);
++char *pdircat(pool *, ...)
++#ifdef __GNUC__
++      __attribute__ ((sentinel));
++#else
++      ;
++#endif
++char *pstrcat(pool *, ...)
++#ifdef __GNUC__
++      __attribute__ ((sentinel));
++#else
++      ;
++#endif
+ char *pstrdup(pool *, const char *);
+ char *pstrndup(pool *, const char *, size_t);
+ 
+-- 
+2.26.2
+

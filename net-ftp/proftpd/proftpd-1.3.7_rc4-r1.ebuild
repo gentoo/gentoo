@@ -70,6 +70,8 @@ S="${WORKDIR}/${P/_/}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
+	"${FILESDIR}"/${PN}-1.3.7_rc4-ldap_mod-SEGV.patch
+	"${FILESDIR}"/${PN}-1.3.7_rc4-str-sentinel.patch
 )
 
 RESTRICT=test # Some tests are ran in chroot. Confuse sandbox.
