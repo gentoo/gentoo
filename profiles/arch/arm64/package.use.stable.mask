@@ -1,6 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@cmpct.info> (2020-05-31)
+# Deps not yet stable
+dev-python/pymongo test
+app-shells/bash-completion test
+net-misc/ntpsec rclock_oncore rclock_pps
+
 # Mikle Kolyada <zlogene@gentoo,org> (2020-03-19)
 # deps not yet stable
 kde-apps/umbrello php
