@@ -271,18 +271,6 @@ dev-go/go-sys
 =dev-embedded/arduino-builder-1.4.1
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  Stuck on py3.6.  Missing tests (but having an unused
-# test flag!).  The only revdep is app-admin/ara that is masked
-# for removal already.
-# Removal in 30 days.  Bug #719660.
-dev-python/xstatic
-dev-python/xstatic-bootstrap-scss
-dev-python/xstatic-datatables
-dev-python/xstatic-jquery
-dev-python/xstatic-patternfly
-dev-python/xstatic-patternfly-bootstrap-treeview
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
 # Removal in 30 days.  Bug #719604.
 dev-python/txtorcon
