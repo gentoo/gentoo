@@ -155,11 +155,6 @@ x11-drivers/xf86-input-mouse
 # Removal in 30 days.
 dev-tex/revtex
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-01)
-# Currently packaged release from 2015, needs maintainer + bump. Bug #720346
-# Stuck on Python 2 and pygtk. Masked for removal in 30 days.
-app-mobilephone/ganyremote
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Requires <OpenSSL-1.1.x. Please migrate to
 # >=dev-db/mysql-5.7. Masked for removal in 30 days.
