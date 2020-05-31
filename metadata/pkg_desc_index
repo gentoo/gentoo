@@ -1457,7 +1457,7 @@ app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-w3m 1.4.625_pre20180518 1.4.632_pre20181112: emacs-w3m is an interface program of w3m on Emacs
 app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/emhacks 20070920-r1: Useful Emacs Lisp libraries, including gdiff, jjar, jmaker, swbuff, and tabbar
-app-emacs/emms 4.4 5.2 5.3: The Emacs Multimedia System
+app-emacs/emms 4.4 5.3 5.4: The Emacs Multimedia System
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.15 1.4.16 9999: Emacs major mode for editing eselect files
 app-emacs/ess 17.11 18.10.2-r1: Emacs Speaks Statistics
@@ -4889,7 +4889,7 @@ dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p13 3.99.5_p14: REINER SCT cyberJack USB chipcard reader user space driver
-dev-libs/cyrus-sasl 2.1.27-r3: The Cyrus SASL (Simple Authentication and Security Layer)
+dev-libs/cyrus-sasl 2.1.27-r3 2.1.27-r4: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
 dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
@@ -7516,7 +7516,6 @@ dev-python/astroid 2.3.3-r2: Abstract Syntax Tree for logilab packages
 dev-python/astunparse 1.6.2 1.6.3: Astun parser for python
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
-dev-python/asynctest 0.12.2: Enhance the standard unittest with features for testing asyncio libraries
 dev-python/atomicwrites 1.3.0 1.4.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
 dev-python/attrs 19.3.0: Attributes without boilerplate
@@ -7816,7 +7815,6 @@ dev-python/flexmock 0.10.4: Testing library to create mocks, stubs and fakes
 dev-python/flexx 0.4.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flit 2.1.0: Simplified packaging of Python modules
 dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
-dev-python/flower 0.9.1-r1: Real-time monitor and web admin for Celery distributed task queue
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2: A high level API for Python internationalization.
 dev-python/flufl-lock 3.2: NFS-safe file locking with timeouts for POSIX systems.
@@ -8648,7 +8646,6 @@ dev-python/rfc3339-validator 0.1.2: A pure python RFC3339 validator
 dev-python/rfc3986 1.2.0 1.3.2: Validating URI References per RFC 3986
 dev-python/rfc3986-validator 0.1.1: Pure python RFC3986 validator
 dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
-dev-python/riak-python-client 2.7.0-r1: The Riak client for Python.
 dev-python/robotbackgroundlogger 1.2: Helper module for logging to Robot Framework log from background threads
 dev-python/robotframework 3.0.4: Test automation framework for acceptance testing & test-driven development
 dev-python/roman 3.0 3.2: An Integer to Roman numerals converter
@@ -14392,7 +14389,6 @@ net-irc/psybnc 2.3.2.9-r3: A multi-user and multi-server gateway to IRC networks
 net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1 1.3.1-r2: PTlink Open Proxy Monitor
 net-irc/quassel 0.13.1-r2 9999: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
-net-irc/quassel-irssi 0_p20170107-r1: Irssi module to connect to Quassel cores.
 net-irc/quasselgrep 0_p20170411 0_p20190211 9999: Tool for searching quassel logs from the commandline
 net-irc/rbot 0.9.15_p20160325-r1: A ruby IRC bot
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
@@ -14571,7 +14567,6 @@ net-libs/osptoolkit 4.13.0: Open Settlement Protocol development kit
 net-libs/pacparser 1.3.7: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.7.1-r1 2.7.2-r2 2.9-r2: Open source SIP, Media, and NAT Traversal Library
-net-libs/quasselc 0_p20170111: API for accessing Quassel using C
 net-libs/quiche 0.1.0_alpha4_p20190912 0.1.0-r1 0.2.0 0.3.0 0.4.0 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 0.9.3-r2 1.2.0 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
@@ -16747,7 +16742,7 @@ sys-apps/s6-linux-utils 2.4.0.2 2.5.0.0 2.5.0.1 2.5.1.1: Set of tiny linux utili
 sys-apps/s6-portable-utils 2.2.1.1 2.2.1.2 2.2.1.3 2.2.2.1: Set of tiny portable unix utilities
 sys-apps/s6-rc 0.3.0.0 0.4.0.0 0.4.0.1 0.4.1.0 0.5.0.0 0.5.1.1: Service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 2.12 2.13 2.14 2.15 2.17 2.18: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 2.12 2.13 2.14 2.15 2.17 2.18 2.20: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10 1.11: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 2.9 3.0 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.7 4.8: Super-useful stream editor
@@ -17019,7 +17014,6 @@ sys-cluster/neutron 15.0.2 15.1.0 16.0.0 2019.2.9999 2020.1.9999: A virtual netw
 sys-cluster/nova 20.2.0 21.0.0 2019.2.9999 2020.1.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
-sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2019.2.2 2019.2.9999 2020.1.0 2020.1.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1: Pacemaker CRM
@@ -17822,7 +17816,6 @@ www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.11.1-r1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.53.2: Seamonkey Web Browser
-www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
@@ -18339,7 +18332,6 @@ x11-misc/wbar 2.3.4-r2 2.3.4-r3: A fast, lightweight quick launch bar
 x11-misc/wdm 1.28-r4 1.28-r5: WINGs Display Manager
 x11-misc/whaw 0.2: Window manager independent Window Layout tool
 x11-misc/wininfo 0.7-r1: An X app that follows your pointer providing information about the windows below
-x11-misc/wmakerconf 2.12-r3: X based config tool for the windowmaker X windowmanager
 x11-misc/wmctrl 1.07-r2: command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmname 0.1-r1: utility to set the name of your window manager
 x11-misc/x11vnc 0.9.16-r2 0.9.16-r3: VNC server for real X displays
@@ -18438,7 +18430,6 @@ x11-plugins/cputnik 0.2.0-r1: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5-r1 1.5-r2: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/e16-epplets 0.16: Enlightenment DR16 epplets
 x11-plugins/enigmail 2.0.12-r1 2.1.5 2.1.6 9999: Mozilla extension to provide GPG support in mail clients
-x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2-r1: CPU load flames for GKrellM 2
 x11-plugins/gkrellkam 2.0.0: an Image-Watcher-Plugin for GKrellM2
