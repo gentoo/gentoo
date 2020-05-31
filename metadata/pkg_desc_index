@@ -8053,7 +8053,6 @@ dev-python/mergedict 1.0.0: A Python 'dict' with a merge() method
 dev-python/metakernel 0.20.4: Metakernel for Jupyter
 dev-python/micawber 0.5.1: A small library for extracting rich content from urls
 dev-python/microversion-parse 0.2.1: A simple parser for OpenStack microversion headers
-dev-python/mimeparse 1.6.0: Basic functions for handling mime-types in python
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/mini-amf 0.9.1-r1: Minimal AMF encoder and decoder for Python
 dev-python/minidb 2.0.2-r1 2.0.3 2.0.4: Simple SQLite-based object store
@@ -8534,6 +8533,7 @@ dev-python/python-magnumclient 2.12.0: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.27.0: A client for the OpenStack Manila API
 dev-python/python-markdown-math 0.6-r1: Math extension for Python-Markdown
 dev-python/python-memcached 1.59: Pure python memcached client
+dev-python/python-mimeparse 1.6.0 1.6.0-r1: Basic functions for handling mime-types in python
 dev-python/python-mistralclient 3.8.1: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.15.0: A client for the OpenStack Monasca API
 dev-python/python-mpd 1.0.0: Python MPD client library
