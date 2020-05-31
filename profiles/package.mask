@@ -196,24 +196,6 @@ dev-tex/revtex
 # >=dev-db/mysql-5.7. Masked for removal in 30 days.
 <dev-db/mysql-5.7
 
-# Matt Turner <mattst88@gentoo.org> (2020-04-30)
-# Unmaintained. Blocks removal of other dead packages. No Python3 support.
-# Masked for removal in 30 days. Bug #720190
-# Matthew Turnbull <sparky@bluefang-logic.com>
-# Cinnamon updated to 4.4, so only mask older versions. Bug #704532.
-<gnome-extra/cinnamon-4.4
-<gnome-extra/cinnamon-control-center-4.4
-<gnome-extra/cinnamon-desktop-4.4
-<gnome-extra/cinnamon-menus-4.4
-<gnome-extra/cinnamon-screensaver-4.4
-<gnome-extra/cinnamon-session-4.4
-<gnome-extra/cinnamon-settings-daemon-4.4
-<gnome-extra/cinnamon-translations-4.4
-<gnome-extra/cjs-4.4
-<gnome-extra/nemo-4.4
-<x11-wm/muffin-4.4
-=dev-python/xapp-1.0.1-r2
-
 # Matt Turner <mattst88@gentoo.org> (2020-04-29)
 # Masked for testing
 >=dev-libs/gjs-1.64
