@@ -19,5 +19,5 @@ IUSE=""
 ruby_add_rdepend "dev-ruby/minitest"
 
 all_ruby_prepare() {
-	sed -i -e '/\(bundler\|awesome_print\)/ s:^:#:' spec/helper.rb || die
+	sed -i -e '/\(bundler\|awesome_print\)/ s:^:#:' Rakefile spec/helper.rb || die
 }
