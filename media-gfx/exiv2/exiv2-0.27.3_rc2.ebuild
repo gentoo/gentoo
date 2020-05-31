@@ -65,6 +65,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_CXX_STANDARD=14
 		-DEXIV2_BUILD_SAMPLES=NO
 		-DEXIV2_BUILD_PO=$(usex nls)
 		-DEXIV2_ENABLE_NLS=$(usex nls)
