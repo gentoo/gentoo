@@ -342,12 +342,6 @@ dev-python/pyodbc
 # Removal in 30 days.  Bug #719418.
 dev-python/pyjade
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Unmaintained.  Stuck on Python 3.6.  Tests require direct hardware
-# access.  Ebuild broken.  No revdeps.
-# Removal in 30 days.  Bug #719380.
-dev-python/pyalsaaudio
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
