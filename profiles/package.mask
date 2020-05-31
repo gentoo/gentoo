@@ -348,11 +348,6 @@ dev-python/pyjade
 # Removal in 30 days.  Bug #719380.
 dev-python/pyalsaaudio
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-25)
-# Unused plugin for dead dev-python/nose.  No revdeps.
-# Removal in 30 days.  Bug #719280.
-dev-python/nose-descriptionfixer
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
