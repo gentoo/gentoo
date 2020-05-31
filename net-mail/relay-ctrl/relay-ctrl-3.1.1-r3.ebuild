@@ -28,6 +28,7 @@ src_prepare() {
 	eapply_user
 	ht_fix_file "${S}"/Makefile
 	eapply "${FILESDIR}"/authenticated.c-relayfixup.diff
+	eapply "${FILESDIR}"/relay-ctrl-3.1.1-NOFILE-overstep.patch
 }
 
 src_configure() {
