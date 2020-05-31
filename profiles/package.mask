@@ -246,11 +246,6 @@ net-irc/quassel-irssi
 # Removal in 30 days.  Bug #719746.
 dev-python/asynctest
 
-# Zac Medico <zmedico@gentoo.org> (2020-04-26)
-# Stuck on py3.6.  No revdeps.
-# Removal in 30 days.  Bug #719540.
-dev-python/riak-python-client
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-26)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
 # Removal in 30 days.  Bug #719604.
