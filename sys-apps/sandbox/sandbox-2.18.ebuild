@@ -33,7 +33,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# Default sandbox build will run with --jobs set to # cpus.
-	emake check TESTSUITEFLAGS="--jobs=$(makeopts_jobs)"
+	emake -j1 check TESTSUITEFLAGS="--jobs=$(makeopts_jobs)"
 }
 
 multilib_src_install_all() {
