@@ -268,7 +268,6 @@ www-client/seamonkey-bin
 dev-go/go-crypto
 dev-go/go-net
 dev-go/go-sys
-=dev-embedded/arduino-builder-1.4.1
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-26)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
