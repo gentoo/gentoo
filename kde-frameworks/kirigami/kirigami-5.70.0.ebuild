@@ -15,7 +15,7 @@ HOMEPAGE="https://techbase.kde.org/Kirigami"
 EGIT_REPO_URI="${EGIT_REPO_URI/${PN}2/${PN}}"
 
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE=""
 
 # drop qtgui subslot operator when QT_MINIMAL >= 5.14.0
