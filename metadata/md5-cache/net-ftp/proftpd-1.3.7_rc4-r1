@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.7rc4.tar.gz case? ( http://www.castaglia.org/proftpd/modules/proftpd-mod-case-0.7.tar.gz ) clamav? ( https://github.com/jbenden/mod_clamav/archive/v0.14rc2.tar.gz -> proftpd-mod_clamav-0.14rc2.tar.gz ) diskuse? ( http://www.castaglia.org/proftpd/modules/proftpd-mod-diskuse-0.9.tar.gz ) kerberos? ( mirror://sourceforge/gssmod/mod_gss-1.3.9.tar.gz ) msg? ( http://www.castaglia.org/proftpd/modules/proftpd-mod-msg-0.4.1.tar.gz ) vroot? ( https://github.com/Castaglia/proftpd-mod_vroot/archive/v0.9.4.tar.gz -> mod_vroot-0.9.4.tar.gz )
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=86c7cb89353d655f5d7ba56cb4e7160d
+_md5_=ed60ababc62389c88f3e0683bc332336
