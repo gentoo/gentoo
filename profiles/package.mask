@@ -222,10 +222,6 @@ x11-misc/wmakerconf
 # Masked for testing
 >=dev-libs/gjs-1.64
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-04-28)
-# Dead upstream. Removal in 30 days
-sys-cluster/openais
-
 # Michał Górny <mgorny@gentoo.org> (2020-04-26)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
 # Removal in 30 days.  Bug #719604.
