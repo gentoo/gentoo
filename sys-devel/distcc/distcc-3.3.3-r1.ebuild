@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit autotools flag-o-matic python-single-r1 systemd \
 	toolchain-funcs user xdg-utils prefix
@@ -15,18 +15,10 @@ SRC_URI="https://github.com/distcc/distcc/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
-IUSE="gnome gssapi gtk hardened ipv6 selinux xinetd zeroconf"
-
-RESTRICT="test"
+IUSE="gssapi gtk hardened ipv6 selinux xinetd zeroconf"
 
 CDEPEND="${PYTHON_DEPS}
 	dev-libs/popt
-	gnome? (
-		>=gnome-base/libgnome-2
-		>=gnome-base/libgnomeui-2
-		x11-libs/gtk+:2
-		x11-libs/pango
-	)
 	gssapi? ( net-libs/libgssglue )
 	gtk? ( x11-libs/gtk+:2 )
 	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
@@ -36,7 +28,6 @@ DEPEND="${CDEPEND}
 	sys-libs/binutils-libs
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
-	!net-misc/pump
 	dev-util/shadowman
 	>=sys-devel/gcc-config-1.4.1
 	selinux? ( sec-policy/selinux-distcc )
@@ -55,6 +46,8 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-3.3.2-freedesktop.patch"
 	# SOCKSv5 support needed for Portage, bug #537616
 	eapply "${FILESDIR}/${PN}-3.2_rc1-socks5.patch"
+	# backport py3.8 fixes
+	eapply "${FILESDIR}/${P}-py38.patch"
 	eapply_user
 
 	# Bugs #120001, #167844 and probably more. See patch for description.
@@ -70,6 +63,9 @@ src_prepare() {
 		-e "s:@libdir@:/usr/lib:" \
 		"${FILESDIR}/distcc-config" > "${T}/distcc-config" || die
 
+	# TODO: gdb tests fail due to gdb failing to find .c file
+	sed -i -e '/Gdb.*Case,/d' test/testdistcc.py || die
+
 	hprefixify update-distcc-symlinks.py src/{serve,daemon}.c
 	python_fix_shebang update-distcc-symlinks.py "${T}/distcc-config"
 	eautoreconf
@@ -81,12 +77,19 @@ src_configure() {
 		--libdir=/usr/lib
 		$(use_enable ipv6 rfc2553)
 		$(use_with gtk)
-		$(use_with gnome)
+		--without-gnome
 		$(use_with gssapi auth)
 		$(use_with zeroconf avahi)
 	)
 
 	econf "${myconf[@]}"
+}
+
+src_test() {
+	# sandbox breaks some tests, and hangs some too
+	# retest once #590084 is fixed
+	local -x SANDBOX_ON=0
+	emake -j1 check
 }
 
 src_install() {
@@ -127,7 +130,7 @@ src_install() {
 
 	dobin "${T}/distcc-config"
 
-	if use gnome || use gtk; then
+	if use gtk; then
 		einfo "Renaming /usr/bin/distccmon-gnome to /usr/bin/distccmon-gui"
 		einfo "This is to have a little sensability in naming schemes between distccmon programs"
 		mv "${ED}/usr/bin/distccmon-gnome" "${ED}/usr/bin/distccmon-gui" || die
@@ -160,8 +163,6 @@ pkg_postinst() {
 		eselect compiler-shadow update distccd
 	fi
 
-	use gnome && xdg_desktop_database_update
-
 	elog
 	elog "Tips on using distcc with Gentoo can be found at"
 	elog "https://wiki.gentoo.org/wiki/Distcc"
@@ -172,7 +173,7 @@ pkg_postinst() {
 	elog "To use the distccmon programs with Gentoo you should use this command:"
 	elog "# DISTCC_DIR=\"${DISTCC_DIR:-${BUILD_PREFIX}/.distcc}\" distccmon-text 5"
 
-	if use gnome || use gtk; then
+	if use gtk; then
 		elog "Or:"
 		elog "# DISTCC_DIR=\"${DISTCC_DIR:-${BUILD_PREFIX}/.distcc}\" distccmon-gnome"
 	fi
@@ -189,8 +190,4 @@ pkg_prerm() {
 	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT} == / ]]; then
 		eselect compiler-shadow remove distcc
 	fi
-}
-
-pkg_postrm() {
-	use gnome && xdg_desktop_database_update
 }
