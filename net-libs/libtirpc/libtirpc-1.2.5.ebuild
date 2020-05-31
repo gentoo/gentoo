@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	elibc_musl? ( sys-libs/queue-standalone )"
 BDEPEND="
 	app-arch/xz-utils
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 src_prepare() {
 	cp -r "${WORKDIR}"/tirpc "${S}"/ || die

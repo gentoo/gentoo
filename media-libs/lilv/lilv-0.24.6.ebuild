@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	${PYTHON_DEPS}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? ( dev-python/unittest2 )
 "

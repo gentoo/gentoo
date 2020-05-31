@@ -27,7 +27,7 @@ RDEPEND="fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
 	xpm? ( >=x11-libs/libXpm-3.5.10-r1[${MULTILIB_USEDEP}] >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 S="${WORKDIR}/lib${P}"
 
