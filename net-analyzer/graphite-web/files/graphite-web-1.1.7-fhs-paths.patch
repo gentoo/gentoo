@@ -10,17 +10,17 @@ Install FHS-style paths
  from graphite.wsgi import application
 --- a/setup.py
 +++ b/setup.py
-@@ -59,8 +59,8 @@
+@@ -115,8 +115,8 @@
        ],
        package_data={'graphite' :
          ['templates/*', 'local_settings.py.example']},
 -      scripts=glob('bin/*'),
-+      scripts=['bin/graphite-web-build-index'],
 -      data_files=list(webapp_content.items()) + storage_dirs + conf_files + examples,
++      scripts=['bin/graphite-web-build-index'],
 +      data_files=list(webapp_content.items()),
-       install_requires=['Django>=1.8,<1.11.99', 'django-tagging==0.4.3', 'pytz', 'pyparsing', 'cairocffi', 'urllib3', 'scandir', 'six'],
+       install_requires=['Django>=1.8,<3.1', 'django-tagging==0.4.3', 'pytz',
+                         'pyparsing', 'cairocffi', 'urllib3', 'scandir', 'six'],
        classifiers=[
-           'Intended Audience :: Developers',
 --- a/webapp/graphite/local_settings.py.example
 +++ b/webapp/graphite/local_settings.py.example
 @@ -101,6 +101,7 @@
