@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -17,15 +17,12 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/fixtures[${PYTHON_USEDEP}]
 		dev-python/unittest2[${PYTHON_USEDEP}]
 	)"
-
-RDEPEND=""
 
 python_test() {
 	"${PYTHON}" -m unittest2 discover || die "tests failed under ${EPYTHON}"
