@@ -267,7 +267,6 @@ www-client/seamonkey-bin
 # reverse dependencies. Removal in 30 days.  Bug #710142.
 dev-go/go-crypto
 dev-go/go-net
-dev-go/go-sys
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-26)
 # Unmaintained.  Stuck on Python 3.6.  No revdeps.
