@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 inherit apache-module flag-o-matic multilib ruby-ng toolchain-funcs
 
@@ -87,6 +87,7 @@ all_ruby_compile() {
 		 HTTPD="${APACHE_BIN}" \
 		 FS_LIBDIR='/usr/'$(get_libdir) \
 		 USE_VENDORED_LIBUV="no" LIBUV_LIBS="-luv" \
+		 RANLIB=$(tc-getRANLIB) \
 		 ruby -S rake apache2 || die "rake failed"
 	fi
 }
@@ -99,6 +100,7 @@ each_ruby_compile() {
 	HTTPD="${APACHE_BIN}" \
 	FS_LIBDIR='/usr/'$(get_libdir) \
 	USE_VENDORED_LIBUV="no" LIBUV_LIBS="-luv" \
+	RANLIB=$(tc-getRANLIB) \
 	${RUBY} -S rake native_support || die "rake failed"
 }
 
@@ -123,5 +125,6 @@ each_ruby_install() {
 	FS_LIBDIR='/usr/'$(get_libdir) \
 	EXTRA_LDFLAGS="${LDFLAGS}" \
 	USE_VENDORED_LIBUV="no" LIBUV_LIBS="-luv" \
+	RANLIB=$(tc-getRANLIB) \
 	${RUBY} -S rake fakeroot || die "rake failed"
 }
