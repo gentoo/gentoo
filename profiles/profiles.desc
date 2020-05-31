@@ -141,7 +141,6 @@ mips		default/linux/mips/17.0/mipsel/multilib/n64	exp
 ppc		default/linux/powerpc/ppc32/17.0			stable
 ppc		default/linux/powerpc/ppc32/17.0/desktop		stable
 ppc		default/linux/powerpc/ppc32/17.0/desktop/gnome		stable
-ppc		default/linux/powerpc/ppc32/17.0/desktop/gnome/systemd	stable
 ppc		default/linux/powerpc/ppc32/17.0/developer		stable
 
 # PPC64 Profiles
@@ -149,7 +148,6 @@ ppc		default/linux/powerpc/ppc32/17.0/developer		stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland				stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop			stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome		stable
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome/systemd	stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/developer		stable
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland				stable
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop			stable
