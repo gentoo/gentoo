@@ -11,7 +11,7 @@ SRC_URI="https://git.kernel.dk/cgit/${PN}/snapshot/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static-libs"
 
 src_prepare() {
