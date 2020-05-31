@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
-MY_PN="python-${PN}"
+MY_PN="python-mimeparse"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Basic functions for handling mime-types in python"
