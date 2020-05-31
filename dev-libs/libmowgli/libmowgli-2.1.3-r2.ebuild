@@ -20,7 +20,11 @@ RDEPEND="ssl? (
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README doc/BOOST doc/design-concepts.txt )
-PATCHES=( "${FILESDIR}"/${P}-cacheline-Ensure-sysconf-var-is-defined-before-use.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cacheline-Ensure-sysconf-var-is-defined-before-use.patch
+	"${FILESDIR}"/${P}-use-host-tools-for-ar-and-ranlib.patch
+)
+
 S="${WORKDIR}/${PN}-2-${PV}"
 
 src_configure() {
