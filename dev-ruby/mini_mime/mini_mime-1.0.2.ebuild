@@ -23,6 +23,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-lin
 IUSE="test"
 
 all_ruby_prepare() {
+	sed -i -e '/bundler/ s:^:#:' Rakefile || die
 	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid comparison with MIME::Types because types may vary over time
