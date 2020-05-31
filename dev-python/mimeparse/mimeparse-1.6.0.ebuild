@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -21,11 +21,8 @@ IUSE=""
 
 S="${WORKDIR}/${MY_P}"
 
-RDEPEND=""
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-
 python_test() {
-	"${EPYTHON}" mimeparse_test.py || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" mimeparse_test.py -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
