@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">sirjuddington/SLADE</remote-id>
+	</upstream>
+	<use>
+		<flag name="fluidsynth">Enable MIDI software synthesis using <pkg>media-sound/fluidsynth</pkg></flag>
+	</use>
+</pkgmetadata>

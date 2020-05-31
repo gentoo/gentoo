@@ -1,0 +1,88 @@
+From 7e2aa2666701cc0db32d8b3185c3cd07ae733ab0 Mon Sep 17 00:00:00 2001
+From: Simon Judd <sirjuddington@gmail.com>
+Date: Fri, 6 Dec 2019 16:36:52 +1030
+Subject: [PATCH] Fix SFML RenderWindow embedding on GTK3
+
+It actually seems to work ok now so might be able to make it the default there
+
+It'd be nice if it worked on macos as well, then I'd be able to remove the wxGLCanvas/FTGL stuff completely...
+---
+
+diff --git a/src/UI/Canvas/OGLCanvas.cpp b/src/UI/Canvas/OGLCanvas.cpp
+index 92f86b29..4bba9f98 100644
+--- a/src/UI/Canvas/OGLCanvas.cpp
++++ b/src/UI/Canvas/OGLCanvas.cpp
+@@ -44,6 +44,8 @@
+ #endif
+ #endif
+ 
++EXTERN_CVAR(Int, gl_depth_buffer_size)
++
+ 
+ /*******************************************************************
+  * OGLCANVAS CLASS FUNCTIONS
+@@ -130,29 +132,29 @@ bool OGLCanvas::setContext()
+ #endif
+ }
+ 
+-void OGLCanvas::createSFML()
++bool OGLCanvas::createSFML()
+ {
+ #ifdef USE_SFML_RENDERWINDOW
+ 	// Code taken from SFML wxWidgets integration example
+ 	sf::WindowHandle handle;
+ #ifdef __WXGTK__
+-	// GTK implementation requires to go deeper to find the
+-	// low-level X11 identifier of the widget
+-	gtk_widget_realize(m_wxwindow);
+-	gtk_widget_set_double_buffered(m_wxwindow, false);
+-	GdkWindow* Win = gtk_widget_get_window(m_wxwindow);
+-	XFlush(GDK_WINDOW_XDISPLAY(Win));
+-	//sf::RenderWindow::Create(GDK_WINDOW_XWINDOW(Win));
+-	handle = GDK_WINDOW_XWINDOW(Win);
++	auto widget = GetHandle();
++	if (!widget)
++		return false;
++	auto window = gtk_widget_get_window(widget);
++	if (!window)
++		return false;
++	handle = gdk_x11_window_get_xid(window);
+ #else
+ 	handle = GetHandle();
+ #endif
+ 	// Context settings
+ 	sf::ContextSettings settings;
+-	settings.depthBits = 24;
+-	settings.stencilBits = 8;
++	settings.depthBits = gl_depth_buffer_size;
++	settings.stencilBits = sf::ContextSettings::Default;
+ 	sf::RenderWindow::create(handle, settings);
+ #endif
++	return true;
+ }
+ 
+ /* OGLCanvas::init
+@@ -308,7 +310,9 @@ void OGLCanvas::onPaint(wxPaintEvent& e)
+ 
+ 	if (recreate)
+ 	{
+-		createSFML();
++		if (!createSFML())
++			return;
++
+ 		recreate = false;
+ 	}
+ 
+diff --git a/src/UI/Canvas/OGLCanvas.h b/src/UI/Canvas/OGLCanvas.h
+index a1defbee..9b9b07db 100644
+--- a/src/UI/Canvas/OGLCanvas.h
++++ b/src/UI/Canvas/OGLCanvas.h
+@@ -28,7 +28,7 @@ public:
+ 	Palette*	getPalette() { return &palette; }
+ 	void			setPalette(Palette* pal) { palette.copyPalette(pal); }
+ 	bool			setContext();
+-	void			createSFML();
++	bool			createSFML();
+ 	void			init();
+ 	virtual void	draw() = 0;
+ 	virtual void	update(long frametime) {}
