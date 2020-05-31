@@ -36,6 +36,7 @@ RDEPEND="${DEPEND}
 "
 
 pkg_pretend() {
+	use inotify && CONFIG_CHECK+=" ~INOTIFY_USER"
 	use namespaces && CONFIG_CHECK="~NAMESPACES ~UTS_NS ~IPC_NS ~USER_NS ~PID_NS ~NET_NS"
 	use seccomp && CONFIG_CHECK+=" ~SECCOMP"
 	check_extra_config
