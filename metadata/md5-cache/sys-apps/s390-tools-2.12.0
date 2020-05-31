@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare
+DEPEND=fuse? ( sys-fs/fuse:0= ) ncurses? ( sys-libs/ncurses:0= ) openssl? ( dev-libs/openssl:0= cryptsetup? ( >=sys-fs/cryptsetup-2.0.3:= dev-libs/json-c:= ) ) pfm? ( app-misc/pfm ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib ) dev-util/indent app-admin/genromfs
+DESCRIPTION=User space utilities for the zSeries (s390) Linux kernel and device drivers
+EAPI=7
+HOMEPAGE=https://github.com/ibm-s390-tools/s390-tools
+IUSE=cryptsetup fuse ncurses openssl pfm snmp zlib
+KEYWORDS=-* s390
+LICENSE=MIT
+RDEPEND=fuse? ( sys-fs/fuse:0= ) ncurses? ( sys-libs/ncurses:0= ) openssl? ( dev-libs/openssl:0= cryptsetup? ( >=sys-fs/cryptsetup-2.0.3:= dev-libs/json-c:= ) ) pfm? ( app-misc/pfm ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=https://github.com/ibm-s390-tools/s390-tools/archive/v2.12.0.tar.gz -> s390-tools-2.12.0.tar.gz
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=c3f0876eb8acde2711dffc0946bcdff6
