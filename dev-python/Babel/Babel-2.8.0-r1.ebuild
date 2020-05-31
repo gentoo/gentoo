@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_{6..9}} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -24,3 +24,12 @@ DEPEND="${DEPEND}
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py39.patch
+)
+
+src_test() {
+	local -x TZ=UTC
+	distutils-r1_src_test
+}
