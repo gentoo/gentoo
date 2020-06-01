@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-22)
-# Build deps are not keyworded
-media-fonts/noto-emoji buildfont
-
 # Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
 # Mask until 'app-arch/lxqt-archiver' is keyworded.
 lxqt-base/lxqt-meta archiver
