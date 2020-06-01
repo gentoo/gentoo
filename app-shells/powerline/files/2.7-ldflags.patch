@@ -1,0 +1,15 @@
+diff -Naur powerline-status-2.7/setup.py powerline-status-2.7.new/setup.py
+--- powerline-status-2.7/setup.py	2018-08-12 14:41:44.000000000 -0500
++++ powerline-status-2.7.new/setup.py	2020-06-01 14:56:25.977968288 -0500
+@@ -30,9 +30,10 @@
+ 		from distutils.ccompiler import new_compiler
+ 		compiler = new_compiler().compiler
+ 		cflags = os.environ.get('CFLAGS', str('-O3'))
++		ldflags = os.environ.get('LDFLAGS', str(''))
+ 		# A normal split would do a split on each space which might be incorrect. The
+ 		# shlex will not split if a space occurs in an arguments value.
+-		subprocess.check_call(compiler + shlex.split(cflags) + ['client/powerline.c', '-o', 'scripts/powerline'])
++		subprocess.check_call(compiler + shlex.split(cflags) + shlex.split(ldflags) + ['client/powerline.c', '-o', 'scripts/powerline'])
+ 
+ try:
+ 	compile_client()

@@ -25,3 +25,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}"/2.7-ldflags.patch
+)
