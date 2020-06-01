@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	COMMIT="9cb4eabe3b570ccd1f53837681607d73501b5c1e"
 	SRC_URI="https://github.com/drmpeg/gr-paint38/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${COMMIT}"
+	S="${WORKDIR}/${PN}38-${COMMIT}"
 	KEYWORDS="~amd64"
 fi
 inherit cmake-utils python-single-r1
@@ -31,6 +31,8 @@ DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
 	')
+	dev-libs/gmp
+	sci-libs/volk
 	=net-wireless/gnuradio-3.8*:=[${PYTHON_SINGLE_USEDEP}]
 "
 RDEPEND="${DEPEND}
@@ -49,4 +51,9 @@ src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	python_optimize
 }
