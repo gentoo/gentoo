@@ -14454,7 +14454,7 @@ net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.16.3 0.19.1: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2 0.5.3: C implementation of getblocktemplate (BIP 22)
-net-libs/libbloom 1.5-r1: A simple and small bloom filter implementation in plain C.
+net-libs/libbloom 1.5-r1 1.5-r2: A simple and small bloom filter implementation in plain C.
 net-libs/libbtbb 2018.08.1 2018.12.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcork 0.15.0: A simple, easily embeddable cross-platform C library

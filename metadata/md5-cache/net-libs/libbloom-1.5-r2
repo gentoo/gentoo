@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A simple and small bloom filter implementation in plain C.
+EAPI=7
+HOMEPAGE=https://github.com/jvirkki/libbloom
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/jvirkki/libbloom/archive/v1.5.tar.gz -> libbloom-1.5.tar.gz
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=9a1d51bdefa9ea672e7923390aacff89
