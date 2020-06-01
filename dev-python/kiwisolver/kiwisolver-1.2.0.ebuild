@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nucleic/kiwi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Clear-BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
 	>=dev-python/cppy-1.1.0[${PYTHON_USEDEP}]
