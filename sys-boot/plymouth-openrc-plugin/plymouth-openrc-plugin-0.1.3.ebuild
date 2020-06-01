@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Plymouth plugin for OpenRC"
 HOMEPAGE="https://github.com/Kangie/plymouth-openrc-plugin"
-SRC_URI="https://github.com/Kangie/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/Kangie/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
