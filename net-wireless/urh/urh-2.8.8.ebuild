@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="bladerf hackrf plutosdr rtlsdr uhd"
 
 DEPEND="${PYTHON_DEPS}
-		net-wireless/gnuradio:=[zeromq]
+		net-wireless/gnuradio[zeromq]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyzmq[${PYTHON_USEDEP}]
