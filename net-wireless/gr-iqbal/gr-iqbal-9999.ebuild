@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE=""
+IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
@@ -27,3 +27,15 @@ RDEPEND="=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/boost:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_DOXYGEN="$(usex doc)"
+	)
+	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	python_optimize "${ED}/$(python_get_sitedir)"
+}
