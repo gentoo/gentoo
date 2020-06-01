@@ -5,7 +5,7 @@ DESCRIPTION=Intelligent Input Bus for Linux / Unix OS
 EAPI=7
 HOMEPAGE=https://github.com/ibus/ibus/wiki
 IUSE=+X +emoji +gtk +gtk2 +introspection kde nls +python test +unicode vala wayland python_targets_python2_7 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 test
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 sparc ~x86
 LICENSE=LGPL-2.1
 RDEPEND=app-text/iso-codes dev-libs/glib:2 gnome-base/dconf gnome-base/librsvg:2 sys-apps/dbus[X?] X? ( x11-libs/libX11 !gtk? ( x11-libs/gtk+:2 ) ) gtk? ( x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libXi gtk2? ( x11-libs/gtk+:2 ) ) introspection? ( dev-libs/gobject-introspection ) kde? ( dev-qt/qtgui:5 ) nls? ( virtual/libintl ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/pygobject:3[python_targets_python2_7(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] ) wayland? ( dev-libs/wayland x11-libs/libxkbcommon ) python? ( gtk? ( x11-libs/gtk+:3[introspection] ) )
 REQUIRED_USE=emoji? ( gtk ) gtk2? ( gtk ) kde? ( gtk ) python? ( || ( python_targets_python2_7 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 ) introspection ) test? ( gtk ) vala? ( introspection )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/ibus/ibus/releases/download/1.5.22/ibus-1.5.22.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=86db27adca93315c71f8d9780b01326b
+_md5_=0b3d3b75ede3a13d7fc0582f97c21c7e
