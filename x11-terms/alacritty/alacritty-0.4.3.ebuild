@@ -270,7 +270,7 @@ MY_PV="${PV//_rc/-rc}"
 # https://bugs.gentoo.org/725962
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit bash-completion-r1 cargo desktop python-any-r1
+inherit bash-completion-r1 cargo desktop python-any-r1 toolchain-funcs
 
 DESCRIPTION="GPU-accelerated terminal emulator"
 HOMEPAGE="https://github.com/alacritty/alacritty"
@@ -328,6 +328,7 @@ src_unpack() {
 }
 
 src_configure() {
+	tc-export AR CC
 	myfeatures=(
 		$(usex X x11 '')
 		$(usev wayland)

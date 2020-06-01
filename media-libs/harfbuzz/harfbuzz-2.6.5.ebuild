@@ -5,14 +5,14 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit flag-o-matic libtool multilib-minimal python-any-r1 xdg-utils
+inherit autotools flag-o-matic libtool multilib-minimal python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 
 if [[ ${PV} = 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/harfbuzz/harfbuzz.git"
-	inherit git-r3 autotools
+	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
@@ -81,7 +81,7 @@ src_prepare() {
 		test/shaping/data/in-house/Makefile.sources \
 		test/shaping/data/in-house/Makefile.in || die # bug 726120
 
-	[[ ${PV} == 9999 ]] && eautoreconf
+	eautoreconf
 	elibtoolize # for Solaris
 
 	# bug 618772
