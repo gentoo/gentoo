@@ -42,6 +42,7 @@ BDEPEND="
 		>=dev-python/freezegun-0.3.11[${PYTHON_USEDEP}]
 		dev-python/pathlib2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-4.0.0[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		=dev-python/tox-${PV}-${PR}[${PYTHON_USEDEP}]
 	)"
 
