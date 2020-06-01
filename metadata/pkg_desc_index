@@ -13823,7 +13823,7 @@ media-video/streamdvd 0.4-r2: fast tool to backup Video DVDs 'on the fly'
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
 media-video/subcheck 0.78.2-r1: Subcheck checks srt subtitle files for errors
 media-video/subdl 1.0.3: A command-line tool for downloading subs from opensubtitles.org
-media-video/subliminal 2.0.5-r2 2.0.5-r3 9999: Python library to search and download subtitles
+media-video/subliminal 2.0.5-r2 2.0.5-r3 2.1.0 9999: Python library to search and download subtitles
 media-video/submux-dvd 0.5.2-r1: A subtitle multiplexer, muxes subtitles into .vob
 media-video/subsync 0.0.1: subsync is an program that synchronizes srt subtitle files
 media-video/subtitlecomposer 0.7.0: Text-based subtitles editor
