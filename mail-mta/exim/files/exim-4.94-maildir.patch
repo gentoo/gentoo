@@ -1,0 +1,13 @@
+--- a/src/configure.default
++++ b/src/configure.default
+@@ -873,7 +873,9 @@
+ 
+ local_delivery:
+   driver = appendfile
+-  file = /var/mail/$local_part_data
++# file = /var/mail/$local_part_data
++  directory = /home/$local_part_data/.maildir
++  maildir_format
+   delivery_date_add
+   envelope_to_add
+   return_path_add
