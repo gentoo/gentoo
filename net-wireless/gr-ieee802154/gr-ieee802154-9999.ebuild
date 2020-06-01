@@ -27,6 +27,8 @@ RDEPEND="=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
 	')
+	dev-libs/gmp
+	sci-libs/volk
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-lang/swig:0"
@@ -48,4 +50,9 @@ src_configure() {
 		-DGR_PKG_DOC_DIR="/usr/share/doc/${P}"
 	)
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	python_optimize "${ED}/$(python_get_sitedir)"
 }
