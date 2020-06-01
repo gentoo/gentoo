@@ -4,11 +4,11 @@ DESCRIPTION=Command-line utility and library for lossy compression of PNG images
 EAPI=7
 HOMEPAGE=https://pngquant.org/ https://github.com/kornelski/pngquant
 IUSE=cpu_flags_x86_sse2 debug lcms openmp test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-3 HPND rwpng
 RDEPEND=media-libs/libpng:0= media-gfx/libimagequant:= sys-libs/zlib:= lcms? ( media-libs/lcms:2 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/kornelski/pngquant/archive/2.12.6.tar.gz -> pngquant-2.12.6.tar.gz
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=8b5d18f94948d8f8602ce0351c5b0638
+_md5_=bf185493134d0df6f0d4425687a86c7d
