@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,8 +34,6 @@ src_prepare() {
 		-e 's|IPTRAF|&-NG|g' \
 		-e 's|IPTraf|&-NG|g' \
 		-e 's|iptraf|&-ng|g' \
-		-e 's|rvnamed|&-ng|g' \
-		-e 's|RVNAMED|&-NG|g' \
 		src/*.8 || die
 
 	default
@@ -48,10 +46,10 @@ src_configure() {
 }
 
 src_install() {
-	dosbin {iptraf,rvnamed}-ng
+	dosbin ${PN}
 
 	doman src/*.8
-	dodoc AUTHORS CHANGES FAQ README* RELEASE-NOTES
+	dodoc AUTHORS CHANGES* FAQ README*
 
 	if use doc; then
 		docinto html
