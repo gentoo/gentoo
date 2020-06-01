@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 bash-completion-r1
