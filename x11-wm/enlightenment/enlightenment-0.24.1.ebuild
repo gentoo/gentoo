@@ -93,7 +93,7 @@ pkg_postinst() {
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 
-	einfo "Additional programs to complete full EFL suite: "
+	elog "Additional programs to complete full EFL suite: "
 	optfeature "office file thumbnails" app-office/libreoffice app-office/libreoffice-bin
 	optfeature "an EFL-based IDE" dev-util/edi
 	optfeature "image viewer" media-gfx/ephoto
