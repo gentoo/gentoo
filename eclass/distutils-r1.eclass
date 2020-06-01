@@ -476,6 +476,8 @@ _distutils_verify_use_setuptools() {
 			expected=rdepend
 		elif grep -F -q -s '[options.entry_points]' setup.cfg; then
 			expected=rdepend
+		elif grep -F -q -s '[entry_points]' setup.cfg; then  # pbr
+			expected=rdepend
 		else
 			expected=bdepend
 		fi
