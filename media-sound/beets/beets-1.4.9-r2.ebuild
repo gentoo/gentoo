@@ -13,7 +13,6 @@ inherit distutils-r1 bash-completion-r1
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/beetbox/beets.git"
 	inherit git-r3
-	KEYWORDS="~amd64 ~x86"
 else
 	MY_PV=${PV/_beta/-beta.}
 	MY_P=${PN}-${MY_PV}
