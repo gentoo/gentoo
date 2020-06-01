@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install prepare setup test
+DEFINED_PHASES=compile install setup test
 DEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) dev-lang/tcl:0=
 DESCRIPTION=Python package for Tcl
 EAPI=6
@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( python_single_target_python3_6 )
 SLOT=0
 SRC_URI=https://github.com/amykyta3/tclpython/archive/5.0.tar.gz -> tclpython-5.0.tar.gz
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=1c1edbb8093269f12bd88d827ae5deb9
+_md5_=ba844544fa8007d3b6c3db1b961f7ac1
