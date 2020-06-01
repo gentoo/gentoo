@@ -256,12 +256,6 @@ net-analyzer/ripe-atlas-tools
 net-libs/ripe-atlas-sagan
 www-client/ripe-atlas-cousteau
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Has a few bugs reported,
-# including indication of poor ebuild state.
-# Removal in 30 days.  Bug #718398.
-media-sound/beets
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
 # Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
 # requires agreement to restrictive license
