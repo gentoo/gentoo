@@ -5241,7 +5241,7 @@ dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12-r1: Portable Coroutine Library
-dev-libs/pegtl 1.3.1-r1 2.0_pre1 2.0.0 2.1.4: header-only library for creating parsers according to Parsing Expression Grammar
+dev-libs/pegtl 1.3.1-r1 2.0_pre1 2.0.0 2.1.4 2.8.3: header-only library for creating parsers according to Parsing Expression Grammar
 dev-libs/pigpio 76: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/plasma-wayland-protocols 1.0: Plasma Specific Protocols for Wayland
@@ -8242,7 +8242,7 @@ dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
 dev-python/pkginfo 1.5.0.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/plotly 1.9.6: Browser-based graphing library for Python
 dev-python/pluggy 0.11.0 0.13.1: plugin and hook calling mechanisms for python
-dev-python/pluginbase 0.5: Support library for building plugins sytems in Python
+dev-python/pluginbase 0.5 1.0.0: Support library for building plugins sytems in Python
 dev-python/plumbum 1.6.8: A library for shell script-like programs in python
 dev-python/ply 3.11: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
@@ -8299,7 +8299,7 @@ dev-python/pyasn1 0.4.8: ASN.1 library for Python
 dev-python/pyasn1-modules 0.2.1 0.2.8: pyasn1 modules
 dev-python/pyatspi 2.32.1 2.34.0 2.36.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
-dev-python/pybind11 2.4.3: AST-based Python refactoring library
+dev-python/pybind11 2.4.3 2.5.0: AST-based Python refactoring library
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
 dev-python/pybluez 0.18-r1 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
@@ -13922,7 +13922,7 @@ net-analyzer/fwlogwatch 1.4 1.5: A packet filter and firewall log analyzer
 net-analyzer/gensink 4.1-r2: A simple TCP benchmark suite
 net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking command-line
 net-analyzer/goaccess 1.2 1.3 9999: A real-time web log analyzer and interactive viewer that runs in a terminal
-net-analyzer/gr-fosphor 9999: gnuradio fosphor block (GPU spectrum display)
+net-analyzer/gr-fosphor 0.0_p20191202 0.0_p20200131 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 1.1.5-r1 1.1.7: Enterprise scalable realtime graphing
 net-analyzer/greenbone-security-assistant 8.0.1-r1 9.0.0: Greenbone Security Assistant
 net-analyzer/gspoof 3.2-r3: A simple GTK/command line TCP/IP packet generator
@@ -15239,23 +15239,23 @@ net-wireless/cpyrit-opencl 0.5.0: A sub-package that adds OpenCL-capability to P
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
 net-wireless/crda 3.18-r3 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
-net-wireless/dump1090 1.15_pre20180509 3.7.2 9999: simple Mode S decoder for RTLSDR devices
+net-wireless/dump1090 3.7.2 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/dump978 9999: simple Mode S decoder for soapysdr supported devices
 net-wireless/gnome-bluetooth 3.34.1: Bluetooth graphical utilities integrated with GNOME
-net-wireless/gnuradio 3.6.5.1-r3 3.7.13.5-r3 3.7.9999 9999: Toolkit that provides signal processing blocks to implement software radios
+net-wireless/gnuradio 3.7.13.5-r3 3.8.1.0 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.11.5-r1 2.12.1 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gqrx-scanner 1.0.1_p20190329: frequency scanner for Gqrx Software Defined Radio receiver
 net-wireless/gr-baz 9999: Gnuradio baz
 net-wireless/gr-doa 9999: Gnuradio flowgraphs and modules for Direction of Arrival analysis
 net-wireless/gr-foo 9999: Some GNU Radio blocks that bastianbl uses
-net-wireless/gr-ieee802154 0.0_p20180402 9999: IEEE 802.15.4 ZigBee Transceiver
-net-wireless/gr-iio 0.3-r2 9999: GNU Radio IIO Blocks
-net-wireless/gr-iqbal 0.37.2 9999: gnuradio I/Q balancing
+net-wireless/gr-ieee802154 0.0_p20190606 0.0_p20191006 9999: IEEE 802.15.4 ZigBee Transceiver
+net-wireless/gr-iio 0.3-r3 0.3_p20191219 9999: GNU Radio IIO Blocks
+net-wireless/gr-iqbal 0.37.3 0.38.1 9999: gnuradio I/Q balancing
 net-wireless/gr-ntsc 9999: RTL2832U NTSC viewer
 net-wireless/gr-ntsc-rc 9999: NTSC receiver and transmitter for 5 GHz drones
-net-wireless/gr-osmosdr 0.1.4_p20180626-r5 0.1.5 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
-net-wireless/gr-paint 9999: Paints monochrome images into the waterfall of a receiver
+net-wireless/gr-osmosdr 0.1.5-r1 0.2.0 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
+net-wireless/gr-paint 0.0_p20200418 0.0_p20200517 9999: Paints monochrome images into the waterfall of a receiver
 net-wireless/gr-ppm-wiegand 9999: GnuRadio PPM (Differential Pulse Position Modulation/Demodulation) plugin
 net-wireless/gr-rds 9999: GNU Radio FM RDS Receiver
 net-wireless/gr-rftap 9999: RFtap Module for GNU Radio
@@ -15317,9 +15317,9 @@ net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spect
 net-wireless/srslte 19.09: Open source SDR LTE software suite from Software Radio Systems
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
-net-wireless/uhd 3.10.3.0 3.11.0.0 3.12.0.0 3.13.0.1 3.13.1.0 3.14.0.0 3.14.1.1 3.15.0.0-r1: Universal Software Radio Peripheral (USRP) Hardware Driver
+net-wireless/uhd 3.15.0.0-r1 3.15.0.0-r100: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/unifi 5.6.42-r1 5.12.72 5.13.27 5.13.29 5.14.7 5.14.9: A Management Controller for Ubiquiti Networks UniFi APs
-net-wireless/urh 2.8.4 9999: Universal Radio Hacker: investigate wireless protocols like a boss
+net-wireless/urh 2.8.8 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.6 0.8.0: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
 net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breaking 802.11 WEP keys
@@ -16077,6 +16077,7 @@ sci-libs/trilinos 12.14.1 12.18.1: Scientific library collection for large scale
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.6.2 5.7.9: Unsymmetric multifrontal sparse LU factorization library
+sci-libs/volk 2.3.0: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 9999: Votca tools library
 sci-libs/vtk 8.1.0-r7 8.2.0: The Visualization Toolkit
