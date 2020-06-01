@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>bolson@bolson.org</email>
+			<name>Brian Olson</name>
+		</maintainer>
+		<remote-id type="pypi">cbor</remote-id>
+		<remote-id type="bitbucket">bodhisnarkva/cbor</remote-id>
+	</upstream>
+	<longdescription>This library provides encoding and decoding for the
+Concise Binary Object Representation (CBOR) (RFC 7049) serialization format.
+It is implemented in pure python with an optional C backend and is compatible
+with versions 2.7 through to 3.8.  On cPython>=3.3 cbor2 can use a built in C
+module for performance similar to how pickle wraps the _pickle C module in the
+Python Standard Library.
+	</longdescription>
+</pkgmetadata>
