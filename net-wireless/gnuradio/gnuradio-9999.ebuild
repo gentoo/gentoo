@@ -184,6 +184,17 @@ src_install() {
 	rm -rf "${ED}"/usr/share/${PN}/grc/freedesktop || die
 	rm -f "${ED}"/usr/libexec/${PN}/grc_setup_freedesktop || die
 
+	# Install icons, menu items and mime-types for GRC
+	if use grc ; then
+		local fd_path="${S}/grc/scripts/freedesktop"
+		insinto /usr/share/mime/packages
+		doins "${fd_path}/${PN}-grc.xml"
+
+		domenu "${fd_path}/"*.desktop
+		doicon "${fd_path}/"*.png
+	fi
+
+	python_fix_shebang "${ED}"
 	# Remove incorrectly byte-compiled Python files and replace
 	find "${ED}"/usr/lib -name "*.py[co]" -exec rm {} \; || die
 	python_optimize
