@@ -6,6 +6,7 @@ EAPI=7
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 PYTHON_REQ_USE="sqlite"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 bash-completion-r1
 
@@ -88,10 +89,7 @@ DEPEND="
 			dev-python/flask-cors[${PYTHON_MULTI_USEDEP}]
 		)
 	')"
-BDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
-	')"
+BDEPEND="dev-python/sphinx"
 
 DOCS=( README.rst docs/changelog.rst )
 
