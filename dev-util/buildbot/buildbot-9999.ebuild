@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-[[ ${PV} == *9999 ]] && inherit git-r3
+inherit git-r3
 inherit readme.gentoo-r1 systemd distutils-r1
 
 MY_PV="${PV/_p/.post}"
@@ -21,11 +21,7 @@ HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pyp
 
 LICENSE="GPL-2"
 SLOT="0"
-if [[ ${PV} == *9999 ]]; then
-	KEYWORDS=""
-else
-	KEYWORDS="~amd64 ~amd64-linux ~x86-linux"
-fi
+KEYWORDS=""
 
 IUSE="crypt doc docker examples irc test"
 RESTRICT="!test? ( test )"
@@ -79,9 +75,9 @@ DEPEND="${RDEPEND}
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/treq[${PYTHON_USEDEP}]
 		dev-python/setuptools_trial[${PYTHON_USEDEP}]
-		~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
-		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
-		~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
+		dev-util/buildbot-pkg[${PYTHON_USEDEP}]
+		dev-util/buildbot-worker[${PYTHON_USEDEP}]
+		dev-util/buildbot-www[${PYTHON_USEDEP}]
 		crypt? (
 			>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt]
 			>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
@@ -89,17 +85,8 @@ DEPEND="${RDEPEND}
 			dev-python/service_identity[${PYTHON_USEDEP}]
 		)
 	)"
-#		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
 
-S=${WORKDIR}/${MY_P}
-[[ ${PV} == *9999 ]] && S=${S}/master
-
-if [[ ${PV} != *9999 ]]; then
-	PATCHES=(
-		"${FILESDIR}/Add-gentoo-to-the-VERSION_ID-check-exclusion.patch"
-		"${FILESDIR}/pypugjs.patch"
-	)
-fi
+S=${S}/master
 
 distutils_enable_tests setup.py
 
