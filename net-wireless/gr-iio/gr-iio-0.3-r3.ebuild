@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -22,7 +22,7 @@ SLOT="0"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
-	>=net-wireless/gnuradio-3.7.0:=
+	=net-wireless/gnuradio-3.7*:=
 	dev-libs/boost:=
 	net-libs/libiio:=
 	net-libs/libad9361-iio:="
