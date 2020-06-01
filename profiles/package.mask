@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-06-01)
+# Effectively unmaintained, Python 2 only game and its dependencies.
+# Removal in 30 days.
+games-action/slune
+dev-python/editobj
+dev-python/py2play
+dev-python/pyopenal
+dev-python/soya
+
 # Matthew Thode <prometheanfire@gentoo.org> (2020-05-31)
 # remove unused package on 2020-06-14
 app-admin/pdk
