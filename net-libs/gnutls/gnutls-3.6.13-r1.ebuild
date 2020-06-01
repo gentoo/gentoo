@@ -54,6 +54,8 @@ DOCS=(
 
 HTML_DOCS=()
 
+PATCHES=( "${FILESDIR}"/${P}-handle-expired-root-certificates.patch )
+
 pkg_setup() {
 	# bug#520818
 	export TZ=UTC

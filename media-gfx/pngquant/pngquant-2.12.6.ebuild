@@ -11,7 +11,7 @@ SRC_URI="https://github.com/kornelski/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 HPND rwpng"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="cpu_flags_x86_sse2 debug lcms openmp test"
 
 RDEPEND="

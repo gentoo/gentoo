@@ -194,6 +194,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
 	"${FILESDIR}/ceph-15.2.0-rocksdb-cmake.patch"
 	"${FILESDIR}/ceph-15.2.2-systemd-unit.patch"
+	"${FILESDIR}/ceph-15.2.3-spdk-compile.patch"
 )
 
 check-reqs_export_vars() {

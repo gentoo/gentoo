@@ -17,7 +17,7 @@ SRC_URI="https://github.com/googlei18n/nototools/archive/${COMMIT}.tar.gz#/notot
 
 LICENSE="Apache-2.0 OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 
 RDEPEND="
 	media-gfx/scour
