@@ -1,0 +1,391 @@
+From 299bd4f113d0bd39fa1577a671a04ed7899eff3c Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Sun, 31 May 2020 12:39:14 +0200
+Subject: [PATCH 1/3] _gnutls_pkcs11_verify_crt_status: check validity against
+ system cert
+
+To verify a certificate chain, this function replaces known
+certificates with the ones in the system trust store if possible.
+
+However, if it is found, the function checks the validity of the
+original certificate rather than the certificate found in the trust
+store.  That reveals a problem in a scenario that (1) a certificate is
+signed by multiple issuers and (2) one of the issuers' certificate has
+expired and included in the input chain.
+
+This patch makes it a little robuster by actually retrieving the
+certificate from the trust store and perform check against it.
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+---
+ lib/pkcs11.c      | 98 +++++++++++++++++++++++++++++++++--------------
+ lib/pkcs11_int.h  |  5 +++
+ lib/x509/verify.c |  7 +++-
+ 3 files changed, 80 insertions(+), 30 deletions(-)
+
+diff --git a/lib/pkcs11.c b/lib/pkcs11.c
+index fad16aaf4f..d8d4a65114 100644
+--- a/lib/pkcs11.c
++++ b/lib/pkcs11.c
+@@ -4547,34 +4547,10 @@ int gnutls_pkcs11_get_raw_issuer_by_subject_key_id (const char *url,
+ 	return ret;
+ }
+ 
+-/**
+- * gnutls_pkcs11_crt_is_known:
+- * @url: A PKCS 11 url identifying a token
+- * @cert: is the certificate to find issuer for
+- * @issuer: Will hold the issuer if any in an allocated buffer.
+- * @fmt: The format of the exported issuer.
+- * @flags: Use zero or flags from %GNUTLS_PKCS11_OBJ_FLAG.
+- *
+- * This function will check whether the provided certificate is stored
+- * in the specified token. This is useful in combination with 
+- * %GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_TRUSTED or
+- * %GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_DISTRUSTED,
+- * to check whether a CA is present or a certificate is blacklisted in
+- * a trust PKCS #11 module.
+- *
+- * This function can be used with a @url of "pkcs11:", and in that case all modules
+- * will be searched. To restrict the modules to the marked as trusted in p11-kit
+- * use the %GNUTLS_PKCS11_OBJ_FLAG_PRESENT_IN_TRUSTED_MODULE flag.
+- *
+- * Note that the flag %GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_DISTRUSTED is
+- * specific to p11-kit trust modules.
+- *
+- * Returns: If the certificate exists non-zero is returned, otherwise zero.
+- *
+- * Since: 3.3.0
+- **/
+-unsigned gnutls_pkcs11_crt_is_known(const char *url, gnutls_x509_crt_t cert,
+-				 unsigned int flags)
++unsigned
++_gnutls_pkcs11_crt_is_known(const char *url, gnutls_x509_crt_t cert,
++			    unsigned int flags,
++			    gnutls_x509_crt_t *trusted_cert)
+ {
+ 	int ret;
+ 	struct find_cert_st priv;
+@@ -4586,6 +4562,15 @@ unsigned gnutls_pkcs11_crt_is_known(const char *url, gnutls_x509_crt_t cert,
+ 
+ 	memset(&priv, 0, sizeof(priv));
+ 
++	if (trusted_cert) {
++		ret = gnutls_pkcs11_obj_init(&priv.obj);
++		if (ret < 0) {
++			gnutls_assert();
++			goto cleanup;
++		}
++		priv.need_import = 1;
++	}
++
+ 	if (url == NULL || url[0] == 0) {
+ 		url = "pkcs11:";
+ 	}
+@@ -4632,8 +4617,18 @@ unsigned gnutls_pkcs11_crt_is_known(const char *url, gnutls_x509_crt_t cert,
+ 		_gnutls_debug_log("crt_is_known: did not find cert, using issuer DN + serial, using DN only\n");
+ 		/* attempt searching with the subject DN only */
+ 		gnutls_assert();
++		if (priv.obj)
++			gnutls_pkcs11_obj_deinit(priv.obj);
+ 		gnutls_free(priv.serial.data);
+ 		memset(&priv, 0, sizeof(priv));
++		if (trusted_cert) {
++			ret = gnutls_pkcs11_obj_init(&priv.obj);
++			if (ret < 0) {
++				gnutls_assert();
++				goto cleanup;
++			}
++			priv.need_import = 1;
++		}
+ 		priv.crt = cert;
+ 		priv.flags = flags;
+ 
+@@ -4650,9 +4645,26 @@ unsigned gnutls_pkcs11_crt_is_known(const char *url, gnutls_x509_crt_t cert,
+ 		goto cleanup;
+ 	}
+ 
++	if (trusted_cert) {
++		ret = gnutls_x509_crt_init(trusted_cert);
++		if (ret < 0) {
++			gnutls_assert();
++			ret = 0;
++			goto cleanup;
++		}
++		ret = gnutls_x509_crt_import_pkcs11(*trusted_cert, priv.obj);
++		if (ret < 0) {
++			gnutls_assert();
++			gnutls_x509_crt_deinit(*trusted_cert);
++			ret = 0;
++			goto cleanup;
++		}
++	}
+ 	ret = 1;
+ 
+       cleanup:
++	if (priv.obj)
++		gnutls_pkcs11_obj_deinit(priv.obj);
+ 	if (info)
+ 		p11_kit_uri_free(info);
+ 	gnutls_free(priv.serial.data);
+@@ -4660,6 +4672,36 @@ unsigned gnutls_pkcs11_crt_is_known(const char *url, gnutls_x509_crt_t cert,
+ 	return ret;
+ }
+ 
++/**
++ * gnutls_pkcs11_crt_is_known:
++ * @url: A PKCS 11 url identifying a token
++ * @cert: is the certificate to find issuer for
++ * @flags: Use zero or flags from %GNUTLS_PKCS11_OBJ_FLAG.
++ *
++ * This function will check whether the provided certificate is stored
++ * in the specified token. This is useful in combination with 
++ * %GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_TRUSTED or
++ * %GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_DISTRUSTED,
++ * to check whether a CA is present or a certificate is blacklisted in
++ * a trust PKCS #11 module.
++ *
++ * This function can be used with a @url of "pkcs11:", and in that case all modules
++ * will be searched. To restrict the modules to the marked as trusted in p11-kit
++ * use the %GNUTLS_PKCS11_OBJ_FLAG_PRESENT_IN_TRUSTED_MODULE flag.
++ *
++ * Note that the flag %GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_DISTRUSTED is
++ * specific to p11-kit trust modules.
++ *
++ * Returns: If the certificate exists non-zero is returned, otherwise zero.
++ *
++ * Since: 3.3.0
++ **/
++unsigned gnutls_pkcs11_crt_is_known(const char *url, gnutls_x509_crt_t cert,
++				 unsigned int flags)
++{
++	return _gnutls_pkcs11_crt_is_known(url, cert, flags, NULL);
++}
++
+ /**
+  * gnutls_pkcs11_obj_get_flags:
+  * @obj: The pkcs11 object
+diff --git a/lib/pkcs11_int.h b/lib/pkcs11_int.h
+index 9d88807098..86cce0dee5 100644
+--- a/lib/pkcs11_int.h
++++ b/lib/pkcs11_int.h
+@@ -460,6 +460,11 @@ inline static bool is_pkcs11_url_object(const char *url)
+ 	return 0;
+ }
+ 
++unsigned
++_gnutls_pkcs11_crt_is_known(const char *url, gnutls_x509_crt_t cert,
++			    unsigned int flags,
++			    gnutls_x509_crt_t *trusted_cert);
++
+ #endif				/* ENABLE_PKCS11 */
+ 
+ #endif /* GNUTLS_LIB_PKCS11_INT_H */
+diff --git a/lib/x509/verify.c b/lib/x509/verify.c
+index d202670198..fd7c6a1642 100644
+--- a/lib/x509/verify.c
++++ b/lib/x509/verify.c
+@@ -34,6 +34,7 @@
+ #include <tls-sig.h>
+ #include <str.h>
+ #include <datum.h>
++#include <pkcs11_int.h>
+ #include <x509_int.h>
+ #include <common.h>
+ #include <pk.h>
+@@ -1188,6 +1189,7 @@ _gnutls_pkcs11_verify_crt_status(const char* url,
+ 
+ 	for (; i < clist_size; i++) {
+ 		unsigned vflags;
++		gnutls_x509_crt_t trusted_cert;
+ 
+ 		if (i == 0) /* in the end certificate do full comparison */
+ 			vflags = GNUTLS_PKCS11_OBJ_FLAG_PRESENT_IN_TRUSTED_MODULE|
+@@ -1196,9 +1198,10 @@ _gnutls_pkcs11_verify_crt_status(const char* url,
+ 			vflags = GNUTLS_PKCS11_OBJ_FLAG_PRESENT_IN_TRUSTED_MODULE|
+ 				GNUTLS_PKCS11_OBJ_FLAG_COMPARE_KEY|GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_TRUSTED;
+ 
+-		if (gnutls_pkcs11_crt_is_known (url, certificate_list[i], vflags) != 0) {
++		if (_gnutls_pkcs11_crt_is_known (url, certificate_list[i], vflags, &trusted_cert) != 0) {
+ 
+-			status |= check_ca_sanity(certificate_list[i], now, flags);
++			status |= check_ca_sanity(trusted_cert, now, flags);
++			gnutls_x509_crt_deinit(trusted_cert);
+ 
+ 			if (func)
+ 				func(certificate_list[i],
+-- 
+2.26.2
+
+
+From cdf075e7f54cb77f046ef3e7c2147f159941faca Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Sun, 31 May 2020 13:59:53 +0200
+Subject: [PATCH 2/3] x509: trigger fallback verification path when cert is
+ expired
+
+gnutls_x509_trust_list_verify_crt2 use the macro SIGNER_OLD_OR_UNKNOWN
+to trigger the fallback verification path if the signer of the last
+certificate is not in the trust store.  Previously, it doesn't take
+into account of the condition where the certificate is expired.
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+---
+ lib/x509/verify-high.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/lib/x509/verify-high.c b/lib/x509/verify-high.c
+index b1421ef17a..40638ad3aa 100644
+--- a/lib/x509/verify-high.c
++++ b/lib/x509/verify-high.c
+@@ -1192,11 +1192,13 @@ gnutls_x509_trust_list_verify_crt(gnutls_x509_trust_list_t list,
+ 
+ #define LAST_DN cert_list[cert_list_size-1]->raw_dn
+ #define LAST_IDN cert_list[cert_list_size-1]->raw_issuer_dn
+-/* This macro is introduced to detect a verification output
+- * which indicates an unknown signer, or a signer which uses
+- * an insecure algorithm (e.g., sha1), something that indicates
+- * a superseded signer */
+-#define SIGNER_OLD_OR_UNKNOWN(output) ((output & GNUTLS_CERT_SIGNER_NOT_FOUND) || (output & GNUTLS_CERT_INSECURE_ALGORITHM))
++/* This macro is introduced to detect a verification output which
++ * indicates an unknown signer, a signer which uses an insecure
++ * algorithm (e.g., sha1), a signer has expired, or something that
++ * indicates a superseded signer */
++#define SIGNER_OLD_OR_UNKNOWN(output) ((output & GNUTLS_CERT_SIGNER_NOT_FOUND) || \
++				       (output & GNUTLS_CERT_EXPIRED) || \
++				       (output & GNUTLS_CERT_INSECURE_ALGORITHM))
+ #define SIGNER_WAS_KNOWN(output) (!(output & GNUTLS_CERT_SIGNER_NOT_FOUND))
+ 
+ /**
+-- 
+2.26.2
+
+
+From 9067bcbee8ff18badff1e829d22e63590dbd7a5c Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Sun, 31 May 2020 14:28:48 +0200
+Subject: [PATCH 3/3] tests: add test case for certificate chain superseding
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+---
+ tests/test-chains.h | 97 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 97 insertions(+)
+
+diff --git a/tests/test-chains.h b/tests/test-chains.h
+index dd19e6a815..9b06b85f5f 100644
+--- a/tests/test-chains.h
++++ b/tests/test-chains.h
+@@ -4010,6 +4010,102 @@ static const char *ed448[] = {
+ 	NULL
+ };
+ 
++/* This contains an expired intermediate CA, which should be superseded. */
++static const char *superseding[] = {
++	"-----BEGIN CERTIFICATE-----"
++	"MIIDrzCCAmegAwIBAgIUcozIBhMJvM/rd1PVI7LOq7Kscs8wDQYJKoZIhvcNAQEL"
++	"BQAwJjEkMCIGA1UEAxMbR251VExTIHRlc3QgaW50ZXJtZWRpYXRlIENBMCAXDTIw"
++	"MDUzMTEyMTczN1oYDzk5OTkxMjMxMjM1OTU5WjA3MRgwFgYDVQQDEw90ZXN0Lmdu"
++	"dXRscy5vcmcxGzAZBgNVBAoTEkdudVRMUyB0ZXN0IHNlcnZlcjCCASAwCwYJKoZI"
++	"hvcNAQEKA4IBDwAwggEKAoIBAQCd2PBnWn+b0FsIMbG+f/K+og2iK/BoLCsJD3j9"
++	"yRNSHD6wTifYwNTbe1LF/8BzxcwVRCD0zpbpFQawbjxbmBSzrXqQlUFFG11DvNBa"
++	"w58rgHGo3TYCrtFIBfLbziyB1w/vWeX0xHvv8MMJ1iRSdY+7Y36a2cV+s85PdO4B"
++	"TpZlLfy8LPP6p6+dgVoC+9tTu2H1wARYOVog+jt9A3Hx0L1xxVWTedFoiK2sVouz"
++	"fLRjfp5cOwuRHSD2qbpGOAeNVVaOE88Bv3pIGPguMw0qAdEDo20hRYH23LIyvBwB"
++	"oCnyFNnAViMtLa2QlXSliV9a9BKOXYjWzAeso2SF4pdHcvd5AgMBAAGjgZMwgZAw"
++	"DAYDVR0TAQH/BAIwADAaBgNVHREEEzARgg90ZXN0LmdudXRscy5vcmcwEwYDVR0l"
++	"BAwwCgYIKwYBBQUHAwEwDwYDVR0PAQH/BAUDAweAADAdBgNVHQ4EFgQUan6mlccq"
++	"Uy1Z64wvRv3xxg4h2ykwHwYDVR0jBBgwFoAUSCM0UwqJMThKWurKttKm3s4dKxgw"
++	"DQYJKoZIhvcNAQELBQADggExAKAOMyMLpk0u2UTwwFWtr1hfx7evo2J7dgco410I"
++	"DN/QWoe2Xlcxcp1h5R9rX1I3KU2WGFtdXqiMsllCLnrDEKZmlks0uz76bCpKmM99"
++	"/1MDlY7mGCr/2PPx53USK5J5JTiqgp6r7qAcDAnpYvrPH45kk7iqwh02DhAxRnGR"
++	"CW7KWK8h7uu0Az9iBT2YfV372g4fRDK3fqYzJofQwbhSiUuJ7wyZCRhGOoxMMmDb"
++	"KBbc1wAYXW+tlv2cSbfzRvSxMR+CzkyH2tGDxeN//aZUfGmQ8IzWUQ7UtK5z+Q0E"
++	"fL6fZtm2SdGabGpV1UYoGpwOtOngK+m0i9SqrMD7g5+SMhc1VuvVuTtxjr5Cha8l"
++	"X0HEZtxgFrkdfMD4yLAqiguaCBngtbRmELF5VpebmJbiLVU="
++	"-----END CERTIFICATE-----",
++	"-----BEGIN CERTIFICATE-----"
++	"MIIDkTCCAkmgAwIBAgIUY9cJ4NLNFEaojJHdP1I4Q7OHNJwwDQYJKoZIhvcNAQEL"
++	"BQAwGTEXMBUGA1UEAxMOR251VExTIHRlc3QgQ0EwHhcNMTgxMjMxMjMwMDAwWhcN"
++	"MjAwNTMwMjIwMDAwWjAmMSQwIgYDVQQDExtHbnVUTFMgdGVzdCBpbnRlcm1lZGlh"
++	"dGUgQ0EwggFSMA0GCSqGSIb3DQEBAQUAA4IBPwAwggE6AoIBMQC0ayeYJa/B/x7K"
++	"sH702LztQ4ZnVF3atB7CkF+DPAIR/BNyhbKIpGVBC3ZfI76Kn/55S3M7LsdLPL8W"
++	"yZdVNRfzoXJLMMLgJ5QS81YA5s6CSxFdpB6b+vq5GypNGLW6peYMx6iooW2qiITc"
++	"lg6ybBw1qufHlD351cfCog1Ls2569whfxQnNFZMa95jfKkxmiSTtH9AWY4FlpVg7"
++	"oc0lYpuZgVQIFxjsfC8IojsoVzKdF0cKhvtisUGZ5vveqOogfvMb7rrqmiFkKZLy"
++	"rXPlGQWdN1PiEZ8YXyK64osNAIyeL6eHPUC+SqKlkggMLmHAWHyameHWrIM5Jc8+"
++	"G+3ro22dy8U43sHHbps0FL4wPoKQHrlKmnbk7zMMRqIxcvbDYQv4qmeJ9KXldjeh"
++	"KZ+Aeap1AgMBAAGjZDBiMA8GA1UdEwEB/wQFMAMBAf8wDwYDVR0PAQH/BAUDAwcE"
++	"ADAdBgNVHQ4EFgQUSCM0UwqJMThKWurKttKm3s4dKxgwHwYDVR0jBBgwFoAUHncj"
++	"bWcxH5EHm5Yv7PzIRv6M4QMwDQYJKoZIhvcNAQELBQADggExAHP1UAQ/nvuQtRZF"
++	"Q4b96yxVwCjMjn7knLyLNtyYGE3466xvE/ofvx5lgaR06ez/G17XP+Ok5SLJNUVc"
++	"mplTERCv5CgnX7R5VdGJkkD1repaYxaTtwyJz0AfYEMRUj3jfaeLaiUKJvEW5RRs"
++	"I3solY18sy/m/xGrH2X0GTNfKM9BURENABsppt07jxH719nF9m9SynV/Z2hE5hlv"
++	"5e5vyPt4wyRPIJLUI3TKAlvb1s40zz3ua7ZTgQL/cOxfY4f9pRKW9CMB3uF69OP9"
++	"COAxrmHVZsImmDZ6qO1qQrbY1KN/cX5kG4pKg7Ium723aOlwcWzEDXKumD960fN1"
++	"5g+HrjNs6kW+r9Q5QS8qV5s8maZNcxTrMvQ1fF2AKBNI3Z3U7vmtrSeqxIXp3rGH"
++	"iJwOKIk="
++	"-----END CERTIFICATE-----",
++	NULL
++};
++
++static const char *superseding_ca[] = {
++	"-----BEGIN CERTIFICATE-----"
++	"MIIDkzCCAkugAwIBAgIUIs7jB4Q4sFcdCmzWVHbJLESC3T4wDQYJKoZIhvcNAQEL"
++	"BQAwGTEXMBUGA1UEAxMOR251VExTIHRlc3QgQ0EwIBcNMjAwNTMxMTIxMzEwWhgP"
++	"OTk5OTEyMzEyMzU5NTlaMCYxJDAiBgNVBAMTG0dudVRMUyB0ZXN0IGludGVybWVk"
++	"aWF0ZSBDQTCCAVIwDQYJKoZIhvcNAQEBBQADggE/ADCCAToCggExALRrJ5glr8H/"
++	"HsqwfvTYvO1DhmdUXdq0HsKQX4M8AhH8E3KFsoikZUELdl8jvoqf/nlLczsux0s8"
++	"vxbJl1U1F/OhckswwuAnlBLzVgDmzoJLEV2kHpv6+rkbKk0Ytbql5gzHqKihbaqI"
++	"hNyWDrJsHDWq58eUPfnVx8KiDUuzbnr3CF/FCc0Vkxr3mN8qTGaJJO0f0BZjgWWl"
++	"WDuhzSVim5mBVAgXGOx8LwiiOyhXMp0XRwqG+2KxQZnm+96o6iB+8xvuuuqaIWQp"
++	"kvKtc+UZBZ03U+IRnxhfIrriiw0AjJ4vp4c9QL5KoqWSCAwuYcBYfJqZ4dasgzkl"
++	"zz4b7eujbZ3LxTjewcdumzQUvjA+gpAeuUqaduTvMwxGojFy9sNhC/iqZ4n0peV2"
++	"N6Epn4B5qnUCAwEAAaNkMGIwDwYDVR0TAQH/BAUwAwEB/zAPBgNVHQ8BAf8EBQMD"
++	"BwQAMB0GA1UdDgQWBBRIIzRTCokxOEpa6sq20qbezh0rGDAfBgNVHSMEGDAWgBQe"
++	"dyNtZzEfkQebli/s/MhG/ozhAzANBgkqhkiG9w0BAQsFAAOCATEAcF9R9VGQxTwW"
++	"aOjeIeQ9ZJxybaj0BaXC8xR4b9uZloS9d/RBFTjgRbQ82yqaj7f80mgUtabKRfTA"
++	"ltV2MgTbJdOjwGzEDtKGhClBbovnEGrYTbPBT9rgfYPt0q7SMBr6AzGAPt+ltwI7"
++	"9yntV81qvTxvW5MEEo0j2MuA3NT3oqe+w1rUKNQCWhnN2TUhJGkTlaaMozcgNFaE"
++	"Dplop4dtvCGtupxOjC3Nf6FWq1k7iZQxX70AFBYVMpuF7qGh6qDp+T1hmTCSVzxP"
++	"SfDQIBjhKgy4clhkuR5SRxhN74RX+/5eiQyVLxzr+eIhqzJhPqUCmVnCLcqYdNRi"
++	"hpHic4uJm0wGOKYTI7EG8rb4ZP4Jz6k4iN9CnL/+kiiW5otSl3YyCAuao5VKdDq9"
++	"izchzb9eow=="
++	"-----END CERTIFICATE-----",
++	"-----BEGIN CERTIFICATE-----"
++	"MIIDZTCCAh2gAwIBAgIULcrECQOBgPaePBfBHXcyZiU0IiYwDQYJKoZIhvcNAQEL"
++	"BQAwGTEXMBUGA1UEAxMOR251VExTIHRlc3QgQ0EwIBcNMjAwNTMxMTIxMTQzWhgP"
++	"OTk5OTEyMzEyMzU5NTlaMBkxFzAVBgNVBAMTDkdudVRMUyB0ZXN0IENBMIIBUjAN"
++	"BgkqhkiG9w0BAQEFAAOCAT8AMIIBOgKCATEAnORCsX1unl//fy2d1054XduIg/3C"
++	"qVBaT3Hca65SEoDwh0KiPtQoOgZLdKY2cobGs/ojYtOjcs0KnlPYdmtjEh6WEhuJ"
++	"U95v4TQdC4OLMiE56eIGq252hZAbHoTL84Q14DxQWGuzQK830iml7fbw2WcIcRQ8"
++	"vFGs8SzfXw63+MI6Fq6iMAQIqP08WzGmRRzL5wvCiPhCVkrPmwbXoABub6AAsYwW"
++	"PJB91M9/lx5gFH5k9/iPfi3s2Kg3F8MOcppqFYjxDSnsfiz6eMh1+bYVIAo367vG"
++	"VYHigXMEZC2FezlwIHaZzpEoFlY3a7LFJ00yrjQ910r8UE+CEMTYzE40D0olCMo7"
++	"FA9RCjeO3bUIoYaIdVTUGWEGHWSeoxGei9Gkm6u+ASj8f+i0jxdD2qXsewIDAQAB"
++	"o0MwQTAPBgNVHRMBAf8EBTADAQH/MA8GA1UdDwEB/wQFAwMHBAAwHQYDVR0OBBYE"
++	"FB53I21nMR+RB5uWL+z8yEb+jOEDMA0GCSqGSIb3DQEBCwUAA4IBMQAeMSzMyuTy"
++	"FjXTjxAUv010bsr6e6fI9txq/S1tXmWWJV/8aeARthuOFZO5Jjy3C5aMbac2HDV4"
++	"Otu0+JLaoEMSXvorAhValVuq06i5cmaPzvJBcxMWzlEAXfavSwHv5Q+kqNU3z81S"
++	"WnjEpMHcl9OyER7o9IhF55Xom2BXY5XL83QOzQ4C3bpKrNevZC7i7zS8NoYRGP+8"
++	"w21JseXkWQW4o2hkFqbCcRE1dlMW02iJE28RZ5aBFDIm2Y6zuLaXZIkaO7E41CAw"
++	"IUyhowm/S1HcmQnhruAGKJvQtB6jvnhZb7pgnuSkhIvAQgw93CLE985KEua1ifY2"
++	"p1d/6ho2TWotHHqDnDkB8pC0Wzai8R+63z18Kt0gROX2QItCyFksjNJqYPbgwZgt"
++	"eh1COrLsOJo+"
++	"-----END CERTIFICATE-----",
++	NULL
++};
++
+ #if defined __clang__ || __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 5)
+ #  pragma GCC diagnostic push
+ #  pragma GCC diagnostic ignored "-Wunused-variable"
+@@ -4178,6 +4274,7 @@ static struct
+     GNUTLS_CERT_INSECURE_ALGORITHM | GNUTLS_CERT_INVALID, NULL, 1576759855, 1},
+   { "ed448 - ok", ed448, &ed448[0], GNUTLS_PROFILE_TO_VFLAGS(GNUTLS_PROFILE_ULTRA),
+     0, NULL, 1584352960, 1},
++  { "superseding - ok", superseding, superseding_ca, 0, 0, 0, 1590928011 },
+   { NULL, NULL, NULL, 0, 0}
+ };
+ 
+-- 
+2.26.2
+
