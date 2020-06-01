@@ -11,10 +11,11 @@ DESCRIPTION="GNU Radio IIO Blocks"
 HOMEPAGE="https://github.com/analogdevicesinc/gr-iio"
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/analogdevicesinc/gr-iio"
+	EGIT_BRANCH="upgrade-3.8"
 	inherit git-r3
 	KEYWORDS=""
 else
-	COMMIT="77c45f0c98e63cc1f3df46177f04bcb7b8700933"
+	COMMIT="733c8a05e74b7d10fbaef502cc82d025ae35a1fb"
 	SRC_URI="https://github.com/analogdevicesinc/gr-iio/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~x86"
@@ -27,6 +28,8 @@ RDEPEND="${PYTHON_DEPS}
 	=net-wireless/gnuradio-3.8*:=
 	dev-libs/boost:=
 	net-libs/libiio:=
+	dev-libs/gmp
+	sci-libs/volk
 	net-libs/libad9361-iio:="
 
 DEPEND="${RDEPEND}
