@@ -36,6 +36,9 @@ DEPEND="${RDEPEND}
 	)
 	"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+)
 src_prepare() {
 	sed -i 's|AC_CONFIG_FILES(\[libbloom/Makefile libcork/Makefile libipset/Makefile\])||' \
 		configure.ac || die
