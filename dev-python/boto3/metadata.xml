@@ -9,6 +9,10 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>slashbeast@gentoo.org</email>
+		<name>Piotr Karbowski</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">boto/boto3</remote-id>
 	</upstream>
