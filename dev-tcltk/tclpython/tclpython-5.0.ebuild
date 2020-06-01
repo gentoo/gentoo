@@ -24,16 +24,9 @@ RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
-src_prepare() {
-	default
-	sed -i \
-		-e "s:@CFLAGS@:${CFLAGS}:g" \
-		-e "s:@LDFLAGS@:${LDFLAGS}:g" \
-		Makefile || die
-}
-
 src_compile() {
-	emake PKG_NAME=tclpython3 CC=$(tc-getCC)
+	emake PKG_NAME=tclpython3 CC=$(tc-getCC) \
+		MYCFLAGS="${CFLAGS}" MYLDFLAGS="${LDFLAGS}"
 }
 
 src_test() {
