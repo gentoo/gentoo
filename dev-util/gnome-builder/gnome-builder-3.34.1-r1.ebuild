@@ -116,6 +116,7 @@ that are currently available with packages include:
 PATCHES=(
 	"${WORKDIR}/patches" # gnome-builder-3-34 branch 2020-01-22 (commit bf485934b37) + cherry-picked meson link_whole fixes
 	"${FILESDIR}"/${PV}-optional-vala.patch
+	"${FILESDIR}"/libgit2-1.0-compat.patch
 )
 
 llvm_check_deps() {
