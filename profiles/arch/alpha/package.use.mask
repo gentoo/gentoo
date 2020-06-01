@@ -36,11 +36,6 @@ media-tv/v4l-utils bpf
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
-# net-libs/libgadu is not keyworded
-net-im/pidgin gadu
-net-im/telepathy-connection-managers gadu
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
 media-gfx/gimp heif
