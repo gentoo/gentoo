@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/osmocom/${PN}.git"
 else
-	COMMIT="fa6761afbf8c2658782e0c7fc5d51063679b7ae4"
+	COMMIT="defdd4aca6cd157ccc3b10ea16b5b4f552f34b96"
 	SRC_URI="https://github.com/osmocom/gr-fosphor/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~x86"
@@ -31,9 +31,10 @@ RDEPEND="qt5? (
 		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
 	)
-	=net-wireless/gnuradio-3.8*:0=[qt5,${PYTHON_SINGLE_USEDEP}]
-	media-libs/freetype
 	dev-libs/boost:=
+	dev-libs/log4cpp
+	media-libs/freetype
+	=net-wireless/gnuradio-3.8*:0=[qt5,${PYTHON_SINGLE_USEDEP}]
 	glfw? ( >=media-libs/glfw-3 )
 	virtual/opencl
 	virtual/opengl
@@ -57,7 +58,6 @@ src_configure() {
 		-DENABLE_DEFAULT=OFF
 		-DENABLE_GLFW="$(usex glfw)"
 		-DENABLE_QT="$(usex qt5)"
-		-DENABLE_WX="$(usex wxwidgets)"
 		-DENABLE_PYTHON=ON
 	)
 	cmake-utils_src_configure
