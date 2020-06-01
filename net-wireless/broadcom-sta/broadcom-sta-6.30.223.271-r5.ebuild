@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -84,6 +84,7 @@ PATCHES=(
 		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.12.patch"
 		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.15.patch"
 		"${FILESDIR}/${PN}-6.30.223.271-r5-linux-5.1.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r5-linux-5.6.patch"
 )
 
 src_install() {
