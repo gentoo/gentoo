@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Full sources including the Gentoo patchset for the 5.7 kernel tree
+EAPI=6
+HOMEPAGE=https://dev.gentoo.org/~mpagano/genpatches
+IUSE=experimental symlink build
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf )
+RESTRICT=binchecks strip
+SLOT=5.7.0
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.7-1.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.7-1.base.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.7-1.base.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.7-1.extras.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.7-1.extras.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.7-1.extras.tar.xz experimental? ( https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.7-1.experimental.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.7-1.experimental.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.7-1.experimental.tar.xz )
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	75c031f59bce156dbdbfb3b42d1c9974	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=eaf7b6c723f028df333e1677397b25c9
