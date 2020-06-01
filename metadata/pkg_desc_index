@@ -11985,7 +11985,7 @@ kde-plasma/ksshaskpass 5.18.5: KDE implementation of ssh-askpass with Kwallet in
 kde-plasma/ksysguard 5.18.5: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.18.5: PAM module to not enter KWallet password again after login
 kde-plasma/kwayland-integration 5.18.5: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.18.5-r1: Flexible, composited Window Manager for windowing systems on Linux
+kde-plasma/kwin 5.18.5-r1 5.18.5-r2: Flexible, composited Window Manager for windowing systems on Linux
 kde-plasma/kwrited 5.18.5: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.18.5: Plasma screen management library
 kde-plasma/libksysguard 5.18.5: Task management and system monitoring library
