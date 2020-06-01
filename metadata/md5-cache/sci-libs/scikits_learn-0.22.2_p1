@@ -5,7 +5,7 @@ DESCRIPTION=Machine learning library for Python
 EAPI=7
 HOMEPAGE=https://scikit-learn.org/stable/ https://github.com/scikit-learn/scikit-learn
 IUSE=examples test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=amd64 x86
+KEYWORDS=amd64 ~ppc64 x86
 LICENSE=BSD
 RDEPEND=dev-python/wheel[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/cython[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/numpy[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] sci-libs/scipy[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] sci-libs/scikits[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] virtual/blas:= virtual/cblas:= python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/scikit-learn/scikit-learn/archive/0.22.2.post1.tar.gz -> scikits_learn-0.22.2_p1.tar.gz
 _eclasses_=distutils-r1	89b310c534a033a3566e0f26419daa81	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=a68e3b7fa11d238d95d9ab68660f3f38
+_md5_=0d2c2ce1a9f5884d2f4747ca5a347371

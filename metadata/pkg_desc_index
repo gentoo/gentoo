@@ -755,7 +755,7 @@ app-backup/restic 0.9.4 0.9.5 0.9.6: A backup program that is fast, efficient an
 app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
-app-backup/snapper 0.5.6-r1 0.8.6 0.8.7: Command-line program for btrfs and lvm snapshot management
+app-backup/snapper 0.5.6-r1 0.8.6 0.8.7 0.8.9: Command-line program for btrfs and lvm snapshot management
 app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and sharing system
 app-backup/synology-cloud-station-backup 4469: Back up your files from multiple client computers to a centralized Synology NAS
 app-backup/tarsnap 1.0.35 1.0.37 1.0.39: Online backups for the truly paranoid
@@ -17298,7 +17298,7 @@ sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20190815 20190923 20191022 20191215 20200122 20200316 20200421 20200519 99999999: Linux firmware files
-sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6: Linux system headers
+sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.4_p6 5.5_p8 5.6_p1 5.6_p2 5.6_p3 5.6_p4 5.6_p5 5.6_p6 5.6_p7 5.6_p8: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
