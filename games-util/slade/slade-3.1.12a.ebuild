@@ -23,7 +23,7 @@ DEPEND="
 	media-libs/libsfml:=
 	net-misc/curl
 	sys-libs/zlib
-	x11-libs/wxGTK:${WX_GTK_VER}[webkit?]
+	x11-libs/wxGTK:${WX_GTK_VER}[opengl,webkit?,X]
 	fluidsynth? ( media-sound/fluidsynth:= )
 "
 

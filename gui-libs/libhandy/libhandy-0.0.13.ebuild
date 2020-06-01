@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="LGPL-2.1+"
 SLOT="0.0/0" # It may or may not break ABI in future versions at this point; if new
 # SLOT happens, it'll likely file conflict on gtk-doc and glade library and catalog
-KEYWORDS="amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE="examples glade gtk-doc +introspection test +vala"
 REQUIRED_USE="vala? ( introspection )"
