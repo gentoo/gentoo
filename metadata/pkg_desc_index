@@ -2510,7 +2510,7 @@ app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
 app-shells/peco 0.5.7: Simplistic interactive filtering tool
 app-shells/posh 0.13.2 0.14 0.14.1: Reimplementation of Bourne shell based on pdksh
-app-shells/powerline 2.7 9999: The ultimate statusline/prompt utility.
+app-shells/powerline 2.7-r1 9999: The ultimate statusline/prompt utility.
 app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
 app-shells/push 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
@@ -4797,7 +4797,7 @@ dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
-dev-lang/perl 5.30.1 5.30.2 5.30.2-r1 5.30.2-r2: Larry Wall's Practical Extraction and Report Language
+dev-lang/perl 5.30.1 5.30.2 5.30.2-r1 5.30.2-r2 5.30.3: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.30 7.2.31 7.3.17 7.3.18 7.4.5 7.4.6: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.17-r2 2.7.18 3.6.10-r1 3.6.10-r2 3.7.7-r1 3.7.7-r2 3.8.2-r1 3.8.2-r2 3.8.3 3.9.0_alpha6 3.9.0_beta1: An interpreted, interactive, object-oriented programming language
@@ -12478,7 +12478,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.11.9 7.0.10.9 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.11.9 6.9.11.16 7.0.10.9 7.0.10.16 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.3 0.3.4: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
@@ -17597,7 +17597,7 @@ virtual/perl-Math-BigInt-FastCalc 0.500.800: Virtual for Math-BigInt-FastCalc
 virtual/perl-Math-BigRat 0.261.400: Virtual for Math-BigRat
 virtual/perl-Math-Complex 1.590.100-r3: Virtual for Math-Complex
 virtual/perl-Memoize 1.30.100_rc-r9: Virtual for Memoize
-virtual/perl-Module-CoreList 5.201.911.100 5.202.003.140: Virtual for Module-CoreList
+virtual/perl-Module-CoreList 5.201.911.100 5.202.003.140 5.202.6.13.0_rc: Virtual for Module-CoreList
 virtual/perl-Module-Load 0.340.0: Virtual for Module-Load
 virtual/perl-Module-Load-Conditional 0.680.0-r3: Virtual for Module-Load-Conditional
 virtual/perl-Module-Loaded 0.80.0-r12: Virtual for Module-Loaded

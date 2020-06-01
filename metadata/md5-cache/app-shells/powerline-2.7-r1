@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/p/powerline-status/powerline-status-2.7.tar.gz
 _eclasses_=distutils-r1	89b310c534a033a3566e0f26419daa81	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=f0a15d088ec9f4053455b4d2b5cd90cd
+_md5_=aa3256e687f611dd975d71e933361d0d
