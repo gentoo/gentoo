@@ -89,6 +89,9 @@ src_install() {
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die
 
+	# provide stable symlink
+	dosym "${P}" "/opt/${PN}-${SLOT}"
+
 	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
 	java-vm_set-pax-markings "${ddest}"
 	java-vm_revdep-mask
