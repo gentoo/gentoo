@@ -24,6 +24,7 @@ IUSE="airspy bladerf hackrf iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
+	sci-libs/volk
 	airspy? ( net-wireless/airspy )
 	bladerf? ( >=net-wireless/bladerf-2018.08_rc1:= )
 	hackrf? ( net-libs/libhackrf:= )
@@ -63,5 +64,7 @@ src_install() {
 	cmake-utils_src_install
 	if use python; then
 		python_fix_shebang "${ED}"/usr/bin
+		python_optimize
 	fi
+	mv "${ED}/usr/share/doc/${PN}" "${ED}/usr/share/doc/${P}"
 }
