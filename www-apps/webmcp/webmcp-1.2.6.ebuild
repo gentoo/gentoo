@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=${PN}-v${PV}
 DESCRIPTION="Web application framework written in Lua and C"
@@ -15,18 +15,16 @@ KEYWORDS="~amd64"
 SLOT=0
 IUSE=""
 
-RDEPEND="dev-lang/lua
-	dev-db/postgresql"
+RDEPEND="dev-lang/lua:=
+	dev-db/postgresql:="
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	emake CC=$(tc-getCC) LD=$(tc-getCC)
+	emake CC=$(tc-getCC) LD=$(tc-getCC) MYLDFLAGS="${LDFLAGS}"
 	# Dereference symlinks
 	cd framework
 	mkdir lib.link
@@ -61,5 +59,6 @@ src_install() {
 		doins -r demo-app${subdir}
 	done
 	dodoc doc/*sample.conf libraries/mondelefant/example.lua
-	dohtml doc/autodoc.html
+	docinto html
+	dodoc doc/autodoc.html
 }
