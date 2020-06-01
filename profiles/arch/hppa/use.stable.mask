@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Michał Górny <mgorny@gentoo.org> (2020-06-01)
+# Stable depgraph is not yet clean.
+python_targets_python3_7
+python_single_target_python3_7
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # media-libs/gstreamer is not stable for hppa
 gstreamer
