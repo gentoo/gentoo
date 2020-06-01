@@ -46,7 +46,6 @@ multilib_src_configure() {
 		--without-portaudio \
 		--without-portaudiocpp \
 		--without-sdl2 \
-		--without-sdl \
 		--without-sndfile \
 		--without-flac
 }
