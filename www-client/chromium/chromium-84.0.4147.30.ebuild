@@ -13,9 +13,12 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
 XCB_PROTO_VERSION="1.14"
+PATCHSET="1"
+PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
-	https://www.x.org/releases/individual/proto/xcb-proto-${XCB_PROTO_VERSION}.tar.xz"
+	https://www.x.org/releases/individual/proto/xcb-proto-${XCB_PROTO_VERSION}.tar.xz
+	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -100,10 +103,6 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	closure-compile? ( virtual/jre )
-	!system-libvpx? (
-		amd64? ( dev-lang/yasm )
-		x86? ( dev-lang/yasm )
-	)
 "
 
 : ${CHROMIUM_FORCE_CLANG=no}
@@ -116,10 +115,6 @@ fi
 if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
 	RDEPEND+=" >=sys-libs/libcxx-9"
 	DEPEND+=" >=sys-libs/libcxx-9"
-	BDEPEND+="
-		amd64? ( dev-lang/yasm )
-		x86? ( dev-lang/yasm )
-	"
 else
 	COMMON_DEPEND="
 		app-arch/snappy:=
@@ -164,23 +159,6 @@ If you have one of above packages installed, but don't want to use
 them in Chromium, then add --password-store=basic to CHROMIUM_FLAGS
 in /etc/chromium/default.
 "
-
-PATCHES=(
-	"${FILESDIR}/chromium-compiler-r12.patch"
-	"${FILESDIR}/chromium-fix-char_traits.patch"
-	"${FILESDIR}/chromium-blink-style_format.patch"
-	"${FILESDIR}/chromium-78-protobuf-export.patch"
-	"${FILESDIR}/chromium-79-gcc-alignas.patch"
-	"${FILESDIR}/chromium-80-gcc-quiche.patch"
-	"${FILESDIR}/chromium-82-gcc-template.patch"
-	"${FILESDIR}/chromium-83-gcc-serviceworker.patch"
-	"${FILESDIR}/chromium-83-gcc-10.patch"
-	"${FILESDIR}/chromium-84-gcc-noexcept.patch"
-	"${FILESDIR}/chromium-84-gcc-template.patch"
-	"${FILESDIR}/chromium-84-gcc-include.patch"
-	"${FILESDIR}/chromium-84-gcc-unique_ptr.patch"
-	"${FILESDIR}/chromium-84-template.patch"
-)
 
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -227,6 +205,8 @@ src_prepare() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 
+	eapply "${WORKDIR}/patches"
+
 	default
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
@@ -267,7 +247,6 @@ src_prepare() {
 		third_party/angle/third_party/vulkan-loader
 		third_party/angle/third_party/vulkan-tools
 		third_party/angle/third_party/vulkan-validation-layers
-		third_party/angle/third_party/VulkanMemoryAllocator
 		third_party/apple_apsl
 		third_party/axe-core
 		third_party/blink
@@ -304,6 +283,7 @@ src_prepare() {
 		third_party/depot_tools
 		third_party/devscripts
 		third_party/devtools-frontend
+		third_party/devtools-frontend/src/front_end/third_party/acorn
 		third_party/devtools-frontend/src/front_end/third_party/codemirror
 		third_party/devtools-frontend/src/front_end/third_party/fabricjs
 		third_party/devtools-frontend/src/front_end/third_party/lighthouse
@@ -344,6 +324,7 @@ src_prepare() {
 		third_party/libxml/chromium
 		third_party/libyuv
 		third_party/llvm
+		third_party/lottie
 		third_party/lss
 		third_party/lzma_sdk
 		third_party/mako
@@ -575,7 +556,7 @@ src_configure() {
 	# Never use bundled gold binary. Disable gold linker flags for now.
 	# Do not use bundled clang.
 	# Trying to use gold results in linker crash.
-	myconf_gn+=" use_gold=false use_sysroot=false linux_use_bundled_binutils=false use_custom_libcxx=false"
+	myconf_gn+=" use_gold=false use_sysroot=false use_custom_libcxx=false"
 
 	# Disable forced lld, bug 641556
 	myconf_gn+=" use_lld=false"
