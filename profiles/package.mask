@@ -90,7 +90,6 @@ dev-python/toro
 # Outdated.  Not touched since the initial commit.  Lacks py3.7 support.
 # No reverse dependencies outside the three packages.
 # Removal in 30 days.  Bug #708270.
-dev-python/Rx
 dev-python/graphql-core
 dev-python/gql
 
