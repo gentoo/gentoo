@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jbeder/${PN}/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/0.6"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 # test breaks build
