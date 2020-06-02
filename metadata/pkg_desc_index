@@ -711,7 +711,7 @@ app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBac
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1-r1 1.1.0: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
-app-backup/bacula 9.4.4-r2 9.6.3: Featureful client/server network backup suite
+app-backup/bacula 9.4.4-r2 9.4.4-r3 9.6.3 9.6.3-r1: Featureful client/server network backup suite
 app-backup/bareos 17.2.9 18.2.8 19.2.7: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.10-r1 1.1.11-r2 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgmatic 1.5.1-r2: Automatically create, prune and verify backups with borgbackup
@@ -7232,7 +7232,7 @@ dev-php/PEAR-Crypt_CHAP 1.5.0-r3: Generating CHAP packets
 dev-php/PEAR-Crypt_GPG 1.6.2 1.6.3: PHP interface to the GNU Privacy Guard (GnuPG)
 dev-php/PEAR-Crypt_HMAC 1.0.1-r2: Calculates RFC 2104 compliant hashes
 dev-php/PEAR-Crypt_HMAC2 1.0.0-r1: Implementation of Hashed Message Authentication Code for PHP5
-dev-php/PEAR-DB 1.9.2-r1 1.9.3: Database abstraction layer for PHP
+dev-php/PEAR-DB 1.9.2-r1 1.9.3 1.10.0: Database abstraction layer for PHP
 dev-php/PEAR-DB_DataObject 1.11.5-r1: SQL builder and data modeling layer
 dev-php/PEAR-Date 1.5.0_alpha4-r1: Date and Time Zone classes
 dev-php/PEAR-Exception 1.0.0: The PEAR Exception base class
@@ -7292,7 +7292,7 @@ dev-php/PEAR-Net_URL2 2.2.1-r2: Easy parsing of URLs (PHP5 port of PEAR-Net_URL 
 dev-php/PEAR-Net_UserAgent_Detect 2.5.2-r1: Determines Web browser, version, and platform from an HTTP user agent string
 dev-php/PEAR-Numbers_Words 0.18.1-r1 0.18.2: Provides methods for spelling numerals in words
 dev-php/PEAR-OLE 1.0.0_rc3: Package for reading and writing OLE containers
-dev-php/PEAR-PEAR 1.10.6 1.10.7 1.10.9: PEAR Base System
+dev-php/PEAR-PEAR 1.10.6 1.10.7 1.10.9 1.10.12: PEAR Base System
 dev-php/PEAR-PEAR_PackageFileManager 1.7.2-r2: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager2 1.0.4-r2: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4-r1: Various methods to check files to update an existing package.xml file
@@ -7319,7 +7319,7 @@ dev-php/PEAR-VersionControl_SVN 0.5.2-r1 0.5.2_p20180314: Simple OO wrapper inte
 dev-php/PEAR-XML_Parser 1.3.7-r1 1.3.8: XML parsing class based on PHP's SAX parser
 dev-php/PEAR-XML_RSS 1.1.0_alpha1 1.1.0: PHP parser for RDF and RSS documents
 dev-php/PEAR-XML_Serializer 0.21.0-r1: Swiss-army knife for reading and writing XML files
-dev-php/PEAR-XML_Util 1.4.2 1.4.3 1.4.4: XML utility class
+dev-php/PEAR-XML_Util 1.4.2 1.4.3 1.4.4 1.4.5: XML utility class
 dev-php/PHPMailer 5.2.27 5.2.28 6.0.7 6.1.2 6.1.3 6.1.4 6.1.5: Full-featured email creation and transfer class for PHP
 dev-php/PHP_CodeCoverage 4.0.7-r2 7.0.10-r1: Collection, processing, and rendering for PHP code coverage
 dev-php/PHP_CodeSniffer 3.5.4: Detect violations of PHP code standards

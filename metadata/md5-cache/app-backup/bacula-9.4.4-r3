@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=!bacula-clientonly? ( !bacula-nodir? ( virtual/mta ) postgres? ( dev-db/postgresql:=[threads] ) mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c ) ) sqlite? ( dev-db/sqlite:3 ) ) dev-libs/gmp:0 qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtsvg:5 x11-libs/qwt:6 ) logwatch? ( sys-apps/logwatch ) readline? ( sys-libs/readline:0 ) static? ( dev-libs/lzo[static-libs] sys-libs/ncurses:=[static-libs] sys-libs/zlib[static-libs] acl? ( virtual/acl[static-libs(+)] ) ssl? ( !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] ) ) ) !static? ( dev-libs/lzo sys-libs/ncurses:= sys-libs/zlib acl? ( virtual/acl ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) >=app-portage/elt-patches-20170815 virtual/pkgconfig
+DESCRIPTION=Featureful client/server network backup suite
+EAPI=6
+HOMEPAGE=https://www.bacula.org/
+IUSE=acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6 libressl logwatch mysql postgres qt5 readline +sqlite ssl static tcpd vim-syntax X
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=AGPL-3
+RDEPEND=!bacula-clientonly? ( !bacula-nodir? ( virtual/mta ) postgres? ( dev-db/postgresql:=[threads] ) mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c ) ) sqlite? ( dev-db/sqlite:3 ) ) dev-libs/gmp:0 qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtsvg:5 x11-libs/qwt:6 ) logwatch? ( sys-apps/logwatch ) readline? ( sys-libs/readline:0 ) static? ( dev-libs/lzo[static-libs] sys-libs/ncurses:=[static-libs] sys-libs/zlib[static-libs] acl? ( virtual/acl[static-libs(+)] ) ssl? ( !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] ) ) ) !static? ( dev-libs/lzo sys-libs/ncurses:= sys-libs/zlib acl? ( virtual/acl ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) acct-user/bacula acct-group/bacula !bacula-clientonly? ( !bacula-nosd? ( app-arch/mt-st sys-block/mtx ) ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+REQUIRED_USE=!bacula-clientonly? ( ^^ ( mysql postgres sqlite ) ) static? ( bacula-clientonly )
+SLOT=0
+SRC_URI=mirror://sourceforge/bacula/bacula-9.4.4.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=3d5d9c27a5ae7e690bcfe1eae07c7249

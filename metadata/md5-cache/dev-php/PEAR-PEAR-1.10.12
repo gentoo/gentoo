@@ -1,0 +1,10 @@
+DEFINED_PHASES=config install postinst prepare prerm setup
+DESCRIPTION=PEAR Base System
+EAPI=7
+HOMEPAGE=https://pear.php.net/package/PEAR
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:*[cli(-),xml(-),zlib(-)] >=dev-php/PEAR-Archive_Tar-1.4.9 >=dev-php/PEAR-Console_Getopt-1.4.1 dev-php/PEAR-Exception >=dev-php/PEAR-Structures_Graph-1.1.0 >=dev-php/PEAR-XML_Util-1.4.0
+SLOT=0
+SRC_URI=https://pear.php.net/get/PEAR-1.10.12.tgz
+_md5_=9a4b4b904fad26c62b261c2471329605
