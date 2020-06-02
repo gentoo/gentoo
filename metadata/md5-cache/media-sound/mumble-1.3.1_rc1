@@ -11,4 +11,4 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtsql:5[sq
 SLOT=0
 SRC_URI=https://github.com/mumble-voip/mumble/releases/download/1.3.1-rc1/mumble-1.3.1-rc1.tar.gz https://dl.mumble.info/mumble-1.3.1-rc1.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	estack	686eaab303305a908fd57b2fd7617800	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multilib-build	dfda7934df092a96e439c05b4aeac519	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=5cf8a6a5de887d70e71fce1f064f42ba
+_md5_=bb1d0665edfb9a8456fb7bc6187b41d8
