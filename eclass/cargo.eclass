@@ -21,7 +21,7 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-inherit multiprocessing
+inherit multiprocessing toolchain-funcs
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install src_test
 
@@ -161,6 +161,8 @@ cargo_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	export CARGO_HOME="${ECARGO_HOME}"
+
+	tc-export AR CC
 
 	cargo build $(usex debug "" --release) "$@" \
 		|| die "cargo build failed"
