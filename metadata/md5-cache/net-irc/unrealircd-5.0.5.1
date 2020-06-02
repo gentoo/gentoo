@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig || ( dev-libs/openssl:0 dev-libs/libressl:0 ) virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=acct-group/unrealircd acct-user/unrealircd >=app-crypt/argon2-20171227-r1:= dev-libs/libpcre2 >=net-dns/c-ares-1.7:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) curl? ( net-misc/curl[adns] )
+DESCRIPTION=An advanced Internet Relay Chat daemon
+EAPI=7
+HOMEPAGE=https://www.unrealircd.org/
+IUSE=class-nofakelag curl libressl +operoverride operoverride-verify +prefixaq showlistmodes
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=acct-group/unrealircd acct-user/unrealircd >=app-crypt/argon2-20171227-r1:= dev-libs/libpcre2 >=net-dns/c-ares-1.7:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) curl? ( net-misc/curl[adns] )
+SLOT=0
+SRC_URI=https://www.unrealircd.org/downloads/unrealircd-5.0.5.1.tar.gz
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	ssl-cert	876f0e74ef1cc2e7c4edd9bca336d350	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=dc62ddbf4932e654dc3a2323a45bb3a6
