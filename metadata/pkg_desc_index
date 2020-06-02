@@ -10864,7 +10864,7 @@ games-board/cockatrice 20190304-r1: An open-source multiplatform software for pl
 games-board/crafty 24.1-r1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.6-r1: The well-known board game, written in java
 games-board/eboard 1.1.1-r2: chess interface for POSIX systems
-games-board/four-in-a-row 3.32.0 3.34.4: Make lines of the same color to win
+games-board/four-in-a-row 3.34.4: Make lines of the same color to win
 games-board/freedoko 0.7.16 0.7.16-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1-r1: UCI-only chess engine
 games-board/gambit 1.0.4: Qt-based chess application + engine "gupta"
@@ -10884,7 +10884,7 @@ games-board/grhino 0.16.1-r1 0.16.1-r2: Reversi game for GNOME, supporting the G
 games-board/gtkatlantic 0.6.1-r1: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0-r1: Board games system
 games-board/hexxagon 1.0.2-r1: Clone of the original DOS game
-games-board/iagno 3.32.0 3.34.5: Dominate the board in a classic version of Reversi
+games-board/iagno 3.34.5: Dominate the board in a classic version of Reversi
 games-board/mah-jong 1.14-r1: A networked Mah Jong program, together with a computer player
 games-board/maitretarot 0.1.98-r1: server for the french tarot game maitretarot
 games-board/megamek 0.34.10-r1: an unofficial, online version of the Classic BattleTech board game
@@ -11203,7 +11203,7 @@ games-puzzle/pingus 0.7.6-r2 9999: free Lemmings clone
 games-puzzle/pipepanic 0.1.3-r1: A simple pipe connecting game
 games-puzzle/pipewalker 0.9.4-r1: Rotating pieces puzzle game
 games-puzzle/quadra 1.2.0-r1: A tetris clone with multiplayer support
-games-puzzle/quadrapassel 3.32.0 3.36.00: Fit falling blocks together
+games-puzzle/quadrapassel 3.36.00: Fit falling blocks together
 games-puzzle/rezerwar 0.4.2-r1: Puzzle game like the known tetromino and the average pipe games
 games-puzzle/scramble 0.9.5-r1: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1-r1: Swap and match 3 or more jewels in a line in order to score points
@@ -11511,7 +11511,7 @@ gnome-extra/gnome-shell-extensions-topicons-plus 22_p20190929 27: Moves legacy t
 gnome-extra/gnome-shell-frippery 3.34.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.34.2: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.32.1: The Gnome System Monitor
-gnome-extra/gnome-tweaks 3.32.0-r1 3.34.0: Customize advanced GNOME 3 options
+gnome-extra/gnome-tweaks 3.34.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.34.1 3.34.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.34.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
@@ -15150,7 +15150,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.9 1.8.13 1.8.25-r1 1.9.15 1.9.15-r1 1.9.9999 2.0.14 2.0.14-r1 2.0.9999 2.1.4 2.1.4-r1 2.1.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.25-r1 1.9.15-r1 1.9.9999 2.0.14 2.0.14-r1 2.0.9999 2.1.4 2.1.4-r1 2.1.5 2.1.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/mitmproxy 4.0.4: An interactive, SSL-capable, man-in-the-middle HTTP proxy
