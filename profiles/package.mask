@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-06-02)
+# py2 only. dead upstream. m-n.
+# Masked for removal in 30 days
+app-misc/webcomics-collector
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-02)
 # libgnomeui revdeps with no sign of upstream porting away or doing anything.
 # No maintainer. Bugs #726826, #726822. Masked for removal in 30 days.
