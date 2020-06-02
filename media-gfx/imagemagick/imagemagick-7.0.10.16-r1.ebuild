@@ -13,7 +13,7 @@ else
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
 	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
@@ -25,6 +25,7 @@ IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="corefonts? ( truetype )
+	svg? ( xml )
 	test? ( corefonts )"
 
 RESTRICT="!test? ( test )"

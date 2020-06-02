@@ -41,7 +41,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.5-static.patch"
+	"${FILESDIR}/strace-5.5-static.patch"
 )
 
 src_prepare() {
@@ -77,6 +77,7 @@ src_configure() {
 
 	# Don't require mpers support on non-multilib systems. #649560
 	local myeconfargs=(
+		--disable-gcc-Werror
 		--enable-mpers=check
 		$(use_enable static)
 		$(use_with unwind libunwind)
