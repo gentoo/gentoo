@@ -15,7 +15,6 @@
 		<flag name="cue">Support CUE sheets using the libcue library</flag>
 		<flag name="fluidsynth">Support FluidSynth as MIDI synth backend</flag>
 		<flag name="gme">Support various gaming console music formats</flag>
-		<flag name="gtk">Build with GTK interface instead of Qt5</flag>
 		<flag name="http">Support HTTP streams through neon</flag>
 		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
