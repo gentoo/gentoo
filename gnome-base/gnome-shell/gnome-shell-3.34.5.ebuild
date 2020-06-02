@@ -107,9 +107,9 @@ RDEPEND="${DEPEND}
 # avoid circular dependency, see bug #546134
 PDEPEND="
 	>=gnome-base/gdm-3.5[introspection]
-	!arm? ( >=gnome-base/gnome-control-center-3.26[bluetooth(+)?,networkmanager(+)?] )
+	>=gnome-base/gnome-control-center-3.26[bluetooth(+)?,networkmanager(+)?]
 	browser-extension? ( gnome-extra/chrome-gnome-shell )
-" # FIXME: Temporary ugly workaround above for arm deptree issues without cascading it more by unkeywording gnome-shell for arm
+"
 BDEPEND="
 	dev-lang/sassc
 	dev-libs/libxslt
