@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="${DEB_URI}/${MY_P}.orig.tar.gz ${DEB_URI}/${MY_P}-1.debian.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="alsa gnome lash +xml"
+IUSE="alsa lash +xml"
 
 RDEPEND="
 	media-libs/ladspa-sdk
@@ -23,7 +23,6 @@ RDEPEND="
 	virtual/libintl
 	x11-libs/gtk+:2
 	alsa? ( media-libs/alsa-lib:= )
-	gnome? ( gnome-base/libgnomeui:= )
 	lash? ( media-sound/lash:= )
 	xml? (
 		dev-libs/libxml2:=
@@ -59,7 +58,7 @@ src_configure() {
 
 	econf \
 		$(use_enable alsa aseq) \
-		$(use_enable gnome) \
+		--disable-gnome \
 		$(use_enable lash) \
 		$(use_enable xml) \
 		$(use_enable xml lrdf)
