@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.com/inkscape/inkscape/-/archive/${PN^^}_$(ver_rs 1-2 "_"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms nls
 openmp postscript spell static-libs svg2 visio wpg"
 
