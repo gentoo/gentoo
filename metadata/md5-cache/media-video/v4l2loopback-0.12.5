@@ -1,13 +1,13 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup unpack
 DEPEND=kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
 DESCRIPTION=v4l2 loopback device which output is it's own input
 EAPI=7
 HOMEPAGE=https://github.com/umlaeute/v4l2loopback
 IUSE=examples kernel_linux kernel_linux
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-PROPERTIES=live
 RDEPEND=kernel_linux? ( virtual/modutils )
 SLOT=0
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	linux-mod	9991808b521b5a8c569c9c4ccf8893f6	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+SRC_URI=https://github.com/umlaeute/v4l2loopback/tarball/v0.12.5 -> v4l2loopback-0.12.5.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	linux-mod	9991808b521b5a8c569c9c4ccf8893f6	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=f81cfe4031d19815800f7cfa31e6eebf

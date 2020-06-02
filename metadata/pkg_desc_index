@@ -13842,7 +13842,7 @@ media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
 media-video/unifi-video 3.10.10 3.10.11 3.10.12: UniFi Video Server
 media-video/ushare 1.1a-r9: uShare is a UPnP (TM) A/V & DLNA Media Server
-media-video/v4l2loopback 0.12.0 0.12.1.1_pre 9999: v4l2 loopback device which output is it's own input
+media-video/v4l2loopback 0.12.0 0.12.1.1_pre 0.12.5 9999: v4l2 loopback device which output is it's own input
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vcsi 7-r1: Create thumbnail sheets from video files
@@ -14459,7 +14459,7 @@ net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2 0.5.3: C implementation
 net-libs/libbloom 1.5-r1 1.5-r2: A simple and small bloom filter implementation in plain C.
 net-libs/libbtbb 2018.08.1 2018.12.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
-net-libs/libcork 0.15.0: A simple, easily embeddable cross-platform C library
+net-libs/libcork 0.15.0-r1: A simple, easily embeddable cross-platform C library
 net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing sets of IPv4 and IPv6 addresses
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
