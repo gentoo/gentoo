@@ -1415,6 +1415,11 @@
       <name>Matt Turner</name>
     </member>
     <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs (on hake)</role>
+    </member>
+    <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
       <role>Member</role>
@@ -1549,6 +1554,11 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs (on guppy)</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -2576,6 +2586,11 @@
       <name>Matt Turner</name>
     </member>
     <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs (on bogsucker/timberdoodle)</role>
+    </member>
+    <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
       <role>ppc/ppc64 keywording/stabilization</role>
@@ -3234,6 +3249,11 @@
       <name>Matt Turner</name>
     </member>
     <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs (on catbus)</role>
+    </member>
+    <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
       <role>Member ( Gentoo/SPARC )</role>
@@ -3397,15 +3417,15 @@
       <name>Chris Reffett</name>
       <role>GLSA Coordinator</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
-      <role>Co-Lead</role>
+      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>whissi@gentoo.org</email>
       <name>Thomas Deutschmann</name>
-      <role>Co-Lead</role>
+      <role>Lead</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
@@ -3951,6 +3971,11 @@
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
       <role>Developer (Security bugs primarily)</role>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs</role>
     </member>
     <member>
       <email>nativemad@gentoo.org</email>
