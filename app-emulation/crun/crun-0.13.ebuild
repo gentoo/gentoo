@@ -5,20 +5,19 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-any-r1
+inherit autotools python-any-r1
 
 DESCRIPTION="A fast and low-memory footprint OCI Container Runtime fully written in C"
 HOMEPAGE="https://github.com/containers/crun"
 SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-3 LGPL-3+"
+LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="bpf +caps doc seccomp systemd static-libs"
 
 DEPEND="
 	dev-libs/yajl
-	sys-libs/libseccomp
 	caps? ( sys-libs/libcap )
 	seccomp? ( sys-libs/libseccomp )
 	systemd? ( sys-apps/systemd:= )
@@ -30,14 +29,25 @@ BDEPEND="
 "
 
 # the crun test suite is comprehensive to the extent that tests will fail
-# within a sandbox environment, due to the nature of the priveledges
-# required to create linux "containers."
+# within a sandbox environment, due to the nature of the privileges
+# required to create linux "containers".
 RESTRICT="test"
 
-DOCS=README.md
+DOCS=( README.md )
+
+PATCHES=(
+	# see https://709982.bugs.gentoo.org/attachment.cgi?id=614208
+	"${FILESDIR}/libocispec-deduplicate-json_common-in-makefile-am.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
+		--disable-criu \
 		$(use_enable bpf) \
 		$(use_enable caps) \
 		$(use_enable seccomp) \
@@ -46,27 +56,18 @@ src_configure() {
 }
 
 src_compile() {
-	pushd libocispec || die
-	emake
-	popd || die
+	emake -C libocispec
 	emake crun
 	if use doc ; then
-		emake crun.1
+		emake generate-man
 	fi
 }
 
 src_install() {
-	pushd libocispec || die
-	emake "DESTDIR=${D}" install-exec
-	popd || die
 	emake "DESTDIR=${D}" install-exec
 	if use doc ; then
 		emake "DESTDIR=${D}" install-man
 	fi
-
-	# there is currently a bug in upstream autotooling that continues to build static libraries despite
-	# explicit configure options
-	use static-libs || find "${ED}"/usr -name '*.la' -delete
 
 	einstalldocs
 }

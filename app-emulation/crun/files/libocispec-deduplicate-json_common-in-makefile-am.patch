@@ -1,0 +1,31 @@
+From 9d58891c058efa55c7b95cb90597d4cadc5c66d8 Mon Sep 17 00:00:00 2001
+From: Bruce Guenter <bruce@untroubled.org>
+Date: Mon, 17 Feb 2020 13:54:14 -0600
+Subject: [PATCH] De-duplicate json_common in Makefile.am
+
+The source file src/json_common.c is listed twice in Makefile.am,
+leading libtool to produce an archive with duplicated symbols. This
+change removes the duplicate source.
+
+This was introduced in commit 2e318803a2c49521ea448e3ae010b1564a7e95ed
+
+Signed-off-by: Bruce Guenter <bruce@untroubled.org>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 65bed45..c7ede83 100644
+--- a/libocispec/Makefile.am
++++ b/libocispec/Makefile.am
+@@ -7,7 +7,7 @@ GITIGNOREFILES = build-aux/ gtk-doc.make config.h.in aclocal.m4
+ noinst_LTLIBRARIES = libocispec.la
+ noinst_LIBRARIES = libocispec.a
+
+-SOURCE_FILES = src/json_common.c \
++SOURCE_FILES = \
+	src/image_spec_schema_config_schema.c \
+	src/image_spec_schema_content_descriptor.c \
+	src/image_spec_schema_defs.c \
+--
+2.24.1
