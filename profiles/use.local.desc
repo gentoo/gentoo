@@ -3134,7 +3134,6 @@ games-board/freedoko:net - Enable network game support
 games-board/freedoko:openclipartcards - Install the openclipartcards card set
 games-board/freedoko:pysolcards - Install the PySol card set
 games-board/freedoko:xskatcards - Install the XSkat card set
-games-board/grhino:gtp - Install the GTP (Go/Game Text Protocol) frontend
 games-board/pasang-emas:extras - Install some extra themes
 games-board/pioneers:help - Enable gnome ingame help via scrollkeeper
 games-board/pysolfc:extra-cardsets - Install extra cardsets
