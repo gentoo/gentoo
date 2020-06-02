@@ -19,7 +19,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme http jack
 	lame libnotify libsamplerate lirc mms modplug mp3 nls opengl pulseaudio
-	scrobbler sdl sid sndfile soxr speedpitch streamtuner vorbis wavpack"
+	scrobbler sdl sid sndfile soxr speedpitch streamtuner vorbis wavpack X"
 REQUIRED_USE="ampache? ( http ) streamtuner? ( http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
@@ -96,6 +96,7 @@ DEPEND="
 		>=media-libs/libvorbis-1.2.0
 	)
 	wavpack? ( >=media-sound/wavpack-4.50.1-r1 )
+	X? ( dev-qt/qtx11extras:5 )
 "
 RDEPEND="${DEPEND}"
 
@@ -156,6 +157,7 @@ src_configure() {
 		$(use_enable streamtuner)
 		$(use_enable vorbis)
 		$(use_enable wavpack)
+		$(use_enable X qthotkey)
 		$(use_with ffmpeg ffmpeg ffmpeg)
 	)
 
