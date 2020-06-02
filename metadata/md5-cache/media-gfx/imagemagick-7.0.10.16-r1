@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815
+DEFINED_PHASES=configure install postinst prepare test
+DEPEND=dev-libs/libltdl:0 bzip2? ( app-arch/bzip2 ) corefonts? ( media-fonts/corefonts ) djvu? ( app-text/djvu ) fftw? ( sci-libs/fftw:3.0 ) fontconfig? ( media-libs/fontconfig ) fpx? ( >=media-libs/libfpx-1.3.0-r1 ) graphviz? ( media-gfx/graphviz ) heif? ( media-libs/libheif:= ) jbig? ( >=media-libs/jbigkit-2:= ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( >=media-libs/openjpeg-2.1.0:2 ) lcms? ( media-libs/lcms:2= ) lqr? ( media-libs/liblqr ) opencl? ( virtual/opencl ) openexr? ( media-libs/openexr:0= ) pango? ( x11-libs/pango ) perl? ( >=dev-lang/perl-5.8.8:0= ) png? ( media-libs/libpng:0= ) postscript? ( app-text/ghostscript-gpl ) raw? ( media-libs/libraw:= ) svg? ( gnome-base/librsvg media-gfx/inkscape media-gfx/potrace ) tiff? ( media-libs/tiff:0= ) truetype? ( media-fonts/urw-fonts >=media-libs/freetype-2 ) webp? ( media-libs/libwebp:0= ) wmf? ( media-libs/libwmf ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/libXt ) xml? ( dev-libs/libxml2:= ) lzma? ( app-arch/xz-utils ) zlib? ( sys-libs/zlib:= ) !media-gfx/graphicsmagick[imagemagick] X? ( x11-base/xorg-proto )
+DESCRIPTION=A collection of tools and libraries for many image formats
+EAPI=7
+HOMEPAGE=https://www.imagemagick.org/
+IUSE=bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=imagemagick
+RDEPEND=dev-libs/libltdl:0 bzip2? ( app-arch/bzip2 ) corefonts? ( media-fonts/corefonts ) djvu? ( app-text/djvu ) fftw? ( sci-libs/fftw:3.0 ) fontconfig? ( media-libs/fontconfig ) fpx? ( >=media-libs/libfpx-1.3.0-r1 ) graphviz? ( media-gfx/graphviz ) heif? ( media-libs/libheif:= ) jbig? ( >=media-libs/jbigkit-2:= ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( >=media-libs/openjpeg-2.1.0:2 ) lcms? ( media-libs/lcms:2= ) lqr? ( media-libs/liblqr ) opencl? ( virtual/opencl ) openexr? ( media-libs/openexr:0= ) pango? ( x11-libs/pango ) perl? ( >=dev-lang/perl-5.8.8:0= ) png? ( media-libs/libpng:0= ) postscript? ( app-text/ghostscript-gpl ) raw? ( media-libs/libraw:= ) svg? ( gnome-base/librsvg media-gfx/inkscape media-gfx/potrace ) tiff? ( media-libs/tiff:0= ) truetype? ( media-fonts/urw-fonts >=media-libs/freetype-2 ) webp? ( media-libs/libwebp:0= ) wmf? ( media-libs/libwmf ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/libXt ) xml? ( dev-libs/libxml2:= ) lzma? ( app-arch/xz-utils ) zlib? ( sys-libs/zlib:= )
+REQUIRED_USE=corefonts? ( truetype ) test? ( corefonts )
+RESTRICT=!test? ( test )
+SLOT=0/7.0.10
+SRC_URI=mirror://imagemagick/ImageMagick-7.0.10-16.tar.xz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=9885b41206ee50889c563ac7fed6e371
