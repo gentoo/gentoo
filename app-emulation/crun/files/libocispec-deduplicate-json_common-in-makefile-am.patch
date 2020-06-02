@@ -24,8 +24,8 @@ index 65bed45..c7ede83 100644
 
 -SOURCE_FILES = src/json_common.c \
 +SOURCE_FILES = \
- 	src/image_spec_schema_config_schema.c \
- 	src/image_spec_schema_content_descriptor.c \
- 	src/image_spec_schema_defs.c \
+	src/image_spec_schema_config_schema.c \
+	src/image_spec_schema_content_descriptor.c \
+	src/image_spec_schema_defs.c \
 --
 2.24.1
