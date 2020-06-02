@@ -1,27 +1,27 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit user versionator toolchain-funcs flag-o-matic systemd linux-info $SCM
+inherit toolchain-funcs flag-o-matic systemd linux-info $SCM
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
 DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
-	SRC_URI="http://haproxy.1wt.eu/download/$(get_version_component_range 1-2)/src/${MY_P}.tar.gz"
-	KEYWORDS="amd64 arm ~ppc x86"
+	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 else
-	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(get_version_component_range 1-2).git/"
+	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit pcre2 pcre2-jit ssl
-systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
+IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
+ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
 	pcre? ( !pcre2 )
@@ -45,16 +45,18 @@ DEPEND="
 	zlib? ( sys-libs/zlib )
 	lua? ( dev-lang/lua:5.3 )
 	device-atlas? ( dev-libs/device-atlas-api-c )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	acct-group/haproxy
+	acct-user/haproxy"
 
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 CONTRIBS=( halog iprange )
 # ip6range is present in 1.6, but broken.
-version_is_at_least 1.7.0 $PV && CONTRIBS+=( ip6range spoa_example tcploop )
+ver_test $PV -ge 1.7.0 && CONTRIBS+=( ip6range spoa_example tcploop )
 # TODO: mod_defender - requires apache / APR, modsecurity - the same
-version_is_at_least 1.8.0 $PV && CONTRIBS+=( hpack )
+ver_test $PV -ge 1.8.0 && CONTRIBS+=( hpack )
 
 haproxy_use() {
 	(( $# != 2 )) && die "${FUNCNAME} <USE flag> <make option>"
@@ -63,9 +65,6 @@ haproxy_use() {
 }
 
 pkg_setup() {
-	enewgroup haproxy
-	enewuser haproxy -1 -1 -1 haproxy
-
 	if use net_ns; then
 		CONFIG_CHECK="~NET_NS"
 		linux-info_pkg_setup
@@ -74,9 +73,8 @@ pkg_setup() {
 
 src_compile() {
 	local -a args=(
-		TARGET=linux2628
-		USE_GETADDRINFO=1
-		USE_TFO=1
+		V=1
+		TARGET=linux-glibc
 	)
 
 	# TODO: PCRE2_WIDTH?
@@ -85,6 +83,8 @@ src_compile() {
 	args+=( $(haproxy_use net_ns NS) )
 	args+=( $(haproxy_use pcre PCRE) )
 	args+=( $(haproxy_use pcre-jit PCRE_JIT) )
+	args+=( $(haproxy_use pcre2 PCRE2) )
+	args+=( $(haproxy_use pcre2-jit PCRE2_JIT) )
 	args+=( $(haproxy_use ssl OPENSSL) )
 	args+=( $(haproxy_use slz SLZ) )
 	args+=( $(haproxy_use zlib ZLIB) )
@@ -97,13 +97,24 @@ src_compile() {
 	# For now, until the strict-aliasing breakage will be fixed
 	append-cflags -fno-strict-aliasing
 
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+	# Bug #668002
+	if use ppc || use arm || use hppa; then
+		TARGET_LDFLAGS=-latomic
+	fi
+
+	if use prometheus-exporter; then
+		EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o"
+	fi
+
+	# HAProxy really needs some of those "SPEC_CFLAGS", like -fno-strict-aliasing
+	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" ${args[@]}
 	emake -C contrib/systemd SBINDIR=/usr/sbin
 
 	if use tools ; then
 		for contrib in ${CONTRIBS[@]} ; do
+			# Those two includes are a workaround for hpack Makefile missing those
 			emake -C contrib/${contrib} \
-				CFLAGS="${CFLAGS}" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+				CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
 		done
 	fi
 }
@@ -145,12 +156,12 @@ src_install() {
 	if use examples ; then
 		docinto examples
 		dodoc examples/*.cfg
-		dodoc examples/seamless_reload.txt
+		dodoc doc/seamless_reload.txt
 	fi
 
 	if use vim-syntax ; then
 		insinto /usr/share/vim/vimfiles/syntax
-		doins examples/haproxy.vim
+		doins contrib/syntax-highlight/haproxy.vim
 	fi
 }
 
@@ -163,7 +174,7 @@ pkg_postinst() {
 		if [[ -d "${EROOT}/usr/share/doc/${PF}" ]]; then
 			einfo "Please consult the installed documentation for learning the configuration file's syntax."
 			einfo "The documentation and sample configuration files are installed here:"
-			einfo "   ${EROOT}usr/share/doc/${PF}"
+			einfo "   ${EROOT}/usr/share/doc/${PF}"
 		fi
 	fi
 }
