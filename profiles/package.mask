@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-06-02)
+# Last snapshot is from 2+ years ago, which doesn't build. Latest 
+# upstream commit won't build with in-tree efl versions. Has a bug 
+# open and unanswered for 2 years, so this package seems unmaintained
+# in Gentoo. Removal in ~30 days. Bug #656098
+x11-themes/terminology-themes
+
 # Jonas Stein <jstein@gentoo.org> (2020-06-01)
 # Last rite package due to missing/unclear license.
 # Removal after 2020-08-01
