@@ -6,7 +6,7 @@ EAPI="7"
 MY_PN="${PN}-cross"
 MY_P="${MY_PN}-${PV}"
 
-inherit autotools flag-o-matic git-r3
+inherit autotools flag-o-matic git-r3 systemd
 
 DESCRIPTION="Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times"
 HOMEPAGE="https://git.yoctoproject.org/cgit/cgit.cgi/prelink-cross/ https://people.redhat.com/jakub/prelink"
@@ -52,6 +52,7 @@ src_install() {
 	exeinto /etc/cron.daily
 	newexe "${FILESDIR}"/prelink.cron prelink
 	newconfd "${FILESDIR}"/prelink.confd prelink
+	systemd_dounit "${FILESDIR}"/prelink.{service,timer}
 }
 
 pkg_postinst() {
