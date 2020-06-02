@@ -6,5 +6,5 @@ KEYWORDS=amd64 ~arm ~ppc x86
 LICENSE=LGPL-2.1
 RDEPEND=x11-wm/enlightenment
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~juippis/distfiles/e-flat-theme-0_pre20200427.edj
+SRC_URI=https://dev.gentoo.org/~juippis/distfiles/e-flat-theme-0_pre20200602.edj
 _md5_=3eb9163523abdbbf759a8b54388595f1
