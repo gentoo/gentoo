@@ -12,12 +12,12 @@ QTMIN=5.12.3
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
+DESCRIPTION="PHP plugin for KDevelop"
+HOMEPAGE="https://www.kdevelop.org/"
+
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	KEYWORDS="~amd64 ~x86"
 fi
-
-DESCRIPTION="PHP plugin for KDevelop"
-HOMEPAGE="https://www.kdevelop.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
@@ -27,6 +27,10 @@ BDEPEND="
 	test? ( dev-util/kdevelop:5[test] )
 "
 DEPEND="
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	dev-util/kdevelop-pg-qt:5
+	dev-util/kdevelop:5=
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
@@ -37,10 +41,6 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/threadweaver-${KFMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	dev-util/kdevelop-pg-qt:5
-	dev-util/kdevelop:5=
 "
 RDEPEND="${DEPEND}"
 

@@ -11,12 +11,12 @@ VIRTUALDBUS_TEST="true"
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
+DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
+HOMEPAGE="https://www.kdevelop.org/"
+
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
-
-DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
-HOMEPAGE="https://www.kdevelop.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5/55" # look at KDEVELOP_SOVERSION inside CMakeLists.txt
@@ -33,6 +33,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=dev-util/astyle-3.1:=
+	kde-apps/libkomparediff2:5
 	>=kde-frameworks/karchive-${KFMIN}:5
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
 	>=kde-frameworks/kcmutils-${KFMIN}:5
@@ -62,9 +63,8 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	>=kde-frameworks/threadweaver-${KFMIN}:5
-	kde-apps/libkomparediff2:5
 	>=sys-devel/clang-6.0:=
-	gdbui? ( >=kde-plasma/libksysguard-5.16.5:5= )
+	gdbui? ( kde-plasma/libksysguard:5= )
 	hex? ( app-editors/okteta:5 )
 	plasma? (
 		>=kde-frameworks/krunner-${KFMIN}:5

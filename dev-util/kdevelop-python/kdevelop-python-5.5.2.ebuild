@@ -10,12 +10,12 @@ KFMIN=5.60.0
 QTMIN=5.12.3
 inherit ecm kde.org python-single-r1
 
+DESCRIPTION="Python plugin for KDevelop"
+HOMEPAGE="https://www.kdevelop.org/"
+
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	KEYWORDS="~amd64 ~x86"
 fi
-
-DESCRIPTION="Python plugin for KDevelop"
-HOMEPAGE="https://www.kdevelop.org/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
