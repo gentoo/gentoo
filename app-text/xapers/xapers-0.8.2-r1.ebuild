@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -11,6 +11,8 @@ inherit distutils-r1
 DESCRIPTION="Personal document indexing system"
 HOMEPAGE="https://finestructure.net/xapers/"
 SRC_URI="https://finestructure.net/xapers/releases/${P}.tar.gz"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,9 +26,9 @@ RDEPEND="app-text/poppler[utils]
 	x11-misc/xclip
 	x11-misc/xdg-utils"
 
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+BDEPEND="test? ( ${RDEPEND} )"
 
-src_tests() {
-	./test.sh
+src_test() {
+	cd test || die
+	./all || die
 }
