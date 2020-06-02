@@ -110,7 +110,7 @@ src_configure() {
 src_install() {
 	default
 	dodoc docs/{HACKING,TODO}
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 
 	exeinto /etc/cron.daily
 	newexe "${FILESDIR}"/man-db.cron-r1 man-db #289884
