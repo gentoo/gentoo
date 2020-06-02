@@ -33,8 +33,7 @@ BDEPEND="
 # required to create linux "containers".
 RESTRICT="test"
 
-DOCS=README.md
-
+DOCS=( README.md )
 
 PATCHES=(
 	# see https://709982.bugs.gentoo.org/attachment.cgi?id=614208
