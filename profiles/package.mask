@@ -37,6 +37,7 @@
 # Masked for removal in 30 days
 app-misc/webcomics-collector
 net-misc/pytvshows
+net-news/rawdog
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-02)
 # libgnomeui revdeps with no sign of upstream porting away or doing anything.
