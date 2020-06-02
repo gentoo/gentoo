@@ -67,12 +67,7 @@ QT5_MINOR_VERSION=$(ver_cut 2)
 readonly QT5_MINOR_VERSION
 
 case ${PV} in
-	5.9999)
-		# git dev branch
-		QT5_BUILD_TYPE="live"
-		EGIT_BRANCH="dev"
-		;;
-	5.?.9999|5.??.9999|5.???.9999)
+	5.??.9999)
 		# git stable branch
 		QT5_BUILD_TYPE="live"
 		EGIT_BRANCH=${PV%.9999}
