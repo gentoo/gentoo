@@ -1,50 +1,53 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
 
 MY_P=${P/_}
+inherit desktop
+
 DESCRIPTION="Board games system"
-HOMEPAGE="http://gtkboard.sourceforge.net/"
+HOMEPAGE="http://gtkboard.sourceforge.net/indexold.html"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnome"
+IUSE=""
 
-RDEPEND="x11-libs/gtk+:2
+BDEPEND="
+	virtual/pkgconfig"
+RDEPEND="
 	media-libs/libsdl:0[sound]
 	media-libs/sdl-mixer[vorbis]
-	gnome? ( gnome-base/libgnomeui )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	x11-libs/gtk+:2"
+DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
+HTML_DOCS=( doc/index.html )
+
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc41.patch
 	"${FILESDIR}"/${P}-gcc45.patch
+	"${FILESDIR}"/${P}-stack-smash.patch
 )
 
 src_prepare() {
 	default
 
-	sed -i -e "/^LIBS/s:@LIBS@:@LIBS@ -lgmodule-2.0 -lm:" \
-		src/Makefile.in
+	sed -i -e "/^LIBS/s:@LIBS@:@LIBS@ -lgmodule-2.0 -lm:" src/Makefile.in || die
 }
 
 src_configure() {
 	econf \
 		--enable-gtk2 \
 		--enable-sdl \
-		$(use_enable gnome)
+		--disable-gnome
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	doicon pixmaps/${PN}.png
 	make_desktop_entry ${PN} Gtkboard
-	dodoc AUTHORS ChangeLog TODO doc/index.html
 }
