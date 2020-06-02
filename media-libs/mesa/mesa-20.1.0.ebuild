@@ -504,6 +504,7 @@ multilib_src_configure() {
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
+		$(meson_use vulkan vulkan-device-select-layer)
 		$(meson_use vulkan-overlay vulkan-overlay-layer)
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
