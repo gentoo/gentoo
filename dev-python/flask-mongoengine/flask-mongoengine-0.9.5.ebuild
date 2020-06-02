@@ -25,6 +25,8 @@ BDEPEND="${RDEPEND}
 		>=dev-db/mongodb-2.6.0
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/rednose[${PYTHON_USEDEP}]
+		dev-python/pip
+		dev-python/coverage[${PYTHON_USEDEP}]
 	)
 "
 
