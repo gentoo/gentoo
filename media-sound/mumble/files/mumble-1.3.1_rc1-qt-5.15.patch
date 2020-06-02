@@ -1,0 +1,28 @@
+From 4539fd92462b9dd1a99b4bfe307abae4e2d89045 Mon Sep 17 00:00:00 2001
+From: Marco Genasci <fedeliallalinea@gmail.com>
+Date: Mon, 1 Jun 2020 21:01:00 +0200
+Subject: [PATCH] src/mumble/OverlayText.h: add missing <QtGui/QPainterPath>
+ include for Qt 5.15
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+../../release/.moc/mumble/../../../src/mumble/OverlayText.h:42:16: error: field ‘qpp’ has incomplete type ‘QPainterPath’
+   42 |   QPainterPath qpp;
+      |                ^~~
+---
+ src/mumble/OverlayText.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/mumble/OverlayText.h b/src/mumble/OverlayText.h
+index f06f2b63a8..c1cd9efdd7 100644
+--- a/src/mumble/OverlayText.h
++++ b/src/mumble/OverlayText.h
+@@ -6,6 +6,7 @@
+ #ifndef MUMBLE_MUMBLE_OVERLAYTEXT_H_
+ #define MUMBLE_MUMBLE_OVERLAYTEXT_H_
+ 
++#include <QtGui/QPainterPath>
+ #include <QtGui/QPixmap>
+ #include <QtGui/QFont>
+ 

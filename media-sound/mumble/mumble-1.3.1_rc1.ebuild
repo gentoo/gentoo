@@ -64,6 +64,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" ) # in git master; bug #726692
+
 # NB: qmake does not support multilib but it's fine to configure
 # for the native ABI here
 src_configure() {
