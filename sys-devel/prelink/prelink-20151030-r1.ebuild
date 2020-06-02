@@ -6,14 +6,16 @@ EAPI="7"
 MY_PN="${PN}-cross"
 MY_P="${MY_PN}-${PV}"
 
-inherit autotools flag-o-matic git-r3 systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times"
 HOMEPAGE="https://git.yoctoproject.org/cgit/cgit.cgi/prelink-cross/ https://people.redhat.com/jakub/prelink"
-EGIT_REPO_URI="https://git.yoctoproject.org/git/prelink-cross"
+SRC_URI="https://git.yoctoproject.org/cgit/cgit.cgi/${MY_PN}/snapshot/${MY_P}.tar.bz2
+	doc? ( https://people.redhat.com/jakub/prelink/prelink.pdf )"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="doc selinux"
 
 RDEPEND=">=dev-libs/elfutils-0.100
@@ -21,6 +23,8 @@ RDEPEND=">=dev-libs/elfutils-0.100
 	!dev-libs/libelf"
 DEPEND="${RDEPEND}
 	sys-libs/binutils-libs"
+
+S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20130503-prelink-conf.patch
@@ -41,16 +45,10 @@ src_configure() {
 	econf $(use_enable selinux)
 }
 
-src_test() {
-	# prelink tests check exact library lists.
-	# LD_PRELOADed libraries break the assumption.
-	SANDBOX_ON=0 LD_PRELOAD= emake check VERBOSE=1
-}
-
 src_install() {
 	default
 
-	use doc && dodoc doc/prelink.pdf
+	use doc && dodoc "${DISTDIR}"/prelink.pdf
 
 	insinto /etc
 	doins doc/prelink.conf
