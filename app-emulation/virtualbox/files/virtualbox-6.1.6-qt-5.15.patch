@@ -1,0 +1,92 @@
+--- a/src/VBox/Frontends/VirtualBox/src/globals/UIImageTools.cpp 2020-05-29 23:51:41.504432532 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/globals/UIImageTools.cpp 2020-05-29 23:49:26.943858460 +0300
+@@ -17,6 +17,8 @@
+ 
+ /* Qt includes: */
+ #include <QPainter>
++#include <QPainterPath>
++#include <QPainterPathStroker>
+ 
+ /* GUI include */
+ #include "UIImageTools.h"
+
+--- a/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h 2020-05-30 00:09:50.369275092 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h 2020-05-30 00:01:14.152354690 +0300
+@@ -24,6 +24,7 @@
+ /* Qt includes: */
+ #include <QIcon>
+ #include <QWidget>
++#include <QPainterPath>
+ 
+ /* GUI includes: */
+ #include "UILibraryDefs.h"
+--- a/src/VBox/Frontends/VirtualBox/src/widgets/UIMenuToolBar.cpp 2020-05-30 00:39:54.773447224 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/widgets/UIMenuToolBar.cpp 2020-05-30 00:41:36.274371761 +0300
+@@ -21,6 +21,7 @@
+ #include <QPainter>
+ #include <QStyle>
+ #include <QToolButton>
++#include <QPainterPath>
+ 
+ /* GUI includes: */
+ #include "UIMenuToolBar.h"
+--- a/src/VBox/Frontends/VirtualBox/src/widgets/UITabBar.cpp 2020-05-30 00:39:47.613523134 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/widgets/UITabBar.cpp 2020-05-30 00:41:29.655441857 +0300
+@@ -29,6 +29,7 @@
+ #include <QMouseEvent>
+ #include <QStyleOption>
+ #include <QPainter>
++#include <QPainterPath>
+ #ifdef VBOX_WS_MAC
+ # include <QStackedLayout>
+ #endif
+--- a/src/VBox/Frontends/VirtualBox/src/widgets/UIFilmContainer.cpp 2020-05-30 00:40:01.624374596 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/widgets/UIFilmContainer.cpp 2020-05-30 00:41:40.654325376 +0300
+@@ -23,6 +23,7 @@
+ #include <QScrollBar>
+ #include <QStyle>
+ #include <QVBoxLayout>
++#include <QPainterPath>
+ 
+ /* GUI includes: */
+ #include "UIFilmContainer.h"
+--- a/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp 2020-05-30 00:40:08.844298062 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp 2020-05-30 00:41:44.594283652 +0300
+@@ -22,6 +22,7 @@
+ #include <QPaintEvent>
+ #include <QStyle>
+ #include <QVBoxLayout>
++#include <QPainterPath>
+ 
+ /* GUI includes: */
+ #include "UIPopupBox.h"
+--- a/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp 2020-05-30 00:40:16.064221530 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp 2020-05-30 00:41:52.014205079 +0300
+@@ -27,6 +27,7 @@
+ #include <QToolButton>
+ #include <QVBoxLayout>
+ #include <QWindow>
++#include <QPainterPath>
+ #ifdef VBOX_WS_X11
+ # include <QWindowStateChangeEvent>
+ #endif
+--- a/src/VBox/Frontends/VirtualBox/src/widgets/graphics/UIGraphicsScrollBar.cpp 2020-05-30 00:40:22.314155286 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/widgets/graphics/UIGraphicsScrollBar.cpp 2020-05-30 00:41:56.544157111 +0300
+@@ -28,6 +28,7 @@
+ #include <QStyleOptionGraphicsItem>
+ #include <QTimer>
+ #include <QTimerEvent>
++#include <QPainterPath>
+ 
+ /* GUI includes: */
+ #include "UIGraphicsButton.h"
+--- a/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupPane.cpp 2020-05-30 00:40:34.375027462 +0300
++++ b/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupPane.cpp 2020-05-30 00:42:01.244107347 +0300
+@@ -18,6 +18,7 @@
+ /* Qt includes: */
+ #include <QPainter>
+ #include <QTextEdit>
++#include <QPainterPath>
+ 
+ /* GUI includes: */
+ #include "UIPopupPane.h"
