@@ -17,12 +17,10 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme http jack lame
-	libnotify libsamplerate lirc mms modplug mp3 nls opengl pulseaudio qtmedia
+IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme http jack
+	lame libnotify libsamplerate lirc mms modplug mp3 nls opengl pulseaudio
 	scrobbler sdl sid sndfile soxr speedpitch streamtuner vorbis wavpack"
-REQUIRED_USE="
-	|| ( alsa jack pulseaudio qtmedia sdl )
-	ampache? ( http ) streamtuner? ( http )"
+REQUIRED_USE="ampache? ( http ) streamtuner? ( http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -53,6 +51,7 @@ DEPEND="
 	dev-libs/libxml2:2
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
 	dev-qt/qtwidgets:5
 	~media-sound/audacious-${PV}
 	aac? ( >=media-libs/faad2-2.7 )
@@ -85,7 +84,6 @@ DEPEND="
 	mp3? ( >=media-sound/mpg123-1.12.1 )
 	opengl? ( dev-qt/qtopengl:5 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
-	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
 	sid? ( >=media-libs/libsidplayfp-1.0.0 )
@@ -119,6 +117,7 @@ src_configure() {
 	local myeconfargs=(
 		--enable-mpris2
 		--enable-qt
+		--enable-qtaudio
 		--enable-songchange
 		--disable-adplug # not packaged
 		--disable-gtk
@@ -148,7 +147,6 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable opengl qtglspectrum)
 		$(use_enable pulseaudio pulse)
-		$(use_enable qtmedia qtaudio)
 		$(use_enable scrobbler scrobbler2)
 		$(use_enable sdl sdlout)
 		$(use_enable sid)
