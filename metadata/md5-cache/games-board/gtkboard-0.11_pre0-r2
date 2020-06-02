@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/libsdl:0[sound] media-libs/sdl-mixer[vorbis] x11-libs/gtk+:2
+DESCRIPTION=Board games system
+EAPI=7
+HOMEPAGE=http://gtkboard.sourceforge.net/indexold.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl:0[sound] media-libs/sdl-mixer[vorbis] x11-libs/gtk+:2
+SLOT=0
+SRC_URI=mirror://sourceforge/gtkboard/gtkboard-0.11pre0.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_md5_=c0c180c80fe6d47e1a0204d861d0d0eb
