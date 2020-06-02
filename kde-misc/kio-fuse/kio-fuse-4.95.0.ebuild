@@ -30,3 +30,5 @@ DEPEND="
 	sys-fs/fuse:3
 "
 RDEPEND="${DEPEND}"
+
+RESTRICT+=" test" # depend on fuse kernel module
