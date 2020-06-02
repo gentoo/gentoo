@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-02)
+# libgnomeui revdeps with no sign of upstream porting away or doing anything.
+# No maintainer. Bugs #726826, #726822. Masked for removal in 30 days.
+app-misc/cbrpager
+app-misc/ignuit
+
 # Joonas Niilola <juippis@gentoo.org> (2020-06-02)
 # Last snapshot is from 2+ years ago, which doesn't build. Latest 
 # upstream commit won't build with in-tree efl versions. Has a bug 
