@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 
 inherit distutils-r1
 
@@ -15,24 +15,11 @@ SRC_URI="https://github.com/erikrose/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
-BDEPEND="
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? (
-		${RDEPEND}
-		dev-python/nose[${PYTHON_USEDEP}]
-	)
-"
 
-python_compile_all() {
-	if use doc; then
-		sphinx-build docs/ docs/_build/html || die
-		HTML_DOCS=( docs/_build/html/. )
-	fi
-}
+distutils_enable_sphinx docs
+distutils_enable_tests nose
 
 python_test() {
 	# The tests need an interactive terminal
