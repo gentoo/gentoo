@@ -8,9 +8,6 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:dash:dash</remote-id>
 	</upstream>
-	<use>
-		<flag name="vanilla">Support echo -n, and enable echo -e all the time (unsupported)</flag>
-	</use>
 	<longdescription lang="en">
 		DASH is a direct descendant of the NetBSD version of ash (the Almquist SHell)
 		and is POSIX compliant.
