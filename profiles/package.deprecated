@@ -40,11 +40,6 @@ x11-libs/pangox-compat
 # Bug #650320
 dev-perl/Net-SMTP-SSL
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-28)
-# Backport specific to Python 2.6.  No modern package should be using
-# it.
-dev-python/unittest2
-
 # Michał Górny <mgorny@gentoo.org> (2020-03-25)
 # Provides 'pytest' command to setup.py that is entirely redundant.
 # Strip the dependency, run pytest directly (preferably
