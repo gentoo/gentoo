@@ -1,15 +1,15 @@
-BDEPEND=virtual/pkgconfig nls? ( dev-util/intltool ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig nls? ( dev-util/intltool )
 DEFINED_PHASES=configure install postinst postrm preinst prepare unpack
 DEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.28 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 >=x11-libs/cairo-1.2.6 >=x11-libs/pango-1.8.0 virtual/freedesktop-icon-theme dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Lightweight and versatile audio player
 EAPI=7
 HOMEPAGE=https://audacious-media-player.org/
 IUSE=nls
+KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
-PDEPEND=~media-plugins/audacious-plugins-9999
-PROPERTIES=live
+PDEPEND=~media-plugins/audacious-plugins-4.0.4
 RDEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.28 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 >=x11-libs/cairo-1.2.6 >=x11-libs/pango-1.8.0 virtual/freedesktop-icon-theme
 SLOT=0
-SRC_URI=mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+SRC_URI=https://distfiles.audacious-media-player.org/audacious-4.0.4.tar.bz2 mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=dc81d59b818b03d599f73c33a2527ac9
