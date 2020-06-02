@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 python3_7 )
 inherit distutils-r1
 
 DESCRIPTION="Secure backup system using gnupg to encrypt data"
-HOMEPAGE="http://www.nongnu.org/duplicity/"
+HOMEPAGE="https://www.nongnu.org/duplicity/"
 SRC_URI="https://code.launchpad.net/${PN}/$(ver_cut 1-2)-series/$(ver_cut 1-3)/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -37,7 +37,7 @@ RDEPEND="${CDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-docs.patch"
+	"${FILESDIR}/${P}-fix-docs-cmd.patch"
 )
 
 python_test() {
