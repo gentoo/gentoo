@@ -25,6 +25,7 @@ IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="corefonts? ( truetype )
+	svg? ( xml )
 	test? ( corefonts )"
 
 RESTRICT="!test? ( test )"
