@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="GNU Radio IIO Blocks"
 HOMEPAGE="https://github.com/analogdevicesinc/gr-iio"
@@ -37,3 +37,8 @@ DEPEND="${RDEPEND}
 	sys-devel/bison:=
 	dev-util/cppunit:=
 	dev-lang/swig:0"
+
+src_install() {
+	cmake_src_install
+	python_optimize
+}
