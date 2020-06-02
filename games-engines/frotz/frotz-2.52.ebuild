@@ -5,11 +5,9 @@ EAPI=7
 
 inherit toolchain-funcs
 
-MY_PV="${PV/_beta/b}"
-MY_P="${PN}-${MY_PV}"
 DESCRIPTION="Interpreter for Z-code based text games"
 HOMEPAGE="https://661.org/proj/if/frotz/"
-SRC_URI="https://gitlab.com/DavidGriffith/${PN}/-/archive/${MY_PV}/${MY_P}.tar.bz2"
+SRC_URI="https://gitlab.com/DavidGriffith/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,7 +21,7 @@ DEPEND="
 		sound? (
 			media-libs/libao
 			media-libs/libmodplug
-			media-libs/libsamplerate[sndfile]
+			media-libs/libsamplerate
 			media-libs/libsndfile[-minimal]
 			media-libs/libvorbis
 		)
@@ -37,15 +35,8 @@ DEPEND="
 		virtual/jpeg:0=
 	)
 "
-
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
-
-PATCHES=(
-	"${FILESDIR}"/dumb-ldflags.patch
-)
 
 src_compile() {
 	emake \
@@ -58,7 +49,7 @@ src_compile() {
 		RANLIB="$(tc-getRANLIB)" \
 		CURSES=$(usex unicode ncursesw ncurses) \
 		USE_UTF8=$(usex unicode yes "") \
-		SOUND=$(usex sound ao none) \
+		SOUND_TYPE=$(usex sound ao none) \
 		PREFIX="${EPREFIX}/usr" \
 		SYSCONFDIR="${EPREFIX}/etc"
 }
