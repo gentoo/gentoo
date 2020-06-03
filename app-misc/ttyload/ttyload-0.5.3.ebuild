@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,11 +22,14 @@ DOCS=( BUGS HISTORY LICENSE README.md TODO )
 src_prepare() {
 	default
 	sed -i '10i#include <time.h>' "${PN}.h" || die
-	sed -i -e "s#make#$\(MAKE\)#" Makefile || die
+
+	sed -e "s#make#$\(MAKE\)#" \
+		-e "s#^CFLAGS.*#CFLAGS=\$(INCLUDES) ${CFLAGS} \$(VERSION)#" \
+		-i Makefile || die
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC=$(tc-getCC) LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
