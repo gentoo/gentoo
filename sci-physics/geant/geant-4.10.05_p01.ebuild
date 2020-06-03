@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MY_P=${PN}${PV/_/.}
 SPV="$(ver_cut 1-2).$(printf %1d $(ver_cut 3))"
 
 DESCRIPTION="Toolkit for simulation of passage of particles through matter"
-HOMEPAGE="http://geant4.cern.ch/"
+HOMEPAGE="http://geant4.web.cern.ch/"
 SRC_URI="http://geant4.cern.ch/support/source/${MY_P}.tar.gz"
 
 LICENSE="geant4"
