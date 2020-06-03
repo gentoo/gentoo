@@ -207,6 +207,8 @@ src_prepare() {
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 
+	eapply "${FILESDIR}"/${P}-qt-5.15.patch # TODO: upstream, bug #726154
+
 	rm "${WORKDIR}/patches/010_virtualbox-5.2.12-qt511.patch" || die
 	eapply "${WORKDIR}/patches"
 
