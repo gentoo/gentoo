@@ -7696,7 +7696,7 @@ dev-python/diskcache 4.1.0: Disk and file backed cache
 dev-python/dissononce 0.34.3: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.3.0: Low-level components of distutils2/packaging
 dev-python/distributed 1.18.0-r1: Python library for distributed computation
-dev-python/distro 1.0.4-r1 1.3.0: Reliable machine-readable Linux distribution information for Python
+dev-python/distro 1.0.4-r1 1.3.0 1.5.0: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.4.2 0.5.0: Use Database URLs in your Django Application
 dev-python/django 2.2.11 2.2.12 3.0.6: High-level Python web framework
 dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
@@ -13429,7 +13429,7 @@ media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gpodder 3.10.5-r1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
-media-sound/grip 4.0.1-r1 4.1.1: GTK+ based Audio CD Player/Ripper
+media-sound/grip 4.1.1: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.5: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper

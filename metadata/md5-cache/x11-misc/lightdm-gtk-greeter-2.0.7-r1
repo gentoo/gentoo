@@ -5,10 +5,10 @@ DESCRIPTION=LightDM GTK+ Greeter
 EAPI=7
 HOMEPAGE=https://launchpad.net/lightdm-gtk-greeter
 IUSE=appindicator branding
-KEYWORDS=~alpha amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=~alpha amd64 arm ~arm64 ppc ppc64 x86
 LICENSE=GPL-3 LGPL-3 branding? ( CC-BY-3.0 )
 RDEPEND=appindicator? ( dev-libs/libindicator:3 ) x11-libs/gtk+:3 >=x11-misc/lightdm-1.2.2 x11-themes/gnome-themes-standard >=x11-themes/adwaita-icon-theme-3.14.1
 SLOT=0
 SRC_URI=https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.7/+download/lightdm-gtk-greeter-2.0.7.tar.gz branding? ( https://dev.gentoo.org/~polynomial-c/dist/lightdm-gentoo-patch-2.tar.gz )
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=5f018d6edc4ac34fb39a5df335eb63fe
+_md5_=a7be7fb00aa2c3936e9d0c960814bcff
