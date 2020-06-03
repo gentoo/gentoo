@@ -20,13 +20,14 @@ else
 fi
 LICENSE="MIT"
 SLOT="0"
-IUSE="chamelium doc man overlay runner unwind valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xv"
+IUSE="chamelium doc man overlay runner tests unwind valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xv"
 REQUIRED_USE="
 	|| ( video_cards_amdgpu video_cards_intel video_cards_nouveau )
 	overlay? (
 		video_cards_intel
 		|| ( X xv )
 	)
+	doc? ( tests )
 "
 RESTRICT="test"
 
@@ -93,7 +94,7 @@ src_configure() {
 		$(meson_feature man)
 		$(meson_feature overlay)
 		$(meson_feature runner)
-		$(meson_feature doc tests) # Test build is required for docs
+		$(meson_feature tests)
 		$(meson_feature valgrind)
 		$(meson_feature unwind libunwind)
 		-Doverlay_backends=${overlay_backends%?}
