@@ -27,7 +27,7 @@ DEPEND="
 	acct-user/gerbera
 	>=net-libs/libupnp-1.12.1:=[ipv6,reuseaddr]
 	>=dev-db/sqlite-3
-	dev-libs/spdlog
+	dev-libs/spdlog:=
 	dev-libs/pugixml
 	dev-libs/libfmt:0/6
 	mysql? ( dev-db/mysql-connector-c )
