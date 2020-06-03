@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake-utils python-single-r1 virtualx xdg-utils
+inherit cmake python-single-r1 virtualx xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
@@ -48,7 +48,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
-	>=dev-lang/orc-0.4.12
 	$(python_gen_cond_dep 'dev-libs/boost:0=[python,${PYTHON_USEDEP}]')
 	dev-libs/log4cpp
 	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
@@ -124,7 +123,7 @@ src_prepare() {
 	use !oss && sed -i 's#soundcard.h#oss-nonexistent.h#g' cmake/Modules/FindOSS.cmake
 	use !portaudio && sed -i 's#portaudio.h#portaudio-nonexistent.h#g' cmake/Modules/FindPORTAUDIO.cmake
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -160,11 +159,11 @@ src_configure() {
 		-DGR_PYTHON_DIR="$(python_get_sitedir)"
 		-DGR_PKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use examples ; then
 		dodir /usr/share/doc/${PF}/
@@ -202,7 +201,7 @@ src_install() {
 
 src_test()
 {
-	virtx cmake-utils_src_test
+	virtx cmake_src_test
 }
 
 pkg_postinst()
