@@ -7,6 +7,7 @@ inherit flag-o-matic git-r3 toolchain-funcs
 DESCRIPTION="A console-based network monitoring utility"
 HOMEPAGE="https://github.com/iptraf-ng/iptraf-ng"
 EGIT_REPO_URI="https://github.com/iptraf-ng/iptraf-ng"
+EGIT_BRANCH="dev"
 
 LICENSE="GPL-2 doc? ( FDL-1.1 )"
 SLOT="0"
