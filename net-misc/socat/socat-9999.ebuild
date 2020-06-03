@@ -21,9 +21,11 @@ DEPEND="
 	readline? ( sys-libs/readline:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
+BDEPEND="
+	app-text/yodl
+"
 DEPEND="
 	${RDEPEND}
-	app-text/yodl
 "
 RESTRICT="
 	test

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-DEPEND=">=dev-util/icmake-8.00.00"
+BDEPEND="
+	>=dev-util/icmake-8.00.00
+	doc? (
+		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-plaingeneric
+	)
+"
 
 S=${WORKDIR}/${P}/${PN}
 
@@ -42,6 +48,9 @@ src_prepare() {
 		-e "s/ranlib/$(tc-getRANLIB)/" \
 		-i icmake/stdcompile || die
 
+	sed -e '/strip/s|"-s"|""|g' \
+		-i icmake/program || die
+
 	# required for std::filesystem usage
 	append-cxxflags -std=c++17
 
@@ -49,10 +58,10 @@ src_prepare() {
 }
 
 src_compile() {
-	./build programs || die
-	./build macros || die
-	./build man || die
-	use doc && { ./build manual || die ; }
+	local target
+	for target in  programs macros man $(usex doc manual ''); do
+		./build ${target} || die "${target} failed"
+	done
 }
 
 src_install() {
