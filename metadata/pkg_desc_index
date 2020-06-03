@@ -15246,7 +15246,7 @@ net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Def
 net-wireless/dump1090 3.7.2 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/dump978 9999: simple Mode S decoder for soapysdr supported devices
 net-wireless/gnome-bluetooth 3.34.1: Bluetooth graphical utilities integrated with GNOME
-net-wireless/gnuradio 3.7.13.5-r3 3.8.1.0 9999: Toolkit that provides signal processing blocks to implement software radios
+net-wireless/gnuradio 3.7.13.5-r3 3.8.1.0-r1 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.11.5-r1 2.12.1 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gqrx-scanner 1.0.1_p20190329: frequency scanner for Gqrx Software Defined Radio receiver
@@ -17295,7 +17295,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.32 5.4.39 5.4.40 5.4.42 5.4.43 5.6.11 5.6.12 5.6.14 5.6.15: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.39 5.4.40 5.4.42 5.4.43 5.6.11 5.6.12 5.6.14 5.6.15: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.222 4.4.223 4.4.224 4.4.225 4.9.221 4.9.222 4.9.223 4.9.224 4.9.225 4.14.178 4.14.179 4.14.180 4.14.181 4.14.182 4.19.120 4.19.121 4.19.122 4.19.123 4.19.124 4.19.125 5.4.38 5.4.39 5.4.40 5.4.41 5.4.42 5.4.43 5.6.9 5.6.10 5.6.11 5.6.12 5.6.13 5.6.14 5.6.15 5.7.0: Full sources including the Gentoo patchset for the 5.7 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.222 4.4.223 4.4.224 4.4.225 4.4.226 4.9.221 4.9.222 4.9.223 4.9.224 4.9.225 4.9.226 4.14.178 4.14.179 4.14.180 4.14.181 4.14.182 4.14.183 4.19.120 4.19.121 4.19.122 4.19.123 4.19.124 4.19.125 4.19.126 5.4.38 5.4.39 5.4.40 5.4.41 5.4.42 5.4.43 5.4.44 5.6.9 5.6.10 5.6.11 5.6.12 5.6.13 5.6.14 5.6.15 5.6.16 5.7.0: Full sources including the Gentoo patchset for the 5.7 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3 5.7_rc4 5.7_rc5 5.7_rc6 5.7_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
