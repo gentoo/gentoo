@@ -35,6 +35,7 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable debug asserts)
 		$(use_enable debug checks)
+		--disable-static
 		--disable-test
 	)
 	econf "${myeconfargs[@]}"
