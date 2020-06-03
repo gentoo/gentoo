@@ -70,7 +70,7 @@ REQUIRED_USE="
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( 
+PATCHES=(
 	"${FILESDIR}/${PV}-kde-dir.patch"
 	"${FILESDIR}/${PN}-qt5.15.patch"
 )
