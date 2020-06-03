@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/exo-4.15.1-parallel-make.patch
+)
+
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die

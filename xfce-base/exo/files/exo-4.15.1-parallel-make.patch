@@ -1,0 +1,66 @@
+From d3f3232eb53a052711029d2fafc36e23da971b35 Mon Sep 17 00:00:00 2001
+From: Romain Bouvier <skunnyk@alteroot.org>
+Date: Fri, 29 May 2020 11:11:41 +0200
+Subject: [PATCH] exo-29: Fix race condition in make install
+
+- Since the exo drop of gtk2, HEADERS are declared twice, which can lead
+  to race conditions when using parallel make "make -j4 install"
+- Simplify Makefile to only have one HEADERS section
+- This fix #29
+---
+ exo/Makefile.am | 24 ++++--------------------
+ 1 file changed, 4 insertions(+), 20 deletions(-)
+
+diff --git a/exo/Makefile.am b/exo/Makefile.am
+index fc8845d4..358ae9cb 100644
+--- a/exo/Makefile.am
++++ b/exo/Makefile.am
+@@ -23,30 +23,14 @@ libexo_headers =							\
+ 	exo-tree-view.h							\
+ 	exo-utils.h
+ 
+-libexo_built_public_sources =						\
+-	exo-enum-types.h
+-
+-libexo_built_sources =							\
+-	$(libexo_built_public_sources)					\
++libexo_2_built_sources =							\
++	exo-enum-types.h \
+ 	exo-alias.h							\
+ 	exo-aliasdef.c							\
+ 	exo-enum-types.c						\
+ 	exo-marshal.c							\
+ 	exo-marshal.h
+ 
+-libexoincludedir = $(includedir)/exo-2/exo
+-
+-libexoinclude_HEADERS =							\
+-	$(libexo_built_public_sources)					\
+-	$(libexo_headers)						\
+-	exo.h								\
+-	exo-config.h
+-
+-
+-##
+-## GTK+ 3 support library
+-##
+-
+ libexo_2_includedir = $(includedir)/exo-2/exo
+ 
+ lib_LTLIBRARIES = libexo-2.la
+@@ -141,10 +125,10 @@ CLEANFILES =								\
+ DISTCLEANFILES =							\
+ 	stamp-exo-enum-types.h						\
+ 	stamp-exo-marshal.h						\
+-	$(libexo_built_sources)
++	$(libexo_2_built_sources)
+ 
+ BUILT_SOURCES =								\
+-	$(libexo_built_sources)
++	$(libexo_2_built_sources)
+ 
+ exo-alias.h: make-exo-alias.pl exo.symbols
+ 	$(AM_V_GEN) $(PERL) $(srcdir)/make-exo-alias.pl < $(srcdir)/exo.symbols > exo-alias.h
+-- 
+2.26.2
+
