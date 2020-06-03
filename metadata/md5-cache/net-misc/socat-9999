@@ -1,6 +1,6 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=app-text/yodl >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install prepare setup unpack
-DEPEND=app-text/yodl
+DEPEND=
 DESCRIPTION=Multipurpose relay (SOcket CAT)
 EAPI=7
 HOMEPAGE=http://www.dest-unreach.org/socat/
@@ -10,4 +10,4 @@ PROPERTIES=live
 RESTRICT=test ssl? ( readline? ( bindist ) )
 SLOT=0
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=00b2be30c3ecfdbee4c9741ae11da99e
+_md5_=a5df8ee84df092cb30dd36ee30948682
