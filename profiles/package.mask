@@ -37,6 +37,7 @@
 # Masked for removal in 15 days
 app-cdr/sync2cd
 dev-python/selectors34
+x11-themes/fvwm-crystal
 
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
 # Masked for testing
