@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ src_compile() {
 
 src_test() {
 	cd ports/unix || die
-	emake test
+	emake CC="$(tc-getCC)" test
 }
 
 src_install() {
