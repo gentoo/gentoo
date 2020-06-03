@@ -36,6 +36,7 @@
 # py2 only. dead upstream. m-n.
 # Masked for removal in 15 days
 app-cdr/sync2cd
+dev-python/selectors34
 
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
 # Masked for testing
