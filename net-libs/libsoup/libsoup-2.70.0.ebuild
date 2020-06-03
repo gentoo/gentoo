@@ -17,7 +17,7 @@ IUSE="brotli gssapi gtk-doc +introspection samba ssl test +vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 s390 ~sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.58:2[${MULTILIB_USEDEP}]
