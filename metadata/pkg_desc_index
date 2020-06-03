@@ -9474,7 +9474,7 @@ dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
 dev-ruby/concurrent-ruby 1.0.5: Modern concurrency tools including agents, futures, promises, thread pools, more
-dev-ruby/connection_pool 2.2.2: Generic connection pooling for Ruby
+dev-ruby/connection_pool 2.2.2 2.2.3: Generic connection pooling for Ruby
 dev-ruby/contracts 0.16.0: provides contracts for Ruby
 dev-ruby/coolio 1.5.3 1.5.4 1.6.0: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
@@ -9541,7 +9541,7 @@ dev-ruby/fattr 2.4.0: fattr.rb is a "fatter attr" for ruby
 dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
 dev-ruby/ferret 0.11.8.7: A ruby indexing/searching library
 dev-ruby/ffaker 2.11.0 2.12.0 2.13.0 2.14.0: Faster Faker, generates dummy data
-dev-ruby/ffi 1.11.3 1.12.1 1.12.2: Ruby extension for programmatically loading dynamic libraries
+dev-ruby/ffi 1.11.3 1.12.1 1.12.2 1.13.0: Ruby extension for programmatically loading dynamic libraries
 dev-ruby/file-tail 1.2.0: A small ruby library that allows it to 'tail' files in Ruby
 dev-ruby/filesize 0.2.0: small ruby class for handling filesizes with both the SI and binary prefixes
 dev-ruby/filigree 0.4.1: New classes and extensions to core library classes.
