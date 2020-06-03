@@ -1,4 +1,4 @@
-DEFINED_PHASES=-
+DEFINED_PHASES=compile prepare
 DESCRIPTION=Red Hat crash utility; used for analyzing kernel core dumps
 EAPI=7
 HOMEPAGE=https://people.redhat.com/anderson/
@@ -7,4 +7,5 @@ LICENSE=GPL-3
 RESTRICT=test
 SLOT=0
 SRC_URI=https://people.redhat.com/anderson/crash-7.2.8.tar.gz
-_md5_=8a38efa8684073de4acef01d5f6efed5
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=ccfd2d46c30f4d68fb213cb179874f99
