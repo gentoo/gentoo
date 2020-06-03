@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=2.6.16.26
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v2.6/patch-2.6.16.26.xz https://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.16.tar.xz mirror://sourceforge/xbox-linux/linux-2.6.16-xbox.patch.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	kernel-2	75c031f59bce156dbdbfb3b42d1c9974	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	kernel-2	f818331411666c019e77dc2779a8ee31	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=5668a47c58461eb3e14a3d6890f51dda
