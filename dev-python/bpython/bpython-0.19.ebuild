@@ -27,31 +27,19 @@ RDEPEND="
 	dev-python/urwid[${PYTHON_USEDEP}]
 	dev-python/watchdog[${PYTHON_USEDEP}]
 	"
-DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+# sphinx is used implicitly to build manpages
+BDEPEND="
+	dev-python/sphinx[${PYTHON_USEDEP}]
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 DOCS=( AUTHORS CHANGELOG sample.theme light.theme )
 
-# Req'd for clean build by each impl
-DISTUTILS_IN_SOURCE_BUILD=1
+distutils_enable_sphinx doc/sphinx/source --no-autodoc
+distutils_enable_tests unittest
 
-RESTRICT="test" #659110
-
-python_compile_all() {
-	if use doc; then
-		sphinx-build -b html -c doc/sphinx/source/ \
-			doc/sphinx/source/ doc/sphinx/source/html || die "docs build failed"
-	fi
-}
-
-python_test() {
-	pushd build/lib > /dev/null
-	"${PYTHON}" -m unittest discover || die
-	popd > /dev/null
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/sphinx/source/html/. )
-	distutils-r1_python_install_all
+src_prepare() {
+	sed -e 's:test_exec_dunder_file:_&:' \
+		-e 's:test_exec_nonascii_file_linenums:_&:' \
+		-i bpython/test/test_args.py || die
+	distutils-r1_src_prepare
 }
