@@ -6,11 +6,14 @@ inherit eutils systemd unpacker
 
 DESCRIPTION="general puppet client utils along with hiera and facter"
 HOMEPAGE="https://puppetlabs.com/"
-SRC_URI="http://apt.puppetlabs.com/pool/focal/puppet/p/puppet-agent/puppet-agent_6.16.0-1focal_amd64.deb"
+SRC_BASE="http://apt.puppetlabs.com/pool/stretch/puppet/${PN:0:1}/${PN}/${PN}_${PV}-1stretch"
+SRC_URI="
+	amd64? ( ${SRC_BASE}_amd64.deb )
+	x86?   ( ${SRC_BASE}_i386.deb )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="puppetdb selinux"
 RESTRICT="strip"
 
@@ -29,7 +32,7 @@ RDEPEND="${CDEPEND}
 	sys-apps/dmidecode
 	sys-libs/libselinux
 	sys-libs/glibc
-	sys-libs/readline:0/8
+	sys-libs/readline:0/7
 	sys-libs/ncurses:0[tinfo]
 	selinux? (
 		sys-libs/libselinux[ruby]
