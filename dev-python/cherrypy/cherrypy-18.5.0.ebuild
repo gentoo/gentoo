@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="ssl test"
 
 RDEPEND=">=dev-python/cheroot-8.2.1[${PYTHON_USEDEP}]
