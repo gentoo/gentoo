@@ -70,12 +70,6 @@ src_prepare() {
 		-e "/^DBM_INCLUDE/s:=.*:=${T}:" \
 		Makefile || die
 
-	# Use /run instead of /var/run.
-	sed -i \
-		-e 's:/var/run:/run:g' \
-		include/namespace.h \
-		man/man8/ip-netns.8 || die
-
 	# build against system headers
 	rm -r include/netinet || die #include/linux include/ip{,6}tables{,_common}.h include/libiptc
 	sed -i 's:TCPI_OPT_ECN_SEEN:16:' misc/ss.c || die
@@ -120,7 +114,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake V=1
+	emake V=1 NETNS_RUN_DIR=/run/netns
 }
 
 src_install() {
@@ -158,5 +152,7 @@ src_install() {
 		# bug 47482, arpd doesn't need to be in /sbin
 		dodir /usr/bin
 		mv "${ED}"/sbin/arpd "${ED}"/usr/bin/ || die
+	elif [[ -d "${ED}"/var/lib/arpd ]]; then
+		rmdir --ignore-fail-on-non-empty -p "${ED}"/var/lib/arpd || die
 	fi
 }
