@@ -18,9 +18,10 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="unicode"
+IUSE="icu"
 
 DEPEND="
+	media-libs/libglvnd
 	media-libs/libpng:0=
 	virtual/jpeg:0
 	x11-libs/libX11
@@ -29,13 +30,13 @@ DEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libXrender
-	x11-misc/slop:=
-	unicode? ( dev-libs/icu:= )"
+	>=x11-misc/slop-7.5:=
+	icu? ( dev-libs/icu:= )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DMAIM_UNICODE=$(usex unicode)
+		-DMAIM_UNICODE=$(usex icu)
 	)
 	cmake_src_configure
 }
