@@ -9,8 +9,8 @@ PYTHON_REQ_USE='threads(+)'
 inherit python-single-r1 waf-utils multilib-build multilib-minimal
 
 DESCRIPTION="A simple but extensible successor of LADSPA"
-HOMEPAGE="http://lv2plug.in/"
-SRC_URI="http://lv2plug.in/spec/${P}.tar.bz2"
+HOMEPAGE="https://lv2plug.in/"
+SRC_URI="https://lv2plug.in/spec/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
