@@ -2,10 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>steils@gentoo.org</email>
-		<name>Stefan Strogin</name>
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">asio</remote-id>
+		<remote-id type="github">chriskohlhoff/asio</remote-id>
 	</upstream>
 </pkgmetadata>
