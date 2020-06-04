@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="php-token-stream"
 
 DESCRIPTION="Wrapper around PHP's tokenizer extension"
-HOMEPAGE="http://phpunit.de"
+HOMEPAGE="https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
