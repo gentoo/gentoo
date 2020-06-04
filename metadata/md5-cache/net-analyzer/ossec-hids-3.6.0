@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install test
+DEFINED_PHASES=compile configure install prepare test
 DEPEND=acct-user/ossec acct-user/ossecm acct-user/ossecr dev-libs/libevent dev-libs/libpcre2 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite:3 ) test? ( dev-libs/check dev-python/subunit )
 DESCRIPTION=Open Source Host-based Intrusion Detection System
 EAPI=7
@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( agent hybrid local server ) ?? ( mysql postgres )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/ossec/ossec-hids/archive/3.6.0.tar.gz -> ossec-hids-3.6.0.tar.gz
-_md5_=ca41391f27a77a0ad881e7b64d65ff06
+_md5_=300af766775f614391946f31c30984f2
