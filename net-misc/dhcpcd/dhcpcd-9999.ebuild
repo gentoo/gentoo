@@ -21,7 +21,7 @@ DESCRIPTION="A fully featured, yet light weight RFC2131 compliant DHCP client"
 HOMEPAGE="https://roy.marples.name/projects/dhcpcd"
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="debug elibc_glibc +embedded ipv6 kernel_linux +privsep +udev"
+IUSE="debug elibc_glibc +embedded ipv6 kernel_linux privsep +udev"
 
 COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"
@@ -112,26 +112,6 @@ pkg_postinst() {
 		[[ -e "${dbdir}/${new_lease}" ]] && continue
 		cp "${lease}" "${dbdir}/${new_lease}"
 	done
-
-	# dhcpcd-9 introduced privesep support in a chroot
-	if use privsep ; then
-		local dhcpcd_libdir="/var/lib/dhcpcd"
-		local chroot_base="${EROOT}/var/chroot/dhcpcd"
-		local chroot_dir="${chroot_base}${dhcpcd_libdir}"
-		local chroot_retval=0
-		# Set up proper chroot.
-		if [[ ! -e "${chroot_dir}" ]] ; then
-			mkdir -p "${chroot_dir}" || chroot_retval=1
-			cp -a "${EROOT}${dhcpcd_libdir}" "${chroot_dir}" || chroot_retval=1
-			chown -R dhcpcd:dhcpcd "${chroot_dir}" || chroot_retval=1
-		elif [[ ! -d "${chroot_dir}" ]] ; then
-			ewarn "${chroot_dir} is not a directory!"
-			ewarn "Did not set up ${PN} chroot!"
-		fi
-		if [[ "${chroot_retval}" -ne 0 ]] ; then
-			ewarn "There were issues setting up ${PN} chroot."
-		fi
-	fi
 
 	# Warn about removing stale files
 	if [[ -n "${old_files[@]}" ]] ; then
