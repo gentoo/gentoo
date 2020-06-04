@@ -17,8 +17,8 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Icelandic dictionaries for myspell/hunspell"
-HOMEPAGE="http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project"
-SRC_URI="http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project/releases/${PV}/hunspell-is-${PV}.oxt"
+HOMEPAGE="https://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project"
+SRC_URI="https://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project/releases/${PV}/hunspell-is-${PV}.oxt"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
