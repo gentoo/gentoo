@@ -114,6 +114,7 @@ RDEPEND="
 	dev-libs/double-conversion
 	media-libs/glew:0
 	dev-libs/pugixml
+	dev-db/sqlite
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
