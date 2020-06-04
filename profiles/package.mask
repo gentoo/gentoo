@@ -40,6 +40,7 @@ app-text/getxbook
 app-text/pdfsandwich
 dev-python/assets
 dev-python/selectors34
+dev-python/stomper
 dev-python/YURL
 media-gfx/exact-image
 x11-themes/fvwm-crystal
