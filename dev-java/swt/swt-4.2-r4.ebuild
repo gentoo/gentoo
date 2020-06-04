@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI="5"
 
-inherit eutils java-pkg-2 java-ant-2 toolchain-funcs java-osgi
+inherit eutils flag-o-matic java-pkg-2 java-ant-2 toolchain-funcs java-osgi
 
 MY_PV="${PV/_rc/RC}"
-MY_DMF="http://archive.eclipse.org/eclipse/downloads/drops/R-${MY_PV}-201202080800"
+MY_DMF="http://archive.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-201206081400"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="GTK based SWT Library"
@@ -18,38 +18,32 @@ SRC_URI="
 	x86? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )
 	x86-fbsd? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )"
 
-SLOT="3.7"
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
-KEYWORDS="amd64 ppc64 x86"
+SLOT="4.2"
+KEYWORDS="~amd64 ~ppc64 ~x86"
+IUSE="cairo opengl"
 
-IUSE="cairo gnome opengl"
-COMMON=">=dev-libs/glib-2.6
-		>=x11-libs/gtk+-2.6.8:2
-		>=dev-libs/atk-1.10.2
-		cairo? ( >=x11-libs/cairo-1.4.14 )
-		gnome?	(
-				=gnome-base/libgnome-2*
-				=gnome-base/gnome-vfs-2*
-				=gnome-base/libgnomeui-2*
-				)
-		opengl?	(
-			virtual/opengl
-			virtual/glu
-		)
-		x11-libs/libXtst"
-
-DEPEND=">=virtual/jdk-1.4
-		app-arch/unzip
-		x11-base/xorg-proto
-		x11-libs/libX11
-		x11-libs/libXrender
-		x11-libs/libXt
-		>=x11-libs/libXtst-1.1.0
-		virtual/pkgconfig
-		${COMMON}"
-
-RDEPEND=">=virtual/jre-1.4
-	${COMMON}"
+COMMON_DEPEND="
+	>=dev-libs/atk-1.10.2
+	>=dev-libs/glib-2.32
+	>=x11-libs/gtk+-2.6.8:2
+	x11-libs/libXtst
+	cairo? ( >=x11-libs/cairo-1.4.14 )
+	opengl?	(
+		virtual/glu
+		virtual/opengl
+	)"
+DEPEND="${COMMON_DEPEND}
+	app-arch/unzip
+	>=virtual/jdk-1.4
+	virtual/pkgconfig
+	x11-base/xorg-proto
+	x11-libs/libX11
+	x11-libs/libXrender
+	x11-libs/libXt
+	>=x11-libs/libXtst-1.1.0"
+RDEPEND="${COMMON_DEPEND}
+	>=virtual/jre-1.4"
 
 S="${WORKDIR}"
 
@@ -71,12 +65,10 @@ java_prepare() {
 	mkdir "${S}/src" && mv "${S}/org" "${S}/src" || die "Unable to restructure SWT sources"
 
 	# Fix Makefiles to respect flags and work with --as-needed
-	epatch "${FILESDIR}"/as-needed-and-flag-fixes-3.6.patch
+	epatch "${FILESDIR}"/${P}-as-needed-and-flag-fixes.patch
 
-	case ${ARCH} in
-		ppc|x86) epatch "${FILESDIR}"/${P}-gio_launch-URI-x86.patch ;;
-		*)       epatch "${FILESDIR}"/${P}-gio_launch-URI.patch ;;
-	esac
+	# Define missing g_thread_supported() to be 0.
+	sed -i '1s/^/#define g_thread_supported() 0\n\n/' "${S}"/os_custom.h || die
 }
 
 src_compile() {
@@ -112,6 +104,9 @@ src_compile() {
 
 	use elibc_FreeBSD && platform="freebsd"
 
+	# Bug #461784, g_thread_init is deprecated since glib-2.32.
+	append-cflags -DNO__1g_1thread_1init
+
 	local make="emake -f make_${platform}.mak NO_STRIP=y CC=$(tc-getCC) CXX=$(tc-getCXX)"
 
 	einfo "Building AWT library"
@@ -122,11 +117,6 @@ src_compile() {
 
 	einfo "Building JAVA-AT-SPI bridge"
 	${make} make_atk
-
-	if use gnome ; then
-		einfo "Building GNOME VFS support"
-		${make} make_gnome
-	fi
 
 	if use cairo ; then
 		einfo "Building CAIRO support"
@@ -157,7 +147,7 @@ src_install() {
 
 	sed "s/SWT_ARCH/${swtArch}/" "${FILESDIR}/${PN}-${SLOT}-manifest" > "MANIFEST_TMP.MF" || die
 	use cairo || sed -i -e "/ org.eclipse.swt.internal.cairo; x-internal:=true,/d" "MANIFEST_TMP.MF"
-	use gnome || sed -i -e "/ org.eclipse.swt.internal.gnome; x-internal:=true,/d" "MANIFEST_TMP.MF"
+	sed -i -e "/ org.eclipse.swt.internal.gnome; x-internal:=true,/d" "MANIFEST_TMP.MF"
 	use opengl || sed -i -e "/ org.eclipse.swt.internal.opengl.glx; x-internal:=true,/d" "MANIFEST_TMP.MF"
 	sed -i -e "/ org.eclipse.swt.internal.webkit; x-internal:=true,/d" "MANIFEST_TMP.MF"
 	java-osgi_newjar-fromfile "swt.jar" "MANIFEST_TMP.MF" "Standard Widget Toolkit for GTK 2.0"
