@@ -5,7 +5,7 @@
 		<email>layman@gentoo.org</email>
 		<name>Gentoo Layman team</name>
 	</maintainer>
-  <upstream>
-    <remote-id type="github">tkf/sexpdata</remote-id>
-  </upstream>
+	<upstream>
+		<remote-id type="github">tkf/sexpdata</remote-id>
+	</upstream>
 </pkgmetadata>
