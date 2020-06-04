@@ -43,6 +43,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/tests.patch"
+	"${FILESDIR}/distutils-v2.patch"
 	"${FILESDIR}/catkin_prefix_path.patch"
 	"${FILESDIR}/gnuinstalldirs.patch"
 	"${FILESDIR}/catkin_prefix_path_util_py_v2.patch"
