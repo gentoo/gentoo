@@ -32,6 +32,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@cmpct.info> (2020-06-04)
+# Large number of vulnerabilities (Bug #692398, Bug #664326)
+# Unmaintained.
+# Masked for removal in 30 days.
+www-apps/otrs
+
+# Sam James <sam@cmpct.info> (2020-06-04)
+# Multiple vulnerabilities (Bug #655176, Bug #701812)
+# Misc. other bugs, out of date, no maintainer.
+# Masked for removal in 30 days.
+net-nds/389-ds-base
+dev-libs/389-adminutil
+dev-libs/svrcore
+
 # Aaron Bauman <bman@gentoo.org> (2020-06-03)
 # py2 only. dead upstream. m-n. rdep.
 # Masked for removal in 15 days
@@ -48,8 +62,6 @@ dev-python/stomper
 dev-python/YURL
 media-gfx/exact-image
 x11-themes/fvwm-crystal
-
-
 
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
 # Masked for testing
