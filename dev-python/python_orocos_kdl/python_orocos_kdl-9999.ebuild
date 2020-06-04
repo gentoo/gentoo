@@ -21,7 +21,7 @@ else
 fi
 
 DESCRIPTION="Python bindings for KDL"
-HOMEPAGE="http://www.orocos.org/kdl"
+HOMEPAGE="https://www.orocos.org/kdl"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""
