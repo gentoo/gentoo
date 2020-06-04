@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/faye/websocket-extensions-ruby"
 SRC_URI="https://github.com/faye/websocket-extensions-ruby/archive/${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="${PN}-ruby-${PV}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
