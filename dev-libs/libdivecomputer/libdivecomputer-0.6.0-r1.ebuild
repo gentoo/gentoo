@@ -29,5 +29,5 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with bluetooth bluez)
+	econf --disable-static $(use_with bluetooth bluez)
 }
