@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products"
-HOMEPAGE="http://hostap.epitest.fi/"
-SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
+HOMEPAGE="https://hostap.epitest.fi/"
+SRC_URI="https://hostap.epitest.fi/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
