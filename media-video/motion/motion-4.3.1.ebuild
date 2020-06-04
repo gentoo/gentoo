@@ -34,6 +34,9 @@ DEPEND="${RDEPEND}
 	)
 "
 
+# Breaks src_install(), #727056
+RESTRICT="test"
+
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
 You need to setup a configuraton file (/etc/motion/motion.conf) before
