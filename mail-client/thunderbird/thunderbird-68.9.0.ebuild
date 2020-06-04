@@ -1,76 +1,66 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 VIRTUALX_REQUIRED="pgo"
 WANT_AUTOCONF="2.1"
 MOZ_ESR=""
+MOZ_LIGHTNING_VER="6.2.5"
+MOZ_LIGHTNING_GDATA_VER="4.4.1"
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads(+)'
 
-# This list can be updated with scripts/get_langs.sh from the mozilla overlay
-MOZ_LANGS=(ach af an ar ast az be bg bn br bs ca cak cs cy da de dsb el en en-CA
-en-GB en-US eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE gd gl gn gu-IN
-he hi-IN hr hsb hu hy-AM ia id is it ja ka kab kk km kn ko lij lt lv mk mr ms my
-nb-NO nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta te
-th tr uk ur uz vi xh zh-CN zh-TW )
+# This list can be updated using scripts/get_langs.sh from the mozilla overlay
+MOZ_LANGS=(ar ast be bg br ca cs cy da de el en en-GB en-US es-AR
+es-ES et eu fi fr fy-NL ga-IE gd gl he hr hsb hu hy-AM id is it
+ja ko lt nb-NO nl nn-NO pl pt-BR pt-PT rm ro ru si sk sl sq sr
+sv-SE tr uk vi zh-CN zh-TW )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
-MOZ_PV="${PV/_alpha/a}" # Handle alpha for SRC_URI
-MOZ_PV="${MOZ_PV/_beta/b}" # Handle beta for SRC_URI
-MOZ_PV="${MOZ_PV%%_rc*}" # Handle rc for SRC_URI
+MOZ_PV="${PV/_beta/b}"
 
-if [[ ${MOZ_ESR} == 1 ]] ; then
-	# ESR releases have slightly different version numbers
-	MOZ_PV="${MOZ_PV}esr"
-fi
-
-# Patch version
-PATCH="${PN}-77.0-patches-01_pre7"
+# Patches
+PATCHFF="firefox-68.0-patches-14"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
-MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
 
-if [[ "${PV}" == *_rc* ]]; then
-	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_rc}"
-	MOZ_LANGPACK_PREFIX="linux-i686/xpi/"
-	MOZ_SRC_URI="${MOZ_HTTP_URI}/source/${PN}-${MOZ_PV}.source.tar.xz -> $P.tar.xz"
+# ESR releases have slightly version numbers
+if [[ ${MOZ_ESR} == 1 ]]; then
+	MOZ_PV="${MOZ_PV}esr"
 fi
+MOZ_P="${PN}-${MOZ_PV}"
 
 LLVM_MAX_SLOT=10
 
-inherit check-reqs eapi7-ver flag-o-matic toolchain-funcs eutils \
-		gnome2-utils llvm mozcoreconf-v6 multiprocessing \
-		pax-utils xdg-utils autotools mozlinguas-v2 virtualx \
-		eapi7-ver
+DESCRIPTION="Thunderbird Mail Client"
+HOMEPAGE="https://www.mozilla.org/thunderbird"
 
-DESCRIPTION="Firefox Web Browser"
-HOMEPAGE="https://www.mozilla.com/firefox"
-
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist clang cpu_flags_x86_avx2 debug eme-free geckodriver
-	+gmp-autoupdate hardened hwaccel jack lto cpu_flags_arm_neon pgo
-	pulseaudio +screenshot selinux startup-notification +system-av1
-	+system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx
-	+system-webp test wayland wifi"
-
-REQUIRED_USE="pgo? ( lto )"
-
+IUSE="bindist clang cpu_flags_x86_avx2 dbus debug eme-free
+	+gmp-autoupdate hardened jack lightning lto cpu_flags_arm_neon pgo
+	pulseaudio selinux startup-notification +system-av1 +system-harfbuzz
+	+system-icu +system-jpeg +system-libevent +system-sqlite
+	system-libvpx +system-webp test wayland wifi"
 RESTRICT="!bindist? ( bindist )
 	!test? ( test )"
 
-PATCH_URIS=( https://dev.gentoo.org/~{whissi,polynomial-c,axs}/mozilla/patchsets/${PATCH}.tar.xz )
+PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c,whissi}/mozilla/patchsets/${PATCHFF}.tar.xz )
 SRC_URI="${SRC_URI}
-	${MOZ_SRC_URI}
+	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.xz
+	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
+	lightning? ( https://dev.gentoo.org/~axs/distfiles/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}.tar.xz )
 	${PATCH_URIS[@]}"
 
+inherit check-reqs eapi7-ver flag-o-matic toolchain-funcs eutils \
+		gnome2-utils llvm mozcoreconf-v6 pax-utils xdg-utils \
+		autotools mozlinguas-v2 virtualx multiprocessing
+
 CDEPEND="
-	>=dev-libs/nss-3.52.1
-	>=dev-libs/nspr-4.25
+	>=dev-libs/nss-3.44.1
+	>=dev-libs/nspr-4.21
 	dev-libs/atk
 	dev-libs/expat
 	>=x11-libs/cairo-1.10[X]
@@ -84,13 +74,13 @@ CDEPEND="
 	>=media-libs/freetype-2.4.10
 	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
 	virtual/freedesktop-icon-theme
-	sys-apps/dbus
-	dev-libs/dbus-glib
+	dbus? ( >=sys-apps/dbus-0.60
+		>=dev-libs/dbus-glib-0.72 )
 	startup-notification? ( >=x11-libs/startup-notification-0.8 )
 	>=x11-libs/pixman-0.19.2
 	>=dev-libs/glib-2.26:2
 	>=sys-libs/zlib-1.2.3
-	>=dev-libs/libffi-3.0.10:=
+	>=virtual/libffi-3.0.10:=
 	media-video/ffmpeg
 	x11-libs/libX11
 	x11-libs/libXcomposite
@@ -103,35 +93,30 @@ CDEPEND="
 		>=media-libs/dav1d-0.3.0:=
 		>=media-libs/libaom-1.0.0:=
 	)
-	system-harfbuzz? ( >=media-libs/harfbuzz-2.6.4:0= >=media-gfx/graphite2-1.3.13 )
-	system-icu? ( >=dev-libs/icu-64.1:= )
+	system-harfbuzz? ( >=media-libs/harfbuzz-2.4.0:0= >=media-gfx/graphite2-1.3.13 )
+	system-icu? ( >=dev-libs/icu-63.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
-	system-libvpx? ( >=media-libs/libvpx-1.8.2:0=[postproc] )
-	system-webp? ( >=media-libs/libwebp-1.1.0:0= )
-	wifi? (
-		kernel_linux? (
-			net-misc/networkmanager
-		)
-	)
+	system-libvpx? ( =media-libs/libvpx-1.7*:0=[postproc] )
+	system-sqlite? ( >=dev-db/sqlite-3.28.0:3[secure-delete,debug=] )
+	system-webp? ( >=media-libs/libwebp-1.0.2:0= )
+	wifi? ( kernel_linux? ( >=sys-apps/dbus-0.60
+			>=dev-libs/dbus-glib-0.72
+			net-misc/networkmanager ) )
 	jack? ( virtual/jack )
 	selinux? ( sec-policy/selinux-mozilla )"
 
 RDEPEND="${CDEPEND}
 	jack? ( virtual/jack )
-	pulseaudio? (
-		|| (
-			media-sound/pulseaudio
-			>=media-sound/apulse-0.1.12-r4
-		)
-	)
+	pulseaudio? ( || ( media-sound/pulseaudio
+		>=media-sound/apulse-0.1.9 ) )
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
-	>=dev-util/cbindgen-0.14.1
-	>=net-libs/nodejs-10.19.0
+	>=dev-util/cbindgen-0.8.7
+	>=net-libs/nodejs-8.11.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
 	|| (
@@ -172,13 +157,8 @@ DEPEND="${CDEPEND}
 			)
 		)
 	)
-	pulseaudio? (
-		|| (
-			media-sound/pulseaudio
-			>=media-sound/apulse-0.1.12-r4[sdk]
-		)
-	)
-	>=virtual/rust-1.41.0
+	pulseaudio? ( media-sound/pulseaudio )
+	>=virtual/rust-1.34.0
 	wayland? ( >=x11-libs/gtk+-3.11:3[wayland] )
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )
@@ -187,11 +167,12 @@ DEPEND="${CDEPEND}
 		x86? ( >=dev-lang/nasm-2.13 )
 	)"
 
-S="${WORKDIR}/firefox-${PV%_*}"
+REQUIRED_USE="wifi? ( dbus )
+	pgo? ( lto )"
 
-QA_PRESTRIPPED="usr/lib*/${PN}/firefox"
+S="${WORKDIR}/${MOZ_P%b[0-9]*}"
 
-BUILD_OBJ_DIR="${S}/ff"
+BUILD_OBJ_DIR="${S}/tbird"
 
 # allow GMP_PLUGIN_LIST to be set in an eclass or
 # overridden in the enviromnent (advanced hackers only)
@@ -222,42 +203,14 @@ llvm_check_deps() {
 	einfo "Will use LLVM slot ${LLVM_SLOT}!" >&2
 }
 
-pkg_pretend() {
+pkg_setup() {
+	moz_pkgsetup
+
 	if use pgo ; then
 		if ! has usersandbox $FEATURES ; then
 			die "You must enable usersandbox as X server can not run as root!"
 		fi
-
-		if ! use clang ; then
-			# Force user decision so they don't find out firefox was build
-			# without pgo after spending some hours
-			eerror "USE=pgo when using GCC is currently known to be broken."
-			eerror "Either switch to USE=clang or temporarily set USE=-pgo."
-			die "USE=pgo without USE=clang is currently known to be broken."
-		fi
 	fi
-
-	# Ensure we have enough disk space to compile
-	if use pgo || use lto || use debug || use test ; then
-		CHECKREQS_DISK_BUILD="8G"
-	else
-		CHECKREQS_DISK_BUILD="4G"
-	fi
-
-	check-reqs_pkg_pretend
-}
-
-pkg_setup() {
-	moz_pkgsetup
-
-	# Ensure we have enough disk space to compile
-	if use pgo || use lto || use debug || use test ; then
-		CHECKREQS_DISK_BUILD="8G"
-	else
-		CHECKREQS_DISK_BUILD="4G"
-	fi
-
-	check-reqs_pkg_setup
 
 	# Avoid PGO profiling problems due to enviroment leakage
 	# These should *always* be cleaned up anyway
@@ -265,7 +218,6 @@ pkg_setup() {
 		DISPLAY \
 		ORBIT_SOCKETDIR \
 		SESSION_MANAGER \
-		XDG_CACHE_HOME \
 		XDG_SESSION_COOKIE \
 		XAUTHORITY
 
@@ -280,35 +232,43 @@ pkg_setup() {
 	addpredict /proc/self/oom_score_adj
 
 	llvm_pkg_setup
+}
 
-	if has ccache ${FEATURES} ; then
-		if use clang && use pgo ; then
-			die "Using FEATURES=ccache with USE=clang and USE=pgo is currently known to be broken (bug #718632)."
-		fi
+pkg_pretend() {
+	# Ensure we have enough disk space to compile
+	if use pgo || use lto || use debug || use test ; then
+		CHECKREQS_DISK_BUILD="8G"
+	else
+		CHECKREQS_DISK_BUILD="4G"
 	fi
+
+	check-reqs_pkg_setup
 }
 
 src_unpack() {
-	default
+	unpack ${A}
 
 	# Unpack language packs
 	mozlinguas_src_unpack
 }
 
 src_prepare() {
+	# Apply firefox patchset then apply thunderbird patches
+	rm "${WORKDIR}"/firefox/2013_avoid_noinline_on_GCC_with_skcms.patch || die
+	rm "${WORKDIR}"/firefox/2015_fix_cssparser.patch || die
 	eapply "${WORKDIR}/firefox"
-
-	# Make LTO respect MAKEOPTS
-	sed -i \
-		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
-		"${S}"/build/moz.configure/lto-pgo.configure \
-		|| die "sed failed to set num_cores"
+	pushd "${S}"/comm &>/dev/null || die
+	eapply "${FILESDIR}/1000_fix_gentoo_preferences.patch"
+	popd &>/dev/null || die
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
 
-	einfo "Removing pre-built binaries ..."
-	find "${S}"/third_party -type f \( -name '*.so' -o -name '*.o' \) -print -delete || die
+	local n_jobs=$(makeopts_jobs)
+	if [[ ${n_jobs} == 1 ]]; then
+		einfo "Building with MAKEOPTS=-j1 is known to fail (bug #687028); Forcing MAKEOPTS=-j2 ..."
+		export MAKEOPTS=-j2
+	fi
 
 	# Enable gnomebreakpad
 	if use debug ; then
@@ -335,7 +295,7 @@ src_prepare() {
 	# Don't exit with error when some libs are missing which we have in
 	# system.
 	sed '/^MOZ_PKG_FATAL_WARNINGS/s@= 1@= 0@' \
-		-i "${S}"/browser/installer/Makefile.in || die
+		-i "${S}"/comm/mail/installer/Makefile.in || die
 
 	# Don't error out when there's no files to be removed:
 	sed 's@\(xargs rm\)$@\1 -f@' \
@@ -358,9 +318,6 @@ src_prepare() {
 	# Must run autoconf in js/src
 	cd "${S}"/js/src || die
 	eautoconf old-configure.in
-
-	# Clear checksums that present a problem
-	sed -i 's/\("files":{\)[^}]*/\1/' "${S}"/third_party/rust/target-lexicon-0.9.0/.cargo-checksum.json || die
 }
 
 src_configure() {
@@ -407,9 +364,6 @@ src_configure() {
 	# Must pass release in order to properly select linker
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
 
-	# libclang.so is not properly detected work around issue
-	mozconfig_annotate '' --with-libclang-path="$(llvm-config --libdir)"
-
 	if use pgo ; then
 		if ! has userpriv $FEATURES ; then
 			eerror "Building firefox with USE=pgo and FEATURES=-userpriv is not supported!"
@@ -435,6 +389,9 @@ src_configure() {
 			if [[ $(gcc-major-version) -lt 8 ]] ; then
 				show_old_compiler_warning=1
 			fi
+
+			# Bug 689358
+			append-cxxflags -flto
 
 			if ! use cpu_flags_x86_avx2 ; then
 				local _gcc_version_with_ipa_cdtor_fix="8.3"
@@ -491,7 +448,10 @@ src_configure() {
 	use alpha && append-ldflags "-Wl,--no-relax"
 
 	# Add full relro support for hardened
-	use hardened && append-ldflags "-Wl,-z,now"
+	if use hardened ; then
+		append-ldflags "-Wl,-z,relro,-z,now"
+		mozconfig_use_enable hardened hardening
+	fi
 
 	# Modifications to better support ARM, bug 553364
 	if use cpu_flags_arm_neon ; then
@@ -557,6 +517,7 @@ src_configure() {
 	fi
 
 	mozconfig_use_enable startup-notification
+	mozconfig_use_enable system-sqlite
 	mozconfig_use_with system-av1
 	mozconfig_use_with system-harfbuzz
 	mozconfig_use_with system-harfbuzz system-graphite2
@@ -577,12 +538,17 @@ src_configure() {
 		python/mozbuild/mozbuild/controller/building.py || \
 		die "Failed to disable ccache stats call"
 
-	mozconfig_use_enable wifi necko-wifi
+	mozconfig_use_enable dbus
 
-	mozconfig_use_enable geckodriver
+	mozconfig_use_enable wifi necko-wifi
 
 	# enable JACK, bug 600002
 	mozconfig_use_enable jack
+
+	# Other tb-specific settings
+	mozconfig_annotate '' --with-user-appdir=.thunderbird
+	mozconfig_annotate '' --enable-ldap
+	mozconfig_annotate '' --enable-calendar
 
 	# Enable/Disable eme support
 	use eme-free && mozconfig_annotate '+eme-free' --disable-eme
@@ -598,7 +564,7 @@ src_configure() {
 	# when they would normally be larger than 2GiB.
 	append-ldflags "-Wl,--compress-debug-sections=zlib"
 
-	if use clang && ! use arm64; then
+	if use clang ; then
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1482204
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1483822
 		mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
@@ -639,55 +605,43 @@ src_compile() {
 }
 
 src_install() {
+	MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
 	cd "${BUILD_OBJ_DIR}" || die
 
 	# Pax mark xpcshell for hardened support, only used for startupcache creation.
 	pax-mark m "${BUILD_OBJ_DIR}"/dist/bin/xpcshell
 
-	# Add our default prefs for firefox
-	cp "${FILESDIR}"/gentoo-default-prefs.js-3 \
-		"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
+	# Copy our preference before omnijar is created.
+	cp "${FILESDIR}"/thunderbird-gentoo-default-prefs.js-2 \
+		"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" \
 		|| die
 
 	# set dictionary path, to use system hunspell
 	echo "pref(\"spellchecker.dictionary_path\", \"${EPREFIX}/usr/share/myspell\");" \
-		>>"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
+		>>"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" || die
 
 	# force the graphite pref if system-harfbuzz is enabled, since the pref cant disable it
 	if use system-harfbuzz ; then
 		echo "sticky_pref(\"gfx.font_rendering.graphite.enabled\",true);" \
-			>>"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
+			>>"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" || die
 	fi
 
 	# force cairo as the canvas renderer on platforms without skia support
 	if [[ $(tc-endian) == "big" ]] ; then
 		echo "sticky_pref(\"gfx.canvas.azure.backends\",\"cairo\");" \
-			>>"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
+			>>"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" || die
 		echo "sticky_pref(\"gfx.content.azure.backends\",\"cairo\");" \
-			>>"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
-	fi
-
-	# Augment this with hwaccel prefs
-	if use hwaccel ; then
-		cat "${FILESDIR}"/gentoo-hwaccel-prefs.js-1 >> \
-		"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
-		|| die
-	fi
-
-	if ! use screenshot ; then
-		echo "pref(\"extensions.screenshots.disabled\", true);" >> \
-			"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
-			|| die
+			>>"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" || die
 	fi
 
 	echo "pref(\"extensions.autoDisableScopes\", 3);" >> \
-		"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
+		"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" \
 		|| die
 
 	local plugin
 	use gmp-autoupdate || use eme-free || for plugin in "${GMP_PLUGIN_LIST[@]}" ; do
 		echo "pref(\"media.${plugin}.autoupdate\", false);" >> \
-			"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
+			"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" \
 			|| die
 	done
 
@@ -695,135 +649,94 @@ src_install() {
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" MOZ_NOSPAM=1 \
 	DESTDIR="${D}" ./mach install || die
 
-	if use geckodriver ; then
-		cp "${BUILD_OBJ_DIR}"/dist/bin/geckodriver "${ED%/}"${MOZILLA_FIVE_HOME} || die
-		pax-mark m "${ED%/}"${MOZILLA_FIVE_HOME}/geckodriver
-
-		dosym ${MOZILLA_FIVE_HOME}/geckodriver /usr/bin/geckodriver
-	fi
-
 	# Install language packs
 	MOZEXTENSION_TARGET="distribution/extensions" MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
 
-	local size sizes icon_path icon name
-	if use bindist ; then
-		sizes="16 32 48"
-		icon_path="${S}/browser/branding/aurora"
-		# Firefox's new rapid release cycle means no more codenames
-		# Let's just stick with this one...
-		icon="aurora"
-		name="Aurora"
+	local size sizes icon_path icon
+	if ! use bindist; then
+		icon_path="${S}/comm/mail/branding/thunderbird"
+		icon="${PN}-icon"
 
-		# Override preferences to set the MOZ_DEV_EDITION defaults, since we
-		# don't define MOZ_DEV_EDITION to avoid profile debaucles.
-		# (source: browser/app/profile/firefox.js)
-		cat >>"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" <<PROFILE_EOF
-pref("app.feedback.baseURL", "https://input.mozilla.org/%LOCALE%/feedback/firefoxdev/%VERSION%/");
-sticky_pref("lightweightThemes.selectedThemeID", "firefox-devedition@mozilla.org");
-sticky_pref("browser.devedition.theme.enabled", true);
-sticky_pref("devtools.theme", "dark");
-PROFILE_EOF
-
+		domenu "${FILESDIR}"/icon/${PN}.desktop
 	else
-		sizes="16 22 24 32 48 64 128 256"
-		icon_path="${S}/browser/branding/official"
-		icon="${PN}"
-		name="Mozilla Firefox"
+		icon_path="${S}/comm/mail/branding/nightly"
+		icon="${PN}-icon-unbranded"
+
+		newmenu "${FILESDIR}"/icon/${PN}-unbranded.desktop \
+			${PN}.desktop
+
+		sed -i -e "s:Mozilla\ Thunderbird:EarlyBird:g" \
+			"${ED}"/usr/share/applications/${PN}.desktop
 	fi
+
+	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
+	newicon "${icon_path}"/default48.png "${icon}".png
+	# Install icons for menu entry
+	sizes="16 22 24 32 48 256"
+	for size in ${sizes}; do
+		newicon -s ${size} "${icon_path}/default${size}.png" "${icon}.png"
+	done
 
 	# Disable built-in auto-update because we update firefox through package manager
 	insinto ${MOZILLA_FIVE_HOME}/distribution/
 	newins "${FILESDIR}"/disable-auto-update.policy.json policies.json
 
-	# Install icons and .desktop for menu entry
-	for size in ${sizes} ; do
-		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
-		newins "${icon_path}/default${size}.png" "${icon}.png"
-	done
-	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
-	newicon "${icon_path}/default48.png" "${icon}.png"
-
 	# Add StartupNotify=true bug 237317
-	local startup_notify="false"
 	if use startup-notification ; then
-		startup_notify="true"
+		echo "StartupNotify=true"\
+			 >> "${ED}/usr/share/applications/${PN}.desktop" \
+			|| die
 	fi
-
-	local display_protocols="auto X11" use_wayland="false"
-	if use wayland ; then
-		display_protocols+=" Wayland"
-		use_wayland="true"
-	fi
-
-	local app_name desktop_filename display_protocol exec_command
-	for display_protocol in ${display_protocols} ; do
-		app_name="${name} on ${display_protocol}"
-		desktop_filename="${PN}-${display_protocol,,}.desktop"
-
-		case ${display_protocol} in
-			Wayland)
-				exec_command='firefox-wayland --name firefox-wayland'
-				newbin "${FILESDIR}"/firefox-wayland.sh firefox-wayland
-				;;
-			X11)
-				if ! use wayland ; then
-					# Exit loop here because there's no choice so
-					# we don't need wrapper/.desktop file for X11.
-					continue
-				fi
-
-				exec_command='firefox-x11 --name firefox-x11'
-				newbin "${FILESDIR}"/firefox-x11.sh firefox-x11
-				;;
-			*)
-				app_name="${name}"
-				desktop_filename="${PN}.desktop"
-				exec_command='firefox'
-				;;
-		esac
-
-		newmenu "${FILESDIR}/icon/${PN}-r1.desktop" "${desktop_filename}"
-		sed -i \
-			-e "s:@NAME@:${app_name}:" \
-			-e "s:@EXEC@:${exec_command}:" \
-			-e "s:@ICON@:${icon}:" \
-			-e "s:@STARTUP_NOTIFY@:${startup_notify}:" \
-			"${ED%/}/usr/share/applications/${desktop_filename}" || die
-	done
-
-	rm "${ED%/}"/usr/bin/firefox || die
-	newbin "${FILESDIR}"/firefox.sh firefox
-
-	local wrapper
-	for wrapper in \
-		"${ED%/}"/usr/bin/firefox \
-		"${ED%/}"/usr/bin/firefox-x11 \
-		"${ED%/}"/usr/bin/firefox-wayland \
-	; do
-		[[ ! -f "${wrapper}" ]] && continue
-
-		sed -i \
-			-e "s:@PREFIX@:${EPREFIX%/}/usr:" \
-			-e "s:@DEFAULT_WAYLAND@:${use_wayland}:" \
-			"${wrapper}" || die
-	done
 
 	# Don't install llvm-symbolizer from sys-devel/llvm package
 	[[ -f "${ED%/}${MOZILLA_FIVE_HOME}/llvm-symbolizer" ]] && \
 		rm "${ED%/}${MOZILLA_FIVE_HOME}/llvm-symbolizer"
 
-	# firefox and firefox-bin are identical
-	rm "${ED%/}"${MOZILLA_FIVE_HOME}/firefox-bin || die
-	dosym firefox ${MOZILLA_FIVE_HOME}/firefox-bin
+	local emid
+	# stage extra locales for lightning and install over existing
+	emid='{e2fda1a4-762b-4020-b5ad-a41df1933103}'
+	rm -f "${ED}"/${MOZILLA_FIVE_HOME}/distribution/extensions/${emid}.xpi || die
+	mozlinguas_xpistage_langpacks "${BUILD_OBJ_DIR}"/dist/bin/distribution/extensions/${emid} \
+		"${WORKDIR}"/lightning-${MOZ_LIGHTNING_VER} lightning calendar
 
-	# Required in order to use plugins and even run firefox on hardened.
-	pax-mark m "${ED%/}"${MOZILLA_FIVE_HOME}/{firefox,plugin-container}
+	mkdir -p "${T}/${emid}" || die
+	cp -RLp -t "${T}/${emid}" "${BUILD_OBJ_DIR}"/dist/bin/distribution/extensions/${emid}/* || die
+	insinto ${MOZILLA_FIVE_HOME}/distribution/extensions
+	doins -r "${T}/${emid}"
+
+	if use lightning; then
+		# move lightning out of distribution/extensions and into extensions for app-global install
+		mkdir -p "${ED}"/${MOZILLA_FIVE_HOME}/extensions
+		mv "${ED}"/${MOZILLA_FIVE_HOME}/{distribution,}/extensions/${emid} || die
+
+		# stage extra locales for gdata-provider and install app-global
+		mozlinguas_xpistage_langpacks "${BUILD_OBJ_DIR}"/dist/xpi-stage/gdata-provider \
+			"${WORKDIR}"/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}
+		emid='{a62ef8ec-5fdc-40c2-873c-223b8a6925cc}'
+		mkdir -p "${T}/${emid}" || die
+		cp -RLp -t "${T}/${emid}" "${BUILD_OBJ_DIR}"/dist/xpi-stage/gdata-provider/* || die
+
+		# manifest.json does not allow the addon to load, put install.rdf in place
+		# note, version number needs to be set properly
+		cp -RLp -t "${T}/${emid}" "${WORKDIR}"/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}/install.rdf
+		sed -i -e '/em:version/ s/>[^<]*</>4.1</' "${T}/${emid}"/install.rdf
+
+		insinto ${MOZILLA_FIVE_HOME}/extensions
+		doins -r "${T}/${emid}"
+	fi
+
+	# thunderbird and thunderbird-bin are identical
+	rm "${ED%/}"${MOZILLA_FIVE_HOME}/thunderbird-bin || die
+	dosym thunderbird ${MOZILLA_FIVE_HOME}/thunderbird-bin
+
+	# Required in order to use plugins and even run thunderbird on hardened.
+	pax-mark pm "${ED%/}"${MOZILLA_FIVE_HOME}/{thunderbird,plugin-container}
 }
 
 pkg_preinst() {
 	# if the apulse libs are available in MOZILLA_FIVE_HOME then apulse
 	# doesn't need to be forced into the LD_LIBRARY_PATH
-	if use pulseaudio && has_version ">=media-sound/apulse-0.1.12-r4" ; then
+	if use pulseaudio && has_version ">=media-sound/apulse-0.1.9" ; then
 		einfo "APULSE found - Generating library symlinks for sound support"
 		local lib
 		pushd "${ED}"${MOZILLA_FIVE_HOME} &>/dev/null || die
@@ -850,59 +763,11 @@ pkg_postinst() {
 		elog
 	fi
 
-	if use pulseaudio && has_version ">=media-sound/apulse-0.1.12-r4" ; then
+	if use pulseaudio && has_version ">=media-sound/apulse-0.1.9" ; then
 		elog "Apulse was detected at merge time on this system and so it will always be"
 		elog "used for sound.  If you wish to use pulseaudio instead please unmerge"
 		elog "media-sound/apulse."
 		elog
-	fi
-
-	local show_doh_information show_normandy_information
-
-	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
-		# New install; Tell user that DoH is disabled by default
-		show_doh_information=yes
-		show_normandy_information=yes
-	else
-		local replacing_version
-		for replacing_version in ${REPLACING_VERSIONS} ; do
-			if ver_test "${replacing_version}" -lt 70 ; then
-				# Tell user only once about our DoH default
-				show_doh_information=yes
-			fi
-
-			if ver_test "${replacing_version}" -lt 74.0-r2 ; then
-				# Tell user only once about our Normandy default
-				show_normandy_information=yes
-			fi
-		done
-	fi
-
-	if [[ -n "${show_doh_information}" ]] ; then
-		elog
-		elog "Note regarding Trusted Recursive Resolver aka DNS-over-HTTPS (DoH):"
-		elog "Due to privacy concerns (encrypting DNS might be a good thing, sending all"
-		elog "DNS traffic to Cloudflare by default is not a good idea and applications"
-		elog "should respect OS configured settings), \"network.trr.mode\" was set to 5"
-		elog "(\"Off by choice\") by default."
-		elog "You can enable DNS-over-HTTPS in ${PN^}'s preferences."
-	fi
-
-	# bug 713782
-	if [[ -n "${show_normandy_information}" ]] ; then
-		elog
-		elog "Upstream operates a service named Normandy which allows Mozilla to"
-		elog "push changes for default settings or even install new add-ons remotely."
-		elog "While this can be useful to address problems like 'Armagadd-on 2.0' or"
-		elog "revert previous decisions to disable TLS 1.0/1.1, privacy and security"
-		elog "concerns prevail, which is why we have switched off the use of this"
-		elog "service by default."
-		elog
-		elog "To re-enable this service set"
-		elog
-		elog "    app.normandy.enabled=true"
-		elog
-		elog "in about:config."
 	fi
 }
 
