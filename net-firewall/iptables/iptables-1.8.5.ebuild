@@ -19,12 +19,15 @@ SLOT="0/1.8.3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="conntrack ipv6 netlink nftables pcap static-libs"
 
+BUILD_DEPEND="
+	>=app-eselect/eselect-iptables-20200508
+"
 COMMON_DEPEND="
 	conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 )
 	netlink? ( net-libs/libnfnetlink )
 	nftables? (
 		>=net-libs/libmnl-1.0:0=
-		>=net-libs/libnftnl-1.1.3:0=
+		>=net-libs/libnftnl-1.1.6:0=
 	)
 	pcap? ( net-libs/libpcap )
 "
@@ -32,7 +35,8 @@ DEPEND="${COMMON_DEPEND}
 	virtual/os-headers
 	>=sys-kernel/linux-headers-4.4:0
 "
-BDEPEND="
+BDEPEND="${BUILD_DEPEND}
+	app-eselect/eselect-iptables
 	virtual/pkgconfig
 	nftables? (
 		sys-devel/flex
@@ -40,15 +44,22 @@ BDEPEND="
 	)
 "
 RDEPEND="${COMMON_DEPEND}
+	${BUILD_DEPEND}
 	nftables? ( net-misc/ethertypes )
+	!<net-firewall/ebtables-2.0.11-r1
+	!<net-firewall/arptables-0.0.5-r1
 "
+
+PATCHES=(
+	"${FILESDIR}/iptables-1.8.4-no-symlinks.patch"
+	"${FILESDIR}/iptables-1.8.2-link.patch"
+)
 
 src_prepare() {
 	# use the saner headers from the kernel
 	rm include/linux/{kernel,types}.h || die
 
-	eapply "${FILESDIR}"/${PN}-1.8.2-link.patch
-	eapply_user
+	default
 	eautoreconf
 }
 
@@ -79,8 +90,6 @@ src_configure() {
 }
 
 src_compile() {
-	# Deal with parallel build errors.
-	use nftables && emake -C iptables xtables-config-parser.h
 	emake V=1
 }
 
@@ -113,11 +122,8 @@ src_install() {
 		# Bug 647458
 		rm "${ED}"/etc/ethertypes || die
 
-		# Bug 660886
-		rm "${ED}"/sbin/{arptables,ebtables} || die
-
-		# Bug 669894
-		rm "${ED}"/sbin/ebtables-{save,restore} || die
+		# Bugs 660886 and 669894
+		rm "${ED}"/sbin/{arptables,ebtables}{,-{save,restore}} || die
 	fi
 
 	systemd_dounit "${FILESDIR}"/systemd/iptables-{re,}store.service
@@ -126,7 +132,51 @@ src_install() {
 	fi
 
 	# Move important libs to /lib #332175
-	gen_usr_ldscript -a ip{4,6}tc iptc xtables
+	gen_usr_ldscript -a ip{4,6}tc xtables
 
 	find "${ED}" -type f -name "*.la" -delete || die
+}
+
+pkg_postinst() {
+	local default_iptables="xtables-legacy-multi"
+	if ! eselect iptables show &>/dev/null; then
+		elog "Current iptables implementation is unset, setting to ${default_iptables}"
+		eselect iptables set "${default_iptables}"
+	fi
+
+	if use nftables; then
+		local tables
+		for tables in {arp,eb}tables; do
+			if ! eselect ${tables} show &>/dev/null; then
+				elog "Current ${tables} implementation is unset, setting to ${default_iptables}"
+				eselect ${tables} set xtables-nft-multi
+			fi
+		done
+	fi
+
+	eselect iptables show
+}
+
+pkg_prerm() {
+	elog "Unsetting iptables symlinks before removal"
+	eselect iptables unset
+
+	if ! has_version 'net-firewall/ebtables'; then
+		elog "Unsetting ebtables symlinks before removal"
+		eselect ebtables unset
+	elif [[ -z ${REPLACED_BY_VERSION} ]]; then
+		elog "Resetting ebtables symlinks to ebtables-legacy"
+		eselect ebtables set ebtables-legacy
+	fi
+
+	if ! has_version 'net-firewall/arptables'; then
+		elog "Unsetting arptables symlinks before removal"
+		eselect arptables unset
+	elif [[ -z ${REPLACED_BY_VERSION} ]]; then
+		elog "Resetting arptables symlinks to arptables-legacy"
+		eselect arptables set arptables-legacy
+	fi
+
+	# the eselect module failing should not be fatal
+	return 0
 }

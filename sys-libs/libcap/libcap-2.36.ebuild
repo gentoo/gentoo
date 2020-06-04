@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.33-build-system-fixes.patch
+	"${FILESDIR}"/${PN}-2.34-build-system-fixes.patch
 	"${FILESDIR}"/${PN}-2.28-no_perl.patch
 	"${FILESDIR}"/${PN}-2.25-ignore-RAISE_SETFCAP-install-failures.patch
 	"${FILESDIR}"/${PN}-2.21-include.patch
@@ -51,11 +51,13 @@ run_emake() {
 	emake "${args[@]}" "$@"
 }
 
-multilib_src_compile() {
+src_configure() {
 	tc-export AR CC RANLIB
-	local BUILD_CC
 	tc-export_build_env BUILD_CC
+	multilib-minimal_src_configure
+}
 
+multilib_src_compile() {
 	run_emake
 }
 
