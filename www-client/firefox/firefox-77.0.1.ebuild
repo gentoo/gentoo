@@ -52,7 +52,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist +clang cpu_flags_x86_avx2 debug eme-free geckodriver
+IUSE="bindist clang cpu_flags_x86_avx2 debug eme-free geckodriver
 	+gmp-autoupdate hardened hwaccel jack lto cpu_flags_arm_neon pgo
 	pulseaudio +screenshot selinux startup-notification +system-av1
 	+system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx
@@ -235,11 +235,6 @@ pkg_pretend() {
 			eerror "Either switch to USE=clang or temporarily set USE=-pgo."
 			die "USE=pgo without USE=clang is currently known to be broken."
 		fi
-	fi
-
-	if ! use clang && [[ $(gcc-major-version) -eq 10 ]] ; then
-		# bug 727028
-		use ppc64 || die "Using GCC 10 to compile firefox is currently known to be broken. Set USE=clang or select <gcc-10 to continue."
 	fi
 
 	# Ensure we have enough disk space to compile
