@@ -33,13 +33,18 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-06-03)
-# py2 only. dead upstream. m-n.
+# py2 only. dead upstream. m-n. rdep.
 # Masked for removal in 15 days
 app-cdr/sync2cd
+app-text/getxbook
+app-text/pdfsandwich
 dev-python/assets
 dev-python/selectors34
 dev-python/YURL
+media-gfx/exact-image
 x11-themes/fvwm-crystal
+
+
 
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
 # Masked for testing
