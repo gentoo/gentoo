@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ PKCS11_IUSE="+softhsm opensc external-hsm"
 inherit autotools user
 
 DESCRIPTION="An open-source turn-key solution for DNSSEC"
-HOMEPAGE="http://www.opendnssec.org/"
-SRC_URI="http://www.${PN}.org/files/source/${MY_P}.tar.gz"
+HOMEPAGE="https://www.opendnssec.org/"
+SRC_URI="https://www.${PN}.org/files/source/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
