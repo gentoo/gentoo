@@ -13,7 +13,7 @@ SRC_URI="https://github.com/gnome-terminator/terminator/releases/download/v${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="dbus +libnotify"
 
 RDEPEND="
