@@ -10,7 +10,7 @@ HOMEPAGE="https://www.antlr.org/"
 SRC_URI="https://www.antlr.org/download/antlr4-cpp-runtime-${PV}-source.zip -> ${P}.zip"
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 
 DEPEND="app-arch/zip"
 
