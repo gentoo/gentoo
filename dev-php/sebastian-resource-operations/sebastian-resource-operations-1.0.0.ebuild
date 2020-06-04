@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="${PN/sebastian-//}"
 
 DESCRIPTION="Provides a list of PHP built-in functions that operate on resources"
-HOMEPAGE="http://phpunit.de"
+HOMEPAGE="https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
