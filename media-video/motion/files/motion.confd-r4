@@ -1,0 +1,28 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# Motion OpenRC conf.d file
+# All settings are optional
+
+# Set the user and group under which motion will be run
+#MOTION_USER="motion"
+#MOTION_GROUP="motion"
+
+#Set motion's config file:
+#MOTION_CONFIGFILE="/etc/motion/motion.conf"
+
+#Set motion's log file. Leave unset for syslog:
+#MOTION_LOGFILE="/var/log/motion/motion.log"
+
+#Set log type:  1-9 for COR, STR, ENC, NET, DBL, EVT, TRK, VID, ALL
+#MOTION_LOGTYPE="9"
+
+#Set log level: 1-9 for EMG, ALR, CRT, ERR, WRN, NTC, INF, DBG, ALL
+#MOTION_LOGLEVEL="6"
+
+#Set a default dir where motion places its output
+#MOTION_DIR="/var/lib/motion"
+
+#Set the umask for the output files, for additonal security
+#MOTION_UMASK="007"
+
