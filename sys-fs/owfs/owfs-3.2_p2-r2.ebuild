@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ MY_P="${P/_/}"
 
 DESCRIPTION="Access 1-Wire devices like a filesystem"
 SRC_URI="mirror://sourceforge/owfs/${MY_P}.tar.gz"
-HOMEPAGE="http://owfs.org/ https://sourceforge.net/projects/owfs/"
+HOMEPAGE="https://owfs.org/ https://sourceforge.net/projects/owfs/"
 KEYWORDS="amd64 arm x86"
 
 # Upstream uses crazy SONAME, https://github.com/owfs/owfs/commit/c696fa9b9b44f49c96b9f1c2b3159d277e0c1273
