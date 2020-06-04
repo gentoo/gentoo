@@ -16143,7 +16143,7 @@ sci-mathematics/nauty 2.5.9 2.6.7: Computing automorphism groups of graphs and d
 sci-mathematics/nestedsums 1.5.2: A GiNaC-based library for symbolic expansion of certain transcendental functions
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3 3.3.0: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.5-r1: A set of programs for dealing with numbers from the command line
-sci-mathematics/octave 4.2.2 4.4.0 4.4.1 5.1.0 5.2.0: High-level interactive language for numerical computations
+sci-mathematics/octave 5.2.0: High-level interactive language for numerical computations
 sci-mathematics/octave-epstk 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
 sci-mathematics/pari 2.11.2 2.11.4: Computer-aided number theory C library and tools
