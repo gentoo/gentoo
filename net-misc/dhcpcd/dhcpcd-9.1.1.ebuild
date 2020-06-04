@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://roy.marples.name/git/dhcpcd.git"
+	EGIT_REPO_URI="https://roy.marples.name/cgit/dhcpcd.git"
 else
 	MY_P="${P/_alpha/-alpha}"
 	MY_P="${MY_P/_beta/-beta}"
@@ -21,11 +21,21 @@ DESCRIPTION="A fully featured, yet light weight RFC2131 compliant DHCP client"
 HOMEPAGE="https://roy.marples.name/projects/dhcpcd"
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="elibc_glibc +embedded ipv6 kernel_linux +udev"
+IUSE="debug elibc_glibc +embedded ipv6 kernel_linux privsep +udev"
 
 COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="
+	${COMMON_DEPEND}
+	privsep? (
+		acct-group/dhcpcd
+		acct-user/dhcpcd
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}/${P}-typo_fix.patch"
+)
 
 src_configure() {
 	local myeconfargs=(
@@ -34,10 +44,13 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var"
 		--prefix="${EPREFIX}"
 		--with-hook=ntp.conf
+		$(use_enable debug)
 		$(use_enable embedded)
 		$(use_enable ipv6)
+		$(use_enable privsep)
 		$(usex elibc_glibc '--with-hook=yp.conf' '')
-		$(usex kernel_linux '--rundir=${EPREFIX}/run' '')
+		--rundir=$(usex kernel_linux "${EPREFIX}/run/dhcpcd" "${EPREFIX}/var/run/dhcpcd")
+		$(usex privsep '--privsepuser=dhcpcd' '')
 		$(usex udev '' '--without-dev --without-udev')
 		CC="$(tc-getCC)"
 	)
@@ -47,8 +60,8 @@ src_configure() {
 src_install() {
 	default
 	keepdir /var/lib/dhcpcd
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	newinitd "${FILESDIR}"/dhcpcd.initd-r1 dhcpcd
+	systemd_newunit "${FILESDIR}"/dhcpcd.service-r1 dhcpcd.service
 }
 
 pkg_postinst() {
