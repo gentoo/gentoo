@@ -12072,8 +12072,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.3.11 1.4.0 1.4.1 1.4.2 1.4.3 1.4.4: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1-r1 68.8.1 68.9.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.8.0 68.8.1 68.9.0: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1-r1 68.9.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1 68.9.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0-r1 2.0.0 3.0.0: Initial tagging script for Notmuch
@@ -12520,7 +12520,7 @@ media-gfx/librecad 2.1.3-r4 2.1.3-r5 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2 0.13.18 0.13.19: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.6.0: Graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.14.1-r1 0.15.0: Qt Image Viewer
-media-gfx/maim 5.5.3 9999: Commandline tool to take screenshots of the desktop
+media-gfx/maim 5.6.3 9999: Commandline tool to take screenshots of the desktop
 media-gfx/mandelbulber 2.12-r1: Tool to render 3D fractals
 media-gfx/mcomix 1.3.0_pre20200206 9999: GTK image viewer for comic book archives
 media-gfx/meshlab 2016.12-r2 2016.12-r3 2016.12-r4: the open source system for processing and editing 3D triangular meshes
@@ -18304,7 +18304,7 @@ x11-misc/sisctrl 0.0.20051202 0.0.20051202-r1: tool that allows you to tune SiS 
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
 x11-misc/slim 1.3.6-r5 9999: Simple Login Manager
 x11-misc/slock 1.4: simple X display locker
-x11-misc/slop 7.4 9999: Application that queries the user for a selection for printing
+x11-misc/slop 7.4 7.5 9999: Application that queries the user for a selection for printing
 x11-misc/snixembed 0.2.2: Proxy StatusNotifierItems as XEmbedded systemtray-spec icons
 x11-misc/spacefm 1.0.6 9999: A multi-panel tabbed file manager
 x11-misc/splatmoji 1.0 9999: Quickly look up and input emoji and/or emoticons
