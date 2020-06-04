@@ -11,7 +11,7 @@ SRC_URI="https://github.com/pvanek/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # bundles x11-libs/libqxt but no qt5 system version is available yet
