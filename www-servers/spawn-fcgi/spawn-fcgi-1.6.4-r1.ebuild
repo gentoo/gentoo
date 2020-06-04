@@ -4,8 +4,8 @@
 EAPI=7
 
 DESCRIPTION="A FCGI spawner for lighttpd and cherokee and other webservers"
-HOMEPAGE="http://redmine.lighttpd.net/projects/spawn-fcgi"
-SRC_URI="http://www.lighttpd.net/download/${P}.tar.xz"
+HOMEPAGE="https://redmine.lighttpd.net/projects/spawn-fcgi"
+SRC_URI="https://www.lighttpd.net/download/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
