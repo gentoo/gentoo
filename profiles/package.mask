@@ -40,6 +40,7 @@ app-text/getxbook
 app-text/pdfsandwich
 dev-python/assets
 dev-python/bz2file
+dev-python/kid
 dev-python/jaxml
 dev-python/python-urljr
 dev-python/selectors34
