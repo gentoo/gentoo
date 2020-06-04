@@ -39,6 +39,7 @@ app-cdr/sync2cd
 app-text/getxbook
 app-text/pdfsandwich
 dev-python/assets
+dev-python/jaxml
 dev-python/selectors34
 dev-python/stomper
 dev-python/YURL
