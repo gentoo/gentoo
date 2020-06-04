@@ -23,14 +23,14 @@ inherit myspell-r2
 
 DESCRIPTION="Swedish dictionaries for myspell/hunspell"
 HOMEPAGE="
-	http://extensions.libreoffice.org/extension-center/swedish-spelling-dictionary-den-stora-svenska-ordlistan
-	http://extensions.libreoffice.org/extension-center/swedish-hyphenation
-	http://extensions.libreoffice.org/extension-center/swedish-thesaurus-based-on-synlex
+	https://extensions.libreoffice.org/extension-center/swedish-spelling-dictionary-den-stora-svenska-ordlistan
+	https://extensions.libreoffice.org/extension-center/swedish-hyphenation
+	https://extensions.libreoffice.org/extension-center/swedish-thesaurus-based-on-synlex
 "
 SRC_URI="
-	http://extensions.libreoffice.org/extension-center/swedish-spelling-dictionary-den-stora-svenska-ordlistan/releases/${PV}/ooo_swedish_dict_${PV}.oxt
-	http://extensions.libreoffice.org/extension-center/swedish-hyphenation/releases/1.10/hyph_sv_se.oxt -> ${P}-hyph.oxt
-	http://extensions.libreoffice.org/extension-center/swedish-thesaurus-based-on-synlex/releases/1.3/swedishthesaurus.oxt -> ${P}-thes.oxt
+	https://extensions.libreoffice.org/extension-center/swedish-spelling-dictionary-den-stora-svenska-ordlistan/releases/${PV}/ooo_swedish_dict_${PV}.oxt
+	https://extensions.libreoffice.org/extension-center/swedish-hyphenation/releases/1.10/hyph_sv_se.oxt -> ${P}-hyph.oxt
+	https://extensions.libreoffice.org/extension-center/swedish-thesaurus-based-on-synlex/releases/1.3/swedishthesaurus.oxt -> ${P}-thes.oxt
 "
 
 LICENSE="CC-BY-SA-3.0 GPL-2 LGPL-3"
