@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/clsync/clsync http://ut.mephi.ru/oss/clsync"
 SRC_URI="https://github.com/clsync/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+caps cluster control-socket cgroups debug extra-debug
 extra-hardened gio hardened +highload-locks +inotify mhash
 namespaces seccomp"

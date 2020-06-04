@@ -18,7 +18,7 @@ HOMEPAGE="https://code.videolan.org/videolan/libudfread/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-IUSE=""
+IUSE="static-libs"
 
 src_prepare() {
 	default
@@ -27,4 +27,11 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf
+}
+
+multilib_src_install_all() {
+	find "${D}" -name '*.la' -delete || die
+	if ! use static-libs ; then
+		find "${D}" -name '*.a' -delete || die
+	fi
 }

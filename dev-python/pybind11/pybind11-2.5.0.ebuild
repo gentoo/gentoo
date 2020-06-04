@@ -14,13 +14,14 @@ SRC_URI="https://github.com/pybind/pybind11/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="doc"
+IUSE="doc test"
 
 DEPEND="
 	${PYTHON_DEPS}
 	doc? (
 		dev-python/breathe[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		<dev-python/sphinx-3[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
@@ -32,8 +33,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=( README.md CONTRIBUTING.md ISSUE_TEMPLATE.md )
 
+#I can't make tests do anything
+RESTRICT=test
+
 pkg_setup() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python3_6' )
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python3_7' )
 }
 
 python_prepare_all() {
@@ -45,19 +49,19 @@ python_prepare_all() {
 python_configure_all() {
 	local mycmakeargs=(
 		-DPYBIND11_INSTALL=ON
-		-DPYBIND11_TEST=OFF
+		-DPYBIND11_TEST=$(usex test)
 	)
-
 	cmake_src_configure
 }
 
 python_compile_all() {
-	# No compilation has to be done by cmake
+	# Compilation only does anything for tests
+	use test && cmake_src_compile
 
 	# documentation is not covered by cmake, but has it's own makefile
 	# using sphinx
 	if use doc; then
-		python_setup 'python3_6'
+		python_setup 'python3_7'
 		pushd "${S}"/docs || die
 		emake info man html
 		popd || die
@@ -76,4 +80,8 @@ python_install_all() {
 	fi
 
 	distutils-r1_python_install_all
+}
+
+python_test_all() {
+	cmake_src_test
 }

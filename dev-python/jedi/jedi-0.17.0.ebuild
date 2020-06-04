@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -55,9 +55,12 @@ python_prepare_all() {
 	sed -e '/with sqlite3\.connect/,+2d' \
 		-i test/completion/stdlib.py || die
 
-	# really silly assumptions, not fit for py3.8
-	sed -e '/len(difference)/s:20:22:' \
+	# really silly assumptions, not fit for py3.8/3.9
+	sed -e '/len(difference)/s:20:27:' \
 		-i test/test_utils.py || die
+	# py3.9
+	sed -e 's:test_infer_on_generator:_&:' \
+		-i test/test_api/test_api.py || die
 
 	# tests relying on pristine virtualenv
 	# this relies on test* not matching anything else

@@ -18,7 +18,7 @@ RDEPEND="
 	~media-libs/libopenmpt-${PV}
 	flac? ( media-libs/flac )
 	pulseaudio? ( media-sound/pulseaudio )
-	sdl? ( media-libs/libsdl2 )
+	sdl? ( >=media-libs/libsdl2-2.0.4 )
 	sndfile? ( media-libs/libsndfile )
 "
 
@@ -60,7 +60,6 @@ src_configure() {
 		$(use_with portaudio) \
 		--without-portaudiocpp \
 		$(use_with sdl sdl2) \
-		--without-sdl \
 		$(use_with sndfile) \
 		$(use_with flac)
 }

@@ -7,7 +7,7 @@ MY_PN="${PN%-docs}"
 MY_P="${MY_PN}-${PV}"
 
 SRC_URI="https://github.com/clsync/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Clsync and libclsync API documentation"

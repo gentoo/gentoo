@@ -71,7 +71,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libinput-1.10.5
 	>=dev-libs/libxml2-2.9.4
 	>=dev-libs/lzo-2.04
-	>=dev-libs/spdlog-1.5.0
+	>=dev-libs/spdlog-1.5.0:=
 	dev-libs/tinyxml[stl]
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
