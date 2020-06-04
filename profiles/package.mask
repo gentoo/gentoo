@@ -38,6 +38,7 @@
 app-cdr/sync2cd
 dev-python/assets
 dev-python/selectors34
+dev-python/YURL
 x11-themes/fvwm-crystal
 
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
