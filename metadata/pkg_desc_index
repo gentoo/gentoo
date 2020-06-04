@@ -2604,7 +2604,7 @@ app-text/docx2txt 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3.5 7.4.1 7.4.2_beta1: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvipng 1.15-r1: Translate DVI files into PNG or GIF graphics
-app-text/dvipsk 5.999_p20190410 2020.1_p20200406: DVI-to-PostScript translator
+app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.1 0.12.2 0.12.3: EditorConfig core library written in C
@@ -2736,7 +2736,7 @@ app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6_p20180715: PoDoFo i
 app-text/poppler 0.88.0-r1 0.89.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
-app-text/ps2pkm 1.8_p20190410 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
+app-text/ps2pkm 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
 app-text/psiconv 0.8.3-r1: An interpreter for Psion 5(MX) file formats
 app-text/pspdftool 0.03: Tool for prepress preparation of PDF and PostScript documents
 app-text/pspresent 1.3-r1: A tool to display full-screen PostScript presentations
@@ -2787,7 +2787,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2019-r1 2020: A complete TeX distribution
-app-text/texlive-core 2019-r11 2020-r4: A complete TeX distribution
+app-text/texlive-core 2020-r4: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -2795,7 +2795,7 @@ app-text/tofrodos 1.7.12a 1.7.13: Utility that converts ASCII files between the 
 app-text/tokyodystopia 0.9.15: A fulltext search engine for Tokyo Cabinet
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
 app-text/tree 1.7.0 1.7.0-r1 1.8.0: Lists directories recursively, and produces an indented listing of files
-app-text/ttf2pk2 2.0_p20190410 2.0_p20200406: Freetype 2 based TrueType font to TeX's PK format converter
+app-text/ttf2pk2 2.0_p20200406: Freetype 2 based TrueType font to TeX's PK format converter
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/txt2man 1.6.0: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
@@ -4976,7 +4976,7 @@ dev-libs/kdiagram 2.6.3 2.7.0: Powerful libraries (KChart, KGantt) for creating 
 dev-libs/keybinder 0.3.1-r201 0.3.2-r300: A library for registering global keyboard shortcuts
 dev-libs/keystone 0.9.1 9999: assembly/assembler framework + bindings
 dev-libs/klibc 2.0.4-r3: A minimal libc subset for use with initramfs
-dev-libs/kpathsea 6.3.1_p20190410 6.3.2_p20200406: Path searching library for TeX-related files
+dev-libs/kpathsea 6.3.2_p20200406: Path searching library for TeX-related files
 dev-libs/kpeoplevcard 0.1: Library to expose vcards to KPeople
 dev-libs/kproperty 3.2.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
@@ -5237,7 +5237,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.20.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 1.0.2u 1.1.0l 1.1.1d-r3 1.1.1f 1.1.1g: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 1.0.2u 1.1.0l 1.1.1g: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2u-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
@@ -5255,7 +5255,7 @@ dev-libs/processor-trace 1.6.1 1.6.2 2.0: Intel(R) Processor Trace decoder libra
 dev-libs/protobuf 3.10.1 3.11.2 3.11.4 9999: Google's Protocol Buffers - Extensible mechanism for serializing structured data
 dev-libs/protobuf-c 1.3.2: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.5: pslib is a C-library to create PostScript files on the fly
-dev-libs/ptexenc 1.3.7_p20190410 1.3.8_p20200406: Library for Japanese pTeX providing a better way of handling character encodings
+dev-libs/ptexenc 1.3.8_p20200406: Library for Japanese pTeX providing a better way of handling character encodings
 dev-libs/pthreads4w 3.0.0: POSIX Threads for Windows
 dev-libs/pugixml 1.9 1.9-r1 1.10 9999: Light-weight, simple, and fast XML parser for C++ with XPath support
 dev-libs/qcustomplot 2.0.1: Qt C++ widget for plotting and data visualization
@@ -10099,7 +10099,7 @@ dev-tex/biblatex 3.12 3.14: Reimplementation of the bibliographic facilities pro
 dev-tex/biblatex-apa 7.5: APA style for BibLaTeX
 dev-tex/biblatex-gost 1.17: Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
 dev-tex/bibtex2html 1.98 1.99: A bibtex to HTML converter
-dev-tex/bibtexu 3.71_p20190410 3.71_p20200406: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
+dev-tex/bibtexu 3.71_p20200406: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r2: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.6: Checks latex source for common mistakes
@@ -10166,44 +10166,44 @@ dev-tex/translator 1.00: A package for translating words in TeX
 dev-tex/tth 4.08: Translate TEX into HTML
 dev-tex/vc 0.6: The vc (version control) bundle
 dev-tex/xmltex 1.9-r3: A non validating namespace aware XML parser implemented in TeX
-dev-texlive/texlive-basic 2019-r1 2020-r1: TeXLive Essential programs and files
-dev-texlive/texlive-bibtexextra 2019 2020: TeXLive BibTeX additional styles
-dev-texlive/texlive-context 2019 2020: TeXLive ConTeXt and packages
-dev-texlive/texlive-fontsextra 2019 2020: TeXLive Additional fonts
-dev-texlive/texlive-fontsrecommended 2019 2020: TeXLive Recommended fonts
-dev-texlive/texlive-fontutils 2019 2020: TeXLive Graphics and font utilities
-dev-texlive/texlive-formatsextra 2019 2020: TeXLive Additional formats
-dev-texlive/texlive-games 2019 2020: TeXLive Games typesetting
-dev-texlive/texlive-humanities 2019 2020: TeXLive Humanities packages
-dev-texlive/texlive-langarabic 2019 2020: TeXLive Arabic
-dev-texlive/texlive-langchinese 2019 2020: TeXLive Chinese
-dev-texlive/texlive-langcjk 2019 2020: TeXLive Chinese/Japanese/Korean (base)
-dev-texlive/texlive-langcyrillic 2019 2020: TeXLive Cyrillic
-dev-texlive/texlive-langczechslovak 2019-r1 2020: TeXLive Czech/Slovak
-dev-texlive/texlive-langenglish 2019 2020: TeXLive US and UK English
-dev-texlive/texlive-langeuropean 2019 2020: TeXLive Other European languages
-dev-texlive/texlive-langfrench 2019 2020: TeXLive French
-dev-texlive/texlive-langgerman 2019 2020: TeXLive German
-dev-texlive/texlive-langgreek 2019 2020: TeXLive Greek
-dev-texlive/texlive-langitalian 2019 2020: TeXLive Italian
-dev-texlive/texlive-langjapanese 2019 2020: TeXLive Japanese
-dev-texlive/texlive-langkorean 2019 2020: TeXLive Korean
-dev-texlive/texlive-langother 2019 2020: TeXLive Other languages
-dev-texlive/texlive-langpolish 2019 2020: TeXLive Polish
-dev-texlive/texlive-langportuguese 2019 2020: TeXLive Portuguese
-dev-texlive/texlive-langspanish 2019 2020: TeXLive Spanish
-dev-texlive/texlive-latex 2019 2020: TeXLive LaTeX fundamental packages
-dev-texlive/texlive-latexextra 2019-r2 2020: TeXLive LaTeX additional packages
-dev-texlive/texlive-latexrecommended 2019-r2 2020: TeXLive LaTeX recommended packages
-dev-texlive/texlive-luatex 2019 2020: TeXLive LuaTeX packages
-dev-texlive/texlive-mathscience 2019 2020: TeXLive Mathematics, natural sciences, computer science packages
-dev-texlive/texlive-metapost 2019 2020: TeXLive MetaPost and Metafont packages
-dev-texlive/texlive-music 2019 2020: TeXLive Music packages
-dev-texlive/texlive-pictures 2019 2020-r1: TeXLive Graphics, pictures, diagrams
-dev-texlive/texlive-plaingeneric 2019 2020: TeXLive Plain (La)TeX packages
-dev-texlive/texlive-pstricks 2019 2020: TeXLive PSTricks
-dev-texlive/texlive-publishers 2019 2020: TeXLive Publisher styles, theses, etc.
-dev-texlive/texlive-xetex 2019 2020: TeXLive XeTeX and packages
+dev-texlive/texlive-basic 2020-r1: TeXLive Essential programs and files
+dev-texlive/texlive-bibtexextra 2020: TeXLive BibTeX additional styles
+dev-texlive/texlive-context 2020: TeXLive ConTeXt and packages
+dev-texlive/texlive-fontsextra 2020: TeXLive Additional fonts
+dev-texlive/texlive-fontsrecommended 2020: TeXLive Recommended fonts
+dev-texlive/texlive-fontutils 2020: TeXLive Graphics and font utilities
+dev-texlive/texlive-formatsextra 2020: TeXLive Additional formats
+dev-texlive/texlive-games 2020: TeXLive Games typesetting
+dev-texlive/texlive-humanities 2020: TeXLive Humanities packages
+dev-texlive/texlive-langarabic 2020: TeXLive Arabic
+dev-texlive/texlive-langchinese 2020: TeXLive Chinese
+dev-texlive/texlive-langcjk 2020: TeXLive Chinese/Japanese/Korean (base)
+dev-texlive/texlive-langcyrillic 2020: TeXLive Cyrillic
+dev-texlive/texlive-langczechslovak 2020: TeXLive Czech/Slovak
+dev-texlive/texlive-langenglish 2020: TeXLive US and UK English
+dev-texlive/texlive-langeuropean 2020: TeXLive Other European languages
+dev-texlive/texlive-langfrench 2020: TeXLive French
+dev-texlive/texlive-langgerman 2020: TeXLive German
+dev-texlive/texlive-langgreek 2020: TeXLive Greek
+dev-texlive/texlive-langitalian 2020: TeXLive Italian
+dev-texlive/texlive-langjapanese 2020: TeXLive Japanese
+dev-texlive/texlive-langkorean 2020: TeXLive Korean
+dev-texlive/texlive-langother 2020: TeXLive Other languages
+dev-texlive/texlive-langpolish 2020: TeXLive Polish
+dev-texlive/texlive-langportuguese 2020: TeXLive Portuguese
+dev-texlive/texlive-langspanish 2020: TeXLive Spanish
+dev-texlive/texlive-latex 2020: TeXLive LaTeX fundamental packages
+dev-texlive/texlive-latexextra 2020: TeXLive LaTeX additional packages
+dev-texlive/texlive-latexrecommended 2020: TeXLive LaTeX recommended packages
+dev-texlive/texlive-luatex 2020: TeXLive LuaTeX packages
+dev-texlive/texlive-mathscience 2020: TeXLive Mathematics, natural sciences, computer science packages
+dev-texlive/texlive-metapost 2020: TeXLive MetaPost and Metafont packages
+dev-texlive/texlive-music 2020: TeXLive Music packages
+dev-texlive/texlive-pictures 2020-r1: TeXLive Graphics, pictures, diagrams
+dev-texlive/texlive-plaingeneric 2020: TeXLive Plain (La)TeX packages
+dev-texlive/texlive-pstricks 2020: TeXLive PSTricks
+dev-texlive/texlive-publishers 2020: TeXLive Publisher styles, theses, etc.
+dev-texlive/texlive-xetex 2020: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/abi-compliance-checker 2.3 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 1.1: Dump ABI of an ELF object containing DWARF debug info
@@ -12133,7 +12133,7 @@ mail-filter/zdkimfilter 1.8 2.1: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5 1.0.13: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.93.0.4-r1 4.94: A highly configurable, drop-in replacement for sendmail
-mail-mta/msmtp 1.8.7-r1 1.8.8 1.8.10: An SMTP client and SMTP plugin for mail user agents such as Mutt
+mail-mta/msmtp 1.8.7-r1 1.8.10 1.8.11: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r13: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1: Lightweight but featured SMTP daemon from OpenBSD
@@ -12715,7 +12715,7 @@ media-libs/gstreamer-editing-services 1.14.5: SDK for making video editors and m
 media-libs/guilib 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.3: Ham radio backend rig control libraries
-media-libs/harfbuzz 2.6.4 2.6.5 2.6.6 9999: An OpenType text shaping engine
+media-libs/harfbuzz 2.6.4 2.6.5 2.6.6 2.6.7 9999: An OpenType text shaping engine
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.1: ICC color profiles by OpenICC
 media-libs/icclib 2.14: Library for reading and writing ICC color profile files
@@ -14247,7 +14247,7 @@ net-firewall/fwknop 2.6.9-r1 2.6.10-r1: Single Packet Authorization and Port Kno
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipset 6.29 6.38 7.5 7.6: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.4 2.5 9999: Netflow iptables module
-net-firewall/iptables 1.6.1-r3 1.6.2-r2 1.8.3-r1 1.8.4 1.8.4-r2: Linux kernel (2.4+) firewall, NAT and packet mangling tools
+net-firewall/iptables 1.6.1-r3 1.6.2-r2 1.8.4-r2 1.8.5: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104 1.2_p20121104-r1: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99-r1: IPTables firewall setup script
 net-firewall/nfacct 1.0.1 1.0.2: Command line tool to create/retrieve/delete accounting objects in NetFilter
@@ -16645,7 +16645,7 @@ sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmicfg 1.31.0.200205: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.5-r1 3.1.6: IPMI Management Utilities
-sys-apps/iproute2 4.19.0-r1 5.2.0-r1 5.4.0 5.5.0 5.6.0 9999: kernel routing and traffic control utilities
+sys-apps/iproute2 4.19.0-r1 5.2.0-r1 5.4.0 5.6.0 5.7.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.5.0 1.6.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.1.1 2.1.2 2.2 2.3 2.3.1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
@@ -17343,7 +17343,7 @@ sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.4: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.23-r1 2.24 9999: A library for manipulating block devices
-sys-libs/libcap 2.26-r2 2.27 2.33 2.34: POSIX 1003.1e capabilities
+sys-libs/libcap 2.26-r2 2.27 2.34 2.36: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.10: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1.9999 11.0.0.9999: New implementation of the C++ standard library, targeting C++11
