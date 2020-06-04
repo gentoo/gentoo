@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Geometry engine library for Geographic Information Systems"
-HOMEPAGE="http://trac.osgeo.org/geos/"
+HOMEPAGE="https://trac.osgeo.org/geos/"
 SRC_URI="http://download.osgeo.org/geos/${PN}-${PV}.tar.bz2"
 
 LICENSE="LGPL-2.1"
