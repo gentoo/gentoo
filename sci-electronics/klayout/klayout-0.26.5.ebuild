@@ -17,7 +17,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/all/${P}
 else
 	SRC_URI="https://www.klayout.org/downloads/source/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Viewer and editor for GDS and OASIS integrated circuit layouts"
