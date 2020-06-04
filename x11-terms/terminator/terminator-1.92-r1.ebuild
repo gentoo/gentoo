@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=x11-libs/gtk+-3.16:3
 	x11-libs/vte:2.91[introspection]
-	dbus? ( sys-apps/dbus )
+	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 	libnotify? ( x11-libs/libnotify[introspection] )
 "
 BDEPEND="
