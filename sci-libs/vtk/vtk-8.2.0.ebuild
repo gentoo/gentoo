@@ -111,6 +111,7 @@ RDEPEND="
 		)
 	")
 	>=dev-cpp/eigen-3
+	dev-libs/double-conversion
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
