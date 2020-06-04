@@ -41,6 +41,12 @@ src_configure() {
 	econf $(use_enable selinux)
 }
 
+src_test() {
+	# prelink tests check exact library lists.
+	# LD_PRELOADed libraries break the assumption.
+	SANDBOX_ON=0 LD_PRELOAD= emake check VERBOSE=1
+}
+
 src_install() {
 	default
 
