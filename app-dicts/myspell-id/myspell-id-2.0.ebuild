@@ -18,8 +18,8 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Indonesian dictionaries for myspell/hunspell"
-HOMEPAGE="http://extensions.libreoffice.org/extension-center/indonesian-dictionary-kamus-indonesia-by-benitius"
-SRC_URI="http://extensions.libreoffice.org/extension-center/indonesian-dictionary-kamus-indonesia-by-benitius/releases/${PV}/id_id.oxt -> ${P}.oxt"
+HOMEPAGE="https://extensions.libreoffice.org/extension-center/indonesian-dictionary-kamus-indonesia-by-benitius"
+SRC_URI="https://extensions.libreoffice.org/extension-center/indonesian-dictionary-kamus-indonesia-by-benitius/releases/${PV}/id_id.oxt -> ${P}.oxt"
 
 LICENSE="GPL-2"
 SLOT="0"
