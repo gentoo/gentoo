@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=Backtracking YACC - modified from Berkeley YACC
 EAPI=7
-HOMEPAGE=http://www.siber.com/btyacc
+HOMEPAGE=https://www.siber.com/btyacc
 KEYWORDS=~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=public-domain
 SLOT=0
-SRC_URI=http://www.siber.com/btyacc/btyacc-3-0.tar.gz
+SRC_URI=https://www.siber.com/btyacc/btyacc-3-0.tar.gz
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=336127c320150e0fe334399e30b8a804
+_md5_=ac7be7301e688e30c7e2263308222d8e

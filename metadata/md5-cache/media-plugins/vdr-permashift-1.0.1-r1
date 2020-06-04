@@ -2,11 +2,11 @@ DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
 DEPEND=~media-video/vdr-2.2.0[permashift] >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
 DESCRIPTION=VDR Plugin: permanent timeshift by recording live TV on RAM
 EAPI=7
-HOMEPAGE=http://ein-eike.de/vdr-plugin-permashift-english/
+HOMEPAGE=https://ein-eike.de/vdr-plugin-permashift-english/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=~media-video/vdr-2.2.0[permashift] >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
 SLOT=0
-SRC_URI=http://ein-eike.de/wordpress/wp-content/uploads/2014/11/vdr-permashift-1.0.1.tgz
+SRC_URI=https://ein-eike.de/wordpress/wp-content/uploads/2014/11/vdr-permashift-1.0.1.tgz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	unpacker	b5891c9326ad2e7905c011d44c927c34	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f
-_md5_=8ff796ed8f871731bdabcc6ad7cc3101
+_md5_=1a5477e6ea526768d7f6c402a9483191

@@ -2,10 +2,10 @@ BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16
 DEFINED_PHASES=configure install prepare test
 DESCRIPTION=Technical Analysis Library for analyzing financial markets trends
 EAPI=7
-HOMEPAGE=http://www.ta-lib.org/
+HOMEPAGE=https://www.ta-lib.org/
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://sourceforge/ta-lib/ta-lib-0.4.0-src.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=943956727a8b1b6f95a56afc921ed80d
+_md5_=71f6a5bf3ef07b814e0cf1a8abb41f9c

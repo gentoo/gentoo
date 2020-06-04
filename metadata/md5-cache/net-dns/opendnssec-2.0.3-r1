@@ -3,7 +3,7 @@ DEFINED_PHASES=compile configure install postinst prepare pretend setup
 DEPEND=dev-lang/perl dev-libs/libxml2 dev-libs/libxslt net-libs/ldns mysql? ( dev-db/mysql-connector-c:0= dev-perl/DBD-mysql ) opensc? ( dev-libs/opensc ) readline? ( sys-libs/readline:0 ) softhsm? ( dev-libs/softhsm:* ) sqlite? ( dev-db/sqlite:3 dev-perl/DBD-SQLite ) doc? ( app-doc/doxygen ) test? ( app-text/trang )
 DESCRIPTION=An open-source turn-key solution for DNSSEC
 EAPI=7
-HOMEPAGE=http://www.opendnssec.org/
+HOMEPAGE=https://www.opendnssec.org/
 IUSE=debug doc +mysql readline +signer sqlite test +softhsm opensc external-hsm
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD GPL-2
@@ -11,6 +11,6 @@ RDEPEND=dev-lang/perl dev-libs/libxml2 dev-libs/libxslt net-libs/ldns mysql? ( d
 REQUIRED_USE=^^ ( mysql sqlite ) ^^ ( softhsm opensc external-hsm )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=http://www.opendnssec.org/files/source/opendnssec-2.0.3.tar.gz
+SRC_URI=https://www.opendnssec.org/files/source/opendnssec-2.0.3.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=6977db72737cfa8146c471658c4b1319
+_md5_=7cd2f1b50a3e68f3347cc07f93d404b1

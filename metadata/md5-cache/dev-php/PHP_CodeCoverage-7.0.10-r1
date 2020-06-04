@@ -2,7 +2,7 @@ BDEPEND=test? ( dev-php/fedora-autoloader >=dev-php/File_Iterator-2.0.2 <dev-php
 DEFINED_PHASES=install postinst test
 DESCRIPTION=Collection, processing, and rendering for PHP code coverage
 EAPI=7
-HOMEPAGE=http://phpunit.de
+HOMEPAGE=https://phpunit.de
 IUSE=test
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=BSD
@@ -10,4 +10,4 @@ RDEPEND=dev-php/fedora-autoloader >=dev-php/File_Iterator-2.0.2 <dev-php/File_It
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/sebastianbergmann/php-code-coverage/archive/7.0.10.tar.gz -> PHP_CodeCoverage-7.0.10.tar.gz
-_md5_=04538d3157f4e5e0c52d61bf3b423251
+_md5_=faf0ddb313d7669337a18d3d1302029a

@@ -5055,7 +5055,7 @@ dev-libs/libgcrypt 1.8.3 1.8.3-r1 1.8.4 1.8.5: General purpose crypto library ba
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.11 0.17.12: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.2 0.20.3: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.28.4 0.28.5 1.0.0-r1: A linkable library for Git
+dev-libs/libgit2 0.28.4 0.28.5 1.0.0-r1 1.0.1: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1 0.28.0.1-r1 0.99.0.1-r1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.4: Library for code common to Gnome games
 dev-libs/libgpg-error 1.36 1.37 1.38: Contains error handling functions used by GnuPG software

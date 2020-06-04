@@ -1,10 +1,10 @@
 DEFINED_PHASES=install
 DESCRIPTION=Helps writing PHP code that has runtime-specific execution paths
 EAPI=6
-HOMEPAGE=http://phpunit.de
+HOMEPAGE=https://phpunit.de
 KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~s390 sparc x86
 LICENSE=BSD
 RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-5.6:*
 SLOT=0
 SRC_URI=https://github.com/sebastianbergmann//environment/archive/2.0.0.tar.gz -> sebastian-environment-2.0.0.tar.gz
-_md5_=5aed5a3453990532750ad3d2e2fa62c0
+_md5_=841cb0751d0d4955061bbeb19e90acae
