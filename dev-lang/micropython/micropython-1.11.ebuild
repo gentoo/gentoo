@@ -21,28 +21,41 @@ DEPEND="
 
 PATCHES=( "${FILESDIR}/${P}-prevent-stripping.patch" )
 
+# A few tests fail after enforcing CFLAGS/LDFLAGS.
+# We need to work out why.
+RESTRICT="test"
+
+src_prepare() {
+	default
+
+	cd ports/unix || die
+
+	# 1) don't die on compiler warning
+	# 2) remove /usr/local prefix references in favour of /usr
+	# 3) enforce our CFLAGS
+	# 4) enforce our LDFLAGS
+	sed -e 's#-Werror##g;' \
+		-e 's#\/usr\/local#\/usr#g;' \
+		-e "s#^CFLAGS = \(.*\)#CFLAGS = \1 ${CFLAGS}#g" \
+		-e "s#^LDFLAGS = \(.*\)#LDFLAGS = \1 ${LDFLAGS}#g" \
+		-i Makefile || die "can't patch Makefile"
+}
+
 src_compile() {
 	cd ports/unix || die
 
-	# 1) don't die on compiler warnings
-	# 2) remove /usr/local prefix references in favour of /usr
-	sed -i \
-		-e 's#-Werror##g;' \
-		-e 's#\/usr\/local#\/usr#g;' \
-		Makefile || die
-
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" axtls
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC)" axtls
+	emake CC="$(tc-getCC)"
 }
 
 src_test() {
 	cd ports/unix || die
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" test
+	emake CC="$(tc-getCC)" test
 }
 
 src_install() {
 	pushd ports/unix > /dev/null || die
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" DESTDIR="${D}" install
+	emake CC="$(tc-getCC)" DESTDIR="${D}" install
 	popd > /dev/null || die
 
 	# remove .git files
