@@ -10,4 +10,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/micropython/micropython/releases/download/v1.11/micropython-1.11.tar.gz
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=81a002ff2238d2d895801ee6710418fd
+_md5_=bb80e5594b239583a435dbf1b4bbadb0

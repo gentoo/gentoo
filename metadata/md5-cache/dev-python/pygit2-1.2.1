@@ -5,7 +5,7 @@ DESCRIPTION=Python bindings for libgit2
 EAPI=7
 HOMEPAGE=https://github.com/libgit2/pygit2 https://pypi.org/project/pygit2/
 IUSE=test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2-with-linking-exception
 RDEPEND==dev-libs/libgit2-1.0* dev-python/cached-property[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/cffi-1.0:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/p/pygit2/pygit2-1.2.1.tar.gz
 _eclasses_=distutils-r1	89b310c534a033a3566e0f26419daa81	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=740ee49652c84362ae5cd21c30925ac6
+_md5_=f6f67ef0f56595cc37c81caec568e8a1

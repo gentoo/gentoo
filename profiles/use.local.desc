@@ -489,7 +489,7 @@ app-emulation/docker-credential-helpers:gnome-keyring - Build secretservice help
 app-emulation/docker-credential-helpers:pass - Build pass helper for the pass utility.
 app-emulation/dosemu:fluidsynth - use media-sound/fluidsynth for MIDI emulation
 app-emulation/faudio:dumpvoices - FAudio dumps buffer data to individual files with RIFF/XWMA headers, usable with players like ffplay/testxwma.
-app-emulation/faudio:ffmpeg - FAudio has optional support for decoding xWMA resources using FFmpeg, requiring: media-video/ffmpeg (note: this feature is not supported by media-video/libav).
+app-emulation/faudio:ffmpeg - FAudio has optional support for decoding xWMA resources using FFmpeg, requiring: media-video/ffmpeg
 app-emulation/faudio:test - Build and run faudio testsuite.
 app-emulation/faudio:utils - Build all faudio utilities.
 app-emulation/faudio:xnasong - Build support for optional XNG_SONG component (note: this not required by app-emulation/wine-staging, app-emulation/wine-vanilla for faudio XAudio support).
@@ -8833,6 +8833,7 @@ x11-apps/igt-gpu-tools:chamelium - Enables support for building Chamelium tests
 x11-apps/igt-gpu-tools:man - Build and install man pages
 x11-apps/igt-gpu-tools:overlay - Build the intel-gpu-overlay utility
 x11-apps/igt-gpu-tools:runner - Build the test runner
+x11-apps/igt-gpu-tools:tests - Build and install tests
 x11-apps/igt-gpu-tools:valgrind - Support valgrind annotations
 x11-apps/igt-gpu-tools:xv - Enable intel-gpu-overlay xv backend
 x11-apps/mesa-progs:egl - Build EGL utilities
