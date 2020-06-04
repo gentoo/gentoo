@@ -6,7 +6,7 @@ EAPI="4"
 inherit eutils autotools
 
 DESCRIPTION="A collection of tools to send or receive mails with SMTP"
-HOMEPAGE="http://www.ohse.de/uwe/software/smtptools.html"
+HOMEPAGE="https://www.ohse.de/uwe/software/smtptools.html"
 SRC_URI="ftp://ftp.ohse.de/uwe/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
