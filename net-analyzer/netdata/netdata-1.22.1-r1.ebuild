@@ -49,7 +49,7 @@ RDEPEND="
 	dev-libs/libuv
 	compression? ( sys-libs/zlib )
 	ipmi? ( sys-libs/freeipmi )
-	jsonc? ( dev-libs/json-c )
+	jsonc? ( dev-libs/json-c:= )
 	kinesis? ( dev-libs/aws-sdk-cpp[kinesis] )
 	mongodb? ( dev-libs/mongo-c-driver )
 	nfacct? (
