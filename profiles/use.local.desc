@@ -5019,7 +5019,9 @@ media-video/mjpg-streamer:output-http - Small HTTP server plugin which sends WWW
 media-video/mjpg-streamer:output-rtsp - Plugin which provides a mechanism to take snapshots with a trigger from a UDP packet
 media-video/mjpg-streamer:output-udp - Plugin receiving content over UDP and storing to a directory
 media-video/mjpg-streamer:www - Installs WWW content
+media-video/motion:mariadb - Add mariadb database support
 media-video/motion:mmal - Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.
+media-video/motion:supervise-daemon - Add experimental suppport for OpenRC's supervise-daemon process supervision
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
 media-video/mplayer:bl - Blinkenlights video output
 media-video/mplayer:bluray - Enable playback of Blu-ray filesystems

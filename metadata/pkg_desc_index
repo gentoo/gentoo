@@ -94,6 +94,7 @@ acct-group/minetest 0: A group for the Minetest server
 acct-group/mongodb 0: MongoDB program group
 acct-group/monitorix 0: Monitorix system tool group
 acct-group/mosquitto 0: A group for the mosquitto MQTT broker
+acct-group/motion 0: System group: motion
 acct-group/msmtpd 0: System group: msmtpd
 acct-group/munin 0: System group: munin
 acct-group/murmur 0: System group: murmur
@@ -282,6 +283,7 @@ acct-user/minetest 0 1: A user for the Minetest server
 acct-user/mongodb 0: MongoDB program user
 acct-user/monitorix 0: Monitorix system tool user
 acct-user/mosquitto 0: A user for the mosquitto MQTT broker
+acct-user/motion 0: added by portage for motion, a software motion detector
 acct-user/mpd 0: A user for music player daemon (mpd)
 acct-user/msmtpd 0: user for msmtp daemon
 acct-user/munin 0: user for munin
@@ -1664,7 +1666,7 @@ app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 3.0.3 4.0.2-r2: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 3.14 4.0.1: Fast, dense and secure container management
-app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
+app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.0.1-r1 11.1.0: Opensourced tools for VMware guests
 app-emulation/pcem 16: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
@@ -4682,7 +4684,7 @@ dev-java/tomcat-jstl-compat 1.2.5-r1: JSP Standard Tag Library (JSTL) - Compat j
 dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
-dev-java/tomcat-native 1.2.23 1.2.24: Allows Tomcat to use certain native resources for better performance
+dev-java/tomcat-native 1.2.24: Allows Tomcat to use certain native resources for better performance
 dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.103 7.0.104 8.5.54 8.5.55 9.0.34 9.0.35: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
@@ -13681,7 +13683,7 @@ media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.6-r1: Digital vinyl emulation software
 media-sound/yarock 1.4.0: Qt-based music player
-media-sound/yoshimi 1.7.0.1 1.7.1: Software synthesizer based on ZynAddSubFX
+media-sound/yoshimi 1.7.1: Software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
 media-tv/channeleditor 1.9.2.1-r1 1.9.2.1-r2: Editor for VDR channels.conf
 media-tv/dtv-scan-tables 0_p20171003 0_p20190922 9999: Digital TV scan tables in v3 and v5 format
@@ -13780,7 +13782,7 @@ media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.5.2: mkvalidator is a command line tool to verify Matroska files for spec conformance
 media-video/mkvtoolnix 37.0.0 42.0.0 43.0.0 45.0.0 46.0.0 9999: Tools to create, alter, and inspect Matroska files
-media-video/motion 4.1.1-r1: A software motion detector
+media-video/motion 4.1.1-r1 4.3.1: A software motion detector
 media-video/motiontrack 0.1.3-r2: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.6.1 1.6.2: Modern Video Toolkit
 media-video/mpeg-tools 1.5b-r4 1.5b-r5: Tools for MPEG video
@@ -14143,7 +14145,7 @@ net-analyzer/wireshark 3.2.1 3.2.3 3.2.4 99999999: A network protocol analyzer f
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.30 3.0.31 4.0.19 4.0.20 4.4.7 4.4.8 5.0.0: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.31 4.0.20 4.4.8 5.0.0: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
@@ -15107,8 +15109,8 @@ net-p2p/transmission 2.94-r1 3.00-r1 9999: A fast, easy, and free BitTorrent cli
 net-p2p/transmission-remote-gtk 1.3.1 1.4.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tremc 0.9.1: Ncurses interface for the Transmission BitTorrent client
 net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
-net-p2p/vuze 4.8.1.2-r1 5.7.6.0: BitTorrent client in Java, formerly called Azureus
-net-p2p/vuze-coreplugins 4.8.1.2 5.7.6.0: Core plugins for Vuze that are included in upstream distribution
+net-p2p/vuze 5.7.6.0: BitTorrent client in Java, formerly called Azureus
+net-p2p/vuze-coreplugins 5.7.6.0: Core plugins for Vuze that are included in upstream distribution
 net-p2p/xmr-stak 2.7.0 2.7.1 2.8.0 2.8.2 2.8.3 2.9.0 2.10.0 2.10.1 2.10.2 2.10.3 2.10.4 2.10.5 2.10.6 2.10.7 2.10.8 9999: Unified all-in-one Monero miner
 net-p2p/xmr-stak-rx 1.0.4 1.0.5 9999: Monero RandomX Miner
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
@@ -15156,7 +15158,7 @@ net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.8.25-r1 1.9.15-r1 1.9.9999 2.0.14 2.0.14-r1 2.0.9999 2.1.4 2.1.4-r1 2.1.5 2.1.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
-net-proxy/mitmproxy 4.0.4: An interactive, SSL-capable, man-in-the-middle HTTP proxy
+net-proxy/mitmproxy 4.0.4 5.1.1: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
@@ -16552,7 +16554,7 @@ sys-apps/coreutils 8.30 8.31-r1 8.32-r1: Standard GNU utilities (chmod, cp, dd, 
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20180519 20200427: Linux tool to dump x86 CPUID information about the CPUs
 sys-apps/cracklib-words 2.9.6: large set of crack/cracklib dictionaries
-sys-apps/crazydiskinfo 1.0.2 1.1.0: Interactive TUI S.M.A.R.T viewer
+sys-apps/crazydiskinfo 1.1.0: Interactive TUI S.M.A.R.T viewer
 sys-apps/daemonize 1.7.8: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11 12: Miscellaneous commands used on macOS, High Sierra 10.13
@@ -17456,7 +17458,7 @@ sys-process/incron 0.5.12_p20191114: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5-r1: tool for identifying where in the system latency is happening
 sys-process/lsof 4.91 4.93.2-r1: Lists open files for running Unix processes
-sys-process/memwatch 0.1.0 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.3.1 0.3.2 0.3.3: Interactive memory viewer
+sys-process/memwatch 0.3.3: Interactive memory viewer
 sys-process/minicoredumper 2.0.1-r1: Core dump file processor
 sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
