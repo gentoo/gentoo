@@ -1,12 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils prefix
+EAPI=7
 
-DESCRIPTION="translates acronyms for you"
+inherit prefix
+
+DESCRIPTION="Translates acronyms for you"
 HOMEPAGE="http://netbsd.org/"
-SRC_URI="http://dev.gentooexperimental.org/~darkside/distfiles/${PN}/${P}.tar.bz2"
+SRC_URI="https://sourceforge.net/projects/bsd${PN}/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -17,12 +18,8 @@ DEPEND="!games-misc/bsd-games"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-prefix.patch
-	eprefixify wtf
-}
-
-src_compile() {
-	:
+	default
+	hprefixify
 }
 
 src_install() {
@@ -30,5 +27,4 @@ src_install() {
 	doman wtf.6
 	insinto /usr/share/misc
 	doins acronyms*
-	dodoc README
 }
