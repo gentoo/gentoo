@@ -56,7 +56,6 @@ RDEPEND="
 	raw? ( media-libs/libraw:= )
 	svg? (
 		gnome-base/librsvg
-		media-gfx/inkscape
 		media-gfx/potrace
 		)
 	tiff? ( media-libs/tiff:0= )
