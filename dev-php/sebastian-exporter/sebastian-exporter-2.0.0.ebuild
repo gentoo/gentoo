@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="${PN/sebastian-//}"
 
 DESCRIPTION="Export PHP variables for visualization"
-HOMEPAGE="http://phpunit.de"
+HOMEPAGE="https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
