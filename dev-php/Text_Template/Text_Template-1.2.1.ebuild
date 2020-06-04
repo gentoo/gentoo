@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="php-text-template"
 
 DESCRIPTION="A simple template engine"
-HOMEPAGE="http://phpunit.de"
+HOMEPAGE="https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
