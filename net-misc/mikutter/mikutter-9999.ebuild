@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,14 +18,14 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/all"
 else
 	MY_P="${PN}.${PV}"
-	SRC_URI="http://mikutter.hachune.net/bin/${MY_P}.tar.gz
+	SRC_URI="https://mikutter.hachune.net/bin/${MY_P}.tar.gz
 		https://raw.githubusercontent.com/toshia/twitter_api_keys/${PLUGIN_HASH}/twitter_api_keys.rb"
 	KEYWORDS="~amd64"
 	RUBY_S="${PN}"
 fi
 
 DESCRIPTION="Simple, powerful and moeful twitter client"
-HOMEPAGE="http://mikutter.hachune.net/"
+HOMEPAGE="https://mikutter.hachune.net/"
 
 LICENSE="GPL-3"
 SLOT="0"

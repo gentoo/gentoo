@@ -12,14 +12,14 @@ fi
 inherit distutils-r1 xdg-utils ${SCM}
 
 DESCRIPTION="Free open-source tool for programming your amateur radio"
-HOMEPAGE="http://chirp.danplanet.com"
+HOMEPAGE="https://chirp.danplanet.com"
 
 RESTRICT="test"
 if [[ ${PV} == "99999999" ]] ; then
 	KEYWORDS=""
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="http://trac.${PN}.danplanet.com/${PN}_daily/daily-${PV}/${PN}-daily-${PV}.tar.gz"
+	SRC_URI="https://trac.${PN}.danplanet.com/${PN}_daily/daily-${PV}/${PN}-daily-${PV}.tar.gz"
 	S="${WORKDIR}/${PN}-daily-${PV}"
 fi
 LICENSE="GPL-3"

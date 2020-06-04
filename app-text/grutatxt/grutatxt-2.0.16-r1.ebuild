@@ -10,8 +10,8 @@ MY_P=${MY_PN}-${PV}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="A converter from plain text to HTML and other markup languages"
-HOMEPAGE="http://triptico.com/software/grutatxt.html"
-SRC_URI="http://www.triptico.com/download/${MY_P}.tar.gz"
+HOMEPAGE="https://triptico.com/software/grutatxt.html"
+SRC_URI="https://www.triptico.com/download/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 
 IUSE=""

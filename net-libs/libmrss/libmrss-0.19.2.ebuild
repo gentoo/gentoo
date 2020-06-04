@@ -4,8 +4,8 @@
 EAPI=7
 
 DESCRIPTION="A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams"
-HOMEPAGE="http://www.autistici.org/bakunin/libmrss/doc/"
-SRC_URI="http://www.autistici.org/bakunin/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.autistici.org/bakunin/libmrss/doc/"
+SRC_URI="https://www.autistici.org/bakunin/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
