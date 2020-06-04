@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils multilib-minimal
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
-HOMEPAGE="http://jackaudio.org/"
+HOMEPAGE="https://jackaudio.org/"
 
 if [[ "${PV}" = "9999" ]]; then
 	inherit git-r3
