@@ -12,7 +12,7 @@ HOMEPAGE="https://mg.pov.lt/objgraph/"
 SRC_URI="mirror://pypi/o/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
