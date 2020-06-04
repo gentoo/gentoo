@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,8 +6,8 @@ EAPI="4"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A squid redirector used for blocking unwanted content"
-HOMEPAGE="http://rejik.ru/"
-SRC_URI="http://rejik.ru/download/redirector-${PV}.tgz
+HOMEPAGE="https://rejik.ru/"
+SRC_URI="https://rejik.ru/download/redirector-${PV}.tgz
 	banlists? ( http://rejik.ru/download/banlists-2.x.x.tgz )"
 
 LICENSE="GPL-2"
