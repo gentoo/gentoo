@@ -239,7 +239,7 @@ pkg_pretend() {
 
 	if ! use clang && [[ $(gcc-major-version) -eq 10 ]] ; then
 		# bug 727028
-		die "Using GCC 10 to compile firefox is currently known to be broken. Set USE=clang or select <gcc-10 to continue."
+		use ppc64 || die "Using GCC 10 to compile firefox is currently known to be broken. Set USE=clang or select <gcc-10 to continue."
 	fi
 
 	# Ensure we have enough disk space to compile
