@@ -18,6 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-l
 RDEPEND="app-misc/ca-certificates"
 BDEPEND="
 	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)"
 
