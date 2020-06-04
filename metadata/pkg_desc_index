@@ -15783,7 +15783,7 @@ sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes convert
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
-sci-geosciences/gpxsee 7.18 7.20 7.23 7.25 7.26 7.29: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
+sci-geosciences/gpxsee 7.29: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/grass 7.4.4 7.4.4-r3: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
