@@ -28,6 +28,9 @@ src_prepare() {
 	# no clue but it looks horribly fragile
 	sed -e 's:test_sequencer_basic:_&:' \
 		-i tests/test_util.py || die
+	# progress bar test cases, very fragile
+	sed -e '/ProgressTestCase/s:unittest.TestCase:object:' \
+		-i tests/test_util.py || die
 	# TODO: investigate
 	sed -e 's:test_upload:_&:' \
 		-i tests/test_index.py || die
