@@ -49,6 +49,6 @@ src_install() {
 	done >| 99geant-data
 	doenvd 99geant-data
 	dodir /usr/share/geant4/data
-	cd "${ED%/}/usr/share/geant4/data" || die
+	cd "${ED}/usr/share/geant4/data" || die
 	unpack ${A}
 }
