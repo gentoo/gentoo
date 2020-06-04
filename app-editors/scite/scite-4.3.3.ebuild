@@ -5,8 +5,8 @@ EAPI=7
 
 inherit toolchain-funcs xdg-utils
 
-DESCRIPTION="A very powerful, highly configurable, small editor with syntax coloring"
-HOMEPAGE="https://www.scintilla.org/SciTE.html"
+DESCRIPTION="A powerful, highly configurable, small editor with syntax coloring"
+HOMEPAGE="http://www.scintilla.org/SciTE.html"
 SRC_URI="https://www.scintilla.org/${PN}${PV//./}.tgz -> ${P}.tgz"
 
 LICENSE="HPND lua? ( MIT )"
@@ -50,18 +50,20 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	tc-export AR CC CXX RANLIB
+
 	# remove hardcoded CC, Optimizations and clang unknown flags
 	sed -i "${WORKDIR}/scintilla/gtk/makefile" \
 	-e "s#^CC = gcc#CC = ${CC}#" \
 	-e "s#^CC = clang#CC = ${CC}#" \
-	-e "s#^CXX = clang++#CC = ${CXX}#" \
+	-e "s#^CXX = clang++#CXX = ${CXX}#" \
 	-e "s#-Os##" \
 	-e "s#-Wno-misleading-indentation##" \
 	|| die "error patching /scintilla/gtk/makefile"
 
 	sed -i "${S}/makefile" \
 	-e "s#^CC = clang#CC = ${CC}#" \
-	-e "s#^CXX = clang++#CC = ${CXX}#" \
+	-e "s#^CXX = clang++#CXX = ${CXX}#" \
 	-e "s#-rdynamic#-rdynamic ${LDFLAGS}#" \
 	-e "s#-Os##" \
 	|| die "error patching gtk/makefile"
