@@ -109,7 +109,9 @@ RDEPEND="
 			dev-qt/qtx11extras:5
 			python? ( dev-python/PyQt5[\${PYTHON_MULTI_USEDEP}] )
 		)
-	")"
+	")
+	>=dev-cpp/eigen-3
+"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
