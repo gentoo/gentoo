@@ -5020,7 +5020,7 @@ dev-libs/libdazzle 3.34.1: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19 5.0.22: A small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0-r1: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
-dev-libs/libdivecomputer 0.6.0 9999: Library for communication with dive computers from various manufacturers.
+dev-libs/libdivecomputer 0.6.0-r1 9999: Library for communication with dive computers from various manufacturers.
 dev-libs/libdivsufsort 2.0.1-r1 9999: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.12 1.12-r1: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2 0.1a-r3: A non-blocking DNS resolver library
