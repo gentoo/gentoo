@@ -41,6 +41,7 @@ app-text/pdfsandwich
 dev-python/assets
 dev-python/bz2file
 dev-python/jaxml
+dev-python/python-urljr
 dev-python/selectors34
 dev-python/stomper
 dev-python/YURL
