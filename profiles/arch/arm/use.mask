@@ -4,13 +4,6 @@
 # Unmask the flag which corresponds to ARCH.
 -arm
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-28)
-# Target flags masked because of pending keywording requests.
-python_targets_python3_8
-python_single_target_python3_8
-python_targets_python3_9
-python_single_target_python3_9
-
 # Unmask arm arch specific flags
 -cpu_flags_arm_iwmmxt
 -cpu_flags_arm_iwmmxt2
