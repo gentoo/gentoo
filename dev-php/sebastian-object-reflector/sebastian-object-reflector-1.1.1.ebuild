@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="object-reflector"
 
 DESCRIPTION="Allows reflection of object attributes, including inherited and non-public ones"
-HOMEPAGE="http://phpunit.de"
+HOMEPAGE="https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
