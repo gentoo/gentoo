@@ -28,6 +28,7 @@ RDEPEND="dev-libs/boost:=[threads]
 	xattr? ( sys-apps/attr )"
 
 DEPEND="${RDEPEND}
+	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	sys-devel/gettext
 	virtual/pkgconfig"
