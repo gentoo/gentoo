@@ -10,7 +10,6 @@ SRC_URI="https://github.com/mawww/kakoune/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
-IUSE="static-libs"
 
 DEPEND="sys-libs/ncurses:0=[unicode]"
 RDEPEND="${DEPEND}"
@@ -23,7 +22,7 @@ src_configure() { :; }
 src_compile() {
 	cd src/ || die
 
-	emake static=$(usex static-libs yes no) all
+	emake all
 }
 
 src_test() {
