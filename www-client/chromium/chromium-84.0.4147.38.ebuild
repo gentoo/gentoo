@@ -662,6 +662,9 @@ src_configure() {
 		myconf_gn+=" icu_use_data_file=false"
 	fi
 
+	# Use bundled xcb-proto, bug #727000
+	myconf_gn+=" xcbproto_path=\"${WORKDIR}/xcb-proto-${XCB_PROTO_VERSION}/src\""
+
 	einfo "Configuring Chromium..."
 	set -- gn gen --args="${myconf_gn} ${EXTRA_GN}" out/Release
 	echo "$@"
