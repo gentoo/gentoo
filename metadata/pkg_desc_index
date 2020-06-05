@@ -14353,7 +14353,7 @@ net-im/slack 4.3.2-r2 4.4.2: Team collaboration tool
 net-im/spectrum2 2.0.12-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958 1.3.00.5153: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
-net-im/telegram-desktop 2.1.0 2.1.7 2.1.9: Official desktop client for Telegram
+net-im/telegram-desktop 2.1.0 2.1.7 2.1.10: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.1.1 2.1.3: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
@@ -15028,7 +15028,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.05.29 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.05.29 2020.06.06 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18388,7 +18388,7 @@ x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB exte
 x11-misc/xkeyboard-config 2.29 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50 5.62 5.63 5.64_alpha0: Just another screensaver application for X
-x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
+x11-misc/xmobar 0.23.1 0.24.2 0.24.3 0.24.3-r1: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r1: Program suite to record, replay and distribute user actions
