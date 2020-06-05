@@ -21,9 +21,9 @@ SRC_URI="
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="doc sparse test"
 RESTRICT="!test? ( test )"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 CDEPEND="
 	>=dev-python/numpy-1.10[lapack,${PYTHON_USEDEP}]
@@ -99,6 +99,10 @@ python_prepare_all() {
 		library_dirs = $(pc_libdir lapack):${libdir}
 		lapack_libs = $(pc_libs lapack)
 	EOF
+	cat >> setup.cfg <<-EOF || die
+		[options]
+		zip_safe = False
+	EOF
 
 	# Drop hashes to force rebuild of cython based .c code
 	rm cythonize.dat || die
@@ -118,13 +122,11 @@ python_compile() {
 python_test() {
 	# fails with bdist_egg. should it be fixed in distutils-r1 eclass?
 	distutils_install_for_testing ${SCIPY_FCONFIG}
-	cd "${TEST_DIR}" || die "no ${TEST_DIR} available"
-	"${PYTHON}" -c \
-		'import numpy as np; print("relaxed strides checking:", np.ones((10,1),order="C").flags.f_contiguous)' \
-		|| die
-	"${EPYTHON}" -c \
-		"import scipy, sys; r = scipy.test('fast', verbose=2); sys.exit(r)" \
-		|| die "Tests fail with ${EPYTHON}"
+	cd "${TEST_DIR}/lib" || die "no ${TEST_DIR} available"
+	PYTHONPATH=. "${EPYTHON}" -c "
+import scipy, sys
+r = scipy.test('fast', verbose=2)
+sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
