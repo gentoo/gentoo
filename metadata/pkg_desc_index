@@ -14587,7 +14587,7 @@ net-libs/serf 1.3.8 1.3.8-r1 1.3.9 1.3.9-r1 1.3.9-r2: HTTP client library
 net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.24: OAuth2 plugin for Signon daemon
 net-libs/signon-ui 0.15_p20171022: Online accounts signon UI
-net-libs/signond 8.60-r1: Signon daemon for libaccounts-glib
+net-libs/signond 8.60-r1 8.60-r2: Signon daemon for libaccounts-glib
 net-libs/socket_wrapper 1.2.3: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
 net-libs/srt 1.3.2-r1 1.4.0-r1 1.4.1-r1 9999: Secure Reliable Transport (SRT) library and tools
@@ -16089,7 +16089,7 @@ sci-libs/volk 2.3.0: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 9999: Votca tools library
 sci-libs/vtk 8.1.0-r7 8.2.0: The Visualization Toolkit
-sci-libs/xdmf2 1.0_p141226-r3: eXtensible Data Model and Format
+sci-libs/xdmf2 1.0_p141226-r4: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1 1.1.4: Library to read gromacs trajectory and topology files
 sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System
 sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
