@@ -9,7 +9,7 @@ MY_PV="${PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="OpenTTD is a clone of Transport Tycoon Deluxe"
-HOMEPAGE="http://www.openttd.org/"
+HOMEPAGE="https://www.openttd.org/"
 if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OpenTTD/OpenTTD.git"
