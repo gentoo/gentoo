@@ -9035,7 +9035,7 @@ x11-terms/rxvt-unicode:perl - Enable perl script support. You can still disable 
 x11-terms/rxvt-unicode:unicode3 - Use 21 instead of 16 bits to represent unicode characters
 x11-terms/rxvt-unicode:utmp - Enable utmp support
 x11-terms/rxvt-unicode:wtmp - Enable wtmp support
-x11-terms/terminator:libnotify - Enables desktop notifications viadev-python/notify-python
+x11-terms/terminator:libnotify - Enables desktop notifications via x11-libs/libnotify
 x11-terms/terminology:extras - Install additional testing tools
 x11-terms/xfce4-terminal:utempter - Include utmp management support via sys-libs/libutempter
 x11-terms/xterm:openpty - Use openpty() in preference to posix_openpt()
