@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
+# sci-libs/mkl is only supported on specific architectures
+mkl
+
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Forced and masked by default. Unmask where necessary.
