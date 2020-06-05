@@ -414,10 +414,6 @@ media-libs/devil allegro nvtt
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
 
-# Christoph Junghans <junghans@gentoo.org> (2013-04-29)
-# MKL not available on this arch
-media-gfx/povray mkl
-
 # Benda Xu <heroxbd@gentoo.org> (2013-04-01)
 # dev-ml/lablgtk not keyworded
 net-misc/unison gtk

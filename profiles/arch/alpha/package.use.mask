@@ -375,10 +375,6 @@ media-plugins/gst-plugins-meta dts libvisual
 # needs sys-libs/libcap-ng that is masked right now
 sys-apps/smartmontools caps
 
-# Justin Lecher <jlec@gentoo.org> (2010-08-13)
-# MKL not available on this arch, 
-media-gfx/povray mkl 
-
 # Raúl Porcel <armin76@gentoo.org> (2010-06-26)
 # custom-optimization doesn't work on alpha
 mail-client/thunderbird custom-optimization
