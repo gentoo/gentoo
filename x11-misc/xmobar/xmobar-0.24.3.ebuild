@@ -67,6 +67,9 @@ src_prepare() {
 	# cycle).
 	# Be careful when remove it :]
 	HCFLAGS+=" -with-rtsopts=-V0"
+
+	cabal_chdeps \
+		'stm >= 2.3 && < 2.5' 'stm >= 2.3'
 }
 
 src_configure() {
