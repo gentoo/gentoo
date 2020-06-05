@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for qmail
-EAPI=5
+EAPI=7
 KEYWORDS=~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
-RDEPEND=|| ( ~mail-mta/netqmail-1.06 ~mail-mta/mini-qmail-1.05 ~mail-mta/mini-qmail-1.06 ~mail-mta/qmail-ldap-1.03 )
+RDEPEND=|| ( mail-mta/netqmail mail-mta/notqmail mail-mta/qmail-ldap )
 SLOT=0
-_md5_=f659bede8f43661609b924843de13991
+_md5_=658302985b49bff8a3a7d42c5dfb8639

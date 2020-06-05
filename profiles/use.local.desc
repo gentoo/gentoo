@@ -3913,6 +3913,10 @@ mail-mta/netqmail:authcram - Enable AUTHCRAM support
 mail-mta/netqmail:gencertdaily - Generate SSL certificates daily instead of hourly
 mail-mta/netqmail:highvolume - Prepare netqmail for high volume servers
 mail-mta/netqmail:pop3 - Include POP3 server
+mail-mta/notqmail:authcram - Enable AUTHCRAM support
+mail-mta/notqmail:gencertdaily - Generate SSL certificates daily instead of hourly
+mail-mta/notqmail:highvolume - Prepare notqmail for high volume servers
+mail-mta/notqmail:pop3 - Include POP3 server
 mail-mta/opensmtpd:mta - Enable this to install as system-wide MTA
 mail-mta/postfix:dovecot-sasl - Enable net-mail/dovecot protocol version 1 (server only) SASL implementation
 mail-mta/postfix:eai - Add support for SMTPUTF8
