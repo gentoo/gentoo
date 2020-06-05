@@ -4809,8 +4809,8 @@ dev-lang/qu-prolog 10.1 10.2 10.3: Extended Prolog supporting quantifiers, objec
 dev-lang/rakudo 2019.03 2019.11 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.10 2.5.8 2.5.8-r1 2.6.6 2.6.6-r1 2.6.6-r2 2.7.1 2.7.1-r1 2.7.1-r2: An object-oriented scripting language
-dev-lang/rust 1.41.1 1.42.0 1.43.0 1.43.1: Systems programming language from Mozilla
-dev-lang/rust-bin 1.41.1 1.42.0 1.43.0 1.43.1: Systems programming language from Mozilla
+dev-lang/rust 1.41.1 1.42.0 1.43.0 1.43.1 1.44.0: Systems programming language from Mozilla
+dev-lang/rust-bin 1.41.1 1.42.0 1.43.0 1.43.1 1.44.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
 dev-lang/scala-bin 2.12.4 2.13.1: The Scala Programming Language
@@ -10260,7 +10260,7 @@ dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20190617 20191125 20200330: the best variant of the Yacc parser generator
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.2.0 0.3.0: Generates an ebuild for a package using the in-tree eclasses.
-dev-util/cargo-tree 0.28.0 0.29.0: Cargo subcommand that visualizes crate dependency graph in a tree-like format
+dev-util/cargo-tree 0.29.0-r1: Cargo subcommand that visualizes crate dependency graph in a tree-like format
 dev-util/catalyst 3.0.9 3.0.12 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 0.8.3-r1 9999: Cmake macros and associated python code used to build some parts of ROS
@@ -17670,7 +17670,7 @@ virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ssl 11: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 15 16: Virtual ebuild for rubygems
-virtual/rust 1.41.1 1.42.0 1.43.0 1.43.1: Virtual for Rust language compiler
+virtual/rust 1.41.1 1.42.0 1.43.0 1.43.1 1.44.0: Virtual for Rust language compiler
 virtual/service-manager 0 1: Virtual for various service managers
 virtual/skkserv 0: Virtual for SKK server
 virtual/ssh 0: Virtual for SSH client and server
