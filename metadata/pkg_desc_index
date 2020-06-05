@@ -9598,7 +9598,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.17.1 0.17.3 0.18.0: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.0.1-r1 1.6.0 1.7.0 1.7.1 1.8.0 1.8.1 1.8.2 1.8.2-r1: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.6.0 1.7.0 1.7.1 1.8.0 1.8.1 1.8.2 1.8.2-r1 1.8.3: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
 dev-ruby/image_processing 1.9.3 1.10.0 1.10.3 1.11.0: High-level image processing helper methods with libvips and ImageMagick
