@@ -117,6 +117,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/0012-Ignore-broken-and-non-applicable-tests.patch
+	"${FILESDIR}"/1.44.0-libressl.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
