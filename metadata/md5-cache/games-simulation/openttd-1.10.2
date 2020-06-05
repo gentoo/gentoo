@@ -3,7 +3,7 @@ DEFINED_PHASES=compile configure install postinst postrm preinst prepare
 DEPEND=!dedicated? ( media-libs/libsdl2[sound,video] icu? ( dev-libs/icu-layoutex dev-libs/icu-le-hb >=dev-libs/icu-58.1:= ) truetype? ( media-libs/fontconfig media-libs/freetype:2 sys-libs/zlib:= ) ) lzma? ( app-arch/xz-utils ) lzo? ( dev-libs/lzo:2 ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng:0 sys-libs/zlib:= ) zlib? ( sys-libs/zlib:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=OpenTTD is a clone of Transport Tycoon Deluxe
 EAPI=7
-HOMEPAGE=http://www.openttd.org/
+HOMEPAGE=https://www.openttd.org/
 IUSE=aplaymidi debug dedicated iconv icu +lzma lzo +openmedia +png cpu_flags_x86_sse +timidity +truetype zlib
 KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://proxy.binaries.openttd.org/openttd-releases/1.10.2/openttd-1.10.2-source.tar.xz
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=4807b0bbc97a22f1acb7ece661d971f1
+_md5_=9ee6c67e66f0bfd041198be1dad3fc24

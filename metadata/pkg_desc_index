@@ -2071,7 +2071,6 @@ app-misc/ca-certificates 20190110.3.43 20190110.3.53 20200601.3.53: Common CA Ce
 app-misc/cadubi 1.3: An application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1-r1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 3.4 3.5 3.6: Enhanced C version of Carbon relay, aggregator and rewriter
-app-misc/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 app-misc/cbrpager 0.9.22: a simple comic book pager
 app-misc/cbview 0.06-r1: viewer/converter for CBR/CBZ comic book archives
 app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
@@ -10260,6 +10259,7 @@ dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20190617 20191125 20200330: the best variant of the Yacc parser generator
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.2.0 0.3.0: Generates an ebuild for a package using the in-tree eclasses.
+dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/cargo-tree 0.29.0-r1: Cargo subcommand that visualizes crate dependency graph in a tree-like format
 dev-util/catalyst 3.0.9 3.0.12 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
