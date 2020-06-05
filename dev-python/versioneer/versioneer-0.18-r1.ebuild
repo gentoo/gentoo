@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -31,8 +32,8 @@ PATCHES=(
 python_test() {
 	esetup.py make_versioneer
 
-	git config --global user.email "you@example.com"
-	git config --global user.name "Your Name"
+	git config --global user.email "you@example.com" || die
+	git config --global user.name "Your Name" || die
 
 	${PYTHON} test/git/test_git.py -v || die
 }
