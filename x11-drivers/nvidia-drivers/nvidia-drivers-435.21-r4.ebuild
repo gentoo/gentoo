@@ -5,9 +5,6 @@ EAPI=7
 inherit desktop flag-o-matic linux-info linux-mod multilib-minimal \
 	nvidia-driver portability systemd toolchain-funcs unpacker udev
 
-DESCRIPTION="NVIDIA Accelerated Graphics Driver"
-HOMEPAGE="https://www.nvidia.com/"
-
 AMD64_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86_64-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 ARM_NV_PACKAGE="NVIDIA-Linux-armv7l-gnueabihf-${PV}"

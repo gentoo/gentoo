@@ -25,9 +25,6 @@ DEPEND="
 "
 
 DOCS="AUTHORS BUGS ChangeLog README"
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.13-fno-common.patch
-)
 
 src_prepare() {
 	default

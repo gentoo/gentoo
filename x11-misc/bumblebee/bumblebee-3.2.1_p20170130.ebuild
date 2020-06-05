@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="develop"
 	KEYWORDS=""
 else
-	COMMIT="c322bd849aabe6e48b4304b8d13cc4aadc36a30d"
+	COMMIT="d469a32fc0dfef5b3725c7a5331be2d04b870594"
 	SRC_URI="https://github.com/Bumblebee-Project/Bumblebee/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 
