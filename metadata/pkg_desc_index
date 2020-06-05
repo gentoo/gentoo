@@ -5340,7 +5340,7 @@ dev-libs/xmlsec 1.2.29: Command line tool for signing, verifying, encrypting and
 dev-libs/xxhash 0.6.5 0.7.1 0.7.3: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1 2.1.0-r2: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
-dev-libs/zlog 1.2.14: A reliable, thread safe, clear-model, pure C logging library.
+dev-libs/zlog 1.2.14-r1: A reliable, thread safe, clear-model, pure C logging library.
 dev-libs/zookeeper-c 3.4.8 3.4.9 3.4.10: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.69-r1: Lightweight library for extracting data from files archived in a single zip file
