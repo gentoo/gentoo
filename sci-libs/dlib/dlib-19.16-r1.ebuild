@@ -15,7 +15,7 @@ LICENSE="Boost-1.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cblas cuda debug examples gif jpeg lapack mkl png python sqlite test X cpu_flags_x86_avx cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( png ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
 
