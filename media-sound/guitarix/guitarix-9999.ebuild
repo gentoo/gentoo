@@ -12,6 +12,7 @@ MY_P="${PN}2-${PV}"
 DESCRIPTION="Virtual guitar amplifier for Linux"
 HOMEPAGE="http://guitarix.org/"
 EGIT_REPO_URI="https://git.code.sf.net/p/guitarix/git"
+S="${WORKDIR}/${P}/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,15 +22,14 @@ REQUIRED_USE="|| ( lv2 standalone )"
 
 COMMON_DEPEND="dev-cpp/eigen:3
 	dev-cpp/glibmm:2
-	dev-cpp/gtkmm:2.4
-	dev-lang/sassc
+	dev-cpp/gtkmm:3.0
 	dev-libs/glib:2
 	>=media-libs/libsndfile-1.0.17
 	>=media-libs/zita-convolver-3:=
 	media-libs/zita-resampler
 	>=net-misc/curl-7.26.0
 	>=sci-libs/fftw-3.1.2:3.0=
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	lv2? ( media-libs/lv2 )
 	standalone? (
 		dev-libs/boost:=
@@ -40,20 +40,21 @@ COMMON_DEPEND="dev-cpp/eigen:3
 		zeroconf? ( net-dns/avahi )
 	)
 "
-# clearlooks gtk engine and roboto fonts are required for correct ui rendering
+# roboto fonts are required for correct ui rendering
 RDEPEND="${COMMON_DEPEND}
-	x11-themes/gtk-engines
 	standalone? (
 		media-fonts/roboto
 	)
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
+	dev-lang/sassc
 	virtual/pkgconfig
-	nls? ( dev-util/intltool )
+	nls? (
+		dev-util/intltool
+		sys-devel/gettext
+	)
 "
-
-S="${WORKDIR}/${P}/trunk"
 
 DOCS=( changelog README )
 
