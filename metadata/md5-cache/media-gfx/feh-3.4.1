@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm setup
+DEPEND=media-libs/imlib2[X] >=media-libs/libpng-1.2:0= x11-libs/libX11 curl? ( net-misc/curl ) exif? ( media-libs/libexif ) xinerama? ( x11-libs/libXinerama ) x11-base/xorg-proto x11-libs/libXt test? ( >=dev-lang/perl-5.10 dev-perl/Test-Command media-libs/imlib2[gif,jpeg,png] )
+DESCRIPTION=A fast, lightweight imageviewer using imlib2
+EAPI=7
+HOMEPAGE=https://feh.finalrewind.org/
+IUSE=debug curl exif test xinerama
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86
+LICENSE=feh
+RDEPEND=media-libs/imlib2[X] >=media-libs/libpng-1.2:0= x11-libs/libX11 curl? ( net-misc/curl ) exif? ( media-libs/libexif ) xinerama? ( x11-libs/libXinerama ) virtual/jpeg:0
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://feh.finalrewind.org/feh-3.4.1.tar.bz2
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ca6cf1d81bbf99bb49bda17da702026b
