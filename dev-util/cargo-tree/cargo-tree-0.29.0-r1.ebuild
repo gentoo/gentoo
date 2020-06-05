@@ -57,7 +57,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 BDEPEND=""
-RDEPEND=""
+RDEPEND="<virtual/rust-1.44.0"
 DEPEND=""
 
 QA_FLAGS_IGNORED="usr/bin/cargo-tree"
