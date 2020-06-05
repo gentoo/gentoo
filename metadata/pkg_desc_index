@@ -16058,7 +16058,7 @@ sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
 sci-libs/scikits_learn 0.19.0-r1 0.20.2 0.20.4 0.22.2_p1: Machine learning library for Python
 sci-libs/scikits_optimization 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
-sci-libs/scipy 1.1.0 1.4.1 9999: Scientific algorithms library for Python
+sci-libs/scipy 1.1.0 1.4.1: Scientific algorithms library for Python
 sci-libs/scipy-python2 1.1.0 1.2.3: Scientific algorithms library for Python (py2 version)
 sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.5.0: Library for manipulating ESRI Shapefiles
@@ -16583,7 +16583,7 @@ sys-apps/elivepatch-server 0.1 0.2 9999: Live patch building server with RESTFul
 sys-apps/epoch 1.2.1 1.2.2 1.3.0 9999: An init system, a /sbin/init replacement; designed for simplicity
 sys-apps/etckeeper 1.18.14: A collection of tools to let /etc be stored in a repository
 sys-apps/ethq 0.5.0 0.6.1 9999: Ethernet NIC Queue stats viewer
-sys-apps/ethtool 4.19 5.4 5.6-r1: Utility for examining and tuning ethernet-based network interfaces
+sys-apps/ethtool 5.4 5.6-r1 5.7: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/exa 0.9.0: A modern replacement for 'ls' written in Rust
 sys-apps/fakechroot 2.19 2.20.1: Provide a faked chroot environment without requiring root privileges
 sys-apps/fakeroot 1.22 1.23 1.24: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
@@ -16880,7 +16880,7 @@ sys-block/blocks 0.1.4_pre131210-r1 9999: Conversion tools for block devices
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/devio 1.2: correctly read (or write) a region of a block device
-sys-block/di 4.47 4.47.2 4.47.3: Disk Information Utility
+sys-block/di 4.47 4.47.3 4.48: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.2: Utilities to detect broken or counterfeit flash storage
