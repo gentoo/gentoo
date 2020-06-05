@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit autotools python-r1
@@ -32,6 +32,8 @@ BDEPEND="
 	test? ( dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/tappy[${PYTHON_USEDEP}] )
 "
+
+PATCHES=( "${FILESDIR}/${P}-py39.patch" )
 
 python_check_deps() {
 	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
