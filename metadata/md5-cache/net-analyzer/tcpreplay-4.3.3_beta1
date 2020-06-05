@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare test
+DEPEND=>=sys-devel/autogen-5.18.4[libopts] dev-libs/libdnet >=net-libs/libpcap-0.9 tcpdump? ( net-analyzer/tcpdump ) pcapnav? ( net-libs/libpcapnav )
+DESCRIPTION=utilities for editing and replaying previously captured network traffic
+EAPI=7
+HOMEPAGE=http://tcpreplay.appneta.com/ https://github.com/appneta/tcpreplay
+IUSE=debug pcapnav +tcpdump
+KEYWORDS=~amd64 ~arm ~sparc ~x86
+LICENSE=BSD GPL-3
+RDEPEND=>=sys-devel/autogen-5.18.4[libopts] dev-libs/libdnet >=net-libs/libpcap-0.9 tcpdump? ( net-analyzer/tcpdump ) pcapnav? ( net-libs/libpcapnav )
+SLOT=0
+SRC_URI=https://github.com/appneta/tcpreplay/releases/download/v4.3.3-beta1/tcpreplay-4.3.3-beta1.tar.xz -> tcpreplay-4.3.3_beta1.tar.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=ee8e796e5b19235082e501dc7ea275d5
