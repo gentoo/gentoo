@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1
 
 MY_PN=tap.py
@@ -23,7 +23,7 @@ RDEPEND="
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)"
-DEPEND="
+BDEPEND="
 	dev-python/Babel[${PYTHON_USEDEP}]
 	test? (
 		dev-python/more-itertools[${PYTHON_USEDEP}]
