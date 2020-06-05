@@ -4,13 +4,13 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit check-reqs distutils-r1
 
 #RESTRICT="test" # requires running MongoDB server
 
 DESCRIPTION="Flask support for MongoDB and with WTF model forms"
 HOMEPAGE="https://pypi.org/project/flask-mongoengine/"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/MongoEngine/${PN}/archive/v${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -33,6 +33,23 @@ BDEPEND="${RDEPEND}
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
+reqcheck() {
+	if use test; then
+		# During the tests, database size reaches 1.5G.
+		local CHECKREQS_DISK_BUILD=1536M
+
+		check-reqs_${1}
+	fi
+}
+
+pkg_pretend() {
+	reqcheck pkg_pretend
+}
+
+pkg_setup() {
+	reqcheck pkg_setup
+}
+
 python_prepare_all() {
 	# fix distutils sandbox violation due to missing test-deps in normal build
 	#sed -i '/test_requirements/d' setup.py || die
@@ -46,9 +63,11 @@ python_prepare_all() {
 python_test() {
 	# Yes, we need TCP/IP for that...
 	local DB_IP=127.0.0.1
-	local DB_PORT=27000
+	local DB_PORT=27017
 
 	export DB_IP DB_PORT
+	
+	export HOST=127.0.0.1
 
 	local dbpath=${TMPDIR}/mongo.db
 	local logpath=${TMPDIR}/mongod.log
@@ -64,17 +83,18 @@ python_test() {
 
 		LC_ALL=C \
 		mongod --dbpath "${dbpath}" --nojournal \
-			--bind_ip ${DB_IP} --port ${DB_PORT} \
+			--bind_ip ${DB_IP} \
+			--port ${DB_PORT} \
 			--unixSocketPrefix "${TMPDIR}" \
 			--logpath "${logpath}" --fork \
 		&& sleep 2
-
 		# Now we need to check if the server actually started...
 		if [[ ${?} -eq 0 && -S "${TMPDIR}"/mongodb-${DB_PORT}.sock ]]; then
+			ebegin "Started on port ${DB_PORT}"
 			# yay!
 			eend 0
 			break
-		elif grep -q 'Address already in use' "${logpath}"; then
+		elif grep -q 'Address already in use' "/tmp/mongo.log"; then
 			# ay, someone took our port!
 			eend 1
 			: $(( DB_PORT += 1 ))
@@ -83,8 +103,9 @@ python_test() {
 			eend 1
 			eerror "Unable to start mongod for tests. See the server log:"
 			eerror "	${logpath}"
-			die "Unable to start mongod for tests."
+			#die "Unable to start mongod for tests."
 		fi
+		break
 	done
 
 	local failed
@@ -93,7 +114,20 @@ python_test() {
 	#if [[ "${EPYTHON}" == python3* ]]; then
 	#	2to3 --no-diffs -w test
 	#fi
-	DB_PORT2=$(( DB_PORT + 1 )) DB_PORT3=$(( DB_PORT + 2 )) esetup.py test || failed=1
+#	sed -i 's/27017/27000/g' tests/*.py
+	sed -i 's/localhost/127.0.0.1/g' tests/*.py
+#	sed -i 's/27017/27000/g' flask_mongoengine/*.py
+	#echo "Sleeping 20seconds."
+	#sleep 20
+	#esetup.py nosetests --tests tests/test_connection.py:ConnectionTestCase.test_host_as_uri_string
+	#DB_PORT2=$(( DB_PORT + 1 )) DB_PORT3=$(( DB_PORT + 2 )) esetup.py nosetests || failed=1
+	ifconfig -a
+	ps aux
+	ping -c 2 127.0.0.1
+	nc -vz 127.0.0.1 27017
+	DB_PORT2=$(( DB_PORT + 1 )) DB_PORT3=$(( DB_PORT + 2 )) esetup.py nosetests --tests tests/test_connection.py:ConnectionTestCase.test_host_as_uri_string || failed=1
+
+	ps aux
 
 	mongod --dbpath "${dbpath}" --shutdown || die
 
