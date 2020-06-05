@@ -6,6 +6,10 @@
 
 # SECTION: Unmask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
+# sci-libs/mkl works on amd64
+-mkl
+
 # Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 works on amd64
 -d3d9
