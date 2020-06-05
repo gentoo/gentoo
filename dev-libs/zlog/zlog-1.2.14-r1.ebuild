@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit toolchain-funcs eutils
 
 DESCRIPTION="A reliable, thread safe, clear-model, pure C logging library."
 HOMEPAGE="http://hardysimpson.github.io/zlog/"
@@ -16,6 +16,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 src_compile() {
+	epatch "${FILESDIR}/zlog_no_static_lib.patch" || die
 	emake CC="$(tc-getCC)"
 }
 
