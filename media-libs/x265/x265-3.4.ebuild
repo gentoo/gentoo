@@ -19,7 +19,7 @@ HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/192"
-IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
+IUSE="+10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_altivec numa pic power8 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
@@ -90,10 +90,8 @@ x265_variant_src_configure() {
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
-			if [[ ${ABI} = ppc64 ]] ; then
-				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
-				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
-			fi
+			# disable altivec for 12bit build #607802#c5
+			[[ ${ABI} = ppc* ]] && mycmakeargs+=( -DENABLE_ALTIVEC=OFF )
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -109,10 +107,8 @@ x265_variant_src_configure() {
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
-			if [[ ${ABI} = ppc64 ]] ; then
-				# https://bugs.gentoo.org/show_bug.cgi?id=607802#c5
-				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF -DENABLE_ALTIVEC=OFF )
-			fi
+			# disable altivec for 10bit build #607802#c5
+			[[ ${ABI} = ppc* ]] && mycmakeargs+=( -DENABLE_ALTIVEC=OFF )
 			;;
 		"main")
 			if (( "${#MULTIBUILD_VARIANTS[@]}" > 1 )) ; then
@@ -129,6 +125,12 @@ x265_variant_src_configure() {
 					-DLINKED_10BIT=$(usex 10bit)
 					-DLINKED_12BIT=$(usex 12bit)
 				)
+				if [[ ${ABI} = ppc* ]] ; then
+					myabicmakeargs+=(
+						-DCPU_POWER8=$(usex power8 ON OFF)
+						-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_altivec ON OFF)
+					)
+				fi
 			fi
 			;;
 		*)
@@ -144,8 +146,6 @@ multilib_src_configure() {
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
 		-DENABLE_PIC=ON
 		-DENABLE_LIBNUMA=$(usex numa ON OFF)
-		-DCPU_POWER8=$(usex power8 ON OFF)
-		-DENABLE_ALTIVEC=$(usex power8 ON OFF)
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 
