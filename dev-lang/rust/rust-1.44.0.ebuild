@@ -106,11 +106,14 @@ QA_FLAGS_IGNORED="
 	usr/lib/rustlib/.*/lib/lib.*.so
 "
 
+QA_SONAME="
+	usr/lib.*/lib.*.so
+	usr/lib.*/librustc_macros.*.s
+"
+
 # tests need a bit more work, currently they are causing multiple
 # re-compilations and somewhat fragile.
 RESTRICT="test"
-
-QA_SONAME="usr/lib.*/librustc_macros.*.so"
 
 PATCHES=(
 	"${FILESDIR}"/0012-Ignore-broken-and-non-applicable-tests.patch
