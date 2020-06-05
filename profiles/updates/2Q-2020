@@ -7,3 +7,4 @@ move kde-misc/gmailfeed kde-misc/ultimate-gmail-feed
 move dev-vcs/cli dev-util/github-cli
 move mail-filter/pypolicyd-spf mail-filter/spf-engine
 move dev-python/mimeparse dev-python/python-mimeparse
+move app-misc/cargo-license dev-util/cargo-license
