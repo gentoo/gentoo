@@ -8807,7 +8807,7 @@ dev-python/symengine 0.5.1-r1: Python wrappers to the symengine C++ library
 dev-python/sympy 1.5.1-r1: Computer Algebra System in pure Python
 dev-python/tabulate 0.8.6: Pretty-print tabular data
 dev-python/tagpy 2018.1-r1: Python Bindings for TagLib
-dev-python/tappy 2.4-r1 3.0: Test Anything Protocol (TAP) tools
+dev-python/tappy 2.4-r1 2.6.2 3.0: Test Anything Protocol (TAP) tools
 dev-python/taskflow 3.5.0 4.1.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tblib 1.6.0: Traceback fiddling library for Python
 dev-python/tempita 0.5.3-r2: A very small text templating language
@@ -15911,7 +15911,7 @@ sci-libs/dcmtk 3.6.3 3.6.4-r1 3.6.5: The DICOM Toolkit
 sci-libs/dealii 9.1.1 9.2.0 9999: Solving partial differential equations with the finite element method
 sci-libs/deap 0.9.1 1.0.0 1.0.1: Novel evolutionary computation framework
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
-sci-libs/dlib 19.4 19.7 19.9 19.16: Numerical and networking C++ library
+sci-libs/dlib 19.9 19.16-r1: Numerical and networking C++ library
 sci-libs/dmlc-core 0_p20170719: Common bricks library for building distributed machine learning.
 sci-libs/dsdp 5.8-r3: Software for interior-point for semidefinite programming
 sci-libs/eccodes 2.16.0: A set of encoding/decoding APIs and tools for WMO GRIB, BUFR, and GTS messages
