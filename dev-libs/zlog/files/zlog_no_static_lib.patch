@@ -1,0 +1,59 @@
+--- src/makefile.orig	2020-06-05 15:29:43.926423440 +0200
++++ src/makefile	2020-06-05 15:30:26.266501492 +0200
+@@ -43,8 +43,6 @@
+ DYLIB_MAJOR_NAME=$(LIBNAME).$(DYLIBSUFFIX).$(ZLOG_MAJOR)
+ DYLIBNAME=$(LIBNAME).$(DYLIBSUFFIX)
+ DYLIB_MAKE_CMD=$(CC) -shared -Wl,-soname,$(DYLIB_MINOR_NAME) -o $(DYLIBNAME) $(LDFLAGS)
+-STLIBNAME=$(LIBNAME).$(STLIBSUFFIX)
+-STLIB_MAKE_CMD=ar rcs $(STLIBNAME)
+ 
+ # Installation related variables
+ PREFIX?=/usr/local
+@@ -78,7 +76,6 @@
+   # not to mention dynamic linker .a preference...
+   DYLIB_MAKE_CMD=$(CC) -shared -Wl,-G,-b64 -maix64 -pthread -o $(DYLIBNAME) $(LDFLAGS)
+   REAL_CFLAGS+= -maix64
+-  STLIB_MAKE_CMD=OBJECT_MODE=64 ar rcs $(STLIBNAME) $(DYLIB_MAJOR_NAME)
+ endif
+ 
+ all: $(DYLIBNAME) $(BINS)
+@@ -139,21 +136,17 @@
+ 	cp -f $(DYLIBNAME) $(DYLIB_MAJOR_NAME)
+ 	cp -f $(DYLIBNAME) $(DYLIB_MINOR_NAME)
+ 
+-$(STLIBNAME): $(OBJ)
+-	$(STLIB_MAKE_CMD) $(OBJ)
+-
+ dynamic: $(DYLIBNAME)
+-static: $(STLIBNAME)
+ 
+ # Binaries:
+-zlog-chk-conf: zlog-chk-conf.o $(STLIBNAME) $(DYLIBNAME)
++zlog-chk-conf: zlog-chk-conf.o $(DYLIBNAME)
+ 	$(CC) -o $@ zlog-chk-conf.o -L. -lzlog $(REAL_LDFLAGS)
+ 
+ .c.o:
+ 	$(CC) -std=c99 -pedantic -c $(REAL_CFLAGS) $<
+ 
+ clean:
+-	rm -rf $(DYLIBNAME) $(STLIBNAME) $(BINS) *.o *.gcda *.gcno *.gcov $(DYLIB_MINOR_NAME) $(DYLIB_MAJOR_NAME)
++	rm -rf $(DYLIBNAME) $(BINS) *.o *.gcda *.gcno *.gcov $(DYLIB_MINOR_NAME) $(DYLIB_MAJOR_NAME)
+ 
+ dep:
+ 	$(CC) -MM *.c
+@@ -171,14 +164,13 @@
+ 
+ INSTALL?= cp -a
+ 
+-install: $(DYLIBNAME) $(STLIBNAME)
++install: $(DYLIBNAME)
+ 	mkdir -p $(INSTALL_INCLUDE_PATH) $(INSTALL_LIBRARY_PATH) $(INSTALL_BINARY_PATH)
+ 	$(INSTALL) zlog.h $(INSTALL_INCLUDE_PATH)
+ 	$(INSTALL) zlog-chk-conf $(INSTALL_BINARY_PATH)
+ 	$(INSTALL) $(DYLIBNAME) $(INSTALL_LIBRARY_PATH)/$(DYLIB_MINOR_NAME)
+ 	cd $(INSTALL_LIBRARY_PATH) && ln -sf $(DYLIB_MINOR_NAME) $(DYLIB_MAJOR_NAME)
+ 	cd $(INSTALL_LIBRARY_PATH) && ln -sf $(DYLIB_MAJOR_NAME) $(DYLIBNAME)
+-	$(INSTALL) $(STLIBNAME) $(INSTALL_LIBRARY_PATH)
+ 
+ 32bit:
+ 	@echo ""
