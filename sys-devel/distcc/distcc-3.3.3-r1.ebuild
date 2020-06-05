@@ -96,7 +96,7 @@ src_test() {
 
 src_install() {
 	# override GZIP_BIN to stop it from compressing manpages
-	emake DESTDIR="${D}" GZIP_BIN=false install
+	emake -j1 DESTDIR="${D}" GZIP_BIN=false install
 	python_optimize
 
 	newinitd "${FILESDIR}/distccd.initd" distccd
