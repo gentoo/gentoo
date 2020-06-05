@@ -1,0 +1,43 @@
+From fa1cd0004e0d3267a1217ada46e53df38824da2d Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Thu, 4 Jun 2020 21:49:37 +0100
+Subject: Fix installing the embedded config as a file.
+
+---
+ src/if-options.c   | 4 ++--
+ src/privsep-root.c | 4 ++++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/if-options.c b/src/if-options.c
+index 212e71d8..3dde04bf 100644
+--- a/src/if-options.c
++++ b/src/if-options.c
+@@ -2366,8 +2366,8 @@ read_config(struct dhcpcd_ctx *ctx,
+ 			return ifo;
+ 		}
+ 		if (buf[buflen - 1] != '\0') {
+-			if (buflen < sizeof(buf) - 1)
+-				bulen++;
++			if ((size_t)buflen < sizeof(buf) - 1)
++				buflen++;
+ 			buf[buflen - 1] = '\0';
+ 		}
+ #else
+diff --git a/src/privsep-root.c b/src/privsep-root.c
+index fdf43856..512dfcc0 100644
+--- a/src/privsep-root.c
++++ b/src/privsep-root.c
+@@ -297,6 +297,10 @@ ps_root_validpath(const struct dhcpcd_ctx *ctx, uint16_t cmd, const char *path)
+ 		return false;
+ 
+ 	if (cmd == PS_READFILE) {
++#ifdef EMBEDDED_CONFIG
++		if (strcmp(ctx->cffile, EMBEDDED_CONFIG) == 0)
++			return true;
++#endif
+ 		if (strcmp(ctx->cffile, path) == 0)
+ 			return true;
+ 	}
+-- 
+cgit v1.2.3
+
