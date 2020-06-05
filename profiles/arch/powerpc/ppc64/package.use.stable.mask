@@ -18,9 +18,8 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-04)
-# dev-python/pygtk is broken, bug #716294; Bugs #706464, #706500, #710160
+# dev-python/pygtk is broken, bug #716294; Bugs #706500, #710160
 # Stable-mask all revdeps, all of them are pending cleanup already.
-dev-python/matplotlib gtk2
 media-gfx/gimp python
 sys-power/nut gui
 x11-libs/vte:0 python
