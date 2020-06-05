@@ -42,10 +42,14 @@ REQUIRED_USE="
 
 RDEPEND="
 	app-arch/lz4
+	dev-cpp/eigen
+	dev-db/sqlite
+	dev-libs/double-conversion:0=
 	dev-libs/expat
 	dev-libs/jsoncpp:=
 	dev-libs/libxml2:2
 	dev-libs/pugixml
+	media-libs/glew:0=
 	>=media-libs/freetype-2.5.4
 	>=media-libs/libharu-2.3.0-r2
 	media-libs/libpng:0=
