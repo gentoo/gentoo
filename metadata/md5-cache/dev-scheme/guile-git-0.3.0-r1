@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare test
+DEPEND=>=dev-scheme/guile-2.0.11:= dev-scheme/bytestructures >=dev-libs/libgit2-1:=
+DESCRIPTION=Guile bindings of git
+EAPI=7
+HOMEPAGE=https://gitlab.com/guile-git/guile-git
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3+
+RDEPEND=>=dev-scheme/guile-2.0.11:= dev-scheme/bytestructures >=dev-libs/libgit2-1:=
+RESTRICT=test
+SLOT=0
+SRC_URI=https://gitlab.com/guile-git/guile-git/uploads/4c563d8e7e1ff84396abe8ca7011bcaf/guile-git-0.3.0.tar.gz
+_md5_=5a9d82f4caed12054739cde488abc192
