@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
-inherit cmake-utils cuda distutils-r1
+inherit cmake cuda distutils-r1
 
 DESCRIPTION="Numerical and networking C++ library"
 HOMEPAGE="http://dlib.net/"
@@ -14,34 +14,31 @@ SRC_URI="https://github.com/davisking/dlib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Boost-1.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="cblas cuda debug examples gif jpeg lapack mkl png python sqlite static-libs test X cpu_flags_x86_avx cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
+IUSE="cblas cuda debug examples gif jpeg lapack mkl png python sqlite test X cpu_flags_x86_avx cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
+REQUIRED_USE="python? ( png ${PYTHON_REQUIRED_USE} )"
+
 RESTRICT="!test? ( test )"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # doc needs a bunch of deps not in portage
-
 RDEPEND="
-	cblas? ( virtual/cblas:= )
+	cblas? ( virtual/cblas )
 	cuda? ( dev-libs/cudnn:= )
 	gif? ( media-libs/giflib:= )
 	jpeg? ( virtual/jpeg:0= )
-	lapack? ( virtual/lapack:= )
-	mkl? ( sci-libs/mkl:= )
+	lapack? ( virtual/lapack )
+	mkl? ( sci-libs/mkl )
 	png? ( media-libs/libpng:0= )
 	python? ( ${PYTHON_DEPS} )
-	sqlite? ( dev-db/sqlite:3= )
-	X? ( x11-libs/libX11:= )"
-DEPEND="${RDEPEND}
-	python? (
-		dev-python/setuptools[${PYTHON_USEDEP}]
-		test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-	)"
+	sqlite? ( dev-db/sqlite:3 )
+	X? ( x11-libs/libX11 )"
+DEPEND="${RDEPEND}"
+BDEPEND="python? ( test? ( dev-python/pytest[${PYTHON_USEDEP}] ) )"
 
 DOCS=( docs/README.txt )
 
 src_prepare() {
 	use cuda && cuda_src_prepare
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	use python && distutils-r1_src_prepare
 }
 
@@ -76,12 +73,12 @@ src_configure() {
 		-DUSE_SSE2_INSTRUCTIONS="$(usex cpu_flags_x86_sse2)"
 		-DUSE_SSE4_INSTRUCTIONS="$(usex cpu_flags_x86_sse4_1)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 	use python && distutils-r1_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	use python && distutils-r1_src_compile
 }
 
@@ -92,16 +89,16 @@ python_test() {
 src_test() {
 	mkdir "${BUILD_DIR}"/dlib/test || die
 	pushd "${BUILD_DIR}"/dlib/test > /dev/null || die
-	cmake "${S}"/dlib/test && emake
+	cmake "${S}"/dlib/test || die
+	emake
 	./dtest --runall || die
 	popd > /dev/null || die
 	use python && distutils-r1_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use python && distutils-r1_src_install
-	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 	if use examples; then
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}

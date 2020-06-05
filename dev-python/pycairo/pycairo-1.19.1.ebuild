@@ -28,6 +28,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-py39.patch" )
+
 distutils_enable_sphinx docs \
 	dev-python/sphinx_rtd_theme
 distutils_enable_tests setup.py
