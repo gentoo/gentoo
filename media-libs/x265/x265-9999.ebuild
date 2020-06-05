@@ -86,7 +86,7 @@ x265_variant_src_configure() {
 			if [[ ${ABI} = x86 ]] ; then
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
-			if [[ ${ABI} = arm ]] ; then
+			if [[ ${ABI} = arm* ]] ; then
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
@@ -103,7 +103,7 @@ x265_variant_src_configure() {
 			if [[ ${ABI} = x86 ]] ; then
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
-			if [[ ${ABI} = arm ]] ; then
+			if [[ ${ABI} = arm* ]] ; then
 				# 589674
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
