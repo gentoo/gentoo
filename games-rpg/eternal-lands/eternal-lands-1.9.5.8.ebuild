@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,11 +18,11 @@ RDEPEND="app-arch/unzip
 	media-libs/cal3d[-16bit-indices]
 	media-libs/freealut
 	media-libs/libpng:0=
-	media-libs/libsdl[X,opengl,video]
+	media-libs/libsdl2[X,opengl,video]
 	media-libs/libvorbis
 	media-libs/openal
-	media-libs/sdl-image
-	media-libs/sdl-net
+	media-libs/sdl2-image
+	media-libs/sdl2-net
 	sys-libs/zlib[minizip]
 	virtual/glu
 	virtual/opengl
@@ -42,7 +42,7 @@ BDEPEND="${DEPEND}
 S="${WORKDIR}/Eternal-Lands-${PV}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.9.5.3-build.patch"
+	"${FILESDIR}/${PN}-1.9.5.8-build.patch"
 	"${FILESDIR}/${PN}-1.9.5.3-minizip.patch"
 )
 
@@ -66,7 +66,7 @@ src_compile() {
 
 src_install() {
 	dobin el.linux.bin
-	newbin "${FILESDIR}"/el-wrapper el
+	newbin "${FILESDIR}"/el-wrapper-1.9.5.8 el
 	newicon -s 48 elc.png ${PN}.png
 	make_desktop_entry el "Eternal Lands"
 

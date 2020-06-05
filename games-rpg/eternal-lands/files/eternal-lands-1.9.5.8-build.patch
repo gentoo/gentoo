@@ -1,7 +1,7 @@
-From ef13ae006609e51eaddbcdf0495f44cfde797e26 Mon Sep 17 00:00:00 2001
+From 0f93097a58d78e0ba9d51d48f56b470047b27210 Mon Sep 17 00:00:00 2001
 From: Stefan Strogin <steils@gentoo.org>
-Date: Tue, 14 May 2019 20:34:47 +0300
-Subject: [PATCH 1/2] Respect {C,CXX,LD}FLAGS
+Date: Fri, 5 Jun 2020 07:19:47 +0300
+Subject: [PATCH] Respect {C,CXX,LD}FLAGS
 
 Upstream-Status: Inappropriate [Gentoo-specific]
 Signed-off-by: Stefan Strogin <steils@gentoo.org>
@@ -10,7 +10,7 @@ Signed-off-by: Stefan Strogin <steils@gentoo.org>
  1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/Makefile.linux b/Makefile.linux
-index c57aeeeb..a0839c5c 100644
+index eb57e0e..c9bbc73 100644
 --- a/Makefile.linux
 +++ b/Makefile.linux
 @@ -17,11 +17,11 @@ OPTIONS = -DLINUX -DELC $(foreach FEATURE, $(FEATURES), -D$(FEATURE)) -D_7ZIP_ST
@@ -18,17 +18,17 @@ index c57aeeeb..a0839c5c 100644
  	$(shell pkg-config zlib --cflags)
  
 -CFLAGS=$(PLATFORM) $(CWARN) -O0 -ggdb -pipe $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
-+CFLAGS += $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
++CFLAGS += -pipe $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
  
 -CXXFLAGS=$(PLATFORM) $(CXXWARN) -O0 -ggdb -pipe $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
 +CXXFLAGS += $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
  
--LDFLAGS=$(shell pkg-config sdl --libs) \
-+LDFLAGS += $(shell pkg-config sdl --libs) \
+-LDFLAGS=$(shell pkg-config sdl2 --libs) \
++LDFLAGS += $(shell pkg-config sdl2 --libs) \
  	$(shell pkg-config libxml-2.0 --libs) \
- 	$(shell pkg-config SDL_net --libs) \
- 	$(shell pkg-config SDL_image --libs) \
-@@ -111,7 +111,7 @@ HEADER_DIRS = . books eye_candy io pawn fsaa engine xz
+ 	$(shell pkg-config SDL2_net --libs) \
+ 	$(shell pkg-config SDL2_image --libs) \
+@@ -112,7 +112,7 @@ HEADER_DIRS = . books eye_candy io pawn fsaa engine xz
  DEP_FILES=$(foreach OBJ, $(COBJS), .deps/$(OBJ).P) $(foreach OBJ, $(CXXOBJS), .deps/$(OBJ).P)
  #(shell echo $OBJ |sed s/\.o/\.P/))
  
@@ -37,7 +37,7 @@ index c57aeeeb..a0839c5c 100644
  
  ifndef CC
  CC=gcc
-@@ -127,8 +127,8 @@ all: $(EXE)
+@@ -128,8 +128,8 @@ all: $(EXE)
  
  # the compile targets
  $(EXE): $(OBJS)
@@ -48,7 +48,7 @@ index c57aeeeb..a0839c5c 100644
  
  #recompile on Makefile or conf change
  #.depend $(OBJS): Makefile.linux make.conf
-@@ -136,14 +136,14 @@ $(EXE): $(OBJS)
+@@ -137,14 +137,14 @@ $(EXE): $(OBJS)
  DEPS_MAGIC := $(shell mkdir .deps .deps/io .deps/shader .deps/eye_candy .deps/exceptions .deps/xz .deps/xml .deps/fsaa .deps/engine > /dev/null 2>&1 || :)
  
  $(COBJS): %.o: %.c Makefile.linux make.conf
@@ -66,5 +66,5 @@ index c57aeeeb..a0839c5c 100644
  		mv ".deps/$@.pp" ".deps/$@.P"; \
  	else rm -f ".deps/$@.pp"; exit 1; \
 -- 
-2.21.0
+2.27.0
 

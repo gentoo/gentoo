@@ -18,8 +18,8 @@ if [[ ! -e $elc ]] || [[ ! -e $datadir ]] || [[ ! -e $elc/servers.lst ]] ||
 
 		tmpdir="`mktemp -d /tmp/eternal-lands.XXXXXXXXXX`"
 		trap "rm -r $tmpdir" EXIT
-		wget https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.2/el_195_1_data_files.zip -P $tmpdir
-		unzip $tmpdir/el_195_1_data_files.zip -d $elc
+		wget https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.7/el_195_p7_data_files.zip -P $tmpdir
+		unzip $tmpdir/el_195_p7_data_files.zip -d $elc
 
 		echo
 		echo "The game sound and music are optional, you can download \
