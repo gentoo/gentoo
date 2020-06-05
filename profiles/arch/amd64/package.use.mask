@@ -259,10 +259,6 @@ sys-apps/hwloc -gl
 dev-python/pypy-exe cpu_flags_x86_sse2
 dev-python/pypy3-exe cpu_flags_x86_sse2
 
-# Christoph Junghans <junghans@gentoo.org> (2012-12-26)
-# cuda works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -mkl
-
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Unmask here, as it's masked in base.
 net-libs/gnutls -dane

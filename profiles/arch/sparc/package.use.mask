@@ -479,10 +479,6 @@ sys-cluster/openmpi numa
 # missing keywords on needed plugins
 media-plugins/gst-plugins-meta dts dv libvisual modplug vcd wavpack
 
-# Justin Lecher <jlec@gentoo.org> (2010-08-13)
-# MKL not available on this arch
-media-gfx/povray mkl
-
 # Ben de Groot <yngwin@gentoo.org> (2009-11-11)
 # Requires qthelp, which requires qtwebkit, bug 292838
 dev-libs/uriparser doc

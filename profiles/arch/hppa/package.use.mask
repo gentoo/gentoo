@@ -275,10 +275,6 @@ app-office/lyx gnumeric
 # Needs Java (bug #355353)
 app-text/texlive pdfannotextractor
 
-# Justin Lecher <jlec@gentoo.org> (2010-08-13)
-# MKL not available on this arch
-media-gfx/povray mkl
-
 # Pacho Ramos <pacho@gentoo.org> (2010-07-11)
 # Mask due bug #324511, this will be general once needed by more packages.
 net-im/pidgin gstreamer
