@@ -55,13 +55,15 @@ src_configure() {
 		-DENABLE_LINK=$(usex link)
 		-DENABLE_LIRC=$(usex lirc)
 		-DENABLE_NLS=$(usex nls)
-		-DENABLE_OPENAL=$(usex openal)
 		-DENABLE_SDL=$(usex sdl)
 		-DENABLE_WX=$(usex wxwidgets)
 		-DENABLE_ASM_CORE=$(usex x86)
 		-DENABLE_ASM_SCALERS=$(usex x86)
 		-DCMAKE_SKIP_RPATH=ON
 	)
+	if use wxwidgets; then
+		mycmakeargs+=( -DENABLE_OPENAL=$(usex openal) )
+	fi
 	cmake_src_configure
 }
 
