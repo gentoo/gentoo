@@ -12,5 +12,4 @@ USE="readline zlib ncurses ssl"
 # In Prefix, aim for Python 3 only, leaving out 2 to avoid unnecessary
 # builds
 # NOTE: Both are incremental variables: Need to drop obsolete base values.
-PYTHON_TARGETS="-python2_7 python3_6"
-PYTHON_SINGLE_TARGET="python3_6"
+PYTHON_TARGETS="-python2_7"
