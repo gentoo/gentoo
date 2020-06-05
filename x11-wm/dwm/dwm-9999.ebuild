@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs
+inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a dynamic window manager for X11"
 HOMEPAGE="https://dwm.suckless.org/"
@@ -31,6 +31,8 @@ src_prepare() {
 		-e "s/ -Os / /" \
 		-e "/^\(LDFLAGS\|CFLAGS\|CPPFLAGS\)/{s| = | += |g;s|-s ||g}" \
 		config.mk || die
+
+	restore_config config.h
 }
 
 src_compile() {
@@ -51,4 +53,6 @@ src_install() {
 	doins "${FILESDIR}"/dwm.desktop
 
 	dodoc README
+
+	save_config config.h
 }
