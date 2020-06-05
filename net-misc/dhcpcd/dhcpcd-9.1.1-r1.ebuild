@@ -34,7 +34,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-typo_fix.patch"
+	"${FILESDIR}/${P}-embedded_config.patch"
 )
 
 src_configure() {
