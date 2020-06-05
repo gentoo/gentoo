@@ -19,12 +19,12 @@ HOMEPAGE="https://herbstluftwm.org/"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="examples xinerama zsh-completion"
+IUSE="examples zsh-completion"
 
 DEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
-	xinerama? ( x11-libs/libXinerama )
+	x11-libs/libXinerama
 "
 RDEPEND="
 	${DEPEND}
@@ -40,10 +40,6 @@ src_configure() {
 		-e '/^install.*LICENSEDIR/d' \
 		-e '/set(DOCDIR / s#.*#set(DOCDIR ${CMAKE_INSTALL_DOCDIR})#' \
 		CMakeLists.txt || die
-
-	mycmakeargs=(
-		-DWITH_XINERAMA=$(usex xinerama)
-	)
 
 	cmake-utils_src_configure
 }
