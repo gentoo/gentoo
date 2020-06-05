@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -14,23 +14,14 @@ HOMEPAGE="
 	https://matplotlib.org/cycler/
 	https://pypi.org/project/Cycler/
 	https://github.com/matplotlib/cycler"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
+SRC_URI="
+	https://github.com/matplotlib/cycler/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="test"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
-"
 
-# Not shipped
-# https://github.com/matplotlib/cycler/issues/21
-RESTRICT=test
-
-python_test() {
-	nosetests --verbosity=3 || die
-}
+distutils_enable_tests nose
