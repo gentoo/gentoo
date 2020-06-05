@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit cmake distutils-r1
 
@@ -14,74 +14,50 @@ SRC_URI="https://github.com/pybind/pybind11/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="doc test"
 
-DEPEND="
-	${PYTHON_DEPS}
-	doc? (
-		dev-python/breathe[${PYTHON_USEDEP}]
-		<dev-python/sphinx-3[${PYTHON_USEDEP}]
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-	)
-"
 RDEPEND="
-	${PYTHON_DEPS}
 	dev-cpp/eigen:3
 "
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+distutils_enable_sphinx docs \
+	'<dev-python/sphinx-3' \
+	dev-python/breathe \
+	dev-python/sphinx_rtd_theme
+distutils_enable_tests pytest
 
 DOCS=( README.md CONTRIBUTING.md ISSUE_TEMPLATE.md )
 
-#I can't make tests do anything
-RESTRICT=test
-
-pkg_setup() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python3_7' )
-}
-
 python_prepare_all() {
 	export PYBIND11_USE_CMAKE=1
+
+	# broken with scipy-1.4.1
+	sed -i -e 's:test_sparse:_&:' tests/test_eigen.py || die
+
 	cmake_src_prepare
 	distutils-r1_python_prepare_all
 }
 
-python_configure_all() {
+python_configure() {
 	local mycmakeargs=(
+		# disable forced lto
+		-DPYBIND11_LTO_CXX_FLAGS=
 		-DPYBIND11_INSTALL=ON
 		-DPYBIND11_TEST=$(usex test)
 	)
 	cmake_src_configure
 }
 
-python_compile_all() {
+python_compile() {
+	distutils-r1_python_compile
 	# Compilation only does anything for tests
 	use test && cmake_src_compile
-
-	# documentation is not covered by cmake, but has it's own makefile
-	# using sphinx
-	if use doc; then
-		python_setup 'python3_7'
-		pushd "${S}"/docs || die
-		emake info man html
-		popd || die
-	fi
 }
 
-python_install_all() {
+python_test() {
+	cmake_build check
+}
+
+python_install() {
+	distutils-r1_python_install
 	cmake_src_install
-	if use doc; then
-		python_setup
-		local HTML_DOCS=( "${S}"/docs/.build/html/. )
-
-		# install man and info pages
-		doman "${S}"/docs/.build/man/pybind11.1
-		doinfo "${S}"/docs/.build/texinfo/pybind11.info
-	fi
-
-	distutils-r1_python_install_all
-}
-
-python_test_all() {
-	cmake_src_test
 }
