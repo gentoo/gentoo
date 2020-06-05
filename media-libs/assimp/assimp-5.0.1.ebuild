@@ -35,6 +35,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0.0-unzip-of.patch"
 	"${FILESDIR}/${PN}-5.0.0-findassimp.patch"
 	"${FILESDIR}/${P}-GNUInstallDirs.patch" # bug 701912
+	"${FILESDIR}/${P}-projectversion.patch"
+	"${FILESDIR}/${P}-fix-unittests.patch"
+	"${FILESDIR}/${P}-fix-aiGetLegalStringTest.patch"
+	"${FILESDIR}/${P}-versiontest.patch"
 )
 
 src_configure() {
