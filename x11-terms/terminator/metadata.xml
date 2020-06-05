@@ -17,7 +17,7 @@
 		wishlist bugs! (see below for the address)
 	</longdescription>
 	<use>
-		<flag name="libnotify">Enables desktop notifications via<pkg>dev-python/notify-python</pkg></flag>
+		<flag name="libnotify">Enables desktop notifications via <pkg>x11-libs/libnotify</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">gnome-terminator/terminator</remote-id>
