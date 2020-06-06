@@ -5,10 +5,6 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
-	</maintainer>
 	<use>
 		<flag name="serial">Enable serial port support</flag>
 	</use>
