@@ -62,8 +62,8 @@ src_configure() {
 		-DDYND_BUILD_TESTS="$(usex test)"
 		-DDYND_CUDA="$(usex cuda)"
 		-DDYND_FFTW="$(usex fftw)"
-		-DFFTW_PATH="${EPREFIX}/usr/include"
 	)
+	use fftw && mycmakeargs+=( -DFFTW_PATH="${EPREFIX}/usr/include" )
 	cmake-utils_src_configure
 }
 
