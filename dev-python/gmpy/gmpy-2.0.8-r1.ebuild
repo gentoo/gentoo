@@ -38,12 +38,15 @@ PATCHES=(
 distutils_enable_sphinx docs
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
-
 	# rm non std test file
 	rm test*/gmpy_test_thr.py || die
 	# testing for contents of __dir__ is really silly, and fails
 	sed -i -e '/__dir__/,+1d' test3/*.py || die
+	# fix sphinx-1.8+ compat
+	# https://github.com/aleaxit/gmpy/commit/c35c1f3319fcf95e894a59a6d523851bad4abf66
+	sed -i -e 's:pngmath:imgmath:' docs/conf.py || die
+
+	distutils-r1_python_prepare_all
 }
 
 python_configure_all() {
