@@ -1715,8 +1715,8 @@ app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 5.6 5.7 5.8 5.9 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0.3 5.0 5.0.1 5.6 5.7 5.8 5.9 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 5.7 5.8 5.9 5.10 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 4.0.3 5.0 5.0.1 5.7 5.8 5.9 5.10 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190912 20191224 20200412 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -18336,7 +18336,7 @@ x11-misc/urxvtconfig 1.0-r1: GUI configuration tool for the rxvt-unicode termina
 x11-misc/util-macros 1.19.2-r1: X.Org autotools utility macros
 x11-misc/vdpauinfo 1.3 1.4 99999: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
-x11-misc/virtualgl 2.6.1-r1 2.6.3 9999: Run OpenGL applications remotely with full 3D hardware acceleration
+x11-misc/virtualgl 2.6.1-r1 2.6.3 2.6.3-r1 9999: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
 x11-misc/vym 2.7.1 9999: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r2 0.3-r3: Wayv is hand-writing/gesturing recognition software for X
