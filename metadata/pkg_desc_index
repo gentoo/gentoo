@@ -16009,7 +16009,7 @@ sci-libs/med 4.0.0-r1 4.0.0-r2: A library to store and exchange meshed data or c
 sci-libs/metis 4.0.3-r1 4.0.3-r2 5.1.0-r2 5.1.0-r3 5.1.0-r4: A package for unstructured serial graph partitioning
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
 sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
-sci-libs/mkl 10.0.5.025 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, math functions
+sci-libs/mkl 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, math functions
 sci-libs/mkl-rt 2019.4.243: Intel Math Kernel Library (Runtime)
 sci-libs/mpfi 1.5.3: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2 2.7.2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
@@ -17653,7 +17653,7 @@ virtual/perl-version 0.992.400: Virtual for version
 virtual/perl6 0: Convenience virtual for perl6
 virtual/pkgconfig 0-r1 1: Virtual for the pkg-config implementation
 virtual/pmake 1: Virtual for BSD-like make (to be used with get_bmake)
-virtual/podofo-build 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6: Virtual package for building against PoDoFo
+virtual/podofo-build 0.9.6: Virtual package for building against PoDoFo
 virtual/pypy 7.3.0: An obsolete virtual for PyPy Python implementation
 virtual/pypy3 7.3.0: An obsolete virtual for PyPy3 Python implementation
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
