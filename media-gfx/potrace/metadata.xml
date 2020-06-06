@@ -5,10 +5,6 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
-	</maintainer>
 	<use>
 		<flag name="metric">
 			default to a4 paper size and metric measurement

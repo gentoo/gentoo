@@ -5,10 +5,6 @@
     <email>voyageur@gentoo.org</email>
     <name>Bernard Cafarelli</name>
   </maintainer>
-  <maintainer type="project">
-    <email>graphics@gentoo.org</email>
-    <name>Gentoo Graphics Project</name>
-  </maintainer>
   <upstream>
     <remote-id type="sourceforge">mcomix</remote-id>
     <remote-id type="github">multiSnow/mcomix3</remote-id>
