@@ -35,6 +35,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-fflags -fallow-argument-mismatch
 	scalapack_configure() {
 		local mycmakeargs=(
 			-DUSE_OPTIMIZED_LAPACK_BLAS=ON
