@@ -12,7 +12,7 @@ doc? ( https://github.com/${PN}/${PN}/releases/download/v${PV}/${PN}-docs-${PV}.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="doc samples test"
 
 RESTRICT="!test? ( test )"
