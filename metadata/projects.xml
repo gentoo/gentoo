@@ -2931,6 +2931,11 @@
     <subproject ref="pms@gentoo.org"/>
     <subproject ref="treecleaner@gentoo.org"/>
     <member>
+      <email>asturm@gentoo.org</email>
+      <name>Andreas Sturmlechner</name>
+      <role>Developer</role>
+    </member>
+    <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
       <role>Developer</role>
