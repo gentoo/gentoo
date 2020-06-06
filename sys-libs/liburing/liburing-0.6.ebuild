@@ -32,7 +32,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake V=1
+	emake V=1 AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 }
 
 multilib_src_install_all() {
