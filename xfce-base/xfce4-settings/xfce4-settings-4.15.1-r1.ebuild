@@ -40,6 +40,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-install-icons.patch
+)
+
 src_configure() {
 	local myconf=(
 		$(use_enable upower upower-glib)
