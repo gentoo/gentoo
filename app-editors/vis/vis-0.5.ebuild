@@ -42,6 +42,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export CFLAGS="$CFLAGS -fcommon" # https://github.com/martanne/vis-test/issues/21
+
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
