@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_P=${P/_/-}
 	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~ppc ~ppc64 x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ppc ~ppc64 x86"
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
