@@ -5,11 +5,11 @@ DESCRIPTION=High-performance RPC framework (python libraries)
 EAPI=7
 HOMEPAGE=https://grpc.io
 IUSE=python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-libs/openssl-1.0.2:0=[-bindist] >=dev-python/cython-0.28.3[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/protobuf-python[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/six[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] net-dns/c-ares:= sys-libs/zlib:= python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
 SLOT=0
 SRC_URI=mirror://pypi/g/grpcio/grpcio-1.28.1.tar.gz
 _eclasses_=distutils-r1	89b310c534a033a3566e0f26419daa81	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=8300854357845503bf07093bf5432c2b
+_md5_=dc814814b7e3e082edc88bde9dd67a22
