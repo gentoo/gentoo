@@ -467,6 +467,7 @@ multilib_toolchain_setup() {
 		LD
 		NM
 		OBJDUMP
+		PKG_CONFIG
 		RANLIB
 		READELF
 		STRIP
@@ -511,6 +512,7 @@ multilib_toolchain_setup() {
 		export LD="$(tc-getLD) $(get_abi_LDFLAGS)"
 		export NM="$(tc-getNM)" # Avoid 'nm', use '${CHOST}-nm'
 		export OBJDUMP="$(tc-getOBJDUMP)" # Avoid 'objdump', use '${CHOST}-objdump'
+		export PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		export RANLIB="$(tc-getRANLIB)" # Avoid 'ranlib', use '${CHOST}-ranlib'
 		export READELF="$(tc-getREADELF)" # Avoid 'readelf', use '${CHOST}-readelf'
 		export STRIP="$(tc-getSTRIP)" # Avoid 'strip', use '${CHOST}-strip'
