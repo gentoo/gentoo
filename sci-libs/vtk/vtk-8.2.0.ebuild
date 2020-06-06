@@ -126,6 +126,7 @@ S="${WORKDIR}"/VTK-${PV}
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.1.0-openmpi-4-compatibility.patch
 	"${FILESDIR}"/${P}-qt-5.15.patch # bug 726960
+	"${FILESDIR}"/${P}-gcc-10.patch # bug 723374
 )
 
 RESTRICT="test"
