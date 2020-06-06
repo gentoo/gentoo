@@ -17813,7 +17813,7 @@ www-client/firefox 52.9.0-r1 68.8.0 68.9.0 76.0-r1 76.0.1 77.0.1: Firefox Web Br
 www-client/firefox-bin 52.9.0 68.8.0 68.9.0 76.0 76.0.1 77.0.1: Firefox Web Browser
 www-client/google-chrome 83.0.4103.97: The web browser from Google
 www-client/google-chrome-beta 84.0.4147.38: The web browser from Google
-www-client/google-chrome-unstable 85.0.4158.4: The web browser from Google
+www-client/google-chrome-unstable 85.0.4164.2: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
@@ -17858,7 +17858,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.371: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 83.0.4103.97 84.0.4147.38_beta 85.0.4158.4_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 83.0.4103.97 84.0.4147.38_beta 85.0.4164.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
