@@ -18,12 +18,12 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+pulseaudio debug"
+IUSE="+pulseaudio"
 
 DEPEND="
 	dev-cpp/gtkmm:3.0=[wayland]
 	dev-libs/gobject-introspection
-	~gui-wm/wayfire-${PV}[debug=]
+	~gui-wm/wayfire-${PV}
 	>=gui-libs/gtk-layer-shell-0.1
 	pulseaudio? ( media-sound/pulseaudio )
 "
@@ -40,10 +40,5 @@ src_configure () {
 	local emesonargs=(
 		"$(meson_feature pulseaudio pulse)"
 	)
-	if use debug; then
-		emesonargs+=(
-			"-Db_sanitize=address,undefined"
-		)
-	fi
 	meson_src_configure
 }
