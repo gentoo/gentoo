@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="readline(+)"
 
@@ -11,7 +11,6 @@ if [ "${PV}" = "9999" ]; then
 else
 	SRC_URI="https://github.com/williamh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
-	inherit vcs-snapshot
 fi
 
 inherit bash-completion-r1 distutils-r1
