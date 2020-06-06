@@ -7873,7 +7873,7 @@ dev-python/gql 0.1.0: GraphQL client for Python.
 dev-python/graph-tool 2.29 9999: An efficient python module for manipulation and statistical analysis of graphs
 dev-python/graphql-core 2.0.0: GraphQL for Python
 dev-python/graphviz 0.13: Simple Python interface for Graphviz
-dev-python/greenlet 0.4.15 0.4.15-r1: Lightweight in-process concurrent programming
+dev-python/greenlet 0.4.15 0.4.15-r1 0.4.16: Lightweight in-process concurrent programming
 dev-python/greenstalk 1.0.1: A Python 3 client for the beanstalkd work queue
 dev-python/grpcio 1.26.0-r1 1.28.1: High-performance RPC framework (python libraries)
 dev-python/grpcio-testing 1.26.0 1.28.1: Testing utilities for gRPC Python
@@ -7919,7 +7919,7 @@ dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client lib
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.11: A high-performance immutable mapping type for Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
-dev-python/importlib_metadata 1.4.0 1.5.0 1.6.0-r1: Read metadata from Python packages
+dev-python/importlib_metadata 1.4.0 1.5.0 1.6.0-r1 1.6.1: Read metadata from Python packages
 dev-python/importlib_resources 1.4.0 1.5.0-r1: Read resources from Python packages
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
@@ -8451,7 +8451,7 @@ dev-python/pysvg 0.2.2_p3: Python SVG document creation library
 dev-python/pysvn 1.8.0 1.9.11: Object-oriented python bindings for subversion
 dev-python/pytables 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 3.10.1 4.5.0 4.6.9 4.6.10 5.4.1 5.4.2 5.4.3: Simple powerful testing with Python
+dev-python/pytest 3.10.1 4.5.0 4.6.9 4.6.10 4.6.11 5.4.1 5.4.2 5.4.3: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.3.0 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.10.0 0.11.0 0.12.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
@@ -8768,7 +8768,7 @@ dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search resu
 dev-python/sphinxcontrib-programoutput 0.11 0.15: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.3 1.1.4: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 4.3.0 5.0.0: Sphinx spelling extension
+dev-python/sphinxcontrib-spelling 4.3.0 5.0.0 5.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.1.0 1.2.1 1.2.2: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spyder 4.1.2 4.1.3: The Scientific Python Development Environment
@@ -10520,7 +10520,7 @@ dev-util/serialtalk 1.2 1.2-r1 9999: simple command-line tool to talk to serial 
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
-dev-util/shards 0.10.0: Dependency manager for the Crystal language
+dev-util/shards 0.10.0 0.11.0: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.0 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.0 0.7.1: Shell script analysis tool (binary package)
@@ -14887,7 +14887,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 0.01c: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.18.4-r3 1.18.6 1.22.10-r11: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.18.4-r3 1.18.6 1.20.12 1.22.10-r11: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.5.2 2.6.2 2.6.3 2.6.4: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
