@@ -5160,6 +5160,7 @@ dev-libs/libtpms 0.7.0-r1: Library providing software emultion of a TPM
 dev-libs/libtreadstone 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtsm 3 4.0.1: Terminal Emulator State Machine
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
+dev-libs/libucl 0.8.1 9999: Universal configuration library parser
 dev-libs/libudfread 1.0.0-r1 9999: Library for reading UDF from raw devices and image files
 dev-libs/libuev 2.2.0 2.3.0 2.3.1: A collection of useful BSD APIs
 dev-libs/libugpio 0.0.6: Lib for the use of linux kernel's sysfs gpio interface from C programs
@@ -11593,6 +11594,7 @@ gnustep-libs/sope 4.1.1: A set of frameworks forming a complete Web application 
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
 gui-apps/grim 1.2.0 9999: Grab images from a Wayland compositor.
 gui-apps/kanshi 1.1.0 9999: dynamic display configuration (autorandr for wayland)
+gui-apps/lavalauncher 1.7.1 9999: simple launcher for wayland
 gui-apps/mako 1.4.1 9999: A lightweight notification daemon for Wayland. Works on Sway.
 gui-apps/nm-tray 0.4.3: A simple Qt-based NetworkManager front-end
 gui-apps/slurp 1.2.0 9999: Select a region in a Wayland compositor and print it to the standard output.
@@ -11612,6 +11614,7 @@ gui-libs/tepl 4.2.1: GtkSourceView-based text editors and IDE helper library
 gui-libs/wf-config 0.4.0 9999: library for managing wayfire configuration files
 gui-libs/wlroots 0.10.0 0.10.1 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
+gui-wm/hikari 1.2.0: wayland compositor inspired by CWM
 gui-wm/sway 1.4 1.4-r2 9999: i3-compatible Wayland window manager
 gui-wm/wayfire 0.4.0 9999: compiz like 3D wayland compositor
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
