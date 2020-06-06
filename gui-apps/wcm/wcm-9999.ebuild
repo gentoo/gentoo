@@ -10,21 +10,20 @@ HOMEPAGE="https://github.com/WayfireWM/wcm"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
+	EGIT_REPO_URI="https://github.com/WayfireWM/wcm.git"
 else
-	SRC_URI="https://github.com/WayfireWM/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/WayfireWM/wcm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="debug"
 
 DEPEND="
 	dev-libs/libevdev
 	dev-libs/libxml2
 	dev-cpp/gtkmm:3.0[wayland]
-	~gui-wm/wayfire-${PV}[debug=]
+	~gui-wm/wayfire-${PV}
 "
 
 RDEPEND="${DEPEND}"
@@ -34,13 +33,3 @@ BDEPEND="
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
 "
-
-src_configure() {
-	local emesonargs=""
-	if use debug; then
-		emesonargs+=(
-			"-Db_sanitize=address,undefined"
-		)
-	fi
-	meson_src_configure
-}
