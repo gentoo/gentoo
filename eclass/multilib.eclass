@@ -472,6 +472,7 @@ multilib_toolchain_setup() {
 		STRIP
 		PKG_CONFIG_LIBDIR
 		PKG_CONFIG_PATH
+		PKG_CONFIG_SYSTEM_LIBRARY_PATH
 	)
 
 	# First restore any saved state we have laying around.
@@ -516,6 +517,7 @@ multilib_toolchain_setup() {
 		export CHOST=$(get_abi_CHOST $1)
 		export PKG_CONFIG_LIBDIR=${EPREFIX}/usr/$(get_libdir)/pkgconfig
 		export PKG_CONFIG_PATH=${EPREFIX}/usr/share/pkgconfig
+		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${EPREFIX}/usr/$(get_libdir)
 	fi
 }
 
