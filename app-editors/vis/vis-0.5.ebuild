@@ -34,6 +34,9 @@ src_prepare() {
 		fi
 	fi
 
+	# https://bugs.gentoo.org/722014 https://github.com/martanne/vis-test/pull/22
+	sed -i 's;./ccan-config > config.h;./ccan-config "${CC}" ${CFLAGS} > config.h;' test/core/Makefile || die
+
 	sed -i 's|STRIP?=.*|STRIP=true|' Makefile || die
 	sed -i 's|${DOCPREFIX}/vis|${DOCPREFIX}|' Makefile || die
 	sed -i 's|DOCUMENTATION = LICENSE|DOCUMENTATION =|' Makefile || die
@@ -42,6 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export CFLAGS="$CFLAGS -fcommon" # https://github.com/martanne/vis-test/issues/21
+
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
