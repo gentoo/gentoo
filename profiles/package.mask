@@ -91,8 +91,8 @@ app-misc/cbrpager
 app-misc/ignuit
 
 # Joonas Niilola <juippis@gentoo.org> (2020-06-02)
-# Last snapshot is from 2+ years ago, which doesn't build. Latest 
-# upstream commit won't build with in-tree efl versions. Has a bug 
+# Last snapshot is from 2+ years ago, which doesn't build. Latest
+# upstream commit won't build with in-tree efl versions. Has a bug
 # open and unanswered for 2 years, so this package seems unmaintained
 # in Gentoo. Removal in ~30 days. Bug #656098
 x11-themes/terminology-themes
@@ -269,14 +269,10 @@ dev-python/txtorcon
 # Michał Górny <mgorny@gentoo.org> (2020-04-22)
 # Effectively unmaintained and stuck on Python 3.6.
 #
-# dev-python/bokeh does not work because of missing dependencies
-# (bug #607778).  It has no reverse dependencies
-#
 # dev-python/flexx tries to fetch data from Internet during build.
 # Its only revdep is dev-python/bokeh.
 #
 # Removal in 30 days.  Bug #607778.
-dev-python/bokeh
 dev-python/flexx
 
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
