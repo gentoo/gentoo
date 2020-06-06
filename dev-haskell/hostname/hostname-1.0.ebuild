@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="A a cross-platform means of determining the hostname"
-HOMEPAGE="http://hackage.haskell.org/package/hostname"
+HOMEPAGE="https://hackage.haskell.org/package/hostname"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
