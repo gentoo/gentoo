@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eutils check-reqs multilib java-pkg-opt-2
+inherit cmake check-reqs java-pkg-opt-2
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="https://github.com/tpaviot/oce"
@@ -15,8 +15,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples freeimage gl2ps +openmp tbb vtk"
 REQUIRED_USE="?? ( openmp tbb )"
 
-MY_P="oce-OCE-${PV}"
-S="${WORKDIR}/${MY_P}"
 DEPEND="
 	dev-lang/tcl:0=
 	dev-lang/tk:0=
@@ -31,7 +29,7 @@ DEPEND="
 	freeimage? ( media-libs/freeimage )
 	gl2ps? ( x11-libs/gl2ps )
 	tbb? ( dev-cpp/tbb )
-	vtk? ( =sci-libs/vtk-8.1*[boost,imaging,qt5,python,rendering,views,xdmf2] )"
+	vtk? ( =sci-libs/vtk-8*[boost,imaging,qt5,python,rendering,views,xdmf2] )"
 RDEPEND="${DEPEND}"
 
 CHECKREQS_MEMORY="256M"
@@ -39,12 +37,14 @@ CHECKREQS_DISK_BUILD="3584M"
 
 PATCHES=( "${FILESDIR}"/"${P}-test-fix.patch" )
 
+S="${WORKDIR}/oce-OCE-${PV}"
+
 pkg_setup() {
 	check-reqs_pkg_setup
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -65,11 +65,11 @@ src_configure() {
 	use openmp && mycmakeargs+=(
 		-DOCE_MULTITHREAD_LIBRARY="OPENMP"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# If user asked for samples let's copy them to the docs folder
 	if use examples ; then
