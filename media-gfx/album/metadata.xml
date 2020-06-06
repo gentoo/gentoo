@@ -4,10 +4,6 @@
 <maintainer type="person">
 	<email>dilfridge@gentoo.org</email>
 </maintainer>
-<maintainer type="project">
-	<email>graphics@gentoo.org</email>
-	<name>Gentoo Graphics Project</name>
-</maintainer>
 <use>
 	<flag name="plugins">Install optional plugins</flag>
 	<flag name="themes">Install optional themes</flag>
