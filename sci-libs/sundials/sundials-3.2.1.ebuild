@@ -47,18 +47,22 @@ src_configure() {
 		-DHYPRE_ENABLE="$(usex hypre)"
 		-DHYPRE_INCLUDE_DIR="${EPREFIX}/usr/include/hypre"
 		-DKLU_ENABLE="$(usex sparse)"
-		-DKLU_LIBRARY="${EPREFIX}/usr/$(get_libdir)/libklu.so"
 		-DLAPACK_ENABLE="$(usex lapack)"
 		-DMPI_ENABLE="$(usex mpi)"
 		-DOPENMP_ENABLE="$(usex openmp)"
 		-DPTHREAD_ENABLE="$(usex threads)"
 		-DSUPERLUMT_ENABLE="$(usex superlumt)"
-		-DSUPERLUMT_INCLUDE_DIR="${EPREFIX}/usr/include/superlu_mt"
-		-DSUPERLUMT_LIBRARY="superlu_mt"
 		-DEXAMPLES_ENABLE="$(usex examples)"
 		-DEXAMPLES_INSTALL=ON
 		-DEXAMPLES_INSTALL_PATH="/usr/share/doc/${PF}/examples"
 		-DUSE_GENERIC_MATH=ON
+	)
+	use sparse && mycmakeargs+=(
+		-DKLU_LIBRARY="${EPREFIX}/usr/$(get_libdir)/libklu.so"
+	)
+	use superlumt && mycmakeargs+=(
+		-DSUPERLUMT_INCLUDE_DIR="${EPREFIX}/usr/include/superlu_mt"
+		-DSUPERLUMT_LIBRARY="superlu_mt"
 	)
 	cmake-utils_src_configure
 }
