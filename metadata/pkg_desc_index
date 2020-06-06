@@ -10044,7 +10044,7 @@ dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r3 2.2.3 2.2.4 2.2.6: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.3.0 0.3.0-r1: Guile bindings of git
-dev-scheme/guile-json 3.5.0: JSON module for Guile
+dev-scheme/guile-json 3.5.0 4.0.1: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.0: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
