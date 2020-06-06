@@ -14,9 +14,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~a
 IUSE="colord input_devices_libinput libcanberra libnotify upower +xklavier"
 
 RDEPEND="
-	>=dev-libs/glib-2.24
+	>=dev-libs/glib-2.45.8
 	media-libs/fontconfig
-	x11-libs/gtk+:3
+	>=x11-libs/gtk+-3.20:3
 	x11-libs/libX11
 	>=x11-libs/libXcursor-1.1
 	>=x11-libs/libXi-1.3
