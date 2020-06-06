@@ -12,21 +12,20 @@ DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="https://matplotlib.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-SLOT="0"
 # Main license: matplotlib
 # Some modules: BSD
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="cairo doc excel examples gtk3 latex qt5 test tk wxwidgets"
+REQUIRED_USE="test? ( cairo gtk3 latex qt5 tk )"
+
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="
-	test? (
-		cairo latex qt5 tk wxwidgets gtk3
-		)"
-
+# internal copy of pycxx highly patched
+#	dev-python/pycxx
 COMMON_DEPEND="
 	dev-python/cycler[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]
@@ -40,9 +39,6 @@ COMMON_DEPEND="
 	>=dev-python/kiwisolver-1.0.0[${PYTHON_USEDEP}]
 	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
 	wxwidgets? ( dev-python/wxpython:*[${PYTHON_USEDEP}] )"
-
-# internal copy of pycxx highly patched
-#	dev-python/pycxx
 
 DEPEND="${COMMON_DEPEND}
 	dev-python/versioneer[${PYTHON_USEDEP}]
@@ -67,7 +63,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/nose-0.11.1[${PYTHON_USEDEP}]
-		)"
+	)"
 
 RDEPEND="${COMMON_DEPEND}
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
@@ -162,6 +158,8 @@ python_configure() {
 		tests = $(usex test True False)
 		[gui_support]
 		agg = True
+		gtk = False
+		gtkagg = False
 		pyside = False
 		pysideagg = False
 		qt4 = False
@@ -170,26 +168,13 @@ python_configure() {
 		$(use_setup gtk3)
 		$(use_setup qt5)
 		$(use_setup tk)
+		$(use_setup wxwidgets wx)
 	EOF
 
 	if use gtk3 && use cairo; then
 		echo "gtk3cairo = True" >> "${BUILD_DIR}"/setup.cfg || die
 	else
 		echo "gtk3cairo = False" >> "${BUILD_DIR}"/setup.cfg || die
-	fi
-
-	if python_is_python3; then
-		cat >> "${BUILD_DIR}"/setup.cfg <<- EOF || die
-			gtk = False
-			gtkagg = False
-			wx = False
-			wxagg = False
-		EOF
-	else
-		cat >> "${BUILD_DIR}"/setup.cfg <<-EOF || die
-			$(use_setup gtk2 gtk)
-			$(use_setup wxwidgets wx)
-		EOF
 	fi
 }
 
