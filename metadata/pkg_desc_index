@@ -16092,7 +16092,7 @@ sci-libs/umfpack 5.6.2 5.7.9: Unsymmetric multifrontal sparse LU factorization l
 sci-libs/volk 2.3.0: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 9999: Votca tools library
-sci-libs/vtk 8.1.0-r7 8.2.0: The Visualization Toolkit
+sci-libs/vtk 8.2.0: The Visualization Toolkit
 sci-libs/xdmf2 1.0_p141226-r4: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1 1.1.4: Library to read gromacs trajectory and topology files
 sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System
