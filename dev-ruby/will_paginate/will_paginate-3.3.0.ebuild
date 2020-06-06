@@ -26,5 +26,6 @@ all_ruby_prepare() {
 ruby_add_bdepend "
 	test? (
 		dev-ruby/rails
+		dev-ruby/sqlite3
 		dev-ruby/mocha
 	)"
