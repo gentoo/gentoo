@@ -9,7 +9,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit base haskell-cabal
 
 DESCRIPTION="a library for command line parsing & online help"
-HOMEPAGE="http://hackage.haskell.org/package/cmdlib"
+HOMEPAGE="https://hackage.haskell.org/package/cmdlib"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
