@@ -6,7 +6,7 @@ EAPI="7"
 inherit toolchain-funcs
 
 DESCRIPTION="Red Hat crash utility; used for analyzing kernel core dumps"
-HOMEPAGE="https://people.redhat.com/anderson/"
+HOMEPAGE="https://crash-utility.github.io/"
 SRC_URI="https://people.redhat.com/anderson/${P}.tar.gz"
 
 LICENSE="GPL-3"
