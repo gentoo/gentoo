@@ -3,14 +3,15 @@
 
 EAPI=7
 
+MY_COMMIT="6fa26b8dd2ac0931fe688370728c47086277d883"
+
 DESCRIPTION="Modal editor inspired by vim"
 HOMEPAGE="http://kakoune.org/ https://github.com/mawww/kakoune"
-SRC_URI="https://github.com/mawww/kakoune/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mawww/kakoune/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
-IUSE="static-libs"
 
 DEPEND="sys-libs/ncurses:0=[unicode]"
 RDEPEND="${DEPEND}"
@@ -18,12 +19,13 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/kakoune-2020.01.16-enable-ebuild-syntax-highlight.patch )
 
+S="${WORKDIR}/kakoune-${MY_COMMIT}"
+
 src_configure() { :; }
 
 src_compile() {
 	cd src/ || die
-
-	emake static=$(usex static-libs yes no) all
+	emake all
 }
 
 src_test() {
