@@ -18,7 +18,9 @@ SLOT="0"
 KEYWORDS="amd64 x86 ~x86-macos"
 IUSE=""
 
-RDEPEND="dev-ruby/rmagick:*"
+DEPEND+="test? ( media-gfx/imagemagick[png] )"
+
+ruby_add_rdepend "dev-ruby/rmagick:*"
 
 ruby_add_bdepend test "dev-ruby/tidy_table dev-ruby/dust"
 
