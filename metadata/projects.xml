@@ -1375,32 +1375,6 @@
     </member>
   </project>
   <project>
-    <email>graphics@gentoo.org</email>
-    <name>Graphics Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Graphics</url>
-    <description>The Graphics Project maintains media-gfx and related packages.</description>
-    <member>
-      <email>jstein@gentoo.org</email>
-      <name>Jonas Stein</name>
-    </member>
-    <member>
-      <email>lu_zero@gentoo.org</email>
-      <name>Luca Barbato</name>
-    </member>
-    <member>
-      <email>maekke@gentoo.org</email>
-      <name>Markus Meier</name>
-    </member>
-    <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
-    </member>
-    <member>
-      <email>vapier@gentoo.org</email>
-      <name>Mike Frysinger</name>
-    </member>
-  </project>
-  <project>
     <email>hppa@gentoo.org</email>
     <name>HPPA Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:HPPA</url>
