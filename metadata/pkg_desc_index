@@ -7750,7 +7750,7 @@ dev-python/ecdsa 0.14.1-r1 0.15: ECDSA cryptographic signature library in pure P
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.8.1 5.8.1-r1: Tending time-series indices in Elasticsearch
-dev-python/elasticsearch-py 7.0.5 7.5.1 7.6.0: Official Python low-level client for Elasticsearch
+dev-python/elasticsearch-py 7.0.5 7.5.1 7.6.0 7.7.0: Official Python low-level client for Elasticsearch
 dev-python/elementpath 1.4.4 1.4.5: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
