@@ -4,10 +4,9 @@ DEPEND=sys-libs/ncurses:0=[unicode]
 DESCRIPTION=Modal editor inspired by vim
 EAPI=7
 HOMEPAGE=http://kakoune.org/ https://github.com/mawww/kakoune
-IUSE=static-libs
 KEYWORDS=~amd64 ~arm64 ~ppc ~x86
 LICENSE=Unlicense
 RDEPEND=sys-libs/ncurses:0=[unicode]
 SLOT=0
-SRC_URI=https://github.com/mawww/kakoune/archive/v2020.01.16.tar.gz -> kakoune-2020.01.16.tar.gz
-_md5_=9b0188de8cfe9e5b47e980b26ab10128
+SRC_URI=https://github.com/mawww/kakoune/archive/6fa26b8dd2ac0931fe688370728c47086277d883.tar.gz -> kakoune-2020.01.16_p20200601.tar.gz
+_md5_=b58278cd41bb159e08cc5d6a6856b23f

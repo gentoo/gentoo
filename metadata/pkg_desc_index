@@ -1354,7 +1354,7 @@ app-editors/joe 4.2 4.3-r1 4.4 4.6: A free ASCII-Text Screen Editor for UNIX
 app-editors/jove 4.16.0.73-r1: Jonathan's Own Version of Emacs, a light emacs-like editor without LISP bindings
 app-editors/juffed 0.10_p20160323-r1: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p30 3.1_p38: Portable version of Joe's Own Editor
-app-editors/kakoune 2020.01.16 2020.01.16-r1: Modal editor inspired by vim
+app-editors/kakoune 2020.01.16-r1 2020.01.16_p20200601: Modal editor inspired by vim
 app-editors/kile 2.9.93: Latex Editor and TeX shell based on KDE Frameworks
 app-editors/le 1.14.3 1.16.1 1.16.3 1.16.5: Terminal text editor
 app-editors/leafpad 0.8.18.1 0.8.18.1-r1: Simple GTK2 text editor
