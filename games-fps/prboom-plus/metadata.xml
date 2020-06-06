@@ -31,9 +31,10 @@
 		<flag name="portmidi">Enable support for MIDI via <pkg>media-libs/portmidi</pkg></flag>
 		<flag name="sdl2-image">Enable support for high-resolution texture support via <pkg>media-libs/sdl2-image</pkg></flag>
 		<flag name="sdl2-mixer">Enable support for MIDI via <pkg>media-libs/sdl2-mixer</pkg></flag>
+		<flag name="server">Build PrBoom-Plus server</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugs.debian.org/prboom-plus</bugs-to>
-		<doc lang="en">https://prboom-plus.sourceforge.net</doc>
+		<doc lang="en">https://github.com/coelckers/prboom-plus</doc>
 	</upstream>
 </pkgmetadata>
