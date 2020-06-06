@@ -19,7 +19,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/notqmail/notqmail.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~hppa ~sparc"
+	KEYWORDS="~amd64 ~hppa ~ia64 ~sparc"
 	SRC_URI="https://github.com/notqmail/notqmail/releases/download/${P}/${P}.tar.xz"
 fi
 
