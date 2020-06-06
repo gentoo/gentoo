@@ -1591,7 +1591,7 @@ app-emacs/wgrep 2.3.0 2.3.2: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.53: Window manager for GNU Emacs
-app-emacs/with-editor 2.8.3: Use the Emacsclient as the $EDITOR of child processes
+app-emacs/with-editor 2.8.3 2.9.2: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xclip 1.9: Emacs Interface to XClip
 app-emacs/xrdb-mode 3.0 3.0-r1: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2-r1: An Emacs major mode for editing XSL stylesheets and running XSL processes
@@ -9973,7 +9973,7 @@ dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet
 dev-ruby/tomlrb 1.2.8: A racc based toml parser
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
-dev-ruby/travis 1.8.10: Travis CI Client (CLI and Ruby library)
+dev-ruby/travis 1.8.10 1.9.1: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.10: Treetop is a language for describing languages
 dev-ruby/trollop 2.1.3 2.9.10: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.5.1 1.6.2.1: A TrueType font parser written in pure ruby
@@ -10006,7 +10006,7 @@ dev-ruby/vcr 4.0.0 5.0.0 5.1.0: Records your test suite's HTTP interactions and 
 dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.8: General Rack Authentication Framework
-dev-ruby/web-console 3.7.0 4.0.1: A debugging tool for your Ruby on Rails applications
+dev-ruby/web-console 3.7.0 4.0.1 4.0.2: A debugging tool for your Ruby on Rails applications
 dev-ruby/webmock 3.7.6 3.8.1 3.8.2 3.8.3: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.8: Universal Ruby library to handle WebSocket protocol
