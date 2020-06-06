@@ -9,7 +9,7 @@ WEBAPP_MANUAL_SLOT=yes
 
 # Short package version
 SPV="$(ver_cut 1-2)"
-inherit flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils toolchain-funcs cmake-utils virtualx webapp
+inherit flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils toolchain-funcs cmake virtualx webapp
 
 DESCRIPTION="The Visualization Toolkit"
 HOMEPAGE="https://www.vtk.org/"
@@ -138,7 +138,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	local x
 	# missing: VPIC freerange libproj4 mrmpi sqlite utf8 verdict xmdf2 xmdf3
@@ -295,13 +295,13 @@ src_configure() {
 		export F77=mpif77
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
 	use web && webapp_src_preinst
 
-	cmake-utils_src_install
+	cmake_src_install
 
 	use java && java-pkg_regjar "${ED}"/usr/$(get_libdir)/${PN}.jar
 
