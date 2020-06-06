@@ -20,6 +20,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (
+		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/PyContracts[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
