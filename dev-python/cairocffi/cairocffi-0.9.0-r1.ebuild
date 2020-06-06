@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6..9} )
 
 inherit distutils-r1 virtualx
 
@@ -17,8 +17,10 @@ SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="doc test"
+IUSE="test"
 RESTRICT="!test? ( test )"
+
+distutils_enable_sphinx docs
 
 RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/cffi-1.1.0:=[${PYTHON_USEDEP}]' 'python*')
@@ -28,7 +30,6 @@ RDEPEND="
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -36,15 +37,15 @@ DEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
-python_compile_all() {
-	use doc && esetup.py build_sphinx
+PATCHES=( "${FILESDIR}"/${PN}-0.8.0-tests.patch )
+
+python_prepare() {
+	if python_is_python3; then
+		# Remove deprecated statements for python3
+		sed -i -e 's/tostring/tobytes/g' cairocffi/test_cairo.py || die
+	fi
 }
 
 python_test() {
 	virtx py.test -v --pyargs cairocffi -o addopts=
-}
-
-python_install_all() {
-	use doc && HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
 }
