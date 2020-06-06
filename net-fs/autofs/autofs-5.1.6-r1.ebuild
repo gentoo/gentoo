@@ -89,6 +89,11 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	tc-export AR CC LD STRIP
+	default
+}
+
 src_install() {
 	default
 	rmdir "${D}"/run
