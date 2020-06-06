@@ -51,6 +51,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.74-ncurses.patch
+	"${FILESDIR}"/${PN}-0.75-detect-AR.patch
 )
 
 src_prepare() {
