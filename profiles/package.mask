@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-06-06)
+# Meson port does not handle multilib yet and has issues
+# regarding runstatedir (not using /run).
+=net-misc/networkmanager-1.22.10-r11
+
 # Michał Górny <mgorny@gentoo.org> (2020-06-05)
 # Replaced by dev-util/ydiff, after upstream rename.
 # Removal in 30 days.  Bug #710538.
@@ -364,10 +369,6 @@ dev-java/icedtea-web
 # Masked for testing due to split of libnma needing migration
 # and 1.8.25 being an old development release
 >=gnome-extra/nm-applet-1.8.25
-
-# Matt Turner <mattst88@gentoo.org> (2020-03-11)
-# Masked for testing due to removal of libnm-glib (bug #665338)
->=net-misc/networkmanager-1.20
 
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
