@@ -2257,6 +2257,7 @@ dev-libs/libvoikko:hfst - Enable HFST morphology backend
 dev-libs/libxmlb:stemmer - Enable language stemming support
 dev-libs/libzia:ftdi - Enable support for FTDI USB chips
 dev-libs/libzip:mbedtls - Use net-libs/mbedtls as TLS provider
+dev-libs/libzip:tools - Install binary tools to compare, modify and merge zip files
 dev-libs/link-grammar:aspell - Adds support for app-text/aspell spell checker
 dev-libs/link-grammar:hunspell - Adds support for app-text/hunspell spell checker
 dev-libs/log4cplus:iconv - Use inconv for wchar_t <-> char conversions. See also log4cplus's unicode.txt documentation

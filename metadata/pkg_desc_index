@@ -2231,7 +2231,7 @@ app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.5 1.2.6: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.3.0 4.4.0: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
-app-misc/pet 0.3.6: Simple command-line snippet manager
+app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
 app-misc/pfm 2.12.3-r1: A terminal-based file manager written in Perl
 app-misc/physlock 11-r1: lightweight Linux console locking tool
 app-misc/pip 1.2-r3: Wrapper around programs that don't support stdin/stdout
@@ -5192,7 +5192,7 @@ dev-libs/libxmlb 0.1.12 0.1.14 0.1.15: Library to help create and query binary X
 dev-libs/libxslt 1.1.33-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.20 4.21: platform abstraction code for tucnak package
-dev-libs/libzip 1.6.1-r1: Library for manipulating zip archives
+dev-libs/libzip 1.6.1-r1 1.7.0: Library for manipulating zip archives
 dev-libs/light 1.2-r1: A program to control backlights (and other hardware lights)
 dev-libs/link-grammar 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
