@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,8 +22,10 @@ KEYWORDS="~amd64"
 SLOT="0"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/rack-2.0.6:*"
+ruby_add_rdepend ">=dev-ruby/rack-2.0.6:2.0"
 
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e '5igem "rack", "~>2.0.6"' spec/spec_helper.rb || die
 }
