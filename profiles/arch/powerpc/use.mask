@@ -41,10 +41,6 @@ video_cards_amdgpu
 video_cards_radeonsi
 clang
 
-# Jeroen Roovers <jer@gentoo.org> (2015-09-22)
-# sci-libs/mkl is not supported on PPC
-mkl
-
 # Jeroen Roovers <jer@gentoo.org> (2015-05-25)
 # PowerPC has no support for this bootloader (bug #550322)
 gnuefi
