@@ -7,31 +7,24 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 DISTUTILS_USE_SETUPTOOLS=bdepend
-
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="https://matplotlib.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-SLOT="0"
 # Main license: matplotlib
 # Some modules: BSD
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="cairo doc excel examples gtk3 latex qt5 tk wxwidgets"
-
-REQUIRED_USE="
-	test? (
-		cairo latex qt5 tk wxwidgets gtk3
-	)
-"
+REQUIRED_USE="test? ( cairo gtk3 latex qt5 tk )"
 
 # internal copy of pycxx highly patched
 #	dev-python/pycxx
-
 RDEPEND="
 	>=dev-python/cycler-0.10.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/kiwisolver-1.2.0[${PYTHON_USEDEP}]
@@ -176,6 +169,8 @@ python_configure() {
 		tests = $(usex test True False)
 		[gui_support]
 		agg = True
+		gtk = False
+		gtkagg = False
 		pyside = False
 		pysideagg = False
 		qt4 = False
@@ -184,26 +179,13 @@ python_configure() {
 		$(use_setup gtk3)
 		$(use_setup qt5)
 		$(use_setup tk)
+		$(use_setup wxwidgets wx)
 	EOF
 
 	if use gtk3 && use cairo; then
 		echo "gtk3cairo = True" >> "${BUILD_DIR}"/setup.cfg || die
 	else
 		echo "gtk3cairo = False" >> "${BUILD_DIR}"/setup.cfg || die
-	fi
-
-	if python_is_python3; then
-		cat >> "${BUILD_DIR}"/setup.cfg <<- EOF || die
-			gtk = False
-			gtkagg = False
-			wx = False
-			wxagg = False
-		EOF
-	else
-		cat >> "${BUILD_DIR}"/setup.cfg <<-EOF || die
-			$(use_setup gtk2 gtk)
-			$(use_setup wxwidgets wx)
-		EOF
 	fi
 }
 
