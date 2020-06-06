@@ -3748,7 +3748,7 @@ dev-haskell/gnutls 0.2: Bindings for GNU libgnutls
 dev-haskell/graphviz 2999.18.0.2-r1 2999.18.1.2: Bindings to Graphviz for graph visualisation
 dev-haskell/groupoids 3.0.1.1 4.0: This package has been absorbed into semigroupoids 4.0
 dev-haskell/gsasl 0.3.6: Bindings for GNU libgsasl
-dev-haskell/gtk 0.12.5.7.2 0.13.9 0.14.6 0.14.10-r2: Binding to the Gtk+ graphical user interface library
+dev-haskell/gtk 0.12.5.7.2 0.13.9 0.14.6 0.14.10-r2 0.14.10-r3: Binding to the Gtk+ graphical user interface library
 dev-haskell/gtk2hs-buildtools 0.12.5.1-r1 0.13.0.4-r3 0.13.2.2 0.13.5.1: Tools to build the Gtk2Hs suite of User Interface libraries
 dev-haskell/gtk3 0.13.7 0.14.6 0.14.9-r2: Binding to the Gtk+ 3 graphical user interface library
 dev-haskell/hackage-security 0.5.2.2: Hackage security library
@@ -17993,9 +17993,7 @@ x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 430.64-r4 435.21-r4 440
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
-x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
 x11-drivers/xf86-input-libinput 0.29.0 0.30.0: X.org input driver based on libinput
-x11-drivers/xf86-input-mouse 1.9.3: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.5.0: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
 x11-drivers/xf86-input-vmmouse 13.1.0-r1 9999: VMWare mouse input driver
