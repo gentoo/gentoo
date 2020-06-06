@@ -60,7 +60,6 @@ src_configure() {
 		-DDYND_BUILD_BENCHMARKS=OFF
 		-DDYND_BUILD_DOCS="$(usex doc)"
 		-DDYND_BUILD_TESTS="$(usex test)"
-		-DDYND_CUDA="$(usex cuda)"
 		-DDYND_FFTW="$(usex fftw)"
 	)
 	use fftw && mycmakeargs+=( -DFFTW_PATH="${EPREFIX}/usr/include" )
