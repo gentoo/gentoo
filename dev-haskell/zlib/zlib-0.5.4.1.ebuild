@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Compression and decompression in the gzip and zlib formats"
-HOMEPAGE="http://hackage.haskell.org/package/zlib"
+HOMEPAGE="https://hackage.haskell.org/package/zlib"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
