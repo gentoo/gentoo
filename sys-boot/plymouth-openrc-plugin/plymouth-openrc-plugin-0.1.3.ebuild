@@ -12,9 +12,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-DEPEND="sys-apps/openrc:="
+DEPEND="sys-apps/openrc"
 RDEPEND="${DEPEND}
-	sys-boot/plymouth"
+	sys-boot/plymouth
+	!sys-apps/systemd"
 
 src_install() {
 	insinto /$(get_libdir)/rc/plugins
@@ -25,10 +26,5 @@ pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		ewarn "You need to disable 'rc_interactive' feature in /etc/rc.conf to make"
 		ewarn "Plymouth work properly with OpenRC init system."
-	fi
-
-	if has_version sys-apps/systemd; then
-		eerror "sys-apps/systemd is installed, please uninstall this package if you"
-		eerror "are booting with systemd"
 	fi
 }
