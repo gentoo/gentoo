@@ -138,7 +138,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	local x
 	# missing: VPIC freerange libproj4 mrmpi sqlite utf8 verdict xmdf2 xmdf3
@@ -154,8 +154,6 @@ src_prepare() {
 		sed -e "s|\${VTK_BINARY_DIR}/Utilities/Doxygen/doc|${WORKDIR}|" \
 			-i Utilities/Doxygen/CMakeLists.txt || die
 	fi
-
-	cmake-utils_src_prepare
 }
 
 src_configure() {
