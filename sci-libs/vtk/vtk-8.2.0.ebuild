@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
@@ -128,6 +128,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-qt-5.15.patch # bug 726960
 	"${FILESDIR}"/${P}-gcc-10.patch # bug 723374
 	"${FILESDIR}"/${P}-fno-common.patch # bug 721048
+	"${FILESDIR}"/${P}-py38.patch
 )
 
 RESTRICT="test"
