@@ -24,7 +24,7 @@ SRC_URI="
 LICENSE="BSD LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="all-modules aqua boost doc examples imaging ffmpeg gdal java json mpi
+IUSE="all-modules aqua boost doc examples ffmpeg gdal imaging java json mpi
 	odbc offscreen postgres python qt5 R rendering tbb tcl theora tk
 	video_cards_nvidia views web +X xdmf2"
 
@@ -127,6 +127,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.1.0-openmpi-4-compatibility.patch
 	"${FILESDIR}"/${P}-qt-5.15.patch # bug 726960
 	"${FILESDIR}"/${P}-gcc-10.patch # bug 723374
+	"${FILESDIR}"/${P}-fno-common.patch # bug 721048
 )
 
 RESTRICT="test"
