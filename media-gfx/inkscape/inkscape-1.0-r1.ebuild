@@ -3,21 +3,19 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="xml"
-
-RELEASE_SUFFIX="1.0rc1_2020-04-09_09960d6f05"
 
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
+SRC_URI="https://inkscape.org/gallery/item/18460/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms nls
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms
 openmp postscript spell static-libs svg2 visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -100,7 +98,7 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT="test"
 
-S="${WORKDIR}"/${PN}-${RELEASE_SUFFIX}
+S="${WORKDIR}"/${P}_2020-05-01_4035a4fb49
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
@@ -120,6 +118,7 @@ src_configure() {
 	local mycmakeargs=(
 		# -DWITH_LPETOOL   # Compile with LPE Tool and experimental LPEs enabled
 		-DENABLE_POPPLER=ON
+		-DWITH_NLS=ON
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
 		-DWITH_LIBCDR=$(usex cdr)
@@ -134,14 +133,6 @@ src_configure() {
 		-DWITH_LIBVISIO=$(usex visio)
 		-DWITH_LIBWPG=$(usex wpg)
 	)
-	# We should also have,
-	#
-	#   -DWITH_NLS=$(usex nls)
-	#
-	# in this list, but it's broken upstream at the moment:
-	#
-	#  * https://bugs.gentoo.org/699658
-	#  * https://gitlab.com/inkscape/inkscape/issues/168
 
 	cmake_src_configure
 }
@@ -151,7 +142,10 @@ src_install() {
 
 	find "${ED}" -type f -name "*.la" -delete || die
 
-	# No extensions are present in beta1
+	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.bz2' -exec bzip2 -d {} \; || die
+
+	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.gz' -exec gzip -d {} \; || die
+
 	local extdir="${ED}"/usr/share/${PN}/extensions
 
 	if [[ -e "${extdir}" ]] && [[ -n $(find "${extdir}" -mindepth 1) ]]; then
