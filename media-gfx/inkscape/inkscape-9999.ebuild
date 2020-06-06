@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1 git-r3
@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms nls
+IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms
 openmp postscript spell static-libs svg2 visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -117,6 +117,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		# -DWITH_LPETOOL   # Compile with LPE Tool and experimental LPEs enabled
+		-DWITH_NLS=ON
 		-DENABLE_POPPLER=ON
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
@@ -132,14 +133,6 @@ src_configure() {
 		-DWITH_LIBVISIO=$(usex visio)
 		-DWITH_LIBWPG=$(usex wpg)
 	)
-	# We should also have,
-	#
-	#   -DWITH_NLS=$(usex nls)
-	#
-	# in this list, but it's broken upstream at the moment:
-	#
-	#  * https://bugs.gentoo.org/699658
-	#  * https://gitlab.com/inkscape/inkscape/issues/168
 
 	cmake_src_configure
 }
