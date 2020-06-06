@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit gnome2-utils qmake-utils
+inherit qmake-utils xdg-utils
 
 DESCRIPTION="Qt music player"
 HOMEPAGE="https://flavio.tordini.org/musique"
@@ -28,6 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES TODO )
+
 PATCHES=( "${FILESDIR}/${P}-unbundle-qtsingleapplication.patch" )
 
 src_prepare() {
@@ -44,14 +45,10 @@ src_install() {
 	einstalldocs
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

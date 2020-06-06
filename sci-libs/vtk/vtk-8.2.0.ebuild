@@ -7,10 +7,9 @@ PYTHON_COMPAT=( python3_{6,7} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
-inherit flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils toolchain-funcs cmake-utils virtualx webapp
-
 # Short package version
 SPV="$(ver_cut 1-2)"
+inherit flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils toolchain-funcs cmake virtualx webapp
 
 DESCRIPTION="The Visualization Toolkit"
 HOMEPAGE="https://www.vtk.org/"
@@ -23,12 +22,11 @@ SRC_URI="
 	)"
 
 LICENSE="BSD LGPL-2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
-IUSE="
-	all-modules aqua boost doc examples imaging ffmpeg gdal java json mpi
-	odbc offscreen postgres python qt5 rendering tbb theora tk tcl
-	video_cards_nvidia views web R +X xdmf2"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="all-modules aqua boost doc examples imaging ffmpeg gdal java json mpi
+	odbc offscreen postgres python qt5 R rendering tbb tcl theora tk
+	video_cards_nvidia views web +X xdmf2"
 
 REQUIRED_USE="
 	all-modules? ( python xdmf2 boost )
@@ -49,8 +47,8 @@ RDEPEND="
 	dev-libs/jsoncpp:=
 	dev-libs/libxml2:2
 	dev-libs/pugixml
-	media-libs/glew:0=
 	>=media-libs/freetype-2.5.4
+	media-libs/glew:0=
 	>=media-libs/libharu-2.3.0-r2
 	media-libs/libpng:0=
 	media-libs/libtheora
@@ -74,9 +72,32 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg )
 	gdal? ( sci-libs/gdal )
 	java? ( >=virtual/jdk-1.7:* )
+	mpi? (
+		virtual/mpi[cxx,romio]
+		$(python_gen_cond_dep '
+			python? ( dev-python/mpi4py[${PYTHON_MULTI_USEDEP}] )
+		')
+	)
 	odbc? ( dev-db/unixODBC )
 	offscreen? ( media-libs/mesa[osmesa] )
 	postgres? ( dev-db/postgresql:= )
+	python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/sip[${PYTHON_MULTI_USEDEP}]
+		')
+	)
+	qt5? (
+		dev-qt/designer:5
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtopengl:5
+		dev-qt/qtsql:5
+		dev-qt/qtx11extras:5
+		$(python_gen_cond_dep '
+			python? ( dev-python/PyQt5[${PYTHON_MULTI_USEDEP}] )
+		')
+	)
 	R? ( dev-lang/R )
 	tbb? ( dev-cpp/tbb )
 	tcl? ( dev-lang/tcl:0= )
@@ -96,32 +117,16 @@ RDEPEND="
 		')
 	)
 	xdmf2? ( sci-libs/xdmf2 )
-	$(python_gen_cond_dep "
-		mpi? (
-			virtual/mpi[cxx,romio]
-			python? ( dev-python/mpi4py[\${PYTHON_MULTI_USEDEP}] )
-		)
-		python? (
-			${PYTHON_DEPS}
-			dev-python/sip[\${PYTHON_MULTI_USEDEP}]
-		)
-		qt5? (
-			dev-qt/designer:5
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtopengl:5
-			dev-qt/qtsql:5
-			dev-qt/qtx11extras:5
-			python? ( dev-python/PyQt5[\${PYTHON_MULTI_USEDEP}] )
-		)
-	")"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}"/VTK-${PV}
 
 PATCHES=(
-	"${FILESDIR}"/vtk-8.1.0-openmpi-4-compatibility.patch
+	"${FILESDIR}"/${PN}-8.1.0-openmpi-4-compatibility.patch
+	"${FILESDIR}"/${P}-qt-5.15.patch # bug 726960
+	"${FILESDIR}"/${P}-gcc-10.patch # bug 723374
 )
 
 RESTRICT="test"
@@ -133,7 +138,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake_src_prepare
 
 	local x
 	# missing: VPIC freerange libproj4 mrmpi sqlite utf8 verdict xmdf2 xmdf3
@@ -149,8 +154,6 @@ src_prepare() {
 		sed -e "s|\${VTK_BINARY_DIR}/Utilities/Doxygen/doc|${WORKDIR}|" \
 			-i Utilities/Doxygen/CMakeLists.txt || die
 	fi
-
-	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -292,13 +295,13 @@ src_configure() {
 		export F77=mpif77
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
 	use web && webapp_src_preinst
 
-	cmake-utils_src_install
+	cmake_src_install
 
 	use java && java-pkg_regjar "${ED}"/usr/$(get_libdir)/${PN}.jar
 
