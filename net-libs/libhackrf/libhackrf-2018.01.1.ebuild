@@ -11,7 +11,6 @@ HOMEPAGE="http://greatscottgadgets.com/hackrf/"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/mossmann/hackrf.git"
 	inherit git-r3
-	KEYWORDS=""
 	EGIT_CHECKOUT_DIR="${WORKDIR}/hackrf"
 	S="${WORKDIR}/hackrf/host/libhackrf"
 else
@@ -28,8 +27,8 @@ DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	mycmakeargs=(
-		-DENABLE_INSTALL_UDEV_RULES="$(usex udev)"
+	local mycmakeargs=(
+		-DINSTALL_UDEV_RULES="$(usex udev)"
 	)
 	if use udev; then
 		mycmakeargs+=(
