@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Dead simple tool to sign files and verify signatures"
 HOMEPAGE="https://github.com/jedisct1/minisign"
@@ -23,3 +23,8 @@ IUSE=""
 
 DEPEND=">=dev-libs/libsodium-1.0.16:=[-minimal]"
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local mycmakeargs=( -DCMAKE_STRIP="${EPREFIX}/bin/true" )
+	cmake_src_configure
+}
