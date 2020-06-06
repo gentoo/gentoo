@@ -16,6 +16,10 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
 IUSE=""
 
+all_ruby_prepare() {
+	sed -i -e '/simplecov/,/^end/ s:^:#:' test/test_helper.rb || die
+}
+
 each_ruby_test() {
 	${RUBY} -Ilib:test:. -e 'Dir["test/**/*_test.rb"].each{|f| require f}' || die
 }
