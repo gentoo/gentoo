@@ -1,0 +1,70 @@
+# Upstream issue: https://gitlab.xfce.org/xfce/xfce4-settings/-/issues/176
+# This issue has been fixed in upstream master, so this patch won't be need in the future.
+
+--- ./Makefile.am	2020-05-27 02:54:17.000000000 +0200
++++ ./Makefile.am	2020-05-30 23:53:57.647209221 +0200
+@@ -6,15 +6,11 @@
+ 	xfce4-settings-manager \
+ 	xfce4-settings-editor \
+ 	xfsettingsd \
+-	po
+-
+-if HAVE_COLORD
+-SUBDIRS += \
++	po \
+ 	icons
+ 
+ distuninstallcheck_listfiles = 						\
+ 	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
+-endif
+ 
+ EXTRA_DIST = \
+ 	intltool-extract.in \
+--- ./Makefile.in	2020-05-27 03:07:44.000000000 +0200
++++ ./Makefile.in	2020-05-30 23:54:08.477620446 +0200
+@@ -87,10 +87,6 @@
+ POST_UNINSTALL = :
+ build_triplet = @build@
+ host_triplet = @host@
+-@HAVE_COLORD_TRUE@am__append_1 = \
+-@HAVE_COLORD_TRUE@	icons
+-
+-distuninstallcheck_listfiles = find . -type f -print
+ subdir = .
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/configure.ac
+@@ -160,8 +156,7 @@
+ ETAGS = etags
+ CTAGS = ctags
+ CSCOPE = cscope
+-DIST_SUBDIRS = common dialogs xfce4-settings-manager \
+-	xfce4-settings-editor xfsettingsd po icons
++DIST_SUBDIRS = $(SUBDIRS)
+ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in AUTHORS \
+ 	COPYING ChangeLog INSTALL NEWS README TODO compile \
+ 	config.guess config.sub install-sh ltmain.sh missing
+@@ -463,10 +457,17 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+-SUBDIRS = common dialogs xfce4-settings-manager xfce4-settings-editor \
+-	xfsettingsd po $(am__append_1)
+-@HAVE_COLORD_TRUE@distuninstallcheck_listfiles = \
+-@HAVE_COLORD_TRUE@	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
++SUBDIRS = \
++	common \
++	dialogs \
++	xfce4-settings-manager \
++	xfce4-settings-editor \
++	xfsettingsd \
++	po \
++	icons
++
++distuninstallcheck_listfiles = \
++	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
+ 
+ EXTRA_DIST = \
+ 	intltool-extract.in \
+ dist-tarZ: distdir
+ 	@echo WARNING: "Support for distribution archives compressed with" \
+ 		       "legacy program 'compress' is deprecated." >&2
