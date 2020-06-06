@@ -52,6 +52,7 @@ static_to_shared() {
 }
 
 src_prepare() {
+	append-fflags -fallow-argument-mismatch
 	sed -e "s:^\(CC\s*=\).*:\1$(tc-getCC):" \
 		-e "s:^\(FC\s*=\).*:\1$(tc-getFC):" \
 		-e "s:^\(FL\s*=\).*:\1$(tc-getFC):" \
