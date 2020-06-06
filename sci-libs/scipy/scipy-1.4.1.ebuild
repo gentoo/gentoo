@@ -89,6 +89,9 @@ python_prepare_all() {
 	export SCIPY_FCONFIG="config_fc --noopt --noarch"
 	append-fflags -fPIC
 
+	# Remove once upstream PR #11842 lands into next release
+	append-fflags -fallow-argument-mismatch
+
 	local libdir="${EPREFIX}"/usr/$(get_libdir)
 	cat >> site.cfg <<-EOF || die
 		[blas]
