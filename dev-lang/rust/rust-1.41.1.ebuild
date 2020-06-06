@@ -96,10 +96,10 @@ REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 "
 
 QA_FLAGS_IGNORED="
-	usr/bin/*-${PV}
-	usr/lib*/lib*.so
-	usr/lib/rustlib/*/codegen-backends/librustc_codegen_llvm-llvm.so
-	usr/lib/rustlib/*/lib/lib*.so
+	usr/bin/.*-${PV}
+	usr/lib.*/lib.*.so
+	usr/lib/rustlib/.*/codegen-backends/librustc_codegen_llvm-llvm.so
+	usr/lib/rustlib/.*/lib/lib.*.so
 "
 
 QA_SONAME="usr/lib.*/librustc_macros.*.so"
