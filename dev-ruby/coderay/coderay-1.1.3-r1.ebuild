@@ -34,7 +34,7 @@ IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile || die
-	sed -i -e '/git ls-files/ s:^:#:' coderay.gemspec || die
+	sed -i -e '/git ls-files/ s:^:#:' -e 's/.rc.*"/"/' coderay.gemspec || die
 
 	# Fix failing tests for lazy evaluation in ruby26
 	sed -i -e 's/\.filter$/.filter.to_a/' test/unit/filter.rb || die
