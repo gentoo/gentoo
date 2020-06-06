@@ -13,7 +13,6 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <longdescription>CFFI bindings for the Argon2 password hashing library.</longdescription>
   <upstream>
     <remote-id type="pypi">argon2-cffi</remote-id>
     <remote-id type="github">hynek/argon2-cffi</remote-id>
