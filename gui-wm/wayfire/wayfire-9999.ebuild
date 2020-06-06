@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+gles2 +system-wfconfig +system-wlroots elogind systemd debug"
+IUSE="+gles +system-wfconfig +system-wlroots elogind systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
@@ -35,10 +35,10 @@ DEPEND="
 	x11-libs/cairo:=[X,svg]
 	x11-libs/libxkbcommon:=[X]
 	x11-libs/pixman
-	gles2? ( media-libs/libglvnd[X] )
-	system-wfconfig? ( ~gui-libs/wf-config-${PV}[debug=] )
+	gles? ( media-libs/libglvnd[X] )
+	system-wfconfig? ( ~gui-libs/wf-config-${PV} )
 	!system-wfconfig? ( !gui-libs/wf-config )
-	system-wlroots? ( >=gui-libs/wlroots-0.10.1[elogind=,systemd=,X] )
+	system-wlroots? ( ~gui-libs/wlroots-9999[elogind=,systemd=,X] )
 	!system-wlroots? ( !gui-libs/wlroots )
 "
 
@@ -59,13 +59,8 @@ src_configure() {
 	local emesonargs=(
 		$(meson_feature system-wfconfig use_system_wfconfig)
 		$(meson_feature system-wlroots use_system_wlroots)
-		$(meson_use gles2 enable_gles32)
+		$(meson_use gles enable_gles32)
 	)
-	if use debug; then
-		emesonargs+=(
-			"-Db_sanitize=address,undefined"
-		)
-	fi
 	meson_src_configure
 }
 

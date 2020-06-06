@@ -15,9 +15,8 @@
         <name>Proxy Maintainers</name>
     </maintainer>
     <use>
-        <flag name="gles2">use libglvnd to do animations more efficiently</flag>
+        <flag name="gles">use libglvnd to do animations more efficiently</flag>
         <flag name='system-wfconfig'>use the system-wide wf-config, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
         <flag name='system-wlroots'>use the system wide wlroots, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
-        <flag name='debug'>add debugging symbols for error reporting. DISABLE ALL SYSTEM USE FLAGS BEFORE REPORTING BUGS.</flag>
     </use>
 </pkgmetadata>
