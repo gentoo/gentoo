@@ -1,21 +1,21 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Can switch to EAPI=7 when wxwidgets eclass also supports it
-EAPI=6
-PYTHON_COMPAT=( python3_{6,7} )
+EAPI=7
+
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit check-reqs cmake-utils eapi7-ver eutils gnome2-utils python-single-r1 toolchain-funcs wxwidgets xdg-utils
+inherit check-reqs cmake eutils python-single-r1 toolchain-funcs wxwidgets xdg-utils
 
 DESCRIPTION="Electronic Schematic and PCB design tools"
-HOMEPAGE="http://www.kicad-pcb.org"
-SRC_URI="https://launchpad.net/${PN}/5.0/${PV}/+download/${P}.tar.xz"
+HOMEPAGE="https://www.kicad-pcb.org"
+SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc examples github +ngspice occ +oce openmp +python"
 
 REQUIRED_USE="
@@ -23,37 +23,44 @@ REQUIRED_USE="
 	?? ( occ oce )
 "
 
-COMMON_DEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
-	$(python_gen_cond_dep "
-		python? (
-			dev-python/wxpython:4.0[\${PYTHON_MULTI_USEDEP}]
-			${PYTHON_DEPS}
-		)
-		>=dev-libs/boost-1.61:=[context,nls,threads,python?,\${PYTHON_MULTI_USEDEP}]
-	")
-	github? ( net-misc/curl:=[ssl] )
-	media-libs/glew:0=
-	media-libs/glm
+COMMON_DEPEND="
+	>=dev-libs/boost-1.61:=[context,nls,threads]
 	media-libs/freeglut
+	media-libs/glew:0=
+	>=media-libs/glm-0.9.9.1
 	media-libs/mesa[X(+)]
+	>=x11-libs/cairo-1.8.8:=
+	>=x11-libs/pixman-0.30
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+	github? ( net-misc/curl:=[ssl] )
 	ngspice? (
 		>sci-electronics/ngspice-27[shared]
 	)
 	occ? ( >=sci-libs/opencascade-6.8.0:= )
 	oce? ( sci-libs/oce )
-	>=x11-libs/cairo-1.8.8:=
-	>=x11-libs/pixman-0.30"
+	python? (
+		$(python_gen_cond_dep '
+			>=dev-libs/boost-1.61:=[context,nls,threads,python,${PYTHON_MULTI_USEDEP}]
+			dev-python/wxpython:4.0[${PYTHON_MULTI_USEDEP}]
+		')
+		${PYTHON_DEPS}
+	)
+"
 DEPEND="${COMMON_DEPEND}
-	doc? ( app-doc/doxygen )
 	python? ( >=dev-lang/swig-3.0:0 )"
 RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu
 "
+BDEPEND="doc? ( app-doc/doxygen )"
 CHECKREQS_DISK_BUILD="800M"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}-5.1.0-help.patch"
-	"${FILESDIR}"/"${PN}-5.1.0-swig-4.0.0.patch"
+	"${FILESDIR}/${PN}-5.1.5-help.patch"
+	"${FILESDIR}/${P}-ninja-build.patch"
+	"${FILESDIR}/${PN}-5.1.5-strict-aliasing.patch"
+	"${FILESDIR}/${PN}-5.1.5-algorithm-header.patch"
+	"${FILESDIR}/${P}-metainfo.patch"
+	"${FILESDIR}/${PN}-5.1.5-ldflags.patch"
 )
 
 pkg_setup() {
@@ -63,11 +70,22 @@ pkg_setup() {
 	check-reqs_pkg_setup
 }
 
+src_unpack() {
+	default_src_unpack
+	# For the metainfo patch to work the kicad.appdata.xml has to be moved to
+	# avoid QA issue.  This is needed because /usr/share/appdata location is
+	# deprecated, it should not be used anymore by new software.
+	# Appdata/Metainfo files should be installed into /usr/share/metainfo
+	# directory. as per
+	# https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html
+	mv "${S}/resources/linux/appdata" "${S}/resources/linux/metainfo" || die "Appdata move failed"
+}
+
 src_configure() {
 	xdg_environment_reset
 
 	local mycmakeargs=(
-		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${P}"
+		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PF}"
 		-DKICAD_HELP="${EPREFIX}/usr/share/doc/${PN}-doc-${PV}"
 		-DBUILD_GITHUB_PLUGIN="$(usex github)"
 		-DKICAD_SCRIPTING="$(usex python)"
@@ -80,6 +98,7 @@ src_configure() {
 		-DKICAD_USE_OCC="$(usex occ)"
 		-DKICAD_USE_OCE="$(usex oce)"
 		-DKICAD_INSTALL_DEMOS="$(usex examples)"
+		-DCMAKE_SKIP_RPATH="ON"
 	)
 	use python && mycmakeargs+=(
 		-DPYTHON_DEST="$(python_get_sitedir)"
@@ -92,18 +111,18 @@ src_configure() {
 		-DOCC_LIBRARY_DIR="${CASROOT}"/lib
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc; then
-		cmake-utils_src_compile dev-docs doxygen-docs
+		cmake_src_compile dev-docs doxygen-docs
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use python && python_optimize
 	if use doc ; then
 		dodoc uncrustify.cfg
@@ -123,11 +142,11 @@ pkg_postinst() {
 
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
