@@ -47,6 +47,14 @@ PATCHES=(
 	"${FILESDIR}/kernelshark-1.0-desktop-version.patch"
 )
 
+src_prepare() {
+	if ! [[ ${PV} =~ [9]{4,} ]]; then
+		PATCHES+=( "${FILESDIR}/kernelshark-1.0-gcc10.patch" )
+	fi
+
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-D_INSTALL_PREFIX="${EPREFIX}/usr"
