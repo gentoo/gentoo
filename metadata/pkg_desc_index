@@ -13000,7 +13000,7 @@ media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio met
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
 media-libs/theoraplay 0_pre20180524: Simple library to make decoding of Ogg Theora videos easier
 media-libs/tiff 4.1.0: Tag Image File Format (TIFF) library
-media-libs/tremor 0_pre20130223-r1 0_pre20130223-r2: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
+media-libs/tremor 0_pre20130223-r2: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1 3.1b-r3: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.7.1: Audio processing system for plugins to extract information from audio data
@@ -18842,7 +18842,7 @@ xfce-extra/thunar-vcs-plugin 0.2.0: Adds Subversion and GIT actions to the conte
 xfce-extra/thunar-volman 0.9.5: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 0.2.8: A thumbnail service for Thunar
-xfce-extra/xfce4-alsa-plugin 0.2.1: Simple ALSA volume control for xfce4-panel
+xfce-extra/xfce4-alsa-plugin 0.2.1 0.3.0: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-clipman-plugin 1.4.4 1.6.1: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-cpufreq-plugin 1.2.1: A panel plugin for showing information about cpufreq settings
