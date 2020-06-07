@@ -73,6 +73,8 @@ x265_variant_src_configure() {
 	mkdir -p "${BUILD_DIR}" || die
 	pushd "${BUILD_DIR}" >/dev/null || die
 
+	einfo "Configuring variant: ${MULTIBUILD_VARIANT} for ABI: ${ABI}"
+
 	local mycmakeargs=( "${myabicmakeargs[@]}" )
 	case "${MULTIBUILD_VARIANT}" in
 		"main12")
@@ -91,7 +93,12 @@ x265_variant_src_configure() {
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
 			# disable altivec for 12bit build #607802#c5
-			[[ ${ABI} = ppc* ]] && mycmakeargs+=( -DENABLE_ALTIVEC=OFF )
+			if [[ ${ABI} = ppc* ]] ; then
+				mycmakeargs+=(
+					-DENABLE_ALTIVEC=OFF
+					-DCPU_POWER8=$(usex power8 ON OFF)
+				)
+			fi
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -108,7 +115,12 @@ x265_variant_src_configure() {
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
 			# disable altivec for 10bit build #607802#c5
-			[[ ${ABI} = ppc* ]] && mycmakeargs+=( -DENABLE_ALTIVEC=OFF )
+			if [[ ${ABI} = ppc* ]] ; then
+				mycmakeargs+=(
+					-DENABLE_ALTIVEC=OFF
+					-DCPU_POWER8=$(usex power8 ON OFF)
+				)
+			fi
 			;;
 		"main")
 			if (( "${#MULTIBUILD_VARIANTS[@]}" > 1 )) ; then
@@ -126,7 +138,7 @@ x265_variant_src_configure() {
 					-DLINKED_12BIT=$(usex 12bit)
 				)
 				if [[ ${ABI} = ppc* ]] ; then
-					myabicmakeargs+=(
+					mycmakeargs+=(
 						-DCPU_POWER8=$(usex power8 ON OFF)
 						-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_altivec ON OFF)
 					)
