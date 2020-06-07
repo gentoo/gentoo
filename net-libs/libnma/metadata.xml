@@ -5,4 +5,7 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
+	<use>
+		<flag name="pkcs11">Enable PKCS#11 support in certificate chooser via <pkg>app-crypt/gcr</pkg></flag>
+	</use>
 </pkgmetadata>
