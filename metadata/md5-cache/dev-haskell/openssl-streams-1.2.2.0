@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm setup test
 DEPEND=>=dev-haskell/hsopenssl-0.10.3:=[profile?] <dev-haskell/hsopenssl-0.12:=[profile?] >=dev-haskell/io-streams-1.0:=[profile?] <dev-haskell/io-streams-1.6:=[profile?] >=dev-haskell/network-2.4:=[profile?] <dev-haskell/network-3.1:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.10 test? ( >=dev-haskell/hunit-1.2 <dev-haskell/hunit-2 >=dev-haskell/test-framework-0.8.0.3 <dev-haskell/test-framework-0.9 >=dev-haskell/test-framework-hunit-0.3 <dev-haskell/test-framework-hunit-0.4 ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=OpenSSL network support for io-streams
 EAPI=7
-HOMEPAGE=http://hackage.haskell.org/package/openssl-streams
+HOMEPAGE=https://hackage.haskell.org/package/openssl-streams
 IUSE=doc hscolour profile test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0/1.2.2.0
 SRC_URI=https://hackage.haskell.org/package/openssl-streams-1.2.2.0/openssl-streams-1.2.2.0.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=05c82cb961d09b98b2706b018276af94
+_md5_=7f53fa86191260e945b22cac669b7561
