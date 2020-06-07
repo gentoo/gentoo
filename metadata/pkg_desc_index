@@ -946,7 +946,7 @@ app-crypt/paperkey 1.5 1.6: OpenPGP key archiver
 app-crypt/pdfcrack 0.16 0.18 0.19: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 113: Tools for manipulating signed PE-COFF binaries
 app-crypt/pgpdump 0.33: A PGP packet visualizer
-app-crypt/pinentry 1.0.0-r2 1.0.0-r3 1.1.0-r1 1.1.0-r2 1.1.0-r3: Simple passphrase entry dialogs which utilize the Assuan protocol
+app-crypt/pinentry 1.1.0-r3: Simple passphrase entry dialogs which utilize the Assuan protocol
 app-crypt/pius 2.2.4 3.0.0: A tool for signing and email all UIDs on a set of PGP keys
 app-crypt/pkcrack 1.2.2-r1: PkZip cipher breaker
 app-crypt/pkcs11-data 0.7.4: Utilities for PKCS#11 data object manipulation in
@@ -11501,7 +11501,7 @@ gnome-extra/gnome-calendar 3.34.2: Manage your online calendars with simple and 
 gnome-extra/gnome-characters 3.32.1 3.34.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.34.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.32.0: GNOME color profile tools
-gnome-extra/gnome-commander 1.10.0 1.10.1: A graphical, full featured, twin-panel file manager
+gnome-extra/gnome-commander 1.10.0 1.10.1 1.10.2: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.30.2 3.34.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
