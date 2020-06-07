@@ -273,13 +273,6 @@ LICENSE="MIT Apache-2.0 BSD BSD-2 MPL-2.0"
 SLOT="0"
 
 RDEPEND=">=dev-vcs/git-1.7.3"
-BDEPEND=">=dev-lang/go-1.13"
-
-unset GOBIN GOPATH GOCODE
-
-PATCHES=(
-	"${FILESDIR}/cli-0.9.0-manpage-build-gen-docs.patch"
-)
 
 src_unpack() {
 	if [[ ${PV} == *9999 ]]; then
@@ -292,17 +285,19 @@ src_unpack() {
 
 src_compile() {
 	[[ ${PV} == *9999 ]] || export GH_VERSION="v${PV}"
-	# Golang LDFLAGS are not the same as GCC/Binutils LDFLAGS
+	# Go LDFLAGS are not the same as GCC/Binutils LDFLAGS
 	unset LDFLAGS
+	# Once we set up cross compiling, this line will need to be adjusted
+	# to compile for the target.
+	# Everything else in this function happens on the host.
+	emake
 
-	emake bin/gh # default target
-
-	einfo "Building manpage"
+	einfo "Building man pages"
 	emake manpages
 
-	einfo "Building completion"
-	bin/gh completion -s bash > gh.bash-completion || die
-	bin/gh completion -s zsh > gh.zsh-completion || die
+	einfo "Building completions"
+	go run ./cmd/gh completion -s bash > gh.bash-completion || die
+	go run ./cmd/gh completion -s zsh > gh.zsh-completion || die
 }
 
 src_install() {
