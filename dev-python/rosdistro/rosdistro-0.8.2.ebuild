@@ -13,7 +13,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Tools to work with catkinized rosdistro files"
-HOMEPAGE="http://wiki.ros.org/rosdistro"
+HOMEPAGE="https://wiki.ros.org/rosdistro"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
