@@ -26,7 +26,7 @@ else
 fi
 
 DESCRIPTION="A ROS-independent package for logging into rosconsole/rosout"
-HOMEPAGE="http://wiki.ros.org/console_bridge"
+HOMEPAGE="https://wiki.ros.org/console_bridge"
 LICENSE="BSD"
 SLOT="0/1"
 IUSE="test"
