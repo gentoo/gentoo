@@ -25,7 +25,7 @@ DOCS=( README LIESMICH )
 src_prepare() {
 	sed -i Makefile \
 		-e "s:usr/local:usr:" \
-		-e "s:-o vdr2jpeg:\$(LDFLAGS) -o vdr2jpeg:" || die
+		-e "s:-o vdr2jpeg:\$(LDFLAGS) -shared -o vdr2jpeg:" || die
 
 	default
 }
