@@ -22,6 +22,7 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		app-arch/par2cmdline
 		dev-python/mock[${PYTHON_USEDEP}]
