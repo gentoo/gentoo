@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Python package for convex optimization"
-HOMEPAGE="http://cvxopt.org/ https://github.com/cvxopt/cvxopt"
+HOMEPAGE="https://cvxopt.org/ https://github.com/cvxopt/cvxopt"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
