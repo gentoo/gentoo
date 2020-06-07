@@ -13,7 +13,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Command-line tools for maintaining a workspace of projects for ROS"
-HOMEPAGE="http://wiki.ros.org/rosinstall http://wiki.ros.org/roslocate"
+HOMEPAGE="https://wiki.ros.org/rosinstall https://wiki.ros.org/roslocate"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
