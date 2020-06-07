@@ -3250,6 +3250,7 @@ games-fps/prboom-plus:net - Enable support for network play
 games-fps/prboom-plus:portmidi - Enable support for MIDI via media-libs/portmidi
 games-fps/prboom-plus:sdl2-image - Enable support for high-resolution texture support via media-libs/sdl2-image
 games-fps/prboom-plus:sdl2-mixer - Enable support for MIDI via media-libs/sdl2-mixer
+games-fps/prboom-plus:server - Build PrBoom-Plus server
 games-fps/quake2-icculus:demo - Install the demo files (quake2-demodata) and configure for use
 games-fps/quake2-icculus:qmax - Build the pretty version (quake max)
 games-fps/quake2-icculus:rogue - Build support for the 'Ground Zero' Mission Pack (rogue)

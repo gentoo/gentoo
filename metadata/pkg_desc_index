@@ -11033,7 +11033,7 @@ games-fps/gzdoom 4.3.3: A modder-friendly OpenGL source port based on the DOOM e
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
-games-fps/prboom-plus 2.5.1.5.4540.1: An enhanced clone of the classic first-person shooter Doom
+games-fps/prboom-plus 2.5.1.7.82: An enhanced clone of the classic first-person shooter Doom
 games-fps/quake1-data 2.40: iD Software's Quake 1 ... the data files
 games-fps/quake1-demodata 1.06: Demo data for Quake 1
 games-fps/quake1-killer 2.2z: The Killer Quake Patch
