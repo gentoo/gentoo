@@ -13,7 +13,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Standalone Python library for the catkin package system"
-HOMEPAGE="http://wiki.ros.org/catkin_pkg"
+HOMEPAGE="https://wiki.ros.org/catkin_pkg"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
