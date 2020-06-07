@@ -51,7 +51,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	tc-export CC CXX PKG_CONFIG
+	tc-export AR CC CXX PKG_CONFIG
 	export V=1
 	export BUILDTYPE=Release
 
