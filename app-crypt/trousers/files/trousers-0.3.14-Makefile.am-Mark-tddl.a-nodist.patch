@@ -1,0 +1,25 @@
+From 5b1dbb5f8eada9002ec10f4ebc0bc418272e58b2 Mon Sep 17 00:00:00 2001
+From: Salah Coronya <salah.coronya@gmail.com>
+Date: Sun, 7 Jun 2020 12:34:03 -0500
+Subject: [PATCH] src/tddl/Makefile.am: Mark tddl.a nodist
+
+This makes tddl.a nodist like the others, so it is not installed
+
+Signed-off-by: Salah Coronya <salah.coronya@gmail.com>
+---
+ src/tddl/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tddl/Makefile.am b/src/tddl/Makefile.am
+index 607eb8e..2cd599b 100644
+--- a/src/tddl/Makefile.am
++++ b/src/tddl/Makefile.am
+@@ -1,4 +1,4 @@
+-lib_LIBRARIES=libtddl.a
++noinst_LIBRARIES=libtddl.a
+ 
+ libtddl_a_SOURCES=tddl.c
+ libtddl_a_CFLAGS=-DAPPID=\"TCSD\ TDDL\" -I${top_srcdir}/src/include -fPIE -DPIE
+-- 
+2.26.2
+
