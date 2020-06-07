@@ -37,6 +37,7 @@ RDEPEND="
 	media-libs/smpeg
 "
 DEPEND="${RDEPEND}
+	app-arch/p7zip
 	app-arch/unzip
 "
 
