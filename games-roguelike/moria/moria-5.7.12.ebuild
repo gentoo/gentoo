@@ -22,10 +22,7 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/umoria-${PV}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-gentoo-paths.patch"
-	"${FILESDIR}/${P}-tinfo.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-5.7.10-gentoo-paths.patch" )
 
 src_prepare() {
 	cmake_src_prepare
@@ -45,7 +42,7 @@ src_install() {
 	fperms g+w /var/lib/moria/scores.dat
 
 	doman "${FILESDIR}"/${PN}.6
-	dodoc -r AUTHORS README.md docs
+	dodoc -r AUTHORS CHANGELOG.md CONTRIBUTING.md README.md historical
 
 	# The game binary will look for plain text LICENSE
 	insinto /usr/share/doc/${PF}
