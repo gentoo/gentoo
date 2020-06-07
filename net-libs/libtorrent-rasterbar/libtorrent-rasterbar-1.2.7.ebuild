@@ -71,6 +71,7 @@ src_configure() {
 		$(use_enable test tests)
 		--with-boost="${EPREFIX}/usr"
 		--with-libiconv
+		--enable-logging
 	)
 	econf "${myeconfargs[@]}"
 
