@@ -13,7 +13,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Standalone Python library for the ROS package system"
-HOMEPAGE="http://wiki.ros.org/rospkg"
+HOMEPAGE="https://wiki.ros.org/rospkg"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
