@@ -45,6 +45,8 @@ DEPEND="${RDEPEND}
 	x11-libs/libX11
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
+
 src_test() {
 	# test needs DBus, bug 675548
 	local myctestargs=(
