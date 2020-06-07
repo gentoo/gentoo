@@ -38,10 +38,9 @@ src_prepare() {
 
 	# upstream .pc is aimed at Qt4
 	sed \
-		-e "s/-lkqoauth/-lkqoauth-qt5/g" \
+		-e "/^Libs/s/lkqoauth/&-qt5/" \
 		-e "/^libdir/s/lib$/$(get_libdir)/" \
-		-e "s/QtCore/Qt5Core/g" \
-		-e "s/QtNetwork/Qt5Network/g" \
+		-e "/^Requires/s/Qt/Qt5/g" \
 		-i src/pcfile.sh || die
 }
 
