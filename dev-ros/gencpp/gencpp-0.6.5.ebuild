@@ -9,7 +9,7 @@ KEYWORDS="~amd64 ~arm"
 inherit ros-catkin
 
 DESCRIPTION="ROS C++ message definition and serialization generators"
-HOMEPAGE="http://wiki.ros.org/gencpp"
+HOMEPAGE="https://wiki.ros.org/gencpp"
 LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE=""
