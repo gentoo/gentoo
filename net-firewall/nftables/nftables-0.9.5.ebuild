@@ -10,7 +10,8 @@ inherit autotools linux-info python-r1 systemd
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
 #SRC_URI="https://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
+SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2
+	!doc? ( https://dev.gentoo.org/~polynomial-c/dist/nftables/${P}-manpages.tar.xz )"
 
 LICENSE="GPL-2"
 SLOT="0"
