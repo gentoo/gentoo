@@ -57,7 +57,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	html? ( sys-apps/man2html )"
 
-RDEPEND="${OMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	acct-user/slurm
 	acct-group/slurm
 	dev-libs/libcgroup"
