@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{3_6,3_7} )
 inherit distutils-r1 llvm
 
 DESCRIPTION="Python wrapper around the llvm C++ library"
-HOMEPAGE="http://llvmlite.pydata.org/"
+HOMEPAGE="https://llvmlite.pydata.org/"
 SRC_URI="https://github.com/numba/llvmlite/archive/v${PV/_/}.tar.gz -> ${P/_/}.gh.tar.gz"
 
 LICENSE="BSD"
