@@ -36,6 +36,7 @@
 # py2 only. dead upstream. m-n. rdep.
 # Masked for removal in 15 days
 net-misc/charm
+sys-cluster/polysh
 
 # Jonas Stein <jstein@gentoo.org> (2020-06-07)
 # Last rite unusable package.
