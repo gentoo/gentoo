@@ -199,7 +199,6 @@ python_configure() {
 wrap_setup() {
 	local MAKEOPTS=-j1
 	local -x MPLSETUPCFG="${BUILD_DIR}"/setup.cfg
-	unset DISPLAY
 	"$@"
 }
 
@@ -217,6 +216,10 @@ python_compile_all() {
 		VARTEXFONTS="${T}"/fonts \
 		emake SPHINXOPTS= O=-Dplot_formats=png:100 html
 	fi
+}
+
+src_test() {
+	virtx distutils-r1_src_test
 }
 
 python_test() {

@@ -13,29 +13,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-		fzf is a general-purpose command-line fuzzy finder. It's an interactive Unix filter for command-line
-		that can be used with any list; files, command history, processes, hostnames, bookmarks, git commits, etc.
-		Fuzzy completion for files and directories can be triggered if the word before the cursor ends with the
-		trigger sequence which is by default **.
-		To use the fzf key-binding for your shell, make sure to source the right file for your shell
-		from /usr/share/fzf/
-
-		For bash, add the following line to ~/.bashrc
-		# source /usr/share/fzf/fzf.sh
-
-		Or symlink the fzf bash script
-		# ln -s /usr/share/fzf/fzf.sh /etc/bash/bashrc.d/fzf.sh
-
-		For fish, make sure to symlink the file
-		# ln -s /usr/share/fzf/fzf.fish /usr/share/fish/functions/fzf.fish
-
-		For zsh, make sure to symlink the file
-		# ln -s /usr/share/fzf/fzf.fish /usr/share/zsh/site-contrib/fzf.fish
-
-		Or add the following line to your ~/.zshrc
-		# source /usr/share/fzf/fzf.zsh
-	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">junegunn/fzf</remote-id>
