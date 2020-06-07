@@ -132,8 +132,12 @@ python_prepare_all() {
 #	EOF
 
 	local PATCHES=(
-		"${FILESDIR}"/${PN}-3.1.2-qhull.patch
+		"${FILESDIR}"/matplotlib-3.1.2-qhull.patch
+		"${FILESDIR}"/matplotlib-3.2.1-test.patch
 	)
+
+	# requires jupyter-nbconvert
+	rm lib/matplotlib/tests/test_backend_nbagg.py || die
 
 	sed \
 		-e 's/matplotlib.pyparsing_py[23]/pyparsing/g' \
