@@ -13,7 +13,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Command-line tool for installing ROS system dependencies"
-HOMEPAGE="http://wiki.ros.org/rosdep"
+HOMEPAGE="https://wiki.ros.org/rosdep"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
