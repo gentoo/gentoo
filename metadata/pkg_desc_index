@@ -10825,7 +10825,7 @@ games-arcade/primateplunge 1.1-r2: Help poor Monkey navigate his way down throug
 games-arcade/retrobattle 1.0.0-r1: A NES-like platform arcade game
 games-arcade/ri-li 2.0.1-r1: Drive a toy wood engine and collect all the coaches
 games-arcade/rockdodger 0.6.0a-r1: Dodge the rocks for as long as possible until you die
-games-arcade/rocksndiamonds 4.1.0.0: A Boulderdash clone
+games-arcade/rocksndiamonds 4.1.0.0 4.1.4.1: A Boulderdash clone
 games-arcade/sable 1.0-r1: A frantic 3D space shooter
 games-arcade/savagewheels 1.6.1-r1: 2D car crashing game similar to the old classic Destruction Derby.
 games-arcade/sdb 1.0.2-r1: A 2D top-down action game; escape a facility full of walking death machines
