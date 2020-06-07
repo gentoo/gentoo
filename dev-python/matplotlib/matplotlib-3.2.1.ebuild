@@ -9,9 +9,13 @@ PYTHON_REQ_USE='tk?,threads(+)'
 DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
 
+FT_PV=2.6.1
 DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="https://matplotlib.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	test? (
+		https://downloads.sourceforge.net/project/freetype/freetype2/${FT_PV}/freetype-${FT_PV}.tar.gz
+	)"
 
 # Main license: matplotlib
 # Some modules: BSD
@@ -21,7 +25,6 @@ LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="cairo doc excel examples gtk3 latex qt5 tk wxwidgets"
-REQUIRED_USE="test? ( cairo gtk3 latex qt5 tk )"
 
 # internal copy of pycxx highly patched
 #	dev-python/pycxx
@@ -85,7 +88,11 @@ BDEPEND="
 		dev-texlive/texlive-latexrecommended
 		>=media-gfx/graphviz-2.42.3[cairo]
 	)
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[cairo?,${PYTHON_USEDEP}]
+		x11-libs/gtk+:3[introspection]
+	)
 "
 
 # A few C++ source files are written to srcdir.
@@ -139,10 +146,6 @@ python_prepare_all() {
 	export XDG_RUNTIME_DIR="${T}/runtime-dir"
 	mkdir "${XDG_RUNTIME_DIR}" || die
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
-
-	local freetype_version
-	freetype_version="$(best_version media-libs/freetype | sed -r -e 's/.*-([0-9].*[0-9])(-r[0-9]+|$)/\1/g')"
-	sed -i -r -e "s:(LOCAL_FREETYPE_VERSION =).*:\\1 \"${freetype_version}\":g" setupext.py lib/matplotlib/__init__.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -213,9 +216,13 @@ python_compile_all() {
 }
 
 python_test() {
-	wrap_setup distutils_install_for_testing
+	# we need to rebuild mpl against bundled freetype, otherwise
+	# over 1000 tests will fail because of mismatched font rendering
+	local -x MPLLOCALFREETYPE=1
+	ln -s "${WORKDIR}/freetype-${FT_PV}" "${BUILD_DIR}" || die
+	wrap_setup distutils-r1_python_compile --build-lib="${BUILD_DIR}"/test-lib
+	local -x PYTHONPATH=${BUILD_DIR}/test-lib:${PYTHONPATH}
 
-	distutils_install_for_testing
 	"${EPYTHON}" -c "import sys, matplotlib as m; sys.exit(m.test(verbosity=2))" || die
 }
 
