@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
-# dev-python/wxpython:4.0 w/ py3 is not stable, bug #714566
-dev-python/matplotlib wxwidgets
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # app-text/pandoc (dev-lang/ghc) has no stable keywords.
 app-emulation/xen-tools doc
