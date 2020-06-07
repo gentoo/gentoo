@@ -7,7 +7,7 @@ DESCRIPTION="Metapackage for mavros packages"
 LICENSE="metapackage"
 SLOT="0"
 IUSE=""
-HOMEPAGE="http://wiki.ros.org/mavros"
+HOMEPAGE="https://wiki.ros.org/mavros"
 
 RDEPEND="
 	dev-ros/mavros_msgs
