@@ -13,7 +13,8 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
-IUSE="doc examples midi opengl X"
+IUSE="doc examples midi opengl test X"
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=media-libs/sdl-image-1.2.2[png,jpeg]
@@ -24,9 +25,18 @@ DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	X? ( >=media-libs/libsdl-1.2.5[opengl?,video,X] )
 	!X? ( >=media-libs/libsdl-1.2.5 )"
 RDEPEND="${DEPEND}"
+# util-linux provides script
+BDEPEND="
+	test? ( sys-apps/util-linux )"
 
-# various module import and data path issues
-RESTRICT=test
+src_prepare() {
+	# segfaults on Xvfb
+	rm test/scrap_test.py || die
+	# backport from git master (clock() isn't used)
+	sed -i -e '/from time import clock/d' test/math_test.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_configure() {
 	PORTMIDI_INC_PORTTIME=1 LOCALBASE="${EPREFIX}/usr" \
@@ -52,8 +62,14 @@ python_compile() {
 	distutils-r1_python_compile
 }
 
+src_test() {
+	virtx distutils-r1_src_test
+}
+
 python_test() {
-	PYTHONPATH="${BUILD_DIR}/lib" virtx "${EPYTHON}" -m pygame.tests
+	local -x PYTHONPATH=
+	distutils_install_for_testing
+	script -eqc "${EPYTHON} -m pygame.tests" || die
 }
 
 python_install() {

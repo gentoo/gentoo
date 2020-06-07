@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils
+inherit multilib qmake-utils
 
 DESCRIPTION="Library for Qt that implements the OAuth 1.0 authentication specification"
 HOMEPAGE="https://github.com/kypeli/kQOAuth"
@@ -30,11 +30,18 @@ src_prepare() {
 	# prevent tests from beeing built at src_compile
 	sed -i -e '/SUBDIRS/s/ tests//' ${PN}.pro || die "sed on ${PN}.pro failed"
 	# respect libdir
-	sed -e 's:{INSTALL_PREFIX}/lib:[QT_INSTALL_LIBS]:g'\
-		-i src/src.pro || die "sed on src.pro failed"
+	sed -e 's:{INSTALL_PREFIX}/lib:[QT_INSTALL_LIBS]:g' -i src/src.pro || die "sed on src.pro failed"
 
-	sed -e "s/TARGET = kqoauth/TARGET = kqoauth-qt5/g" \
+	sed \
+		-e "s/TARGET = kqoauth/TARGET = kqoauth-qt5/g" \
 		-i src/src.pro || die
+
+	# upstream .pc is aimed at Qt4
+	sed \
+		-e "/^Libs/s/lkqoauth/&-qt5/" \
+		-e "/^libdir/s/lib$/$(get_libdir)/" \
+		-e "/^Requires/s/Qt/Qt5/g" \
+		-i src/pcfile.sh || die
 }
 
 src_configure() {
