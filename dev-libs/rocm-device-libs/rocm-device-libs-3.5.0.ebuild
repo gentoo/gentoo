@@ -21,8 +21,8 @@ HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm-Device-Libs"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
-RDEPEND="dev-libs/rocr-runtime
-	sys-devel/llvm-roc:="
+RDEPEND=">=dev-libs/rocr-runtime-${PV}
+	>=sys-devel/llvm-roc-${PV}:="
 DEPEND="${RDEPEND}"
 
 src_configure() {
