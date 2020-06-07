@@ -715,7 +715,7 @@ app-backup/backupninja 1.0.1-r1 1.1.0: lightweight, extensible meta-backup syste
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.4.4-r2 9.4.4-r3 9.6.3 9.6.3-r1: Featureful client/server network backup suite
 app-backup/bareos 17.2.9 18.2.8 19.2.7: Featureful client/server network backup suite
-app-backup/borgbackup 1.1.10-r1 1.1.11-r2 9999: Deduplicating backup program with compression and authenticated encryption
+app-backup/borgbackup 1.1.11-r2 1.1.13 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgmatic 1.5.1-r2: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.26.0 0.26.1 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 0.29.0 0.29.1 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
