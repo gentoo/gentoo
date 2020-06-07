@@ -10,4 +10,4 @@ RDEPEND=media-video/ffmpeg:0
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://vdr-developerorg/1911/vdr2jpeg-0.2.0.tgz
-_md5_=9fe9973871a8ceaf8299244f21c19bbf
+_md5_=c77fc76d7448910dcc80c1dc18e383bd
