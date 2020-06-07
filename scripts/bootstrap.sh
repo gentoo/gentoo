@@ -58,8 +58,7 @@ v_echo() {
 cvsver="$Id$" # TODO: FIXME for Git era
 cvsver=${cvsver##*,v }
 cvsver=${cvsver%%Exp*}
-cvsyear=${cvsver#* }
-cvsyear=${cvsyear%%/*}
+file_copyright=$(sed -n '/Copyright/!b;s/^# *//;p;q' $0)
 
 usage() {
 	echo -e "Usage: ${HILITE}${0##*/}${NORMAL} ${GOOD}[options]${NORMAL}"
@@ -138,7 +137,7 @@ if [[ ! -d ${MYPROFILEDIR} ]] ; then
 fi
 
 echo -e "\n${GOOD}Gentoo Linux; ${BRACKET}http://www.gentoo.org/${NORMAL}"
-echo -e "Copyright 1999-${cvsyear} Gentoo Foundation; Distributed under the GPLv2"
+echo -e "${file_copyright}; Distributed under the GPLv2"
 if [[ " ${STRAP_EMERGE_OPTS} " == *" -f "* ]] ; then
 	echo "Fetching all bootstrap-related archives ..."
 elif [[ -n ${STRAP_RUN} ]] ; then
