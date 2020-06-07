@@ -216,7 +216,7 @@ python_test() {
 	wrap_setup distutils_install_for_testing
 
 	distutils_install_for_testing
-	"${EPYTHON}" -c "import sys, matplotlib as m; sys.exit(0 if m.test(verbosity=2) else 1)" || die
+	"${EPYTHON}" -c "import sys, matplotlib as m; sys.exit(m.test(verbosity=2))" || die
 }
 
 python_install() {
