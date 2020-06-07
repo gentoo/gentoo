@@ -22,11 +22,10 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/umoria-${PV}"
 
-PATCHES=( "${FILESDIR}/${PN}-5.7.10-gentoo-paths.patch" )
+PATCHES=( "${FILESDIR}/${PN}-5.7.12-gentoo-paths.patch" )
 
 src_prepare() {
 	cmake_src_prepare
-	sed -i "s/@PF@/${PF}/" src/config.cpp || die
 	hprefixify src/config.cpp
 }
 
@@ -34,20 +33,15 @@ src_install() {
 	newbin umoria/umoria moria
 
 	insinto /usr/share/moria
-	doins data/*.txt
+	doins umoria/data/*.txt
 
 	insinto /var/lib/moria
-	doins data/scores.dat
+	doins umoria/scores.dat
 	fowners root:gamestat /var/lib/moria/scores.dat
 	fperms g+w /var/lib/moria/scores.dat
 
 	doman "${FILESDIR}"/${PN}.6
 	dodoc -r AUTHORS CHANGELOG.md CONTRIBUTING.md README.md historical
-
-	# The game binary will look for plain text LICENSE
-	insinto /usr/share/doc/${PF}
-	doins LICENSE
-	docompress -x /usr/share/doc/${PF}/LICENSE
 }
 
 pkg_postinst() {
