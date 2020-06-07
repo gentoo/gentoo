@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Deduplicating backup program with compression and authenticated encryption"
@@ -28,7 +28,6 @@ RDEPEND="
 	app-arch/lz4
 	virtual/acl
 	dev-python/llfuse[${PYTHON_USEDEP}]
-	~dev-python/msgpack-0.5.6[${PYTHON_USEDEP}]
 	dev-python/pyzmq[${PYTHON_USEDEP}]
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
@@ -39,12 +38,6 @@ DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
-
-python_prepare_all() {
-	# allow use of new (renamed) msgpack
-	sed -i "s|'msgpack-python.*',||g" setup.py || die
-	distutils-r1_python_prepare_all
-}
 
 src_install() {
 	distutils-r1_src_install
