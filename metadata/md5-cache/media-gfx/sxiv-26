@@ -4,10 +4,10 @@ DESCRIPTION=Simple (or small or suckless) X Image Viewer
 EAPI=7
 HOMEPAGE=https://github.com/muennich/sxiv/
 IUSE=exif gif +jpeg +png savedconfig
-KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+KEYWORDS=~amd64 arm64 ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=exif? ( media-libs/libexif ) gif? ( media-libs/giflib:0= ) media-libs/imlib2[X,gif?,jpeg?,png?] x11-libs/libX11 x11-libs/libXft
 SLOT=0
 SRC_URI=https://github.com/muennich/sxiv/archive/v26.tar.gz -> sxiv-26.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	0914eab919f4f11dd9e0407b92af4726	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1a4ab9ca73224b9f99d010daefa9df7f
+_md5_=848d8b9653cff63e55bb4175cefdc20b
