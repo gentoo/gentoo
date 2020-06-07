@@ -66,7 +66,9 @@ RDEPEND="
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)
 	wxwidgets? (
-		dev-python/wxpython:*[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/wxpython:*[${PYTHON_USEDEP}]
+		' python3_{6,7,8})
 	)
 "
 
@@ -106,9 +108,19 @@ pkg_setup() {
 	unset DISPLAY # bug #278524
 }
 
+use_supported() {
+	case ${1} in
+		wxwidgets)
+			[[ ${EPYTHON} == python3.[678] ]]
+			;;
+	esac
+
+	return 0
+}
+
 use_setup() {
 	local uword="${2:-${1}}"
-	if use ${1}; then
+	if use_supported "${1}" && use "${1}"; then
 		echo "${uword} = True"
 		echo "${uword}agg = True"
 	else
