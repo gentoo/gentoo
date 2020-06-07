@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-buildsystem.patch"
 	"${FILESDIR}/${P}-consistent-paths.patch" # bug 701142
 	"${FILESDIR}/${P}-crashfix.patch"
+	"${FILESDIR}/${P}-unused-dep.patch" # bug 727346
 )
 
 S="${WORKDIR}/${PN}-VERSION_${PV}"
