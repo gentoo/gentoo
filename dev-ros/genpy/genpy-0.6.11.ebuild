@@ -9,7 +9,7 @@ KEYWORDS="~amd64 ~arm"
 inherit ros-catkin
 
 DESCRIPTION="Python ROS message and service generators"
-HOMEPAGE="http://wiki.ros.org/genpy"
+HOMEPAGE="https://wiki.ros.org/genpy"
 LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE=""
