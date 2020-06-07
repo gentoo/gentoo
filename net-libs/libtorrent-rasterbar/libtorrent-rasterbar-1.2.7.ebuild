@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
@@ -11,15 +11,14 @@ DISTUTILS_IN_SOURCE_BUILD=true
 inherit autotools distutils-r1
 
 MY_PV=$(ver_rs 1-2 '_')
-MY_P=${PN/-rasterbar}-${MY_PV}
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
 HOMEPAGE="https://libtorrent.org https://github.com/arvidn/libtorrent"
-SRC_URI="https://github.com/arvidn/libtorrent/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent_${MY_PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/10"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug +dht doc examples libressl python +ssl static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -43,10 +42,7 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool
 "
 
-S="${WORKDIR}/${PN/-rasterbar}-${MY_P}"
-
 src_prepare() {
-	mkdir "${S}"/build-aux/ || die
 	touch "${S}"/build-aux/config.rpath || die
 	eautoreconf
 
@@ -75,6 +71,7 @@ src_configure() {
 		$(use_enable test tests)
 		--with-boost="${EPREFIX}/usr"
 		--with-libiconv
+		--enable-logging
 	)
 	econf "${myeconfargs[@]}"
 
