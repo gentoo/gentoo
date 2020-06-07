@@ -369,11 +369,6 @@ dev-java/icedtea-web
 # Breaks at least dev-games/simgear right now, bug #709878.
 ~dev-games/openscenegraph-3.6.5
 
-# Mart Raudsepp <leio@gentoo.org> (2020-03-13)
-# Masked for testing due to split of libnma needing migration
-# and 1.8.25 being an old development release
->=gnome-extra/nm-applet-1.8.25
-
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
 =mail-mta/postfix-3.6*
