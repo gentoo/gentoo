@@ -1,14 +1,15 @@
-BDEPEND=dev-python/six[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] dev-python/numpy[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] dev-python/matplotlib[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] sci-libs/numkit[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
+BDEPEND=dev-python/six[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] dev-python/numpy[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] dev-python/matplotlib[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] sci-libs/numkit[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] test? ( >=dev-python/pandas-0.17[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] ) test? ( dev-python/pytest[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] ) python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 DEFINED_PHASES=compile configure install prepare test unpack
 DESCRIPTION=Python framework for Gromacs
 EAPI=7
 HOMEPAGE=https://gromacswrapper.readthedocs.io
-IUSE=python_targets_python3_6 python_targets_python3_7
+IUSE=test python_targets_python3_6 python_targets_python3_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3 LGPL-3
 RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Becksteinlab/GromacsWrapper/archive/release-0.8.0.tar.gz -> GromacsWrapper-0.8.0.tar.gz
 _eclasses_=distutils-r1	89b310c534a033a3566e0f26419daa81	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
-_md5_=72c468e398bd8beabcabfe9521714c2c
+_md5_=3932733dc9fd177f59a16d6e36038120
