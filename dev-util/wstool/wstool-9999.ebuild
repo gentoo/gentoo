@@ -13,7 +13,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Commands to manage several local SCM repositories for ROS"
-HOMEPAGE="http://wiki.ros.org/wstool"
+HOMEPAGE="https://wiki.ros.org/wstool"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
