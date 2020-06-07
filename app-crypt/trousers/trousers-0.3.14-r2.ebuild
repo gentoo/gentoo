@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.3.13-nouseradd.patch"
 	"${FILESDIR}/${P}-libressl.patch"
 	"${FILESDIR}/${P}-fno-common.patch"
+	"${FILESDIR}/${P}-Makefile.am-Mark-tddl.a-nodist.patch"
 )
 
 DOCS="AUTHORS ChangeLog NICETOHAVES README TODO"
