@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools eutils fortran-2 toolchain-funcs
+inherit autotools eutils flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Arnoldi package library to solve large scale eigenvalue problems"
 HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/ https://github.com/opencollab/arpack-ng"
@@ -33,6 +33,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-fflags -fallow-argument-mismatch
 	econf \
 		--disable-static \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
@@ -47,11 +48,11 @@ src_install() {
 	newdoc DOCUMENTS/README README.doc
 	use doc && dodoc "${WORKDIR}"/*.ps
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r EXAMPLES
+		docinto /usr/share/doc/${PF}
+		dodoc -r EXAMPLES
 		if use mpi; then
-			insinto /usr/share/doc/${PF}/EXAMPLES/PARPACK
-			doins -r PARPACK/EXAMPLES/MPI
+			docinto /usr/share/doc/${PF}/EXAMPLES/PARPACK
+			dodoc -r PARPACK/EXAMPLES/MPI
 		fi
 	fi
 }
