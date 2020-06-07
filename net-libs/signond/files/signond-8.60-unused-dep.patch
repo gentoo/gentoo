@@ -1,0 +1,10 @@
+--- a/tests/signond-tests/signond-tests.pri	2020-06-07 10:57:19.327456979 +0200
++++ b/tests/signond-tests/signond-tests.pri	2020-06-07 11:00:39.866322814 +0200
+@@ -6,7 +6,6 @@
+ QT += core \
+     sql \
+     testlib \
+-    xml \
+     network \
+     dbus
+ 

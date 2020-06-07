@@ -32,3 +32,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:5
 "
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
