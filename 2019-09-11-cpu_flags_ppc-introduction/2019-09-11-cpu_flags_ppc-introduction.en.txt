@@ -1,7 +1,7 @@
 Title: new CPU_FLAGS_PPC USE_EXPAND
 Author: Georgy Yakovlev <gyakovlev@gentoo.org>
 Posted: 2019-09-11
-Revision: 1
+Revision: 2
 News-Item-Format: 2.0
 Display-If-Keyword: ~ppc
 Display-If-Keyword: ~ppc64
@@ -14,6 +14,7 @@ The flags are:
 
   altivec - Use the AltiVec/VMX instruction set
   vsx - Use the Vector Scalar Extension instruction set
+  vsx2 - Use the Vector Scalar Extension v.2 instruction set
   vsx3 - Use the Vector Scalar Extension v.3 instruction set
 
 Note that CPU_FLAGS_PPC variable is used on ppc and ppc64 architectures.
@@ -29,10 +30,10 @@ This flag needs to be set as:
 
 It's advised to keep 'altivec' USE flag enabled to ensure safe
 migration and compatibility with external repositories.
-'vsx' and 'vsx3' are new flags and no migration necessary.
+'vsx', 'vsx2' and 'vsx3' are new flags and no migration necessary.
 
 To help users enable the correct USE_EXPAND flags PPC support has been
 added to app-portage/cpuid2cpuflags package:
 
-  # emerge -1v >=app-portage/cpuid2cpuflags-7
+  # emerge -1v >=app-portage/cpuid2cpuflags-9
   $ cpuid2cpuflags
