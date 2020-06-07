@@ -1639,7 +1639,7 @@ app-emulation/free42 2.0.20 2.5.14 2.5.16 2.5.17 2.5.18: An HP-42S Calculator Si
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
 app-emulation/fs-uae-launcher 3.0.5: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
-app-emulation/fuse-utils 1.4.1 1.4.3: Utils for the Free Unix Spectrum Emulator by Philip Kendall
+app-emulation/fuse-utils 1.4.3: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/gallium-nine-standalone 0.5 9999: A standalone version of the WINE parts of Gallium Nine
 app-emulation/ganeti 2.15.2-r10 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
 app-emulation/ganeti-instance-debootstrap 0.11-r1 0.16: Scripts to build Ganeti VMs with debootstrap
@@ -1659,7 +1659,7 @@ app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc ima
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libpod 1.8.2 1.9.0 1.9.3: Library and podman tool for running OCI-based containers in Pods
-app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
+app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.0.0-r3 6.1.0-r1 6.2.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
@@ -14433,7 +14433,7 @@ net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 2.2.0-r2 3.0.2-r1 4.2.0: High-level C Binding for ZeroMQ
 net-libs/daq 2.0.6-r1 2.0.7: Data Acquisition library, for packet I/O
-net-libs/davix 0.6.7 0.7.3 0.7.4 0.7.5: High-performance file management over WebDAV/HTTP
+net-libs/davix 0.7.5 0.7.6: High-performance file management over WebDAV/HTTP
 net-libs/dleyna-connector-dbus 0.3.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-core 0.6.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.6.0: library implementing services that allow clients to discover and manipulate DLNA renderers
