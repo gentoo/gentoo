@@ -1,13 +1,12 @@
-BDEPEND=dev-libs/libevdev dev-libs/libxml2 dev-cpp/gtkmm:3.0[wayland] ~gui-wm/wayfire-9999[debug=] dev-libs/wayland-protocols virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=dev-libs/libevdev dev-libs/libxml2 dev-cpp/gtkmm:3.0[wayland] ~gui-wm/wayfire-9999 dev-libs/wayland-protocols virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install test unpack
-DEPEND=dev-libs/libevdev dev-libs/libxml2 dev-cpp/gtkmm:3.0[wayland] ~gui-wm/wayfire-9999[debug=]
+DEPEND=dev-libs/libevdev dev-libs/libxml2 dev-cpp/gtkmm:3.0[wayland] ~gui-wm/wayfire-9999
 DESCRIPTION=Wayfire Config Manager
 EAPI=7
 HOMEPAGE=https://github.com/WayfireWM/wcm
-IUSE=debug
 LICENSE=MIT
 PROPERTIES=live
-RDEPEND=dev-libs/libevdev dev-libs/libxml2 dev-cpp/gtkmm:3.0[wayland] ~gui-wm/wayfire-9999[debug=]
+RDEPEND=dev-libs/libevdev dev-libs/libxml2 dev-cpp/gtkmm:3.0[wayland] ~gui-wm/wayfire-9999
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	meson	991e544bbaf3120073ededbdc1d8bf93	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=15cc49c66c0ea9e1c6bc56611b484726
+_md5_=49976b51d3dbd9c5de24d467c8811567
