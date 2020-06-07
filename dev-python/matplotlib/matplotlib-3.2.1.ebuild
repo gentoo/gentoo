@@ -9,9 +9,13 @@ PYTHON_REQ_USE='tk?,threads(+)'
 DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
 
+FT_PV=2.6.1
 DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="https://matplotlib.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	test? (
+		https://downloads.sourceforge.net/project/freetype/freetype2/${FT_PV}/freetype-${FT_PV}.tar.gz
+	)"
 
 # Main license: matplotlib
 # Some modules: BSD
@@ -140,10 +144,6 @@ python_prepare_all() {
 	mkdir "${XDG_RUNTIME_DIR}" || die
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
 
-	local freetype_version
-	freetype_version="$(best_version media-libs/freetype | sed -r -e 's/.*-([0-9].*[0-9])(-r[0-9]+|$)/\1/g')"
-	sed -i -r -e "s:(LOCAL_FREETYPE_VERSION =).*:\\1 \"${freetype_version}\":g" setupext.py lib/matplotlib/__init__.py || die
-
 	distutils-r1_python_prepare_all
 }
 
@@ -213,9 +213,13 @@ python_compile_all() {
 }
 
 python_test() {
-	wrap_setup distutils_install_for_testing
+	# we need to rebuild mpl against bundled freetype, otherwise
+	# over 1000 tests will fail because of mismatched font rendering
+	local -x MPLLOCALFREETYPE=1
+	ln -s "${WORKDIR}/freetype-${FT_PV}" "${BUILD_DIR}" || die
+	wrap_setup distutils-r1_python_compile --build-lib="${BUILD_DIR}"/test-lib
+	local -x PYTHONPATH=${BUILD_DIR}/test-lib:${PYTHONPATH}
 
-	distutils_install_for_testing
 	"${EPYTHON}" -c "import sys, matplotlib as m; sys.exit(m.test(verbosity=2))" || die
 }
 
