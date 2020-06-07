@@ -1,5 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2020-06-07)
+# installing kernels has no business in Prefix
+sys-apps/debianutils installkernel
 
 # Michael Haubenwallner <haubi@gentoo.org> (2019-05-02)
 # gold is linux only, and is required by cxx
