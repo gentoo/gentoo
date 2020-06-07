@@ -11452,7 +11452,7 @@ gnome-base/gdm 3.34.1: GNOME Display Manager for managing graphical display serv
 gnome-base/gnome 3.34.4: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-applets 3.34.0: Applets for the GNOME Flashback Panel
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
-gnome-base/gnome-control-center 3.34.5: GNOME's main interface to configure various aspects of the desktop
+gnome-base/gnome-control-center 3.34.5-r1: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.34.4: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.34.4: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 3.32.2 3.34.5 3.34.6: Library with common API for various GNOME modules
@@ -11536,7 +11536,7 @@ gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when file
 gnome-extra/nautilus-dropbox 2019.02.14: Dropbox Nautilus Extension
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
 gnome-extra/nemo 4.4.2: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.8.24-r1 1.8.25: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.8.24-r1 1.16.0: NetworkManager connection editor and applet
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/pch-session 3.34.3: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
@@ -14521,7 +14521,7 @@ net-libs/libnftnl 1.1.3 1.1.4 1.1.5 1.1.6 1.1.7: Netlink API to the in-kernel nf
 net-libs/libnice 0.1.13 0.1.15: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
-net-libs/libnma 1.8.24: NetworkManager GUI library
+net-libs/libnma 1.8.24 1.8.28: NetworkManager GUI library
 net-libs/libnsl 0-r1 1.2.0: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
 net-libs/libntlm 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
@@ -15207,11 +15207,11 @@ net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/libreswan 3.32: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engine
 net-vpn/mullvad-netns 0.2 9999: Script to run a command within a Mullvad network namespace
-net-vpn/networkmanager-fortisslvpn 1.2.8-r2: NetworkManager Fortinet SSLVPN compatible plugin
+net-vpn/networkmanager-fortisslvpn 1.2.8-r2 1.2.10: NetworkManager Fortinet SSLVPN compatible plugin
 net-vpn/networkmanager-l2tp 1.8.0 1.8.2: NetworkManager L2TP plugin
 net-vpn/networkmanager-libreswan 1.2.12: NetworkManager libreswan plugin
 net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
-net-vpn/networkmanager-openvpn 1.8.10-r2: NetworkManager OpenVPN plugin
+net-vpn/networkmanager-openvpn 1.8.10-r2 1.8.12: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8-r2: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0-r1: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-vpn/networkmanager-strongswan 1.4.5-r2 1.5.2: NetworkManager StrongSwan plugin
