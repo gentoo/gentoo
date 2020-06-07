@@ -5275,7 +5275,7 @@ dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.4.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rocm-comgr 3.0.0 3.1.0 3.3.0: Radeon Open Compute Code Object Manager
-dev-libs/rocm-device-libs 3.0.0 3.1.0 3.3.0 9999: Radeon Open Compute Device Libraries
+dev-libs/rocm-device-libs 3.0.0 3.1.0 3.3.0 3.5.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-runtime 3.0.0 3.1.0 3.3.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.0.0 3.1.0 3.3.0 3.5.0 9999: Radeon Open Compute Runtime
@@ -10506,7 +10506,7 @@ dev-util/rebar-bin 3.6.2: A sophisticated build-tool for Erlang projects that fo
 dev-util/redo 0.42-r1 0.42a 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
-dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.3.0 9999: Radeon Open Compute CMake Modules
+dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.3.0 3.5.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 3.1.0 3.3.0 3.5.0 9999: ROCm Application for Reporting System Info
 dev-util/rosdep 0.13.0 0.14.0 0.15.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
