@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,11 +47,11 @@ src_install() {
 	dodoc DOCUMENTS/*.doc
 	newdoc DOCUMENTS/README README.doc
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r EXAMPLES
+		docinto /usr/share/doc/${PF}
+		dodoc -r EXAMPLES
 		if use mpi; then
-			insinto /usr/share/doc/${PF}/EXAMPLES/PARPACK
-			doins -r PARPACK/EXAMPLES/MPI
+			docinto /usr/share/doc/${PF}/EXAMPLES/PARPACK
+			dodoc -r PARPACK/EXAMPLES/MPI
 		fi
 	fi
 }
