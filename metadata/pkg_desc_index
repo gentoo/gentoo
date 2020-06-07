@@ -10313,9 +10313,11 @@ dev-util/csup 20060318-r1: A rewrite of CVSup
 dev-util/ctags 20190331: Exuberant Ctags creates tags files for code browsing in editors
 dev-util/cucumber 3.1.2 3.2.0: Executable feature scenarios
 dev-util/cucumber-core 3.2.1: Executable feature scenarios
+dev-util/cucumber-cucumber-expressions 10.2.0: a simpler alternative to Regular Expressions
 dev-util/cucumber-expressions 6.0.1: a simpler alternative to Regular Expressions
 dev-util/cucumber-messages 7.0.0: Protocol Buffer messages for Cucumber's inter-process communication
 dev-util/cucumber-rails 1.8.0 2.0.0-r1: Executable feature scenarios for Rails
+dev-util/cucumber-tag-expressions 2.0.4: Cucumber tag expressions for ruby
 dev-util/cucumber-tag_expressions 1.1.1: Cucumber tag expressions for ruby
 dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
