@@ -9531,7 +9531,7 @@ dev-ruby/exifr 1.3.6: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/facter 3.14.9 3.14.10 3.14.11 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
-dev-ruby/fakefs 0.19.2 0.20.0 0.20.1 1.0.0 1.2.0 1.2.1: A fake filesystem. Use it in your tests
+dev-ruby/fakefs 0.19.2 0.20.0 0.20.1 1.0.0 1.2.0 1.2.1 1.2.2: A fake filesystem. Use it in your tests
 dev-ruby/faker 1.9.6-r1 2.11.0: A library for generating fake data such as names, addresses, and phone numbers
 dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/faraday 0.17.3 1.0.1: HTTP/REST API client library with pluggable components
