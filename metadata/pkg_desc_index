@@ -17271,7 +17271,7 @@ sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-erro
 sys-fs/sandboxfs 0.1.1 0.2.0: A virtual file system for sandboxing
 sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
-sys-fs/snapraid 11.4: a backup program for disk array for home media centers
+sys-fs/snapraid 11.4 11.5: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.4 9999: tools to create and extract Squashfs filesystems
 sys-fs/squashfs-tools-ng 0.9.1 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
