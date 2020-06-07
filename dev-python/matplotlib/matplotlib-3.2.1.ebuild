@@ -89,6 +89,7 @@ BDEPEND="
 		>=media-gfx/graphviz-2.42.3[cairo]
 	)
 	test? (
+		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo?,${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection]
@@ -99,7 +100,7 @@ BDEPEND="
 # Other than that, the ebuild shall be fit for out-of-source build.
 DISTUTILS_IN_SOURCE_BUILD=1
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
 pkg_setup() {
 	unset DISPLAY # bug #278524
@@ -138,6 +139,9 @@ python_prepare_all() {
 		-e 's/matplotlib.pyparsing_py[23]/pyparsing/g' \
 		-i lib/matplotlib/{mathtext,fontconfig_pattern}.py \
 		|| die "sed pyparsing failed"
+
+	sed -e 's:\(@pytest.mark.flaky\)(reruns=3):\1:' \
+		-i lib/matplotlib/tests/test_*.py || die
 
 	hprefixify setupext.py
 
