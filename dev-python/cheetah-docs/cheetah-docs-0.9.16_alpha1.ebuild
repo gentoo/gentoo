@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils vcs-clean
 
 DESCRIPTION="Documentation for Cheetah templates"
-HOMEPAGE="http://www.cheetahtemplate.org/"
+HOMEPAGE="https://www.cheetahtemplate.org/"
 SRC_URI="mirror://sourceforge/cheetahtemplate/CheetahDocs-${PV/_alpha/a}.tgz"
 
 IUSE=""
