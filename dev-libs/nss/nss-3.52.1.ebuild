@@ -177,7 +177,7 @@ multilib_src_compile() {
 	NSPR_LIB_DIR="${T}/fakedir" \
 	emake -j1 -C coreconf \
 		CC="$(tc-getBUILD_CC)" \
-		${buildbits:-${mybits}}
+		${buildbits-${mybits}}
 	makeargs+=( NSINSTALL="${PWD}/$(find -type f -name nsinstall)" )
 
 	# Then build the target tools.
