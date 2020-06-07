@@ -7629,7 +7629,7 @@ dev-python/cliff 2.18.0-r1 3.1.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 1.3.0 1.4.1: Extended pickling support for Python objects
-dev-python/cmd2 0.10.1 1.0.2: Extra features for standard library's cmd module
+dev-python/cmd2 0.10.1 1.0.2 1.1.0: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.1 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -7847,7 +7847,7 @@ dev-python/genshi 0.7.3 0.7.3-r1: Python toolkit for stream-based generation of 
 dev-python/genson 1.1.0: GenSON is a powerful, user-friendly JSON Schema generator built in Python
 dev-python/genty 1.3.2: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2-r1: Python bindings for GeoIP
-dev-python/gevent 1.4.0 20.5.1 20.5.2: Coroutine-based network library
+dev-python/gevent 1.4.0 20.5.1 20.5.2 20.6.0: Coroutine-based network library
 dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.3.1-r1 1.4.2: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/girder-client 2.3.0: Python libraries and CLI to interact with the REST API of a Girder server
@@ -8730,7 +8730,7 @@ dev-python/socketio-client 0.6.6 0.7.2: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
 dev-python/socketpool 0.5.3-r2 0.5.3-r3: A simple Python socket pool
 dev-python/sortedcollections 0.5.3: Python library to sort collections and containers
-dev-python/sortedcontainers 2.1.0: Python library to sort collections and containers
+dev-python/sortedcontainers 2.1.0 2.2.1: Python library to sort collections and containers
 dev-python/soupsieve 1.9.5 1.9.6 2.0.1: A modern CSS selector implementation for BeautifulSoup
 dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with games in mind
 dev-python/sparql-wrapper 1.8.4: Wrapper around a SPARQL service
@@ -8843,7 +8843,7 @@ dev-python/toolz 0.9.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
 dev-python/towncrier 19.2.0: Building newsfiles for your project
-dev-python/tox 2.9.1 3.2.1 3.12.1 3.14.4 3.14.5 3.15.0 3.15.1: virtualenv-based automation of test activities
+dev-python/tox 2.9.1 3.2.1 3.12.1 3.14.4 3.14.5 3.15.0 3.15.1 3.15.2: virtualenv-based automation of test activities
 dev-python/tqdm 4.23.3 4.33.0 4.40.0 4.45.0 4.46.0 4.46.1 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2 4.3.3: A configuration system for Python applications
