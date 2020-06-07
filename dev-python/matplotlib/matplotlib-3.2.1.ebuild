@@ -25,7 +25,6 @@ LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="cairo doc excel examples gtk3 latex qt5 tk wxwidgets"
-REQUIRED_USE="test? ( cairo gtk3 latex qt5 tk )"
 
 # internal copy of pycxx highly patched
 #	dev-python/pycxx
@@ -89,7 +88,11 @@ BDEPEND="
 		dev-texlive/texlive-latexrecommended
 		>=media-gfx/graphviz-2.42.3[cairo]
 	)
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[cairo?,${PYTHON_USEDEP}]
+		x11-libs/gtk+:3[introspection]
+	)
 "
 
 # A few C++ source files are written to srcdir.
