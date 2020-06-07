@@ -67,7 +67,6 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
 		$(use_enable debug export-all)
-		$(use_enable debug logging)
 		$(use_enable dht)
 		$(use_enable examples)
 		$(use_enable ssl encryption)
@@ -75,6 +74,7 @@ src_configure() {
 		$(use_enable test tests)
 		--with-boost="${EPREFIX}/usr"
 		--with-libiconv
+		--enable-logging
 	)
 	econf "${myeconfargs[@]}"
 

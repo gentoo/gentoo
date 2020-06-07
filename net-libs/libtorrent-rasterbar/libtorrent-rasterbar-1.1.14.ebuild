@@ -61,13 +61,13 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
 		$(use_enable debug disk-stats)
-		$(use_enable debug logging)
 		$(use_enable dht)
 		$(use_enable examples)
 		$(use_enable ssl encryption)
 		$(use_enable static-libs static)
 		$(use_enable test tests)
 		--with-libiconv
+		--enable-logging
 	)
 	econf "${myeconfargs[@]}"
 
