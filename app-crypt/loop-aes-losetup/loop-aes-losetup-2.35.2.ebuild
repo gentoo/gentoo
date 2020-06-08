@@ -41,15 +41,15 @@ src_prepare() {
 
 lfs_fallocate_test() {
 	# Make sure we can use fallocate with LFS #300307
-	cat <<-EOF > "${T}"/fallocate.${ABI}.c
+	cat <<-EOF > "${T}"/fallocate.${ABI}.c || die
 		#define _GNU_SOURCE
 		#include <fcntl.h>
 		main() { return fallocate(0, 0, 0, 0); }
 	EOF
 	append-lfs-flags
-	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} "${T}"/fallocate.${ABI}.c -o /dev/null >/dev/null 2>&1 \
+	$( $(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} "${T}"/fallocate.${ABI}.c -o /dev/null >/dev/null 2>&1 || die) \
 		|| export ac_cv_func_fallocate=no
-	rm -f "${T}"/fallocate.${ABI}.c || die
+	rm "${T}"/fallocate.${ABI}.c || die
 }
 
 src_configure() {
