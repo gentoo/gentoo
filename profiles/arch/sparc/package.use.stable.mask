@@ -1,6 +1,10 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is not stable on sparc
+app-text/texlive-core xindy
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-17)
 # librdkafka is not stable on sparc because of unaligned accesses, bug #717908
 app-admin/syslog-ng kafka
