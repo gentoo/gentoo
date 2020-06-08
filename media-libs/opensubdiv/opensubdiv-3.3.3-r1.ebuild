@@ -17,17 +17,17 @@ SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.t
 # See for example CMakeLists.txt for details.
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cuda doc examples opencl openmp ptex tbb test tutorials"
 
 RDEPEND="
-	${PYTHON_DEPENDS}
+	${PYTHON_DEPS}
 	media-libs/glew:=
 	media-libs/glfw:=
+	x11-libs/libXinerama
 	cuda? ( dev-util/nvidia-cuda-toolkit:* )
 	opencl? ( virtual/opencl )
 	ptex? ( media-libs/ptex )
-	x11-libs/libXinerama
 "
 DEPEND="
 	${RDEPEND}
@@ -35,8 +35,8 @@ DEPEND="
 "
 BDEPEND="
 	doc? (
-		dev-python/docutils
 		app-doc/doxygen
+		dev-python/docutils
 	)
 	cuda? ( <sys-devel/gcc-9[cxx] )
 "
