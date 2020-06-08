@@ -1,6 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: php-ext-source-r2.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
