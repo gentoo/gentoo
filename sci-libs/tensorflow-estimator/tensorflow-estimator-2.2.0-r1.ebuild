@@ -43,22 +43,27 @@ src_unpack() {
 src_prepare() {
 	bazel_setup_bazelrc
 	default
+	python_copy_sources
 }
 
 src_compile() {
 	export JAVA_HOME=$(java-config --jre-home)
 
-	ebazel build //tensorflow_estimator/tools/pip_package:build_pip_package
-	ebazel shutdown
+	do_compile() {
+		ebazel build //tensorflow_estimator/tools/pip_package:build_pip_package
+		ebazel shutdown
 
-	local srcdir="${T}/src"
-	mkdir -p "${srcdir}" || die
-	bazel-bin/tensorflow_estimator/tools/pip_package/build_pip_package --src "${srcdir}" || die
+		local srcdir="${T}/src-${EPYTHON/./_}"
+		mkdir -p "${srcdir}" || die
+		bazel-bin/tensorflow_estimator/tools/pip_package/build_pip_package --src "${srcdir}" || die
+	}
+
+	python_foreach_impl run_in_build_dir do_compile
 }
 
 src_install() {
 	do_install() {
-		cd "${T}/src" || die
+		cd "${T}/src-${EPYTHON/./_}" || die
 		esetup.py install
 		python_optimize
 	}
