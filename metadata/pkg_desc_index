@@ -13498,7 +13498,7 @@ media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audi
 media-sound/mhwaveedit 1.4.23: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
 media-sound/milkytracker 1.0.0: FastTracker 2 inspired music tracker
-media-sound/mixxx 2.2.3-r2 9999: Advanced Digital DJ tool based on Qt
+media-sound/mixxx 2.2.3-r2 2.2.4 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2-r1 2.6_alpha3-r1: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.3: libmodplug based module players modplug123 and modplugplay
@@ -14515,7 +14515,7 @@ net-libs/libnetfilter_conntrack 1.0.6 1.0.7 1.0.8: programming interface (API) t
 net-libs/libnetfilter_cthelper 1.0.0 1.0.0-r1: userspace library that provides the programming interface to the user-space helper infrastructure
 net-libs/libnetfilter_cttimeout 1.0.0 1.0.0-r1: netlink interface to the connection tracking timeout infrastructure in the kernel packet filter
 net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by the kernel packet filter
-net-libs/libnetfilter_queue 1.0.2 1.0.3: API to packets that have been queued by the kernel packet filter
+net-libs/libnetfilter_queue 1.0.3 1.0.4: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.27: NFSv4 ID <-> name mapping library
 net-libs/libnftnl 1.1.3 1.1.4 1.1.5 1.1.6 1.1.7: Netlink API to the in-kernel nf_tables subsystem
@@ -18434,7 +18434,7 @@ x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent re
 x11-misc/xxkb 1.11.1 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X
 x11-misc/yabar 0.4.0_p20190316-r1: A modern and lightweight status bar for X window managers
-x11-misc/zim 0.71.1-r1 0.72.0 0.72.1-r1 0.72.1-r2: A desktop wiki
+x11-misc/zim 0.72.1-r2 0.73.0: A desktop wiki
 x11-plugins/allin1 0.5.0-r2: All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti
 x11-plugins/asapm 3.1-r1: APM monitor for AfterStep
 x11-plugins/asclock 2.0.12-r3: Clock applet for AfterStep

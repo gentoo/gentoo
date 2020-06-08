@@ -1826,12 +1826,6 @@
     </member>
   </project>
   <project>
-    <email>lxde@gentoo.org</email>
-    <name>LXDE Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:LXDE</url>
-    <description>The LXDE project manages ebuilds in Gentoo for [http://lxde.org/ LXDE], the Lightweight X11 Desktop Environment, and handles related issues.</description>
-  </project>
-  <project>
     <email>lxqt@gentoo.org</email>
     <name>LXQt</name>
     <url>https://wiki.gentoo.org/wiki/Project:LXQt</url>
