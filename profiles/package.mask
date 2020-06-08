@@ -326,11 +326,6 @@ games-util/pogo-manager-bin
 net-p2p/bisq
 sci-mathematics/geogebra
 
-# Matt Turner <mattst88@gentoo.org> (2020-04-12)
-# In conjunction with Firefox's sandbox, breaks loading of i965 driver.
-# Bug #716574
-=x11-libs/libdrm-2.4.101
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-02)
 # Introduced new privsep (chroot) feature. Masked for testing.
 >=net-misc/dhcpcd-9.0.0
