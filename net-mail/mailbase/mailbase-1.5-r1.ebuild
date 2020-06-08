@@ -17,7 +17,8 @@ RDEPEND="
 	acct-group/mail
 	acct-user/mail
 	acct-user/postmaster
-	pam? ( sys-libs/pam )"
+	pam? ( sys-libs/pam )
+	!<net-mail/metamail-2.7.53.3-r2"
 
 S=${WORKDIR}
 
