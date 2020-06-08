@@ -114,6 +114,7 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.94-localscan_dlopen.patch
+	eapply -p2 "${FILESDIR}"/exim-4.94-taint-pam-expansion.patch # drop on NR
 
 	if use maildir ; then
 		eapply "${FILESDIR}"/exim-4.94-maildir.patch
