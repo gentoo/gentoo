@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
+PATCHES=( "${FILESDIR}/setup.py-respect-cc.patch" )
+
 python_configure_all() {
 	export GRPC_PYTHON_DISABLE_LIBC_COMPATIBILITY=1
 	export GRPC_PYTHON_BUILD_SYSTEM_CARES=1
