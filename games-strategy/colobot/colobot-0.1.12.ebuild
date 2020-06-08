@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake desktop xdg-utils
 
-DESCRIPTION="Colobot is an educational real-time strategy video game featuring 3D graphics"
+DESCRIPTION="A real-time strategy game, where you can program your bots"
 HOMEPAGE="https://colobot.info/"
 SRC_URI="https://github.com/colobot/colobot/archive/${PN}-gold-${PV}-alpha.tar.gz"
 S="${WORKDIR}/${PN}-${PN}-gold-${PV}-alpha"
