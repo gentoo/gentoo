@@ -1,0 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install postinst unpack
+DESCRIPTION=A system for automatically configuring neomutt and isync
+EAPI=7
+HOMEPAGE=https://github.com/LukeSmithxyz/mutt-wizard
+LICENSE=GPL-3
+PROPERTIES=live
+RDEPEND=app-admin/pass mail-client/neomutt[notmuch] mail-mta/msmtp net-mail/isync[ssl]
+SLOT=0
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
+_md5_=5aa1a75c3d3e7efbf7d1c668c04ecec0

@@ -729,7 +729,7 @@ app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.5.11 2.5.18 2.6.5 2.6.9 2.6.10: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.8.12.1612-r1 0.8.13: Secure backup system using gnupg to encrypt data
-app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2 2.0.3: A shell frontend for duplicity
+app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.8.5: Flexible filesystem archiver for backup and deployment tool
 app-backup/genbackupdata 1.9: Generate test data for backup software testing.
@@ -8305,7 +8305,7 @@ dev-python/pyamg 3.2.1-r1: Algebraic multigrid solvers in Python
 dev-python/pyasn1 0.4.8: ASN.1 library for Python
 dev-python/pyasn1-modules 0.2.1 0.2.8: pyasn1 modules
 dev-python/pyatspi 2.32.1 2.34.0 2.36.0: Python client bindings for D-Bus AT-SPI
-dev-python/pyaudio 0.2.11: Python bindings for PortAudio
+dev-python/pyaudio 0.2.11 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.4.3 2.5.0: AST-based Python refactoring library
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
 dev-python/pybluez 0.18-r1 0.23: Python bindings for Bluez Bluetooth Stack
@@ -8583,7 +8583,7 @@ dev-python/python-zunclient 3.3.0 4.0.1: A client for the OpenStack Zun API
 dev-python/python3-lxc 3.0.2: Python bindings for LXC
 dev-python/python3-saml 1.9.0: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
-dev-python/pythondialog 3.3.0 3.4.0: A Python module for making simple text/console-mode user interfaces
+dev-python/pythondialog 3.3.0 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pythonz-bd 1.11.4: Manage python installations in your system, berdario's shallow fork
 dev-python/pytidylib 0.3.2: Python wrapper for HTML Tidy (tidylib)
@@ -12075,6 +12075,7 @@ mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.13.5 1.14.0-r1 1.14.2: A small but very powerful text-based mail client
+mail-client/mutt-wizard 0_pre20200606 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20180716 20200313 20200320 20200417 20200424 20200501 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.3.11 1.4.0 1.4.1 1.4.2 1.4.3 1.4.4: A browser-based multilingual IMAP client with an application-like user interface
@@ -12933,7 +12934,7 @@ media-libs/openh264 1.7.0-r1 2.1.0: Cisco OpenH264 library and Gecko Media Plugi
 media-libs/openicc 0.1.0: Config database to store, share and manipulate colour management informations
 media-libs/openimageio 1.8.17-r2: A library for reading and writing images
 media-libs/openjpeg 1.5.2-r1 2.3.1-r1: Open-source JPEG 2000 library
-media-libs/opensubdiv 3.3.3: An Open-Source subdivision surface library
+media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
 media-libs/opusfile 0.11: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.10.5: Advanced shading language for production GI renderers
@@ -14367,7 +14368,7 @@ net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.4 5.16.5: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 1.1.2: A jabber client written in Tcl/Tk
-net-im/toxic 0.8.2 0.8.3: A curses-based client for Tox
+net-im/toxic 0.8.2 0.8.3-r1: A curses-based client for Tox
 net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
@@ -14606,7 +14607,7 @@ net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream
 net-libs/telepathy-glib 0.24.1-r1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 17.09.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.8 9999: Qt bindings for the Telepathy D-Bus protocol
-net-libs/tox 0.2.10 0.2.11 9999: Encrypted P2P, messaging, and audio/video calling platform
+net-libs/tox 0.2.10 0.2.11 0.2.12 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
@@ -17291,7 +17292,7 @@ sys-fs/vhba 20200106: Virtual (SCSI) Host Bus Adapter kernel module for the CDEm
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.8 3.1.9: xfs dump/restore utilities
 sys-fs/xfsprogs 4.19.0 5.4.0-r1 5.5.0 5.6.0: xfs filesystem utilities
-sys-fs/xwmfs 0.84: FUSE-based X11 Window-Manager file system
+sys-fs/xwmfs 0.85: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.4 1.1.1: Zeroes out all free space on a filesystem
 sys-fs/zfs 0.7.13-r1 0.7.13-r2 0.8.3-r1 0.8.4-r1 9999: Userland utilities for ZFS Linux kernel module
