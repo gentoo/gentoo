@@ -4,22 +4,14 @@
 EAPI=7
 inherit toolchain-funcs cmake-utils
 
-if [[ ${PV} == 9999* ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/herbstluftwm/herbstluftwm"
-	BDEPEND="app-text/asciidoc"
-else
-	SRC_URI="https://herbstluftwm.org/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-	BDEPEND=""
-fi
-
 DESCRIPTION="A manual tiling window manager for X"
 HOMEPAGE="https://herbstluftwm.org/"
+SRC_URI="https://herbstluftwm.org/tarballs/${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="examples zsh-completion"
+IUSE="doc examples"
 
 DEPEND="
 	x11-libs/libX11
@@ -30,17 +22,24 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	app-shells/bash
-	zsh-completion? ( app-shells/zsh )
 "
-BDEPEND+="
+BDEPEND="
 	virtual/pkgconfig
+	doc? ( app-text/asciidoc )
 "
 
-src_configure() {
+src_prepare() {
 	sed -i \
 		-e '/^install.*LICENSEDIR/d' \
 		-e '/set(DOCDIR / s#.*#set(DOCDIR ${CMAKE_INSTALL_DOCDIR})#' \
 		CMakeLists.txt || die
+	cmake-utils_src_prepare
+}
+
+src_configure() {
+	mycmakeargs=(
+		-DWITH_DOCUMENTATION=$(usex doc)
+	)
 
 	cmake-utils_src_configure
 }
@@ -50,9 +49,5 @@ src_install() {
 
 	if ! use examples; then
 		rm -r "${ED}"/usr/share/doc/${PF}/examples || die
-	fi
-
-	if ! use zsh-completion; then
-		rm -r "${ED}"/usr/share/zsh || die
 	fi
 }
