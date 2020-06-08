@@ -7936,7 +7936,7 @@ dev-python/ipaddr 2.2.0: Python IP address manipulation library
 dev-python/ipaddress 1.0.23: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 5.1.4: IPython Kernel for Jupyter
+dev-python/ipykernel 5.1.4 5.3.0: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.2.3: Interactive Parallel Computing with IPython
 dev-python/ipython 7.5.0 7.15.0: Advanced interactive shell for Python
@@ -8273,7 +8273,7 @@ dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3: Text progressbar library for python
 dev-python/prometheus_client 0.7.1-r1: Python client for the Prometheus monitoring system
 dev-python/promises 2.1-r1: An implementation of Promises in Python
-dev-python/prompt_toolkit 2.0.10 2.0.10-r1 3.0.3: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 2.0.10 2.0.10-r1 3.0.3 3.0.5: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.11.4 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1-r1: Python library for communicating with Pocket Science Lab
@@ -8390,7 +8390,7 @@ dev-python/pymountboot 0.2.2 0.2.3 9999: Python extension module to (re)mount /b
 dev-python/pympler 0.6: Memory profiling for Python applications
 dev-python/pymssql 2.1.3: Simple MSSQL python extension module
 dev-python/pymysql 0.9.3: Pure-Python MySQL Driver
-dev-python/pynacl 1.2.1 1.3.0: Python binding to the Networking and Cryptography (NaCl) library
+dev-python/pynacl 1.2.1 1.3.0 1.4.0: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.1: Python client for Neovim
 dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
@@ -14362,7 +14362,7 @@ net-im/slack 4.3.2-r2 4.4.2: Team collaboration tool
 net-im/spectrum2 2.0.12-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958 1.3.00.5153: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
-net-im/telegram-desktop 2.1.0 2.1.7 2.1.10: Official desktop client for Telegram
+net-im/telegram-desktop 2.1.0 2.1.7 2.1.11: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.1.1 2.1.3: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
@@ -14430,7 +14430,7 @@ net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/courier-authlib 0.69.0-r1 0.70.0: Courier authentication library
 net-libs/courier-unicode 1.3 1.4 2.1: Unicode library used by the courier mail server
-net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
+net-libs/cppzmq 0_pre150606 4.6.0: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 2.2.0-r2 3.0.2-r1 4.2.0: High-level C Binding for ZeroMQ
 net-libs/daq 2.0.6-r1 2.0.7: Data Acquisition library, for packet I/O
@@ -14910,7 +14910,7 @@ net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1 6.2_p3-r2: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
-net-misc/openssh 8.1_p1-r3 8.2_p1-r5 8.2_p1-r6 8.3_p1-r1: Port of OpenBSD's free SSH release
+net-misc/openssh 8.1_p1-r3 8.2_p1-r5 8.2_p1-r6 8.3_p1-r2: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.10.2 2.11.1-r1 2.13.0: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.6.0.13018 2.6.1.13407-r1: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8.1 1.9 2.1: Packet generator tool for ethernet
