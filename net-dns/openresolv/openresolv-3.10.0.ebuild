@@ -12,8 +12,6 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="selinux"
 
-DEPEND="!net-dns/resolvconf-gentoo
-	!<net-dns/dnsmasq-2.40-r1"
 RDEPEND="selinux? ( sec-policy/selinux-resolvconf )"
 
 DOCS=( README.md )
