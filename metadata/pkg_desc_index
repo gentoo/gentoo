@@ -14852,7 +14852,7 @@ net-misc/lanmap 81-r1 81-r2: lanmap sits quietly on a network and builds a pictu
 net-misc/lcr 9999: Linux Call Router
 net-misc/libteam 1.22 1.29 1.30 9999: Library and tools set for controlling team network device
 net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
-net-misc/linuxptp 1.8 2.0: The Linux Precision Time Protocol (PTP) implementation
+net-misc/linuxptp 2.0: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r2: Live Source Client For IceCast
 net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 1.0.3 1.0.4 1.0.5-r1: Implementation of IEEE 802.1ab (LLDP)
@@ -16088,7 +16088,7 @@ sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial market
 sci-libs/tamu_anova 0.2-r1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
 sci-libs/tensorflow 1.15.0 2.0.0 2.1.0 2.2.0: Computation framework using data flow graphs for scalable machine learning
-sci-libs/tensorflow-estimator 1.15.1 2.0.1 2.1 2.2.0: A high-level TensorFlow API that greatly simplifies machine learning programming
+sci-libs/tensorflow-estimator 1.15.1 2.0.1 2.1 2.2.0-r1: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 12.14.1 12.18.1: Scientific library collection for large scale problems
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
