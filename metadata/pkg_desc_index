@@ -11170,7 +11170,7 @@ games-puzzle/fbg 0.9-r2: A Tetris clone written in OpenGL
 games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
 games-puzzle/five-or-more 3.32.2: Remove colored balls from the board by forming lines
 games-puzzle/flobopuyo 0.20-r2: Clone of the famous PuyoPuyo game
-games-puzzle/freesweep 0.92-r1: Console Minesweeper
+games-puzzle/freesweep 1.0.1: Console Minesweeper
 games-puzzle/galaxis 1.8-r1: Curses-based clone of the nifty little Macintosh freeware game Galaxis
 games-puzzle/gemdropx 0.9-r2: A puzzle game where it's your job to clear the screen of gems
 games-puzzle/gfifteen 1.0.3-r1: Graphical implementation of the sliding puzzle game fifteen
