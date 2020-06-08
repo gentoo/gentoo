@@ -29,6 +29,9 @@ src_prepare() {
 	#https://github.com/gnuradio/volk/issues/382
 	#Waiting for confirmation from upstream to push this fix
 	#sed -i '/_mm256_zeroupper();/d' kernels/volk/volk_32f_x2_dot_prod_32f.h || die
+	mycmakeargs=(
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+	)
 	cmake_src_prepare
 }
 
