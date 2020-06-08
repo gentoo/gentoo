@@ -7942,7 +7942,7 @@ dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter 
 dev-python/ipyparallel 6.2.3 6.3.0: Interactive Parallel Computing with IPython
 dev-python/ipython 7.5.0 7.15.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0 0.2.0-r1: Vestigial utilities from IPython
-dev-python/ipywidgets 7.0.0 7.4.2-r1: IPython HTML widgets for Jupyter
+dev-python/ipywidgets 7.0.0 7.4.2-r1 7.5.1: IPython HTML widgets for Jupyter
 dev-python/irc 16.3 18.0.0-r1: IRC client framework written in Python
 dev-python/iso8601 0.1.12: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
@@ -8921,7 +8921,7 @@ dev-python/whelk 2.7.1: Pretending python is a shell
 dev-python/whichcraft 0.6.1: Cross-platform cross-python shutil.which functionality
 dev-python/whisper 1.1.5: Fixed size round-robin style database
 dev-python/whoosh 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
-dev-python/widgetsnbextension 3.0.0 3.4.2: IPython HTML widgets for Jupyter
+dev-python/widgetsnbextension 3.0.0 3.4.2 3.5.1: IPython HTML widgets for Jupyter
 dev-python/wrapt 1.11.2-r1 1.12.1: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.3.4-r1 0.5.1 0.5.1-r1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
