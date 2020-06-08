@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg-utils
+inherit cmake desktop xdg-utils
 
 DESCRIPTION="Colobot is an educational real-time strategy video game featuring 3D graphics"
 HOMEPAGE="https://colobot.info/"
@@ -43,7 +43,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# we need to call it explicitly to help Ninja figure out the deps
 	cd desktop || die
@@ -60,7 +60,7 @@ src_configure() {
 		-DCOLOBOT_INSTALL_BIN_DIR="${EPREFIX}"/usr/bin
 		-DCOLOBOT_INSTALL_LIB_DIR="${EPREFIX}"/usr/$(get_libdir)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
