@@ -76,7 +76,7 @@ done
 SRC_URI="${SRC_URI} )"
 
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="cjk X doc source tk +luajittex xetex"
+IUSE="cjk X doc source tk +luajittex xetex xindy"
 
 TEXMF_PATH=/usr/share/texmf-dist
 
@@ -104,6 +104,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 		>=app-text/teckit-2.5.3
 		media-libs/fontconfig
 	)
+	xindy? ( dev-lisp/clisp:= )
 	media-libs/freetype:2
 	>=dev-libs/icu-50:=
 	>=dev-libs/kpathsea-6.3.2
@@ -232,7 +233,6 @@ src_configure() {
 		--disable-tex4htk \
 		--disable-cjkutils \
 		--disable-xdvik \
-		--disable-xindy \
 		--enable-luatex \
 		--disable-dvi2tty \
 		--disable-dvisvgm \
@@ -256,7 +256,8 @@ src_configure() {
 		$(use_enable cjk pmp) \
 		$(use_enable cjk upmp) \
 		$(use_enable tk texdoctk) \
-		$(use_with X x)
+		$(use_with X x) \
+		$(use_enable xindy)
 }
 
 src_compile() {
@@ -343,9 +344,6 @@ src_install() {
 	# Ditto for pdftex
 	mv "${ED}/usr/bin/pdftex" "${ED}/usr/bin/pdftex-${P}" || die
 	dosym "pdftex-${P}" /usr/bin/pdftex
-
-	# Make xindy available
-	dosym ../share/texmf-dist/scripts/xindy/xindy.pl /usr/bin/xindy
 }
 
 pkg_postinst() {
