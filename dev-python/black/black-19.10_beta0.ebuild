@@ -50,6 +50,7 @@ python_prepare_all() {
 
 	[[ -e ${version_path} ]] && die "could not find path to write version to"
 	printf 'version = "%s"\n' "${MY_PV}" > "${version_path}" || die "error writing version"
+	sed 's:setuptools_scm::' setup.cfg || die
 
 	distutils-r1_python_prepare_all
 }
