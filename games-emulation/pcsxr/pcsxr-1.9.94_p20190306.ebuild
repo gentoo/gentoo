@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 EGIT_COMMIT="62467b86871aee3d70c7445f3cb79f0858ec566e"
 MY_P=${PN}-${EGIT_COMMIT}
@@ -70,11 +70,11 @@ src_configure() {
 		-DSND_BACKEND=${sound_backend}
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	mv "${ED}"/usr/share/doc/pcsxr/* "${ED}/usr/share/doc/${PF}/" || die
 	rmdir "${ED}"/usr/share/doc/pcsxr || die
 }

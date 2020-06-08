@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit cmake-multilib python-single-r1 toolchain-funcs
@@ -39,11 +40,11 @@ multilib_src_configure() {
 		-DZ3_INCLUDE_GIT_HASH=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {
-	cmake-utils_src_make test-z3
+	cmake_build test-z3
 	set -- "${BUILD_DIR}"/test-z3 /a
 	echo "${@}" >&2
 	"${@}" || die
