@@ -9,7 +9,7 @@ PYTHON_REQ_USE='readline,sqlite,threads(+)'
 inherit distutils-r1 eutils virtualx
 
 DESCRIPTION="Advanced interactive shell for Python"
-HOMEPAGE="http://ipython.org/"
+HOMEPAGE="https://ipython.org/ https://github.com/ipython/ipython/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
