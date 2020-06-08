@@ -4,20 +4,15 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit distutils-r1
-
-MY_PV=${PV/_pre/.dev}
-MY_P=${PN}-${MY_PV}
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Python bindings for SDL multimedia library"
 HOMEPAGE="https://www.pygame.org/"
-SRC_URI="
-	https://github.com/pygame/pygame/releases/download/${MY_PV}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+EGIT_REPO_URI="https://github.com/pygame/pygame.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS=""
 IUSE="doc examples midi opengl test X"
 RESTRICT="!test? ( test )"
 
@@ -37,10 +32,6 @@ DEPEND="${RDEPEND}
 # util-linux provides script
 BDEPEND="
 	test? ( sys-apps/util-linux )"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-py39.patch
-)
 
 python_configure() {
 	PORTMIDI_INC_PORTTIME=1 LOCALBASE="${EPREFIX}/usr" \
