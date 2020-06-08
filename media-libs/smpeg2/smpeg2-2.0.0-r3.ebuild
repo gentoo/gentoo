@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="debug cpu_flags_x86_mmx static-libs"
 
 DEPEND=">=media-libs/libsdl2-2.0.1-r1[${MULTILIB_USEDEP}]"
