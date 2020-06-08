@@ -9,12 +9,11 @@ inherit distutils-r1
 
 DESCRIPTION="A Python module for making simple text/console-mode user interfaces"
 HOMEPAGE="http://pythondialog.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pythondialog//${PV}/python3-${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/pythondialog/${PV}/python3-${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
-IUSE="doc"
 
 RDEPEND="dev-util/dialog"
 
@@ -26,7 +25,6 @@ python_prepare_all() {
 }
 
 python_install_all() {
-	# examples disabled in EAPI6, so we do this manually
 	dodoc -r examples
 	docompress -x /usr/share/doc/${PF}/examples
 	default
