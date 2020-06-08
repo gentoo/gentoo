@@ -16,6 +16,8 @@ DEPEND="!net-dns/resolvconf-gentoo
 	!<net-dns/dnsmasq-2.40-r1"
 RDEPEND="selinux? ( sec-policy/selinux-resolvconf )"
 
+DOCS=( README.md )
+
 src_configure() {
 	local myeconfargs=(
 		--prefix="${EPREFIX}"
@@ -40,5 +42,3 @@ pkg_config() {
 		einfo "The dummy interface will disappear when you next reboot"
 	fi
 }
-
-DOCS=( LICENSE README.md )
