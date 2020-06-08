@@ -17,7 +17,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="doc examples midi opengl test X"
 RESTRICT="!test? ( test )"
 
