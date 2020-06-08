@@ -5274,7 +5274,7 @@ dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1 1.0.17.1-r1: Language bindings fo
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.4.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
-dev-libs/rocm-comgr 3.0.0 3.1.0 3.3.0: Radeon Open Compute Code Object Manager
+dev-libs/rocm-comgr 3.0.0 3.1.0 3.3.0 3.5.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.0.0 3.1.0 3.3.0 3.5.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-runtime 3.0.0 3.1.0 3.3.0: Radeon Open Compute OpenCL Compatible Runtime
@@ -17830,7 +17830,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
 www-client/opera 68.0.3618.104 68.0.3618.125: A fast and secure web browser
 www-client/opera-beta 69.0.3686.7 69.0.3686.12 69.0.3686.21: A fast and secure web browser
-www-client/opera-developer 70.0.3693.0 70.0.3701.0 70.0.3707.0: A fast and secure web browser
+www-client/opera-developer 70.0.3693.0 70.0.3701.0 70.0.3707.0 70.0.3714.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.11.1-r1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
@@ -17840,7 +17840,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.0.1874.38_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.1.1929.3_p1 3.1.1929.13_p1 3.1.1929.19_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.1.1929.3_p1 3.1.1929.13_p1 3.1.1929.19_p1 3.1.1929.21_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.4 7.8 7.8-r1: AWStats is short for Advanced Web Statistics
