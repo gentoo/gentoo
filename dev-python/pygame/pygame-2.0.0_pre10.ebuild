@@ -17,19 +17,23 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="doc examples midi opengl test X"
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
-	>=media-libs/sdl2-image-1.2.2[png,jpeg]
+RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
+	>=media-libs/sdl2-image-1.2.2[jpeg,png]
 	>=media-libs/sdl2-mixer-1.2.4
 	>=media-libs/sdl2-ttf-2.0.6
 	>=media-libs/smpeg2-0.4.4-r1
 	midi? ( media-libs/portmidi )
 	X? ( >=media-libs/libsdl2-1.2.5[opengl?,video,X] )
 	!X? ( >=media-libs/libsdl2-1.2.5 )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		media-libs/sdl2-image[gif,jpeg,png]
+		media-libs/sdl2-mixer[mp3,vorbis,wav]
+	)"
 # util-linux provides script
 BDEPEND="
 	test? ( sys-apps/util-linux )"
