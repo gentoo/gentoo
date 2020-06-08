@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
-inherit xdg-utils distutils-r1 gnome2-utils virtualx
+inherit xdg-utils distutils-r1 virtualx
 
 DESCRIPTION="A desktop wiki"
 HOMEPAGE="
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}-desktop-wiki/${PN}-desktop-wiki/archive/${PV/_
 
 LICENSE="BSD GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND="
@@ -55,8 +55,8 @@ python_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 	if ! has_version ${CATEGORY}/${PN}; then
 		elog "Please install these packages for additional functionality"
@@ -73,7 +73,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
