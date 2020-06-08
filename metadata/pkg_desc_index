@@ -7939,7 +7939,7 @@ dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and
 dev-python/ipykernel 5.1.4: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.2.3: Interactive Parallel Computing with IPython
-dev-python/ipython 7.5.0: Advanced interactive shell for Python
+dev-python/ipython 7.5.0 7.15.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.0.0 7.4.2-r1: IPython HTML widgets for Jupyter
 dev-python/irc 16.3 18.0.0-r1: IRC client framework written in Python
@@ -8346,7 +8346,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.5-r1 1.5.6: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
-dev-python/pygame 1.9.6 1.9.6-r1 2.0.0_pre10: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.6 1.9.6-r1 2.0.0_pre10 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r2 6.99.12.4-r3 7.3.5: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.0.3 1.2.1: Python bindings for libgit2
@@ -8732,13 +8732,13 @@ dev-python/socketio-client 0.6.6 0.7.2: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
 dev-python/socketpool 0.5.3-r2 0.5.3-r3: A simple Python socket pool
 dev-python/sortedcollections 0.5.3: Python library to sort collections and containers
-dev-python/sortedcontainers 2.1.0 2.2.1: Python library to sort collections and containers
+dev-python/sortedcontainers 2.1.0 2.2.1 2.2.2: Python library to sort collections and containers
 dev-python/soupsieve 1.9.5 1.9.6 2.0.1: A modern CSS selector implementation for BeautifulSoup
 dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with games in mind
 dev-python/sparql-wrapper 1.8.4: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
-dev-python/sphinx 1.7.5-r2 2.0.1-r1 2.4.4 3.0.3 3.0.4: Python documentation generator
+dev-python/sphinx 1.7.5-r2 2.0.1-r1 2.4.4 3.0.3 3.0.4 3.1.0: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.5 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -12401,7 +12401,7 @@ media-gfx/aaphoto 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
 media-gfx/ahoviewer 1.6.5-r1: A GTK2 image viewer, manga reader, and booru browser
 media-gfx/album 4.13-r2 4.15-r1: HTML photo album generator
-media-gfx/alembic 1.7.9 1.7.11-r1: Open framework for storing and sharing scene data
+media-gfx/alembic 1.7.11-r1 1.7.12: Open framework for storing and sharing scene data
 media-gfx/apng2gif 1.8: create a GIF from an APNG
 media-gfx/apngasm 2.91: create an APNG from multiple PNG files
 media-gfx/apngdis 2.9: extract PNG frames from an APNG
@@ -14231,7 +14231,7 @@ net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.2.4 4.3.0 4.3.1: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
-net-dns/openresolv 3.9.0 3.9.2: A framework for managing DNS information
+net-dns/openresolv 3.9.0 3.9.2 3.10.0: A framework for managing DNS information
 net-dns/pdns 4.1.13 4.2.0 4.2.1 4.2.1-r1 4.2.2 4.3.0: The PowerDNS Daemon
 net-dns/pdns-recursor 4.3.1: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
@@ -14355,7 +14355,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.34.0: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.34.1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.59.0.77 8.60.0.76: Instant messaging client, with support for audio and video
 net-im/slack 4.3.2-r2 4.4.2: Team collaboration tool
@@ -16095,7 +16095,7 @@ sci-libs/trilinos 12.14.1 12.18.1: Scientific library collection for large scale
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.6.2 5.7.9: Unsymmetric multifrontal sparse LU factorization library
-sci-libs/volk 2.3.0: vector optimized library of kernels
+sci-libs/volk 2.3.0-r1: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 9999: Votca tools library
 sci-libs/vtk 8.2.0: The Visualization Toolkit
