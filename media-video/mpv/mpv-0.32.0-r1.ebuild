@@ -28,7 +28,7 @@ DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="LGPL-2.1+ GPL-2+ BSD ISC samba? ( GPL-3+ )"
 SLOT="0"
-IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda debug doc drm dvb
+IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda debug drm dvb
 	dvd +egl gamepad gbm +iconv jack javascript jpeg lcms +libass libcaca libmpv +lua
 	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
 	selinux test tools +uchardet vaapi vdpau vulkan wayland +X +xv zlib zimg"
@@ -127,7 +127,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	dev-python/docutils
 	cuda? ( >=media-libs/nv-codec-headers-8.2.15.7 )
-	doc? ( dev-python/rst2pdf )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	test? ( >=dev-util/cmocka-1.0.0 )
 "
@@ -164,8 +163,8 @@ src_configure() {
 		--disable-optimize # Don't add '-O2' to CFLAGS.
 		$(usex debug '' '--disable-debug-build')
 
-		$(use_enable doc html-build)
-		$(use_enable doc pdf-build)
+		--disable-html-build
+		--disable-pdf-build
 		--enable-manpage-build
 		$(use_enable cplugins)
 		$(use_enable test)
