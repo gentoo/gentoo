@@ -90,7 +90,7 @@ src_configure() {
 }
 
 src_compile() {
-	tc-export AR CC LD STRIP
+	export DONTSTRIP=1
 	default
 }
 
