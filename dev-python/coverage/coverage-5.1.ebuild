@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
-PYTHON_REQ_USE="threads(+)"
+PYTHON_REQ_USE="threads(+),sqlite(+)"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -23,6 +23,7 @@ RESTRICT="test"
 
 #BDEPEND="
 #	test? (
+#		dev-python/coverage[${PYTHON_USEDEP}]
 #		dev-python/PyContracts[${PYTHON_USEDEP}]
 #		dev-python/flaky[${PYTHON_USEDEP}]
 #		dev-python/mock[${PYTHON_USEDEP}]
