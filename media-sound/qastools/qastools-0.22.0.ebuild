@@ -28,13 +28,17 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.15.patch"
+	"${FILESDIR}/${P}-nomancompress.patch"
+)
 
 S="${WORKDIR}"/${PN}-v${PV}
 
 src_configure() {
 	local mycmakeargs=(
 		-DSKIP_LICENSE_INSTALL=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_UnixCommands=ON
 	)
 	cmake_src_configure
 }
