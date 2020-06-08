@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit eutils python-r1 toolchain-funcs
 
@@ -39,7 +39,9 @@ src_compile() {
 	emake -C src spidermonkey/js/src
 	sed -e '/CC = gcc/d' \
 		-i src/spidermonkey/js/src/config/Linux_All.mk || die
-	emake -j1 -C src
+	# Upstream parallel compilation bug, do that first to work around
+	emake -C src/spidermonkey
+	emake -C src
 	use python && python_foreach_impl emake -C src pymod
 }
 
@@ -50,9 +52,11 @@ src_test() {
 src_install() {
 	emake DESTDIR="${ED}" LIB_PREFIX="${ED}/usr/$(get_libdir)" -C src install
 	dodoc README.md
-	use python && python_foreach_impl \
-		emake DESTDIR="${D}" \
-		LIB_PREFIX="${D}/usr/$(get_libdir)" -C src install-pymod
+	if use python; then
+		python_foreach_impl emake DESTDIR="${D}" \
+			LIB_PREFIX="${D}/usr/$(get_libdir)" -C src install-pymod
+		python_foreach_impl python_optimize
+	fi
 	if use doc; then
 		docompress -x /usr/share/doc/${PF}/{html,examples}
 	else
