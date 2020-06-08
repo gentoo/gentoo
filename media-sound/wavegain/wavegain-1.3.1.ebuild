@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,9 +18,13 @@ BDEPEND="app-arch/unzip"
 
 S=${WORKDIR}/${P/wavegain/WaveGain}
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+)
+
 src_compile() {
-	$(tc-getCC) ${LDFLAGS} ${CFLAGS} *.c -o ${PN} \
-		-DHAVE_CONFIG_H -lm || die "build failed"
+	$(tc-getCC) ${LDFLAGS} ${CFLAGS} *.c -o ${PN} -DHAVE_CONFIG_H -lm \
+		|| die "build failed"
 }
 
 src_install() {

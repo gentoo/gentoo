@@ -1,0 +1,21 @@
+diff -Naur a/audio.h b/audio.h
+--- a/audio.h	2009-09-15 13:49:54.000000000 +0000
++++ b/audio.h	2020-05-16 02:20:57.432019958 +0000
+@@ -136,7 +136,7 @@
+ long wav_read(void *, double **buffer, int samples, int fast, int chunk);
+ long wav_ieee_read(void *, double **buffer, int samples, int fast, int chunk);
+ 
+-enum {
++enum file_formats {
+ 	WAV_NO_FMT = 0,
+ 	WAV_FMT_8BIT,
+ 	WAV_FMT_16BIT,
+@@ -146,7 +146,7 @@
+ 	WAV_FMT_AIFF,
+ 	WAV_FMT_AIFC8,
+ 	WAV_FMT_AIFC16
+-} file_formats;
++};
+ 
+ typedef struct
+ {
