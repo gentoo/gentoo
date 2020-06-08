@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils autotools
+EAPI=7
+
+inherit autotools
 
 data_ver=1.5
 snd_trk_ver=1.0
@@ -21,11 +22,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ggi nls sdl"
 RESTRICT="test"
 
-RDEPEND="
-	ggi? ( media-libs/libggi media-libs/libgii media-libs/libmikmod )
+REQUIRED_USE="^^ ( ggi sdl )"
+RDEPEND="ggi? (
+		media-libs/libggi
+		media-libs/libgii
+		media-libs/libmikmod
+	)
 	nls? ( virtual/libintl )
-	sdl? ( media-libs/libsdl media-libs/sdl-mixer )
-	!sdl? ( !ggi? ( media-libs/libsdl media-libs/sdl-mixer ) )"
+	sdl? (
+		media-libs/libsdl
+		media-libs/sdl-mixer
+	)"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
@@ -34,7 +41,9 @@ PATCHES=(
 	"${FILESDIR}/${P}"-automake-1.12.patch
 	"${FILESDIR}/${P}"-gcc4.patch
 	"${FILESDIR}/${P}"-underlink.patch
-	"${FILESDIR}/${PV}"-cvs-segfault-fix.patch
+	"${FILESDIR}/${P}"-cvs-segfault-fix.patch
+	"${FILESDIR}/${P}"-compilation.patch
+	"${FILESDIR}/${P}"-gcc10.patch
 )
 
 src_prepare() {
@@ -45,13 +54,13 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-
-	if use sdl || ! use ggi ; then
-		myconf="${myconf} --with-sdl --with-sdl-mixer"
-	else
-		myconf="${myconf} --with-ggi --with-mikmod"
-	fi
+	local myconf=(
+		$(use_with sdl)
+		$(use_with sdl sdl-mixer)
+		$(use_with ggi)
+		$(use_with ggi mikmod)
+		$(use_enable nls)
+	)
 
 	local pkg
 	for pkg in ${A//.tar.bz2} ; do
@@ -59,8 +68,7 @@ src_configure() {
 		econf \
 			--disable-heroes-debug \
 			--disable-optimizations \
-			$(use_enable nls) \
-			${myconf}
+			"${myconf[@]}"
 	done
 }
 
