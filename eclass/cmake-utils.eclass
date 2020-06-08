@@ -12,6 +12,7 @@
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common ebuild functions for cmake-based packages
 # @DESCRIPTION:
+# DEPRECATED: This no longer receives any changes. Everyone must port to cmake.eclass.
 # The cmake-utils eclass makes creating ebuilds for cmake-based packages much easier.
 # It provides all inherited features (DOCS, HTML_DOCS, PATCHES) along with out-of-source
 # builds (default), in-source builds and an implementation of the well-known use_enable

@@ -114,6 +114,7 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.94-localscan_dlopen.patch
+	eapply -p2 "${FILESDIR}"/exim-4.94-taint-pam-expansion.patch # drop on NR
 
 	if use maildir ; then
 		eapply "${FILESDIR}"/exim-4.94-maildir.patch
@@ -585,4 +586,7 @@ pkg_postinst() {
 	use dsn && einfo "extra information in fail DSN message is experimental"
 	elog "The obsolete acl condition 'demime' is removed, the replacements"
 	elog "are the ACLs acl_smtp_mime and acl_not_smtp_mime"
+	einfo
+	elog "Note that \$local_part is renamed to \$local_part_data, please"
+	elog "update your affected sections, such as local_delivery transport"
 }
