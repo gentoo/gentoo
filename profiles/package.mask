@@ -257,11 +257,6 @@ www-apps/octoprint
 # Removal in 30 days.  Bug #719518.
 dev-python/ramlfications
 
-# Matt Turner <mattst88@gentoo.org> (2020-05-08)
-# Client-side library for an X extension that has not been supported by Xorg
-# for about a decade. Masked for removal in 30 days. Bug #720150
-x11-libs/libXxf86misc
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-05-02)
 # Included in recent texlive versions. Please uninstall.
 # Removal in 30 days.
