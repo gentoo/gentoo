@@ -88,6 +88,10 @@ BDEPEND="
 	) )
 "
 
+PATCHES=(
+	"${FILESDIR}/2.1.1-write_pixel_16-endian.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
