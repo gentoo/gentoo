@@ -7,7 +7,7 @@ inherit cmake systemd
 
 MY_P="c-toxcore-${PV}"
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
-HOMEPAGE="https://tox.chat"
+HOMEPAGE="https://tox.chat https://github.com/TokTok/c-toxcore"
 SRC_URI="https://github.com/TokTok/c-toxcore/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
@@ -23,7 +23,7 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="
 	>dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
 	av? (
-		media-libs/libvpx
+		media-libs/libvpx:=
 		media-libs/opus
 	)
 	daemon? ( dev-libs/libconfig )"
