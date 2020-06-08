@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit flag-o-matic distutils-r1 virtualx
+inherit flag-o-matic distutils-r1
 
 MY_PV=${PV/_pre/.dev}
 MY_P=${PN}-${MY_PV}
@@ -48,12 +48,10 @@ python_configure() {
 	fi
 }
 
-src_test() {
-	virtx distutils-r1_src_test
-}
-
 python_test() {
 	local -x PYTHONPATH=
+	local -x SDL_VIDEODRIVER=dummy
+	local -x SDL_AUDIODRIVER=disk
 	distutils_install_for_testing
 	script -eqc "${EPYTHON} -m pygame.tests" || die
 }
