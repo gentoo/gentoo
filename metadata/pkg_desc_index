@@ -12141,7 +12141,7 @@ mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.8 2.1: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5 1.0.13: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.93.0.4-r1 4.94: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.93.0.4-r1 4.94-r1: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.7-r1 1.8.10 1.8.11: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r13: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/notqmail 1.08 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
@@ -13634,7 +13634,7 @@ media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.72-r1 1.1.10-r1 1.1.26: Spotify is a social music platform
-media-sound/strawberry 0.6.10 0.6.11 9999: Modern music player and library organizer based on Clementine and Qt
+media-sound/strawberry 0.6.11 0.6.12 9999: Modern music player and library organizer based on Clementine and Qt
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
