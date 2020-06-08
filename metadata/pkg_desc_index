@@ -7565,7 +7565,7 @@ dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.6: A pure Python module for creation and analysis of binary data
 dev-python/black 19.10_beta0: The uncompromising Python code formatter
 dev-python/bleach 3.1.4-r1 3.1.5: an easy whitelist-based HTML-sanitizing tool
-dev-python/blessed 1.17.5: Library for making terminal apps using colors, keyboard input and positioning
+dev-python/blessed 1.17.5 1.17.8: Library for making terminal apps using colors, keyboard input and positioning
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.4: Generate block-diagram image from text
@@ -8346,7 +8346,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.5-r1 1.5.6: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
-dev-python/pygame 1.9.6 1.9.6-r1: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.6 1.9.6-r1 2.0.0_pre10: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r2 6.99.12.4-r3 7.3.5: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.0.3 1.2.1: Python bindings for libgit2
@@ -10648,7 +10648,7 @@ dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 1.26 1.27 2.4 2.5: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6 0.6-r1: Dump a remote Subversion repository
-dev-vcs/stgit 0.19 0.20 0.21 0.22: Manage a stack of patches using GIT as a backend
+dev-vcs/stgit 0.21 0.22: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.12.2 1.13.0-r1 1.14.0: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.11-r1 1.0.12 1.0.13 1.0.13-r1 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
