@@ -20,7 +20,7 @@ HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/188"
-IUSE="+asm +10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_altivec numa power8 test"
+IUSE="+asm +10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_vsx2 numa test"
 
 # Test suite requires assembly support and is known to be broken
 RESTRICT="test"
@@ -120,8 +120,8 @@ x265_variant_src_configure() {
 				# because we want those flags apply ONLY to "main" variant
 				if [[ ${ABI} = ppc* ]] ; then
 					myabicmakeargs+=(
-						-DCPU_POWER8=$(usex power8 ON OFF)
-						-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_altivec ON OFF)
+						-DCPU_POWER8=$(usex cpu_flags_ppc_vsx2 ON OFF)
+						-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_vsx2 ON OFF)
 					)
 				fi
 			fi
