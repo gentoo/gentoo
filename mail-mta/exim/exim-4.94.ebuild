@@ -585,4 +585,7 @@ pkg_postinst() {
 	use dsn && einfo "extra information in fail DSN message is experimental"
 	elog "The obsolete acl condition 'demime' is removed, the replacements"
 	elog "are the ACLs acl_smtp_mime and acl_not_smtp_mime"
+	einfo
+	elog "Note that \$local_part is renamed to \$local_part_data, please"
+	elog "update your affected sections, such as local_delivery transport"
 }
