@@ -35,10 +35,8 @@ RDEPEND="
 		boost? ( >=dev-libs/boost-1.65.0:=[python?,${PYTHON_MULTI_USEDEP}] )
 	')
 "
-DEPEND="
-	${RDEPEND}
-	doc? ( >=app-doc/doxygen-1.8.14-r1 )
-"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( >=app-doc/doxygen-1.8.14-r1 )"
 
 DOCS=( "ACKNOWLEDGEMENTS.txt" "FEEDBACK.txt" "NEWS.txt" "README.txt" )
 
