@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 EGIT_COMMIT=336bd86d2ca4030b808d76e56a0387914982e289
@@ -50,7 +51,7 @@ multilib_src_configure() {
 		-DCRYPTO_BACKEND=${crypto_backend}
 		-DENABLE_ZLIB_COMPRESSION=$(usex zlib)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install_all() {
