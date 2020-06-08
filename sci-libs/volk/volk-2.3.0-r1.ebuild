@@ -4,6 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
+
+#https://github.com/gnuradio/volk/issues/383
 CMAKE_BUILD_TYPE="Release"
 inherit cmake python-single-r1
 
