@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit flag-o-matic distutils-r1
+inherit distutils-r1
 
 MY_PV=${PV/_pre/.dev}
 MY_P=${PN}-${MY_PV}
