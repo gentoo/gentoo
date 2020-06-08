@@ -1,0 +1,13 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=A monospaced font developed for Windows Terminal
+EAPI=7
+HOMEPAGE=https://github.com/microsoft/cascadia-code
+IUSE=X
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=OFL-1.1
+SLOT=0
+SRC_URI=https://github.com/microsoft/cascadia-code/releases/download/v2004.30/CascadiaCode_2004.30.zip -> cascadia-code-2004.30.zip
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_md5_=a1cb7e4ccc7b3472f5f54f2e4167708d
