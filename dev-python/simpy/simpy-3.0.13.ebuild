@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_P="${P/simpy/SimPy}"
 
 DESCRIPTION="Object-oriented, process-based discrete-event simulation language"
-HOMEPAGE="http://simpy.readthedocs.org/en/latest/"
+HOMEPAGE="https://simpy.readthedocs.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
