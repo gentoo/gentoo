@@ -37,6 +37,7 @@ gen_usr_ldscript() {
 	local lib libdir=$(get_libdir) output_format="" auto=false suffix=$(get_libname)
 
 	tc-is-static-only && return
+	use prefix && return
 
 	# We only care about stuffing / for the native ABI. #479448
 	if [[ $(type -t multilib_is_native_abi) == "function" ]] ; then
