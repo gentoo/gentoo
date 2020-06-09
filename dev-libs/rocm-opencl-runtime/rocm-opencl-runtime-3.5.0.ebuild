@@ -47,6 +47,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Should be added to the CMakeLists.txt
+	append-cflags -fcommon
+
 	local mycmakeargs=(
 		-DUSE_COMGR_LIBRARY=yes
 		-DROCclr_DIR=/usr/include/rocclr
