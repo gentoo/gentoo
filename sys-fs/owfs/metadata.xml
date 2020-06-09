@@ -12,7 +12,7 @@
 		<subslots>Reflect ABI of libow.so.</subslots>
 	</slots>
 	<upstream>
-		<remote-id type="sourceforge">owfs</remote-id>
+		<remote-id type="github">owfs/owfs</remote-id>
 	</upstream>
 	<use>
 		<flag name="ftdi">Enable support for USB FTDI chips via <pkg>dev-embedded/libftdi</pkg></flag>
