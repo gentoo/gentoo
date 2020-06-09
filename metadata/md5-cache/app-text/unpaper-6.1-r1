@@ -4,10 +4,10 @@ DESCRIPTION=Post-processor for scanned and photocopied book pages
 EAPI=6
 HOMEPAGE=https://www.flameeyes.eu/projects/unpaper
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=media-video/ffmpeg-2:0=[encode]
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.flameeyes.eu/files/unpaper-6.1.tar.xz
-_md5_=e46b13b744c3de2763b47a795a12d990
+_md5_=f392d8977b448e046076c866421fc9fa

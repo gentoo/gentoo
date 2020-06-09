@@ -7887,7 +7887,7 @@ dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.8.1 0.9.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0 2.10.0-r1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
-dev-python/hcloud-python 1.6.3 1.6.3-r1 1.6.3-r2: Official Hetzner Cloud python library
+dev-python/hcloud-python 1.6.3 1.6.3-r1 1.6.3-r2 1.7.0: Official Hetzner Cloud python library
 dev-python/helpdev 0.6.10: Helping users and developers to get information about the environment
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hglib 2.1: Library for using the Mercurial Command Server from Python
