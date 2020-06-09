@@ -68,15 +68,23 @@ src_prepare() {
 	epatch_user
 }
 
+src_configure() {
+	myopts=(
+		$(usex elibc_musl NO_REGEX=NeedsStartEnd '')
+	)
+
+	export MY_MAKEOPTS="${myopts[@]}"
+}
+
 src_compile() {
-	emake V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake "${MY_MAKEOPTS}" V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 	use doc && emake V=1 doc-man
 }
 
 src_install() {
 	webapp_src_preinst
 
-	emake V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" install
+	emake "${MY_MAKEOPTS}" V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" install
 
 	insinto /etc
 	doins "${FILESDIR}"/cgitrc
