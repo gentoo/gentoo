@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc10-fnocommon.patch
+)
+
 src_install() {
 	gnome2_src_install
 	# Directory for systemwide extensions
