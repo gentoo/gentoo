@@ -11,8 +11,8 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://aomedia.googlesource.com/aom"
 else
 	MY_COMMIT="1e711b0aca6721da83835e3b5ceda07238e8b6ae"
-	#SRC_URI="https://aomedia.googlesource.com/aom/+archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-	SRC_URI="https://dev.gentoo.org/~whissi/dist/${PN}/${P}.tar.gz"
+	SRC_URI="https://aomedia.googlesource.com/aom/+archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+	# SRC_URI="https://dev.gentoo.org/~whissi/dist/${PN}/${P}.tar.gz"
 	S="${WORKDIR}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
