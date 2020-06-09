@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -32,6 +32,10 @@ BDEPEND="
 
 distutils_enable_sphinx docs
 distutils_enable_tests nose
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py39.patch
+)
 
 python_test() {
 	script -eqc "nosetests -v" || die
