@@ -49,6 +49,7 @@ src_prepare() {
 multilib_src_configure() {
 	# --disable-openssl bug #427526
 	ECONF_SOURCE="${S}" econf \
+		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
 		$(tc-is-static-only && echo --disable-shared) \
 		$(use_enable cpu_flags_x86_aes x86-aesni) \
 		$(use_enable cpu_flags_x86_sha x86-sha-ni) \
