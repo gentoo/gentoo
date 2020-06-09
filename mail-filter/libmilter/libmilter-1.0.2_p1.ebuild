@@ -45,6 +45,7 @@ src_prepare() {
 	if use elibc_musl; then
 		use ipv6 && ENVDEF="${ENVDEF} -DNEEDSGETIPNODE"
 
+		eapply "${FILESDIR}/${PN}-musl-stack-size.patch"
 		eapply "${FILESDIR}/${PN}-musl-disable-cdefs.patch"
 	fi
 
