@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -15,22 +15,14 @@ HOMEPAGE="
 	https://pypi.org/project/Send2Trash/
 	https://github.com/hsoft/send2trash"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-S="${WORKDIR}"/${MY_P}
+distutils_enable_tests setup.py
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-broken-tests-on-py2.patch"
 )
-
-python_test() {
-	${EPYTHON} setup.py test
-}
