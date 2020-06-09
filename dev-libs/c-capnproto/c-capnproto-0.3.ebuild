@@ -11,7 +11,7 @@ SRC_URI="https://github.com/opensourcerouting/c-capnproto/releases/download/${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64"
+KEYWORDS="amd64 ~arm arm64"
 IUSE="static-libs"
 
 RDEPEND=""
