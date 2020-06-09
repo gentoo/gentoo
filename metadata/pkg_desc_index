@@ -5278,7 +5278,7 @@ dev-libs/rocclr 3.5.0: Radeon Open Compute Common Language Runtime
 dev-libs/rocm-comgr 3.0.0 3.1.0 3.3.0 3.5.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.0.0 3.1.0 3.3.0 3.5.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
-dev-libs/rocm-opencl-runtime 3.0.0 3.1.0 3.3.0: Radeon Open Compute OpenCL Compatible Runtime
+dev-libs/rocm-opencl-runtime 3.0.0 3.1.0 3.3.0 3.5.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.0.0 3.1.0 3.3.0 3.5.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 3.0.0 3.1.0 3.3.0 3.5.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
@@ -14446,7 +14446,7 @@ net-libs/glib-networking 2.60.4 2.62.3 2.64.0 2.64.2: Network-related giomodules
 net-libs/gloox 1.0.22: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.34.1: GNOME framework for accessing online accounts
-net-libs/gnutls 3.6.13-r1 3.6.14: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.6.14: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0 0.10.0-r1: Google Cloud Client Library for C++
 net-libs/grpc 1.26.0-r1 1.28.1-r1: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
