@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	|| ( >=app-emulation/runc-1.0.0_rc6 app-emulation/crun )
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
-	net-misc/cni-plugins
+	>=net-misc/cni-plugins-0.8.6
 	sys-fs/lvm2
 	sys-libs/libseccomp:=
 
