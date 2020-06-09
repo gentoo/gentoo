@@ -17899,7 +17899,7 @@ www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and ot
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.104 8.5.55 8.5.56 9.0.35 9.0.36: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.5.3 5.1-r1 6.0.3 6.0.4: Python web framework and asynchronous networking library
-www-servers/uwsgi 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
+www-servers/uwsgi 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 6.0.1 6.0.6 6.1.1 6.3.1 6.3.2 6.4.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
