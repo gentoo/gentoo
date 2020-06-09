@@ -31,6 +31,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+# https://gitlab.gnome.org/GNOME/nautilus-python/-/merge_requests/7
+PATCHES=( "${FILESDIR}"/${P}-gcc10-fnocommon.patch )
+
 src_install() {
 	gnome2_src_install
 	# Directory for systemwide extensions
