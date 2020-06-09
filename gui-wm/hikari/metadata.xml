@@ -19,5 +19,6 @@
         <flag name="gamma">add gamma control for redshift</flag>
         <flag name="layershell">add support for wayland apps using layer shell</flag>
         <flag name="screencopy">add support for screen grabbing</flag>
+        <flag name="man">build and install man pages</flag>
     </use>
 </pkgmetadata>
