@@ -16,8 +16,18 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~ppc64 sparc x86"
 
 RDEPEND="
 	|| (
-		x11-misc/xclip
-		x11-misc/xsel
+		(
+			x11-misc/xsel
+			sys-apps/which
+		)
+		(
+			x11-misc/xclip
+			sys-apps/which
+		)
+		(
+			kde-plasma/plasma-workspace
+			sys-apps/which
+		)
 		dev-python/PyQt5[${PYTHON_USEDEP}]
 		dev-python/QtPy[${PYTHON_USEDEP}]
 	)
@@ -36,6 +46,10 @@ PATCHES=(
 src_prepare() {
 	# stupid windows
 	find -type f -exec sed -i -e 's:\r$::' {} + || die
+	# klipper is hard to get working, and once we make it work,
+	# it breaks most of the other backends
+	sed -e 's:_executable_exists("klipper"):False:' \
+		-i tests/test_pyperclip.py || die
 	distutils-r1_src_prepare
 }
 
