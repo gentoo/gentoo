@@ -48,6 +48,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Reported upstream: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/issues/120
+	append-cflags -fcommon
+
 	local mycmakeargs=(
 		-DUSE_COMGR_LIBRARY=yes
 		-DROCclr_DIR=/usr/include/rocclr
