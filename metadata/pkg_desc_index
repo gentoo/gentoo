@@ -7688,7 +7688,7 @@ dev-python/decorator 4.4.2: Simplifies the usage of decorators for the average p
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/defcon 0.6.0 0.6.0-r1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.6.0: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.8.1 0.9.2: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.9.2 0.9.3: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.7 1.2.9 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.0.7: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
