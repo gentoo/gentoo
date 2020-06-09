@@ -2469,7 +2469,7 @@ app-portage/nattka 0.2.6 9999: A New Arch Tester Toolkit -- open-source stable-b
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r1 0.5.3-r2: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
-app-portage/pfl 3.0.1-r3 3.1: Searchable online file/package database for Gentoo
+app-portage/pfl 3.1: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.80 0.87 9999: Small and fast Portage helper tools written in C
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27-r1 2.1.29: A helper program for maintaining the package.keyword and package.unmask files
@@ -3174,10 +3174,10 @@ dev-ada/gnatcoll-core 2019-r1: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2019: GNAT Component Collection
 dev-ada/gnatmem 2019-r1: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2019-r1: Translates addresses into filename, line number, and function names
-dev-ada/gprbuild 2017-r2 2019-r1: Multi-Language Management
+dev-ada/gprbuild 2017-r2 2019-r1 2020: Multi-Language Management
 dev-ada/gps 2019-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017-r1 2018-r2 2019-r1: A complete Ada graphical toolkit
-dev-ada/langkit 2018 2019: A Python framework to generate language parsers
+dev-ada/langkit 2018 2019 2019-r1: A Python framework to generate language parsers
 dev-ada/libadalang 2018-r2 2019-r1: high performance semantic engine for the Ada programming language
 dev-ada/libadalang-tools 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
 dev-ada/libgpr 2019-r1: Ada library to handle GPRbuild project files
@@ -4999,7 +4999,7 @@ dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.10.0: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1 1.16.2: Library routines related to building,parsing and iterating BSON documents
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
-dev-libs/libburn 1.5.0 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
+dev-libs/libburn 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 2.2 2.3: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcbor 0.5.0 0.6.0-r1 0.6.1 0.7.0: CBOR protocol implementation for C and others
 dev-libs/libcdio 0.93 0.94-r1 1.1.0 2.0.0 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
@@ -5070,8 +5070,8 @@ dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other compon
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
 dev-libs/libinput 1.15.4 1.15.5: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split out of gettext)
-dev-libs/libisoburn 1.5.0 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
-dev-libs/libisofs 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
+dev-libs/libisoburn 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
+dev-libs/libisofs 1.5.2: Open-source library for reading, mastering and writing optical discs
 dev-libs/libite 2.1.0 2.1.2 2.2.0: A collection of useful BSD APIs
 dev-libs/libixion 0.15.0 9999: General purpose formula parser & interpreter
 dev-libs/libjcat 0.1.1 0.1.2: Library and tool for reading and writing Jcat files
@@ -10234,7 +10234,7 @@ dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1 0.5.1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0 0.4.0_p20170219: An automated testing system for bash
 dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1 1.2.1 2.0.0: Fast and correct automated build system
-dev-util/bbe 0.2.2 0.2.2-r1: Sed-like editor for binary files
+dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
 dev-util/bcc 0.11.0 0.12.0-r1 0.13.0 0.14.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/bdelta 0.3.1-r1: Binary Delta - Efficient difference algorithm and format
@@ -11980,55 +11980,55 @@ kde-misc/tellico 3.2.3 3.3.1: Collection manager based on KDE Frameworks
 kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.71-r1: Getting things done application by KDE
-kde-plasma/bluedevil 5.18.5: Bluetooth stack for KDE Plasma
-kde-plasma/breeze 5.18.5: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-grub 5.18.5: Breeze theme for GRUB
-kde-plasma/breeze-gtk 5.18.5: Official GTK+ port of Plasma's Breeze widget style
-kde-plasma/breeze-plymouth 5.18.5: Breeze theme for Plymouth
-kde-plasma/discover 5.18.5: KDE Plasma resources management GUI
-kde-plasma/drkonqi 5.18.5-r2: Plasma crash handler, gives the user feedback if a program crashed
-kde-plasma/kactivitymanagerd 5.18.5: System service to manage user's activities, track the usage patterns etc.
-kde-plasma/kde-cli-tools 5.18.5: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.18.5: GTK2 and GTK3 configurator for KDE Plasma
-kde-plasma/kdecoration 5.18.5: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.18.5: Extra Plasma applets and engines
-kde-plasma/kgamma 5.18.5: Screen gamma values kcontrol module
-kde-plasma/khotkeys 5.18.5: KDE Plasma workspace hotkey module
-kde-plasma/kinfocenter 5.18.5: Utility providing information about the computer hardware
-kde-plasma/kmenuedit 5.18.5: KDE Plasma menu editor
-kde-plasma/kscreen 5.18.5: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.18.5: Library and components for secure lock screen architecture
-kde-plasma/ksshaskpass 5.18.5: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.18.5: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.18.5: PAM module to not enter KWallet password again after login
-kde-plasma/kwayland-integration 5.18.5: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwayland-server 5.18.90: Wayland Server Components built on KDE Frameworks
-kde-plasma/kwin 5.18.5-r1 5.18.5-r3: Flexible, composited Window Manager for windowing systems on Linux
-kde-plasma/kwrited 5.18.5: KDE Plasma daemon listening for wall and write messages
-kde-plasma/libkscreen 5.18.5: Plasma screen management library
-kde-plasma/libksysguard 5.18.5: Task management and system monitoring library
-kde-plasma/libkworkspace 5.18.5: Workspace library to interact with the Plasma session manager
-kde-plasma/milou 5.18.5: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.18.5: Oxygen visual style for the Plasma desktop
-kde-plasma/plasma-browser-integration 5.18.5: Integrate Chrome/Firefox better into Plasma through browser extensions
-kde-plasma/plasma-desktop 5.18.5-r1: KDE Plasma desktop
-kde-plasma/plasma-integration 5.18.5: Qt Platform Theme integration plugins for the Plasma workspaces
-kde-plasma/plasma-meta 5.18.5: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.18.5-r1: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.18.5: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.18.5: Useful applications for Plasma development
-kde-plasma/plasma-thunderbolt 5.18.5: Plasma integration for controlling Thunderbolt devices
-kde-plasma/plasma-vault 5.18.5: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.18.5-r1: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.18.5: Wallpapers for the Plasma workspace
-kde-plasma/plymouth-kcm 5.18.5: KDE Plasma control module for Plymouth
-kde-plasma/polkit-kde-agent 5.18.5: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 5.18.5: Power management for KDE Plasma Shell
-kde-plasma/sddm-kcm 5.18.5: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.18.5: Control Center to configure KDE Plasma desktop
-kde-plasma/user-manager 5.18.5: Simple system settings module to manage the users of your system
-kde-plasma/xdg-desktop-portal-kde 5.18.5: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
-kde-plasma/xembed-sni-proxy 5.18.5: Legacy xembed tray icons support for SNI-only system trays
+kde-plasma/bluedevil 5.18.5 5.19.0: Bluetooth stack for KDE Plasma
+kde-plasma/breeze 5.18.5 5.19.0: Breeze visual style for the Plasma desktop
+kde-plasma/breeze-grub 5.18.5 5.19.0: Breeze theme for GRUB
+kde-plasma/breeze-gtk 5.18.5 5.19.0: Official GTK+ port of Plasma's Breeze widget style
+kde-plasma/breeze-plymouth 5.18.5 5.19.0: Breeze theme for Plymouth
+kde-plasma/discover 5.18.5 5.19.0: KDE Plasma resources management GUI
+kde-plasma/drkonqi 5.18.5-r2 5.19.0: Plasma crash handler, gives the user feedback if a program crashed
+kde-plasma/kactivitymanagerd 5.18.5 5.19.0: System service to manage user's activities, track the usage patterns etc.
+kde-plasma/kde-cli-tools 5.18.5 5.19.0: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.18.5 5.19.0: GTK2 and GTK3 configurator for KDE Plasma
+kde-plasma/kdecoration 5.18.5 5.19.0: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.18.5 5.19.0: Extra Plasma applets and engines
+kde-plasma/kgamma 5.18.5 5.19.0: Screen gamma values kcontrol module
+kde-plasma/khotkeys 5.18.5 5.19.0: KDE Plasma workspace hotkey module
+kde-plasma/kinfocenter 5.18.5 5.19.0: Utility providing information about the computer hardware
+kde-plasma/kmenuedit 5.18.5 5.19.0: KDE Plasma menu editor
+kde-plasma/kscreen 5.18.5 5.19.0: KDE Plasma screen management
+kde-plasma/kscreenlocker 5.18.5 5.19.0: Library and components for secure lock screen architecture
+kde-plasma/ksshaskpass 5.18.5 5.19.0: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.18.5 5.19.0: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.18.5 5.19.0: PAM module to not enter KWallet password again after login
+kde-plasma/kwayland-integration 5.18.5 5.19.0: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwayland-server 5.18.90 5.19.0: Wayland Server Components built on KDE Frameworks
+kde-plasma/kwin 5.18.5-r1 5.18.5-r3 5.19.0: Flexible, composited Window Manager for windowing systems on Linux
+kde-plasma/kwrited 5.18.5 5.19.0: KDE Plasma daemon listening for wall and write messages
+kde-plasma/libkscreen 5.18.5 5.19.0: Plasma screen management library
+kde-plasma/libksysguard 5.18.5 5.19.0: Task management and system monitoring library
+kde-plasma/libkworkspace 5.18.5 5.19.0: Workspace library to interact with the Plasma session manager
+kde-plasma/milou 5.18.5 5.19.0: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.18.5 5.19.0: Oxygen visual style for the Plasma desktop
+kde-plasma/plasma-browser-integration 5.18.5 5.19.0: Integrate Chrome/Firefox better into Plasma through browser extensions
+kde-plasma/plasma-desktop 5.18.5-r1 5.19.0: KDE Plasma desktop
+kde-plasma/plasma-integration 5.18.5 5.19.0: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-meta 5.18.5 5.19.0: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.18.5-r1 5.19.0: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.18.5 5.19.0: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.18.5 5.19.0: Useful applications for Plasma development
+kde-plasma/plasma-thunderbolt 5.18.5 5.19.0: Plasma integration for controlling Thunderbolt devices
+kde-plasma/plasma-vault 5.18.5 5.19.0: Plasma applet and services for creating encrypted vaults
+kde-plasma/plasma-workspace 5.18.5-r1 5.19.0: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.18.5 5.19.0: Wallpapers for the Plasma workspace
+kde-plasma/plymouth-kcm 5.18.5 5.19.0: KDE Plasma control module for Plymouth
+kde-plasma/polkit-kde-agent 5.18.5 5.19.0: PolKit agent module for KDE Plasma
+kde-plasma/powerdevil 5.18.5 5.19.0: Power management for KDE Plasma Shell
+kde-plasma/sddm-kcm 5.18.5 5.19.0: KDE Plasma control module for SDDM
+kde-plasma/systemsettings 5.18.5 5.19.0: Control Center to configure KDE Plasma desktop
+kde-plasma/user-manager 5.18.5 5.19.0: Simple system settings module to manage the users of your system
+kde-plasma/xdg-desktop-portal-kde 5.18.5 5.19.0: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
+kde-plasma/xembed-sni-proxy 5.18.5 5.19.0: Legacy xembed tray icons support for SNI-only system trays
 lxde-base/lxappearance 0.6.3 0.6.3-r1: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.99.1 0.99.2: LXDE Session default configuration files and nuoveXT2 iconset
@@ -13345,7 +13345,7 @@ media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio play
 media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.12-r4 0.1.13: PulseAudio emulation for ALSA
-media-sound/aqualung 1.0-r2 1.0-r3: Music player for a wide range of formats designed for gapless playback
+media-sound/aqualung 1.0-r3: Music player for a wide range of formats designed for gapless playback
 media-sound/ardour 5.12 6.0 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
@@ -13697,7 +13697,7 @@ media-sound/xwax 1.6-r1: Digital vinyl emulation software
 media-sound/yarock 1.4.0: Qt-based music player
 media-sound/yoshimi 1.7.1: Software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
-media-tv/channeleditor 1.9.2.1-r1 1.9.2.1-r2: Editor for VDR channels.conf
+media-tv/channeleditor 1.9.2.1-r2: Editor for VDR channels.conf
 media-tv/dtv-scan-tables 0_p20171003 0_p20190922 9999: Digital TV scan tables in v3 and v5 format
 media-tv/dvbstream 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
@@ -13821,7 +13821,7 @@ media-video/photofilmstrip 3.7.1-r1: Movie slideshow creator using Ken Burns eff
 media-video/pipewire 0.2.7: Multimedia processing graphs
 media-video/pitivi 0.999-r2 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
-media-video/projectx 0.91.0.10-r1 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
+media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 9999: A Qt-based video player, which can play most formats and codecs
 media-video/raspberrypi-omxplayer 0_p20160217-r1 0_p20160528-r2 0_p20160528-r3 9999: Command line media player for the Raspberry Pi
 media-video/rav1e 9999: The fastest and safest AV1 encoder
@@ -17217,7 +17217,7 @@ sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 parti
 sys-fs/f2fs-tools 1.13.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatcat 1.0.6 1.1.0 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic tool
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
-sys-fs/fatsort 1.5.0 1.6.2.605: Sorts files on FAT16/32 partitions, ideal for basic audio players
+sys-fs/fatsort 1.6.2.605: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
 sys-fs/fuse 2.9.9-r1 3.9.1: An interface for filesystems implemented in userspace
 sys-fs/fuse-common 3.2.6 3.8.0 3.9.0 3.9.1: Common files for multiple slots of sys-fs/fuse

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=ada_target_gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) ada_target_gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) ada_target_gnat_2019? ( dev-lang/gnat-gpl:8.3.1 )
+DESCRIPTION=Multi-Language Management
+EAPI=7
+HOMEPAGE=http://libre.adacore.com/
+IUSE=ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 -ada_target_gnat_2016
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=ada_target_gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) ada_target_gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) ada_target_gnat_2019? ( dev-lang/gnat-gpl:8.3.1 )
+REQUIRED_USE=^^ ( ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
+SLOT=0
+SRC_URI=https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=gprbuild-2020-20200429-19BD2-src.tar.gz https://community.download.adacore.com/v1/c799502295baf074ad17b48c50f621879c392c57?filename=xmlada-2020-20200429-19A99-src.tar.gz -> xmlada-2020-20200429-19A99-src.tar.gz
+_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multilib	0914eab919f4f11dd9e0407b92af4726	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=0b378bf5a2aef534e29ffb71b347fee7
