@@ -7723,7 +7723,7 @@ dev-python/django-taggit-serializer 0.1.7: the django taggit serializer for the 
 dev-python/django-timezone-field 4.0: A Django app providing database and form fields for pytz timezone objects
 dev-python/django_polymorphic 2.1.2: Seamless Polymorphic Inheritance for Django Models
 dev-python/djangorestframework 3.11.0: Web APIs with django made easy
-dev-python/dkimpy 0.9.2: DKIM and ARC email signing and verification library
+dev-python/dkimpy 0.9.2 1.0.4: DKIM and ARC email signing and verification library
 dev-python/dns-lexicon 3.3.4: Manipulate DNS records on various DNS providers in a standardized/agnostic way
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.16.0-r1: DNS toolkit for Python
@@ -7987,7 +7987,7 @@ dev-python/jsonxs 0.6: Get/set values in JSON and Python datastructures
 dev-python/jupyter 1.0.0-r2: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 5.2.3-r1 5.3.4: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 6.0.0: A terminal-based console frontend for Jupyter kernels
-dev-python/jupyter_core 4.6.1-r1: Core common functionality of Jupyter projects
+dev-python/jupyter_core 4.6.1-r1 4.6.3: Core common functionality of Jupyter projects
 dev-python/jwcrypto 0.7.0: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.4.7: Kafka protocol support in Python
 dev-python/kaitaistruct 0.8: Kaitai Struct runtime for Python
