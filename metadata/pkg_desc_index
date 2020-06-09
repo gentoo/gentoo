@@ -8626,7 +8626,7 @@ dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMar
 dev-python/redis-py 3.3.11: Python client for Redis key-value store
 dev-python/redlock-py 1.0.8: Redis distributed locks in Python
 dev-python/rednose 0.4.3: coloured output for nosetests
-dev-python/reflink 0.2.1: Python wrapper around the reflink system calls
+dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.2.20 2020.4.4: Alternative regular expression module to replace re
 dev-python/rencode 1.0.5-r1 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 2.7.0 2.11.3: Release notes manager, storing release notes in a git repo and building docs
