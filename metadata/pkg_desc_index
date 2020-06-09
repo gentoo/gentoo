@@ -9446,7 +9446,7 @@ dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.17.3 1.17.3-r1 2.1.2 2.1.3 2.1.4: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.6.1: Provides patch-level verification for Bundled apps
-dev-ruby/bunny 2.13.0 2.14.2 2.14.3 2.14.4 2.15.0: Another synchronous Ruby AMQP client
+dev-ruby/bunny 2.13.0 2.14.2 2.14.3 2.14.4 2.15.0-r1: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.1.8 1.1.9 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/capistrano 2.15.5-r2 3.11.2 3.12.0 3.12.1 3.13.0 3.14.0: A distributed application deployment system
@@ -10526,7 +10526,7 @@ dev-util/serialtalk 1.2 1.2-r1 9999: simple command-line tool to talk to serial 
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
-dev-util/shards 0.10.0 0.11.0: Dependency manager for the Crystal language
+dev-util/shards 0.10.0 0.11.0 0.11.1: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.0 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.0 0.7.1: Shell script analysis tool (binary package)
