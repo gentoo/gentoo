@@ -19,7 +19,7 @@ RDEPEND=">=virtual/jre-1.5"
 
 LICENSE="Apache-2.0"
 SLOT="3.1"
-KEYWORDS="amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris"
+KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris"
 
 S="${WORKDIR}/${MY_P}-src"
 
