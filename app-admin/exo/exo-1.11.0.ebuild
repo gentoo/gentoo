@@ -14,6 +14,7 @@ KEYWORDS="~amd64"
 IUSE=""
 DEPEND="dev-lang/go:="
 RESTRICT="strip"
+QA_FLAGS_IGNORED=".*"
 
 S="${WORKDIR}/cli-${PV}"
 
