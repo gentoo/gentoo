@@ -50,6 +50,7 @@ BDEPEND="
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		>=dev-python/sure-1.4.11[${PYTHON_USEDEP}]
 	)
