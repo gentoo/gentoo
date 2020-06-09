@@ -6,9 +6,9 @@ HOMEPAGE=https://github.com/gentoo/pambase
 IUSE=consolekit +cracklib debug elogind minimal mktemp +nullok pam_krb5 pam_ssh passwdqc securetty selinux +sha512 systemd
 KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/pam-1.1.3 consolekit? ( sys-auth/consolekit[pam] ) cracklib? ( sys-libs/pam[cracklib] ) elogind? ( sys-auth/elogind[pam] ) mktemp? ( sys-auth/pam_mktemp ) pam_krb5? ( >=sys-libs/pam-1.1.3 sys-auth/pam_krb5 ) pam_ssh? ( sys-auth/pam_ssh ) passwdqc? ( sys-auth/pam_passwdqc ) selinux? ( sys-libs/pam[selinux] ) sha512? ( >=sys-libs/pam-1.1.3 ) systemd? ( sys-apps/systemd[pam] )
+RDEPEND=>=sys-libs/pam-1.1.3 consolekit? ( sys-auth/consolekit[pam] ) cracklib? ( sys-libs/pam[cracklib(+)] ) elogind? ( sys-auth/elogind[pam] ) mktemp? ( sys-auth/pam_mktemp ) pam_krb5? ( >=sys-libs/pam-1.1.3 sys-auth/pam_krb5 ) pam_ssh? ( sys-auth/pam_ssh ) passwdqc? ( sys-auth/pam_passwdqc ) selinux? ( sys-libs/pam[selinux] ) sha512? ( >=sys-libs/pam-1.1.3 ) systemd? ( sys-apps/systemd[pam] )
 REQUIRED_USE=?? ( consolekit elogind systemd )
 RESTRICT=binchecks
 SLOT=0
 SRC_URI=https://github.com/gentoo/pambase/archive/pambase-20190402.tar.gz
-_md5_=9366837af86f306880f889184e63ea0f
+_md5_=1ac89ffc99d531d89c4b2033876c4a04
