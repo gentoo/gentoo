@@ -12002,7 +12002,7 @@ kde-plasma/ksshaskpass 5.18.5 5.19.0: KDE implementation of ssh-askpass with Kwa
 kde-plasma/ksysguard 5.18.5 5.19.0: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.18.5 5.19.0: PAM module to not enter KWallet password again after login
 kde-plasma/kwayland-integration 5.18.5 5.19.0: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwayland-server 5.18.90 5.19.0: Wayland Server Components built on KDE Frameworks
+kde-plasma/kwayland-server 5.19.0: Wayland Server Components built on KDE Frameworks
 kde-plasma/kwin 5.18.5-r1 5.18.5-r3 5.19.0: Flexible, composited Window Manager for windowing systems on Linux
 kde-plasma/kwrited 5.18.5 5.19.0: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.18.5 5.19.0: Plasma screen management library
@@ -16869,7 +16869,7 @@ sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users aga
 sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20190402 20191128 20200304: PAM base configuration files
-sys-auth/passwdqc 1.3.0: Password strength checking library (and PAM module)
+sys-auth/passwdqc 1.3.0 1.4.0: Password strength checking library (and PAM module)
 sys-auth/polkit 0.115-r4 0.116-r1: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.113.0: Qt wrapper around polkit-1 client libraries
@@ -17840,8 +17840,8 @@ www-client/seamonkey 2.53.2: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.0.1874.38_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.1.1929.3_p1 3.1.1929.13_p1 3.1.1929.19_p1 3.1.1929.21_p1: A browser for our friends
+www-client/vivaldi 3.0.1874.38_p1 3.1.1929.25_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.1.1929.21_p1 3.1.1929.23_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.4 7.8 7.8-r1: AWStats is short for Advanced Web Statistics
