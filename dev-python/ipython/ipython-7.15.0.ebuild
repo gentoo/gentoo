@@ -46,6 +46,7 @@ DEPEND="${CDEPEND}
 	)
 	doc? (
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-2[${PYTHON_USEDEP}]
 	)"
 
