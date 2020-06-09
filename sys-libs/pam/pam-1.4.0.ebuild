@@ -53,6 +53,7 @@ multilib_src_configure() {
 	export ac_cv_header_xcrypt_h=no
 
 	local myconf=(
+		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		--with-db-uniquename=-$(db_findver sys-libs/db)
 		--with-xml-catalog="${EPREFIX}"/etc/xml/catalog
 		--enable-securedir="${EPREFIX}"/$(get_libdir)/security
