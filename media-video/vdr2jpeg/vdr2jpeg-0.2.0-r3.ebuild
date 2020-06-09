@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 VERSION="1911" # every bump, new version
 
 RESTRICT="strip"
@@ -26,6 +28,9 @@ src_prepare() {
 	sed -i Makefile \
 		-e "s:usr/local:usr:" \
 		-e "s:-o vdr2jpeg:\$(LDFLAGS) -shared -o vdr2jpeg:" || die
+
+	# bug 727640, do not call strip directly
+	export  STRIP="$(tc-getSTRIP)"
 
 	default
 }

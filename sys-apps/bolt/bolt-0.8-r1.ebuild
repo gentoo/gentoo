@@ -8,7 +8,7 @@ inherit meson systemd
 DESCRIPTION="Userspace system daemon to enable security levels for Thunderbolt 3"
 HOMEPAGE="https://gitlab.freedesktop.org/bolt/bolt"
 SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz
-	https://gitlab.freedesktop.org/bolt/bolt/merge_requests/210.patch -> ${PN}-210.patch"
+	https://gitlab.freedesktop.org/bolt/bolt/-/commit/5a739574608e5190816b3efd22e75f214c5fe4c4.diff -> ${PN}-210-r2.patch"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -27,7 +27,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${DISTDIR}/${PN}-210.patch"
+	"${DISTDIR}/${PN}-210-r2.patch"
 )
 
 src_configure() {
