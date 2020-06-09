@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Command-line tool for everything at Exoscale: compute, storage, dns."
-HOMEPAGE="https://exoscale.github.io/cli"
+HOMEPAGE="https://github.com/exoscale/cli"
 SRC_URI="https://github.com/exoscale/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
