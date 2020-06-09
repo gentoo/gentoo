@@ -14,6 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-qt/qtdbus:5=
 	>=dev-qt/qtwidgets-5.6:5=
 	dev-qt/qtwayland:5=
 	dev-qt/qtx11extras:5=
