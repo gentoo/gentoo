@@ -66,6 +66,8 @@ else
 	BDEPEND+="man? ( >=app-text/scdoc-1.9.3 )"
 fi
 
+PATCHES=("${FILESDIR}"/${P}-gcc-10.patch)
+
 src_prepare() {
 	default
 

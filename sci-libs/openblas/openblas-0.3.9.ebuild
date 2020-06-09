@@ -54,8 +54,10 @@ src_unpack() {
 }
 
 src_compile() {
-	emake
-	emake -Cinterface shared-blas-lapack
+	# We have to try extra hard to override AR for now.
+	# https://github.com/xianyi/OpenBLAS/issues/2654
+	emake AR="$(tc-getAR)"
+	emake AR="$(tc-getAR)" -Cinterface shared-blas-lapack
 	if use index-64bit; then
 		emake -C"${S}-index-64bit" INTERFACE64=1 LIBPREFIX=libopenblas64
 	fi
