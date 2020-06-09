@@ -19,8 +19,25 @@ RDEPEND="
 		x11-misc/xclip
 		x11-misc/xsel
 		dev-python/PyQt5[${PYTHON_USEDEP}]
+		dev-python/QtPy[${PYTHON_USEDEP}]
 	)
 "
+# test at least one backend
+BDEPEND="
+	test? (
+		${RDEPEND}
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-test-pyqt.patch
+)
+
+src_prepare() {
+	# stupid windows
+	find -type f -exec sed -i -e 's:\r$::' {} + || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	"${EPYTHON}" tests/test_pyperclip.py -vv ||
