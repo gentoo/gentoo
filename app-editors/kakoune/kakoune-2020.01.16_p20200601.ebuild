@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mawww/kakoune/archive/${MY_COMMIT}.tar.gz -> ${P}.ta
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 DEPEND="sys-libs/ncurses:0=[unicode]"
 RDEPEND="${DEPEND}"
