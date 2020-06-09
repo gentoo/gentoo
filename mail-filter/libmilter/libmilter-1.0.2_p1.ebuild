@@ -42,6 +42,12 @@ src_prepare() {
 	use ipv6 && ENVDEF="${ENVDEF} -DNETINET6"
 	use poll && ENVDEF="${ENVDEF} -DSM_CONF_POLL=1"
 
+	if use elibc_musl; then
+		use ipv6 && ENVDEF="${ENVDEF} -DNEEDSGETIPNODE"
+
+		eapply "${FILESDIR}/${PN}-musl-disable-cdefs.patch"
+	fi
+
 	sed -e "s|@@CFLAGS@@|${CFLAGS}|" \
 		-e "s:@@LDFLAGS@@:${LDFLAGS}:" \
 		-e "s:@@CC@@:${CC}:" \
