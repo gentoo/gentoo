@@ -19,7 +19,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="nls +standalone static"
 
 RDEPEND="
-	!=app-text/tetex-2*
 	>=sys-libs/ncurses-5.2-r2:0=
 	standalone? ( dev-lang/perl )
 	!standalone?  (
@@ -29,9 +28,8 @@ RDEPEND="
 		dev-perl/Text-Unidecode
 	)
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	app-arch/xz-utils
-	nls? ( >=sys-devel/gettext-0.19.6 )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( >=sys-devel/gettext-0.19.6 )"
 
 src_configure() {
 	# Respect compiler and CPPFLAGS/CFLAGS/LDFLAGS for Perl extensions. #622576
