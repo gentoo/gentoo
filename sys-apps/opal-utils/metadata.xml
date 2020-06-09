@@ -5,6 +5,10 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>ppc@gentoo.org</email>
+		<name>Gentoo Linux PowerPC Development</name>
+	</maintainer>
 	<longdescription lang="en">
 		This package contains utility programs for OpenPower systems:
 		'opal-prd' provides a daemon to load and run the OpenPower firmware's Processor Recovery Diagnostics binary.
