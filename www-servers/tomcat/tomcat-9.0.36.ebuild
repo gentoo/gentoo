@@ -7,31 +7,59 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit eutils java-pkg-2 java-ant-2 prefix user
 
-MY_P="apache-${P}-src"
+MY_P="apache-${PN}-${PV}-src"
 
-DESCRIPTION="Tomcat Servlet-3.0/JSP-2.2 Container"
+# Currently we bundle binary versions of bnd.jar and bndlib.jar
+# See bugs #203080 and #676116
+BND_VERSION="4.1.0"
+BND="biz.aQute.bnd-${BND_VERSION}.jar"
+BNDLIB="biz.aQute.bndlib-${BND_VERSION}.jar"
+
+DESCRIPTION="Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container"
 HOMEPAGE="https://tomcat.apache.org/"
-SRC_URI="mirror://apache/${PN}/tomcat-7/v${PV}/src/${MY_P}.tar.gz"
+SRC_URI="mirror://apache/${PN}/tomcat-9/v${PV}/src/${MY_P}.tar.gz
+	https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bnd/${BND_VERSION}/${BND}
+	https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/${BND_VERSION}/${BNDLIB}"
 
 LICENSE="Apache-2.0"
-SLOT="7"
-KEYWORDS="amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="extra-webapps websockets"
+SLOT="9"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
 
-ECJ_SLOT="4.5"
-SAPI_SLOT="3.0"
+ECJ_SLOT="4.13"
+SAPI_SLOT="4.0"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
-	~dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}"
+	dev-java/glassfish-xmlrpc-api:0
+	~dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}
+	dev-java/wsdl4j:0"
 RDEPEND="${COMMON_DEP}
 	virtual/jre"
 DEPEND="${COMMON_DEP}
+	app-admin/pwgen
+	>=dev-java/ant-core-1.9.13
 	virtual/jdk:1.8
-	test? ( dev-java/ant-junit:0 )"
+	test? (
+		>=dev-java/ant-junit-1.9:0
+		dev-java/easymock:3.2
+	)"
 
 S=${WORKDIR}/${MY_P}
+
+BND_HOME="${S}/tomcat-build-libs/bnd"
+BNDLIB_HOME="${S}/tomcat-build-libs/bndlib"
+BND_JAR="${BND_HOME}/${BND}"
+BNDLIB_JAR="${BNDLIB_HOME}/${BND_LIB}"
+
+src_unpack() {
+	unpack ${MY_P}.tar.gz
+
+	mkdir -p "${BND_HOME}" "${BNDLIB_HOME}" || die "Failed to create dir"
+	ln -s "${DISTDIR}/${BND}" "${BND_HOME}/" || die "Failed to symlink bnd-*.jar"
+	ln -s "${DISTDIR}/${BND}" "${BNDLIB_HOME}/" || die "Failed to symlink bndlib-*.jar"
+}
 
 pkg_setup() {
 	java-pkg-2_pkg_setup
@@ -42,12 +70,12 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	find -name '*.jar' -type f -delete -print || die
+
 	# Remove bundled servlet-api
 	rm -rv java/javax/{el,servlet} || die
 
-	java-pkg_clean
-
-	eapply "${FILESDIR}/${PN}-7.0.99-build.xml.patch"
+	eapply "${FILESDIR}/${PN}-9.0.27-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
@@ -60,17 +88,17 @@ src_prepare() {
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
 EANT_BUILD_TARGET="deploy"
-EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},tomcat-servlet-api-${SAPI_SLOT}"
+EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},tomcat-servlet-api-${SAPI_SLOT},glassfish-xmlrpc-api,wsdl4j"
+EANT_TEST_GENTOO_CLASSPATH="easymock-3.2"
 EANT_GENTOO_CLASSPATH_EXTRA="${S}/output/classes"
 EANT_NEEDS_TOOLS="true"
-EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false"
+EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false -Dbnd.jar=${BND_JAR} -Dbndlib.jar=${BNDLIB_JAR}"
 
 # revisions of the scripts
-IM_REV="-r1"
+IM_REV="-r2"
 INIT_REV="-r1"
 
 src_compile() {
-	use websockets && EANT_EXTRA_ARGS+=" -Djava.7.home=${JAVA_HOME}"
 	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant-core ant.jar)"
 	java-pkg-2_src_compile
 }
@@ -96,6 +124,13 @@ src_install() {
 
 	### Webapps ###
 
+	# add missing docBase
+	local apps="host-manager manager"
+	for app in ${apps}; do
+		sed -i -e "s|=\"true\" >|=\"true\" docBase=\"\$\{catalina.home\}/webapps/${app}\" >|" \
+			output/build/webapps/${app}/META-INF/context.xml || die
+	done
+
 	insinto "${dest}"/webapps
 	doins -r output/build/webapps/{host-manager,manager,ROOT}
 	use extra-webapps && doins -r output/build/webapps/{docs,examples}
@@ -108,7 +143,7 @@ src_install() {
 	fperms 0750 "${dest}"/logs
 
 	# replace the default pw with a random one, see #92281
-	local randpw=$(echo ${RANDOM}|md5sum|cut -c 1-15)
+	local randpw="$(pwgen -s -B 15 1)"
 	sed -i -e "s|SHUTDOWN|${randpw}|" output/build/conf/server.xml || die
 
 	# prepend gentoo.classpath to common.loader, see #453212
