@@ -9,4 +9,4 @@ RDEPEND=!games-misc/bsd-games
 SLOT=0
 SRC_URI=https://sourceforge.net/projects/bsdwtf/files/wtf-20200518.tar.gz
 _eclasses_=prefix	c2993e4c430c1ee24f278983d6189501
-_md5_=7d56eec9cdfc16c5d64f4a022389120c
+_md5_=4d4211cb420a35dafadb0445aa0dd344
