@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-openrc.patch"
 	"${FILESDIR}/${P}-openssl-1.1.1.patch.r2"
 	"${FILESDIR}/${P}-lua-pkgconfig.patch"
+	"${FILESDIR}/${P}-define-P-macro-in-libvbr.patch"
 )
 
 src_prepare() {
