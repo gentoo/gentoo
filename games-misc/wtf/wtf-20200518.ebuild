@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
-	hprefixify
+	hprefixify wtf
 }
 
 src_install() {
