@@ -230,7 +230,8 @@ do_compile_test() {
 	rm -f glibc-test*
 	printf '%b' "$*" > glibc-test.c
 
-	nonfatal emake glibc-test
+	# Most of the time CC is already set, but not in early sanity checks.
+	nonfatal emake glibc-test CC="${CC-$(tc-getCC ${CTARGET})}"
 	ret=$?
 
 	popd >/dev/null
@@ -790,7 +791,7 @@ glibc_do_configure() {
 	fi
 
 	local v
-	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO ; do
+	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO NM READELF; do
 		einfo " $(printf '%15s' ${v}:)   ${!v}"
 	done
 
@@ -818,6 +819,14 @@ glibc_do_configure() {
 		export CXX=
 	fi
 	einfo " $(printf '%15s' 'Manual CXX:')   ${CXX}"
+
+	# Always use tuple-prefixed toolchain. For non-native ABI glibc's configure
+	# can't detect them automatically due to ${CHOST} mismatch and fallbacks
+	# to unprefixed tools. Similar to multilib.eclass:multilib_toolchain_setup().
+	export NM="$(tc-getNM ${CTARGET})"
+	export READELF="$(tc-getREADELF ${CTARGET})"
+	einfo " $(printf '%15s' 'Manual NM:')   ${NM}"
+	einfo " $(printf '%15s' 'Manual READELF:')   ${READELF}"
 
 	echo
 
