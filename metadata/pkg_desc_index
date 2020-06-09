@@ -64,6 +64,7 @@ acct-group/i2p 0: Group for system-wide net-vpn/i2p
 acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/icinga 0: System group: icinga
 acct-group/icingacmd 0: System group: icingacmd
+acct-group/icingaweb2 0: System group: icingaweb2
 acct-group/input 0: System group: input
 acct-group/inspircd 0: System group: inspircd
 acct-group/ipfs 0: Group for the system-wide net-p2p/go-ipfs-bin server
@@ -16989,7 +16990,7 @@ sys-cluster/ceph 12.2.12-r3 14.2.7-r1 14.2.9-r1 15.2.3: Ceph distributed filesys
 sys-cluster/charliecloud 0.9.6 0.9.10 0.10-r1 0.15 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 15.1.0-r1 15.2.0 16.0.0 2019.2.9999 2020.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 15.1.0-r1 15.2.0 16.0.0 16.1.0 2019.2.9999 2020.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/corosync 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
@@ -17759,7 +17760,7 @@ www-apps/gitea 1.11.6 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.7.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.69.0: The world's fastest framework for building websites
-www-apps/icingaweb2 2.7.1 2.7.3 9999: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.7.1 2.7.3 2.8.0 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
