@@ -19,7 +19,7 @@ S="${WORKDIR}"/${MY_P}
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 distutils_enable_tests setup.py
 
