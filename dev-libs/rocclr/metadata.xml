@@ -5,6 +5,10 @@
         <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
     </maintainer>
+    <maintainer type="person">
+        <email>gentoo@holzke.net</email>
+        <name>Wilfried Holzke</name>
+    </maintainer>
     <upstream>
         <remote-id type="github">ROCm-Developer-Tools/ROCclr</remote-id>
     </upstream>
