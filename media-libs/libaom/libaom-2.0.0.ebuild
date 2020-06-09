@@ -50,7 +50,8 @@ multilib_src_configure() {
 		-DENABLE_TOOLS=ON
 		-DENABLE_WERROR=OFF
 
-		-DENABLE_NEON=$(usex cpu_flags_arm_neon ON OFF)
+		# neon support is assumed to be always enabled on arm64
+		-DENABLE_NEON=$(usex cpu_flags_arm_neon ON $(usex arm64 ON OFF))
 		# ENABLE_DSPR2 / ENABLE_MSA for mips
 		-DENABLE_MMX=$(usex cpu_flags_x86_mmx ON OFF)
 		-DENABLE_SSE=$(usex cpu_flags_x86_sse ON OFF)
