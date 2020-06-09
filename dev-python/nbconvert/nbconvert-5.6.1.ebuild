@@ -30,8 +30,7 @@ RDEPEND="
 	dev-python/testpath[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 "
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		dev-python/pebble[${PYTHON_USEDEP}]
 		dev-python/ipykernel[${PYTHON_USEDEP}]
