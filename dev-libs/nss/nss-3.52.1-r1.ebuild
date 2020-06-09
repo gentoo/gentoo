@@ -168,6 +168,8 @@ multilib_src_compile() {
 	export FREEBL_LOWHASH=1
 	export NSS_SEED_ONLY_DEV_URANDOM=1
 	export ASFLAGS=""
+	export USE_SYSTEM_ZLIB=1
+	export ZLIB_LIBS=-lz
 
 	local d
 
