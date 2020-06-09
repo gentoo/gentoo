@@ -19,11 +19,10 @@ DEPEND="
 	virtual/libffi
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-prevent-stripping.patch" )
-
-# A few tests fail after enforcing CFLAGS/LDFLAGS.
-# We need to work out why.
-RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}/${P}-prevent-stripping.patch"
+	"${FILESDIR}/${P}-exclude-float-parse-tests.patch"
+)
 
 src_prepare() {
 	default
