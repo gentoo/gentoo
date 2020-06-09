@@ -158,6 +158,7 @@ MYTHTV_GROUPS="video,audio,tty,uucp"
 PATCHES=(
 	"${FILESDIR}/${P}-exiv2-0.27.1.patch"
 	"${FILESDIR}/${P}-Fix_create_webbrowser_window.patch"
+	"${FILESDIR}/${P}-Include_QPainterPath.patch"
 )
 
 pkg_setup() {
