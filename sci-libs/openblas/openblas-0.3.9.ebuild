@@ -6,7 +6,7 @@ inherit fortran-2 toolchain-funcs
 
 DESCRIPTION="Optimized BLAS library based on GotoBLAS2"
 HOMEPAGE="http://xianyi.github.com/OpenBLAS/"
-SRC_URI="https://github.com/xianyi/OpenBLAS/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/xianyi/OpenBLAS/archive/v${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
