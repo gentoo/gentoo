@@ -235,14 +235,6 @@ dev-python/symboltype
 # Removal after 2020-06-14.
 <dev-db/postgresql-9.5
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-14)
-# Unsupported releases with known security issues
-# Please migrate to zfs-0.8.x
-# Removal of old versions in 30 days. Bug #723120
-<sys-fs/zfs-0.8.3
-<sys-fs/zfs-kmod-0.8.3
-sys-kernel/spl
-
 # William Hubbs <williamh@gentoo.org> (2020-05-11)
 # No reverse dependencies, upstream has superseeded this with the
 # ggoogle.golang.org/protobuf module.
