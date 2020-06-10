@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eutils gnome2-utils xdg-utils
+inherit cmake eutils xdg
 
 MY_P="${PN^}-v${PV}"
 
@@ -14,9 +14,9 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="appindicator crypt cups examples gnome-keyring kwallet libressl nls spice ssh rdp telepathy vnc webkit zeroconf"
+IUSE="appindicator crypt cups examples gnome-keyring kwallet libressl nls spice ssh rdp telemetry telepathy vnc webkit zeroconf"
 
-CDEPEND="
+DEPEND="
 	dev-libs/glib:2
 	dev-libs/json-glib
 	dev-libs/libsodium:=
@@ -42,18 +42,25 @@ CDEPEND="
 	webkit? ( net-libs/webkit-gtk:4 )
 	zeroconf? ( || ( >=net-dns/avahi-0.8-r2[dbus,gtk] <net-dns/avahi-0.8-r2[dbus,gtk3] ) )
 "
-DEPEND="${CDEPEND}
+BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
-RDEPEND="${CDEPEND}
+
+RDEPEND="
+	${DEPEND}
 	virtual/freedesktop-icon-theme
 "
 
 DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	cmake_src_prepare
+	xdg_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -73,26 +80,19 @@ src_configure() {
 		-DWITH_LIBVNCSERVER=$(usex vnc)
 		-DWITH_WWW=$(usex webkit)
 		-DWITH_AVAHI=$(usex zeroconf)
+		-DWITH_NEWS=$(usex telemetry)
 		-DWITH_ICON_CACHE=OFF
 		-DWITH_UPDATE_DESKTOP_DB=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 
 	elog "To get additional features, some optional runtime dependencies"
 	elog "may be installed:"
 	elog ""
 	optfeature "encrypted VNC connections" net-libs/libvncserver[gcrypt]
 	optfeature "XDMCP support" x11-base/xorg-server[xephyr]
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
