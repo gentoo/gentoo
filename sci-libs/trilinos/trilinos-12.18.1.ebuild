@@ -96,6 +96,7 @@ src_configure() {
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
 		-DTrilinos_ENABLE_ALL_PACKAGES=ON
 		-DTrilinos_ENABLE_PyTrilinos=OFF
+		-DTrilinos_ENABLE_SEACAS=OFF
 		-DTrilinos_ENABLE_SEACASChaco=OFF
 		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
 		-DTrilinos_ENABLE_SEACASExodus="$(usex netcdf)"
@@ -195,6 +196,8 @@ src_install() {
 
 	# Clean up the mess:
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
+	mv "${ED}/usr/$(get_libdir)"/trilinos/cmake/* "${ED}/usr/$(get_libdir)"/cmake || die "mv failed"
+	rmdir "${ED}/usr/$(get_libdir)/trilinos/cmake" || die "rmdir failed"
 	if [ -f "${ED}"/lib/exodus.py ]; then
 		mv "${ED}"/lib/exodus.py "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 	fi
