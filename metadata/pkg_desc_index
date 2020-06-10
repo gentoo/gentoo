@@ -4866,7 +4866,7 @@ dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL lib
 dev-libs/botan 1.10.17-r2 2.9.0 2.11.0 2.14.0 2.14.0-r1: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
-dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
+dev-libs/c-blosc 1.11.2 1.19.0: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.6.0 0.6.1 0.7.0: RPC/Serialization system with capabilities support
@@ -7571,7 +7571,7 @@ dev-python/blessed 1.17.5 1.17.8: Library for making terminal apps using colors,
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r1: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.4: Generate block-diagram image from text
-dev-python/blosc 1.5.1 1.9.1: High performance compressor optimized for binary data
+dev-python/blosc 1.5.1 1.9.1-r1: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
