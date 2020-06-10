@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..8} )
+
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -16,26 +18,24 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/c-blosc:="
-DEPEND="${RDEPEND}
+RDEPEND=">=dev-libs/c-blosc-1.19.0:="
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-python/scikit-build[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-unbundle.patch
+)
+
 python_prepare_all() {
 	export BLOSC_DIR="${EPREFIX}/usr"
 	distutils-r1_python_prepare_all
 	DOCS=( ANNOUNCE.rst  README.rst  RELEASE_NOTES.rst )
-}
-
-python_compile_all() {
-	esetup.py build_clib
-	esetup.py build_ext --inplace
-	esetup.py build
 }
 
 python_test() {

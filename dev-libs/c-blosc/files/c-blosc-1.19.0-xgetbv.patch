@@ -1,0 +1,33 @@
+From 14d2d561795c276fc33c8cb54781dff76b398906 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 10 Jun 2020 12:13:39 +0200
+Subject: [PATCH] Redefine blosc_internal_xgetbv for platforms with immintrin.h
+
+Commit 2f2d876 renamed _xgetbv to blosc_internal_xgetbv.  Commit 0b8608b
+made it conditional to immintrin.h not being included, apparently
+in order to prevent _xgetbv collision.  However, since the block
+no longer defined _xgetbv but blosc_internal_xgetbv, it means that
+the latter is not defined if the condition is false.  #define it to
+_xgetbv to fix missing symbol.
+---
+ blosc/shuffle.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/blosc/shuffle.c b/blosc/shuffle.c
+index fc2ca64..7a03bf1 100644
+--- a/blosc/shuffle.c
++++ b/blosc/shuffle.c
+@@ -195,6 +195,10 @@ blosc_internal_xgetbv(uint32_t xcr) {
+   return ((uint64_t)edx << 32) | eax;
+ }
+ 
++#else
++
++#define blosc_internal_xgetbv _xgetbv
++
+ #endif  // !(defined(_IMMINTRIN_H_INCLUDED) && (BLOSC_GCC_VERSION >= 900))
+ #endif  /* defined(_MSC_FULL_VER) */
+ 
+-- 
+2.27.0
+
