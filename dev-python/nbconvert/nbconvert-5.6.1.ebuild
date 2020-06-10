@@ -44,6 +44,10 @@ distutils_enable_sphinx docs \
 	dev-python/{ipython,jupyter_client,nbsphinx,sphinx_rtd_theme}
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-inkscape-1.patch
+)
+
 python_test() {
 	distutils_install_for_testing bdist_egg
 	cd "${TEST_DIR}"/lib || die

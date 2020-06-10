@@ -1,0 +1,40 @@
+From 61757ce936ab37855a5289d31ef59ef898061bcf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Sun, 3 May 2020 15:41:07 +0200
+Subject: [PATCH] Fix CLI options given to Inkscape 1.0rc1+
+
+Fixes https://github.com/jupyter/nbconvert/issues/1246
+---
+ nbconvert/preprocessors/svg2pdf.py            | 7 ++++---
+ nbconvert/preprocessors/tests/test_svg2pdf.py | 2 +-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/nbconvert/preprocessors/svg2pdf.py b/nbconvert/preprocessors/svg2pdf.py
+index d4c48af6..af6a7dea 100644
+--- a/nbconvert/preprocessors/svg2pdf.py
++++ b/nbconvert/preprocessors/svg2pdf.py
+@@ -76,10 +76,11 @@ def _inkscape_version_default(self):
+     @default('command')
+     def _command_default(self):
+         major_verison = self.inkscape_version.split('.')[0]
+-        export_option = '--export-file' if int(major_verison) > 0 else '--export-pdf'
++        export_option = ' --export-filename' if int(major_verison) > 0 else ' --export-pdf'
++        gui_option = '' if int(major_verison) > 0 else ' --without-gui'
+ 
+-        return '{inkscape} --without-gui {export_option}='.format(
+-            inkscape=self.inkscape, export_option=export_option
++        return '{inkscape}{gui_option}{export_option}='.format(
++            inkscape=self.inkscape, export_option=export_option, gui_option=gui_option
+         ) + '"{to_filename}" "{from_filename}"'
+ 
+     inkscape = Unicode(help="The path to Inkscape, if necessary").tag(config=True)
+diff --git a/nbconvert/preprocessors/tests/test_svg2pdf.py b/nbconvert/preprocessors/tests/test_svg2pdf.py
+index 5e13b282..d9ccec8c 100644
+--- a/nbconvert/preprocessors/tests/test_svg2pdf.py
++++ b/nbconvert/preprocessors/tests/test_svg2pdf.py
+@@ -91,4 +91,4 @@ def test_inkscape_pre_v1_command(self):
+ 
+     def test_inkscape_v1_command(self):
+         preprocessor = self.build_preprocessor(inkscape='fake-inkscape', inkscape_version='1.0beta2')
+-        self.assertEquals(preprocessor.command, 'fake-inkscape --without-gui --export-file="{to_filename}" "{from_filename}"')
++        self.assertEquals(preprocessor.command, 'fake-inkscape --export-filename="{to_filename}" "{from_filename}"')
