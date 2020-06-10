@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -15,25 +15,28 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/distro[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/distro[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]"
 
-DEPEND="test? (
-	dev-python/coverage[${PYTHON_USEDEP}]
-	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/flake8[${PYTHON_USEDEP}]
-	dev-python/path-py[${PYTHON_USEDEP}]
-	dev-python/pytest-mock[${PYTHON_USEDEP}]
-	dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
-	dev-python/PyQt5[testlib,${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/virtualenv[${PYTHON_USEDEP}] )"
+DEPEND="
+	test? (
+		dev-python/cython[${PYTHON_USEDEP}]
+		dev-python/path-py[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
+		dev-python/PyQt5[testlib,${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
+		dev-python/virtualenv[${PYTHON_USEDEP}]
+	)"
 
 PATCHES=( "${FILESDIR}/${PN}-0.10.0-docs.patch" )
 
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme dev-python/sphinx-issues
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme \
+	dev-python/sphinx-issues
 distutils_enable_tests pytest
 
 python_prepare_all() {

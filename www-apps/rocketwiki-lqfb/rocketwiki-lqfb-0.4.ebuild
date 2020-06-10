@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit eutils
 MY_P=${PN}-v${PV}
@@ -22,9 +22,10 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-utf8.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-utf8.patch
+	"${FILESDIR}"/${P}-parsec1.patch
+)
 
 src_install() {
 	dobin ${PN}{,-compat}
