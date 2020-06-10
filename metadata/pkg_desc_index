@@ -12698,7 +12698,7 @@ media-libs/freetype 2.9.1-r3 2.9.1-r4 2.10.1 2.10.2-r1 9999: A high-quality and 
 media-libs/freeverb3 3.2.1-r2: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
-media-libs/ganv 1.4.2-r1: A GTK+ widget for interactive graph-like environments
+media-libs/ganv 1.4.2-r1 1.6.0: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.5-r2 2.3.0: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.22 9999: A graph based image processing framework
@@ -13554,7 +13554,7 @@ media-sound/orpheus 1.6-r3: Command line MP3 player
 media-sound/pamix 1.5 1.6 9999: A PulseAudio NCurses mixer
 media-sound/paprefs 1.1: PulseAudio Preferences, configuration dialog for PulseAudio
 media-sound/pasystray 0.6.0-r2 0.7.0 0.7.1: PulseAudio system tray
-media-sound/patchage 0.5.0-r1 0.5.0-r2 1.0.0 1.0.0-r1: Modular patch bay for JACK-based audio and MIDI systems
+media-sound/patchage 0.5.0-r1 0.5.0-r2 1.0.2: Modular patch bay for JACK-based audio and MIDI systems
 media-sound/pavucontrol 3.0 4.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 media-sound/pavucontrol-qt 0.14.1 0.15.0: Qt GUI Pulseaudio Mixer
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
@@ -17346,7 +17346,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.4 1.6.5: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r2 2.31-r3 2.31-r4 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r2 2.31-r3 2.31-r4 2.31-r5 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.1.0: Library for managing partitions
@@ -18610,7 +18610,7 @@ x11-terms/aterm 1.0.1-r4: rxvt compatible terminal emulator with transparency su
 x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and feel of the old cathode tube screens
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.34.2: The Gnome Terminal
-x11-terms/guake 3.3.2-r1 3.6.3-r1 3.7.0 9999: Drop-down terminal for GNOME
+x11-terms/guake 3.7.0 9999: Drop-down terminal for GNOME
 x11-terms/kitty 0.17.2-r1 0.17.3 0.17.4 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
 x11-terms/kitty-terminfo 0.17.2 0.17.3 0.17.4 9999: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
