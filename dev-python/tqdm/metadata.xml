@@ -9,6 +9,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription lang="en">
 		Instantly make your loops show a progress meter - just wrap 
 		any iterator with "tqdm(iterator)", and you're done!

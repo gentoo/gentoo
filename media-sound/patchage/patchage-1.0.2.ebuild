@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE='threads(+)'
-inherit gnome2-utils waf-utils python-any-r1
+inherit waf-utils python-any-r1 xdg
 
 DESCRIPTION="Modular patch bay for JACK-based audio and MIDI systems"
 HOMEPAGE="http://drobilla.net/software/patchage"
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 	dev-libs/boost
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS NEWS README )
+DOCS=( AUTHORS NEWS README.md )
 
 src_configure() {
 	waf-utils_src_configure \
@@ -37,12 +37,4 @@ src_configure() {
 		$(use alsa || echo "--no-alsa") \
 		$(use jack-dbus && echo "--jack-dbus") \
 		$(use session && echo "--jack-session-manage")
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }
