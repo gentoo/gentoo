@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-06-10)
+# not stable because of broken dependencies, bug 727390
+app-portage/layman mercurial
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-24)
 # dependencies not stable yet
 dev-python/pytest-cov test
