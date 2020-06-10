@@ -12,9 +12,7 @@ SRC_URI="https://github.com/docker/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	!~dev-python/requests-2.18.0[${PYTHON_USEDEP}]
@@ -24,20 +22,15 @@ RDEPEND="
 "
 DEPEND="
 	test? (
-		${RDEPEND}
 		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
 		>=dev-python/paramiko-2.4.2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-2.9.1[${PYTHON_USEDEP}]
 	)
 "
-
-PATCHES=(
-	"${FILESDIR}"/${P}-fix_splitnport.patch
-)
 
 distutils_enable_sphinx docs \
 	'dev-python/recommonmark' \
 	'>=dev-python/sphinx-1.4.6'
+distutils_enable_tests pytest
 
 src_prepare() {
 	# localhost has a better chance of being in /etc/hosts
