@@ -13970,7 +13970,7 @@ net-analyzer/ipguard 1.04-r1: Tool designed to protect LAN IP adress space by AR
 net-analyzer/iplog 2.2.3-r2: iplog is a TCP/IP traffic logger
 net-analyzer/ippl 1.4.14-r6: A daemon which logs TCP/UDP/ICMP packets
 net-analyzer/ipsumdump 1.85 1.86 1.86-r1: Simple TCP/IP Dump summarizer/analyzer
-net-analyzer/iptraf-ng 1.1.4-r1 1.1.4-r2 1.1.4-r3 1.2.0 9999: A console-based network monitoring utility
+net-analyzer/iptraf-ng 1.1.4-r1 1.1.4-r2 1.1.4-r3 1.2.0-r1 9999: A console-based network monitoring utility
 net-analyzer/iptstate 2.2.5 2.2.6: IP Tables State displays states being kept by iptables in a top-like format
 net-analyzer/ipv6toolkit 2.1_p20190919 2.1_p20200412 99999999: Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
 net-analyzer/isic 0.07-r1: IP Stack Integrity Checker
