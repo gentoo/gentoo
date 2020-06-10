@@ -23,7 +23,6 @@ DEPEND="
 	gnutls? ( net-libs/gnutls )
 "
 RDEPEND="${DEPEND}"
-RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.7-tinfo.patch
 	"${FILESDIR}"/${PN}-1.4.7-LDFLAGS.patch
