@@ -7729,7 +7729,7 @@ dev-python/dns-lexicon 3.3.4: Manipulate DNS records on various DNS providers in
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.16.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 4.2.0-r1: Python client for Docker
+dev-python/docker-py 4.2.0-r1 4.2.1: Python client for Docker
 dev-python/docker-pycreds 0.4.0: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.4.1-r1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r3: Pythonic argument parser, that will make you smile
