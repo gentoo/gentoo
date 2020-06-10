@@ -17260,7 +17260,7 @@ sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.3-r2 0.8.4: Device mapper target autoconfig
 sys-fs/ncdu 1.14.2 1.15: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
-sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1 2017.3.23-r2 2017.3.23-r3: Open source read-write NTFS driver that runs under FUSE
+sys-fs/ntfs3g 2017.3.23-r3 2017.3.23.5: Open source read-write NTFS driver that runs under FUSE
 sys-fs/owfs 3.2_p2-r2: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/quota 4.04-r3 4.05-r1: Linux quota tools
