@@ -10,32 +10,29 @@ DESCRIPTION="The AWS SDK for Python"
 HOMEPAGE="https://github.com/boto/boto3"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test"
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/boto/boto3"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/boto/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 RDEPEND="
-	>=dev-python/botocore-1.15.48[${PYTHON_USEDEP}]
+	>=dev-python/botocore-1.16.26[${PYTHON_USEDEP}]
 	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
 	>=dev-python/s3transfer-0.3.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	test? (	${RDEPEND}
+	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
 
-RESTRICT="!test? ( test )"
-
 distutils_enable_sphinx docs/source \
 	'dev-python/guzzle_sphinx_theme'
+distutils_enable_tests nose
 
 python_prepare_all() {
 	# don't lock versions to narrow ranges
@@ -51,5 +48,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	nosetests -v tests/unit/ tests/functional/ || die "test failed under ${EPYTHON}"
+	nosetests -v tests/unit tests/functional ||
+		die "test failed under ${EPYTHON}"
 }

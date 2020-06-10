@@ -14,30 +14,23 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
-CDEPEND="
+RDEPEND="
 	dev-python/botocore[${PYTHON_USEDEP}]
 "
-# Pin mock to 1.3.0 if testing failures due to mock occur.
-DEPEND="
+BDEPEND="
 	test? (
-		${CDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
-RDEPEND="${CDEPEND}"
+
+distutils_enable_tests nose
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py38.patch
+)
 
 python_test() {
 	nosetests -v tests/unit/ tests/functional/ || die "tests failed under ${EPYTHON}"
-}
-
-src_prepare() {
-	default
-
-	# Incompatible with recent Future version
-	rm tests/unit/test_s3transfer.py || die
 }

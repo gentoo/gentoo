@@ -25,10 +25,6 @@ BDEPEND="
 
 REQUIRED_USE="cpu_flags_x86_ssse3"
 
-PATCHES=(
-	"${FILESDIR}/${P}-locales.patch"
-)
-
 src_prepare() {
 	# Respect user -O flags
 	sed -i '/set(OPT_CX*_FLAG/d' CMakeLists.txt || die
