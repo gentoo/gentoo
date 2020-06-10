@@ -51,7 +51,9 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.6.1-include_tests.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.6.1-include_tests.patch
+	"${FILESDIR}"/${P}-qt515.patch
+	)
 
 S=${WORKDIR}/desktop-${PV/_/-}
 
