@@ -34,7 +34,9 @@ BDEPEND="
 	test? (
 		dev-python/pebble[${PYTHON_USEDEP}]
 		dev-python/ipykernel[${PYTHON_USEDEP}]
+		dev-python/ipywidgets[${PYTHON_USEDEP}]
 		>=dev-python/jupyter_client-4.2[${PYTHON_USEDEP}]
+		media-gfx/inkscape
 	)
 "
 
