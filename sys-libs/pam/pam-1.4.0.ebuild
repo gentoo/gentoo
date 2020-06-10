@@ -92,9 +92,13 @@ multilib_src_install() {
 multilib_src_install_all() {
 	find "${ED}" -type f -name '*.la' -delete || die
 
+	dodir /usr/lib/tmpfiles.d
+	cat - > "${D}"/usr/lib/tmpfiles.d/${CATEGORY}:${PN}-:${SLOT}.conf <<EOF
+d /var/run/faillock 0755 root root -
+EOF
+
 	if use selinux; then
-		dodir /usr/lib/tmpfiles.d
-		cat - > "${D}"/usr/lib/tmpfiles.d/${CATEGORY}:${PN}:${SLOT}.conf <<EOF
+		cat - >> "${D}"/usr/lib/tmpfiles.d/${CATEGORY}:${PN}:${SLOT}.conf <<EOF
 d /run/sepermit 0755 root root
 EOF
 	fi
