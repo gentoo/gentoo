@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/c-blosc:="
+RDEPEND=">=dev-libs/c-blosc-1.19.0:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/scikit-build[${PYTHON_USEDEP}]
@@ -27,6 +27,10 @@ BDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-unbundle.patch
+)
 
 python_prepare_all() {
 	export BLOSC_DIR="${EPREFIX}/usr"
