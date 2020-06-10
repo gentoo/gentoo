@@ -45,7 +45,7 @@ BDEPEND="${RDEPEND}
 	)
 	"
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs/source
 distutils_enable_tests pytest
 
 src_prepare() {
