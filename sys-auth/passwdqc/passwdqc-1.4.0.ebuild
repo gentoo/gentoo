@@ -24,6 +24,7 @@ src_prepare() {
 _emake() {
 	emake \
 		SHARED_LIBDIR="/usr/$(get_libdir)" \
+		SECUREDIR="$(getpam_mod_dir)" \
 		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		CC="$(tc-getCC)" \
