@@ -1,0 +1,13 @@
+BDEPEND=abi_x86_32? ( dev-lang/nasm ) abi_x86_64? ( dev-lang/nasm )
+DEFINED_PHASES=compile configure install postinst prepare test
+DESCRIPTION=Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
+EAPI=7
+HOMEPAGE=https://www.openh264.org/
+IUSE=cpu_flags_x86_avx2 +plugin utils abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RESTRICT=bindist test
+SLOT=0/6
+SRC_URI=https://github.com/cisco/openh264/archive/v2.1.1.tar.gz -> openh264-2.1.1.tar.gz https://github.com/mozilla/gmp-api/archive/Firefox39.tar.gz -> gmp-api-Firefox39.tar.gz
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=a4b10b96f44e3a2892f1caa2c576c7bb
