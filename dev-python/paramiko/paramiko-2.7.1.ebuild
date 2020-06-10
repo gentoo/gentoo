@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6..9} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -17,8 +17,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris"
-IUSE="examples server test"
-RESTRICT="!test? ( test )"
+IUSE="examples server"
 
 RDEPEND="
 	>=dev-python/bcrypt-3.1.3[${PYTHON_USEDEP}]
@@ -27,7 +26,6 @@ RDEPEND="
 	>=dev-python/pyasn1-0.1.7[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
