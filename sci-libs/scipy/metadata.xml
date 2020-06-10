@@ -5,6 +5,10 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
   <longdescription lang="en">
   SciPy is an open source library of scientific tools for Python. SciPy
   supplements the popular numpy module, gathering a variety of high level
