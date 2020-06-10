@@ -17149,7 +17149,7 @@ sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Blue
 sys-firmware/broadcom-bt-firmware 12.0.1.1011_p1: Broadcom Bluetooth firmware
 sys-firmware/edk2-ovmf 201905 999999: UEFI firmware for 64-bit x86 virtual machines
 sys-firmware/firmware-imx 5.4: NXP i.MX firmware
-sys-firmware/intel-microcode 20200520_p20200601: Intel IA32/IA64 microcode update data
+sys-firmware/intel-microcode 20200609_p20200601: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
 sys-firmware/ipxe 1.0.0_p20180211 1.0.0_p20190728: Open source network boot (PXE) firmware
