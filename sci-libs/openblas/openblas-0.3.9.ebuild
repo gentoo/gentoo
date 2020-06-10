@@ -73,14 +73,12 @@ src_install() {
 	dodoc GotoBLAS_*.txt *.md Changelog.txt
 
 	if use eselect-ldso; then
-		dodir /usr/$(get_libdir)/blas/openblas/
 		insinto /usr/$(get_libdir)/blas/openblas/
 		doins interface/libblas.so.3
 		dosym libblas.so.3 usr/$(get_libdir)/blas/openblas/libblas.so
 		doins interface/libcblas.so.3
 		dosym libcblas.so.3 usr/$(get_libdir)/blas/openblas/libcblas.so
 
-		dodir /usr/$(get_libdir)/lapack/openblas/
 		insinto /usr/$(get_libdir)/lapack/openblas/
 		doins interface/liblapack.so.3
 		dosym liblapack.so.3 usr/$(get_libdir)/lapack/openblas/liblapack.so
