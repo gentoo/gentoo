@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="3.0/3"
-IUSE="altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi neon openmp quad static-libs test threads zbus"
+IUSE="cpu_flags_ppc_altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi neon openmp quad static-libs test threads zbus"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -94,7 +94,7 @@ multilib_src_configure() {
 			# altivec, sse, single-paired only work for single
 			myconf+=(
 				--enable-single
-				$(use_enable altivec)
+				$(use_enable cpu_flags_ppc_altivec altivec)
 				$(use_enable cpu_flags_x86_avx avx)
 				$(use_enable cpu_flags_x86_avx2 avx2)
 				$(use_enable cpu_flags_x86_sse sse)
