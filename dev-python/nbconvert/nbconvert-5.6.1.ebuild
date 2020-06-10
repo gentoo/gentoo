@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
+IUSE="test"
 
 RDEPEND="
 	dev-python/bleach[${PYTHON_USEDEP}]
@@ -40,13 +40,19 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs \
-	dev-python/{ipython,jupyter_client,nbsphinx,sphinx_rtd_theme}
 distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-inkscape-1.patch
 )
+
+src_prepare() {
+	# assumes old inkscape output?
+	sed -i -e '/SVG\.ipynb/d' \
+		nbconvert/preprocessors/tests/test_execute.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	distutils_install_for_testing bdist_egg
