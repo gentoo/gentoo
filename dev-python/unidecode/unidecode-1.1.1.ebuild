@@ -3,23 +3,20 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 PYTHON_REQ_USE="wide-unicode(+)"
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-MY_PN=Unidecode
-MY_P=${MY_PN}-${PV}
-
 inherit distutils-r1
 
+MY_P=Unidecode-${PV}
 DESCRIPTION="Module providing ASCII transliterations of Unicode text"
 HOMEPAGE="https://pypi.org/project/Unidecode/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_P:0:1}/${PN^}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 sparc x86"
-
-S="${WORKDIR}/${MY_P}"
 
 distutils_enable_tests setup.py
