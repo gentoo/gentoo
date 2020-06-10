@@ -5383,7 +5383,6 @@ net-analyzer/smokeping:ssh - Install ssh functionality
 net-analyzer/smokeping:telnet - Install dev-perl/Net-Telnet for telnet functionality
 net-analyzer/sngrep:eep - Enable EEP packet send/receive support
 net-analyzer/sngrep:gnutls - Use net-libs/gnutls to parse captured TLS packets
-net-analyzer/sngrep:logo - Enable Irontec Logo from Summary menu
 net-analyzer/sngrep:openssl - Use dev-libs/openssl to parse captured TLS packets
 net-analyzer/snort:active-response - Enables support for automatically sending TCP resets and ICMP unreachable messages to terminate connections. Used with inline deployments.
 net-analyzer/snort:control-socket - Enables Snort's control socket.
