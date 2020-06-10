@@ -19,6 +19,10 @@ RDEPEND="
 	virtual/opengl
 "
 
+BDEPEND="
+	app-arch/unzip
+"
+
 S="${WORKDIR}/AssaultAndroidCactus_linux"
 
 DIR="/opt/${PN}"
