@@ -12,11 +12,12 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
-IUSE="+X bmp connman dds debug doc drm +eet elogind examples fbcon +fontconfig
-	fribidi gif gles2 gnutls glib +gstreamer harfbuzz hyphen ibus ico libressl
-	lua +luajit jpeg2k json nls mono opengl +pdf physics pmaps postscript psd
-	pulseaudio raw scim sdl +sound +ssl +svg +system-lz4 systemd tga tgv tiff
-	tslib unwind v4l vnc wayland webp xcf xim xpm xpresent zeroconf"
+IUSE="+X bmp connman cpu_flags_arm_neon dds debug doc drm +eet elogind examples
+	fbcon +fontconfig fribidi gif gles2 gnutls glib +gstreamer harfbuzz hyphen
+	ibus ico libressl lua +luajit jpeg2k json nls mono opengl +pdf physics
+	pmaps postscript psd pulseaudio raw scim sdl +sound +ssl +svg +system-lz4
+	systemd tga tgv tiff tslib unwind v4l vnc wayland webp xcf xim xpm xpresent
+	zeroconf"
 
 REQUIRED_USE="
 	?? ( elogind systemd )
@@ -243,6 +244,11 @@ src_configure() {
 		luaChoice+="lua"
 	fi
 	emesonargs+=( -D lua-interpreter="${luaChoice}" )
+
+	# Not all arm CPU's have neon instruction set, #722552
+	if use arm && ! use cpu_flags_arm_neon; then
+		emesonargs+=( -D native-arch-optimization=false )
+	fi
 
 	meson_src_configure
 }
