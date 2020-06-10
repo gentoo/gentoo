@@ -68,7 +68,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test"
 
-PATCHES=( 
+PATCHES=(
 	"${FILESDIR}/bash-completion-sudo.patch"
 	"${FILESDIR}/${PV}-initconfdir.patch"
 )
