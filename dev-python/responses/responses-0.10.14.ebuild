@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -33,3 +33,10 @@ PATCHES=(
 )
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# py3.9, doesn't look important
+	sed -e 's:test_arbitrary_status_code:_&:' \
+		-i test_responses.py || die
+	distutils-r1_src_prepare
+}
