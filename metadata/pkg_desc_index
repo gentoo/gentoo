@@ -12644,10 +12644,10 @@ media-libs/aalib 1.4_rc5-r9: A ASCII-Graphics Library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
 media-libs/allegro 4.4.2-r2 4.4.3.1 5.2.5.0: Cross-platform library aimed at video game and multimedia programming
-media-libs/alsa-lib 1.2.2-r1: Advanced Linux Sound Architecture Library
+media-libs/alsa-lib 1.2.2-r1 1.2.3: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.1.8: Advanced Linux Sound Architecture OSS compatibility layer
-media-libs/alsa-topology-conf 1.2.2: ALSA topology configuration files
-media-libs/alsa-ucm-conf 1.2.2: ALSA ucm configuration files
+media-libs/alsa-topology-conf 1.2.2 1.2.3: ALSA topology configuration files
+media-libs/alsa-ucm-conf 1.2.2 1.2.3: ALSA ucm configuration files
 media-libs/alure 1.2-r1 1.2-r2: The OpenAL Utility Toolkit
 media-libs/ampache_browser 1.0.1 1.0.2: Ampache desktop client library
 media-libs/aribb24 1.0.3 1.0.3-r1 1.0.3-r2: Library for decoding ARIB STD-B24 subtitles
@@ -13339,7 +13339,7 @@ media-sound/abcmidi 2020.01.22: Programs for processing ABC music notation files
 media-sound/aeolus 0.9.7: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.2.2-r1: Advanced Linux Sound Architecture tools
-media-sound/alsa-utils 1.2.2: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
+media-sound/alsa-utils 1.2.2 1.2.3: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
 media-sound/alsamixer-app 0.1-r1: simple alsa mixer dockapp
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio player
@@ -17841,8 +17841,8 @@ www-client/seamonkey 2.53.2: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.0.1874.38_p1 3.1.1929.25_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.1.1929.21_p1 3.1.1929.23_p1: A browser for our friends
+www-client/vivaldi 3.0.1874.38_p1 3.1.1929.25_p1 3.1.1929.29_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.1.1929.21_p1 3.1.1929.23_p1 3.1.1929.28_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.4 7.8 7.8-r1: AWStats is short for Advanced Web Statistics
