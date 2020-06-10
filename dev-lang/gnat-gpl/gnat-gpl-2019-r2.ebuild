@@ -42,7 +42,7 @@ HOMEPAGE="http://libre.adacore.com/"
 LICENSE+=" GPL-2 GPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ada +bootstrap"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
 DEPEND="${RDEPEND}
