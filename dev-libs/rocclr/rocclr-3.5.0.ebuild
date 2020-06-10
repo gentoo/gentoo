@@ -16,6 +16,7 @@ KEYWORDS="~amd64"
 
 RDEPEND=">=dev-libs/rocm-comgr-${PV}"
 DEPEND="${RDEPEND}
+	virtual/opengl
 	>=dev-util/rocm-cmake-${PV}"
 
 PATCHES=(
