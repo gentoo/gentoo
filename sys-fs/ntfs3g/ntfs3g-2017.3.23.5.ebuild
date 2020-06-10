@@ -72,6 +72,6 @@ src_configure() {
 src_install() {
 	default
 	use suid && fperms u+s /usr/bin/ntfs-3g
-	dosym "${EPREFIX}"/usr/bin/ntfs-3g /sbin/mount.ntfs
+	dosym mount.ntfs-3g /sbin/mount.ntfs
 	find "${D}" -name '*.la' -type f -delete || die
 }
