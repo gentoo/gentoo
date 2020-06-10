@@ -28,12 +28,12 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/PyQt5-5.13.1[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-sip-4.19.20:=[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-4.19.22:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtwebengine:5[widgets]
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.20[${PYTHON_USEDEP}]
+	~dev-python/sip-4.19.22[${PYTHON_USEDEP}]
 "
 
 S=${WORKDIR}/${MY_P}
