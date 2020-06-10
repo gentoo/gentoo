@@ -14625,7 +14625,7 @@ net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
 net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx2 2019.0 2020.1-r1: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
-net-mail/b4 0.4.0: Utility for fetching patchsets from public-inbox
+net-mail/b4 0.5.1: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication program w/pam support
 net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
