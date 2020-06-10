@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
+IUSE="test"
 
 RDEPEND="
 	dev-python/bleach[${PYTHON_USEDEP}]
@@ -40,8 +40,6 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs \
-	dev-python/{ipython,jupyter_client,nbsphinx,sphinx_rtd_theme}
 distutils_enable_tests pytest
 
 PATCHES=(
