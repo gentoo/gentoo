@@ -8266,7 +8266,7 @@ dev-python/portend 2.6: TCP port monitoring utilities
 dev-python/poyo 0.5.0: A lightweight YAML Parser for Python
 dev-python/precis-i18n 1.0.1: Internationalized Usernames and Passwords
 dev-python/pretend 1.0.9: A library for stubbing in Python
-dev-python/pretty-yaml 15.8.2: PyYAML-based module to produce pretty and readable YAML-serialized data
+dev-python/pretty-yaml 15.8.2 20.4.0: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.2-r1: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 2.0.2: Tools for testing processes
@@ -8986,7 +8986,7 @@ dev-qt/qtconcurrent 5.14.2 5.15.0: Multi-threading concurrence support library f
 dev-qt/qtcore 5.14.2 5.15.0: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.14.2 5.15.0: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.14.2 5.15.0: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 5.14.2-r2 5.15.0: The QML and Quick modules for the Qt5 framework
+dev-qt/qtdeclarative 5.14.2-r2 5.14.2-r3 5.15.0: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdiag 5.14.2 5.15.0: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgamepad 5.14.2 5.15.0: Qt module to support gamepad hardware
 dev-qt/qtgraphicaleffects 5.14.2 5.15.0: Set of QML types for adding visual effects to user interfaces
@@ -8995,8 +8995,8 @@ dev-qt/qthelp 5.14.2 5.15.0: Qt5 module for integrating online documentation int
 dev-qt/qtimageformats 5.14.2 5.15.0: Additional format plugins for the Qt image I/O system
 dev-qt/qtlocation 5.14.2 5.15.0: Location (places, maps, navigation) library for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 5.14.2 5.15.0: Multimedia (audio, video, radio, camera) library for the Qt5 framework
-dev-qt/qtnetwork 5.14.2 5.15.0: Network abstraction library for the Qt5 framework
+dev-qt/qtmultimedia 5.14.2 5.14.2-r1 5.15.0: Multimedia (audio, video, radio, camera) library for the Qt5 framework
+dev-qt/qtnetwork 5.14.2 5.14.2-r1 5.15.0: Network abstraction library for the Qt5 framework
 dev-qt/qtnetworkauth 5.14.2 5.15.0: Network authorization library for the Qt5 framework
 dev-qt/qtopengl 5.14.2 5.15.0: OpenGL support library for the Qt5 framework (deprecated)
 dev-qt/qtpaths 5.14.2 5.15.0: Command line client to QStandardPaths
@@ -9004,7 +9004,7 @@ dev-qt/qtplugininfo 5.14.2 5.15.0: Qt5 plugin metadata dumper
 dev-qt/qtpositioning 5.14.2 5.15.0: Physical position determination library for the Qt5 framework
 dev-qt/qtprintsupport 5.14.2 5.15.0: Printing support library for the Qt5 framework
 dev-qt/qtquickcontrols 5.14.2 5.15.0: Set of Qt Quick controls to create complete user interfaces (deprecated)
-dev-qt/qtquickcontrols2 5.14.2 5.15.0: Set of next generation Qt Quick controls for the Qt5 framework
+dev-qt/qtquickcontrols2 5.14.2 5.14.2-r1 5.15.0: Set of next generation Qt Quick controls for the Qt5 framework
 dev-qt/qtscript 5.14.2 5.15.0: Application scripting library for the Qt5 framework (deprecated)
 dev-qt/qtscxml 5.14.2 5.15.0: State Chart XML (SCXML) support library for the Qt5 framework
 dev-qt/qtsensors 5.14.2 5.15.0: Hardware sensor access library for the Qt5 framework
