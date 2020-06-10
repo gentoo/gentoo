@@ -18,6 +18,7 @@
 		<flag name="ccache">build ccache-swig(a fast compiler cache)</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">swig/swig</remote-id>
 		<remote-id type="sourceforge">swig</remote-id>
 	</upstream>
 </pkgmetadata>
