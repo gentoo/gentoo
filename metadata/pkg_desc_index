@@ -3182,7 +3182,7 @@ dev-ada/langkit 2018 2019 2019-r1: A Python framework to generate language parse
 dev-ada/libadalang 2018-r2 2019-r1: high performance semantic engine for the Ada programming language
 dev-ada/libadalang-tools 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
 dev-ada/libgpr 2019-r1: Ada library to handle GPRbuild project files
-dev-ada/xmlada 2019-r1: Set of modules that provide a simple manipulation of XML streams
+dev-ada/xmlada 2019-r1 2020: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
 dev-cpp/abseil-cpp 20200225.2: Abseil Common Libraries (C++), LTS Branch
 dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
@@ -7533,7 +7533,7 @@ dev-python/automat 0.8.0-r1 20.2.0: Self-service finite-state machines for the p
 dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.11.0 1.22.0: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.11.0 1.22.0 1.24.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.62 1.18.70: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -10665,6 +10665,7 @@ games-action/0verkill 0.16-r4: A bloody 2D action deathmatch-like game in ASCII-
 games-action/abuse 0.9_p20181213-r1: Port of Abuse by Crack Dot Com
 games-action/apotheon 1.26v: Heroic action game set within the vibrant world of Ancient Greek Mythology
 games-action/armagetronad 0.2.8.3.3-r1: Fast-paced 3D lightcycle game based on Tron
+games-action/assault-android-cactus+ 200507: Arcade style twin stick shooter set in a vivid sci-fi universe
 games-action/astromenace 1.3.2-r1 1.4.1: Hardcore 3D space scroll-shooter with spaceship upgrade possibilities
 games-action/atanks 6.4-r1: Worms and Scorched Earth-like game
 games-action/badland 121-r1: Atmospheric side-scrolling action adventure platformer set in a gorgeous forest
