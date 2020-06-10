@@ -105,6 +105,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-7.30.0-prefix.patch
 	eapply "${FILESDIR}"/${PN}-respect-cflags-3.patch
 	eapply "${FILESDIR}"/${PN}-fix-gnutls-nettle.patch
+	eapply "${FILESDIR}"/${PN}-fix-cpu-load.patch
 
 	sed -i '/LD_LIBRARY_PATH=/d' configure.ac || die #382241
 	sed -i '/CURL_MAC_CFLAGS/d' configure.ac || die #637252
