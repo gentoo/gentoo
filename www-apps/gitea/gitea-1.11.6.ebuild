@@ -30,7 +30,7 @@ LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="+acct build-client pam sqlite"
 
-BDEPEND="dev-lang/go
+BDEPEND="<dev-lang/go-1.14.0
 	build-client? ( >=net-libs/nodejs-10[npm] )"
 DEPEND="pam? ( sys-libs/pam )"
 RDEPEND="${DEPEND}
