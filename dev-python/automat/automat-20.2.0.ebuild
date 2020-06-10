@@ -32,6 +32,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/automat-0.8.0-no-setup-py-m2r-import.patch"
+	"${FILESDIR}/test_visualize-twisted-import-errors.patch"
 )
 
 distutils_enable_tests pytest
@@ -59,7 +60,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	einfo "For additional visualization functionality install these optional dependencies"
+	einfo "For additional visualization functionality install both these optional dependencies"
 	einfo "    >=dev-python/twisted-16.1.1"
 	einfo "    media-gfx/graphviz[python]"
 }
