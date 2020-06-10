@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
@@ -14,7 +14,6 @@ S="${WORKDIR}/serverless-application-model-${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
 
 RDEPEND="
 	>=dev-python/boto3-1.5[${PYTHON_USEDEP}]
@@ -22,12 +21,11 @@ RDEPEND="
 	>=dev-python/six-1.11[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	test? ( ${RDEPEND}
+	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 	)
 "
-RESTRICT="!test? ( test )"
 
 distutils_enable_tests pytest
 
