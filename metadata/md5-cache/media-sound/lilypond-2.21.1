@@ -1,6 +1,6 @@
 BDEPEND=>=dev-texlive/texlive-metapost-2013 || ( >=app-text/texlive-core-2013 >=dev-tex/metapost-1.803 ) >=sys-apps/texinfo-4.11 >=sys-devel/bison-2.0 sys-devel/flex virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst postrm prepare setup
-DEPEND=>=app-text/ghostscript-gpl-8.15 >=dev-scheme/guile-1.8.2:12=[deprecated,regex] media-fonts/tex-gyre media-libs/fontconfig media-libs/freetype:2 >=x11-libs/pango-1.12.3 emacs? ( >=app-editors/emacs-23.1:* ) guile2? ( >=dev-scheme/guile-2.2:12 ) !guile2? ( >=dev-scheme/guile-1.8.2:12=[deprecated,regex] <dev-scheme/guile-2.0:12 ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) app-text/t1utils dev-lang/perl dev-libs/kpathsea media-gfx/fontforge[png] sys-devel/gettext
+DEPEND=>=app-text/ghostscript-gpl-8.15 >=dev-scheme/guile-1.8.2:12=[deprecated,regex] media-fonts/tex-gyre media-libs/fontconfig media-libs/freetype:2 >=x11-libs/pango-1.12.3 emacs? ( >=app-editors/emacs-23.1:* ) guile2? ( >=dev-scheme/guile-2.2:12 ) !guile2? ( >=dev-scheme/guile-1.8.2:12=[deprecated,regex] <dev-scheme/guile-2.0:12 ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) app-text/t1utils dev-lang/perl dev-libs/kpathsea media-gfx/fontforge[png,python] sys-devel/gettext
 DESCRIPTION=GNU Music Typesetter
 EAPI=7
 HOMEPAGE=http://lilypond.org/
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://lilypond.org/download/sources/v2.21/lilypond-2.21.1.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	elisp-common	504a3383c45504fde86b00426619a709	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=755951d4b398c17062e7e7ab3861d0b5
+_md5_=f220279aa4ba9b552ebfb7253ad9c50d
