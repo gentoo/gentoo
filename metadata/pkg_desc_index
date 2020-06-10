@@ -10286,7 +10286,7 @@ dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.1.1: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
-dev-util/cmake 3.13.5 3.16.5 3.17.2 3.17.3: Cross platform Make
+dev-util/cmake 3.13.5 3.16.5 3.17.2 3.17.3 3.18.0_rc1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
@@ -12912,7 +12912,7 @@ media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.6: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
-media-libs/lv2 1.16.0-r1: A simple but extensible successor of LADSPA
+media-libs/lv2 1.16.0-r1 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 19.3.5 20.0.4-r1 20.0.7 20.1.0_rc4 20.1.0 9999: OpenGL-like graphic library for Linux
@@ -12939,7 +12939,7 @@ media-libs/openjpeg 1.5.2-r1 2.3.1-r1: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
 media-libs/opusfile 0.11: A high-level decoding and seeking API for .opus files
-media-libs/osl 1.10.5: Advanced shading language for production GI renderers
+media-libs/osl 1.10.5 1.10.10: Advanced shading language for production GI renderers
 media-libs/oyranos 0.9.6-r1 9999: Colour management system allowing to share settings across apps and services
 media-libs/partio 1.1.0_p20170829 1.5.4 9999: Library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
@@ -14347,7 +14347,7 @@ net-im/mattermost-desktop-bin 4.4.0: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
-net-im/pidgin 2.13.0-r7 2.13.0-r8: GTK Instant Messenger client
+net-im/pidgin 2.13.0-r7 2.13.0-r8 2.14.0: GTK Instant Messenger client
 net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
 net-im/prosody 0.11.5: Prosody is a flexible communications server for Jabber/XMPP written in Lua
@@ -17461,7 +17461,7 @@ sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
-sys-process/evisum 0.3.2 0.4.1: System and process monitor written with EFL
+sys-process/evisum 0.4.1: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 2.11.1 3.1.0 3.1.4.1-r1: CLI curses based monitoring tool
@@ -18626,7 +18626,7 @@ x11-terms/rxvt-unicode 9.22-r1 9.22-r3 9999: rxvt clone with xft and unicode sup
 x11-terms/sakura 3.5.0 3.6.0-r1 3.7.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.2 0.8.3 9999: simple terminal implementation for X
 x11-terms/terminator 1.92-r1: Multiple GNOME terminals in one window
-x11-terms/terminology 1.6.0 1.7.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
+x11-terms/terminology 1.7.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.1 0.8.9.2: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 337 351 353: Terminal Emulator for X Windows
