@@ -929,7 +929,7 @@ app-crypt/minisign 0.8 0.9 9999: Dead simple tool to sign files and verify signa
 app-crypt/mit-krb5 1.17-r1 1.17.1 1.18 1.18.1 1.18.2 1.18.2-r1: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41 0.42: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
-app-crypt/moolticute 0.43.3 9999: Mooltipass crossplatform daemon/tools
+app-crypt/moolticute 0.43.19 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nitrocli 0.3.1 0.3.2 0.3.3: A command line tool for interacting with Nitrokey devices.
 app-crypt/nitrokey-app 1.4 9999: Cross platform personalization tool for the Nitrokey
@@ -14222,7 +14222,7 @@ net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
 net-dns/hash-slinger 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.8.5 2.9.2 2.9.3: High-performance authoritative-only DNS server
+net-dns/knot 2.8.5 2.9.5: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.35: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
