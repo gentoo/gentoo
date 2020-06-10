@@ -7537,7 +7537,7 @@ dev-python/aws-sam-translator 1.11.0 1.22.0: A library that transform SAM templa
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.62 1.18.70: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
-dev-python/backcall 0.1.0-r1: Specifications for callback functions passed in to an API
+dev-python/backcall 0.1.0-r1 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
 dev-python/backports-abc 0.5: Backport of Python 3.5's 'collections.abc' module
 dev-python/backports-csv 1.0.7: Backport of Python 3's 'csv' module
