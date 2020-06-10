@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@pogatzki.net</email>
+		<name>Volkmar W. Pogatzki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">dylanaraps/eiwd</remote-id>
+	</upstream>
+	<use>
+		<flag name='client'>Enable iwctl client tool</flag>
+		<flag name='monitor'>Enable iwmon monitor tool</flag>
+		<flag name='ofono'>Enable support for oFono SIM authentication</flag>
+		<flag name="system-ell">Use the system-wide <pkg>dev-libs/ell</pkg>instead of bundled. </flag>
+		<flag name='wired'>Enable ethernet authentication daemon</flag>
+	</use>
+</pkgmetadata>
