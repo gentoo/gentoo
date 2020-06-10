@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 	app-text/t1utils
 	dev-lang/perl
 	dev-libs/kpathsea
-	media-gfx/fontforge[png]
+	media-gfx/fontforge[png,python]
 	sys-devel/gettext"
 
 # Correct output data for tests isn't bundled with releases
