@@ -50,6 +50,8 @@ DOCS=( AUTHORS NEWS.md CONTRIBUTING.md contrib/syslog-ng.conf.{HP-UX,RedHat,SunO
 	contrib/syslog2ng "${T}/syslog-ng.conf.gentoo.hardened"
 	"${T}/syslog-ng.logrotate.hardened" "${FILESDIR}/README.hardened" )
 
+PATCHES=( "${FILESDIR}/patches/syslog-ng-glib-2.64-support.patch" )
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
