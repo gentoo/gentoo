@@ -28,11 +28,13 @@ PATCHES=(
 src_prepare() {
 	default
 
+	sed -i -e '/^AR=/d' autoconf_local/aclocal.m4 || die
+
 	AT_M4DIR=autoconf_local/ eautoreconf
 }
 
 src_configure() {
-	tc-export CC
+	tc-export AR CC
 	LC_ALL="C" \
 	LIBS="$( $(tc-getPKG_CONFIG) --libs ncurses)" \
 		econf \
