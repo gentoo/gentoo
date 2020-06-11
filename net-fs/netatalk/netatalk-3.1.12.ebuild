@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.7-gentoo.patch
 	"${FILESDIR}"/${PN}-3.1.8-disable-ld-library-path.patch #564350
 	"${FILESDIR}"/${PN}-3.1.12-my_bool.patch #692560
+	"${FILESDIR}"/${PN}-3.1.12-fno-common.patch #706852
 )
 
 src_prepare() {
