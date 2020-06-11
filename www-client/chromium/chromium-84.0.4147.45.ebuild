@@ -163,8 +163,8 @@ in /etc/chromium/default.
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
-		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 8.0; then
-			die "At least gcc 8.0 is required"
+		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 9.2; then
+			die "At least gcc 9.2 is required"
 		fi
 		# component build hangs with tcmalloc enabled due to sandbox issue, bug #695976.
 		if has usersandbox ${FEATURES} && use tcmalloc && use component-build; then
