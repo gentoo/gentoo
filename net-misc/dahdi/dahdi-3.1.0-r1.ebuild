@@ -97,5 +97,11 @@ src_install() {
 		DAHDI_MODULES_EXTRA="${JNET_DRIVERS// /.o }.o$(usex oslec " dahdi_echocan_oslec.o" "")" \
 		LDFLAGS="$(raw-ldflags)" install
 
-	rm -r "${ED}"/lib/modules/*/modules.* || die "Error removing bogus modules"
+	# Remove the blank "version" files (these files are all empty, and root owned).
+	find "${ED}/lib/firmware" -name ".*" -delete || die "Error removing empty firmware version files"
+
+	# If the kernel sources have a System.map, and there a suitable depmod
+	# available (seemingly when we're not cross-compiling), then the kernel
+	# sources depmod kicks in.  Remove the files caused by that.
+	find "${ED}/lib/modules" -name "modules.*" -delete || die "Error deleting bogus modules.* files"
 }
