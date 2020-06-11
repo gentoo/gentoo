@@ -22,7 +22,10 @@ RDEPEND="
 
 DEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/shared-blas-lapack.patch" )
+PATCHES=(
+	"${FILESDIR}/shared-blas-lapack.patch"
+	"${FILESDIR}/dont-clobber-fflags.patch"
+)
 
 pkg_setup() {
 	fortran-2_pkg_setup
@@ -31,7 +34,7 @@ pkg_setup() {
 	# We need to filter these while building the library, and not just
 	# while building the test suite. Will hopefully get fixed upstream:
 	# https://github.com/xianyi/OpenBLAS/issues/2657
-	use test && filter-flags "-fbounds-check" "-fcheck=bounds"
+	use test && filter-flags "-fbounds-check" "-fcheck=bounds" "-fcheck=all"
 
 	export CC=$(tc-getCC) FC=$(tc-getFC)
 
@@ -40,6 +43,10 @@ pkg_setup() {
 
 	# disable submake with -j
 	export MAKE_NB_JOBS=-1
+
+	# Set these to "nothing" to prevent the default optimization flags
+	# from being added in Makefile.system.
+	export COMMON_OPT=" " FCOMMON_OPT=" "
 
 	USE_THREAD=0
 	if use openmp; then
