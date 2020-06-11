@@ -16,6 +16,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 RDEPEND="sys-libs/pam"
 DEPEND="${RDEPEND}"
 
+pkg_setup() {
+	QA_FLAGS_IGNORED="/$(get_libdir)/security/pam_passwdqc.so
+		 /usr/$(get_libdir)/libpasswdqc.so.0"
+}
+
 src_prepare() {
 	default
 	sed -i -e 's:`uname -s`:Linux:' Makefile || die
