@@ -59,6 +59,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# use bash (bug 720038)
+	CONFIG_SHELL='/bin/bash' \
 	ECONF_SOURCE=${S} \
 	econf \
 		--disable-music-flac-shared \
