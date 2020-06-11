@@ -22,7 +22,10 @@ RDEPEND="
 
 DEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/shared-blas-lapack.patch" )
+PATCHES=(
+	"${FILESDIR}/shared-blas-lapack.patch"
+	"${FILESDIR}/dont-clobber-fflags.patch"
+)
 
 pkg_setup() {
 	fortran-2_pkg_setup
