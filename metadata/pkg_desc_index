@@ -443,7 +443,7 @@ app-admin/clustershell 1.7.3: Python framework for efficient cluster administrat
 app-admin/conky 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4: Serial Console Manager
-app-admin/consul 1.7.2 1.7.3: A tool for service discovery, monitoring and configuration
+app-admin/consul 1.7.2 1.7.3 1.7.4: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.25.0: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -16040,7 +16040,7 @@ sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/oce 0.18.3-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/octomap 1.9.0 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
-sci-libs/openblas 0.3.6 0.3.7 0.3.9: Optimized BLAS library based on GotoBLAS2
+sci-libs/openblas 0.3.9: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.4.0-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.5.4 0.7.0: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
