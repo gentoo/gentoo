@@ -11,4 +11,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://vdr-developerorg/1911/vdr2jpeg-0.2.0.tgz
 _eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=80f0a5f85c9f6193cebd23cb7a7dfa41
+_md5_=c60142ad7abcfe5a4f94539e2046378f

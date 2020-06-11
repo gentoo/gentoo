@@ -5058,6 +5058,7 @@ dev-libs/libgee 0.6.8 0.20.3: GObject-based interfaces and classes for commonly 
 dev-libs/libgit2 0.28.4 0.28.5 1.0.0-r1 1.0.1: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1 0.28.0.1-r1 0.99.0.1-r1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.4: Library for code common to Gnome games
+dev-libs/libgnt 2.14.0: Pidgin's GLib Ncurses Toolkit
 dev-libs/libgpg-error 1.36 1.37 1.38: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
@@ -13868,7 +13869,7 @@ media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vcsi 7-r1: Create thumbnail sheets from video files
 media-video/vdr 2.2.0-r5 2.2.0-r6 2.4.1-r2 2.4.1-r3: Video Disk Recorder - turns a pc into a powerful set top box for DVB
-media-video/vdr2jpeg 0.1.9-r2 0.2.0 0.2.0-r3: Addon needed for XXV - WWW Admin for the Video Disk Recorder
+media-video/vdr2jpeg 0.1.9-r2 0.2.0 0.2.0-r4: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrsync 0.1.3_pre050322-r1 0.1.3_pre050322-r2: converting vdr-recordings to mpeg2, dvd or other similar formats
 media-video/vdrtools-genindex 0.1.3-r1 0.1.3-r2: VDR: genindex Script
 media-video/vidcutter 6.0.0 9999: FFmpeg-based simple video cutter & joiner with a modern PyQt5 GUI
@@ -14350,7 +14351,7 @@ net-im/mattermost-desktop-bin 4.4.0: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
-net-im/pidgin 2.13.0-r7 2.13.0-r8 2.14.0: GTK Instant Messenger client
+net-im/pidgin 2.13.0-r7 2.13.0-r8 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
 net-im/prosody 0.11.5: Prosody is a flexible communications server for Jabber/XMPP written in Lua
