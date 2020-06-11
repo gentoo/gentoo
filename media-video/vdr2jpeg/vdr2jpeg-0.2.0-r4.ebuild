@@ -29,8 +29,9 @@ src_prepare() {
 		-e "s:usr/local:usr:" \
 		-e "s:-o vdr2jpeg:\$(LDFLAGS) -shared -o vdr2jpeg:" || die
 
-	# bug 727640, do not call strip directly
+	# bug 727640, 727804 do not call strip directly
 	export  STRIP="$(tc-getSTRIP)"
+	sed -i Makefile -e "s:-s vdr2jpeg:vdr2jpeg:" || die
 
 	default
 }
