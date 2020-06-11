@@ -69,7 +69,7 @@ fi
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
 		+gpl hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
-		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau
+		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau vulkan
 		X:xlib X:libxcb X:libxcb-shm X:libxcb-xfixes +zlib
 		# libavdevice options
 		cdio:libcdio iec61883:libiec61883 ieee1394:libdc1394 libcaca openal
@@ -255,6 +255,7 @@ RDEPEND="
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	)
 	vpx? ( >=media-libs/libvpx-1.4.0:=[${MULTILIB_USEDEP}] )
+	vulkan? ( >=media-libs/vulkan-loader-1.1.97:=[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
