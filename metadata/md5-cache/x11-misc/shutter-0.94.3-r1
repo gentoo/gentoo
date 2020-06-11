@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Feature-rich screenshot program
+EAPI=7
+HOMEPAGE=https://shutter-project.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl dev-perl/libxml-perl dev-perl/gnome2-canvas dev-perl/gnome2-perl dev-perl/gnome2-wnck dev-perl/Gtk2-Unique dev-perl/Gtk2-ImageView dev-perl/File-DesktopEntry dev-perl/File-HomeDir dev-perl/File-Which dev-perl/JSON dev-perl/File-Copy-Recursive dev-perl/File-MimeInfo dev-perl/Locale-gettext dev-perl/Net-DBus dev-perl/Proc-Simple dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/WWW-Mechanize dev-perl/X11-Protocol dev-perl/XML-Simple dev-perl/libwww-perl virtual/imagemagick-tools[perl]
+SLOT=0
+SRC_URI=https://launchpad.net/shutter/0.9x/0.94.3/+download/shutter-0.94.3.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=11271d56d5e3ee4cdb20abc486d20cbd

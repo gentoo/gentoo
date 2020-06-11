@@ -18307,7 +18307,7 @@ x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewe
 x11-misc/sent 0.2 1-r1 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
 x11-misc/shared-mime-info 1.10-r1 1.15: The Shared MIME-info Database specification
-x11-misc/shutter 0.94.3: Feature-rich screenshot program
+x11-misc/shutter 0.94.3 0.94.3-r1: Feature-rich screenshot program
 x11-misc/simpleswitcher 20140219 99999999: lightweight EWMH window switcher with features and looks of dmenu
 x11-misc/sisctrl 0.0.20051202 0.0.20051202-r1: tool that allows you to tune SiS drivers from X
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
