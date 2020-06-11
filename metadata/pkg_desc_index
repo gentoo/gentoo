@@ -15223,7 +15223,7 @@ net-vpn/networkmanager-vpnc 1.2.6-r2: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/ocserv 1.0.1: Openconnect SSL VPN server
-net-vpn/openconnect 8.06 8.08 8.09-r1 9999: Free client for Cisco AnyConnect SSL VPN software
+net-vpn/openconnect 8.09-r1 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.13.2 1.13.3: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.9 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r5: P2P mesh VPN
@@ -17820,7 +17820,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0-r1 68.8.0 68.9.0 76.0-r1 76.0.1 77.0.1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.8.0 68.9.0 76.0 76.0.1 77.0.1: Firefox Web Browser
 www-client/google-chrome 83.0.4103.97: The web browser from Google
-www-client/google-chrome-beta 84.0.4147.38: The web browser from Google
+www-client/google-chrome-beta 84.0.4147.45: The web browser from Google
 www-client/google-chrome-unstable 85.0.4164.2: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -17866,7 +17866,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.387: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 83.0.4103.97 84.0.4147.38_beta 85.0.4164.2_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 83.0.4103.97 84.0.4147.45_beta 85.0.4164.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
