@@ -3,37 +3,35 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-
-BACKPORTS="5cde0578d84926171b20c8f7e95a101e9b0b9457" # August 8, 2019
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit eutils flag-o-matic python-single-r1 qmake-utils readme.gentoo-r1 systemd user-info vcs-snapshot
+inherit eutils flag-o-matic python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
 
 MYTHTV_BRANCH="fixes/${P%.*}"
 
 DESCRIPTION="Open Source DVR and media center hub"
-HOMEPAGE="https://www.mythtv.org"
-SRC_URI="https://github.com/MythTV/mythtv/archive/${BACKPORTS}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
+SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-SLOT="0/${PV}"
+SLOT="0"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE_VIDEO_CAPTURE_DEVICES="v4l ivtv ieee1394 hdpvr hdhomerun vbox ceton"
 IUSE="alsa altivec asi autostart bluray cdda cdr cec debug dvd dvb egl exif fftw jack java
-	+lame lcd libass lirc +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
-	+wrapper x264 x265 +xml xmltv xnvctrl +xvid +X zeroconf
+	+lame lcd libass lirc nvdec +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
+	+wrapper x264 x265 +xml xmltv +xvid +X zeroconf
 	${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
+
 REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
 	bluray? ( xml )
 	cdr? ( cdda )
 "
-COMMON_DEPEND="
+RDEPEND="
 	acct-user/mythtv
 	dev-libs/glib:2
 	dev-libs/lzo
@@ -41,20 +39,60 @@ COMMON_DEPEND="
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	opengl? ( dev-qt/qtopengl:5 )
 	dev-qt/qtscript:5
 	dev-qt/qtsql:5[mysql]
-	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
+	media-fonts/corefonts
+	media-fonts/dejavu
+	media-fonts/liberation-fonts
+	media-fonts/tex-gyre
 	media-gfx/exiv2:=
 	media-libs/freetype:2
 	media-libs/libsamplerate
 	media-libs/taglib
-	lame? ( >=media-sound/lame-3.93.1 )
 	sys-libs/zlib
-	opengl? ( virtual/opengl )
+	alsa? ( media-libs/alsa-lib )
+	autostart? (
+		net-dialup/mingetty
+		x11-apps/xset
+		x11-wm/evilwm
+	)
+	bluray? (
+		dev-libs/libcdio:=
+		media-libs/libbluray:=[java?]
+		sys-fs/udisks:2
+	)
+	cec? ( dev-libs/libcec )
+	dvd? (
+		dev-libs/libcdio:=
+		media-libs/libdvdcss
+		sys-fs/udisks:2
+	)
+	egl? ( media-libs/mesa[egl] )
+	fftw? ( sci-libs/fftw:3.0=[threads] )
+	hdhomerun? ( media-libs/libhdhomerun )
+	ieee1394? (
+		media-libs/libiec61883
+		sys-libs/libavc1394
+		sys-libs/libraw1394
+	)
+	jack? ( media-sound/jack-audio-connection-kit )
+	java? ( dev-java/ant-core )
+	lame? ( media-sound/lame )
+	lcd? ( app-misc/lcdproc )
+	libass? ( media-libs/libass:= )
+	lirc? ( app-misc/lirc )
+	nvdec? ( x11-drivers/nvidia-drivers )
+	opengl? ( dev-qt/qtopengl:5 )
+	pulseaudio? ( media-sound/pulseaudio )
+	systemd? ( sys-apps/systemd:= )
+	vaapi? ( x11-libs/libva:=[opengl] )
+	vdpau? ( x11-libs/libvdpau )
+	vpx? ( media-libs/libvpx:= )
+	x264? (	media-libs/x264:= )
 	X? (
+		x11-apps/xinit
 		x11-libs/libX11:=
 		x11-libs/libXext:=
 		x11-libs/libXinerama:=
@@ -63,90 +101,57 @@ COMMON_DEPEND="
 		x11-libs/libXxf86vm:=
 		x11-misc/wmctrl:=
 	)
-	alsa? ( >=media-libs/alsa-lib-1.0.24 )
-	bluray? (
-		media-libs/libbluray:=[java?]
-		dev-libs/libcdio:=
-		sys-fs/udisks:2
+	x265? (	media-libs/x265 )
+	xml? ( dev-libs/libxml2:2 )
+	xmltv? (
+		dev-perl/XML-LibXML
+		dev-qt/qtwebkit:5
+		media-tv/xmltv
+	 )
+	xvid? ( media-libs/xvid )
+	zeroconf? (
+		dev-libs/openssl:=
+		net-dns/avahi[mdnsresponder-compat]
 	)
-	cec? ( dev-libs/libcec )
-	dvd? (
-		dev-libs/libcdio:=
-		sys-fs/udisks:2
-	)
-	egl? ( media-libs/mesa[egl] )
-	fftw? ( sci-libs/fftw:3.0=[threads] )
-	hdhomerun? ( media-libs/libhdhomerun )
-	ieee1394? (
-		>=media-libs/libiec61883-1.0.0
-		>=sys-libs/libavc1394-0.5.3
-		>=sys-libs/libraw1394-1.2.0
-	)
-	jack? ( media-sound/jack-audio-connection-kit )
-	java? ( dev-java/ant-core )
-	lcd? ( app-misc/lcdproc )
-	libass? ( >=media-libs/libass-0.9.11:= )
-	lirc? ( app-misc/lirc )
+"
+BDEPEND="
+	virtual/pkgconfig
+	opengl? ( virtual/opengl )
+	python? ( ${PYTHON_DEPS} )
+"
+DEPEND="
+	${RDEPEND}
+	dev-lang/yasm
+	x11-base/xorg-proto
 	perl? (
-		>=dev-perl/libwww-perl-5
 		dev-perl/DBD-mysql
+		dev-perl/DBI
 		dev-perl/HTTP-Message
 		dev-perl/IO-Socket-INET6
 		dev-perl/LWP-Protocol-https
 		dev-perl/Net-UPnP
+		dev-perl/XML-Simple
 	)
-	pulseaudio? ( media-sound/pulseaudio )
-	systemd? ( sys-apps/systemd:= )
-	vaapi? ( x11-libs/libva:=[opengl] )
-	vdpau? ( x11-libs/libvdpau )
-	vpx? ( <media-libs/libvpx-1.8.0:= )
-	xnvctrl? ( x11-drivers/nvidia-drivers:=[tools,static-libs] )
-	x264? (	>=media-libs/x264-0.0.20111220:= )
-	x265? (	media-libs/x265 )
-	xml? ( >=dev-libs/libxml2-2.6.0 )
-	xvid? ( >=media-libs/xvid-1.1.0 )
-	zeroconf? (
-		dev-libs/openssl:0=
-		net-dns/avahi[mdnsresponder-compat]
-	)
-"
-RDEPEND="${COMMON_DEPEND}
 	python? (
-		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-			dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]
-			dev-python/urlgrabber[${PYTHON_MULTI_USEDEP}]
-			dev-python/future[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests-cache[${PYTHON_MULTI_USEDEP}]
+		$(python_gen_any_dep '
+			dev-python/future[${PYTHON_USEDEP}]
+			dev-python/lxml[${PYTHON_USEDEP}]
+			dev-python/mysqlclient[${PYTHON_USEDEP}]
+			dev-python/simplejson[${PYTHON_USEDEP}]
 		')
 	)
-	media-fonts/corefonts
-	media-fonts/dejavu
-	media-fonts/liberation-fonts
-	x11-apps/xinit
-	autostart? (
-		net-dialup/mingetty
-		x11-apps/xset
-		x11-wm/evilwm
-	)
-	dvd? ( media-libs/libdvdcss )
-	xmltv? ( >=media-tv/xmltv-0.5.43 )
 "
-DEPEND="
-	${COMMON_DEPEND}
-	dev-lang/yasm
-	x11-base/xorg-proto
-"
-
-BDEPEND="virtual/pkgconfig"
+python_check_deps() {
+	use python || return 0
+	has_version "dev-python/future[${PYTHON_USEDEP}]" &&
+	has_version "dev-python/lxml[${PYTHON_USEDEP}]" &&
+	has_version "dev-python/mysqlclient[${PYTHON_USEDEP}]" &&
+	has_version "dev-python/simplejson[${PYTHON_USEDEP}]"
+}
 
 PATCHES=(
-	"${FILESDIR}/${P}-respect_LDFLAGS.patch"
-	"${FILESDIR}/${P}-cast_constants_to_short.patch"
-	"${FILESDIR}/${P}-Fix_Dereferencing_type-punned_pointer.patch"
-	"${FILESDIR}/${P}-Fix_unitialized_variables.patch"
-	"${FILESDIR}/${PN}-29.1-Fix_create_webbrowser_window.patch"
+	"${FILESDIR}/${PN}-30.0_p20190808-respect_LDFLAGS.patch"
+	"${FILESDIR}/${P}-Remove_ldconfig.patch"
 	"${FILESDIR}/${P}-Include_QPainterPath.patch"
 )
 
@@ -161,11 +166,12 @@ You will be prompted for your MySQL root password.
 
 A mythtv user is maintained by acct-user/mythtv. An existing mythtv user
 may be modified to the configuration defined by acct-user/mythtv.
+The mythtv user's primary group is now mythtv. (formerly video)
 An existing mythtv user may be changed which may alter some functionality.
 If it breaks mythtv you may need to (choose one):
 	* Restore the original mythtv user
 	* Create custom acct-user/mythtv overlay for your system
-	* Fix you system to use mythtv as daemon only
+	* Fix you system to use mythtv as daemon only (recommended)
 Failure to emerge acct-user/mythtv indicates that the existing mythtv user
 is customized and not changed. Corrective action (choose one):
 	* Ignore emerge failure
@@ -198,7 +204,7 @@ to journald via the console at the notice verbosity.
 "
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-any-r1_pkg_setup
 	# The acct-user/mythtv package creates/manages the user 'mythtv'
 }
 
@@ -209,13 +215,11 @@ src_prepare() {
 	sed -e "s:pure_install:pure_install INSTALLDIRS=vendor:" \
 		-i "${S}"/bindings/perl/Makefile || die "Cannot convert site_perl to vendor_perl!"
 
-	# Fix up the version info since we are using the fixes/${PV} branch
-	echo "SOURCE_VERSION=\"v${MY_PV}\"" > "${S}"/VERSION
-	echo "BRANCH=\"${MYTHTV_BRANCH}\"" >> "${S}"/VERSION
-	echo "SOURCE_VERSION=\"${BACKPORTS}\"" > "${S}"/EXPORTED_VERSION
-	echo "BRANCH=\"${MYTHTV_BRANCH}\"" >> "${S}"/EXPORTED_VERSION
-
-	echo "setting.extra -= -ldconfig" >> "${S}"/programs/mythfrontend/mythfrontend.pro
+	# Fix up the version info when using the fixes/${PV} branch
+#	echo "SOURCE_VERSION=\"v${MY_PV}\"" > "${S}"/VERSION
+#	echo "BRANCH=\"${MYTHTV_BRANCH}\"" >> "${S}"/VERSION
+#	echo "SOURCE_VERSION=\"${BACKPORTS}\"" > "${S}"/EXPORTED_VERSION
+#	echo "BRANCH=\"${MYTHTV_BRANCH}\"" >> "${S}"/EXPORTED_VERSION
 }
 
 src_configure() {
@@ -280,18 +284,15 @@ src_configure() {
 	# Video Output Support
 	myconf+=(
 		$(use_enable X x11)
-		$(use_enable xnvctrl)
 		$(use_enable X xrandr)
-		$(use_enable X xv)
 	)
 
 	# Hardware accellerators
 	myconf+=(
-		$(use_enable vdpau)
+		$(use_enable nvdec)
 		$(use_enable vaapi)
-		$(use_enable vaapi vaapi2)
-		$(use_enable opengl opengl-video)
-		$(use_enable opengl opengl-themepainter)
+		$(use_enable vdpau)
+		$(use_enable opengl)
 		$(use_enable libass)
 	)
 
@@ -366,7 +367,7 @@ src_install() {
 	insinto /usr/share/mythtv/database
 	doins database/*
 
-	newinitd "${FILESDIR}"/mythbackend.init-r2 mythbackend
+	newinitd "${FILESDIR}"/mythbackend.init-r3 mythbackend
 	newconfd "${FILESDIR}"/mythbackend.conf-r1 mythbackend
 	if use systemd; then
 		systemd_newunit "${FILESDIR}"/mythbackend.service-28 mythbackend.service
@@ -383,10 +384,14 @@ src_install() {
 	newins "${FILESDIR}"/mythtv.logrotate.d-r4 mythtv
 
 	insinto /usr/share/mythtv/contrib
-	# Ensure we don't install scripts needing the perl bindings (bug #516968)
-	use perl || find contrib/ -name '*.pl' -exec rm -f {} \;
-	# Ensure we don't install scripts needing the python bindings (bug #516968)
-	use python || find contrib/ -name '*.py' -exec rm -f {} \;
+	# Ensure we don't install scripts needing the perl bindings (bug #516968) Finding none is OK.
+	if use perl; then
+		find contrib/ -name '*.pl' -exec rm {} \;
+	fi
+	# Ensure we don't install scripts needing the python bindings (bug #516968) Finding none is OK.
+	if use python; then
+		find contrib/ -name '*.py' -exec rm {} \;
+	fi
 	doins -r contrib/*
 
 	# Install our mythfrontend wrapper which is similar to Mythbuntu's
@@ -397,9 +402,9 @@ src_install() {
 	fi
 
 	if use autostart; then
-		echo CONFIG_PROTECT=\"$(egethome mythtv)\" > "${T}"/95mythtv
-		doenvd "${T}"/95mythtv
-
+		newenvd - 95mythtv <<- _EOF_
+			CONFIG_PROTECT=\"$(egethome mythtv)\"
+		_EOF_
 		insinto $(egethome mythtv)
 		newins "${FILESDIR}"/bash_profile .bash_profile
 		newins "${FILESDIR}"/xinitrc-r1 .xinitrc

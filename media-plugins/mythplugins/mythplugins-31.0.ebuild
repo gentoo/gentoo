@@ -6,36 +6,43 @@ EAPI=7
 # Grab only the major version number.
 MAJOR_PV=${PV%%.*}
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="xml"
-BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
+
+#BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
 MY_P=${P%_p*}
 
 inherit python-single-r1 readme.gentoo-r1
 
-DESCRIPTION="Official WMythTV plugins"
-HOMEPAGE="https://www.mythtv.org"
+DESCRIPTION="Official MythTV plugins"
+HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
 # mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
 SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-MYTHPLUGINS="mytharchive +mythbrowser +mythgallery mythgame \
-mythmusic +mythnetvision +mythnews +mythweather mythzmserver mythzoneminder"
+MYTHPLUGINS="mytharchive +mythbrowser mythgame \
+mythmusic mythnetvision +mythnews +mythweather mythzmserver mythzoneminder"
 IUSE="${MYTHPLUGINS} alsa cdda cdr exif fftw +hls ieee1394 libass +opengl raw +theora +vorbis +xml xvid"
 
-DEPEND="
-	${PYTHON_DEPS}
+# Mythnetvision temporarily disabled by upstream - should be fixed soon.
+REQUIRED_USE="
+	!mythnetvision
+	mytharchive? ( ${PYTHON_REQUIRED_USE} )
+	mythnetvision? ( ${PYTHON_REQUIRED_USE} )
+	mythmusic? ( vorbis )
+	mythnews? ( mythbrowser )
+"
+RDEPEND="
 	dev-libs/glib:2
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
 	dev-qt/qtsql:5
 	media-libs/freetype:2
-	media-libs/libpng:0=
-	sys-apps/util-linux
+	media-libs/libpng:=
 	virtual/libudev:=
 	x11-libs/libX11
 	x11-libs/libXext
@@ -43,58 +50,57 @@ DEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXv
 	x11-libs/libXxf86vm
-	alsa? ( >=media-libs/alsa-lib-1.0.24 )
+	alsa? ( media-libs/alsa-lib )
 	hls? (
 		media-libs/faac
 		media-libs/libvpx:=
-		>=media-libs/x264-0.0.20111220:=
-		>=media-sound/lame-3.93.1
+		media-libs/x264:=
+		media-sound/lame
 	)
 	ieee1394? (
-		>=media-libs/libiec61883-1.0.0
-		>=sys-libs/libavc1394-0.5.3
-		>=sys-libs/libraw1394-1.2.0
+		media-libs/libiec61883
+		sys-libs/libavc1394
+		sys-libs/libraw1394
 	)
-	libass? ( >=media-libs/libass-0.9.11:= )
-	=media-tv/mythtv-${MAJOR_PV}*[alsa?,cdda?,cdr?,exif?,fftw?,ieee1394?,libass?,opengl?,python,raw?,xml?,xvid]
+	libass? ( media-libs/libass:= )
+	=media-tv/mythtv-${MAJOR_PV}*[alsa?,cdda?,cdr?,exif?,fftw?,ieee1394?,libass?,opengl?,raw?,xml?,xvid]
 	mytharchive? (
+		${PYTHON_DEPS}
 		app-cdr/dvd+rw-tools
-		$(python_gen_cond_dep '
-			dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		')
+		dev-python/pillow
+		dev-python/mysqlclient
+		=media-tv/mythtv-${MAJOR_PV}*[python]
 		media-video/dvdauthor
 		media-video/mjpegtools[png]
 		media-video/transcode
 		virtual/cdrtools
 	)
 	mythbrowser? ( dev-qt/qtwebkit:5 )
-	mythgallery? (
-		media-libs/tiff:0
-		opengl? ( virtual/opengl:= )
-		exif? ( >media-libs/libexif-0.6.9:= )
-		raw? ( media-gfx/dcraw )
+	mythgame? (
+		sys-libs/zlib[minizip]
+		dev-perl/XML-Twig
 	)
-	mythgame? ( sys-libs/zlib[minizip] )
 	mythmusic? (
-		>=media-libs/flac-1.1.2
+		media-libs/flac
 		media-libs/libogg
-		>=media-libs/libvorbis-1.0
-		>=media-libs/taglib-1.6
-		>=media-sound/lame-3.93.1
+		media-libs/libvorbis
+		media-libs/taglib
+		media-sound/lame
 		fftw? ( sci-libs/fftw:3.0= )
 		opengl? ( virtual/opengl )
 		cdda? (
+			media-sound/cdparanoia
 			dev-libs/libcdio:=
 			cdr? ( virtual/cdrtools )
 		)
 	)
 	mythnetvision? (
-		$(python_gen_cond_dep '
-			dev-python/pycurl[${PYTHON_MULTI_USEDEP}]
-			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-			dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]
-			dev-python/oauth[${PYTHON_MULTI_USEDEP}]
-		')
+		${PYTHON_DEPS}
+		dev-python/lxml
+		dev-python/oauth
+		dev-python/pycurl
+		dev-python/urllib3
+		=media-tv/mythtv-${MAJOR_PV}*[python]
 	)
 	mythweather? (
 		dev-perl/Date-Manip
@@ -105,43 +111,26 @@ DEPEND="
 		dev-perl/DateTime-Format-ISO8601
 		dev-perl/SOAP-Lite
 		dev-perl/JSON
+		=media-tv/mythtv-${MAJOR_PV}*[perl]
 	)
-	mythzmserver? ( dev-db/mysql-connector-c:0/18 )
+	mythzmserver? ( dev-db/mysql-connector-c:= )
 	theora? ( media-libs/libtheora )
-	xml? ( >=dev-libs/libxml2-2.6.0:= )
-	xvid? ( >=media-libs/xvid-1.1.0 )
+	xml? ( dev-libs/libxml2:= )
+	xvid? ( media-libs/xvid )
 "
-RDEPEND="${DEPEND}
-	!media-plugins/mytharchive
-	!media-plugins/mythbrowser
-	!media-plugins/mythgallery
-	!media-plugins/mythgame
-	!media-plugins/mythmovies
-	!media-plugins/mythmusic
-	!media-plugins/mythnetvision
-	!media-plugins/mythnews
-	!media-plugins/mythweather
-	!media-plugins/mythzmserver
-	!media-plugins/mythzoneminder
-"
-REQUIRED_USE="
-	mythmusic? ( vorbis )
-	mythnetvision? ( ${PYTHON_REQUIRED_USE} )
-	mythnews? ( mythbrowser )
-"
+DEPEND=${RDEPEND}
 
 # mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
 S="${WORKDIR}/mythtv-${PV}/mythplugins"
 
 DOC_CONTENTS="
+Mythgallery code moved to mythtv and is no longer a plugin in version 31.0.
+As of 3/23/2020, MythNetVision is disabled, work in progress.
+
 Common plugins are installed by default. Disable unneeded plugins individually with USE flags:
--mythbrowser -mythgallery -mythmusic -mythnetvision -mythnews -mythweather
+-mythbrowser -mythmusic -mythnetvision -mythnews -mythweather
 Additional plugins may be installed with USE flags mytharchive mythgame mythzmserver mythzoneminder
 "
-
-src_prepare() {
-	default
-}
 
 src_configure() {
 	econf \
@@ -155,7 +144,6 @@ src_configure() {
 		$(use_enable raw dcraw) \
 		$(use_enable mytharchive) \
 		$(use_enable mythbrowser) \
-		$(use_enable mythgallery) \
 		$(use_enable mythgame) \
 		$(use_enable mythmusic) \
 		$(use_enable mythnetvision) \
