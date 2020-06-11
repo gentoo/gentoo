@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Christopher Head <chead@chead.ca> (2020-06-10)
+# Requires dev-db/influxdb which is amd64-only
+dev-python/influxdb test
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on x86
 app-text/texlive-core -xindy
