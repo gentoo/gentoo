@@ -35,7 +35,7 @@ DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.0_pre20190607-increase-clone-stack-size.patch
+	"${FILESDIR}"/${PN}-1.10.0_p20200702-increase-clone-stack-size.patch
 )
 
 pkg_setup() {
