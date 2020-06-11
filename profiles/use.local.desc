@@ -3483,6 +3483,7 @@ gui-libs/wlroots:icccm - Use xcb-icccm (from x11-libs/xcb-util-wm) util library 
 gui-libs/wlroots:x11-backend - Enable support for handling input/output devices through x11-libs/libxcb
 gui-wm/hikari:gamma - add gamma control for redshift
 gui-wm/hikari:layershell - add support for wayland apps using layer shell
+gui-wm/hikari:man - build and install man pages
 gui-wm/hikari:screencopy - add support for screen grabbing
 gui-wm/sway:X - Enable support for X11 applications (XWayland)
 gui-wm/sway:elogind - Enable support for rootless session via elogind

@@ -1,0 +1,13 @@
+BDEPEND=dev-libs/glib dev-libs/libinput:= dev-libs/libucl gui-libs/wlroots media-libs/libglvnd x11-libs/cairo:=[X,svg] x11-libs/pango:=[X] x11-libs/pixman x11-libs/libxkbcommon:=[X] sys-libs/pam virtual/pkgconfig dev-libs/wayland-protocols man? ( app-text/pandoc )
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/glib dev-libs/libinput:= dev-libs/libucl gui-libs/wlroots media-libs/libglvnd x11-libs/cairo:=[X,svg] x11-libs/pango:=[X] x11-libs/pixman x11-libs/libxkbcommon:=[X] sys-libs/pam
+DESCRIPTION=wayland compositor inspired by CWM
+EAPI=7
+HOMEPAGE=https://hikari.acmelabs.space/
+IUSE=gamma layershell +man screencopy +X
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-libs/glib dev-libs/libinput:= dev-libs/libucl gui-libs/wlroots media-libs/libglvnd x11-libs/cairo:=[X,svg] x11-libs/pango:=[X] x11-libs/pixman x11-libs/libxkbcommon:=[X] sys-libs/pam x11-misc/xkeyboard-config
+SLOT=0
+SRC_URI=https://hikari.acmelabs.space/releases/hikari-2.0.1.tar.gz
+_md5_=6f45a8f998999b6e8e4de9ca4b884065
