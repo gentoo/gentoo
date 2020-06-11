@@ -34,7 +34,7 @@ pkg_setup() {
 	# We need to filter these while building the library, and not just
 	# while building the test suite. Will hopefully get fixed upstream:
 	# https://github.com/xianyi/OpenBLAS/issues/2657
-	use test && filter-flags "-fbounds-check" "-fcheck=bounds"
+	use test && filter-flags "-fbounds-check" "-fcheck=bounds" "-fcheck=all"
 
 	export CC=$(tc-getCC) FC=$(tc-getFC)
 
