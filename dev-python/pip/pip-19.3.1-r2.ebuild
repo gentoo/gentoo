@@ -54,6 +54,7 @@ python_prepare_all() {
 
 		# these are from upstream git
 		"${FILESDIR}/pip-19.3.1-network-tests.patch"
+		"${FILESDIR}/${PN}-20.1.1-test-endian.patch"
 	)
 	if ! use vanilla; then
 		PATCHES+=( "${FILESDIR}/pip-19.3.1-r2-disable-system-install.patch" )

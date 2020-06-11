@@ -54,6 +54,7 @@ DEPEND="
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-19.3-disable-version-check.patch"
+		"${FILESDIR}/${PN}-20.1.1-test-endian.patch"
 	)
 	if ! use vanilla; then
 		PATCHES+=( "${FILESDIR}/pip-20.0.2-disable-system-install.patch" )
