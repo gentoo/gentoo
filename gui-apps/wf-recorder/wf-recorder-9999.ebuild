@@ -18,12 +18,12 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+man opencl"
+IUSE="+man pulseaudio opencl"
 
 DEPEND="
 	dev-libs/wayland
-	media-sound/pulseaudio
-	media-video/ffmpeg[opencl?,pulseaudio,x264]
+	pulseaudio? ( media-sound/pulseaudio )
+	media-video/ffmpeg[opencl?,pulseaudio?,x264]
 	opencl? ( virtual/opencl )
 "
 RDEPEND="${DEPEND}"
@@ -36,6 +36,7 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		$(meson_feature man man-pages)
+		$(meson_feature pulseaudio pulse)
 		$(meson_feature opencl)
 	)
 	meson_src_configure
