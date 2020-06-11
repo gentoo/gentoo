@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Notion is a tiling, tabbed window manager for the X window system"
-HOMEPAGE="http://notion.sourceforge.net"
+HOMEPAGE="https://notionwm.net/"
 SRC_URI="mirror://sourceforge/${PN}/files/${P/_p/-}-src.tar.bz2"
 
 LICENSE="LGPL-2.1"
