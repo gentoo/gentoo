@@ -42,7 +42,7 @@ src_test() {
 		--no-defaults \
 		--character-set-server=utf8 \
 		--bind-address=127.0.0.1 \
-		--port=3306 \
+		--port=43306 \
 		--socket="${T}"/mysqld.sock \
 		--datadir="${T}"/mysql &
 	local pid=${!}
@@ -66,6 +66,24 @@ src_test() {
 		create user test2@localhost identified by "some password";
 		grant all on test2.* to test2@localhost;
 	' || die
+
+	cat > pymysql/tests/databases.json <<-EOF || die
+		[{
+			"host": "localhost",
+			"user": "root",
+			"passwd": "",
+			"db": "test1",
+			"use_unicode": true,
+			"local_infile": true,
+			"unix_socket": "${T}/mysqld.sock"
+		}, {
+			"host": "localhost",
+			"user": "root",
+			"passwd": "",
+			"db": "test2",
+			"unix_socket": "${T}/mysqld.sock"
+		}]
+	EOF
 
 	distutils-r1_src_test
 
