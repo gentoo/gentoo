@@ -12924,7 +12924,7 @@ media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based 
 media-libs/mutagen 1.43.0 1.44.0: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
-media-libs/nv-codec-headers 8.1.24.2 9.0.18.1: FFmpeg version of headers required to interface with Nvidias codec APIs
+media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1: FFmpeg version of headers required to interface with Nvidias codec APIs
 media-libs/openal 1.20.0 1.20.1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.63-r1: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.0-r4: A color management framework for visual effects and animation
