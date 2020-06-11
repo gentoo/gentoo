@@ -16530,7 +16530,7 @@ sec-policy/selinux-xscreensaver 2.20190201-r1 2.20190609-r1 9999: SELinux policy
 sec-policy/selinux-xserver 2.20190201-r1 2.20190609-r1 9999: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20190201-r1 2.20190609-r1 9999: SELinux policy for zabbix
 sys-apps/accountsservice 0.6.50-r1: D-Bus interfaces for querying and manipulating user account information
-sys-apps/ack 3.0.0 3.2.0: ack is a tool like grep, optimized for programmers
+sys-apps/ack 3.0.0 3.2.0 3.3.1: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.53: access control list utilities, libraries and headers
 sys-apps/agedu 20190630 20200206: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)

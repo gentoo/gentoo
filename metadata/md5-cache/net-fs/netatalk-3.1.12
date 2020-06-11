@@ -4,7 +4,7 @@ DEPEND=!app-editors/yudit dev-libs/libevent:0= >=dev-libs/libgcrypt-1.2.3:0 sys-
 DESCRIPTION=Open Source AFP server
 EAPI=7
 HOMEPAGE=http://netatalk.sourceforge.net/
-IUSE=acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf python_targets_python2_7
+IUSE=acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl tracker tcpd +utils zeroconf python_targets_python2_7
 KEYWORDS=amd64 arm ~ppc ~ppc64 x86
 LICENSE=GPL-2 BSD
 RDEPEND=!app-editors/yudit dev-libs/libevent:0= >=dev-libs/libgcrypt-1.2.3:0 sys-apps/coreutils >=sys-libs/db-4.2.52:= sys-libs/tdb acl? ( sys-apps/attr sys-apps/acl ) cracklib? ( sys-libs/cracklib ) dbus? ( sys-apps/dbus dev-libs/dbus-glib ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( sys-libs/pam ) ssl? ( dev-libs/openssl:0= ) tcpd? ( sys-apps/tcp-wrappers ) tracker? ( app-misc/tracker ) utils? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) zeroconf? ( net-dns/avahi[dbus] ) utils? ( dev-lang/perl dev-python/dbus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0/18.0
 SRC_URI=mirror://sourceforge/project/netatalk/netatalk/3.1.12/netatalk-3.1.12.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	0914eab919f4f11dd9e0407b92af4726	pam	a1771fc1e5831c201eaf18451747d94b	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=8fdf32b358ed9ee5699a9b8c7b00ab73
+_md5_=1b4a818cc956663894c664b464b4c92f
