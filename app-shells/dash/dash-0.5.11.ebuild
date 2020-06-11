@@ -43,6 +43,7 @@ src_configure() {
 	use static && append-ldflags -static
 	# Do not pass --enable-glob due to #443552.
 	local myeconfargs=(
+		HOSTCC="$(tc-getBUILD_CC)"
 		--bindir="${EPREFIX}"/bin
 		--enable-fnmatch
 		$(use_with libedit)
