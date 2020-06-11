@@ -4876,6 +4876,7 @@ media-tv/mythtv:java - BD-J support for Blu-ray discs
 media-tv/mythtv:lcd - Enable use of app-misc/lcdproc data display
 media-tv/mythtv:lirc - LIRC remote control device support
 media-tv/mythtv:mythlogserver - Enable support for syslog and file logging
+media-tv/mythtv:nvdec - Enable NVDEC (NVCUVID) hardware accelerated video decoding
 media-tv/mythtv:perl - Build the perl bindings for MythTV
 media-tv/mythtv:vbox - V@Box Communications network-attached tuner devices support
 media-tv/mythtv:vpx - Enable VP8/VP9 support for media-libs/libvpx
