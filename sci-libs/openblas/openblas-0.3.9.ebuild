@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit fortran-2 toolchain-funcs
+inherit flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Optimized BLAS library based on GotoBLAS2"
 HOMEPAGE="http://xianyi.github.com/OpenBLAS/"
@@ -11,8 +11,9 @@ SRC_URI="https://github.com/xianyi/OpenBLAS/archive/v${PV} -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-IUSE="dynamic eselect-ldso index-64bit openmp pthread"
+IUSE="dynamic eselect-ldso index-64bit openmp pthread test"
 REQUIRED_USE="?? ( openmp pthread )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	eselect-ldso? ( >=app-eselect/eselect-blas-0.2
@@ -26,6 +27,12 @@ PATCHES=( "${FILESDIR}/shared-blas-lapack.patch" )
 pkg_setup() {
 	fortran-2_pkg_setup
 	use openmp && tc-check-openmp
+
+	# We need to filter these while building the library, and not just
+	# while building the test suite. Will hopefully get fixed upstream:
+	# https://github.com/xianyi/OpenBLAS/issues/2657
+	use test && filter-flags "-fbounds-check" "-fcheck=bounds"
+
 	export CC=$(tc-getCC) FC=$(tc-getFC)
 
 	use dynamic && \
