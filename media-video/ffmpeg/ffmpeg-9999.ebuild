@@ -301,6 +301,7 @@ GPL_REQUIRED_USE="
 	frei0r? ( gpl )
 	cdio? ( gpl )
 	rubberband? ( gpl )
+	vidstab? ( gpl )
 	samba? ( gpl )
 	encode? (
 		x264? ( gpl )
