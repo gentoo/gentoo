@@ -194,6 +194,7 @@ grub_configure() {
 	esac
 
 	local myeconfargs=(
+		TARGET_CC="$(tc-getCC)" \
 		--disable-werror
 		--program-prefix=
 		--libdir="${EPREFIX}"/usr/lib
