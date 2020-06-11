@@ -1,0 +1,16 @@
+We don't install license files
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d69352c94..5f97c86e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -470,9 +470,6 @@ IF(NOT WIN32 AND NOT APPLE)
+     #    INSTALL(PROGRAMS "${OpenMW_BINARY_DIR}/Plugin_MyGUI_OpenMW_Resources.so" DESTINATION "${LIBDIR}" )
+     #ENDIF(BUILD_MYGUI_PLUGIN)
+ 
+-    # Install licenses
+-    INSTALL(FILES "files/mygui/DejaVu Font License.txt" DESTINATION "${LICDIR}" )
+-
+     # Install icon and desktop file
+     INSTALL(FILES "${OpenMW_BINARY_DIR}/org.openmw.launcher.desktop" DESTINATION "${DATAROOTDIR}/applications" COMPONENT "openmw")
+     INSTALL(FILES "${OpenMW_SOURCE_DIR}/files/launcher/images/openmw.png" DESTINATION "${ICONDIR}" COMPONENT "openmw")
