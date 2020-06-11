@@ -83,4 +83,5 @@ src_install() {
 	local target_arch
 	set_target_arch
 	dobin "${S}"/build/cargo_target/${target_arch}-unknown-linux-gnu/release/${PN}
+	dobin "${S}"/build/cargo_target/${target_arch}-unknown-linux-gnu/release/jailer
 }
