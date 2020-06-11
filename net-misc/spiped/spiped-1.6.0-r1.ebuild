@@ -25,6 +25,10 @@ RDEPEND="
 	${DEPEND}
 	!net-mail/qlogtools"
 
+PATCHES=(
+	"${FILESDIR}/${P}-ldflags-support.patch"
+)
+
 src_compile() {
 	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
