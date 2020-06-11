@@ -1,0 +1,13 @@
+--- a/lib/App/Ack/ConfigDefault.pm
++++ b/lib/App/Ack/ConfigDefault.pm
+@@ -280,6 +280,10 @@
+ # https://en.wikipedia.org/wiki/Fortran
+ --type-add=fortran:ext:f,f77,f90,f95,f03,for,ftn,fpp
+ 
++# Gentoo
++# https://www.gentoo.org/
++--type-add=gentoo:ext:ebuild,eclass
++
+ # Go
+ # https://golang.org/
+ --type-add=go:ext:go
