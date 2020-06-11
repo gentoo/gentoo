@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 GNOME2_EAUTORECONF=yes
 WANT_AUTOMAKE=
 
-inherit autotools gnome2 python-single-r1 virtualx
+inherit autotools gnome2 python-single-r1 toolchain-funcs virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -107,6 +107,8 @@ src_prepare() {
 
 	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
 	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
+
+	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 }
 
 _adjust_sandbox() {
