@@ -7463,9 +7463,9 @@ dev-python/PyContracts 1.8.12 1.8.14: Declare constraints on function parameters
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.46 1.51: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt5 5.14.2: Python bindings for the Qt framework
+dev-python/PyQt5 5.14.2 5.15.0: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.22 4.19.23: Private sip module for PyQt5
-dev-python/PyQtWebEngine 5.14.0: Python bindings for QtWebEngine
+dev-python/PyQtWebEngine 5.14.0 5.15.0: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1-r1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.6: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
