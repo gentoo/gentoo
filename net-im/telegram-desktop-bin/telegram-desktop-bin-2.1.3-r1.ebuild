@@ -26,6 +26,9 @@ RDEPEND="
 	>=sys-apps/dbus-1.4.20
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.10[xkb]
+	media-libs/libglvnd[X]
+	x11-libs/libSM
+	x11-libs/libdrm
 "
 
 S="${WORKDIR}/Telegram"
