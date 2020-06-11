@@ -1,0 +1,22 @@
+diff --git a/common/Make.rules b/common/Make.rules
+index d2149fc..efb1f38 100644
+--- a/common/Make.rules
++++ b/common/Make.rules
+@@ -81,7 +81,7 @@ pod_clean:
+ # =====================
+ 
+ # emits defined capabilities in a simple list, e.g. "CAP_NAME CAP_NAME2"
+-CAPABILITIES=$(shell echo "\#include <linux/capability.h>" | cpp -dM | LC_ALL=C sed -n -e '/CAP_EMPTY_SET/d' -e 's/^\#define[ \t]\+CAP_\([A-Z0-9_]\+\)[ \t]\+\([0-9xa-f]\+\)\(.*\)$$/CAP_\1/p' | LC_ALL=C sort)
++CAPABILITIES=$(shell echo "#include <linux/capability.h>" | cpp -dM | LC_ALL=C sed -n -e '/CAP_EMPTY_SET/d' -e 's/^#define[ \t]\+CAP_\([A-Z0-9_]\+\)[ \t]\+\([0-9xa-f]\+\)\(.*\)$$/CAP_\1/p' | LC_ALL=C sort)
+ 
+ .PHONY: list_capabilities
+ list_capabilities: /usr/include/linux/capability.h
+@@ -102,7 +102,7 @@ FILTER_FAMILIES=PF_UNIX
+ __FILTER=$(shell echo $(strip $(FILTER_FAMILIES)) | sed -e 's/ /\\\|/g')
+ 
+ # emits the AF names in a "AF_NAME NUMBER," pattern
+-AF_NAMES=$(shell echo "\#include <sys/socket.h>" | cpp -dM | LC_ALL=C sed -n -e '/$(__FILTER)/d' -e 's/PF_LOCAL/PF_UNIX/' -e 's/^\#define[ \t]\+PF_\([A-Z0-9_]\+\)[ \t]\+\([0-9]\+\).*$$/AF_\1 \2,/p' | sort -n -k2)
++AF_NAMES=$(shell echo "#include <sys/socket.h>" | cpp -dM | LC_ALL=C sed -n -e '/$(__FILTER)/d' -e 's/PF_LOCAL/PF_UNIX/' -e 's/^#define[ \t]\+PF_\([A-Z0-9_]\+\)[ \t]\+\([0-9]\+\).*$$/AF_\1 \2,/p' | sort -n -k2)
+ 
+ .PHONY: list_af_names
+ list_af_names:
