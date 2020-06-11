@@ -58,6 +58,8 @@ src_configure() {
 
 multilib_src_configure() {
 	local options=(
+		CC_FOR_BUILD="$(tc-getBUILD_CC)"
+		CXX_FOR_BUILD="$(tc-getBUILD_CXX)"
 		$(use_enable static-libs static)
 		$(use_with zlib)
 	)
