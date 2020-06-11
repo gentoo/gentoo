@@ -10889,7 +10889,7 @@ games-board/gnome-mahjongg 3.34.0: Disassemble a pile of tiles by removing match
 games-board/gnome-mines 3.34.0: Clear hidden mines from a minefield
 games-board/gnono 1.9.1-r1: A rewrite for GNOME of the Windows card game WUNO
 games-board/gnubg 1.06.002-r1: GNU BackGammon
-games-board/gnuchess 6.2.4 6.2.5: Console based chess interface
+games-board/gnuchess 6.2.4 6.2.5 6.2.7: Console based chess interface
 games-board/gnuchess-book 1.02-r1: Opening book for gnuchess
 games-board/gnugo 3.9.1-r1 3.9.1-r2: A Go-playing program
 games-board/gnushogi 1.4.1-r1: Japanese version of chess (commandline + X-Version)
