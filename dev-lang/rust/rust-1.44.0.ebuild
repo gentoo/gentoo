@@ -295,6 +295,63 @@ src_configure() {
 		EOF
 	fi
 
+	if [[ -n ${I_KNOW_WHAT_I_AM_DOING_CROSS} ]]; then #whitespace intentionally shifted below
+	# experimental cross support
+	# discussion: https://bugs.gentoo.org/679878
+	# TODO: c*flags, clang, system-llvm, cargo.eclass target support
+	# it would be much better if we could split out stdlib
+	# complilation to separate ebuild and abuse CATEGORY to
+	# just install to /usr/lib/rustlib/<target>
+
+	# extra targets defined as a bash array
+	# spec format:  <LLVM target>:<rust-target>:<CTARGET>
+	# best place would be /etc/portage/env/dev-lang/rust
+	# Example:
+	# RUST_CROSS_TARGETS=(
+	#	"AArch64:aarch64-unknown-linux-gnu:aarch64-unknown-linux-gnu"
+	# )
+	# no extra hand holding is done, no target transformations, all
+	# values are passed as-is with just basic checks, so it's up to user to supply correct values
+	# valid rust targets can be obtained with 
+	# 	rustc --print target-list
+	# matching cross toolchain has to be installed
+	# matching LLVM_TARGET has to be enabled for both rust and llvm (if using system one)
+	# only gcc toolchains installed with crossdev are checked for now.
+
+	# BUG: we can't pass host flags to cross compiler, so just filter for now
+	# BUG: this should be more fine-grained.
+	filter-flags '-mcpu=*' '-march=*' '-mtune=*'
+
+	local cross_target_spec
+	for cross_target_spec in "${RUST_CROSS_TARGETS[@]}";do
+		local cross_llvm_target="${cross_target_spec%%:*}"
+		local cross_triples="${cross_target_spec#*:}"
+		local cross_rust_target="${cross_triples#*:}"
+		local cross_toolchain="${cross_triples%:*}"
+		use llvm_targets_${cross_llvm_target} || die "need llvm_targets_${cross_llvm_target} target enabled"
+		command -v ${cross_toolchain}-gcc > /dev/null 2>&1 || die "need ${cross_toolchain} cross toolchain"
+
+		cat <<- EOF >> "${S}"/config.toml
+			[target.${cross_rust_target}]
+			cc = "${cross_toolchain}-gcc"
+			cxx = "${cross_toolchain}-g++"
+			linker = "${cross_toolchain}-gcc"
+			ar = "${cross_toolchain}-ar"
+		EOF
+		if use system-llvm; then
+			cat <<- EOF >> "${S}"/config.toml
+				llvm-config = "$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
+			EOF
+		fi
+
+		rust_targets="${rust_targets},\"${cross_rust_target}\""
+		sed -i "/^target = \[/ s#\[.*\]#\[${rust_targets}\]#" config.toml || die
+		ewarn
+		ewarn "enabled ${rust_target} rust target, using ${cross_toolchain} cross toolchain"
+		ewarn
+	done
+	fi # I_KNOW_WHAT_I_AM_DOING_CROSS
+
 	einfo "Rust configured with the following settings:"
 	cat "${S}"/config.toml || die
 }
