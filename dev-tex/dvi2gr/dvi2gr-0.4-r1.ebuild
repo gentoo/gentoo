@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="DVI to Grace translator"
-HOMEPAGE="http://plasma-gate.weizmann.ac.il/Grace/"
+HOMEPAGE="https://plasma-gate.weizmann.ac.il/Grace/"
 SRC_URI="ftp://plasma-gate.weizmann.ac.il/pub/grace/src/devel/${P}.tar.gz"
 
 SLOT="0"
