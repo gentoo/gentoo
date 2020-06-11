@@ -4926,7 +4926,7 @@ dev-libs/fstrm 0.3.0: Frame Streams implementation in C
 dev-libs/gdl 3.28.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0 2.0.0-r1: A Comprehensive Open Source Library for Galois Field Arithmetic
-dev-libs/gf2x 1.2 1.3.0: C/C++ routines for fast arithmetic in GF(2)[x]
+dev-libs/gf2x 1.3.0: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.56.2 1.58.6 1.58.7 1.58.8 1.64.3: Javascript bindings for GNOME
 dev-libs/glib 2.62.6 2.64.3: The GLib library of C routines
@@ -5251,7 +5251,7 @@ dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/plasma-wayland-protocols 1.0: Plasma Specific Protocols for Wayland
 dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
-dev-libs/ppl 1.2-r2 1.2-r3: The Parma Polyhedra Library for numerical analysis of complex systems
+dev-libs/ppl 1.2-r3: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/processor-trace 1.6.1 1.6.2 2.0: Intel(R) Processor Trace decoder library
 dev-libs/protobuf 3.10.1 3.11.2 3.11.4 9999: Google's Protocol Buffers - Extensible mechanism for serializing structured data
 dev-libs/protobuf-c 1.3.2: Protocol Buffers implementation in C
@@ -12747,7 +12747,7 @@ media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugi
 media-libs/ladspa-sdk 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
-media-libs/lcms 2.9: A lightweight, speed optimized color management engine
+media-libs/lcms 2.9 2.10: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.4 1.78.0 1.79.0-r1: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 1.3.0-r2 2.0.0_rc1 2.0.0_rc1-r1: library for managing 3D-Studio Release 3 and 4 .3DS files
@@ -13998,7 +13998,7 @@ net-analyzer/mtr 0.87 0.92-r1 0.93-r1 9999: My TraceRoute, an Excellent network 
 net-analyzer/multimon-ng 1.1.8 9999: a fork of multimon, decodes multiple digital transmission modes
 net-analyzer/munin 2.0.52 2.0.56 2.0.59 2.0.61 2.0.63: Munin Server Monitoring Tool
 net-analyzer/munin-plugins-zfs 0.20170127: A Munin plugin for monitoring ZFS on Linux
-net-analyzer/nagios 4.4.5 4.4.6: The Nagios metapackage
+net-analyzer/nagios 4.4.6: The Nagios metapackage
 net-analyzer/nagios-check_dnssec 0.1_p28: check_dnssec is a set of Nagios plugins to monitor DNSSEC services
 net-analyzer/nagios-check_fail2ban 3: A nagios plugin for checking the fail2ban daemon
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
@@ -14009,7 +14009,7 @@ net-analyzer/nagios-check_multiple 0.0.1: A Nagios plugin to execute multiple ch
 net-analyzer/nagios-check_mysql_health 2.2.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
-net-analyzer/nagios-core 4.4.5-r6 4.4.6: Nagios core - monitoring daemon, web GUI, and documentation
+net-analyzer/nagios-core 4.4.6: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-icinga-openvpn 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20191028: Nagios plugin to monitor the values of onboard sensors and disk temperatures
 net-analyzer/nagios-plugin-check_raid 4.0.8 4.0.10: Nagios/Icinga plugin to check current server's RAID status
@@ -15041,7 +15041,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.05.29 2020.06.06 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.06.06 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17313,7 +17313,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.32 5.4.39 5.4.40 5.4.42 5.4.43 5.4.44 5.4.45 5.6.11 5.6.12 5.6.14 5.6.15 5.6.16 5.6.17: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.39 5.4.40 5.4.42 5.4.43 5.4.44 5.4.45 5.6.11 5.6.12 5.6.14 5.6.15 5.6.16 5.6.17: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.222 4.4.223 4.4.224 4.4.225 4.4.226 4.9.221 4.9.222 4.9.223 4.9.224 4.9.225 4.9.226 4.14.178 4.14.179 4.14.180 4.14.181 4.14.182 4.14.183 4.19.120 4.19.121 4.19.122 4.19.123 4.19.124 4.19.125 4.19.126 4.19.127 4.19.128 5.4.38 5.4.39 5.4.40 5.4.41 5.4.42 5.4.43 5.4.44 5.4.45 5.4.46 5.6.9 5.6.10 5.6.11 5.6.12 5.6.13 5.6.14 5.6.15 5.6.16 5.6.17 5.6.18 5.7.0 5.7.1 5.7.2: Full sources including the Gentoo patchset for the 5.7 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.222 4.4.223 4.4.224 4.4.225 4.4.226 4.4.227 4.9.221 4.9.222 4.9.223 4.9.224 4.9.225 4.9.226 4.14.178 4.14.179 4.14.180 4.14.181 4.14.182 4.14.183 4.19.120 4.19.121 4.19.122 4.19.123 4.19.124 4.19.125 4.19.126 4.19.127 4.19.128 5.4.38 5.4.39 5.4.40 5.4.41 5.4.42 5.4.43 5.4.44 5.4.45 5.4.46 5.6.9 5.6.10 5.6.11 5.6.12 5.6.13 5.6.14 5.6.15 5.6.16 5.6.17 5.6.18 5.7.0 5.7.1 5.7.2: Full sources including the Gentoo patchset for the 5.7 kernel tree
 sys-kernel/git-sources 5.7_rc1 5.7_rc2 5.7_rc3 5.7_rc4 5.7_rc5 5.7_rc6 5.7_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel

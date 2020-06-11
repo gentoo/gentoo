@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst prepare
 DEPEND=>=dev-lang/lua-5.1:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXext nls? ( sys-devel/gettext ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr ) virtual/pkgconfig
 DESCRIPTION=Notion is a tiling, tabbed window manager for the X window system
 EAPI=5
-HOMEPAGE=http://notion.sourceforge.net
+HOMEPAGE=https://notionwm.net/
 IUSE=nls xinerama +xrandr
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/notion/files/notion-3-2013030200-src.tar.bz2
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	0914eab919f4f11dd9e0407b92af4726	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=0739e89dda1a272e2724150e4d54aa3c
+_md5_=95dc2b4c4df783ef5e40b5f433b2cb11
