@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 python3_7 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -21,8 +21,8 @@ RDEPEND="
 	>=dev-python/requests-2.17.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}
-	test? (
+BDEPEND="test? (
+		${RDEPEND}
 		dev-db/influxdb
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
