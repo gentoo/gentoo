@@ -8030,7 +8030,7 @@ dev-python/llfuse 1.3.5 1.3.6: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.29.0 0.30.0 0.32.1 0.33.0 0.33.0-r1: Python wrapper around the llvm C++ library
 dev-python/lmdb 0.92: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
-dev-python/locket 0.2.0: File-based locks for Python
+dev-python/locket 0.2.0 0.2.0-r1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
 dev-python/logbook 1.4.0 1.5.3: A logging replacement for Python
 dev-python/logfury 0.1.2-r1: Boilerplate library for logging method calls
@@ -8780,6 +8780,7 @@ dev-python/sphinxcontrib-serializinghtml 1.1.3 1.1.4: Sphinx extension which out
 dev-python/sphinxcontrib-spelling 4.3.0 5.0.0 5.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.1.0 1.2.1 1.2.2: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
+dev-python/spur 0.3.21: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.1.2 4.1.3: The Scientific Python Development Environment
 dev-python/spyder-kernels 1.9.0 1.9.1: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
@@ -8848,7 +8849,7 @@ dev-python/tinyrpc 1.0.1: A protocol neutral RPC library that supports JSON-RPC 
 dev-python/tld 0.12.1: Extract the top level domain (TLD) from the URL given
 dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered domain and subdomains of a URL.
 dev-python/toml 0.10.0-r1 0.10.1: Python library for handling TOML files
-dev-python/toolz 0.9.0: List processing tools and functional utilities
+dev-python/toolz 0.9.0 0.10.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
 dev-python/towncrier 19.2.0: Building newsfiles for your project
@@ -9768,7 +9769,7 @@ dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher
 dev-ruby/pygments_rb 1.2.1-r1: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.14 1.4.16-r1: A LALR(1) parser generator for Ruby
-dev-ruby/rack 1.6.12 2.0.8 2.0.8-r1 2.0.9 2.1.1 2.1.1-r1 2.2.2: A modular Ruby webserver interface
+dev-ruby/rack 1.6.12 2.0.8 2.0.8-r1 2.0.9 2.1.1 2.1.1-r1 2.1.3 2.2.2: A modular Ruby webserver interface
 dev-ruby/rack-attack 5.4.2 6.2.2 6.3.1: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.9.0 1.10.0 1.11.0 1.11.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
@@ -14761,7 +14762,7 @@ net-misc/charm 1.9.2-r2: A text based livejournal client
 net-misc/chrony 3.5-r2 3.5-r4 4.0_pre2-r1 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
-net-misc/cmst 2019.01.13 2020.03.07 2020.04.12 2020.05.09: Qt GUI for Connman with system tray icon
+net-misc/cmst 2020.05.09: Qt GUI for Connman with system tray icon
 net-misc/cni-plugins 0.8.2 0.8.3 0.8.4 0.8.5 0.8.6: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.38 9999: Provides a daemon for managing internet connections
