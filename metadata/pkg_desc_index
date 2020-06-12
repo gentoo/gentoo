@@ -471,7 +471,7 @@ app-admin/exo 1.11.0: Command-line tool for everything at Exoscale: compute, sto
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 5.6.13 6.6.1 6.8.4 7.2.0 7.3.2 7.4.1 7.5.2 7.6.1: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 6.8.4 7.3.2 7.5.2 7.6.1 7.7.0: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fluentd 1.2.6-r1 1.3.1 1.3.2 1.3.3 1.4.0 1.4.1 1.4.2 1.9.0: data collector and unified logging layer (project under CNCF)
 app-admin/fsvs 1.2.5-r2: Backup/restore for subversion backends
@@ -488,7 +488,7 @@ app-admin/gnome-abrt 1.2.6 1.2.7: A utility for viewing problems that have occur
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
 app-admin/gopass 1.8.6-r1 1.9.1 1.9.2: a simple but powerful password manager for the terminal
-app-admin/graylog 2.5.1 3.1.3 3.2.4: Free and open source log management
+app-admin/graylog 3.3.1: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.9 1.2.10 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
@@ -512,7 +512,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.14.0 3.15.1 3.16.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.1.2: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 5.6.15 6.8.8 7.6.2: Tool for managing events and logs
+app-admin/logstash-bin 6.8.8 7.6.2 7.7.0: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2 2.2.3: Live Syncing (Mirror) Daemon
@@ -2115,7 +2115,7 @@ app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.14-r1 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
-app-misc/elasticsearch 5.6.16 6.8.8 7.6.2: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 6.8.8 7.6.2 7.7.0: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.12.2: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
@@ -3323,7 +3323,7 @@ dev-db/pspg 1.6.5 1.6.8 2.5.4 2.5.5 2.6.6: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
-dev-db/redis 4.0.2-r1 4.0.14 5.0.5 5.0.7 5.0.8 5.0.9 6.0.4: A persistent caching system, key-value and data structures database
+dev-db/redis 4.0.14 5.0.8 5.0.9 5.0.9-r1 6.0.5: A persistent caching system, key-value and data structures database
 dev-db/repmgr 3.0.1 3.3.2: PostgreSQL Replication Manager
 dev-db/rqlite 5.2.0: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
@@ -4803,7 +4803,7 @@ dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time c
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.1 5.30.2 5.30.2-r1 5.30.2-r2 5.30.3 5.30.3-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 7.2.31 7.3.18 7.4.6: The PHP language runtime engine
+dev-lang/php 7.2.31 7.3.18 7.3.19 7.4.6 7.4.7: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.17-r2 2.7.18 3.6.10-r1 3.6.10-r2 3.7.7-r1 3.7.7-r2 3.8.2-r1 3.8.2-r2 3.8.3 3.9.0_alpha6 3.9.0_beta1 3.9.0_beta2 3.9.0_beta3: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
@@ -12087,7 +12087,7 @@ mail-client/mutt 1.13.5 1.14.0-r1 1.14.2: A small but very powerful text-based m
 mail-client/mutt-wizard 0_pre20200606 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20180716 20200313 20200320 20200417 20200424 20200501 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.3.11 1.4.0 1.4.1 1.4.2 1.4.3 1.4.4: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.3.11 1.4.0 1.4.1 1.4.2 1.4.3 1.4.4 1.4.6: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 52.9.1-r1 68.9.0: Thunderbird Mail Client
@@ -14914,7 +14914,7 @@ net-misc/nx 3.5.99.16 3.5.99.22 3.5.99.23: NX compression technology core librar
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.0.4 2.1.0-r1: Utility to monitor real time Tor status information
 net-misc/ofono 1.16 1.30 1.31: Open Source mobile telephony (GSM/UMTS) daemon
-net-misc/oidentd 2.4.0: Another (RFC1413 compliant) ident daemon
+net-misc/oidentd 2.4.0 2.5.0: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
@@ -17778,7 +17778,7 @@ www-apps/jekyll-sass-converter 1.5.2: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.13.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 2.2.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
-www-apps/kibana-bin 5.6.16 6.8.8 7.6.2: Analytics and search dashboard for Elasticsearch
+www-apps/kibana-bin 6.8.8 7.6.2 7.7.0: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
@@ -17895,7 +17895,7 @@ www-servers/lighttpd 1.4.53 1.4.54 1.4.55: Lightweight high-performance web serv
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.18.0-r1 1.19.0-r1: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.17.0: Dynamic web and application server
+www-servers/nginx-unit 1.17.0 1.18.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files

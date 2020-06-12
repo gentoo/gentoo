@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Analytics and search dashboard for Elasticsearch
+EAPI=7
+HOMEPAGE=https://www.elastic.co/products/kibana
+IUSE=x-pack
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 Artistic-2 BSD BSD-2 CC-BY-3.0 CC-BY-4.0 icu ISC MIT MPL-2.0 OFL-1.1 openssl public-domain Unlicense WTFPL-2 ZLIB x-pack? ( Elastic )
+RDEPEND=acct-group/kibana acct-user/kibana >=net-libs/nodejs-10.19.0 x-pack? ( dev-libs/expat dev-libs/nss )
+SLOT=0
+SRC_URI=x-pack? ( https://artifacts.elastic.co/downloads/kibana/kibana-7.7.0-linux-x86_64.tar.gz ) !x-pack? ( https://artifacts.elastic.co/downloads/kibana/kibana-oss-7.7.0-linux-x86_64.tar.gz )
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=2346c100fd82d4f29b0ef251c9076d22
