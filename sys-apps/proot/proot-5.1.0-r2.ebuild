@@ -37,6 +37,7 @@ src_compile() {
 	# build the proot and care targets
 	emake -C src V=1 \
 		CC="$(tc-getCC)" \
+		STRIP="$(tc-getSTRIP)" \
 		CHECK_VERSION="true" \
 		CAREBUILDENV="ok" \
 		proot $(use care && echo "care")
