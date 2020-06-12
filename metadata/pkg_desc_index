@@ -3495,7 +3495,6 @@ dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
 dev-go/go-license-detector 3.1.0: Scan a source directory and report the license
 dev-go/go-licenses 0_pre20200511 9999: Reports on the licenses used by a Go package and its dependencies
 dev-go/go-md2man 2.0.0: A utility to convert markdown to man pages
-dev-go/go-protobuf 1.3.2: Go support for Google's protocol buffers
 dev-go/go-snappy 0_pre20150729 0_pre20160213 9999: The Snappy compression format in the Go programming language.
 dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data structures to aid in debugging
 dev-go/go-sqlite3 1.1.0_p20160131 1.1.0_p20160307: Go sqlite3 driver using database/sql
@@ -17890,7 +17889,7 @@ www-servers/cherokee 1.2.104-r2: An extremely fast and tiny web server
 www-servers/civetweb 1.11: Embedded C/C++ web server
 www-servers/fnord 1.11-r1: Yet another small httpd
 www-servers/gatling 0.15: High performance web server
-www-servers/gunicorn 19.8.1 19.9.0: A WSGI HTTP Server for UNIX
+www-servers/gunicorn 19.8.1 19.9.0 20.0.4: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.53 1.4.54 1.4.55: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
