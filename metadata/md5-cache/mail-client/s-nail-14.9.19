@@ -1,0 +1,14 @@
+BDEPEND=virtual/awk
+DEFINED_PHASES=compile configure install
+DEPEND=sys-libs/ncurses:0= virtual/libiconv idn? ( net-dns/libidn2 ) net? ( ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) kerberos? ( virtual/krb5 ) ) !mail-client/mailx !net-mail/mailutils !mail-client/nail
+DESCRIPTION=Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
+EAPI=7
+HOMEPAGE=https://www.sdaoden.eu/code.html
+IUSE=idn kerberos libressl net ssl
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD BSD-4 ISC RSA
+RDEPEND=sys-libs/ncurses:0= virtual/libiconv idn? ( net-dns/libidn2 ) net? ( ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) kerberos? ( virtual/krb5 ) ) !mail-client/mailx !net-mail/mailutils !mail-client/nail
+SLOT=0
+SRC_URI=https://ftp.sdaoden.eu/s-nail-14.9.19.tar.xz
+_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=385a8dec744676c5a1507002b4553803
