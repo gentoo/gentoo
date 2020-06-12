@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-06-11)
+# outstanding vulns. RCE. rdeps masked.
+# maintainer ignored w/irrelevant comment.
+# removal in 30 days. bug #719084
+net-analyzer/ntopng
+net-analyzer/pmacct
+net-libs/nDPI
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-06-10)
 # At least alsactl is broken:
 #   double free or corruption (fasttop)
