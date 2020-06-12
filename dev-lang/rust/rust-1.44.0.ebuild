@@ -327,7 +327,7 @@ src_configure() {
 		local cross_llvm_target="${cross_target_spec%%:*}"
 		local cross_triples="${cross_target_spec#*:}"
 		local cross_rust_target="${cross_triples#*:}"
-		local cross_toolchain="${cross_triples%:*}"
+		local cross_toolchain="${cross_triples#:*}"
 		use llvm_targets_${cross_llvm_target} || die "need llvm_targets_${cross_llvm_target} target enabled"
 		command -v ${cross_toolchain}-gcc > /dev/null 2>&1 || die "need ${cross_toolchain} cross toolchain"
 
