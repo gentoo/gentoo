@@ -356,8 +356,19 @@ src_configure() {
 		sed -i "/^target = \[/ s#\[.*\]#\[${rust_targets}\]#" config.toml || die
 
 		ewarn
-		ewarn "enabled ${rust_target} rust target, using ${cross_toolchain} cross toolchain"
+		ewarn "Enabled ${rust_target} rust target"
+		ewarn "Using ${cross_toolchain} cross toolchain"
 		ewarn
+		if ! has_version -b 'sys-devel/binutils[multitarget]' ; then
+			ewarn "'sys-devel/binutils[multitarget]' is not installed"
+			ewarn "'strip' will be unable to strip cross libraries"
+			ewarn "cross targets will be installed with full debug information"
+			ewarn "enable 'multitarget' USE flag for binutils to be able to strip object files"
+			ewarn
+			ewarn "Alternatively llvm-strip can be used, it supports stripping any target"
+			ewarn "define STRIP=\"llvm-strip\" to use it (experimental)"
+			ewarn
+		fi
 	done
 	fi # I_KNOW_WHAT_I_AM_DOING_CROSS
 
