@@ -440,7 +440,7 @@ app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a saf
 app-admin/chrootuid 1.3-r2: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2 0.16: Chrpath can modify the rpath and runpath of ELF executables
 app-admin/clog 1.3.0: clog is a colorized log tail utility
-app-admin/clsync 0.4.2 0.4.4 9999: Live sync tool based on inotify, written in GNU C
+app-admin/clsync 0.4.4 9999: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.7.3: Python framework for efficient cluster administration
 app-admin/conky 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
@@ -1283,7 +1283,7 @@ app-doc/autobook 1.5: GNU Autoconf, Automake and Libtool
 app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implementations
 app-doc/cantera-docs 2.4.0: Documentation API reference for Cantera package libraries
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
-app-doc/clsync-docs 0.4.2 0.4.4-r1: Clsync and libclsync API documentation
+app-doc/clsync-docs 0.4.4-r1: Clsync and libclsync API documentation
 app-doc/cppman 0.4.8-r2 0.4.9: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
 app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
@@ -4757,7 +4757,7 @@ dev-lang/fpc 2.6.4 3.0.0 3.0.2 3.0.2-r1 3.0.4: Free Pascal Compiler
 dev-lang/gdl 0.9.6-r3: GNU Data Language
 dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the ANSI Forth language
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.10.1: The Glasgow Haskell Compiler
-dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r1 2019-r2: GNAT Ada Compiler - GPL version
+dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.12.17 1.13.10 1.13.11 1.13.12 1.14.2 1.14.3 1.14.4 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
@@ -5011,7 +5011,7 @@ dev-libs/libcec 4.0.2-r2 4.0.4-r1: Library for communicating with the Pulse-Eigh
 dev-libs/libcgroup 0.41-r5 0.41-r6: Tools and libraries to configure and manage kernel control groups
 dev-libs/libcharon 3.4.1 3.6.0-r1 4.2.0 4.3.0 4.6.1: This library facilitates communication between Cura and its backend
 dev-libs/libclc 0.2.0_pre20191024: OpenCL C library
-dev-libs/libclsync 0.4.2 0.4.4-r1: Control and monitoring library for clsync
+dev-libs/libclsync 0.4.4-r1: Control and monitoring library for clsync
 dev-libs/libclthreads 2.4.2: POSIX threads C++ access library
 dev-libs/libconfig 1.5 1.7.1 1.7.2: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
