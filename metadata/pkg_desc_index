@@ -7784,7 +7784,7 @@ dev-python/fastparquet 0.1.1 0.1.5: Python implementation of the parquet columna
 dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/feedgenerator 1.9.1: Standalone version of django.utils.feedgenerator
-dev-python/feedparser 5.2.1: Parse RSS and Atom feeds in Python
+dev-python/feedparser 5.2.1 6.0.0_beta1: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
 dev-python/filelock 3.0.12: A platform independent file lock for Python
@@ -7817,7 +7817,7 @@ dev-python/flask-restful 0.3.7 0.3.8: Simple framework for creating REST APIs
 dev-python/flask-script 2.0.6: Flask support for writing external scripts
 dev-python/flask-security 3.0.0: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
-dev-python/flask-sqlalchemy 2.4.1-r1: SQLAlchemy support for Flask applications
+dev-python/flask-sqlalchemy 2.4.1-r1 2.4.3: SQLAlchemy support for Flask applications
 dev-python/flask-themes 0.1.3_p20180112: Infrastructure for theming support in Flask applications
 dev-python/flask-wtf 0.14.2-r1 0.14.3: Simple integration of Flask and WTForms
 dev-python/flatbuffers 1.12: RFC 7049 - Concise Binary Object Representation
@@ -8710,6 +8710,7 @@ dev-python/setuptools_scm 3.5.0 4.1.0 4.1.1 4.1.2: Manage versions by scm tags v
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
 dev-python/setuptools_trial 0.6.0-r1: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
+dev-python/sgmllib3k 1.0.0: Py3k port of sgmllib
 dev-python/sh 1.12.14: Python subprocess interface
 dev-python/shiboken2 5.14.1-r3 5.14.2: Python binding generator for C++ libraries
 dev-python/shutilwhich 1.1.0: A copy & paste backport of Python 3.3's shutil.which function
@@ -12234,7 +12235,7 @@ media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed wi
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6-r1: Simplistic, technical sans serif - openSUSE font
-media-fonts/fira-code 2 3 3.1 4 5.1: Monospaced font with programming ligatures
+media-fonts/fira-code 2 3 3.1 4 5.2: Monospaced font with programming ligatures
 media-fonts/fira-mono 3.205: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105: Default typeface for FirefoxOS, designed for legibility
 media-fonts/font-adobe-100dpi 1.0.3-r1: X.Org Adobe bitmap fonts
