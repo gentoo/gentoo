@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6..9} )
 
@@ -17,15 +17,11 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-3+"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
-IUSE="debug doc"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+IUSE="debug"
 
 RDEPEND=">=dev-db/postgresql-8.1:*"
-DEPEND="${RDEPEND}
-	doc? (
-		>=dev-python/pygments-2.2[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.6
-	)"
+DEPEND="${RDEPEND}"
 
 # Avoid using mxdatetime: https://bugs.gentoo.org/452028
 PATCHES=(
@@ -48,10 +44,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
-	use doc && emake -C doc/src -j1 html text
-}
-
 src_test() {
 	initdb -D "${T}"/pgsql || die
 	# TODO: random port
@@ -70,13 +62,4 @@ python_test() {
 import tests
 tests.unittest.main(defaultTest='tests.test_suite')
 " --verbose || die "Tests fail with ${EPYTHON}"
-}
-
-python_install_all() {
-	if use doc; then
-		dodoc -r doc/src/_build/html
-		dodoc doc/src/_build/text/*
-	fi
-
-	distutils-r1_python_install_all
 }
