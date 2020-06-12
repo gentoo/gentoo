@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~
 IUSE="doc"
 
 RDEPEND="
+	!<net-im/pidgin-2.14.0
 	dev-libs/glib:2
 	dev-libs/libxml2
 	sys-libs/ncurses:0=
