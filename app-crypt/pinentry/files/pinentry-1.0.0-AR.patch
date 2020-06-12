@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/718028
+--- a/configure.ac
++++ b/configure.ac
+@@ -80,6 +80,7 @@ AM_MISSING_PROG(MAKEINFO, makeinfo, $missing_dir)
+ AC_PROG_CC
+ AC_PROG_CPP
+ AC_PROG_INSTALL
++AM_PROG_AR
+ AC_PROG_RANLIB
+ # We need to check for cplusplus here because we may not do the test
+ # for Qt and autoconf does does not allow that.
