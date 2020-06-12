@@ -31,7 +31,7 @@ SLOT="0"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( ${PYTHON_DEPS} )"
+BDEPEND="test? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.0_p20200702-increase-clone-stack-size.patch
