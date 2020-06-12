@@ -20,7 +20,7 @@ SRC_URI="https://github.com/jnunemaker/httparty/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend 'dev-ruby/mime-types:3 >=dev-ruby/multi_xml-0.5.2'
@@ -40,13 +40,17 @@ all_ruby_prepare() {
 
 	# Avoid test dependency on simplecov
 	sed -i -e '/simplecov/I s:^:#:' \
+		-e '/pry/ s:^:#:' \
 		-e '1i require "cgi"; require "delegate"' spec/spec_helper.rb || die
 
 	# Avoid test that works standalone but fails in the suite
-	sed -i -e '/calls block given to perform with each redirect/,/^        end/ s:^:#:' spec/httparty/request_spec.rb
+	#sed -i -e '/calls block given to perform with each redirect/,/^        end/ s:^:#:' spec/httparty/request_spec.rb
 
 	# Avoid test that is not fully compatible with newer multi_xml
 	sed -i -e '/should be able parse response type xml automatically/askip "multi_xml"' spec/httparty_spec.rb || die
+
+	# Avoid test that fails due to unicode normalization differences
+	sed -i -e '/handles international domains/askip "unicode differences"' spec/httparty_spec.rb || die
 }
 
 all_ruby_install() {
