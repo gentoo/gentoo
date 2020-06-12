@@ -16,7 +16,6 @@ _CARGO_ECLASS=1
 RUST_DEPEND=">=virtual/rust-1.37.0"
 
 case ${EAPI} in
-	6) DEPEND="${RUST_DEPEND}";;
 	7) BDEPEND="${RUST_DEPEND}";;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
