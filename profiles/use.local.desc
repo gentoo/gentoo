@@ -6083,6 +6083,7 @@ net-libs/libsoup:gssapi - Enable GSSAPI support
 net-libs/libsoup:samba - Use net-fs/samba for NTLM Single Sign-On
 net-libs/libsrtp:aesicm - Use AES ICM cryptographic algorithm
 net-libs/libsrtp:console - Use /dev/console instead of stdout for error messages
+net-libs/libsrtp:nss - Use NSS crypto primitives
 net-libs/libsrtp:openssl - Use OpenSSL crypto primitives
 net-libs/libsrtp:syslog - Use syslog for error messages
 net-libs/libssh:gcrypt - Use dev-libs/libgcrypt as TLS provider
