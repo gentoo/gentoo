@@ -375,7 +375,7 @@ src_prepare() {
 	default
 
 	# Use correct toolchain to fix cross-compiling
-	tc-export AR LD NM OBJCOPY PKG_CONFIG RANLIB
+	tc-export AR AS LD NM OBJCOPY PKG_CONFIG RANLIB
 	export WINDRES=${CHOST}-windres
 
 	# Verbose builds
