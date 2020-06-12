@@ -20,8 +20,8 @@ RDEPEND="
 	idn? ( net-dns/libidn2 )
 	net? (
 		ssl? (
-			!libressl? ( dev-libs/openssl:0 )
-			libressl? ( dev-libs/libressl )
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
 		)
 		kerberos? ( virtual/krb5 )
 	)
@@ -30,6 +30,7 @@ RDEPEND="
 	!mail-client/nail
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/awk"
 
 src_configure() {
 	local confopts=(
@@ -51,7 +52,7 @@ src_configure() {
 			OPT_GSSAPI=$(usex kerberos require no)
 		)
 	else
-		confopts+=( OPT_SOCKETS=no )
+		confopts+=( OPT_NET=no )
 	fi
 
 	tc-is-cross-compiler && confopts+=( OPT_CROSS_BUILD=yes )
