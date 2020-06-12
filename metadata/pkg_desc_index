@@ -3181,7 +3181,7 @@ dev-ada/gtkada 2017-r1 2018-r2 2019-r1: A complete Ada graphical toolkit
 dev-ada/langkit 2018 2019 2019-r1: A Python framework to generate language parsers
 dev-ada/libadalang 2018-r2 2019-r1: high performance semantic engine for the Ada programming language
 dev-ada/libadalang-tools 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
-dev-ada/libgpr 2019-r1: Ada library to handle GPRbuild project files
+dev-ada/libgpr 2019-r1 2020: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2019-r1 2020: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
 dev-cpp/abseil-cpp 20200225.2: Abseil Common Libraries (C++), LTS Branch
@@ -17331,7 +17331,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.220_p197 4.9.224_p144 4.14.170_p75 4.19.124_p53 5.4.40_p24 5.6.14_p7: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.39 5.4.40 5.4.42 5.4.43 5.4.44 5.4.45 5.4.46 5.6.11 5.6.12 5.6.14 5.6.15 5.6.16 5.6.17 5.6.18: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 3.16.84 4.4.227 4.9.227 4.14.184 4.19.128 5.4.46 5.6.18 5.7.2: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.85 4.4.227 4.9.227 4.14.184 4.19.128 5.4.46 5.6.18 5.7.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.13 5.6.9: The Zen Kernel Live Sources
