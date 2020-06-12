@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-03">
+  <title>Perl: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Perl, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">perl</product>
+  <announced>2020-06-12</announced>
+  <revised count="1">2020-06-12</revised>
+  <bug>723792</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.30.3</unaffected>
+      <vulnerable range="lt">5.30.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Perl is a highly capable, feature-rich programming language.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Perl. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Perl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/perl-5.30.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10543">CVE-2020-10543</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10878">CVE-2020-10878</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12723">CVE-2020-12723</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-09T02:23:58Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-12T04:18:23Z">sam_c</metadata>
+</glsa>
