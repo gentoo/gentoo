@@ -39,6 +39,11 @@ src_compile() {
 	popd >/dev/null || die
 }
 
+src_test() {
+	cd "${PN}" || die
+	go test -mod=vendor -buildmode="$(usex pie pie default)" || die "Failed to run tests"
+}
+
 src_install() {
 	pushd "${PN}" >/dev/null || die
 
