@@ -16,6 +16,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 SLOT="0"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
-DEPEND="test? ( ${RDEPEND} )"
+BDEPEND="test? ( ${RDEPEND} )"
 
 distutils_enable_tests pytest
