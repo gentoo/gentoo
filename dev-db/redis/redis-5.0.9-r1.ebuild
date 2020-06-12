@@ -1,16 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils flag-o-matic systemd toolchain-funcs user
+inherit autotools flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value and data structures database"
-HOMEPAGE="http://redis.io/"
+HOMEPAGE="https://redis.io"
 SRC_URI="http://download.redis.io/releases/${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 arm arm64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="+jemalloc tcmalloc luajit test"
 RESTRICT="!test? ( test )"
 SLOT="0"
@@ -18,39 +18,52 @@ SLOT="0"
 # Redis does NOT build with Lua 5.2 or newer at this time.
 # This should link correctly with both unslotted & slotted Lua, without
 # changes.
-RDEPEND="luajit? ( dev-lang/luajit:2 )
+COMMON_DEPEND="
+	luajit? ( dev-lang/luajit:2 )
 	!luajit? ( || ( dev-lang/lua:5.1 =dev-lang/lua-5.1*:0 ) )
 	tcmalloc? ( dev-util/google-perftools )
-	jemalloc? ( >=dev-libs/jemalloc-3.2 )"
-DEPEND="virtual/pkgconfig
-	>=sys-devel/autoconf-2.63
-	test? ( dev-lang/tcl:0= )
-	${RDEPEND}"
+	jemalloc? ( >=dev-libs/jemalloc-5.1:= )"
+
+RDEPEND="
+	${COMMON_DEPEND}
+	acct-group/redis
+	acct-user/redis"
+
+BDEPEND="
+	${COMMON_DEPEND}
+	virtual/pkgconfig"
+
+# Tcl is only needed in the CHOST test env
+DEPEND="
+	${COMMON_DEPEND}
+	test? ( dev-lang/tcl:0= )"
+
 REQUIRED_USE="?? ( tcmalloc jemalloc )"
 
-S="${WORKDIR}/${PN}-${PV/_/-}"
-
-pkg_setup() {
-	enewgroup redis 75
-	enewuser redis 75 -1 /var/lib/redis redis
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2.3-config.patch
+	"${FILESDIR}"/${PN}-5.0-shared.patch
+	"${FILESDIR}"/${PN}-5.0-sharedlua.patch
+	"${FILESDIR}"/${PN}-5.0.8-ppc-atomic.patch
+	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-4.0.1-shared.patch \
-		"${FILESDIR}"/${PN}-3.2.3-config.patch \
-		"${FILESDIR}"/${PN}-4.0.1-sharedlua.patch
-	eapply_user
+	default
+
+	# don't call ar directly
+	sed -e '/^STLIB_MAKE_CMD/s/ar/$(AR)/g' \
+		-i deps/hiredis/Makefile || die
 
 	# Copy lua modules into build dir
-	cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
-	cp "${S}"/deps/lua/src/{fpconv,strbuf}.h "${S}"/src || die
+	cp deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c src/ || die
+	cp deps/lua/src/{fpconv,strbuf}.h src/ || die
 	# Append cflag for lua_cjson
 	# https://github.com/antirez/redis/commit/4fdcd213#diff-3ba529ae517f6b57803af0502f52a40bL61
 	append-cflags "-DENABLE_CJSON_GLOBAL"
 
 	# now we will rewrite present Makefiles
-	local makefiles=""
+	local makefiles="" MKF
 	for MKF in $(find -name 'Makefile' | cut -b 3-); do
 		mv "${MKF}" "${MKF}.in"
 		sed -i	-e 's:$(CC):@CC@:g' \
@@ -64,12 +77,26 @@ src_prepare() {
 		makefiles+=" ${MKF}"
 	done
 	# autodetection of compiler and settings; generates the modified Makefiles
-	cp "${FILESDIR}"/configure.ac-3.2 configure.ac
+	cp "${FILESDIR}"/configure.ac-3.2 configure.ac || die
 
 	# Use the correct pkgconfig name for Lua
-	has_version 'dev-lang/lua:5.1' \
-		&& LUAPKGCONFIG=lua5.1 \
-		|| LUAPKGCONFIG=lua
+	if false && has_version 'dev-lang/lua:5.3'; then
+		# Lua5.3 gives:
+		#lua_bit.c:83:2: error: #error "Unknown number type, check LUA_NUMBER_* in luaconf.h"
+		LUAPKGCONFIG=lua5.3
+	elif false && has_version 'dev-lang/lua:5.2'; then
+		# Lua5.2 fails with:
+		# scripting.c:(.text+0x1f9b): undefined reference to `lua_open'
+		# Because lua_open because lua_newstate in 5.2
+		LUAPKGCONFIG=lua5.2
+	elif has_version 'dev-lang/lua:5.1'; then
+		LUAPKGCONFIG=lua5.1
+	else
+		LUAPKGCONFIG=lua
+	fi
+	# The upstream configure script handles luajit specially, and is not
+	# effected by these changes.
+	einfo "Selected LUAPKGCONFIG=${LUAPKGCONFIG}"
 	sed -i	\
 		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
 		-e "s:AC_CONFIG_FILES(\[Makefile\]):AC_CONFIG_FILES([${makefiles}]):g" \
@@ -79,8 +106,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_with luajit)
+	econf $(use_with luajit)
 
 	# Linenoise can't be built with -std=c99, see https://bugs.gentoo.org/451164
 	# also, don't define ANSI/c99 for lua twice
@@ -88,19 +114,18 @@ src_configure() {
 }
 
 src_compile() {
-	tc-export CC AR RANLIB
-
 	local myconf=""
 
-	if use tcmalloc ; then
+	if use tcmalloc; then
 		myconf="${myconf} USE_TCMALLOC=yes"
-	elif use jemalloc ; then
+	elif use jemalloc; then
 		myconf="${myconf} JEMALLOC_SHARED=yes"
 	else
 		myconf="${myconf} MALLOC=yes"
 	fi
 
-	emake ${myconf} V=1 CC="${CC}" AR="${AR} rcu" RANLIB="${RANLIB}"
+	tc-export AR CC RANLIB
+	emake V=1 ${myconf} AR="${AR}" CC="${CC}" RANLIB="${RANLIB}"
 }
 
 src_install() {
@@ -112,8 +137,14 @@ src_install() {
 	newconfd "${FILESDIR}/redis.confd-r1" redis
 	newinitd "${FILESDIR}/redis.initd-5" redis
 
-	systemd_newunit "${FILESDIR}/redis.service-2" redis.service
-	systemd_newtmpfilesd "${FILESDIR}/redis.tmpfiles" redis.conf
+	systemd_newunit "${FILESDIR}/redis.service-3" redis.service
+	systemd_newtmpfilesd "${FILESDIR}/redis.tmpfiles-2" redis.conf
+
+	newconfd "${FILESDIR}/redis-sentinel.confd" redis-sentinel
+	newinitd "${FILESDIR}/redis-sentinel.initd" redis-sentinel
+
+	insinto /etc/logrotate.d/
+	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 
 	dodoc 00-RELEASENOTES BUGS CONTRIBUTING MANIFESTO README.md
 
