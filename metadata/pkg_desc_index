@@ -7511,6 +7511,7 @@ dev-python/apsw 3.25.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/argcomplete 1.11.0 1.11.1 1.11.1-r1: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2_cffi 19.1.0: CFFI bindings to the Argon2 password hashing library
+dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python project
 dev-python/args 0.1.0-r1: Command Arguments for Humans
 dev-python/arpeggio 1.9.0 1.9.2: Parser interpreter based on PEG grammars
 dev-python/arrow 0.13.1 0.15.5 0.15.6: Better dates and times for Python
