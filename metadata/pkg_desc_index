@@ -202,6 +202,7 @@ acct-group/wheel 0: System group: wheel
 acct-group/x2goprint 0: Group for net-misc/x2goserver
 acct-group/x2gouser 0: Group for net-misc/x2goserver
 acct-group/xrootd 0: Group for the XRootD server
+acct-group/znc 0: Group for net-irc/znc
 acct-user/abrt 0: A user for the automatic bug detection and reporting tool
 acct-user/alias 0: alias user for qmail mail delivery
 acct-user/amavis 0: User for mail-filter/amavisd-new
@@ -385,6 +386,7 @@ acct-user/wesnoth 0: user for games-strategy/wesnoth
 acct-user/x2goprint 0: User for net-misc/x2goserver
 acct-user/x2gouser 0: User for net-misc/x2goserver
 acct-user/xrootd 0: User for the XRootD server
+acct-user/znc 0: User for net-irc/znc
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.32.0 2.34.2: Gtk module for bridging AT-SPI to Atk
@@ -14424,7 +14426,7 @@ net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepa
 net-irc/unrealircd 4.2.4.1 5.0.3.1 5.0.4 5.0.5.1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.7.1 2.8 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
-net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
+net-irc/znc 1.7.4 1.7.5 1.8.1 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
 net-libs/accounts-qml 0.7-r1: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
