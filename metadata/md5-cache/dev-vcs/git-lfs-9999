@@ -9,5 +9,5 @@ PROPERTIES=live
 RDEPEND=dev-vcs/git
 RESTRICT=strip !test? ( test )
 SLOT=0
-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	cca12a5688562f107c14ffcf28195dd7
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	45394825d9260b479aa1cf252ea58e01
 _md5_=7b4ed91e78650c01a2fa2938b8e9ab68

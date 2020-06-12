@@ -10,5 +10,5 @@ RDEPEND=dev-vcs/git
 RESTRICT=strip !test? ( test )
 SLOT=0
 SRC_URI=https://github.com/git-lfs/git-lfs/archive/v2.11.0.tar.gz -> git-lfs-2.11.0.tar.gz
-_eclasses_=go-module	cca12a5688562f107c14ffcf28195dd7
+_eclasses_=go-module	45394825d9260b479aa1cf252ea58e01
 _md5_=7b4ed91e78650c01a2fa2938b8e9ab68

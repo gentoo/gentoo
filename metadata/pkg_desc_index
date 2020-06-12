@@ -4909,7 +4909,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.23.3 1.24.2: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.177 0.179: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.177 0.179 0.180: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library
@@ -16190,7 +16190,7 @@ sci-mathematics/sympow 2.023.6: Symmetric power elliptic curve L-functions
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
-sci-mathematics/why3-for-spark 2018 2019 2019-r1: Platform for deductive program verification
+sci-mathematics/why3-for-spark 2018 2019 2019-r1 2019-r2: Platform for deductive program verification
 sci-mathematics/wxmaxima 18.11.4 20.01.1 20.01.3 20.02.4 20.04.0: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility

@@ -10,5 +10,5 @@ RDEPEND=acct-group/bind_exporter acct-user/bind_exporter
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/digitalocean/bind_exporter/archive/v0.3.0.tar.gz -> bind_exporter-0.3.0.tar.gz
-_eclasses_=go-module	cca12a5688562f107c14ffcf28195dd7
+_eclasses_=go-module	45394825d9260b479aa1cf252ea58e01
 _md5_=85db8a3df1d1f4d3612aff1c1d891de2

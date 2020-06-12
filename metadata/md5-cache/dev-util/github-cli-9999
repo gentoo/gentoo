@@ -1,4 +1,4 @@
-BDEPEND=>=dev-lang/go-1.13 >=dev-lang/go-1.12 app-arch/unzip >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst unpack
 DESCRIPTION=GitHub CLI
 EAPI=7
@@ -8,5 +8,5 @@ PROPERTIES=live
 RDEPEND=>=dev-vcs/git-1.7.3
 RESTRICT=strip
 SLOT=0
-_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	cca12a5688562f107c14ffcf28195dd7	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
-_md5_=ff295aec72a191ac5f6897d5d912e46a
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	45394825d9260b479aa1cf252ea58e01	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=0597d578d2c92dc1e2248c492f724b38
