@@ -22,7 +22,7 @@ RDEPEND="
 		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	)
-	nss? ( dev-libs/nss )
+	nss? ( >=dev-libs/nss-3.52[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 
@@ -36,6 +36,7 @@ DOCS=( CHANGES )
 PATCHES=(
 	"${FILESDIR}/${P}-gcc-10.patch"
 	"${FILESDIR}/${P}-nss.patch"
+	"${FILESDIR}/${P}-rtp-header.patch"
 )
 
 src_prepare() {
