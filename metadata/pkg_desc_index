@@ -16606,7 +16606,7 @@ sys-apps/fakechroot 2.19 2.20.1: Provide a faked chroot environment without requ
 sys-apps/fakeroot 1.22 1.23 1.24: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
-sys-apps/fd 7.4.0 7.5.0 8.0.0 8.1.1: Alternative to find that provides sensible defaults for 80% of the use cases
+sys-apps/fd 8.1.1: Alternative to find that provides sensible defaults for 80% of the use cases
 sys-apps/file 5.37-r1 5.38-r1 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.7.0: GNU utilities for finding files
 sys-apps/firejail 0.9.60-r1 0.9.62 9999: Security sandbox for any type of processes
