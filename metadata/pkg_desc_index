@@ -15344,7 +15344,7 @@ net-wireless/soapyuhd 0.3.6 9999: Soapy SDR plugins for UHD supported SDR device
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/srslte 19.09: Open source SDR LTE software suite from Software Radio Systems
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
-net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
+net-wireless/ubertooth 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r1 3.15.0.0-r100: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/unifi 5.6.42-r1 5.12.72 5.13.27 5.13.29 5.14.7 5.14.9: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.8.8 9999: Universal Radio Hacker: investigate wireless protocols like a boss
