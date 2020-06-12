@@ -3,22 +3,23 @@
 
 EAPI=7
 
-inherit elisp-common git-r3 qmake-utils xdg
+inherit elisp-common qmake-utils xdg
 
 SITEFILE="50${PN}-gentoo.el"
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
 HOMEPAGE="https://www.openscad.org/"
-EGIT_REPO_URI="https://github.com/openscad/openscad.git"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="ccache emacs"
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2019.05-0001-Fix-build-with-boost-1.73.patch"
+	"${FILESDIR}/${P}_fix-boost-1.72.0-build.patch"
+	"${FILESDIR}/${P}-0001-Fix-build-with-boost-1.73.patch"
 )
 
 RDEPEND="

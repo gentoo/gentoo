@@ -344,8 +344,13 @@ src_configure() {
 			EOF
 		fi
 
+		# append cross target to "normal" target list
+		# example 'target = ["powerpc64le-unknown-linux-gnu"]'
+		# becomes 'target = ["powerpc64le-unknown-linux-gnu","aarch64-unknown-linux-gnu"]'
+
 		rust_targets="${rust_targets},\"${cross_rust_target}\""
 		sed -i "/^target = \[/ s#\[.*\]#\[${rust_targets}\]#" config.toml || die
+
 		ewarn
 		ewarn "enabled ${rust_target} rust target, using ${cross_toolchain} cross toolchain"
 		ewarn
