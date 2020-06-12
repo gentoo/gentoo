@@ -324,10 +324,14 @@ src_configure() {
 
 	local cross_target_spec
 	for cross_target_spec in "${RUST_CROSS_TARGETS[@]}";do
+		# extracts first element form <LLVM target>:<rust-target>:<CTARGET>
 		local cross_llvm_target="${cross_target_spec%%:*}"
+		# extracts toolchain triples, <rust-target>:<CTARGET>
 		local cross_triples="${cross_target_spec#*:}"
-		local cross_rust_target="${cross_triples#*:}"
-		local cross_toolchain="${cross_triples#:*}"
+		# extracts first element after before : separator
+		local cross_rust_target="${cross_triples%%:*}"
+		# extracts last element after : separator
+		local cross_toolchain="${cross_triples##*:}"
 		use llvm_targets_${cross_llvm_target} || die "need llvm_targets_${cross_llvm_target} target enabled"
 		command -v ${cross_toolchain}-gcc > /dev/null 2>&1 || die "need ${cross_toolchain} cross toolchain"
 
