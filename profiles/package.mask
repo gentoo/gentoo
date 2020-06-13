@@ -38,11 +38,6 @@
 # Removal in 30 days.
 app-text/xindy
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-06-13)
-# have been shipped with dev-texlive/texlive-plaingeneric
-# for the very long time. Removal in 14 days.
-dev-tex/tex4ht
-
 # Aaron Bauman <bman@gentoo.org> (2020-06-11)
 # outstanding vulns. RCE. rdeps masked.
 # maintainer ignored w/irrelevant comment.
