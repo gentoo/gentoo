@@ -8,8 +8,8 @@ inherit eutils toolchain-funcs
 S="${WORKDIR}/${P}-001114"
 
 DESCRIPTION="A simple fax program for single-user systems"
-HOMEPAGE="http://www.cce.com/efax"
-SRC_URI="http://www.cce.com/efax/download/${P}-001114.tar.gz
+HOMEPAGE="https://www.cce.com/efax/"
+SRC_URI="https://www.cce.com/efax/download/${P}-001114.tar.gz
 	mirror://debian/pool/main/e/efax/efax_0.9a-19.diff.gz"
 
 KEYWORDS="amd64 ppc x86"
