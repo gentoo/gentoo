@@ -15693,7 +15693,7 @@ sci-chemistry/msms-bin 2.6.1-r1: MSMS very efficiently computes triangulations o
 sci-chemistry/mustang 3.2.2: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.10: A powerful and highly parallelized molecular dynamics code
 sci-chemistry/nmrdepaker 1.0-r3: Program to perform NMR spectra 'De-Pake-ing' and moment calculation
-sci-chemistry/nmrglue 0.5-r1: A module for working with NMR data in Python
+sci-chemistry/nmrglue 0.5-r1 0.7: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
 sci-chemistry/openbabel 2.4.1 2.4.1-r1: Interconverts file formats used in molecular modeling
 sci-chemistry/openbabel-perl 2.4.1: Perl bindings for OpenBabel
