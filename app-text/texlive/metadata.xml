@@ -22,9 +22,7 @@
 		<flag name="pstricks">Add pstricks packages (<pkg>dev-texlive/texlive-pstricks</pkg>)</flag>
 		<flag name="publishers">Add support for publishers (<pkg>dev-texlive/texlive-publishers</pkg>)</flag>
 		<flag name="science">Add typesetting support for natural and computer sciences (<pkg>dev-texlive/texlive-mathscience</pkg>)</flag>
-		<flag name="tex4ht">Add support for <pkg>dev-tex/tex4ht</pkg> (for converting (La)TeX to (X)HTML, XML and OO.org)</flag>
 		<flag name="texi2html">Add support for <pkg>app-text/texi2html</pkg> which converts texi files to HTML</flag>
 		<flag name="xetex">Add support for XeTeX macros (<pkg>dev-texlive/texlive-xetex</pkg>)</flag>
-		<flag name="xindy">Add support for <pkg>app-text/xindy</pkg>, a flexible indexing system</flag>
 	</use>
 </pkgmetadata>

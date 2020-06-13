@@ -1,0 +1,35 @@
+diff -Naur wmXName-0.01.orig/xutils.c wmXName-0.01/xutils.c
+--- wmXName-0.01.orig/xutils.c	2002-06-28 11:34:26.000000000 +0200
++++ wmXName-0.01/xutils.c	2020-06-13 11:02:20.393108819 +0200
+@@ -52,6 +52,11 @@
+ GC		NormalGC;
+ XpmIcon		wmgen;
+ Pixmap		pixmask;
++Display		*display;
++Window          Root;
++Window          iconwin, win;
++int             screen; 
++int             DisplayDepth;
+ 
+ 
+ 
+diff -Naur wmXName-0.01.orig/xutils.h wmXName-0.01/xutils.h
+--- wmXName-0.01.orig/xutils.h	2002-06-28 11:34:59.000000000 +0200
++++ wmXName-0.01/xutils.h	2020-06-13 11:02:25.886113159 +0200
+@@ -18,11 +18,11 @@
+ /*
+  *   Global variable
+  */
+-Display		*display;
+-Window          Root;
+-Window          iconwin, win;
+-int             screen; 
+-int             DisplayDepth;
++extern Display		*display;
++extern Window          Root;
++extern Window          iconwin, win;
++extern int             screen; 
++extern int             DisplayDepth;
+ 
+ 
+ 
