@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-10">
+  <title>GNU Readline: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GNU Readline, the worst
+    of which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">readline</product>
+  <announced>2020-06-13</announced>
+  <revised count="1">2020-06-13</revised>
+  <bug>717924</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-libs/readline" auto="yes" arch="*">
+      <unaffected range="ge">8.0</unaffected>
+      <vulnerable range="lt">8.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Readline library provides a set of functions for use by
+      applications that allow users to edit command lines as they are typed in.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GNU Readline. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Readline users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/readline-8.0"
+    </code>
+    
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-21T23:21:08Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-13T01:47:15Z">sam_c</metadata>
+</glsa>
