@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ BDEPEND="dev-tex/leaflet
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
-	html? ( dev-texlive/texlive-plaingeneric )"
+	html? ( >=dev-tex/tex4ht-20090611_p1038-r5 )"
 RDEPEND="!app-doc/pms-bin"
 
 src_compile() {
