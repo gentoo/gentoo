@@ -10344,7 +10344,7 @@ dev-util/debootstrap 1.0.115 1.0.116 1.0.117 1.0.123: Debian/Ubuntu bootstrap sc
 dev-util/debugedit 4.15.0 4.15.1: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24: Command line utilities to work with desktop menu entries
-dev-util/devhelp 3.30.1: An API documentation browser for GNOME
+dev-util/devhelp 3.30.1 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
@@ -11465,7 +11465,7 @@ gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome package
 gnome-base/gnome-control-center 3.34.5-r1: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.34.4: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.34.4: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 3.32.2 3.34.5 3.34.6: Library with common API for various GNOME modules
+gnome-base/gnome-desktop 3.34.5 3.34.7: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.34.4: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.34.2: GNOME Flashback session
 gnome-base/gnome-keyring 3.31.91-r1 3.34.0: Password and keyring managing daemon
@@ -14414,7 +14414,7 @@ net-irc/ngircd 24 25: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
-net-irc/polari 3.30.2: An IRC client for Gnome
+net-irc/polari 3.30.2 3.34.1: An IRC client for Gnome
 net-irc/psybnc 2.3.2.9-r3: A multi-user and multi-server gateway to IRC networks
 net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1 1.3.1-r2: PTlink Open Proxy Monitor
@@ -16536,7 +16536,7 @@ sec-policy/selinux-xprint 2.20190201-r1 2.20190609-r1 9999: SELinux policy for x
 sec-policy/selinux-xscreensaver 2.20190201-r1 2.20190609-r1 9999: SELinux policy for xscreensaver
 sec-policy/selinux-xserver 2.20190201-r1 2.20190609-r1 9999: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20190201-r1 2.20190609-r1 9999: SELinux policy for zabbix
-sys-apps/accountsservice 0.6.50-r1: D-Bus interfaces for querying and manipulating user account information
+sys-apps/accountsservice 0.6.50-r1 0.6.55: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 3.0.0 3.2.0 3.3.1: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.53: access control list utilities, libraries and headers
 sys-apps/agedu 20190630 20200206: A utility for tracking down wasted disk space
@@ -17829,7 +17829,7 @@ www-client/firefox 52.9.0-r1 68.8.0 68.9.0 76.0-r1 76.0.1 77.0.1: Firefox Web Br
 www-client/firefox-bin 52.9.0 68.8.0 68.9.0 76.0 76.0.1 77.0.1: Firefox Web Browser
 www-client/google-chrome 83.0.4103.97: The web browser from Google
 www-client/google-chrome-beta 84.0.4147.45: The web browser from Google
-www-client/google-chrome-unstable 85.0.4164.2: The web browser from Google
+www-client/google-chrome-unstable 85.0.4168.2: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
@@ -17874,7 +17874,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.387: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 83.0.4103.97 84.0.4147.45_beta 85.0.4164.2_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 83.0.4103.97 84.0.4147.45_beta 85.0.4168.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
