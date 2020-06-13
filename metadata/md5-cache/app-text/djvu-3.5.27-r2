@@ -1,0 +1,14 @@
+BDEPEND=app-arch/unzip >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=jpeg? ( virtual/jpeg:0 ) tiff? ( media-libs/tiff:0= ) || ( gnome-base/librsvg media-gfx/inkscape )
+DESCRIPTION=DjVu viewers, encoders and utilities
+EAPI=7
+HOMEPAGE=http://djvu.sourceforge.net/
+IUSE=debug doc jpeg tiff xml
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=jpeg? ( virtual/jpeg:0 ) tiff? ( media-libs/tiff:0= )
+SLOT=0
+SRC_URI=https://sourceforge.net/code-snapshots/git/d/dj/djvu/djvulibre-git.git/djvu-djvulibre-git-a00b7618c22fb35b030582147a4479c4cf41c349.zip -> djvu-3.5.27.zip
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=8aadeadffb5ac13958fbb667f4c29589
