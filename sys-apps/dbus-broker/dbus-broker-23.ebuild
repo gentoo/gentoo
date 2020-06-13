@@ -12,13 +12,13 @@ else
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/bus1/dbus-broker/archive/v${PV}/${P}.tar.gz"
 	declare -Ag SUBPROJECTS=(
-		[c-dvar]=7c0833f9cae446163077b204b2296287bbee7c67
-		[c-ini]=847c55f5b3d33baa47af9a1286175d58b34f91d5
-		[c-list]=2e4b605c6217cd3c8a1ef773f82f5cc329ba650d
-		[c-rbtree]=b46392d25de7a7bab67d48ef18bf8350b429cff5
-		[c-shquote]=34e1e25299fb82ab9fd0c8bfd8a66010ead1497b
-		[c-stdaux]=11930d259212605a15430523472ef54e0c7654ee
-		[c-utf8]=34f5df0f4b28fc7ea6747680a432e666047082e4
+		[c-dvar]=9e1a5b4363aaece7169df2b2852944a1434b2df5
+		[c-ini]=43f379396a320940d0661c15780f618f84d29348
+		[c-list]=b1cd4dbf967d73b24dfe6cc56aaf3fdd668692e3
+		[c-rbtree]=fa97402c3faa18c2ddd8325eb66e2bd58a224477
+		[c-shquote]=1d171fe52c23944c3c0be1f2603595f2488a9ff8
+		[c-stdaux]=d6ecce8afbb7703e1469cc5e7a59a8bd32e2d4a4
+		[c-utf8]=1f7e2ff1164bd2161cb480532b2b34cb2074bde1
 	)
 	for sp in "${!SUBPROJECTS[@]}"; do
 		commit=${SUBPROJECTS[${sp}]}

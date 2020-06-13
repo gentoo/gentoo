@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic libtool ltprune multilib-minimal
+inherit eutils flag-o-matic libtool ltprune multilib-minimal toolchain-funcs
 
 DESCRIPTION="The Fast Lexical Analyzer"
 HOMEPAGE="https://flex.sourceforge.net/ https://github.com/westes/flex"
@@ -50,6 +50,7 @@ multilib_src_configure() {
 	# Do not install shared libs #503522
 	ECONF_SOURCE=${S} \
 	econf \
+		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
 		--disable-shared \
 		$(use_enable nls)
 }
