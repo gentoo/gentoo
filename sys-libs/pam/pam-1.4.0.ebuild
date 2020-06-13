@@ -20,7 +20,8 @@ BDEPEND="
 	dev-libs/libxslt
 	sys-devel/flex
 	sys-devel/gettext
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig
+"
 
 DEPEND="
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
