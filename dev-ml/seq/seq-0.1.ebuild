@@ -21,7 +21,7 @@ BDEPEND=""
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 QA_FLAGS_IGNORED=(
-	/usr/lib*/ocaml/seq/seq.cmxs
+	"usr/lib.*/ocaml/seq/seq.cmxs"
 )
 
 src_prepare() {
