@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-08">
+  <title>WebKitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebKitGTK+, the worst
+    of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">webkitgtk+</product>
+  <announced>2020-06-13</announced>
+  <revised count="1">2020-06-13</revised>
+  <bug>712260</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.28.2</unaffected>
+      <vulnerable range="lt">2.28.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, from hybrid
+      HTML/CSS applications to full-fledged web browsers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebKitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.28.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10018">CVE-2020-10018</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10018">CVE-2020-10018</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11793">CVE-2020-11793</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11793">CVE-2020-11793</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3885">CVE-2020-3885</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3894">CVE-2020-3894</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3895">CVE-2020-3895</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3897">CVE-2020-3897</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3899">CVE-2020-3899</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3900">CVE-2020-3900</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3901">CVE-2020-3901</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3902">CVE-2020-3902</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-14T21:48:07Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-13T01:41:16Z">sam_c</metadata>
+</glsa>
