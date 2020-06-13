@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -20,9 +20,11 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-python/pyparsing-2.1.4[${PYTHON_USEDEP}]
 	media-gfx/graphviz"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/chardet[${PYTHON_USEDEP}] )"
+BDEPEND="
+	test? (
+		${RDEPEND}
+		dev-python/chardet[${PYTHON_USEDEP}]
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-unittest.patch
