@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=sys-libs/ncurses-5.2:= !net-misc/telnet-bsd
 SLOT=0
 SRC_URI=mirror://gentoo/netkit-telnet-0.17.tar.gz mirror://debian/pool/main/n/netkit-telnet/netkit-telnet_0.17-41.debian.tar.xz
-_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_eclasses_=multilib	ba693a7065ee4edc78b3ea02a015bcad	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=c5ae1270f4bc6abff1b9f02834628626

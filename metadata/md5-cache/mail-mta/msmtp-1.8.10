@@ -11,5 +11,5 @@ RDEPEND=gnome-keyring? ( app-crypt/libsecret ) nls? ( virtual/libintl ) sasl? ( 
 REQUIRED_USE=daemon? ( filecaps )
 SLOT=0
 SRC_URI=https://marlam.de/msmtp/releases/msmtp-1.8.10.tar.xz
-_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	multilib	ba693a7065ee4edc78b3ea02a015bcad	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=cb690a8e507fdd9583f6058e2494aa6c

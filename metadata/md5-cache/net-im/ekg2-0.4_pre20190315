@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 gadu? ( <net-libs/libgadu-1.12:0= ) gpg? ( app-crypt/gpgme:1= ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl:0= ) openssl? ( dev-libs/openssl:0= ) perl? ( dev-lang/perl:0= ) readline? ( sys-libs/readline:0= ) rss? ( dev-libs/expat:0= ) ssl? ( net-libs/gnutls:0= ) xmpp? ( dev-libs/expat:0= ) zlib? ( sys-libs/zlib:0= ) ncurses? ( sys-libs/ncurses:0=[unicode=] gpm? ( sys-libs/gpm:0= ) spell? ( app-text/aspell:0= ) ) sqlite? ( dev-db/sqlite:3= )
 SLOT=0
 SRC_URI=https://github.com/ekg2/ekg2/archive/f427d083ee899d42532c046100490a915b0e8a82.tar.gz -> ekg2-f427d083ee899d42532c046100490a915b0e8a82.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	ba693a7065ee4edc78b3ea02a015bcad	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=c9b89420dd00350757194904908f799c

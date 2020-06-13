@@ -11,5 +11,5 @@ RDEPEND=acct-user/stunnel acct-group/stunnel dev-libs/openssl:0= tcpd? ( sys-app
 RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-5.56.tar.gz http://www.usenix.org.uk/mirrors/stunnel/archive/5.x/stunnel-5.56.tar.gz http://ftp.nluug.nl/pub/networking/stunnel/archive/5.x/stunnel-5.56.tar.gz http://www.namesdir.com/mirrors/stunnel/archive/5.x/stunnel-5.56.tar.gz http://stunnel.cybermirror.org/archive/5.x/stunnel-5.56.tar.gz http://mirrors.zerg.biz/stunnel/archive/5.x/stunnel-5.56.tar.gz ftp://mirrors.go-parts.com/stunnel/archive/5.x/stunnel-5.56.tar.gz
-_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	ssl-cert	876f0e74ef1cc2e7c4edd9bca336d350	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_eclasses_=multilib	ba693a7065ee4edc78b3ea02a015bcad	ssl-cert	876f0e74ef1cc2e7c4edd9bca336d350	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=035f0c054a1b744fa8742f2cde80b1e2

@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libxml2 dev-libs/popt
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/rhboot/dumpet/archive/8f47670dd582c96ad1b6dd3c9b9da0acebded5d8.tar.gz -> dumpet-2.1_p20140601.tar.gz
-_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multilib	ba693a7065ee4edc78b3ea02a015bcad	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=0e639d72f516aaeab22266420aeb9293

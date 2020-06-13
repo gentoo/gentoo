@@ -8,5 +8,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=pci? ( sys-apps/pciutils )
 SLOT=0
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	0914eab919f4f11dd9e0407b92af4726	subversion	ed3498da4fb92dcfb0d6089c85d1465f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	ba693a7065ee4edc78b3ea02a015bcad	subversion	ed3498da4fb92dcfb0d6089c85d1465f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=78827e410dd0d79d6356fc45ff50413c

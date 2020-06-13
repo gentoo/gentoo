@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=dev-libs/libev x11-libs/libX11 x11-libs/libXfixes x11-libs/libXi !x11-misc/unclutter
 SLOT=0
 SRC_URI=https://github.com/Airblader/unclutter-xfixes/archive/v1.5.tar.gz -> unclutter-xfixes-1.5.tar.gz
-_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_eclasses_=multilib	ba693a7065ee4edc78b3ea02a015bcad	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=302fd1fcf2ffe1323642ffa5de80abd9

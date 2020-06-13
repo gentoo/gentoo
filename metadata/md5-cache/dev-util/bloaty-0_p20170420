@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-libs/re2-0.2017.03.01
 SLOT=0
 SRC_URI=https://github.com/google/bloaty/archive/73594cde8c9a52a102c4341c244c833aa61b9c06.tar.gz -> bloaty-0_p20170420.tar.gz
-_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multilib	ba693a7065ee4edc78b3ea02a015bcad	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=81ff8352ce80f7c828031f67b0bdf9bb

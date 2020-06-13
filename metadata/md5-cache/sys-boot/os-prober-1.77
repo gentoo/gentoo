@@ -7,5 +7,5 @@ LICENSE=GPL-3
 RDEPEND=sys-boot/grub:2[mount]
 SLOT=0
 SRC_URI=mirror://debian/pool/main/o/os-prober/os-prober_1.77.tar.xz
-_eclasses_=multilib	0914eab919f4f11dd9e0407b92af4726	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_eclasses_=multilib	ba693a7065ee4edc78b3ea02a015bcad	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
 _md5_=0930d57de09032b7c97f94d571ca0bfc

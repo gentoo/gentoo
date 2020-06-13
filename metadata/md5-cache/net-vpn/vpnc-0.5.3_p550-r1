@@ -11,5 +11,5 @@ RDEPEND=dev-lang/perl dev-libs/libgcrypt:0= >=sys-apps/iproute2-2.6.19.20061214[
 RESTRICT=!gnutls? ( bindist )
 SLOT=0
 SRC_URI=https://github.com/streambinder/vpnc/archive/fa0689c.tar.gz -> vpnc-0.5.3_p550-r1.tar.gz
-_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	0914eab919f4f11dd9e0407b92af4726	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=linux-info	5d5cc2632ef6b3c817019fa4fa3d8508	multilib	ba693a7065ee4edc78b3ea02a015bcad	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=1089aa1c7ba50a0316083ff42676b131
