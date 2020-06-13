@@ -2788,7 +2788,7 @@ app-text/tessdata_fast 4.0.0: Fast integer versions of trained models for app-te
 app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible with the legacy engine
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
-app-text/texlive 2019-r1 2020: A complete TeX distribution
+app-text/texlive 2020: A complete TeX distribution
 app-text/texlive-core 2020-r5: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
