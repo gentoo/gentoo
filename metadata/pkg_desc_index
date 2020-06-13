@@ -444,7 +444,7 @@ app-admin/clsync 0.4.4 9999: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.7.3: Python framework for efficient cluster administration
 app-admin/conky 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
-app-admin/conserver 8.2.3 8.2.4: Serial Console Manager
+app-admin/conserver 8.2.3 8.2.4 8.2.5: Serial Console Manager
 app-admin/consul 1.7.2 1.7.3 1.7.4: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.25.0: Generic template rendering and notifications with Consul
