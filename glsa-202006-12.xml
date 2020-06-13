@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-12">
+  <title>GNU Mailutils: Privilege escalation</title>
+  <synopsis>A vulnerability has been found in GNU Mailutils allowing privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">mailutils</product>
+  <announced>2020-06-13</announced>
+  <revised count="1">2020-06-13</revised>
+  <bug>700806</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-mail/mailutils" auto="yes" arch="*">
+      <unaffected range="ge">3.8</unaffected>
+      <vulnerable range="lt">3.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Mailutils are a collection of mail-related utilities, including
+      an IMAP4 server (imap4d).
+    </p>
+  </background>
+  <description>
+    <p>GNU Mailutils runs maidag by default with setuid root permissions.</p>
+  </description>
+  <impact type="high">
+    <p>An attacker can use this to write to arbitrary files as root.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Mailutils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/mailutils-3.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18862">CVE-2019-18862</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-12T21:52:25Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-13T01:51:38Z">sam_c</metadata>
+</glsa>
