@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Library for accessing resources protected by OAuth 2.0"
-HOMEPAGE="https://github.com/google/oauth2client"
-SRC_URI="https://github.com/google/oauth2client/archive/v${PV/_p/-post}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/googleapis/oauth2client"
+SRC_URI="https://github.com/googleapis/oauth2client/archive/v${PV/_p/-post}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${P/_p/-post}
 
 LICENSE="Apache-2.0"
