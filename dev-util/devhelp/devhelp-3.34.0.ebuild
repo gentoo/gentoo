@@ -66,7 +66,7 @@ src_configure() {
 
 src_install() {
 	meson_src_install
-	use gedit && python_optimize "${ED%/}"/usr/$(get_libdir)/gedit/plugins
+	use gedit && python_optimize "${ED}"/usr/$(get_libdir)/gedit/plugins
 }
 
 pkg_postinst() {
