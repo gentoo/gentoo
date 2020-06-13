@@ -22,7 +22,7 @@ BDEPEND="dev-tex/leaflet
 	dev-texlive/texlive-mathscience
 	html? (
 		app-text/recode
-		>=dev-tex/tex4ht-20090115_p0029
+		dev-texlive/texlive-plaingeneric
 	)"
 RDEPEND="!app-doc/pms-bin"
 
