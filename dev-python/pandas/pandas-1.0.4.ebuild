@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..8} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -14,6 +14,7 @@ inherit distutils-r1 eutils flag-o-matic virtualx
 DESCRIPTION="Powerful data structures for data analysis and statistics"
 HOMEPAGE="https://pandas.pydata.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P/_/}.tar.gz"
+S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
@@ -41,10 +42,12 @@ OPTIONAL_DEPEND="
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
-	dev-python/s3fs[${PYTHON_USEDEP}]
-	dev-python/statsmodels[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/s3fs[${PYTHON_USEDEP}]
+		dev-python/statsmodels[${PYTHON_USEDEP}]
+		>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
+	' python3_{6,7})
 	>=dev-python/sqlalchemy-0.8.1[${PYTHON_USEDEP}]
-	>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
 	>=dev-python/xlrd-1.0.0[${PYTHON_USEDEP}]
 	dev-python/xlwt[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
@@ -106,12 +109,18 @@ RDEPEND="${COMMON_DEPEND}
 	full-support? ( ${OPTIONAL_DEPEND} )
 "
 
-S="${WORKDIR}/${P/_/}"
-
 python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^              'sphinx.ext.intersphinx',/d" \
 		-i doc/source/conf.py || die
+
+	# requires package installed
+	sed -e 's:test_register_entrypoint:_&:' \
+		-i pandas/tests/plotting/test_backend.py || die
+
+	# temporary mask to remove cycle on s3fs
+	sed -e 's:test_pickle_s3url_roundtrip:_&:' \
+		-i pandas/tests/io/test_pickle.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -126,13 +135,19 @@ python_compile_all() {
 	fi
 }
 
+src_test() {
+	virtx distutils-r1_src_test
+}
+
 python_test() {
-	pushd  "${BUILD_DIR}"/lib > /dev/null
+	local -x LC_ALL=C.UTF-8
+	pushd  "${BUILD_DIR}"/lib > /dev/null || die
 	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
-	PYTHONPATH=. virtx pytest pandas -v --skip-slow --skip-network \
-		-m "not single"
-	find . -name .pytest_cache -exec rm -r {} + || die
-	popd > /dev/null
+	PYTHONPATH=. pytest pandas -v --skip-slow --skip-network \
+		-m "not single" || die "Tests failed with ${EPYTHON}"
+	find . '(' -name .pytest_cache -o -name .hypothesis ')' \
+		-exec rm -r {} + || die
+	popd > /dev/null || die
 }
 
 python_install_all() {
