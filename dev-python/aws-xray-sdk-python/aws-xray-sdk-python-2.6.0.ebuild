@@ -26,6 +26,7 @@ BDEPEND="
 		dev-python/bottle[${PYTHON_USEDEP}]
 		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-aiohttp[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)"
