@@ -5730,7 +5730,7 @@ dev-perl/Class-Accessor-Lite 0.80.0 0.80.0-r1: A minimalistic variant of Class::
 dev-perl/Class-Adapter 1.80.0-r1 1.90.0: Implementation of the 'Adapter' Design Pattern
 dev-perl/Class-Autouse 2.10.0-r2 2.10.0-r3: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.80.0 0.90.0: Useful base class for deriving other modules
-dev-perl/Class-C3 0.330.0: A pragma to use the C3 method resolution order algortihm
+dev-perl/Class-C3 0.330.0 0.340.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-based class
 dev-perl/Class-C3-XS 0.140.0: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r2: Glue object frameworks together transparently
@@ -15108,7 +15108,7 @@ net-p2p/eiskaltdcpp 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC 
 net-p2p/fms 0.3.82: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1484: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
-net-p2p/go-ethereum 1.8.15: Official golang implementation of the Ethereum protocol
+net-p2p/go-ethereum 1.9.15: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs 0.4.23: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.19 0.4.20 0.4.22: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.1.15: A GTK+ Gnutella client

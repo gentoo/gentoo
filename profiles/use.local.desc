@@ -6784,7 +6784,6 @@ net-p2p/fms:frost - Add support for frost boards
 net-p2p/fms:ssl - Add support for FCP connection over SSL
 net-p2p/freenet:nss - Use nss for crypto operations, if it is the fastest way
 net-p2p/go-ethereum:devtools - Build Ethereum development tools (evm, abigen, puppeth, ...)
-net-p2p/go-ethereum:opencl - Add OpenCL GPU mining support
 net-p2p/ktorrent:bwscheduler - Schedule upload and download limits over a period of a week
 net-p2p/ktorrent:downloadorder - Specify the download order of a multi-file torrent
 net-p2p/ktorrent:infowidget - Displays general information about a torrent in several tabs
