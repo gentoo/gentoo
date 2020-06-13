@@ -25,6 +25,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-lang/perl-5.8.8-r5
 	>=www-client/lynx-2.8.6-r2"
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
