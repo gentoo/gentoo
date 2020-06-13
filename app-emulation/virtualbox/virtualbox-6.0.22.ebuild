@@ -13,12 +13,12 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-6.1.4-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-6.0.22-patches-01.tar.xz"
 
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug doc dtrace headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 CDEPEND="
@@ -167,7 +167,7 @@ src_prepare() {
 
 	# Replace pointless GCC version check with something less stupid.
 	# This is needed for the qt5 version check.
-	sed -e 's@^check_gcc$@cc_maj="$(${CC} -dumpversion | cut -d. -f1)" ; cc_min="$(${CC} -dumpversion | cut -d. -f2)"@' \
+	sed -e 's@^check_gcc$@cc_maj="$(gcc -dumpversion | cut -d. -f1)" ; cc_min="$(gcc -dumpversion | cut -d. -f2)"@' \
 		-i configure || die
 
 	# Disable things unused or split into separate ebuilds
@@ -206,9 +206,6 @@ src_prepare() {
 	if use pax_kernel ; then
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
-
-	eapply "${FILESDIR}"/${PN}-6.0.20-qt-5.15.patch # TODO: upstream,
-	eapply "${FILESDIR}"/${P}-qt-5.15.patch # ... bug #726154
 
 	eapply "${WORKDIR}/patches"
 
@@ -264,13 +261,9 @@ src_compile() {
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
 	MAKE="kmk" emake \
 		VBOX_BUILD_PUBLISHER=_Gentoo \
-		TOOL_GCC3_CC="$(tc-getCC)" TOOL_GCC3_CXX="$(tc-getCXX)" \
-		TOOL_GCC3_AS="$(tc-getCC)" TOOL_GCC3_AR="$(tc-getAR)" \
-		TOOL_GCC3_LD="$(tc-getCXX)" TOOL_GCC3_LD_SYSMOD="$(tc-getLD)" \
-		TOOL_GCC3_CFLAGS="${CFLAGS}" TOOL_GCC3_CXXFLAGS="${CXXFLAGS}" \
-		VBOX_GCC_OPT="${CXXFLAGS}" \
+		TOOL_GXX3_CC="$(tc-getCC)" TOOL_GXX3_CXX="$(tc-getCXX)" \
+		TOOL_GXX3_LD="$(tc-getCXX)" VBOX_GCC_OPT="${CXXFLAGS}" \
 		TOOL_YASM_AS=yasm KBUILD_VERBOSE=2 \
-		VBOX_WITH_VBOXIMGMOUNT=1 \
 		all
 }
 
@@ -312,7 +305,12 @@ src_install() {
 	insinto ${vbox_inst_path}
 	doins -r components
 
-	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,Tunctl,VMMPreload,XPCOMIPCD} vboximg-mount *so *r0 iPxeBaseBin ; do
+	# *.rc files for x86_64 are only available on multilib systems
+	local rcfiles="*.rc"
+	if use amd64 && ! has_multilib_profile ; then
+		rcfiles=""
+	fi
+	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,Tunctl,VMMPreload,XPCOMIPCD} *so *r0 ${rcfiles} iPxeBaseBin ; do
 		vbox_inst ${each}
 	done
 
@@ -337,7 +335,6 @@ src_install() {
 		dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 	done
 	dosym ${vbox_inst_path}/VBoxTunctl /usr/bin/VBoxTunctl
-	dosym ${vbox_inst_path}/vboximg-mount /usr/bin/vboximg-mount
 
 	if use pam ; then
 		# VRDPAuth only works with this (bug #351949)

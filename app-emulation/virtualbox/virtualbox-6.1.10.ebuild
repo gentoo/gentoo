@@ -1,5 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+# $Id: 8881f0924916cef4ba5f7bfa39c3c3d8e02a7704 $
 
 EAPI=7
 
@@ -13,7 +14,7 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-6.1.4-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-6.1.10-patches-01.tar.xz"
 
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0"
@@ -207,9 +208,6 @@ src_prepare() {
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 
-	eapply "${FILESDIR}"/${PN}-6.0.20-qt-5.15.patch # TODO: upstream,
-	eapply "${FILESDIR}"/${P}-qt-5.15.patch # ... bug #726154
-
 	eapply "${WORKDIR}/patches"
 
 	eapply_user
@@ -264,11 +262,8 @@ src_compile() {
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
 	MAKE="kmk" emake \
 		VBOX_BUILD_PUBLISHER=_Gentoo \
-		TOOL_GCC3_CC="$(tc-getCC)" TOOL_GCC3_CXX="$(tc-getCXX)" \
-		TOOL_GCC3_AS="$(tc-getCC)" TOOL_GCC3_AR="$(tc-getAR)" \
-		TOOL_GCC3_LD="$(tc-getCXX)" TOOL_GCC3_LD_SYSMOD="$(tc-getLD)" \
-		TOOL_GCC3_CFLAGS="${CFLAGS}" TOOL_GCC3_CXXFLAGS="${CXXFLAGS}" \
-		VBOX_GCC_OPT="${CXXFLAGS}" \
+		TOOL_GXX3_CC="$(tc-getCC)" TOOL_GXX3_CXX="$(tc-getCXX)" \
+		TOOL_GXX3_LD="$(tc-getCXX)" VBOX_GCC_OPT="${CXXFLAGS}" \
 		TOOL_YASM_AS=yasm KBUILD_VERBOSE=2 \
 		VBOX_WITH_VBOXIMGMOUNT=1 \
 		all
