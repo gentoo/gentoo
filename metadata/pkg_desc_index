@@ -643,7 +643,7 @@ app-arch/innoextract 1.7 1.8: A tool to unpack installers created by Inno Setup
 app-arch/ipkg-utils 1.7.050831-r3: Tools for working with the ipkg binary package format
 app-arch/lbzip2 2.5_p20181227-r1: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
-app-arch/lha 114i-r9: Utility for creating and opening lzh archives
+app-arch/lha 114i-r9 114i_p20201004: Utility for creating and opening lzh archives
 app-arch/libarchive 3.4.2 3.4.3: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.631_p20190619: Long Range ZIP or Lzma RZIP optimized for compressing large files
