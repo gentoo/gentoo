@@ -42,6 +42,10 @@ DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
 
 src_prepare() {
 	default
+
+	# https://github.com/protocolbuffers/protobuf/issues/7413
+	sed -e "/^AC_PROG_CXX_FOR_BUILD$/d" -i configure.ac || die
+
 	eautoreconf
 }
 
