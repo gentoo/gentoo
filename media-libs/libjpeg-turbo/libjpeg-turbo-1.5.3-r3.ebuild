@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools libtool ltprune java-pkg-opt-2 libtool toolchain-funcs multilib-minimal
+inherit autotools libtool java-pkg-opt-2 libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
 HOMEPAGE="https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/"
@@ -109,14 +109,13 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
+	find "${ED}" -name '*.la' -type f -delete || die
 
-	insinto /usr/share/doc/${PF}/html
-	doins -r "${S}"/doc/html/*
+	dodoc -r "${S}"/doc/html
 	newdoc "${WORKDIR}"/debian/changelog changelog.debian
 	if use java; then
-		insinto /usr/share/doc/${PF}/html/java
-		doins -r "${S}"/java/doc/*
 		newdoc "${S}"/java/README README.java
+		docinto html/java
+		dodoc -r "${S}"/java/doc/*
 	fi
 }
