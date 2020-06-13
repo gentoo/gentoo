@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-11">
+  <title>Ansible: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Ansible, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">ansible</product>
+  <announced>2020-06-13</announced>
+  <revised count="1">2020-06-13</revised>
+  <bug>711974</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/ansible" auto="yes" arch="*">
+      <unaffected range="ge">2.9.7</unaffected>
+      <vulnerable range="lt">2.9.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ansible is a radically simple IT automation platform.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Ansible. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ansible users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/ansible-2.9.7"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10684">CVE-2020-10684</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10685">CVE-2020-10685</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1733">CVE-2020-1733</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1735">CVE-2020-1735</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1736">CVE-2020-1736</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1737">CVE-2020-1737</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1738">CVE-2020-1738</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1740">CVE-2020-1740</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1753">CVE-2020-1753</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-15T14:41:54Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-13T01:49:30Z">sam_c</metadata>
+</glsa>
