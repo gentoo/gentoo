@@ -467,11 +467,13 @@ multilib_toolchain_setup() {
 		LD
 		NM
 		OBJDUMP
+		PKG_CONFIG
 		RANLIB
 		READELF
 		STRIP
 		PKG_CONFIG_LIBDIR
 		PKG_CONFIG_PATH
+		PKG_CONFIG_SYSTEM_LIBRARY_PATH
 	)
 
 	# First restore any saved state we have laying around.
@@ -510,12 +512,14 @@ multilib_toolchain_setup() {
 		export LD="$(tc-getLD) $(get_abi_LDFLAGS)"
 		export NM="$(tc-getNM)" # Avoid 'nm', use '${CHOST}-nm'
 		export OBJDUMP="$(tc-getOBJDUMP)" # Avoid 'objdump', use '${CHOST}-objdump'
+		export PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		export RANLIB="$(tc-getRANLIB)" # Avoid 'ranlib', use '${CHOST}-ranlib'
 		export READELF="$(tc-getREADELF)" # Avoid 'readelf', use '${CHOST}-readelf'
 		export STRIP="$(tc-getSTRIP)" # Avoid 'strip', use '${CHOST}-strip'
 		export CHOST=$(get_abi_CHOST $1)
 		export PKG_CONFIG_LIBDIR=${EPREFIX}/usr/$(get_libdir)/pkgconfig
 		export PKG_CONFIG_PATH=${EPREFIX}/usr/share/pkgconfig
+		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${EPREFIX}/usr/$(get_libdir)
 	fi
 }
 

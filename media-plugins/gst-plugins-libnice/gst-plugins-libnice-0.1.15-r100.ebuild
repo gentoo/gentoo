@@ -20,7 +20,7 @@ RDEPEND="
 	media-libs/gst-plugins-base:${SLOT}[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 S=${WORKDIR}/${MY_P}

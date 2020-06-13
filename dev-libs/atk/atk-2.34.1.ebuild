@@ -22,7 +22,7 @@ BDEPEND="
 	gtk-doc? (
 		>=dev-util/gtk-doc-1.25
 		app-text/docbook-xml-dtd:4.3 )
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	>=sys-devel/gettext-0.19.8
 "
 

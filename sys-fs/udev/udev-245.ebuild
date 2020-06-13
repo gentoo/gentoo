@@ -29,7 +29,7 @@ BDEPEND="
 	dev-util/gperf
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets

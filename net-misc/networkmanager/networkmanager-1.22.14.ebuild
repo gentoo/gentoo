@@ -87,7 +87,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.40
 	>=sys-devel/gettext-0.17
 	>=sys-kernel/linux-headers-3.18
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	introspection? (
 		$(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
 		dev-lang/perl

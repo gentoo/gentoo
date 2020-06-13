@@ -20,7 +20,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # Many tests fail from time to time, for example:

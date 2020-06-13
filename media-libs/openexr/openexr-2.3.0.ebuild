@@ -20,7 +20,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2016.09.16
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 RESTRICT="test" # Tests broken upstream doesn't really care about them, bug #656680

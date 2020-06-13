@@ -60,7 +60,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
 	>=sys-devel/gettext-0.18.3[${MULTILIB_USEDEP}]
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	!aqua? ( x11-base/xorg-proto )
 	test? (
 		x11-themes/hicolor-icon-theme
