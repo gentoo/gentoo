@@ -8563,7 +8563,7 @@ dev-python/python-openstackclient 3.18.1: A client for the OpenStack APIs
 dev-python/python-podman 1.6.0: A library to interact with a Podman server
 dev-python/python-poppler-qt5 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
-dev-python/python-redmine 2.0.2: Python interface to the Redmine REST API
+dev-python/python-redmine 2.3.0: Python interface to the Redmine REST API
 dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
@@ -11000,7 +11000,7 @@ games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
 games-emulation/zsnes 1.51-r7 1.51-r8: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies in 2D games
-games-engines/dMagnetic 0.22: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
+games-engines/dMagnetic 0.23: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
 games-engines/devilutionx 1.0.0-r1 1.0.1 9999: Diablo engine for modern operating systems
 games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
