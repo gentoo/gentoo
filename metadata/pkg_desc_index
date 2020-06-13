@@ -1708,12 +1708,12 @@ app-emulation/virt-manager 2.2.1-r3 9999: A graphical tool for administering vir
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19 1.20: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.173.9: VirtIO drivers for Windows virtual machines running on KVM
-app-emulation/virtualbox 5.2.40 6.0.20 6.1.6: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 5.2.40 6.0.20 6.1.6: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-bin 5.2.40.137108 6.0.20.137117 6.1.6.137129: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-extpack-oracle 5.2.40.137108 6.0.20.137117 6.1.6.137129: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 5.2.40 6.0.20 6.1.6: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 5.2.40 6.0.20 6.1.6: Kernel Modules for Virtualbox
+app-emulation/virtualbox 5.2.40 5.2.42 6.0.20 6.0.22 6.1.6 6.1.10: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 5.2.40 5.2.42 6.0.20 6.0.22 6.1.6 6.1.10: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-bin 5.2.40.137108 5.2.42.137960 6.0.20.137117 6.0.22.137980 6.1.6.137129 6.1.10.138449: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-extpack-oracle 5.2.40.137108 5.2.42.137960 6.0.20.137117 6.0.22.137980 6.1.6.137129 6.1.10.138449: PUEL extensions for VirtualBox
+app-emulation/virtualbox-guest-additions 5.2.40 5.2.42 6.0.20 6.0.22 6.1.6 6.1.10: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 5.2.40 5.2.42 6.0.20 6.0.22 6.1.6 6.1.10: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
@@ -10241,7 +10241,7 @@ dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and con
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1 0.5.1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0 0.4.0_p20170219: An automated testing system for bash
-dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1 1.2.1 2.0.0: Fast and correct automated build system
+dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1 1.2.1 2.0.0 3.2.0: Fast and correct automated build system
 dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
 dev-util/bcc 0.11.0 0.12.0-r1 0.13.0 0.14.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
