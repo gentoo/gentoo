@@ -1,0 +1,22 @@
+--- a/src/editor/ui_menus/categorized_item_selection_menu.h
++++ b/src/editor/ui_menus/categorized_item_selection_menu.h
+@@ -124,7 +124,7 @@
+ 
+ 			UI::Checkbox* cb = create_checkbox(horizontal, descriptions_.get(i));
+ 			cb->set_state(tool_->is_enabled(i));
+-			cb->changedto.connect(boost::bind(&CategorizedItemSelectionMenu::selected, this, i, _1));
++			cb->changedto.connect(boost::bind(&CategorizedItemSelectionMenu::selected, this, i, boost::placeholders::_1));
+ 			checkboxes_[i] = cb;
+ 			horizontal->add(cb);
+ 			horizontal->add_space(kSpacing);
+--- a/src/ui_basic/box.cc
++++ b/src/ui_basic/box.cc
+@@ -104,7 +104,7 @@
+ 	int maxbreadth = mindesiredbreadth_;
+ 
+ 	for (uint32_t idx = 0; idx < items_.size(); ++idx) {
+-		int depth, breadth = 0;
++		int depth = 0, breadth = 0;
+ 		get_item_desired_size(idx, &depth, &breadth);
+ 
+ 		totaldepth += depth;
