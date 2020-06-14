@@ -435,6 +435,9 @@ src_install() {
 		| xargs --no-run-if-empty --null sed -i '/Version/s@_Gentoo@@' \
 		|| die
 
+	# Remove dead symlinks (bug #715338)
+	find "${ED}"/usr/$(get_libdir)/${PN} -xtype l -delete || die
+
 	local extensions_dir="${vbox_inst_path}/ExtensionPacks"
 
 	if use vnc ; then
