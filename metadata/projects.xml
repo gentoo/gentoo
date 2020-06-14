@@ -11,6 +11,11 @@
       <name>Alexey Shvetsov</name>
       <role>Member</role>
     </member>
+    <member>
+      <email>expeditioneer@gentoo.org</email>
+      <name>Dennis Lamm</name>
+      <role>Member</role>
+    </member>
   </project>
   <project>
     <email>alsa-bugs@gentoo.org</email>
