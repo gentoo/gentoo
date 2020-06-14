@@ -31,6 +31,7 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/cython-0.29.14-sphinx-update.patch"
+	"${FILESDIR}"/${P}-py39-classmeth.patch
 )
 
 SITEFILE=50cython-gentoo.el
