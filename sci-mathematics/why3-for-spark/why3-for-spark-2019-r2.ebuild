@@ -104,7 +104,7 @@ src_install() {
 		dosym ../../../bin/why3${filename} ${cmdPath}/why3${filename}
 	done
 	rm "${D}"/usr/$(get_libdir)/why3/why3cpulimit
-	dosym ../../../bin/why3cpulimit /usr/$(get_libdir)/why3/why3cpulimit
+	dosym ../../bin/why3cpulimit /usr/$(get_libdir)/why3/why3cpulimit
 
 	einstalldocs
 	docompress -x /usr/share/doc/${PF}/examples
