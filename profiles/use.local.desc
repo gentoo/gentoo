@@ -3981,6 +3981,7 @@ media-fonts/sil-gentium:compact - Also install more compact version of the font.
 media-fonts/terminus-font:a-like-o - Changes view of letter 'a' - a looks like o (see homepage)
 media-fonts/terminus-font:center-tilde - Place the '~' character vertically centered on the line instead of to the top.
 media-fonts/terminus-font:distinct-l - ll2 variant with more distinctive l (lowercase L)
+media-fonts/terminus-font:otf - Install Open Type Font (OTF) (required for HarfBuzz backend)
 media-fonts/terminus-font:pcf - Install Portable Compiled Font (PCF) (required for X11)
 media-fonts/terminus-font:pcf-unicode-only - Remove non-unicode PCF fonts that could be problematic. See bug #520222.
 media-fonts/terminus-font:psf - Install PC Screen Font (PSF) with unicode data (for linux console)
