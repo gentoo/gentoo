@@ -257,14 +257,6 @@ dev-python/restkit
 # Masked for removal in 30 days.
 app-i18n/atokx3
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-15)
-# Dead split packages from the dead PEAK project.  All but one had last
-# release in 2010 or earlier, bytecodeassembler had one bugfix release
-# in 2017.  They're all stuck on Python 2 and have no reverse
-# dependencies except one another.
-# Removal in 30 days.  Bug #723290.
-dev-python/addons
-
 # Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
 # PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
 # version.
