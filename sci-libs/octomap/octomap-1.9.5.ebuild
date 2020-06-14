@@ -54,29 +54,23 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-	if use doc ; then
-		cd "${BUILD_DIR}/octomap"
-		emake docs
-		if use dynamicEDT3D ; then
-			cd "${BUILD_DIR}/dynamicEDT3D"
-			emake docs_dynamicEDT3D
-		fi
-	fi
+	use doc && cmake_build docs docs_dynamicEDT3D
 }
 
 src_install() {
 	cmake_src_install
-	if use doc ; then
-		insinto /usr/share/doc/${PF}/html/octomap
-		doins -r "${S}/octomap/doc/html/"*
-		if use dynamicEDT3D ; then
-			insinto /usr/share/doc/${PF}/html/dynamicEDT3D
-			doins -r "${S}/dynamicEDT3D/doc/html/"*
-		fi
+
+	if use doc; then
+		docinto html/octomap
+		dodoc -r octomap/doc/html/*
+
+		docinto html/dynamicEDT3D
+		dodoc -r dynamicEDT3D/doc/html/*
 	fi
 
-	insinto /usr/share/ros_packages/${PN}
+  insinto /usr/share/ros_packages/${PN}
 	doins "${ED}/usr/share/${PN}/package.xml"
+
 	if use qt5; then
 		insinto /usr/share/ros_packages/octovis
 		doins "${ED}/usr/share/octovis/package.xml"
