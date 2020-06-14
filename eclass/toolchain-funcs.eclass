@@ -73,6 +73,10 @@ tc-getCXX() { tc-getPROG CXX g++ "$@"; }
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the linker
 tc-getLD() { tc-getPROG LD ld "$@"; }
+# @FUNCTION: tc-getSTRINGS
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the strings program
+tc-getSTRINGS() { tc-getPROG STRINGS strings "$@"; }
 # @FUNCTION: tc-getSTRIP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the strip program
@@ -150,6 +154,10 @@ tc-getBUILD_CXX() { tc-getBUILD_PROG CXX g++ "$@"; }
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the linker for building binaries to run on the build machine
 tc-getBUILD_LD() { tc-getBUILD_PROG LD ld "$@"; }
+# @FUNCTION: tc-getBUILD_STRINGS
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the strings program for building binaries to run on the build machine
+tc-getBUILD_STRINGS() { tc-getBUILD_PROG STRINGS strings "$@"; }
 # @FUNCTION: tc-getBUILD_STRIP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the strip program for building binaries to run on the build machine
