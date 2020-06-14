@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ WEBAPP_MANUAL_SLOT="yes"
 DESCRIPTION="Simple webapp to monitor the status of mirrors"
 # The author has passed away: https://www.apache.org/memorials/henk_penning.html
 HOMEPAGE="http://www2.projects.science.uu.nl/csg/mirmon/mirmon.html"
-SRC_URI="https://deb.debian.org/debian/pool/main/m/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://debian/pool/main/m/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
