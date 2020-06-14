@@ -24,7 +24,6 @@ RDEPEND="
 	app-arch/xz-utils
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	dev-cpp/range-v3
 	dev-libs/xxhash
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[jpeg,png,wayland?,X(-)?]
@@ -52,6 +51,8 @@ RDEPEND="
 DEPEND="
 	${PYTHON_DEPS}
 	${RDEPEND}
+	dev-cpp/range-v3
+	=dev-cpp/ms-gsl-3*
 "
 
 BDEPEND="
@@ -91,13 +92,11 @@ src_configure() {
 	# TODO: unbundle header-only libs, ofc telegram uses git versions...
 	# it fals with tl-expected-1.0.0, so we use bundled for now to avoid git rev snapshots
 	# EXPECTED VARIANT
-	# TODO: unbundle GSL, version 3.0.1 required and has nasty googletest dep
 	local mycmakeargs=(
 		-DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON
 		-DDESKTOP_APP_USE_GLIBC_WRAPS=OFF
 		-DDESKTOP_APP_USE_PACKAGED=ON
 		-DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF
-		-DDESKTOP_APP_USE_PACKAGED_GSL=OFF
 		-DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF
 		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
