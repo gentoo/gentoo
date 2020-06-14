@@ -56,8 +56,8 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${D}/usr" ETC_PREFIX="${D}/etc" install
+	emake PREFIX="${D}/usr" ETC_PREFIX="${D}" install
 	if use man; then
-		emake PREFIX="${D}/usr" ETC_PREFIX="${D}/etc" install-doc
+		emake PREFIX="${D}/usr" ETC_PREFIX="${D}" install-doc
 	fi
 }
