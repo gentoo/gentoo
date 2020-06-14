@@ -12,6 +12,9 @@
     <flag name="distinct-l">
       ll2 variant with more distinctive l (lowercase L)
     </flag>
+    <flag name="otf">
+      Install Open Type Font (OTF) (required for HarfBuzz backend)
+    </flag>
     <flag name="pcf">
       Install Portable Compiled Font (PCF) (required for X11)
     </flag>
