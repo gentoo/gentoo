@@ -22,6 +22,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-util/glib-utils
 	virtual/pkgconfig
 "
 
