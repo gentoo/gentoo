@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="A Conway's Life simulator written in GTK+2 - fork from Gtklife"
-HOMEPAGE="http://gtk-apps.org/content/show.php/LucidLife?content=130867"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
