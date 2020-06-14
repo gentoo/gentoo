@@ -470,6 +470,7 @@ multilib_toolchain_setup() {
 		PKG_CONFIG
 		RANLIB
 		READELF
+		STRINGS
 		STRIP
 		PKG_CONFIG_LIBDIR
 		PKG_CONFIG_PATH
@@ -504,6 +505,7 @@ multilib_toolchain_setup() {
 		#
 		# Make sure ${save_restore_variables[@]} list matches below.
 		export CHOST=$(get_abi_CHOST ${DEFAULT_ABI})
+
 		export AR="$(tc-getAR)" # Avoid 'ar', use '${CHOST}-ar'
 		export CC="$(tc-getCC) $(get_abi_CFLAGS)"
 		export CXX="$(tc-getCXX) $(get_abi_CFLAGS)"
@@ -515,7 +517,9 @@ multilib_toolchain_setup() {
 		export PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		export RANLIB="$(tc-getRANLIB)" # Avoid 'ranlib', use '${CHOST}-ranlib'
 		export READELF="$(tc-getREADELF)" # Avoid 'readelf', use '${CHOST}-readelf'
+		export STRINGS="$(tc-getSTRINGS)" # Avoid 'strings', use '${CHOST}-strings'
 		export STRIP="$(tc-getSTRIP)" # Avoid 'strip', use '${CHOST}-strip'
+
 		export CHOST=$(get_abi_CHOST $1)
 		export PKG_CONFIG_LIBDIR=${EPREFIX}/usr/$(get_libdir)/pkgconfig
 		export PKG_CONFIG_PATH=${EPREFIX}/usr/share/pkgconfig
