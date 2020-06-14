@@ -42,8 +42,8 @@ OPTIONAL_DEPEND="
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
+	dev-python/s3fs[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/s3fs[${PYTHON_USEDEP}]
 		dev-python/statsmodels[${PYTHON_USEDEP}]
 		>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
 	' python3_{6,7})
@@ -117,10 +117,6 @@ python_prepare_all() {
 	# requires package installed
 	sed -e 's:test_register_entrypoint:_&:' \
 		-i pandas/tests/plotting/test_backend.py || die
-
-	# temporary mask to remove cycle on s3fs
-	sed -e 's:test_pickle_s3url_roundtrip:_&:' \
-		-i pandas/tests/io/test_pickle.py || die
 
 	distutils-r1_python_prepare_all
 }
