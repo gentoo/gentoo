@@ -44,6 +44,7 @@ FONT_CONF=( "${T}/65-culmus.conf" )
 RDEPEND="!media-fonts/culmus-ancient"
 # >=x11-apps/mkfontscale-1.0.9-r1 as Heavy weight support is required
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	>=x11-apps/mkfontscale-1.0.9-r1
 	fontforge? ( media-gfx/fontforge )"
 
