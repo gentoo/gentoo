@@ -3488,7 +3488,7 @@ dev-go/coveraggregator 0_pre20170216-r1: Cover profile aggregator for golang
 dev-go/delve 1.3.0 1.3.2: A source-level debugger for the Go programming language
 dev-go/fuzzy 0.0.3 0.0.5: Go library that provides fuzzy string matching
 dev-go/get-ego-vendor 0.2.0: Utility to generate EGO_SUM data for ebuilds
-dev-go/go-bindata 1.0.0 3.1.3: A small utility which generates Go code from any file
+dev-go/go-bindata 3.1.3: A small utility which generates Go code from any file
 dev-go/go-bindata-assetfs 1.0.0_p20180223: Serve embedded files from jteeuwen/go-bindata with net/http
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
