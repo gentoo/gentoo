@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
+# Maintainer unresponsive.  Stuck on py3.6.  Pending version bump.
+# Failing tests.
+# Removal in 30 days.  Bug #718990.
+dev-python/hglib
+
+# Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Unmaintained since at least 2014.  The current release is 1.5 dev
 # branch from 2010.  Upstream had a few stable 1.4 releases since
 # but 1.5 seems to be dead.  Multiple build failures reported,
@@ -271,21 +277,6 @@ dev-python/symboltype
 # version.
 # Removal after 2020-06-14.
 <dev-db/postgresql-9.5
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-11)
-# Causes downgrades of multiple Python packages.  Not touched since
-# initial commit, waiting for a bump to the final release.  Maintainer
-# unresponsive.  Upstream recommends installing in a virtualenv.
-# Removal in 30 days.  Bug #710406.
-acct-group/octoprint
-acct-user/octoprint
-www-apps/octoprint
-
-# Brian Dolbec <dolsen@gentoo.org> (2020-05-08)
-# Unmaintained.  Stuck on Python 3.6.  The only revdep
-# is masked for removal.  Newer buildbot no longer depends on it.
-# Removal in 30 days.  Bug #719518.
-dev-python/ramlfications
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-05-02)
 # Included in recent texlive versions. Please uninstall.
