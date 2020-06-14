@@ -16,6 +16,7 @@ INTEL_SNAPSHOT="${PV/_p*}"
 DESCRIPTION="Intel IA32/IA64 microcode update data"
 HOMEPAGE="https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files http://inertiawar.com/microcode/"
 SRC_URI="https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-${INTEL_SNAPSHOT}.tar.gz
+	https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/raw/437f382b1be4412b9d03e2bbdcda46d83d581242/intel-ucode/06-4e-03 -> intel-ucode-sig_0x406e3-rev_0xd6.bin
 	https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-${COLLECTION_SNAPSHOT}.tar.xz"
 
 LICENSE="intel-ucode"
@@ -36,6 +37,12 @@ S=${WORKDIR}
 # Blacklist bad microcode here.
 # 0x000406f1 aka 06-4f-01 aka CPUID 406F1 require newer microcode loader
 MICROCODE_BLACKLIST_DEFAULT="-s !0x000406f1"
+
+# https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/issues/31
+MICROCODE_BLACKLIST_DEFAULT+=" -s !0x000406e3,0xc0,eq:0x00dc"
+
+# https://bugs.gentoo.org/722768
+MICROCODE_BLACKLIST_DEFAULT+=" -s !0x000406e3,0xc0,eq:0x00da"
 
 # In case we want to set some defaults ...
 MICROCODE_SIGNATURES_DEFAULT=""
@@ -60,6 +67,9 @@ src_prepare() {
 		rm -r Intel-Linux-Processor-Microcode-Data* || die
 	fi
 
+	mkdir intel-ucode-old || die
+	cp "${DISTDIR}"/intel-ucode-sig_0x406e3-rev_0xd6.bin "${S}"/intel-ucode-old/ || die
+
 	# Prevent "invalid file format" errors from iucode_tool
 	rm -f "${S}"/intel-ucod*/list || die
 }
@@ -72,6 +82,7 @@ src_install() {
 	MICROCODE_SRC=(
 		"${S}"/intel-ucode/
 		"${S}"/intel-ucode-with-caveats/
+		"${S}"/intel-ucode-old/
 	)
 
 	# Allow users who are scared about microcode updates not included in Intel's official
