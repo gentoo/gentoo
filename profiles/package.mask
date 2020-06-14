@@ -264,7 +264,6 @@ app-i18n/atokx3
 # dependencies except one another.
 # Removal in 30 days.  Bug #723290.
 dev-python/addons
-dev-python/bytecodeassembler
 
 # Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
 # PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
