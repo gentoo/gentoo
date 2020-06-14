@@ -55,12 +55,6 @@ python_compile_all() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} == python3.9 ]]; then
-		# https://github.com/cython/cython/issues/3349
-		einfo "Skipping py3.9 due to known failures"
-		return
-	fi
-
 	tc-export CC
 	# https://github.com/cython/cython/issues/1911
 	local -x CFLAGS="${CFLAGS} -fno-strict-overflow"

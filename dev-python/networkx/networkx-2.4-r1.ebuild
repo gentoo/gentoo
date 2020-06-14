@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"
-HOMEPAGE="http://networkx.github.io/ https://github.com/networkx/networkx"
+HOMEPAGE="https://networkx.github.io/ https://github.com/networkx/networkx"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -39,6 +39,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-py38.patch
+	"${FILESDIR}"/${P}-py39.patch
 )
 
 src_prepare() {

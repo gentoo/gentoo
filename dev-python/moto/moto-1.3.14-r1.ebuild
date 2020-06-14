@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
@@ -59,6 +59,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/moto-1.3.14-newer-botocore.patch"
 	"${FILESDIR}/moto-1.3.14-tests.patch"
+	"${FILESDIR}/moto-1.3.14-py39.patch"
 )
 
 distutils_enable_tests nose
