@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 xdg-utils cmake
 
-DESCRIPTION="A small, lightweight file manager for desktops based on pure Qt"
+inherit cmake git-r3 xdg-utils
+
+DESCRIPTION="Small, lightweight file manager based on pure Qt"
 HOMEPAGE="https://qtfm.eu/"
 EGIT_REPO_URI="https://github.com/rodlie/qtfm/"
 
@@ -13,6 +14,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+dbus ffmpeg imagemagick"
 
+BDEPEND="
+	app-arch/unzip
+	dev-qt/linguist-tools:5
+"
 RDEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -24,20 +29,15 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg )
 	imagemagick? ( >=media-gfx/imagemagick-7:= )
 "
-DEPEND="
-	${RDEPEND}
-	app-arch/unzip
-	dev-qt/linguist-tools:5
-"
-PATCHES=(
-	"${FILESDIR}"/${PN}-99999-cmake.patch
-)
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-99999-cmake.patch )
 
 src_configure() {
-	mycmakeargs=(
-		-DENABLE_DBUS="$(usex dbus)"
-		-DENABLE_FFMPEG="$(usex ffmpeg)"
-		-DENABLE_MAGICK="$(usex imagemagick)"
+	local mycmakeargs=(
+		-DENABLE_DBUS=$(usex dbus)
+		-DENABLE_FFMPEG=$(usex ffmpeg)
+		-DENABLE_MAGICK=$(usex imagemagick)
 	)
 	cmake_src_configure
 }
