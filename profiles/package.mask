@@ -287,12 +287,6 @@ acct-group/octoprint
 acct-user/octoprint
 www-apps/octoprint
 
-# Brian Dolbec <dolsen@gentoo.org> (2020-05-08)
-# Unmaintained.  Stuck on Python 3.6.  The only revdep
-# is masked for removal.  Newer buildbot no longer depends on it.
-# Removal in 30 days.  Bug #719518.
-dev-python/ramlfications
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-05-02)
 # Included in recent texlive versions. Please uninstall.
 # Removal in 30 days.
