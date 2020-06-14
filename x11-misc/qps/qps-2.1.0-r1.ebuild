@@ -23,6 +23,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
+	>=lxqt-base/liblxqt-0.15.0
 "
 RDEPEND="${DEPEND}"
 
