@@ -5,10 +5,12 @@ EAPI=7
 
 inherit meson xdg
 
-MY_PN=Viewnior
 DESCRIPTION="Fast and simple image viewer"
-HOMEPAGE="https://siyanpanayotov.com/project/viewnior/ https://github.com/hellosiyan/Viewnior"
-SRC_URI="https://github.com/hellosiyan/${MY_PN}/archive/${P}.tar.gz"
+HOMEPAGE="
+	https://siyanpanayotov.com/project/viewnior/
+	https://github.com/hellosiyan/Viewnior
+"
+SRC_URI="https://github.com/hellosiyan/${PN^}/archive/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -26,7 +28,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-S="${WORKDIR}/${MY_PN}-${P}"
+S="${WORKDIR}/${PN^}-${P}"
 
 PATCHES=(
 	"${FILESDIR}/0.17-Replace-calls-to-getenv-with-g_getenv.patch"
@@ -36,10 +38,12 @@ PATCHES=(
 src_prepare() {
 	xdg_src_prepare
 
-	# That script would update icon cache and desktop database
-	sed -i "s/meson.add_install_script('meson_post_install.py')//" meson.build || die 'Failed to remove post-install-script invocation from meson.build'
-	# Don't let meson compress the manpage
-	sed -i "s/subdir('man')//" meson.build || die 'Failed to remove manpage compression from meson.build'
+	# That script would update icon cache and desktop database.
+	sed -i "s/meson.add_install_script('meson_post_install.py')//" meson.build \
+		|| die 'Failed to remove post-install-script invocation from meson.build'
+	# Don't let meson compress the manpage.
+	sed -i "s/subdir('man')//" meson.build \
+		|| die 'Failed to remove manpage compression from meson.build'
 }
 
 src_install() {
