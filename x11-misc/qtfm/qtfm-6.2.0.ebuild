@@ -29,6 +29,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-qt-5.15.patch )
+
 src_configure() {
 	eqmake5 \
 		$(usex dbus '' 'CONFIG+=no_dbus CONFIG+=no_tray') \
