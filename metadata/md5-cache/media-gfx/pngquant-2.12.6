@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=media-libs/libpng:0= media-gfx/libimagequant:= sys-libs/zlib:= lcms? ( media-libs/lcms:2 ) test? ( media-libs/lcms:2 ) virtual/pkgconfig
+DEPEND=media-libs/libpng:0= media-gfx/libimagequant:= sys-libs/zlib:= lcms? ( media-libs/lcms:2 ) virtual/pkgconfig
 DESCRIPTION=Command-line utility and library for lossy compression of PNG images
 EAPI=7
 HOMEPAGE=https://pngquant.org/ https://github.com/kornelski/pngquant
@@ -7,8 +7,9 @@ IUSE=cpu_flags_x86_sse2 debug lcms openmp test
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
 LICENSE=GPL-3 HPND rwpng
 RDEPEND=media-libs/libpng:0= media-gfx/libimagequant:= sys-libs/zlib:= lcms? ( media-libs/lcms:2 )
+REQUIRED_USE=test? ( lcms )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/kornelski/pngquant/archive/2.12.6.tar.gz -> pngquant-2.12.6.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=9f24e6e08f36455bd5d994adf34851f1
+_md5_=692b8e7b0292fc3c5753d41c5ce5a7c5
