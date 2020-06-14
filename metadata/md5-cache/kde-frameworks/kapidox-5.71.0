@@ -1,0 +1,14 @@
+BDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] )
+DEFINED_PHASES=compile configure install nofetch prepare setup test unpack
+DESCRIPTION=Framework for building KDE API documentation in a standard format and style
+EAPI=7
+HOMEPAGE=https://kde.org/products/frameworks/
+IUSE=python_single_target_python3_7 python_single_target_python3_8
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=BSD-2
+RDEPEND=app-doc/doxygen python_single_target_python3_7? ( dev-python/jinja[python_targets_python3_7(-)] dev-python/pyyaml[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/jinja[python_targets_python3_8(-)] dev-python/pyyaml[python_targets_python3_8(-)] ) media-gfx/graphviz[python,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?] python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] )
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
+SLOT=5/5.71
+SRC_URI=mirror://kde/stable/frameworks/5.71/kapidox-5.71.0.tar.xz
+_eclasses_=distutils-r1	89b310c534a033a3566e0f26419daa81	kde.org	596b871a241e5fd1e87395541c8831a9	multilib	ba693a7065ee4edc78b3ea02a015bcad	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=762485542270fd0362f0c55c024425d7
