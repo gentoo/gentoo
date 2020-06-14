@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Guideline Support Library implementation by Microsoft"
 HOMEPAGE="https://github.com/Microsoft/GSL"
@@ -30,5 +30,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DGSL_TEST=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
