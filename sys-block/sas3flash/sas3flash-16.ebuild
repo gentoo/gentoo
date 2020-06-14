@@ -16,7 +16,7 @@ RESTRICT="strip fetch mirror"
 BDEPEND="app-arch/unzip"
 QA_PREBUILT="opt/lsi/sas3flash boot/efi/sas3flash.efi"
 
-SRC_URI_BASE="https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_12g_p${PV}_point_release"
+SRC_URI_BASE="https://docs.broadcom.com/docs-and-downloads"
 SRC_URI_PREFIX="${SRC_URI_BASE}/host-bus-adapters/host-bus-adapters-common-files/sas_sata_12g_p${PV}_point_release"
 
 SRC_URI_LINUX="${SRC_URI_PREFIX}/Installer_P${PV}_for_Linux.zip"
@@ -24,7 +24,7 @@ SRC_URI_FREEBSD="${SRC_URI_PREFIX}/Installer_P${PV}_for_FreeBSD.zip"
 SRC_URI_SOLARIS="${SRC_URI_PREFIX}/Installer_P${PV}_for_Solaris.zip"
 SRC_URI_UEFI="${SRC_URI_PREFIX}/Installer_P${PV}_for_UEFI.zip"
 
-DISTFILE_BINS=( "${SRC_URI_LINUX%%*/}" "${SRC_URI_FREEBSD%%*/}" "${SRC_URI_SOLARIS%%*/}" "${SRC_URI_UEFI%%*/}" )
+DISTFILE_BINS=( "${SRC_URI_LINUX##*/}" "${SRC_URI_FREEBSD##*/}" "${SRC_URI_SOLARIS##*/}" "${SRC_URI_UEFI##*/}" )
 DISTFILE_DOC=sas3Flash_quickRefGuide_rev1-0.pdf
 
 SRC_URI="
