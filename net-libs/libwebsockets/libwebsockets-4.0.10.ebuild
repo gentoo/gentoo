@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A flexible pure-C library for implementing network protocols"
 HOMEPAGE="https://libwebsockets.org/"
