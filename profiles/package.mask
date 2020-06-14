@@ -278,13 +278,6 @@ dev-python/symboltype
 # Removal after 2020-06-14.
 <dev-db/postgresql-9.5
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-11)
-# Causes downgrades of multiple Python packages.  Not touched since
-# initial commit, waiting for a bump to the final release.  Maintainer
-# unresponsive.  Upstream recommends installing in a virtualenv.
-# Removal in 30 days.  Bug #710406.
-acct-group/octoprint
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-05-02)
 # Included in recent texlive versions. Please uninstall.
 # Removal in 30 days.
