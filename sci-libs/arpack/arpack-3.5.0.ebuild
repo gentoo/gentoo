@@ -33,7 +33,9 @@ src_prepare() {
 }
 
 src_configure() {
-	append-fflags -fallow-argument-mismatch
+	test-flag-FC -fallow-argument-mismatch &&
+		append-fflags -fallow-argument-mismatch
+
 	econf \
 		--disable-static \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
