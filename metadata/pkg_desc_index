@@ -5129,7 +5129,7 @@ dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing 
 dev-libs/libpwquality 1.4.2: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.3.1 3.4.0 3.5.0: Qt Implementation of XDG Standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
-dev-libs/librdkafka 1.4.0 1.4.2: Apache Kafka C/C++ client library
+dev-libs/librdkafka 1.4.0 1.4.2 1.4.2-r1: Apache Kafka C/C++ client library
 dev-libs/librelp 1.4.0 1.5.0 1.6.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.10.0 2.12.0 2.13.0: Generic library for reporting software bugs
@@ -7829,6 +7829,7 @@ dev-python/freezegun 0.3.15: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 2.4.9 2.4.9-r1: Filesystem abstraction layer
+dev-python/fsspec 0.7.4: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
@@ -8205,7 +8206,7 @@ dev-python/parametrized 0.1: Parameterized testing with any Python test framewor
 dev-python/paramiko 2.7.1: SSH2 protocol library
 dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
 dev-python/parso 0.5.2 0.6.1 0.6.2 0.7.0: a python parser that supports error recovery and round-trip parsing
-dev-python/partd 0.3.8: Appendable key-value storage
+dev-python/partd 0.3.8 1.1.0: Appendable key-value storage
 dev-python/parver 0.3: Parse and manipulate version numbers
 dev-python/passlib 1.7.2: Password hashing framework supporting over 20 schemes
 dev-python/paste 3.2.3 3.4.0 3.4.1: Tools for using a Web Server Gateway Interface stack
@@ -8672,7 +8673,7 @@ dev-python/ruamel-std-pathlib 0.6.4-r1: Ruamel enhancements to pathlib and pathl
 dev-python/ruamel-yaml 0.15.35 0.16.10: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.0: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.26 4.26-r1: Component-based Software-defined Networking Framework
-dev-python/s3fs 0.1.5: Pythonic file interface to S3
+dev-python/s3fs 0.1.5 0.4.2: Pythonic file interface to S3
 dev-python/s3transfer 0.2.0 0.3.1 0.3.3: An Amazon S3 Transfer Manager
 dev-python/sabyenc 3.3.6 4.0.1: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
@@ -14422,7 +14423,7 @@ net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for fr
 net-libs/accounts-qml 0.7-r1: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 6.0.1: Generic Online Banking Interface
-net-libs/axtls 2.1.5: Embedded client/server TLSv1 SSL library and small HTTP(S) server
+net-libs/axtls 2.1.5 2.1.5-r1: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 1.1.2-r2 2.0.1: A multicast protocol to support Bible software shared co-navigation

@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+BDEPEND=dev-util/glib-utils virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
 DEFINED_PHASES=compile configure install test
 DEPEND=!<net-im/pidgin-2.14.0 dev-libs/glib:2 dev-libs/libxml2 sys-libs/ncurses:0=
 DESCRIPTION=Pidgin's GLib Ncurses Toolkit
@@ -11,4 +11,4 @@ RDEPEND=!<net-im/pidgin-2.14.0 dev-libs/glib:2 dev-libs/libxml2 sys-libs/ncurses
 SLOT=0
 SRC_URI=mirror://sourceforge/pidgin/libgnt-2.14.0.tar.xz
 _eclasses_=meson	8f7dc8ed2d76af0b33328789c017e677	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=96de8d8a5eff80812498f5e33eb7a2a3
+_md5_=194ae3680c6596bc08c2bef8ffc1368b
