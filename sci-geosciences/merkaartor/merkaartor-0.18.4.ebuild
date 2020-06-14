@@ -39,7 +39,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.18.3-sharedir-pluginsdir.patch ) # bug 621826
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.18.3-sharedir-pluginsdir.patch # bug 621826
+	"${FILESDIR}"/${P}-qt-5.15.patch # bug 727914
+)
 
 DOCS=( AUTHORS CHANGELOG )
 
