@@ -3,16 +3,17 @@
 
 EAPI=7
 
-inherit cmake git-r3
+inherit cmake
 
 DESCRIPTION="Guideline Support Library implementation by Microsoft"
 HOMEPAGE="https://github.com/Microsoft/GSL"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/Microsoft/GSL.git"
+SRC_URI="https://github.com/Microsoft/GSL/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+S="${WORKDIR}/GSL-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

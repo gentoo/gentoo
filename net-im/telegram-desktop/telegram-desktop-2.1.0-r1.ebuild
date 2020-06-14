@@ -24,8 +24,6 @@ RDEPEND="
 	app-arch/xz-utils
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	>=dev-cpp/ms-gsl-2.1.0
-	dev-cpp/range-v3
 	dev-libs/xxhash
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[jpeg,png,wayland?,X(-)?]
@@ -53,6 +51,8 @@ RDEPEND="
 DEPEND="
 	${PYTHON_DEPS}
 	${RDEPEND}
+	~dev-cpp/ms-gsl-2.1.0
+	dev-cpp/range-v3
 "
 
 BDEPEND="

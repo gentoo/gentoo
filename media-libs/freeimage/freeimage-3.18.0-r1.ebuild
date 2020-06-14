@@ -10,7 +10,7 @@ MY_PV=${PV//.}
 MY_P=${MY_PN}${MY_PV}
 
 DESCRIPTION="Image library supporting many formats"
-HOMEPAGE="http://freeimage.sourceforge.net/"
+HOMEPAGE="https://freeimage.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
 	mirror://sourceforge/${PN}/${MY_P}.pdf"
 
