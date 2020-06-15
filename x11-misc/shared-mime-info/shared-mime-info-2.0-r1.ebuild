@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}"
 DOCS=( HACKING.md NEWS README.md )
 
 src_install() {
-	default
+	meson_src_install
 
 	# in prefix, install an env.d entry such that prefix patch is used/added
 	if use prefix; then
