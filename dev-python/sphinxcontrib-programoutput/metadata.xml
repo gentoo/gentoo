@@ -31,12 +31,8 @@
       https://sphinxcontrib-programoutput.readthedocs.org
     </doc>
     <maintainer>
-      <name>
-        Jason Madden
-      </name>
-      <email>
-        jason@nextthought.com
-      </email>
+      <name>Jason Madden</name>
+      <email>jason@nextthought.com</email>
     </maintainer>
   </upstream>
 </pkgmetadata>
