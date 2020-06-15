@@ -39,6 +39,11 @@ src_install() {
 		echo "XDG_DATA_DIRS=\"${EPREFIX}/usr/share\"" > "${T}"/50mimeinfo || die
 		doenvd "${T}"/50mimeinfo
 	fi
+
+	# Move pkgconfig file to /usr/share/pkgconfig #728404
+	dodir /usr/share/pkgconfig
+	mv "${ED}"/usr/{$(get_libdir),share}/pkgconfig/${PN}.pc || die
+	rm "${ED}"/usr/$(get_libdir) -r || die
 }
 
 pkg_postinst() {
