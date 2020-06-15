@@ -24,6 +24,7 @@ DEPEND=">=media-video/obs-studio-25.0.8-r1
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+PDEPEND="media-video/v4l2loopback"
 
 src_prepare() {
 	sed -i -e '/include(external\/FindLibObs.cmake)/d' -e 's#../UI#UI#' CMakeLists.txt
