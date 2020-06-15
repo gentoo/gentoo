@@ -16916,7 +16916,7 @@ sys-block/ms-sys 2.5.3 2.6.0: A command-line program for writing Microsoft compa
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.18 3.19 3.20 9999: Userland client/server for kernel network block device
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
-sys-block/open-iscsi 2.0.873-r1 2.0.875 2.0.878 2.1.0 2.1.1: A performant, transport independent, multi-platform implementation of RFC3720
+sys-block/open-iscsi 2.0.873-r1 2.0.875 2.0.878-r1 2.1.0 2.1.1: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
 sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3-r1 99999: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
