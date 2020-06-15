@@ -2702,7 +2702,7 @@ app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
 app-text/mupdf 1.16.1: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
-app-text/nfoview 1.26 1.27 1.27.1 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
+app-text/nfoview 1.27.1 1.28 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
 app-text/nuspell 3.0.0 3.1.0 3.1.1: Spell checker library and CLI for complex natural languages
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.26 0.27: GNU Ocrad is an OCR (Optical Character Recognition) program
@@ -8765,7 +8765,7 @@ dev-python/sphinxcontrib-jsmath 1.0.1 1.0.1-r1: Sphinx extension which renders d
 dev-python/sphinxcontrib-napoleon 0.6.1: Allow a different format in dosctrings for better clarity
 dev-python/sphinxcontrib-newsfeed 0.1.4: News Feed extension for Sphinx
 dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search results for sphinx-doc projects
-dev-python/sphinxcontrib-programoutput 0.11 0.15: Extension to sphinx to include program output
+dev-python/sphinxcontrib-programoutput 0.11 0.15 0.16: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.3 1.1.4: Sphinx extension which outputs outputs serialized HTML files
 dev-python/sphinxcontrib-spelling 4.3.0 5.0.0 5.1.0 5.1.1: Sphinx spelling extension
@@ -9416,7 +9416,7 @@ dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST
 dev-ruby/aws-sdk 2.11.79 2.11.488: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-core 2.11.79 2.11.488 3.94.0: Provides API clients for AWS
 dev-ruby/aws-sdk-resources 2.11.79 2.11.488: Official SDK for Amazon Web Services
-dev-ruby/aws-sigv4 1.0.3 1.1.0 1.1.1 1.1.2: Amazon Web Services Signature Version 4 signing library
+dev-ruby/aws-sigv4 1.1.2 1.1.4: Amazon Web Services Signature Version 4 signing library
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
 dev-ruby/backports 3.15.0 3.16.0 3.16.1 3.17.0 3.17.1 3.17.2: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
@@ -14359,7 +14359,7 @@ net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(
 net-im/signal-desktop-bin 1.34.1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.59.0.77 8.60.0.76 8.61.0.77: Instant messaging client, with support for audio and video
-net-im/slack 4.3.2-r2 4.4.2: Team collaboration tool
+net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
 net-im/spectrum2 2.0.12-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.958 1.3.00.5153: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
@@ -17792,7 +17792,7 @@ www-apps/piwigo 2.10.2: a photo gallery software for the web
 www-apps/postfixadmin 3.2.3 3.2.4: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.1.1: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 1.1.6 2.1.11-r1: A simple CalDAV calendar server
-www-apps/redmine 4.1.1: Flexible project management web application using the Ruby on Rails framework
+www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.5.1 1.6.1-r1: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
