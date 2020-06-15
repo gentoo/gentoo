@@ -12373,7 +12373,7 @@ media-fonts/source-pro 20141211 20160608 20170111: Adobe's open source typeface 
 media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
-media-fonts/terminus-font 4.46 4.47 4.48 4.48-r1: A clean fixed font for the console and X11
+media-fonts/terminus-font 4.46 4.47 4.48 4.48-r1 4.48-r2: A clean fixed font for the console and X11
 media-fonts/termsyn 1.8.7: Monospaced font based on terminus and tamsyn
 media-fonts/tex-gyre 2.005 2.501: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
