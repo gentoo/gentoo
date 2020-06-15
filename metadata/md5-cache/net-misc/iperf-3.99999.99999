@@ -1,12 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install unpack
-DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sctp? ( net-misc/lksctp-tools ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sctp? ( net-misc/lksctp-tools )
 DESCRIPTION=A TCP, UDP, and SCTP network bandwidth measurement tool
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/esnet/iperf/
-IUSE=libressl profiling sctp static-libs
+IUSE=libressl sctp static-libs
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sctp? ( net-misc/lksctp-tools )
 SLOT=3
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=f2d049a72ea7dd62946c2c2feec63666
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=0ce4245f5c165cdb7019c37004d1a487
