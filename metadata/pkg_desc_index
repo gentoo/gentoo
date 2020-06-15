@@ -2745,7 +2745,7 @@ app-text/psutils 1.17-r3: PostScript Utilities
 app-text/pylize 1.3b-r2: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 3.0.3: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 1.5.0: A CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 9.0.2 9.1.1-r1 10.0.1: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 9.0.2 9.1.1-r1 10.0.1-r1: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.18: A tabbed document viewer
 app-text/queequeg 0.91-r2: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r3: A documentation metadata library
@@ -12075,7 +12075,7 @@ mail-client/hap 3.7-r1: A terminal mail notification program (replacement for bi
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.13.5 1.14.0-r1 1.14.2: A small but very powerful text-based mail client
+mail-client/mutt 1.13.5 1.14.2 1.14.3: A small but very powerful text-based mail client
 mail-client/mutt-wizard 0_pre20200606 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20180716 20200313 20200320 20200417 20200424 20200501 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
@@ -16735,7 +16735,7 @@ sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
-sys-apps/portage 2.3.99-r2 2.3.100-r1 2.3.101 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.99-r2 2.3.100-r1 2.3.101-r1 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
@@ -17817,7 +17817,7 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0-r1 68.8.0 68.9.0 76.0-r1 76.0.1 77.0.1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.8.0 68.9.0 76.0 76.0.1 77.0.1: Firefox Web Browser
-www-client/google-chrome 83.0.4103.97: The web browser from Google
+www-client/google-chrome 83.0.4103.106: The web browser from Google
 www-client/google-chrome-beta 84.0.4147.45: The web browser from Google
 www-client/google-chrome-unstable 85.0.4168.2: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -17864,7 +17864,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.387: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 83.0.4103.97 84.0.4147.45_beta 85.0.4168.2_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 83.0.4103.106 84.0.4147.45_beta 85.0.4168.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
@@ -18304,7 +18304,7 @@ x11-misc/sddm 0.15.0 0.18.1-r1: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 1-r1 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
-x11-misc/shared-mime-info 1.10-r1 1.15 2.0-r1: The Shared MIME-info Database specification
+x11-misc/shared-mime-info 1.10-r1 1.15 2.0-r2: The Shared MIME-info Database specification
 x11-misc/shutter 0.94.3 0.94.3-r1: Feature-rich screenshot program
 x11-misc/simpleswitcher 20140219 99999999: lightweight EWMH window switcher with features and looks of dmenu
 x11-misc/sisctrl 0.0.20051202 0.0.20051202-r1: tool that allows you to tune SiS drivers from X
