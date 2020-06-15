@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="This plugin adds a second pane showing the playlist"
-HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_EXTRA_PLAYLIST"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.gz"
+HOMEPAGE="https://gmpc.fandom.com/wiki/GMPC_PLUGIN_EXTRA_PLAYLIST"
+SRC_URI="https://download.sarine.nl/Programs/gmpc/0.20.0/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
