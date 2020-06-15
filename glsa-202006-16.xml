@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-16">
+  <title>PCRE2: Denial of service</title>
+  <synopsis>A vulnerability in PCRE2 could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">pcre2</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>717800</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-libs/pcre2" auto="yes" arch="*">
+      <unaffected range="ge">10.34</unaffected>
+      <vulnerable range="lt">10.34</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PCRE2 is a project based on PCRE (Perl Compatible Regular Expressions)
+      which has a new and revised API.
+    </p>
+  </background>
+  <description>
+    <p>PCRE2 has a flaw when handling JIT-compiled regex using the \X pattern.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PCRE2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/pcre2-10.34"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20454">CVE-2019-20454</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-12T14:41:37Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:48:59Z">sam_c</metadata>
+</glsa>
