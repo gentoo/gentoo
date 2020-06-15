@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils linux-info pax-utils toolchain-funcs wxwidgets
+inherit desktop linux-info pax-utils toolchain-funcs wxwidgets
 
 DESCRIPTION="Disk encryption with strong security based on TrueCrypt"
 HOMEPAGE="https://www.veracrypt.fr/en/Home.html"
