@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-18">
+  <title>Bubblewrap: Arbitrary code execution</title>
+  <synopsis>Bubblewrap misuses temporary directories allowing local code
+    execution.
+  </synopsis>
+  <product type="ebuild">bubblerwrap</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>686114</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/bubblewrap" auto="yes" arch="*">
+      <unaffected range="ge">0.4.1</unaffected>
+      <vulnerable range="lt">0.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bubblewrap is an unprivileged sandboxing tool namespaces-powered
+      chroot-like solution.
+    </p>
+  </background>
+  <description>
+    <p>Bubblewrap misuses temporary directories in /tmp as a mount point.</p>
+  </description>
+  <impact type="normal">
+    <p>This flaw may allow possible execution of code or prevention of running
+      Bubblewrap.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Bubblewrap users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/bubblewrap-0.4.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12439">CVE-2019-12439</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-25T21:13:31Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:51:19Z">sam_c</metadata>
+</glsa>
