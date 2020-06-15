@@ -100,8 +100,10 @@ src_install() {
 	dosym ../why3server ${cmdPath}/why3server
 	# Remove duplicated files
 	for filename in config ide realize server session; do
-		rm "${D}"${cmdPath}/why3${filename}
-		dosym ../../../bin/why3${filename} ${cmdPath}/why3${filename}
+		if [[ -e "${D}"${cmdPath}/why3${filename} ]]; then
+			rm "${D}"${cmdPath}/why3${filename}
+			dosym ../../../bin/why3${filename} ${cmdPath}/why3${filename}
+		fi
 	done
 	rm "${D}"/usr/$(get_libdir)/why3/why3cpulimit
 	dosym ../../bin/why3cpulimit /usr/$(get_libdir)/why3/why3cpulimit
