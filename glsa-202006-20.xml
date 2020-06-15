@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-20">
+  <title>Asterisk: Root privilege escalation</title>
+  <synopsis>A vulnerability was discovered in Asterisk which may allow local
+    attackers to gain root privileges. 
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>602722</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">13.32.0-r1</unaffected>
+      <vulnerable range="lt">13.32.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A Modular Open Source PBX System.</p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s Asterisk ebuild does not properly set
+      permissions on its data directories. This only affects OpenRC systems, as
+      the flaw was exploitable via the init script.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>Users should ensure the proper permissions are set as discussed in the
+      referenced bugs. Do not run /etc/init.d/asterisk checkperms.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-13.32.0-r1"
+    </code>
+    
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-15T11:13:35Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:53:36Z">sam_c</metadata>
+</glsa>
