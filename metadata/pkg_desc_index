@@ -12982,7 +12982,7 @@ media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
 media-libs/sdl2-ttf 2.0.14 2.0.15: library that allows you to use TrueType fonts in SDL applications
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
-media-libs/shaderc 2018.0 2019.0-r1 2020.4_pre20200405: Collection of tools, libraries and tests for shader compilation
+media-libs/shaderc 2018.0 2019.0-r1 2020.1: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.8.0: Image and video texturing library
 media-libs/slv2 0.6.6-r3: A library to make the use of LV2 plugins as simple as possible for applications
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
@@ -14770,7 +14770,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 8.1.9 9.0.2-r1 9.1.1-r1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 8.1.9 9.0.2-r1 9.1.1-r1 9.1.2 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -17307,7 +17307,7 @@ sys-kernel/ck-sources 5.4.31 5.4.37: Gentoo's genpatches for Linux , with Con Ko
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.7-r1 4.0.8 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.32 5.4.39 5.4.40 5.4.42 5.4.43 5.4.44 5.4.45 5.4.46 5.6.11 5.6.12 5.6.14 5.6.15 5.6.16 5.6.17 5.6.18: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.39 5.4.40 5.4.42 5.4.43 5.4.44 5.4.45 5.4.46 5.6.11 5.6.12 5.6.14 5.6.15 5.6.16 5.6.17 5.6.18: Pre-built Linux kernel with genpatches
