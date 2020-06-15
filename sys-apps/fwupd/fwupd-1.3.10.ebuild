@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="agent amt consolekit dell gtk-doc elogind minimal introspection +man nvme redfish synaptics systemd test thunderbolt tpm uefi"
+IUSE="agent amt consolekit dell gtk-doc elogind minimal +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( consolekit elogind minimal systemd )
 	dell? ( uefi )
@@ -44,7 +44,6 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/libgpg-error
 	dev-libs/libgudev:=
 	>=dev-libs/libgusb-0.2.9[introspection?]
-	>=dev-libs/libjcat-0.1.0[gpg,pkcs7]
 	>=dev-libs/libxmlb-0.1.13
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
@@ -60,10 +59,15 @@ DEPEND="${PYTHON_DEPS}
 		>=sys-libs/libsmbios-2.4.0
 	)
 	elogind? ( sys-auth/elogind )
+	gpg? (
+		app-crypt/gpgme
+		dev-libs/libgpg-error
+	)
 	!minimal? (
 		>=sys-auth/polkit-0.103
 	)
 	nvme? ( sys-libs/efivar )
+	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
 	redfish? ( sys-libs/efivar )
 	systemd? ( >=sys-apps/systemd-211 )
 	tpm? ( app-crypt/tpm2-tss )
@@ -112,9 +116,12 @@ src_configure() {
 		$(meson_use consolekit)
 		$(meson_use dell plugin_dell)
 		$(meson_use elogind)
+		$(meson_use gpg)
 		$(meson_use gtk-doc gtkdoc)
+		$(meson_use introspection)
 		$(meson_use man)
 		$(meson_use nvme plugin_nvme)
+		$(meson_use pkcs7)
 		$(meson_use redfish plugin_redfish)
 		$(meson_use synaptics plugin_synaptics)
 		$(meson_use systemd)
@@ -122,8 +129,8 @@ src_configure() {
 		$(meson_use thunderbolt plugin_thunderbolt)
 		$(meson_use tpm plugin_tpm)
 		$(meson_use uefi plugin_uefi)
-		# Although our sys-apps/flashrom package now provides
-		# libflashrom.a, meson still can't find it
+		# Requires libflashrom which our sys-apps/flashrom
+		# package does not provide
 		-Dplugin_flashrom="false"
 		# Dependencies are not available (yet?)
 		-Dplugin_modem_manager="false"
