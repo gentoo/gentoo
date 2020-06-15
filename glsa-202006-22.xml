@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-22">
+  <title>OpenJDK, IcedTea: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenJDK and IcedTea,
+    the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">icedtea</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>718720</bug>
+  <bug>720690</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/openjdk-bin" auto="yes" arch="*">
+      <unaffected range="ge">8.252_p09</unaffected>
+      <vulnerable range="lt">8.252_p09</vulnerable>
+    </package>
+    <package name="dev-java/openjdk-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">8.252_p09</unaffected>
+      <vulnerable range="lt">8.252_p09</vulnerable>
+    </package>
+    <package name="dev-java/icedtea-bin" auto="yes" arch="*">
+      <unaffected range="ge">3.16.0</unaffected>
+      <vulnerable range="lt">3.16.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenJDK is a free and open-source implementation of the Java Platform,
+      Standard Edition.
+    </p>
+    
+    <p>IcedTea’s aim is to provide OpenJDK in a form suitable for easy
+      configuration, compilation and distribution with the primary goal of
+      allowing inclusion in GNU/Linux distributions.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenJDK and IcedTea.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenJDK binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/openjdk-bin-8.252_p09"
+    </code>
+    
+    <p>All OpenJDK JRE binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/openjdk-jre-bin-8.252_p09"
+    </code>
+    
+    <p>All IcedTea binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/icedtea-bin-3.16.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2585">CVE-2020-2585</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2585">CVE-2020-2585</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2755">CVE-2020-2755</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2755">CVE-2020-2755</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2756">CVE-2020-2756</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2756">CVE-2020-2756</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2757">CVE-2020-2757</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2757">CVE-2020-2757</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2773">CVE-2020-2773</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2773">CVE-2020-2773</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2781">CVE-2020-2781</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2781">CVE-2020-2781</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2800">CVE-2020-2800</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2800">CVE-2020-2800</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2803">CVE-2020-2803</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2803">CVE-2020-2803</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2805">CVE-2020-2805</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2805">CVE-2020-2805</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2830">CVE-2020-2830</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2830">CVE-2020-2830</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-14T21:46:41Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:56:40Z">sam_c</metadata>
+</glsa>
