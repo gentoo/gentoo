@@ -33,6 +33,10 @@ DEPEND="${RDEPEND}
 # Tests seem to hang forever
 # RESTRICT="test"
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 multilib_src_configure() {
 	local ECONF_SOURCE="${S}"
 	econf \
