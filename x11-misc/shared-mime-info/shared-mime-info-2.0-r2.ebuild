@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( HACKING.md NEWS README.md )
 
+PATCHES=(
+	"${FILESDIR}/${P}-pkgconfig_install_path.patch" #728404
+)
+
 src_install() {
 	meson_src_install
 
@@ -39,11 +43,6 @@ src_install() {
 		echo "XDG_DATA_DIRS=\"${EPREFIX}/usr/share\"" > "${T}"/50mimeinfo || die
 		doenvd "${T}"/50mimeinfo
 	fi
-
-	# Move pkgconfig file to /usr/share/pkgconfig #728404
-	dodir /usr/share/pkgconfig
-	mv "${ED}"/usr/{$(get_libdir),share}/pkgconfig/${PN}.pc || die
-	rm "${ED}"/usr/$(get_libdir) -r || die
 }
 
 pkg_postinst() {
