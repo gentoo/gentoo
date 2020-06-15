@@ -2620,6 +2620,7 @@ app-text/fbpdf 0_p20190202: framebuffer pdf and djvu viewer
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
+app-text/foliate 2.2.1: gtk ebook reader built with gjs
 app-text/getxbook 1.2: Download books from google, amazon, barnes and noble
 app-text/ghostscript-gpl 9.50: Interpreter for the PostScript language and PDF
 app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)

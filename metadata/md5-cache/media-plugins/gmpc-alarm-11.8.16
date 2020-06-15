@@ -3,11 +3,11 @@ DEFINED_PHASES=configure install
 DEPEND=>=media-sound/gmpc-11.8.16
 DESCRIPTION=This plugin can start/stop/pause your music at a preset time
 EAPI=7
-HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_ALARM
+HOMEPAGE=https://gmpc.fandom.com/wiki/GMPC_PLUGIN_ALARM
 IUSE=nls
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=>=media-sound/gmpc-11.8.16
 SLOT=0
-SRC_URI=http://download.sarine.nl/Programs/gmpc/11.8/gmpc-alarm-11.8.16.tar.gz
-_md5_=cacbbc34f7b86bed66e2da9b4d25a859
+SRC_URI=https://download.sarine.nl/Programs/gmpc/11.8/gmpc-alarm-11.8.16.tar.gz
+_md5_=0b1e279956fa5ca8aeebbc9ff356fd8c

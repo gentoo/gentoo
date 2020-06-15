@@ -3,11 +3,11 @@ DEFINED_PHASES=configure install
 DEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2:2
 DESCRIPTION=This plugin uses lyricwiki to fetch lyrics
 EAPI=7
-HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_LYRICWIKI
+HOMEPAGE=https://gmpc.fandom.com/wiki/GMPC_PLUGIN_LYRICWIKI
 IUSE=nls
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2:2
 SLOT=0
-SRC_URI=mirror://sourceforge/musicpd/gmpc-lyricwiki-11.8.16.tar.gz
-_md5_=04850729a966f1f360c7cf8457735dbc
+SRC_URI=https://download.sarine.nl/Programs/gmpc/11.8/gmpc-lyricwiki-11.8.16.tar.gz
+_md5_=c35d62e5de4fb5055ef105ad16382c80
