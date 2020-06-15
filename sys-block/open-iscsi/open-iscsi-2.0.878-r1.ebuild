@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,7 @@ REQUIRED_USE="infiniband? ( rdma ) || ( rdma tcp )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.876-Makefiles.patch"
+	"${FILESDIR}/${PN}-2.0.878-gcc10-fno-common.patch"
 )
 
 pkg_setup() {
