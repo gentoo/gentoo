@@ -31,19 +31,18 @@ DEPEND="
 		>=dev-python/logbook-1.0.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pyyaml-5.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/sqlalchemy-1.3.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/wxpython-4.0.4[webkit,${PYTHON_MULTI_USEDEP}]
+		>=dev-python/wxpython-4.0.6[webkit,${PYTHON_MULTI_USEDEP}]
 	')
 	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/beautifulsoup-4.6.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/markdown2-2.3.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/markdown2-2.3.5[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/packaging-16.8[${PYTHON_MULTI_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/requests-2.0.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/roman-2.0.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/matplotlib-3.1.2[wxwidgets,${PYTHON_MULTI_USEDEP}]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 	')"
 BDEPEND="app-arch/zip"
 
