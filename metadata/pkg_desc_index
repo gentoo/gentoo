@@ -689,7 +689,7 @@ app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
 app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1: Script for unpacking various file formats
-app-arch/unrar 5.9.2: Uncompress rar files
+app-arch/unrar 5.9.2 5.9.3: Uncompress rar files
 app-arch/unrpa 2.3.0: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1: unzipper for pkzip-compressed files
@@ -14374,7 +14374,7 @@ net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 an
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
-net-im/zoom 5.0.413237.0524 5.0.418682.0603: Video conferencing and web conferencing service
+net-im/zoom 5.0.418682.0603 5.1.412382.0614: Video conferencing and web conferencing service
 net-irc/anope 2.0.6 2.0.7: Anope IRC Services
 net-irc/atheme-services 7.2.10_p2-r2: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
