@@ -7233,7 +7233,7 @@ dev-php/PEAR-Console_Getargs 1.4.0: A command-line arguments parser
 dev-php/PEAR-Console_Getopt 1.4.1-r1 1.4.3: Command-line option parser
 dev-php/PEAR-Console_Table 1.3.0-r1 1.3.1: Class that makes it easy to build console style tables
 dev-php/PEAR-Crypt_CHAP 1.5.0-r3: Generating CHAP packets
-dev-php/PEAR-Crypt_GPG 1.6.2 1.6.3: PHP interface to the GNU Privacy Guard (GnuPG)
+dev-php/PEAR-Crypt_GPG 1.6.2 1.6.3 1.6.4: PHP interface to the GNU Privacy Guard (GnuPG)
 dev-php/PEAR-Crypt_HMAC 1.0.1-r2: Calculates RFC 2104 compliant hashes
 dev-php/PEAR-Crypt_HMAC2 1.0.0-r1: Implementation of Hashed Message Authentication Code for PHP5
 dev-php/PEAR-DB 1.9.2-r1 1.9.3 1.10.0: Database abstraction layer for PHP
@@ -7264,7 +7264,7 @@ dev-php/PEAR-Image_Color2 0.1.5-r1: Color conversion and mixing for PHP5
 dev-php/PEAR-Image_GraphViz 1.3.0_p20151104: PHP interface to AT&T's GraphViz tools
 dev-php/PEAR-Image_IPTC 1.0.2-r2: This package provides a mechanism for modifying IPTC header information
 dev-php/PEAR-Image_Text 0.7.0-r1: Advanced text manipulations in images
-dev-php/PEAR-Log 1.13.1: The Log framework provides an abstracted logging system
+dev-php/PEAR-Log 1.13.1 1.13.2: The Log framework provides an abstracted logging system
 dev-php/PEAR-MDB 1.3.0-r2: PEAR MDB combines the PEAR DB and Metabase php database abstraction layers
 dev-php/PEAR-MDB2 2.5.0_beta5-r2: Database Abstraction Layer
 dev-php/PEAR-MDB2_Driver_mssql 1.5.0_beta4-r1: Database Abstraction Layer, mssql driver
@@ -7332,23 +7332,23 @@ dev-php/PHP_TokenStream 1.4.11-r1 3.1.1: Wrapper around PHP's tokenizer extensio
 dev-php/SabreAMF 1.5.0: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
-dev-php/adodb 5.20.14 5.20.15: Database abstraction layer for PHP
+dev-php/adodb 5.20.14 5.20.15 5.20.17: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6: Dependency Manager for PHP
+dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
-dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0: Utility to instantiate objects in PHP without invoking their constructors
+dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1: Utility to instantiate objects in PHP without invoking their constructors
 dev-php/fedora-autoloader 0.2.1 1.0.0 1.0.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
 dev-php/igbinary 3.0.1 3.1.2: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2 4.2.0: Object-oriented graphing library for PHP
-dev-php/json-schema 5.2.8 5.2.9: PHP implementation of JSON schema
+dev-php/json-schema 5.2.8 5.2.9 5.2.10: PHP implementation of JSON schema
 dev-php/jsonlint 1.7.1 1.7.2: JSON Lint for PHP
 dev-php/libchart 1.3: Easy-to-use chart creation library for PHP
-dev-php/libvirt-php 0.5.4 9999: PHP bindings for libvirt
+dev-php/libvirt-php 0.5.4 0.5.5 9999: PHP bindings for libvirt
 dev-php/maxmind-db-reader 1.4.1 1.6.0: PHP reader for the MaxMind database format
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0-r1: Simple yet flexible PHP mock object framework for use in unit testing
@@ -7380,7 +7380,7 @@ dev-php/pecl-propro 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r2: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 2.0.0-r2 2.0.1: A reusable, persistent handle and resource factory API
-dev-php/pecl-redis 5.1.1 5.2.1: PHP extension for interfacing with Redis
+dev-php/pecl-redis 5.1.1 5.2.1 5.2.2: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 2.0.1-r3: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers
@@ -7408,7 +7408,7 @@ dev-php/phpdocumentor-type-resolver 0.2.1: PSR-5 based resolver of Class names, 
 dev-php/phpmd 2.6.0: PHP mess detector
 dev-php/phpspec-prophecy 1.7.0 1.8.0 1.9.0 1.10.0 1.10.1: Highly opinionated mocking framework
 dev-php/phptal 1.3.1: A templating engine for PHP5 that implements Zope Page Templates syntax
-dev-php/phpunit 5.7.15-r3 8.5.0 8.5.1 8.5.2 8.5.4: A PHP Unit Testing framework
+dev-php/phpunit 5.7.15-r3 8.5.0 8.5.1 8.5.2 8.5.4 8.5.5: A PHP Unit Testing framework
 dev-php/phpunit-mock-objects 3.4.3 3.4.3-r1: Mock Object library for PHPUnit
 dev-php/psr-log 1.0.2 1.1.0 1.1.2 1.1.3: Common interface for logging libraries
 dev-php/realpath_turbo 2.0.0: PHP extension to re-enable realpath cache when using open_basedir restriction
@@ -7431,7 +7431,7 @@ dev-php/simpletest 1.1.7: A PHP testing framework
 dev-php/smarty 3.1.33: A template engine for PHP
 dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0 1.5.3: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
-dev-php/swoole 4.2.13 4.4.12 4.4.14 4.4.15 4.4.16: Event-driven asynchronous & concurrent & coroutine networking engine
+dev-php/swoole 4.2.13 4.4.12 4.4.14 4.4.15 4.4.16 4.4.19: Event-driven asynchronous & concurrent & coroutine networking engine
 dev-php/swoole-async 4.4.12 4.4.16: An extension of Swoole, including the async callback style API
 dev-php/symfony-config 2.8.20: Symfony Config Component
 dev-php/symfony-console 2.7.9-r1 2.8.43 2.8.48 2.8.50 2.8.52: Subtree split of the Symfony Console Component
@@ -7445,8 +7445,8 @@ dev-php/tcpdf 6.2.25 6.2.26: TCPDF is a FLOSS PHP class for generating PDF docum
 dev-php/theseer-tokenizer 1.1.0 1.1.3: Convert tokenized PHP source code into XML and other formats
 dev-php/twig 1.40.1-r1 1.42.3 1.42.3-r1: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
-dev-php/xdebug 2.9.4 2.9.5: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.9.4 2.9.5: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug 2.9.4 2.9.5 2.9.6: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.9.4 2.9.5 2.9.6: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1: Restart a CLI process without loading the xdebug extension
 dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
@@ -12497,7 +12497,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.11.9 6.9.11.16 7.0.10.9 7.0.10.16 7.0.10.16-r2 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.11.9 6.9.11.16 6.9.11.19 7.0.10.9 7.0.10.16 7.0.10.16-r2 7.0.10.19 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.3 0.3.4: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
@@ -14269,7 +14269,7 @@ net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1 4.18: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
-net-firewall/shorewall 5.2.4.4 5.2.4.5: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.4.4 5.2.4.5 5.2.5: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13 3.7 3.8 3.9: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
@@ -16734,7 +16734,7 @@ sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
-sys-apps/portage 2.3.99-r2 2.3.100-r1 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.99-r2 2.3.100-r1 2.3.101 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
@@ -17257,7 +17257,7 @@ sys-fs/mtd-utils 1.5.2 2.0.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.18-r2 4.0.23 4.0.24: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.3-r2 0.8.4: Device mapper target autoconfig
-sys-fs/ncdu 1.14.2 1.15: NCurses Disk Usage
+sys-fs/ncdu 1.14.2 1.15 1.15.1: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2017.3.23-r3 2017.3.23.5: Open source read-write NTFS driver that runs under FUSE
 sys-fs/owfs 3.2_p2-r2: Access 1-Wire devices like a filesystem
@@ -17310,7 +17310,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 9999: Gentoo automatic kernel building scr
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.32 5.4.39 5.4.40 5.4.42 5.4.43 5.4.44 5.4.45 5.4.46 5.6.11 5.6.12 5.6.14 5.6.15 5.6.16 5.6.17 5.6.18: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.32 5.4.39 5.4.40 5.4.42 5.4.43 5.4.44 5.4.45 5.4.46 5.6.11 5.6.12 5.6.14 5.6.15 5.6.16 5.6.17 5.6.18: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.222 4.4.223 4.4.224 4.4.225 4.4.226 4.4.227 4.9.221 4.9.225 4.9.226 4.9.227 4.14.178 4.14.182 4.14.183 4.14.184 4.19.120 4.19.126 4.19.127 4.19.128 5.4.38 5.4.44 5.4.45 5.4.46 5.6.16 5.6.17 5.6.18 5.7.0 5.7.1 5.7.2: Full sources including the Gentoo patchset for the 5.7 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.225 4.4.226 4.4.227 4.9.221 4.9.225 4.9.226 4.9.227 4.14.178 4.14.182 4.14.183 4.14.184 4.19.120 4.19.126 4.19.127 4.19.128 5.4.38 5.4.44 5.4.45 5.4.46 5.6.16 5.6.17 5.6.18 5.7.0 5.7.1 5.7.2: Full sources including the Gentoo patchset for the 5.7 kernel tree
 sys-kernel/git-sources 5.8_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -18490,7 +18490,7 @@ x11-plugins/pidgin-libnotify 0.14-r1: pidgin-libnotify provides popups for pidgi
 x11-plugins/pidgin-mbpurple 0.3.0-r2: Pidgin plug-in supporting microblog services like Twitter or identi.ca
 x11-plugins/pidgin-mpris 0.2.6: Gets current song from MPRIS-aware media players
 x11-plugins/pidgin-musictracker 0.4.22: A Pidgin now playing plugin to publicise the songs you are listening
-x11-plugins/pidgin-opensteamworks 1.6.1: Steam protocol plugin for pidgin
+x11-plugins/pidgin-opensteamworks 1.6.1 1.7: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
