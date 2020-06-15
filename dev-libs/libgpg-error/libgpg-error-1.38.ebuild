@@ -26,7 +26,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/gpgrt.h
 )
 
-PATCHES=( "${FILESDIR}/${PN}-1.37-remove_broken_check.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.37-remove_broken_check.patch"
+	"${FILESDIR}/${P}-cross_compile.patch" #726520
+)
 
 src_prepare() {
 	default
