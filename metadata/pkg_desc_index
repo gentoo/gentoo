@@ -18808,7 +18808,7 @@ x11-wm/stumpwm 18.05: Stumpwm is a Window Manager written entirely in Common Lis
 x11-wm/stumpwm-contrib 20180128 99999999: Extension Modules for StumpWM
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
 x11-wm/treewm 0.4.5-r2: WindowManager that arranges the windows in a tree (not in a list)
-x11-wm/twm 1.0.10: X.Org Tab Window Manager
+x11-wm/twm 1.0.10 1.0.11: X.Org Tab Window Manager
 x11-wm/vtwm 5.4.7-r2: TWM descendant that implements a Virtual Desktop
 x11-wm/windowlab 1.40-r1: small and simple window manager of novel design
 x11-wm/windowmaker 0.95.8-r1 0.95.9-r1 9999: The fast and light GNUstep window manager
