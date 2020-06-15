@@ -29,6 +29,8 @@ BDEPEND="dev-tex/leaflet
 	)"
 RDEPEND="!app-doc/pms-bin"
 
+PATCHES=("${FILESDIR}/${PN}-7-Makefile.patch")
+
 src_compile() {
 	# just in case; we shouldn't be generating any fonts
 	export VARTEXFONTS="${T}/fonts"
