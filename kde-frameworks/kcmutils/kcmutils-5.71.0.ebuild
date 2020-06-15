@@ -6,6 +6,7 @@ EAPI=7
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.14.1
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Framework to work with KDE System Settings modules"
