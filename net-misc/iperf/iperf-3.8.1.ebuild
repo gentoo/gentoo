@@ -10,7 +10,7 @@ SRC_URI="https://github.com/esnet/iperf/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint"
-IUSE="libressl profiling sctp static-libs"
+IUSE="libressl sctp static-libs"
 
 DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -25,7 +25,6 @@ DOCS="README.md RELNOTES.md"
 
 src_configure() {
 	econf \
-		$(use_enable profiling) \
 		$(use_enable static-libs static) \
 		$(use_with sctp)
 }
