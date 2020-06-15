@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">oauthlib</remote-id>
-    <remote-id type="github">idan/oauthlib</remote-id>
+    <remote-id type="github">oauthlib/oauthlib</remote-id>
   </upstream>
 </pkgmetadata>
