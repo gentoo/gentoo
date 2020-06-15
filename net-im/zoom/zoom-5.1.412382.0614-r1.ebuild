@@ -68,7 +68,7 @@ src_install() {
 	doins -r json sip timezones translations
 	doins *.pcm *.pem *.sh Embedded.properties version.txt
 	use amd64 && doins icudtl.dat
-	doexe zoom.sh zopen ZoomLauncher
+	doexe zoom zoom.sh zopen ZoomLauncher
 	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 
 	if use bundled-libjpeg-turbo; then
