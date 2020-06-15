@@ -10,4 +10,4 @@ RDEPEND=!libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) geoi
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/pbiering/ipv6calc/archive/2.2.0.tar.gz -> ipv6calc-2.2.0.tar.gz
-_md5_=14fc840d849f52b22c5e02d3dfde8063
+_md5_=d5afa38b7adf5d1e7e7c4d3553ecadd5
