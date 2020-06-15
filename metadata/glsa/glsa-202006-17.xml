@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-17">
+  <title>FAAD2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FAAD2, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">faad2</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>695540</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/faad2" auto="yes" arch="*">
+      <unaffected range="ge">2.9.0</unaffected>
+      <vulnerable range="lt">2.9.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FAAD2 is an open source MPEG-4 and MPEG-2 AAC decoder.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FAAD2. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FAAD2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/faad2-2.9.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19502">CVE-2018-19502</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19503">CVE-2018-19503</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19504">CVE-2018-19504</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20194">CVE-2018-20194</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20195">CVE-2018-20195</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20196">CVE-2018-20196</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20197">CVE-2018-20197</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20198">CVE-2018-20198</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20199">CVE-2018-20199</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20357">CVE-2018-20357</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20358">CVE-2018-20358</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20359">CVE-2018-20359</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20360">CVE-2018-20360</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20361">CVE-2018-20361</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20362">CVE-2018-20362</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15296">CVE-2019-15296</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6956">CVE-2019-6956</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-22T01:42:00Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:50:03Z">sam_c</metadata>
+</glsa>

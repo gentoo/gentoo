@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-14">
+  <title>PEAR Archive_Tar: Remote code execution vulnerability</title>
+  <synopsis>A buffer overflow in the PEAR module Archive_Tar might allow local
+    or remote attacker(s) to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">archive_tar</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>675576</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-php/PEAR-Archive_Tar" auto="yes" arch="*">
+      <unaffected range="ge">1.4.5</unaffected>
+      <vulnerable range="lt">1.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>This class provides handling of tar files in PHP.</p>
+  </background>
+  <description>
+    <p>An issue was discovered in the PEAR module Archive_Tar’s handling of
+      file paths within Tar achives.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local or remote attacker could possibly execute arbitrary code with
+      the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>Avoid handling untrusted Tar files with this package until you have
+      upgraded to a non-vulnerable version.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All PEAR-Archive_Tar users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-php/PEAR-Archive_Tar-1.4.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000888">
+      CVE-2018-1000888
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-22T00:11:26Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:46:02Z">sam_c</metadata>
+</glsa>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-21">
+  <title>Apache Tomcat: Remote code execution</title>
+  <synopsis>A vulnerability has been discovered in Apache Tomcat which could
+    result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">tomcat</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>724344</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/tomcat" auto="yes" arch="*">
+      <unaffected range="ge" slot="7">7.0.104</unaffected>
+      <unaffected range="ge" slot="8.5">8.5.55</unaffected>
+      <vulnerable range="lt" slot="7">7.0.104</vulnerable>
+      <vulnerable range="lt" slot="8.5">8.5.55</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache Tomcat is a Servlet-3.0/JSP-2.2 Container.</p>
+  </background>
+  <description>
+    <p>Apache Tomcat improperly handles deserialization of files under specific
+      circumstances.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache Tomcat 7.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-7.0.104"
+    </code>
+    
+    <p>All Apache Tomcat 8.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-8.5.55"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9484">CVE-2020-9484</uri>
+    <uri link="https://tomcat.apache.org/security-7.html#Fixed_in_Apache_Tomcat_7.0.104">
+      Upstream advisory (7)
+    </uri>
+    <uri link="https://tomcat.apache.org/security-8.html#Fixed_in_Apache_Tomcat_8.5.55">
+      Upstream advisory (8.5)
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-25T12:42:10Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:55:34Z">sam_c</metadata>
+</glsa>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-13">
+  <title>json-c: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in json-c, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">json-c</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>722150</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/json-c" auto="yes" arch="*">
+      <unaffected range="ge">0.14-r3</unaffected>
+      <vulnerable range="lt">0.14-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>json-c is a JSON implementation in C.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in json-c. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote/local attacker could send a specially crafted file possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All json-c users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/json-c-0.14-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12762">CVE-2020-12762</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-20T15:54:46Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:44:00Z">sam_c</metadata>
+</glsa>

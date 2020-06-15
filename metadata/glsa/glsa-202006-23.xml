@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-23">
+  <title>Cyrus IMAP Server: Access restriction bypass</title>
+  <synopsis>An error in Cyrus IMAP Server allows mailboxes to be created with
+    administrative privileges.
+  </synopsis>
+  <product type="ebuild">cyrusimap</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>703630</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/cyrus-imapd" auto="yes" arch="*">
+      <unaffected range="ge">3.0.13</unaffected>
+      <vulnerable range="lt">3.0.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Cyrus IMAP Server is an efficient, highly-scalable IMAP e-mail
+      server.
+    </p>
+  </background>
+  <description>
+    <p>An issue was discovered in Cyrus IMAP Server where sieve script
+      uploading is excessively trusted.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A user can use a sieve script to create any mailbox with administrator
+      privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>Disable sieve script uploading until the upgrade is complete.</p>
+  </workaround>
+  <resolution>
+    <p>All Cyrus IMAP Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/cyrus-imapd-3.0.13"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19783">CVE-2019-19783</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-22T07:13:03Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:58:17Z">sam_c</metadata>
+</glsa>
