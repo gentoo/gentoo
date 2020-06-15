@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202006-15">
+  <title>OpenConnect: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenConnect, the worst
+    of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">openconnect</product>
+  <announced>2020-06-15</announced>
+  <revised count="1">2020-06-15</revised>
+  <bug>719108</bug>
+  <bug>722740</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-vpn/openconnect" auto="yes" arch="*">
+      <unaffected range="ge">8.09-r1</unaffected>
+      <vulnerable range="lt">8.09-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenConnect is a free client for Cisco AnyConnect SSL VPN software.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenConnect. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenConnect users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-vpn/openconnect-8.09-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12105">CVE-2020-12105</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12823">CVE-2020-12823</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-23T13:25:13Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-06-15T15:47:01Z">sam_c</metadata>
+</glsa>
