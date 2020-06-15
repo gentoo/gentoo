@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils linux-info pax-utils toolchain-funcs wxwidgets
+inherit desktop eapi7-ver linux-info pax-utils toolchain-funcs wxwidgets
 
 MY_PV="$(ver_cut 1-2)-Update$(ver_cut 4)"
 DESCRIPTION="Disk encryption with strong security based on TrueCrypt"
