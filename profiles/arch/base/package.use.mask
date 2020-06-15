@@ -1,6 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2020-06-15)
+# Mask flashrom drivers which only work on few architectures:
+#  - internal is presently only supported on amd64/x86 and mipsel,
+#  - the others only work on x86 due to lack of PCI-port I/O support
+sys-apps/flashrom atahpt atapromise internal nic3com nicnatsemi nicrealtek rayer-spi satamv
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Dependency is only keyworded on amd64 and x86
 app-metrics/collectd collectd_plugins_slurm
@@ -192,10 +198,6 @@ media-libs/libbluray bdplus
 # Michał Górny <mgorny@gentoo.org> (2015-03-01)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers steam
-
-# Mike Frysinger <vapier@gentoo.org> (2014-08-04)
-# Mask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom atahpt nic3com nicnatsemi nicrealtek rayer-spi satamv
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64
