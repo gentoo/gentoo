@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
 "
 
-BDEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
@@ -40,22 +40,22 @@ src_prepare() {
 	# reason for removal:
 	# test_requests.py - requires internet access
 	# test_httplib.py - requires internet access
-	# test_transport.py - failing with ebuild somehow, running tests directly via pytest works
-	# django integration tests - failing, also upstream failing when called directly - via tox these are working
+	# test_transport.py - failing somehow, running tests directly via pytest works
+	# django integration tests - failing, also upstream failing when called directly
 	if use test; then
 		rm --recursive \
 			"${S}"/tests/integrations/requests/test_requests.py \
 			"${S}"/tests/integrations/stdlib/test_httplib.py \
 			"${S}"/tests/test_transport.py \
-			"${S}"/tests/integrations/django
+			"${S}"/tests/integrations/django || die
 
 		# disable-auto-enabling-intregrations-tests
-		sed --in-place --expression='s:test_auto_enabling_integrations_catches_import_error:_&:' \
-			tests/test_basics.py
+		sed -i -e 's:test_auto_enabling_integrations_catches_import_error:_&:' \
+			tests/test_basics.py || die
 	fi
 
-	sed --in-place --expression='/sentry_sdk.integrations.django.DjangoIntegration/d' \
-		sentry_sdk/integrations/__init__.py
+	sed -i -e '/sentry_sdk.integrations.django.DjangoIntegration/d' \
+		sentry_sdk/integrations/__init__.py || die
 
 	distutils-r1_src_prepare
 }
