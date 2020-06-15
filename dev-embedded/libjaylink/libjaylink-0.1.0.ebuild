@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.zapb.de/zapb/libjaylink/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 IUSE="static-libs"
 
 DEPEND="virtual/libusb:1"

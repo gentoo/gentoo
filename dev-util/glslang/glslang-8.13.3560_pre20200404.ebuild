@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SNAPSHOT_COMMIT="b5757b95005bbf6b0287096c5b708c5e25645311"
 	SRC_URI="https://github.com/KhronosGroup/${PN}/archive/${SNAPSHOT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~ppc64 x86"
 	S="${WORKDIR}/${PN}-${SNAPSHOT_COMMIT}"
 fi
 

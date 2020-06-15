@@ -4,10 +4,10 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit flag-o-matic distutils-r1 virtualx
+inherit flag-o-matic distutils-r1
 
 DESCRIPTION="Python bindings for SDL multimedia library"
-HOMEPAGE="http://www.pygame.org/"
+HOMEPAGE="https://www.pygame.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
@@ -62,12 +62,10 @@ python_compile() {
 	distutils-r1_python_compile
 }
 
-src_test() {
-	virtx distutils-r1_src_test
-}
-
 python_test() {
 	local -x PYTHONPATH=
+	local -x SDL_VIDEODRIVER=dummy
+	local -x SDL_AUDIODRIVER=disk
 	distutils_install_for_testing
 	script -eqc "${EPYTHON} -m pygame.tests" || die
 }
