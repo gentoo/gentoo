@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jauhien/gs-elpa/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 DEPEND="app-portage/g-sorcery[$(python_gen_usedep 'python*')]
 	dev-python/sexpdata[$(python_gen_usedep 'python*')]"
