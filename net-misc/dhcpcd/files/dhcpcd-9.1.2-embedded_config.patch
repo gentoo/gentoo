@@ -1,0 +1,49 @@
+From 9dc6d4b7c8df8425c9b1e893e86b8463abb2053c Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Mon, 15 Jun 2020 22:04:37 +0100
+Subject: configure: Fix fallout with disabling embedded config
+
+---
+ configure | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/configure b/configure
+index 8398ad69..a3701726 100755
+--- a/configure
++++ b/configure
+@@ -545,15 +545,6 @@ if [ -z "$AUTH" -o "$AUTH" = yes ]; then
+ 	echo "SRCS+=		auth.c" >>$CONFIG_MK
+ fi
+ 
+-if [ -z "$EMBEDDED" -o "$EMBEDDED" = yes ]; then
+-	echo "$DHCPCD_DEFS will be embedded in dhcpcd itself"
+-	echo "DHCPCD_SRCS+=	dhcpcd-embedded.c" >>$CONFIG_MK
+-else
+-	echo "$DHCPCD_DEFS will be installed to $LIBEXECDIR"
+-	echo "CPPFLAGS+=	-DEMBEDDED_CONFIG=\\\"$LIBEXECDIR/dhcpcd-definitions.conf\\\"" >>$CONFIG_MK
+-	echo "EMBEDDEDINSTALL=	_embeddedinstall" >>$CONFIG_MK
+-fi
+-
+ if [ -z "$PRIVSEP" ]; then
+ 	# privilege separation works fine .... except on Solaris
+ 	case "$OS" in
+@@ -665,6 +656,16 @@ EOF
+         rm -f _pledge.c _pledge
+ fi
+ 
++# This block needs to be after the compiler test due to embedded quotes.
++if [ -z "$EMBEDDED" -o "$EMBEDDED" = yes ]; then
++	echo "$DHCPCD_DEFS will be embedded in dhcpcd itself"
++	echo "DHCPCD_SRCS+=	dhcpcd-embedded.c" >>$CONFIG_MK
++else
++	echo "$DHCPCD_DEFS will be installed to $LIBEXECDIR"
++	echo "CPPFLAGS+=	-DEMBEDDED_CONFIG=\\\"$LIBEXECDIR/dhcpcd-definitions.conf\\\"" >>$CONFIG_MK
++	echo "EMBEDDEDINSTALL=	_embeddedinstall" >>$CONFIG_MK
++fi
++
+ if [ "$OS" = linux ]; then
+ 	printf "Testing for nl80211 ... "
+ 	cat <<EOF >_nl80211.c
+-- 
+cgit v1.2.3
+
