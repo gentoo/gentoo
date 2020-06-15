@@ -62,6 +62,8 @@ all_ruby_prepare() {
 
 	# Fixing versions in Gemfile
 	sed -i -e "s/~>/>=/g" Gemfile || die
+	# bug #724464
+	sed -i -e "s/gem 'rails',.*/gem 'rails', '~>5.2.4'/" Gemfile || die
 
 	sed -i -e "/csv/d" Gemfile || die
 	sed -i -e "/group :development do/,/end$/d" Gemfile || die
@@ -78,6 +80,10 @@ all_ruby_prepare() {
 	if ! use markdown ; then
 		sed -i -e "/group :markdown do/,/end$/d" Gemfile || die
 	fi
+	# Additional dependency for Gemfile (#657156)
+	if use fastcgi; then
+		echo "gem 'fcgi'" > Gemfile.local
+	fi
 }
 
 all_ruby_install() {
@@ -85,11 +91,6 @@ all_ruby_install() {
 	rm -r doc appveyor.yml CONTRIBUTING.md README.rdoc || die
 
 	keepdir /var/log/${PN}
-
-	# Additional dependency for Gemfile (#657156)
-	if use fastcgi; then
-		echo "gem \"fcgi\"" > Gemfile.local
-	fi
 
 	insinto "${REDMINE_DIR}"
 	doins -r .
@@ -99,6 +100,7 @@ all_ruby_install() {
 	keepdir "${REDMINE_DIR}/public/plugin_assets"
 
 	fowners -R redmine:redmine \
+		"${REDMINE_DIR}/config.ru" \
 		"${REDMINE_DIR}/config" \
 		"${REDMINE_DIR}/files" \
 		"${REDMINE_DIR}/public/plugin_assets" \

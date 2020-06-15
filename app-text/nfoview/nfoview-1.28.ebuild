@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1 xdg-utils
 
@@ -26,7 +27,7 @@ BDEPEND="${PYTHON_DEPS}
 	sys-devel/gettext"
 DEPEND="dev-python/pygobject:3[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
-	media-fonts/terminus-font"
+	media-fonts/cascadia-code"
 
 pkg_postinst() {
 	xdg_icon_cache_update

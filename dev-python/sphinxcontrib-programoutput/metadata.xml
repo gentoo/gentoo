@@ -13,12 +13,26 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <longdescription>
+  <longdescription lang="en">
   A Sphinx extension to literally insert the output of arbitrary
   commands into documents, helping you to keep your command examples
   up to date.
   </longdescription>
   <upstream>
     <remote-id type="pypi">sphinxcontrib-programoutput</remote-id>
+    <remote-id type="github">NextThought/sphinxcontrib-programoutput</remote-id>
+    <bugs-to>
+      https://github.com/NextThought/sphinxcontrib-programoutput/issues
+    </bugs-to>
+    <changelog>
+      https://raw.githubusercontent.com/NextThought/sphinxcontrib-programoutput/master/CHANGES.rst
+    </changelog>
+    <doc lang="en">
+      https://sphinxcontrib-programoutput.readthedocs.org
+    </doc>
+    <maintainer>
+      <name>Jason Madden</name>
+      <email>jason@nextthought.com</email>
+    </maintainer>
   </upstream>
 </pkgmetadata>
