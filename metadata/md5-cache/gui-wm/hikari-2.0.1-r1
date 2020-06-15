@@ -10,4 +10,4 @@ LICENSE=MIT
 RDEPEND=dev-libs/glib dev-libs/libinput:= dev-libs/libucl gui-libs/wlroots media-libs/libglvnd x11-libs/cairo:=[X,svg] x11-libs/pango:=[X] x11-libs/pixman x11-libs/libxkbcommon:=[X] sys-libs/pam x11-misc/xkeyboard-config
 SLOT=0
 SRC_URI=https://hikari.acmelabs.space/releases/hikari-2.0.1.tar.gz
-_md5_=6f45a8f998999b6e8e4de9ca4b884065
+_md5_=70bee341fb86d7f991e57bbbb0547659
