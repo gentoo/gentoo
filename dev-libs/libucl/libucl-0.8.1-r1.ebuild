@@ -19,7 +19,7 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 
-IUSE="lua +regex sign urls +utils static"
+IUSE="lua +regex sign urls +utils static-libs"
 
 DEPEND="!!dev-libs/ucl
 	lua? ( >=dev-lang/lua-5.1:= )
@@ -53,5 +53,8 @@ src_install() {
 	default
 	DOCS+=( $(usex lua "doc/lua_api.md" "") )
 	einstalldocs
-	use static || find "${ED}" -name "*.la" -delete
+	if ! use static-libs; then
+		find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || \
+			die "error while deleting static library"
+	fi
 }
