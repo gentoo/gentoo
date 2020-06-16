@@ -30,6 +30,8 @@ src_prepare() {
 		-e "/^PREFIX=/s|=.*|=${EPREFIX}/usr|" \
 		-e "/^LIBSODIR=/s|=.*|=\${PREFIX}/$(get_libdir)|" \
 		-e "/^MANDIR=/s|=.*|=\${PREFIX}/share/man|" \
+		-e "/^MANCOMPR=/s|=.*|=cat|" \
+		-e "/^MANX=/s|=.*|=|" \
 		-e "/^\(CC\|LD\)=/s|=.*|=$(tc-getCC)|" \
 		-e "/^CPP=/s|=.*|=$(tc-getCPP)|" \
 		-e "/^RANLIB=/s|=.*|=$(tc-getRANLIB)|" \
