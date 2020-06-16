@@ -6637,7 +6637,7 @@ net-misc/remmina:spice - Support connecting to SPICE-enabled virtual machines
 net-misc/remmina:ssh - Enable support for SSH/SFTP protocol
 net-misc/remmina:telepathy - Enable telepathy support
 net-misc/rsync:stunnel - Provide helper scripts for using rsync via >=net-misc/stunnel-4
-net-misc/rsync:system-zlib - Use system zlib instead of bundled one. This is incompatible with oder rsync releases!
+net-misc/rsync:system-zlib - Use system zlib instead of bundled one. This is incompatible with older rsync releases!
 net-misc/rsync:xxhash - Enable dev-libs/xxhash support for hashing
 net-misc/rygel:tracker - Install dependencies for the tracker plugin
 net-misc/rygel:transcode - Install dependencies for transcoding support
