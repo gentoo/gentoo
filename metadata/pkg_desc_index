@@ -7517,7 +7517,7 @@ dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance a
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/asteval 0.9.18: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
-dev-python/astroid 2.3.3-r2: Abstract Syntax Tree for logilab packages
+dev-python/astroid 2.3.3-r2 2.4.2: Abstract Syntax Tree for logilab packages
 dev-python/astunparse 1.6.2 1.6.3: Astun parser for python
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
@@ -8002,7 +8002,7 @@ dev-python/kombu 4.6.3 4.6.8: AMQP Messaging Framework for Python
 dev-python/lark-parser 0.7.8: Python module to propose a modern general-purpose parsing library for Python
 dev-python/lazr-config 2.2.2: Create configuration schemas, and process and validate configurations.
 dev-python/lazr-delegates 2.0.4: Easily write objects that delegate behavior
-dev-python/lazy-object-proxy 1.4.3: A fast and thorough lazy object proxy
+dev-python/lazy-object-proxy 1.4.3 1.5.0: A fast and thorough lazy object proxy
 dev-python/ldap3 2.7: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 2.4.1: A connection pool for python-ldap
 dev-python/lesscpy 0.14.0: A compiler written in Python for the LESS language
@@ -8375,7 +8375,7 @@ dev-python/pylama 7.7.1: Code audit tool for python
 dev-python/pylast 1.9.0 3.2.1: Python interface to last.fm and other api-compatible websites
 dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.4.4-r1: Python code static checker
+dev-python/pylint 2.4.4-r1 2.5.3: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pylzma 0.4.9: Python bindings for the LZMA compression library
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
