@@ -30,7 +30,9 @@ src_prepare() {
 		-e "/^PREFIX=/s|=.*|=${EPREFIX}/usr|" \
 		-e "/^LIBSODIR=/s|=.*|=\${PREFIX}/$(get_libdir)|" \
 		-e "/^MANDIR=/s|=.*|=\${PREFIX}/share/man|" \
-		-e "s|=gcc|=$(tc-getCC)|" \
-		-e "/^AR=/s|=ar|=$(tc-getAR)|" \
+		-e "/^\(CC\|LD\)=/s|=.*|=$(tc-getCC)|" \
+		-e "/^CPP=/s|=.*|=$(tc-getCPP)|" \
+		-e "/^RANLIB=/s|=.*|=$(tc-getRANLIB)|" \
+		-e "/^AR=/s|=.*|=$(tc-getAR)|" \
 		Makefile || die
 }
