@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>hattya@gentoo.org</email>
+		<name>Akinori Hattori</name>
 	</maintainer>
 	<longdescription lang="en">
 		Yash, yet another shell, is a POSIX-compliant command line shell
