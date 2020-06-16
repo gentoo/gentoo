@@ -91,7 +91,7 @@ src_install() {
 	if use examples ; then
 		exeinto /usr/share/rsync
 		doexe support/*
-		rm -f "${ED%/}"/usr/share/rsync/{Makefile*,*.c}
+		rm -f "${ED}"/usr/share/rsync/{Makefile*,*.c}
 	fi
 
 	eprefixify "${ED}"/etc/{,xinetd.d}/rsyncd*
