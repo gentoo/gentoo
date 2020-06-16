@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>gentoo@aisha.cc</email>
+		<name>Aisha Tammy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="mpd">Enable support for the Music Player Daemon</flag>
 		<flag name="network">Enable libnl support for network related features</flag>
+		<flag name="systemd">Install systemd user service unit</flag>
 		<flag name="tray">Enable support for tray</flag>
+		<flag name="udev">Enable libudev support for udev related features</flag>
+		<flag name="gtk-layer-shell">Use gtk-layer-shell library for popups support</flag>
+		<flag name="pulseaudio">Enable support for pulseaudio</flag>
+		<flag name="man-pages">Generate and install man pages</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Alexays/Waybar</remote-id>
