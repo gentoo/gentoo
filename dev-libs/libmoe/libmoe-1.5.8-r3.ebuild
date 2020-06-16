@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 inherit toolchain-funcs
 
@@ -17,7 +17,7 @@ IUSE="static-libs"
 RDEPEND="dev-lang/perl"
 DEPEND="${RDEPEND}"
 
-HTML_DOCS=( libmoe.shtml )
+HTML_DOCS=( ${PN}.shtml )
 PATCHES=(
 	"${FILESDIR}/${PN}-gentoo.patch"
 	"${FILESDIR}/${PN}-gcc-5.patch"  # taken from Debian
