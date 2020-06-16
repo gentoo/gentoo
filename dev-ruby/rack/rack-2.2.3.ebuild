@@ -2,14 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_DOCDIR="doc"
-RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc SPEC"
+RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc SPEC.rdoc"
 
 RUBY_FAKEGEM_GEMSPEC="rack.gemspec"
-
-RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
@@ -19,7 +17,7 @@ SRC_URI="https://github.com/rack/rack/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend "virtual/ruby-ssl"
@@ -35,7 +33,7 @@ ruby_add_bdepend "test? (
 # make them dependencies at all.
 
 # Block against versions in older slots that also try to install a binary.
-RDEPEND="${RDEPEND} !<dev-ruby/rack-1.6.4-r2:1.6 !!<dev-ruby/rack-2.0.8-r1:2.0"
+RDEPEND="${RDEPEND} !<dev-ruby/rack-1.6.4-r2:1.6 !!<dev-ruby/rack-2.0.8-r1:2.0 !!<dev-ruby/rack-2.1.1-r1:2.1"
 
 all_ruby_prepare() {
 	# The build system tries to generate the ChangeLog from git. Create
@@ -43,7 +41,7 @@ all_ruby_prepare() {
 	touch ChangeLog || die
 
 	# Avoid development dependency
-	sed -i -e '/minitest-sprint/ s:^:#:' rack.gemspec || die
+	sed -i -e '/minitest-sprint/ s:^:#:' -e "s:require_relative ':require './:" rack.gemspec || die
 }
 
 each_ruby_test() {

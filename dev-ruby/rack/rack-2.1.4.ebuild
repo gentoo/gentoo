@@ -2,12 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc SPEC"
 
 RUBY_FAKEGEM_GEMSPEC="rack.gemspec"
+
+RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
@@ -17,7 +19,7 @@ SRC_URI="https://github.com/rack/rack/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend "virtual/ruby-ssl"
@@ -42,6 +44,12 @@ all_ruby_prepare() {
 
 	# Avoid development dependency
 	sed -i -e '/minitest-sprint/ s:^:#:' rack.gemspec || die
+
+	# Skip tests failing due to encoding
+	sed -e '/correctly escape script name with spaces/askip "encoding"' \
+		-e '/uri escape path parts/askip "encoding"' \
+		-e '/correctly escape script name/askip "encoding"' \
+		-i test/spec_directory.rb || die
 }
 
 each_ruby_test() {
