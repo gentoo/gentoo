@@ -12,7 +12,7 @@ SRC_URI="http://pub.ks-and-ks.ne.jp/prog/pub/${P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE=""
+IUSE="static-libs"
 
 RDEPEND="dev-lang/perl"
 DEPEND="${RDEPEND}"
@@ -37,4 +37,9 @@ src_prepare() {
 		-e "/^RANLIB=/s|=.*|=$(tc-getRANLIB)|" \
 		-e "/^AR=/s|=.*|=$(tc-getAR)|" \
 		Makefile || die
+}
+
+src_install() {
+	default
+	use static-libs || find "${ED}" -name '*.a' -delete || die
 }
