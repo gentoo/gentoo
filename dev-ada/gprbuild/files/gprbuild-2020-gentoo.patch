@@ -272,3 +272,15 @@
      </config>
    </configuration>
  
+--- a/share/gprconfig/linker.xml	2020-06-16 22:13:38.508782578 +0200
++++ b/share/gprconfig/linker.xml	2020-06-16 22:14:32.693966110 +0200
+@@ -112,6 +112,9 @@
+    for Object_Lister use ("nm", "-g");
+    for Object_Lister_Matcher use " [TDRB] (.*)";
+ 
++   LDFLAGS := External_As_List ("LDFLAGS", " ");
++   for Leading_Library_Options use LDFLAGS;
++
+    package Linker is
+       for Export_File_Format use "GNU";
+       for Export_File_Switch use "-Wl,--version-script=";
