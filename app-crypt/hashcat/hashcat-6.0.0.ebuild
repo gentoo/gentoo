@@ -1,24 +1,36 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils pax-utils multilib
 
 DESCRIPTION="World's fastest and most advanced password recovery utility"
 HOMEPAGE="https://github.com/hashcat/hashcat"
-SRC_URI="https://github.com/hashcat/hashcat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+if [ "${PV}" = "9999" ]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/hashcat/hashcat.git"
+else
+	#this doesn't work for me, so it doesn't get keywords
+	#KEYWORDS="~amd64"
+	SRC_URI="https://github.com/hashcat/hashcat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+fi
 
-IUSE="video_cards_nvidia"
+IUSE="brain video_cards_nvidia"
 DEPEND="virtual/opencl
 	app-arch/lzma
+	brain? ( dev-libs/xxhash )
 	video_cards_nvidia? ( >x11-drivers/nvidia-drivers-367.0 )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	#remove bundled stuff
+	rm -r deps/OpenCL-Headers || die "Failed to remove bundled OpenCL Headers"
+	rm -r deps/xxHash || die "Failed to remove bundled xxHash"
+	#rm -r deps/LZMA-SDK || die "Failed to remove bundled LZMA-SDK"
+	#rm -r deps || die "Failed to remove bundled deps"
 	#do not strip
 	sed -i "/LFLAGS                  += -s/d" src/Makefile
 	#do not add random CFLAGS
@@ -31,7 +43,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake SHARED=1 PRODUCTION=1 ENABLE_BRAIN=0 SYSTEM_LZMA_SDK=0
+	emake SHARED=1 PRODUCTION=1 ENABLE_BRAIN=$(usex brain 1 0) USE_SYSTEM_LZMA=0 USE_SYSTEM_OPENCL=1 USE_SYSTEM_XXHASH=1 VERSION_PURE="${PV}"
 	pax-mark -mr hashcat
 }
 
@@ -53,5 +65,5 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" SHARED=1 PRODUCTION=1 ENABLE_BRAIN=0 SYSTEM_LZMA_SDK=0 install
+	emake DESTDIR="${ED}" SHARED=1 PRODUCTION=1 ENABLE_BRAIN=$(usex brain 1 0) USE_SYSTEM_LZMA=0 USE_SYSTEM_OPENCL=1 USE_SYSTEM_XXHASH=1 VERSION_PURE="${PV}" install
 }
