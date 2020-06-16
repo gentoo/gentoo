@@ -81,6 +81,7 @@ RDEPEND="
 		dev-perl/XML-Twig
 	)
 	mythmusic? (
+		dev-qt/qtwebkit:5
 		media-libs/flac
 		media-libs/libogg
 		media-libs/libvorbis
