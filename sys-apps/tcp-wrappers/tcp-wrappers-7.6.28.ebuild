@@ -60,6 +60,8 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
+	# https://bugs.gentoo.org/728348
+	unset STRINGS
 	temake all
 }
 
