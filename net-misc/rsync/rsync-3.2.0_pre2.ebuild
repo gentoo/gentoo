@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit flag-o-matic prefix systemd
+PYTHON_COMPAT=( python3_{6,7,8} )
+
+inherit flag-o-matic prefix python-any-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
@@ -32,7 +34,16 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
+BDEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-python/commonmark[${PYTHON_USEDEP}]
+	')"
+
 S="${WORKDIR}/${P/_/}"
+
+python_check_deps() {
+	has_version "dev-python/commonmark[${PYTHON_USEDEP}]"
+}
 
 src_configure() {
 	use static && append-ldflags -static
@@ -80,7 +91,7 @@ src_install() {
 	if use examples ; then
 		exeinto /usr/share/rsync
 		doexe support/*
-		rm -f "${ED%/}"/usr/share/rsync/{Makefile*,*.c}
+		rm -f "${ED}"/usr/share/rsync/{Makefile*,*.c}
 	fi
 
 	eprefixify "${ED}"/etc/{,xinetd.d}/rsyncd*
