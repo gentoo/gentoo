@@ -29,7 +29,6 @@ BDEPEND="
 DEPEND="
 	>=dev-cpp/gtkmm-3.22.0:=
 	dev-libs/jsoncpp:=
-	dev-libs/libinput:=
 	dev-libs/libsigc++:2
 	>=dev-libs/libfmt-5.3.0:=
 	dev-libs/wayland
