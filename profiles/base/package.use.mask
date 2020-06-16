@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@cmpct.info> (2020-16-06)
+# Doc build broken for now
+# Bug #679184
+media-libs/aubio doc
+
 # Stephan Hartmann <stha09@googlemail.com> (2020-16-06)
 # Mostly intended for debugging and development,
 # not recommended for general use. Build is also often
