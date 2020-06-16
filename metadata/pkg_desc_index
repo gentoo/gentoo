@@ -2528,7 +2528,7 @@ app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell usin
 app-shells/tcsh 6.20.00 6.21.00-r1: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.27 3.28: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
-app-shells/yash 2.48 2.49: Yash is a POSIX-compliant command line shell
+app-shells/yash 2.49 2.50: Yash is a POSIX-compliant command line shell
 app-shells/zsh 5.8 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.31.0 9999: Additional completion definitions for Zsh
 app-shells/zsh-syntax-highlighting 0.7.0_beta1 0.7.1: Fish shell like syntax highlighting for zsh
@@ -10381,7 +10381,7 @@ dev-util/github-cli 0.8.0 0.9.0-r1 9999: GitHub CLI
 dev-util/glade 3.22.2: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.62.6 2.64.3: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
-dev-util/glslang 7.12.3353_pre20191027-r2 8.13.3559 8.13.3560_pre20200404 8.13.3743 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
+dev-util/glslang 7.12.3353_pre20191027-r2 8.13.3559 8.13.3560_pre20200404 8.13.3743-r1 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1726: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.34.1-r1: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.32.1: Documentation for developing for the GNOME desktop environment
