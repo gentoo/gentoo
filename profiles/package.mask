@@ -247,12 +247,6 @@ sci-chemistry/nmrdepaker
 # Removal in 30 days.  Bug #544228.
 dev-python/restkit
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-17)
-# Depends on deprecated x11-libs/pangox-compat, commercial software that
-# since 2017 does no longer support Linux. Bugs #694920, #720848
-# Masked for removal in 30 days.
-app-i18n/atokx3
-
 # Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
 # PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
 # version.
