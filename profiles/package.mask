@@ -75,13 +75,6 @@ net-libs/nDPI
 =media-libs/alsa-lib-1.2.3
 =media-sound/alsa-utils-1.2.3
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
-# This version has critical changes.
-# Do NOT unmask it unless you are completly
-# sure about what you are doing!
-# This can make your system unbootable!
-~sys-libs/pam-1.4.0
-
 # Aaron Bauman <bman@gentoo.org> (2020-06-07)
 # py2 only. dead upstream. m-n. rdep.
 # Masked for removal in 15 days
