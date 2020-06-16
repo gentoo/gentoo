@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Stephan Hartmann <stha09@googlemail.com> (2020-16-06)
+# Mostly intended for debugging and development,
+# not recommended for general use. Build is also often
+# broken.
+www-client/chromium component-build
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # requires clisp whichis keyworded on fewer arches
 app-text/texlive-core xindy
