@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-boehm-gc.patch
 	"${FILESDIR}"/${PN}-gcc-4.4.patch
 	"${FILESDIR}"/${PN}-gcc-4.5.patch
+	"${FILESDIR}"/${PN}-gcc-10.patch
 	"${FILESDIR}"/${PN}-glibc-2.14.patch
 	"${FILESDIR}"/${PN}-openssl-1.1.patch
 	"${FILESDIR}"/${PN}-rc_name.patch
