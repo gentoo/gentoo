@@ -481,7 +481,7 @@ app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirro
 app-admin/github-backup-utils 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0 2.18.0 2.19.1 2.20.2: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.20: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.10-r2 2.3.11 2.3.11-r1 9999: Single process stack of various system monitors
-app-admin/glance 19.0.2 20.0.0 2019.2.9999 2020.1.9999: Services for discovering, registering, and retrieving VM images
+app-admin/glance 19.0.2 19.0.3 20.0.0 2019.2.9999 2020.1.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-abrt 1.2.6 1.2.7: A utility for viewing problems that have occurred with the system
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
@@ -2767,7 +2767,7 @@ app-text/sdcv 0.5.2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r7: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r15: Python interface to SGML software in a DocBook/OpenJade env
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
-app-text/sigil 0.9.16-r1 0.9.18 1.0.0 1.1.0 1.2.1: Multi-platform WYSIWYG ebook editor for ePub format
+app-text/sigil 0.9.16-r1 1.2.1-r1: Multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/simple-fb2-reader 1.1.2 1.1.3: A simple gtk3 reader for fb2 ebooks
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
@@ -8517,7 +8517,7 @@ dev-python/python-fastimport 0.9.8: Library for parsing the fastimport VCS seria
 dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gammu 2.11: Python bindings for Gammu
 dev-python/python-gflags 3.1.2-r1: Google's Python argument parsing library
-dev-python/python-glanceclient 2.16.0: A client for the OpenStack Glance API
+dev-python/python-glanceclient 2.16.0 2.17.1: A client for the OpenStack Glance API
 dev-python/python-gnupg 0.4.5 0.4.6: A Python wrapper for GnuPG
 dev-python/python-heatclient 1.17.0: OpenStack Orchestration API Client Library
 dev-python/python-iptables 0.13.0: Python bindings for iptables
@@ -8547,7 +8547,7 @@ dev-python/python-musicbrainz-ngs 0.6 0.7.1: Python bindings for the MusicBrainz
 dev-python/python-nbxmpp 0.6.10-r1: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
 dev-python/python-neutronclient 6.12.1 7.1.1: A client for the OpenStack Quantum API
-dev-python/python-novaclient 13.0.2: A client for the OpenStack Nova API
+dev-python/python-novaclient 13.0.2 15.1.1: A client for the OpenStack Nova API
 dev-python/python-ntpdshm 0.2.1: Python interface to ntpd shared memory driver 28
 dev-python/python-octaviaclient 1.8.0: A client for the OpenStack Zun API
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
@@ -12909,7 +12909,7 @@ media-libs/libyami 1.0.1 1.1.0 1.2.0 1.3.0 9999: Yet Another Media Infrastructur
 media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.6: Library to make the use of LV2 plugins as simple as possible for applications
-media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
+media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 9999: Linux Studio Plugins
 media-libs/lv2 1.16.0-r1 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
@@ -13578,7 +13578,7 @@ media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.66 1.67: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
-media-sound/pulseeffects 4.7.2-r1 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 4.7.2-r1 4.7.3 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.0 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.21.0 0.22.0: Qt5 GUI ALSA tools: mixer, configuration browser
@@ -17032,7 +17032,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 15.0.2 15.1.0 16.0.0 2019.2.9999 2020.1.9999: A virtual network service for Openstack
-sys-cluster/nova 20.2.0 21.0.0 2019.2.9999 2020.1.9999: Cloud computing fabric controller
+sys-cluster/nova 20.2.0 20.3.0 21.0.0 2019.2.9999 2020.1.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3: A high-performance message passing library (MPI)
