@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Offline documentation browser inspired by Dash"
 HOMEPAGE="https://zealdocs.org/"
@@ -12,7 +12,6 @@ SRC_URI="https://github.com/zealdocs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
 IUSE="vanilla"
 
 DEPEND="
@@ -33,13 +32,16 @@ RDEPEND="
 	x11-themes/hicolor-icon-theme
 "
 
+PATCHES=(
+	"${FILESDIR}/0001-libs-enforce-static-linking-of-internal-libs.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
+)
+
 src_prepare() {
-	default
-	eapply "${FILESDIR}/0001-libs-enforce-static-linking-of-internal-libs.patch"
 	if ! use vanilla; then
-		eapply "${FILESDIR}/0002-settings-disable-checking-for-updates-by-default.patch"
+		PATCHES+=( "${FILESDIR}/0002-settings-disable-checking-for-updates-by-default.patch" )
 	fi
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 pkg_postinst() {
