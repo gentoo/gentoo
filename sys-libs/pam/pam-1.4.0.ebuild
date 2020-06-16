@@ -33,7 +33,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-PDEPEND="sys-auth/pambase"
+PDEPEND=">=sys-auth/pambase-20200616"
 
 S="${WORKDIR}/linux-${P}"
 
