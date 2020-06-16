@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="tk"
 
 inherit cmake python-single-r1 xdg-utils
@@ -23,9 +23,9 @@ RDEPEND="
 	app-text/hunspell:=
 	dev-libs/libpcre:3=[pcre16]
 	$(python_gen_cond_dep \
-		'dev-python/css-parser[${PYTHON_MULTI_USEDEP}]
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		dev-python/six[${PYTHON_MULTI_USEDEP}]')
+		'dev-python/css-parser[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]')
 	>=dev-qt/qtconcurrent-5.12:5
 	>=dev-qt/qtcore-5.12:5
 	>=dev-qt/qtgui-5.12:5
@@ -34,12 +34,12 @@ RDEPEND="
 	>=dev-qt/qtwidgets-5.12:5
 	sys-libs/zlib[minizip]
 	plugins? ( $(python_gen_cond_dep \
-		'dev-python/chardet[${PYTHON_MULTI_USEDEP}]
-		dev-python/cssselect[${PYTHON_MULTI_USEDEP}]
-		dev-python/cssutils[${PYTHON_MULTI_USEDEP}]
-		dev-python/html5lib[${PYTHON_MULTI_USEDEP}]
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		dev-python/regex[${PYTHON_MULTI_USEDEP}]') )
+		'dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/cssselect[${PYTHON_USEDEP}]
+		dev-python/cssutils[${PYTHON_USEDEP}]
+		dev-python/html5lib[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/regex[${PYTHON_USEDEP}]') )
 	system-mathjax? ( dev-libs/mathjax )
 "
 DEPEND="${RDEPEND}"
@@ -53,15 +53,16 @@ S="${WORKDIR}/Sigil-${PV}"
 
 DOCS=( ChangeLog.txt README.md )
 
+PATCHES=( "${FILESDIR}/${P}-qt5.15-fix.patch" )
+
 src_configure() {
-	python_export PYTHON_LIBPATH PYTHON_INCLUDEDIR
 	local mycmakeargs=(
 		-DINSTALL_BUNDLED_DICTS=0
 		-DUSE_SYSTEM_LIBS=1
 		-DSYSTEM_LIBS_REQUIRED=1
 		-DPYTHON_EXECUTABLE="${PYTHON}"
-		-DPYTHON_LIBRARY="${PYTHON_LIBPATH}"
-		-DPYTHON_INCLUDE_DIR="${PYTHON_INCLUDEDIR}"
+		-DPYTHON_LIBRARY="$(python_get_library_path)"
+		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 	)
 	use system-mathjax && mycmakeargs+=( -DMATHJAX_DIR="${EPREFIX}"/usr/share/mathjax )
 
