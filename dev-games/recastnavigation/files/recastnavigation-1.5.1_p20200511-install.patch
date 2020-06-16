@@ -1,0 +1,115 @@
+https://github.com/recastnavigation/recastnavigation/pull/437
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d23859d..54a38d8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,6 +11,8 @@ option(RECASTNAVIGATION_TESTS "Build tests" ON)
+ option(RECASTNAVIGATION_EXAMPLES "Build examples" ON)
+ option(RECASTNAVIGATION_STATIC "Build static libraries" ON)
+ 
++include(GNUInstallDirs)
++
+ add_subdirectory(DebugUtils)
+ add_subdirectory(Detour)
+ add_subdirectory(DetourCrowd)
+diff --git a/DebugUtils/CMakeLists.txt b/DebugUtils/CMakeLists.txt
+index 8b6a3fc..86cfe76 100644
+--- a/DebugUtils/CMakeLists.txt
++++ b/DebugUtils/CMakeLists.txt
+@@ -26,10 +26,10 @@ set_target_properties(DebugUtils PROPERTIES
+         )
+ 
+ install(TARGETS DebugUtils
+-        ARCHIVE DESTINATION lib
+-        LIBRARY DESTINATION lib
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         COMPONENT library
+         )
+ 
+ file(GLOB INCLUDES Include/*.h)
+-install(FILES ${INCLUDES} DESTINATION include)
++install(FILES ${INCLUDES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/recastnavigation)
+diff --git a/Detour/CMakeLists.txt b/Detour/CMakeLists.txt
+index de88111..b4c457a 100644
+--- a/Detour/CMakeLists.txt
++++ b/Detour/CMakeLists.txt
+@@ -20,10 +20,10 @@ set_target_properties(Detour PROPERTIES
+         )
+ 
+ install(TARGETS Detour
+-        ARCHIVE DESTINATION lib
+-        LIBRARY DESTINATION lib
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         COMPONENT library
+         )
+ 
+ file(GLOB INCLUDES Include/*.h)
+-install(FILES ${INCLUDES} DESTINATION include)
++install(FILES ${INCLUDES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/recastnavigation)
+diff --git a/DetourCrowd/CMakeLists.txt b/DetourCrowd/CMakeLists.txt
+index 73cdf7c..7d1ace3 100644
+--- a/DetourCrowd/CMakeLists.txt
++++ b/DetourCrowd/CMakeLists.txt
+@@ -24,10 +24,10 @@ set_target_properties(DetourCrowd PROPERTIES
+         )
+ 
+ install(TARGETS DetourCrowd
+-        ARCHIVE DESTINATION lib
+-        LIBRARY DESTINATION lib
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         COMPONENT library
+         )
+ 
+ file(GLOB INCLUDES Include/*.h)
+-install(FILES ${INCLUDES} DESTINATION include)
++install(FILES ${INCLUDES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/recastnavigation)
+diff --git a/DetourTileCache/CMakeLists.txt b/DetourTileCache/CMakeLists.txt
+index 121b8ed..141a680 100644
+--- a/DetourTileCache/CMakeLists.txt
++++ b/DetourTileCache/CMakeLists.txt
+@@ -25,10 +25,10 @@ set_target_properties(DetourTileCache PROPERTIES
+ 
+ 
+ install(TARGETS DetourTileCache
+-        ARCHIVE DESTINATION lib
+-        LIBRARY DESTINATION lib
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         COMPONENT library
+         )
+ 
+ file(GLOB INCLUDES Include/*.h)
+-install(FILES ${INCLUDES} DESTINATION include)
++install(FILES ${INCLUDES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/recastnavigation)
+diff --git a/Recast/CMakeLists.txt b/Recast/CMakeLists.txt
+index 5e84376..3b04742 100644
+--- a/Recast/CMakeLists.txt
++++ b/Recast/CMakeLists.txt
+@@ -20,10 +20,10 @@ set_target_properties(Recast PROPERTIES
+         )
+ 
+ install(TARGETS Recast
+-        ARCHIVE DESTINATION lib
+-        LIBRARY DESTINATION lib
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         COMPONENT library
+         )
+ 
+ file(GLOB INCLUDES Include/*.h)
+-install(FILES ${INCLUDES} DESTINATION include)
++install(FILES ${INCLUDES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/recastnavigation)
+diff --git a/Tests/CMakeLists.txt b/Tests/CMakeLists.txt
+index 7c17469..a98ccbf 100644
+--- a/Tests/CMakeLists.txt
++++ b/Tests/CMakeLists.txt
+@@ -8,5 +8,3 @@ add_executable(Tests ${TESTS_SOURCES})
+ add_dependencies(Tests Recast Detour)
+ target_link_libraries(Tests Recast Detour)
+ add_test(Tests Tests)
+-
+-install(TARGETS Tests RUNTIME DESTINATION bin)
