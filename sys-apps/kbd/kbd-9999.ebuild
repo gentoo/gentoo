@@ -11,8 +11,13 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/legionus/kbd.git"
 	EGIT_BRANCH="master"
 else
-	SRC_URI="https://www.kernel.org/pub/linux/utils/kbd/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	if [[ $(ver_cut 3) -lt 90 ]] ; then
+		SRC_URI="https://www.kernel.org/pub/linux/utils/kbd/${P}.tar.xz"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	else
+		inherit autotools
+		SRC_URI="https://github.com/legionus/kbd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	fi
 fi
 
 DESCRIPTION="Keyboard and console utilities"
@@ -53,7 +58,7 @@ src_unpack() {
 
 src_prepare() {
 	default
-	if [[ ${PV} == "9999" ]] ; then
+	if [[ ${PV} == "9999" ]] || [[ $(ver_cut 3) -ge 90 ]] ; then
 		eautoreconf
 	fi
 }
