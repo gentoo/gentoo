@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="FreeRADIUS Client framework"
 HOMEPAGE="https://wiki.freeradius.org/project/Radiusclient"
@@ -31,12 +31,19 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export AR
+
 	local myeconfargs=(
 		$(use_enable scp)
 		$(use_enable shadow)
 		--with-secure-path
 	)
 	econf "${myeconfargs[@]}"
+
+	for MAKEFILE in $(find -name Makefile) libtool; do
+		sed -i "s|/usr/bin/ar|${AR}|" "${MAKEFILE}" || \
+			die "Patching ${MAKEFILE} for ${AR} failed"
+	done
 }
 
 src_install() {
