@@ -27,10 +27,10 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e "/^PREFIX=/s:=.*:=${EPREFIX}/usr:" \
-		-e "/^LIBSODIR=/s:=.*:=\$\{PREFIX}/$(get_libdir):" \
-		-e "/^MANDIR=/s:=.*:=\$\{PREFIX}/share/man:" \
-		-e "s:=gcc:=$(tc-getCC):" \
-		-e "/^AR=/s:=ar:=$(tc-getAR):" \
+		-e "/^PREFIX=/s|=.*|=${EPREFIX}/usr|" \
+		-e "/^LIBSODIR=/s|=.*|=\${PREFIX}/$(get_libdir)|" \
+		-e "/^MANDIR=/s|=.*|=\${PREFIX}/share/man|" \
+		-e "s|=gcc|=$(tc-getCC)|" \
+		-e "/^AR=/s|=ar|=$(tc-getAR)|" \
 		Makefile || die
 }
