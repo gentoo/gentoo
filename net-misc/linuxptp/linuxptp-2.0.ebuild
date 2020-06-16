@@ -19,8 +19,14 @@ RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~PPS ~NETWORK_PHY_TIMESTAMPING ~PTP_1588_CLOCK"
 
+pkg_setup() {
+	linux-info_pkg_setup
+}
+
 src_compile() {
-	export EXTRA_CFLAGS=${CFLAGS}
+	# parse needed additional CFLAGS
+	export MY_FLAGS=$(./incdefs.sh)
+	export EXTRA_CFLAGS="${CFLAGS} ${MY_FLAGS}"
 	emake CC="$(tc-getCC)" prefix=/usr mandir=/usr/share/man
 }
 
