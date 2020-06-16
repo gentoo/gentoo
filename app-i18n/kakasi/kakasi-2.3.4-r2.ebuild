@@ -23,6 +23,7 @@ src_compile() {
 src_install() {
 	default
 	einstalldocs
+	find "${ED}" -name '*.la' -delete || die
 
 	iconv -f EUC-JP -t UTF-8 doc/${PN}.1 > doc/${PN}.ja.1
 	doman doc/${PN}.ja.1
