@@ -50,6 +50,7 @@ multilib_src_configure() {
 		--enable-pic \
 		--enable-shared \
 		--host="${CHOST}" \
+		--cross-prefix="${CHOST}-" \
 		$(usex interlaced "" "--disable-interlaced") \
 		$(usex opencl "" "--disable-opencl") \
 		$(usex static-libs "--enable-static" "") \
