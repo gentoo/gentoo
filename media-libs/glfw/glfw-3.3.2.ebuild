@@ -34,6 +34,7 @@ DEPEND="
 	wayland? ( dev-libs/wayland-protocols )
 "
 BDEPEND="
+	!wayland? ( x11-libs/libXi )
 	wayland? ( kde-frameworks/extra-cmake-modules )
 "
 
