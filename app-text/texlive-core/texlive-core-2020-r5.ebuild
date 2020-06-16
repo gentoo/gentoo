@@ -242,6 +242,7 @@ src_configure() {
 		--disable-largefile \
 		--disable-build-in-source-tree \
 		--disable-xindy-docs \
+		--disable-xindy-rules \
 		--with-banner-add=" Gentoo Linux" \
 		$(use_enable luajittex) \
 		$(use_enable luajittex luajithbtex) \
