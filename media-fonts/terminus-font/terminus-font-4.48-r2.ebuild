@@ -93,7 +93,7 @@ src_compile() {
 	# an .otb file including both 8x14 and 8x16.
 
 	if use otf; then
-		local source_bdf target_otb
+		local source_bdf
 		for source_bdf in ter-u*n.bdf ter-u*b.bdf; do
 			set -- 	fontforge -lang=ff -c 'Open($1); ScaleToEm(1024); Generate($2)' \
 				"${source_bdf}" "${source_bdf%.bdf}.otb"
