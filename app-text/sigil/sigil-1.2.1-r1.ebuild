@@ -53,6 +53,8 @@ S="${WORKDIR}/Sigil-${PV}"
 
 DOCS=( ChangeLog.txt README.md )
 
+PATCHES=( "${FILESDIR}/${P}-qt5.15-fix.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_BUNDLED_DICTS=0
