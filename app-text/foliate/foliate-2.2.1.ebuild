@@ -13,9 +13,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-BDEPEND="sys-devel/gettext"
-RDEPEND="${BDEPEND}
-	dev-libs/gjs
+BDEPEND="${MESON_DEPEND}
+	sys-devel/gettext"
+RDEPEND="dev-libs/gjs
 	net-libs/webkit-gtk"
 
 src_prepare() {
