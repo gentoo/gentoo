@@ -5012,7 +5012,7 @@ dev-libs/libclthreads 2.4.2: POSIX threads C++ access library
 dev-libs/libconfig 1.5 1.7.1 1.7.2: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.13: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
-dev-libs/libcss 0.8.0-r1 0.9.0: CSS parser and selection engine, written in C
+dev-libs/libcss 0.8.0-r1 0.9.0 0.9.1: CSS parser and selection engine, written in C
 dev-libs/libdaemon 0.14-r3: Simple library for creating daemon processes in C
 dev-libs/libdazzle 3.34.1: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19 5.0.22: A small library to create and manage 64-bit disk based hash tables
@@ -5103,8 +5103,8 @@ dev-libs/libmspack 0.9.1_alpha-r1 9999: A library for Microsoft compression form
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
 dev-libs/libnfc 1.7.1 1.7.2: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4 1.1.4-r1 1.1.9999 3.4.0 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
-dev-libs/libnsfb 0.2.0-r1 0.2.1: framebuffer abstraction library, written in C
-dev-libs/libnsutils 0.0.5-r1: base64 and time library, written in C
+dev-libs/libnsfb 0.2.0-r1 0.2.1 0.2.2: C library for framebuffer abstraction
+dev-libs/libnsutils 0.0.5-r1 0.1.0: C library for base64 and time
 dev-libs/libofx 0.9.15: Library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
@@ -5112,7 +5112,7 @@ dev-libs/liborcus 0.15.4 9999: Standalone file import filter library for spreads
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1 0.32-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.10: Abstraction layer to simplify PKCS#11 API
-dev-libs/libparserutils 0.2.3 0.2.4-r1: library for building efficient parsers, written in C
+dev-libs/libparserutils 0.2.3 0.2.4-r1 0.2.4-r2: C library for building efficient parsers
 dev-libs/libpcre 8.42 8.43 8.44: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.34 10.35: Perl-compatible regular expression library
@@ -5180,7 +5180,7 @@ dev-libs/libvoikko 4.3: Spell checking, hyphenation and morphological analysis t
 dev-libs/libvterm 0.0_pre20181126 0.1.1 0.1.2 0.1.3: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 1.1: Library for identifying Wacom tablets and their model-specific features
-dev-libs/libwapcaplet 0.4.1-r1 0.4.2: string internment library, written in C
+dev-libs/libwapcaplet 0.4.1-r1 0.4.2 0.4.3: string internment library, written in C
 dev-libs/libwbxml 0.11.2 0.11.6: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
@@ -5221,7 +5221,7 @@ dev-libs/nettle 3.4.1 3.5.1-r1 3.6-r2: Low-level cryptographic library
 dev-libs/newt 0.52.20 0.52.21 0.52.21-r1: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
-dev-libs/nsgenbind 0.6-r1 0.7: generate javascript to dom bindings from w3c webidl files
+dev-libs/nsgenbind 0.6-r1 0.7 0.8: Generate Javascript-to-DOM bindings from w3c webidl files
 dev-libs/nspr 4.25: Netscape Portable Runtime
 dev-libs/nss 3.51 3.51.1-r1 3.52 3.52.1-r1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5: PEM file reader for Network Security Services (NSS)
@@ -10459,7 +10459,7 @@ dev-util/molecule-plugins 1.0.3: A set of base plugins for Molecule
 dev-util/mpatch 0.8-r1: Patch-like tool which can resolve common causes of patch rejects when applying
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
-dev-util/netsurf-buildsystem 1.8-r1: Build system used for netsurf and its libs
+dev-util/netsurf-buildsystem 1.8-r1 1.9: Build system used for netsurf and its libs
 dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 1.10.0 9999: A small build system similar to make
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
@@ -12846,9 +12846,9 @@ media-libs/libmtp 1.1.16 1.1.17 9999: Implementation of Microsoft's Media Transf
 media-libs/libmygpo-qt 1.1.0 9999: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libmypaint 1.4.0 1.4.0-r1: Library for making brushstrokes
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
-media-libs/libnsbmp 0.1.5-r1: decoding library for BMP and ICO image file formats, written in C
-media-libs/libnsgif 0.2.1-r1: decoding library for the GIF image file format, written in C
-media-libs/libnspsl 0.1.3-r1 0.1.5: decoding library for BMP and ICO image file formats, written in C
+media-libs/libnsbmp 0.1.6: decoding library for BMP and ICO image file formats, written in C
+media-libs/libnsgif 0.2.1-r1 0.2.1-r2: decoding library for the GIF image file format, written in C
+media-libs/libnspsl 0.1.3-r1 0.1.5 0.1.6: C library for decoding BMP and ICO images
 media-libs/libofa 0.9.3-r2: Open Fingerprint Architecture
 media-libs/libogg 1.3.3 1.3.4: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
@@ -14480,7 +14480,7 @@ net-libs/libcork 0.15.0-r1: A simple, easily embeddable cross-platform C library
 net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing sets of IPv4 and IPv6 addresses
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
-net-libs/libdom 0.3.3-r1 0.4.0: implementation of the W3C DOM, written in C
+net-libs/libdom 0.3.3-r1 0.4.0 0.4.1: implementation of the W3C DOM, written in C
 net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r3: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.9.3 1.9.4: A portable, efficient middleware for different kinds of mail access
@@ -15288,7 +15288,7 @@ net-wireless/hostapd 2.9-r1 2.9-r2 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
-net-wireless/iwd 1.5 1.6 1.7 1.7-r1 9999: Wireless daemon for linux
+net-wireless/iwd 1.5 1.6 1.7 1.7-r1 1.8 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
 net-wireless/kismet 2016.07.1-r2 2019.09.1-r2 2019.12.2-r1 2020.04.3 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
