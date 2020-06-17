@@ -23,9 +23,9 @@ RESTRICT="test"
 
 #BDEPEND="
 #	test? (
-#		dev-python/coverage[${PYTHON_USEDEP}]
 #		dev-python/PyContracts[${PYTHON_USEDEP}]
 #		dev-python/flaky[${PYTHON_USEDEP}]
+#		dev-python/hypothesis[${PYTHON_USEDEP}]
 #		dev-python/mock[${PYTHON_USEDEP}]
 #		dev-python/pytest[${PYTHON_USEDEP}]
 #		>=dev-python/unittest-mixins-1.4[${PYTHON_USEDEP}]
