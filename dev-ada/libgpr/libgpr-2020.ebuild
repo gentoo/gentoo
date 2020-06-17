@@ -23,10 +23,6 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
-QA_FLAGS_IGNORED=(
-	/usr/lib/gpr/relocatable/gpr/libgpr.so
-)
-
 S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
