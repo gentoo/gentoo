@@ -32,7 +32,7 @@ RDEPEND="
 		<dev-libs/mongo-c-driver-0.98
 	)
 	mysql? ( dev-db/mysql-connector-c:0= )
-	ndpi? ( >=net-libs/nDPI-3.0:= )
+	ndpi? ( >=net-libs/nDPI-3.2:= )
 	nflog? ( net-libs/libnetfilter_log )
 	postgres? ( dev-db/postgresql:* )
 	rabbitmq? ( net-libs/rabbitmq-c )
