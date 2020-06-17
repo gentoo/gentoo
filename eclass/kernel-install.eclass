@@ -330,7 +330,30 @@ kernel-install_pkg_postrm() {
 	fi
 }
 
+# @FUNCTION: kernel-install_pkg_config
+# @DESCRIPTION:
+# Rebuild the initramfs and reinstall the kernel.
+kernel-install_pkg_config() {
+	[[ -z ${ROOT} ]] || die "ROOT!=/ not supported currently"
+
+	mount-boot_pkg_preinst
+
+	local image_path=$(kernel-install_get_image_path)
+	if use initramfs; then
+		# putting it alongside kernel image as 'initrd' makes
+		# kernel-install happier
+		kernel-install_build_initramfs \
+			"${EROOT}/usr/src/linux-${PV}/${image_path%/*}/initrd" \
+			"${PV}"
+	fi
+
+	kernel-install_install_kernel "${PV}" \
+		"${EROOT}/usr/src/linux-${PV}/${image_path}" \
+		"${EROOT}/usr/src/linux-${PV}/System.map"
+}
+
 _KERNEL_INSTALL_ECLASS=1
 fi
 
 EXPORT_FUNCTIONS src_test pkg_preinst pkg_postinst pkg_prerm pkg_postrm
+EXPORT_FUNCTIONS pkg_config
