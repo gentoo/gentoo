@@ -16245,7 +16245,7 @@ sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
 sci-visualization/gnuplot 5.0.7 5.2.7 5.2.8 5.2.9999 5.3.9999: Command-line driven interactive plotting program
-sci-visualization/gr 0.50.0: Universal framework for cross-platform visualization applications
+sci-visualization/gr 0.50.0-r1: Universal framework for cross-platform visualization applications
 sci-visualization/grace 5.1.25 5.1.25_p7: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.55-r4: Framework for Scanning Mode Microscopy data analysis
