@@ -35,7 +35,7 @@ BDEPEND="virtual/pkgconfig
 PATCHES=(
 	"${FILESDIR}/${P}-Dont-run-systemd-sysusers-in-Makefile.patch"
 	"${FILESDIR}/${P}-configure.ac-wrap-PKG_CHECK_MODULES-in-braces.patch"
-	)
+)
 
 pkg_setup() {
 	local CONFIG_CHECK=" \
