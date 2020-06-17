@@ -894,7 +894,7 @@ app-crypt/gpg-ringmgr 1.12-r1: GPG Keyring Manager to handle large GPG keyrings 
 app-crypt/gpgme 1.13.0 1.13.0-r1 1.13.1: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: Reads a passphrase and prints a hash
-app-crypt/hashcat 5.1.0 6.0.0 9999: World's fastest and most advanced password recovery utility
+app-crypt/hashcat 5.1.0 6.0.0-r1 9999: World's fastest and most advanced password recovery utility
 app-crypt/hashcat-utils 1.9: a set of small utilities that are useful in advanced password cracking
 app-crypt/heimdal 7.5.0 7.6.0 7.7.0-r1: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
@@ -959,7 +959,7 @@ app-crypt/rhash 1.3.6-r1 1.3.8 1.3.9-r2: Console utility and library for computi
 app-crypt/rotix 0.83 0.83-r1: Rotix allows you to generate rotational obfuscations
 app-crypt/sbsigntools 0.6-r2 0.9.1-r1 0.9.2: Utilities for signing and verifying files for UEFI Secure Boot
 app-crypt/scdrand 0.3.4: Feed kernel entropy pool from smartcard's TRNG
-app-crypt/scrypt 1.2.0: A simple password-based encryption utility using scrypt key derivation function
+app-crypt/scrypt 1.3.0: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.5.0 1.6.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.32.2 3.34.1: Manage your passwords and encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
@@ -981,7 +981,7 @@ app-crypt/tpm2-abrmd 2.1.1-r2 2.3.1: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.2.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.2: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1: Attest the trustworthiness of a device against a human using time-based OTP
-app-crypt/tpm2-tss 2.4.0: TCG Trusted Platform Module 2.0 Software Stack
+app-crypt/tpm2-tss 2.4.1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
@@ -10283,7 +10283,7 @@ dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.1.1: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
-dev-util/cmake 3.13.5 3.16.5 3.17.2 3.17.3 3.18.0_rc1: Cross platform Make
+dev-util/cmake 3.13.5 3.16.5 3.17.2 3.17.3 3.18.0_rc2: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
@@ -12499,7 +12499,7 @@ media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and curso
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.11.9 6.9.11.16 6.9.11.19 7.0.10.9 7.0.10.16 7.0.10.16-r2 7.0.10.19 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
-media-gfx/img2pdf 0.3.3 0.3.4: Losslessly convert raster images to PDF
+media-gfx/img2pdf 0.3.3 0.3.4 0.3.6: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 0.92.4-r3 1.0-r1 9999: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.4.2 3.62.0: EPSON Image Scan v3 for Linux
@@ -12922,7 +12922,7 @@ media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1: FFmpeg version of headers required to interface with Nvidias codec APIs
 media-libs/openal 1.20.0 1.20.1: A software implementation of the OpenAL 3D audio API
-media-libs/opencollada 1.6.63-r1: Stream based read/write library for COLLADA files
+media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.0-r4: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
@@ -13802,7 +13802,7 @@ media-video/mpeg2vidcodec 12-r1: MPEG Library
 media-video/mpglen 0.1: A program to scan through a MPEG file and count the number of GOPs and frames
 media-video/mpgtx 1.3.1-r2: Command line MPEG audio/video/system file toolbox
 media-video/mplay-sh 0.5.3-r1: mplayer wrapper script as backend for vdr-mplayer
-media-video/mplayer 1.3.0-r6 9999: Media Player for Linux
+media-video/mplayer 1.3.0-r6 1.4 9999: Media Player for Linux
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
 media-video/mpv 0.32.0-r1 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.8.6-r5 0.8.6-r6: Mark commercial breaks in VDR recordings
@@ -14718,7 +14718,7 @@ net-misc/apt-cacher-ng 3.3.1_p2 3.4_p1 3.5_p1-r1 9999999: Yet another caching HT
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 11.25.3 13.33.0 16.10.0: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.25.3 13.33.0 13.34.0 16.10.0 16.11.1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22 1.6.1 1.6.1-r1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11-r1 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9 13.0.3.1.9 16.0.3.1.9: G.729 codec and supporting files for asterisk
@@ -15196,7 +15196,7 @@ net-voip/telepathy-haze 0.8.0-r2: Telepathy connection manager providing libpurp
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1-r2: A link-local XMPP connection manager for Telepathy
 net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
-net-vpn/6tunnel 0.12: TCP proxy for applications that don't speak IPv6
+net-vpn/6tunnel 0.12 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.2: Peer-to-peer VPN software that abstracts a LAN over the Internet
@@ -16245,7 +16245,7 @@ sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
 sci-visualization/gnuplot 5.0.7 5.2.7 5.2.8 5.2.9999 5.3.9999: Command-line driven interactive plotting program
-sci-visualization/gr 0.49.0: Universal framework for cross-platform visualization applications
+sci-visualization/gr 0.50.0: Universal framework for cross-platform visualization applications
 sci-visualization/grace 5.1.25 5.1.25_p7: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.55-r4: Framework for Scanning Mode Microscopy data analysis
