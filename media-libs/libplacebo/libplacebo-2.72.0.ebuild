@@ -21,8 +21,7 @@ DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
 HOMEPAGE="https://code.videolan.org/videolan/libplacebo"
 
 LICENSE="LGPL-2.1+"
-# Please add a sub-slot for releases depending on libplacebo.so version
-SLOT="0"
+SLOT="0/$(ver_cut 2)" # libplacebo.so version
 IUSE="glslang lcms +opengl +shaderc test +vulkan"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 RESTRICT="!test? ( test )"
