@@ -27,7 +27,7 @@ src_prepare() {
 }
 
 _emake() {
-	emake \
+	emake -j1 \
 		SHARED_LIBDIR="/usr/$(get_libdir)" \
 		SECUREDIR="$(getpam_mod_dir)" \
 		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
