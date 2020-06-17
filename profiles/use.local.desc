@@ -1066,6 +1066,7 @@ app-office/kmymoney:holidays - Enable kde-frameworks/kholidays integration
 app-office/kmymoney:quotes - Enable Online Stock Quote retrieval
 app-office/kmymoney:weboob - Enable import of online banking transactions extracted by www-client/weboob
 app-office/kraft:pim - Enable support for KDE PIM resources integration
+app-office/libreoffice:base - Enable full support for LibreOffice Base databases (involves additional bundled libs)
 app-office/libreoffice:coinmp - Use sci-libs/coinor-mp as alternative solver
 app-office/libreoffice:googledrive - Enable support for remote files on Google Drive
 app-office/libreoffice:mariadb - Prefer mariadb connector over mysql connector
