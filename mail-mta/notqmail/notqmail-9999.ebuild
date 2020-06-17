@@ -19,7 +19,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/notqmail/notqmail.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~hppa ~sparc"
+	KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc"
 	SRC_URI="https://github.com/notqmail/notqmail/releases/download/${P}/${P}.tar.xz"
 fi
 
@@ -54,7 +54,6 @@ DEPEND="
 	net-dns/libidn2
 	net-mail/queue-repair
 	sys-apps/gentoo-functions
-	sys-apps/groff
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.1:0= )
 		libressl? ( dev-libs/libressl:= )
@@ -142,7 +141,7 @@ src_prepare() {
 }
 
 src_compile() {
-	qmail_src_compile
+	qmail_src_compile NROFF=true
 	use qmail-spp && qmail_spp_src_compile
 }
 

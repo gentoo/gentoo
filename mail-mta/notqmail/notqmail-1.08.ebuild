@@ -54,7 +54,6 @@ DEPEND="
 	net-dns/libidn2
 	net-mail/queue-repair
 	sys-apps/gentoo-functions
-	sys-apps/groff
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.1:0= )
 		libressl? ( dev-libs/libressl:= )
@@ -142,7 +141,7 @@ src_prepare() {
 }
 
 src_compile() {
-	qmail_src_compile
+	qmail_src_compile NROFF=true
 	use qmail-spp && qmail_spp_src_compile
 }
 
