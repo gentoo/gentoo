@@ -1,0 +1,536 @@
+From 3c9fe10e25e94bdb1eb5e7b07ac2696635fdc5a3 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 17 Jun 2020 20:18:28 +0200
+Subject: [PATCH] Don't build tests when testing not requested
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+
+diff --git a/libs/brush/CMakeLists.txt b/libs/brush/CMakeLists.txt
+index 536b1a4ac5..7d8435eec4 100644
+--- a/libs/brush/CMakeLists.txt
++++ b/libs/brush/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory( tests )
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ include_directories(SYSTEM
+     ${EIGEN3_INCLUDE_DIR}
+diff --git a/libs/flake/CMakeLists.txt b/libs/flake/CMakeLists.txt
+index cbdac265d2..1a50c1620a 100644
+--- a/libs/flake/CMakeLists.txt
++++ b/libs/flake/CMakeLists.txt
+@@ -9,8 +9,10 @@ include_directories(
+ )
+ 
+ add_subdirectory(styles)
+-add_subdirectory(tests)
+-add_subdirectory(resources/tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++    add_subdirectory(resources/tests)
++endif()
+ 
+ set(kritaflake_SRCS
+     KoGradientHelper.cpp
+diff --git a/libs/global/CMakeLists.txt b/libs/global/CMakeLists.txt
+index e8162c5e46..f6ea6bc840 100644
+--- a/libs/global/CMakeLists.txt
++++ b/libs/global/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory( tests )
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ include(CheckFunctionExists)
+ check_function_exists(backtrace HAVE_BACKTRACE)
+diff --git a/libs/image/CMakeLists.txt b/libs/image/CMakeLists.txt
+index 810dee2f16..44c72ba2d5 100644
+--- a/libs/image/CMakeLists.txt
++++ b/libs/image/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory( tests )
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ add_subdirectory( tiles3 )
+ 
+diff --git a/libs/image/tiles3/CMakeLists.txt b/libs/image/tiles3/CMakeLists.txt
+index 88c0516360..01f2383ddb 100644
+--- a/libs/image/tiles3/CMakeLists.txt
++++ b/libs/image/tiles3/CMakeLists.txt
+@@ -1 +1,3 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+diff --git a/libs/libkis/CMakeLists.txt b/libs/libkis/CMakeLists.txt
+index 958104aaaf..3b8a33eadc 100644
+--- a/libs/libkis/CMakeLists.txt
++++ b/libs/libkis/CMakeLists.txt
+@@ -48,4 +48,6 @@ set_target_properties(kritalibkis PROPERTIES
+ install(TARGETS kritalibkis  ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ 
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+diff --git a/libs/metadata/CMakeLists.txt b/libs/metadata/CMakeLists.txt
+index d33aff38fc..abdc2f7a36 100644
+--- a/libs/metadata/CMakeLists.txt
++++ b/libs/metadata/CMakeLists.txt
+@@ -29,4 +29,6 @@ set_target_properties(kritametadata PROPERTIES
+ 
+ install(TARGETS kritametadata  ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+diff --git a/libs/odf/CMakeLists.txt b/libs/odf/CMakeLists.txt
+index 6acbf4d1a5..50e60b55d8 100644
+--- a/libs/odf/CMakeLists.txt
++++ b/libs/odf/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory( tests )
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritaodf_LIB_SRCS
+     KoOdf.cpp
+diff --git a/libs/pigment/CMakeLists.txt b/libs/pigment/CMakeLists.txt
+index 7e38c6cb00..60879fcea2 100644
+--- a/libs/pigment/CMakeLists.txt
++++ b/libs/pigment/CMakeLists.txt
+@@ -33,8 +33,10 @@ else()
+     set(__per_arch_alpha_applicator_factory_objs KoAlphaMaskApplicatorFactoryImpl.cpp)
+ endif()
+ 
+-add_subdirectory(tests)
+-add_subdirectory(benchmarks)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++    add_subdirectory(benchmarks)
++endif()
+ 
+ set(kritapigment_SRCS
+     DebugPigment.cpp
+diff --git a/libs/store/CMakeLists.txt b/libs/store/CMakeLists.txt
+index b7c42996bd..30f9d5c5c6 100644
+--- a/libs/store/CMakeLists.txt
++++ b/libs/store/CMakeLists.txt
+@@ -1,6 +1,8 @@
+ include_directories(${QUAZIP_INCLUDE_DIRS})
+ 
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritastore_LIB_SRCS
+     KoDirectoryStore.cpp
+diff --git a/libs/ui/CMakeLists.txt b/libs/ui/CMakeLists.txt
+index d273bf548a..d180fd8970 100644
+--- a/libs/ui/CMakeLists.txt
++++ b/libs/ui/CMakeLists.txt
+@@ -13,7 +13,9 @@ if (ANDROID)
+     include_directories (${Qt5AndroidExtras_INCLUDE_DIRS})
+ endif()
+ 
+-add_subdirectory( tests )
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ if (APPLE)
+     find_library(FOUNDATION_LIBRARY Foundation)
+diff --git a/libs/widgets/CMakeLists.txt b/libs/widgets/CMakeLists.txt
+index 75eded9db1..c0093cfd3a 100644
+--- a/libs/widgets/CMakeLists.txt
++++ b/libs/widgets/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory( tests )
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+diff --git a/libs/widgetutils/CMakeLists.txt b/libs/widgetutils/CMakeLists.txt
+index c62eeafb79..c33b16dd91 100644
+--- a/libs/widgetutils/CMakeLists.txt
++++ b/libs/widgetutils/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ configure_file(xmlgui/config-xmlgui.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-xmlgui.h )
+ 
+diff --git a/plugins/color/lcms2engine/CMakeLists.txt b/plugins/color/lcms2engine/CMakeLists.txt
+index e14de2ba7c..8c56372cb3 100644
+--- a/plugins/color/lcms2engine/CMakeLists.txt
++++ b/plugins/color/lcms2engine/CMakeLists.txt
+@@ -1,6 +1,8 @@
+ project( lcmsengine )
+ 
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ include_directories(SYSTEM
+     ${LCMS2_INCLUDE_DIR}
+diff --git a/plugins/dockers/animation/CMakeLists.txt b/plugins/dockers/animation/CMakeLists.txt
+index a0b4b4beb4..b3de3f2749 100644
+--- a/plugins/dockers/animation/CMakeLists.txt
++++ b/plugins/dockers/animation/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-if (NOT WIN32 AND NOT APPLE)
++if(BUILD_TESTING AND NOT WIN32 AND NOT APPLE)
+     add_subdirectory(tests)
+ endif()
+ 
+diff --git a/plugins/dockers/lut/CMakeLists.txt b/plugins/dockers/lut/CMakeLists.txt
+index 01844be146..6745db73e6 100644
+--- a/plugins/dockers/lut/CMakeLists.txt
++++ b/plugins/dockers/lut/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ include_directories(SYSTEM
+     ${OCIO_INCLUDE_DIR}
+diff --git a/plugins/extensions/qmic/CMakeLists.txt b/plugins/extensions/qmic/CMakeLists.txt
+index afd390b726..f5766c1b50 100644
+--- a/plugins/extensions/qmic/CMakeLists.txt
++++ b/plugins/extensions/qmic/CMakeLists.txt
+@@ -20,4 +20,6 @@ add_library(kritaqmic MODULE ${kritaqmic_SOURCES})
+ target_link_libraries(kritaqmic kritaui)
+ install(TARGETS kritaqmic  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+ 
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+diff --git a/plugins/filters/CMakeLists.txt b/plugins/filters/CMakeLists.txt
+index 63a5de64e9..f8b4467926 100644
+--- a/plugins/filters/CMakeLists.txt
++++ b/plugins/filters/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory( tests )
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ add_subdirectory( blur )
+ add_subdirectory( colors )
+ add_subdirectory( colorsfilters )
+diff --git a/plugins/filters/unsharp/CMakeLists.txt b/plugins/filters/unsharp/CMakeLists.txt
+index e63725abb1..5a61b5f89c 100644
+--- a/plugins/filters/unsharp/CMakeLists.txt
++++ b/plugins/filters/unsharp/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory( tests )
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritaunsharpfilter_SOURCES
+     unsharp.cpp
+diff --git a/plugins/impex/brush/CMakeLists.txt b/plugins/impex/brush/CMakeLists.txt
+index b0343eddd4..ef7c617a40 100644
+--- a/plugins/impex/brush/CMakeLists.txt
++++ b/plugins/impex/brush/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritabrushexport_PART_SRCS
+     kis_brush_export.cpp
+diff --git a/plugins/impex/csv/CMakeLists.txt b/plugins/impex/csv/CMakeLists.txt
+index 60eba64463..cf6e6ac9bd 100644
+--- a/plugins/impex/csv/CMakeLists.txt
++++ b/plugins/impex/csv/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ # import
+ 
+diff --git a/plugins/impex/exr/CMakeLists.txt b/plugins/impex/exr/CMakeLists.txt
+index aa39a91879..c80833941f 100644
+--- a/plugins/impex/exr/CMakeLists.txt
++++ b/plugins/impex/exr/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ include_directories(SYSTEM ${OPENEXR_INCLUDE_DIRS} )
+ 
+diff --git a/plugins/impex/gif/CMakeLists.txt b/plugins/impex/gif/CMakeLists.txt
+index bb7f582b6c..b95c9d3d07 100644
+--- a/plugins/impex/gif/CMakeLists.txt
++++ b/plugins/impex/gif/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritagifexport_SOURCES
+     kis_gif_export.cpp
+diff --git a/plugins/impex/heif/CMakeLists.txt b/plugins/impex/heif/CMakeLists.txt
+index d25f3e1704..a7f663b13f 100644
+--- a/plugins/impex/heif/CMakeLists.txt
++++ b/plugins/impex/heif/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${HEIF_CFLAGS}")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${HEIF_CFLAGS}")
+diff --git a/plugins/impex/heightmap/CMakeLists.txt b/plugins/impex/heightmap/CMakeLists.txt
+index a8b03308d9..04e0f1000a 100644
+--- a/plugins/impex/heightmap/CMakeLists.txt
++++ b/plugins/impex/heightmap/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
+ 
+diff --git a/plugins/impex/jp2/CMakeLists.txt b/plugins/impex/jp2/CMakeLists.txt
+index c9393f6cfa..b4333025aa 100644
+--- a/plugins/impex/jp2/CMakeLists.txt
++++ b/plugins/impex/jp2/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenJPEG_CFLAGS}")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenJPEG_CFLAGS}")
+diff --git a/plugins/impex/jpeg/CMakeLists.txt b/plugins/impex/jpeg/CMakeLists.txt
+index 50edb05c96..eaa90964a7 100644
+--- a/plugins/impex/jpeg/CMakeLists.txt
++++ b/plugins/impex/jpeg/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(ICCJPEG_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/lcms")
+ 
+diff --git a/plugins/impex/libkra/CMakeLists.txt b/plugins/impex/libkra/CMakeLists.txt
+index 2b840c1e8a..88d849172f 100644
+--- a/plugins/impex/libkra/CMakeLists.txt
++++ b/plugins/impex/libkra/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritalibkra_LIB_SRCS
+     kis_colorize_dom_utils.cpp
+diff --git a/plugins/impex/ora/CMakeLists.txt b/plugins/impex/ora/CMakeLists.txt
+index a476f422b4..0f4e563505 100644
+--- a/plugins/impex/ora/CMakeLists.txt
++++ b/plugins/impex/ora/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(libkritaconverter_LIB_SRCS
+     ora_converter.cpp
+diff --git a/plugins/impex/pdf/CMakeLists.txt b/plugins/impex/pdf/CMakeLists.txt
+index 320da291a4..c423ff4214 100644
+--- a/plugins/impex/pdf/CMakeLists.txt
++++ b/plugins/impex/pdf/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritapdfimport_SOURCES kis_pdf_import.cpp kis_pdf_import_widget.cpp )
+ 
+diff --git a/plugins/impex/png/CMakeLists.txt b/plugins/impex/png/CMakeLists.txt
+index d567e8059e..6d3815f06f 100644
+--- a/plugins/impex/png/CMakeLists.txt
++++ b/plugins/impex/png/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritapngimport_SOURCES
+     kis_png_import.cc
+diff --git a/plugins/impex/psd/CMakeLists.txt b/plugins/impex/psd/CMakeLists.txt
+index 4112536da2..f81598d01d 100644
+--- a/plugins/impex/psd/CMakeLists.txt
++++ b/plugins/impex/psd/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-if (NOT MSVC AND NOT APPLE)
++if(BUILD_TESTING AND NOT MSVC AND NOT APPLE)
+     add_subdirectory(tests)
+ endif()
+ 
+diff --git a/plugins/impex/qimageio/CMakeLists.txt b/plugins/impex/qimageio/CMakeLists.txt
+index c916af4870..f1a068e9c2 100644
+--- a/plugins/impex/qimageio/CMakeLists.txt
++++ b/plugins/impex/qimageio/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritaqimageioexport_SOURCES
+     kis_qimageio_export.cpp
+diff --git a/plugins/impex/qml/CMakeLists.txt b/plugins/impex/qml/CMakeLists.txt
+index e53156905a..1dff196ac5 100644
+--- a/plugins/impex/qml/CMakeLists.txt
++++ b/plugins/impex/qml/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritaqmlexport_SOURCES
+     qml_converter.cc
+diff --git a/plugins/impex/raw/CMakeLists.txt b/plugins/impex/raw/CMakeLists.txt
+index 71cb5b355c..70241a8903 100644
+--- a/plugins/impex/raw/CMakeLists.txt
++++ b/plugins/impex/raw/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ if(OPENEXR_FOUND)
+ 	include_directories(${OPENEXR_INCLUDE_DIRS})
+diff --git a/plugins/impex/svg/CMakeLists.txt b/plugins/impex/svg/CMakeLists.txt
+index 8f803a2783..6642112c11 100644
+--- a/plugins/impex/svg/CMakeLists.txt
++++ b/plugins/impex/svg/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritasvgimport_SOURCES
+     kis_svg_import.cc
+diff --git a/plugins/impex/tga/CMakeLists.txt b/plugins/impex/tga/CMakeLists.txt
+index b7fe804897..79c2aff4d4 100644
+--- a/plugins/impex/tga/CMakeLists.txt
++++ b/plugins/impex/tga/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(kritatgaexport_SOURCES
+     kis_tga_export.cpp
+diff --git a/plugins/impex/tiff/CMakeLists.txt b/plugins/impex/tiff/CMakeLists.txt
+index 8e57566510..0ee181c9bc 100644
+--- a/plugins/impex/tiff/CMakeLists.txt
++++ b/plugins/impex/tiff/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(libkritatiffconverter_LIB_SRCS
+     kis_tiff_converter.cc
+diff --git a/plugins/impex/xcf/CMakeLists.txt b/plugins/impex/xcf/CMakeLists.txt
+index d76985be87..a754b686ba 100644
+--- a/plugins/impex/xcf/CMakeLists.txt
++++ b/plugins/impex/xcf/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(XCFTOOLS_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/xcftools")
+ 
+diff --git a/plugins/paintops/defaultpaintops/CMakeLists.txt b/plugins/paintops/defaultpaintops/CMakeLists.txt
+index 68ac300940..35cd140838 100644
+--- a/plugins/paintops/defaultpaintops/CMakeLists.txt
++++ b/plugins/paintops/defaultpaintops/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(brush/tests)
++if(BUILD_TESTING)
++    add_subdirectory(brush/tests)
++endif()
+ 
+ include_directories(brush
+                     duplicate
+diff --git a/plugins/paintops/libpaintop/CMakeLists.txt b/plugins/paintops/libpaintop/CMakeLists.txt
+index 4d6d831760..59ca6657ca 100644
+--- a/plugins/paintops/libpaintop/CMakeLists.txt
++++ b/plugins/paintops/libpaintop/CMakeLists.txt
+@@ -103,5 +103,6 @@ set_target_properties(kritalibpaintop PROPERTIES
+ 
+ install(TARGETS kritalibpaintop  ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+-
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+diff --git a/plugins/tools/basictools/CMakeLists.txt b/plugins/tools/basictools/CMakeLists.txt
+index 9d725a7c7a..0221e604be 100644
+--- a/plugins/tools/basictools/CMakeLists.txt
++++ b/plugins/tools/basictools/CMakeLists.txt
+@@ -1,6 +1,6 @@
+-if (NOT APPLE)
++if(BUILD_TESTING AND NOT APPLE)
+     add_subdirectory(tests)
+-endif ()
++endif()
+ 
+ set(kritadefaulttools_SOURCES
+     default_tools.cc
+diff --git a/plugins/tools/tool_transform2/CMakeLists.txt b/plugins/tools/tool_transform2/CMakeLists.txt
+index e90230c48e..2cf727a991 100644
+--- a/plugins/tools/tool_transform2/CMakeLists.txt
++++ b/plugins/tools/tool_transform2/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-if (NOT WIN32 AND NOT APPLE)
++if(BUILD_TESTING AND NOT WIN32 AND NOT APPLE)
+     add_subdirectory(tests)
+ endif()
+ 
+-- 
+2.27.0
+
