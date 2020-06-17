@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit vdr-plugin-2
+inherit flag-o-matic vdr-plugin-2
 
 DESCRIPTION="VDR plugin: receive schedule and event information from ATSC broadcasts"
-HOMEPAGE="http://www.fepg.org/atscepg.html"
+HOMEPAGE="http://fepg.org/atscepg/"
 SRC_URI="http://www.fepg.org/files/${P}.tgz
 		mirror://gentoo/atscepg-${PV}_vdr-1.7.13.tbz
 		https://dev.gentoo.org/~hd_brummy/distfiles/atscepg-${PV}_vdr-1.7.13.tbz"
