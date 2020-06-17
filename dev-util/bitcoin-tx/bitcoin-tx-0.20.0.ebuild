@@ -64,8 +64,6 @@ src_prepare() {
 		eapply "${knots_patchdir}/${KNOTS_P}.ts.patch"
 	fi
 
-	eapply "${FILESDIR}/${PV}-no-libevent.patch"
-
 	eapply_user
 
 	echo '#!/bin/true' >share/genbuild.sh || die
