@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="nl80211-based configuration utility for wireless devices using the mac80211 kernel stack"
-HOMEPAGE="https://wireless.kernel.org/en/users/Documentation/iw"
+HOMEPAGE="https://wireless.wiki.kernel.org/en/users/Documentation/iw"
 SRC_URI="https://www.kernel.org/pub/software/network/${PN}/${P}.tar.xz"
 
 LICENSE="ISC"
