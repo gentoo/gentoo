@@ -1,11 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Marek Szuba <marecki@gentoo.org> (2020-06-15)
-# Mask flashrom drivers which only work on few architectures:
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Mask flashrom drivers and tools which only work on few architectures:
+#  - ich_descriptors_tools (USE=tools) is only compiled on amd64 and x86,
 #  - internal is presently only supported on amd64/x86 and mipsel,
-#  - the others only work on x86 due to lack of PCI-port I/O support
-sys-apps/flashrom atahpt atapromise internal nic3com nicnatsemi nicrealtek rayer-spi satamv
+#  - the others only work on x86 due to lack of PCI-port I/O support.
+sys-apps/flashrom atahpt atapromise internal nic3com nicnatsemi nicrealtek rayer-spi satamv tools
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Dependency is only keyworded on amd64 and x86
