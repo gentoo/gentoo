@@ -13,17 +13,22 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/hashcat/hashcat.git"
 else
-	#this doesn't work for me, so it doesn't get keywords
-	#KEYWORDS="~amd64"
+	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/hashcat/hashcat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 IUSE="brain video_cards_nvidia"
-DEPEND="virtual/opencl
+DEPEND="
 	app-arch/lzma
 	brain? ( dev-libs/xxhash )
-	video_cards_nvidia? ( >x11-drivers/nvidia-drivers-367.0 )"
+	video_cards_nvidia? ( >x11-drivers/nvidia-drivers-440.64
+						|| ( dev-util/nvidia-cuda-toolkit
+							virtual/opencl )
+						)
+	!video_cards_nvidia? ( virtual/opencl )"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-missing-not-fatal.patch" )
 
 src_prepare() {
 	#remove bundled stuff
@@ -39,7 +44,7 @@ src_prepare() {
 	export PREFIX=/usr
 	export LIBRARY_FOLDER="/usr/$(get_libdir)"
 	export DOCUMENT_FOLDER="/usr/share/doc/${P}"
-	eapply_user
+	default
 }
 
 src_compile() {
