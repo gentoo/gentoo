@@ -1721,9 +1721,9 @@ app-emulation/winetricks 20190912 20191224 20200412 99999999: Easy way to instal
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.12.2-r2 4.12.3-r1 4.13.1-r1: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.12.2 4.12.3 4.13.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.12.2-r1 4.12.3-r1 4.13.1-r1: Xen tools including QEMU and xl
+app-emulation/xen 4.12.2-r2 4.12.3-r1 4.13.1-r1 4.14.0_rc1: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.12.2 4.12.3 4.13.1 4.14.0_rc1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.12.2-r1 4.12.3-r1 4.13.1-r1 4.14.0_rc1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2 0.3: Manages the {,/usr}/bin/awk symlink
@@ -4861,7 +4861,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r1 1.73.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 1.10.17-r2 2.9.0 2.11.0 2.14.0 2.14.0-r1: C++ crypto library
+dev-libs/botan 2.9.0 2.14.0-r1: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.11.2 1.19.0: Blocking, shuffling and lossless compression library
@@ -15204,7 +15204,7 @@ net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/pr
 net-vpn/i2p 0.9.44-r2 0.9.45: A privacy-centric, anonymous network
 net-vpn/i2pd 2.30.0 2.31.0 2.32.0 2.32.1: A C++ daemon for accessing the I2P anonymous network
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
-net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
+net-vpn/ipsec-tools 0.8.2-r5 0.8.2-r6: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/libreswan 3.32: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engine
@@ -17808,7 +17808,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 83.0.4103.97 83.0.4103.106 84.0.4147.45: Open-source version of Google Chrome web browser
+www-client/chromium 83.0.4103.106 84.0.4147.45: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
