@@ -5,24 +5,25 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="framebuffer abstraction library, written in C"
-HOMEPAGE="http://www.netsurf-browser.org/projects/libsvgtiny/"
+DESCRIPTION="decoding library for the GIF image file format, written in C"
+HOMEPAGE="https://www.netsurf-browser.org/projects/libnsgif/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~m68k-mint"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~m68k-mint"
 IUSE=""
 
-RDEPEND="
-	>=net-libs/libdom-0.1.2-r1[xml]
-	>=dev-libs/libwapcaplet-0.2.2-r1"
-DEPEND="${RDEPEND}
-	dev-util/gperf
-	dev-util/netsurf-buildsystem
-	virtual/pkgconfig"
+BDEPEND="
+	>=dev-util/netsurf-buildsystem-1.7-r1
+	virtual/pkgconfig
+"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.1.3-parallel-build.patch )
+src_prepare() {
+	default
+	sed -e '1i#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"' \
+		-i src/lzw.c || die
+}
 
 _emake() {
 	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh

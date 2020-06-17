@@ -5,8 +5,8 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="framebuffer abstraction library, written in C"
-HOMEPAGE="http://www.netsurf-browser.org/projects/libsvgtiny/"
+DESCRIPTION="C library for decoding BMP and ICO images"
+HOMEPAGE="http://www.netsurf-browser.org/projects/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
@@ -14,15 +14,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~m68k-mint"
 IUSE=""
 
-RDEPEND="
-	>=net-libs/libdom-0.1.2-r1[xml]
-	>=dev-libs/libwapcaplet-0.2.2-r1"
-DEPEND="${RDEPEND}
-	dev-util/gperf
+BDEPEND="
 	dev-util/netsurf-buildsystem
 	virtual/pkgconfig"
-
-PATCHES=( "${FILESDIR}"/${PN}-0.1.3-parallel-build.patch )
 
 _emake() {
 	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh

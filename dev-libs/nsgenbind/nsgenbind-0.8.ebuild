@@ -5,29 +5,23 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="framebuffer abstraction library, written in C"
-HOMEPAGE="http://www.netsurf-browser.org/projects/libsvgtiny/"
+DESCRIPTION="Generate Javascript-to-DOM bindings from w3c webidl files"
+HOMEPAGE="http://www.netsurf-browser.org/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~m68k-mint"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 IUSE=""
 
-RDEPEND="
-	>=net-libs/libdom-0.1.2-r1[xml]
-	>=dev-libs/libwapcaplet-0.2.2-r1"
-DEPEND="${RDEPEND}
-	dev-util/gperf
+BDEPEND="
 	dev-util/netsurf-buildsystem
-	virtual/pkgconfig"
-
-PATCHES=( "${FILESDIR}"/${PN}-0.1.3-parallel-build.patch )
+	virtual/yacc"
 
 _emake() {
 	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
-	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
+	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=binary $@
 }
 
 src_compile() {
