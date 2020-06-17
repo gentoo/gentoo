@@ -27,11 +27,8 @@ DEPEND+="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.1-disable-network-tests.patch
+	"${FILESDIR}"/${PN}-1.10.3-no-Q.patch
 )
-
-src_compile() {
-	emake Q=""
-}
 
 src_install() {
 	emake DESTDIR="${D}" LIBDIR="$(get_libdir)" PREFIX="${EPREFIX}/usr" install
