@@ -12,9 +12,9 @@ inherit toolchain-funcs flag-o-matic ${SVN_ECLASS}
 IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext a52 aalib +alsa altivec aqua bidi bl bluray
 bs2b cddb +cdio cdparanoia cpudetection debug dga
 doc dts dv dvb +dvd +dvdnav +enca +encode faac faad fbcon
-ftp ggi gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
+ftp ggi gnutls gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
 +libass libcaca libmpeg2 lirc live lzo mad md5sum +cpu_flags_x86_mmx cpu_flags_x86_mmxext mng mp3 nas
-+network nut openal opengl +osdmenu oss png pnm pulseaudio pvr
++network openal opengl openssl +osdmenu oss png pnm pulseaudio pvr
 radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
 vorbis +X x264 xinerama +xscreensaver +xv xvid yuv4mpeg zoran"
@@ -61,7 +61,7 @@ RDEPEND+="
 	sys-libs/ncurses:0=
 	app-arch/bzip2
 	sys-libs/zlib
-	>=media-video/ffmpeg-3.0:0=[vdpau?]
+	>=media-video/ffmpeg-4.0:0=[gnutls?,openssl?,vdpau?]
 	a52? ( media-libs/a52dec )
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
@@ -101,7 +101,6 @@ RDEPEND+="
 	mng? ( media-libs/libmng:= )
 	mp3? ( media-sound/mpg123 )
 	nas? ( media-libs/nas )
-	nut? ( >=media-libs/libnut-661 )
 	openal? ( media-libs/openal )
 	opengl? ( virtual/opengl )
 	png? ( media-libs/libpng:0= )
@@ -151,7 +150,7 @@ RDEPEND+="
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 fi
 
 # faac codecs are nonfree
@@ -230,6 +229,8 @@ src_prepare() {
 		# Set SVN version manually
 		subversion_wc_info
 		printf "${ESVN_WC_REVISION}" > $svf
+	else
+		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch
 	fi
 	if [ ! -f VERSION ] ; then
 		[ -f "$svf" ] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"
@@ -266,13 +267,14 @@ src_configure() {
 	# disable opus and ilbc since it only controls support in internal
 	#         ffmpeg which we do not use
 	myconf+="
-		--disable-svga --disable-svgalib_helper
-		--disable-ass-internal
 		--disable-arts
+		--disable-ass-internal
 		--disable-directfb
 		--disable-kai
-		--disable-libopus
 		--disable-libilbc
+		--disable-libnut
+		--disable-libopus
+		--disable-svga --disable-svgalib_helper
 		--disable-xvmc
 		$(use_enable network networking)
 		$(use_enable joystick)
@@ -285,7 +287,6 @@ src_configure() {
 	use bidi  || myconf+=" --disable-fribidi"
 	use ipv6  || myconf+=" --disable-inet6"
 	use libass || myconf+=" --disable-ass"
-	use nut   || myconf+=" --disable-libnut"
 	use rar   || myconf+=" --disable-unrarexec"
 	use samba || myconf+=" --disable-smb"
 	use lirc  || myconf+=" --disable-lirc --disable-lircc --disable-apple-ir"
@@ -324,6 +325,8 @@ src_configure() {
 	# DVB / Video4Linux / Radio support #
 	#####################################
 	myconf+=" --disable-tv-bsdbt848"
+	# broken upstream, won't work with recent kernels
+	myconf+=" --disable-ivtv"
 	# gone since linux-headers-2.6.38
 	myconf+=" --disable-tv-v4l1"
 	if { use dvb || use v4l || use pvr || use radio; }; then
@@ -484,6 +487,7 @@ src_configure() {
 		"
 	fi
 
+	# Note: --enable-gnutls only makes sense with --enable-ffmpeg_a
 	./configure \
 		--cc="$(tc-getCC)" \
 		--host-cc="$(tc-getBUILD_CC)" \
@@ -494,6 +498,7 @@ src_configure() {
 		--datadir="${EPREFIX}/usr/share/mplayer${namesuf}" \
 		--mandir="${EPREFIX}/usr/share/man" \
 		--disable-ffmpeg_a \
+		--disable-gnutls \
 		${myconf} || die
 }
 
@@ -537,7 +542,7 @@ src_install() {
 
 	if use doc; then
 		docinto html/
-		dohtml -r "${S}"/DOCS/HTML/*
+		dodoc -r "${S}"/DOCS/HTML/*
 	fi
 
 	if ! use truetype; then
