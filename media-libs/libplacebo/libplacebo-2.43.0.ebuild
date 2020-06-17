@@ -32,6 +32,10 @@ BDEPEND="virtual/pkgconfig"
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-vulkan-headers-1.2.140-compatibility.patch
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_feature glslang)
