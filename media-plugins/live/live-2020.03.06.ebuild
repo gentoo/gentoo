@@ -7,7 +7,9 @@ inherit toolchain-funcs
 
 DESCRIPTION="Libraries for standards-based RTP/RTCP/RTSP multimedia streaming"
 HOMEPAGE="http://www.live555.com/"
-SRC_URI="http://www.live555.com/liveMedia/public/${P/-/.}.tar.gz"
+# Upstream aggressively remove old versions: bug #719336.
+#SRC_URI="http://www.live555.com/liveMedia/public/${P/-/.}.tar.gz"
+SRC_URI="https://cmpct.info/~sam/gentoo/distfiles/${CATEGORY}/${PN}/${P/-/.}.tar.gz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
