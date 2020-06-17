@@ -17,9 +17,9 @@
 
 #--- END OF EXAMPLES ---
 
-# Marek Szuba <marecki@gentoo.org> (2020-06-15)
-# Unmask globally-masked flashrom drivers which do work on amd64
-sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Unmask globally-masked flashrom drivers and tools which do work on amd64
+sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on amd64
