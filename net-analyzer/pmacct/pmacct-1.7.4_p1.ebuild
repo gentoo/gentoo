@@ -2,17 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic git-r3 toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A network tool to gather IP traffic information"
 HOMEPAGE="http://www.pmacct.net/"
-EGIT_REPO_URI="https://github.com/pmacct/pmacct/"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV/_}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="
-	+bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mongodb mysql
+	64bit +bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mongodb mysql
 	ndpi nflog plabel postgres rabbitmq sqlite +st-bins +traffic-bins zmq
 "
 REQUIRED_USE="
@@ -43,15 +43,20 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+PATCHES=(
+#	"${FILESDIR}"/${PN}-1.7.3-nDPI-3.0.patch
+	"${FILESDIR}"/${PN}-1.7.4--Werror.patch
+	"${FILESDIR}"/${PN}-1.7.4-nDPI-3.2.patch
+)
 
 DOCS=(
 	CONFIG-KEYS ChangeLog FAQS QUICKSTART UPGRADE
 	docs/INTERNALS docs/PLUGINS docs/SIGNALS
 )
+S=${WORKDIR}/${P/_}
 
 src_prepare() {
 	default
-	sed -i -e 's|-Werror||g' configure.ac || die
 	eautoreconf
 }
 
@@ -60,6 +65,7 @@ src_configure() {
 	append-cflags -fcommon
 
 	econf \
+		$(use_enable 64bit) \
 		$(use_enable bgp-bins) \
 		$(use_enable bmp-bins) \
 		$(use_enable geoip) \
