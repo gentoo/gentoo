@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
 DESCRIPTION="A Python module for semantic versioning"
-HOMEPAGE="https://github.com/k-bx/python-semver"
-SRC_URI="https://github.com/k-bx/python-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/python-semver/python-semver"
+SRC_URI="https://github.com/python-${PN}/python-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

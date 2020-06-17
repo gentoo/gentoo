@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-
 RUBY_FAKEGEM_EXTRAINSTALL="Readme.md"
+
+RUBY_FAKEGEM_GEMSPEC="parallel.gemspec"
 
 inherit ruby-fakegem
 
@@ -22,10 +22,10 @@ KEYWORDS="~amd64"
 SLOT="1"
 IUSE="test"
 
-DEPEND+="test? ( sys-process/lsof )"
+DEPEND+="test? ( sys-process/lsof sys-process/procps )"
 
 ruby_add_bdepend "
-	test? ( dev-ruby/ruby-progressbar dev-ruby/activerecord:5.2 dev-ruby/sqlite3 )"
+	test? ( dev-ruby/ruby-progressbar dev-ruby/activerecord:6.0 dev-ruby/sqlite3 )"
 
 each_ruby_prepare() {
 	# Make sure the correct ruby is used for testing
@@ -33,8 +33,9 @@ each_ruby_prepare() {
 }
 
 all_ruby_prepare() {
+	sed -i -e 's/git ls-files/find/' ${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -i -e '/bundler/ s:^:#:' \
-		-e '1i require "tempfile"; gem "activerecord", "~>5.2.0"' spec/cases/helper.rb || die
+		-e '1i require "tempfile"; gem "activerecord", "~>6.0.0"' spec/cases/helper.rb || die
 	sed -i -e '3irequire "timeout"' spec/spec_helper.rb || die
 
 	# Avoid a failing spec regarding to pipes. The spec seems like it
