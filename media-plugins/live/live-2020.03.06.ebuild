@@ -57,7 +57,7 @@ src_prepare() {
 				-e '/^LIBRARY_LINK_OPTS /s:-shared.*$:-undefined suppress -flat_namespace -dynamiclib -install_name '"${EPREFIX}/usr/$(get_libdir)/"'$@:' \
 				-e '/^LIB_SUFFIX /s/so/dylib/' \
 				live/config.gentoo-so-r1 \
-				|| die shared
+				|| die
 		;;
 	esac
 }
@@ -66,7 +66,7 @@ src_configure() {
 	# This ebuild uses its own build system
 	# We don't want to call ./configure or anything here.
 	# The only thing we can do is honour the user's SSL preference.
-	if use ssl; then
+	if use ssl ; then
 		sed -i 's/-DNO_OPENSSL=1//' "${S}/config.gentoo-so-r1" || die
 	fi
 
@@ -98,7 +98,7 @@ src_compile() {
 }
 
 src_install() {
-	for library in UsageEnvironment liveMedia BasicUsageEnvironment groupsock; do
+	for library in UsageEnvironment liveMedia BasicUsageEnvironment groupsock ; do
 		dolib.so "${S}/${library}/lib${library}.${suffix}"
 		dosym "lib${library}.${suffix}" "/usr/$(get_libdir)/lib${library}.so"
 
