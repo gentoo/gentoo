@@ -24,6 +24,8 @@ RDEPEND=">=virtual/jre-1.4
 DEPEND="virtual/jdk:1.8
 	${CDEPEND}"
 
+JAVA_PKG_NV_DEPEND="virtual/jdk:1.8"
+
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 _eant() {
