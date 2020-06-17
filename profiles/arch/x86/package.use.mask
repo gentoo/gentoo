@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Marek Szuba <marecki@gentoo.org> (2020-06-15)
-# Unmask globally-masked flashrom drivers which do work on x86
-sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Unmask globally-masked flashrom drivers and tools which do work on x86
+sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
 
 # Christopher Head <chead@chead.ca> (2020-06-10)
 # Requires dev-db/influxdb which is amd64-only
