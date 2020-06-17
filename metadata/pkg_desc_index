@@ -8686,7 +8686,7 @@ dev-python/secretstorage 3.1.1 3.1.1-r1 3.1.2: Python bindings to FreeDesktop.or
 dev-python/selectors34 1.2: Backport of the selectors module from Python 3.4
 dev-python/selenium 3.141.0-r1: Python language binding for Selenium Remote Control
 dev-python/semantic_version 2.8.4: Python library providing a few tools handling SemVer in Python
-dev-python/semver 2.9.1 2.10.1: A Python module for semantic versioning
+dev-python/semver 2.10.2: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
 dev-python/sentry-sdk 0.14.1 0.14.4: Python client for Sentry
@@ -9638,7 +9638,7 @@ dev-ruby/lockfile 2.1.3: A ruby library for creating NFS safe lockfiles
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
 dev-ruby/logue 1.0.13-r1 1.0.16 1.0.18: A module that adds logging/trace functionality
-dev-ruby/loofah 2.4.0 2.5.0-r2: Library for manipulating and transforming HTML/XML documents and fragments.
+dev-ruby/loofah 2.4.0 2.5.0-r2 2.6.0: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
 dev-ruby/lumberjack 1.0.13: A simple, powerful, and very fast logging utility
 dev-ruby/mab 0.0.3: Markup as Ruby
@@ -9726,7 +9726,7 @@ dev-ruby/origin 2.3.1: Origin is a simple DSL for generating MongoDB selectors a
 dev-ruby/ox 2.10.1 2.11.0 2.12.0 2.12.1 2.13.1 2.13.2: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1 2.2.0: Terminal painter
-dev-ruby/parallel 1.17.0 1.18.0 1.19.0 1.19.1: Run any code in parallel Processes or Threads
+dev-ruby/parallel 1.18.0 1.19.1 1.19.2: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
 dev-ruby/parser 2.6.5.0 2.7.1.0 2.7.1.1 2.7.1.2 2.7.1.3: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
@@ -9894,7 +9894,7 @@ dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubyte
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.3.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
-dev-ruby/sanitize 4.6.6 5.0.0 5.1.0 5.2.0: Sanitize is a whitelist-based HTML sanitizer
+dev-ruby/sanitize 4.6.6 5.0.0 5.1.0 5.2.0 5.2.1: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.7 5.0.8 5.1.0: Official Ruby-on-Rails Integration with Sass
@@ -10534,9 +10534,9 @@ dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/smem 1.5: A tool that can give numerous reports on memory usage on Linux systems
 dev-util/source-highlight 3.1.8 3.1.9: Generate highlighted source code as an (x)html document
-dev-util/spirv-headers 1.5.1 1.5.3 9999: Machine-readable files for the SPIR-V Registry
+dev-util/spirv-headers 1.5.3 9999: Machine-readable files for the SPIR-V Registry
 dev-util/spirv-llvm-translator 8.0.1.2-r1 8.0.1.3 9.0.0.1 9.0.1.1 10.0.0: Bi-directional translator between SPIR-V and LLVM IR
-dev-util/spirv-tools 2019.10_pre20191027-r1 2020.1 2020.3 2020.4_pre20200429 9999: Provides an API and commands for processing SPIR-V modules
+dev-util/spirv-tools 2020.3 9999: Provides an API and commands for processing SPIR-V modules
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
@@ -10573,8 +10573,8 @@ dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample 
 dev-util/visualvm 1.4.1: Integrates commandline JDK tools and profiling capabilities
 dev-util/vmtouch 1.3.0 1.3.1: Virtual Memory Toucher, portable file system cache diagnostics and control
 dev-util/vtable-dumper 1.2: A tool to list content of virtual tables in a shared library
-dev-util/vulkan-headers 1.1.125 1.2.133 1.2.136 1.2.137 1.2.143 9999: Vulkan Header files and API registry
-dev-util/vulkan-tools 1.1.124 1.2.133-r1 1.2.135 1.2.137 1.2.141 9999: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
+dev-util/vulkan-headers 1.2.137 1.2.143 9999: Vulkan Header files and API registry
+dev-util/vulkan-tools 1.2.137 1.2.141 9999: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
 dev-util/wasmer 0.11.0: universal web assembly runtime
 dev-util/webhook 2.7.0: lightweight incoming webhook server to run shell commands
 dev-util/weka 3.7.13 3.8.0: A Java data mining package
@@ -13012,9 +13012,9 @@ media-libs/vitamtp 2.5.9_pre20160829 9999: Library to interact with PS Vita's US
 media-libs/vo-aacenc 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.3 9999: VisualOn AMR-WB encoder library
 media-libs/volpack 1.0_p7-r1: Volume rendering library
-media-libs/vulkan-layers 1.1.125-r2 1.2.133-r1 1.2.135 1.2.137 1.2.141 9999: Vulkan Validation Layers
-media-libs/vulkan-loader 1.1.125 1.1.125-r1 1.2.133 1.2.135 1.2.137 1.2.141 9999: Vulkan Installable Client Driver (ICD) Loader
-media-libs/waffle 1.6.0-r1 1.6.1-r1 9999: Library that allows selection of GL API and of window system at runtime
+media-libs/vulkan-layers 1.2.137 1.2.141 9999: Vulkan Validation Layers
+media-libs/vulkan-loader 1.2.137 1.2.141 9999: Vulkan Installable Client Driver (ICD) Loader
+media-libs/waffle 1.6.1-r1 9999: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/webvfx 1.1.0: Video effects library based on web technologies
 media-libs/woff2 1.0.2-r1 1.0.2-r2: Encode/decode WOFF2 font format

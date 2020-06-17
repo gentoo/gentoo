@@ -3016,7 +3016,6 @@ dev-util/unrpyc:proto0 - Use pickle protocol 0 for un-rpyc module. May be useful
 dev-util/unrpyc:proto1 - Use pickle protocol 1 for un-rpyc module. Default if no protocol is selected
 dev-util/unrpyc:proto2 - Use pickle protocol 2 for un-rpyc module
 dev-util/vulkan-tools:cube - Build the cube/cubepp demos
-dev-util/vulkan-tools:vulkaninfo - Build the vulkaninfo utility
 dev-vcs/cssc:valgrind - Enable usage of dev-util/valgrind in tests
 dev-vcs/cvs:server - Enable server support
 dev-vcs/cvs2svn:bazaar - Support for dev-vcs/bzr
