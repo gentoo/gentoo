@@ -260,6 +260,29 @@ kernel-install_test() {
 	EOF
 }
 
+# @FUNCTION: kernel-install_pkg_pretend
+# @DESCRIPTION:
+# Check for missing optional dependencies and output warnings.
+kernel-install_pkg_pretend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if ! has_version -d sys-kernel/linux-firmware; then
+		ewarn "sys-kernel/linux-firmware not found installed on your system."
+		ewarn "This package provides various firmware files that may be needed"
+		ewarn "for your hardware to work.  If in doubt, it is recommended"
+		ewarn "to pause or abort the build process and install it before"
+		ewarn "resuming."
+
+		if use initramfs; then
+			elog
+			elog "If you decide to install linux-firmware later, you can rebuild"
+			elog "the initramfs via issuing a command equivalent to:"
+			elog
+			elog "    emerge --config ${CATEGORY}/${PN}"
+		fi
+	fi
+}
+
 # @FUNCTION: kernel-install_src_test
 # @DESCRIPTION:
 # Boilerplate function to remind people to call the tests.
@@ -356,4 +379,4 @@ _KERNEL_INSTALL_ECLASS=1
 fi
 
 EXPORT_FUNCTIONS src_test pkg_preinst pkg_postinst pkg_prerm pkg_postrm
-EXPORT_FUNCTIONS pkg_config
+EXPORT_FUNCTIONS pkg_config pkg_pretend
