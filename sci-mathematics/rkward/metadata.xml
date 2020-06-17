@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci-mathematics@gentoo.org</email>
-    <name>Gentoo Mathematics Project</name>
-  </maintainer>
-  <longdescription lang="en">
-RKWard aims to become an easy to use frontend to R. RKWard is still in
-development status. Right now it is most useful as an IDE to users
-with some experience in R, or willing to learn R.
-</longdescription>
-  <upstream>
-    <remote-id type="sourceforge">rkward</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
 </pkgmetadata>
