@@ -43,6 +43,7 @@ src_prepare() {
 
 python_test() {
 	local -x ASYNC_TEST_TIMEOUT=60
+	cd "${BUILD_DIR}/lib" || die
 	"${PYTHON}" -m tornado.test.runtests --verbose ||
 		die "tests failed under ${EPYTHON}"
 }
