@@ -33,6 +33,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.15.patch"
+)
+
 src_configure() {
 	use cairo || mycmakeargs+=( -DCAIRO_LIBRARY= )
 	use postscript || mycmakeargs+=( -DGS_LIBRARY= )
