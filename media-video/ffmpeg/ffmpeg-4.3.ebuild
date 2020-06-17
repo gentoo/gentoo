@@ -325,6 +325,7 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${FILESDIR}"/${PN}-4.3-fix-build-without-SSSE3.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -470,6 +471,7 @@ multilib_src_configure() {
 		--cc="$(tc-getCC)" \
 		--cxx="$(tc-getCXX)" \
 		--ar="$(tc-getAR)" \
+		--nm="$(tc-getNM)" \
 		--ranlib="$(tc-getRANLIB)" \
 		--optflags="${CFLAGS}" \
 		$(use_enable static-libs static) \
