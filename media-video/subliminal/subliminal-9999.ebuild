@@ -7,17 +7,24 @@ PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='xml(+)'
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+
+SRC_URI=""
+
+if [[ ${PV} == 9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/Diaoul/${PN}.git"
+	EGIT_BRANCH="develop"
+else
+	SRC_URI="https://github.com/Diaoul/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+fi
 
 DESCRIPTION="Python library to search and download subtitles"
 HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.org/project/subliminal/"
-EGIT_REPO_URI="https://github.com/Diaoul/${PN}.git"
-EGIT_BRANCH="develop"
-SRC_URI="test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )"
+SRC_URI+=" test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -53,8 +60,12 @@ PATCHES=(
 distutils_enable_tests pytest
 
 src_unpack() {
-	default_src_unpack
-	git-r3_src_unpack
+	# Needed to unpack the test data
+	default
+
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+	fi
 }
 
 python_prepare_all() {
@@ -64,7 +75,7 @@ python_prepare_all() {
 	# Disable unconditional dependency on dev-python/pytest-runner.
 	sed -i -e "s|'pytest-runner'||g" setup.py || die
 
-	if use test; then
+	if use test ; then
 		mkdir -p tests/data/mkv || die
 		ln -s "${WORKDIR}"/test*.mkv tests/data/mkv/ || die
 	fi
