@@ -7512,7 +7512,7 @@ dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python p
 dev-python/args 0.1.0-r1: Command Arguments for Humans
 dev-python/arpeggio 1.9.0 1.9.2: Parser interpreter based on PEG grammars
 dev-python/arrow 0.13.1 0.15.5 0.15.6: Better dates and times for Python
-dev-python/asgiref 3.2.7 3.2.8: ASGI utilities (successor to WSGI)
+dev-python/asgiref 3.2.7 3.2.8 3.2.9: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/asteval 0.9.18: Evaluator of Python expression using ast module
@@ -7532,7 +7532,7 @@ dev-python/automat 0.8.0-r1 20.2.0: Self-service finite-state machines for the p
 dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.11.0 1.22.0 1.24.0: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.11.0 1.22.0 1.24.0 1.25.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.62 1.18.70: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -8106,7 +8106,7 @@ dev-python/nautilus-python 1.2.2-r1 1.2.3: Python bindings for the Nautilus file
 dev-python/nbconvert 5.2.1 5.5.0 5.6.1: Converting Jupyter Notebooks
 dev-python/nbdime 0.2.0: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 4.4.0-r1 5.0.7: Reference implementation of the Jupyter Notebook format
-dev-python/nbsphinx 0.2.14 0.4.1 0.7.0: Jupyter Notebook Tools for Sphinx
+dev-python/nbsphinx 0.2.14 0.4.1 0.7.0 0.7.1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2-r1 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.2.1 9999: A tool that helps control neovim processes
@@ -8616,7 +8616,7 @@ dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
 dev-python/raven 5.33.0: Raven is a client for Sentry
 dev-python/rdflib 4.2.2-r1: RDF library containing a triple store and parser/serializer
 dev-python/readme_renderer 25.0 26.0: a library for rendering "readme" descriptions for Warehouse
-dev-python/readthedocs-sphinx-ext 1.0.3 1.0.4: Code specific for Read the Docs and Sphinx
+dev-python/readthedocs-sphinx-ext 1.0.3 1.0.4 2.0.0: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 0.9.0 2.0.1: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 3.3.11: Python client for Redis key-value store
@@ -8694,7 +8694,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 44.0.0 44.1.0 46.4.0-r1 47.1.1: Collection of extensions to Distutils
+dev-python/setuptools 44.0.0 44.1.0 46.4.0-r1 47.1.1 47.3.1: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 3.5.0 4.1.0 4.1.1 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
@@ -14157,7 +14157,7 @@ net-analyzer/wireshark 3.2.1 3.2.3 3.2.4 99999999: A network protocol analyzer f
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.31 4.0.20 4.4.8 5.0.0: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.31 4.0.20 4.4.8 5.0.0 5.0.1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
