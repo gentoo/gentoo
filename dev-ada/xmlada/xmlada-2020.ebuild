@@ -28,14 +28,6 @@ S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${PN}-2019-gentoo.patch )
 
-QA_FLAGS_IGNORED=(
-	/usr/lib/xmlada/xmlada_dom.relocatable/libxmlada_dom.so.2020
-	/usr/lib/xmlada/xmlada_input.relocatable/libxmlada_input_sources.so.2020
-	/usr/lib/xmlada/xmlada_sax.relocatable/libxmlada_sax.so.2020
-	/usr/lib/xmlada/xmlada_schema.relocatable/libxmlada_schema.so.2020
-	/usr/lib/xmlada/xmlada_unicode.relocatable/libxmlada_unicode.so.2020
-)
-
 src_configure() {
 	econf --prefix="${D}"/usr
 }
@@ -89,5 +81,6 @@ src_install() {
 	einstalldocs
 	dodoc xmlada-roadmap.txt
 	rm -f "${D}"/usr/share/doc/${PN}/.buildinfo
+	rm -rf "${D}"/usr/share/examples
 	rm -rf "${D}"/usr/share/gpr/manifests
 }

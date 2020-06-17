@@ -35,10 +35,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-PATCHES=(
-	"${FILESDIR}/${P}-paths.patch"
-)
-
 src_configure() {
 	use cairo || mycmakeargs+=( -DCAIRO_LIBRARY= )
 	use opengl || mycmakeargs+=( -DGLFW_LIBRARY= )
@@ -49,10 +45,26 @@ src_configure() {
 
 	# todo: Qt5, X11 automagic
 
+	mycmakeargs+=( -DCMAKE_INSTALL_PREFIX=/usr/gr )
+	#
+	# I need to have a serious conversation with upstream.
+	# * The main consumer of this package is dev-lang/julia.
+	# * If I patch gr to install in standard locations, julia does
+	#   not find it anymore.
+	# * I can't patch julia, since the corresponding scripts are
+	#   downloaded at runtime from its package registry ...
+	#
+
 	cmake_src_configure
 }
 
 src_install() {
 	cmake_src_install
 	find "${ED}" -name '*.a' -delete
+
+	echo "GRDIR=/usr/gr" > "${T}/99gr"
+	echo "LDPATH=/usr/gr/$(get_libdir)" >> "${T}/99gr"
+	doenvd "${T}/99gr"
+
+	dosym ../gr/bin/gksqt /usr/bin/gksqt
 }

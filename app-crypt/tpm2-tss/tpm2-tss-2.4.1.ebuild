@@ -33,9 +33,9 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.4.0-fix-tmpfiles-path.patch"
-	"${FILESDIR}/${PN}-2.4.0-Dont-run-systemd-sysusers-in-Makefile.patch"
-	)
+	"${FILESDIR}/${P}-Dont-run-systemd-sysusers-in-Makefile.patch"
+	"${FILESDIR}/${P}-configure.ac-wrap-PKG_CHECK_MODULES-in-braces.patch"
+)
 
 pkg_setup() {
 	local CONFIG_CHECK=" \
@@ -52,6 +52,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--localstatedir=/var \
 		$(use_enable doc doxygen-doc) \
 		$(use_enable fapi) \
 		$(use_enable static-libs static) \
