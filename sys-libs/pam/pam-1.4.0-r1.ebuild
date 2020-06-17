@@ -40,6 +40,7 @@ S="${WORKDIR}/linux-${P}"
 src_prepare() {
 	default
 	touch ChangeLog || die
+	eapply "${FILESDIR}"/fix-test-calls.patch
 	eautoreconf
 }
 
