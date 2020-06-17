@@ -2769,7 +2769,7 @@ app-text/sgmltools-lite 3.0.3-r15: Python interface to SGML software in a DocBoo
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
 app-text/sigil 0.9.16-r1 1.2.1-r1: Multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
-app-text/simple-fb2-reader 1.1.2 1.1.3: A simple gtk3 reader for fb2 ebooks
+app-text/simple-fb2-reader 1.1.3: A simple gtk3 reader for fb2 ebooks
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r3 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
@@ -8134,7 +8134,7 @@ dev-python/notebook 5.0.0 5.2.1 5.7.8 6.0.3: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
-dev-python/ntlm-auth 1.4.0-r1: Calculates NTLM Authentication codes
+dev-python/ntlm-auth 1.4.0-r1 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.6 0.6.7: Python to native compiler
 dev-python/numba 0.37.0 0.39.0: NumPy aware dynamic Python compiler using LLVM
@@ -17869,7 +17869,7 @@ www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff 1.9.1: zx2c4 pass manager extension for Firefox
 www-plugins/passff-host 1.2.1 1.2.1-r1: Host app for the PassFF WebExtension
-www-plugins/pdfjs 1.9.426 2.1.266: A PDF reader in JavaScript
+www-plugins/pdfjs 1.9.426 2.1.266 2.4.456: A PDF reader in JavaScript
 www-servers/adsf 1.4.1 1.4.2 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.4.41 2.4.43: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
