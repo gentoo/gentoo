@@ -1,0 +1,14 @@
+BDEPEND=>=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+DEFINED_PHASES=compile configure install test
+DEPEND=test? ( dev-cpp/gtest )
+DESCRIPTION=A platform independent standalone library that plays Lottie Animations
+EAPI=7
+HOMEPAGE=https://www.tizen.org/ https://github.com/Samsung/rlottie
+IUSE=debug examples test
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD FTL JSON LGPL-2.1 MIT
+RESTRICT=!test? ( test )
+SLOT=0/0.0.1
+SRC_URI=https://github.com/Samsung/rlottie/archive/v0.1.tar.gz -> rlottie-0.1.tar.gz
+_eclasses_=meson	8f7dc8ed2d76af0b33328789c017e677	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=2bebee3a05359f03f72e672c760c8794

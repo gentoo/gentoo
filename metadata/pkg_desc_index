@@ -4905,7 +4905,7 @@ dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion r
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.23.3 1.24.2 1.24.3: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.23.3 1.24.3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.177 0.179 0.180: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 0.32 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
@@ -5284,7 +5284,7 @@ dev-libs/roct-thunk-interface 3.0.0 3.1.0 3.3.0 3.5.0 9999: Radeon Open Compute 
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.27 0.30: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.2.0 9.2.0: Simulation Description Format (SDF) parser
-dev-libs/serd 0.30.2: Library for RDF syntax which supports reading and writing Turtle and NTriples
+dev-libs/serd 0.30.2 0.30.4: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 2.01-r1 2.02: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
 dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
@@ -12954,7 +12954,7 @@ media-libs/raspberrypi-userland 0_pre20160424 9999: Raspberry Pi userspace tools
 media-libs/raspberrypi-userland-bin 1.20170303 1.20190709: Raspberry Pi userspace tools and libraries
 media-libs/raul 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
-media-libs/rlottie 0.0.1_pre20200424: A platform independent standalone library that plays Lottie Animations
+media-libs/rlottie 0.0.1_pre20200424 0.1: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.8.2: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sbc 1.4: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
@@ -14942,7 +14942,7 @@ net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.4.3 1.4.5 1.4.6: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
-net-misc/rsync 3.1.3 3.2.0_pre2: File transfer program to keep remote files into sync
+net-misc/rsync 3.1.3 3.2.0_pre3: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.38.3: Rygel is an open source UPnP/DLNA MediaServer
