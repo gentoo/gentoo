@@ -3,17 +3,21 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic git-r3 pax-utils toolchain-funcs xdg
+inherit cmake flag-o-matic pax-utils toolchain-funcs xdg
 
-EGIT_REPO_URI="https://github.com/darktable-org/${PN}.git"
+DOC_PV="3.0.0"
+MY_PV="${PV/_/}"
+MY_P="${P/_/.}"
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="https://www.darktable.org/"
+SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
+	doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
-#KEYWORDS="~amd64 ~x86"
-LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
+KEYWORDS="~amd64 ~x86"
+LANGS=" ca cs da de es fr he hu it ja nb nl pl ru sl"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
 lto nls opencl openmp openexr pax_kernel webp
@@ -67,7 +71,10 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
+	"${FILESDIR}"/${PN}-3.0.2_cmake-opencl-kernel-loop.patch
 )
+
+S="${WORKDIR}/${P/_/~}"
 
 pkg_pretend() {
 	if use openmp ; then
@@ -127,4 +134,14 @@ src_install() {
 		eqawarn "you suspect that ${PN} is broken by this modification,"
 		eqawarn "please open a bug."
 	fi
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	elog "when updating a major version,"
+	elog "please bear in mind that your edits will be preserved during this process,"
+	elog "but it will not be possible to downgrade any more."
+	echo
+	ewarn "It will not be possible to downgrade!"
 }
