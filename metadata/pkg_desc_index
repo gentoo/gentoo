@@ -8608,7 +8608,7 @@ dev-python/random2 1.0.1-r1: Python-2.7 random module ported to python-3
 dev-python/rarfile 3.0 3.0-r1: Module for RAR archive reading
 dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
 dev-python/raven 5.33.0: Raven is a client for Sentry
-dev-python/rdflib 4.2.2-r1: RDF library containing a triple store and parser/serializer
+dev-python/rdflib 4.2.2-r1 5.0.0: RDF library containing a triple store and parser/serializer
 dev-python/readme_renderer 25.0 26.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 1.0.3 1.0.4 2.0.0: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 0.9.0 2.0.1: Python library that performs advanced searches in strings
