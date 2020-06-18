@@ -69,14 +69,16 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	# Bug #695658
-	if tc-is-gcc; then
-		test-flags-CC -floop-block &> /dev/null || \
-			die "Please switch to a gcc version built with USE=graphite"
-	fi
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		# Bug #695658
+		if tc-is-gcc; then
+			test-flags-CC -floop-block &> /dev/null || \
+				die "Please switch to a gcc version built with USE=graphite"
+		fi
 
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
+		if use openmp ; then
+			tc-has-openmp || die "Please switch to an openmp compatible compiler"
+		fi
 	fi
 }
 
