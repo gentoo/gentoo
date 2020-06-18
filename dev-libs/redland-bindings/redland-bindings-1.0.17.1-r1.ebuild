@@ -21,8 +21,9 @@ SRC_URI="http://download.librdf.org/source/${P}.tar.gz"
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux ~ppc-macos"
-IUSE="lua perl python php ruby"
+IUSE="lua perl python php ruby test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 BDEPEND="sys-apps/sed
 	virtual/pkgconfig"
@@ -39,7 +40,10 @@ RDEPEND=">=dev-libs/redland-1.0.14
 	)"
 
 DEPEND="${RDEPEND}
-	>=dev-lang/swig-2"
+	>=dev-lang/swig-2
+	test? (
+		>=dev-libs/redland-1.0.14[berkdb]
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-bool.patch
