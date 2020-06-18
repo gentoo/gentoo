@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="sqlite?,threads(+)"
 
 # The usual required for tests
@@ -78,14 +78,9 @@ python_compile_all() {
 }
 
 python_test() {
-	# the default; nose with: --where=./ does not work for python3
-	if python_is_python3; then
-		pushd "${BUILD_DIR}/src/" >/dev/null || die
-		"${EPYTHON}" ./run_tests.py || die "Tests failed under ${EPYTHON}"
-		popd >/dev/null || die
-	else
-		"${EPYTHON}" ./run_tests.py || die "Tests failed under ${EPYTHON}"
-	fi
+	pushd "${BUILD_DIR}/src/" >/dev/null || die
+	"${EPYTHON}" ./run_tests.py -v || die "Tests failed under ${EPYTHON}"
+	popd >/dev/null || die
 }
 
 python_install_all() {
