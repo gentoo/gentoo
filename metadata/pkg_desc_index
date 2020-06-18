@@ -2044,6 +2044,7 @@ app-misc/acdctl 1.1-r1: Apple Cinema Display Control
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
 app-misc/anki 2.1.0_beta27 2.1.13-r1 2.1.15: A spaced-repetition memory training program (flash cards)
+app-misc/asciicast-tools 0.0_pre20190410: Tools for creating recordings of console sessions
 app-misc/asciinema 2.0.2: Command line recorder for asciinema.org service
 app-misc/astrolog 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
