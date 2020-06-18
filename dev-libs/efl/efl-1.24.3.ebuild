@@ -87,7 +87,7 @@ RDEPEND="
 	hyphen? ( dev-libs/hyphen )
 	ibus? ( app-i18n/ibus )
 	jpeg2k? ( media-libs/openjpeg:= )
-	json? ( >=media-libs/rlottie-0.0.1_pre20200424 )
+	json? ( >=media-libs/rlottie-0.0.1_pre20200424:= )
 	lua? ( dev-lang/lua:* )
 	luajit? ( dev-lang/luajit:* )
 	mono? ( dev-lang/mono )
