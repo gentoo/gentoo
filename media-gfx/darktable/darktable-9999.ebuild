@@ -16,8 +16,8 @@ SLOT="0"
 LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
-lto nls opencl openmp openexr pax_kernel webp
-${LANGS// / l10n_}"
+	lto nls opencl openmp openexr pax_kernel tools webp
+	${LANGS// / l10n_}"
 
 BDEPEND=">=dev-python/jsonschema-3.2.0
 	dev-util/intltool
@@ -91,6 +91,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PRINT=$(usex cups)
+		-DBUILD_CURVE_TOOLS=$(usex tools)
+		-DBUILD_NOISE_TOOLS=$(usex tools)
 		-DCUSTOM_CFLAGS=ON
 		-DRAWSPEED_ENABLE_LTO=$(usex lto)
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
