@@ -9615,6 +9615,7 @@ dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext fi
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kpeg 1.1.0-r1: A simple PEG library for Ruby
 dev-ruby/kramdown 1.17.0 1.17.0-r2 2.1.0 2.2.1: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
+dev-ruby/kramdown-parser-gfm 1.1.0: A kramdown parser for the GFM dialect of Markdown
 dev-ruby/launchy 2.4.3-r2 2.5.0: Helper class for launching cross-platform applications
 dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.7.0: Preview mail in the browser instead of sending
