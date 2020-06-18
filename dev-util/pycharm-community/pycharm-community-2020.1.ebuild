@@ -22,7 +22,8 @@ RESTRICT="mirror strip"
 
 QA_PREBUILT="opt/${PN}/bin/fsnotifier
 	opt/${PN}/bin/fsnotifier64
-	opt/${PN}/bin/fsnotifier-arm"
+	opt/${PN}/bin/fsnotifier-arm
+	/opt/${PN}/jbr/bin/*"
 
 MY_PN=${PN/-community/}
 
