@@ -59,7 +59,6 @@ DEPEND="${COMMON_DEPEND}
 		>=sys-devel/clang-4
 		>=sys-devel/llvm-4
 	)
-	openmp? ( >=sys-devel/gcc-6[openmp,graphite] )
 "
 RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
@@ -70,6 +69,12 @@ PATCHES=(
 )
 
 pkg_pretend() {
+	# Bug #695658
+	if tc-is-gcc; then
+		test-flags-CC -floop-block &> /dev/null || \
+			die "Please switch to a gcc version built with USE=graphite"
+	fi
+
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
