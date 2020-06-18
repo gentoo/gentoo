@@ -37,7 +37,7 @@ done
 IUSE="${IUSE_VIDEO_CARDS}
 	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 +libglvnd +llvm
 	lm-sensors opencl osmesa selinux test unwind vaapi valgrind vdpau vulkan
-	vulkan-overlay wayland +X xa xvmc +zstd"
+	vulkan-overlay wayland +X xa xvmc zink +zstd"
 
 REQUIRED_USE="
 	d3d9?   ( dri3 || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
@@ -68,6 +68,7 @@ REQUIRED_USE="
 	video_cards_vmware? ( gallium )
 	xa? ( X )
 	xvmc? ( X )
+	zink? ( gallium vulkan )
 "
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.100"
@@ -127,6 +128,7 @@ RDEPEND="
 		>=x11-libs/libxcb-1.13:=[${MULTILIB_USEDEP}]
 		x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
 	)
+	zink? ( media-libs/vulkan-loader:=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
 "
 for card in ${RADEON_CARDS}; do
@@ -439,6 +441,7 @@ multilib_src_configure() {
 		gallium_enable video_cards_vivante etnaviv
 		gallium_enable video_cards_vmware svga
 		gallium_enable video_cards_nouveau nouveau
+		gallium_enable zink zink
 
 		# Only one i915 driver (classic vs gallium). Default to classic.
 		if ! use classic; then
