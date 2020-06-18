@@ -5,6 +5,10 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>maekke@gentoo.org</email>
+		<name>Markus Meier</name>
+	</maintainer>
 	<use>
 		<flag name="flickr">Add support for uploading photos to flickr</flag>
 		<flag name="geolocation">Enable geotagging support</flag>
