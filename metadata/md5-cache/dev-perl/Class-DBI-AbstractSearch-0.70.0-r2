@@ -1,0 +1,15 @@
+BDEPEND=>=dev-perl/Class-DBI-0.900.0 >=dev-perl/SQL-Abstract-Limit-0.120.0 test? ( >=virtual/perl-Test-Simple-0.320.0 dev-perl/DBD-SQLite ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Abstract Class::DBI's SQL with SQL::Abstract::Limit
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Class-DBI-AbstractSearch
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Class-DBI-0.900.0 >=dev-perl/SQL-Abstract-Limit-0.120.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MI/MIYAGAWA/Class-DBI-AbstractSearch-0.07.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=ac61e6277be09f6125bcf4b654b1408e
