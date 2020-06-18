@@ -12516,7 +12516,7 @@ media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion too
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.6.1: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.2.9: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.2.9 4.3.0: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
