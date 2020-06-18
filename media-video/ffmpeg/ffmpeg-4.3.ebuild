@@ -345,7 +345,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf=( ${EXTRA_FFMPEG_CONF} )
+	local myconf=( )
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
 	use openssl || use libressl && use gpl && myconf+=( --enable-nonfree )
@@ -475,7 +475,8 @@ multilib_src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--optflags="${CFLAGS}" \
 		$(use_enable static-libs static) \
-		"${myconf[@]}"
+		"${myconf[@]}" \
+		${EXTRA_FFMPEG_CONF}
 	echo "${@}"
 	"${@}" || die
 
