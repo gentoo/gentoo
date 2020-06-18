@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Java environment configuration query tool"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
-SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
+SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"

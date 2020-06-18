@@ -16,7 +16,9 @@ LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} = *_pre* ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE_CPU_FLAGS_X86=" sse2"
 IUSE="acl examples iconv ipv6 libressl lz4 ssl static stunnel system-zlib xattr xxhash zstd"
+IUSE+=" ${IUSE_CPU_FLAGS_X86// / cpu_flags_x86_}"
 
 LIB_DEPEND="acl? ( virtual/acl[static-libs(+)] )
 	lz4? ( app-arch/lz4[static-libs(+)] )
@@ -45,12 +47,18 @@ python_check_deps() {
 	has_version "dev-python/commonmark[${PYTHON_USEDEP}]"
 }
 
+src_prepare() {
+	default
+	eapply -Z "${FILESDIR}/${PN}-3.2.0_pre3-simd_check.patch"
+}
+
 src_configure() {
 	use static && append-ldflags -static
 	local myeconfargs=(
 		--with-rsyncd-conf="${EPREFIX}"/etc/rsyncd.conf
 		--without-included-popt
 		$(use_enable acl acl-support)
+		$(use_enable cpu_flags_x86_sse2 simd)
 		$(use_enable iconv)
 		$(use_enable ipv6)
 		$(use_enable lz4)
