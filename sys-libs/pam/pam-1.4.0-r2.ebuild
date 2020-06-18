@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools db-use fcaps tmpfiles toolchain-funcs usr-ldscript multilib-minimal
+inherit autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://github.com/linux-pam/linux-pam"
@@ -95,10 +95,15 @@ multilib_src_install() {
 multilib_src_install_all() {
 	find "${ED}" -type f -name '*.la' -delete || die
 
-	newtmpfiles - "${CATEGORY}-${PN}.conf" <<-_EOF_
+	# tmpfiles.eclass is impossible to use because
+	# there is the pam -> tmpfiles -> systemd -> pam dependency loop
+
+	dodir /usr/lib/tmpfiles.d
+
+	cat ->>  "${D}"/usr/lib/tmpfiles.d/${CATEGORY}-${PN}.conf <<-_EOF_
 		d /run/faillock 0755 root root
 	_EOF_
-	use selinux && newtmpfiles - "${CATEGORY}-${PN}-selinux.conf" <<-_EOF_
+	use selinux && cat ->>  "${D}"/usr/lib/tmpfiles.d/${CATEGORY}-${PN}-selinux.conf <<-_EOF_
 		d /run/sepermit 0755 root root
 	_EOF_
 
@@ -122,8 +127,4 @@ pkg_postinst() {
 	# The pam_unix module needs to check the password of the user which requires
 	# read access to /etc/shadow only.
 	fcaps cap_dac_override sbin/unix_chkpwd
-
-	# OpenRC systems need this processed right away
-	tmpfiles_process "${CATEGORY}-${PN}.conf"
-	use selinux && tmpfiles_process "${CATEGORY}-${PN}-selinux.conf"
 }
