@@ -26,7 +26,10 @@ RDEPEND="glslang? ( dev-util/glslang[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libepoxy[${MULTILIB_USEDEP}] )
 	shaderc? ( >=media-libs/shaderc-2017.2[${MULTILIB_USEDEP}] )
-	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )"
+	vulkan? (
+		dev-util/vulkan-headers
+		media-libs/vulkan-loader[${MULTILIB_USEDEP}]
+	)"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
