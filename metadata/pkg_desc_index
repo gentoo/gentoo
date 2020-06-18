@@ -5728,7 +5728,7 @@ dev-perl/Class-Adapter 1.80.0-r1 1.90.0: Implementation of the 'Adapter' Design 
 dev-perl/Class-Autouse 2.10.0-r2 2.10.0-r3: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.80.0 0.90.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.330.0 0.340.0: A pragma to use the C3 method resolution order algortihm
-dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-based class
+dev-perl/Class-C3-Componentised 1.1.0-r1 1.1.2: Load mix-ins or components to your C3-based class
 dev-perl/Class-C3-XS 0.140.0: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r2: Glue object frameworks together transparently
 dev-perl/Class-DBI 3.0.17-r2: Simple Database Abstraction
@@ -10375,7 +10375,7 @@ dev-util/glib-utils 2.62.6 2.64.3: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.12.3353_pre20191027-r2 8.13.3559 8.13.3560_pre20200404 8.13.3743-r1 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1726: GN is a meta-build system that generates build files for Ninja
-dev-util/gnome-builder 3.34.1-r1: An IDE for writing GNOME-based software
+dev-util/gnome-builder 3.34.1-r1 3.36.0: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.32.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2020.1.3: Golang IDE by JetBrains
@@ -15674,7 +15674,6 @@ sci-chemistry/mpqc 2.3.1-r4: The Massively Parallel Quantum Chemistry Program
 sci-chemistry/msms-bin 2.6.1-r1: MSMS very efficiently computes triangulations of Solvent Excluded Surfaces
 sci-chemistry/mustang 3.2.2: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.10: A powerful and highly parallelized molecular dynamics code
-sci-chemistry/nmrdepaker 1.0-r3: Program to perform NMR spectra 'De-Pake-ing' and moment calculation
 sci-chemistry/nmrglue 0.5-r1 0.7: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
 sci-chemistry/openbabel 2.4.1 2.4.1-r1: Interconverts file formats used in molecular modeling
