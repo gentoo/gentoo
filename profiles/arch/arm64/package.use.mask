@@ -198,7 +198,6 @@ net-fs/samba addc addns ads cluster python test
 # Some more unkeyworded dependencies.
 app-text/tesseract scrollview
 dev-cpp/eigen test
-kde-frameworks/frameworkintegration appstream
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
 mate-extra/caja-extensions gajim
