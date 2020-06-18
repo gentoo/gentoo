@@ -29,6 +29,10 @@ RDEPEND="dev-db/sqlite:=
 
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}_qt515.patch
+)
+
 pkg_postinst() {
 	xdg_icon_cache_update
 }
