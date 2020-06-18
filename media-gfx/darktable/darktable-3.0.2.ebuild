@@ -20,8 +20,8 @@ KEYWORDS="~amd64 ~x86"
 LANGS=" ca cs da de es fr he hu it ja nb nl pl ru sl"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
-nls opencl openmp openexr pax_kernel webp
-${LANGS// / l10n_}"
+	nls opencl openmp openexr pax_kernel tools webp
+	${LANGS// / l10n_}"
 
 BDEPEND="
 	dev-util/intltool
@@ -98,6 +98,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_CURVE_TOOLS=$(usex tools)
+		-DBUILD_NOISE_TOOLS=$(usex tools)
 		-DBUILD_PRINT=$(usex cups)
 		-DCUSTOM_CFLAGS=ON
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
