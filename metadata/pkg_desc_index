@@ -5744,7 +5744,7 @@ dev-perl/Class-Factory-Util 1.700.0-r2: Provide utility methods for factory clas
 dev-perl/Class-ISA 0.360.0: Report the search path thru an ISA tree
 dev-perl/Class-InsideOut 1.140.0: A safe, simple inside-out object construction kit
 dev-perl/Class-Inspector 1.320.0 1.360.0: Provides information about Classes
-dev-perl/Class-Load 0.240.0: A working (require q{Class::Name}) and more
+dev-perl/Class-Load 0.240.0 0.250.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.100.0: XS implementation of parts of Class::Load
 dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
@@ -12416,7 +12416,7 @@ media-gfx/cropgui 0.4.1: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cura 3.4.1 3.6.0 4.2.1 4.3.0-r1 4.6.1: A 3D model slicing application for 3D printing
 media-gfx/curaengine 3.4.1 3.6.0 4.2.0 4.3.0 4.6.1: A 3D model slicing engine for 3D printing
-media-gfx/darktable 2.6.2 3.0.2 9999: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 2.6.2 3.0.2 3.0.2-r1 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
 media-gfx/digikam 6.4.0-r1 7.0.0_rc: Digital photo management application
@@ -14761,7 +14761,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 8.1.9 9.0.2-r1 9.1.1-r1 9.1.2 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 8.1.9 9.1.2 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -16600,7 +16600,7 @@ sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from
 sys-apps/flashrom 0.9.8 1.2-r1 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 17.02.00: Firmware Test Suite
-sys-apps/fwupd 1.2.11 1.3.9-r1 1.3.10 1.4.2 1.4.4: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 1.2.11 1.3.10 1.3.11 1.4.2 1.4.4: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
