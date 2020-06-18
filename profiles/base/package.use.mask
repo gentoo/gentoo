@@ -19,6 +19,7 @@ app-text/texlive-core xindy
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-04)
 # Broken error[E0478]: lifetime bound not satisfied
 =dev-lang/rust-1.44.0 miri
+=dev-lang/rust-1.44.1 miri
 
 # Ben Kohler <bkohler@gentoo.org> (2020-04-29)
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
