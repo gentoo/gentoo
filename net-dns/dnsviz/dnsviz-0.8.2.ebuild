@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Tool suite for analysis and visualization of DNS and DNSSEC"
