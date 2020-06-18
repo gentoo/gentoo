@@ -116,7 +116,6 @@ dev-python/python-urljr
 dev-python/selectors34
 dev-python/stomper
 dev-python/YURL
-x11-themes/fvwm-crystal
 
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
 # Masked for testing
