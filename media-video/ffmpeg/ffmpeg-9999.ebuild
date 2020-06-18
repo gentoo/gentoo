@@ -67,7 +67,7 @@ fi
 # or $(use_enable foo foo) if no :bar is set.
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
-		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
+		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt +gnutls gmp
 		+gpl hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
 		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau vulkan
 		X:xlib X:libxcb X:libxcb-shm X:libxcb-xfixes +zlib
