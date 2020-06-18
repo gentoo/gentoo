@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="X11-based passphrase dialog for use with OpenSSH"
 HOMEPAGE="https://github.com/sigmavirus24/x11-ssh-askpass"
-SRC_URI="https://github.com/sigmavirus24/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sigmavirus24/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
