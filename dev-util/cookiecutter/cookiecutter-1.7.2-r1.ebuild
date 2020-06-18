@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1
 
@@ -14,31 +14,35 @@ SRC_URI="https://github.com/audreyr/cookiecutter/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-python/future-0.15.2[${PYTHON_USEDEP}]
-	>=dev-python/binaryornot-0.2.0[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/binaryornot-0.4.4[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7[${PYTHON_USEDEP}]
-	>=dev-python/click-5.0[${PYTHON_USEDEP}]
-	>=dev-python/whichcraft-0.1.1[${PYTHON_USEDEP}]
-	>=dev-python/poyo-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/jinja2-time-0.1.0[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.18.0[${PYTHON_USEDEP}]
+	<dev-python/jinja-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/click-7.0[${PYTHON_USEDEP}]
+	>=dev-python/poyo-0.5.0[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-time-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/python-slugify-4.0.0[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.23.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.10[${PYTHON_USEDEP}]
+	<dev-python/markupsafe-2.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-		>=dev-python/pytest-mock-1.1[${PYTHON_USEDEP}]
-		dev-python/pytest-catchlog[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-vcs/git )"
 
-DOCS=( README.rst HISTORY.rst CONTRIBUTING.rst )
+DOCS=( README.md HISTORY.md CONTRIBUTING.md )
+
+PATCHES=(
+	"${FILESDIR}/test_cli-1.7.2.patch"
+	)
 
 python_test() {
-	py.test || die
+	pytest -o addopts= || die
 }
