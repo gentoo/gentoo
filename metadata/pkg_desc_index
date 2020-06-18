@@ -8726,7 +8726,7 @@ dev-python/sortedcollections 0.5.3: Python library to sort collections and conta
 dev-python/sortedcontainers 2.1.0 2.2.1 2.2.2: Python library to sort collections and containers
 dev-python/soupsieve 1.9.5 1.9.6 2.0.1: A modern CSS selector implementation for BeautifulSoup
 dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with games in mind
-dev-python/sparql-wrapper 1.8.4: Wrapper around a SPARQL service
+dev-python/sparql-wrapper 1.8.4 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
 dev-python/sphinx 1.7.5-r2 2.0.1-r1 2.4.4 3.0.3 3.0.4 3.1.0 3.1.1: Python documentation generator
