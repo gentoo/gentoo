@@ -38,7 +38,6 @@ dev-python/pyopengl test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-23)
 # don't bother keywording old versions
-<dev-qt/qtgui-5.14.2 wayland
 <net-analyzer/rrdtool-1.7.2 ruby
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
