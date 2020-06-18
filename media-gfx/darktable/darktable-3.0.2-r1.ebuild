@@ -70,6 +70,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
+	"${FILESDIR}"/${PN}-3.0.2_cmake-march-autodetection.patch
 	"${FILESDIR}"/${PN}-3.0.2_cmake-opencl-kernel-loop.patch
 	"${FILESDIR}"/${PN}-3.0.2_jsonschema-automagic.patch
 )

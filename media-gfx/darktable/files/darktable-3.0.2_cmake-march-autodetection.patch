@@ -1,0 +1,26 @@
+Darktable and RawSpeed upstream support two build modes: if BINARY_PACKAGE_BUILD==1
+they pass -mtune=generic to the compiler, otherwise they use -march=native.
+In either case, these options override externally set CFLAGS.
+
+Disable this behaviour so that the users' settings provided to the ebuild by Portage
+are respected.
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -521,7 +521,7 @@
+     set(DT_REQ_INSTRUCTIONS "-msse2")
+   endif()
+ 
+-  include(march-mtune)
++  set(MARCH "")
+ 
+   #if(NOT BUILD_SSE2_CODEPATHS)
+   #  set(MARCH "${MARCH} -mno-sse2 -D__DISABLE_SSE2__ -U__SSE2__ -D__DISABLE_SSE__ -U__SSE__")
+--- a/src/external/rawspeed/cmake/compiler-flags.cmake
++++ b/src/external/rawspeed/cmake/compiler-flags.cmake
+@@ -1,5 +1,4 @@
+ include(CheckCXXCompilerFlag)
+-include(CpuMarch)
+ include(CheckCXXCompilerFlagAndEnableIt)
+ 
+ # yes, need to keep both the CMAKE_CXX_FLAGS and CMAKE_CXX_STANDARD.
