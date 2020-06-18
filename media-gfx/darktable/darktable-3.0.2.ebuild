@@ -146,9 +146,11 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "when updating a major version,"
+	elog
+	elog "When updating a major version,"
 	elog "please bear in mind that your edits will be preserved during this process,"
 	elog "but it will not be possible to downgrade any more."
-	echo
+	elog
 	ewarn "It will not be possible to downgrade!"
+	ewarn
 }
