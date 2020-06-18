@@ -181,6 +181,11 @@ src_configure() {
 	done
 	if use wasm; then
 		rust_targets="${rust_targets},\"wasm32-unknown-unknown\""
+		if use system-llvm; then
+			# un-hardcode rust-lld linker for this target
+			# https://bugs.gentoo.org/715348
+			sed -i '/linker:/ s/rust-lld/wasm-ld/' src/librustc_target/spec/wasm32_base.rs || die
+		fi
 	fi
 	rust_targets="${rust_targets#,}"
 
@@ -312,7 +317,7 @@ src_configure() {
 	# )
 	# no extra hand holding is done, no target transformations, all
 	# values are passed as-is with just basic checks, so it's up to user to supply correct values
-	# valid rust targets can be obtained with 
+	# valid rust targets can be obtained with
 	# 	rustc --print target-list
 	# matching cross toolchain has to be installed
 	# matching LLVM_TARGET has to be enabled for both rust and llvm (if using system one)
