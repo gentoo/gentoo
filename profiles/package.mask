@@ -303,10 +303,6 @@ games-util/pogo-manager-bin
 net-p2p/bisq
 sci-mathematics/geogebra
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-02)
-# Introduced new privsep (chroot) feature. Masked for testing.
->=net-misc/dhcpcd-9.0.0
-
 # Michał Górny <mgorny@gentoo.org> (2020-03-29)
 # Unmaintained, seriously outdated, vulnerable.  Multiple bugs reported.
 # Stuck on Python 3.6.
