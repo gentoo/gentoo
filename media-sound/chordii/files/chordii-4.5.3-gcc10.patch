@@ -1,0 +1,76 @@
+From f25bac64d4ad2bd784c9670672d0644fdef8fa60 Mon Sep 17 00:00:00 2001
+From: Johan Vromans <jvromans@squirrel.nl>
+Date: Sun, 2 Feb 2020 16:44:48 +0100
+Subject: [PATCH] Fix some compilation problems with modern gcc.
+
+---
+ src/chordii.c | 1 -
+ src/chordii.h | 4 ++--
+ src/grid.c    | 6 +++---
+ 3 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/src/chordii.c b/src/chordii.c
+index 5064c2f..390ad63 100644
+--- a/src/chordii.c
++++ b/src/chordii.c
+@@ -716,7 +716,6 @@ void set_sys_def()
+ 	no_grid = FALSE;
+ 	n_columns = 0;
+ 	max_columns = 1;
+-	dummy_kcs.chord_name[0]='\0';
+ 	extra_space = DEF_EXTRA_SPACE;
+ 	}
+ 
+diff --git a/src/chordii.h b/src/chordii.h
+index 3ecd74b..418214d 100644
+--- a/src/chordii.h
++++ b/src/chordii.h
+@@ -77,12 +77,12 @@ struct kcs {
+ 	int	s1,s2,s3,s4,s5,s6;
+ 	int	origin;
+ 	int	difficult;
+-	} dummy_kcs;
++	};
+ 
+ struct chord_struct {
+ 	struct chord_struct *next;
+ 	struct kcs *chord;
+-	} dummy_chord_struct;
++	};
+ 
+ struct sub_title_struct {
+ 	struct sub_title_struct *next_sub;
+diff --git a/src/grid.c b/src/grid.c
+index 7012d44..fe732be 100644
+--- a/src/grid.c
++++ b/src/grid.c
+@@ -209,7 +209,7 @@ int	origin, difficult;
+ 		kc_ptr=kc_ptr->next;
+ 		}
+ 
+-	new_kc_ptr = (struct kcs *) malloc (sizeof dummy_kcs);
++	new_kc_ptr = (struct kcs *) malloc (sizeof (struct kcs));
+ 	new_kc_ptr->next = kc_ptr;
+ 	*prev_kc_ptr = new_kc_ptr;
+ 
+@@ -262,7 +262,7 @@ char *chord;
+ 			kc_ptr=get_kc_entry (chord);
+ 			}
+ 
+-		new = (struct chord_struct *) malloc (sizeof (dummy_chord_struct));
++		new = (struct chord_struct *) malloc (sizeof (struct chord_struct));
+ 		new->chord=kc_ptr;
+ 		new->next = ct_ptr;
+ 		*prev_ptr_handle = new;
+@@ -307,7 +307,7 @@ char *chord;
+ 			kc_ptr=get_kc_entry (chord);
+ 			}
+ 
+-		new = (struct chord_struct *) malloc (sizeof (dummy_chord_struct));
++		new = (struct chord_struct *) malloc (sizeof (struct chord_struct));
+ 		new->chord=kc_ptr;
+ 		new->next = ct_ptr;
+ 		*prev_ptr_handle = new;
+-- 
+2.26.2
+
