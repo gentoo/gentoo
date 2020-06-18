@@ -63,7 +63,7 @@ DEPEND="${COMMON_DEPEND}
 		>=sys-devel/clang-4
 		>=sys-devel/llvm-4
 	)
-	openmp? ( sys-devel/gcc[openmp,graphite] )
+	openmp? ( >=sys-devel/gcc-6[openmp,graphite] )
 "
 RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
@@ -71,6 +71,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
+	"${FILESDIR}"/${PN}-3.0.2_cmake-opencl-kernel-loop.patch
 )
 
 S="${WORKDIR}/${P/_/~}"
