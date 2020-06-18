@@ -103,21 +103,6 @@ net-nds/389-ds-base
 dev-libs/389-adminutil
 dev-libs/svrcore
 
-# Aaron Bauman <bman@gentoo.org> (2020-06-03)
-# py2 only. dead upstream. m-n. rdep.
-# Masked for removal in 15 days
-app-cdr/sync2cd
-app-text/getxbook
-dev-python/assets
-dev-python/bz2file
-dev-python/kid
-dev-python/jaxml
-dev-python/python-urljr
-dev-python/selectors34
-dev-python/stomper
-dev-python/YURL
-x11-themes/fvwm-crystal
-
 # Stefan Strogin <steils@gentoo.org> (2020-06-03)
 # Masked for testing
 >=dev-libs/libressl-3.2.0
