@@ -5729,7 +5729,7 @@ dev-perl/Class-Autouse 2.10.0-r2 2.10.0-r3: Runtime aspect loading of one or mor
 dev-perl/Class-Base 0.80.0 0.90.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.330.0 0.340.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1 1.1.2: Load mix-ins or components to your C3-based class
-dev-perl/Class-C3-XS 0.140.0: XS speedups for Class::C3
+dev-perl/Class-C3-XS 0.140.0 0.150.0: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r2: Glue object frameworks together transparently
 dev-perl/Class-DBI 3.0.17-r2: Simple Database Abstraction
 dev-perl/Class-DBI-AbstractSearch 0.70.0-r1: Abstract Class::DBI's SQL with SQL::Abstract::Limit
