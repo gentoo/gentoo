@@ -19,7 +19,7 @@ IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto
 lto nls opencl openmp openexr pax_kernel webp
 ${LANGS// / l10n_}"
 
-BDEPEND="
+BDEPEND=">=dev-python/jsonschema-3.2.0
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
