@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-18)
+# Depends on dead gnome-base/libgnomeui. Really, no one else is packaging
+# this, last (and only) release in 2006, abandoned upstream. Bug #726790
+dev-embedded/gnome-avrdude
+
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Maintainer unresponsive.  Stuck on py3.6.  Pending version bump.
 # Failing tests.
