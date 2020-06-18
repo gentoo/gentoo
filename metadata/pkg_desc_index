@@ -5735,7 +5735,7 @@ dev-perl/Class-DBI 3.0.17-r2: Simple Database Abstraction
 dev-perl/Class-DBI-AbstractSearch 0.70.0-r1 0.70.0-r2: Abstract Class::DBI's SQL with SQL::Abstract::Limit
 dev-perl/Class-DBI-Plugin 0.30.0 0.30.0-r1: Abstract base class for Class::DBI plugins
 dev-perl/Class-DBI-Plugin-DeepAbstractSearch 0.80.0 0.80.0-r1: deep_search_where() method for Class::DBI
-dev-perl/Class-DBI-mysql 1.0.0-r2: Extensions to Class::DBI for MySQL
+dev-perl/Class-DBI-mysql 1.0.0-r2 1.0.0-r3: Extensions to Class::DBI for MySQL
 dev-perl/Class-Data-Accessor 0.40.40-r2: Inheritable, overridable class and instance data accessor creation
 dev-perl/Class-Data-Inheritable 0.80.0-r2: Inheritable, overridable class data
 dev-perl/Class-Default 1.510.0-r1: Static calls apply to a default instantiation
