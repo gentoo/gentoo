@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic git-r3 pax-utils toolchain-funcs xdg
+inherit cmake flag-o-matic git-r3 toolchain-funcs xdg
 
 EGIT_REPO_URI="https://github.com/darktable-org/${PN}.git"
 
@@ -16,7 +16,7 @@ SLOT="0"
 LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
-	lto nls opencl openmp openexr pax_kernel tools webp
+	lto nls opencl openmp openexr tools webp
 	${LANGS// / l10n_}"
 
 BDEPEND=">=dev-python/jsonschema-3.2.0
@@ -124,14 +124,5 @@ src_install() {
 				rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
 			fi
 		done
-	fi
-
-	if use pax_kernel && use opencl ; then
-		pax-mark Cm "${ED}"/usr/bin/${PN} || die
-		eqawarn "USE=pax_kernel is set meaning that ${PN} will be run"
-		eqawarn "under a PaX enabled kernel. To do so, the ${PN} binary"
-		eqawarn "must be modified and this *may* lead to breakage! If"
-		eqawarn "you suspect that ${PN} is broken by this modification,"
-		eqawarn "please open a bug."
 	fi
 }
