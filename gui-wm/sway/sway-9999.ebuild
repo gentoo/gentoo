@@ -53,7 +53,6 @@ else
 fi
 RDEPEND="
 	x11-misc/xkeyboard-config
-	!elogind? ( !systemd? ( sys-auth/consolekit ) )
 	${DEPEND}
 "
 BDEPEND="
