@@ -16826,7 +16826,7 @@ sys-auth/google-authenticator 1.08 1.09 9999: PAM Module for two step verificati
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
 sys-auth/keystone 16.0.1 17.0.0 2019.2.9999 2020.1.9999: The Openstack authentication, authorization, and service catalog
-sys-auth/libfprint 0.99.0 1.0 1.90.0 1.90.1: library to add support for consumer fingerprint readers
+sys-auth/libfprint 0.99.0 1.0 1.90.0 1.90.1 1.90.2: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
 sys-auth/libnss-mysql 1.5_p20060915-r5: NSS MySQL Library
@@ -18710,7 +18710,7 @@ x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon
 x11-themes/notify-osd-icons 0.7-r1: Icons for on-screen-display notification agent
 x11-themes/nou-icon-theme 09.02.08: A scalable icon theme called Nou
 x11-themes/numix-gtk-theme 2.6.7-r2: A modern flat theme with a combination of light and dark elements
-x11-themes/numix-icon-theme 18.07.17 19.09.20 20.03.20: An official icon theme from the Numix Project
+x11-themes/numix-icon-theme 18.07.17 19.09.20 20.03.20 20.06.07: An official icon theme from the Numix Project
 x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03 18.12.01 19.01.24 19.02.07 19.02.22 19.03.20 19.04.15 19.05.07 19.09.20 19.12.27: An icon theme for Linux from the Numix project
 x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
