@@ -10,5 +10,5 @@ RDEPEND=>=sys-libs/pam-1.4.0 consolekit? ( sys-auth/consolekit[pam] ) elogind? (
 REQUIRED_USE=?? ( consolekit elogind systemd )
 RESTRICT=binchecks
 SLOT=0
-SRC_URI=https://github.com/gentoo/pambase/archive/pambase-20200617.tar.gz
+SRC_URI=https://github.com/gentoo/pambase/archive/pambase-20200618.tar.gz
 _md5_=cfd9d80008de5adf9a1aec86225ced0e
