@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ HOMEPAGE="https://www.darktable.org/"
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 #KEYWORDS="~amd64 ~x86"
-LANGS=" ca cs da de es fr he hu it ja nl pl ru sk sl sv uk"
+LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
 nls opencl openmp openexr pax_kernel webp
@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/json-glib
 	dev-libs/libxml2:2
-	dev-libs/pugixml:0=
+	>=dev-libs/pugixml-1.8:0=
 	gnome-base/librsvg:2
 	>=media-gfx/exiv2-0.25-r2:0=[xmp]
 	media-libs/lcms:2
@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	sys-libs/zlib:=
 	virtual/jpeg:0
 	x11-libs/cairo
-	>=x11-libs/gtk+-3.14:3
+	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango
 	colord? ( x11-libs/colord-gtk:0= )
 	cups? ( net-print/cups )
@@ -59,10 +59,15 @@ DEPEND="${COMMON_DEPEND}
 		>=sys-devel/clang-4
 		>=sys-devel/llvm-4
 	)
+	openmp? ( >=sys-devel/gcc-6[openmp,graphite] )
 "
 RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
+)
 
 pkg_pretend() {
 	if use openmp ; then
@@ -72,6 +77,8 @@ pkg_pretend() {
 
 src_prepare() {
 	use cpu_flags_x86_sse3 && append-flags -msse3
+
+	sed -i -e 's:/appdata:/metainfo:g' data/CMakeLists.txt || die
 
 	cmake_src_prepare
 }
