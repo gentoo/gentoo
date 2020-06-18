@@ -8555,7 +8555,7 @@ dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara 
 dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
-dev-python/python-slugify 1.2.6: A Python Slugify application that handles Unicode
+dev-python/python-slugify 1.2.6 4.0.0: A Python Slugify application that handles Unicode
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.12 1.13: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
@@ -8816,6 +8816,7 @@ dev-python/testrepository 0.0.20: A repository of test results
 dev-python/testresources 2.0.1: A pyunit extension for managing expensive test resources
 dev-python/testscenarios 0.5.0: A pyunit extension for dependency injection
 dev-python/testtools 2.3.0 2.4.0: Extensions to the Python standard library unit testing framework
+dev-python/text-unidecode 1.3: Tthe most basic port of the Text::Unidecode Perl library
 dev-python/textfsm 0.4.0: Python module for parsing semi-structured text into python tables.
 dev-python/texttable 1.6.2: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
