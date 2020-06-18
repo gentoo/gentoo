@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils flag-o-matic toolchain-funcs udev
+inherit autotools eutils toolchain-funcs udev flag-o-matic
 
 MY_PN=${PN}
 MY_PV=${PV/\./-}
@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${MY_PV}"
 S=${WORKDIR}/${MY_P}
 
 if [[ ${PV} == "9999" ]] ; then
-		EGIT_REPO_URI="https://www.kismetwireless.net/${PN}.git"
+		EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
 		inherit git-r3
 else
 		SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
@@ -37,14 +37,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 # Upstream has still not migrated to the libusb-1 line.
+# Maemo: Add hildon and bbus
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2011.08.1_p20140618-tinfo.patch
+	eapply "${FILESDIR}"/${PN}-2011.08.1_p20140618-tinfo.patch
 	mv configure.{in,ac} || die
 	eautoreconf
-
 	# fix bug 577466 by restoring pre-GCC5 inline semantics
 	append-cflags -std=gnu89
+	default
 }
 
 # Please note that upstream removed the --with-gtk-version option
