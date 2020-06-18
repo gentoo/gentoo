@@ -5733,8 +5733,8 @@ dev-perl/Class-C3-XS 0.140.0 0.150.0: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r2 0.130.0: Glue object frameworks together transparently
 dev-perl/Class-DBI 3.0.17-r2: Simple Database Abstraction
 dev-perl/Class-DBI-AbstractSearch 0.70.0-r1 0.70.0-r2: Abstract Class::DBI's SQL with SQL::Abstract::Limit
-dev-perl/Class-DBI-Plugin 0.30.0: Abstract base class for Class::DBI plugins
-dev-perl/Class-DBI-Plugin-DeepAbstractSearch 0.80.0: deep_search_where() method for Class::DBI
+dev-perl/Class-DBI-Plugin 0.30.0 0.30.0-r1: Abstract base class for Class::DBI plugins
+dev-perl/Class-DBI-Plugin-DeepAbstractSearch 0.80.0 0.80.0-r1: deep_search_where() method for Class::DBI
 dev-perl/Class-DBI-mysql 1.0.0-r2: Extensions to Class::DBI for MySQL
 dev-perl/Class-Data-Accessor 0.40.40-r2: Inheritable, overridable class and instance data accessor creation
 dev-perl/Class-Data-Inheritable 0.80.0-r2: Inheritable, overridable class data
@@ -13794,7 +13794,7 @@ media-video/mpeg2vidcodec 12-r1: MPEG Library
 media-video/mpglen 0.1: A program to scan through a MPEG file and count the number of GOPs and frames
 media-video/mpgtx 1.3.1-r2: Command line MPEG audio/video/system file toolbox
 media-video/mplay-sh 0.5.3-r1: mplayer wrapper script as backend for vdr-mplayer
-media-video/mplayer 1.3.0-r6 1.4 9999: Media Player for Linux
+media-video/mplayer 1.3.0-r6 1.4-r1 9999: Media Player for Linux
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
 media-video/mpv 0.32.0-r1 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.8.6-r5 0.8.6-r6: Mark commercial breaks in VDR recordings
