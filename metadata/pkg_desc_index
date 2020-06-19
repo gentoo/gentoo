@@ -4740,7 +4740,7 @@ dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles into javascript
-dev-lang/crystal 0.34.0 0.35.0: The Crystal Programming Language
+dev-lang/crystal 0.34.0 0.35.0 0.35.1: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
 dev-lang/elixir 1.9.4 1.10.2 1.10.3: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
@@ -7510,7 +7510,7 @@ dev-python/argon2_cffi 19.1.0: CFFI bindings to the Argon2 password hashing libr
 dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python project
 dev-python/args 0.1.0-r1: Command Arguments for Humans
 dev-python/arpeggio 1.9.0 1.9.2: Parser interpreter based on PEG grammars
-dev-python/arrow 0.13.1 0.15.5 0.15.6: Better dates and times for Python
+dev-python/arrow 0.13.1 0.15.5 0.15.6 0.15.7: Better dates and times for Python
 dev-python/asgiref 3.2.7 3.2.8 3.2.9 3.2.10: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.18: Evaluator of Python expression using ast module
@@ -7914,7 +7914,7 @@ dev-python/imageio 2.6.1: Python library for reading and writing image data
 dev-python/imagesize 1.1.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
-dev-python/immutables 0.11: A high-performance immutable mapping type for Python
+dev-python/immutables 0.11 0.14: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 1.4.0 1.5.0 1.6.0-r1 1.6.1: Read metadata from Python packages
 dev-python/importlib_resources 1.5.0-r1 2.0.1: Read resources from Python packages
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
@@ -10335,7 +10335,7 @@ dev-util/devhelp 3.30.1 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 146 147: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 146 147 148: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
