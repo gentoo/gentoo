@@ -1,4 +1,4 @@
-BDEPEND=app-text/xmlto dev-util/itstool sys-devel/gettext virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+BDEPEND=app-text/docbook-xml-dtd:4.1.2 app-text/xmlto dev-util/itstool sys-devel/gettext virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
 DEFINED_PHASES=compile configure install postinst test
 DEPEND=dev-libs/glib:2 dev-libs/libxml2
 DESCRIPTION=The Shared MIME-info Database specification
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/0440063a2e6823a4b1a6fb2f2af8350f/shared-mime-info-2.0.tar.xz
 _eclasses_=meson	8f7dc8ed2d76af0b33328789c017e677	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=87164d31eff1baf89bf4c3a0b031dde9
+_md5_=811776a844b228203747ac430f00e178
