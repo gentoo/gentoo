@@ -11,5 +11,5 @@ RDEPEND=python_single_target_python3_6? ( dev-python/httplib2[python_targets_pyt
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 )
 SLOT=1
 SRC_URI=https://github.com/OpenShot/openshot-qt/archive/v2.5.0.tar.gz -> openshot-2.5.0.tar.gz
-_eclasses_=distutils-r1	89b310c534a033a3566e0f26419daa81	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=distutils-r1	44725b3eb803b8abcd6978759c231210	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=f96247b7f2b51fd465ed6acdeac2d703
