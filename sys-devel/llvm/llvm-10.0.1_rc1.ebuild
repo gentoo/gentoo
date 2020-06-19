@@ -142,6 +142,10 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
 
+	# Fix linking to dylib and .a libs simultaneously
+	eapply "${FILESDIR}"/10.0.1/0001-llvm-Avoid-linking-llvm-cfi-verify-to-duplicate-libs.patch
+	eapply "${FILESDIR}"/10.0.1/0002-llvm-Disable-linking-llvm-exegesis-to-dylib.patch
+
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
