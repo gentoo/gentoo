@@ -403,13 +403,13 @@ distutils_enable_tests() {
 	local test_pkg
 	case ${1} in
 		nose)
-			test_pkg="dev-python/nose"
+			test_pkg=">=dev-python/nose-1.3.7-r4"
 			python_test() {
 				nosetests -v || die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		pytest)
-			test_pkg="dev-python/pytest"
+			test_pkg=">=dev-python/pytest-4.5.0"
 			python_test() {
 				pytest -vv || die "Tests fail with ${EPYTHON}"
 			}
