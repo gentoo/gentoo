@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit python-single-r1 cmake-utils virtualx xdg-utils
+inherit python-single-r1 cmake virtualx xdg-utils
 
 DESCRIPTION="A simple interface for working with TeX documents"
 HOMEPAGE="http://tug.org/texworks/"
@@ -40,6 +40,11 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	cmake_src_prepare
+	eapply "${FILESDIR}"/qt5.15-support.patch
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-Wno-dev
@@ -52,7 +57,7 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_SHARED_PLUGINS=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
