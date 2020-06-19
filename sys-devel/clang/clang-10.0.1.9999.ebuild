@@ -71,6 +71,12 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
+PATCHES=(
+	# fix simultaneous linking to .a and dylib
+	"${FILESDIR}"/10.0.1/0003-clang-tools-extra-Prevent-linking-to-duplicate-.a-li.patch
+	"${FILESDIR}"/10.0.1/0004-clang-Avoid-linking-c-index-test-to-duplicate-librar.patch
+)
+
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
