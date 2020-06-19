@@ -5752,7 +5752,7 @@ dev-perl/Class-Member 1.600.0-r1 1.600.0-r2: A set of modules to make the module
 dev-perl/Class-Method-Modifiers 2.120.0 2.130.0: provides Moose-like method modifiers
 dev-perl/Class-MethodMaker 2.240.0 2.240.0-r1: Create generic methods for OO Perl
 dev-perl/Class-Mix 0.6.0 0.6.0-r1: dynamic class mixing
-dev-perl/Class-ReturnValue 0.550.0-r1: A return-value object that lets you treat it as as a boolean, array or object
+dev-perl/Class-ReturnValue 0.550.0-r1 0.550.0-r2: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0: Implementation of a Singleton class
 dev-perl/Class-Spiffy 0.150.0-r1: Spiffy Perl Interface Framework For You
 dev-perl/Class-Std 0.13.0: Support for creating standard "inside-out" classes
