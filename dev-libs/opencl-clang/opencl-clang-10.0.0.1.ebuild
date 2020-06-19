@@ -6,21 +6,26 @@ EAPI=7
 CMAKE_ECLASS=cmake
 inherit cmake-multilib llvm
 
+MY_PV="$(ver_rs 3 -)"
+MY_P="${PN}-${MY_PV}"
+
 DESCRIPTION="OpenCL-oriented thin wrapper library around clang"
 HOMEPAGE="https://github.com/intel/opencl-clang"
-SRC_URI="https://github.com/intel/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/intel/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="UoI-NCSA"
-SLOT="9"
+SLOT="10"
 KEYWORDS="~amd64"
 
+S="${WORKDIR}/${MY_P}"
+
 BDEPEND="dev-vcs/git"
-COMMON="sys-devel/clang:9=[static-analyzer,${MULTILIB_USEDEP}]"
+COMMON="sys-devel/clang:10=[static-analyzer,${MULTILIB_USEDEP}]"
 DEPEND="${COMMON}
-	dev-util/spirv-llvm-translator:9=[${MULTILIB_USEDEP}]"
+	dev-util/spirv-llvm-translator:10=[${MULTILIB_USEDEP}]"
 RDEPEND="${COMMON}"
 
-LLVM_MAX_SLOT=9
+LLVM_MAX_SLOT=10
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.0-clang_library_dir.patch

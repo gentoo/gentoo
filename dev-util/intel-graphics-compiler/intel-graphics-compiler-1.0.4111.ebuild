@@ -4,7 +4,8 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib llvm
+
+inherit cmake-multilib flag-o-matic llvm
 
 DESCRIPTION="LLVM-based OpenCL compiler targetting Intel Gen graphics hardware"
 HOMEPAGE="https://github.com/intel/intel-graphics-compiler"
@@ -13,8 +14,9 @@ SRC_URI="https://github.com/intel/${PN}/archive/igc-${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="debug"
 
-LLVM_MAX_SLOT=9
+LLVM_MAX_SLOT=10
 
 COMMON="<=sys-devel/llvm-${LLVM_MAX_SLOT}.9999:=[${MULTILIB_USEDEP}]
 	<=dev-libs/opencl-clang-${LLVM_MAX_SLOT}.9999:=[${MULTILIB_USEDEP}]"
@@ -23,7 +25,6 @@ RDEPEND="${COMMON}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.9-no_Werror.patch
-	"${FILESDIR}"/${PN}-1.0.3445-Fix-for-building-separated-dynamic-llvm-libs.patch
 )
 
 S="${WORKDIR}"/${PN}-igc-${PV}
@@ -36,6 +37,10 @@ multilib_src_configure() {
 	# opencl-clang brings the right slot as dep
 	has_version -d sys-devel/llvm:$llvm_slot || die "LLVM slot matching $ocl_clang_ver not found ($llvm_slot)"
 	einfo "Selecting LLVM SLOT $llvm_slot: $(best_version -d sys-devel/llvm:$llvm_slot)"
+
+	# Since late March 2020 cmake.eclass does not set -DNDEBUG any more, and the way
+	# IGC uses this definition causes problems for some users (see Bug #718824).
+	use debug || append-cppflags -DNDEBUG
 
 	local mycmakeargs=(
 		-DCMAKE_LIBRARY_PATH=$(get_llvm_prefix ${llvm_slot})/$(get_libdir)
