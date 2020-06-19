@@ -84,6 +84,7 @@ src_install() {
 
 	newman ebtables-legacy.8 ebtables.8
 	einstalldocs
+	docompress -x /usr/share/doc/${PF}/ethertypes #724138
 }
 
 pkg_postinst() {
