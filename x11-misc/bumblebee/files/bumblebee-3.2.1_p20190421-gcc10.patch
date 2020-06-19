@@ -1,0 +1,66 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix FTBFS with gcc-10
+ gcc-10 defaults to -fno-common
+ see https://gcc.gnu.org/gcc-10/porting_to.html
+Bug-Debian: https://bugs.debian.org/957058
+
+--- a/src/bbconfig.h
++++ b/src/bbconfig.h
+@@ -103,7 +103,7 @@ enum bb_pm_method {
+     PM_VGASWITCHEROO,
+     PM_METHODS_COUNT /* not a method but a marker for the end */
+ };
+-const char *bb_pm_method_string[PM_METHODS_COUNT];
++extern const char *bb_pm_method_string[PM_METHODS_COUNT];
+ 
+ /* String buffer size */
+ #define BUFFER_SIZE 1024
+--- a/src/switch/switching.h
++++ b/src/switch/switching.h
+@@ -60,10 +60,10 @@ void switcheroo_off(void);
+ 
+ /* number of switchers as defined in switching.c */
+ #define SWITCHERS_COUNT 2
+-struct switching_method switching_methods[SWITCHERS_COUNT];
++extern struct switching_method switching_methods[SWITCHERS_COUNT];
+ 
+ /* A switching method that can be used or NULL if none */
+-struct switching_method *switcher;
++extern struct switching_method *switcher;
+ 
+ struct switching_method *switcher_detect(const char *name, struct switch_info);
+ enum switch_state switch_status(void);
+--- a/src/bbsecondary.h
++++ b/src/bbsecondary.h
+@@ -21,7 +21,7 @@
+ #pragma once
+ 
+ /* PCI Bus ID of the discrete video card */
+-struct pci_bus_id *pci_bus_id_discrete;
++extern struct pci_bus_id *pci_bus_id_discrete;
+ 
+ /// Start the X server by fork-exec, turn card on if needed.
+ bool start_secondary(bool);
+--- a/src/switch/switching.c
++++ b/src/switch/switching.c
+@@ -31,6 +31,8 @@ struct switching_method switching_method
+           switcheroo_on, switcheroo_off}
+ };
+ 
++struct switching_method *switcher = NULL;
++
+ /**
+  * Enumerates through available switching methods and try a method
+  * 
+--- a/src/bbsecondary.c
++++ b/src/bbsecondary.c
+@@ -37,6 +37,9 @@
+ #include "pci.h"
+ #include "module.h"
+ 
++/* PCI Bus ID of the discrete video card */
++struct pci_bus_id *pci_bus_id_discrete;
++
+ /**
+  * Substitutes DRIVER in the passed path
+  * @param x_conf_file A path to be processed
