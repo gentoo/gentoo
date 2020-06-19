@@ -13,7 +13,7 @@ SRC_URI="https://github.com/getsentry/sentry-python/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/sentry-python-${PV}"
@@ -21,6 +21,7 @@ S="${WORKDIR}/sentry-python-${PV}"
 RDEPEND="
 	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/aiocontextvars[${PYTHON_USEDEP}]' python3_6	)
 "
 
 BDEPEND="
