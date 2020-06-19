@@ -463,7 +463,7 @@ app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface
 app-admin/eclean-kernel 0.4.3 1.99.4 2.99.1 9999: Remove outdated built kernels
 app-admin/elektra 0.8.20-r1: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.16: Rebuild Emacs packages
-app-admin/entr 4.3 4.4: Run arbitrary commands when files change
+app-admin/entr 4.3 4.4 4.5: Run arbitrary commands when files change
 app-admin/eselect 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/exo 1.11.0: Command-line tool for everything at Exoscale: compute, storage, dns.
@@ -717,7 +717,7 @@ app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.4.4-r2 9.4.4-r3 9.6.3 9.6.3-r1 9.6.5: Featureful client/server network backup suite
 app-backup/bareos 17.2.9 18.2.8 19.2.7: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.11-r2 1.1.13 9999: Deduplicating backup program with compression and authenticated encryption
-app-backup/borgmatic 1.5.1-r2: Automatically create, prune and verify backups with borgbackup
+app-backup/borgmatic 1.5.1-r2 1.5.6: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.26.0 0.26.1 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 0.29.0 0.29.1 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/burp 2.2.18 2.2.18-r1: Network backup and restore client and server for Unix and Windows
@@ -4875,7 +4875,7 @@ dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and 
 dev-libs/check 0.14.0-r2: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cl 1.2.3 1.2.4 9999: OpenCL bindings for Erlang
-dev-libs/clhpp 2.0.11-r1: Khronos OpenCL C++ bindings
+dev-libs/clhpp 2.0.11-r1 2.0.12: Khronos OpenCL C++ bindings
 dev-libs/cloog 0.18.1 0.18.4 9999: A loop generator for scanning polyhedra
 dev-libs/collada-dom 2.5.0 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/concurrencykit 0.6.0 0.7.0: A library with concurrency related algorithms and data structures in C
@@ -5231,7 +5231,7 @@ dev-libs/ocl-icd 2.2.12 2.2.12-r2 2.2.12-r3: Alternative to vendor specific Open
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 6.9.4 9999: Regular expression library for different character encodings
 dev-libs/opencl-clang 8.0.1.1 9.0.1 10.0.0.1: OpenCL-oriented thin wrapper library around clang
-dev-libs/opencl-icd-loader 2020.03.13-r1: Official Khronos OpenCL ICD Loader
+dev-libs/opencl-icd-loader 2020.03.13-r1 2020.06.16: Official Khronos OpenCL ICD Loader
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
@@ -7581,7 +7581,7 @@ dev-python/bottleneck 1.2.1-r1 1.3.2: Fast NumPy array functions written in Cyth
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/breathe 4.14.1: Sphinx Doxygen renderer
 dev-python/brotlipy 0.7.0-r2: Python binding to the Brotli library
-dev-python/brython 3.7.2: A Python 3 implementation for client-side web programming
+dev-python/brython 3.7.2 3.7.3: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.2.4 6.2.7: Python bindings for Berkeley DB
 dev-python/cached-property 1.5.1: A cached-property for decorating methods in classes
 dev-python/cachelib 0.1: Collection of cache libraries in the same API interface. Extracted from werkzeug
@@ -8357,7 +8357,7 @@ dev-python/pygtk 2.24.0-r5: GTK+2 bindings for Python
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 1.9.0-r1 1.10.1 2.0.2: Hamcrest framework for matcher objects
-dev-python/pyicu 2.4.2 2.4.3: Python bindings for dev-libs/icu
+dev-python/pyicu 2.4.3 2.5: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyilmbase 2.3.0-r2: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
@@ -14611,8 +14611,8 @@ net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.24.4 2.26.4-r1 2.28.2: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 4.8.3 4.11.1 4.12.0 4.12.1: Extended ROOT remote file server
-net-libs/xrootd-ceph 4.12.0: xrootd OSS plug-in for interfacing with Ceph storage platform
+net-libs/xrootd 4.8.3 4.11.1 4.12.0 4.12.1 4.12.3: Extended ROOT remote file server
+net-libs/xrootd-ceph 4.12.0 4.12.3: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
