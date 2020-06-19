@@ -86,6 +86,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.9-logind_plugin.patch"
+	"${FILESDIR}/${PN}-1.4.4-help2man_var.patch" #728484
 )
 
 pkg_setup() {
