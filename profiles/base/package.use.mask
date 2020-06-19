@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Stephan Hartmann <stha09@googlemail.com> (2020-19-06)
+# Mostly intended for development and not for general use.
+>=www-client/chromium-84 headless
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-21)
 # Multiple runtime crashes, see bug #724672
 media-gfx/inkscape jemalloc
