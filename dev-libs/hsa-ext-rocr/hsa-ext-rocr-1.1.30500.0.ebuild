@@ -5,8 +5,8 @@ EAPI=7
 
 inherit unpacker
 
-ROCM_VERSION="3.3.0"
-MY_PV="${PV}-rocm-rel-$(ver_cut 1-2 ${ROCM_VERSION})-19-23fc088b"
+ROCM_VERSION="3.5.0"
+MY_PV="${PV}-rocm-rel-$(ver_cut 1-2 ${ROCM_VERSION})-30-def83d8"
 
 DESCRIPTION="Proprietary image-support library for Radeon Open Compute"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm#closed-source-components"
