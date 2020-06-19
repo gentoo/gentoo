@@ -98,8 +98,7 @@ src_install() {
 		newbashcomp cvmfs/bash_completion/cvmfs.bash_completion cvmfs
 	dodoc doc/*.md
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins -r "${BUILD_DIR}"/html
+		dodoc -r "${BUILD_DIR}"/html
 		docompress -x /usr/share/doc/${PF}/html
 	fi
 }
@@ -107,6 +106,6 @@ src_install() {
 pkg_config() {
 	einfo "Setting up CernVM-FS client"
 	cvmfs_config setup
-	einfo "Now edit ${EROOT%/}/etc/cvmfs/default.local"
+	einfo "Now edit ${EROOT}/etc/cvmfs/default.local"
 	einfo "and restart the autofs service"
 }
