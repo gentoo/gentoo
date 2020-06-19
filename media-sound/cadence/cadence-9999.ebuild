@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit git-r3 python-single-r1 xdg desktop
 
 DESCRIPTION="Collection of tools useful for audio production"
-HOMEPAGE="http://kxstudio.linuxaudio.org/Applications:Cadence"
+HOMEPAGE="https://kxstudio.linuxaudio.org/Applications:Cadence"
 EGIT_REPO_URI="https://github.com/falkTX/Cadence.git"
 KEYWORDS=""
 LICENSE="GPL-2"
@@ -17,7 +17,6 @@ IUSE="a2jmidid -pulseaudio opengl"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-# for jack project rendering also needs media-sound/jack_capture which is not in the tree yet
 CDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
@@ -49,7 +48,7 @@ src_prepare() {
 }
 
 src_compile() {
-	myemakeargs=(PREFIX="/usr"
+	myemakeargs=(PREFIX="${EPREFIX}/usr"
 		SKIP_STRIPPING=true
 	)
 
@@ -57,17 +56,22 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="/usr" DESTDIR="${D}" install
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${ED}" install
+
+	python_fix_shebang ${ED}
 
 	# Clean up stuff that shouldn't be installed
-	rm -rf "${D}"/etc/X11/xinit/xinitrc.d/61cadence-session-inject
-	rm -rf "${D}"/etc/xdg/autostart/cadence-session-start.desktop
-	rm -rf "${D}"/usr/share/applications/*.desktop
+	rm -rf "${ED}"/etc/X11/xinit/xinitrc.d/61cadence-session-inject
+	rm -rf "${ED}"/etc/xdg/autostart/cadence-session-start.desktop
+	rm -rf "${ED}"/usr/share/applications/*.desktop
 
 	if use !pulseaudio; then
-		rm -rf "${D}"/usr/bin/cadence-pulse2{jack,loopback}
-		rm -rf "${D}"/usr/share/cadence/pulse2{jack,loopback}
+		rm -rf "${ED}"/usr/bin/cadence-pulse2{jack,loopback}
+		rm -rf "${ED}"/usr/share/cadence/pulse2{jack, loopback}
 	fi
+	# Depend on ladish which is not in the tree
+	rm -rf "${ED}"/usr/bin/claudia{,-launcher}
+	rm -rf "${ED}"/usr/share/cadence/icons/claudia-hicolor/
 
 	# Replace desktop entries with QA issues with these
 	make_desktop_entry cadence Cadence cadence "AudioVideo;AudioVideoEditing;Qt"
