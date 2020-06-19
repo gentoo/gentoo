@@ -419,7 +419,7 @@ app-admin/abrt 2.12.0-r2 2.14.0 2.14.1: Automatic bug detection and reporting to
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.7 2.9.9 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.9.7 2.9.9 2.9.10 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -1617,7 +1617,7 @@ app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container R
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0-r1 19.0.1-r1: Commercial version of app-emulation/wine with paid support
 app-emulation/crun 0.13: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 2.37.3 3.0.0 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 2.37.3 3.0.0 3.1.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.8: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
@@ -13952,7 +13952,7 @@ net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5-r1 1.5-r3 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 8.1 8.9.1 9.0 9.0-r1 9999999: Parallelized network login hacker
 net-analyzer/ibmonitor 1.4 1.4-r1: Interactive bandwidth monitor
-net-analyzer/icinga2 2.11.3 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.11.3 2.11.4 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r2 2.0.0: A simple CLI program for displaying network statistics in real time
