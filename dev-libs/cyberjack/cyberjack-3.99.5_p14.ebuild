@@ -31,13 +31,7 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/${MY_P/_/-}"
 
 CONFIG_CHECK="~USB_SERIAL_CYBERJACK"
-
-pkg_setup() {
-	# Add workaround for GCC-10,
-	# by defining narrowing as warning like GCC-9 did.
-	# Upstream is working on that.
-	append-cxxflags -Wno-narrowing
-}
+PATCHES="${FILESDIR}/${P}-gcc10.patch"
 
 src_prepare() {
 	default
