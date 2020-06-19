@@ -4972,7 +4972,7 @@ dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
 dev-libs/kasync 0.3.0: C++ library for controlling asynchronous tasks
 dev-libs/kdiagram 2.6.3 2.7.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r201 0.3.2-r300: A library for registering global keyboard shortcuts
-dev-libs/keystone 0.9.1 9999: assembly/assembler framework + bindings
+dev-libs/keystone 0.9.1 0.9.1-r1 9999: assembly/assembler framework + bindings
 dev-libs/klibc 2.0.4-r3: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.3.2_p20200406: Path searching library for TeX-related files
 dev-libs/kpeoplevcard 0.1: Library to expose vcards to KPeople
