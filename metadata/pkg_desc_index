@@ -5068,7 +5068,7 @@ dev-libs/libical 3.0.8: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.15.4 1.15.5: Library to handle input devices in Wayland
+dev-libs/libinput 1.15.4 1.15.5 1.15.6: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.2: Open-source library for reading, mastering and writing optical discs
@@ -17820,7 +17820,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
-www-client/opera 68.0.3618.165: A fast and secure web browser
+www-client/opera 68.0.3618.165 68.0.3618.173: A fast and secure web browser
 www-client/opera-beta 69.0.3686.7 69.0.3686.12 69.0.3686.21 69.0.3686.30: A fast and secure web browser
 www-client/opera-developer 70.0.3693.0 70.0.3701.0 70.0.3707.0 70.0.3714.0 70.0.3721.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
@@ -18614,7 +18614,7 @@ x11-terms/root-tail 1.2-r4: Terminal to display (multiple) log files on the root
 x11-terms/roxterm 3.1.5-r1 3.9.3: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.22-r1 9.22-r3 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.5.0 3.6.0-r1 3.7.0: sakura is a terminal emulator based on GTK and VTE
-x11-terms/st 0.8.2 0.8.3 9999: simple terminal implementation for X
+x11-terms/st 0.8.2 0.8.3 0.8.4 9999: simple terminal implementation for X
 x11-terms/terminator 1.92-r1: Multiple GNOME terminals in one window
 x11-terms/terminology 1.7.0-r1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
