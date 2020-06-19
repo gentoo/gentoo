@@ -7,12 +7,10 @@ inherit toolchain-funcs
 
 DESCRIPTION="Libraries for standards-based RTP/RTCP/RTSP multimedia streaming"
 HOMEPAGE="http://www.live555.com/"
-# Upstream aggressively remove old versions: bug #719336.
-#SRC_URI="http://www.live555.com/liveMedia/public/${P/-/.}.tar.gz"
-SRC_URI="https://cmpct.info/~sam/gentoo/distfiles/${CATEGORY}/${PN}/${P/-/.}.tar.gz"
+SRC_URI="http://www.live555.com/liveMedia/public/${P/-/.}.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="libressl ssl"
 
 BDEPEND="virtual/pkgconfig"
@@ -30,7 +28,7 @@ DOCS=( "live-shared/README" )
 # Be careful, bump this everytime you bump the package and the ABI has changed.
 # If you don't know, ask someone.
 # You may wish to use a site like https://abi-laboratory.pro/index.php?view=timeline&l=live555
-LIVE_ABI_VERSION=8
+LIVE_ABI_VERSION=9
 SLOT="0/${LIVE_ABI_VERSION}"
 
 S="${WORKDIR}/live"
