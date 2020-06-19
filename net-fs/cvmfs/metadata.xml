@@ -23,10 +23,7 @@
   and meta-data on demand and verifies data integrity by cryptographic hashes.
   </longdescription>
   <use>
-    <flag name="aufs">Use AUFS instead of OverlayFS for the server</flag>    
-    <flag name="preload">Install the cvmfs cache preloader for distributed file systems</flag>    
     <flag name="server">Install the cvmfsd program and init script</flag>
-    <flag name="test-programs">Install unit test programs</flag>    
   </use>
   <upstream>
     <remote-id type="github">cvmfs/cvmfs</remote-id>
