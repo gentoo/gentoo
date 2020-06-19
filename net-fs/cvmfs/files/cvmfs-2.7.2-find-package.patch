@@ -1,0 +1,41 @@
+From 3a4881d1dc211ec358995d6d8501818beedc62ac Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <guilherme@amadio.org>
+Date: Mon, 6 Apr 2020 17:26:48 +0200
+Subject: [PATCH 3/3] Comment out unnecessary package lookups
+
+---
+ CMakeLists.txt | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3403ae67b..2895b567a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -295,7 +295,7 @@ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${CMAKE_BINARY_DIR})
+ # set properties for configurable libraries
+ #
+ 
+-find_package (Valgrind)
++# find_package (Valgrind)
+ if (VALGRIND_FOUND)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${VALGRIND_INCLUDE_DIR})
+   add_definitions(-DHAS_VALGRIND_HEADERS)
+@@ -314,11 +314,11 @@ endif (NOT MACOSX)
+ find_package (OpenSSL REQUIRED)
+ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${OPENSSL_INCLUDE_DIR})
+ 
+-find_package (GTest REQUIRED)
+-set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GTEST_INCLUDE_DIRS})
++# find_package (GTest REQUIRED)
++# set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GTEST_INCLUDE_DIRS})
+ 
+-find_package (GMock REQUIRED)
+-set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GMOCK_INCLUDE_DIRS})
++# find_package (GMock REQUIRED)
++# set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GMOCK_INCLUDE_DIRS})
+ 
+ #find_package (VJSON REQUIRED)
+ add_subdirectory(externals/vjson/src)
+-- 
+2.26.0
+
