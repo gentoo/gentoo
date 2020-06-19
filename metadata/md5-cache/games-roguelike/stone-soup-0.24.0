@@ -4,11 +4,11 @@ DESCRIPTION=Role-playing roguelike game of exploration and treasure-hunting in d
 EAPI=7
 HOMEPAGE=http://crawl.develz.org/wordpress/
 IUSE=debug ncurses sound test +tiles
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT
 RDEPEND=dev-db/sqlite:3 =dev-lang/lua-5.1*:0= sys-libs/zlib !ncurses? ( !tiles? ( sys-libs/ncurses:0 ) ) ncurses? ( sys-libs/ncurses:0 ) tiles? ( media-fonts/dejavu media-libs/freetype:2 media-libs/libpng:0 sound? ( media-libs/libsdl2[X,opengl,sound,video] media-libs/sdl2-mixer ) !sound? ( media-libs/libsdl2[X,opengl,video] ) media-libs/sdl2-image[png] virtual/glu virtual/opengl )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://crawl.develz.org/release/0.24/stone_soup-0.24.0.tar.xz https://dev.gentoo.org/~hasufell/distfiles/stone-soup.png https://dev.gentoo.org/~hasufell/distfiles/stone-soup.svg
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=df388be1d8de68f4d348c81ab4add604
+_md5_=225fc1ffb6a0298da25fd10b6c7f1bb3
