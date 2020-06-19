@@ -797,7 +797,7 @@ app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark pr
 app-benchmarks/wrk 4.1.0-r2: A HTTP benchmarking tool
 app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
-app-cdr/bchunk 1.2.0-r4: Convert CD images from bin/cue to iso+wav/cdr
+app-cdr/bchunk 1.2.2: Convert CD images from bin/cue to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
 app-cdr/brasero 3.12.2-r1: CD/DVD burning application for the GNOME desktop
 app-cdr/burn-cd 1.8.0-r1 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
@@ -4807,8 +4807,8 @@ dev-lang/qu-prolog 10.1 10.2 10.3 10.4: Extended Prolog supporting quantifiers, 
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.10 2.5.8 2.5.8-r1 2.6.6 2.6.6-r1 2.6.6-r2 2.7.1 2.7.1-r1 2.7.1-r2: An object-oriented scripting language
-dev-lang/rust 1.41.1 1.42.0 1.43.1 1.44.0: Systems programming language from Mozilla
-dev-lang/rust-bin 1.41.1 1.42.0 1.43.1 1.44.0: Systems programming language from Mozilla
+dev-lang/rust 1.41.1 1.42.0 1.43.1 1.44.0 1.44.1: Systems programming language from Mozilla
+dev-lang/rust-bin 1.41.1 1.42.0 1.43.1 1.44.0 1.44.1: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
 dev-lang/scala-bin 2.12.4 2.13.1: The Scala Programming Language
@@ -5751,7 +5751,7 @@ dev-perl/Class-MakeMethods 1.10.0-r1 1.10.0-r2: Automated method creation module
 dev-perl/Class-Member 1.600.0-r1 1.600.0-r2: A set of modules to make the module developement easier
 dev-perl/Class-Method-Modifiers 2.120.0 2.130.0: provides Moose-like method modifiers
 dev-perl/Class-MethodMaker 2.240.0 2.240.0-r1: Create generic methods for OO Perl
-dev-perl/Class-Mix 0.6.0: dynamic class mixing
+dev-perl/Class-Mix 0.6.0 0.6.0-r1: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0: Implementation of a Singleton class
 dev-perl/Class-Spiffy 0.150.0-r1: Spiffy Perl Interface Framework For You
@@ -17673,7 +17673,7 @@ virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ssl 11: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 15 16: Virtual ebuild for rubygems
-virtual/rust 1.41.1 1.42.0 1.43.1 1.44.0: Virtual for Rust language compiler
+virtual/rust 1.41.1 1.42.0 1.43.1 1.44.0 1.44.1: Virtual for Rust language compiler
 virtual/service-manager 0 1: Virtual for various service managers
 virtual/skkserv 0: Virtual for SKK server
 virtual/ssh 0: Virtual for SSH client and server
