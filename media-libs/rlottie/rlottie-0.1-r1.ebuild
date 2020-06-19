@@ -7,7 +7,7 @@ inherit meson
 
 DESCRIPTION="A platform independent standalone library that plays Lottie Animations"
 HOMEPAGE="https://www.tizen.org/ https://github.com/Samsung/rlottie"
-SRC_URI="https://github.com/Samsung/rlottie/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Samsung/rlottie/archive/v${PV}.tar.gz -> ${P}-1.tar.gz"
 
 LICENSE="BSD FTL JSON LGPL-2.1 MIT"
 SLOT="0/0.0.1"
@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-cpp/gtest )"
 
-PATCHES=( "${FILESDIR}"/rlottie-0.0.1_pre20190920-disable-werror.patch )
+PATCHES=( "${FILESDIR}"/${P}-disable-werror.patch )
 
 src_configure() {
 	local emesonargs=(
