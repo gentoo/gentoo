@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
 XCB_PROTO_VERSION="1.14"
-PATCHSET="1"
+PATCHSET="3"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -23,15 +23,31 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+closure-compile component-build cups cpu_flags_arm_neon +hangouts kerberos pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
+IUSE="+closure-compile component-build cups cpu_flags_arm_neon +hangouts headless kerberos ozone pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc wayland widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
-REQUIRED_USE="component-build? ( !suid )"
+REQUIRED_USE="
+	component-build? ( !suid )
+	wayland? ( ozone )
+"
+
+COMMON_X_DEPEND="
+	media-libs/mesa:=[gbm]
+	x11-libs/libX11:=
+	x11-libs/libXcomposite:=
+	x11-libs/libXcursor:=
+	x11-libs/libXdamage:=
+	x11-libs/libXext:=
+	x11-libs/libXfixes:=
+	>=x11-libs/libXi-1.6.0:=
+	x11-libs/libXrandr:=
+	x11-libs/libXrender:=
+	x11-libs/libXtst:=
+	x11-libs/libxcb:=
+"
 
 COMMON_DEPEND="
-	>=app-accessibility/at-spi2-atk-2.26:2
 	app-arch/bzip2:=
 	cups? ( >=net-print/cups-1.3.11:= )
-	>=dev-libs/atk-2.26
 	dev-libs/expat:=
 	dev-libs/glib:2
 	>=dev-libs/libxml2-2.9.4-r3:=[icu]
@@ -43,11 +59,11 @@ COMMON_DEPEND="
 	>=media-libs/harfbuzz-2.4.0:0=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	media-libs/mesa:=[gbm]
 	system-libvpx? ( >=media-libs/libvpx-1.8.2:=[postproc,svc] )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
-		>=media-video/ffmpeg-4:=
+		>=media-video/ffmpeg-4:0
+		<media-video/ffmpeg-4.3:0=
 		|| (
 			media-video/ffmpeg[-samba]
 			>=net-fs/samba-4.5.10-r1[-debug(-)]
@@ -59,23 +75,31 @@ COMMON_DEPEND="
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3[X]
-	x11-libs/libX11:=
-	x11-libs/libXcomposite:=
-	x11-libs/libXcursor:=
-	x11-libs/libXdamage:=
-	x11-libs/libXext:=
-	x11-libs/libXfixes:=
-	>=x11-libs/libXi-1.6.0:=
-	x11-libs/libXrandr:=
-	x11-libs/libXrender:=
-	x11-libs/libXScrnSaver:=
-	x11-libs/libXtst:=
 	x11-libs/pango:=
 	media-libs/flac:=
 	>=media-libs/libwebp-0.4.0:=
 	sys-libs/zlib:=[minizip]
 	kerberos? ( virtual/krb5 )
+	ozone? (
+		!headless? (
+			${COMMON_X_DEPEND}
+			x11-libs/gtk+:3[wayland?,X]
+			wayland? (
+				dev-libs/wayland:=
+				dev-libs/libffi:=
+				x11-libs/libdrm:=
+				x11-libs/libxkbcommon:=
+			)
+		)
+	)
+	!ozone? (
+		>=app-accessibility/at-spi2-atk-2.26:2
+		>=app-accessibility/at-spi2-core-2.26:2
+		>=dev-libs/atk-2.26
+		x11-libs/gtk+:3[X]
+		x11-libs/libXScrnSaver:=
+		${COMMON_X_DEPEND}
+	)
 "
 # For nvidia-drivers blocker, see bug #413637 .
 RDEPEND="${COMMON_DEPEND}
@@ -160,6 +184,10 @@ them in Chromium, then add --password-store=basic to CHROMIUM_FLAGS
 in /etc/chromium/default.
 "
 
+PATCHES=(
+	"${FILESDIR}/chromium-84-mediaalloc.patch"
+)
+
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
@@ -206,7 +234,6 @@ src_prepare() {
 	python_setup
 
 	eapply "${WORKDIR}/patches"
-	eapply "${FILESDIR}"/chromium-84-mediaalloc.patch
 
 	default
 
@@ -434,6 +461,9 @@ src_prepare() {
 	if use tcmalloc; then
 		keeplibs+=( third_party/tcmalloc )
 	fi
+	if use ozone && use wayland && ! use headless ; then
+		keeplibs+=( third_party/wayland )
+	fi
 	if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
 		keeplibs+=( third_party/libxml )
 		keeplibs+=( third_party/libxslt )
@@ -658,9 +688,6 @@ src_configure() {
 	# Chromium relies on this, but was disabled in >=clang-10, crbug.com/1042470
 	append-cxxflags $(test-flags-CXX -flax-vector-conversions=all)
 
-	# Silence lots of GCC warnings upstream doesn't seem to care about
-	append-cxxflags -Wno-invalid-offsetof -Wno-attributes -Wno-pragmas
-
 	# Explicitly disable ICU data file support for system-icu builds.
 	if use system-icu; then
 		myconf_gn+=" icu_use_data_file=false"
@@ -668,6 +695,26 @@ src_configure() {
 
 	# Use bundled xcb-proto, bug #727000
 	myconf_gn+=" xcbproto_path=\"${WORKDIR}/xcb-proto-${XCB_PROTO_VERSION}/src\""
+
+	# Enable ozone support
+	if use ozone; then
+		myconf_gn+=" use_ozone=true ozone_auto_platforms=false"
+		myconf_gn+=" ozone_platform_headless=true"
+		if ! use headless; then
+			myconf_gn+=" use_system_libdrm=true"
+			myconf_gn+=" ozone_platform_wayland=$(usex wayland true false)"
+			myconf_gn+=" ozone_platform_x11=true"
+			myconf_gn+=" ozone_platform_headless=true"
+			if use wayland; then
+				myconf_gn+=" use_system_minigbm=true use_xkbcommon=true"
+				myconf_gn+=" ozone_platform=\"wayland\""
+			else
+				myconf_gn+=" ozone_platform=\"x11\""
+			fi
+		else
+			myconf_gn+=" ozone_platform=\"headless\""
+		fi
+	fi
 
 	einfo "Configuring Chromium..."
 	set -- gn gen --args="${myconf_gn} ${EXTRA_GN}" out/Release
@@ -734,8 +781,14 @@ src_install() {
 
 	doexe out/Release/chromedriver
 
-	local sedargs=( -e "s:/usr/lib/:/usr/$(get_libdir)/:g" )
-	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r3.sh" > chromium-launcher.sh || die
+	ozone_auto_session () {
+		use ozone && use wayland && ! use headless && echo true || echo false
+	}
+	local sedargs=( -e
+			"s:/usr/lib/:/usr/$(get_libdir)/:g;
+			s:@@OZONE_AUTO_SESSION@@:$(ozone_auto_session):g"
+	)
+	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r4.sh" > chromium-launcher.sh || die
 	doexe chromium-launcher.sh
 
 	# It is important that we name the target "chromium-browser",
@@ -757,7 +810,11 @@ src_install() {
 	insinto "${CHROMIUM_HOME}"
 	doins out/Release/*.bin
 	doins out/Release/*.pak
-	doins out/Release/*.so
+	(
+		shopt -s nullglob
+		local files=(out/Release/*.so)
+		[[ ${#files[@]} -gt 0 ]] && doins "${files[@]}"
+	)
 
 	if ! use system-icu; then
 		doins out/Release/icudtl.dat
