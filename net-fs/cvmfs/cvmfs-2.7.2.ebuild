@@ -47,6 +47,7 @@ DEPEND="${CDEPEND}
 PATCHES=(
 		"${FILESDIR}"/${P}-builtins.patch
 		"${FILESDIR}"/${P}-find-package.patch
+		"${FILESDIR}"/${P}-gcc-version.patch
 		"${FILESDIR}"/${P}-xattr.patch
 )
 
