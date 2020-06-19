@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-06-19)
+# Requires dev-util/dwarves.
+sys-kernel/gentoo-kernel debug
+sys-kernel/vanilla-kernel debug
+
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
