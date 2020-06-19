@@ -36,7 +36,9 @@ inherit savedconfig toolchain-funcs kernel-install
 
 BDEPEND="
 	sys-devel/bc
-	virtual/libelf"
+	virtual/libelf
+	virtual/yacc
+	sys-devel/flex"
 
 # @FUNCTION: kernel-build_src_configure
 # @DESCRIPTION:
