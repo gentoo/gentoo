@@ -1,0 +1,15 @@
+BDEPEND=test? ( dev-libs/check )
+DEFINED_PHASES=compile install postinst postrm
+DEPEND=app-crypt/libsecret dev-libs/libsodium net-libs/libmicrohttpd
+DESCRIPTION=oidc-agent for managing OpenID Connect tokens on the command line
+EAPI=7
+HOMEPAGE=https://github.com/indigo-dc/oidc-agent
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=app-crypt/libsecret dev-libs/libsodium net-libs/libmicrohttpd
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/indigo-dc/oidc-agent/archive/v3.3.1.tar.gz -> oidc-agent-3.3.1.tar.gz
+_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=505c87b0dc4a1826473bfdba0e01d2c9

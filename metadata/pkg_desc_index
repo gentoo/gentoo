@@ -1357,7 +1357,7 @@ app-editors/jupp 3.1_p30 3.1_p38: Portable version of Joe's Own Editor
 app-editors/kakoune 2020.01.16-r1 2020.01.16_p20200601: Modal editor inspired by vim
 app-editors/kile 2.9.93: Latex Editor and TeX shell based on KDE Frameworks
 app-editors/le 1.14.3 1.16.1 1.16.3 1.16.5: Terminal text editor
-app-editors/leafpad 0.8.18.1 0.8.18.1-r1: Simple GTK2 text editor
+app-editors/leafpad 0.8.18.1-r1: Simple GTK2 text editor
 app-editors/leo 5.6: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
@@ -14902,6 +14902,7 @@ net-misc/nx 3.5.99.16 3.5.99.22 3.5.99.23 3.5.99.24: NX compression technology c
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.0.4 2.1.0-r1: Utility to monitor real time Tor status information
 net-misc/ofono 1.16 1.30 1.31: Open Source mobile telephony (GSM/UMTS) daemon
+net-misc/oidc-agent 3.3.1: oidc-agent for managing OpenID Connect tokens on the command line
 net-misc/oidentd 2.4.0 2.5.0: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
