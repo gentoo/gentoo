@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils user
+inherit eutils
 
 DESCRIPTION="A high-throughput distributed messaging system"
-HOMEPAGE="http://kafka.apache.org/"
+HOMEPAGE="https://kafka.apache.org/"
 
 # pick recommended scala version
 SCALA_VERSION=2.12
@@ -21,16 +21,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="internal-zookeeper"
 
-RDEPEND="virtual/jre:1.8"
-DEPEND="${RDEPEND}"
+COMMON_DEPEND="acct-group/kafka
+	acct-user/kafka
+	virtual/jre:1.8"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 INSTALL_DIR="/opt/${MY_PN}"
-
-pkg_setup() {
-	enewgroup kafka
-	enewuser kafka -1 /bin/sh /var/lib/kafka kafka
-}
 
 src_prepare() {
 	sed -i -e 's:/tmp/zookeeper:/var/lib/kafka/zookeeper:' "config/zookeeper.properties" || die
