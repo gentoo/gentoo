@@ -9445,7 +9445,7 @@ dev-ruby/capybara 2.18.0 3.30.0 3.31.0 3.32.0 3.32.1 3.32.2: Capybara aims to si
 dev-ruby/certificate_authority 0.1.6-r2 1.0.0: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.6 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
-dev-ruby/childprocess 0.9.0 1.0.1-r1 2.0.0 3.0.0: Solution for controlling external programs running in the background
+dev-ruby/childprocess 0.9.0 1.0.1-r1 2.0.0 3.0.0 4.0.0: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
 dev-ruby/chunky_png 1.3.11: Pure Ruby library that can read and write PNG images
 dev-ruby/cinch 2.3.4: IRC Bot Building Framework
@@ -9617,6 +9617,7 @@ dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kpeg 1.1.0-r1: A simple PEG library for Ruby
 dev-ruby/kramdown 1.17.0 1.17.0-r2 2.1.0 2.2.1: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
 dev-ruby/kramdown-parser-gfm 1.1.0: A kramdown parser for the GFM dialect of Markdown
+dev-ruby/kramdown-syntax-coderay 1.0.1: Uses coderay to highlight code blocks/spans
 dev-ruby/launchy 2.4.3-r2 2.5.0: Helper class for launching cross-platform applications
 dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.7.0: Preview mail in the browser instead of sending
@@ -9880,7 +9881,7 @@ dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitab
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.13.1 3.14.0 3.14.1 3.14.2: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.0.5 1.1.0: pure Ruby implementation of the SMB Protocol Family
-dev-ruby/rubygems 2.7.10 3.0.3 3.0.4-r1 3.0.6 3.0.8 3.1.2 3.1.3: Centralized Ruby extension management system
+dev-ruby/rubygems 2.7.10 3.0.3 3.0.4-r1 3.0.6 3.0.8 3.1.2 3.1.3 3.1.4: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
@@ -9949,6 +9950,7 @@ dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of c
 dev-ruby/tdiff 0.3.3-r1 0.3.4: Calculates the differences between two tree-like structures
 dev-ruby/temple 0.8.2: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.7.1: Small Ruby library that colors strings using ANSI escape sequences
+dev-ruby/terminal-table 1.8.0-r2: Simple, feature rich ascii table generation library
 dev-ruby/test-unit 3.3.3 3.3.4 3.3.5 3.3.6: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.1-r1 2.0.2: Creates temporary files and directories for testing
@@ -9994,6 +9996,7 @@ dev-ruby/uglifier 4.1.20 4.2.0: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 dev-ruby/unf_ext 0.0.7.5 0.0.7.6 0.0.7.7: Unicode Normalization Form support library for CRuby
+dev-ruby/unicode-display_width 1.7.0: Adds String#display_width to get the display size using EastAsianWidth.txt
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/vagrant_cloud 2.0.3-r1: Vagrant Cloud API Library
@@ -17756,10 +17759,10 @@ www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configur
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20170111 3.20171001 3.20190228: A wiki compiler
-www-apps/jekyll 3.8.5: A simple, blog aware, static site generator
-www-apps/jekyll-coffeescript 1.2.2: A CoffeeScript Converter for Jekyll
-www-apps/jekyll-sass-converter 1.5.2: A basic Sass converter for Jekyll
-www-apps/jekyll-sitemap 0.13.0: Automatically generate a sitemap.xml for your Jekyll site
+www-apps/jekyll 3.8.5 4.1.0: A simple, blog aware, static site generator
+www-apps/jekyll-coffeescript 1.2.2 2.0.0: A CoffeeScript Converter for Jekyll
+www-apps/jekyll-sass-converter 1.5.2 2.1.0: A basic Sass converter for Jekyll
+www-apps/jekyll-sitemap 0.13.0 1.4.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 2.2.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
 www-apps/kibana-bin 6.8.8 7.6.2 7.7.0: Analytics and search dashboard for Elasticsearch
@@ -17831,7 +17834,7 @@ www-client/seamonkey 2.53.2: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.1.1929.34_p1: A browser for our friends
+www-client/vivaldi 3.1.1929.34_p1 3.1.1929.40_p1: A browser for our friends
 www-client/vivaldi-snapshot 3.2.1950.3_p1 3.2.1952.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
