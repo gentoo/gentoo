@@ -16,18 +16,13 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
-RDEPEND="${PYTHON_DEPS}
-	dev-libs/icu:="
+RDEPEND="dev-libs/icu:="
 DEPEND="${RDEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.4.2-testLocaleMatcher_pytest_old_icu.patch
-)
 
 S="${WORKDIR}/${MY_P}"
 
-DOCS=(CHANGES CREDITS README.md)
+DOCS=( CHANGES CREDITS README.md )
 
 distutils_enable_tests pytest
