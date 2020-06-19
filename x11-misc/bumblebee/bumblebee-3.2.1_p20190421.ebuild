@@ -53,6 +53,11 @@ PDEPEND="
 
 REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"
 
+PATCHES=(
+	# https://github.com/Bumblebee-Project/Bumblebee/issues/1058
+	"${FILESDIR}/${P}-gcc10.patch"
+)
+
 pkg_setup() {
 	enewgroup bumblebee
 }
