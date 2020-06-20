@@ -32,6 +32,9 @@ all_ruby_prepare() {
 
 	# Avoid test with random sort order
 	sed -i -e '/test_possibly_better/askip "ordering issues"' test/test_hoe.rb || die
+
+	# Avoid test that depends on specifics of merged packages
+	sed -i -e '/test_make_rdoc_cmd/askip "dependent on merged packages"' test/test_hoe_publish.rb || die
 }
 
 all_ruby_compile() {
