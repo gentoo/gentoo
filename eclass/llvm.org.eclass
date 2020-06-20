@@ -63,6 +63,8 @@ fi
 [[ ${PV} == ${_LLVM_MASTER_MAJOR}.* && ${_LLVM_SOURCE_TYPE} == tar ]] &&
 	die "${ECLASS}: Release ebuild for master branch?!"
 
+inherit multiprocessing
+
 
 # == control variables ==
 
@@ -244,4 +246,22 @@ llvm.org_src_prepare() {
 		default_src_prepare
 		popd >/dev/null || die
 	fi
+}
+
+
+# == helper functions ==
+
+# @ECLASS-VARIABLE: LIT_JOBS
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Number of test jobs to run simultaneously.  If unset, defaults
+# to '-j' in MAKEOPTS.  If that is not found, default to nproc.
+
+# @FUNCTION: get_lit_flags
+# @DESCRIPTION:
+# Get the standard recommended lit flags for running tests, in CMake
+# list form (;-separated).
+get_lit_flags() {
+	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 }
