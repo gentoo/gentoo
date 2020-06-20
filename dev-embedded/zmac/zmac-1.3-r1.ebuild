@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Z80 macro cross-assembler"
-HOMEPAGE="http://www.tim-mann.org/trs80resources.html"
-SRC_URI="http://www.tim-mann.org/trs80/${PN}${PV//.}.zip"
+HOMEPAGE="https://www.tim-mann.org/trs80resources.html"
+SRC_URI="https://www.tim-mann.org/trs80/${PN}${PV//.}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
