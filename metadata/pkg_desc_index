@@ -1609,7 +1609,7 @@ app-emulation/buildah 1.14.5 1.14.6 1.14.8: A tool that facilitates building OCI
 app-emulation/cadvisor 0.36.0: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 19.4 20.1 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
-app-emulation/conmon 2.0.15 2.0.16: An OCI container runtime monitor
+app-emulation/conmon 2.0.15 2.0.16 2.0.18: An OCI container runtime monitor
 app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.2.12 1.2.13 1.3.0 1.3.1 1.3.2 1.3.4: A daemon to control runC
 app-emulation/containers-storage 1.18.1 1.20.2: containers/storage library
 app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2 1.16.3 1.17.0 1.17.1: OCI-based implementation of Kubernetes Container Runtime Interface
@@ -5764,7 +5764,7 @@ dev-perl/Class-Virtual 0.80.0: Base class for virtual base classes
 dev-perl/Class-WhiteHole 0.40.0-r1 0.40.0-r2: base class to treat unhandled method calls as errors
 dev-perl/Class-XPath 1.400.0-r1 1.400.0-r2: adds xpath matching to object trees
 dev-perl/Class-XSAccessor 1.190.0 1.190.0-r1: Generate fast XS accessors without runtime compilation
-dev-perl/Clipboard 0.130.0-r3: Copy and paste with any OS
+dev-perl/Clipboard 0.130.0-r3 0.260.0: Copy and paste with any OS
 dev-perl/Clone 0.390.0: Recursively copy Perl datatypes
 dev-perl/Clone-PP 1.70.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
