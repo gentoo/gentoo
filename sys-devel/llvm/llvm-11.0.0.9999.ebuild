@@ -58,12 +58,11 @@ BDEPEND="
 		<sys-libs/libcxx-$(ver_cut 1-3).9999
 		>=sys-devel/binutils-apple-5.1
 	)
-	doc? ( $(python_gen_any_dep '
-		dev-python/recommonmark[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	') )
 	libffi? ( virtual/pkgconfig )
-	${PYTHON_DEPS}"
+	$(python_gen_any_dep '
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		doc? ( dev-python/recommonmark[${PYTHON_USEDEP}] )
+	')"
 # There are no file collisions between these versions but having :0
 # installed means llvm-config there will take precedence.
 RDEPEND="${RDEPEND}
@@ -75,9 +74,10 @@ PDEPEND="sys-devel/llvm-common
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
-	use doc || return 0
-
-	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
+	if use doc; then
+		has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" ||
+			return 1
+	fi
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
@@ -138,6 +138,10 @@ check_distribution_components() {
 					distribution|llvm-libraries)
 						continue
 						;;
+					# used only w/ USE=doc
+					docs-llvm-html)
+						continue
+						;;
 				esac
 
 				all_targets+=( "${l}" )
@@ -179,6 +183,11 @@ src_prepare() {
 
 	# Update config.guess to support more systems
 	cp "${BROOT}/usr/share/gnuconfig/config.guess" cmake/ || die
+
+	# manpages don't use markdown
+	if ! use doc; then
+		sed -i -e '/source_parsers/d' docs/conf.py || die
+	fi
 
 	# User patches + QA
 	cmake-utils_src_prepare
@@ -301,12 +310,13 @@ get_distribution_components() {
 
 			# python modules
 			opt-viewer
-		)
 
-		use doc && out+=(
+			# manpages
 			docs-dsymutil-man
 			docs-llvm-dwarfdump-man
 			docs-llvm-man
+		)
+		use doc && out+=(
 			docs-llvm-html
 		)
 
@@ -388,13 +398,11 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
-			-DLLVM_BUILD_DOCS=$(usex doc)
+			-DLLVM_BUILD_DOCS=ON
 			-DLLVM_ENABLE_OCAMLDOC=OFF
-			-DLLVM_ENABLE_SPHINX=$(usex doc)
+			-DLLVM_ENABLE_SPHINX=ON
 			-DLLVM_ENABLE_DOXYGEN=OFF
 			-DLLVM_INSTALL_UTILS=ON
-		)
-		use doc && mycmakeargs+=(
 			-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 			-DLLVM_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF

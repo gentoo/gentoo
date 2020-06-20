@@ -45,7 +45,7 @@ RDEPEND="
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( dev-python/sphinx )
+	dev-python/sphinx
 	xml? ( virtual/pkgconfig )
 	${PYTHON_DEPS}"
 RDEPEND="${RDEPEND}
@@ -110,6 +110,14 @@ check_distribution_components() {
 						;;
 					# static libraries
 					clang*|findAllSymbols)
+						continue
+						;;
+					# headers for clang-tidy static library
+					clang-tidy-headers)
+						continue
+						;;
+					# conditional to USE=doc
+					docs-clang-html|docs-clang-tools-html)
 						continue
 						;;
 				esac
@@ -190,13 +198,15 @@ get_distribution_components() {
 			find-all-symbols
 			modularize
 			pp-trace
+
+			# manpages
+			docs-clang-man
+			docs-clang-tools-man
 		)
 
 		use doc && out+=(
 			docs-clang-html
-			docs-clang-man
 			docs-clang-tools-html
-			docs-clang-tools-man
 		)
 
 		use static-analyzer && out+=(
@@ -253,10 +263,8 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			# normally copied from LLVM_INCLUDE_DOCS but the latter
 			# is lacking value in stand-alone builds
-			-DCLANG_INCLUDE_DOCS=$(usex doc)
-			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=$(usex doc)
-		)
-		use doc && mycmakeargs+=(
+			-DCLANG_INCLUDE_DOCS=ON
+			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=ON
 			-DLLVM_BUILD_DOCS=ON
 			-DLLVM_ENABLE_SPHINX=ON
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
