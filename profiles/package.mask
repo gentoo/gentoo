@@ -41,7 +41,6 @@ app-forensics/volatility
 app-misc/golly
 app-misc/yagtd
 app-text/pylize
-app-text/rpl
 app-vim/easytags
 app-vim/notes
 dev-db/metakit
