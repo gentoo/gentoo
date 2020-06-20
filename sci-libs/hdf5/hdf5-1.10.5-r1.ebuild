@@ -11,8 +11,8 @@ MY_P="${PN}-${PV/_p/-patch}"
 MAJOR_P="${PN}-$(ver_cut 1-2)"
 
 DESCRIPTION="General purpose library and file format for storing scientific data"
-HOMEPAGE="http://www.hdfgroup.org/HDF5/"
-SRC_URI="http://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.hdfgroup.org/HDF5/"
+SRC_URI="https://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_P}.tar.bz2"
 
 LICENSE="NCSA-HDF"
 SLOT="0/${PV%%_p*}"
