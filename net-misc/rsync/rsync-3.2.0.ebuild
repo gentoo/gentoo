@@ -58,7 +58,6 @@ src_configure() {
 		--with-rsyncd-conf="${EPREFIX}"/etc/rsyncd.conf
 		--without-included-popt
 		$(use_enable acl acl-support)
-		$(use_enable cpu_flags_x86_sse2 simd)
 		$(use_enable iconv)
 		$(use_enable ipv6)
 		$(use_enable lz4)
@@ -68,6 +67,14 @@ src_configure() {
 		$(use_enable xxhash)
 		$(use_enable zstd)
 	)
+
+	if [[ "${ARCH}" == "amd64" ]] ; then
+		# SIMD is only available for x86_64 right now (#728868)
+		myeconfargs+=( $(use_enable cpu_flags_x86_sse2 simd) )
+	else
+		myeconfargs+=( --disable-simd )
+	fi
+
 	econf "${myeconfargs[@]}"
 	touch proto.h-tstamp #421625
 }
