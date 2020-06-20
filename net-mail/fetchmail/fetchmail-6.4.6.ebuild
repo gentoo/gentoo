@@ -9,7 +9,7 @@ PYTHON_REQ_USE="tk"
 inherit python-single-r1 systemd toolchain-funcs autotools
 
 DESCRIPTION="the legendary remote-mail retrieval and forwarding utility"
-HOMEPAGE="http://www.fetchmail.info/"
+HOMEPAGE="https://www.fetchmail.info/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2 public-domain"
