@@ -18,7 +18,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 		https://dev.gentoo.org/~chutzpah/dist/salt/salt-3000.2-py38-misc.patch.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="Apache-2.0"
