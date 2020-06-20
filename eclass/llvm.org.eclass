@@ -167,6 +167,11 @@ llvm.org_set_globals() {
 		fi
 	fi
 
+	# === useful defaults for cmake-based packages ===
+
+	# least intrusive of all
+	CMAKE_BUILD_TYPE=RelWithDebInfo
+
 	_LLVM_ORG_SET_GLOBALS_CALLED=1
 }
 
