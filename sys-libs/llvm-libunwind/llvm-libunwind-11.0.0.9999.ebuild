@@ -37,6 +37,13 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake-utils_src_prepare
+}
+
 multilib_src_configure() {
 	local libdir=$(get_libdir)
 
