@@ -1,0 +1,13 @@
+diff --git a/src/attached_probe.cpp b/src/attached_probe.cpp
+index c7e789e..08f657e 100644
+--- a/src/attached_probe.cpp
++++ b/src/attached_probe.cpp
+@@ -116,7 +116,7 @@ void AttachedProbe::attach_kfunc(void)
+ int AttachedProbe::detach_kfunc(void)
+ {
+   close(tracing_fd_);
+-  return bpf_detach_kfunc(progfd_, NULL);
++  return 0;
+ }
+ #else
+ void AttachedProbe::attach_kfunc(void)
