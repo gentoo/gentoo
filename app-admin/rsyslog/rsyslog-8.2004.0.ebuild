@@ -73,7 +73,7 @@ RDEPEND="
 	uuid? ( sys-apps/util-linux:0= )
 	xxhash? ( dev-libs/xxhash:= )
 	zeromq? (
-		>=net-libs/czmq-4:=
+		>=net-libs/czmq-4:=[drafts]
 	)"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2015.02.24
