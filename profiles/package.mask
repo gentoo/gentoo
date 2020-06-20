@@ -285,13 +285,6 @@ app-eselect/eselect-metasploit
 # release. Bug 718326. Removal whenever it becomes an issue.
 mail-filter/pyzor
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  In need of bump since 2016.
-# Removal in 30 days.  Bug #718426.
-net-analyzer/ripe-atlas-tools
-net-libs/ripe-atlas-sagan
-www-client/ripe-atlas-cousteau
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
 # Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
 # requires agreement to restrictive license
