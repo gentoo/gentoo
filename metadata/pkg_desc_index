@@ -9397,7 +9397,7 @@ dev-ruby/ast 2.4.0 2.4.1: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.3.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
-dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.5 9.7.3 9.7.4 9.7.6: Add vendor prefixes to CSS rules using values from the Can I Use website
+dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.5 9.7.3 9.7.4 9.7.6 9.8.1: Add vendor prefixes to CSS rules using values from the Can I Use website
 dev-ruby/aws-eventstream 1.0.3 1.1.0: Amazon Web Services event stream library
 dev-ruby/aws-partitions 1.248.0 1.281.0 1.297.0 1.298.0: Provides interfaces to enumerate AWS partitions, regions, and services
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
@@ -9478,7 +9478,7 @@ dev-ruby/curb 0.9.9 0.9.10: Ruby-language bindings for libcurl
 dev-ruby/curses 1.2.7 1.3.0 1.3.1 1.3.2: Ruby binding for curses, ncurses, and PDCurses
 dev-ruby/d3_rails 4.1.1: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
-dev-ruby/daemons 1.2.6 1.3.1: Wrap existing ruby scripts to be run as a daemon
+dev-ruby/daemons 1.3.1: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.10 2.7.10-r1: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.7.0: Strategies for cleaning databases
 dev-ruby/date_validator 0.10.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
@@ -9564,7 +9564,7 @@ dev-ruby/hashicorp-checkpoint 0.1.5: Internal HashiCorp service to check version
 dev-ruby/hashie 2.1.2-r1 3.6.0 4.0.0 4.1.0 4.1.0-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 3.4.3 3.6.0: A simple pluggable Hierarchical Database
+dev-ruby/hiera 3.6.0: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 3.0.0 3.1.0 3.1.1: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.7.4: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6-r1: A plaintext backend for hiera-eyaml
@@ -9844,7 +9844,7 @@ dev-ruby/ruby-gtk3 3.3.2 3.3.6 3.3.7: Ruby Gtk3 bindings
 dev-ruby/ruby-gtksourceview 3.3.2 3.3.6 3.3.7: Ruby bindings for gtksourceview
 dev-ruby/ruby-gtksourceview3 3.3.2 3.3.6 3.3.7: Ruby Gtk3 bindings
 dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documented in RFC2104
-dev-ruby/ruby-ldap 0.9.19 0.9.20: A Ruby interface to some LDAP libraries
+dev-ruby/ruby-ldap 0.9.20: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-macho 2.1.0 2.2.0: A library for viewing and manipulating Mach-O files in Ruby
 dev-ruby/ruby-mp3info 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
 dev-ruby/ruby-net-ldap 0.16.2: Pure ruby LDAP client implementation
