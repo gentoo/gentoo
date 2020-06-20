@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils llvm llvm.org multiprocessing python-any-r1
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake llvm llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
@@ -34,6 +34,13 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
@@ -47,16 +54,16 @@ src_configure() {
 		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-lld
+	cmake_build check-lld
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	# LLD has no shared libraries, so strip it all for the time being
 	rm -r "${ED}"/usr/{include,lib*} || die
 }

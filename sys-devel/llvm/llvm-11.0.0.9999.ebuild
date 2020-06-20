@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils llvm.org multilib-minimal multiprocessing \
-	pax-utils python-any-r1 toolchain-funcs
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake llvm.org multilib-minimal multiprocessing pax-utils \
+	python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
@@ -189,11 +189,13 @@ src_prepare() {
 		sed -i -e '/source_parsers/d' docs/conf.py || die
 	fi
 
-	# User patches + QA
-	cmake-utils_src_prepare
-
 	# Verify that the live ebuild is up-to-date
 	check_live_ebuild
+
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake_src_prepare
 }
 
 # Is LLVM being linked against libc++?
@@ -434,13 +436,13 @@ multilib_src_configure() {
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	multilib_is_native_abi && check_distribution_components
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	pax-mark m "${BUILD_DIR}"/bin/llvm-rtdyld
 	pax-mark m "${BUILD_DIR}"/bin/lli
@@ -456,7 +458,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check
+	cmake_build check
 }
 
 src_install() {
@@ -476,7 +478,7 @@ src_install() {
 }
 
 multilib_src_install() {
-	DESTDIR=${D} cmake-utils_src_make install-distribution
+	DESTDIR=${D} cmake_build install-distribution
 
 	# move headers to /usr/include for wrapping
 	rm -rf "${ED}"/usr/include || die

@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils llvm llvm.org multiprocessing python-any-r1
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake llvm llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -50,7 +50,10 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
-	cmake-utils_src_prepare
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -92,7 +95,7 @@ src_configure() {
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	# also: custom rules for OCaml do not work for CPPFLAGS
 	use debug || local -x CFLAGS="${CFLAGS} -DNDEBUG"
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	local llvm_libdir=$(llvm-config --libdir)
 	# an ugly hack; TODO: figure out a way to pass -L to ocaml...
@@ -108,13 +111,13 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile ocaml_all
+	cmake_build ocaml_all
 }
 
 src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-llvm-bindings-ocaml
+	cmake_build check-llvm-bindings-ocaml
 }
 
 src_install() {

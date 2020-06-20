@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+CMAKE_ECLASS=cmake
+PYTHON_COMPAT=( python3_{6..9} )
 inherit cmake-multilib linux-info llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
@@ -66,6 +67,13 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake_src_prepare
+}
+
 multilib_src_configure() {
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
@@ -95,12 +103,12 @@ multilib_src_configure() {
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 
-	cmake-utils_src_make check-libomp
+	cmake_build check-libomp
 }

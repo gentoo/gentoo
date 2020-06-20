@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils llvm llvm.org multiprocessing python-single-r1 \
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake llvm llvm.org multiprocessing python-single-r1 \
 	toolchain-funcs
 
 DESCRIPTION="The LLVM debugger"
@@ -51,6 +51,13 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DLLDB_ENABLE_CURSES=$(usex ncurses)
@@ -83,17 +90,17 @@ src_configure() {
 		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-lldb-lit
-	use python && cmake-utils_src_make check-lldb
+	cmake_build check-lldb-lit
+	use python && cmake_build check-lldb
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	find "${D}" -name '*.a' -delete || die
 
 	use python && python_optimize
