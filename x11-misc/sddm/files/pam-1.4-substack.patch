@@ -1,0 +1,49 @@
+From 9fc1d933517eb01846585f41d04ee335f9f198e8 Mon Sep 17 00:00:00 2001
+From: Mikle Kolyada <zlogene@gentoo.org>
+Date: Sat, 20 Jun 2020 18:32:37 +0300
+Subject: [PATCH] Fix pam v1.4.0 compat
+
+Signed-off-by: Mikle Kolyada <zlogene@gentoo.org>
+---
+ services/sddm-autologin.pam | 1 -
+ services/sddm.pam           | 8 ++++----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/sddm-0.18.1/services/sddm-autologin.pam b/sddm-0.18.1/services/sddm-autologin.pam
+index 4c82048..fc86790 100755
+--- a/services/sddm-autologin.pam
++++ b/services/sddm-autologin.pam
+@@ -1,6 +1,5 @@
+ #%PAM-1.0
+ auth        required    pam_env.so
+-auth        required    pam_tally.so file=/var/log/faillog onerr=succeed
+ auth        required    pam_shells.so
+ auth        required    pam_nologin.so
+ auth        required    pam_permit.so
+diff --git a/sddm-0.18.1/services/sddm.pam b/sddm-0.18.1/services/sddm.pam
+index 343650e..61c1976 100755
+--- a/services/sddm.pam
++++ b/services/sddm.pam
+@@ -1,15 +1,15 @@
+ #%PAM-1.0
+ 
+-auth		include		system-login
++auth		substack		system-login
+ -auth		optional	pam_gnome_keyring.so
+ -auth   optional  pam_kwallet5.so
+ 
+-account		include		system-login
++account		substack	system-login
+ 
+-password	include		system-login
++password	substack	system-login
+ -password	optional	pam_gnome_keyring.so use_authtok
+ 
+-session		optional	pam_keyinit.so force revoke
++session		substack	pam_keyinit.so force revoke
+ session		include		system-login
+ -session		optional	pam_gnome_keyring.so auto_start
+ -session  optional  pam_kwallet5.so auto_start
+-- 
+2.26.2
+
