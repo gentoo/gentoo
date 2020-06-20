@@ -21,6 +21,7 @@ CDEPEND="
 	dev-libs/leveldb:0=
 	dev-libs/openssl:0=
 	dev-libs/protobuf:0=
+	net-dns/c-ares:0=
 	net-libs/pacparser:0=
 	sys-apps/attr
 	sys-fs/fuse:0=
@@ -28,7 +29,6 @@ CDEPEND="
 	sys-libs/libcap:0=
 	sys-libs/zlib:0=
 	server? (
-		net-dns/c-ares
 		net-misc/curl:0[adns]
 		dev-db/sqlite:3=
 	)
