@@ -27,6 +27,11 @@ BDEPEND="
 
 # TODO: move the manpage generation here (from sys-devel/llvm)
 
+src_prepare() {
+	cd "${WORKDIR}" || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local -x LIT_PRESERVES_TMP=1
 	./lit.py -j "${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}" \
