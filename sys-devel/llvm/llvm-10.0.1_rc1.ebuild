@@ -73,6 +73,12 @@ PDEPEND="sys-devel/llvm-common
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+PATCHES=(
+	# Fix linking to dylib and .a libs simultaneously
+	"${FILESDIR}"/10.0.1/0001-llvm-Avoid-linking-llvm-cfi-verify-to-duplicate-libs.patch
+	"${FILESDIR}"/10.0.1/0002-llvm-Disable-linking-llvm-exegesis-to-dylib.patch
+)
+
 python_check_deps() {
 	if use doc; then
 		has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" ||
@@ -146,10 +152,6 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
 
-	# Fix linking to dylib and .a libs simultaneously
-	eapply "${FILESDIR}"/10.0.1/0001-llvm-Avoid-linking-llvm-cfi-verify-to-duplicate-libs.patch
-	eapply "${FILESDIR}"/10.0.1/0002-llvm-Disable-linking-llvm-exegesis-to-dylib.patch
-
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
@@ -161,7 +163,9 @@ src_prepare() {
 		sed -i -e '/source_parsers/d' docs/conf.py || die
 	fi
 
-	# User patches + QA
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
 	cmake-utils_src_prepare
 }
 

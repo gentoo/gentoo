@@ -9,13 +9,13 @@ to link to the dylib only here but the target sub-libraries use hidden
 symbols from LLVM target libraries and therefore linking the dylib
 fails.
 ---
- tools/llvm-exegesis/CMakeLists.txt | 1 +
+ llvm/tools/llvm-exegesis/CMakeLists.txt | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/tools/llvm-exegesis/CMakeLists.txt b/tools/llvm-exegesis/CMakeLists.txt
+diff --git a/llvm/tools/llvm-exegesis/CMakeLists.txt b/llvm/tools/llvm-exegesis/CMakeLists.txt
 index a59e1b74024..0575f2a06bb 100644
---- a/tools/llvm-exegesis/CMakeLists.txt
-+++ b/tools/llvm-exegesis/CMakeLists.txt
+--- a/llvm/tools/llvm-exegesis/CMakeLists.txt
++++ b/llvm/tools/llvm-exegesis/CMakeLists.txt
 @@ -5,6 +5,7 @@ set(LLVM_LINK_COMPONENTS
    )
  

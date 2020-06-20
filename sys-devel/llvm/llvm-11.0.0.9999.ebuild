@@ -189,11 +189,13 @@ src_prepare() {
 		sed -i -e '/source_parsers/d' docs/conf.py || die
 	fi
 
-	# User patches + QA
-	cmake-utils_src_prepare
-
 	# Verify that the live ebuild is up-to-date
 	check_live_ebuild
+
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake-utils_src_prepare
 }
 
 # Is LLVM being linked against libc++?
