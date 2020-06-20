@@ -49,6 +49,13 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake-utils_src_prepare
+}
+
 test_compiler() {
 	$(tc-getCC) ${CFLAGS} ${LDFLAGS} "${@}" -o /dev/null -x c - \
 		<<<'int main() { return 0; }' &>/dev/null
