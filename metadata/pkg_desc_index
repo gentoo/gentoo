@@ -5762,8 +5762,8 @@ dev-perl/Class-Trigger 0.140.0-r1 0.150.0: Mixin to add / call inheritable trigg
 dev-perl/Class-Unload 0.110.0: Unload a class
 dev-perl/Class-Virtual 0.80.0: Base class for virtual base classes
 dev-perl/Class-WhiteHole 0.40.0-r1 0.40.0-r2: base class to treat unhandled method calls as errors
-dev-perl/Class-XPath 1.400.0-r1: adds xpath matching to object trees
-dev-perl/Class-XSAccessor 1.190.0: Generate fast XS accessors without runtime compilation
+dev-perl/Class-XPath 1.400.0-r1 1.400.0-r2: adds xpath matching to object trees
+dev-perl/Class-XSAccessor 1.190.0 1.190.0-r1: Generate fast XS accessors without runtime compilation
 dev-perl/Clipboard 0.130.0-r3: Copy and paste with any OS
 dev-perl/Clone 0.390.0: Recursively copy Perl datatypes
 dev-perl/Clone-PP 1.70.0: Recursively copy Perl datatypes
