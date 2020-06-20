@@ -4,8 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
-inherit cmake llvm.org multilib-minimal multiprocessing pax-utils \
-	python-any-r1 toolchain-funcs
+inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
+	toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
@@ -69,9 +69,6 @@ RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
-
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
 
 PATCHES=(
 	# Fix linking to dylib and .a libs simultaneously
@@ -198,10 +195,7 @@ src_prepare() {
 	# Verify that the live ebuild is up-to-date
 	check_live_ebuild
 
-	# cmake eclasses suck by forcing ${S} here
-	CMAKE_USE_DIR=${S} \
-	S=${WORKDIR} \
-	cmake_src_prepare
+	llvm.org_src_prepare
 }
 
 # Is LLVM being linked against libc++?
@@ -399,7 +393,7 @@ multilib_src_configure() {
 #	fi
 
 	use test && mycmakeargs+=(
-		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)
 
 	if multilib_is_native_abi; then
