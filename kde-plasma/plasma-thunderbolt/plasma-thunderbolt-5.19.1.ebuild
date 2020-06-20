@@ -18,16 +18,19 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
+	>=dev-qt/qtdeclarative-${QTMIN}:5
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kdbusaddons-${KFMIN}:5
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
-	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
 "
 RDEPEND="${DEPEND}
 	sys-apps/bolt
 "
+
+# tests require DBus
+RESTRICT+=" test"
