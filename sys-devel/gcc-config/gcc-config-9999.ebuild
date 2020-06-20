@@ -21,19 +21,21 @@ IUSE="+native-symlinks"
 
 RDEPEND=">=sys-apps/gentoo-functions-0.10"
 
-src_compile() {
-	emake CC="$(tc-getCC)" \
+_emake() {
+	emake \
 		PV="${PV}" \
 		SUBLIBDIR="$(get_libdir)" \
-		USE_NATIVE_LINKS="$(usex native-symlinks)"
+		USE_NATIVE_LINKS="$(usex native-symlinks)" \
+		TOOLCHAIN_PREFIX="${CHOST}-" \
+		"$@"
+}
+
+src_compile() {
+	_emake
 }
 
 src_install() {
-	emake \
-		DESTDIR="${D}" \
-		PV="${PV}" \
-		SUBLIBDIR="$(get_libdir)" \
-		install
+	_emake DESTDIR="${D}" install
 }
 
 pkg_postinst() {
