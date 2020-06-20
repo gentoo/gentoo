@@ -29,6 +29,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/erubis
 	dev-ruby/haml
 	dev-ruby/nokogiri
+	dev-ruby/rouge
 	dev-ruby/slim
 	dev-ruby/thread_safe
 	dev-ruby/tilt )"
