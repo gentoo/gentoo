@@ -263,12 +263,6 @@ dev-python/pygtksourceview
 # Not useful anymore now that metasploit has been removed.
 app-eselect/eselect-metasploit
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-18)
-# Unmaintained and vulnerable.  Last commit in 2015.  Stuck on Python 2.
-# All reverse dependencies removed restkit support upstream.
-# Removal in 30 days.  Bug #544228.
-dev-python/restkit
-
 # Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
 # PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
 # version.
