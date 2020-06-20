@@ -8146,7 +8146,7 @@ dev-python/olefile 0.46: Python package to parse, read and write Microsoft OLE2 
 dev-python/onkyo-eiscp 1.2.7: Control Onkyo A/V receivers over the network
 dev-python/openpyxl 3.0.0 3.0.3 9999: Pure python reader and writer of Excel OpenXML files
 dev-python/openstackdocstheme 1.18.1: Theme and extension support for Sphinx documentation
-dev-python/openstacksdk 0.36.0: A collection of libraries for building applications to work with OpenStack.
+dev-python/openstacksdk 0.36.0 0.46.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/opt-einsum 3.0.1: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 3.1.1 4.0.1: A mutable set that remembers the order of its entries
 dev-python/os-brick 2.8.2 3.0.1: OpenStack Cinder brick library for managing local volume attaches
@@ -8160,7 +8160,7 @@ dev-python/os-traits 0.16.0 2.3.0: os-traits is a library containing standardize
 dev-python/os-vif 1.15.2: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
-dev-python/osc-lib 1.12.1: A package of common support modules for writing OSC plugins.
+dev-python/osc-lib 1.12.1 2.0.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 1.33.3 2.3.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.29.1 4.0.2: library for running multi-thread, multi-process applications
 dev-python/oslo-config 6.11.2 8.0.2: Oslo Configuration API
@@ -8517,7 +8517,7 @@ dev-python/python-ironicclient 2.7.2 4.1.0: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
 dev-python/python-jose 3.0.1 3.1.0: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.3.4: A Python 2 and 3 asynchronous JSON RPC server
-dev-python/python-keystoneclient 3.21.0: Client Library for OpenStack Identity
+dev-python/python-keystoneclient 3.21.0 4.0.0: Client Library for OpenStack Identity
 dev-python/python-language-server 0.31.9 0.31.10 0.32.0: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.2.0 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
@@ -8539,11 +8539,11 @@ dev-python/python-musicbrainz-ngs 0.6 0.7.1: Python bindings for the MusicBrainz
 dev-python/python-nbxmpp 0.6.10-r1: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
 dev-python/python-neutronclient 6.12.1 7.1.1: A client for the OpenStack Quantum API
-dev-python/python-novaclient 13.0.2 15.1.1: A client for the OpenStack Nova API
+dev-python/python-novaclient 13.0.2 15.1.1 17.0.0: A client for the OpenStack Nova API
 dev-python/python-ntpdshm 0.2.1: Python interface to ntpd shared memory driver 28
 dev-python/python-octaviaclient 1.8.0: A client for the OpenStack Zun API
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
-dev-python/python-openstackclient 3.18.1: A client for the OpenStack APIs
+dev-python/python-openstackclient 3.18.1 5.2.1: A client for the OpenStack APIs
 dev-python/python-podman 1.6.0: A library to interact with a Podman server
 dev-python/python-poppler-qt5 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
@@ -11493,7 +11493,7 @@ gnome-extra/gnome-calendar 3.34.2: Manage your online calendars with simple and 
 gnome-extra/gnome-characters 3.32.1 3.34.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.34.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.32.0: GNOME color profile tools
-gnome-extra/gnome-commander 1.10.0 1.10.1 1.10.2: A graphical, full featured, twin-panel file manager
+gnome-extra/gnome-commander 1.10.2 1.10.3: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.30.2 3.34.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
