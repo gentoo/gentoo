@@ -31,3 +31,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	sys-apps/bolt
 "
+
+# tests require DBus
+RESTRICT+=" test"
