@@ -4,8 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
-inherit check-reqs cmake flag-o-matic llvm llvm.org multiprocessing \
-	python-any-r1
+inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -35,9 +34,6 @@ BDEPEND="
 		sys-libs/compiler-rt:${SLOT} )
 	${PYTHON_DEPS}"
 
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
-
 python_check_deps() {
 	use test || return 0
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
@@ -58,13 +54,6 @@ pkg_setup() {
 	check_space
 	llvm_pkg_setup
 	python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	# cmake eclasses suck by forcing ${S} here
-	CMAKE_USE_DIR=${S} \
-	S=${WORKDIR} \
-	cmake_src_prepare
 }
 
 src_configure() {
@@ -96,7 +85,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 
 			# they are created during src_test()
 			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang"
