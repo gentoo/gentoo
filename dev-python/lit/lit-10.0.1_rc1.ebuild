@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6..9} )
 
-inherit distutils-r1 llvm.org multiprocessing
+inherit distutils-r1 llvm.org
 
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="https://llvm.org/"
@@ -34,6 +34,6 @@ src_prepare() {
 
 python_test() {
 	local -x LIT_PRESERVES_TMP=1
-	./lit.py -j "${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}" \
-		-vv tests || die
+	local litflags=$(get_lit_flags)
+	./lit.py ${litflags//;/ } tests || die
 }
