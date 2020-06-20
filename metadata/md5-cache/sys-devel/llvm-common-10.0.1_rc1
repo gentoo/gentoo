@@ -1,4 +1,4 @@
-DEFINED_PHASES=install unpack
+DEFINED_PHASES=install prepare unpack
 DESCRIPTION=Common files shared between multiple slots of LLVM
 EAPI=7
 HOMEPAGE=https://llvm.org/
@@ -7,4 +7,4 @@ RDEPEND=!sys-devel/llvm:0
 SLOT=0
 SRC_URI=https://github.com/llvm/llvm-project/archive/llvmorg-10.0.1-rc1.tar.gz
 _eclasses_=llvm.org	4e92588f6138c82063258a2d303eaed8
-_md5_=c8c5ff1b18ab0822fe355d25c5b2b6e6
+_md5_=b3649a0d6d6cac5cd5d8457491c898bd
