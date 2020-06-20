@@ -263,11 +263,6 @@ dev-python/pygtksourceview
 # Not useful anymore now that metasploit has been removed.
 app-eselect/eselect-metasploit
 
-# Christoph Junghans <junghans@gentoo.org> (2020-05-19)
-# multiple vulnerabilities (CVE-2019-{3463,3464,1000018})
-# bug #699842. Masked for removal in 30 days.
-app-shells/rssh
-
 # Michał Górny <mgorny@gentoo.org> (2020-05-18)
 # Unmaintained and vulnerable.  Last commit in 2015.  Stuck on Python 2.
 # All reverse dependencies removed restkit support upstream.
