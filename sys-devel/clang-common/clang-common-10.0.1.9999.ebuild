@@ -18,11 +18,6 @@ IUSE=""
 
 PDEPEND="sys-devel/clang:*"
 
-src_prepare() {
-	cd "${WORKDIR}" || die
-	default
-}
-
 src_install() {
 	newbashcomp bash-autocomplete.sh clang
 }
