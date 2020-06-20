@@ -8,7 +8,7 @@ inherit eutils fortran-2 toolchain-funcs
 MY_P="${PN}${PV//.}"
 
 DESCRIPTION="FORTRAN/C device-independent scientific graphic library"
-HOMEPAGE="http://www.astro.caltech.edu/~tjp/pgplot/"
+HOMEPAGE="https://www.astro.caltech.edu/~tjp/pgplot/"
 SRC_URI="ftp://ftp.astro.caltech.edu/pub/pgplot/${MY_P}.tar.gz"
 
 SLOT="0"
