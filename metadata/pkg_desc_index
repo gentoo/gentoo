@@ -1658,7 +1658,7 @@ app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
-app-emulation/libpod 1.8.2 1.9.3: Library and podman tool for running OCI-based containers in Pods
+app-emulation/libpod 1.8.2 1.9.3 2.0.0: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.0.0-r3 6.1.0-r1 6.2.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
@@ -5569,7 +5569,7 @@ dev-ml/variantslib 0.9.0: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/yojson 1.4.0: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.7 1.9.1: Arithmetic and logic operations over arbitrary-precision integers
-dev-perl/Ace 1.920.0-r3 1.920.0-r4: Object-Oriented Access to ACEDB Databases
+dev-perl/Ace 1.920.0-r3 1.920.0-r4 1.920.0-r5: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1 0.100.0-r2: Represent a series of changes in annotate form
 dev-perl/Algorithm-C3 0.100.0: A module for merging hierarchies using the C3 algorithm
@@ -5800,7 +5800,7 @@ dev-perl/Convert-Binary-C 0.780.0-r1: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
-dev-perl/Convert-UUlib 1.400.0-r1 1.500.0-r1 1.710.0: A Perl interface to the uulib library
+dev-perl/Convert-UUlib 1.710.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.80.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.514.0: The only real threads in perl

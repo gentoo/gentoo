@@ -2423,7 +2423,6 @@ dev-perl/Config-Any:ini - Install dev-perl/Config-Tiny to support decoding INI c
 dev-perl/Config-Any:json - Install support libraries to support decoding JSON config files
 dev-perl/Config-Any:xml - Install support libraries to support decoding XML config files
 dev-perl/Config-Any:yaml - Install support libraries to support decoding YAML config files
-dev-perl/Convert-UUlib:system-uulib - Use dev-libs/uulib instead of bundled version.
 dev-perl/Cookie-Baker:xs - Install dev-perl/Cookie-Baker-XS for accelerated performance
 dev-perl/Coro:ev - Build support for using dev-perl/EV as an event-loop via Coro::EV
 dev-perl/Coro:event - Build support for using dev-perl/Event as an event-loop via Coro::Event
