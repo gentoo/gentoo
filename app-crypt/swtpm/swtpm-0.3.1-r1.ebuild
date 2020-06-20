@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit autotools python-any-r1
 
@@ -61,6 +61,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+	  --disable-static \
 	  --with-openssl \
 	  --without-selinux \
 	  $(use_with fuse cuse) \
