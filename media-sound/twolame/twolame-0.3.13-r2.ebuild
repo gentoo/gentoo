@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils ltprune multilib-minimal
 
 DESCRIPTION="An optimised MPEG Audio Layer 2 (MP2) encoder"
-HOMEPAGE="http://www.twolame.org"
+HOMEPAGE="https://www.twolame.org"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
