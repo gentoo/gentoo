@@ -70,6 +70,9 @@ RDEPEND="${DEPEND}
 	)
 "
 
+# tests require existing installation
+RESTRICT+=" test"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-18.12.0-tests.patch"
 	"${FILESDIR}/${PN}-20.03.70-tests.patch"
