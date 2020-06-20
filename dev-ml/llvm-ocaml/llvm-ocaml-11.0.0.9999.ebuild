@@ -50,6 +50,9 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
 	cmake-utils_src_prepare
 }
 
