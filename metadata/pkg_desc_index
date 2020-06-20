@@ -440,7 +440,7 @@ app-admin/chrootuid 1.3-r2: Run a network service at low privilege level and res
 app-admin/chrpath 0.13-r2 0.16: Chrpath can modify the rpath and runpath of ELF executables
 app-admin/clog 1.3.0: clog is a colorized log tail utility
 app-admin/clsync 0.4.4 9999: Live sync tool based on inotify, written in GNU C
-app-admin/clustershell 1.7.3: Python framework for efficient cluster administration
+app-admin/clustershell 1.8.3: Python framework for efficient cluster administration
 app-admin/conky 1.10.8-r9 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4 8.2.5: Serial Console Manager
