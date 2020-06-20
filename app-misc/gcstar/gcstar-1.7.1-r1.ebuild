@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit desktop xdg-utils gnome2-utils
+inherit desktop xdg-utils
 
 DESCRIPTION="Manage your collections of movies, games, books, music and more"
 HOMEPAGE="http://www.gcstar.org/"
@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/gcstar/1.7/${PV}/+download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="cddb gnome mp3 spell stats tellico vorbis"
+IUSE="cddb mp3 spell stats tellico vorbis"
 
 RDEPEND="dev-lang/perl
 	dev-perl/Archive-Zip
@@ -35,9 +35,7 @@ RDEPEND="dev-lang/perl
 	virtual/perl-libnet
 	virtual/perl-Storable
 	virtual/perl-Time-Piece
-
 	cddb? ( dev-perl/Net-FreeDB )
-	gnome? ( dev-perl/gnome2-vfs-perl )
 	mp3? ( dev-perl/MP3-Info dev-perl/MP3-Tag )
 	spell? ( dev-perl/gtk2-spell )
 	stats? ( dev-perl/Date-Calc
@@ -49,9 +47,7 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.4.0-man.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-1.4.0-man.patch" )
 
 src_install() {
 	# Yes, ED *is* needed here. GCstar's install lacks any concept of DESTDIR.
@@ -70,18 +66,14 @@ src_install() {
 	dodoc CHANGELOG README README.fr
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mime_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mime_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
