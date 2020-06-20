@@ -2518,7 +2518,6 @@ app-shells/push 2.0-r1: A POSIX shell function to treat a variable like an array
 app-shells/quoter 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rc 1.7.4-r1: A reimplementation of the Plan 9 shell
 app-shells/rrs 1.70-r2: Reverse Remote Shell
-app-shells/rssh 2.3.4 2.3.4_p3: Restricted shell for SSHd
 app-shells/rush 2.0 2.1: Restricted User Shell
 app-shells/sash 3.8: A small (static) UNIX Shell
 app-shells/scsh 0.6.7-r2: Unix shell embedded in Scheme
@@ -5636,19 +5635,19 @@ dev-perl/Authen-SASL-SASLprep 1.100.0: A Stringprep Profile for User Names and P
 dev-perl/Authen-SCRAM 0.11.0-r1: Salted Challenge Response Authentication Mechanism (RFC 5802)
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
-dev-perl/AutoXS-Header 1.20.0-r2: Container for the AutoXS header files
+dev-perl/AutoXS-Header 1.20.0-r1 1.20.0-r2: Container for the AutoXS header files
 dev-perl/B-COW 0.4.0: additional B helpers to check COW status
 dev-perl/B-Debug 1.260.0: Walk Perl syntax tree, printing debug info about ops
 dev-perl/B-Flags 0.170.0: Friendlier flags for B
 dev-perl/B-Hooks-EndOfScope 0.240.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.220.0: Wrap OP check callbacks
-dev-perl/B-Hooks-Parser 0.190.0 0.210.0: Interface to perls parser variables
+dev-perl/B-Hooks-Parser 0.210.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.190.0 1.210.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.320.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0 0.270.0-r1: Helper functions for op tree manipulation
 dev-perl/BDB 1.920.0: Asynchronous Berkeley DB access
 dev-perl/BSD-Resource 1.291.100 1.291.100-r1: Perl module for BSD process resource limit and priority functions
-dev-perl/BSON 1.10.2 1.12.1: BSON serialization and deserialization
+dev-perl/BSON 1.12.1: BSON serialization and deserialization
 dev-perl/BZ-Client 4.400.200: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0 0.630.0: This module provides Berkeley DB interface for Perl
@@ -5656,7 +5655,7 @@ dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for N
 dev-perl/Bio-DB-HTS 2.110.0 3.10.0: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0 2.400.0: Generate images from Bio::Seq objects for visualization purposes
-dev-perl/Bio-SamTools 1.430.0 1.430.0-r1: Read SAM/BAM database files
+dev-perl/Bio-SamTools 1.430.0-r1: Read SAM/BAM database files
 dev-perl/Bit-Vector 7.400.0 7.400.0-r1: Efficient bit vector, set of integers and big int math library
 dev-perl/Bit-Vector-Minimal 1.300.0-r1 1.300.0-r2: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1 1.300.0-r2: An API for hierarchical tag/value structures
@@ -5667,7 +5666,7 @@ dev-perl/Business-ISBN 3.4.0 3.5.0: Work with ISBN as objects
 dev-perl/Business-ISBN-Data 20140910.3.0 20191107.0.0: Data pack for Business::ISBN
 dev-perl/Business-ISMN 1.132.0 1.201.0: International Standard Music Numbers
 dev-perl/Business-ISSN 1.3.0 1.4.0: Object and functions to work with International Standard Serial Numbers
-dev-perl/Business-Tax-VAT-Validation 1.110.0 1.120.0: A class for european VAT numbers validation
+dev-perl/Business-Tax-VAT-Validation 1.120.0: A class for european VAT numbers validation
 dev-perl/Business-UPS 2.10.0-r1 2.10.0-r2: A UPS Interface Module
 dev-perl/CBOR-XS 1.700.0 1.710.0: Concise Binary Object Representation (CBOR, RFC7049)
 dev-perl/CDB_File 0.990.0 1.20.0: Tie to CDB (Bernstein's constant DB) files
@@ -7179,7 +7178,7 @@ dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1 1.40.0: Lets your class/object say it works like something else
 dev-perl/autobox 3.0.1: Call methods on native types
 dev-perl/autovivification 0.180.0: Lexically disable autovivification
-dev-perl/bareword-filehandles 0.5.0 0.6.0 0.7.0: Disables bareword filehandles
+dev-perl/bareword-filehandles 0.6.0 0.7.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0-r1: Save a tree AND a kitten, use common::sense!
@@ -7571,7 +7570,6 @@ dev-python/blockdiag 1.5.4: Generate block-diagram image from text
 dev-python/blosc 1.5.1 1.9.1-r1: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
-dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.2 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0 2.49.0-r2: Amazon Web Services API
 dev-python/boto3 1.9.122 1.10.2 1.12.48 1.13.26 1.14.0 1.14.2 1.14.5 9999: The AWS SDK for Python
@@ -7812,7 +7810,6 @@ dev-python/flask-wtf 0.14.2-r1 0.14.3: Simple integration of Flask and WTForms
 dev-python/flatbuffers 1.12: RFC 7049 - Concise Binary Object Representation
 dev-python/fleep 1.0.1 9999: File format determination library for Python
 dev-python/flexmock 0.10.4: Testing library to create mocks, stubs and fakes
-dev-python/flexx 0.4.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flit 2.1.0: Simplified packaging of Python modules
 dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
@@ -8636,7 +8633,6 @@ dev-python/requests_download 0.1.2: A convenient function to download to a file 
 dev-python/requests_pkcs12 1.4 1.7: Adds PKCS#12 support to the Python requests library in a clean way
 dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
 dev-python/responses 0.10.7 0.10.14 0.10.15: Utility for mocking out the Python Requests library
-dev-python/restkit 4.2.2: A HTTP ressource kit for Python
 dev-python/restructuredtext-lint 0.12.2 1.1.2 1.3.0: Checks PyPI validity of reStructuredText
 dev-python/resumable-urlretrieve 0.1.5: Small library to fetch files over HTTP and resuming their download
 dev-python/retry-decorator 1.0.0-r1 1.1.1: Decorator for retrying when exceptions occur
@@ -8854,7 +8850,6 @@ dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using 
 dev-python/txaio 2.9.0 20.4.1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.5-r1 0.9.6: Asynchronous Python HTTP for Humans
-dev-python/txtorcon 0.19.3-r1 20.0.0: Twisted-based Tor controller client, with state-tracking and config abstractions
 dev-python/typed-ast 1.4.1: Python typed-ast backported
 dev-python/typing 3.7.4.1: Type Hints for Python
 dev-python/typing-extensions 3.7.4.1: Type Hint extensions from Python 3.7 backported to 3.5/3.6
@@ -10151,7 +10146,6 @@ dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
 dev-tex/pythontex 0.17: Fast Access to Python from within LaTeX
 dev-tex/rail 1.2_p1-r1: Offers syntax/railroad diagrams
 dev-tex/rcsinfo 1.11: A LaTeX module to acces RCS/CVS version info
-dev-tex/revtex 4.2c: LaTeX2e macros to prepare manuscripts for the journals of the APS and AIP
 dev-tex/rubber 1.4 1.5.1: A LaTeX wrapper for automatically building documents
 dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
@@ -14081,7 +14075,6 @@ net-analyzer/python-gvm 1.1.0 1.2.0: Greenbone Vulnerability Management Python L
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1 1.2.9_beta1-r1: powerful tool for testing stability of utilizing IP protocols
-net-analyzer/ripe-atlas-tools 1.2.3-r1: The official command-line client for RIPE Atlas
 net-analyzer/rrdcollect 0.2.9: Read system statistical data and feed it to RRDtool
 net-analyzer/rrdtool 1.6.0-r1 1.7.1 1.7.2: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Analyze any RTP session through heuristics over UDP network traffic
@@ -14589,7 +14582,6 @@ net-libs/quiche 0.1.0_alpha4_p20190912 0.1.0-r1 0.2.0 0.3.0 0.4.0 9999: Implemen
 net-libs/qxmpp 1.2.0 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
-net-libs/ripe-atlas-sagan 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/rpc2 2.14: Remote procedure call package for IP/UDP (used by Coda)
 net-libs/rpcsvc-proto 0 1.4.1 1.4.1-r1: rpcsvc protocol definitions from glibc
 net-libs/serf 1.3.8 1.3.8-r1 1.3.9 1.3.9-r1 1.3.9-r2: HTTP client library
@@ -15169,7 +15161,6 @@ net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.8.25-r1 1.9.15-r1 1.9.9999 2.0.14 2.0.14-r1 2.0.9999 2.1.4 2.1.4-r1 2.1.7 2.1.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
-net-proxy/mitmproxy 4.0.4 5.1.1: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
@@ -17832,7 +17823,6 @@ www-client/opera-developer 70.0.3693.0 70.0.3701.0 70.0.3707.0 70.0.3714.0 70.0.
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.11.1-r1 1.12.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
-www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.53.2: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
