@@ -32,6 +32,52 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-06-20)
+# Py2 only
+# Removal in 14 days
+app-admin/clustershell
+app-crypt/openvpn-blacklist
+app-forensics/volatility
+app-misc/golly
+app-misc/yagtd
+app-text/pylize
+app-text/rpl
+app-vim/easytags
+app-vim/notes
+dev-db/metakit
+dev-python/backports-ssl-match-hostname
+dev-python/backports-shutil_get_terminal_size
+dev-python/backports-shutil_which
+dev-python/python-wpactrl
+dev-util/bakefile
+dev-util/uftrace
+dev-vcs/git-deps
+dev-vcs/git-remote-hg
+games-board/scid
+games-emulation/openmsx
+games-kids/childsplay
+games-mud/lyntin
+games-sports/ski
+mail-filter/tmda
+media-video/subdl
+media-sound/cplay
+media-sound/tunapie
+net-firewall/dshieldpy
+net-mail/offlineimap
+net-misc/switzerland
+net-wireless/multimode
+sci-biology/last
+sci-chemistry/hollow
+sci-chemistry/modeller
+sci-chemistry/pymol-plugins-msms
+sci-geosciences/tilecache
+sci-libs/deap
+sci-libs/pycifrw
+sys-cluster/zookeeper-bin
+www-apps/curator
+x11-apps/whyteboard
+x11-plugins/purple-plugin_pack
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-18)
 # Games depending on dead gnome-base/libgnomeui.
 # games-board/gnono: Bug #726788, last release 2007, abandoned upstream.
