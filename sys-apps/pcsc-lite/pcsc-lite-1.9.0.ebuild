@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_7,3_8} )
 
 inherit python-single-r1 systemd udev multilib-minimal
 
@@ -78,6 +78,8 @@ multilib_src_install_all() {
 	fi
 
 	python_fix_shebang "${ED}"/usr/bin/pcsc-spy
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
