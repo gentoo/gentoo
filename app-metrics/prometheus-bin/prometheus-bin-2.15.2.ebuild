@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="prometheus monitoring system and time series database"
-HOMEPAGE="http://prometheus.io"
+HOMEPAGE="https://prometheus.io"
 MY_PN=${PN%%-bin}
 MY_P=${MY_PN}-${PV}
 SRC_URI="https://github.com/prometheus/prometheus/releases/download/v${PV}/${MY_P}.linux-amd64.tar.gz"
