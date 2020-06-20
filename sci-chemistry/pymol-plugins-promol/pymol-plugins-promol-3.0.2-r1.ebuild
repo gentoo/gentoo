@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-r1
 
 DESCRIPTION="Fast and accurate regognition of active sites"
-HOMEPAGE="http://www.rit.edu/cos/ezviz/ProMOL_dl.html"
-SRC_URI="http://www.rit.edu/cos/ezviz/ProMOL.zip -> ${P}.zip"
+HOMEPAGE="https://www.rit.edu/cos/ezviz/ProMOL_dl.html"
+SRC_URI="https://www.rit.edu/cos/ezviz/ProMOL.zip -> ${P}.zip"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
