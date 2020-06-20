@@ -37,7 +37,6 @@
 # Removal in 14 days
 app-crypt/openvpn-blacklist
 app-forensics/volatility
-app-misc/golly
 app-misc/yagtd
 app-text/pylize
 app-vim/easytags
