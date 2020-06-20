@@ -32,6 +32,52 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-06-20)
+# Py2 only
+# Removal in 14 days
+app-admin/clustershell
+app-crypt/openvpn-blacklist
+app-forensics/volatility
+app-misc/golly
+app-misc/yagtd
+app-text/pylize
+app-text/rpl
+app-vim/easytags
+app-vim/notes
+dev-db/metakit
+dev-python/backports-ssl-match-hostname
+dev-python/backports-shutil_get_terminal_size
+dev-python/backports-shutil_which
+dev-python/python-wpactrl
+dev-util/bakefile
+dev-util/uftrace
+dev-vcs/git-deps
+dev-vcs/git-remote-hg
+games-board/scid
+games-emulation/openmsx
+games-kids/childsplay
+games-mud/lyntin
+games-sports/ski
+mail-filter/tmda
+media-video/subdl
+media-sound/cplay
+media-sound/tunapie
+net-firewall/dshieldpy
+net-mail/offlineimap
+net-misc/switzerland
+net-wireless/multimode
+sci-biology/last
+sci-chemistry/hollow
+sci-chemistry/modeller
+sci-chemistry/pymol-plugins-msms
+sci-geosciences/tilecache
+sci-libs/deap
+sci-libs/pycifrw
+sys-cluster/zookeeper-bin
+www-apps/curator
+x11-apps/whyteboard
+x11-plugins/purple-plugin_pack
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-18)
 # Games depending on dead gnome-base/libgnomeui.
 # games-board/gnono: Bug #726788, last release 2007, abandoned upstream.
@@ -217,27 +263,11 @@ dev-python/pygtksourceview
 # Not useful anymore now that metasploit has been removed.
 app-eselect/eselect-metasploit
 
-# Christoph Junghans <junghans@gentoo.org> (2020-05-19)
-# multiple vulnerabilities (CVE-2019-{3463,3464,1000018})
-# bug #699842. Masked for removal in 30 days.
-app-shells/rssh
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-18)
-# Unmaintained and vulnerable.  Last commit in 2015.  Stuck on Python 2.
-# All reverse dependencies removed restkit support upstream.
-# Removal in 30 days.  Bug #544228.
-dev-python/restkit
-
 # Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
 # PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
 # version.
 # Removal after 2020-06-14.
 <dev-db/postgresql-9.5
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-05-02)
-# Included in recent texlive versions. Please uninstall.
-# Removal in 30 days.
-dev-tex/revtex
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
 # Requires <OpenSSL-1.1.x. Please migrate to
@@ -248,42 +278,12 @@ dev-tex/revtex
 # Masked for testing
 >=dev-libs/gjs-1.64
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-26)
-# Unmaintained.  Stuck on Python 3.6.  No revdeps.
-# Removal in 30 days.  Bug #719604.
-dev-python/txtorcon
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-22)
-# Effectively unmaintained and stuck on Python 3.6.
-#
-# dev-python/bokeh does not work because of missing dependencies
-# (bug #607778).  It has no reverse dependencies
-#
-# dev-python/flexx tries to fetch data from Internet during build.
-# Its only revdep is dev-python/bokeh.
-#
-# Removal in 30 days.  Bug #607778.
-dev-python/bokeh
-dev-python/flexx
-
 # Michael Orlitzky <mjo@gentoo.org> (2020-04-19)
 # Stuck on Python 3.6, support for which already required
 # backporting patches to a release from 2014. Upstream's git
 # HEAD works fine, but they can't be bothered to make a new
 # release. Bug 718326. Removal whenever it becomes an issue.
 mail-filter/pyzor
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Needs version bump.
-# Removal in 30 days.  Bug #718458.
-net-proxy/mitmproxy
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  In need of bump since 2016.
-# Removal in 30 days.  Bug #718426.
-net-analyzer/ripe-atlas-tools
-net-libs/ripe-atlas-sagan
-www-client/ripe-atlas-cousteau
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-18)
 # Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
