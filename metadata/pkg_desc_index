@@ -1801,7 +1801,7 @@ app-forensics/sleuthkit 4.9.0: A collection of file system and media management 
 app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
 app-forensics/volatility 2.6-r1: Framework for analyzing volatile memory
 app-forensics/yasat 848: Security and system auditing tool
-app-forensics/zzuf 0.15 0.15-r1: Transparent application input fuzzer
+app-forensics/zzuf 0.15-r1: Transparent application input fuzzer
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
 app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
 app-i18n/canfep 1.0 1.0-r1: Canna Japanese kana-kanji frontend processor on console
@@ -2228,7 +2228,7 @@ app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.2-r2 0.2.4: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.2.5 1.2.6: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.2.6: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.3.0 4.4.0: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
@@ -4739,11 +4739,11 @@ dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles into javascript
-dev-lang/crystal 0.34.0 0.35.0 0.35.1: The Crystal Programming Language
+dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
-dev-lang/elixir 1.9.4 1.10.2 1.10.3: Elixir programming language
+dev-lang/elixir 1.9.4 1.10.3: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
-dev-lang/erlang 21.1.1 22.3 22.3.2 22.3.4 23.0 23.0.1: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 21.1.1 22.3.2 22.3.4 23.0 23.0.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -4789,7 +4789,7 @@ dev-lang/mozart 1.4.0-r3 1.4.0-r4: Advanced development platform for intelligent
 dev-lang/mozart-stdlib 1.4.0-r2: The Mozart Standard Library
 dev-lang/mujs 1.0.5 1.0.6: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.14.02: groovy little assembler
-dev-lang/nim 1.2.0 1.2.2: compiled, garbage-collected systems programming language
+dev-lang/nim 1.2.2: compiled, garbage-collected systems programming language
 dev-lang/nqp 2019.03-r1 2019.07.1 2019.11 2020.05 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.09.0: Programming language supporting functional, imperative & object-oriented styles
@@ -10037,9 +10037,9 @@ dev-scheme/goosh 1.3-r1: Small process-control library for Guile
 dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r3 2.2.3 2.2.4 2.2.6: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
-dev-scheme/guile-git 0.3.0 0.3.0-r1: Guile bindings of git
-dev-scheme/guile-json 3.5.0 4.0.1: JSON module for Guile
-dev-scheme/guile-sqlite3 0.1.0 0.1.1 0.1.2: Guile bindings of sqlite3
+dev-scheme/guile-git 0.3.0-r1: Guile bindings of git
+dev-scheme/guile-json 4.0.1: JSON module for Guile
+dev-scheme/guile-sqlite3 0.1.2: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
 dev-scheme/racket 7.0 7.1 7.2 7.3: General purpose, multi-paradigm Lisp-Scheme programming language
@@ -10329,7 +10329,7 @@ dev-util/devhelp 3.30.1 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 146 147 148: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 148: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -10400,7 +10400,7 @@ dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scrip
 dev-util/idea-community 2020.1.0.201.6668.121 2020.1.1.201.7223.91-r2 2020.1.2.201.7846.76: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0 2.2.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
-dev-util/include-what-you-use 9.0 10.0: Find unused include directives in C/C++ programs
+dev-util/include-what-you-use 10.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
 dev-util/intel-graphics-compiler 1.0.3826 1.0.4111: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1 4.4.0.117-r2: Intel's implementation of the OpenCL standard
@@ -10431,7 +10431,7 @@ dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lldb 8.0.1-r1 9.0.1-r1 10.0.0 10.0.1_rc1 10.0.1.9999 11.0.0.9999: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0-r1: List available userspace I/O (UIO) devices
-dev-util/ltrace 0.7.3_p4 0.7.3_p4-r1: trace library calls made at runtime
+dev-util/ltrace 0.7.3_p4-r1: trace library calls made at runtime
 dev-util/lttng-modules 2.7.1 2.10.12 2.11.0: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.7.1 2.10.9 2.11.0: Linux Trace Toolkit - next generation
 dev-util/lttng-ust 2.7.1 2.8.1 2.10.6 2.11.0: Linux Trace Toolkit - UST library
@@ -10516,7 +10516,7 @@ dev-util/serialtalk 1.2 1.2-r1 9999: simple command-line tool to talk to serial 
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
-dev-util/shards 0.10.0 0.11.0 0.11.1: Dependency manager for the Crystal language
+dev-util/shards 0.11.1: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.0 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.0 0.7.1: Shell script analysis tool (binary package)
@@ -12364,7 +12364,7 @@ media-fonts/source-pro 20141211 20160608 20170111: Adobe's open source typeface 
 media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
-media-fonts/terminus-font 4.46 4.47 4.48 4.48-r1 4.48-r2: A clean fixed font for the console and X11
+media-fonts/terminus-font 4.48 4.48-r2: A clean fixed font for the console and X11
 media-fonts/termsyn 1.8.7: Monospaced font based on terminus and tamsyn
 media-fonts/tex-gyre 2.005 2.501: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
@@ -14300,7 +14300,7 @@ net-ftp/gproftpd 8.3.2-r1 8.3.2-r2: GTK frontend to proftpd
 net-ftp/lftp 4.8.4-r1 4.9.0 4.9.1 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.6 3.2.6-r1 3.2.6-r2: An extremely configurable ftp client
-net-ftp/proftpd 1.3.7_rc3 1.3.7_rc3-r1 1.3.7_rc4-r1: An advanced and very configurable FTP server
+net-ftp/proftpd 1.3.7_rc3 1.3.7_rc4-r1: An advanced and very configurable FTP server
 net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written in Perl
 net-ftp/pure-ftpd 1.0.49-r2 9999: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
