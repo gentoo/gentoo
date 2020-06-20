@@ -14564,7 +14564,7 @@ net-libs/nativebiginteger 0.9.42 0.9.45: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2 0.31.0 0.31.1: HTTP and WebDAV client library
 net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
-net-libs/nghttp2 1.40.0 1.41.0 9999: HTTP/2 C Library
+net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
 net-libs/nodejs 8.12.0 10.19.0 10.20.1 12.16.1 12.16.2 12.16.3 12.17.0 14.2.0 14.3.0 14.4.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
@@ -17313,7 +17313,7 @@ sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel
 sys-kernel/pf-sources 5.6_p8 5.7_p1 5.7_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
-sys-kernel/rt-sources 4.4.220_p197 4.9.224_p144 4.14.170_p75 4.19.124_p53 5.4.40_p24 5.6.14_p7: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 4.4.220_p197 4.4.225_p198 4.9.224_p144 4.9.227_p146 4.14.170_p75 4.14.184_p84 4.19.124_p53 4.19.127_p54 5.4.40_p24 5.4.44_p27 5.6.14_p7 5.6.17_p10: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.40 5.4.46 5.4.47 5.6.18 5.6.19 5.7.4: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 3.16.85 4.4.227 4.9.227 4.14.184 4.19.128 5.4.47 5.6.19 5.7.4: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
