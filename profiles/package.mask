@@ -286,11 +286,6 @@ app-eselect/eselect-metasploit
 mail-filter/pyzor
 
 # Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Unmaintained.  Stuck on Python 3.6.  Needs version bump.
-# Removal in 30 days.  Bug #718458.
-net-proxy/mitmproxy
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
 # Unmaintained.  Stuck on Python 3.6.  In need of bump since 2016.
 # Removal in 30 days.  Bug #718426.
 net-analyzer/ripe-atlas-tools
