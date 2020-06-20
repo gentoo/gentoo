@@ -24,6 +24,10 @@ DEPEND=""
 RDEPEND=""
 BDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-syslog-help.patch
+)
+
 src_prepare() {
 	default
 
