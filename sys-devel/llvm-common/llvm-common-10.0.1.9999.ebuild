@@ -17,11 +17,6 @@ IUSE=""
 
 RDEPEND="!sys-devel/llvm:0"
 
-src_prepare() {
-	cd "${WORKDIR}" || Die
-	default
-}
-
 src_install() {
 	insinto /usr/share/vim/vimfiles
 	doins -r */
