@@ -17765,7 +17765,7 @@ www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition de
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
 www-apps/mediawiki 1.34.1: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.11-r2: Simple webapp to monitor the status of mirrors
-www-apps/moodle 3.5.12 3.6.10 3.7.6 3.8.3: The Moodle Course Management System
+www-apps/moodle 3.5.12 3.6.10 3.7.6 3.8.3 3.9: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby

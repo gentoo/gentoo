@@ -4,7 +4,7 @@ DESCRIPTION=PyTest Salt Plugin
 EAPI=7
 HOMEPAGE=https://github.com/saltstack/pytest-salt
 IUSE=test test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-python/pytest-2.8.1[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/psutil-4.2.0[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/pytest-helpers-namespace[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/pytest-tempdir[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
@@ -12,4 +12,4 @@ RESTRICT=test !test? ( test )
 SLOT=0
 SRC_URI=https://github.com/saltstack/pytest-salt/archive/v2020.1.27.tar.gz -> pytest-salt-2020.1.27.tar.gz
 _eclasses_=distutils-r1	44725b3eb803b8abcd6978759c231210	multibuild	40fe59465edacd730c644ec2bc197809	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=7c289d4923230f475aa25dedb92989b8
+_md5_=85edf9adacf2bddc3a8695571711c21e
