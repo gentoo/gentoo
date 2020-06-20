@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-06-20)
+# Unmaintained upstream, included with TeX Live.
+# Use >=dev-texlive/texlive-metapost-2020-r1 as replacement.
+# Removal in 30 days. Bug #728904.
+dev-tex/feynmf
+
 # Aaron Bauman <bman@gentoo.org> (2020-06-20)
 # Py2 only
 # Removal in 14 days
