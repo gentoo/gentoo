@@ -70,7 +70,6 @@ sci-chemistry/pymol-plugins-msms
 sci-geosciences/tilecache
 sci-libs/deap
 sci-libs/pycifrw
-sys-cluster/zookeeper-bin
 www-apps/curator
 x11-apps/whyteboard
 x11-plugins/purple-plugin_pack
