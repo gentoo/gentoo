@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_7,3_8} )
 
 inherit python-single-r1 systemd udev multilib-minimal
 
@@ -16,12 +16,12 @@ SRC_URI="https://pcsclite.apdu.fr/files/${P}.tar.bz2"
 # upstream.
 LICENSE="BSD ISC MIT GPL-3+ GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 # This is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="libusb policykit selinux systemd +udev"
+IUSE="doc embedded libusb policykit selinux systemd +udev"
 
 REQUIRED_USE="^^ ( udev libusb ) ${PYTHON_REQUIRED_USE}"
 
@@ -56,6 +56,8 @@ multilib_src_configure() {
 		--enable-usbdropdir="${EPREFIX}/usr/$(get_libdir)/readers/usb" \
 		--enable-ipcdir=/run/pcscd \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
+		$(use_enable doc documentation) \
+		$(multilib_native_use_enable embedded) \
 		$(multilib_native_use_enable systemd  libsystemd) \
 		$(multilib_native_use_enable udev libudev) \
 		$(multilib_native_use_enable libusb) \
