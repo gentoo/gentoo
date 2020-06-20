@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit eutils flag-o-matic python-any-r1 toolchain-funcs
 
 DESCRIPTION="Scalable Library for Eigenvalue Problem Computations"
-HOMEPAGE="http://slepc.upv.es/"
-SRC_URI="http://slepc.upv.es/download/distrib/${P}.tar.gz"
+HOMEPAGE="https://slepc.upv.es/"
+SRC_URI="https://slepc.upv.es/download/distrib/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
