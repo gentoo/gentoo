@@ -658,6 +658,9 @@ src_configure() {
 	# Chromium relies on this, but was disabled in >=clang-10, crbug.com/1042470
 	append-cxxflags $(test-flags-CXX -flax-vector-conversions=all)
 
+	# Silence lots of GCC warnings upstream doesn't seem to care about
+	append-cxxflags -Wno-invalid-offsetof -Wno-attributes -Wno-pragmas
+
 	# Explicitly disable ICU data file support for system-icu builds.
 	if use system-icu; then
 		myconf_gn+=" icu_use_data_file=false"
