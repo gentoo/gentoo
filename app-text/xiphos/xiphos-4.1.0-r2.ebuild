@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit flag-o-matic gnome2-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="A bible study frontend for Sword (formerly known as GnomeSword)"
-HOMEPAGE="http://xiphos.org/"
+HOMEPAGE="https://xiphos.org/"
 SRC_URI="https://github.com/crosswire/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2 MIT MPL-1.1"
