@@ -10,8 +10,8 @@ inherit fortran-2 toolchain-funcs autotools flag-o-matic ltprune
 MYP=${P/_p/-patch}
 
 DESCRIPTION="General purpose library and format for storing scientific data"
-HOMEPAGE="http://www.hdfgroup.org/hdf4.html"
-SRC_URI="http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/${MYP}.tar.bz2"
+HOMEPAGE="https://www.hdfgroup.org/hdf4.html"
+SRC_URI="https://www.hdfgroup.org/ftp/HDF/HDF_Current/src/${MYP}.tar.bz2"
 
 SLOT="0"
 LICENSE="NCSA-HDF"
