@@ -110,6 +110,7 @@ RDEPEND="${CDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
+	"${FILESDIR}"/${PN}-6.22.00-rlogger.patch
 )
 
 pkg_setup() {
