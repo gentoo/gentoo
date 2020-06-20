@@ -34,12 +34,6 @@ BDEPEND="
 
 DOCS=( CREDITS.TXT )
 
-PATCHES=(
-	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
-	# out-of-tree build.
-	"${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
-)
-
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
@@ -57,6 +51,17 @@ pkg_setup() {
 		eerror "and try again."
 		die
 	fi
+}
+
+src_prepare() {
+	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
+	# out-of-tree build.
+	eapply "${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
+
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake-utils_src_prepare
 }
 
 test_compiler() {
