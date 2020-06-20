@@ -4,8 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit check-reqs cmake-utils flag-o-matic llvm llvm.org \
-	multiprocessing python-any-r1
+inherit check-reqs cmake flag-o-matic llvm llvm.org multiprocessing \
+	python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -64,7 +64,7 @@ src_prepare() {
 	# cmake eclasses suck by forcing ${S} here
 	CMAKE_USE_DIR=${S} \
 	S=${WORKDIR} \
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -117,7 +117,7 @@ src_configure() {
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	if use test; then
 		local sys_dir=( "${EPREFIX}"/usr/lib/clang/${SLOT}/lib/* )
@@ -149,5 +149,5 @@ src_test() {
 	# wipe LD_PRELOAD to make ASAN happy
 	local -x LD_PRELOAD=
 
-	cmake-utils_src_make check-all
+	cmake_build check-all
 }
