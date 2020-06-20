@@ -2171,7 +2171,7 @@ app-misc/i2bits 0.1.0: Utility to convert hex or dec to binary format
 app-misc/icdiff 1.9.1 1.9.5: Colourized diff that supports side-by-side diffing
 app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/ignuit 2.24.3: Memorization aid based on the Leitner flashcard system
-app-misc/imgurbash2 3.1 9999: Bash script that uploads/deletes images to/from imgur
+app-misc/imgurbash2 3.1 3.2 9999: Bash script that uploads/deletes images to/from imgur
 app-misc/inputlircd 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6-r1: a program that can sit between a serial port and an application
 app-misc/irtrans-irclient 6.01.05-r1: ASCII Client for the IRTrans Server
@@ -2530,7 +2530,7 @@ app-shells/thefuck 3.27 3.28: Magnificent app which corrects your previous conso
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/yash 2.49 2.50: Yash is a POSIX-compliant command line shell
 app-shells/zsh 5.8 9999: UNIX Shell similar to the Korn shell
-app-shells/zsh-completions 0.31.0 9999: Additional completion definitions for Zsh
+app-shells/zsh-completions 0.31.0 0.32.0 9999: Additional completion definitions for Zsh
 app-shells/zsh-syntax-highlighting 0.7.0_beta1 0.7.1: Fish shell like syntax highlighting for zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
@@ -10648,7 +10648,7 @@ dev-vcs/svnmailer 1.0.9-r2: A subversion commit notifier written in Python
 dev-vcs/tig 2.3.3 2.4.1 2.5.0 2.5.1 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 5.3.2 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 5.3.2 5.4.1 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r4: A bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.9_p20181213-r1: Port of Abuse by Crack Dot Com
@@ -12122,7 +12122,7 @@ mail-filter/rspamd 2.3 2.4 2.5 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.87-r1 0.90: Sieve Command Line Interface
 mail-filter/sigh 1607.1.2 1607.1.6: S/MIME signing milter
-mail-filter/spamassassin 3.4.4 3.4.4-r1 3.4.4-r2 3.4.4-r3: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.4 3.4.4-r1 3.4.4-r2 3.4.4-r3 3.4.4-r4: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
 mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
@@ -12257,7 +12257,7 @@ media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
 media-fonts/font-util 1.3.2-r1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
-media-fonts/fontawesome 4.7.0 5.1.0 5.11.2 5.13.0 9999: The iconic font
+media-fonts/fontawesome 4.7.0 5.1.0 5.11.2 5.13.0 5.13.1 9999: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
 media-fonts/freefonts 0.10-r4: A Collection of Free Type1 Fonts
@@ -13811,7 +13811,7 @@ media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 3.7.1-r1: Movie slideshow creator using Ken Burns effect
 media-video/pipewire 0.2.7: Multimedia processing graphs
-media-video/pitivi 0.999-r2 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
+media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 9999: A Qt-based video player, which can play most formats and codecs
@@ -14261,7 +14261,7 @@ net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1 4.18: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shorewall 5.2.4.4 5.2.4.5 5.2.5: A high-level tool for configuring Netfilter
-net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
+net-firewall/ufw 0.36: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13 3.7 3.8 3.9: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
 net-fs/btfs 2.19 2.20: a bittorrent filesystem based on FUSE
@@ -14391,7 +14391,7 @@ net-irc/kvirc 5.2_pre20190628041642 5.2_pre20191202122540 9999: Advanced IRC Cli
 net-irc/limnoria 20191123 99999999: Python based extensible IRC infobot and channel bot
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/nebula 0.5: An IRC client for X11 and Motif
-net-irc/ngircd 24 25: An IRC server written from scratch
+net-irc/ngircd 25 26: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
@@ -14551,7 +14551,7 @@ net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.7: C++ BitTorrent implementation 
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
-net-libs/libvncserver 0.9.12-r5: library for creating vnc servers
+net-libs/libvncserver 0.9.12-r5 0.9.13: library for creating vnc servers
 net-libs/libwebsockets 3.2.1 4.0.10: A flexible pure-C library for implementing network protocols
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
@@ -14934,7 +14934,7 @@ net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSP
 net-misc/r8168 8.048.00 8.048.02 8.048.03: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.13 3.7.24 3.8.2 3.8.3 3.8.4: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18 2.18-r1: Linux IPv6 Router Advertisement Daemon
-net-misc/rclone 1.50.0 1.51.0 9999: A program to sync files to and from various cloud storage providers
+net-misc/rclone 1.50.0 1.51.0 1.52.1 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
@@ -15071,7 +15071,7 @@ net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.6.0 2.6.1: Cross-platform Direct Connect client
-net-p2p/amule 2.3.2-r2 2.3.2-r5 9999: aMule, the all-platform eMule p2p client
+net-p2p/amule 2.3.2-r5 9999: aMule, the all-platform eMule p2p client
 net-p2p/automatic 0.8.3: RSS downloader for Tranmission
 net-p2p/bisq 0.6.3: The decentralized bitcoin exchange (non-atomic, with arbitration)
 net-p2p/bitcoin-cli 0.16.3 0.19.1 0.20.0: Command-line JSON-RPC client specifically for interfacing with bitcoind

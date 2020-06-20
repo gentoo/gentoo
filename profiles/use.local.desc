@@ -6097,7 +6097,8 @@ net-libs/libupnp:blocking-tcp - Do not use async socket calls.
 net-libs/libupnp:reuseaddr - Allow clean restarts by binding the socket with SO_REUSEADDR.
 net-libs/libupnp:samples - Install sample applications.
 net-libs/libvncserver:24bpp - Enable 24bpp support
-net-libs/libvncserver:gcrypt - Enable support for additional authentication methods via dev-libs/libgcrypt
+net-libs/libvncserver:filetransfer - Enable support for TightVNC's file transfer protocol
+net-libs/libvncserver:gcrypt - Use dev-libs/libgcrypt as crypto backend
 net-libs/libvncserver:lzo - Enable LZO support via dev-libs/lzo instead of using internal miniLZO implementation
 net-libs/libwebsockets:access-log - Support generating Apache-compatible access logs
 net-libs/libwebsockets:cgi - Include CGI (spawn process with network-connected stdin/out/err) APIs
