@@ -341,7 +341,7 @@ src_prepare() {
 	tc-is-static-only || src_prepare_dynamic
 
 	if use gdbm; then
-		sed -i "s:INC => .*:INC => \"-I${EROOT}usr/include/gdbm\":g" \
+		sed -i "s:INC => .*:INC => \"-I${EROOT}/usr/include/gdbm\":g" \
 			ext/NDBM_File/Makefile.PL || die
 	fi
 
@@ -385,9 +385,9 @@ find_candidate_inc_versions() {
 		regex='.*/5[.][0-9]+\([.][0-9]+\|\)$'
 	fi
 	local dirs=(
-		"${EROOT%/}${PRIV_BASE}"
-		"${EROOT%/}${SITE_BASE}"
-		"${EROOT%/}${VENDOR_BASE}"
+		"${EROOT}${PRIV_BASE}"
+		"${EROOT}${SITE_BASE}"
+		"${EROOT}${VENDOR_BASE}"
 	)
 	for dir in "${dirs[@]}"; do
 		if [[ ! -e "${dir}" ]]; then
@@ -443,7 +443,7 @@ versions_to_gentoolibdirs() {
 	fi
 	for v;	do
 		for root in "${PRIV_BASE}" "${VENDOR_BASE}" "${SITE_BASE}"; do
-			local fullpath="${EROOT%/}${root}/${v}"
+			local fullpath="${EROOT}${root}/${v}"
 			if [[ -e "${fullpath}" ]]; then
 				has "${v}" ${oldv} && printf "%s:" "${fullpath}/${myarch}${mythreading}";
 				printf "%s:" "${fullpath}"
@@ -531,9 +531,9 @@ src_configure() {
 		einfo "This version of perl may partially support modules previously"
 		einfo "installed in any of the following paths:"
 		for incpath in ${inclist}; do
-			[[ -e "${EROOT%/}${VENDOR_BASE}/${incpath}" ]] && einfo " ${EROOT%/}${VENDOR_BASE}/${incpath}"
-			[[ -e "${EROOT%/}${PRIV_BASE}/${incpath}"   ]] && einfo " ${EROOT%/}${PRIV_BASE}/${incpath}"
-			[[ -e "${EROOT%/}${SITE_BASE}/${incpath}"   ]] && einfo " ${EROOT%/}${SITE_BASE}/${incpath}"
+			[[ -e "${EROOT}${VENDOR_BASE}/${incpath}" ]] && einfo " ${EROOT}${VENDOR_BASE}/${incpath}"
+			[[ -e "${EROOT}${PRIV_BASE}/${incpath}"   ]] && einfo " ${EROOT}${PRIV_BASE}/${incpath}"
+			[[ -e "${EROOT}${SITE_BASE}/${incpath}"   ]] && einfo " ${EROOT}${SITE_BASE}/${incpath}"
 		done
 		einfo "This is a temporary measure and you should aim to cleanup these paths"
 		einfo "via world updates and perl-cleaner"
