@@ -18,20 +18,18 @@ IUSE="bash-completion doc server"
 CDEPEND="
 	app-arch/libarchive
 	dev-cpp/sparsehash
+	dev-db/sqlite:3=
 	dev-libs/leveldb:0=
 	dev-libs/openssl:0=
 	dev-libs/protobuf:0=
 	net-dns/c-ares:0=
 	net-libs/pacparser:0=
+	net-misc/curl:0[adns]
 	sys-apps/attr
 	sys-fs/fuse:0=
 	sys-fs/fuse:3=
 	sys-libs/libcap:0=
 	sys-libs/zlib:0=
-	server? (
-		net-misc/curl:0[adns]
-		dev-db/sqlite:3=
-	)
 "
 
 RDEPEND="${CDEPEND}
