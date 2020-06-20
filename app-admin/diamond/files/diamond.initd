@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -14,6 +14,8 @@ start() {
 
 stop() {
 	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --stop -R 80 --pidfile /run/${SVCNAME}.pid
+	#start-stop-daemon --stop -R 80 --pidfile /run/${SVCNAME}.pid
+	# diamond doesn't kill its children, so work around that for now
+	pstree -Tp `cat /run/${SVCNAME}.pid` | grep -o '([0-9]\+)' | tr '()' ' ' | xargs kill
 	eend $?
 }
