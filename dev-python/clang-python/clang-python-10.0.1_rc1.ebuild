@@ -27,11 +27,6 @@ RDEPEND="
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	cd "${WORKDIR}" || die
-	default
-}
-
 python_test() {
 	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
 }
