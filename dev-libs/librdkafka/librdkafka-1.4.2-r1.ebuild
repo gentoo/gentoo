@@ -40,6 +40,16 @@ DEPEND="
 	static-libs? ( ${LIB_DEPEND} )
 "
 
+src_prepare() {
+	default
+
+	if [[ ${PV} != "9999" ]]; then
+		sed -i \
+			-e "s/^\(export RDKAFKA_GITVER=\).*/\1\"${PV}@release\"/" \
+			tests/run-test.sh || die
+	fi
+}
+
 src_configure() {
 	tc-export AR CC CXX LD NM OBJDUMP PKG_CONFIG STRIP
 
