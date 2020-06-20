@@ -174,6 +174,9 @@ llvm.org_set_globals() {
 # == phase functions ==
 
 EXPORT_FUNCTIONS src_unpack
+if ver_test -ge 10.0.1_rc; then
+	EXPORT_FUNCTIONS src_prepare
+fi
 
 # @FUNCTION: llvm.org_src_unpack
 # @DESCRIPTION:
@@ -215,5 +218,25 @@ llvm.org_src_unpack() {
 				eend ${?}
 			done
 		fi
+	fi
+}
+
+# @FUNCTION: llvm.org_src_prepare
+# @DESCRIPTION:
+# Call appropriate src_prepare (cmake or default) depending on inherited
+# eclasses.  Make sure that PATCHES and user patches are applied in top
+# ${WORKDIR}, so that patches straight from llvm-project repository
+# work correctly with -p1.
+llvm.org_src_prepare() {
+	if declare -f cmake_src_prepare >/dev/null; then
+		# cmake eclasses force ${S} for default_src_prepare
+		# but use ${CMAKE_USE_DIR} for everything else
+		CMAKE_USE_DIR=${S} \
+		S=${WORKDIR} \
+		cmake_src_prepare
+	else
+		pushd "${WORKDIR}" >/dev/null || die
+		default_src_prepare
+		popd >/dev/null || die
 	fi
 }
