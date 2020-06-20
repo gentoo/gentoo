@@ -18792,7 +18792,7 @@ x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.0-r1 1.12.90: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
-x11-wm/spectrwm 3.1.0 3.2.0 3.3.0: Small dynamic tiling window manager for X11
+x11-wm/spectrwm 3.1.0 3.2.0 3.3.0 3.4.0: Small dynamic tiling window manager for X11
 x11-wm/stumpwm 18.05: Stumpwm is a Window Manager written entirely in Common Lisp.
 x11-wm/stumpwm-contrib 20180128 99999999: Extension Modules for StumpWM
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
