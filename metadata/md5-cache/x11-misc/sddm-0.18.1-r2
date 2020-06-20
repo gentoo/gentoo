@@ -1,0 +1,16 @@
+BDEPEND=dev-python/docutils >=dev-qt/linguist-tools-5.9.4:5 kde-frameworks/extra-cmake-modules:5 virtual/pkgconfig dev-util/ninja dev-util/cmake virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=dev-qt/qtcore-5.9.4:5 >=dev-qt/qtdbus-5.9.4:5 >=dev-qt/qtdeclarative-5.9.4:5 >=dev-qt/qtgui-5.9.4:5 >=dev-qt/qtnetwork-5.9.4:5 >=x11-base/xorg-server-1.15.1 x11-libs/libxcb[xkb] consolekit? ( >=sys-auth/consolekit-0.9.4 ) elogind? ( sys-auth/elogind ) pam? ( sys-libs/pam ) systemd? ( sys-apps/systemd:= ) !systemd? ( sys-power/upower ) test? ( >=dev-qt/qttest-5.9.4:5 )
+DESCRIPTION=Simple Desktop Display Manager
+EAPI=7
+HOMEPAGE=https://github.com/sddm/sddm
+IUSE=consolekit elogind +pam systemd test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain
+RDEPEND=>=dev-qt/qtcore-5.9.4:5 >=dev-qt/qtdbus-5.9.4:5 >=dev-qt/qtdeclarative-5.9.4:5 >=dev-qt/qtgui-5.9.4:5 >=dev-qt/qtnetwork-5.9.4:5 >=x11-base/xorg-server-1.15.1 x11-libs/libxcb[xkb] consolekit? ( >=sys-auth/consolekit-0.9.4 ) elogind? ( sys-auth/elogind ) pam? ( sys-libs/pam ) systemd? ( sys-apps/systemd:= ) !systemd? ( sys-power/upower )
+REQUIRED_USE=?? ( elogind systemd )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/sddm/sddm/releases/download/v0.18.1/sddm-0.18.1.tar.xz
+_eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=a9d644e826cc5a9d8de3344b9005ff60
