@@ -1,6 +1,6 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare setup
-DEPEND=fuse? ( dev-libs/glib:2 sys-fs/fuse:0 ) gnutls? ( dev-libs/libtasn1:= >=net-libs/gnutls-3.1.0[tools] ) !libressl? ( dev-libs/openssl:0= dev-libs/libtpms[-libressl] ) libressl? ( dev-libs/libressl:0= dev-libs/libtpms[libressl] ) seccomp? ( sys-libs/libseccomp ) test? ( net-misc/socat || ( dev-lang/python:3.7 dev-lang/python:3.6 ) )
+DEPEND=fuse? ( dev-libs/glib:2 sys-fs/fuse:0 ) gnutls? ( dev-libs/libtasn1:= >=net-libs/gnutls-3.1.0[tools] ) !libressl? ( dev-libs/openssl:0= dev-libs/libtpms[-libressl] ) libressl? ( dev-libs/libressl:0= dev-libs/libtpms[libressl] ) seccomp? ( sys-libs/libseccomp ) test? ( net-misc/socat || ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) )
 DESCRIPTION=Libtpms-based TPM emulator
 EAPI=7
 HOMEPAGE=https://github.com/stefanberger/swtpm
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/stefanberger/swtpm/archive/v0.3.1.tar.gz -> swtpm-0.3.1.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=3d0bda4ae53ccc34bce84978229544e2
+_md5_=8b38d90c1e8a8c4450603b6f78945da8
