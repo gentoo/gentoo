@@ -25,6 +25,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--disable-static
 		--disable-defaultflags
 }
 
