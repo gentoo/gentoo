@@ -12781,7 +12781,7 @@ media-libs/libdvdcss 1.4.2: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 6.0.0 6.0.1 6.1.0 9999: Library for DVD navigation tools
 media-libs/libdvdread 6.0.0 6.0.1 6.0.2 6.1.1 9999: Library for DVD navigation tools
 media-libs/libebur128 1.2.4: A library implementing the EBU R128 loudness standard
-media-libs/libemf 1.0.4-r1 1.0.7 1.0.12: Library implementation of ECMA-234 API for the generation of enhanced metafiles
+media-libs/libemf 1.0.4-r1 1.0.7 1.0.12 1.0.13: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
 media-libs/libepoxy 1.5.4 9999: Library for handling OpenGL function pointer management
 media-libs/libexif 0.6.21-r3 0.6.22: Library for parsing, editing, and saving EXIF data
@@ -17474,7 +17474,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20200122 20200422 20200522: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20200422 20200522: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
