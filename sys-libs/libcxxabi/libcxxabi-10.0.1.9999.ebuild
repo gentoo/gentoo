@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{6..9} )
-inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1 toolchain-funcs
+inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="https://libcxxabi.llvm.org/"
@@ -33,9 +33,6 @@ BDEPEND="
 	test? ( >=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
-
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
@@ -43,13 +40,6 @@ python_check_deps() {
 pkg_setup() {
 	llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	# cmake eclasses suck by forcing ${S} here
-	CMAKE_USE_DIR=${S} \
-	S=${WORKDIR} \
-	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -79,13 +69,11 @@ multilib_src_configure() {
 	)
 	if use test; then
 		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
-		local jobs=${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}
-
 		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
 
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv;-j;${jobs};--param=cxx_under_test=${clang_path}"
+			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
 		)
 	fi
 	cmake_src_configure
