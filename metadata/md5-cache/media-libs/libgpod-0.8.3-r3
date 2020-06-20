@@ -1,0 +1,14 @@
+BDEPEND=dev-libs/libxslt dev-util/intltool dev-util/gtk-doc-am sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install prepare setup
+DEPEND=>=app-pda/libplist-1.0:= >=dev-db/sqlite-3:3 >=dev-libs/glib-2.16:2 dev-libs/libxml2:2 sys-apps/sg3_utils gtk? ( x11-libs/gdk-pixbuf:2 ) ios? ( app-pda/libimobiledevice:= ) udev? ( virtual/udev ) mono? ( >=dev-lang/mono-1.9.1 >=dev-dotnet/gtk-sharp-2.12 )
+DESCRIPTION=Shared library to access the contents of an iPod
+EAPI=7
+HOMEPAGE=http://www.gtkpod.org/libgpod/
+IUSE=+gtk +udev ios mono
+KEYWORDS=amd64 ppc x86
+LICENSE=LGPL-2
+RDEPEND=>=app-pda/libplist-1.0:= >=dev-db/sqlite-3:3 >=dev-libs/glib-2.16:2 dev-libs/libxml2:2 sys-apps/sg3_utils gtk? ( x11-libs/gdk-pixbuf:2 ) ios? ( app-pda/libimobiledevice:= ) udev? ( virtual/udev ) mono? ( >=dev-lang/mono-1.9.1 >=dev-dotnet/gtk-sharp-2.12 )
+SLOT=0
+SRC_URI=mirror://sourceforge/gtkpod/libgpod-0.8.3.tar.bz2
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	mono-env	1f24c032c78290b0d9a07d5b343051a7	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=a908950eaa1e05c139f3f5d5f36ace9f
