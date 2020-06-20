@@ -4,8 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
-inherit cmake flag-o-matic llvm llvm.org multiprocessing \
-	python-any-r1 toolchain-funcs
+inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="https://llvm.org/"
@@ -29,9 +28,6 @@ BDEPEND="
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT} )
 	${PYTHON_DEPS}"
 
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
-
 python_check_deps() {
 	use test || return 0
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
@@ -47,13 +43,6 @@ pkg_pretend() {
 pkg_setup() {
 	llvm_pkg_setup
 	python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	# cmake eclasses suck by forcing ${S} here
-	CMAKE_USE_DIR=${S} \
-	S=${WORKDIR} \
-	cmake_src_prepare
 }
 
 test_compiler() {
@@ -99,7 +88,7 @@ src_configure() {
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 
 			-DCOMPILER_RT_TEST_COMPILER="${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang"
 			-DCOMPILER_RT_TEST_CXX_COMPILER="${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang++"
