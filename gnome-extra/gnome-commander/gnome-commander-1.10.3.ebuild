@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,11 +20,8 @@ RDEPEND="
 	app-text/yelp-tools
 	>=dev-libs/glib-2.44.0:2
 	unique? ( >=dev-libs/libunique-0.9.3:1 )
-	gnome-base/gnome-keyring
 	>=gnome-base/gnome-vfs-2.0.0
-	>=gnome-base/libgnome-2.0.0
-	>=gnome-base/libgnomeui-2.4.0
-	>=x11-libs/gtk+-2.18.0:2
+	>=x11-libs/gtk+-2.24.0:2
 	chm? ( dev-libs/chmlib )
 	exif? ( >=media-gfx/exiv2-0.14 )
 	gsf? ( >=gnome-extra/libgsf-1.12.0 )
@@ -32,9 +29,6 @@ RDEPEND="
 	pdf? ( >=app-text/poppler-0.18 )
 	taglib? ( >=media-libs/taglib-1.4 )
 "
-
-PATCHES=( "${FILESDIR}/gnome-commander-1.10.0-exiv2-0.27.1-missing-header.patch" )
-
 DEPEND="
 	${RDEPEND}
 	dev-util/gtk-doc-am
