@@ -87,7 +87,15 @@ src_unpack() {
 	mkdir -p x/y || die
 	cd x/y || die
 	llvm.org_src_unpack
-	mv clang-tools-extra clang/tools/extra || die
+}
+
+src_prepare() {
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR}/x/y \
+	cmake-utils_src_prepare
+
+	mv ../clang-tools-extra tools/extra || die
 }
 
 check_distribution_components() {
