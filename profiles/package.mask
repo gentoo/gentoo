@@ -35,10 +35,8 @@
 # Aaron Bauman <bman@gentoo.org> (2020-06-20)
 # Py2 only
 # Removal in 14 days
-app-admin/clustershell
 app-crypt/openvpn-blacklist
 app-forensics/volatility
-app-misc/golly
 app-misc/yagtd
 app-text/pylize
 app-vim/easytags
