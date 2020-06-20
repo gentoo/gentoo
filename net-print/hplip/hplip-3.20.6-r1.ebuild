@@ -90,8 +90,6 @@ DOC_CONTENTS="
 For more information on setting up your printer please take
 a look at the hplip section of the gentoo printing guide:
 https://wiki.gentoo.org/wiki/Printing
-
-Any user who wants to print must be in the lp group.
 "
 
 pkg_setup() {
@@ -197,6 +195,13 @@ src_configure() {
 		else
 			minimal_build="${minimal_build} --disable-hpcups-only-build"
 		fi
+		minimal_build="--disable-fax-build"
+	else
+		if use fax ; then
+			minimal_build="--enable-fax-build"
+		else
+			minimal_build="--disable-fax-build"
+		fi
 	fi
 
 	# disable class driver for now
@@ -218,7 +223,6 @@ src_configure() {
 		--enable-hpps-install \
 		--disable-class-driver \
 		$(use_enable doc doc-build) \
-		$(use_enable fax fax-build) \
 		$(use_enable !minimal gui-build) \
 		$(use_enable !minimal dbus-build) \
 		$(use_enable parport pp-build) \
