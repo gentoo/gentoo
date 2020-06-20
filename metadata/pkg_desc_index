@@ -452,7 +452,7 @@ app-admin/cronlocker 0.4.0_p20180710: synchronize a cron job across multiple hos
 app-admin/cronolog 1.6.2-r5: Log rotation software
 app-admin/cygwin-rebase 4.4.4 9999: Core of the automatic rebase facility during postinstall on Cygwin
 app-admin/denyhosts 2.9 3.0 3.0-r1 3.0-r2: DenyHosts is a utility to help sys admins thwart ssh hackers
-app-admin/diamond 4.0.515.20170311: Python daemon that collects and publishes system metrics
+app-admin/diamond 4.0.515.20170311 4.0.515.20200620: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0 6.6.1: Run commands as super user or another user, alternative to sudo from OpenBSD
@@ -4817,7 +4817,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3 60.5.2_p0-r4 68.7.0 68.8.0 68.9.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.0.3 8.2.0 8.3.0 8.3.1: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.0.3 8.2.0 8.3.0 8.3.1 8.3.2: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9: Tool Command Language
