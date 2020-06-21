@@ -31,7 +31,7 @@ src_prepare() {
 
 	sed -i \
 		-e 's/^CC/CC?/' \
-		-e 's/^CFLAGS  =/CFLAGS  +=/' \
+		-e 's/^CFLAGS   =/CFLAGS   +=/' \
 		-e 's/ -Os//' \
 		-e 's/^LDFLAGS/LDFLAGS?/' \
 		-e 's/^PREFIX/PREFIX?/' \
