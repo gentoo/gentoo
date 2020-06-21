@@ -15,6 +15,12 @@ SLOT="$(ver_cut 1)"
 IUSE="doc"
 
 ruby_add_rdepend "dev-ruby/kramdown:2"
+ruby_add_bdepend "test? ( dev-ruby/kramdown[latex] )"
+
+all_ruby_prepare() {
+	# Avoid testcase which is no longer compatible with newer rouge
+	rm -f test/testcases/codeblock_fenced.text || die
+}
 
 each_ruby_test() {
 	${RUBY} -Ilib:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
