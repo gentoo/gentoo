@@ -98,6 +98,11 @@ pkg_setup() {
 	ecm_pkg_setup
 }
 
+src_prepare() {
+	ecm_src_prepare
+	sed -e "/CMAKE_CXX_STANDARD/s/11/14/" -i CMakeLists.txt || die
+}
+
 src_configure() {
 	# Prevent sandbox violation from FindPyQt5.py module
 	# See Gentoo-bug 655918
