@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${PV}/${P}-asString.patch"
 	"${FILESDIR}/${PV}/${P}-qprintable.patch"
 	"${FILESDIR}/${PV}/${P}-qt-includes.patch"
+	"${FILESDIR}/${PV}/${P}-qt-5.15.patch"
 )
 
 src_prepare() {
