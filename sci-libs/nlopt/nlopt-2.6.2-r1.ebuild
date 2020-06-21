@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6..9} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit python-r1 cmake
 
@@ -23,8 +23,7 @@ RDEPEND="
 	octave? ( sci-mathematics/octave )
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep 'dev-python/numpy-python2[${PYTHON_USEDEP}]' -2)
-		$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' -3)
+		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 	"
 DEPEND="
