@@ -125,6 +125,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-ustat.patch"
 
 	toolchain_src_prepare
+	eapply "${FILESDIR}"/${P}-libgomp-Werror.patch
 }
 
 src_configure() {
