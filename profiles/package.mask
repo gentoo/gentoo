@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-06-21)
+# virtual/libstdc++ has only one sys-libs/libstdc++-v3 provider.
+# Use that instead. Or even better use none of them. It's a
+# library from 2005. Removal in 30 days.
+virtual/libstdc++
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-20)
 # Stuck on Python 2, depends on deprecated dev-python/pygobject:2
 media-libs/pymemphis

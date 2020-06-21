@@ -13,30 +13,42 @@ SRC_URI="mirror://pypi/C/${PN/c/C}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
-# Unit tests are temporarily disabled for this version, see below for
-# what needs to be done.
-#IUSE="test"
-RESTRICT="test"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/six-1.11.0[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-2.6[${PYTHON_USEDEP}]
 	dev-python/jaraco-functools[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}
+BDEPEND="
 	test? (
+		${RDEPEND}
+		dev-python/jaraco-text[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-1.11.0[${PYTHON_USEDEP}]
-		>=dev-python/pytest-xdist-1.2.28[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		dev-python/requests-unixsocket[${PYTHON_USEDEP}]
+		dev-python/trustme[${PYTHON_USEDEP}]
+		dev-python/urllib3[${PYTHON_USEDEP}]
 	)
 "
 
 distutils_enable_tests pytest
 
-python_prepare_all() {
-	distutils-r1_python_prepare_all
+PATCHES=(
+	"${FILESDIR}"/cheroot-8.3.0-test-unixsocket.patch
+)
 
+python_prepare_all() {
 	sed -e "s/use_scm_version=True/version='${PV}'/" -i setup.py || die
 	sed -e '/setuptools_scm/d' -i setup.cfg || die
+	sed -e '/--cov/d' \
+		-e '/--testmon/d' \
+		-e '/--numproc/d' \
+		-i pytest.ini || die
+
+	# broken
+	sed -e '/False.*localhost/d' \
+		-i cheroot/test/test_ssl.py || die
+
+	distutils-r1_python_prepare_all
 }

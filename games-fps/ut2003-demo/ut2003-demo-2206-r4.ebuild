@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ RESTRICT="strip"
 DEPEND="app-arch/unzip"
 RDEPEND="
 	sys-devel/bc
-	virtual/libstdc++:3.3
+	sys-libs/libstdc++-v3:5
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
