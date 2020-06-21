@@ -1,41 +1,49 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Loki Software binary patch tool"
 HOMEPAGE="http://www.icculus.org/loki_setup/"
-SRC_URI="mirror://gentoo/${P}.tar.bz2
+SRC_URI="
+	mirror://gentoo/${P}.tar.bz2
 	mirror://gentoo/loki_setupdb-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="dev-util/xdelta:0
+RDEPEND="
+	dev-util/xdelta:0
 	dev-libs/libxml2
 	dev-libs/glib:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}
+S="${WORKDIR}"
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-patchdata.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${P}-patchdata.patch
-	cd loki_setupdb
+	default
+
+	cd loki_setupdb || die
+	mv configure.{in,ac} || die
 	eautoreconf
-	cd "${S}"/${PN}
+
+	cd "${S}"/${PN} || die
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_configure() {
-	cd loki_setupdb
+	cd loki_setupdb || die
 	econf
-	cd "${S}"/${PN}
+	cd "${S}"/${PN} || die
 	econf
 }
 
@@ -45,7 +53,7 @@ src_compile() {
 }
 
 src_install() {
-	cd ${PN}
+	cd ${PN} || die
 	dobin loki_patch make_patch
 	dodoc CHANGES NOTES README TODO
 }
