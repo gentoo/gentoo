@@ -1,13 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-DESCRIPTION="A simple port-knocking daemon"
-HOMEPAGE="http://www.zeroflux.org/projects/knock"
-SRC_URI="http://www.zeroflux.org/proj/knock/files/${P}.tar.gz"
+DESCRIPTION="Simple port-knocking daemon"
+HOMEPAGE="https://www.zeroflux.org/projects/knock
+	https://github.com/jvinet/knock"
+SRC_URI="https://www.zeroflux.org/proj/knock/files/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE="+server"
@@ -16,6 +17,8 @@ DEPEND="server? ( net-libs/libpcap )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
 	sed -e "/^AM_CFLAGS/s: -g : :" \
 		-e "/dist_doc_DATA/s:COPYING::" \
 		-i Makefile.in || die
@@ -38,9 +41,7 @@ src_install() {
 
 pkg_postinst() {
 	if use server && ! has_version net-firewall/iptables ; then
-		einfo
 		elog "You're really encouraged to install net-firewall/iptables to"
 		elog "actually modify your firewall and use the example configuration."
-		einfo
 	fi
 }

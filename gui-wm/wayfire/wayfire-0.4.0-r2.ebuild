@@ -36,7 +36,7 @@ DEPEND="
 	x11-libs/libxkbcommon:=[X]
 	x11-libs/pixman
 	gles? ( media-libs/libglvnd[X] )
-	system-wfconfig? ( ~gui-libs/wf-config-${PV} )
+	system-wfconfig? ( >=gui-libs/wf-config-${PV} )
 	!system-wfconfig? ( !gui-libs/wf-config )
 	system-wlroots? ( ~gui-libs/wlroots-0.10.1[elogind=,systemd=,X] )
 	!system-wlroots? ( !gui-libs/wlroots )
