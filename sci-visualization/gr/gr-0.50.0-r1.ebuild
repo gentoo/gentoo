@@ -68,4 +68,7 @@ src_install() {
 	doenvd "${T}/99gr"
 
 	dosym ../gr/bin/gksqt /usr/bin/gksqt
+
+	elog "${P} relies on the environment variable GRDIR. If you want to use it in a running shell,"
+	elog "e.g. with dev-lang/julia, then run \"source /etc/profile\" first."
 }
