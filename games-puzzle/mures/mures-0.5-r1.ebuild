@@ -40,6 +40,8 @@ src_prepare() {
 		src/maps/battle/Makefile.am \
 		|| die "sed failed"
 
+	# GCC 10 / -fno-common
+	eapply "${FILESDIR}"/${P}-fix-fno-common.patch
 	eapply "${FILESDIR}"/${P}-underlink.patch
 
 	mv configure.{in,ac} || die
