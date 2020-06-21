@@ -13,7 +13,7 @@ if [ ${PV} == "9999" ] ; then
 	EGIT_REPO_URI="https://github.com/skeeto/${PN}.git"
 else
 	SRC_URI="https://github.com/skeeto/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 fi
 
 LICENSE="Unlicense"
@@ -31,7 +31,7 @@ src_prepare() {
 
 	sed -i \
 		-e 's/^CC/CC?/' \
-		-e 's/^CFLAGS  =/CFLAGS  +=/' \
+		-e 's/^CFLAGS   =/CFLAGS   +=/' \
 		-e 's/ -Os//' \
 		-e 's/^LDFLAGS/LDFLAGS?/' \
 		-e 's/^PREFIX/PREFIX?/' \
@@ -46,13 +46,10 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}"/endlessh.initd-r1 endlessh
-	newconfd "${FILESDIR}"/endlessh.confd-r1 endlessh
+	newinitd "${FILESDIR}"/endlessh.initd endlessh
+	newconfd "${FILESDIR}"/endlessh.confd endlessh
 
 	systemd_dounit util/endlessh.service
-
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}/logrotated-r1" endlessh
 
 	insinto /usr/share/"${PN}"
 	doins util/{pivot.py,schema.sql}

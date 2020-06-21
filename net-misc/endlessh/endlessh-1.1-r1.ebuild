@@ -24,6 +24,10 @@ DEPEND=""
 RDEPEND=""
 BDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-syslog-help.patch
+)
+
 src_prepare() {
 	default
 
@@ -46,8 +50,8 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}"/endlessh.initd-r2 endlessh
-	newconfd "${FILESDIR}"/endlessh.confd-r2 endlessh
+	newinitd "${FILESDIR}"/endlessh.initd endlessh
+	newconfd "${FILESDIR}"/endlessh.confd endlessh
 
 	systemd_dounit util/endlessh.service
 
