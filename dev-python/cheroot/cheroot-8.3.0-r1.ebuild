@@ -34,6 +34,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/cheroot-8.3.0-test-unixsocket.patch
+)
+
 python_prepare_all() {
 	sed -e "s/use_scm_version=True/version='${PV}'/" -i setup.py || die
 	sed -e '/setuptools_scm/d' -i setup.cfg || die
@@ -45,8 +49,6 @@ python_prepare_all() {
 	# broken
 	sed -e '/False.*localhost/d' \
 		-i cheroot/test/test_ssl.py || die
-	sed -e "s:'abstract', 'file':'file',:" \
-		-i cheroot/test/test_server.py || die
 
 	distutils-r1_python_prepare_all
 }
