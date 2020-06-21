@@ -61,6 +61,10 @@ RDEPEND="${DEPEND}
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.19.2-fix-inline-password-field.patch # KDE-bug #423093
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_MODEMMANAGER_SUPPORT=$(usex !modemmanager)
