@@ -1,12 +1,14 @@
-DEFINED_PHASES=configure install
-DEPEND=dvd? ( media-libs/libdvdread ) media-sound/vorbis-tools
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=media-sound/vorbis-tools dvd? ( media-libs/libdvdread )
 DESCRIPTION=Information, extraction or creation for OGG media streams
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.bunkus.org/videotools/ogmtools/
 IUSE=dvd
 KEYWORDS=amd64 ppc ppc64 sparc x86
 LICENSE=GPL-2
-RDEPEND=dvd? ( media-libs/libdvdread ) media-sound/vorbis-tools
+RDEPEND=media-sound/vorbis-tools dvd? ( media-libs/libdvdread )
 SLOT=0
 SRC_URI=https://www.bunkus.org/videotools/ogmtools/ogmtools-1.5.tar.bz2
-_md5_=da317c326a460d2f933db2e47c5b5073
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=08c35496086db084f7d8905273f9cfb4
