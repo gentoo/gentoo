@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop toolchain-funcs
 
 DESCRIPTION="Gothic science fantasy roguelike game"
-HOMEPAGE="https://freecode.com/projects/wrogue"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/wrogue"
 SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="GPL-3"
