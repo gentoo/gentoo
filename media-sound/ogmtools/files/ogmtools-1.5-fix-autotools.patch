@@ -1,0 +1,44 @@
+--- a/avilib/Makefile.am
++++ b/avilib/Makefile.am
+@@ -7,7 +7,8 @@
+ 
+ INCLUDES = -I./
+ 
+-CFLAGS=-O3 -funroll-loops -ffast-math -DLINUX -Wall @CFLAGS@
++AM_CFLAGS=-Wall
++AM_CPPFLAGS=-DLINUX
+ libavi_a_SOURCES = avilib.c avidump.c avimisc.c xio.c
+ 
+ EXTRA_DIST = avilib.h README.avilib
+--- a/configure.in
++++ b/configure.in
+@@ -8,6 +8,7 @@
+ AC_PROG_GCC_TRADITIONAL
+ AC_PROG_CPP
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ XIPH_PATH_OGG()
+ XIPH_PATH_VORBIS()
+@@ -31,7 +32,7 @@
+ dnl Check for headers
+ AC_HEADER_STDC()
+ 
+-CFLAGS="-Wall -Wno-sign-compare @OGG_CFLAGS@ @VORBIS_CFLAGS@ @AVILIB_CFLAGS@ @DEBUG_CFLAGS@ @PROFILING_CFLAGS@"
+-CXXFLAGS="-Wall -Wno-sign-compare @OGG_CFLAGS@ @VORBIS_CFLAGS@ @AVILIB_CFLAGS@ @DEBUG_CFLAGS@ @PROFILING_CFLAGS@"
++CFLAGS+=" -Wall -Wno-sign-compare"
++CXXFLAGS+=" -Wall -Wno-sign-compare"
+ 
+ AC_OUTPUT(Makefile avilib/Makefile)
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,6 +2,9 @@
+ 
+ AUTOMAKE_OPTIONS = dist-zip foreign
+ 
++AM_CFLAGS=$(OGG_CFLAGS) $(VORBIS_CFLAGS) $(AVILIB_CFLAGS) $(DEBUG_CFLAGS) $(PROFILING_CFLAGS)
++AM_CXXFLAGS=$(OGG_CFLAGS) $(VORBIS_CFLAGS) $(AVILIB_CFLAGS) $(DEBUG_CFLAGS) $(PROFILING_CFLAGS)
++
+ SUBDIRS = avilib
+ 
+ if HAVE_LIBDVDREAD
