@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,9 +11,9 @@ SRC_URI="http://download.netsurf-browser.org/netsurf/releases/source/${P}-src.ta
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="~amd64"
 IUSE="+bmp +duktape fbcon truetype +gif gtk gtk2 +javascript +jpeg +mng
-	pdf-writer +png +psl +rosprite +svg +svgtiny +webp"
+	+png +psl +rosprite +svg +svgtiny +webp"
 
 REQUIRED_USE="|| ( fbcon gtk gtk2 )
 	duktape? ( javascript )"
@@ -36,11 +36,13 @@ RDEPEND="
 		x11-libs/gtk+:3 )
 	gtk2? ( dev-libs/glib:2
 		x11-libs/gtk+:2 )
-	javascript? ( >=dev-libs/nsgenbind-0.7
-		!duktape? ( dev-lang/spidermonkey:0= ) )
+	javascript? (
+		>=dev-libs/nsgenbind-0.7
+		duktape? ( dev-lang/duktape )
+		!duktape? ( dev-lang/spidermonkey:0= )
+	)
 	jpeg? ( >=virtual/jpeg-0-r2:0 )
 	mng? ( >=media-libs/libmng-1.0.10-r2 )
-	pdf-writer? ( media-libs/libharu )
 	png? ( >=media-libs/libpng-1.2.51:0 )
 	psl? ( media-libs/libnspsl )
 	rosprite? ( >=media-libs/librosprite-0.1.2-r1 )
@@ -53,11 +55,10 @@ BDEPEND="
 	dev-perl/HTML-Parser
 	>=dev-util/netsurf-buildsystem-1.7-r1"
 
-RESTRICT="test"
-
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.9-conditionally-include-image-headers.patch
-	"${FILESDIR}"/${PN}-3.8-pdf-writer.patch
+	"${FILESDIR}/${PN}-3.9-conditionally-include-image-headers.patch"
+	"${FILESDIR}/${PN}-3.10-julia-libutf8proc-header-location.patch"
+	"${FILESDIR}/${PN}-3.10-disable-failing-tests.patch"
 )
 
 DOCS=( README docs/using-framebuffer.md
@@ -84,13 +85,12 @@ _emake() {
 		NETSURF_USE_MOZJS=$(usex javascript $(usex duktape NO YES) NO)
 		NETSURF_USE_JS=NO
 		NETSURF_USE_DUKTAPE=$(usex javascript $(usex duktape YES NO) NO)
-		NETSURF_USE_HARU_PDF=$(usex pdf-writer YES NO)
 		NETSURF_USE_NSSVG=$(usex svg $(usex svgtiny YES NO) NO)
 		NETSURF_USE_RSVG=$(usex svg $(usex svgtiny NO YES) NO)
 		NETSURF_USE_ROSPRITE=$(usex rosprite YES NO)
 		PKG_CONFIG=$(tc-getPKG_CONFIG)
 		NETSURF_FB_FONTLIB=$(usex truetype freetype internal)
-		NETSURF_FB_FONTPATH=${EROOT}/usr/share/fonts/dejavu
+		NETSURF_FB_FONTPATH="${EPREFIX}/usr/share/fonts/dejavu"
 		NETSURF_USE_VIDEO=NO
 	)
 	emake "${netsurf_makeconf[@]}" $@
@@ -111,19 +111,19 @@ src_install() {
 		-i "${WORKDIR}"/*/utils/git-testament.pl || die
 
 	if use fbcon ; then
-		_emake TARGET=framebuffer DESTDIR="${ED}" install
+		_emake TARGET=framebuffer DESTDIR="${D}" install
 		elog "framebuffer binary has been installed as netsurf-fb"
-		make_desktop_entry "${EROOT}"/usr/bin/netsurf-fb NetSurf-framebuffer netsurf "Network;WebBrowser"
+		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-fb NetSurf-framebuffer netsurf "Network;WebBrowser"
 	fi
 	if use gtk2 ; then
-		_emake TARGET=gtk DESTDIR="${ED}" install
+		_emake TARGET=gtk DESTDIR="${D}" install
 		elog "netsurf gtk2 version has been installed as netsurf-gtk"
-		make_desktop_entry "${EROOT}"/usr/bin/netsurf-gtk NetSurf-gtk netsurf "Network;WebBrowser"
+		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-gtk NetSurf-gtk netsurf "Network;WebBrowser"
 	fi
 	if use gtk ; then
-		_emake TARGET=gtk3 DESTDIR="${ED}" install
+		_emake TARGET=gtk3 DESTDIR="${D}" install
 		elog "netsurf gtk3 version has been installed as netsurf-gtk3"
-		make_desktop_entry "${EROOT}"/usr/bin/netsurf-gtk3 NetSurf-gtk3 netsurf "Network;WebBrowser"
+		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-gtk3 NetSurf-gtk3 netsurf "Network;WebBrowser"
 	fi
 
 	insinto /usr/share/pixmaps
