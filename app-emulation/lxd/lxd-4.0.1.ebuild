@@ -12,7 +12,7 @@ SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz"
 # Needs to include licenses for all bundled programs.
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+ipv6 nls"
 
 DEPEND="app-arch/xz-utils
