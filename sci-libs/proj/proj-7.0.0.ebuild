@@ -18,8 +18,9 @@ LICENSE="MIT"
 SLOT="0/19"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="europe static-libs test"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( !europe )"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}"
@@ -33,9 +34,7 @@ src_unpack() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static) \
-		--without-jni
+	econf $(use_enable static-libs static)
 }
 
 src_install() {
@@ -43,5 +42,5 @@ src_install() {
 	cd data || die
 	dodoc README.{DATA,DATUMGRID}
 	use europe && dodoc README.EUROPE
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }
