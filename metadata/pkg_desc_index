@@ -4888,7 +4888,7 @@ dev-libs/crypto++ 5.6.5-r1 7.0.0-r3 8.2.0 8.2.0-r2: C++ class library of cryptog
 dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.6.2.24 7.6.5.32 7.6.5.32-r2: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
-dev-libs/cyberjack 3.99.5_p13 3.99.5_p14: REINER SCT cyberJack USB chipcard reader user space driver
+dev-libs/cyberjack 3.99.5_p14: REINER SCT cyberJack USB chipcard reader user space driver
 dev-libs/cyrus-sasl 2.1.27-r3 2.1.27-r4: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
@@ -15610,7 +15610,7 @@ sci-biology/unafold 3.8-r1: Unified Nucleic Acid Folding and hybridization packa
 sci-biology/update-blastdb 12.0.0: update_blastdb.pl for local blast db maintainance
 sci-biology/vcftools 0.1.14: Tools for working with VCF (Variant Call Format) files
 sci-biology/velvet 1.2.10: A sequence assembler for very short reads
-sci-biology/vienna-rna 2.1.1 2.1.8: RNA secondary structure prediction and comparison
+sci-biology/vienna-rna 2.1.8: RNA secondary structure prediction and comparison
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
