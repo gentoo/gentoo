@@ -15479,7 +15479,7 @@ sci-biology/GBrowse 2.48-r1: Generic Model Organism Database Project - The Gener
 sci-biology/HTSeq 0.9.1 9999: Python support for SAM/BAM/Bowtie/FASTA/Q/GFF/GTF files
 sci-biology/STAR 2.5.3a: STAR aligner: align RNA-seq reads to reference genome uncompressed suffix arrays
 sci-biology/aaindex 9.1-r1: Amino acid indices and similarity matrices
-sci-biology/abyss 2.0.2-r1 2.0.3 2.0.3-r1: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
+sci-biology/abyss 2.0.3-r1: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
 sci-biology/amap 2.2-r3: Protein multiple-alignment-based sequence annealing
 sci-biology/amos 3.1.0-r4: A Modular, Open-Source whole genome assembler
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
