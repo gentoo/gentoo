@@ -259,7 +259,6 @@ dev-ruby/rack-mount
 # bugs #640022. Masked for removal in 30 days.
 dev-python/gconf-python
 dev-python/gnome-python-base
-dev-python/pygtksourceview
 
 # Hans de Graaff <graaff@gentoo.org> (2020-05023)
 # Masked for removal in 30 days.
