@@ -38,3 +38,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-5.19.2-use-PlasmaExtras.PlaceholderMessage.patch" # KDE-Bug #422684
+)
