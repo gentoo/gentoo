@@ -3,19 +3,27 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-
-inherit flag-o-matic prefix python-any-r1 systemd
+inherit flag-o-matic prefix systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
-SRC_URI="https://rsync.samba.org/ftp/rsync/src/${P}.tar.gz"
-[[ "${PV}" = *_pre* ]] && SRC_URI="https://rsync.samba.org/ftp/rsync/src-previews/${P/_/}.tar.gz"
+if [[ "${PV}" == *9999 ]] ; then
+	PYTHON_COMPAT=( python3_{6,7,8} )
+	inherit autotools git-r3 python-any-r1
+	EGIT_REPO_URI="https://github.com/WayneD/rsync.git"
+else
+	if [[ "${PV}" == *_pre* ]] ; then
+		SRC_DIR="src-previews"
+	else
+		SRC_DIR="src"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	fi
+	SRC_URI="https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz"
+	S="${WORKDIR}/${P/_/}"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-[[ ${PV} = *_pre* ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE_CPU_FLAGS_X86=" sse2"
 IUSE="acl examples iconv ipv6 libressl lz4 ssl static stunnel system-zlib xattr xxhash zstd"
 IUSE+=" ${IUSE_CPU_FLAGS_X86// / cpu_flags_x86_}"
@@ -36,20 +44,25 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
-BDEPEND="${PYTHON_DEPS}
-	$(python_gen_any_dep '
-		dev-python/commonmark[${PYTHON_USEDEP}]
-	')"
+if [[ "${PV}" == *9999 ]] ; then
+	BDEPEND="${PYTHON_DEPS}
+		$(python_gen_any_dep '
+			dev-python/commonmark[${PYTHON_USEDEP}]
+		')"
+fi
 
-S="${WORKDIR}/${P/_/}"
-
+# Only required for live ebuild
 python_check_deps() {
 	has_version "dev-python/commonmark[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
 	default
-	eapply -Z "${FILESDIR}/${PN}-3.2.0-simd_check.patch"
+	if [[ "${PV}" == *9999 ]] ; then
+		eaclocal -I m4
+		eautoconf -o configure.sh
+		eautoheader && touch config.h.in
+	fi
 }
 
 src_configure() {
@@ -76,7 +89,7 @@ src_configure() {
 	fi
 
 	econf "${myeconfargs[@]}"
-	touch proto.h-tstamp #421625
+	[[ "${PV}" == *9999 ]] || touch proto.h-tstamp #421625
 }
 
 src_install() {
@@ -98,7 +111,6 @@ src_install() {
 
 	# Install stunnel helpers
 	if use stunnel ; then
-		emake DESTDIR="${D}" install-ssl-client
 		emake DESTDIR="${D}" install-ssl-daemon
 	fi
 

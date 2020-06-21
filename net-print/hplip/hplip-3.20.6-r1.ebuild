@@ -194,12 +194,12 @@ src_configure() {
 		else
 			minimal_build="${minimal_build} --disable-hpcups-only-build"
 		fi
-		minimal_build="--disable-fax-build"
+		minimal_build="${minimal_build} --disable-fax-build"
 	else
 		if use fax ; then
-			minimal_build="--enable-fax-build"
+			minimal_build="${minimal_build} --enable-fax-build"
 		else
-			minimal_build="--disable-fax-build"
+			minimal_build="${minimal_build} --disable-fax-build"
 		fi
 	fi
 
