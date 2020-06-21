@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Inference of RNA alignments"
 HOMEPAGE="http://infernal.janelia.org/"
@@ -9,21 +11,20 @@ SRC_URI="ftp://selab.janelia.org/pub/software/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="mpi"
 KEYWORDS="amd64 x86"
+IUSE="mpi"
 
 RDEPEND="mpi? ( virtual/mpi )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-parallel-build.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
 	"${FILESDIR}"/${P}-overflows.patch
 	"${FILESDIR}"/${P}-perl-5.16-2.patch
-	"${FILESDIR}"/${P}-ldflags.patch
-	"${FILESDIR}"/${P}-respect-DESTDIR.patch
 )
 
 src_configure() {
+	tc-export AR
 	econf $(use_enable mpi)
 }
 
