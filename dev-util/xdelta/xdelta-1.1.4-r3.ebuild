@@ -12,12 +12,11 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86"
-IUSE=""
 
 RDEPEND=">=dev-libs/glib-2
 	>=sys-libs/zlib-1.1.4:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	eapply_user
@@ -30,5 +29,12 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+	econf --disable-static
+}
+
+src_install() {
 	default
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
