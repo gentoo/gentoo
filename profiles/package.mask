@@ -33,10 +33,6 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-20)
-# b0rked PAM, bug #728922
-=x11-misc/sddm-0.18.1-r2
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-20)
 # Stuck on Python 2, depends on deprecated dev-python/pygobject:2
 media-libs/pymemphis
 
