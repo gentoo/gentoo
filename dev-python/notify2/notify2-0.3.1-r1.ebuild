@@ -18,6 +18,7 @@ KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="examples"
 
 RDEPEND="dev-python/dbus-python[${PYTHON_USEDEP}]"
+BDEPEND="test? ( sys-apps/dbus[X] )"
 
 python_test() {
 	virtx ${EPYTHON} test_notify2.py
