@@ -21,6 +21,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PV}-respect-flags.patch
+	epatch "${FILESDIR}"/${P}-fno-common.patch
 }
 
 src_compile() {
