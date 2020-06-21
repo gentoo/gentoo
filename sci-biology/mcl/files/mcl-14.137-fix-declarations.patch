@@ -5,8 +5,34 @@ Fix QA issues related to implicit declarations.
 * clmadjust.c:184:10: warning: implicit declaration of function ‘mcxFree’ [-Wimplicit-function-declaration]
 * mcxi.c:42:16: warning: implicit declaration of function ‘isatty’ [-Wimplicit-function-declaration]
 
---- mcl-14-137/src/shcl/clmadjust.c
-+++ mcl-14-137/src/shcl/clmadjust.c
+--- a/src/impala/iface.h
++++ b/src/impala/iface.h
+@@ -16,15 +16,15 @@
+ 
+ /* This file currently provides nothing */
+ 
+-dim nu_meet_can  ;
+-dim nu_meet_sl   ;
+-dim nu_meet_zip  ;
+-dim nu_diff_can  ;
+-dim nu_diff_sl   ;
+-dim nu_diff_zip  ;
+-double nu_magic  ;
++extern dim nu_meet_can  ;
++extern dim nu_meet_sl   ;
++extern dim nu_meet_zip  ;
++extern dim nu_diff_can  ;
++extern dim nu_diff_sl   ;
++extern dim nu_diff_zip  ;
++extern double nu_magic  ;
+ 
+-dim mclx_n_thread_g  ;
++extern dim mclx_n_thread_g  ;
+ 
+ #endif
+ 
+--- a/src/shcl/clmadjust.c
++++ b/src/shcl/clmadjust.c
 @@ -14,6 +14,7 @@
  #include "report.h"
  #include "clmadjust.h"
@@ -15,8 +41,8 @@ Fix QA issues related to implicit declarations.
  #include "util/io.h"
  #include "util/types.h"
  #include "util/err.h"
---- mcl-14-137/src/shmcx/mcxi.c
-+++ mcl-14-137/src/shmcx/mcxi.c
+--- a/src/shmcx/mcxi.c
++++ b/src/shmcx/mcxi.c
 @@ -8,6 +8,7 @@
  */
  

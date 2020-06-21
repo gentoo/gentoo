@@ -19,7 +19,7 @@ IUSE="+blast"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-qa-implicit-declarations.patch
+	"${FILESDIR}"/${P}-fix-declarations.patch
 	"${FILESDIR}"/${P}-fix-autotools.patch
 )
 
