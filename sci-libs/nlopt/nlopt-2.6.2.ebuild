@@ -49,16 +49,21 @@ src_configure() {
 	)
 	if use python; then
 		python_foreach_impl run_in_build_dir cmake_src_configure
-	else
-		cmake_src_configure
+	fi
+	if use static-libs; then
+		mycmakeargs+=(
+			-DBUILD_SHARED_LIBS=OFF
+		)
+		BUILD_DIR="${S}_static-libs" run_in_build_dir cmake_src_configure
 	fi
 }
 
 src_compile() {
 	if use python; then
 		python_foreach_impl run_in_build_dir cmake_src_compile
-	else
-		cmake_src_compile
+	fi
+	if use static-libs; then
+		BUILD_DIR="${S}_static-libs" run_in_build_dir cmake_src_compile
 	fi
 }
 
@@ -74,8 +79,9 @@ src_test() {
 	}
 	if use python; then
 		python_foreach_impl run_in_build_dir do_test
-	else
-		do_test
+	fi
+	if use static-libs; then
+		BUILD_DIR="${S}_static-libs" run_in_build_dir do_test
 	fi
 }
 
@@ -87,8 +93,9 @@ nlopt_install() {
 src_install() {
 	if use python; then
 		python_foreach_impl run_in_build_dir nlopt_install
-	else
-		cmake_src_install
+	fi
+	if use static-libs; then
+		BUILD_DIR="${S}_static-libs" run_in_build_dir dolib.a libnlopt.a
 	fi
 	local r
 	for r in */README; do newdoc ${r} README.$(dirname ${r}); done
