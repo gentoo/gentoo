@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools desktop gnome2-utils
 
 DESCRIPTION="A 2D multiplayer arcade game resembling V-Wing"
-HOMEPAGE="https://freecode.com/projects/luola"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/luola"
 SRC_URI="mirror://gentoo/${P}.tar.gz
 	mirror://gentoo/stdlevels-6.0.tar.gz
 	mirror://gentoo/nostalgia-1.2.tar.gz"
