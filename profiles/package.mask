@@ -65,7 +65,6 @@ dev-python/backports-shutil_which
 dev-python/python-wpactrl
 dev-util/bakefile
 dev-vcs/git-deps
-dev-vcs/git-remote-hg
 games-emulation/openmsx
 games-kids/childsplay
 games-mud/lyntin
