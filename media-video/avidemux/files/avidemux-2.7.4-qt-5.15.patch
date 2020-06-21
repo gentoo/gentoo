@@ -1,0 +1,11 @@
+diff -ur avidemux2-2.7.4.orig/avidemux/qt4/ADM_UIs/src/T_RubberControl.cpp avidemux2-2.7.4/avidemux/qt4/ADM_UIs/src/T_RubberControl.cpp
+--- a/avidemux/qt4/ADM_UIs/src/T_RubberControl.cpp	2019-08-14 19:11:18.000000000 +0200
++++ b/avidemux/qt4/ADM_UIs/src/T_RubberControl.cpp	2020-05-30 20:45:53.304702855 +0200
+@@ -8,6 +8,7 @@
+ ***************************************************************************///
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QRubberBand>
+ #include <QBoxLayout>
+ #include <QSizeGrip>
