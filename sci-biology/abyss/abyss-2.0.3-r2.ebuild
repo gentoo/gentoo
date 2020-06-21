@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/boost:=
 	misc-haskell? (
 		dev-libs/gmp:0=
-		virtual/libffi:0=
+		dev-libs/libffi:0=
 	)
 	mpi? ( sys-cluster/openmpi )"
 DEPEND="${RDEPEND}
