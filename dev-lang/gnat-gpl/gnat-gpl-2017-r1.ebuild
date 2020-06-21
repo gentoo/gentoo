@@ -126,6 +126,8 @@ src_prepare() {
 
 	toolchain_src_prepare
 	eapply "${FILESDIR}"/${P}-libgomp-Werror.patch
+	eapply "${FILESDIR}"/${P}-libatomic-Werror.patch
+	eapply "${FILESDIR}"/${P}-libitm-Werror.patch
 }
 
 src_configure() {
