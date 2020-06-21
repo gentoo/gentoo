@@ -50,13 +50,13 @@ src_install() {
 
 pkg_postinst() {
 	elog
-	elog "Shell specific configurations can be found in ${ROOT}usr/share/grc"
+	elog "Shell specific configurations can be found in ${ROOT}/usr/share/grc"
 	elog "Be sure to symlink one to use grc globally:"
 	elog
-	elog "    ln -s ${ROOT}usr/share/grc.SHELL ${ROOT}etc/profile.d/grc.sh"
+	elog "    ln -s ${ROOT}/usr/share/grc.SHELL ${ROOT}/etc/profile.d/grc.sh"
 	elog
 	elog "Replace 'SHELL' in the above command with one of: bashrc, fish, zsh."
-	elog "Afterwards, use '. ${ROOT}etc/profile' to activate grc in existing"
+	elog "Afterwards, use '. ${ROOT}/etc/profile' to activate grc in existing"
 	elog "shell sessions."
 	elog
 }
