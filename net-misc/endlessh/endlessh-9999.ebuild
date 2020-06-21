@@ -46,8 +46,8 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}"/endlessh.initd-r2 endlessh
-	newconfd "${FILESDIR}"/endlessh.confd-r2 endlessh
+	newinitd "${FILESDIR}"/endlessh.initd endlessh
+	newconfd "${FILESDIR}"/endlessh.confd endlessh
 
 	systemd_dounit util/endlessh.service
 
