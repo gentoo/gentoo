@@ -26,6 +26,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
+		dev-python/pytest-aiohttp[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		dev-python/pytest-localserver[${PYTHON_USEDEP}]
