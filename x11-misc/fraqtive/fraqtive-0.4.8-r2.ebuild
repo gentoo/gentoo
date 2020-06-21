@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Open source, multi-platform generator of the Mandelbrot family fractals"
@@ -25,7 +26,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-qt-includes.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt-includes.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
+)
 
 src_configure() {
 	tc-export PKG_CONFIG
