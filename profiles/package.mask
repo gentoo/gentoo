@@ -47,6 +47,7 @@ dev-tex/feynmf
 # Removal in 14 days
 app-crypt/openvpn-blacklist
 app-forensics/volatility
+<=dev-libs/distorm64-3.4.2
 app-misc/yagtd
 app-text/pylize
 app-vim/easytags
