@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit eutils vim-plugin distutils-r1
+inherit vim-plugin distutils-r1
 
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
@@ -14,9 +14,11 @@ HOMEPAGE="http://pyclewn.sourceforge.net/"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
+SLOT="0"
+
 CDEPEND="|| (
-	>=app-editors/vim-7.3
-	>=app-editors/gvim-7.3[netbeans]
+	app-editors/vim
+	app-editors/gvim[netbeans]
 )"
 
 DEPEND="
@@ -26,15 +28,19 @@ DEPEND="
 RDEPEND="
 	${DEPEND}"
 
-SLOT="0"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-#Completely broken (runs vim), disable for now
-#python_test() {
-#	esetup.py test
-#}
+src_prepare() {
+	default
+
+	# async in a now a reserved keyword.
+	sed -e 's#async#_async#g;' \
+		-i lib/clewn/gdb.py || die "can't patch gdb.py"
+}
 
 python_install_all() {
 	distutils-r1_python_install_all
+	python_optimize
 
 	vimball -x -C "${ED}"/usr/share/vim/vimfiles lib/clewn/runtime/${P}.vmb || die "Extracting vimball failed"
 }
