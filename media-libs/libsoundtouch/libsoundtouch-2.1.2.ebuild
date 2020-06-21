@@ -17,7 +17,7 @@ SLOT="0/1"
 KEYWORDS="amd64 ~arm hppa ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="cpu_flags_x86_sse openmp static-libs"
 
-BDEPEND=">=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 

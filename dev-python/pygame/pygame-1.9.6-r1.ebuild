@@ -4,16 +4,17 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit flag-o-matic distutils-r1 virtualx
+inherit flag-o-matic distutils-r1
 
 DESCRIPTION="Python bindings for SDL multimedia library"
-HOMEPAGE="http://www.pygame.org/"
+HOMEPAGE="https://www.pygame.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
-IUSE="doc examples midi opengl X"
+IUSE="doc examples midi opengl test X"
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=media-libs/sdl-image-1.2.2[png,jpeg]
@@ -24,9 +25,18 @@ DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	X? ( >=media-libs/libsdl-1.2.5[opengl?,video,X] )
 	!X? ( >=media-libs/libsdl-1.2.5 )"
 RDEPEND="${DEPEND}"
+# util-linux provides script
+BDEPEND="
+	test? ( sys-apps/util-linux )"
 
-# various module import and data path issues
-RESTRICT=test
+src_prepare() {
+	# segfaults on Xvfb
+	rm test/scrap_test.py || die
+	# backport from git master (clock() isn't used)
+	sed -i -e '/from time import clock/d' test/math_test.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_configure() {
 	PORTMIDI_INC_PORTTIME=1 LOCALBASE="${EPREFIX}/usr" \
@@ -53,7 +63,11 @@ python_compile() {
 }
 
 python_test() {
-	PYTHONPATH="${BUILD_DIR}/lib" virtx "${EPYTHON}" -m pygame.tests
+	local -x PYTHONPATH=
+	local -x SDL_VIDEODRIVER=dummy
+	local -x SDL_AUDIODRIVER=disk
+	distutils_install_for_testing
+	script -eqc "${EPYTHON} -m pygame.tests" || die
 }
 
 python_install() {

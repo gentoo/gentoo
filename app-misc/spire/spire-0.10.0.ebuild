@@ -493,9 +493,15 @@ COMMON_DEPEND="acct-group/spire
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
+RESTRICT+=" test"
+
 src_compile() {
 	go build -o spire-agent ./cmd/spire-agent || die
 	go build -o spire-server ./cmd/spire-server || die
+}
+
+src_test() {
+	go test ./... || die "tests failed"
 }
 
 src_install() {

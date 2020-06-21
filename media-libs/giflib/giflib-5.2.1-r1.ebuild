@@ -35,6 +35,7 @@ multilib_src_compile() {
 	fi
 
 	emake \
+		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} -std=gnu99 -fPIC -Wno-format-truncation" \
 		LDFLAGS="${LDFLAGS}" \

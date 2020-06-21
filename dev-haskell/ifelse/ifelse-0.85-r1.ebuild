@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ MY_PN="IfElse"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Anaphoric and miscellaneous useful control-flow"
-HOMEPAGE="http://hackage.haskell.org/package/IfElse"
+HOMEPAGE="https://hackage.haskell.org/package/IfElse"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

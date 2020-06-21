@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index 85683f9b..986d4c8d 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -582,8 +582,6 @@ EXTRA_DIST += dist/tpm-udev.rules
+ 
+ install-data-hook:
+ 	-mv $(DESTDIR)$(udevrulesdir)/tpm-udev.rules $(DESTDIR)$(udevrulesdir)/$(udevrulesprefix)tpm-udev.rules
+-	(systemd-sysusers && systemd-tmpfiles --create) || \
+-	($(call make_tss_user_and_group) && $(call make_fapi_dirs) && ($call set_fapi_permissions)) || true
+ 
+ uninstall-local:
+ 	-rm $(DESTDIR)$(udevrulesdir)/$(udevrulesprefix)tpm-udev.rules

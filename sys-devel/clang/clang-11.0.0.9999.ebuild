@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils llvm llvm.org multilib-minimal multiprocessing \
+PYTHON_COMPAT=( python3_{6..9} )
+inherit cmake llvm llvm.org multilib-minimal multiprocessing \
 	pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
@@ -16,8 +16,6 @@ LLVM_TEST_COMPONENTS=(
 	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
 llvm.org_set_globals
-# We need extra level of indirection for CLANG_RESOURCE_DIR
-S=${WORKDIR}/x/y/clang
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC VE )
@@ -46,7 +44,7 @@ RDEPEND="
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( dev-python/sphinx )
+	dev-python/sphinx
 	xml? ( virtual/pkgconfig )
 	${PYTHON_DEPS}"
 RDEPEND="${RDEPEND}
@@ -77,12 +75,17 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
-src_unpack() {
-	# create extra parent dir for CLANG_RESOURCE_DIR
+src_prepare() {
+	# create extra parent dir for relative CLANG_RESOURCE_DIR access
 	mkdir -p x/y || die
-	cd x/y || die
-	llvm.org_src_unpack
-	mv clang-tools-extra clang/tools/extra || die
+	BUILD_DIR=${WORKDIR}/x/y/clang
+
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake_src_prepare
+
+	mv ../clang-tools-extra tools/extra || die
 }
 
 check_distribution_components() {
@@ -109,6 +112,10 @@ check_distribution_components() {
 						;;
 					# headers for clang-tidy static library
 					clang-tidy-headers)
+						continue
+						;;
+					# conditional to USE=doc
+					docs-clang-html|docs-clang-tools-html)
 						continue
 						;;
 				esac
@@ -189,13 +196,15 @@ get_distribution_components() {
 			find-all-symbols
 			modularize
 			pp-trace
+
+			# manpages
+			docs-clang-man
+			docs-clang-tools-man
 		)
 
 		use doc && out+=(
 			docs-clang-html
-			docs-clang-man
 			docs-clang-tools-html
-			docs-clang-tools-man
 		)
 
 		use static-analyzer && out+=(
@@ -244,7 +253,7 @@ multilib_src_configure() {
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 	)
 	use test && mycmakeargs+=(
-		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/x/y/llvm"
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
@@ -252,10 +261,8 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			# normally copied from LLVM_INCLUDE_DOCS but the latter
 			# is lacking value in stand-alone builds
-			-DCLANG_INCLUDE_DOCS=$(usex doc)
-			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=$(usex doc)
-		)
-		use doc && mycmakeargs+=(
+			-DCLANG_INCLUDE_DOCS=ON
+			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=ON
 			-DLLVM_BUILD_DOCS=ON
 			-DLLVM_ENABLE_SPHINX=ON
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
@@ -285,13 +292,13 @@ multilib_src_configure() {
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	multilib_is_native_abi && check_distribution_components
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	# provide a symlink for tests
 	if [[ ! -L ${WORKDIR}/lib/clang ]]; then
@@ -303,9 +310,9 @@ multilib_src_compile() {
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-clang
+	cmake_build check-clang
 	multilib_is_native_abi &&
-		cmake-utils_src_make check-clang-tools check-clangd
+		cmake_build check-clang-tools check-clangd
 }
 
 src_install() {
@@ -361,7 +368,7 @@ src_install() {
 }
 
 multilib_src_install() {
-	DESTDIR=${D} cmake-utils_src_make install-distribution
+	DESTDIR=${D} cmake_build install-distribution
 
 	# move headers to /usr/include for wrapping & ABI mismatch checks
 	# (also drop the version suffix from runtime headers)

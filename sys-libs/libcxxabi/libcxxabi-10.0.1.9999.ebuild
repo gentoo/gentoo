@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+CMAKE_ECLASS=cmake
+PYTHON_COMPAT=( python3_{6..9} )
 inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
@@ -44,6 +45,13 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake_src_prepare
+}
+
 multilib_src_configure() {
 	# link against compiler-rt instead of libgcc if we are using clang with libunwind
 	local want_compiler_rt=OFF
@@ -80,7 +88,7 @@ multilib_src_configure() {
 			-DLLVM_LIT_ARGS="-vv;-j;${jobs};--param=cxx_under_test=${clang_path}"
 		)
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 build_libcxx() {
@@ -100,8 +108,8 @@ build_libcxx() {
 		-DLIBCXX_INCLUDE_TESTS=OFF
 	)
 
-	cmake-utils_src_configure
-	cmake-utils_src_compile
+	cmake_src_configure
+	cmake_src_compile
 }
 
 multilib_src_test() {
@@ -110,7 +118,7 @@ multilib_src_test() {
 	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-libcxxabi
+	cmake_build check-libcxxabi
 }
 
 multilib_src_install_all() {

@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="A high-speed compression/decompression library by Google"
@@ -33,7 +35,7 @@ src_prepare() {
 	# it off
 	sed -i -e '/run_microbenchmarks/s:true:false:' snappy-test.cc || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -52,7 +54,7 @@ multilib_src_configure() {
 		-DHAVE_LIBZ=NO
 		-DHAVE_LIBLZO2=NO
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {

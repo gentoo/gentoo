@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/727530
+https://github.com/eteran/edb-debugger/pull/766
+
+Fix build failure on qt-5.15. Typical build error is:
+
+src/widgets/QDisassemblyView.cpp:1503:17:
+  error: aggregate ‘QPainterPath path’ has incomplete type and cannot be defined
+ 1503 |    QPainterPath path;
+      |                 ^~~~
+
+--- a/src/widgets/QDisassemblyView.h
++++ b/src/widgets/QDisassemblyView.h
+@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include <QAbstractScrollArea>
+ #include <QAbstractSlider>
+ #include <QCache>
++#include <QPainterPath>
+ #include <QPixmap>
+ #include <QSvgRenderer>
+ 

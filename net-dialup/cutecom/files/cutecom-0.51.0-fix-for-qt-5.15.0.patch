@@ -1,0 +1,24 @@
+From 70d0c497acf8f298374052b2956bcf142ed5f6ca Mon Sep 17 00:00:00 2001
+From: Meinhard R <cyc1ingsir@gmail.com>
+Date: Thu, 11 Jun 2020 18:33:10 +0000
+Subject: [PATCH] Fix-build-with-Qt-5.15 (hopefully)
+
+---
+ ctrlcharacterspopup.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ctrlcharacterspopup.cpp b/ctrlcharacterspopup.cpp
+index 632ae32..f37a8d4 100644
+--- a/ctrlcharacterspopup.cpp
++++ b/ctrlcharacterspopup.cpp
+@@ -23,6 +23,7 @@
+ #include <QApplication>
+ #include <QKeyEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPoint>
+ #include <QPushButton>
+ #include <QSignalMapper>
+-- 
+GitLab
+

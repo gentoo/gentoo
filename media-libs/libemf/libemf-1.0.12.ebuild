@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/libemf/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 -arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 -arm ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs"
 
 src_configure() {

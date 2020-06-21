@@ -5,12 +5,19 @@
     <email>fonts@gentoo.org</email>
     <name>Fonts</name>
   </maintainer>
+  <maintainer type="person">
+    <email>slyfox@gentoo.org</email>
+    <name>Sergei Trofimovich</name>
+  </maintainer>
   <use>
     <flag name="a-like-o">
       Changes view of letter 'a' - a looks like o (see homepage)
     </flag>
     <flag name="distinct-l">
       ll2 variant with more distinctive l (lowercase L)
+    </flag>
+    <flag name="otf">
+      Install Open Type Font (OTF) (required for HarfBuzz backend)
     </flag>
     <flag name="pcf">
       Install Portable Compiled Font (PCF) (required for X11)

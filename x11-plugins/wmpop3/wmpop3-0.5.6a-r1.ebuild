@@ -17,7 +17,9 @@ DEPEND="x11-wm/windowmaker
 	x11-libs/libXpm"
 RDEPEND="${DEPEND}"
 
-PATCHES=( ${FILESDIR}/${P}-list.patch )
+PATCHES=( "${FILESDIR}"/${P}-list.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	)
 
 src_prepare() {
 	sed -e "s|cc |$(tc-getCC) |" \

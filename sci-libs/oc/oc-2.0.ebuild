@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Network Data Access Protocol client C library"
-HOMEPAGE="http://opendap.org/"
-SRC_URI="http://opendap.org/pub/OC/source/${P}.tar.gz"
+HOMEPAGE="https://opendap.org/"
+SRC_URI="https://opendap.org/pub/OC/source/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

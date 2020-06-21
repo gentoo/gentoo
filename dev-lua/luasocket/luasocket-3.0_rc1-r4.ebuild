@@ -16,7 +16,7 @@ IUSE="debug"
 
 RDEPEND=">=dev-lang/lua-5.1.5-r2[deprecated,${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 S=${WORKDIR}/${PN}-${PV/_/-}
 

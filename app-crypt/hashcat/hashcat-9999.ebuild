@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils pax-utils multilib
 
@@ -12,17 +12,20 @@ SLOT="0"
 if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/hashcat/hashcat.git"
-	KEYWORDS=""
 else
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/hashcat/hashcat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 IUSE="brain video_cards_nvidia"
-DEPEND="virtual/opencl
+DEPEND="
 	app-arch/lzma
 	brain? ( dev-libs/xxhash )
-	video_cards_nvidia? ( >x11-drivers/nvidia-drivers-367.0 )"
+	video_cards_nvidia? ( >x11-drivers/nvidia-drivers-440.64
+						|| ( dev-util/nvidia-cuda-toolkit
+							virtual/opencl )
+						)
+	!video_cards_nvidia? ( virtual/opencl )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -39,7 +42,7 @@ src_prepare() {
 	export PREFIX=/usr
 	export LIBRARY_FOLDER="/usr/$(get_libdir)"
 	export DOCUMENT_FOLDER="/usr/share/doc/${P}"
-	eapply_user
+	default
 }
 
 src_compile() {

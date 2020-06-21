@@ -12,7 +12,7 @@
 			<name>Edward Easton</name>
 		</maintainer>
 		<remote-id type="pypi">pytest-fixture-config</remote-id>
-		<remote-id type="github">manahl/pytest-plugins</remote-id>
+		<remote-id type="github">man-group/pytest-plugins</remote-id>
 	</upstream>
 	<longdescription>
 		Simple configuration objects for Py.test fixtures.  Allows you to skip

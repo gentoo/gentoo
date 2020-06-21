@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils git-r3 xdg-utils
+inherit cmake git-r3 xdg-utils
 
 DESCRIPTION="PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator"
 HOMEPAGE="https://github.com/iCatButler/pcsxr"
@@ -67,11 +67,11 @@ src_configure() {
 		-DSND_BACKEND=${sound_backend}
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	mv "${ED}"/usr/share/doc/pcsxr/* "${ED}/usr/share/doc/${PF}/" || die
 	rmdir "${ED}"/usr/share/doc/pcsxr || die
 }

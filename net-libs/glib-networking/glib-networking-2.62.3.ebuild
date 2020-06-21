@@ -12,7 +12,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="+gnome +libproxy +ssl test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
 	>=dev-libs/glib-2.60.0:2[${MULTILIB_USEDEP}]
@@ -24,7 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=sys-devel/gettext-0.19.8
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	test? ( sys-apps/dbus )
 "
 

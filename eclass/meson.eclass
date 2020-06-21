@@ -178,6 +178,7 @@ _meson_create_cross_file() {
 	cpp = $(_meson_env_array "$(tc-getCXX)")
 	fortran = $(_meson_env_array "$(tc-getFC)")
 	llvm-config = '$(tc-getPROG LLVM_CONFIG llvm-config)'
+	nm = $(_meson_env_array "$(tc-getNM)")
 	objc = $(_meson_env_array "$(tc-getPROG OBJC cc)")
 	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
@@ -228,6 +229,7 @@ _meson_create_native_file() {
 	cpp = $(_meson_env_array "$(tc-getBUILD_CXX)")
 	fortran = $(_meson_env_array "$(tc-getBUILD_PROG FC gfortran)")
 	llvm-config = '$(tc-getBUILD_PROG LLVM_CONFIG llvm-config)'
+	nm = $(_meson_env_array "$(tc-getBUILD_NM)")
 	objc = $(_meson_env_array "$(tc-getBUILD_PROG OBJC cc)")
 	objcpp = $(_meson_env_array "$(tc-getBUILD_PROG OBJCXX c++)")
 	pkgconfig = '$(tc-getBUILD_PKG_CONFIG)'

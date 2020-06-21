@@ -1,0 +1,39 @@
+From a86245df4f3ff276a393f799d737d28a5cb0a5a8 Mon Sep 17 00:00:00 2001
+From: Reiner Herrmann <reiner@reiner-h.de>
+Date: Thu, 23 Apr 2020 00:46:58 +0200
+Subject: [PATCH] Fix build with GCC 10
+
+mark variable declaration in sweep.h as extern, as otherwise
+linker would complain about multiple definitions.
+keep actual declaration in a C file.
+---
+ main.c     | 2 ++
+ sweep.h.in | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/main.c b/main.c
+index 6411dcb..8d5cbe7 100644
+--- a/main.c
++++ b/main.c
+@@ -10,6 +10,8 @@
+ 
+ #include "sweep.h"
+ 
++DrawChars CharSet;
++
+ int main(int argc, char** argv)
+ {
+ 	GameStats* Game;
+diff --git a/sweep.h.in b/sweep.h.in
+index f30c133..7f398de 100644
+--- a/sweep.h.in
++++ b/sweep.h.in
+@@ -246,7 +246,7 @@ struct FileBuf
+ FILE* DebugLog;
+ #endif /* DEBUG_LOG */
+ 
+-DrawChars CharSet;
++extern DrawChars CharSet;
+ 
+ /* These are the functions defined in files.c */
+ int SourceHomeFile(GameStats* Game);

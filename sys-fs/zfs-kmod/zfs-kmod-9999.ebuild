@@ -74,7 +74,7 @@ pkg_setup() {
 		kv_minor_max="${zcompat%%.*}"
 		kernel_is -le "${kv_major_max}" "${kv_minor_max}" || die \
 			"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
-		
+
 		# 0.8.x requires at least 2.6.32
 		kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 	else

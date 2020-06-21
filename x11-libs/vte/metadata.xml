@@ -5,7 +5,4 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
-	<use>
-		<flag name="glade">Provide integration with <pkg>dev-util/glade</pkg>.</flag>
-	</use>
 </pkgmetadata>

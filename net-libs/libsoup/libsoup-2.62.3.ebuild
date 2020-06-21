@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.20
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	test? ( >=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}] )
 	vala? ( $(vala_depend) )
 "

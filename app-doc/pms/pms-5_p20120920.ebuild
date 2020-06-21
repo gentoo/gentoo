@@ -27,6 +27,7 @@ BDEPEND="dev-tex/leaflet
 RDEPEND="!app-doc/pms-bin"
 
 S="${WORKDIR}/${MY_P}"
+PATCHES=("${FILESDIR}/${PN}-5-Makefile.patch")
 
 src_compile() {
 	# just in case; we shouldn't be generating any fonts

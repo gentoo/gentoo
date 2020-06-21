@@ -35,7 +35,7 @@ BDEPEND="
 		dev-util/gtk-doc
 	)
 	vala? ( $(vala_depend) )
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 RESTRICT="!test? ( test )"

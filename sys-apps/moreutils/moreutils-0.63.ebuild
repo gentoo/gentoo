@@ -29,7 +29,7 @@ DEPEND="
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-respect-env.patch
+	"${FILESDIR}"/${PN}-0.63-respect-env.patch
 )
 
 src_prepare() {

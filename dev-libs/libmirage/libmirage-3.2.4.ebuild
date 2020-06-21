@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="CD and DVD image access library"
 HOMEPAGE="https://cdemu.sourceforge.io"
@@ -38,7 +38,7 @@ src_configure() {
 		-DINTROSPECTION_ENABLED="$(usex introspection)"
 		-DPOST_INSTALL_HOOKS=OFF # avoid sandbox violation, #487304
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

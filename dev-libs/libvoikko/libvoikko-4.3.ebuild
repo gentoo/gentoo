@@ -43,4 +43,6 @@ src_install() {
 	default
 
 	python_foreach_impl python_domodule python/libvoikko.py
+
+	find "${D}" -name '*.la' -delete -o -name '*.a' -delete || die
 }

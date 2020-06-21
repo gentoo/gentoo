@@ -20,7 +20,7 @@ RDEPEND="
 	xml? ( dev-libs/libxml2:2 )
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 DOCS=( AUTHORS BUGS ChangeLog FAQ HACKING NEWS README THANKS TODO )

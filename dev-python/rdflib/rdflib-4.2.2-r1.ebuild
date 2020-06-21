@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="sqlite?,threads(+)"
 
 # The usual required for tests
@@ -19,7 +19,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc berkdb examples mysql redland sqlite test"
+IUSE="doc berkdb examples redland sqlite test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -27,11 +27,6 @@ RDEPEND="
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	berkdb? ( dev-python/bsddb3[${PYTHON_USEDEP}] )
-	mysql? (
-		$(python_gen_cond_dep '
-			dev-python/mysql-python[${PYTHON_USEDEP}]
-		' -2)
-	)
 	redland? ( dev-libs/redland-bindings[python,${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
@@ -83,14 +78,9 @@ python_compile_all() {
 }
 
 python_test() {
-	# the default; nose with: --where=./ does not work for python3
-	if python_is_python3; then
-		pushd "${BUILD_DIR}/src/" >/dev/null || die
-		"${EPYTHON}" ./run_tests.py || die "Tests failed under ${EPYTHON}"
-		popd >/dev/null || die
-	else
-		"${EPYTHON}" ./run_tests.py || die "Tests failed under ${EPYTHON}"
-	fi
+	pushd "${BUILD_DIR}/src/" >/dev/null || die
+	"${EPYTHON}" ./run_tests.py -v || die "Tests failed under ${EPYTHON}"
+	popd >/dev/null || die
 }
 
 python_install_all() {

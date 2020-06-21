@@ -12,7 +12,7 @@ if [[ "${PV}" = "9999" ]]; then
 else
 	MAIN_VER=$(ver_cut 1-2)
 	SRC_URI="http://lilypond.org/download/sources/v${MAIN_VER}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~hppa x86"
 fi
 
 DESCRIPTION="GNU Music Typesetter"
@@ -41,7 +41,7 @@ RDEPEND=">=app-text/ghostscript-gpl-8.15
 	media-libs/freetype:2
 	>=x11-libs/pango-1.12.3
 	emacs? ( >=app-editors/emacs-23.1:* )
-	guile2? ( >=dev-scheme/guile-2:12 )
+	guile2? ( >=dev-scheme/guile-2.2:12 )
 	!guile2? (
 		>=dev-scheme/guile-1.8.2:12=[deprecated,regex]
 		<dev-scheme/guile-2.0:12
@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 	app-text/t1utils
 	dev-lang/perl
 	dev-libs/kpathsea
-	media-gfx/fontforge[png]
+	media-gfx/fontforge[png,python]
 	sys-devel/gettext"
 
 # Correct output data for tests isn't bundled with releases

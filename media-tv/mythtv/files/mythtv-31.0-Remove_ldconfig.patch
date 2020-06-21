@@ -1,0 +1,13 @@
+diff --git a/mythtv/programs/mythfrontend/mythfrontend.pro b/mythtv/programs/mythfrontend/mythfrontend.pro
+index 82c9ea1bb6..cd6894dcbc 100644
+--- a/programs/mythfrontend/mythfrontend.pro
++++ b/programs/mythfrontend/mythfrontend.pro
+@@ -21,7 +21,6 @@ INSTALLS = target
+ 
+ setting.path = $${PREFIX}/share/mythtv/
+ setting.files += MFEXML_scpd.xml
+-setting.extra = -ldconfig
+ 
+ INSTALLS += setting
+ 
+

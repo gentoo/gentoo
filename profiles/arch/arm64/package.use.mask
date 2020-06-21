@@ -1,6 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-06-19)
+# Requires dev-util/dwarves.
+sys-kernel/gentoo-kernel debug
+sys-kernel/vanilla-kernel debug
+
+# Sam James <sam@cmpct.info> (2020-06-11)
+# PGO works on arm64
+>=www-client/firefox-68.9.0 -pgo
+
 # Michał Górny <mgorny@gentoo.org> (2020-06-02)
 # Avoid unkeyworded deps, we really need a minimal install
 # for imagemagick.
@@ -194,7 +203,6 @@ net-fs/samba addc addns ads cluster python test
 # Some more unkeyworded dependencies.
 app-text/tesseract scrollview
 dev-cpp/eigen test
-kde-frameworks/frameworkintegration appstream
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
 mate-extra/caja-extensions gajim

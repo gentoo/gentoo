@@ -53,9 +53,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/${P}"-setupbase.py.patch )
 
-# Opens a qtconsole
-restrict="doc"
-
 python_prepare_all() {
 	sed \
 		-e "/import setup/s:$:\nimport setuptools:g" \

@@ -1,0 +1,30 @@
+From dc909119b3433a84290f0095c0f43a23b98b3748 Mon Sep 17 00:00:00 2001
+From: Kevin McCarthy <kevin@8t8.us>
+Date: Sat, 20 Jun 2020 06:35:35 -0700
+Subject: [PATCH] Don't check IMAP PREAUTH encryption if $tunnel is in use.
+
+$tunnel is used to create an external encrypted connection.  The
+default of $ssl_starttls is yes, meaning those kinds of connections
+will be broken by the CVE-2020-14093 fix.
+---
+ imap/imap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/imap/imap.c b/imap/imap.c
+index 3ca10df4..78d75b07 100644
+--- a/imap/imap.c
++++ b/imap/imap.c
+@@ -532,8 +532,8 @@ int imap_open_connection (IMAP_DATA* idata)
+   {
+ #if defined(USE_SSL)
+     /* An unencrypted PREAUTH response is most likely a MITM attack.
+-     * Require a confirmation. */
+-    if (!idata->conn->ssf)
++     * Require a confirmation unless using $tunnel. */
++    if (!idata->conn->ssf && !Tunnel)
+     {
+       if (option(OPTSSLFORCETLS) ||
+           (query_quadoption (OPT_SSLSTARTTLS,
+-- 
+GitLab
+

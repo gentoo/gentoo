@@ -60,9 +60,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/${PN}"-5.7.0-no-mathjax.patch )
 
-# Opens a qtconsole
-restrict="doc"
-
 python_prepare_all() {
 	sed \
 		-e "/import setup/s:$:\nimport setuptools:g" \

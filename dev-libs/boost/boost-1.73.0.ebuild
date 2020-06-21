@@ -57,6 +57,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.73-boost-python-cleanup.patch
 	# Boost.MPI's __init__.py doesn't work on Py3
 	"${FILESDIR}"/${PN}-1.73-boost-mpi-python-PEP-328.patch
+	# Remove annoying #pragma message
+	"${FILESDIR}"/${PN}-1.73-property-tree-include.patch
 )
 
 python_bindings_needed() {

@@ -19,7 +19,7 @@ RDEPEND="
 	!<sys-libs/glibc-2.26
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 S=${WORKDIR}/libnss_nis-${PV}

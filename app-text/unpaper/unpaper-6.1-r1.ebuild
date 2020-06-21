@@ -8,7 +8,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="https://www.flameeyes.eu/files/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Post-processor for scanned and photocopied book pages"

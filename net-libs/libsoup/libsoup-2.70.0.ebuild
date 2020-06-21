@@ -17,7 +17,7 @@ IUSE="brotli gssapi gtk-doc +introspection samba ssl test +vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 s390 ~sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.58:2[${MULTILIB_USEDEP}]
@@ -38,7 +38,7 @@ BDEPEND="
 	gtk-doc? ( >=dev-util/gtk-doc-1.20
 		app-text/docbook-xml-dtd:4.1.2 )
 	>=sys-devel/gettext-0.19.8
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
 #	test? (	www-servers/apache[ssl,apache2_modules_auth_digest,apache2_modules_alias,apache2_modules_auth_basic,

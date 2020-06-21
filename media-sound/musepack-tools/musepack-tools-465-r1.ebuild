@@ -27,4 +27,7 @@ RDEPEND="${DEPEND}
 	!media-libs/libmpcdecsv7
 "
 
-PATCHES=( "${FILESDIR}/${P}-gentoo.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gentoo.patch"
+	"${FILESDIR}/${P}-fno-common.patch"
+)

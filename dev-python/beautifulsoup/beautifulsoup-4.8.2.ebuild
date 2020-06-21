@@ -13,6 +13,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree"
 HOMEPAGE="https://www.crummy.com/software/BeautifulSoup/bs4/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="4"
@@ -25,10 +26,8 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-
 distutils_enable_tests nose
-distutils_enable_sphinx doc/source --no-autodoc
+distutils_enable_sphinx doc/source
 
 python_test() {
 	nosetests --verbose -w "${BUILD_DIR}"/lib || die "Tests fail with ${EPYTHON}"

@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	)"
 DEPEND="${COMMON_DEPEND}
 	app-arch/unzip
-	>=virtual/jdk-1.4
+	virtual/jdk:1.8
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	x11-libs/libX11

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Password hashing framework supporting over 20 schemes"
-HOMEPAGE="https://bitbucket.org/ecollins/passlib/wiki/Home/"
+HOMEPAGE="https://foss.heptapod.net/python-libs/passlib/wikis/home"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

@@ -88,7 +88,7 @@ pkg_postinst() {
 }
 
 python_prepare_all() {
-	use dbus || eapply ${FILESDIR}/${PN}-3.0.2-dbus.patch
+	use dbus || eapply "${FILESDIR}/${PN}-3.0.2-dbus.patch"
 
 	hprefixify -w '/os.path/' setup.py
 	hprefixify tmpfiles.d/xpra.conf xpra/server/server_util.py \

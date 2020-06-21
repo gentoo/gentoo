@@ -19,7 +19,7 @@ HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/192"
-IUSE="+10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_altivec numa pic power8 test"
+IUSE="+10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_vsx2 numa pic test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
@@ -73,6 +73,8 @@ x265_variant_src_configure() {
 	mkdir -p "${BUILD_DIR}" || die
 	pushd "${BUILD_DIR}" >/dev/null || die
 
+	einfo "Configuring variant: ${MULTIBUILD_VARIANT} for ABI: ${ABI}"
+
 	local mycmakeargs=( "${myabicmakeargs[@]}" )
 	case "${MULTIBUILD_VARIANT}" in
 		"main12")
@@ -91,7 +93,12 @@ x265_variant_src_configure() {
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
 			# disable altivec for 12bit build #607802#c5
-			[[ ${ABI} = ppc* ]] && mycmakeargs+=( -DENABLE_ALTIVEC=OFF )
+			if [[ ${ABI} = ppc* ]] ; then
+				mycmakeargs+=(
+					-DENABLE_ALTIVEC=OFF
+					-DCPU_POWER8=$(usex cpu_flags_ppc_vsx2 ON OFF)
+				)
+			fi
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -108,7 +115,12 @@ x265_variant_src_configure() {
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
 			# disable altivec for 10bit build #607802#c5
-			[[ ${ABI} = ppc* ]] && mycmakeargs+=( -DENABLE_ALTIVEC=OFF )
+			if [[ ${ABI} = ppc* ]] ; then
+				mycmakeargs+=(
+					-DENABLE_ALTIVEC=OFF
+					-DCPU_POWER8=$(usex cpu_flags_ppc_vsx2 ON OFF)
+				)
+			fi
 			;;
 		"main")
 			if (( "${#MULTIBUILD_VARIANTS[@]}" > 1 )) ; then
@@ -126,9 +138,13 @@ x265_variant_src_configure() {
 					-DLINKED_12BIT=$(usex 12bit)
 				)
 				if [[ ${ABI} = ppc* ]] ; then
-					myabicmakeargs+=(
-						-DCPU_POWER8=$(usex power8 ON OFF)
-						-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_altivec ON OFF)
+					# upstream uses mix of altivec + power8 vectors
+					# it's impossible to enable altivec without CPU_POWER8
+					# and it does not work on ppc32
+					# so we toggle both variables together
+					mycmakeargs+=(
+						-DCPU_POWER8=$(usex cpu_flags_ppc_vsx2 ON OFF)
+						-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_vsx2 ON OFF)
 					)
 				fi
 			fi

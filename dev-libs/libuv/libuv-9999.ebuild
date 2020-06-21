@@ -16,7 +16,7 @@ RESTRICT="test"
 
 BDEPEND="
 	sys-devel/libtool
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 src_prepare() {

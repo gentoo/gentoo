@@ -34,7 +34,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	test? ( media-fonts/cantarell )
 	X? ( x11-base/xorg-proto )
 	!<=sys-devel/autoconf-2.63:2.5

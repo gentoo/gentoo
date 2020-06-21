@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6..9} )
 
 inherit distutils-r1 llvm.org multiprocessing
 
@@ -26,6 +26,11 @@ BDEPEND="
 		sys-devel/llvm )"
 
 # TODO: move the manpage generation here (from sys-devel/llvm)
+
+src_prepare() {
+	cd "${WORKDIR}" || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	local -x LIT_PRESERVES_TMP=1

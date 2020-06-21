@@ -57,7 +57,7 @@ DEPEND="
 	doc? ( app-doc/doxygen )
 	app-doc/xmltoman
 	dev-util/intltool
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 RDEPEND="

@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="debug static-libs"
 
 BDEPEND="
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 DEPEND="
 	~dev-libs/icu-${PV}[${MULTILIB_USEDEP}]

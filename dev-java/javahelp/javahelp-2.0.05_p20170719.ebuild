@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,8 +21,10 @@ CDEPEND="java-virtuals/servlet-api:2.4"
 RDEPEND=">=virtual/jre-1.4
 	${CDEPEND}"
 
-DEPEND=">=virtual/jdk-1.4
+DEPEND="virtual/jdk:1.8
 	${CDEPEND}"
+
+JAVA_PKG_NV_DEPEND="virtual/jdk:1.8"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 

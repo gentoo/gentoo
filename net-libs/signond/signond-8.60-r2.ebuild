@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VER
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~x86"
 IUSE="doc test"
 
 BDEPEND="doc? ( app-doc/doxygen )"
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-buildsystem.patch"
 	"${FILESDIR}/${P}-consistent-paths.patch" # bug 701142
 	"${FILESDIR}/${P}-crashfix.patch"
+	"${FILESDIR}/${P}-unused-dep.patch" # bug 727346
 )
 
 S="${WORKDIR}/${PN}-VERSION_${PV}"

@@ -155,7 +155,13 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	IUSE+=" altivec debug +cxx +nptl" TC_FEATURES+=(nptl)
+	# --enable-altivec was dropped before gcc-4. We don't set it.
+	# We drop USE=altivec for newer gccs only to avoid rebuilds
+	# for most stable users. Once gcc-10 is stable we can drop it.
+	if ! tc_version_is_at_least 10; then
+		IUSE+=" altivec"
+	fi
+	IUSE+=" debug +cxx +nptl" TC_FEATURES+=(nptl)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${HTB_VER} ]] && IUSE+=" boundschecking"
 	[[ -n ${D_VER}   ]] && IUSE+=" d"
@@ -1090,9 +1096,6 @@ toolchain_src_configure() {
 
 	gcc-multilib-configure
 
-	# ppc altivec support
-	in_iuse altivec && confgcc+=( $(use_enable altivec) )
-
 	# gcc has fixed-point arithmetic support in 4.3 for mips targets that can
 	# significantly increase compile time by several hours.  This will allow
 	# users to control this feature in the event they need the support.
@@ -1911,13 +1914,8 @@ toolchain_src_install() {
 	# prune empty dirs left behind
 	find "${ED}" -depth -type d -delete 2>/dev/null
 
-	# Rather install the script, else portage with changing $FILESDIR
-	# between binary and source package borks things ....
 	if ! is_crosscompile && [[ ${PN} != "kgcc64" ]] ; then
-		insinto "${DATAPATH#${EPREFIX}}"
-		newins "$(prefixify_ro "${FILESDIR}"/awk/fixlafiles.awk-no_gcc_la)" fixlafiles.awk || die
 		exeinto "${DATAPATH#${EPREFIX}}"
-		doexe "$(prefixify_ro "${FILESDIR}"/fix_libtool_files.sh)" || die
 		doexe "${FILESDIR}"/c{89,99} || die
 	fi
 
@@ -2222,24 +2220,12 @@ toolchain_pkg_postinst() {
 	fi
 
 	if ! is_crosscompile && [[ ${PN} != "kgcc64" ]] ; then
-		echo
-		ewarn "If you have issues with packages unable to locate libstdc++.la,"
-		ewarn "then try running 'fix_libtool_files.sh' on the old gcc versions."
-		echo
-		ewarn "You might want to review the GCC upgrade guide when moving between"
-		ewarn "major versions (like 4.2 to 4.3):"
-		ewarn "https://wiki.gentoo.org/wiki/Upgrading_GCC"
-		echo
+		# gcc stopped installing .la files fixer in June 2020.
+		# Cleaning can be removed in June 2022.
+		rm -f "${EROOT%/}"/sbin/fix_libtool_files.sh
+		rm -f "${EROOT%/}"/usr/share/gcc-data/fixlafiles.awk
 
-		# Clean up old paths
-		rm -f "${EROOT%/}"/*/rcscripts/awk/fixlafiles.awk "${EROOT%/}"/sbin/fix_libtool_files.sh
-		rmdir "${EROOT%/}"/*/rcscripts{/awk,} 2>/dev/null
-
-		mkdir -p "${EROOT%/}"/usr/{share/gcc-data,sbin,bin}
-		# DATAPATH has EPREFIX already, use ROOT with it
-		cp "${ROOT%/}${DATAPATH}"/fixlafiles.awk "${EROOT%/}"/usr/share/gcc-data/ || die
-		cp "${ROOT%/}${DATAPATH}"/fix_libtool_files.sh "${EROOT%/}"/usr/sbin/ || die
-
+		mkdir -p "${EROOT%/}"/usr/bin
 		# Since these aren't critical files and portage sucks with
 		# handling of binpkgs, don't require these to be found
 		cp "${ROOT%/}${DATAPATH}"/c{89,99} "${EROOT%/}"/usr/bin/ 2>/dev/null
@@ -2268,15 +2254,10 @@ toolchain_pkg_postrm() {
 		return 0
 	fi
 
-	# ROOT isnt handled by the script
-	[[ ${ROOT%/} ]] && return 0
-
-	if [[ ! -e ${LIBPATH}/libstdc++.so ]] ; then
-		einfo "Running 'fix_libtool_files.sh ${GCC_RELEASE_VER}'"
-		fix_libtool_files.sh ${GCC_RELEASE_VER}
-	fi
-
-	return 0
+	# gcc stopped installing .la files fixer in June 2020.
+	# Cleaning can be removed in June 2022.
+	rm -f "${EROOT%/}"/sbin/fix_libtool_files.sh
+	rm -f "${EROOT%/}"/usr/share/gcc-data/fixlafiles.awk
 }
 
 do_gcc_config() {

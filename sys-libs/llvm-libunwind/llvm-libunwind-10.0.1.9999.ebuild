@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+CMAKE_ECLASS=cmake
+PYTHON_COMPAT=( python3_{6..9} )
 inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
@@ -37,6 +38,13 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	# cmake eclasses suck by forcing ${S} here
+	CMAKE_USE_DIR=${S} \
+	S=${WORKDIR} \
+	cmake_src_prepare
+}
+
 multilib_src_configure() {
 	local libdir=$(get_libdir)
 
@@ -63,7 +71,7 @@ multilib_src_configure() {
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 build_libcxxabi() {
@@ -81,8 +89,8 @@ build_libcxxabi() {
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${S}"/include
 	)
 
-	cmake-utils_src_configure
-	cmake-utils_src_compile
+	cmake_src_configure
+	cmake_src_compile
 }
 
 build_libcxx() {
@@ -103,8 +111,8 @@ build_libcxx() {
 		-DLIBCXX_INCLUDE_TESTS=OFF
 	)
 
-	cmake-utils_src_configure
-	cmake-utils_src_compile
+	cmake_src_configure
+	cmake_src_compile
 }
 
 multilib_src_test() {
@@ -115,11 +123,11 @@ multilib_src_test() {
 	mv "${BUILD_DIR}"/libcxx*/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
 	local -x LIT_PRESERVES_TMP=1
-	cmake-utils_src_make check-unwind
+	cmake_build check-unwind
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# install headers like sys-libs/libunwind
 	doheader "${S}"/include/*.h

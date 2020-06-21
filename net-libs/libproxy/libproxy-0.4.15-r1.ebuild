@@ -18,7 +18,7 @@ IUSE="gnome kde mono networkmanager spidermonkey test webkit"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	virtual/pkgconfig:0[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 DEPEND="
 	gnome? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )

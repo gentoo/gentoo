@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Utilities for parsing numbers from strings"
-HOMEPAGE="http://hackage.haskell.org/package/parsec-numbers"
+HOMEPAGE="https://hackage.haskell.org/package/parsec-numbers"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

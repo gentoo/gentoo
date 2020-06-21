@@ -10,7 +10,7 @@
 EAPI="6"
 SLOT="8"
 
-inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils prefix versionator xdg-utils
+inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils prefix toolchain-funcs versionator xdg-utils
 
 ICEDTEA_VER=$(get_version_component_range 1-3)
 ICEDTEA_BRANCH=$(get_version_component_range 1-2)
@@ -195,8 +195,11 @@ src_unpack() {
 }
 
 src_configure() {
-	# GCC10/-fno-common handling
-	append-flags -fcommon
+	# GCC10/-fno-common handling, #723102
+	if [[ $(gcc-major-version) -ge 10 ]]; then
+		append-flags -fcommon
+		append-flags -fno-delete-null-pointer-checks -fno-lifetime-dse
+	fi
 
 	# For bootstrap builds as the sandbox control file might not yet exist.
 	addpredict /proc/self/coredump_filter #nowarn

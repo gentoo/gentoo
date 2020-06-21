@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-06-10)
+# not stable dev-vcs/mercurial because of broken dependencies: bug #727390
+app-portage/layman mercurial
+dev-python/hgdistver test
+dev-python/setuptools_scm test
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-24)
 # dependencies not stable yet
 dev-python/pytest-cov test
