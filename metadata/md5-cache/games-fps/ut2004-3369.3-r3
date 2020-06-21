@@ -5,9 +5,9 @@ EAPI=7
 HOMEPAGE=https://liandri.beyondunreal.com/Unreal_Tournament_2004
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=ut2003
-RDEPEND=!games-server/ut2004-ded games-fps/ut2004-bonuspack-ece games-fps/ut2004-bonuspack-mega >=games-fps/ut2004-data-3186-r5 media-libs/libsdl media-libs/openal sys-libs/glibc ~virtual/libstdc++-3.3 virtual/opengl x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext
+RDEPEND=!games-server/ut2004-ded games-fps/ut2004-bonuspack-ece games-fps/ut2004-bonuspack-mega >=games-fps/ut2004-data-3186-r5 media-libs/libsdl media-libs/openal sys-libs/glibc sys-libs/libstdc++-v3:5 virtual/opengl x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=https://ut2004.ut-files.com/Patches/Linux/ut2004-lnxpatch3369-2.tar.bz2 https://dev.gentoo.org/~chewi/distfiles/ut2004-v3369-3-linux-dedicated.7z
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5
-_md5_=57845ba6eb9b8159b38337e04a9c2ca3
+_md5_=dee9f8eb51339a283a1664b6053a50db
