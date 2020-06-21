@@ -73,7 +73,6 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/future[${PYTHON_MULTI_USEDEP}]
 			dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
 			dev-python/jinja[${PYTHON_MULTI_USEDEP}]
 			dev-python/markupsafe[${PYTHON_MULTI_USEDEP}]
