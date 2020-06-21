@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-21)
+# Multiple runtime crashes, see bug #724672
+media-gfx/inkscape jemalloc
+
 # Sam James <sam@cmpct.info> (2020-16-06)
 # Doc build broken for now
 # Bug #679184
