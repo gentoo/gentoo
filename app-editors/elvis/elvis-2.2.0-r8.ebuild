@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,6 +40,7 @@ PATCHES=(
 )
 
 src_configure() {
+	export CC="$(tc-getCC)"
 	./configure \
 		--libs="$($(tc-getPKG_CONFIG) --libs ncurses)" \
 		--prefix="${EPREFIX}"/usr \
@@ -51,7 +52,8 @@ src_configure() {
 
 	# Some Makefile fixups (must happen after configure)
 	# Use our CFLAGS
-	sed -i -e "s:gcc -O2:$(tc-getCC) ${CFLAGS}:" Makefile || die "sed 1 failed"
+	sed -e "s#^CFLAGS=\(.*\)#CFLAGS=\1 ${CFLAGS}#g;" -i Makefile || \
+		die "sed 1 failed"
 
 	# We'll install the man-pages ourselves
 	sed -i -e '/^	sh instman.sh/d' Makefile || die "sed 2 failed"
