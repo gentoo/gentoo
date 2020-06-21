@@ -17818,7 +17818,7 @@ www-client/luakit 2017.08.10 9999: A fast, light, simple to use micro-browser us
 www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web browser with ssl support
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
-www-client/netsurf 3.8-r2 3.9: a free, open source web browser
+www-client/netsurf 3.10: a free, open source web browser
 www-client/opera 68.0.3618.165 68.0.3618.173: A fast and secure web browser
 www-client/opera-beta 69.0.3686.7 69.0.3686.12 69.0.3686.21 69.0.3686.30: A fast and secure web browser
 www-client/opera-developer 70.0.3693.0 70.0.3701.0 70.0.3707.0 70.0.3714.0 70.0.3721.0: A fast and secure web browser
