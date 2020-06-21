@@ -74,6 +74,9 @@ RDEPEND="${CDEPEND}
 src_prepare() {
 	local PATCHDIR="${WORKDIR}"/mutt-gentoo-${PV}-patches-${PATCHREV}
 
+	# really unfortunate security fix of the day ...
+	eapply "${FILESDIR}"/${P}-no-imap-preauth-with-tunnel.patch
+
 	if use !vanilla ; then
 		# apply patches
 		export EPATCH_FORCE="yes"

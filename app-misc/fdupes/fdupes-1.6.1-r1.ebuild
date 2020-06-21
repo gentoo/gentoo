@@ -22,7 +22,6 @@ src_prepare() {
 
 src_compile() {
 	emake CC=$(tc-getCC)
-	#emake CC=$(tc-getCC) CFLAGS="${CFLAGS} -DVERSION=\"1.6.1\" -D_FILE_OFFSET_BITS=64 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE"
 }
 
 src_install() {
