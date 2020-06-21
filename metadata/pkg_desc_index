@@ -10641,7 +10641,7 @@ dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 1.26 1.27 2.4 2.5: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6 0.6-r1: Dump a remote Subversion repository
 dev-vcs/stgit 0.21 0.22: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.12.2 1.13.0-r1 1.14.0: Advanced version control system
+dev-vcs/subversion 1.13.0-r1 1.14.0: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.11-r1 1.0.12 1.0.13 1.0.13-r1 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.3.2 1.4.2 1.5.0: Tool collecting path entries across SVN history
@@ -17239,7 +17239,7 @@ sys-fs/lsscsi 0.29 0.30 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.09: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 3.0.3 4.0.3 4.0.4: FUSE filesystem for LXC
+sys-fs/lxcfs 3.0.3 4.0.3 4.0.4-r1: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1 2.29.0: A featureful union filesystem
@@ -17317,7 +17317,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.220_p197 4.4.225_p198 4.9.224_p144 4.9.227_p146 4.14.170_p75 4.14.184_p84 4.19.124_p53 4.19.127_p54 5.4.40_p24 5.4.44_p27 5.6.14_p7 5.6.17_p10: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.40 5.4.46 5.4.47 5.6.18 5.6.19 5.7.4: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 3.16.85 4.4.227 4.9.227 4.14.184 4.19.128 5.4.47 5.6.19 5.7.4: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.85 4.4.228 4.9.228 4.14.185 4.19.128 5.4.47 5.7.4: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.6.15: The Zen Kernel Live Sources
