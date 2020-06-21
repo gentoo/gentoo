@@ -63,6 +63,7 @@ RESTRICT+=" test"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-access-expandedView.item.patch # KDE-bug #423093
+	"${FILESDIR}"/${P}-introduce-PlaceholderMessage.patch # KDE-bug #422684
 )
 
 src_configure() {
