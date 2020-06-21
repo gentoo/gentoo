@@ -1,7 +1,8 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install prepare
-DEPEND=media-libs/libsdl media-libs/sdl-image media-libs/sdl-net media-libs/sdl-ttf opengl? ( virtual/opengl ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsdl media-libs/sdl-image media-libs/sdl-net media-libs/sdl-ttf opengl? ( virtual/opengl )
 DESCRIPTION=A clone of Sega's Chu Chu Rocket
-EAPI=6
+EAPI=7
 HOMEPAGE=http://mures.sourceforge.net/
 IUSE=opengl
 KEYWORDS=~amd64 ~x86
@@ -10,4 +11,4 @@ RDEPEND=media-libs/libsdl media-libs/sdl-image media-libs/sdl-net media-libs/sdl
 SLOT=0
 SRC_URI=mirror://sourceforge/mures/mures-0.5.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=ddd0ab80ab34d043bff861d4b385cae5
+_md5_=a245161e37c9edff6e0e9b4cf4c4c806
