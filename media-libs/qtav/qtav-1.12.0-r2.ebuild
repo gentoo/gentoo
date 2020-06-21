@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-installpaths.patch
 	"${FILESDIR}"/${P}-ffmpeg4-{1,2}.patch # bugs 660852, 670765
 	"${FILESDIR}"/${P}-qt5.14.patch
+	"${FILESDIR}"/${P}-qt5.15.patch
 )
 
 src_prepare() {
