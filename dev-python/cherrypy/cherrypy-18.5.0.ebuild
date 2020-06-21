@@ -25,23 +25,19 @@ RDEPEND=">=dev-python/cheroot-8.2.1[${PYTHON_USEDEP}]
 	dev-python/zc-lockfile[${PYTHON_USEDEP}]
 	dev-python/jaraco-collections[${PYTHON_USEDEP}]
 	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )"
-BDEPEND="${RDEPEND}
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		dev-python/routes[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 		dev-python/objgraph[${PYTHON_USEDEP}]
-		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
 		dev-python/path-py[${PYTHON_USEDEP}]
 		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 		dev-python/pytest-services[${PYTHON_USEDEP}]
 	)
 "
-
-PATCHES=(
-	"${FILESDIR}/cherrypy-18.5.0-tests.patch"
-)
 
 distutils_enable_tests pytest
 
@@ -49,6 +45,10 @@ python_prepare_all() {
 	# UnicodeEncodeError: 'ascii' codec can't encode character u'\u2603' in position 0: ordinal not in range(128)
 	sed -e 's|@pytest.mark.xfail(py27_on_windows|@pytest.mark.xfail(sys.version_info < (3,)|' \
 		-i cherrypy/test/test_static.py || die
+
+	# fragile, fails with newer versions of CPython
+	sed -e 's:testCombinedTools:_&:' \
+		-i cherrypy/test/test_tools.py || die
 
 	sed -r -e '/(pytest-sugar|pytest-cov)/ d' \
 		-i setup.py || die
