@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/expat-2:=
 	x11-libs/cairo:=
 	x11-libs/pango:=
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
-	libav? ( >=media-video/libav-9:0= )
+	libav? ( >=virtual/ffmpeg-9:0=[libav=] )
 	!libav? ( >=media-video/ffmpeg-2.6:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
