@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Monica is a Monitor Calibration Tool"
-HOMEPAGE="http://freecode.com/projects/monica"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/monica"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="BSD"
