@@ -64,7 +64,11 @@ python_install() {
 	export VIRTUAL_ENV=1
 	distutils-r1_python_install
 	python_optimize
-	mv "${ED}"/usr/etc "${ED}"/ || die
+	# since python3.8 installation goes straight into /etc
+	[[ -d ${ED}/etc ]] && [[ -d ${ED}/usr/etc ]] && rm -Rf "${ED}"/usr/etc
+	if [[ -d ${ED}/usr/etc ]] ; then
+		mv "${ED}"/usr/etc "${ED}"/ || die
+	fi
 	rm "${ED}"/etc/diamond/*.windows  # won't need these
 	sed -i \
 		-e '/pid_file =/s:/var/run:/run:' \
