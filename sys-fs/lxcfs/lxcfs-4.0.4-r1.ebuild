@@ -44,5 +44,8 @@ src_install() {
 
 	newconfd "${FILESDIR}"/lxcfs-4.0.0.confd lxcfs
 	newinitd "${FILESDIR}"/lxcfs-4.0.0.initd lxcfs
-	systemd_dounit config/init/systemd/lxcfs.service
+
+	# Provide our own service file (copy of upstream) due to paths being different from upstream, 
+	# 728470
+	systemd_dounit "${FILESDIR}"/lxcfs.service
 }
