@@ -9,7 +9,10 @@ PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Libmemcached wrapper written as a Python extension"
-HOMEPAGE="http://sendapatch.se/projects/pylibmc/ https://pypi.org/project/pylibmc/"
+HOMEPAGE="
+	https://sendapatch.se/projects/pylibmc/
+	https://pypi.org/project/pylibmc/
+	https://github.com/lericson/pylibmc/"
 # One image is missing from the doc at PyPI
 # https://github.com/lericson/pylibmc/pull/221
 SRC_URI="https://github.com/lericson/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
