@@ -1,5 +1,5 @@
---- loki_patch/configure.in
-+++ loki_patch/configure.in
+--- a/loki_patch/configure.in
++++ b/loki_patch/configure.in
 @@ -1,4 +1,4 @@
 -AC_INIT(README)
 +AC_INIT(loki_patch, 1.0.2)
@@ -60,8 +60,8 @@
  CFLAGS="$CFLAGS -I$SETUPDB"
  
  AC_SUBST(SETUPDB)
---- loki_patch/loki_xdelta.c
-+++ loki_patch/loki_xdelta.c
+--- a/loki_patch/loki_xdelta.c
++++ b/loki_patch/loki_xdelta.c
 @@ -49,7 +49,7 @@
  
  #define LOKI_PATCH
@@ -71,8 +71,8 @@
  
  static HandleFuncTable xd_handle_table;
  
---- loki_patch/Makefile.am
-+++ loki_patch/Makefile.am
+--- a/dev/null
++++ b/loki_patch/Makefile.am
 @@ -0,0 +1,12 @@
 +COMMONSRC = load_patch.c size_patch.c print_patch.c \
 +	loki_xdelta.c mkdirhier.c log_output.c
@@ -86,8 +86,8 @@
 +AM_CPPFLAGS = $(XDELTA_CFLAGS)
 +
 +LDADD = $(top_builddir)/../loki_setupdb/libsetupdb.a $(XDELTA_LIBS) $(XML_LIBS) -lz
---- loki_setupdb/configure.in
-+++ loki_setupdb/configure.in
+--- a/loki_setupdb/configure.in
++++ b/loki_setupdb/configure.in
 @@ -1,4 +1,4 @@
 -AC_INIT
 +AC_INIT(setupdb, 1.6.5)
@@ -111,7 +111,8 @@
 +AM_INIT_AUTOMAKE(foreign no-dependencies)
  AC_PROG_CC
  AC_PROG_MAKE_SET
- AC_PATH_PROGS(AR, [ar gar])
+-AC_PATH_PROGS(AR, [ar gar])
++AM_PROG_AR
 +AC_PROG_RANLIB
  
  AC_CHECK_HEADERS(unistd.h)
@@ -165,8 +166,8 @@
  
  AC_ARG_WITH(vendor,
  [  --with-vendor           with specified vendor prefix  [default=loki]], 
---- loki_setupdb/Makefile.am
-+++ loki_setupdb/Makefile.am
+--- a/dev/null
++++ b/loki_setupdb/Makefile.am
 @@ -0,0 +1,9 @@
 +noinst_LIBRARIES = libsetupdb.a
 +
