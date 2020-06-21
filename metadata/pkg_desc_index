@@ -16022,7 +16022,7 @@ sci-libs/netcdf 4.3.2-r1 4.6.1 4.6.1-r1: Scientific library and interface for ar
 sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1 4.3.0: C++ library for netCDF
 sci-libs/netcdf-fortran 4.2 4.4.2 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.3.2: library for nonequispaced discrete Fourier transformations
-sci-libs/nlopt 2.4.2-r2 2.6.2: Non-linear optimization library
+sci-libs/nlopt 2.4.2-r2 2.6.2 2.6.2-r1: Non-linear optimization library
 sci-libs/numkit 1.1.2: Numerical first aid kit (with numpy/scipy)
 sci-libs/o2scl 0.920: Object-oriented Scientific Computing Library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
