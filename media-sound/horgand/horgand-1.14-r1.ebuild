@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,14 +6,12 @@ EAPI=7
 inherit desktop toolchain-funcs
 
 DESCRIPTION="Opensource software organ"
-HOMEPAGE="http://horgand.berlios.de"
-#SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+HOMEPAGE="https://sourceforge.net/projects/horgand.berlios/"
+SRC_URI="https://download.sourceforge.net/${PN}.berlios/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc sparc x86"
-IUSE=""
 
 RDEPEND="x11-libs/fltk:1
 	x11-libs/libXpm
@@ -21,13 +19,12 @@ RDEPEND="x11-libs/fltk:1
 	media-libs/alsa-lib
 	media-sound/alsa-utils
 	media-sound/jack-audio-connection-kit"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	default
-	eapply "${FILESDIR}"/${P}-overflow.patch
-}
+PATCHES=(
+	"${FILESDIR}/${P}-overflow.patch"
+)
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} $(fltk-config --cxxflags) \
