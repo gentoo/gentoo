@@ -20,6 +20,7 @@
   projectors.
 </longdescription>
   <use>
+    <flag name="deep-sky">Install extra deep sky objects catalog (may affect performance)</flag>
     <flag name="media">Enable sound and video support</flag>
     <flag name="stars">Install extra star catalogs</flag>
   </use>
