@@ -4,10 +4,10 @@ DESCRIPTION=Library of C++ classes for logging to files, syslog and other destin
 EAPI=6
 HOMEPAGE=https://logging.apache.org/log4cxx/
 IUSE=iodbc unicode odbc smtp
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~ppc-macos
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~ppc-macos
 LICENSE=Apache-2.0
 RDEPEND=dev-libs/apr:1 dev-libs/apr-util:1 odbc? ( iodbc? ( >=dev-db/libiodbc-3.52.4 ) !iodbc? ( dev-db/unixODBC ) ) smtp? ( net-libs/libesmtp )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://apache/logging/log4cxx/0.10.0/apache-log4cxx-0.10.0.tar.gz
-_md5_=f21681c6e3cce2527c0297e2552ffb93
+_md5_=b425e6d977cb51b0bab74b6be3655822

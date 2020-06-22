@@ -5,7 +5,7 @@ DESCRIPTION=Low-level, data-driven core of boto 3.
 EAPI=7
 HOMEPAGE=https://github.com/boto/botocore
 IUSE=doc test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=~amd64 ~arm64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm64 x86 ~amd64-linux ~x86-linux
 LICENSE=Apache-2.0
 RDEPEND=dev-python/docutils[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/jmespath[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/python-dateutil[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/urllib3[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/b/botocore/botocore-1.15.48.tar.gz
 _eclasses_=distutils-r1	44725b3eb803b8abcd6978759c231210	multibuild	40fe59465edacd730c644ec2bc197809	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=39219ac30b1dfb4c0d391926feb00ee2
+_md5_=64a4b5f5f60ca689acd99b1848e1132d
