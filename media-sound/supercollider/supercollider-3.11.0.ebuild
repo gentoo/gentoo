@@ -7,14 +7,17 @@ inherit cmake readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="An environment and a programming language for real time audio synthesis."
 HOMEPAGE="https://supercollider.github.io/"
-SRC_URI="https://github.com/supercollider/supercollider/releases/download/Version-${PV}/SuperCollider-${PV}-Source-linux.tar.bz2"
+SRC_URI="https://github.com/supercollider/supercollider/releases/download/Version-${PV}/SuperCollider-${PV}-Source.tar.bz2"
 
 LICENSE="GPL-2 gpl3? ( GPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack qt5 server +sndfile static-libs vim X zeroconf"
+IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack qt5 server +sndfile static-libs vim webengine X zeroconf"
 
-REQUIRED_USE="qt5? ( X )"
+REQUIRED_USE="
+	qt5? ( X )
+	webengine? ( qt5 )
+"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -33,17 +36,17 @@ RDEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
-		dev-qt/qtopengl:5
 		dev-qt/qtprintsupport:5
-		dev-qt/qtsql:5
 		dev-qt/qtsvg:5
-		dev-qt/qtwebchannel:5
-		dev-qt/qtwebengine:5[widgets]
-		dev-qt/qtwebsockets:5
 		dev-qt/qtwidgets:5
 	)
 	server? ( !app-admin/supernova )
 	sndfile? ( media-libs/libsndfile )
+	webengine? (
+		dev-qt/qtwebchannel:5
+		dev-qt/qtwebengine:5[widgets]
+		dev-qt/qtwebsockets:5
+	)
 	X? (
 		x11-libs/libX11
 		x11-libs/libXt
@@ -56,19 +59,18 @@ DEPEND="${RDEPEND}
 	gedit? ( app-editors/gedit )
 	qt5? (
 		dev-qt/qtconcurrent:5
-		dev-qt/qtdeclarative:5
 	)
 	vim? ( app-editors/vim )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-no-ccache.patch
-	"${FILESDIR}"/${P}-system-boost.patch
-	"${FILESDIR}"/${P}-boost-1.67.patch
-	"${FILESDIR}"/${P}-boost-1.70.patch
+	"${FILESDIR}"/${PN}-3.10.2-no-ccache.patch
+	"${FILESDIR}"/${P}-boost-1.72.patch # Upstream PR 4990
+	"${FILESDIR}"/${P}-qt-5.15.patch # Upstream PR 4986
+	"${FILESDIR}"/${P}-fewer-qt-deps.patch # Upstream PR 4991
 )
 
-S="${WORKDIR}/SuperCollider-Source"
+S="${WORKDIR}/SuperCollider-${PV}-Source"
 
 src_configure() {
 	local mycmakeargs=(
@@ -89,6 +91,7 @@ src_configure() {
 		-DNO_LIBSNDFILE=$(usex !sndfile)
 		-DLIBSCSYNTH=$(usex !static-libs)
 		-DSC_VIM=$(usex vim)
+		-DSC_USE_QTWEBENGINE=$(usex webengine)
 		-DNO_X11=$(usex !X)
 		-DNO_AVAHI=$(usex !zeroconf)
 	)

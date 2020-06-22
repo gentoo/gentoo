@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>marcan@marcan.st</email>
+		<name>Hector Martin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		SuperCollider is a platform for audio synthesis and algorithmic
 		composition, used by musicians, artists, and researchers
@@ -17,5 +24,6 @@
 		<flag name="gedit">Enable the SCED user interface</flag>
 		<flag name="gpl3">Build GPL-3 licensed code (recommended)</flag>
 		<flag name="server">Build with internal server</flag>
+		<flag name="webengine">Enable the internal help system using QtWebengine</flag>
 	</use>
 </pkgmetadata>
