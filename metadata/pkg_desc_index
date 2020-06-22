@@ -11392,6 +11392,7 @@ games-strategy/warzone2100 3.2.3 3.3.0: 3D real-time strategy game
 games-strategy/wesnoth 1.14.9 1.14.11 1.15.3: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.20-r1 9999: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r2: A multi-player game of strategy and coordination
+games-util/acc 1.57: ACS script compiler for use with ZDoom and Hexen
 games-util/antimicro 2.23: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.5.1_beta_pre20160907: Chart Program to use with Flightgear Flight Simulator
 games-util/biounzip 1.1a: Unpacks BioZip archives
@@ -13630,7 +13631,7 @@ media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
 media-sound/substract_wave 0.3-r1: substracts 2 mono wave files from each other by a factor specified on the command line
-media-sound/supercollider 3.10.2: An environment and a programming language for real time audio synthesis.
+media-sound/supercollider 3.11.0: An environment and a programming language for real time audio synthesis.
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
 media-sound/taginfo 1.2-r2: A simple ID3 tag reader for use in shell scripts
 media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
