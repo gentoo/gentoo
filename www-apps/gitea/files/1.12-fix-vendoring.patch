@@ -1,0 +1,13 @@
+diff --git a/vendor/modules.txt b/vendor/modules.txt
+index efbc866..1c34104 100644
+--- a/vendor/modules.txt
++++ b/vendor/modules.txt
+@@ -845,6 +845,8 @@ gopkg.in/yaml.v2
+ # mvdan.cc/xurls/v2 v2.1.0
+ ## explicit
+ mvdan.cc/xurls/v2
++# src.techknowlogick.com/xgo v0.0.0-20200602060627-a09175ea9056
++## explicit
+ # strk.kbt.io/projects/go/libravatar v0.0.0-20191008002943-06d1c002b251
+ ## explicit
+ strk.kbt.io/projects/go/libravatar
