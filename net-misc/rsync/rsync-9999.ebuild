@@ -98,7 +98,7 @@ src_install() {
 	newconfd "${FILESDIR}"/rsyncd.conf.d rsyncd
 	newinitd "${FILESDIR}"/rsyncd.init.d-r1 rsyncd
 
-	dodoc NEWS.md OLDNEWS.md README.md TODO tech_report.tex
+	dodoc NEWS.md README.md TODO tech_report.tex
 
 	insinto /etc
 	newins "${FILESDIR}"/rsyncd.conf-3.0.9-r1 rsyncd.conf
