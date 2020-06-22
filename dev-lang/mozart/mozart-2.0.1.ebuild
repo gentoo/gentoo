@@ -28,8 +28,8 @@ DEPEND="${RDEPEND}
 	dev-java/ant-core
 	>=virtual/jdk-1.8:=
 	|| (
-		dev-lang/scala:=
-		dev-lang/scala-bin:=
+		dev-lang/scala
+		dev-lang/scala-bin
 	)
 	test? ( dev-cpp/gtest:= )"
 
