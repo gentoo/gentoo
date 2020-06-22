@@ -26,6 +26,8 @@ BDEPEND=""
 
 DOCS=( "docs" )
 
+QA_PRESTRIPPED="/usr/bin/${BASE_PN}"
+
 src_unpack() {
 	# Create the source directory
 	mkdir -p "${S}" || die
