@@ -17,6 +17,8 @@
 if [[ -z ${_UNPACKER_ECLASS} ]]; then
 _UNPACKER_ECLASS=1
 
+inherit toolchain-funcs
+
 # @ECLASS-VARIABLE: UNPACKER_BZ2
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -279,8 +281,7 @@ unpack_deb() {
 			done
 		} < "${deb}"
 	else
-		local AR=${AR-ar}
-		${AR} x "${deb}" || die
+		$(tc-getBUILD_AR) x "${deb}" || die
 	fi
 
 	unpacker ./data.tar*
