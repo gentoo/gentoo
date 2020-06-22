@@ -1,0 +1,11 @@
+--- a/vlock       2020-06-22 10:03:48.700469805 -0000
++++ b/vlock       2020-06-22 10:03:57.880385148 -0000
+@@ -17,7 +17,7 @@
+ set -e
+ 
+ # Magic characters to clear the terminal.
+-CLEAR_SCREEN="`echo -e '\033[H\033[J'`"
++CLEAR_SCREEN="`printf '\033[H\033[J'`"
+ 
+ # Enter message that is common to different the messages.
+ VLOCK_ENTER_PROMPT="Please press [ENTER] to unlock."
