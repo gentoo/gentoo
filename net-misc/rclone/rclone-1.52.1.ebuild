@@ -2,17 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-inherit golang-build bash-completion-r1
-EGO_PN="github.com/rclone/${PN}"
+inherit bash-completion-r1 go-module
 
 if [[ ${PV} == *9999* ]]; then
-	inherit golang-vcs
+	inherit git-r3
 else
 	KEYWORDS="amd64 ~arm ~arm64 x86"
-	EGIT_COMMIT="v${PV}"
-	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	inherit golang-vcs-snapshot
+	SRC_URI="https://github.com/rclone/rclone/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="A program to sync files to and from various cloud storage providers"
@@ -22,13 +18,14 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+src_compile() {
+		go build -mod=vendor . || die "compile failed"
+}
 
 src_install() {
 	dobin ${PN}
-	doman src/${EGO_PN}/${PN}.1
-	dodoc src/${EGO_PN}/README.md
+	doman ${PN}.1
+	dodoc README.md
 
 	./rclone genautocomplete bash ${PN}.bash || die
 	newbashcomp ${PN}.bash ${PN}
