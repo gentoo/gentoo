@@ -1,0 +1,21 @@
+From 1f2b4587ec2c6d1a1945eee8bbf361dbdf3dc8af Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Sun, 7 Jun 2020 21:56:38 +0200
+Subject: [PATCH] Fix build with Qt 5.15+
+
+---
+ traceplot.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/traceplot.cpp b/traceplot.cpp
+index 3704d24..04bdba8 100644
+--- a/traceplot.cpp
++++ b/traceplot.cpp
+@@ -20,6 +20,7 @@
+ #include <QPixmapCache>
+ #include <QTextStream>
+ #include <QtConcurrent>
++#include <QPainterPath>
+ #include "samplesource.h"
+ #include "traceplot.h"
+ 
