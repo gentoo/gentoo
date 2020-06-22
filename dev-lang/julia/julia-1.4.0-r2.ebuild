@@ -33,7 +33,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-#KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="system-llvm"
 
 RDEPEND="
@@ -141,6 +141,8 @@ src_configure() {
 	# julia does not play well with the system versions of dsfmt, libuv,
 	# and utf8proc
 
+	use system-llvm && ewarn "You have enabled system-llvm. This is unsupported by upstream and may not work."
+
 	# USE_SYSTEM_LIBM=0 implies using external openlibm
 	cat <<-EOF > Make.user
 		USE_BINARYBUILDER:=0
@@ -189,7 +191,9 @@ src_install() {
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 
-	cp "${S}/usr/lib/libLLVM"-?jl.so "${ED}/usr/$(get_libdir)/julia/" || die
+	if ! use system-llvm ; then
+		cp "${S}/usr/lib/libLLVM"-?jl.so "${ED}/usr/$(get_libdir)/julia/" || die
+	fi
 
 	dodoc README.md
 
