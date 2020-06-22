@@ -18,7 +18,16 @@ LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="cairo doc icu java jpeg lapack minimal nls openmp perl png prefix profile readline static-libs test tiff tk X"
-REQUIRED_USE="png? ( || ( cairo X ) ) jpeg? ( || ( cairo X ) ) tiff? ( || ( cairo X ) )"
+
+# One test required profiling in v4.0.2, check the upstream bug:
+#
+#   https://bugs.r-project.org/bugzilla/show_bug.cgi?id=17836
+#
+REQUIRED_USE="png? ( || ( cairo X ) )
+	jpeg? ( || ( cairo X ) )
+	tiff? ( || ( cairo X ) )
+	test? ( profile )
+"
 
 # At least one package installation in the test suite requires TeX,
 # and will fail without it (bug #718056).
@@ -32,7 +41,7 @@ DEPEND="
 	app-arch/bzip2:0=
 	app-arch/xz-utils:0=
 	app-text/ghostscript-gpl
-	dev-libs/libpcre:3=
+	dev-libs/libpcre2:=
 	net-libs/libtirpc
 	net-misc/curl
 	virtual/blas:0
