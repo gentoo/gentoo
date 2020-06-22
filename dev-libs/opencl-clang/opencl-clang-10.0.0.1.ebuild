@@ -19,7 +19,6 @@ KEYWORDS="~amd64"
 
 S="${WORKDIR}/${MY_P}"
 
-BDEPEND="dev-vcs/git"
 COMMON="sys-devel/clang:10=[static-analyzer,${MULTILIB_USEDEP}]"
 DEPEND="${COMMON}
 	dev-util/spirv-llvm-translator:10=[${MULTILIB_USEDEP}]"
@@ -29,6 +28,7 @@ LLVM_MAX_SLOT=10
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.0-clang_library_dir.patch
+	"${FILESDIR}"/${PN}-10.0.0.1_find-llvm-tblgen.patch
 )
 
 multilib_src_configure() {
