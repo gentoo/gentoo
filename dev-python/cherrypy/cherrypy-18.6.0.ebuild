@@ -35,6 +35,7 @@ BDEPEND="
 		dev-python/objgraph[${PYTHON_USEDEP}]
 		dev-python/path-py[${PYTHON_USEDEP}]
 		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
+		>=dev-python/pytest-5.3.5[${PYTHON_USEDEP}]
 		dev-python/pytest-services[${PYTHON_USEDEP}]
 	)
 "
