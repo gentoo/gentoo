@@ -55,6 +55,7 @@ pkg_setup() {
 		wg_quick_optional_config_nob NETFILTER_XT_MARK
 		wg_quick_optional_config_nob NETFILTER_XT_CONNMARK
 		wg_quick_optional_config_nob NETFILTER_XT_MATCH_COMMENT
+		wg_quick_optional_config_nob NETFILTER_XT_MATCH_ADDRTYPE
 		wg_quick_optional_config_nob IP6_NF_RAW
 		wg_quick_optional_config_nob IP_NF_RAW
 		wg_quick_optional_config_nob IP6_NF_FILTER
