@@ -64,3 +64,156 @@ index fc8845d4..358ae9cb 100644
 -- 
 2.26.2
 
+diff --git a/exo/Makefile.in b/exo/Makefile.in
+index 56abe35..ee1be62 100644
+--- a/exo/Makefile.in
++++ b/exo/Makefile.in
+@@ -98,7 +98,7 @@ am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
+ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
+ 	$(ACLOCAL_M4)
+ DIST_COMMON = $(srcdir)/Makefile.am $(libexo_2_include_HEADERS) \
+-	$(libexoinclude_HEADERS) $(am__DIST_COMMON)
++	$(am__DIST_COMMON)
+ mkinstalldirs = $(install_sh) -d
+ CONFIG_HEADER = $(top_builddir)/config.h
+ CONFIG_CLEAN_FILES = exo-2.pc exo-config.h
+@@ -131,8 +131,7 @@ am__uninstall_files_from_dir = { \
+          $(am__cd) "$$dir" && rm -f $$files; }; \
+   }
+ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgconfigdir)" \
+-	"$(DESTDIR)$(libexo_2_includedir)" \
+-	"$(DESTDIR)$(libexoincludedir)"
++	"$(DESTDIR)$(libexo_2_includedir)"
+ LTLIBRARIES = $(lib_LTLIBRARIES)
+ am__DEPENDENCIES_1 =
+ libexo_2_la_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+@@ -224,7 +223,7 @@ am__can_run_installinfo = \
+     *) (install-info --version) >/dev/null 2>&1;; \
+   esac
+ DATA = $(pkgconfig_DATA)
+-HEADERS = $(libexo_2_include_HEADERS) $(libexoinclude_HEADERS)
++HEADERS = $(libexo_2_include_HEADERS)
+ am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
+ # Read a list of newline-separated strings from the standard input,
+ # and print each of them once, without duplicates.  Input order is
+@@ -657,24 +656,14 @@ libexo_headers = \
+ 	exo-tree-view.h							\
+ 	exo-utils.h
+ 
+-libexo_built_public_sources = \
+-	exo-enum-types.h
+-
+-libexo_built_sources = \
+-	$(libexo_built_public_sources)					\
++libexo_2_built_sources = \
++	exo-enum-types.h \
+ 	exo-alias.h							\
+ 	exo-aliasdef.c							\
+ 	exo-enum-types.c						\
+ 	exo-marshal.c							\
+ 	exo-marshal.h
+ 
+-libexoincludedir = $(includedir)/exo-2/exo
+-libexoinclude_HEADERS = \
+-	$(libexo_built_public_sources)					\
+-	$(libexo_headers)						\
+-	exo.h								\
+-	exo-config.h
+-
+ libexo_2_includedir = $(includedir)/exo-2/exo
+ lib_LTLIBRARIES = libexo-2.la
+ libexo_2_include_HEADERS = \
+@@ -756,10 +745,10 @@ pkgconfig_DATA = exo-2.pc
+ @MAINTAINER_MODE_TRUE@DISTCLEANFILES = \
+ @MAINTAINER_MODE_TRUE@	stamp-exo-enum-types.h						\
+ @MAINTAINER_MODE_TRUE@	stamp-exo-marshal.h						\
+-@MAINTAINER_MODE_TRUE@	$(libexo_built_sources)
++@MAINTAINER_MODE_TRUE@	$(libexo_2_built_sources)
+ 
+ @MAINTAINER_MODE_TRUE@BUILT_SOURCES = \
+-@MAINTAINER_MODE_TRUE@	$(libexo_built_sources)
++@MAINTAINER_MODE_TRUE@	$(libexo_2_built_sources)
+ 
+ EXTRA_DIST = \
+ 	abicheck.sh							\
+@@ -1091,27 +1080,6 @@ uninstall-libexo_2_includeHEADERS:
+ 	@list='$(libexo_2_include_HEADERS)'; test -n "$(libexo_2_includedir)" || list=; \
+ 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+ 	dir='$(DESTDIR)$(libexo_2_includedir)'; $(am__uninstall_files_from_dir)
+-install-libexoincludeHEADERS: $(libexoinclude_HEADERS)
+-	@$(NORMAL_INSTALL)
+-	@list='$(libexoinclude_HEADERS)'; test -n "$(libexoincludedir)" || list=; \
+-	if test -n "$$list"; then \
+-	  echo " $(MKDIR_P) '$(DESTDIR)$(libexoincludedir)'"; \
+-	  $(MKDIR_P) "$(DESTDIR)$(libexoincludedir)" || exit 1; \
+-	fi; \
+-	for p in $$list; do \
+-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+-	  echo "$$d$$p"; \
+-	done | $(am__base_list) | \
+-	while read files; do \
+-	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(libexoincludedir)'"; \
+-	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(libexoincludedir)" || exit $$?; \
+-	done
+-
+-uninstall-libexoincludeHEADERS:
+-	@$(NORMAL_UNINSTALL)
+-	@list='$(libexoinclude_HEADERS)'; test -n "$(libexoincludedir)" || list=; \
+-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+-	dir='$(DESTDIR)$(libexoincludedir)'; $(am__uninstall_files_from_dir)
+ 
+ ID: $(am__tagged_files)
+ 	$(am__define_uniq_tagged_files); mkid -fID $$unique
+@@ -1370,7 +1338,7 @@ check: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) check-am
+ all-am: Makefile $(LTLIBRARIES) $(DATA) $(HEADERS)
+ installdirs:
+-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgconfigdir)" "$(DESTDIR)$(libexo_2_includedir)" "$(DESTDIR)$(libexoincludedir)"; do \
++	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgconfigdir)" "$(DESTDIR)$(libexo_2_includedir)"; do \
+ 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+ 	done
+ install: $(BUILT_SOURCES)
+@@ -1452,8 +1420,7 @@ info: info-am
+ 
+ info-am:
+ 
+-install-data-am: install-libexo_2_includeHEADERS \
+-	install-libexoincludeHEADERS install-pkgconfigDATA
++install-data-am: install-libexo_2_includeHEADERS install-pkgconfigDATA
+ 
+ install-dvi: install-dvi-am
+ 
+@@ -1519,8 +1486,7 @@ ps: ps-am
+ ps-am:
+ 
+ uninstall-am: uninstall-libLTLIBRARIES \
+-	uninstall-libexo_2_includeHEADERS \
+-	uninstall-libexoincludeHEADERS uninstall-pkgconfigDATA
++	uninstall-libexo_2_includeHEADERS uninstall-pkgconfigDATA
+ 
+ .MAKE: all check check-am install install-am install-strip
+ 
+@@ -1533,15 +1499,14 @@ uninstall-am: uninstall-libLTLIBRARIES \
+ 	install-dvi-am install-exec install-exec-am install-html \
+ 	install-html-am install-info install-info-am \
+ 	install-libLTLIBRARIES install-libexo_2_includeHEADERS \
+-	install-libexoincludeHEADERS install-man install-pdf \
+-	install-pdf-am install-pkgconfigDATA install-ps install-ps-am \
+-	install-strip installcheck installcheck-am installdirs \
+-	maintainer-clean maintainer-clean-generic mostlyclean \
+-	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+-	pdf pdf-am ps ps-am recheck tags tags-am uninstall \
+-	uninstall-am uninstall-libLTLIBRARIES \
+-	uninstall-libexo_2_includeHEADERS \
+-	uninstall-libexoincludeHEADERS uninstall-pkgconfigDATA
++	install-man install-pdf install-pdf-am install-pkgconfigDATA \
++	install-ps install-ps-am install-strip installcheck \
++	installcheck-am installdirs maintainer-clean \
++	maintainer-clean-generic mostlyclean mostlyclean-compile \
++	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
++	recheck tags tags-am uninstall uninstall-am \
++	uninstall-libLTLIBRARIES uninstall-libexo_2_includeHEADERS \
++	uninstall-pkgconfigDATA
+ 
+ .PRECIOUS: Makefile
+ 
