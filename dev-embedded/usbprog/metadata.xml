@@ -5,4 +5,7 @@
 	<email>embedded@gentoo.org</email>
 	<name>Embedded Gentoo</name>
 </maintainer>
+<upstream>
+	<remote-id type="bitbucket">bwalle/usbprog-tools</remote-id>
+</upstream>
 </pkgmetadata>
