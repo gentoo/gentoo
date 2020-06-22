@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit xdg-utils
+inherit flag-o-matic xdg-utils
 
 DESCRIPTION="oidc-agent for managing OpenID Connect tokens on the command line"
 HOMEPAGE="https://github.com/indigo-dc/oidc-agent"
@@ -16,7 +16,8 @@ IUSE="test"
 
 DEPEND="app-crypt/libsecret
 	dev-libs/libsodium
-	net-libs/libmicrohttpd"
+	net-libs/libmicrohttpd
+	sys-libs/libseccomp"
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-libs/check )"
 
@@ -30,6 +31,9 @@ PATCHES=(
 )
 
 src_compile() {
+	# Bug #728840
+	append-flags -fcommon
+
 	# Parallel building doesn't work
 	emake -j1
 }
