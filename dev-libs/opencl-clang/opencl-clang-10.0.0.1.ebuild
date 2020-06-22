@@ -19,7 +19,6 @@ KEYWORDS="~amd64"
 
 S="${WORKDIR}/${MY_P}"
 
-BDEPEND="dev-vcs/git"
 COMMON="sys-devel/clang:10=[static-analyzer,${MULTILIB_USEDEP}]"
 DEPEND="${COMMON}
 	dev-util/spirv-llvm-translator:10=[${MULTILIB_USEDEP}]"
