@@ -14271,7 +14271,7 @@ net-fs/davfs2 1.5.4 1.5.5 1.5.6-r1: Linux FUSE (or coda) driver that allows you 
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 2.0.0 3.0.0 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2019.07.17.22.13.42 2019.07.31.19.17.35: Minio client provides alternatives for ls, cat on cloud storage and filesystems
-net-fs/minio 2019.09.11.19.53.16: An Amazon S3 compatible object storage server
+net-fs/minio 2020.06.22.03.12.50: An Amazon S3 compatible object storage server
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4 2.2.6-r5: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.12: Open Source AFP server
 net-fs/nfs-utils 2.3.4 2.4.1-r4 2.4.2-r1 2.4.3: NFS client and server daemons
@@ -16136,7 +16136,7 @@ sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bay
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lrcalc 1.2: Littlewood-Richardson Calculator
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
-sci-mathematics/mathomatic 15.8.5 16.0.5: Automatic algebraic manipulator
+sci-mathematics/mathomatic 16.0.5: Automatic algebraic manipulator
 sci-mathematics/maxima 5.38.1 5.42.1 5.42.2 5.43.2 5.44.0: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.2.0-r4 2.2.0_p20130925-r1: Small yet efficient SAT solver with reference paper
 sci-mathematics/msieve 1.51-r1 1.53-r1 9999: A C library implementing a suite of algorithms to factor large integers
@@ -17367,7 +17367,7 @@ sys-libs/libservicelog 1.1.18: Provides a library for logging service-related ev
 sys-libs/libsmbios 2.4.3: Provide access to (SM)BIOS information
 sys-libs/libstatgrab 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
-sys-libs/libtermcap-compat 2.0.8-r3 2.0.8-r4: Compatibility package for old termcap-based programs
+sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.2.1-r3 1.4.0: Portable and efficient API to determine the call-chain of a program
 sys-libs/liburing 0.5 0.6: Efficient I/O with io_uring
