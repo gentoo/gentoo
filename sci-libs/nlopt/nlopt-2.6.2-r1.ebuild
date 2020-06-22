@@ -5,11 +5,11 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit python-r1 cmake
+inherit python-r1 cmake fortran-2
 
 DESCRIPTION="Non-linear optimization library"
 HOMEPAGE="https://ab-initio.mit.edu/nlopt/"
-SRC_URI="https://github.com/stevengj/nlopt/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/stevengj/nlopt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MIT"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
@@ -48,6 +48,8 @@ src_configure() {
 	)
 	if use python; then
 		python_foreach_impl run_in_build_dir cmake_src_configure
+	else
+		cmake_src_configure
 	fi
 	if use static-libs; then
 		mycmakeargs+=(
@@ -60,6 +62,8 @@ src_configure() {
 src_compile() {
 	if use python; then
 		python_foreach_impl run_in_build_dir cmake_src_compile
+	else
+		cmake_src_compile
 	fi
 	if use static-libs; then
 		BUILD_DIR="${S}_static-libs" run_in_build_dir cmake_src_compile
@@ -78,6 +82,8 @@ src_test() {
 	}
 	if use python; then
 		python_foreach_impl run_in_build_dir do_test
+	else
+		do_test
 	fi
 	if use static-libs; then
 		BUILD_DIR="${S}_static-libs" run_in_build_dir do_test
@@ -92,6 +98,8 @@ nlopt_install() {
 src_install() {
 	if use python; then
 		python_foreach_impl run_in_build_dir nlopt_install
+	else
+		cmake_src_install
 	fi
 	if use static-libs; then
 		BUILD_DIR="${S}_static-libs" run_in_build_dir dolib.a libnlopt.a
