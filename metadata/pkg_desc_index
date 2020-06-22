@@ -5111,7 +5111,7 @@ dev-libs/liborcus 0.15.4 9999: Standalone file import filter library for spreads
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1 0.32-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.10: Abstraction layer to simplify PKCS#11 API
-dev-libs/libparserutils 0.2.3 0.2.4-r1 0.2.4-r2: C library for building efficient parsers
+dev-libs/libparserutils 0.2.4-r1 0.2.4-r2: C library for building efficient parsers
 dev-libs/libpcre 8.42 8.43 8.44: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.34 10.35: Perl-compatible regular expression library
