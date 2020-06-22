@@ -16,7 +16,8 @@ IUSE="test"
 
 DEPEND="app-crypt/libsecret
 	dev-libs/libsodium
-	net-libs/libmicrohttpd"
+	net-libs/libmicrohttpd
+	sys-libs/libseccomp"
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-libs/check )"
 
