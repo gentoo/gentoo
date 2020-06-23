@@ -32,6 +32,10 @@ DEPEND="${RDEPEND}
 	)
 	"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-std-runtime_error.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc)
