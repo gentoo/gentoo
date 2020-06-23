@@ -1,0 +1,25 @@
+--- a/engine/globals.c
++++ b/engine/globals.c
+@@ -136,6 +136,9 @@
+ 				 * move generation is enabled.
+ 				 */
+ 
++int meaningless_white_moves[BOARDMAX];
++int meaningless_black_moves[BOARDMAX];
++
+ float best_move_values[10];
+ int   best_moves[10];
+ float white_score;
+--- a/engine/liberty.h
++++ b/engine/liberty.h
+@@ -859,8 +859,8 @@
+ extern struct worm_data worm[BOARDMAX];
+ 
+ /* Unconditionally meaningless moves. */
+-int meaningless_black_moves[BOARDMAX];
+-int meaningless_white_moves[BOARDMAX];
++extern int meaningless_black_moves[BOARDMAX];
++extern int meaningless_white_moves[BOARDMAX];
+ 
+ /* Surround cache (see surround.c) */
+ 
