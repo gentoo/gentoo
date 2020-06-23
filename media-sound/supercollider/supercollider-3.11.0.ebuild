@@ -91,9 +91,12 @@ src_configure() {
 		-DNO_LIBSNDFILE=$(usex !sndfile)
 		-DLIBSCSYNTH=$(usex !static-libs)
 		-DSC_VIM=$(usex vim)
-		-DSC_USE_QTWEBENGINE=$(usex webengine)
 		-DNO_X11=$(usex !X)
 		-DNO_AVAHI=$(usex !zeroconf)
+	)
+
+	use qt5 && mycmakeargs+=(
+		-DSC_USE_QTWEBENGINE=$(usex webengine)
 	)
 
 	use debug && mycmakeargs+=(
