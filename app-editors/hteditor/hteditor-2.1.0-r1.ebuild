@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_P=${P/editor}
 
@@ -39,6 +39,12 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+
+	# Many literals are concatenated with macro definitions.
+	# Instead of patching them all let's pick old c++ standard
+	# and port to c++11 upstream.
+	# https://bugs.gentoo.org/729252
+	append-cxxflags -std=c++98
 }
 
 src_configure() {
