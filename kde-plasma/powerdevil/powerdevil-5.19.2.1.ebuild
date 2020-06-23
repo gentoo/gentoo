@@ -18,6 +18,10 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="brightness-control +wireless"
 
 DEPEND="
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=kde-frameworks/kactivities-${KFMIN}:5
 	>=kde-frameworks/kauth-${KFMIN}:5[policykit]
 	>=kde-frameworks/kcompletion-${KFMIN}:5
@@ -39,10 +43,6 @@ DEPEND="
 	>=kde-frameworks/solid-${KFMIN}:5
 	>=kde-plasma/libkscreen-${PVCUT}:5
 	>=kde-plasma/libkworkspace-${PVCUT}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtx11extras-${QTMIN}:5
 	virtual/libudev:=
 	x11-libs/libxcb
 	brightness-control? ( app-misc/ddcutil )

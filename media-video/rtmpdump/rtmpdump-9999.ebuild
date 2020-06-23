@@ -85,7 +85,7 @@ multilib_src_compile() {
 	if ! multilib_is_native_abi; then
 		cd librtmp || die
 	fi
-	emake CC="$(tc-getCC)" LD="$(tc-getLD)" \
+	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" \
 		OPT="${CFLAGS}" XLDFLAGS="${LDFLAGS}" CRYPTO="${crypto}" SYS=posix
 }
 
