@@ -3433,7 +3433,7 @@ dev-erlang/p1_acme 1.0.5: ACME client library for Erlang
 dev-erlang/p1_mysql 1.0.2 1.0.11 1.0.14: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1 0.6.5 0.6.6: Erlang OAuth 2.0 implementation
 dev-erlang/p1_pgsql 1.1.2 1.1.6 1.1.8 1.1.9: Pure Erlang PostgreSQL driver
-dev-erlang/p1_utils 1.0.13 1.0.16 1.0.18: Erlang utility modules from ProcessOne
+dev-erlang/p1_utils 1.0.13 1.0.16 1.0.18 1.0.19: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
 dev-erlang/pkix 1.0.3 1.0.4 1.0.5: PKIX certificates management library for Erlang
 dev-erlang/proper 1.2 1.3: QuickCheck-inspired property-based testing tool for Erlang
@@ -8161,12 +8161,12 @@ dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.12.1 2.0.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 1.33.3 2.3.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.29.1 4.0.2: library for running multi-thread, multi-process applications
-dev-python/oslo-config 6.11.2 8.0.2: Oslo Configuration API
+dev-python/oslo-config 6.11.2 8.0.3: Oslo Configuration API
 dev-python/oslo-context 2.22.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 4.45.0 8.1.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.23.1: Oslo i18n library
 dev-python/oslo-log 3.44.1 4.1.2: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 10.2.0 12.1.0: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-messaging 10.2.0 12.1.0 12.1.1: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.37.1 4.0.2: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 2.3.3 3.1.0: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.33.3: OpenStack library for privilege separation.
@@ -8181,7 +8181,7 @@ dev-python/oslo-versionedobjects 1.35.1 2.0.2: A library that provides a generic
 dev-python/oslo-vmware 2.32.2 3.3.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.7.1: Oslo test framework
 dev-python/osprofiler 2.6.0: OpenStack Profiler Library
-dev-python/ovs 2.10.0-r1 2.11.0 2.13.0: OVS bindings for python.
+dev-python/ovs 2.11.0 2.13.0: OVS bindings for python.
 dev-python/ovsdbapp 0.17.2 1.1.0: A library for creating OVSDB applications
 dev-python/owslib 0.17.1-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 20.3 20.4: Core utilities for Python packages
@@ -8778,7 +8778,7 @@ dev-python/stapler 1.0_pre20191215-r1: Suite of tools for PDF files manipulation
 dev-python/statsd 3.3.0: A simple statsd client
 dev-python/statsmodels 0.10.2 0.11.1 9999: Statistical computations and models for use with SciPy
 dev-python/stestr 2.1.0-r1: A parallel Python test runner built around subunit
-dev-python/stevedore 1.31.0-r1 1.32.0 2.0.0 2.0.1: Manage dynamic plugins for Python applications
+dev-python/stevedore 1.31.0-r1 2.0.1: Manage dynamic plugins for Python applications
 dev-python/strict-rfc3339 0.7-r1: Strict, simple, lightweight RFC3339 functions
 dev-python/stripe 2.43.0 2.46.0: Stripe python bindings
 dev-python/subprocess32 3.5.4: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
@@ -14902,7 +14902,7 @@ net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-c
 net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1 6.2_p3-r2: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openssh 8.1_p1-r3 8.2_p1-r5 8.2_p1-r6 8.3_p1-r2: Port of OpenBSD's free SSH release
-net-misc/openvswitch 2.10.2 2.11.1-r1 2.13.0: Production quality, multilayer virtual switch
+net-misc/openvswitch 2.13.0: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.6.0.13018 2.6.1.13407-r1 2.6.3.14058: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8.1 1.9 2.1: Packet generator tool for ethernet
 net-misc/pcapfix 0.7 1.1.4: Repair and fix broken pcap files
@@ -17022,11 +17022,11 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 15.0.2 15.1.0 16.0.0 2019.2.9999 2020.1.9999: A virtual network service for Openstack
-sys-cluster/nova 20.2.0 20.3.0 21.0.0 2019.2.9999 2020.1.9999: Cloud computing fabric controller
+sys-cluster/nova 20.3.0 21.0.0 2019.2.9999 2020.1.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3: A high-performance message passing library (MPI)
-sys-cluster/openstack-meta 2019.2.2 2019.2.9999 2020.1.0 2020.1.9999: A openstack meta-package for installing the various openstack pieces
+sys-cluster/openstack-meta 2019.2.3 2019.2.9999 2020.1.0 2020.1.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1: Pacemaker CRM
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
@@ -17042,7 +17042,7 @@ sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1 3.5.3-r1: Application containers for Linux
 sys-cluster/slurm 20.02.3.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.3.1-r1 2.4.5: Lightning-fast unified analytics engine
-sys-cluster/swift 2.23.1-r2 2.24.0-r1 2.25.0 2019.2.9999 2020.1.9999: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.24.0-r1 2.25.0 2019.2.9999 2020.1.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 4.1.7-r1 4.2.10-r1 6.0.4-r1: Resource manager and queuing system based on OpenPBS
 sys-cluster/ucx 1.2.2-r1 1.3.0 1.5.2: Unified Communication X
@@ -17296,7 +17296,7 @@ sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Ko
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 048-r1 049-r3 050 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.5.3.3 4.0.7-r1 4.0.8 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.5.3.3 4.0.7-r1 4.0.8 4.0.9 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.46 5.4.47 5.6.18 5.6.19 5.7.4: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.46 5.4.47 5.6.18 5.6.19 5.7.4: Pre-built Linux kernel with genpatches
@@ -18815,7 +18815,7 @@ xfce-base/libxfce4util 4.14.0 4.15.0 4.15.1: A basic utility library for the Xfc
 xfce-base/thunar 1.8.12 1.8.14 1.8.15 4.15.0: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.14.3 4.14.4 4.15.2: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.14.3 4.14.4 4.15.2 4.15.3: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.1 4.14.2: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.2 4.14.3 4.15.0 4.15.1-r1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1 4.14.3: A configuration management system for Xfce
