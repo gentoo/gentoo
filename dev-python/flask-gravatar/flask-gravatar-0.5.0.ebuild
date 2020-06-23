@@ -12,17 +12,15 @@ inherit distutils-r1
 DESCRIPTION="Small extension for Flask to make usage of Gravatar service easy"
 HOMEPAGE="https://github.com/zzzsochi/Flask-Gravatar/"
 SRC_URI="mirror://pypi/F/${MY_PN}/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
-
 SLOT="0"
-
 KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/flask[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
 
-S=${WORKDIR}/${MY_P}
+src_prepare() {
+	sed -i -e '/pytest-runner/d' setup.py || die
+	distutils-r1_src_prepare
+}
