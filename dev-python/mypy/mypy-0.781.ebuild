@@ -27,8 +27,12 @@ IUSE="doc test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/flake8[${PYTHON_USEDEP}]
-			dev-python/pytest[${PYTHON_USEDEP}]
-			dev-python/pytest-xdist[${PYTHON_USEDEP}] )
+			>=dev-python/pytest-3.0[${PYTHON_USEDEP}]
+			>=dev-python/pytest-xdist-1.18[${PYTHON_USEDEP}]
+			>=dev-python/pytest-cov-2.4.0[${PYTHON_USEDEP}]
+			>=dev-python/psutil-5.4.0[${PYTHON_USEDEP}]
+			>=dev-python/lxml-4.1.1[${PYTHON_USEDEP}]
+			>=dev-python/py-1.5.2[${PYTHON_USEDEP}] )
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
