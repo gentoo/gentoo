@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-invalid-move.patch
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-autotools.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
