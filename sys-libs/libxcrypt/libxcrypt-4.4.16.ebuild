@@ -62,6 +62,7 @@ get_xclibdir() {
 
 multilib_src_configure() {
 	local -a myconf=(
+		--disable-werror
 		--libdir=$(get_xclibdir)
 		--with-pkgconfigdir=/usr/$(get_libdir)/pkgconfig
 		--includedir="${EPREFIX}/usr/include/$(usex system '' 'xcrypt')"
