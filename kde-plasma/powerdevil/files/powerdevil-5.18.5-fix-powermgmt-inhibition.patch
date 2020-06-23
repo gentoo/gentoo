@@ -1,0 +1,80 @@
+From d21102cc6c7a4db204a29f376ce5eb316ef57a6e Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Fri, 19 Jun 2020 19:51:06 +0200
+Subject: [PATCH] Watch DBus service right away to discard pending inhibitions
+ reliably
+
+PowerDevil delays applying a power management inhibition by 5 seconds to avoid brief inhibitions
+to e.g. wake up the screen and similar.
+However, when an inhibition was posted and the process then quit, we would then still
+enforce the inhibition as it wasn't explicitly revoked.
+Fix this by always watching the inhibition sender and remove it from pending when the
+service goes away.
+
+BUG: 423131
+FIXED-IN: 5.18.6
+---
+ daemon/powerdevilpolicyagent.cpp | 26 ++++++++++++--------------
+ 1 file changed, 12 insertions(+), 14 deletions(-)
+
+diff --git a/daemon/powerdevilpolicyagent.cpp b/daemon/powerdevilpolicyagent.cpp
+index a7d92dfd..2c2b1152 100644
+--- a/daemon/powerdevilpolicyagent.cpp
++++ b/daemon/powerdevilpolicyagent.cpp
+@@ -513,6 +513,11 @@ uint PolicyAgent::addInhibitionWithExplicitDBusService(uint types, const QString
+ 
+     const int cookie = m_lastCookie; // when the Timer below fires, m_lastCookie might be different already
+ 
++    if (!m_busWatcher.isNull() && !service.isEmpty()) {
++        m_cookieToBusService.insert(cookie, service);
++        m_busWatcher.data()->addWatchedService(service);
++    }
++
+     m_pendingInhibitions.append(cookie);
+ 
+     qCDebug(POWERDEVIL) << "Scheduling inhibition from" << service << appName << "with cookie"
+@@ -532,11 +537,6 @@ uint PolicyAgent::addInhibitionWithExplicitDBusService(uint types, const QString
+ 
+         m_cookieToAppName.insert(cookie, qMakePair<QString, QString>(appName, reason));
+ 
+-        if (!m_busWatcher.isNull() && !service.isEmpty()) {
+-            m_cookieToBusService.insert(cookie, service);
+-            m_busWatcher.data()->addWatchedService(service);
+-        }
+-
+         addInhibitionTypeHelper(cookie, static_cast< PolicyAgent::RequiredPolicies >(types));
+ 
+         Q_EMIT InhibitionsChanged({ {qMakePair(appName, reason)} }, {});
+@@ -596,22 +596,20 @@ void PolicyAgent::ReleaseInhibition(uint cookie)
+ {
+     qCDebug(POWERDEVIL) << "Releasing inhibition with cookie " << cookie;
+ 
+-    if (m_pendingInhibitions.contains(cookie)) {
++    QString service = m_cookieToBusService.take(cookie);
++    if (!m_busWatcher.isNull() && !service.isEmpty() && !m_cookieToBusService.key(service)) {
++        // no cookies from service left
++        m_busWatcher.data()->removeWatchedService(service);
++    }
++
++    if (m_pendingInhibitions.removeOne(cookie)) {
+         qCDebug(POWERDEVIL) << "It was only scheduled for inhibition but not enforced yet, just discarding it";
+-        m_pendingInhibitions.removeOne(cookie);
+         return;
+     }
+ 
+     Q_EMIT InhibitionsChanged(QList<InhibitionInfo>(), { {m_cookieToAppName.value(cookie).first} });
+     m_cookieToAppName.remove(cookie);
+ 
+-
+-    QString service = m_cookieToBusService.take(cookie);
+-    if (!m_busWatcher.isNull() && !service.isEmpty() && !m_cookieToBusService.key(service)) {
+-        // no cookies from service left
+-        m_busWatcher.data()->removeWatchedService(service);
+-    }
+-
+     // Look through all of the inhibition types
+     bool notify = false;
+     if (m_typesToCookie[ChangeProfile].contains(cookie)) {
+-- 
+GitLab
+
