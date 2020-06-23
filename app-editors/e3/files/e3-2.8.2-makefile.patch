@@ -30,7 +30,7 @@
  	cat e3.asm | sed -f e3_32to64.sed  >e3.tmp
  	$(ASSEMBLER64)
 -	ld -b elf64-x86-64 --oformat elf64-x86-64 -o e3 e3.o
-+	$(LD) -b elf64-x86-64 --oformat elf64-x86-64 -o e3 e3.o
++	$(LD) -o e3 e3.o
  ifneq	($(DEBUG),true)
  	strip e3
  endif
