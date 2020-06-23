@@ -20,7 +20,17 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/flask[${PYTHON_USEDEP}]"
 
+distutils_enable_tests pytest
+
 src_prepare() {
 	sed -i -e '/pytest-runner/d' setup.py || die
+	sed -e 's:--pep8::' \
+		-e 's:--cov=flask_gravatar --cov-report=term-missing::' \
+		-i pytest.ini || die
 	distutils-r1_src_prepare
+}
+
+python_test() {
+	cd tests || die
+	pytest -vv || die "Tests failed with ${EPYTHON}"
 }
