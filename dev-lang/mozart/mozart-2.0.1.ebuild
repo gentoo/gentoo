@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake-utils java-pkg-2 java-ant-2
 
-PATCHSET_VER="0"
+PATCHSET_VER="1"
 
 DESCRIPTION="Advanced development platform for intelligent, distributed applications"
 HOMEPAGE="http://mozart2.org/"
@@ -28,8 +28,8 @@ DEPEND="${RDEPEND}
 	dev-java/ant-core
 	>=virtual/jdk-1.8:=
 	|| (
-		dev-lang/scala
-		dev-lang/scala-bin
+		dev-lang/scala:2.12
+		dev-lang/scala-bin:0
 	)
 	test? ( dev-cpp/gtest:= )"
 
@@ -60,7 +60,7 @@ src_configure() {
 
 src_compile() {
 	if has_version "dev-lang/scala"; then
-		EANT_GENTOO_CLASSPATH="scala"
+		EANT_GENTOO_CLASSPATH="scala:2.12"
 	else
 		EANT_GENTOO_CLASSPATH="scala-bin"
 	fi
