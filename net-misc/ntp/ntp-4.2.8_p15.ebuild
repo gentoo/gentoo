@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools toolchain-funcs flag-o-matic user systemd
+inherit autotools toolchain-funcs flag-o-matic systemd
 
 MY_P=${P/_p/p}
 DESCRIPTION="Network Time Protocol suite/programs"
@@ -13,10 +13,10 @@ SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${PV:0:3}/${MY_P}.tar
 
 LICENSE="HPND BSD ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~m68k-mint"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~m68k-mint"
 IUSE="caps debug ipv6 libressl openntpd parse-clocks readline samba selinux snmp ssl +threads vim-syntax zeroconf"
 
-CDEPEND="readline? ( >=sys-libs/readline-4.1:0= )
+COMMON_DEPEND="readline? ( >=sys-libs/readline-4.1:0= )
 	>=dev-libs/libevent-2.0.9:=[threads?]
 	kernel_linux? ( caps? ( sys-libs/libcap ) )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
@@ -26,9 +26,13 @@ CDEPEND="readline? ( >=sys-libs/readline-4.1:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
 	parse-clocks? ( net-misc/pps-tools )"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+BDEPEND="virtual/pkgconfig
+	acct-group/ntp
+	acct-user/ntp"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	acct-group/ntp
+	acct-user/ntp
 	selinux? ( sec-policy/selinux-ntp )
 	vim-syntax? ( app-vim/ntp-syntax )
 	!net-misc/ntpsec
@@ -43,12 +47,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.8-sntp-test-pthreads.patch #563922
 	"${FILESDIR}"/${PN}-4.2.8_p10-fix-build-wo-ssl-or-libressl.patch
 	"${FILESDIR}"/${PN}-4.2.8_p12-libressl-2.8.patch
+	"${FILESDIR}"/${PN}-4.2.8_p14-add_cap_ipc_lock.patch #711530
 )
-
-pkg_setup() {
-	enewgroup ntp 123
-	enewuser ntp 123 -1 /dev/null ntp
-}
 
 src_prepare() {
 	default
@@ -90,14 +90,14 @@ src_install() {
 	default
 	# move ntpd/ntpdate to sbin #66671
 	dodir /usr/sbin
-	mv "${ED%/}"/usr/bin/{ntpd,ntpdate} "${ED%/}"/usr/sbin/ || die "move to sbin"
+	mv "${ED}"/usr/bin/{ntpd,ntpdate} "${ED}"/usr/sbin/ || die "move to sbin"
 
 	dodoc INSTALL WHERE-TO-START
 	doman "${WORKDIR}"/man/*.[58]
 
 	insinto /etc
 	doins "${FILESDIR}"/ntp.conf
-	use ipv6 || sed -i '/^restrict .*::1/d' "${ED%/}"/etc/ntp.conf #524726
+	use ipv6 || sed -i '/^restrict .*::1/d' "${ED}"/etc/ntp.conf #524726
 	newinitd "${FILESDIR}"/ntpd.rc-r1 ntpd
 	newconfd "${FILESDIR}"/ntpd.confd ntpd
 	newinitd "${FILESDIR}"/ntp-client.rc ntp-client
@@ -105,9 +105,9 @@ src_install() {
 	newinitd "${FILESDIR}"/sntp.rc sntp
 	newconfd "${FILESDIR}"/sntp.confd sntp
 	if ! use caps ; then
-		sed -i "s|-u ntp:ntp||" "${ED%/}"/etc/conf.d/ntpd || die
+		sed -i "s|-u ntp:ntp||" "${ED}"/etc/conf.d/ntpd || die
 	fi
-	sed -i "s:/usr/bin:/usr/sbin:" "${ED%/}"/etc/init.d/ntpd || die
+	sed -i "s:/usr/bin:/usr/sbin:" "${ED}"/etc/init.d/ntpd || die
 
 	keepdir /var/lib/ntp
 	use prefix || fowners ntp:ntp /var/lib/ntp
@@ -122,15 +122,15 @@ src_install() {
 		systemd_newunit "${FILESDIR}"/ntpd.service-r2 ntpd.service
 		if use caps ; then
 			sed -i '/ExecStart/ s|$| -u ntp:ntp|' \
-				"${D%/}$(systemd_get_systemunitdir)"/ntpd.service \
+				"${D}$(systemd_get_systemunitdir)"/ntpd.service \
 				|| die
 		fi
 		systemd_enable_ntpunit 60-ntpd ntpd.service
 	fi
 
-	systemd_newunit "${FILESDIR}"/ntpdate.service-r1 ntpdate.service
+	systemd_newunit "${FILESDIR}"/ntpdate.service-r2 ntpdate.service
 	systemd_install_serviced "${FILESDIR}"/ntpdate.service.conf
-	systemd_newunit "${FILESDIR}"/sntp.service-r2 sntp.service
+	systemd_newunit "${FILESDIR}"/sntp.service-r3 sntp.service
 	systemd_install_serviced "${FILESDIR}"/sntp.service.conf
 }
 
