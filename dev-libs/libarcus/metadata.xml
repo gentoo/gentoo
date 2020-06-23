@@ -21,6 +21,11 @@
 		<email>perlovka@gmail.com</email>
 		<name>Michael Perlov</name>
 	</maintainer>
+	<longdescription>
+		This library contains C++ code and Python3 bindings for creating a socket in a thread and using this socket to
+		send and receive messages based on the Protocol Buffers library.
+		It is designed to facilitate the communication between Cura and its backend and similar code.
+	</longdescription>
 	<slots>
 		<subslots>soname major version number</subslots>
 	</slots>
