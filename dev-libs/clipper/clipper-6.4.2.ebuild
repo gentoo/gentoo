@@ -21,7 +21,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/cpp"
 
