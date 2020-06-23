@@ -3411,7 +3411,7 @@ dev-embedded/xa 2.3.10: High-speed, two-pass portable 6502 cross-assembler
 dev-embedded/zmac 1.3-r1: Z80 macro cross-assembler
 dev-erlang/base64url 1.0.1: URL safe base64-compatible codec
 dev-erlang/cache_tab 1.0.7 1.0.20 1.0.22: In-memory cache Erlang and Elixir library
-dev-erlang/eimp 1.0.9 1.0.12 1.0.14: Erlang Image Manipulation Process
+dev-erlang/eimp 1.0.9 1.0.12 1.0.14 1.0.15: Erlang Image Manipulation Process
 dev-erlang/epam 1.0.2 1.0.6 1.0.7: epam for ejabberd to help with PAM authentication support
 dev-erlang/eredis 1.0.8: Erlang Redis client
 dev-erlang/esip 1.0.11 1.0.26 1.0.30 1.0.32: ProcessOne SIP server component
