@@ -1,0 +1,29 @@
+
+Title: sys-libs/pam-1.4.0 upgrade
+Author: Mikle Kolyada <zlogene@gentoo.org>
+Content-Type: text/plain
+Posted: 2020-06-23
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: sys-libs/pam
+Display-If-Installed: sys-auth/pambase
+
+Starting with the 1.4.0 release [1], we don't offer these modules anymore:
+
+* pam_tally and pam_tally2 have been deprecated and replaced
+  by the pam_faillock module
+* pam_cracklib has been deprecated and replaced
+  by the pam_passwdqc module
+
+These changes affected our basic PAM stack configuration.
+
+You only need to take action if:
+* you made manual changes to the PAM stack, or
+* you use FEATURES="-config-protect-if-modified" option
+
+If this applies to you, please make sure to either run the etc-update or
+dispatch-conf command in order to sync your configuration.
+
+Failure to do this may result in your system becoming inaccessible.
+
+[1] - https://github.com/linux-pam/linux-pam/releases/tag/v1.4.0
