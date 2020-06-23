@@ -116,6 +116,11 @@ src_install() {
 	use vim && newdoc editors/scvim/README.md README.vim
 }
 
+src_test() {
+	export QT_QPA_PLATFORM=offscreen
+	cmake_src_test
+}
+
 pkg_postinst() {
 	einfo "Notice: SuperCollider is not very intuitive to get up and running."
 	einfo "The best course of action to make sure that the installation was"
