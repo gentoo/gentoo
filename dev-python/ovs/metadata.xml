@@ -5,9 +5,6 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		Openvsywitch python bindings
-	</longdescription>
 	<upstream>
 		<remote-id type="github">openvswitch/ovs</remote-id>
 		<remote-id type="pypi">ovs</remote-id>

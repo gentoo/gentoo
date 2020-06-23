@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{6..9} )
-inherit cmake-multilib linux-info llvm.org multiprocessing python-any-r1
+inherit cmake-multilib linux-info llvm.org python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
@@ -39,9 +39,6 @@ BDEPEND="dev-lang/perl
 		>=sys-devel/clang-6
 	)"
 
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
-
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
@@ -65,13 +62,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	# cmake eclasses suck by forcing ${S} here
-	CMAKE_USE_DIR=${S} \
-	S=${WORKDIR} \
-	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -98,7 +88,7 @@ multilib_src_configure() {
 	use test && mycmakeargs+=(
 		# this project does not use standard LLVM cmake macros
 		-DOPENMP_LLVM_LIT_EXECUTABLE="${EPREFIX}/usr/bin/lit"
-		-DOPENMP_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+		-DOPENMP_LIT_ARGS="$(get_lit_flags)"
 
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"

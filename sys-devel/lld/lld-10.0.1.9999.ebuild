@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
-inherit cmake llvm llvm.org multiprocessing python-any-r1
+inherit cmake llvm llvm.org python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
@@ -22,9 +22,6 @@ RDEPEND="~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( $(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )"
 
-# least intrusive of all
-CMAKE_BUILD_TYPE=RelWithDebInfo
-
 python_check_deps() {
 	has_version -b "dev-python/lit[${PYTHON_USEDEP}]"
 }
@@ -32,13 +29,6 @@ python_check_deps() {
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	# cmake eclasses suck by forcing ${S} here
-	CMAKE_USE_DIR=${S} \
-	S=${WORKDIR} \
-	cmake_src_prepare
 }
 
 src_configure() {
@@ -51,7 +41,7 @@ src_configure() {
 		-DLLVM_BUILD_TESTS=ON
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)
 
 	cmake_src_configure
