@@ -48,7 +48,7 @@ src_install() {
 	dobin beep
 	doman "${PN}.1"
 
-	if use suid ; then
+	if use suid; then
 		fowners :audio /usr/bin/beep
 		fperms 4710 /usr/bin/beep
 	else

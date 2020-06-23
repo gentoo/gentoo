@@ -67,6 +67,8 @@ QA_PREBUILT="/usr/lib/lxd/libdqlite.so.0.0.1
 EGO_PN="github.com/lxc/lxd"
 GOPATH="${S}/_dist" # this seems to reset every now and then, though
 
+PATCHES=( "${FILESDIR}"/lxd-4.0.1-clang.patch )
+
 common_op() {
 	local i
 	for i in dqlite raft; do
