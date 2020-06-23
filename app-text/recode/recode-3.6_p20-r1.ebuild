@@ -35,8 +35,9 @@ src_prepare() {
 
 	rm "${WORKDIR}"/debian/patches/series || die
 	epatch \
+		"${FILESDIR}/${MY_P}-recode.texi.patch" \
 		"${FILESDIR}/${MY_P}-gettextfix.diff" \
-		"${FILESDIR}"/${MY_P}-as-if.patch \
+		"${FILESDIR}/${MY_P}-as-if.patch" \
 		"${WORKDIR}"/debian/patches/*
 	sed -i '1i#include <stdlib.h>' src/argmatch.c || die
 

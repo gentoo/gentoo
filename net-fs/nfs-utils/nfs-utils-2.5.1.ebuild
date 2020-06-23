@@ -64,13 +64,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
-	"${FILESDIR}"/${PN}-1.2.8-cross-build.patch
 	"${FILESDIR}"/${PN}-2.4.2-no-werror.patch
-	"${FILESDIR}"/${PN}-2.4.1-statx.patch #688644
-	"${FILESDIR}"/${P}-Ensure-consistent-struct-stat.patch
-	"${FILESDIR}"/${P}-mountd-Add-check-for-struct-file_handle.patch
-	"${FILESDIR}"/${P}-mountd-Fix-compilation-for--disable-uuid.patch
+	"${FILESDIR}"/${PN}-2.4.2-Ensure-consistent-struct-stat.patch
 )
 
 pkg_setup() {
