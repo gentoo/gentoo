@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gcc4.patch
 	"${FILESDIR}"/${PN}-warnings.patch
 	"${FILESDIR}"/${PN}-no-common.patch
+	"${FILESDIR}"/${PN}-void-functions.patch
 )
 
 src_prepare() {
