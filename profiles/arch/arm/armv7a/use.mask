@@ -14,3 +14,7 @@
 -cpu_flags_arm_vfpv3
 -cpu_flags_arm_vfpv4
 -cpu_flags_arm_vfp-d32
+
+# Sam James <sam@cmpct.info> (2020-06-24)
+# Valgrind works on ARMv7
+-valgrind
