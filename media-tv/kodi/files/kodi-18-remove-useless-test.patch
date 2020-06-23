@@ -1,0 +1,51 @@
+From 6cf1d4aaf9807a209f19e0aea97b44a7ae617f27 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Tue, 23 Jun 2020 14:30:29 -0400
+Subject: [PATCH] [test] TestCPUInfo: remove useless test as we cannot
+ guarantee that they exist
+
+---
+ xbmc/utils/test/TestCPUInfo.cpp | 30 ------------------------------
+ 1 file changed, 30 deletions(-)
+
+diff --git a/xbmc/utils/test/TestCPUInfo.cpp b/xbmc/utils/test/TestCPUInfo.cpp
+index fab473891356..df74ca3ee995 100644
+--- a/xbmc/utils/test/TestCPUInfo.cpp
++++ b/xbmc/utils/test/TestCPUInfo.cpp
+@@ -73,36 +73,6 @@ TEST(TestCPUInfo, getTemperature)
+ }
+ #endif
+ 
+-TEST(TestCPUInfo, getCPUModel)
+-{
+-  std::string s = g_cpuInfo.getCPUModel();
+-  EXPECT_STRNE("", s.c_str());
+-}
+-
+-TEST(TestCPUInfo, getCPUBogoMips)
+-{
+-  std::string s = g_cpuInfo.getCPUBogoMips();
+-  EXPECT_STRNE("", s.c_str());
+-}
+-
+-TEST(TestCPUInfo, getCPUHardware)
+-{
+-  std::string s = g_cpuInfo.getCPUHardware();
+-  EXPECT_STRNE("", s.c_str());
+-}
+-
+-TEST(TestCPUInfo, getCPURevision)
+-{
+-  std::string s = g_cpuInfo.getCPURevision();
+-  EXPECT_STRNE("", s.c_str());
+-}
+-
+-TEST(TestCPUInfo, getCPUSerial)
+-{
+-  std::string s = g_cpuInfo.getCPUSerial();
+-  EXPECT_STRNE("", s.c_str());
+-}
+-
+ TEST(TestCPUInfo, CoreInfo)
+ {
+   ASSERT_TRUE(g_cpuInfo.HasCoreId(0));
