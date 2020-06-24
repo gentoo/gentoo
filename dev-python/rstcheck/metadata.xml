@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>samuelbernardo.mail@gmail.com</email>
+		<name>Samuel Bernardo</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">rstcheck</remote-id>
+		<remote-id type="github">myint/rstcheck</remote-id>
+		<bugs-to>https://github.com/myint/rstcheck/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
