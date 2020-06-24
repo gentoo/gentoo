@@ -13,7 +13,10 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
-IUSE="caps gdm jpeg new-login offensive opengl pam +perl selinux suid xinerama"
+IUSE="caps +gdk-pixbuf gdm +gtk jpeg +locking new-login offensive opengl pam +perl selinux suid xinerama"
+REQUIRED_USE="
+	gdk-pixbuf? ( gtk )
+"
 
 COMMON_DEPEND="
 	>=gnome-base/libglade-2
@@ -21,8 +24,6 @@ COMMON_DEPEND="
 	media-libs/netpbm
 	x11-apps/appres
 	x11-apps/xwininfo
-	x11-libs/gdk-pixbuf:2[X]
-	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXft
@@ -32,6 +33,8 @@ COMMON_DEPEND="
 	x11-libs/libXt
 	x11-libs/libXxf86vm
 	caps? ( sys-libs/libcap )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[X] )
+	gtk? ( x11-libs/gtk+:2 )
 	jpeg? ( virtual/jpeg:0 )
 	new-login? (
 		gdm? ( gnome-base/gdm )
@@ -111,19 +114,19 @@ src_configure() {
 	export RPM_PACKAGE_VERSION=no #368025
 
 	econf \
+		$(use_enable locking) \
 		$(use_with caps setcap-hacks) \
+		$(use_with gdk-pixbuf pixbuf) \
+		$(use_with gtk) \
 		$(use_with jpeg) \
 		$(use_with new-login login-manager) \
 		$(use_with opengl gl) \
 		$(use_with pam) \
 		$(use_with suid setuid-hacks) \
 		$(use_with xinerama xinerama-ext) \
-		--enable-locking \
 		--with-configdir="${EPREFIX}"/usr/share/${PN}/config \
 		--with-dpms-ext \
-		--with-gtk \
 		--with-hackdir="${EPREFIX}"/usr/$(get_libdir)/misc/${PN} \
-		--with-pixbuf \
 		--with-proc-interrupts \
 		--with-randr-ext \
 		--with-text-file="${EPREFIX}"/etc/gentoo-release \
@@ -135,6 +138,7 @@ src_configure() {
 		--with-xshm-ext \
 		--without-gle \
 		--without-kerberos \
+		--without-motif \
 		--x-includes="${EPREFIX}"/usr/include \
 		--x-libraries="${EPREFIX}"/usr/$(get_libdir)
 }
