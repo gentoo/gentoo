@@ -1,6 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2020-06-24)
+# sci-libs/ViSP[opencv] is masked on arm
+dev-ros/visp_tracker
+dev-ros/visp_auto_tracker
+dev-ros/visp_hand2eye_calibration
+ros-meta/vision_visp
+
 # Bernardo Meurer <bernardo@standard.ai> (2019-09-28)
 # Requires app-crypt/tpm2-tss which is pending ~arm vide
 # https://bugs.gentoo.org/695758
