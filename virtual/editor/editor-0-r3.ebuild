@@ -35,7 +35,6 @@ RDEPEND="|| (
 	app-editors/ne
 	app-editors/neovim
 	app-editors/ng
-	app-editors/nvi
 	app-editors/qemacs
 	app-editors/teco
 	app-editors/uemacs-pk
