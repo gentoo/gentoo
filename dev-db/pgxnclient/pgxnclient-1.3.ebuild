@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
@@ -28,10 +28,8 @@ distutils_enable_tests pytest
 RDEPEND="dev-db/postgresql:*[server]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	test? (
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}] )
+DEPEND+="${RDEPEND}
+	test? (	dev-python/mock[${PYTHON_USEDEP}] )
 "
 
 src_prepare() {
