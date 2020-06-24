@@ -16,12 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 LICENSE="BSD"
 SLOT="0"
 
-IUSE="test"
-
-# Test data isn't included in releases. So, the tests fail.
-# https://github.com/pgxn/pgxnclient/issues/36
-RESTRICT="test
-	!test? ( test )"
+IUSE=""
 
 distutils_enable_tests pytest
 
@@ -29,10 +24,11 @@ RDEPEND="dev-db/postgresql:*[server]
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND+="${RDEPEND}
-	test? (	dev-python/mock[${PYTHON_USEDEP}] )
 "
 
 src_prepare() {
+	sed "s/setup_requires/#/" -i setup.py || die
+
 	sed "s/find_packages()/find_packages(exclude=['tests'])/" -i setup.py || die
 
 	default
