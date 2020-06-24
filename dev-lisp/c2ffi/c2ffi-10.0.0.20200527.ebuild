@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake llvm
 
-MY_COMMIT="15fda06de0bad97bf91f5590f7f24623eab2f580"
+MY_COMMIT="a2d1f667b707fb413fc8ab2413446f15cb23de51"
 
 DESCRIPTION="Clang-based FFI wrapper generator for Common Lisp"
 HOMEPAGE="https://github.com/rpav/c2ffi"
@@ -16,11 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="sys-devel/clang:9=
-	sys-devel/llvm:9=
+DEPEND="sys-devel/clang:10=
+	sys-devel/llvm:10=
 "
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/c2ffi-${MY_COMMIT}"
 
-PATCHES=( "${FILESDIR}"/${PN}-9.0.0.20191017-fix-lib-location.patch )
+PATCHES=( "${FILESDIR}"/${PN}-10.0.0.20200527-add-target-link-directories.patch )
