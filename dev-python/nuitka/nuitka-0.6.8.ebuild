@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 eutils python-utils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Python to native compiler"
 HOMEPAGE="https://www.nuitka.net"
@@ -16,8 +16,6 @@ SRC_URI="https://nuitka.net/releases/${P^}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-IUSE="doc"
 
 BDEPEND="dev-util/scons[${PYTHON_USEDEP}]"
 
@@ -30,10 +28,7 @@ S="${WORKDIR}/${P^}"
 python_install() {
 	distutils-r1_python_install
 	python_optimize
-	doman doc/nuitka.1
-	doman doc/nuitka3.1
-	doman doc/nuitka3-run.1
-	doman doc/nuitka-run.1
+	doman doc/nuitka.1 doc/nuitka3.1 doc/nuitka3-run.1 doc/nuitka-run.1
 }
 
 pkg_postinst() {
