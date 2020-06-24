@@ -5348,7 +5348,7 @@ dev-libs/zziplib 0.13.69-r1: Lightweight library for extracting data from files 
 dev-lisp/abcl 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
 dev-lisp/alexandria 20171029: A collection of portable utilities for Common Lisp
 dev-lisp/asdf 3.1.5 3.3.1 3.3.2 3.3.2-r1: ASDF is Another System Definition Facility for Common Lisp
-dev-lisp/c2ffi 9.0.0.9999 9.0.0.20191017: Clang-based FFI wrapper generator for Common Lisp
+dev-lisp/c2ffi 10.0.0.9999 10.0.0.20200527: Clang-based FFI wrapper generator for Common Lisp
 dev-lisp/cl-ppcre 2.0.11 2.1.0: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11 2.1.0: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
