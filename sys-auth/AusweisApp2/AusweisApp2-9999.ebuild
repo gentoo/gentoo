@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake git-r3
+inherit cmake git-r3 xdg-utils
 
 DESCRIPTION="Official authentication app for German ID cards and residence permits"
 HOMEPAGE="https://www.ausweisapp.bund.de/"
@@ -36,4 +36,12 @@ DEPEND="${RDEPEND}"
 src_configure() {
 	local mycmakeargs=( -DBUILD_SHARED_LIBS=OFF )
 	cmake_src_configure
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
