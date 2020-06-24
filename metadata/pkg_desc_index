@@ -3310,7 +3310,7 @@ dev-db/pgmodeler 0.9.1 0.9.2: PostgreSQL Database Modeler
 dev-db/pgpool2 3.7.10 4.0.5 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.6.2-r1: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
-dev-db/pgxnclient 1.3-r1: PostgreSQL Extension Network Client
+dev-db/pgxnclient 1.3: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.9.5 5.0.2: Web-based administration for MySQL database in PHP
 dev-db/plr 8.3.0.17: R language extension for postgresql database
 dev-db/postgis 2.5.3-r1 3.0.0-r1 9999: Geographic Objects for PostgreSQL
@@ -7765,7 +7765,7 @@ dev-python/execnet 1.7.1: Rapid multi-Python deployment
 dev-python/expects 0.8.0-r1: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0: Useful extra bits for Python that should be in the standard library
 dev-python/eyeD3 0.8.11: Module for manipulating ID3 (v1 + v2) tags in Python
-dev-python/falcon 1.3.0 2.0.0: A supersonic micro-framework for building cloud APIs
+dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.14.1-r1 0.15: Python package that provides useful locks
 dev-python/fastparquet 0.1.1 0.1.5: Python implementation of the parquet columnar file format
 dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
@@ -7791,7 +7791,7 @@ dev-python/flask-babelex 0.9.3 0.9.4: Adds i18n/l10n support to Flask applicatio
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-debug 0.4.3: Flask extension that displays various debugging insights during development
 dev-python/flask-gravatar 0.5.0: Small extension for Flask to make usage of Gravatar service easy
-dev-python/flask-htmlmin 1.5.2: Minimize your flask rendered html
+dev-python/flask-htmlmin 1.5.2 2.0.2: Minimize your flask rendered html
 dev-python/flask-login 0.4.1-r1: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
 dev-python/flask-migrate 2.5.2: SQLAlchemy database migrations for Flask applications using Alembic
@@ -8672,7 +8672,7 @@ dev-python/scrypt 0.8.13-r2 0.8.15: Bindings for the scrypt key derivation funct
 dev-python/seaborn 0.10.0: Statistical data visualization
 dev-python/secretstorage 3.1.1 3.1.1-r1 3.1.2: Python bindings to FreeDesktop.org Secret Service API.
 dev-python/selenium 3.141.0-r1: Python language binding for Selenium Remote Control
-dev-python/semantic_version 2.8.4: Python library providing a few tools handling SemVer in Python
+dev-python/semantic_version 2.8.4 2.8.5: Python library providing a few tools handling SemVer in Python
 dev-python/semver 2.10.2: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
@@ -8911,7 +8911,7 @@ dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiproxy2 0.4.6-r1: HTTP proxying tools for WSGI apps
 dev-python/wsproto 0.15.0: WebSockets state-machine based protocol implementation
 dev-python/wstools 0.4.5-r1 0.4.8: WSDL parsing services package for Web Services for Python
-dev-python/wtforms 2.2.1: Flexible forms validation and rendering library for python web development
+dev-python/wtforms 2.2.1 2.3.1: Flexible forms validation and rendering library for python web development
 dev-python/wurlitzer 2.0.0: Capture C-level stdout/stderr in Python
 dev-python/www-authenticate 0.9.2: WWW-Authenticate header parser
 dev-python/wxpython 3.0.2.0 4.0.7: A blending of the wxWindows C++ class library with Python
@@ -17187,7 +17187,7 @@ sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.99.8-r1: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.24 1.25: Copy data from one file or block device to another with read-error recovery
 sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
-sys-fs/diskdev_cmds 332.14_p1-r1 332.14_p1-r2: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
+sys-fs/diskdev_cmds 332.14_p1-r1 332.14_p1-r2 332.14_p1-r3: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dislocker 0.7.1-r2 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
@@ -17817,9 +17817,9 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10: a free, open source web browser
-www-client/opera 68.0.3618.165 68.0.3618.173: A fast and secure web browser
-www-client/opera-beta 69.0.3686.7 69.0.3686.12 69.0.3686.21 69.0.3686.30: A fast and secure web browser
-www-client/opera-developer 70.0.3693.0 70.0.3701.0 70.0.3707.0 70.0.3714.0 70.0.3721.0 70.0.3728.0: A fast and secure web browser
+www-client/opera 68.0.3618.165 68.0.3618.173 69.0.3686.36: A fast and secure web browser
+www-client/opera-beta 69.0.3686.30: A fast and secure web browser
+www-client/opera-developer 70.0.3721.0 70.0.3728.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.11.1-r1 1.12.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
@@ -17827,7 +17827,7 @@ www-client/seamonkey 2.53.2: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.1.1929.34_p1 3.1.1929.40_p1: A browser for our friends
+www-client/vivaldi 3.1.1929.40_p1: A browser for our friends
 www-client/vivaldi-snapshot 3.2.1950.3_p1 3.2.1952.3_p1 3.2.1957.9_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
