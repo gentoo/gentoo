@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-06-20)
+# Separate package in dev-tex is unmaintained. Included with TeX Live.
+# Use >=dev-texlive/texlive-latexextra-2020-r1 as replacement.
+# Removal in 30 days. Bug #729394.
+dev-tex/leaflet
+
 # Michał Górny <mgorny@gentoo.org> (2020-06-24)
 # A thin wrapper to run pytest via setup.py that must not be used
 # in Gentoo packages.  Calling 'setup.py test' is deprecated upstream
