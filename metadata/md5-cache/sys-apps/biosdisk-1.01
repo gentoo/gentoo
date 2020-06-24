@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=FreeDOS based BIOS updating utility for Dell machines
+EAPI=7
+HOMEPAGE=https://github.com/dell/biosdisk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=app-cdr/cdrtools sys-boot/grub sys-boot/syslinux
+SLOT=0
+SRC_URI=https://github.com/dell/biosdisk/archive/1.01.tar.gz -> biosdisk-1.01.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=9f4a5559f146ed606dc5cef48a023eb6
