@@ -33,10 +33,11 @@ BDEPEND="virtual/pkgconfig
 	java? ( >=virtual/jdk-1.5 )"
 
 S="${WORKDIR}/${MY_P}"
+PATCHES=("${FILESDIR}"/${PN}-format-security.patch)
 
 src_prepare() {
 	cp -a "${WORKDIR}/texmf-dist/"* texmf/ || die
-	eapply_user
+	default
 	cd "${S}/texmf/tex4ht/base/unix" || die
 	sed -i \
 		-e "s#~/tex4ht.dir#${EPREFIX}/usr/share#" \
