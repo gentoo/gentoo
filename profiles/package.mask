@@ -33,6 +33,53 @@
 #--- END OF EXAMPLES ---
 
 # Ulrich Müller <ulm@gentoo.org> (2020-06-24)
+# Included with TeX Live. The separate Gentoo package is
+# unmaintained and had its last version bump in 2004.
+# Use dev-texlive/texlive-bibtexextra as replacement.
+# Removal in 30 days. Bug #729470.
+dev-tex/harvard
+
+# Ulrich Müller <ulm@gentoo.org> (2020-06-24)
+# Included with TeX Live. Last version bump in 2005.
+# Use dev-texlive/texlive-fontsrecommended as replacement.
+# Removal in 30 days. Bug #729470.
+dev-tex/tipa
+
+# Ulrich Müller <ulm@gentoo.org> (2020-06-24)
+# Included with TeX Live. Last version bump in 2006 or earlier.
+# Use dev-texlive/texlive-latexextra as replacement.
+# Removal in 30 days. Bug #729470.
+dev-tex/flabels
+dev-tex/floatflt
+dev-tex/lazylist
+dev-tex/newlfm
+dev-tex/polytable
+
+# Ulrich Müller <ulm@gentoo.org> (2020-06-24)
+# Included with TeX Live. Last version bump in 2011.
+# Use dev-texlive/texlive-pictures as replacement.
+# Removal in 30 days. Bug #729470.
+dev-tex/curve
+
+# Ulrich Müller <ulm@gentoo.org> (2020-06-24)
+# Included with TeX Live. Last version bump in 2006. Fails to build.
+# Use dev-texlive/texlive-latexextra as replacement.
+# Removal in 30 days. Bug #719304.
+dev-tex/ellipsis
+
+# Ulrich Müller <ulm@gentoo.org> (2020-06-24)
+# Included with TeX Live. Fails to install.
+# Use dev-texlive/texlive-latexextra as replacement.
+# Removal in 30 days. Bug #708870.
+dev-tex/rcsinfo
+
+# Ulrich Müller <ulm@gentoo.org> (2020-06-24)
+# Included with TeX Live. Last version bump in 2005. Fails to build.
+# Use dev-texlive/texlive-latexextra as replacement.
+# Removal in 30 days. Bug #709310.
+dev-tex/texpower
+
+# Ulrich Müller <ulm@gentoo.org> (2020-06-24)
 # Included with TeX Live. The separate Gentoo packages are
 # unmaintained and had their last version bump in 2010 or earlier.
 # Use >=dev-texlive/texlive-latexextra-2020-r2 as replacement.
