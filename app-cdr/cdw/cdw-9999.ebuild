@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,6 @@ HOMEPAGE="http://cdw.sourceforge.net"
 
 LICENSE="GPL-2+"
 SLOT="0"
-DOCS=( AUTHORS ChangeLog NEWS README THANKS cdw.conf )
 
 RDEPEND="
 	app-cdr/dvd+rw-tools
@@ -26,6 +25,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${ECVS_MODULE}
+
+PATCHES=( "${FILESDIR}/${PN}-0.8.1-fix-ar-call.patch" )
+
+DOCS=( AUTHORS ChangeLog NEWS README THANKS cdw.conf )
 
 src_prepare() {
 	default
