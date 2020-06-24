@@ -10119,7 +10119,7 @@ dev-tex/floatflt 1.31a-r1: LaTeX package used to warp text around figures
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103-r1: Collection of blackletter fonts for LaTeX
 dev-tex/g-brief 4.0.2-r1: LaTeX styles for formless letters in German or English
-dev-tex/glossaries 4.41: Create glossaries and lists of acronyms
+dev-tex/glossaries 4.41 4.46: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
 dev-tex/herm-pic 1.0.2: LaTeX class for creating ERM and HER diagramms
 dev-tex/hevea 2.29 2.30 2.31: HeVeA is a quite complete and fast LaTeX to HTML translator
