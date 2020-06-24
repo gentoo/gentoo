@@ -1,9 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-# Does not yet support py3
-PYTHON_COMPAT=( python2_7 )
+EAPI="7"
+PYTHON_COMPAT=( python2_7 python3_{6..9} )
 PYTHON_REQ_USE="sqlite"
 
 inherit python-r1
@@ -18,15 +17,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-# No dependencies other than python >= 2.5
-# http://harelba.github.io/q/requirements.html
-RDEPEND="${PYTHON_DEPS}"
-DEPEND=""
+# Upstream is wrong
+# http://harelba.github.io/q/#requirements
+RDEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-python/six[${PYTHON_USEDEP}]
+		dev-python/flake8[${PYTHON_USEDEP}]
+	')"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+src_compile() {
+	: # Do not use the Makefile
+}
+
 q_install() {
-	python_newexe bin/q q-text-as-data
+	python_newexe bin/q.py q-text-as-data
 }
 
 src_install() {
