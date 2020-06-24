@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ IUSE="html twoside"
 # tl-bibtexextra: unsrturl.bst
 # tl-latexextra: chngcntr, gitinfo2, isodate, marginnote, paralist, tocbibind
 # tl-mathscience: algorithm, algorithmic
-BDEPEND="dev-tex/leaflet
+BDEPEND="|| ( >=dev-texlive/texlive-latexextra-2020-r1 dev-tex/leaflet )
 	dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
 	dev-texlive/texlive-latex
