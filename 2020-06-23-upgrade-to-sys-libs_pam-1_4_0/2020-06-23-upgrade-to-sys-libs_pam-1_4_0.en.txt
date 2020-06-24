@@ -1,4 +1,3 @@
-
 Title: sys-libs/pam-1.4.0 upgrade
 Author: Mikle Kolyada <zlogene@gentoo.org>
 Content-Type: text/plain
