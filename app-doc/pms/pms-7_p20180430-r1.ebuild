@@ -12,10 +12,10 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="html twoside"
 
-# texlive-bibtexextra: plainurl.bst
-# texlive-latexextra: chngcntr, isodate, marginnote, paralist, tocbibind
-# texlive-mathscience: algorithm, algorithmic
-# leaflet used by eapi-cheatsheet
+# texlive-bibtexextra for plainurl.bst
+# texlive-latexextra for chngcntr, isodate, leaflet, marginnote,
+#   paralist, tocbibind
+# texlive-mathscience for algorithm, algorithmic
 BDEPEND="|| ( >=dev-texlive/texlive-latexextra-2020-r1 dev-tex/leaflet )
 	dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
