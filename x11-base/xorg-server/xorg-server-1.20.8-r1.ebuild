@@ -176,13 +176,13 @@ pkg_setup() {
 	)
 
 	if use systemd || use elogind; then
-		XORG_CONFIGURE_OPTIONS+=( 
+		XORG_CONFIGURE_OPTIONS+=(
 			"--enable-systemd-logind"
 			"--disable-install-setuid"
 			"$(use_enable suid suid-wrapper)"
 		)
 	else
-		XORG_CONFIGURE_OPTIONS+=( 
+		XORG_CONFIGURE_OPTIONS+=(
 			"--disable-systemd-logind"
 			"--disable-suid-wrapper"
 			"$(use_enable suid install-setuid)"
