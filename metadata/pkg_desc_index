@@ -17983,7 +17983,7 @@ x11-apps/xwud 1.0.5: image displayer for X
 x11-base/xcb-proto 1.14-r1: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2019.2 2020.1 9999: X.Org combined protocol headers
-x11-base/xorg-server 1.20.7 1.20.8 9999: X.Org X servers
+x11-base/xorg-server 1.20.7 1.20.8 1.20.8-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 430.64-r4 435.21-r4 440.82-r3: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
