@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} pypy )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Lazy strings for Python"
@@ -14,14 +14,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-python_prepare() {
+python_configure_all() {
 	# https://github.com/mitsuhiko/speaklater/issues/2
-	if python_is_python3; then
-		2to3 -n -w --no-diffs ${PN}.py || die
-		2to3 -d -n -w --no-diffs ${PN}.py || die
-		# fix unicode in doctests
-		sed -ri "s/(^ {4}l?)u'/\1'/" ${PN}.py || die
-	fi
+	2to3 -n -w --no-diffs ${PN}.py || die
+	2to3 -d -n -w --no-diffs ${PN}.py || die
+	# fix unicode in doctests
+	sed -ri "s/(^ {4}l?)u'/\1'/" ${PN}.py || die
 }
 
 python_test() {
