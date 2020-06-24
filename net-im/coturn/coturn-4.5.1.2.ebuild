@@ -32,10 +32,16 @@ RDEPEND="acct-group/turnserver
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	if [ -n "${AR}" ]; then
+		sed 's:ARCHIVERCMD="ar -r":ARCHIVERCMD="${AR} -r":g' -i "${S}/configure"
+	fi
+	sed 's:MANPREFIX}/man/:MANPREFIX}/:g' -i "${S}/Makefile.in" || die "sed for mandir failed"
 	sed 's:#log-file=/var/tmp/turn.log:log-file=/var/log/turnserver.log:' \
 	    -i "${S}/examples/etc/turnserver.conf"  || die "sed for logdir failed"
 	sed 's:#simple-log:simple-log:' -i "${S}/examples/etc/turnserver.conf" \
 	    || die "sed for simple-log failed"
+	sed '/INSTALL_DIR} examples\/script/a \	\${INSTALL_DIR} examples\/ca \${DESTDIR}${EXAMPLESDIR}' \
+	    -i "${S}/Makefile.in" || die "sed for example ca failed"
 	if ! use mongodb; then
 		export TURN_NO_MONGO=yes
 	fi
@@ -51,7 +57,7 @@ src_configure() {
 	if ! use sqlite; then
 		export TURN_NO_SQLITE=yes
 	fi
-
+	export DOCSDIR="/usr/share/doc/${PN}-${PV}"
 	econf $(use_with sqlite)
 }
 
