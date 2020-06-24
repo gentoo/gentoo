@@ -5,7 +5,8 @@ EAPI=7
 
 inherit latex-package toolchain-funcs java-pkg-opt-2 flag-o-matic
 
-TL_TEX4HT_VER="2020"
+# from http://mirrors.ctan.org/systems/texlive/tlnet/archive/tex4ht.tar.xz
+TL_TEX4HT_VER="2020-06-24"
 
 # tex4ht-20050331_p2350 -> tex4ht-1.0.2005_03_31_2350
 MY_P="${PN}-1.0.${PV:0:4}_${PV:4:2}_${PV:6:2}_${PV/*_p/}"
@@ -14,7 +15,7 @@ DESCRIPTION="Converts (La)TeX to (X)HTML, XML and OO.org"
 HOMEPAGE="http://www.cse.ohio-state.edu/~gurari/TeX4ht/
 	http://www.cse.ohio-state.edu/~gurari/TeX4ht/bugfixes.html"
 SRC_URI="http://www.cse.ohio-state.edu/~gurari/TeX4ht/fix/${MY_P}.tar.gz
-	https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${PN}-${TL_TEX4HT_VER}.tar.xz"
+	https://dev.gentoo.org/~ulm/distfiles/${PN}-texlive-${TL_TEX4HT_VER}.tar.xz"
 
 LICENSE="LPPL-1.2"
 SLOT="0"
