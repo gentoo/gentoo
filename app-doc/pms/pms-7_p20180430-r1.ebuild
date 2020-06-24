@@ -16,7 +16,7 @@ IUSE="html twoside"
 # texlive-latexextra: chngcntr, isodate, marginnote, paralist, tocbibind
 # texlive-mathscience: algorithm, algorithmic
 # leaflet used by eapi-cheatsheet
-BDEPEND="dev-tex/leaflet
+BDEPEND="|| ( >=dev-texlive/texlive-latexextra-2020-r1 dev-tex/leaflet )
 	dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
 	dev-texlive/texlive-latex
