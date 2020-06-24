@@ -1,0 +1,32 @@
+Title: xorg-server dropping default suid
+Author: Piotr Karbowski <slashbeast@gentoo.org>
+Posted: 2020-06-24
+Revision: 3
+News-Item-Format: 2.0
+Display-If-Installed: x11-base/xorg-server
+
+Starting 2020-07-15, stable keyworded x11-base/xorg-server will default
+to using the logind interface instead of suid by default. resulting in
+better security by default through running the server as a regular user
+instead of root. However, this will require our users to use a logind
+provider such as elogind or systemd. The systemd users and those who are
+not using systemd but use desktop profiles can stop reading here, as
+they already have a logind provider enabled.
+
+Others, who have neither systemd or desktop profiles enabled will be
+required to globally enable 'elogind' USE flag and update the system
+
+    # emerge --newuse @world
+
+Afterwards, one will need to re-login, so the PAM can assign a seat. One
+can confirm that a seat has been assigned upon login by running:
+
+    $ loginctl user-status
+
+Users who do not wish to use logind interface or have rare hardware that
+does not use KMS and because of that, require root privileges to
+operate, can manually re-enable 'suid' and disable 'elogind' USE flags
+in order to preserve the previous behavior. However, please note that
+this is heavily discouraged to run X server as root due to security
+reasons. The 'suid' USE flag will remain as optional opt-in for the need
+of legacy hardware.
