@@ -2784,7 +2784,7 @@ app-text/tessdata_fast 4.0.0: Fast integer versions of trained models for app-te
 app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible with the legacy engine
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
-app-text/texlive 2020-r2: A complete TeX distribution
+app-text/texlive 2020-r3: A complete TeX distribution
 app-text/texlive-core 2020-r5: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
@@ -10185,13 +10185,13 @@ dev-texlive/texlive-langpolish 2020: TeXLive Polish
 dev-texlive/texlive-langportuguese 2020: TeXLive Portuguese
 dev-texlive/texlive-langspanish 2020: TeXLive Spanish
 dev-texlive/texlive-latex 2020: TeXLive LaTeX fundamental packages
-dev-texlive/texlive-latexextra 2020-r1: TeXLive LaTeX additional packages
+dev-texlive/texlive-latexextra 2020-r2: TeXLive LaTeX additional packages
 dev-texlive/texlive-latexrecommended 2020: TeXLive LaTeX recommended packages
 dev-texlive/texlive-luatex 2020: TeXLive LuaTeX packages
 dev-texlive/texlive-mathscience 2020: TeXLive Mathematics, natural sciences, computer science packages
 dev-texlive/texlive-metapost 2020-r1: TeXLive MetaPost and Metafont packages
 dev-texlive/texlive-music 2020: TeXLive Music packages
-dev-texlive/texlive-pictures 2020-r1: TeXLive Graphics, pictures, diagrams
+dev-texlive/texlive-pictures 2020-r2: TeXLive Graphics, pictures, diagrams
 dev-texlive/texlive-plaingeneric 2020: TeXLive Plain (La)TeX packages
 dev-texlive/texlive-pstricks 2020: TeXLive PSTricks
 dev-texlive/texlive-publishers 2020: TeXLive Publisher styles, theses, etc.
