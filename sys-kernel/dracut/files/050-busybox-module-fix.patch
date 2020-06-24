@@ -1,0 +1,102 @@
+From f769154bccf22d2b5caf5e4888f88bf7edde2662 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Mon, 25 May 2020 19:02:05 +0300
+Subject: [PATCH 1/2] dracut-functions: fix find_binary() to return full path
+
+Fixes: a01204202b30 (Allow running on a cross-compiled rootfs)
+---
+ dracut-functions.sh | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/dracut-functions.sh b/dracut-functions.sh
+index 3cb9c7af..b5c28248 100755
+--- a/dracut-functions.sh
++++ b/dracut-functions.sh
+@@ -41,31 +41,36 @@ str_ends() { [ "${1%*"$2"}" != "$1" ]; }
+ # search in the usual places to find the binary.
+ find_binary() {
+     local _delim
++    local _path
+     local l
+     local p
+     [[ -z ${1##/*} ]] || _delim="/"
+ 
+     if [[ "$1" == *.so* ]]; then
+         for l in libdirs ; do
+-            if { $DRACUT_LDD "$dracutsysrootdir$l$_delim$1" &>/dev/null; };  then
+-                printf "%s\n" "$1"
++            _path="${l}${_delim}${1}"
++            if { $DRACUT_LDD "${dracutsysrootdir}${_path}" &>/dev/null; };  then
++                printf "%s\n" "${_path}"
+                 return 0
+             fi
+         done
+-        if { $DRACUT_LDD "$dracutsysrootdir$_delim$1" &>/dev/null; }; then
+-            printf "%s\n" "$1"
++        _path="${_delim}${1}"
++        if { $DRACUT_LDD "${dracutsysrootdir}${_path}" &>/dev/null; }; then
++            printf "%s\n" "${_path}"
+             return 0
+         fi
+     fi
+     if [[ "$1" == */* ]]; then
+-        if [[ -L $dracutsysrootdir$_delim$1 ]] || [[ -x $dracutsysrootdir$_delim$1 ]]; then
+-            printf "%s\n" "$1"
++        _path="${_delim}${1}"
++        if [[ -L ${dracutsysrootdir}${_path} ]] || [[ -x ${dracutsysrootdir}${_path} ]]; then
++            printf "%s\n" "${_path}"
+             return 0
+         fi
+     fi
+     for p in $DRACUT_PATH ; do
+-        if [[ -L $dracutsysrootdir$p$_delim$1 ]] || [[ -x $dracutsysrootdir$p$_delim$1 ]];  then
+-            printf "%s\n" "$1"
++        _path="${p}${_delim}${1}"
++        if [[ -L ${dracutsysrootdir}${_path} ]] || [[ -x ${dracutsysrootdir}${_path} ]];  then
++            printf "%s\n" "${_path}"
+             return 0
+         fi
+     done
+-- 
+2.26.2
+
+From 50cc23ba32b0fda63eff7623b529dbeb4e6a38c6 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Mon, 25 May 2020 17:49:20 +0300
+Subject: [PATCH 2/2] busybox: simplify listing of supported utilities
+
+'--list' option is supported since busybox-1.20.0, which was released
+in 2010.
+---
+ modules.d/05busybox/module-setup.sh | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/modules.d/05busybox/module-setup.sh b/modules.d/05busybox/module-setup.sh
+index ecbd6a13..5d88c5d1 100755
+--- a/modules.d/05busybox/module-setup.sh
++++ b/modules.d/05busybox/module-setup.sh
+@@ -14,15 +14,16 @@ depends() {
+ 
+ # called by dracut
+ install() {
+-    local _i _progs _path _busybox
++    local _i _path _busybox
++    local _progs=()
+     _busybox=$(type -P busybox)
+     inst $_busybox /usr/bin/busybox
+-    for _i in $($_busybox | sed -ne '1,/Currently/!{s/,//g; s/busybox//g; p}')
+-    do
+-        _progs="$_progs $_i"
++    for _i in $($_busybox --list); do
++        [[ ${_i} == busybox ]] && continue
++        _progs+=("${_i}")
+     done
+ 
+-    for _i in $_progs; do
++    for _i in "${_progs[@]}"; do
+         _path=$(find_binary "$_i")
+         [ -z "$_path" ] && continue
+         ln_r /usr/bin/busybox $_path
+-- 
+2.26.2
+
