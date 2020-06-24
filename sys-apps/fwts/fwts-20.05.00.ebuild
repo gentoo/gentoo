@@ -4,6 +4,7 @@
 EAPI=7
 
 inherit autotools
+
 DESCRIPTION="Firmware Test Suite"
 HOMEPAGE="https://wiki.ubuntu.com/Kernel/Reference/fwts"
 SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${PV}.orig.tar.gz"
@@ -13,13 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND=">=dev-libs/json-c-0.10-r1
-	dev-libs/glib:2
+RDEPEND="dev-libs/glib:2
+	>=dev-libs/json-c-0.10-r1
 	dev-libs/libpcre
+	sys-apps/dmidecode
 	sys-apps/pciutils
 	sys-power/iasl
-	sys-power/pmtools
-	sys-apps/dmidecode"
+	sys-power/pmtools"
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
 
