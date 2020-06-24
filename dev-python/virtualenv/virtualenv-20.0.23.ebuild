@@ -40,23 +40,24 @@ RDEPEND="
 	' -2 python3_6 pypy3)"
 # coverage is used somehow magically in virtualenv, maybe it actually
 # tests something useful
-BDEPEND="${RDEPEND}
+BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
-		dev-python/coverage[${PYTHON_USEDEP}]
-		>=dev-python/pip-20.0.2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-mock-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/pytest-timeout-1.3.4[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
+		${RDEPEND}
 		$(python_gen_cond_dep '
+			dev-python/coverage[${PYTHON_USEDEP}]
+			>=dev-python/pip-20.0.2[${PYTHON_USEDEP}]
+			>=dev-python/pytest-5[${PYTHON_USEDEP}]
+			>=dev-python/pytest-mock-2.0.0[${PYTHON_USEDEP}]
+			>=dev-python/pytest-timeout-1.3.4[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
 			>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
-		' -3)
+		' 'python3*')
 	)"
 
 distutils_enable_sphinx docs \
 	dev-python/sphinx_rtd_theme \
 	dev-python/towncrier
-distutils_enable_tests pytest
 
 src_prepare() {
 	# we don't have xonsh

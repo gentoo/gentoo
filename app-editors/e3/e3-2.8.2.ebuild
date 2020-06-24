@@ -13,7 +13,6 @@ SRC_URI="https://sites.google.com/site/e3editor/Home/${MY_P}.tgz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
-RESTRICT="strip"
 
 BDEPEND=">=dev-lang/nasm-2.09.04"
 
@@ -22,7 +21,7 @@ PATCHES=("${FILESDIR}"/${P}-makefile.patch)
 QA_FLAGS_IGNORED="/usr/bin/e3"	#726484
 
 src_compile() {
-	emake -- $(usex amd64 64 32) LD="$(tc-getLD)"
+	emake -- $(usex amd64 64 32) LD="$(tc-getLD)" DEBUG=true
 }
 
 src_install() {
