@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?] dev-ml/dune
+DESCRIPTION=Pure OCaml library that allows replacing Pervasives with Stdlib before 4.08
+EAPI=7
+HOMEPAGE=https://github.com/ocaml/stdlib-shims
+IUSE=ocamlopt
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0
+SRC_URI=https://github.com/ocaml/stdlib-shims/releases/download/0.2.0/stdlib-shims-0.2.0.tbz
+_eclasses_=dune	48ca398457cfa7b91da98c276b97db03
+_md5_=67bcf920e12b0fa7b37a9fa455baf4a7
