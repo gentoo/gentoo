@@ -56,17 +56,11 @@ RDEPEND="${DEPEND}
 		>=${TEXLIVE_CAT}/texlive-bibtexextra-${PV}
 		>=${TEXLIVE_CAT}/texlive-fontsextra-${PV}
 		>=${TEXLIVE_CAT}/texlive-formatsextra-${PV}
-		>=${TEXLIVE_CAT}/texlive-latexextra-${PV}
-			>=dev-tex/glossaries-2.07
-			>=dev-tex/currvita-0.9i-r1
-			>=dev-tex/g-brief-4.0.2
-			>=dev-tex/envlab-1.2-r1
-			>=dev-tex/europecv-20060424-r1
-			>=dev-tex/svninfo-0.7.3-r1
+		>=${TEXLIVE_CAT}/texlive-latexextra-${PV}-r2
+		>=dev-tex/glossaries-2.07
 	)
 	xetex? ( >=${TEXLIVE_CAT}/texlive-xetex-${PV} )
-	graphics? ( >=${TEXLIVE_CAT}/texlive-pictures-${PV}
-		dev-tex/dot2texi )
+	graphics? ( >=${TEXLIVE_CAT}/texlive-pictures-${PV}-r2 )
 	epspdf? ( app-text/epspdf )
 	science? ( >=${TEXLIVE_CAT}/texlive-mathscience-${PV} )
 	publishers? ( >=${TEXLIVE_CAT}/texlive-publishers-${PV} )
