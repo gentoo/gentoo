@@ -22,7 +22,7 @@ RDEPEND="dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/blinker[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/speaklater[${PYTHON_USEDEP}] )"
 
 distutils_enable_sphinx docs
