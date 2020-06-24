@@ -13,12 +13,11 @@ HOMEPAGE="https://github.com/mankyd/htmlmin"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
-
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
 src_prepare() {
 	sed '/prune/d' -i MANIFEST.in || die
-	default
+	distutils-r1_src_prepare
 }
