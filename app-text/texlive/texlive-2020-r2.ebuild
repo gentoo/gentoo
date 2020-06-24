@@ -58,7 +58,6 @@ RDEPEND="${DEPEND}
 		>=${TEXLIVE_CAT}/texlive-formatsextra-${PV}
 		>=${TEXLIVE_CAT}/texlive-latexextra-${PV}
 			>=dev-tex/glossaries-2.07
-			>=dev-tex/leaflet-20041222
 			>=dev-tex/currvita-0.9i-r1
 			>=dev-tex/g-brief-4.0.2
 			>=dev-tex/envlab-1.2-r1
