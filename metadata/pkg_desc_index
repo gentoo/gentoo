@@ -979,7 +979,7 @@ app-crypt/tpm-emulator 0.7.5-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/tpm2-abrmd 2.1.1-r2 2.3.1: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.2.0: A PKCS#11 interface for TPM2 hardware
-app-crypt/tpm2-tools 4.2: Tools for the TPM 2.0 TSS
+app-crypt/tpm2-tools 4.2.1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc0: OpenSSL Engine for TPM2 devices
@@ -4764,7 +4764,7 @@ dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
 dev-lang/ispc 1.9.2 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
-dev-lang/janet 1.7.0 1.8.1: A dynamic Lisp dialect and bytecode vm
+dev-lang/janet 1.8.1 1.9.1: A dynamic Lisp dialect and bytecode vm
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
 dev-lang/jsonnet 0.15.0 0.16.0: A data templating language for app and tool developers
 dev-lang/julia 1.2.0 1.3.0 1.4.0-r1 1.4.0-r2: High-performance programming language for technical computing
@@ -8127,7 +8127,7 @@ dev-python/notify2 0.3.1-r1: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.4.0-r1 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
-dev-python/nuitka 0.6.6 0.6.7: Python to native compiler
+dev-python/nuitka 0.6.7 0.6.8: Python to native compiler
 dev-python/numba 0.37.0 0.39.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numexpr 2.6.9 2.7.1: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.16.5-r1 1.17.4-r3 1.18.3 1.18.5 1.19.0: Fast array and numerical python library
@@ -16136,6 +16136,7 @@ sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lrcalc 1.2: Littlewood-Richardson Calculator
+sci-mathematics/mathematica 10.3.1-r1 12.1.1: Wolfram Mathematica
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 16.0.5: Automatic algebraic manipulator
 sci-mathematics/maxima 5.38.1 5.42.1 5.42.2 5.43.2 5.44.0: Free computer algebra environment based on Macsyma
