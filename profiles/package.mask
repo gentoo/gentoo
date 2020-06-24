@@ -32,11 +32,24 @@
 
 #--- END OF EXAMPLES ---
 
-# Ulrich Müller <ulm@gentoo.org> (2020-06-20)
-# Separate package in dev-tex is unmaintained. Included with TeX Live.
-# Use >=dev-texlive/texlive-latexextra-2020-r1 as replacement.
+# Ulrich Müller <ulm@gentoo.org> (2020-06-24)
+# Included with TeX Live. The separate Gentoo packages are
+# unmaintained and had their last version bump in 2010 or earlier.
+# Use >=dev-texlive/texlive-latexextra-2020-r2 as replacement.
 # Removal in 30 days. Bug #729394.
+dev-tex/currvita
+dev-tex/envlab
+dev-tex/europecv
+dev-tex/g-brief
 dev-tex/leaflet
+dev-tex/svninfo
+
+# Ulrich Müller <ulm@gentoo.org> (2020-06-24)
+# Included with TeX Live. The separate Gentoo package is
+# unmaintained and had its last version bump in 2008.
+# Use >=dev-texlive/texlive-pictures-2020-r2 as replacement.
+# Removal in 30 days. Bug #729394.
+dev-tex/dot2texi
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-24)
 # A thin wrapper to run pytest via setup.py that must not be used
