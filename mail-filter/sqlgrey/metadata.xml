@@ -10,8 +10,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>SQLgrey is a postfix policy service implementing a grey-listing
-policy.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">sqlgrey</remote-id>
 	</upstream>
