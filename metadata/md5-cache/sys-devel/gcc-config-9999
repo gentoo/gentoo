@@ -3,10 +3,10 @@ DEFINED_PHASES=compile install postinst unpack
 DESCRIPTION=Utility to manage compilers
 EAPI=7
 HOMEPAGE=https://gitweb.gentoo.org/proj/gcc-config.git/
-IUSE=+native-symlinks
+IUSE=+cc-wrappers +native-symlinks
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=sys-apps/gentoo-functions-0.10
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=5aa90735b2af7ea537d6c4f7f67e77c2
+_md5_=05c8653528fa62482d64f18e74cc5f02

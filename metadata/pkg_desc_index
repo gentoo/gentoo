@@ -17947,7 +17947,7 @@ x11-apps/xgc 1.0.5: X graphics demo
 x11-apps/xhost 1.0.8: Controls host and/or user access to a running X server
 x11-apps/xinit 1.4.1: X Window System initializer
 x11-apps/xinput 1.6.3: Utility to set XInput device parameters
-x11-apps/xinput_calibrator 0.7.5-r1: A generic touchscreen calibration program for X.Org
+x11-apps/xinput_calibrator 0.7.5-r2: A generic touchscreen calibration program for X.Org
 x11-apps/xisxwayland 1 9999: Tool to determine whether the X server in use is Xwayland
 x11-apps/xkbcomp 1.4.3: XKB keyboard description compiler
 x11-apps/xkbevd 1.1.4: XKB event daemon
