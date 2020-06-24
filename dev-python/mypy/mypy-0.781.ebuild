@@ -32,7 +32,8 @@ DEPEND="
 			>=dev-python/pytest-cov-2.4.0[${PYTHON_USEDEP}]
 			>=dev-python/psutil-5.4.0[${PYTHON_USEDEP}]
 			>=dev-python/lxml-4.1.1[${PYTHON_USEDEP}]
-			>=dev-python/py-1.5.2[${PYTHON_USEDEP}] )
+			>=dev-python/py-1.5.2[${PYTHON_USEDEP}]
+			>=dev-python/virtualenv-16.0.0[${PYTHON_USEDEP}] )
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
