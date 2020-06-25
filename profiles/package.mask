@@ -32,6 +32,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-06-25)
+# Included with TeX Live. Last version bump in 2003.
+# Use dev-texlive/texlive-latexextra as replacement.
+# Removal in 30 days. Bug #729470.
+dev-tex/cdcover
+
+# Ulrich Müller <ulm@gentoo.org> (2020-06-25)
+# Included with TeX Live. Last version bump in 2008.
+# Use dev-texlive/texlive-latexrecommended as replacement.
+# Removal in 30 days. Bug #729470.
+dev-tex/translator
+
 # Ulrich Müller <ulm@gentoo.org> (2020-06-24)
 # Included with TeX Live. The separate Gentoo package is
 # unmaintained and had its last version bump in 2004.
