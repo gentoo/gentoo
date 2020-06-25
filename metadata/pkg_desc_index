@@ -8313,7 +8313,7 @@ dev-python/pycodestyle 2.5.0-r1 2.6.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20: C parser and AST generator written in Python
-dev-python/pycryptodome 3.9.4 3.9.7: A self-contained cryptographic library for Python
+dev-python/pycryptodome 3.9.4 3.9.7 3.9.8: A self-contained cryptographic library for Python
 dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2018.1.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
