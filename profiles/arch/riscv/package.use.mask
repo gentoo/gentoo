@@ -1,6 +1,12 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-06-25)
+# Missing keyword. Requires dev-util/cmake which also lacks keyword and
+# possibly a whole bunch of its deps as well
+# See https://bugs.gentoo.org/729582
+>=net-misc/rsync-3.2.0 lz4
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-05-10)
 # Missing keyword
 media-libs/freetype brotli
