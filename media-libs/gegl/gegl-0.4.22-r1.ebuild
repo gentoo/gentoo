@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
+# vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
 inherit meson gnome2-utils python-any-r1 vala
@@ -38,7 +39,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/json-glib-1.2.6
-	>=media-libs/babl-0.1.78[introspection?,lcms?,vala?]
+	>=media-libs/babl-0.1.74[introspection?,lcms?]
 	media-libs/libnsgif
 	>=media-libs/libpng-1.6.0:0=
 	>=sys-libs/zlib-1.2.0
@@ -98,6 +99,12 @@ src_prepare() {
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/meson.build || die
+
+	# fix skipping mipmap tests due to executable not found
+	for item in "invert-crop.sh" "invert.sh" "rotate-crop.sh" "rotate.sh" "unsharp-crop.sh" "unsharp.sh"; do
+		sed -i "s:/bin/gegl:/bin/gegl-0.4:g" "${S}/tests/mipmap/${item}" || die
+		sed -i "s:/tools/gegl-imgcmp:/tools/gegl-imgcmp-0.4:g" "${S}/tests/mipmap/${item}" || die
+	done
 
 	gnome2_environment_reset
 

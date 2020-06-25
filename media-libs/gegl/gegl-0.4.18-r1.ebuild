@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+PYTHON_COMPAT=( python3_{6,7} )
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+# vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
 inherit meson gnome2-utils python-any-r1 vala
@@ -14,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -38,7 +39,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/json-glib-1.2.6
-	>=media-libs/babl-0.1.78[introspection?,lcms?,vala?]
+	>=media-libs/babl-0.1.72[introspection?,lcms?]
 	media-libs/libnsgif
 	>=media-libs/libpng-1.6.0:0=
 	>=sys-libs/zlib-1.2.0
@@ -60,7 +61,9 @@ RDEPEND="
 	v4l? ( >=media-libs/libv4l-1.0.1 )
 	webp? ( >=media-libs/libwebp-0.5.0:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
 	dev-lang/perl
 	>=dev-util/gtk-doc-am-1
@@ -74,8 +77,10 @@ BDEPEND="
 DOCS=( AUTHORS docs/ChangeLog docs/NEWS.txt )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.18-drop-failing-tests.patch
-	"${FILESDIR}"/${PN}-0.4.18-program-suffix.patch
+	"${FILESDIR}"/${P}-drop-failing-tests.patch
+	"${FILESDIR}"/${P}-program-suffix.patch
+	"${FILESDIR}"/${P}-meson_cpu_detection.patch
+	"${FILESDIR}"/${P}-cltostring_force_utf8.patch
 )
 
 python_check_deps() {
@@ -98,6 +103,12 @@ src_prepare() {
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/meson.build || die
+
+	# fix skipping mipmap tests due to executable not found
+	for item in "invert-crop.sh" "invert.sh" "rotate-crop.sh" "rotate.sh" "unsharp-crop.sh" "unsharp.sh"; do
+		sed -i "s:/bin/gegl:/bin/gegl-0.4:g" "${S}/tests/mipmap/${item}" || die
+		sed -i "s:/tools/gegl-imgcmp:/tools/gegl-imgcmp-0.4:g" "${S}/tests/mipmap/${item}" || die
+	done
 
 	gnome2_environment_reset
 
@@ -132,7 +143,6 @@ src_configure() {
 		$(meson_feature lcms)
 		$(meson_feature lensfun)
 		$(meson_feature openexr)
-		$(meson_feature pdf poppler)
 		$(meson_feature raw libraw)
 		$(meson_feature sdl sdl1)
 		$(meson_feature svg librsvg)

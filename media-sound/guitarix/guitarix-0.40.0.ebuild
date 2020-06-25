@@ -16,20 +16,20 @@ SRC_URI="mirror://sourceforge/guitarix/guitarix/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="bluetooth debug lv2 nls +standalone zeroconf"
 REQUIRED_USE="|| ( lv2 standalone )"
 
 COMMON_DEPEND="dev-cpp/eigen:3
 	dev-cpp/glibmm:2
-	dev-cpp/gtkmm:2.4
+	dev-cpp/gtkmm:3.0
 	dev-libs/glib:2
 	>=media-libs/libsndfile-1.0.17
 	>=media-libs/zita-convolver-3:=
 	media-libs/zita-resampler
 	>=net-misc/curl-7.26.0
 	>=sci-libs/fftw-3.1.2:3.0=
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	lv2? ( media-libs/lv2 )
 	standalone? (
 		dev-libs/boost:=
@@ -40,20 +40,28 @@ COMMON_DEPEND="dev-cpp/eigen:3
 		zeroconf? ( net-dns/avahi )
 	)
 "
-# clearlooks gtk engine and roboto fonts are required for correct ui rendering
+# roboto fonts are required for correct ui rendering
 RDEPEND="${COMMON_DEPEND}
-	x11-themes/gtk-engines
 	standalone? (
 		media-fonts/roboto
 	)
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
+	dev-lang/sassc
 	virtual/pkgconfig
-	nls? ( dev-util/intltool )
+	nls? (
+		dev-util/intltool
+		sys-devel/gettext
+	)
 "
 
 DOCS=( changelog README )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-noexecstack.patch
+	"${FILESDIR}"/${P}-nostrip.patch
+)
 
 src_configure() {
 	local myconf=(
