@@ -383,9 +383,11 @@ texlive-module_src_install() {
 		cp -pR tlpkg "${ED}/usr/share/" || die
 	fi
 
-	insinto /var/lib/texmf
 
-	[[ -d texmf-var ]] && doins -r texmf-var/.
+	if [[ -d texmf-var ]]; then
+		insinto /var/lib/texmf
+		doins -r texmf-var/.
+	fi
 
 	insinto /etc/texmf/updmap.d
 	[[ -f ${S}/${PN}.cfg ]] && doins "${S}/${PN}.cfg"
