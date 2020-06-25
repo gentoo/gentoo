@@ -12069,7 +12069,7 @@ mail-client/hap 3.7-r1: A terminal mail notification program (replacement for bi
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.13.5 1.14.3 1.14.4-r1: A small but very powerful text-based mail client
+mail-client/mutt 1.14.4-r1: A small but very powerful text-based mail client
 mail-client/mutt-wizard 0_pre20200606 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20180716 20200313 20200320 20200417 20200424 20200501 20200619 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
@@ -14946,7 +14946,7 @@ net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.4.3 1.4.5 1.4.7: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
-net-misc/rsync 3.2.0-r1 3.2.1 9999: File transfer program to keep remote files into sync
+net-misc/rsync 3.1.3 3.2.0-r1 3.2.1 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.38.3: Rygel is an open source UPnP/DLNA MediaServer
@@ -17377,7 +17377,7 @@ sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked agains
 sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.2.1-r3 1.4.0: Portable and efficient API to determine the call-chain of a program
-sys-libs/liburing 0.5 0.6: Efficient I/O with io_uring
+sys-libs/liburing 0.6: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3 1.2.0: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds
