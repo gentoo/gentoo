@@ -150,6 +150,7 @@ virtual/libstdc++
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-20)
 # Stuck on Python 2, depends on deprecated dev-python/pygobject:2
+# Masked for removal in 30 days.
 media-libs/pymemphis
 
 # Ulrich Müller <ulm@gentoo.org> (2020-06-20)
@@ -205,6 +206,7 @@ x11-plugins/purple-plugin_pack
 # games-puzzle/gtetrinet: Bug #726798 last release 2006, abandoned upstream.
 # games-board/mt_gtk_client: Bug #726808, last commit 17 years ago.
 # games-board/sirius: Bug #726814, last release 15 years ago, dead upstream.
+# Masked for removal in 30 days.
 games-board/gnono
 games-puzzle/gtetrinet
 games-board/mt_gtk_client
@@ -213,6 +215,7 @@ games-board/sirius
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-18)
 # Depends on dead gnome-base/libgnomeui. Really, no one else is packaging
 # this, last (and only) release in 2006, abandoned upstream. Bug #726790
+# Masked for removal in 30 days.
 dev-embedded/gnome-avrdude
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
