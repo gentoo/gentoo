@@ -2726,6 +2726,7 @@ dev-qt/qt-docs:serialbus - Install documentation for dev-qt/qtserialbus
 dev-qt/qt-docs:serialport - Install documentation for dev-qt/qtserialport
 dev-qt/qt-docs:speech - Install documentation for dev-qt/qtspeech
 dev-qt/qt-docs:sql - Install documentation for dev-qt/qtsql
+dev-qt/qt-docs:timeline - Install documentation for dev-qt/qtquicktimeline
 dev-qt/qt-docs:virtualkeyboard - Install documentation for dev-qt/qtvirtualkeyboard
 dev-qt/qt-docs:webchannel - Install documentation for dev-qt/qtwebchannel
 dev-qt/qt-docs:webengine - Install documentation for dev-qt/qtwebengine
