@@ -56,7 +56,7 @@ LICENSE="FDL-1.3"
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-IUSE="charts datavis +html networkauth +qch script virtualkeyboard webengine"
+IUSE="charts datavis +html networkauth +qch script timeline virtualkeyboard webengine"
 REQUIRED_USE="|| ( html qch )"
 
 SRC_URI="
@@ -65,6 +65,7 @@ SRC_URI="
 	networkauth? ( ${BASE_URI}.qtnetworkauth/${PV_FULL}qtnetworkauth-documentation.7z )
 	script? ( ${BASE_URI}.qtscript/${PV_FULL}qtscript-documentation.7z
 		${BASE_URI}.qtscript/${PV_FULL}qtscripttools-documentation.7z )
+	timeline? ( ${BASE_URI}.qtquicktimeline/${PV_FULL}qtquicktimeline-documentation.7z )
 	virtualkeyboard? ( ${BASE_URI}.qtvirtualkeyboard/${PV_FULL}qtvirtualkeyboard-documentation.7z )
 	webengine? ( ${BASE_URI}.qtwebengine/${PV_FULL}qtwebengine-documentation.7z )
 "
