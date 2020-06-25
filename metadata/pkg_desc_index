@@ -12922,7 +12922,7 @@ media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COL
 media-libs/opencolorio 1.1.0-r4: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13-r4 3.4.1-r7 4.1.2-r1 4.1.2-r3: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 4.1.2-r3: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
@@ -17307,7 +17307,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.7-r1 4.0.8 4.0.9 9999: Gentoo automatic kernel 
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 5.4.40 5.4.46 5.4.47 5.4.48 5.6.18 5.6.19 5.7.4 5.7.5: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.46 5.4.47 5.4.48 5.6.18 5.6.19 5.7.4 5.7.5: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.221 4.4.225 4.4.226 4.4.227 4.4.228 4.9.221 4.9.225 4.9.226 4.9.227 4.9.228 4.14.178 4.14.182 4.14.183 4.14.184 4.14.185 4.19.120 4.19.126 4.19.127 4.19.128 4.19.129 5.4.38 5.4.44 5.4.45 5.4.46 5.4.47 5.4.48 5.4.49 5.6.16 5.6.17 5.6.18 5.6.19 5.7.0 5.7.1 5.7.2 5.7.3 5.7.4 5.7.5 5.7.6: Full sources including the Gentoo patchset for the 5.7 kernel tree
+sys-kernel/gentoo-sources 4.4.221 4.4.225 4.4.226 4.4.227 4.4.228 4.9.221 4.9.225 4.9.226 4.9.227 4.9.228 4.14.178 4.14.182 4.14.183 4.14.184 4.14.185 4.14.186 4.19.120 4.19.126 4.19.127 4.19.128 4.19.129 4.19.130 5.4.38 5.4.44 5.4.45 5.4.46 5.4.47 5.4.48 5.4.49 5.6.16 5.6.17 5.6.18 5.6.19 5.7.0 5.7.1 5.7.2 5.7.3 5.7.4 5.7.5 5.7.6: Full sources including the Gentoo patchset for the 5.7 kernel tree
 sys-kernel/git-sources 5.8_rc1 5.8_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
