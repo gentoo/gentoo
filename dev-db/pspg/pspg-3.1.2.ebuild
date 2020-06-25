@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="A better pager for psql and mysql"
-HOMEPAGE="https://github.com/okbob/${PN}"
+HOMEPAGE="https://github.com/okbob/pspg"
 SRC_URI="https://github.com/okbob/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
