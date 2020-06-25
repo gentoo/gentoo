@@ -133,7 +133,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 	"${FILESDIR}/${PN}-4.9.2-timespec.patch"
 	"${FILESDIR}/${PN}-4.13-winexe_option.patch"
-	"${FILESDIR}/${PN}-4.13-vfs_snapper_configure_option.patch" 
+	"${FILESDIR}/${PN}-4.13-vfs_snapper_configure_option.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
