@@ -14,15 +14,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-COMMON_DEPEND="
+DEPEND="
 	app-crypt/argon2:=
 	dev-python/six[${PYTHON_USEDEP}]
 	virtual/python-cffi[${PYTHON_USEDEP}]
 "
-RDEPEND="${COMMON_DEPEND}"
-DEPEND="${COMMON_DEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
+RDEPEND="${DEPEND}"
+BDEPEND="test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)
 "
