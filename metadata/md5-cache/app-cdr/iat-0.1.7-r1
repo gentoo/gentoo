@@ -1,9 +1,9 @@
 DEFINED_PHASES=configure
 DESCRIPTION=BIN, MDF, PDI, CDI, NRG, and B5I converters
 EAPI=6
-HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+HOMEPAGE=https://www.berlios.de/software/iso9660-analyzer-tool
 KEYWORDS=amd64 arm x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=mirror://gentoo/iat-0.1.7.tar.bz2
-_md5_=a05f66532c4161793034bfa02d1d8cfd
+SRC_URI=https://download.sourceforge.net/iat.berlios/iat-0.1.7.tar.bz2
+_md5_=3044fa804e3544b166016be267aaa502
