@@ -432,7 +432,7 @@ app-admin/bastille 3.0.9-r1 3.0.9-r2: Bastille-Linux is a security hardening too
 app-admin/calamares 3.2.20: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
-app-admin/cdist 5.1.3 6.0.0 6.5.4: A usable configuration management system
+app-admin/cdist 5.1.3 6.0.0 6.5.4 6.5.6: A usable configuration management system
 app-admin/cgmanager 0.41 0.42: Control Group manager daemon
 app-admin/checksec 1.7.5 1.8.0 1.9.0 1.11.1 2.0.1 2.1.0 2.2.0 2.2.1 2.2.2: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a safe and sane manner
@@ -983,7 +983,7 @@ app-crypt/tpm2-tools 4.2.1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.2.1-r1: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc0: OpenSSL Engine for TPM2 devices
-app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
+app-crypt/trousers 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
 app-crypt/virtualsmartcard 0.7: Smart card emulator, can be used with Remote Smart Card Reader
@@ -2569,7 +2569,7 @@ app-text/cmark 0.29.0: CommonMark parsing and rendering library and program in C
 app-text/cmigemo 1.3c-r3: Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
-app-text/convmv 2.04 2.05: convert filenames to utf8 or any other charset
+app-text/convmv 2.04 2.05 2.05-r1: convert filenames to utf8 or any other charset
 app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor
 app-text/coolreader 3.2.2.1-r2 3.2.39: CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
 app-text/cpdf 2.3 2.3.1: A command line tool for manipulating PDF files
@@ -12650,7 +12650,7 @@ media-libs/aubio 0.4.7-r1 0.4.8 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.3-r1 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
-media-libs/babl 0.1.66 0.1.74 9999: A dynamic, any to any, pixel format conversion library
+media-libs/babl 0.1.66 0.1.66-r1 0.1.74 0.1.74-r1 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.0.4 1.0.4-r1 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
@@ -12695,7 +12695,7 @@ media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.4.2-r1 1.6.0: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.5-r2 2.3.0: Graphics library for fast image creation
-media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.22 9999: A graph based image processing framework
+media-libs/gegl 0.2.0-r6 0.3.34 0.3.34-r1 0.4.16 0.4.16-r1 0.4.18 0.4.18-r1 0.4.22 0.4.22-r1 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 0.12.0-r1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
@@ -13444,11 +13444,11 @@ media-sound/grip 4.1.1: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.5: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
-media-sound/gtick 0.5.4 0.5.4-r1: Metronome application supporting different meters and speeds ranging
+media-sound/gtick 0.5.4 0.5.4-r1 0.5.5: Metronome application supporting different meters and speeds ranging
 media-sound/gtkguitune 0.8: A guitar tuning program that uses Schmitt-triggering for quick feedback
 media-sound/guayadeque 0.4.5_p20170110 9999: Music management program designed for all music enthusiasts
 media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
-media-sound/guitarix 0.39.0 9999: Virtual guitar amplifier for Linux
+media-sound/guitarix 0.39.0 0.40.0 9999: Virtual guitar amplifier for Linux
 media-sound/helm 0.9.0-r1: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14-r1: Opensource software organ
@@ -17990,7 +17990,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.8 1.20.8-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 390.138 430.64-r4 435.21-r4 440.82-r3 440.100: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 390.138 430.64-r4 435.21-r4 440.82-r3 440.100 450.51: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
