@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-25)
+# Stuck on Python 2, m-n, we have no shortage on note taking applications.
+# Masked for removal in 30 days.
+x11-misc/nts
+
 # Ulrich Müller <ulm@gentoo.org> (2020-06-25)
 # Included with TeX Live. Last version bump in 2003.
 # Use dev-texlive/texlive-latexextra as replacement.
