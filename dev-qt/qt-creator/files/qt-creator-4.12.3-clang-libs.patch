@@ -1,0 +1,24 @@
+diff --git a/src/shared/clang/clang_installation.pri b/src/shared/clang/clang_installation.pri
+index 08838838bc..bee3779484 100644
+--- a/src/shared/clang/clang_installation.pri
++++ b/src/shared/clang/clang_installation.pri
+@@ -131,9 +131,7 @@ defineReplace(extractWarnings) {
+     return($$result)
+ }
+ 
+-CLANGTOOLING_LIBS=-lclangTooling -lclangIndex -lclangFrontend -lclangParse -lclangSerialization \
+-                  -lclangSema -lclangEdit -lclangAnalysis -lclangDriver -lclangDynamicASTMatchers \
+-                  -lclangASTMatchers -lclangToolingCore -lclangAST -lclangLex -lclangBasic
++CLANGTOOLING_LIBS=-lclang-cpp
+ win32:CLANGTOOLING_LIBS += -lversion
+ 
+ BIN_EXTENSION =
+@@ -207,7 +205,7 @@ isEmpty(LLVM_VERSION) {
+     isEmpty(QTC_CLANG_BUILDMODE_MISMATCH)|!equals(QTC_CLANG_BUILDMODE_MISMATCH, 1) {
+         CLANGFORMAT_MAIN_HEADER = $$LLVM_INCLUDEPATH/clang/Format/Format.h
+         exists($$CLANGFORMAT_MAIN_HEADER) {
+-            CLANGFORMAT_LIBS=-lclangFormat -lclangToolingInclusions -lclangToolingCore -lclangRewrite -lclangLex -lclangBasic
++            CLANGFORMAT_LIBS=-lclang-cpp
+             ALL_CLANG_LIBS=-lclangFormat -lclangToolingInclusions -lclangTooling -lclangToolingCore \
+                            -lclangRewrite -lclangIndex -lclangFrontend -lclangParse -lclangSerialization \
+                            -lclangSema -lclangEdit -lclangAnalysis -lclangDriver -lclangDynamicASTMatchers \
