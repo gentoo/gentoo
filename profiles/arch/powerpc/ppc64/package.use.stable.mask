@@ -25,7 +25,6 @@ dev-cpp/eigen test
 # dev-python/pygtk is broken, bug #716294; Bugs #706500, #710160
 # Stable-mask all revdeps, all of them are pending cleanup already.
 media-gfx/gimp python
-x11-libs/vte:0 python
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
 # media-libs/libheif not stable, bugs #717242, #720438
