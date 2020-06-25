@@ -65,6 +65,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
+		"-DBUILD_JAVA=OFF"
 		"-DBUILD_EXAMPLES=$(usex examples ON OFF)"
 		"-DBUILD_TESTS=$(usex test ON OFF)"
 		"-DBUILD_DEMOS=$(usex demos ON OFF)"
