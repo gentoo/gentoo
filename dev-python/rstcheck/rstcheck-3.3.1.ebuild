@@ -13,13 +13,12 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3 python3_{6,7})
-	dev-python/python-dateutil[${PYTHON_USEDEP}]
+	dev-python/docutils[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
