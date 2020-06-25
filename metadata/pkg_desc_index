@@ -2226,7 +2226,7 @@ app-misc/note 1.3.3-r1 1.3.3-r2: A note taking perl program
 app-misc/nullmodem 0.0.6-r1: A Utility to loopback Pseudo-Terminals
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.2-r2 0.2.4: Automatically execute scripts as you traverse directories
-app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14: A cat, dog and others which chase the mouse or windows around the screen
+app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.6: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.3.0 4.4.0: Presenter console with multi-monitor support for PDF files
@@ -14288,7 +14288,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
 net-fs/s3ql 2.33: A full-featured file system for online data storage
-net-fs/samba 4.11.6-r2 4.11.8 4.11.9 4.11.9-r1 4.12.2 4.12.3 4.12.3-r1: Samba Suite Version 4
+net-fs/samba 4.11.8 4.11.9-r1 4.12.3-r1: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
@@ -14411,7 +14411,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 4.2.4.1 5.0.3.1 5.0.4 5.0.5.1: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.2.4.1 5.0.5.1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.7.1 2.8 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.5 1.8.1 9999: An advanced IRC Bouncer
@@ -14946,7 +14946,7 @@ net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.4.3 1.4.5 1.4.7: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
-net-misc/rsync 3.1.3 3.2.0-r1 3.2.1 9999: File transfer program to keep remote files into sync
+net-misc/rsync 3.2.0-r1 3.2.1 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.38.3: Rygel is an open source UPnP/DLNA MediaServer
@@ -18234,8 +18234,8 @@ x11-misc/kronometer 2.2.3: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/libinput-gestures 2.48 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.8.0-r1 1.9.0-r2: A simple locker using lightdm
-x11-misc/lightdm 1.28.0 1.30.0: A lightweight display manager
-x11-misc/lightdm-gtk-greeter 2.0.6 2.0.7-r1: LightDM GTK+ Greeter
+x11-misc/lightdm 1.30.0: A lightweight display manager
+x11-misc/lightdm-gtk-greeter 2.0.7-r1 2.0.8: LightDM GTK+ Greeter
 x11-misc/lightdm-mini-greeter 0.3.4 0.4.0: A Minimal, Configurable, Single-User GTK3 LightDM Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1 0.9.0-r2: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r2: Xosd plugin for LINEAK
