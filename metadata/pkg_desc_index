@@ -8274,7 +8274,7 @@ dev-python/ptpython 2.0.6: Python REPL build on top of prompt_toolkit
 dev-python/ptvsd 4.3.2: Visual Studio remote debugging server for Python
 dev-python/ptyprocess 0.6.0: Run a subprocess in a pseudo terminal
 dev-python/publicsuffix 2.20191221: Get a public suffix for a domain name using the Public Suffix List.
-dev-python/pudb 2018.1: A full-screen, console-based Python debugger
+dev-python/pudb 2018.1 2019.2: A full-screen, console-based Python debugger
 dev-python/pupynere 1.0.15-r2: Pupynere is a PUre PYthon NEtcdf REader
 dev-python/pure-sasl 0.6.1: High-level SASL client written in pure Python
 dev-python/pushbullet-py 0.11.0 0.11.0-r1: A simple python client for pushbullet.com
