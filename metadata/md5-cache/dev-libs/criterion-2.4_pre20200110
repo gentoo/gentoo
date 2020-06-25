@@ -1,6 +1,6 @@
 BDEPEND=virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=dev-libs/nanomsg:= dev-libs/libgit2:= virtual/libffi:= dev-libs/boxfort test? ( || ( ( dev-lang/python:3.7 dev-util/cram[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-util/cram[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) )
+DEPEND=dev-libs/nanomsg:= dev-libs/libgit2:= virtual/libffi:= dev-libs/boxfort test? ( || ( ( dev-lang/python:3.8 dev-util/cram[python_targets_python3_8(-),python_single_target_python3_8(+)] ) ( dev-lang/python:3.7 dev-util/cram[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-util/cram[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) )
 DESCRIPTION=Cross platform unit testing framework for C and C++
 EAPI=7
 HOMEPAGE=https://github.com/Snaipe/Criterion
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Snaipe/Criterion/archive/4b5174ebda04ab76fe65eec25b5b6ea0809055e7.tar.gz -> criterion-4b5174ebda04ab76fe65eec25b5b6ea0809055e7.tar.gz https://github.com/scottt/debugbreak/archive/6b79ec8d8f8d4603111f580a0537f8f31c484c32.tar.gz -> debugbreak-6b79ec8d8f8d4603111f580a0537f8f31c484c32.tar.gz https://github.com/attractivechaos/klib/archive/cdb7e9236dc47abf8da7ebd702cc6f7f21f0c502.tar.gz -> klib-cdb7e9236dc47abf8da7ebd702cc6f7f21f0c502.tar.gz https://github.com/nanopb/nanopb/archive/6a6903be6084bb3f5a98a3341acef2aa05c61df9.tar.gz -> nanopb-6a6903be6084bb3f5a98a3341acef2aa05c61df9.tar.gz
 _eclasses_=meson	8f7dc8ed2d76af0b33328789c017e677	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=9f7021eaef63ab3c8099b1a5fc2c14ff
+_md5_=49340c61e8f1a71edf7e8747bf83eb31
