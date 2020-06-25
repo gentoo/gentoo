@@ -13,6 +13,8 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="nls"
 
 BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
 	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
 "
 RDEPEND="
