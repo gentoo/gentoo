@@ -48,6 +48,11 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS.md README.md TODO.md )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test-fix-includetest.patch
+	"${FILESDIR}"/${P}-test-fix-tjunittest.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_FFMPEG=OFF
