@@ -17770,7 +17770,7 @@ www-apps/kibana-bin 6.8.8 7.6.2 7.7.0: Analytics and search dashboard for Elasti
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
-www-apps/mediawiki 1.34.1: The MediaWiki wiki web application (as used on wikipedia.org)
+www-apps/mediawiki 1.34.1 1.34.2: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.11-r2: Simple webapp to monitor the status of mirrors
 www-apps/moodle 3.5.12 3.6.10 3.7.6 3.8.3 3.9: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
@@ -17990,7 +17990,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.8 1.20.8-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 430.64-r4 435.21-r4 440.82-r3: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108 390.132-r1 390.132-r2 390.138 430.64-r4 435.21-r4 440.82-r3 440.100: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
