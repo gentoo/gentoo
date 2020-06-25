@@ -1,31 +1,32 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools gnome2-utils eapi7-ver
+inherit autotools xdg-utils
 
 DESCRIPTION="LightDM GTK+ Greeter"
-HOMEPAGE="https://launchpad.net/lightdm-gtk-greeter"
-SRC_URI="https://launchpad.net/lightdm-gtk-greeter/$(ver_cut 1-2)/${PV}/+download/${P}.tar.gz
+HOMEPAGE="https://github.com/Xubuntu/lightdm-gtk-greeter"
+SRC_URI="https://github.com/Xubuntu/${PN}/releases/download/${P}/${P}.tar.gz
 	branding? ( https://dev.gentoo.org/~polynomial-c/dist/lightdm-gentoo-patch-2.tar.gz )"
 
 LICENSE="GPL-3 LGPL-3
 	branding? ( CC-BY-3.0 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="appindicator branding"
 
-COMMON_DEPEND="appindicator? ( dev-libs/libindicator:3 )
+DEPEND="appindicator? ( dev-libs/libindicator:3 )
 	x11-libs/gtk+:3
 	>=x11-misc/lightdm-1.2.2"
 
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	dev-util/intltool
+	dev-util/xfce4-dev-tools
 	sys-devel/gettext
-	xfce-base/exo"
+"
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	x11-themes/gnome-themes-standard
 	>=x11-themes/adwaita-icon-theme-3.14.1"
 
@@ -74,9 +75,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
