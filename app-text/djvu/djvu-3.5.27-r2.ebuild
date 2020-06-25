@@ -10,7 +10,7 @@ MY_P="${PN}-${PN}libre-git-${COMMIT}"
 
 DESCRIPTION="DjVu viewers, encoders and utilities"
 HOMEPAGE="http://djvu.sourceforge.net/"
-SRC_URI="https://sourceforge.net/code-snapshots/git/d/dj/djvu/djvulibre-git.git/${MY_P}.zip -> ${P}.zip"
+SRC_URI="https://ajakk.github.io/${P}-${COMMIT}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
