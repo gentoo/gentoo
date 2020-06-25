@@ -17,6 +17,7 @@ IUSE="doc test"
 BDEPEND="
 	dev-util/netsurf-buildsystem
 	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
 	test? ( dev-lang/perl )
 "
 RDEPEND="dev-libs/libparserutils:="

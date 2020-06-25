@@ -169,10 +169,6 @@ net-libs/gnutls test-full
 # Depends on not yet keyworded dev-python/geoip-python. Bug #636860
 net-p2p/deluge geoip
 
-# Amy Liffey <amynka@gentoo.org (2018-01-21)
-# dev-libs/cereal not keyworded for arm
-media-libs/opencv contribdnn
-
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since they are flags local to one package.
 media-tv/tvheadend hdhomerun
