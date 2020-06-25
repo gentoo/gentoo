@@ -467,7 +467,7 @@ app-admin/entr 4.3 4.4 4.5: Run arbitrary commands when files change
 app-admin/eselect 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/exo 1.11.0: Command-line tool for everything at Exoscale: compute, storage, dns.
-app-admin/fam 2.7.0-r7 2.7.0_p17_p2 2.7.0_p17_p3: FAM, the File Alteration Monitor
+app-admin/fam 2.7.0_p17_p2 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
 app-admin/filebeat 6.8.4 7.3.2 7.5.2 7.6.1 7.7.0: Lightweight log shipper for Logstash and Elasticsearch
