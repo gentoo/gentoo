@@ -46,6 +46,7 @@ S="${WORKDIR}"
 src_prepare() {
 	default
 	sed -e 's|\("/opt/Signal/signal-desktop"\)|\1 --start-in-tray|g' \
+		-e 's| --no-sandbox||g' \
 		-i usr/share/applications/signal-desktop.desktop || die
 	unpack usr/share/doc/signal-desktop/changelog.gz
 	# Fix Bug 706352
