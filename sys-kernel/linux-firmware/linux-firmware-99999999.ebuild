@@ -33,38 +33,16 @@ BDEPEND="initramfs? ( app-arch/cpio )"
 RDEPEND="!savedconfig? (
 		redistributable? (
 			!sys-firmware/alsa-firmware[alsa_cards_ca0132]
-			!media-tv/cx18-firmware
-			!<sys-firmware/ivtv-firmware-20080701-r1
-			!media-tv/linuxtv-dvb-firmware[dvb_cards_cx231xx]
-			!media-tv/linuxtv-dvb-firmware[dvb_cards_cx23885]
-			!media-tv/linuxtv-dvb-firmware[dvb_cards_usb-dib0700]
 			!net-dialup/ueagle-atm
 			!net-dialup/ueagle4-atm
-			!net-wireless/ar9271-firmware
-			!net-wireless/i2400m-fw
-			!net-wireless/libertas-firmware
-			!sys-firmware/rt61-firmware
-			!net-wireless/rt73-firmware
-			!net-wireless/rt2860-firmware
-			!net-wireless/rt2870-firmware
 			!sys-block/qla-fc-firmware
-			!sys-firmware/amd-ucode
 			!sys-firmware/iwl1000-ucode
-			!sys-firmware/iwl2000-ucode
-			!sys-firmware/iwl2030-ucode
-			!sys-firmware/iwl3945-ucode
-			!sys-firmware/iwl4965-ucode
-			!sys-firmware/iwl5000-ucode
-			!sys-firmware/iwl5150-ucode
-			!sys-firmware/iwl6000-ucode
 			!sys-firmware/iwl6005-ucode
 			!sys-firmware/iwl6030-ucode
 			!sys-firmware/iwl6050-ucode
 			!sys-firmware/iwl3160-ucode
 			!sys-firmware/iwl7260-ucode
-			!sys-firmware/iwl7265-ucode
 			!sys-firmware/iwl3160-7260-bt-ucode
-			!sys-firmware/radeon-ucode
 		)
 		unknown-license? (
 			!sys-firmware/alsa-firmware[alsa_cards_korg1212]
