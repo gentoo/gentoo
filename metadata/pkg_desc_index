@@ -744,7 +744,7 @@ app-backup/holland-lib-common 1.0.10: Holland Core Library
 app-backup/holland-lib-lvm 1.0.10: Holland LVM Library
 app-backup/kfoldersync 3.4.1: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/kup 0.8.0: Backup scheduler for the Plasma desktop
-app-backup/luckybackup 0.4.9: Powerful and flexible backup (and syncing) tool, using RSync and Qt
+app-backup/luckybackup 0.4.9 0.5.0: Powerful and flexible backup (and syncing) tool, using RSync and Qt
 app-backup/mirdir 2.1-r2: Synchronize two directory trees in a fast way
 app-backup/mkstage4 0.1 0.2 0.3 9999: Bash Utility for Creating Stage 4 Tarballs
 app-backup/mylvmbackup 0.14: Tool for creating backups of MySQL server's data files using LVM snapshots
@@ -5693,8 +5693,8 @@ dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version fro
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200 5.202.4.280: Mapping Perl releases on CPAN to the location of the tarballs
-dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
+dev-perl/CPAN-Perl-Releases 3.760.0 5.202.3.200 5.202.4.280 5.202.6.200: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Uploader 0.103.13 0.103.14: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1 0.10.0-r2: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
