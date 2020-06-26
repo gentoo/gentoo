@@ -17,14 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-06-26)
-# Deprecated.
-# - optional python:2.7 dependency should be dropped if no reverse
-#   dependencies are using it.
-# - mandatory python:2.7 depepndency will require package porting
-#   or package removal if no reverse dependencies are using it.
-dev-lang/python:2.7
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-17)
 # Abandoned upstream, countless bugs. Removal tracked in bug #659616
 sys-power/pm-utils
