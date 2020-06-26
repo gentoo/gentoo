@@ -16,7 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bash-completion doc server"
 
 CDEPEND="
+	acct-group/cvmfs
+	acct-user/cvmfs
 	app-arch/libarchive
+	dev-cpp/gtest
 	dev-cpp/sparsehash
 	dev-db/sqlite:3=
 	dev-libs/leveldb:0=
