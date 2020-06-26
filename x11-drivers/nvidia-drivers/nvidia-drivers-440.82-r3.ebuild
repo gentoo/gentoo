@@ -141,7 +141,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	tc-export AR CC LD
+	tc-export AR CC LD OBJCOPY
 
 	default
 }
