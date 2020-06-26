@@ -5772,8 +5772,8 @@ dev-perl/Clone 0.390.0 0.450.0: Recursively copy Perl datatypes
 dev-perl/Clone-PP 1.70.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1 0.21.0-r2: An easy-to-use and comprehensive named-color library
-dev-perl/Compress-Bzip2 2.260.0: Interface to Bzip2 compression library
-dev-perl/Compress-LZF 3.800.0: extremely light-weight Lempel-Ziv-Free compression
+dev-perl/Compress-Bzip2 2.260.0 2.270.0: Interface to Bzip2 compression library
+dev-perl/Compress-LZF 3.800.0 3.800.0-r1: extremely light-weight Lempel-Ziv-Free compression
 dev-perl/Conf-Libconfig 0.100.0: Perl extension for libconfig
 dev-perl/Config-Any 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
@@ -15072,7 +15072,7 @@ net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 20.0 21.0_pre2302 21.0: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.145: A newsreader for GNOME
-net-nntp/sabnzbd 2.3.9-r1: Binary newsgrabber with web-interface
+net-nntp/sabnzbd 2.3.9-r1 3.0.0_rc1_pre0: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
