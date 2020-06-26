@@ -26,12 +26,12 @@ ruby_add_bdepend "test? (
 	dev-ruby/rspec-expectations:*
 	dev-ruby/asciimath
 	dev-ruby/coderay
+	dev-ruby/concurrent-ruby
 	dev-ruby/erubis
 	dev-ruby/haml
 	dev-ruby/nokogiri
 	dev-ruby/rouge
 	dev-ruby/slim
-	dev-ruby/thread_safe
 	dev-ruby/tilt )"
 
 all_ruby_prepare() {
