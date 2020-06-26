@@ -27,7 +27,6 @@ COMMON=">=virtual/opencl-3
 		x11-libs/libva
 	)"
 DEPEND="${COMMON}
-	dev-util/opencl-headers
 	media-libs/mesa"	# for Khronos OpenGL headers
 RDEPEND="${COMMON}"
 
@@ -40,9 +39,6 @@ S="${WORKDIR}"/${MY_P}
 
 src_configure() {
 	local mycmakeargs=(
-		-DKHRONOS_HEADERS_DIR="${EPREFIX}/usr/include"
-		# CMake only sets this automatically for bundled OpenCL headers
-		-DNEO_EXTRA_DEFINES="CL_TARGET_OPENCL_VERSION=220"
 		-DKHRONOS_GL_HEADERS_DIR="${EPREFIX}/usr/include"
 		-DBUILD_WITH_L0=$(usex l0)
 		-DDISABLE_LIBVA=$(usex vaapi "no" "yes")
