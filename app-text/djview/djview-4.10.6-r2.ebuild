@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools flag-o-matic nsplugins qmake-utils toolchain-funcs xdg-utils
+inherit autotools desktop flag-o-matic qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Portable DjVu viewer using Qt"
 HOMEPAGE="http://djvu.sourceforge.net/djview4.html"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/djvu/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ppc ppc64 x86"
-IUSE="debug nsplugin"
+IUSE="debug"
 
 RDEPEND="
 	>=app-text/djvu-3.5.22-r1
@@ -22,11 +22,11 @@ RDEPEND="
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-qt/linguist-tools:5
 	>=sys-devel/autoconf-2.67
-	virtual/pkgconfig
-	nsplugin? ( dev-libs/glib:2 )"
+	virtual/pkgconfig"
 
 DOCS=( README NEWS )
 
@@ -50,7 +50,7 @@ src_configure() {
 	econf \
 		--with-x \
 		--disable-desktopfiles \
-		$(use_enable nsplugin nsdejavu)
+		--disable-nsdejavu
 }
 
 src_compile() {
