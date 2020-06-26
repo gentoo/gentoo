@@ -9547,7 +9547,7 @@ dev-ruby/forwardable-extended 2.6.0-r1: Forwardable with hash, and instance vari
 dev-ruby/fuubar 2.5.0 2.5.0-r1: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.30 0.31 0.34 0.34-r1: A gem to ease i18n
 dev-ruby/gettext_i18n_rails 1.8.0 1.8.1: FastGettext / Rails integration
-dev-ruby/gh 0.16.0 0.17.0: multi-layer client for the github api v3
+dev-ruby/gh 0.16.0 0.17.0 0.18.0: multi-layer client for the github api v3
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/gist 5.1.0: Potentially the best command line gister.
 dev-ruby/git 1.5.0 1.7.0: Library for using Git in Ruby
