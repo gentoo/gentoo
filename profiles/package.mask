@@ -32,6 +32,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-26)
+# consolekit is abandoned upstream.
+# People are encouraged to switch to any logind
+# implementation (systemd/elogind).
+# Removal in 45 days (bug #727730)
+sys-auth/consolekit
+sys-libs/libnih
+app-admin/cgmanager
+xfce-extra/xfce4-power-manager
+sys-power/pm-utils
+sys-power/pm-quirks
+sec-policy/selinux-consolekit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-25)
 # Stuck on Python 2, no maintainer; rgain3 fork available for sb. taking over
 # at https://github.com/chaudum/rgain - masked for removal in 30 days.

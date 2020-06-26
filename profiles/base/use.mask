@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-26)
+# consolekit is masked for removal.
+consolekit
+
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)
 # Mask Ruby 2.4 as EOL
 ruby_targets_ruby24
