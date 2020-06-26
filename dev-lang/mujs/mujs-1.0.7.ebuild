@@ -10,18 +10,19 @@ HOMEPAGE="
 	https://mujs.com/
 	https://github.com/ccxvii/mujs/
 "
-SRC_URI="https://github.com/ccxvii/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://mujs.com/downloads/${P}.tar.xz"
 
-LICENSE="AGPL-3"
-SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+LICENSE="ISC"
+# subslot matches SONAME
+SLOT="0/${PV}"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="static-libs"
 
 RDEPEND="sys-libs/readline:0="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-flags.patch"
+	"${FILESDIR}/${PN}-1.0.5-flags.patch"
 )
 
 src_prepare() {
@@ -29,6 +30,8 @@ src_prepare() {
 
 	tc-export AR CC
 
+	# library's ABI (and API) changes in ~each release:
+	# diff 'usr/includemujs.h' across releases to validate
 	append-cflags -fPIC -Wl,-soname=lib${PN}.so.${PV}
 }
 
