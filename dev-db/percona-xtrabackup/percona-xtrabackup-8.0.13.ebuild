@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -7,7 +7,7 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake flag-o-matic
 
-BOOST_VER="1_69_0"
+BOOST_VER="1_70_0"
 MY_PV="$(ver_rs 2 '-')"
 
 DESCRIPTION="Hot backup utility for MySQL based servers"
@@ -42,6 +42,10 @@ RDEPEND="
 	!dev-db/percona-xtrabackup-bin
 	dev-perl/DBD-mysql"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-8.0.13-remove-rpm.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_CONFIG=xtrabackup_release
@@ -58,6 +62,8 @@ src_install() {
 
 	dobin "${p}"/xbcloud_osenv
 	dobin "${BUILD_DIR}"/runtime_output_directory/{xbcloud,xbcrypt,xbstream,xtrabackup}
+
+	dolib.so "${BUILD_DIR}"/plugin_output_directory/{keyring_file.so,keyring_vault.so}
 
 	doman "${p}"/doc/source/build/man/*
 }

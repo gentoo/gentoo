@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1b9865e2..e3c82cdd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -181,27 +181,6 @@ ENDIF()
+ OPTION(FORCE_UNSUPPORTED_COMPILER "Disable compiler version checks" OFF)
+ MARK_AS_ADVANCED(WITHOUT_SERVER FORCE_UNSUPPORTED_COMPILER)
+ 
+-# Use 'uname -r' and 'rpm -qf /' to figure out host system.
+-# For Docker images we cannot trust uname, so use rpm instead.
+-IF(UNIX)
+-  FIND_PROGRAM(MY_UNAME uname /bin /usr/bin /usr/local/bin /sbin)
+-  IF(MY_UNAME)
+-    EXECUTE_PROCESS(COMMAND ${MY_UNAME} -s
+-      OUTPUT_VARIABLE MY_HOST_SYSTEM_NAME
+-      OUTPUT_STRIP_TRAILING_WHITESPACE
+-      RESULT_VARIABLE MY_UNAME_RESULT
+-      )
+-  ENDIF()
+-  FIND_PROGRAM(MY_RPM rpm /bin /usr/bin)
+-  IF(MY_RPM)
+-    EXECUTE_PROCESS(COMMAND ${MY_RPM} -qf /
+-      OUTPUT_VARIABLE MY_HOST_FILESYSTEM_NAME
+-      OUTPUT_STRIP_TRAILING_WHITESPACE
+-      RESULT_VARIABLE MY_RPM_RESULT
+-      )
+-  ENDIF()
+-ENDIF()
+-
+ IF(CMAKE_HOST_UNIX AND NOT FORCE_UNSUPPORTED_COMPILER
+     AND NOT CMAKE_C_COMPILER AND NOT CMAKE_CXX_COMPILER)
+   # Cannot INCLUDE(CMakeDetermineSystem) prior to PROJECT initialization below.
