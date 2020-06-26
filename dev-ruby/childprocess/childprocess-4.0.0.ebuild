@@ -32,7 +32,8 @@ all_ruby_prepare() {
 }
 
 each_ruby_prepare() {
-	sed -i -e "s:'ruby':'"${RUBY}"':" spec/childprocess_spec.rb || die
+	sed -i -e "s:'ruby':'"${RUBY}"':" spec/childprocess_spec.rb spec/spec_helper.rb || die
+	sed -i -e '/system/ s:ruby:'${RUBY}':' spec/spec_helper.rb || die
 }
 
 each_ruby_test() {
