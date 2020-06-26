@@ -5224,7 +5224,7 @@ dev-libs/newt 0.52.21-r1: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r1 0.7 0.8: Generate Javascript-to-DOM bindings from w3c webidl files
-dev-libs/nspr 4.25: Netscape Portable Runtime
+dev-libs/nspr 4.25 4.26: Netscape Portable Runtime
 dev-libs/nss 3.51 3.51.1-r1 3.52 3.52.1-r1 3.53.1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
@@ -10261,7 +10261,7 @@ dev-util/cargo-tree 0.29.0-r1: Cargo subcommand that visualizes crate dependency
 dev-util/catalyst 3.0.9 3.0.12 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 0.8.3-r1 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/cbindgen 0.14.2: A tool for generating C bindings to Rust code
+dev-util/cbindgen 0.14.2 0.14.3: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.7-r1 3.7.9 3.7.10: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 0.20190823.6 9999: C/C++/ObjC language server
@@ -10332,7 +10332,7 @@ dev-util/devhelp 3.30.1 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 148: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 148 149: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
