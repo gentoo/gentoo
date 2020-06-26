@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	dev-libs/libgpg-error:=
 	dev-libs/openssl:0=
 	sys-apps/util-linux:=
-	sys-fs/fuse:=
+	sys-fs/fuse:0=
 	sys-libs/zlib:=
 
 	archive? ( app-arch/libarchive:= )
