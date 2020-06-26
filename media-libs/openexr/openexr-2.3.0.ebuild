@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="ILM's OpenEXR high dynamic-range image file format libraries"
-HOMEPAGE="http://openexr.com/"
+HOMEPAGE="https://www.openexr.com/"
 SRC_URI="https://github.com/openexr/openexr/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
