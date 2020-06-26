@@ -16819,7 +16819,7 @@ sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
 sys-apps/xdg-desktop-portal 1.6.0-r1: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
-sys-apps/yarn 1.22.0 1.22.4: Fast, reliable, and secure node dependency management
+sys-apps/yarn 1.22.4: Fast, reliable, and secure node dependency management
 sys-apps/zorroutils 0.04 0.05: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/AusweisApp2 1.20.1 9999: Official authentication app for German ID cards and residence permits
 sys-auth/authenticator 0.2.4-r1 9999: Two-factor authentication code generator for GNOME
