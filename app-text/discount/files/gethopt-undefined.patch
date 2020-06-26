@@ -1,0 +1,12 @@
+diff -aur discount-2.2.6/Makefile.in discount-2.2.6-new/Makefile.in
+--- discount-2.2.6/Makefile.in	2019-04-16 03:28:20.000000000 +1200
++++ discount-2.2.6-new/Makefile.in	2020-06-21 07:39:32.256757588 +1200
+@@ -139,7 +139,7 @@
+ 
+ pandoc_headers.o: tools/pandoc_headers.c config.h
+ 	$(BUILD) -c -o pandoc_headers.o tools/pandoc_headers.c
+-pandoc_headers: pandoc_headers.o
++pandoc_headers: pandoc_headers.o $(MKDLIB)
+ 	$(LINK) -o pandoc_headers pandoc_headers.o $(COMMON) -lmarkdown 
+ 
+ branch.o: tools/branch.c config.h
