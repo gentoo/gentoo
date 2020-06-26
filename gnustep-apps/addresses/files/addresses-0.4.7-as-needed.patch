@@ -1,6 +1,6 @@
 diff -Naur AddressManager.orig/GNUmakefile AddressManager/GNUmakefile
---- AddressManager.orig/GNUmakefile	2008-12-08 17:19:03.000000000 +0100
-+++ AddressManager/GNUmakefile	2008-12-08 17:19:28.000000000 +0100
+--- a/AddressManager.orig/GNUmakefile	2008-12-08 17:19:03.000000000 +0100
++++ b/AddressManager/GNUmakefile	2008-12-08 17:19:28.000000000 +0100
 @@ -24,8 +24,7 @@
  AddressManager_OBJCFLAGS=-I../Frameworks -Wall
  AddressManager_LDFLAGS=\
@@ -12,8 +12,8 @@ diff -Naur AddressManager.orig/GNUmakefile AddressManager/GNUmakefile
  -include GNUmakefile.preamble
  -include GNUmakefile.local
 diff -Naur AddressManager.orig/GNUmakefile.preamble AddressManager/GNUmakefile.preamble
---- AddressManager.orig/GNUmakefile.preamble	2008-12-08 17:19:03.000000000 +0100
-+++ AddressManager/GNUmakefile.preamble	2008-12-08 17:19:24.000000000 +0100
+--- a/AddressManager.orig/GNUmakefile.preamble	2008-12-08 17:19:03.000000000 +0100
++++ b/AddressManager/GNUmakefile.preamble	2008-12-08 17:19:24.000000000 +0100
 @@ -27,7 +27,7 @@
  # ObjC stuff
  ADDITIONAL_OBJC_LIBS +=
