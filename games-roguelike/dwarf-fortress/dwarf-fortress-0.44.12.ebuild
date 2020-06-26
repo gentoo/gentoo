@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,9 +10,9 @@ MY_PN=df
 MY_P=${MY_PN}_${MY_PV}
 
 DESCRIPTION="A single-player fantasy game"
-HOMEPAGE="http://www.bay12games.com/dwarves"
-SRC_URI="amd64? ( http://www.bay12games.com/dwarves/${MY_P}_linux.tar.bz2 )
-	x86? ( http://www.bay12games.com/dwarves/${MY_P}_linux32.tar.bz2 )"
+HOMEPAGE="https://www.bay12games.com/dwarves"
+SRC_URI="amd64? ( https://www.bay12games.com/dwarves/${MY_P}_linux.tar.bz2 )
+	x86? ( https://www.bay12games.com/dwarves/${MY_P}_linux32.tar.bz2 )"
 
 LICENSE="free-noncomm BSD BitstreamVera"
 SLOT="0"
