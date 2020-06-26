@@ -18,7 +18,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-RDEPEND=">=app-text/ghostscript-gpl-9.24"
+RDEPEND=">=app-text/ghostscript-gpl-9.24:="
 DEPEND="${RDEPEND}"
 
 # does not actually test anything, see bug 362557
