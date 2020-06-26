@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools apache-module
 
 DESCRIPTION="A QOS module for the apache webserver"
@@ -29,26 +29,33 @@ DOCFILES="${S}/doc/*.txt ${S}/README.TXT"
 need_apache2
 
 src_prepare() {
-	cd "${S}/tools" && eautoreconf
+	default
+
+	pushd "${S}"/tools &>/dev/null || die
+	eautoreconf
+	popd &>/dev/null || die
 }
 
 src_configure() {
-	cd "${S}/tools" && econf
+	pushd "${S}"/tools &>/dev/null || die
+	econf
+	popd &>/dev/null || die
 }
 
 src_compile() {
 	apache-module_src_compile
-	emake -C "${S}/tools"
+	emake -C "${S}"/tools
 }
 
 src_install() {
 	einfo "Installing Apache module ..."
-	cd "${S}/tools"
+	pushd "${S}"/tools &>/dev/null || die
 	apache-module_src_install
+	popd &>/dev/null || die
 
 	einfo "Installing module utilities ..."
-	emake -C "${S}/tools" install DESTDIR="${D}"
+	emake -C "${S}"/tools install DESTDIR="${D}"
 
 	# installing html documentation
-	dohtml -r -x *.txt "${S}/doc/"
+	dohtml -r -x *.txt "${S}"/doc/
 }
