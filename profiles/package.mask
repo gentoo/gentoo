@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-26)
+# Has been a part of dev-texlive/texlive-pictures
+# for a lonmg time. Removal in 30 days.
+dev-tex/circuit_macros
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-25)
 # Stuck on Python 2, no maintainer; rgain3 fork available for sb. taking over
 # at https://github.com/chaudum/rgain - masked for removal in 30 days.
