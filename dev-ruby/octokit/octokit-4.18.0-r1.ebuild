@@ -31,7 +31,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/jwt
 	dev-ruby/mime-types
 	>=dev-ruby/netrc-0.7.7
-	dev-ruby/vcr:3
+	dev-ruby/vcr:3[json]
 	dev-ruby/webmock:3 )"
 
 all_ruby_prepare() {
