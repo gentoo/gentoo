@@ -14,7 +14,7 @@ case ${PV} in
 *)
 	inherit vcs-snapshot
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/umlaeute/v4l2loopback/tarball/v${PV} -> ${P}.tar.gz"
+	SRC_URI="https://github.com/umlaeute/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	;;
 esac
 
