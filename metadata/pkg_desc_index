@@ -5709,7 +5709,7 @@ dev-perl/Cache-Memcached-Fast 0.250.0 0.260.0: Perl client for memcached, in C l
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1 0.270.0-r2: A lightweight cache with timed expiration
 dev-perl/Cairo 1.106.0 1.107.0: Perl interface to the cairo library
 dev-perl/Cairo-GObject 1.4.0-r1 1.5.0: Integrate Cairo into the Glib type system
-dev-perl/Calendar-Simple 1.230.0: Perl extension to create simple calendars
+dev-perl/Calendar-Simple 1.230.0 2.0.0: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2012.0.0 2013.0.0: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.460.0 0.480.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0 0.160.0: Warns and dies noisily with stack backtraces
@@ -9997,7 +9997,7 @@ dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/vagrant_cloud 2.0.3-r1: Vagrant Cloud API Library
 dev-ruby/vcard 0.2.16: Ruby vcard support extracted from Vpim
-dev-ruby/vcr 4.0.0 5.0.0 5.1.0 6.0.0: Records your test suite's HTTP interactions and replay them during test runs
+dev-ruby/vcr 4.0.0 5.1.0 6.0.0: Records your test suite's HTTP interactions and replay them during test runs
 dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.8: General Rack Authentication Framework
