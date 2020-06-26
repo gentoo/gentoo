@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@cmpct.info> (2020-06-24)
+# Valgrind lacks support for < ARMv7
+# https://valgrind.org/info/platforms.html
+dev-util/valgrind
+
 # Bernardo Meurer <bernardo@standard.ai> (2019-09-28)
 # Requires app-crypt/tpm2-tss which is pending ~arm vide
 # https://bugs.gentoo.org/695758
