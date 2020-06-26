@@ -16,6 +16,5 @@
   <use>
     <flag name="fuse">Enable the <pkg>sys-fs/fuse</pkg> filesystem driver</flag>
     <flag name="http">Enable http protocol support</flag>
-    <flag name="rbd">Enable rados block device support via <pkg>sys-cluster/ceph</pkg></flag>
   </use>
 </pkgmetadata>
