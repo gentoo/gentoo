@@ -9,9 +9,6 @@
   <flag name="foomatic">
      Build the included foomatic-rip printer driver. Strongly recommended.
   </flag>
-  <flag name="ipp_autosetup">
-     Let cups-browsed automatically set up IPP network printers by default.
-  </flag>
   <flag name="pclm">
      Enable PCLm support
   </flag>
