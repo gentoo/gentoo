@@ -1,0 +1,51 @@
+Don't use runtime python loading via dlopen().
+
+Just link to libpython directly. That makes python dependency
+more explicit and allows catching more compile-time bugs.
+--- a/gui-wx/configure/Makefile.am
++++ b/gui-wx/configure/Makefile.am
+@@ -22,7 +22,7 @@ golly_CPPFLAGS = $(AM_CPPFLAGS) $(WX_CPPFLAGS) $(PYTHON_INCLUDE) \
+ 	$(PERL_CPPFLAGS) $(PERL_INCLUDE) \
+ 	$(liblua_a_CPPFLAGS) -I$(top_srcdir)/../../lua
+ golly_CXXFLAGS = $(AM_CXXFLAGS) $(WX_CXXFLAGS_ONLY)
+-golly_LDADD = $(WX_LIBS) libgolly.a liblua.a
++golly_LDADD = $(WX_LIBS) $(PYTHON_LIBS) libgolly.a liblua.a
+ 
+ if WINDOWS
+ golly_LDADD += gollyres.o
+--- a/gui-wx/configure/configure.ac
++++ b/gui-wx/configure/configure.ac
+@@ -86,6 +86,16 @@ AS_IF([test "x$with_python_shlib" = xcheck],
+ AS_IF([test "x$shlib" = x], AC_MSG_ERROR([could not determine Python shared library name]))
+ AC_DEFINE_UNQUOTED([PYTHON_SHLIB], [$shlib])
+ 
++# Find python interpreter
++# 1. --embed is needed for python>=3.8
++# 2. statuc check is needed because python-3.7-config outputs error to stdout, not stderr
++if ${PYTHON}-config --libs --embed; then
++    PYTHON_LIBS=`${PYTHON}-config --libs --embed`
++elif ${PYTHON}-config --libs; then
++    PYTHON_LIBS=`${PYTHON}-config --libs`
++fi
++AC_SUBST(PYTHON_LIBS)
++
+ # Find zlib (unless explicitly disabled)
+ AS_IF([test "x$with_zlib" != xno],
+ 	[	AC_CHECK_HEADER([zlib.h], , [AC_MSG_ERROR([missing zlib])])
+--- a/gui-wx/wxpython.cpp
++++ b/gui-wx/wxpython.cpp
+@@ -59,8 +59,12 @@
+     #undef SIZEOF_SIZE_T
+     #undef SIZEOF_VOID_P
+ #else
+-    // load Python lib at runtime
+-    #define USE_PYTHON_DYNAMIC
++    // On gentoo just link against python to make
++    // python dependency more explicit.
++    # if 0
++      // load Python lib at runtime
++      #define USE_PYTHON_DYNAMIC
++    #endif
+ 
+     #ifdef __UNIX__
+         // avoid warning on Linux
