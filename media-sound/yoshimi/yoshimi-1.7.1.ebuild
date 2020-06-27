@@ -27,8 +27,10 @@ DEPEND="
 	virtual/jack
 	x11-libs/cairo[X]
 	x11-libs/fltk:1[opengl]
-	lv2? ( media-libs/lv2 )
-"
+	lv2? ( <media-libs/lv2-1.18.0 )"
+	##<media-libs/lv2-1.18.0 -- See bug #729716
+	##Should be transformed to plain
+	##media-libs/lv2 when it'll be bumped
 RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${WORKDIR}/${P}/src"
