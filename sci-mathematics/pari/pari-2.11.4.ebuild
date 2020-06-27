@@ -61,7 +61,11 @@ src_configure() {
 	# sysdatadir installs a pari.cfg stuff which is informative only.
 	# It is supposed to be for "architecture-dependent" data.
 	# It needs to be easily discoverable for downstream packages such as gp2c.
-	./Configure \
+	# We set LD to "" so that it is set to the value of the compiler used
+	# which is how a normal end user is expected to configure it. pari's build
+	# system do not cope very well with a naked linker, it is expecting a
+	# compiler driver. See https://bugs.gentoo.org/722090
+	LD="" ./Configure \
 		--prefix="${EPREFIX}"/usr \
 		--datadir="${EPREFIX}/usr/share/${PN}" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
