@@ -13,13 +13,13 @@ QMAIL_BIGTODO_F=notqmail-1.08-big-todo.patch
 
 QMAIL_LARGE_DNS="qmail-103.patch"
 
-inherit qmail
+inherit qmail systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/notqmail/notqmail.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc"
+	KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 	SRC_URI="https://github.com/notqmail/notqmail/releases/download/${P}/${P}.tar.xz"
 fi
 
@@ -142,11 +142,13 @@ src_prepare() {
 
 src_compile() {
 	qmail_src_compile NROFF=true
+	emake qmail-send.service
 	use qmail-spp && qmail_spp_src_compile
 }
 
 src_install() {
 	qmail_src_install
+	systemd_dounit "${S}"/qmail-send.service
 }
 
 src_test() {
