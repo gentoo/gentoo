@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Embeddable Javascript engine"
 HOMEPAGE="https://duktape.org"
@@ -9,7 +11,7 @@ SRC_URI="https://duktape.org/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64  ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -19,7 +21,7 @@ src_prepare() {
 	eapply_user
 
 	# Set install path
-	sed -i "s#INSTALL_PREFIX=/usr/local#INSTALL_PREFIX=${D::-1}/usr#" \
+	sed -i "s#INSTALL_PREFIX = /usr/local#INSTALL_PREFIX = ${D::-1}/usr#" \
 			Makefile.sharedlibrary || die "failed to set install path"
 
 	# Edit pkgconfig
@@ -31,6 +33,10 @@ src_prepare() {
 		Makefile.sharedlibrary || die
 
 	mv Makefile.sharedlibrary Makefile || die "failed to rename makefile"
+}
+
+src_compile() {
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
