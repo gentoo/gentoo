@@ -256,12 +256,6 @@ dev-ruby/did_you_mean:2.4
 # Removal in 30 days.
 app-text/xindy
 
-# Aaron Bauman <bman@gentoo.org> (2020-06-07)
-# py2 only. dead upstream. m-n. rdep.
-# Masked for removal in 15 days
-net-misc/charm
-sys-cluster/polysh
-
 # Jonas Stein <jstein@gentoo.org> (2020-06-07)
 # Last rite unusable package.
 # Removal after 2020-08-01
