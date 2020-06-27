@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit autotools eutils gnome2-utils python-any-r1 xdg-utils
 
@@ -13,7 +13,7 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 else
 	MY_P="HandBrake-${PV}"
-	SRC_URI="https://download2.handbrake.fr/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="https://github.com/HandBrake/HandBrake/releases/download/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -23,7 +23,7 @@ HOMEPAGE="http://handbrake.fr/"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE="+fdk gstreamer gtk libav-aac nvenc x265"
+IUSE="+fdk gstreamer gtk libav-aac numa nvenc x265"
 
 REQUIRED_USE="^^ ( fdk libav-aac )"
 
@@ -31,21 +31,23 @@ RDEPEND="
 	app-arch/xz-utils
 	media-libs/speex
 	dev-libs/jansson
+	dev-libs/libxml2
 	media-libs/a52dec
 	media-libs/libass:=
 	>=media-libs/libbluray-1.0
+	>=media-libs/dav1d-0.5.1
 	media-libs/libdvdnav
-	media-libs/libdvdread
+	media-libs/libdvdread:=
 	media-libs/libsamplerate
 	media-libs/libtheora
 	media-libs/libvorbis
-	media-libs/libvpx
+	>=media-libs/libvpx-1.8
 	nvenc? ( media-libs/nv-codec-headers )
 	media-libs/opus
 	media-libs/x264:=
 	media-sound/lame
 	sys-libs/zlib
-	>=media-video/ffmpeg-4.1:0=[fdk?]
+	>=media-video/ffmpeg-4.2.1:0=[postproc,fdk?]
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -55,6 +57,7 @@ RDEPEND="
 		media-plugins/gst-plugins-a52dec:1.0
 		media-plugins/gst-plugins-libav:1.0
 		media-plugins/gst-plugins-x264:1.0
+		media-plugins/gst-plugins-gdkpixbuf:1.0
 	)
 	gtk? (
 		>=x11-libs/gtk+-3.10
@@ -67,7 +70,7 @@ RDEPEND="
 		x11-libs/pango
 	)
 	fdk? ( media-libs/fdk-aac )
-	x265? ( >=media-libs/x265-2.9:0= )
+	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )
 	"
 
 DEPEND="${RDEPEND}
@@ -84,16 +87,12 @@ PATCHES=(
 	# Remove faac dependency; TODO: figure out if we need to do this at all.
 	"${FILESDIR}/${PN}-9999-remove-faac-dependency.patch"
 
-	# Fix missing x265 link flag
-	"${FILESDIR}/${P}-fix-missing-x265-link-flag.patch"
+	# Use whichever python is set by portage
+	"${FILESDIR}/${PN}-1.3.0-dont-search-for-python.patch"
 
-	# Allow disabling nvenc etc
-	"${FILESDIR}/${P}-backport-hardware-configure.patch"
+	# Fix x265 linkage... again #724650
+	"${FILESDIR}/${PN}-1.3.2-x265-link.patch"
 )
-
-pkg_setup() {
-	python-any-r1_pkg_setup
-}
 
 src_prepare() {
 	# Get rid of leftover bundled library build definitions,
@@ -118,10 +117,13 @@ src_configure() {
 		--verbose \
 		--prefix="${EPREFIX}/usr" \
 		--disable-gtk-update-checks \
+		--disable-flatpak \
+		--disable-gtk4 \
 		$(use_enable libav-aac ffmpeg-aac) \
 		$(use_enable fdk fdk-aac) \
-		$(use_enable gtk) \
+		$(usex !gtk --disable-gtk) \
 		$(usex !gstreamer --disable-gst) \
+		$(use_enable numa) \
 		$(use_enable nvenc) \
 		$(use_enable x265) || die "Configure failed."
 }
@@ -154,15 +156,11 @@ pkg_postinst() {
 		einfo "For the GTK+ version of HandBrake, you can run \`ghb\`."
 	fi
 
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
