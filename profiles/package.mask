@@ -486,12 +486,6 @@ www-plugins/passff
 =app-editors/emacs-27.0.50_pre*
 ~app-editors/emacs-27.0.90
 
-# David Seifert <soap@gentoo.org> (2019-12-08)
-# Unmaintained, build hangs, tons of other build failures, missing
-# dependencies.  Bug #663794, #666916, #666922, #667062, #678068,
-# #681678, #684420, #694488. Removal in 30 days.
-dev-db/clickhouse
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
 # when being called with --no-absolute-filenames
