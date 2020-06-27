@@ -61,7 +61,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-arch/zip
-	dev-util/vulkan-headers
 	media-libs/freetype
 	sys-devel/gettext
 	virtual/pkgconfig"
@@ -79,6 +78,12 @@ src_prepare() {
 	local KEEP_SOURCES=(
 		Bochs_disasm
 		FreeSurround
+
+		# vulkan's API is not backwards-compatible:
+		# new release dropped VK_PRESENT_MODE_RANGE_SIZE_KHR
+		# but dolphin still relies on it, bug #729832
+		Vulkan
+
 		cpp-optparse
 		# no support for for using system library
 		glslang
