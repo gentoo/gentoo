@@ -32,7 +32,7 @@ DEPEND="
 "
 
 all_ruby_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.4.8-graph-ruby.patch
+	eapply -p3 "${FILESDIR}"/${PN}-1.4.8-graph-ruby.patch
 }
 
 each_ruby_configure() {
