@@ -1,0 +1,23 @@
+Add compatibility setting for NSS
+
+https://github.com/libreswan/libreswan/commit/65a497959a0e1ca615341109eaad5e75723839d6
+
+We patch a different file because a later commit moved the setting to this file.
+
+diff --git a/lib/libswan/ike_alg_encrypt_nss_gcm_ops.c b/lib/libswan/ike_alg_encrypt_nss_gcm_ops.c
+index 93a027089a..571913cc1e 100644
+--- a/lib/libswan/ike_alg_encrypt_nss_gcm_ops.c
++++ b/lib/libswan/ike_alg_encrypt_nss_gcm_ops.c
+@@ -16,6 +16,12 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
++/*
++ * Special advise from Bob Relyea - needs to go before any nss include
++ *
++ */
++#define NSS_PKCS11_2_0_COMPAT 1
++
+ #include "lswlog.h"
+ #include "lswnss.h"
+ #include "prmem.h"
