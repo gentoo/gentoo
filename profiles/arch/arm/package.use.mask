@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@cmpct.info> (2020-06-27)
+# Tests require Valgrind, not available on <armv7a
+dev-libs/rapidjson test
+
 # Michał Górny <mgorny@gentoo.org> (2020-06-19)
 # Requires dev-util/dwarves.
 sys-kernel/gentoo-kernel debug
