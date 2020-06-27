@@ -416,12 +416,6 @@ games-util/pogo-manager-bin
 net-p2p/bisq
 sci-mathematics/geogebra
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-29)
-# Unmaintained, seriously outdated, vulnerable.  Multiple bugs reported.
-# Stuck on Python 3.6.
-# Removal in 30 days.  Bug #711702.
-app-metrics/buildbot-prometheus
-
 # Joshua Kinard <kumba@gentoo.org> (2020-03-28)
 # In Linux ~4.18, IPX (Internetwork Packet eXchange) protocol and
 # NCPFS (NetWare Core Protocol Filesystem) support was removed due
