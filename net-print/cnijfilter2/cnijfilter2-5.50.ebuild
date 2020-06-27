@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -21,13 +21,25 @@ DEPEND="virtual/libusb:1
 	net-print/cups"
 RDEPEND="${DEPEND}"
 
+QA_FLAGS_IGNORED=(
+	"/usr/lib.*/libcnbpnet30.so.1.0.0"
+	"/usr/lib.*/libcnbpcnclapicom2.so.5.0.0"
+	"/usr/lib.*/libcnnet2.so.1.2.4"
+	"/usr/lib.*/libcnbpnet20.so.1.0.0"
+	/usr/bin/cnijlgmon3
+)
+
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${PN}-5.20-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.20-gentoo.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-5.80-cflags.patch
+)
 
 src_prepare() {
 	default
-	DIRS="cmdtocanonij2 cnijbe2 lgmon3 rastertocanonij tocanonij tocnpwg"
+	DIRS="cmdtocanonij2 cmdtocanonij3 cnijbe2 lgmon3 rastertocanonij tocanonij tocnpwg"
 	LIBDIR=com/libs_bin$(usex amd64 64 32)
 	for d in ${DIRS}; do
 		mv "${d}"/configure.{in,ac} || die
@@ -40,6 +52,7 @@ src_prepare() {
 	echo "SUBDIRS= ${DIRS}" >> Makefile.am
 	sed -i \
 		-e "/^CFLAGS/d" \
+		cnijbe2/src/Makefile.am \
 		*/configure.ac || die
 	eautoreconf
 	cd ${LIBDIR}
@@ -53,7 +66,7 @@ src_prepare() {
 }
 
 src_configure() {
-	LDFLAGS="-L"${S}"/${LIBDIR}" econf --enable-progpath="${EPREFIX}/usr/bin"
+	LDFLAGS="-L${S}/${LIBDIR} ${LDFLAGS}" econf --enable-progpath="${EPREFIX}/usr/bin"
 }
 
 src_install() {
