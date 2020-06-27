@@ -1,0 +1,13 @@
+--- a/modules/afsnmp/Makefile.am
++++ b/modules/afsnmp/Makefile.am
+@@ -24,9 +24,7 @@
+ 	-I$(top_builddir)/modules/afsnmp
+ 
+ modules_afsnmp_libafsnmp_la_LIBADD	=	\
+-	$(MODULE_DEPS_LIBS)
+-
+-modules_afsnmp_libafsnmp_la_LDFLAGS	=	\
++	$(MODULE_DEPS_LIBS) \
+ 	$(MODULE_LDFLAGS) \
+ 	$(NETSNMP_LIBS)
+ 
