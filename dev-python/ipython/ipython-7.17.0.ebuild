@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-PYTHON_REQ_USE='readline,sqlite,threads(+)'
+PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_REQ_USE='readline(+),sqlite,threads(+)'
 
 inherit distutils-r1 eutils virtualx
 
