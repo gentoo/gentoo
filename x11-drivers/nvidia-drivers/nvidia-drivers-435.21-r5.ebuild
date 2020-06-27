@@ -19,7 +19,7 @@ SRC_URI="
 "
 
 EMULTILIB_PKG="true"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 
@@ -78,10 +78,7 @@ RDEPEND="
 "
 QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
-PATCHES=(
-	"${FILESDIR}"/${PN}-440.26-locale.patch
-)
-NV_KV_MAX_PLUS="5.7"
+NV_KV_MAX_PLUS="5.4"
 CONFIG_CHECK="!DEBUG_MUTEXES ~!I2C_NVIDIA_GPU ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
 
 pkg_pretend() {
@@ -324,9 +321,6 @@ src_install() {
 
 		insinto /etc/vulkan/icd.d
 		doins nvidia_icd.json
-
-		insinto /etc/vulkan/implicit_layer.d
-		doins nvidia_layers.json
 	fi
 
 	if use kernel_linux; then
@@ -478,7 +472,7 @@ src_install-libs() {
 		if use wayland && has_multilib_profile && [[ ${ABI} == "amd64" ]];
 		then
 			NV_GLX_LIBRARIES+=(
-				"libnvidia-egl-wayland.so.1.1.4"
+				"libnvidia-egl-wayland.so.1.1.3"
 			)
 		fi
 
