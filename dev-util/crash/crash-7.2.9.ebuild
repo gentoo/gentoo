@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="Red Hat crash utility; used for analyzing kernel core dumps"
-HOMEPAGE="https://github.com/crash-utility/crash"
+HOMEPAGE="https://crash-utility.github.io/"
 
 LICENSE="GPL-3"
 SLOT="0"
