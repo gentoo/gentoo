@@ -5774,7 +5774,7 @@ dev-perl/Compress-Bzip2 2.260.0 2.270.0: Interface to Bzip2 compression library
 dev-perl/Compress-LZF 3.800.0 3.800.0-r1: extremely light-weight Lempel-Ziv-Free compression
 dev-perl/Conf-Libconfig 0.100.0: Perl extension for libconfig
 dev-perl/Config-Any 0.320.0: Load configuration from different file formats, transparently
-dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
+dev-perl/Config-ApacheFormat 1.200.0-r1 1.200.0-r2: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
 dev-perl/Config-AutoConf 0.315.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
