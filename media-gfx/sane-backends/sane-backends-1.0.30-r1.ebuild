@@ -200,7 +200,7 @@ multilib_src_configure() {
 	local lbackends=" "
 
 	use gphoto2 && lbackends="gphoto2"
-	use v4l && lbackends="${BACKENDS} v4l"
+	use v4l && lbackends="${lbackends} v4l"
 	for backend in ${IUSE_SANE_BACKENDS}; do
 		if use "sane_backends_${backend}" && [ ${backend} != pnm ]; then
 			lbackends="${lbackends} ${backend}"
