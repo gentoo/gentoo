@@ -20,4 +20,7 @@
 		<flag name="wispr">Enable support for WISPr hotspot logins.</flag>
 		<flag name="wireguard">Enable WireGuard VPN support.</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:intel:connman</remote-id>
+	</upstream>
 </pkgmetadata>

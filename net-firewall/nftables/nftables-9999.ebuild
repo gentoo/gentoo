@@ -9,11 +9,22 @@ inherit autotools linux-info python-r1 systemd
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
-SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
+
+if [[ ${PV} =~ ^[9]{4,}$ ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.netfilter.org/nftables"
+
+	BDEPEND="
+		sys-devel/bison
+		sys-devel/flex
+	"
+else
+	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~sparc ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~sparc ~x86"
 IUSE="debug doc +gmp json +modern-kernel python +readline static-libs xtables"
 
 RDEPEND="
@@ -28,7 +39,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-BDEPEND="
+BDEPEND+="
 	doc? (
 		app-text/asciidoc
 		>=app-text/docbook2X-0.8.8-r4
@@ -100,7 +111,7 @@ src_compile() {
 src_install() {
 	default
 
-	if ! use doc; then
+	if ! use doc && [[ ! ${PV} =~ ^[9]{4,}$ ]]; then
 		pushd doc >/dev/null || die
 		doman *.?
 		popd >/dev/null || die
