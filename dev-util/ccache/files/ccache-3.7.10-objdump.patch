@@ -1,0 +1,15 @@
+Allow ${CHOST}-objdump (or any other override)
+--- a/test/suites/debug_prefix_map.bash
++++ b/test/suites/debug_prefix_map.bash
+@@ -24,9 +24,9 @@ objdump_cmd() {
+     if $HOST_OS_APPLE; then
+         xcrun dwarfdump -r0 $1
+     elif $HOST_OS_FREEBSD; then
+-        objdump -W $1
++        ${OBJDUMP-objdump} -W $1
+     else
+-        objdump -g $1
++        ${OBJDUMP-objdump} -g $1
+     fi
+ }
+ 
