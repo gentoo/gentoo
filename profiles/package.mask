@@ -416,16 +416,6 @@ games-util/pogo-manager-bin
 net-p2p/bisq
 sci-mathematics/geogebra
 
-# Joshua Kinard <kumba@gentoo.org> (2020-03-28)
-# In Linux ~4.18, IPX (Internetwork Packet eXchange) protocol and
-# NCPFS (NetWare Core Protocol Filesystem) support was removed due
-# to lack of maintenance.  Due to both being dead from a technology
-# standpoint and lack of any upstream activity, mask the below
-# packages and remove in 75 days.
-# Bug #681820
-net-fs/ncpfs
-net-misc/ipx-utils
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
 # new version is not packaged yet
