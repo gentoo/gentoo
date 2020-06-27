@@ -43,9 +43,9 @@ src_prepare() {
 
 	# Simplify python setup
 	# https://bugzilla.gnome.org/show_bug.cgi?id=758095
-	eapply "${FILESDIR}"/1.1.32-simplify-python.patch
+	eapply "${FILESDIR}"/${PN}-1.1.32-simplify-python.patch
 	eapply "${FILESDIR}"/${PN}-1.1.28-disable-static-modules.patch
-	eapply "${DISTDIR}"/libxslt-1.1.33-CVE-2019-11068.patch
+	eapply "${DISTDIR}"/${PN}-1.1.33-CVE-2019-11068.patch
 
 	eautoreconf
 	# If eautoreconf'd with new autoconf, then epunt_cxx is not necessary
