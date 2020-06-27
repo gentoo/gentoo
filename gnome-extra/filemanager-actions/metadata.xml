@@ -5,4 +5,9 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<use>
+	<flag name="caja">Install the <pkg>mate-base/caja</pkg> extension</flag>
+	<flag name="nautilus">Install the <pkg>gnome-base/nautilus</pkg> extension</flag>
+	<flag name="nemo">Install the <pkg>gnome-extra/nemo</pkg> extension</flag>
+</use>
 </pkgmetadata>
