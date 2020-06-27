@@ -58,6 +58,7 @@ DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-with-examples.patch
 	cmake_src_prepare
 	xdg_src_prepare
 }
