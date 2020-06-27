@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 DESCRIPTION="fast compiler cache"
 HOMEPAGE="https://ccache.dev/"
 SRC_URI="https://github.com/ccache/ccache/releases/download/v${PV}/ccache-${PV}.tar.xz"
@@ -26,6 +28,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
+	"${FILESDIR}"/${P}-objdump.patch
 )
 
 src_prepare() {
@@ -34,6 +37,9 @@ src_prepare() {
 	sed \
 		-e "/^EPREFIX=/s:'':'${EPREFIX}':" \
 		"${FILESDIR}"/ccache-config-3 > ccache-config || die
+
+	# mainly used in tests
+	tc-export OBJDUMP
 }
 
 src_configure() {
