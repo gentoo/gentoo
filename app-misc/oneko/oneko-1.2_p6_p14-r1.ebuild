@@ -41,6 +41,10 @@ src_prepare() {
 	done
 
 	default
+
+	printf '#!/bin/sh\n%s ${*}\n' "$(tc-getLD)" > "${T}"/ld
+	chmod +x "${T}"/ld
+	export PATH="${T}:${PATH}"
 }
 
 src_configure() {
