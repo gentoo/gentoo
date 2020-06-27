@@ -9,3 +9,4 @@ move mail-filter/pypolicyd-spf mail-filter/spf-engine
 move dev-python/mimeparse dev-python/python-mimeparse
 move app-misc/cargo-license dev-util/cargo-license
 move dev-python/argon2_cffi dev-python/argon2-cffi
+move gnome-extra/nautilus-actions gnome-extra/filemanager-actions
