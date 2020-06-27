@@ -19,7 +19,7 @@ SRC_URI="
 "
 
 EMULTILIB_PKG="true"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 
@@ -78,10 +78,7 @@ RDEPEND="
 "
 QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
-PATCHES=(
-	"${FILESDIR}"/${PN}-440.26-locale.patch
-)
-NV_KV_MAX_PLUS="5.8"
+NV_KV_MAX_PLUS="5.4"
 CONFIG_CHECK="!DEBUG_MUTEXES ~!I2C_NVIDIA_GPU ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
 
 pkg_pretend() {
@@ -153,11 +150,14 @@ src_prepare() {
 	done
 
 	if use tools; then
+		cp "${FILESDIR}"/nvidia-settings-fno-common.patch "${WORKDIR}" || die
 		cp "${FILESDIR}"/nvidia-settings-linker.patch "${WORKDIR}" || die
 		sed -i \
 			-e "s:@PV@:${PV}:g" \
+			"${WORKDIR}"/nvidia-settings-fno-common.patch \
 			"${WORKDIR}"/nvidia-settings-linker.patch \
 			|| die
+		eapply "${WORKDIR}"/nvidia-settings-fno-common.patch
 		eapply "${WORKDIR}"/nvidia-settings-linker.patch
 	fi
 
@@ -321,9 +321,6 @@ src_install() {
 
 		insinto /etc/vulkan/icd.d
 		doins nvidia_icd.json
-
-		insinto /etc/vulkan/implicit_layer.d
-		doins nvidia_layers.json
 	fi
 
 	if use kernel_linux; then
@@ -387,7 +384,7 @@ src_install() {
 
 	systemd_dounit *.service
 	dobin nvidia-sleep.sh
-	exeinto $(systemd_get_utildir)/system-sleep
+	exeinto /lib/systemd/system-sleep
 	doexe nvidia
 
 	if has_multilib_profile && use multilib; then
@@ -475,7 +472,7 @@ src_install-libs() {
 		if use wayland && has_multilib_profile && [[ ${ABI} == "amd64" ]];
 		then
 			NV_GLX_LIBRARIES+=(
-				"libnvidia-egl-wayland.so.1.1.4"
+				"libnvidia-egl-wayland.so.1.1.3"
 			)
 		fi
 
