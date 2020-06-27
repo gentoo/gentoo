@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib xdg
+inherit desktop multilib xdg
 
 DESCRIPTION="Wolfram Mathematica"
 SRC_URI="Mathematica_${PV}_LINUX.sh"
@@ -62,12 +62,11 @@ src_install() {
 	done
 
 	# fix some embedded paths and install desktop files
-	insinto /usr/share/applications
 	for filename in $(find "${D}/${M_TARGET}/SystemFiles/Installation" -name "wolfram-mathematica.desktop") ; do
 		echo Fixing "${filename}"
 		sed -e "s:${S}::g" -e 's:^\t\t::g' -i "${filename}"
 		echo "Categories=Physics;Science;Engineering;2DGraphics;Graphics;" >> "${filename}"
-		doins "${filename}"
+		domenu "${filename}"
 	done
 
 	# install mime types
