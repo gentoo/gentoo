@@ -5779,7 +5779,7 @@ dev-perl/Config-Auto 0.440.0 0.440.0-r1: Magical config file parser
 dev-perl/Config-AutoConf 0.315.0 0.318.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
 dev-perl/Config-General 2.630.0: Config file parser module
-dev-perl/Config-Grammar 1.120.0: A grammar-based, user-friendly config parser
+dev-perl/Config-Grammar 1.120.0 1.130.0: A grammar-based, user-friendly config parser
 dev-perl/Config-INI 0.25.0: simple .ini-file format
 dev-perl/Config-IniFiles 2.940.0: A module for reading .ini-style configuration files
 dev-perl/Config-JSON 1.520.200: A JSON based config file system
