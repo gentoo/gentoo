@@ -17,17 +17,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+chg emacs gpg test tk zsh-completion"
 
-BROKEN_PYTHON="
-	!~dev-python/python-3.5.0
-	!~dev-python/python-3.5.1
-	!~dev-python/python-3.5.2
-	!~dev-python/python-3.6.0
-	!~dev-python/python-3.6.1"
+BDEPEND="dev-python/docutils[${PYTHON_USEDEP}]"
 
-BDEPEND="${BROKEN_PYTHON}
-	dev-python/docutils[${PYTHON_USEDEP}]"
-
-RDEPEND="${BROKEN_PYTHON}
+RDEPEND="
 	app-misc/ca-certificates
 	dev-python/zstandard[${PYTHON_USEDEP}]
 	gpg? ( app-crypt/gnupg )
