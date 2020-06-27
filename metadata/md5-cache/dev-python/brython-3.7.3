@@ -3,12 +3,12 @@ DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-
 DESCRIPTION=A Python 3 implementation for client-side web programming
 EAPI=6
 HOMEPAGE=http://www.brython.info
-IUSE=vhosts +python_single_target_python3_6
+IUSE=vhosts python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=BSD
-RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) >=app-admin/webapp-config-1.50.15
-REQUIRED_USE=^^ ( python_single_target_python3_6 )
+RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) >=app-admin/webapp-config-1.50.15
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=3.7.3
 SRC_URI=https://github.com/brython-dev/brython/archive/3.7.3.tar.gz -> brython-3.7.3.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	webapp	16783e418aca3ffa461d68310bf7ab12
-_md5_=201ea93a10ac034f9c5ecbf11011a5c7
+_md5_=e0fd127b99389b7d809e0f44e3d3dea3
