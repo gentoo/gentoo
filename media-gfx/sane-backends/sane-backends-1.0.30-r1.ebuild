@@ -32,6 +32,7 @@ IUSE_SANE_BACKENDS="
 	epjitsu
 	epson
 	epson2
+	escl
 	fujitsu
 	genesys
 	gt68xx
@@ -95,24 +96,22 @@ IUSE_SANE_BACKENDS="
 
 IUSE="gphoto2 ipv6 snmp systemd threads usb v4l xinetd zeroconf"
 
-for backend in ${IUSE_SANE_BACKENDS}; do
-	case ${backend} in
+for GBACKEND in ${IUSE_SANE_BACKENDS}; do
+	case ${GBACKEND} in
 	# Disable backends that require parallel ports as no one has those anymore.
 	canon_pp|hpsj5s|mustek_pp|\
-	pnm)
-		IUSE+=" -sane_backends_${backend}"
-		;;
-	mustek_usb2|kvs40xx)
-		IUSE+=" sane_backends_${backend}"
+	pnm|mustek_usb2|kvs40xx)
+		IUSE+=" sane_backends_${GBACKEND}"
 		;;
 	*)
-		IUSE+=" +sane_backends_${backend}"
+		IUSE+=" +sane_backends_${GBACKEND}"
 	esac
 done
 
 REQUIRED_USE="
-	sane_backends_mustek_usb2? ( threads )
+	sane_backends_escl? ( zeroconf )
 	sane_backends_kvs40xx? ( threads )
+	sane_backends_mustek_usb2? ( threads )
 "
 
 MY_PN=${PN//sane-/}
@@ -120,37 +119,41 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Scanner Access Now Easy - Backends"
 HOMEPAGE="http://www.sane-project.org/"
-SRC_URI="https://gitlab.com/sane-project/${MY_PN}/-/archive/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://gitlab.com/sane-project/backends/-/archive/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	sane_backends_dc210? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
-	sane_backends_dc240? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
-	sane_backends_dell1600n_net? (
-		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
-		>=media-libs/tiff-3.9.7-r1:0=[${MULTILIB_USEDEP}]
-	)
-	sane_backends_canon_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
-	sane_backends_hpsj5s? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
-	sane_backends_mustek_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
-	usb? ( >=virtual/libusb-1-r1:1=[${MULTILIB_USEDEP}] )
 	gphoto2? (
 		>=media-libs/libgphoto2-2.5.3.1:=[${MULTILIB_USEDEP}]
 		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
 	)
-	v4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
-	xinetd? ( sys-apps/xinetd )
+	sane_backends_canon_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
+	sane_backends_dc210? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	sane_backends_dc240? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	sane_backends_dell1600n_net? (
+		>=media-libs/tiff-3.9.7-r1:0=[${MULTILIB_USEDEP}]
+		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
+	)
+	sane_backends_escl? ( net-misc/curl )
+	sane_backends_hpsj5s? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
+	sane_backends_mustek_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	snmp? ( net-analyzer/net-snmp:0= )
 	systemd? ( sys-apps/systemd:0= )
+	usb? ( >=virtual/libusb-1-r1:1=[${MULTILIB_USEDEP}] )
+	v4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
+	xinetd? ( sys-apps/xinetd )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="${RDEPEND}
+	dev-libs/libxml2
 	v4l? ( sys-kernel/linux-headers )
-	>=sys-devel/gettext-0.18.1
+"
+BDEPEND="
+	sys-devel/gettext
 	virtual/pkgconfig
 "
 
@@ -158,6 +161,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
 	"${FILESDIR}"/${PN}-1.0.27-disable-usb-tests.patch
 	"${FILESDIR}"/${P}-missing-stdint-include.patch
+	"${FILESDIR}"/sane-backends-1.0.30-add_hpaio_epkowa_dll.conf.patch
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -174,16 +178,9 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	cat >> backend/dll.conf.in <<-EOF
-	# Add support for the HP-specific backend.  Needs net-print/hplip installed.
-	hpaio
-	# Add support for the Epson-specific backend.  Needs media-gfx/iscan installed.
-	epkowa
-	EOF
-
 	# Patch out the git reference so we can run eautoreconf
 	sed -i -e "s/m4_esyscmd_s(\[git describe --dirty\])/${PV}/" configure.ac || die
-        eautoreconf
+	eautoreconf
 
 	# Fix for "make check".  Upstream sometimes forgets to update this.
 	local ver=$(./configure --version | awk '{print $NF; exit 0}')
@@ -195,26 +192,18 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing # From Fedora
-
-	# if LINGUAS is set, just use the listed and supported localizations.
-	if [[ ${LINGUAS+set} == "set" ]]; then
-		mkdir -p po || die
-		strip-linguas -u po
-		printf '%s\n' ${LINGUAS} > po/LINGUAS
-	fi
-
 	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
 	# the blank is intended - an empty string would result in building ALL backends.
-	local BACKENDS=" "
+	local lbackends=" "
 
-	use gphoto2 && BACKENDS="gphoto2"
-	use v4l && BACKENDS="${BACKENDS} v4l"
+	use gphoto2 && lbackends="gphoto2"
+	use v4l && lbackends="${BACKENDS} v4l"
 	for backend in ${IUSE_SANE_BACKENDS}; do
 		if use "sane_backends_${backend}" && [ ${backend} != pnm ]; then
-			BACKENDS="${BACKENDS} ${backend}"
+			lbackends="${lbackends} ${backend}"
 		fi
 	done
 
@@ -241,7 +230,7 @@ multilib_src_configure() {
 	# People can refer to the "Programmer's Documentation" at http://www.sane-project.org/docs.html
 	ECONF_SOURCE=${S} \
 	SANEI_JPEG="sanei_jpeg.o" SANEI_JPEG_LO="sanei_jpeg.lo" \
-	BACKENDS="${BACKENDS}" \
+	BACKENDS="${lbackends}" \
 	econf \
 		--disable-locking \
 		--without-api-spec \
@@ -277,7 +266,7 @@ multilib_src_compile() {
 		mkdir -p "${dirs[@]}" || die
 		emake "${targets[@]}"
 
-		popd >/dev/null
+		popd >/dev/null || die
 	fi
 
 	if use usb; then
@@ -332,6 +321,10 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	elog "Optional backends:"
+	optfeature "Epson-specific backend" media-gfx/iscan
+	optfeature "HP-specific backend" net-print/hplip
+
 	if use xinetd; then
 		elog "If you want remote clients to connect, edit"
 		elog "/etc/sane.d/saned.conf and /etc/hosts.allow"
