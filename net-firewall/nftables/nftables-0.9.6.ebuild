@@ -3,13 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit autotools linux-info python-r1 systemd
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
-#SRC_URI="https://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -37,9 +36,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
-#S="${WORKDIR}/v${PV}"
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
 
 python_make() {
 	emake \
@@ -47,7 +46,7 @@ python_make() {
 		abs_builddir="${S}" \
 		DESTDIR="${D}" \
 		PYTHON_BIN="${PYTHON}" \
-		${@}
+		"${@}"
 }
 
 pkg_setup() {
@@ -93,7 +92,7 @@ src_configure() {
 src_compile() {
 	default
 
-	if use python ; then
+	if use python; then
 		python_foreach_impl python_make
 	fi
 }
@@ -141,11 +140,23 @@ pkg_postinst() {
 		ewarn "    'chmod 600 \"${save_file}\"'"
 	fi
 
-	elog "If you wish to enable the firewall rules on boot (on systemd) you"
-	elog "will need to enable the nftables-restore service."
-	elog "    'systemctl enable ${PN}-restore.service'"
-	elog
-	elog "If you are creating firewall rules before the next system restart "
-	elog "the nftables-restore service must be manually started in order to "
-	elog "save those rules on shutdown."
+	if has_version 'sys-apps/systemd'; then
+		elog "If you wish to enable the firewall rules on boot (on systemd) you"
+		elog "will need to enable the nftables-restore service."
+		elog "    'systemctl enable ${PN}-restore.service'"
+		elog
+		elog "If you are creating firewall rules before the next system restart"
+		elog "the nftables-restore service must be manually started in order to"
+		elog "save those rules on shutdown."
+	fi
+	if has_version 'sys-apps/openrc'; then
+		elog "If you wish to enable the firewall rules on boot (on openrc) you"
+		elog "will need to enable the nftables service."
+		elog "    'rc-update add ${PN} default'"
+		elog
+		elog "If you are creating or updating the firewall rules and wish to save"
+		elog "them to be loaded on the next restart, use the \"save\" functionality"
+		elog "in the init script."
+		elog "    'rc-service ${PN} save'"
+	fi
 }
