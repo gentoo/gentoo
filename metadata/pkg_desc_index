@@ -4740,7 +4740,7 @@ dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language wit
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles into javascript
 dev-lang/crystal 0.35.1: The Crystal Programming Language
-dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
+dev-lang/duktape 2.4.0 2.5.0: Embeddable Javascript engine
 dev-lang/elixir 1.9.4 1.10.3: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 21.1.1 22.3.2 22.3.4 23.0 23.0.1: Erlang programming language, runtime environment and libraries (OTP)
@@ -10457,7 +10457,7 @@ dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 1.10.0 9999: A small build system s
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61 9.0.176 9.1.85 9.2.88 10.1.243 10.2.89: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r2 10.1.168-r1 10.1.243-r2 10.2.89-r1: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r3 10.1.168-r2 10.1.243-r3 10.2.89-r2: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
@@ -18693,7 +18693,7 @@ x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-extra-themes 1.1 1.2: Extra themes for IceWM
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
-x11-themes/kvantum 0.14.1 0.15.2: SVG-based theme engine for Qt5, KDE and LXQt
+x11-themes/kvantum 0.16.0: SVG-based theme engine for Qt5, KDE Plasma and LXQt
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3-r1: Fedora 14 official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwork
