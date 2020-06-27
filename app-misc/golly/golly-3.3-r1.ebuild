@@ -4,8 +4,9 @@
 EAPI=7
 
 WX_GTK_VER=3.0
+PYTHON_COMPAT=( python2_7 )
 
-inherit desktop eutils flag-o-matic wxwidgets xdg-utils
+inherit desktop eutils flag-o-matic python-single-r1 wxwidgets xdg-utils
 
 DESCRIPTION="simulator for Conway's Game of Life and other cellular automata"
 HOMEPAGE="http://golly.sourceforge.net/"
@@ -15,11 +16,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="tiff"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="virtual/opengl
 	sys-libs/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,tiff?]"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	${PYTHON_DEPS}"
 
 S=${WORKDIR}/${P}-src
 
