@@ -4,9 +4,9 @@
 EAPI=7
 
 WX_GTK_VER=3.0
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{7,8,9}} )
 
-inherit desktop python-single-r1 wxwidgets xdg-utils
+inherit autotools desktop python-single-r1 wxwidgets xdg-utils
 
 DESCRIPTION="simulator for Conway's Game of Life and other cellular automata"
 HOMEPAGE="http://golly.sourceforge.net/"
@@ -20,14 +20,33 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="virtual/opengl
 	sys-libs/zlib
-	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,tiff?]"
-RDEPEND="${DEPEND}
-	${PYTHON_DEPS}"
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,tiff?]
+	${PYTHON_DEPS}
+"
+
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${P}-src
 
+PATCHES=(
+	"${FILESDIR}"/${P}-nondynamic-python.patch
+	"${FILESDIR}"/${P}-allow-py23-exec.patch
+	"${FILESDIR}"/${P}-glife-py23.patch
+	"${FILESDIR}"/${P}-allow-py3.patch
+)
+
 pkg_setup() {
+	python-single-r1_pkg_setup
 	setup-wxwidgets
+}
+
+src_prepare() {
+	default
+
+	# patches change configure.ac and Makefile.am
+	pushd gui-wx/configure
+		eautoreconf
+	popd
 }
 
 src_configure() {
