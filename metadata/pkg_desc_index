@@ -2012,7 +2012,6 @@ app-leechcraft/liblaretz 0.1.2 9999: Shared library to be used by the Laretz syn
 app-metrics/alertmanager 0.18.0 0.19.0 0.21.0: Alertmanager for alerts sent by client applications such as Prometheus
 app-metrics/bind_exporter 0.2.0_p20190226 0.3.0: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.15.1 0.16.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
-app-metrics/buildbot-prometheus 17.7.2-r2: A Prometheus metrics exporter for Buildbot
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
 app-metrics/collectd 5.10.0 5.11.0-r2: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0 0.6.0: Prometheus exporter for consul metrics
@@ -3245,7 +3244,6 @@ dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: A simple PostgreSQL diff tool that is us
 dev-db/barman 2.10: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/clickhouse 18.6.0-r1 18.10.3-r1 18.12.17-r1 19.5.3.8-r1 19.9.5.36-r1 19.13.1.11-r2 19.13.1.11-r3 19.15.2.2: An OSS column-oriented database management system for real-time data analysis
 dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
@@ -14279,7 +14277,6 @@ net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volum
 net-fs/libnfs 2.0.0 3.0.0 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2019.07.17.22.13.42 2019.07.31.19.17.35: Minio client provides alternatives for ls, cat on cloud storage and filesystems
 net-fs/minio 2020.06.22.03.12.50: An Amazon S3 compatible object storage server
-net-fs/ncpfs 2.2.6-r3 2.2.6-r4 2.2.6-r5: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.12: Open Source AFP server
 net-fs/nfs-utils 2.4.1-r4 2.4.3 2.5.1: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5: Commandline and GUI tools that deal directly with NFSv4 ACLs
@@ -14746,7 +14743,6 @@ net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with 
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r5 2.2.10-r6 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
-net-misc/charm 1.9.2-r2: A text based livejournal client
 net-misc/chrony 3.5-r2 3.5-r4 4.0_pre2-r1 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
@@ -14835,7 +14831,6 @@ net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP
 net-misc/ipsvd 1.0.0-r2: ipsvd is a set of internet protocol service daemons for Unix
 net-misc/iputils 20180629 20190515 20190709 20190709-r1 99999999: Network monitoring tools including ping and ping6
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0: IPv6 address calculator
-net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or controlling a distance PC
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
@@ -17043,7 +17038,6 @@ sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
 sys-cluster/placement 2.0.0 3.0.0 2019.2.9999 2020.1.9999: A HTTP service for managing, selecting, and claiming cloud resources.
 sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devices
 sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
-sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
 sys-cluster/rdma-core 26.0-r1 26.1 27.0-r1 28.0 29.0 30.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem

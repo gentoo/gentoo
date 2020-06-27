@@ -1327,12 +1327,6 @@ dev-cpp/libjson-rpc-cpp:redis-server - Build support for Redis server using dev-
 dev-cpp/libjson-rpc-cpp:stubgen - Build header stub code generator (needed for development and when pregenerated headers are not bundled)
 dev-cpp/sourcetrail:examples - Install example projects.
 dev-db/aerospike-server-community:tools - Install extra tools
-dev-db/clickhouse:client - Build CLI client.
-dev-db/clickhouse:kafka - Enables support for kafka consumer.
-dev-db/clickhouse:mongodb - Enabled support for MongoDB-based dictionaries
-dev-db/clickhouse:server - Build server.
-dev-db/clickhouse:tools - Build various tools, like benchmark, copier, etc.
-dev-db/clickhouse:zookeeper - Enable support for clustering (based on Zookeeper).
 dev-db/etcd:server - Installs etcd daemon
 dev-db/firebird:server - Install the server components of Firebird, not just the client
 dev-db/firebird:xinetd - Install ClassicServer
