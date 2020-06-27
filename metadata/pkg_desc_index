@@ -8601,7 +8601,7 @@ dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/radon 4.1.0: Code Metrics in Python
 dev-python/raet 0.6.8 0.6.8-r1: Reliable Asynchronous Event Transport Protocol
 dev-python/random2 1.0.1-r1: Python-2.7 random module ported to python-3
-dev-python/rarfile 3.0 3.0-r1: Module for RAR archive reading
+dev-python/rarfile 3.0 3.0-r1 3.1: Module for RAR archive reading
 dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
 dev-python/raven 5.33.0: Raven is a client for Sentry
 dev-python/rdflib 4.2.2-r1 5.0.0: RDF library containing a triple store and parser/serializer
@@ -10309,7 +10309,7 @@ dev-util/cucumber-core 3.2.1: Executable feature scenarios
 dev-util/cucumber-cucumber-expressions 10.2.0 10.2.1: a simpler alternative to Regular Expressions
 dev-util/cucumber-expressions 6.0.1: a simpler alternative to Regular Expressions
 dev-util/cucumber-messages 7.0.0: Protocol Buffer messages for Cucumber's inter-process communication
-dev-util/cucumber-rails 1.8.0 2.0.0-r1: Executable feature scenarios for Rails
+dev-util/cucumber-rails 1.8.0 2.0.0-r1 2.1.0: Executable feature scenarios for Rails
 dev-util/cucumber-tag-expressions 2.0.4: Cucumber tag expressions for ruby
 dev-util/cucumber-tag_expressions 1.1.1: Cucumber tag expressions for ruby
 dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
