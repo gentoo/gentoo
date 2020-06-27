@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit multilib versionator xdg
+inherit multilib xdg
 
 DESCRIPTION="Wolfram Mathematica"
 SRC_URI="Mathematica_${PV}_LINUX.sh"
@@ -26,7 +26,7 @@ RDEPEND="
 
 # we need this a few times
 MPN="Mathematica"
-MPV=$(get_version_component_range 1-2)
+MPV=$(ver_cut 1-2)
 M_BINARIES="MathKernel Mathematica MathematicaScript WolframKernel WolframScript math mathematica mcc wolfram"
 M_TARGET="opt/Wolfram/${MPN}/${MPV}"
 
