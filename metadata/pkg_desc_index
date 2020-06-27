@@ -12585,7 +12585,7 @@ media-gfx/recoverjpeg 2.2.3-r1: Recover JPEG pictures from a possibly corrupted 
 media-gfx/ristretto 0.10.0: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.3: Utility to convert raster images to EPS, PDF and many others
-media-gfx/sane-backends 1.0.27-r3 1.0.30: Scanner Access Now Easy - Backends
+media-gfx/sane-backends 1.0.27-r3 1.0.30-r1: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14-r3 1.0.14-r4: Scanner Access Now Easy
 media-gfx/scantailor-advanced 1.0.16-r1: Interactive post-processing tool for scanned pages
 media-gfx/scour 0.37: Take an SVG file and produce a cleaner and more concise file
@@ -15199,7 +15199,7 @@ net-vpn/i2pd 2.30.0 2.31.0 2.32.0 2.32.1: A C++ daemon for accessing the I2P ano
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r6: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
-net-vpn/libreswan 3.32: IPsec implementation for Linux, fork of Openswan
+net-vpn/libreswan 3.32 3.32-r1: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engine
 net-vpn/mullvad-netns 0.2 9999: Script to run a command within a Mullvad network namespace
 net-vpn/networkmanager-fortisslvpn 1.2.8-r2 1.2.10: NetworkManager Fortinet SSLVPN compatible plugin
