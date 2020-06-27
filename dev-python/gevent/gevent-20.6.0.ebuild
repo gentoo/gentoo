@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-libs/libev-4.23:=
 	dev-libs/libuv:=
 	>=net-dns/c-ares-1.12:=
-	>=dev-python/greenlet-0.4.14
+	>=dev-python/greenlet-0.4.16
 	virtual/python-greenlet[${PYTHON_USEDEP}]
 	events? (
 		dev-python/zope-event[${PYTHON_USEDEP}]
