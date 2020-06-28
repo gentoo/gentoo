@@ -46,14 +46,14 @@ src_install() {
 	newins "${WORKDIR}"/ethercodes.dat-${ETHERCODES_DATE} ethercodes.dat
 
 	insinto /usr/share/arpwatch/awk
-	doins duplicates.awk euppertolower.awk p.awk e.awk d.awk
+	doins d.awk duplicates.awk e.awk euppertolower.awk p.awk
 
 	diropts --group=arpwatch --mode=770
 	keepdir /var/lib/arpwatch
 	dodoc README CHANGES
 
-	newinitd "${FILESDIR}"/arpwatch.initd-r1 arpwatch
-	newconfd "${FILESDIR}"/arpwatch.confd-r1 arpwatch
+	newconfd "${FILESDIR}"/arpwatch.confd-r2 arpwatch
+	newinitd "${FILESDIR}"/arpwatch.initd-r2 arpwatch
 }
 
 pkg_postinst() {
