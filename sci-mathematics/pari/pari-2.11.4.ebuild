@@ -11,7 +11,7 @@ SRC_URI="https://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/6"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="data doc fltk gmp test threads X"
 RESTRICT="!test? ( test )"
 
