@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@cmpct.info> (2020-06-29)
+# Needs Rust, which is available here
+# Bug #677018
+-net-news/newsboat
+
 # Sam James <sam@cmpct.info> (2020-06-24)
 # Valgrind works on ARMv7
 -dev-util/valgrind
