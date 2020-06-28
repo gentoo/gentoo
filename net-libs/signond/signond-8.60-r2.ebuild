@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-consistent-paths.patch" # bug 701142
 	"${FILESDIR}/${P}-crashfix.patch"
 	"${FILESDIR}/${P}-unused-dep.patch" # bug 727346
+	"${FILESDIR}/${P}-drop-fno-rtti.patch" # runtime crashes
 )
 
 S="${WORKDIR}/${PN}-VERSION_${PV}"
@@ -52,14 +53,6 @@ src_prepare() {
 	# std flags
 	sed -e "/CONFIG += c++11/d" \
 		-i common-project-config.pri || die "failed fixing CXXFLAGS"
-
-	# fix runtime failures
-	sed -e "/fno-rtti/d" \
-		-i common-project-config.pri src/plugins/plugins.pri \
-		src/{remotepluginprocess/remotepluginprocess,extensions/cryptsetup/cryptsetup}.pro \
-		tests/{signond-tests/signond-tests,extensions/extensions}.pri \
-		tests/{passwordplugintest/passwordplugintest,libsignon-qt-tests/libsignon-qt-tests}.pro \
-		|| die "failed disabling -fno-rtti"
 
 	use doc || sed -e "/include(\s*doc\/doc.pri\s*)/d" \
 		-i signon.pro lib/SignOn/SignOn.pro lib/plugins/plugins.pro || die
