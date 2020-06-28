@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-28)
+# WIP PipeWire ebuild, breaks all current revdeps in ebuild repository
+~media-video/pipewire-0.3.6
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-28)
 # Obsolete package.
 # Does not build.
