@@ -79,6 +79,11 @@ kernel-build_src_configure() {
 	restore_config .config
 	[[ -f .config ]] || die "Ebuild error: please copy default config into .config"
 
+	if [[ -z "${KV_LOCALVERSION}" ]]; then
+		KV_LOCALVERSION=$(sed -n -e 's#^CONFIG_LOCALVERSION="\(.*\)"$#\1#p' \
+			.config)
+	fi
+
 	mkdir -p "${WORKDIR}"/modprep || die
 	mv .config "${WORKDIR}"/modprep/ || die
 	emake O="${WORKDIR}"/modprep "${MAKEARGS[@]}" olddefconfig
@@ -110,9 +115,10 @@ kernel-build_src_test() {
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 		INSTALL_MOD_PATH="${T}" INSTALL_PATH="${ED}/boot"  "${targets[@]}"
 
-	kernel-install_test "${PV}" \
+	local ver="${PV}${KV_LOCALVERSION}"
+	kernel-install_test "${ver}" \
 		"${WORKDIR}/build/$(kernel-install_get_image_path)" \
-		"${T}/lib/modules/${PV}"
+		"${T}/lib/modules/${ver}"
 }
 
 # @FUNCTION: kernel-build_src_install
@@ -136,16 +142,17 @@ kernel-build_src_install() {
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
 	local kern_arch=$(tc-arch-kernel)
-	dodir "/usr/src/linux-${PV}/arch/${kern_arch}"
-	mv include scripts "${ED}/usr/src/linux-${PV}/" || die
+	local ver="${PV}${KV_LOCALVERSION}"
+	dodir "/usr/src/linux-${ver}/arch/${kern_arch}"
+	mv include scripts "${ED}/usr/src/linux-${ver}/" || die
 	mv "arch/${kern_arch}/include" \
-		"${ED}/usr/src/linux-${PV}/arch/${kern_arch}/" || die
+		"${ED}/usr/src/linux-${ver}/arch/${kern_arch}/" || die
 
 	# remove everything but Makefile* and Kconfig*
 	find -type f '!' '(' -name 'Makefile*' -o -name 'Kconfig*' ')' \
 		-delete || die
 	find -type l -delete || die
-	cp -p -R * "${ED}/usr/src/linux-${PV}/" || die
+	cp -p -R * "${ED}/usr/src/linux-${ver}/" || die
 
 	cd "${WORKDIR}" || die
 	# strip out-of-source build stuffs from modprep
@@ -156,20 +163,20 @@ kernel-build_src_install() {
 			'(' -name '.*' -a -not -name '.config' ')' \
 		')' -delete || die
 	rm modprep/source || die
-	cp -p -R modprep/. "${ED}/usr/src/linux-${PV}"/ || die
+	cp -p -R modprep/. "${ED}/usr/src/linux-${ver}"/ || die
 
 	# install the kernel and files needed for module builds
-	insinto "/usr/src/linux-${PV}"
+	insinto "/usr/src/linux-${ver}"
 	doins build/{System.map,Module.symvers}
 	local image_path=$(kernel-install_get_image_path)
-	cp -p "build/${image_path}" "${ED}/usr/src/linux-${PV}/${image_path}" || die
+	cp -p "build/${image_path}" "${ED}/usr/src/linux-${ver}/${image_path}" || die
 
 	# strip empty directories
 	find "${D}" -type d -empty -exec rmdir {} + || die
 
 	# fix source tree and build dir symlinks
-	dosym ../../../usr/src/linux-${PV} /lib/modules/${PV}/build
-	dosym ../../../usr/src/linux-${PV} /lib/modules/${PV}/source
+	dosym ../../../usr/src/linux-${ver} /lib/modules/${ver}/build
+	dosym ../../../usr/src/linux-${ver} /lib/modules/${ver}/source
 
 	save_config build/.config
 }
