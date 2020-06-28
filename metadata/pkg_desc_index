@@ -2372,7 +2372,7 @@ app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking u
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.12.0 0.13.0_beta1: Stylish way of giving presentations with Python
 app-office/kexi 3.2.0-r1: Visual database applications creator
-app-office/kmymoney 5.0.8-r1: Personal finance manager based on KDE Frameworks
+app-office/kmymoney 5.0.8-r1 5.1.0: Personal finance manager based on KDE Frameworks
 app-office/kraft 0.82-r1: Software to manage quotes and invoices in small enterprises
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.1.2-r1 3.2.0: Double-entry accounting system with a command-line reporting interface
@@ -4764,7 +4764,7 @@ dev-lang/hy 0.14.0 0.15.0 0.16.0 0.17.0: A LISP dialect running in python
 dev-lang/icon 9.5.1-r1 9.5.1-r2: very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
-dev-lang/ispc 1.9.2 9999: Intel SPMD Program Compiler
+dev-lang/ispc 1.9.2 1.13.0 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/janet 1.8.1 1.9.1: A dynamic Lisp dialect and bytecode vm
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
@@ -5796,7 +5796,7 @@ dev-perl/Const-Fast 0.14.0-r1 0.14.0-r2: Facility for creating read-only scalars
 dev-perl/Context-Preserve 0.20.0 0.30.0: Return chained, modified values from subs, without losing context
 dev-perl/Contextual-Return 0.4.14: Create context-sensitive return values
 dev-perl/Convert-ASCII-Armour 1.400.0-r1 1.400.0-r2: Convert binary octets into ASCII armoured messages
-dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
+dev-perl/Convert-ASN1 0.270.0 0.270.0-r1: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
 dev-perl/Convert-BinHex 1.125.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.780.0-r1: Binary Data Conversion using C Types
