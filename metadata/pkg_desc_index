@@ -2637,7 +2637,7 @@ app-text/gtkspell 2.0.16-r1 3.0.10: Spell checking widget for GTK
 app-text/gtranslator 3.32.0: GNOME Translation Editor
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
-app-text/highlight 3.42-r1 3.57: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
+app-text/highlight 3.57: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 7.7 7.8: A number of simple utilities for manipulating HTML and XML files
@@ -2650,7 +2650,7 @@ app-text/htmlmin 0.1.12: A configurable HTML Minifier with safety features
 app-text/htmlrecode 1.3.1-r1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
 app-text/htp 1.16-r1 1.19: An HTML preprocessor
-app-text/hunspell 1.7.0-r1: Hunspell spell checker - an improved replacement for myspell in OOo
+app-text/hunspell 1.7.0-r1 1.7.0-r2: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/iso-codes 4.4: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.6: A LaTeX into XHTML/MathML converter
@@ -2763,7 +2763,7 @@ app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for te
 app-text/rpl 1.6.7: Intelligent recursive search/replace utility
 app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
-app-text/scdoc 1.9.3-r1 1.10.0 1.10.1 9999: Standalone tool for generating man pages with a simple syntax
+app-text/scdoc 1.9.3-r1 1.10.0 1.10.1 1.11.0 9999: Standalone tool for generating man pages with a simple syntax
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r7: Base ISO character entities and utilities for SGML
@@ -11619,7 +11619,7 @@ gui-libs/tepl 4.2.1: GtkSourceView-based text editors and IDE helper library
 gui-libs/wf-config 0.4.1 9999: library for managing wayfire configuration files
 gui-libs/wlroots 0.10.0 0.10.1 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
-gui-wm/hikari 1.2.0 2.0.1-r1: wayland compositor inspired by CWM
+gui-wm/hikari 1.2.0 2.0.2: wayland compositor inspired by CWM
 gui-wm/sway 1.4 1.4-r2 1.5_rc1 9999: i3-compatible Wayland window manager
 gui-wm/wayfire 0.4.0-r2 9999: compiz like 3D wayland compositor
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
@@ -13835,7 +13835,7 @@ media-video/shotcut 19.12.31: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.4.1 0.4.2 9999: A Simple Screen Recorder
 media-video/smplayer 20.4.2: Great Qt GUI front-end for mplayer/mpv
-media-video/smtube 19.6.0 20.1.0: YouTube Browser for SMPlayer
+media-video/smtube 20.1.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
 media-video/streamdeck-ui 0.0_p20200102-r1 9999: A Linux compatible UI for the Elgato Stream Deck
@@ -14969,7 +14969,7 @@ net-misc/sipp 3.6.0: A free Open Source test tool / traffic generator for the SI
 net-misc/sipsak 0.9.6_p1-r1 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sks 1.1.6-r2 1.1.6-r4 1.1.6-r5: An OpenPGP keyserver which is decentralized with highly reliable synchronization
-net-misc/smb4k 3.0.4 3.0.5 3.0.6: Advanced network neighborhood browser
+net-misc/smb4k 3.0.6: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r3: Text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r4: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sobby 0.4.8-r1: Standalone Obby server
@@ -18392,7 +18392,7 @@ x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB exte
 x11-misc/xkeyboard-config 2.29 2.30 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50 5.62 5.63 5.64: Just another screensaver application for X
-x11-misc/xmobar 0.23.1 0.24.2 0.24.3 0.24.3-r1: A Minimalistic Text Based Status Bar
+x11-misc/xmobar 0.24.3-r1: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r1: Program suite to record, replay and distribute user actions
