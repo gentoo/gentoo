@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/sqlgrey/sqlgrey-1.8%20%28stab
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm sparc ~x86"
+KEYWORDS="amd64 ~arm sparc x86"
 IUSE="mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
