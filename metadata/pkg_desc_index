@@ -585,7 +585,7 @@ app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 2.1.2 9999: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1 3.25.1 3.26.1-r1 3.28.1-r1: syslog replacement with advanced filtering features
-app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
+app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3 1.14-r4: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17 17-r1: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.2.1 12.2.2 12.3.1 12.3.2 12.3.3 999999: System performance tools for Linux
 app-admin/system-config-printer 1.5.12-r1: Graphical user interface for CUPS administration
@@ -2814,7 +2814,7 @@ app-text/writerperfect 0.9.6: Various formats to Open document format converter
 app-text/wscr 1.2-r1 1.2-r2: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
-app-text/xapers 0.8.2: Personal document indexing system
+app-text/xapers 0.8.2 0.8.2-r1: Personal document indexing system
 app-text/xapian-omega 1.2.25 1.4.14 1.4.15 1.4.16: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1 1.29 1.30 1.31 9999: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03-r1 22.87.03-r2: DVI previewer for X Window System
@@ -7992,6 +7992,7 @@ dev-python/kiwisolver 1.0.1 1.1.0 1.2.0: An efficient C++ implementation of the 
 dev-python/klein 19.6.0: micro-framework for developing production-ready web services with Python
 dev-python/kombu 4.6.3 4.6.8: AMQP Messaging Framework for Python
 dev-python/lark-parser 0.7.8: Python module to propose a modern general-purpose parsing library for Python
+dev-python/latexcodec 2.0.0: Lexer and codec to work with LaTeX code in Python
 dev-python/lazr-config 2.2.2: Create configuration schemas, and process and validate configurations.
 dev-python/lazr-delegates 2.0.4: Easily write objects that delegate behavior
 dev-python/lazy-object-proxy 1.4.3 1.5.0: A fast and thorough lazy object proxy
@@ -8300,6 +8301,7 @@ dev-python/pyaudio 0.2.11 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.4.3 2.5.0: AST-based Python refactoring library
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
 dev-python/pybluez 0.18-r1 0.23: Python bindings for Bluez Bluetooth Stack
+dev-python/pybtex 0.22.2: BibTeX-compatible bibliography processor
 dev-python/pycadf 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.18.2 1.19.1: Python bindings for the cairo library
 dev-python/pycapnp 0.6.4: Python wrapping of the Cap'n Proto library
@@ -18246,7 +18248,7 @@ x11-misc/makedepend 1.0.6: create dependencies in makefiles
 x11-misc/matchbox-keyboard 0.1-r1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
 x11-misc/mate-notification-daemon 1.22.1 1.24.0: MATE Notification daemon
 x11-misc/menulibre 2.1.3 2.2.0 2.2.1-r1: Advanced freedesktop.org compliant menu editor
-x11-misc/menumaker 0.99.10 0.99.11: Utility that scans through the system and generates a menu of installed programs
+x11-misc/menumaker 0.99.11 0.99.12: Utility that scans through the system and generates a menu of installed programs
 x11-misc/mgm 1.2-r1: Moaning Goat Meter: load and status meter written in Perl
 x11-misc/mixer_app 1.8.0-r1: mixer_app has volume controllers that can be configured to handle sound sources
 x11-misc/mozo 1.22.2 1.24.0: Mozo menu editor for MATE
@@ -18603,8 +18605,8 @@ x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and 
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.34.2: The Gnome Terminal
 x11-terms/guake 3.7.0 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.17.2-r1 0.17.3 0.17.4 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
-x11-terms/kitty-terminfo 0.17.2 0.17.3 0.17.4 9999: Terminfo for kitty, an OpenGL-based terminal emulator
+x11-terms/kitty 0.17.2-r1 0.17.3 0.17.4 0.18.1 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty-terminfo 0.17.2 0.17.3 0.17.4 0.18.1 9999: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.1 1.24.0: The MATE Terminal
@@ -18764,7 +18766,7 @@ x11-wm/awesome 3.5.9-r3 4.2-r3 4.3-r1 9999: A dynamic floating and tiling window
 x11-wm/blackbox 0.70.1-r1 0.75 0.76: A small, fast, full-featured window manager for X
 x11-wm/bspwm 0.9.9: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
-x11-wm/cwm 5.6 6.6 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
+x11-wm/cwm 6.6 6.7 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.1-r1 6.2 9999: a dynamic window manager for X11
 x11-wm/e16 1.0.20 1.0.21: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
