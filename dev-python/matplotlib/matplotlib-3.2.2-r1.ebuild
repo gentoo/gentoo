@@ -3,9 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 PYTHON_REQ_USE='tk?,threads(+)'
-
 DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
 
