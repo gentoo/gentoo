@@ -27,7 +27,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
-RESTRICT="!test? ( test )"
+# tests are brittle; they all pass when stars align, bug 727666
+RESTRICT="test !test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-buildsystem.patch"
