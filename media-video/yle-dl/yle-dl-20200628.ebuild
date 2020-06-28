@@ -54,6 +54,5 @@ pkg_postinst() {
 	elog " /usr/share/doc/yle-dl-${PV}/yledl.conf.sample"
 	elog ""
 	elog "Optional download engines: "
-	optfeature "php download engine using rtmpdump" "dev-lang/php:*[bcmath,cli,curl,simplexml] media-video/rtmpdump"
 	optfeature "youtube-dl download engine" net-misc/youtube-dl
 }

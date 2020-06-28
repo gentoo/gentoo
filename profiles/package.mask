@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-28)
+# Obsolete package.
+# Does not build.
+# Dead upstream and only gentoo ships it.
+# Removal in 30 days.
+app-misc/scope
+
 # Mart Raudsepp <leio@gentoo.org> (2020-06-27)
 # Disappeared upstream and download locations. Potential replacements:
 # media-sound/quimup, xfce-extra/xfce4-mpc-plugin, media-sound/xfmpc
@@ -40,7 +47,7 @@ media-sound/guimup
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-26)
 # Has been a part of dev-texlive/texlive-pictures
-# for a lonmg time. Removal in 30 days.
+# for a long time. Removal in 30 days.
 dev-tex/circuit_macros
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-25)
