@@ -9,7 +9,7 @@ DESCRIPTION="A pager for grep, git-grep and similar grep implementations"
 HOMEPAGE="https://github.com/vrothberg/vgrep"
 SRC_URI="https://github.com/vrothberg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3+ MIT MIT-with-advertising"
+LICENSE="BSD GPL-3+ MIT MIT-with-advertising"
 SLOT="0"
 KEYWORDS="~amd64"
 
