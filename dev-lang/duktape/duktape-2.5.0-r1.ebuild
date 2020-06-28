@@ -21,7 +21,7 @@ src_prepare() {
 	eapply_user
 
 	# Set install path
-	sed -i "s#INSTALL_PREFIX = /usr/local#INSTALL_PREFIX = ${D::-1}/usr#" \
+	sed -i "s#INSTALL_PREFIX = /usr/local#INSTALL_PREFIX = ${D%/}/usr#" \
 			Makefile.sharedlibrary || die "failed to set install path"
 
 	# Edit pkgconfig
