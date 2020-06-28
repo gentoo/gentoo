@@ -126,7 +126,7 @@ src_configure() {
 		$(use_enable python)
 		$(use_enable redis)
 		$(use_enable smtp)
-		$(use_enable snmp snmp-dest)
+		$(use_enable snmp afsnmp)
 		$(use_enable spoof-source)
 		$(use_enable systemd)
 		$(use_enable tcpd tcp-wrapper)
