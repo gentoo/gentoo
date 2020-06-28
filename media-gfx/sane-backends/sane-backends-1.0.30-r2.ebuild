@@ -168,7 +168,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
 	"${FILESDIR}"/${PN}-1.0.27-disable-usb-tests.patch
 	"${FILESDIR}"/${P}-missing-stdint-include.patch
-	"${FILESDIR}"/sane-backends-1.0.30-add_hpaio_epkowa_dll.conf.patch
+	"${FILESDIR}"/${PN}-1.0.30-add_hpaio_epkowa_dll.conf.patch
+	"${FILESDIR}"/${PN}-1.0.30-bigendian-depth.patch
 )
 
 S="${WORKDIR}/${MY_P}"
