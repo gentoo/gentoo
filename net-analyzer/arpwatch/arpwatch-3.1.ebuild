@@ -25,6 +25,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-arpwatch )
+	virtual/mta
 "
 
 pkg_setup() {
@@ -36,6 +37,11 @@ pkg_setup() {
 pkg_postinst() {
 	# The user, however, is not needed until runtime.
 	enewuser arpwatch -1 -1 -1 arpwatch
+}
+
+src_configure() {
+	econf \
+		ac_cv_path_V_SENDMAIL=sendmail
 }
 
 src_install() {
