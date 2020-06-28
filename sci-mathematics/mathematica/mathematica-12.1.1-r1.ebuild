@@ -12,7 +12,7 @@ HOMEPAGE="https://www.wolfram.com/mathematica/"
 LICENSE="all-rights-reserved"
 KEYWORDS="-* ~amd64"
 SLOT="0"
-IUSE=""
+IUSE="+doc"
 
 RESTRICT="strip mirror bindist fetch"
 
@@ -41,6 +41,11 @@ src_unpack() {
 
 src_install() {
 	local ARCH='-x86-64'
+
+	if ! use doc; then
+		einfo "Removing documentation"
+		rm -r "${S}/${M_TARGET}/Documentation"
+	fi
 
 	# move all over
 	mv "${S}"/opt "${D}"/opt || die
