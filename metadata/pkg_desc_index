@@ -13314,7 +13314,7 @@ media-radio/fsync-mdc1200-decode 1.0 9999: Linux Fleetsync / MDC1200 decoder
 media-radio/gpredict 2.2.1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
-media-radio/js8call 1.0.0 1.1.0 2.0.0-r1 2.1.0 2.1.1: Weak signal ham radio communication
+media-radio/js8call 1.0.0 1.1.0 2.0.0-r1 2.1.0 2.1.1 2.2.0: Weak signal ham radio communication
 media-radio/qrq 0.3.3: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.4.4: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
@@ -14893,7 +14893,7 @@ net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p14-r2 4.2.8_p15: Network Time Protocol suite/programs
 net-misc/ntpclient 2018.244-r1: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
-net-misc/ntpsec 1.1.7-r1 1.1.8 9999: The NTP reference implementation, refactored
+net-misc/ntpsec 1.1.7-r1 1.1.8 1.1.9 9999: The NTP reference implementation, refactored
 net-misc/nx 3.5.99.16 3.5.99.22 3.5.99.23 3.5.99.24: NX compression technology core libraries
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.0.4 2.1.0-r1: Utility to monitor real time Tor status information
