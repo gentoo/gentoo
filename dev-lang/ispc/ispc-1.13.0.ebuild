@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit toolchain-funcs python-any-r1
+inherit cmake toolchain-funcs python-any-r1
 
 DESCRIPTION="Intel SPMD Program Compiler"
 HOMEPAGE="https://ispc.github.com/"
@@ -34,19 +34,26 @@ DEPEND="
 	sys-devel/flex
 	"
 
-src_compile() {
-	#make all slient commands ("@") verbose and remove -Werror (ispc/ispc#1295)
-	sed -e '/^\t@/s/@//' -e 's/-Werror//' -i Makefile || die
-	emake LDFLAGS="${LDFLAGS}" OPT="${CXXFLAGS}" CXX="$(tc-getCXX)" CPP="$(tc-getCPP)"
+PATCHES=(
+	"${FILESDIR}/${P}-cmake-gentoo-release.patch"
+	"${FILESDIR}/${P}-llvm-10.patch"
+	"${FILESDIR}/${P}-werror.patch"
+)
+
+src_configure() {
+	local mycmakeargs=(
+		"-DARM_ENABLED=$(usex arm)"
+	)
+	cmake_src_configure
 }
 
 src_install() {
-	dobin ispc
-	dodoc README.rst
+	dobin ${BUILD_DIR}/bin/ispc
+	dodoc README.md
 
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/examples"
 		docompress -x "/usr/share/doc/${PF}/examples"
-		doins -r examples/*
+		doins -r ${BUILD_DIR}/examples/*
 	fi
 }
