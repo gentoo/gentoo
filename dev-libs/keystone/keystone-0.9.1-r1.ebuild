@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit cmake distutils-r1 llvm
 
 DESCRIPTION="assembly/assembler framework + bindings"
-HOMEPAGE="http://www.keystone-engine.org/"
+HOMEPAGE="https://www.keystone-engine.org/"
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/keystone-engine/keystone.git"
