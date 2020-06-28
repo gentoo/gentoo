@@ -11788,7 +11788,7 @@ kde-apps/kpkpass 19.12.3 20.04.2: Library to deal with Apple Wallet pass files
 kde-apps/kqtquickcharts 19.12.3 20.04.2: Qt Quick plugin for beautiful and interactive charts
 kde-apps/krdc 19.12.3-r1 20.04.2: Remote desktop connection (RDP and VNC) client
 kde-apps/kreversi 19.12.3 20.04.2: Board game by KDE
-kde-apps/krfb 19.12.3 20.04.2: VNC-compatible server to share Plasma desktops
+kde-apps/krfb 19.12.3-r1 20.04.2: VNC-compatible server to share Plasma desktops
 kde-apps/kross-interpreters 19.12.3 20.04.2: Kross interpreter plugins for programming languages
 kde-apps/kruler 19.12.3 20.04.2: Screen ruler for Plasma
 kde-apps/kshisen 19.12.3 20.04.2: Solitaire-like game played using the standard set of Mahjong tiles
@@ -13819,7 +13819,7 @@ media-video/parole 1.0.5: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 3.7.1-r1: Movie slideshow creator using Ken Burns effect
-media-video/pipewire 0.2.7: Multimedia processing graphs
+media-video/pipewire 0.2.7 0.3.6: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
@@ -16816,7 +16816,7 @@ sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
-sys-apps/xdg-desktop-portal 1.6.0-r1: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.6.0-r2 1.7.2: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.22.4: Fast, reliable, and secure node dependency management
