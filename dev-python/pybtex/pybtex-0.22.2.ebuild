@@ -24,8 +24,7 @@ RDEPEND="dev-python/latexcodec[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]"
 
 BDEPEND="test?  (
-				${RDEPEND}
-				dev-python/nose[${PYTHON_USEDEP}]
-				)"
+			dev-python/nose[${PYTHON_USEDEP}]
+		)"
 
 distutils_enable_tests pytest
