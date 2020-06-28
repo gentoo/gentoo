@@ -7,7 +7,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6..8} )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-single-r1 user systemd
+inherit python-single-r1 systemd
 
 MY_PV="${PV/_rc/RC}"
 MY_PV="${MY_PV//_pre*}"
@@ -21,13 +21,15 @@ SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${MY_PV}/${MY_P}-s
 # Sabnzbd is GPL-2 but bundles software with the following licenses.
 LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="+7za +rar unzip"
 
 # Sabnzbd is installed to /usr/share/ as upstream makes it clear they should not
 # be in python's sitedir.  See: https://sabnzbd.org/wiki/advanced/unix-packaging
 
 COMMON_DEPS="
+	acct-user/sabnzbd
+	acct-group/sabnzbd
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
@@ -60,11 +62,6 @@ S="${WORKDIR}/${MY_P}"
 pkg_setup() {
 	MY_HOMEDIR="/var/lib/${PN}"
 	python-single-r1_pkg_setup
-
-	# Create sabnzbd group
-	enewgroup "${PN}"
-	# Create sabnzbd user, put in sabnzbd group
-	enewuser "${PN}" -1 -1 "${MY_HOMEDIR}" "${PN}"
 }
 
 src_install() {
@@ -81,7 +78,7 @@ src_install() {
 	python_fix_shebang "${ED}/usr/share/${PN}"
 	python_optimize "${ED}/usr/share/${PN}"
 
-	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	newinitd "${FILESDIR}/${PN}-r1.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
 	diropts -o "${PN}" -g "${PN}"
@@ -90,7 +87,7 @@ src_install() {
 
 	insinto "/etc/${PN}"
 	insopts -m 0600 -o "${PN}" -g "${PN}"
-	doins "${FILESDIR}/${PN}.ini"
+	newins "${FILESDIR}"/${PN}-r1.ini ${PN}.ini
 
 	dodoc {ABOUT,ISSUES}.txt README.mkd licenses/*
 
@@ -104,21 +101,21 @@ pkg_postinst() {
 		einfo
 		einfo "To add a user to the sabnzbd group so it can edit SABnzbd+ files, run:"
 		einfo
-		einfo "    gpasswd -a <user> sabnzbd"
+		einfo "    usermod -a -G sabnzbd <user>"
 		einfo
-		einfo "By default, SABnzbd+ will listen on TCP port 8080."
+		einfo "By default, SABnzbd will listen on TCP port 8080."
+	else
+		local v
+		for v in ${REPLACING_VERSIONS}; do
+			if ver_test "${v}" -lt 3; then
+				ewarn
+				ewarn "Due to changes in this release, the queue will be converted when ${PN}"
+				ewarn "is started for the first time. Job order, settings and data will be"
+				ewarn "preserved, but all jobs will be unpaused and URLs that did not finish"
+				ewarn "fetching before the upgrade will be lost!"
+				ewarn
+				break
+			fi
+		done
 	fi
-
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "${v}" -lt 3; then
-			ewarn
-			ewarn "Due to changes in this release, the queue will be converted when ${PN}"
-			ewarn "is started for the first time. Job order, settings and data will be"
-			ewarn "preserved, but all jobs will be unpaused and URLs that did not finish"
-			ewarn "fetching before the upgrade will be lost!"
-			ewarn
-			break
-		fi
-	done
 }
