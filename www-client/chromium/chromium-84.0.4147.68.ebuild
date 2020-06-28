@@ -62,8 +62,7 @@ COMMON_DEPEND="
 	system-libvpx? ( >=media-libs/libvpx-1.8.2:=[postproc,svc] )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
-		>=media-video/ffmpeg-4:0
-		<media-video/ffmpeg-4.3:0=
+		>=media-video/ffmpeg-4:=
 		|| (
 			media-video/ffmpeg[-samba]
 			>=net-fs/samba-4.5.10-r1[-debug(-)]
