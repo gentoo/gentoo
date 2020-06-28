@@ -11,7 +11,7 @@ SRC_URI="https://www.antcom.de/gtick/download/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="nls sndfile"
 
 RDEPEND="media-sound/pulseaudio
