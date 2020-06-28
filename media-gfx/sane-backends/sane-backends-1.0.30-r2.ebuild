@@ -73,6 +73,7 @@ IUSE_SANE_BACKENDS="
 	pnm
 	qcam
 	ricoh
+	ricoh2
 	rts8891
 	s9036
 	sceptre
@@ -94,7 +95,7 @@ IUSE_SANE_BACKENDS="
 	umax_pp
 	xerox_mfp"
 
-IUSE="gphoto2 ipv6 snmp systemd threads usb v4l xinetd zeroconf"
+IUSE="gphoto2 ipv6 snmp systemd threads usb v4l xinetd +zeroconf"
 
 for GBACKEND in ${IUSE_SANE_BACKENDS}; do
 	case ${GBACKEND} in
@@ -125,6 +126,7 @@ LICENSE="GPL-2 public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
+# For pixma: see https://gitlab.com/sane-project/backends/-/releases/1.0.28#build
 RDEPEND="
 	gphoto2? (
 		>=media-libs/libgphoto2-2.5.3.1:=[${MULTILIB_USEDEP}]
@@ -137,9 +139,13 @@ RDEPEND="
 		>=media-libs/tiff-3.9.7-r1:0=[${MULTILIB_USEDEP}]
 		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
 	)
-	sane_backends_escl? ( net-misc/curl )
+	sane_backends_escl? (
+		net-dns/avahi[${MULTILIB_USEDEP}]
+		net-misc/curl[${MULTILIB_USEDEP}]
+	)
 	sane_backends_hpsj5s? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	sane_backends_mustek_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
+	sane_backends_pixma? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
 	snmp? ( net-analyzer/net-snmp:0= )
 	systemd? ( sys-apps/systemd:0= )
 	usb? ( >=virtual/libusb-1-r1:1=[${MULTILIB_USEDEP}] )
@@ -153,6 +159,7 @@ DEPEND="${RDEPEND}
 	v4l? ( sys-kernel/linux-headers )
 "
 BDEPEND="
+	sys-devel/autoconf-archive
 	sys-devel/gettext
 	virtual/pkgconfig
 "
@@ -191,7 +198,8 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing # From Fedora
+	# From Fedora
+	append-flags -fno-strict-aliasing
 	multilib-minimal_src_configure
 }
 
