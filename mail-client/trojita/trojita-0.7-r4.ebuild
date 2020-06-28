@@ -52,9 +52,11 @@ PATCHES=(
 	"${FILESDIR}/${P}-gpgme.patch"
 	"${FILESDIR}/${P}-gpg-tests.patch"
 	"${FILESDIR}/${P}-qt-5.11b3.patch"
+	"${FILESDIR}/${P}-qt-5.13.patch" # bug 730058
 	"${FILESDIR}/${P}-qt-5.15.patch"
 	"${FILESDIR}/${P}-CVE-2019-10734.patch" # KDE-bug 404697
 	"${FILESDIR}/${P}-CVE-2020-15047.patch" # bug 729596
+	"${FILESDIR}/${P}-cmake-cxx11.patch"
 )
 
 src_prepare() {
