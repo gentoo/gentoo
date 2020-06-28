@@ -56,7 +56,7 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${D}/usr" ETC_PREFIX="${D}" install
+	emake PREFIX="${D}/usr" ETC_PREFIX="${D}" prefix="${SYSROOT}/usr" install
 	if use man; then
 		emake PREFIX="${D}/usr" ETC_PREFIX="${D}" install-doc
 	fi
