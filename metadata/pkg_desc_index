@@ -10189,7 +10189,7 @@ dev-texlive/texlive-langspanish 2020: TeXLive Spanish
 dev-texlive/texlive-latex 2020: TeXLive LaTeX fundamental packages
 dev-texlive/texlive-latexextra 2020-r2: TeXLive LaTeX additional packages
 dev-texlive/texlive-latexrecommended 2020: TeXLive LaTeX recommended packages
-dev-texlive/texlive-luatex 2020: TeXLive LuaTeX packages
+dev-texlive/texlive-luatex 2020-r1: TeXLive LuaTeX packages
 dev-texlive/texlive-mathscience 2020: TeXLive Mathematics, natural sciences, computer science packages
 dev-texlive/texlive-metapost 2020-r1: TeXLive MetaPost and Metafont packages
 dev-texlive/texlive-music 2020: TeXLive Music packages
