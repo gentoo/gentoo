@@ -4,8 +4,8 @@
 EAPI=7
 
 DESCRIPTION="Simple XLS data extraction library"
-HOMEPAGE="http://www.gaia-gis.it/gaia-sins/"
-SRC_URI="http://www.gaia-gis.it/gaia-sins/${PN}-sources/${P}.tar.gz"
+HOMEPAGE="https://www.gaia-gis.it/fossil/freexl/index"
+SRC_URI="https://www.gaia-gis.it/gaia-sins/${PN}-sources/${P}.tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
