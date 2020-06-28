@@ -146,6 +146,7 @@ acct-group/render 0: System group: render
 acct-group/rspamd 0: Group for rspamd - Rapid spam filtering system
 acct-group/rstudio-server 0: group for sci-mathematics/rstudio
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
+acct-group/sabnzbd 0: SABnzbd program group
 acct-group/scponly 0: group for scponly
 acct-group/shellinaboxd 0: shellinabox group
 acct-group/simplevirt 0: System group: simplevirt
@@ -340,6 +341,7 @@ acct-user/redmine 0: Redmine application user
 acct-user/rspamd 0: User for rspamd - Rapid spam filtering system
 acct-user/rstudio-server 0: user for sci-mathematics/rstudio
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
+acct-user/sabnzbd 0: SABnzbd program user
 acct-user/scponly 0: user for chrooted scponly
 acct-user/shellinaboxd 0: shellinabox user
 acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
@@ -15070,7 +15072,7 @@ net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 20.0 21.0_pre2302 21.0: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.145: A newsreader for GNOME
-net-nntp/sabnzbd 2.3.9-r1 3.0.0_rc1_pre0: Binary newsgrabber with web-interface
+net-nntp/sabnzbd 2.3.9-r1 3.0.0_rc1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
