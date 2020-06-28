@@ -65,7 +65,7 @@ src_configure() {
 		$(use_enable static-libs static)
 	)
 	# https://bugs.gentoo.org/661430
-	if !use amd64 && !use x86; then
+	if ! use amd64 && ! use x86; then
 		myeconfargs+=( --with-yasm=/bin/false )
 	fi
 	econf "${myeconfargs[@]}"
