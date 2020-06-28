@@ -70,6 +70,7 @@ plustek_pp - SANE_BACKENDS setting for building the plustek_pp backend
 pnm - SANE_BACKENDS settings for building the pnm test backend, considered a possible security risk
 qcam - SANE_BACKENDS setting for building the qcam backend
 ricoh - SANE_BACKENDS setting for building the ricoh backend
+ricoh2 - SANE_BACKENDS setting for building the ricoh2 backend
 rts8891 - SANE_BACKENDS setting for building the rts8891 backend
 s9036 - SANE_BACKENDS setting for building the s9036 backend
 sceptre - SANE_BACKENDS setting for building the sceptre backend
