@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 virtualx
@@ -117,7 +117,7 @@ python_prepare_all() {
 
 	# accesses /dev/net/tun
 	sed -e '/class RealDeviceTestsMixin/a\
-    skip = "Requires extra permissions"' \
+	skip = "Requires extra permissions"' \
 		-i src/twisted/pair/test/test_tuntap.py || die
 
 	# TODO: figure it out, probably doesn't accept DST date here
