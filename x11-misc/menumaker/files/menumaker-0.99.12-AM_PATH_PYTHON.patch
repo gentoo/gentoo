@@ -1,41 +1,8 @@
-Use AM_PATH_PYTHON instead of broken hacks
-
---- a/configure.ac
-+++ b/configure.ac
-@@ -1,23 +1,13 @@
--AC_INIT(MenuMaker, 0.99.10)
-+AC_INIT([MenuMaker], [0.99.10])
- 
- AM_INIT_AUTOMAKE
- 
--#AZ_PYTHON_DEFAULT
-+AM_PATH_PYTHON
- 
--#AZ_PYTHON_WITH
--
--#if test -z "$PYTHON"; then
--#    AZ_PYTHON_PATH
--#fi
--
--#AZ_PYTHON_VERSION_ENSURE([2.7])
--
--#AZ_PYTHON_RUN
--
--AX_PYTHON
--
--AC_CONFIG_FILES([Makefile])
--AC_CONFIG_FILES([doc/Makefile])
--AC_CONFIG_FILES([Config.py])
-+AC_CONFIG_FILES([
-+	Makefile
-+	doc/Makefile
-+	Config.py
-+])
- 
- AC_OUTPUT
+diff --git a/Makefile.am b/Makefile.am
+index b00b7bc..e1395ac 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -1,15 +1,53 @@
+@@ -1,15 +1,54 @@
 -ACLOCAL_AMFLAGS = -I m4
 -
  SUBDIRS = doc
@@ -56,6 +23,7 @@ Use AM_PATH_PYTHON instead of broken hacks
 +	MenuMaker/FluxBox.py \
 +	MenuMaker/IceWM.py \
 +	MenuMaker/__init__.py \
++	MenuMaker/JWM.py \
 +	MenuMaker/OpenBox3.py \
 +	MenuMaker/PekWM.py \
 +	MenuMaker/WindowMaker.py \
@@ -98,3 +66,36 @@ Use AM_PATH_PYTHON instead of broken hacks
 +	Prophet/Debian/menu/debian-8.1 \
 +	Prophet/Debian/menu/ubuntu-5.04 \
 +	Prophet/Debian/menu/ubuntu-5.10
+diff --git a/configure.ac b/configure.ac
+index 9ffeee7..604af4e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2,22 +2,12 @@ AC_INIT(MenuMaker, 0.99.12)
+ 
+ AM_INIT_AUTOMAKE
+ 
+-#AZ_PYTHON_DEFAULT
++AM_PATH_PYTHON
+ 
+-#AZ_PYTHON_WITH
+-
+-#if test -z "$PYTHON"; then
+-#    AZ_PYTHON_PATH
+-#fi
+-
+-#AZ_PYTHON_VERSION_ENSURE([2.7])
+-
+-#AZ_PYTHON_RUN
+-
+-AX_PYTHON
+-
+-AC_CONFIG_FILES([Makefile])
+-AC_CONFIG_FILES([doc/Makefile])
+-AC_CONFIG_FILES([Config.py])
++AC_CONFIG_FILES([
++	Makefile
++	doc/Makefile
++	Config.py
++])
+ 
+ AC_OUTPUT

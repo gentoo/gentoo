@@ -10,9 +10,7 @@
     <name>Proxy maintainers</name>
   </maintainer>
   <upstream>
-    <maintainer status="active">
-      <name>Jameson Graef Rollins</name>
-      <email>jrollins@finestructure.net</email>
-    </maintainer>
+    <remote-id type="pypi">pybtex</remote-id>
+    <remote-id type="bitbucket">pybtex-devs/pybtex</remote-id>
   </upstream>
 </pkgmetadata>
