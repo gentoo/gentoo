@@ -59,6 +59,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( {README,INSTALL}.md NEWS )
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	spa_use() {
 		if ! in_iuse ${1} || ! use ${1}; then
