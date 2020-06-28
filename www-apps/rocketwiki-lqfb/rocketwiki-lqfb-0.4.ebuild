@@ -7,8 +7,8 @@ inherit eutils
 MY_P=${PN}-v${PV}
 
 DESCRIPTION="Small parser which translates a wiki dialect to HTML"
-HOMEPAGE="http://www.public-software-group.org/rocketwiki"
-SRC_URI="http://www.public-software-group.org/pub/projects/rocketwiki/liquid_feedback_edition/v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.public-software-group.org/rocketwiki"
+SRC_URI="https://www.public-software-group.org/pub/projects/rocketwiki/liquid_feedback_edition/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
