@@ -34,7 +34,9 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-28)
 # WIP PipeWire ebuild, breaks all current revdeps in ebuild repository
+# sys-apps/xdg-desktop-portal-1.7.2 depends on masked PipeWire >=0.3
 ~media-video/pipewire-0.3.6
+~sys-apps/xdg-desktop-portal-1.7.2
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-28)
 # Obsolete package.
