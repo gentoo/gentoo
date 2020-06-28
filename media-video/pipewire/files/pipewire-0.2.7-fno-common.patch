@@ -1,0 +1,47 @@
+Bug: https://bugs.gentoo.org/710796
+
+--- a/spa/plugins/bluez5/a2dp-codecs.h
++++ b/spa/plugins/bluez5/a2dp-codecs.h
+@@ -284,15 +284,15 @@
+         }
+ }
+ 
+-const a2dp_sbc_t bluez_a2dp_sbc;
++extern const a2dp_sbc_t bluez_a2dp_sbc;
+ #if ENABLE_MP3
+-const a2dp_mpeg_t bluez_a2dp_mpeg;
++extern const a2dp_mpeg_t bluez_a2dp_mpeg;
+ #endif
+ #if ENABLE_AAC
+-const a2dp_aac_t bluez_a2dp_aac;
++extern const a2dp_aac_t bluez_a2dp_aac;
+ #endif
+ #if ENABLE_APTX
+-const a2dp_aptx_t bluez_a2dp_aptx;
++extern const a2dp_aptx_t bluez_a2dp_aptx;
+ #endif
+ 
+ #endif
+--- a/spa/plugins/bluez5/bluez5-monitor.c
++++ b/spa/plugins/bluez5/bluez5-monitor.c
+@@ -75,7 +75,7 @@
+ 	struct spa_list transport_list;
+ };
+ 
+-struct spa_handle_factory spa_a2dp_sink_factory;
++extern struct spa_handle_factory spa_a2dp_sink_factory;
+ 
+ static void fill_item(struct spa_bt_monitor *this, struct spa_bt_transport *transport,
+ 		struct spa_pod **result, struct spa_pod_builder *builder)
+--- a/spa/plugins/bluez5/meson.build
++++ b/spa/plugins/bluez5/meson.build
+@@ -1,7 +1,8 @@
+ 
+ bluez5_sources = ['plugin.c',
+ 		  'a2dp-sink.c',
+-                  'bluez5-monitor.c']
++		  'a2dp-codecs.c',
++		  'bluez5-monitor.c']
+ 
+ bluez5lib = shared_library('spa-bluez5',
+ 	bluez5_sources,
