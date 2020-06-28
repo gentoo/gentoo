@@ -1,22 +1,21 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit user versionator
-
-PATCH_VER="0.8"
-MY_P="${PN}-$(replace_version_separator 2 'a')"
+EAPI=7
+inherit user
 
 DESCRIPTION="An ethernet monitor program that keeps track of ethernet/IP address pairings"
 HOMEPAGE="https://ee.lbl.gov/"
-SRC_URI="
-	https://ee.lbl.gov/downloads/arpwatch/${MY_P}.tar.gz
-	https://dev.gentoo.org/~jer/arpwatch-patchset-${PATCH_VER}.tar.xz
-"
-
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc sparc x86"
+
+ETHERCODES_DATE=20200628
+SRC_URI="
+	https://ee.lbl.gov/downloads/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~jer/ethercodes.dat-${ETHERCODES_DATE}.xz
+"
+
+KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE="selinux"
 
 DEPEND="
@@ -27,8 +26,6 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-arpwatch )
 "
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	# We need to create /var/lib/arpwatch with this group, so it must
@@ -41,31 +38,22 @@ pkg_postinst() {
 	enewuser arpwatch -1 -1 -1 arpwatch
 }
 
-src_prepare() {
-	local patchdir="${WORKDIR}/arpwatch-patchset"
-
-	eapply "${patchdir}"/*.patch
-	eapply_user
-
-	cp "${patchdir}"/*.8 ./ || die "failed to copy man pages from ${patchdir}"
-}
-
 src_install() {
-	dosbin arpwatch arpsnmp arp2ethers massagevendor arpfetch bihourly.sh
-	doman arpwatch.8 arpsnmp.8 arp2ethers.8 massagevendor.8 arpfetch.8 bihourly.8
+	dosbin arp2ethers arpfetch arpsnmp arpwatch bihourly.sh massagevendor.py update-ethercodes.sh
+	doman arpsnmp.8 arpwatch.8
 
 	insinto /usr/share/arpwatch
-	doins ethercodes.dat
+	newins "${WORKDIR}"/ethercodes.dat-${ETHERCODES_DATE} ethercodes.dat
 
 	insinto /usr/share/arpwatch/awk
-	doins duplicates.awk euppertolower.awk p.awk e.awk d.awk
+	doins d.awk duplicates.awk e.awk euppertolower.awk p.awk
 
 	diropts --group=arpwatch --mode=770
 	keepdir /var/lib/arpwatch
 	dodoc README CHANGES
 
-	newinitd "${FILESDIR}"/arpwatch.initd-r1 arpwatch
-	newconfd "${FILESDIR}"/arpwatch.confd-r1 arpwatch
+	newconfd "${FILESDIR}"/arpwatch.confd-r2 arpwatch
+	newinitd "${FILESDIR}"/arpwatch.initd-r2 arpwatch
 }
 
 pkg_postinst() {
@@ -78,9 +66,10 @@ pkg_postinst() {
 	# The "--from" flag ensures that we only fix directories that need
 	# fixing, and the "&& chmod" ensures that we only adjust the
 	# permissions if the owner also needed fixing.
-	chown --from=root:root \
-		  --no-dereference \
-		  :arpwatch \
-		  "${ROOT}"/var/lib/arpwatch && \
+	chown \
+		--from=root:root \
+		--no-dereference \
+		:arpwatch \
+		"${ROOT}"/var/lib/arpwatch && \
 		chmod 770 "${ROOT}"/var/lib/arpwatch
 }
