@@ -494,7 +494,7 @@ app-admin/gopass 1.9.2: a simple but powerful password manager for the terminal
 app-admin/graylog 3.3.1: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
-app-admin/haskell-updater 1.2.9 1.2.10 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
+app-admin/haskell-updater 1.3.2: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.16.1 1.16.2: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r28: A simple utility to read the temperature of SMART capable hard drives
 app-admin/helm 2.16.1 2.16.7 3.2.4: Kubernetes Package Manager
@@ -2445,7 +2445,7 @@ app-portage/etc-proposals 1.4.3-r3: a set of tools for updating gentoo config fi
 app-portage/euses 2.5.9 2.6.0: look up USE flag descriptions fast
 app-portage/fetchcommandwrapper 0.8.1-r1 0.8.2 0.8.3 0.8.4: Wrapper integrating aria2 into portage's FETCHCOMMAND
 app-portage/flaggie 0.2.1-r1 9999: A smart CLI mangler for package.* files
-app-portage/fquery 0.2.2 0.2.3: Installed package query tool for Gentoo Linux
+app-portage/fquery 0.2.3: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.9-r1 0.17.0 9999: Autogenerate and install ebuilds for CPAN modules
 app-portage/g-octave 0.4.1-r7: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.2.1-r1 9999: framework for ebuild generators
@@ -2461,7 +2461,7 @@ app-portage/gpyutils 0.4.1 0.4.2 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3-r1 9999: g-sorcery backend for elisp packages
 app-portage/gverify 2: gentoo.git signature verification tool
-app-portage/hackport 0.5.6 0.6.2 0.6.3 9999: Hackage and Portage integration tool
+app-portage/hackport 0.6.3 9999: Hackage and Portage integration tool
 app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.4.3 9999: Tool to manage Gentoo overlays
@@ -2806,6 +2806,7 @@ app-text/unac 1.8.0: Library and command-line tool for removing accents from cha
 app-text/unpaper 6.1-r1 9999: Post-processor for scanned and photocopied book pages
 app-text/unrtf 0.21.9 0.21.10: Converts RTF files to various formats
 app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
+app-text/vgrep 2.3.1: A pager for grep, git-grep and similar grep implementations
 app-text/vilistextum 2.6.9-r1 2.8.0.20191023-r1: HTML to ASCII converter programmed to handle incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
 app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
@@ -4745,7 +4746,7 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
 dev-lang/elixir 1.9.4 1.10.3: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
-dev-lang/erlang 21.1.1 22.3.2 22.3.4 23.0 23.0.1: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 21.1.1 22.3.2 22.3.4 23.0.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -4791,7 +4792,7 @@ dev-lang/mozart 1.4.0-r3 1.4.0-r4 2.0.1: Advanced development platform for intel
 dev-lang/mozart-stdlib 1.4.0-r2 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.14.02 2.15: groovy little assembler
-dev-lang/nim 1.2.2 1.2.4: compiled, garbage-collected systems programming language
+dev-lang/nim 1.2.4: compiled, garbage-collected systems programming language
 dev-lang/nqp 2019.03-r1 2019.07.1 2019.11 2020.05 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.09.0: Programming language supporting functional, imperative & object-oriented styles
@@ -4827,7 +4828,7 @@ dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolo
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.1 3.1.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.36.20 0.40.20 0.40.23 0.44.11 0.46.7 0.46.10 0.48.6: Compiler for the GObject type system
-dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
+dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0 9999: An assembler for x86 and x86_64 instruction sets
@@ -7898,7 +7899,7 @@ dev-python/httplib2 0.18.1: A comprehensive HTTP client library
 dev-python/httpretty 0.9.6 1.0.2 1.0.2-r1: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 4.18: Human friendly output for text interfaces using Python
-dev-python/humanize 0.5.1 2.4.0: Common humanization utilities
+dev-python/humanize 0.5.1 2.4.0 2.4.1: Common humanization utilities
 dev-python/hyper-h2 2.5.1 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
@@ -10043,7 +10044,7 @@ dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r3 2.2.3 2.2.4 2.2.6: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.3.0-r1: Guile bindings of git
-dev-scheme/guile-json 4.0.1 4.1.0: JSON module for Guile
+dev-scheme/guile-json 4.1.0: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.2: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
@@ -10239,7 +10240,7 @@ dev-util/bitcoin-tx 0.16.3 0.19.1 0.20.0: Command-line Bitcoin transaction tool
 dev-util/bitrise 1.16.1 1.19.0 1.20.0 1.23.0 1.24.0: Run your Bitrise.io automations on any Mac or Linux machine
 dev-util/bless 0.6.0-r3 0.6.0-r4 0.6.2-r1: GTK# Hex Editor
 dev-util/bloaty 0_p20170420: A size profiler for binaries
-dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
+dev-util/bnfc 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.72.0 1.73.0: A system for large project software construction, simple to use and powerful
 dev-util/bpftrace 0.9.2 0.9.3 0.9.4 0.10.0-r1 9999: High-level tracing language for eBPF
 dev-util/bsdiff 4.3-r4: bsdiff: Binary Differencer using a suffix alg
@@ -10254,7 +10255,7 @@ dev-util/buildbot-waterfall-view 2.7.0 2.8.0 2.8.2: Buildbot waterfall-view plug
 dev-util/buildbot-worker 2.7.0 2.8.0 2.8.2 9999: BuildBot Worker (slave) Daemon
 dev-util/buildbot-wsgi-dashboards 2.7.0 2.8.0 2.8.2: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
 dev-util/buildbot-www 2.7.0 2.8.0 2.8.2: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
-dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
+dev-util/bustle 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20190617 20191125 20200330: the best variant of the Yacc parser generator
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.2.0 0.3.0: Generates an ebuild for a package using the in-tree eclasses.
@@ -10335,7 +10336,7 @@ dev-util/devhelp 3.30.1 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 148 149: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 149: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -10524,9 +10525,9 @@ dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
 dev-util/shards 0.11.1: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
-dev-util/shellcheck 0.7.0 0.7.1: Shell script analysis tool
+dev-util/shellcheck 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.0 0.7.1: Shell script analysis tool (binary package)
-dev-util/shelltestrunner 1.3.5-r1 1.9: A tool for testing command-line programs
+dev-util/shelltestrunner 1.9: A tool for testing command-line programs
 dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
@@ -10600,11 +10601,11 @@ dev-vcs/cvsps 2.2_beta1-r1 3.13-r2: Generates patchset information from a CVS re
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
-dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, interactive, smart revision control system
+dev-vcs/darcs 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.8 2.9 2.10 2.10-r1 2.11: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
-dev-vcs/git-annex 6.20170818 6.20170818-r1: manage files with git, without checking their contents into git
+dev-vcs/git-annex 6.20170818-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
 dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
@@ -14592,7 +14593,7 @@ net-libs/qxmpp 1.2.0 9999: A cross-platform C++ XMPP client library based on the
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/rpc2 2.14: Remote procedure call package for IP/UDP (used by Coda)
-net-libs/rpcsvc-proto 0 1.4.1 1.4.1-r1: rpcsvc protocol definitions from glibc
+net-libs/rpcsvc-proto 0 1.4.1-r1: rpcsvc protocol definitions from glibc
 net-libs/serf 1.3.8 1.3.8-r1 1.3.9 1.3.9-r1 1.3.9-r2: HTTP client library
 net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.24: OAuth2 plugin for Signon daemon
@@ -14646,7 +14647,7 @@ net-mail/isync 1.3.1 9999: MailDir mailbox synchronizer
 net-mail/lbdb 0.41 0.47: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
 net-mail/libpst 0.6.66-r3: Tools and library for reading Outlook files (.pst format)
-net-mail/list-remote-forwards 0.0.1-r1 0.0.1-r2: List all remote forwards for mail accounts stored in a database
+net-mail/list-remote-forwards 0.0.1-r2: List all remote forwards for mail accounts stored in a database
 net-mail/mailbase 1.5-r1: MTA layout package
 net-mail/mailbox-count 0.0.5: Count mailboxes in a SQL database
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
@@ -16802,7 +16803,7 @@ sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99 0.99e: Command-line tools for buildin
 sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
 sys-apps/udevil 0.4.4-r3: mount and unmount removable devices without a password
-sys-apps/unscd 0.52-r2 0.53: simple & stable nscd replacement
+sys-apps/unscd 0.53: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0-r1 2.5.2: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbguard 0.7.6-r1 0.7.8: Daemon protecting your computer against BadUSB
 sys-apps/usbmon 6-r1 6.1: Userland for USB monitoring framework
@@ -16836,7 +16837,7 @@ sys-auth/libfprint 0.99.0 1.0 1.90.0 1.90.1 1.90.2: library to add support for c
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
 sys-auth/libnss-mysql 1.5_p20060915-r5: NSS MySQL Library
-sys-auth/libnss-nis 1.4 3.1: NSS module to provide NIS support
+sys-auth/libnss-nis 3.1: NSS module to provide NIS support
 sys-auth/libnss-pgsql 1.5.0_beta-r1: Name Service Switch module for use with PostgreSQL
 sys-auth/libyubikey 1.13: Yubico C low-level library
 sys-auth/munge 0.5.13-r1: An authentication service for creating and validating credentials
@@ -17068,7 +17069,7 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34 2.34-r1 9999: Tools necessary to build programs
+sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.2 5.3.1 5.3.2 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34 2.34-r1: Tools necessary to build programs
@@ -17079,7 +17080,7 @@ sys-devel/clang 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1.9999 11.0.0.9999: C languag
 sys-devel/clang-common 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1.9999 11.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1.9999 11.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20200125 20200131 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20200131 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
@@ -17112,7 +17113,7 @@ sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
 sys-devel/slibtool 0.5.28: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
-sys-devel/sparse 0.5.1 0.5.2_rc1 0.6.0 0.6.1 9999: C semantic parser
+sys-devel/sparse 0.6.1 9999: C semantic parser
 sys-devel/ucpp 1.3.4 1.3.5: Library for preprocessing C compliant to ISO-C99
 sys-fabric/dapl 2.0.40: OpenIB - Direct Access Provider Library
 sys-fabric/ibacm 1.0.8: IB CM pre-connection service application
@@ -17196,7 +17197,7 @@ sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.99.8-r1: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.24 1.25: Copy data from one file or block device to another with read-error recovery
 sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
-sys-fs/diskdev_cmds 332.14_p1-r1 332.14_p1-r2 332.14_p1-r3: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
+sys-fs/diskdev_cmds 332.14_p1-r2 332.14_p1-r3: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dislocker 0.7.1-r2 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
@@ -17230,7 +17231,7 @@ sys-fs/go-mtpfs 9999: a simple FUSE filesystem for mounting Android devices as a
 sys-fs/growpart 0.0.1 0.0.30: A script that can grow your rootfs on first boot
 sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r2: HFS+ Filesystem Access Utilities (a PPC filesystem)
-sys-fs/hfsutils 3.2.6-r6 3.2.6_p14: HFS FS Access utils
+sys-fs/hfsutils 3.2.6_p14: HFS FS Access utils
 sys-fs/inotify-tools 3.20.1 3.20.2.2: a set of command-line programs providing a simple interface to inotify
 sys-fs/iprutils 2.4.7 2.4.17.1 2.4.18.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
@@ -17310,7 +17311,7 @@ sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloa
 sys-kernel/gentoo-kernel 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.221 4.4.225 4.4.226 4.4.227 4.4.228 4.9.221 4.9.225 4.9.226 4.9.227 4.9.228 4.14.178 4.14.182 4.14.183 4.14.184 4.14.185 4.14.186 4.19.120 4.19.126 4.19.127 4.19.128 4.19.129 4.19.130 5.4.38 5.4.44 5.4.45 5.4.46 5.4.47 5.4.48 5.4.49 5.6.16 5.6.17 5.6.18 5.6.19 5.7.0 5.7.1 5.7.2 5.7.3 5.7.4 5.7.5 5.7.6: Full sources including the Gentoo patchset for the 5.7 kernel tree
-sys-kernel/git-sources 5.8_rc1 5.8_rc2: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.4: Kernel config generator
@@ -17387,7 +17388,7 @@ sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.12-r3 4.4.16: Extended crypt library for de
 sys-libs/llvm-libunwind 8.0.1 9.0.1 10.0.0 10.0.1_rc1 10.0.1.9999 11.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.6: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.24 1.2.0 1.2.0-r1 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.24 1.2.0-r1 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.1_p20181020 6.1_p20190609 6.2-r1: console display library
@@ -17410,7 +17411,7 @@ sys-libs/talloc 2.3.1: Samba talloc library
 sys-libs/tapi 1.30 2.0.0: Text-based Application Programming Interface
 sys-libs/tdb 1.4.3: A simple database API
 sys-libs/tevent 0.10.2: Samba tevent library
-sys-libs/timezone-data 2019c 2020a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+sys-libs/timezone-data 2020a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2: Standard (de)compression library
@@ -17542,7 +17543,7 @@ virtual/leechcraft-storage-device-manager 9999: Virtual for LeechCraft plugins f
 virtual/leechcraft-task-show 9999: Virtual for plugins that can show IDownloads and IJobHolders
 virtual/leechcraft-trayarea 9999: Virtual for LeechCraft plugins providing a tray area
 virtual/leechcraft-wysiwyg-editor 9999: Virtual for LeechCraft plugins providing WYSIWYG text editor
-virtual/libc 1 1-r1: Virtual for the C library
+virtual/libc 1-r1: Virtual for the C library
 virtual/libcrypt 1-r1 2: Virtual for libcrypt.so
 virtual/libelf 2 3: Virtual for libelf.so.1 provider dev-libs/elfutils
 virtual/libffi 3.3_rc0: A virtual for the Foreign Function Interface implementation
@@ -17566,7 +17567,7 @@ virtual/notification-daemon 0: Virtual for notification daemon dbus service
 virtual/ooo 0: Virtual for OpenOffice.org/LibreOffice
 virtual/opencl 3-r1: Virtual for OpenCL API
 virtual/opengl 7.0-r2: Virtual for OpenGL implementation
-virtual/os-headers 0 0-r2: Virtual for operating system headers
+virtual/os-headers 0-r2: Virtual for operating system headers
 virtual/package-manager 1: Virtual for the package manager
 virtual/pager 0: Virtual for command-line pagers
 virtual/perl-Archive-Tar 2.320.0: Virtual for Archive-Tar
