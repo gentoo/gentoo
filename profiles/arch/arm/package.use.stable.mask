@@ -1,6 +1,17 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@cmpct.info> (2020-06-28)
+# Deps not yet stable
+# Migrated from package.use.mask
+app-text/asciidoc test
+media-libs/phonon vlc
+net-misc/openssh security-key
+dev-util/geany-plugins markdown
+app-arch/rpm test
+net-misc/openssh security-key
+dev-util/geany-plugins markdown
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-02)
 # media-video/pipewire is not stable yet
 dev-libs/weston pipewire
@@ -34,10 +45,6 @@ gnome-base/gvfs mtp
 # Ulrich Müller <ulm@gentoo.org> (2018-08-09)
 # Needs net-libs/webkit-gtk which is not stable, bug #663248
 app-editors/emacs xwidgets
-
-# Mikle Kolyada <zlogene@gentoo.org> (2018-07-16)
-# No stable qtnetwork
-net-irc/znc test
 
 # Akinori Hattori <hattya@gentoo.org> (2018-06-23)
 # No stable Java
@@ -82,10 +89,6 @@ media-libs/libbluray java
 # Requires dev-java/java-config and deps which is not stable on arm
 # Requires app-emulation/xen-tools which is not stable on arm
 app-metrics/collectd collectd_plugins_java collectd_plugins_xencpu
-
-# Michael Palimaka <kensington@gentoo.org> (2017-03-19)
-# Required media-plugins/gst-plugins-x264 is not stable
-media-plugins/gst-plugins-meta x264
 
 # Michael Weber <xmw@gentoo.org> (2017-03-01)
 # Mask until >sys-cluster/ceph-0.94 goes stable
