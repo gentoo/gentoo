@@ -9,11 +9,10 @@ PYTHON_REQ_USE="sqlite"
 
 inherit python-single-r1 user systemd
 
-MY_P="${P/sab/SAB}"
-MY_P="${MY_P/_rc/RC}"
-MY_P="${MY_P//_pre*}"
-
 MY_PV="${PV/_rc/RC}"
+MY_PV="${MY_PV//_pre*}"
+
+MY_P="${PN/sab/SAB}-${MY_PV}"
 
 DESCRIPTION="Binary newsgrabber with web-interface"
 HOMEPAGE="https://sabnzbd.org/"
