@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6..9} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 DISTUTILS_IN_SOURCE_BUILD=1
 
