@@ -10416,7 +10416,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.222.4 2.228 2.235.1: Extensible continuous integration server
+dev-util/jenkins-bin 2.235.1 2.242: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -12083,7 +12083,7 @@ mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based 
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 52.9.1-r1 68.9.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.9.1-r1 68.9.0: Thunderbird Mail Client
-mail-client/trojita 0.7-r2 0.7-r3 9999: A Qt IMAP e-mail client
+mail-client/trojita 0.7-r2 0.7-r4 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0-r1 2.0.0 3.0.0: Initial tagging script for Notmuch
 mail-filter/amavisd-milter 1.5.0-r1 1.6.0-r1 1.7.0-r1: sendmail milter for amavisd-new
@@ -12497,7 +12497,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.11.9 6.9.11.16 6.9.11.19 7.0.10.9 7.0.10.16 7.0.10.16-r2 7.0.10.19 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.11.19 6.9.11.22 7.0.10.19 7.0.10.22 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.3 0.3.4 0.3.6: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
