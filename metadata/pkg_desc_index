@@ -7903,7 +7903,7 @@ dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
 dev-python/hypothesis 4.50.8 4.57.1 5.11.0 5.13.1 5.15.0 5.15.1 5.16.0 5.16.1 5.16.2 5.16.3 5.18.0 5.18.1: A library for property based testing
 dev-python/icalendar 4.0.3 4.0.6: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
-dev-python/idna 2.8 2.9: Internationalized Domain Names in Applications (IDNA)
+dev-python/idna 2.8 2.9 2.10: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ifaddr 0.1.6: Enumerate IP addresses on the local network adapters
 dev-python/ijson 2.5.1: Iterative JSON parser with a Pythonic interface
@@ -7932,7 +7932,7 @@ dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and
 dev-python/ipykernel 5.1.4 5.3.0: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.2.3 6.3.0: Interactive Parallel Computing with IPython
-dev-python/ipython 7.5.0 7.15.0: Advanced interactive shell for Python
+dev-python/ipython 7.5.0 7.15.0 7.16.1: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.0.0 7.4.2-r1 7.5.1: IPython HTML widgets for Jupyter
 dev-python/irc 16.3 18.0.0-r1: IRC client framework written in Python
