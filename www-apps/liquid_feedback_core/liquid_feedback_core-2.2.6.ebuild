@@ -8,8 +8,8 @@ inherit toolchain-funcs
 MY_P=${PN}-v${PV}
 
 DESCRIPTION="Internet platforms for proposition development and decision making"
-HOMEPAGE="http://www.public-software-group.org/liquid_feedback"
-SRC_URI="http://www.public-software-group.org/pub/projects/liquid_feedback/backend/v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.public-software-group.org/liquid_feedback"
+SRC_URI="https://www.public-software-group.org/pub/projects/liquid_feedback/backend/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="HPND CC-BY-2.5"
 SLOT="0"
