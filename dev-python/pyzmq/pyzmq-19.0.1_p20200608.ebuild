@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit flag-o-matic distutils-r1 toolchain-funcs
@@ -29,7 +29,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-python/py[${PYTHON_USEDEP}]
-	dev-python/cffi:=[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/cffi:=[${PYTHON_USEDEP}]
+	' 'python*')
 "
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
