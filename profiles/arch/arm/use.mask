@@ -33,10 +33,6 @@ acpi
 # net-wireless/wimax not tested
 wimax
 
-# Markus Meier <maekke@gentoo.org> (2010-08-21)
-# app-antivirus/clamav not tested
-clamav
-
 # Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
 # cblas-external as virtual/cblas is also masked
 cblas-external
@@ -48,10 +44,6 @@ xfs
 # Raúl Porcel <armin76@gentoo.org>
 # Fails to build/work
 openexr
-
-# Samuli Suominen <drac@gentoo.org>
-# media-gfx/gimp not tested.
-gimp
 
 # No hardware to test by the team
 ios
