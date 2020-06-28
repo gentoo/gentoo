@@ -10,7 +10,7 @@ MY_P="${PN}-$(replace_version_separator 2 'a')"
 DESCRIPTION="An ethernet monitor program that keeps track of ethernet/IP address pairings"
 HOMEPAGE="https://ee.lbl.gov/"
 SRC_URI="
-	ftp://ftp.ee.lbl.gov/${MY_P}.tar.gz
+	https://ee.lbl.gov/downloads/arpwatch/${MY_P}.tar.gz
 	https://dev.gentoo.org/~jer/arpwatch-patchset-${PATCH_VER}.tar.xz
 "
 
