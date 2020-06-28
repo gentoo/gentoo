@@ -42,6 +42,10 @@ src_unpack() {
 src_install() {
 	local ARCH='-x86-64'
 
+	einfo 'Removing MacOS- and Windows-specific files'
+	find AddOns SystemFiles -type d -\( -name Windows -o -name Windows-x86-64 \
+		-o -name MacOSX -o -name MacOSX-x86-64 -\) -delete
+
 	if ! use doc; then
 		einfo "Removing documentation"
 		rm -r "${S}/${M_TARGET}/Documentation"

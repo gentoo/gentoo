@@ -47,6 +47,10 @@ src_install() {
 		rm -r "${S}/${M_TARGET}/Documentation"
 	fi
 
+	einfo 'Removing MacOS- and Windows-specific files'
+	find AddOns SystemFiles -type d -\( -name Windows -o -name Windows-x86-64 \
+		-o -name MacOSX -o -name MacOSX-x86-64 -\) -delete
+
 	# move all over
 	mv "${S}"/opt "${D}"/opt || die
 
