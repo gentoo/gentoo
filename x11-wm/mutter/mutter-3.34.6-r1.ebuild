@@ -94,6 +94,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/3.32-eglmesaext-include.patch
 	"${FILESDIR}"/${PV}-XInitThreads.patch
+	"${FILESDIR}"/${PV}-tests-dontreq-gdkwayland.patch
 )
 
 src_configure() {
