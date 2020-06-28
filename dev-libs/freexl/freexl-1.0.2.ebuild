@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils ltprune
 
 DESCRIPTION="Simple XLS data extraction library"
-HOMEPAGE="http://www.gaia-gis.it/gaia-sins/"
+HOMEPAGE="https://www.gaia-gis.it/fossil/freexl/index"
 SRC_URI="http://www.gaia-gis.it/gaia-sins/${PN}-sources/${P}.tar.gz"
 
 LICENSE="MPL-1.1"
