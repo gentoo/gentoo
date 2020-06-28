@@ -5799,7 +5799,7 @@ dev-perl/Convert-ASCII-Armour 1.400.0-r1 1.400.0-r2: Convert binary octets into 
 dev-perl/Convert-ASN1 0.270.0 0.270.0-r1: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1 1.320.0-r2: Class for encoding/decoding BER messages
 dev-perl/Convert-BinHex 1.125.0: Extract data from Macintosh BinHex files
-dev-perl/Convert-Binary-C 0.780.0-r1: Binary Data Conversion using C Types
+dev-perl/Convert-Binary-C 0.780.0-r1 0.790.0: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
@@ -12005,7 +12005,7 @@ kde-plasma/kwayland-server 5.19.2: Wayland Server Components built on KDE Framew
 kde-plasma/kwin 5.18.5-r1 5.18.5-r3 5.19.2: Flexible, composited Window Manager for windowing systems on Linux
 kde-plasma/kwrited 5.18.5 5.19.2: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.18.5 5.19.2: Plasma screen management library
-kde-plasma/libksysguard 5.18.5 5.19.2: Task management and system monitoring library
+kde-plasma/libksysguard 5.18.5 5.19.2-r1: Task management and system monitoring library
 kde-plasma/libkworkspace 5.18.5 5.19.2: Workspace library to interact with the Plasma session manager
 kde-plasma/milou 5.18.5 5.19.2: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.18.5 5.19.2: Oxygen visual style for the Plasma desktop
