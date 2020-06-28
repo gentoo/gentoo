@@ -53,7 +53,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gpg-tests.patch"
 	"${FILESDIR}/${P}-qt-5.11b3.patch"
 	"${FILESDIR}/${P}-qt-5.15.patch"
-	"${FILESDIR}/${P}-smtp-handle-tls-errors.patch" # bug 729596
+	"${FILESDIR}/${P}-CVE-2020-15047.patch" # bug 729596
 )
 
 src_prepare() {
