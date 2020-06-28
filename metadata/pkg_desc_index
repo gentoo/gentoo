@@ -16595,7 +16595,7 @@ sys-apps/fakeroot 1.22 1.23 1.24: A fake root environment by means of LD_PRELOAD
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 8.1.1: Alternative to find that provides sensible defaults for 80% of the use cases
-sys-apps/file 5.37-r1 5.38-r1 5.39 5.39-r1 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.37-r1 5.38-r1 5.39 5.39-r1 5.39-r2 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.7.0: GNU utilities for finding files
 sys-apps/firejail 0.9.60-r1 0.9.62 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.56.2-r1: Security sandbox for any type of processes; LTS version
@@ -17804,7 +17804,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 83.0.4103.106 83.0.4103.116 84.0.4147.45 84.0.4147.45-r1: Open-source version of Google Chrome web browser
+www-client/chromium 83.0.4103.106 83.0.4103.116 84.0.4147.68: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
@@ -17813,8 +17813,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0-r1 68.8.0 68.9.0 76.0-r1 76.0.1 77.0.1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.8.0 68.9.0 76.0 76.0.1 77.0.1: Firefox Web Browser
 www-client/google-chrome 83.0.4103.116: The web browser from Google
-www-client/google-chrome-beta 84.0.4147.56: The web browser from Google
-www-client/google-chrome-unstable 85.0.4173.0: The web browser from Google
+www-client/google-chrome-beta 84.0.4147.68: The web browser from Google
+www-client/google-chrome-unstable 85.0.4181.8: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1: A fast and lightweight web browser running in both graphics and text mode
@@ -17858,7 +17858,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.387: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 83.0.4103.116 84.0.4147.56_beta 85.0.4173.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 83.0.4103.116 84.0.4147.68_beta 85.0.4181.8_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
