@@ -12,7 +12,7 @@ HOMEPAGE="http://www.gnumeric.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+introspection libgda perl"
 REQUIRED_USE="introspection? ( ${PYTHON_REQUIRED_USE} )"
 
