@@ -782,7 +782,7 @@ app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
-app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.1.1 5.2.0: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.1.1 5.2.1: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.2: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
@@ -1529,7 +1529,7 @@ app-emacs/nxml-gentoo-schemas 20200303: Extension for nxml-mode with Gentoo-spec
 app-emacs/nxml-libvirt-schemas 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml
-app-emacs/org-mode 8.3.2-r1 9.3 9.3.6: An Emacs mode for notes and project planning
+app-emacs/org-mode 8.3.2-r1 9.3.6: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/pariemacs 3.14: sci-mathematics/pari emacs mode
@@ -1597,7 +1597,7 @@ app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.53: Window manager for GNU Emacs
 app-emacs/with-editor 2.8.3 2.9.2: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xclip 1.9: Emacs Interface to XClip
-app-emacs/xrdb-mode 3.0 3.0-r1: An Emacs major mode for editing X resource database files
+app-emacs/xrdb-mode 3.0-r1: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2-r1: An Emacs major mode for editing XSL stylesheets and running XSL processes
 app-emacs/yaml-mode 0.0.13 0.0.14: A major mode for GNU Emacs for editing YAML files
 app-emacs/yasnippet 0.13.0: Yet another snippet extension for Emacs
@@ -2364,7 +2364,7 @@ app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various sou
 app-office/glabels 3.4.1: Program for creating labels and business cards
 app-office/gnome-todo 3.28.1-r1: Personal task manager
 app-office/gnucash 3.8b 3.8b-r1: A personal finance manager
-app-office/gnumeric 1.12.46 1.12.47: The GNOME Spreadsheet
+app-office/gnumeric 1.12.47: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.4.0_pre20200613: Personal organizer for the GNOME desktop environment
 app-office/homebank 5.2.2 5.2.8 5.3.2 5.4.2: Free, easy, personal accounting for everyone
@@ -17808,7 +17808,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 83.0.4103.106 83.0.4103.116 84.0.4147.68: Open-source version of Google Chrome web browser
+www-client/chromium 83.0.4103.116 84.0.4147.68: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
@@ -18035,7 +18035,7 @@ x11-libs/gdk-pixbuf 2.40.0: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gl2ps 1.3.9 1.4.0: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
-x11-libs/goffice 0.10.46 0.10.47: A library of document-centric objects and utilities
+x11-libs/goffice 0.10.47: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 2.24.32-r1 3.24.16 3.24.18 3.24.20: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.3 3.3.4: Useful Additional GTK+ widgets
