@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs desktop
 
 DESCRIPTION="a free, open source web browser"
-HOMEPAGE="http://www.netsurf-browser.org/"
+HOMEPAGE="https://www.netsurf-browser.org/"
 SRC_URI="http://download.netsurf-browser.org/netsurf/releases/source/${P}-src.tar.gz"
 
 LICENSE="GPL-2 MIT"
