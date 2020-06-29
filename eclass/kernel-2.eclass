@@ -1238,27 +1238,37 @@ unipatch() {
 				if [[ ${GCC_MAJOR_VER} -lt 8 ]] && [[ ${GCC_MAJOR_VER} -gt 4 ]]; then
 					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
 					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
+					UNIPATCH_DROP+=" 5013_enable-cpu-optimizations-for-gcc10.patch"
 				# optimization patch for gcc >= 8 and kernel ge 4.13
 				elif [[ "${GCC_MAJOR_VER}" -eq 8 ]]; then
 					# support old kernels for a period. For now, remove as all gcc versions required are masked
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
-				elif [[ "${GCC_MAJOR_VER}" -ge 9 ]] && [[ ${GCC_MINOR_VER} -ge 1 ]]; then
+					UNIPATCH_DROP+=" 5013_enable-cpu-optimizations-for-gcc10.patch"
+				elif [[ "${GCC_MAJOR_VER}" -eq 9 ]] && [[ ${GCC_MINOR_VER} -ge 1 ]]; then
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
+					UNIPATCH_DROP+=" 5013_enable-cpu-optimizations-for-gcc10.patch"
+				elif [[ "${GCC_MAJOR_VER}" -eq 10 ]] && [[ ${GCC_MINOR_VER} -ge 1 ]]; then
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
+					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
 				else
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
 					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
+					UNIPATCH_DROP+=" 5013_enable-cpu-optimizations-for-gcc10.patch"
 				fi
 			else
 				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 				UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
 				UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
+				UNIPATCH_DROP+=" 5013_enable-cpu-optimizations-for-gcc10.patch"
 			fi
 		fi
 	done
