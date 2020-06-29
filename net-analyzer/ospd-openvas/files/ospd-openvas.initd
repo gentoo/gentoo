@@ -15,3 +15,7 @@ depend() {
 	after bootmisc
 	need localmount redis
 }
+
+start_pre() {
+        checkpath -d /var/run/ospd
+}
