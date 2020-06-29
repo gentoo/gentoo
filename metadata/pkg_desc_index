@@ -13450,7 +13450,7 @@ media-sound/grip 4.1.1: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.5: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
-media-sound/gtick 0.5.4 0.5.4-r1 0.5.5: Metronome application supporting different meters and speeds ranging
+media-sound/gtick 0.5.5: Metronome application supporting different meters and speeds ranging
 media-sound/gtkguitune 0.8: A guitar tuning program that uses Schmitt-triggering for quick feedback
 media-sound/guayadeque 0.4.5_p20170110 9999: Music management program designed for all music enthusiasts
 media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
