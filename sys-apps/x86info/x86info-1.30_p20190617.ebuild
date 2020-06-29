@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4..8} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit flag-o-matic linux-info python-any-r1 toolchain-funcs
 
@@ -16,21 +16,17 @@ SRC_URI="https://github.com/kernelslacker/x86info/archive/${COMMIT}.tar.gz -> ${
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 
 RDEPEND="sys-apps/pciutils:="
-DEPEND="
-	${PYTHON_DEPS}
-	${RDEPEND}"
+DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 CONFIG_CHECK="~MTRR ~X86_CPUID"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 PATCHES=(
-	#"${FILESDIR}"/1.21-pic.patch
-	"${FILESDIR}"/${PN}-1.24-pic.patch #270388
-	#"${FILESDIR}"/${PN}-1.29-parallel-make-cleanup.patch
-	#"${FILESDIR}"/${PN}-1.30-fix-build-system.patch
+	"${FILESDIR}"/${PN}-1.30-pic.patch #270388
+	"${FILESDIR}"/${PN}-1.30-makefile.patch
 )
 
 pkg_setup() {
