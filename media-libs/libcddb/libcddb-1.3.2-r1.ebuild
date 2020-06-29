@@ -1,11 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
-
-inherit autotools-multilib
+inherit autotools multilib-minimal
 
 DESCRIPTION="A library for accessing a CDDB server"
 HOMEPAGE="http://libcddb.sourceforge.net/"
@@ -17,7 +15,8 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-lin
 IUSE="doc static-libs"
 
 RDEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]"
-DEPEND="doc? ( app-doc/doxygen )"
+RDEPEND="${DEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 RESTRICT="test"
 
@@ -25,22 +24,36 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/cddb/version.h )
 
-src_configure() {
-	local myeconfargs=( --without-cdio )
-	autotools-multilib_src_configure
+src_prepare() {
+	default
+	# Required for CONFIG_SHELL != bash (bug #528012)
+	eautoreconf
 }
 
-src_compile() {
-	autotools-multilib_src_compile
+multilib_src_configure() {
+	local myeconfargs=(
+		--without-cdio
+		$(use_enable static-libs static)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
 
-	if use doc; then
-		cd "${S}"/doc
+multilib_src_compile() {
+	default
+
+	if use doc ; then
+		cd "${S}"/doc || die
 		doxygen doxygen.conf || die
 	fi
 }
 
-src_install() {
-	autotools-multilib_src_install
+multilib_src_install_all() {
+	default
 
-	use doc && dohtml "${S}"/doc/html/*
+	find "${ED}" -type f -name "*.la" -delete || die
+
+	if use doc ; then
+		docinto html
+		dodoc "${S}"/doc/html/*
+	fi
 }
