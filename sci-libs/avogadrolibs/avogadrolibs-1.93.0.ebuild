@@ -51,6 +51,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# https://github.com/OpenChemistry/avogadrolibs/issues/449
 	"${FILESDIR}"/${PN}-1.93.0-fix_AvogadroLibsConfig.patch
+	"${FILESDIR}/"${PN}-1.91.0_pre20180406-bundled-genxrdpattern.patch
 )
 
 src_unpack() {
