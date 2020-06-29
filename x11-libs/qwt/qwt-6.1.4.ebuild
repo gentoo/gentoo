@@ -10,7 +10,7 @@ HOMEPAGE="https://qwt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="qwt mathml? ( LGPL-2.1 Nokia-Qt-LGPL-Exception-1.1 )"
-KEYWORDS="amd64 ~arm ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~arm ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 SLOT="6/1.4"
 IUSE="designer doc examples mathml opengl svg"
 

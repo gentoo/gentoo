@@ -19,7 +19,9 @@ KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="sys-apps/pciutils:="
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig"
 
 CONFIG_CHECK="~MTRR ~X86_CPUID"
 S="${WORKDIR}/${PN}-${COMMIT}"
@@ -40,7 +42,7 @@ src_configure() {
 		-Wdeclaration-after-statement -Wredundant-decls
 	append-ldflags -Wl,-z,relro,-z,now
 
-	tc-export CC
+	tc-export CC PKG_CONFIG
 }
 
 src_compile() {

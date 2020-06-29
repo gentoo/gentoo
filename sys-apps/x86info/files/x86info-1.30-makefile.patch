@@ -21,7 +21,16 @@
  ifneq ($(SYSROOT),)
  CFLAGS += --sysroot=$(SYSROOT)
  endif
-@@ -33,14 +33,8 @@
+@@ -18,7 +18,7 @@
+ CFLAGS += -Wswitch-enum
+ CFLAGS += -Wundef
+ CFLAGS += -Wwrite-strings
+-CFLAGS += $(shell pkg-config --cflags libpci)
++CFLAGS += $(shell $$PKG_CONFIG --cflags libpci)
+ 
+ # gcc specific
+ ifneq ($(shell $(CC) -v 2>&1 | grep -c "clang"), 1)
+@@ -33,20 +33,8 @@
  CPP_MAJOR := $(shell $(CPP) -dumpversion 2>&1 | cut -d'.' -f1)
  CPP_MINOR := $(shell $(CPP) -dumpversion 2>&1 | cut -d'.' -f2)
  DEVEL   := $(shell grep VERSION Makefile | head -n1 | grep pre | wc -l)
@@ -33,18 +42,23 @@
 -ifeq ($(CC),"")
 -CC = gcc
 -endif
-+LIBS += $(shell pkg-config --libs libpci)
+-
+-ifdef STATIC_LIBPCI
+-LIBPCI = -Wl,-Bstatic -lpci -Wl,-Bdynamic -lz
+-else
+-LIBPCI = -lpci
+-endif
++LIBS += $(shell $$PKG_CONFIG --libs libpci)
  
- ifdef STATIC_LIBPCI
- LIBPCI = -Wl,-Bstatic -lpci -Wl,-Bdynamic -lz
-@@ -68,15 +62,15 @@
+ SHELL = /bin/sh
+ 
+@@ -68,15 +56,14 @@
  	$(sort $(patsubst %.c,%.o,$(wildcard vendors/*/*.c)))
  
  x86info: $(X86INFO_OBJS) $(X86INFO_HEADERS)
 -	$(QUIET_CC)$(CC) $(CFLAGS) $(LDFLAGS) -o x86info $(X86INFO_OBJS) \
 -	    $(LIBPCI)
-+	$(CC) $(CFLAGS) $(LDFLAGS) -o x86info $(X86INFO_OBJS) \
-+	    $(LIBPCI) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o x86info $(X86INFO_OBJS) $(LIBS)
  
  DEPDIR= .deps
  -include $(X86INFO_SRC:%.c=$(DEPDIR)/%.d)
