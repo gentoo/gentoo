@@ -8,7 +8,7 @@ DESCRIPTION="Advanced molecule editor and visualizer 2 - libraries"
 HOMEPAGE="https://www.openchemistry.org/ https://github.com/OpenChemistry/avogadrolibs"
 SRC_URI="
 	https://github.com/OpenChemistry/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	vtk? ( https://github.com/psavery/genXrdPattern/releases/download/1.0-static/linux64-genXrdPattern )
+	vtk? ( https://github.com/psavery/genXrdPattern/releases/download/1.0-static/linux64-genXrdPattern -> linux64-genXrdPattern-${P} )
 "
 
 SLOT="0"
@@ -56,7 +56,7 @@ PATCHES=(
 src_unpack() {
 	default
 	if use vtk; then
-		cp "${DISTDIR}"/linux64-genXrdPattern "${WORKDIR}/genXrdPattern" || die
+		cp "${DISTDIR}"/linux64-genXrdPattern-${P} "${WORKDIR}/genXrdPattern" || die
 	fi
 }
 
