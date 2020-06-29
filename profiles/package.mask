@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <stha09@googlemail.com> (2020-06-29)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-85
+
 # Michał Górny <mgorny@gentoo.org> (2020-06-29)
 # Unmaintained in Gentoo.  Multiple unresolved vulnerabilities.
 # Suggested replacement: sys-apps/portage (just kidding).
