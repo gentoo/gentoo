@@ -18,7 +18,6 @@ DEPEND=">=dev-texlive/texlive-basic-2020
 >=dev-texlive/texlive-fontsrecommended-2020
 "
 RDEPEND="${DEPEND} dev-texlive/texlive-latexrecommended
-dev-texlive/texlive-fontsrecommended
 "
 TEXLIVE_MODULE_BINSCRIPTS="
 	texmf-dist/scripts/luaotfload/luaotfload-tool.lua
