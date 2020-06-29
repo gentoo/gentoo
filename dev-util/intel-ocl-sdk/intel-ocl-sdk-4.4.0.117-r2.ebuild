@@ -12,7 +12,7 @@ SRC_URI="https://registrationcenter.intel.com/irc_nas/4181/intel_sdk_for_ocl_app
 LICENSE="Intel-SDP"
 SLOT="0"
 IUSE="android +system-tbb system-clang +system-boost"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 RESTRICT="bindist mirror"
 
 RDEPEND=">=virtual/opencl-3
