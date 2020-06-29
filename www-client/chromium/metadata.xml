@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="closure-compile">Enable closure type-checking for Chrome's web technology-based UI. Requires Java.</flag>
+		<flag name="js-type-check">Enable JavaScript type-checking for Chrome's web technology-based UI. Requires Java.</flag>
 		<flag name="component-build">Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="headless">Build Ozone only with headless backend, NOT RECOMMENDED for general use.</flag>
 		<flag name="hangouts">Enable support for Google Hangouts features such as screen sharing</flag>
