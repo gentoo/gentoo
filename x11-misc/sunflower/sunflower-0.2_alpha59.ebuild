@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit gnome2-utils python-r1 xdg-utils
 MY_PN="Sunflower"
 DESCRIPTION="Small and highly customizable twin-panel file manager with plugin-support"
 HOMEPAGE="https://github.com/MeanEYE/Sunflower
-	http://sunflower-fm.org/"
+	https://sunflower-fm.org/"
 SRC_URI="http://sunflower-fm.org/pub/sunflower-${PV/_alpha/-}.tgz"
 
 LICENSE="GPL-3"
