@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools xdg-utils multilib-minimal
+inherit autotools gnome2-utils xdg-utils multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/strukturag/${PN}.git"
@@ -60,8 +60,10 @@ multilib_src_install_all() {
 
 pkg_postinst() {
 	xdg_mimeinfo_database_update
+	gnome2_gdk_pixbuf_update
 }
 
 pkg_postrm() {
+	gnome2_gdk_pixbuf_update
 	xdg_mimeinfo_database_update
 }
