@@ -5802,8 +5802,8 @@ dev-perl/Convert-BER 1.320.0-r1 1.320.0-r2: Class for encoding/decoding BER mess
 dev-perl/Convert-BinHex 1.125.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.780.0-r1 0.790.0: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
-dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
-dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
+dev-perl/Convert-PEM 0.80.0-r1 0.80.0-r2: Read/write encrypted ASN.1 PEM files
+dev-perl/Convert-TNEF 0.180.0-r2 0.180.0-r3: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.710.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.80.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0: Accelerate Cookie::Baker's crush_cookie
