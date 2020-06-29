@@ -16,7 +16,7 @@ VERSION_BUSYBOX="1.31.1"
 VERSION_COREUTILS="8.32"
 VERSION_CRYPTSETUP="2.3.3"
 VERSION_DMRAID="1.0.0.rc16-3"
-VERSION_DROPBEAR="2020.79"
+VERSION_DROPBEAR="2020.80"
 VERSION_EXPAT="2.2.9"
 VERSION_E2FSPROGS="1.45.6"
 VERSION_FUSE="2.9.9"
@@ -46,7 +46,7 @@ COMMON_URI="
 	mirror://gnu/coreutils/coreutils-${VERSION_COREUTILS}.tar.xz
 	https://www.kernel.org/pub/linux/utils/cryptsetup/v$(ver_cut 1-2 ${VERSION_CRYPTSETUP})/cryptsetup-${VERSION_CRYPTSETUP}.tar.xz
 	https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-${VERSION_DMRAID}.tar.bz2
-	https://matt.ucc.asn.au/dropbear/releases/dropbear-${VERSION_DROPBEAR}.tar.bz2
+	https://dev.gentoo.org/~whissi/dist/dropbear/dropbear-${VERSION_DROPBEAR}.tar.bz2
 	https://github.com/libexpat/libexpat/releases/download/R_${VERSION_EXPAT//\./_}/expat-${VERSION_EXPAT}.tar.xz
 	https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${VERSION_E2FSPROGS}/e2fsprogs-${VERSION_E2FSPROGS}.tar.xz
 	https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION_FUSE}/fuse-${VERSION_FUSE}.tar.gz
