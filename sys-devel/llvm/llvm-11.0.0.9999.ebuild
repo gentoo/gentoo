@@ -183,7 +183,7 @@ src_prepare() {
 
 	# manpages don't use markdown
 	if ! use doc; then
-		sed -i -e '/source_parsers/d' docs/conf.py || die
+		sed -i -e "s:, 'recommonmark'::" docs/conf.py || die
 	fi
 
 	# Verify that the live ebuild is up-to-date
