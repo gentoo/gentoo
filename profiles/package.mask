@@ -58,7 +58,7 @@ media-video/tovid
 net-dns/maradns
 net-irc/irker
 net-mail/archivemail
-net-mail/getmai
+net-mail/getmail
 net-nds/nsscache
 net-wireless/airpwn
 sci-chemistry/bkchem
