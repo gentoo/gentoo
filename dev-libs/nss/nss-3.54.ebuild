@@ -36,9 +36,10 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	# Custom changes for gentoo
-	"${FILESDIR}/${PN}-3.47-gentoo-fixups.patch"
+	"${FILESDIR}/${PN}-3.53-gentoo-fixups.patch"
 	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
 	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
+	"${FILESDIR}/${PN}-3.53-fix-building-on-ppc.patch"
 )
 
 src_prepare() {
@@ -149,24 +150,16 @@ multilib_src_compile() {
 	local myCPPFLAGS="${CPPFLAGS} $($(tc-getPKG_CONFIG) nspr --cflags)"
 	unset NSPR_INCLUDE_DIR
 
-	# Do not let `uname` be used.
-	if use kernel_linux ; then
-		makeargs+=(
-			OS_TARGET=Linux
-			OS_RELEASE=2.6
-			OS_TEST="$(nssarch)"
-		)
-	fi
-
 	export NSS_ALLOW_SSLKEYLOGFILE=1
 	export NSS_ENABLE_WERROR=0 #567158
 	export BUILD_OPT=1
 	export NSS_USE_SYSTEM_SQLITE=1
 	export NSDISTMODE=copy
-	export NSS_ENABLE_ECC=1
 	export FREEBL_NO_DEPEND=1
 	export FREEBL_LOWHASH=1
 	export NSS_SEED_ONLY_DEV_URANDOM=1
+	export USE_SYSTEM_ZLIB=1
+	export ZLIB_LIBS=-lz
 	export ASFLAGS=""
 
 	local d
