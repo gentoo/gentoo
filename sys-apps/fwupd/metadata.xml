@@ -8,6 +8,7 @@
   <use>
     <flag name="agent">Enable update notification agent</flag>
     <flag name="amt">Build and install Intel AMT plugin</flag>
+    <flag name="colorhug">Enable ColorHug support through<pkg>x11-misc/colord</pkg> package</flag>
     <flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> for session tracking</flag>
     <flag name="dell">Enable Dell-specific support.</flag>
     <flag name="gpg">Enable GPG support.</flag>
