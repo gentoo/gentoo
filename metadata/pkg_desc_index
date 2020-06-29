@@ -1940,6 +1940,8 @@ app-laptop/thinkfan 0.9.3 1.0.2: simple fan control program for thinkpads
 app-laptop/tp_smapi 0.43: IBM ThinkPad SMAPI BIOS driver
 app-laptop/tpacpi-bat 1.1-r1 2.1 3.0 3.0-r1 3.1 9999: Control battery thresholds of recent ThinkPads, not supported by tp_smapi
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
+app-laptop/tuxedo-control-center-bin 1.0.3: Tool to control performance, energy, fan and comfort settings on TUXEDO laptops
+app-laptop/tuxedo-keyboard 2.0.5: Kernel Module for Tuxedo Keyboard
 app-leechcraft/laretz 9999: The Laretz sync server
 app-leechcraft/lc-advancednotifications 9999: Flexible and customizable notifications framework for LeechCraft
 app-leechcraft/lc-aggregator 9999: Full-featured RSS/Atom feed reader for LeechCraft
@@ -17442,6 +17444,7 @@ sys-power/powertop 2.10 2.11 9999: tool to diagnose issues with power consumptio
 sys-power/sispmctl 4.0 4.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20190605: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.9 1.9.1 2.1: Thermal daemon for Intel architectures
+sys-power/tuxedo-cc-wmi 0.1.4: Kernel Module for Tuxedo WMI
 sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
@@ -17759,7 +17762,7 @@ www-apps/gitea 1.11.6 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.7.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.69.0: The world's fastest framework for building websites
-www-apps/icingaweb2 2.7.1 2.7.3 2.8.0 9999: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.7.1 2.7.3 2.8.0 2.8.1 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
