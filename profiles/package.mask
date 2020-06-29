@@ -66,7 +66,6 @@ net-dns/maradns
 net-irc/irker
 net-mail/archivemail
 net-mail/getmail
-net-nds/nsscache
 net-wireless/airpwn
 sci-chemistry/bkchem
 sci-chemistry/propka
@@ -74,7 +73,6 @@ sci-chemistry/pymol-plugins-bni-tools
 sci-chemistry/pymol-plugins-emovie
 sci-chemistry/viewmol
 sci-libs/chemkit
-sys-apps/x86info
 www-misc/surl
 x11-wm/plwm
 
