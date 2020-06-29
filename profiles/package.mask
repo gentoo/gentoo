@@ -55,7 +55,6 @@ dev-libs/tut
 dev-python/elib-intl
 dev-python/eunuchs
 dev-python/medusa
-dev-python/misaka
 dev-python/python-iwscan
 dev-util/confix
 dev-util/qmtest
