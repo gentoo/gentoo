@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup
+DESCRIPTION=Ncurses interface for the Transmission BitTorrent client
+EAPI=7
+HOMEPAGE=https://github.com/tremc/tremc
+IUSE=python_single_target_python3_7 python_single_target_python3_8
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7[ncurses] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[ncurses] >=dev-lang/python-exec-2:=[python_targets_python3_8] )
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
+SLOT=0
+SRC_URI=https://github.com/tremc/tremc/archive/0.9.2.tar.gz -> tremc-0.9.2.tar.gz
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	python-single-r1	2d2617a730e75e491e1d17af87841ec5	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=ff1746299633a982f49b72d8f3500310
