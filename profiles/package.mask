@@ -32,6 +32,45 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-06-28)
+# More Py2 only stuff. Plz see -dev ML for discussions
+# Remove bindings, port to Py3, etc
+# Removal in 30 days
+app-arch/deltarpm
+app-crypt/virtualsmartcard
+app-text/duali
+app-text/mftrace
+app-text/queequeg
+app-text/referencer
+dev-libs/libmacaroons
+dev-libs/tut
+dev-python/elib-intl
+dev-python/eunuchs
+dev-python/medusa
+dev-python/misaka
+dev-python/python-iwscan
+dev-util/confix
+dev-util/qmtest
+dev-util/unrpyc
+games-engines/gemrb
+media-sound/lilycomp
+media-video/tovid
+net-dns/maradns
+net-irc/irker
+net-mail/archivemail
+net-mail/getmai
+net-nds/nsscache
+net-wireless/airpwn
+sci-chemistry/bkchem
+sci-chemistry/propka
+sci-chemistry/pymol-plugins-bni-tools
+sci-chemistry/pymol-plugins-emovie
+sci-chemistry/viewmol
+sci-libs/chemkit
+sys-apps/x86info
+www-misc/surl
+x11-wm/plwm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-28)
 # WIP PipeWire ebuild, breaks all current revdeps in ebuild repository
 # sys-apps/xdg-desktop-portal-1.7.2 depends on masked PipeWire >=0.3
