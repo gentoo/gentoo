@@ -5805,9 +5805,9 @@ dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1 0.80.0-r2: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r2 0.180.0-r3: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.710.0: A Perl interface to the uulib library
-dev-perl/Cookie-Baker 0.80.0: Cookie string generator / parser
-dev-perl/Cookie-Baker-XS 0.80.0: Accelerate Cookie::Baker's crush_cookie
-dev-perl/Coro 6.514.0: The only real threads in perl
+dev-perl/Cookie-Baker 0.80.0 0.110.0: Cookie string generator / parser
+dev-perl/Cookie-Baker-XS 0.80.0 0.110.0: Accelerate Cookie::Baker's crush_cookie
+dev-perl/Coro 6.514.0 6.514.0-r1: The only real threads in perl
 dev-perl/Cpanel-JSON-XS 3.23.900: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
@@ -16658,7 +16658,7 @@ sys-apps/ipmiutil 3.0.6 3.0.9 3.1.5-r1 3.1.6: IPMI Management Utilities
 sys-apps/iproute2 4.19.0-r1 5.2.0-r1 5.4.0 5.6.0 5.7.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.5.0 1.6.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
-sys-apps/iucode_tool 2.1.1 2.1.2 2.2 2.3 2.3.1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
+sys-apps/iucode_tool 2.3.1-r1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 2.0.4 2.0.4-r1 2.2.0-r2 2.2.90 9999: Keyboard and console utilities
 sys-apps/kcheck 0.0.2 9999: Record and check required kernel symbols are set
 sys-apps/kexec-tools 2.0.20-r1 9999: Load another kernel from the currently executing Linux kernel
@@ -17830,7 +17830,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10: a free, open source web browser
 www-client/opera 68.0.3618.165 68.0.3618.173 69.0.3686.36: A fast and secure web browser
 www-client/opera-beta 69.0.3686.30: A fast and secure web browser
-www-client/opera-developer 70.0.3721.0 70.0.3728.0: A fast and secure web browser
+www-client/opera-developer 70.0.3721.0 70.0.3728.0 71.0.3735.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.11.1-r1 1.12.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
