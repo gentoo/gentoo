@@ -5811,7 +5811,7 @@ dev-perl/Coro 6.514.0 6.514.0-r1: The only real threads in perl
 dev-perl/Cpanel-JSON-XS 3.23.900 4.190.0: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1 2.140.0-r2: Perl Blowfish encryption module
 dev-perl/Crypt-CAST5_PP 1.40.0-r1 1.40.0-r2: CAST5 block cipher in pure Perl
-dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
+dev-perl/Crypt-CBC 2.330.0-r1 2.330.0-r2: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-CipherSaber 1.10.0-r1: Perl module implementing CipherSaber encryption
 dev-perl/Crypt-Cracklib 1.700.0-r1 1.700.0-r2: Perl interface to Alec Muffett's Cracklib
 dev-perl/Crypt-Curve25519 0.60.0: Shared secret elliptic-curve Diffie-Hellman generator
@@ -8061,7 +8061,7 @@ dev-python/mini-amf 0.9.1-r1: Minimal AMF encoder and decoder for Python
 dev-python/minidb 2.0.2-r1 2.0.3 2.0.4: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 2.1.20191224: Python bindings for UPnP client library
-dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
+dev-python/misaka 2.1.1: A CFFI binding for Hoedown, a markdown parsing library
 dev-python/mistune 0.8.4: The fastest markdown parser in pure Python
 dev-python/mkautodoc 0.1.0: Auto documentation for MkDocs
 dev-python/mkdocs 0.15.3 1.0.1 1.1: Project documentation with Markdown.
@@ -17003,7 +17003,7 @@ sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/glusterfs 4.1.8 6.5 6.7-r1 6.8 7.2-r1 7.3 7.5 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6 3.0.6-r1: Heartbeat high availability cluster manager
-sys-cluster/heat 13.0.0 13.0.2 14.0.0 2019.2.9999 2020.1.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
+sys-cluster/heat 13.0.2 14.0.0 2019.2.9999 2020.1.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
