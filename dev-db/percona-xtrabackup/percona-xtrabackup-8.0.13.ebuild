@@ -8,11 +8,10 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake flag-o-matic
 
 BOOST_VER="1_70_0"
-MY_PV="$(ver_rs 2 '-')"
 
 DESCRIPTION="Hot backup utility for MySQL based servers"
 HOMEPAGE="https://www.percona.com/software/mysql-database/percona-xtrabackup"
-SRC_URI="https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-${MY_PV}/source/tarball/${P}.tar.gz
+SRC_URI="https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-${PV}/source/tarball/${P}.tar.gz
 	mirror://sourceforge/boost/boost_${BOOST_VER}.tar.gz"
 
 LICENSE="GPL-2"
