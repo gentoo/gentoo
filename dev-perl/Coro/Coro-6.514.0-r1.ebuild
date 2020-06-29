@@ -9,7 +9,7 @@ DIST_EXAMPLES=( "eg/*" )
 inherit perl-module
 
 DESCRIPTION="The only real threads in perl"
-
+LICENSE="|| ( Artistic GPL-1+ ) LGPL-2.1+ || ( BSD-2 GPL-2+ )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ev event"
