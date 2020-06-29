@@ -8,7 +8,8 @@ KEYWORDS=amd64 ppc ~ppc64 x86
 LICENSE=LGPL-3
 RDEPEND=sys-libs/ncurses:0=[unicode] perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* ) python? ( python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] )
 REQUIRED_USE=python? ( || ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 ) )
+RESTRICT=test
 SLOT=0
 SRC_URI=http://www.clifford.at/stfl/stfl-0.24.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multibuild	40fe59465edacd730c644ec2bc197809	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=3e5475e4dccd627830ea01e929650210
+_md5_=1b66b00af4a31bb7e47e7affeb0e07e5
