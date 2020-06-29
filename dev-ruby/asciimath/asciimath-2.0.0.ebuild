@@ -17,3 +17,5 @@ LICENSE="MIT"
 SLOT="1"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
+
+ruby_add_bdepend "test? ( dev-ruby/nokogiri )"
