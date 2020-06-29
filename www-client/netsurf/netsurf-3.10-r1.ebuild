@@ -23,7 +23,7 @@ RDEPEND="
 	>=net-libs/libdom-0.3
 	>=net-libs/libhubbub-0.3
 	>=dev-libs/libnsutils-0.0.5
-	>=dev-libs/libutf8proc-2.2
+	>=dev-libs/libutf8proc-2.4
 	dev-libs/libxml2:2
 	net-misc/curl
 	bmp? ( >=media-libs/libnsbmp-0.1 )
