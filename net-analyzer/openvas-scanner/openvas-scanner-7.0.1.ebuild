@@ -16,7 +16,8 @@ SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> $
 SLOT="0"
 LICENSE="GPL-2 GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="cron extras"
+IUSE="cron extras test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-user/gvm
@@ -44,7 +45,8 @@ BDEPEND="
 		app-text/htmldoc
 		dev-perl/CGI
 		dev-perl/SQL-Translator
-	)"
+	)
+	test? ( dev-libs/cgreen )"
 
 BUILD_DIR="${WORKDIR}/${MY_PN}-${PV}_build"
 S="${WORKDIR}/${MY_PN}-${PV}"
@@ -84,6 +86,9 @@ src_compile() {
 		cmake_build doc-full -C "${BUILD_DIR}" doc
 	fi
 	cmake_build rebuild_cache
+	if use test; then
+		cmake_build tests
+	fi
 }
 
 src_install() {
