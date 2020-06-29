@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~x86"
 IUSE="cairo excel gtk3 latex qt5 test tk wxwidgets"
 REQUIRED_USE="test? ( cairo gtk3 latex qt5 tk wxwidgets )"
 
