@@ -3,9 +3,9 @@ DEPEND=dev-libs/glib:2
 DESCRIPTION=Moves legacy tray icons to top panel
 EAPI=7
 HOMEPAGE=https://extensions.gnome.org/extension/1031/topicons/
-KEYWORDS=~amd64 x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-3.34
 SLOT=0
 SRC_URI=https://github.com/phocean/TopIcons-plus/archive/27.tar.gz -> gnome-shell-extensions-topicons-plus-27.tar.gz
-_md5_=ea6673a659d0e55dc5216920132ca00f
+_md5_=783d41e01397962b5a1cf254dd4d9de3
