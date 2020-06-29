@@ -2798,7 +2798,7 @@ app-text/trang 20151127: Multi-format schema converter based on RELAX NG
 app-text/tree 1.7.0 1.7.0-r1 1.8.0: Lists directories recursively, and produces an indented listing of files
 app-text/ttf2pk2 2.0_p20200406: Freetype 2 based TrueType font to TeX's PK format converter
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
-app-text/txt2man 1.6.0 1.7.0: Scripts to convert regular ASCII text to man pages
+app-text/txt2man 1.6.0 1.7.0 1.7.1: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
 app-text/txt2tags 2.6-r1 3.3: Generate marked up documents (HTML, etc.)from a plain text file with markup
 app-text/u2ps 0.8.4 1.1: A text to PostScript converter like a2ps, but supports UTF-8
@@ -10194,7 +10194,7 @@ dev-texlive/texlive-langspanish 2020: TeXLive Spanish
 dev-texlive/texlive-latex 2020: TeXLive LaTeX fundamental packages
 dev-texlive/texlive-latexextra 2020-r2: TeXLive LaTeX additional packages
 dev-texlive/texlive-latexrecommended 2020: TeXLive LaTeX recommended packages
-dev-texlive/texlive-luatex 2020-r1: TeXLive LuaTeX packages
+dev-texlive/texlive-luatex 2020-r2: TeXLive LuaTeX packages
 dev-texlive/texlive-mathscience 2020: TeXLive Mathematics, natural sciences, computer science packages
 dev-texlive/texlive-metapost 2020-r1: TeXLive MetaPost and Metafont packages
 dev-texlive/texlive-music 2020: TeXLive Music packages
@@ -14949,7 +14949,7 @@ net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.4.3 1.4.5 1.4.7: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
-net-misc/rsync 3.2.0-r1 3.2.1 3.2.2_pre1 9999: File transfer program to keep remote files into sync
+net-misc/rsync 3.2.0-r1 3.2.1 3.2.2_pre2 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.38.3: Rygel is an open source UPnP/DLNA MediaServer
