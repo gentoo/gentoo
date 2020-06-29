@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-06-29)
+# Unmaintained in Gentoo.  Multiple unresolved vulnerabilities.
+# Suggested replacement: sys-apps/portage (just kidding).
+# Removal in 30 days.  Bug #711134.
+sys-apps/pacman
+
 # Aaron Bauman <bman@gentoo.org> (2020-06-28)
 # More Py2 only stuff. Plz see -dev ML for discussions
 # Remove bindings, port to Py3, etc
