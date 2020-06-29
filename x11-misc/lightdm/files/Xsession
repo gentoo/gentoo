@@ -50,8 +50,8 @@ command="$@"
 xinitdir="/etc/X11/xinit/xinitrc.d"
 if [ -d "$xinitdir" ]; then
     for script in $xinitdir/*; do
-        echo "Loading xinit script $script"
         if [ -x "$script" -a ! -d "$script" ]; then
+            echo "Loading xinit script $script"
             . "$script"
         fi
     done
@@ -62,8 +62,8 @@ xsessionddir="/etc/X11/Xsession.d"
 if [ -d "$xsessionddir" ]; then
     for i in `ls $xsessionddir`; do
         script="$xsessionddir/$i"
-        echo "Loading X session script $script"
         if [ -r "$script"  -a -f "$script" ] && expr "$i" : '^[[:alnum:]_-]\+$' > /dev/null; then
+            echo "Loading X session script $script"
             . "$script"
         fi
     done
