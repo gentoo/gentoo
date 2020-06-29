@@ -7277,7 +7277,7 @@ dev-php/PEAR-MDB2_Driver_oci8 1.5.0_beta4-r1: Database Abstraction Layer, oci8 d
 dev-php/PEAR-MDB2_Driver_pgsql 1.5.0_beta4-r1: Database Abstraction Layer, pgsql driver
 dev-php/PEAR-MIME_Type 1.4.1: Utility class for dealing with MIME types
 dev-php/PEAR-Mail 1.4.1-r1: Class that provides multiple interfaces for sending emails
-dev-php/PEAR-Mail_Mime 1.10.2-r1 1.10.4 1.10.6 1.10.7 1.10.8: Create and manipulate mime messages with PHP
+dev-php/PEAR-Mail_Mime 1.10.2-r1 1.10.4 1.10.6 1.10.7 1.10.8 1.10.9: Create and manipulate mime messages with PHP
 dev-php/PEAR-Mail_mimeDecode 1.5.6-r2: Provides a class to decode mime messages (split from PEAR-Mail_Mime)
 dev-php/PEAR-Math_BigInteger 1.0.3-r1: Pure-PHP arbitrary precision integer arithmetic library
 dev-php/PEAR-Net_DNS 1.0.7-r1: Resolver library used to communicate with a DNS server
@@ -7341,7 +7341,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7: Dependency Manager for PHP
+dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7 1.10.8: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1: Utility to instantiate objects in PHP without invoking their constructors
@@ -17783,7 +17783,7 @@ www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible stat
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8 2.6.12 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
 www-apps/nextcloud 17.0.5 17.0.6 17.0.7 18.0.3 18.0.4 18.0.6 19.0.0: Personal cloud that runs on your own server
-www-apps/nikola 7.8.15 7.8.15-r1 8.0.4: A static website and blog generator
+www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/otrs 5.0.25 6.0.3 6.0.4 6.0.5 6.0.7: An Open source Ticket Request System
 www-apps/owncloud 10.4.0 10.4.1: Web-based storage application where all your data is under your own control
