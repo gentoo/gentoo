@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools out-of-source
 
@@ -21,16 +21,19 @@ PATCHES=(
 
 src_prepare() {
 	default
+	# Required for CONFIG_SHELL != bash (bug #668408)
 	eautoreconf
 }
 
 my_src_configure() {
-	econf \
-		$(use_enable examples) \
+	local myeconfargs=(
+		$(use_enable examples)
 		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 my_src_install_all() {
 	einstalldocs
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }
