@@ -9,7 +9,7 @@ SRC_URI="https://archive.xfce.org/src/thunar-plugins/thunar-shares-plugin/${PV%.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.18
