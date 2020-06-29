@@ -13,7 +13,8 @@ SRC_URI="https://github.com/greenbone/gvm-libs/archive/v${PV}.tar.gz -> ${P}.tar
 SLOT="0"
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="extras ldap radius"
+IUSE="extras ldap test radius"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-user/gvm
@@ -42,7 +43,8 @@ BDEPEND="
 		app-text/htmldoc
 		dev-perl/CGI
 		dev-perl/SQL-Translator
-	)"
+	)
+	test? ( dev-libs/cgreen )"
 
 src_prepare() {
 	cmake_src_prepare
@@ -66,6 +68,7 @@ src_configure() {
 		"-DLOCALSTATEDIR=${EPREFIX}/var"
 		"-DSYSCONFDIR=${EPREFIX}/etc"
 		"-DGVM_PID_DIR=${EPREFIX}/var/lib/gvm"
+		"-DBUILD_TESTS=$(usex test)"
 	)
 	cmake_src_configure
 }
@@ -77,6 +80,9 @@ src_compile() {
 		cmake_build doc-full -C "${BUILD_DIR}" doc
 	fi
 	cmake_build rebuild_cache
+	if use test; then
+		cmake_build tests
+	fi
 }
 
 src_install() {
