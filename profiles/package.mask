@@ -39,6 +39,7 @@
 app-arch/deltarpm
 app-crypt/virtualsmartcard
 app-text/duali
+app-text/duali-data
 app-text/mftrace
 app-text/queequeg
 app-text/referencer
