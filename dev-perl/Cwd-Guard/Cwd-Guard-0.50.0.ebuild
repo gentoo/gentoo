@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Temporary changing working directory (chdir)"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 hppa ~ppc x86"
 IUSE="test minimal"
 RESTRICT="!test? ( test )"
 # Cwd -> perl-File-Spec
