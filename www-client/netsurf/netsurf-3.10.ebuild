@@ -98,7 +98,7 @@ _emake() {
 
 src_compile() {
 	use fbcon && _emake TARGET=framebuffer
-	use gtk2 && _emake TARGET=gtk
+	use gtk2 && _emake TARGET=gtk2
 	use gtk && _emake TARGET=gtk3
 }
 
@@ -116,9 +116,9 @@ src_install() {
 		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-fb NetSurf-framebuffer netsurf "Network;WebBrowser"
 	fi
 	if use gtk2 ; then
-		_emake TARGET=gtk DESTDIR="${D}" install
-		elog "netsurf gtk2 version has been installed as netsurf-gtk"
-		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-gtk NetSurf-gtk netsurf "Network;WebBrowser"
+		_emake TARGET=gtk2 DESTDIR="${D}" install
+		elog "netsurf gtk2 version has been installed as netsurf-gtk2"
+		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-gtk2 NetSurf-gtk2 netsurf "Network;WebBrowser"
 	fi
 	if use gtk ; then
 		_emake TARGET=gtk3 DESTDIR="${D}" install
