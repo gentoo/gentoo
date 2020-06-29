@@ -2,17 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils flag-o-matic multilib toolchain-funcs
+inherit cmake flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="PoDoFo is a C++ library to work with the PDF file format"
 HOMEPAGE="https://sourceforge.net/projects/podofo/"
-SRC_URI="https://dev.gentoo.org/~zmedico/dist/podofo-0.9.6_p20200526.tar.xz"
+SRC_URI="https://dev.gentoo.org/~zmedico/dist/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/${PV%_*}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+boost idn libressl debug test +tools"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( tools )"
 
 RDEPEND="dev-lang/lua:=
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS ChangeLog TODO"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	local x sed_args
 
 	if use libressl; then
@@ -136,6 +136,11 @@ src_configure() {
 		-DPODOFO_BUILD_LIB_ONLY=$(usex tools OFF ON)
 		)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 	mkdir -p "${S}/test/TokenizerTest/objects" || die
+}
+
+src_test() {
+	cd "${BUILD_DIR}"/test/unit || die
+	./podofo-test --selftest || die "self test failed"
 }
