@@ -11956,7 +11956,7 @@ kde-frameworks/threadweaver 5.70.0 5.71.0: Framework for managing threads using 
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
 kde-misc/kdeconnect 1.4 20.04.2: Adds communication between KDE Plasma and your smartphone
-kde-misc/kdiff3 1.8.2-r1 1.8.3: Frontend to diff3 based on KDE Frameworks
+kde-misc/kdiff3 1.8.2-r1 1.8.3 1.8.3-r1: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.2.1: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: Input method frontend for Plasma
 kde-misc/kio-fuse 4.95.0: FUSE interface for KIO
@@ -12918,7 +12918,7 @@ media-libs/lv2 1.16.0-r1 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.0.8 20.1.1 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.20.0 6.20.0-r1: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.20.0 6.20.0-r2: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.43.0 1.44.0: Audio metadata tag reader and writer implemented in pure Python
