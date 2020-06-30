@@ -40,7 +40,6 @@ DEPEND="
 	frei0r? ( media-plugins/frei0r-plugins )
 	gtk? (
 		media-libs/libexif
-		x11-libs/gtk+:2
 		x11-libs/pango
 	)
 	jack? (
@@ -86,6 +85,7 @@ DOCS=( AUTHORS ChangeLog NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${P}-qt-5.15.patch
+	"${FILESDIR}"/${P}-no-gtk2.patch
 )
 
 pkg_setup() {
@@ -111,6 +111,7 @@ src_configure() {
 		--enable-gpl3
 		--enable-motion-est
 		--target-arch=$(tc-arch)
+		--disable-gtk2
 		--disable-kde
 		--disable-sdl
 		--disable-swfdec
@@ -120,7 +121,7 @@ src_configure() {
 		$(use_enable ffmpeg avformat)
 		$(use_enable fftw plus)
 		$(use_enable frei0r)
-		$(use_enable gtk gtk2)
+		$(use_enable gtk gdk)
 		$(use_enable jack jackrack)
 		$(use_enable kdenlive)
 		$(use_enable libsamplerate resample)
