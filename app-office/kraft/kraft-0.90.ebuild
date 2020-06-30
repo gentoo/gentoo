@@ -4,8 +4,6 @@
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
-KFMIN=5.60.0
-QTMIN=5.12.3
 inherit ecm
 
 DESCRIPTION="Software to manage quotes and invoices in small enterprises"
@@ -19,28 +17,21 @@ IUSE="pim"
 
 DEPEND="
 	dev-cpp/ctemplate
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtsql-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
-	>=kde-frameworks/kconfig-${KFMIN}:5
-	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
-	|| (
-		>=kde-frameworks/kcontacts-${KFMIN}:5
-		>=kde-apps/kcontacts-19.04.3:5
-	)
-	>=kde-frameworks/kcoreaddons-${KFMIN}:5
-	>=kde-frameworks/ki18n-${KFMIN}:5
-	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	dev-qt/qtgui:5
+	dev-qt/qtsql:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
+	kde-frameworks/kconfig:5
+	kde-frameworks/kconfigwidgets:5
+	kde-frameworks/kcontacts:5
+	kde-frameworks/kcoreaddons:5
+	kde-frameworks/ki18n:5
 	pim? (
-		>=kde-apps/akonadi-19.04.3:5
-		>=kde-apps/akonadi-contacts-19.04.3:5
+		kde-apps/akonadi:5
+		kde-apps/akonadi-contacts:5
 	)
 "
-RDEPEND="${DEPEND}
-	!app-office/kraft:4
-"
+RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS Changes.txt README.md Releasenotes.txt TODO )
 
