@@ -32,6 +32,46 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-06-29)
+# More Py2 only stuff. Plz see -dev ML for discussions
+# Remove bindings, port to Py3, etc
+# Removal in 30 days
+app-dicts/opendict
+app-editors/editra
+app-office/taskcoach
+app-backup/holland
+app-backup/holland-backup-example
+app-backup/holland-backup-pgdump
+app-backup/holland-backup-random
+app-backup/holland-backup-sqlite
+app-backup/holland-lib-common
+app-backup/holland-lib-lvm
+app-cdr/burn-cd
+app-editors/leo
+app-emulation/playonlinux
+app-text/bibus
+dev-db/SchemaSync
+dev-python/squaremap
+dev-util/wxglade
+media-gfx/fontypython
+media-gfx/fr0st
+sci-chemistry/apbs
+sci-chemistry/autodock
+sci-chemistry/eden
+sci-chemistry/p3d
+sci-chemistry/pdb2pqr
+sci-chemistry/pdb-tools
+sci-chemistry/prodecomp
+sci-chemistry/pymol-plugins-caver
+sci-chemistry/pymol-plugins-dssp
+sci-chemistry/pymol-plugins-promol
+sci-chemistry/relax
+sci-chemistry/sparky
+sci-chemistry/vmd
+www-apps/roundup
+www-apps/viewvc
+x11-misc/nts
+
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-29)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
