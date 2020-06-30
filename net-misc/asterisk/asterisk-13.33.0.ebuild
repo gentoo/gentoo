@@ -26,7 +26,8 @@ REQUIRED_USE="gtalk? ( xmpp )
 "
 
 PATCHES=(
-	"${FILESDIR}/asterisk-historic-no-var-run-install.patch"
+	"${FILESDIR}/${PN}-historic-no-var-run-install.patch"
+	"${FILESDIR}/${PN}-13.33.0-nossl.patch"
 )
 
 DEPEND="acct-user/asterisk
