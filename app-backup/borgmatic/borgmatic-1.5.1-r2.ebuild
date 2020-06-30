@@ -62,9 +62,6 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "To generate a sample configuration file, run:"
 		elog "    generate-borgmatic-config"
-	else
-		elog "To upgrade your configuration file to the current version, run:"
-		elog "    upgrade-borgmatic-config"
 	fi
 	elog
 	elog "Systemd users wishing to periodically run borgmatic can use the provided timer and service units."
