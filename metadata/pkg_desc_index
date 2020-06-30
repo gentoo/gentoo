@@ -5819,7 +5819,7 @@ dev-perl/Crypt-Cracklib 1.700.0-r1 1.700.0-r2 1.700.0-r3: Perl interface to Alec
 dev-perl/Crypt-Curve25519 0.60.0 0.60.0-r1: Shared secret elliptic-curve Diffie-Hellman generator
 dev-perl/Crypt-DES 2.70.0-r1 2.70.0-r2: Perl DES encryption module
 dev-perl/Crypt-DES_EDE3 0.10.0-r1 0.10.0-r2: Triple-DES EDE encryption/decryption
-dev-perl/Crypt-DH 0.70.0-r2: Diffie-Hellman key exchange system
+dev-perl/Crypt-DH 0.70.0-r2 0.70.0-r3: Diffie-Hellman key exchange system
 dev-perl/Crypt-DH-GMP 0.0.120: Crypt::DH Using GMP Directly
 dev-perl/Crypt-DSA 1.170.0: DSA Signatures and Key Generation
 dev-perl/Crypt-Eksblowfish 0.9.0-r2: the Eksblowfish block cipher
