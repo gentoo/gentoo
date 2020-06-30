@@ -6,7 +6,6 @@
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
-		<flag name="messages">enable error messages</flag>
 		<flag name="epoll">use epoll() system call</flag>
 	</use>
 	<upstream>
