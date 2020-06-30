@@ -5166,7 +5166,7 @@ dev-libs/libtreadstone 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtsm 3 4.0.1: Terminal Emulator State Machine
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libucl 0.8.1-r1 9999: Universal configuration library parser
-dev-libs/libudfread 1.0.0-r1 9999: Library for reading UDF from raw devices and image files
+dev-libs/libudfread 1.0.0-r1 1.1.0 9999: Library for reading UDF from raw devices and image files
 dev-libs/libuev 2.2.0 2.3.0 2.3.1: A collection of useful BSD APIs
 dev-libs/libugpio 0.0.6: Lib for the use of linux kernel's sysfs gpio interface from C programs
 dev-libs/libunibreak 4.0 4.1 4.2: Line and word breaking library
@@ -5815,7 +5815,7 @@ dev-perl/Crypt-Blowfish 2.140.0-r1 2.140.0-r2: Perl Blowfish encryption module
 dev-perl/Crypt-CAST5_PP 1.40.0-r1 1.40.0-r2: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1 2.330.0-r2: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-CipherSaber 1.10.0-r1: Perl module implementing CipherSaber encryption
-dev-perl/Crypt-Cracklib 1.700.0-r1 1.700.0-r2: Perl interface to Alec Muffett's Cracklib
+dev-perl/Crypt-Cracklib 1.700.0-r1 1.700.0-r2 1.700.0-r3: Perl interface to Alec Muffett's Cracklib
 dev-perl/Crypt-Curve25519 0.60.0: Shared secret elliptic-curve Diffie-Hellman generator
 dev-perl/Crypt-DES 2.70.0-r1: Perl DES encryption module
 dev-perl/Crypt-DES_EDE3 0.10.0-r1: Triple-DES EDE encryption/decryption
@@ -17003,14 +17003,14 @@ sys-cluster/galera 25.3.25 25.3.26 25.3.28 25.3.28-r1 26.4.2 26.4.3 26.4.4 26.4.
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
-sys-cluster/glusterfs 4.1.8 6.5 6.7-r1 6.8 7.2-r1 7.3 7.5 9999: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 6.8 6.9 7.5 7.6 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6 3.0.6-r1: Heartbeat high availability cluster manager
 sys-cluster/heat 13.0.2 14.0.0 2019.2.9999 2020.1.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/k9scli 0.20.5: terminal based UI to manage kubernetes clusters
-sys-cluster/keepalived 2.0.17 2.0.19 2.0.20: A strong & robust keepalive facility to the Linux Virtual Server project
+sys-cluster/keepalived 2.0.17 2.0.19 2.0.20 2.1.3: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kube-apiserver 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kubernetes API server
 sys-cluster/kube-controller-manager 1.15.10 1.15.11 1.15.12 1.16.7 1.16.8 1.17.3 1.17.4: Kubernetes Controller Manager
@@ -17478,7 +17478,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20200422 20200522: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20200522 20200622: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
