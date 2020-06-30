@@ -81,20 +81,17 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE="+git"
 
-DEPEND="
-	git? (
-		dev-libs/libgit2:=
-		net-libs/http-parser:=
-	)
-"
-
+DEPEND="git? ( dev-libs/libgit2:= )"
 RDEPEND="${DEPEND}"
 
+# some tests fail on tmpfs/zfs/btrfs
 RESTRICT="test"
 
 QA_FLAGS_IGNORED="/usr/bin/exa"
 
 src_compile() {
+	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export PKG_CONFIG_ALLOW_CROSS=1
 	cargo_src_compile $(usex git "" --no-default-features)
 }
 
