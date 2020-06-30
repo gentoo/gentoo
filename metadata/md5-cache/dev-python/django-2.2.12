@@ -4,7 +4,7 @@ DESCRIPTION=High-level Python web framework
 EAPI=7
 HOMEPAGE=https://www.djangoproject.com/ https://pypi.org/project/Django/
 IUSE=doc sqlite test doc python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
-KEYWORDS=amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=amd64 ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=BSD Apache-2.0 MIT
 RDEPEND=dev-python/pytz[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/sqlparse[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_6? ( dev-lang/python:3.6[sqlite?,threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[sqlite?,threads(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[sqlite?,threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.djangoproject.com/m/releases/2.2/Django-2.2.12.tar.gz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	distutils-r1	44725b3eb803b8abcd6978759c231210	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multibuild	40fe59465edacd730c644ec2bc197809	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8386b016a2b3bbefa88443fdaa898057	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=5a57f9b22928130746c6ff7e15823637
+_md5_=549a91af3d79382a8c2e17eea74459ab
