@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..7} )
 
 inherit distutils-r1
 MY_P=${P/_/}
@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT ZPL"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+tz sqlite mysql postgres xapian whoosh ssl jinja pyjwt markdown"
 
 DEPEND=""
