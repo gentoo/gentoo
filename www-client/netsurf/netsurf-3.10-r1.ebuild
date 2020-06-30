@@ -97,7 +97,15 @@ _emake() {
 }
 
 src_compile() {
-	use fbcon && _emake TARGET=framebuffer
+	# The build system only runs pkg-config to find librsvg's include
+	# dir for the gtk targets. So if you try to build the framebuffer
+	# target with NETSURF_USE_RSVG=YES, the build crashes on failing to
+	# find rsvg.h. To work around that, we set NETSURF_USE_RSVG=NO. It
+	# might be possible to fall back to svgtiny with USE="svg -svgtiny"
+	# if svgtiny works in a framebuffer, but then our (R)DEPEND would
+	# need some mangling to ensure that svgtiny is installed.
+	use fbcon && _emake NETSURF_USE_RSVG=NO TARGET=framebuffer
+
 	use gtk2 && _emake TARGET=gtk2
 	use gtk && _emake TARGET=gtk3
 }
@@ -111,19 +119,29 @@ src_install() {
 		-i "${WORKDIR}"/*/utils/git-testament.pl || die
 
 	if use fbcon ; then
-		_emake TARGET=framebuffer DESTDIR="${D}" install
+		# See earlier comments about rsvg.h.
+		_emake NETSURF_USE_RSVG=NO TARGET=framebuffer DESTDIR="${D}" install
 		elog "framebuffer binary has been installed as netsurf-fb"
-		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-fb NetSurf-framebuffer netsurf "Network;WebBrowser"
+		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-fb \
+						   NetSurf-framebuffer \
+						   netsurf \
+						   "Network;WebBrowser"
 	fi
 	if use gtk2 ; then
 		_emake TARGET=gtk2 DESTDIR="${D}" install
 		elog "netsurf gtk2 version has been installed as netsurf-gtk2"
-		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-gtk2 NetSurf-gtk2 netsurf "Network;WebBrowser"
+		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-gtk2 \
+						   NetSurf-gtk2 \
+						   netsurf \
+						   "Network;WebBrowser"
 	fi
 	if use gtk ; then
 		_emake TARGET=gtk3 DESTDIR="${D}" install
 		elog "netsurf gtk3 version has been installed as netsurf-gtk3"
-		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-gtk3 NetSurf-gtk3 netsurf "Network;WebBrowser"
+		make_desktop_entry "${EPREFIX}"/usr/bin/netsurf-gtk3 \
+						   NetSurf-gtk3 \
+						   netsurf \
+						   "Network;WebBrowser"
 	fi
 
 	insinto /usr/share/pixmaps
