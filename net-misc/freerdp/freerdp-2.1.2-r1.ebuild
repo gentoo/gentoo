@@ -90,6 +90,9 @@ BDEPEND="
 "
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/2.1.2-mask-cached_brush.patch"
+	)
 	cmake_src_prepare
 	echo "${PV}" > .source_version || die
 }
