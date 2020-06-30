@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic toolchain-funcs
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit autotools flag-o-matic python-any-r1 toolchain-funcs
 
 MY_PN=${PN//-tools}
 MY_PV=${PV/_p/-P}
@@ -36,12 +38,21 @@ DEPEND="${COMMON_DEPEND}"
 
 RDEPEND="${COMMON_DEPEND}"
 
-BDEPEND="virtual/pkgconfig"
+# sphinx required for man-page and html creation
+BDEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	')
+	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
 # bug 479092, requires networking
 RESTRICT="test"
+
+python_check_deps() {
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	default
@@ -106,35 +117,39 @@ src_compile() {
 	emake AR="${AR}" -C bin/dig/
 	emake AR="${AR}" -C bin/nsupdate/
 	emake AR="${AR}" -C bin/dnssec/
+	emake -C doc/man/ man $(usev doc)
 }
 
 src_install() {
+	local man_dir="${S}/doc/man"
+	local html_dir="${man_dir}/_build/html"
+
 	dodoc README CHANGES
 
 	cd "${S}"/bin/delv || die
 	dobin delv
-	doman delv.1
+	doman ${man_dir}/delv.1
 
 	cd "${S}"/bin/dig || die
 	dobin dig host nslookup
-	doman {dig,host,nslookup}.1
+	doman ${man_dir}/{dig,host,nslookup}.1
 
 	cd "${S}"/bin/nsupdate || die
 	dobin nsupdate
-	doman nsupdate.1
+	doman ${man_dir}/nsupdate.1
 	if use doc; then
 		docinto html
-		dodoc nsupdate.html
+		dodoc ${html_dir}/nsupdate.html
 	fi
 
 	cd "${S}"/bin/dnssec || die
 	for tool in dsfromkey importkey keyfromlabel keygen \
 		revoke settime signzone verify; do
 		dobin dnssec-"${tool}"
-		doman dnssec-"${tool}".8
+		doman ${man_dir}/dnssec-"${tool}".8
 		if use doc; then
 			docinto html
-			dodoc dnssec-"${tool}".html
+			dodoc ${html_dir}/dnssec-"${tool}".html
 		fi
 	done
 }
