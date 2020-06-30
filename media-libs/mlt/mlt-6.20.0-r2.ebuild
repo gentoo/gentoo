@@ -86,6 +86,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${P}-qt-5.15.patch
 	"${FILESDIR}"/${P}-no-gtk2.patch
+	"${FILESDIR}"/${P}-opencv4.patch
 )
 
 pkg_setup() {
