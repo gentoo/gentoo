@@ -90,6 +90,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-nullpointer-crash.patch
 	"${FILESDIR}"/${P}-crash-w-unsupported-preview-scale.patch
 	"${FILESDIR}"/${P}-crash-in-composite.patch
+	"${FILESDIR}"/${P}-opencv-double-del-crash.patch
 )
 
 pkg_setup() {
