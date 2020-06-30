@@ -2378,7 +2378,7 @@ app-office/kmymoney 5.0.8-r1 5.1.0: Personal finance manager based on KDE Framew
 app-office/kraft 0.90: Software to manage quotes and invoices in small enterprises
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.1.2-r1 3.2.0: Double-entry accounting system with a command-line reporting interface
-app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
+app-office/libalkimia 7.0.2-r1 8.0.3: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.4.3.2 6.4.4.2 6.4.5.2 6.4.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.3.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.4.3.2: LibreOffice, a full office productivity suite. Binary package, debug info
@@ -5816,7 +5816,7 @@ dev-perl/Crypt-CAST5_PP 1.40.0-r1 1.40.0-r2: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1 2.330.0-r2: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-CipherSaber 1.10.0-r1: Perl module implementing CipherSaber encryption
 dev-perl/Crypt-Cracklib 1.700.0-r1 1.700.0-r2 1.700.0-r3: Perl interface to Alec Muffett's Cracklib
-dev-perl/Crypt-Curve25519 0.60.0: Shared secret elliptic-curve Diffie-Hellman generator
+dev-perl/Crypt-Curve25519 0.60.0 0.60.0-r1: Shared secret elliptic-curve Diffie-Hellman generator
 dev-perl/Crypt-DES 2.70.0-r1: Perl DES encryption module
 dev-perl/Crypt-DES_EDE3 0.10.0-r1: Triple-DES EDE encryption/decryption
 dev-perl/Crypt-DH 0.70.0-r2: Diffie-Hellman key exchange system
