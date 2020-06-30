@@ -527,7 +527,7 @@ app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement f
 app-admin/mktwpol 1.0.0 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.6.13 3.6.17 4.0.12 4.0.16 4.0.19 4.2.3 4.2.6 4.2.8: A high-performance, open source, schema-free document-oriented database
-app-admin/monit 5.25.3 5.26.0: Monitoring and managing daemons or similar programs running on a Unix system
+app-admin/monit 5.25.3 5.26.0 5.27.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc35: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
 app-admin/needrestart 3.3 3.5 9999: Restart daemons after library updates
