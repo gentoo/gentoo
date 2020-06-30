@@ -19,22 +19,23 @@ HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug nls pch test qt5"
+IUSE="debug dvd nls pch test qt5"
 RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
 RDEPEND="
 	>=dev-libs/boost-1.60:=
-	>=dev-libs/libebml-1.3.7:=
-	>=dev-libs/libfmt-5.3.0:=
+	>=dev-libs/libebml-1.4.0:=
+	>=dev-libs/libfmt-6.1.0:=
 	dev-libs/pugixml:=
 	media-libs/flac:=
-	>=media-libs/libmatroska-1.5.0:=
+	>=media-libs/libmatroska-1.6.0:=
 	media-libs/libogg:=
 	media-libs/libvorbis:=
 	sys-apps/file
 	sys-libs/zlib
+	dvd? ( media-libs/libdvdread:= )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
@@ -80,6 +81,7 @@ src_configure() {
 		$(use_enable debug)
 		$(usex pch "" --disable-precompiled-headers)
 		$(use_enable qt5 qt)
+		$(use_with dvd dvdread)
 		$(use_with nls gettext)
 		$(usex nls "" --with-po4a-translate=false)
 		--disable-update-check

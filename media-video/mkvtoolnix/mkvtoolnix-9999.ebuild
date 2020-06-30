@@ -26,11 +26,11 @@ RESTRICT="!test? ( test )"
 # version requirement updates and other packaging info
 RDEPEND="
 	>=dev-libs/boost-1.60:=
-	>=dev-libs/libebml-1.3.7:=
+	>=dev-libs/libebml-1.4.0:=
 	>=dev-libs/libfmt-6.1.0:=
 	dev-libs/pugixml:=
 	media-libs/flac:=
-	>=media-libs/libmatroska-1.5.0:=
+	>=media-libs/libmatroska-1.6.0:=
 	media-libs/libogg:=
 	media-libs/libvorbis:=
 	sys-apps/file
