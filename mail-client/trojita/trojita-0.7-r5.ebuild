@@ -57,6 +57,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-CVE-2019-10734.patch" # KDE-bug 404697
 	"${FILESDIR}/${P}-CVE-2020-15047.patch" # bug 729596
 	"${FILESDIR}/${P}-cmake-cxx11.patch"
+	"${FILESDIR}/${P}-desktop-spec-namespace.patch"
+	"${FILESDIR}/${P}-metainfo.patch" # bug 730140
 )
 
 src_prepare() {
