@@ -5,7 +5,7 @@ EAPI=7
 
 DIST_AUTHOR=AJGB
 DIST_VERSION=0.06
-inherit perl-module flag-o-matic
+inherit perl-module
 
 DESCRIPTION="Shared secret elliptic-curve Diffie-Hellman generator"
 LICENSE="|| ( Artistic GPL-1+ ) BSD CC-PD"
