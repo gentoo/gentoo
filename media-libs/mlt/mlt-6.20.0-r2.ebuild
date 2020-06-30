@@ -87,6 +87,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-qt-5.15.patch
 	"${FILESDIR}"/${P}-no-gtk2.patch
 	"${FILESDIR}"/${P}-opencv4.patch
+	"${FILESDIR}"/${P}-nullpointer-crash.patch
 )
 
 pkg_setup() {
