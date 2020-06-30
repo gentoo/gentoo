@@ -2375,7 +2375,7 @@ app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.12.0 0.13.0_beta1: Stylish way of giving presentations with Python
 app-office/kexi 3.2.0-r1: Visual database applications creator
 app-office/kmymoney 5.0.8-r1 5.1.0: Personal finance manager based on KDE Frameworks
-app-office/kraft 0.82-r1: Software to manage quotes and invoices in small enterprises
+app-office/kraft 0.90: Software to manage quotes and invoices in small enterprises
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.1.2-r1 3.2.0: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
@@ -8441,7 +8441,7 @@ dev-python/pyside2 5.14.1-r2 5.14.2: Python bindings for the Qt framework
 dev-python/pysmi 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
-dev-python/pysol_cards 0.8.9 0.8.16 0.8.18: Deal PySol FreeCell cards
+dev-python/pysol_cards 0.8.9 0.8.18 0.10.1: Deal PySol FreeCell cards
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
 dev-python/pyspf 2.0.12 2.0.14: Python implementation of the Sender Policy Framework (SPF)
 dev-python/pysrt 1.1.1 1.1.2 9999: Python library used to edit or create SubRip files
@@ -14797,7 +14797,7 @@ net-misc/exabgp 3.4.28-r2 4.2.7-r2: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
-net-misc/freerdp 2.1.0 2.1.1-r1 2.1.2 2.9999 9999: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 2.1.1-r1 2.1.2-r1 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol
