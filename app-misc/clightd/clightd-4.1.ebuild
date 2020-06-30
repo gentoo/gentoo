@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 MY_PN="${PN^}"
 S="${WORKDIR}/${P^}"
@@ -47,5 +47,5 @@ src_configure() {
 		-DENABLE_SCREEN=$(usex screen)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
