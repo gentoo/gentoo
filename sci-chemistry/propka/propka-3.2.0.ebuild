@@ -1,24 +1,28 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1
 
 DESCRIPTION="pKa-value prediction of ionizable groups in protein and protein-ligand complexes"
-HOMEPAGE="http://propka.ki.ku.dk/"
-SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+HOMEPAGE="https://github.com/jensengroup/propka"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
-LICENSE="all-rights-reserved"
+LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="test"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RESTRICT="!test? ( test )"
 
-RESTRICT="mirror bindist"
+RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]"
+BDEPEND="test? (
+			${RDEPEND}
+			dev-python/pandas[${PYTHON_USEDEP}]
+)"
 
 python_prepare_all() {
 	sed -e "/exclude/s:scripts:\', \'Tests:g" \
@@ -32,6 +36,5 @@ python_test() {
 }
 
 python_install_all() {
-	dosym ${PN}31 /usr/bin/${PN}
 	distutils-r1_python_install_all
 }
