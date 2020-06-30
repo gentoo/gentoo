@@ -1,0 +1,57 @@
+From d080f7855707634867593163e7d20ac85694f5be Mon Sep 17 00:00:00 2001
+From: Luigi Toscano <luigi.toscano@tiscali.it>
+Date: Mon, 3 Oct 2016 22:29:22 +0200
+Subject: [PATCH] Add namespace to desktop and appdata files
+
+Add the organization namespace to the desktop and then appdata files,
+according the Desktop Entry specification.
+
+Change-Id: I4c400ef0f120c3f549c0e19b4e74550cc8b54be8
+---
+ CMakeLists.txt                                              | 6 +++---
+ .../{trojita.appdata.xml => org.kde.trojita.appdata.xml}    | 2 +-
+ src/Gui/{trojita.desktop => org.kde.trojita.desktop}        | 0
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+ rename src/Gui/{trojita.appdata.xml => org.kde.trojita.appdata.xml} (99%)
+ rename src/Gui/{trojita.desktop => org.kde.trojita.desktop} (100%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index da40ddb3..d242eda0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -728,10 +728,10 @@ if(WITH_ABOOKADDRESSBOOK_PLUGIN)
+ endif()
+ 
+ if(WITH_DESKTOP)
+-    copy_desktop_file_without_cruft("${CMAKE_CURRENT_SOURCE_DIR}/src/Gui/trojita.desktop" "${CMAKE_CURRENT_BINARY_DIR}/trojita-DesktopGui.desktop")
++    copy_desktop_file_without_cruft("${CMAKE_CURRENT_SOURCE_DIR}/src/Gui/org.kde.trojita.desktop" "${CMAKE_CURRENT_BINARY_DIR}/org.kde.trojita-DesktopGui.desktop")
+     install(TARGETS trojita RUNTIME DESTINATION bin)
+-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/trojita-DesktopGui.desktop DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications/" RENAME trojita.desktop)
+-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Gui/trojita.appdata.xml DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/appdata/")
++    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.trojita-DesktopGui.desktop DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications/" RENAME org.kde.trojita.desktop)
++    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Gui/org.kde.trojita.appdata.xml DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/appdata/")
+     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/icons/trojita.png DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/32x32/apps/")
+     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/icons/trojita.svg DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps/")
+ endif()
+diff --git a/src/Gui/trojita.appdata.xml b/src/Gui/org.kde.trojita.appdata.xml
+similarity index 99%
+rename from src/Gui/trojita.appdata.xml
+rename to src/Gui/org.kde.trojita.appdata.xml
+index 39548041..04f9873c 100644
+--- a/src/Gui/trojita.appdata.xml
++++ b/src/Gui/org.kde.trojita.appdata.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <component type="desktop">
+-  <id>trojita.desktop</id>
++  <id>org.kde.trojita.desktop</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-2.0+</project_license>
+   <name>Trojitá</name>
+diff --git a/src/Gui/trojita.desktop b/src/Gui/org.kde.trojita.desktop
+similarity index 100%
+rename from src/Gui/trojita.desktop
+rename to src/Gui/org.kde.trojita.desktop
+-- 
+GitLab
+

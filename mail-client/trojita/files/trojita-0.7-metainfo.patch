@@ -1,0 +1,26 @@
+From 4706896bbc3d7d9189a64117b75c01399b5271b9 Mon Sep 17 00:00:00 2001
+From: Luigi Toscano <luigi.toscano@tiscali.it>
+Date: Mon, 3 Oct 2016 22:30:22 +0200
+Subject: [PATCH] Use the new directory for metadata (metainfo) files
+
+Change-Id: I06d721c6e082166fc303435b39e42c9f358ecca9
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d242eda0..9393b19c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -731,7 +731,7 @@ if(WITH_DESKTOP)
+     copy_desktop_file_without_cruft("${CMAKE_CURRENT_SOURCE_DIR}/src/Gui/org.kde.trojita.desktop" "${CMAKE_CURRENT_BINARY_DIR}/org.kde.trojita-DesktopGui.desktop")
+     install(TARGETS trojita RUNTIME DESTINATION bin)
+     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.trojita-DesktopGui.desktop DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications/" RENAME org.kde.trojita.desktop)
+-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Gui/org.kde.trojita.appdata.xml DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/appdata/")
++    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Gui/org.kde.trojita.appdata.xml DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/metainfo/")
+     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/icons/trojita.png DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/32x32/apps/")
+     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/icons/trojita.svg DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps/")
+ endif()
+-- 
+GitLab
+
