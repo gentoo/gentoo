@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="C simple and elegant implementation of an actor library"
 HOMEPAGE="https://github.com/FedeDP/libmodule"
