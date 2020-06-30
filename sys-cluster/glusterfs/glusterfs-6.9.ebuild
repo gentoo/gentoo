@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
-inherit autotools elisp-common python-single-r1 systemd user
+inherit autotools elisp-common python-single-r1 systemd
 
 if [[ ${PV#9999} != ${PV} ]]; then
 	inherit git-r3
@@ -29,26 +29,30 @@ REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
 RESTRICT="test"
 
 # sys-apps/util-linux is required for libuuid
-RDEPEND="!elibc_glibc? ( sys-libs/argp-standalone )
+RDEPEND="
+	acct-group/gluster
+	acct-user/gluster
+	dev-libs/libaio
+	dev-libs/userspace-rcu:=
+	net-libs/rpcsvc-proto
+	sys-apps/util-linux
+	sys-libs/readline:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
 	georeplication? ( ${PYTHON_DEPS} )
 	infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* )
+	xml? ( dev-libs/libxml2 )
+	!elibc_glibc? ( sys-libs/argp-standalone )
 	libtirpc? ( net-libs/libtirpc:= )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
-	xml? ( dev-libs/libxml2 )
-	sys-libs/readline:=
-	dev-libs/libaio
 	!libressl? ( dev-libs/openssl:=[-bindist] )
 	libressl? ( dev-libs/libressl:= )
-	dev-libs/userspace-rcu:=
-	net-libs/rpcsvc-proto
-	sys-apps/util-linux"
-DEPEND="${RDEPEND}
-	virtual/acl
-	virtual/pkgconfig
+"
+DEPEND="
+	${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
+	virtual/acl
 	test? ( >=dev-util/cmocka-1.0.1
 		app-benchmarks/dbench
 		dev-vcs/git
@@ -56,7 +60,11 @@ DEPEND="${RDEPEND}
 		virtual/perl-Test-Harness
 		dev-libs/yajl
 		sys-fs/xfsprogs
-		sys-apps/attr )"
+		sys-apps/attr )
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 SITEFILE="50${PN}-mode-gentoo.el"
 
@@ -70,18 +78,10 @@ DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
 pkg_setup() {
 	python_setup "python3*"
 	python-single-r1_pkg_setup
-
-	# Needed for statedumps
-	# https://github.com/gluster/glusterfs/commit/0e50c4b3ea734456c14e2d7a578463999bd332c3
-	enewgroup gluster
-	enewuser gluster -1 -1 "${EPREFIX}"/var/run/gluster gluster
 }
 
 src_prepare() {
 	default
-
-	# https://bugzilla.redhat.com/show_bug.cgi?id=1786983
-	eapply "${FILESDIR}/glusterfs-6.7-fix-rebalance-crash.patch"
 
 	# https://bugs.gentoo.org/705536
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1793990

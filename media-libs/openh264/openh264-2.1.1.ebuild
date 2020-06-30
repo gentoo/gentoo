@@ -65,7 +65,7 @@ multilib_src_install() {
 	fi
 
 	if use plugin; then
-		local plugpath="${EROOT}/usr/$(get_libdir)/nsbrowser/plugins/gmp-gmp${PN}/system-installed"
+		local plugpath="${ROOT}/usr/$(get_libdir)/nsbrowser/plugins/gmp-gmp${PN}/system-installed"
 		insinto "${plugpath}"
 		doins libgmpopenh264.so* gmpopenh264.info
 		echo "MOZ_GMP_PATH=\"${plugpath}\"" >"${T}"/98-moz-gmp-${PN}
