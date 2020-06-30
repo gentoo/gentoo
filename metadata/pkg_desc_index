@@ -17798,7 +17798,7 @@ www-apps/prewikka 5.1.1: Graphical front-end analysis console for the Prelude Fr
 www-apps/radicale 1.1.6 2.1.11-r1: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
-www-apps/roundup 1.5.1 1.6.1-r1: Issue-tracking system with command-line, web, and e-mail interfaces
+www-apps/roundup 1.5.1 1.6.1-r1 2.0.0_beta0: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
