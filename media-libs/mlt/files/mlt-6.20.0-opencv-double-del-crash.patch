@@ -1,0 +1,21 @@
+From 5e906b13cab7f28bbef43a33c20dbe24c2ca1f8d Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Tue, 17 Mar 2020 18:22:04 +0100
+Subject: [PATCH] Fix OpenCV tracker double deletion crash. Fixes #532
+
+---
+ src/modules/opencv/filter_opencv_tracker.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/modules/opencv/filter_opencv_tracker.cpp b/src/modules/opencv/filter_opencv_tracker.cpp
+index 04a5f0b09..533f0f513 100644
+--- a/src/modules/opencv/filter_opencv_tracker.cpp
++++ b/src/modules/opencv/filter_opencv_tracker.cpp
+@@ -351,7 +351,6 @@ static mlt_frame filter_process( mlt_filter filter, mlt_frame frame )
+ static void filter_close( mlt_filter filter )
+ {
+ 	private_data* data = (private_data*) filter->child;
+-	free ( data->tracker );
+ 	free ( data );
+ 	filter->child = NULL;
+ 	filter->close = NULL;
