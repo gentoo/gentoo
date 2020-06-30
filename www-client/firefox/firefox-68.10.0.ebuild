@@ -4,9 +4,9 @@
 EAPI="6"
 VIRTUALX_REQUIRED="pgo"
 WANT_AUTOCONF="2.1"
-MOZ_ESR=""
+MOZ_ESR="1"
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads(+)'
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-PATCH="${PN}-76.0-patches-02"
+PATCH="${PN}-68.0-patches-14"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
@@ -41,9 +41,8 @@ fi
 LLVM_MAX_SLOT=10
 
 inherit check-reqs eapi7-ver flag-o-matic toolchain-funcs eutils \
-		gnome2-utils llvm mozcoreconf-v6 multiprocessing \
-		pax-utils xdg-utils autotools mozlinguas-v2 virtualx \
-		eapi7-ver
+		gnome2-utils llvm mozcoreconf-v6 pax-utils xdg-utils \
+		autotools mozlinguas-v2 multiprocessing virtualx
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
@@ -52,25 +51,26 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist clang cpu_flags_x86_avx2 debug eme-free geckodriver
-	+gmp-autoupdate hardened hwaccel jack lto cpu_flags_arm_neon pgo
-	pulseaudio +screenshot selinux startup-notification +system-av1
-	+system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx
-	+system-webp test wayland wifi"
+IUSE="bindist clang cpu_flags_x86_avx2 dbus debug eme-free geckodriver
+	+gmp-autoupdate hardened hwaccel jack lto cpu_flags_arm_neon
+	pgo pulseaudio +screenshot selinux startup-notification +system-av1
+	+system-harfbuzz +system-icu +system-jpeg +system-libevent
+	+system-sqlite +system-libvpx +system-webp test wayland wifi"
 
-REQUIRED_USE="pgo? ( lto )"
+REQUIRED_USE="pgo? ( lto )
+	wifi? ( dbus )"
 
 RESTRICT="!bindist? ( bindist )
 	!test? ( test )"
 
-PATCH_URIS=( https://dev.gentoo.org/~{whissi,polynomial-c,axs}/mozilla/patchsets/${PATCH}.tar.xz )
+PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c,whissi}/mozilla/patchsets/${PATCH}.tar.xz )
 SRC_URI="${SRC_URI}
 	${MOZ_SRC_URI}
 	${PATCH_URIS[@]}"
 
 CDEPEND="
-	>=dev-libs/nss-3.52
-	>=dev-libs/nspr-4.25
+	>=dev-libs/nss-3.44.4
+	>=dev-libs/nspr-4.21
 	dev-libs/atk
 	dev-libs/expat
 	>=x11-libs/cairo-1.10[X]
@@ -84,8 +84,8 @@ CDEPEND="
 	>=media-libs/freetype-2.4.10
 	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
 	virtual/freedesktop-icon-theme
-	sys-apps/dbus
-	dev-libs/dbus-glib
+	dbus? ( >=sys-apps/dbus-0.60
+		>=dev-libs/dbus-glib-0.72 )
 	startup-notification? ( >=x11-libs/startup-notification-0.8 )
 	>=x11-libs/pixman-0.19.2
 	>=dev-libs/glib-2.26:2
@@ -103,35 +103,30 @@ CDEPEND="
 		>=media-libs/dav1d-0.3.0:=
 		>=media-libs/libaom-1.0.0:=
 	)
-	system-harfbuzz? ( >=media-libs/harfbuzz-2.6.4:0= >=media-gfx/graphite2-1.3.13 )
-	system-icu? ( >=dev-libs/icu-64.1:= )
+	system-harfbuzz? ( >=media-libs/harfbuzz-2.4.0:0= >=media-gfx/graphite2-1.3.13 )
+	system-icu? ( >=dev-libs/icu-63.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
-	system-libvpx? ( >=media-libs/libvpx-1.8.2:0=[postproc] )
-	system-webp? ( >=media-libs/libwebp-1.1.0:0= )
-	wifi? (
-		kernel_linux? (
-			net-misc/networkmanager
-		)
-	)
+	system-libvpx? ( =media-libs/libvpx-1.7*:0=[postproc] )
+	system-sqlite? ( >=dev-db/sqlite-3.28.0:3[secure-delete,debug=] )
+	system-webp? ( >=media-libs/libwebp-1.0.2:0= )
+	wifi? ( kernel_linux? ( >=sys-apps/dbus-0.60
+			>=dev-libs/dbus-glib-0.72
+			net-misc/networkmanager ) )
 	jack? ( virtual/jack )
 	selinux? ( sec-policy/selinux-mozilla )"
 
 RDEPEND="${CDEPEND}
 	jack? ( virtual/jack )
-	pulseaudio? (
-		|| (
-			media-sound/pulseaudio
-			>=media-sound/apulse-0.1.12-r4
-		)
-	)
+	pulseaudio? ( || ( media-sound/pulseaudio
+		>=media-sound/apulse-0.1.9 ) )
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
-	>=dev-util/cbindgen-0.13.0
-	>=net-libs/nodejs-10.19.0
+	>=dev-util/cbindgen-0.8.7
+	>=net-libs/nodejs-8.11.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
 	|| (
@@ -172,13 +167,8 @@ DEPEND="${CDEPEND}
 			)
 		)
 	)
-	pulseaudio? (
-		|| (
-			media-sound/pulseaudio
-			>=media-sound/apulse-0.1.12-r4[sdk]
-		)
-	)
-	>=virtual/rust-1.41.0
+	pulseaudio? ( media-sound/pulseaudio )
+	>=virtual/rust-1.34.0
 	wayland? ( >=x11-libs/gtk+-3.11:3[wayland] )
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )
@@ -198,21 +188,6 @@ BUILD_OBJ_DIR="${S}/ff"
 if [[ -z $GMP_PLUGIN_LIST ]] ; then
 	GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
 fi
-
-fix_path() {
-	local value_to_move=${1}
-	local new_path path_value
-	IFS=:; local -a path_values=( ${PATH} )
-	for path_value in "${path_values[@]}" ; do
-		if [[ ${path_value} == *"${value_to_move}"* ]] ; then
-			new_path="${path_value}${new_path:+:}${new_path}"
-		else
-			new_path+="${new_path:+:}${path_value}"
-		fi
-	done
-
-	echo "${new_path}"
-}
 
 llvm_check_deps() {
 	if ! has_version --host-root "sys-devel/clang:${LLVM_SLOT}" ; then
@@ -241,14 +216,6 @@ pkg_pretend() {
 	if use pgo ; then
 		if ! has usersandbox $FEATURES ; then
 			die "You must enable usersandbox as X server can not run as root!"
-		fi
-
-		if ! use clang ; then
-			# Force user decision so they don't find out firefox was build
-			# without pgo after spending some hours
-			eerror "USE=pgo when using GCC is currently known to be broken."
-			eerror "Either switch to USE=clang or temporarily set USE=-pgo."
-			die "USE=pgo without USE=clang is currently known to be broken."
 		fi
 	fi
 
@@ -296,17 +263,10 @@ pkg_setup() {
 
 	llvm_pkg_setup
 
-	# Workaround for #627726
 	if has ccache ${FEATURES} ; then
 		if use clang && use pgo ; then
 			die "Using FEATURES=ccache with USE=clang and USE=pgo is currently known to be broken (bug #718632)."
 		fi
-
-		einfo "Fixing PATH for FEATURES=ccache ..."
-		PATH=$(fix_path 'ccache/bin')
-	elif has distcc ${FEATURES} ; then
-		einfo "Fixing PATH for FEATURES=distcc ..."
-		PATH=$(fix_path 'distcc/bin')
 	fi
 }
 
@@ -318,19 +278,18 @@ src_unpack() {
 }
 
 src_prepare() {
+	rm "${WORKDIR}"/firefox/2013_avoid_noinline_on_GCC_with_skcms.patch
+	rm "${WORKDIR}"/firefox/2015_fix_cssparser.patch
 	eapply "${WORKDIR}/firefox"
-
-	# Make LTO respect MAKEOPTS
-	sed -i \
-		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
-		"${S}"/build/moz.configure/lto-pgo.configure \
-		|| die "sed failed to set num_cores"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
 
-	einfo "Removing pre-built binaries ..."
-	find "${S}"/third_party -type f \( -name '*.so' -o -name '*.o' \) -print -delete || die
+	# Make LTO respect MAKEOPTS
+	sed -i \
+		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
+		"${S}"/build/moz.configure/toolchain.configure \
+		|| die "sed failed to set num_cores"
 
 	# Enable gnomebreakpad
 	if use debug ; then
@@ -380,9 +339,6 @@ src_prepare() {
 	# Must run autoconf in js/src
 	cd "${S}"/js/src || die
 	eautoconf old-configure.in
-
-	# Clear checksums that present a problem
-	sed -i 's/\("files":{\)[^}]*/\1/' "${S}"/third_party/rust/target-lexicon-0.9.0/.cargo-checksum.json || die
 }
 
 src_configure() {
@@ -429,9 +385,6 @@ src_configure() {
 	# Must pass release in order to properly select linker
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
 
-	# libclang.so is not properly detected work around issue
-	mozconfig_annotate '' --with-libclang-path="$(llvm-config --libdir)"
-
 	if use pgo ; then
 		if ! has userpriv $FEATURES ; then
 			eerror "Building firefox with USE=pgo and FEATURES=-userpriv is not supported!"
@@ -457,6 +410,9 @@ src_configure() {
 			if [[ $(gcc-major-version) -lt 8 ]] ; then
 				show_old_compiler_warning=1
 			fi
+
+			# Bug 689358
+			append-cxxflags -flto
 
 			if ! use cpu_flags_x86_avx2 ; then
 				local _gcc_version_with_ipa_cdtor_fix="8.3"
@@ -513,7 +469,10 @@ src_configure() {
 	use alpha && append-ldflags "-Wl,--no-relax"
 
 	# Add full relro support for hardened
-	use hardened && append-ldflags "-Wl,-z,now"
+	if use hardened ; then
+		append-ldflags "-Wl,-z,relro,-z,now"
+		mozconfig_use_enable hardened hardening
+	fi
 
 	# Modifications to better support ARM, bug 553364
 	if use cpu_flags_arm_neon ; then
@@ -562,6 +521,7 @@ src_configure() {
 	# Set both --target and --host as mozilla uses python to guess values otherwise
 	mozconfig_annotate '' --target="${CHOST}"
 	mozconfig_annotate '' --host="${CBUILD:-${CHOST}}"
+	mozconfig_annotate '' --with-toolchain-prefix="${CHOST}-"
 	if use system-libevent ; then
 		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX}"/usr
 	fi
@@ -579,6 +539,7 @@ src_configure() {
 	fi
 
 	mozconfig_use_enable startup-notification
+	mozconfig_use_enable system-sqlite
 	mozconfig_use_with system-av1
 	mozconfig_use_with system-harfbuzz
 	mozconfig_use_with system-harfbuzz system-graphite2
@@ -598,6 +559,8 @@ src_configure() {
 	sed -i -e 's/ccache_stats = None/return None/' \
 		python/mozbuild/mozbuild/controller/building.py || \
 		die "Failed to disable ccache stats call"
+
+	mozconfig_use_enable dbus
 
 	mozconfig_use_enable wifi necko-wifi
 
@@ -843,9 +806,11 @@ PROFILE_EOF
 }
 
 pkg_preinst() {
+	gnome2_icon_savelist
+
 	# if the apulse libs are available in MOZILLA_FIVE_HOME then apulse
 	# doesn't need to be forced into the LD_LIBRARY_PATH
-	if use pulseaudio && has_version ">=media-sound/apulse-0.1.12-r4" ; then
+	if use pulseaudio && has_version ">=media-sound/apulse-0.1.9" ; then
 		einfo "APULSE found - Generating library symlinks for sound support"
 		local lib
 		pushd "${ED}"${MOZILLA_FIVE_HOME} &>/dev/null || die
@@ -861,8 +826,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
-	xdg_icon_cache_update
 
 	if ! use gmp-autoupdate && ! use eme-free ; then
 		elog "USE='-gmp-autoupdate' has disabled the following plugins from updating or"
@@ -872,7 +837,7 @@ pkg_postinst() {
 		elog
 	fi
 
-	if use pulseaudio && has_version ">=media-sound/apulse-0.1.12-r4" ; then
+	if use pulseaudio && has_version ">=media-sound/apulse-0.1.9" ; then
 		elog "Apulse was detected at merge time on this system and so it will always be"
 		elog "used for sound.  If you wish to use pulseaudio instead please unmerge"
 		elog "media-sound/apulse."
@@ -888,12 +853,12 @@ pkg_postinst() {
 	else
 		local replacing_version
 		for replacing_version in ${REPLACING_VERSIONS} ; do
-			if ver_test "${replacing_version}" -lt 70 ; then
+			if ver_test "${replacing_version}" -lt 68.6.0-r3 ; then
 				# Tell user only once about our DoH default
 				show_doh_information=yes
 			fi
 
-			if ver_test "${replacing_version}" -lt 74.0-r2 ; then
+			if ver_test "${replacing_version}" -lt 68.6.0-r3 ; then
 				# Tell user only once about our Normandy default
 				show_normandy_information=yes
 			fi
@@ -929,6 +894,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
