@@ -31,9 +31,6 @@ DEPEND="
 DOCS=(
 	AUTHORS ChangeLog CONTRIBUTING.md README.md TODO
 )
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-Xcursor.patch
-)
 
 src_prepare() {
 	sed -i -e 's#-g -O3##g' src/Makefile.am || die
