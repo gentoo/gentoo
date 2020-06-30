@@ -5791,7 +5791,7 @@ dev-perl/Config-JSON 1.520.200 1.520.200-r1: A JSON based config file system
 dev-perl/Config-MVP 2.200.10 2.200.11: multivalue-property package-oriented configuration
 dev-perl/Config-MVP-Reader-INI 2.101.463: an MVP config reader for .ini files
 dev-perl/Config-MVP-Slicer 0.303.0: Extract embedded plugin config from parent config
-dev-perl/Config-Properties 1.800.0: Configuration using Java style properties
+dev-perl/Config-Properties 1.800.0 1.800.0-r1: Configuration using Java style properties
 dev-perl/Config-Simple 4.590.0-r1 4.590.0-r2: Simple configuration file class
 dev-perl/Config-Tiny 2.230.0 2.240.0: Read/Write .ini style files with as little code as possible
 dev-perl/ConfigReader 0.500.0-r2: Read directives from a configuration file
