@@ -51,10 +51,6 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-setup-py.patch
-)
-
 src_install() {
 	distutils-r1_src_install
 
