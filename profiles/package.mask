@@ -68,7 +68,6 @@ sci-chemistry/pymol-plugins-promol
 sci-chemistry/relax
 sci-chemistry/sparky
 sci-chemistry/vmd
-www-apps/roundup
 www-apps/viewvc
 x11-misc/nts
 
