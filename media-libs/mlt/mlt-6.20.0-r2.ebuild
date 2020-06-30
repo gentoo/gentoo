@@ -89,6 +89,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-opencv4.patch
 	"${FILESDIR}"/${P}-nullpointer-crash.patch
 	"${FILESDIR}"/${P}-crash-w-unsupported-preview-scale.patch
+	"${FILESDIR}"/${P}-crash-in-composite.patch
 )
 
 pkg_setup() {
