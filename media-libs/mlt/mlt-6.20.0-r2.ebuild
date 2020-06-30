@@ -3,12 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-# this ebuild currently only supports installing ruby bindings for a single ruby version
-# so USE_RUBY must contain only a single value (the latest stable) as the ebuild calls
-# /usr/bin/${USE_RUBY} directly
-USE_RUBY="ruby26"
-inherit python-single-r1 qmake-utils ruby-single toolchain-funcs
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+inherit python-single-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
@@ -19,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug ffmpeg
 fftw frei0r gtk jack kdenlive kernel_linux libsamplerate lua melt opencv opengl python
-qt5 rtaudio ruby sdl vdpau vidstab xine xml"
+qt5 rtaudio sdl vdpau vidstab xine xml"
 # java perl php tcl
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -29,12 +25,13 @@ SWIG_DEPEND=">=dev-lang/swig-2.0"
 #	perl? ( ${SWIG_DEPEND} )
 #	php? ( ${SWIG_DEPEND} )
 #	tcl? ( ${SWIG_DEPEND} )
+#	ruby? ( ${SWIG_DEPEND} )
 BDEPEND="
 	virtual/pkgconfig
 	compressed-lumas? ( virtual/imagemagick-tools[png] )
 	lua? ( ${SWIG_DEPEND} virtual/pkgconfig )
 	python? ( ${SWIG_DEPEND} )
-	ruby? ( ${SWIG_DEPEND} )"
+"
 #rtaudio will use OSS on non linux OSes
 DEPEND="
 	>=media-libs/libebur128-1.2.2:=
@@ -43,7 +40,6 @@ DEPEND="
 	frei0r? ( media-plugins/frei0r-plugins )
 	gtk? (
 		media-libs/libexif
-		x11-libs/gtk+:2
 		x11-libs/pango
 	)
 	jack? (
@@ -69,7 +65,6 @@ DEPEND="
 		>=media-libs/rtaudio-4.1.2
 		kernel_linux? ( media-libs/alsa-lib )
 	)
-	ruby? ( ${RUBY_DEPS} )
 	sdl? (
 		media-libs/libsdl2[X,opengl,video]
 		media-libs/sdl2-image
@@ -80,6 +75,7 @@ DEPEND="
 #	java? ( >=virtual/jre-1.5 )
 #	perl? ( dev-lang/perl )
 #	php? ( dev-lang/php )
+#	ruby? ( ${RUBY_DEPS} )
 #	sox? ( media-sound/sox )
 #	tcl? ( dev-lang/tcl:0= )
 RDEPEND="${DEPEND}"
@@ -89,6 +85,12 @@ DOCS=( AUTHORS ChangeLog NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${P}-qt-5.15.patch
+	"${FILESDIR}"/${P}-no-gtk2.patch
+	"${FILESDIR}"/${P}-opencv4.patch
+	"${FILESDIR}"/${P}-nullpointer-crash.patch
+	"${FILESDIR}"/${P}-crash-w-unsupported-preview-scale.patch
+	"${FILESDIR}"/${P}-crash-in-composite.patch
+	"${FILESDIR}"/${P}-opencv-double-del-crash.patch
 )
 
 pkg_setup() {
@@ -103,8 +105,6 @@ src_prepare() {
 		sed -i "/mlt.so/s/ -lmlt++ /& ${CFLAGS} ${LDFLAGS} /" src/swig/$x/build || die
 	done
 
-	sed -i -e "s/env ruby/${USE_RUBY}/" src/swig/ruby/* || die
-
 	use python && python_fix_shebang src/swig/python
 }
 
@@ -116,6 +116,7 @@ src_configure() {
 		--enable-gpl3
 		--enable-motion-est
 		--target-arch=$(tc-arch)
+		--disable-gtk2
 		--disable-kde
 		--disable-sdl
 		--disable-swfdec
@@ -125,7 +126,7 @@ src_configure() {
 		$(use_enable ffmpeg avformat)
 		$(use_enable fftw plus)
 		$(use_enable frei0r)
-		$(use_enable gtk gtk2)
+		$(use_enable gtk gdk)
 		$(use_enable jack jackrack)
 		$(use_enable kdenlive)
 		$(use_enable libsamplerate resample)
@@ -167,8 +168,8 @@ src_configure() {
 	# see also https://www.mltframework.org/twiki/bin/view/MLT/ExtremeMakeover
 
 	local swig_lang=()
-	# TODO: java perl php tcl
-	for i in lua python ruby ; do
+	# not done: java perl php ruby tcl
+	for i in lua python ; do
 		use $i && swig_lang+=( $i )
 	done
 	[[ -z "${swig_lang}" ]] && swig_lang=( none )
@@ -181,7 +182,6 @@ src_configure() {
 src_install() {
 	default
 
-	dodir /usr/share/${PN}
 	insinto /usr/share/${PN}
 	doins -r demo
 
@@ -203,12 +203,5 @@ src_install() {
 		python_optimize
 	fi
 
-	if use ruby; then
-		cd "${S}"/src/swig/ruby || die
-		local rubydir=$("${EPREFIX}"/usr/bin/${USE_RUBY} -r rbconfig -e 'print RbConfig::CONFIG["sitearchdir"]')
-		exeinto "${rubydir#${EPREFIX}}"
-		doexe mlt.so
-		dodoc play.rb thumbs.rb
-	fi
-	# TODO: java perl php tcl
+	# not done: java perl php ruby tcl
 }
