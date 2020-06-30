@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-01)
+# dev-qt/qtquicktimeline-5.15.0 not yet stable, bug 711120
+dev-qt/qt-creator qmldesigner
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # dev-python/wxpython:4.0 w/ py3 is not stable, bug #714566
 dev-python/matplotlib wxwidgets
