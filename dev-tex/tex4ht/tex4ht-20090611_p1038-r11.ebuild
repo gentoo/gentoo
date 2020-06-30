@@ -33,7 +33,6 @@ BDEPEND="virtual/pkgconfig
 	java? ( >=virtual/jdk-1.5 )"
 
 S="${WORKDIR}/${MY_P}"
-PATCHES=("${FILESDIR}"/${PN}-format-security.patch)
 
 src_prepare() {
 	cp -a "${WORKDIR}/texmf-dist/"* texmf/ || die
@@ -57,7 +56,7 @@ src_compile() {
 
 	cd "${S}/src" || die
 	einfo "Compiling postprocessor sources..."
-	for f in tex4ht t4ht htcmd ; do
+	for f in tex4ht t4ht; do
 		$(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o $f $f.c \
 			-DENVFILE="\"${EPREFIX}${TEXMF}/tex4ht/base/tex4ht.env\"" \
 			-DHAVE_DIRENT_H -DKPATHSEA -lkpathsea \
@@ -75,7 +74,7 @@ src_compile() {
 
 src_install() {
 	# install the binaries
-	dobin "${S}/src/tex4ht" "${S}/src/t4ht" "${S}/src/htcmd"
+	dobin "${S}/src/tex4ht" "${S}/src/t4ht"
 	# install the scripts
 	if ! use java; then
 		rm -f "${S}"/bin/unix/oo*
