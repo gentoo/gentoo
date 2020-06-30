@@ -10160,7 +10160,7 @@ dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objec
 dev-tex/slatex 20090928_p20180415: A Scheme program allowing you to write Scheme in your (La)TeX source
 dev-tex/style-check 0.14: Parses LaTeX-formatted text in search of forbidden phrases
 dev-tex/svninfo 0.7.4: A LaTeX module to access SVN version info
-dev-tex/tex4ht 20090611_p1038-r8 20090611_p1038-r10: Converts (La)TeX to (X)HTML, XML and OO.org
+dev-tex/tex4ht 20090611_p1038-r8 20090611_p1038-r11: Converts (La)TeX to (X)HTML, XML and OO.org
 dev-tex/texpower 0.2: A bundle of style and class files for creating dynamic online presentations
 dev-tex/tipa 1.3: International Phonetic Alphabet package for LaTeX
 dev-tex/translator 1.00: A package for translating words in TeX
@@ -18241,7 +18241,7 @@ x11-misc/kronometer 2.2.3: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/libinput-gestures 2.48 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.8.0-r1 1.9.0-r2: A simple locker using lightdm
-x11-misc/lightdm 1.30.0: A lightweight display manager
+x11-misc/lightdm 1.30.0-r1: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.7-r1 2.0.8: LightDM GTK+ Greeter
 x11-misc/lightdm-mini-greeter 0.3.4 0.4.0: A Minimal, Configurable, Single-User GTK3 LightDM Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1 0.9.0-r2: Mute/unmute and other macros for LINEAK
