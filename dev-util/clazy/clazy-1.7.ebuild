@@ -38,4 +38,3 @@ src_configure() {
 	export LLVM_ROOT="/usr/lib/llvm/$(ver_cut 1 ${clang_version##sys-devel/clang-})"
 	cmake_src_configure
 }
-
