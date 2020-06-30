@@ -112,7 +112,6 @@ net-mail/archivemail
 net-mail/getmail
 net-wireless/airpwn
 sci-chemistry/bkchem
-sci-chemistry/propka
 sci-chemistry/pymol-plugins-bni-tools
 sci-chemistry/pymol-plugins-emovie
 sci-chemistry/viewmol
