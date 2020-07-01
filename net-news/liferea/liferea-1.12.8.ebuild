@@ -30,8 +30,8 @@ RDEPEND="${PYTHON_DEPS}
 	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
 	x11-libs/pango"
-DEPEND="${RDEPEND}
-	dev-util/intltool
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/intltool
 	virtual/pkgconfig"
 
 src_prepare() {
