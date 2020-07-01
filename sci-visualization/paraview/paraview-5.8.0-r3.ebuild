@@ -105,6 +105,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch
 	"${FILESDIR}"/${PN}-5.3.0-fix_buildsystem.patch
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
+	"${FILESDIR}"/${P}-w-vtk-8.2.0-qt-5.15.patch
 )
 
 CMAKE_MAKEFILE_GENERATOR="emake" #579474
