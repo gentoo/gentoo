@@ -7,9 +7,8 @@ CMAKE_MAKEFILE_GENERATOR=emake
 
 DISTUTILS_OPTIONAL=1
 
-inherit check-reqs bash-completion-r1 cmake-utils distutils-r1 flag-o-matic \
-		multiprocessing python-r1 udev readme.gentoo-r1 toolchain-funcs \
-		systemd tmpfiles
+inherit check-reqs bash-completion-r1 cmake distutils-r1 flag-o-matic \
+		python-r1 udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -175,7 +174,7 @@ RESTRICT="test? ( userpriv )"
 RESTRICT+=" test"
 
 # false positives unless all USE flags are on
-CMAKE_WARN_UNUSED_CLI="no"
+CMAKE_WARN_UNUSED_CLI=no
 
 PATCHES=(
 	"${FILESDIR}/ceph-12.2.0-use-provided-cpu-flag-values.patch"
@@ -192,6 +191,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.4-python-executable.patch"
 	"${FILESDIR}/ceph-14.2.4-undefined-behaviour.patch"
 	"${FILESDIR}/ceph-14.2.10-missing-includes.patch"
+	"${FILESDIR}/ceph-14.2.10-python-warnings.patch"
 )
 
 check-reqs_export_vars() {
@@ -213,7 +213,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if use system-boost; then
 		find "${S}" -name '*.cmake' -or -name 'CMakeLists.txt' -print0 \
@@ -281,7 +281,7 @@ ceph_src_configure() {
 	rm -f "${BUILD_DIR:-${S}}/CMakeCache.txt" \
 		|| die "failed to remove cmake cache"
 
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	# bug #630232
 	sed -i "s:\"${T//:\\:}/${EPYTHON}/bin/python\":\"${PYTHON}\":" \
@@ -309,7 +309,7 @@ python_compile() {
 }
 
 src_compile() {
-	cmake-utils_src_make VERBOSE=1 all
+	cmake_build VERBOSE=1 all
 
 	# we have to do this here to prevent from building everything multiple times
 	python_copy_sources
@@ -330,7 +330,7 @@ python_install() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_foreach_impl python_install
 
 	find "${ED}" -name '*.la' -type f -delete || die
