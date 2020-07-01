@@ -1,12 +1,12 @@
 DEFINED_PHASES=prepare
-DEPEND=>=dev-libs/libnfc-1.7.0 >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/libnfc-1.7.0:= >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Mifare Classic Offline Cracker
 EAPI=6
 HOMEPAGE=https://github.com/nfc-tools/mfoc
 KEYWORDS=~amd64
 LICENSE=GPL-2 GPL-2+ BSD-2
-RDEPEND=>=dev-libs/libnfc-1.7.0
+RDEPEND=>=dev-libs/libnfc-1.7.0:=
 SLOT=0
 SRC_URI=https://github.com/nfc-tools/mfoc/archive/mfoc-0.10.7.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=6949d956015807ff41a1941d2f6576a2
+_md5_=787089e53c6db07c702038302493fda8

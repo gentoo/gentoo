@@ -4819,7 +4819,7 @@ dev-lang/scala-bin 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
-dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3 60.5.2_p0-r4 68.7.0 68.8.0 68.9.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
+dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3 60.5.2_p0-r4 68.7.0 68.8.0 68.9.0 68.10.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.0.3 8.2.0 8.3.0 8.3.1 8.3.2: versatile implementation of the Prolog programming language
@@ -5106,7 +5106,7 @@ dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
 dev-libs/libmowgli 1.0.0-r1 2.1.3 2.1.3-r1 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmspack 0.9.1_alpha-r1 9999: A library for Microsoft compression formats
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
-dev-libs/libnfc 1.7.1 1.7.2: Near Field Communications (NFC) library
+dev-libs/libnfc 1.7.1 1.7.2 1.8.0: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4 1.1.4-r1 1.1.9999 3.4.0 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.2.0-r1 0.2.1 0.2.2: C library for framebuffer abstraction
 dev-libs/libnsutils 0.0.5-r1 0.1.0: C library for base64 and time
@@ -12449,7 +12449,7 @@ media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugi
 media-gfx/evoluspencil 3.1.0-r1: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r3: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21 0.6.22: Small CLI util to show EXIF infos hidden in JPEG files
-media-gfx/exiv2 0.27.2 0.27.3_rc2: EXIF, IPTC and XMP metadata C++ library and command line utility
+media-gfx/exiv2 0.27.2 0.27.3: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3 1.3.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
@@ -15303,7 +15303,7 @@ net-wireless/lorcon 0.0_p20150109 0.0_p20180409-r1 0.0_p20200214 9999: A generic
 net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
 net-wireless/madwimax 0.1.1-r1: Reverse-engineered driver for WiMAX devices based on Samsung CMC-730 chip
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
-net-wireless/mfoc 0.10.7: Mifare Classic Offline Cracker
+net-wireless/mfoc 0.10.7-r1: Mifare Classic Offline Cracker
 net-wireless/mousejack 0.0_p20160726-r2: Firmware and research tools for nRF24LU1+ based USB dongles and breakout boards
 net-wireless/multimode 1.4_p20140831-r2 9999: multimode radio decoder for rtl-sdr devices using gnuradio
 net-wireless/nanovna-saver 0.2.2 9999: tool for reading, displaying and saving data from the NanoVNA
