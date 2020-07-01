@@ -43,6 +43,5 @@ pkg_postinst() {
 	optfeature "starting web or e-mail hyperlinks from PDF documents" x11-misc/xdg-utils
 	optfeature "sound and video playback" media-video/ffmpeg
 	optfeature "sound and video playback" media-video/mplayer
-	optfeature "sound and video playback" media-video/mplayer2
 	optfeature "extraction of PDF page titles" app-text/pdftk
 }
