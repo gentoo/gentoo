@@ -78,7 +78,7 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	emake AR="$(tc-getAR)"
 
 	mkdir -p "${T}/home/.fluxbox" || die "mkdir home failed"
 	# Call fluxbox-generate_menu through bash since it lacks +x
