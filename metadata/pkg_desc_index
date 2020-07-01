@@ -10239,6 +10239,7 @@ dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
 dev-util/bcc 0.11.0 0.12.0-r1 0.13.0 0.14.0 0.15.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/bdelta 0.3.1-r1: Binary Delta - Efficient difference algorithm and format
+dev-util/bear 2.4.3: Build EAR generates a compilation database for clang tooling
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bingrep 0.8.2: Binary file analysis tool
@@ -10287,7 +10288,7 @@ dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.1.1: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
-dev-util/cmake 3.13.5 3.16.5 3.17.2 3.17.3 3.18.0_rc2: Cross platform Make
+dev-util/cmake 3.13.5 3.16.5 3.17.2 3.17.3 3.18.0_rc3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
@@ -14160,7 +14161,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.4 2.5 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.2.4 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.2.4 3.2.5 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
@@ -14955,7 +14956,7 @@ net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.4.3 1.4.5 1.4.7: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
-net-misc/rsync 3.2.0-r1 3.2.1 3.2.2_pre2 9999: File transfer program to keep remote files into sync
+net-misc/rsync 3.2.0-r1 3.2.1 3.2.2_pre3 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.38.3: Rygel is an open source UPnP/DLNA MediaServer
