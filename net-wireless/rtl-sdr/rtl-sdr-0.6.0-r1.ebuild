@@ -12,7 +12,6 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.osmocom.org/${PN}"
-	KEYWORDS="amd64 x86"
 else
 	SRC_URI="https://github.com/steve-m/librtlsdr/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm ~arm64 x86"
