@@ -1,24 +1,30 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools git-r3
+inherit meson virtualx
+if [[ "${PV}" = *9999 ]]; then
+	inherit git-r3
+fi
 
 DESCRIPTION="An improved dynamic tiling window manager"
 HOMEPAGE="https://i3wm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/i3/i3"
-EGIT_BRANCH="next"
+if [[ "${PV}" = *9999 ]]; then
+	EGIT_REPO_URI="https://github.com/i3/i3"
+	EGIT_BRANCH="next"
+else
+	SRC_URI="https://i3wm.org/downloads/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-IUSE="doc"
+IUSE="doc test"
 
 CDEPEND="dev-libs/libev
 	dev-libs/libpcre
-	>=dev-libs/yajl-2.0.3
+	dev-libs/yajl
 	x11-libs/libxcb[xkb]
 	x11-libs/libxkbcommon[X]
 	x11-libs/startup-notification
@@ -28,15 +34,31 @@ CDEPEND="dev-libs/libev
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
 	x11-misc/xkeyboard-config
-	>=x11-libs/cairo-1.14.4[X,xcb(+)]
-	>=x11-libs/pango-1.30.0[X]"
+	x11-libs/cairo[X,xcb(+)]
+	x11-libs/pango[X]"
 DEPEND="${CDEPEND}
-	doc? ( app-text/asciidoc app-text/xmlto dev-lang/perl )
-	virtual/pkgconfig"
+	test? (
+		dev-perl/AnyEvent
+		dev-perl/X11-XCB
+		dev-perl/Inline
+		dev-perl/Inline-C
+		dev-perl/IPC-Run
+		dev-perl/ExtUtils-PkgConfig
+		dev-perl/local-lib
+		virtual/perl-Test-Simple
+		x11-base/xorg-server[xephyr]
+		x11-misc/xvfb-run
+	)
+	doc? (
+		app-text/asciidoc
+		app-text/xmlto
+		dev-lang/perl
+	)"
 RDEPEND="${CDEPEND}
 	dev-lang/perl
 	dev-perl/AnyEvent-I3
 	dev-perl/JSON-XS"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.16-musl-GLOB_TILDE.patch"
@@ -45,11 +67,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	if ! use doc ; then
-		sed -e '/AC_PATH_PROG(\[PATH_ASCIIDOC/d' -i configure.ac || die
-	fi
-	eautoreconf
-
 	cat <<- EOF > "${T}"/i3wm
 		#!/bin/sh
 		exec /usr/bin/i3
@@ -57,24 +74,26 @@ src_prepare() {
 }
 
 src_configure() {
-	local myeconfargs=( --enable-debug=no )  # otherwise injects -O0 -g
-	econf "${myeconfargs[@]}"
-}
+	local emesonargs=(
+		$(meson_use doc docs)
+		$(meson_use doc mans)
+	)
 
-src_compile() {
-	emake -C "${CBUILD}"
+	meson_src_configure
 }
 
 src_install() {
-	emake -C "${CBUILD}" DESTDIR="${D}" install
-	einstalldocs
+	default
 
 	exeinto /etc/X11/Sessions
 	doexe "${T}"/i3wm
 }
 
-pkg_postinst() {
+src_test() {
+	virtx meson_src_test
+}
 
+pkg_postinst() {
 	# Only show the elog information on a new install
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "There are several packages that you may find useful with ${PN} and"
