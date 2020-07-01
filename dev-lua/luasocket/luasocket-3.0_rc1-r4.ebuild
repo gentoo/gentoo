@@ -6,7 +6,8 @@ EAPI=7
 inherit multilib multilib-minimal flag-o-matic toolchain-funcs
 
 DESCRIPTION="Networking support library for the Lua language"
-HOMEPAGE="http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/"
+HOMEPAGE="http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/
+	https://github.com/diegonehab/luasocket"
 SRC_URI="https://github.com/diegonehab/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
@@ -14,9 +15,9 @@ SLOT="0"
 KEYWORDS="amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86"
 IUSE="debug"
 
-RDEPEND=">=dev-lang/lua-5.1.5-r2[deprecated,${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND=">=dev-lang/lua-5.1.5-r2:0[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${PN}-${PV/_/-}
 
