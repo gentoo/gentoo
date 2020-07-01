@@ -111,7 +111,6 @@ dev-util/unrpyc
 games-engines/gemrb
 media-sound/lilycomp
 media-video/tovid
-net-dns/maradns
 net-irc/irker
 net-mail/archivemail
 net-mail/getmail
