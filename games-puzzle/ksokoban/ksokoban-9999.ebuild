@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="The Japanese warehouse keeper game"
-HOMEPAGE="https://cgit.kde.org/ksokoban.git"
+HOMEPAGE="https://invent.kde.org/games/ksokoban"
 
 LICENSE="GPL-2"
 SLOT="0"

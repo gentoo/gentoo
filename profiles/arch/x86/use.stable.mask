@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
+# sci-libs/mkl is not stable, needs online registration to even run pkg_setup
+mkl
+
 # Mike Gilbert <floppym@gentoo.org> (2017-06-08)
 # dev-lang/python:3.8 is not stable.
 python_targets_python3_8

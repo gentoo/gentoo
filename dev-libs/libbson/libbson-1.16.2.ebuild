@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mongodb/mongo-c-driver/releases/download/${PV}/mongo
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc x86"
 IUSE="examples static-libs"
 
 DEPEND="dev-python/sphinx"

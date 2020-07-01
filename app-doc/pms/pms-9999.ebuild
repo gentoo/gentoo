@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,11 +14,11 @@ LICENSE="CC-BY-SA-3.0"
 SLOT="live"
 IUSE="html twoside"
 
-# leaflet: used by eapi-cheatsheet
-# tl-bibtexextra: unsrturl.bst
-# tl-latexextra: chngcntr, gitinfo2, isodate, marginnote, paralist, tocbibind
-# tl-mathscience: algorithm, algorithmic
-BDEPEND="dev-tex/leaflet
+# texlive-bibtexextra for unsrturl.bst
+# texlive-latexextra for chngcntr, gitinfo2, isodate, leaflet, marginnote,
+#   paralist, tocbibind
+# texlive-mathscience for algorithm, algorithmic
+BDEPEND="|| ( >=dev-texlive/texlive-latexextra-2020-r1 dev-tex/leaflet )
 	dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
 	dev-texlive/texlive-latex

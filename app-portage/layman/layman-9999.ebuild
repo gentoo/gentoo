@@ -34,7 +34,7 @@ RDEPEND="
 	git? ( dev-vcs/git )
 	mercurial? ( dev-vcs/mercurial )
 	g-sorcery? ( app-portage/g-sorcery )
-	subversion? ( >=dev-vcs/subversion-1.5.4[http] )
+	subversion? ( >=dev-vcs/subversion-1.5.4[http(+)] )
 	gpg? ( >=dev-python/pyGPG-0.2 )
 	sync-plugin-portage? ( >=sys-apps/portage-2.2.16[${PYTHON_USEDEP}] )
 	!sync-plugin-portage? ( sys-apps/portage[${PYTHON_USEDEP}] )

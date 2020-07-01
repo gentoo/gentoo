@@ -98,6 +98,8 @@ src_prepare() {
 	# Fix a QA issue with .desktop file,
 	sed -i 's/Application;Utility/Utility/g' "${S}"/cnrdrvcups-utility-${PV}/data/cnsetuputil2.desktop ||
 		die "Failed to modify cnsetuputil2.desktop file."
+
+	append-cflags -fcommon
 }
 
 src_configure() {

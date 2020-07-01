@@ -6,12 +6,12 @@ EAPI=7
 inherit autotools linux-info
 
 DESCRIPTION="Realtime Policy and Watchdog Daemon"
-HOMEPAGE="https://0pointer.de/blog/projects/rtkit"
+HOMEPAGE="https://github.com/heftig/rtkit"
 SRC_URI="https://github.com/heftig/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="systemd"
 
 BDEPEND="virtual/pkgconfig"

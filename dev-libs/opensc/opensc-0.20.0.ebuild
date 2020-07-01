@@ -36,6 +36,10 @@ REQUIRED_USE="
 	ctapi? ( !pcsc-lite !openct )
 	|| ( pcsc-lite openct ctapi )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+)
+
 src_prepare() {
 	default
 	elibtoolize

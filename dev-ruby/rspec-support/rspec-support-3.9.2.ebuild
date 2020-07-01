@@ -40,3 +40,8 @@ all_ruby_prepare() {
 	# should be fixed upstream in next version
 	#sed -i -e '/returns a hash containing nodes for each line number/askip "ruby26"' spec/rspec/support/source_spec.rb || die
 }
+
+each_ruby_prepare() {
+	# Use the ruby version being tested
+	sed -i -e '/shell_out/ s:ruby:'${RUBY}':' spec/rspec/support/spec/shell_out_spec.rb || die
+}

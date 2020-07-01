@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>ulm@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
-	</maintainer>
 	<use>
 		<flag name="metric">Default to A4 paper size</flag>
 	</use>

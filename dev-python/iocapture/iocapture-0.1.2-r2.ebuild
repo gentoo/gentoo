@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
 inherit distutils-r1
 
@@ -14,17 +14,10 @@ SRC_URI="https://github.com/oinume/iocapture/archive/${PV}.tar.gz -> ${P}.tar.gz
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 LICENSE="MIT"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND=""
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
-		${RDEPEND}
 	)"
 
-python_test() {
-	pytest -vv || die "Tests fail with ${EPYTHON}"
-}
+distutils_enable_tests pytest

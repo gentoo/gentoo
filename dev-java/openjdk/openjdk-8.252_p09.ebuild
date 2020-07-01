@@ -27,7 +27,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 IUSE="alsa debug cups doc examples headless-awt +jbootstrap nsplugin +pch selinux source webstart"
 
 COMMON_DEPEND="
@@ -80,6 +80,11 @@ PDEPEND="
 
 S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
 
+# bug 721970, JDK-8244760
+PATCHES=(
+	"${FILESDIR}/openjdk-8-detect-gcc10.patch"
+)
+
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
 # should be close enough to be useful.
@@ -95,7 +100,9 @@ openjdk_check_requirements() {
 
 pkg_pretend() {
 	openjdk_check_requirements
-	has ccache ${FEATURES} && die "FEATURES=ccache doesn't work with ${PN}"
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		has ccache ${FEATURES} && die "FEATURES=ccache doesn't work with ${PN}"
+	fi
 }
 
 pkg_setup() {

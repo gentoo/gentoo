@@ -9,7 +9,7 @@ DESCRIPTION="Fully featured yet light and fast cross platform word processor"
 HOMEPAGE="http://www.abisource.com/"
 SRC_URI="
 	http://www.abisource.com/downloads/${PN}/${PV}/source/${P}.tar.gz
-	https://dev.gentoo.org/~soap/distfiles/${P}-patchset.tar.gz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-patchset-r2.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="2"
@@ -73,6 +73,7 @@ PATCHES=(
 	"${WORKDIR}"/patches/${PN}-3.0.2-explicit-python.patch
 	"${WORKDIR}"/patches/${PN}-3.0.4-enchant-2.patch # backport
 	"${WORKDIR}"/patches/${PN}-3.0.4-pygobject.patch
+	"${WORKDIR}"/patches/${PN}-3.0.4-asio-standalone-placeholders.patch
 )
 
 src_prepare() {

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
 
-inherit python-single-r1
+inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="A collection of latency testing tools for the linux(-rt) kernel"
 HOMEPAGE="https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git/about/"
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2 GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
@@ -25,6 +25,10 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 	use elibc_musl && eapply "${FILESDIR}/${P}-musl.patch"
+}
+
+src_compile() {
+	emake CC="$(tc-getCC)" AR="$(tc-getAR)"
 }
 
 src_install() {

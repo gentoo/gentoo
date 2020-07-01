@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ inherit eutils toolchain-funcs autotools-utils
 MY_P="${P}a"
 
 DESCRIPTION="A C++ based modeling platform for VLSI and system-level co-design"
-HOMEPAGE="http://accellera.org/community/systemc"
-SRC_URI="http://accellera.org/images/downloads/standards/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://accellera.org/community/systemc"
+SRC_URI="https://accellera.org/images/downloads/standards/${PN}/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="Apache-2.0"

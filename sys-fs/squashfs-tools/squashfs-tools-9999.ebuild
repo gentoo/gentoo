@@ -32,10 +32,6 @@ DEPEND="
 	${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.3-sysmacros.patch
-)
-
 use10() { usex $1 1 0 ; }
 
 src_configure() {

@@ -23,7 +23,6 @@ BDEPEND="
 		sys-devel/clang:10
 		sys-devel/clang:9
 		sys-devel/clang:8
-		sys-devel/clang:7
 	)
 	${PYTHON_DEPS}"
 

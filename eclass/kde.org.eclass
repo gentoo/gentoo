@@ -131,6 +131,9 @@ _kde.org_calculate_src_uri() {
 				kross)
 					_src_uri+="portingAids/"
 					;;
+				kxmlrpcclient)
+					[[ ${PV} = 5.70.* ]] || _src_uri+="portingAids/"
+					;;
 			esac
 			;;
 		kde-plasma)

@@ -70,10 +70,6 @@ net-libs/libpcap -bluetooth
 # and the X flag is enabled by default in the desktop profile
 x11-libs/libxcb xkb
 
-# Jeremy Olexa <darkside@gentoo.org> (2011-10-07)
-# Required by mesa, ultimately by xorg-server (every desktop) bug 385843
-dev-libs/libxml2 python
-
 # Samuli Suominen <ssuominen@gentoo.org> (2011-09-27)
 # Required by mozilla browsers wrt #372419
 media-libs/libpng apng

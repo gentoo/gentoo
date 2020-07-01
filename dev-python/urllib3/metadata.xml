@@ -11,5 +11,6 @@
   <upstream>
     <remote-id type="pypi">urllib3</remote-id>
     <remote-id type="github">shazow/urllib3</remote-id>
+    <remote-id type="cpe">cpe:/a:urllib3:urllib3</remote-id>
   </upstream>
 </pkgmetadata>

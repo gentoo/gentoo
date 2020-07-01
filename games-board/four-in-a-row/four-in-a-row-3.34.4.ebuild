@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Four-in-a-row"
 # Code and most themes are GPL-3+, CC-BY-SA-3.0 is user help license in v3.32.0
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 RDEPEND="

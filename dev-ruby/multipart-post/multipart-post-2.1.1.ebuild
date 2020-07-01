@@ -19,3 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
+
+all_ruby_prepare() {
+	sed -i -e '/bundler/ s:^:#:' spec/spec_helper.rb || die
+}

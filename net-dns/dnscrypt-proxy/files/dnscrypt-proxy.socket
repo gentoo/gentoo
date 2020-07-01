@@ -1,6 +1,6 @@
 [Unit]
 Description=DNSCrypt-proxy socket
-Documentation=https://github.com/jedisct1/dnscrypt-proxy/wiki
+Documentation=https://github.com/DNSCrypt/dnscrypt-proxy/wiki
 
 [Socket]
 ## Listen on TCP socket.

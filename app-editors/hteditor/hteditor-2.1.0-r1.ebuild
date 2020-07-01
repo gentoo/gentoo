@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_P=${P/editor}
 
@@ -33,21 +33,24 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc-6-uchar.patch
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-gcc-10.patch
+	"${FILESDIR}"/${P}-AR.patch
 )
 
 src_prepare() {
 	default
 	eautoreconf
+
+	# Many literals are concatenated with macro definitions.
+	# Instead of patching them all let's pick old c++ standard
+	# and port to c++11 upstream.
+	# https://bugs.gentoo.org/729252
+	append-cxxflags -std=c++98
 }
 
 src_configure() {
 	econf \
 		$(use_enable X x11-textmode) \
 		--enable-maintainermode
-}
-
-src_compile() {
-	emake AR="$(tc-getAR)" CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
 }
 
 src_install() {

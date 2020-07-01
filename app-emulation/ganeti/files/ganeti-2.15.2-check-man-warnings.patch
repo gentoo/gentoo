@@ -1,0 +1,13 @@
+# https://bugs.gentoo.org/719846
+# Redirecting both stdout and stderr to /dev/null leaves nothing for grep to search
+# Given that there aren't any warnings in the manpages, no need to filter, either
+--- a/autotools/check-man-warnings	2020-04-30 23:10:08.140721582 +0000
++++ b/autotools/check-man-warnings	2020-04-30 23:21:06.708945592 +0000
+@@ -37,6 +37,4 @@
+ fi
+ 
+ LANG="$loc" LC_ALL="$loc" MANWIDTH=80 \
+-  man --warnings --encoding=utf8 --local-file "$1" 2>&1 >/dev/null | \
+-  grep -v -e "cannot adjust line" -e "can't break line" | \
+-  grep .
++  man --warnings --encoding=utf8 --local-file "$1" >/dev/null

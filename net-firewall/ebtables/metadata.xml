@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">ebtables</remote-id>
+		<remote-id type="cpe">cpe:/a:netfilter:ebtables</remote-id>
 	</upstream>
 </pkgmetadata>

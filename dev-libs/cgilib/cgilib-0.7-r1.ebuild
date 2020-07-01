@@ -5,8 +5,8 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="A simple and lightweight interface to the CGI for C and C++ programs"
-HOMEPAGE="http://www.infodrom.org/projects/cgilib/"
-SRC_URI="http://www.infodrom.org/projects/cgilib/download/${P}.tar.gz"
+HOMEPAGE="https://www.infodrom.org/projects/cgilib/"
+SRC_URI="https://www.infodrom.org/projects/cgilib/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ DESCRIPTION="A turnkey solution for Kubernetes networking"
 HOMEPAGE="https://kube-router.io"
 SRC_URI="https://github.com/cloudnativelabs/kube-router/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 MIT BSD BSD-2 MPL-2.0 ISC LGPL-3-with-linking-exception"
 SLOT="0"
 
 RDEPEND="
@@ -22,7 +22,7 @@ RDEPEND="
 "
 
 src_compile() {
-	pushd src/${EGO_PN} || die
+	pushd "src/${EGO_PN}" || die
 	GOPATH="${S}" go build -x -work -v \
 		-ldflags "-X 'github.com/cloudnativelabs/kube-router/pkg/cmd.version=${PV}' "\
 "-X 'github.com/cloudnativelabs/kube-router/pkg/cmd.buildDate=$(date -u +%FT%T%z)'" \
@@ -35,8 +35,8 @@ src_test() {
 }
 
 src_install() {
-	pushd src/${EGO_PN} || die
-	dobin ${PN}
+	pushd "src/${EGO_PN}" || die
+	dobin "${PN}"
 	dodoc *.md docs/*.md docs/*/*
 	popd || die
 

@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 
 MY_PN="xdebug"
 MY_PV="${PV/_/}"

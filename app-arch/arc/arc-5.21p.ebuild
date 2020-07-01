@@ -18,6 +18,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.21m-darwin.patch
 	"${FILESDIR}"/${PN}-5.21m-gentoo-fbsd.patch
 	"${FILESDIR}"/${PN}-5.21o-interix.patch
+	"${FILESDIR}"/${PN}-5.21p-fno-common.patch
 )
 
 src_prepare() {

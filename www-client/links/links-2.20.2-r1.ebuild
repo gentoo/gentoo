@@ -83,6 +83,8 @@ REQUIRED_USE="!livecd? ( fbcon? ( gpm ) )
 
 DOCS=( AUTHORS BRAILLE_HOWTO ChangeLog KEYS NEWS README SITES )
 
+PATCHES=( "${FILESDIR}/swap-echo-for-printf.patch" )
+
 src_prepare() {
 	use X && xdg_environment_reset
 

@@ -34,7 +34,7 @@ IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast
 	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate kms
 	libass libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc
 	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
-	nfs ogg omxil optimisememory opus png postproc projectm pulseaudio +qt5 rdp
+	nfs ogg omxil optimisememory opus png projectm pulseaudio +qt5 rdp
 	run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib
 	theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X
 	x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx
@@ -47,7 +47,6 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
-	postproc? ( ffmpeg )
 	skins? ( qt5 truetype X xml )
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
@@ -96,9 +95,7 @@ RDEPEND="
 	)
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
-	ffmpeg? (
-		>=media-video/ffmpeg-3.1.3:0=[vaapi?,vdpau?]
-	)
+	ffmpeg? ( >=media-video/ffmpeg-3.1.3:0=[postproc,vaapi?,vdpau?] )
 	flac? (
 		media-libs/flac
 		media-libs/libogg
@@ -169,7 +166,7 @@ RDEPEND="
 			x11-libs/libX11
 		)
 	)
-	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client] )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
 	sftp? ( net-libs/libssh2 )
@@ -314,6 +311,7 @@ src_configure() {
 		$(use_enable fdk fdkaac)
 		$(use_enable ffmpeg avcodec)
 		$(use_enable ffmpeg avformat)
+		$(use_enable ffmpeg postproc)
 		$(use_enable ffmpeg swscale)
 		$(use_enable flac)
 		$(use_enable fluidsynth)
@@ -347,12 +345,12 @@ src_configure() {
 		$(use_enable mtp)
 		$(use_enable musepack mpc)
 		$(use_enable ncurses)
+		$(use_enable nfs)
 		$(use_enable ogg)
 		$(use_enable omxil)
 		$(use_enable optimisememory optimize-memory)
 		$(use_enable opus)
 		$(use_enable png)
-		$(use_enable postproc)
 		$(use_enable projectm)
 		$(use_enable pulseaudio pulse)
 		$(use_enable qt5 qt)

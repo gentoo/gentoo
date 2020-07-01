@@ -1,0 +1,131 @@
+From ec955f08b47ab7cb81f6e4a4c3e7b331ddf50f71 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Art=C3=B6m=20Bakri=20Al-Sarmini?= <3sz3tt+git@gmail.com>
+Date: Sun, 12 Apr 2020 22:32:39 +0300
+Subject: [PATCH 1/2] Templatize basic_json ctor from json_ref
+
+---
+ include/nlohmann/detail/meta/type_traits.hpp | 13 ++++++++++++
+ include/nlohmann/json.hpp                    |  8 ++++----
+ single_include/nlohmann/json.hpp             | 21 ++++++++++++++++----
+ 3 files changed, 34 insertions(+), 8 deletions(-)
+
+diff --git a/include/nlohmann/detail/meta/type_traits.hpp b/include/nlohmann/detail/meta/type_traits.hpp
+index 280f69534..dd0b3084f 100644
+--- a/include/nlohmann/detail/meta/type_traits.hpp
++++ b/include/nlohmann/detail/meta/type_traits.hpp
+@@ -41,6 +41,19 @@ template<typename> struct is_basic_json : std::false_type {};
+ NLOHMANN_BASIC_JSON_TPL_DECLARATION
+ struct is_basic_json<NLOHMANN_BASIC_JSON_TPL> : std::true_type {};
+ 
++//////////////////////
++// jspn_ref helpers //
++//////////////////////
++
++template <typename>
++class json_ref;
++
++template<typename>
++struct is_json_ref : std::false_type {};
++
++template <typename T>
++struct is_json_ref<json_ref<T>> : std::true_type {};
++
+ //////////////////////////
+ // aliases for detected //
+ //////////////////////////
+diff --git a/include/nlohmann/json.hpp b/include/nlohmann/json.hpp
+index 336d69fe7..0598efc8c 100644
+--- a/include/nlohmann/json.hpp
++++ b/include/nlohmann/json.hpp
+@@ -1773,10 +1773,10 @@ class basic_json
+     // other constructors and destructor //
+     ///////////////////////////////////////
+ 
+-    /// @private
+-    basic_json(const detail::json_ref<basic_json>& ref)
+-        : basic_json(ref.moved_or_copied())
+-    {}
++    template <typename JsonRef,
++              detail::enable_if_t<detail::conjunction<detail::is_json_ref<JsonRef>,
++                                  std::is_same<typename JsonRef::value_type, basic_json>>::value, int> = 0 >
++    basic_json(const JsonRef& ref) : basic_json(ref.moved_or_copied()) {}
+ 
+     /*!
+     @brief copy constructor
+diff --git a/single_include/nlohmann/json.hpp b/single_include/nlohmann/json.hpp
+index 09464f3b2..8927180e6 100644
+--- a/single_include/nlohmann/json.hpp
++++ b/single_include/nlohmann/json.hpp
+@@ -2794,6 +2794,19 @@ template<typename> struct is_basic_json : std::false_type {};
+ NLOHMANN_BASIC_JSON_TPL_DECLARATION
+ struct is_basic_json<NLOHMANN_BASIC_JSON_TPL> : std::true_type {};
+ 
++//////////////////////
++// jspn_ref helpers //
++//////////////////////
++
++template <typename>
++class json_ref;
++
++template<typename>
++struct is_json_ref : std::false_type {};
++
++template <typename T>
++struct is_json_ref<json_ref<T>> : std::true_type {};
++
+ //////////////////////////
+ // aliases for detected //
+ //////////////////////////
+@@ -16632,10 +16645,10 @@ class basic_json
+     // other constructors and destructor //
+     ///////////////////////////////////////
+ 
+-    /// @private
+-    basic_json(const detail::json_ref<basic_json>& ref)
+-        : basic_json(ref.moved_or_copied())
+-    {}
++    template <typename JsonRef,
++              detail::enable_if_t<detail::conjunction<detail::is_json_ref<JsonRef>,
++                                  std::is_same<typename JsonRef::value_type, basic_json>>::value, int> = 0 >
++    basic_json(const JsonRef& ref) : basic_json(ref.moved_or_copied()) {}
+ 
+     /*!
+     @brief copy constructor
+
+From 70be9751cd60e622ce6463f41d47c02fc2d83cbc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Art=C3=B6m=20Bakri=20Al-Sarmini?= <3sz3tt+git@gmail.com>
+Date: Sun, 12 Apr 2020 23:42:26 +0300
+Subject: [PATCH 2/2] typo fix
+
+---
+ include/nlohmann/detail/meta/type_traits.hpp | 2 +-
+ single_include/nlohmann/json.hpp             | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/nlohmann/detail/meta/type_traits.hpp b/include/nlohmann/detail/meta/type_traits.hpp
+index dd0b3084f..13e92cb48 100644
+--- a/include/nlohmann/detail/meta/type_traits.hpp
++++ b/include/nlohmann/detail/meta/type_traits.hpp
+@@ -42,7 +42,7 @@ NLOHMANN_BASIC_JSON_TPL_DECLARATION
+ struct is_basic_json<NLOHMANN_BASIC_JSON_TPL> : std::true_type {};
+ 
+ //////////////////////
+-// jspn_ref helpers //
++// json_ref helpers //
+ //////////////////////
+ 
+ template <typename>
+diff --git a/single_include/nlohmann/json.hpp b/single_include/nlohmann/json.hpp
+index 8927180e6..294e7509b 100644
+--- a/single_include/nlohmann/json.hpp
++++ b/single_include/nlohmann/json.hpp
+@@ -2795,7 +2795,7 @@ NLOHMANN_BASIC_JSON_TPL_DECLARATION
+ struct is_basic_json<NLOHMANN_BASIC_JSON_TPL> : std::true_type {};
+ 
+ //////////////////////
+-// jspn_ref helpers //
++// json_ref helpers //
+ //////////////////////
+ 
+ template <typename>
+

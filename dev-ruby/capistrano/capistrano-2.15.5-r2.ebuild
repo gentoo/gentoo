@@ -12,7 +12,7 @@ RUBY_FAKEGEM_BINWRAP=""
 inherit ruby-fakegem
 
 DESCRIPTION="A distributed application deployment system"
-HOMEPAGE="http://capistranorb.com/"
+HOMEPAGE="https://capistranorb.com/"
 
 LICENSE="MIT"
 SLOT="2"

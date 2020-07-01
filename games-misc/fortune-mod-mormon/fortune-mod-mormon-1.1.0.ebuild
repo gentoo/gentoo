@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="Fortune modules from the LDS scriptures (KJV Bible, Book of Mormon, D&C, PGP)"
-HOMEPAGE="http://scriptures.nephi.org/"
+HOMEPAGE="https://scriptures.nephi.org/"
 SRC_URI="mirror://sourceforge/mormon/${P}.tar.bz2"
 
 LICENSE="public-domain"

@@ -17,14 +17,10 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme gtk http
-	jack lame libav libnotify libsamplerate lirc mms modplug mp3 nls opengl
-	pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch streamtuner
-	vorbis wavpack"
-REQUIRED_USE="
-	|| ( alsa jack pulseaudio qtmedia sdl )
-	ampache? ( http ) streamtuner? ( http )
-	gtk? ( !ampache !qtmedia !streamtuner )"
+IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme http jack
+	lame libnotify libsamplerate lirc mms modplug mp3 nls opengl pulseaudio
+	scrobbler sdl sid sndfile soxr speedpitch streamtuner vorbis wavpack X"
+REQUIRED_USE="ampache? ( http ) streamtuner? ( http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -53,7 +49,11 @@ DEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib
 	dev-libs/libxml2:2
-	~media-sound/audacious-${PV}[gtk=]
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
+	dev-qt/qtwidgets:5
+	~media-sound/audacious-${PV}
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
@@ -70,17 +70,6 @@ DEPEND="
 		>=media-libs/libvorbis-1.0
 	)
 	fluidsynth? ( media-sound/fluidsynth:= )
-	gtk? (
-		x11-libs/gtk+:2
-		x11-libs/libXcomposite
-		x11-libs/libXrender
-	)
-	!gtk? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		opengl? ( dev-qt/qtopengl:5 )
-	)
 	http? ( >=net-libs/neon-0.26.4 )
 	jack? (
 		>=media-libs/bio2jack-0.4
@@ -93,8 +82,8 @@ DEPEND="
 	mms? ( >=media-libs/libmms-0.3 )
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
+	opengl? ( dev-qt/qtopengl:5 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
-	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
 	sid? ( >=media-libs/libsidplayfp-1.0.0 )
@@ -107,6 +96,7 @@ DEPEND="
 		>=media-libs/libvorbis-1.2.0
 	)
 	wavpack? ( >=media-sound/wavpack-4.50.1-r1 )
+	X? ( dev-qt/qtx11extras:5 )
 "
 RDEPEND="${DEPEND}"
 
@@ -127,8 +117,11 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--enable-mpris2
+		--enable-qt
+		--enable-qtaudio
 		--enable-songchange
 		--disable-adplug # not packaged
+		--disable-gtk
 		--disable-openmpt # not packaged
 		--disable-oss4
 		--disable-coreaudio
@@ -143,10 +136,6 @@ src_configure() {
 		$(use_enable flac filewriter)
 		$(use_enable fluidsynth amidiplug)
 		$(use_enable gme console)
-		$(use_enable gtk aosd)
-		$(use_enable gtk gtk)
-		$(use_enable gtk hotkey)
-		$(use_enable !gtk qt)
 		$(use_enable http neon)
 		$(use_enable jack)
 		$(use_enable lame filewriter_mp3)
@@ -157,8 +146,8 @@ src_configure() {
 		$(use_enable modplug)
 		$(use_enable mp3 mpg123)
 		$(use_enable nls)
+		$(use_enable opengl qtglspectrum)
 		$(use_enable pulseaudio pulse)
-		$(use_enable qtmedia qtaudio)
 		$(use_enable scrobbler scrobbler2)
 		$(use_enable sdl sdlout)
 		$(use_enable sid)
@@ -168,10 +157,8 @@ src_configure() {
 		$(use_enable streamtuner)
 		$(use_enable vorbis)
 		$(use_enable wavpack)
-		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
-	)
-	use !gtk && myeconfargs+=(
-		$(usex opengl --enable-qtglspectrum --disable-qtglspectrum)
+		$(use_enable X qthotkey)
+		$(use_with ffmpeg ffmpeg ffmpeg)
 	)
 
 	econf "${myeconfargs[@]}"

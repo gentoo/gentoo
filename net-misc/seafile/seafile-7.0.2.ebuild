@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools python-single-r1 vala
 
 DESCRIPTION="File syncing and sharing software with file encryption and group sharing"
-HOMEPAGE="https://github.com/haiwen/seafile/ http://www.seafile.com/"
+HOMEPAGE="https://github.com/haiwen/seafile/ https://www.seafile.com/"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"

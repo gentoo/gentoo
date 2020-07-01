@@ -18,7 +18,7 @@ SRC_URI="mirror://sourceforge/hplip/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~ppc ppc64 x86"
 
 IUSE="doc fax +hpcups hpijs kde libnotify libressl -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
 
@@ -49,7 +49,6 @@ RDEPEND="
 	${COMMON_DEPEND}
 	app-text/ghostscript-gpl
 	!minimal? (
-		$(python_gen_cond_dep 'dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]' 'python2*')
 		$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]' 'python3*')
 		kernel_linux? ( virtual/udev )
 		$(python_gen_cond_dep '

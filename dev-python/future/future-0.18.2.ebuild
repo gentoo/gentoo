@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -24,10 +24,10 @@ distutils_enable_sphinx docs dev-python/sphinx-bootstrap-theme
 
 PATCHES=(
 	"${FILESDIR}"/${P}-tests.patch
+	"${FILESDIR}"/${P}-py39.patch
 )
 
 python_prepare_all() {
-	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die
 	# tests requiring network access
 	rm tests/test_future/test_requests.py || die
 	sed -i -e 's:test.*request_http:_&:' \

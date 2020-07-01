@@ -1,0 +1,18 @@
+--- libgnt-2.14.0/meson.build
++++ libgnt-2.14.0/meson.build
+@@ -72,6 +72,7 @@
+ ncurses_available = true
+ ncurses_inc = []
+ ncurses_libs = [
++	compiler.find_library('tinfow', required : false),
+ 	compiler.find_library('ncursesw', required : false),
+ 	compiler.find_library('panelw', required : false)
+ ]
+@@ -113,6 +114,7 @@
+ else
+ 	# ncursesw was not found. Look for plain old ncurses
+ 	ncurses_libs = [
++		compiler.find_library('tinfo', required : false),
+ 		compiler.find_library('ncurses', required : false),
+ 		compiler.find_library('panel', required : false)
+ 	]

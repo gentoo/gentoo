@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop xdg
+inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="A Panzer General clone written in SDL"
 HOMEPAGE="http://lgames.sourceforge.net/LGeneral/"
@@ -53,10 +53,10 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	emake AR="$(tc-getAR)"
 
 	# Build the temporary lgc-pg:
-	emake -C "${WORKDIR}"/tmp-build
+	emake -C "${WORKDIR}"/tmp-build AR="$(tc-getAR)"
 }
 
 src_install() {

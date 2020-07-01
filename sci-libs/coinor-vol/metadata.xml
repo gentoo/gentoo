@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>sci@gentoo.org</email>
-		<name>Gentoo Science Project</name>
-	</maintainer>
-	<longdescription lang="en">
-		Volume Algorithm is part of COIN-OR (COmputational INfrastructure
-		for Operations Research) project. Vol is an implementation of a
-		subgradient method that produces primal as well as dual solutions.
-	</longdescription>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Volume Algorithm is part of COIN-OR (COmputational INfrastructure
+    for Operations Research) project. Vol is an implementation of a
+    subgradient method that produces primal as well as dual solutions.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">coin-or/Vol</remote-id>
+  </upstream>
 </pkgmetadata>

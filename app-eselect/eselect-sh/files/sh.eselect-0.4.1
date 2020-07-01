@@ -1,0 +1,13 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+DESCRIPTION="Manage /bin/sh (POSIX shell) implementations"
+MAINTAINER="mgorny@gentoo.org"
+VERSION="0.4.1"
+
+SYMLINK_PATH=/bin/sh
+SYMLINK_TARGETS=( bash dash mksh )
+SYMLINK_DESCRIPTION='POSIX shell'
+SYMLINK_CRUCIAL=1
+
+inherit bin-symlink

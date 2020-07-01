@@ -7,7 +7,7 @@ inherit eutils ltprune multilib versionator
 MY_P="${PN}-$(replace_version_separator 2 '-')"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="tool to display dialog boxes from a shell"
-HOMEPAGE="http://invisible-island.net/dialog/dialog.html"
+HOMEPAGE="https://invisible-island.net/dialog/dialog.html"
 SRC_URI="ftp://invisible-island.net/${PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"

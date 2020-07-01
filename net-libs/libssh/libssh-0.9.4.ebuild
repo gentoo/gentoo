@@ -36,7 +36,7 @@ RDEPEND="
 	)
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
-	mbedtls? ( net-libs/mbedtls[${MULTILIB_USEDEP}] )
+	mbedtls? ( net-libs/mbedtls:=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}

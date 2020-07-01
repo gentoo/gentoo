@@ -1,18 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/lagadic/vision_visp"
 KEYWORDS="~amd64 ~arm"
 VER_PREFIX="kinetic-"
 ROS_SUBDIR=${PN}
 CATKIN_HAS_MESSAGES=yes
-PYTHON_COMPAT=( python2_7 )
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="Wraps the ViSP moving edge tracker provided by the ViSP visual servoing library into a ROS package"
+DESCRIPTION="Wraps the ViSP moving edge tracker provided by the ViSP library"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

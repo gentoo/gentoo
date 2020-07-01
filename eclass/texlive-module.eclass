@@ -97,7 +97,7 @@ BDEPEND="${COMMON_DEPEND}
 
 for i in ${TEXLIVE_MODULE_CONTENTS}; do
 	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
+		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
 	done
 done
 
@@ -105,7 +105,7 @@ done
 [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} doc? ("
 for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
 	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
+		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
 	done
 done
 [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} )"
@@ -115,7 +115,7 @@ if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]] ; then
 	SRC_URI="${SRC_URI} source? ("
 	for i in ${TEXLIVE_MODULE_SRC_CONTENTS}; do
 		for tldev in ${TEXLIVE_DEVS}; do
-			SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/texlive-module-${i}-${PV}.${PKGEXT}"
+			SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
 		done
 	done
 	SRC_URI="${SRC_URI} )"
@@ -383,9 +383,11 @@ texlive-module_src_install() {
 		cp -pR tlpkg "${ED}/usr/share/" || die
 	fi
 
-	insinto /var/lib/texmf
 
-	[[ -d texmf-var ]] && doins -r texmf-var/.
+	if [[ -d texmf-var ]]; then
+		insinto /var/lib/texmf
+		doins -r texmf-var/.
+	fi
 
 	insinto /etc/texmf/updmap.d
 	[[ -f ${S}/${PN}.cfg ]] && doins "${S}/${PN}.cfg"

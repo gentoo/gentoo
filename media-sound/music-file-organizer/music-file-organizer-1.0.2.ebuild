@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Organizes audio files into directories based on metadata tags,
 along with other metadata utilities."
-HOMEPAGE="http://blog.zx2c4.com/813"
-SRC_URI="http://git.zx2c4.com/music-file-organizer/snapshot/${P}.tar.xz"
+HOMEPAGE="https://git.zx2c4.com/music-file-organizer/about/"
+SRC_URI="https://git.zx2c4.com/music-file-organizer/snapshot/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

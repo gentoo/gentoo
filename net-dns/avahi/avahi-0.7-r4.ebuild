@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -69,7 +69,7 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 	app-doc/xmltoman
 	dev-util/intltool
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/avahi-qt5/qt-watch.h )
@@ -107,7 +107,6 @@ src_prepare() {
 
 src_configure() {
 	# those steps should be done once-per-ebuild rather than per-ABI
-	use sh && replace-flags -O? -O0
 	use python && python_setup
 
 	multilib-minimal_src_configure

@@ -80,6 +80,7 @@ multilib_src_configure() {
 	# and without TEXTRELs. musl does not support TEXTRELs: bug #707332
 	tc-export CC
 	ECONF_SOURCE="${S}" econf \
+		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
 		--localstatedir="${EPREFIX}"/var/state/gmp \
 		--enable-shared \
 		$(use_enable asm assembly) \

@@ -23,7 +23,10 @@ RDEPEND="${DEPEND}
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+	)"
 
 python_test() {
 	nosetests --with-coverage || die

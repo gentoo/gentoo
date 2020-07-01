@@ -14,11 +14,12 @@ IUSE="debug doc test tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/librevenge
 	dev-libs/icu:=
+	dev-libs/librevenge
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
+	test? ( dev-util/cppunit )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -38,5 +39,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }

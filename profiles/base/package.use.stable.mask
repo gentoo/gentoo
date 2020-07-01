@@ -4,6 +4,14 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-01)
+# dev-qt/qtquicktimeline-5.15.0 not yet stable, bug 711120
+dev-qt/qt-creator qmldesigner
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
+# dev-python/wxpython:4.0 w/ py3 is not stable, bug #714566
+dev-python/matplotlib wxwidgets
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # app-text/pandoc (dev-lang/ghc) has no stable keywords.
 app-emulation/xen-tools doc
@@ -21,14 +29,6 @@ mate-base/mate bluetooth
 # Numpy support in Boost.Python is brittle and shouldn't be enabled
 # on stable systems or force a stable upgrade.
 dev-libs/boost numpy
-
-# Brian Evans <grknight@gentoo.org> (2020-02-27)
-# Two packages are delayed during stable of PHP 7.4
-# arm, arm64 and hppa necessary to not disruput consistency
-# but this will allow all other packages to be used
-# Bug 706180, 710942
-dev-php/pecl-apcu php_targets_php7-4
-dev-php/pecl-yaz php_targets_php7-4
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # For bleeding edge features and testing, not generally suitable
@@ -51,10 +51,6 @@ media-libs/opencv vtk
 # Support for DBD-mysql to use mariadb is sketchy. Use DBD-MariaDB
 # instead if you can.
 dev-perl/DBD-mysql mariadb
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-16)
-# dev-libs/libical[glib] was not stable tested, bug #689434
-=dev-libs/libical-3.0.5 glib
 
 # Michał Górny <mgorny@gentoo.org> (2019-07-31)
 # Freshly added test dependency for a test-restricted package.  Mask
@@ -157,7 +153,7 @@ dev-php/PEAR-Text_Password test
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-10-22)
 # Requires unmaintained unstable dependency net-libs/gloox.
 # The go flag requires stable masked dev-lang/go[gccgo].
-www-servers/uwsgi go pypy uwsgi_plugins_alarm_xmpp
+www-servers/uwsgi go uwsgi_plugins_alarm_xmpp
 
 # Michael Palimaka <kensington@gentoo.org> (2017-09-30)
 # Required dependeny is not stable

@@ -46,6 +46,7 @@ all_ruby_prepare() {
 
 	# Avoid spec broken by recent imagemagick updates
 	sed -i -e '/cache files generated from .mpc/askip' spec/lib/mini_magick/image_spec.rb || die
+	sed -i -e '/does not hang when parsing verbose data/askip' spec/lib/mini_magick/image_spec.rb || die
 
 	# Avoid graphicsmagick tests because installing both in parallel for
 	# tests is hard.

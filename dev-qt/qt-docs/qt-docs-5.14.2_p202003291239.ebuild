@@ -54,7 +54,7 @@ HOMEPAGE="https://doc.qt.io/"
 
 LICENSE="FDL-1.3"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 
 IUSE="charts datavis +html networkauth +qch script virtualkeyboard webengine"
 REQUIRED_USE="|| ( html qch )"
@@ -77,9 +77,22 @@ for DOCUSE in ${!QT5_DOCS[@]}; do
 done
 unset DOCTAR DOCUSE
 
-BDEPEND="app-arch/p7zip"
+BDEPEND="
+	app-arch/p7zip
+	media-libs/libpng:0
+"
 
 S=${WORKDIR}/Docs/Qt-${PV%_p*}
+
+src_prepare() {
+	default
+
+	# Fix broken png file, bug 679146
+	local png=qtdoc/images/used-in-examples/demos/tweetsearch/content/resources/anonymous.png
+	pngfix -q --out=${png/.png/fixed.png} ${png} # see pngfix help for exit codes
+	[[ $? -gt 15 ]] && die "Failed to fix ${png}"
+	mv -f ${png/.png/fixed.png} ${png} || die
+}
 
 src_install() {
 	# must be the same as QT5_DOCDIR

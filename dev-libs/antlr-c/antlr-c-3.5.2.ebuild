@@ -7,7 +7,7 @@ inherit eutils autotools ltprune multilib-minimal
 
 MY_PN="${PN%-c}"
 DESCRIPTION="The ANTLR3 C Runtime"
-HOMEPAGE="http://www.antlr3.org/"
+HOMEPAGE="https://www.antlr3.org/"
 SRC_URI="https://github.com/${MY_PN}/${MY_PN}3/archive/${PV}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"

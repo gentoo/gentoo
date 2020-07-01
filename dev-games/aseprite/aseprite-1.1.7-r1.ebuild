@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake desktop flag-o-matic
+inherit cmake desktop flag-o-matic xdg-utils
 
 DESCRIPTION="Animated sprite editor & pixel art tool"
 HOMEPAGE="https://www.aseprite.org"

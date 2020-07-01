@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ MY_PN="mysql-connector-java"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="MySQL JDBC driver"
-HOMEPAGE="http://www.mysql.com/products/connector/j/"
+HOMEPAGE="https://www.mysql.com/products/connector/j/"
 SRC_URI="https://dev.mysql.com/get/Downloads/Connector-J/${MY_P}.tar.gz"
 
 LICENSE="GPL-2-with-MySQL-FLOSS-exception"

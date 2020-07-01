@@ -10,8 +10,8 @@ inherit fortran-2 flag-o-matic toolchain-funcs
 MY_P=${P/-mpi}
 
 DESCRIPTION="A high-performance message passing library (MPI)"
-HOMEPAGE="http://www.open-mpi.org"
-SRC_URI="http://www.open-mpi.org/software/ompi/v1.4/downloads/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.open-mpi.org"
+SRC_URI="https://www.open-mpi.org/software/ompi/v1.4/downloads/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

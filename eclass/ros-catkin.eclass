@@ -57,7 +57,7 @@ fi
 # version. The idea here is to have a ROS_COMPAT in the same vein as
 # PYTHON_COMPAT where packages would define what distro they can work on, then
 # we'd have ros_distro_gentoo_python_2_7 & co plus the OSRF ones (lunar, etc.).
-# Note that this uncondtionally pulls python but in the ROS world there will
+# Note that this unconditionally pulls python but in the ROS world there will
 # most certainly be something pulling python anyway.
 PYTHON_COMPAT=( python3_6 )
 
@@ -158,7 +158,7 @@ ros-catkin_src_prepare() {
 
 	# Most packages require C++11 these days. Do it here, in src_prepare so that
 	# ebuilds can override it in src_configure.
-	append-cxxflags '-std=c++11'
+	append-cxxflags '-std=c++14'
 }
 
 # @FUNCTION: ros-catkin_python_setup

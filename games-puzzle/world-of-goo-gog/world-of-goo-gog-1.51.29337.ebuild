@@ -47,12 +47,12 @@ src_unpack() {
 
 src_install() {
 	exeinto "${dir}"
-	newexe data/noarch/game/${MY_PN}.bin.x86$(usex amd64 _64) ${MY_PN}.bin
+	newexe data/noarch/game/${MY_PN}.bin.x86$(usex amd64 _64 "") ${MY_PN}.bin
 	dosym "../..${dir}"/${MY_PN}.bin /usr/bin/${PN%-*}
 
 	insinto "${dir}"
 	doins -r data/noarch/game/game/
-	use bundled-libs && doins -r data/noarch/game/lib$(usex amd64 64)/
+	use bundled-libs && doins -r data/noarch/game/lib$(usex amd64 64 "")/
 
 	newicon -s 256 data/noarch/game/game/gooicon.png ${PN%-*}.png
 	make_desktop_entry ${PN%-*} "World of Goo" ${PN%-*}

@@ -203,7 +203,7 @@ mozconfig_init() {
 	case "${ARCH}" in
 	arm | ppc64)
 		# Reduce the memory requirements for linking
-		if use clang ; then
+		if [[ "${PN}" != seamonkey ]] && use clang ; then
 			# Nothing to do
 			:;
 		elif tc-ld-is-gold; then

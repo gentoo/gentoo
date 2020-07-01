@@ -55,6 +55,7 @@ BDEPEND="app-arch/unzip
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.3-Fix-building-against-system-portaudio.patch
+	"${FILESDIR}"/${PN}-2.3.3-fno-common.patch
 )
 
 src_prepare() {

@@ -15,7 +15,6 @@
 		<flag name="tuio">Build plugin to receive touch events over the TUIO protocol</flag>
 		<flag name="vulkan">Enable support for Vulkan</flag>
 		<flag name="wayland">Provide <pkg>dev-qt/qtwayland</pkg> to ensure Qt applications can be run as Wayland clients</flag>
-		<flag name="xcb">Build the XCB platform plugin and enable X11 integration</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>

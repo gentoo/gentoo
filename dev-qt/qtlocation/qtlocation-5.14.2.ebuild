@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Location (places, maps, navigation) library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 arm arm64 x86"
 fi
 
 IUSE=""
@@ -36,6 +36,8 @@ QT5_TARGET_SUBDIRS=(
 	src/imports/locationlabs
 	src/plugins/geoservices
 )
+
+PATCHES=( "${FILESDIR}/${P}-gcc-10.patch" ) # bug 722102
 
 src_configure() {
 	# src/plugins/geoservices requires files that are only generated when

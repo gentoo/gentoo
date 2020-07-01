@@ -15,7 +15,7 @@ SRC_URI="https://github.com/getlogbook/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 BDEPEND="
@@ -23,6 +23,7 @@ BDEPEND="
 		app-arch/brotli[${PYTHON_USEDEP},python]
 		dev-python/execnet[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pyzmq[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	)"

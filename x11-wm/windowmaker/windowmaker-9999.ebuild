@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils git-r3
+inherit autotools desktop eutils git-r3
 
 DESCRIPTION="The fast and light GNUstep window manager"
-HOMEPAGE="http://www.windowmaker.org/"
-SRC_URI="http://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
+HOMEPAGE="https://www.windowmaker.org/"
+SRC_URI="https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
 EGIT_REPO_URI="https://repo.or.cz/wmaker-crm.git"
 EGIT_BRANCH="next"
 

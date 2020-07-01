@@ -11,7 +11,7 @@ SRC_URI="https://github.com/anope/anope/releases/download/${PV}/${P}-source.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="gnutls ldap mysql pcre sql sqlite ssl tre"
 REQUIRED_USE="
 	sql? ( || ( mysql sqlite ) )
@@ -33,8 +33,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/pid-patch.patch"
-	"${FILESDIR}/example.conf-user.patch"
+	"${FILESDIR}/${PN}-2.0.6-example.conf-pid-path.patch"
+	"${FILESDIR}/${PN}-2.0.7-example.conf-user.patch"
+	"${FILESDIR}/${PN}-2.0.7-musl-libintl.patch"
 )
 
 S="${WORKDIR}/${P}-source"
@@ -65,8 +66,6 @@ src_prepare() {
 	# Any SQL implementation
 	if use sql ; then
 	   anope_enable_mod "m_sql_authentication.cpp"
-	   anope_enable_mod "m_sql.cpp"
-	   anope_enable_mod "m_sql_live.cpp"
 	fi
 
 	if use ldap ; then

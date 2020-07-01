@@ -17,7 +17,7 @@ SLOT="0"
 IUSE="debug examples test"
 RESTRICT="!test? ( test )"
 
-BDEPEND=">=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+BDEPEND="virtual/pkgconfig"
 RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( >=dev-util/cppunit-1.13.2[${MULTILIB_USEDEP}] )

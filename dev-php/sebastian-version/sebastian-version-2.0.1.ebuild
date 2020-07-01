@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="version"
 
 DESCRIPTION="Helps with managing the version number of Git-hosted PHP projects"
-HOMEPAGE="http://phpunit.de"
+HOMEPAGE="https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

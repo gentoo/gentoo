@@ -1,0 +1,24 @@
+From a9d5afb14aa71893f142dfd3ae735e8930aa0f8a Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Mon, 16 Mar 2020 11:32:10 +0100
+Subject: [PATCH] Fix a typo in wide string conversion function (#49).
+
+Revert a hunk from:
+04e4843e4c66beb61b756f3ceb2ac94628142185.
+---
+ main.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/main.cc b/main.cc
+index abecf46..e4fd676 100644
+--- a/main.cc
++++ b/main.cc
+@@ -61,7 +61,7 @@ static bool suggest_reals = false;
+ #ifdef WINDOWS
+ static std::string wide_string_to_string(const std::wstring & wstr)
+ {
+-  int size_needed = WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)§wstr.size(), NULL, 0, NULL, NULL);
++  int size_needed = WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)wstr.size(), NULL, 0, NULL, NULL);
+   std::string str( size_needed, 0 );
+   WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)wstr.size(), &str[0], size_needed, NULL, NULL);
+   return str;

@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils ltprune
 
 DESCRIPTION="A command-line tool and library to read and convert trace files"
-HOMEPAGE="http://lttng.org"
-SRC_URI="http://lttng.org/files/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://lttng.org"
+SRC_URI="https://lttng.org/files/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_6 )
 inherit python-r1
 
 DESCRIPTION="A set of base plugins for Molecule"
-HOMEPAGE="http://www.sabayon.org"
+HOMEPAGE="https://www.sabayon.org"
 SRC_URI="mirror://sabayon/${CATEGORY}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

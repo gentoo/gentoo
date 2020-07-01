@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTES:
@@ -19,11 +19,12 @@ IUSE="pgm test static-libs"
 RESTRICT="!test? ( test )"
 
 RDEPEND="!net-libs/cppzmq"
-DEPEND="pgm? (
+DEPEND="
+	pgm? (
 		virtual/pkgconfig
 		~net-libs/openpgm-5.1.118
 	)
-	|| ( sys-apps/util-linux sys-freebsd/freebsd-lib )"
+	sys-apps/util-linux "
 
 src_prepare() {
 	einfo "Removing bundled OpenPGM library"

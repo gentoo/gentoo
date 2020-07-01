@@ -13,7 +13,7 @@ SRC_URI="https://github.com/SpectrumIM/spectrum2/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc frotz irc mysql postgres purple sms +sqlite test twitter whatsapp xmpp"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -63,6 +63,11 @@ DEPEND="
 
 # Tests are currently restricted, as they do completly fail
 RESTRICT="test"
+
+PATCHES="
+	"${FILESDIR}/${P}-boost-173-compatibility.patch"
+	"${FILESDIR}/${P}-gcc-10-compatibility.patch"
+"
 
 python_check_deps() {
 	has_version "dev-python/sleekxmpp[${PYTHON_USEDEP}]"

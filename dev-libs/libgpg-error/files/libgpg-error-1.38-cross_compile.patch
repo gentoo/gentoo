@@ -1,0 +1,40 @@
+From: David Michael <fedora.dm0@gmail.com>
+Date: Mon, 1 Jun 2020 14:24:53 +0000 (-0400)
+Subject: build: Fix cross-compiling into a separate build dir.
+X-Git-Url: http://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git;a=commitdiff_plain;h=013720333c6ec1d38791689bc49ba039d98e16b3
+
+build: Fix cross-compiling into a separate build dir.
+
+* configure.ac: Create the src directory before writing into it.
+* src/Makefile.am (EXTRA_DIST): Add gen-lock-obj.sh.
+
+--
+
+Signed-off-by: David Michael <fedora.dm0@gmail.com>
+---
+
+diff --git a/configure.ac b/configure.ac
+index 6bd634b..1dd6489 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -598,6 +598,7 @@ if test x$cross_compiling = xyes; then
+   case $host in
+     *-*-linux*)
+     lock_obj_h_generated=yes
++    mkdir src
+     LOCK_ABI_VERSION=1 host=$host host_alias=$host_alias \
+         CC=$CC OBJDUMP=$host_alias-objdump \
+         ac_ext=$ac_ext ac_objext=$ac_objext \
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 7e36d69..b2bffd2 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -102,7 +102,7 @@ EXTRA_DIST = mkstrtable.awk err-sources.h.in err-codes.h.in \
+ 	gpg-error.vers gpg-error.def.in \
+         versioninfo.rc.in gpg-error.w32-manifest.in \
+ 	gpg-error-config-test.sh gpg-error.pc.in \
+-	$(lock_obj_pub)
++	gen-lock-obj.sh $(lock_obj_pub)
+ 
+ BUILT_SOURCES = $(srcdir)/err-sources.h $(srcdir)/err-codes.h \
+ 	code-to-errno.h code-from-errno.h \

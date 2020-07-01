@@ -7,8 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
-		<flag name="mouse">Enable mouse KCM</flag>
 		<flag name="scim">Enable applets that use <pkg>app-i18n/scim</pkg></flag>
-		<flag name="touchpad">Enable touchpad KCM</flag>
 	</use>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=1
 
 DISTUTILS_USE_SETUPTOOLS=no
@@ -15,11 +15,11 @@ HOMEPAGE="http://virt-manager.org"
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
 else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~ppc64 x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="GPL-2"
@@ -32,7 +32,6 @@ RDEPEND="!app-emulation/virtinst
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	$(python_gen_cond_dep '
 		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
-		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
 		dev-python/libvirt-python[${PYTHON_MULTI_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		dev-python/requests[${PYTHON_MULTI_USEDEP}]

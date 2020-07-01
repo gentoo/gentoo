@@ -17,7 +17,6 @@
 	</longdescription>
 	<use>
 		<flag name="excel">Pull <pkg>dev-python/xlwt</pkg> for the exceltools toolkit</flag>
-		<flag name="gtk2">Enable <pkg>x11-libs/gtk+</pkg>:2 support</flag>
 		<flag name="gtk3">Enable <pkg>x11-libs/gtk+</pkg>:3 support</flag>
 	</use>
 	<upstream>

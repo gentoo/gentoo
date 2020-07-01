@@ -16,12 +16,11 @@ _CARGO_ECLASS=1
 RUST_DEPEND=">=virtual/rust-1.37.0"
 
 case ${EAPI} in
-	6) DEPEND="${RUST_DEPEND}";;
 	7) BDEPEND="${RUST_DEPEND}";;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-inherit multiprocessing
+inherit multiprocessing toolchain-funcs
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install src_test
 
@@ -161,6 +160,8 @@ cargo_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	export CARGO_HOME="${ECARGO_HOME}"
+
+	tc-export AR CC
 
 	cargo build $(usex debug "" --release) "$@" \
 		|| die "cargo build failed"

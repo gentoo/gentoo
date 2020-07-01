@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS} )
 	app-arch/xz-utils
 	>=dev-util/gtk-doc-am-1.14
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # Tests seem to hang forever

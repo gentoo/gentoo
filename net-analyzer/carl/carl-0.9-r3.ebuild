@@ -12,7 +12,7 @@ SRC_URI="http://www.schwarzvogel.de/pkgs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha amd64 x86"
 IUSE=""
 
 DOCS="README"

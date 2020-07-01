@@ -13,13 +13,13 @@ SRC_URI="https://github.com/jonls/redshift/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm64 x86"
-IUSE="ayatana geoclue gtk nls"
+IUSE="appindicator geoclue gtk nls"
 
 COMMON_DEPEND=">=x11-libs/libX11-1.4
 	x11-libs/libXxf86vm
 	x11-libs/libxcb
 	x11-libs/libdrm
-	ayatana? ( dev-libs/libappindicator:3[introspection] )
+	appindicator? ( dev-libs/libappindicator:3[introspection] )
 	geoclue? ( app-misc/geoclue:2.0 dev-libs/glib:2 )
 	gtk? ( ${PYTHON_DEPS} )"
 RDEPEND="${COMMON_DEPEND}

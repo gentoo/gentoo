@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ else
 	SCM="git-r3"
 fi
 
-inherit golang-base tmpfiles systemd ${SCM}
+inherit fcaps golang-base tmpfiles systemd ${SCM}
 unset SCM
 
 EGO_PN="code.gitea.io/gitea"
@@ -18,7 +18,7 @@ DESCRIPTION="A painless self-hosted Git service"
 HOMEPAGE="https://gitea.io"
 
 if [[ ${PV} != 9999* ]] ; then
-	SRC_URI="https://github.com/go-gitea/gitea/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/go-gitea/gitea/releases/download/v${PV}/gitea-src-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64"
 else
 	EGIT_REPO_URI="https://github.com/go-gitea/gitea"
@@ -30,7 +30,8 @@ LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="+acct pam sqlite"
 
-BDEPEND="dev-lang/go"
+BDEPEND="dev-lang/go
+	>=net-libs/nodejs-10[npm]"
 DEPEND="pam? ( sys-libs/pam )"
 RDEPEND="${DEPEND}
 	acct? (
@@ -40,7 +41,10 @@ RDEPEND="${DEPEND}
 	dev-vcs/git"
 
 DOCS=( custom/conf/app.ini.sample CONTRIBUTING.md README.md )
+FILECAPS=( cap_net_bind_service+ep usr/bin/gitea )
 S="${WORKDIR}/${P}/src/${EGO_PN}"
+
+PATCHES=( "${FILESDIR}/gitea-logflags.patch" )
 
 gitea_make() {
 	local gitea_tags=(
@@ -60,7 +64,7 @@ gitea_make() {
 	)
 	[[ ${PV} != 9999* ]] && makeenv+=("DRONE_TAG=${PV}")
 
-	env "${makeenv[@]}" emake "$@"
+	env "${makeenv[@]}" emake -j1 "$@"
 }
 
 src_prepare() {
@@ -85,7 +89,8 @@ src_prepare() {
 		sed -i -e "s#^DB_TYPE = .*#DB_TYPE = sqlite3#" custom/conf/app.ini.sample || die
 	fi
 
-	gitea_make generate
+	# Remove already build assets (like frontend part)
+	gitea_make clean-all
 }
 
 src_compile() {

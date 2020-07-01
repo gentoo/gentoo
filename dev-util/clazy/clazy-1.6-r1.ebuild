@@ -6,12 +6,12 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="Compiler plugin which allows clang to understand Qt semantics"
-HOMEPAGE="https://cgit.kde.org/clazy.git/tree/README.md"
+HOMEPAGE="https://kde.org/applications/development/org.kde.clazy"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="

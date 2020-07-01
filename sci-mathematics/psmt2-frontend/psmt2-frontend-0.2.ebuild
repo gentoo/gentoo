@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,4 +31,13 @@ src_prepare() {
 src_compile() {
 	emake depend
 	default
+}
+
+src_install() {
+	default
+	QA_FLAGS_IGNORED=(
+		/usr/$(get_libdir)/ocaml/psmt2-frontend/psmt2Frontend.o
+		/usr/$(get_libdir)/ocaml/psmt2-frontend/psmt2Frontend.cmxs
+		/usr/$(get_libdir)/ocaml/psmt2-frontend/psmt2Frontend.a
+	)
 }

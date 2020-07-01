@@ -6,13 +6,13 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Extremely fast non-cryptographic hash algorithm"
-HOMEPAGE="https://www.xxhash.com"
+HOMEPAGE="http://www.xxhash.net"
 SRC_URI="https://github.com/Cyan4973/xxHash/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2+"
 # https://abi-laboratory.pro/tracker/timeline/xxhash
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 IUSE="static-libs"
 
 S="${WORKDIR}/xxHash-${PV}"

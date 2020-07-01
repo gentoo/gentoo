@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="scientific calculator for X"
 
-KEYWORDS="amd64 arm hppa ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 hppa ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND="x11-libs/libXaw

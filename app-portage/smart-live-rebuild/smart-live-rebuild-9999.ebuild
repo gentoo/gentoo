@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6..9} )
 
 EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 inherit distutils-r1 git-r3

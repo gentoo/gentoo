@@ -601,11 +601,20 @@ mysql_init_vars() {
 
 pkg_config() {
 	_getoptval() {
-		local mypd="${EROOT%/}"/usr/bin/my_print_defaults
 		local section="$1"
 		local flag="--${2}="
 		local extra_options="${3}"
-		"${mypd}" $extra_options $section | sed -n "/^${flag}/s,${flag},,gp"
+		local cmd=(
+			"${EROOT%/}/usr/bin/my_print_defaults"
+			"${extra_options}"
+			"${section}"
+		)
+		local results=( $(eval "${cmd[@]}" 2>/dev/null | sed -n "/^${flag}/s,${flag},,gp") )
+
+		if [[ ${#results[@]} -gt 0 ]] ; then
+			# When option is set multiple times only return last value
+			echo "${results[-1]}"
+		fi
 	}
 	local old_MY_DATADIR="${MY_DATADIR}"
 	local old_HOME="${HOME}"
@@ -724,7 +733,7 @@ pkg_config() {
 	fi
 
 	local options
-	local sqltmp="$(emktemp)"
+	local sqltmp="$(emktemp "${EROOT%/}/tmp")"
 
 	# Fix bug 446200. Don't reference host my.cnf, needs to come first,
 	# see http://bugs.mysql.com/bug.php?id=31312

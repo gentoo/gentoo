@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -31,7 +31,6 @@ RDEPEND="
 	brotli? ( dev-python/brotlipy[${PYTHON_USEDEP}] )
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep "
 			${RDEPEND}
@@ -40,7 +39,7 @@ BDEPEND="
 			dev-python/pytest[\${PYTHON_USEDEP}]
 			>=dev-python/trustme-0.5.3[\${PYTHON_USEDEP}]
 			>=www-servers/tornado-4.2.1[\${PYTHON_USEDEP}]
-		" 'python3*')
+		" python3_{6,7,8,9})
 	)
 "
 
@@ -56,14 +55,6 @@ python_prepare_all() {
 	sed -e 's:test_dotted_fqdn:_&:' \
 		-i test/with_dummyserver/test_https.py || die
 	sed -e 's:test_request_host_header_ignores_fqdn_dot:_&:' \
-		-i test/with_dummyserver/test_socketlevel.py || die
-	# no clue why those fail, might be tornado's fault, might be just
-	# very flaky
-	sed -e 's:test_client_no_intermediate:_&:' \
-		-i test/with_dummyserver/test_https.py || die
-	sed -e 's:test_basic_ipv6_proxy:_&:' \
-		-i test/with_dummyserver/test_proxy_poolmanager.py || die
-	sed -e 's:test_connection_closed_on_read_timeout_preload_false:_&:' \
 		-i test/with_dummyserver/test_socketlevel.py || die
 
 	distutils-r1_python_prepare_all

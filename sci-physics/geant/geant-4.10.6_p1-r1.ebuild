@@ -23,7 +23,7 @@ case ${PV} in
 esac
 
 DESCRIPTION="Toolkit for simulation of passage of particles through matter"
-HOMEPAGE="https://geant4.cern.ch/"
+HOMEPAGE="https://geant4.web.cern.ch/"
 SRC_URI="https://geant4-data.web.cern.ch/geant4-data/releases/${MY_P}.tar.gz"
 
 LICENSE="geant4"

@@ -1,0 +1,10 @@
+--- a/glade.cabal
++++ b/glade.cabal
+@@ -82,6 +82,7 @@ Library
+         default-language: Haskell98
+         default-extensions: ForeignFunctionInterface
+ 
++        cpp-options: -D__attribute__(A)=
+         if os(darwin)
+           cpp-options: -U__BLOCKS__ -D__attribute__(A)= -D_Nullable= -D_Nonnull=
+ 

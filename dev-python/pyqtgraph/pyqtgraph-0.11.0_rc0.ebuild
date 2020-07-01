@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples opengl svg"
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]

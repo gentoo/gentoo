@@ -18,7 +18,7 @@ Project Website: http://fna-xna.github.io/
 	<use>
 		<flag name="dumpvoices">FAudio dumps buffer data to individual files with RIFF/XWMA headers, usable with players like ffplay/testxwma.</flag>
 		<flag name="ffmpeg">FAudio has optional support for decoding xWMA resources using FFmpeg, requiring:
-			<pkg>media-video/ffmpeg</pkg> (note: this feature is not supported by <pkg>media-video/libav</pkg>).</flag>
+			<pkg>media-video/ffmpeg</pkg></flag>
 		<flag name="xnasong">Build support for optional XNG_SONG component (note: this not required by
 			<pkg>app-emulation/wine-staging</pkg>, <pkg>app-emulation/wine-vanilla</pkg> for faudio XAudio support).</flag>
 		<flag name="test">Build and run faudio testsuite.</flag>

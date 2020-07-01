@@ -17,14 +17,14 @@ IUSE="examples"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 #RDEPEND="sci-libs/hdf5:=[mpi=,hl(+)]
 RDEPEND="sci-libs/hdf5:=[hl(+)]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 
-BDEPEND="dev-python/pkgconfig"
+BDEPEND="dev-python/pkgconfig[${PYTHON_USEDEP}]"
 #	mpi? ( virtual/mpi )
 
 DEPEND="dev-python/cython[${PYTHON_USEDEP}]

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/trousers/${PN}/${P}.tar.gz"
 
 LICENSE="CPL-1.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~ppc ~ppc64 ~s390 ~x86"
+KEYWORDS="amd64 arm arm64 ~m68k ~ppc ppc64 ~s390 x86"
 IUSE="doc libressl selinux" # gtk
 
 # gtk support presently does NOT compile.
@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.3.13-nouseradd.patch"
 	"${FILESDIR}/${P}-libressl.patch"
 	"${FILESDIR}/${P}-fno-common.patch"
+	"${FILESDIR}/${P}-Makefile.am-Mark-tddl.a-nodist.patch"
 )
 
 DOCS="AUTHORS ChangeLog NICETOHAVES README TODO"

@@ -173,6 +173,8 @@ src_configure() {
 
 src_test() {
 	cmake_build test-programs
+
+	myctestargs=( --disable-capture --skip-missing-programs=all --verbose )
 	cmake_src_test
 }
 
@@ -218,6 +220,10 @@ src_install() {
 			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
 			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
+	fi
+
+	if [[ -d "${D}"/usr/share/appdata ]]; then
+		rm -r "${D}"/usr/share/appdata || die
 	fi
 }
 

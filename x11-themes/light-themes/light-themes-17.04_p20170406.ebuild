@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ MY_PN=ubuntu-themes
 MY_PV=16.10+${PV/_p/.}
 
 DESCRIPTION="GTK2/GTK3 Ambiance and Radiance themes from Ubuntu"
-HOMEPAGE="http://packages.ubuntu.com/zesty/light-themes"
+HOMEPAGE="https://packages.ubuntu.com/zesty/light-themes"
 SRC_URI="
 	mirror://ubuntu/pool/main/${MY_PN:0:1}/${MY_PN}/${MY_PN}_${MY_PV}.orig.tar.gz
 	https://dev.gentoo.org/~pacho/${PN}/Gentoo-Buttons-r1.tar.xz

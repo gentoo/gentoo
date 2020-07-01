@@ -123,6 +123,8 @@ src_prepare() {
 	EPATCH_EXCLUDE+=" 95_all_libsanitizer-avoidustat.h-glibc-2.28-part-1.patch"
 	EPATCH_EXCLUDE+=" 98_all_msp430-partial-int.patch"
 	toolchain_src_prepare
+	eapply "${FILESDIR}"/${P}-libsanitizer-p1.patch
+	eapply "${FILESDIR}"/${P}-libsanitizer-p2.patch
 }
 
 src_configure() {

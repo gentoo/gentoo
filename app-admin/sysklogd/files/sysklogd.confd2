@@ -1,6 +1,0 @@
-# Config file for /etc/init.d/sysklogd
-
-SYSLOGD="-m 0 -s -s -r 10M:10"
-# send warnings and above to the console
-KLOGD="-c 3 -2"
-

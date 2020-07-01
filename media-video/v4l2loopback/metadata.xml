@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>naota@gentoo.org</email>
-	</maintainer>
-	<maintainer type="person">
-		<email>grknight@gentoo.org</email>
-		<name>Brian Evans</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="github">umlaeute/v4l2loopback</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>titanofold@gentoo.org</email>
+    <name>Aaron W. Swenson</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">umlaeute/v4l2loopback</remote-id>
+  </upstream>
 </pkgmetadata>

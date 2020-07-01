@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription>
+		oidc-agent is a set of tools to manage OpenID Connect tokens and make them
+		easily usable from the command line. We followed the ssh-agent design, so users
+		can handle OIDC tokens in a similar way as they do with ssh keys.
+		oidc-agent is usually started in the beginning of an X-session or a login
+		session. Through use of environment variables the agent can be located and
+		used to handle OIDC tokens.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">indigo-dc/oidc-agent</remote-id>
+	</upstream>
+</pkgmetadata>

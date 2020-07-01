@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,8 +33,10 @@ ruby_add_bdepend "
 
 all_ruby_prepare() {
 	sed -e '/rake/ s/,.*$//' \
+		-e '/pry/ s:^:#:' \
 		-e 's/git ls-files -z/find . -print0/' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -i -e '/pry/ s:^:#:' test/test_helper.rb || die
 }
 
 each_ruby_test() {

@@ -32,6 +32,9 @@ src_prepare() {
 		if ! type -P vim &>/dev/null; then
 			sed -i 's/.*vim.*//' test/Makefile || die
 		fi
+
+		# https://bugs.gentoo.org/722014 https://github.com/martanne/vis-test/pull/22
+		sed -i 's;./ccan-config > config.h;./ccan-config "${CC}" ${CFLAGS} > config.h;' test/core/Makefile || die
 	fi
 
 	sed -i 's|STRIP?=.*|STRIP=true|' Makefile || die
@@ -42,6 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export CFLAGS="$CFLAGS -fcommon" # https://github.com/martanne/vis-test/issues/21
+
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \

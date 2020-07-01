@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -11,7 +11,7 @@ DESCRIPTION="A simple Python socket pool"
 HOMEPAGE="https://github.com/benoitc/socketpool/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="eventlet examples gevent"
 LICENSE="|| ( MIT public-domain )"
 SLOT="0"
@@ -30,19 +30,26 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/eventlet[${PYTHON_USEDEP}]
-		' 'python3*')
-		!ia64? (
+		!alpha? ( !hppa? ( !ia64? (
+			$(python_gen_cond_dep '
+				dev-python/eventlet[${PYTHON_USEDEP}]
+			' 'python3*')
 			$(python_gen_cond_dep '
 				dev-python/gevent[${PYTHON_USEDEP}]
 			' 'python*')
-		)
+		) ) )
 	)"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.5.2-locale.patch )
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# py3.9
+	sed -i -e 's:isAlive:is_alive:' socketpool/backend_thread.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	cp -r examples tests "${BUILD_DIR}" || die

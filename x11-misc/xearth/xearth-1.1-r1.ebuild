@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils toolchain-funcs
 
-HOMEPAGE="http://hewgill.com/xearth/original/"
+HOMEPAGE="https://hewgill.com/xearth/original/"
 DESCRIPTION="Xearth sets the X root window to an image of the Earth"
 SRC_URI="ftp://cag.lcs.mit.edu/pub/tuna/${P}.tar.gz
 	ftp://ftp.cs.colorado.edu/users/tuna/${P}.tar.gz"

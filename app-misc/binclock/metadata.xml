@@ -5,5 +5,4 @@
 		<email>shell-tools@gentoo.org</email>
 		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
-	<longdescription>binclock displays a binary clock in your terminal.</longdescription>
 </pkgmetadata>

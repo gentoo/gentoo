@@ -1,0 +1,115 @@
+From 2d30860a8b71e90513ead9958f5dd312802b0d36 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 27 May 2020 14:40:53 +0200
+Subject: [PATCH 2/4] Fix imap4-utf-7 codec lookup function for Python 3.9
+
+Python 3.9 normalizes the codec name into 'imap4_utf_7' rather than
+'imap4-utf-7', and therefore the lookup function needs to account
+for the former name.  Transform the latter locally to preserve support
+for all Python versions.
+
+Fixes: ticket: 9832
+---
+ src/twisted/mail/imap4.py                | 2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/twisted/mail/imap4.py b/src/twisted/mail/imap4.py
+index 736ef111d..3f32982ca 100644
+--- a/src/twisted/mail/imap4.py
++++ b/src/twisted/mail/imap4.py
+@@ -6369,7 +6369,7 @@ _codecInfo = codecs.CodecInfo(encoder, decoder, StreamReader, StreamWriter)
+ 
+ 
+ def imap4_utf_7(name):
+-    if name == 'imap4-utf-7':
++    if name.replace('-', '_') == 'imap4_utf_7':
+         return _codecInfo
+ 
+ codecs.register(imap4_utf_7)
+-- 
+2.26.2
+
+From daf928bf0f0371816dddbd4929948c4213d0cdcb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 27 May 2020 15:12:54 +0200
+Subject: [PATCH 3/4] Fix verifyCryptedPassword() for crypt.crypt() throwing in
+ py3.9
+
+In Python 3.9, the crypt.crypt() function may throw an exception
+if the underlying crypt() function fails.  Update
+verifyCryptedPassword() to account for that, and preserve the existing
+behavior of returning False in that case.
+
+Fixes: ticket:9833
+---
+ src/twisted/conch/checkers.py             | 5 ++++-
+ src/twisted/plugins/cred_unix.py          | 5 ++++-
+ 4 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/twisted/conch/checkers.py b/src/twisted/conch/checkers.py
+index 917567a39..e4e327b16 100644
+--- a/src/twisted/conch/checkers.py
++++ b/src/twisted/conch/checkers.py
+@@ -53,7 +53,10 @@ def verifyCryptedPassword(crypted, pw):
+ 
+     @rtype: L{bool}
+     """
+-    return crypt.crypt(pw, crypted) == crypted
++    try:
++        return crypt.crypt(pw, crypted) == crypted
++    except OSError:
++        return False
+ 
+ 
+ 
+diff --git a/src/twisted/plugins/cred_unix.py b/src/twisted/plugins/cred_unix.py
+index 211b4ccbc..a662719b6 100644
+--- a/src/twisted/plugins/cred_unix.py
++++ b/src/twisted/plugins/cred_unix.py
+@@ -43,7 +43,10 @@ def verifyCryptedPassword(crypted, pw):
+         pw = pw.decode('utf-8')
+     if not isinstance(crypted, StringType):
+         crypted = crypted.decode('utf-8')
+-    return crypt.crypt(pw, crypted) == crypted
++    try:
++        return crypt.crypt(pw, crypted) == crypted
++    except OSError:
++        return False
+ 
+ 
+ 
+-- 
+2.26.2
+
+From 4fc435df0d1eba3e5d6416a2b86d39d3404f82fe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 27 May 2020 15:37:10 +0200
+Subject: [PATCH 4/4] Use xml.etree.ElementTree instead of deprecated
+ cElementTree
+
+The xml.etree.cElementTree is deprecated, and has been removed in Python
+3.9.  At the same time, xml.etree.ElementTree has already been using
+cElementTree implicitly since Python 3.3.  Update test_flatten to use
+the latter to provide compatibility with newer Python versions.
+
+Fixes: ticket:9834
+---
+ src/twisted/web/test/test_flatten.py    | 2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/twisted/web/test/test_flatten.py b/src/twisted/web/test/test_flatten.py
+index 677401c55..61d50e20a 100644
+--- a/src/twisted/web/test/test_flatten.py
++++ b/src/twisted/web/test/test_flatten.py
+@@ -9,7 +9,7 @@ L{twisted.web._flatten}.
+ import sys
+ import traceback
+ 
+-from xml.etree.cElementTree import XML
++from xml.etree.ElementTree import XML
+ 
+ from collections import OrderedDict
+ 
+-- 
+2.26.2
+

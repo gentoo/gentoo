@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-qt5.patch
+	epatch "${FILESDIR}"/${PN}-10.x-qt5.patch
 
 	eapply_user
 }

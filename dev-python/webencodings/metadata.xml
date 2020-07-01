@@ -8,7 +8,7 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">webencodings</remote-id>
-    <doc>http://pythonhosted.org/webencodings/</doc>
+    <doc>https://pythonhosted.org/webencodings/</doc>
     <maintainer status="unknown">
       <email>simon.sapin@exyr.org</email>
       <name>Simon Sapin</name>

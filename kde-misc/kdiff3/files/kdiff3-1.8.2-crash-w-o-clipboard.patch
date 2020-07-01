@@ -1,0 +1,36 @@
+From 643edc26bcc8f8e083a97e87c2686f62ffd01f31 Mon Sep 17 00:00:00 2001
+From: Christoph Feck <cfeck@kde.org>
+Date: Thu, 30 Apr 2020 18:27:58 -0400
+Subject: Fix crash when clipboard is not available
+
+Summary:
+QClipboard::mimeData() can be nullptr according to documentation.
+
+BUG: 419722
+FIXED-IN: 1.8.3
+
+Reviewers: mreeves
+
+Reviewed By: mreeves
+
+Differential Revision: https://phabricator.kde.org/D29248
+---
+ src/pdiff.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pdiff.cpp b/src/pdiff.cpp
+index f3f2284..3588e3e 100644
+--- a/src/pdiff.cpp
++++ b/src/pdiff.cpp
+@@ -1577,7 +1577,7 @@ void KDiff3App::slotClipboardChanged()
+ {
+     const QClipboard* clipboard = QApplication::clipboard();
+     const QMimeData* mimeData = clipboard->mimeData();
+-    if(mimeData->hasText())
++    if(mimeData && mimeData->hasText())
+     {
+         QString s = clipboard->text();
+         editPaste->setEnabled(!s.isEmpty());
+-- 
+cgit v1.1
+

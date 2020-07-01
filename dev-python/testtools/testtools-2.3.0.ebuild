@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 CDEPEND="
 	>=dev-python/extras-1.0.0[${PYTHON_USEDEP}]
-	dev-python/mimeparse[${PYTHON_USEDEP}]
+	dev-python/python-mimeparse[${PYTHON_USEDEP}]
 	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]
 	dev-python/pyrsistent[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]

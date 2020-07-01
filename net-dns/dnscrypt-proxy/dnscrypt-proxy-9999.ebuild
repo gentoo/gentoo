@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="A flexible DNS proxy, with support for encrypted DNS protocols"
-HOMEPAGE="https://github.com/jedisct1/dnscrypt-proxy"
+HOMEPAGE="https://github.com/DNSCrypt/dnscrypt-proxy"
 
 LICENSE="Apache-2.0 BSD ISC MIT MPL-2.0"
 SLOT="0"
@@ -37,6 +37,11 @@ src_compile() {
 	pushd "${PN}" >/dev/null || die
 	go build -v -x -mod=readonly -mod=vendor -buildmode="$(usex pie pie default)" || die
 	popd >/dev/null || die
+}
+
+src_test() {
+	cd "${PN}" || die
+	go test -mod=vendor -buildmode="$(usex pie pie default)" || die "Failed to run tests"
 }
 
 src_install() {

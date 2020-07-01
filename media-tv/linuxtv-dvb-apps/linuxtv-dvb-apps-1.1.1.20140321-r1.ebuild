@@ -11,7 +11,7 @@ SRC_URI="https://www.linuxtv.org/hg/dvb-apps/archive/3d43b280298c.tar.bz2 -> ${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 IUSE="alevt usb"
 
 RDEPEND="

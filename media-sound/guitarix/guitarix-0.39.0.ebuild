@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='threads(+)'
 
@@ -10,7 +11,7 @@ inherit python-any-r1 waf-utils xdg
 MY_P="${PN}2-${PV}"
 
 DESCRIPTION="Virtual guitar amplifier for Linux"
-HOMEPAGE="http://guitarix.org/"
+HOMEPAGE="https://guitarix.org/"
 SRC_URI="mirror://sourceforge/guitarix/guitarix/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"

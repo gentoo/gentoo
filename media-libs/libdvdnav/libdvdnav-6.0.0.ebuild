@@ -19,7 +19,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="static-libs"
 
-RDEPEND=">=media-libs/libdvdread-5.0.3[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/libdvdread-5.0.3:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig" # To get pkg.m4 for eautoreconf #414391
 

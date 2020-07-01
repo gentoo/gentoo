@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils toolchain-funcs xdg-utils
+inherit cmake toolchain-funcs xdg-utils
 
 DESCRIPTION="High performance flash player"
 HOMEPAGE="https://lightspark.github.io/"
@@ -62,11 +62,11 @@ src_configure() {
 		-DPPAPI_PLUGIN_DIRECTORY="${EPREFIX}"/usr/$(get_libdir)/chromium-browser/${PN}
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use nsplugin; then
 		# copied from nsplugins.eclass, that's broken in EAPI 7

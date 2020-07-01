@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc gtk-doc test"
 
-RDEPEND="media-gfx/sane-backends"
+RDEPEND="dev-libs/gobject-introspection
+	media-gfx/sane-backends"
 DEPEND="${RDEPEND}
 	doc? (
 		app-doc/doxygen

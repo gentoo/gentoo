@@ -34,8 +34,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-CMAKE_MAKEFILE_GENERATOR="emake"
-
 DISABLE_AUTOFORMATTING="no"
 DOC_CONTENTS="
 After getting media-sound/pulseaudio merged without its bluetooth

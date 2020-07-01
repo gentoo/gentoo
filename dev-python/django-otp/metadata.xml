@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">django-otp</remote-id>
-    <remote-id type="bitbucket">psagers/django-otp</remote-id>
+    <remote-id type="github">django-otp/django-otp</remote-id>
   </upstream>
 </pkgmetadata>

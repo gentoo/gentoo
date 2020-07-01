@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="pypi">bumpversion</remote-id>
-		<remote-id type="github">peritus/bumpversion</remote-id>
-	</upstream>
-</pkgmetadata>

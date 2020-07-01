@@ -52,7 +52,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DWITH_AUDIO=$(usex sound)
 		-DWITH_FREETYPE2=$(usex truetype)
-		-DWITH_LIBAV=$(usex libav)
 		-DWITH_MOVIES=$(usex videos)
 	)
 	cmake_src_configure

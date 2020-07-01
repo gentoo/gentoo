@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="alsa dbus debug examples ipv6 jack ladspa lash network oss portaudio pulseaudio +readline sdl +sndfile systemd threads"
 
 BDEPEND="
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 DEPEND="
 	dev-libs/glib:2[${MULTILIB_USEDEP}]

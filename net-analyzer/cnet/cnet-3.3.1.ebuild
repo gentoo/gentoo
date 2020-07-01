@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Network simulation tool"
-HOMEPAGE="http://www.csse.uwa.edu.au/cnet3/"
+HOMEPAGE="https://www.csse.uwa.edu.au/cnet3/"
 SRC_URI="https://dev.gentoo.org/~jer/${P}.tgz"
 
 LICENSE="GPL-2"

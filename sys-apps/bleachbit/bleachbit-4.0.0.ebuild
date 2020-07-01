@@ -14,7 +14,7 @@ SRC_URI="https://download.bleachbit.org/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-python/chardet[$PYTHON_USEDEP]

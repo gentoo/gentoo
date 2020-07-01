@@ -1,0 +1,30 @@
+# Already fixed upstream:
+# https://repo.or.cz/alure.git/commitdiff/9939cdfbf9c6c7a2690db7fb8dd2892389adcd5f
+
+diff -Naur a/src/codec_dumb.cpp b/src/codec_dumb.cpp
+--- a/src/codec_dumb.cpp	2011-07-29 09:37:48.000000000 +0100
++++ b/src/codec_dumb.cpp	2020-05-10 15:59:48.502632496 +0100
+@@ -272,7 +272,11 @@
+ 
+ private:
+     // DUMBFILE iostream callbacks
++#if DUMB_VERSION >= 2*10000
++    static int skip(void *user_data, dumb_off_t offset)
++#else
+     static int skip(void *user_data, long offset)
++#endif
+     {
+         std::istream *stream = static_cast<dumbStream*>(user_data)->fstream;
+         stream->clear();
+@@ -282,7 +286,11 @@
+         return -1;
+     }
+ 
++#if DUMB_VERSION >= 2*10000
++    static dumb_ssize_t read(char *ptr, size_t size, void *user_data)
++#else
+     static long read(char *ptr, long size, void *user_data)
++#endif
+     {
+         std::istream *stream = static_cast<dumbStream*>(user_data)->fstream;
+         stream->clear();

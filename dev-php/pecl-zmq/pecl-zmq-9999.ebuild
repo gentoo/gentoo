@@ -14,7 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="czmq"
 
-RDEPEND="net-libs/zeromq czmq? ( <net-libs/czmq-3 )"
+RDEPEND="net-libs/zeromq czmq? ( net-libs/czmq:= )"
 DEPEND="${RDEPEND} virtual/pkgconfig"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/mkoppanen/php-zmq.git"

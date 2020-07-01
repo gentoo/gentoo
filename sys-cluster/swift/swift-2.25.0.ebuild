@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_BRANCH="stable/ussuri"
 else
 	SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -60,12 +60,6 @@ src_prepare() {
 	sed -i 's/xattr/pyxattr/g' requirements.txt || die
 	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
-}
-
-src_test() {
-	# https://bugs.launchpad.net/swift/+bug/1249727
-	find . \( -name test_wsgi.py -o -name test_locale.py -o -name test_utils.py \) -delete || die
-	SKIP_PIP_INSTALL=1 PBR_VERSION=0.6.0 sh .unittests || die
 }
 
 python_install_all() {

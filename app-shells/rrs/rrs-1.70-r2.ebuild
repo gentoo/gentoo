@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Reverse Remote Shell"
-HOMEPAGE="http://freecode.com/projects/rrs"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/rrs"
 SRC_URI="http://www.cycom.se/uploads/36/19/${P}.tar.gz"
 
 LICENSE="MIT"

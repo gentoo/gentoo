@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 MY_P=colobot-gold-${PV}-alpha
 MUSIC_P=colobot-music_ogg_${PV}-alpha
@@ -30,7 +30,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if use music; then
 		sed -i -e '/find_program(WGET wget)/d' -e '/if(NOT WGET)/,+2 d' music/CMakeLists.txt || die
@@ -42,5 +42,5 @@ src_configure() {
 		-DMUSIC=$(usex music)
 		-DMUSIC_FLAC=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

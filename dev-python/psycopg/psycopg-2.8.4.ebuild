@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6..9} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -13,6 +13,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="PostgreSQL database adapter for Python"
 HOMEPAGE="http://initd.org/psycopg/ https://pypi.org/project/psycopg2/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-3+"
 SLOT="2"
@@ -26,14 +27,10 @@ DEPEND="${RDEPEND}
 		>=dev-python/sphinx-1.6
 	)"
 
-RESTRICT="test"
-
 # Avoid using mxdatetime: https://bugs.gentoo.org/452028
 PATCHES=(
 	"${FILESDIR}"/psycopg-2.8.3-avoid-mxdatetime.patch
 )
-
-S="${WORKDIR}/${MY_P}"
 
 python_compile() {
 	local CFLAGS=${CFLAGS} CXXFLAGS=${CXXFLAGS}
@@ -53,6 +50,26 @@ python_prepare_all() {
 
 python_compile_all() {
 	use doc && emake -C doc/src -j1 html text
+}
+
+src_test() {
+	initdb -D "${T}"/pgsql || die
+	# TODO: random port
+	pg_ctl -w -D "${T}"/pgsql start \
+		-o "-h '' -k '${T}'" || die
+	createdb -h "${T}" psycopg2_test || die
+
+	local -x PSYCOPG2_TESTDB_HOST="${T}"
+	distutils-r1_src_test
+
+	pg_ctl -w -D "${T}"/pgsql stop || die
+}
+
+python_test() {
+	"${EPYTHON}" -c "
+import tests
+tests.unittest.main(defaultTest='tests.test_suite')
+" --verbose || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 )  # 3.7 dropped due to dep-hell
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 

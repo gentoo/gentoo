@@ -20,6 +20,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
+	${RDEPEND}
 	python? ( dev-lang/swig )
 	sys-devel/bison
 	sys-devel/flex

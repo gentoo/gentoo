@@ -5,4 +5,7 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<use>
+		<flag name="btrfs">Enables dependencies for the "btrfs" graph driver.</flag>
+	</use>
 </pkgmetadata>

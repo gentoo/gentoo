@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_6 python3_7 )
 PYTHON_REQ_USE="ncurses?"
 
-inherit distutils-r1 gnome2-utils xdg-utils
+inherit desktop distutils-r1 gnome2-utils xdg-utils
 
 MY_P="Electron-Cash-${PV}"
 DESCRIPTION="Lightweight Bitcoin Cash client (BCH fork of Electrum)"

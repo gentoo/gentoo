@@ -1,8 +1,9 @@
---- svgalib-1.9.25/kernel/svgalib_helper/main.c.orig	2016-02-22 11:10:25.000000000 +0300
-+++ svgalib-1.9.25/kernel/svgalib_helper/main.c	2016-02-22 11:17:16.223529679 +0300
-@@ -170,8 +170,12 @@
+diff '--color=auto' -Naurd svgalib-1.9.25.prev/kernel/svgalib_helper/main.c svgalib-1.9.25/kernel/svgalib_helper/main.c
+--- svgalib-1.9.25.prev/kernel/svgalib_helper/main.c	2020-05-02 09:50:14.751043144 +0300
++++ svgalib-1.9.25/kernel/svgalib_helper/main.c	2020-05-02 09:51:44.564742599 +0300
+@@ -171,8 +171,12 @@
  #else
- static int svgalib_helper_ioctl(struct file *filp, 
+ static long svgalib_helper_ioctl(struct file *filp,
                            unsigned int cmd, unsigned long arg) {
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,9,0) 
 +    struct inode *inode=file_inode(filp);
@@ -13,7 +14,7 @@
  
      io_t iov, *user_iov=(io_t *)arg;
      pcic_t pciv, *user_pciv=(pcic_t *)arg;
-@@ -586,7 +590,11 @@
+@@ -587,7 +591,11 @@
  static int svgalib_helper_mmap(struct file *filp, struct vm_area_struct *vma) {
     unsigned long start=vma->vm_start;
     unsigned long end=vma->vm_end;

@@ -5,7 +5,7 @@
 	<email>sparc@gentoo.org</email>
 	<name>Gentoo Linux SPARC Development</name>
 </maintainer>
-<longdescription>
-SILO is the SPARC/UltraSPARC Improved Loader, a boot loader for sparc similar to LILO.
-</longdescription>
+<use>
+	<flag name="tilo-only">Install only the tilo netboot tool</flag>
+</use>
 </pkgmetadata>

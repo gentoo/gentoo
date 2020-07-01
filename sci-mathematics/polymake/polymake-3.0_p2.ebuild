@@ -7,7 +7,7 @@ inherit eutils flag-o-matic
 
 DESCRIPTION="research tool for polyhedral geometry and combinatorics"
 SRC_URI="https://polymake.org/lib/exe/fetch.php/download/polymake-3.0r2.tar.bz2"
-HOMEPAGE="http://polymake.org"
+HOMEPAGE="https://polymake.org"
 
 IUSE="+cdd lrs ppl bliss group +libnormaliz singular libpolymake"
 
@@ -80,7 +80,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Docs can be found on http://www.polymake.org/doku.php/documentation"
+	elog "Docs can be found on https://www.polymake.org/doku.php/documentation"
 	elog " "
 	elog "Support for jreality is missing, sorry (see bug #346073)."
 	elog " "

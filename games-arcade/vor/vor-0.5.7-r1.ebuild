@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit desktop gnome2-utils
 
 DESCRIPTION="Variations on Rockdodger: Dodge the rocks until you die"
-HOMEPAGE="http://jasonwoof.org/vor"
+HOMEPAGE="https://jasonwoof.org/vor"
 SRC_URI="https://jasonwoof.com/downloads/vor/${P}.tgz"
 
 LICENSE="GPL-2+"

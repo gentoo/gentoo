@@ -72,7 +72,7 @@ src_configure() {
 		-DBUILD_VLAN_MON_DRIVER="$(usex ipoe)"
 		-DCRYPTO=OPENSSL
 		-DLOG_PGSQL="$(usex postgres)"
-		-DLUA="$(usex lua)"
+		-DLUA="$(usex lua TRUE FALSE)"
 		-DMEMDEBUG="$(usex debug)"
 		-DNETSNMP="$(usex snmp)"
 		-DRADIUS="$(usex radius)"

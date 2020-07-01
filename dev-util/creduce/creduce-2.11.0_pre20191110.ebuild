@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR=ninja}
-inherit cmake-utils llvm
+inherit cmake llvm
 
 EGIT_COMMIT="2a4480eb6cb72b3d2d131b536c883cc6d41bdcaa"
 DESCRIPTION="C-Reduce - a plugin-based C program reducer"
@@ -19,15 +19,16 @@ IUSE=""
 
 LLVM_MAX_SLOT=9
 
-COMMON_DEPEND="
-	>=dev-lang/perl-5.10.0
+DEPEND="
 	sys-devel/clang:${LLVM_MAX_SLOT}"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
+	>=dev-lang/perl-5.10.0
 	dev-perl/Exporter-Lite
 	dev-perl/File-Which
 	dev-perl/Getopt-Tabular
 	dev-perl/Regexp-Common"
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
+	>=dev-lang/perl-5.10.0
 	sys-devel/flex"
 
 PATCHES=(

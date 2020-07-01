@@ -12,13 +12,14 @@ SRC_URI="https://github.com/typesupply/defcon/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-python/fonttools-3.31.0[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="
+	test? (
+		dev-python/fs[${PYTHON_USEDEP}]
+	)
+"
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests pytest

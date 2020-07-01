@@ -26,7 +26,7 @@ DEPEND="test? ( dev-libs/check[${MULTILIB_USEDEP}] )"
 BDEPEND="
 	${PYTHON_DEPS}
 	doc? ( app-doc/doxygen )
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 RESTRICT="!test? ( test )"
 

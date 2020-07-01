@@ -11,7 +11,7 @@ SRC_URI="https://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/6"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="data doc fltk gmp test threads X"
 RESTRICT="!test? ( test )"
 
@@ -61,7 +61,11 @@ src_configure() {
 	# sysdatadir installs a pari.cfg stuff which is informative only.
 	# It is supposed to be for "architecture-dependent" data.
 	# It needs to be easily discoverable for downstream packages such as gp2c.
-	./Configure \
+	# We set LD to "" so that it is set to the value of the compiler used
+	# which is how a normal end user is expected to configure it. pari's build
+	# system do not cope very well with a naked linker, it is expecting a
+	# compiler driver. See https://bugs.gentoo.org/722090
+	LD="" ./Configure \
 		--prefix="${EPREFIX}"/usr \
 		--datadir="${EPREFIX}/usr/share/${PN}" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \

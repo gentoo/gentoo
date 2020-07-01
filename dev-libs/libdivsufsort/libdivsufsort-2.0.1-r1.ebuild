@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils multilib toolchain-funcs
+EAPI=7
+inherit cmake multilib toolchain-funcs
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
 HOMEPAGE="https://github.com/y-256/libdivsufsort"
@@ -22,7 +22,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# will appreciate saner approach, if there is any
 	sed -i -e "s:\(DESTINATION \)lib:\1$(get_libdir):" \
@@ -30,6 +30,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=("-DBUILD_DIVSUFSORT64=ON" "-DUSE_OPENMP=$(usex openmp)")
-	cmake-utils_src_configure
+	local mycmakeargs=(
+		"-DBUILD_DIVSUFSORT64=ON"
+		"-DUSE_OPENMP=$(usex openmp)"
+	)
+	cmake_src_configure
 }

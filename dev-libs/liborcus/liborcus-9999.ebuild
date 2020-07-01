@@ -21,7 +21,9 @@ fi
 
 LICENSE="MIT"
 SLOT="0/0.16" # based on SONAME of liborcus.so
-IUSE="python +spreadsheet-model static-libs tools"
+IUSE="python +spreadsheet-model tools"
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/boost:=[zlib(+)]
@@ -32,8 +34,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/mdds:${MDDS_SLOT}
 "
-
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -46,10 +46,10 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		--disable-werror
 		$(use_enable python)
 		$(use_enable spreadsheet-model)
-		$(use_enable static-libs static)
 		$(use_with tools)
 	)
 	econf "${myeconfargs[@]}"

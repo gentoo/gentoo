@@ -21,7 +21,7 @@ IUSE="latex"
 
 LATEX_DEPS="latex? ( dev-texlive/texlive-latex dev-texlive/texlive-latexextra )"
 RDEPEND+=" ${LATEX_DEPS}"
-DEPEND+=" test? ( ${LATEX_DEPS} app-text/htmltidy )"
+DEPEND+=" test? ( ${LATEX_DEPS} app-text/tidy-html5 )"
 
 ruby_add_rdepend "
 	dev-ruby/rexml

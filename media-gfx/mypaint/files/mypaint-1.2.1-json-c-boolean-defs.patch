@@ -1,0 +1,34 @@
+commit a2b3f56b347c1897454eac1b5bdfe9d228302b80
+Author: Jehan <jehan@girinstud.io>
+Date:   Sat Jan 26 12:50:31 2019 +0100
+
+    Boolean #define-s removed from json-c in 2017.
+    
+    We don't need to #undef TRUE and FALSE before including json.h as this
+    redefinition has been removed in upstream json-c.
+    See json-c commit 0992aac61f8b087efd7094e9ac2b84fa9c040fcd.
+    
+    Note that it still works even if using an older json-c since the
+    original code was alreadying #undef-ing these 2 values before redefining
+    them. So that was anyway useless code and this change should work both
+    with old or new json-c.
+    
+    Note: the previous code was still working fine when building on Linux,
+    but not when cross-compiling on Windows. But this is the correct fix
+    anyway.
+    
+    (cherry picked from commit f4fd97445d3b6843af57ff8ba5f02cbdeb3942e9)
+
+diff --git a/brushlib/mypaint-brush.c b/mypaint-brush.c
+index 4759d11..7a1380c 100644
+--- a/brushlib/mypaint-brush.c
++++ b/brushlib/mypaint-brush.c
+@@ -35,9 +35,6 @@
+ #include "rng-double.h"
+ 
+ #ifdef HAVE_JSON_C
+-// Allow the C99 define from json.h
+-#undef TRUE
+-#undef FALSE
+ #include <json.h>
+ #endif // HAVE_JSON_C

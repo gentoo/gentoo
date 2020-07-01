@@ -21,7 +21,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0/0.16" # based on SONAME of libixion.so
-IUSE="debug python static-libs +threads"
+IUSE="debug python +threads"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -45,9 +45,9 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		$(use_enable debug)
 		$(use_enable python)
-		$(use_enable static-libs static)
 		$(use_enable threads)
 	)
 	econf "${myeconfargs[@]}"

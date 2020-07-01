@@ -9,8 +9,6 @@
     <flag name="ada">Build the ADA language (GNAT) frontend</flag>
     <flag name="awt">Useful only when building GCJ, this enables Abstract Window Toolkit
       (AWT) peer support on top of GTK+</flag>
-    <flag name="boundschecking">Add the bounds checking patch by Haj Ten Brugge,
-      this will DISABLE the hardened PIE+SSP patches</flag>
     <flag name="cilk">Support the Cilk Plus language (C/C++ based languages for parallel programming)</flag>
     <flag name="d">Enable support for the D programming language</flag>
     <flag name="fixed-point">Enable fixed-point arithmetic support for MIPS targets 
@@ -25,7 +23,6 @@
       code in the C library (DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT IT DOES)</flag>
     <flag name="lto">Build using Link Time Optimizations (LTO)</flag>
     <flag name="mpx">Enable support for Intel Memory Protection Extensions (MPX)</flag>
-    <flag name="mudflap">Add support for mudflap, a pointer use checking library</flag>
     <flag name="nopie">Disable PIE support (NOT FOR GENERAL USE)</flag>
     <flag name="nossp">Disable SSP support (NOT FOR GENERAL USE)</flag>
     <flag name="nptl">Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)</flag>

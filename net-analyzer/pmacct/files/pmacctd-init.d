@@ -27,7 +27,7 @@ start() {
 	start-stop-daemon --start \
 		--pidfile "${PMACCTDPID}" \
 		--exec /usr/sbin/"${SVCNAME}" \
-		-- -D -f "${PMACCTDCONF}" \ -F "${PMACCTDPID}" ${OPTS}
+		-- -D -f "${PMACCTDCONF}" -F "${PMACCTDPID}" ${OPTS}
 	eend $?
 }
 

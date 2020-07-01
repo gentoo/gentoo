@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,10 +9,10 @@ inherit git-r3 ruby-single
 MY_PN=${PN^^}
 
 DESCRIPTION="Jisyo (dictionary) files for the SKK Japanese-input software"
-HOMEPAGE="https://skk-dev.github.io/dict"
+HOMEPAGE="http://openlab.ring.gr.jp/skk/dic.html"
 EGIT_REPO_URI="https://github.com/skk-dev/dict"
 
-LICENSE="GPL-2 freedist public-domain"
+LICENSE="CC-BY-SA-3.0 GPL-2+ public-domain unicode"
 SLOT="0"
 KEYWORDS=""
 IUSE="cdb ${USE_RUBY//ruby/ruby_targets_ruby}"
@@ -28,12 +28,13 @@ DEPEND="${RUBY_DEPS}
 	)"
 RDEPEND=""
 
-DOCS=( ChangeLog{,.{1..3}} committers.txt edict_doc.txt )
+DOCS=( ChangeLog{,.{1..3}} committers.md )
+HTML_DOCS=( edict_doc.html )
 
 SKKTOOLS_DIR="${EPREFIX}/usr/share/skktools/convert2skk"
 
 src_prepare() {
-	rm -f ${MY_PN}.{wrong*,noregist,not_wrong,hukugougo,notes,requested,pubdic+}
+	rm -f ${MY_PN}.{hukugougo,noregist,notes,pubdic+,requested,unannotated,*wrong*}
 
 	default
 }

@@ -1,0 +1,42 @@
+From aeb52044ca29f37f1f98ee5a4f9ad774d557771e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 26 May 2020 21:43:05 +0200
+Subject: [PATCH] Fix error due to missing sys.setcheckinterval in py3.9
+
+Python 3.9 finally removed sys.setcheckinterval().  While the package
+apparently tried to account for that, the logic is flawed and the second
+getattr() raises an AttributeError even if its result is never used.
+This caused tests to fail:
+
+      File "/tmp/tqdm/tqdm/tests/tests_tqdm.py", line 126, in pretest
+        getattr(sys, 'setswitchinterval', getattr(sys, 'setcheckinterval'))(100)
+    AttributeError: module 'sys' has no attribute 'setcheckinterval'
+
+Refactor the code into a try/except construct that does not execute
+the setcheckinterval() branch unless setswitchinterval() is actually
+missing.  While at it, scale the arguments a bit -- the current version
+used either 100 instructions or 100 seconds that were rather of very
+different magnitudes.
+---
+ tqdm/tests/tests_tqdm.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tqdm/tests/tests_tqdm.py b/tqdm/tests/tests_tqdm.py
+index a2dac52..5f322e6 100644
+--- a/tqdm/tests/tests_tqdm.py
++++ b/tqdm/tests/tests_tqdm.py
+@@ -123,7 +123,10 @@ def cpu_timify(t, timer=None):
+ 
+ def pretest():
+     # setcheckinterval is deprecated
+-    getattr(sys, 'setswitchinterval', getattr(sys, 'setcheckinterval'))(100)
++    try:
++        sys.setswitchinterval(1)
++    except AttributeError:
++        sys.setcheckinterval(100)
+ 
+     if getattr(tqdm, "_instances", False):
+         n = len(tqdm._instances)
+-- 
+2.26.2
+

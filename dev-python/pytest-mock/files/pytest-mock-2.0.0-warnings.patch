@@ -1,0 +1,36 @@
+From 09477f0d28f3b6b9fa36b861d701c9d1a937e553 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 26 May 2020 10:56:27 +0200
+Subject: [PATCH] Permit warnings in *_stale_pyc tests
+
+The *_stale_pyc test is repeatedly failing on production systems
+due to additional pytest plugins being installed and triggering
+PytestAssertRewriteWarnings.  This causes 'passed *' string not to match
+because of the ',' after 'passed'.  Match just 'passed*' instead
+to solve this.
+---
+ tests/test_pytest_mock.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_pytest_mock.py b/tests/test_pytest_mock.py
+index d1635f5..e85f392 100644
+--- a/tests/test_pytest_mock.py
++++ b/tests/test_pytest_mock.py
+@@ -801,7 +801,7 @@ def test_abort_patch_context_manager_with_stale_pyc(testdir):
+     """
+     )
+     result = testdir.runpytest()
+-    result.stdout.fnmatch_lines("* 1 passed *")
++    result.stdout.fnmatch_lines("* 1 passed*")
+ 
+     kwargs = {"legacy": True} if sys.version_info[0] >= 3 else {}
+     assert compileall.compile_file(str(py_fn), **kwargs)
+@@ -811,4 +811,4 @@ def test_abort_patch_context_manager_with_stale_pyc(testdir):
+ 
+     py_fn.remove()
+     result = testdir.runpytest()
+-    result.stdout.fnmatch_lines("* 1 passed *")
++    result.stdout.fnmatch_lines("* 1 passed*")
+-- 
+2.26.2
+

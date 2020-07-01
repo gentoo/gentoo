@@ -17,9 +17,10 @@ IUSE="pam static-libs"
 
 # While the build system optionally uses gperf, we don't DEPEND on it because
 # the build automatically falls back when it's unavailable.  #604802
-RDEPEND=">=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}]
-	pam? ( sys-libs/pam[${MULTILIB_USEDEP}] )"
+RDEPEND=">=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}]"
+PDEPEND="pam? ( sys-libs/pam[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
+	${PDEPEND}
 	sys-kernel/linux-headers"
 
 # Requires test suite being run as root (via sudo)

@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_P=${PN}6-${PV}
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite,xml"
 inherit python-single-r1 xdg-utils
 

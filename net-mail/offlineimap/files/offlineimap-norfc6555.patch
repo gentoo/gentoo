@@ -1,0 +1,52 @@
+From 24931745105f389b03de2811cb9d62a450f0efe3 Mon Sep 17 00:00:00 2001
+From: Matt Smith <matt@offtopica.uk>
+Date: Fri, 1 May 2020 17:54:48 +0100
+Subject: [PATCH] Revert "implement Happy Eyeballs"
+
+This reverts commit 0d5496ba0a21aa6df5d10391af01d5017fb973bf.
+---
+ offlineimap/imaplibutil.py | 10 +---------
+ requirements.txt           |  1 -
+ 2 files changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/offlineimap/imaplibutil.py b/offlineimap/imaplibutil.py
+index 86b1cb9..6ebe8d8 100644
+--- a/offlineimap/imaplibutil.py
++++ b/offlineimap/imaplibutil.py
+@@ -19,7 +19,6 @@ import fcntl
+ import time
+ import subprocess
+ import threading
+-import rfc6555
+ import socket
+ import errno
+ import zlib
+@@ -79,15 +78,8 @@ class UsefulIMAPMixIn(object):
+     def open_socket(self):
+         """open_socket()
+         Open socket choosing first address family available."""
+-        if self.af == socket.AF_UNSPEC:
+-            # happy-eyeballs!
+-            return rfc6555.create_connection((self.host, self.port))
+-        else:
+-            return self._open_socket_for_af(self.af)
+-
+-    def _open_socket_for_af(self, af):
+         msg = (-1, 'could not open socket')
+-        for res in socket.getaddrinfo(self.host, self.port, af, socket.SOCK_STREAM):
++        for res in socket.getaddrinfo(self.host, self.port, self.af, socket.SOCK_STREAM):
+             af, socktype, proto, canonname, sa = res
+             try:
+                 # use socket of our own, possiblly socksified socket.
+diff --git a/requirements.txt b/requirements.txt
+index 1e2a2ae..3b1819e 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,4 +2,3 @@
+ six
+ gssapi[kerberos]
+ portalocker[cygwin]
+-rfc6555
+-- 
+2.26.2
+

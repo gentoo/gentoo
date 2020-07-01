@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,20 +6,15 @@ MY_PN="PRoot"
 
 inherit eutils toolchain-funcs
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/proot-me/${MY_PN}.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/proot-me/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+SRC_URI="https://github.com/proot-me/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="User-space implementation of chroot, mount --bind, and binfmt_misc"
 HOMEPAGE="https://proot-me.github.io"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="care static test"
+IUSE="care test"
 
 RDEPEND="care? ( app-arch/libarchive:0= )
 	 sys-libs/talloc"
@@ -38,15 +33,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.0-loader.patch"
 )
 
-src_prepare() {
-	default
-	use static && append-ldflags -static
-}
-
 src_compile() {
 	# build the proot and care targets
 	emake -C src V=1 \
 		CC="$(tc-getCC)" \
+		OBJCOPY="$(tc-getOBJCOPY)" \
+		OBJDUMP="$(tc-getOBJDUMP)" \
+		STRIP="$(tc-getSTRIP)" \
 		CHECK_VERSION="true" \
 		CAREBUILDENV="ok" \
 		proot $(use care && echo "care")

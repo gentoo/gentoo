@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6..9} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -15,10 +15,9 @@ SRC_URI="https://github.com/pygobject/${PN}/releases/download/v${PV}/${P}.tar.gz
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="doc examples test"
+IUSE="examples"
 
 BDEPEND="
-	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -29,22 +28,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-RESTRICT="!test? ( test )"
+PATCHES=( "${FILESDIR}/${PN}-1.19.1-py39.patch" )
 
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
-python_compile_all() {
-	if use doc; then
-		sphinx-build docs -b html _build/html || die
-	fi
-}
-
-python_test() {
-	esetup.py test
-}
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme
+distutils_enable_tests setup.py
 
 python_install() {
 	distutils-r1_python_install \
@@ -52,8 +40,6 @@ python_install() {
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( _build/html/. )
-
 	if use examples; then
 		dodoc -r examples
 	fi

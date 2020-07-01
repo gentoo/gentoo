@@ -11,7 +11,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # other possible flags:
 # db2: we lack the dep
@@ -47,6 +47,8 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}"/${P/_/-}
+
+PATCHES=( "${FILESDIR}"/${P}-boost-1.73-compatibility.patch )
 
 src_configure() {
 	local dynmodules="pipe bind" # the default backends, always enabled

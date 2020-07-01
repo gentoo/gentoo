@@ -19,7 +19,7 @@ SRC_URI="https://github.com/EttusResearch/uhd/archive/v${PV}.tar.gz -> EttusRese
 LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-3)"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="b100 b200 doc e300 examples mpmd octoclock n230 test usb usrp1 usrp2 +utils x300"
+IUSE="+b100 +b200 doc e300 examples +mpmd octoclock +n230 test +usb +usrp1 +usrp2 +utils +x300"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 			b100? ( usb )
@@ -78,7 +78,6 @@ src_configure() {
 		-DENABLE_C_API=ON
 		-DENABLE_LIBERIO=OFF
 		-DENABLE_MAN_PAGES=ON
-		-DENABLE_GPSD=OFF
 		-DENABLE_MAN_PAGE_COMPRESSION=OFF
 		-DENABLE_EXAMPLES="$(usex examples)"
 		-DENABLE_TESTS="$(usex test)"

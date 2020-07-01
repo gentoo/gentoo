@@ -12,7 +12,7 @@ SRC_URI="https://github.com/fontforge/fontforge/releases/download/${PV}/fontforg
 
 LICENSE="BSD GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="doc truetype-debugger gif gtk jpeg png +python readline test tiff svg unicode woff2 X"
 RESTRICT="!test? ( test )"
 
@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	sys-devel/gettext
-	doc? ( dev-python/sphinx )
+	doc? ( >=dev-python/sphinx-2 )
 	python? ( ${PYTHON_DEPS} )
 	test? ( ${RDEPEND} )
 "
@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/20200314-tilepath.patch
 	"${FILESDIR}"/20200314-big-endian.patch
 	"${FILESDIR}"/fontforge-doc-no-warn-error.patch
+	"${FILESDIR}"/20200314-MacServiceReadFDs.patch
 )
 
 pkg_setup() {

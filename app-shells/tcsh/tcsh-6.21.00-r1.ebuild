@@ -8,7 +8,7 @@ inherit eutils flag-o-matic autotools prefix
 CONFVER="1.9"
 
 DESCRIPTION="Enhanced version of the Berkeley C shell (csh)"
-HOMEPAGE="http://www.tcsh.org/"
+HOMEPAGE="https://www.tcsh.org/"
 SRC_URI="
 	ftp://ftp.astron.com/pub/tcsh/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/tcsh-gentoo-patches-r${CONFVER}.tar.bz2"

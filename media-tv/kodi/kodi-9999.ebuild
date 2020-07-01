@@ -7,7 +7,7 @@ PYTHON_REQ_USE="libressl?,sqlite,ssl"
 LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
 LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
-FFMPEG_VERSION="4.2.2"
+FFMPEG_VERSION="4.3"
 CODENAME="Matrix"
 FFMPEG_KODI_VERSION="Alpha1"
 PYTHON_COMPAT=( python3_{6,7,8} )
@@ -71,7 +71,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libinput-1.10.5
 	>=dev-libs/libxml2-2.9.4
 	>=dev-libs/lzo-2.04
-	>=dev-libs/spdlog-1.5.0
+	>=dev-libs/spdlog-1.5.0:=
 	dev-libs/tinyxml[stl]
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
@@ -298,7 +298,8 @@ src_compile() {
 }
 
 src_test() {
-	cmake_build check
+	# see https://github.com/xbmc/xbmc/issues/17860#issuecomment-630120213
+	KODI_HOME="${BUILD_DIR}" cmake_build check
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/transmission/transmission-releases/raw/master/${P}.t
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT=0
-IUSE="ayatana gtk libressl lightweight systemd qt5 xfs"
+IUSE="appindicator gtk libressl lightweight systemd qt5 xfs"
 KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 x86 ~amd64-linux"
 
 ACCT_DEPEND="
@@ -31,7 +31,7 @@ COMMON_DEPEND=">=dev-libs/libevent-2.0.10:=
 		>=dev-libs/dbus-glib-0.100
 		>=dev-libs/glib-2.32:2
 		>=x11-libs/gtk+-3.4:3
-		ayatana? ( >=dev-libs/libappindicator-0.4.90:3 )
+		appindicator? ( >=dev-libs/libappindicator-0.4.90:3 )
 		)
 	qt5? (
 		dev-qt/qtcore:5
@@ -53,7 +53,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}"
 
-REQUIRED_USE="ayatana? ( gtk )"
+REQUIRED_USE="appindicator? ( gtk )"
 
 DOCS=( AUTHORS NEWS qt/README.txt )
 
@@ -65,7 +65,7 @@ src_prepare() {
 	sed -i -e '/CFLAGS/s:-ggdb3::' configure.ac || die
 
 	# Trick to avoid automagic dependency
-	if ! use ayatana ; then
+	if ! use appindicator ; then
 		sed -i -e '/^LIBAPPINDICATOR_MINIMUM/s:=.*:=9999:' configure.ac || die
 	fi
 

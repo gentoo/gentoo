@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Time library"
-HOMEPAGE="http://hackage.haskell.org/package/old-time"
+HOMEPAGE="https://hackage.haskell.org/package/old-time"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

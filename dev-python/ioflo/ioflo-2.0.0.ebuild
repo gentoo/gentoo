@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '>=dev-lang/python-3.7.4' python3_7)
@@ -23,7 +23,7 @@ PATCHES=(
 	"${FILESDIR}/ioflo-1.7.8-network-test.patch"
 )
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -e 's:"setuptools_git[^"]*",::' -i setup.py || die

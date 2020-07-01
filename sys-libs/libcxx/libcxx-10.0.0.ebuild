@@ -14,7 +14,7 @@ llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="elibc_glibc elibc_musl +libcxxabi +libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( libcxxabi )"
 RESTRICT="!test? ( test )"
@@ -54,12 +54,6 @@ pkg_setup() {
 		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"
 		eerror "compilers are not supported. Please set CC=gcc and CXX=g++"
 		eerror "and try again."
-		die
-	fi
-	if tc-is-gcc && [[ $(gcc-version) < 4.7 ]] ; then
-		eerror "${PN} needs to be built with gcc-4.7 or later (or other"
-		eerror "conformant compilers). Please use gcc-config to switch to"
-		eerror "gcc-4.7 or later version."
 		die
 	fi
 }

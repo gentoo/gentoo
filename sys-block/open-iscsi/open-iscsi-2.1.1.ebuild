@@ -31,7 +31,7 @@ BDEPEND="virtual/pkgconfig"
 REQUIRED_USE="infiniband? ( rdma ) || ( rdma tcp )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.0.876-Makefiles.patch"
+	"${FILESDIR}/${PN}-2.1.1-Makefiles.patch"
 )
 
 pkg_setup() {

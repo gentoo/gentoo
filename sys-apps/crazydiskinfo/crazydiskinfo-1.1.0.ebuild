@@ -18,3 +18,11 @@ DEPEND="
 	sys-libs/ncurses:0="
 
 RDEPEND="$DEPEND"
+
+src_prepare() {
+	sed -e "s#^set(CMAKE_CXX_FLAGS.*#set(CMAKE_CXX_FLAGS \"${CXXFLAGS} -Wall -std=c++11\")#" \
+		-e "5s#^#set(CMAKE_C_FLAGS \"${CFLAGS}\")\n#" \
+		-i CMakeLists.txt || die "can't patch CMakeLists.txt"
+
+	cmake-utils_src_prepare
+}

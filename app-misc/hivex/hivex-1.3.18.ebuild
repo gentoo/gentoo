@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 RUBY_OPTIONAL=yes
 
 PYTHON_COMPAT=( python3_{6,7,8} )
@@ -96,15 +96,13 @@ src_install() {
 	strip-linguas -i po
 
 	emake install DESTDIR="${ED}" "LINGUAS=""${LINGUAS}"""
-	python_optimize
+	if use python; then
+		python_optimize
+	fi
 
 	ruby-ng_src_install
 
 	if use perl; then
 		perl_delete_localpod
 	fi
-
-	#can't figure out a better way to do this
-	mv "${ED}"/usr/man/man3/* "${ED}/usr/share/man/man3/" || die
-	rm -r "${ED}/usr/man" || die
 }

@@ -26,7 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	introspection? ( $(vala_depend) )
 	dev-util/gtk-doc-am
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 PATCHES=(

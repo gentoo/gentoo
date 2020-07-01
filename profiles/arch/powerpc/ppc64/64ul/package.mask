@@ -13,4 +13,3 @@ dev-java/openjdk-bin
 
 # <gcc-4 does not compile with >=gcc-4 on ppc64
 sys-libs/libstdc++-v3
-<sys-devel/gcc-4.1

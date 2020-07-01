@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} pypy3 )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 distutils_enable_tests setup.py
 
@@ -27,6 +27,9 @@ src_prepare() {
 		-i tests/test_locators.py || die
 	# no clue but it looks horribly fragile
 	sed -e 's:test_sequencer_basic:_&:' \
+		-i tests/test_util.py || die
+	# progress bar test cases, very fragile
+	sed -e '/ProgressTestCase/s:unittest.TestCase:object:' \
 		-i tests/test_util.py || die
 	# TODO: investigate
 	sed -e 's:test_upload:_&:' \

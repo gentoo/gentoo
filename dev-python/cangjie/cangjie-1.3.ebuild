@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Cangjians/py${PN}/releases/download/v${PV}/${P#py}.t
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

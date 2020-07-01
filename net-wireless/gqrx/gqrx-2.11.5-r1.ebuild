@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils eutils
 
 DESCRIPTION="Software defined radio receiver powered by GNU Radio and Qt"
-HOMEPAGE="http://gqrx.dk/"
+HOMEPAGE="https://gqrx.dk/"
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/csete/gqrx.git"

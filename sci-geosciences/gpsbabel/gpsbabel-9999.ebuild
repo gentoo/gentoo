@@ -1,11 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit autotools eutils qmake-utils
+EAPI=7
 
 MY_PV=${PV//./_}
+inherit autotools desktop qmake-utils
 
 DESCRIPTION="GPS waypoints, tracks and routes converter"
 HOMEPAGE="https://www.gpsbabel.org/ https://github.com/gpsbabel/gpsbabel"
@@ -27,6 +26,14 @@ fi
 SLOT="0"
 IUSE="doc +gui"
 
+BDEPEND="
+	doc? (
+		app-text/docbook-xml-dtd:4.1.2
+		dev-lang/perl
+		dev-libs/libxslt
+	)
+	gui? ( dev-qt/linguist-tools:5 )
+"
 RDEPEND="
 	dev-libs/expat
 	dev-qt/qtcore:5
@@ -42,14 +49,7 @@ RDEPEND="
 		dev-qt/qtxml:5
 	)
 "
-DEPEND="${RDEPEND}
-	doc? (
-		app-text/docbook-xml-dtd:4.1.2
-		dev-lang/perl
-		dev-libs/libxslt
-	)
-	gui? ( dev-qt/linguist-tools:5 )
-"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README.{contrib,igc,mapconverter,md,xmapwpt} )
 
@@ -69,21 +69,25 @@ src_prepare() {
 	# remove bundled libs and cleanup
 	rm -r shapelib || die
 
-	use doc && cp "${DISTDIR}/gpsbabel.org-style3.css" "${S}"
+	if use doc; then
+		cp "${DISTDIR}/gpsbabel.org-style3.css" . || die
+	fi
 
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_with doc doc "${S}"/doc/manual) \
-		LRELEASE=$(qt5_get_bindir)/lrelease \
-		LUPDATE=$(qt5_get_bindir)/lupdate \
-		QMAKE=$(qt5_get_bindir)/qmake \
+	local myeconfargs=(
+		$(use_with doc doc doc/manual)
+		LRELEASE=$(qt5_get_bindir)/lrelease
+		LUPDATE=$(qt5_get_bindir)/lupdate
+		QMAKE=$(qt5_get_bindir)/qmake
 		--with-zlib=system
+	)
+	econf "${myeconfargs[@]}"
 
 	if use gui; then
-		pushd "${S}/gui" > /dev/null || die
+		pushd gui > /dev/null || die
 		$(qt5_get_bindir)/lrelease *.ts || die
 		eqmake5
 		popd > /dev/null
@@ -93,7 +97,7 @@ src_configure() {
 src_compile() {
 	default
 	if use gui; then
-		pushd "${S}/gui" > /dev/null || die
+		pushd gui > /dev/null || die
 		emake
 		popd > /dev/null
 	fi
@@ -105,7 +109,7 @@ src_compile() {
 }
 
 src_install() {
-	use doc && HTML_DOCS=( "${S}"/${PN}.html "${S}"/${PN}.org-style3.css )
+	use doc && local HTML_DOCS=( ${PN}.html ${PN}.org-style3.css )
 
 	default
 

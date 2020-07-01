@@ -1,0 +1,149 @@
+From 5ea54eda5d1f91428933d338ea8b950aea86d43a Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Wed, 6 May 2020 15:15:03 +0200
+Subject: [kcmkwin/kwindecoration] Don't exec() QDialog
+
+Using nested event loops with QML is always troublesome.
+
+BUG: 421053
+FIXED-IN: 5.18.6
+
+Differential Revision: https://phabricator.kde.org/D29473
+---
+ .../declarative-plugin/previewbridge.cpp           | 32 +++++++++++++++-------
+ .../declarative-plugin/previewbridge.h             |  4 ++-
+ .../kwindecoration/package/contents/ui/Themes.qml  |  3 +-
+ 3 files changed, 27 insertions(+), 12 deletions(-)
+
+diff --git a/kcmkwin/kwindecoration/declarative-plugin/previewbridge.cpp b/kcmkwin/kwindecoration/declarative-plugin/previewbridge.cpp
+index bad4cc1..83a9bd9 100644
+--- a/kcmkwin/kwindecoration/declarative-plugin/previewbridge.cpp
++++ b/kcmkwin/kwindecoration/declarative-plugin/previewbridge.cpp
+@@ -36,7 +36,11 @@
+ #include <QDialog>
+ #include <QDialogButtonBox>
+ #include <QPushButton>
++#include <QQuickItem>
++#include <QQuickRenderControl>
++#include <QQuickWindow>
+ #include <QVBoxLayout>
++#include <QWindow>
+ 
+ namespace KDecoration2
+ {
+@@ -173,15 +177,16 @@ DecorationButton *PreviewBridge::createButton(KDecoration2::Decoration *decorati
+     return m_factory->create<KDecoration2::DecorationButton>(QStringLiteral("button"), parent, QVariantList({QVariant::fromValue(type), QVariant::fromValue(decoration)}));
+ }
+ 
+-void PreviewBridge::configure()
++void PreviewBridge::configure(QQuickItem *ctx)
+ {
+     if (!m_valid) {
+         return;
+     }
+     //setup the UI
+-    QDialog dialog;
++    QDialog *dialog = new QDialog();
++    dialog->setAttribute(Qt::WA_DeleteOnClose);
+     if (m_lastCreatedClient) {
+-        dialog.setWindowTitle(m_lastCreatedClient->caption());
++        dialog->setWindowTitle(m_lastCreatedClient->caption());
+     }
+ 
+     // create the KCModule through the plugintrader
+@@ -189,7 +194,7 @@ void PreviewBridge::configure()
+     if (!m_theme.isNull()) {
+         args.insert(QStringLiteral("theme"), m_theme);
+     }
+-    KCModule *kcm = m_factory->create<KCModule>(QStringLiteral("kcmodule"), &dialog, QVariantList({args}));
++    KCModule *kcm = m_factory->create<KCModule>(QStringLiteral("kcmodule"), dialog, QVariantList({args}));
+     if (!kcm) {
+         return;
+     }
+@@ -205,28 +210,35 @@ void PreviewBridge::configure()
+                                                           QStringLiteral("reloadConfig"));
+         QDBusConnection::sessionBus().send(message);
+     };
+-    connect(&dialog, &QDialog::accepted, this, save);
++    connect(dialog, &QDialog::accepted, this, save);
+ 
+     QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok |
+                                                      QDialogButtonBox::Cancel |
+                                                      QDialogButtonBox::RestoreDefaults |
+                                                      QDialogButtonBox::Reset,
+-                                                     &dialog);
++                                                     dialog);
+ 
+     QPushButton *reset = buttons->button(QDialogButtonBox::Reset);
+     reset->setEnabled(false);
+     // Here we connect our buttons with the dialog
+-    connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+-    connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
++    connect(buttons, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
++    connect(buttons, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
+     connect(reset, &QPushButton::clicked, kcm, &KCModule::load);
+     auto changedSignal = static_cast<void(KCModule::*)(bool)>(&KCModule::changed);
+     connect(kcm, changedSignal, reset, &QPushButton::setEnabled);
+     connect(buttons->button(QDialogButtonBox::RestoreDefaults), &QPushButton::clicked, kcm, &KCModule::defaults);
+ 
+-    QVBoxLayout *layout = new QVBoxLayout(&dialog);
++    QVBoxLayout *layout = new QVBoxLayout(dialog);
+     layout->addWidget(kcm);
+     layout->addWidget(buttons);
+-    dialog.exec();
++
++    if (ctx->window()) {
++        dialog->winId(); // so it creates windowHandle
++        dialog->windowHandle()->setTransientParent(QQuickRenderControl::renderWindowFor(ctx->window()));
++        dialog->setModal(true);
++    }
++
++    dialog->show();
+ }
+ 
+ BridgeItem::BridgeItem(QObject *parent)
+diff --git a/kcmkwin/kwindecoration/declarative-plugin/previewbridge.h b/kcmkwin/kwindecoration/declarative-plugin/previewbridge.h
+index 7e1d8f3..85fccbe 100644
+--- a/kcmkwin/kwindecoration/declarative-plugin/previewbridge.h
++++ b/kcmkwin/kwindecoration/declarative-plugin/previewbridge.h
+@@ -26,6 +26,8 @@
+ #include <QList>
+ #include <QPointer>
+ 
++class QQuickItem;
++
+ class KPluginFactory;
+ 
+ namespace KDecoration2
+@@ -70,7 +72,7 @@ public:
+     KDecoration2::DecorationButton *createButton(KDecoration2::Decoration *decoration, KDecoration2::DecorationButtonType type, QObject *parent = nullptr);
+ 
+ public Q_SLOTS:
+-    void configure();
++    void configure(QQuickItem *ctx);
+ 
+ Q_SIGNALS:
+     void pluginChanged();
+diff --git a/kcmkwin/kwindecoration/package/contents/ui/Themes.qml b/kcmkwin/kwindecoration/package/contents/ui/Themes.qml
+index 28e5899..1eeb4cd 100644
+--- a/kcmkwin/kwindecoration/package/contents/ui/Themes.qml
++++ b/kcmkwin/kwindecoration/package/contents/ui/Themes.qml
+@@ -40,6 +40,7 @@ KCM.GridView {
+     view.implicitCellWidth: Kirigami.Units.gridUnit * 18
+ 
+     view.delegate: KCM.GridDelegate {
++        id: delegate
+         text: model.display
+ 
+         thumbnailAvailable: true
+@@ -101,7 +102,7 @@ KCM.GridView {
+                 onTriggered: {
+                     kcm.theme = index
+                     view.currentIndex = index
+-                    bridgeItem.bridge.configure()
++                    bridgeItem.bridge.configure(delegate)
+                 }
+             }
+         ]
+-- 
+cgit v1.1

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ RDEPEND="
 	x11-libs/libxcb[xkb]
 	consolekit? ( >=sys-auth/consolekit-0.9.4 )
 	elogind? ( sys-auth/elogind )
-	pam? ( sys-libs/pam )
+	pam? ( <=sys-libs/pam-1.3.1_p20200128-r1 )
 	systemd? ( sys-apps/systemd:= )
 	!systemd? ( sys-power/upower )
 "

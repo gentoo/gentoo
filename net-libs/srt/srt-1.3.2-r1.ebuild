@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake-multilib
 
-DESCRIPTION="Open-source implementation of the Secure Real-time Transport Protocol (SRTP)"
+DESCRIPTION="Secure Reliable Transport (SRT) library and tools"
 HOMEPAGE="https://github.com/Haivision/srt"
 
 if [[ ${PV} == *9999 ]] ; then

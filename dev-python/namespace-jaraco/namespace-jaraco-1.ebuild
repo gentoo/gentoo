@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7}} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8,9}} )
 inherit python-r1
 
 DESCRIPTION="Namespace package declaration for jaraco"

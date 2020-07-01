@@ -12,8 +12,8 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.0.13"
-MY_PV_RPL="0.0.8"
+MY_PV_OBJ="1.0.14"
+MY_PV_RPL="0.0.12"
 MY_PV_TS="0.1.2c"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
@@ -30,6 +30,7 @@ KEYWORDS=""
 IUSE="dedicated libressl +lightfx +opengl test +truetype twitch"
 
 COMMON_DEPEND="
+	dev-lang/duktape
 	dev-libs/icu:=
 	dev-libs/jansson
 	dev-libs/libzip:=

@@ -6,4 +6,7 @@
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<longdescription>ESR's utility for making fast comparisons among large source trees</longdescription>
+	<upstream>
+		<remote-id type="gitlab">esr/comparator</remote-id>
+	</upstream>
 </pkgmetadata>

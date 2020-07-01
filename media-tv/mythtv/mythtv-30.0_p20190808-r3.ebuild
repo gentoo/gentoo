@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-Fix_Dereferencing_type-punned_pointer.patch"
 	"${FILESDIR}/${P}-Fix_unitialized_variables.patch"
 	"${FILESDIR}/${PN}-29.1-Fix_create_webbrowser_window.patch"
+	"${FILESDIR}/${P}-Include_QPainterPath.patch"
 )
 
 # mythtv and mythplugins are separate builds in the github mythtv project

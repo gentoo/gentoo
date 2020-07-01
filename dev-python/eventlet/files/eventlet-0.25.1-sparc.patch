@@ -1,0 +1,118 @@
+From b288e969b6a0ed24913114b7b7eaad5010db5ce1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 29 May 2020 09:04:37 +0200
+Subject: [PATCH 1/4] tests: F_SETFL does not return flags, use F_GETFL again
+
+Fix TestGreenSocket.test_skip_nonblocking() to call F_GETFL again
+to get the flags for the socket.  Previously, the code wrongly assumed
+F_SETFL will return flags while it always returns 0 (see fcntl(2)).
+---
+ tests/greenio_test.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/greenio_test.py b/tests/greenio_test.py
+index 39d77737b..593444d07 100644
+--- a/tests/greenio_test.py
++++ b/tests/greenio_test.py
+@@ -634,7 +634,8 @@ def test_skip_nonblocking(self):
+         sock1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+         fd = sock1.fd.fileno()
+         flags = fcntl.fcntl(fd, fcntl.F_GETFL)
+-        flags = fcntl.fcntl(fd, fcntl.F_SETFL, flags & ~os.O_NONBLOCK)
++        fcntl.fcntl(fd, fcntl.F_SETFL, flags & ~os.O_NONBLOCK)
++        flags = fcntl.fcntl(fd, fcntl.F_GETFL)
+         assert flags & os.O_NONBLOCK == 0
+ 
+         sock2 = socket.socket(sock1.fd, set_nonblocking=False)
+
+From 803422302f5e813f1f00435d7ae943bf8513946c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 29 May 2020 09:07:17 +0200
+Subject: [PATCH 2/4] tests: Unset O_NONBLOCK|O_NDELAY to fix SPARC
+
+Fix TestGreenSocket.test_skip_nonblocking() to unset both O_NONBLOCK
+and O_NDELAY.  This is necessary to fix tests on SPARC where both flags
+are used simultaneously, and unsetting one is ineffective (flags remain
+the same).  This should not affect other platforms where O_NDELAY
+is an alias for O_NONBLOCK.
+---
+ tests/greenio_test.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/greenio_test.py b/tests/greenio_test.py
+index 593444d07..736c2e539 100644
+--- a/tests/greenio_test.py
++++ b/tests/greenio_test.py
+@@ -634,7 +634,9 @@ def test_skip_nonblocking(self):
+         sock1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+         fd = sock1.fd.fileno()
+         flags = fcntl.fcntl(fd, fcntl.F_GETFL)
+-        fcntl.fcntl(fd, fcntl.F_SETFL, flags & ~os.O_NONBLOCK)
++        # on SPARC, nonblocking mode sets O_NDELAY as well
++        fcntl.fcntl(fd, fcntl.F_SETFL, flags & ~(os.O_NONBLOCK
++                                                 | os.O_NDELAY))
+         flags = fcntl.fcntl(fd, fcntl.F_GETFL)
+         assert flags & os.O_NONBLOCK == 0
+ 
+
+From b742b443d079ec9001a1452e138773b066ed784e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 29 May 2020 09:09:07 +0200
+Subject: [PATCH 3/4] tests: Assume that nonblocking mode might set O_NDELAY to
+ fix SPARC
+
+Fix test_set_nonblocking() to account for the alternative possible
+outcome that enabling non-blocking mode can set both O_NONBLOCK
+and O_NDELAY as it does on SPARC.  Note that O_NDELAY may be a superset
+of O_NONBLOCK, so we can't just filter it out of new_flags.
+---
+ tests/greenio_test.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tests/greenio_test.py b/tests/greenio_test.py
+index 736c2e539..a2d1ad856 100644
+--- a/tests/greenio_test.py
++++ b/tests/greenio_test.py
+@@ -925,7 +925,10 @@ def test_set_nonblocking():
+     assert orig_flags & os.O_NONBLOCK == 0
+     greenio.set_nonblocking(sock)
+     new_flags = fcntl.fcntl(fileno, fcntl.F_GETFL)
+-    assert new_flags == (orig_flags | os.O_NONBLOCK)
++    # on SPARC, O_NDELAY is set as well, and it might be a superset
++    # of O_NONBLOCK
++    assert (new_flags == (orig_flags | os.O_NONBLOCK)
++            or new_flags == (orig_flags | os.O_NONBLOCK | os.O_NDELAY))
+ 
+ 
+ def test_socket_del_fails_gracefully_when_not_fully_initialized():
+
+From d324431b14ea57c6d7b295bd8b00f128ed4c2f5a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 29 May 2020 09:17:21 +0200
+Subject: [PATCH 4/4] tests: Increase timeout for
+ test_isolate_from_socket_default_timeout
+
+Increase the timeout used for test_isolate_from_socket_default_timeout
+from 1 second to 5 seconds.  Otherwise, the test can't succeed
+on hardware where Python runs slower.  In particular, on our SPARC box
+importing greenlet modules takes almost 2 seconds, so the test program
+does not even start properly.
+
+Fixes #614
+---
+ tests/tpool_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/tpool_test.py b/tests/tpool_test.py
+index 4826f30de..1a730dc10 100644
+--- a/tests/tpool_test.py
++++ b/tests/tpool_test.py
+@@ -366,7 +366,7 @@ def test_leakage_from_tracebacks(self):
+ 
+ 
+ def test_isolate_from_socket_default_timeout():
+-    tests.run_isolated('tpool_isolate_socket_default_timeout.py', timeout=1)
++    tests.run_isolated('tpool_isolate_socket_default_timeout.py', timeout=5)
+ 
+ 
+ def test_exception_leak():

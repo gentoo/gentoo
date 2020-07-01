@@ -94,7 +94,6 @@ DEPEND='
 		app-misc/screen
 		|| (
 			>=sys-apps/coreutils-8.15
-			sys-freebsd/freebsd-bin
 			app-misc/realpath
 		)
 	)

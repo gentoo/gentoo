@@ -1,6 +1,6 @@
 [Unit]
 Description=DNSCrypt-proxy client
-Documentation=https://github.com/jedisct1/dnscrypt-proxy/wiki
+Documentation=https://github.com/DNSCrypt/dnscrypt-proxy/wiki
 
 ## systemd sockets - Do not enable unless you are very familiar with the systemd socket activation mechanism.
 ## Always try without systemd sockets before reporting any issues related to speed, latency or reliability.

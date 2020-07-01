@@ -31,6 +31,9 @@ src_prepare() {
 src_configure() {
 	CFLAGS_MACHINE="`get-flag -march` `get-flag -mcpu` `get-flag -mtune`"
 
+	# Work around -fno-common ( GCC10 default ), bug #71202
+	append-flags -fcommon
+
 	append-flags -fno-strict-aliasing
 	use debug && append-flags -DDEBUG
 

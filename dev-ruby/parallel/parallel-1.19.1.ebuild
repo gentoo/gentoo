@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 SLOT="1"
 IUSE="test"
 
-DEPEND+="test? ( sys-process/lsof )"
+DEPEND+="test? ( sys-process/lsof sys-process/procps )"
 
 ruby_add_bdepend "
 	test? ( dev-ruby/ruby-progressbar dev-ruby/activerecord:5.2 dev-ruby/sqlite3 )"

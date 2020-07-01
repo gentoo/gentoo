@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit linux-info
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="The Linux Precision Time Protocol (PTP) implementation"
 HOMEPAGE="http://linuxptp.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/v${PV}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -19,9 +19,15 @@ RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~PPS ~NETWORK_PHY_TIMESTAMPING ~PTP_1588_CLOCK"
 
+pkg_setup() {
+	linux-info_pkg_setup
+}
+
 src_compile() {
-	export EXTRA_CFLAGS=${CFLAGS}
-	emake prefix=/usr mandir=/usr/share/man
+	# parse needed additional CFLAGS
+	export MY_FLAGS=$(./incdefs.sh)
+	export EXTRA_CFLAGS="${CFLAGS} ${MY_FLAGS}"
+	emake CC="$(tc-getCC)" prefix=/usr mandir=/usr/share/man
 }
 
 src_install() {

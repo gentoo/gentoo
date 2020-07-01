@@ -4,6 +4,14 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Michał Górny <mgorny@gentoo.org> (2020-06-14)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
+# Michał Górny <mgorny@gentoo.org> (2020-05-03)
+# Requires unsupported dev-python/gevent.
+dev-python/socketpool eventlet gevent
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
 # dependencies not yet keyworded
 dev-ruby/activemodel test
@@ -57,10 +65,6 @@ net-misc/openssh security-key
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
 # net-libs/libgadu is not keyworded
 net-im/pidgin gadu
-
-# Joonas Niilola <juippis@gentoo.org> (2020-02-02)
-# luajit is not keyworded on this arch.
-dev-libs/efl luajit
 
 # Jeroen Roovers <jer@gentoo.org> (2020-01-28)
 # sys-apps/systemd is not stable
@@ -173,11 +177,6 @@ kde-frameworks/extra-cmake-modules doc
 # pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
 net-misc/chrony html
 
-# Jeroen Roovers <jer@gentoo.org> (2015-08-16)
-# Bundles luajit which has not been ported to HPPA (bug #554376)
-app-text/texlive-core luajittex
-dev-texlive/texlive-basic luajittex
-
 # Jeroen Roovers <jer@gentoo.org> (2015-07-03)
 # net-libs/nghttp2 fails to compile (bug #552898)
 net-libs/nghttp2 cxx
@@ -279,10 +278,6 @@ app-office/lyx gnumeric
 # Jeroen Roovers <jer@gentoo.org> (2011-02-24)
 # Needs Java (bug #355353)
 app-text/texlive pdfannotextractor
-
-# Justin Lecher <jlec@gentoo.org> (2010-08-13)
-# MKL not available on this arch
-media-gfx/povray mkl
 
 # Pacho Ramos <pacho@gentoo.org> (2010-07-11)
 # Mask due bug #324511, this will be general once needed by more packages.

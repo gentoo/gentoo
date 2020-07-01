@@ -5,7 +5,7 @@ EAPI=6
 
 WX_GTK_VER=3.0
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit fdo-mime python-r1 wxwidgets
 

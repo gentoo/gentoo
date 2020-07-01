@@ -14,8 +14,10 @@ KEYWORDS=""
 IUSE="static-libs"
 RESTRICT="test"
 
-DEPEND="sys-devel/libtool
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+BDEPEND="
+	sys-devel/libtool
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default

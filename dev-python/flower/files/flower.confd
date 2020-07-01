@@ -1,2 +1,0 @@
-# extra arguments for the flower
-command_args="--conf=/etc/flower/config.py"

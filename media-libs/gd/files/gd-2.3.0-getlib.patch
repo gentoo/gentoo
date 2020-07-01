@@ -1,0 +1,81 @@
+From 635dd9a3065ed88e1741e6b963044b80e913f96a Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Tue, 24 Mar 2020 08:01:01 +0100
+Subject: [PATCH] distribute getlib.sh
+
+---
+ config/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/Makefile.am b/config/Makefile.am
+index 122287ee..6416dda4 100644
+--- a/config/Makefile.am
++++ b/config/Makefile.am
+@@ -1,5 +1,5 @@
+ ## Process this file with automake to produce Makefile.in -*-Makefile-*-
+-EXTRA_DIST = gdlib.pc.cmake gdlib.pc.in getver.pl
++EXTRA_DIST = gdlib.pc.cmake gdlib.pc.in getlib.sh getver.pl
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = gdlib.pc
+
+diff -ruN a/config/getlib.sh b/config/getlib.sh
+--- a/config/getlib.sh	1970-01-01 00:00:00.000000000 -0000
++++ b/config/getlib.sh	2020-05-05 17:37:31.638896089 -0000
+@@ -0,0 +1,43 @@
++#!/bin/sh
++
++GETVER="${0%/*}/getver.pl"
++GDLIB_MAJOR=$("${GETVER}" MAJOR)
++GDLIB_MINOR=$("${GETVER}" MINOR)
++GDLIB_REVISION=$("${GETVER}" RELEASE)
++
++# Dynamic library version information
++# See http://www.gnu.org/software/libtool/manual/libtool.html#Updating-version-info
++
++GDLIB_LT_CURRENT=3
++# This is the version where the soname (current above) changes.  We use it
++# to reset the revision base back to zero.  It's a bit of a pain, but some
++# systems restrict the revision range below to [0..255] (like OS X).
++GDLIB_PREV_MAJOR=2
++GDLIB_PREV_MINOR=2
++# This isn't 100% correct, but it tends to be a close enough approximation
++# for how we manage the codebase.  It's rare to do a release that doesn't
++# modify the library since this project is centered around the library.
++GDLIB_LT_REVISION=$(( ((GDLIB_MAJOR - GDLIB_PREV_MAJOR) << 6) | ((GDLIB_MINOR - GDLIB_PREV_MINOR) << 3) | GDLIB_REVISION ))
++GDLIB_LT_AGE=0
++
++# The first three fields we feed into libtool and the OS target determines how
++# they get used.  The last two fields we feed into cmake.  We use the same rules
++# as Linux SONAME versioning in libtool, but cmake should handle it for us.
++case $1 in
++CURRENT)
++	printf '%s' "${GDLIB_LT_CURRENT}"
++	;;
++REVISION)
++	printf '%s' "${GDLIB_LT_REVISION}"
++	;;
++AGE)
++	printf '%s' "${GDLIB_LT_AGE}"
++	;;
++VERSION)
++	printf '%s' "$(( GDLIB_LT_CURRENT - GDLIB_LT_AGE )).${GDLIB_LT_AGE}.${GDLIB_LT_REVISION}"
++	;;
++SONAME)
++	printf '%s' "$(( GDLIB_LT_CURRENT - GDLIB_LT_AGE ))"
++	;;
++esac
++
+diff --git a/configure.ac b/configure.ac
+index 8996053..86d0bc9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -20,7 +20,7 @@ AC_CANONICAL_HOST
+ 
+ dnl Keep the libtool version details in an external script so cmake can
+ dnl access the values too.
+-define([lt_gv], [config/getlib.sh ]$1)
++define([lt_gv], [${SHELL} config/getlib.sh ]$1)
+ m4_define([gd_LT_CURRENT], esyscmd(lt_gv(CURRENT)))
+ m4_define([gd_LT_REVISION], esyscmd(lt_gv(REVISION)))
+ m4_define([gd_LT_AGE], esyscmd(lt_gv(AGE)))

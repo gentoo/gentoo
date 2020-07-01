@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools desktop flag-o-matic toolchain-funcs pax-utils
 
 DESCRIPTION="SNES (Super Nintendo) emulator that uses x86 assembly"
-HOMEPAGE="http://www.zsnes.com/ http://ipherswipsite.com/zsnes/"
+HOMEPAGE="https://www.zsnes.com/ http://ipherswipsite.com/zsnes/"
 SRC_URI="mirror://sourceforge/zsnes/${PN}${PV//./}src.tar.bz2"
 
 LICENSE="GPL-2"

@@ -11,8 +11,6 @@ AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 X86_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86-${PV}"
 AMD64_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86_64-${PV}"
 
-DESCRIPTION="NVIDIA Accelerated Graphics Driver"
-HOMEPAGE="https://www.nvidia.com/"
 SRC_URI="
 	amd64-fbsd? ( ${NV_URI}FreeBSD-x86_64/${PV}/${AMD64_FBSD_NV_PACKAGE}.tar.gz )
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
@@ -24,7 +22,7 @@ SRC_URI="
 "
 
 EMULTILIB_PKG="true"
-IUSE="acpi multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
+IUSE="multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
 KEYWORDS="-* amd64 x86"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
@@ -57,7 +55,6 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON}
-	acpi? ( sys-power/acpid )
 	tools? ( !media-video/nvidia-settings )
 	X? (
 		<x11-base/xorg-server-1.20.99:=
@@ -73,7 +70,13 @@ REQUIRED_USE="tools? ( X )"
 QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
 NV_KV_MAX_PLUS="5.5"
-CONFIG_CHECK="!DEBUG_MUTEXES ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
+CONFIG_CHECK="
+	!DEBUG_MUTEXES
+	DRM
+	DRM_KMS_HELPER
+	~!LOCKDEP
+	~SYSVIPC
+"
 
 pkg_pretend() {
 	use x86 && CONFIG_CHECK+=" ~HIGHMEM"

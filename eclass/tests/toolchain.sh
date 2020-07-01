@@ -83,6 +83,7 @@ test_downgrade_arch_flags 3.3 "-march=k6-2"       "-march=geode -mtune=barcelona
 test_downgrade_arch_flags 3.4 "-march=k8"         "-march=btver2 -mtune=generic"
 
 test_downgrade_arch_flags 10  "-march=native"     "-march=native"
+test_downgrade_arch_flags 8   "-march=znver1"     "-march=znver2"
 test_downgrade_arch_flags 4.2 "-march=native"     "-march=native"
 test_downgrade_arch_flags 4.1 "-march=nocona"     "-march=native"
 

@@ -6,7 +6,7 @@ EAPI=7
 inherit vcs-clean
 
 DESCRIPTION="JavaScript display engine for LaTeX, MathML and AsciiMath"
-HOMEPAGE="http://www.mathjax.org/"
+HOMEPAGE="https://www.mathjax.org/"
 SRC_URI="https://github.com/mathjax/MathJax/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

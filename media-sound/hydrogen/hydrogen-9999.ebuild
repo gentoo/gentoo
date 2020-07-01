@@ -26,6 +26,7 @@ IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio"
 REQUIRED_USE="lash? ( alsa )"
 
 BDEPEND="
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "

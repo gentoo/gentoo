@@ -22,4 +22,5 @@ SLOT="3"
 
 all_ruby_prepare() {
 	sed -i -e 's:require_relative ":require "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -i -e '/bundler/ s:^:#:' Rakefile || die
 }

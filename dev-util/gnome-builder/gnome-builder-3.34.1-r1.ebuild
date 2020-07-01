@@ -75,7 +75,8 @@ DEPEND="${RDEPEND}"
 # desktop-file-utils required for tests, but we have it in deptree for xdg update-desktop-database anyway, so be explicit and unconditional
 # appstream-glib needed for validation with appstream-util with FEATURES=test
 BDEPEND="
-	doc? ( dev-python/sphinx )
+	doc? ( dev-python/sphinx
+		dev-python/sphinx_rtd_theme )
 	gtk-doc? ( dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.3 )
 	test? (
@@ -115,6 +116,7 @@ that are currently available with packages include:
 PATCHES=(
 	"${WORKDIR}/patches" # gnome-builder-3-34 branch 2020-01-22 (commit bf485934b37) + cherry-picked meson link_whole fixes
 	"${FILESDIR}"/${PV}-optional-vala.patch
+	"${FILESDIR}"/libgit2-1.0-compat.patch
 )
 
 llvm_check_deps() {

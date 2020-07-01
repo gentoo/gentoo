@@ -13,6 +13,8 @@
 
 inherit readme.gentoo-r1
 
+DESCRIPTION="NVIDIA Accelerated Graphics Driver"
+HOMEPAGE="https://www.nvidia.com/Download/Find.aspx"
 DEPEND="sys-apps/pciutils"
 RESTRICT="bindist mirror test"
 

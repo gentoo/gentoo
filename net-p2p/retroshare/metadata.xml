@@ -20,12 +20,10 @@
 	<use>
 		<flag name="cli">Enables the CLI version of RetroShare</flag>
 		<flag name="control-socket">Enables API via Unix socket support</flag>
-		<flag name="feedreader">Enables the Feedreader plugin</flag>
 		<flag name="gnome-keyring">Enables potentially insecure autologin capability via Gnome Keyring</flag>
 		<flag name="jsonapi">Enables the new RetroShare JSON API</flag>
 		<flag name="service">Enables the new RetroShare service controllable only through JSON API</flag>
 		<flag name="sqlcipher">Enables GXS database encryption via SQLCipher</flag>
-		<flag name="voip">Enables VOIP plugin</flag>
 		<flag name="webui">Enables Web interface and API support</flag>
 		<flag name="xapian">Enables GXS content indexing and search through Xapian</flag>
 	</use>

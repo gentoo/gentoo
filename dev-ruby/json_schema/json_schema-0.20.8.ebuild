@@ -24,5 +24,6 @@ IUSE=""
 ruby_add_bdepend "test? ( dev-ruby/ecma-re-validator )"
 
 all_ruby_prepare() {
+	sed -i -e '/bundler/I s:^:#:' Rakefile || die
 	sed -i -e '/^if/,/^end/ s:^:#:' test/test_helper.rb || die
 }

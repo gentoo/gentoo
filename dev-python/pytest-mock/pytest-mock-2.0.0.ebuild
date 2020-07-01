@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -23,6 +23,10 @@ BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/pytest-mock-2.0.0-warnings.patch
+)
 
 src_prepare() {
 	if has_version dev-python/mock; then

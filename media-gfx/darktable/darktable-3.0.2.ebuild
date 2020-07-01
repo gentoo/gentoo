@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic pax-utils toolchain-funcs xdg
+inherit cmake flag-o-matic toolchain-funcs xdg
 
 DOC_PV="3.0.0"
 MY_PV="${PV/_/}"
@@ -20,8 +20,8 @@ KEYWORDS="~amd64 ~x86"
 LANGS=" ca cs da de es fr he hu it ja nb nl pl ru sl"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
-nls opencl openmp openexr pax_kernel webp
-${LANGS// / l10n_}"
+	nls opencl openmp openexr tools webp
+	${LANGS// / l10n_}"
 
 BDEPEND="
 	dev-util/intltool
@@ -63,7 +63,6 @@ DEPEND="${COMMON_DEPEND}
 		>=sys-devel/clang-4
 		>=sys-devel/llvm-4
 	)
-	openmp? ( sys-devel/gcc[openmp,graphite] )
 "
 RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
@@ -71,13 +70,23 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
+	"${FILESDIR}"/${PN}-3.0.2_cmake-opencl-kernel-loop.patch
+	"${FILESDIR}"/${PN}-3.0.2_jsonschema-automagic.patch
 )
 
 S="${WORKDIR}/${P/_/~}"
 
 pkg_pretend() {
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		# Bug #695658
+		if tc-is-gcc; then
+			test-flags-CC -floop-block &> /dev/null || \
+				die "Please switch to a gcc version built with USE=graphite"
+		fi
+
+		if use openmp ; then
+			tc-has-openmp || die "Please switch to an openmp compatible compiler"
+		fi
 	fi
 }
 
@@ -91,6 +100,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_CURVE_TOOLS=$(usex tools)
+		-DBUILD_NOISE_TOOLS=$(usex tools)
 		-DBUILD_PRINT=$(usex cups)
 		-DCUSTOM_CFLAGS=ON
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
@@ -123,23 +134,16 @@ src_install() {
 			fi
 		done
 	fi
-
-	if use pax_kernel && use opencl ; then
-		pax-mark Cm "${ED}"/usr/bin/${PN} || die
-		eqawarn "USE=pax_kernel is set meaning that ${PN} will be run"
-		eqawarn "under a PaX enabled kernel. To do so, the ${PN} binary"
-		eqawarn "must be modified and this *may* lead to breakage! If"
-		eqawarn "you suspect that ${PN} is broken by this modification,"
-		eqawarn "please open a bug."
-	fi
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "when updating a major version,"
+	elog
+	elog "When updating a major version,"
 	elog "please bear in mind that your edits will be preserved during this process,"
 	elog "but it will not be possible to downgrade any more."
-	echo
+	elog
 	ewarn "It will not be possible to downgrade!"
+	ewarn
 }

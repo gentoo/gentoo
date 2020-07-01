@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 virtualx
@@ -18,7 +18,7 @@ SRC_URI="https://twistedmatrix.com/Releases/${TWISTED_PN}"
 SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 
 LICENSE="MIT"
 SLOT="0"
@@ -84,6 +84,8 @@ python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/twisted-20.3.0-py38-cgi.patch
 		"${FILESDIR}"/twisted-20.3.0-py38-hmac.patch
+		"${FILESDIR}"/twisted-20.3.0-py39-b64.patch
+		"${FILESDIR}"/twisted-20.3.0-py39-combined.patch
 	)
 
 	# upstream test for making releases; not very useful and requires

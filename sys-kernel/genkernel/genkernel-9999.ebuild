@@ -10,32 +10,32 @@ inherit bash-completion-r1
 
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
-VERSION_BOOST="1.72.0"
-VERSION_BTRFS_PROGS="5.6"
+VERSION_BOOST="1.73.0"
+VERSION_BTRFS_PROGS="5.6.1"
 VERSION_BUSYBOX="1.31.1"
 VERSION_COREUTILS="8.32"
-VERSION_CRYPTSETUP="2.3.1"
+VERSION_CRYPTSETUP="2.3.3"
 VERSION_DMRAID="1.0.0.rc16-3"
-VERSION_DROPBEAR="2019.78"
+VERSION_DROPBEAR="2020.80"
 VERSION_EXPAT="2.2.9"
 VERSION_E2FSPROGS="1.45.6"
 VERSION_FUSE="2.9.9"
 VERSION_GPG="1.4.23"
 VERSION_ISCSI="2.0.878"
 VERSION_JSON_C="0.13.1"
-VERSION_KMOD="26"
+VERSION_KMOD="27"
 VERSION_LIBAIO="0.3.112"
 VERSION_LIBGCRYPT="1.8.5"
-VERSION_LIBGPGERROR="1.36"
+VERSION_LIBGPGERROR="1.38"
 VERSION_LVM="2.02.187"
 VERSION_LZO="2.10"
 VERSION_MDADM="4.1"
 VERSION_POPT="1.16"
-VERSION_STRACE="5.4"
+VERSION_STRACE="5.7"
 VERSION_THIN_PROVISIONING_TOOLS="0.8.5"
 VERSION_UNIONFS_FUSE="2.0"
-VERSION_UTIL_LINUX="2.35.1"
-VERSION_XFSPROGS="5.5.0"
+VERSION_UTIL_LINUX="2.35.2"
+VERSION_XFSPROGS="5.6.0"
 VERSION_ZLIB="1.2.11"
 VERSION_ZSTD="1.4.4"
 
@@ -46,7 +46,7 @@ COMMON_URI="
 	mirror://gnu/coreutils/coreutils-${VERSION_COREUTILS}.tar.xz
 	https://www.kernel.org/pub/linux/utils/cryptsetup/v$(ver_cut 1-2 ${VERSION_CRYPTSETUP})/cryptsetup-${VERSION_CRYPTSETUP}.tar.xz
 	https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-${VERSION_DMRAID}.tar.bz2
-	https://matt.ucc.asn.au/dropbear/releases/dropbear-${VERSION_DROPBEAR}.tar.bz2
+	https://dev.gentoo.org/~whissi/dist/dropbear/dropbear-${VERSION_DROPBEAR}.tar.bz2
 	https://github.com/libexpat/libexpat/releases/download/R_${VERSION_EXPAT//\./_}/expat-${VERSION_EXPAT}.tar.xz
 	https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${VERSION_E2FSPROGS}/e2fsprogs-${VERSION_E2FSPROGS}.tar.xz
 	https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION_FUSE}/fuse-${VERSION_FUSE}.tar.gz

@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Extended-Rice lossless compression algorithm implementation"
-HOMEPAGE="http://www.hdfgroup.org/doc_resource/SZIP/"
+HOMEPAGE="https://www.hdfgroup.org/doc_resource/SZIP/"
 SRC_URI="ftp://ftp.hdfgroup.org/lib-external/${PN}/${PV}/src/${P}.tar.gz"
 
 LICENSE="szip"

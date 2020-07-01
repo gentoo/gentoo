@@ -12,7 +12,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 ${SRC_ECLASS}
@@ -37,9 +37,9 @@ RDEPEND="
 	>=dev-python/pydecomp-0.3[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-arch/tar[xattr]
-	app-misc/zisofs-tools
+	dev-vcs/git
 	sys-fs/dosfstools
-	>=sys-fs/squashfs-tools-2.1
+	sys-fs/squashfs-tools-ng
 	ccache? ( dev-util/ccache )
 
 	iso? (

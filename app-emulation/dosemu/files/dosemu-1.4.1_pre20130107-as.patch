@@ -1,0 +1,12 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -503,8 +503,7 @@ dnl CPU emulator
+    AC_MSG_NOTICE(Compiling for native x86...);
+   fi
+ 
+-
+-if ! echo '.code16;.text;addr32 pushw 4(%esp)' | as -o dummy.o >/dev/null 2>&1; then
++if ! echo '.code16;.text;addr32 pushw 4(%esp)' | $CC -c -x assembler -o dummy.o - >/dev/null 2>&1; then
+   echo ''
+   echo '*** error:'
+   echo '*** Your system has no complete code16 functional gas,'

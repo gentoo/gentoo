@@ -22,15 +22,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-libs/libXt"
 
-src_unpack() {
-	mkdir -p "${S}"
-	cd "${S}"
-	unpack ${A}
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-static.patch
+	"${FILESDIR}"/${P}-void_return.patch
+	)
+
+S=${WORKDIR}
 
 src_prepare() {
 	default
-	sed -i '698s/inline/static inline/' src/emulate.c || die
 	eautoreconf
 }
 

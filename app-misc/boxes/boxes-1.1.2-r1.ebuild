@@ -6,7 +6,7 @@ EAPI=5
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Draw any kind of boxes around your text"
-HOMEPAGE="http://boxes.thomasjensen.com/ https://github.com/ascii-boxes/boxes"
+HOMEPAGE="https://boxes.thomasjensen.com/ https://github.com/ascii-boxes/boxes"
 SRC_URI="https://github.com/ascii-boxes/boxes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

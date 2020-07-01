@@ -193,6 +193,8 @@ multilib_src_configure() {
 		use test && myeconfargs+=( --without-zbarimg-tests )
 	fi
 
+	# use bash (bug 721370)
+	CONFIG_SHELL='/bin/bash' \
 	ECONF_SOURCE="${S}" \
 		econf "${myeconfargs[@]}"
 

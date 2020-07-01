@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )  # 3.{7,8} dropped due to dep-hell
+PYTHON_COMPAT=( python3_{6,7} )  # 3.8 dropped due to dep on python-memcached
 
 inherit distutils-r1 prefix
 
@@ -27,7 +27,6 @@ RDEPEND="
 	dev-python/cairocffi[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
-	dev-python/scandir[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
 	media-libs/fontconfig

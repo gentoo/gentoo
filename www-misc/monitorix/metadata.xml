@@ -9,7 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
-	<longdescription>A lightweight system monitoring tool</longdescription>
 	<upstream>
 		<remote-id type="github">mikaku/Monitorix</remote-id>
 	</upstream>

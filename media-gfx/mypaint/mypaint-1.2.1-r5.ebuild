@@ -41,6 +41,9 @@ DEPEND="${RDEPEND}
 	dev-lang/swig
 	virtual/pkgconfig
 "
+PATCHES=(
+	"${FILESDIR}/${P}-json-c-boolean-defs.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup

@@ -30,5 +30,14 @@ BDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	sci-libs/numkit[${PYTHON_USEDEP}]"
+	sci-libs/numkit[${PYTHON_USEDEP}]
+	test? ( >=dev-python/pandas-0.17[${PYTHON_USEDEP}] )
+"
 RDEPEND="${DEPEND}"
+
+distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/Becksteinlab/GromacsWrapper/issues/182
+	"${FILESDIR}"/${P}-tests-package.patch
+)

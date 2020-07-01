@@ -6,8 +6,8 @@ EAPI=7
 MY_P=${PN}2-${PV}
 
 DESCRIPTION="Static HTML image gallery generator"
-HOMEPAGE="http://igal.trexler.at"
-SRC_URI="http://${PN}.trexler.at/${MY_P}.tar.gz"
+HOMEPAGE="https://igal.trexler.at"
+SRC_URI="https://${PN}.trexler.at/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

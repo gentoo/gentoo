@@ -26,12 +26,12 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="French dictionaries for myspell/hunspell"
-HOMEPAGE="http://extensions.libreoffice.org/extension-center/dictionnaires-francais"
+HOMEPAGE="https://extensions.libreoffice.org/extension-center/dictionnaires-francais"
 SRC_URI="
-	http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-moderne-v${PV}.oxt
-	http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-classique-v${PV}.oxt
-	http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-classique-reforme1990-v${PV}.oxt
-	http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-reforme1990-v${PV}.oxt
+	https://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-moderne-v${PV}.oxt
+	https://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-classique-v${PV}.oxt
+	https://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-classique-reforme1990-v${PV}.oxt
+	https://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-reforme1990-v${PV}.oxt
 "
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"

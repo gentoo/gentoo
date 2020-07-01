@@ -6,8 +6,8 @@ EAPI=7
 inherit desktop
 
 DESCRIPTION="Pseudo PostScript editor"
-HOMEPAGE="http://flpsed.org/flpsed.html"
-SRC_URI="http://flpsed.org/${P}.tar.gz"
+HOMEPAGE="https://flpsed.org/flpsed.html"
+SRC_URI="https://flpsed.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

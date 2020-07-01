@@ -10,5 +10,4 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 RDEPEND="|| (	net-mail/mailutils
 				mail-client/mailx
 				mail-client/s-nail
-				mail-client/nail
-				sys-freebsd/freebsd-ubin )"
+				mail-client/nail )"

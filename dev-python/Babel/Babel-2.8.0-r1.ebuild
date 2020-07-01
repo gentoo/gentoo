@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_{6..9}} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
 DESCRIPTION="Collection of tools for internationalizing Python applications"
-HOMEPAGE="http://babel.pocoo.org/ https://pypi.org/project/Babel/"
+HOMEPAGE="https://babel.pocoo.org/ https://pypi.org/project/Babel/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -24,3 +24,12 @@ DEPEND="${DEPEND}
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py39.patch
+)
+
+src_test() {
+	local -x TZ=UTC
+	distutils-r1_src_test
+}

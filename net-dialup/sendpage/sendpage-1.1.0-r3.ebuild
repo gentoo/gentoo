@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ inherit perl-module eutils user
 
 MY_P=${PN}-1.001
 DESCRIPTION="Dialup alphapaging software"
-HOMEPAGE="http://www.sendpage.org/"
-SRC_URI="http://www.sendpage.org/download/${MY_P}.tar.gz"
+HOMEPAGE="https://www.sendpage.org/"
+SRC_URI="https://www.sendpage.org/download/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"

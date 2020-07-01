@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/glib-utils
 	>=dev-util/intltool-0.35
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig"
 
 src_prepare() {
 	gnome2_src_prepare

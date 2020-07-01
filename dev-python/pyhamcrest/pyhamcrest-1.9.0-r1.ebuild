@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6..9} )
 
 inherit distutils-r1
 
@@ -16,14 +16,14 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/six-1.4[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
 	test? (
+		${RDEPEND}
 		>=dev-python/pytest-2.6[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)"
@@ -50,7 +50,7 @@ python_prepare_all() {
 }
 
 python_test() {
-	py.test -vv || die "Tests failed under ${EPYTHON}"
+	pytest -vv || die "Tests failed under ${EPYTHON}"
 	"${EPYTHON}" tests/object_import.py || die "Tests failed under ${EPYTHON}"
 }
 

@@ -143,7 +143,8 @@ DEPEND="${RDEPEND}
 #   sci-libs/gts, x11-libs/gtk.  Also needs 'gtk','glade','glut','gts' and 'png'
 #   with flags enabled at configure time
 
-PATCHES=( "${FILESDIR}"/${PN}-2.34.0-Xaw-configure.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.34.0-Xaw-configure.patch
+	  "${FILESDIR}"/dotty_change_button.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

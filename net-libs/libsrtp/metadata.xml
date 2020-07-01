@@ -14,6 +14,7 @@
 		<flag name="console">
 			Use /dev/console instead of stdout for error messages
 		</flag>
+		<flag name="nss">Use NSS crypto primitives</flag>
 		<flag name="openssl">Use OpenSSL crypto primitives</flag>
 		<flag name="syslog">Use syslog for error messages</flag>
 	</use>

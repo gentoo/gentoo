@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools desktop
 
 DESCRIPTION="A clone of Sega's Chu Chu Rocket"
@@ -13,12 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="opengl"
 
-DEPEND="media-libs/libsdl
+DEPEND="
+	media-libs/libsdl
 	media-libs/sdl-image
 	media-libs/sdl-net
 	media-libs/sdl-ttf
-	opengl? ( virtual/opengl )
-"
+	opengl? ( virtual/opengl )"
 RDEPEND="${DEPEND}"
 
 dir="/usr/share/${PN}"
@@ -39,12 +40,14 @@ src_prepare() {
 		src/maps/battle/Makefile.am \
 		|| die "sed failed"
 
+	# GCC 10 / -fno-common
+	eapply "${FILESDIR}"/${P}-fix-fno-common.patch
 	eapply "${FILESDIR}"/${P}-underlink.patch
 
-	mv configure.in configure.ac
+	mv configure.{in,ac} || die
 	eautoreconf
 
-	cd src
+	cd src || die
 
 	# Save to HOME
 	eapply "${FILESDIR}"/${P}-save.patch
@@ -81,10 +84,14 @@ src_prepare() {
 src_install() {
 	# Remove makefiles before installation
 	rm -f src/*/Makefile* src/*/*/Makefile* || die "removing makefiles"
+
+	dobin src/mures
+
 	insinto "${dir}"
 	doins -r src/{gui,images,sounds,textures,maps,*.lua}
+
 	einstalldocs
-	dobin src/mures
+
 	newicon src/images/cat_right.png ${PN}.png
 	make_desktop_entry ${PN} "Mures"
 }

@@ -29,6 +29,7 @@
 		<flag name="lcd">Enable use of <pkg>app-misc/lcdproc</pkg> data display</flag>
 		<flag name="lirc">LIRC remote control device support</flag>
 		<flag name="mythlogserver">Enable support for syslog and file logging</flag>
+		<flag name="nvdec">Enable NVDEC (NVCUVID) hardware accelerated video decoding</flag>
 		<flag name="perl">Build the perl bindings for MythTV</flag>
 		<flag name="vbox">V@Box Communications network-attached tuner devices support</flag>
 		<flag name="vpx">Enable VP8/VP9 support for <pkg>media-libs/libvpx</pkg></flag>

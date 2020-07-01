@@ -8,7 +8,7 @@ inherit python-utils-r1 vcs-clean
 COMMIT="9d711f40638202b02f2154d7f05ea35088ff9388"
 
 DESCRIPTION="MathJax documentation"
-HOMEPAGE="http://www.mathjax.org/"
+HOMEPAGE="https://www.mathjax.org/"
 SRC_URI="https://github.com/mathjax/MathJax-docs/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

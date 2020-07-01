@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools flag-o-matic perl-module python-single-r1 eapi7-ver
 
@@ -48,6 +48,10 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-rpm )
 "
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-4.11.0-autotools.patch

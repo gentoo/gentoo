@@ -26,16 +26,27 @@ all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#: ; /coverall/I s:^:#:' spec/spec_helper.rb || die
 
 	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# The precomputed implementation only works on amd64
+	if ! use amd64 ; then
+		sed -i -e '/\(x25519_precomputed\|X25519::Provider::Precomputed\)/ s:^:#:' lib/x25519.rb || die
+	fi
 }
 
 each_ruby_configure() {
-	${RUBY} -Cext/x25519_precomputed extconf.rb || die
+	if use amd64 ; then
+		${RUBY} -Cext/x25519_precomputed extconf.rb || die
+	fi
+
 	${RUBY} -Cext/x25519_ref10 extconf.rb || die
 }
 
 each_ruby_compile() {
-	emake V=1 -Cext/x25519_precomputed
-	cp ext/x25519_precomputed/x25519_precomputed.so lib/ || die
+	if use amd64 ; then
+		emake V=1 -Cext/x25519_precomputed
+		cp ext/x25519_precomputed/x25519_precomputed.so lib/ || die
+	fi
+
 	emake V=1 -Cext/x25519_ref10
 	cp ext/x25519_ref10/x25519_ref10.so lib/ || die
 }

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -114,6 +114,20 @@ if [[ -x /usr/bin/python3.8 ]]; then
 fi
 test_var PYTHON_PKG_DEP python3_8 '*dev-lang/python*:3.8'
 test_var PYTHON_SCRIPTDIR python3_8 /usr/lib/python-exec/python3.8
+
+test_var EPYTHON python3_9 python3.9
+test_var PYTHON python3_9 /usr/bin/python3.9
+if [[ -x /usr/bin/python3.9 ]]; then
+	abiflags=$(/usr/bin/python3.9 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
+	test_var PYTHON_SITEDIR python3_9 "/usr/lib/python3.9/site-packages"
+	test_var PYTHON_INCLUDEDIR python3_9 "/usr/include/python3.9${abiflags}"
+	test_var PYTHON_LIBPATH python3_9 "/usr/lib*/libpython3.9${abiflags}$(get_libname)"
+	test_var PYTHON_CONFIG python3_9 "/usr/bin/python3.9${abiflags}-config"
+	test_var PYTHON_CFLAGS python3_9 "*-I/usr/include/python3.9*"
+	test_var PYTHON_LIBS python3_9 "*-lpython3.9*"
+fi
+test_var PYTHON_PKG_DEP python3_9 '*dev-lang/python*:3.9'
+test_var PYTHON_SCRIPTDIR python3_9 /usr/lib/python-exec/python3.9
 
 test_var EPYTHON pypy3 pypy3
 test_var PYTHON pypy3 /usr/bin/pypy3

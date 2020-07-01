@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Jupyter Interactive Notebook"
-HOMEPAGE="http://jupyter.org"
+HOMEPAGE="https://jupyter.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -52,9 +52,6 @@ DEPEND="${RDEPEND}
 	"
 
 PATCHES=( "${FILESDIR}/${P}"-setupbase.py.patch )
-
-# Opens a qtconsole
-restrict="doc"
 
 python_prepare_all() {
 	sed \

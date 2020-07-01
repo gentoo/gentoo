@@ -31,11 +31,9 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/lcms:2
 	>=net-print/cups-1.7.3
-	!<=net-print/cups-1.5.9999
 	sys-devel/bc
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
-	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( virtual/jpeg:0 )
 	ldap? ( net-nds/openldap )
 	pdf? ( app-text/mupdf )

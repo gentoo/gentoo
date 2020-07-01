@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ IUSE=""
 ruby_add_rdepend "
 	>=dev-ruby/railties-4.2.0:*
 	>=dev-ruby/thor-0.14 <dev-ruby/thor-2
-	|| ( dev-ruby/rails-dom-testing:2 dev-ruby/rails-dom-testing:1 )"
+	dev-ruby/rails-dom-testing:2"
 
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' jquery-rails.gemspec || die

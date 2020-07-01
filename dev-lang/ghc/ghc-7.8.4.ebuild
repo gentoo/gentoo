@@ -466,7 +466,7 @@ src_configure() {
 
 		if ! use ghcmakebinary; then
 			econf_args+=(--with-system-libffi)
-			econf_args+=(--with-ffi-includes=$(pkg-config libffi --cflags-only-I | sed -e 's@^-I@@'))
+			econf_args+=(--with-ffi-includes=$($(tc-getPKG_CONFIG) libffi --cflags-only-I | sed -e 's@^-I@@'))
 		fi
 
 		econf ${econf_args[@]} --enable-bootstrap-with-devel-snapshot

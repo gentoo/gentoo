@@ -69,7 +69,7 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 	app-doc/xmltoman
 	dev-util/intltool
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/avahi-qt5/qt-watch.h )
@@ -105,13 +105,6 @@ src_prepare() {
 
 	# bundled manpages
 	multilib_copy_sources
-}
-
-src_configure() {
-	# those steps should be done once-per-ebuild rather than per-ABI
-	use sh && replace-flags -O? -O0
-
-	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 MY_MAJ=$(ver_cut 1-2)
 
 DESCRIPTION="Aurora GTK+ 2.x Theme Engine"
-HOMEPAGE="http://www.gnome-look.org/content/show.php?content=56438"
-SRC_URI="http://gnome-look.org/CONTENT/content-files/56438-aurora-${PV}.tar.bz2"
+HOMEPAGE="https://www.gnome-look.org/content/show.php?content=56438"
+SRC_URI="https://gnome-look.org/CONTENT/content-files/56438-aurora-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

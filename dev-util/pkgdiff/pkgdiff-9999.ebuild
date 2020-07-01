@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,6 +28,6 @@ src_compile() {
 PREFIX="/usr"
 
 src_install() {
-	mkdir -p "${D}${PREFIX}"
-	perl Makefile.pl -install --destdir "${D}" || die "install failed"
+	dodir ${PREFIX}
+	perl Makefile.pl -install --destdir "${ED}" || die "install failed"
 }

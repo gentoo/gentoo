@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/libdynd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="cuda doc fftw mkl test"
+IUSE="cuda doc fftw test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -49,11 +49,6 @@ src_prepare() {
 		-e '/git_describe/d' \
 		-e '/dirty/d' \
 		-i CMakeLists.txt || die
-	# not tested
-	if use mkl; then
-		sed -e "s|/opt/intel/.*|$(ls -1d ${EPREFIX}/opt/intel/compilers*)|" \
-			-i tests/CMakeLists.txt || die
-	fi
 }
 
 src_configure() {
@@ -64,12 +59,10 @@ src_configure() {
 		-DDYND_SHARED_LIB=ON
 		-DDYND_BUILD_BENCHMARKS=OFF
 		-DDYND_BUILD_DOCS="$(usex doc)"
-		-DDYND_BUILD_PLUGIN="$(usex mkl)"
 		-DDYND_BUILD_TESTS="$(usex test)"
-		-DDYND_CUDA="$(usex cuda)"
 		-DDYND_FFTW="$(usex fftw)"
-		-DFFTW_PATH="${EPREFIX}/usr/include"
 	)
+	use fftw && mycmakeargs+=( -DFFTW_PATH="${EPREFIX}/usr/include" )
 	cmake-utils_src_configure
 }
 

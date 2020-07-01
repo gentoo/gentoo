@@ -18,6 +18,11 @@ IUSE="doc +ocamlopt"
 DEPEND="dev-lang/ocaml"
 RDEPEND="${DEPEND}"
 
+QA_FLAGS_IGNORED=(
+	/usr/bin/camlp5o.opt
+	/usr/bin/camlp5r.opt
+)
+
 DOCS="CHANGES DEVEL ICHANGES README.md UPGRADING MODE"
 
 src_configure() {

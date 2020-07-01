@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit alternatives multilib toolchain-funcs
 
@@ -14,7 +14,7 @@ SRC_URI="http://pub.ks-and-ks.ne.jp/prog/pub/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="w3m"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="gpm libressl nls ssl"
 
 DEPEND=">=dev-libs/boehm-gc-7.2
@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-boehm-gc.patch
 	"${FILESDIR}"/${PN}-gcc-4.4.patch
 	"${FILESDIR}"/${PN}-gcc-4.5.patch
+	"${FILESDIR}"/${PN}-gcc-10.patch
 	"${FILESDIR}"/${PN}-glibc-2.14.patch
 	"${FILESDIR}"/${PN}-openssl-1.1.patch
 	"${FILESDIR}"/${PN}-rc_name.patch

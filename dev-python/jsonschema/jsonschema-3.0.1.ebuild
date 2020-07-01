@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 inherit distutils-r1
 
@@ -33,7 +33,10 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}
 	>=dev-python/vcversioner-2.16.0.0[${PYTHON_USEDEP}]
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/twisted[${PYTHON_USEDEP}]
+	)"
 
 python_test() {
 	"${PYTHON}" -m unittest discover || die "Testing failed with ${EPYTHON}"

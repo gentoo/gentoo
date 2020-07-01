@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Easy-to-use chart creation library for PHP"
-HOMEPAGE="http://naku.dohcrew.com/libchart https://github.com/naku/libchart"
+HOMEPAGE="https://naku.dohcrew.com/libchart https://github.com/naku/libchart"
 SRC_URI="https://github.com/naku/${PN}/releases/download/release/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3 BitstreamVera"

@@ -27,6 +27,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/crypto++:=
 	sys-libs/binutils-libs:0=
+	sys-libs/readline:0=
 	sys-libs/zlib
 	>=x11-libs/wxGTK-3.0.4:${WX_GTK_VER}[X?]
 	daemon? ( acct-user/amule )
@@ -42,8 +43,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( dev-util/desktop-file-utils )
 "
-BDEPEND="virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
 
 PATCHES=(
 )
@@ -55,7 +58,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	if [[ "${PV}" == *9999 ]]; then
+	if [[ ${PV} == 9999 ]]; then
 		./autogen.sh || die
 	fi
 }

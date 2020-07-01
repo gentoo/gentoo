@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="${PN}V${PV}"
 
@@ -15,30 +15,30 @@ SRC_URI="mirror://sourceforge/poamsa/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs"
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PV}-respect-flags.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-respect-flags.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
+
+src_configure() {
+	tc-export AR CC RANLIB
 }
 
 src_compile() {
-	emake \
-		CC="$(tc-getCC)" \
-		OPT_CFLAGS="${CFLAGS}" \
-		poa
+	emake poa
 }
 
 src_install() {
-	dobin "${S}"/poa "${S}"/make_pscores.pl
-	use static-libs && dolib.a "${S}"/liblpo.a
-	dodoc "${S}"/README "${S}"/multidom.*
+	dobin poa make_pscores.pl
+	dodoc README multidom.*
 	insinto /usr/share/poa
-	doins "${S}"/*.mat
+	doins *.mat
 }
 
 pkg_postinst() {
 	elog "poa requires a score matrix as the first argument."
-	elog "This package installs two examples to ${EROOT}usr/share/poa/."
+	elog "This package installs two examples to ${EROOT}/usr/share/poa/."
 }

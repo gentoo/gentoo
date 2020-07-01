@@ -64,8 +64,8 @@ multilib_src_install() {
 	# Sanity check until we track down why this is happening. #644048
 	local lib="${ED}/usr/$(get_libdir)/libattr.so.1"
 	if [[ -e ${lib} ]] ; then
-		local versions=$(readelf -V "${lib}")
-		local symbols=$(readelf -sW "${lib}")
+		local versions=$($(tc-getREADELF) -V "${lib}")
+		local symbols=$((tc-getREADELF) -sW "${lib}")
 		if [[ "${versions}" != *"ATTR_1.0"* || \
 		      "${versions}" != *"ATTR_1.1"* || \
 		      "${versions}" != *"ATTR_1.2"* || \

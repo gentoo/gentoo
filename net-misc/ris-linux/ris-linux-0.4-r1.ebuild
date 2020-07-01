@@ -9,8 +9,8 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="BINL server to doing Windows(r) RIS"
-HOMEPAGE="http://oss.netfarm.it/guides/pxe.php"
-SRC_URI="http://oss.netfarm.it/guides/${P}.tar.gz"
+HOMEPAGE="https://oss.netfarm.it/guides/pxe.php"
+SRC_URI="https://oss.netfarm.it/guides/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

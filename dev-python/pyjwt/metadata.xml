@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">PyJWT</remote-id>
     <remote-id type="github">progrium/pyjwt</remote-id>
+    <remote-id type="cpe">cpe:/a:pyjwt_project:pyjwt</remote-id>
   </upstream>
 </pkgmetadata>

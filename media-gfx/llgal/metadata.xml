@@ -5,8 +5,4 @@
   <email>aballier@gentoo.org</email>
   <name>Alexis Ballier</name>
 </maintainer>
-<maintainer type="project">
-  <email>graphics@gentoo.org</email>
-  <name>Gentoo Graphics Project</name>
-</maintainer>
 </pkgmetadata>

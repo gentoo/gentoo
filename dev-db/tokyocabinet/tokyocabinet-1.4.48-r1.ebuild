@@ -6,8 +6,8 @@ EAPI="5"
 inherit eutils autotools
 
 DESCRIPTION="A library of routines for managing a database"
-HOMEPAGE="http://fallabs.com/tokyocabinet/"
-SRC_URI="http://fallabs.com/tokyocabinet/${P}.tar.gz"
+HOMEPAGE="https://fallabs.com/tokyocabinet/"
+SRC_URI="https://fallabs.com/tokyocabinet/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

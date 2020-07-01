@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit autotools eutils
 
 DESCRIPTION="A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3"
@@ -23,9 +23,15 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${P}-orig
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.2.12-check-for-lround.patch"
+	"${FILESDIR}/${P}-format-security.patch"
+	"${FILESDIR}/${P}-CVE-2019-14247.patch"
+	"${FILESDIR}/${P}-gcc10.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.2.12-check-for-lround.patch \
-		"${FILESDIR}"/${P}-format-security.patch
+	default
 	eautoreconf
 }
 

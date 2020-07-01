@@ -9,7 +9,7 @@ inherit autotools eutils multilib
 RESTRICT="test" # https://bugs.gentoo.org/show_bug.cgi?id=498250 https://bugs.launchpad.net/gentoo/+bug/1278023
 
 DESCRIPTION="a C client library to the memcached server"
-HOMEPAGE="http://libmemcached.org/libMemcached.html"
+HOMEPAGE="https://libmemcached.org/libMemcached.html"
 SRC_URI="https://launchpad.net/${PN}/1.0/${PV}/+download/${P}.tar.gz"
 
 LICENSE="BSD"

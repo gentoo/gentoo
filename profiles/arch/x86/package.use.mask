@@ -1,6 +1,35 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-06-20)
+# media-libs/nv-codec-headers is not available for x86
+media-video/ffmpeg video_cards_nvidia
+
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Unmask globally-masked flashrom drivers and tools which do work on x86
+sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
+
+# Christopher Head <chead@chead.ca> (2020-06-10)
+# Requires dev-db/influxdb which is amd64-only
+dev-python/influxdb test
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on x86
+app-text/texlive-core -xindy
+
+# Christoph Junghans <junghans@gentoo.org> (2020-05-16)
+# restrict USE=kokkos for x86 as kokkos doesn't support 32-bit archs
+# https://github.com/kokkos/kokkos/issues/2312
+sci-physics/lammps kokkos
+
+# Joonas Niilola <juippis@gentoo.org> (2020-05-14)
+# Dependency not keyworded on this arch.
+app-emulation/lxc apparmor
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
+# sys-cluster/slurm is keyworded on x86
+app-metrics/collectd -collectd_plugins_slurm
+
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
 # static-pie works on x86, #719444
 sys-libs/glibc -static-pie
@@ -115,10 +144,6 @@ app-emulation/fuse -backend-svga
 # Requires dev-db/mongodb which has dropped x86 support
 dev-libs/mongo-c-driver test
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-01-05)
-# Requires dev-python/neovim-remote, which is not keyworded on x86.
-app-editors/neovim remote
-
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since it is a flag local to one package:
 # pbbuttonsd and macbook for KDE and pbuttonsd it
@@ -216,10 +241,6 @@ net-im/telepathy-connection-managers -steam
 # >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
 >x11-drivers/nvidia-drivers-346 uvm
 
-# Mike Frysinger <vapier@gentoo.org> (2014-08-04)
-# Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv
-
 # Yixun Lan <dlan@gentoo.org> (2014-05-21)
 # sys-fs/zfs not keyworded on x86
 sys-cluster/ceph zfs
@@ -250,10 +271,6 @@ app-editors/gvim -luajit -racket
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Works on x86
 sys-apps/hwloc -gl
-
-# Christoph Junghans <junghans@gentoo.org> (2012-12-26)
-# mkl works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -mkl
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Unmask here, as it's masked in base.

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,7 +11,7 @@ HOMEPAGE="https://rtmpdump.mplayerhq.hu/"
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="gnutls ssl libressl"
+IUSE="gnutls ssl static-libs libressl"
 
 DEPEND="ssl? (
 		gnutls? (
@@ -85,7 +85,7 @@ multilib_src_compile() {
 	if ! multilib_is_native_abi; then
 		cd librtmp || die
 	fi
-	emake CC="$(tc-getCC)" LD="$(tc-getLD)" \
+	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" \
 		OPT="${CFLAGS}" XLDFLAGS="${LDFLAGS}" CRYPTO="${crypto}" SYS=posix
 }
 
@@ -98,4 +98,6 @@ multilib_src_install() {
 	fi
 	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" mandir='$(prefix)/share/man' \
 		CRYPTO="${crypto}" install
+	find "${D}" -name '*.la' -delete || die
+	use static-libs || find "${D}" -name '*.a' -delete || die
 }

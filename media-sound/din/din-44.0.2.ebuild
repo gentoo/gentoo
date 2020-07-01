@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools eutils xdg
 
 DESCRIPTION="a software musical instrument and audio synthesizer"
-HOMEPAGE="http://dinisnoise.org/"
+HOMEPAGE="https://dinisnoise.org/"
 SRC_URI="https://archive.org/download/dinisnoise_source_code/${P}.tar.gz"
 
 LICENSE="GPL-2"

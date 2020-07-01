@@ -45,6 +45,10 @@ PATCHES=( "${FILESDIR}/1.8.6-tests-pass-all-env-vars-to-cmd-runner.patch" )
 
 python_compile_all() {
 	use doc && emake -C docs html
+
+	# remove version locked deps
+	sed -r -e 's:([a-zA-Z0-9_-]+)[><|=].*:\1:' \
+		-i requirements.txt || die
 }
 
 python_test() {

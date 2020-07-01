@@ -23,7 +23,7 @@ LICENSE="BSD LGPL-2"
 SLOT="0"
 IUSE="doc sparse test"
 RESTRICT="!test? ( test )"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 CDEPEND="
 	>=dev-python/numpy-1.10[lapack,${PYTHON_USEDEP}]
@@ -103,6 +103,12 @@ python_prepare_all() {
 	rm cythonize.dat || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_configure_all() {
+	# bug 721860
+	test-flag-FC -fallow-argument-mismatch &&
+		append-fflags -fallow-argument-mismatch
 }
 
 python_compile() {

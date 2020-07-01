@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Optimized and portable routines for integer theoretic applications"
-HOMEPAGE="http://www.libtom.net/"
+HOMEPAGE="https://www.libtom.net/"
 SRC_URI="https://github.com/libtom/libtommath/releases/download/v${PV}/ltm-${PV}.tar.xz"
 
 LICENSE="WTFPL-2"

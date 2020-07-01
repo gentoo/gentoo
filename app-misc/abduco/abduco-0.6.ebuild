@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit savedconfig toolchain-funcs
 
 DESCRIPTION="lightweight session manager with {de,at}tach support"
-HOMEPAGE="http://www.brain-dump.org/projects/abduco/"
-SRC_URI="http://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.brain-dump.org/projects/abduco/"
+SRC_URI="https://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

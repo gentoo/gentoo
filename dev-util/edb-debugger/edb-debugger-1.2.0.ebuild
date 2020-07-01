@@ -34,6 +34,8 @@ DEPEND="
 	${RDEPEND}
 "
 
+PATCHES=("${FILESDIR}"/${PN}-1.2.0-qt-5.15.patch)
+
 S=${WORKDIR}/${PN}
 
 src_prepare() {

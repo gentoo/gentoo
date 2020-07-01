@@ -9,7 +9,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Memory mapped files for POSIX and Windows"
-HOMEPAGE="http://hackage.haskell.org/package/mmap"
+HOMEPAGE="https://hackage.haskell.org/package/mmap"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

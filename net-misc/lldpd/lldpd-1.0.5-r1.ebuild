@@ -11,7 +11,7 @@ SRC_URI="http://media.luffy.cx/files/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/4.8.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
 	seccomp sonmp snmp static-libs test readline xml zsh-completion"
 RESTRICT="!test? ( test )"
@@ -41,6 +41,7 @@ REQUIRED_USE="graph? ( doc )"
 
 PATCHES=(
 	"${FILESDIR}/lldpd-1.0.5-seccomp.patch"
+	"${FILESDIR}/lldpd-1.0.5-cpp.patch"
 )
 
 src_prepare() {

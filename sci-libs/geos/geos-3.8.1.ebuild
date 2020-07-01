@@ -4,12 +4,12 @@
 EAPI=7
 
 DESCRIPTION="Geometry engine library for Geographic Information Systems"
-HOMEPAGE="http://trac.osgeo.org/geos/"
+HOMEPAGE="https://trac.osgeo.org/geos/"
 SRC_URI="http://download.osgeo.org/geos/${PN}-${PV}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris"
+KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris"
 IUSE="doc ruby static-libs"
 
 BDEPEND="

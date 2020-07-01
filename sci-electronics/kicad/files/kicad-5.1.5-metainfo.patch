@@ -1,0 +1,12 @@
+diff -Naur kicad-5.1.5-orig/CMakeLists.txt kicad-5.1.5/CMakeLists.txt
+--- kicad-5.1.5-orig/CMakeLists.txt	2019-11-14 09:09:45.000000000 -0800
++++ kicad-5.1.5/CMakeLists.txt	2020-05-11 23:51:52.122093410 -0700
+@@ -919,7 +919,7 @@
+     set( UNIX_MIME_FILES ${UNIX_MIME_DIR}/mime )
+     set( UNIX_ICON_FILES ${UNIX_MIME_DIR}/icons )
+     set( UNIX_APPLICATIONS_FILES ${UNIX_MIME_DIR}/applications )
+-    set( UNIX_APPDATA_FILES resources/linux/appdata )
++    set( UNIX_APPDATA_FILES resources/linux/metainfo )
+ 
+     # Install Mime directory
+     install( DIRECTORY ${UNIX_ICON_FILES}

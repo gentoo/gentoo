@@ -30,7 +30,7 @@ RDEPEND=">=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
 		>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]"
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"

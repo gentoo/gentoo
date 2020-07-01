@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-17)
+# Abandoned upstream, countless bugs. Removal tracked in bug #659616
+sys-power/pm-utils
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
+# Obsolete package gets in the way of unmasking >=x11-libs/pango-1.44
+# Bug #698922
+x11-libs/pangox-compat
+
 # Kent Fredric <kentnl@gentoo.org> (2020-04-15)
 # Functionality now provided by Net::SMTP 3.25+
 # available with >=virtual/perl-libnet-1.28
@@ -24,11 +33,6 @@
 # Try patching/removing dependent code to utilize this.
 # Bug #650320
 dev-perl/Net-SMTP-SSL
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-28)
-# Backport specific to Python 2.6.  No modern package should be using
-# it.
-dev-python/unittest2
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-25)
 # Provides 'pytest' command to setup.py that is entirely redundant.
@@ -38,11 +42,8 @@ dev-python/pytest-runner
 
 # Matt Turner <mattst88@gentoo.org> (2020-03-17)
 # Deprecated GNOME 2 era packages
-# Bugs #640022, #713010
-dev-python/gconf-python
-dev-python/gnome-python-base
+# Bugs #640022, #713010, #726784, #728956
 dev-python/pygobject:2
-dev-python/pygtksourceview
 gnome-base/gnome-vfs
 gnome-base/libbonobo
 gnome-base/libbonoboui
@@ -105,8 +106,8 @@ dev-java/oracle-jre-bin
 # app-editors/emacs package, which makes the virtual unnecessary.
 # Packages should depend on >=app-editors/emacs-23.1:* instead.
 # See the documentation of elisp-common.eclass for details.
-# Removal (without prior masking) after the release of Emacs 27.1,
-# but not later than 2020-06-18. Bug #291296.
+# Removal (without prior masking) after ~app-editors/emacs-27.1
+# is marked stable. Bug #291296.
 virtual/emacs
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-09)
@@ -115,7 +116,6 @@ virtual/emacs
 # systems need to be fixed to work without them.
 dev-python/nose-cover3
 dev-python/nosexcover
-dev-python/pytest-cov
 
 # Zac Medico <zmedico@gentoo.org> (2019-12-06)
 # These golang libraries should be vendored either by upstream or via

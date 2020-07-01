@@ -8,7 +8,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Library to expose vcards to KPeople"
-HOMEPAGE="https://cgit.kde.org/kpeoplevcard.git"
+HOMEPAGE="https://invent.kde.org/pim/kpeoplevcard"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"

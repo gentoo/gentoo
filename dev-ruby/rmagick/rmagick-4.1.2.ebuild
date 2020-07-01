@@ -27,7 +27,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-macos"
 IUSE="doc"
 
 RDEPEND+=" >=media-gfx/imagemagick-6.9.0:="
-DEPEND+=" >=media-gfx/imagemagick-6.9.0:=[jpeg]"
+DEPEND+=" test? ( >=media-gfx/imagemagick-6.9.0:=[jpeg,webp] )"
 
 all_ruby_prepare() {
 	# Avoid unused dependency on rake-compiler. This also avoids an

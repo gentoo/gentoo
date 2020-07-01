@@ -14,9 +14,19 @@ KEYWORDS="~amd64"
 IUSE=""
 DEPEND="dev-lang/go:="
 RESTRICT="strip"
+QA_FLAGS_IGNORED=".*"
 
 src_compile() {
 	go build -mod vendor -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/cli.Version=${PV}-gentoo" ./cmd/${PN} || die "build failed"
+}
+
+src_test() {
+	# For upstream a simple test is run 'hcloud version'
+	./hcloud version
+	if [[ $? -ne 0 ]]
+	then
+		die "Test failed"
+	fi
 }
 
 src_install() {

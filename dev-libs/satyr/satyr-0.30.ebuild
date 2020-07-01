@@ -16,7 +16,7 @@ SLOT="0/4"
 IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
 	>=dev-libs/elfutils-0.158

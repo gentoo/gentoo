@@ -1,0 +1,17 @@
+This patch is a revert of commit 15a66d72f33a099ec65e0fd37cf14548ed1d2bdb (Rolling 5 dependencies and fixing build (#1057)) because it adds usage of the .maxDualSourceDrawBuffersEXT field which is not available in any tagged release of glslang. The field is added in glslang in https://github.com/KhronosGroup/glslang/commit/e05cc20ec20a154d94256c744a3837c23719c0f9
+
+---
+diff --git b/libshaderc_util/src/resources.cc a/libshaderc_util/src/resources.cc
+index d64e47f..458a63f 100644
+--- b/libshaderc_util/src/resources.cc
++++ a/libshaderc_util/src/resources.cc
+@@ -125,7 +125,7 @@ const TBuiltInResource kDefaultTBuiltInResource = {
+     /* .maxTaskWorkGroupSizeY_NV = */ 1,
+     /* .maxTaskWorkGroupSizeZ_NV = */ 1,
+     /* .maxMeshViewCountNV = */ 4,
+-    /* .maxDualSourceDrawBuffersEXT = */ 1,
++
+     // This is the glslang TLimits structure.
+     // It defines whether or not the following features are enabled.
+     // We want them to all be enabled.
+-- 

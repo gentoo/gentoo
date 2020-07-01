@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,14 +12,14 @@ SRC_URI="mirror://sourceforge.jp/${PN}/71638/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/ncurses:=
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )
 	test? ( sys-apps/ed )"
 
 src_configure() {

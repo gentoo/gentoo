@@ -10,12 +10,11 @@ inherit distutils-r1
 DESCRIPTION="A wrapper for the GitHub API written in python"
 HOMEPAGE="https://github3py.readthedocs.io/en/master/"
 SRC_URI="https://github.com/sigmavirus24/${PN}.py/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}.py-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-vcs/git
@@ -24,14 +23,12 @@ RDEPEND="
 	>=dev-python/python-dateutil-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/jwcrypto-0.5.0[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		>dev-python/pytest-2.3.5[${PYTHON_USEDEP}]
 		>=dev-python/betamax-0.8.0[${PYTHON_USEDEP}]
 		>=dev-python/betamax-matchers-0.1.0[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 	)"
-
-S="${WORKDIR}/${PN}.py-${PV}"
 
 distutils_enable_tests pytest

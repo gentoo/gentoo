@@ -403,20 +403,21 @@ distutils_enable_tests() {
 	local test_pkg
 	case ${1} in
 		nose)
-			test_pkg="dev-python/nose"
+			test_pkg=">=dev-python/nose-1.3.7-r4"
 			python_test() {
 				nosetests -v || die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		pytest)
-			test_pkg="dev-python/pytest"
+			test_pkg=">=dev-python/pytest-4.5.0"
 			python_test() {
 				pytest -vv || die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		setup.py)
 			python_test() {
-				esetup.py test --verbose
+				nonfatal esetup.py test --verbose ||
+					die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		unittest)
@@ -474,6 +475,8 @@ _distutils_verify_use_setuptools() {
 		if grep -E -q -s 'entry_points\s*=' setup.py; then
 			expected=rdepend
 		elif grep -F -q -s '[options.entry_points]' setup.cfg; then
+			expected=rdepend
+		elif grep -F -q -s '[entry_points]' setup.cfg; then  # pbr
 			expected=rdepend
 		else
 			expected=bdepend

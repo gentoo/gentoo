@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 python3_7 )
+PYTHON_COMPAT=( python3_6 python3_7 )
 
 inherit readme.gentoo-r1 autotools perl-functions python-single-r1 toolchain-funcs udev
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/linux-gpib/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="pcmcia static guile perl php python tcl doc firmware"
 
 S="${WORKDIR}/${PN}-user-${PV}"

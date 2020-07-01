@@ -13,7 +13,6 @@ RDEPEND="|| (
 	app-admin/socklog
 	app-admin/sysklogd
 	app-admin/syslog-ng
-	sys-freebsd/freebsd-usbin
 	sys-apps/busybox[syslog]
 	>=sys-apps/systemd-38
 )"

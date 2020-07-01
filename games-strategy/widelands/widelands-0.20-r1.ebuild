@@ -11,7 +11,7 @@ MY_PV="build$(ver_cut 2-)"
 MY_P="${PN}-${MY_PV/_/-}"
 
 DESCRIPTION="A game similar to Settlers 2"
-HOMEPAGE="http://www.widelands.org/"
+HOMEPAGE="https://www.widelands.org/"
 SRC_URI="https://launchpad.net/widelands/build$(ver_cut 2)/${MY_PV/_/-}/+download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2+"
@@ -43,8 +43,9 @@ CMAKE_BUILD_TYPE="Release"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.20_rc1-cxxflags.patch"
-	"${FILESDIR}/${PN}-0.20-glvnd.patch"
+	"${FILESDIR}"/${PN}-0.20_rc1-cxxflags.patch
+	"${FILESDIR}"/${PN}-0.20-glvnd.patch
+	"${FILESDIR}"/${PN}-0.20-boost-1.73.patch
 )
 
 src_prepare() {

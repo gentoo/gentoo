@@ -1,11 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 SNAPSHOT="14a1a146df76d70c44dcc38363848a5b41a364d5"
-
-inherit cmake-utils vcs-snapshot xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt5-based download/upload manager"
 HOMEPAGE="http://fatrat.dolezel.info/"
@@ -16,6 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bittorrent +curl doc nls xmpp"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -34,12 +38,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.2.0_beta2_p20150803-build.patch" )
+S="${WORKDIR}/LubosD-${PN}-14a1a14"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2.0_beta2_p20150803-build.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
@@ -50,7 +56,7 @@ src_configure() {
 		-DWITH_JABBER="$(usex xmpp ON OFF)"
 		-DWITH_WEBINTERFACE=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
 	>=dev-util/gtk-doc-am-1.9
 	>=sys-devel/gettext-0.19.8
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	test? (
 		$(python_gen_any_dep '
 			dev-python/mock[${PYTHON_USEDEP}]

@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 5c387f01..b0f1449e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -23,7 +23,7 @@ module = __import__(config.get('setup', 'setuplib'),
+                     ['setup'], 0)
+ setup = getattr(module, 'setup')
+ 
+-readme = open("README.md", "r")
++readme = open("README.rst", "r")
+ 
+ 
+ setup(name='pyroute2',

@@ -1,0 +1,37 @@
+--- a/CMakeLists.txt	2020-05-31 01:09:58.634978658 +0200
++++ b/CMakeLists.txt	2020-05-31 01:12:51.011307579 +0200
+@@ -298,7 +298,6 @@
+ find_package(Qt5Gui ${qt_min_version} REQUIRED)
+ find_package(Qt5Widgets ${qt_min_version} REQUIRED)
+ find_package(Qt5Xml ${qt_min_version} REQUIRED)
+-find_package(Qt5Network ${qt_min_version} REQUIRED)
+ find_package(Qt5LinguistTools ${qt_min_version} REQUIRED)
+ find_package(Qt5OpenGL ${qt_min_version} REQUIRED)
+ 
+@@ -311,8 +310,6 @@
+ link_directories(${Qt5Widgets_LIBRARIES})
+ include_directories(${Qt5Xml_INCLUDE_DIRS})
+ link_directories(${Qt5Xml_LIBRARIES})
+-include_directories(${Qt5Network_INCLUDE_DIRS})
+-link_directories(${Qt5Network_LIBRARIES})
+ include_directories(${Qt5OpenGL_INCLUDE_DIRS})
+ link_directories(${Qt5OpenGL_LIBRARIES})
+ include_directories(${Qt5LinguistTools_INCLUDE_DIRS})
+@@ -578,7 +575,7 @@
+     scantailor
+     fix_orientation page_split deskew select_content page_layout output stcore
+     dewarping zones interaction imageproc math foundation
+-    ${Qt5Core_LIBRARIES} ${Qt5GUI_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5Xml_LIBRARIES} ${Qt5Network_LIBRARIES}
++    ${Qt5Core_LIBRARIES} ${Qt5GUI_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5Xml_LIBRARIES}
+     ${Qt5OpenGL_LIBRARIES} ${Qt5LinguistTools_LIBRARIES} ${EXTRA_LIBS}
+ )
+ 
+@@ -639,7 +636,7 @@
+       qt5_libs
+       ${Qt5Widgets_LIBRARIES} ${Qt5Gui_LIBRARIES}
+       ${Qt5Core_LIBRARIES} ${Qt5Xml_LIBRARIES}
+-      ${Qt5Network_LIBRARIES} ${Qt5OpenGL_LIBRARIES}
++      ${Qt5OpenGL_LIBRARIES}
+   )
+ 
+   foreach (target ${qt5_libs})

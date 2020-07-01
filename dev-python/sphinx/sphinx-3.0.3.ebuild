@@ -86,6 +86,10 @@ python_prepare_all() {
 @pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
 		tests/test_pycode_parser.py || die
 
+	# disable internet access
+	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
+		doc/conf.py || die
+
 	distutils-r1_python_prepare_all
 }
 

@@ -1,0 +1,20 @@
+--- a/src/discover_dispatch.c
++++ b/src/discover_dispatch.c
+@@ -81,7 +81,6 @@
+ 
+ unsigned short ip_tcp_sync_chksum;
+ unsigned short ip_tcp_fp_chksum;
+-struct sockaddr_in ip_tcp_sync_addr;
+ static dispatch_func_recv_t dispatch_funcs[] = {
+ 	dis_recvdummy,
+ 	dis_recv,
+--- a/src/discover_main.c
++++ b/src/discover_main.c
+@@ -22,7 +22,6 @@
+ extern struct _opt opt;
+ extern char ip_tcp_sync[];
+ 
+-struct sockaddr_in ip_tcp_sync_addr;
+ int rawsox;
+ 
+ #define DFL_HOSTS_PARALLEL	(5000)

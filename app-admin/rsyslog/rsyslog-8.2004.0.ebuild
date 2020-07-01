@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
@@ -73,7 +73,7 @@ RDEPEND="
 	uuid? ( sys-apps/util-linux:0= )
 	xxhash? ( dev-libs/xxhash:= )
 	zeromq? (
-		>=net-libs/czmq-3.0.2
+		>=net-libs/czmq-4:=[drafts]
 	)"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2015.02.24
@@ -97,6 +97,8 @@ if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" >=sys-devel/bison-2.4.3"
 	DEPEND+=" >=dev-python/docutils-0.12"
 fi
+
+PATCHES=( "${FILESDIR}"/${P}-skip-librelp-openssl-specific-tests.patch )
 
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"

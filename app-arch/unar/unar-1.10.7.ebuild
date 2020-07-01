@@ -22,7 +22,7 @@ BDEPEND="
 RDEPEND="
 	app-arch/bzip2:=
 	dev-libs/icu:=
-	gnustep-base/gnustep-base
+	gnustep-base/gnustep-base:=
 	media-sound/wavpack
 	sys-libs/zlib
 "

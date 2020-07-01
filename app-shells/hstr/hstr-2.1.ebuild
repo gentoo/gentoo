@@ -22,7 +22,7 @@ DEPEND="
 
 DOCS=( CONFIGURATION.md README.md )
 
-PATCHES=( ${FILESDIR}/${P}-fix-ncurses-configure.patch )
+PATCHES=( ${FILESDIR}/${PN}-2.0-fix-ncurses-configure.patch )
 
 src_prepare() {
 	default

@@ -17,6 +17,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Unmask globally-masked flashrom drivers and tools which do work on amd64
+sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on amd64
+app-text/texlive-core -xindy
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
+# sys-cluster/slurm is keyworded on amd64
+app-metrics/collectd -collectd_plugins_slurm
+
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
 # static-pie works on amd64, #719444
 sys-libs/glibc -static-pie
@@ -119,10 +131,6 @@ dev-util/catalyst -system-bootloader
 # Mask everywhere, unmask where appropriate.
 media-video/mpv -vulkan
 
-# Mikle Kolyada <zlogene@gentoo.org> (2018-06-02)
-# Too many untested ruby dependencies
-<dev-ruby/haml-5 test
-
 # Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
 # media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
 app-emulation/wine-staging -vkd3d -vulkan
@@ -140,10 +148,6 @@ media-libs/opencv -contribxfeatures2d
 # David Seifert <soap@gentoo.org> (2017-05-20)
 # cpyrit-cuda does not support GCC 4.9 or later
 net-wireless/pyrit cuda
-
-# Rick Farina <zerochaos@gentoo.org> (2017-05-11)
-# nexpose work on amd64
-net-analyzer/metasploit -nexpose
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # dev-libs/libmaxminddb is keyworded on amd64
@@ -222,10 +226,6 @@ media-libs/libbluray -bdplus
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers -steam
 
-# Mike Frysinger <vapier@gentoo.org> (2014-08-04)
-# Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv
-
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64
 dev-db/mariadb -tokudb
@@ -262,10 +262,6 @@ sys-apps/hwloc -gl
 # Meaningless on amd64 (it controls the 32-bit x86 JIT).
 dev-python/pypy-exe cpu_flags_x86_sse2
 dev-python/pypy3-exe cpu_flags_x86_sse2
-
-# Christoph Junghans <junghans@gentoo.org> (2012-12-26)
-# cuda works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -mkl
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Unmask here, as it's masked in base.

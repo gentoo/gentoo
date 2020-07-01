@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1.20 )
 	>=sys-devel/gettext-0.18
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 src_prepare() {

@@ -1,0 +1,17 @@
+Three of these are not like the others
+
+--- a/include/dconf_vars.h
++++ b/include/dconf_vars.h
+@@ -42,9 +42,9 @@
+ E char*     DNSBLZoneMsg;
+ 
+ /* PT */
+-char *PT_Nick;
+-char *PT_Mask;
+-char *PT_Info;
++E char *PT_Nick;
++E char *PT_Mask;
++E char *PT_Info;
+ #undef E
+ 
+ #endif /* conf_vars_h_ */

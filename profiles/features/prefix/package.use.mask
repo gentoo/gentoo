@@ -15,10 +15,6 @@ www-servers/uwsgi uwsgi_plugins_systemd_logger
 # Needs root privilege.
 sys-fs/eudev hwdb kmod
 
-# Kacper Kowalik <xarthisius@gentoo.org> (2012-01-14)
-# sci-libs/mkl don't have prefix keywords
-dev-python/numexpr mkl
-
 # Fabian Groffen <grobian@gentoo.org> (2011-12-08)
 # USE=vanilla produces a broken compiler for Prefix.  Only use this flag
 # when you're absolutely sure what you're doing.  Do NOT report bugs

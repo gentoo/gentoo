@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Daemon of the CDEmu optical media image mounting suite"
 HOMEPAGE="https://cdemu.sourceforge.io"
