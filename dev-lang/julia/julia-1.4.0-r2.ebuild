@@ -79,7 +79,7 @@ PATCHES=(
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 pkg_setup() {
-	use system-llvm && llvm_pkg_setp
+	use system-llvm && llvm_pkg_setup
 }
 
 src_unpack() {
