@@ -74,6 +74,7 @@ src_configure() {
 		-DLWS_WITH_SQLITE3=$(usex sqlite3)
 		-DLWS_WITH_SSL=$(usex ssl)
 		-DLWS_WITH_STATIC=$(usex static-libs)
+		-DLWS_WITH_STRUCT_JSON=$(usex lejp)
 		-DLWS_WITH_THREADPOOL=$(usex threads)
 		-DLWS_WITH_ZIP_FOPS=$(usex zip)
 		-DLWS_WITHOUT_TESTAPPS=ON
