@@ -12,11 +12,6 @@ dev-util/cbindgen
 # https://valgrind.org/info/platforms.html
 dev-util/valgrind
 
-# Bernardo Meurer <bernardo@standard.ai> (2019-09-28)
-# Requires app-crypt/tpm2-tss which is pending ~arm vide
-# https://bugs.gentoo.org/695758
->=sys-apps/fwupd-1.3.2
-
 # James Le Cuirot <chewi@gentoo.org> (2016-01-09)
 # This is built for armv6 and will not work on earlier generations.
 dev-java/oracle-jdk-bin
