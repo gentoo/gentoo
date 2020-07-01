@@ -3417,7 +3417,7 @@ dev-embedded/zmac 1.3-r1: Z80 macro cross-assembler
 dev-erlang/base64url 1.0.1: URL safe base64-compatible codec
 dev-erlang/cache_tab 1.0.7 1.0.20 1.0.22: In-memory cache Erlang and Elixir library
 dev-erlang/eimp 1.0.9 1.0.12 1.0.14 1.0.15: Erlang Image Manipulation Process
-dev-erlang/epam 1.0.2 1.0.6 1.0.7: epam for ejabberd to help with PAM authentication support
+dev-erlang/epam 1.0.2 1.0.6 1.0.7 1.0.8: epam for ejabberd to help with PAM authentication support
 dev-erlang/eredis 1.0.8: Erlang Redis client
 dev-erlang/esip 1.0.11 1.0.26 1.0.30 1.0.32: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.2 1.0.6 1.0.7: Native zlib driver for Erlang and Elixir
@@ -3428,7 +3428,7 @@ dev-erlang/goldrush 0.1.9 0.2.0: Small Erlang app that provides fast event strea
 dev-erlang/hamcrest 0.1.0_p20160709: Erlang port of Hamcrest
 dev-erlang/iconv 1.0.4 1.0.10: Fast encoding conversion library for Erlang and Elixir
 dev-erlang/idna 6.0.0: Erlang IDNA implementation
-dev-erlang/jiffy 0.14.9 0.14.11 1.0.1 1.0.4: JSON NIFs for Erlang
+dev-erlang/jiffy 0.14.9 0.14.11 1.0.1 1.0.4 1.0.5: JSON NIFs for Erlang
 dev-erlang/jose 1.9.0 1.10.1: JSON Object Signing and Encryption (JOSE) for Erlang and Elixir
 dev-erlang/lager 3.2.4 3.8.0: Logging framework for Erlang/OTP
 dev-erlang/luerl 0.2 0.3: Lua in Erlang
@@ -3445,7 +3445,7 @@ dev-erlang/proper 1.2 1.3: QuickCheck-inspired property-based testing tool for E
 dev-erlang/protobuffs 0.9.0: Google's Protocol Buffers for Erlang
 dev-erlang/riak_pb 2.2.0.2: Riak Protocol Buffers messages
 dev-erlang/riakc 2.4.2: Erlang clients for Riak
-dev-erlang/sqlite3 1.1.5 1.1.6: SQLite gen_server port for Erlang
+dev-erlang/sqlite3 1.1.5 1.1.6 1.1.7: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.8 1.0.17 1.0.19: Fast Stringprep implementation for Erlang and Elixir
 dev-erlang/stun 1.0.10 1.0.25 1.0.29 1.0.31 1.0.32: STUN and TURN library for Erlang and Elixir
 dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1 1.4.5 1.4.6: XMPP parsing and serialization library on top of Fast XML
@@ -5826,7 +5826,7 @@ dev-perl/Crypt-Eksblowfish 0.9.0-r2 0.9.0-r3: the Eksblowfish block cipher
 dev-perl/Crypt-IDEA 1.100.0 1.100.0-r1 1.100.0-r2: An implementation of the IDEA symmetric-key block cipher
 dev-perl/Crypt-OpenPGP 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.90.0 0.90.0-r1: OpenSSL's multiprecision integer arithmetic
-dev-perl/Crypt-OpenSSL-DSA 0.190.0-r1: Digital Signature Algorithm using OpenSSL
+dev-perl/Crypt-OpenSSL-DSA 0.190.0-r1 0.190.0-r2: Digital Signature Algorithm using OpenSSL
 dev-perl/Crypt-OpenSSL-EC 1.310.0: Perl extension for OpenSSL EC (Elliptic Curves) library
 dev-perl/Crypt-OpenSSL-ECDSA 0.80.0-r2: OpenSSL ECDSA (Elliptic Curve Digital Signature Algorithm) Perl extension
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r3: Crypt::OpenSSL::RSA module for perl
