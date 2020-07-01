@@ -414,9 +414,8 @@ net-news/rawdog
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-02)
 # libgnomeui revdeps with no sign of upstream porting away or doing anything.
-# No maintainer. Bugs #726826, #726822. Masked for removal in 30 days.
+# No maintainer. Bug #726826. Masked for removal in 30 days.
 app-misc/cbrpager
-app-misc/ignuit
 
 # Jonas Stein <jstein@gentoo.org> (2020-06-01)
 # Last rite package due to missing/unclear license.
