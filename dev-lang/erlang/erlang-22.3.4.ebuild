@@ -39,7 +39,6 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 	systemd? ( sys-apps/systemd )
-	tk? ( dev-lang/tk:0 )
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
 "
 DEPEND="${RDEPEND}
