@@ -89,6 +89,7 @@ acct-group/lpadmin 0: System group: lpadmin
 acct-group/lxd 0: Group for app-emulation/lxd
 acct-group/mail 0: Mail program group
 acct-group/man 0: System group: man
+acct-group/maradns 0: System group: maradns
 acct-group/memcached 0: System group: memcached
 acct-group/messagebus 0: System group: messagebus
 acct-group/milter-regex 0: Group for mail-filter/milter-regex
@@ -245,6 +246,7 @@ acct-user/dnsmasq 0: User for net-dns/dnsmasq
 acct-user/dnsmasq_exporter 0: user for dnsmasq_exporter
 acct-user/dovecot 0: user for dovecot daemon
 acct-user/dovenull 0: user for dovecot daemon
+acct-user/duende 0: System user: duende
 acct-user/elasticsearch 0: Elasticsearch program user
 acct-user/epmd 0: User for Erlang Protmapper Daemon
 acct-user/etcd 0: User for etcd
@@ -280,6 +282,7 @@ acct-user/lldpd 0: User for net-misc/lldpd
 acct-user/logstash 0: Logstash program user
 acct-user/mail 0: Mail program user
 acct-user/man 1: System user: man
+acct-user/maradns 0: System user: maradns
 acct-user/memcached 0: User for the memcached service
 acct-user/messagebus 0: System user: messagebus
 acct-user/milter-regex 0: User for mail-filter/milter-regex
@@ -3452,7 +3455,7 @@ dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1 1.4.5 1.4.6: XMPP parsing and serialization
 dev-erlang/yconf 1.0.1 1.0.4: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7-r1 1.1.9: Animated sprite editor & pixel art tool
-dev-games/cardpics 0.4 0.4-r1: set of free cards sets
+dev-games/cardpics 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r1: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
@@ -14229,7 +14232,7 @@ net-dns/knot 2.8.5 2.9.5: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.35: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
-net-dns/maradns 2.0.09-r2 2.0.14 2.0.16: A security-aware DNS server
+net-dns/maradns 2.0.16 3.5.0005: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
