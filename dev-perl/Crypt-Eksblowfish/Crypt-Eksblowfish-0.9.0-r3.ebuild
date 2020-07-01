@@ -31,6 +31,18 @@ BDEPEND="${RDEPEND}
 		virtual/perl-Test-Simple
 	)
 "
+src_configure() {
+	# Overriding this breaks build,
+	# as people always set this to a real LD
+	# but a CCLD is expected
+	# If you know what you're doing, export CCLD
+	# Bug: https://bugs.gentoo.org/730390
+	unset LD
+	if [[ -n "${CCLD}" ]]; then
+		export LD="${CCLD}"
+	fi
+	perl-module_src_configure
+}
 src_compile() {
 	./Build --config optimize="${CFLAGS}" build || die
 }
