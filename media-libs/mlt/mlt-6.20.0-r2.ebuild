@@ -91,6 +91,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-crash-w-unsupported-preview-scale.patch
 	"${FILESDIR}"/${P}-crash-in-composite.patch
 	"${FILESDIR}"/${P}-opencv-double-del-crash.patch
+	"${FILESDIR}"/${P}-musl-locale.patch # from Alpine, pending upstream
 )
 
 pkg_setup() {
