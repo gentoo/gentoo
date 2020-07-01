@@ -5,17 +5,16 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="tk?"
-inherit cmake desktop flag-o-matic python-single-r1 subversion xdg
+COMMIT=aa84120d97003a03d883db33ea9a6ad28550e59a
+inherit cmake desktop flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
-SRC_URI=""
-ESVN_REPO_URI="svn://scribus.net/trunk/Scribus"
-ESVN_PROJECT=Scribus-1.5
+SRC_URI="https://github.com/${PN}project/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts +templates tk"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -81,6 +80,8 @@ PATCHES=(
 )
 
 CMAKE_BUILD_TYPE="Release"
+
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 src_prepare() {
 	cmake_src_prepare
