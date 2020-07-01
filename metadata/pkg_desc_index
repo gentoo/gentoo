@@ -10726,7 +10726,7 @@ games-action/super-hexagon 20160217: A minimal action game by Terry Cavanagh, wi
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
 games-action/supertuxkart 1.1: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
-games-action/teeworlds 0.6.4: Online multi-player platform 2D shooter
+games-action/teeworlds 0.6.4 0.7.5: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
 games-action/transcend 0.3-r1: Retro-style, abstract, 2D shooter
 games-action/trine 1.08-r3: A physics-based action game with character-dependent solutions to challenges
