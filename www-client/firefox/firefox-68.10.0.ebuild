@@ -10,11 +10,12 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads(+)'
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
-MOZ_LANGS=(ach af an ar ast az be bg bn br bs ca cak cs cy da de dsb el en en-CA
-en-GB en-US eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE gd gl gn gu-IN
-he hi-IN hr hsb hu hy-AM ia id is it ja ka kab kk km kn ko lij lt lv mk mr ms my
-nb-NO nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta te
-th tr uk ur uz vi xh zh-CN zh-TW )
+MOZ_LANGS=( ach af an ar ast az be bg bn br bs ca cak cs cy da de dsb
+el en en-CA en-GB en-US eo es-AR es-CL es-ES es-MX et eu fa ff fi fr
+fy-NL ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM ia id is it ja ka
+kab kk km kn ko lij lt lv mk mr ms my nb-NO nl nn-NO oc pa-IN pl pt-BR
+pt-PT rm ro ru si sk sl son sq sr sv-SE ta te th tr uk ur uz vi xh
+zh-CN zh-TW )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_alpha/a}" # Handle alpha for SRC_URI
@@ -30,7 +31,7 @@ fi
 PATCH="${PN}-68.0-patches-14"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
-MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
+MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/${PN}-${MOZ_PV}.source.tar.xz"
 
 if [[ "${PV}" == *_rc* ]]; then
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_rc}"
@@ -179,8 +180,6 @@ DEPEND="${CDEPEND}
 
 S="${WORKDIR}/firefox-${PV%_*}"
 
-QA_PRESTRIPPED="usr/lib*/${PN}/firefox"
-
 BUILD_OBJ_DIR="${S}/ff"
 
 # allow GMP_PLUGIN_LIST to be set in an eclass or
@@ -262,12 +261,6 @@ pkg_setup() {
 	addpredict /proc/self/oom_score_adj
 
 	llvm_pkg_setup
-
-	if has ccache ${FEATURES} ; then
-		if use clang && use pgo ; then
-			die "Using FEATURES=ccache with USE=clang and USE=pgo is currently known to be broken (bug #718632)."
-		fi
-	fi
 }
 
 src_unpack() {
