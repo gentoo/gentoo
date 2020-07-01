@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,9 @@ DEPEND=">=dev-lang/erlang-17.1:="
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md THANKS )
+
+# tests broken with current erlang 23.x
+RESTRICT="test"
 
 src_configure() {
 	./configure
