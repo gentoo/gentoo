@@ -33,6 +33,7 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 src_prepare() {
 	default
 	sed -i 's/-std=gnu++0x/-std=gnu++17/' Makefile.am || die
+	sed -i '/Requires.private/ s/ alsa libpulse//' tgvoip.pc.in || die
 	eautoreconf
 }
 
