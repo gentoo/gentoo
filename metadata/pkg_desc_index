@@ -14242,7 +14242,7 @@ net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2 3.10.0: A framework for managing DNS information
 net-dns/pdns 4.1.13 4.2.0 4.2.1 4.2.1-r1 4.2.2 4.3.0: The PowerDNS Daemon
-net-dns/pdns-recursor 4.3.1 4.3.1-r1: The PowerDNS Recursor
+net-dns/pdns-recursor 4.3.1 4.3.1-r1 4.3.2: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5 1.1.6: Wrapper for DNS name resolving or DNS faking
@@ -14600,7 +14600,7 @@ net-libs/qxmpp 1.2.0 9999: A cross-platform C++ XMPP client library based on the
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/rpc2 2.14: Remote procedure call package for IP/UDP (used by Coda)
-net-libs/rpcsvc-proto 0 1.4.1-r1: rpcsvc protocol definitions from glibc
+net-libs/rpcsvc-proto 0 1.4.1-r1 1.4.2: rpcsvc protocol definitions from glibc
 net-libs/serf 1.3.8 1.3.8-r1 1.3.9 1.3.9-r1 1.3.9-r2: HTTP client library
 net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.24: OAuth2 plugin for Signon daemon
