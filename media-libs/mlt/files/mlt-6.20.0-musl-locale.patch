@@ -1,0 +1,34 @@
+From d02611584d4b2f693469c72272fe369413139394 Mon Sep 17 00:00:00 2001
+From: Carlo Landmeter <clandmeter@gmail.com>
+Date: Sun, 6 Nov 2016 00:45:44 +0100
+Subject: testing/mlt: new aport
+
+---
+ testing/mlt/musl-locale.patch | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+ create mode 100644 testing/mlt/musl-locale.patch
+
+(limited to 'testing/mlt/musl-locale.patch')
+
+diff --git a/testing/mlt/musl-locale.patch b/testing/mlt/musl-locale.patch
+new file mode 100644
+index 0000000000..030bb781d1
+--- /dev/null
++++ b/testing/mlt/musl-locale.patch
+@@ -0,0 +1,13 @@
++--- ./src/framework/mlt_property.h.orig
+++++ ./src/framework/mlt_property.h
++@@ -30,8 +30,8 @@
++ #include <sys/param.h>
++ #endif
++ 
++-#if defined(__GLIBC__) || defined(__APPLE__) || (__FreeBSD_version >= 900506)
++-#include <xlocale.h>
+++#if defined(__linux__) || defined(__APPLE__) || (__FreeBSD_version >= 900506)
+++#include <locale.h>
++ #else
++ typedef char* locale_t;
++ #endif
+-- 
+cgit v1.2.1
+
