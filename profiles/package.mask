@@ -31,7 +31,7 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
-
+<dev-python/pillow-7
 # Aaron Bauman <bman@gentoo.org> (2020-06-29)
 # More Py2 only stuff. Plz see -dev ML for discussions
 # Remove bindings, port to Py3, etc
