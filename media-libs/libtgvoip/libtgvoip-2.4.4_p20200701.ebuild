@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools
 
-EGIT_COMMIT="d40d077ddab10a81fe619477cea8380cfa7efcea"
+EGIT_COMMIT="ad55e7403ab7f268304ae9045eddef479a574ae5"
 
 DESCRIPTION="VoIP library for Telegram clients"
 HOMEPAGE="https://github.com/telegramdesktop/libtgvoip"
@@ -33,7 +33,6 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 src_prepare() {
 	default
 	sed -i 's/-std=gnu++0x/-std=gnu++17/' Makefile.am || die
-	sed -i '/Requires.private/ s/ alsa libpulse//' tgvoip.pc.in || die
 	eautoreconf
 }
 
