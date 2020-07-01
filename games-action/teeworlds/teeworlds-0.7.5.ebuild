@@ -3,12 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
-
-inherit cmake-utils desktop python-any-r1 xdg-utils
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 COMMIT_LANG="4ba6f824e9c34565e61340d25bc8c3cc004d40fb"
 COMMIT_MAPS="1d3401a37a3334e311faf18a22aeff0e0ac9ee65"
+inherit cmake desktop python-any-r1 xdg-utils
 
 DESCRIPTION="Online multi-player platform 2D shooter"
 HOMEPAGE="https://www.teeworlds.com/"
@@ -17,7 +16,7 @@ SRC_URI="
 	https://github.com/teeworlds/teeworlds/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/teeworlds/teeworlds-maps/archive/${COMMIT_MAPS}.tar.gz -> ${P}-maps.tar.gz
 	https://github.com/teeworlds/teeworlds-translation/archive/${COMMIT_LANG}.tar.gz -> ${P}-translation.tar.gz
-	"
+"
 
 LICENSE="ZLIB"
 SLOT="0"
@@ -26,7 +25,7 @@ IUSE="debug dedicated"
 
 RDEPEND="
 	!dedicated? (
-		app-arch/bzip2
+		app-arch/bzip2:=
 		media-libs/freetype
 		media-libs/libsdl[X,sound,opengl,video]
 		media-libs/pnglite
@@ -41,13 +40,13 @@ RDEPEND="
 DEPEND="${RDEPEND} ${PYTHON_DEPS}"
 
 src_prepare() {
+	cmake_src_prepare
 	rm -r "${S}/datasrc/languages" || die
 	rm -r "${S}/datasrc/maps" || die
 	mv "${WORKDIR}/${PN}-translation-${COMMIT_LANG}" "${S}/datasrc/languages" || die
 	mv "${WORKDIR}/${PN}-maps-${COMMIT_MAPS}" "${S}/datasrc/maps" || die
 	cp "${DISTDIR}/${PN}.png" "${S}/" || die
 	python_fix_shebang scripts/
-	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -57,11 +56,11 @@ src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	doicon -s 256 "${PN}.png"
 	domenu other/teeworlds.desktop
 	newinitd "${FILESDIR}"/${PN}-init.d ${PN}
