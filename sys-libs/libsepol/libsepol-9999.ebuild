@@ -38,6 +38,10 @@ src_prepare() {
 
 multilib_src_compile() {
 	tc-export CC AR RANLIB
+
+	# https://bugs.gentoo.org/706730
+	local -x CFLAGS="${CFLAGS} -fcommon"
+
 	emake \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
 		SHLIBDIR="/$(get_libdir)"
