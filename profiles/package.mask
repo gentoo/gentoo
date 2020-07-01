@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-01)
+# Depends on dead gnome-base/libgnomeui, bug #726816, dead upstream. Big Debian
+# patch exists, but we won't become new upstream. Masked for removal in 30 days.
+games-board/teg
+
 # Aaron Bauman <bman@gentoo.org> (2020-06-29)
 # More Py2 only stuff. Plz see -dev ML for discussions
 # Remove bindings, port to Py3, etc
