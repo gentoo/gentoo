@@ -21,7 +21,7 @@ fi
 inherit bash-completion-r1 golang-base linux-info systemd udev
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
-HOMEPAGE="https://dockerproject.org"
+HOMEPAGE="https://www.docker.com/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="apparmor aufs btrfs +container-init device-mapper hardened +overlay seccomp"
