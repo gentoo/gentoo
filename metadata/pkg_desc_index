@@ -5823,9 +5823,9 @@ dev-perl/Crypt-DH 0.70.0-r2 0.70.0-r3: Diffie-Hellman key exchange system
 dev-perl/Crypt-DH-GMP 0.0.120 0.0.120-r1: Crypt::DH Using GMP Directly
 dev-perl/Crypt-DSA 1.170.0 1.170.0-r1: DSA Signatures and Key Generation
 dev-perl/Crypt-Eksblowfish 0.9.0-r2 0.9.0-r3: the Eksblowfish block cipher
-dev-perl/Crypt-IDEA 1.100.0 1.100.0-r1: An implementation of the IDEA symmetric-key block cipher
+dev-perl/Crypt-IDEA 1.100.0 1.100.0-r1 1.100.0-r2: An implementation of the IDEA symmetric-key block cipher
 dev-perl/Crypt-OpenPGP 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
-dev-perl/Crypt-OpenSSL-Bignum 0.90.0: OpenSSL's multiprecision integer arithmetic
+dev-perl/Crypt-OpenSSL-Bignum 0.90.0 0.90.0-r1: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.190.0-r1: Digital Signature Algorithm using OpenSSL
 dev-perl/Crypt-OpenSSL-EC 1.310.0: Perl extension for OpenSSL EC (Elliptic Curves) library
 dev-perl/Crypt-OpenSSL-ECDSA 0.80.0-r2: OpenSSL ECDSA (Elliptic Curve Digital Signature Algorithm) Perl extension
@@ -18772,7 +18772,7 @@ x11-wm/blackbox 0.70.1-r1 0.75 0.76: A small, fast, full-featured window manager
 x11-wm/bspwm 0.9.9: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
 x11-wm/cwm 6.6 6.7 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
-x11-wm/dwm 6.1-r1 6.2 9999: a dynamic window manager for X11
+x11-wm/dwm 6.2 9999: a dynamic window manager for X11
 x11-wm/e16 1.0.20 1.0.21: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/enlightenment 0.23.1-r1 0.24.1: Enlightenment window manager
