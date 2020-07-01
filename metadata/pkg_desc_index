@@ -9612,7 +9612,7 @@ dev-ruby/journey 1.0.4-r1: Journey is a router. It routes requests
 dev-ruby/jquery-rails 4.3.5 4.4.0: jQuery! For Rails! So great
 dev-ruby/jquery-ui-rails 5.0.5-r1 6.0.1-r1: The jQuery UI assets for the Rails 3.2+ asset pipeline
 dev-ruby/jsobfu 0.4.2: A Javascript code obfuscator
-dev-ruby/json 1.8.6-r1 2.3.0: A JSON implementation as a Ruby extension
+dev-ruby/json 1.8.6-r1 2.3.0 2.3.1: A JSON implementation as a Ruby extension
 dev-ruby/json_schema 0.20.8 0.20.9: A JSON Schema V4 and Hyperschema V4 parser and validator
 dev-ruby/jwt 1.5.6 2.1.0 2.2.0 2.2.1: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
