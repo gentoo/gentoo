@@ -1,0 +1,13 @@
+diff --git a/makefile b/makefile
+index 1a5a145..df09239 100644
+--- a/makefile
++++ b/makefile
+@@ -45,7 +45,7 @@ OBJS= src/lxplib.o
+ lib: src/$(LIBNAME)
+ 
+ src/$(LIBNAME) : $(OBJS)
+-	$(CC) $(CFLAGS) -o src/$(LIBNAME) $(LIB_OPTION) $(OBJS) -lexpat
++	$(CC) $(LDFLAGS) $(CFLAGS) -fPIC -std=gnu99 -ansi -I$(LUA_INC) -I$(EXPAT_INC) -o src/$(LIBNAME) $(LIB_OPTION) $(OBJS) -lexpat
+ 
+ install:
+ 	mkdir -p $(LUA_LIBDIR)
