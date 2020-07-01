@@ -33,7 +33,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5[png,X(-)?]
 	media-fonts/open-sans
 	media-libs/fontconfig:=
-	~media-libs/libtgvoip-2.4.4_p20200627[alsa?,pulseaudio?]
+	~media-libs/libtgvoip-2.4.4_p20200701[alsa?,pulseaudio?]
 	media-libs/openal[alsa?,pulseaudio?]
 	media-libs/opus:=
 	media-video/ffmpeg:=[alsa?,opus,pulseaudio?]
@@ -75,8 +75,6 @@ REQUIRED_USE="
 "
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=( "${FILESDIR}/${PV}-no-gtk.patch" )
 
 pkg_pretend() {
 	if has ccache ${FEATURES}; then
