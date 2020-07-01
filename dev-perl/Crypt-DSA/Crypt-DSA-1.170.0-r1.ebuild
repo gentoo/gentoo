@@ -22,7 +22,7 @@ RDEPEND="
 	virtual/perl-MIME-Base64
 	>=virtual/perl-Math-BigInt-1.780.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.420.0
 	test? (
 		dev-perl/Convert-PEM
