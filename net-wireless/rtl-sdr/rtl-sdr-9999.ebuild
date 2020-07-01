@@ -12,7 +12,6 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.osmocom.org/${PN}"
-	KEYWORDS=""
 else
 	#git clone https://git.osmocom.org/rtl-sdr
 	#cd rtl-sdr
