@@ -8238,7 +8238,7 @@ dev-python/piexif 1.0.12 1.1.3: Exif manipulation with pure Python
 dev-python/pika 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.8.3 1.13.0 1.14.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
-dev-python/pillow 6.2.2 7.0.0 7.1.2: Python Imaging Library (fork)
+dev-python/pillow 6.2.2 7.0.0 7.1.2 7.2.0: Python Imaging Library (fork)
 dev-python/pip 9.0.1-r2 19.3.1-r2 20.0.2 20.1 20.1.1: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2018.11.26 2020.4.1_beta1: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
@@ -8490,7 +8490,7 @@ dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1: Client library for Barbican API.
 dev-python/python-blazarclient 2.1.0: This is a client for the OpenStack Blazar API
-dev-python/python-bugzilla 2.1.0 2.3.0: A python module for interacting with Bugzilla over XMLRPC
+dev-python/python-bugzilla 2.1.0 2.3.0 2.4.0: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.6.2-r2: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 4.2.2: A client for the OpenStack Cinder API
@@ -8558,7 +8558,7 @@ dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara 
 dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
-dev-python/python-slugify 1.2.6 4.0.0: A Python Slugify application that handles Unicode
+dev-python/python-slugify 1.2.6 4.0.0 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.12 1.13: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
