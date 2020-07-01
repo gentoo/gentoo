@@ -7991,7 +7991,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.6.1 2.7.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keyring 19.3.0 21.2.1: Provides access to the system keyring service
-dev-python/keystoneauth 3.17.2 4.0.0: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystoneauth 3.17.2 4.0.0 4.0.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.0.1 1.1.0 1.2.0: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/klein 19.6.0: micro-framework for developing production-ready web services with Python
