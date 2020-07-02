@@ -61,7 +61,6 @@ dev-util/wxglade
 media-gfx/fontypython
 media-gfx/fr0st
 sci-chemistry/apbs
-sci-chemistry/autodock
 sci-chemistry/eden
 sci-chemistry/p3d
 sci-chemistry/pdb2pqr
