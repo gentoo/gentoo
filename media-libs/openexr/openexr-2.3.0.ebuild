@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-fix-config.h-collision.patch"
 	"${FILESDIR}/${PN}-2.2.0-Install-missing-header-files.patch"
 	"${FILESDIR}/${P}-fix-build-system.patch"
+	"${FILESDIR}/${P}-fix-bashisms.patch"
 	# From Debian
 	"${FILESDIR}/${PN}-2.3.0-tests-32bits.patch"
 	"${FILESDIR}/${PN}-2.3.0-skip-bogus-tests.patch"
