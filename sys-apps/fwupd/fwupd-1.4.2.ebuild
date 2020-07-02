@@ -35,7 +35,7 @@ BDEPEND="$(vala_depend)
 		net-libs/gnutls[tools]
 	)
 "
-DEPEND="${PYTHON_DEPS}
+CDEPEND="${PYTHON_DEPS}
 	>=app-arch/gcab-1.0
 	app-arch/libarchive:=
 	dev-db/sqlite
@@ -80,8 +80,13 @@ DEPEND="${PYTHON_DEPS}
 # Block sci-chemistry/chemical-mime-data for bug #701900
 RDEPEND="
 	!<sci-chemistry/chemical-mime-data-0.1.94-r4
-	${DEPEND}
+	${CDEPEND}
 	sys-apps/dbus
+"
+
+DEPEND="
+	${CDEPEND}
+	x11-libs/pango[introspection]
 "
 
 PATCHES=(
