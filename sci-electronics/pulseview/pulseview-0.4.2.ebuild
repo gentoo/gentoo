@@ -45,6 +45,8 @@ DEPEND="${RDEPEND}"
 
 DOCS=( HACKING NEWS README )
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
+
 pkg_setup() {
 	use decode && python_setup
 }
