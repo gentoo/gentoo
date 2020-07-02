@@ -5833,11 +5833,11 @@ dev-perl/Crypt-OpenSSL-ECDSA 0.80.0-r2 0.80.0-r3: OpenSSL ECDSA (Elliptic Curve 
 dev-perl/Crypt-OpenSSL-Guess 0.110.0: Guess OpenSSL include path
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r3 0.310.0: RSA encoding and decoding using the OpenSSL libraries
 dev-perl/Crypt-OpenSSL-Random 0.110.0 0.150.0: OpenSSL/LibreSSL pseudo-random number generator access
-dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
-dev-perl/Crypt-Primes 0.500.0-r1: Provable Prime Number Generator suitable for Cryptographic Applications
-dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
-dev-perl/Crypt-RIPEMD160 0.60.0: Perl extension for the RIPEMD-160 Hash function
-dev-perl/Crypt-RSA 1.990.0-r1: RSA public-key cryptosystem
+dev-perl/Crypt-PasswdMD5 1.400.0 1.400.0-r1: Provides interoperable MD5-based crypt() functions
+dev-perl/Crypt-Primes 0.500.0-r1 0.500.0-r2: Provable Prime Number Generator suitable for Cryptographic Applications
+dev-perl/Crypt-RC4 2.020.0-r1 2.20.0-r2: Implements the RC4 encryption algorithm
+dev-perl/Crypt-RIPEMD160 0.60.0 0.60.0-r1: Perl extension for the RIPEMD-160 Hash function
+dev-perl/Crypt-RSA 1.990.0-r1 1.990.0-r2: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.250.0-r1 1.520.0: Cryptographically Secure, True Random Number Generator
 dev-perl/Crypt-Random-Source 0.120.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.130.0 1.140.0: Crypt::CBC compliant Rijndael encryption module
@@ -7581,8 +7581,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.8.2 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0 2.49.0-r2: Amazon Web Services API
-dev-python/boto3 1.9.122 1.10.2 1.12.48 1.13.26 1.14.0 1.14.2 1.14.5 1.14.8 1.14.11 9999: The AWS SDK for Python
-dev-python/botocore 1.12.122 1.15.16 1.15.32 1.15.48 1.16.6 1.16.7 1.16.12 1.16.20 1.16.26 1.17.0 1.17.2 1.17.5 1.17.8 1.17.11 9999: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.9.122 1.10.2 1.12.48 1.13.26 1.14.0 1.14.2 1.14.5 1.14.8 1.14.11 1.14.15 9999: The AWS SDK for Python
+dev-python/botocore 1.12.122 1.15.16 1.15.32 1.15.48 1.16.6 1.16.7 1.16.12 1.16.20 1.16.26 1.17.0 1.17.2 1.17.5 1.17.8 1.17.11 1.17.15 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -7633,7 +7633,7 @@ dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
 dev-python/cliff 2.18.0-r1 3.1.0 3.2.0 3.3.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
-dev-python/cloudpickle 1.3.0 1.4.1: Extended pickling support for Python objects
+dev-python/cloudpickle 1.3.0 1.4.1 1.5.0: Extended pickling support for Python objects
 dev-python/cmd2 0.10.1 1.0.2 1.1.0: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.1 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
@@ -7967,7 +7967,7 @@ dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jira 1.0.14-r3: Python library for interacting with the JIRA REST API
 dev-python/jmespath 0.9.3-r1 0.10.0: JSON Matching Expressions
-dev-python/joblib 0.14.1 0.15.1 0.15.1-r1: Tools to provide lightweight pipelining in Python
+dev-python/joblib 0.14.1 0.15.1 0.15.1-r1 0.16.0: Tools to provide lightweight pipelining in Python
 dev-python/josepy 1.3.0: JOSE protocol implementation in Python
 dev-python/jplephem 2.6: Python version of NASA DE4xx ephemerides for Astronomical Alamanac
 dev-python/jsmin 2.2.2: JavaScript minifier
@@ -8826,7 +8826,7 @@ dev-python/textfsm 0.4.0: Python module for parsing semi-structured text into py
 dev-python/texttable 1.6.2: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.4: Define and optimize multi-dimensional arrays mathematical expressions
-dev-python/threadpoolctl 2.0.0: Limit the number of threads used in native libs that have their own threadpool
+dev-python/threadpoolctl 2.0.0 2.1.0: Limit the number of threads used in native libs that have their own threadpool
 dev-python/thrift 0.11.0: Python implementation of Thrift
 dev-python/thriftpy 0.3.9: Pure python implementation of Apache Thrift
 dev-python/thunarx-python 0.5.1-r1: Python bindings for the Thunar file manager
@@ -11508,7 +11508,7 @@ gnome-extra/gnome-calendar 3.34.2: Manage your online calendars with simple and 
 gnome-extra/gnome-characters 3.32.1 3.34.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.34.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.32.0: GNOME color profile tools
-gnome-extra/gnome-commander 1.10.2 1.10.3: A graphical, full featured, twin-panel file manager
+gnome-extra/gnome-commander 1.10.3: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.30.2 3.34.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
@@ -12507,7 +12507,7 @@ media-gfx/imagemagick 6.9.11.19 6.9.11.22 7.0.10.19 7.0.10.22 9999: A collection
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.3 0.3.4 0.3.6: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
-media-gfx/inkscape 0.92.4-r3 1.0-r1 9999: SVG based generic vector-drawing program
+media-gfx/inkscape 1.0-r1 9999: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.4.2 3.62.0: EPSON Image Scan v3 for Linux
 media-gfx/iscan-data 1.39.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-esdip 1.0.0.5-r1: Plugin for 'epkowa' backend for image manipulation
