@@ -7,6 +7,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Matt Turner <mattst88@gentoo.org> (2020-07-01)
+# Unlikely.
+vulkan
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-21)
 # ruby2.4 will go away soon, avoid keywording older packages
 ruby_targets_ruby24
