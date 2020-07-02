@@ -1749,7 +1749,6 @@ app-eselect/eselect-lapack 0.2: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1.1-r1 9999: An eselect library to manage executable symlinks
 app-eselect/eselect-lua 1: Lua eselect module
-app-eselect/eselect-metasploit 0.16 0.17: eselect module for metasploit
 app-eselect/eselect-miniaudicle 1.0.1-r2: Manages the /usr/bin/miniAudicle symlink
 app-eselect/eselect-mpg123 0.1: Manage /usr/bin/mpg123 symlink
 app-eselect/eselect-mpost 0.3: mpost module for eselect
@@ -2476,7 +2475,7 @@ app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-pac
 app-portage/overlint 0.5.3-r1 0.5.3-r2: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 3.1: Searchable online file/package database for Gentoo
-app-portage/portage-utils 0.80 0.87 9999: Small and fast Portage helper tools written in C
+app-portage/portage-utils 0.80 0.87 0.88 9999: Small and fast Portage helper tools written in C
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27-r1 2.1.29: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
@@ -18828,7 +18827,7 @@ xfce-base/exo 0.12.11 4.15.1: Extensions, widgets and framework library with ses
 xfce-base/garcon 0.6.4-r2 0.7.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.2 4.15.3: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.0 4.15.1: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.8.12 1.8.14 1.8.15 4.15.0: File manager for the Xfce desktop environment
+xfce-base/thunar 1.8.12 1.8.14 1.8.15 4.15.0 4.15.1: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.3 4.14.4 4.15.2 4.15.3: Panel for the Xfce desktop environment
