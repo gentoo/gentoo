@@ -101,6 +101,7 @@ src_unpack() {
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-3.32.1-full_archive-build_1.patch"
 	eapply "${FILESDIR}/${PN}-3.32.1-full_archive-build_2.patch"
+	eapply "${FILESDIR}/${PN}-3.32.3-security_fixes.patch"
 
 	eapply_user
 
