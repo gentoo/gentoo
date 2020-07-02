@@ -465,7 +465,6 @@ app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX 
 app-admin/doas 6.0 6.6.1: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/docker-bench 0.2.2: Docker Bench for Security runs the CIS Docker Benchmark
 app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
-app-admin/dxf 7.5.1 7.5.2 7.7.0: Docker registry v2 client in Python
 app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4.3 1.99.4 2.99.1 9999: Remove outdated built kernels
 app-admin/elektra 0.8.20-r1: Framework to store config parameters in hierarchical key-value pairs
@@ -7775,7 +7774,6 @@ dev-python/extras 1.0.0: Useful extra bits for Python that should be in the stan
 dev-python/eyeD3 0.8.11: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.14.1-r1 0.15: Python package that provides useful locks
-dev-python/fastparquet 0.1.1 0.1.5: Python implementation of the parquet columnar file format
 dev-python/faulthandler 3.0 3.1: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/feedgenerator 1.9.1: Standalone version of django.utils.feedgenerator
@@ -7869,9 +7867,7 @@ dev-python/google-auth-oauthlib 0.4.1: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.1.7 0.2.0: AST-based Python refactoring library
 dev-python/google-reauth-python 0.1.0 0.1.0-r1: Python based U2F host library
 dev-python/googleapis-common-protos 1.51.0: python classes generated from the common protos in the googleapis repository
-dev-python/gql 0.1.0: GraphQL client for Python.
 dev-python/graph-tool 2.29 9999: An efficient python module for manipulation and statistical analysis of graphs
-dev-python/graphql-core 2.0.0: GraphQL for Python
 dev-python/graphviz 0.13: Simple Python interface for Graphviz
 dev-python/greenlet 0.4.15 0.4.15-r1 0.4.16: Lightweight in-process concurrent programming
 dev-python/greenstalk 1.0.1: A Python 3 client for the beanstalkd work queue
@@ -8136,7 +8132,6 @@ dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus we
 dev-python/ntlm-auth 1.4.0-r1 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.7 0.6.8: Python to native compiler
-dev-python/numba 0.37.0 0.39.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numexpr 2.6.9 2.7.1: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.16.5-r1 1.17.4-r3 1.18.3 1.18.5 1.19.0: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
@@ -8611,7 +8606,6 @@ dev-python/raet 0.6.8 0.6.8-r1: Reliable Asynchronous Event Transport Protocol
 dev-python/random2 1.0.1-r1: Python-2.7 random module ported to python-3
 dev-python/rarfile 3.0 3.0-r1 3.1: Module for RAR archive reading
 dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
-dev-python/raven 5.33.0: Raven is a client for Sentry
 dev-python/rdflib 4.2.2-r1 5.0.0: RDF library containing a triple store and parser/serializer
 dev-python/readme_renderer 25.0 26.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 1.0.3 1.0.4 2.0.0: Code specific for Read the Docs and Sphinx
@@ -8751,7 +8745,6 @@ dev-python/sphinxcontrib-applehelp 1.0.1 1.0.2: Sphinx extension which outputs A
 dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
 dev-python/sphinxcontrib-blockdiag 2.0.0: A sphinx extension for embedding block diagrams using blockdiag
 dev-python/sphinxcontrib-devhelp 1.0.1 1.0.2: Sphinx extension which outputs Devhelp documents
-dev-python/sphinxcontrib-documentedlist 0.6: Sphinx extension to convert a Python list into a generated table
 dev-python/sphinxcontrib-doxylink 1.5: Extension to link to external Doxygen API documentation
 dev-python/sphinxcontrib-github-alt 1.1 1.1-r2: Link to GitHub issues, pull requests, commits and users from Sphinx docs
 dev-python/sphinxcontrib-htmlhelp 1.0.2 1.0.3: Sphinx extension which outputs HTML help book
@@ -8827,7 +8820,6 @@ dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.4: Define and optimize multi-dimensional arrays mathematical expressions
 dev-python/threadpoolctl 2.0.0 2.1.0: Limit the number of threads used in native libs that have their own threadpool
 dev-python/thrift 0.11.0: Python implementation of Thrift
-dev-python/thriftpy 0.3.9: Pure python implementation of Apache Thrift
 dev-python/thunarx-python 0.5.1-r1: Python bindings for the Thunar file manager
 dev-python/tikzplotlib 0.9.1: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/tinycss 0.4: A complete yet simple CSS parser for Python
@@ -8838,7 +8830,6 @@ dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered dom
 dev-python/toml 0.10.0-r1 0.10.1: Python library for handling TOML files
 dev-python/toolz 0.9.0 0.10.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
-dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 2.9.1 3.2.1 3.12.1 3.14.4 3.14.5 3.15.0 3.15.1 3.15.2 3.16.0 3.16.1: virtualenv-based automation of test activities
 dev-python/tqdm 4.23.3 4.33.0 4.40.0 4.45.0 4.46.0 4.46.1 4.47.0 9999: Add a progress meter to your loops in a second
@@ -12646,7 +12637,6 @@ media-libs/SoXt 1.3.0-r1: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r9: A ASCII-Graphics Library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
-media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
 media-libs/allegro 4.4.2-r2 4.4.3.1 5.2.5.0: Cross-platform library aimed at video game and multimedia programming
 media-libs/alsa-lib 1.2.2-r1 1.2.3.1: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.1.8: Advanced Linux Sound Architecture OSS compatibility layer
