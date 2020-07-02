@@ -16,11 +16,8 @@ KEYWORDS="amd64 ~arm ~x86"
 
 DEPEND="
 	dev-python/msgpack[${PYTHON_USEDEP}]
-	virtual/python-greenlet[${PYTHON_USEDEP}]"
-
-RDEPEND="
-	${DEPEND}
-	app-editors/neovim"
+	virtual/python-greenlet[${PYTHON_USEDEP}]
+	test? ( app-editors/neovim )"
 
 distutils_enable_tests pytest
 
