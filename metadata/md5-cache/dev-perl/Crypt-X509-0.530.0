@@ -1,0 +1,15 @@
+BDEPEND=>=dev-perl/Convert-ASN1-0.190.0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.96 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Parse a X.509 certificate
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Crypt-X509
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=Artistic-2
+RDEPEND=>=dev-perl/Convert-ASN1-0.190.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MR/MRSCOTTY/Crypt-X509-0.53.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=db9cf0711566856eeed6cafe6a7a8a09
