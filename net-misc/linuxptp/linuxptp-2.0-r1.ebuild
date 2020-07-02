@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info toolchain-funcs
+inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="The Linux Precision Time Protocol (PTP) implementation"
 HOMEPAGE="http://linuxptp.sourceforge.net/"
@@ -37,6 +37,8 @@ src_install() {
 		infodir="${D}"/usr/share/info \
 		libdir="${D}"/usr/$(get_libdir) \
 		install
+
+	systemd_dounit "${FILESDIR}"/timemaster.service
 
 	dodoc README.org
 }
