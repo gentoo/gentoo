@@ -45,6 +45,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( HACKING NEWS README )
 
+pkg_setup() {
+	use decode && python_setup
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_WERROR=TRUE
