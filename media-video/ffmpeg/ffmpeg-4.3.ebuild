@@ -77,7 +77,7 @@ FFMPEG_FLAG_MAP=(
 		# indevs
 		libv4l:libv4l2 pulseaudio:libpulse libdrm jack:libjack
 		# decoders
-		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 dav1d:libdav1d fdk:libfdk-aac
+		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 +dav1d:libdav1d fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray gme:libgme gsm:libgsm
 		libaribb24 mmal modplug:libmodplug opus:libopus libilbc librtmp ssh:libssh
 		speex:libspeex srt:libsrt svg:librsvg video_cards_nvidia:ffnvcodec
