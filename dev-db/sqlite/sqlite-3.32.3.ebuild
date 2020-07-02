@@ -16,11 +16,8 @@ HOMEPAGE="https://sqlite.org/"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
-	SRC_URI="doc? ( https://sqlite.org/2020/${PN}-doc-${DOC_PV}.zip )
-		tcl? ( https://sqlite.org/2020/${PN}-src-${SRC_PV}.zip )
-		test? ( https://sqlite.org/2020/${PN}-src-${SRC_PV}.zip )
-		tools? ( https://sqlite.org/2020/${PN}-src-${SRC_PV}.zip )
-		!tcl? ( !test? ( !tools? ( https://sqlite.org/2020/${PN}-autoconf-${SRC_PV}.tar.gz ) ) )"
+	SRC_URI="https://sqlite.org/2020/${PN}-src-${SRC_PV}.zip
+		doc? ( https://sqlite.org/2020/${PN}-doc-${DOC_PV}.zip )"
 fi
 
 LICENSE="public-domain"
@@ -36,19 +33,8 @@ if [[ "${PV}" == "9999" ]]; then
 	BDEPEND=">=dev-lang/tcl-8.6:0
 		dev-vcs/fossil"
 else
-	BDEPEND="doc? ( app-arch/unzip )
-		tcl? (
-			app-arch/unzip
-			>=dev-lang/tcl-8.6:0
-		)
-		test? (
-			app-arch/unzip
-			>=dev-lang/tcl-8.6:0
-		)
-		tools? (
-			app-arch/unzip
-			>=dev-lang/tcl-8.6:0
-		)"
+	BDEPEND="app-arch/unzip
+		>=dev-lang/tcl-8.6:0"
 fi
 RDEPEND="sys-libs/zlib:0=[${MULTILIB_USEDEP}]
 	icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )
@@ -58,21 +44,11 @@ RDEPEND="sys-libs/zlib:0=[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/tcl-8.6:0[${MULTILIB_USEDEP}] )"
 
-full_archive() {
-	[[ "${PV}" == "9999" ]] || use tcl || use test || use tools
-}
-
-pkg_setup() {
-	if [[ "${PV}" == "9999" ]]; then
-		S="${WORKDIR}/${PN}"
-	else
-		if full_archive; then
-			S="${WORKDIR}/${PN}-src-${SRC_PV}"
-		else
-			S="${WORKDIR}/${PN}-autoconf-${SRC_PV}"
-		fi
-	fi
-}
+if [[ "${PV}" == "9999" ]]; then
+	S="${WORKDIR}/${PN}"
+else
+	S="${WORKDIR}/${PN}-src-${SRC_PV}"
+fi
 
 src_unpack() {
 	if [[ "${PV}" == "9999" ]]; then
@@ -123,27 +99,14 @@ src_unpack() {
 }
 
 src_prepare() {
-	if full_archive; then
-		eapply "${FILESDIR}/${PN}-3.32.1-full_archive-build_1.patch"
-		eapply "${FILESDIR}/${PN}-3.32.1-full_archive-build_2.patch"
+	eapply "${FILESDIR}/${PN}-3.32.1-full_archive-build_1.patch"
+	eapply "${FILESDIR}/${PN}-3.32.1-full_archive-build_2.patch"
 
-		eapply_user
+	eapply_user
 
-		# Fix AC_CHECK_FUNCS.
-		# https://mailinglists.sqlite.org/cgi-bin/mailman/private/sqlite-dev/2016-March/002762.html
-		sed -e "s/AC_CHECK_FUNCS(.*)/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" -i configure.ac || die "sed failed"
-	else
-		eapply "${FILESDIR}/${PN}-3.25.0-nonfull_archive-build.patch"
-
-		eapply_user
-
-		# Fix AC_CHECK_FUNCS.
-		# https://mailinglists.sqlite.org/cgi-bin/mailman/private/sqlite-dev/2016-March/002762.html
-		sed \
-			-e "s/AC_CHECK_FUNCS(\[fdatasync.*/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" \
-			-e "/AC_CHECK_FUNCS(posix_fallocate)/d" \
-			-i configure.ac || die "sed failed"
-	fi
+	# Fix AC_CHECK_FUNCS.
+	# https://mailinglists.sqlite.org/cgi-bin/mailman/private/sqlite-dev/2016-March/002762.html
+	sed -e "s/AC_CHECK_FUNCS(.*)/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" -i configure.ac || die "sed failed"
 
 	eautoreconf
 
@@ -155,12 +118,9 @@ multilib_src_configure() {
 	local options=()
 
 	options+=(
-		--enable-$(full_archive && echo load-extension || echo dynamic-extensions)
+		--enable-load-extension
 		--enable-threadsafe
 	)
-	if ! full_archive; then
-		options+=(--disable-static-shell)
-	fi
 
 	# Support detection of misuse of SQLite API.
 	# https://sqlite.org/compile.html#enable_api_armor
@@ -264,26 +224,14 @@ multilib_src_configure() {
 	append-cppflags -DSQLITE_USE_URI
 
 	# debug USE flag.
-	if full_archive; then
-		options+=($(use_enable debug))
-	else
-		if use debug; then
-			append-cppflags -DSQLITE_DEBUG
-		else
-			append-cppflags -DNDEBUG
-		fi
-	fi
+	options+=($(use_enable debug))
 
 	# icu USE flag.
 	if use icu; then
 		# Support ICU extension.
 		# https://sqlite.org/compile.html#enable_icu
 		append-cppflags -DSQLITE_ENABLE_ICU
-		if full_archive; then
-			sed -e "s/^TLIBS = @LIBS@/& -licui18n -licuuc/" -i Makefile.in || die "sed failed"
-		else
-			sed -e "s/^LIBS = @LIBS@/& -licui18n -licuuc/" -i Makefile.in || die "sed failed"
-		fi
+		sed -e "s/^TLIBS = @LIBS@/& -licui18n -licuuc/" -i Makefile.in || die "sed failed"
 	fi
 
 	# readline USE flag.
@@ -291,7 +239,7 @@ multilib_src_configure() {
 		--disable-editline
 		$(use_enable readline)
 	)
-	if full_archive && use readline; then
+	if use readline; then
 		options+=(--with-readline-inc="-I${EPREFIX}/usr/include/readline")
 	fi
 
@@ -306,9 +254,7 @@ multilib_src_configure() {
 	options+=($(use_enable static-libs static))
 
 	# tcl, test, tools USE flags.
-	if full_archive; then
-		options+=(--enable-tcl)
-	fi
+	options+=(--enable-tcl)
 
 	if [[ "${CHOST}" == *-mint* ]]; then
 		append-cppflags -DSQLITE_OMIT_WAL
