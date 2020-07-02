@@ -31,13 +31,16 @@ test-distutils_enable_tests() {
 
 	distutils_enable_tests "${runner}"
 
-	local ret var
+	local ret var val
 	for var in IUSE RESTRICT BDEPEND; do
 		local exp_var=exp_${var}
-		if [[ ${!var} != "${!exp_var}" ]]; then
+		# (this normalizes whitespace)
+		read -a val <<<"${!var}"
+		val=${val[*]}
+		if [[ ${val} != "${!exp_var}" ]]; then
 			eindent
 			eerror "${var} expected: ${!exp_var}"
-			eerror "${var}   actual: ${!var}"
+			eerror "${var}   actual: ${val}"
 			eoutdent
 			ret=1
 			tret=1
@@ -64,15 +67,15 @@ einfo distutils_enable_tests
 eindent
 BASE_IUSE="python_targets_python3_8"
 BASE_DEPS="python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_8(-)?,-python_single_target_python3_8(-)]"
-TEST_RESTRICT=" !test? ( test )"
+TEST_RESTRICT="!test? ( test )"
 
 einfo "empty RDEPEND"
 eindent
 RDEPEND=""
 test-distutils_enable_tests pytest \
-	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? (  >=dev-python/pytest-4.5.0[${PYTHON_USEDEP}] )"
+	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( >=dev-python/pytest-4.5.0[${PYTHON_USEDEP}] )"
 test-distutils_enable_tests nose \
-	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? (  >=dev-python/nose-1.3.7-r4[${PYTHON_USEDEP}] )"
+	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( >=dev-python/nose-1.3.7-r4[${PYTHON_USEDEP}] )"
 test-distutils_enable_tests unittest \
 	"${BASE_IUSE}" "" "${BASE_DEPS}"
 test-distutils_enable_tests setup.py \
