@@ -1,4 +1,4 @@
-# Copyright 2008-2019 Gentoo Authors
+# Copyright 2008-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -21,7 +21,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/22"
+SLOT="0/23"
 KEYWORDS=""
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
