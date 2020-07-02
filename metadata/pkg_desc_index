@@ -12067,7 +12067,7 @@ lxqt-base/lxqt-session 0.14.1 0.15.0: LXQt Session Manager
 lxqt-base/lxqt-sudo 0.14.1 0.15.0: LXQt GUI frontend for sudo
 mail-client/aerc 0.4.0 9999: Email client for your terminal
 mail-client/alot 0.8.1 0.9 9999: Experimental terminal UI for net-mail/notmuch written in Python
-mail-client/alpine 2.22 2.22-r1 2.23: An easy to use text-based based mail and news client
+mail-client/alpine 2.23: An easy to use text-based based mail and news client
 mail-client/balsa 2.5.6-r1: Email client for GNOME
 mail-client/bower 0.10 0.11: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.3-r1 3.17.4 3.17.5 3.17.5-r1 9999: An email client (and news reader) based on GTK+
@@ -14260,7 +14260,7 @@ net-firewall/ferm 2.4.1 2.5 2.5.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6: iptables firewall generator
 net-firewall/firewalld 0.7.1-r3 0.7.3-r1: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more
-net-firewall/fwknop 2.6.9-r1 2.6.10-r1: Single Packet Authorization and Port Knocking application
+net-firewall/fwknop 2.6.9-r1 2.6.10-r1 2.6.10-r2: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipset 6.29 6.38 7.5 7.6: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.4 2.5 9999: Netflow iptables module
