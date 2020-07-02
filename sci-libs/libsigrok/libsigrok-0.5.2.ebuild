@@ -68,6 +68,7 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 S="${WORKDIR}"/${P}
 
 pkg_setup() {
+	use python && python_setup
 	use ruby && ruby-ng_pkg_setup
 	java-pkg-opt-2_pkg_setup
 }
@@ -116,7 +117,6 @@ each_python_configure() {
 }
 
 src_configure() {
-	python_setup
 	sigrok_src_configure --disable-ruby --disable-python
 	use ruby && ruby-ng_src_configure
 	use python && python_foreach_impl each_python_configure
