@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# Matt Turner <mattst88@gentoo.org> (2020-07-01)
+# Unlikely.
+vulkan
+
 # James Le Cuirot <chewi@gentoo.org> (2020-05-10)
 # media-libs/allegro is not keyworded.
 allegro
