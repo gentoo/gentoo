@@ -5842,8 +5842,8 @@ dev-perl/Crypt-Rijndael 1.130.0 1.140.0 1.140.0-r1: Crypt::CBC compliant Rijndae
 dev-perl/Crypt-SMIME 0.190.0 0.250.0 0.250.0-r1: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r1 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1 0.60.0-r2: encrypt stuff simply
-dev-perl/Crypt-SmbHash 0.120.0-r2: LM/NT hashing, for Samba's smbpasswd entries
-dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
+dev-perl/Crypt-SmbHash 0.120.0-r2 0.120.0-r3: LM/NT hashing, for Samba's smbpasswd entries
+dev-perl/Crypt-Twofish 2.170.0-r1 2.170.0-r2: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
 dev-perl/CryptX 0.53.0 0.64.0: Self-contained crypto toolkit
@@ -13757,7 +13757,7 @@ media-video/dvdstyler 3.0.4: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.2_pre20140701-r2: Movie creator from photos and video clips
-media-video/ffmpeg 3.4.6-r1 4.1.3 4.1.4 4.2.1 4.2.2 4.2.3 4.3 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
+media-video/ffmpeg 3.4.6-r1 4.1.3 4.1.4 4.2.1 4.2.2 4.2.3 4.3 4.3-r1 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
