@@ -10911,7 +10911,7 @@ games-board/openyahtzee 1.9.3: A full-featured wxWidgets version of the classic 
 games-board/pasang-emas 3.1.0-r1: A traditional game of Brunei
 games-board/peg-e 1.2.8: A peg solitaire game
 games-board/phalanx 22-r1: A chess engine suitable for beginner and intermediate players
-games-board/pioneers 15.3-r1: A clone of the popular board game The Settlers of Catan
+games-board/pioneers 15.5: Clone of the popular board game The Settlers of Catan
 games-board/pokerth 1.1.2: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r3: Protocol adapter to run UCI chess engines under xboard
 games-board/pouetchess 0.2.0-r2: 3D and open source chess game
