@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,14 +22,12 @@ BDEPEND="
 "
 DEPEND="
 	gtk? (
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf:2
 		gtk2? (
-			dev-libs/glib:2
-			x11-libs/gdk-pixbuf:2
 			x11-libs/gtk+:2
 		)
 		!gtk2? (
-			dev-libs/glib:2
-			x11-libs/gdk-pixbuf:2
 			x11-libs/gtk+:3
 		)
 	)
