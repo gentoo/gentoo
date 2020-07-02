@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="Classic TECO editor, Predecessor to EMACS"
-HOMEPAGE="http://www.ibiblio.org/pub/linux/apps/editors/tty/ http://www.ibiblio.org/pub/academic/computer-science/history/pdp-11/teco"
-SRC_URI="http://www.ibiblio.org/pub/linux/apps/editors/tty/teco.tar.gz -> ${P}.tar.gz
+HOMEPAGE="https://www.ibiblio.org/pub/linux/apps/editors/tty/ https://www.ibiblio.org/pub/academic/computer-science/history/pdp-11/teco"
+SRC_URI="https://www.ibiblio.org/pub/linux/apps/editors/tty/teco.tar.gz -> ${P}.tar.gz
 	doc? ( https://dev.gentoo.org/~ulm/distfiles/tecodoc.tar.gz )"
 
 LICENSE="freedist"
