@@ -1,9 +1,9 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+PYTHON_COMPAT=( python3_8 )
 source tests-common.sh
 
 test-phase_name_free() {
@@ -21,18 +21,18 @@ test-distutils_enable_tests() {
 	local runner=${1}
 	local exp_IUSE=${2}
 	local exp_RESTRICT=${3}
-	local exp_DEPEND=${4}
+	local exp_BDEPEND=${4}
 
 	local IUSE=${IUSE}
 	local RESTRICT=${RESTRICT}
-	local DEPEND=${DEPEND}
+	local BDEPEND=${BDEPEND}
 
 	tbegin "${runner}"
 
 	distutils_enable_tests "${runner}"
 
 	local ret var
-	for var in IUSE RESTRICT DEPEND; do
+	for var in IUSE RESTRICT BDEPEND; do
 		local exp_var=exp_${var}
 		if [[ ${!var} != "${!exp_var}" ]]; then
 			eindent
@@ -62,8 +62,8 @@ tend
 
 einfo distutils_enable_tests
 eindent
-BASE_IUSE="python_targets_python2_7"
-BASE_DEPS="python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]"
+BASE_IUSE="python_targets_python3_8"
+BASE_DEPS="python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_8(-)?,-python_single_target_python3_8(-)]"
 TEST_RESTRICT=" !test? ( test )"
 
 einfo "empty RDEPEND"
