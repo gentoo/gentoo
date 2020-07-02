@@ -1,4 +1,4 @@
-BDEPEND=|| ( >=dev-texlive/texlive-latexextra-2020-r1 dev-tex/leaflet ) dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latex dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience html? ( >=dev-tex/tex4ht-20090611_p1038-r5 ) >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latex >=dev-texlive/texlive-latexextra-2020-r2 dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience html? ( >=dev-tex/tex4ht-20090611_p1038-r11 ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install unpack
 DESCRIPTION=Gentoo Package Manager Specification (draft)
 EAPI=7
@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=!app-doc/pms-bin
 SLOT=live
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
-_md5_=0f7a77bf748b344a29e099a0afc25e06
+_md5_=82d7c44e3c894aa75c3336a26634abd2
