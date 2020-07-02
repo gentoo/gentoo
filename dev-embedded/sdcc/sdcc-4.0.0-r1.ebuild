@@ -95,6 +95,7 @@ src_prepare() {
 src_configure() {
 	# sdbinutils subdir doesn't pass down --docdir properly, so need to
 	# expand $(datarootdir) ourselves.
+	unset ARCH
 	econf \
 		ac_cv_prog_AR="$(tc-getAR)" \
 		ac_cv_prog_AS="$(tc-getAS)" \
@@ -131,6 +132,11 @@ src_configure() {
 		\
 		--disable-doc \
 		--without-ccache
+}
+
+src_compile() {
+	unset ARCH
+	default
 }
 
 src_install() {
