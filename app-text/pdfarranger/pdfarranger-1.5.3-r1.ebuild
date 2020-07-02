@@ -3,7 +3,8 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+DISTUTILS_USE_SETUPTOOLS=rdepend
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Merge or split pdfs; rearrange, rotate, crop pages."
 HOMEPAGE="https://github.com/jeromerobert/pdfarranger"
@@ -20,3 +21,21 @@ RDEPEND="dev-python/pikepdf[${PYTHON_USEDEP}]
 	app-text/poppler[introspection,cairo]"
 DEPEND="${RDEPEND}
 	dev-python/python-distutils-extra[${PYTHON_USEDEP}]"
+
+src_install() {
+	distutils-r1_src_install
+	insinto /usr/share/icons
+	doins -r data/icons/hicolor
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+}

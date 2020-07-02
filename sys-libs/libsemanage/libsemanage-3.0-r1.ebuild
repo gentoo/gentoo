@@ -21,27 +21,25 @@ if [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/${MY_P}/${PN}"
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="python"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}[${MULTILIB_USEDEP}]
 	>=sys-libs/libselinux-${SELNX_VER}[${MULTILIB_USEDEP}]
 	>=sys-process/audit-2.2.2[${MULTILIB_USEDEP}]
 	>=dev-libs/ustr-1.0.4-r2[${MULTILIB_USEDEP}]
-	python? ( ${PYTHON_DEPS} )"
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
+	>=dev-lang/swig-2.0.4-r1
 	sys-devel/bison
 	sys-devel/flex
-	python? (
-		>=dev-lang/swig-2.0.4-r1
-		virtual/pkgconfig
-	)"
+	virtual/pkgconfig"
 
 # tests are not meant to be run outside of the
 # full SELinux userland repo
@@ -84,7 +82,7 @@ multilib_src_compile() {
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		all
 
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi; then
 		building_py() {
 			emake \
 				AR="$(tc-getAR)" \
@@ -102,7 +100,7 @@ multilib_src_install() {
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		DESTDIR="${ED}" install
 
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi; then
 		installation_py() {
 			emake DESTDIR="${ED}" \
 				LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
@@ -111,6 +109,11 @@ multilib_src_install() {
 		}
 		python_foreach_impl installation_py
 	fi
+}
+
+multiib_src_install_all() {
+	python_setup
+	python_fix_shebang "${ED}"/usr/libexec/selinux/semanage_migrate_store
 }
 
 pkg_postinst() {
@@ -129,7 +132,7 @@ pkg_postinst() {
 	for POLICY_TYPE in ${POLICY_TYPES} ; do
 		if [ ! -d "${EROOT}/var/lib/selinux/${POLICY_TYPE}/active" ] ; then
 			einfo "Migrating store ${POLICY_TYPE} (without policy rebuild)."
-			"${EROOT}/usr/libexec/selinux/semanage_migrate_store" -n -s "${POLICY_TYPE}" || ewarn "Failed to migrate store ${POLICY_TYPE}"
+			"${EROOT}/usr/libexec/selinux/semanage_migrate_store" -n -s "${POLICY_TYPE}" || die "Failed to migrate store ${POLICY_TYPE}"
 		fi
 	done
 }
