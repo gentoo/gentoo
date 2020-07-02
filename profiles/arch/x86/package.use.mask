@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring -zbc
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-06-20)
 # media-libs/nv-codec-headers is not available for x86
 media-video/ffmpeg video_cards_nvidia

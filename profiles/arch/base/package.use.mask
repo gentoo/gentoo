@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio io-uring zbc
+
 # Marek Szuba <marecki@gentoo.org> (2020-06-17)
 # Mask flashrom drivers and tools which only work on few architectures:
 #  - ich_descriptors_tools (USE=tools) is only compiled on amd64 and x86,
