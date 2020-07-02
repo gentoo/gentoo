@@ -116,40 +116,40 @@ fi
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 _distutils_set_globals() {
-	local rdep=${PYTHON_DEPS}
-	local bdep=${rdep}
-
-	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-		local sdep=">=dev-python/setuptools-42.0.2[${PYTHON_USEDEP}]"
-	else
-		local sdep="$(python_gen_cond_dep '
-			>=dev-python/setuptools-42.0.2[${PYTHON_MULTI_USEDEP}]
-		')"
-	fi
+	local rdep bdep
+	local setuptools_dep='>=dev-python/setuptools-42.0.2[${PYTHON_USEDEP}]'
 
 	case ${DISTUTILS_USE_SETUPTOOLS} in
 		no|manual)
 			;;
 		bdepend)
-			bdep+=" ${sdep}"
+			bdep+=" ${setuptools_dep}"
 			;;
 		rdepend)
-			bdep+=" ${sdep}"
-			rdep+=" ${sdep}"
+			bdep+=" ${setuptools_dep}"
+			rdep+=" ${setuptools_dep}"
 			;;
 		pyproject.toml)
-			bdep+=" dev-python/pyproject2setuppy[${PYTHON_USEDEP}]"
+			bdep+=' dev-python/pyproject2setuppy[${PYTHON_USEDEP}]'
 			;;
 		*)
 			die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
 			;;
 	esac
 
-	RDEPEND=${rdep}
-	if [[ ${EAPI} != [56] ]]; then
-		BDEPEND=${bdep}
+	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+		bdep=${bdep//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
+		rdep=${rdep//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
 	else
-		DEPEND=${bdep}
+		[[ -n ${bdep} ]] && bdep="$(python_gen_cond_dep "${bdep}")"
+		[[ -n ${rdep} ]] && rdep="$(python_gen_cond_dep "${rdep}")"
+	fi
+
+	RDEPEND="${PYTHON_DEPS} ${rdep}"
+	if [[ ${EAPI} != [56] ]]; then
+		BDEPEND="${PYTHON_DEPS} ${bdep}"
+	else
+		DEPEND="${PYTHON_DEPS} ${bdep}"
 	fi
 	REQUIRED_USE=${PYTHON_REQUIRED_USE}
 }
