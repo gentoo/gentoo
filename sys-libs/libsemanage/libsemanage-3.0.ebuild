@@ -129,7 +129,7 @@ pkg_postinst() {
 	for POLICY_TYPE in ${POLICY_TYPES} ; do
 		if [ ! -d "${EROOT}/var/lib/selinux/${POLICY_TYPE}/active" ] ; then
 			einfo "Migrating store ${POLICY_TYPE} (without policy rebuild)."
-			"${EROOT}/usr/libexec/selinux/semanage_migrate_store" -n -s "${POLICY_TYPE}" || die "Failed to migrate store ${POLICY_TYPE}"
+			"${EROOT}/usr/libexec/selinux/semanage_migrate_store" -n -s "${POLICY_TYPE}" || ewarn "Failed to migrate store ${POLICY_TYPE}"
 		fi
 	done
 }
