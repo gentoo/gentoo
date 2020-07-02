@@ -57,11 +57,9 @@ slang
 diet
 gtk
 mono
-python
 cairo
 svg
 X
-crypt
 mysql
 samba
 dbus
