@@ -67,7 +67,7 @@ fi
 # or $(use_enable foo foo) if no :bar is set.
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
-		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
+		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt +gnutls gmp
 		+gpl hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
 		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau vulkan
 		X:xlib X:libxcb X:libxcb-shm X:libxcb-xfixes +zlib
@@ -345,7 +345,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf=( ${EXTRA_FFMPEG_CONF} )
+	local myconf=( )
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
 	use openssl || use libressl && use gpl && myconf+=( --enable-nonfree )
@@ -475,7 +475,8 @@ multilib_src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--optflags="${CFLAGS}" \
 		$(use_enable static-libs static) \
-		"${myconf[@]}"
+		"${myconf[@]}" \
+		${EXTRA_FFMPEG_CONF}
 	echo "${@}"
 	"${@}" || die
 
