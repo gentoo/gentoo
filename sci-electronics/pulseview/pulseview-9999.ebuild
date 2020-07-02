@@ -49,6 +49,11 @@ pkg_setup() {
 	use decode && python_setup
 }
 
+src_prepare() {
+	cmake_src_prepare
+	cmake_comment_add_subdirectory manual
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_WERROR=TRUE
