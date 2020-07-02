@@ -42,7 +42,7 @@ SLOT="0"
 
 DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 	>=sys-libs/libcap-1.10-r10:=
-	>=sys-libs/libsemanage-${SEMNG_VER}:=[python,${PYTHON_USEDEP}]
+	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+),${PYTHON_USEDEP}]
 	sys-libs/libcap-ng:=
 	>=sys-libs/libsepol-${SEPOL_VER}:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
