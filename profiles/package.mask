@@ -427,51 +427,11 @@ dev-python/py2play
 dev-python/pyopenal
 dev-python/soya
 
-# James Le Cuirot <chewi@gentoo.org> (2020-05-31)
-# Now merged into media-libs/dumb with the allegro USE flag. This
-# package was added before EAPI 2 and USE-dependencies. Removal in 30
-# days.
-media-libs/aldumb
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-31)
-# The following packages are either unmaintained, or their deps
-# are unmaintained.  They are stuck on Python 3.6 and have no reverse
-# dependencies outside the list.
-#
-# app-admin/dxf: #718178
-# dev-python/fastparquet: #718820
-# dev-python/numba: #719286
-# dev-python/raven: #719522
-# dev-python/sphinxcontrib-documentedlist: #719564
-# dev-python/thriftpy: #719590
-# dev-python/toro: #719592
-#
-# Removal in 30 days.
-app-admin/dxf
-dev-python/fastparquet
-dev-python/numba
-dev-python/raven
-dev-python/sphinxcontrib-documentedlist
-dev-python/thriftpy
-dev-python/toro
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-31)
-# Outdated.  Not touched since the initial commit.  Lacks py3.7 support.
-# No reverse dependencies outside the three packages.
-# Removal in 30 days.  Bug #708270.
-dev-python/graphql-core
-dev-python/gql
-
 # Hans de Graaff <graaff@gentoo.org> (2020-05-24)
 # No releases since 2011, upstream is gone, fails tests,
 # no reverse dependencies.
 # Masked for removal in 30 days.
 dev-ruby/rack-mount
-
-# Hans de Graaff <graaff@gentoo.org> (2020-05023)
-# Masked for removal in 30 days.
-# Not useful anymore now that metasploit has been removed.
-app-eselect/eselect-metasploit
 
 # Aaron W. Swenson <titanofold@gentoo.org> (2020-05-15)
 # PostgreSQL 9.4 series is EOL. Migrate your database cluster to a more recent
