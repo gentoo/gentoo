@@ -36,6 +36,11 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${P/_/-}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.1-boost-1.73.0.patch
+	"${FILESDIR}"/${PN}-4.3.1-gcc-10.patch
+)
+
 pkg_setup() {
 	filter-flags -ftree-vectorize
 }
