@@ -70,7 +70,7 @@ SRC_URI="https://git.sr.ht/~kennylevinsen/greetd/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="Apache-2.0 BSD Boost-1.0 GPL-3 MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+man"
 
 DEPEND="
