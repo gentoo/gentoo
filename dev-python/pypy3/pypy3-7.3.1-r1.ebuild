@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit pax-utils python-any-r1
+inherit pax-utils python-any-r1 toolchain-funcs
 
 MY_P=pypy3.6-v${PV/_/}
 
@@ -103,6 +103,10 @@ src_prepare() {
 		lib-python/3/test/test_lzma.py || die
 
 	eapply_user
+}
+
+src_configure() {
+	tc-export CC
 }
 
 src_compile() {
