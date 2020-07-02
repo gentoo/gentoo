@@ -1,13 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
+inherit cmake python-single-r1 xdg-utils
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
 	inherit git-r3
 else
@@ -23,21 +23,24 @@ SLOT="0"
 IUSE="+decode static"
 REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+"
+DEPEND="
+	>=dev-cpp/glibmm-2.28.0:2
 	>=dev-libs/boost-1.55:=
 	>=dev-libs/glib-2.28.0:2
-	>=dev-cpp/glibmm-2.28.0:2
-	>=sci-libs/libsigrok-0.6.0:=[cxx]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
 	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	>=sci-libs/libsigrok-0.6.0:=[cxx]
 	decode? (
-		>=sci-libs/libsigrokdecode-0.6.0:=[${PYTHON_SINGLE_USEDEP}]
 		${PYTHON_DEPS}
-	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+		>=sci-libs/libsigrokdecode-0.6.0:=[${PYTHON_SINGLE_USEDEP}]
+	)
+"
+RDEPEND="${DEPEND}"
 
 DOCS=( HACKING NEWS README )
 
@@ -47,15 +50,15 @@ src_configure() {
 		-DENABLE_DECODE=$(usex decode)
 		-DSTATIC_PKGDEPS_LIBS=$(usex static)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
