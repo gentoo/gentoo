@@ -84,6 +84,7 @@ src_configure() {
 		$(use_with gssapi)
 		$(use_with readline)
 		$(use_enable caps linux-caps)
+		AR="$(type -P $(tc-getAR))"
 	)
 
 	# bug 607400
