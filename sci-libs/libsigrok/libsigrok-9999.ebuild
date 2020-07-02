@@ -4,12 +4,12 @@
 EAPI="6"
 
 PYTHON_COMPAT=( python3_{6,7} )
-USE_RUBY="ruby26 ruby25 ruby24"
+USE_RUBY="ruby26 ruby25"
 RUBY_OPTIONAL="yes"
 
-inherit eutils gnome2-utils python-r1 java-pkg-opt-2 ltprune ruby-ng udev xdg-utils
+inherit python-r1 java-pkg-opt-2 ruby-ng udev xdg-utils
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
 	inherit git-r3 autotools
 else
@@ -17,42 +17,53 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="basic hardware drivers for logic analyzers and input/output file format support"
+DESCRIPTION="Basic hardware drivers for logic analyzers and input/output file format support"
 HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
 SLOT="0/9999"
-IUSE="cxx ftdi java parport python ruby serial static-libs +udev test usb"
+IUSE="cxx ftdi java parport python ruby serial static-libs test +udev usb"
+REQUIRED_USE="java? ( cxx )
+	python? ( cxx ${PYTHON_REQUIRED_USE} )
+	ruby? ( cxx || ( $(ruby_get_use_targets) ) )"
+
 RESTRICT="!test? ( test )"
-REQUIRED_USE="java? ( cxx ) python? ( cxx ${PYTHON_REQUIRED_USE} ) ruby? ( cxx || ( $(ruby_get_use_targets) ) )"
 
 # We also support librevisa, but that isn't in the tree ...
-LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
+LIB_DEPEND="
+	>=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8:=[static-libs(+)]
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
-	python? ( ${PYTHON_DEPS} >=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}] )
-	ruby? ( $(ruby_implementations_depend) )
 	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
+	python? (
+		${PYTHON_DEPS}
+		>=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}]
+	)
+	ruby? ( $(ruby_implementations_depend) )
 	serial? ( >=dev-libs/libserialport-0.1.1[static-libs(+)] )
-	usb? ( virtual/libusb:1[static-libs(+)] )"
-RDEPEND="!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )
+	usb? ( virtual/libusb:1[static-libs(+)] )
+"
+RDEPEND="
+	java? ( >=virtual/jre-1.4 )
+	!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	static-libs? ( ${LIB_DEPEND} )
-	java? ( >=virtual/jre-1.4 )"
+"
 DEPEND="${LIB_DEPEND//\[static-libs(+)]}
-	test? ( >=dev-libs/check-0.9.4 )
 	cxx? ( app-doc/doxygen )
 	java? (
 		>=dev-lang/swig-3.0.6
 		>=virtual/jdk-1.4
 	)
 	python? (
-		dev-python/setuptools[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-lang/swig-3.0.6
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
 	ruby? ( >=dev-lang/swig-3.0.8 )
-	virtual/pkgconfig"
+	test? ( >=dev-libs/check-0.9.4 )
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}"/${P}
 
@@ -62,11 +73,11 @@ pkg_setup() {
 }
 
 src_unpack() {
-	[[ ${PV} == "9999" ]] && git-r3_src_unpack || default
+	[[ ${PV} == *9999* ]] && git-r3_src_unpack || default
 }
 
 sigrok_src_prepare() {
-	[[ ${PV} == "9999" ]] && eautoreconf
+	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
 each_ruby_prepare() {
@@ -74,9 +85,12 @@ each_ruby_prepare() {
 }
 
 src_prepare() {
-	use ruby && cp -rl "${S}" "${WORKDIR}"/all && ruby-ng_src_prepare
+	if use ruby; then
+		cp -rl "${S}" "${WORKDIR}"/all || die
+		ruby-ng_src_prepare
+	fi
+	default
 	sigrok_src_prepare
-	eapply_user
 	use python && python_copy_sources
 }
 
@@ -142,15 +156,15 @@ src_install() {
 	use python && python_foreach_impl each_python_install
 	use ruby && ruby-ng_src_install
 	use udev && udev_dorules contrib/*.rules
-	prune_libtool_files
+	find "${D}" -name '*.la' -type f -delete || die
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
