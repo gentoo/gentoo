@@ -3452,6 +3452,8 @@ gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objectiv
 gnustep-base/libobjc2:boehm-gc - Enable Hans Boehm's garbage collector (dev-libs/boehm-gc). Not recommended by upstream
 gui-apps/grim:jpeg - Enable JPEG support.
 gui-apps/grim:man - Generate and install man pages.
+gui-apps/gtkgreet:layershell - Enable layer shell support
+gui-apps/gtkgreet:man - Build and install man pages
 gui-apps/kanshi:man - build and install man pages
 gui-apps/lavalauncher:man - Build and install man pages
 gui-apps/mako:icons - Enable support for icons
@@ -3468,6 +3470,7 @@ gui-apps/waybar:network - Enable libnl support for network related features
 gui-apps/waybar:tray - Enable support for tray
 gui-apps/wf-recorder:man - Build and install man pages
 gui-apps/wf-recorder:opencl - Enable OpenCL
+gui-libs/greetd:man - Build and install man pages
 gui-libs/libhandy:glade - Install module and catalog for dev-util/glade
 gui-libs/wlroots:X - Enable support for X11 applications (XWayland)
 gui-libs/wlroots:elogind - Enable support for rootless session via elogind
@@ -8733,6 +8736,7 @@ www-client/firefox:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to 
 www-client/firefox:gtk2 - Use the cairo-gtk2 rendering engine
 www-client/firefox:hwaccel - Force-enable hardware-accelerated rendering (Mozilla bug 594876)
 www-client/firefox:lto - Enable Link Time Optimization (LTO). Requires Gold linker when using GCC or LDD linker when using Clang
+www-client/firefox:openh264 - Use media-libs/openh264 for H.264 support instead of downloading binary blob from Mozilla at runtime
 www-client/firefox:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox:rust - Enable support for using rust compiler (experimental)
 www-client/firefox:screenshot - Allow to disable screenshot extension in global profile
