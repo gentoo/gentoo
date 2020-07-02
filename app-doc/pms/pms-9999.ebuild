@@ -18,14 +18,13 @@ IUSE="html twoside"
 # texlive-latexextra for chngcntr, gitinfo2, isodate, leaflet, marginnote,
 #   paralist, tocbibind
 # texlive-mathscience for algorithm, algorithmic
-BDEPEND="|| ( >=dev-texlive/texlive-latexextra-2020-r1 dev-tex/leaflet )
-	dev-texlive/texlive-bibtexextra
+BDEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
 	dev-texlive/texlive-latex
-	dev-texlive/texlive-latexextra
+	>=dev-texlive/texlive-latexextra-2020-r2
 	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
-	html? ( >=dev-tex/tex4ht-20090611_p1038-r5 )"
+	html? ( >=dev-tex/tex4ht-20090611_p1038-r11 )"
 RDEPEND="!app-doc/pms-bin"
 
 src_compile() {
