@@ -39,6 +39,37 @@ test-distutils_enable_tests() {
 	tend ${ret}
 }
 
+test-DISTUTILS_USE_SETUPTOOLS() {
+	local DISTUTILS_USE_SETUPTOOLS=${1}
+	local exp_BDEPEND=${2}
+	local exp_RDEPEND=${3}
+
+	tbegin "${1}"
+
+	local BDEPEND=
+	local RDEPEND=
+	unset _DISTUTILS_R1
+	inherit distutils-r1
+
+	local ret var val
+	for var in BDEPEND RDEPEND; do
+		local exp_var=exp_${var}
+		# (this normalizes whitespace)
+		read -d $'\0' -r -a val <<<"${!var}"
+		val=${val[*]}
+		if [[ ${val} != "${!exp_var}" ]]; then
+			eindent
+			eerror "${var} expected: ${!exp_var}"
+			eerror "${var}   actual: ${val}"
+			eoutdent
+			ret=1
+			tret=1
+		fi
+	done
+
+	tend ${ret}
+}
+
 DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
@@ -76,6 +107,16 @@ test-distutils_enable_tests setup.py \
 	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( ${BASE_RDEPEND} )"
 eoutdent
 
+eoutdent
+
+einfo DISTUTILS_USE_SETUPTOOLS
+eindent
+SETUPTOOLS_DEP="python_single_target_python3_8? ( >=dev-python/setuptools-42.0.2[python_targets_python3_8(-)] )"
+test-DISTUTILS_USE_SETUPTOOLS no "${BASE_DEPS}" "${BASE_DEPS}"
+test-DISTUTILS_USE_SETUPTOOLS bdepend "${BASE_DEPS} ${SETUPTOOLS_DEP}" "${BASE_DEPS}"
+test-DISTUTILS_USE_SETUPTOOLS rdepend "${BASE_DEPS} ${SETUPTOOLS_DEP}" "${BASE_DEPS} ${SETUPTOOLS_DEP}"
+test-DISTUTILS_USE_SETUPTOOLS pyproject.toml "${BASE_DEPS} python_single_target_python3_8? ( dev-python/pyproject2setuppy[python_targets_python3_8(-)] )" "${BASE_DEPS}"
+test-DISTUTILS_USE_SETUPTOOLS manual "${BASE_DEPS}" "${BASE_DEPS}"
 eoutdent
 
 texit
