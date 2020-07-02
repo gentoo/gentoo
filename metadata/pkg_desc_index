@@ -4792,7 +4792,7 @@ dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 1.4.0-r3 1.4.0-r4 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r2 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7: An embeddable Javascript interpreter in C.
-dev-lang/nasm 2.14.02 2.15 2.15.01: groovy little assembler
+dev-lang/nasm 2.14.02 2.15 2.15.01 2.15.02: groovy little assembler
 dev-lang/nim 1.2.4: compiled, garbage-collected systems programming language
 dev-lang/nqp 2019.03-r1 2019.07.1 2019.11 2020.05 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
@@ -5849,7 +5849,7 @@ dev-perl/Crypt-X509 0.510.0 0.530.0: Parse a X.509 certificate
 dev-perl/CryptX 0.53.0 0.64.0 0.68.0: Self-contained crypto toolkit
 dev-perl/Curses 1.360.0 1.360.0-r1: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the curses library
-dev-perl/CursesWidgets 1.997.0-r2: Provide high level APIs for rapid user interface design on the console in Perl
+dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-MariaDB 1.210.0: MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBD-Pg 3.5.3 3.6.2 3.7.0 3.10.0: PostgreSQL database driver for the DBI module
@@ -7187,8 +7187,8 @@ dev-perl/autobox 3.0.1: Call methods on native types
 dev-perl/autovivification 0.180.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.6.0 0.7.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
-dev-perl/capitalization 0.30.0-r1: no capitalization on method names
-dev-perl/common-sense 3.740.0-r1: Save a tree AND a kitten, use common::sense!
+dev-perl/capitalization 0.30.0-r1 0.30.0-r2: no capitalization on method names
+dev-perl/common-sense 3.740.0-r1 3.750.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
 dev-perl/enum 1.110.0: C style enumerated types and bitmask flags in Perl
@@ -16884,7 +16884,7 @@ sys-block/di 4.47 4.47.3 4.48: Disk Information Utility
 sys-block/disktype 9 9-r1: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.2: Utilities to detect broken or counterfeit flash storage
-sys-block/fio 2.15 2.16 3.2 3.7 3.16 3.16-r1 3.17 3.17-r1 3.19: Jens Axboe's Flexible IO tester
+sys-block/fio 2.15 2.16 3.2 3.7 3.16 3.16-r1 3.17 3.17-r1 3.19 3.20: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.3: Partition table rescue/guessing tool
