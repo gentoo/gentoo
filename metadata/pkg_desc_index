@@ -7189,8 +7189,8 @@ dev-perl/bareword-filehandles 0.6.0 0.7.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1 0.30.0-r2: no capitalization on method names
 dev-perl/common-sense 3.740.0-r1 3.750.0: Save a tree AND a kitten, use common::sense!
-dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
-dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
+dev-perl/constant-boolean 0.20.0-r1 0.20.0-r2: Define TRUE and FALSE constants
+dev-perl/constant-defer 6.0.0 6.0.0-r1: constant subs with deferred value calculation
 dev-perl/enum 1.110.0: C style enumerated types and bitmask flags in Perl
 dev-perl/forks 0.360.0-r1: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r2: Perform remote procedure calls using extensible markup language
