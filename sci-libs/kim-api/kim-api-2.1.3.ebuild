@@ -14,5 +14,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="app-editors/vim-core"
 RDEPEND="${DEPEND}"
