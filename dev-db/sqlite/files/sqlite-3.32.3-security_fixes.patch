@@ -1,0 +1,146 @@
+https://sqlite.org/src/info/cc888878ea8d5bc7
+https://sqlite.org/src/info/be545f85a6ef09cc
+https://sqlite.org/src/info/6e0ffa2053124168
+https://sqlite.org/src/info/4d0cfb1236884349
+
+--- /ext/fts3/fts3.c
++++ /ext/fts3/fts3.c
+@@ -5208,10 +5208,12 @@
+   );
+   if( res ){
+     nNew = (int)(pOut - pPhrase->doclist.pList) - 1;
+-    assert( pPhrase->doclist.pList[nNew]=='\0' );
+-    assert( nNew<=pPhrase->doclist.nList && nNew>0 );
+-    memset(&pPhrase->doclist.pList[nNew], 0, pPhrase->doclist.nList - nNew);
+-    pPhrase->doclist.nList = nNew;
++    if( nNew>=0 ){
++      assert( pPhrase->doclist.pList[nNew]=='\0' );
++      assert( nNew<=pPhrase->doclist.nList && nNew>0 );
++      memset(&pPhrase->doclist.pList[nNew], 0, pPhrase->doclist.nList - nNew);
++      pPhrase->doclist.nList = nNew;
++    }
+     *paPoslist = pPhrase->doclist.pList;
+     *pnToken = pPhrase->nToken;
+   }
+--- /ext/fts3/fts3_write.c
++++ /ext/fts3/fts3_write.c
+@@ -341,7 +341,9 @@
+ ** created by merging the oldest :2 segments from absolute level :1. See 
+ ** function sqlite3Fts3Incrmerge() for details.  */
+ /* 29 */ "SELECT 2 * total(1 + leaves_end_block - start_block) "
+-         "  FROM %Q.'%q_segdir' WHERE level = ? AND idx < ?",
++         "  FROM (SELECT * FROM %Q.'%q_segdir' "
++         "        WHERE level = ? ORDER BY idx ASC LIMIT ?"
++         "  )",
+ 
+ /* SQL_DELETE_SEGDIR_ENTRY
+ **   Delete the %_segdir entry on absolute level :1 with index :2.  */
+@@ -2853,6 +2855,19 @@
+   return SQLITE_OK;
+ }
+ 
++static int fts3GrowSegReaderBuffer(Fts3MultiSegReader *pCsr, int nReq){
++  if( nReq>pCsr->nBuffer ){
++    char *aNew;
++    pCsr->nBuffer = nReq*2;
++    aNew = sqlite3_realloc(pCsr->aBuffer, pCsr->nBuffer);
++    if( !aNew ){
++      return SQLITE_NOMEM;
++    }
++    pCsr->aBuffer = aNew;
++  }
++  return SQLITE_OK;
++}
++
+ 
+ int sqlite3Fts3SegReaderStep(
+   Fts3Table *p,                   /* Virtual table handle */
+@@ -2987,15 +3002,9 @@
+           }
+ 
+           nByte = sqlite3Fts3VarintLen(iDelta) + (isRequirePos?nList+1:0);
+-          if( nDoclist+nByte>pCsr->nBuffer ){
+-            char *aNew;
+-            pCsr->nBuffer = (nDoclist+nByte)*2;
+-            aNew = sqlite3_realloc(pCsr->aBuffer, pCsr->nBuffer);
+-            if( !aNew ){
+-              return SQLITE_NOMEM;
+-            }
+-            pCsr->aBuffer = aNew;
+-          }
++
++          rc = fts3GrowSegReaderBuffer(pCsr, nByte+nDoclist);
++          if( rc ) return rc;
+ 
+           if( isFirst ){
+             char *a = &pCsr->aBuffer[nDoclist];
+@@ -3020,6 +3029,9 @@
+         fts3SegReaderSort(apSegment, nMerge, j, xCmp);
+       }
+       if( nDoclist>0 ){
++        rc = fts3GrowSegReaderBuffer(pCsr, nDoclist+FTS3_NODE_PADDING);
++        if( rc ) return rc;
++        memset(&pCsr->aBuffer[nDoclist], 0, FTS3_NODE_PADDING);
+         pCsr->aDoclist = pCsr->aBuffer;
+         pCsr->nDoclist = nDoclist;
+         rc = SQLITE_ROW;
+--- /src/expr.c
++++ /src/expr.c
+@@ -4272,7 +4272,9 @@
+       int nCol;
+       testcase( op==TK_EXISTS );
+       testcase( op==TK_SELECT );
+-      if( op==TK_SELECT && (nCol = pExpr->x.pSelect->pEList->nExpr)!=1 ){
++      if( pParse->db->mallocFailed ){
++        return 0;
++      }else if( op==TK_SELECT && (nCol = pExpr->x.pSelect->pEList->nExpr)!=1 ){
+         sqlite3SubselectError(pParse, nCol, 1);
+       }else{
+         return sqlite3CodeSubselect(pParse, pExpr);
+--- /test/fts3corrupt4.test
++++ /test/fts3corrupt4.test
+@@ -6123,4 +6123,44 @@
+   SELECT offsets(t1) FROM t1 WHERE t1 MATCH 'rtree ner "json1^enable"';
+ }
+ 
++#-------------------------------------------------------------------------
++do_execsql_test 42.1 {
++  CREATE VIRTUAL TABLE f USING fts3(a, b);
++}
++do_execsql_test 42.2 {
++  INSERT INTO f_segdir VALUES(0,2,1111,0,0,X'00');
++  INSERT INTO f_segdir VALUES(0,3,0   ,0,0,X'00013003010200');
++}
++do_execsql_test 42.3 {
++  INSERT INTO f(f) VALUES ('merge=107,2');
++}
++
++#-------------------------------------------------------------------------
++reset_db
++set saved $sqlite_fts3_enable_parentheses
++set sqlite_fts3_enable_parentheses 1
++do_execsql_test 43.1 {
++  CREATE VIRTUAL TABLE def USING fts3(xyz);
++  INSERT INTO def_segdir VALUES(0,0,0,0,0, X'0001310301c9000103323334050d81');
++} {}
++
++do_execsql_test 43.2 {
++  SELECT rowid FROM def WHERE def MATCH '1 NEAR 1'
++} {1}
++
++set sqlite_fts3_enable_parentheses $saved
++
++#-------------------------------------------------------------------------
++reset_db
++do_execsql_test 44.1 {
++  CREATE VIRTUAL TABLE t0 USING fts3(col0 INTEGER PRIMARY KEY,col1 VARCHAR(8),col2 BINARY,col3 BINARY);
++  INSERT INTO t0_content VALUES(0,NULL,NULL,NULL,NULL);
++  INSERT INTO t0_segdir VALUES(0,0,0,0,'0 42',X'00013103010200010332333405010201ba00000461616161050101020200000462626262050101030200');
++}
++
++do_execsql_test 44.2 {
++  SELECT matchinfo(t0, t0) IS NULL FROM t0 WHERE t0 MATCH '1*'
++} {0}
++
++
+ finish_test
