@@ -66,7 +66,7 @@ dev-java/openjdk:11 javafx
 >=dev-lang/spidermonkey-60 jit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-09)
-# media-libs/libplacebo is not keyworded anywhere except amd64 yet
+# media-libs/libplacebo is not keyworded anywhere except amd64/ppc64/x86 yet
 media-video/vlc libplacebo
 
 # Denis Lisov <dennis.lissov@gmail.com> (2019-05-09)
