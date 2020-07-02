@@ -124,6 +124,7 @@ src_configure() {
 	# and other minor arches
 	ECONF_SOURCE="${S}" \
 	econf \
+		--host="${CBUILD:-${CHOST}}" \
 		--target="${CHOST}" \
 		--disable-jemalloc \
 		--disable-optimize \
