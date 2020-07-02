@@ -42,6 +42,7 @@ void-1.0.2
 winapi-0.3.9
 winapi-i686-pc-windows-gnu-0.4.0
 winapi-x86_64-pc-windows-gnu-0.4.0
+zeroize-1.1.0
 "
 
 inherit cargo
