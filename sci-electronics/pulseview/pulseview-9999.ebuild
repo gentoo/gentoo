@@ -24,9 +24,10 @@ IUSE="+decode static"
 REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
-DEPEND="
+RDEPEND="
 	>=dev-cpp/glibmm-2.28.0:2
 	>=dev-libs/boost-1.55:=
 	>=dev-libs/glib-2.28.0:2
@@ -40,7 +41,7 @@ DEPEND="
 		>=sci-libs/libsigrokdecode-0.6.0:=[${PYTHON_SINGLE_USEDEP}]
 	)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 DOCS=( HACKING NEWS README )
 
