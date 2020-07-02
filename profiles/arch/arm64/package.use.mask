@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@cmpct.info> (2020-07-03)
+# Rust is available here
+# Bug #728558
+media-video/ffmpeg -rav1e
+
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring
