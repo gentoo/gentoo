@@ -5838,7 +5838,7 @@ dev-perl/Crypt-RIPEMD160 0.60.0 0.60.0-r1: Perl extension for the RIPEMD-160 Has
 dev-perl/Crypt-RSA 1.990.0-r1 1.990.0-r2: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.520.0: Cryptographically Secure, True Random Number Generator
 dev-perl/Crypt-Random-Source 0.120.0 0.140.0: Get weak or strong random data from pluggable sources
-dev-perl/Crypt-Rijndael 1.130.0 1.140.0: Crypt::CBC compliant Rijndael encryption module
+dev-perl/Crypt-Rijndael 1.130.0 1.140.0 1.140.0-r1: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SMIME 0.190.0 0.250.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r1 0.720.0-r2: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
@@ -8023,7 +8023,7 @@ dev-python/logbook 1.4.0 1.5.3: A logging replacement for Python
 dev-python/logfury 0.1.2-r1: Boilerplate library for logging method calls
 dev-python/loguru 0.4.1 0.5.1: Python logging made (stupidly) simple
 dev-python/logutils 0.3.3-r1 0.3.5: The logutils package provides a set of handlers for the Python standard
-dev-python/loky 2.8.0: Robust and reusable Executor for joblib
+dev-python/loky 2.8.0-r1: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.6: A Python implementation of Lunr.js
 dev-python/lxml 4.5.0 4.5.1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 2.1.6 3.0.2: LZ4 Bindings for Python
@@ -8068,7 +8068,7 @@ dev-python/mkdocs-bootstrap 0.1.1 0.1.1-r1 1.1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 0.4.0 0.4.0-r1 1.1: Bootswatch themes for MkDocs
 dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
 dev-python/mock 3.0.5-r1: Rolling backport of unittest.mock for all Pythons
-dev-python/mongoengine 0.10.6: A Python Object-Document-Mapper for working with MongoDB
+dev-python/mongoengine 0.10.6 0.20.0: A Python Object-Document-Mapper for working with MongoDB
 dev-python/mongomock 3.19.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/more-itertools 5.0.0 7.0.0 8.3.0 8.4.0: More routines for operating on iterables, beyond itertools
@@ -13820,7 +13820,7 @@ media-video/plasma-mediacenter 5.7.5: Unified media experience for any device ca
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 9999: A Qt-based video player, which can play most formats and codecs
 media-video/raspberrypi-omxplayer 0_p20160217-r1 0_p20160528-r2 0_p20160528-r3 9999: Command line media player for the Raspberry Pi
-media-video/rav1e 9999: The fastest and safest AV1 encoder
+media-video/rav1e 0.3.3 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg video/audio files
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
