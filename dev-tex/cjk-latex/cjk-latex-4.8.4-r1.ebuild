@@ -119,7 +119,7 @@ src_install() {
 	popd &>/dev/null || die
 
 	insinto "${TEXMF}/tex/latex/${PN}"
-	doins -r texinput
+	doins -r texinput/.
 	doins -r contrib/wadalab
 
 	if use emacs ; then
@@ -137,31 +137,30 @@ src_install() {
 
 	# jisksp40 stuff
 	insinto ${TEXMF}
-	doins -r jisksp40/texmf
+	doins -r jisksp40/texmf/.
 
 	# kanji48 stuff
 	insinto ${TEXMF}
-	doins -r kanji48/texmf
+	doins -r kanji48/texmf/.
 
 	use doc || rm -rf texmf/doc
 	insinto ${TEXMF}
-	doins -r texmf
+	doins -r texmf/.
 
 	# Move fonts because hbf2gf expects them in MISCFONTS
 	mv "${ED}/${TEXMF}/fonts/hbf" "${ED}/${TEXMF}/fonts/misc" || die "mv font failed"
 
 	insinto ${TEXMF}/hbf2gf
-	doins -r utils/hbf2gf/cfg/
+	doins -r utils/hbf2gf/cfg/.
 
 	insinto ${TEXMF}/scripts/subfonts
-	doins -r utils/subfonts/
+	doins -r utils/subfonts/.
 
 	rm -f doc/COPYING doc/INSTALL || die
 	dodoc ChangeLog README
 	if use doc ; then
-		insinto /usr/share/doc/${PF}
-		doins -r doc
-		doins -r examples
+		dodoc -r doc/.
+		dodoc -r examples
 	fi
 	docinto uwpatch
 	dodoc uwpatch/README
