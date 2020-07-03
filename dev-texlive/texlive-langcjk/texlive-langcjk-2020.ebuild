@@ -3,9 +3,9 @@
 
 EAPI="7"
 
-TEXLIVE_MODULE_CONTENTS="adobemapping c90 cjk-gs-integrate cjkpunct dnp garuda-c90 fixjfm jfmutil norasi-c90 pxtatescale xcjk2uni zxjafont collection-langcjk
+TEXLIVE_MODULE_CONTENTS="adobemapping c90 cjk cjk-gs-integrate cjkpunct cjkutils dnp garuda-c90 fixjfm jfmutil norasi-c90 pxtatescale xcjk2uni zxjafont collection-langcjk
 "
-TEXLIVE_MODULE_DOC_CONTENTS="c90.doc cjk-gs-integrate.doc cjkpunct.doc fixjfm.doc jfmutil.doc pxtatescale.doc xcjk2uni.doc zxjafont.doc "
+TEXLIVE_MODULE_DOC_CONTENTS="c90.doc cjk-gs-integrate.doc cjk.doc cjkpunct.doc cjkutils.doc fixjfm.doc jfmutil.doc pxtatescale.doc xcjk2uni.doc zxjafont.doc "
 TEXLIVE_MODULE_SRC_CONTENTS="c90.source cjk-gs-integrate.source cjkpunct.source garuda-c90.source norasi-c90.source xcjk2uni.source "
 inherit  texlive-module
 DESCRIPTION="TeXLive Chinese/Japanese/Korean (base)"
