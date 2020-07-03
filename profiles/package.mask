@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-07-03)
+# Merged into dev-texlive/texlive-langcjk.
+# Removal in 30 days.
+dev-tex/cjk-latex
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-01)
 # Depends on dead gnome-base/libgnomeui, bug #726816, dead upstream. Big Debian
 # patch exists, but we won't become new upstream. Masked for removal in 30 days.
