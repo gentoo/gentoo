@@ -8,8 +8,8 @@ inherit cmake-utils eutils flag-o-matic multilib
 PATCHSET_VER="0"
 
 DESCRIPTION="versatile implementation of the Prolog programming language"
-HOMEPAGE="http://www.swi-prolog.org/"
-SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
+HOMEPAGE="https://www.swi-prolog.org/"
+SRC_URI="https://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
