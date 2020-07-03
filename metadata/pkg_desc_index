@@ -10097,7 +10097,7 @@ dev-tex/catdvi 0.14-r2: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.6: Checks latex source for common mistakes
 dev-tex/circuit_macros 8.4 8.4.1: M4 Macros for Electric circuit diagrams in TeX or LaTeX
-dev-tex/cjk-latex 4.8.4: LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings
+dev-tex/cjk-latex 4.8.4-r1: LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings
 dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/crosstex 0.6-r3: CrossTeX - object oriented BibTeX replacement
 dev-tex/csindex 2.11c-r2: Utility for creating Czech/Slovak-sorted LaTeX index-files
@@ -14369,7 +14369,7 @@ net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 an
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
-net-im/zoom 5.0.418682.0603 5.1.412382.0614-r1: Video conferencing and web conferencing service
+net-im/zoom 5.0.418682.0603 5.1.412382.0614-r1 5.1.418436.0628: Video conferencing and web conferencing service
 net-irc/anope 2.0.6 2.0.7: Anope IRC Services
 net-irc/atheme-services 7.2.10_p2-r2: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
@@ -18616,7 +18616,7 @@ x11-terms/qterminal 0.14.1-r1 0.15.0 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r4: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 3.1.5-r1 3.9.3: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.22-r1 9.22-r3 9999: rxvt clone with xft and unicode support
-x11-terms/sakura 3.5.0 3.6.0-r1 3.7.0: sakura is a terminal emulator based on GTK and VTE
+x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X
 x11-terms/terminator 1.92-r1: Multiple GNOME terminals in one window
 x11-terms/terminology 1.7.0-r1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
