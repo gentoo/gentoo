@@ -12,6 +12,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
+BDEPEND="
+	app-editors/vim-core
+"
 DEPEND="
 	dev-libs/libbsd
 	net-libs/libpcap

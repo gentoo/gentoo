@@ -33,10 +33,6 @@ RDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-embedded_config.patch"
-)
-
 src_configure() {
 	local myeconfargs=(
 		--dbdir="${EPREFIX}/var/lib/dhcpcd"
