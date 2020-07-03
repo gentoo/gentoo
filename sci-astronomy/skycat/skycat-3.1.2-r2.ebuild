@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools flag-o-matic
 
 DESCRIPTION="ESO astronomical image visualizer with catalog access"
-HOMEPAGE="http://archive.eso.org/skycat"
+HOMEPAGE="https://www.eso.org/sci/observing/tools/skycat.html"
 SRC_URI="http://archive.eso.org/cms/tools-documentation/skycat-download/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
