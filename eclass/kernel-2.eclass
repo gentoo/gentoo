@@ -605,6 +605,7 @@ if [[ ${ETYPE} == sources ]]; then
 		sys-devel/make
 		>=sys-libs/ncurses-5.2
 		virtual/libelf
+		virtual/pkgconfig
 	)"
 
 	SLOT="${PVR}"
