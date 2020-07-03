@@ -24,6 +24,9 @@ DEPEND="
 	dev-qt/qtdbus:5
 	sys-apps/dbus
 "
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-unbundle-qtsingleapplication.patch"
