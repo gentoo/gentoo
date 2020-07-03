@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils multilib-minimal
+inherit cmake multilib-minimal
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://tls.mbed.org/"
@@ -41,7 +41,7 @@ src_prepare() {
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_C
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_PTHREAD
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -55,21 +55,21 @@ multilib_src_configure() {
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	use doc && multilib_is_native_abi && cd "${S}" && emake apidoc
 }
 
 multilib_src_test() {
 	LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BUILD_DIR}/library" \
-		cmake-utils_src_test
+		cmake_src_test
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 multilib_src_install_all() {
