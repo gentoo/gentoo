@@ -5577,7 +5577,7 @@ dev-ml/variantslib 0.9.0: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/yojson 1.4.0: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.7 1.9.1: Arithmetic and logic operations over arbitrary-precision integers
-dev-perl/Ace 1.920.0-r3 1.920.0-r4 1.920.0-r5: Object-Oriented Access to ACEDB Databases
+dev-perl/Ace 1.920.0-r3 1.920.0-r4 1.920.0-r5 1.920.0-r6: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1 0.100.0-r2: Represent a series of changes in annotate form
 dev-perl/Algorithm-C3 0.100.0: A module for merging hierarchies using the C3 algorithm
@@ -5588,7 +5588,7 @@ dev-perl/Algorithm-Munkres 0.80.0-r1 0.80.0-r2: Munkres solution to classical As
 dev-perl/Alien-Base-ModuleBuild 1.140.0: A Module::Build subclass for building Alien:: modules and their libraries
 dev-perl/Alien-Build 1.790.0 2.230.0 2.260.0: Build external dependencies for use in CPAN
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
-dev-perl/Alien-LibGumbo 0.50.0-r1: Gumbo parser library
+dev-perl/Alien-LibGumbo 0.50.0-r1 0.50.0-r2: Gumbo parser library
 dev-perl/Alien-Libxml2 0.90.0 0.160.0: Install the C libxml2 library on your system
 dev-perl/Alien-SDL 1.446.0 1.446.0-r1: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binaries
@@ -5621,23 +5621,23 @@ dev-perl/Archive-Tar-Stream 0.30.0-r1: pure perl IO-friendly tar file management
 dev-perl/Archive-Tar-Wrapper 0.370.0: API wrapper around the 'tar' utility
 dev-perl/Archive-Zip 1.640.0 1.680.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.1 3.0.3: Perl extension for comparing arrays
-dev-perl/Array-RefElem 1.0.0-r1 1.0.0-r2: Set up array elements as aliases
+dev-perl/Array-RefElem 1.0.0-r1 1.0.0-r2 1.0.0-r3: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1 1.20.0-r2: Calculate windows/subsets/pages of arrays
 dev-perl/Astro-FITS-Header 3.70.0 3.70.0-r1: Interface to FITS headers
 dev-perl/AtExit 2.30.0: atexit() function to register exit-callbacks
-dev-perl/Audio-CD-disc-cover 0.05-r2: Perl Module needed for app-cdr/disc-cover
-dev-perl/Audio-DSP 0.20.0-r2: Perl interface to *NIX digital audio device
-dev-perl/Audio-FLAC-Header 2.400.0-r1 2.400.0-r2: Access to FLAC audio metadata
-dev-perl/Audio-Mixer 0.700.0-r2 0.700.0-r3: Perl extension for Sound Mixer control
+dev-perl/Audio-CD-disc-cover 0.05-r2 0.05-r3: Perl Module needed for app-cdr/disc-cover
+dev-perl/Audio-DSP 0.20.0-r2 0.20.0-r3: Perl interface to *NIX digital audio device
+dev-perl/Audio-FLAC-Header 2.400.0-r1 2.400.0-r2 2.400.0-r3: Access to FLAC audio metadata
+dev-perl/Audio-Mixer 0.700.0-r2 0.700.0-r3 0.700.0-r4: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1-r1: An OO interface to Musepack file information and APE tag fields
-dev-perl/Audio-Scan 1.10.0: Fast C metadata and tag reader for all common audio file formats
+dev-perl/Audio-Scan 1.10.0 1.10.0-r1: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0-r1: extension for reading WMA/ASF metadata
 dev-perl/Audio-Wav 0.140.0-r1 0.140.0-r2: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1 0.40.0-r2: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1 0.171.0-r2: interface to read and modify Apache .htpasswd files
-dev-perl/Authen-Libwrap 0.230.0: A Perl access to the TCP Wrappers interface
+dev-perl/Authen-Libwrap 0.230.0 0.230.0-r1: A Perl access to the TCP Wrappers interface
 dev-perl/Authen-NTLM 1.90.0-r1 1.90.0-r2: An NTLM authentication module
-dev-perl/Authen-PAM 0.160.0-r2: Interface to PAM library
+dev-perl/Authen-PAM 0.160.0-r2 0.160.0-r3: Interface to PAM library
 dev-perl/Authen-Radius 0.270.0 0.310.0: Communicate with a Radius server from Perl
 dev-perl/Authen-SASL 2.160.0-r1 2.160.0-r2: A Perl SASL interface
 dev-perl/Authen-SASL-SASLprep 1.100.0: A Stringprep Profile for User Names and Passwords (RFC 4013)
@@ -7186,8 +7186,8 @@ dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.190.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1 1.40.0: Lets your class/object say it works like something else
-dev-perl/autobox 3.0.1: Call methods on native types
-dev-perl/autovivification 0.180.0: Lexically disable autovivification
+dev-perl/autobox 3.0.1 3.0.1-r1: Call methods on native types
+dev-perl/autovivification 0.180.0 0.180.0-r1: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.6.0 0.7.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1 0.30.0-r2: no capitalization on method names
