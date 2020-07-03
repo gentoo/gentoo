@@ -19,6 +19,6 @@
 		<flag name="table">Install table input methods for Simplified Chinese</flag>
 	</use>
 	<upstream>
-		<remote-id type="gitlab">fcitx/fcitx</remote-id>
+		<remote-id type="github">fcitx/fcitx</remote-id>
 	</upstream>
 </pkgmetadata>

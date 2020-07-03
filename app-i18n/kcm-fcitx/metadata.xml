@@ -10,6 +10,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="gitlab">fcitx/kcm-fcitx</remote-id>
+		<remote-id type="github">fcitx/kcm-fcitx</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 2014-2019 Gentoo Authors
+# Copyright 2014-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -8,11 +8,11 @@ inherit cmake-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx-qt5.git"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-qt5"
 fi
 
 DESCRIPTION="Fcitx input method module for Qt 5"
-HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx-qt5"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-qt5"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else

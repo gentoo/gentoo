@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,11 +8,11 @@ inherit cmake-utils gnome2-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx-rime.git"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-rime"
 fi
 
 DESCRIPTION="Chinese RIME input methods for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx-rime"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-rime"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else
