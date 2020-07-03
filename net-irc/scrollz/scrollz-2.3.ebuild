@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ inherit toolchain-funcs
 MY_P="ScrollZ-${PV}"
 
 DESCRIPTION="Advanced IRC client based on ircII"
-HOMEPAGE="http://www.scrollz.info/"
-SRC_URI="http://www.scrollz.info/download/${MY_P}.tar.gz"
+HOMEPAGE="https://www.scrollz.info/"
+SRC_URI="https://www.scrollz.info/download/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
