@@ -7,7 +7,7 @@ inherit flag-o-matic qmake-utils toolchain-funcs
 
 DESCRIPTION="Video effects library based on web technologies"
 HOMEPAGE="https://github.com/mltframework/webvfx/"
-SRC_URI="https://github.com/mltframework/${PN}/releases/download/1.1.0/${P}.txz"
+SRC_URI="https://github.com/mltframework/${PN}/releases/download/${PV}/${P}.txz"
 
 LICENSE="BSD"
 SLOT="0"
