@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 DESCRIPTION="PAM base configuration files"
 HOMEPAGE="https://github.com/gentoo/pambase"
 SRC_URI="https://github.com/gentoo/pambase/archive/${P}.tar.gz"
@@ -58,6 +60,7 @@ src_compile() {
 
 	emake \
 		GIT=true \
+		CPP="$(tc-getPROG CPP cpp)" \
 		$(use_var debug) \
 		$(use_var LIBCAP caps) \
 		$(use_var cracklib) \
@@ -79,5 +82,5 @@ src_compile() {
 src_test() { :; }
 
 src_install() {
-	emake GIT=true DESTDIR="${ED}" install
+	emake GIT=true CPP="$(tc-getPROG CPP cpp)" DESTDIR="${ED}" install
 }
