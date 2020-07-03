@@ -7850,7 +7850,7 @@ dev-python/genty 1.3.2: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2-r1: Python bindings for GeoIP
 dev-python/gevent 1.4.0 20.5.1 20.5.2 20.6.0 20.6.1: Coroutine-based network library
 dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi server
-dev-python/geventhttpclient 1.3.1-r1 1.4.2: A high performance, concurrent HTTP client library for Python using gevent
+dev-python/geventhttpclient 1.3.1-r1 1.4.2 1.4.3: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/girder-client 2.3.0: Python libraries and CLI to interact with the REST API of a Girder server
 dev-python/git-review 1.28.0: Tool to submit code to Gerrit
 dev-python/gitdb 4.0.4 4.0.5: GitDB is a pure-Python git object database
@@ -16711,7 +16711,7 @@ sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec sys
 sys-apps/nosig 2: Block signals before running programs (a generic "nohup")
 sys-apps/nvme-cli 1.9-r3 1.10.1 1.11.1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator called OneRNG
-sys-apps/opal-utils 6.5.2 6.6 6.6.1: OPAL firmware utilities
+sys-apps/opal-utils 6.5.2 6.6 6.6.1 6.6.2: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20200325: osinfo database files
