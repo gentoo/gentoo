@@ -14763,7 +14763,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 8.1.9 9.1.2 9.1.3 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 8.1.9 9.1.3 9.1.4 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -17299,7 +17299,7 @@ sys-kernel/bliss-initramfs 8.0.0: Boot your system's rootfs from OpenZFS/LUKS
 sys-kernel/bliss-kernel-bin 4.14.170 4.14.178 5.4.38: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
-sys-kernel/dracut 048-r1 049-r3 050 9999: Generic initramfs generation tool
+sys-kernel/dracut 048-r1 049-r3 050 050-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.9-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
