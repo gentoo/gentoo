@@ -60,7 +60,9 @@ pkg_preinst() {
 
 pkg_postinst() {
 	# Workaround bug #141619
-	DARKSTAT_CHROOT_DIR=`sed -n 's/^#CHROOT=\(.*\)/\1/p' "${ROOT}"etc/conf.d/darkstat`
+	DARKSTAT_CHROOT_DIR=$(
+		sed -n 's/^#CHROOT=\(.*\)/\1/p' "${ROOT}"/etc/conf.d/darkstat
+	)
 	chown darkstat:0 "${ROOT}${DARKSTAT_CHROOT_DIR}"
 
 	elog "To start different darkstat instances which will listen on a different"
