@@ -16,7 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # TODO: make it spawn a local mongodb instance
-#RESTRICT="test"
+RESTRICT="test"
 
 RDEPEND=">=dev-python/flask-0.8[${PYTHON_USEDEP}]
 	>=dev-python/mongoengine-0.7.10[${PYTHON_USEDEP}]
