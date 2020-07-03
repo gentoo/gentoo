@@ -8,10 +8,10 @@ WX_GTK_VER=3.0
 inherit cmake-utils vcs-snapshot wxwidgets
 
 DESCRIPTION="Music management program designed for all music enthusiasts"
-HOMEPAGE="http://guayadeque.org/"
+HOMEPAGE="https://guayadeque.org/"
 SRC_URI="https://github.com/anonbeat/${PN}/archive/9fec4f7b85095fa2d9f8e4d39c0cf5015f7624fa.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="appindicator ipod +minimal"
