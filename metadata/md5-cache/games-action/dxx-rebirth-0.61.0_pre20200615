@@ -1,0 +1,15 @@
+BDEPEND=|| ( ( dev-lang/python:3.7 dev-util/scons[python_targets_python3_7(-),python_single_target_python3_7(+)] ) )
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=dev-games/physfs[hog,mvl,zip] opengl? ( virtual/opengl virtual/glu ) png? ( media-libs/libpng ) !sdl2? ( media-libs/libsdl[joystick?,opengl?,sound,video] media-libs/sdl-image music? ( media-libs/sdl-mixer ) ) sdl2? ( media-libs/libsdl2[joystick?,opengl?,sound,video] media-libs/sdl2-image music? ( media-libs/sdl2-mixer ) ) valgrind? ( dev-util/valgrind ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Descent Rebirth - enhanced Descent 1 & 2 engine
+EAPI=7
+HOMEPAGE=https://www.dxx-rebirth.com/
+IUSE=+d1x +d2x +data debug editor +flac ipv6 +joystick l10n_de +midi +mp3 +music +opengl opl3-musicpack +png sc55-musicpack sdl2 tracker valgrind +vorbis
+KEYWORDS=~amd64 ~x86
+LICENSE=DXX-Rebirth GPL-3
+RDEPEND=dev-games/physfs[hog,mvl,zip] opengl? ( virtual/opengl virtual/glu ) png? ( media-libs/libpng ) !sdl2? ( media-libs/libsdl[joystick?,opengl?,sound,video] media-libs/sdl-image music? ( media-libs/sdl-mixer ) ) sdl2? ( media-libs/libsdl2[joystick?,opengl?,sound,video] media-libs/sdl2-image music? ( media-libs/sdl2-mixer ) ) !sdl2? ( music? ( media-libs/sdl-mixer[flac?,midi?,mp3?,vorbis?] ) ) sdl2? ( music? ( media-libs/sdl2-mixer[flac?,midi?,mp3?,vorbis?] ) ) d1x? ( !<games-action/d1x-rebirth-0.59.100 data? ( || ( games-action/descent1-data games-action/descent1-demodata ) ) l10n_de? ( games-action/descent1-freedata[l10n_de] ) opl3-musicpack? ( games-action/descent1-freedata[opl3-musicpack] ) sc55-musicpack? ( games-action/descent1-freedata[sc55-musicpack] ) ) d2x? ( !<games-action/d2x-rebirth-0.59.100 data? ( || ( games-action/descent2-data games-action/descent2-demodata ) ) l10n_de? ( games-action/descent2-freedata[l10n_de] ) opl3-musicpack? ( games-action/descent2-freedata[opl3-musicpack] ) sc55-musicpack? ( games-action/descent2-freedata[sc55-musicpack] ) )
+REQUIRED_USE=|| ( d1x d2x ) flac? ( music ) midi? ( music ) mp3? ( music ) vorbis? ( music ) opl3-musicpack? ( vorbis ) sc55-musicpack? ( vorbis ) sdl2? ( opengl )
+SLOT=0
+SRC_URI=https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/0c2fcf691ffb2a586991350d67f3efd1cca2a1f3 -> dxx-rebirth-0.61.0_pre20200615.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	c26f95a5042de003dc58bef955e41c88	python-utils-r1	ace0a9a129fcfeaae542c0d15c07f36a	scons-utils	7fa3bb47972ff4c5fa8004463ec6f023	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f05fc42938eb2db33528e7c67d6980f3
