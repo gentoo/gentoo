@@ -3423,7 +3423,7 @@ dev-erlang/epam 1.0.2 1.0.6 1.0.7 1.0.8: epam for ejabberd to help with PAM auth
 dev-erlang/eredis 1.0.8: Erlang Redis client
 dev-erlang/esip 1.0.11 1.0.26 1.0.30 1.0.32: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.2 1.0.6 1.0.7: Native zlib driver for Erlang and Elixir
-dev-erlang/fast_tls 1.0.26 1.1.2 1.1.4 1.1.5: TLS/SSL native driver for Erlang and Elixir
+dev-erlang/fast_tls 1.0.26 1.1.2 1.1.4 1.1.5 1.1.6: TLS/SSL native driver for Erlang and Elixir
 dev-erlang/fast_xml 1.1.22 1.1.34 1.1.37 1.1.39 1.1.40: Fast Expat based Erlang XML parsing library
 dev-erlang/fast_yaml 1.0.9 1.0.20 1.0.21 1.0.24: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.9 0.2.0: Small Erlang app that provides fast event stream processing
