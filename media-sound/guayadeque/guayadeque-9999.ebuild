@@ -14,7 +14,7 @@ fi
 inherit cmake-utils vcs-snapshot wxwidgets $SCM
 
 DESCRIPTION="Music management program designed for all music enthusiasts"
-HOMEPAGE="http://guayadeque.org/"
+HOMEPAGE="https://guayadeque.org/"
 if [[ ${PV} != *9999 ]]; then
 	COMMIT=...
 	SRC_URI="https://github.com/anonbeat/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
@@ -23,7 +23,7 @@ else
 	KEYWORDS=""
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="appindicator ipod +minimal"
 
