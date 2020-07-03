@@ -121,7 +121,7 @@ CDEPEND="
 
 RDEPEND="${CDEPEND}
 	jack? ( virtual/jack )
-	openh264? ( media-libs/openh264:* )
+	openh264? ( media-libs/openh264:*[plugin] )
 	pulseaudio? (
 		|| (
 			media-sound/pulseaudio
