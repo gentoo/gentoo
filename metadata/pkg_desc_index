@@ -3421,11 +3421,11 @@ dev-erlang/cache_tab 1.0.7 1.0.20 1.0.22 1.0.23: In-memory cache Erlang and Elix
 dev-erlang/eimp 1.0.9 1.0.12 1.0.14 1.0.15: Erlang Image Manipulation Process
 dev-erlang/epam 1.0.2 1.0.6 1.0.7 1.0.8: epam for ejabberd to help with PAM authentication support
 dev-erlang/eredis 1.0.8: Erlang Redis client
-dev-erlang/esip 1.0.11 1.0.26 1.0.30 1.0.32: ProcessOne SIP server component
+dev-erlang/esip 1.0.11 1.0.26 1.0.30 1.0.32 1.0.34: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.2 1.0.6 1.0.7: Native zlib driver for Erlang and Elixir
 dev-erlang/fast_tls 1.0.26 1.1.2 1.1.4 1.1.5 1.1.6: TLS/SSL native driver for Erlang and Elixir
-dev-erlang/fast_xml 1.1.22 1.1.34 1.1.37 1.1.39 1.1.40: Fast Expat based Erlang XML parsing library
-dev-erlang/fast_yaml 1.0.9 1.0.20 1.0.21 1.0.24: Fast Yaml native library for Erlang and Elixir
+dev-erlang/fast_xml 1.1.22 1.1.34 1.1.37 1.1.39 1.1.40 1.1.41: Fast Expat based Erlang XML parsing library
+dev-erlang/fast_yaml 1.0.9 1.0.20 1.0.21 1.0.24 1.0.25: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.9 0.2.0: Small Erlang app that provides fast event stream processing
 dev-erlang/hamcrest 0.1.0_p20160709: Erlang port of Hamcrest
 dev-erlang/iconv 1.0.4 1.0.10: Fast encoding conversion library for Erlang and Elixir
@@ -3449,7 +3449,7 @@ dev-erlang/riak_pb 2.2.0.2: Riak Protocol Buffers messages
 dev-erlang/riakc 2.4.2: Erlang clients for Riak
 dev-erlang/sqlite3 1.1.5 1.1.6 1.1.7: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.8 1.0.17 1.0.19: Fast Stringprep implementation for Erlang and Elixir
-dev-erlang/stun 1.0.10 1.0.25 1.0.29 1.0.31 1.0.32: STUN and TURN library for Erlang and Elixir
+dev-erlang/stun 1.0.10 1.0.25 1.0.29 1.0.31 1.0.32 1.0.33: STUN and TURN library for Erlang and Elixir
 dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1 1.4.5 1.4.6: XMPP parsing and serialization library on top of Fast XML
 dev-erlang/yconf 1.0.1 1.0.4: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
@@ -14731,7 +14731,7 @@ net-misc/bgpq3 0.1.33 0.1.35: Generate access-lists for Cisco/Juniper routers, s
 net-misc/bird 2.0.7: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/blinkperl 20030301-r2: blinkperl is a telnet server, which plays BlinkenLight movies
 net-misc/bopm 3.1.3-r4: Blitzed Open Proxy Monitor
-net-misc/bridge-utils 1.5 1.6: Tools for configuring the Linux kernel 802.1d Ethernet Bridge
+net-misc/bridge-utils 1.6: Tools for configuring the Linux kernel 802.1d Ethernet Bridge
 net-misc/bsdwhois 1.43.2.1: FreeBSD Whois Client
 net-misc/buka 3.0.1: Download manga from buka.cn
 net-misc/bwwhois 5.5.2-r2: Perl-based whois client designed to work with the new Shared Registration System
@@ -17177,7 +17177,7 @@ sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices 
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bees 0.6.1-r2 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.5 1.14.7: FUSE filesystem for bind mounting with altered permissions
-sys-fs/btrfs-progs 4.4.1 4.19 5.4.1 5.6 5.6.1 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 4.19 5.4.1 5.6.1 5.7_rc1 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r3: A FUSE-based user-space file system with on-access anti-virus file scanning
@@ -17238,7 +17238,7 @@ sys-fs/lessfs 1.7.0-r1: A high performance inline data deduplicating filesystem
 sys-fs/libeatmydata 105-r2: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
 sys-fs/libfat 0.3a-r1: Support library to access and manipulate FAT12 / FAT16 / FAT32 file systems
 sys-fs/loop-aes 3.7n 3.7q: Linux kernel module to encrypt disk partitions with AES cipher
-sys-fs/lsscsi 0.29 0.30 0.31: SCSI sysfs query tool
+sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.09: User-land utilities for LVM2 (device-mapper) software
@@ -17464,7 +17464,7 @@ sys-process/htop 2.2.0 3.0.0_beta5: interactive process viewer
 sys-process/incron 0.5.12_p20191114: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5-r1: tool for identifying where in the system latency is happening
-sys-process/lsof 4.91 4.93.2-r1: Lists open files for running Unix processes
+sys-process/lsof 4.93.2-r1: Lists open files for running Unix processes
 sys-process/memwatch 0.3.3: Interactive memory viewer
 sys-process/minicoredumper 2.0.1-r1: Core dump file processor
 sys-process/minit 0.10-r1: a small yet feature-complete init
