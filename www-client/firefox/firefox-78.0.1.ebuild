@@ -102,7 +102,10 @@ CDEPEND="
 		>=media-libs/dav1d-0.3.0:=
 		>=media-libs/libaom-1.0.0:=
 	)
-	system-harfbuzz? ( >=media-libs/harfbuzz-2.6.4:0= >=media-gfx/graphite2-1.3.13 )
+	system-harfbuzz? (
+		>=media-libs/harfbuzz-2.6.4:0=
+		>=media-gfx/graphite2-1.3.13
+	)
 	system-icu? ( >=dev-libs/icu-67.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
@@ -134,8 +137,8 @@ DEPEND="${CDEPEND}
 	>=net-libs/nodejs-10.19.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
-	>=virtual/rust-1.41.0
 	virtual/pkgconfig
+	>=virtual/rust-1.41.0
 	|| (
 		(
 			sys-devel/clang:10
@@ -584,7 +587,7 @@ src_configure() {
 	if use clang ; then
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1482204
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1483822
-		# moz.configure Elfhack section: target.cpu in ('arm', 'x86', 'x86_64')
+		# toolkit/moz.configure Elfhack section: target.cpu in ('arm', 'x86', 'x86_64')
 		local disable_elf_hack=
 		if use amd64 ; then
 			disable_elf_hack=yes

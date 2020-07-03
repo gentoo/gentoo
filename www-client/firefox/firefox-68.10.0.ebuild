@@ -54,7 +54,7 @@ SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="bindist clang cpu_flags_x86_avx2 dbus debug eme-free geckodriver
 	+gmp-autoupdate hardened hwaccel jack lto cpu_flags_arm_neon
-	pgo pulseaudio +screenshot selinux startup-notification +system-av1
+	+openh264 pgo pulseaudio +screenshot selinux startup-notification +system-av1
 	+system-harfbuzz +system-icu +system-jpeg +system-libevent
 	+system-sqlite +system-libvpx +system-webp test wayland wifi"
 
@@ -85,8 +85,10 @@ CDEPEND="
 	>=media-libs/freetype-2.4.10
 	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
 	virtual/freedesktop-icon-theme
-	dbus? ( >=sys-apps/dbus-0.60
-		>=dev-libs/dbus-glib-0.72 )
+	dbus? (
+		>=sys-apps/dbus-0.60
+		>=dev-libs/dbus-glib-0.72
+	)
 	startup-notification? ( >=x11-libs/startup-notification-0.8 )
 	>=x11-libs/pixman-0.19.2
 	>=dev-libs/glib-2.26:2
@@ -104,23 +106,35 @@ CDEPEND="
 		>=media-libs/dav1d-0.3.0:=
 		>=media-libs/libaom-1.0.0:=
 	)
-	system-harfbuzz? ( >=media-libs/harfbuzz-2.4.0:0= >=media-gfx/graphite2-1.3.13 )
+	system-harfbuzz? (
+		>=media-libs/harfbuzz-2.4.0:0=
+		>=media-gfx/graphite2-1.3.13
+	)
 	system-icu? ( >=dev-libs/icu-63.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
 	system-libvpx? ( =media-libs/libvpx-1.7*:0=[postproc] )
 	system-sqlite? ( >=dev-db/sqlite-3.28.0:3[secure-delete,debug=] )
 	system-webp? ( >=media-libs/libwebp-1.0.2:0= )
-	wifi? ( kernel_linux? ( >=sys-apps/dbus-0.60
+	wifi? (
+		kernel_linux? (
+			>=sys-apps/dbus-0.60
 			>=dev-libs/dbus-glib-0.72
-			net-misc/networkmanager ) )
+			net-misc/networkmanager
+		)
+	)
 	jack? ( virtual/jack )
 	selinux? ( sec-policy/selinux-mozilla )"
 
 RDEPEND="${CDEPEND}
 	jack? ( virtual/jack )
-	pulseaudio? ( || ( media-sound/pulseaudio
-		>=media-sound/apulse-0.1.9 ) )
+	openh264? ( media-libs/openh264:* )
+	pulseaudio? (
+		|| (
+			media-sound/pulseaudio
+			>=media-sound/apulse-0.1.9
+		)
+	)
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${CDEPEND}
@@ -130,6 +144,8 @@ DEPEND="${CDEPEND}
 	>=net-libs/nodejs-8.11.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
+	virtual/pkgconfig
+	>=virtual/rust-1.34.0
 	|| (
 		(
 			sys-devel/clang:10
@@ -169,7 +185,6 @@ DEPEND="${CDEPEND}
 		)
 	)
 	pulseaudio? ( media-sound/pulseaudio )
-	>=virtual/rust-1.34.0
 	wayland? ( >=x11-libs/gtk+-3.11:3[wayland] )
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )
@@ -275,14 +290,17 @@ src_prepare() {
 	rm "${WORKDIR}"/firefox/2015_fix_cssparser.patch
 	eapply "${WORKDIR}/firefox"
 
-	# Allow user to apply any additional patches without modifing ebuild
-	eapply_user
-
 	# Make LTO respect MAKEOPTS
 	sed -i \
 		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
 		"${S}"/build/moz.configure/toolchain.configure \
 		|| die "sed failed to set num_cores"
+
+	# Allow user to apply any additional patches without modifing ebuild
+	eapply_user
+
+	einfo "Removing pre-built binaries ..."
+	find "${S}"/third_party -type f \( -name '*.so' -o -name '*.o' \) -print -delete || die
 
 	# Enable gnomebreakpad
 	if use debug ; then
@@ -576,10 +594,22 @@ src_configure() {
 	# when they would normally be larger than 2GiB.
 	append-ldflags "-Wl,--compress-debug-sections=zlib"
 
-	if use clang && ! use arm64; then
+	if use clang ; then
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1482204
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1483822
-		mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
+		# toolkit/moz.configure Elfhack section: target.cpu in ('arm', 'x86', 'x86_64')
+		local disable_elf_hack=
+		if use amd64 ; then
+			disable_elf_hack=yes
+		elif use x86 ; then
+			disable_elf_hack=yes
+		elif use arm ; then
+			disable_elf_hack=yes
+		fi
+
+		if [[ -n ${disable_elf_hack} ]] ; then
+			mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
+		fi
 	fi
 
 	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
@@ -662,12 +692,14 @@ src_install() {
 		"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
 		|| die
 
-	local plugin
-	use gmp-autoupdate || use eme-free || for plugin in "${GMP_PLUGIN_LIST[@]}" ; do
-		echo "pref(\"media.${plugin}.autoupdate\", false);" >> \
-			"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
-			|| die
-	done
+	if ! use gmp-autoupdate ; then
+		local plugin
+		for plugin in "${GMP_PLUGIN_LIST[@]}" ; do
+			echo "pref(\"media.${plugin}.autoupdate\", false);" >> \
+				"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
+				|| die
+		done
+	fi
 
 	cd "${S}"
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" MOZ_NOSPAM=1 \
@@ -822,11 +854,13 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 	xdg_desktop_database_update
 
-	if ! use gmp-autoupdate && ! use eme-free ; then
+	if ! use gmp-autoupdate ; then
 		elog "USE='-gmp-autoupdate' has disabled the following plugins from updating or"
 		elog "installing into new profiles:"
 		local plugin
-		for plugin in "${GMP_PLUGIN_LIST[@]}"; do elog "\t ${plugin}" ; done
+		for plugin in "${GMP_PLUGIN_LIST[@]}" ; do
+			elog "\t ${plugin}"
+		done
 		elog
 	fi
 
