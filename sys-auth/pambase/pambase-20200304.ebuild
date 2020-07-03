@@ -82,5 +82,5 @@ src_compile() {
 src_test() { :; }
 
 src_install() {
-	emake GIT=true CPP="$(tc-getPROG CPP cpp)" DESTDIR="${ED}" install
+	emake GIT=true DESTDIR="${ED}" install
 }
