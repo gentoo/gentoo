@@ -852,7 +852,7 @@ app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 1.4.0 1.5.0 9999: An implementation of the ACME protocol
+app-crypt/acme 1.5.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.3 2.8.5 9999: An ACME Shell script
 app-crypt/acme-tiny 4.0.3 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
@@ -869,10 +869,10 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.30 1.4.31 1.4.32: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 1.4.0 1.5.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 1.4.0 1.5.0 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 1.5.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 1.5.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0-r1: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 1.4.0 1.5.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 1.5.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.4.1: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -1625,7 +1625,7 @@ app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container R
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0-r1 19.0.1-r1: Commercial version of app-emulation/wine with paid support
 app-emulation/crun 0.13: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 2.37.3 3.0.0 3.1.0 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 3.1.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.8: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
@@ -8165,24 +8165,24 @@ dev-python/os-vif 1.15.2: OpenStack Cinder brick library for managing local volu
 dev-python/os-win 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.12.1 2.0.0: A package of common support modules for writing OSC plugins.
-dev-python/oslo-cache 1.33.3 2.3.0: Oslo Caching around dogpile.cache
-dev-python/oslo-concurrency 3.29.1 4.0.2: library for running multi-thread, multi-process applications
-dev-python/oslo-config 6.11.2 8.0.3: Oslo Configuration API
+dev-python/oslo-cache 2.3.0: Oslo Caching around dogpile.cache
+dev-python/oslo-concurrency 4.0.2: library for running multi-thread, multi-process applications
+dev-python/oslo-config 8.0.3: Oslo Configuration API
 dev-python/oslo-context 2.22.1: Helpers to maintain useful information about a request context
-dev-python/oslo-db 4.45.0 8.1.0: OpenStack Common DB Code
+dev-python/oslo-db 8.1.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.23.1: Oslo i18n library
-dev-python/oslo-log 3.44.1 4.1.2: OpenStack logging config library, configuration for all openstack projects.
+dev-python/oslo-log 4.1.2: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 10.2.0 12.1.0 12.1.1: Messaging API for RPC and notifications over different messaging transports
-dev-python/oslo-middleware 3.37.1 4.0.2: Components injected into wsgi pipelines to intercept request/response flows.
-dev-python/oslo-policy 2.3.3 3.1.0: Support for RBAC policy enforcement across all OpenStack services
+dev-python/oslo-middleware 4.0.2: Components injected into wsgi pipelines to intercept request/response flows.
+dev-python/oslo-policy 2.3.3 3.1.1: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.33.3: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.29.2: generified reports for openstack
 dev-python/oslo-rootwrap 5.15.2: Allows fine filtering of shell commands to run as root from OpenStack services
-dev-python/oslo-serialization 2.28.2 3.1.1: Oslo Serialization library
-dev-python/oslo-service 1.40.2 2.1.1: Library for running OpenStack services
+dev-python/oslo-serialization 3.1.1: Oslo Serialization library
+dev-python/oslo-service 2.1.1: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
-dev-python/oslo-upgradecheck 0.2.1 1.0.1: Oslo i18n library
-dev-python/oslo-utils 3.41.5 4.1.1: Oslo Utility library
+dev-python/oslo-upgradecheck 1.0.1: Oslo i18n library
+dev-python/oslo-utils 4.1.1 4.1.2: Oslo Utility library
 dev-python/oslo-versionedobjects 1.35.1 2.0.2: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.32.2 3.3.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.7.1: Oslo test framework
@@ -12675,7 +12675,7 @@ media-libs/elles_icc_profiles 20160501.0932 20160501.0932-r1: Elle Stone's well-
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 11.99 12.00 12.01: Read and write meta information in image, audio and video files
-media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
+media-libs/faac 1.29.9.2 1.30: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.9.0 2.9.2: AAC audio decoding library
 media-libs/fdk-aac 2.0.0 2.0.1: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
@@ -16984,7 +16984,7 @@ sys-cluster/ceph 12.2.12-r3 14.2.9-r1 14.2.10 15.2.4: Ceph distributed filesyste
 sys-cluster/charliecloud 0.10-r1 0.15 0.16 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 15.1.0-r1 15.2.0 15.3.0 16.0.0 16.1.0 2019.2.9999 2020.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 15.3.0 16.1.0 2019.2.9999 2020.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/corosync 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
@@ -17755,7 +17755,7 @@ www-apps/gitea 1.11.6 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.7.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.69.0: The world's fastest framework for building websites
-www-apps/icingaweb2 2.7.1 2.7.3 2.8.0 2.8.1 9999: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.7.3 2.8.1 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
