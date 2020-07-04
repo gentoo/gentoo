@@ -69,7 +69,8 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
-# @INTERNAL
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable can be used when working with ebuilds to override
 # the in-ebuild PYTHON_COMPAT. It is a string naming the implementation
@@ -105,6 +106,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_DEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
 # implementations listed in PYTHON_COMPAT.
@@ -124,6 +126,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
 # implementation. It is set locally for python_check_deps() call.
