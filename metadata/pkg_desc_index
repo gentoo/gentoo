@@ -1352,7 +1352,7 @@ app-editors/gummi 0.6.6-r2 0.8.1: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
-app-editors/hteditor 2.1.0-r1: A file viewer, editor and analyzer for text, binary, and executable files
+app-editors/hteditor 2.1.0-r1 2.1.1_pre20161206: A file viewer, editor and analyzer for text, binary, and executable files
 app-editors/jasspa-microemacs 20091011-r3: Jasspa Microemacs
 app-editors/jed 0.99.19-r1: Console S-Lang-based editor
 app-editors/jedit 5.2.0-r1 5.4.0: Programmer's editor written in Java
@@ -4867,7 +4867,7 @@ dev-libs/c-blosc 1.11.2 1.19.0: Blocking, shuffling and lossless compression lib
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.6.0 0.6.1 0.7.0: RPC/Serialization system with capabilities support
-dev-libs/capstone 4.0.2-r1: disassembly/disassembler framework + bindings
+dev-libs/capstone 4.0.2-r1 4.0.2-r2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.3.0: Header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
