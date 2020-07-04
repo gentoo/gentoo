@@ -1,20 +1,16 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@cmpct.info> (2020-06-29)
-# Needs Rust (only on >= armv6j)
-# Bug #677018
+# Sam James <sam@cmpct.info> (2020-07-02)
+# Packages which need Rust (only on >= 6j)
+# We unmask them for armv6j, armv7a elsewhere
 net-news/newsboat
+dev-util/cbindgen
 
 # Sam James <sam@cmpct.info> (2020-06-24)
 # Valgrind lacks support for < ARMv7
 # https://valgrind.org/info/platforms.html
 dev-util/valgrind
-
-# Bernardo Meurer <bernardo@standard.ai> (2019-09-28)
-# Requires app-crypt/tpm2-tss which is pending ~arm vide
-# https://bugs.gentoo.org/695758
->=sys-apps/fwupd-1.3.2
 
 # James Le Cuirot <chewi@gentoo.org> (2016-01-09)
 # This is built for armv6 and will not work on earlier generations.
