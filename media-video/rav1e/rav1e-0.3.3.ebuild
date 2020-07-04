@@ -175,13 +175,13 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xiph/rav1e.git"
 	inherit git-r3
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="~arm64"
 else
 	SRC_URI="
 		https://github.com/xiph/rav1e/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris ${CRATES})
 		"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 DESCRIPTION="The fastest and safest AV1 encoder"
