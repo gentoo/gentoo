@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="PyOTP is a Python library for generating and verifying one-time passwords."
-HOMEPAGE="https://github.com/pyotp/pyotp https://pypi.org/project/pyotp/"
+HOMEPAGE="https://github.com/pyauth/pyotp https://pypi.org/project/pyotp/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
