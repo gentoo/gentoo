@@ -4800,7 +4800,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.1 5.30.2 5.30.2-r1 5.30.2-r2 5.30.3 5.30.3-r1 5.30.3-r2: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.31 7.3.18 7.3.19 7.4.6 7.4.7: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18 3.6.10-r2 3.6.11 3.7.7-r2 3.7.8 3.8.2-r2 3.8.3 3.9.0_beta3 3.9.0_beta4: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18 3.6.10-r2 3.6.11-r1 3.7.7-r2 3.7.8-r1 3.8.2-r2 3.8.3-r1 3.9.0_beta3 3.9.0_beta4: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1 10.2 10.3 10.4 10.5: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 9999: A compiler for the Perl 6 programming language
@@ -11129,6 +11129,7 @@ games-puzzle/angrydd 1.0.1_p13-r1: Angry, Drunken Dwarves, a falling blocks game
 games-puzzle/arrows 0.6-r1: Simple maze-like game where you navigate around and destroy arrows
 games-puzzle/atomix 3.22.0: Build molecules, from simple inorganic to extremely complex organic ones
 games-puzzle/bastet 0.43.2: a simple, evil, ncurses-based Tetris(R) clone
+games-puzzle/bff-or-die 20200614: Time travelling alien couch co-op puzzle game for 1-4 players
 games-puzzle/biniax2 1.30-r1: Logic game with arcade and tactics modes
 games-puzzle/braincurses 0.5b-r1 1.1.0: A version of the classic game Mastermind
 games-puzzle/brainparty 0.61-r1: A puzzle-solving, brain-stretching game for all ages
@@ -12422,7 +12423,7 @@ media-gfx/eom 1.22.2 1.24.0: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
 media-gfx/evoluspencil 3.1.0-r1: A simple GUI prototyping tool to create mockups
-media-gfx/exact-image 0.8.1-r3: A fast, modern and generic image processing library
+media-gfx/exact-image 0.8.1-r3 1.0.2: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21 0.6.22: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiv2 0.27.2 0.27.3: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
