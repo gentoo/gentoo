@@ -1,11 +1,19 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@cmpct.info> (2020-05-31)
+# Sam James <sam@cmpct.info> (2020-06-29)
 # Deps not yet stable
 dev-python/pymongo test
 app-shells/bash-completion test
 net-misc/ntpsec rclock_oncore rclock_pps
+dev-util/bcc test
+dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
+net-analyzer/rrdtool rados
+sys-fs/multipath-tools rbd
+www-servers/uwsgi uwsgi_plugins_rados
+dev-libs/boost mpi
+media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
+x11-wm/i3 test
 
 # Mikle Kolyada <zlogene@gentoo,org> (2020-03-19)
 # deps not yet stable
@@ -75,7 +83,6 @@ dev-python/urllib3 test
 # Non-stable dependencies.
 app-admin/syslog-ng spoof-source
 app-text/xmlto latex
-dev-libs/apr-util odbc
 sys-auth/pambase pam_krb5 pam_ssh passwdqc
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi

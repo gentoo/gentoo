@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~ppc64 x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 	S="${WORKDIR}"/${MY_PN}-${PV}
 fi
 

@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION='create and use a local lib/ for perl modules with PERL5LIB'
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
