@@ -6,7 +6,7 @@ https://bugs.gentoo.org/730722
  prefix=@CMAKE_INSTALL_PREFIX@
  exec_prefix=${prefix}
 -libdir=${prefix}/lib@LIBSUFFIX@
-+libdir=${prefix}/lib@LIB_SUFFIX@
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
  includedir=${prefix}/include/capstone
  
  Name: capstone
