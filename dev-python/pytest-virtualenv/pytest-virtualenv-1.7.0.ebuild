@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/virtualenv[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/setuptools-git[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
