@@ -72,7 +72,8 @@ fi
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
-# @INTERNAL
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable can be used when working with ebuilds to override
 # the in-ebuild PYTHON_COMPAT. It is a string listing all
@@ -111,6 +112,7 @@ fi
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_DEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
 # implementations listed in PYTHON_COMPAT.
@@ -130,6 +132,7 @@ fi
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
 # depend on another Python package being built for the same Python
@@ -150,6 +153,7 @@ fi
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures at
 # least one Python implementation has been enabled.
@@ -273,8 +277,8 @@ _python_validate_useflags() {
 }
 
 # @FUNCTION: _python_gen_usedep
-# @INTERNAL
 # @USAGE: [<pattern>...]
+# @INTERNAL
 # @DESCRIPTION:
 # Output a USE dependency string for Python implementations which
 # are both in PYTHON_COMPAT and match any of the patterns passed
@@ -574,6 +578,8 @@ python_gen_any_dep() {
 }
 
 # @ECLASS-VARIABLE: BUILD_DIR
+# @OUTPUT_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The current build directory. In global scope, it is supposed to
 # contain an initial build directory; if unset, it defaults to ${S}.

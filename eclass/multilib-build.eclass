@@ -79,6 +79,7 @@ readonly _MULTILIB_FLAGS
 # @CODE
 
 # @ECLASS-VARIABLE: MULTILIB_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The USE-dependency to be used on dependencies (libraries) needing
 # to support multilib as well.
@@ -90,7 +91,7 @@ readonly _MULTILIB_FLAGS
 # @CODE
 
 # @ECLASS-VARIABLE: MULTILIB_ABI_FLAG
-# @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The complete ABI name. Resembles the USE flag name.
 #
@@ -320,6 +321,7 @@ multilib_copy_sources() {
 }
 
 # @ECLASS-VARIABLE: MULTILIB_WRAPPED_HEADERS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of headers to wrap for multilib support. The listed headers
 # will be moved to a non-standard location and replaced with a file
@@ -342,6 +344,7 @@ multilib_copy_sources() {
 # @CODE
 
 # @ECLASS-VARIABLE: MULTILIB_CHOST_TOOLS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of tool executables to preserve for each multilib ABI.
 # The listed executables will be renamed to ${CHOST}-${basename},
