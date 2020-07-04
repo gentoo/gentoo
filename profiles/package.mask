@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-07-04)
+# Unmaintained.  Python 2 only.  Effectively depends on vulnerable
+# version of dev-python/pillow.  No revdeps.  Multiple bugs open.
+# Removal in 30 days.  Bug #715682.
+media-gfx/uniconvertor
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-07-03)
 # Merged into dev-texlive/texlive-langcjk.
 # Removal in 30 days.
