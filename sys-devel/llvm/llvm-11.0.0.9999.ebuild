@@ -183,7 +183,7 @@ src_prepare() {
 
 	# manpages don't use markdown
 	if ! use doc; then
-		sed -e "s:, 'recommonmark'::" \
+		sed -e '/import sphinx/,/source_parsers/d' \
 			-e '/markdown/d' \
 			-i docs/conf.py || die
 	fi
