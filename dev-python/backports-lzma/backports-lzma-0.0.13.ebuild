@@ -27,6 +27,12 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	# unforce -L/usr/lib
+	sed -i -e '/library_dirs =/,/\]/d' setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	"${EPYTHON}" test/test_lzma.py || die "tests failed with ${EPYTHON}"
 }
