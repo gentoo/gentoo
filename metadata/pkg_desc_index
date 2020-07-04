@@ -942,8 +942,8 @@ app-crypt/nitrocli 0.3.1 0.3.2 0.3.3: A command line tool for interacting with N
 app-crypt/nitrokey-app 1.4 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.25: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
-app-crypt/openpgp-keys-gentoo-auth 20191030: Gentoo Authority Keys (GLEP 79)
-app-crypt/openpgp-keys-gentoo-release 20191030: OpenPGP keys used for Gentoo releases (snapshots, stages)
+app-crypt/openpgp-keys-gentoo-auth 20191030 20200704: Gentoo Authority Keys (GLEP 79)
+app-crypt/openpgp-keys-gentoo-release 20191030 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
@@ -1294,7 +1294,7 @@ app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.15 1.8.16-r1 1.8.17 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
-app-doc/eclass-manpages 20200213 99999999: Collection of Gentoo eclass manpages
+app-doc/eclass-manpages 20200213 20200704 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.05 4.10.5_p2 4.10.6: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.8.2 2.10.0: GNU Image Manipulation Program help files
