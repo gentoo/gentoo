@@ -10,7 +10,7 @@ MY_PN="Frozen-Flask"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Freezes a Flask application into a set of static files"
-HOMEPAGE="https://github.com/SimonSapin/Frozen-Flask https://pypi.org/project/Frozen-Flask/"
+HOMEPAGE="https://github.com/Frozen-Flask/Frozen-Flask https://pypi.org/project/Frozen-Flask/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
