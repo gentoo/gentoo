@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils
+EAPI=7
+inherit cmake
 
 MY_P=${P/_/-}
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/wsjt/${MY_P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="dev-qt/qtcore:5
@@ -39,7 +39,8 @@ S=${WORKDIR}/wsjtx
 
 PATCHES=( "${FILESDIR}/${PN}-2.0.1-hamlib.patch"
 		  "${FILESDIR}/${PN}-fix-unicode.patch"
-		  "${FILESDIR}/${PN}-drop-docs.patch" )
+		  "${FILESDIR}/${PN}-drop-docs.patch"
+		  "${FILESDIR}/${PN}-2.1.2-qt_helpers.patch" )
 
 DOCS=( AUTHORS BUGS NEWS README THANKS )
 
@@ -55,15 +56,15 @@ src_configure() {
 		-DWSJT_GENERATE_DOCS="$(usex doc)"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	rm "${D}"/usr/bin/rigctl{,d}-wsjtx || die
 	rm "${D}"/usr/share/man/man1/rigctl{,d,com}-wsjtx.1.gz || die
 }
