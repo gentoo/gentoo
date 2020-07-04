@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Python library for Intel HEX files manipulations"
-HOMEPAGE="https://pypi.org/project/IntelHex/ https://github.com/bialix/intelhex"
+HOMEPAGE="https://pypi.org/project/IntelHex/ https://github.com/python-intelhex/intelhex"
 SRC_URI="mirror://pypi/I/IntelHex/${P}.tar.gz"
 
 LICENSE="BSD"
