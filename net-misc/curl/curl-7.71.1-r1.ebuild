@@ -12,7 +12,7 @@ SRC_URI="https://curl.haxx.se/download/${P}.tar.xz"
 LICENSE="curl"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="adns alt-svc brotli +ftp gopher http2 idn +imap ipv6 kerberos ldap metalink +pop3 +progress-meter rtmp samba +smtp ssh ssl static-libs test telnet +tftp threads"
+IUSE="adns alt-svc brotli +ftp gnutls gopher http2 idn +imap ipv6 kerberos ldap libressl mbedtls metalink nss +openssl +pop3 +progress-meter rtmp samba +smtp ssh ssl static-libs test telnet +tftp threads winssl"
 IUSE+=" curl_ssl_gnutls curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_winssl"
 IUSE+=" nghttp3 quiche"
 IUSE+=" elibc_Winnt"
@@ -23,22 +23,22 @@ RESTRICT="test"
 RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	ssl? (
-		curl_ssl_gnutls? (
+		gnutls? (
 			net-libs/gnutls:0=[static-libs?,${MULTILIB_USEDEP}]
 			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
 			app-misc/ca-certificates
 		)
-		curl_ssl_libressl? (
+		libressl? (
 			dev-libs/libressl:0=[static-libs?,${MULTILIB_USEDEP}]
 		)
-		curl_ssl_mbedtls? (
+		mbedtls? (
 			net-libs/mbedtls:0=[${MULTILIB_USEDEP}]
 			app-misc/ca-certificates
 		)
-		curl_ssl_openssl? (
+		openssl? (
 			dev-libs/openssl:0=[static-libs?,${MULTILIB_USEDEP}]
 		)
-		curl_ssl_nss? (
+		nss? (
 			dev-libs/nss:0[${MULTILIB_USEDEP}]
 			app-misc/ca-certificates
 		)
@@ -75,11 +75,13 @@ BDEPEND="virtual/pkgconfig
 	)"
 
 # c-ares must be disabled for threads
-# only one ssl provider can be enabled
+# only one of libressl or openssl can be enabled
+# only one default ssl provider can be enabled
 REQUIRED_USE="
-	curl_ssl_winssl? ( elibc_Winnt )
+	winssl? ( elibc_Winnt )
 	threads? ( !adns )
 	ssl? (
+		libressl? ( !openssl )
 		^^ (
 			curl_ssl_gnutls
 			curl_ssl_libressl
@@ -119,30 +121,58 @@ multilib_src_configure() {
 	# So start with all ssl providers off until proven otherwise
 	# TODO: in the future, we may want to add wolfssl (https://www.wolfssl.com/)
 	local myconf=()
+
 	myconf+=( --without-gnutls --without-mbedtls --without-nss --without-polarssl --without-ssl --without-winssl )
 	myconf+=( --without-ca-fallback --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt  )
+	#myconf+=( --without-default-ssl-backend )
 	if use ssl ; then
-		if use curl_ssl_gnutls; then
+		if use gnutls || use curl_ssl_gnutls; then
 			einfo "SSL provided by gnutls"
 			myconf+=( --with-gnutls --with-nettle )
-		elif use curl_ssl_libressl; then
+		fi
+		if use libressl || use curl_ssl_libressl; then
 			einfo "SSL provided by LibreSSL"
 			myconf+=( --with-ssl --with-ca-path="${EPREFIX}"/etc/ssl/certs )
-		elif use curl_ssl_mbedtls; then
+		fi
+		if use mbedtls || use curl_ssl_mbedtls; then
 			einfo "SSL provided by mbedtls"
 			myconf+=( --with-mbedtls )
-		elif use curl_ssl_nss; then
+		fi
+		if use nss || use curl_ssl_nss; then
 			einfo "SSL provided by nss"
 			myconf+=( --with-nss )
-		elif use curl_ssl_openssl; then
+		fi
+		if use openssl || use curl_ssl_openssl; then
 			einfo "SSL provided by openssl"
 			myconf+=( --with-ssl --with-ca-path="${EPREFIX}"/etc/ssl/certs )
-		elif use curl_ssl_winssl; then
+		fi
+		if use winssl || use curl_ssl_winssl; then
 			einfo "SSL provided by Windows"
 			myconf+=( --with-winssl )
+		fi
+
+		if use curl_ssl_gnutls; then
+			einfo "Default SSL provided by gnutls"
+			myconf+=( --with-default-ssl-backend=gnutls )
+		elif use curl_ssl_libressl; then
+			einfo "Default SSL provided by LibreSSL"
+			myconf+=( --with-default-ssl-backend=openssl )  # NOTE THE HACK HERE
+		elif use curl_ssl_mbedtls; then
+			einfo "Default SSL provided by mbedtls"
+			myconf+=( --with-default-ssl-backend=mbedtls )
+		elif use curl_ssl_nss; then
+			einfo "Default SSL provided by nss"
+			myconf+=( --with-default-ssl-backend=nss )
+		elif use curl_ssl_openssl; then
+			einfo "Default SSL provided by openssl"
+			myconf+=( --with-default-ssl-backend=openssl )
+		elif use curl_ssl_winssl; then
+			einfo "Default SSL provided by Windows"
+			myconf+=( --with-default-ssl-backend=winssl )
 		else
 			eerror "We can't be here because of REQUIRED_USE."
 		fi
+
 	else
 		einfo "SSL disabled"
 	fi
