@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit eutils bash-completion-r1
 
@@ -21,8 +21,7 @@ S="${WORKDIR}/${PN}"
 
 src_install() {
 	doman lynis.8
-	dodoc FAQ README
-	newdoc CHANGELOG.md CHANGELOG
+	dodoc FAQ README *.md
 
 	# Remove the old one during the next stabilize progress
 	exeinto /etc/cron.daily
@@ -46,5 +45,7 @@ src_install() {
 pkg_postinst() {
 	einfo
 	einfo "A cron script has been installed to ${ROOT}etc/cron.daily/lynis."
+	einfo
+	einfo "If you are upgrading from Lynis 2.x, please check the CHANGELOG.md for breaking changes."
 	einfo
 }

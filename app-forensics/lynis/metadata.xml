@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>chescu@gmail.com</email>
+    <name>Jesus Perez Rey</name>
+  </maintainer>
+  <longdescription>
+    Lynis - Security auditing tool for Linux, macOS, and UNIX-based systems. Assists with compliance testing (HIPAA/ISO27001/PCI DSS) and system hardening. Agentless, and installation optional.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">CISOfy/lynis</remote-id>
+  </upstream>
 </pkgmetadata>
