@@ -90,6 +90,8 @@ fi
 : ${EGIT_MIN_CLONE_TYPE:=shallow}
 
 # @ECLASS-VARIABLE: EGIT3_STORE_DIR
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Storage directory for git sources.
 #
@@ -176,6 +178,7 @@ fi
 # to the merge commit date.
 
 # @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The directory to check the git sources out to.
 #
