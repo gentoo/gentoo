@@ -1,15 +1,16 @@
+BDEPEND=dev-util/glib-utils kde-frameworks/extra-cmake-modules:5 virtual/pkgconfig introspection? ( dev-libs/gobject-introspection ) nls? ( sys-devel/gettext ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-DEPEND=dev-libs/glib:2 sys-apps/dbus sys-apps/util-linux virtual/libiconv virtual/libintl x11-libs/libxkbcommon X? ( x11-libs/libX11 x11-libs/libXfixes x11-libs/libXinerama x11-libs/libXrender xml? ( x11-libs/libxkbfile x11-misc/xkeyboard-config ) ) cairo? ( x11-libs/cairo[X] x11-libs/libXext pango? ( x11-libs/pango ) !pango? ( media-libs/fontconfig ) ) enchant? ( app-text/enchant:0= ) gtk2? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) introspection? ( dev-libs/gobject-introspection ) lua? ( dev-lang/lua:= ) nls? ( sys-devel/gettext ) opencc? ( app-i18n/opencc:= ) xml? ( app-text/iso-codes dev-libs/libxml2 ) dev-util/glib-utils kde-frameworks/extra-cmake-modules:5 virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6
+DEPEND=dev-libs/glib:2 sys-apps/dbus sys-apps/util-linux virtual/libiconv virtual/libintl x11-libs/libxkbcommon X? ( x11-libs/libX11 x11-libs/libXfixes x11-libs/libXinerama x11-libs/libXrender xml? ( x11-libs/libxkbfile x11-misc/xkeyboard-config ) ) cairo? ( x11-libs/cairo[X] x11-libs/libXext pango? ( x11-libs/pango ) !pango? ( media-libs/fontconfig ) ) enchant? ( app-text/enchant:0= ) gtk2? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) lua? ( dev-lang/lua:= ) nls? ( sys-devel/gettext ) opencc? ( app-i18n/opencc:0= ) xml? ( app-text/iso-codes dev-libs/libxml2 )
 DESCRIPTION=Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
-EAPI=6
-HOMEPAGE=https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx
+EAPI=7
+HOMEPAGE=https://fcitx-im.org/ https://github.com/fcitx/fcitx
 IUSE=+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango static-libs +table test +xml
-KEYWORDS=amd64 ~hppa ppc ppc64 x86
+KEYWORDS=amd64 ~arm64 ~hppa ppc ppc64 x86
 LICENSE=BSD-1 GPL-2+ LGPL-2+ MIT
-RDEPEND=dev-libs/glib:2 sys-apps/dbus sys-apps/util-linux virtual/libiconv virtual/libintl x11-libs/libxkbcommon X? ( x11-libs/libX11 x11-libs/libXfixes x11-libs/libXinerama x11-libs/libXrender xml? ( x11-libs/libxkbfile x11-misc/xkeyboard-config ) ) cairo? ( x11-libs/cairo[X] x11-libs/libXext pango? ( x11-libs/pango ) !pango? ( media-libs/fontconfig ) ) enchant? ( app-text/enchant:0= ) gtk2? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) introspection? ( dev-libs/gobject-introspection ) lua? ( dev-lang/lua:= ) nls? ( sys-devel/gettext ) opencc? ( app-i18n/opencc:= ) xml? ( app-text/iso-codes dev-libs/libxml2 )
+RDEPEND=dev-libs/glib:2 sys-apps/dbus sys-apps/util-linux virtual/libiconv virtual/libintl x11-libs/libxkbcommon X? ( x11-libs/libX11 x11-libs/libXfixes x11-libs/libXinerama x11-libs/libXrender xml? ( x11-libs/libxkbfile x11-misc/xkeyboard-config ) ) cairo? ( x11-libs/cairo[X] x11-libs/libXext pango? ( x11-libs/pango ) !pango? ( media-libs/fontconfig ) ) enchant? ( app-text/enchant:0= ) gtk2? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) lua? ( dev-lang/lua:= ) nls? ( sys-devel/gettext ) opencc? ( app-i18n/opencc:0= ) xml? ( app-text/iso-codes dev-libs/libxml2 )
 REQUIRED_USE=cairo? ( X ) pango? ( cairo )
 RESTRICT=!test? ( test )
 SLOT=4
 SRC_URI=https://download.fcitx-im.org/fcitx/fcitx-4.2.9.6_dict.tar.xz
-_eclasses_=cmake-utils	7555f0a45c22f33391d9c0c80f57cf23	desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=35e85431ca111b4d296af6e70c9c605a
+_eclasses_=cmake	19b0421555865baefd505831dd4303e3	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=df21308c9655f8ffa73c25e4ab8f28f6
