@@ -14,16 +14,24 @@ SRC_URI="https://github.com/abishekvashok/${PN}/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="X"
+IUSE="X +unicode"
 
 DEPEND="
-	sys-libs/ncurses:0=
+	sys-libs/ncurses:0=[unicode?]
+"
+BDEPEND="
 	X? ( >=x11-apps/mkfontscale-1.2.0 )
 "
-
 RDEPEND="
 	${DEPEND}
 "
+
+src_configure() {
+	mycmakeargs=(
+		-DCURSES_NEED_WIDE=$(usex unicode)
+	)
+	cmake_src_configure
+}
 
 src_install() {
 	cmake_src_install
