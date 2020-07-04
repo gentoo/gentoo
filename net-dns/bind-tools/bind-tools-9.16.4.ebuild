@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-
-inherit autotools flag-o-matic python-any-r1 toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_PN=${PN//-tools}
 MY_PV=${PV/_p/-P}
@@ -40,19 +38,13 @@ RDEPEND="${COMMON_DEPEND}"
 
 # sphinx required for man-page and html creation
 BDEPEND="${PYTHON_DEPS}
-	$(python_gen_any_dep '
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	')
+	dev-python/sphinx
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
 # bug 479092, requires networking
 RESTRICT="test"
-
-python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
 
 src_prepare() {
 	default

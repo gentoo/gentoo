@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -12,21 +12,23 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc x86"
-IUSE=""
 
-RDEPEND="x11-libs/libXtst
+RDEPEND="
+	x11-libs/libXtst
 	x11-libs/libX11
 	x11-libs/libXmu
 	x11-libs/libXt
 	x11-libs/libXext"
-
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
-	>=sys-apps/sed-4"
+	x11-base/xorg-proto"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-autotools.patch # bug 726140
+)
 
 src_prepare() {
 	default
-	sed -i -e "s:/etc:${D}/etc:g" Makefile.am || die
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
