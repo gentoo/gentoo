@@ -286,43 +286,7 @@ dev-tex/feynmf
 # Aaron Bauman <bman@gentoo.org> (2020-06-20)
 # Py2 only
 # Removal in 14 days
-app-crypt/openvpn-blacklist
-app-forensics/volatility
 <=dev-libs/distorm64-3.4.2
-app-misc/yagtd
-app-text/pylize
-app-vim/easytags
-app-vim/notes
-dev-db/metakit
-dev-python/backports-ssl-match-hostname
-dev-python/backports-shutil_get_terminal_size
-dev-python/backports-shutil_which
-dev-python/python-wpactrl
-dev-util/bakefile
-dev-vcs/git-deps
-dev-vcs/git-remote-hg
-games-emulation/openmsx
-games-kids/childsplay
-games-mud/lyntin
-games-sports/ski
-mail-filter/tmda
-media-video/subdl
-media-sound/cplay
-media-sound/tunapie
-net-firewall/dshieldpy
-net-mail/offlineimap
-net-misc/switzerland
-net-wireless/multimode
-sci-biology/last
-sci-chemistry/hollow
-sci-chemistry/modeller
-sci-chemistry/pymol-plugins-msms
-sci-geosciences/tilecache
-sci-libs/deap
-sci-libs/pycifrw
-www-apps/curator
-x11-apps/whyteboard
-x11-plugins/purple-plugin_pack
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-18)
 # Games depending on dead gnome-base/libgnomeui.
