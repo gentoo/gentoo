@@ -8,7 +8,6 @@
   <use>
     <flag name="devhelp">Enable devhelp integration</flag>
     <flag name="glade">Build glade plugin for anjuta</flag>
-    <flag name="packagekit">Use packagekit to search for missing tools</flag>
     <flag name="terminal">Enable terminal plugin based on <pkg>x11-libs/vte</pkg></flag>
   </use>
 </pkgmetadata>
