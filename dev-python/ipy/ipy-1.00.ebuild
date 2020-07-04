@@ -11,7 +11,7 @@ MY_PN="IPy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Class and tools for handling of IPv4 and IPv6 addresses and networks"
-HOMEPAGE="https://github.com/haypo/python-ipy/wiki https://pypi.org/project/IPy/"
+HOMEPAGE="https://github.com/autocracy/python-ipy/wiki https://pypi.org/project/IPy/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
