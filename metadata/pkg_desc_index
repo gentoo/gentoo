@@ -8476,7 +8476,7 @@ dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1: Client library for Barbican API.
 dev-python/python-blazarclient 2.1.0: This is a client for the OpenStack Blazar API
-dev-python/python-bugzilla 2.1.0 2.3.0 2.4.0: A python module for interacting with Bugzilla over XMLRPC
+dev-python/python-bugzilla 2.1.0 2.3.0 2.4.0 2.5.0: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.6.2-r2: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 4.2.2: A client for the OpenStack Cinder API
@@ -16859,7 +16859,7 @@ sys-block/di 4.47 4.47.3 4.48: Disk Information Utility
 sys-block/disktype 9 9-r1: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.2: Utilities to detect broken or counterfeit flash storage
-sys-block/fio 2.15 2.16 3.2 3.7 3.16 3.16-r1 3.17 3.17-r1 3.19 3.20: Jens Axboe's Flexible IO tester
+sys-block/fio 2.15 2.16 3.2 3.7 3.16 3.16-r1 3.17 3.17-r1 3.19 3.20 3.20-r1: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.3: Partition table rescue/guessing tool
