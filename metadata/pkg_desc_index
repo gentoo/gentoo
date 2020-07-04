@@ -945,7 +945,6 @@ app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
 app-crypt/openpgp-keys-gentoo-auth 20191030: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20191030: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
-app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced by certain debian versions in 2006-2008
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 2.0: Platform-independent tool for Authenticode signing of EXE/CAB files
@@ -1806,7 +1805,6 @@ app-forensics/rkhunter 1.4.6-r1: Rootkit Hunter scans for known and unknown root
 app-forensics/scalpel 2.0: A high performance file carver
 app-forensics/sleuthkit 4.9.0: A collection of file system and media management forensic analysis tools
 app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
-app-forensics/volatility 2.6-r1: Framework for analyzing volatile memory
 app-forensics/yasat 848: Security and system auditing tool
 app-forensics/zzuf 0.15-r1: Transparent application input fuzzer
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
@@ -2333,7 +2331,6 @@ app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 3.8.3: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/workrave 1.10.20: Helpful utility to attack Repetitive Strain Injury (RSI)
 app-misc/xmind 3.5.3.201506180105-r2 3.7.6_p201801311814: A brainstorming and mind mapping software tool
-app-misc/yagtd 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
 app-misc/yq 2.7.1-r1 2.7.2 2.8.0 2.9.2 2.9.2-r1: Command-line YAML processor - jq wrapper for YAML documents
 app-misc/ytree 2.02: A curses-based file manager
 app-misc/zisofs-tools 1.0.8: User utilities for zisofs
@@ -2746,7 +2743,6 @@ app-text/pspdftool 0.03: Tool for prepress preparation of PDF and PostScript doc
 app-text/pspresent 1.3-r1: A tool to display full-screen PostScript presentations
 app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
-app-text/pylize 1.3b-r2: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 3.0.3: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 2.0.10: A CLI tool that allows direct execution of SQL-like queries on text
 app-text/qpdf 9.0.2 9.1.1-r1 10.0.1-r1: Command-line tool for structural, content-preserving transformation of PDF files
@@ -2886,7 +2882,6 @@ app-vim/dhcpd-syntax 20030825-r1: vim plugin: syntax highlighting for dhcpd.conf
 app-vim/diffchar 8.2 8.6: vim plugin: highlight the exact differences, based on characters and words
 app-vim/dirdiff 1.1.5-r1: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.10.0-r1: vim plugin: a simple alignment plugin
-app-vim/easytags 3.11 3.11-r1: vim plugin: automated tag file generation and syntax highlighting
 app-vim/ebnf-syntax 1.1-r2: vim plugin: EBNF (ISO/IEC 14997) file syntax highlighting
 app-vim/editorconfig-vim 0.3.3-r2 1.0.0_beta 1.1.1: vim plugin: Support EditorConfig files
 app-vim/emmet 0.85-r1 9999: vim plugin: HTML and CSS hi-speed coding
@@ -2940,7 +2935,6 @@ app-vim/nerdcommenter 2.5.2 9999: vim plugin: easy commenting of code for many f
 app-vim/nerdtree 5.0.0-r1 6.4.1 6.4.3 9999: vim plugin: A tree explorer plugin for navigating the filesystem
 app-vim/nerdtree-tabs 1.4.7: vim plugin: NERDTree and tabs in vim
 app-vim/nginx-syntax 0.3.3: vim plugin: Nginx configuration files syntax
-app-vim/notes 0.33.4-r1: vim plugin: easy note taking in vim
 app-vim/ntp-syntax 20031001-r1: vim plugin: ntp.conf syntax highlighting
 app-vim/omnicppcomplete 0.41: vim plugin: C/C++ omni-completion with ctags database
 app-vim/pathogen 2.4-r1: vim plugin: manage your runtimepath
@@ -3278,7 +3272,6 @@ dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 5.5.66 5.5.67 5.5.68 10.1.38-r1 10.1.43 10.1.44-r1 10.1.45 10.2.22-r1 10.2.29 10.2.31-r1 10.2.32 10.3.20 10.3.22-r1 10.3.23 10.4.10 10.4.12 10.4.13: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.1.6 3.1.7 3.1.8 3.1.9 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
-dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.13 3.6.17 4.0.12 4.0.16-r1 4.0.19 4.2.3-r1 4.2.6 4.2.8: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
@@ -4904,7 +4897,7 @@ dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1.4: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.34_pre20140729-r1 0.34: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0 0.6.1: set of utility libraries (mostly used by sssd)
-dev-libs/distorm64 3.4.2 3.4.4 3.5.0: The ultimate disassembler library (X86-32, X86-64)
+dev-libs/distorm64 3.4.4 3.5.0: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/dmalloc 5.5.2-r7: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion routines for IEEE doubles
@@ -7550,9 +7543,6 @@ dev-python/backports-csv 1.0.7: Backport of Python 3's 'csv' module
 dev-python/backports-functools-lru-cache 1.6.1: Backport of functools.lru_cache from Python 3.3
 dev-python/backports-lzma 0.0.13: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-os 0.1.1: Backport of new features in Python's os module
-dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
-dev-python/backports-shutil_which 3.5.1: Backport of shutil.which from Python 3.3
-dev-python/backports-ssl-match-hostname 3.5.0.1-r1: Backport of the ssl.match_hostname function
 dev-python/backports-tempfile 1.0: Backport of new features in Python's tempfile module
 dev-python/backports-unittest-mock 1.5-r1: Backport of unittest.mock
 dev-python/backports-weakref 1.0_p1: Backport of new features in Python's weakref module
@@ -8564,7 +8554,6 @@ dev-python/python-troveclient 2.17.0: A client for the OpenStack Trove API, a sc
 dev-python/python-utils 2.3.0: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.0.1: A client for the OpenStack Vitrage API
-dev-python/python-wpactrl 20081102-r1: A Python extension for wpa_supplicant/hostapd control interface access
 dev-python/python-xlib 0.27: A fully functional X client library for Python, written in Python
 dev-python/python-xmlsec 1.3.6 1.3.8: Python bindings for the XML Security Library
 dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
@@ -10218,7 +10207,6 @@ dev-util/astyle 3.0.1-r1 3.1-r2: Artistic Style is a re-indenter and reformatter
 dev-util/autodia 2.140.0-r2: Parses source code, XML or data and produces an XML document in Dia format
 dev-util/autoproject 0.20_p5: Start a programming project using autotools and a command line parser generator
 dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and convert trace files
-dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1 0.5.1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0 0.4.0_p20170219: An automated testing system for bash
 dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1 1.2.1 2.0.0 3.2.0: Fast and correct automated build system
@@ -10604,7 +10592,6 @@ dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
 dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
-dev-vcs/git-deps 9999: git commit dependency analysis tool
 dev-vcs/git-flow 1.12.3: Git extensions to provide high-level repository operations
 dev-vcs/git-lfs 2.10.0 2.11.0 9999: Command line extension and specification for managing large files with git
 dev-vcs/git-mailz 0.14: Send a collection of patches as emails
@@ -10612,7 +10599,6 @@ dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
 dev-vcs/git-merge-changelog 20170131: Git merge driver for GNU style ChangeLog files
 dev-vcs/git-num 2.0.1: Quickly reference files in Git using numbers
 dev-vcs/git-pimp 0.8: Code review or pull requests as patch email series
-dev-vcs/git-remote-hg 1.0.1: Semi-official Mercurial bridge from Git project
 dev-vcs/git-sh 1.3-r1: A customized bash environment suitable for git work
 dev-vcs/git-spindle 3.3-r1: Git subcommands for interacting with central services
 dev-vcs/git-tools 2017.10 2019.11: Assorted git-related scripts
@@ -10971,7 +10957,6 @@ games-emulation/mupen64plus-video-glide64mk2 2.5.9-r2: A fork of Mupen64 Nintend
 games-emulation/mupen64plus-video-rice 2.5.9-r2: A fork of Mupen64 Nintendo 64 emulator, rice video plugin
 games-emulation/nestopia 1.47_p20170105 9999: A portable Nintendo Entertainment System emulator written in C++
 games-emulation/nestra 0.66-r3: NES emulation for Linux/x86
-games-emulation/openmsx 0.14.0: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.4.0-r1 1.4.0-r2 1.6.0 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94_p20190306 9999: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/ppsspp 1.5.4-r2 9999: A PSP emulator written in C++
@@ -11068,7 +11053,6 @@ games-fps/wolfgl 0.93-r2: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6-r1: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-fps/yamagi-quake2 7.42 7.43: Quake 2 engine focused on single player
-games-kids/childsplay 0.90.2-r2: A suite of educational games for young children
 games-kids/gcompris 0.97-r1: Full featured educational application for children from 2 to 10
 games-kids/gmult 8.0-r1: Multiplication Puzzle emulates the multiplication game found in Emacs
 games-kids/lletters 0.1.95-r3: Game that helps young kids learn their letters and numbers
@@ -11133,7 +11117,6 @@ games-mud/crystal 0.2.4-r1: The crystal MUD client
 games-mud/gmudix 1.0-r1: GTK+ MUD client with many features and an easy scripting language
 games-mud/gnome-mud 0.11.2-r2 9999: GNOME MUD client
 games-mud/kildclient 3.0.1-r1: Powerful MUD client with a built-in PERL interpreter
-games-mud/lyntin 4.2-r2: tintin mud client clone implemented in Python
 games-mud/mudix 4.3-r2: A small, stable MUD client for the console
 games-mud/powwow 1.2.16-r1: PowWow Console MUD Client
 games-mud/tf 50_beta8-r2: A small, flexible, screen-oriented MUD client (aka TinyFugue)
@@ -11338,7 +11321,6 @@ games-sports/bygfoot 2.3.2-r1: GTK+2 Soccer Management Game
 games-sports/dustrac 1.11.0-r1: Tile-based, cross-platform 2D racing game
 games-sports/foobillard 3.0a-r1: 8ball, 9ball, snooker and carambol game
 games-sports/gracer 0.1.5-r1: 3D motor sports simulator
-games-sports/ski 6.9-r1: A simple text-mode skiing game
 games-sports/speed-dreams 1.4.0-r1: A fork of the famous open racing car simulator TORCS
 games-sports/stormbaancoureur 2.1.6-r1: Simulated obstacle course for automobiles
 games-sports/torcs 1.3.6-r1: The Open Racing Car Simulator
@@ -12135,7 +12117,6 @@ mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Co
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/spf-engine 2.0.2-r1 2.9.2: Policy daemon and milter for Postfix SPF verification
 mail-filter/sqlgrey 1.7.6-r2 1.8.0: A postfix policy service implementing a grey-listing policy
-mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.8 2.1: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5 1.0.13: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
@@ -13386,7 +13367,6 @@ media-sound/cmusfm 0.2.5 0.3.1 0.3.3: Last.fm scrobbler for cmus music player
 media-sound/codecgraph 20120114-r2: Generates a graph based on the ALSA description of an HD Audio codec
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 2.0.0: GUI audio tagger based on Qt and taglib
-media-sound/cplay 1.50: A Curses front-end for various audio players
 media-sound/csound 6.13.0 6.14.0 9999: Sound design and signal processing system for composition and performance
 media-sound/cvoicecontrol 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
@@ -13660,7 +13640,6 @@ media-sound/toolame 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encode
 media-sound/traverso 0.49.5: Professional Audio Tools for GNU/Linux
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
-media-sound/tunapie 2.1.17-r1 2.1.19-r1: Directory browser for Radio and TV streams
 media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.17-r3 9999: Minimalistic Murmur (Mumble server)
@@ -13839,7 +13818,6 @@ media-video/streamdeck-ui 0.0_p20200102-r1 9999: A Linux compatible UI for the E
 media-video/streamdvd 0.4-r2: fast tool to backup Video DVDs 'on the fly'
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
 media-video/subcheck 0.78.2-r1: Subcheck checks srt subtitle files for errors
-media-video/subdl 1.0.3: A command-line tool for downloading subs from opensubtitles.org
 media-video/subliminal 2.0.5-r2 2.0.5-r3 2.1.0 9999: Python library to search and download subtitles
 media-video/submux-dvd 0.5.2-r1: A subtitle multiplexer, muxes subtitles into .vob
 media-video/subsync 0.0.1: subsync is an program that synchronizes srt subtitle files
@@ -14246,7 +14224,6 @@ net-dns/valtz 0.7-r3: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.3 2.1.0: Arno's iptables firewall script
 net-firewall/arptables 0.0.4 0.0.5 0.0.5-r1: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.5 1.4.6: Connection tracking userspace tools
-net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r2 2.0.11-r2: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4.1 2.5 2.5.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6: iptables firewall generator
@@ -14667,7 +14644,6 @@ net-mail/mu 0.9.18-r3 1.0-r1 1.3.5-r1 1.3.6-r1 1.3.6-r2 1.4.1 1.4.4 1.4.10: Set 
 net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3 0.29.3-r1 0.29.3-r2: Thread-based e-mail indexer, supporting quick search and tagging
-net-mail/offlineimap 6.5.6 7.2.4-r1 7.3.3: Powerful IMAP/Maildir synchronization and reader support
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
@@ -14991,7 +14967,6 @@ net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet 
 net-misc/stunnel 5.50-r1 5.55 5.56-r1: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.15: Open source implementation of the STUN protocol
 net-misc/suite3270 3.5_p12 3.6_p8: Complete 3270 access package
-net-misc/switzerland 0.1.0: Network Testing Tool
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
 net-misc/taylor-uucp 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
@@ -15299,7 +15274,6 @@ net-wireless/madwimax 0.1.1-r1: Reverse-engineered driver for WiMAX devices base
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7-r1: Mifare Classic Offline Cracker
 net-wireless/mousejack 0.0_p20160726-r2: Firmware and research tools for nRF24LU1+ based USB dongles and breakout boards
-net-wireless/multimode 1.4_p20140831-r2 9999: multimode radio decoder for rtl-sdr devices using gnuradio
 net-wireless/nanovna-saver 0.2.2 9999: tool for reading, displaying and saving data from the NanoVNA
 net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
 net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
@@ -15551,7 +15525,6 @@ sci-biology/iqpnni 3.3.2-r1: Important Quartet Puzzling and NNI Operation
 sci-biology/kalign 2.03-r2: Global and progressive multiple sequence alignment
 sci-biology/kallisto 0.43.1 9999: Near-optimal RNA-Seq quantification
 sci-biology/lagan 2.0-r3: The LAGAN suite of tools for whole-genome multiple alignment of genomic DNA
-sci-biology/last 299-r1: Genome-scale comparison of biological sequences
 sci-biology/libgtextutils 0.6.1: Gordon Text utils Library
 sci-biology/mafft 7.305: Multiple sequence alignments using a variety of algorithms
 sci-biology/maq 0.7.1-r2: Mapping and Assembly with Qualities, mapping NGS reads to reference genomes
@@ -15661,12 +15634,10 @@ sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gnome-chemistry-utils 0.14.17: Programs and library containing GTK widgets and C++ classes related to chemistry
 sci-chemistry/gperiodic 3.0.3: Periodic table application for Linux
 sci-chemistry/gromacs 2018.8 2019.5-r1 2019.6 2020.1-r1 2020.2 2020.9999 9999: The ultimate molecular dynamics simulation package
-sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
 sci-chemistry/mdtraj 1.9.1 1.9.4: Read, write and analyze MD trajectories with only a few lines of Python code
 sci-chemistry/mm-align 20120321: Protein Complex Structural Alignment
-sci-chemistry/modeller 9.20 9.22: Homology or comparative modeling of protein three-dimensional structures
 sci-chemistry/molden 5.5: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
 sci-chemistry/molequeue 0.9.0: Abstract, manage and coordinate execution of tasks
@@ -15702,7 +15673,6 @@ sci-chemistry/pymol-plugins-bni-tools 0.27: Gives Pymol additional functionaliti
 sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways of proteins from buried cavities to outside solvent
 sci-chemistry/pymol-plugins-dssp 110430-r1: DSSP Plugin for PyMOL
 sci-chemistry/pymol-plugins-emovie 1.0.4: PyMOL plugin for convinient movie creation
-sci-chemistry/pymol-plugins-msms 100415-r1: GUI for MSMS and displaying its results in PyMOL
 sci-chemistry/pymol-plugins-promol 3.0.2-r1: Fast and accurate regognition of active sites
 sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of proteins or other molecules
@@ -15838,7 +15808,6 @@ sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open St
 sci-geosciences/routino 3.1.1 3.2 3.3.2: Routing application based on openstreetmap data
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
 sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constituent Databases
-sci-geosciences/tilecache 2.11-r1: Web map tile caching system
 sci-geosciences/viking 1.6.2-r2 1.7 1.7-r1: GPS data editor and analyzer
 sci-geosciences/xtide 2.15.1: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/Rtree 0.8.3_p20180802: R-Tree spatial index for Python GIS
@@ -15914,7 +15883,6 @@ sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math
 sci-libs/cxsparse 3.1.2-r1 3.2.0: Extended sparse matrix package
 sci-libs/dcmtk 3.6.3 3.6.4-r1 3.6.5: The DICOM Toolkit
 sci-libs/dealii 9.1.1 9.2.0 9999: Solving partial differential equations with the finite element method
-sci-libs/deap 0.9.1 1.0.0 1.0.1: Novel evolutionary computation framework
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/dlib 19.9 19.16-r1: Numerical and networking C++ library
 sci-libs/dmlc-core 0_p20170719: Common bricks library for building distributed machine learning.
@@ -16050,7 +16018,6 @@ sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
 sci-libs/proj 6.2.1 6.3.0 7.0.1: PROJ coordinate transformation software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
-sci-libs/pycifrw 3.6.2 4.1.1: Reading and writing CIF (Crystallographic Information Format) files
 sci-libs/pyshp 1.2.0 2.1.0 9999: Pure Python read/write support for ESRI Shapefile format
 sci-libs/qd 2.3.17 2.3.22: Quad-double and double-double float arithmetics
 sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS files
@@ -17746,7 +17713,6 @@ www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 1.2.3 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20181209: A graphical web-based front-end for visualizing RRD collected by collectd
 www-apps/chromedriver-bin 83.0.4103.39-r1: WebDriver for Chrome
-www-apps/curator 3.0_p20110120-r3: Gallery generator
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20160626e 20170219e 20180422a 20180422b: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
@@ -17927,7 +17893,6 @@ x11-apps/showfont 1.0.5: font dumper for X font server
 x11-apps/smproxy 1.0.6: Session Manager Proxy
 x11-apps/transset 1.0.2: An utility for setting opacity property
 x11-apps/viewres 1.0.6: graphical class browser for Xt
-x11-apps/whyteboard 0.41.1-r1: A simple image, PDF and postscript file annotator
 x11-apps/x11perf 1.6.1: X rendering operation stress test utility
 x11-apps/xauth 1.1 9999: X authority file utility
 x11-apps/xbacklight 1.2.3: Sets backlight level using the RandR 1.2 BACKLIGHT output property
@@ -18502,7 +18467,6 @@ x11-plugins/purple-facebook 20170608 20170831 20190113: Facebook protocol plugin
 x11-plugins/purple-hangouts 0_p20181024 0_p20181108 0_p20181202 9999: Hangouts Plugin for libpurple
 x11-plugins/purple-libnotify-plus 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-mattermost 1.2-r1: A libpurple/Pidgin plugin for Mattermost
-x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/vicious 2.3.1 2.3.3: Modular widget library for x11-wm/awesome
 x11-plugins/wmCalClock 1.25-r3: WMaker DockApp: A Calendar clock with antialiased text
 x11-plugins/wmDownload 0.1.2a-r3: dockapp that displays how much data you've received on each eth and ppp device
