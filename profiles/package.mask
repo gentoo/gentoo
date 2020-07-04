@@ -283,11 +283,6 @@ media-libs/pymemphis
 # Removal in 30 days. Bug #728904.
 dev-tex/feynmf
 
-# Aaron Bauman <bman@gentoo.org> (2020-06-20)
-# Py2 only
-# Removal in 14 days
-<=dev-libs/distorm64-3.4.2
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-18)
 # Games depending on dead gnome-base/libgnomeui.
 # games-board/gnono: Bug #726788, last release 2007, abandoned upstream.
