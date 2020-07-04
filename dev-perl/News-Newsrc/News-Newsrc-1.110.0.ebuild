@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Manage newsrc files"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~ppc x86"
+KEYWORDS="~alpha amd64 hppa ~ppc x86"
 IUSE=""
 
 RDEPEND=">=dev-perl/Set-IntSpan-1.70.0"

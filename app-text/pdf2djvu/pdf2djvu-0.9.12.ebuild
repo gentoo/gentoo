@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+graphicsmagick nls openmp test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-text/djvu-3.5.21:=

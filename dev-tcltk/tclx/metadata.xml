@@ -5,7 +5,6 @@
 		<email>tcltk@gentoo.org</email>
 		<name>TCL / TK herd</name>
 	</maintainer>
-	<longdescription>Extended TCL</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">tclx</remote-id>
 	</upstream>

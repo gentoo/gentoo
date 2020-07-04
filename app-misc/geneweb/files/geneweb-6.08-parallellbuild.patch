@@ -1,5 +1,5 @@
---- geneweb-6.08/wserver/Makefile.old	2017-01-09 21:15:00.328750224 +0100
-+++ geneweb-6.08/wserver/Makefile	2017-01-09 21:15:16.825751748 +0100
+--- a/wserver/Makefile	2017-01-09 21:15:00.328750224 +0100
++++ b/wserver/Makefile	2017-01-09 21:15:16.825751748 +0100
 @@ -11,6 +11,8 @@
  	camlp5r pa_extend.cmo q_MLast.cmo -o pa_macro5.ppo pa_macro5.ml
  	ocamlc -c -I "`camlp5 -where`" -impl pa_macro5.ppo
@@ -9,8 +9,8 @@
  depend:
  	TOP=.. ../tools/camlp5_depend.sh $(OCAMLI) *.ml* > .depend
  
---- geneweb-6.08/src/.depend.old	2017-01-09 21:36:25.644868941 +0100
-+++ geneweb-6.08/src/.depend	2017-01-09 21:37:04.994872576 +0100
+--- a/src/.depend	2017-01-09 21:36:25.644868941 +0100
++++ b/src/.depend	2017-01-09 21:37:04.994872576 +0100
 @@ -39,7 +39,7 @@
  check_base.cmx: check.cmx def.cmi gwdb.cmx secure.cmx
  compilation.cmo: def.cmi util.cmi
@@ -20,8 +20,21 @@
  consang.cmo: adef.cmi def.cmi gwdb.cmi consang.cmi
  consang.cmx: adef.cmx def.cmi gwdb.cmx consang.cmi
  consang.cmi: def.cmi gwdb.cmi
-@@ -311,7 +311,7 @@
-     num.cmi perso.cmi ../wserver/wserver.cmi
+@@ -162,7 +162,7 @@
+     mutil.cmx notesLinks.cmx progrBar.cmx secure.cmx select.cmx
+ history.cmo: adef.cmi buff.cmo config.cmi date.cmi def.cmi gutil.cmi \
+     gwdb.cmi hutil.cmi mutil.cmi secure.cmi templ.cmi templAst.cmi util.cmi \
+-    history_diff.cmi ../wserver/wserver.cmi history.cmi
++    history_diff.cmo ../wserver/wserver.cmi history.cmi
+ history.cmx: adef.cmx buff.cmx config.cmi date.cmx def.cmi gutil.cmx \
+     gwdb.cmx hutil.cmx mutil.cmx secure.cmx templ.cmx templAst.cmi util.cmx \
+     history_diff.cmx ../wserver/wserver.cmx history.cmi
+@@ -308,10 +308,10 @@
+     ../wserver/wserver.cmx
+ searchName.cmo: adef.cmi buff.cmo checkItem.cmi config.cmi date.cmi def.cmi \
+     gutil.cmi gwdb.cmi hutil.cmi mutil.cmi name.cmi util.cmi \
+-    num.cmi perso.cmi ../wserver/wserver.cmi
++    num.cmi perso.cmi ../wserver/wserver.cmi some.cmo
  searchName.cmx: adef.cmx buff.cmx checkItem.cmx config.cmi date.cmx def.cmi \
      gutil.cmx gwdb.cmx hutil.cmx mutil.cmx name.cmx util.cmx \
 -    num.cmx perso.cmx ../wserver/wserver.cmx
@@ -29,3 +42,23 @@
  secure.cmo: secure.cmi
  secure.cmx: secure.cmi
  select.cmo: adef.cmi def.cmi gutil.cmi gwdb.cmi name.cmi
+--- a/ged2gwb/.depend	2019-12-26 11:46:53.540446131 +0100
++++ b/ged2gwb/.depend	2019-12-26 11:48:08.833224914 +0100
+@@ -1,7 +1,7 @@
+ ged2gwb2.cmo: ../src/adef.cmi ../src/ansel.cmo ../src/argl.cmo \
+     ../src/buff.cmo ../src/calendar.cmi ../src/db2link.cmi ../src/def.cmi \
+     ../src/futil.cmi ../src/gwcomp.cmi ../src/lock.cmi ../src/mutil.cmi \
+-    ../src/name.cmi ../src/secure.cmi ./utf8.cmi
++    ../src/name.cmi ../src/secure.cmi ./utf8.cmo
+ ged2gwb2.cmx: ../src/adef.cmx ../src/ansel.cmx ../src/argl.cmx \
+     ../src/buff.cmx ../src/calendar.cmx ../src/db2link.cmx ../src/def.cmi \
+     ../src/futil.cmx ../src/gwcomp.cmx ../src/lock.cmx ../src/mutil.cmx \
+@@ -10,7 +10,7 @@
+     ../src/buff.cmo ../src/calendar.cmi ../src/check.cmi \
+     ../src/checkItem.cmi ../src/dbdisk.cmi ../src/def.cmi ../src/gwdb.cmi \
+     ../src/lock.cmi ../src/mutil.cmi ../src/name.cmi ../src/outbase.cmi \
+-    ../src/secure.cmi ./utf8.cmi
++    ../src/secure.cmi ./utf8.cmo
+ ged2gwb.cmx: ../src/adef.cmx ../src/ansel.cmx ../src/argl.cmx \
+     ../src/buff.cmx ../src/calendar.cmx ../src/check.cmx \
+     ../src/checkItem.cmx ../src/dbdisk.cmi ../src/def.cmi ../src/gwdb.cmx \

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic qmake-utils toolchain-funcs
 
 COMMIT="5023138d7c35c4667c938b853e5ea89737334e92"
@@ -22,6 +22,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
+BDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/i7z-0.27.2-ncurses.patch
@@ -35,6 +36,8 @@ PATCHES=(
 	"${FILESDIR}"/install-i7z_rw_registers.patch
 	"${FILESDIR}"/use_stdbool.patch
 	"${FILESDIR}"/nehalem.patch
+	"${FILESDIR}"/gcc-10.patch
+	"${FILESDIR}"/typos.patch
 )
 
 S="${WORKDIR}/${PN}-${COMMIT}"

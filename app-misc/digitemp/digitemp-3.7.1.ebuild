@@ -42,7 +42,7 @@ src_compile() {
 
 	for target in $targets; do
 		emake clean
-		emake CC="$(tc-getCC)" 	LOCK="no" ${target} || die "emake ${target} failed"
+		emake CC="$(tc-getCC)" 	LOCK="no" ${target}
 	done
 }
 

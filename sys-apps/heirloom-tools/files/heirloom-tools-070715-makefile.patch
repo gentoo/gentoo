@@ -1,0 +1,16 @@
+diff --git a/Makefile.mk b/Makefile.mk
+index 28a20f1..1cf36b8 100644
+--- a/Makefile.mk
++++ b/Makefile.mk
+@@ -73,11 +73,6 @@ links:
+ 	sh build/crossln $(ROOT)$(SV3BIN)/more $(ROOT)$(UCBBIN)/more $(ROOT)
+ 	rm -f $(ROOT)$(UCBBIN)/catman
+ 	sh build/crossln $(ROOT)$(DEFSBIN)/catman $(ROOT)$(UCBBIN)/catman $(ROOT)
+-	for i in sccs prt; \
+-	do \
+-		rm -f $(ROOT)$(UCBBIN)/$$i; \
+-		sh build/crossln $(ROOT)$(CCSBIN)/$$i $(ROOT)$(UCBBIN)/$$i $(ROOT); \
+-	done
+ 	rm -f $(ROOT)$(SV3BIN)/awk
+ 	sh build/crossln $(ROOT)$(DEFBIN)/oawk $(ROOT)$(SV3BIN)/awk $(ROOT)
+ 	rm -f $(ROOT)$(S42BIN)/awk

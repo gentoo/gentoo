@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,10 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
-PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	)
 
 src_compile() {
 	# this version is distributed with compiled binaries!

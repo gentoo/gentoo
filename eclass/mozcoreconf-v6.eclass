@@ -51,8 +51,8 @@ mozconfig_use_enable() {
 	mozconfig_annotate "$(use $1 && echo +$1 || echo -$1)" "${flag}"
 }
 
-# @FUNCTION mozconfig_use_with
-# @DESCRIPTION
+# @FUNCTION: mozconfig_use_with
+# @DESCRIPTION:
 # add a line to .mozconfig based on a USE-flag
 #
 # Example:
@@ -63,8 +63,8 @@ mozconfig_use_with() {
 	mozconfig_annotate "$(use $1 && echo +$1 || echo -$1)" "${flag}"
 }
 
-# @FUNCTION mozconfig_use_extension
-# @DESCRIPTION
+# @FUNCTION: mozconfig_use_extension
+# @DESCRIPTION:
 # enable or disable an extension based on a USE-flag
 #
 # Example:
@@ -203,7 +203,7 @@ mozconfig_init() {
 	case "${ARCH}" in
 	arm | ppc64)
 		# Reduce the memory requirements for linking
-		if use clang ; then
+		if [[ "${PN}" != seamonkey ]] && use clang ; then
 			# Nothing to do
 			:;
 		elif tc-ld-is-gold; then

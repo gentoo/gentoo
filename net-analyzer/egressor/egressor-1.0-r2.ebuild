@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="tool for checking router configuration"
 HOMEPAGE="http://packetfactory.openwall.net/projects/egressor/"
-SRC_URI="${HOMEPAGE}${PN}_release${PV}.tar.gz"
+SRC_URI="http://packetfactory.openwall.net/projects/egressor/${PN}_release${PV}.tar.gz"
 
 LICENSE="egressor"
 SLOT="0"

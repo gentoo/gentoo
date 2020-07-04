@@ -21,10 +21,15 @@ Chrony はコンピュータのシステム・クロックの精度を保つた�
 <flag name="adns">Support for asynchronous DNS</flag>
 <flag name="cmdmon">Support for command and monitoring</flag>
 <flag name="html">Install HTML documentation</flag>
+<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> for hash functions</flag>
 <flag name="ntp">Support for the Network Time Protocol (NTP)</flag>
 <flag name="phc">Support for the PTP (Precision Time Protocol) Hardware Clock (PHC) interface</flag>
 <flag name="pps">Support for the Linux Pulse Per Second (PPS) interface</flag>
 <flag name="refclock">Support for reference clocks</flag>
 <flag name="rtc">Support for the Linux Real Time Clock interface</flag>
+<flag name="sechash">Enable support for hashes other than MD5</flag>
 </use>
+<upstream>
+<remote-id type="cpe">cpe:/a:chrony_project:chrony</remote-id>
+</upstream>
 </pkgmetadata>

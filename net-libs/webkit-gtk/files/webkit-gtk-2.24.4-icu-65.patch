@@ -1,0 +1,53 @@
+From 9b60e834454dc93f46f05b1cfdc0aad0c6b7de97 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Fri, 4 Oct 2019 22:17:11 +0200
+Subject: [PATCH] Add missing semicolons to fix build with icu 65.1
+
+---
+ Source/WTF/wtf/URLHelpers.cpp   |  2 +-
+ Source/WebCore/dom/Document.cpp |  6 +++---
+ 4 files changed, 25 insertions(+), 4 deletions(-)
+
+diff --git a/Source/WTF/wtf/URLHelpers.cpp b/Source/WTF/wtf/URLHelpers.cpp
+index 18e7f13cd61..c584f1a0cb7 100644
+--- a/Source/WTF/wtf/URLHelpers.cpp
++++ b/Source/WTF/wtf/URLHelpers.cpp
+@@ -301,7 +301,7 @@ static bool allCharactersInIDNScriptWhiteList(const UChar* buffer, int32_t lengt
+     Optional<UChar32> previousCodePoint;
+     while (i < length) {
+         UChar32 c;
+-        U16_NEXT(buffer, i, length, c)
++        U16_NEXT(buffer, i, length, c);
+         UErrorCode error = U_ZERO_ERROR;
+         UScriptCode script = uscript_getScript(c, &error);
+         if (error != U_ZERO_ERROR) {
+diff --git a/Source/WebCore/dom/Document.cpp b/Source/WebCore/dom/Document.cpp
+index 0fd0fa090bf..01f76850f3d 100644
+--- a/Source/WebCore/dom/Document.cpp
++++ b/Source/WebCore/dom/Document.cpp
+@@ -4954,12 +4954,12 @@ static bool isValidNameNonASCII(const UChar* characters, unsigned length)
+     unsigned i = 0;
+ 
+     UChar32 c;
+-    U16_NEXT(characters, i, length, c)
++    U16_NEXT(characters, i, length, c);
+     if (!isValidNameStart(c))
+         return false;
+ 
+     while (i < length) {
+-        U16_NEXT(characters, i, length, c)
++        U16_NEXT(characters, i, length, c);
+         if (!isValidNamePart(c))
+             return false;
+     }
+@@ -5019,7 +5019,7 @@ ExceptionOr<std::pair<AtomString, AtomString>> Document::parseQualifiedName(cons
+ 
+     for (unsigned i = 0; i < length; ) {
+         UChar32 c;
+-        U16_NEXT(qualifiedName, i, length, c)
++        U16_NEXT(qualifiedName, i, length, c);
+         if (c == ':') {
+             if (sawColon)
+                 return Exception { InvalidCharacterError };
+-- 
+2.23.0

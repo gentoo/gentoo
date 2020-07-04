@@ -1,8 +1,0 @@
-#!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-command="/opt/teamviewer14/tv_bin/teamviewerd"
-command_args="-d"
-description="Starts the TeamViewer remote control daemon"
-pidfile="/var/run/teamviewerd.pid"

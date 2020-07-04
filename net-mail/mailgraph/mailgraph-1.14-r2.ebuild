@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -75,19 +75,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	# Fix ownerships - previous versions installed these with
-	# root as owner
-	if [[ ${REPLACING_VERSIONS} < 1.13 ]] ; then
-		if [[ -d /var/lib/mailgraph ]] ; then
-			chown mgraph:mgraph /var/lib/mailgraph
-		fi
-		if [[ -d /var/log/mailgraph ]] ; then
-			chown mgraph:adm /var/log/mailgraph
-		fi
-		if [[ -d /var/run/mailgraph ]] ; then
-			chown mgraph:adm /var/run/mailgraph
-		fi
-	fi
 	elog "Mailgraph will run as user mgraph with group adm by default."
 	elog "This can be changed in /etc/conf.d/mailgraph if it doesn't fit."
 	elog "Remember to adjust MG_DAEMON_LOG, MG_DAEMON_PID and MG_DAEMON_RRD"

@@ -1,0 +1,89 @@
+From a8b25b489b48086e2616df98688969f89e63fa69 Mon Sep 17 00:00:00 2001
+From: Miquel Garriga <gbmiquel@gmail.com>
+Date: Fri, 23 Nov 2018 00:15:04 +0100
+Subject: [PATCH] Remove exit() calls
+
+---
+ OriginFile.cpp | 15 ++++++++++-----
+ OriginFile.h   |  2 +-
+ opj2dat.cpp    |  2 ++
+ 3 files changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/OriginFile.cpp b/OriginFile.cpp
+index f6c41b4..bcdcccb 100644
+--- a/OriginFile.cpp
++++ b/OriginFile.cpp
+@@ -33,14 +33,15 @@
+ #include <string>
+ 
+ OriginFile::OriginFile(const string& fileName)
+-:	fileVersion(0)
++:	fileVersion(0), ioError(0)
+ {
+ 	ifstream file(fileName.c_str(), ios_base::binary);
+ 
+ 	if (!file.is_open())
+ 	{
+-		cerr <<  "Could not open " << fileName.c_str() << "!" << endl;
+-		exit(EXIT_FAILURE);
++		cerr << endl << "liborigin: " << strerror(errno) << ": " << fileName.c_str() << endl;
++		ioError = errno;
++		return;
+ 	}
+ 
+ #ifdef GENERATE_CODE_FOR_LOG
+@@ -48,8 +49,9 @@ OriginFile::OriginFile(const string& fileName)
+ 	logfile = fopen("./opjfile.log", "w");
+ 	if (logfile == nullptr)
+ 	{
+-		cerr <<  "Could not open opjfile.log !" << endl;
+-		exit(EXIT_FAILURE);
++		cerr << endl <<  "liborigin: " << strerror(errno) << ": opjfile.log" << endl;
++		ioError = errno;
++		return;
+ 	}
+ #endif // GENERATE_CODE_FOR_LOG
+ 
+@@ -152,10 +154,13 @@ OriginFile::OriginFile(const string& fileName)
+ 	fclose(logfile);
+ #endif // GENERATE_CODE_FOR_LOG
+ 	parser.reset(createOriginAnyParser(fileName));
++	ioError=0;
+ }
+ 
+ bool OriginFile::parse()
+ {
++	if (ioError != 0)
++		return false;
+ 	parser->buildVersion = buildVersion;
+ 	parser->fileVersion = fileVersion;
+ 	return parser->parse();
+diff --git a/OriginFile.h b/OriginFile.h
+index 80b6ff2..3a49395 100644
+--- a/OriginFile.h
++++ b/OriginFile.h
+@@ -70,7 +70,7 @@ public:
+ 	string resultsLogString() const;													//!< get Results Log
+ 
+ private:
+-	unsigned int fileVersion, buildVersion;
++	unsigned int fileVersion, buildVersion, ioError;
+ 	unique_ptr<OriginParser> parser;
+ };
+ 
+diff --git a/opj2dat.cpp b/opj2dat.cpp
+index ff53309..230ac84 100644
+--- a/opj2dat.cpp
++++ b/opj2dat.cpp
+@@ -54,6 +54,8 @@ int main(int argc, char *argv[]) {
+ 	OriginFile opj(inputfile);
+ 	int status = opj.parse();
+ 	cout << "Parsing status = " << status << endl;
++	if (! status)
++		return -1;
+ 	cout << "OPJ PROJECT \"" << inputfile.c_str() << "\" VERSION = " <<  opj.version() << endl;
+ 
+ 	cout << "number of datasets     = " << opj.datasetCount() << endl;
+-- 
+2.26.2
+

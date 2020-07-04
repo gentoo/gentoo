@@ -1,0 +1,22 @@
+--- a/include/firewalk.h
++++ b/include/firewalk.h
+@@ -280,7 +280,7 @@
+ /* dump usage */
+ void
+ usage(
+-    u_char *                        /* argv[0] */
++    char *                        /* argv[0] */
+     );
+ 
+ #endif /* _FIREWALK_H */
+--- a/src/main.c
++++ b/src/main.c
+@@ -171,7 +171,7 @@
+ }
+ 
+ void
+-usage(u_char *argv0)
++usage(char *argv0)
+ {
+     fprintf(stderr, "Usage : %s [options] target_gateway metric\n"
+         "\t\t   [-d %d - %d] destination port to use (ramping phase)\n"

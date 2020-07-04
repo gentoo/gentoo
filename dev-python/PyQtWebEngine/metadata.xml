@@ -20,7 +20,6 @@
 			<email>phil@riverbankcomputing.com</email>
 			<name>Phil Thompson</name>
 		</maintainer>
-		<changelog>https://www.riverbankcomputing.com/static/Downloads/PyQtWebEngine/ChangeLog</changelog>
 		<doc>https://www.riverbankcomputing.com/static/Docs/PyQt5/</doc>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
 		<remote-id type="pypi">PyQtWebEngine</remote-id>

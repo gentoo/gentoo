@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tee@itc-gmbh.de</email>
-		<name>Torsten Alex</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>xl2tpd is a fork of l2tpd Layer 2 Tunneling Protocol (L2TP) daemon that can be used to transfer frames of OSI layer 2 protocols through an IP tunnel. While it provides authentication via CHAP or PAP it does not provide encryption itself and should therefore be externally secured (via IPSEC).</longdescription>
 	<use>
 		<flag name="dnsretry">Patch for host lookup retries, activated by redial feature</flag>

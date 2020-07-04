@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,12 @@ DIST_EXAMPLES=("test.pl")
 inherit perl-module
 
 DESCRIPTION="Provide high level APIs for rapid user interface design on the console in Perl"
-HOMEPAGE="http://www.digitalmages.com/perl/CursesWidgets/index.html ${HOMEPAGE}"
+HOMEPAGE="http://www.digitalmages.com/perl/CursesWidgets/index.html https://metacpan.org/release/CursesWidgets"
 SRC_URI+=" http://www.digitalmages.com/perl/CursesWidgets/downloads/${PN}-${DIST_VERSION}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ia64 ppc s390 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc s390 sparc x86"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-5

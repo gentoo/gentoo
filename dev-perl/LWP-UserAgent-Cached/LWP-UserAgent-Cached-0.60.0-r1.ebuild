@@ -12,6 +12,7 @@ DESCRIPTION="LWP::UserAgent with simple caching mechanism"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-perl/libwww-perl"
 DEPEND="${RDEPEND}

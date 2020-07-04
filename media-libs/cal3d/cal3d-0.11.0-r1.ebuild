@@ -10,7 +10,7 @@ SRC_URI="http://download.gna.org/cal3d/sources/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE="16bit-indices debug doc"
 
 DEPEND="doc? (

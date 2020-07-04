@@ -16,6 +16,7 @@ LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="libressl minimal test qr yubikey +xml xvkbd"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="xml? ( dev-libs/xerces-c )
 	qr? ( media-gfx/qrencode )

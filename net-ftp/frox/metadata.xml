@@ -12,7 +12,6 @@
     <use>
         <flag name="transparent">Enable transparent proxying of data connections</flag>
     </use>
-    <longdescription>A transparent ftp proxy</longdescription>
     <upstream>
         <remote-id type="sourceforge">frox</remote-id>
     </upstream>

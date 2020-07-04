@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,8 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
-IUSE=""
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86"
 
 DEPEND=""
 RDEPEND="
@@ -23,7 +22,7 @@ S="${WORKDIR}/${PN}"
 
 src_compile() {
 	emake GCC="$(tc-getCC) -O" tth
-	cd tools
+	cd tools || die
 	tc-export CC
 	echo 'all: tthsplit' > makefile
 	emake

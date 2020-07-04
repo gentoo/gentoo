@@ -30,9 +30,9 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "Failed building"
+	emake
 }
 
 src_install() {
-	emake -j1 DESTDIR="${D}" install || die "Failed installing"
+	emake -j1 DESTDIR="${D}" install
 }

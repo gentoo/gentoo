@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,8 +9,8 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="BINL server to doing Windows(r) RIS"
-HOMEPAGE="http://oss.netfarm.it/guides/pxe.php"
-SRC_URI="http://oss.netfarm.it/guides/${P}.tar.gz"
+HOMEPAGE="https://oss.netfarm.it/guides/pxe.php"
+SRC_URI="https://oss.netfarm.it/guides/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}
 	net-fs/samba
 	sys-boot/syslinux"
 
-python_prepare_all(){
+python_prepare_all() {
 	sed "s:VERSION:${PV}:" "${FILESDIR}"/setup.py > "${S}"/setup.py
 	distutils-r1_python_prepare_all
 }

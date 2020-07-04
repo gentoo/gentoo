@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Convert CD images from b5i (BlindWrite) to iso"
 HOMEPAGE="https://web.archive.org/web/20100116120705/b5i2iso.berlios.de"
-SRC_URI="mirror://gentoo/${PN}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

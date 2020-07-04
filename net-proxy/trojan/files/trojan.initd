@@ -1,10 +1,17 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-TJ_CONFIG="/etc/trojan/config.json"
-TJ_PIDFILE="/run/trojan.pid"
-TJ_LOG="/var/log/trojan.log"
+TJ_NAME=${SVCNAME##*.}
+if [ -n "${TJ_NAME}" -a "${SVCNAME}" != "trojan" ]; then
+	TJ_PIDFILE="/run/trojan.${TJ_NAME}.pid"
+	TJ_CONFIG="/etc/trojan/${TJ_NAME}.json"
+	TJ_LOG="/var/log/trojan.${TJ_NAME}.log"
+else
+	TJ_PIDFILE="/run/trojan.pid"
+	TJ_CONFIG="/etc/trojan/config.json"
+	TJ_LOG="/var/log/trojan.log"
+fi
 
 depend() {
 	need net

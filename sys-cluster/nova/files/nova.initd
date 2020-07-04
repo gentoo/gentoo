@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="Starts ${SVCNAME} service for OpenStack"
@@ -9,7 +9,7 @@ command_args="--config-file /etc/nova/nova.conf"
 pidfile=/run/${SVCNAME}.pid
 command_background=true
 required_files=/etc/nova/nova.conf
-if [ "$SVCNAME" == nova-compute ]; then
+if [ "$SVCNAME" = nova-compute ]; then
 	required_files="${required_files} /etc/nova/nova-compute.conf"
 	command_args="${command_args} --config-file /etc/nova/nova-compute.conf"
 fi
@@ -21,5 +21,5 @@ depend() {
 }
 
 start_pre() {
-	checkpath --directory --owner ${NOVA_USER:-nova}:${NOVA_GROUP:-nova} --mode 0775 ${NOVA_RUN:-/var/lock/nova}
+	checkpath --directory --owner "${NOVA_USER:-nova}":"${NOVA_GROUP:-nova}" --mode 0775 "${NOVA_RUN:-/var/lock/nova}"
 }

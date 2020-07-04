@@ -1,0 +1,23 @@
+diff --git a/source/Makefile b/source/Makefile
+index a99c5a3..f549ad9 100644
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -30,7 +30,7 @@ MINVERS = 3.2
+ VERSION = $(MAJVERS).$(MINVERS)
+ 
+ CPPFLAGS += -DVERSION=\"$(VERSION)\" -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+-CXXFLAGS += -O2 -Wall -fPIC
++CXXFLAGS += -Wall -fPIC
+ CXXFLAGS += -march=native
+ LDLFAGS +=
+ LDLIBS +=
+@@ -53,8 +53,8 @@ install:	$(ZITA-ALSA-PCMI_MIN)
+ 	install -d $(DESTDIR)$(LIBDIR)
+ 	install -m 644 $(ZITA-ALSA-PCMI_H) $(DESTDIR)$(INCDIR)
+ 	install -m 755 $(ZITA-ALSA-PCMI_MIN) $(DESTDIR)$(LIBDIR)
+-	ldconfig
+ 	ln -sf $(ZITA-ALSA-PCMI_MIN) $(DESTDIR)$(LIBDIR)/$(ZITA-ALSA-PCMI_SO)
++	ln -sf $(ZITA-ALSA-PCMI_MIN) $(DESTDIR)$(LIBDIR)/$(ZITA-ALSA-PCMI_MAJ)
+ 
+ uninstall:
+ 	rm -rf $(DESTDIR)$(INCDIR)/$(ZITA-ALSA-PCMI_H)

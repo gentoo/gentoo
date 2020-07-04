@@ -1,0 +1,43 @@
+--- a/configure.in
++++ b/configure.in
+@@ -1,23 +1,9 @@
+-AC_DEFUN([CURSES_TEST],
+-[
+-if test "x$sv_curses" = xno; then
+-  sv_test=$1
+-  sv_pass="no"
+-  AC_MSG_CHECKING([name is $sv_test])
+-  LIBS="-l$sv_test"
+-  AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <curses.h>], [initscr();])],
+-    [sv_pass="yes"])
+-  AC_MSG_RESULT([$sv_pass])
+-  test "$sv_pass" = yes && sv_curses=$sv_test
+-  unset LIBS
+-fi
+-])
+-
+ AC_INIT(squidview.cpp)
+ AM_CONFIG_HEADER(config.h)
+ AM_INIT_AUTOMAKE(squidview,0.86)
+ AC_PROG_CXX
+ AC_PROG_INSTALL
++PKG_PROG_PKG_CONFIG
+ 
+ AC_CHECK_HEADERS(curses.h, signal.h sys/time.h sys/types.h sys/stat.h \
+  unistd.h fcntl.h time.h stdlib.h math.h stdio.h,, \
+@@ -28,14 +14,7 @@
+ AC_CHECK_HEADER(vector,,AC_MSG_ERROR(C++ STL vector class missing))
+ AC_CHECK_HEADER(algorithm,,AC_MSG_ERROR(C++ STL algorithm class missing))
+ 
+-AC_MSG_NOTICE([Checking curses library name])
+-sv_curses=no
+-CURSES_TEST(ncurses)
+-CURSES_TEST(curses)
+-if test "x$sv_curses" = xno; then
+-  AC_MSG_ERROR([No suitable curses found])
+-fi
+-AC_CHECK_LIB($sv_curses, wgetch,,AC_MSG_ERROR([Curses support is not complete?]))
++PKG_CHECK_MODULES([NCURSES],[ncurses],LIBS="$LIBS $NCURSES_LIBS",AC_MSG_ERROR([No suitable curses found]))
+ 
+ AC_MSG_CHECKING([large file support])
+ sv_large="no"

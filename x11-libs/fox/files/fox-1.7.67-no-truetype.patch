@@ -1,0 +1,46 @@
+diff -ru fox-1.7.67/lib/FXFont.cpp /var/tmp/portage/x11-libs/fox-1.7.67/work/fox-1.7.67/lib/FXFont.cpp
+--- fox-1.7.67/lib/FXFont.cpp	2019-05-08 05:21:21.000000000 +0200
++++ /var/tmp/portage/x11-libs/fox-1.7.67/work/fox-1.7.67/lib/FXFont.cpp	2019-12-16 22:19:32.510138232 +0100
+@@ -829,26 +829,26 @@
+ 
+       // Weight
+       if(wantweight){
+-        dweight=Math::iabs(weight-wantweight);
++        dweight=Math::iabs((FXint)(weight-wantweight));
+         }
+       else{
+-        dweight=Math::iabs(weight-FXFont::Normal);
++        dweight=Math::iabs((FXint)(weight-FXFont::Normal));
+         }
+ 
+       // Slant
+       if(wantslant){
+-        dslant=Math::iabs(slant-wantslant);
++        dslant=Math::iabs((FXint)(slant-wantslant));
+         }
+       else{
+-        dslant=Math::iabs(slant-FXFont::Straight);
++        dslant=Math::iabs((FXint)(slant-FXFont::Straight));
+         }
+ 
+       // Set width
+       if(wantsetwidth){
+-        dsetwidth=Math::iabs(setwidth-wantsetwidth);
++        dsetwidth=Math::iabs((FXint)(setwidth-wantsetwidth));
+         }
+       else{
+-        dsetwidth=Math::iabs(setwidth-FXFont::NonExpanded);
++        dsetwidth=Math::iabs((FXint)(setwidth-FXFont::NonExpanded));
+         }
+ 
+       // Pitch
+@@ -900,7 +900,7 @@
+       // should be multiplied by (100/90).
+       else{
+         size=(yres*points)/res;
+-        dsize=Math::iabs(size-wantsize);
++        dsize=Math::iabs((FXint)(size-wantsize));
+         }
+ 
+       FXTRACE((160,"%4d: dweight=%-3d dsize=%3d dslant=%d dsetwidth=%d dscalable=%d dpolymorph=%d xres=%-3d yres=%-3d xlfd=\"%s\"\n",f,dweight,dsize,dslant,dsetwidth,dscalable,dpolymorph,xres,yres,fontnames[f]));
+

@@ -1,0 +1,50 @@
+Tag Boost.MPI python impls properly to avoid name clash
+https://github.com/boostorg/mpi/issues/112
+
+--- a/boostcpp.jam
++++ b/boostcpp.jam
+@@ -185,7 +185,7 @@
+ 
+ rule tag ( name : type ? : property-set )
+ {
+-    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB
++    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB PYTHON_EXTENSION
+     {
+         local args = $(.format-name-args) ;
+         if $(layout) = versioned
+@@ -223,7 +223,7 @@
+ {
+     local result = $(name) ;
+ 
+-    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB
++    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB PYTHON_EXTENSION
+     {
+         # Add Python version suffix
+ 
+--- a/libs/mpi/build/Jamfile.v2
++++ b/libs/mpi/build/Jamfile.v2
+@@ -58,13 +58,13 @@
+ rule python-tag ( name : type ? : property-set )
+ {
+     local result = $(name) ;
+-    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB
++    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB PYTHON_EXTENSION
+     {
+         local version = [ $(property-set).get <python> ] ;
+         local lib-suffix = [ version-suffix $(version) ] ;
+         result = $(result)$(lib-suffix) ;
+     }
+-    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB && $(PYTHON_ID)
++    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB PYTHON_EXTENSION && $(PYTHON_ID)
+     {
+         result = $(result)-$(PYTHON_ID) ;
+     }
+@@ -168,6 +168,8 @@
+                 <link>shared:<define>BOOST_PYTHON_DYN_LINK=1
+                 <link>shared <runtime-link>shared
+                 <python-debugging>on:<define>BOOST_DEBUG_PYTHON
++                -<tag>@$(BOOST_JAMROOT_MODULE)%$(BOOST_JAMROOT_MODULE).tag
++                <tag>@$(__name__).python-tag
+               ;
+ 
+             mpi_python_libs = boost_mpi_python mpi ;

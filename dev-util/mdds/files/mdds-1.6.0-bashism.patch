@@ -1,0 +1,75 @@
+From 65da7c25f4d8204b1379a0afb46d82dc1b263ab0 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 28 May 2020 18:36:07 +0200
+Subject: [PATCH] Fix bashisms in configure.ac
+
+---
+ configure.ac | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 00ab937..2282165 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,7 +32,7 @@ AC_ARG_ENABLE(debug-stdcxx,
+ ]
+ ,debug_stdcxx=yes)
+ 
+-AS_IF([test x"$debug_stdcxx" == "xyes"], [
++AS_IF([test x"$debug_stdcxx" = "xyes"], [
+   CXXFLAGS="$CXXFLAGS -D_GLIBCXX_DEBUG"
+ ])
+ 
+@@ -42,7 +42,7 @@ AC_ARG_ENABLE(release-tests,
+ ]
+ ,release_tests=yes)
+ 
+-AS_IF([test x"$release_tests" == "xyes"], [
++AS_IF([test x"$release_tests" = "xyes"], [
+   CXXFLAGS="$CXXFLAGS -DNDEBUG -O2"
+ ])
+ 
+@@ -56,11 +56,11 @@ AC_ARG_ENABLE(loop-unrolling,
+     [enable_loop_unrolling="$enableval"],[enable_loop_unrolling=yes]
+ )
+ 
+-AS_IF([test x"$enable_loop_unrolling" == "xno"], [
++AS_IF([test x"$enable_loop_unrolling" = "xno"], [
+   CXXFLAGS="$CXXFLAGS -DMDDS_LOOP_UNROLLING=0"
+ ])
+ 
+-AS_IF([test x"$enable_gcov" == "xyes"], [
++AS_IF([test x"$enable_gcov" = "xyes"], [
+   CXXFLAGS="$CXXFLAGS --coverage -O0"
+ ])
+ 
+@@ -69,7 +69,7 @@ AC_ARG_ENABLE(openmp,
+     [enable_openmp="$enableval"],[enable_openmp=yes]
+ )
+ 
+-AS_IF([test x"$enable_openmp" == "xyes"], [
++AS_IF([test x"$enable_openmp" = "xyes"], [
+   CXXFLAGS="$CXXFLAGS -fopenmp"
+   LDFLAGS="$LDFLAGS -fopenmp"
+ ])
+@@ -79,7 +79,7 @@ AC_ARG_ENABLE(sanitizer-coverage,
+     [enable_sanitizer_coverage="$enableval"],[enable_sanitizer_coverage=no]
+ )
+ 
+-AS_IF([test x"$enable_sanitizer_coverage" == "xyes"], [
++AS_IF([test x"$enable_sanitizer_coverage" = "xyes"], [
+   CXXFLAGS="$CXXFLAGS -fprofile-instr-generate -fcoverage-mapping -O0"
+ ])
+ 
+@@ -122,7 +122,7 @@ AC_ARG_ENABLE([werror],
+ 	[enable_werror="$enableval"],
+ 	[enable_werror=no]
+ )
+-AS_IF([test x"$enable_werror" == "xyes"], [
++AS_IF([test x"$enable_werror" = "xyes"], [
+ 	CXXFLAGS="$CXXFLAGS -Werror"
+ ])
+ 
+-- 
+2.26.2
+

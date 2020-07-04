@@ -1,0 +1,58 @@
+From 1b41e786dc0772528b873b6f5bcee64147bfec04 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 17 Oct 2019 14:44:34 +0200
+Subject: [PATCH] Revert "Not all of libmypaint-gegl was versionned."
+
+This reverts commit 5e0290c5fb8a175a9f0dd4c6897ff234361c321f.
+
+See https://github.com/mypaint/libmypaint/issues/144
+---
+ gegl/Makefile.am | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/gegl/Makefile.am b/gegl/Makefile.am
+index 79f66fa..b45707d 100644
+--- a/gegl/Makefile.am
++++ b/gegl/Makefile.am
+@@ -37,10 +37,10 @@ introspection_sources = \
+ 	../glib/mypaint-gegl-glib.c	\
+ 	mypaint-gegl-surface.c
+ 
+-MyPaintGegl-@LIBMYPAINT_MAJOR_VERSION@.@LIBMYPAINT_MINOR_VERSION@.gir: libmypaint-gegl-@LIBMYPAINT_API_PLATFORM_VERSION@.la Makefile
++MyPaintGegl-@LIBMYPAINT_MAJOR_VERSION@.@LIBMYPAINT_MINOR_VERSION@.gir: libmypaint-gegl.la Makefile
+ MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_INCLUDES = GObject-2.0 MyPaint-$(LIBMYPAINT_MAJOR_VERSION).$(LIBMYPAINT_MINOR_VERSION) Gegl-0.3
+ MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_CFLAGS = $(AM_CFLAGS) $(AM_CPPFLAGS) -I. -I..
+-MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_LIBS = libmypaint-gegl-@LIBMYPAINT_API_PLATFORM_VERSION@.la ../libmypaint-@LIBMYPAINT_API_PLATFORM_VERSION@.la
++MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_LIBS = libmypaint-gegl.la ../libmypaint.la
+ MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_FILES = $(introspection_sources)
+ INTROSPECTION_GIRS += MyPaintGegl-@LIBMYPAINT_MAJOR_VERSION@.@LIBMYPAINT_MINOR_VERSION@.gir
+ 
+@@ -56,10 +56,10 @@ endif # HAVE_INTROSPECTION
+ 
+ ## pkg-config file ##
+ pkgconfigdir = $(libdir)/pkgconfig
+-pkgconfig_DATA = libmypaint-gegl-@LIBMYPAINT_API_PLATFORM_VERSION@.pc
++pkgconfig_DATA = libmypaint-gegl.pc
+ 
+ ## libmypaint-gegl ##
+-lib_LTLIBRARIES = libmypaint-gegl-@LIBMYPAINT_API_PLATFORM_VERSION@.la
++lib_LTLIBRARIES = libmypaint-gegl.la
+ 
+ libmypaint_gegl_publicdir = $(includedir)/libmypaint-gegl
+ 
+@@ -70,9 +70,9 @@ LIBMYPAINT_GEGL_SOURCES = \
+ 	../glib/mypaint-gegl-glib.c	\
+ 	mypaint-gegl-surface.c
+ 
+-libmypaint_gegl_@LIBMYPAINT_API_PLATFORM_VERSION@_la_SOURCES = $(libmypaint_gegl_public_HEADERS) $(LIBMYPAINT_GEGL_SOURCES)
++libmypaint_gegl_la_SOURCES = $(libmypaint_gegl_public_HEADERS) $(LIBMYPAINT_GEGL_SOURCES)
+ 
+-libmypaint_gegl_@LIBMYPAINT_API_PLATFORM_VERSION@_la_CFLAGS = $(JSON_CFLAGS) $(GLIB_CFLAGS) $(GEGL_CFLAGS)
+-libmypaint_gegl_@LIBMYPAINT_API_PLATFORM_VERSION@_la_LIBADD = $(top_builddir)/libmypaint-@LIBMYPAINT_API_PLATFORM_VERSION@.la $(GEGL_LIBS)
++libmypaint_gegl_la_CFLAGS = $(JSON_CFLAGS) $(GLIB_CFLAGS) $(GEGL_CFLAGS)
++libmypaint_gegl_la_LIBADD = $(top_builddir)/libmypaint.la $(GEGL_LIBS)
+ 
+ endif # enable_gegl
+-- 
+2.23.0
+

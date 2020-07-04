@@ -1,9 +1,0 @@
-# Copyright 1999-2015 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-
-# Don't remove gcc from here: clang uses it for crt{begin,end}*.o and its c++
-# stack.
-
-*sys-devel/llvm
-*sys-devel/clang
-*sys-libs/libcxx

@@ -22,5 +22,8 @@
     <flag name="redis">
       Include support for Redis database
     </flag>
+    <flag name="mongodb">
+      Include support for MongoDB database
+    </flag>
   </use>
 </pkgmetadata>

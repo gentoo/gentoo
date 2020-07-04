@@ -1,0 +1,13 @@
+diff --git a/tests/unittest_lint.py b/tests/unittest_lint.py
+index 4f942cd0..d54008bf 100644
+--- a/tests/unittest_lint.py
++++ b/tests/unittest_lint.py
+@@ -792,7 +792,7 @@ def test_filename_with__init__(init_linter):
+     messages = reporter.messages
+     assert len(messages) == 0
+ 
+-
++@pytest.mark.skip("known failure, see https://github.com/PyCQA/pylint/issues/3198")
+ def test_by_module_statement_value(init_linter):
+     """Test "statement" for each module analized of computed correctly."""
+     linter = init_linter

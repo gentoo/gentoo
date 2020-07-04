@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,12 +12,12 @@ MY_PN="Crypto"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Collects together existing Haskell cryptographic functions into a package"
-HOMEPAGE="http://hackage.haskell.org/package/Crypto"
-SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://hackage.haskell.org/package/Crypto"
+SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-haskell/hunit:=[profile?]

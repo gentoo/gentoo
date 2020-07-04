@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+sdlaudio"
 
-RDEPEND="
+DEPEND="
 	virtual/jpeg:0
 	media-libs/libsdl[joystick,video]
 	sdlaudio? ( media-libs/libsdl[sound] )
@@ -23,12 +23,15 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-inline.patch
+	"${FILESDIR}"/${P}-gcc-9.patch
+)
+
 src_prepare() {
 	default
-	eapply \
-		"${FILESDIR}"/${P}-configure.patch \
-		"${FILESDIR}"/${P}-underlink.patch \
-		"${FILESDIR}"/${P}-inline.patch
 
 	sed -i -e 's/@GTK_CFLAGS@//g' main/Makefile.am || die
 	eautoreconf
@@ -41,11 +44,6 @@ src_configure() {
 		--without-tcltk \
 		--with-gcc=$(gcc-major-version) \
 		$(use_with sdlaudio sdl-audio)
-}
-
-src_compile() {
-	[[ -f Makefile ]] && emake clean
-	emake -j1
 }
 
 src_install() {

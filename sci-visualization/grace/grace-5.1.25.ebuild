@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ FORTRAN_NEEDED=fortran
 inherit eutils fortran-2 toolchain-funcs
 
 DESCRIPTION="Motif based XY-plotting tool"
-HOMEPAGE="http://plasma-gate.weizmann.ac.il/Grace/"
+HOMEPAGE="https://plasma-gate.weizmann.ac.il/Grace/"
 SRC_URI="
 	http://pkgs.fedoraproject.org/cgit/grace.git/plain/grace.png
 	https://dev.gentoo.org/~jlec/distfiles/${PN}.png.tar

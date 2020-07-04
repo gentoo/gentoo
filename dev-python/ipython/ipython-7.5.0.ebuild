@@ -1,20 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='readline,sqlite,threads(+)'
 
 inherit distutils-r1 eutils virtualx
 
 DESCRIPTION="Advanced interactive shell for Python"
-HOMEPAGE="http://ipython.org/"
+HOMEPAGE="https://ipython.org/ https://github.com/ipython/ipython/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test"
 RESTRICT="!test? ( test )"
 

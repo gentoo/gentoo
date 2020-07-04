@@ -1,9 +1,11 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7,8} )
+
 inherit distutils-r1
 
 DESCRIPTION="Library for testing asyncio code with pytest"
@@ -13,21 +15,20 @@ SRC_URI="https://github.com/pytest-dev/pytest-asyncio/archive/v${PV}.tar.gz -> $
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="amd64 ~ppc64 x86"
 
-RDEPEND="
-	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/async_generator[${PYTHON_USEDEP}]' \
-		python3_5)"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/async_generator[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-3.64[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/pytest-asyncio-0.10.0-py38.patch
+)
+
+distutils_enable_tests pytest
 
 python_test() {
 	distutils_install_for_testing

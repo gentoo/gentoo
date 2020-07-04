@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rebar.eclass
 # @MAINTAINER:
-# Amadeusz Żołnowski <aidecoe@gentoo.org>
+# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
 # @SUPPORTED_EAPIS: 6
@@ -32,7 +32,7 @@ esac
 
 EXPORT_FUNCTIONS src_prepare src_compile src_test src_install
 
-RDEPEND="dev-lang/erlang"
+RDEPEND="dev-lang/erlang:="
 DEPEND="${RDEPEND}
 	dev-util/rebar
 	>=sys-apps/gawk-4.1"
@@ -105,6 +105,8 @@ erebar() {
 	(( $# > 0 )) || die "erebar: at least one target is required"
 
 	local -x ERL_LIBS="${EPREFIX}$(get_erl_libs)"
+	[[ ${1} == eunit ]] && local -x ERL_LIBS="."
+
 	rebar -v skip_deps=true "$@" || die -n "rebar $@ failed"
 }
 

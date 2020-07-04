@@ -1,21 +1,21 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 inherit cmake-utils python-single-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="git://developer.intra2net.com/${PN}"
 else
-	SRC_URI="http://www.intra2net.com/en/developer/${PN}/download/${P}.tar.gz"
+	SRC_URI="https://www.intra2net.com/en/developer/${PN}/download/${P}.tar.gz"
 	KEYWORDS="amd64 arm ~arm64 ppc ppc64 sparc x86"
 fi
 
 DESCRIPTION="Userspace access to FTDI USB interface chips"
-HOMEPAGE="http://www.intra2net.com/en/developer/libftdi/"
+HOMEPAGE="https://www.intra2net.com/en/developer/libftdi/"
 
 LICENSE="LGPL-2"
 SLOT="0"

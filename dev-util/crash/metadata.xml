@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
 	<longdescription lang="en">
 		The Red Hat crash analysis utility is loosely based on the SVR4 UNIX
 		crash command, but has been significantly enhanced by completely merging

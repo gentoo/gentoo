@@ -48,6 +48,17 @@
  # Solaris
  #CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"
  #LDFLAGS = ${LIBS}
+--- a/echinus.1
++++ b/echinus.1
+@@ -40,7 +40,7 @@
+ loads the configuration file from
+ .Pa ~/.echinus/echinusrc,
+ if present, then looks for the system-wide configuration file
+-.Pa CONFDIR/echinusrc .
++.Pa /usr/share/echinus/echinusrc .
+ .El
+ .Pp
+ The following notation is used in this page:
 --- a/Makefile
 +++ b/Makefile
 @@ -19,13 +19,13 @@
@@ -66,3 +77,14 @@
  
  clean:
  	@echo cleaning
+--- a/README
++++ b/README
+@@ -22,7 +22,7 @@
+ On new install:
+ 
+ % mkdir ~/.echinus
+-% cp -r CONFDIR ~/.echinus
++% cp -r /usr/share/echinus ~/.echinus
+ 
+ 1.Configuration file
+ --------------------

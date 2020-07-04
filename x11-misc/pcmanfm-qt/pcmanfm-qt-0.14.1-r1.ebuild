@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Fast lightweight tabbed filemanager (Qt port)"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,17 +22,18 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg libav log lto profile pulseaudio +qt5 systemd upnp"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp"
 
 RDEPEND="
 	dev-libs/hidapi:0=
+	dev-libs/libfmt:0=
 	dev-libs/lzo:2=
 	dev-libs/pugixml:0=
 	media-libs/libpng:0=
 	media-libs/libsfml
 	media-libs/mesa[egl]
 	net-libs/enet:1.3
-	net-libs/mbedtls
+	net-libs/mbedtls:0=
 	net-misc/curl:0=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
@@ -47,10 +48,7 @@ RDEPEND="
 		dev-libs/libevdev
 		virtual/udev
 	)
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? (
@@ -63,10 +61,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-arch/zip
-	dev-util/vulkan-headers
 	media-libs/freetype
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+# vulkan-loader required for vulkan backend which can be selected
+# at runtime.
+RDEPEND="${RDEPEND}
+	media-libs/vulkan-loader"
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -76,9 +78,14 @@ src_prepare() {
 	local KEEP_SOURCES=(
 		Bochs_disasm
 		FreeSurround
+
+		# vulkan's API is not backwards-compatible:
+		# new release dropped VK_PRESENT_MODE_RANGE_SIZE_KHR
+		# but dolphin still relies on it, bug #729832
+		Vulkan
+
 		cpp-optparse
 		# no support for for using system library
-		fmt
 		glslang
 		imgui
 		# FIXME: xxhash can't be found by cmake
@@ -94,6 +101,8 @@ src_prepare() {
 		# gentoo's version requires exception support.
 		# dolphin disables exceptions and fails the build.
 		picojson
+		# No code to detect shared library.
+		zstd
 	)
 	local s
 	for s in "${KEEP_SOURCES[@]}"; do

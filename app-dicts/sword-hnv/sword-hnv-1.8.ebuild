@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Hebrew Names Version of the World English Bible"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=HNV"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

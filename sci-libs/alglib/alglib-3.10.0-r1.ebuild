@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,14 @@ EAPI=6
 inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Numerical analysis and data processing library"
-HOMEPAGE="http://www.alglib.net/"
-SRC_URI="http://www.alglib.net/translator/re/${P}.cpp.gpl.tgz"
+HOMEPAGE="https://www.alglib.net/"
+SRC_URI="https://www.alglib.net/translator/re/${P}.cpp.gpl.tgz"
 
 SLOT="0/3.8"
 LICENSE="GPL-2+"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}"/cpp/
 

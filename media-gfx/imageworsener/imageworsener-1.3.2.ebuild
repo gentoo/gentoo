@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit eutils ltprune
 
 MY_P=${PN}-src-${PV}
 MY_PN=imagew
@@ -24,6 +24,7 @@ DEPEND="png? ( media-libs/libpng:0 )
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="test? ( jpeg png webp zlib )"
+RESTRICT="!test? ( test )"
 
 src_configure() {
 	local switch=''

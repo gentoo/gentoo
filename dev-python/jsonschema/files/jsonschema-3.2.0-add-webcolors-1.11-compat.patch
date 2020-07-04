@@ -1,0 +1,70 @@
+From 09595a50f507399bf3fa8c68ed6371c42b9c4874 Mon Sep 17 00:00:00 2001
+From: Julian Berman <Julian@GrayVines.com>
+Date: Fri, 21 Feb 2020 09:30:05 -0500
+Subject: [PATCH 1/2] Newer webcolors has a new API apparently.
+
+---
+ jsonschema/_format.py | 2 +-
+ setup.cfg             | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/jsonschema/_format.py b/jsonschema/_format.py
+index 281a7cf..f3c758c 100644
+--- a/jsonschema/_format.py
++++ b/jsonschema/_format.py
+@@ -354,7 +354,7 @@ else:
+     def is_css21_color(instance):
+         if (
+             not isinstance(instance, str_types) or
+-            instance.lower() in webcolors.css21_names_to_hex
++            instance.lower() in webcolors.CSS21_NAMES_TO_HEX
+         ):
+             return True
+         return is_css_color_code(instance)
+-- 
+2.24.1
+
+From 0d192e192526252c30c16b3651c293bb5f21a99f Mon Sep 17 00:00:00 2001
+From: Julian Berman <Julian@GrayVines.com>
+Date: Fri, 21 Feb 2020 09:56:13 -0500
+Subject: [PATCH 2/2] Sigh... but also drops Py2 compat.
+
+---
+ jsonschema/_format.py | 11 ++++++++---
+ setup.cfg             |  4 ++--
+ 2 files changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/jsonschema/_format.py b/jsonschema/_format.py
+index f3c758c..b96efb6 100644
+--- a/jsonschema/_format.py
++++ b/jsonschema/_format.py
+@@ -342,10 +342,15 @@ def is_draft3_time(instance):
+     return datetime.datetime.strptime(instance, "%H:%M:%S")
+ 
+ 
+-try:
++try:  # webcolors>=1.11
++    from webcolors import CSS21_NAMES_TO_HEX
+     import webcolors
+ except ImportError:
+-    pass
++    try:  # webcolors<1.11
++        from webcolors import css21_names_to_hex as CSS21_NAMES_TO_HEX
++        import webcolors
++    except ImportError:
++        pass
+ else:
+     def is_css_color_code(instance):
+         return webcolors.normalize_hex(instance)
+@@ -354,7 +359,7 @@ else:
+     def is_css21_color(instance):
+         if (
+             not isinstance(instance, str_types) or
+-            instance.lower() in webcolors.CSS21_NAMES_TO_HEX
++            instance.lower() in CSS21_NAMES_TO_HEX
+         ):
+             return True
+         return is_css_color_code(instance)
+-- 
+2.24.1
+

@@ -8,13 +8,13 @@ DESCRIPTION="Shows status of logical drives attached to HP SmartArray controller
 HOMEPAGE="http://cciss.sourceforge.net/#cciss_utils"
 LICENSE="GPL-2"
 SRC_URI="mirror://sourceforge/cciss/${P}.tar.gz"
-KEYWORDS="amd64 ia64 x86"
+KEYWORDS="amd64 ~ia64 x86"
 SLOT="0"
 RDEPEND=""
 DEPEND=""
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Install failed."
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog NEWS README
 	exeinto /etc/cron.hourly
 	newexe "${FILESDIR}/cciss_vol_status.cron2" cciss_vol_status

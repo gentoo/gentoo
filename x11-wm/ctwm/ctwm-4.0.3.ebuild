@@ -1,16 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A clean, light window manager"
 HOMEPAGE="https://ctwm.org/"
-SRC_URI="${HOMEPAGE}dist/${P}.tar.xz"
+SRC_URI="https://ctwm.org/dist/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
 	x11-libs/libICE
@@ -30,7 +30,7 @@ DEPEND="
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# implicit 'isspace'
 	sed -i parse.c -e "/<stdio.h>/ a#include <ctype.h>" || die
@@ -42,5 +42,5 @@ src_configure() {
 		-DDOCDIR=/usr/share/doc/${PF}
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

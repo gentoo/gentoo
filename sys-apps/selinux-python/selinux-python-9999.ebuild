@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{3_5,3_6} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 PYTHON_REQ_USE="xml"
 
 inherit python-r1 toolchain-funcs
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20190315"
+MY_RELEASEDATE="20191204"
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
 SEMNG_VER="${PV}"
@@ -34,7 +34,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
-	>=sys-libs/libsemanage-${SEMNG_VER}:=[python]
+	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+)]
 	>=sys-libs/libsepol-${SEPOL_VER}:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
 	dev-python/ipy[${PYTHON_USEDEP}]

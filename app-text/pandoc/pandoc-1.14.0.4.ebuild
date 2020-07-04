@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,13 +9,13 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Conversion between markup formats"
-HOMEPAGE="http://johnmacfarlane.net/pandoc"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+HOMEPAGE="https://johnmacfarlane.net/pandoc"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="embed_data_files +https make-pandoc-man-pages +network-uri trypandoc"
+IUSE="embed-data-files +https make-pandoc-man-pages +network-uri trypandoc"
 
 RESTRICT=test # likes to break on highlighting-kate update
 
@@ -90,7 +90,7 @@ src_prepare() {
 
 src_configure() {
 	haskell-cabal_src_configure \
-		$(cabal_flag embed_data_files embed_data_files) \
+		$(cabal_flag embed-data-files embed_data_files) \
 		$(cabal_flag https https) \
 		$(cabal_flag network-uri network-uri) \
 		$(cabal_flag trypandoc trypandoc)

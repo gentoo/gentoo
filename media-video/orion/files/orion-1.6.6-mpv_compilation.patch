@@ -1,0 +1,39 @@
+index def79f5..7fd9d93 100644
+--- a/orion.pro
++++ b/orion.pro
+@@ -8,7 +8,7 @@ QT     += gui qml network widgets quickcontrols2
+ 
+ QMAKE_CXXFLAGS += -Wall -O2
+ 
+-CONFIG += c++11
++CONFIG += c++14
+ #CONFIG += console
+ 
+ TARGET = orion
+@@ -86,8 +86,8 @@ android: {
+     android/src/com/orion/MainActivity.java
+ 
+     ANDROID_EXTRA_LIBS = \
+-        $$PWD/../openssl-1.0.2l/libcrypto.so \
+-        $$PWD/../openssl-1.0.2l/libssl.so
++        $$PWD/libs/libcrypto.so \
++        $$PWD/libs/libssl.so
+ }
+ 
+ #Backend for player, uses mpv as default
+diff --git a/src/player/mpvobject.cpp b/src/player/mpvobject.cpp
+index 2c30462..2955063 100644
+--- a/src/player/mpvobject.cpp
++++ b/src/player/mpvobject.cpp
+@@ -103,8 +103,10 @@ class MpvRenderer : public QQuickFramebufferObject::Renderer
+ };
+ 
+ MpvObject::MpvObject(QQuickItem * parent)
+-    : QQuickFramebufferObject(parent), mpv{mpv_create()}, mpv_gl(nullptr)
++    : QQuickFramebufferObject(parent), mpv_gl(nullptr)
+ {
++    std::setlocale(LC_NUMERIC, "C");
++    mpv = mpv_create();
+     if (!mpv)
+         throw std::runtime_error("could not create mpv context");
+ 

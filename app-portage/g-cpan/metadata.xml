@@ -4,9 +4,6 @@
 	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>Sergiy.Borodych@gmail.com</email>
-	</maintainer>
 	<maintainer type="project">
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>

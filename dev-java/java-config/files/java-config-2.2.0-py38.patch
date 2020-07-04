@@ -1,0 +1,52 @@
+From 5e7cc49184e657bd446998f4b08e9106e5215ce5 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Thu, 7 May 2020 02:45:57 -0700
+Subject: [PATCH] replace is with ==
+
+---
+ src/java-config-2 | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/java-config-2 b/src/java-config-2
+index 8ad2539..84ecd30 100755
+--- a/src/java-config-2
++++ b/src/java-config-2
+@@ -199,7 +199,7 @@ def set_user_vm(option, opt, value, parser):
+     if not vm:
+         fatalError("Could not find a vm matching: %s" % value)
+     else:
+-        if os.getuid() is 0:
++        if os.getuid() == 0:
+             fatalError("The user 'root' should always use the System VM")
+         else:
+             try:
+@@ -227,7 +227,7 @@ def user_classpath_target():
+ # Deprecated
+ def set_system_classpath(option, opt, value, parser):
+     deprecation_notice()
+-    if os.getuid() is 0:
++    if os.getuid() == 0:
+         pkgs = value.split(',')
+         manager.set_classpath(system_classpath_target(), pkgs)
+         
+@@ -252,7 +252,7 @@ def set_user_classpath(option, opt, value, parser):
+ # Deprecated
+ def append_system_classpath(option, opt, value, parser):
+     deprecation_notice()
+-    if os.getuid() is 0:
++    if os.getuid() == 0:
+         pkgs = value.split(',')
+         manager.append_classpath(system_classpath_target(), pkgs)
+ 
+@@ -277,7 +277,7 @@ def append_user_classpath(option, opt, value, parser):
+ # Deprecated
+ def clean_system_classpath(option, opt, value, parser):
+     deprecation_notice()
+-    if os.getuid() is 0:
++    if os.getuid() == 0:
+         manager.clean_classpath(system_classpath_target())
+         update_env()
+     else:
+-- 
+2.26.2
+

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Interpret and act on wait() status values"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ~sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/IPC-Signal"

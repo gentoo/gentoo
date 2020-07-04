@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
-RDEPEND="virtual/pam"
+RDEPEND="sys-libs/pam"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}

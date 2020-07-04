@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,7 @@ HOMEPAGE="https://github.com/hpc/libcircle"
 SLOT="0"
 LICENSE="BSD"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/mpi"
 DEPEND="${RDEPEND}

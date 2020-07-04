@@ -1,0 +1,13 @@
+--- a/black_flag.h
++++ b/black_flag.h
+@@ -236,8 +236,8 @@
+ 	       int sourceline,
+ 	       char sourcefile_revision[]);
+ 
+-char *Program_name;
+-char *Program_version;
++extern char *Program_name;
++extern char *Program_version;
+ 
+ void black_flag_init(char progname[],char progversion[]);
+ void black_flag_init_args(int narg,char *arg[],char progversion[]);

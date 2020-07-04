@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 MY_P="${P/icecream/icecc}"
 
-inherit base eutils user
+inherit base eutils ltprune user
 
 DESCRIPTION="Distributed compiling of C(++) code across several machines; based on distcc"
 HOMEPAGE="https://github.com/icecc/icecream"

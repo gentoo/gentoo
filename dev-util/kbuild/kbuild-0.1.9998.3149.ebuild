@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/${MY_P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -59,7 +59,7 @@ src_prepare() {
 
 	sed -e "s@_LDFLAGS\.$(tc-arch)*.*=@& ${LDFLAGS}@g" \
 		-i "${S}"/Config.kmk || die #332225
-	tc-export CC RANLIB #AR does not work here
+	tc-export CC PKG_CONFIG RANLIB #AR does not work here
 }
 
 src_compile() {

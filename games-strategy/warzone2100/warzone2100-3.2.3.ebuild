@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ MY_PV=$(get_version_component_range -2)
 VIDEOS_PV=2.2
 VIDEOS_P=${PN}-videos-${VIDEOS_PV}.wz
 DESCRIPTION="3D real-time strategy game"
-HOMEPAGE="http://wz2100.net/"
+HOMEPAGE="https://wz2100.net/"
 SRC_URI="mirror://sourceforge/warzone2100/${P}.tar.xz
 	videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )"
 
@@ -75,7 +75,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--docdir=/usr/share/doc/${PF}
 		--localedir=/usr/share/locale
 		--with-distributor="Gentoo ${PF}"
 		--with-icondir=/usr/share/icons/hicolor/128x128/apps

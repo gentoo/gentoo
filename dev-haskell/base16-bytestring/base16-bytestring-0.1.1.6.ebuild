@@ -10,11 +10,11 @@ inherit haskell-cabal
 
 DESCRIPTION="Fast base16 (hex) encoding and decoding for ByteStrings"
 HOMEPAGE="https://github.com/bos/base16-bytestring"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-lang/ghc-6.10.4:=

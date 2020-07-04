@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,12 +25,13 @@ fi
 
 # TODO: unbundle sqlite
 
-QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectmanager baremetal bazaar
+QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectmanager baremetal
 	'+clang:clangcodemodel|clangformat|clangtools' clearcase cmake:cmakeprojectmanager cppcheck
 	cvs +designer git glsl:glsleditor +help ios lsp:languageclient mercurial modeling:modeleditor
 	nim perforce python:pythoneditor qbs:qbsprojectmanager qnx scxml:scxmleditor serialterminal
 	silversearcher subversion valgrind winrt)
 IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
+RESTRICT="!test? ( test )"
 
 # minimum Qt version required
 QT_PV="5.9.0:5"
@@ -77,7 +78,6 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	sys-devel/gdb[client,python]
 	autotools? ( sys-devel/autoconf )
-	bazaar? ( dev-vcs/bzr )
 	cmake? ( dev-util/cmake[server(+)] )
 	cppcheck? ( dev-util/cppcheck )
 	cvs? ( dev-vcs/cvs )

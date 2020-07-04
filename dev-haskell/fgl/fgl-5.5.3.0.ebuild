@@ -10,11 +10,11 @@ inherit haskell-cabal
 
 DESCRIPTION="Martin Erwig's Functional Graph Library"
 HOMEPAGE="https://hackage.haskell.org/package/fgl"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="dev-haskell/transformers:=[profile?]

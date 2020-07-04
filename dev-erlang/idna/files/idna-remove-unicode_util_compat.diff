@@ -1,0 +1,103 @@
+diff --git a/rebar.config b/rebar.config
+index 84fd954..cd02013 100644
+--- a/rebar.config
++++ b/rebar.config
+@@ -1,3 +1,3 @@
+ {erl_opts, []}.
+ 
+-{deps, [{unicode_util_compat, "0.4.1"}]}.
++{deps, []}.
+diff --git a/rebar.config.script b/rebar.config.script
+deleted file mode 100644
+index d2bce94..0000000
+--- a/rebar.config.script
++++ /dev/null
+@@ -1,11 +0,0 @@
+-IsRebar3 = erlang:function_exported(rebar3, main, 1),
+-Rebar2Deps = [{unicode_util_compat, ".*",
+-               {git, "https://github.com/benoitc/unicode_util_compat.git",
+-                {tag, "0.3.1"}}}
+-             ],
+-case IsRebar3 of
+-    true ->
+-        CONFIG;
+-    false ->
+-        lists:keyreplace(deps, 1, CONFIG, {deps, Rebar2Deps})
+-end.
+diff --git a/rebar.lock b/rebar.lock
+deleted file mode 100644
+index 15fc8a1..0000000
+--- a/rebar.lock
++++ /dev/null
+@@ -1,6 +0,0 @@
+-{"1.1.0",
+-[{<<"unicode_util_compat">>,{pkg,<<"unicode_util_compat">>,<<"0.4.1">>},0}]}.
+-[
+-{pkg_hash,[
+- {<<"unicode_util_compat">>, <<"D869E4C68901DD9531385BB0C8C40444EBF624E60B6962D95952775CAC5E90CD">>}]}
+-].
+diff --git a/src/idna.erl b/src/idna.erl
+index 5f010b3..32b1745 100644
+--- a/src/idna.erl
++++ b/src/idna.erl
+@@ -333,7 +333,7 @@ lowercase_list([], true) ->
+ lowercase_list([], false) ->
+   throw(unchanged);
+ lowercase_list(CPs0, Changed) ->
+-  case unicode_util_compat:lowercase(CPs0) of
++  case unicode_util:lowercase(CPs0) of
+     [Char|CPs] when Char =:= hd(CPs0) -> [Char|lowercase_list(CPs, Changed)];
+     [Char|CPs] -> append(Char,lowercase_list(CPs, true));
+     [] -> lowercase_list([], Changed)
+@@ -346,9 +346,9 @@ lowercase_bin(CP1, <<CP2/utf8, Bin/binary>>, Changed)
+   when CP1 < 128, CP2 < 256 ->
+   [CP1|lowercase_bin(CP2, Bin, Changed)];
+ lowercase_bin(CP1, Bin, Changed) ->
+-  case unicode_util_compat:lowercase([CP1|Bin]) of
++  case unicode_util:lowercase([CP1|Bin]) of
+     [CP1|CPs] ->
+-      case unicode_util_compat:cp(CPs) of
++      case unicode_util:cp(CPs) of
+         [Next|Rest] ->
+           [CP1|lowercase_bin(Next, Rest, Changed)];
+         [] when Changed ->
+@@ -357,7 +357,7 @@ lowercase_bin(CP1, Bin, Changed) ->
+           throw(unchanged)
+       end;
+     [Char|CPs] ->
+-      case unicode_util_compat:cp(CPs) of
++      case unicode_util:cp(CPs) of
+         [Next|Rest] ->
+           [Char|lowercase_bin(Next, Rest, true)];
+         [] ->
+@@ -374,7 +374,7 @@ append(GC, Str) when is_list(GC) -> GC ++ Str.
+ 
+ 
+ characters_to_nfc_list(CD) ->
+-  case unicode_util_compat:nfc(CD) of
++  case unicode_util:nfc(CD) of
+     [CPs|Str] when is_list(CPs) -> CPs ++ characters_to_nfc_list(Str);
+     [CP|Str] -> [CP|characters_to_nfc_list(Str)];
+     [] -> []
+diff --git a/src/idna_context.erl b/src/idna_context.erl
+index afcb814..a09ff1f 100644
+--- a/src/idna_context.erl
++++ b/src/idna_context.erl
+@@ -28,7 +28,7 @@ valid_contextj(Label, Pos) ->
+ valid_contextj(16#200c, Label, Pos) ->
+   if
+      Pos > 0 ->
+-       case unicode_util_compat:lookup(lists:nth(Pos, Label)) of
++       case unicode_util:lookup(lists:nth(Pos, Label)) of
+          #{ ccc := ?virama_combining_class } -> true;
+          _ ->
+            valid_contextj_1(Label, Pos)
+@@ -38,7 +38,7 @@ valid_contextj(16#200c, Label, Pos) ->
+   end;
+ 
+ valid_contextj(16#200d, Label, Pos) when Pos > 0 ->
+-  case unicode_util_compat:lookup(lists:nth(Pos, Label)) of
++  case unicode_util:lookup(lists:nth(Pos, Label)) of
+     #{ ccc := ?virama_combining_class } -> true;
+     _ -> false
+   end;

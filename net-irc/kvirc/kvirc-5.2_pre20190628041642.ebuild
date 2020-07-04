@@ -1,9 +1,9 @@
-# Copyright 2009-2019 Gentoo Authors
+# Copyright 2009-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=(python{2_7,3_6,3_7})
+PYTHON_COMPAT=(python{3_6,3_7})
 
 inherit cmake-utils flag-o-matic python-single-r1 xdg-utils
 

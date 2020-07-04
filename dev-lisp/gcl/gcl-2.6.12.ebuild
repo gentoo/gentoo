@@ -16,7 +16,7 @@ IUSE="+ansi athena emacs +readline tk X"
 # See bug #205803
 RESTRICT="strip"
 
-RDEPEND="emacs? ( virtual/emacs )
+RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	readline? ( sys-libs/readline:= )
 	athena? ( x11-libs/libXaw )
 	>=dev-libs/gmp-4.1:=

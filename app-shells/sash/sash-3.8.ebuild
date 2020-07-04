@@ -1,17 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A small (static) UNIX Shell"
-HOMEPAGE="http://www.canb.auug.org.au/~dbell/"
-SRC_URI="http://www.canb.auug.org.au/~dbell/programs/${P}.tar.gz"
+HOMEPAGE="https://www.canb.auug.org.au/~dbell/"
+SRC_URI="https://www.canb.auug.org.au/~dbell/programs/${P}.tar.gz"
 
-LICENSE="freedist"
+LICENSE="sash"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="static"
 
 DEPEND="
@@ -20,15 +20,16 @@ DEPEND="
 RDEPEND="!static? ( ${DEPEND} )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/sash-3.7-builtin.patch
+	eapply "${FILESDIR}"/sash-3.7-builtin.patch
 
 	sed \
-		-e "s:-O3:${CFLAGS}:" \
+		-e "s|-O3|${CFLAGS}|" \
 		-e '/strip/d' \
 		-i Makefile || die
 	sed \
 		-e 's:linux/ext2_fs.h:ext2fs/ext2_fs.h:g' \
 		-i cmd_chattr.c || die
+	eapply_user
 }
 
 src_compile() {
@@ -38,7 +39,6 @@ src_compile() {
 }
 
 src_install() {
-	into /
 	dobin sash
 	doman sash.1
 	dodoc README

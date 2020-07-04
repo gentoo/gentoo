@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+
+inherit eutils vcs-clean
 
 DESCRIPTION="GTK+2 Soccer Management Game"
 HOMEPAGE="http://bygfoot.sourceforge.net/"

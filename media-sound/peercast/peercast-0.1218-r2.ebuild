@@ -32,7 +32,7 @@ src_compile() {
 	cd ui/linux
 	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" \
 		AR="$(tc-getAR)" LDFLAGS="${LDFLAGS}" \
-		LD="$(tc-getCXX)" || die "emake failed"
+		LD="$(tc-getCXX)"
 }
 
 src_install() {

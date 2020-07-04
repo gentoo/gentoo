@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,16 +12,16 @@ EGIT_REPO_URI="https://github.com/max-moser/network-manager-wireguard"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+glib +gtk +nls"
+IUSE="+gtk +nls"
 
 RDEPEND="
-	net-misc/networkmanager
-	net-vpn/wireguard
-	glib? ( dev-libs/glib )
+	>=net-misc/networkmanager-1.7.0
+	net-vpn/wireguard-tools[wg-quick]
+	>=dev-libs/glib-2.32:2
 	gtk? (
-		app-crypt/libsecret
-		gnome-extra/nm-applet
-		x11-libs/gtk+:3
+		>=x11-libs/gtk+-3.4:3
+		>=net-libs/libnma-1.7.0
+		>=app-crypt/libsecret-0.18
 	)
 "
 
@@ -35,6 +35,8 @@ BDEPEND="
 	)
 "
 
+PATCHES="${FILESDIR}/${PN}-0_pre20191128-change-appdata-path.patch"
+
 src_prepare() {
 	default
 
@@ -46,8 +48,8 @@ src_configure() {
 		--disable-lto
 		--disable-more-warnings
 		--disable-static
-		$(use_with glib	libnm-glib)
 		$(use_with gtk gnome)
+		--without-libnm-glib
 		$(use_enable nls)
 		--with-dist-version="Gentoo"
 	)

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MYP}
 
-src_prepare () {
+src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.0.0-respect-flags.patch"
 
 	# Respect users AR tool (Bug 474532)
@@ -38,7 +38,7 @@ src_prepare () {
 	fi
 }
 
-src_compile(){
+src_compile() {
 	emake CXX="$(tc-getCXX)" OPENMP="${OPENMP}" -C source
 }
 

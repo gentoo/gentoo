@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,7 +30,7 @@
+ dnl 0. autoconf initialization
+ AC_INIT(sg, 1.0, mholst@math.ucsd.edu)
+ AC_CONFIG_SRCDIR(src/ogl/sg/ogl.h)
+-AM_CONFIG_HEADER(src/aaa_inc/sgcf.h)
++AC_CONFIG_HEADERS(src/aaa_inc/sgcf.h)
+ AC_CONFIG_AUX_DIR(config)
+ AC_PREFIX_DEFAULT(${HOME})
+ AC_CANONICAL_BUILD

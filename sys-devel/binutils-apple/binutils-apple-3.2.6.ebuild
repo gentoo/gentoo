@@ -158,8 +158,8 @@ compile_ld64() {
 	[[ ${CHOST} == *-apple-darwin8 ]] && \
 		append-flags -isystem "${S}"/${CCTOOLS}/include/
 	local myincs="-Iinclude -Iabstraction -Ild"
-	emake CFLAGS="${CFLAGS} ${myincs}" CXXFLAGS="${CXXFLAGS} ${myincs}" \
-		|| die "emake failed for ld64"
+	emake CFLAGS="${CFLAGS} ${myincs}" CXXFLAGS="${CXXFLAGS} ${myincs}"
+
 	use test && emake build_test
 }
 
@@ -171,13 +171,12 @@ compile_cctools() {
 		EFITOOLS= \
 		COMMON_SUBDIRS='libstuff ar misc otool' \
 		SUBDIRS_32= \
-		RC_CFLAGS="${CFLAGS}" OFLAG="${CFLAGS}" \
-		|| die "emake failed for the cctools"
+		RC_CFLAGS="${CFLAGS}" OFLAG="${CFLAGS}"
+
 	cd "${S}"/${CCTOOLS}/as
 	emake \
 		BUILD_OBSOLETE_ARCH= \
-		RC_CFLAGS="-DASLIBEXECDIR=\"\\\"${EPREFIX}${LIBPATH}/\\\"\" ${CFLAGS}" \
-		|| die "emake failed for as"
+		RC_CFLAGS="-DASLIBEXECDIR=\"\\\"${EPREFIX}${LIBPATH}/\\\"\" ${CFLAGS}"
 }
 
 src_compile() {

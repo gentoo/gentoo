@@ -8,7 +8,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Combinators for executing IO actions in parallel on a thread pool"
 HOMEPAGE="http://batterseapower.github.com/parallel-io"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

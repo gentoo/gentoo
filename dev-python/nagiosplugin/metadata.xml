@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">nagiosplugin</remote-id>
-		<remote-id type="bitbucket">flyingcircus/nagiosplugin</remote-id>
-		<bugs-to>https://bitbucket.org/flyingcircus/nagiosplugin/issues</bugs-to>
+		<remote-id type="github">mpounsett/nagiosplugin</remote-id>
+		<bugs-to>https://github.com/mpounsett/nagiosplugin/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

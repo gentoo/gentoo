@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit flag-o-matic eutils
 
@@ -27,7 +27,7 @@ ldmilo_patch="20010430"
 # linload.exe :- linload utility (ldmilo equivalent for non-ruffians).
 
 SRC_URI="http://www.suse.de/~stepan/source/milo-${milo_version}.tar.bz2
-	mirror://kernel/linux/kernel/v2.2/linux-${kernel_version}.tar.bz2
+	https://www.kernel.org/pub/linux/kernel/v2.2/linux-${kernel_version}.tar.bz2
 	https://dev.gentoo.org/~taviso/milo/ldmilo-patched-${ldmilo_patch}
 	http://ftp.namesys.com/pub/reiserfs-for-2.2/linux-2.2.20-reiserfs-3.5.35.diff.bz2
 	https://dev.gentoo.org/~taviso/milo/linload.exe
@@ -87,12 +87,16 @@ src_unpack() {
 	# unpack everything the kernel and milo sources
 	unpack linux-${kernel_version}.tar.bz2
 	unpack milo-${milo_version}.tar.bz2
+	unpack linux-2.2.20-reiserfs-3.5.35.diff.bz2
+}
 
+src_prepare() {
 	# gcc3 fixes, and some tweaks to get a build, also
 	# reiserfs support for the kernel (and milo).
-	cd ${WORKDIR}/linux; epatch "${FILESDIR}"/linux-${kernel_version}-gcc3-milo.diff || die
-	cd ${WORKDIR}/linux; epatch "${DISTDIR}"/linux-2.2.20-reiserfs-3.5.35.diff.bz2 || die
-	cd ${S}; epatch "${FILESDIR}"/milo-${milo_version}-gcc3-gentoo.diff || die
+	cd ${WORKDIR}/linux; eapply "${FILESDIR}"/linux-${kernel_version}-gcc3-milo.diff || die
+	cd ${WORKDIR}/linux; eapply "${WORKDIR}"/linux-2.2.20-reiserfs-3.5.35.diff || die
+	cd ${S}; eapply "${FILESDIR}"/milo-${milo_version}-gcc3-gentoo.diff || die
+	eapply_user
 }
 
 src_compile() {
@@ -148,9 +152,6 @@ src_compile() {
 	einfo "set the path to the .config you want in \$custom_milo_kernel_config and"
 	einfo "i will use it instead of the default."
 	ewarn
-
-	einfon "continuing in 10 seconds ..."
-	epause 10
 
 	# get kernel configured
 	cp ${custom_milo_kernel_config:-${S}/Documentation/config/linux-2.2.19-SuSE.config} \

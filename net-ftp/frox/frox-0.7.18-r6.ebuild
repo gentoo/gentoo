@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ pkg_setup() {
 	use clamav && ewarn "Virus scanner potentialy broken in chroot - see bug #81035"
 }
 
-src_prepare () {
+src_prepare() {
 	HTML_DOCS=( doc/*.html doc/*.sgml )
 
 	default
@@ -45,6 +45,7 @@ src_prepare () {
 	eapply "${FILESDIR}/${PV}-respect-CFLAGS.patch"
 	eapply "${FILESDIR}/${PV}-netfilter-includes.patch"
 	eapply "${FILESDIR}/${P}-config.patch"
+	eapply "${FILESDIR}/${P}-no-common.patch"
 
 	if use clamav ; then
 		sed -i -e "s:^# VirusScanner.*:# VirusScanner '\"/usr/bin/clamscan\" \"%s\"':" \

@@ -1,0 +1,23 @@
+diff --git a/Makefile.in b/Makefile.in
+index 6756cd2..6debea8 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -16,12 +16,12 @@ win-clean:
+ 
+ install: all
+ 	cd po && $(MAKE) $(MAKEDEFS) $@
+-	mkdir -p $(bindir) 
+-	mkdir -p $(mandir) 
+-	install -m0755 wput $(bindir)
+-	install -m0644 doc/wput.1.gz $(mandir)
+-	ln -s $(bindir)/wput $(bindir)/wdel
+-	install -m0644 doc/wdel.1.gz $(mandir)
++	install -d $(DESTDIR)/$(bindir)
++	install -d $(DESTDIR)/$(mandir)
++	install -m0755 wput $(DESTDIR)/$(bindir)
++	install -m0644 doc/wput.1 $(DESTDIR)/$(mandir)
++	ln -s wput $(DESTDIR)/$(bindir)/wdel
++	install -m0644 doc/wdel.1 $(DESTDIR)/$(mandir)
+ 	@echo "----------------"
+ 	@echo "Wput and Wdel installed. See 'wput/wdel -h' or 'man wput/wdel' for"
+ 	@echo "usage information."

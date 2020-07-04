@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<use>
+		<flag name="dynrec">Use recompiling cpu core instead of dynamic x86/x64 specific cpu core</flag>
+		<flag name="opus">Support compressed audio tracks (.opus) used with CDROM images</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">dosbox-staging/dosbox-staging</remote-id>
+	</upstream>
+</pkgmetadata>

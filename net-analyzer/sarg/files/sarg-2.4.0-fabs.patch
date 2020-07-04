@@ -1,0 +1,11 @@
+--- a/btree_cache.c
++++ b/btree_cache.c
+@@ -268,7 +268,7 @@
+ static struct bt *get_disbalanced_node(struct bt *node)
+ {
+ 	struct bt *rdn;
+-	if (fabs(node->balanceinfo) > 1)
++	if (abs(node->balanceinfo) > 1)
+ 		return node;
+ 	if (node->left)
+ 	{

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit gnome2-utils meson python-single-r1 virtualx xdg-utils
 
 DESCRIPTION="Two-factor authentication code generator for GNOME"
@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/World/Authenticator"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://gitlab.gnome.org/World/Authenticator"
 else
 	SRC_URI="https://gitlab.gnome.org/World/Authenticator/-/archive/${PV}/Authenticator-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Authenticator-${PV}"
@@ -23,14 +23,17 @@ LICENSE="GPL-2+"
 SLOT="0"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 IUSE="test"
+RESTRICT="!test? ( test )"
 RDEPEND="
 	${PYTHON_DEPS}
 	app-crypt/libsecret
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/pyotp[${PYTHON_USEDEP}]
-	dev-python/python-gnupg[${PYTHON_USEDEP}]
-	dev-python/pyzbar[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyotp[${PYTHON_MULTI_USEDEP}]
+		dev-python/python-gnupg[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyzbar[${PYTHON_MULTI_USEDEP}]
+	')
 	media-libs/gd
 	x11-libs/gtk+:3
 "

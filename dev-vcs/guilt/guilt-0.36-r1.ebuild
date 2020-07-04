@@ -1,11 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+EGIT_COMMIT="22d785dd24329170f66e7696da38b3e90e033d61"
+
 DESCRIPTION="A series of bash scripts which add a quilt-like interface to git"
 HOMEPAGE="https://repo.or.cz/w/guilt.git"
-SRC_URI="${HOMEPAGE}/snapshot/22d785dd24329170f66e7696da38b3e90e033d61.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://repo.or.cz/w/guilt.git/snapshot/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,7 @@ src_compile() {
 	emake PREFIX="${EPREFIX}"/usr CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
-src_install () {
+src_install() {
 	gkrellm-plugin_src_install
 
 	exeinto /usr/libexec/gkrellweather

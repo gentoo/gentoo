@@ -49,7 +49,7 @@ src_test() {
 src_install() {
 	java-pkg_dojar "dist/${PN}.jar"
 
-	dodoc RELEASE-NOTES.txt || die
+	dodoc RELEASE-NOTES.txt
 
 	use doc && java-pkg_dojavadoc dist/docs/api
 	use source && java-pkg_dosrc src/java/org

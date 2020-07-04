@@ -1,0 +1,36 @@
+Since version 1.4.1 upstream has used setuptools-scm to determine the
+current version number. Unfortunately the package in question does not
+support GitHub release archives, using GitHub VCS snapshots would require
+retrieving and updating commit hashes corresponding to release tags, and
+PyPI tarballs do not contain tests. setuptools_scm_git_archive does not
+help because it requires extra files to be included in the repository,
+which upstream has not done.
+
+Seeing as we already know the version number, bypass setuptools_scm
+altogether and create the version file ourselves. For obvious reasons the
+latter cannot be done with a patch alone - have to call sed in src_prepare.
+
+--- a/setup.py
++++ b/setup.py
+@@ -16,9 +16,6 @@
+ 
+ setup(
+     name="protontricks",
+-    use_scm_version={
+-        "write_to": "src/protontricks/_version.py"
+-    },
+     description=DESCRIPTION,
+     long_description=LONG_DESCRIPTION,
+     author=AUTHOR,
+@@ -28,7 +25,6 @@
+     packages=["protontricks"],
+     package_data={"": ["LICENSE"]},
+     package_dir={"protontricks": "src/protontricks"},
+-    setup_requires=["setuptools_scm"],
+     install_requires=["vdf>=2.4"],
+     entry_points={
+         "console_scripts": [
+--- /dev/null
++++ b/src/protontricks/_version.py
+@@ -0,0 +1 @@
++version = '@VERSION@'

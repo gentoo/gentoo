@@ -1,19 +1,3 @@
-From 1aa5f4164b86fd0c5cf174c8403442060cad497d Mon Sep 17 00:00:00 2001
-From: Harri Nieminen <moikkis@gmail.com>
-Date: Sat, 25 Mar 2017 12:17:09 +0200
-Subject: [PATCH 1/2] Remove useless include on
- gdk-pixbuf-xlib/gdk-pixbuf-xlib.h
-
-Also fix underlinking, bug #369591
-
-Thanks for leio@g.o for reporting
----
- Makefile.common | 4 ++--
- plugin.c        | 1 -
- 2 files changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/Makefile.common b/Makefile.common
-index 0d50340..ec2bc3c 100644
 --- a/Makefile.common
 +++ b/Makefile.common
 @@ -16,8 +16,8 @@ endif
@@ -22,13 +6,11 @@ index 0d50340..ec2bc3c 100644
  CC = gcc
 -LIBS = $(shell pkg-config --libs gtk+-2.0 gdk-pixbuf-2.0 gdk-pixbuf-xlib-2.0) -L/usr/X11R6/lib  -lXmu
 -INCS = $(shell pkg-config --cflags gtk+-2.0 gdk-pixbuf-2.0 gdk-pixbuf-xlib-2.0)
-+LIBS = $(shell pkg-config --libs gtk+-2.0 gdk-pixbuf-2.0 gmodule-2.0 x11)
-+INCS = $(shell pkg-config --cflags gtk+-2.0 gdk-pixbuf-2.0 gmodule-2.0 x11)
++LIBS = $(shell ${PKG_CONFIG} --libs gtk+-2.0 gdk-pixbuf-2.0 gmodule-2.0 x11)
++INCS = $(shell ${PKG_CONFIG} --cflags gtk+-2.0 gdk-pixbuf-2.0 gmodule-2.0 x11)
  CFLAGS = -O2    # overwriten by command line or env. variable
  CFLAGS += -Wall # always nice to have 
  ifneq (,$(DEVEL))
-diff --git a/plugin.c b/plugin.c
-index 7fd5398..a6f8fbb 100644
 --- a/plugin.c
 +++ b/plugin.c
 @@ -2,7 +2,6 @@
@@ -38,7 +20,3 @@ index 7fd5398..a6f8fbb 100644
 -#include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>
  #include <gdk/gdk.h>
  #include <string.h>
- 
--- 
-2.12.1
-

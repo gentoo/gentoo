@@ -1,0 +1,18 @@
+--- a/modules/httpd/httpd.test	2019-11-02 22:36:08.983215578 +0100
++++ b/modules/httpd/httpd.test	2019-11-02 22:37:04.397309180 +0100
+@@ -448,15 +448,6 @@
+ 
+ [clock seconds]}]
+ 
+-test scgi-client-0005 {URL Different output with a different request} {
+-set reply [::scgi::test::send 10001 {REQUEST_METHOD POST
+-REQUEST_URI /time
+-
+-THIS ONE ALONE IS MINE}]
+-
+-::httpd::test::compare $reply $checkreply
+-} {}
+-
+ set fin [open [file join $DEMOROOT pkgIndex.tcl] r]
+ set checkfile [read $fin]
+ close $fin

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic readme.gentoo-r1 toolchain-funcs wxwidgets
 
@@ -17,10 +17,10 @@ if [[ -z ${PV%%*9999} ]]; then
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
-LICENSE="gnuplot bitmap? ( free-noncomm )"
+LICENSE="gnuplot"
 SLOT="0"
 IUSE="aqua bitmap cairo doc examples +gd ggi latex libcaca libcerf lua qt5 readline wxwidgets X"
 
@@ -37,7 +37,8 @@ RDEPEND="
 			>=dev-texlive/texlive-latexrecommended-2008-r2 ) )
 	libcaca? ( media-libs/libcaca )
 	lua? ( dev-lang/lua:0 )
-	qt5? ( dev-qt/qtcore:5=
+	qt5? (
+		dev-qt/qtcore:5=
 		dev-qt/qtgui:5=
 		dev-qt/qtnetwork:5=
 		dev-qt/qtprintsupport:5=
@@ -51,7 +52,10 @@ RDEPEND="
 		x11-libs/pango
 		x11-libs/gtk+:2 )
 	X? ( x11-libs/libXaw )"
-DEPEND="${RDEPEND}
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		virtual/latex-base
@@ -124,7 +128,6 @@ src_configure() {
 		$(use_with doc tutorial) \
 		$(use_with gd) \
 		"$(use_with ggi ggi "${EPREFIX}/usr/$(get_libdir)")" \
-		"$(use_with ggi xmi "${EPREFIX}/usr/$(get_libdir)")" \
 		"$(use_with libcaca caca "${EPREFIX}/usr/$(get_libdir)")" \
 		$(use_with libcerf) \
 		$(use_with lua) \
@@ -157,10 +160,10 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
-	dodoc BUGS ChangeLog NEWS PGPKEYS PORTING README* RELEASE_NOTES TODO
+	dodoc BUGS NEWS PGPKEYS README* RELEASE_NOTES TODO
 	newdoc term/PostScript/README README-ps
 	newdoc term/js/README README-js
 	use lua && newdoc term/lua/README README-lua
@@ -170,8 +173,8 @@ src_install () {
 		# Demo files
 		insinto /usr/share/${PN}/${GP_VERSION}
 		doins -r demo
-		rm -f "${ED%/}"/usr/share/${PN}/${GP_VERSION}/demo/Makefile*
-		rm -f "${ED%/}"/usr/share/${PN}/${GP_VERSION}/demo/binary*
+		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/Makefile*
+		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/binary*
 	fi
 
 	if use doc; then

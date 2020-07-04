@@ -7,6 +7,7 @@ MY_NAME=${SVCNAME//-/_}
 
 depend() {
 	use logger
+	after modules
 }
 
 checkconfig() {
@@ -34,8 +35,8 @@ start() {
 		--user "${MJPG_STREAMER_USER}" \
 		--group "${MJPG_STREAMER_GROUP}" -w 100 -b -m \
 		--pidfile "${MJPG_STREAMER_PIDFILE}" \
-		-- -i "/usr/lib/input_${INPUT_PLUGIN}.so ${INPUT_PLUGIN_OPTS}" \
-		-o "/usr/lib/output_${OUTPUT_PLUGIN}.so ${OUTPUT_PLUGIN_OPTS}"
+		-- -i "/usr/@LIBDIR@/input_${INPUT_PLUGIN}.so ${INPUT_PLUGIN_OPTS}" \
+		-o "/usr/@LIBDIR@/output_${OUTPUT_PLUGIN}.so ${OUTPUT_PLUGIN_OPTS}"
 	eend $? "Check syslog to see why startup failed."
 }
 

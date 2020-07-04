@@ -14,6 +14,10 @@
 </longdescription>
 <use>
   <flag name="metis">Use <pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg> for partitioning</flag>
+  <flag name="partition">
+    Use the partition module of <pkg>sci-libs/cholmod</pkg> for
+    partitioning
+  </flag>
   <flag name="tbb">Enable multithreading with the Intel Threads
   Building Block <pkg>dev-cpp/tbb</pkg></flag>
 </use>

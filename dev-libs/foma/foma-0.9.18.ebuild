@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A set of utilities for constructing finite-state automata and transducers"
 HOMEPAGE="https://github.com/mhulden/foma"
@@ -11,7 +11,7 @@ SRC_URI="https://bitbucket.org/mhulden/foma/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="sys-libs/readline:*
 	sys-libs/zlib"
@@ -24,6 +24,8 @@ src_prepare() {
 
 	# Install to correct libdir
 	sed "s|/lib|/$(get_libdir)|" -i Makefile || die
+
+	append-cflags -fcommon
 }
 
 src_compile() {

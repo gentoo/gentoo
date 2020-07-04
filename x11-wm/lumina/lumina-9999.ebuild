@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,7 +46,7 @@ PATCHES=(
 	"${FILESDIR}/1.2.0-desktop-files.patch"
 )
 
-src_prepare(){
+src_prepare() {
 	default
 
 	if use !desktop-utils ; then
@@ -55,12 +55,12 @@ src_prepare(){
 	fi
 }
 
-src_configure(){
+src_configure() {
 	eqmake5 PREFIX="${EPREFIX}/usr" LIBPREFIX="${EPREFIX}/usr/$(get_libdir)" \
 		DESTDIR="${D}" CONFIG+=WITH_I18N QMAKE_CFLAGS_ISYSTEM=
 }
 
-src_install(){
+src_install() {
 	default
 	mv "${ED%/}"/etc/luminaDesktop.conf{.dist,} || die
 	rm "${ED%/}"/${PN}-* "${ED%/}"/start-${PN}-desktop || die

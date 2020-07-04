@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,14 +10,14 @@ DEB_PR=1
 DEB_P=${PN}_${DEB_PV}
 
 DESCRIPTION="Fortran to C converter"
-HOMEPAGE="http://www.netlib.org/f2c"
+HOMEPAGE="https://www.netlib.org/f2c"
 SRC_URI="
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_P}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_P}-${DEB_PR}.debian.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND=">=dev-libs/libf2c-20130927-r1"
 

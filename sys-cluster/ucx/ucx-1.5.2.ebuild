@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Unified Communication X"
-HOMEPAGE="http://www.openucx.org"
+HOMEPAGE="https://www.openucx.org"
 SRC_URI="https://github.com/openucx/ucx/releases/download/v${PV}/${P}.tar.gz"
 
 SLOT="0"

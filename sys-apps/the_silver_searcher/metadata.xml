@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>radhermit@gentoo.org</email>
-    <name>Tim Harder</name>
+    <email>wraeth@gentoo.org</email>
+    <name>Sam Jorna</name>
   </maintainer>
   <upstream>
     <remote-id type="github">ggreer/the_silver_searcher</remote-id>

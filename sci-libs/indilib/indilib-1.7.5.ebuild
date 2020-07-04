@@ -14,6 +14,7 @@ LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0/1"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="ogg test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	net-misc/curl

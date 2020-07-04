@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://www.fnurt.net/larswm/${P}.tar.gz"
 LICENSE="9wm"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ppc ppc64 x86"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXmu

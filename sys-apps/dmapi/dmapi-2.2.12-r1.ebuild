@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils toolchain-funcs multilib multilib-minimal usr-ldscript
+inherit eutils toolchain-funcs ltprune multilib multilib-minimal usr-ldscript
 
 DESCRIPTION="XFS data management API library"
 HOMEPAGE="https://xfs.wiki.kernel.org/"
@@ -12,7 +12,7 @@ SRC_URI="ftp://oss.sgi.com/projects/xfs/cmd_tars/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="static-libs"
 
 RDEPEND="sys-fs/xfsprogs"

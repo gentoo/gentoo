@@ -1,0 +1,23 @@
+diff -Naur wmtimer-2.92.orig/wmgeneral/wmgeneral.c wmtimer-2.92/wmgeneral/wmgeneral.c
+--- wmtimer-2.92.orig/wmgeneral/wmgeneral.c	2004-01-29 03:38:58.000000000 +0100
++++ wmtimer-2.92/wmgeneral/wmgeneral.c	2020-02-24 22:07:07.028810885 +0100
+@@ -67,6 +67,7 @@
+ GC NormalGC;
+ XpmIcon wmgen;
+ Pixmap pixmask;
++Display *display;
+ 
+ char *textColor = NULL;
+ XpmColorSymbol colorSymbols[3] = { {"Text", NULL, 0} };
+diff -Naur wmtimer-2.92.orig/wmgeneral/wmgeneral.h wmtimer-2.92/wmgeneral/wmgeneral.h
+--- wmtimer-2.92.orig/wmgeneral/wmgeneral.h	2001-10-11 07:38:39.000000000 +0200
++++ wmtimer-2.92/wmgeneral/wmgeneral.h	2020-02-24 22:06:49.756805063 +0100
+@@ -40,7 +40,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display *display;
++extern Display *display;
+ 
+ /***********************/
+  /* Function Prototypes */

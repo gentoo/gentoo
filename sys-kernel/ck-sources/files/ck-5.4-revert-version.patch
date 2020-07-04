@@ -1,0 +1,27 @@
+From 4473747a792ea06f8e20c3a8b06a64d0f8082b5c Mon Sep 17 00:00:00 2001
+From: Jory Pratt <anarchy@gentoo.org>
+Date: Thu, 12 Dec 2019 23:14:45 -0600
+Subject: [PATCH] Revert Add -ck1 version.
+
+---
+ Makefile | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index c9d6e972a..a0685a256 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,10 +15,6 @@ NAME = Kleptomaniac Octopus
+ PHONY := _all
+ _all:
+ 
+-CKVERSION = -ck1
+-CKNAME = MuQSS Powered
+-EXTRAVERSION := $(EXTRAVERSION)$(CKVERSION)
+-
+ # We are using a recursive build, so we need to do a little thinking
+ # to get the ordering right.
+ #
+-- 
+2.24.1
+

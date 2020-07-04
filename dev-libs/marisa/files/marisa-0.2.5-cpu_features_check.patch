@@ -1,0 +1,157 @@
+https://github.com/s-yata/marisa-trie/commit/d93f1b67f3aaa2d56bf20089c0ce9ef216da6cb7
+
+--- /configure.ac
++++ /configure.ac
+@@ -13,6 +13,56 @@
+ 
+ AC_CONFIG_MACRO_DIR([m4])
+ 
++# Macros for SSE availability check.
++AC_DEFUN([MARISA_ENABLE_SSE2],
++          [AC_EGREP_CPP([yes], [
++#ifdef __SSE2__
++yes
++#endif
++          ], [enable_sse2="yes"], [enable_sse2="no"])])
++AC_DEFUN([MARISA_ENABLE_SSE3],
++          [AC_EGREP_CPP([yes], [
++#ifdef __SSE3__
++yes
++#endif
++          ], [enable_sse3="yes"], [enable_sse3="no"])])
++AC_DEFUN([MARISA_ENABLE_SSSE3],
++         [AC_EGREP_CPP([yes], [
++#ifdef __SSSE3__
++yes
++#endif
++         ], [enable_ssse3="yes"], [enable_ssse3="no"])])
++AC_DEFUN([MARISA_ENABLE_SSE4_1],
++         [AC_EGREP_CPP([yes], [
++#ifdef __SSE4_1__
++yes
++#endif
++         ], [enable_sse4_1="yes"], [enable_sse4_1="no"])])
++AC_DEFUN([MARISA_ENABLE_SSE4_2],
++         [AC_EGREP_CPP([yes], [
++#ifdef __SSE4_2__
++yes
++#endif
++         ], [enable_sse4_2="yes"], [enable_sse4_2="no"])])
++AC_DEFUN([MARISA_ENABLE_SSE4],
++         [AC_EGREP_CPP([yes], [
++#if defined(__POPCNT__) && defined(__SSE4_2__)
++yes
++#endif
++         ], [enable_sse4="yes"], [enable_sse4="no"])])
++AC_DEFUN([MARISA_ENABLE_SSE4A],
++         [AC_EGREP_CPP([yes], [
++#ifdef __SSE4A__
++yes
++#endif
++         ], [enable_sse4a="yes"], [enable_sse4a="no"])])
++AC_DEFUN([MARISA_ENABLE_POPCNT],
++         [AC_EGREP_CPP([yes], [
++#ifdef __POPCNT__
++yes
++#endif
++         ], [enable_popcnt="yes"], [enable_popcnt="no"])])
++
+ # Checks for SSE availability.
+ AC_MSG_CHECKING([whether to use SSE2])
+ AC_ARG_ENABLE([sse2],
+@@ -20,9 +70,7 @@
+                               [use SSE2 [default=no]])],
+               [],
+               [enable_sse2="no"])
+-AS_IF([test "x${enable_sse2}" != "xno"], [
+-  enable_sse2="yes"
+-])
++AS_IF([test "x${enable_sse2}" != "xno"], [MARISA_ENABLE_SSE2])
+ AC_MSG_RESULT([${enable_sse2}])
+ 
+ AC_MSG_CHECKING([whether to use SSE3])
+@@ -31,9 +79,7 @@
+                               [use SSE3 [default=no]])],
+               [],
+               [enable_sse3="no"])
+-AS_IF([test "x${enable_sse3}" != "xno"], [
+-  enable_sse3="yes"
+-])
++AS_IF([test "x${enable_sse3}" != "xno"], [MARISA_ENABLE_SSE3])
+ AC_MSG_RESULT([${enable_sse3}])
+ 
+ AC_MSG_CHECKING([whether to use SSSE3])
+@@ -42,9 +88,7 @@
+                               [use SSSE3 [default=no]])],
+               [],
+               [enable_ssse3="no"])
+-AS_IF([test "x${enable_ssse3}" != "xno"], [
+-  enable_ssse3="yes"
+-])
++AS_IF([test "x${enable_ssse3}" != "xno"], [MARISA_ENABLE_SSSE3])
+ AC_MSG_RESULT([${enable_ssse3}])
+ 
+ AC_MSG_CHECKING([whether to use SSE4.1])
+@@ -53,9 +97,7 @@
+                               [use SSE4.1 [default=no]])],
+               [],
+               [enable_sse4_1="no"])
+-AS_IF([test "x${enable_sse4_1}" != "xno"], [
+-  enable_sse4_1="yes"
+-])
++AS_IF([test "x${enable_sse4_1}" != "xno"], [MARISA_ENABLE_SSE4_1])
+ AC_MSG_RESULT([${enable_sse4_1}])
+ 
+ AC_MSG_CHECKING([whether to use SSE4.2])
+@@ -64,9 +106,7 @@
+                               [use SSE4.2 [default=no]])],
+               [],
+               [enable_sse4_2="no"])
+-AS_IF([test "x${enable_sse4_2}" != "xno"], [
+-  enable_sse4_2="yes"
+-])
++AS_IF([test "x${enable_sse4_2}" != "xno"], [MARISA_ENABLE_SSE4_2])
+ AC_MSG_RESULT([${enable_sse4_2}])
+ 
+ AC_MSG_CHECKING([whether to use SSE4])
+@@ -75,9 +115,7 @@
+                               [use SSE4 [default=no]])],
+               [],
+               [enable_sse4="no"])
+-AS_IF([test "x${enable_sse4}" != "xno"], [
+-  enable_sse4="yes"
+-])
++AS_IF([test "x${enable_sse4}" != "xno"], [MARISA_ENABLE_SSE4])
+ AC_MSG_RESULT([${enable_sse4}])
+ 
+ AC_MSG_CHECKING([whether to use SSE4a])
+@@ -86,9 +124,7 @@
+                               [use SSE4a [default=no]])],
+               [],
+               [enable_sse4a="no"])
+-AS_IF([test "x${enable_sse4a}" != "xno"], [
+-  enable_sse4a="yes"
+-])
++AS_IF([test "x${enable_sse4a}" != "xno"], [MARISA_ENABLE_SSE4A])
+ AC_MSG_RESULT([${enable_sse4a}])
+ 
+ AC_MSG_CHECKING([whether to use popcnt])
+@@ -97,9 +133,7 @@
+                               [use POPCNT [default=no]])],
+               [],
+               [enable_popcnt="no"])
+-AS_IF([test "x${enable_popcnt}" != "xno"], [
+-  enable_popcnt="yes"
+-])
++AS_IF([test "x${enable_popcnt}" != "xno"], [MARISA_ENABLE_POPCNT])
+ AC_MSG_RESULT([${enable_popcnt}])
+ 
+ AS_IF([test "x${enable_popcnt}" != "xno"], [
+@@ -170,6 +204,7 @@
+ AS_ECHO(["  LDFLAGS:   ${LDFLAGS}"])
+ AS_ECHO(["  PREFIX:    ${prefix}"])
+ AS_ECHO([])
++AS_ECHO(["  NATIVE:    ${enable_native_code}"])
+ AS_ECHO(["  SSE2:      ${enable_sse2}"])
+ AS_ECHO(["  SSE3:      ${enable_sse3}"])
+ AS_ECHO(["  SSSE3:     ${enable_ssse3}"])

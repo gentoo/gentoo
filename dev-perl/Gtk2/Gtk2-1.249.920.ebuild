@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ DESCRIPTION="Perl bindings for GTK2"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	x11-libs/gtk+:2
@@ -27,6 +28,6 @@ DEPEND="${RDEPEND}
 	test? ( x11-libs/gdk-pixbuf[jpeg] )
 "
 
-src_test(){
+src_test() {
 	virtx perl-module_src_test
 }

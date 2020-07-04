@@ -1,0 +1,30 @@
+From f07497e36ccc883626ae5cdfa7f81fcb3fc0d549 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 5 Apr 2020 23:43:30 +0200
+Subject: [PATCH] Use system's CA certificate store
+
+---
+ certifi/core.py | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/certifi/core.py b/certifi/core.py
+index 56b52a3..467880f 100644
+--- a/certifi/core.py
++++ b/certifi/core.py
+@@ -21,10 +21,9 @@ except ImportError:
+ 
+ 
+ def where():
+-    f = os.path.dirname(__file__)
+-
+-    return os.path.join(f, "cacert.pem")
++    return "@GENTOO_PORTAGE_EPREFIX@/etc/ssl/certs/ca-certificates.crt"
+ 
+ 
+ def contents():
+-    return read_text("certifi", "cacert.pem", encoding="ascii")
++    with open(where(), "r", encoding="ascii") as f:
++        return f.read()
+-- 
+2.24.1
+

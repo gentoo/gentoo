@@ -1,4 +1,0 @@
-PATH="/opt/gwydion-dylan/:/opt/gwydion-dylan/bin"
-ROOTPATH="/opt/gwydion-dylan/:/opt/gwydion-dylan/bin"
-LDPATH="/opt/gwydion-dylan/lib/dylan/2.4.0/x86-linux-gcc33/"
-DYLANDIR="/opt/gwydion-dylan"

@@ -1,0 +1,600 @@
+https://github.com/google/mozc/issues/462
+
+--- /src/build_tools/redirect.py
++++ /src/build_tools/redirect.py
+@@ -58,14 +58,15 @@
+     process = subprocess.Popen(sys.argv, stdout=subprocess.PIPE,
+                                universal_newlines=True)
+   except:
+-    print '=========='
+-    print ' ERROR: %s' % ' '.join(sys.argv)
+-    print '=========='
++    print('==========')
++    print(' ERROR: %s' % ' '.join(sys.argv))
++    print('==========')
+     raise
+   (stdout_content, _) = process.communicate()
+   # Write the stdout content to the output file.
+   output_file = open(output_file_name, 'w')
+   output_file.write(stdout_content)
++  output_file.close()
+   return process.wait()
+ 
+ if __name__ == '__main__':
+--- /src/build_tools/run_after_chdir.py
++++ /src/build_tools/run_after_chdir.py
+@@ -57,7 +57,7 @@
+     sys.argv.insert(0, sys.executable)  # Inject the python interpreter path.
+   # We don't capture stdout and stderr from Popen. The output will just
+   # be emitted to a terminal or console.
+-  print sys.argv
++  print(sys.argv)
+   sys.exit(subprocess.call(sys.argv))
+ 
+ if __name__ == '__main__':
+--- /src/build_tools/serialized_string_array_builder.py
++++ /src/build_tools/serialized_string_array_builder.py
+@@ -58,11 +58,11 @@
+     f.write(struct.pack('<I', array_size))
+ 
+     # Offset and length array of (4 + 4) * array_size bytes.
+-    for i in xrange(array_size):
++    for i in range(array_size):
+       f.write(struct.pack('<I', offsets[i]))
+       f.write(struct.pack('<I', lengths[i]))
+ 
+     # Strings chunk.
+-    for i in xrange(array_size):
++    for i in range(array_size):
+       f.write(strings[i])
+-      f.write('\0')
++      f.write(b'\0')
+--- /src/build_tools/test_tools/gtest_report.py
++++ /src/build_tools/test_tools/gtest_report.py
+@@ -36,9 +36,9 @@
+ 
+ __author__ = "nona"
+ 
+-import cStringIO as StringIO
++import io
+ import logging
+-from xml.etree import cElementTree as ElementTree
++from xml.etree import ElementTree
+ 
+ 
+ class Failure(object):
+@@ -87,13 +87,13 @@
+     """Returns summarized error report text."""
+     if self.fail_num == 0:
+       return ''
+-    output = StringIO.StringIO()
++    output = io.StringIO()
+     for testcase in self.testcases:
+       if not testcase.failures:
+         continue
+-      print >>output, '%s.%s:' % (self.name, testcase.name)
++      print('%s.%s:' % (self.name, testcase.name), file=output)
+       for failure in testcase.failures:
+-        print >>output, failure.contents.encode('utf-8')
++        print(failure.contents.encode('utf-8'), file=output)
+     return output.getvalue()
+ 
+   @classmethod
+--- /src/build_tools/test_tools/test_launcher.py
++++ /src/build_tools/test_tools/test_launcher.py
+@@ -101,11 +101,11 @@
+       time.sleep(1)
+       try:
+         shutil.rmtree(self._path)
+-      except OSError, e:
++      except OSError as e:
+         logging.error('Failed to remove %s. error: %s', self._path, e)
+ 
+ 
+-def _ExecuteTest((command, gtest_report_dir)):
++def _ExecuteTest(args):
+   """Executes tests with specified Test command.
+ 
+   Args:
+@@ -122,6 +122,7 @@
+   module, which is used in multiprocessing module.
+   (http://docs.python.org/library/pickle.html)
+   """
++  (command, gtest_report_dir) = args
+   binary = command[0]
+   binary_filename = os.path.basename(binary)
+   tmp_dir = tempfile.mkdtemp()
+--- /src/build_tools/tweak_data.py
++++ /src/build_tools/tweak_data.py
+@@ -55,7 +55,7 @@
+       The value for the variable if the variable is defined in the
+       environment.  Otherwise original string is returned.
+     """
+-    if environment.has_key(matchobj.group(1)):
++    if matchobj.group(1) in environment:
+       return environment[matchobj.group(1)]
+     return matchobj.group(0)
+ 
+--- /src/build_tools/tweak_info_plist.py
++++ /src/build_tools/tweak_info_plist.py
+@@ -42,8 +42,8 @@
+ import logging
+ import optparse
+ import sys
+-import mozc_version
+-import tweak_data
++from . import mozc_version
++from . import tweak_data
+ 
+ _COPYRIGHT_YEAR = datetime.date.today().year
+ 
+@@ -81,7 +81,7 @@
+ 
+   version = mozc_version.MozcVersion(options.version_file)
+ 
+-  copyright_message = (u'© %d Google Inc.' % _COPYRIGHT_YEAR).encode('utf-8')
++  copyright_message = ('© %d Google Inc.' % _COPYRIGHT_YEAR).encode('utf-8')
+   long_version = version.GetVersionString()
+   short_version = version.GetVersionInFormat('@MAJOR@.@MINOR@.@BUILD@')
+ 
+--- /src/build_tools/tweak_info_plist_strings.py
++++ /src/build_tools/tweak_info_plist_strings.py
+@@ -40,7 +40,7 @@
+ import logging
+ import optparse
+ import sys
+-import tweak_data
++from . import tweak_data
+ 
+ _COPYRIGHT_YEAR = datetime.date.today().year
+ 
+@@ -77,7 +77,7 @@
+   if options.branding == 'GoogleJapaneseInput':
+     variables = {
+         'CF_BUNDLE_NAME_EN': 'Google Japanese Input',
+-        'CF_BUNDLE_NAME_JA': u'Google 日本語入力'.encode('utf-8'),
++        'CF_BUNDLE_NAME_JA': 'Google 日本語入力'.encode('utf-8'),
+         'NS_HUMAN_READABLE_COPYRIGHT': copyright_message,
+         'INPUT_MODE_ANNOTATION': 'Google',
+         }
+--- /src/build_tools/tweak_macinstaller_script.py
++++ /src/build_tools/tweak_macinstaller_script.py
+@@ -39,7 +39,7 @@
+ import logging
+ import optparse
+ 
+-import mozc_version
++from . import mozc_version
+ 
+ 
+ def _ReplaceVariables(data, environment):
+--- /src/build_tools/tweak_pkgproj.py
++++ /src/build_tools/tweak_pkgproj.py
+@@ -45,7 +45,7 @@
+ import os
+ import plistlib
+ import re
+-import mozc_version
++from . import mozc_version
+ 
+ from os import path
+ 
+@@ -71,7 +71,7 @@
+       The value for the variable if the variable is defined in the
+       environment.  Otherwise original string is returned.
+     """
+-    if environment.has_key(matchobj.group(1)):
++    if matchobj.group(1) in environment:
+       return environment[matchobj.group(1)]
+     return matchobj.group(0)
+ 
+--- /src/build_tools/util.py
++++ /src/build_tools/util.py
+@@ -73,11 +73,11 @@
+   return 1
+ 
+ 
+-class RunOrDieError(StandardError):
++class RunOrDieError(Exception):
+   """The exception class for RunOrDie."""
+ 
+   def __init__(self, message):
+-    StandardError.__init__(self, message)
++    Exception.__init__(self, message)
+ 
+ 
+ def RunOrDie(argv):
+@@ -105,7 +105,7 @@
+     return  # Do nothing if not exist.
+   if IsWindows():
+     # Read-only files cannot be deleted on Windows.
+-    os.chmod(file_name, 0700)
++    os.chmod(file_name, 0o700)
+   logging.debug('Removing file: %s', file_name)
+   os.unlink(file_name)
+ 
+--- /src/build_tools/zlib_util.py
++++ /src/build_tools/zlib_util.py
+@@ -58,7 +58,7 @@
+ 
+ def main():
+   if len(sys.argv) != 4:
+-    print >>sys.stderr, 'Invalid arguments'
++    print('Invalid arguments', file=sys.stderr)
+     return
+   if sys.argv[1] == 'compress':
+     Compress(sys.argv[2], sys.argv[3])
+@@ -66,7 +66,7 @@
+   if sys.argv[1] == 'decompress':
+     Decompress(sys.argv[2], sys.argv[3])
+     return
+-  print >>sys.stderr, 'Unknown command:', sys.argv[1]
++  print('Unknown command:', sys.argv[1], file=sys.stderr)
+ 
+ 
+ if __name__ == '__main__':
+--- /src/composer/internal/gen_typing_model.py
++++ /src/composer/internal/gen_typing_model.py
+@@ -54,14 +54,13 @@
+ __author__ = "noriyukit"
+ 
+ import bisect
+-import codecs
+ import collections
+ import optparse
+ import struct
+ 
+ UNDEFINED_COST = -1
+-MAX_UINT16 = struct.unpack('H', '\xFF\xFF')[0]
+-MAX_UINT8 = struct.unpack('B', '\xFF')[0]
++MAX_UINT16 = struct.unpack('H', b'\xFF\xFF')[0]
++MAX_UINT8 = struct.unpack('B', b'\xFF')[0]
+ 
+ 
+ def ParseArgs():
+@@ -113,7 +112,7 @@
+   sorted_values = list(sorted(set(values)))
+   mapping_table = sorted_values[0]
+   mapping_table_size_without_special_value = mapping_table_size - 1
+-  span = len(sorted_values) / (mapping_table_size_without_special_value - 1)
++  span = len(sorted_values) // (mapping_table_size_without_special_value - 1)
+   mapping_table = [sorted_values[i * span]
+                    for i
+                    in range(0, mapping_table_size_without_special_value - 1)]
+@@ -150,7 +149,7 @@
+ 
+ def GetValueTable(unique_characters, mapping_table, dictionary):
+   result = []
+-  for key, value in dictionary.iteritems():
++  for key, value in dictionary.items():
+     index = GetIndexFromKey(unique_characters, key)
+     while len(result) <= index:
+       result.append(len(mapping_table) - 1)
+@@ -167,13 +166,13 @@
+                              romaji_transition_cost)
+   with open(output_path, 'wb') as f:
+     f.write(struct.pack('<I', len(unique_characters)))
+-    f.write(''.join(unique_characters))
++    f.write(''.join(unique_characters).encode('utf-8'))
+     offset = 4 + len(unique_characters)
+ 
+     # Add padding to place value list size at 4-byte boundary.
+     if offset % 4:
+       padding_size = 4 - offset % 4
+-      f.write('\x00' * padding_size)
++      f.write(b'\x00' * padding_size)
+       offset += padding_size
+ 
+     f.write(struct.pack('<I', len(value_list)))
+@@ -184,7 +183,7 @@
+     # Add padding to place mapping_table at 4-byte boundary.
+     if offset % 4:
+       padding_size = 4 - offset % 4
+-      f.write('\x00' * padding_size)
++      f.write(b'\x00' * padding_size)
+       offset += padding_size
+ 
+     for v in mapping_table:
+@@ -198,7 +197,8 @@
+   #   - trigram['vw']['x'] = -500 * log(P(x | 'vw'))
+   unigram = {}
+   trigram = collections.defaultdict(dict)
+-  for line in codecs.open(options.input_path, 'r', encoding='utf-8'):
++  input_file = open(options.input_path, 'r', encoding='utf-8')
++  for line in input_file:
+     line = line.rstrip()
+     ngram, cost = line.split('\t')
+     cost = int(cost)
+@@ -206,6 +206,7 @@
+       unigram[ngram] = cost
+     else:
+       trigram[ngram[:-1]][ngram[-1]] = cost
++  input_file.close()
+ 
+   # Calculate ngram-related cost for each 'vw' and 'x':
+   #     -500 * log( P('x' | 'vw') / P('x') )
+--- /src/converter/gen_boundary_data.py
++++ /src/converter/gen_boundary_data.py
+@@ -70,7 +70,8 @@
+ def LoadPatterns(file):
+   prefix = []
+   suffix = []
+-  for line in open(file, 'r'):
++  fh = open(file, 'r')
++  for line in fh:
+     if len(line) <= 1 or line[0] == '#':
+       continue
+     fields = line.split()
+@@ -84,8 +85,9 @@
+     elif label == 'SUFFIX':
+       suffix.append([re.compile(PatternToRegexp(feature)), cost])
+     else:
+-      print 'format error %s' % (line)
++      print('format error %s' % (line))
+       sys.exit(0)
++  fh.close()
+   return (prefix, suffix)
+ 
+ 
+@@ -100,19 +102,23 @@
+ 
+ def LoadFeatures(filename):
+   features = []
+-  for line in open(filename, 'r'):
++  fh = open(filename, 'r')
++  for line in fh:
+     fields = line.split()
+     features.append(fields[1])
++  fh.close()
+   return features
+ 
+ 
+ def CountSpecialPos(filename):
+   count = 0
+-  for line in open(filename, 'r'):
++  fh = open(filename, 'r')
++  for line in fh:
+     line = line.rstrip()
+     if not line or line[0] == '#':
+       continue
+     count += 1
++  fh.close()
+   return count
+ 
+ 
+@@ -141,7 +147,7 @@
+       f.write(struct.pack('<H', GetCost(prefix, feature)))
+       f.write(struct.pack('<H', GetCost(suffix, feature)))
+ 
+-    for _ in xrange(num_special_pos):
++    for _ in range(num_special_pos):
+       f.write(struct.pack('<H', 0))
+       f.write(struct.pack('<H', 0))
+ 
+--- /src/converter/gen_quality_regression_test_data.py
++++ /src/converter/gen_quality_regression_test_data.py
+@@ -84,7 +84,7 @@
+                else _ENABLED)
+     id = issue.attributes['id'].value
+     target = GetText(issue.getElementsByTagName('target'))
+-    for detail in issue.getElementsByTagName(u'detail'):
++    for detail in issue.getElementsByTagName('detail'):
+       fields = []
+       fields.append('mozcsu_%s' % id)
+       for key in ('reading', 'output', 'actionStatus', 'rank', 'accuracy'):
+@@ -104,19 +104,19 @@
+ 
+ def GenerateHeader(files):
+   try:
+-    print 'namespace mozc{'
+-    print 'struct TestCase {'
+-    print '  const bool enabled;'
+-    print '  const char *tsv;'
+-    print '} kTestData[] = {'
++    print('namespace mozc{')
++    print('struct TestCase {')
++    print('  const bool enabled;')
++    print('  const char *tsv;')
++    print('} kTestData[] = {')
+     for file in files:
+       for enabled, line in ParseFile(file):
+-        print ' {%s, "%s"},' % (enabled, EscapeString(line))
+-    print '  {false, nullptr},'
+-    print '};'
+-    print '}  // namespace mozc'
++        print(' {%s, "%s"},' % (enabled, EscapeString(line)))
++    print('  {false, nullptr},')
++    print('};')
++    print('}  // namespace mozc')
+   except:
+-    print 'cannot open %s' % (file)
++    print('cannot open %s' % (file))
+     sys.exit(1)
+ 
+ 
+--- /src/converter/gen_segmenter_code.py
++++ /src/converter/gen_segmenter_code.py
+@@ -54,18 +54,22 @@
+   pos = {}
+   max_id = 0
+ 
+-  for line in open(id_file, "r"):
++  fh = open(id_file, "r")
++  for line in fh:
+     fields = line.split()
+     pos[fields[1]] = fields[0]
+     max_id = max(int(fields[0]), max_id)
++  fh.close()
+ 
+   max_id = max_id + 1
+-  for line in open(special_pos_file, "r"):
++  fh = open(special_pos_file, "r")
++  for line in fh:
+     if len(line) <= 1 or line[0] == '#':
+       continue
+     fields = line.split()
+     pos[fields[0]] = ("%d" % max_id)
+     max_id = max_id + 1
++  fh.close()
+ 
+   return pos
+ 
+@@ -79,8 +83,7 @@
+   pat = re.compile(PatternToRegexp(pattern))
+   min = -1;
+   max = -1;
+-  keys = pos.keys()
+-  keys.sort()
++  keys = sorted(pos.keys())
+ 
+   range = []
+ 
+@@ -107,7 +110,7 @@
+       tmp.append("(%s >= %s && %s <= %s)" % (name, r[0], name, r[1]))
+ 
+   if len(tmp) == 0:
+-    print "FATAL: No rule fiind %s" % (pattern)
++    print("FATAL: No rule fiind %s" % (pattern))
+     sys.exit(-1)
+ 
+   return " || ".join(tmp)
+@@ -115,19 +118,21 @@
+ def main():
+   pos = ReadPOSID(sys.argv[1], sys.argv[2])
+ 
+-  print HEADER % (len(pos.keys()), len(pos.keys()))
++  print(HEADER % (len(pos.keys()), len(pos.keys())))
+ 
+-  for line in open(sys.argv[3], "r"):
++  fh = open(sys.argv[3], "r")
++  for line in fh:
+     if len(line) <= 1 or line[0] == '#':
+       continue
+     (l, r, result) = line.split()
+     result = result.lower()
+     lcond = GetRange(pos, l, "rid") or "true";
+     rcond = GetRange(pos, r, "lid") or "true";
+-    print "  // %s %s %s" % (l, r, result)
+-    print "  if ((%s) && (%s)) { return %s; }" % (lcond, rcond, result)
++    print("  // %s %s %s" % (l, r, result))
++    print("  if ((%s) && (%s)) { return %s; }" % (lcond, rcond, result))
++  fh.close()
+ 
+-  print FOOTER
++  print(FOOTER)
+ 
+ if __name__ == "__main__":
+   main()
+--- /src/data_manager/gen_connection_data.py
++++ /src/data_manager/gen_connection_data.py
+@@ -32,8 +32,7 @@
+ 
+ __author__ = "hidehiko"
+ 
+-import cStringIO as StringIO
+-import itertools
++import io
+ import logging
+ import optparse
+ import os
+@@ -45,7 +44,7 @@
+ INVALID_COST = 30000
+ INVALID_1BYTE_COST = 255
+ RESOLUTION_FOR_1BYTE = 64
+-FILE_MAGIC = '\xAB\xCD'
++FILE_MAGIC = b'\xAB\xCD'
+ 
+ FALSE_VALUES = ['f', 'false', '0']
+ TRUE_VALUES = ['t', 'true', '1']
+@@ -79,28 +78,28 @@
+   # The result is a square matrix.
+   mat_size = pos_size + special_pos_size
+ 
+-  matrix = [[0] * mat_size for _ in xrange(mat_size)]
++  matrix = [[0] * mat_size for _ in range(mat_size)]
+   with open(text_connection_file) as stream:
+     stream = code_generator_util.SkipLineComment(stream)
+     # The first line contains the matrix column/row size.
+-    size = stream.next().rstrip()
++    size = next(stream).rstrip()
+     assert (int(size) == pos_size), '%s != %d' % (size, pos_size)
+ 
+     for array_index, cost in enumerate(stream):
+       cost = int(cost.rstrip())
+-      rid = array_index / pos_size
++      rid = array_index // pos_size
+       lid = array_index % pos_size
+       if rid == 0 and lid == 0:
+         cost = 0
+       matrix[rid][lid] = cost
+ 
+   # Fill INVALID_COST in matrix elements for special POS.
+-  for rid in xrange(pos_size, mat_size):
+-    for lid in xrange(1, mat_size):  # Skip EOS
++  for rid in range(pos_size, mat_size):
++    for lid in range(1, mat_size):  # Skip EOS
+       matrix[rid][lid] = INVALID_COST
+ 
+-  for lid in xrange(pos_size, mat_size):
+-    for rid in xrange(1, mat_size):  # Skip BOS
++  for lid in range(pos_size, mat_size):
++    for rid in range(1, mat_size):  # Skip BOS
+       matrix[rid][lid] = INVALID_COST
+ 
+   return matrix
+@@ -116,7 +115,7 @@
+         # Heuristically, we do not compress INVALID_COST.
+         continue
+       m[cost] = m.get(cost, 0) + 1
+-    mode_value = max(m.iteritems(), key=lambda (_, count): count)[0]
++    mode_value = max(m.items(), key=lambda x: x[1])[0]
+     result.append(mode_value)
+   return result
+ 
+@@ -126,8 +125,8 @@
+   # list, and fill None into the matrix if it equals to the corresponding
+   # mode value.
+   assert len(matrix) == len(mode_value_list)
+-  for row, mode_value in itertools.izip(matrix, mode_value_list):
+-    for index in xrange(len(row)):
++  for row, mode_value in zip(matrix, mode_value_list):
++    for index in range(len(row)):
+       if row[index] == mode_value:
+         row[index] = None
+ 
+@@ -179,7 +178,7 @@
+     resolution = RESOLUTION_FOR_1BYTE
+   else:
+     resolution = 1
+-  stream = StringIO.StringIO()
++  stream = io.BytesIO()
+ 
+   # Output header.
+   stream.write(FILE_MAGIC)
+@@ -194,7 +193,7 @@
+ 
+   # 4 bytes alignment.
+   if len(mode_value_list) % 2:
+-    stream.write('\x00\x00')
++    stream.write(b'\x00\x00')
+ 
+   # Process each row:
+   for row in matrix:
+@@ -218,7 +217,7 @@
+             if cost == INVALID_COST:
+               cost = INVALID_1BYTE_COST
+             else:
+-              cost /= resolution
++              cost //= resolution
+               assert cost != INVALID_1BYTE_COST
+           values.append(cost)
+ 
+@@ -237,7 +236,7 @@
+       values_size = len(values) * 2
+ 
+     # Output the bits for a row.
+-    stream.write(struct.pack('<HH', len(compact_bits) / 8, values_size))
++    stream.write(struct.pack('<HH', len(compact_bits) // 8, values_size))
+     OutputBitList(chunk_bits, stream)
+     OutputBitList(compact_bits, stream)
+     if use_1byte_cost:

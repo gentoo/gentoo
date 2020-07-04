@@ -1,0 +1,11 @@
+--- a/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.xml~	2019-11-15 20:43:03.000000000 +0100
++++ b/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.xml	2019-11-15 21:01:39.754116059 +0100
+@@ -352,7 +352,7 @@
+       <description>Show appplications button in the dash</description>
+     </key>
+     <key type="s" name="show-apps-icon-file">
+-      <default>""</default>
++      <default>"/usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/img/gentoo.svg"</default>
+       <summary>Custom Show Applications icon</summary>
+       <description>Customize the Show Applications icon</description>
+     </key>

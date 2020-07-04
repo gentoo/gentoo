@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -59,7 +59,7 @@ declare -a JURI=(
 )
 
 DESCRIPTION="The Scala Programming Language"
-HOMEPAGE="http://www.scala-lang.org/"
+HOMEPAGE="https://www.scala-lang.org/"
 SRC_URI="
 	!binary?  (
 		https://github.com/scala/scala/archive/v${PV}.tar.gz -> ${P}.tar.gz
@@ -145,7 +145,7 @@ src_prepare() {
 			#!/bin/bash
 			gjl_package=sbt
 			gjl_jar="sbt-launch.jar"
-			gjl_java_args="-Dsbt.version=0.13.13 -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -Duser.home="${WORKDIR}""
+			gjl_java_args="-Dsbt.version=0.13.13 -Dfile.encoding=UTF8 -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -Duser.home="${WORKDIR}""
 			source /usr/share/java-config-2/launcher/launcher.bash
 		EOF
 		chmod u+x "${S}/sbt" || die
@@ -161,7 +161,6 @@ src_prepare() {
 src_compile() {
 	if ! use binary; then
 		export PATH="${EROOT}usr/share/scala-${SV}/bin:${WORKDIR}/${L_P}:${PATH}"
-		export LANG="en_US.UTF-8"
 		einfo "=== scala compile ..."
 		"${S}"/sbt -Dsbt.log.noformat=true compile || die "sbt compile failed"
 		einfo "=== sbt publishLocal with jdk $(java-pkg_get-vm-version) ..."

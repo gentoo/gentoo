@@ -26,7 +26,7 @@ EANT_DOC_TARGET="javadocs"
 src_install() {
 	java-pkg_newjar build/${P}.jar ${PN}.jar
 
-	dodoc README || die
+	dodoc README
 	use doc && java-pkg_dojavadoc build/docs/api
 	use source && java-pkg_dosrc src/*
 }

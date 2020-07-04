@@ -1,0 +1,132 @@
+From e24573dc7fce7c48da6b960a722b567f24e1318e Mon Sep 17 00:00:00 2001
+From: "Andreas K. Huettel" <dilfridge@gentoo.org>
+Date: Thu, 12 Mar 2020 19:48:16 +0100
+Subject: [PATCH] Gentoo: Disable update check
+
+---
+ gui/babeldata.h    |  2 +-
+ gui/mainwindow.cc  | 16 ----------------
+ gui/mainwinui.ui   |  6 ------
+ gui/preferences.cc |  2 --
+ gui/preferences.ui |  7 -------
+ 5 files changed, 1 insertion(+), 32 deletions(-)
+
+diff --git a/gui/babeldata.h b/gui/babeldata.h
+index a8586f30..4d73a4e4 100644
+--- a/gui/babeldata.h
++++ b/gui/babeldata.h
+@@ -64,7 +64,7 @@ public:
+     upgradeErrors_(0),
+     upgradeOffers_(0),
+     runCount_(0),
+-    startupVersionCheck_(true),
++    startupVersionCheck_(false),
+     reportStatistics_(false),
+     allowBetaUpgrades_(false),
+     ignoreVersionMismatch_(false),
+diff --git a/gui/mainwindow.cc b/gui/mainwindow.cc
+index adbac733..b0a8483a 100644
+--- a/gui/mainwindow.cc
++++ b/gui/mainwindow.cc
+@@ -174,7 +174,6 @@ MainWindow::MainWindow(QWidget* parent): QMainWindow(parent)
+   connect(ui_.actionAbout, SIGNAL(triggered()), this, SLOT(aboutActionX()));
+   connect(ui_.actionVisit_Website, SIGNAL(triggered()), this, SLOT(visitWebsiteActionX()));
+   connect(ui_.actionMake_a_Donation, SIGNAL(triggered()), this, SLOT(donateActionX()));
+-  connect(ui_.actionUpgradeCheck, SIGNAL(triggered()), this, SLOT(upgradeCheckActionX()));
+   connect(ui_.actionPreferences, SIGNAL(triggered()), this, SLOT(preferencesActionX()));
+ 
+   connect(ui_.inputFormatCombo,  SIGNAL(currentIndexChanged(int)),
+@@ -233,17 +232,6 @@ MainWindow::MainWindow(QWidget* parent): QMainWindow(parent)
+   restoreSettings();
+ 
+   upgrade = new UpgradeCheck(parent, formatList_, babelData_);
+-  if (babelData_.startupVersionCheck_) {
+-    upgrade->checkForUpgrade(babelVersion_, babelData_.upgradeCheckTime_,
+-                             allowBetaUpgrades());
+-  }
+-
+-  if (!babelData_.ignoreVersionMismatch_ && babelVersion_ != VERSION) {
+-    VersionMismatch vm(nullptr, babelVersion_, QString(VERSION));
+-
+-    vm.exec();
+-    babelData_.ignoreVersionMismatch_ = vm.neverAgain();
+-  }
+ }
+ 
+ //------------------------------------------------------------------------
+@@ -1067,10 +1055,6 @@ void MainWindow::applyActionX()
+ //------------------------------------------------------------------------
+ void MainWindow::closeActionX()
+ {
+-  QDateTime wt= upgrade->getUpgradeWarningTime();
+-  if (wt.isValid()) {
+-    babelData_.upgradeCheckTime_ = wt;
+-  }
+   babelData_.runCount_++;
+ 
+   QDateTime now = QDateTime::currentDateTime();
+diff --git a/gui/mainwinui.ui b/gui/mainwinui.ui
+index f5765e10..4533f234 100644
+--- a/gui/mainwinui.ui
++++ b/gui/mainwinui.ui
+@@ -691,7 +691,6 @@
+     <addaction name="actionHelp"/>
+     <addaction name="separator"/>
+     <addaction name="actionAbout"/>
+-    <addaction name="actionUpgradeCheck"/>
+     <addaction name="separator"/>
+     <addaction name="actionVisit_Website"/>
+     <addaction name="actionMake_a_Donation"/>
+@@ -720,11 +719,6 @@
+     <string>Preferences...</string>
+    </property>
+   </action>
+-  <action name="actionUpgradeCheck">
+-   <property name="text">
+-    <string>Check for Upgrade</string>
+-   </property>
+-  </action>
+   <action name="actionVisit_Website">
+    <property name="text">
+     <string>Visit Website...</string>
+diff --git a/gui/preferences.cc b/gui/preferences.cc
+index f648324b..ea398f7c 100644
+--- a/gui/preferences.cc
++++ b/gui/preferences.cc
+@@ -41,7 +41,6 @@ Preferences::Preferences(QWidget* parent, QList<Format>& formatList,
+ {
+   ui_.setupUi(this);
+ 
+-  ui_.startupCheck->setChecked(babelData_.startupVersionCheck_);
+   ui_.reportStatisticsCheck->setChecked(babelData_.reportStatistics_);
+   ui_.ignoreVersionMismatchCheck->setChecked(babelData_.ignoreVersionMismatch_);
+   // Because of an unfortunate bug in 1.4.0, we turn this off in 1.4.1.
+@@ -85,7 +84,6 @@ void Preferences::acceptClicked()
+     formatList_[i].setHidden(item->checkState() == Qt::Unchecked);
+   }
+ 
+-  babelData_.startupVersionCheck_ = ui_.startupCheck->isChecked();
+   babelData_.reportStatistics_ = ui_.reportStatisticsCheck->isChecked();
+   babelData_.ignoreVersionMismatch_ = ui_.ignoreVersionMismatchCheck->isChecked();
+   accept();
+diff --git a/gui/preferences.ui b/gui/preferences.ui
+index 3bea6c2c..48f5deb3 100644
+--- a/gui/preferences.ui
++++ b/gui/preferences.ui
+@@ -39,13 +39,6 @@
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+-        <item>
+-         <widget class="QCheckBox" name="startupCheck">
+-          <property name="text">
+-           <string>Check for newer version on start.</string>
+-          </property>
+-         </widget>
+-        </item>
+         <item>
+          <widget class="QCheckBox" name="reportStatisticsCheck">
+           <property name="text">
+-- 
+2.24.1
+

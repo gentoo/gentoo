@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -31,7 +31,10 @@ all_ruby_prepare() {
 	eapply "${FILESDIR}/${P}-ox24.patch"
 
 	sed -i -e '/simplecov/,/^end/ s:^:#:' spec/helper.rb || die
-	sed -i -e '/bundler/I s:^:#:' -e '/yardstick/,/end/ s:^:#:' Rakefile || die
+	sed -e '/bundler/I s:^:#:' \
+		-e '/yardstick/,/end/ s:^:#:' \
+		-e '/rubocop/I s:^:#:' \
+		-i Rakefile || die
 }
 
 each_ruby_test() {

@@ -20,19 +20,9 @@
 	<flag name="aubio">
 		Enable <pkg>media-libs/aubio</pkg> support
 	</flag>
-	<flag name="doc">
-		Use <pkg>dev-util/gtk-doc</pkg> to build documentation in html format
-	</flag>
-	<flag name="evince">
-		Use <pkg>app-text/evince</pkg> document viewer
-	</flag>
 	<flag name="fluidsynth">
 		Enable Fluidsynth MIDI software synthesis using
 		<pkg>media-sound/fluidsynth</pkg>
-	</flag>
-	<flag name="gtk3">
-		Enable support for the GTK+. If enabled uses slot 3 of
-		<pkg>x11-libs/gtk+</pkg>, if disabled it uses slot 2
 	</flag>
 	<flag name="jack">
 		Enable jack support through <pkg>virtual/jack</pkg>

@@ -1,0 +1,1606 @@
+From 8a0b748d3644dde30372ee25c4fe05bec10b2166 Mon Sep 17 00:00:00 2001
+From: Chad Vizino <cvizino@adaptivecomputing.com>
+Date: Fri, 29 Mar 2019 09:23:08 -0600
+Subject: [PATCH] TRQ-4330 - fix gcc/g++ 7 compile issues
+
+---
+ src/cmds/qdel.c                            |  6 +-
+ src/cmds/qsub_functions.c                  | 12 ++--
+ src/cmds/qterm.c                           |  2 +
+ src/include/array.h                        |  2 +-
+ src/include/attribute.h                    |  4 +-
+ src/lib/Libattr/attr_fn_acl.c              |  4 +-
+ src/lib/Libattr/attr_fn_arst.c             |  4 +-
+ src/lib/Libcmds/cvtdate.c                  |  8 +--
+ src/lib/Libdis/disrsc.c                    |  2 +
+ src/lib/Libdis/disrsi.c                    |  2 +
+ src/lib/Libdis/disrsl.c                    |  2 +
+ src/lib/Libdis/disrss.c                    |  2 +
+ src/lib/Libnet/net_client.c                |  4 +-
+ src/lib/Libnet/net_common.c                |  1 +
+ src/lib/Libutils/jsoncpp.cpp               |  9 +++
+ src/lib/Libutils/numa_chip.cpp             | 10 +--
+ src/resmom/checkpoint.c                    | 59 ++++++++++------
+ src/resmom/generate_alps_status.c          |  7 +-
+ src/resmom/linux/mom_mach.c                | 79 +++++++++++++--------
+ src/resmom/mom_main.c                      | 16 ++---
+ src/resmom/mom_req_quejob.c                | 12 ++--
+ src/resmom/mom_server.c                    | 41 +++++------
+ src/resmom/parse_config.c                  |  4 +-
+ src/resmom/requests.c                      |  8 +--
+ src/scheduler.cc/samples/fifo/dedtime.c    |  2 +-
+ src/server/array_func.c                    |  6 +-
+ src/server/array_func.h                    |  2 +-
+ src/server/geteusernam.c                   |  2 +-
+ src/server/job_func.c                      | 28 ++++++--
+ src/server/node_attr_def.c                 | 16 ++---
+ src/server/node_manager.c                  |  5 +-
+ src/server/pbsd_init.c                     |  2 +
+ src/server/process_request.c               | 18 ++---
+ src/server/req_jobobit.c                   | 16 ++++-
+ src/server/req_quejob.c                    |  2 +-
+ src/server/req_runjob.c                    | 10 ++-
+ src/server/req_stat.c                      |  2 +-
+ src/server/svr_chk_owner.c                 | 47 +++++++++----
+ src/server/svr_jobfunc.c                   | 80 +++++++++++++++-------
+ src/test/catch_child/scaffolding.c         |  1 +
+ src/test/geteusernam/scaffolding.c         |  2 +-
+ src/test/node_manager/test_uut.c           |  4 +-
+ src/test/pbs_log/scaffolding.c             |  3 +-
+ src/test/pbsd_main/scaffolding.c           |  2 +-
+ src/test/process_alps_status/scaffolding.c |  2 +
+ src/test/process_request/scaffolding.c     |  6 +-
+ src/test/req_stat/scaffolding.c            |  4 +-
+ src/test/svr_chk_owner/scaffolding.c       |  2 +-
+ torque.setup.in                            |  2 +-
+ 49 files changed, 358 insertions(+), 208 deletions(-)
+
+diff --git a/src/cmds/qdel.c b/src/cmds/qdel.c
+index 909018da66..d7e64f6289 100644
+--- a/src/cmds/qdel.c
++++ b/src/cmds/qdel.c
+@@ -49,7 +49,7 @@ void process_config_file(
+ 
+ 
+ 
+-bool is_array(
++bool is_job_array(
+ 
+   char *job_id)
+ 
+@@ -66,7 +66,7 @@ bool is_array(
+     }
+     
+   return(false);
+-  } /* END is_array() */
++  } /* END is_job_array() */
+ 
+ 
+ 
+@@ -289,7 +289,7 @@ int qdel_main(
+     snprintf(job_id, sizeof(job_id), "%s", argv[optind]);
+    
+     if ((dash_t == true) && 
+-        (is_array(job_id) == false))
++        (is_job_array(job_id) == false))
+       {
+       fprintf(stderr, "qdel: Error: job id '%s' isn't a job array but -t was specified.\n",
+         job_id);
+diff --git a/src/cmds/qsub_functions.c b/src/cmds/qsub_functions.c
+index 4fdfac0a7b..9799c831f4 100644
+--- a/src/cmds/qsub_functions.c
++++ b/src/cmds/qsub_functions.c
+@@ -3363,14 +3363,14 @@ void process_opts(
+         if (add_verify_resources(ji->res_attr, optarg, data_type) != 0)
+           print_qsub_usage_exit("qsub: illegal -l value");
+ 
+-          //If cpuclock gets set we need to set the node exclusive flag
++        //If cpuclock gets set we need to set the node exclusive flag
++        {
++        job_data *pData = NULL;
++        if (hash_find(ji->res_attr,"cpuclock",&pData))
+           {
+-          job_data *pData = NULL;
+-          if (hash_find(ji->res_attr,"cpuclock",&pData))
+-            {
+-            hash_add_or_exit(ji->job_attr, ATTR_node_exclusive, "TRUE", data_type);
+-            }
++          hash_add_or_exit(ji->job_attr, ATTR_node_exclusive, "TRUE", data_type);
+           }
++        }
+ 
+         break;
+ 
+diff --git a/src/cmds/qterm.c b/src/cmds/qterm.c
+index d05bd42d4e..0519328c01 100644
+--- a/src/cmds/qterm.c
++++ b/src/cmds/qterm.c
+@@ -89,6 +89,8 @@ int main(
+ 
+         local = true;
+ 
++        break;
++
+       case 't':
+ 
+         type = optarg;
+diff --git a/src/include/array.h b/src/include/array.h
+index 74050d0a25..d53dec1d3a 100644
+--- a/src/include/array.h
++++ b/src/include/array.h
+@@ -176,7 +176,7 @@ 
+ #define TOKENS_TAG "tokens"
+ #define TOKEN_TAG "token"
+ 
+-int  is_array(char *id);
++int  is_id_array(char *id);
+ int  array_delete(job_array *pa);
+ int  array_save(job_array *pa);
+ int  array_save(job_array *pa);
+diff --git a/src/include/attribute.h b/src/include/attribute.h
+index 8fbff163b8..3d025ab66f 100644
+--- a/src/include/attribute.h
++++ b/src/include/attribute.h
+@@ -512,12 +512,12 @@ int to_size(const char *val, struct size_value *psize);
+ void from_size(struct size_value *psize, char *cvnbuf);
+ void create_size_string(char *buf, struct size_value values);
+ 
+-#define NULL_FUNC '\0'
++#define NULL_FUNC NULL
+ 
+ /* other associated funtions */
+ 
+ int   acl_check(pbs_attribute *, char *canidate, int type);
+-int   acl_check_my_array_string(struct array_strings *, char *, int);
++int   acl_check_my_array_string(struct array_strings *, const char *, int);
+ char *arst_string(const char *str, pbs_attribute *pattr);
+ void  attrl_fixlink(tlist_head *svrattrl);
+ void  recov_acl(pbs_attribute *, attribute_def *, const char *, const char *);
+diff --git a/src/lib/Libattr/attr_fn_acl.c b/src/lib/Libattr/attr_fn_acl.c
+index ebb2775bf4..a7368b9f3b 100644
+--- a/src/lib/Libattr/attr_fn_acl.c
++++ b/src/lib/Libattr/attr_fn_acl.c
+@@ -232,7 +232,7 @@ fptr_int get_my_match_func(
+ int acl_check_my_array_string(
+ 
+   struct array_strings *pas,
+-  char                 *name,
++  const char           *name,
+   int                   type)
+ 
+   {
+@@ -503,6 +503,8 @@ int set_allacl(
+ 
+       /* No break, "Set" falls into "Incr" to add strings */
+ 
++      // fall through
++
+     case INCR_OLD:
+     case INCR:
+ 
+diff --git a/src/lib/Libattr/attr_fn_arst.c b/src/lib/Libattr/attr_fn_arst.c
+index c63281637e..9d82e873a3 100644
+--- a/src/lib/Libattr/attr_fn_arst.c
++++ b/src/lib/Libattr/attr_fn_arst.c
+@@ -532,7 +532,8 @@ int encode_arst(
+ 
+         *pc++ = '\\';
+ 
+-        // escape sequence added. Fall through.
++        // escape sequence added.
++        // fall through
+ 
+       default:
+ 
+@@ -735,6 +736,7 @@ int set_arst(
+       pas->as_next = pas->as_buf;
+ 
+       /* no break, "SET" falls into "MERGE" to add strings */
++      // fall through
+ 
+     case INCR_OLD:
+     case MERGE:
+diff --git a/src/lib/Libcmds/cvtdate.c b/src/lib/Libcmds/cvtdate.c
+index e936c6fbed..0e24639619 100644
+--- a/src/lib/Libcmds/cvtdate.c
++++ b/src/lib/Libcmds/cvtdate.c
+@@ -167,7 +167,7 @@ time_t cvtdate(
+       year   = atoi(buf) * 100;
+       datestr += 2;
+ 
+-      /* no break, fall into next case */
++      // fall through
+ 
+     case 10:  /* YYMMDDhhmm */
+       buf[0] = datestr[0];
+@@ -187,7 +187,7 @@ time_t cvtdate(
+ 
+       datestr += 2;
+ 
+-      /* no break, fall into next case */
++      // fall through
+ 
+     case 8:  /* MMDDhhmm */
+       buf[0] = datestr[0];
+@@ -209,7 +209,7 @@ time_t cvtdate(
+ 
+       datestr += 2;
+ 
+-      /* no break, fall into next case */
++      // fall through
+ 
+     case 6:  /* DDhhmm */
+       buf[0] = datestr[0];
+@@ -229,7 +229,7 @@ time_t cvtdate(
+ 
+       datestr += 2;
+ 
+-      /* no break, fall into next case */
++      // fall through
+ 
+     case 4:  /* hhmm */
+       buf[0] = datestr[0];
+diff --git a/src/lib/Libdis/disrsc.c b/src/lib/Libdis/disrsc.c
+index ac7fec6cbb..2baf87b2b9 100644
+--- a/src/lib/Libdis/disrsc.c
++++ b/src/lib/Libdis/disrsc.c
+@@ -141,6 +141,8 @@ signed char disrsc(
+       else
+         locret = DIS_OVERFLOW;
+ 
++      // fall through
++
+     case DIS_OVERFLOW:
+       value = negate ? SCHAR_MIN : SCHAR_MAX;
+     }
+diff --git a/src/lib/Libdis/disrsi.c b/src/lib/Libdis/disrsi.c
+index a2417725fe..dd073b1bb0 100644
+--- a/src/lib/Libdis/disrsi.c
++++ b/src/lib/Libdis/disrsi.c
+@@ -141,6 +141,8 @@ int disrsi(
+         *retval = locret;
+         }
+ 
++    // fall through
++
+     case DIS_OVERFLOW:
+ 
+       value = negate ? INT_MIN : INT_MAX;
+diff --git a/src/lib/Libdis/disrsl.c b/src/lib/Libdis/disrsl.c
+index 9853056fcf..5fba4a4ba0 100644
+--- a/src/lib/Libdis/disrsl.c
++++ b/src/lib/Libdis/disrsl.c
+@@ -139,6 +139,8 @@ long disrsl(
+       else
+         locret = DIS_OVERFLOW;
+ 
++      // fall through
++
+     case DIS_OVERFLOW:
+       value = negate ? LONG_MIN : LONG_MAX;
+     }
+diff --git a/src/lib/Libdis/disrss.c b/src/lib/Libdis/disrss.c
+index 80eb98109b..e2496b8adf 100644
+--- a/src/lib/Libdis/disrss.c
++++ b/src/lib/Libdis/disrss.c
+@@ -140,6 +140,8 @@ short disrss(
+       else
+         locret = DIS_OVERFLOW;
+ 
++      // fall through
++
+     case DIS_OVERFLOW:
+       value = negate ? SHRT_MIN : SHRT_MAX;
+     }
+diff --git a/src/lib/Libnet/net_client.c b/src/lib/Libnet/net_client.c
+index 8f8542320b..a324c08197 100644
+--- a/src/lib/Libnet/net_client.c
++++ b/src/lib/Libnet/net_client.c
+@@ -532,7 +532,7 @@ int client_to_svr(
+         break;
+         }/* Interrupted system call */
+       
+-      /* fall through to next case */
++      // fall through
+ 
+     case EINVAL:		/* Invalid argument */
+     
+@@ -583,6 +583,8 @@ int client_to_svr(
+         
+         goto retry;
+         }
++
++      // fall through
+       
+     default:
+       
+diff --git a/src/lib/Libnet/net_common.c b/src/lib/Libnet/net_common.c
+index 7b36d31aa1..80bb78bee5 100644
+--- a/src/lib/Libnet/net_common.c
++++ b/src/lib/Libnet/net_common.c
+@@ -405,6 +405,7 @@ int socket_connect_addr(
+           }
+ 
+         /* essentially, only fall through for a transient failure */
++        // fall through
+ 
+       /* socket not ready for writing after 5 timeout */
+       case EINVAL:    /* Invalid argument */
+diff --git a/src/resmom/checkpoint.c b/src/resmom/checkpoint.c
+index f178f48408..7e94b8b00a 100644
+--- a/src/resmom/checkpoint.c
++++ b/src/resmom/checkpoint.c
+@@ -51,6 +51,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <string>
++#include <sstream>
+ #include <unistd.h>
+ #include <assert.h>
+ #include <dirent.h>
+@@ -950,6 +952,7 @@ int blcr_checkpoint_job(
+   char             sid[20];
+   char            *arg[20];
+   char             buf[1024];
++  std::string      err_msg;
+   int              len;
+   char           **ap;
+   FILE            *fs;
+@@ -1107,9 +1110,10 @@ int blcr_checkpoint_job(
+ 
+     /* remove checkpoint directory that was created for this checkpoint attempt */
+ 
+-    sprintf(buf, "Checkpoint failed for job %s, removing checkpoint directory\n",
+-        pjob->ji_qs.ji_jobid);
+-    log_ext(-1, __func__, buf, LOG_DEBUG);
++    err_msg = "Checkpoint failed for job ";
++    err_msg += pjob->ji_qs.ji_jobid;
++    err_msg += ", removing checkpoint directory\n";
++    log_ext(-1, __func__, err_msg.c_str(), LOG_DEBUG);
+ 
+     delete_blcr_checkpoint_files(pjob);
+ 
+@@ -1123,9 +1127,12 @@ int blcr_checkpoint_job(
+ 
+       if (err != 0)
+         {
+-        sprintf(buf, "pbs_alterjob requested on job %s failed (%d-%s)\n",
+-            pjob->ji_qs.ji_jobid, err, pbs_strerror(err));
+-        log_err(-1, __func__, buf);
++        std::ostringstream buf_s;
++
++        buf_s << "pbs_alterjob requested on job " << pjob->ji_qs.ji_jobid <<
++          " failed (" << err << "-" << pbs_strerror(err) << ")\n";
++        err_msg = buf_s.str();
++        log_err(-1, __func__, err_msg.c_str());
+         if (err == PBSE_UNKJOBID)
+           {
+           /* TODO: GB - can the job exit while waiting for the checkpoint
+@@ -1190,9 +1197,12 @@ int blcr_checkpoint_job(
+ 
+       if (err != 0)
+         {
+-        sprintf(buf, "pbs_alterjob requested on job %s failed (%d-%s)\n",
+-            pjob->ji_qs.ji_jobid, err, pbs_strerror(err));
+-        log_err(-1, __func__, buf);
++        std::ostringstream buf_s;
++
++        buf_s << "pbs_alterjob requested on job " << pjob->ji_qs.ji_jobid <<
++          " failed (" << err << "-" << pbs_strerror(err) << ")\n";
++        err_msg = buf_s.str();
++        log_err(-1, __func__, err_msg.c_str());
+         if (err == PBSE_UNKJOBID)
+           {
+           /* TODO: GB - can the job exit while waiting for the checkpoint
+@@ -1527,6 +1537,8 @@ int start_checkpoint(
+   pid_t     pid;
+   int       rc = PBSE_NONE;
+   char      name_buffer[MAXPATHLEN + 1];
++  std::ostringstream buf_s;
++  std::string buf;
+   time_t    time_now;
+ 
+   time_now = time((time_t *)0);
+@@ -1548,11 +1560,10 @@ int start_checkpoint(
+        * to the pbs_server until the checkpoint has completed successfully.
+        */
+ 
+-      sprintf(name_buffer,"ckpt.%s.%d",
+-        pjob->ji_qs.ji_jobid,
+-        (int)time_now);
++      buf_s << "ckpt." << pjob->ji_qs.ji_jobid << "." << time_now;
++      buf = buf_s.str();
+ 
+-      decode_str(&pjob->ji_wattr[JOB_ATR_checkpoint_name], NULL, NULL, name_buffer, 0);
++      decode_str(&pjob->ji_wattr[JOB_ATR_checkpoint_name], NULL, NULL, buf.c_str(), 0);
+ 
+       pjob->ji_wattr[JOB_ATR_checkpoint_name].at_flags =
+         ATR_VFLAG_SET | ATR_VFLAG_MODIFY;
+@@ -1760,8 +1771,8 @@ int blcr_restart_job(
+   int            pid;
+   char           sid[20];
+   char          *arg[20];
++  std::string    err_msg;
+   extern char    restart_script_name[MAXPATHLEN + 1];
+-  char           buf[1024];
+   char           namebuf[MAXPATHLEN + 1];
+   char           restartfile[MAXPATHLEN + 1];
+   char           script_buf[MAXPATHLEN + 1];
+@@ -1886,14 +1897,18 @@ int blcr_restart_job(
+     arg[6] = SET_ARG(pjob->ji_wattr[JOB_ATR_checkpoint_name].at_val.at_str);
+     arg[7] = NULL;
+ 
+-    snprintf(buf, sizeof(buf), "restart args: %s %s %s %s %s %s %s",
+-      restart_script_name, sid, pjob->ji_qs.ji_jobid,
+-      SET_ARG(pjob->ji_wattr[JOB_ATR_euser].at_val.at_str),
+-      SET_ARG(pjob->ji_wattr[JOB_ATR_egroup].at_val.at_str),
+-      namebuf,
+-      SET_ARG(pjob->ji_wattr[JOB_ATR_checkpoint_name].at_val.at_str));
+-
+-    log_ext(-1, __func__, buf, LOG_DEBUG);
++    err_msg = "restart args: ";
++    err_msg += restart_script_name;
++    err_msg += " ";
++    err_msg += SET_ARG(pjob->ji_wattr[JOB_ATR_euser].at_val.at_str);
++    err_msg += " ";
++    err_msg += SET_ARG(pjob->ji_wattr[JOB_ATR_egroup].at_val.at_str);
++    err_msg += " ";
++    err_msg += namebuf;
++    err_msg += " ";
++    err_msg += SET_ARG(pjob->ji_wattr[JOB_ATR_checkpoint_name].at_val.at_str);
++
++    log_ext(-1, __func__, err_msg.c_str(), LOG_DEBUG);
+ 
+     log_close(0);
+ 
+diff --git a/src/resmom/generate_alps_status.c b/src/resmom/generate_alps_status.c
+index 305d603874..286d6b02ef 100644
+--- a/src/resmom/generate_alps_status.c
++++ b/src/resmom/generate_alps_status.c
+@@ -87,6 +87,7 @@
+ #include "alps_constants.h"
+ #include "alps_functions.h"
+ #include <string>
++#include <sstream>
+ #include <vector>
+ #include <set>
+ #include <time.h>
+@@ -586,9 +587,9 @@ int process_node(
+     ani.features += features.c_str();
+     }
+ 
+-  char node_index_buf[MAXLINE];
+-  snprintf(node_index_buf, sizeof(node_index_buf), "node_index=%lu", alps_nodes.size());
+-  ani.node_index = node_index_buf;
++  std::ostringstream ostr;
++  ostr << "node_index=" << alps_nodes.size();
++  ani.node_index = ostr.str();
+ 
+   alps_nodes[nid] = ani;
+ 
+diff --git a/src/resmom/linux/mom_mach.c b/src/resmom/linux/mom_mach.c
+index acaf81d467..8d8011a868 100644
+--- a/src/resmom/linux/mom_mach.c
++++ b/src/resmom/linux/mom_mach.c
+@@ -3,6 +3,7 @@
+ #include "lib_mom.h" /* header */
+ 
+ #include <string>
++#include <sstream>
+ #include <vector>
+ #include <assert.h>
+ #include <limits.h>
+@@ -1221,6 +1222,7 @@ unsigned long cput_sum(
+   int          fd;
+   int          rc;
+   char         buf[LOCAL_BUF_SIZE];
++  std::string  err_msg;
+ 
+   pbs_attribute *pattr;
+   pattr = &pjob->ji_wattr[JOB_ATR_req_information];
+@@ -1234,8 +1236,11 @@ unsigned long cput_sum(
+     rc = cr->get_req_index_for_host(mom_alias, req_index);
+     if (rc != PBSE_NONE)
+       {
+-      sprintf(buf, "Could not find req for host %s, job_id %s", mom_alias, pjob->ji_qs.ji_jobid);
+-      log_event(PBSEVENT_JOB, PBS_EVENTCLASS_JOB, __func__, buf);
++      err_msg = "Could not find req for host ";
++      err_msg += mom_alias;
++      err_msg += ", job_id ";
++      err_msg += pjob->ji_qs.ji_jobid;
++      log_event(PBSEVENT_JOB, PBS_EVENTCLASS_JOB, __func__, err_msg.c_str());
+       return(cputime);
+       }
+ 
+@@ -1272,8 +1277,11 @@ unsigned long cput_sum(
+       {
+       if (pjob->ji_cgroups_created == true)
+         {
+-        sprintf(buf, "failed to open %s: %s", full_cgroup_path.c_str(), strerror(errno));
+-        log_err(-1, __func__, buf);
++        err_msg = "failed to open ";
++        err_msg += full_cgroup_path;
++        err_msg += ": ";
++        err_msg += strerror(errno);
++        log_err(-1, __func__, err_msg.c_str());
+         }
+       return(0);
+       }
+@@ -1281,8 +1289,11 @@ unsigned long cput_sum(
+     rc = read(fd, buf, LOCAL_BUF_SIZE);
+     if (rc == -1)
+       {
+-      sprintf(buf, "failed to read %s: %s", full_cgroup_path.c_str(), strerror(errno));
+-      log_err(-1, __func__, buf);
++      err_msg = "failed to read ";
++      err_msg += full_cgroup_path;
++      err_msg += ": ";
++      err_msg += strerror(errno);
++      log_err(-1, __func__, err_msg.c_str());
+       close(fd);
+       return(0);
+       }
+@@ -1567,6 +1578,7 @@ unsigned long long resi_sum(
+   char         buf[LOCAL_BUF_SIZE];
+   int          fd;
+   int          rc;
++  std::string  err_msg;
+ 
+   pbs_attribute *pattr;
+   pattr = &pjob->ji_wattr[JOB_ATR_req_information];
+@@ -1579,8 +1591,11 @@ unsigned long long resi_sum(
+     rc = cr->get_req_index_for_host(mom_alias, req_index);
+     if (rc != PBSE_NONE)
+       {
+-      sprintf(buf, "Could not find req for host %s, job_id %s", mom_alias, pjob->ji_qs.ji_jobid);
+-      log_event(PBSEVENT_JOB, PBS_EVENTCLASS_JOB, __func__, buf);
++      err_msg = "Could not find req for host ";
++      err_msg += mom_alias;
++      err_msg += ", job_id ";
++      err_msg += pjob->ji_qs.ji_jobid;
++      log_event(PBSEVENT_JOB, PBS_EVENTCLASS_JOB, __func__, err_msg.c_str());
+       return(resisize);
+       }
+ 
+@@ -1614,8 +1629,11 @@ unsigned long long resi_sum(
+     {
+     if (pjob->ji_cgroups_created == true)
+       {
+-      sprintf(buf, "failed to open %s: %s", full_cgroup_path.c_str(), strerror(errno));
+-      log_err(-1, __func__, buf);
++      err_msg = "failed to open ";
++      err_msg += full_cgroup_path;
++      err_msg += ": ";
++      err_msg += strerror(errno);
++      log_err(-1, __func__, err_msg.c_str());
+       }
+ 
+     return(0);
+@@ -1624,8 +1642,11 @@ unsigned long long resi_sum(
+   rc = read(fd, buf, LOCAL_BUF_SIZE);
+   if (rc == -1)
+     {
+-    sprintf(buf, "failed to read %s: %s", full_cgroup_path.c_str(), strerror(errno));
+-    log_err(-1, __func__, buf);
++    err_msg = "failed to read ";
++    err_msg += full_cgroup_path;
++    err_msg += ": ";
++    err_msg += strerror(errno);
++    log_err(-1, __func__, err_msg.c_str());
+     close(fd);
+     return(0);
+     }
+@@ -1637,8 +1658,9 @@ unsigned long long resi_sum(
+     buf2 = strstr(buf, "\nrss ");
+     if (buf2 == NULL)
+       {
+-      sprintf(buf, "read failed finding rss %s", full_cgroup_path.c_str());
+-      log_err(errno, __func__, buf);
++      err_msg = "read failed finding rss ";
++      err_msg += full_cgroup_path;
++      log_err(errno, __func__, err_msg.c_str());
+       close(fd);
+       return(0);
+       }
+@@ -4983,16 +5005,17 @@ void scan_non_child_tasks(void)
+ 
+       if (!found)
+         {
+-        char buf[MAXLINE];
++        std::ostringstream sbuf;
++        std::string buf;
+ 
+         extern int exiting_tasks;
+ 
+-        sprintf(buf, "found exited session %d for task %d in job %s",
+-            pTask->ti_qs.ti_sid,
+-            pTask->ti_qs.ti_task,
+-            pJob->ji_qs.ji_jobid);
++        sbuf << "found exited session " << pTask->ti_qs.ti_sid <<
++          " for task " << pTask->ti_qs.ti_task << " in job " <<
++          pJob->ji_qs.ji_jobid;
++        buf = sbuf.str();
+ 
+-        log_event(PBSEVENT_JOB, PBS_EVENTCLASS_JOB, __func__, buf);
++        log_event(PBSEVENT_JOB, PBS_EVENTCLASS_JOB, __func__, buf.c_str());
+ 
+         pTask->ti_qs.ti_exitstat = 0;  /* actually unknown */
+         pTask->ti_qs.ti_status = TI_STATE_EXITED;
+@@ -5006,10 +5029,11 @@ void scan_non_child_tasks(void)
+ 
+           if (LOGLEVEL >= 7)
+             {
+-            sprintf(buf, "marking job as MOM_JOB_RECOVERY for task %d",
+-                pTask->ti_qs.ti_task);
++            sbuf << "marking job as MOM_JOB_RECOVERY for task " <<
++              pTask->ti_qs.ti_task);
++            buf = sbuf.str();
+ 
+-            log_event(PBSEVENT_DEBUG, PBS_EVENTCLASS_JOB, pJob->ji_qs.ji_jobid, buf);
++            log_event(PBSEVENT_DEBUG, PBS_EVENTCLASS_JOB, pJob->ji_qs.ji_jobid, buf.c_str());
+             }
+           }
+ #endif    /* USESAVEDRESOURCES */
+@@ -5075,7 +5099,6 @@ const char *idletime(
+   DIR         *dp;
+ 
+   struct dirent *de;
+-  char          ttyname[50];
+   time_t         curtm;
+ 
+   if (attrib)
+@@ -5104,16 +5127,18 @@ const char *idletime(
+ 
+   while ((de = readdir(dp)) != NULL)
+     {
++    std::string ttyname;
++
+     if (maxtm >= curtm)
+       break;
+ 
+     if (strncmp(de->d_name, "tty", 3))
+       continue;
+ 
+-    sprintf(ttyname, "/dev/%s",
+-            de->d_name);
++    ttyname = "/dev/";
++    ttyname += de->d_name;
+ 
+-    setmax(ttyname);
++    setmax(ttyname.c_str());
+     }
+ 
+   closedir(dp);
+diff --git a/src/resmom/mom_main.c b/src/resmom/mom_main.c
+index 2d8453a15f..35896e58b1 100644
+--- a/src/resmom/mom_main.c
++++ b/src/resmom/mom_main.c
+@@ -1067,7 +1067,7 @@ char *conf_res(
+     goto done;
+     }
+ 
+-  name[i] = '\0';
++  name[i] = NULL;
+ 
+   for (d = ret_string, resline++;*resline;)
+     {
+@@ -6519,17 +6519,17 @@ void prepare_child_tasks_for_delete()
+     for (unsigned int i = 0; i < pJob->ji_tasks->size(); i++)
+       {
+       task *pTask = pJob->ji_tasks->at(i);
+-
+-      char buf[128];
++      std::ostringstream sbuf;
++      std::string buf;
+ 
+       extern int exiting_tasks;
+ 
+-      sprintf(buf, "preparing exited session %d for task %d in job %s for deletion",
+-              pTask->ti_qs.ti_sid,
+-              pTask->ti_qs.ti_task,
+-              pJob->ji_qs.ji_jobid);
++      sbuf << "preparing exited session " << pTask->ti_qs.ti_sid <<
++        " for task " << pTask->ti_qs.ti_task << " in job " <<
++        pJob->ji_qs.ji_jobid << " for deletion";
++      buf = sbuf.str();
+ 
+-      log_event(PBSEVENT_JOB, PBS_EVENTCLASS_JOB, __func__, buf);
++      log_event(PBSEVENT_JOB, PBS_EVENTCLASS_JOB, __func__, buf.c_str());
+ 
+       pTask->ti_qs.ti_exitstat = 0;  /* actually unknown */
+       pTask->ti_qs.ti_status = TI_STATE_EXITED;
+diff --git a/src/resmom/mom_req_quejob.c b/src/resmom/mom_req_quejob.c
+index 2211f52d55..4e10581184 100644
+--- a/src/resmom/mom_req_quejob.c
++++ b/src/resmom/mom_req_quejob.c
+@@ -743,11 +743,15 @@ void req_mvjobfile(
+ 
+   if (pj == NULL)
+     {
+-    snprintf(log_buffer, 1024, "cannot find job %s for move of %s file",
+-      preq->rq_ind.rq_jobfile.rq_jobid,
+-      TJobFileType[jft]);
++    std::string err_msg;
+ 
+-    log_err(-1, __func__, log_buffer);
++    err_msg = "cannot find job ";
++    err_msg += preq->rq_ind.rq_jobfile.rq_jobid;
++    err_msg += " for move of ";
++    err_msg += TJobFileType[jft];
++    err_msg += " file";
++
++    log_err(-1, __func__, err_msg.c_str());
+ 
+     req_reject(PBSE_UNKJOBID, 0, preq, NULL, NULL);
+ 
+diff --git a/src/resmom/mom_server.c b/src/resmom/mom_server.c
+index f90c2cd227..e03395225a 100644
+--- a/src/resmom/mom_server.c
++++ b/src/resmom/mom_server.c
+@@ -1900,7 +1900,6 @@ void mom_server_diag(
+   std::stringstream &output)
+ 
+   {
+-  char tmpLine[1024];
+   time_t Now;
+ 
+   if (pms->pbs_servername[0] == '\0')
+@@ -1910,22 +1909,18 @@ void mom_server_diag(
+ 
+   time(&Now);
+ 
+-  sprintf(tmpLine, "Server[%d]: %s (%s)\n",
+-          sindex,
+-          pms->pbs_servername,
+-          netaddr(&(pms->sock_addr)));
+-
+-  output << tmpLine;
++  output << "Server[" << sindex << "]: " << pms->pbs_servername <<
++    " (" << netaddr(&(pms->sock_addr)) << ")\n";
+ 
+   if (pms->MOMSendStatFailure[0] != '\0')
+     {
+-    sprintf(tmpLine, "  WARNING:  could not open connection to server, %s%s\n",
+-            pms->MOMSendStatFailure,
+-            (strstr(pms->MOMSendStatFailure, "cname") != NULL) ?
+-            " (check name resolution - /etc/hosts?)" :
+-            "");
++    output << "  WARNING:  could not open connection to server, " <<
++      pms->MOMSendStatFailure;
++
++    if (strstr(pms->MOMSendStatFailure, "cname") != NULL)
++      output << " (check name resolution - /etc/hosts?)";
+ 
+-    output << tmpLine;
++    output << "\n";
+     }
+ 
+   if (TMOMRejectConn[0] != '\0')
+@@ -1935,30 +1930,26 @@ void mom_server_diag(
+ 
+   if (pms->MOMLastRecvFromServerTime > 0)
+     {
+-    sprintf(tmpLine, "  Last Msg From Server:   %ld seconds (%s)\n",
+-            (long)Now - pms->MOMLastRecvFromServerTime,
+-            (pms->MOMLastRecvFromServerCmd[0] != '\0') ?
+-            pms->MOMLastRecvFromServerCmd : "N/A");
++    output << "  Last Msg From Server:   " <<
++      ((long)Now - pms->MOMLastRecvFromServerTime) << " seconds (" <<
++      ((pms->MOMLastRecvFromServerCmd[0] != '\0') ?
++        pms->MOMLastRecvFromServerCmd : "N/A") << "\n";
+     }
+   else
+     {
+-    sprintf(tmpLine, "  WARNING:  no messages received from server\n");
++    output << "  WARNING:  no messages received from server\n";
+     }
+ 
+-  output << tmpLine;
+-
+   if (pms->MOMLastSendToServerTime > 0)
+     {
+-    sprintf(tmpLine, "  Last Msg To Server:     %ld seconds\n",
+-            (long)Now - pms->MOMLastSendToServerTime);
++    output << "  Last Msg To Server:     " <<
++      ((long)Now - pms->MOMLastSendToServerTime) << " seconds\n";
+     }
+   else
+     {
+-    sprintf(tmpLine, "  WARNING:  no messages sent to server\n");
++    output << "  WARNING:  no messages sent to server\n";
+     }
+ 
+-  output << tmpLine;
+-
+   return;
+   }  /* END mom_server_diag() */
+ 
+diff --git a/src/resmom/parse_config.c b/src/resmom/parse_config.c
+index 8c4bb8585d..35efb7880e 100644
+--- a/src/resmom/parse_config.c
++++ b/src/resmom/parse_config.c
+@@ -2385,14 +2385,14 @@ void reset_config_vars()
+   mom_host[0] = '\0';
+   hostname_specified = 0;
+   MOMConfigRReconfig = 0;
+-  TNoSpoolDirList[0] = '\0';
++  TNoSpoolDirList[0] = NULL;
+   is_reporter_mom = FALSE;
+   is_login_node = FALSE;
+   job_exit_wait_time = DEFAULT_JOB_EXIT_WAIT_TIME;
+   jobstarter_exe_name[0] = '\0';
+   jobstarter_set = 0;
+   server_alias = NULL;
+-  TRemChkptDirList[0] = '\0';
++  TRemChkptDirList[0] = NULL;
+   tmpdir_basename[0] = '\0';  /* for $TMPDIR */
+   rcp_path[0] = '\0';
+   rcp_args[0] = '\0';
+diff --git a/src/resmom/requests.c b/src/resmom/requests.c
+index 588905e4e3..6fce46cdfb 100644
+--- a/src/resmom/requests.c
++++ b/src/resmom/requests.c
+@@ -1490,16 +1490,16 @@ void req_modifyjob(
+   int            rc;
+   unsigned int   momport = 0;
+ 
+-  char           tmpLine[1024];
++  std::string    tmpLine;
+ 
+   pjob = mom_find_job(preq->rq_ind.rq_modify.rq_objname);
+ 
+   if (pjob == NULL)
+     {
+-    sprintf(tmpLine, "modify job failed, unknown job %s",
+-            preq->rq_ind.rq_modify.rq_objname);
++    tmpLine = "modify job failed, unknown job ";
++    tmpLine += preq->rq_ind.rq_modify.rq_objname;
+ 
+-    req_reject(PBSE_UNKJOBID, 0, preq, mom_host, tmpLine);
++    req_reject(PBSE_UNKJOBID, 0, preq, mom_host, tmpLine.c_str());
+ 
+     return;
+     }
+diff --git a/src/scheduler.cc/samples/fifo/dedtime.c b/src/scheduler.cc/samples/fifo/dedtime.c
+index b919ec8946..246bd4f8af 100644
+--- a/src/scheduler.cc/samples/fifo/dedtime.c
++++ b/src/scheduler.cc/samples/fifo/dedtime.c
+@@ -118,7 +118,7 @@ int parse_ded_file(const char *filename)
+ 
+   i = 0;
+ 
+-  memset(conf.ded_time, 0, MAX_DEDTIME_SIZE);
++  memset(conf.ded_time, 0, sizeof(struct timegap) * MAX_DEDTIME_SIZE);
+ 
+   while (fgets(line, 256, fp) != NULL)
+     {
+diff --git a/src/server/array_func.c b/src/server/array_func.c
+index fabe4541fa..8f5caf0520 100644
+--- a/src/server/array_func.c
++++ b/src/server/array_func.c
+@@ -4,7 +4,7 @@
+ 
+   included functions:
+ 
+-  is_array() determine if jobnum is actually an array identifyer
++  is_id_array() determine if jobnum is actually an array identifyer
+   get_array() return array struct for given "parent id"
+   array_save() save array struct to disk
+   array_get_parent_id() return id of parent job if job belongs to a job array
+@@ -90,7 +90,7 @@ void        force_purge_work(job *pjob);
+ 
+ /* search job array list to determine if id is a job array */
+ 
+-int is_array(
++int is_id_array(
+     
+   char *id)
+ 
+@@ -154,7 +154,7 @@ int is_array(
+   allarrays.unlock();
+ 
+   return(rc);
+-  } /* END is_array() */
++  } /* END is_id_array() */
+ 
+ 
+ 
+diff --git a/src/server/array_func.h b/src/server/array_func.h
+index 6cb1b84c9c..70e3d326f7 100644
+--- a/src/server/array_func.h
++++ b/src/server/array_func.h
+@@ -8,7 +8,7 @@
+ #include "batch_request.h" /* batch_request */
+ 
+ 
+-int is_array(char *id);
++int is_id_array(char *id);
+ 
+ int array_save(job_array *pa);
+ 
+diff --git a/src/server/job_func.c b/src/server/job_func.c
+index dbc47de458..8922deab35 100644
+--- a/src/server/job_func.c
++++ b/src/server/job_func.c
+@@ -2387,22 +2387,36 @@ int fix_cray_exec_hosts(
+ 
+ 
+ 
++// change job id from x.y to x-0.y
+ 
+ int change_external_job_name(
+ 
+   job *pjob)
+ 
+   {
+-  char  tmp_jobid[PBS_MAXSVRJOBID + 1];
+-  char *dot = strchr(pjob->ji_qs.ji_jobid, '.');
++  std::string jobid_new;
++  size_t pos;
+ 
+-  if (dot != NULL)
+-    *dot = '\0';
++  // null job pointer
++  if (pjob == NULL)
++    return(-1);
+ 
+-  snprintf(tmp_jobid, sizeof(tmp_jobid), "%s-0.%s",
+-    pjob->ji_qs.ji_jobid, dot + 1);
++  // copy original job id
++  jobid_new = pjob->ji_qs.ji_jobid;
++
++  // make sure job id has a .
++  if ((pos = jobid_new.find('.', 0)) == std::string::npos)
++    return(-1);
++
++  // change "." to "-0."
++  jobid_new.replace(pos, 1, "-0.");
++
++  // confirm new string will fit
++  if (jobid_new.length() > PBS_MAXSVRJOBID)
++    return(-1);
+ 
+-  strcpy(pjob->ji_qs.ji_jobid, tmp_jobid);
++  // update original
++  strncpy(pjob->ji_qs.ji_jobid, jobid_new.c_str(), PBS_MAXSVRJOBID);
+ 
+   return(PBSE_NONE);
+   } /* END change_external_job_name() */
+diff --git a/src/server/node_attr_def.c b/src/server/node_attr_def.c
+index 37aa121ca2..386f12b32d 100644
+--- a/src/server/node_attr_def.c
++++ b/src/server/node_attr_def.c
+@@ -380,7 +380,7 @@ attribute_def node_attr_def[] =
+ 	  set_l,
+ 	  comp_null,
+ 	  free_null,
+-    NULL_FUNC,
++          NULL_FUNC,
+ 	  NO_USER_SET,
+ 	  ATR_TYPE_LONG,
+ 	  PARENT_TYPE_NODE,
+@@ -392,7 +392,7 @@ attribute_def node_attr_def[] =
+ 	  set_l,
+ 	  comp_null,
+ 	  free_null,
+-    NULL_FUNC,
++          NULL_FUNC,
+ 	  NO_USER_SET,
+ 	  ATR_TYPE_LONG,
+ 	  PARENT_TYPE_NODE,
+@@ -404,7 +404,7 @@ attribute_def node_attr_def[] =
+ 	  set_l,
+ 	  comp_null,
+ 	  free_null,
+-    NULL_FUNC,
++          NULL_FUNC,
+ 	  NO_USER_SET,
+ 	  ATR_TYPE_LONG,
+ 	  PARENT_TYPE_NODE,
+@@ -416,7 +416,7 @@ attribute_def node_attr_def[] =
+ 	  set_l,
+ 	  comp_null,
+ 	  free_null,
+-    NULL_FUNC,
++          NULL_FUNC,
+ 	  NO_USER_SET,
+ 	  ATR_TYPE_LONG,
+ 	  PARENT_TYPE_NODE,
+@@ -428,7 +428,7 @@ attribute_def node_attr_def[] =
+ 	  set_l,
+ 	  comp_null,
+ 	  free_null,
+-    NULL_FUNC,
++          NULL_FUNC,
+ 	  NO_USER_SET,
+ 	  ATR_TYPE_LONG,
+ 	  PARENT_TYPE_NODE,
+@@ -440,7 +440,7 @@ attribute_def node_attr_def[] =
+ 	  set_l,
+ 	  comp_null,
+ 	  free_null,
+-    NULL_FUNC,
++          NULL_FUNC,
+ 	  NO_USER_SET,
+ 	  ATR_TYPE_LONG,
+ 	  PARENT_TYPE_NODE,
+@@ -452,7 +452,7 @@ attribute_def node_attr_def[] =
+ 	  set_l,
+ 	  comp_null,
+ 	  free_null,
+-		NULL_FUNC,
++          NULL_FUNC,
+ 	  NO_USER_SET,
+ 	  ATR_TYPE_LONG,
+ 	  PARENT_TYPE_NODE,
+@@ -464,7 +464,7 @@ attribute_def node_attr_def[] =
+ 	  set_l,
+ 	  comp_null,
+ 	  free_null,
+-		NULL_FUNC,
++          NULL_FUNC,
+ 	  NO_USER_SET,
+ 	  ATR_TYPE_LONG,
+ 	  PARENT_TYPE_NODE,
+diff --git a/src/server/node_manager.c b/src/server/node_manager.c
+index 663b741da6..92c4d73f8a 100644
+--- a/src/server/node_manager.c
++++ b/src/server/node_manager.c
+@@ -924,9 +924,10 @@ void process_legacy_job_attribute_information(
+       {
+       char *attr_name = threadsafe_tokenizer(&attr_val, "=");
+ 
+-      if ((attr_name != NULL) &&
+-          (attr_val != '\0'))
++      if ((attr_name != NULL) && (*attr_name != '\0') &&
++          (attr_val != NULL) && (*attr_val != '\0'))
+         {
++        // convert attr_name, attr_val strings to an attribute
+         if (str_to_attr(attr_name, attr_val, pjob->ji_wattr, job_attr_def, JOB_ATR_LAST) == ATTR_NOT_FOUND)
+           {
+           // should be resources used if not found as attribute
+diff --git a/src/server/pbsd_init.c b/src/server/pbsd_init.c
+index 0233800586..1a639ab2dc 100644
+--- a/src/server/pbsd_init.c
++++ b/src/server/pbsd_init.c
+@@ -2667,6 +2667,8 @@ int pbsd_init_job(
+ 
+       svr_setjobstate(pjob, JOB_STATE_COMPLETE, JOB_SUBSTATE_COMPLETE, FALSE);
+ 
++      // fall through
++
+ 
+     case JOB_SUBSTATE_COMPLETE:
+ 
+diff --git a/src/server/process_request.c b/src/server/process_request.c
+index e7f243f58e..ec1935cca4 100644
+--- a/src/server/process_request.c
++++ b/src/server/process_request.c
+@@ -795,7 +795,7 @@ int dispatch_request(
+        * req_deletejob() function.
+       */
+ 
+-      if (is_array(request->rq_ind.rq_delete.rq_objname))
++      if (is_id_array(request->rq_ind.rq_delete.rq_objname))
+         rc = req_deletearray(request);
+       else
+         rc = req_deletejob(request);
+@@ -803,7 +803,7 @@ int dispatch_request(
+       break;
+ 
+     case PBS_BATCH_HoldJob:
+-      if (is_array(request->rq_ind.rq_hold.rq_orig.rq_objname))
++      if (is_id_array(request->rq_ind.rq_hold.rq_orig.rq_objname))
+         rc = req_holdarray(request);
+       else
+         rc = req_holdjob(request);
+@@ -843,7 +843,7 @@ int dispatch_request(
+     case PBS_BATCH_AsyModifyJob:
+ 
+     case PBS_BATCH_ModifyJob:
+-      if (is_array(request->rq_ind.rq_delete.rq_objname))
++      if (is_id_array(request->rq_ind.rq_delete.rq_objname))
+         rc = req_modifyarray(request);
+       else
+         req_modifyjob(request);
+@@ -888,7 +888,7 @@ int dispatch_request(
+ 
+     case PBS_BATCH_ReleaseJob:
+ 
+-      if (is_array(request->rq_ind.rq_delete.rq_objname))
++      if (is_id_array(request->rq_ind.rq_delete.rq_objname))
+         rc = req_releasearray(request);
+       else
+         rc = req_releasejob(request);
+@@ -972,7 +972,7 @@ int dispatch_request(
+ 
+     case PBS_BATCH_RegistDep:
+ 
+-      if (is_array(request->rq_ind.rq_register.rq_parent))
++      if (is_id_array(request->rq_ind.rq_register.rq_parent))
+         {
+         rc = req_registerarray(request);
+         }
+diff --git a/src/server/req_quejob.c b/src/server/req_quejob.c
+index e30acbb59d..5ce1ec3fdf 100644
+--- a/src/server/req_quejob.c
++++ b/src/server/req_quejob.c
+@@ -326,7 +326,7 @@ void sum_select_mem_request(
+       tmp = atoi(current);
+       
+       /* advance past the digits to the units */
+-      while ((current != '\0') &&
++      while ((*current != '\0') &&
+              (isdigit(*current)))
+         current++;
+ 
+diff --git a/src/server/req_runjob.c b/src/server/req_runjob.c
+index 8b128b8dba..59dbe77b48 100644
+--- a/src/server/req_runjob.c
++++ b/src/server/req_runjob.c
+@@ -1676,8 +1676,14 @@ job *chk_job_torun(
+ 
+   if ((pjob->ji_qs.ji_state != JOB_STATE_QUEUED) && (pjob->ji_qs.ji_state != JOB_STATE_HELD))
+     {
+-    sprintf(EMsg, "job %s state %s", pjob->ji_qs.ji_jobid, PJobState[pjob->ji_qs.ji_state]);
+-    req_reject(PBSE_BADSTATE, 0, preq, NULL, EMsg);
++    std::string err_msg;
++
++    err_msg = "job ";
++    err_msg += pjob->ji_qs.ji_jobid;
++    err_msg += " state ";
++    err_msg += PJobState[pjob->ji_qs.ji_state];
++
++    req_reject(PBSE_BADSTATE, 0, preq, NULL, err_msg.c_str());
+     return(NULL);
+     }
+ 
+diff --git a/src/server/req_stat.c b/src/server/req_stat.c
+index 21a608aeee..392f22772e 100644
+--- a/src/server/req_stat.c
++++ b/src/server/req_stat.c
+@@ -241,7 +241,7 @@ int req_stat_job(
+     {
+     /* status a single job */
+ 
+-    if (is_array(name))
++    if (is_id_array(name))
+       {
+       if (type != tjstSummarizeArraysServer)
+         {
+diff --git a/src/server/svr_chk_owner.c b/src/server/svr_chk_owner.c
+index 4b33c57226..b98135710e 100644
+--- a/src/server/svr_chk_owner.c
++++ b/src/server/svr_chk_owner.c
+@@ -413,9 +413,8 @@ int authenticate_user(
+ 
+   {
+   int    rc;
+-  char   uath[PBS_MAXUSER + PBS_MAXHOSTNAME + 1];
+   time_t time_now = time(NULL);
+-  char   error_msg[1024];
++  std::string error_msg;
+   long   acl_enabled = FALSE;
+ 
+ #ifdef MUNGE_AUTH
+@@ -437,9 +436,14 @@ int authenticate_user(
+     if ((acl_check_my_array_string(my_acl, uh, ACL_User_Host)) == 0)
+       {
+       *autherr = strdup("User not in authorized user list.");
+-      sprintf(error_msg, "%s Requested user %s: requested from host %s",
+-                     *autherr, preq->rq_user, preq->rq_host);
+-      log_event(PBSEVENT_ADMIN, PBS_EVENTCLASS_SERVER, __func__, error_msg);
++
++      error_msg = *autherr;
++      error_msg += " Requested user ";
++      error_msg += preq->rq_user;
++      error_msg += ": requested from host ";
++      error_msg += preq->rq_host;
++  
++      log_event(PBSEVENT_ADMIN, PBS_EVENTCLASS_SERVER, __func__, error_msg.c_str());
+       return(PBSE_BADCRED);
+       }
+     }
+@@ -447,9 +451,16 @@ int authenticate_user(
+   if (strncmp(preq->rq_user, pcred->username, PBS_MAXUSER))
+     {
+     *autherr = strdup("Users do not match");
+-    sprintf(error_msg, "%s: Requested user %s: credential user %s: requested from host %s",
+-                   *autherr, preq->rq_user, pcred->username, preq->rq_host);
+-    log_event(PBSEVENT_ADMIN, PBS_EVENTCLASS_SERVER, __func__, error_msg);
++
++    error_msg = *autherr;
++    error_msg += " Requested user ";
++    error_msg += preq->rq_user;
++    error_msg += ": credential user ";
++    error_msg += pcred->username;
++    error_msg += ": requested from host ";
++    error_msg += preq->rq_host;
++
++    log_event(PBSEVENT_ADMIN, PBS_EVENTCLASS_SERVER, __func__, error_msg.c_str());
+     return(PBSE_BADCRED);
+     }
+ #endif
+@@ -481,10 +492,14 @@ int authenticate_user(
+         (memcmp(sai1, sai2, sizeof(struct sockaddr_in))))
+       {
+       *autherr = strdup("Hosts do not match");
+-      
+-      sprintf(error_msg, "%s: Requested host %s: credential host: %s",
+-        *autherr, preq->rq_host, pcred->hostname);
+-      log_event(PBSEVENT_ADMIN, PBS_EVENTCLASS_SERVER, __func__, error_msg);
++     
++      error_msg = *autherr; 
++      error_msg += ": Requested host ";
++      error_msg += preq->rq_host;
++      error_msg += ": credential host: ";
++      error_msg += pcred->hostname;
++
++      log_event(PBSEVENT_ADMIN, PBS_EVENTCLASS_SERVER, __func__, error_msg.c_str());
+     
+       return(PBSE_BADCRED);
+       }
+@@ -520,10 +535,14 @@ int authenticate_user(
+   if (acl_enabled)
+     {
+     struct array_strings *acl_users = NULL;
+-    snprintf(uath, sizeof(uath), "%s@%s", preq->rq_user, preq->rq_host);
++    std::string uath;
++
++    uath = preq->rq_user;
++    uath += "@";
++    uath = preq->rq_host;
+     
+     get_svr_attr_arst(SRV_ATR_AclUsers, &acl_users);
+-    if (acl_check_my_array_string(acl_users, uath, ACL_User) == 0)
++    if (acl_check_my_array_string(acl_users, uath.c_str(), ACL_User) == 0)
+       {
+       int       my_err;
+       pbs_net_t connect_addr = get_hostaddr(&my_err, preq->rq_host);
+diff --git a/src/test/catch_child/scaffolding.c b/src/test/catch_child/scaffolding.c
+index 7db1077854..f08383d01e 100644
+--- a/src/test/catch_child/scaffolding.c
++++ b/src/test/catch_child/scaffolding.c
+@@ -1012,6 +1012,7 @@ int DIS_reply_read(struct tcp_chan *chan, struct batch_reply *preply)
+         {
+       case 1:
+           rc = 1;
++          // fall through
+       case 2:
+           preply->brp_code = PBSE_NONE;
+           LOGLEVEL = 4;
+diff --git a/src/test/geteusernam/scaffolding.c b/src/test/geteusernam/scaffolding.c
+index ec849ab6df..f2cb83be16 100644
+--- a/src/test/geteusernam/scaffolding.c
++++ b/src/test/geteusernam/scaffolding.c
+@@ -64,7 +64,7 @@ void get_jobowner(char *from, char *to)
+   exit(1);
+   }
+ 
+-int acl_check_my_array_string(struct array_strings *pas, char *name, int type)
++int acl_check_my_array_string(struct array_strings *pas, const char *name, int type)
+   {
+   return(0);
+   }
+diff --git a/src/test/node_manager/test_uut.c b/src/test/node_manager/test_uut.c
+index 75c23b39af..b4aa98912f 100644
+--- a/src/test/node_manager/test_uut.c
++++ b/src/test/node_manager/test_uut.c
+@@ -284,12 +284,12 @@ END_TEST
+ START_TEST(test_kill_job_on_mom)
+   {
+   struct pbsnode  pnode;
+-  char            job_id[20];
++  char            *job_id;
+   int             rc;
+   unsigned long   addr = 4567;
+ 
+   memset(&pnode, 0, sizeof(pnode));
+-  strcpy(job_id, "33.torque-devtest-03");
++  job_id = strdup("33.torque-devtest-03");
+ 
+   pnode.change_name("numa3.ac");
+   pnode.nd_mom_port = 1234;
+diff --git a/src/test/pbs_log/scaffolding.c b/src/test/pbs_log/scaffolding.c
+index fc5878c601..d63f053851 100644
+--- a/src/test/pbs_log/scaffolding.c
++++ b/src/test/pbs_log/scaffolding.c
+@@ -37,8 +37,7 @@ DIR *opendir(const char *name)
+ 
+ int closedir(DIR *dirp)
+   {
+-  if (dirp != NULL)
+-    free(dirp);
++  free(dirp);
+   return(0);
+   }
+ 
+diff --git a/src/test/pbsd_main/scaffolding.c b/src/test/pbsd_main/scaffolding.c
+index 90110e8fe8..0d7179a795 100644
+--- a/src/test/pbsd_main/scaffolding.c
++++ b/src/test/pbsd_main/scaffolding.c
+@@ -407,7 +407,7 @@ int get_svr_attr_arst(int index, struct array_strings **arst)
+   return(0);
+   }
+ 
+-int acl_check_my_array_string(struct array_strings *pas, char *name, int type)
++int acl_check_my_array_string(struct array_strings *pas, const char *name, int type)
+   {
+   return(0);
+   }
+diff --git a/src/test/process_alps_status/scaffolding.c b/src/test/process_alps_status/scaffolding.c
+index dd8ab2c577..3c6449aa70 100644
+--- a/src/test/process_alps_status/scaffolding.c
++++ b/src/test/process_alps_status/scaffolding.c
+@@ -713,6 +713,8 @@ int set_arst(
+       pas->as_next = pas->as_buf;
+ 
+       /* no break, "SET" falls into "MERGE" to add strings */
++      // fall through
++
+     case INCR_OLD:
+     case MERGE:
+ 
+diff --git a/src/test/process_request/scaffolding.c b/src/test/process_request/scaffolding.c
+index 66618f8900..36aff63746 100644
+--- a/src/test/process_request/scaffolding.c
++++ b/src/test/process_request/scaffolding.c
+@@ -373,9 +373,9 @@ int req_modify_node(struct batch_request *preq)
+   }
+ 
+ 
+-int is_array(char *id)
++int is_id_array(char *id)
+   {
+-  fprintf(stderr, "The call to is_array needs to be mocked!!\n");
++  fprintf(stderr, "The call to is_id_array needs to be mocked!!\n");
+   exit(1);
+   }
+ 
+@@ -489,7 +489,7 @@ int get_svr_attr_b(int index, bool *b)
+   return(0);
+   }
+ 
+-int acl_check_my_array_string(struct array_strings *pas, char *name, int type)
++int acl_check_my_array_string(struct array_strings *pas, const char *name, int type)
+   {
+   return(0);
+   }
+diff --git a/src/test/req_stat/scaffolding.c b/src/test/req_stat/scaffolding.c
+index cbba4d809a..80f1956d61 100644
+--- a/src/test/req_stat/scaffolding.c
++++ b/src/test/req_stat/scaffolding.c
+@@ -221,9 +221,9 @@ int svr_connect(pbs_net_t hostaddr, unsigned int port, int *err, struct pbsnode
+   exit(1);
+   }
+ 
+-int is_array(char *id)
++int is_id_array(char *id)
+   {
+-  fprintf(stderr, "The call to is_array to be mocked!!\n");
++  fprintf(stderr, "The call to is_id_array to be mocked!!\n");
+   exit(1);
+   }
+ 
+diff --git a/src/test/svr_chk_owner/scaffolding.c b/src/test/svr_chk_owner/scaffolding.c
+index 6d00f6e381..59a8c84e95 100644
+--- a/src/test/svr_chk_owner/scaffolding.c
++++ b/src/test/svr_chk_owner/scaffolding.c
+@@ -79,7 +79,7 @@ int get_svr_attr_arst(int index, struct array_strings **arst)
+   return(0);
+   }
+ 
+-int acl_check_my_array_string(struct array_strings *pas, char *name, int type)
++int acl_check_my_array_string(struct array_strings *pas, const char *name, int type)
+   {
+   return(0);
+   }
+diff --git a/torque.setup.in b/torque.setup.in
+index 15716c9b97..b0f2ee305f 100644
+--- a/torque.setup.in
++++ b/torque.setup.in
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ #
+ # torque.setup - create pbs_server database and default queue
+ # 
+--- a/src/server/svr_jobfunc.c	2017-08-29 22:25:11.000000000 -0000
++++ b/src/server/svr_jobfunc.c	2019-10-22 14:29:39.465723637 -0000
+@@ -4015,16 +4015,18 @@
+ 
+   {
+   int rc = PBSE_NONE;
+-  char *err_msg = NULL;
+-  char stub_msg[] = "no pos";
++  std::string err_msg;
+ 
+   if (logging >= 10)
+     {
+-    err_msg = (char *)calloc(1, MSG_LEN_LONG);
+-    if (msg == NULL)
+-      msg = stub_msg;
+-    snprintf(err_msg, MSG_LEN_LONG, "locking %s in method %s-%s", pjob->ji_qs.ji_jobid, id, msg);
+-    log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg);
++    err_msg = "locking ";
++    err_msg += pjob->ji_qs.ji_jobid;
++    err_msg += " in method ";
++    err_msg += id;
++    err_msg += "-";
++    if (msg != NULL)
++      err_msg += msg;
++    log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg.c_str());
+     }
+ 
+   if (pjob->ji_mutex != NULL)
+@@ -4033,9 +4035,11 @@
+       {
+       if (logging >= 20)
+         {
+-        snprintf(err_msg, MSG_LEN_LONG, "ALERT: cannot lock job %s mutex in method %s",
+-                                     pjob->ji_qs.ji_jobid, id);
+-        log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg);
++        err_msg = "ALERT: cannot lock job ";
++        err_msg += pjob->ji_qs.ji_jobid;
++        err_msg += " mutex in method ";
++        err_msg += id;
++        log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg.c_str());
+         }
+       rc = PBSE_MUTEX;
+       }
+@@ -4046,9 +4050,6 @@
+     log_err(rc, __func__, "Uninitialized mutex pass to pthread_mutex_lock!");
+     }
+ 
+-  if (err_msg != NULL)
+-  free(err_msg);
+-
+   return rc;
+   }
+ 
+@@ -4063,16 +4064,18 @@
+ 
+   {
+   int rc = PBSE_NONE;
+-  char *err_msg = NULL;
+-  char stub_msg[] = "no pos";
++  std::string err_msg;
+ 
+   if (logging >= 10)
+     {
+-    err_msg = (char *)calloc(1, MSG_LEN_LONG);
+-    if (msg == NULL)
+-      msg = stub_msg;
+-    snprintf(err_msg, MSG_LEN_LONG, "unlocking %s in method %s-%s", pjob->ji_qs.ji_jobid, id, msg);
+-    log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg);
++    err_msg = "unlocking ";
++    err_msg += pjob->ji_qs.ji_jobid;
++    err_msg += " in method ";
++    err_msg += id;
++    err_msg += "-";
++    if (msg != NULL)
++      err_msg += msg;
++    log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg.c_str());
+     }
+ 
+   if (pjob->ji_mutex != NULL)
+@@ -4081,9 +4084,11 @@
+       {
+     if (logging >= 20)
+         {
+-        snprintf(err_msg, MSG_LEN_LONG, "ALERT: cannot unlock job %s mutex in method %s",
+-                                            pjob->ji_qs.ji_jobid, id);
+-        log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg);
++        err_msg = "ALERT: cannot unlock job ";
++        err_msg += pjob->ji_qs.ji_jobid;
++        err_msg += " mutex in method ";
++        err_msg += id;
++        log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg.c_str());
+         }
+       rc = PBSE_MUTEX;
+       }
+@@ -4094,9 +4099,6 @@
+     log_err(rc, __func__, "Uninitialized mutex pass to pthread_mutex_unlock!");
+     }
+ 
+-   if (err_msg != NULL)
+-     free(err_msg);
+-
+    return rc;
+    }
+ 
+@@ -4110,32 +4112,33 @@
+ 
+   {
+   int rc = PBSE_NONE;
+-  char *err_msg = NULL;
+-  char stub_msg[] = "no pos";
++  std::string err_msg;
+ 
+   if (logging >= 10)
+     {
+-    err_msg = (char *)calloc(1, MSG_LEN_LONG);
+-    if (msg == NULL)
+-      msg = stub_msg;
+-    snprintf(err_msg, MSG_LEN_LONG, "locking %s in method %s-%s", pa->ai_qs.parent_id, id, msg);
+-    log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg);
++    err_msg = "locking ";
++    err_msg += pa->ai_qs.parent_id,
++    err_msg += " in method ";
++    err_msg += id;
++    err_msg += "-";
++    if (msg != NULL)
++      err_msg += msg;
++    log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg.c_str());
+     }
+ 
+   if (pthread_mutex_lock(pa->ai_mutex) != 0)
+     {
+     if (logging >= 20)
+       {
+-      snprintf(err_msg, MSG_LEN_LONG, "ALERT: cannot lock job array %s mutex in method %s",
+-                                   pa->ai_qs.parent_id, id);
+-      log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg);
++      err_msg = "ALERT: cannot lock job array ";
++      err_msg += pa->ai_qs.parent_id,
++      err_msg += " mutex in method ";
++      err_msg += id;
++      log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg.c_str());
+       }
+     rc = PBSE_MUTEX;
+     }
+ 
+-  if (err_msg != NULL)
+-  free(err_msg);
+-
+   return rc;
+   }
+ 
+@@ -4149,32 +4152,33 @@
+ 
+   {
+   int rc = PBSE_NONE;
+-  char *err_msg = NULL;
+-  char stub_msg[] = "no pos";
++  std::string err_msg;
+ 
+   if (logging >= 10)
+     {
+-    err_msg = (char *)calloc(1, MSG_LEN_LONG);
+-    if (msg == NULL)
+-      msg = stub_msg;
+-    snprintf(err_msg, MSG_LEN_LONG, "unlocking %s in method %s-%s", pa->ai_qs.parent_id, id, msg);
+-    log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg);
++    err_msg = "unlocking ";
++    err_msg += pa->ai_qs.parent_id,
++    err_msg += " in method ";
++    err_msg += id;
++    err_msg += "-";
++    if (msg != NULL)
++      err_msg += msg;
++    log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg.c_str());
+     }
+ 
+   if (pthread_mutex_unlock(pa->ai_mutex) != 0)
+     {
+     if (logging >= 20)
+       {
+-      snprintf(err_msg, MSG_LEN_LONG, "ALERT: cannot unlock job array %s mutex in method %s",
+-                                   pa->ai_qs.parent_id, id);
+-      log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg);
++      err_msg = "ALERT: cannot unlock job array ";
++      err_msg += pa->ai_qs.parent_id,
++      err_msg += " mutex in method ";
++      err_msg += id;
++      log_record(PBSEVENT_DEBUG, PBS_EVENTCLASS_NODE, id, err_msg.c_str());
+       }
+     rc = PBSE_MUTEX;
+     }
+ 
+-  if (err_msg != NULL)
+-  free(err_msg);
+-
+   return rc;
+   }
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,13 +20,13 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(ver_cut 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
-	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
+	KEYWORDS="-* ~amd64 ~x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
-GWP_V="20190511"
+GWP_V="20200523"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
@@ -44,11 +44,10 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio ffmpeg +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gcrypt +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks +unwind v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
-	ffmpeg? ( staging )
 	osmesa? ( opengl )
 	pipelight? ( staging )
 	test? ( abi_x86_32 )
@@ -73,8 +72,8 @@ COMMON_DEPEND="
 	capi? ( net-libs/libcapi[${MULTILIB_USEDEP}] )
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
 	faudio? ( app-emulation/faudio:=[${MULTILIB_USEDEP}] )
-	ffmpeg? ( >=media-video/ffmpeg-4:=[${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
+	gcrypt? ( dev-libs/libgcrypt:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
 	gssapi? ( virtual/krb5[${MULTILIB_USEDEP}] )
@@ -113,6 +112,7 @@ COMMON_DEPEND="
 	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
+	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
 	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
 	vkd3d? ( app-emulation/vkd3d[${MULTILIB_USEDEP}] )
@@ -129,8 +129,8 @@ RDEPEND="${COMMON_DEPEND}
 	>app-eselect/eselect-wine-0.3
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
-	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.9.2 )
+	gecko? ( app-emulation/wine-gecko:2.47.1[abi_x86_32?,abi_x86_64?] )
+	mono? ( app-emulation/wine-mono:5.1.0 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -164,10 +164,10 @@ usr/share/applications/wine-uninstaller.desktop
 usr/share/applications/wine-winecfg.desktop"
 
 PATCHES=(
-	"${PATCHDIR}/patches/${MY_PN}-4.8-winegcc.patch" #260726
+	"${PATCHDIR}/patches/${MY_PN}-5.0-winegcc.patch" #260726
 	"${PATCHDIR}/patches/${MY_PN}-4.7-multilib-portage.patch" #395615
-	"${PATCHDIR}/patches/${MY_PN}-4.7-memset-O3.patch" #480508
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
+	"${PATCHDIR}/patches/${MY_PN}-5.9-Revert-makedep-Install-also-generated-typelib-for-in.patch"
 )
 PATCHES_BIN=()
 
@@ -354,7 +354,7 @@ src_prepare() {
 		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
 		ewarn "Wine bugzilla should explicitly state that staging was used."
 
-		local STAGING_EXCLUDE=""
+		local STAGING_EXCLUDE="-W winemenubuilder-Desktop_Icon_Path" #652176
 		use pipelight || STAGING_EXCLUDE="${STAGING_EXCLUDE} -W Pipelight"
 
 		# Launch wine-staging patcher in a subshell, using eapply as a backend, and gitapply.sh as a backend for binary patches
@@ -443,10 +443,10 @@ multilib_src_configure() {
 		$(use_with ncurses curses)
 		$(use_with udisks dbus)
 		$(use_with faudio)
-		$(use_with ffmpeg)
 		$(use_with fontconfig)
 		$(use_with ssl gnutls)
 		$(use_enable gecko mshtml)
+		$(use_with gcrypt)
 		$(use_with gphoto2 gphoto)
 		$(use_with gsm)
 		$(use_with gssapi)
@@ -474,6 +474,7 @@ multilib_src_configure() {
 		$(use_enable test tests)
 		$(use_with truetype freetype)
 		$(use_with udev)
+		$(use_with unwind)
 		$(use_with v4l v4l2)
 		$(use_with vkd3d)
 		$(use_with vulkan)
@@ -491,10 +492,9 @@ multilib_src_configure() {
 		$(use_with vaapi va)
 	)
 
-	local PKG_CONFIG AR RANLIB
+	local PKG_CONFIG
 	# Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64; #472038
-	# set AR and RANLIB to make QA scripts happy; #483342
-	tc-export PKG_CONFIG AR RANLIB
+	tc-export PKG_CONFIG
 
 	if use amd64; then
 		if [[ ${ABI} == amd64 ]]; then

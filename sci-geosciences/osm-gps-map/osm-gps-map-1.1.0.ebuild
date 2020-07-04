@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 inherit autotools gnome2
 
 DESCRIPTION="A GTK+ widget for displaying OpenStreetMap tiles"
-HOMEPAGE="http://nzjrs.github.io/osm-gps-map/"
+HOMEPAGE="https://nzjrs.github.io/osm-gps-map/"
 SRC_URI="https://github.com/nzjrs/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="static-libs"
 
 RDEPEND="
@@ -37,7 +37,5 @@ src_prepare() {
 }
 
 src_configure() {
-	gnome2_src_configure \
-		--docdir=/usr/share/doc/${PF} \
-		$(use_enable static-libs static)
+	gnome2_src_configure $(use_enable static-libs static)
 }

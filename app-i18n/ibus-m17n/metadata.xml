@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>cjk@gentoo.org</email>
-    <name>Cjk</name>
-  </maintainer>
-  <longdescription lang="en">
-    The M17N engine for IBus. It allows input of many languages using the input
-    table maps from <pkg>dev-libs/m17n-lib</pkg>.
-  </longdescription>
-  <use>
-    <flag name="gtk2">
-      Build with <pkg>x11-libs/gtk+</pkg>:2 instead of <pkg>x11-libs/gtk+</pkg>:3
-    </flag>
-  </use>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:ibus_project:ibus-m17n</remote-id>
-    <remote-id type="github">ibus/ibus-m17n</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<longdescription lang="en">
+		The M17N engine for IBus. It allows input of many languages using the input
+		table maps from <pkg>dev-libs/m17n-lib</pkg>.
+	</longdescription>
+	<use>
+		<flag name="gtk2">
+			Build with <pkg>x11-libs/gtk+</pkg>:2 instead of <pkg>x11-libs/gtk+</pkg>:3
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:ibus_project:ibus-m17n</remote-id>
+		<remote-id type="github">ibus/ibus-m17n</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -14,28 +14,31 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # git is needed for tests, see https://bugs.launchpad.net/pbr/+bug/1326682 and https://bugs.gentoo.org/show_bug.cgi?id=561038
 # docutils is needed for sphinx exceptions... https://bugs.gentoo.org/show_bug.cgi?id=603848
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
-		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
-		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/subunit-1.0.0[${PYTHON_USEDEP}]
-		>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
-		>=dev-python/testresources-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
-		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/virtualenv-14.0.6[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
-		dev-vcs/git
+		$(python_gen_cond_dep '
+			>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
+			!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
+			>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
+			>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
+			>=dev-python/subunit-1.0.0[${PYTHON_USEDEP}]
+			>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+			>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
+			>=dev-python/testresources-2.0.0[${PYTHON_USEDEP}]
+			>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+			>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
+			>=dev-python/virtualenv-14.0.6[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+			dev-vcs/git
+		' -3)
 	)"
 PDEPEND=""
 
@@ -61,6 +64,12 @@ python_prepare_all() {
 }
 
 python_test() {
+	if ! python_is_python3; then
+		ewarn "Skipping tests on ${EPYTHON} to unblock circular deps."
+		ewarn "Please run tests manually."
+		return
+	fi
+
 	distutils_install_for_testing
 
 	rm -rf .testrepository || die "couldn't remove '.testrepository' under ${EPTYHON}"

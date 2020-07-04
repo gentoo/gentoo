@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://launchpad.net/synapse-project/0.3/${PV}/+download/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="indicator nls plugins"
+IUSE="appindicator nls plugins"
 
 RDEPEND="
 	>=dev-libs/glib-2.28.0:2
@@ -25,7 +25,7 @@ RDEPEND="
 	x11-libs/libnotify
 	x11-libs/pango
 	x11-themes/adwaita-icon-theme
-	indicator? ( dev-libs/libappindicator:3 )
+	appindicator? ( dev-libs/libappindicator:3 )
 	nls? ( virtual/libintl )
 	plugins? ( >=net-libs/rest-0.7 )
 "
@@ -44,7 +44,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable indicator) \
+		$(use_enable appindicator indicator) \
 		$(use_enable nls) \
 		$(use_enable plugins librest yes) \
 		--disable-zeitgeist

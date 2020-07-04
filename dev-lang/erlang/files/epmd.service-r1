@@ -1,0 +1,11 @@
+[Unit]
+Description=Erlang Portmapper Daemon
+Wants=network.target
+
+[Service]
+ExecStart=/usr/bin/epmd
+User=epmd
+Group=epmd
+
+[Install]
+WantedBy=multi-user.target

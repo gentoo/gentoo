@@ -14,6 +14,7 @@ garmin - Garmin protocol support
 garmintxt - Garmin Simple Text protocol support
 geostar - Geostar Protocol support
 gpsclock - GPSclock protocol support
+greis - Javad GREIS protocol support
 isync - Isync protocol support
 itrax - iTrax protocol support
 mtk3301 - MTK-3301 protocol support

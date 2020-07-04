@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit distutils-r1
 
@@ -18,6 +18,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
@@ -28,7 +29,6 @@ DEPEND="${RDEPEND}
 	>=dev-python/setuptools_scm-1.7[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
 "
 
@@ -53,5 +53,5 @@ python_test() {
 	git config --global user.email "you@example.com"
 	git config --global user.name "Your Name"
 
-	TRAVIS=False py.test -v -v || die
+	TRAVIS=False pytest -vv || die
 }

@@ -1,0 +1,50 @@
+From 1f747cc4194601e8e54084638085d60026f1dbc4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 4 May 2020 10:22:32 +0200
+Subject: [PATCH] Skip telnet tests when cURL is built without telnet support
+
+---
+ tests/option_constants_test.py |  1 +
+ tests/util.py                  | 14 ++++++++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/tests/option_constants_test.py b/tests/option_constants_test.py
+index 2d6d185..20228c6 100644
+--- a/tests/option_constants_test.py
++++ b/tests/option_constants_test.py
+@@ -387,6 +387,7 @@ class OptionConstantsSettingTest(unittest.TestCase):
+     def test_keypasswd(self):
+         self.curl.setopt(self.curl.KEYPASSWD, 'secret')
+ 
++    @util.only_telnet
+     def test_telnetoptions(self):
+         self.curl.setopt(self.curl.TELNETOPTIONS, ('TTYPE=1', 'XDISPLOC=2'))
+ 
+diff --git a/tests/util.py b/tests/util.py
+index aabadf5..e12e251 100644
+--- a/tests/util.py
++++ b/tests/util.py
+@@ -138,6 +138,20 @@ def only_ssl(fn):
+ 
+     return decorated
+ 
++def only_telnet(fn):
++    import nose.plugins.skip
++    import pycurl
++
++    @functools.wraps(fn)
++    def decorated(*args, **kwargs):
++        # pycurl.version_info()[8] is a tuple of protocols supported by libcurl
++        if 'telnet' not in pycurl.version_info()[8]:
++            raise nose.plugins.skip.SkipTest('libcurl does not support telnet')
++
++        return fn(*args, **kwargs)
++
++    return decorated
++
+ def only_ssl_backends(*backends):
+     def decorator(fn):
+         import nose.plugins.skip
+-- 
+2.26.2
+

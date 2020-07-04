@@ -16,7 +16,7 @@ SRC_URI="https://github.com/steve-o/${PN}/archive/release-${MY_PV}.tar.gz -> ${P
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ppc ppc64 x86"
 IUSE="static-libs"
 
 DEPEND="${PYTHON_DEPS}"

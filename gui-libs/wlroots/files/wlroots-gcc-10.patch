@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/707496
+
+From f2943bdf61afe0a3ad2227d72fcbcac8b3088b1a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Stan=C4=9Bk?= <jstanek@redhat.com>
+Date: Tue, 28 Jan 2020 15:27:24 +0100
+Subject: [PATCH] Declare wlr_seat globals as extern
+
+---
+ include/types/wlr_seat.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/include/types/wlr_seat.h
++++ b/include/types/wlr_seat.h
+@@ -4,9 +4,9 @@
+ #include <wayland-server-core.h>
+ #include <wlr/types/wlr_seat.h>
+ 
+-const struct wlr_pointer_grab_interface default_pointer_grab_impl;
+-const struct wlr_keyboard_grab_interface default_keyboard_grab_impl;
+-const struct wlr_touch_grab_interface default_touch_grab_impl;
++extern const struct wlr_pointer_grab_interface default_pointer_grab_impl;
++extern const struct wlr_keyboard_grab_interface default_keyboard_grab_impl;
++extern const struct wlr_touch_grab_interface default_touch_grab_impl;
+ 
+ void seat_client_create_pointer(struct wlr_seat_client *seat_client,
+ 	uint32_t version, uint32_t id);

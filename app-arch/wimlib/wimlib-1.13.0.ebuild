@@ -12,7 +12,6 @@ else
 	MY_PV="${PV/_/-}"
 	MY_PV="${MY_PV^^}"
 	SRC_URI="https://wimlib.net/downloads/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
-	RESTRICT="primaryuri"
 	KEYWORDS="~amd64 ~x86"
 fi
 

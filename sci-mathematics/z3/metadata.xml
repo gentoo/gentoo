@@ -8,16 +8,9 @@
     <email>mgorny@gentoo.org</email>
   </maintainer>
   <maintainer type="project">
-    <email>haskell@gentoo.org</email>
-    <name>Gentoo Haskell</name>
-  </maintainer>
-  <maintainer type="project">
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">
-Z3 is a high-performance theorem prover being developed at Microsoft Research.
-  </longdescription>
   <use>
     <flag name="isabelle">Add integration support for the Isabelle/HOL
   theorem prover.</flag>

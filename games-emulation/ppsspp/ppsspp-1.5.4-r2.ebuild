@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="headless libav +qt5 sdl +system-ffmpeg"
+IUSE="headless +qt5 sdl +system-ffmpeg"
 REQUIRED_USE="!qt5? ( sdl )"
 
 RDEPEND="
@@ -39,10 +39,7 @@ RDEPEND="
 		!sdl? ( dev-qt/qtmultimedia:5 )
 	)
 	sdl? ( media-libs/libsdl2 )
-	system-ffmpeg? (
-		!libav? ( media-video/ffmpeg:= )
-		libav? ( media-video/libav:= )
-	)
+	system-ffmpeg? ( media-video/ffmpeg:= )
 "
 DEPEND="${RDEPEND}"
 
@@ -50,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.2-assets-lookup.patch
 	"${FILESDIR}"/${PN}-1.4-O2.patch
 	"${FILESDIR}"/${P}-ffmpeg-4.patch
+	"${FILESDIR}"/${P}-stdint-gcc-10.patch
 )
 
 src_unpack() {

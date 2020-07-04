@@ -1,0 +1,57 @@
+commit f5f288c7622d3547c29a8355b8ccda0155483b79
+Author: Till Hofmann <hofmann@kbsg.rwth-aachen.de>
+Date:   Sun Nov 17 22:43:20 2019 +0100
+
+    Revert "fix up static, so works as DLL (#559)"
+    
+    This reverts commit 774f25800e6f19f4b927023c85d1389af322da5e.
+
+diff --git a/include/yaml-cpp/node/detail/node_data.h b/include/yaml-cpp/node/detail/node_data.h
+index 82fb79a..50bcd74 100644
+--- a/include/yaml-cpp/node/detail/node_data.h
++++ b/include/yaml-cpp/node/detail/node_data.h
+@@ -81,7 +81,7 @@ class YAML_CPP_API node_data {
+                     shared_memory_holder pMemory);
+ 
+  public:
+-  static const std::string& empty_scalar();
++  static std::string empty_scalar;
+ 
+  private:
+   void compute_seq_size() const;
+diff --git a/include/yaml-cpp/node/impl.h b/include/yaml-cpp/node/impl.h
+index 7a3deac..b363f86 100644
+--- a/include/yaml-cpp/node/impl.h
++++ b/include/yaml-cpp/node/impl.h
+@@ -166,13 +166,13 @@ inline T Node::as(const S& fallback) const {
+ inline const std::string& Node::Scalar() const {
+   if (!m_isValid)
+     throw InvalidNode(m_invalidKey);
+-  return m_pNode ? m_pNode->scalar() : detail::node_data::empty_scalar();
++  return m_pNode ? m_pNode->scalar() : detail::node_data::empty_scalar;
+ }
+ 
+ inline const std::string& Node::Tag() const {
+   if (!m_isValid)
+     throw InvalidNode(m_invalidKey);
+-  return m_pNode ? m_pNode->tag() : detail::node_data::empty_scalar();
++  return m_pNode ? m_pNode->tag() : detail::node_data::empty_scalar;
+ }
+ 
+ inline void Node::SetTag(const std::string& tag) {
+diff --git a/src/node_data.cpp b/src/node_data.cpp
+index 6cfedfc..eba1ae4 100644
+--- a/src/node_data.cpp
++++ b/src/node_data.cpp
+@@ -13,10 +13,7 @@
+ namespace YAML {
+ namespace detail {
+ 
+-const std::string& node_data::empty_scalar() {
+-  static const std::string svalue;
+-  return svalue;
+-}
++std::string node_data::empty_scalar;
+ 
+ node_data::node_data()
+     : m_isDefined(false),

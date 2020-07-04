@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,12 +11,13 @@ SRC_URI="http://aitoweb.world.coocan.jp/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="sys-apps/sed
 	sys-libs/ncurses:=
-	virtual/awk"
+	virtual/awk
+	virtual/pkgconfig"
 RDEPEND="sys-libs/ncurses:=
 	app-i18n/skk-jisyo"
 
@@ -36,7 +37,8 @@ src_prepare() {
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
-		OPTIMIZE="${CFLAGS}"
+		OPTIMIZE="${CFLAGS}" \
+		EXTRALIBS="$($(tc-getPKG_CONFIG) --libs ncurses)"
 }
 
 src_install() {

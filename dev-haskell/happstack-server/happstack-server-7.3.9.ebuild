@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,12 +11,12 @@ inherit haskell-cabal
 
 DESCRIPTION="Web related tools and services"
 HOMEPAGE="http://happstack.com"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+network-uri +template_haskell"
+IUSE="+network-uri +template-haskell"
 
 RDEPEND=">=dev-haskell/base64-bytestring-1.0:=[profile?] <dev-haskell/base64-bytestring-1.1:=[profile?]
 	>=dev-haskell/blaze-html-0.5:=[profile?] <dev-haskell/blaze-html-0.8:=[profile?]
@@ -51,5 +51,5 @@ src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag network-uri network-uri) \
 		--flag=network_2_2_3 \
-		$(cabal_flag template_haskell template_haskell)
+		$(cabal_flag template-haskell template_haskell)
 }

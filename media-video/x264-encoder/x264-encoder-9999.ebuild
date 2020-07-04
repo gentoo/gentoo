@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,22 +14,19 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_P="x264-snapshot-$(ver_cut 3)-2245"
 	SRC_URI="http://download.videolan.org/pub/videolan/x264/snapshots/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="avs custom-cflags ffmpeg ffmpegsource +interlaced libav mp4 +threads"
+IUSE="avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads"
 
 REQUIRED_USE="ffmpegsource? ( ffmpeg )"
 
 RDEPEND="
 	~media-libs/x264-${PV}[interlaced=,threads=]
-	ffmpeg? (
-		!libav? ( media-video/ffmpeg:= )
-		libav? ( media-video/libav:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	ffmpegsource? ( media-libs/ffmpegsource )
 	mp4? ( >=media-video/gpac-0.5.2:= )"
 

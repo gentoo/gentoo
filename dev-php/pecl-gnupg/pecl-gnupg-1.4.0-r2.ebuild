@@ -10,7 +10,7 @@ PHP_EXT_ZENDEXT="no"
 PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
 PHP_EXT_S="${WORKDIR}/${MY_P}"
 
-USE_PHP="php5-6 php7-1 php7-2 php7-3"
+USE_PHP="php5-6 php7-1 php7-2 php7-3 php7-4"
 
 inherit php-ext-pecl-r3
 

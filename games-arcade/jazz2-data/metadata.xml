@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">deathkiller/jazz2</remote-id>
+	</upstream>
+	<use>
+		<flag name="cc">Install The Christmas Chronicles additional data</flag>
+		<flag name="demo">Use the free demo data instead of the full retail game data</flag>
+		<flag name="gles2-only">Use GLES 2.0 or later instead of full OpenGL 2.1</flag>
+	</use>
+</pkgmetadata>

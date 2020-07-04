@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,20 +12,16 @@ SRC_URI="http://siag.nu/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
+RESTRICT="test"
 
-RESTRICT=test
+PATCHES=( "${FILESDIR}"/${P}-fix-buildsystem.patch )
 
-src_prepare() {
-	sed \
-		-e 's:-o:$(LDFLAGS) -o:g' \
-		-e '/^CC/d' \
-		-e '/^CFLAGS/g' \
-		-i Makefile || die
+src_configure() {
 	tc-export CC
 }
 
 src_install() {
 	dobin o3read o3totxt o3tohtml utf8tolatin1
-	doman o3read.1 o3tohtml.1 o3totxt.1 utf8tolatin1.1
+	einstalldocs
+	doman *.1
 }

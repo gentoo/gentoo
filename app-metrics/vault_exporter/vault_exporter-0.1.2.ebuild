@@ -13,7 +13,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Vault exporter for Prometheus"
 HOMEPAGE="https://github.com/grapeshot/vault_exporter"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD MIT MPL-2.0"
 SLOT="0"
 IUSE=""
 
@@ -24,7 +24,7 @@ pkg_setup() {
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	GOPATH="${S}" emake build || die
+	GOPATH="${S}" emake build
 	popd || die
 }
 

@@ -42,7 +42,7 @@ src_test() {
 src_install() {
 	java-pkg_newjar ${PN}*.jar || die
 
-	dohtml README.html || die
+	dohtml README.html
 	use doc && java-pkg_dojavadoc javadoc
 	use source && java-pkg_dosrc src/org
 }

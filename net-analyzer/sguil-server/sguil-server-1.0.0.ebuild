@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit ssl-cert user
 MY_PV="${PV/_p/p}"
 DESCRIPTION="Daemon for Sguil Network Security Monitoring"
 HOMEPAGE="https://github.com/bammv/sguil"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P/-server}.tar.gz"
+SRC_URI="https://github.com/bammv/sguil/archive/v${PV}.tar.gz -> ${P/-server}.tar.gz"
 
 LICENSE="GPL-2 QPL"
 SLOT="0"
@@ -35,7 +35,7 @@ pkg_setup() {
 	enewuser sguil -1 -1 /var/lib/sguil sguil
 }
 
-src_prepare(){
+src_prepare() {
 	default
 	sed -i \
 		-e 's:DEBUG 2:DEBUG 1:' -e 's:DAEMON 0:DAEMON 1:' \
@@ -45,7 +45,7 @@ src_prepare(){
 		server/sguild.conf || die
 }
 
-src_install(){
+src_install() {
 	dodoc server/sql_scripts/*
 	dodoc doc/CHANGES doc/OPENSSL.README doc/USAGE doc/INSTALL \
 	doc/TODO doc/sguildb.dia
@@ -72,7 +72,7 @@ src_install(){
 
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	if use ssl && ! [ -f "${ROOT}"/etc/sguil/sguild.key ]; then
 		install_cert /etc/sguil/sguild
 	fi

@@ -9,14 +9,14 @@ PHP_EXT_ZENDEXT="no"
 PHP_EXT_ECONF_ARGS=""
 PHP_INI_NAME="30-${PHP_EXT_NAME}"
 
-USE_PHP="php5-6 php7-0 php7-1 php7-2 php7-3"
+USE_PHP="php5-6 php7-1 php7-2 php7-3"
 
 inherit php-ext-pecl-r3
 
 # Only really build for 7.x
 USE_PHP="php7-1 php7-2 php7-3"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="A reusable, persistent handle and resource factory API"
 LICENSE="BSD-2"
@@ -24,6 +24,9 @@ SLOT="7"
 IUSE=""
 
 RDEPEND="php_targets_php5-6? ( ${CATEGORY}/${PN}:0[php_targets_php5-6] )"
+
+# Tests need pecl-http, which needs this
+RESTRICT="test"
 
 src_prepare() {
 	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3; then

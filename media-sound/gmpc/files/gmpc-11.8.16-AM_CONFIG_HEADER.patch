@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -14,7 +14,7 @@
+ 
+ 
+ 
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ AC_CONFIG_MACRO_DIR([m4])
+ AM_INIT_AUTOMAKE
+ 

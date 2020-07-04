@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=5
 
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit webapp eutils multilib user toolchain-funcs git-2
+inherit webapp eutils multilib user toolchain-funcs git-r3
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
@@ -17,7 +17,7 @@ EGIT_REPO_URI="https://git.zx2c4.com/cgit"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +highlight +lua +jit"
+IUSE="doc +highlight +lua +luajit"
 
 RDEPEND="
 	dev-vcs/git
@@ -25,24 +25,24 @@ RDEPEND="
 	dev-libs/openssl:0
 	virtual/httpd-cgi
 	highlight? ( || ( dev-python/pygments app-text/highlight ) )
-	lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) )
+	lua? (
+		luajit? ( dev-lang/luajit )
+		!luajit? ( dev-lang/lua:0 )
+	)
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken
 DEPEND="${RDEPEND}
-	!<www-apps/cgit-0.8.3.3
 	doc? ( app-text/docbook-xsl-stylesheets
 		>=app-text/asciidoc-8.5.1 )
 "
 
 pkg_setup() {
 	webapp_pkg_setup
-	enewuser "${PN}"
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
 src_prepare() {
-	git submodule init || die
-	git submodule update || die
-
 	echo "prefix = ${EPREFIX}/usr" >> cgit.conf
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf
 	echo "CGIT_SCRIPT_PATH = ${MY_CGIBINDIR}" >> cgit.conf
@@ -50,7 +50,7 @@ src_prepare() {
 	echo "CACHE_ROOT = ${CGIT_CACHEDIR}" >> cgit.conf
 	echo "DESTDIR = ${D}" >> cgit.conf
 	if use lua; then
-		if use jit; then
+		if use luajit; then
 			echo "LUA_PKGCONFIG = luajit" >> cgit.conf
 		else
 			echo "LUA_PKGCONFIG = lua" >> cgit.conf
@@ -58,6 +58,8 @@ src_prepare() {
 	else
 		echo "NO_LUA = 1" >> cgit.conf
 	fi
+
+	epatch_user
 }
 
 src_compile() {

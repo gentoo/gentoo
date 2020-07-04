@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 if [[ ${CATEGORY}/${PN} == app-arch/xz-utils
@@ -191,7 +191,7 @@ cygwin-rebase-merge() {
 
 		[[ ${mode} == 'pending' ]] || exit 0
 
-		find "./${pendingdir}" -maxdepth 1 -type f \
+		find "./${pendingdir}" -mindepth 1 -maxdepth 1 -type f -name 'dlls_*' \
 			-exec mv -f -t "./${mergeddir}/" {} +
 	)
 	[[ $? == 0 ]] || die "Merging ${mode} files into rebase database failed."

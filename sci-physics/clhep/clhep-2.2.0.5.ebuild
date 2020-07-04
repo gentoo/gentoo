@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,9 +10,10 @@ HOMEPAGE="http://proj-clhep.web.cern.ch/proj-clhep/"
 SRC_URI="http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${P}.tgz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2/${PV}"
-KEYWORDS="amd64 hppa ppc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( virtual/latex-base )"
 

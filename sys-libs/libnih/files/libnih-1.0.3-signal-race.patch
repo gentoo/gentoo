@@ -1,21 +1,5 @@
-https://bugs.launchpad.net/libnih/+bug/518921
-
-fix race in signal processing leading to lost signals
-
-The current loop will walk all signals one by one and run the handler
-for it if any signals were pending.  Then it clears the array.  But if
-a signal comes in for an earlier checked signal, it will get clobbered
-when the final clear runs.
-
-Change the logic so that we only clear entries for signals whose handler
-we explicitly call.  If a different signal comes in, we'll process it
-the next time around.
-
-This was discovered & triaged by Jeffy Chen from Rockchip.
-
-=== modified file 'nih/signal.c'
---- nih/signal.c	2009-06-23 09:29:37 +0000
-+++ nih/signal.c	2015-05-21 08:12:11 +0000
+--- a/nih/signal.c
++++ b/nih/signal.c
 @@ -337,17 +337,37 @@
  
  	nih_signal_init ();

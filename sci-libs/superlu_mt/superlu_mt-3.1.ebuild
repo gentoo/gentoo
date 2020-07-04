@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,12 +10,13 @@ SOVERSION=$(get_major_version)
 
 DESCRIPTION="Multithreaded sparse LU factorization library"
 HOMEPAGE="http://crd.lbl.gov/~xiaoye/SuperLU/"
-SRC_URI="${HOMEPAGE}/${PN}_${PV}.tar.gz"
+SRC_URI="http://crd.lbl.gov/~xiaoye/SuperLU/${PN}_${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${SOVERSION}"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples int64 openmp static-libs test threads"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( openmp threads )"
 
 RDEPEND="virtual/blas"

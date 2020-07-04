@@ -9,4 +9,7 @@
 		<flag name="messages">enable error messages</flag>
 		<flag name="epoll">use epoll() system call</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnu:libmicrohttpd</remote-id>
+	</upstream>
 </pkgmetadata>

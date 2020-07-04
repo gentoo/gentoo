@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit eutils toolchain-funcs
 
@@ -15,24 +15,23 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
-RDEPEND=""
 
 S="${WORKDIR}/${PN}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+src_prepare() {
+	eapply "${FILESDIR}"/${P}-gentoo.patch
 	edos2unix *.c *.h
 
-	for file in *.c *.h ; do
-		echo >>$file
+	local f
+	for f in *.c *.h ; do
+		echo >> "${f}" || die
 	done
+
+	default
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} -D__UNIX__" CC="$(tc-getCC)" || die "emake failed."
+	emake CFLAGS="${CFLAGS} -D__UNIX__" CC="$(tc-getCC)"
 }
 
 src_install() {

@@ -1,0 +1,529 @@
+From a452ec976f22b1ffba51e934f2d771d0680f6cca Mon Sep 17 00:00:00 2001
+From: Michael Webster <miketwebster@gmail.com>
+Date: Tue, 14 Jan 2020 11:29:54 -0500
+Subject: [PATCH] muffin: Use glib for gettext
+
+This was also breaking the build under gobject-introspection ~1.62
+
+ref:
+https://gitlab.gnome.org/GNOME/mutter/commit/6ceddd626a20f5c3d92ddd9318338626f4be4a4d
+https://gitlab.gnome.org/GNOME/mutter/commit/5298a834efef5eeacaea24a9752468277782cb04
+---
+ ChangeLog                        |  2 +-
+ src/Makefile.am                  |  3 ++-
+ src/compositor/compositor.c      |  1 +
+ src/compositor/meta-background.c |  1 +
+ src/compositor/plugins/default.c |  8 +++----
+ src/core/core.c                  |  1 +
+ src/core/delete.c                |  2 +-
+ src/core/display.c               |  4 ++--
+ src/core/keybindings.c           |  2 +-
+ src/core/main.c                  |  2 +-
+ src/core/muffin.c                |  1 +
+ src/core/prefs.c                 |  2 +-
+ src/core/screen.c                |  2 +-
+ src/core/session.c               |  1 +
+ src/core/stack.c                 |  2 +-
+ src/core/util-private.h          | 36 ++++++++++++++++++++++++++++++++
+ src/core/util.c                  |  2 +-
+ src/core/window-props.c          |  1 +
+ src/core/window.c                |  2 +-
+ src/core/xprops.c                |  2 +-
+ src/meta/common.h                |  2 +-
+ src/meta/util.h                  |  5 -----
+ src/ui/frames.c                  | 24 ++++++++++-----------
+ src/ui/menu.c                    |  2 +-
+ src/ui/metaaccellabel.c          |  2 +-
+ src/ui/resizepopup.c             |  2 +-
+ src/ui/theme-parser.c            |  2 +-
+ src/ui/theme.c                   |  2 +-
+ 28 files changed, 77 insertions(+), 41 deletions(-)
+ create mode 100644 src/core/util-private.h
+
+diff --git a/ChangeLog b/ChangeLog
+index e68822de..7123e9cf 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -13015,7 +13015,7 @@ Mon Jun  3 15:12:11 2002  HideToshi Tajima  <hidetoshi.tajima@sun.com>
+ 
+         Patch from Erwann Chenede for raise_or_lower keybinding
+ 	
+-	* src/display.c, src/common.h: POINT_IN_RECT moved to a common
++	* src/display.c, src/common.h: META_POINT_IN_RECT moved to a common
+ 	location, removed from here
+ 	(meta_rectangle_intersect): move here and make it public
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index cbb5b3af..9cb3af14 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -142,6 +142,7 @@ libmuffin_la_SOURCES =				\
+ 	core/stack-tracker.h			\
+ 	core/util.c				\
+ 	meta/util.h				\
++	meta/util-private.h		\
+ 	core/window-props.c			\
+ 	core/window-props.h			\
+ 	core/window.c				\
+@@ -281,7 +282,7 @@ Meta-$(api_version).gir: libmuffin.la
+ 	muffin-enum-types.h			\
+ 	$(libmuffininclude_base_headers)	\
+ 	$(filter %.c,$(libmuffin_la_SOURCES))
+-@META_GIR@_SCANNERFLAGS = $(WARN_SCANNERFLAGS) --warn-all --warn-error
++@META_GIR@_SCANNERFLAGS = $(WARN_SCANNERFLAGS) --warn-all --warn-error --identifier-prefix=Meta
+ 
+ endif
+ 
+diff --git a/src/compositor/compositor.c b/src/compositor/compositor.c
+index 0556f743..a8bc6db8 100644
+--- a/src/compositor/compositor.c
++++ b/src/compositor/compositor.c
+@@ -74,6 +74,7 @@
+ #include "meta-background-actor-private.h"
+ #include "window-private.h" /* to check window->hidden */
+ #include "display-private.h" /* for meta_display_lookup_x_window() */
++#include "util-private.h"
+ #include <X11/extensions/shape.h>
+ #include <X11/extensions/Xcomposite.h>
+ #include "meta-sync-ring.h"
+diff --git a/src/compositor/meta-background.c b/src/compositor/meta-background.c
+index 95917429..33bce084 100644
+--- a/src/compositor/meta-background.c
++++ b/src/compositor/meta-background.c
+@@ -28,6 +28,7 @@
+ #include <clutter/clutter.h>
+ #include "cogl-utils.h"
+ #include <meta/errors.h>
++// #include "util-private.h"
+ #include "meta-background-actor-private.h"
+ 
+ struct _MetaBackgroundPrivate
+diff --git a/src/compositor/plugins/default.c b/src/compositor/plugins/default.c
+index 1d223465..f69563bc 100644
+--- a/src/compositor/plugins/default.c
++++ b/src/compositor/plugins/default.c
+@@ -20,14 +20,12 @@
+  * Foundation, Inc., 51 Franklin Street - Suite 500, Boston, MA
+  * 02110-1335, USA.
+  */
+-
++#include <config.h>
+ #include <meta/meta-plugin.h>
+ #include <meta/window.h>
+ 
+-#include <libintl.h>
+-#define _(x) dgettext (GETTEXT_PACKAGE, x)
+-#define N_(x) x
+-
++#include <meta/util.h>
++#include <glib/gi18n-lib.h>
+ #include <clutter/clutter.h>
+ #include <gmodule.h>
+ #include <string.h>
+diff --git a/src/core/core.c b/src/core/core.c
+index 43962825..77228aac 100644
+--- a/src/core/core.c
++++ b/src/core/core.c
+@@ -29,6 +29,7 @@
+ #include "workspace-private.h"
+ #include <meta/prefs.h>
+ #include <meta/errors.h>
++#include "util-private.h"
+ 
+ /* Looks up the MetaWindow representing the frame of the given X window.
+  * Used as a helper function by a bunch of the functions below.
+diff --git a/src/core/delete.c b/src/core/delete.c
+index 5c1e4bb6..5ef767c2 100644
+--- a/src/core/delete.c
++++ b/src/core/delete.c
+@@ -25,7 +25,7 @@
+ #define _XOPEN_SOURCE /* for kill() */
+ 
+ #include <config.h>
+-#include <meta/util.h>
++#include "util-private.h"
+ #include "window-private.h"
+ #include <meta/errors.h>
+ #include <meta/workspace.h>
+diff --git a/src/core/display.c b/src/core/display.c
+index 691a8ed1..6c186e87 100644
+--- a/src/core/display.c
++++ b/src/core/display.c
+@@ -1568,8 +1568,8 @@ window_raise_with_delay_callback (void *data)
+       meta_error_trap_pop (window->display);
+ 
+       point_in_window =
+-        (window->frame && POINT_IN_RECT (root_x, root_y, window->frame->rect)) ||
+-        (window->frame == NULL && POINT_IN_RECT (root_x, root_y, window->rect));
++        (window->frame && META_POINT_IN_RECT (root_x, root_y, window->frame->rect)) ||
++        (window->frame == NULL && META_POINT_IN_RECT (root_x, root_y, window->rect));
+       if (same_screen && point_in_window)
+ 	meta_window_raise (window);
+ #ifdef WITH_VERBOSE_MODE
+diff --git a/src/core/keybindings.c b/src/core/keybindings.c
+index 6b1c1cdf..50658880 100644
+--- a/src/core/keybindings.c
++++ b/src/core/keybindings.c
+@@ -44,7 +44,7 @@
+ #include "frame.h"
+ #include "place.h"
+ #include <meta/prefs.h>
+-#include <meta/util.h>
++#include "util-private.h"
+ 
+ #include <X11/keysym.h>
+ #include <string.h>
+diff --git a/src/core/main.c b/src/core/main.c
+index 71c78526..a16bee1e 100644
+--- a/src/core/main.c
++++ b/src/core/main.c
+@@ -49,7 +49,7 @@
+ 
+ #include <config.h>
+ #include <meta/main.h>
+-#include <meta/util.h>
++#include "util-private.h"
+ #include "display-private.h"
+ #include <meta/errors.h>
+ #include "ui.h"
+diff --git a/src/core/muffin.c b/src/core/muffin.c
+index 26d98f02..8665797a 100644
+--- a/src/core/muffin.c
++++ b/src/core/muffin.c
+@@ -26,6 +26,7 @@
+ #include <meta/main.h>
+ #include <meta/util.h>
+ #include "meta-plugin-manager.h"
++#include <glib/gi18n-lib.h>
+ 
+ #include <glib.h>
+ 
+diff --git a/src/core/prefs.c b/src/core/prefs.c
+index d146902d..d92826a1 100644
+--- a/src/core/prefs.c
++++ b/src/core/prefs.c
+@@ -33,7 +33,7 @@
+ #include <config.h>
+ #include <meta/prefs.h>
+ #include "ui.h"
+-#include <meta/util.h>
++#include "util-private.h"
+ #include "meta-plugin-manager.h"
+ #include <glib.h>
+ #include <gio/gio.h>
+diff --git a/src/core/screen.c b/src/core/screen.c
+index 8ba26a06..cdcbcab9 100644
+--- a/src/core/screen.c
++++ b/src/core/screen.c
+@@ -33,7 +33,7 @@
+ #include <config.h>
+ #include "screen-private.h"
+ #include <meta/main.h>
+-#include <meta/util.h>
++#include "util-private.h"
+ #include <meta/errors.h>
+ #include "window-private.h"
+ #include "frame.h"
+diff --git a/src/core/session.c b/src/core/session.c
+index 8e0ded3a..f45e1a63 100644
+--- a/src/core/session.c
++++ b/src/core/session.c
+@@ -25,6 +25,7 @@
+ 
+ #include <config.h>
+ 
++#include "util-private.h"
+ #include "session.h"
+ #include <X11/Xatom.h>
+ 
+diff --git a/src/core/stack.c b/src/core/stack.c
+index 7404a59e..49ff24b4 100644
+--- a/src/core/stack.c
++++ b/src/core/stack.c
+@@ -1424,7 +1424,7 @@ window_contains_point (MetaWindow *window,
+ 
+   meta_window_get_outer_rect (window, &rect);
+ 
+-  return POINT_IN_RECT (root_x, root_y, rect);
++  return META_POINT_IN_RECT (root_x, root_y, rect);
+ }
+ 
+ static MetaWindow*
+diff --git a/src/core/util-private.h b/src/core/util-private.h
+new file mode 100644
+index 00000000..8e51b42f
+--- /dev/null
++++ b/src/core/util-private.h
+@@ -0,0 +1,36 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/* Mutter utilities */
++
++/* 
++ * Copyright (C) 2001 Havoc Pennington
++ * Copyright (C) 2005 Elijah Newren
++ * 
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ * 
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ */
++
++#ifndef META_UTIL_PRIVATE_H
++#define META_UTIL_PRIVATE_H
++
++#include <meta/util.h>
++#include <glib/gi18n-lib.h>
++
++void     meta_set_verbose (gboolean setting);
++void     meta_set_debugging (gboolean setting);
++void     meta_set_syncing (gboolean setting);
++void     meta_set_replace_current_wm (gboolean setting);
++
++#endif
+diff --git a/src/core/util.c b/src/core/util.c
+index c1d84520..896c7195 100644
+--- a/src/core/util.c
++++ b/src/core/util.c
+@@ -35,7 +35,7 @@
+ 
+ #include <config.h>
+ #include <meta/common.h>
+-#include <meta/util.h>
++#include "util-private.h"
+ #include <meta/main.h>
+ 
+ #include <clutter/clutter.h> /* For clutter_threads_add_repaint_func() */
+diff --git a/src/core/window-props.c b/src/core/window-props.c
+index 911b9a10..e5306838 100644
+--- a/src/core/window-props.c
++++ b/src/core/window-props.c
+@@ -50,6 +50,7 @@
+ #include <X11/Xatom.h>
+ #include <unistd.h>
+ #include <string.h>
++#include "util-private.h"
+ #ifndef HOST_NAME_MAX
+ /* Solaris headers apparently don't define this so do so manually; #326745 */
+ #define HOST_NAME_MAX 255
+diff --git a/src/core/window.c b/src/core/window.c
+index 500eaac0..1a080887 100644
+--- a/src/core/window.c
++++ b/src/core/window.c
+@@ -32,7 +32,7 @@
+ #include "window-private.h"
+ #include "boxes-private.h"
+ #include "edge-resistance.h"
+-#include <meta/util.h>
++#include "util-private.h"
+ #include "frame.h"
+ #include <meta/errors.h>
+ #include "workspace-private.h"
+diff --git a/src/core/xprops.c b/src/core/xprops.c
+index 01df70a6..bcf11f21 100644
+--- a/src/core/xprops.c
++++ b/src/core/xprops.c
+@@ -83,7 +83,7 @@ from The Open Group.
+ #include <config.h>
+ #include "xprops.h"
+ #include <meta/errors.h>
+-#include <meta/util.h>
++#include "util-private.h"
+ #include "async-getprop.h"
+ #include "ui.h"
+ #include "muffin-Xatomtype.h"
+diff --git a/src/meta/common.h b/src/meta/common.h
+index 46bf3461..55426589 100644
+--- a/src/meta/common.h
++++ b/src/meta/common.h
+@@ -398,7 +398,7 @@ void meta_frame_borders_clear (MetaFrameBorders *self);
+ 
+ /************************************************************/
+ 
+-#define POINT_IN_RECT(xcoord, ycoord, rect) \
++#define META_POINT_IN_RECT(xcoord, ycoord, rect) \
+  ((xcoord) >= (rect).x &&                   \
+   (xcoord) <  ((rect).x + (rect).width) &&  \
+   (ycoord) >= (rect).y &&                   \
+diff --git a/src/meta/util.h b/src/meta/util.h
+index cce79ed5..ea10f16a 100644
+--- a/src/meta/util.h
++++ b/src/meta/util.h
+@@ -31,12 +31,8 @@
+ #include <meta/common.h>
+ 
+ gboolean meta_is_verbose  (void);
+-void     meta_set_verbose (gboolean setting);
+ gboolean meta_is_debugging (void);
+-void     meta_set_debugging (gboolean setting);
+ gboolean meta_is_syncing (void);
+-void     meta_set_syncing (gboolean setting);
+-void     meta_set_replace_current_wm (gboolean setting);
+ 
+ void meta_debug_spew_real (const char *format,
+                            ...) G_GNUC_PRINTF (1, 2);
+@@ -97,7 +93,6 @@ const char* meta_gravity_to_string (int gravity);
+ 
+ #include <libintl.h>
+ #define _(x) dgettext (GETTEXT_PACKAGE, x)
+-#define N_(x) x
+ 
+ char* meta_g_utf8_strndup (const gchar *src, gsize n);
+ 
+diff --git a/src/ui/frames.c b/src/ui/frames.c
+index c1ae7a1d..be075134 100644
+--- a/src/ui/frames.c
++++ b/src/ui/frames.c
+@@ -2495,16 +2495,16 @@ get_control (MetaFrames *frames,
+   meta_frames_calc_geometry (frames, frame, &fgeom);
+   get_client_rect (&fgeom, fgeom.width, fgeom.height, &client);
+ 
+-  if (POINT_IN_RECT (x, y, client))
++  if (META_POINT_IN_RECT (x, y, client))
+     return META_FRAME_CONTROL_CLIENT_AREA;
+   
+-  if (POINT_IN_RECT (x, y, fgeom.close_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.close_rect.clickable))
+     return META_FRAME_CONTROL_DELETE;
+ 
+-  if (POINT_IN_RECT (x, y, fgeom.min_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.min_rect.clickable))
+     return META_FRAME_CONTROL_MINIMIZE;
+ 
+-  if (POINT_IN_RECT (x, y, fgeom.menu_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.menu_rect.clickable))
+     return META_FRAME_CONTROL_MENU;
+ 
+   meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
+@@ -2521,7 +2521,7 @@ get_control (MetaFrames *frames,
+   has_right = (flags & META_FRAME_ALLOWS_RIGHT_RESIZE) != 0;
+   has_bottom = (flags & META_FRAME_ALLOWS_BOTTOM_RESIZE) != 0;
+ 
+-  if (POINT_IN_RECT (x, y, fgeom.title_rect))
++  if (META_POINT_IN_RECT (x, y, fgeom.title_rect))
+     {
+       if (has_vert && y <= TOP_RESIZE_HEIGHT && has_north_resize)
+         return META_FRAME_CONTROL_RESIZE_N;
+@@ -2529,7 +2529,7 @@ get_control (MetaFrames *frames,
+         return META_FRAME_CONTROL_TITLE;
+     }
+ 
+-  if (POINT_IN_RECT (x, y, fgeom.max_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.max_rect.clickable))
+     {
+       if (flags & META_FRAME_MAXIMIZED &&
+           (META_WINDOW_TILED_TOP (window) ||
+@@ -2542,32 +2542,32 @@ get_control (MetaFrames *frames,
+         return META_FRAME_CONTROL_MAXIMIZE;
+     }
+       
+-  if (POINT_IN_RECT (x, y, fgeom.shade_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.shade_rect.clickable))
+     {
+       return META_FRAME_CONTROL_SHADE;
+     }
+ 
+-  if (POINT_IN_RECT (x, y, fgeom.unshade_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.unshade_rect.clickable))
+     {
+       return META_FRAME_CONTROL_UNSHADE;
+     }
+ 
+-  if (POINT_IN_RECT (x, y, fgeom.above_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.above_rect.clickable))
+     {
+       return META_FRAME_CONTROL_ABOVE;
+     }
+ 
+-  if (POINT_IN_RECT (x, y, fgeom.unabove_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.unabove_rect.clickable))
+     {
+       return META_FRAME_CONTROL_UNABOVE;
+     }
+ 
+-  if (POINT_IN_RECT (x, y, fgeom.stick_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.stick_rect.clickable))
+     {
+       return META_FRAME_CONTROL_STICK;
+     }
+ 
+-  if (POINT_IN_RECT (x, y, fgeom.unstick_rect.clickable))
++  if (META_POINT_IN_RECT (x, y, fgeom.unstick_rect.clickable))
+     {
+       return META_FRAME_CONTROL_UNSTICK;
+     }
+diff --git a/src/ui/menu.c b/src/ui/menu.c
+index c0b94a1e..5d1155e7 100644
+--- a/src/ui/menu.c
++++ b/src/ui/menu.c
+@@ -28,7 +28,7 @@
+ #include <string.h>
+ #include "menu.h"
+ #include <meta/main.h>
+-#include <meta/util.h>
++#include "util-private.h"
+ #include "core.h"
+ #include "metaaccellabel.h"
+ #include "ui.h"
+diff --git a/src/ui/metaaccellabel.c b/src/ui/metaaccellabel.c
+index fd5c6e6c..097b45b4 100644
+--- a/src/ui/metaaccellabel.c
++++ b/src/ui/metaaccellabel.c
+@@ -35,7 +35,7 @@
+ #include "metaaccellabel.h"
+ #include <gtk/gtk.h>
+ #include <string.h>
+-#include <meta/util.h>
++#include "util-private.h"
+ 
+ static void     meta_accel_label_destroy      (GtkWidget           *object);
+ static void     meta_accel_label_finalize     (GObject             *object);
+diff --git a/src/ui/resizepopup.c b/src/ui/resizepopup.c
+index 18c395d2..56742fd7 100644
+--- a/src/ui/resizepopup.c
++++ b/src/ui/resizepopup.c
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include "resizepopup.h"
+-#include <meta/util.h>
++#include "util-private.h"
+ #include <gtk/gtk.h>
+ #include <gdk/gdkx.h>
+ 
+diff --git a/src/ui/theme-parser.c b/src/ui/theme-parser.c
+index 0151f362..628bf73e 100644
+--- a/src/ui/theme-parser.c
++++ b/src/ui/theme-parser.c
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include "theme-private.h"
+-#include <meta/util.h>
++#include "util-private.h"
+ #include <meta/prefs.h>
+ #include <string.h>
+ #include <stdlib.h>
+diff --git a/src/ui/theme.c b/src/ui/theme.c
+index cb717bbb..99ea519c 100644
+--- a/src/ui/theme.c
++++ b/src/ui/theme.c
+@@ -55,7 +55,7 @@
+ 
+ #include <config.h>
+ #include "theme-private.h"
+-#include <meta/util.h>
++#include "util-private.h"
+ #include <meta/gradient.h>
+ #include <meta/prefs.h>
+ #include <gtk/gtk.h>

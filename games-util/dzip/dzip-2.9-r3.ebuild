@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ src_prepare() {
 	mv -f Makefile{.linux,}
 }
 
-src_install () {
+src_install() {
 	dobin dzip
 	dodoc Readme
 }

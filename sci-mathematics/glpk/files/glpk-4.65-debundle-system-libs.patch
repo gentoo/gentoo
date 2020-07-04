@@ -1,0 +1,91 @@
+diff --git a/configure.ac b/configure.ac
+index 96c4cc5..29e11f9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -69,6 +69,11 @@ AC_PROG_LIBTOOL
+ dnl Check for math library
+ AC_CHECK_LIB([m], [exp])
+ 
++AC_CHECK_LIB([amd], [amd_1])
++AC_CHECK_LIB([colamd], [colamd])
++AC_CHECK_HEADER([amd.h])
++AC_CHECK_LIB([z], [gzopen])
++
+ dnl Check for <sys/time.h> header
+ AC_CHECK_HEADER([sys/time.h],
+    AC_DEFINE([HAVE_SYS_TIME_H], [1], [N/A]))
+diff --git a/src/Makefile.am b/src/Makefile.am
+index eb5dc1b..b814627 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -6,10 +6,8 @@ lib_LTLIBRARIES = libglpk.la
+ 
+ libglpk_la_CPPFLAGS = \
+ -I$(srcdir) \
+--I$(srcdir)/amd \
+ -I$(srcdir)/api \
+ -I$(srcdir)/bflib \
+--I$(srcdir)/colamd \
+ -I$(srcdir)/draft \
+ -I$(srcdir)/env \
+ -I$(srcdir)/intopt \
+@@ -18,8 +16,7 @@ libglpk_la_CPPFLAGS = \
+ -I$(srcdir)/mpl \
+ -I$(srcdir)/npp \
+ -I$(srcdir)/proxy \
+--I$(srcdir)/simplex \
+--I$(srcdir)/zlib
++-I$(srcdir)/simplex
+ 
+ libglpk_la_LDFLAGS = \
+ -version-info 43:0:3 \
+@@ -27,18 +24,6 @@ libglpk_la_LDFLAGS = \
+ ${NOUNDEFINED}
+ 
+ libglpk_la_SOURCES = \
+-amd/amd_1.c \
+-amd/amd_2.c \
+-amd/amd_aat.c \
+-amd/amd_control.c \
+-amd/amd_defaults.c \
+-amd/amd_dump.c \
+-amd/amd_info.c \
+-amd/amd_order.c \
+-amd/amd_post_tree.c \
+-amd/amd_postorder.c \
+-amd/amd_preprocess.c \
+-amd/amd_valid.c \
+ api/advbas.c \
+ api/asnhall.c \
+ api/asnlp.c \
+@@ -104,7 +89,6 @@ bflib/scf.c \
+ bflib/scfint.c \
+ bflib/sgf.c \
+ bflib/sva.c \
+-colamd/colamd.c \
+ draft/bfd.c \
+ draft/bfx.c \
+ draft/glpapi06.c \
+@@ -202,21 +186,6 @@ simplex/spxprim.c \
+ simplex/spxprob.c \
+ simplex/spychuzc.c \
+ simplex/spychuzr.c \
+-simplex/spydual.c \
+-zlib/adler32.c \
+-zlib/compress.c \
+-zlib/crc32.c \
+-zlib/deflate.c \
+-zlib/gzclose.c \
+-zlib/gzlib.c \
+-zlib/gzread.c \
+-zlib/gzwrite.c \
+-zlib/inffast.c \
+-zlib/inflate.c \
+-zlib/inftrees.c \
+-zlib/trees.c \
+-zlib/uncompr.c \
+-zlib/zio.c \
+-zlib/zutil.c
++simplex/spydual.c
+ 
+ ## eof ##

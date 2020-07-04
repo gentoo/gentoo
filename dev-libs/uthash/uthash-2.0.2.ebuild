@@ -13,6 +13,7 @@ LICENSE="BSD-1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc ~ppc64 sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-lang/perl )"
 RDEPEND=""

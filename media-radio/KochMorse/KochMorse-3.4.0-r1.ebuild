@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Morse-code tutor using the Koch method"
 HOMEPAGE="https://github.com/hmatuschek/kochmorse"
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/kochmorse-${PV}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# Upstream uses a non-standard category in release 3.4.0. I submitted
 	# a fix which has been accepted, but not yet released.
 	sed -i -e 's/Teaching;/X-Teaching;/' shared/kochmorse.desktop || die

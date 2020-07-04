@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils xdg-utils
 
 DESCRIPTION="Open source object-oriented logic programming language"
-HOMEPAGE="http://logtalk.org"
-SRC_URI="http://logtalk.org/files/${P}.tar.bz2"
+HOMEPAGE="https://logtalk.org"
+SRC_URI="https://logtalk.org/files/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 
 SLOT="0"
@@ -48,7 +48,7 @@ src_install() {
 
 	rm -f man/man1/logtalk_backend_select.1
 	rm -f man/man1/logtalk_version_select.1
-	doman man/man1/*.1 || die "Failed to install man pages"
+	doman man/man1/*.1
 
 	# Integration symlinks
 	dosym ../share/${P}/integration/logtalk_user_setup.sh \

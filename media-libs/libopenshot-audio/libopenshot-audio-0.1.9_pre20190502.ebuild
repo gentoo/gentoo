@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 COMMIT="77edb1f14dde35e1facecc309dbc4fb7f07d7014"
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/OpenShot/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3+"
 SLOT="0/6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	media-libs/alsa-lib

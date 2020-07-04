@@ -1,0 +1,21 @@
+--- a/src/process.c
++++ b/src/process.c
+@@ -53,6 +53,7 @@
+ */
+ void performAction(WSETUP *wayv, WGESTURE *gesture, GDISPLAY *video, GPOINT *gpoints) {
+ 	int i, n, a, b;
++	pid_t child = 0;
+ 	char **temp, *single, *comp;
+ 
+ 	/* Action names have to be at least one character in length */
+--- a/src/process.h
++++ b/src/process.h
+@@ -27,8 +27,6 @@
+ #include "display.h"
+ #include "gesture.h"
+ 
+-int child;
+-
+ void performAction(WSETUP *, WGESTURE *, GDISPLAY *, GPOINT *);
+ void destroyZombies(int);
+ char **createCmdLine(char *, GDISPLAY *, GPOINT *);

@@ -44,7 +44,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Docker Registry 2 authentication server"
 HOMEPAGE="https://github.com/cesanta/docker_auth"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT ZLIB"
 SLOT="0"
 IUSE=""
 

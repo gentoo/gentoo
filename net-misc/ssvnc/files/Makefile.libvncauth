@@ -1,7 +1,0 @@
-AR ?= ar
-CPPFLAGS += -I. -I../include -D_GNU_SOURCE
-srcs = $(wildcard *.c)
-libvncauth.a: $(srcs:.c=.o)
-	$(AR) rc $@ $^
-clean:
-	rm -f *.[oa]

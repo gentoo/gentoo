@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+command="/usr/bin/rtirq"
+
+extra_commands="status"
+
+depend() {
+    need localmount
+    after alsasound logger
+}
+
+start() {
+    ebegin "Starting rtirq"
+    ${command} start
+    eend ${?}
+}
+
+stop() {
+    ebegin "Stopping rtirq"
+    ${command} stop
+    eend ${?}
+}
+
+status() {
+    ${command} status
+}

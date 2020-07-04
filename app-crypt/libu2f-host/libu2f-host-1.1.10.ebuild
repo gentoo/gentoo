@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="kernel_linux static-libs systemd"
 
 DEPEND="dev-libs/hidapi
@@ -24,6 +24,8 @@ RDEPEND="${DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~HIDRAW"
+
+PATCHES=( "${FILESDIR}/${P}-json-boolean.patch" )
 
 src_install() {
 	default

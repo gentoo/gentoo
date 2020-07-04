@@ -1,0 +1,66 @@
+diff --git a/news/7359.trivial b/news/7359.trivial
+new file mode 100644
+index 000000000..e69de29bb
+diff --git a/tests/functional/test_freeze.py b/tests/functional/test_freeze.py
+index d13c931d0..2e35de3e6 100644
+--- a/tests/functional/test_freeze.py
++++ b/tests/functional/test_freeze.py
+@@ -721,6 +721,7 @@ def test_freeze_user(script, virtualenv, data):
+     assert 'simple2' not in result.stdout
+
+
++@pytest.mark.network
+ def test_freeze_path(tmpdir, script, data):
+     """
+     Test freeze with --path.
+@@ -734,5 +735,6 @@ def test_freeze_path(tmpdir, script, data):
+     _check_output(result.stdout, expected)
+
+
++@pytest.mark.network
+ def test_freeze_path_exclude_user(tmpdir, script, data):
+     """
+@@ -756,6 +758,7 @@ def test_freeze_path_exclude_user(tmpdir, script, data):
+     _check_output(result.stdout, expected)
+
+
++@pytest.mark.network
+ def test_freeze_path_multiple(tmpdir, script, data):
+     """
+     Test freeze with multiple --path arguments.
+diff --git a/tests/functional/test_install.py b/tests/functional/test_install.py
+index a9eff081d..ba7a0a55c 100644
+--- a/tests/functional/test_install.py
++++ b/tests/functional/test_install.py
+@@ -1325,6 +1325,7 @@ def test_install_no_binary_disables_building_wheels(script, data, with_wheel):
+     assert "Running setup.py install for upper" in str(res), str(res)
+
+
++@pytest.mark.network
+ def test_install_no_binary_builds_pep_517_wheel(script, data, with_wheel):
+     to_install = data.packages.joinpath('pep517_setup_and_pyproject')
+     res = script.pip(
+diff --git a/tests/functional/test_install_config.py b/tests/functional/test_install_config.py
+index 176976c4e..308263928 100644
+--- a/tests/functional/test_install_config.py
++++ b/tests/functional/test_install_config.py
+@@ -133,6 +133,7 @@ def test_command_line_appends_correctly(script, data):
+     ), 'stdout: {}'.format(result.stdout)
+
+
++@pytest.mark.network
+ def test_config_file_override_stack(script, virtualenv):
+     """
+     Test config files (global, overriding a global config with a
+diff --git a/tests/functional/test_install_upgrade.py b/tests/functional/test_install_upgrade.py
+index 6d2eeb5dc..0024de4d4 100644
+--- a/tests/functional/test_install_upgrade.py
++++ b/tests/functional/test_install_upgrade.py
+@@ -8,6 +8,7 @@
+ from tests.lib.local_repos import local_checkout
+
+
++@pytest.mark.network
+ def test_no_upgrade_unless_requested(script):
+     """
+     No upgrade if not specifically requested.

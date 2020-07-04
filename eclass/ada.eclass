@@ -38,6 +38,7 @@ esac
 EXPORT_FUNCTIONS pkg_setup
 
 # @ECLASS-VARIABLE: ADA_DEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Ada dependency string for all
 # implementations listed in ADA_COMPAT.
@@ -355,7 +356,7 @@ ada_wrapper_setup() {
 		mkdir -p "${workdir}"/bin || die
 
 		local GCC GNATMAKE GNATLS GNATBIND GNATCHOP GNATPREP
-		ada_export "${impl}" GCC GNATMAKE GNATLS GNATCHOP GNATBIND GNATPREP
+		ada_export "${impl}" GCC GNAT GNATMAKE GNATLS GNATCHOP GNATBIND GNATPREP
 
 		# Ada compiler
 		cat > "${workdir}/bin/gcc" <<-_EOF_ || die
@@ -388,6 +389,11 @@ ada_wrapper_setup() {
 			exec "${GNATPREP}" "\${@}"
 		_EOF_
 		chmod a+x "${workdir}/bin/gnatprep" || die
+		cat > "${workdir}/bin/gnat" <<-_EOF_ || die
+			#!/bin/sh
+			exec "${GNAT}" "\${@}"
+		_EOF_
+		chmod a+x "${workdir}/bin/gnat" || die
 	fi
 
 	# Now, set the environment.

@@ -9,7 +9,7 @@ DESCRIPTION="Compiles finite state machines from regular languages into executab
 HOMEPAGE="https://www.colm.net/open-source/ragel/"
 SRC_URI="https://www.colm.net/files/ragel/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="vim-syntax"

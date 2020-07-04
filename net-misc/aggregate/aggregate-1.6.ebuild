@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,11 @@ inherit toolchain-funcs
 
 DESCRIPTION="Perform two optimisations on a list of prefixes to reduce the length of the list"
 HOMEPAGE="https://ftp.isc.org/isc/aggregate"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="https://ftp.isc.org/isc/aggregate/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc sparc x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl"

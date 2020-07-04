@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils xdg-utils readme.gentoo-r1
+inherit cmake xdg-utils readme.gentoo-r1
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
 HOMEPAGE="https://openmw.org/"
@@ -29,11 +29,11 @@ RDEPEND="
 	virtual/opengl
 	qt5? (
 		app-arch/unshield
-		dev-qt/qtcore:5=
-		dev-qt/qtgui:5=
-		dev-qt/qtnetwork:5=
-		dev-qt/qtopengl:5=
-		dev-qt/qtwidgets:5=
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtopengl:5
+		dev-qt/qtwidgets:5
 	)
 "
 
@@ -47,10 +47,12 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-osg-3.6.5-{1,2}.patch ) # bug #709878
+
 S="${WORKDIR}/${PN}-${P}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# We don't install license files
 	sed -i '/LICDIR/d' CMakeLists.txt || die
@@ -79,14 +81,14 @@ src_configure() {
 		-DDESIRED_QT_VERSION=5
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use doc ; then
-		cmake-utils_src_compile doc
+		cmake_src_compile doc
 		find "${CMAKE_BUILD_DIR}"/docs/Doxygen/html \
 			-name '*.md5' -type f -delete || die
 		HTML_DOCS=( "${CMAKE_BUILD_DIR}"/docs/Doxygen/html/. )
@@ -94,7 +96,7 @@ src_compile() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	local DOC_CONTENTS="
 	You need the original Morrowind data files. If you haven't

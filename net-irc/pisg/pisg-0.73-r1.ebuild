@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 
 IUSE=""
 
@@ -32,7 +32,7 @@ src_compile() {
 src_install() {
 	perl_set_version
 
-	dobin pisg || die "dobin failed"
+	dobin pisg
 
 	insinto "${VENDOR_LIB}"
 	doins -r modules/.

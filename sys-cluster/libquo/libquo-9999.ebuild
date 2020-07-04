@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,7 @@ HOMEPAGE="https://lanl.github.io/libquo/"
 LICENSE="BSD"
 SLOT="0"
 IUSE="fortran static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	virtual/mpi[fortran?]

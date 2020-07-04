@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="A control application for Video 4 Linux (based on C and GTK+)"
 HOMEPAGE="http://fedorahosted.org/gtk-v4l/"
@@ -14,8 +14,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2
+	dev-libs/libgudev:=
 	>=media-libs/libv4l-0.6
-	virtual/libgudev:=
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

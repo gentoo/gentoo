@@ -1,0 +1,171 @@
+From a0a7ccb17fbb702ebc9122015f40fa9b112cedc6 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 27 Nov 2018 23:37:13 +0100
+Subject: [PATCH 1/2] Add FindTIRPC.cmake
+
+Taken from https://phabricator.kde.org/D12761
+---
+ cmake/FindTIRPC.cmake | 60 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
+ create mode 100644 cmake/FindTIRPC.cmake
+
+diff --git a/cmake/FindTIRPC.cmake b/cmake/FindTIRPC.cmake
+new file mode 100644
+index 00000000..20e78f9f
+--- /dev/null
++++ b/cmake/FindTIRPC.cmake
+@@ -0,0 +1,60 @@
++# - Try to find TI-RPC
++#
++# The following variables will be available once found :
++#
++# TIRPC_INCLUDE_DIRS - The TI-RPC headers location
++# TIRPC_LIBRARIES - Link these to use TI-RPC
++# TIRPC_VERSION - The TIRPC version
++#
++#=============================================================================
++# Copyright (c) 2017 Christophe Giboudeaux <christophe@krop.fr>
++#
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. The name of the author may not be used to endorse or promote products
++#    derived from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#=============================================================================
++
++find_package(PkgConfig QUIET)
++pkg_check_modules(PC_TIRPC libtirpc)
++
++find_path(TIRPC_INCLUDE_DIRS
++  NAMES netconfig.h
++  PATH_SUFFIXES tirpc
++  HINTS ${PC_TIRPC_INCLUDE_DIRS}
++)
++
++find_library(TIRPC_LIBRARIES
++  NAMES tirpc
++  HINTS ${PC_TIRPC_LIBRARY_DIRS}
++)
++
++set(TIRPC_VERSION ${PC_TIRPC_VERSION})
++
++include(FindPackageHandleStandardArgs)
++
++find_package_handle_standard_args(TIRPC
++      REQUIRED_VARS TIRPC_LIBRARIES TIRPC_INCLUDE_DIRS
++      VERSION_VAR TIRPC_VERSION
++)
++
++mark_as_advanced(TIRPC_INCLUDE_DIRS TIRPC_LIBRARIES)
+-- 
+2.25.1
+
+
+From 7cd0142ada663ac1bfcf4926f80f7ac53ccfb37c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 27 Nov 2018 23:43:18 +0100
+Subject: [PATCH 2/2] Build kio_nfs against standalone libtirpc
+
+Summary:
+Since glibc-2.26, cmake skipped over nfs when standalone tirpc
+was installed in tirpc subdir (as done by Debian, Fedora, Arch, Gentoo...)
+
+Use FindTIRPC and make kio_nfs optional that way
+FindTIRPC taken from https://phabricator.kde.org/D12761
+
+Test Plan: Built with libtirpc successfully.
+
+Reviewers: #dolphin, dfaure, rdieter, sitter
+
+Subscribers: kde-frameworks-devel, cgiboudeaux, arojas, kfm-devel, meven
+
+Tags: #dolphin, #frameworks
+
+Differential Revision: https://phabricator.kde.org/D17205
+---
+ CMakeLists.txt     |  9 ++++++---
+ nfs/CMakeLists.txt | 15 +++++++++------
+ 2 files changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 347caaad..37d56b3f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -134,6 +134,11 @@ if(UNIX)
+     set_package_properties(Gperf PROPERTIES TYPE OPTIONAL
+                            PURPOSE "Needed to build the man kioslave"
+                            )
++
++    find_package(TIRPC)
++    set_package_properties(TIRPC PROPERTIES TYPE OPTIONAL
++                           PURPOSE "Needed to build the NFS kioslave"
++                           )
+ else()
+     # FIXME: on windows we ignore support until trash gets integrated
+ endif()
+@@ -178,9 +183,7 @@ if(NOT WIN32)
+    if(Gperf_FOUND)
+      add_subdirectory( man )
+    endif()
+-   check_include_files(rpc/rpc.h HAVE_RPC_RPC_H)
+-   add_feature_info("NFS kioslave" HAVE_RPC_RPC_H "The RPC library is needed to build the NFS kioslave")
+-   if(HAVE_RPC_RPC_H)
++   if(TIRPC_FOUND)
+      add_subdirectory( nfs )
+    endif()
+ endif()
+diff --git a/nfs/CMakeLists.txt b/nfs/CMakeLists.txt
+index 6436e0d1..7189b25a 100644
+--- a/nfs/CMakeLists.txt
++++ b/nfs/CMakeLists.txt
+@@ -1,10 +1,12 @@
+ ## Check for XDR functions
+-include(CheckFunctionExists)
++include(CheckCXXSymbolExists)
+ 
+-CHECK_FUNCTION_EXISTS(xdr_u_int64_t HAVE_XDR_U_INT64_T)
+-CHECK_FUNCTION_EXISTS(xdr_uint64_t HAVE_XDR_UINT64_T)
+-CHECK_FUNCTION_EXISTS(xdr_u_hyper HAVE_XDR_U_HYPER)
+-CHECK_FUNCTION_EXISTS(xdr_u_longlong_t HAVE_XDR_U_LONGLONG_T)
++set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${TIRPC_LIBRARIES})
++set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${TIRPC_INCLUDE_DIRS})
++check_cxx_symbol_exists(xdr_u_int64_t "rpc/xdr.h" HAVE_XDR_U_INT64_T)
++check_cxx_symbol_exists(xdr_uint64_t "rpc/xdr.h" HAVE_XDR_UINT64_T)
++check_cxx_symbol_exists(xdr_u_hyper "rpc/xdr.h" HAVE_XDR_U_HYPER)
++check_cxx_symbol_exists(xdr_u_longlong_t "rpc/xdr.h" HAVE_XDR_U_LONGLONG_T)
+ 
+ if (NOT HAVE_XDR_U_INT64_T AND NOT HAVE_XDR_UINT64_T AND NOT HAVE_XDR_U_HYPER AND NOT HAVE_XDR_U_LONGLONG_T)
+     message(FATAL_ERROR "Could not find 64-bit XDR datatype functions!")
+@@ -24,9 +26,10 @@ if (HAVE_XDR_U_LONGLONG_T)
+ endif (HAVE_XDR_U_LONGLONG_T)
+ 
+ add_definitions(-DTRANSLATION_DOMAIN=\"kio5_nfs\")
++include_directories(${TIRPC_INCLUDE_DIRS})
+ 
+ add_library(kio_nfs MODULE kio_nfs.cpp nfsv2.cpp nfsv3.cpp rpc_nfs3_prot_xdr.c rpc_nfs2_prot_xdr.c)
+-target_link_libraries(kio_nfs KF5::KIOCore KF5::I18n Qt5::Network)
++target_link_libraries(kio_nfs KF5::KIOCore KF5::I18n Qt5::Network ${TIRPC_LIBRARIES})
+ set_target_properties(kio_nfs PROPERTIES OUTPUT_NAME "nfs")
+ 
+ install(TARGETS kio_nfs DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
+-- 
+2.25.1
+

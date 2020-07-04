@@ -15,4 +15,4 @@ FEATURES="-multilib-strict"
 
 # TODO: fix so musl doesn't generate this for all packages
 # that use a charset, it causes package collisons.
-INSTALL_MASK="charset.alias"
+INSTALL_MASK="charset.alias locale.alias"

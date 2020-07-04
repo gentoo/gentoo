@@ -1,34 +1,32 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit eutils fortran-2 multilib flag-o-matic toolchain-funcs
+inherit fortran-2 flag-o-matic toolchain-funcs
 
 MY_P=${P/-mpi}
 
 DESCRIPTION="A high-performance message passing library (MPI)"
-HOMEPAGE="http://www.open-mpi.org"
-SRC_URI="http://www.open-mpi.org/software/ompi/v1.4/downloads/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.open-mpi.org"
+SRC_URI="https://www.open-mpi.org/software/ompi/v1.4/downloads/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
 RESTRICT="mpi-threads? ( test )"
 
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads pbs romio threads vt"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
+IUSE="+cxx fortran heterogeneous ipv6 mpi-threads pbs romio threads vt"
 RDEPEND="
 	pbs? ( sys-cluster/torque )
 	vt? (
 		!dev-libs/libotf
 		!app-text/lcdf-typetools
 	)
-	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
-	!sys-cluster/mpiexec
 	!sys-cluster/pmix"
 DEPEND="${RDEPEND}"
 
@@ -52,6 +50,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	# Necessary for scalibility, see
 	# http://www.open-mpi.org/community/lists/users/2008/09/6514.php
 	if use threads; then
@@ -93,12 +92,12 @@ src_configure() {
 		$(use_enable ipv6)
 }
 
-src_install () {
-	emake DESTDIR="${D}" install || die "make install failed"
-	dodoc README AUTHORS NEWS VERSION || die
+src_install() {
+	default
+	dodoc README AUTHORS NEWS VERSION
 }
 
 src_test() {
 	# Doesn't work with the default src_test as the dry run (-n) fails.
-	emake -j1 check || die "emake check failed"
+	emake -j1 check
 }

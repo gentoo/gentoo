@@ -12,7 +12,7 @@ S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Loop-AES losetup utility"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/"
-SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz
+SRC_URI="https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz
 	http://loop-aes.sourceforge.net/loop-AES/${LOOPAES_P}.tar.bz2"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
 

@@ -1,9 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -17,6 +17,7 @@ LICENSE="BSD-2 ISC"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
@@ -42,7 +43,10 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	use examples && local EXAMPLES=( examples )
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 
 	distutils-r1_python_install_all
 }

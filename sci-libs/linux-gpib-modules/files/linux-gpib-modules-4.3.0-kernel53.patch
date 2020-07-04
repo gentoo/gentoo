@@ -1,0 +1,37 @@
+Index: linux-gpib-kernel/compat/include/linux/device.h
+===================================================================
+--- linux-gpib-kernel/compat/include/linux/device.h	(revision 1867)
++++ linux-gpib-kernel/compat/include/linux/device.h	(revision 1868)
+@@ -144,4 +144,10 @@
+ 
+ #endif // LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,3,0)
++#define DRIVER_FIND_DEVICE_DATA_TYPE void *
++#else
++#define DRIVER_FIND_DEVICE_DATA_TYPE const void *
++#endif
++
+ #endif // __COMPAT_LINUX_DEVICE_H_
+Index: linux-gpib-kernel/drivers/gpib/fmh_gpib/fmh_gpib.c
+===================================================================
+--- linux-gpib-kernel/drivers/gpib/fmh_gpib/fmh_gpib.c	(revision 1867)
++++ linux-gpib-kernel/drivers/gpib/fmh_gpib/fmh_gpib.c	(revision 1868)
+@@ -982,7 +982,7 @@
+ }
+ 
+ /* Match callback for driver_find_device */
+-static int fmh_gpib_device_match(struct device *dev, void *data)
++static int fmh_gpib_device_match(struct device *dev, DRIVER_FIND_DEVICE_DATA_TYPE data)
+ {
+ 	const gpib_board_config_t *config = data;
+ 	
+@@ -1014,7 +1014,7 @@
+ 	struct platform_device *pdev;
+ 	
+ 	board->dev = driver_find_device(&fmh_gpib_platform_driver.driver,
+-		NULL, (void*)config, &fmh_gpib_device_match);
++		NULL, (DRIVER_FIND_DEVICE_DATA_TYPE)config, &fmh_gpib_device_match);
+ 	if(board->dev == NULL)
+ 	{
+ 		printk("No matching fmh_gpib_core device was found, attach failed.");

@@ -1,8 +1,6 @@
 # Copyright 2008-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# True Authors: Arfrever Frehtes Taifersar Arahesis and others
-
 EAPI="7"
 
 inherit autotools elisp-common flag-o-matic multilib-minimal toolchain-funcs
@@ -23,21 +21,21 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/20"
+SLOT="0/22"
 KEYWORDS=""
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
-BDEPEND="emacs? ( virtual/emacs )"
+BDEPEND="emacs? ( app-editors/emacs:* )"
 DEPEND="test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
-RDEPEND="emacs? ( virtual/emacs )
+RDEPEND="emacs? ( app-editors/emacs:* )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.8.0-disable_no-warning-test.patch"
-	"${FILESDIR}/${PN}-3.8.0-system_libraries.patch"
-	"${FILESDIR}/${PN}-3.8.0-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.11.0-disable_no-warning-test.patch"
+	"${FILESDIR}/${PN}-3.11.0-system_libraries.patch"
+	"${FILESDIR}/${PN}-3.11.0-protoc_input_output_files.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
@@ -91,7 +89,7 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	find "${D}" -name "*.la" -delete || die
+	find "${D}" -name "*.la" -type f -delete || die
 
 	insinto /usr/share/vim/vimfiles/syntax
 	doins editors/proto.vim

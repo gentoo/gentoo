@@ -1,0 +1,15 @@
+--- a/Main.lhs
++++ b/Main.lhs
+@@ -10,11 +10,7 @@
+ > import Epic.Compiler
+ > import Paths_epic
+ 
+-> versionString = showV (versionBranch version)
+->   where
+->     showV [] = ""
+->     showV [a] = show a
+->     showV (x:xs) = show x ++ "." ++ showV xs
++> versionString = show version
+ 
+ > main = do args <- getArgs
+ >           (fns, opts) <- getInput args

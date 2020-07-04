@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+  </maintainer>
   <longdescription lang="en">
-  The CernVM File System is a client-server file system developed to
-  deliver software stacks onto virtual machines in a fast, scalable,
-  and reliable way. CernVM-FS is implemented as a FUSE module. It
-  makes a specially prepared directory tree stored on a web server
-  look like a local read-only file system on the virtual
-  machine. CernVM-FS uses outgoing HTTP connections only, thereby it
-  avoids most of the firewall issues of other network file systems. It
-  transfers data file by file on demand, verifying the content by
-  SHA-1 keys.
+  The CernVM-File System (CernVM-FS) provides a scalable, reliable and low-
+  maintenance software distribution service. It was developed to assist High
+  Energy Physics (HEP) collaborations to deploy software on the worldwide-
+  distributed computing infrastructure used to run data processing applications.
+  CernVM-FS is implemented as a POSIX read-only file system in user space (a
+  FUSE module). Files and directories are hosted on standard web servers and
+  mounted in the universal namespace /cvmfs. Internally, CernVM-FS uses content-
+  addressable storage and Merkle trees in order to maintain file data and
+  meta-data. CernVM-FS uses outgoing HTTP connections only, thereby it avoids
+  most of the firewall issues of other network file systems. It transfers data
+  and meta-data on demand and verifies data integrity by cryptographic hashes.
   </longdescription>
   <use>
-    <flag name="aufs">Use AUFS instead of OverlayFS for the server</flag>    
-    <flag name="preload">Install the cvmfs cache preloader for distributed file systems</flag>    
     <flag name="server">Install the cvmfsd program and init script</flag>
-    <flag name="test-programs">Install unit test programs</flag>    
   </use>
   <upstream>
     <remote-id type="github">cvmfs/cvmfs</remote-id>

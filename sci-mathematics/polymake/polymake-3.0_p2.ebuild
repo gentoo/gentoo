@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils flag-o-matic
 
 DESCRIPTION="research tool for polyhedral geometry and combinatorics"
 SRC_URI="https://polymake.org/lib/exe/fetch.php/download/polymake-3.0r2.tar.bz2"
-HOMEPAGE="http://polymake.org"
+HOMEPAGE="https://polymake.org"
 
 IUSE="+cdd lrs ppl bliss group +libnormaliz singular libpolymake"
 
@@ -43,7 +43,7 @@ pkg_pretend() {
 	einfo "you run into trouble."
 }
 
-src_configure () {
+src_configure() {
 	export CXXOPT=$(get-flag -O)
 
 	# We need to define BLISS_USE_GMP if bliss was built with gmp support.
@@ -75,12 +75,12 @@ src_configure () {
 		${myconf} || die
 }
 
-src_install(){
+src_install() {
 	emake -j1 DESTDIR="${D}" install
 }
 
-pkg_postinst(){
-	elog "Docs can be found on http://www.polymake.org/doku.php/documentation"
+pkg_postinst() {
+	elog "Docs can be found on https://www.polymake.org/doku.php/documentation"
 	elog " "
 	elog "Support for jreality is missing, sorry (see bug #346073)."
 	elog " "

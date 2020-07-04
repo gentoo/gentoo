@@ -1,0 +1,43 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,6 +35,11 @@
+ dnl C99 support is required to define LLONG_MAX (at least on CentOS 5.7)
+ AC_PROG_CC_C99
+ 
++dnl mkdir_p / MKDIR_P
++AC_PROG_MKDIR_P
++mkdir_p="$MKDIR_P"
++AC_SUBST(mkdir_p)
++
+ # Report more warnings to improve code quality.
+ CFLAGS="${CFLAGS} -Wall"
+ 
+@@ -50,23 +55,23 @@
+ # Don't compare signs as it is a mess
+ CFLAGS="${CFLAGS} -Wno-sign-compare"
+ 
+-AC_MSG_CHECKING([for implicit-function-declaration error flag in $CC])
++AC_MSG_CHECKING([for implicit-function-declaration warning flag in $CC])
+ saved_CFLAGS="${CFLAGS}"
+-CFLAGS="${CFLAGS} -Werror=implicit-function-declaration"
++CFLAGS="${CFLAGS} -Wimplicit-function-declaration"
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_implicit_function_declaration="yes"],[have_implicit_function_declaration="no"])
+ AC_MSG_RESULT($have_implicit_function_declaration)
+ AS_IF([test "$have_implicit_function_declaration" = "no"],[CFLAGS="${saved_CFLAGS}"])
+ 
+-AC_MSG_CHECKING([for format error flag in $CC])
++AC_MSG_CHECKING([for format warning flag in $CC])
+ saved_CFLAGS="${CFLAGS}"
+-CFLAGS="${CFLAGS} -Werror=format"
++CFLAGS="${CFLAGS} -Wformat"
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_error_format="yes"],[have_error_format="no"])
+ AC_MSG_RESULT($have_error_format)
+ AS_IF([test "$have_error_format" = "no"],[CFLAGS="${saved_CFLAGS}"])
+ 
+ case "$host" in
+    *-solaris*)
+-   LDFLAGS="${LDFLAGS} -lsocket -lnsl"
++   LIBS="${LIBS} -lsocket -lnsl"
+    CFLAGS="-DSOLARIS ${CFLAGS}"
+    ;;
+ esac

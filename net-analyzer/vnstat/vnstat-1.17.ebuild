@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86"
 IUSE="gd selinux test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	gd? ( media-libs/gd[png] )

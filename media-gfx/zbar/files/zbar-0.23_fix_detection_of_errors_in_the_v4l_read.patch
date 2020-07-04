@@ -1,0 +1,29 @@
+From 52a4fa5242af5da770b3cab1713f87e8d899e7ed Mon Sep 17 00:00:00 2001
+From: Dan Fandrich <dan@coneharvesters.com>
+Date: Fri, 27 Dec 2019 18:33:17 +0100
+Subject: [PATCH] Fix detection of errors in the v4l read.
+
+The return type must be signed in order to detect a read failure. Also,
+display an error message after such a failure.
+---
+ zbar/video/v4l2.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/zbar/video/v4l2.c b/zbar/video/v4l2.c
+index daed38b..c0398ea 100644
+--- a/zbar/video/v4l2.c
++++ b/zbar/video/v4l2.c
+@@ -133,9 +133,11 @@ static zbar_image_t *v4l2_dq (zbar_video_t *vdo)
+             return(NULL);
+ 
+         /* FIXME should read entire image */
+-        unsigned long datalen = read(fd, (void*)img->data, img->datalen);
+-        if(datalen < 0)
++        ssize_t datalen = read(fd, (void*)img->data, img->datalen);
++        if(datalen < 0) {
++            perror("v4l2_dq read");
+             return(NULL);
++        }
+         else if(datalen != img->datalen)
+             zprintf(0, "WARNING: read() size mismatch: 0x%lx != 0x%lx\n",
+                     datalen, img->datalen);

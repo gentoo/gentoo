@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils
+inherit autotools desktop
 
 DESCRIPTION="A simple GTK/command line TCP/IP packet generator"
 HOMEPAGE="http://gspoof.sourceforge.net/"

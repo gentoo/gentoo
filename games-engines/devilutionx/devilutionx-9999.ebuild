@@ -1,9 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils desktop
+# Sometimes build with ninja fails.
+# Please check occasionally if we can revert back to ninja.
+# Latest known issue:
+#
+#CMAKE_MAKEFILE_GENERATOR="emake"
+
+inherit cmake desktop
 
 DESCRIPTION="Diablo engine for modern operating systems"
 HOMEPAGE="https://github.com/diasurgical/devilutionX"
@@ -13,15 +19,17 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/diasurgical/devilutionX/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/devilutionX-${PV}"
 fi
 
 LICENSE="public-domain"
 SLOT="0"
 
-IUSE="debug"
+IUSE="debug lto"
 
 RDEPEND="
 	dev-libs/libsodium
+	media-fonts/sil-charis
 	media-libs/libsdl2[haptic]
 	media-libs/sdl2-mixer
 	media-libs/sdl2-ttf
@@ -32,23 +40,33 @@ BDEPEND="
 "
 
 src_prepare() {
-	# https://github.com/diasurgical/devilutionX/issues/225
-	eapply -R "${FILESDIR}"/${PN}-facebookincubator_find_libsodium.patch
-
-	cmake-utils_src_prepare
+	sed "/PROJECT_VERSION/s|@PROJECT_VERSION@|${PV}|" \
+		-i SourceS/config.h.in || die
+	sed 's/CharisSILB.ttf/CharisSIL-B.ttf/g' \
+		-i SourceX/DiabloUI/fonts.h || die
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DBINARY_RELEASE=ON
+		-DASAN="OFF"
 		-DDEBUG="$(usex debug)"
+		-DDIST="ON"
+		-DFASTER="OFF"
+		-DLTO="$(usex lto)"
+		-DUBSAN="OFF"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
 	dobin "${BUILD_DIR}/${PN}"
-	make_desktop_entry ${PN} "Diablo devolved"
+
+	local size
+	for size in 32 48 ; do
+		newicon -s ${size} Packaging/resources/Diablo_${size}.png ${PN}.png
+	done
+	make_desktop_entry ${PN} "Diablo devolved" "/usr/share/icons/hicolor/48x48/apps/devilutionx.png"
 }
 
 pkg_postinst() {

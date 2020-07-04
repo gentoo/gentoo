@@ -1,0 +1,207 @@
+--- a/config/icu-config-bottom
++++ b/config/icu-config-bottom
+@@ -218,65 +218,65 @@
+ 	    ;;
+ 
+ 	--cflags)
+-	    echo $ECHO_N "${CFLAGS} ${ECHO_C}"
++	    printf "%s" "${CFLAGS} "
+ 	    ;;
+ 
+ 	--cc)
+-	    echo $ECHO_N "${CC} ${ECHO_C}"
++	    printf "%s" "${CC} "
+ 	    ;;
+ 
+ 	--cxx)
+-	    echo $ECHO_N "${CXX} ${ECHO_C}"
++	    printf "%s" "${CXX} "
+ 	    ;;
+ 
+ 	--cxxflags)
+-	    echo $ECHO_N "${CXXFLAGS} ${ECHO_C}"
++	    printf "%s" "${CXXFLAGS} "
+ 	    ;;
+ 
+ 	--cppflags)
+ 	    # Don't echo the -I. - it's unneeded.
+-	    echo $ECHO_N "${CPPFLAGS} ${ECHO_C}" | sed -e 's/-I. //'
++	    printf "%s" "${CPPFLAGS} " | sed -e 's/-I. //'
+ 	    ;;
+ 
+ 	--cppflags-searchpath)
+-	    echo $ECHO_N "-I${prefix}/include ${ECHO_C}"
++	    printf "%s" "-I${prefix}/include "
+ 	    ;;
+ 
+ 	--cppflags-dynamic)
+-	    echo $ECHO_N "${SHAREDLIBCPPFLAGS} ${ECHO_C}"
++	    printf "%s" "${SHAREDLIBCPPFLAGS} "
+ 	    ;;
+ 
+ 	--cxxflags-dynamic)
+-	    echo $ECHO_N "${SHAREDLIBCXXFLAGS} ${ECHO_C}"
++	    printf "%s" "${SHAREDLIBCXXFLAGS} "
+ 	    ;;
+ 
+ 	--cflags-dynamic)
+-	    echo $ECHO_N "${SHAREDLIBCFLAGS} ${ECHO_C}"
++	    printf "%s" "${SHAREDLIBCFLAGS} "
+ 	    ;;
+ 
+ 	--ldflags-system)
+-	    echo $ECHO_N "${LIBS} ${ECHO_C}"
++	    printf "%s" "${LIBS} "
+ 	    ;;
+ 
+ 	--ldflags)
+-	    echo $ECHO_N "${LDFLAGS} ${ICULIBS} ${ECHO_C}"
++	    printf "%s" "${LDFLAGS} ${ICULIBS} "
+ # $RPATH_LDFLAGS
+ 	    ;;
+ 
+ 	--ldflags-libsonly)
+-	    echo $ECHO_N "${ICULIBS_I18N} ${ICULIBS_COMMON} ${ICULIBS_DATA} ${ECHO_C}"
++	    printf "%s" "${ICULIBS_I18N} ${ICULIBS_COMMON} ${ICULIBS_DATA} "
+ 	    ;;
+ 
+ 	--ldflags-icuio)
+-	    echo $ECHO_N " ${ICULIBS_ICUIO} ${ECHO_C}"
++	    printf "%s" " ${ICULIBS_ICUIO} "
+ 	    ;;
+ 
+ 	--ldflags-obsolete)
+-	    echo $ECHO_N "${ICULIBS_OBSOLETE} ${ECHO_C}"
++	    printf "%s" "${ICULIBS_OBSOLETE} "
+ 	    ;;
+ 
+ 	--ldflags-toolutil)
+-	    echo $ECHO_N " ${ICULIBS_TOOLUTIL} ${ECHO_C}"
++	    printf "%s" " ${ICULIBS_TOOLUTIL} "
+ 	    ;;
+ 
+ 	--ldflags-layout)
+@@ -285,7 +285,7 @@
+ 	    ;;
+ 
+ 	--ldflags-searchpath)
+-	    echo $ECHO_N "-L${libdir} ${ECHO_C}"
++	    printf "%s" "-L${libdir} "
+ 	    ;;
+ 
+ 	--detect-prefix)
+@@ -321,47 +321,47 @@
+ 	    ;;
+ 
+ 	--shared-datadir)
+-	    echo $ECHO_N "${datadir} ${ECHO_C}"
++	    printf "%s" "${datadir} "
+ 	    ;;
+ 
+         --incfile)
+-	    echo $ECHO_N "${pkglibdir}/Makefile.inc ${ECHO_C}"
++	    printf "%s" "${pkglibdir}/Makefile.inc "
+ 	    ;;
+ 
+ 	--incpkgdatafile)
+-	    echo $ECHO_N "${pkglibdir}/pkgdata.inc ${ECHO_C}"
++	    printf "%s" "${pkglibdir}/pkgdata.inc "
+ 	    ;;
+ 
+ 	--icudata)
+-	    echo $ECHO_N "${ICUDATA_NAME} ${ECHO_C}"
++	    printf "%s" "${ICUDATA_NAME} "
+ 	    ;;
+ 
+ 	--icudata-mode)
+-	    echo $ECHO_N "${PKGDATA_MODE} ${ECHO_C}"
++	    printf "%s" "${PKGDATA_MODE} "
+ 	    ;;
+ 
+ 	--icudata-install-dir)
+-        echo $ECHO_N "${ICUPKGDATA_DIR} ${ECHO_C}"
++        printf "%s" "${ICUPKGDATA_DIR} "
+ 	    ;;
+ 
+ 	--icudatadir)
+-	    echo $ECHO_N "${ICUDATA_DIR} ${ECHO_C}"
++	    printf "%s" "${ICUDATA_DIR} "
+ 	    ;;
+ 
+ 	--shlib-c)
+-	    echo $ECHO_N "${SHLIB_c} ${ECHO_C}"
++	    printf "%s" "${SHLIB_c} "
+ 	    ;;
+ 
+ 	--shlib-cc)
+-	    echo $ECHO_N "${SHLIB_cc} ${ECHO_C}"
++	    printf "%s" "${SHLIB_cc} "
+ 	    ;;
+ 
+ 	--version)
+-	    echo $ECHO_N $VERSION
++	    printf "%s" "$VERSION"
+ 	    ;;
+ 
+ 	--unicode-version)
+-	    echo $ECHO_N $UNICODE_VERSION
++	    printf "%s" "$UNICODE_VERSION"
+ 	    ;;
+ 
+ 	--host)
+--- a/config/Makefile.inc.in
++++ b/config/Makefile.inc.in
+@@ -124,12 +124,6 @@
+ # with usually. Many applications will want to add $(ICULIBS_I18N) as well. 
+ ICULIBS = $(ICULIBS_BASE) $(ICULIBS_I18N) $(ICULIBS_COMMON) $(ICULIBS_DATA) 
+ 
+-# Proper echo newline handling is needed in icu-config
+-ECHO_N=@ICU_ECHO_N@
+-ECHO_C=@ICU_ECHO_C@
+-# Not currently being used but good to have for proper tab handling
+-ECHO_T=@ICU_ECHO_T@
+-
+ ##################################################################
+ ##################################################################
+ #
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,24 +26,6 @@
+ PACKAGE="icu"
+ AC_SUBST(PACKAGE)
+ 
+-# Use custom echo test for newline option
+-# Current autoconf (2.65) gives incorrect echo newline option
+-# for icu-config
+-# This may be removed later - mow (June 17, 2010)
+-ICU_ECHO_C= ICU_ECHO_N= ICU_ECHO_T=
+-case `/bin/sh -c "echo -n x"` in
+--n*)
+-  case `/bin/sh -c "echo 'x\c'"` in
+-  *c*) ICU_ECHO_T=' ';;     # ECHO_T is single tab character.
+-  *)   ICU_ECHO_C='\c';;
+-  esac;;
+-*)
+-  ICU_ECHO_N='-n';;
+-esac
+-AC_SUBST(ICU_ECHO_N)
+-AC_SUBST(ICU_ECHO_C)
+-AC_SUBST(ICU_ECHO_T)
+-
+ AC_MSG_CHECKING(for ICU version numbers)
+ 
+ # Get the ICU version from uversion.h or other headers
+--- a/icudefs.mk.in
++++ b/icudefs.mk.in
+@@ -161,11 +161,6 @@
+ ENABLE_STATIC = @ENABLE_STATIC@
+ ENABLE_SHARED = @ENABLE_SHARED@
+ 
+-# Echo w/o newline
+-
+-#ECHO_N = @ICU_ECHO_N@
+-#ECHO_C = @ICU_ECHO_C@
+-
+ # Commands to compile
+ COMPILE.c=    $(CC) $(CPPFLAGS) $(DEFS) $(CFLAGS) -c
+ COMPILE.cc=   $(CXX) $(CPPFLAGS) $(DEFS) $(CXXFLAGS) -c

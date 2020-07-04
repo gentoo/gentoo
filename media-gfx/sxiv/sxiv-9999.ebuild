@@ -1,16 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop xdg-utils gnome2-utils savedconfig toolchain-funcs
+inherit desktop xdg-utils savedconfig toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/muennich/sxiv.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/muennich/sxiv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Simple (or small or suckless) X Image Viewer"
@@ -28,6 +28,8 @@ RDEPEND="
 	x11-libs/libXft
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-25-makefile.patch )
 
 src_prepare() {
 	restore_config config.h
@@ -47,16 +49,12 @@ src_install() {
 	save_config config.h
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

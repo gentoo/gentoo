@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,7 +35,6 @@ PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
-		-DCMAKE_INSTALL_PREFIX="/usr"
 		-DBINDIR="/usr/bin"
 		-DDATAROOTDIR="/usr/share"
 		-DICONDIR=/usr/share/icons

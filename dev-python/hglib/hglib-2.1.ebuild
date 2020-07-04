@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
 MY_P=python-${P}
@@ -17,7 +17,8 @@ SRC_URI="mirror://pypi/p/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-vcs/mercurial-2.4.2"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
@@ -32,6 +33,9 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/stats.py )
+	docinto examples
+	dodoc -r examples/stats.py
+	docompress -x /usr/share/doc/${PF}/examples
+
 	distutils-r1_python_install_all
 }

@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://mkvtoolnix.download/sources/${P}.tar.xz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ppc ppc64 x86"
 fi
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
@@ -20,6 +20,7 @@ HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug nls pch test qt5"
+RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info

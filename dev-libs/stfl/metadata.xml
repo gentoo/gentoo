@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>cedk@gentoo.org</email>
 	</maintainer>
 	<longdescription lang="en">
 		STFL is a library which implements a curses-based widget set for text

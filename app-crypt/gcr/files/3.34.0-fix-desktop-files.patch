@@ -1,0 +1,61 @@
+From a69dc44e11270ce092babfa57fe3aab31da9619c Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <dueno@src.gnome.org>
+Date: Mon, 21 Oct 2019 12:02:05 +0200
+Subject: [PATCH] build: Use sed for .desktop variables substitution
+
+We can't do that with configure, as it leaves ${exec_prefix}.
+---
+ configure.ac   | 2 --
+ ui/Makefile.am | 6 ++++++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1ba43d6..6286f16 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -423,8 +423,6 @@ gcr/gcr-version.h
+ po/Makefile.in
+ ui/gcr.pc
+ ui/gcr-ui.pc
+-ui/gcr-prompter.desktop.in
+-ui/gcr-viewer.desktop.in
+ ui/icons/16x16/Makefile
+ ui/icons/22x22/Makefile
+ ui/icons/24x24/Makefile
+diff --git a/ui/Makefile.am b/ui/Makefile.am
+index 29c33e7..7594621 100644
+--- a/ui/Makefile.am
++++ b/ui/Makefile.am
+@@ -209,6 +209,8 @@ gcr_viewer_LDADD = \
+ viewer_desktop_in_in = ui/gcr-viewer.desktop.in.in
+ viewer_desktop_in = $(viewer_desktop_in_in:.desktop.in.in=.desktop.in)
+ viewer_desktop = $(viewer_desktop_in:.desktop.in=.desktop)
++$(viewer_desktop_in): $(viewer_desktop_in_in)
++	$(AM_V_GEN) sed 's|@bindir[@]|$(bindir)|g' $< > $@
+ $(viewer_desktop): $(viewer_desktop_in)
+ 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
+ 
+@@ -231,9 +233,12 @@ gcr_prompter_LDADD = \
+ prompter_desktop_in_in = ui/gcr-prompter.desktop.in.in
+ prompter_desktop_in = $(prompter_desktop_in_in:.desktop.in.in=.desktop.in)
+ prompter_desktop = $(prompter_desktop_in:.desktop.in=.desktop)
++$(prompter_desktop_in): $(prompter_desktop_in_in)
++	$(AM_V_GEN) sed 's|@libexecdir[@]|$(libexecdir)|g' $< > $@
+ $(prompter_desktop): $(prompter_desktop_in)
+ 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
+ 
++desktop_in_in_files = $(viewer_desktop_in_in) $(prompter_desktop_in_in)
+ desktop_in_files = $(desktop_in_in_files:.desktop.in.in=.desktop.in)
+ desktopdir = $(datadir)/applications
+ desktop_DATA = \
+@@ -247,6 +252,7 @@ EXTRA_DIST += \
+ 	ui/gcr.gresource.xml \
+ 	$(ui_RESOURCES) \
+ 	$(mime_DATA) \
++	$(desktop_in_in_files) \
+ 	ui/fixtures
+ 
+ CLEANFILES += \
+-- 
+2.24.1
+

@@ -6,7 +6,7 @@ EAPI=7
 MY_PV="$(ver_cut 1-2)*"
 
 DESCRIPTION="Meta ebuild for LXQt, the Lightweight Desktop Environment"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"

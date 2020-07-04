@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_P=${PN}-3.0-${PV}
 DESCRIPTION="A library for registering global keyboard shortcuts"
-HOMEPAGE="https://github.com/engla/keybinder"
-SRC_URI="https://github.com/engla/keybinder/releases/download/${PN}-3.0-v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/kupferlauncher/keybinder"
+SRC_URI="https://github.com/kupferlauncher/keybinder/releases/download/${PN}-3.0-v${PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 x86"
 IUSE="+introspection"
 
 RDEPEND="x11-libs/gtk+:3[X]

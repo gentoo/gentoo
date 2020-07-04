@@ -1,45 +1,41 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Gentoo Package Manager Specification"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification"
-SRC_URI="!binary? ( https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz )
-	binary? ( https://dev.gentoo.org/~ulm/distfiles/${P}-prebuilt.tar.xz )"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="binary html twoside"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+IUSE="html twoside"
 
-# texlive-bibtexextra: plainurl.bst
-# texlive-latexextra: chngcntr, isodate, marginnote, paralist, tocbibind
-# texlive-mathscience: algorithm, algorithmic
-# leaflet used by eapi-cheatsheet
-BDEPEND="!binary? (
-		dev-tex/leaflet
-		dev-texlive/texlive-bibtexextra
-		dev-texlive/texlive-fontsrecommended
-		dev-texlive/texlive-latex
-		dev-texlive/texlive-latexextra
-		dev-texlive/texlive-latexrecommended
-		dev-texlive/texlive-mathscience
-		html? (
-			app-text/recode
-			>=dev-tex/tex4ht-20090611_p1038-r5
-		)
+# texlive-bibtexextra for plainurl.bst
+# texlive-latexextra for chngcntr, isodate, leaflet, marginnote,
+#   paralist, tocbibind
+# texlive-mathscience for algorithm, algorithmic
+BDEPEND="|| ( >=dev-texlive/texlive-latexextra-2020-r1 dev-tex/leaflet )
+	dev-texlive/texlive-bibtexextra
+	dev-texlive/texlive-fontsrecommended
+	dev-texlive/texlive-latex
+	dev-texlive/texlive-latexextra
+	dev-texlive/texlive-latexrecommended
+	dev-texlive/texlive-mathscience
+	html? (
+		app-text/recode
+		>=dev-tex/tex4ht-20090611_p1038-r5
 	)"
+RDEPEND="!app-doc/pms-bin"
+
+PATCHES=("${FILESDIR}/${PN}-7-Makefile.patch")
 
 src_compile() {
-	if ! use binary; then
-		# just in case; we shouldn't be generating any fonts
-		export VARTEXFONTS="${T}/fonts"
-		emake $(usex twoside TWOSIDE=yes "")
-		use html && emake html
-	else
-		use twoside && ewarn "USE=twoside is not supported with USE=binary"
-	fi
+	# just in case; we shouldn't be generating any fonts
+	export VARTEXFONTS="${T}/fonts"
+	emake $(usex twoside TWOSIDE=yes "")
+	use html && emake html
 }
 
 src_install() {

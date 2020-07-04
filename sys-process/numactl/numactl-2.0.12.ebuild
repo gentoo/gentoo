@@ -13,7 +13,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/numactl/numactl/releases/download/v${PV}/${P}.tar.gz"
 	# ARM lacks the __NR_migrate_pages syscall.
-	KEYWORDS="amd64 -arm arm64 ia64 ~mips ppc ppc64 x86 ~amd64-linux"
+	KEYWORDS="amd64 -arm arm64 ~ia64 ~mips ppc ppc64 x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-2"

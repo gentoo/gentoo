@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop qmake-utils
 
@@ -48,7 +48,7 @@ src_prepare() {
 }
 
 src_install() {
-	# not working: emake install INSTALL_ROOT="${D}" || die
+	# not working: emake install INSTALL_ROOT="${D}"
 	dobin zhu3d
 
 	dodoc readme.txt src/changelog.txt

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>itumaykin+gentoo@gmail.com</email>
-		<name>Coacher</name>
+		<email>hlein@korelogic.com</email>
+		<name>Hank Leininger</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

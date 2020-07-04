@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -14,7 +14,7 @@ SRC_URI="http://www.winfield.demon.nl/linux/${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 src_prepare() {
 	# Makefile is a symlink to Makefile.Linux, avoid that we patch it by
@@ -33,18 +33,18 @@ src_configure() { :; }
 
 src_compile() {
 	emake PREFIX="${EPREFIX}" OPT="${CFLAGS}" CC="$(tc-getCC)" LD="$(tc-getCC)" \
-		LDFLAGS="${LDFLAGS}" || die "emake failed"
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	emake -j1 PREFIX="${EPREFIX}" DESTDIR="${D}" global_install || die
+	emake -j1 PREFIX="${EPREFIX}" DESTDIR="${D}" global_install
 
 	use kde || rm -f "${ED}"/usr/bin/kantiword
 
 	insinto /usr/share/${PN}/examples
-	doins Docs/testdoc.doc Docs/antiword.php || die
+	doins Docs/testdoc.doc Docs/antiword.php
 
 	cd Docs
-	doman antiword.1 || die
-	dodoc ChangeLog Exmh Emacs FAQ History Netscape QandA ReadMe Mozilla Mutt || die
+	doman antiword.1
+	dodoc ChangeLog Exmh Emacs FAQ History Netscape QandA ReadMe Mozilla Mutt
 }

@@ -10,11 +10,11 @@ inherit haskell-cabal
 
 DESCRIPTION="Lift computations from the bottom of a transformer stack"
 HOMEPAGE="https://github.com/mvv/transformers-base"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+orphaninstances"
 
 RDEPEND=">=dev-haskell/stm-2.3:=[profile?]

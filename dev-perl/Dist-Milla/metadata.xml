@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Dist-Milla</remote-id>
+    <remote-id type="cpan-module">Dist::Milla</remote-id>
+    <remote-id type="cpan-module">Dist::Milla::App</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::MintingProfile::Milla</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Milla::FirstBuild</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Milla::MetaGeneratedBy</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Milla::MintFiles</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::PluginBundle::Milla</remote-id>
+    <remote-id type="cpan-module">Milla</remote-id>
+  </upstream>
+</pkgmetadata>

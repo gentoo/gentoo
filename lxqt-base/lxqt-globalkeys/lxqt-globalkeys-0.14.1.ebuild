@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Daemon and library for global keyboard shortcuts registration"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -18,6 +18,8 @@ fi
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.14-build.patch" )
 
 BDEPEND="
 	dev-qt/linguist-tools:5

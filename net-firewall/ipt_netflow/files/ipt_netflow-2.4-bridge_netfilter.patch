@@ -1,0 +1,61 @@
+From 9288e30f493d252ee85b492a894f78073e4f6d41 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Sat, 28 Sep 2019 23:29:40 +0300
+Subject: [PATCH] Don't compile physdev-override if BRIDGE_NETFILTER is
+ disabled.
+
+Fixes #120 "Compile error nf_bridge / nf_trace" reported by DocMAX.
+
+Fixes: 51bdc2b ("Use nf_bridge_info_get() instead of skb->nf_bridge").
+---
+ compat.h      | 2 ++
+ configure     | 1 +
+ ipt_NETFLOW.c | 5 +++++
+ 3 files changed, 8 insertions(+)
+
+diff --git a/compat.h b/compat.h
+index 0f9896b..66e224b 100644
+--- a/compat.h
++++ b/compat.h
+@@ -680,11 +680,13 @@ static inline int is_vlan_dev(struct net_device *dev)
+ #endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5,0,0)
++# ifdef CONFIG_BRIDGE_NETFILTER
+ static inline struct nf_bridge_info *
+ nf_bridge_info_get(const struct sk_buff *skb)
+ {
+ 	return skb->nf_bridge;
+ }
++# endif
+ #endif
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
+diff --git a/configure b/configure
+index 74eece5..8aae8bf 100755
+--- a/configure
++++ b/configure
+@@ -470,6 +470,7 @@ kernel_check_config() {
+   kconfig CONFIG_NF_CONNTRACK_EVENTS	"natevents"
+   kconfig CONFIG_IPV6			"IPv6"
+   kconfig CONFIG_IP6_NF_IPTABLES	"ip6tables target"
++  kconfig CONFIG_BRIDGE_NETFILTER	"physdev override"
+ }
+ 
+ kernel_check_include() {
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index fe25655..064de6c 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -83,6 +83,11 @@
+ #if defined(CONFIG_NF_NAT_NEEDED) && LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39)
+ # include <net/netfilter/nf_conntrack_timestamp.h>
+ #endif
++#ifdef ENABLE_PHYSDEV_OVER
++# ifndef CONFIG_BRIDGE_NETFILTER
++#  undef ENABLE_PHYSDEV_OVER
++# endif
++#endif
+ 
+ #define IPT_NETFLOW_VERSION "2.4"   /* Note that if you are using git, you
+ 				       will see version in other format. */

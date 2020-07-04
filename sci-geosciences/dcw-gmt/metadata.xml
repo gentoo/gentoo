@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The Digital Chart of the World (DCW) is a comprehensive 1:1,000,000
+		scale vector basemap of the world. The charts were designed to meet
+		the needs of pilots and air crews in medium-and low-altitude
+		en route navigation and to support military operational planning,
+		intelligence briefings, and other needs. DCW-GMT is an enhancement
+		to DCW in a few ways: (1) it contains more state boundaries,
+		and (2) the data have been reformatted to save space and are
+		distributed as a single deflated netCDF-4 file.
+	</longdescription>
+</pkgmetadata>

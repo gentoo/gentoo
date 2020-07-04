@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="~alpha amd64 ppc x86"
 IUSE=""
 
 DEPEND="x11-libs/libX11
@@ -24,6 +24,6 @@ src_prepare() {
 }
 
 src_install() {
-	dobin src/peksystray || die
+	dobin src/peksystray
 	default
 }

@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/695918
+
+The patchs fixes build failure against texinfo-6.7+:
+```
+Malformed UTF-8 character: \xcb\xeb (unexpected non-continuation byte 0xeb, immediately after start byte 0xcb;
+need 2 bytes, got 1) in pattern match (m//) at /usr/share/texinfo/Texinfo/ParserNonXS.pm line 3364.
+Malformed UTF-8 character (fatal) at /usr/share/texinfo/Texinfo/ParserNonXS.pm line 3364.
+make[2]: *** [Makefile:472: a2ps.info] Error 25
+```
+
+Fixed-by: Neil Bothwick
+--- a/doc/a2ps.texi~	2019-11-24 18:51:07.000000000 +0000
++++ a/doc/a2ps.texi	2019-11-24 18:56:30.390438433 +0000
+@@ -1,5 +1,6 @@
+ \input texinfo @c -*- texinfo -*-
+ @c %**start of header
++@documentencoding ISO-8859-1
+ @setfilename a2ps.info
+ @settitle General Purpose PostScript Generating Utility
+ @c @setchapternewpage odd
+
+--- a/doc/regex.texi~	2002-03-04 18:46:24.000000000 +0000
++++ a/doc/regex.texi	2019-11-24 18:56:42.861052598 +0000
+@@ -1,5 +1,6 @@
+ \input texinfo
+ @c %**start of header
++@documentencoding ISO-8859-1
+ @setfilename regex.info
+ @settitle Regex
+ @c %**end of header
+
+--- a/ogonkify/doc/ogonkify.texi~	2007-12-29 02:09:38.000000000 +0000
++++ a/ogonkify/doc/ogonkify.texi	2019-11-24 18:57:03.173424149 +0000
+@@ -1,5 +1,6 @@
+ \input texinfo   @c -*-texinfo-*-
+ @c %**start of header
++@documentencoding ISO-8859-1
+ @setfilename ogonkify.info
+ @settitle Ogonkify
+ @setchapternewpage off

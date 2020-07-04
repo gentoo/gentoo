@@ -1,0 +1,153 @@
+Source/Upstream: Yes fixed in svn
+Reason: Fix build with poppler 0.83.0
+
+From b51c2bab4d57d685f96d427d6816bdd4ecfb4674 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Wed, 4 Dec 2019 05:51:19 +0000
+Subject: [PATCH] #15985: Fix failure to build against poppler 0.83.0
+
+git-svn-id: svn://scribus.net/trunk/Scribus@23395 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/plugins/import/pdf/importpdf.cpp     | 22 ++++++++++++++++++++
+ scribus/plugins/import/pdf/importpdfconfig.h |  6 ++++++
+ scribus/plugins/import/pdf/slaoutput.cpp     |  4 ++--
+ scribus/plugins/import/pdf/slaoutput.h       |  2 +-
+ 4 files changed, 31 insertions(+), 3 deletions(-)
+
+diff --git a/scribus/plugins/import/pdf/importpdf.cpp b/scribus/plugins/import/pdf/importpdf.cpp
+index 2ab38ac758..427cd66ef2 100644
+--- a/scribus/plugins/import/pdf/importpdf.cpp
++++ b/scribus/plugins/import/pdf/importpdf.cpp
+@@ -74,7 +74,11 @@ PdfPlug::PdfPlug(ScribusDoc* doc, int flags)
+ QImage PdfPlug::readThumbnail(const QString& fName)
+ {
+ 	QString pdfFile = QDir::toNativeSeparators(fName);
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(0, 83, 0)
++	globalParams.reset(new GlobalParams());
++#else
+ 	globalParams = new GlobalParams();
++#endif
+ 	if (globalParams)
+ 	{
+ #if defined(Q_OS_WIN32) && POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(0, 62, 0)
+@@ -89,7 +93,9 @@ QImage PdfPlug::readThumbnail(const QString& fName)
+ 			if (pdfDoc->getErrorCode() == errEncrypted)
+ 			{
+ 				delete pdfDoc;
++#if POPPLER_ENCODED_VERSION < POPPLER_VERSION_ENCODE(0, 83, 0)
+ 				delete globalParams;
++#endif
+ 				return QImage();
+ 			}
+ 			if (pdfDoc->isOk())
+@@ -133,11 +139,15 @@ QImage PdfPlug::readThumbnail(const QString& fName)
+ 				image.setText("YSize", QString("%1").arg(h));
+ 				delete dev;
+ 				delete pdfDoc;
++#if POPPLER_ENCODED_VERSION < POPPLER_VERSION_ENCODE(0, 83, 0)
+ 				delete globalParams;
++#endif
+ 				return image;
+ 			}
+ 			delete pdfDoc;
++#if POPPLER_ENCODED_VERSION < POPPLER_VERSION_ENCODE(0, 83, 0)
+ 			delete globalParams;
++#endif
+ 		}
+ 	}
+ 	return QImage();
+@@ -343,7 +353,11 @@ bool PdfPlug::convert(const QString& fn)
+ 		qApp->processEvents();
+ 	}
+ 
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(0, 83, 0)
++	globalParams.reset(new GlobalParams());
++#else
+ 	globalParams = new GlobalParams();
++#endif
+ 	GooString *userPW = nullptr;
+ 	if (globalParams)
+ 	{
+@@ -385,7 +399,9 @@ bool PdfPlug::convert(const QString& fn)
+ 					if (progressDialog)
+ 						progressDialog->close();
+ 					delete pdfDoc;
++#if POPPLER_ENCODED_VERSION < POPPLER_VERSION_ENCODE(0, 83, 0)
+ 					delete globalParams;
++#endif
+ 					return false;
+ 				}
+ 				if (progressDialog)
+@@ -430,7 +446,9 @@ bool PdfPlug::convert(const QString& fn)
+ 							progressDialog->close();
+ 						delete optImp;
+ 						delete pdfDoc;
++#if POPPLER_ENCODED_VERSION < POPPLER_VERSION_ENCODE(0, 83, 0)
+ 						delete globalParams;
++#endif
+ 						return false;
+ 					}
+ 					pageString = optImp->getPagesString();
+@@ -843,8 +861,12 @@ bool PdfPlug::convert(const QString& fn)
+ 		}
+ 		delete pdfDoc;
+ 	}
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(0, 83, 0)
++	globalParams.release();
++#else
+ 	delete globalParams;
+ 	globalParams = nullptr;
++#endif
+ 
+ //	qDebug() << "converting finished";
+ //	qDebug() << "Imported" << Elements.count() << "Elements";
+diff --git a/scribus/plugins/import/pdf/importpdfconfig.h b/scribus/plugins/import/pdf/importpdfconfig.h
+index 9913ee382c..5a7e0d2162 100644
+--- a/scribus/plugins/import/pdf/importpdfconfig.h
++++ b/scribus/plugins/import/pdf/importpdfconfig.h
+@@ -58,4 +58,10 @@ for which a new license (GPL+exception) is in place.
+ #define POPPLER_CONST_082
+ #endif
+ 
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(0, 83, 0)
++#define POPPLER_CONST_083 const
++#else
++#define POPPLER_CONST_083
++#endif
++
+ #endif
+diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
+index 5e4d32a551..ffcfa8450b 100644
+--- a/scribus/plugins/import/pdf/slaoutput.cpp
++++ b/scribus/plugins/import/pdf/slaoutput.cpp
+@@ -3678,7 +3678,7 @@ QString SlaOutputDev::getAnnotationColor(const AnnotColor *color)
+ 	return fNam;
+ }
+ 
+-QString SlaOutputDev::convertPath(GfxPath *path)
++QString SlaOutputDev::convertPath(POPPLER_CONST_083 GfxPath *path)
+ {
+ 	if (! path)
+ 		return QString();
+@@ -3688,7 +3688,7 @@ QString SlaOutputDev::convertPath(GfxPath *path)
+ 
+ 	for (int i = 0; i < path->getNumSubpaths(); ++i)
+ 	{
+-		GfxSubpath * subpath = path->getSubpath(i);
++		POPPLER_CONST_083 GfxSubpath * subpath = path->getSubpath(i);
+ 		if (subpath->getNumPoints() > 0)
+ 		{
+ 			output += QString("M %1 %2").arg(subpath->getX(0)).arg(subpath->getY(0));
+diff --git a/scribus/plugins/import/pdf/slaoutput.h b/scribus/plugins/import/pdf/slaoutput.h
+index 60fb900618..d928fada81 100644
+--- a/scribus/plugins/import/pdf/slaoutput.h
++++ b/scribus/plugins/import/pdf/slaoutput.h
+@@ -282,7 +282,7 @@ class SlaOutputDev : public OutputDev
+ 	void getPenState(GfxState *state);
+ 	QString getColor(GfxColorSpace *color_space, POPPLER_CONST_070 GfxColor *color, int *shade);
+ 	QString getAnnotationColor(const AnnotColor *color);
+-	QString convertPath(GfxPath *path);
++	QString convertPath(POPPLER_CONST_083 GfxPath *path);
+ 	int getBlendMode(GfxState *state);
+ 	void applyMask(PageItem *ite);
+ 	void pushGroup(const QString& maskName = "", GBool forSoftMask = gFalse, GBool alpha = gFalse, bool inverted = false);

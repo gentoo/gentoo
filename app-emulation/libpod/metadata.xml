@@ -19,8 +19,9 @@
 			Enables dependencies for the "btrfs" graph driver, including
 			necessary kernel flags.
 		</flag>
-		<flag name="ostree">
-			Enables dependencies for handling of OSTree images.
+		<flag name="fuse">
+			Enables fuse dependencies (fuse-overlayfs is especially useful
+			for rootless mode).
 		</flag>
 		<flag name="rootless">
 			Enables dependencies for running in rootless mode.

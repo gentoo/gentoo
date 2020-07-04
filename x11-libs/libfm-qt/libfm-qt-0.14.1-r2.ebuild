@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Qt port of libfm, a library providing components to build desktop file managers"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3

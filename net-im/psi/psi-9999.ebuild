@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
+PLOCALES="be bg ca cs de el en eo es et fa fi fr he hu it ja kk mk nl pl pt_BR pt ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n git-r3 qmake-utils xdg
+inherit git-r3 cmake l10n qmake-utils xdg
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
@@ -20,13 +20,11 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets sql webengine webkit whiteboarding xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
 	iconsets? ( extras )
-	sql? ( extras )
-	webengine? ( !webkit )
 "
 
 BDEPEND="
@@ -43,28 +41,30 @@ DEPEND="
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	net-dns/libidn:0
+	net-libs/http-parser:=
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
 	x11-libs/libxcb
 	aspell? ( app-text/aspell )
 	dbus? ( dev-qt/qtdbus:5 )
-	enchant? ( >=app-text/enchant-1.3.0 )
+	enchant? ( app-text/enchant:2 )
 	hunspell? ( app-text/hunspell:= )
+	keyring? ( dev-libs/qtkeychain:= )
 	webengine? (
 		dev-qt/qtwebchannel:5
 		dev-qt/qtwebengine:5[widgets]
 		net-libs/http-parser
 	)
 	webkit? ( dev-qt/qtwebkit:5 )
-	whiteboarding? ( dev-qt/qtsvg:5 )
-	xscreensaver? ( x11-libs/libXScrnSaver )
 "
 RDEPEND="${DEPEND}
 	dev-qt/qtimageformats
+	crypt? ( app-crypt/qca[gpg] )
 "
 
 RESTRICT="test iconsets? ( bindist )"
@@ -83,6 +83,8 @@ pkg_setup() {
 			ewarn "and has not clear licensing."
 			ewarn "Possibly this build is not redistributable in some countries."
 		fi
+
+		EGIT_REPO_URI="${PSI_PLUS_URI}/${MY_PN}-snapshots.git"
 	fi
 }
 
@@ -95,75 +97,48 @@ src_unpack() {
 	EGIT_CHECKOUT_DIR="${WORKDIR}/psi-l10n"
 	git-r3_src_unpack
 
-	if use extras; then
+	if use iconsets; then
 		unset EGIT_BRANCH EGIT_COMMIT
-		EGIT_CHECKOUT_DIR="${WORKDIR}/psi-plus" \
-		EGIT_REPO_URI="${PSI_PLUS_URI}/main.git" \
+		EGIT_CHECKOUT_DIR="${WORKDIR}/resources" \
+		EGIT_REPO_URI="${PSI_URI}/resources.git" \
 		git-r3_src_unpack
-
-		if use iconsets; then
-			unset EGIT_BRANCH EGIT_COMMIT
-			EGIT_CHECKOUT_DIR="${WORKDIR}/resources" \
-			EGIT_REPO_URI="${PSI_PLUS_URI}/resources.git" \
-			git-r3_src_unpack
-		fi
 	fi
 }
 
 src_prepare() {
-	default
-	if use extras; then
-		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die "failed to copy iconsets"
-		if use iconsets; then
-			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die "failed to copy additional iconsets"
-		fi
-
-		eapply "${WORKDIR}/psi-plus/patches"/*.diff
-		use sql && eapply "${WORKDIR}/psi-plus/patches/dev/psi-new-history.patch"
-
-		vergen="${WORKDIR}/psi-plus/admin/psi-plus-nightly-version"
-		features="$(use webkit && echo '--webkit') $(use webengine && echo '--webengine') $(use sql && echo '--sql')"
-		NIGHTLY_VER=$("${vergen}" ./ $features)
-		elog "Prepared version: ${NIGHTLY_VER}"
-		echo "${NIGHTLY_VER}" > version || die "Failed to write version file"
-
-		qconf || die "Failed to create ./configure."
+	cmake_src_prepare
+	if use iconsets; then
+		cp -a "${WORKDIR}/resources/iconsets" "${S}" || die "failed to copy additional iconsets"
 	fi
 }
 
 src_configure() {
-	CONF=(
-		--prefix="${EPREFIX}"/usr
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		--no-separate-debug-info
-		--qtdir="$(qt5_get_bindir)/.."
-		$(use_enable aspell)
-		$(use_enable dbus qdbus)
-		$(use_enable enchant)
-		$(use_enable hunspell)
-		$(use_enable xscreensaver xss)
-		$(use_enable whiteboarding)
+	local chattype=basic
+	use webengine && chattype=webengine
+	use webkit && chattype=webkit
+
+	local mycmakeargs=(
+		-DPRODUCTION=OFF
+		-DUSE_ASPELL=$(usex aspell)
+		-DUSE_ENCHANT=$(usex enchant)
+		-DUSE_HUNSPELL=$(usex hunspell)
+		-DUSE_DBUS=$(usex dbus)
+		-DINSTALL_PLUGINS_SDK=1
+		-DUSE_KEYCHAIN=$(usex keyring)
+		-DCHAT_TYPE=$chattype
+		-DUSE_XSS=$(usex xscreensaver)
+		-DPSI_PLUS=$(usex extras)
 	)
-
-	use debug && CONF+=("--debug")
-	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
-	use webkit && CONF+=("--enable-webkit" "--with-webkit=qtwebkit")
-
-	# This may generate warnings if passed option already matches with default.
-	# Just ignore them. It's how qconf-based configure works and will be fixed in
-	# future qconf versions.
-	./configure "${CONF[@]}" || die "configure failed"
-
-	eqmake5 psi.pro
+	cmake_src_configure
 }
 
 src_compile() {
-	emake
+	cmake_src_compile
 	use doc && emake -C doc api_public
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}" install
+	cmake_src_install
 
 	# this way the docs will be installed in the standard gentoo dir
 	rm "${ED}"/usr/share/${MY_PN}/{COPYING,README.html} || die "doc files set seems to have changed"

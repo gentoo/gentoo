@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 
 # No tests on x86 because tests require dev-db/mongodb which don't support
 # x86 anymore (bug #645994)
-RESTRICT="x86? ( test )"
+RESTRICT="!test? ( test ) x86? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.11.0-enable-tests.patch" # enable tests without libbson

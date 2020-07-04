@@ -1,0 +1,31 @@
+From 5559e0205c7fbf2f4a321a978249a41c1d073278 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 21 Feb 2020 19:03:29 +0100
+Subject: [PATCH] Skip broken test on PyPy3
+
+---
+ test/test_exceptions.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/test/test_exceptions.py b/test/test_exceptions.py
+index 2ec46cf..6a30b48 100644
+--- a/test/test_exceptions.py
++++ b/test/test_exceptions.py
+@@ -1,5 +1,6 @@
+ # -*- coding: utf-8 -*-
+ import sys
++import unittest
+ 
+ from mako import compat
+ from mako import exceptions
+@@ -429,6 +430,7 @@ ${foo()}
+         else:
+             assert False
+ 
++    @unittest.skipIf(hasattr(sys, 'pypy_version_info'), 'Broken on pypy3')
+     def test_alternating_file_names(self):
+         l = TemplateLookup()
+         l.put_string(
+-- 
+2.25.1
+

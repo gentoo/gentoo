@@ -1,0 +1,42 @@
+--- a/Makefile
++++ b/Makefile
+@@ -59,7 +59,7 @@
+ 	#ELF (works):
+ 	# $(CC) -Wl,-r -nostdlib -o $@ $^
+ 	#a.out (works):
+-	ar -rc $@ $^
++	$(AR) -rc $@ $^
+ 
+ install: installbin
+ 	chown root $(BINDIR)/fmdrv
+--- a/Makefile.sets
++++ b/Makefile.sets
+@@ -1,22 +1,18 @@
+ INSTALL=install
+-CC=gcc
+-CXX=g++
+ 
+-CPP=$(CC)
+-LDFLAGS=-g
+ #LDLIBS=-lstdc++
+ 
+-CWARNINGS=-Wall -W -pipe -g \
++CWARNINGS=-Wall -W \
+     -Wundef \
+-    -Wcast-qual -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+-    -Wmissing-prototypes -Winline
++    -Wcast-qual -Wcast-align -Wwrite-strings \
++    -Winline
+ #   -Wtraditional  -fmessage-length=128
+ 
+-CXXFLAGS=-pedantic -ffast-math $(CWARNINGS)
++CXXFLAGS+=-pedantic $(CWARNINGS)
+ #CFLAGS=-O3 -fomit-frame-pointer -ffast-math $(CWARNINGS)
+-CFLAGS=-O -g $(CWARNINGS)
++CFLAGS+=$(CWARNINGS) -Wstrict-prototypes -Wmissing-prototypes
+ 
+-CPPFLAGS=-DVERSION=\"$(VERSION)\" \
++CPPFLAGS+=-DVERSION=\"$(VERSION)\" \
+          -DCONFIG=\"$(CFGDIR)/$(CFGFILE)\" \
+          -DBINDIR=\"$(BINDIR)\" $(DEFS)
+ 

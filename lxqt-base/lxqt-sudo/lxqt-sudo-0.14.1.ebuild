@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQt GUI frontend for sudo"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3

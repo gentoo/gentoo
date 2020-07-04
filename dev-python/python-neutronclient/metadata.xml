@@ -9,9 +9,6 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
-  <longdescription lang="en">
-    CLI and python client library for OpenStack Neutron
-  </longdescription>
   <upstream>
     <remote-id type="pypi">python-neutronclient</remote-id>
     <remote-id type="launchpad">neutron</remote-id>

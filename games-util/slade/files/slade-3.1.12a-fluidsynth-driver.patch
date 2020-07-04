@@ -1,0 +1,14 @@
+https://github.com/sirjuddington/SLADE/issues/1147
+
+diff -Naur a/src/Audio/MIDIPlayer.cpp b/src/Audio/MIDIPlayer.cpp
+--- a/src/Audio/MIDIPlayer.cpp	2020-05-28 00:08:34.000000000 +0100
++++ b/src/Audio/MIDIPlayer.cpp	2020-05-31 21:40:03.480211253 +0100
+@@ -74,8 +74,6 @@
+ #ifndef NO_FLUIDSYNTH
+ 	// Set fluidsynth driver to alsa in linux (no idea why it defaults to jack)
+ #if !defined __WXMSW__ && !defined __WXOSX__
+-	if (fs_driver == "")
+-		fs_driver = "alsa";
+ #endif // !defined __WXMSW__ && !defined __WXOSX__
+ 
+ 	// Init soundfont path

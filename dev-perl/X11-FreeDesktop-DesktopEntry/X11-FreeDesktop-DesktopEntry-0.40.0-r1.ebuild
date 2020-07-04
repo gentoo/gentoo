@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="An interface to Freedesktop.org .desktop files"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc x86"
+KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE=""
 
 SRC_TEST="do"

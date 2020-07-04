@@ -14,9 +14,6 @@
 			Enables dependencies for the "devicemapper" graph driver, including
 			necessary kernel flags.
 		</flag>
-		<flag name="ostree">
-			Enables dependencies for handling of OSTree images.
-		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">containers/storage</remote-id>

@@ -1,0 +1,28 @@
+From b8dc49c87f29fa875bd24fe47c741d11962a33b6 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 4 Apr 2020 14:11:25 -0400
+Subject: [PATCH] test.support.unlink: ignore EACCES
+
+Resolves test errors when running in the Gentoo sandbox environment.
+
+Bug: https://bugs.gentoo.org/679628
+---
+ Lib/test/support/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Lib/test/support/__init__.py b/Lib/test/support/__init__.py
+index ccc11c1b4b0..d47bdebda5c 100644
+--- a/Lib/test/support/__init__.py
++++ b/Lib/test/support/__init__.py
+@@ -291,7 +291,7 @@ def unlink(filename):
+     try:
+         _unlink(filename)
+     except OSError as exc:
+-        if exc.errno not in (errno.ENOENT, errno.ENOTDIR):
++        if exc.errno not in (errno.ENOENT, errno.ENOTDIR, errno.EACCES):
+             raise
+ 
+ def rmdir(dirname):
+-- 
+2.26.0
+

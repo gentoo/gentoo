@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # emacs support disabled due to #99533 #335900
@@ -14,7 +14,7 @@ SRC_URI="https://www.nico.schottelius.org/software/${PN}/archives/${P}.tar.lzma
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 IUSE="selinux static-libs"
 
 RDEPEND=">=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}]
@@ -34,6 +34,9 @@ src_prepare() {
 
 	# bug #629774
 	epatch "${FILESDIR}"/${P}-glibc-2.26.patch
+
+	# bug #705878
+	epatch "${FILESDIR}"/${P}-gcc-10.patch
 
 	epatch_user
 

@@ -1,14 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
-DESCRIPTION="VDR plugin: Control the vol level of diff controls of your sound-
-card according to the settings of VDR"
+DESCRIPTION="VDR plugin: Control the vol level of diff controls of your soundcard"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-sndctl"
-SRC_URI="http://www.vdr-portal.de/board/attachment.php?attachmentid=25497 -> ${P}.tar.gz"
+SRC_URI="http://vdr.websitec.de/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

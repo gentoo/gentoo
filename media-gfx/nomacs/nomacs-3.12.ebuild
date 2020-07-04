@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt-based image viewer"
 HOMEPAGE="https://nomacs.org/"
@@ -57,7 +57,7 @@ src_configure() {
 		-DENABLE_TIFF=$(usex tiff)
 		-DENABLE_QUAZIP=$(usex zip)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

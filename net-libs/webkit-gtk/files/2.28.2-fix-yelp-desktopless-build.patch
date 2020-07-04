@@ -1,0 +1,53 @@
+From 9cd4011a12bf658aad3776251792bacdc894643a Mon Sep 17 00:00:00 2001
+From: "berto@igalia.com"
+ <berto@igalia.com@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
+Date: Mon, 27 Apr 2020 11:52:10 +0000
+Subject: [PATCH] [GTK] [2.28.0] The Yelp build crashes if DISPLAY is not set
+ https://bugs.webkit.org/show_bug.cgi?id=209431
+
+Reviewed by Carlos Garcia Campos.
+
+Don't create a PlatformDisplayLibWPE as a fallback when using
+Wayland or X11.
+
+* platform/graphics/PlatformDisplay.cpp:
+(WebCore::PlatformDisplay::createPlatformDisplay):
+
+git-svn-id: https://svn.webkit.org/repository/webkit/trunk@260750 268f45cc-cd09-0410-ab3c-d52691b4dbfc
+---
+ Source/WebCore/platform/graphics/PlatformDisplay.cpp | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Source/WebCore/platform/graphics/PlatformDisplay.cpp b/Source/WebCore/platform/graphics/PlatformDisplay.cpp
+index 8bb47ca2b77..f9547b3af69 100644
+--- a/Source/WebCore/platform/graphics/PlatformDisplay.cpp
++++ b/Source/WebCore/platform/graphics/PlatformDisplay.cpp
+@@ -98,12 +98,6 @@ std::unique_ptr<PlatformDisplay> PlatformDisplay::createPlatformDisplay()
+     }
+ #endif // PLATFORM(GTK)
+ 
+-#if USE(WPE_RENDERER)
+-    return PlatformDisplayLibWPE::create();
+-#elif PLATFORM(WIN)
+-    return PlatformDisplayWin::create();
+-#endif
+-
+ #if PLATFORM(WAYLAND)
+     if (auto platformDisplay = PlatformDisplayWayland::create())
+         return platformDisplay;
+@@ -121,6 +115,12 @@ std::unique_ptr<PlatformDisplay> PlatformDisplay::createPlatformDisplay()
+     return PlatformDisplayX11::create(nullptr);
+ #endif
+ 
++#if USE(WPE_RENDERER)
++    return PlatformDisplayLibWPE::create();
++#elif PLATFORM(WIN)
++    return PlatformDisplayWin::create();
++#endif
++
+     RELEASE_ASSERT_NOT_REACHED();
+ }
+ 
+-- 
+2.20.1
+

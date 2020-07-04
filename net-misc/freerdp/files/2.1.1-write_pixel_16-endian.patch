@@ -1,0 +1,23 @@
+From 733026dada313cf345c3e3664cfe5790519e9fae Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 8 Jun 2020 07:09:07 +0200
+Subject: [PATCH] Fixed #6267: adjust write_pixel_16 endian handling
+
+---
+ libfreerdp/codec/interleaved.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libfreerdp/codec/interleaved.c b/libfreerdp/codec/interleaved.c
+index e9f92c7009..b76fe1ca3c 100644
+--- a/libfreerdp/codec/interleaved.c
++++ b/libfreerdp/codec/interleaved.c
+@@ -232,7 +232,8 @@ static INLINE void write_pixel_24(BYTE* _buf, UINT32 _pix)
+ 
+ static INLINE void write_pixel_16(BYTE* _buf, UINT16 _pix)
+ {
+-	*(UINT16*)_buf = _pix;
++	_buf[0] = _pix & 0xFF;
++	_buf[1] = (_pix >> 8) & 0xFF;
+ }
+ 
+ #undef DESTWRITEPIXEL

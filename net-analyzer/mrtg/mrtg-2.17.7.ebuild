@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,11 +6,11 @@ inherit multilib
 
 DESCRIPTION="A tool to monitor the traffic load on network-links"
 HOMEPAGE="https://oss.oetiker.ch/mrtg/"
-SRC_URI="${HOMEPAGE}pub/${P}.tar.gz"
+SRC_URI="https://oss.oetiker.ch/mrtg/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ppc ppc64 sparc x86"
 IUSE="selinux"
 
 DEPEND="
@@ -37,7 +37,7 @@ src_prepare() {
 	default
 }
 
-src_install () {
+src_install() {
 	keepdir /var/lib/mrtg
 
 	default

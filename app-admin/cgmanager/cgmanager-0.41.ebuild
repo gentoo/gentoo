@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE="pam selinux"
 
 RDEPEND="sys-libs/libnih[dbus]
@@ -38,7 +38,7 @@ src_configure() {
 		--with-init-script=systemd
 }
 
-src_install () {
+src_install() {
 	default
 
 	# I see no reason to have the tests in the filesystem. Drop them

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ HOMEPAGE="http://libsigc.sourceforge.net/"
 
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="1.2"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="sys-devel/m4"

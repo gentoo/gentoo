@@ -1,10 +1,11 @@
-Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (12 Feb 2012)
+support for DMH_ARCHIVE in makefile
 
-diff -Naur burn-0.2.0.orig/Makefile burn-0.2.0/Makefile
---- burn-0.2.0.orig/Makefile	2012-02-12 20:21:08.000000000 +0100
-+++ burn-0.2.0/Makefile	2012-02-12 20:24:33.000000000 +0100
-@@ -9,6 +9,9 @@
- #
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> (12 Dec 2019)
+diff -Naur burn-0.2.2.orig/Makefile burn-0.2.2/Makefile
+--- burn-0.2.2.orig/Makefile	2019-12-12 21:01:38.000000000 +0100
++++ burn-0.2.2/Makefile	2019-12-12 21:02:43.000000000 +0100
+@@ -12,6 +12,9 @@
+ 
  PLUGIN = burn
  
 +# Enable DMH Archive

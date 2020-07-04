@@ -12,4 +12,7 @@
 <use>
 	<flag name="standalone">Build standalone version that survives all Portage bugs</flag>
 </use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:gnu:texinfo</remote-id>
+</upstream>
 </pkgmetadata>

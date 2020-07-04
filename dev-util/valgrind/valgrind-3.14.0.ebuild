@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SLOT="0"
 IUSE="mpi"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://sourceware.org/git/${PN}.git/"
+	EGIT_REPO_URI="https://sourceware.org/git/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="ftp://sourceware.org/pub/valgrind/${P}.tar.bz2"

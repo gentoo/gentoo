@@ -1,0 +1,48 @@
+From 70e9d2728a4928dd2aeb170935d966e934315cf4 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Fri, 17 Apr 2020 15:52:15 +0200
+Subject: Adapt to changes in KBookmarks >= 5.69
+
+Test Plan:
+The Bookmarks menu is still added as expected and the actions still show
+in the configure shortcuts dialog. I couldn't test actually creating a
+bookmark as I have no access to remote servers.
+
+Reviewers: cfeck, uwolfer, murrant
+
+Reviewed By: cfeck
+
+Differential Revision: https://phabricator.kde.org/D28920
+---
+ bookmarkmanager.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/bookmarkmanager.cpp b/bookmarkmanager.cpp
+index 47ac779..a34cb2c 100644
+--- a/bookmarkmanager.cpp
++++ b/bookmarkmanager.cpp
+@@ -25,6 +25,7 @@
+ #include "mainwindow.h"
+ #include "krdc_debug.h"
+ 
++#include <kbookmarks_version.h>
+ #include <KBookmarks/KBookmarkOwner>
+ #include <KLocalizedString>
+ 
+@@ -41,7 +42,13 @@ BookmarkManager::BookmarkManager(KActionCollection *collection, QMenu *menu, Mai
+ 
+     m_manager = KBookmarkManager::managerForFile(file, QLatin1String("krdc"));
+     m_manager->setUpdate(true);
++
++#if KBOOKMARKS_VERSION < QT_VERSION_CHECK(5, 69, 0)
+     m_bookmarkMenu = new KBookmarkMenu(m_manager, this, menu, collection);
++#else
++    m_bookmarkMenu = new KBookmarkMenu(m_manager, this, menu);
++    collection->addActions(menu->actions());
++#endif
+ 
+     KBookmarkGroup root = m_manager->root();
+     KBookmark bm = root.first();
+-- 
+cgit v1.1
+

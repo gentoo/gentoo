@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # people who were here:
@@ -58,8 +58,7 @@ v_echo() {
 cvsver="$Id$" # TODO: FIXME for Git era
 cvsver=${cvsver##*,v }
 cvsver=${cvsver%%Exp*}
-cvsyear=${cvsver#* }
-cvsyear=${cvsyear%%/*}
+file_copyright=$(sed -n '/Copyright/!b;s/^# *//;p;q' $0)
 
 usage() {
 	echo -e "Usage: ${HILITE}${0##*/}${NORMAL} ${GOOD}[options]${NORMAL}"
@@ -67,9 +66,10 @@ usage() {
 	echo -e "  ${GOOD}--fetchonly (-f)${NORMAL} Just download all the source files"
 	echo -e "  ${GOOD}--info (-i)${NORMAL}      Show system related information"
 	echo -e "  ${GOOD}--pretend (-p)${NORMAL}   Display the packages that will be merged"
-	echo -e "  ${GOOD}--quiet (-q)${NORMAL}     Reduced or condensed output from portage's displays."
+	echo -e "  ${GOOD}--quiet (-q)${NORMAL}     Reduced or condensed output from portage"
 	echo -e "  ${GOOD}--tree (-t)${NORMAL}      Display the dependency tree, forces -p"
 	echo -e "  ${GOOD}--resume (-r)${NORMAL}    Build/use binary packages"
+	echo -e "  ${GOOD}--verbose (-v)${NORMAL}   Verbose output from portage"
 }
 
 STRAP_EMERGE_OPTS="--oneshot"
@@ -92,7 +92,7 @@ for opt in "$@" ; do
 		--quiet|-q)   STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} -q"     ; unset STRAP_RUN ;;
 		--tree|-t)    STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} -p -t"  ; unset STRAP_RUN ;;
 		--resume|-r)  STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} --usepkg --buildpkg";;
-		--verbose|-v) STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} -v"; V_ECHO=v_echo;;
+		--verbose|-v) STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} -v"     ; V_ECHO=v_echo;;
 		--version|-V)
 			einfo "Gentoo Linux bootstrap ${cvsver}"
 			exit 0
@@ -137,7 +137,7 @@ if [[ ! -d ${MYPROFILEDIR} ]] ; then
 fi
 
 echo -e "\n${GOOD}Gentoo Linux; ${BRACKET}http://www.gentoo.org/${NORMAL}"
-echo -e "Copyright 1999-${cvsyear} Gentoo Foundation; Distributed under the GPLv2"
+echo -e "${file_copyright}; Distributed under the GPLv2"
 if [[ " ${STRAP_EMERGE_OPTS} " == *" -f "* ]] ; then
 	echo "Fetching all bootstrap-related archives ..."
 elif [[ -n ${STRAP_RUN} ]] ; then
@@ -238,9 +238,6 @@ for opt in ${ORIGUSE} ; do
 			fi
 			USE_NPTL=1
 			;;
-		nptlonly)
-			USE_NPTLONLY=1
-			;;
 		multilib)
 			ALLOWED_USE="${ALLOWED_USE} multilib"
 			;;
@@ -258,37 +255,37 @@ done
 
 eval $(pycmd '
 import portage
+from portage.dbapi._expand_new_virt import expand_new_virt
 import sys
+root = portage.settings["EROOT"]
 for atom in portage.settings.packages:
 	if not isinstance(atom, portage.dep.Atom):
 		atom = portage.dep.Atom(atom.lstrip("*"))
 	varname = "my" + portage.catsplit(atom.cp)[1].upper().replace("-", "_")
+	atom = list(expand_new_virt(portage.db[root]["vartree"].dbapi, atom))[0]
 	sys.stdout.write("%s=\"%s\"; " % (varname, atom))
 ')
 
 # This stuff should never fail but will if not enough is installed.
 [[ -z ${myBASELAYOUT} ]] && myBASELAYOUT=">=$(portageq best_version / sys-apps/baselayout)"
-[[ -z ${myPORTAGE}    ]] && myPORTAGE="portage"
-[[ -z ${myBINUTILS}   ]] && myBINUTILS="binutils"
-[[ -z ${myGCC}        ]] && myGCC="gcc"
-[[ -z ${myGETTEXT}    ]] && myGETTEXT="gettext"
+[[ -z ${myPORTAGE}    ]] && myPORTAGE="sys-apps/portage"
+[[ -z ${myBINUTILS}   ]] && myBINUTILS="sys-devel/binutils"
+[[ -z ${myGCC}        ]] && myGCC="sys-devel/gcc"
+[[ -z ${myGETTEXT}    ]] && myGETTEXT="sys-devel/gettext"
 [[ -z ${myLIBC}       ]] && myLIBC="$(portageq expand_virtual / virtual/libc)"
 [[ -z ${myTEXINFO}    ]] && myTEXINFO="sys-apps/texinfo"
-[[ -z ${myZLIB}       ]] && myZLIB="zlib"
-[[ -z ${myNCURSES}    ]] && myNCURSES="ncurses"
+[[ -z ${myZLIB}       ]] && myZLIB="sys-libs/zlib"
+[[ -z ${myNCURSES}    ]] && myNCURSES="sys-libs/ncurses"
 
 # Do we really want gettext/nls?
 [[ ${USE_NLS} != 1 ]] && myGETTEXT=
 
-# Do we really have no 2.4.x nptl kernels in portage?
 if [[ ${USE_NPTL} = "1" ]] ; then
 	myOS_HEADERS="$(portageq best_visible / '>=sys-kernel/linux-headers-2.6.0')"
 	[[ -n ${myOS_HEADERS} ]] && myOS_HEADERS=">=${myOS_HEADERS}"
 	ALLOWED_USE="${ALLOWED_USE} nptl"
-	# Should we build with nptl only?
-	[[ ${USE_NPTLONLY} = "1" ]] && ALLOWED_USE="${ALLOWED_USE} nptlonly"
 fi
-[[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="virtual/os-headers"
+[[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="$(portageq expand_virtual / virtual/os-headers)"
 
 einfo "Using baselayout : ${myBASELAYOUT}"
 einfo "Using portage    : ${myPORTAGE}"
@@ -308,7 +305,7 @@ echo ---------------------------------------------------------------------------
 [[ -x /usr/bin/gcc-config  ]] && GCC_CONFIG="/usr/bin/gcc-config"
 
 # Allow portage to overwrite stuff
-export CONFIG_PROTECT="-*"
+[[ $CONFIG_PROTECT != "-*"* ]] && export CONFIG_PROTECT="-*"
 
 # disable collision-protection
 export FEATURES="${FEATURES} -collision-protect"
@@ -330,14 +327,15 @@ export USE="-* bootstrap ${ALLOWED_USE} ${BOOTSTRAP_USE}"
 if [ ${BOOTSTRAP_STAGE} -le 2 ] ; then
 	show_status 3 Emerging packages
 	if [[ ${RESUME} -eq 1 ]] ; then
+		STRAP_EMERGE_POSARGS=""
 		STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} --resume"
 		cp /var/run/bootstrap-mtimedb /var/cache/edb
 	else
-		STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} \
+		STRAP_EMERGE_POSARGS="\
 			${myOS_HEADERS} ${myTEXINFO} ${myGETTEXT} ${myBINUTILS} \
 			${myGCC} ${myLIBC} ${myBASELAYOUT} ${myZLIB}"
 	fi
-	${V_ECHO} emerge ${STRAP_EMERGE_OPTS} || cleanup 1
+	${V_ECHO} emerge ${STRAP_EMERGE_OPTS} ${STRAP_EMERGE_POSARGS} || cleanup 1
 	echo -------------------------------------------------------------------------------
 	set_bootstrap_stage 3
 fi
@@ -347,7 +345,7 @@ if [[ -n ${STRAP_RUN} ]] ; then
 	if [[ -x ${GCC_CONFIG} ]] && ${GCC_CONFIG} --get-current-profile &>/dev/null
 	then
 		# Make sure we get the old gcc unmerged ...
-		emerge --prune sys-devel/gcc || cleanup 1
+		${V_ECHO} emerge ${STRAP_EMERGE_OPTS} --prune sys-devel/gcc || cleanup 1
 		# Make sure the profile and /lib/cpp and /usr/bin/cc are valid ...
 		${GCC_CONFIG} "$(${GCC_CONFIG} --get-current-profile)" &>/dev/null
 	fi
@@ -357,7 +355,7 @@ if [[ -n ${STRAP_RUN} ]] ; then
 	echo -------------------------------------------------------------------------------
 	einfo "Please note that you should now add the '-e' option for emerge system:"
 	echo
-	einfo "  # emerge -e system"
+	einfo "  # emerge <other_opts> -e @system"
 	echo
 fi
 

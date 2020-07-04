@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ src_compile() {
 	emake -Cprograms CC="$(tc-getCC)" lz5
 }
 
-src_install(){
+src_install() {
 	emake install DESTDIR="${D}" PREFIX="/usr" LIBDIR="/usr/$(get_libdir)"
 	if ! use static-libs; then
 		rm "${D}"/usr/$(get_libdir)/liblz5.a || die

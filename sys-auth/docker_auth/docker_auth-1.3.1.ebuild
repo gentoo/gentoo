@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Docker Registry 2 authentication server"
 HOMEPAGE="https://github.com/cesanta/docker_auth"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT ZLIB"
 SLOT="0"
 IUSE=""
 

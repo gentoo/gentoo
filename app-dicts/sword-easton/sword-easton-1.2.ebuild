@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Easton's Bible Dictionary"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Easton"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

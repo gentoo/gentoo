@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ppc ~ppc64 x86 ~x86-linux"
 IUSE="+doc +perl"
 
 RDEPEND="
@@ -27,6 +27,10 @@ DEPEND="
 		>=app-text/docbook2X-0.8.8-r2
 		app-text/docbook-xml-dtd:4.4
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.63-respect-env.patch
+)
 
 src_prepare() {
 	# don't build manpages

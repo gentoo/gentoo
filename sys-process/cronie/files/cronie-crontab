@@ -4,7 +4,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=root
 HOME=/
 
-# For details see man 4 crontabs
+# For details see man 5 crontab
 
 # Example of job definition:
 # .---------------- minute (0 - 59)

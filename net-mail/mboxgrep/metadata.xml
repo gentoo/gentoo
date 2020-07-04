@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+<use>
+<flag name='dmalloc'>Enable debugging using <pkg>dev-libs/dmalloc</pkg></flag>
+</use>
 	<upstream>
 		<remote-id type="sourceforge">mboxgrep</remote-id>
 	</upstream>

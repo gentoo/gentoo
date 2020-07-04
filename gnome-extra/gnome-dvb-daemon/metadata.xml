@@ -10,7 +10,4 @@
 	DVB devices, record and watch TV shows and browse EPG.	It can be controlled 
 	by any application via its D-Bus interface.
 </longdescription>
-<use>
-	<flag name="totem">Build a plugin for <pkg>media-video/totem</pkg></flag>
-</use>
 </pkgmetadata>

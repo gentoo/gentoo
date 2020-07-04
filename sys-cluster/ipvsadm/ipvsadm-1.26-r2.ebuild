@@ -11,7 +11,7 @@ SRC_URI="http://www.linuxvirtualserver.org/software/kernel-2.6/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 s390 sparc x86"
 IUSE="static-libs"
 
 RDEPEND=">=sys-libs/ncurses-5.2

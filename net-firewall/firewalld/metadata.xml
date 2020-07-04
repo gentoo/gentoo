@@ -6,6 +6,7 @@
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
-		<flag name="gui">Builds and installs GUI configurator and GTK+ applet</flag>
+		<flag name="nftables">Add support for <pkg>net-firewall/nftables</pkg> as firewall backend</flag>
+		<flag name="iptables">Add support for <pkg>net-firewall/nftables</pkg> as firewall backend</flag>
 	</use>
 </pkgmetadata>

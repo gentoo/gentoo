@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils multilib-minimal versionator
+inherit autotools eutils ltprune multilib-minimal versionator
 
 MY_MAJ=$(get_version_component_range 1-2)
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/sidplay2/${P/_p/-p}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc sparc x86"
 IUSE="static-libs"
 
 S=${WORKDIR}/${PN}-${MY_MAJ}
@@ -34,7 +34,6 @@ src_prepare() {
 multilib_src_configure() {
 	econf \
 		$(use_enable static-libs static) \
-		--disable-dependency-tracking \
 		--enable-resid-install \
 		--enable-shared
 }

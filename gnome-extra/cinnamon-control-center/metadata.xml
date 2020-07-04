@@ -5,7 +5,19 @@
 		<email>cinnamon@gentoo.org</email>
 		<name>Cinnamon Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sparky@bluefang-logic.com</email>
+		<name>Matthew Turnbull</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">linuxmint/cinnamon-control-center</remote-id>
 	</upstream>
+	<use>
+		<flag name="modemmanager">Enable support for mobile broadband devices
+			using <pkg>net-misc/modemmanager</pkg></flag>
+	</use>
 </pkgmetadata>

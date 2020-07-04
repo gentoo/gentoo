@@ -12,6 +12,7 @@ Python application, detailed insight in the size and the lifetime of Python
 objects can be obtained. Undesirable or unexpected runtime behavior like 
 memory bloat and other "pymples" can easily be identified.
 </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">Pympler</remote-id>
     <remote-id type="github">pympler/pympler</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ HOMEPAGE="http://jeremy.zawodny.com/mysql/mytop/"
 SRC_URI="http://jeremy.zawodny.com/mysql/mytop/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc sparc x86"
 SLOT="0"
 IUSE=""
 

@@ -1,0 +1,11 @@
+--- a/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.xml.old	2019-11-15 20:38:17.244421281 +0100
++++ b/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.xml	2019-11-15 20:43:03.570757200 +0100
+@@ -222,7 +222,7 @@
+       <description>Custom background color for the panel</description>
+     </key>
+     <key type="b" name="trans-use-custom-opacity">
+-      <default>false</default>
++      <default>true</default>
+       <summary>Custom background color</summary>
+       <description>Replace current theme background color for the panel</description>
+     </key>

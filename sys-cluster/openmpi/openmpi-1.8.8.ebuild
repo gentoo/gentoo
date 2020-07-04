@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit cuda eutils flag-o-matic fortran-2 java-pkg-opt-2 multilib toolchain-funcs versionator
+inherit cuda flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
 
 MY_P=${P/-mpi}
 S=${WORKDIR}/${MY_P}
@@ -13,7 +13,6 @@ S=${WORKDIR}/${MY_P}
 IUSE_OPENMPI_FABRICS="
 	openmpi_fabrics_ofed
 	openmpi_fabrics_knem
-	openmpi_fabrics_open-mx
 	openmpi_fabrics_psm"
 
 IUSE_OPENMPI_RM="
@@ -29,12 +28,12 @@ IUSE_OPENMPI_OFED_FEATURES="
 	openmpi_ofed_features_failover"
 
 DESCRIPTION="A high-performance message passing library (MPI)"
-HOMEPAGE="http://www.open-mpi.org"
-SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.open-mpi.org"
+SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
-IUSE="cma cuda +cxx elibc_FreeBSD fortran heterogeneous ipv6 java mpi-threads numa romio threads vt
+IUSE="cma cuda +cxx fortran heterogeneous ipv6 java mpi-threads numa romio threads vt
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
 REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
@@ -56,17 +55,14 @@ MPI_UNCLASSED_DEP_STR="
 CDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
-	!sys-cluster/mpiexec
 	!sys-cluster/pmix
 	dev-libs/libevent
 	dev-libs/libltdl:0
 	<sys-apps/hwloc-2[numa?]
 	sys-libs/zlib
 	cuda? ( dev-util/nvidia-cuda-toolkit )
-	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	openmpi_fabrics_ofed? ( sys-fabric/ofed:* )
 	openmpi_fabrics_knem? ( sys-cluster/knem )
-	openmpi_fabrics_open-mx? ( sys-cluster/open-mx )
 	openmpi_fabrics_psm? ( sys-fabric/infinipath-psm:* )
 	openmpi_rm_pbs? ( sys-cluster/torque )
 	openmpi_rm_slurm? ( sys-cluster/slurm )
@@ -98,6 +94,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	# Necessary for scalibility, see
 	# http://www.open-mpi.org/community/lists/users/2008/09/6514.php
 	if use threads; then
@@ -140,7 +137,6 @@ src_configure() {
 		$(use_enable mpi-threads mpi-thread-multiple) \
 		$(use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr) \
 		$(use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr) \
-		$(use_with openmpi_fabrics_open-mx mx "${EPREFIX}"/usr) \
 		$(use_with openmpi_fabrics_psm psm "${EPREFIX}"/usr) \
 		$(use_enable openmpi_ofed_features_control-hdr-padding openib-control-hdr-padding) \
 		$(use_enable openmpi_ofed_features_connectx-xrc openib-connectx-xrc) \
@@ -154,14 +150,14 @@ src_configure() {
 		$(use_enable java mpi-java)
 }
 
-src_install () {
-	emake DESTDIR="${D}" install
+src_install() {
+	default
 
 	# From USE=vt see #359917
-	rm "${ED}"/usr/share/libtool &> /dev/null
+	rm "${ED}"/usr/share/libtool || die
 
 	# Avoid collisions with libevent
-	rm -rf "${ED}"/usr/include/event2 &> /dev/null
+	rm -rf "${ED}"/usr/include/event2 || die
 
 	# Remove la files, no static libs are installed and we have pkg-config
 	find "${ED}"/usr/$(get_libdir)/ -type f -name '*.la' -delete
@@ -174,7 +170,7 @@ src_install () {
 		rm "${mpi_jar}" || die
 	fi
 
-	dodoc README AUTHORS NEWS VERSION || die
+	dodoc README AUTHORS NEWS VERSION
 }
 
 src_test() {

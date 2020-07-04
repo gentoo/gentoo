@@ -1,0 +1,61 @@
+From 62205d0bb2427016938e00fe8e53aed7a947a20d Mon Sep 17 00:00:00 2001
+From: Matt Layman <matthewlayman@gmail.com>
+Date: Sat, 14 Dec 2019 21:20:22 -0500
+Subject: [PATCH] Use PyYAML safe loader and remove deprecation warning. (#103)
+
+Fixes #102
+---
+ tap/line.py              | 2 +-
+ tap/tests/test_parser.py | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+(mgorny: rebased for 2.4 and included test fixes that are part
+ of irrelevant commit upstream)
+
+diff --git a/tap/line.py b/tap/line.py
+index 352bc1b..c4d0ca6 100644
+--- a/tap/line.py
++++ b/tap/line.py
+@@ -88,7 +88,7 @@ class Result(Line):
+         """
+         if LOAD_YAML and self._yaml_block is not None:
+             try:
+-                yaml_dict = yaml.load(self._yaml_block)
++                yaml_dict = yaml.load(self._yaml_block, Loader=yaml.SafeLoader)
+                 return yaml_dict
+             except yaml.error.YAMLError:
+                 print('Error parsing yaml block. Check formatting.')
+diff --git a/tap/tests/test_parser.py b/tap/tests/test_parser.py
+index 4e919d1..1e78039 100644
+--- a/tap/tests/test_parser.py
++++ b/tap/tests/test_parser.py
+@@ -235,7 +235,7 @@ class TestParser(unittest.TestCase):
+         try:
+             import yaml
+             from more_itertools import peekable  # noqa
+-            converted_yaml = yaml.load(u"""test: sample yaml""")
++            converted_yaml = yaml.safe_load(u"""test: sample yaml""")
+             self.assertEqual(4, len(lines))
+             self.assertEqual(13, lines[0].version)
+             self.assertEqual(converted_yaml, lines[2].yaml_block)
+@@ -265,7 +265,7 @@ class TestParser(unittest.TestCase):
+         try:
+             import yaml
+             from more_itertools import peekable  # noqa
+-            converted_yaml = yaml.load(u"""test: sample yaml""")
++            converted_yaml = yaml.safe_load(u"""test: sample yaml""")
+             self.assertEqual(4, len(lines))
+             self.assertEqual(13, lines[0].version)
+             self.assertEqual(converted_yaml, lines[2].yaml_block)
+@@ -300,7 +300,7 @@ class TestParser(unittest.TestCase):
+         try:
+             import yaml
+             from more_itertools import peekable  # noqa
+-            converted_yaml = yaml.load(u"""
++            converted_yaml = yaml.safe_load(u"""
+                message: test
+                severity: fail
+                data:
+-- 
+2.26.2
+

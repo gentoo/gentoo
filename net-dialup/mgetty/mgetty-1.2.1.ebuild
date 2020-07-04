@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="+fax fidonet"
 
 pkg_setup() {
@@ -94,7 +94,7 @@ src_compile() {
 	done
 }
 
-src_install () {
+src_install() {
 	# parallelization issue: vgetty-install target fails if install target
 	#                        isn't finished
 	local target
@@ -120,7 +120,7 @@ src_install () {
 	#Install mgetty into /sbin (#119078)
 	dodir /sbin && \
 		mv "${D}"/usr/sbin/mgetty "${D}"/sbin && \
-		dosym /sbin/mgetty /usr/sbin/mgetty || die "failed to install /sbin/mgetty"
+		dosym /sbin/mgetty /usr/sbin/mgetty
 	#Don't install ct (#106337)
 	rm "${D}"/usr/bin/ct || die "failed to remove useless ct program"
 

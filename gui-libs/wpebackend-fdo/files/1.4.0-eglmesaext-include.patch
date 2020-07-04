@@ -1,0 +1,26 @@
+From bee4104c897412fbe58da0b9615d3a1a1bde826a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Emilio=20Cobos=20=C3=81lvarez?= <emilio@crisal.io>
+Date: Sun, 15 Dec 2019 13:30:47 +0100
+Subject: [PATCH] Add missing include.
+
+In Fedora Rawhide, while trying to build WebKitGTK, I get a build error otherwise,
+as `PFNEGLQUERYWAYLANDBUFFERWL` is defined in `eglmesaext.h`.
+
+It looks like this header has existed for quite a while so should be fine to include
+directly.
+---
+ src/ws.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ws.cpp b/src/ws.cpp
+index f1ff709..53a6702 100644
+--- a/src/ws.cpp
++++ b/src/ws.cpp
+@@ -27,6 +27,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include "linux-dmabuf/linux-dmabuf.h"
+ #include "bridge/wpe-bridge-server-protocol.h"
+ #include <cassert>

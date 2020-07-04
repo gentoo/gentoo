@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_P="${PN/m2vr/M2VR}-20060306"
 
 DESCRIPTION="Tool to requantize mpeg2 videos"
 HOMEPAGE="http://www.metakine.com/products/dvdremaster/modules.html"
-SRC_URI="mirror://vdrfiles/requant/${MY_P}.tgz"
+SRC_URI="http://vdr.websitec.de/download/${PN}/M2VRequantizer-20060306.tgz"
 
 KEYWORDS="~amd64 x86"
 SLOT="0"

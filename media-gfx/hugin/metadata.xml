@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+		<name>Andreas K. Huettel</name>
 	</maintainer>
-	<longdescription>hugin is a panorama stitching program</longdescription>
+	<maintainer type="person">
+		<email>maekke@gentoo.org</email>
+		<name>Markus Meier</name>
+	</maintainer>
 	<use>
 		<flag name="sift">automatically align images with <pkg>media-gfx/autopano-sift-C</pkg></flag>
 	</use>

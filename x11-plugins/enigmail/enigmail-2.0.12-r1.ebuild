@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ else
 		SRC_URI="https://www.enigmail.net/download/beta/${P/_/-}.tar.gz"
 	else
 		SRC_URI="https://www.enigmail.net/download/source/${P}.tar.gz"
-		KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+		KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 	fi
 	S="${WORKDIR}/${PN}"
 fi

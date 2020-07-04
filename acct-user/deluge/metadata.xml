@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>paolo.pedroni@iol.it</email>
+		<name>Paolo Pedroni</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>k_f@gentoo.org</email>
+		<name>Kristian Fiskerstrand</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+</pkgmetadata>

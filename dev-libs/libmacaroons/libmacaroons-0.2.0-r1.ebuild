@@ -36,5 +36,5 @@ src_configure() {
 }
 
 src_test() {
-	emake -j1 check || die
+	emake -j1 check
 }

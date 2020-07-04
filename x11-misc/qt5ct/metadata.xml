@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>itumaykin+gentoo@gmail.com</email>
-		<name>Coacher</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
 	</maintainer>
 	<longdescription>
 		This program allows users to configure Qt5 settings (theme, font,

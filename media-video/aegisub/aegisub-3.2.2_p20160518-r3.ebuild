@@ -17,6 +17,7 @@ LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
+RESTRICT="!test? ( test )"
 
 # aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is practically dead since 2010.

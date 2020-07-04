@@ -16,6 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="debug gnutls ncurses +parcheck ssl test zlib"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libxml2:=
 	ncurses? ( sys-libs/ncurses:0= )

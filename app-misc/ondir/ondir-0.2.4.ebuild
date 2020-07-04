@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,15 +22,17 @@ src_prepare() {
 	default
 	sed -i \
 		-e "s:\(/man/.*$\):/share\1:g" \
-		-e "s:-g:${CFLAGS}:" Makefile || die "sed Makefile failed"
+		-e "s#^CFLAGS=\(.*\)#CFLAGS= \1 ${CFLAGS}#g;" \
+		-e "s#^LDFLAGS=\(.*\)#LDFLAGS= \1 ${LDFLAGS}#g;" \
+		-i Makefile || die "sed Makefile failed"
 }
 
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
+		LD="$(tc-getCC)" \
 		PREFIX="${EPREFIX}/usr" \
-		CONF="${EPREFIX}/etc/ondirrc" \
-		LDFLAGS="${LDFLAGS}"
+		CONF="${EPREFIX}/etc/ondirrc"
 }
 
 src_install() {

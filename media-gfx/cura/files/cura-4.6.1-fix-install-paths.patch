@@ -1,0 +1,31 @@
+--- Cura-4.5.0-orig/CMakeLists.txt	2020-03-01 16:32:23.380956083 +0200
++++ Cura-4.5.0/CMakeLists.txt	    2020-02-25 17:16:45.000000000 +0200
+@@ -48,6 +48,15 @@
+     find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
+ endif()
+ 
++if(NOT PYTHON_SITE_PACKAGES_DIR)
++   if(APPLE OR WIN32)
++       set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
++           CACHE STRING "Directory to install Python bindings to")
++   else()
++       set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}/dist-packages
++           CACHE STRING "Directory to install Python bindings to")
++   endif()
++endif()
+ 
+ if(NOT ${URANIUM_DIR} STREQUAL "")
+     set(CMAKE_MODULE_PATH "${URANIUM_DIR}/cmake")
+@@ -80,10 +89,10 @@
+             DESTINATION lib${LIB_SUFFIX}/python${Python3_VERSION_MAJOR}/dist-packages/cura)
+     else()
+         install(DIRECTORY cura
+-            DESTINATION lib${LIB_SUFFIX}/python${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}/site-packages
++            DESTINATION ${PYTHON_SITE_PACKAGES_DIR}
+             FILES_MATCHING PATTERN *.py)
+         install(FILES ${CMAKE_BINARY_DIR}/CuraVersion.py
+-            DESTINATION lib${LIB_SUFFIX}/python${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}/site-packages/cura)
++            DESTINATION ${PYTHON_SITE_PACKAGES_DIR}/cura)
+     endif()
+     install(FILES ${CMAKE_BINARY_DIR}/cura.desktop
+             DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)

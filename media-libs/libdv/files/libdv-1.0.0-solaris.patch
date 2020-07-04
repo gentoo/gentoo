@@ -3,8 +3,8 @@
 
 https://sourceforge.net/tracker/index.php?func=detail&aid=2603455&group_id=4393&atid=304393
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -208,6 +208,8 @@
  
  
@@ -23,8 +23,8 @@ https://sourceforge.net/tracker/index.php?func=detail&aid=2603455&group_id=4393&
  
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -20895,6 +20895,92 @@
  
  fi
@@ -127,8 +127,8 @@ https://sourceforge.net/tracker/index.php?func=detail&aid=2603455&group_id=4393&
  do
  as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
  if { as_var=$as_ac_Header; eval "test \"\${$as_var+set}\" = set"; }; then
---- config.h.in
-+++ config.h.in
+--- a/config.h.in
++++ b/config.h.in
 @@ -30,6 +30,9 @@
  /* Define to 1 if you have the <inttypes.h> header file. */
  #undef HAVE_INTTYPES_H
@@ -139,8 +139,8 @@ https://sourceforge.net/tracker/index.php?func=detail&aid=2603455&group_id=4393&
  /* Define to 1 if you have the `m' library (-lm). */
  #undef HAVE_LIBM
  
---- encodedv/dvconnect.c
-+++ encodedv/dvconnect.c
+--- a/encodedv/dvconnect.c
++++ b/encodedv/dvconnect.c
 @@ -31,6 +31,9 @@
  
  #include <stdio.h>

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit toolchain-funcs pam eutils
+inherit toolchain-funcs pam
 
 DESCRIPTION="Create per-user private temporary directories during login"
 HOMEPAGE="http://www.openwall.com/pam/"
@@ -11,16 +11,18 @@ SRC_URI="http://www.openwall.com/pam/modules/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2" # LICENSE file says "heavily cut-down 'BSD license'"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="selinux +prevent-removal"
 
-RDEPEND="virtual/pam
+RDEPEND="sys-libs/pam
 	selinux? ( sys-libs/libselinux )"
+
 DEPEND="${RDEPEND}
 	prevent-removal? ( sys-kernel/linux-headers )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-e2fsprogs-libs.patch
+	default
+	eapply "${FILESDIR}"/${P}-e2fsprogs-libs.patch
 }
 
 src_compile() {
@@ -35,12 +37,4 @@ src_compile() {
 src_install() {
 	dopammod pam_mktemp.so
 	dodoc README
-}
-
-pkg_postinst() {
-	elog "To enable pam_mktemp put something like"
-	elog
-	elog "session    optional    pam_mktemp.so"
-	elog
-	elog "into /etc/pam.d/system-auth!"
 }

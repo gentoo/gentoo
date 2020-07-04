@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit toolchain-funcs linux-info flag-o-matic python-r1 python-utils-r1
+inherit toolchain-funcs linux-info flag-o-matic python-r1
 
 DESCRIPTION="utility to checkpoint/restore a process tree"
 HOMEPAGE="https://criu.org/"
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/2.2/${PN}-2.2-flags.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-no-git.patch
 	"${FILESDIR}"/${PN}-3.12-automagic-libbsd.patch
+	"${FILESDIR}"/${PN}-3.12-gcc-10.patch # backport
 )
 
 criu_arch() {

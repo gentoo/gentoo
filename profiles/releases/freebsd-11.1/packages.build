@@ -1,6 +1,0 @@
-# Copyright 1999-2018 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-
--dev-libs/libiconv
--sys-freebsd/freebsd-libexec
-sys-freebsd/freebsd-share

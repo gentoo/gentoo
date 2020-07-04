@@ -1,12 +1,10 @@
 --- a/ext/tls/ssltest-mod.scm
 +++ b/ext/tls/ssltest-mod.scm
-@@ -53,7 +53,8 @@
-      ($ format #t "~a\n" $ regexp-replace-all* line
+@@ -87,6 +87,7 @@
          #/\.\.\/ssl\// srcpath-replace
          #/openssl /    kicker-replace
--        #/system\s*\(/      "safe_system(")))
-+        #/system\s*\(/ "safe_system("
-+        #/(s_server) / "\\1 -4 ")))
+         #/system\s*\(/      "safe_system("
++        #/(s_server) / "\\1 -4 "
+         )))
  
    (p "#include <errno.h>"
-      "int safe_system(const char *commands)"

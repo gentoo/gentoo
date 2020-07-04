@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_IN_SOURCE_BUILD=1
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit bash-completion-r1 distutils-r1 eutils linux-info systemd
 
@@ -14,7 +15,7 @@ SRC_URI="https://launchpad.net/ufw/${PV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="examples ipv6"
 
 DEPEND=""

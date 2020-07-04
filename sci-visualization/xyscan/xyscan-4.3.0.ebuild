@@ -1,11 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop qmake-utils versionator
-
-MY_PV=$(replace_version_separator 2 '')
+MY_PV=$(ver_rs 2 '')
+inherit desktop qmake-utils
 
 DESCRIPTION="Tool for extracting data points from graphs"
 HOMEPAGE="http://rhig.physics.yale.edu/~ullrich/software/xyscan/"
@@ -42,7 +41,7 @@ src_configure() {
 
 src_install() {
 	dobin xyscan
-	HTML_DOCS=( docs/. )
+	local HTML_DOCS=( docs/. )
 	einstalldocs
 	newicon images/xyscanIcon.png xyscan.png
 	make_desktop_entry xyscan "xyscan data point extractor"

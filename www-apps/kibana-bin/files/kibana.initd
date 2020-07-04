@@ -12,7 +12,7 @@ KIBANA_LOG_DIR="${KIBANA_LOG_DIR:-/var/log/kibana}"
 command="/opt/kibana/bin/kibana"
 command_args="--elasticsearch ${ES_INSTANCE} --config ${KIBANA_CONFIG} --path.data=${KIBANA_DATA_DIR}"
 
-pidfile="/run/kibana.pid"
+pidfile="/run/${RC_SVCNAME}.pid"
 command_background="true"
 start_stop_daemon_args="--user=\"${KIBANA_USER}\" --stdout ${KIBANA_LOG_DIR}/kibana.log --stderr ${KIBANA_LOG_DIR}/kibana.err --env BABEL_CACHE_PATH=${KIBANA_BABEL_CACHE_PATH}"
 

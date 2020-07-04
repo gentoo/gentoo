@@ -1,8 +1,8 @@
-Index: src/Canvas.cpp
-===================================================================
---- src/Canvas.cpp	(revision 5479)
-+++ src/Canvas.cpp	(revision 5480)
-@@ -760,6 +760,18 @@
+diff --git a/src/Canvas.cpp b/src/Canvas.cpp
+index c01021c..1c66a6c 100644
+--- a/src/Canvas.cpp
++++ b/src/Canvas.cpp
+@@ -760,6 +760,18 @@ GanvCanvasImpl::layout_dot(const std::string& filename)
  }
  #endif
  
@@ -21,7 +21,7 @@ Index: src/Canvas.cpp
  #ifdef GANV_FDGL
  
  inline Region
-@@ -788,18 +800,6 @@
+@@ -788,18 +800,6 @@ apply_force(GanvNode* a, GanvNode* b, const Vector& f)
  	b->impl->force = vec_sub(b->impl->force, f);
  }
  

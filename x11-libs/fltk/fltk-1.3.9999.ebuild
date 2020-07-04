@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools flag-o-matic git-r3 xdg-utils multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
@@ -25,6 +26,7 @@ RDEPEND="
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
 	x11-libs/libXt[${MULTILIB_USEDEP}]
 	cairo? ( x11-libs/cairo[${MULTILIB_USEDEP},X] )
+	games? ( !sys-block/blocks )
 	opengl? (
 		virtual/glu[${MULTILIB_USEDEP}]
 		virtual/opengl[${MULTILIB_USEDEP}]
@@ -62,6 +64,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.9999-conf-tests.patch
 	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
 	"${FILESDIR}"/${PN}-1.3.3-visibility.patch
+	"${FILESDIR}"/${PN}-1.3.5-cmake.patch
+	"${FILESDIR}"/${PN}-1.3.5-optim.patch
 )
 
 pkg_setup() {
@@ -86,10 +90,6 @@ src_prepare() {
 		-e "/^docdir/s:fltk:${PF}/html:" \
 		-e "/SILENT:/d" \
 		makeinclude.in || die
-	sed -e "s/7/${PV}/" \
-		< "${FILESDIR}"/FLTKConfig.cmake \
-		> CMake/FLTKConfig.cmake || die
-	sed -e 's:-Os::g' -i configure.ac || die
 
 	# also in Makefile:config.guess config.sub:
 	cp misc/config.{guess,sub} . || die
@@ -151,7 +151,7 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		emake -C fluid \
-			DESTDIR="${D}" install-linux
+			DESTDIR="${D}" install-linux install
 
 		use doc &&
 			emake -C documentation \
@@ -166,13 +166,13 @@ multilib_src_install() {
 multilib_src_install_all() {
 	for app in fluid $(usex games "${FLTK_GAMES}" ''); do
 		dosym \
-			/usr/share/icons/hicolor/32x32/apps/${app}.png \
+			../icons/hicolor/32x32/apps/${app}.png \
 			/usr/share/pixmaps/${app}.png
 	done
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins test/*.{h,cxx,fl} test/demo.menu
+		docinto examples
+		dodoc -r test/*.{h,cxx,fl} test/demo.menu
 	fi
 
 	insinto /usr/share/cmake/Modules

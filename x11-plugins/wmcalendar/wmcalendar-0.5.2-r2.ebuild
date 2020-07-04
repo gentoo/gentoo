@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,8 +27,11 @@ S=${WORKDIR}/${P}/Src
 
 PATCHES=( "${FILESDIR}"/${P}-exit-sin-and-cos.patch
 	"${FILESDIR}"/${P}-rename_kill_func.patch
-	"${FILESDIR}"/${P}-ical.patch )
+	"${FILESDIR}"/${P}-ical.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_compile() {
 	tc-export CC PKG_CONFIG
+	default
 }

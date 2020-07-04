@@ -1,0 +1,212 @@
+From 6d8c1dc720b09fb9c6ff6edb273ad2a2ea31d768 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 25 Apr 2020 11:16:01 +0100
+Subject: [PATCH 1/2] Use /usr/share/man and /usr/share/doc and not /usr/man
+ and /usr/doc
+
+This has been mandated by the Filesystem Hierarchy Standard since 2.0
+in 1997. Autoconf actually does the right thing by default.
+---
+ Makefile.usr        |  4 ++--
+ advance/advance.mak | 11 +++++------
+ configure.ac        |  2 --
+ 3 files changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile.usr b/Makefile.usr
+index 4519857..74a4d53 100644
+--- a/Makefile.usr
++++ b/Makefile.usr
+@@ -238,8 +238,8 @@ srcdir=.
+ datadir=${prefix}/share
+ sysconfdir=${prefix}/etc
+ bindir=${prefix}/bin
+-mandir=${prefix}/man
+-docdir=${prefix}/share/doc
++mandir=${datadir}/man
++docdir=${datadir}/doc/advancemame
+ 
+ #############################################################################
+ # Extra configuration common for ./configure and manual
+diff --git a/advance/advance.mak b/advance/advance.mak
+index 100dd23..8cd0444 100644
+--- a/advance/advance.mak
++++ b/advance/advance.mak
+@@ -373,12 +373,11 @@ CONF_SRC = \
+ # Install
+ 
+ pkgdir = $(datadir)/advance
+-pkgdocdir = $(docdir)/advance
+ 
+ install-dirs:
+ 	-$(INSTALL_PROGRAM_DIR) $(DESTDIR)$(bindir)
+ 	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)
+-	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdocdir)
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(docdir)
+ 	-$(INSTALL_MAN_DIR) $(DESTDIR)$(mandir)/man1
+ 	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/rom
+ 	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/sample
+@@ -463,15 +462,15 @@ uninstall-bin:
+ install-doc: $(INSTALL_DOCFILES)
+ ifdef INSTALL_DOCFILES
+ 	@for i in $(INSTALL_DOCFILES); do \
+-		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdocdir)"; \
+-		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdocdir); \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(docdir)"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(docdir); \
+ 	done
+ endif
+ 
+ uninstall-doc:
+ ifdef INSTALL_DOCFILES
+ 	@for i in $(notdir $(INSTALL_DOCFILES)); do \
+-		rm -f $(DESTDIR)$(pkgdocdir)/$$i; \
++		rm -f $(DESTDIR)$(docdir)/$$i; \
+ 	done
+ endif
+ 
+@@ -500,7 +499,7 @@ uninstall-dirs:
+ 	-rmdir $(DESTDIR)$(pkgdir)/snap/ti99_4a
+ 	-rmdir $(DESTDIR)$(pkgdir)/snap
+ 	-rmdir $(DESTDIR)$(pkgdir)
+-	-rmdir $(DESTDIR)$(pkgdocdir)
++	-rmdir $(DESTDIR)$(docdir)
+ 
+ install: install-dirs install-bin install-data install-doc install-man
+ 
+diff --git a/configure.ac b/configure.ac
+index f8ba989..e54c038 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1220,8 +1220,6 @@ AC_SUBST([CONF_LIB_JEVENT],[$ac_lib_jevent])
+ 
+ dnl Final
+ AC_SUBST([CONF_LIB_DIRECT],[$ac_lib_direct_flag])
+-AC_SUBST([mandir],['${prefix}/man'])
+-AC_SUBST([docdir],['${prefix}/doc'])
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT
+ 
+-- 
+2.26.0
+
+From e35a602a73880bf529083bee5de911e1490a27b5 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 25 Apr 2020 11:52:13 +0100
+Subject: [PATCH 2/2] Install *.html files to a separately htmldir rather than
+ docdir
+
+Autoconf already sets up htmldir for you. It defaults to the same as
+docdir but some distributions set it differently.
+---
+ Makefile.in         |  1 +
+ Makefile.usr        |  1 +
+ advance/advance.mak | 21 +++++++++++++++++----
+ 3 files changed, 19 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index e92a107..86905d7 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -14,6 +14,7 @@ exec_prefix=@exec_prefix@
+ bindir=@bindir@
+ mandir=@mandir@
+ docdir=@docdir@
++htmldir=@htmldir@
+ CONF_SYSTEM=@CONF_SYSTEM@
+ CONF_HOST=@CONF_HOST@
+ CONF_BUILD=@CONF_BUILD@
+diff --git a/Makefile.usr b/Makefile.usr
+index 74a4d53..c8e7430 100644
+--- a/Makefile.usr
++++ b/Makefile.usr
+@@ -240,6 +240,7 @@ sysconfdir=${prefix}/etc
+ bindir=${prefix}/bin
+ mandir=${datadir}/man
+ docdir=${datadir}/doc/advancemame
++htmldir=${docdir}
+ 
+ #############################################################################
+ # Extra configuration common for ./configure and manual
+diff --git a/advance/advance.mak b/advance/advance.mak
+index 8cd0444..009ccd6 100644
+--- a/advance/advance.mak
++++ b/advance/advance.mak
+@@ -152,7 +152,7 @@ endif
+ endif
+ 
+ INSTALL_DOCFILES += $(subst $(srcdir)/doc/,$(DOCOBJ)/,$(subst .d,.txt,$(wildcard $(srcdir)/doc/*.d)))
+-INSTALL_DOCFILES += $(subst $(srcdir)/doc/,$(DOCOBJ)/,$(subst .d,.html,$(wildcard $(srcdir)/doc/*.d)))
++INSTALL_HTMLFILES += $(subst $(srcdir)/doc/,$(DOCOBJ)/,$(subst .d,.html,$(wildcard $(srcdir)/doc/*.d)))
+ WEB_DOCFILES += $(subst $(srcdir)/doc/,$(DOCOBJ)/,$(subst .d,.hh,$(wildcard $(srcdir)/doc/*.d)))
+ 
+ ############################################################################
+@@ -162,7 +162,7 @@ ifdef ADV_ALL
+ all_override: $(ADV_ALL)
+ endif
+ 
+-all: $(OBJ_DIRS) $(INSTALL_BINFILES) $(INSTALL_DOCFILES) $(INSTALL_MANFILES)
++all: $(OBJ_DIRS) $(INSTALL_BINFILES) $(INSTALL_DOCFILES) $(INSTALL_HTMLFILES) $(INSTALL_MANFILES)
+ mame: $(OBJ) $(OBJ)/advmame$(EXE)
+ mess: $(MESSOBJ) $(MESSOBJ)/advmess$(EXE)
+ emu: mame mess
+@@ -182,7 +182,7 @@ web: $(WEB_DOCFILES)
+ # Ensure that the doc target is always created also if a doc directory exists
+ .PHONY: doc
+ 
+-doc: $(INSTALL_DOCFILES)
++doc: $(INSTALL_DOCFILES) $(INSTALL_HTMLFILES)
+ 
+ ############################################################################
+ # Source
+@@ -378,6 +378,7 @@ install-dirs:
+ 	-$(INSTALL_PROGRAM_DIR) $(DESTDIR)$(bindir)
+ 	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)
+ 	-$(INSTALL_DATA_DIR) $(DESTDIR)$(docdir)
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(htmldir)
+ 	-$(INSTALL_MAN_DIR) $(DESTDIR)$(mandir)/man1
+ 	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/rom
+ 	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/sample
+@@ -459,13 +460,19 @@ uninstall-bin:
+ 		rm -f $(DESTDIR)$(bindir)/$$i; \
+ 	done
+ 
+-install-doc: $(INSTALL_DOCFILES)
++install-doc: $(INSTALL_DOCFILES) $(INSTALL_HTMLFILES)
+ ifdef INSTALL_DOCFILES
+ 	@for i in $(INSTALL_DOCFILES); do \
+ 		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(docdir)"; \
+ 		$(INSTALL_DATA) $$i $(DESTDIR)$(docdir); \
+ 	done
+ endif
++ifdef INSTALL_HTMLFILES
++	@for i in $(INSTALL_HTMLFILES); do \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(htmldir)"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(htmldir); \
++	done
++endif
+ 
+ uninstall-doc:
+ ifdef INSTALL_DOCFILES
+@@ -473,6 +480,11 @@ ifdef INSTALL_DOCFILES
+ 		rm -f $(DESTDIR)$(docdir)/$$i; \
+ 	done
+ endif
++ifdef INSTALL_HTMLFILES
++	@for i in $(notdir $(INSTALL_HTMLFILES)); do \
++		rm -f $(DESTDIR)$(htmldir)/$$i; \
++	done
++endif
+ 
+ install-man: $(INSTALL_MANFILES)
+ ifdef INSTALL_MANFILES
+@@ -500,6 +512,7 @@ uninstall-dirs:
+ 	-rmdir $(DESTDIR)$(pkgdir)/snap
+ 	-rmdir $(DESTDIR)$(pkgdir)
+ 	-rmdir $(DESTDIR)$(docdir)
++	-rmdir $(DESTDIR)$(htmldir)
+ 
+ install: install-dirs install-bin install-data install-doc install-man
+ 
+-- 
+2.26.0
+

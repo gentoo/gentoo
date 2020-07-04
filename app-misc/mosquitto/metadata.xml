@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ramage.lucas@protonmail.com</email>
-		<name>Lucas Ramage</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>mattst88@gentoo.org</email>
+		<name>Matt Turner</name>
 	</maintainer>
 	<use>
 		<flag name="bridge">Enable bridge support in the MQTT broker.</flag>
@@ -15,4 +11,7 @@
 		<flag name="srv">Include SRV lookup support.</flag>
 		<flag name="websockets">Support the WebSocket protocol.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">eclipse/mosquitto</remote-id>
+	</upstream>
 </pkgmetadata>

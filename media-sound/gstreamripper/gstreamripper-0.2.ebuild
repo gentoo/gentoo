@@ -1,8 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils
+EAPI=7
+
+inherit autotools desktop
 
 MY_P=GStreamripperX-${PV}
 
@@ -15,23 +16,27 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE=""
 
-COMMON_DEPEND="x11-libs/gtk+:2"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	x11-libs/gtk+:2
 	media-sound/streamripper"
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+src_compile() {
+	emake CFLAGS="${CFLAGS}"
+}
 
 src_install() {
-	local docdir=/usr/share/doc/${PF}
-
+	local docdir="${EPREFIX}/usr/share/doc/${PF}"
 	emake \
 		DESTDIR="${D}" \
-		gstreamripperxdocdir=${docdir} \
-		install || die
+		gstreamripperxdocdir="${docdir}" \
+		install
+	einstalldocs
 
-	rm -f "${D}"/${docdir}/{COPYING,NEWS,TODO}
+	rm "${ED}"/${docdir}/COPYING || die
 
 	make_desktop_entry gstreamripperx GStreamripperX
 }

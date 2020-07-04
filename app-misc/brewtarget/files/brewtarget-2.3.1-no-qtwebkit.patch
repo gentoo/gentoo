@@ -1,0 +1,164 @@
+From 761bb3882c4c243a49279b67e53c87e5e5d2928f Mon Sep 17 00:00:00 2001
+From: Mik Firestone <mikfire@gmail.com>
+Date: Sat, 19 Mar 2016 23:01:54 -0400
+Subject: [PATCH 1/2] Closes #127 - TravisCI can't find webkit
+
+Qt 5.6 did away with the web kit, but none of our build environment have the
+replacement yet. This patch replaces all the WebDocs with TextBrowser, which
+seems to work and should compile.
+
+I removed the webkit requirement from the CMakeLists file, but I wasn't sure
+if the webkitwidgets needed axed as well. Although writing it out makes the
+answer somewhat obvious.
+---
+ src/BrewDayScrollWidget.cpp | 2 +-
+ src/BrewDayScrollWidget.h   | 4 ++--
+ src/BrewDayWidget.cpp       | 4 ++--
+ src/BrewDayWidget.h         | 4 ++--
+ src/CMakeLists.txt          | 2 --
+ src/RecipeFormatter.cpp     | 2 +-
+ src/RecipeFormatter.h       | 4 ++--
+ 7 files changed, 10 insertions(+), 12 deletions(-)
+
+diff --git a/src/BrewDayScrollWidget.cpp b/src/BrewDayScrollWidget.cpp
+index 760d2dc5..0846d791 100644
+--- a/src/BrewDayScrollWidget.cpp
++++ b/src/BrewDayScrollWidget.cpp
+@@ -35,7 +35,7 @@
+ #include "mash.h"
+ 
+ BrewDayScrollWidget::BrewDayScrollWidget(QWidget* parent)
+-   : QWidget(parent), doc(new QWebView())
++   : QWidget(parent), doc(new QTextBrowser())
+ {
+    setupUi(this);
+    setObjectName("BrewDayScrollWidget");
+--- a/src/BrewDayScrollWidget.h
++++ b/src/BrewDayScrollWidget.h
+@@ -27,7 +27,7 @@ class BrewDayScrollWidget;
+ #include "ui_brewDayScrollWidget.h"
+ #include <QWidget>
+ #include <QSize>
+-#include <QWebView>
++#include <QTextBrowser>
+ #include <QPrinter>
+ #include <QPrintDialog>
+ #include <QFile>
+@@ -90,7 +90,7 @@ private slots:
+    
+    Recipe* recObs;
+    QPrinter* printer;
+-   QWebView* doc;
++   QTextBrowser* doc;
+    //! Internal list of recipe instructions, always sorted by instruction number.
+    QList<Instruction*> recIns;
+ 
+--- a/src/BrewDayWidget.cpp
++++ b/src/BrewDayWidget.cpp
+@@ -37,7 +37,7 @@
+ 
+ // NOTE: QPrinter has no parent? Will it get destroyed properly?
+ BrewDayWidget::BrewDayWidget(QWidget* parent) :
+-   QWidget(parent), recObs(0), printer(new QPrinter()), doc(new QWebView(this))
++   QWidget(parent), recObs(0), printer(new QPrinter()), doc(new QTextBrowser(this))
+ {
+    setupUi(this);
+ 
+@@ -291,7 +291,7 @@ void BrewDayWidget::pushInstructionPrint()
+    QString pDoc;
+    QPrintDialog *dialog = new QPrintDialog(printer, this);
+ 
+-   /* Instantiate the Webview and then connect its signal */
++   /* Instantiate the TextBrowser and then connect its signal */
+    connect( doc, SIGNAL(loadFinished(bool)), this, SLOT(loadComplete(bool)) );
+ 
+    dialog->setWindowTitle(tr("Print Document"));
+--- a/src/BrewDayWidget.h
++++ b/src/BrewDayWidget.h
+@@ -27,7 +27,7 @@ class BrewDayWidget;
+ #include "ui_brewDayWidget.h"
+ #include <QWidget>
+ #include <QSize>
+-#include <QWebView>
++#include <QTextBrowser>
+ #include <QMetaProperty>
+ #include <QVariant>
+ 
+@@ -70,7 +70,7 @@ public slots:
+    
+    Recipe* recObs;
+    QPrinter* printer;
+-   QWebView* doc;
++   QTextBrowser* doc;
+ 
+    QString cssName;
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -424,7 +424,5 @@ SET( QT5_USE_MODULES_LIST
+    Sql
+    Svg
+    Xml
+-   WebKit
+-   WebKitWidgets
+    )
+ 
+diff --git a/src/RecipeFormatter.cpp b/src/RecipeFormatter.cpp
+index bb6a9295..f8a1ab4c 100644
+--- a/src/RecipeFormatter.cpp
++++ b/src/RecipeFormatter.cpp
+@@ -52,7 +52,7 @@ RecipeFormatter::RecipeFormatter(QObject* parent)
+    docDialog->setWindowTitle("Print Preview");
+    if( docDialog->layout() == 0 )
+       docDialog->setLayout(new QVBoxLayout(docDialog));
+-   doc = new QWebView(docDialog);
++   doc = new QTextBrowser(docDialog);
+    docDialog->layout()->addWidget(doc);
+    /*
+    // Add a print button at the bottom.
+--- a/src/RecipeFormatter.h
++++ b/src/RecipeFormatter.h
+@@ -28,7 +28,7 @@ class RecipeFormatter;
+ #include <QObject>
+ #include <QPrinter>
+ #include <QPrintDialog>
+-#include <QWebView>
++#include <QTextBrowser>
+ #include <QDialog>
+ #include <QFile>
+ #include "recipe.h"
+@@ -114,7 +114,7 @@ public slots:
+    Recipe* rec;
+ 
+    QPrinter* printer;
+-   QWebView* doc;
++   QTextBrowser* doc;
+    QDialog* docDialog;
+    QString cssName;
+ 
+
+From 3e0223a3b95c0e1169115cd14d0ede7f17c4f30f Mon Sep 17 00:00:00 2001
+From: Mik Firestone <mikfire@gmail.com>
+Date: Sat, 19 Mar 2016 23:09:41 -0400
+Subject: [PATCH 2/2] Missed a few edits.
+
+Missed some entries in the CMakeList files.
+---
+ CMakeLists.txt     | 6 ------
+ 1 file changed, 6 deletions(-)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -153,12 +153,6 @@ INCLUDE_DIRECTORIES(${Qt5Sql_INCLUDE_DIRS})
+ FIND_PACKAGE(Qt5Svg REQUIRED)
+ INCLUDE_DIRECTORIES(${Qt5Svg_INCLUDE_DIRS})
+ 
+-FIND_PACKAGE(Qt5WebKit REQUIRED)
+-INCLUDE_DIRECTORIES(${Qt5WebKit_INCLUDE_DIRS})
+-
+-FIND_PACKAGE(Qt5WebKitWidgets REQUIRED)
+-INCLUDE_DIRECTORIES(${Qt5WebKitWidgets_INCLUDE_DIRS})
+-
+ FIND_PACKAGE(Qt5Xml REQUIRED)
+ INCLUDE_DIRECTORIES(${Qt5Xml_INCLUDE_DIRS})
+ 

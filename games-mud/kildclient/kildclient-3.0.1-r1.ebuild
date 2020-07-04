@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,8 +39,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		--localedir=/usr/share/locale \
-		--docdir=/usr/share/doc/${PF} \
-		--htmldir=/usr/share/doc/${PF}/html \
 		$(use_with spell gtkspell) \
 		$(use_with gnutls libgnutls) \
 		$(use_with doc docs)

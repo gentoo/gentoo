@@ -8,5 +8,5 @@
 	<upstream>
 		<remote-id type="github">smxi/inxi</remote-id>
 	</upstream>
-	<longdescription>inxi is a bash script to print information about the system. It was forked from infobash.</longdescription>
+	<longdescription>inxi is a script to print information about the system. It was forked from infobash. The script parses files in /proc but can also collects information from other tools such as glxinfo or dmidecode. See a full list of supported tools with inxi --recommends.</longdescription>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Per-Face Texture Mapping for Production Rendering"
 HOMEPAGE="http://ptex.us/"
@@ -27,7 +27,7 @@ src_prepare() {
 	cat <<-EOF > version || die
 	${PV}
 	EOF
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -35,5 +35,5 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}/html"
 		-DPTEX_BUILD_STATIC_LIBS=$(usex static-libs)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -2,16 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>itumaykin+gentoo@gmail.com</email>
-		<name>Coacher</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>media-video@gentoo.org</email>
-		<name>Gentoo Video project</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<use>
 		<flag name="archive">Enable support for various archive formats via <pkg>app-arch/libarchive</pkg></flag>
@@ -21,6 +13,7 @@
 		<flag name="cuda">Enable hardware video decoding via Nvidia CUDA</flag>
 		<flag name="drm">Enable Kernel Mode Setting / Direct Rendering Manager based video output</flag>
 		<flag name="egl">Enable support for various EGL-based video outputs / backends</flag>
+		<flag name="gamepad">Enable gamepad input support</flag>
 		<flag name="gbm">Enable Graphics Buffer Manager based EGL video backend</flag>
 		<flag name="jpeg">Enable support for saving screenshots in JPEG format</flag>
 		<flag name="libass">Enable OSD (On Screen Display) and subtitles support via <pkg>media-libs/libass</pkg></flag>
@@ -35,6 +28,7 @@
 		<flag name="tools">Install extra tools: mpv_identify.sh, mpv_idet.sh, and umpv</flag>
 		<flag name="uchardet">Enable subtitles charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
 		<flag name="vulkan">Enable support for various Vulkan-based video backends</flag>
+		<flag name="zimg">Enable libzimg support (for vf_fingerprint)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">mpv-player/mpv</remote-id>

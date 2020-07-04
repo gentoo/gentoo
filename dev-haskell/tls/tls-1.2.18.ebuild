@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,11 +10,11 @@ inherit haskell-cabal
 
 DESCRIPTION="TLS/SSL protocol native implementation (Server and Client)"
 HOMEPAGE="https://github.com/vincenthz/hs-tls"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+compat"
 
 RDEPEND="dev-haskell/asn1-encoding:=[profile?]

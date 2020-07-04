@@ -18,6 +18,5 @@
 	<use>
 		<flag name="highlight">Enable source code highlighting</flag>
 		<flag name="lua">Enable support for Lua scripting</flag>
-		<flag name="jit">If the lua flag is enabled, jit uses LuaJIT instead of vanilla Lua</flag>
 	</use>
 </pkgmetadata>

@@ -1,35 +1,34 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="https://rybczak.net/ncmpcpp/"
-SRC_URI="${HOMEPAGE}stable/${P}.tar.bz2"
+SRC_URI="https://rybczak.net/ncmpcpp/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86"
-IUSE="clock curl outputs taglib unicode visualizer"
+KEYWORDS="amd64 arm ppc ppc64 ~sparc x86"
+IUSE="clock curl outputs taglib visualizer"
 
 RDEPEND="
 	!dev-libs/boost:0/1.57.0
 	>=media-libs/libmpdclient-2.1
+	dev-libs/boost:=[icu]
 	dev-libs/boost:=[nls,threads]
-	sys-libs/ncurses:=[unicode?]
+	dev-libs/icu:=
+	sys-libs/ncurses:=[unicode]
 	sys-libs/readline:*
 	curl? ( net-misc/curl )
 	taglib? ( media-libs/taglib )
-	unicode? (
-		dev-libs/boost:=[icu]
-		dev-libs/icu:=
-	)
 	visualizer? ( sci-libs/fftw:3.0= )
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+# https://github.com/ncmpcpp/ncmpcpp/pull/385
+PATCHES=( "${FILESDIR}/${PN}-0.8.2-gcc10.patch" )
 
 src_prepare() {
 	default
@@ -42,12 +41,11 @@ src_configure() {
 	econf \
 		$(use_enable clock) \
 		$(use_enable outputs) \
-		$(use_enable unicode) \
 		$(use_enable visualizer) \
 		$(use_with curl) \
 		$(use_with taglib) \
 		$(use_with visualizer fftw) \
-		--docdir=/usr/share/doc/${PF}
+		--enable-unicode
 }
 
 src_install() {
@@ -59,7 +57,7 @@ src_install() {
 pkg_postinst() {
 	echo
 	elog "Example configuration files have been installed at"
-	elog "${ROOT}usr/share/doc/${PF}"
+	elog "${EROOT}/usr/share/doc/${PF}"
 	elog "${P} uses ~/.ncmpcpp/config and ~/.ncmpcpp/bindings"
 	elog "as user configuration files."
 	echo

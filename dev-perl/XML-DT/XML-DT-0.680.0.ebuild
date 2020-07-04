@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ inherit perl-module
 DESCRIPTION="A perl XML down translate module"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc x86"
+KEYWORDS="~alpha amd64 hppa ppc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/libwww-perl-1.350.0

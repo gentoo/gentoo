@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6..8} )
 GENTOO_DEPEND_ON_PERL=no
 inherit eutils multilib perl-module python-r1 toolchain-funcs
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.clifford.at/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="examples perl python ruby static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -27,6 +27,13 @@ DEPEND="${RDEPEND}
 	python? ( >=dev-lang/swig-1.3.40 )
 	ruby? ( dev-lang/swig )
 "
+RESTRICT="test"  # Upstream does not provide tests #730112
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.21-python.patch"
+	"${FILESDIR}/${PN}-0.22-soname-symlink.patch"
+	"${FILESDIR}/${PN}-0.22-ruby-sharedlib.patch"
+)
 
 src_prepare() {
 	sed -i \
@@ -41,9 +48,7 @@ src_prepare() {
 		sed -i -e "/install .* libstfl.a/d" Makefile || die
 	fi
 
-	epatch "${FILESDIR}"/${PN}-0.21-python.patch
-	epatch "${FILESDIR}"/${PN}-0.22-soname-symlink.patch
-	epatch "${FILESDIR}"/${PN}-0.22-ruby-sharedlib.patch
+	eapply_user
 
 	if use perl ; then
 		echo "FOUND_PERL5=1" >> Makefile.cfg

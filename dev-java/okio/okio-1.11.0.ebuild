@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -34,6 +34,6 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 JAVA_GENTOO_CLASSPATH="jmh-core,junit-4"
 
-src_prepare(){
+src_prepare() {
 	epatch "${FILESDIR}/okio-remove-maven-animal-jre.patch"
 }

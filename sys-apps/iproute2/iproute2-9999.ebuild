@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,8 +9,8 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://kernel/linux/utils/net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+	SRC_URI="https://www.kernel.org/pub/linux/utils/net/${PN}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="kernel routing and traffic control utilities"
@@ -47,6 +47,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
 	"${FILESDIR}"/${PN}-4.20.0-configure-nomagic.patch # bug 643722
+	"${FILESDIR}"/${PN}-5.1.0-portability.patch
 )
 
 src_prepare() {
@@ -68,12 +69,6 @@ src_prepare() {
 		-e "/^HOSTCC/s:=.*:= $(tc-getBUILD_CC):" \
 		-e "/^DBM_INCLUDE/s:=.*:=${T}:" \
 		Makefile || die
-
-	# Use /run instead of /var/run.
-	sed -i \
-		-e 's:/var/run:/run:g' \
-		include/namespace.h \
-		man/man8/ip-netns.8 || die
 
 	# build against system headers
 	rm -r include/netinet || die #include/linux include/ip{,6}tables{,_common}.h include/libiptc
@@ -119,7 +114,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake V=1
+	emake V=1 NETNS_RUN_DIR=/run/netns
 }
 
 src_install() {
@@ -157,5 +152,7 @@ src_install() {
 		# bug 47482, arpd doesn't need to be in /sbin
 		dodir /usr/bin
 		mv "${ED}"/sbin/arpd "${ED}"/usr/bin/ || die
+	elif [[ -d "${ED}"/var/lib/arpd ]]; then
+		rmdir --ignore-fail-on-non-empty -p "${ED}"/var/lib/arpd || die
 	fi
 }

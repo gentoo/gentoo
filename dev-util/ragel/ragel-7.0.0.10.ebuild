@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ DESCRIPTION="Compiles finite state machines from regular languages into executab
 HOMEPAGE="https://www.colm.net/open-source/ragel/"
 SRC_URI="https://www.colm.net/files/ragel/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
 IUSE="vim-syntax"

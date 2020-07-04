@@ -11,6 +11,7 @@
 		<flag name="demos">Installs demo programs.</flag>
 		<flag name="ogre">Enables <pkg>dev-games/ogre</pkg> support.</flag>
 		<flag name="opencv">Enables <pkg>media-libs/opencv</pkg> support.</flag>
+		<flag name="pcl">Enables <pkg>sci-libs/pcl</pkg> support.</flag>
 		<flag name="tutorials">Installs tutorials.</flag>
 		<flag name="zbar">Enables barcodes reading.</flag>
 	</use>

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic git-r3
+inherit autotools git-r3
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="https://www.gnu.org/software/parted"
@@ -51,8 +51,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with readline) \
 		--disable-gcc-warnings \
-		--disable-rpath \
-		--disable-silent-rules
+		--disable-rpath
 }
 
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/{API,FAT,USER.jp} )

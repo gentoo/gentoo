@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils toolchain-funcs flag-o-matic xdg-utils
+inherit cmake toolchain-funcs flag-o-matic xdg
 
 DESCRIPTION="free Lemmings clone"
-HOMEPAGE="http://pingus.gitlab.io/"
+HOMEPAGE="https://pingus.gitlab.io/"
 if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/pingus/pingus.git"
@@ -37,14 +37,6 @@ PATCHES=(
 
 src_prepare() {
 	sed '/find_package(Boost/s@ signals@@' -i CMakeLists.txt || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	strip-flags
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }

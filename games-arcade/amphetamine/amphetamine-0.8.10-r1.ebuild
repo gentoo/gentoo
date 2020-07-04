@@ -1,22 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit desktop
 
-DESCRIPTION="a cool Jump'n Run game offering some unique visual effects"
-HOMEPAGE="http://homepage.hispeed.ch/loehrer/amph/amph.html"
-SRC_URI="http://homepage.hispeed.ch/loehrer/amph/files/${P}.tar.bz2
-	http://homepage.hispeed.ch/loehrer/amph/files/${PN}-data-0.8.6.tar.bz2"
+DESCRIPTION="A cool Jump'n Run game offering some unique visual effects"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="
+	mirror://gentoo/${P}.tar.bz2
+	mirror://gentoo/${PN}-data-0.8.6.tar.bz2
+"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl[sound,video]
-	x11-libs/libXpm"
-RDEPEND=${DEPEND}
+RDEPEND="
+	media-libs/libsdl[sound,video]
+	x11-libs/libXpm
+"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-build.patch

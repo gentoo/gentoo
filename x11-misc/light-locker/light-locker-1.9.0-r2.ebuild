@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools gnome2-utils
 
 DESCRIPTION="A simple locker using lightdm"
 HOMEPAGE="https://github.com/the-cavalry/light-locker"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/the-cavalry/light-locker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

@@ -9,5 +9,4 @@
 	<email>mgorny@gentoo.org</email>
 	<name>Michał Górny</name>
 </maintainer>
-<longdescription>Utility to switch opengl implementations between various providers.</longdescription>
 </pkgmetadata>

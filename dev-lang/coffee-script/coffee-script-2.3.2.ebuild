@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ IUSE="doc examples"
 
 RDEPEND="net-libs/nodejs"
 
-src_install(){
+src_install() {
 	local npm_module_dir="/usr/$(get_libdir)/node/${PN}"
 	insinto "${npm_module_dir}"
 	doins *.js package.json

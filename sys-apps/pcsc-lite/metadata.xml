@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>crypto@gentoo.org</email>
-    <name>Crypto</name>
-  </maintainer>
-  <longdescription>
-    PC/SC Architecture smartcard middleware library
-  </longdescription>
-
+<maintainer type="person">
+        <email>zlogene@gentoo.org</email>
+        <name>Mikle Kolyada</name>
+</maintainer>
   <use>
+    <flag name="embedded">limit RAM and CPU ressources by disabling features</flag>
     <flag name="libusb" restrict="&gt;=sys-apps/pcsc-lite-1.8.0">
       Use <pkg>dev-libs/libusb</pkg> detection to hotplug new
       smartcard readers. This flag should only be enabled if you're

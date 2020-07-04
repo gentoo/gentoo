@@ -9,6 +9,6 @@ DESCRIPTION="clog is a colorized log tail utility"
 HOMEPAGE="https://taskwarrior.org/docs/clog/"
 SRC_URI="https://tasktools.org/download/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x64-macos"
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 LICENSE="MIT"
 SLOT="0"

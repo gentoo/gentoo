@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 MY_P="${PN}5-${PV}"
 
@@ -35,7 +35,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-	sed -i -e "s:-O2:${CFLAGS}:" m4/rfm-conditionals.m4 || die
+	sed -i -e "s|-O2|${CFLAGS}|" m4/rfm-conditionals.m4 || die
 	eautoreconf
 }
 

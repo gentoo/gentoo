@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,10 +25,11 @@ LICENSE="GPL-2"
 SLOT="0/20"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="c++11 emacs fastjet hepmc java lhapdf rivet static-libs test zlib"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sci-libs/gsl:0=
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	fastjet? ( sci-physics/fastjet:0= )
 	hepmc? ( sci-physics/hepmc:0= )
 	java? ( >=virtual/jre-1.5:* )

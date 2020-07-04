@@ -1,17 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/ROCm-Device-Libs/"
 	inherit git-r3
 	S="${WORKDIR}/${P}/src"
 else
-	SRC_URI="https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/roc-ocl-${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/ROCm-Device-Libs-roc-ocl-${PV}"
+	SRC_URI="https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/ROCm-Device-Libs-rocm-${PV}"
 	KEYWORDS="~amd64"
 fi
 
@@ -27,8 +27,7 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DLLVM_DIR="${EPREFIX}/usr/lib/llvm/roc/"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/"
+		-DLLVM_DIR="${EPREFIX}/usr/lib/llvm/roc/lib/cmake/llvm"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

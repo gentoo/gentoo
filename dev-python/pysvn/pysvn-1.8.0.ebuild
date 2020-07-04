@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit eutils distutils-r1 toolchain-funcs
 
@@ -54,6 +54,11 @@ python_install() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( Docs/. )
-	use examples && local EXAMPLES=( Examples/Client/. )
+	if use examples; then
+		docinto examples
+		dodoc -r Examples/Client/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }

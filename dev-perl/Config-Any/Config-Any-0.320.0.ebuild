@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Load configuration from different file formats, transparently"
 SLOT="0"
 KEYWORDS="amd64 arm ppc x86 ~ppc-aix"
 IUSE="test +conf +ini +json +xml +yaml"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Module-Pluggable-3.600.0

@@ -1,0 +1,30 @@
+Rename uint64_t to uint64 (same as in util.h) to avoid a name collision.
+https://bugs.gentoo.org/715560
+
+--- polyglot-1.4.70b-orig/pgheader.c
++++ polyglot-1.4.70b/pgheader.c
+@@ -49,12 +49,12 @@
+ #endif
+ 
+ #ifdef _MSC_VER
+-  typedef unsigned __int64 uint64_t;
++  typedef unsigned __int64 uint64;
+ #else
+-  typedef unsigned long long int uint64_t;
++  typedef unsigned long long int uint64;
+ #endif
+ 
+-static int int_from_file(FILE *f, int l, uint64_t *r){
++static int int_from_file(FILE *f, int l, uint64 *r){
+     int i,c;
+     for(i=0;i<l;i++){
+         c=fgetc(f);
+@@ -69,7 +69,7 @@
+ 
+ int pgheader_detect(const char *infile){
+     FILE *fin;
+-    uint64_t r0,r1,r2;
++    uint64 r0,r1,r2;
+     int i;
+ 
+     fin=fopen(infile,"rb");

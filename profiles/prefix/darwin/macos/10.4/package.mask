@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Fabian Groffen <grobian@gentoo.org> (2012-05-03)
@@ -8,8 +8,3 @@
 # Fabian Groffen <grobian@gentoo.org> (2011-07-11)
 # Needs headers only available starting from 10.5 (Leopard)
 sys-process/lsof
-
-# Fabian Groffen <grobian@gentoo.org> (2011-04-30)
-# These releases got a rewrite that is no longer compatible with
-# CoreAudio as available on Tiger and Leopard
->=media-libs/mediastreamer-2.7.3

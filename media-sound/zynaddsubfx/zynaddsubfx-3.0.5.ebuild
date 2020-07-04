@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils flag-o-matic
+inherit cmake flag-o-matic
 
 DESCRIPTION="Software synthesizer capable of making a countless number of instruments"
 HOMEPAGE="http://zynaddsubfx.sourceforge.net/"
@@ -43,7 +43,7 @@ PATCHES=( "${FILESDIR}"/${P}-docs.patch )
 DOCS=( ChangeLog HISTORY.txt README.adoc )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if ! use dssi; then
 		sed -i -e '/pkg_search_module.*DSSI/s/^/#DONT/' src/CMakeLists.txt || die
@@ -67,21 +67,21 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DPluginLibDir=$(get_libdir)
-		$(cmake-utils_use_find_package alsa Alsa)
-		$(cmake-utils_use_find_package doc Doxygen)
-		$(cmake-utils_use_find_package fltk FLTK)
+		$(cmake_use_find_package alsa Alsa)
+		$(cmake_use_find_package doc Doxygen)
+		$(cmake_use_find_package fltk FLTK)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	use doc && cmake-utils_src_compile doc
+	cmake_src_compile
+	use doc && cmake_src_compile doc
 }
 
 src_install() {
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
-	cmake-utils_src_install
+	cmake_src_install
 	insinto /usr/share/${PN}
 	doins -r instruments/*
 }

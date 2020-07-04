@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit xdg-utils desktop
 
 DESCRIPTION="Feature-rich screenshot program"
-HOMEPAGE="http://shutter-project.org/"
-#SRC_URI="http://shutter-project.org/wp-content/uploads/releases/tars/${P}.tar.gz"
+HOMEPAGE="https://shutter-project.org/"
+#SRC_URI="https://shutter-project.org/wp-content/uploads/releases/tars/${P}.tar.gz"
 SRC_URI="https://launchpad.net/shutter/0.9x/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -51,18 +51,18 @@ src_prepare() {
 }
 
 src_install() {
-	dobin bin/${PN} || die "dobin failed"
+	dobin bin/${PN}
 	insinto /usr/share/${PN}
-	doins -r share/${PN}/* || die "doins failed"
-	dodoc README || die "dodoc failed"
+	doins -r share/${PN}/*
+	dodoc README
 	domenu share/applications/${PN}.desktop
 	# Man page is broken. Reconstruct it.
 	gunzip share/man/man1/${PN}.1.gz || die "gunzip failed"
-	doman share/man/man1/${PN}.1 || die "doman failed"
+	doman share/man/man1/${PN}.1
 	doicon share/pixmaps/${PN}.png
-	doins -r share/locale || die "doins failed"
+	doins -r share/locale
 	insinto /usr/share/icons/hicolor
-	doins -r share/icons/hicolor/* || die "doins failed"
+	doins -r share/icons/hicolor/*
 	find "${D}"/usr/share/shutter/resources/system/plugins/ -type f ! -name '*.*' -exec chmod 755 {} \; \
 		|| die "failed to make plugins executables"
 	find "${D}"/usr/share/shutter/resources/system/upload_plugins/upload -type f \

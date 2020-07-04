@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-info.eclass
@@ -159,14 +159,14 @@ qeerror() { qout eerror "${@}" ; }
 # ---------------------------------------
 
 # @FUNCTION: getfilevar
-# @USAGE: variable configfile
+# @USAGE: <variable> <configfile>
 # @RETURN: the value of the variable
 # @DESCRIPTION:
 # It detects the value of the variable defined in the file configfile. This is
 # done by including the configfile, and printing the variable with Make.
 # It WILL break if your makefile has missing dependencies!
 getfilevar() {
-	local ERROR basefname basedname myARCH="${ARCH}" M="${S}"
+	local ERROR basefname basedname myARCH="${ARCH}"
 	ERROR=0
 
 	[ -z "${1}" ] && ERROR=1
@@ -184,18 +184,15 @@ getfilevar() {
 
 		# We use nonfatal because we want the caller to take care of things #373151
 		[[ ${EAPI:-0} == [0123] ]] && nonfatal() { "$@"; }
-		case ${EBUILD_PHASE_FUNC} in
-			pkg_info|pkg_nofetch|pkg_pretend) M="${T}" ;;
-		esac
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
-			nonfatal emake -C "${basedname}" M="${M}" ${BUILD_FIXES} -s -f - 2>/dev/null
+			nonfatal emake -C "${basedname}" M="${T}" ${BUILD_FIXES} -s -f - 2>/dev/null
 
 		ARCH=${myARCH}
 	fi
 }
 
 # @FUNCTION: getfilevar_noexec
-# @USAGE: variable configfile
+# @USAGE: <variable> <configfile>
 # @RETURN: the value of the variable
 # @DESCRIPTION:
 # It detects the value of the variable defined in the file configfile.
@@ -310,7 +307,7 @@ require_configured_kernel() {
 }
 
 # @FUNCTION: linux_chkconfig_present
-# @USAGE: option
+# @USAGE: <option>
 # @RETURN: true or false
 # @DESCRIPTION:
 # It checks that CONFIG_<option>=y or CONFIG_<option>=m is present in the current kernel .config
@@ -322,7 +319,7 @@ linux_chkconfig_present() {
 }
 
 # @FUNCTION: linux_chkconfig_module
-# @USAGE: option
+# @USAGE: <option>
 # @RETURN: true or false
 # @DESCRIPTION:
 # It checks that CONFIG_<option>=m is present in the current kernel .config
@@ -334,7 +331,7 @@ linux_chkconfig_module() {
 }
 
 # @FUNCTION: linux_chkconfig_builtin
-# @USAGE: option
+# @USAGE: <option>
 # @RETURN: true or false
 # @DESCRIPTION:
 # It checks that CONFIG_<option>=y is present in the current kernel .config
@@ -346,7 +343,7 @@ linux_chkconfig_builtin() {
 }
 
 # @FUNCTION: linux_chkconfig_string
-# @USAGE: option
+# @USAGE: <option>
 # @RETURN: CONFIG_<option>
 # @DESCRIPTION:
 # It prints the CONFIG_<option> value of the current kernel .config (it requires a configured kernel).
@@ -361,7 +358,7 @@ linux_chkconfig_string() {
 # ---------------------------------------
 
 # @FUNCTION: kernel_is
-# @USAGE: [-lt -gt -le -ge -eq] major_number [minor_number patch_number]
+# @USAGE: [-lt -gt -le -ge -eq] <major_number> [minor_number patch_number]
 # @RETURN: true or false
 # @DESCRIPTION:
 # It returns true when the current kernel version satisfies the comparison against the passed version.
@@ -813,7 +810,7 @@ check_extra_config() {
 			linux_chkconfig_present ${config} || error=1
 		fi
 
-		if [[ ${error} > 0 ]]; then
+		if [[ ${error} -gt 0 ]]; then
 			local report_func="eerror" local_error
 			local_error="ERROR_${config}"
 			local_error="${!local_error}"
@@ -848,14 +845,14 @@ check_extra_config() {
 		fi
 	done
 
-	if [[ ${hard_errors_count} > 0 ]]; then
+	if [[ ${hard_errors_count} -gt 0 ]]; then
 		eerror "Please check to make sure these options are set correctly."
 		eerror "Failure to do so may cause unexpected problems."
 		eerror "Once you have satisfied these options, please try merging"
 		eerror "this package again."
 		export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
 		die "Incorrect kernel configuration options"
-	elif [[ ${soft_errors_count} > 0 ]]; then
+	elif [[ ${soft_errors_count} -gt 0 ]]; then
 		ewarn "Please check to make sure these options are set correctly."
 		ewarn "Failure to do so may cause unexpected problems."
 	else

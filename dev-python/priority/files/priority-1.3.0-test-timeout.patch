@@ -1,0 +1,20 @@
+diff -dupr a/test/test_priority.py b/test/test_priority.py
+--- a/test/test_priority.py	2017-01-27 11:57:03.000000000 +0100
++++ b/test/test_priority.py	2019-11-22 09:03:52.772710452 +0100
+@@ -12,7 +12,7 @@ import itertools
+ 
+ import pytest
+ 
+-from hypothesis import given
++from hypothesis import given, settings
+ from hypothesis.strategies import (
+     integers, lists, tuples, sampled_from
+ )
+@@ -489,6 +489,7 @@ class TestPriorityTreeOutput(object):
+     fairness and equidistribution.
+     """
+     @given(STREAMS_AND_WEIGHTS)
++    @settings(deadline=None)
+     def test_period_of_repetition(self, streams_and_weights):
+         """
+         The period of repetition of a priority sequence is given by the sum of

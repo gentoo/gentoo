@@ -18,7 +18,7 @@ LIB_DEPEND=">=app-text/mupdf-1.12.0:0=[static-libs]
 	media-libs/openjpeg:2[static-libs]
 	media-libs/fontconfig:1.0[static-libs]
 	media-libs/freetype:2[static-libs]
-	media-libs/jbig2dec[static-libs]
+	media-libs/jbig2dec:=[static-libs]
 	sys-libs/zlib[static-libs]
 	virtual/jpeg:0[static-libs]
 	x11-libs/libX11[static-libs]"

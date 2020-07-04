@@ -23,7 +23,7 @@ DEPEND=">=dev-lang/ocaml-4.02.3[ocamlopt?]
 	coq? ( sci-mathematics/coq )
 	doc? ( dev-tex/rubber )
 	gtk? ( dev-ml/lablgtk[sourceview] )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	html? ( dev-tex/hevea )
 	hypothesis-selection? ( dev-ml/ocamlgraph )
 	zarith? ( dev-ml/zarith )

@@ -24,12 +24,6 @@
 			Use pam_systemd module to register user sessions in the systemd
 			control group hierarchy.
 		</flag>
-		<flag name="gnome-keyring">
-			Enable pam_gnome_keyring module on system login stack. This
-			enables proper Gnome Keyring access to logins, whether they are
-			done with the login shell, a Desktop Manager or a remote login
-			systems such as SSH.
-		</flag>
 		<flag name="debug">
 			Enable debug information logging on syslog(3) for all the
 			modules supporting this in the system authentication and system

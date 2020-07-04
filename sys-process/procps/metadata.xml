@@ -13,5 +13,6 @@
 </use>
 <upstream>
 	<remote-id type="sourceforge">procps</remote-id>
+	<remote-id type="cpe">cpe:/a:procps_project:procps</remote-id>
 </upstream>
 </pkgmetadata>

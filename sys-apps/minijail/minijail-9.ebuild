@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+seccomp test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/libcap-ng:="
 DEPEND="${RDEPEND}

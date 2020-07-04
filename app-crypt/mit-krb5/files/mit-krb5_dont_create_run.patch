@@ -1,0 +1,10 @@
+--- src/Makefile.in	2019-12-12 10:15:51.674552983 +0300
++++ src/Makefile.in	2019-12-12 10:16:33.205543490 +0300
+@@ -71,7 +71,6 @@
+ 		$(KRB5_AD_MODULE_DIR) \
+ 		$(KRB5_LIBKRB5_MODULE_DIR) $(KRB5_TLS_MODULE_DIR) \
+ 		@localstatedir@ @localstatedir@/krb5kdc \
+-		@runstatedir@ @runstatedir@/krb5kdc \
+ 		$(KRB5_INCSUBDIRS) $(datadir) $(EXAMPLEDIR) \
+ 		$(PKGCONFIG_DIR)
+ 

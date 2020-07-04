@@ -1,0 +1,30 @@
+--- a/chai/chai.py
++++ b/chai/chai.py
+@@ -62,11 +62,6 @@
+             try:
+                 func(self, *args, **kwargs)
+             except UnexpectedCall as e:
+-                # if this is not python3, use python2 syntax
+-                if not hasattr(e, '__traceback__'):
+-                    from .python2 import reraise
+-                    reraise(
+-                        AssertionError, '\n\n' + str(e), sys.exc_info()[-1])
+                 exc = AssertionError('\n\n' + str(e))
+                 setattr(exc, '__traceback__', sys.exc_info()[-1])
+                 raise exc
+--- a/chai/python2.py
++++ b/chai/python2.py
+@@ -1,3 +0,0 @@
+-
+-def reraise(exc, msg, traceback):
+-    raise exc, msg, traceback
+--- a/chai.egg-info/SOURCES.txt
++++ b/chai.egg-info/SOURCES.txt
+@@ -10,7 +10,6 @@
+ chai/exception.py
+ chai/expectation.py
+ chai/mock.py
+-chai/python2.py
+ chai/spy.py
+ chai/stub.py
+ chai.egg-info/PKG-INFO

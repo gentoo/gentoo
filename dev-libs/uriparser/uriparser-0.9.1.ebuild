@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,7 @@ DEPEND="virtual/pkgconfig
 	test? ( >=dev-cpp/gtest-1.8.1 )"
 
 REQUIRED_USE="test? ( unicode )"
+RESTRICT="!test? ( test )"
 
 DOCS=( AUTHORS ChangeLog THANKS )
 
@@ -27,8 +28,7 @@ src_configure() {
 		$(use_enable test) \
 		--enable-char \
 		$(use_enable unicode wchar_t) \
-		$(use_enable doc) \
-		--docdir=/usr/share/doc/${PF}/
+		$(use_enable doc)
 }
 
 src_install() {

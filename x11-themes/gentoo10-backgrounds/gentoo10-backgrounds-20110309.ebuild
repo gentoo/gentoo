@@ -29,10 +29,10 @@ src_test() { :; }
 src_install() {
 
 	insinto /usr/share/backgrounds/gentoo10
-	doins -r {purple,blue,red}.xml netbook standard wide wider || die
+	doins -r {purple,blue,red}.xml netbook standard wide wider
 
 	insinto /usr/share/gnome-background-properties
-	doins desktop-*.xml || die
+	doins desktop-*.xml
 
 	# KDE wallpapers
 	for color in purple blue red; do

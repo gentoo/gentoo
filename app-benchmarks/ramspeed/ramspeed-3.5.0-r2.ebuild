@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ IUSE="cpu_flags_x86_sse pic"
 
 S="${WORKDIR}/${MY_P}"
 
-src_configure(){
+src_configure() {
 	local obj
 	local arch_prefix=./
 
@@ -53,7 +53,7 @@ src_configure(){
 	echo "ramsmp: ${obj[@]}" > Makefile
 }
 
-src_install(){
+src_install() {
 	dobin ramsmp
 	dosym ramsmp /usr/bin/ramspeed
 	dodoc HISTORY README

@@ -1,0 +1,23 @@
+From e4125b66138c4258f13e69dc4bd8e6df41323599 Mon Sep 17 00:00:00 2001
+From: 4lex4 <4lex49@zoho.com>
+Date: Tue, 27 Aug 2019 17:30:50 +0300
+Subject: [PATCH] ~ Remove a deprecated value from the .desktop file
+
+---
+ resources/unix/scantailor.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/resources/unix/scantailor.desktop b/resources/unix/scantailor.desktop
+index 9e49d5e..4df7d97 100644
+--- a/resources/unix/scantailor.desktop
++++ b/resources/unix/scantailor.desktop
+@@ -7,5 +7,5 @@ Icon=ScanTailor
+ Terminal=false
+ X-MultipleArgs=false
+ Type=Application
+-Categories=Graphics;Applications;
++Categories=Graphics;
+ MimeType=application/x-scantailor-project;
+-- 
+2.26.2
+

@@ -10,7 +10,4 @@
 <remote-id type="github">esnet/iperf</remote-id>
 <remote-id type="sourceforge">iperf</remote-id>
 </upstream>
-<use>
-<flag name='profiling'>Install profiled iperf3 binary iperf3_profile</flag>
-</use>
 </pkgmetadata>

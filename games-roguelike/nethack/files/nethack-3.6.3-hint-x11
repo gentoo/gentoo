@@ -1,0 +1,23 @@
+#-PRE
+
+LINK=$(CC)
+
+VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xbm rip.xpm
+
+WINSRC = $(WINTTYSRC) $(WINX11SRC)
+WINOBJ = $(WINTTYOBJ) $(WINX11OBJ)
+WINLIB = $(WINTTYLIB) $(WINX11LIB)
+
+GAMEPERM = 02755
+VARDIRPERM = 0770
+VARFILEPERM = 0660
+CHOWN = true
+CHGRP = true
+
+
+#-POST
+
+# needed for external pager, bug #57410
+DATNODLB = $(VARDATND) license symbols $(DATHELP)
+
+WINX11LIB = -lXaw -lXmu -lXext -lXt -lX11 -lXpm

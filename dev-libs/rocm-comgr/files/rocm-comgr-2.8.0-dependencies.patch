@@ -1,0 +1,84 @@
+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/pull/19
+
+From 5f872ae4a059ac6a09669e301b8a60b11a25eb42 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Wed, 31 Jul 2019 11:51:17 -0400
+Subject: [PATCH 1/2] Link additional required LLVM libraries
+
+Without these additional required dependencies, linking fails with errors such as:
+`undefined reference to `llvm::errs()'`
+---
+ CMakeLists.txt | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 454b830..95e5799 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -185,7 +185,11 @@ add_subdirectory(yaml-cpp EXCLUDE_FROM_ALL)
+ include_directories(./yaml-cpp/include)
+ 
+ set(CLANG_LIBS
+-  clangFrontendTool)
++  clangFrontendTool
++  clangFrontend
++  clangBasic
++  clangDriver
++  clangSerialization)
+ 
+ set(LLD_LIBS
+   lldELF
+@@ -193,8 +197,19 @@ set(LLD_LIBS
+ 
+ llvm_map_components_to_libnames(LLVM_LIBS
+   ${LLVM_TARGETS_TO_BUILD}
++  Option
+   DebugInfoDWARF
+-  Symbolize)
++  Symbolize
++  Support
++  Object
++  BitWriter
++  MC
++  MCParser
++  MCDisassembler
++  Core
++  IRReader
++  CodeGen
++  Linker)
+ 
+ target_link_libraries(amd_comgr
+   PUBLIC
+
+From ffc4d18a7ae1fbd5c8807eec4ca8aed043524811 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Mon, 30 Sep 2019 10:52:12 -0400
+Subject: [PATCH 2/2] Link more required LLVM libraries
+
+Without these additional required dependencies, linking fails with errors such as:
+```
+in function `amd_comgr_index_list_metadata':
+<artificial>:(.text+0x4d4c): undefined reference to `llvm::msgpack::ArrayDocNode::operator[](unsigned long)'
+```
+and
+```
+undefined reference to `llvm::msgpack::Document::fromYAML(llvm::StringRef)'
+```
+---
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 95e5799..b6123a6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -209,7 +209,8 @@ llvm_map_components_to_libnames(LLVM_LIBS
+   Core
+   IRReader
+   CodeGen
+-  Linker)
++  Linker
++  BinaryFormat)
+ 
+ target_link_libraries(amd_comgr
+   PUBLIC

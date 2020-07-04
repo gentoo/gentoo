@@ -9,7 +9,7 @@ RENPY_SLOT="6.99"
 MY_PN="Asphyxia"
 
 DESCRIPTION="Visual novel where the main character has one day to make peace with her friend"
-HOMEPAGE="https://ebihime.itch.io/${PN}"
+HOMEPAGE="https://ebihime.itch.io/asphyxia"
 SRC_URI="${MY_PN}-${PV}-linux.tar"
 LICENSE="all-rights-reserved"
 SLOT="0"

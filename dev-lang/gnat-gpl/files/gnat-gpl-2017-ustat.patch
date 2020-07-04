@@ -1,5 +1,5 @@
---- a/gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2019-04-19 20:53:11.382114157 +0200
-+++ b/gcc-6-gpl-2017-src/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2019-04-19 20:57:10.725037767 +0200
+--- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2019-04-19 20:53:11.382114157 +0200
++++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2019-04-19 20:57:10.725037767 +0200
 @@ -150,7 +150,6 @@
  # include <sys/procfs.h>
  #endif

@@ -2,7 +2,7 @@ Fix build with Qt 5.11.
 
 Bug: https://bugs.gentoo.org/661596
 
---- a/App/tmp/CanvasAppliance.h
+--- a/App/CanvasAppliance.h
 +++ b/App/CanvasAppliance.h
 @@ -17,6 +17,9 @@
  

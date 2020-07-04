@@ -25,7 +25,7 @@ DESCRIPTION="Prometheus exporter for Burrow"
 HOMEPAGE="https://github.com/jirwin/burrow_exporter"
 SRC_URI="${ARCHIVE_URI}
 	${EGO_VENDOR_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 IUSE=""
 

@@ -1,8 +1,6 @@
 Modified version of.
 http://cvs.openpkg.org/fileview?f=openpkg-src/cvsps/cvsps.patch&v=1.13
 
-diff --git a/cache.c b/cache.c
-index 4c51cf7..2c3918d 100644
 --- a/cache.c
 +++ b/cache.c
 @@ -361,7 +361,7 @@ static void parse_cache_revision(PatchSetMember * psm, const char * p_buff)
@@ -14,8 +12,6 @@ index 4c51cf7..2c3918d 100644
      {
  	char * c = strchr(s, ':');
  
-diff --git a/cvs_direct.c b/cvs_direct.c
-index e281848..5aa8f0f 100644
 --- a/cvs_direct.c
 +++ b/cvs_direct.c
 @@ -92,12 +92,12 @@ CvsServerCtx * open_cvs_server(char * p_root, int compress)
@@ -86,8 +82,6 @@ index e281848..5aa8f0f 100644
  	if (!tok2)
  	{
  	    debug(DEBUG_APPERROR, "diff_opts parse_error: argument %s requires two arguments", tok);
-diff --git a/util.c b/util.c
-index 7884c84..f3ab3a3 100644
 --- a/util.c
 +++ b/util.c
 @@ -316,3 +316,31 @@ void strcpy_a(char * dst, const char * src, int n)
@@ -122,8 +116,6 @@ index 7884c84..f3ab3a3 100644
 +    return NULL;
 +}
 +
-diff --git a/util.h b/util.h
-index ff2d3a0..336fd63 100644
 --- a/util.h
 +++ b/util.h
 @@ -24,5 +24,6 @@ void timing_stop(const char *);

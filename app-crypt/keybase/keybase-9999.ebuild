@@ -9,7 +9,7 @@ DESCRIPTION="Client for keybase.io"
 HOMEPAGE="https://keybase.io/"
 EGIT_REPO_URI="https://github.com/keybase/client.git"
 
-LICENSE="BSD"
+LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
 KEYWORDS=""
 IUSE=""

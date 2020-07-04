@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -12,8 +12,9 @@ SRC_URI="https://github.com/lepture/python-${PN}/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="
@@ -32,7 +33,11 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( example/. )
+	if use examples; then
+		docinto examples
+		dodoc -r example/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 
 	distutils-r1_python_install_all
 }

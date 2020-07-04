@@ -1,0 +1,11 @@
+--- a/src/daemon_client/trq_auth_daemon.c	2017-08-29 18:25:11.000000000 -0400
++++ b/src/daemon_client/trq_auth_daemon.c	2019-10-21 13:58:47.441212099 -0400
+@@ -134,7 +134,7 @@
+     {
+        openlog("daemonize_trqauthd", LOG_PID | LOG_NOWAIT, LOG_DAEMON);
+        syslog(LOG_ALERT, "Failed to create client_logs directory: %s errno: %d error message: %s", path_log, errno, strerror(errno));
+-       sprintf(error_buf,"Failed to create client_logs directory: %s, error message: %s",path_log,strerror(errno));
++       snprintf(error_buf,sizeof(error_buf),"Failed to create client_logs directory: %s, error message: %s",path_log,strerror(errno));
+        log_err(errno,__func__,error_buf);
+        closelog();
+        return(PBSE_SYSTEM);

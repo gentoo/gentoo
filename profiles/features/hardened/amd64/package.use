@@ -6,7 +6,5 @@
 # Bugs 358929, 490276, 513464, 523736 and 512208.
 media-libs/x264 pic
 media-video/ffmpeg pic
-media-video/libav pic
 media-libs/mesa pic
-media-libs/libpostproc pic
 media-libs/xvid pic

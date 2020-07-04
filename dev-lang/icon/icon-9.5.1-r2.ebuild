@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,8 +31,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.5.1-flags.patch
 	# https://bugs.gentoo.org/669330
 	# Fix glibc 2.28 problem.
-	# Patch has also been submitted for upstream approval
+	# Patch has been accepted upstream, but is not yet in a release
 	"${FILESDIR}"/${PN}-9.5.1-fpoll.patch
+
+	# https://bugs.gentoo.org/716212
+	# Fix building with musl
+	# Patch has been accepted upstream, but is not yet in a release
+	"${FILESDIR}"/${PN}-9.5.1-musl.patch
 )
 
 src_prepare() {
@@ -61,8 +66,13 @@ src_configure() {
 		-e 's:-L/usr/X11R6/lib64::g' \
 		-e 's:-L/usr/X11R6/lib::g' \
 		-e 's:-I/usr/X11R6/include::g' \
+		-e 's:-I/usr/X11R6/include::g' \
+		-e '/^CFLAGS/d' \
 		Makedefs || die "sed of Makedefs failed"
 
+	if use elibc_musl; then
+	    append-flags "-D_MUSL"
+	fi
 	append-flags $(test-flags -fno-strict-aliasing -fwrapv)
 }
 
@@ -85,7 +95,9 @@ src_install() {
 	dosym ../$(get_libdir)/icon/bin/icont /usr/bin/icont
 	dosym ../$(get_libdir)/icon/bin/iconx /usr/bin/iconx
 	dosym ../$(get_libdir)/icon/bin/icon  /usr/bin/icon
-	dosym ../$(get_libdir)/icon/bin/vib   /usr/bin/vib
+	if use X; then
+		dosym ../$(get_libdir)/icon/bin/vib /usr/bin/vib
+	fi
 
 	cd "${S}/man/man1" || die
 	doman "${PN}"t.1

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python3_5 python3_6 )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1
 
@@ -14,12 +14,13 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/SELinuxProject/setools.git"
 else
 	SRC_URI="https://github.com/SELinuxProject/setools/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 IUSE="X test"
+RESTRICT="!test? ( test )"
 S="${WORKDIR}/${PN}"
 
 RDEPEND="${PYTHON_DEPS}

@@ -11,7 +11,7 @@ SRC_URI="http://users.telenet.be/geertu/Download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="m68k ~ppc"
+KEYWORDS="~m68k ~ppc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.04-20021014.diff

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit eutils flag-o-matic python-any-r1 toolchain-funcs
 
@@ -16,8 +16,9 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~x86-linux"
 IUSE="acl caps gmp hostname kill multicall nls selinux +split-usr static test userland_BSD vanilla xattr"
+RESTRICT="!test? ( test )"
 
 LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	caps? ( sys-libs/libcap )
@@ -52,6 +53,10 @@ RDEPEND+="
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
 	!<net-fs/netatalk-2.0.3-r4"
+
+python_check_deps() {
+	has_version --host-root "dev-python/pyinotify[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	if use test ; then

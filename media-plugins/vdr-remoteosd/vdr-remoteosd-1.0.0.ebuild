@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -12,7 +12,5 @@ SRC_URI="http://vdr.schmirler.de/remoteosd/${P}.tgz"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm x86"
-IUSE=""
 
 DEPEND=">=media-video/vdr-2.0.0"
-RDEPEND="${DEPEND}"

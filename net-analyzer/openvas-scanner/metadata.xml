@@ -2,14 +2,23 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hasan.calisir@psauxit.com</email>
-		<name>Hasan ÇALIŞIR</name>
+		<email>jonas.licht@gmail.com</email>
+		<name>Jonas Licht</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="cron">Install a cron job to update GVM's feed daily.</flag>
 		<flag name="extras">Html docs support</flag>
 	</use>
+	<longdescription lang="en">
+	Open Vulnerability Assessment System (OpenVAS) Scanner is the Greenbone Vulnerability Management (GVM) Solution.
+	It is used for the Greenbone Security Manager appliances and is a full-featured scan engine that executes a continuously 
+	updated and extended feed of Network Vulnerability Tests (NVTs).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/openvas-scanner</remote-id>
+	</upstream>
 </pkgmetadata>

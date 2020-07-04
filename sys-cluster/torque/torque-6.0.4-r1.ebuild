@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e921
 LICENSE="torque-2.5"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="autorun cgroups cpusets +crypt doc drmaa kernel_linux libressl munge nvidia quickcommit server +syslog tk"
+IUSE="autorun cgroups cpusets +crypt doc kernel_linux libressl munge nvidia quickcommit server +syslog tk"
 
 DEPEND_COMMON="
 	sys-libs/zlib
@@ -47,8 +47,10 @@ RDEPEND="${DEPEND_COMMON}
 S="${WORKDIR}"/${PN}-6a0b37f85c7d644e9217cbab1542792d646f59a6
 
 PATCHES=(
+	"${FILESDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${PN}-6.0.3-fix-emptystring-comparison.patch
 	"${FILESDIR}"/${P}-no-openssl.patch
+	"${FILESDIR}"/${P}-error_buf_overflow_prevent.patch
 )
 
 pkg_setup() {
@@ -91,17 +93,18 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags "-fpermissive"
+
 	econf \
 		$(use_enable tk gui) \
 		$(use_enable tk tcl-qstat) \
 		$(use_enable syslog) \
 		$(use_enable server) \
-		$(use_enable drmaa) \
+		--disable-drmaa \
 		$(use_enable munge munge-auth) \
 		$(use_enable nvidia nvidia-gpus) \
 		$(usex crypt "--with-rcp=scp" "--with-rcp=mom_rcp") \
 		$(usex kernel_linux $(use_enable cpusets cpuset) --disable-cpuset) \
-		$(usex kernel_linux $(use_enable cpusets geometry-request) --disable-geometry-request) \
 		$(usex kernel_linux $(use_enable cgroups) --disable-cgroups) \
 		$(use_enable autorun) \
 		$(use_enable quickcommit) \
@@ -171,6 +174,6 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		elog "If this is the first time torque has been installed, then you are not"
 		elog "ready to start the server.  Please refer to the documentation located at:"
-		elog "http://docs.adaptivecomputing.com/torque/${PN//./-}/adminGuide/help.htm#topics/torque/1-installConfig/initializeConfigOnServer.htm"
+		elog "http://docs.adaptivecomputing.com/torque/${PV//./-}/adminGuide/torquehelp.htm#topics/torque/1-installConfig/initializeConfigOnServer.htm"
 	fi
 }

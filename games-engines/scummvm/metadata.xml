@@ -8,6 +8,8 @@
   <use>
     <flag name="fluidsynth">compile with support for fluidsynth</flag>
     <flag name="mpeg2">enable mpeg2 codec for cutscenes</flag>
+    <flag name="net">enable cloud support via <pkg>media-libs/sdl2-net</pkg></flag>
+    <flag name="speech">enable text-to-speech support through <pkg>app-accessibility/speech-dispatcher</pkg></flag>
     <flag name="unsupported">enable unsupported and/or broken game engines (you're on your own)</flag>
   </use>
   <upstream>

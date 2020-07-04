@@ -7,7 +7,7 @@ if [[ ${PV#9999} != ${PV} ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.linuxtv.org/dtv-scan-tables.git"
 else
-	COMMIT="c1986d5148d8"
+	COMMIT="f07bde777d4d"
 	SRC_URI="https://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-${PV:3:4}-${PV:7:2}-${PV:9:2}-${COMMIT}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}/usr/share/dvb"
@@ -18,17 +18,9 @@ HOMEPAGE="https://linuxtv.org/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-DEPEND=">=media-tv/v4l-utils-1.4"
+BDEPEND=">=media-tv/v4l-utils-1.4"
 
-PATCHES=( "${FILESDIR}"/Makefile.patch )
 DOCS=( README )
-
-src_prepare() {
-	default
-
-	# Conversion failure!
-	rm -v dvb-t/ke-Nairobi || die
-}
 
 src_compile() {
 	emake dvbv3 dvbv5

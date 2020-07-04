@@ -1,0 +1,52 @@
+diff --git a/tests/test_pytest_cov.py b/tests/test_pytest_cov.py
+index e79e9aa..198478b 100644
+--- a/tests/test_pytest_cov.py
++++ b/tests/test_pytest_cov.py
+@@ -662,6 +662,7 @@ def test_fail(p):
+     ])
+ 
+ 
++@pytest.mark.skipif("sys.hexversion >= 0x3080000", reason="Seems buggy on python3.8")
+ @pytest.mark.skipif('sys.platform == "win32" or platform.python_implementation() == "PyPy"')
+ def test_dist_combine_racecondition(testdir):
+     script = testdir.makepyfile("""
+@@ -1018,6 +1019,7 @@ def test_funcarg_not_active(testdir):
+     assert result.ret == 0
+ 
+ 
++@pytest.mark.skipif("sys.hexversion >= 0x3080000", reason="https://bugs.python.org/issue38227")
+ @pytest.mark.skipif("sys.version_info[0] < 3", reason="no context manager api on Python 2")
+ @pytest.mark.skipif('sys.platform == "win32"', reason="multiprocessing support is broken on Windows")
+ @pytest.mark.skipif('platform.python_implementation() == "PyPy"', reason="often deadlocks on PyPy")
+@@ -1059,6 +1061,7 @@ def test_run_target():
+     assert result.ret == 0
+ 
+ 
++@pytest.mark.skipif("sys.hexversion >= 0x3080000", reason="https://bugs.python.org/issue38227")
+ @pytest.mark.skipif('sys.platform == "win32"', reason="multiprocessing support is broken on Windows")
+ @pytest.mark.skipif('platform.python_implementation() == "PyPy"', reason="often deadlocks on PyPy")
+ def test_multiprocessing_pool_terminate(testdir):
+@@ -1141,6 +1144,7 @@ def test_run_target():
+     assert result.ret == 0
+ 
+ 
++@pytest.mark.skipif("sys.hexversion >= 0x3080000", reason="https://bugs.python.org/issue38227")
+ @pytest.mark.skipif('sys.platform == "win32"', reason="multiprocessing support is broken on Windows")
+ def test_multiprocessing_process(testdir):
+     pytest.importorskip('multiprocessing.util')
+@@ -1171,6 +1175,7 @@ def test_run_target():
+     assert result.ret == 0
+ 
+ 
++@pytest.mark.skipif("sys.hexversion >= 0x3080000", reason="https://bugs.python.org/issue38227")
+ @pytest.mark.skipif('sys.platform == "win32"', reason="multiprocessing support is broken on Windows")
+ def test_multiprocessing_process_no_source(testdir):
+     pytest.importorskip('multiprocessing.util')
+@@ -1201,6 +1206,7 @@ def test_run_target():
+     assert result.ret == 0
+ 
+ 
++@pytest.mark.skipif("sys.hexversion >= 0x3080000", reason="https://bugs.python.org/issue38227")
+ @pytest.mark.skipif('sys.platform == "win32"', reason="multiprocessing support is broken on Windows")
+ def test_multiprocessing_process_with_terminate(testdir):
+     pytest.importorskip('multiprocessing.util')

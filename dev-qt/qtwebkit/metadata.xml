@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="geolocation">Enable physical position determination via <pkg>dev-qt/qtpositioning</pkg></flag>
-		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="gstreamer">Enable HTML5 audio/video support via <pkg>media-libs/gstreamer</pkg> using SLOT 1.0</flag>
 		<flag name="hyphen">Enable hyphenation support via <pkg>dev-libs/hyphen</pkg></flag>
 		<flag name="multimedia">Enable HTML5 audio/video support via <pkg>dev-qt/qtmultimedia</pkg></flag>

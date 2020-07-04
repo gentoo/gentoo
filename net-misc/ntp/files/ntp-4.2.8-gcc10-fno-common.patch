@@ -1,0 +1,22 @@
+--- ntp-4.2.8p14/include/ntp_config.h.psl
++++ ntp-4.2.8p14/include/ntp_config.h
+@@ -280,7 +280,7 @@ typedef struct settrap_parms_tag {
+  * Poll Skew List
+  */
+ 
+-psl_item psl[17-3+1];		/* values for polls 3-17 */
++extern psl_item psl[17-3+1];	/* values for polls 3-17 */
+ 				/* To simplify the runtime code we */
+ 				/* don't want to have to special-case */
+ 				/* dealing with a default */
+--- ntp-4.2.8p14/ntpd/ntp_config.c.psl
++++ ntp-4.2.8p14/ntpd/ntp_config.c
+@@ -202,6 +202,8 @@ int	cryptosw;		/* crypto command called
+ 
+ extern char *stats_drift_file;	/* name of the driftfile */
+ 
++psl_item psl[17-3+1];        /* values for polls 3-17 */
++
+ #ifdef BC_LIST_FRAMEWORK_NOT_YET_USED
+ /*
+  * backwards compatibility flags

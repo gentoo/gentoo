@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ros-catkin.eclass
@@ -12,11 +12,21 @@
 # Provides function for building ROS packages on Gentoo.
 # It supports selectively building messages, multi-python installation, live ebuilds (git only).
 
+# @ECLASS-VARIABLE: CMAKE_ECLASS
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set to "cmake-utils" for EAPI 5 and 6, "cmake" for EAPI-7.
+
 case "${EAPI:-0}" in
 	0|1|2|3|4)
 		die "EAPI='${EAPI}' is not supported"
 		;;
+	[56])
+		CMAKE_ECLASS=cmake-utils
+		;;
 	*)
+		CMAKE_ECLASS=cmake
 		;;
 esac
 
@@ -47,15 +57,16 @@ fi
 # version. The idea here is to have a ROS_COMPAT in the same vein as
 # PYTHON_COMPAT where packages would define what distro they can work on, then
 # we'd have ros_distro_gentoo_python_2_7 & co plus the OSRF ones (lunar, etc.).
-# Note that this uncondtionally pulls python but in the ROS world there will
+# Note that this unconditionally pulls python but in the ROS world there will
 # most certainly be something pulling python anyway.
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
-inherit ${SCM} python-r1 cmake-utils flag-o-matic
+inherit ${SCM} python-r1 ${CMAKE_ECLASS} flag-o-matic
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-util/catkin[${PYTHON_USEDEP}]
@@ -133,13 +144,13 @@ HOMEPAGE="https://wiki.ros.org/${PN} ${ROS_REPO_URI}"
 
 # @FUNCTION: ros-catkin_src_prepare
 # @DESCRIPTION:
-# Calls cmake-utils_src_prepare (so that PATCHES array is handled there) and initialises the workspace
+# Calls cmake_src_prepare (so that PATCHES array is handled there) and initialises the workspace
 # by installing a recursive CMakeLists.txt to handle bundles.
 ros-catkin_src_prepare() {
 	# If no multibuild, just use cmake IN_SOURCE support
 	[ -n "${CATKIN_IN_SOURCE_BUILD}" ] && export CMAKE_IN_SOURCE_BUILD=yes
 
-	cmake-utils_src_prepare
+	${CMAKE_ECLASS}_src_prepare
 
 	if [ ! -f "${S}/CMakeLists.txt" ] ; then
 		catkin_init_workspace || die
@@ -147,7 +158,7 @@ ros-catkin_src_prepare() {
 
 	# Most packages require C++11 these days. Do it here, in src_prepare so that
 	# ebuilds can override it in src_configure.
-	append-cxxflags '-std=c++11'
+	append-cxxflags '-std=c++14'
 }
 
 # @FUNCTION: ros-catkin_python_setup
@@ -186,7 +197,7 @@ ros-catkin_src_configure() {
 	fi
 
 	local mycmakeargs=(
-		"$(cmake-utils_use test CATKIN_ENABLE_TESTING)"
+		"-DCATKIN_ENABLE_TESTING=$(usex test)"
 		"-DCATKIN_BUILD_BINARY_PACKAGE=ON"
 		"-DCATKIN_PREFIX_PATH=${SYSROOT:-${EROOT}}/usr"
 		"${mycatkincmakeargs[@]}"
@@ -201,7 +212,7 @@ ros-catkin_src_configure() {
 		export CMAKE_USE_DIR="${BUILD_DIR}"
 	fi
 
-	cmake-utils_src_configure "${@}"
+	${CMAKE_ECLASS}_src_configure "${@}"
 }
 
 # @FUNCTION: ros-catkin_src_compile
@@ -209,7 +220,7 @@ ros-catkin_src_configure() {
 # Builds a catkin-based package.
 ros-catkin_src_compile() {
 	ros-catkin_python_setup
-	cmake-utils_src_compile "${@}"
+	${CMAKE_ECLASS}_src_compile "${@}"
 }
 
 # @FUNCTION: ros-catkin_src_test
@@ -225,8 +236,13 @@ ros-catkin_src_test() {
 		einfo "Regenerating setup_cached.sh for tests"
 		${PYTHON:-python} catkin_generated/generate_cached_setup.py || die
 	fi
-	nonfatal cmake-utils_src_make tests
-	cmake-utils_src_test "${@}"
+
+	if [[ ${CMAKE_ECLASS} = cmake-utils ]]; then
+		nonfatal cmake-utils_src_make tests
+	else
+		nonfatal cmake_build tests
+	fi
+	${CMAKE_ECLASS}_src_test "${@}"
 }
 
 # @FUNCTION: ros-catkin_src_install
@@ -239,7 +255,7 @@ ros-catkin_src_install() {
 		export CMAKE_USE_DIR="${BUILD_DIR}"
 	fi
 
-	cmake-utils_src_install "${@}"
+	${CMAKE_ECLASS}_src_install "${@}"
 	if [ ! -f "${T}/.catkin_python_symlinks_generated" -a -d "${D}/${PYTHON_SCRIPTDIR}" ]; then
 		dodir /usr/bin
 		for i in "${D}/${PYTHON_SCRIPTDIR}"/* ; do

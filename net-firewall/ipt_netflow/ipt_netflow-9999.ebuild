@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,16 +27,27 @@ DEPEND="${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
-	"${FILESDIR}/${PN}-2.3-flags.patch"
+	"${FILESDIR}/${PN}-9999-gentoo.patch"
 )
 
 pkg_setup() {
+	linux-info_pkg_setup
+
+	local CONFIG_CHECK="BRIDGE_NETFILTER ~IP_NF_IPTABLES VLAN_8021Q"
+	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
+	if use natevents; then
+		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
+		if kernel_is lt 5 2; then
+			CONFIG_CHECK+=" NF_NAT_NEEDED"
+		else
+			CONFIG_CHECK+=" NF_NAT"
+		fi
+	fi
+
 	BUILD_TARGETS="all"
 	MODULE_NAMES="ipt_NETFLOW(ipt_netflow:${S})"
 	IPT_LIB="/usr/$(get_libdir)/xtables"
-	local CONFIG_CHECK="~IP_NF_IPTABLES VLAN_8021Q"
-	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
-	use natevents && CONFIG_CHECK+=" NF_CONNTRACK_EVENTS NF_NAT_NEEDED"
+
 	linux-mod_pkg_setup
 }
 
@@ -44,10 +55,14 @@ src_prepare() {
 	default
 
 	# Fix incorrect module version in sources
-	sed -i -e "/IPT_NETFLOW_VERSION/s/2.2/${PV}/" ipt_NETFLOW.c || die
+	sed -i \
+		-e '/IPT_NETFLOW_VERSION/s#"[0-9.]*"#"'${PV}'"#' \
+		ipt_NETFLOW.c || die
 
 	# Checking for directory is enough
-	sed -i -e 's:-s /etc/snmp/snmpd.conf:-d /etc/snmp:' configure || die
+	sed -i \
+		-e 's:-s /etc/snmp/snmpd.conf:-d /etc/snmp:' \
+		configure || die
 }
 
 do_conf() {

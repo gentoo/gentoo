@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 eutils git-r3 virtualx
 
@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]

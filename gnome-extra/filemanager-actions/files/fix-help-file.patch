@@ -1,0 +1,27 @@
+From: Carlos Maddela <e7appew@gmail.com>
+Date: Sat, 1 Dec 2018 03:33:29 +1100
+Subject: Launch the correct Gnome help file for spa-config-tool.
+
+Description: Launch the correct Gnome help file for spa-config-tool.
+Author: Carlos Maddela <e7appew@gmail.com>
+Forwarded: https://gitlab.gnome.org/GNOME/filemanager-actions/merge_requests/3
+Last-Update: 2018-12-04
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+---
+ src/ui/fma-menu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ui/fma-menu.c b/src/ui/fma-menu.c
+index f31037a..deb2d73 100644
+--- a/src/ui/fma-menu.c
++++ b/src/ui/fma-menu.c
+@@ -281,7 +281,7 @@ on_app_help( GSimpleAction *action, GVariant *parameter, gpointer user_data )
+ 	g_return_if_fail( user_data && FMA_IS_APPLICATION( user_data ));
+ 
+ 	error = NULL;
+-	gtk_show_uri( NULL, "ghelp:filemanager-actions-config-tool", GDK_CURRENT_TIME, &error );
++	gtk_show_uri( NULL, "ghelp:fma-config-tool", GDK_CURRENT_TIME, &error );
+ 	if( error ){
+ 		g_warning( "%s: %s", thisfn, error->message );
+ 		g_error_free( error );

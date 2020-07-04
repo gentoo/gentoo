@@ -1,0 +1,49 @@
+From 6d96aaac5662f734b0a933397ebb8cd4ff66606d Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sat, 23 May 2020 20:48:10 -0700
+Subject: [PATCH] backport gcc10 fix
+
+https://hg.openjdk.java.net/jdk8u/jdk8u/rev/39a7914e14a0
+---
+ common/autoconf/generated-configure.sh | 4 ++--
+ common/autoconf/toolchain.m4           | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/common/autoconf/generated-configure.sh b/common/autoconf/generated-configure.sh
+index 5e71c50..90c017d 100644
+--- a/common/autoconf/generated-configure.sh
++++ b/common/autoconf/generated-configure.sh
+@@ -27955,7 +27955,7 @@ $as_echo "$as_me: The result from running with --version was: \"$COMPILER_VERSIO
+     COMPILER_VERSION_STRING=`$ECHO $COMPILER_VERSION_OUTPUT | \
+         $SED -e 's/ *Copyright .*//'`
+     COMPILER_VERSION_NUMBER=`$ECHO $COMPILER_VERSION_OUTPUT | \
+-        $SED -e 's/^.* \([1-9]\.[0-9.]*\) .*$/\1/'`
++        $SED -e 's/^.* \([1-9][0-9]*\.[0-9.]*\) .*$/\1/'`
+   elif test  "x$TOOLCHAIN_TYPE" = xclang; then
+     # clang --version output typically looks like
+     #    Apple LLVM version 5.0 (clang-500.2.79) (based on LLVM 3.3svn)
+@@ -29696,7 +29696,7 @@ $as_echo "$as_me: The result from running with --version was: \"$COMPILER_VERSIO
+     COMPILER_VERSION_STRING=`$ECHO $COMPILER_VERSION_OUTPUT | \
+         $SED -e 's/ *Copyright .*//'`
+     COMPILER_VERSION_NUMBER=`$ECHO $COMPILER_VERSION_OUTPUT | \
+-        $SED -e 's/^.* \([1-9]\.[0-9.]*\) .*$/\1/'`
++        $SED -e 's/^.* \([1-9][0-9]*\.[0-9.]*\) .*$/\1/'`
+   elif test  "x$TOOLCHAIN_TYPE" = xclang; then
+     # clang --version output typically looks like
+     #    Apple LLVM version 5.0 (clang-500.2.79) (based on LLVM 3.3svn)
+diff --git a/common/autoconf/toolchain.m4 b/common/autoconf/toolchain.m4
+index e3a82c8..c0a4af5 100644
+--- a/common/autoconf/toolchain.m4
++++ b/common/autoconf/toolchain.m4
+@@ -433,7 +433,7 @@ AC_DEFUN([TOOLCHAIN_EXTRACT_COMPILER_VERSION],
+     COMPILER_VERSION_STRING=`$ECHO $COMPILER_VERSION_OUTPUT | \
+         $SED -e 's/ *Copyright .*//'`
+     COMPILER_VERSION_NUMBER=`$ECHO $COMPILER_VERSION_OUTPUT | \
+-        $SED -e 's/^.* \(@<:@1-9@:>@\.@<:@0-9.@:>@*\) .*$/\1/'`
++        $SED -e 's/^.* \(@<:@1-9@:>@@<:@0-9@:>@*\.@<:@0-9.@:>@*\) .*$/\1/'`
+   elif test  "x$TOOLCHAIN_TYPE" = xclang; then
+     # clang --version output typically looks like
+     #    Apple LLVM version 5.0 (clang-500.2.79) (based on LLVM 3.3svn)
+-- 
+2.26.2
+

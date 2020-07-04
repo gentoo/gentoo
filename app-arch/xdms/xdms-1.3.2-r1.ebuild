@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="xDMS - Amiga DMS disk image decompressor"
-HOMEPAGE="http://zakalwe.fi/~shd/foss/xdms"
-SRC_URI="http://zakalwe.fi/~shd/foss/xdms/${P}.tar.bz2"
+HOMEPAGE="https://zakalwe.fi/~shd/foss/xdms"
+SRC_URI="https://zakalwe.fi/~shd/foss/xdms/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"

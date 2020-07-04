@@ -1,0 +1,7 @@
+--- a/rle.h
++++ b/rle.h
+@@ -32,3 +32,3 @@ extern "C" {
+ 
+-const uint8_t rle_auxtab[8];
++extern const uint8_t rle_auxtab[8];
+ 

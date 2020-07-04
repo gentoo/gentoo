@@ -1,0 +1,41 @@
+From 7cf8c7ee7eaba1b5a11562a7ef656b0606383fe8 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Mon, 4 May 2020 21:52:09 +0000
+Subject: [PATCH] Disable test cases that requires network
+
+---
+ tests/unit/test_utils.py | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/tests/unit/test_utils.py b/tests/unit/test_utils.py
+index 4b9cd75c..1c73964b 100644
+--- a/tests/unit/test_utils.py
++++ b/tests/unit/test_utils.py
+@@ -47,16 +47,6 @@ DEP_PIP_PAIRS = [
+         },
+         "-e svn+svn://svn.myproject.org/svn/MyProject#egg=MyProject",
+     ),
+-    (
+-        # Extras in url
+-        {
+-            "discord.py": {
+-                "file": "https://github.com/Rapptz/discord.py/archive/async.zip",
+-                "extras": ["voice"],
+-            }
+-        },
+-        "https://github.com/Rapptz/discord.py/archive/async.zip#egg=discord.py[voice]",
+-    ),
+     (
+         {
+             "requests": {
+@@ -222,6 +212,7 @@ class TestUtils:
+         assert pipenv.utils.is_valid_url(url)
+         assert pipenv.utils.is_valid_url(not_url) is False
+ 
++    @pytest.mark.skip("Network required. Gentoo tests run in a sendbox without network")
+     @pytest.mark.utils
+     def test_download_file(self):
+         url = "https://github.com/pypa/pipenv/blob/master/README.md"
+-- 
+2.26.2
+

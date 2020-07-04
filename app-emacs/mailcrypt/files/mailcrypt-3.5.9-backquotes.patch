@@ -5,7 +5,7 @@
  	"Execute the forms in BODY with BUFFER as the current buffer.
  The value returned is the value of the last form in BODY."
 -	(` (save-excursion (set-buffer (, buffer)) (,@ body)))))
-+	`(save-excursion (set-buffer (, buffer)) (,@ body))))
++	`(save-excursion (set-buffer ,buffer) ,@body)))
    )
  
  (defun mc-gpg-debug-print (string)

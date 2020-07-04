@@ -12,7 +12,4 @@
 	<upstream>
 		<remote-id type="github">thoughtbot/rcm</remote-id>
 	</upstream>
-	<longdescription lang="en">
-		rcm is a management suite for dotfiles.
-	</longdescription>
 </pkgmetadata>

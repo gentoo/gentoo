@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,10 +15,12 @@ LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
 IUSE="cpu_flags_x86_sse2 +dns debug gdal openmp subversion test"
+RESTRICT="!test? ( test )"
 
+# TODO aeonwave
 COMMON_DEPEND="
 	dev-libs/expat
-	<dev-games/openscenegraph-3.5.6:=
+	dev-games/openscenegraph
 	media-libs/openal
 	net-misc/curl
 	sys-libs/zlib
@@ -32,6 +34,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2019.1.1-gdal3.patch"
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -49,7 +55,7 @@ src_configure() {
 		-DENABLE_PKGUTIL=ON
 		-DENABLE_RTI=OFF
 		-DENABLE_SIMD=OFF # see CPU_FLAGS
-		-DENABLE_SIMD_CODE=OFF
+		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
 		-DENABLE_SOUND=ON
 		-DENABLE_TESTS=$(usex test)
 		-DSIMGEAR_HEADLESS=OFF
@@ -61,7 +67,7 @@ src_configure() {
 	)
 
 	if use cpu_flags_x86_sse2; then
-		append-flags -msse2 -mfpmath=sse -ftree-vectorize -ftree-slp-vectorize
+		append-flags -msse2 -mfpmath=sse
 	fi
 
 	cmake-utils_src_configure

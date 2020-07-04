@@ -1,5 +1,5 @@
---- dist/configure.orig	2006-01-31 10:23:58.000000000 +0100
-+++ dist/configure	2006-01-31 10:26:43.000000000 +0100
+--- a/dist/configure
++++ b/dist/configure
 @@ -5765,7 +5765,7 @@
    echo $ECHO_N "(cached) $ECHO_C" >&6
  else

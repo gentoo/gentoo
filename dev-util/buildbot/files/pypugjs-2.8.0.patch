@@ -1,0 +1,83 @@
+From 26fefa8f8fa7b347e1c86723194de3a4094dc012 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Sat, 25 Apr 2020 11:53:06 -0700
+Subject: [PATCH] Initial pyjade port to pypugjs
+
+---
+ common/code_spelling_ignore_words.txt        |  1 +
+ master/buildbot/test/unit/test_www_config.py |  8 ++++----
+ master/buildbot/www/config.py                | 10 +++++-----
+ master/docs/manual/configuration/www.rst     | 10 ++++++----
+ master/docs/spelling_wordlist.txt            |  2 +-
+ master/setup.py                              |  4 ++--
+ requirements-ci.txt                          |  2 +-
+ 7 files changed, 20 insertions(+), 17 deletions(-)
+
+diff --git a/buildbot/test/unit/test_www_config.py b/buildbot/test/unit/test_www_config.py
+index 23a108e..a8c24ec 100644
+--- a/buildbot/test/unit/test_www_config.py
++++ b/buildbot/test/unit/test_www_config.py
+@@ -107,10 +107,10 @@ class IndexResource(TestReactorMixin, www.WwwTestMixin, unittest.TestCase):
+     def test_parseCustomTemplateDir(self):
+         exp = {'views/builds.html': '<div>\n</div>'}
+         try:
+-            # we make the test work if pyjade is present or note
+-            # It is better than just skip if pyjade is not there
+-            import pyjade  # pylint: disable=import-outside-toplevel
+-            [pyjade]
++            # we make the test work if pypugjs is present or note
++            # It is better than just skip if pypugjs is not there
++            import pypugjs  # pylint: disable=import-outside-toplevel
++            [pypugjs]
+             exp.update({'plugin/views/plugin.html':
+                         '<div class="myclass"><pre>this is customized</pre></div>'})
+         except ImportError:
+diff --git a/buildbot/www/config.py b/buildbot/www/config.py
+index a021299..50bae4d 100644
+--- config.py	2020-02-27 13:34:10.000000000 -0800
++++ config2.py	2020-05-11 17:26:44.587026761 -0700
+@@ -61,11 +61,11 @@
+         res = {}
+         allowed_ext = [".html"]
+         try:
+-            import pyjade   # pylint: disable=import-outside-toplevel
++            import pypugjs   # pylint: disable=import-outside-toplevel
+             allowed_ext.append(".jade")
+         except ImportError:  # pragma: no cover
+-            log.msg("pyjade not installed. Ignoring .jade files from {}".format(template_dir))
++            log.msg("pypugjs not installed. Ignoring .jade files from {}".format(template_dir))
+-            pyjade = None
++            pypugjs = None
+         for root, dirs, files in os.walk(template_dir):
+             if root == template_dir:
+                 template_name = posixpath.join("views", "%s.html")
+@@ -86,9 +86,9 @@
+                 elif ext == ".jade":
+                     with open(fn) as f:
+                         jade = f.read()
+-                        parser = pyjade.parser.Parser(jade)
++                        parser = pypugjs.parser.Parser(jade)
+                         block = parser.parse()
+-                        compiler = pyjade.ext.html.Compiler(
++                        compiler = pypugjs.ext.html.Compiler(
+                             block, pretty=False)
+                         html = compiler.compile()
+                 res[template_name % (basename,)] = html
+diff --git a/setup.py b/master/setup.py
+index 8fca506..1f32a74 100755
+--- a/setup.py
++++ b/setup.py
+@@ -490,8 +490,8 @@ test_deps = [
+     # http client libraries
+     'treq',
+     'txrequests',
+-    # pyjade required for custom templates tests
+-    'pyjade',
++    # pypugjs required for custom templates tests
++    'pypugjs',
+     # boto3 and moto required for running EC2 tests
+     'boto3',
+     'moto',
+--
+libgit2 0.99.0
+

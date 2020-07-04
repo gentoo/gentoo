@@ -1,0 +1,100 @@
+diff -ru gogglesmm-1.2.1/gap/ap_http_response.cpp /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/gap/ap_http_response.cpp
+--- gogglesmm-1.2.1/gap/ap_http_response.cpp	2018-08-01 01:59:22.000000000 +0200
++++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/gap/ap_http_response.cpp	2019-12-16 19:21:06.596524627 +0100
+@@ -341,7 +341,7 @@
+         break;
+ 
+       parameters.insert(str.mid(ks,kp-ks),
+-                        unescape(str.mid(s,p-s),'\"','\"'));
++                        FX::FXString::unescape(str.mid(s,p-s),'\"','\"'));
+       p++;
+       }
+     else {
+diff -ru gogglesmm-1.2.1/src/GMDBus.cpp /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMDBus.cpp
+--- gogglesmm-1.2.1/src/GMDBus.cpp	2018-08-01 01:59:22.000000000 +0200
++++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMDBus.cpp	2019-12-16 19:27:05.072866638 +0100
+@@ -60,7 +60,7 @@
+   void setuphooks() {
+     for (FXint i=0;i<connections.no();i++) {
+       if (!connections.empty(i)) {
+-        static_cast<GMDBus*>(connections.value(i))->setup_event_loop();
++        static_cast<GMDBus*>(connections.data(i))->setup_event_loop();
+         }
+       }
+     }
+@@ -532,7 +532,7 @@
+   /// remove any pending proxy replies;
+   for (FXint i=0;i<serial.no();i++) {
+     if (!serial.empty(i)) {
+-      GMDBusProxyReply * reply = static_cast<GMDBusProxyReply*>(serial.value(i));
++      GMDBusProxyReply * reply = static_cast<GMDBusProxyReply*>(serial.data(i));
+       delete reply;
+       }
+     }
+diff -ru gogglesmm-1.2.1/src/GMFilename.cpp /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMFilename.cpp
+--- gogglesmm-1.2.1/src/GMFilename.cpp	2018-08-01 01:59:22.000000000 +0200
++++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMFilename.cpp	2019-12-16 19:24:44.801263832 +0100
+@@ -167,7 +167,7 @@
+     else if (Unicode::isPrint(src.wc(i))) {
+       if (codec->wc2mb(&c,1,src.wc(i))==1) {
+         if (c==undefined_character) {
+-          FXString dcm = decompose(src.mid(i,src.extent(i)),false);
++          FXString dcm = FX::FXString::decompose(src.mid(i,src.extent(i)),false);
+           for (FXint j=0;j<dcm.length();j+=dcm.inc(j)) {
+             if (Unicode::isPrint(dcm.wc(j)) && codec->wc2mb(&c,1,dcm.wc(j)) && c!=0x1a) {
+               n++;
+@@ -190,7 +190,7 @@
+         if (c==undefined_character) {
+           /* If codec didn't contain a mapping to the required character,
+              do a compatibility decomposition and try mapping those */
+-          FXString dcm = decompose(src.mid(i,src.extent(i)),false);
++          FXString dcm = FX::FXString::decompose(src.mid(i,src.extent(i)),false);
+           for (FXint j=0;j<dcm.length();j+=dcm.inc(j)) {
+             if (Unicode::isPrint(dcm.wc(j)) && codec->wc2mb(&c,1,dcm.wc(j)) && c!=undefined_character) {
+               dst[n++]=c;
+@@ -208,7 +208,7 @@
+ 
+ 
+ FXString TextConverter::convert_to_ascii(const FXString & input) const {
+-  FXString src = decompose(input,false);
++  FXString src = FX::FXString::decompose(input,false);
+   FXString dst;
+   FXint i,n=0;
+ 
+diff -ru gogglesmm-1.2.1/src/GMTrackDatabase.cpp /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMTrackDatabase.cpp
+--- gogglesmm-1.2.1/src/GMTrackDatabase.cpp	2018-08-01 01:59:22.000000000 +0200
++++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMTrackDatabase.cpp	2019-12-16 19:26:29.609893508 +0100
+@@ -1372,8 +1372,8 @@
+ void GMTrackDatabase::clear_path_lookup() {
+   DEBUG_DB_GET();
+   for (FXint i=0;i<pathdict.no();i++) {
+-    if (!pathdict.empty(i) && pathdict.value(i)!=nullptr) {
+-      free(pathdict.value(i));
++    if (!pathdict.empty(i) && pathdict.data(i)!=nullptr) {
++      free(pathdict.data(i));
+       }
+     }
+   pathdict.clear();
+@@ -1424,8 +1424,8 @@
+ void GMTrackDatabase::clear_artist_lookup() {
+   DEBUG_DB_GET();
+   for (FXint i=0;i<artistdict.no();i++) {
+-    if (!artistdict.empty(i) && artistdict.value(i)!=nullptr) {
+-      FXString * a = (FXString*)artistdict.value(i);
++    if (!artistdict.empty(i) && artistdict.data(i)!=nullptr) {
++      FXString * a = (FXString*)artistdict.data(i);
+       delete a;
+       }
+     }
+diff -ru gogglesmm-1.2.1/src/gmutils.h /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/gmutils.h
+--- gogglesmm-1.2.1/src/gmutils.h	2018-08-01 01:59:22.000000000 +0200
++++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/gmutils.h	2019-12-16 19:22:25.340787153 +0100
+@@ -26,7 +26,7 @@
+   FXint remove(FXint name) {  return (FXint)(FXival)FXHash::remove((void*)(FXival)name); }
+   //FXint find(FXint name) const { return (FXint)(FXival)FXHash::find((void*)(FXival)name); }
+   FXint at(FXint name) const { return (FXint)(FXival)FXHash::at((void*)(FXival)name); }
+-  FXint key(FXuint pos) const { return (FXint)(FXival)table[pos].name; }
++  FXint key(FXuint pos) const { return (FXint)(FXival)table[pos].key; }
+   FXint value(FXuint pos) const { return (FXint)(FXival)table[pos].data; }
+   void adopt(FXIntMap &);
+   void load(FXStream & store);

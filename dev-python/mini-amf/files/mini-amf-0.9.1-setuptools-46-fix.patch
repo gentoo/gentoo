@@ -1,0 +1,54 @@
+--- a/setup.py.orig	2020-03-18 11:44:06.137323823 +0200
++++ b/setup.py	2020-03-18 11:43:55.230585230 +0200
+@@ -4,7 +4,7 @@
+ # See LICENSE.txt for details.
+ 
+ import os.path
+-from setuptools import Feature, setup
++from setuptools import setup
+ import sys
+ 
+ try:
+@@ -42,34 +42,6 @@
+ """
+ 
+ 
+-class AccelFeature(Feature):
+-    def __init__(self, have_cython):
+-        self.have_cython = have_cython
+-        self.extensions = []
+-
+-        Feature.__init__(
+-            self,
+-            description="optional C accelerator modules (broken)",
+-            standard=False,
+-            available=have_cython,
+-            ext_modules=self.extensions
+-        )
+-
+-    def include_in(self, dist):
+-        if not self.have_cython:
+-            sys.stderr.write(
+-                "ERROR: Cython is required to compile accelerator modules.\n")
+-            sys.exit(1)
+-
+-        sys.stderr.write(
+-            "WARNING: Accelerator modules are broken.\n"
+-            "WARNING: You should only use --with-accel "
+-            "if you are trying to fix them.\n")
+-
+-        self.extensions.extend(cythonize("miniamf/_accel/*.pyx"))
+-        Feature.include_in(self, dist)
+-
+-
+ def get_version():
+     """
+     Retrieve the version number from miniamf/_version.py.  It is
+@@ -147,7 +119,6 @@
+             "miniamf", "miniamf._accel", "miniamf.adapters", "miniamf.util"
+         ],
+         install_requires=["six", "defusedxml"],
+-        features={"accel": AccelFeature(have_cython)},
+         test_suite="tests",
+         zip_safe=True,
+         extras_require={

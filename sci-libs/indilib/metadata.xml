@@ -9,4 +9,7 @@
 		<remote-id type="github">indilib/indi</remote-id>
 		<remote-id type="sourceforge">indi</remote-id>
 	</upstream>
+	<use>
+		<flag name="websocket">Enable support for WebSocket protocol</flag>
+	</use>
 </pkgmetadata>

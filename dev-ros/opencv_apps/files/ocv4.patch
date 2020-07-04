@@ -1,0 +1,118 @@
+From 357fc3f20d0a2252b6a0a6cab8a6ae6cf79b8565 Mon Sep 17 00:00:00 2001
+From: Jochen Sprickerhof <git@jochen.sprickerhof.de>
+Date: Wed, 23 Oct 2019 22:15:57 +0200
+Subject: [PATCH] Support OpenCV 4
+
+---
+ src/nodelet/face_recognition_nodelet.cpp | 18 +++++++++++++++---
+ src/nodelet/segment_objects_nodelet.cpp  |  4 ++++
+ src/nodelet/simple_flow_nodelet.cpp      |  4 ++--
+ 3 files changed, 21 insertions(+), 5 deletions(-)
+
+Index: opencv_apps-2.0.1/src/nodelet/face_recognition_nodelet.cpp
+===================================================================
+--- opencv_apps-2.0.1.orig/src/nodelet/face_recognition_nodelet.cpp
++++ opencv_apps-2.0.1/src/nodelet/face_recognition_nodelet.cpp
+@@ -229,7 +229,11 @@ public:
+           fs::path file_path = cit->path();
+           try
+           {
++#if CV_MAJOR_VERSION > 3
++            cv::Mat img = cv::imread(file_path.string(), cv::IMREAD_COLOR);
++#else
+             cv::Mat img = cv::imread(file_path.string(), CV_LOAD_IMAGE_COLOR);
++#endif
+             labels.push_back(label);
+             images.push_back(img);
+           }
+@@ -327,7 +331,11 @@ class FaceRecognitionNodelet : public op
+                int(face.face.height + face.face.height * face_padding_));
+     cv::Scalar color(0.0, 0.0, 255.0);
+     int boldness = 2;
++#if CV_MAJOR_VERSION > 3
++    cv::rectangle(img, r.tl(), r.br(), color, boldness, cv::LINE_AA);
++#else
+     cv::rectangle(img, r.tl(), r.br(), color, boldness, CV_AA);
++#endif
+ 
+     double font_scale = 1.5;
+     int text_height = 20;
+@@ -338,7 +346,11 @@ class FaceRecognitionNodelet : public op
+       text_bl = r.br() + cv::Point(-r.width, text_height);
+     std::stringstream ss;
+     ss << face.label << " (" << std::fixed << std::setprecision(2) << face.confidence << ")";
++#if CV_MAJOR_VERSION > 3
++    cv::putText(img, ss.str(), text_bl, cv::FONT_HERSHEY_PLAIN, font_scale, color, boldness, cv::LINE_AA);
++#else
+     cv::putText(img, ss.str(), text_bl, cv::FONT_HERSHEY_PLAIN, font_scale, color, boldness, CV_AA);
++#endif
+   }
+ 
+   void extractImage(const cv::Mat& img, const opencv_apps::Rect& rect, cv::Mat& ret, double padding = 0.0)
+@@ -548,7 +560,7 @@ class FaceRecognitionNodelet : public op
+         if (config.model_method == "eigen")
+         {
+ // https://docs.opencv.org/3.3.1/da/d60/tutorial_face_main.html
+-#if CV_MAJOR_VERSION >= 3 && CV_MINOR_VERSION >= 3
++#if CV_MAJOR_VERSION > 3 || (CV_MAJOR_VERSION >= 3 && CV_MINOR_VERSION >= 3)
+           model_ = face::EigenFaceRecognizer::create(config.model_num_components, config.model_threshold);
+ #else
+           model_ = face::createEigenFaceRecognizer(config.model_num_components, config.model_threshold);
+@@ -556,7 +568,7 @@ class FaceRecognitionNodelet : public op
+         }
+         else if (config.model_method == "fisher")
+         {
+-#if CV_MAJOR_VERSION >= 3 && CV_MINOR_VERSION >= 3
++#if CV_MAJOR_VERSION > 3 || (CV_MAJOR_VERSION >= 3 && CV_MINOR_VERSION >= 3)
+           model_ = face::FisherFaceRecognizer::create(config.model_num_components, config.model_threshold);
+ #else
+           model_ = face::createFisherFaceRecognizer(config.model_num_components, config.model_threshold);
+@@ -564,7 +576,7 @@ class FaceRecognitionNodelet : public op
+         }
+         else if (config.model_method == "LBPH")
+         {
+-#if CV_MAJOR_VERSION >= 3 && CV_MINOR_VERSION >= 3
++#if CV_MAJOR_VERSION > 3 || (CV_MAJOR_VERSION >= 3 && CV_MINOR_VERSION >= 3)
+           model_ = face::LBPHFaceRecognizer::create(config.lbph_radius, config.lbph_neighbors, config.lbph_grid_x,
+                                                     config.lbph_grid_y);
+ #else
+Index: opencv_apps-2.0.1/src/nodelet/segment_objects_nodelet.cpp
+===================================================================
+--- opencv_apps-2.0.1.orig/src/nodelet/segment_objects_nodelet.cpp
++++ opencv_apps-2.0.1/src/nodelet/segment_objects_nodelet.cpp
+@@ -179,7 +179,11 @@ class SegmentObjectsNodelet : public ope
+         }
+       }
+       cv::Scalar color(0, 0, 255);
++#if CV_MAJOR_VERSION > 3
++      cv::drawContours(out_frame, contours, largest_comp, color, cv::FILLED, 8, hierarchy);
++#else
+       cv::drawContours(out_frame, contours, largest_comp, color, CV_FILLED, 8, hierarchy);
++#endif
+ 
+       std_msgs::Float64 area_msg;
+       area_msg.data = max_area;
+Index: opencv_apps-2.0.1/src/nodelet/simple_flow_nodelet.cpp
+===================================================================
+--- opencv_apps-2.0.1.orig/src/nodelet/simple_flow_nodelet.cpp
++++ opencv_apps-2.0.1/src/nodelet/simple_flow_nodelet.cpp
+@@ -46,7 +46,7 @@
+ #include <opencv2/highgui/highgui.hpp>
+ #include <opencv2/imgproc/imgproc.hpp>
+ #include <opencv2/video/tracking.hpp>
+-#if CV_MAJOR_VERSION == 3
++#if CV_MAJOR_VERSION >= 3
+ #include <opencv2/optflow.hpp>
+ #endif
+ 
+@@ -163,8 +163,8 @@ class SimpleFlowNodelet : public opencv_
+       }
+ 
+       float start = (float)cv::getTickCount();
+-#if CV_MAJOR_VERSION == 3
+-      cv::optflow::calcOpticalFlowSF(gray, prevGray,
++#if CV_MAJOR_VERSION >= 3
++      cv::optflow::calcOpticalFlowSF(gray, prevGray,
+ #else
+       cv::calcOpticalFlowSF(gray, prevGray,
+ #endif

@@ -1,0 +1,61 @@
+Index: mythtv/libs/libmythui/mythuiwebbrowser.cpp
+Mythtv bug #13544 
+===================================================================
+--- a/libs/libmythui/mythuiwebbrowser.cpp
++++ b/libs/libmythui/mythuiwebbrowser.cpp
+@@ -873,4 +873,8 @@
+ void MythUIWebBrowser::Init(void)
+ {
++    // only do the initialisation for widgets not being stored in the global object store
++    if (parent() == GetGlobalObjectStore())
++        return;
++
+     if (m_initialized)
+         return;
+@@ -1128,4 +1132,7 @@
+ void MythUIWebBrowser::SetActive(bool active)
+ {
++    if (!m_browser)
++        return;
++
+     if (m_active == active)
+         return;
+@@ -1326,4 +1333,7 @@
+ void MythUIWebBrowser::Scroll(int dx, int dy)
+ {
++    if (!m_browser)
++        return;
++
+     QPoint startPos = m_browser->page()->currentFrame()->scrollPosition();
+     QPoint endPos = startPos + QPoint(dx, dy);
+@@ -1435,4 +1445,7 @@
+ void MythUIWebBrowser::UpdateScrollBars(void)
+ {
++    if (!m_browser)
++        return;
++
+     QPoint position = m_browser->page()->currentFrame()->scrollPosition();
+     if (m_verticalScrollbar)
+@@ -1461,5 +1474,5 @@
+     UpdateScrollBars();
+ 
+-    if (!m_image)
++    if (!m_image || !m_browser)
+         return;
+ 
+@@ -1480,4 +1493,7 @@
+ void MythUIWebBrowser::Pulse(void)
+ {
++    if (!m_browser)
++        return;
++
+     if (m_scrollAnimation.IsActive() &&
+         m_destinationScrollPos !=
+@@ -1522,4 +1538,7 @@
+ bool MythUIWebBrowser::keyPressEvent(QKeyEvent *event)
+ {
++    if (!m_browser)
++        return false;
++
+     QStringList actions;
+     bool handled = false;

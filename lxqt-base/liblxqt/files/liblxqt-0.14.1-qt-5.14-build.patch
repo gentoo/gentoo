@@ -1,0 +1,24 @@
+From 534c6f6b5240daa81a2b6206a8ec028a69ee5c2d Mon Sep 17 00:00:00 2001
+From: Jimi Huotari <chiitoo@gentoo.org>
+Date: Mon, 23 Dec 2019 21:20:16 +0200
+Subject: [PATCH] Fix build with Qt 5.14.
+
+---
+ lxqtpowermanager.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lxqtpowermanager.cpp b/lxqtpowermanager.cpp
+index aef5ca2..b0926f9 100644
+--- a/lxqtpowermanager.cpp
++++ b/lxqtpowermanager.cpp
+@@ -32,6 +32,7 @@
+ #include <QApplication>
+ #include <QDesktopWidget>
+ #include <QtDebug>
++#include <QFile>
+ #include "lxqttranslator.h"
+ #include "lxqtglobals.h"
+ #include "lxqtsettings.h"
+-- 
+2.24.1
+

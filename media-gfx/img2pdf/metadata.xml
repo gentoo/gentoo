@@ -9,6 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 	Losslessly convert raster images to PDF. The file size will not
 	unnecessarily increase. It can for example be used to create a PDF

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -68,14 +68,14 @@ src_install() {
 	fi
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	if use gtk; then
 		gnome2_schemas_update
 		gnome2_icon_cache_update
 	fi
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	if use gtk; then
 		gnome2_schemas_update
 		gnome2_icon_cache_update

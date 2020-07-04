@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,12 +12,8 @@ SRC_URI="mirror://gnu/miscfiles/${P}.tar.gz
 
 LICENSE="GPL-2 unicode"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 IUSE="minimal"
-
-# Collides with older versions/revisions
-RDEPEND="!<sys-freebsd/freebsd-share-7.2-r1"
-DEPEND=""
 
 src_prepare() {
 	default
@@ -26,7 +22,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --datadir="${EPREFIX%/}"/usr/share/misc
+	econf --datadir="${EPREFIX}"/usr/share/misc
 }
 
 src_install() {
@@ -57,7 +53,7 @@ src_install() {
 pkg_postinst() {
 	if [[ ${ROOT} == "/" ]] && type -P create-cracklib-dict >/dev/null ; then
 		ebegin "Regenerating cracklib dictionary"
-		create-cracklib-dict "${EPREFIX%/}"/usr/share/dict/* > /dev/null
+		create-cracklib-dict "${EPREFIX}"/usr/share/dict/* > /dev/null
 		eend $?
 	fi
 

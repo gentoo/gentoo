@@ -11,8 +11,8 @@ SRC_URI="https://getdnsapi.net/releases/${P//./-}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="doc +getdns_query +getdns_server_mon gnutls +idn libev libevent libuv nettle static-libs stubby +threads +unbound"
+KEYWORDS="amd64 ~x86"
+IUSE="doc +getdns-query +getdns-server-mon gnutls +idn libev libevent libuv nettle static-libs stubby +threads +unbound"
 
 REQUIRED_USE="gnutls? ( nettle )"
 
@@ -46,8 +46,8 @@ src_configure() {
 	econf \
 		--runstatedir=/var/run \
 		$(use_enable static-libs static) \
-		$(use_with getdns_query) \
-		$(use_with getdns_server_mon) \
+		$(use_with getdns-query getdns_query) \
+		$(use_with getdns-server-mon getdns_server_mon) \
 		$(usex gnutls '--with-gnutls' '' '' '') \
 		$(use_with idn libidn2) \
 		$(use_with libev) \

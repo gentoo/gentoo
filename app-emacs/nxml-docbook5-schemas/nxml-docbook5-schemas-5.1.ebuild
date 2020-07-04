@@ -11,7 +11,7 @@ SRC_URI="https://docbook.org/xml/${PV}/rng/docbookxi.rnc -> docbookxi-${PV}.rnc"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}"
 SITEFILE="60${PN}-gentoo.el"

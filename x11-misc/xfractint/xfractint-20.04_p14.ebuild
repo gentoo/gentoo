@@ -11,7 +11,7 @@ DESCRIPTION="A fractal generator"
 HOMEPAGE="https://www.fractint.org"
 SRC_URI="https://www.fractint.org/ftp/current/linux/${MY_P}.tar.gz"
 
-LICENSE="freedist"
+LICENSE="free-noncomm HPND public-domain"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 

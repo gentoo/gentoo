@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="acl ipv6 libressl test xattr"
 
+RESTRICT="!test? ( test )"
+
 CDEPEND="dev-libs/uthash
 	net-libs/librsync
 	sys-libs/ncurses:0=

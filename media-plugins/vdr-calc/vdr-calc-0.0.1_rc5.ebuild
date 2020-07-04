@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: OSD Calculator"
-HOMEPAGE="http://www.vdrcalc.bmschneider.de/index2.html"
-SRC_URI="http://www.vdrcalc.bmschneider.de/dateien/${PN}-0[1].0.1-rc5.tgz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://vdr.websitec.de/download/${PN}/${PN}-0[1].0.1-rc5.tgz"
 
 KEYWORDS="~amd64 x86"
 SLOT="0"

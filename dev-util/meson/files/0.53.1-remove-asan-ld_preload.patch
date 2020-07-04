@@ -1,0 +1,27 @@
+From 75f2d7a004387edc7a7e73da5097bf01daf38769 Mon Sep 17 00:00:00 2001
+From: William Hubbs <w.d.hubbs@gmail.com>
+Date: Sat, 15 Feb 2020 12:24:42 -0600
+Subject: [PATCH 1/2] remove asan ld_preload
+
+ASAN and sandbox both want control over LD_PRELOAD
+https://bugs.gentoo.org/673016
+---
+ run_unittests.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/run_unittests.py b/run_unittests.py
+index 676604f4..1c9aaf0c 100755
+--- a/run_unittests.py
++++ b/run_unittests.py
+@@ -4985,7 +4985,7 @@ class LinuxlikeTests(BasePlatformTests):
+                              r'Run-time dependency qt5 \(modules: Core\) found: YES 5.* \(pkg-config\)\n')
+ 
+     @skip_if_not_base_option('b_sanitize')
+-    def test_generate_gir_with_address_sanitizer(self):
++    def _test_generate_gir_with_address_sanitizer(self):
+         if is_cygwin():
+             raise unittest.SkipTest('asan not available on Cygwin')
+         if is_openbsd():
+-- 
+2.24.1
+

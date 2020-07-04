@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ inherit autotools-utils fortran-2 flag-o-matic
 
 DESCRIPTION="Fast implementation of several recombination jet algorithms"
 HOMEPAGE="http://www.fastjet.fr/"
-SRC_URI="${HOMEPAGE}/repo/${P}.tar.gz"
+SRC_URI="http://www.fastjet.fr/repo/${P}.tar.gz"
 
 LICENSE="GPL-2 QPL"
 SLOT="0"

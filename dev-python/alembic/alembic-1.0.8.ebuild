@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="database migrations tool, written by the author of SQLAlchemy"
@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="test doc"
+RESTRICT="!test? ( test )"
 
 # requires.txt cites 'SQLAlchemy>=0.7.3' which is really both old and silly
 # because it shatters the testsuite.  If 'someone' cares to adhere to correct form

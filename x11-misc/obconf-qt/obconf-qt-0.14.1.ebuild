@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Openbox window manager configuration tool"
-HOMEPAGE="https://lxqt.org/"
+HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3

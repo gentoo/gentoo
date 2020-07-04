@@ -1,9 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit multilib
 
 DESCRIPTION="A PAM module that can mount volumes for a user session"
 HOMEPAGE="http://pam-mount.sourceforge.net"

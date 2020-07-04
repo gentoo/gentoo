@@ -1,0 +1,13 @@
+Index: camlp4-4.08-1/camlp4/Camlp4/Struct/DynLoader.ml
+===================================================================
+--- camlp4-4.08-1.orig/camlp4/Camlp4/Struct/DynLoader.ml
++++ camlp4-4.08-1/camlp4/Camlp4/Struct/DynLoader.ml
+@@ -76,7 +76,7 @@ value load =
+         [ Not_found -> raise (Error file "file not found in path") ]
+       in
+       try Dynlink.loadfile fname with
+-      [ Dynlink.Error e -> raise (Error fname (Dynlink.error_message e)) ]
++      [ Dynlink.Error (Module_already_loaded _ ) -> () | Dynlink.Error e -> raise (Error fname (Dynlink.error_message e)) ]
+     };
+ 
+ 

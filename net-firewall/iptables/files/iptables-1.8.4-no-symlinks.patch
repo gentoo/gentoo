@@ -1,0 +1,19 @@
+diff --git a/iptables/Makefile.am b/iptables/Makefile.am
+index 71b1b1d4..30c77f9a 100644
+--- a/iptables/Makefile.am
++++ b/iptables/Makefile.am
+@@ -71,12 +71,10 @@ CLEANFILES       = iptables.8 xtables-monitor.8 \
+ 
+ vx_bin_links   = iptables-xml
+ if ENABLE_IPV4
+-v4_sbin_links  = iptables-legacy iptables-legacy-restore iptables-legacy-save \
+-		 iptables iptables-restore iptables-save
++v4_sbin_links  = iptables-legacy iptables-legacy-restore iptables-legacy-save
+ endif
+ if ENABLE_IPV6
+-v6_sbin_links  = ip6tables-legacy ip6tables-legacy-restore ip6tables-legacy-save \
+-		 ip6tables ip6tables-restore ip6tables-save
++v6_sbin_links  = ip6tables-legacy ip6tables-legacy-restore ip6tables-legacy-save
+ endif
+ if ENABLE_NFTABLES
+ x_sbin_links  = iptables-nft iptables-nft-restore iptables-nft-save \

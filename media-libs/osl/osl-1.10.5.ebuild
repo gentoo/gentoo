@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils llvm toolchain-funcs
+inherit cmake llvm toolchain-funcs
 
 # check this on updates
 LLVM_MAX_SLOT=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/imageworks/OpenShadingLanguage/archive/Release-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 X86_CPU_FEATURES=(
 	sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -30,6 +30,7 @@ RDEPEND="
 	>=media-libs/openexr-2.2.0:=
 	>=media-libs/openimageio-1.8.5
 	>=sys-devel/clang-5:=
+	<sys-devel/clang-9:=
 	sys-libs/zlib:=
 	partio? ( media-libs/partio )
 	qt5? (
@@ -73,7 +74,6 @@ src_configure() {
 	local gcc=$(tc-getCC)
 	# LLVM needs CPP11. Do not disable.
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DENABLERTTI=OFF
 		-DINSTALL_DOCS=$(usex doc)
 		-DLLVM_STATIC=ON
@@ -84,5 +84,5 @@ src_configure() {
 		-DUSE_SIMD="$(IFS=","; echo "${mysimd[*]}")"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

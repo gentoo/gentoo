@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://software.sil.org/downloads/r/${PN/sil-/}/${MY_P}.zip"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86 ~ppc-macos ~x86-macos"
 IUSE="doc"
 
 DEPEND="app-arch/unzip"

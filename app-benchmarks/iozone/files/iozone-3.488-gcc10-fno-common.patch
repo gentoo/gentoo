@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/706232
+
+--- a/src/current/iozone.c
++++ b/src/current/iozone.c
+@@ -1676,7 +1676,7 @@
+ 
+ char pit_hostname[40];
+ char pit_service[8];
+-int junk;
++extern int junk;
+ 
+ /* 
+  * Host ports used to listen, and handle errors.

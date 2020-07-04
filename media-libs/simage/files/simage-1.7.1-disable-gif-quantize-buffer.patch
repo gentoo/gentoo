@@ -1,0 +1,31 @@
+diff --git a/src/simage_gif.c b/src/simage_gif.c
+index 0819ef8..f959127 100644
+--- a/src/simage_gif.c
++++ b/src/simage_gif.c
+@@ -37,7 +37,7 @@
+ #define DGifOpenFileName(gif) DGifOpenFileName(gif, NULL)
+ #define EGifOpenFileName(gif, exist) EGifOpenFileName(gif, exist, NULL)
+ //see https://sourceforge.net/p/giflib/mailman/message/29367749/
+-#define QuantizeBuffer GifQuantizeBuffer
++//#define QuantizeBuffer GifQuantizeBuffer
+ #define MakeMapObject GifMakeMapObject
+ #define FreeMapObject GifFreeMapObject
+ #endif
+@@ -347,7 +347,7 @@ simage_gif_save(const char * filename,
+     free(outbuf);
+     return 0;
+   }
+-
++/*
+   if (QuantizeBuffer(width, height, &colormapsize,
+                      rgbbuf, &rgbbuf[bufsize], &rgbbuf[bufsize*2],
+                      outbuf, cmapobj->Colors) == GIF_ERROR) {
+@@ -357,7 +357,7 @@ simage_gif_save(const char * filename,
+     FreeMapObject(cmapobj);
+     return 0;
+   }
+-
++*/
+   /* open gif file and overwrite any existing file */
+   if (!(giffile = EGifOpenFileName(filename, FALSE))) {
+     giferror = ERR_OPEN;

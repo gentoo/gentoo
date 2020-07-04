@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -66,6 +66,7 @@ src_compile() {
 		AS="$(tc-getAS)" \
 		CC="$(tc-getCC)" \
 		LD="$(tc-getLD)" \
+		OBJCOPY="$(tc-getOBJCOPY)" \
 		HOSTARCH=${iarch} \
 		ARCH=${iarch} \
 		EFIINC="${SYSROOT}${EPREFIX}/usr/include/efi" \

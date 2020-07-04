@@ -1,20 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ECM_KDEINSTALLDIRS="false"
-KDE_AUTODEPS="false"
-inherit kde5
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit cmake kde.org
 
 DESCRIPTION="Widget styles for Qt and GTK2"
-HOMEPAGE="https://cgit.kde.org/qtcurve.git"
+HOMEPAGE="https://invent.kde.org/system/qtcurve"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-IUSE="+X gtk nls plasma +qt5 test"
+IUSE="gtk nls plasma +qt5 test +X"
 
-if [[ "${PV}" != 9999 ]] ; then
+if [[ ${KDE_BUILD_TYPE} = release ]] ; then
 	SRC_URI="https://github.com/KDE/qtcurve/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 	S="${WORKDIR}/${P/_/-}"
@@ -28,32 +28,33 @@ REQUIRED_USE="gtk? ( X )
 BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
+	plasma? ( >=kde-frameworks/extra-cmake-modules-${KFMIN}:5 )
 "
 DEPEND="
 	gtk? ( x11-libs/gtk+:2 )
 	plasma? (
-		$(add_frameworks_dep frameworkintegration)
-		$(add_frameworks_dep karchive)
-		$(add_frameworks_dep kcompletion)
-		$(add_frameworks_dep kconfig)
-		$(add_frameworks_dep kconfigwidgets)
-		$(add_frameworks_dep kcoreaddons)
-		$(add_frameworks_dep kdelibs4support)
-		$(add_frameworks_dep kguiaddons)
-		$(add_frameworks_dep ki18n)
-		$(add_frameworks_dep kiconthemes)
-		$(add_frameworks_dep kio)
-		$(add_frameworks_dep kwidgetsaddons)
-		$(add_frameworks_dep kwindowsystem)
-		$(add_frameworks_dep kxmlgui)
-		$(add_qt_dep qtprintsupport)
+		>=dev-qt/qtprintsupport-${QTMIN}:5
+		>=kde-frameworks/frameworkintegration-${KFMIN}:5
+		>=kde-frameworks/karchive-${KFMIN}:5
+		>=kde-frameworks/kcompletion-${KFMIN}:5
+		>=kde-frameworks/kconfig-${KFMIN}:5
+		>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+		>=kde-frameworks/kcoreaddons-${KFMIN}:5
+		>=kde-frameworks/kdelibs4support-${KFMIN}:5
+		>=kde-frameworks/kguiaddons-${KFMIN}:5
+		>=kde-frameworks/ki18n-${KFMIN}:5
+		>=kde-frameworks/kiconthemes-${KFMIN}:5
+		>=kde-frameworks/kio-${KFMIN}:5
+		>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+		>=kde-frameworks/kwindowsystem-${KFMIN}:5
+		>=kde-frameworks/kxmlgui-${KFMIN}:5
 	)
 	qt5? (
-		$(add_qt_dep qtdbus)
-		$(add_qt_dep qtgui)
-		$(add_qt_dep qtsvg)
-		$(add_qt_dep qtwidgets)
-		X? ( $(add_qt_dep qtx11extras) )
+		>=dev-qt/qtdbus-${QTMIN}:5
+		>=dev-qt/qtgui-${QTMIN}:5
+		>=dev-qt/qtsvg-${QTMIN}:5
+		>=dev-qt/qtwidgets-${QTMIN}:5
+		X? ( >=dev-qt/qtx11extras-${QTMIN}:5 )
 	)
 	X? (
 		x11-libs/libX11
@@ -71,6 +72,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.0-no-X-buildfix.patch"
 	"${FILESDIR}/${PN}-1.9.0-gcc9.patch"
 	"${FILESDIR}/${PN}-1.9.0-libreoffice-crashfix.patch"
+	"${FILESDIR}/${PN}-1.9.0-qt-5.15.patch"
 )
 
 src_configure() {
@@ -81,10 +83,11 @@ src_configure() {
 		-DQTC_KDE4_DEFAULT_HOME=ON
 		-DENABLE_GTK2="$(usex gtk)"
 		-DENABLE_QT5="$(usex qt5)"
+		-DBUILD_TESTING="$(usex test)"
 		-DQTC_ENABLE_X11="$(usex X)"
 		-DQTC_INSTALL_PO="$(usex nls)"
 		-DQTC_QT5_ENABLE_KDE="$(usex plasma)"
 	)
 
-	kde5_src_configure
+	cmake_src_configure
 }

@@ -1,0 +1,27 @@
+From bd5a5fb56812ee5644e4c4bd1fdd82b9899317a7 Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Sat, 12 Oct 2019 13:29:10 +0000
+Subject: [PATCH] Unbreak -Dopengl=false clean build
+
+In file included from ../src/x.c:17:
+../src/backend/gl/glx.h:10:10: fatal error: 'GL/glx.h' file not found
+ #include <GL/glx.h>
+         ^~~~~~~~~~
+---
+ src/x.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/x.c b/src/x.c
+index ed6668a8..2f802f1e 100644
+--- a/src/x.c
++++ b/src/x.c
+@@ -14,7 +14,9 @@
+ #include <xcb/xfixes.h>
+ 
+ #include "atom.h"
++#ifdef CONFIG_OPENGL
+ #include "backend/gl/glx.h"
++#endif
+ #include "common.h"
+ #include "compiler.h"
+ #include "kernel.h"

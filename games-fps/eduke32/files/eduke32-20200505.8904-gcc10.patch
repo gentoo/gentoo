@@ -1,0 +1,13 @@
+This patch fixes compilation with GCC-10.
+
+diff -dru a/source/audiolib/include/music.h b/source/audiolib/include/music.h
+--- a/source/audiolib/include/music.h
++++ b/source/audiolib/include/music.h
+@@ -38,6 +38,7 @@
+ 
+ #ifdef __linux__
+ #include <vector>
++#include <string>
+ 
+ typedef struct
+ {

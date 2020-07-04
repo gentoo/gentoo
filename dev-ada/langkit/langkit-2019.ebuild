@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,14 +16,15 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8f8a31e87a8f1c967d31
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-ada/gnatcoll-bindings[iconv,shared]
 	dev-python/mako
-	<dev-python/pyyaml-5
+	dev-python/pyyaml
 	dev-python/enum34
 	dev-python/funcy
 	dev-python/docutils"
@@ -33,7 +34,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${MYP}-src
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-pyyaml.patch
+)
 
 src_test() {
 	testsuite/testsuite.py -j $(makeopts_jobs) --show-error-output | tee testsuite.log

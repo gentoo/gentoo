@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		EtherDFS is an 'installable filesystem' TSR for DOS.
+		It maps a drive from a remote computer
+		to a local drive letter, using raw ethernet frames to communicate.
+	</longdescription>
+	<use>
+		<flag name="tsr">Build the TSR program for DOS, which acts as a client.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">etherdfs</remote-id>
+	</upstream>
+</pkgmetadata>

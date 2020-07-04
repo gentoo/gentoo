@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,10 +11,12 @@ SRC_URI="https://github.com/wolfcw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
 
 src_prepare() {
 	sed -i 's/-Werror //' "${S}/src/Makefile" || die
+
+	sed -i 's/-Werror //' "${S}/test/Makefile" || die
 
 	# Bug #617624 (GCC-6 compatibility)
 	sed -i 's/-Wno-nonnull-compare //' "${S}/src/Makefile" || die
@@ -35,7 +37,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	multilib_is_native_abi && emake test
+	multilib_is_native_abi && emake CC="$(tc-getCC)" test
 }
 
 multilib_src_install() {

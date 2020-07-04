@@ -1,5 +1,5 @@
---- crwinfo.c.orig	2002-07-30 11:17:03.000000000 -0600
-+++ crwinfo.c	2005-01-21 15:24:54.256888228 -0700
+--- a/crwinfo.c
++++ b/crwinfo.c
 @@ -95,10 +95,10 @@
     fprintf( stderr, "-m        show misc. information (whitepoint, AF mode etc)\n" );
     fprintf( stderr, "-f        show flash information (flash mode etc)\n" );
@@ -15,3 +15,8 @@
     fprintf( stderr, "-x        show experimental information (don't rely on it)\n" );
     exit(0);
  }
+--- a/Makefile
++++ b/Makefile
+@@ -1,2 +0,0 @@
+-all:
+-	gcc -o crwinfo -W -Wall -g crwinfo.c

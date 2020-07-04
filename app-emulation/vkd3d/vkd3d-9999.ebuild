@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib-minimal
+inherit multilib-minimal autotools
 
 AUTOTOOLS_AUTORECONF="1"
 
@@ -31,6 +31,11 @@ HOMEPAGE="https://source.winehq.org/git/vkd3d.git/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	local myconf=(

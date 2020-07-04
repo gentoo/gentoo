@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit user systemd toolchain-funcs
+inherit systemd toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/bitlbee/bitlbee.git"
 	inherit git-r3
 else
 	SRC_URI="https://get.bitlbee.org/src/${P}.tar.gz"
-	KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-fbsd"
+	KEYWORDS="amd64 ppc ~ppc64 x86"
 fi
 
 DESCRIPTION="irc to IM gateway that support multiple IM protocols"
@@ -21,6 +21,7 @@ SLOT="0"
 IUSE_PROTOCOLS="msn oscar purple twitter +xmpp"
 IUSE="debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd
 	${IUSE_PROTOCOLS}"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	|| ( purple xmpp msn oscar )
@@ -29,6 +30,8 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
+	acct-group/bitlbee
+	acct-user/bitlbee
 	>=dev-libs/glib-2.16
 	purple? ( net-im/pidgin )
 	libevent? ( dev-libs/libevent:= )
@@ -51,20 +54,12 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/logger
 	xinetd? ( sys-apps/xinetd )"
 
-pkg_setup() {
-	enewgroup bitlbee
-	enewuser bitlbee -1 -1 /var/lib/bitlbee bitlbee
-}
-
-src_prepare() {
-	if [[ ${PV} != "9999" ]]; then
-		eapply \
-			"${FILESDIR}"/${PN}-3.5-systemd-user.patch \
-			"${FILESDIR}"/${PN}-3.5-verbose-build.patch
-	fi
-
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
+	"${FILESDIR}"/${PN}-3.5-verbose-build.patch
+	"${FILESDIR}"/${PN}-3.5-libcheck.patch
+	"${FILESDIR}"/${PN}-3.5-libevent.patch
+)
 
 src_configure() {
 	local myconf
@@ -114,6 +109,7 @@ src_configure() {
 		--datadir=/usr/share/bitlbee \
 		--etcdir=/etc/bitlbee \
 		--plugindir=/usr/$(get_libdir)/bitlbee \
+		--pcdir=/usr/$(get_libdir)/pkgconfig \
 		--systemdsystemunitdir=$(systemd_get_systemunitdir) \
 		--doc=1 \
 		--strip=0 \
@@ -151,10 +147,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	chown -R bitlbee:bitlbee "${ROOT}"/var/lib/bitlbee
-	[[ -d "${ROOT}"/var/run/bitlbee ]] &&
-		chown -R bitlbee:bitlbee "${ROOT}"/var/run/bitlbee
-
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		einfo
 		elog "The bitlbee init script will now attempt to stop all processes owned by the"

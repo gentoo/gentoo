@@ -40,7 +40,7 @@ src_install() {
 	default
 
 	if use doc; then
-		dohtml -r doc/html/* || die "dohtml failed"
+		dohtml -r doc/html/*
 	fi
 
 	if use examples; then
@@ -50,7 +50,7 @@ src_install() {
 
 		# install sources
 		insinto /usr/share/doc/${PF}/examples/
-		doins examples/{curves/curves,simple/simple}.cc || die "doins failed"
+		doins examples/{curves/curves,simple/simple}.cc
 
 		elog "You can use examples by calling ${PN}-curves or ${PN}-simple."
 		elog "Examples source code is in /usr/share/doc/${PF}/examples."

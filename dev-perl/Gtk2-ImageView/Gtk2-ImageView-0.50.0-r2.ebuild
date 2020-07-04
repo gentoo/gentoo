@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 	>=dev-perl/ExtUtils-Depends-0.300
 	>=dev-perl/ExtUtils-PkgConfig-1.030"
 
-src_test(){
+src_test() {
 	perl_rm_files t/pod.t
 	virtx perl-module_src_test
 }

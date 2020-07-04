@@ -1,0 +1,11 @@
+--- filezilla-3.47.0/data/Makefile.am
++++ filezilla-3.47.0/data/Makefile.am
+@@ -75,7 +75,7 @@
+ desktopentrydir = $(datadir)/applications
+ dist_desktopentry_DATA = filezilla.desktop
+ 
+-appdatadir = $(datadir)/appdata
++appdatadir = $(datadir)/metainfo
+ dist_appdata_DATA = filezilla.appdata.xml
+ 
+ clean-local:

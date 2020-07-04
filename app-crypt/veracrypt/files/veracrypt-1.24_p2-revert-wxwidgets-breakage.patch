@@ -1,0 +1,100 @@
+From 6ab07ac9a30fe48839e31f9c374fd6a6ddeeb382 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=B6kt=C3=BCrk=20Y=C3=BCksek?= <gokturk@gentoo.org>
+Date: Thu, 19 Dec 2019 17:04:37 -0500
+Subject: [PATCH] Revert "Linux: Fix failure to run VeraCrypt binary built for
+ console mode on headless machines (fix issue
+ https://github.com/veracrypt/VeraCrypt/issues/531)"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The build failure still exists for system wxGTK compiled with '--disable-gui':
+
+```
+In file included from TextUserInterface.cpp:27:
+TextUserInterface.h: In member function ‘virtual bool VeraCrypt::TextUserInterface::Initialize(int&, wxChar**)’:
+TextUserInterface.h:50:63: error: ‘wxAppBase’ has not been declared
+   50 |   virtual bool Initialize (int &argc, wxChar **argv) { return wxAppBase::Initialize(argc, argv); }
+```
+
+This reverts commit 737e1f126b8826ed02418266e590e195aebdd7c0.
+---
+ src/Main/TextUserInterface.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/Main/TextUserInterface.h b/src/Main/TextUserInterface.h
+index 95db02d7..78874b8c 100644
+--- a/src/Main/TextUserInterface.h
++++ b/src/Main/TextUserInterface.h
+@@ -47,7 +47,9 @@ namespace VeraCrypt
+ 		virtual void ExportSecurityTokenKeyfile () const;
+ 		virtual shared_ptr <GetStringFunctor> GetAdminPasswordRequestHandler ();
+ 		virtual void ImportSecurityTokenKeyfiles () const;
++#ifndef TC_NO_GUI
+ 		virtual bool Initialize (int &argc, wxChar **argv) { return wxAppBase::Initialize(argc, argv); }
++#endif
+ 		virtual void InitSecurityTokenLibrary () const;
+ 		virtual void ListSecurityTokenKeyfiles () const;
+ 		virtual VolumeInfoList MountAllDeviceHostedVolumes (MountOptions &options) const;
+-- 
+2.24.0
+
+From d168eadc536552fbf76fe86c8ad0fa77130081e1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=B6kt=C3=BCrk=20Y=C3=BCksek?= <gokturk@gentoo.org>
+Date: Thu, 19 Dec 2019 17:15:43 -0500
+Subject: [PATCH] Revert "Linux: fix compilation error when building
+ console-only version of VeraCrypt that is statically linked to wxWidgets"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The build failure still exists for system wxGTK compiled with '--disable-gui':
+
+```
+In file included from TextUserInterface.cpp:27:
+TextUserInterface.h: In member function ‘virtual bool VeraCrypt::TextUserInterface::Initialize(int&, wxChar**)’:
+TextUserInterface.h:50:63: error: ‘wxAppBase’ has not been declared
+   50 |   virtual bool Initialize (int &argc, wxChar **argv) { return wxAppBase::Initialize(argc, argv); }
+```
+
+This reverts commit 14bee5e6a227701e78c5fec04064c0494f6361f0.
+---
+ src/Main/Main.make | 8 ++++++++
+ src/Makefile       | 1 +
+ 2 files changed, 9 insertions(+)
+
+diff --git a/src/Main/Main.make b/src/Main/Main.make
+index 0cb4e15d..a154a846 100755
+--- a/src/Main/Main.make
++++ b/src/Main/Main.make
+@@ -81,7 +81,15 @@ CXXFLAGS += -I$(BASE_DIR)/Main
+ 
+ #------ wxWidgets configuration ------
+ 
++ifdef TC_NO_GUI
++ifdef VC_WX_STATIC
++WX_CONFIG_LIBS := base
++else
++WX_CONFIG_LIBS := adv,core,base
++endif
++else
+ WX_CONFIG_LIBS := adv,core,base
++endif
+ 
+ ifeq "$(TC_BUILD_CONFIG)" "Release"
+ 
+diff --git a/src/Makefile b/src/Makefile
+index 1b084421..f102a28c 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -70,6 +70,7 @@ endif
+ ifeq "$(origin NOGUI)" "command line"
+ 	export TC_NO_GUI := 1
+ 	C_CXX_FLAGS += -DTC_NO_GUI
++	WX_CONFIGURE_FLAGS += --disable-gui
+ endif
+ 
+ ifdef PKCS11_INC
+-- 
+2.24.0
+

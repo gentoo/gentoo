@@ -10,7 +10,7 @@ HOMEPAGE="http://portfwd.sourceforge.net"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ia64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~sparc x86"
 IUSE=""
 
 DEPEND=">=sys-apps/sed-4"

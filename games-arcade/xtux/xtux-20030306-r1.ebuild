@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,7 +45,7 @@ src_compile() {
 	emake DATADIR="/usr/share/xtux/data" client
 }
 
-src_install () {
+src_install() {
 	dobin xtux tux_serv
 	insinto "/usr/share/xtux"
 	doins -r data/

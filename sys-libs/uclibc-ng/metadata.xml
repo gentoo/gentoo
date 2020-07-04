@@ -15,7 +15,6 @@
 	also work perfectly with uClibc-ng.
 	</longdescription>
 	<use>
-		<flag name="rpc">Enable sun nis/rpc support (you should use libtirpc though)</flag>
 		<flag name="symlink-compat">Explicitly add sym links for libdl.so.0, libm.so.0, and
 		friends for backward compatibility with sys-libs/uclibc-ng-1.0.17 and earlier</flag>
 	</use>

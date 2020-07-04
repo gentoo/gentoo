@@ -1,0 +1,61 @@
+--- xlsx2csv-0.7.6/test/run
++++ xlsx2csv-0.7.6/test/run
+@@ -5,8 +5,6 @@
+ import subprocess
+ from io import open
+ 
+-PYTHON_VERSIONS = ["2.7"]
+-
+ """
+ This test uses sys.stdout.
+ That means this test doesn't verify:
+@@ -16,31 +14,24 @@
+ 
+ def compare(case, arguments=[]):
+     failed = False
+-    for pyver in PYTHON_VERSIONS:
+-        ext = "xlsx"
+-        if os.path.exists("test/%s.xlsm" % case):
+-            ext = "xlsm"
+-
+-        if os.name == 'posix':# in case of Linux
+-            left = subprocess.check_output(["python%s" %pyver, "./xlsx2csv.py"] + arguments + ["test/%s.%s" %(case, ext)]).decode('utf-8').replace('\r','')
+-        elif os.name == 'nt':# in case of Windows
+-            # Use py.exe http://blog.python.org/2011/07/python-launcher-for-windows_11.html on Windows
+-            left = subprocess.check_output(["py", "-%s" %pyver, "./xlsx2csv.py"] + arguments + ["test/%s.%s" %(case, ext)]).decode('utf-8').replace('\r','')
+-        else:
+-            print("os.name is unexpected: "+os.name)
+-            sys.exit(1)
+-
+-        f = open("test/%s.csv" %case, "r", encoding="utf-8", newline="")
+-        right = f.read().replace('\r','')
+-        f.close()
+-
+-        if left != right:
+-            print("FAILED: %s %s" %(case, pyver))
+-            print(" actual:", left.replace("\r", "\\r").replace("\n", "\\n"))
+-            print(" expected:", right.replace("\r", "\\r").replace("\n", "\\n"))
+-            failed = True
+-        else:
+-            print("OK: %s %s" %(case, pyver))
++    ext = "xlsx"
++    if os.path.exists("test/%s.xlsm" % case):
++        ext = "xlsm"
++
++    left = subprocess.check_output(["./xlsx2csv.py"] + arguments + ["test/%s.%s" %(case, ext)]).decode('utf-8').replace('\r','')
++
++    f = open("test/%s.csv" %case, "r", encoding="utf-8", newline="")
++    right = f.read().replace('\r','')
++    f.close()
++
++    if left != right:
++        print("FAILED: %s" % (case,))
++        print(" actual:", left.replace("\r", "\\r").replace("\n", "\\n"))
++        print(" expected:", right.replace("\r", "\\r").replace("\n", "\\n"))
++        failed = True
++    else:
++        print("OK: %s" % (case,))
++
+     if failed:
+         sys.exit(1)
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}-${MY_R}.fc7.src.rpm"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc sparc x86"
 IUSE="audacious cursors gdm icons nautilus"
 
 RDEPEND="x11-libs/gtk+:2"
@@ -77,7 +77,7 @@ src_compile() {
 	emake QTDIR="${QTDIR}" styledir="${QTDIR}/plugins/styles"
 }
 
-src_install () {
+src_install() {
 	# dies if LANG has UTF-8
 	export LANG=C
 	export LC_ALL=C

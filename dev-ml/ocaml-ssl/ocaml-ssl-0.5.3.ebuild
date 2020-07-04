@@ -17,7 +17,7 @@ RDEPEND="${DEPEND}"
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 ~arm ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ppc x86"
 
 src_compile() {
 	emake -j1

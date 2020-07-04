@@ -1,5 +1,5 @@
---- exp-gfx.c
-+++ exp-gfx.c
+--- a/exp-gfx.c
++++ b/exp-gfx.c
 @@ -4,6 +4,8 @@
  #include <stdlib.h>
  #include <string.h>

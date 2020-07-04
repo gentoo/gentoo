@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ MY_P="${PN}_v${PV}"
 
 DESCRIPTION="a powerful perl script that summarizes snort logs"
 HOMEPAGE="http://jeremy.chartier.free.fr/snortalog/"
-SRC_URI="${HOMEPAGE}downloads/${PN}/${MY_P}.tar"
+SRC_URI="http://jeremy.chartier.free.fr/snortalog/downloads/${PN}/${MY_P}.tar"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -41,7 +41,7 @@ src_prepare() {
 		snortalog.pl || die
 }
 
-src_install () {
+src_install() {
 	dobin snortalog.pl
 
 	insinto /etc/snortalog

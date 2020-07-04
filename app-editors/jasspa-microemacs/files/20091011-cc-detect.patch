@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/729258
+
+--- me091011-orig/src/build
++++ me091011/src/build
+@@ -158,12 +158,8 @@
+         exit 1
+     fi
+ 
+-    # use cc by default if available
+     if [ -r $MAKEBAS.mak ] ; then
+-        # try to detect cc, if found use it in preference
+-        if [ "`type cc | cut -b 1-5`" = "cc is" ] ; then
+-            MAKEFILE=$MAKEBAS.mak
+-        fi
++        MAKEFILE=$MAKEBAS.mak
+         # Special rules for sun, if cc is /usr/ucb then this is a dummy.
+         if [ $PLATFORM = "SunOS" ] ; then 
+             WHATCC=`/usr/bin/which cc`
+@@ -173,12 +169,8 @@
+         fi                      
+     fi
+     if [ -z "$MAKEFILE" ] ; then
+-        # failed to find cc, try gcc
+         if [ -r $MAKEBAS.gmk ] ; then
+-            # try to detect gcc, if found use it in preference
+-            if [ "`type gcc | cut -b 1-6`" = "gcc is" ] ; then
+-                MAKEFILE=$MAKEBAS.gmk
+-            fi
++            MAKEFILE=$MAKEBAS.gmk
+         fi
+     fi
+     if [ -z "$MAKEFILE" ] ; then

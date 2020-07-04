@@ -31,6 +31,8 @@ PATCHES=(
 )
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	emake -j1 CC=$(tc-getCC) CFLAGS="${CFLAGS}" CPPFLAGS="${CPPFLAGS}"
 }
 

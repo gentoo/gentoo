@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Java framework for RSS and Atom feeds"
 HOMEPAGE="https://rometools.github.io/rome/"
-SRC_URI="mirror://gentoo/${P}-src.zip -> ${P}.zip"
+SRC_URI="mirror://gentoo/${P}.zip"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"

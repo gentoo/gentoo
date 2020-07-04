@@ -7,6 +7,5 @@
 </maintainer>
 <use>
 <flag name="http2">Add support for HTTP/2 protocol via <pkg>net-libs/nghttp2</pkg></flag>
-<flag name="redis">Add support for redis via <pkg>dev-libs/hiredis</pkg></flag>
 </use>
 </pkgmetadata>

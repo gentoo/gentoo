@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/samtools/${PV}/${P}.tar.bz2"
 
 SLOT="0/2"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="+bzip2 curl +lzma static-libs"
 
 RDEPEND="

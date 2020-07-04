@@ -1,0 +1,45 @@
+diff -Naur free42-nologo-2.5.12.orig/gtk/Makefile free42-nologo-2.5.12/gtk/Makefile
+--- free42-nologo-2.5.12.orig/gtk/Makefile	2019-11-28 20:11:51.000000000 +0100
++++ free42-nologo-2.5.12/gtk/Makefile	2019-11-29 17:59:58.292516949 +0100
+@@ -15,7 +15,7 @@
+ # along with this program; if not, see http://www.gnu.org/licenses/.
+ ###############################################################################
+ 
+-CFLAGS = -MMD \
++CFLAGS := -MMD \
+ 	 -Wall \
+ 	 -Wno-parentheses \
+ 	 -Wno-write-strings \
+@@ -34,7 +34,8 @@
+ 	 -DDECIMAL_GLOBAL_ROUNDING=1 \
+ 	 -DDECIMAL_GLOBAL_ROUNDING_ACCESS_FUNCTIONS=1 \
+ 	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
+-	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1
++	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1 \
++	 ${CFLAGS}
+ 
+ ###############################################################################
+ ### Note that there are deprecation warnings while compiling shell_main.cc  ###
+@@ -46,10 +47,11 @@
+ ### GTK+ 3.22 for testing.                                                  ###
+ ###############################################################################
+ 
+-CXXFLAGS = $(CFLAGS) \
++CXXFLAGS := $(CFLAGS) \
+ 	 -fno-exceptions \
+ 	 -fno-rtti \
+-	 -D_WCHAR_T_DEFINED
++	 -D_WCHAR_T_DEFINED \
++	 ${CFLAGS}
+ 
+ LIBS = gcc111libbid.a $(shell pkg-config --libs gtk+-3.0)
+ 
+@@ -125,7 +127,7 @@
+ 
+ symlinks:
+ 	for fn in `cd ../common; /bin/ls`; do ln -s ../common/$$fn; done
+-	sh ./build-intel-lib.sh
++	+sh ./build-intel-lib.sh
+ 	ln -s IntelRDFPMathLib20U1/TESTS/readtest.c
+ 	touch symlinks
+ 

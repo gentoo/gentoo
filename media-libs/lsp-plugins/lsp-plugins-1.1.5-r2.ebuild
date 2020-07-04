@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,12 +31,12 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-src_prepare(){
+src_prepare() {
 	eapply_user
 	sed -i '/install_.*: all/s/ all//g' Makefile
 }
 
-src_compile(){
+src_compile() {
 	use doc && MODULES+="doc"
 	use jack && MODULES+=" jack"
 	use ladspa && MODULES+=" ladspa"
@@ -44,7 +44,7 @@ src_compile(){
 	emake BUILD_MODULES="${MODULES}"
 }
 
-src_install(){
+src_install() {
 	use doc && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_doc
 	use jack && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_jack
 	use ladspa && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_ladspa

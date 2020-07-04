@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -70,15 +70,15 @@ src_install() {
 	# Install qt help files
 	insinto /usr/share/doc/${PF} # this must match sed expression in src_prepare
 	doins bin/documentation/engauge.{qch,qhc}
-	docompress -x "${EPREFIX%/}"/usr/share/doc/$PF/engauge.{qch,qhc}
+	docompress -x "${EPREFIX}"/usr/share/doc/$PF/engauge.{qch,qhc}
 
 	if use doc; then
 		pushd doc >/dev/null || die
-		doins -r . || die "install documentation failed"
+		doins -r .
 		popd >/dev/null || die
 	fi
 	if use examples; then
-		doins -r samples || die "install examples failed"
+		doins -r samples
 	fi
 }
 

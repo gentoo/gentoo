@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,6 +25,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-lang/perl-5.8.8-r5
 	>=www-client/lynx-2.8.6-r2"
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
@@ -40,7 +42,7 @@ src_compile() {
 	emake CC="$(tc-getCC)" SYSTEM="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin wmXName GrabXName
 	dodoc README config.sample
 }

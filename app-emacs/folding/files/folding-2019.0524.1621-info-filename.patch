@@ -1,0 +1,11 @@
+--- a/folding.texi
++++ b/folding.texi
+@@ -2,7 +2,7 @@
+ \input texinfo
+ 
+ @c %**start of header
+-@setfilename info/folding
++@setfilename folding.info
+ @settitle folding
+ @documentencoding ISO-8859-1
+ @c %**end of header

@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/GnomeMud"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE="gstreamer"
 
 RDEPEND="virtual/libintl

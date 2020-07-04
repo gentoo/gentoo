@@ -3,6 +3,25 @@ for us atm, so hack away :(
 
 (recent autotools will always add $(CFLAGS)/etc... to the compile)
 
+posted upstream:
+https://marc.info/?l=linux-nfs&m=136416341629788&w=2
+Date: Sun, 24 Mar 2013 22:21:08 +0000
+Message-ID: 1364163668-15490-1-git-send-email-vapier@gentoo.org
+
+From 269ae1346d9ccc97304205066d20e7e7b638f30e Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 24 Mar 2013 18:14:48 -0400
+Subject: [PATCH nfs-utils] locktes/rpcgen: tweak how we override compiler settings
+
+Newer autotools will use both CFLAGS and <target>_CFLAGS when compiling
+the <target>.  Adding the build settings to the target-specific flags no
+longer works as a way to compile build-time tools.
+
+Instead, clobber the global flags.  This triggers an automake warning,
+but the end result actually works (unlike the existing code).
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+
 --- a/tools/locktest/Makefile.am
 +++ b/tools/locktest/Makefile.am
 @@ -1,12 +1,11 @@

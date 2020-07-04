@@ -1,0 +1,62 @@
+Index: roscpp/include/ros/timer_manager.h
+===================================================================
+--- roscpp.orig/include/ros/timer_manager.h
++++ roscpp/include/ros/timer_manager.h
+@@ -349,7 +349,7 @@ int32_t TimerManager<T, D, E>::add(const
+     {
+       boost::mutex::scoped_lock lock(waiting_mutex_);
+       waiting_.push_back(info->handle);
+-      waiting_.sort(boost::bind(&TimerManager::waitingCompare, this, _1, _2));
++      waiting_.sort(boost::bind(&TimerManager::waitingCompare, this, boost::placeholders::_1, boost::placeholders::_2));
+     }
+ 
+     new_timer_ = true;
+@@ -416,7 +416,7 @@ void TimerManager<T, D, E>::schedule(con
+ 
+     waiting_.push_back(info->handle);
+     // waitingCompare requires a lock on the timers_mutex_
+-    waiting_.sort(boost::bind(&TimerManager::waitingCompare, this, _1, _2));
++    waiting_.sort(boost::bind(&TimerManager::waitingCompare, this, boost::placeholders::_1, boost::placeholders::_2));
+   }
+ 
+   new_timer_ = true;
+@@ -490,7 +490,7 @@ void TimerManager<T, D, E>::setPeriod(in
+     // In this case, let next_expected be updated only in updateNext
+     
+     info->period = period;
+-    waiting_.sort(boost::bind(&TimerManager::waitingCompare, this, _1, _2));
++    waiting_.sort(boost::bind(&TimerManager::waitingCompare, this, boost::placeholders::_1, boost::placeholders::_2));
+   }
+ 
+   new_timer_ = true;
+Index: roscpp/src/libros/connection_manager.cpp
+===================================================================
+--- roscpp.orig/src/libros/connection_manager.cpp
++++ roscpp/src/libros/connection_manager.cpp
+@@ -66,7 +66,7 @@ void ConnectionManager::start()
+   tcpserver_transport_ = boost::make_shared<TransportTCP>(&poll_manager_->getPollSet());
+   if (!tcpserver_transport_->listen(network::getTCPROSPort(), 
+ 				    MAX_TCPROS_CONN_QUEUE, 
+-				    boost::bind(&ConnectionManager::tcprosAcceptConnection, this, _1)))
++				    boost::bind(&ConnectionManager::tcprosAcceptConnection, this, boost::placeholders::_1)))
+   {
+     ROS_FATAL("Listen on port [%d] failed", network::getTCPROSPort());
+     ROS_BREAK();
+@@ -142,7 +142,7 @@ void ConnectionManager::addConnection(co
+   boost::mutex::scoped_lock lock(connections_mutex_);
+ 
+   connections_.insert(conn);
+-  conn->addDropListener(boost::bind(&ConnectionManager::onConnectionDropped, this, _1));
++  conn->addDropListener(boost::bind(&ConnectionManager::onConnectionDropped, this, boost::placeholders::_1));
+ }
+ 
+ void ConnectionManager::onConnectionDropped(const ConnectionPtr& conn)
+@@ -190,7 +190,7 @@ void ConnectionManager::tcprosAcceptConn
+   ConnectionPtr conn(boost::make_shared<Connection>());
+   addConnection(conn);
+ 
+-  conn->initialize(transport, true, boost::bind(&ConnectionManager::onConnectionHeaderReceived, this, _1, _2));
++  conn->initialize(transport, true, boost::bind(&ConnectionManager::onConnectionHeaderReceived, this, boost::placeholders::_1, boost::placeholders::_2));
+ }
+ 
+ bool ConnectionManager::onConnectionHeaderReceived(const ConnectionPtr& conn, const Header& header)

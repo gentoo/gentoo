@@ -3,41 +3,38 @@
 
 EAPI=6
 
-inherit eutils perl-functions
+inherit perl-functions
 
 PATCHVER=0.2
 MY_PN=${PN/b/B}
 MY_P=${MY_PN}-${PV}
 S=${WORKDIR}/${MY_PN}
 DESCRIPTION="Bastille-Linux is a security hardening tool"
-HOMEPAGE="http://bastille-linux.org/"
+HOMEPAGE="http://bastille-linux.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}-linux/${MY_P}.tar.bz2
 	mirror://gentoo/${P}-gentoo-${PATCHVER}.patch.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE="X"
 
 RDEPEND="
-	net-firewall/iptables
 	app-admin/logrotate
 	dev-lang/perl:=
 	dev-perl/Curses
+	net-firewall/iptables
 	net-firewall/psad
-	X? ( dev-perl/Tk )
 	virtual/logger
+	X? ( dev-perl/Tk )
 "
 
 PATCHES=(
 	"${WORKDIR}"/${P}-gentoo-${PATCHVER}.patch
-
 	# make sure the Perl modules go into vendor dir
 	"${FILESDIR}/${P}-perl.patch"
-
 	# prevent file collision, bug 536292
 	"${FILESDIR}/${P}-renamewidgets.patch"
-
 	# openrc runscript rename
 	"${FILESDIR}/${P}-openrc.patch"
 )

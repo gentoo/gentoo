@@ -8,4 +8,7 @@
   <use>
     <flag name="libyaml">enable support for C implementation using libyaml</flag>
   </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:pyyaml_project:pyyaml</remote-id>
+  </upstream>
 </pkgmetadata>

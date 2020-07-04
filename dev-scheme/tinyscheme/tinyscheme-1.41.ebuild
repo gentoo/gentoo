@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit flag-o-matic multilib
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Lightweight scheme interpreter"
 HOMEPAGE="http://tinyscheme.sourceforge.net"
@@ -45,7 +45,7 @@ src_install() {
 
 	newlib.so ${tslib} ${tslibx}
 	dosym ${tslibx} /usr/$(get_libdir)/${tslib}
-	dodoc Manual.txt || die "dodoc failed"
+	dodoc Manual.txt
 
 	if use static-libs; then
 		dolib.a libtinyscheme.a

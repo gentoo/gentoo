@@ -1,0 +1,194 @@
+From c63aad8eca00bca2ec48fcb667bbdfd80a22a7ab Mon Sep 17 00:00:00 2001
+From: grossmj <grossmj@gns3.net>
+Date: Tue, 19 May 2020 15:48:53 +0930
+Subject: [PATCH] Replace Raven by Sentry SDK. Fixes
+ https://github.com/GNS3/gns3-server/issues/1758
+
+---
+ gns3server/crash_report.py | 93 ++++++++++++++++++++------------------
+ gns3server/web/route.py    |  2 +-
+ requirements.txt           |  3 +-
+ 3 files changed, 53 insertions(+), 45 deletions(-)
+
+diff --git a/gns3server/crash_report.py b/gns3server/crash_report.py
+index 87e22a213..7f92d38e6 100644
+--- a/gns3server/crash_report.py
++++ b/gns3server/crash_report.py
+@@ -15,22 +15,21 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++try:
++    import sentry_sdk
++    from sentry_sdk.integrations.aiohttp import AioHttpIntegration
++    SENTRY_SDK_AVAILABLE = True
++except ImportError:
++    # Sentry SDK is not installed with deb package in order to simplify packaging
++    SENTRY_SDK_AVAILABLE = False
++
+ import os
+ import sys
+ import struct
+-import aiohttp
+ import platform
+ import locale
+ import distro
+ 
+-try:
+-    import raven
+-    from raven.transport.http import HTTPTransport
+-    RAVEN_AVAILABLE = True
+-except ImportError:
+-    # raven is not installed with deb package in order to simplify packaging
+-    RAVEN_AVAILABLE = False
+-
+ from .version import __version__, __version_info__
+ from .config import Config
+ from .utils.get_resource import get_resource
+@@ -59,48 +58,45 @@ class CrashReport:
+     """
+ 
+     DSN = "https://dbfb677c73304b1286aef33dfbb749c6:93b9a937d4884426a1b15f37536fcd94@o19455.ingest.sentry.io/38482"
+-    if hasattr(sys, "frozen"):
+-        cacert = get_resource("cacert.pem")
+-        if cacert is not None and os.path.isfile(cacert):
+-            DSN += "?ca_certs={}".format(cacert)
+-        else:
+-            log.warning("The SSL certificate bundle file '{}' could not be found".format(cacert))
+     _instance = None
+ 
+     def __init__(self):
+-        self._client = None
+ 
+-        # We don't want sentry making noise if an error is catched when you don't have internet
++        # We don't want sentry making noise if an error is caught when you don't have internet
+         sentry_errors = logging.getLogger('sentry.errors')
+         sentry_errors.disabled = True
+ 
+         sentry_uncaught = logging.getLogger('sentry.errors.uncaught')
+         sentry_uncaught.disabled = True
+ 
+-    def capture_exception(self, request=None):
+-        if not RAVEN_AVAILABLE:
+-            return
+-        if os.path.exists(".git"):
+-            log.warning("A .git directory exist crash report is turn off for developers")
+-            return
+-        server_config = Config.instance().get_section_config("Server")
+-        if server_config.getboolean("report_errors"):
+-            if self._client is None:
+-                self._client = raven.Client(CrashReport.DSN, release=__version__, raise_send_errors=True, transport=HTTPTransport)
+-            if request is not None:
+-                self._client.http_context({
+-                    "method": request.method,
+-                    "url": request.path,
+-                    "data": request.json,
+-                })
+-
+-            context = {
++        if SENTRY_SDK_AVAILABLE:
++            cacert = None
++            if hasattr(sys, "frozen"):
++                cacert_resource = get_resource("cacert.pem")
++                if cacert_resource is not None and os.path.isfile(cacert_resource):
++                    cacert = cacert_resource
++                else:
++                    log.error("The SSL certificate bundle file '{}' could not be found".format(cacert_resource))
++
++            sentry_sdk.init(dsn=CrashReport.DSN,
++                            release=__version__,
++                            ca_certs=cacert,
++                            integrations=[AioHttpIntegration()])
++
++            tags = {
+                 "os:name": platform.system(),
+                 "os:release": platform.release(),
+                 "os:win_32": " ".join(platform.win32_ver()),
+                 "os:mac": "{} {}".format(platform.mac_ver()[0], platform.mac_ver()[2]),
+                 "os:linux": " ".join(distro.linux_distribution()),
+-                "aiohttp:version": aiohttp.__version__,
++
++            }
++
++            with sentry_sdk.configure_scope() as scope:
++                for key, value in tags.items():
++                    scope.set_tag(key, value)
++
++            extra_context = {
+                 "python:version": "{}.{}.{}".format(sys.version_info[0],
+                                                     sys.version_info[1],
+                                                     sys.version_info[2]),
+@@ -113,8 +109,8 @@ def capture_exception(self, request=None):
+                 # add locale information
+                 try:
+                     language, encoding = locale.getlocale()
+-                    context["locale:language"] = language
+-                    context["locale:encoding"] = encoding
++                    extra_context["locale:language"] = language
++                    extra_context["locale:encoding"] = encoding
+                 except ValueError:
+                     pass
+ 
+@@ -124,17 +120,28 @@ def capture_exception(self, request=None):
+                 if os.path.isfile(gns3vm_version):
+                     try:
+                         with open(gns3vm_version) as fd:
+-                            context["gns3vm:version"] = fd.readline().strip()
++                            extra_context["gns3vm:version"] = fd.readline().strip()
+                     except OSError:
+                         pass
+ 
+-            self._client.tags_context(context)
++            with sentry_sdk.configure_scope() as scope:
++                for key, value in extra_context.items():
++                    scope.set_extra(key, value)
++
++    def capture_exception(self):
++        if not SENTRY_SDK_AVAILABLE:
++            return
++        if os.path.exists(".git"):
++            log.warning(".git directory detected, crash reporting is turned off for developers.")
++            return
++        server_config = Config.instance().get_section_config("Server")
++        if server_config.getboolean("report_errors"):
++
+             try:
+-                report = self._client.captureException()
++                sentry_sdk.capture_exception()
++                log.info("Crash report sent with event ID: {}".format(sentry_sdk.last_event_id()))
+             except Exception as e:
+                 log.error("Can't send crash report to Sentry: {}".format(e))
+-                return
+-            log.info("Crash report sent with event ID: {}".format(self._client.get_ident(report)))
+ 
+     @classmethod
+     def instance(cls):
+diff --git a/gns3server/web/route.py b/gns3server/web/route.py
+index d1275250d..c70dbbc3a 100644
+--- a/gns3server/web/route.py
++++ b/gns3server/web/route.py
+@@ -242,7 +242,7 @@ async def control_schema(request):
+                     log.error("Uncaught exception detected: {type}".format(type=type(e)), exc_info=1)
+                     response = Response(request=request, route=route)
+                     response.set_status(500)
+-                    CrashReport.instance().capture_exception(request)
++                    CrashReport.instance().capture_exception()
+                     exc_type, exc_value, exc_tb = sys.exc_info()
+                     lines = traceback.format_exception(exc_type, exc_value, exc_tb)
+                     if api_version is not None:
+diff --git a/requirements.txt b/requirements.txt
+index 57fbb7938..0af9e0d68 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -4,9 +4,10 @@ jsonschema==2.6.0; python_version < '3.8'  # pyup: ignore
+ aiohttp==3.6.2
+ aiohttp-cors==0.7.0
+ aiofiles==0.4.0
++aiocontextvars==0.2.2
+ async_generator>=1.10
+ Jinja2>=2.7.3
+-raven>=5.23.0
++sentry-sdk>=0.14.4
+ psutil==5.6.6
+ async-timeout==3.0.1
+ distro>=1.3.0

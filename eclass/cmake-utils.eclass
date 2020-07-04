@@ -12,6 +12,7 @@
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common ebuild functions for cmake-based packages
 # @DESCRIPTION:
+# DEPRECATED: This no longer receives any changes. Everyone must port to cmake.eclass.
 # The cmake-utils eclass makes creating ebuilds for cmake-based packages much easier.
 # It provides all inherited features (DOCS, HTML_DOCS, PATCHES) along with out-of-source
 # builds (default), in-source builds and an implementation of the well-known use_enable
@@ -338,6 +339,18 @@ cmake-utils_use_find_package() {
 	_cmake_use_me_now_inverted CMAKE_DISABLE_FIND_PACKAGE_ "$@" ;
 }
 
+# @FUNCTION: cmake_use_find_package
+# @USAGE: <USE flag> <package name>
+# @DESCRIPTION:
+# Alias for cmake-utils_use_find_package.
+cmake_use_find_package() {
+	if [[ "$#" != 2 ]] ; then
+		die "Usage: cmake_use_find_package <USE flag> <package name>"
+	fi
+
+	cmake-utils_use_find_package "$@" ;
+}
+
 # @FUNCTION: cmake-utils_use_disable
 # @USAGE: <USE flag> [flag name]
 # @DESCRIPTION:
@@ -649,7 +662,7 @@ cmake-utils_src_configure() {
 	if [[ ${EAPI} != [56] ]]; then
 		cat >> "${common_config}" <<- _EOF_ || die
 			SET (CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
-			SET (BUILD_SHARED_LIBS ON CACHE BOOLEAN "")
+			SET (BUILD_SHARED_LIBS ON CACHE BOOL "")
 		_EOF_
 	fi
 

@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="ICC profiles for printing/offset"
 HOMEPAGE="https://www.freedesktop.org/wiki/OpenIcc/ProfilePackages"

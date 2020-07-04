@@ -11,9 +11,7 @@
   <longdescription lang="es">
     Un simulador de la calculadora HP-42S
   </longdescription>
-  <use>
-    <flag name="alsa">
-      Adds support for Advanced Linux Sound Architecture
-    </flag>
-  </use>
+  <upstream>
+    <remote-id type="github">thomasokken/free42</remote-id>
+  </upstream>
 </pkgmetadata>

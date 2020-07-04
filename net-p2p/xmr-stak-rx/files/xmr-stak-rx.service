@@ -1,0 +1,32 @@
+[Unit]
+Description=Monero RandomX Miner
+After=network-online.target
+AssertFileNotEmpty=/etc/xmr-stak-rx/main.config
+
+[Service]
+Environment=GPU_FORCE_64BIT_PTR=1
+Environment=GPU_MAX_HEAP_SIZE=100
+Environment=GPU_USE_SYNC_OBJECTS=1
+Environment=GPU_MAX_ALLOC_PERCENT=100
+Environment=GPU_SINGLE_ALLOC_PERCENT=100
+ExecStart=/usr/bin/xmr-stak-rx --cpu /etc/xmr-stak-rx/cpu.config --amd /etc/xmr-stak-rx/amd.config --nvidia /etc/xmr-stak-rx/nvidia.config -c /etc/xmr-stak-rx/main.config -C /etc/xmr-stak-rx/pools.txt
+DynamicUser=true
+Group=video
+CPUSchedulingPolicy=idle
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+NoNewPrivileges=true
+CapabilityBoundingSet=
+MemoryDenyWriteExecute=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+PrivateUsers=true
+ConfigurationDirectory=xmr-stak-rx
+
+[Install]
+WantedBy=multi-user.target

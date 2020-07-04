@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription>
-    Colored, side-by-side diff terminal viewer.
-  </longdescription>
-  <upstream>
-    <remote-id type="pypi">cdiff</remote-id>
-    <remote-id type="github">ymattw/cdiff</remote-id>
-  </upstream>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="pypi">cdiff</remote-id>
+		<remote-id type="github">ymattw/cdiff</remote-id>
+	</upstream>
 </pkgmetadata>

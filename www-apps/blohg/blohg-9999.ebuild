@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
 GIT_ECLASS=""
 if [[ ${PV} = *9999* ]]; then
@@ -16,7 +16,8 @@ inherit distutils-r1 ${GIT_ECLASS}
 DESCRIPTION="A Mercurial (or Git) based blogging engine"
 HOMEPAGE="https://github.com/rafaelmartins/blohg"
 
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~rafaelmartins/distfiles/${PN}-patches-${PVR}.tar.xz"
 KEYWORDS="~amd64 ~x86"
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
@@ -26,28 +27,32 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc git +mercurial test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( git mercurial )
 	test? ( git mercurial )"
 
 RDEPEND="
-	>=dev-python/click-2.0
-	>=dev-python/docutils-0.11
-	>=dev-python/flask-0.10.1
-	>=dev-python/flask-babel-0.7
-	>=dev-python/frozen-flask-0.7
-	>=dev-python/jinja-2.5.2
-	dev-python/pyyaml
-	dev-python/setuptools
-	dev-python/pygments
-	git? ( >=dev-python/pygit2-0.21.3 )
-	mercurial? ( >=dev-vcs/mercurial-1.6 )"
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/docutils[${PYTHON_USEDEP}]
+	dev-python/feedgenerator[${PYTHON_USEDEP}]
+	dev-python/flask[${PYTHON_USEDEP}]
+	dev-python/flask-babel[${PYTHON_USEDEP}]
+	dev-python/frozen-flask[${PYTHON_USEDEP}]
+	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/pygments[${PYTHON_USEDEP}]
+	git? ( dev-python/pygit2[${PYTHON_USEDEP}] )
+	mercurial? ( >=dev-vcs/mercurial-5.2[${PYTHON_USEDEP}] )"
 
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx )
-	test? ( dev-python/mock )"
+	doc? ( dev-python/sphinx )"
 
 python_prepare_all() {
+	if [[ ${PV} != *9999* ]]; then
+		eapply "${WORKDIR}/${PN}-patches-${PVR}"
+	fi
+
 	if ! use git; then
 		rm -rf blohg/vcs_backends/git || die 'rm failed'
 	fi
@@ -70,12 +75,4 @@ python_install_all() {
 
 python_test() {
 	esetup.py test
-}
-
-pkg_postinst() {
-	local ver="${PV}"
-	[[ ${PV} = *9999* ]] && ver="latest"
-
-	elog "You may want to check the upgrade notes:"
-	elog "http://docs.blohg.org/en/${ver}/upgrade/"
 }

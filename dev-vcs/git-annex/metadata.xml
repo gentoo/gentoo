@@ -23,7 +23,6 @@
 		<flag name="assistant">Enable git-annex assistant and watch command</flag>
 		<flag name="benchmark">Enable benchmarking</flag>
 		<flag name="concurrentoutput">Use concurrent-output library (experimental)</flag>
-		<flag name="magicmime">Use libmagic to determine file MIME types</flag>
 		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
 		<flag name="pairing">Enable pairing of git annex repositories</flag>
 		<flag name="s3">Enable Amazon S3 remote</flag>

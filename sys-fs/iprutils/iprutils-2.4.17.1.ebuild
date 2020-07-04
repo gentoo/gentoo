@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools bash-completion-r1 eutils toolchain-funcs
+inherit autotools bash-completion-r1 eutils ltprune toolchain-funcs
 
 DESCRIPTION="IBM's tools for support of the ipr SCSI controller"
 SRC_URI="mirror://sourceforge/iprdd/${P}.tar.gz"
@@ -41,7 +41,7 @@ src_configure() {
 	econf $(use_enable static-libs static)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" \
 		bashcompdir=$(get_bashcompdir) install
 

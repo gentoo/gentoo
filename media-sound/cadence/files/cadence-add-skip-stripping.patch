@@ -1,0 +1,65 @@
+diff --git a/c++/Makefile.mk b/c++/Makefile.mk
+index ec92861..8e9998f 100644
+--- a/c++/Makefile.mk
++++ b/c++/Makefile.mk
+@@ -7,7 +7,6 @@
+ AR  ?= ar
+ CC  ?= gcc
+ CXX ?= g++
+-STRIP ?= strip
+ WINDRES ?= windres
+ 
+ HOSTBINS = $(shell pkg-config --variable=host_bins Qt5Core)
+@@ -22,7 +21,6 @@ DEBUG ?= false
+ ifeq ($(DEBUG),true)
+ BASE_FLAGS  = -O0 -g -Wall -Wextra
+ BASE_FLAGS += -DDEBUG
+-STRIP       = true # FIXME
+ else
+ BASE_FLAGS  = -O3 -ffast-math -mtune=generic -msse -mfpmath=sse -Wall -Wextra
+ BASE_FLAGS += -DNDEBUG
+@@ -38,6 +36,10 @@ ifneq ($(DEBUG),true)
+ BUILD_CXX_FLAGS += -DQT_NO_DEBUG -DQT_NO_DEBUG_STREAM -DQT_NO_DEBUG_OUTPUT
+ endif
+ 
++ifneq ($(SKIP_STRIPPING), true)
++LINK_FLAGS += -Wl,--strip-all
++endif
++
+ # --------------------------------------------------------------
+ 
+ # Currently broken
+diff --git a/c++/jackmeter/Makefile b/c++/jackmeter/Makefile
+index 004076d..bfe3230 100644
+--- a/c++/jackmeter/Makefile
++++ b/c++/jackmeter/Makefile
+@@ -31,10 +31,10 @@ OBJS = \
+ all: cadence-jackmeter
+ 
+ cadence-jackmeter: $(FILES) $(OBJS)
+-	$(CXX) $(OBJS) $(LINK_FLAGS) -ldl -o $@ && $(STRIP) $@
++	$(CXX) $(OBJS) $(LINK_FLAGS) -ldl -o $@
+ 
+ cadence-jackmeter.exe: $(FILES) $(OBJS) icon.o
+-	$(CXX) $(OBJS) icon.o $(LINK_FLAGS) -limm32 -lole32 -luuid -lwinspool -lws2_32 -mwindows -o $@ && $(STRIP) $@
++	$(CXX) $(OBJS) icon.o $(LINK_FLAGS) -limm32 -lole32 -luuid -lwinspool -lws2_32 -mwindows -o $@
+ 
+ # --------------------------------------------------------------
+ 
+diff --git a/c++/xycontroller/Makefile b/c++/xycontroller/Makefile
+index 662a7af..b4aac04 100644
+--- a/c++/xycontroller/Makefile
++++ b/c++/xycontroller/Makefile
+@@ -35,10 +35,10 @@ OBJS  = xycontroller.o \
+ all: cadence-xycontroller
+ 
+ cadence-xycontroller: $(FILES) $(OBJS)
+-	$(CXX) $(OBJS) $(LINK_FLAGS) -ldl -o $@ && $(STRIP) $@
++	$(CXX) $(OBJS) $(LINK_FLAGS) -ldl -o $@
+ 
+ cadence-xycontroller.exe: $(FILES) $(OBJS) icon.o
+-	$(CXX) $(OBJS) icon.o $(LINK_FLAGS) -limm32 -lole32 -luuid -lwinspool -lws2_32 -mwindows -o $@ && $(STRIP) $@
++	$(CXX) $(OBJS) icon.o $(LINK_FLAGS) -limm32 -lole32 -luuid -lwinspool -lws2_32 -mwindows -o $@
+ 
+ # --------------------------------------------------------------
+ 

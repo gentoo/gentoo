@@ -1,0 +1,30 @@
+From 1a3615f30491320d48e45005ad7b032fb3c1821d Mon Sep 17 00:00:00 2001
+From: Kurt Kanzenbach <kurt@kmk-computers.de>
+Date: Sun, 22 Mar 2020 12:49:59 +0100
+Subject: [PATCH] cmake: Remove passing of BOOST_ROOT
+
+That variable is not used and generates QA issues:
+
+ * One or more CMake variables were not used by the project:
+   *   BOOST_ROOT
+
+Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
+---
+ tests/unit/build/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tests/unit/build/CMakeLists.txt b/tests/unit/build/CMakeLists.txt
+index 757f4887fba2..2163b853fbad 100644
+--- a/tests/unit/build/CMakeLists.txt
++++ b/tests/unit/build/CMakeLists.txt
+@@ -38,7 +38,6 @@ function(create_cmake_test name hpx_dir)
+       "${CMAKE_COMMAND}" -E chdir "${build_dir}" "${CMAKE_COMMAND}"
+       "${PROJECT_SOURCE_DIR}/examples/hello_world_component"
+       -DHPX_DIR=${hpx_dir}
+-      -DBOOST_ROOT=${BOOST_ROOT}
+       ${ADDITIONAL_CMAKE_OPTIONS}
+       -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS_SAFE}
+       -DCMAKE_BUILD_TYPE=$<CONFIGURATION> VERBATIM)
+-- 
+2.24.1
+

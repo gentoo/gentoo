@@ -81,9 +81,9 @@ esac
 # This allows ordering of extensions such that one is loaded before
 # or after another.  Defaults to the PHP_EXT_NAME.
 # Example (produces 40-foo.ini file):
-# @CODE@
+# @CODE
 # PHP_INI_NAME="40-foo"
-# @CODE@
+# @CODE
 : ${PHP_INI_NAME:=${PHP_EXT_NAME}}
 
 # @ECLASS-VARIABLE: PHP_EXT_NEEDED_USE
@@ -366,7 +366,7 @@ php-ext-source-r3_createinifiles() {
 			inidir="${file/${PHP_INI_NAME}.ini/}"
 			inidir="${inidir/ext/ext-active}"
 			dodir "/${inidir}"
-			dosym "/${file}" "/${file/ext/ext-active}"
+			dosym "../ext/${PHP_INI_NAME}.ini" "/${file/ext/ext-active}"
 		done
 	done
 

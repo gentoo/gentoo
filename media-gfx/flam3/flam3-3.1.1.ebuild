@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="Tools and a library for creating flame fractal images"
-HOMEPAGE="http://flam3.com/"
+HOMEPAGE="https://flam3.com/"
 SRC_URI="https://github.com/scottdraves/flam3/archive/v$PV.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="static-libs"
 
 RDEPEND="dev-libs/libxml2

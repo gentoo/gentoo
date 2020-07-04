@@ -1,0 +1,25 @@
+diff -ur pytest-services-2.0.1.orig/tests/test_plugin.py pytest-services-2.0.1/tests/test_plugin.py
+--- pytest-services-2.0.1.orig/tests/test_plugin.py	2019-11-12 13:04:01.000000000 -0800
++++ pytest-services-2.0.1/tests/test_plugin.py	2019-11-20 19:28:17.789932680 -0800
+@@ -3,7 +3,6 @@
+ import socket
+ 
+ import pylibmc
+-import MySQLdb
+ 
+ 
+ def test_memcached(request, memcached, memcached_socket):
+@@ -17,12 +16,6 @@
+     assert mc.get('some') is None
+ 
+ 
+-def test_mysql(mysql, mysql_connection, mysql_socket):
+-    """Test mysql service."""
+-    conn = MySQLdb.connect(user='root', unix_socket=mysql_socket)
+-    assert conn
+-
+-
+ def test_xvfb(xvfb, xvfb_display):
+     """Test xvfb service."""
+     socket.create_connection(('127.0.0.1', 6000 + xvfb_display))
+Only in pytest-services-2.0.1/tests: .test_plugin.py.un~

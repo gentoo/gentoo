@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,11 +12,9 @@ SRC_URI="https://github.com/x42/harvid/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libav"
 
 RDEPEND="
-	!libav? ( >=media-video/ffmpeg-2.6:0= )
-	libav? ( >=media-video/libav-9:0= )
+	>=media-video/ffmpeg-2.6:0=
 	media-libs/libpng:0=
 	virtual/jpeg:0
 "

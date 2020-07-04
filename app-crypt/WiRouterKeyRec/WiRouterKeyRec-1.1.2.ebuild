@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,18 +22,18 @@ RDEPEND=""
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare () {
+src_prepare() {
 	sed -i "s:wirouterkeyrec:${PN}:" src/*.h || die
 }
 
-src_compile () {
+src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	newbin build/wirouterkeyrec ${PN}
 	insinto /etc/${PN}
 	doins config/agpf_config.lst config/teletu_config.lst

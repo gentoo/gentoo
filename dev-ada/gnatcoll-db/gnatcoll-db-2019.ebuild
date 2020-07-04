@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/${commitId}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="db2ada gnatinspect postgres
 	+shared sql sqlite static-libs static-pic xref"
 
@@ -39,6 +39,11 @@ REQUIRED_USE="gnatinspect? ( xref )
 S="${WORKDIR}"/${PN}-${commitId}
 
 PATCHES=( "${FILESDIR}"/${PN}-2018-gentoo.patch )
+
+pkg_setup() {
+	python-single-r1_pkg_setup
+	ada_setup
+}
 
 src_compile() {
 	build () {

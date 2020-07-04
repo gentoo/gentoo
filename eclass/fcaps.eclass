@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fcaps.eclass
@@ -33,8 +33,16 @@ _FCAPS_ECLASS=1
 
 IUSE="+filecaps"
 
-# We can't use libcap-ng atm due to #471414.
-DEPEND="filecaps? ( sys-libs/libcap )"
+# Since it is needed in pkg_postinst() it must be in RDEPEND
+case "${EAPI:-0}" in
+	[0-6])
+		RDEPEND="filecaps? ( sys-libs/libcap )"
+	;;
+	*)
+		BDEPEND="filecaps? ( sys-libs/libcap )"
+		RDEPEND="${BDEPEND}"
+	;;
+esac
 
 # @ECLASS-VARIABLE: FILECAPS
 # @DEFAULT_UNSET
@@ -77,6 +85,11 @@ DEPEND="filecaps? ( sys-libs/libcap )"
 # unchanged.
 fcaps() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ ${EUID} != 0 ]] ; then
+		einfo "Insufficient privileges to execute ${FUNCNAME}, skipping."
+		return 0
+	fi
 
 	# Process the user options first.
 	local owner='root'
@@ -126,69 +139,31 @@ fcaps() {
 			# by people.
 			chmod ${caps_mode} "${file}" || die
 
-			# Set/verify funcs for sys-libs/libcap.
-			_libcap()        { setcap "${caps}" "${file}" ; }
-			_libcap_verify() { setcap -v "${caps}" "${file}" >/dev/null ; }
+			if ! out=$(LC_ALL=C setcap "${caps}" "${file}" 2>&1) ; then
+				case ${out} in
+				# ENOTSUP and EOPNOTSUPP might be the same value which means
+				# strerror() on them is unstable -- we can get both. #559608
+				*"Not supported"*|\
+				*"Operation not supported"*)
+					local fstype=$(stat -f -c %T "${file}")
+					ewarn "Could not set caps on '${file}' due to missing filesystem support:"
+					ewarn "* enable XATTR support for '${fstype}' in your kernel (if configurable)"
+					ewarn "* mount the fs with the user_xattr option (if not the default)"
+					ewarn "* enable the relevant FS_SECURITY option (if configurable)"
+					;;
+				*)
+					eerror "Setting caps '${caps}' on file '${file}' failed:"
+					eerror "${out}"
+					die "could not set caps"
+					;;
+				esac
+			else
+				# Sanity check that everything took.
+				setcap -v "${caps}" "${file}" >/dev/null \
+					|| die "Checking caps '${caps}' on '${file}' failed"
 
-			# Set/verify funcs for sys-libs/libcap-ng.
-			# Note: filecap only supports =ep mode.
-			# It also expects a different form:
-			#  setcap cap_foo,cap_bar
-			#  filecap foo bar
-			_libcap_ng() {
-				local caps=",${caps%=ep}"
-				filecap "${file}" "${caps//,cap_}"
-			}
-			_libcap_ng_verify() {
-				# libcap-ng has a crappy interface
-				local rcaps icaps caps=",${caps%=ep}"
-				rcaps=$(filecap "${file}" | \
-					sed -nr \
-						-e "s:^.{${#file}} +::" \
-						-e 's:, +:\n:g' \
-						-e 2p | \
-					LC_ALL=C sort)
-				[[ ${PIPESTATUS[0]} -eq 0 ]] || return 1
-				icaps=$(echo "${caps//,cap_}" | LC_ALL=C sort)
-				[[ ${rcaps} == ${icaps} ]]
-			}
-
-			local out cmd notfound=0
-			for cmd in _libcap _libcap_ng ; do
-				if ! out=$(LC_ALL=C ${cmd} 2>&1) ; then
-					case ${out} in
-					*"command not found"*)
-						: $(( ++notfound ))
-						continue
-						;;
-					# ENOTSUP and EOPNOTSUPP might be the same value which means
-					# strerror() on them is unstable -- we can get both. #559608
-					*"Not supported"*|\
-					*"Operation not supported"*)
-						local fstype=$(stat -f -c %T "${file}")
-						ewarn "Could not set caps on '${file}' due to missing filesystem support:"
-						ewarn "* enable XATTR support for '${fstype}' in your kernel (if configurable)"
-						ewarn "* mount the fs with the user_xattr option (if not the default)"
-						ewarn "* enable the relevant FS_SECURITY option (if configurable)"
-						break
-						;;
-					*)
-						eerror "Setting caps '${caps}' on file '${file}' failed:"
-						eerror "${out}"
-						die "could not set caps"
-						;;
-					esac
-				else
-					# Sanity check that everything took.
-					${cmd}_verify || die "Checking caps '${caps}' on '${file}' failed"
-
-					# Everything worked.  Move on to the next file.
-					continue 2
-				fi
-			done
-			if [[ ${notfound} -eq 2 ]] && [[ -z ${_FCAPS_WARNED} ]] ; then
-				_FCAPS_WARNED="true"
-				ewarn "Could not find cap utils; make sure libcap or libcap-ng is available."
+				# Everything worked.  Move on to the next file.
+				continue
 			fi
 		fi
 

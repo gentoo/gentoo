@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>lucianposton@pm.me</email>
-		<name>Lucian Poston</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">speed47/spectre-meltdown-checker</remote-id>

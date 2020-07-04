@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,8 +11,9 @@ SRC_URI="http://v6web.litech.org/radvd/dist/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa ppc sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~arm64 hppa ppc sparc x86"
 IUSE="kernel_FreeBSD selinux test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="dev-libs/libdaemon"
 DEPEND="${CDEPEND}
@@ -39,7 +40,6 @@ src_prepare() {
 
 src_configure() {
 	econf --with-pidfile=/var/run/radvd/radvd.pid \
-		--disable-silent-rules \
 		$(use_with test check)
 }
 

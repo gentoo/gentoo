@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libqmi.git"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86"
 	SRC_URI="https://www.freedesktop.org/software/libqmi/${P}.tar.xz"
 fi
 
@@ -20,7 +20,7 @@ SLOT="0/5.4"	# soname of libqmi-glib.so
 IUSE="doc +mbim static-libs"
 
 RDEPEND=">=dev-libs/glib-2.36
-	virtual/libgudev
+	dev-libs/libgudev
 	mbim? ( >=net-libs/libmbim-1.18.0 )"
 DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )

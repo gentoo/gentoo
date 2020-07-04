@@ -1,0 +1,34 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0bb2e87..4d0ed00 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -128,13 +128,11 @@ else()
+
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra")
+-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wshadow")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wwrite-strings")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wbad-function-cast")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic")
+-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic-errors")
+ 	check_c_compiler_flag("-fstack-protector-all" HAVE_STACK_PROTECTOR_ALL)
+ 	if(HAVE_STACK_PROTECTOR_ALL)
+ 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fstack-protector-all")
+diff --git a/man/CMakeLists.txt b/man/CMakeLists.txt
+index 44e4a96..d04dacc 100644
+--- a/man/CMakeLists.txt
++++ b/man/CMakeLists.txt
+@@ -5,11 +5,6 @@
+ find_program(MANDOC_PATH mandoc)
+ message(STATUS "MANDOC_PATH: ${MANDOC_PATH}")
+
+-if(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD" OR CMAKE_SYSTEM_NAME STREQUAL "Linux")
+-	find_program(GZIP_PATH gzip)
+-	message(STATUS "GZIP_PATH: ${GZIP_PATH}")
+-endif()
+-
+ list(APPEND MAN_SOURCES
+ 	eddsa_pk_new.3
+ 	es256_pk_new.3

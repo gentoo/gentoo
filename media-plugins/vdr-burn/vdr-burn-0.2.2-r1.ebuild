@@ -1,11 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit vdr-plugin-2
 
 VERSION="1252" # every bump, new version!
+
+RESTRICT="test"
 
 DESCRIPTION="VDR Plugin: burn records on DVD"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-burn"
@@ -16,7 +18,7 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE="dvdarchive"
 
-DEPEND=">=media-video/vdr-1.7.36-r1
+DEPEND="media-video/vdr
 		media-libs/gd[png,truetype,jpeg]"
 RDEPEND="${DEPEND}
 		>=dev-libs/libcdio-0.71
@@ -38,11 +40,11 @@ S="${WORKDIR}/${P#vdr-}"
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
-	epatch \
+	eapply \
 		"${FILESDIR}"/${P}-r1_gentoo-path.diff \
 		"${FILESDIR}"/${P}_setdefaults.diff \
-		"${FILESDIR}"/${P}_makefile.diff \
-		"${FILESDIR}"/${P}-missing-include-for-function-setpriority.patch
+		"${FILESDIR}"/${P}_makefile.diff
+	eapply -p0 "${FILESDIR}"/${P}-missing-include-for-function-setpriority.patch
 
 	use dvdarchive && sed -i Makefile \
 		-e "s:#ENABLE_DMH_ARCHIVE:ENABLE_DMH_ARCHIVE:"
@@ -102,7 +104,6 @@ pkg_postinst() {
 
 	vdr-plugin-2_pkg_postinst
 
-	einfo
 	einfo "This ebuild comes only with the standard template"
 	einfo "'emerge vdr-burn-templates' for more templates"
 	einfo "To change the templates, use the vdr-image plugin"

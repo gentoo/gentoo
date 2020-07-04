@@ -1,0 +1,24 @@
+From ee4fc7c558d9eb9c37035250046d4eac9af3fa28 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 27 Dec 2018 23:47:33 +0100
+Subject: [PATCH] Fix link errors for USE="conntrack static-libs" (bug #586106)
+
+---
+ iptables/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/iptables/Makefile.am b/iptables/Makefile.am
+index 581dc32..2c3db86 100644
+--- a/iptables/Makefile.am
++++ b/iptables/Makefile.am
+@@ -26,6 +26,7 @@ xtables_legacy_multi_LDADD   += ../libiptc/libip6tc.la ../extensions/libext6.a
+ endif
+ xtables_legacy_multi_SOURCES += xshared.c
+ xtables_legacy_multi_LDADD   += ../libxtables/libxtables.la -lm
++xtables_legacy_multi_LDADD   += ${libnetfilter_conntrack_LIBS}
+ 
+ # iptables using nf_tables api
+ if ENABLE_NFTABLES
+-- 
+2.19.1
+

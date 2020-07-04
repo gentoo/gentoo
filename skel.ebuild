@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: The comments in this file are for instruction and documentation.
@@ -31,6 +31,12 @@ HOMEPAGE="https://foo.example.org/"
 # Point to any required sources; these will be automatically downloaded by
 # Portage.
 SRC_URI="ftp://foo.example.org/${P}.tar.gz"
+
+# Source directory; the dir where the sources can be found (automatically
+# unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
+# If you don't need to change it, leave the S= line out of the ebuild
+# to keep it tidy.
+#S="${WORKDIR}/${P}"
 
 
 # License of the package.  This must match the name of file(s) in the
@@ -97,13 +103,6 @@ IUSE="gnome X"
 # Build-time dependencies that are executed during the emerge process, and
 # only need to be present in the native build system (CBUILD). Example:
 #BDEPEND="virtual/pkgconfig"
-
-
-# Source directory; the dir where the sources can be found (automatically
-# unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
-# If you don't need to change it, leave the S= line out of the ebuild
-# to keep it tidy.
-#S="${WORKDIR}/${P}"
 
 
 # The following src_configure function is implemented as default by portage, so

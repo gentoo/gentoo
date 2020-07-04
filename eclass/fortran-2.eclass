@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fortran-2.eclass
@@ -91,7 +91,6 @@ unset _f_use
 # @DESCRIPTION:
 # Return the Fortran compiler flag to enable 64 bit integers for
 # array indices
-# @CODE
 fortran_int64_abi_fflags() {
 	debug-print-function ${FUNCNAME} "${@}"
 

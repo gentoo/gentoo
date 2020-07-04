@@ -1,41 +1,35 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
+
 inherit toolchain-funcs
 
-DESCRIPTION="for mjpegtools for adding subtitles, pictures, and effects embedded in the picture"
+DESCRIPTION="for mjpegtools for adding subtitles, pictures & effects embedded in the picture"
 HOMEPAGE="http://panteltje.com/panteltje/subtitles/"
 SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-RDEPEND="x11-libs/libX11
+RDEPEND="
+	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXt"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	sed -i \
-		-e '/^CFLAGS/s:= -O2:+=:' \
-		-e '/CFLAGS/s:gcc:$(CC):' \
-		-e 's:gcc -o:$(CC) $(LDFLAGS) -o:' \
-		-e 's:-L/usr/X11R6/lib/::' \
-		-e 's:-lXpm:-lX11:' \
-		Makefile || die
-}
+PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
 
-src_compile() {
+src_configure() {
 	tc-export CC
-	emake
 }
 
 src_install() {
 	dobin ${PN}
-	dodoc CHANGES HOWTO_USE_THIS README*
+	einstalldocs
+	dodoc HOWTO_USE_THIS
+
 	insinto /usr/share/${PN}
 	doins *.{ppm,ppml,zip}
 }

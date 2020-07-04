@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -171,16 +171,16 @@ src_unpack() {
 	fi
 }
 
-src_prepare(){
+src_prepare() {
 	default
 	multilib_copy_sources
 }
 
-multilib_src_compile(){
+multilib_src_compile() {
 	cargo_src_compile --features pkg-config-meta
 }
 
-multilib_src_test(){
+multilib_src_test() {
 	cargo_src_test
 }
 

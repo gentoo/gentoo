@@ -1,0 +1,29 @@
+--- a/shorewall-init-5.2.4.3/shorewall-init
++++ b/shorewall-init-5.2.4.3/shorewall-init
+@@ -68,10 +68,6 @@ shorewall_init_start () {
+ 
+     printf "Initializing \"Shorewall-based firewalls\": "
+ 
+-    if [ -n "$SAVE_IPSETS" -a -f "$SAVE_IPSETS" ]; then
+-	ipset -R < "$SAVE_IPSETS"
+-    fi
+-
+     for PRODUCT in $PRODUCTS; do
+ 	if setstatedir; then
+ 	    #
+@@ -109,15 +105,6 @@ shorewall_init_stop () {
+ 	fi
+     done
+ 
+-    if [ -n "$SAVE_IPSETS" ]; then
+-	mkdir -p $(dirname "$SAVE_IPSETS")
+-	if ipset -S > "${SAVE_IPSETS}.tmp"; then
+-	    grep -qE -- '^(-N|create )' "${SAVE_IPSETS}.tmp" && mv -f "${SAVE_IPSETS}.tmp" "$SAVE_IPSETS" || rm -f "${SAVE_IPSETS}.tmp"
+-	else
+-	    rm -f "${SAVE_IPSETS}.tmp"
+-	fi
+-    fi
+-
+     return 0
+ }
+ 

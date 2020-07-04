@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1"
 SLOT="0/5"
 KEYWORDS="amd64 ~arm ppc s390 x86"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="doc? ( app-doc/doxygen )"
 RDEPEND=""

@@ -29,7 +29,7 @@ DEPEND="caps? ( sys-libs/libcap )
 		dev-db/mariadb-connector-c
 		dev-db/mysql-connector-c
 	) )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:= )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] )
@@ -70,6 +70,11 @@ src_configure() {
 
 	local myeconfargs=(
 		--enable-largefile
+		# Required for correct pid file location.
+		# pure-ftpd appends "/run/pure-ftpd.pid" to the localstatedir
+		# path, and tries to write to that file even when being
+		# started in foreground. So we need to pin this to /
+		--localstatedir="${EPREFIX}"/
 		--with-altlog
 		--with-cookie
 		--with-diraliases

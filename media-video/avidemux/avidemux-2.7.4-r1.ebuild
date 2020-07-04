@@ -1,11 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-
-inherit cmake-utils desktop qmake-utils xdg
+inherit cmake desktop qmake-utils xdg
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
@@ -17,7 +16,8 @@ SLOT="2.7"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug nls nvenc opengl qt5 sdl vaapi vdpau xv"
 
-COMMON_DEPEND="
+BDEPEND="qt5? ( dev-qt/linguist-tools:5 )"
+DEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
 	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 	opengl? ( virtual/opengl:0 )
@@ -30,10 +30,7 @@ COMMON_DEPEND="
 	)
 	vaapi? ( x11-libs/libva:0= )
 "
-DEPEND="${COMMON_DEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	nls? ( virtual/libintl:0 )
 	!<media-video/avidemux-${PV}
 "
@@ -42,11 +39,13 @@ PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt5?]"
 S="${WORKDIR}/avidemux2-${PV}"
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-qt-5.15.patch
+
 	processes="buildCli:avidemux/cli"
 	use qt5 && processes+=" buildQt4:avidemux/qt4"
 
 	for process in ${processes} ; do
-		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
+		CMAKE_USE_DIR="${S}"/${process#*:} cmake_src_prepare
 	done
 
 	if use qt5; then
@@ -98,28 +97,28 @@ src_configure() {
 
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake-utils_src_configure
+		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake_src_configure
 	done
 }
 
 src_compile() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_compile
+		BUILD_DIR="${build}" cmake_src_compile
 	done
 }
 
 src_test() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_test
+		BUILD_DIR="${build}" cmake_src_test
 	done
 }
 
 src_install() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_install
+		BUILD_DIR="${build}" cmake_src_install
 	done
 
 	if use qt5; then

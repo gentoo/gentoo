@@ -1,11 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# PyPy is not properly supported:
-# https://github.com/karanlyons/chump/issues/17
-PYTHON_COMPAT=( pypy3 python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -19,9 +17,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
+
+# The package has no test suite
 
 python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die

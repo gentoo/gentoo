@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
 
 inherit linux-info python-r1 toolchain-funcs
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/${PN}-v${PV}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
 
@@ -44,6 +44,7 @@ CONFIG_CHECK="
 PATCHES=(
 	"${FILESDIR}/trace-cmd-2.8-python-pkgconfig-name.patch"
 	"${FILESDIR}/trace-cmd-2.8.3-soname.patch"
+	"${FILESDIR}/trace-cmd-2.8.3-gcc10.patch"
 )
 
 pkg_setup() {
@@ -107,4 +108,6 @@ python_install() {
 		install_python
 
 	popd > /dev/null || die
+
+	python_optimize
 }

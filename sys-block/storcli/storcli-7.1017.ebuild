@@ -14,7 +14,7 @@ SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-cont
 
 LICENSE="Avago LSI BSD"
 SLOT="0/7.10"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND=""
@@ -64,5 +64,5 @@ src_install() {
 
 	dosym "${MY_STORCLI_BASEDIR}"/storcli /usr/sbin/storcli
 
-	pax-mark m "${D%/}${MY_STORCLI_BASEDIR}"/storcli
+	pax-mark m "${D}${MY_STORCLI_BASEDIR}"/storcli
 }

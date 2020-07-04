@@ -1,0 +1,304 @@
+From a5bdaa3b3a34b8a018fe67dfdd34bf8c890de2fa Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 22 May 2020 17:56:55 +0200
+Subject: [PATCH] Fix build with Qt 5.15 (missing headers)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ examples/dials/attitude_indicator.cpp | 1 +
+ examples/itemeditor/editor.cpp        | 2 ++
+ examples/sinusplot/sinusplot.cpp      | 1 +
+ playground/graphicscale/mainwindow.h  | 1 +
+ playground/symbols/symbols.cpp        | 1 +
+ src/qwt_compass_rose.cpp              | 1 +
+ src/qwt_dial_needle.cpp               | 1 +
+ src/qwt_graphic.h                     | 1 +
+ src/qwt_null_paintdevice.cpp          | 1 +
+ src/qwt_null_paintdevice.h            | 1 +
+ src/qwt_painter.cpp                   | 1 +
+ src/qwt_painter.h                     | 2 ++
+ src/qwt_painter_command.h             | 2 ++
+ src/qwt_plot_canvas.cpp               | 1 +
+ src/qwt_plot_canvas.h                 | 1 +
+ src/qwt_plot_glcanvas.cpp             | 1 +
+ src/qwt_plot_glcanvas.h               | 2 ++
+ src/qwt_plot_panner.cpp               | 2 ++
+ src/qwt_plot_renderer.cpp             | 1 +
+ src/qwt_plot_shapeitem.cpp            | 3 +++
+ src/qwt_symbol.h                      | 2 ++
+ src/qwt_widget_overlay.cpp            | 1 +
+ 22 files changed, 30 insertions(+)
+
+diff --git a/examples/dials/attitude_indicator.cpp b/examples/dials/attitude_indicator.cpp
+index ea0d5ab..a01611e 100644
+--- a/examples/dials/attitude_indicator.cpp
++++ b/examples/dials/attitude_indicator.cpp
+@@ -3,6 +3,7 @@
+ #include <qwt_round_scale_draw.h>
+ #include <qevent.h>
+ #include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qpolygon.h>
+ 
+ AttitudeIndicatorNeedle::AttitudeIndicatorNeedle( const QColor &color )
+diff --git a/examples/itemeditor/editor.cpp b/examples/itemeditor/editor.cpp
+index bd06372..c741b01 100644
+--- a/examples/itemeditor/editor.cpp
++++ b/examples/itemeditor/editor.cpp
+@@ -4,6 +4,8 @@
+ #include <qwt_scale_map.h>
+ #include <qwt_plot_shapeitem.h>
+ #include <qevent.h>
++#include <qpainter.h>
++#include <qpainterpath.h>
+ 
+ class Overlay: public QwtWidgetOverlay
+ {
+diff --git a/examples/sinusplot/sinusplot.cpp b/examples/sinusplot/sinusplot.cpp
+index 119fa4a..6a9bfe7 100644
+--- a/examples/sinusplot/sinusplot.cpp
++++ b/examples/sinusplot/sinusplot.cpp
+@@ -1,5 +1,6 @@
+ #include <qapplication.h>
+ #include <qlayout.h>
++#include <qpainterpath.h>
+ #include <qwt_plot.h>
+ #include <qwt_plot_marker.h>
+ #include <qwt_plot_curve.h>
+diff --git a/playground/graphicscale/mainwindow.h b/playground/graphicscale/mainwindow.h
+index d284413..3b544de 100644
+--- a/playground/graphicscale/mainwindow.h
++++ b/playground/graphicscale/mainwindow.h
+@@ -2,6 +2,7 @@
+ #define MAIN_WINDOW_H
+ 
+ #include <qmainwindow.h>
++#include <qpainterpath.h>
+ 
+ class Canvas;
+ class QPainterPath;
+diff --git a/playground/symbols/symbols.cpp b/playground/symbols/symbols.cpp
+index f7b2ed6..5b9f56d 100644
+--- a/playground/symbols/symbols.cpp
++++ b/playground/symbols/symbols.cpp
+@@ -1,5 +1,6 @@
+ #include <qapplication.h>
+ #include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qbuffer.h>
+ #ifdef QT_SVG_LIB
+ #include <qsvggenerator.h>
+diff --git a/src/qwt_compass_rose.cpp b/src/qwt_compass_rose.cpp
+index 05f7039..fbd30fe 100644
+--- a/src/qwt_compass_rose.cpp
++++ b/src/qwt_compass_rose.cpp
+@@ -11,6 +11,7 @@
+ #include "qwt_point_polar.h"
+ #include "qwt_painter.h"
+ #include <qpainter.h>
++#include <qpainterpath.h>
+ 
+ static QPointF qwtIntersection(
+     QPointF p11, QPointF p12, QPointF p21, QPointF p22 )
+diff --git a/src/qwt_dial_needle.cpp b/src/qwt_dial_needle.cpp
+index 49dd44a..d98f68c 100644
+--- a/src/qwt_dial_needle.cpp
++++ b/src/qwt_dial_needle.cpp
+@@ -13,6 +13,7 @@
+ #include "qwt_painter.h"
+ #include <qapplication.h>
+ #include <qpainter.h>
++#include <qpainterpath.h>
+ 
+ #if QT_VERSION < 0x040601
+ #define qFastSin(x) qSin(x)
+diff --git a/src/qwt_graphic.h b/src/qwt_graphic.h
+index cbd41f9..6881ea9 100644
+--- a/src/qwt_graphic.h
++++ b/src/qwt_graphic.h
+@@ -14,6 +14,7 @@
+ #include "qwt_null_paintdevice.h"
+ #include <qmetatype.h>
+ #include <qimage.h>
++#include <qpainterpath.h>
+ #include <qpixmap.h>
+ 
+ class QwtPainterCommand;
+diff --git a/src/qwt_null_paintdevice.cpp b/src/qwt_null_paintdevice.cpp
+index 3baf0e9..468a838 100644
+--- a/src/qwt_null_paintdevice.cpp
++++ b/src/qwt_null_paintdevice.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include "qwt_null_paintdevice.h"
+ #include <qpaintengine.h>
++#include <qpainterpath.h>
+ #include <qpixmap.h>
+ 
+ class QwtNullPaintDevice::PrivateData
+diff --git a/src/qwt_null_paintdevice.h b/src/qwt_null_paintdevice.h
+index e4e9cad..b804429 100644
+--- a/src/qwt_null_paintdevice.h
++++ b/src/qwt_null_paintdevice.h
+@@ -13,6 +13,7 @@
+ #include "qwt_global.h"
+ #include <qpaintdevice.h>
+ #include <qpaintengine.h>
++#include <qpainterpath.h>
+ 
+ /*!
+   \brief A null paint device doing nothing
+diff --git a/src/qwt_painter.cpp b/src/qwt_painter.cpp
+index 7959fe5..626677f 100644
+--- a/src/qwt_painter.cpp
++++ b/src/qwt_painter.cpp
+@@ -17,6 +17,7 @@
+ #include <qframe.h>
+ #include <qrect.h>
+ #include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qpalette.h>
+ #include <qpaintdevice.h>
+ #include <qpixmap.h>
+diff --git a/src/qwt_painter.h b/src/qwt_painter.h
+index c0a0ff7..bcbe289 100644
+--- a/src/qwt_painter.h
++++ b/src/qwt_painter.h
+@@ -16,6 +16,8 @@
+ #include <qrect.h>
+ #include <qpen.h>
+ #include <qline.h>
++#include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qpalette.h>
+ 
+ class QPainter;
+diff --git a/src/qwt_painter_command.h b/src/qwt_painter_command.h
+index a2f509a..a49ee52 100644
+--- a/src/qwt_painter_command.h
++++ b/src/qwt_painter_command.h
+@@ -12,6 +12,8 @@
+ 
+ #include "qwt_global.h"
+ #include <qpaintengine.h>
++#include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qpixmap.h>
+ #include <qimage.h>
+ #include <qpolygon.h>
+diff --git a/src/qwt_plot_canvas.cpp b/src/qwt_plot_canvas.cpp
+index 9438f15..bfe660d 100644
+--- a/src/qwt_plot_canvas.cpp
++++ b/src/qwt_plot_canvas.cpp
+@@ -13,6 +13,7 @@
+ #include "qwt_math.h"
+ #include "qwt_plot.h"
+ #include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qstyle.h>
+ #include <qstyleoption.h>
+ #include <qpaintengine.h>
+diff --git a/src/qwt_plot_canvas.h b/src/qwt_plot_canvas.h
+index c79e4e4..90a32ce 100644
+--- a/src/qwt_plot_canvas.h
++++ b/src/qwt_plot_canvas.h
+@@ -12,6 +12,7 @@
+ 
+ #include "qwt_global.h"
+ #include <qframe.h>
++#include <qpainter.h>
+ #include <qpainterpath.h>
+ 
+ class QwtPlot;
+diff --git a/src/qwt_plot_glcanvas.cpp b/src/qwt_plot_glcanvas.cpp
+index 996c0ad..6975863 100644
+--- a/src/qwt_plot_glcanvas.cpp
++++ b/src/qwt_plot_glcanvas.cpp
+@@ -12,6 +12,7 @@
+ #include "qwt_painter.h"
+ #include <qevent.h>
+ #include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qdrawutil.h>
+ #include <qstyle.h>
+ #include <qstyleoption.h>
+diff --git a/src/qwt_plot_glcanvas.h b/src/qwt_plot_glcanvas.h
+index 7ca9b5a..a6c01e0 100644
+--- a/src/qwt_plot_glcanvas.h
++++ b/src/qwt_plot_glcanvas.h
+@@ -13,6 +13,8 @@
+ #include "qwt_global.h"
+ #include <qframe.h>
+ #include <qgl.h>
++#include <qpainter.h>
++#include <qpainterpath.h>
+ 
+ class QwtPlot;
+ 
+diff --git a/src/qwt_plot_panner.cpp b/src/qwt_plot_panner.cpp
+index b7daa05..2f31d05 100644
+--- a/src/qwt_plot_panner.cpp
++++ b/src/qwt_plot_panner.cpp
+@@ -14,6 +14,8 @@
+ #include <qbitmap.h>
+ #include <qstyle.h>
+ #include <qstyleoption.h>
++#include <qpainter.h>
++#include <qpainterpath.h>
+ 
+ #if QT_VERSION >= 0x050000
+ #if QT_VERSION < 0x050100
+diff --git a/src/qwt_plot_renderer.cpp b/src/qwt_plot_renderer.cpp
+index 549c4bc..71cadec 100644
+--- a/src/qwt_plot_renderer.cpp
++++ b/src/qwt_plot_renderer.cpp
+@@ -20,6 +20,7 @@
+ #include "qwt_math.h"
+ 
+ #include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qtransform.h>
+ #include <qprinter.h>
+ #include <qfiledialog.h>
+diff --git a/src/qwt_plot_shapeitem.cpp b/src/qwt_plot_shapeitem.cpp
+index db7896b..09efd95 100644
+--- a/src/qwt_plot_shapeitem.cpp
++++ b/src/qwt_plot_shapeitem.cpp
+@@ -13,6 +13,9 @@
+ #include "qwt_curve_fitter.h"
+ #include "qwt_clipper.h"
+ 
++#include <qpainter.h>
++#include <qpainterpath.h>
++
+ static QPainterPath qwtTransformPath( const QwtScaleMap &xMap,
+         const QwtScaleMap &yMap, const QPainterPath &path, bool doAlign )
+ {
+diff --git a/src/qwt_symbol.h b/src/qwt_symbol.h
+index 538778d..2961ebe 100644
+--- a/src/qwt_symbol.h
++++ b/src/qwt_symbol.h
+@@ -11,6 +11,8 @@
+ #define QWT_SYMBOL_H
+ 
+ #include "qwt_global.h"
++#include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qpolygon.h>
+ 
+ class QPainter;
+diff --git a/src/qwt_widget_overlay.cpp b/src/qwt_widget_overlay.cpp
+index 5974413..fa6da48 100644
+--- a/src/qwt_widget_overlay.cpp
++++ b/src/qwt_widget_overlay.cpp
+@@ -10,6 +10,7 @@
+ #include "qwt_widget_overlay.h"
+ #include "qwt_painter.h"
+ #include <qpainter.h>
++#include <qpainterpath.h>
+ #include <qpaintengine.h>
+ #include <qimage.h>
+ #include <qevent.h>
+-- 
+2.26.2
+

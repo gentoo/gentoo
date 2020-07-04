@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="A simple interactive calendar program with a notebook capability"
-HOMEPAGE="http://www.freebsd.org/"
+HOMEPAGE="https://www.freebsd.org/"
 SRC_URI="ftp://daemon.jp.FreeBSD.org/pub/FreeBSD-jp/ports-jp/LOCAL_PORTS/${P}+i18n.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ppc ppc64 x86"
 IUSE="motif"
 
 RDEPEND="x11-libs/libX11

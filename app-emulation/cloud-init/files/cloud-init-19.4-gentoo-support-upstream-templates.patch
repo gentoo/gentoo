@@ -1,0 +1,93 @@
+From 823454f1ea140ec47f5f9c5c3c5ad62eb458eb8a Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Wed, 24 Oct 2018 10:52:46 +0200
+Subject: [PATCH 2/5] Add support for gentoo in cloud.cfg and templates
+
+---
+ config/cloud.cfg.tmpl       |  8 ++++++--
+ templates/hosts.gentoo.tmpl | 24 ++++++++++++++++++++++++
+ tools/render-cloudcfg       |  2 +-
+ 3 files changed, 31 insertions(+), 3 deletions(-)
+ create mode 100644 templates/hosts.gentoo.tmpl
+
+diff --git a/config/cloud.cfg.tmpl b/config/cloud.cfg.tmpl
+index 1fef133a..3f5a41a2 100644
+--- a/config/cloud.cfg.tmpl
++++ b/config/cloud.cfg.tmpl
+@@ -134,7 +134,7 @@ cloud_final_modules:
+ # (not accessible to handlers/transforms)
+ system_info:
+    # This will affect which distro class gets used
+-{% if variant in ["arch", "centos", "debian", "fedora", "freebsd", "rhel", "suse", "ubuntu"] %}
++{% if variant in ["arch", "centos", "debian", "fedora", "freebsd", "gentoo", "rhel", "suse", "ubuntu"] %}
+    distro: {{ variant }}
+ {% else %}
+    # Unknown/fallback distro.
+@@ -172,7 +172,7 @@ system_info:
+          primary: http://ports.ubuntu.com/ubuntu-ports
+          security: http://ports.ubuntu.com/ubuntu-ports
+    ssh_svcname: ssh
+-{% elif variant in ["arch", "centos", "fedora", "rhel", "suse"] %}
++{% elif variant in ["arch", "centos", "fedora", "gentoo", "rhel", "suse"] %}
+    # Default user name + that default users groups (if added/used)
+    default_user:
+      name: {{ variant }}
+@@ -180,6 +180,10 @@ system_info:
+ {% endif %}
+ {% if variant == "suse" %}
+      groups: [cdrom, users]
++{% elif variant == "gentoo" %}
++     groups: [users, wheel]
++     primary_group: users
++     no_user_group: true
+ {% elif variant == "arch" %}
+      groups: [wheel, users]
+ {% else %}
+diff --git a/templates/hosts.gentoo.tmpl b/templates/hosts.gentoo.tmpl
+new file mode 100644
+index 00000000..cd045fa6
+--- /dev/null
++++ b/templates/hosts.gentoo.tmpl
+@@ -0,0 +1,24 @@
++## template:jinja
++{#
++This file /etc/cloud/templates/hosts.gentoo.tmpl is only utilized
++if enabled in cloud-config.  Specifically, in order to enable it
++you need to add the following to config:
++  manage_etc_hosts: True
++-#}
++# Your system has configured 'manage_etc_hosts' as True.
++# As a result, if you wish for changes to this file to persist
++# then you will need to either
++# a.) make changes to the master file in /etc/cloud/templates/hosts.gentoo.tmpl
++# b.) change or remove the value of 'manage_etc_hosts' in
++#     /etc/cloud/cloud.cfg or cloud-config from user-data
++# 
++# The following lines are desirable for IPv4 capable hosts
++127.0.0.1 {{fqdn}} {{hostname}}
++127.0.0.1 localhost.localdomain localhost
++127.0.0.1 localhost4.localdomain4 localhost4
++
++# The following lines are desirable for IPv6 capable hosts
++::1 {{fqdn}} {{hostname}}
++::1 localhost.localdomain localhost
++::1 localhost6.localdomain6 localhost6
++
+diff --git a/tools/render-cloudcfg b/tools/render-cloudcfg
+index 8b7cb875..d109044e 100755
+--- a/tools/render-cloudcfg
++++ b/tools/render-cloudcfg
+@@ -4,7 +4,7 @@ import argparse
+ import os
+ import sys
+ 
+-VARIANTS = ["arch", "centos", "debian", "fedora", "freebsd", "rhel", "suse",
+-            "ubuntu", "unknown"]
++VARIANTS = ["arch", "centos", "debian", "fedora", "freebsd", "gentoo", "rhel",
++            "suse", "ubuntu", "unknown"]
+ 
+ if "avoid-pep8-E402-import-not-top-of-file":
+     _tdir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+-- 
+2.19.1
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vdr-plugin-2.eclass
@@ -9,7 +9,7 @@
 # Joerg Bornkessel <hd_brummy@gentoo.org>
 # Christian Ruppert <idl0r@gentoo.org>
 # (undisclosed contributors)
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common vdr plugin ebuild functions
 # @DESCRIPTION:
 # Eclass for easing maintenance of vdr plugin ebuilds
@@ -78,7 +78,7 @@
 
 # Applying your own local/user patches:
 # This is done by using the
-# (EAPI = 4,5) epatch_user() function of the eutils.eclass,
+# (EAPI = 5) epatch_user() function of the eutils.eclass,
 # (EAPI = 6,7) eapply_user function integrated in EAPI = 6.
 # Simply add your patches into one of these directories:
 # /etc/portage/patches/<CATEGORY>/<PF|P|PN>/
@@ -87,12 +87,12 @@
 #
 # For more details about it please take a look at the eutils.class.
 
-[[ ${EAPI} == [45] ]] && inherit multilib
-[[ ${EAPI} == [456] ]] && inherit eutils
+[[ ${EAPI} == [5] ]] && inherit multilib
+[[ ${EAPI} == [56] ]] && inherit eutils
 inherit flag-o-matic toolchain-funcs unpacker
 
 case ${EAPI:-0} in
-	4|5|6|7)
+	5|6|7)
 	;;
 	*) die "EAPI ${EAPI} unsupported."
 	;;
@@ -176,7 +176,7 @@ vdr_create_header_checksum_file() {
 }
 
 fix_vdr_libsi_include() {
- 	eqawarn "Fixing include of libsi-headers"
+	eqawarn "Fixing include of libsi-headers"
 	local f
 	for f; do
 		sed -i "${f}" \
@@ -250,7 +250,8 @@ vdr_gettext_missing() {
 }
 
 vdr_detect_po_dir() {
-	# helper function
+#	helper function to find the
+#	DIR ${S}/po or DIR ${S]/_subdir_/po
 
 	[[ -f po ]] && local po_dir="${S}"
 	local po_subdir=( ${S}/${PO_SUBDIR} )
@@ -270,7 +271,9 @@ vdr_linguas_support() {
 	vdr_detect_po_dir
 
 	for f in ${pofile_dir[*]}; do
-		PLUGIN_LINGUAS=$( ls ${f}/po --ignore="*.pot" | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
+		if [[ -d ${f}/po ]]; then
+			PLUGIN_LINGUAS=$( ls ${f}/po --ignore="*.pot" | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
+		fi
 		einfo "LINGUAS=\"${PLUGIN_LINGUAS}\""
 
 		sed -i ${f}/Makefile \
@@ -282,7 +285,7 @@ vdr_linguas_support() {
 }
 
 vdr_i18n() {
-# 	i18n handling was deprecated since >=media-video/vdr-1.5.9,
+#	i18n handling was deprecated since >=media-video/vdr-1.5.9,
 #	finally with >=media-video/vdr-1.7.27 it has been dropped entirely and some
 #	plugins will fail to compile because they're still using the old variant.
 #	Simply remove the i18n.o object from Makefile (OBJECT) and
@@ -352,10 +355,7 @@ vdr-plugin-2_pkg_setup() {
 
 	# Plugins need to be compiled with position independent code, otherwise linking
 	# VDR against it will fail
-	# depricated if fi, as we have only >=vdr-2 in the tree, fix me later...
-	if has_version ">=media-video/vdr-1.7.13"; then
-		append-cxxflags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
-	fi
+	append-cxxflags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
 
 	# Where should the plugins live in the filesystem
 	VDR_PLUGIN_DIR=$(pkg-config --variable=libdir vdr)
@@ -415,7 +415,7 @@ vdr-plugin-2_src_util() {
 			;;
 		add_local_patch)
 			cd "${S}" || die "Could not change to plugin-source-directory (src_util)"
-			if [[ ${EAPI} != [45] ]]; then
+			if [[ ${EAPI} != [5] ]]; then
 				eapply_user
 			else
 				epatch_user
@@ -462,8 +462,8 @@ vdr-plugin-2_src_prepare() {
 		die "vdr-plugin-2_src_prepare not called!"
 	fi
 
-	[[ ${EAPI} == [45] ]] && [[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
-	[[ ${EAPI} != [45] ]] && [[ ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
+	[[ ${EAPI} == [5] ]] && [[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
+	[[ ${EAPI} != [5] ]] && [[ ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
 
 	debug-print "$FUNCNAME: applying user patches"
 

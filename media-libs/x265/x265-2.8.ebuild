@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ if [[ ${PV} = 9999* ]]; then
 	EHG_REPO_URI="https://bitbucket.org/multicoreware/x265"
 else
 	SRC_URI="https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz"
-	KEYWORDS="amd64 arm ~arm64 hppa ia64 ppc ppc64 x86"
+	KEYWORDS="amd64 arm ~arm64 hppa ~ia64 ppc ppc64 x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
@@ -19,7 +19,8 @@ HOMEPAGE="http://x265.org/"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/160"
-IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
+IUSE="+10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_vsx2 numa pic test"
+RESTRICT="!test? ( test )"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
@@ -142,8 +143,8 @@ multilib_src_configure() {
 		$(cmake-utils_use_enable test TESTS)
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
 		-DENABLE_LIBNUMA=$(usex numa ON OFF)
-		-DCPU_POWER8=$(usex power8 ON OFF)
-		-DENABLE_ALTIVEC=$(usex power8 ON OFF)
+		-DCPU_POWER8=$(usex cpu_flags_ppc_vsx2 ON OFF)
+		-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_vsx2 ON OFF)
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 

@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
+<use>
+	<flag name="buildfont">Build Noto Emoji font with supplied images.</flag>
+</use>
 </pkgmetadata>

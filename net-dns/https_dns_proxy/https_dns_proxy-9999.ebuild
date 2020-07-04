@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ DEPEND="dev-libs/libev
 	"
 RDEPEND="${DEPEND}"
 
-src_install(){
+src_install() {
 	cmake-utils_src_install
 	exeinto /usr/bin
 	doexe "${S}_build/https_dns_proxy"

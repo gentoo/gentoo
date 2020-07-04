@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,13 @@ MY_PV=${PV//.}
 MY_P=${MY_PN}${MY_PV}
 
 DESCRIPTION="Image library supporting many formats"
-HOMEPAGE="http://freeimage.sourceforge.net/"
+HOMEPAGE="https://freeimage.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
 	mirror://sourceforge/${PN}/${MY_P}.pdf"
 
 LICENSE="|| ( GPL-2 FIPL-1.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="jpeg jpeg2k mng openexr png raw static-libs tiff webp"
 
 # The tiff/ilmbase isn't a typo.  The TIFF plugin cheats and
@@ -113,6 +113,6 @@ src_compile() {
 }
 
 src_install() {
-	foreach_make install DESTDIR="${ED}" INSTALLDIR="${ED%/}"/usr/$(get_libdir)
+	foreach_make install DESTDIR="${ED}" INSTALLDIR="${ED}"/usr/$(get_libdir)
 	einstalldocs
 }

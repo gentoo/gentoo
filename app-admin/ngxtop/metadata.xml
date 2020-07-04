@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>mattm@gentoo.org</email>
-    <name>Matthew Marlowe</name>
+    <email>hydrapolic@gmail.com</email>
+    <name>Tomáš Mózes</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
     <remote-id type="github">lebinh/ngxtop</remote-id>

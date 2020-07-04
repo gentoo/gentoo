@@ -1,0 +1,14 @@
+--- a/Makefile	2018-02-03 21:21:51.518384435 +0100
++++ b/Makefile	2019-12-27 01:23:37.030323263 +0100
+@@ -5,9 +5,9 @@
+ # Copyright (C) 2017, 2018 Mateusz Viste
+ #
+ 
+-CFLAGS = -O2 -Wall -std=gnu89 -pedantic -Wextra -s -Wno-long-long -Wno-variadic-macros -Wformat-security -D_FORTIFY_SOURCE=1
++CFLAGS += -Wall -std=gnu89 -pedantic -Wextra -Wno-long-long -Wno-variadic-macros -Wformat-security -D_FORTIFY_SOURCE=1
+ 
+-CC = gcc
++CC ?= gcc
+ 
+ ethersrv-linux: ethersrv-linux.c fs.c fs.h lock.c lock.h debug.h
+ 	$(CC) ethersrv-linux.c fs.c lock.c -o ethersrv-linux $(CFLAGS)

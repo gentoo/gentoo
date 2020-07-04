@@ -35,5 +35,5 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Install failed"
+	emake DESTDIR="${D}" install
 }

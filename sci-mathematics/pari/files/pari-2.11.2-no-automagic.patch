@@ -1,0 +1,74 @@
+diff --git a/config/Makefile.SH b/config/Makefile.SH
+index 6cf5e59ee..7487941f9 100644
+--- a/config/Makefile.SH
++++ b/config/Makefile.SH
+@@ -74,12 +74,12 @@ case "$which_graphic_lib" in
+ ps|svg|none)
+   graph=plot$which_graphic_lib;;
+ Qt4)
+-  PLOTCFLAGS="\$(QTINC)"
+-  PLOTLIBS="\$(QTLIB) $QTLIBS"
++  PLOTCFLAGS="`pkg-config --cflags QtGui`"
++  PLOTLIBS="`pkg-config --libs QtGui`"
+   graph=plotQt4;;
+ fltk)
+-  PLOTCFLAGS=
++  PLOTCFLAGS="`fltk-config --cxxflags` $X11_INC"
+   PLOTLIBS="$FLTK_LIBS"
+   postconfig='fltk-config --post '
+   graph=plotfltk;;
+ win32)
+@@ -267,7 +267,7 @@ RLLIBS    = $RLLIBS
+ # GMP
+ GMPINCLUDE = $GMPINCLUDE
+ # Graphic library.
+-QTMOC      = $QTMOC
++QTMOC      = "`which moc`"
+ QTINC      = $QTINC
+ QTLIB      = $QTLIB
+ PLOTCFLAGS = $PLOTCFLAGS
+diff --git a/config/get_config_options b/config/get_config_options
+index 4078d2720..5c12bd491 100644
+--- a/config/get_config_options
++++ b/config/get_config_options
+@@ -86,6 +86,7 @@ while test $# -gt 0; do
+   --with-ncurses-lib=*|--with-ncurses=*)
+       with_ncurses_lib=`echo "$1" | sed -e 's/[-a-z]*=//'` ;;
+ 
++  --without-qt|--with-qt=no) without_qt=yes ;;
+   --with-qt) with_qt=yes ;;
+   --with-qt=*)
+       with_qt=`echo "$1" | sed -e 's/[-a-z]*=//'` ;;
+@@ -94,6 +95,7 @@ while test $# -gt 0; do
+   --with-qt-include=*)
+       with_qt_include=`echo "$1" | sed -e 's/[-a-z]*=//'` ;;
+ 
++  --without-fltk|--with-fltk=no) without_fltk=yes ;;
+   --with-fltk) with_fltk=yes ;;
+   --with-fltk=*)
+       with_fltk=`echo "$1" | sed -e 's/[-a-z]*=//'` ;;
+@@ -172,10 +174,12 @@ Optional libraries:
+   --with-gmp-lib=DIR          specify location of gmp libs
+ 
+   --with-qt[=DIR]            use the Qt graphical library [prefix for Qt dir.]
++  --without-qt               do not try to use the Qt lib
+   --with-qt-include=DIR      specify location of Qt headers
+   --with-qt-lib=DIR          specify location of Qt libs
+ 
+   --with-fltk                use the FLTK graphical library [need fltk-config]
++  --without-fltk             do not try to use the FLTK lib
+ 
+ Miscellaneous
+   --with-runtime-perl[=path-to-perl-binary] for gphelp / tex2mail
+diff --git a/config/get_graphic_lib b/config/get_graphic_lib
+index 4591f2aad..4808aab90 100644
+--- a/config/get_graphic_lib
++++ b/config/get_graphic_lib
+@@ -7,6 +7,7 @@ FLTK_LIBS QTDIR QTLIB"
+ 
+ if test -n "$with_fltk"; then which_graphic_lib=fltk; fi
+ if test -n "$with_qt";   then which_graphic_lib=Qt; fi
++if test -n "$without_fltk" -a -n "$without_qt"; then which_graphic_lib=none; fi
+ if test "$fastread" != yes; then
+   cat << EOT
+ ==========================================================================

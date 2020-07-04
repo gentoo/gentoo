@@ -10,7 +10,7 @@ HOMEPAGE="ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/"
 
 SLOT="0"
 LICENSE="BSD-4 BSD ISC"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ipv6 socks5"
 
 DEPEND=">=sys-libs/ncurses-5.1
@@ -21,11 +21,10 @@ src_configure() {
 	econf \
 		--enable-editcomplete \
 		$(use_enable ipv6) \
-		$(use_with socks5 socks) \
-		|| die "econf failed"
+		$(use_with socks5 socks)
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "emake install failed"
-	dodoc ChangeLog README THANKS || die "dodoc failed"
+	emake install DESTDIR="${D}"
+	dodoc ChangeLog README THANKS
 }

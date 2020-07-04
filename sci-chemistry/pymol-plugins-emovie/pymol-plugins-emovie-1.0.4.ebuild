@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,7 +28,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PV}-indent.patch
 }
 
-src_install(){
+src_install() {
 	python_moduleinto pmg_tk/startup
 	python_foreach_impl python_domodule eMovie.py
 	python_foreach_impl python_optimize

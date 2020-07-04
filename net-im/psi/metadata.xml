@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -9,17 +9,20 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>Psi is a very good XMPP client that uses Qt</longdescription>
+	<longdescription>
+		Psi is a multi-platform XMPP client based on Qt and supports a wide range of XMPP extensions. It is extremely configurable and extendable with plugins.
+	</longdescription>
 	<use>
-		<flag name='aspell'>Enable spellchecking using <pkg>app-text/aspell</pkg></flag>
-		<flag name='enchant'>Enable spellchecking using <pkg>app-text/enchant</pkg></flag>
-		<flag name='extras'>Enable Psi+ patcheset</flag>
-		<flag name='hunspell'>Enable spellchecking using <pkg>app-text/hunspell</pkg></flag>
-		<flag name='iconsets'>Install additional iconsets, some of them has not clear licensing</flag>
-		<flag name='sql'>Enable psi-new-history extras patch</flag>
-		<flag name='webengine'>Use <pkg>dev-qt/qtwebengine</pkg> instead of <pkg>dev-qt/qtwebkit</pkg></flag>
-		<flag name='webkit'>Enable themed, html-based chatlogs</flag>
-		<flag name='whiteboarding'>Enable experimental interactive SVG drawing</flag>
+		<flag name="aspell">Enable spellchecking using <pkg>app-text/aspell</pkg></flag>
+		<flag name="enchant">Enable spellchecking using <pkg>app-text/enchant</pkg></flag>
+		<flag name="extras">Enable Psi+ patchset</flag>
+		<flag name="hunspell">Enable spellchecking using <pkg>app-text/hunspell</pkg></flag>
+		<flag name="iconsets">Install additional iconsets, some of them have no clear licensing</flag>
+		<flag name="keyring">Enable storing password in system keyring manager</flag>
+		<flag name="webengine">Enable themed, html-based chatlogs using <pkg>dev-qt/qtwebengine</pkg></flag>
+		<flag name="webkit">Enable themed, html-based chatlogs using <pkg>dev-qt/qtwebkit</pkg></flag>
+		<flag name="whiteboarding">Enable experimental interactive SVG drawing</flag>
+		<flag name="xscreensaver">Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">psi-im/psi</remote-id>

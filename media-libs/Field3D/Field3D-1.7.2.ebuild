@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A library for storing voxel data"
 HOMEPAGE="http://opensource.imageworks.com/?p=field3d"
@@ -29,7 +29,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_DOCS=OFF # Docs are not finished yet.
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON
-		$(cmake-utils_use_find_package mpi MPI)
+		$(cmake_use_find_package mpi MPI)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

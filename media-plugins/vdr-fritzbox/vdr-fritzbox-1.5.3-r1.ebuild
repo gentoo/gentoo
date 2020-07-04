@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook"
 HOMEPAGE="https://github.com/jowi24/vdr-fritz"
-SRC_URI="https://github.com/jowi24/vdr-fritz/releases/download/1.5.3/${P}.tgz"
+SRC_URI="https://github.com/jowi24/vdr-fritz/releases/download/${PV}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,0 +1,15 @@
+Disable buggy seccomp sandbox code by default
+
+Bug: https://bugs.gentoo.org/443898
+
+--- a/tunables.c
++++ b/tunables.c
+@@ -226,7 +226,7 @@
+   tunable_isolate_network = 1;
+   tunable_ftp_enable = 1;
+   tunable_http_enable = 0;
+-  tunable_seccomp_sandbox = 1;
++  tunable_seccomp_sandbox = 0;
+   tunable_allow_writeable_chroot = 0;
+ 
+   tunable_accept_timeout = 60;

@@ -1,0 +1,12 @@
+diff -ur ceph-15.2.2/systemd/ceph-osd@.service.in ceph-15.2.2.af/systemd/ceph-osd@.service.in
+--- ceph-15.2.2/systemd/ceph-osd@.service.in    2020-05-18 16:25:12.000000000 +0000
++++ ceph-15.2.2.af/systemd/ceph-osd@.service.in 2020-05-21 21:20:58.318655944 +0000
+@@ -10,7 +10,7 @@
+ EnvironmentFile=-@SYSTEMD_ENV_FILE@
+ Environment=CLUSTER=ceph
+ ExecStart=/usr/bin/ceph-osd -f --cluster ${CLUSTER} --id %i --setuser ceph --setgroup ceph
+-ExecStartPre=/usr/lib/ceph/ceph-osd-prestart.sh --cluster ${CLUSTER} --id %i
++ExecStartPre=/usr/libexec/ceph/ceph-osd-prestart.sh --cluster ${CLUSTER} --id %i
+ ExecReload=/bin/kill -HUP $MAINPID
+ LockPersonality=true
+ MemoryDenyWriteExecute=true

@@ -13,6 +13,7 @@ LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+gui test"
+RESTRICT="!test? ( test )"
 
 # check Build.PL for dependencies
 RDEPEND="!=dev-lang/perl-5.16*

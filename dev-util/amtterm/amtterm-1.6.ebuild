@@ -33,11 +33,11 @@ src_configure() {
 }
 
 src_compile() {
-	prefix="/usr" emake || die
+	prefix="/usr" emake
 }
 
 src_install() {
-	prefix="/usr" emake DESTDIR=${ED} install || die
+	prefix="/usr" emake DESTDIR=${ED} install
 
 	if ! use gtk; then
 		rm -rf "${D}"/usr/share/applications || die

@@ -1,0 +1,14 @@
+Media paths are fine already, the removed lines would screw them up.
+
+--- a/CMake/InstallResources.cmake	2019-11-06 08:09:15.185821495 +0100
++++ b/CMake/InstallResources.cmake	2019-11-06 08:10:41.169819050 +0100
+@@ -145,9 +145,6 @@
+ 
+ # CREATE CONFIG FILES - BUILD DIR VERSIONS
+ if (NOT (APPLE_IOS OR WINDOWS_STORE OR WINDOWS_PHONE))
+-  set(OGRE_MEDIA_DIR_REL "${PROJECT_SOURCE_DIR}/Samples/Media")
+-  set(OGRE_CORE_MEDIA_DIR "${PROJECT_SOURCE_DIR}/Media")
+-  set(OGRE_TEST_MEDIA_DIR_REL "${PROJECT_SOURCE_DIR}/Tests/Media")
+ else ()
+   # iOS needs to use relative paths in the config files
+   set(OGRE_MEDIA_DIR_REL "${OGRE_MEDIA_PATH}")

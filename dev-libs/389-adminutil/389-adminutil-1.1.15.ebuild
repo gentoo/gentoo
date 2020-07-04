@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -37,10 +37,10 @@ src_configure() {
 		--with-fhs \
 		--with-openldap \
 		--disable-rpath \
-		--disable-tests ||die "econf failed"
+		--disable-tests
 }
 
-src_install () {
-	emake DESTDIR="${D}" install || die "emake failed"
+src_install() {
+	emake DESTDIR="${D}" install
 	dodoc README  NEWS
 }

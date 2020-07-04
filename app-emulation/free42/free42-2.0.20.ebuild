@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ inherit eutils toolchain-funcs
 MY_PV="${PN}-nologo-${PV}"
 
 DESCRIPTION="An HP-42S Calculator Simulator"
-HOMEPAGE="http://thomasokken.com/free42/"
-SRC_URI="http://thomasokken.com/free42/upstream/${MY_PV}.tgz"
+HOMEPAGE="https://thomasokken.com/free42/"
+SRC_URI="https://thomasokken.com/free42/upstream/${MY_PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

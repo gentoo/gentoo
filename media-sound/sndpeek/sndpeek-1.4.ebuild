@@ -37,7 +37,7 @@ compile_backend() {
 	cd "${S}/src/sndpeek"
 	einfo "Compiling against ${backend}"
 	emake -f "makefile.${backend}" CC=$(tc-getCC) \
-		CXX=$(tc-getCXX) || die "emake failed"
+		CXX=$(tc-getCXX)
 	mv sndpeek{,-${backend}}
 	emake -f "makefile.${backend}" clean
 	cd -

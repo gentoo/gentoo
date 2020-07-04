@@ -11,6 +11,7 @@ DESCRIPTION="Shared secret elliptic-curve Diffie-Hellman generator"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 PATCHES="${FILESDIR}/${P}-fmul-fixedvar.patch"
 

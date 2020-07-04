@@ -10,8 +10,8 @@ asciiview script (bug #293654) by Kevin McCarthy <signals@gentoo.org>
 
 Rollup patch created by Kevin McCarthy <signals@gentoo.org>
 
---- asciiview
-+++ asciiview
+--- a/asciiview
++++ b/asciiview
 @@ -3,13 +3,13 @@
  clear()
  {

@@ -30,6 +30,8 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC STRIP
+	export HOSTCC="$(tc-getBUILD_CC)"
 	if [ -f .config ]; then
 		yes "" | emake -j1 oldconfig > /dev/null
 		return 0
@@ -40,8 +42,6 @@ src_configure() {
 }
 
 src_compile() {
-	tc-export CC STRIP
-	export HOSTCC=$(tc-getBUILD_CC)
 	unset CROSS_COMPILE
 	export CPUS=$(makeopts_jobs)
 	emake V=1

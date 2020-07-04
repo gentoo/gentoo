@@ -1,5 +1,0 @@
-# Copyright 1999-2012 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2 or later
-
-# Start daemon on insertion of a SpaceNavigator device
-SUBSYSTEM=="usb", ACTION=="add", ATTRS{manufacturer}=="3Dconnexion", ATTRS{product}=="Space Navigator", RUN+="/etc/init.d/spacenavd --quiet start"

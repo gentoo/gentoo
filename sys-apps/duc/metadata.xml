@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="cairo">Build support for exporting to PNG and PDF with <pkg>x11-libs/cairo</pkg></flag>
-		<flag name="gui">Build support for a graphical client</flag>
 		<flag name="leveldb">Use <pkg>dev-libs/leveldb</pkg> as the backend</flag>
 		<flag name="ncurses">Build support for the ncurses client</flag>
 		<flag name="sqlite">Use <pkg>dev-db/sqlite</pkg>:3 as the backend</flag>

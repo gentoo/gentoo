@@ -1,0 +1,36 @@
+From dd29e95954712c8de4454e0bdbdd973ddfd917b1 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 14 Apr 2020 19:54:30 +0200
+Subject: [PATCH] We'll install docs manually, thanks
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0c550764f..59c1defb3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1274,12 +1274,12 @@ IF (WIN32 AND NOT UNIX)
+     LIST(APPEND docs_to_install "README.win32.txt")
+ ENDIF ()
+ 
+-INSTALL(
+-    FILES
+-        ${docs_to_install}
+-    DESTINATION
+-        "${CMAKE_INSTALL_DOCDIR}"
+-)
++# INSTALL(
++#     FILES
++#         ${docs_to_install}
++#     DESTINATION
++#         "${CMAKE_INSTALL_DOCDIR}"
++# )
+ 
+ INCLUDE_DIRECTORIES(AFTER "${CMAKE_CURRENT_SOURCE_DIR}/${patsolve_dir}/include" "${CMAKE_CURRENT_SOURCE_DIR}/${patsolve_dir}")
+ INCLUDE("${private_mod_path}/xxhash_wrapper_bootstrap.cmake")
+-- 
+2.26.0
+

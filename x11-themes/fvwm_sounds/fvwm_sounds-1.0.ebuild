@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Sounds for use with FVWM"
 HOMEPAGE="http://www.fvwm.org/"
-SRC_URI="mirror://gentoo/fvwm_sounds.tgz -> ${P}.tgz"
+SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"

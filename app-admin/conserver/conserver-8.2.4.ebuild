@@ -13,6 +13,7 @@ LICENSE="BSD BSD-with-attribution"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug ipv6 freeipmi kerberos libressl pam ssl test tcpd"
+RESTRICT="!test? ( test )"
 
 DEPEND="debug? ( dev-libs/dmalloc:= )
 	freeipmi? ( sys-libs/freeipmi:= )
@@ -24,7 +25,7 @@ DEPEND="debug? ( dev-libs/dmalloc:= )
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 RDEPEND="${DEPEND}

@@ -5,4 +5,7 @@
     <email>shell-tools@gentoo.org</email>
     <name>Gentoo Shell Tools Project</name>
   </maintainer>
+  <slots>
+    <subslots>SONAME version for librecode</subslots>
+  </slots>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -184,7 +184,7 @@ pkg_postinst() {
 			fi
 		done
 	fi
-	if [[ ${showmessage} > 0 ]]; then
+	if [[ ${showmessage} -gt 0 ]]; then
 		elog "Important v4.x changes:"
 		elog "  - The on-wire protocol version has been changed."
 		elog "    Versions of Torque before 4.0.0 are no longer able to communicate."

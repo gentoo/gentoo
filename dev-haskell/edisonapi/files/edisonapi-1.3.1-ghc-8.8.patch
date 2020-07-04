@@ -1,0 +1,298 @@
+commit 8da6c0f7d8666766e2f0693425c347c0adb492dc
+Author: Andrés Sicard-Ramírez <asr@eafit.edu.co>
+Date:   Thu Jul 4 18:15:17 2019 -0500
+
+    Supported GHC 8.8.1.
+    
+    All changes were required by the MonadFail proposal.
+
+diff --git a/EdisonAPI.cabal b/EdisonAPI.cabal
+index 0f8f161..072cbd2 100644
+--- a/EdisonAPI.cabal
++++ b/EdisonAPI.cabal
+@@ -40,6 +40,8 @@ Library
+   Build-Depends:
+      base == 4.*,
+      mtl >= 1.0
++  if impl(ghc < 8.0)
++    build-depends: fail
+   Default-Language: Haskell2010
+   Default-Extensions:
+      MultiParamTypeClasses
+diff --git a/src/Data/Edison/Assoc.hs b/src/Data/Edison/Assoc.hs
+index fac1c59..3993dce 100644
+--- a/src/Data/Edison/Assoc.hs
++++ b/src/Data/Edison/Assoc.hs
+@@ -71,6 +71,8 @@ module Data.Edison.Assoc (
+ 
+ import Prelude hiding (null,map,lookup,foldr,foldl,foldr1,foldl1,filter)
+ 
++import qualified Control.Monad.Fail as Fail
++
+ import Data.Edison.Prelude
+ 
+ import Data.Edison.Seq(Sequence)
+@@ -212,7 +214,7 @@ class (Eq k,Functor m) => AssocX m k | m -> k where
+   --
+   --   This function is /ambiguous/ at finite relation types if the key appears
+   --   more than once in the finite relation.  Otherwise, it is /unambiguous/.
+-  lookupM        :: (Monad rm) => k -> m a -> rm a
++  lookupM        :: (Fail.MonadFail rm) => k -> m a -> rm a
+ 
+   -- | Return all elements bound by the given key in an unspecified order.
+   --
+@@ -236,7 +238,7 @@ class (Eq k,Functor m) => AssocX m k | m -> k where
+   --
+   --   This function is /ambiguous/ at finite relation types if the key appears
+   --   more than once in the finite relation.  Otherwise, it is /unambiguous/.
+-  lookupAndDeleteM :: (Monad rm) => k -> m a -> rm (a, m a)
++  lookupAndDeleteM :: (Fail.MonadFail rm) => k -> m a -> rm (a, m a)
+ 
+   -- | Find all elements bound by the given key; return a sequence containing
+   --   all such bound elements in an unspecified order and the collection
+@@ -395,7 +397,7 @@ class (AssocX m k, Ord k) => OrdAssocX m k | m -> k where
+   --
+   --   This function is /ambiguous/ at finite relation types if the finite relation
+   --   contains more than one minimum key.  Otherwise it is /unambiguous/.
+-  minView            :: (Monad rm) => m a -> rm (a, m a)
++  minView            :: (Fail.MonadFail rm) => m a -> rm (a, m a)
+ 
+   -- | Find the binding with the minimum key and return its element. Signals
+   --   an error if the associative collection is empty.  Which element is chosen
+@@ -426,7 +428,7 @@ class (AssocX m k, Ord k) => OrdAssocX m k | m -> k where
+   --
+   --   This function is /ambiguous/ at finite relation types if the finite relation
+   --   contains more than one minimum key.  Otherwise it is /unambiguous/.
+-  maxView            :: (Monad rm) => m a -> rm (a, m a)
++  maxView            :: (Fail.MonadFail rm) => m a -> rm (a, m a)
+ 
+   -- | Find the binding with the maximum key and return its element.  Signals
+   --   an error if the associative collection is empty.  Which element is chosen
+@@ -777,7 +779,7 @@ class (Assoc m k, OrdAssocX m k) => OrdAssoc m k | m -> k where
+   --   minimum key exists in the relation.  Furthermore, it is /ambiguous/
+   --   with respect to the actual key observed unless the @Eq@ instance on
+   --   keys corresponds to indistinguisability.
+-  minViewWithKey  :: (Monad rm) => m a -> rm ((k, a), m a)
++  minViewWithKey  :: (Fail.MonadFail rm) => m a -> rm ((k, a), m a)
+ 
+   -- | Find the binding with the minimum key in an associative collection and
+   --   return the key and the element.  Signals an error if the associative
+@@ -800,7 +802,7 @@ class (Assoc m k, OrdAssocX m k) => OrdAssoc m k | m -> k where
+   --   maximum key exists in the relation.  Furthermore, it is /ambiguous/
+   --   with respect to the actual key observed unless the @Eq@ instance on
+   --   keys corresponds to indistinguisability.
+-  maxViewWithKey  :: (Monad rm) => m a -> rm ((k, a), m a)
++  maxViewWithKey  :: (Fail.MonadFail rm) => m a -> rm ((k, a), m a)
+ 
+   -- | Find the binding with the maximum key in an associative collection and
+   --   return the key and the element.  Signals an error if the associative
+diff --git a/src/Data/Edison/Coll.hs b/src/Data/Edison/Coll.hs
+index 88ae755..be4df08 100644
+--- a/src/Data/Edison/Coll.hs
++++ b/src/Data/Edison/Coll.hs
+@@ -97,6 +97,7 @@ module Data.Edison.Coll (
+ ) where
+ 
+ import Prelude hiding (null,foldr,foldl,foldr1,foldl1,lookup,filter)
++import qualified Control.Monad.Fail as Fail
+ import Data.Monoid
+ 
+ import Data.Edison.Prelude
+@@ -421,7 +422,7 @@ class CollX c a => Coll c a | c -> a where
+   --   This function is /ambiguous/ at bag types, when more than one
+   --   element equivalent to the given item is in the bag.  Otherwise
+   --   it is /unambiguous/.
+-  lookupM    :: (Monad m) => a -> c -> m a
++  lookupM    :: (Fail.MonadFail m) => a -> c -> m a
+ 
+   -- | Return a sequence containing all elements in the collection equal to
+   --   the given element in an unspecified order.
+@@ -504,7 +505,7 @@ class (Coll c a, OrdCollX c a) => OrdColl c a | c -> a where
+   --
+   --   This function is /ambiguous/ at bag types, if more than one minimum
+   --   element exists in the bag.  Otherwise, it is /unambiguous/.
+-  minView    :: (Monad m) => c -> m (a, c)
++  minView    :: (Fail.MonadFail m) => c -> m (a, c)
+ 
+   -- | Return the minimum element in the collection.  If there are multiple
+   --   copies of the minimum element, it is unspecified which is chosen.
+@@ -523,7 +524,7 @@ class (Coll c a, OrdCollX c a) => OrdColl c a | c -> a where
+   --
+   --   This function is /ambiguous/ at bag types, if more than one maximum
+   --   element exists in the bag.  Otherwise, it is /unambiguous/.
+-  maxView    :: (Monad m) => c -> m (a, c)
++  maxView    :: (Fail.MonadFail m) => c -> m (a, c)
+ 
+   -- | Return the maximum element in the collection.  If there are multiple
+   --   copies of the maximum element, it is unspecified which is chosen.
+diff --git a/src/Data/Edison/Prelude.hs b/src/Data/Edison/Prelude.hs
+index 2ac6968..8281f46 100644
+--- a/src/Data/Edison/Prelude.hs
++++ b/src/Data/Edison/Prelude.hs
+@@ -10,14 +10,19 @@
+ --   This module is a central depository of common definitions
+ --   used throughout Edison.
+ 
++{-# LANGUAGE GeneralizedNewtypeDeriving #-}
++
+ module Data.Edison.Prelude (
+ -- * Hashing classes
+   Hash (..)
+ , UniqueHash
+ , ReversibleHash (..)
+ , Measured (..)
++-- * Pure MonadFail
++,  runFail_
+ ) where
+ 
++import Control.Monad.Fail
+ import Data.Monoid
+ 
+ -- | This class represents hashable objects. If obeys the 
+@@ -62,3 +67,14 @@ class UniqueHash a => ReversibleHash a where
+ --   the computation.
+ class (Monoid v) => Measured v a | a -> v where
+   measure :: a -> v
++
++-- From Agda source code: src/full/Agda/Utils/Fail.hs
++-- | A pure MonadFail.
++newtype Fail a = Fail { runFail :: Either String a }
++  deriving (Functor, Applicative, Monad)
++
++instance MonadFail Fail where
++  fail = Fail . Left
++
++runFail_ :: Fail a -> a
++runFail_ = either error id . runFail
+diff --git a/src/Data/Edison/Seq.hs b/src/Data/Edison/Seq.hs
+index 78ca245..0394d58 100644
+--- a/src/Data/Edison/Seq.hs
++++ b/src/Data/Edison/Seq.hs
+@@ -58,6 +58,7 @@ import Prelude hiding (concat,reverse,map,concatMap,foldr,foldl,foldr1,foldl1,
+                        zip,zip3,zipWith,zipWith3,unzip,unzip3,null)
+ 
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Data.Monoid
+ 
+ import Data.Edison.Prelude
+@@ -221,7 +222,7 @@ class (Functor s, MonadPlus s) => Sequence s where
+   --   This function is always /unambiguous/.
+   --
+   --   Default running time: @O( 1 )@
+-  lview     :: (Monad m) => s a -> m (a, s a)
++  lview     :: (Fail.MonadFail m) => s a -> m (a, s a)
+ 
+   -- | Return the first element of a sequence.
+   --   Signals an error if the sequence is empty.
+@@ -249,7 +250,7 @@ class (Functor s, MonadPlus s) => Sequence s where
+   --   This function is always /unambiguous/.
+   --
+   --   Default running time: @O( 1 )@
+-  lheadM    :: (Monad m) => s a -> m a 
++  lheadM    :: (Fail.MonadFail m) => s a -> m a 
+ 
+   -- | Delete the first element of the sequence.
+   --   Signals error if sequence is empty.
+@@ -277,7 +278,7 @@ class (Functor s, MonadPlus s) => Sequence s where
+   --   This function is always /unambiguous/.
+   --
+   --   Default running time: @O( 1 )@
+-  ltailM    :: (Monad m) => s a -> m (s a)
++  ltailM    :: (Fail.MonadFail m) => s a -> m (s a)
+ 
+   -- | Separate a sequence into its last (rightmost) element and the
+   --   remaining sequence.  Calls 'fail' if the sequence is empty.
+@@ -291,7 +292,7 @@ class (Functor s, MonadPlus s) => Sequence s where
+   --   This function is always /unambiguous/.
+   --
+   --   Default running time: @O( n )@
+-  rview     :: (Monad m) => s a -> m (a, s a)
++  rview     :: (Fail.MonadFail m) => s a -> m (a, s a)
+ 
+   -- | Return the last (rightmost) element of the sequence.
+   --   Signals error if sequence is empty.
+@@ -319,7 +320,7 @@ class (Functor s, MonadPlus s) => Sequence s where
+   --   This function is always /unambiguous/.
+   --
+   --   Default running time: @O( n )@
+-  rheadM    :: (Monad m) => s a -> m a
++  rheadM    :: (Fail.MonadFail m) => s a -> m a
+ 
+   -- | Delete the last (rightmost) element of the sequence.
+   --   Signals an error if the sequence is empty.
+@@ -347,7 +348,7 @@ class (Functor s, MonadPlus s) => Sequence s where
+   --   This function is always /unambiguous/.
+   --
+   --   Default running time: @O( n )@
+-  rtailM    :: (Monad m) => s a -> m (s a)
++  rtailM    :: (Fail.MonadFail m) => s a -> m (s a)
+ 
+   -- | Returns 'True' if the sequence is empty and 'False' otherwise.
+   -- 
+@@ -948,7 +949,7 @@ class (Functor s, MonadPlus s) => Sequence s where
+   --   This function is always /unambiguous/.
+   --
+   --   Default running time: @O( i )@
+-  lookupM   :: (Monad m) => Int -> s a -> m a
++  lookupM   :: (Fail.MonadFail m) => Int -> s a -> m a
+ 
+   -- | Return the element at the given index, or the
+   --   default argument if the index is out of bounds.  All indexes are
+diff --git a/src/Data/Edison/Seq/ListSeq.hs b/src/Data/Edison/Seq/ListSeq.hs
+index 1ad677f..890b66f 100644
+--- a/src/Data/Edison/Seq/ListSeq.hs
++++ b/src/Data/Edison/Seq/ListSeq.hs
+@@ -40,9 +40,9 @@ module Data.Edison.Seq.ListSeq (
+ import Prelude hiding (concat,reverse,map,concatMap,foldr,foldl,foldr1,foldl1,
+                        filter,takeWhile,dropWhile,lookup,take,drop,splitAt,
+                        zip,zip3,zipWith,zipWith3,unzip,unzip3,null)
+-import qualified Control.Monad.Identity as ID
++import qualified Control.Monad.Fail as Fail
+ import qualified Prelude
+-import Data.Edison.Prelude
++import Data.Edison.Prelude ( runFail_ )
+ import qualified Data.List
+ import Data.Monoid
+ import qualified Data.Edison.Seq as S ( Sequence(..) ) 
+@@ -54,16 +54,16 @@ singleton      :: a -> [a]
+ lcons          :: a -> [a] -> [a]
+ rcons          :: a -> [a] -> [a]
+ append         :: [a] -> [a] -> [a]
+-lview          :: (Monad rm) => [a] -> rm (a, [a])
++lview          :: (Fail.MonadFail rm) => [a] -> rm (a, [a])
+ lhead          :: [a] -> a
+-lheadM         :: (Monad rm) => [a] -> rm a
++lheadM         :: (Fail.MonadFail rm) => [a] -> rm a
+ ltail          :: [a] -> [a]
+-ltailM         :: (Monad rm) => [a] -> rm [a]
+-rview          :: (Monad rm) => [a] -> rm (a, [a])
++ltailM         :: (Fail.MonadFail rm) => [a] -> rm [a]
++rview          :: (Fail.MonadFail rm) => [a] -> rm (a, [a])
+ rhead          :: [a] -> a
+-rheadM         :: (Monad rm) => [a] -> rm a
++rheadM         :: (Fail.MonadFail rm) => [a] -> rm a
+ rtail          :: [a] -> [a]
+-rtailM         :: (Monad rm) => [a] -> rm [a]
++rtailM         :: (Fail.MonadFail rm) => [a] -> rm [a]
+ null           :: [a] -> Bool
+ size           :: [a] -> Int
+ concat         :: [[a]] -> [a]
+@@ -92,7 +92,7 @@ reduce1'       :: (a -> a -> a) -> [a] -> a
+ copy           :: Int -> a -> [a]
+ inBounds       :: Int -> [a] -> Bool
+ lookup         :: Int -> [a] -> a
+-lookupM        :: (Monad m) => Int -> [a] -> m a
++lookupM        :: (Fail.MonadFail m) => Int -> [a] -> m a
+ lookupWithDefault :: a -> Int -> [a] -> a
+ update         :: Int -> a -> [a] -> [a]
+ adjust         :: (a -> a) -> Int -> [a] -> [a]
+@@ -252,7 +252,7 @@ inBounds i xs
+   | i >= 0    = not (null (drop i xs))
+   | otherwise = False
+ 
+-lookup i xs = ID.runIdentity (lookupM i xs)
++lookup i xs = runFail_ (lookupM i xs)
+ 
+ lookupM i xs
+   | i < 0 = fail "ListSeq.lookup: not found"

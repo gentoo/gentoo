@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>itumaykin+gentoo@gmail.com</email>
-		<name>Coacher</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="github">google/shaderc</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>sarnex@gentoo.org</email>
+    <name>Nick Sarnie</name>
+  </maintainer>  
+  <upstream>
+    <remote-id type="github">google/shaderc</remote-id>
+  </upstream>
 </pkgmetadata>

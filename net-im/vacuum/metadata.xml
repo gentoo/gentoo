@@ -40,7 +40,7 @@
 		<flag name="messagearchiver">Enable saving the communication history both locally and on the server</flag>
 		<flag name="messagecarbons">Allows to keep all user IM clients engaged in a conversation</flag>
 		<flag name="multiuserchat">Enable Jabber multi-user conferences</flag>
-		<flag name="pepmanager">Allows other plugins to recieve and publish PEP events</flag>
+		<flag name="pepmanager">Allows other plugins to receive and publish PEP events</flag>
 		<flag name="privacylists">Enable blocking the undesirable contacts</flag>
 		<flag name="privatestorage">Allow other modules to store arbitrary data on the server</flag>
 		<flag name="recentcontacts">Displays a recently used contacts</flag>

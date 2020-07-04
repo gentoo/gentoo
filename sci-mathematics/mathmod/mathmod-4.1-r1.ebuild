@@ -1,18 +1,24 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils gnome2-utils qmake-utils fdo-mime
+EAPI=7
+
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Plot parametric and implicit surfaces"
 HOMEPAGE="https://www.facebook.com/pages/MathMod/529510253833102"
 SRC_URI="mirror://sourceforge/${PN}/${P}.src.zip"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-qt/qtwidgets:5 dev-qt/qtopengl:5"
+RDEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
+	dev-qt/qtwidgets:5"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${PN}-branches-274-trunk
@@ -33,11 +39,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_icon_cache_update
+	xdg_desktop_database_update
 }

@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug emacs nls"
 
-RDEPEND="emacs? ( virtual/emacs )
+RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	nls? ( virtual/libintl virtual/libiconv )"
 BDEPEND="${RDEPEND}
 	sys-devel/flex

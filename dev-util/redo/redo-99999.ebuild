@@ -1,28 +1,34 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
-inherit git-r3 multilib multiprocessing python-single-r1
+inherit git-r3 multilib multiprocessing python-utils-r1 python-single-r1
 
 DESCRIPTION="Smaller, easier, more powerful, and more reliable than make"
 HOMEPAGE="https://github.com/apenwarr/redo"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/apenwarr/redo"
 
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS=""
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
-	dev-python/beautifulsoup[${PYTHON_USEDEP}]
-	dev-python/markdown[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/beautifulsoup[${PYTHON_MULTI_USEDEP}]
+		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+	')
 	${PYTHON_DEPS}
 "
 RDEPEND="
 	${BDEPEND}
 "
+
+src_configure() {
+	echo ${PYTHON} > redo/whichpython || die
+}
 
 src_compile() {
 	./do -j$(makeopts_jobs) build || die
@@ -36,7 +42,7 @@ src_test() {
 src_install() {
 	DESTDIR="${D}" \
 	DOCDIR="${D}/usr/share/doc/${PF}" \
-	LIBDIR="${D}/usr/$(get_libdir)/${PN}" \
+	LIBDIR="${D}/$(python_get_sitedir)/${PN}" \
 	./do -j$(makeopts_jobs) \
 		install || die
 
@@ -45,4 +51,6 @@ src_install() {
 	sed -i \
 		-e 's|/lib/|/'"$(get_libdir)"'/|g' \
 		"${D}"/usr/bin/* || die
+
+	python_optimize
 }

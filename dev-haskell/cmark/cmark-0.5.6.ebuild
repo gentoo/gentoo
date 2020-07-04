@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,11 +11,11 @@ inherit haskell-cabal
 
 DESCRIPTION="Fast, accurate CommonMark (Markdown) parser and renderer"
 HOMEPAGE="https://github.com/jgm/cmark-hs"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+system-cmark"
 
 RDEPEND=">=dev-haskell/text-1.0:=[profile?] <dev-haskell/text-1.3:=[profile?]

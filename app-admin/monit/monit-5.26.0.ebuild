@@ -19,7 +19,7 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)"
 DEPEND="${RDEPEND}
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 BDEPEND="
 	sys-devel/flex
 	sys-devel/bison

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="client doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/opencl"
 DEPEND="${RDEPEND}
@@ -55,7 +56,7 @@ src_test() {
 	cmake-utils_src_test alltests
 }
 
-src_install(){
+src_install() {
 	cmake-utils_src_install
 	dodoc README.md CONTRIBUTING.md CHANGELOG
 	use doc && dodoc -r doc

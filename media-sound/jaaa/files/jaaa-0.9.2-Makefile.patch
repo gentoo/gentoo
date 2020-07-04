@@ -1,0 +1,16 @@
+diff --git a/source/Makefile b/source/Makefile
+index fec867e..0c769f6 100644
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -23,9 +23,8 @@ BINDIR ?= $(PREFIX)/bin
+ 
+ VERSION = 0.9.2
+ CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I.
+-CPPFLAGS += $(shell pkgconf --cflags freetype2)
+-CXXFLAGS += -O2 -Wall
+-CXXFLAGS += -march=native
++CPPFLAGS += $(shell pkg-config --cflags freetype2)
++CXXFLAGS += -Wall
+ LDLIBS += -lzita-alsa-pcmi -lclthreads -lclxclient -lasound -lpthread \
+ 	-lfftw3f -ljack -lXft -lX11 -lrt
+ 

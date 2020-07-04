@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_P=${PN}6-${PV}
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite,xml"
 inherit python-single-r1 xdg-utils
 
@@ -19,18 +19,22 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/sip-4.14.3[${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-5.7.1[gui,network,printsupport,sql,svg,widgets,${PYTHON_USEDEP}]
-	>=dev-python/qscintilla-python-2.10[qt5(+),${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/sip-4.14.3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/PyQt5-5.7.1[gui,network,printsupport,sql,svg,widgets,${PYTHON_MULTI_USEDEP}]
+		>=dev-python/qscintilla-python-2.10[qt5(+),${PYTHON_MULTI_USEDEP}]
+	')
 "
 RDEPEND="${DEPEND}
-	|| (
-		dev-python/PyQt5[help,webengine,${PYTHON_USEDEP}]
-		dev-python/PyQt5[help,webkit,${PYTHON_USEDEP}]
-	)
-	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
-	>=dev-python/coverage-4.1.0[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.2.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		|| (
+			dev-python/PyQt5[help,webengine,${PYTHON_MULTI_USEDEP}]
+			dev-python/PyQt5[help,webkit,${PYTHON_MULTI_USEDEP}]
+		)
+		>=dev-python/chardet-3.0.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/coverage-4.1.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygments-2.2.0[${PYTHON_MULTI_USEDEP}]
+	')
 	!dev-util/eric:4
 	!dev-util/eric:5
 "
@@ -65,7 +69,7 @@ src_install() {
 	einstalldocs
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	xdg_desktop_database_update
 
 	if ! has_version dev-python/enchant; then

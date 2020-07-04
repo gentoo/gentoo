@@ -29,7 +29,7 @@
     additions on masked integers" by Michael D. Adams and David S. Wise.
   </longdescription>
 
-  <use>
-    <flag name="executable">Build the 'rw' program.</flag>
-  </use>
+  <upstream>
+    <remote-id type="sourceforge">rankwidth</remote-id>
+  </upstream>
 </pkgmetadata>

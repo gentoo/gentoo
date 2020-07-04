@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.hping.org/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc sparc x86"
 IUSE="tcl"
 
 S="${WORKDIR}/${MY_P}"
@@ -69,7 +69,7 @@ src_compile() {
 		"LIBDIR=$(get_libdir)"
 }
 
-src_install () {
+src_install() {
 	dosbin hping3
 	dosym /usr/sbin/hping3 /usr/sbin/hping
 	dosym /usr/sbin/hping3 /usr/sbin/hping2

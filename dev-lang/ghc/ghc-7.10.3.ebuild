@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ inherit autotools bash-completion-r1 eutils flag-o-matic ghc-package
 inherit multilib pax-utils toolchain-funcs versionator prefix
 
 DESCRIPTION="The Glasgow Haskell Compiler"
-HOMEPAGE="http://www.haskell.org/ghc/"
+HOMEPAGE="https://www.haskell.org/ghc/"
 
 # we don't have any binaries yet
 arch_binaries=""
@@ -58,7 +58,7 @@ GHC_PV=${PV}
 #GHC_PV=7.10.2.20151030 # uncomment only for -rc ebuilds
 GHC_P=${PN}-${GHC_PV} # using ${P} is almost never correct
 
-SRC_URI="!binary? ( http://downloads.haskell.org/~ghc/${PV/_rc/-rc}/${GHC_P}-src.tar.bz2 )"
+SRC_URI="!binary? ( https://downloads.haskell.org/~ghc/${PV/_rc/-rc}/${GHC_P}-src.tar.bz2 )"
 S="${WORKDIR}"/${GHC_P}
 
 [[ -n $arch_binaries ]] && SRC_URI+=" !ghcbootstrap? ( $arch_binaries )"
@@ -72,7 +72,7 @@ BUMP_LIBRARIES=(
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc ghcbootstrap ghcmakebinary +gmp"
 IUSE+=" binary"
 IUSE+=" elibc_glibc" # system stuff
@@ -81,7 +81,7 @@ RDEPEND="
 	>=dev-lang/perl-5.6.1
 	>=dev-libs/gmp-5:=
 	sys-libs/ncurses:0=[unicode]
-	!ghcmakebinary? ( virtual/libffi:= )
+	!ghcmakebinary? ( dev-libs/libffi:= )
 "
 
 # This set of dependencies is needed to run
@@ -95,7 +95,7 @@ PREBUILT_BINARY_DEPENDS="
 # ghc[binary] in system. terminfo package is linked
 # against ncurses.
 PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
-	sys-libs/ncurses:5/5
+	sys-libs/ncurses-compat:5
 "
 
 RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
@@ -182,7 +182,7 @@ update_SRC_URI() {
 		set -- $p
 		pn=$1 pv=$2
 
-		SRC_URI+=" mirror://hackage/package/${pn}/${pn}-${pv}.tar.gz"
+		SRC_URI+=" https://hackage.haskell.org/package/${pn}-${pv}/${pn}-${pv}.tar.gz"
 	done
 }
 
@@ -257,11 +257,11 @@ ghc_setup_cflags() {
 	gcc-specs-ssp && append-ghc-cflags persistent compile      -fno-stack-protector
 
 	# prevent from failind building unregisterised ghc:
-	# http://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg171602.html
+	# https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg171602.html
 	use ppc64 && append-ghc-cflags persistent compile -mminimal-toc
 	# fix the similar issue as ppc64 TOC on ia64. ia64 has limited size of small data
 	# currently ghc fails to build haddock
-	# http://osdir.com/ml/gnu.binutils.bugs/2004-10/msg00050.html
+	# https://osdir.com/ml/gnu.binutils.bugs/2004-10/msg00050.html
 	use ia64 && append-ghc-cflags persistent compile -G0
 }
 
@@ -555,7 +555,7 @@ src_configure() {
 			echo "utils/ghc-pkg_HC_OPTS += -DBOOTSTRAPPING" >> mk/build.mk
 		else
 			econf_args+=(--with-system-libffi)
-			econf_args+=(--with-ffi-includes=$(pkg-config libffi --cflags-only-I | sed -e 's@^-I@@'))
+			econf_args+=(--with-ffi-includes=$($(tc-getPKG_CONFIG) libffi --cflags-only-I | sed -e 's@^-I@@'))
 		fi
 
 		elog "Final mk/build.mk:"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -33,7 +33,7 @@ pkg_setup() {
 	enewuser sguil -1 -1 /var/lib/sguil sguil
 }
 
-src_prepare(){
+src_prepare() {
 	sed -i \
 		-e 's:DEBUG 2:DEBUG 1:' -e 's:DAEMON 0:DAEMON 1:' \
 		-e 's:SGUILD_LIB_PATH ./lib:SGUILD_LIB_PATH /usr/lib/sguild:g' \
@@ -43,7 +43,7 @@ src_prepare(){
 		server/sguild.conf || die
 }
 
-src_install(){
+src_install() {
 	dodoc server/sql_scripts/*
 	dodoc doc/CHANGES doc/OPENSSL.README doc/USAGE doc/INSTALL \
 	doc/TODO doc/sguildb.dia
@@ -70,7 +70,7 @@ src_install(){
 
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	if use ssl && ! [ -f "${ROOT}"/etc/sguil/sguild.key ]; then
 		install_cert /etc/sguil/sguild
 	fi

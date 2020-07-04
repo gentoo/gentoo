@@ -76,8 +76,7 @@ src_install() {
 	dodir /etc /usr/bin /usr/share/man/man{1,5}
 	emake install \
 		PREFIX="${D}"/usr \
-		CONFFILE="${D}"/etc/flexbackup.conf \
-		|| die "emake install failed"
+		CONFFILE="${D}"/etc/flexbackup.conf
 
 	einstalldocs
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -78,11 +78,11 @@ src_prepare() {
 	tc-export CXX
 }
 
-src_compile () {
+src_compile() {
 	emake -C project/linux
 }
 
-src_install () {
+src_install() {
 	# no make install in Makefile
 	dosbin project/linux/Release/ovaldi project/linux/ovaldi.sh
 	dodir /var/log/${PN}

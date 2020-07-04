@@ -5,9 +5,6 @@
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
 	</maintainer>
-	<longdescription>
-		Video Disk Recorder Xinelib PlugIn ( VDR )
-	</longdescription>
 	<use>
 		<flag name="cec">Enable CEC support through <pkg>dev-libs/libcec</pkg></flag>
 		<flag name="bluray">Enable BluRay metadata support through <pkg>media-libs/libbluray</pkg></flag>

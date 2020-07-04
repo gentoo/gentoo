@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -83,7 +83,6 @@ src_configure() {
 		$(use_enable dssi ) \
 		$(use_with doc gjdoc "${S}/tools/gjdoc.build") \
 		--enable-jni \
-		--disable-dependency-tracking \
 		--disable-plugin \
 		--host=${CHOST} \
 		--prefix="${EPREFIX}"/usr/${PN}-${SLOT} \

@@ -1,8 +1,4 @@
 # armv7 has these instruction sets
-armv5te
-armv6
-armv6t2
-
 cpu_flags_arm_v4
 cpu_flags_arm_v5
 cpu_flags_arm_v6

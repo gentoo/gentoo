@@ -33,6 +33,7 @@ RDEPEND="
 		x11-libs/pango
 	)
 "
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${MY_PN}_Linux"
 

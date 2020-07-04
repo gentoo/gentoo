@@ -6,7 +6,6 @@
 		<name>Wine</name>
 	</maintainer>
 	<use>
-		<flag name="d3d9">Enable Ixit's Gallium Nine Patchset</flag>
 		<flag name="staging">Enable Wine-Staging's Patchset</flag>
 	</use>
 	<longdescription lang="en">

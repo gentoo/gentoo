@@ -5,9 +5,6 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<longdescription lang="en">
-		Library designed to provide a simple and easy-to-understand library into the Tenable product APIs
-	</longdescription>
 	<upstream>
 		<remote-id type="github">tenable/pyTenable</remote-id>
 		<remote-id type="pypi">pyTenable</remote-id>

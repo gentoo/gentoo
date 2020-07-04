@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>alexxy@gentoo.org</email>
+		<name>Alexey Shvetsov</name>
+	</maintainer>
+	<longdescription>
+		Lustre is a parallel distributed file system, generally used for large scale cluster computing
+	</longdescription>
+	<use>
+		<flag name="client">Enable kernel client modules</flag>
+		<flag name="dlc">Enable Dynamic LNET Configuration</flag>
+		<flag name="server">Enable kernels server modules</flag>
+		<flag name="utils">Enable lustre utils</flag>
+		<flag name="tests">Enable installation of tests</flag>
+	</use>
+</pkgmetadata>

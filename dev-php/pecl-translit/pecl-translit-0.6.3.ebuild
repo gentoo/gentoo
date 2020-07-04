@@ -7,7 +7,7 @@ PHP_EXT_NAME="translit"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php7-1 php7-2 php7-3"
+USE_PHP="php7-1 php7-2 php7-3 php7-4"
 PHP_EXT_NAME="translit"
 
 inherit php-ext-source-r3
@@ -25,6 +25,6 @@ PHP_EXT_ECONF_ARGS=()
 src_test() {
 	for slot in $(php_get_slots); do
 		php_init_slot_env ${slot}
-		NO_INTERACTION="yes" emake test || die "emake test failed for slot ${slot}"
+		NO_INTERACTION="yes" emake test
 	done
 }

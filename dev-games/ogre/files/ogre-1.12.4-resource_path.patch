@@ -1,0 +1,13 @@
+These was already configured above, the BINARY paths are wrong!
+
+--- a/CMake/InstallResources.cmake	2019-11-06 08:12:01.271816772 +0100
++++ b/CMake/InstallResources.cmake	2019-11-06 08:13:15.623814658 +0100
+@@ -163,8 +163,6 @@
+   set(OGRE_PLUGIN_DIR_REL "Contents/Frameworks/")
+   set(OGRE_SAMPLES_DIR_REL "Contents/Plugins/")
+ elseif (UNIX)
+-  set(OGRE_PLUGIN_DIR_REL "${PROJECT_BINARY_DIR}/lib")
+-  set(OGRE_SAMPLES_DIR_REL "${PROJECT_BINARY_DIR}/lib")
+ endif ()
+ 
+ if (WINDOWS_STORE OR WINDOWS_PHONE OR EMSCRIPTEN)

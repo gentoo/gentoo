@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -68,17 +68,16 @@ src_prepare() {
 			-e 's:\<(PORTDIR|ARCH)\>:SDCC\1:g' \
 			{} + || die
 
-	# https://sourceforge.net/p/sdcc/bugs/2398/
-	sed -i -e '1iAR = @AR@' Makefile.common.in || die
-	sed -i \
-		-e "/^AR =/s:=.*:=$(tc-getAR):" \
-		support/cpp/Makefile.in || die
-
 	# Make sure timestamps don't get messed up.
 	[[ ${PV} == "9999" ]] && find "${S}" -type f -exec touch -r . {} +
 
 	default
 	eautoreconf
+
+	# Avoid 'bfd.info' rebuild with 'makeinfo': bug #705424
+	# Build dependencies are: eautoreconf->Makefile.in->bfdver.texi->bfd.info
+	touch support/sdbinutils/bfd/doc/bfdver.texi || die
+	touch support/sdbinutils/bfd/doc/bfd.info || die
 }
 
 src_configure() {
@@ -112,7 +111,6 @@ src_configure() {
 		$(use_enable z180 z180-port) \
 		$(use_enable z80 z80-port) \
 		--disable-doc \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--without-ccache
 }
 

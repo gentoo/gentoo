@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,9 @@ src_prepare() {
 	# Let the package manager handle man page compression
 	sed -e '/^manual[58]_DATA/ s/\.gz//g' \
 		-i "${S}"/man/Makefile.in || die
+
+	# Bug: https://bugs.gentoo.org/706356
+	eapply "${FILESDIR}"/${PN}-1.5.5-gcc-10.patch
 
 	default
 }

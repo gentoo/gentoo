@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,13 +10,13 @@ MY_P="${PN}-$(replace_version_separator 2 'a')"
 DESCRIPTION="An ethernet monitor program that keeps track of ethernet/IP address pairings"
 HOMEPAGE="https://ee.lbl.gov/"
 SRC_URI="
-	ftp://ftp.ee.lbl.gov/${MY_P}.tar.gz
+	https://ee.lbl.gov/downloads/arpwatch/${MY_P}.tar.gz
 	https://dev.gentoo.org/~jer/arpwatch-patchset-${PATCH_VER}.tar.xz
 "
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ppc sparc x86"
 IUSE="selinux"
 
 DEPEND="
@@ -50,7 +50,7 @@ src_prepare() {
 	cp "${patchdir}"/*.8 ./ || die "failed to copy man pages from ${patchdir}"
 }
 
-src_install () {
+src_install() {
 	dosbin arpwatch arpsnmp arp2ethers massagevendor arpfetch bihourly.sh
 	doman arpwatch.8 arpsnmp.8 arp2ethers.8 massagevendor.8 arpfetch.8 bihourly.8
 

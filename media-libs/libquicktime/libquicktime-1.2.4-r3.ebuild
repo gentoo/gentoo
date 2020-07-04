@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame libav cpu_flags_x86_mmx opengl png static-libs vorbis X x264"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame cpu_flags_x86_mmx opengl png static-libs vorbis X x264"
 
 RDEPEND="
 	sys-libs/zlib
@@ -23,10 +23,7 @@ RDEPEND="
 	)
 	alsa? ( >=media-libs/alsa-lib-1.0.20 )
 	dv? ( >=media-libs/libdv-1.0.0-r3[${MULTILIB_USEDEP}] )
-	ffmpeg? (
-		libav? ( >=media-video/libav-12:0=[${MULTILIB_USEDEP}] )
-		!libav? ( >=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}] )
-	)
+	ffmpeg? ( >=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:2 )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	lame? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
@@ -46,7 +43,7 @@ RDEPEND="
 	x264? ( >=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
 	X? ( x11-base/xorg-proto )"

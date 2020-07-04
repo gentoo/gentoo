@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Dist-Zilla-Plugin-Run</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::AfterBuild</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::AfterMint</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::AfterRelease</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::BeforeArchive</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::BeforeBuild</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::BeforeRelease</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::Clean</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::Release</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::Role::Runner</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Run::Test</remote-id>
+  </upstream>
+</pkgmetadata>

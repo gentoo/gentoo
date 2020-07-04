@@ -1,0 +1,33 @@
+diff --git a/source/Makefile b/source/Makefile
+index f841f3f..206e607 100644
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -32,8 +32,7 @@ VERSION = $(MAJVERS).$(MINVERS)
+ 
+ 
+ CPPFLAGS += -DVERSION=\"$(VERSION)\" -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS -I.  
+-CXXFLAGS += -Wall -O2 -fPIC
+-CXXFLAGS += -march=native
++CXXFLAGS += -Wall -fPIC
+ LDLFAGS += 
+ LDLIBS +=
+ 
+@@ -51,12 +50,12 @@ $(CLTHREADS_MIN): $(CLTHREADS_O)
+ 
+ 
+ install:	$(CLTHREADS_MIN)
+-	install -d $(DESTDIR)$(PREFIX)/$(INCDIR)
+-	install -d $(DESTDIR)$(PREFIX)/$(LIBDIR)
+-	install -m 644 $(CLTHREADS_H) $(DESTDIR)$(INCDIR)
+-	install -m 755 $(CLTHREADS_MIN) $(DESTDIR)$(LIBDIR)
+-	ldconfig
+-	ln -sf $(CLTHREADS_MIN) $(DESTDIR)$(LIBDIR)/$(CLTHREADS_SO)
++	install -d $(DESTDIR)${PREFIX}/$(INCDIR)
++	install -d $(DESTDIR)${PREFIX}/$(LIBDIR)
++	install -m 644 $(CLTHREADS_H) $(DESTDIR)${PREFIX}/$(INCDIR)
++	install -m 755 $(CLTHREADS_MIN) $(DESTDIR)${PREFIX}/$(LIBDIR)
++	ln -sf $(CLTHREADS_MIN) $(DESTDIR)${PREFIX}/$(LIBDIR)/$(CLTHREADS_SO)
++	ln -sf $(CLTHREADS_MIN) $(DESTDIR)${PREFIX}/$(LIBDIR)/$(CLTHREADS_MAJ)
+ 
+ uninstall:
+ 	rm -rf $(DESTDIR)$(INCDIR)/$(CLTHREADS_H)

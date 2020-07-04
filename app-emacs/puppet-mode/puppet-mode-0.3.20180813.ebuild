@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 
 DOCS="CHANGES.md README.md"
 SITEFILE="50${PN}-1-gentoo.el"

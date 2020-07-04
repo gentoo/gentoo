@@ -29,6 +29,7 @@ sys-apps/less
 sys-apps/net-tools
 sys-apps/portage
 sys-apps/sed
+sys-apps/shadow
 sys-devel/binutils
 sys-devel/bison
 sys-devel/flex
@@ -41,5 +42,4 @@ virtual/editor
 virtual/libc
 virtual/os-headers
 virtual/pkgconfig
-virtual/shadow
 sys-apps/which

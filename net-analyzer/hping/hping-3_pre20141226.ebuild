@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3_pre20141226-pcap-bpf.patch
 	"${FILESDIR}"/${PN}-3_pre20141226-scan-overflow.patch
 	"${FILESDIR}"/${PN}-3_pre20141226-unused-but-set.patch
+	"${FILESDIR}"/${PN}-3_pre20141226-fno-common.patch
 )
 
 src_configure() {
@@ -51,7 +52,7 @@ src_compile() {
 		"LIBDIR=$(get_libdir)"
 }
 
-src_install () {
+src_install() {
 	dosbin hping3
 	dosym hping3 /usr/sbin/hping
 	dosym hping3 /usr/sbin/hping2

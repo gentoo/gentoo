@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,13 @@ EAPI=6
 inherit savedconfig toolchain-funcs
 
 DESCRIPTION="Dynamic virtual terminal manager"
-HOMEPAGE="http://www.brain-dump.org/projects/dvtm/"
+HOMEPAGE="https://www.brain-dump.org/projects/dvtm/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://repo.or.cz/dvtm.git"
 else
-	SRC_URI="http://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
+	SRC_URI="https://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
 	KEYWORDS="amd64 arm x86"
 fi
 
@@ -39,7 +39,7 @@ src_compile() {
 	tc-export PKG_CONFIG
 	local msg=""
 	use savedconfig && msg=", please check the configfile"
-	emake CC=$(tc-getCC) ${PN} || die "emake failed${msg}"
+	emake CC=$(tc-getCC) ${PN}
 }
 
 src_install() {

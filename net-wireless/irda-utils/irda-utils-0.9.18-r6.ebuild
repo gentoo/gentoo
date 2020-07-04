@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/irda/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~sh x86"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE=""
 
 RDEPEND="
@@ -53,7 +53,7 @@ src_prepare() {
 		-e "/^LD/s:ld:$(tc-getLD):" \
 		-e "/^AR/s:ar:$(tc-getAR):" \
 		-e "/^RANLIB/s:ranlib:$(tc-getRANLIB):" \
-		-e "/^CFLAGS/s:-O2:${CFLAGS}:" Makefile */Makefile || die
+		-e "/^CFLAGS/s|-O2|${CFLAGS}|" Makefile */Makefile || die
 
 	# fix compile when pciutils is compiled with USE=zlib (Bug 200295)
 	sed -i -e "s:-lpci:$(pkg-config --libs libpci):g" smcinit/Makefile || die
@@ -69,7 +69,7 @@ src_compile() {
 	emake RPM_OPT_FLAGS="${CFLAGS}" RPM_BUILD_ROOT="${D}" ROOT="${D}"
 }
 
-src_install () {
+src_install() {
 	dodir /usr/bin
 	dodir /usr/sbin
 

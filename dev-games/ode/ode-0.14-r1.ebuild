@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 DESCRIPTION="Open Dynamics Engine SDK"
 HOMEPAGE="http://ode.org/"
@@ -10,7 +10,7 @@ SRC_URI="https://bitbucket.org/odedevs/ode/downloads/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1+ BSD )"
 SLOT="0/6"
-KEYWORDS="amd64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc double-precision examples gyroscopic static-libs"
 
 RDEPEND="examples? (

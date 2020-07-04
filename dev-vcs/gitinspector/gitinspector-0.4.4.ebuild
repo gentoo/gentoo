@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,13 @@ inherit distutils-r1
 
 DESCRIPTION="Statistical analysis tool for git repositories"
 HOMEPAGE="https://github.com/ejwa/gitinspector"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ejwa/gitinspector/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-vcs/git"
 DEPEND="test? ( ${RDEPEND} )"

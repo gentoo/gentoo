@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -97,7 +97,7 @@ $(BUILD)/$(SO_VERSIONED): $(BUILD)/murmurhash2.o $(BUILD)/bloom.o
+ 		rm -f libbloom.$(SO) && ln -s $(BLOOM_SONAME) libbloom.$(SO))
+ 
+ $(BUILD)/libbloom.a: $(BUILD)/murmurhash2.o $(BUILD)/bloom.o
+-	(cd $(BUILD) && ar rcs libbloom.a bloom.o murmurhash2.o)
++	(cd $(BUILD) && $(AR) rcs libbloom.a bloom.o murmurhash2.o)
+ 
+ $(BUILD)/test-libbloom: $(TESTDIR)/test.c $(BUILD)/$(SO_VERSIONED)
+ 	$(COM) -I$(TOP) -c $(TESTDIR)/test.c -o $(BUILD)/test.o

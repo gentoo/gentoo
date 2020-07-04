@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-lang/ocaml-3.12.1:=
 	>=dev-ml/ocaml-fileutils-0.4.0:=

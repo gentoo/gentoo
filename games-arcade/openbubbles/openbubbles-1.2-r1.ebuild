@@ -10,7 +10,7 @@ SRC_URI="https://web.archive.org/web/20101126190910/http://www.freewebs.com/lasi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[sound,video]

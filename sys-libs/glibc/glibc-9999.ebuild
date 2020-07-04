@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-any-r1 prefix eutils toolchain-funcs flag-o-matic gnuconfig usr-ldscript \
+inherit python-any-r1 prefix eutils toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
@@ -15,26 +15,29 @@ SLOT="2.2"
 
 EMULTILIB_PKG="true"
 
+# Gentoo patchset (ignored for live ebuilds)
+PATCH_VER=16
+PATCH_DEV=slyfox
+
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	KEYWORDS=""
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 fi
 
 RELEASE_VER=${PV}
 
 GCC_BOOTSTRAP_VER=20180511
 
-# Gentoo patchset
-PATCH_VER=14
+LOCALE_GEN_VER=2.00
 
-SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
+SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${LOCALE_GEN_VER}.tar.gz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps cet compile-locales custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -61,20 +64,39 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
+# Note [Disable automatic stripping]
+# Disabling automatic stripping for a few reasons:
+# - portage's attempt to strip breaks non-native binaries at least on
+#   arm: bug #697428
+# - portage's attempt to strip libpthread.so.0 breaks gdb thread
+#   enumeration: bug #697910. This is quite subtle:
+#   * gdb uses glibc's libthread_db-1.0.so to enumerate threads.
+#   * libthread_db-1.0.so needs access to libpthread.so.0 local symbols
+#     via 'ps_pglobal_lookup' symbol defined in gdb.
+#   * 'ps_pglobal_lookup' uses '.symtab' section table to resolve all
+#     known symbols in 'libpthread.so.0'. Specifically 'nptl_version'
+#     (unexported) is used to sanity check compatibility before enabling
+#     debugging.
+#     Also see https://sourceware.org/gdb/wiki/FAQ#GDB_does_not_see_any_threads_besides_the_one_in_which_crash_occurred.3B_or_SIGTRAP_kills_my_program_when_I_set_a_breakpoint
+#   * normal 'strip' command trims '.symtab'
+#   Thus our main goal here is to prevent 'libpthread.so.0' from
+#   losing it's '.symtab' entries.
+# As Gentoo's strip does not allow us to pass less aggressive stripping
+# options and does not check the machine target we strip selectively.
+
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,
 # and that gcc already contains the hardened patches.
+# Lastly, let's avoid some openssh nastiness, bug 708224, as
+# convenience to our users.
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2
-	!<sys-devel/bison-2.7
-	!<sys-devel/make-4
 	doc? ( sys-apps/texinfo )
 "
 COMMON_DEPEND="
+	gd? ( media-libs/gd:2= )
 	nscd? ( selinux? (
 		audit? ( sys-process/audit )
 		caps? ( sys-libs/libcap )
@@ -82,15 +104,16 @@ COMMON_DEPEND="
 	suid? ( caps? ( sys-libs/libcap ) )
 	selinux? ( sys-libs/libselinux )
 	systemtap? ( dev-util/systemtap )
+	!<net-misc/openssh-8.1_p1-r2
 "
 DEPEND="${COMMON_DEPEND}
-	test? ( >=net-dns/libidn2-2.0.5 )
+	test? ( >=net-dns/libidn2-2.3.0 )
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
-	!sys-kernel/ps3-sources
-	!sys-libs/nss-db
 "
+
+RESTRICT="!test? ( test )"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
 	BDEPEND+=" !headers-only? (
@@ -105,11 +128,31 @@ else
 	"
 	DEPEND+=" virtual/os-headers "
 	RDEPEND+="
-		>=net-dns/libidn2-2.0.5
+		>=net-dns/libidn2-2.3.0
 		vanilla? ( !sys-libs/timezone-data )
 	"
 	PDEPEND+=" !vanilla? ( sys-libs/timezone-data )"
 fi
+
+# Ignore tests whitelisted below
+GENTOO_GLIBC_XFAIL_TESTS="${GENTOO_GLIBC_XFAIL_TESTS:-yes}"
+
+# The following tests fail due to the Gentoo build system and are thus
+# executed but ignored:
+XFAIL_TEST_LIST=(
+	# 9) Failures of unknown origin
+	tst-latepthread
+
+	# buggy test, assumes /dev/ and /dev/null on a single filesystem
+	# 'mount --bind /dev/null /chroot/dev/null' breaks it.
+	# https://sourceware.org/PR25909
+	tst-support_descriptors
+
+	# Flaky test, known to fail occasionally:
+	# https://sourceware.org/PR19329
+	# https://bugs.gentoo.org/719674#c12
+	tst-stack4
+)
 
 #
 # Small helper functions
@@ -181,7 +224,8 @@ do_compile_test() {
 	rm -f glibc-test*
 	printf '%b' "$*" > glibc-test.c
 
-	nonfatal emake -s glibc-test
+	# Most of the time CC is already set, but not in early sanity checks.
+	nonfatal emake glibc-test CC="${CC-$(tc-getCC ${CTARGET})}"
 	ret=$?
 
 	popd >/dev/null
@@ -229,7 +273,7 @@ setup_target_flags() {
 			# We could change main to _start and pass -nostdlib here so that we
 			# only test the gcc code compilation.  Or we could do a compile and
 			# then look for the symbol via scanelf.
-			if ! do_compile_test "" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
+			if ! do_compile_test "" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n'; then
 				local t=${CTARGET_OPT:-${CTARGET}}
 				t=${t%%-*}
 				filter-flags '-march=*'
@@ -239,10 +283,9 @@ setup_target_flags() {
 		;;
 		amd64)
 			# -march needed for #185404 #199334
-			# Note: This test only matters when the x86 ABI is enabled, so we could
-			# optimize a bit and elide it.
 			# TODO: See cross-compile issues listed above for x86.
-			if ! do_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
+			[[ ${ABI} == x86 ]] &&
+			if ! do_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n'; then
 				local t=${CTARGET_OPT:-${CTARGET}}
 				t=${t%%-*}
 				# Normally the target is x86_64-xxx, so turn that into the -march that
@@ -252,8 +295,14 @@ setup_target_flags() {
 				# ugly, ugly, ugly.  ugly.
 				CFLAGS_x86=$(CFLAGS=${CFLAGS_x86} filter-flags '-march=*'; echo "${CFLAGS}")
 				export CFLAGS_x86="${CFLAGS_x86} -march=${t}"
-				einfo "Auto adding -march=${t} to CFLAGS_x86 #185404"
+				einfo "Auto adding -march=${t} to CFLAGS_x86 #185404 (ABI=${ABI})"
 			fi
+		;;
+		ia64)
+			# Workaround GPREL22 overflow by slightly pessimizing global
+			# references to go via 64-bit relocations instead of 22-bit ones.
+			# This allows building glibc on ia64 without an overflow: #723268
+			append-flags -fcommon
 		;;
 		mips)
 			# The mips abi cannot support the GNU style hashes. #233233
@@ -264,76 +313,26 @@ setup_target_flags() {
 			filter-flags "-fcall-used-g7"
 			append-flags "-fcall-used-g6"
 
-			# If the CHOST is the basic one (e.g. not sparcv9-xxx already),
-			# try to pick a better one so glibc can use cpu-specific .S files.
-			# We key off the CFLAGS to get a good value.  Also need to handle
-			# version skew.
-			# We can't force users to set their CHOST to their exact machine
-			# as many of these are not recognized by config.sub/gcc and such :(.
-			# Note: If the mcpu values don't scale, we might try probing CPP defines.
-			# Note: Should we factor in -Wa,-AvXXX flags too ?  Or -mvis/etc... ?
-
 			local cpu
 			case ${CTARGET} in
 			sparc64-*)
+				cpu="sparc64"
 				case $(get-flag mcpu) in
-				niagara[234])
-					if ver_test -ge 2.8 ; then
-						cpu="sparc64v2"
-					elif ver_test -ge 2.4 ; then
-						cpu="sparc64v"
-					elif ver_test -ge 2.2.3 ; then
-						cpu="sparc64b"
-					fi
-					;;
-				niagara)
-					if ver_test -ge 2.4 ; then
-						cpu="sparc64v"
-					elif ver_test -ge 2.2.3 ; then
-						cpu="sparc64b"
-					fi
-					;;
-				ultrasparc3)
-					cpu="sparc64b"
-					;;
-				*)
+				v9)
 					# We need to force at least v9a because the base build doesn't
 					# work with just v9.
 					# https://sourceware.org/bugzilla/show_bug.cgi?id=19477
-					[[ -z ${cpu} ]] && append-flags "-Wa,-xarch=v9a"
+					append-flags "-Wa,-xarch=v9a"
 					;;
 				esac
 				;;
 			sparc-*)
 				case $(get-flag mcpu) in
-				niagara[234])
-					if ver_test -ge 2.8 ; then
-						cpu="sparcv9v2"
-					elif ver_test -ge 2.4 ; then
-						cpu="sparcv9v"
-					elif ver_test -ge 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
-					;;
-				niagara)
-					if ver_test -ge 2.4 ; then
-						cpu="sparcv9v"
-					elif ver_test -ge 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
-					;;
-				ultrasparc3)
-					cpu="sparcv9b"
-					;;
-				v9|ultrasparc)
-					cpu="sparcv9"
-					;;
 				v8|supersparc|hypersparc|leon|leon3)
 					cpu="sparcv8"
+					;;
+				*)
+					cpu="sparcv9"
 					;;
 				esac
 			;;
@@ -485,7 +484,7 @@ setup_env() {
 	# configure script checks CFLAGS for some targets (like mips).  Keep
 	# around the original clean value to avoid appending multiple ABIs on
 	# top of each other.
-	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET_OPT:-${CTARGET}})}
+	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET})}
 	export __GLIBC_CC CC="${__GLIBC_CC} ${!VAR}"
 	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 }
@@ -514,27 +513,6 @@ glibc_banner() {
 	local b="Gentoo ${PVR}"
 	[[ -n ${PATCH_VER} ]] && ! use vanilla && b+=" p${PATCH_VER}"
 	echo "${b}"
-}
-
-check_devpts() {
-	# Make sure devpts is mounted correctly for use w/out setuid pt_chown.
-
-	# If merely building the binary package, then there's nothing to verify.
-	[[ ${MERGE_TYPE} == "buildonly" ]] && return
-
-	# Only sanity check when installing the native glibc.
-	[[ -n ${ROOT} ]] && return
-
-	# If they're opting in to the old suid code, then no need to check.
-	use suid && return
-
-	if awk '$3 == "devpts" && $4 ~ /[, ]gid=5[, ]/ { exit 1 }' /proc/mounts ; then
-		eerror "In order to use glibc with USE=-suid, you must make sure that"
-		eerror "you have devpts mounted at /dev/pts with the gid=5 option."
-		eerror "Openrc should do this for you, so you should check /etc/fstab"
-		eerror "and make sure you do not have any invalid settings there."
-		die "mount & fix your /dev/pts settings"
-	fi
 }
 
 # The following Kernel version handling functions are mostly copied from portage
@@ -606,9 +584,6 @@ get_kheader_version() {
 # pkg_ and src_ phases, so we call this function both in pkg_pretend and in
 # src_unpack.
 sanity_prechecks() {
-	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
-	check_devpts
-
 	# Prevent native builds from downgrading
 	if [[ ${MERGE_TYPE} != "buildonly" ]] && \
 	   [[ -z ${ROOT} ]] && \
@@ -754,19 +729,35 @@ src_unpack() {
 
 	setup_env
 
-	if [[ -n ${EGIT_REPO_URI} ]] ; then
+	if [[ ${PV} == 9999* ]] ; then
+		EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/toolchain/glibc-patches.git"
+		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
+		git-r3_src_unpack
+		mv patches-git/9999 patches || die
+
+		EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
+		EGIT_CHECKOUT_DIR=${S}
 		git-r3_src_unpack
 	else
 		unpack ${P}.tar.xz
+
+		cd "${WORKDIR}" || die
+		unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
 	fi
 
 	cd "${WORKDIR}" || die
-	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
+	unpack locale-gen-${LOCALE_GEN_VER}.tar.gz
 }
 
 src_prepare() {
+	local patchsetname
 	if ! use vanilla ; then
-		elog "Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER}"
+		if [[ ${PV} == 9999* ]] ; then
+			patchsetname="from git master"
+		else
+			patchsetname="${RELEASE_VER}-${PATCH_VER}"
+		fi
+		elog "Applying Gentoo Glibc Patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
 	fi
@@ -777,6 +768,10 @@ src_prepare() {
 
 	cd "${WORKDIR}"
 	find . -name configure -exec touch {} +
+
+	# move the external locale-gen to its old place
+	mkdir extra || die
+	mv locale-gen-${LOCALE_GEN_VER} extra/locale || die
 
 	eprefixify extra/locale/locale-gen
 
@@ -803,7 +798,7 @@ glibc_do_configure() {
 	fi
 
 	local v
-	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO ; do
+	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO NM READELF; do
 		einfo " $(printf '%15s' ${v}:)   ${!v}"
 	done
 
@@ -832,6 +827,14 @@ glibc_do_configure() {
 	fi
 	einfo " $(printf '%15s' 'Manual CXX:')   ${CXX}"
 
+	# Always use tuple-prefixed toolchain. For non-native ABI glibc's configure
+	# can't detect them automatically due to ${CHOST} mismatch and fallbacks
+	# to unprefixed tools. Similar to multilib.eclass:multilib_toolchain_setup().
+	export NM="$(tc-getNM ${CTARGET})"
+	export READELF="$(tc-getREADELF ${CTARGET})"
+	einfo " $(printf '%15s' 'Manual NM:')   ${NM}"
+	einfo " $(printf '%15s' 'Manual READELF:')   ${READELF}"
+
 	echo
 
 	local myconf=()
@@ -851,7 +854,11 @@ glibc_do_configure() {
 			myconf+=( --enable-stack-protector=no )
 			;;
 		*)
-			myconf+=( --enable-stack-protector=$(usex ssp all no) )
+			# Use '=strong' instead of '=all' to protect only functions
+			# worth protecting from stack smashes.
+			# '=all' is also known to have a problem in IFUNC resolution
+			# tests: https://sourceware.org/PR25680, bug #712356.
+			myconf+=( --enable-stack-protector=$(usex ssp strong no) )
 			;;
 	esac
 	myconf+=( --enable-stackguard-randomization )
@@ -911,7 +918,7 @@ glibc_do_configure() {
 		--host=${CTARGET_OPT:-${CTARGET}}
 		$(use_enable profile)
 		$(use_with gd)
-		--with-headers=$(alt_build_headers)
+		--with-headers=$(build_eprefix)$(alt_build_headers)
 		--prefix="$(host_eprefix)/usr"
 		--sysconfdir="$(host_eprefix)/etc"
 		--localstatedir="$(host_eprefix)/var"
@@ -921,7 +928,9 @@ glibc_do_configure() {
 		--libexecdir='$(libdir)'/misc/glibc
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
+		$(use_enable crypt)
 		$(use_multiarch || echo --disable-multi-arch)
+		$(use_enable static-pie)
 		$(use_enable systemtap)
 		$(use_enable nscd)
 		${EXTRA_ECONF}
@@ -1065,7 +1074,7 @@ glibc_headers_configure() {
 		--enable-bind-now
 		--build=${CBUILD_OPT:-${CBUILD}}
 		--host=${CTARGET_OPT:-${CTARGET}}
-		--with-headers=$(alt_build_headers)
+		--with-headers=$(build_eprefix)$(alt_build_headers)
 		--prefix="$(host_eprefix)/usr"
 		${EXTRA_ECONF}
 	)
@@ -1116,7 +1125,18 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir nptl)"
-	emake check
+
+	local myxfailparams=""
+	if [[ "${GENTOO_GLIBC_XFAIL_TESTS}" == "yes" ]] ; then
+		for myt in ${XFAIL_TEST_LIST[@]} ; do
+			myxfailparams+="test-xfail-${myt}=yes "
+		done
+	fi
+
+	# sandbox does not understand unshare() and prevents
+	# writes to /proc/, which makes many tests fail
+
+	SANDBOX_ON=0 LD_PRELOAD= emake ${myxfailparams} check
 }
 
 do_src_test() {
@@ -1158,8 +1178,10 @@ run_locale_gen() {
 		locale_list="${root}/usr/share/i18n/SUPPORTED"
 	fi
 
-	locale-gen ${inplace} --jobs $(makeopts_jobs) --config "${locale_list}" \
+	set -- locale-gen ${inplace} --jobs $(makeopts_jobs) --config "${locale_list}" \
 		--destdir "${root}"
+	echo "$@"
+	"$@"
 
 	popd >/dev/null
 }
@@ -1181,10 +1203,12 @@ glibc_do_src_install() {
 	# '#define VERSION "2.26.90"' -> '2.26.90'
 	local upstream_pv=$(sed -n -r 's/#define VERSION "(.*)"/\1/p' "${S}"/version.h)
 
-	# gdb is lame and requires some debugging information to remain in
-	# libpthread.  libthread_db makes no sense stripped as it is only used when debugging.
+	# Avoid stripping binaries not targeted by ${CHOST}. Or else
+	# ${CHOST}-strip would break binaries build for ${CTARGET}.
+	is_crosscompile && dostrip -x /
+	# gdb thread introspection relies on local libpthreas symbols. stripping breaks it
+	# See Note [Disable automatic stripping]
 	dostrip -x $(alt_libdir)/libpthread-${upstream_pv}.so
-	dostrip -x $(alt_libdir)/libthread_db-1.0.so
 
 	if [[ -e ${ED}/$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
 		# Move versioned .a file out of libdir to evade portage QA checks
@@ -1317,11 +1341,15 @@ glibc_do_src_install() {
 
 	# Install misc network config files
 	insinto /etc
-	doins nscd/nscd.conf posix/gai.conf nss/nsswitch.conf
-	doins "${WORKDIR}"/extra/etc/*.conf
+	doins posix/gai.conf nss/nsswitch.conf
+
+	# Gentoo-specific
+	newins "${FILESDIR}"/host.conf-1 host.conf
 
 	if use nscd ; then
-		doinitd "$(prefixify_ro "${WORKDIR}"/extra/etc/nscd)"
+		doins nscd/nscd.conf
+
+		newinitd "$(prefixify_ro "${FILESDIR}"/nscd-1)" nscd
 
 		local nscd_args=(
 			-e "s:@PIDFILE@:$(strings "${ED}"/usr/sbin/nscd | grep nscd.pid):"
@@ -1331,9 +1359,6 @@ glibc_do_src_install() {
 
 		systemd_dounit nscd/nscd.service
 		systemd_newtmpfilesd nscd/nscd.tmpfiles nscd.conf
-	else
-		# Do this since extra/etc/*.conf above might have nscd.conf.
-		rm -f "${ED}"/etc/nscd.conf
 	fi
 
 	echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00glibc

@@ -1,0 +1,64 @@
+--- a/src/plugins/clangformat/clangformatbaseindenter.h
++++ b/src/plugins/clangformat/clangformatbaseindenter.h
+@@ -27,7 +27,7 @@
+ 
+ #include <texteditor/indenter.h>
+ 
+-#include <clang/Format/Format.h>
++#include <clang/Format/FormatIDE.h>
+ 
+ namespace ClangFormat {
+ 
+--- a/src/plugins/clangformat/clangformatconfigwidget.cpp
++++ b/src/plugins/clangformat/clangformatconfigwidget.cpp
+@@ -32,7 +32,7 @@
+ #include "ui_clangformatchecks.h"
+ #include "ui_clangformatconfigwidget.h"
+ 
+-#include <clang/Format/Format.h>
++#include <clang/Format/FormatIDE.h>
+ 
+ #include <coreplugin/icore.h>
+ #include <cppeditor/cpphighlighter.h>
+--- a/src/plugins/clangformat/clangformatplugin.cpp
++++ b/src/plugins/clangformat/clangformatplugin.cpp
+@@ -56,7 +56,7 @@
+ #include <texteditor/icodestylepreferences.h>
+ #include <texteditor/texteditorsettings.h>
+ 
+-#include <clang/Format/Format.h>
++#include <clang/Format/FormatIDE.h>
+ 
+ #include <utils/algorithm.h>
+ 
+--- a/src/plugins/clangformat/clangformatutils.h
++++ b/src/plugins/clangformat/clangformatutils.h
+@@ -27,7 +27,7 @@
+ 
+ #include <coreplugin/id.h>
+ #include <utils/fileutils.h>
+-#include <clang/Format/Format.h>
++#include <clang/Format/FormatIDE.h>
+ 
+ #include <QFile>
+ 
+--- a/src/shared/clang/clang_installation.pri
++++ b/src/shared/clang/clang_installation.pri
+@@ -227,7 +227,7 @@
+         CLANGFORMAT_MAIN_HEADER = $$LLVM_INCLUDEPATH/clang/Format/Format.h
+         exists($$CLANGFORMAT_MAIN_HEADER) {
+             exists($${LLVM_LIBDIR}/libclangFormat.so*)|exists($${LLVM_LIBDIR}/libclangFormat.dylib) {
+-                CLANGFORMAT_LIBS=-lclangFormat -lclangToolingInclusions -lclangToolingCore -lclangRewrite -lclangLex -lclangBasic
++                CLANGFORMAT_LIBS=-lclangFormatIDE -lclangToolingInclusions -lclangToolingCore -lclangRewrite -lclangLex -lclangBasic
+                 ALL_CLANG_LIBS=-lclangFormat -lclangToolingInclusions -lclangTooling -lclangToolingCore \
+                            -lclangRewrite -lclangIndex -lclangFrontend -lclangParse -lclangSerialization \
+                            -lclangSema -lclangEdit -lclangAnalysis -lclangDriver -lclangDynamicASTMatchers \
+@@ -235,7 +235,7 @@
+                 win32:CLANGFORMAT_LIBS += -lversion
+                 win32:ALL_CLANG_LIBS += -lversion
+             } else {
+-                CLANGFORMAT_LIBS=-lclang-cpp
++                CLANGFORMAT_LIBS=-lclangFormatIDE -lclang-cpp
+                 ALL_CLANG_LIBS=-lclang-cpp
+             }
+         }

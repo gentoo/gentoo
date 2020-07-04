@@ -6,6 +6,8 @@
 <name>Gentoo Desktop Miscellaneous Project</name>
 </maintainer>
 <use>
+<flag name='gtk2'>Install theme for GTK+-2.0</flag>
+<flag name='gtk3'>Install theme for GTK+-3.0</flag>
 <flag name='xfce'>Install theme for <pkg>xfce-base/xfwm4</pkg></flag>
 </use>
 <upstream>

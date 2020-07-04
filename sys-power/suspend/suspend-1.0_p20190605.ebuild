@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${PN}-${BASE_PV}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="crypt +lzo threads"
 
 RDEPEND="
@@ -41,7 +41,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="/usr/share/doc/${PF}" \
 		--disable-fbsplash \
 		$(use_enable crypt encrypt) \
 		$(use_enable lzo compress) \

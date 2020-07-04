@@ -29,7 +29,7 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 	postgres? ( dev-db/postgresql:=[server] )
 	pcre? ( dev-libs/libpcre:3 )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 "
 DEPEND="${RDEPEND}
 	>=sys-devel/bison-2.2
@@ -81,14 +81,14 @@ src_configure() {
 
 # phase disabled by RESTRICT
 # src_test() {
-#	emake check || die "emake check failed"
+#	emake check
 # }
 
 src_install() {
 	default
 
 	if use doc; then
-		emake -j1 DESTDIR="${D}" install-docs || die "emake install-docs failed"
+		emake -j1 DESTDIR="${D}" install-docs
 	fi
 
 	diropts -g kannel -m0750

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit font
 
@@ -31,26 +31,17 @@ SRC_URI="mirror://sourceforge/ekushey/${P_LOHIT}.ttf
 	mirror://sourceforge/ekushey/${P_SOLAIMANLIPI}.ttf
 	mirror://sourceforge/ekushey/${P_RUPALI}.ttf"
 
-LICENSE="GPL-2 OFL-1.1"
+LICENSE="GPL-2+ OFL"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND=""
-
-FONT_S="${WORKDIR}"
-S="${FONT_S}"
 FONT_SUFFIX="ttf"
 
 src_unpack() {
-	cd "${S}"
-	for DISTFILE in ${A}
-	do
-		[[ "${DISTFILE}" =~ ([A-Za-z]+) ]]
-		local FONTNAME="${BASH_REMATCH[1]}"
-		cp -a "${DISTDIR}/${DISTFILE}" "${S}/${FONTNAME}.ttf"
+	local f
+	mkdir "${S}" || die
+	for f in ${A}; do
+		cp "${DISTDIR}/${f}" "${S}/${f%%[_-]*}.ttf"
 	done
 }
-
-DOCS=""

@@ -1,25 +1,25 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
-inherit autotools eutils libtool multilib-minimal
+inherit autotools eutils flag-o-matic libtool multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
 SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="7"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+SLOT="0"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug debug-frame doc libatomic lzma +static-libs"
 
 RESTRICT="test" # half of tests are broken (toolchain version dependent)
 
 # We just use the header from libatomic.
-RDEPEND="lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )"
+RDEPEND="lzma? ( app-arch/xz-utils[static-libs?,${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	libatomic? ( dev-libs/libatomic_ops[${MULTILIB_USEDEP}] )"
 
@@ -62,6 +62,10 @@ src_prepare() {
 
 	elibtoolize
 	eautoreconf
+
+	# Let's wait for proer fix upstream in https://github.com/libunwind/libunwind/issues/154
+	# Meanwhile workaround for gcc-10 with -fcommon, bug #706560
+	append-cflags -fcommon
 }
 
 multilib_src_configure() {

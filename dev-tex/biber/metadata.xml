@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hendrik@consetetur.de</email>
-		<name>Hendrik v. Raven (lorem_ipsum)</name>
+		<name>Jonas Licht</name>
+		<email>jonas.licht@gmail.com</email>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

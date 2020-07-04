@@ -12,6 +12,6 @@
 		<flag name="network">Enable network support</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">jaagr/polybar</remote-id>
+		<remote-id type="github">polybar/polybar</remote-id>
 	</upstream>
 </pkgmetadata>

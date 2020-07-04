@@ -1,0 +1,21 @@
+[Unit]
+Description=Greenbone Vulnerability Manager
+After=network.target
+After=openvassd.service
+Wants=openvassd.service
+Before=gsad.service
+
+[Service]
+Type=forking
+PrivateTmp=yes
+User=gvm
+Group=gvm
+PermissionsStartOnly=true
+EnvironmentFile=-/etc/gvm/sysconfig/gvmd-daemon.conf
+ExecStartPre=-/etc/gvm/gvmd-startpre.sh
+ExecStart=/usr/bin/gvmd $GVMD_OPTIONS $GVMD_LISTEN_ADDRESS_TCP $GVMD_PORT $GVMD_SCANNER_HOST $GVMD_GNUTLS_PRIORITIES
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

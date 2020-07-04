@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="ar bn ca cs da de es et fi fr hi_IN hu is it ja kk ko lt lv nb nl nn pl pt_BR pt_PT ro ru sk sr sr@ijekavian sr@ijekavianlatin sr@latin sv tr uk zh_CN zh_TW"
-inherit cmake-utils l10n systemd user
+inherit cmake l10n systemd user
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
@@ -14,6 +14,7 @@ LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="consolekit elogind +pam systemd test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( elogind systemd )"
 
@@ -33,7 +34,7 @@ RDEPEND="
 	x11-libs/libxcb[xkb]
 	consolekit? ( >=sys-auth/consolekit-0.9.4 )
 	elogind? ( sys-auth/elogind )
-	pam? ( sys-libs/pam )
+	pam? ( <=sys-libs/pam-1.3.1_p20200128-r1 )
 	systemd? ( sys-apps/systemd:= )
 	!systemd? ( sys-power/upower )
 "
@@ -55,7 +56,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	disable_locale() {
 		sed -e "/${1}\.ts/d" -i data/translations/CMakeLists.txt || die
@@ -77,11 +78,11 @@ src_configure() {
 		-DBUILD_MAN_PAGES=ON
 		-DDBUS_CONFIG_FILENAME="org.freedesktop.sddm.conf"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# Create a default.conf as upstream dropped /etc/sddm.conf w/o replacement
 	local confd="/usr/share/sddm/sddm.conf.d"

@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.gz"
 
 LICENSE="|| ( GPL-1+ Artistic )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}"
 SITEFILE="50${PN}-gentoo.el"

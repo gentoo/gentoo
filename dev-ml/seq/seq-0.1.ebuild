@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,15 +9,20 @@ SRC_URI="https://github.com/c-cube/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-ml/findlib
-	dev-ml/ocamlbuild"
+	dev-ml/ocamlbuild
+	dev-lang/ocaml[ocamlopt]"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
+QA_FLAGS_IGNORED=(
+	"usr/lib.*/ocaml/seq/seq.cmxs"
+)
 
 src_prepare() {
 	default

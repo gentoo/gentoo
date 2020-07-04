@@ -1,497 +1,85 @@
-diff -ruN Coin3D-simage-3bd369da8f08/CMakeLists.txt my/CMakeLists.txt
---- Coin3D-simage-3bd369da8f08/CMakeLists.txt	2018-03-12 19:57:28.000000000 +0100
-+++ my/CMakeLists.txt	2018-05-06 08:53:45.202467390 +0200
-@@ -74,6 +74,36 @@
- 	set(SIMAGE_GDIPLUS_SUPPORT OFF)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5536922..8225dc4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -218,14 +218,14 @@ if(NOT SIMAGE_QUICKTIME_SUPPORT AND NOT SIMAGE_CGIMAGE_SUPPORT AND NOT SIMAGE_GD
+   find_package(TIFF)
+ 
+   set(HAVE_ZLIB ${ZLIB_FOUND})
+-  set(HAVE_GIFLIB ${GIF_FOUND})
+-  set(HAVE_JPEGLIB ${JPEG_FOUND})
+-  set(HAVE_PNGLIB ${PNG_FOUND})
+-  set(HAVE_TIFFLIB ${TIFF_FOUND})
++  set(HAVE_GIFLIB ${SIMAGE_GIF_SUPPORT})
++  set(HAVE_JPEGLIB ${SIMAGE_JPEG_SUPPORT})
++  set(HAVE_PNGLIB ${SIMAGE_PNG_SUPPORT})
++  set(HAVE_TIFFLIB ${SIMAGE_TIFF_SUPPORT})
  endif()
  
-+if(GIF_FOUND)
-+	option(SIMAGE_GIF_SUPPORT "Enable support for GIF images" ON)
-+else()
-+	set(SIMAGE_GIF_SUPPORT OFF)
-+endif()
-+
-+if(JASPER_FOUND)
-+	option(SIMAGE_JASPER_SUPPORT "Enable support for JPEG2K images" ON)
-+else()
-+	set(SIMAGE_JASPER_SUPPORT OFF)
-+endif()
-+
-+if(JPEG_FOUND)
-+	option(SIMAGE_JPEG_SUPPORT "Enable support for JPEG images" ON)
-+else()
-+	set(SIMAGE_JPEG_SUPPORT OFF)
-+endif()
-+
-+if(PNG_FOUND)
-+	option(SIMAGE_PNG_SUPPORT "Enable support for PNG images" ON)
-+else()
-+	set(SIMAGE_PNG_SUPPORT OFF)
-+endif()
-+
-+if(TIFF_FOUND)
-+	option(SIMAGE_TIFF_SUPPORT "Enable support for TIFF images" ON)
-+else()
-+	set(SIMAGE_TIFF_SUPPORT OFF)
-+endif()
-+
- if(SNDFILE_FOUND)
- 	option(SIMAGE_LIBSNDFILE_SUPPORT "" ON)
- else()
-@@ -141,23 +171,23 @@
- 		return 0;
- 	}
- " HAVE_GDIPLUS_LOCKBITS_RECTARG_POINTER)
--set(HAVE_GIFLIB ${GIF_FOUND})
-+set(HAVE_GIFLIB ${SIMAGE_GIF_SUPPORT})
+-set(HAVE_JASPER ${JASPER_FOUND})
+-set(HAVE_VFW ${VFW_FOUND})
++set(HAVE_JASPER ${SIMAGE_JASPER_SUPPORT})
++set(HAVE_VFW ${SIMAGE_AVIENC_SUPPORT})
+ 
  check_include_files(guile/gh.h HAVE_GUILE_GH_H)
  check_include_files(inttypes.h HAVE_INTTYPES_H)
--set(HAVE_JASPER ${JASPER_FOUND})
--set(HAVE_JPEGLIB ${JPG_FOUND})
-+set(HAVE_JASPER ${SIMAGE_JASPER_SUPPORT})
-+set(HAVE_JPEGLIB ${SIMAGE_JPEG_SUPPORT})
- check_include_files(libguile.h HAVE_LIBGUILE_H)
- check_include_files(memory.h HAVE_MEMORY_H)
--set(HAVE_PNGLIB ${PNG_FOUND})
-+set(HAVE_PNGLIB ${SIMAGE_PNG_SUPPORT})
- check_include_files(stdint.h HAVE_STDINT_H)
- check_include_files(stdlib.h HAVE_STDLIB_H)
- check_include_files(strings.h HAVE_STRINGS_H)
- check_include_files(string.h HAVE_STRING_H)
- check_include_files(sys/stat.h HAVE_SYS_STAT_H)
- check_include_files(sys/types.h HAVE_SYS_TYPES_H)
--set(HAVE_TIFFLIB ${TIFF_FOUND})
-+set(HAVE_TIFFLIB ${SIMAGE_TIFF_SUPPORT})
- check_include_files(unistd.h HAVE_UNISTD_H)
--set(HAVE_VFW ${VFW_FOUND})
-+set(HAVE_VFW ${SIMAGE_AVIENC_SUPPORT})
- check_include_files(windows.h HAVE_WINDOWS_H)
- set(PACKAGE "simage")
- set(PACKAGE_BUGREPORT "coin-support@coin3d.org")
-@@ -321,27 +351,27 @@
- 	target_link_libraries(simage ${GDIPLUS_LIBRARIES})
+@@ -430,27 +430,27 @@ if(SIMAGE_GDIPLUS_SUPPORT)
+   target_link_libraries(simage PRIVATE ${GDIPLUS_LIBRARIES})
  endif()
  
 -if(GIF_FOUND)
 +if(SIMAGE_GIF_SUPPORT)
- 	target_include_directories(simage PUBLIC ${GIF_INCLUDE_DIR})
- 	target_link_libraries(simage ${GIF_LIBRARIES})
+   target_include_directories(simage PRIVATE ${GIF_INCLUDE_DIR})
+   target_link_libraries(simage PRIVATE ${GIF_LIBRARIES})
  endif()
  
 -if(JASPER_FOUND)
 +if(SIMAGE_JASPER_SUPPORT)
- 	target_include_directories(simage PUBLIC ${JASPER_INCLUDE_DIR})
- 	target_link_libraries(simage ${JASPER_LIBRARIES})
+   target_include_directories(simage PRIVATE ${JASPER_INCLUDE_DIR})
+   target_link_libraries(simage PRIVATE ${JASPER_LIBRARIES})
  endif()
  
 -if(JPEG_FOUND)
 +if(SIMAGE_JPEG_SUPPORT)
- 	target_include_directories(simage PUBLIC ${JPEG_INCLUDE_DIR})
- 	target_link_libraries(simage ${JPEG_LIBRARIES})
+   target_include_directories(simage PRIVATE ${JPEG_INCLUDE_DIR})
+   target_link_libraries(simage PRIVATE ${JPEG_LIBRARIES})
  endif()
  
 -if(OGGVORBIS_FOUND)
 +if(SIMAGE_OGGVORBIS_SUPPORT)
- 	target_include_directories(simage PUBLIC ${OGGVORBIS_INCLUDE_DIRS})
- 	target_link_libraries(simage ${OGGVORBIS_LIBRARIES})
+   target_include_directories(simage PRIVATE ${OGGVORBIS_INCLUDE_DIRS})
+   target_link_libraries(simage PRIVATE ${OGGVORBIS_LIBRARIES})
  endif()
  
 -if(PNG_FOUND)
 +if(SIMAGE_PNG_SUPPORT)
- 	target_include_directories(simage PUBLIC ${PNG_INCLUDE_DIR})
- 	target_link_libraries(simage ${PNG_LIBRARIES})
+   target_include_directories(simage PRIVATE ${PNG_INCLUDE_DIR})
+   target_link_libraries(simage PRIVATE ${PNG_LIBRARIES})
  endif()
-@@ -350,22 +380,22 @@
- 	target_link_libraries(simage ${QT_LIBRARIES})
+@@ -459,22 +459,22 @@ if(SIMAGE_QIMAGE_SUPPORT)
+   target_link_libraries(simage PRIVATE ${QT_LIBRARIES})
  endif()
  
 -if(QUICKTIME_FOUND)
 +if(SIMAGE_QUICKTIME_SUPPORT)
- 	target_include_directories(simage PUBLIC ${QUICKTIME_INCLUDE_DIR})
- 	target_link_libraries(simage ${QUICKTIME_LIBRARIES})
+   target_include_directories(simage PRIVATE ${QUICKTIME_INCLUDE_DIR})
+   target_link_libraries(simage PRIVATE ${QUICKTIME_LIBRARIES})
  endif()
  
 -if(SNDFILE_FOUND)
-+if(SIMAGE_LIBSNDFILE_SUPPORT)
- 	target_include_directories(simage PUBLIC ${SNDFILE_INCLUDE_DIRS})
- 	target_link_libraries(simage ${SNDFILE_LIBRARIES})
++if(SIMAGE_SNDFILE_SUPPORT)
+   target_include_directories(simage PRIVATE ${SNDFILE_INCLUDE_DIRS})
+   target_link_libraries(simage PRIVATE ${SNDFILE_LIBRARIES})
  endif()
  
 -if(TIFF_FOUND)
 +if(SIMAGE_TIFF_SUPPORT)
- 	target_include_directories(simage PUBLIC ${TIFF_INCLUDE_DIR})
- 	target_link_libraries(simage ${TIFF_LIBRARY})
+   target_include_directories(simage PRIVATE ${TIFF_INCLUDE_DIR})
+   target_link_libraries(simage PRIVATE ${TIFF_LIBRARY})
  endif()
  
 -if(VFW_FOUND)
-+if(SIMAGE_AVIENC_SUPPORT)
- 	target_link_libraries(simage ${VFW_LIBRARIES})
++if(SIMAGE_VFW_SUPPORT)
+   target_link_libraries(simage PRIVATE ${VFW_LIBRARIES})
  endif()
  
-diff -ruN Coin3D-simage-3bd369da8f08/config.h.cmake.in my/config.h.cmake.in
---- Coin3D-simage-3bd369da8f08/config.h.cmake.in	2018-03-12 19:57:28.000000000 +0100
-+++ my/config.h.cmake.in	2018-05-06 09:29:09.795849171 +0200
-@@ -9,30 +9,18 @@
- /* Define if first argument of Gdiplus::Bitmap::LockBits() is a pointer */
- #cmakedefine HAVE_GDIPLUS_LOCKBITS_RECTARG_POINTER 1
- 
--/* define to support the giflib library */
--#cmakedefine HAVE_GIFLIB 1
--
- /* Define to 1 if you have the <guile/gh.h> header file. */
- #cmakedefine HAVE_GUILE_GH_H 1
- 
- /* Define to 1 if you have the <inttypes.h> header file. */
- #cmakedefine HAVE_INTTYPES_H 1
- 
--/* define to support the jasper library */
--#cmakedefine HAVE_JASPER 1
--
--/* define to support the jpeg library */
--#cmakedefine HAVE_JPEGLIB 1
--
- /* Define to 1 if you have the <libguile.h> header file. */
- #cmakedefine HAVE_LIBGUILE_H 1
- 
- /* Define to 1 if you have the <memory.h> header file. */
- #cmakedefine HAVE_MEMORY_H 1
- 
--/* define for libpng support */
--#cmakedefine HAVE_PNGLIB 1
--
- /* Define to 1 if you have the <stdint.h> header file. */
- #cmakedefine HAVE_STDINT_H 1
- 
-@@ -51,15 +39,9 @@
- /* Define to 1 if you have the <sys/types.h> header file. */
- #cmakedefine HAVE_SYS_TYPES_H 1
- 
--/* define to support the tiff library */
--#cmakedefine HAVE_TIFFLIB 1
--
- /* Define to 1 if you have the <unistd.h> header file. */
- #cmakedefine HAVE_UNISTD_H 1
- 
--/* Define to use the Video for Windows library */
--#cmakedefine HAVE_VFW 1
--
- /* Define to 1 if you have the <windows.h> header file. */
- #cmakedefine HAVE_WINDOWS_H 1
- 
-@@ -108,6 +90,21 @@
- /* define this to the simage minor version number */
- #define SIMAGE_MINOR_VERSION @SIMAGE_MINOR_VERSION@
- 
-+/* define to support the giflib library */
-+#cmakedefine SIMAGE_GIF_SUPPORT 1
-+
-+/* define to support the jasper library */
-+#cmakedefine SIMAGE_JASPER_SUPPORT 1
-+
-+/* define to support the jpeg library */
-+#cmakedefine SIMAGE_JPEG_SUPPORT 1
-+
-+/* define for libpng support */
-+#cmakedefine SIMAGE_PNG_SUPPORT 1
-+
-+/* define to support the tiff library */
-+#cmakedefine SIMAGE_TIFF_SUPPORT 1
-+
- /* define to enable mpeg2enc support */
- #cmakedefine SIMAGE_MPEG2ENC_SUPPORT 1
- 
-diff -ruN Coin3D-simage-3bd369da8f08/include/simage_gif.h my/include/simage_gif.h
---- Coin3D-simage-3bd369da8f08/include/simage_gif.h	2018-03-12 19:57:28.000000000 +0100
-+++ my/include/simage_gif.h	2018-05-06 09:42:19.739539807 +0200
-@@ -21,9 +21,9 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifndef HAVE_GIFLIB
-+#ifndef SIMAGE_GIF_SUPPORT
- #error "This file should not be used under the current configuration!"
--#endif /* !HAVE_GIFLIB */
-+#endif /* !SIMAGE_GIF_SUPPORT */
- 
- #ifdef __cplusplus
- extern "C" {
-diff -ruN Coin3D-simage-3bd369da8f08/include/simage_jasper.h my/include/simage_jasper.h
---- Coin3D-simage-3bd369da8f08/include/simage_jasper.h	2018-03-12 19:57:28.000000000 +0100
-+++ my/include/simage_jasper.h	2018-05-06 09:42:31.084498335 +0200
-@@ -21,9 +21,9 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifndef HAVE_JASPER
-+#ifndef SIMAGE_JASPER_SUPPORT
- #error "This file should not be used under the current configuration!"
--#endif /* !HAVE_JASPERLIB */
-+#endif /* !SIMAGE_JASPER_SUPPORT */
- 
- #ifdef __cplusplus
- extern "C" {
-diff -ruN Coin3D-simage-3bd369da8f08/include/simage_jpeg.h my/include/simage_jpeg.h
---- Coin3D-simage-3bd369da8f08/include/simage_jpeg.h	2018-03-12 19:57:28.000000000 +0100
-+++ my/include/simage_jpeg.h	2018-05-06 09:42:50.762422085 +0200
-@@ -21,9 +21,9 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifndef HAVE_JPEGLIB
-+#ifndef SIMAGE_JPEG_SUPPORT
- #error "This file should not be used under the current configuration!"
--#endif /* !HAVE_JPEGLIB */
-+#endif /* !SIMAGE_JPEG_SUPPORT */
- 
- #ifdef __cplusplus
- extern "C" {
-diff -ruN Coin3D-simage-3bd369da8f08/include/simage_png.h my/include/simage_png.h
---- Coin3D-simage-3bd369da8f08/include/simage_png.h	2018-03-12 19:57:28.000000000 +0100
-+++ my/include/simage_png.h	2018-05-06 09:43:08.250349842 +0200
-@@ -21,9 +21,9 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifndef HAVE_PNGLIB
-+#ifndef SIMAGE_PNG_SUPPORT
- #error "This file should not be used under the current configuration!"
--#endif /* !HAVE_PNGLIB */
-+#endif /* !SIMAGE_PNG_SUPPORT */
- 
- #ifdef __cplusplus
- extern "C" {
-diff -ruN Coin3D-simage-3bd369da8f08/include/simage_tiff.h my/include/simage_tiff.h
---- Coin3D-simage-3bd369da8f08/include/simage_tiff.h	2018-03-12 19:57:28.000000000 +0100
-+++ my/include/simage_tiff.h	2018-05-06 09:43:32.091244844 +0200
-@@ -21,9 +21,9 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifndef HAVE_TIFFLIB
-+#ifndef SIMAGE_TIFF_SUPPORT
- #error "This file should not be used under the current configuration!"
--#endif /* !HAVE_TIFFLIB */
-+#endif /* !SIMAGE_TIFF_SUPPORT */
- 
- #ifdef __cplusplus
- extern "C" {
-diff -ruN Coin3D-simage-3bd369da8f08/src/simage_gif.c my/src/simage_gif.c
---- Coin3D-simage-3bd369da8f08/src/simage_gif.c	2018-03-12 19:57:28.000000000 +0100
-+++ my/src/simage_gif.c	2018-05-06 09:40:56.444783960 +0200
-@@ -23,7 +23,7 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifdef HAVE_GIFLIB
-+#ifdef SIMAGE_GIF_SUPPORT
- 
- #include <simage_gif.h>
- #include <stdlib.h>
-@@ -409,4 +409,4 @@
-   return 1;
- }
- 
--#endif /* HAVE_GIFLIB */
-+#endif /* SIMAGE_GIF_SUPPORT */
-diff -ruN Coin3D-simage-3bd369da8f08/src/simage_jasper.c my/src/simage_jasper.c
---- Coin3D-simage-3bd369da8f08/src/simage_jasper.c	2018-03-12 19:57:28.000000000 +0100
-+++ my/src/simage_jasper.c	2018-05-06 09:30:40.082652034 +0200
-@@ -23,7 +23,7 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifdef HAVE_JASPER
-+#ifdef SIMAGE_JASPER_SUPPORT
- 
- #include <simage_jasper.h>
- 
-@@ -331,4 +331,4 @@
-   return 0;
- }
- 
--#endif /* HAVE_JASPER */
-+#endif /* SIMAGE_JASPER_SUPPORT */
-diff -ruN Coin3D-simage-3bd369da8f08/src/simage_jpeg.c my/src/simage_jpeg.c
---- Coin3D-simage-3bd369da8f08/src/simage_jpeg.c	2018-03-12 19:57:28.000000000 +0100
-+++ my/src/simage_jpeg.c	2018-05-06 09:31:06.325304369 +0200
-@@ -23,7 +23,7 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifdef HAVE_JPEGLIB
-+#ifdef SIMAGE_JPEG_SUPPORT
- 
- #include <stdio.h>
- #include <setjmp.h>
-@@ -74,7 +74,7 @@
-       strncpy(buffer, "JPEG saver: Error opening file", buflen);
-       break;
-     case ERR_JPEGLIB_WRITE:
--      strncpy(buffer, "JPEG saver: Internal libjpeg error", buflen);    
-+      strncpy(buffer, "JPEG saver: Internal libjpeg error", buflen);
-       break;
-   }
-   return jpegerror;
-@@ -89,7 +89,7 @@
- 
- typedef struct my_error_mgr * my_error_ptr;
- 
--static void 
-+static void
- my_error_exit (j_common_ptr cinfo)
- {
-   /* cinfo->err really points to a my_error_mgr struct, so coerce pointer */
-@@ -105,7 +105,7 @@
-   longjmp(myerr->setjmp_buffer, 1);
- }
- 
--int 
-+int
- simage_jpeg_identify(const char * ptr,
-                      const unsigned char *header,
-                      int headerlen)
-@@ -113,9 +113,9 @@
-   static unsigned char jpgcmp[] = {'J', 'F', 'I', 'F' };
-   static unsigned char jpgcmp2[] = {'E', 'x', 'i', 'f' };
-   if (headerlen < 10) return 0;
--  if (memcmp((const void*)&header[6], 
-+  if (memcmp((const void*)&header[6],
-              (const void*)jpgcmp, 4) == 0) return 1;
--  if (memcmp((const void*)&header[6], 
-+  if (memcmp((const void*)&header[6],
-              (const void*)jpgcmp2, 4) == 0) return 1;
-   return 0;
- }
-@@ -215,7 +215,7 @@
-     format = 3;
-     cinfo.out_color_space = JCS_RGB;
-   }
--  
-+
-   (void) jpeg_start_decompress(&cinfo);
-   /* We can ignore the return value since suspension is not possible
-    * with the stdio data source.
-@@ -234,20 +234,20 @@
-     ((j_common_ptr) &cinfo, JPOOL_IMAGE, row_stride, 1);
-   width = cinfo.output_width;
-   height = cinfo.output_height;
--  buffer = currPtr = (unsigned char*) 
-+  buffer = currPtr = (unsigned char*)
-     malloc(width*height*cinfo.output_components);
--  
-+
-   /* Step 6: while (scan lines remain to be read) */
-   /*           jpeg_read_scanlines(...); */
- 
-   /* Here we use the library's state variable cinfo.output_scanline as the
-    * loop counter, so that we don't have to keep track ourselves.
-    */
--  
-+
-   /* flip image upside down */
-   if (buffer) {
--    currPtr = buffer + row_stride * (cinfo.output_height-1);  
--    
-+    currPtr = buffer + row_stride * (cinfo.output_height-1);
-+
-     while (cinfo.output_scanline < cinfo.output_height) {
-       /* jpeg_read_scanlines expects an array of pointers to scanlines.
-        * Here the array is only one element long, but you could ask for
-@@ -293,7 +293,7 @@
-   return buffer;
- }
- 
--int 
-+int
- simage_jpeg_save(const char * filename,
-                  const unsigned char * bytes,
-                  int width,
-@@ -321,7 +321,7 @@
-   int quality;
-   unsigned char * tmpbytes;
-   int bytesperrow;
--  
-+
-   quality = 90;
-   tmpbytes = NULL;
- 
-@@ -375,7 +375,7 @@
-   /*
-    * alpha channel is not supported for jpeg. strip it.
-    */
--  
-+
-   if (numcomponents == 4) {
-     unsigned char * dst;
-     const unsigned char * src;
-@@ -383,8 +383,8 @@
-     dst = tmpbytes = (unsigned char *) malloc(n*3);
-     src = bytes;
-     for (i = 0; i < n; i++) {
--      *dst++ = *src++; 
--      *dst++ = *src++; 
-+      *dst++ = *src++;
-+      *dst++ = *src++;
-       *dst++ = *src++;
-       src++;
-     }
-@@ -397,7 +397,7 @@
-     dst = tmpbytes = (unsigned char *) malloc(n*3);
-     src = bytes;
-     for (i = 0; i < n; i++) {
--      *dst++ = *src++; 
-+      *dst++ = *src++;
-       src++;
-     }
-     numcomponents = 1;
-@@ -408,7 +408,7 @@
-   /* First we supply a description of the input image.
-    * Four fields of the cinfo struct must be filled in:
-    */
--   
-+
-   cinfo.image_width = width;         /* image width and height, in pixels */
-   cinfo.image_height = height;
-   cinfo.input_components = numcomponents;  /* # of color components per pixel */
-@@ -468,4 +468,4 @@
-   return 1;
- }
- 
--#endif /* HAVE_JPEGLIB */
-+#endif /* SIMAGE_JPEG_SUPPORT */
-diff -ruN Coin3D-simage-3bd369da8f08/src/simage_png.c my/src/simage_png.c
---- Coin3D-simage-3bd369da8f08/src/simage_png.c	2018-03-12 19:57:28.000000000 +0100
-+++ my/src/simage_png.c	2018-05-06 09:32:01.648571705 +0200
-@@ -22,7 +22,7 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifdef HAVE_PNGLIB
-+#ifdef SIMAGE_PNG_SUPPORT
- 
- #include <simage_png.h>
- #include <stdio.h>
-@@ -479,4 +479,4 @@
-   return 1;
- }
- 
--#endif /* HAVE_PNGLIB */
-+#endif /* SIMAGE_PNG_SUPPORT */
-diff -ruN Coin3D-simage-3bd369da8f08/src/simage_tiff.c my/src/simage_tiff.c
---- Coin3D-simage-3bd369da8f08/src/simage_tiff.c	2018-03-12 19:57:28.000000000 +0100
-+++ my/src/simage_tiff.c	2018-05-06 09:32:43.539017111 +0200
-@@ -23,7 +23,7 @@
- #include <config.h>
- #endif /* HAVE_CONFIG_H */
- 
--#ifdef HAVE_TIFFLIB
-+#ifdef SIMAGE_TIFF_SUPPORT
- 
- #include <simage_tiff.h>
- #include <stdio.h>
-@@ -683,4 +683,4 @@
- #undef CVT
- #undef pack
- 
--#endif /* HAVE_TIFFLIB */
-+#endif /* SIMAGE_TIFF_SUPPORT */

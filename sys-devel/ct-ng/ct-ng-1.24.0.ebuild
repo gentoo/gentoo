@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -21,7 +21,7 @@ RDEPEND="net-misc/curl
 S="${WORKDIR}/crosstool-ng-${PV}"
 
 src_install() {
-	emake DESTDIR="${D%/}" install
+	emake DESTDIR="${D}" install
 	use doc && mv "${D}"/usr/share/doc/crosstool-ng/crosstool-ng-${PVR} \
 		"${D}"/usr/share/doc/
 	rm -rf "${D}"/usr/share/doc/crosstool-ng

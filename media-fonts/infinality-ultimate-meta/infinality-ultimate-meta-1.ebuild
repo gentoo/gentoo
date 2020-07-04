@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Meta package for infinality-ultimate with fonts"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
 SLOT="0"
@@ -28,7 +28,6 @@ RDEPEND="media-libs/fontconfig-ultimate
 			media-fonts/courier-prime
 			media-fonts/dejavu
 			media-fonts/signika
-			media-fonts/symbola
 			media-fonts/tex-gyre
 			!minimal? (
 				media-fonts/cantarell

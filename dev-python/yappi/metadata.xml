@@ -11,6 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">yappi</remote-id>
-    <remote-id type="bitbucket">sumerc/yappi</remote-id>
+    <remote-id type="github">sumerc/yappi</remote-id>
   </upstream>
 </pkgmetadata>

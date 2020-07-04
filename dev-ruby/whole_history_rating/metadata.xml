@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Ruby project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">goshrine/whole_history_rating</remote-id>
+  </upstream>
+  <longdescription lang="en">This gem provides a library and executables that take as input as set of games and output a set of skill rankings for the players of those games. The algorithm is a version of Remi Coulom's Whole-History Rating modified to support handicaps, and implemented in Ruby.
+  </longdescription>
+</pkgmetadata>

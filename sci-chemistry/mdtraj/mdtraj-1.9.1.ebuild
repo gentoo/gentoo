@@ -1,10 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Read, write and analyze MD trajectories with only a few lines of Python code"
@@ -15,6 +14,7 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

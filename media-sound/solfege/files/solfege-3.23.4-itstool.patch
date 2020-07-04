@@ -1,0 +1,161 @@
+diff --git a/Makefile.in b/Makefile.in
+index 5de799b..9851380 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -39,10 +39,9 @@ export MAKEINFO:=@MAKEINFO@
+ export MSGFMT:=@MSGFMT@
+ export MSGGREP:=@MSGGREP@
+ export MSGMERGE:=@MSGMERGE@
+-export XML2PO:=@XML2PO@
++export ITSTOOL:=@ITSTOOL@
+ export XSLTPROC:=@XSLTPROC@
+ export STYLESHEET:=@STYLESHEET@
+-export HAVE_STYLESHEET:=@HAVE_STYLESHEET@
+ export PYTHON:=@PYTHON@
+ export PYTHON_VERSION:=@PYTHON_VERSION@
+ export PYTHON_PREFIX:=@PYTHON_PREFIX@
+@@ -288,7 +287,7 @@ help:
+ 	@echo "set skipmanual=yes       Don't rebuild the music theory images"
+ 	@echo "make po-update           Update po/solfege.pot and msgmerge with po/*.po"
+ 	@echo "make manual-po-update    Update help/*/solfege.pot and msgmerge with help/*/*.po"
+-	@echo "make update-manual       Rebuild the manual, requiring xml2po etc."
++	@echo "make update-manual       Rebuild the manual, requiring itstool etc."
+ 	@echo "make test-screenshots    See which screenshots are missing in the user manual"
+ 	@echo "make help                Display this message."
+ 	@echo "help/C/one-big-page.html Make documentation in on big html file."
+diff --git a/configure.ac b/configure.ac
+index 323eb27..7751792 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -92,23 +92,12 @@ MY_PATH_PROG(CAT, cat)
+ 
+ # FIXME we had to comment out this to run on win32
+ # PKG_CHECK_MODULES(XML2PO, xml2po >= 0.4)
+-AC_PATH_PROG(XML2PO, xml2po)
+-AC_SUBST(XML2PO)
++AC_PATH_PROG(ITSTOOL, itstool)
++AC_SUBST(ITSTOOL)
+ 
+ AC_PATH_PROG(XSLTPROC, xsltproc)
+ AC_SUBST(XSLTPROC)
+ 
+-AC_ARG_ENABLE(docbook-stylesheet,
+-   AC_HELP_STRING([--enable-docbook-stylesheet=PATH],
+-   [PATH is filename including full path to the html/chunk.xsl
+-    stylesheet.]),
+-  [STYLESHEET=$enableval],
+-  [STYLESHEET=/usr/share/sgml/docbook/stylesheet/xsl/nwalsh/html/chunk.xsl])
+-
+-AC_CHECK_FILE($STYLESHEET, HAVE_STYLESHEET=yes, HAVE_STYLESHEET=no)
+-AC_SUBST(STYLESHEET)
+-AC_SUBST(HAVE_STYLESHEET)
+-
+ AC_CHECK_HEADER(sys/soundcard.h, HAVE_SOUNDCARD_H=yes, HAVE_SOUNDCARD_H=no)
+ AC_SUBST(HAVE_SOUNDCARD_H)
+ 
+@@ -178,9 +167,9 @@ AC_OUTPUT
+ 
+ AC_MSG_NOTICE
+ AC_MSG_NOTICE([Please remember to rerun configure if you change swig versions!])
+-if test -z "$XML2PO"; then
++if test -z "$ITSTOOL"; then
+ AC_MSG_NOTICE
+-AC_MSG_NOTICE([xml2po was not found. This is no big deal, but it mean that the])
++AC_MSG_NOTICE([itstool was not found. This is no big deal, but it mean that the])
+ AC_MSG_NOTICE([translated user manuals will not be updated if you make changes])
+ AC_MSG_NOTICE([to the english manual.])
+ fi
+diff --git a/help/C/Makefile b/help/C/Makefile
+index c14c3c8..f169682 100644
+--- a/help/C/Makefile
++++ b/help/C/Makefile
+@@ -38,13 +38,13 @@ dist_files += help/C/solfege.pot \
+ 	$(wildcard help/C/scales/images/modes/scales/*.png) \
+ 
+ help/C/solfege.pot: $(USER_MANUAL_SOURCES)
+-ifndef XML2PO
++ifndef ITSTOOL
+ 	@echo
+-	@echo "You need to install xml2po to update help/C/solfege.pot"
++	@echo "You need to install itstool to update help/C/solfege.pot"
+ 	@echo
+ 	@exit 64
+ else
+-	$(XML2PO) --keep-entities $(USER_MANUAL_SOURCES) | $(MSGGREP) -v -K -e "@@image:" -e "^Tom" -e "^Amundsen" -e "^tca@gnu.org" -e "^bug-solfege@gnu.org" -e "^solfege-devel@lists.sourceforge.net" -e "^solfege-announce@lists.sourceforge.net"  -o help/C/solfege.pot
++	$(ITSTOOL) $(USER_MANUAL_SOURCES) | $(MSGGREP) -v -K -e "@@image:" -e "^Tom" -e "^Amundsen" -e "^tca@gnu.org" -e "^bug-solfege@gnu.org" -e "^solfege-devel@lists.sourceforge.net" -e "^solfege-announce@lists.sourceforge.net"  -o help/C/solfege.pot
+ endif
+ 
+ help/C/index.html: $(USER_MANUAL_SOURCES) $(NOT_TRANSLATED_SOURCES)
+diff --git a/help/Makefile b/help/Makefile
+index f333161..a712266 100644
+--- a/help/Makefile
++++ b/help/Makefile
+@@ -13,6 +13,7 @@ XSLTPARAMS:= \
+ --param callout.graphics 0 \
+ --param xref.with.number.and.title 0 \
+ --xinclude \
++--nonet \
+ --stringparam html.stylesheet "../style.css"
+ 
+ dist_files += help/Makefile help/README \
+@@ -65,12 +66,11 @@ help/ru/solfege.xml: help/C/solfege.pot help/ru/ru.po $(USER_MANUAL_SOURCES)
+ help/tr/solfege.xml: help/C/solfege.pot help/tr/tr.po $(USER_MANUAL_SOURCES)
+ 
+ help/%/solfege.xml:
+-ifdef XML2PO
++ifdef ITSTOOL
+ ifneq "$(skipmanual)" "yes"
+-	for filename in $(notdir $(USER_MANUAL_SOURCES)); do \
+-	$(XML2PO) --keep-entities -p $(patsubst help/%/solfege.xml, help/%, $@)/$(patsubst help/%/solfege.xml,%,$@).po -o $(dir $@)/$$filename help/C/$$filename; \
+-	done
+-	rm -f .xml2po.mo
++	msgfmt $(patsubst help/%/solfege.xml, help/%, $@)/$(patsubst help/%/solfege.xml,%,$@).po -o $(patsubst help/%/solfege.xml, help/%, $@)/$(patsubst help/%/solfege.xml,%,$@).mo;
++	$(ITSTOOL) -m $(patsubst help/%/solfege.xml, help/%, $@)/$(patsubst help/%/solfege.xml,%,$@).mo -o help/$(patsubst help/%/solfege.xml,%,$@) $(USER_MANUAL_SOURCES);
++	rm -f $(patsubst help/%/solfege.xml, help/%, $@)/$(patsubst help/%/solfege.xml,%,$@).mo
+ endif
+ endif
+ 
+@@ -113,13 +113,12 @@ help/C/rhythmtable.xml: tools/gen_rhythms_table.py
+ 	$(PYTHON) tools/gen_rhythms_table.py
+ 
+ %/one-big-page.html: %/solfege.xml
+-	(cd $(dir $<); $(XSLTPROC) $(I18NDEFS) --xinclude --stringparam html.stylesheet "../style.css" --stringparam root.filename "one-big-page" --param onechunk 1 $(subst chunk,onechunk,$(STYLESHEET)) $(notdir $<) )
++	(cd $(dir $<); $(XSLTPROC) $(I18NDEFS) --xinclude --stringparam html.stylesheet "../style.css" --stringparam root.filename "one-big-page" --param onechunk 1 "http://docbook.sourceforge.net/release/xsl/current/html/onechunk.xsl" $(notdir $<) )
+ 
+ %/index.html: %/solfege.xml
+ ifneq "$(skipmanual)" "yes"
+-ifeq "$(HAVE_STYLESHEET)" "yes"
+  ifneq "$(XSLTPROC)" ""
+-	(cd $(dir $<); $(XSLTPROC) $(I18NDEFS) $(XSLTPARAMS) $(STYLESHEET) $(notdir $<))
++	(cd $(dir $<); $(XSLTPROC) $(I18NDEFS) $(XSLTPARAMS) "http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl" $(notdir $<))
+  else
+   ifneq "$(skipmanual)" "yes"
+ 	@echo "*** Cannot rebuild the user manual because you don't have xsltproc installed."
+@@ -127,25 +126,17 @@ ifeq "$(HAVE_STYLESHEET)" "yes"
+ 	exit 64
+   endif
+  endif
+-else
+- ifneq "$(skipmanual)" "yes"
+-	@echo "*** Cannot rebuild html docs because we are missing the docbook stylesheet."
+-	@echo "*** Try to install the missing software and reconfigure."
+-	@echo "*** Run make as 'make skipmanual=yes' to ignore the problem and don't build the docs"
+-	exit 64
+- endif
+-endif
+ endif
+ ifeq "$(skipmanual)" "yes"
+ 	@echo "*** Not building manual because nomanual=yes"
+ endif
+ 
+ .PHONY: update-manual
+-ifdef XML2PO
++ifdef ITSTOOL
+ update-manual: $(addsuffix /index.html,$(addprefix help/,C $(USER_MANUAL_LANGUAGES)))
+ else
+ update-manual:
+-	@echo "You have to install xml2po to run 'make update-manual'"
++	@echo "You have to install itstool to run 'make update-manual'"
+ endif
+ 
+ %.png:%.ly

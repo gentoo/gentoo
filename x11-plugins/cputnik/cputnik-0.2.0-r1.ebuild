@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,9 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P}/src
 
-PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	)
 
 src_compile() {
 	emake CC="$(tc-getCC)"

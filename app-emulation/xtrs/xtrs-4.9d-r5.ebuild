@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,16 +6,16 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="Radio Shack TRS-80 emulator"
-HOMEPAGE="http://www.tim-mann.org/xtrs.html"
-SRC_URI="http://www.tim-mann.org/trs80/${P}.tar.gz
+HOMEPAGE="https://www.tim-mann.org/xtrs.html"
+SRC_URI="https://www.tim-mann.org/trs80/${P}.tar.gz
 	ls-dos? (
-		http://www.tim-mann.org/trs80/ld4-631.zip
+		https://www.tim-mann.org/trs80/ld4-631.zip
 		https://dev.gentoo.org/~ulm/distfiles/ld4-631l.xd3
 	)"
 
 LICENSE="xtrs ls-dos? ( freedist )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 IUSE="ls-dos"
 RESTRICT="ls-dos? ( bindist )"
 

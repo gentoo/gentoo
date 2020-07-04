@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="py2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="doc examples"
 
 DEPEND="!dev-python/pmw:0"
@@ -44,7 +44,7 @@ python_install_all() {
 	local DIR="Pmw/Pmw_1_3_3"
 
 	if use doc; then
-		dohtml -a html,gif,py ${DIR}/doc/*
+		dodoc -r ${DIR}/doc/*
 	fi
 
 	if use examples; then

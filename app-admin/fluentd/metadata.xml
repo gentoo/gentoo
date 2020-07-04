@@ -5,10 +5,6 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>zlogene@gentoo.org</email>
-		<name>Mikle Kolyada</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>ruby@gentoo.org</email>
 		<name>Gentoo Ruby Project</name>

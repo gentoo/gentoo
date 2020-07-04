@@ -1,0 +1,59 @@
+From cdeb988a7ece84191ec3496d55b99d82ca9face5 Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Fri, 19 Jun 2020 11:19:14 +0200
+Subject: [PATCH] Remove broken version checks which fail for GCC 10
+
+---
+ cmake/Modules/cvmfs_compiler.cmake | 27 +++------------------------
+ 1 file changed, 3 insertions(+), 24 deletions(-)
+
+diff --git a/cmake/Modules/cvmfs_compiler.cmake b/cmake/Modules/cvmfs_compiler.cmake
+index 2560d231c..e473467b3 100644
+--- a/cmake/Modules/cvmfs_compiler.cmake
++++ b/cmake/Modules/cvmfs_compiler.cmake
+@@ -35,33 +35,12 @@ set (ENV{LDFLAGS}    "${LDFLAGS}")
+ #
+ set (CVMFS_FIX_FLAGS "")
+ set (CVMFS_OPT_FLAGS "-Os")
+-if (CMAKE_COMPILER_IS_GNUCC)
+-  message (STATUS "checking gcc version...")
+-  execute_process (
+-    COMMAND ${CMAKE_C_COMPILER} -v
+-    OUTPUT_VARIABLE CVMFS_GCC_VERSION
+-    ERROR_VARIABLE  CVMFS_GCC_VERSION
+-  )
+-  STRING(REGEX REPLACE ".*([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" CVMFS_GCC_MAJOR "${CVMFS_GCC_VERSION}")
+-  STRING(REGEX REPLACE ".*[0-9]+\\.([0-9]+)\\.[0-9]+.*" "\\1" CVMFS_GCC_MINOR "${CVMFS_GCC_VERSION}")
+-  if (${CVMFS_GCC_MAJOR} LESS 4)
+-    message (FATAL_ERROR "GCC < 4.1 unsupported")
+-  endif (${CVMFS_GCC_MAJOR} LESS 4)
+-  if (${CVMFS_GCC_MAJOR} EQUAL 4)
+-    if (${CVMFS_GCC_MINOR} LESS 2)
+-      set (CVMFS_OPT_FLAGS "-O1")
+-    endif (${CVMFS_GCC_MINOR} LESS 2)
+-  endif (${CVMFS_GCC_MAJOR} EQUAL 4)
+-  if (${CVMFS_GCC_MAJOR} GREATER 6)
+-    set (CVMFS_FIX_FLAGS "-Wno-format-truncation")
+-  endif (${CVMFS_GCC_MAJOR} GREATER 6)
+-endif (CMAKE_COMPILER_IS_GNUCC)
+ message (STATUS "using compiler opt flag ${CVMFS_OPT_FLAGS}")
+ set (CVMFS_BASE_C_FLAGS "${CVMFS_OPT_FLAGS} -g -fno-strict-aliasing -fasynchronous-unwind-tables -fno-omit-frame-pointer -fwrapv -fvisibility=hidden -Wall ${CVMFS_FIX_FLAGS}")
+ if (APPLE)
+-  if (${CMAKE_SYSTEM_VERSION} GREATER 14.5.0)
++  if (${CMAKE_SYSTEM_VERSION} VERSION_GREATER 14.5.0)
+     set(CVMFS_BASE_C_FLAGS "${CVMFS_BASE_C_FLAGS} -mmacosx-version-min=10.11")
+-  endif(${CMAKE_SYSTEM_VERSION} GREATER 14.5.0)
++  endif(${CMAKE_SYSTEM_VERSION} VERSION_GREATER 14.5.0)
+ endif(APPLE)
+ set (CVMFS_BASE_CXX_FLAGS "${CVMFS_BASE_C_FLAGS} -fno-exceptions")
+ if (NOT USING_CLANG)
+@@ -94,4 +73,4 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+     message("Enable inotify support")
+     set(CVMFS_ENABLE_INOTIFY ON)
+   endif(HAS_INOTIFY_INIT1)
+-endif(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+\ No newline at end of file
++endif(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+-- 
+2.27.0
+

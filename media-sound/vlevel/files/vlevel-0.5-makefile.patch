@@ -1,6 +1,16 @@
---- vlevel-0.5/Makefile.orig
-+++ vlevel-0.5/Makefile
-@@ -30,6 +30,7 @@
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,8 @@
+ # User-editable options:
+ 
+ # Change this to suit your preferences (maybe add -march=cputype)	
+-CXXFLAGS=-Wall -O3 -fPIC -DPIC -g
++CXXFLAGS+=-Wall -fPIC
++CPPFLAGS+=-DPIC
+ 
+ # This is where it will be installed
+ PREFIX=/usr/local/bin/
+@@ -30,6 +31,7 @@
  all: vlevel-bin vlevel-ladspa.so
  
  install: all
@@ -8,19 +18,26 @@
  	cp -f vlevel-bin $(PREFIX)
  	mkdir -p $(LADSPA_PREFIX)
  	cp -f vlevel-ladspa.so $(LADSPA_PREFIX)
-@@ -38,13 +39,13 @@
+@@ -38,20 +40,7 @@
  	rm -f *.o vlevel-bin vlevel-ladspa.so
  
  vlevel-ladspa.so: vlevel-ladspa.o volumeleveler.o
 -	$(CXX) $(CXXFLAGS) -shared -o vlevel-ladspa.so vlevel-ladspa.o volumeleveler.o
+-
+-vlevel-ladspa.o: vlevel-ladspa.cpp volumeleveler.h vlevel-ladspa.h vlevel.h ladspa.h
+-	$(CXX) $(CXXFLAGS) -c vlevel-ladspa.cpp
 +	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o vlevel-ladspa.so vlevel-ladspa.o volumeleveler.o
- 
- vlevel-ladspa.o: vlevel-ladspa.cpp volumeleveler.h vlevel-ladspa.h vlevel.h ladspa.h
- 	$(CXX) $(CXXFLAGS) -c vlevel-ladspa.cpp
  
  vlevel-bin: volumeleveler.o commandline.o vlevel-bin.o vlevel.h
 -	$(CXX) $(CXXFLAGS) -o vlevel-bin vlevel-bin.o volumeleveler.o commandline.o
+-
+-volumeleveler.o: volumeleveler.cpp volumeleveler.h vlevel.h
+-	$(CXX) $(CXXFLAGS) -c volumeleveler.cpp
+-
+-vlevel-bin.o: vlevel-bin.cpp volumeleveler.h commandline.h vlevel.h
+-	$(CXX) $(CXXFLAGS) -c vlevel-bin.cpp
+-
+-commandline.o: commandline.cpp commandline.h
+-	$(CXX) $(CXXFLAGS) -c commandline.cpp
+-
 +	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o vlevel-bin vlevel-bin.o volumeleveler.o commandline.o
- 
- volumeleveler.o: volumeleveler.cpp volumeleveler.h vlevel.h
- 	$(CXX) $(CXXFLAGS) -c volumeleveler.cpp

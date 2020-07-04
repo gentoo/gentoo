@@ -3,14 +3,11 @@
 <pkgmetadata>
 	<upstream>
 		<remote-id type="github">krallin/tini</remote-id>
+		<remote-id type="cpe">cpe:/a:tini_project:tini</remote-id>
 	</upstream>
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>williamh@gentoo.org</email>

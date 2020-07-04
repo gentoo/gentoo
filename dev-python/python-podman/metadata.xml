@@ -6,6 +6,7 @@
 		<name>Zac Medico</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">containers/libpod</remote-id>
+		<remote-id type="github">containers/python-podman</remote-id>
+		<remote-id type="pypi">podman</remote-id>
 	</upstream>
 </pkgmetadata>

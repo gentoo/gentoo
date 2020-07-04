@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jorgenschaefer/${PN}/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 ELISP_REMOVE="circe-pkg.el"
 SITEFILE="50${PN}-gentoo.el"

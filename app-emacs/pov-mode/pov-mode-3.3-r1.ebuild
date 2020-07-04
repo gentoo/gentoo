@@ -6,7 +6,7 @@ EAPI=7
 inherit elisp
 
 DESCRIPTION="Major mode for Povray scene files"
-HOMEPAGE="https://github.com/emacsmirror/pov-mode"
+HOMEPAGE="https://github.com/melmothx/pov-mode"
 SRC_URI="https://github.com/emacsmirror/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+"

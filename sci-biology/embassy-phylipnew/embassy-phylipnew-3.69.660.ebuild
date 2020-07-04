@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ EBO_EAUTORECONF=1
 
 inherit emboss-r2
 
-LICENSE+=" freedist"
+LICENSE+=" free-noncomm"
 
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 

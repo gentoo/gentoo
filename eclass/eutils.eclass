@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eutils.eclass
@@ -230,53 +230,6 @@ optfeature() {
 		done
 	fi
 }
-
-case ${EAPI:-0} in
-0|1|2)
-
-# @FUNCTION: epause
-# @USAGE: [seconds]
-# @DESCRIPTION:
-# Sleep for the specified number of seconds (default of 5 seconds).  Useful when
-# printing a message the user should probably be reading and often used in
-# conjunction with the ebeep function.  If the EPAUSE_IGNORE env var is set,
-# don't wait at all. Defined in EAPIs 0 1 and 2.
-epause() {
-	[[ -z ${EPAUSE_IGNORE} ]] && sleep ${1:-5}
-}
-
-# @FUNCTION: ebeep
-# @USAGE: [number of beeps]
-# @DESCRIPTION:
-# Issue the specified number of beeps (default of 5 beeps).  Useful when
-# printing a message the user should probably be reading and often used in
-# conjunction with the epause function.  If the EBEEP_IGNORE env var is set,
-# don't beep at all. Defined in EAPIs 0 1 and 2.
-ebeep() {
-	local n
-	if [[ -z ${EBEEP_IGNORE} ]] ; then
-		for ((n=1 ; n <= ${1:-5} ; n++)) ; do
-			echo -ne "\a"
-			sleep 0.1 &>/dev/null ; sleep 0,1 &>/dev/null
-			echo -ne "\a"
-			sleep 1
-		done
-	fi
-}
-
-;;
-*)
-
-ebeep() {
-	ewarn "QA Notice: ebeep is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
-}
-
-epause() {
-	ewarn "QA Notice: epause is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
-}
-
-;;
-esac
 
 case ${EAPI:-0} in
 0|1|2|3|4)

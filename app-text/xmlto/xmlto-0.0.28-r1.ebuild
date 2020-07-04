@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="latex text"
 
 RDEPEND=">=app-text/docbook-xsl-stylesheets-1.62.0-r1
@@ -18,9 +18,9 @@ RDEPEND=">=app-text/docbook-xsl-stylesheets-1.62.0-r1
 	app-shells/bash:0
 	dev-libs/libxslt
 	sys-apps/sed
-	|| ( >=sys-apps/coreutils-6.10-r1 sys-freebsd/freebsd-ubin )
+	>=sys-apps/coreutils-6.10-r1
 	|| ( sys-apps/util-linux app-misc/getopt )
-	|| ( sys-apps/which sys-freebsd/freebsd-ubin )
+	sys-apps/which
 	text? ( || ( virtual/w3m www-client/lynx www-client/elinks ) )
 	latex? ( >=app-text/passivetex-1.25 >=dev-tex/xmltex-1.9-r2 )"
 # We only depend on flex when we patch the imput lexer.

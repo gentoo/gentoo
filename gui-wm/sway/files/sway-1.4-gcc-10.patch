@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/708704
+
+From 29a5ce5f65d04b046271fbe53850836c77bbee80 Mon Sep 17 00:00:00 2001
+From: thermitegod <thermitethegod@gmail.com>
+Date: Thu, 23 Jan 2020 18:12:00 -0700
+Subject: [PATCH] Fix compiling with -fno-common
+
+---
+ include/sway/server.h | 4 ++--
+ sway/main.c           | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+--- a/include/sway/server.h
++++ b/include/sway/server.h
+@@ -78,7 +78,7 @@ struct sway_server {
+ 	list_t *dirty_nodes;
+ };
+ 
+-struct sway_server server;
++extern struct sway_server server;
+ 
+ struct sway_debug {
+ 	bool noatomic;         // Ignore atomic layout updates
+@@ -92,7 +92,7 @@ struct sway_debug {
+ 	} damage;
+ };
+ 
+-struct sway_debug debug;
++extern struct sway_debug debug;
+ 
+ /* Prepares an unprivileged server_init by performing all privileged operations in advance */
+ bool server_privileged_prepare(struct sway_server *server);
+--- a/sway/main.c
++++ b/sway/main.c
+@@ -27,6 +27,7 @@
+ static bool terminate_request = false;
+ static int exit_value = 0;
+ struct sway_server server = {0};
++struct sway_debug debug = {0};
+ 
+ void sway_terminate(int exit_code) {
+ 	if (!server.wl_display) {

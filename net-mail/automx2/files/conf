@@ -1,0 +1,20 @@
+[automx2]
+# A typical production setup would use loglevel = WARNING
+loglevel = WARNING
+# Echo SQL commands into log? Used for debugging.
+db_echo = no
+
+# In-memory SQLite database
+#db_uri = sqlite:///:memory:
+
+# SQLite database in a UNIX-like file system
+db_uri = sqlite:////var/lib/automx2/db.sqlite
+
+# MySQL database on a remote server. This example does not use an encrypted
+# connection and is therefore *not* recommended for production use.
+#db_uri = mysql://username:password@server.example.com/db
+
+# Number of proxy servers between automx2 and the client (default: 0).
+# If your logs only show 127.0.0.1 or ::1 as the source IP for incoming
+# connections, proxy_count probably needs to be changed.
+#proxy_count = 1

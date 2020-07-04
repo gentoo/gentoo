@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils toolchain-funcs flag-o-matic
+EAPI=7
+
+inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Teletext viewer for X11"
 HOMEPAGE="http://www.goron.de/~froese/"
@@ -11,37 +12,30 @@ SRC_URI="http://www.goron.de/~froese/alevt/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc x86"
-IUSE=""
+RESTRICT="strip"
 
-RDEPEND="x11-libs/libX11
-	>=media-libs/libpng-1.4"
+RDEPEND="
+	x11-libs/libX11
+	media-libs/libpng:="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
-RESTRICT="strip"
+PATCHES=(
+	"${FILESDIR}"/${P}-respectflags.patch
+	"${FILESDIR}"/${P}-libpng15.patch
+)
 
-src_prepare() {
-	cp -va Makefile{,.orig}
-
-	epatch \
-		"${FILESDIR}"/${P}-respectflags.patch \
-		"${FILESDIR}"/${P}-libpng15.patch
-}
-
-src_compile() {
-	append-flags -fno-strict-aliasing
-	emake CC="$(tc-getCC)"
+src_configure() {
+	append-cflags -fno-strict-aliasing
+	tc-export BUILD_CC CC
 }
 
 src_install() {
 	dobin alevt alevt-cap alevt-date
 	doman alevt.1x alevt-date.1 alevt-cap.1
-	dodoc CHANGELOG README
+	einstalldocs
 
-	insinto /usr/share/icons/hicolor/16x16/apps
-	newins contrib/mini-alevt.xpm alevt.xpm
-	insinto /usr/share/icons/hicolor/48x48/apps
-	newins contrib/icon48x48.xpm alevt.xpm
-
+	newicon -s 16 contrib/mini-alevt.xpm alevt.xpm
+	newicon -s 48 contrib/icon48x48.xpm alevt.xpm
 	make_desktop_entry alevt "AleVT" alevt
 }

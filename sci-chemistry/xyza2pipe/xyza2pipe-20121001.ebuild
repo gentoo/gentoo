@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 src_prepare() {
 	default
 	tc-export CC
-	mkdir bin || die
+	mkdir bin || die
 }
 
 src_install() {

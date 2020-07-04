@@ -1,0 +1,13 @@
+diff --git a/src/daemon/Makefile.am b/src/daemon/Makefile.am
+index 0d5f2f3..cc41a8a 100644
+--- a/src/daemon/Makefile.am
++++ b/src/daemon/Makefile.am
+@@ -108,7 +108,7 @@ CLEANFILES    += syscall-names.h
+ syscall-names.h:
+ 	$(AM_V_GEN)
+ 	$(AM_V_at)echo "static const char *syscall_names[] = {" > $@ ;\
+-	echo "#include <sys/syscall.h>" | cpp -dM | grep '^#define __NR_' | \
++	echo "#include <sys/syscall.h>" | $(CPP) -dM | grep '^#define __NR_' | \
+ 		LC_ALL=C sed -r -n -e 's/^\#define[ \t]+__NR_([a-z0-9_]+)[ \t]+([0-9]+)(.*)/ [\2] = "\1",/p' >> $@ ;\
+ 	echo "};" >> $@
+ nodist_liblldpd_la_SOURCES += syscall-names.h

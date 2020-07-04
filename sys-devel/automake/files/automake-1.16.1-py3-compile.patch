@@ -1,0 +1,61 @@
+From d3edb7e0f3a5553b1ed919e566ec8c41022251a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 3 Nov 2019 11:51:19 +0100
+Subject: [PATCH] py-compile: Support -OO for py3.5+, and -O&-OO for pypy3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ lib/py-compile | 27 +++++++++++++++++++++++++--
+ 1 file changed, 25 insertions(+), 2 deletions(-)
+
+diff --git a/lib/py-compile b/lib/py-compile
+index 1a3f4d644..44be97fc4 100755
+--- a/lib/py-compile
++++ b/lib/py-compile
+@@ -140,7 +140,7 @@ $PYTHON -O -c "
+ import sys, os, py_compile, imp
+ 
+ # pypy does not use .pyo optimization
+-if hasattr(sys, 'pypy_translation_info'):
++if hasattr(sys, 'pypy_translation_info') and sys.hexversion < 0x03050000:
+     sys.exit(0)
+ 
+ files = '''$files'''
+@@ -154,7 +154,30 @@ for file in files.split():
+     sys.stdout.write(file)
+     sys.stdout.flush()
+     if hasattr(imp, 'get_tag'):
+-        py_compile.compile(filepath, imp.cache_from_source(filepath, False), path)
++        py_compile.compile(filepath, imp.cache_from_source(filepath), path)
++    else:
++        py_compile.compile(filepath, filepath + 'o', path)
++sys.stdout.write('\n')" 2>/dev/null || :
++
++$PYTHON -OO -c "
++import sys, os, py_compile, imp
++
++# python<3.5 does not have split files for -O and -OO
++if sys.hexversion < 0x03050000:
++    sys.exit(0)
++
++files = '''$files'''
++sys.stdout.write('Byte-compiling python modules (-OO versions) ...\n')
++for file in files.split():
++    $pathtrans
++    $filetrans
++    if not os.path.exists(filepath) or not (len(filepath) >= 3
++                                            and filepath[-3:] == '.py'):
++	    continue
++    sys.stdout.write(file)
++    sys.stdout.flush()
++    if hasattr(imp, 'get_tag'):
++        py_compile.compile(filepath, imp.cache_from_source(filepath), path)
+     else:
+         py_compile.compile(filepath, filepath + 'o', path)
+ sys.stdout.write('\n')" 2>/dev/null || :
+-- 
+2.23.0
+

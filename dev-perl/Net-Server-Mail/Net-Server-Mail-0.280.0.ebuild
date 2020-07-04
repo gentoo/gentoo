@@ -15,6 +15,7 @@ LICENSE="LGPL-2.1+ Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/IO-Socket-SSL-1.831.0

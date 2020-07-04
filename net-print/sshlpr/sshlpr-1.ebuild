@@ -1,7 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 DESCRIPTION="ssh-lpr backend for cups -- print to remote systems over ssh"
 HOMEPAGE="http://www.masella.name/technical/sshlpr.html"

@@ -35,16 +35,16 @@ PATCHES=(
 
 src_install() {
 	webapp_src_preinst
-	emake DESTDIR="${D}" install || die "Install failed"
+	emake DESTDIR="${D}" install
 
 	insinto "${MY_CGIBINDIR}"
-	doins -r src/wiliki.cgi src/wiliki2.cgi || die "doins failed"
-	fperms +x "${MY_CGIBINDIR}"/wiliki.cgi || die "fperms failed"
+	doins -r src/wiliki.cgi src/wiliki2.cgi
+	fperms +x "${MY_CGIBINDIR}"/wiliki.cgi
 
 	insinto "${MY_HTDOCSDIR}"
-	doins src/wiliki.css src/wiliki2.css || die "doins failed"
+	doins src/wiliki.css src/wiliki2.css
 
-	dodir "${MY_HOSTROOTDIR}"/${PF}/data || die "dodir failed"
+	dodir "${MY_HOSTROOTDIR}"/${PF}/data
 	webapp_serverowned "${MY_HOSTROOTDIR}"/${PF}/data
 
 	webapp_src_install

@@ -10,10 +10,42 @@
 # and should be dropped once portage does sth. like this itself.
 #
 
-# Need to explicitly set PKG_CONFIG_PATH for cross EPREFIX.
-export PKG_CONFIG_PATH="${EPREFIX}/lib/pkgconfig:${EPREFIX}/usr/lib/pkgconfig"
+#######################################################################
+#
+# Unix aware build tools may provide (e.g. pkg-config) and accept
+# (e.g. gcc) the -lNAME linker option.  While they create libNAME.so
+# as the import library, they may be unaware of the additional dll.
+# The dllhelper wrappers take care of copying the real dll when
+# copying the libNAME.so.
+#
+# Cygwin and MinGW aware build tools may create the import library
+# as libNAME.dll.a or libNAME.dll.lib, and are aware of the dll,
+# while a subsequent linker step still receives the -lNAME option.
+#
+# MSVC aware build tools may provide (e.g. icu-config) and accept
+# (e.g. cl.exe) the NAME.lib linker option, maybe with full path,
+# and are aware of the dll.
+#
+# Libtool does accept both the Unix and MSVC variants now, but does
+# search for the libNAME(.la|.dll|.so|.a) file upon -lNAME, in order.
+#
+# As Gentoo ebuilds may remove libNAME.la, we need the libNAME.so
+# because we don't want to have libNAME.dll as an import library.
+#
+# The static library may be created as libNAME.a, libNAME.lib or even
+# NAME.lib - the latter we need to check for static or import library.
+#
+# For whatever import library file we find, make sure there is both the
+# NAME.lib and the libNAME.so for dynamic linkability via all the
+# -lNAME, the NAME.lib and the libNAME.so linker option.
+#
+# For whatever static library file we find, make sure there is both the
+# libNAME.lib and the libNAME.a for static linkability via all the
+# -lNAME, the libNAME.lib and the libNAME.a linker option.
+#
+#######################################################################
 
-windows_setup_dllhelper() {
+winnt_setup_dllhelper() {
 	case ${CATEGORY}/${PN} in
 	sys-libs/zlib |\
 	'')
@@ -23,60 +55,150 @@ windows_setup_dllhelper() {
 		# and installation is done using cp, we override cp to
 		# additionally copy the dll when the library is copied.
 		ebegin "Setting up wrapper to copy the DLL along the LIB"
-		windows_setup_dllhelper_cp
+		winnt_setup_dllhelper_cp
 		eend $?
 		;;
 	esac
 }
 
 post_src_install() {
-	cd "${ED}"
-	find . -name '*.exe' -o -name '*.dll.a' -o -name '*.so' |
+	winnt_post_src_install
+}
+
+winnt_post_src_install() {
+	cd "${ED}" || return 0
+	#
+	# File names being treated as import library:
+	#  libNAME.so
+	#     NAME.lib if CHOST-dumpbin yields 'DLL name'
+	#  libNAME.dll.lib
+	#  libNAME.dll.a
+	#
+	# File names being treated as static library:
+	#  libNAME.lib
+	#     NAME.lib if CHOST-dumpbin lacks 'DLL name'
+	#  libNAME.a
+	#
+	# File names being warned about as suspect:
+	#     NAME.so
+	#     NAME.a
+	#     NAME.dll.lib
+	#     NAME.dll.a
+	#
+	find . -name '*.so' -o -name '*.lib' -o -name '*.a' |
 	while read f
 	do
 		f=${f#./}
-		case ${f} in
-		*.exe)
-			if file "./${f}" | grep "GUI" > /dev/null 2>&1; then
-				if test ! -f "./${f%.exe}"; then
-					einfo "Windows GUI Executable $f will have no symlink."
-				fi
-			else
-				if test ! -f "./${f%.exe}"; then
-					ebegin "creating ${f%.exe} -> ${f} for console accessibility."
-					eend $(ln -sf "$(basename "${f}")" "./${f%.exe}" && echo 0 || echo 1)
-				fi
-			fi
+		libdir=$(dirname "${f}")
+		libfile=${f##*/}
+		libname=
+		NAMElib=    # import lib to create
+		libNAMEso=  # import lib to create
+		libNAMElib= # static lib to create
+		libNAMEa=   # static lib to create
+		case ${libfile} in
+		lib*.so) # found import library
+			libname=${libfile%.so}
+			libname=${libname#lib}
+			NAMElib=${libname}.lib
+			libNAMEso=lib${libname}.so
 			;;
-		*.dll.a)
-			if test ! -f "./${f%.a}.lib"; then
-				ebegin "creating ${f%.a}.lib -> ${f##*/} for libtool linkability"
-				eend $(ln -sf "$(basename "${f}")" "./${f%.a}.lib" && echo 0 || echo 1)
-			fi
+		*.so) ;; # warn
+		lib*.dll.lib) # found import library
+			libname=${libfile%.dll.lib}
+			libname=${libname#lib}
+			NAMElib=${libname}.lib
+			libNAMEso=lib${libname}.so
 			;;
-		*.so)
-			if test ! -f "${f%.so}.dll.lib"; then
-				ebegin "creating ${f%.so}.dll.lib -> ${f##*/} for libtool linkability"
-				eend $(ln -sf "$(basename "${f}")" "./${f%.so}.dll.lib" && echo 0 || echo 1)
-			fi
+		*.dll.lib) ;; # warn
+		*.lib) # found static or import library
+			${CHOST}-dumpbin.exe /headers "./${libdir}/${libfile}" | grep -q 'DLL name'
+			case "${PIPESTATUS[*]}" in
+			'0 0') # found import library
+				libname=${libfile%.lib}
+				libname=${libname#lib}
+				NAMElib=${libname}.lib
+				libNAMEso=lib${libname}.so
+				;;
+			'0 1') # found static library
+				libname=${libfile%.lib}
+				libname=${libname#lib}
+				libNAMEa=lib${libname}.a
+				libNAMElib=lib${libname}.lib
+				;;
+			*)
+				die "Cannot run ${CHOST}-dumpbin on ${libdir}/${libfile}"
+				;;
+			esac
 			;;
+		lib*.dll.a) # found import library
+			libname=${libfile%.dll.a}
+			libname=${libname#lib}
+			NAMElib=${libname}.lib
+			libNAMEso=lib${libname}.so
+			;;
+		*.dll.a) ;; # warn
+		lib*.a) # found static library
+			libname=${libfile%.a}
+			libname=${libname#lib}
+			libNAMEa=lib${libname}.a
+			libNAMElib=lib${libname}.lib
+			;;
+		*.a) ;; # warn
 		esac
-	done
-	[[ -d usr/$(get_libdir) ]] &&
-	find usr/$(get_libdir) -maxdepth 1 -type f -name '*.dll' |
-	while read f
-	do
-		if test ! -f usr/bin/${f##*/}; then
-			ebegin "moving ${f} to usr/bin for native loader"
-			dodir usr/bin || die
-			mv -f "${f}" usr/bin || die
-			ln -sf "../bin/${f##*/}" "${f}" || die
+		if [[ -z ${libname} ]]; then
+			ewarn "Ignoring suspect file with library extension: ${f}"
+			continue
+		fi
+
+		if [[ ${NAMElib} && ! -e ./${libdir}/${NAMElib} ]]; then
+			ebegin "creating ${NAMElib} from ${libfile} for MSVC linkability"
+			cp -pf "./${libdir}/${libfile}" "./${libdir}/${NAMElib}" || die
+			eend $?
+		fi
+		if [[ ${libNAMElib} && ! -e ./${libdir}/${libNAMElib} ]]; then
+			ebegin "creating ${libNAMElib} from ${libfile} for MSVC linkability"
+			cp -pf "./${libdir}/${libfile}" "./${libdir}/${libNAMElib}" || die
+			eend $?
+		fi
+		if [[ ${libNAMEso} && ! -e ./${libdir}/${libNAMEso} ]]; then
+			ebegin "creating ${libNAMEso} from ${f##*/} for POSIX linkability"
+			cp -pf "./${libdir}/${libfile}" "./${libdir}/${libNAMEso}" || die
+			eend $?
+		fi
+		if [[ ${libNAMEa} && ! -e ./${libdir}/${libNAMEa} ]]; then
+			ebegin "creating ${libNAMEa} from ${f##*/} for POSIX linkability"
+			cp -pf "./${libdir}/${libfile}" "./${libdir}/${libNAMEa}" || die
 			eend $?
 		fi
 	done
+	if [[ -d usr/$(get_libdir) ]]
+	then
+		# The native loader does not understand symlinks to dlls,
+		# seen to be created by dev-libs/icu eventually.  For any
+		# dll we find in usr/lib we need to perform a real copy to
+		# usr/bin, to resolve potential symlinks (seen from icu),
+		# and perform the remove from usr/lib afterwards, to not
+		# break symlinks later on discovered by find.
+		local toremove=()
+		local f
+		while read f
+		do
+			[[ -f usr/bin/${f##*/} ]] && continue
+			ebegin "moving ${f} to usr/bin for the native loader"
+			dodir usr/bin || die
+			cp -f "${f}" usr/bin/ || die
+			eend $?
+			toremove=( "${toremove[@]}" "${f}" )
+		done < <(find usr/$(get_libdir) -maxdepth 1 -name '*.dll')
+		if [[ ${#toremove[@]} -gt 0 ]]
+		then
+			rm -f "${toremove[@]}" || die "removing dlls from usr/$(get_libdir) failed"
+		fi
+	fi
 }
 
-windows_setup_dllhelper_cp() {
+winnt_setup_dllhelper_cp() {
 	if ! [[ $(type -P cp) -ef ${T}/dllhelper/cp ]]
 	then
 		mkdir -p "${T}/dllhelper"
@@ -90,7 +212,7 @@ force_dest_file_opt=
 
 nextargs=( "$@" )
 
-while [[ $# > 0 ]]
+while [[ $# -gt 0 ]]
 do
 	arg=${1}
 	shift
@@ -138,7 +260,7 @@ ret=$?
 
 if [[ -z ${mydest} ]]
 then
-	[[ ${#mysrcs[@]} < 2 ]] && exit 0
+	[[ ${#mysrcs[@]} -lt 2 ]] && exit 0
 	: "${mysrcs[@]}" "${#mysrcs[@]}"
 	mydest=${mysrcs[${#mysrcs[@]}-1]}
 	unset mysrcs[${#mysrcs[@]}-1]
@@ -179,5 +301,5 @@ EOCP
 
 if [[ ${EBUILD_PHASE} == 'setup' ]]
 then
-	windows_setup_dllhelper
+	winnt_setup_dllhelper
 fi

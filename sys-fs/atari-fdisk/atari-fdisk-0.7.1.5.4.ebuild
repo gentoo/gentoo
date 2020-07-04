@@ -16,7 +16,7 @@ SLOT="0"
 # Note: The code assumes sizeof(long) == 4 everywhere.  If you try to
 # use this on 64bit systems (where sizeof(long) == 8), then misbehavior
 # and memory corruption will ensue.
-KEYWORDS="-* m68k x86"
+KEYWORDS="-* ~m68k x86"
 IUSE=""
 
 S=${WORKDIR}/${PN}-${MY_PV}

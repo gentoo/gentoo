@@ -1,0 +1,26 @@
+diff --git a/SPIRV/GlslangToSpv.h b/SPIRV/GlslangToSpv.h
+index 86e1c23b..3907be43 100755
+--- a/SPIRV/GlslangToSpv.h
++++ b/SPIRV/GlslangToSpv.h
+@@ -40,7 +40,7 @@
+ #endif
+ 
+ #include "SpvTools.h"
+-#include "../glslang/Include/intermediate.h"
++#include "glslang/Include/intermediate.h"
+ 
+ #include <string>
+ #include <vector>
+diff --git a/SPIRV/SpvTools.h b/SPIRV/SpvTools.h
+index 7422d012..59c914da 100644
+--- a/SPIRV/SpvTools.h
++++ b/SPIRV/SpvTools.h
+@@ -46,7 +46,7 @@
+ #include <ostream>
+ #endif
+ 
+-#include "../glslang/MachineIndependent/localintermediate.h"
++#include "glslang/MachineIndependent/localintermediate.h"
+ #include "Logger.h"
+ 
+ namespace glslang {

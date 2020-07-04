@@ -13,10 +13,6 @@
 		countless additional features.
 	</longdescription>
 	<use>
-		<flag name="bidi">
-			Enable bidirectional language support with
-			<pkg>dev-libs/fribidi</pkg>
-		</flag>
 		<flag name="slit">Enables the Fluxbox slit (or dock)</flag>
 		<flag name="systray">Enables the system tray in the Fluxbox toolbar</flag>
 		<flag name="toolbar">Enables the Fluxbox toolbar</flag>

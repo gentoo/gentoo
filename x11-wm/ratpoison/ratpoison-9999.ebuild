@@ -14,7 +14,7 @@ KEYWORDS=""
 IUSE="debug emacs +history sloppy +xft +xrandr"
 
 RDEPEND="
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	history? ( sys-libs/readline:= )
 	xft? ( x11-libs/libXft )
 	xrandr? ( x11-libs/libXrandr )

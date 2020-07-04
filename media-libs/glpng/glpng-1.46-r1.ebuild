@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
-DESCRIPTION="An OpenGL PNG image library"
+DESCRIPTION="OpenGL PNG image library"
 HOMEPAGE="https://repo.or.cz/w/glpng.git"
 SRC_URI="https://repo.or.cz/w/glpng.git/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -22,7 +23,7 @@ RDEPEND="
 "
 DEPEND=${RDEPEND}
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
 src_configure() {
 	local mycmakeargs=( -DBUILD_STATIC_LIBS=$(usex static-libs) )

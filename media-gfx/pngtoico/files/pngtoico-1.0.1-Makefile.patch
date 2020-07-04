@@ -1,15 +1,23 @@
---- Makefile	2002-01-01 22:46:46.000000000 +0000
-+++ Makefile.new	2002-11-11 01:11:12.000000000 +0000
-@@ -21,9 +21,9 @@
+--- a/Makefile
++++ b/Makefile
+@@ -20,10 +20,9 @@
+ mandir      = $(prefix)/man
  man1dir     = $(mandir)/man1
  
- CC      = gcc -W -Wall
+-CC      = gcc -W -Wall
 -CFLAGS  = -O2 -fomit-frame-pointer
 -LDFLAGS = -s
 -LIBS    = -lpng
-+CFLAGS  += -fomit-frame-pointer `libpng-config --cflags`
-+LDFLAGS += `libpng-config --ldflags` 
-+LIBS    = `libpng-config --libs`
++CFLAGS  += `libpng-config --cflags` -Wall
++LDFLAGS += `libpng-config --ldflags`
++LDLIBS  += `libpng-config --libs`
  INSTALL = install
  INSTALL_EXEC = $(INSTALL) -c -m 755
  INSTALL_DATA = $(INSTALL) -c -m 644
+@@ -40,6 +39,3 @@
+ 	mkdir -p $(INSTALLROOT)$(bindir) $(INSTALLROOT)$(man1dir)
+ 	$(INSTALL_EXEC) pngtoico $(INSTALLROOT)$(bindir)
+ 	$(INSTALL_DATA) pngtoico.1 $(INSTALLROOT)$(man1dir)
+-
+-pngtoico: pngtoico.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o pngtoico pngtoico.c $(LIBS)

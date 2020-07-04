@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -74,7 +74,6 @@ src_configure() {
 		--enable-cider \
 		--enable-ndev \
 		--disable-xgraph \
-		--disable-dependency-tracking \
 		--disable-rpath \
 		$(use_enable openmp) \
 		$(use_with X x) \

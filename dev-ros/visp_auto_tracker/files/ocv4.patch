@@ -1,0 +1,25 @@
+Index: visp_auto_tracker/flashcode_mbt/libauto_tracker/states.hpp
+===================================================================
+--- visp_auto_tracker.orig/flashcode_mbt/libauto_tracker/states.hpp
++++ visp_auto_tracker/flashcode_mbt/libauto_tracker/states.hpp
+@@ -1,6 +1,6 @@
+ #ifndef __EVENTS_H__
+ #define __EVENTS_H__
+-#include "cv.h"
++#include <opencv2/core/core_c.h>
+ // back-end
+ #include <boost/msm/back/state_machine.hpp>
+ //front-end
+Index: visp_auto_tracker/flashcode_mbt/libauto_tracker/tracking.cpp
+===================================================================
+--- visp_auto_tracker.orig/flashcode_mbt/libauto_tracker/tracking.cpp
++++ visp_auto_tracker/flashcode_mbt/libauto_tracker/tracking.cpp
+@@ -1,6 +1,6 @@
+ #include "ros/ros.h"
+-#include "cv.h"
+-#include "highgui.h"
++#include <opencv2/core/core_c.h>
++#include <opencv2/highgui/highgui_c.h>
+ #include "tracking.h"
+ #include <visp3/core/vpImageConvert.h>
+ #include <visp3/core/vpPixelMeterConversion.h>

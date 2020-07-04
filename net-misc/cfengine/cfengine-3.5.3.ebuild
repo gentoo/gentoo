@@ -71,11 +71,11 @@ src_configure() {
 }
 
 src_install() {
-	newinitd "${FILESDIR}"/cf-serverd.rc6 cf-serverd || die
-	newinitd "${FILESDIR}"/cf-monitord.rc6 cf-monitord || die
-	newinitd "${FILESDIR}"/cf-execd.rc6 cf-execd || die
+	newinitd "${FILESDIR}"/cf-serverd.rc6 cf-serverd
+	newinitd "${FILESDIR}"/cf-monitord.rc6 cf-monitord
+	newinitd "${FILESDIR}"/cf-execd.rc6 cf-execd
 
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	# fix ifconfig path in provided promises
 	find "${D}"/usr/share -name "*.cf" | xargs sed -i "s,/sbin/ifconfig,$(which ifconfig),g"
@@ -98,7 +98,7 @@ src_install() {
 	# binaries here. This is the default search location for the
 	# binaries.
 	for bin in promises agent monitord serverd execd runagent key; do
-		dosym /usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin || die
+		dosym /usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin
 	done
 }
 

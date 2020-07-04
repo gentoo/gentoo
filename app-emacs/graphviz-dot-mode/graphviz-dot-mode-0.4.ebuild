@@ -13,6 +13,6 @@ SRC_URI="https://github.com/ppareit/graphviz-dot-mode/archive/v${PV}.tar.gz -> $
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 SITEFILE="50${PN}-gentoo.el"

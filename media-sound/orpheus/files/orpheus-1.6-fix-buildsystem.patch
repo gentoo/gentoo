@@ -1,5 +1,5 @@
---- orpheus-1.6/configure.ac
-+++ orpheus-1.6/configure.ac
+--- a/configure.in
++++ b/configure.in
 @@ -1,5 +1,5 @@
 -AC_INIT(aclocal.m4)
 -AM_INIT_AUTOMAKE(orpheus, 1.6)
@@ -18,7 +18,7 @@
  
  ###     use option --enable-locales-fix to fix problems with double-byte
  ###     encodings on systems with broken locale, iscntrl()
-@@ -20,30 +20,21 @@
+@@ -20,30 +21,21 @@
  
  AC_CHECK_HEADERS(sys/soundcard.h soundcard.h machine/soundcard.h, break)
  
@@ -54,13 +54,14 @@
 +LIBS="$LIBS $LIBICONV $DEPENDENCIES_LIBS"
  
  ALL_LINGUAS="ru ca"
- AM_GNU_GETTEXT
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
  AC_CONFIG_SUBDIRS(kkstrtext-0.1 kkconsui-0.1)
 -AC_OUTPUT(Makefile src/Makefile src/abstract/Makefile po/Makefile.in intl/Makefile)
 +AC_CONFIG_FILES([Makefile src/Makefile src/abstract/Makefile po/Makefile.in intl/Makefile])
 +AC_OUTPUT
---- orpheus-1.6/kkconsui-0.1/configure.ac
-+++ orpheus-1.6/kkconsui-0.1/configure.ac
+--- a/kkconsui-0.1/configure.in
++++ b/kkconsui-0.1/configure.in
 @@ -6,7 +6,7 @@
  AC_PROG_CC
  AC_PROG_CXX
@@ -70,8 +71,8 @@
  
  ###	use option --enable-locales-fix to fix problems with double-byte
  ###	encodings on systems with broken locale, iscntrl()
---- orpheus-1.6/kkstrtext-0.1/configure.ac
-+++ orpheus-1.6/kkstrtext-0.1/configure.ac
+--- a/kkstrtext-0.1/configure.in
++++ b/kkstrtext-0.1/configure.in
 @@ -6,6 +6,7 @@
  AC_PROG_CC
  AC_PROG_CXX
@@ -80,8 +81,16 @@
  
  AC_CHECK_HEADERS(_G_config.h)
  AC_LANG_CPLUSPLUS
---- orpheus-1.6/po/Makefile.in.in
-+++ orpheus-1.6/po/Makefile.in.in
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS = kkstrtext-0.1 kkconsui-0.1 intl po src
++SUBDIRS = kkstrtext-0.1 kkconsui-0.1 po src
+ dist-hook:
+ 	cd $(top_distdir); subs=`egrep "^[:space:]*SUBDIRS" Makefile.am | sed 's/SUBDIRS[ =]\+//g'`; \
+ 	echo "SUBDIRS = kkstrtext-0.1 kkconsui-0.1 $$subs" >>.makefile.am; \
+--- a/po/Makefile.in.in
++++ b/po/Makefile.in.in
 @@ -29,7 +29,7 @@
  
  INSTALL = @INSTALL@
@@ -91,8 +100,8 @@
  mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
  
  GMSGFMT = @GMSGFMT@
---- orpheus-1.6/src/cdtrack.cc
-+++ orpheus-1.6/src/cdtrack.cc
+--- a/src/cdtrack.cc
++++ b/src/cdtrack.cc
 @@ -22,6 +22,8 @@
  *
  */
@@ -102,8 +111,8 @@
  #include "cdtrack.h"
  #include "playlist.h"
  
---- orpheus-1.6/src/main.cc
-+++ orpheus-1.6/src/main.cc
+--- a/src/main.cc
++++ b/src/main.cc
 @@ -21,6 +21,9 @@
  * USA
  *
@@ -114,8 +123,8 @@
  #include "uitext.h"
  #include "cdtrack.h"
  #include "mp3track.h"
---- orpheus-1.6/src/mp3track.cc
-+++ orpheus-1.6/src/mp3track.cc
+--- a/src/mp3track.cc
++++ b/src/mp3track.cc
 @@ -22,6 +22,8 @@
  *
  */
@@ -125,8 +134,8 @@
  #include "mp3track.h"
  #include "orpheusconf.h"
  
---- orpheus-1.6/src/oggtrack.cc
-+++ orpheus-1.6/src/oggtrack.cc
+--- a/src/oggtrack.cc
++++ b/src/oggtrack.cc
 @@ -22,6 +22,8 @@
  *
  */
@@ -136,8 +145,8 @@
  #include "oggtrack.h"
  #include "orpheusconf.h"
  
---- orpheus-1.6/src/orpheusconf.cc
-+++ orpheus-1.6/src/orpheusconf.cc
+--- a/src/orpheusconf.cc
++++ b/src/orpheusconf.cc
 @@ -22,6 +22,8 @@
  *
  */
@@ -147,8 +156,8 @@
  #include "orpheusconf.h"
  
  #include <sys/stat.h>
---- orpheus-1.6/src/playlist.cc
-+++ orpheus-1.6/src/playlist.cc
+--- a/src/playlist.cc
++++ b/src/playlist.cc
 @@ -22,6 +22,8 @@
  *
  */
@@ -158,8 +167,8 @@
  #include "playlist.h"
  #include "mp3track.h"
  #include "oggtrack.h"
---- orpheus-1.6/src/streamtrack.cc
-+++ orpheus-1.6/src/streamtrack.cc
+--- a/src/streamtrack.cc
++++ b/src/streamtrack.cc
 @@ -22,6 +22,8 @@
  *
  */
@@ -169,8 +178,8 @@
  #include "streamtrack.h"
  #include "playlist.h"
  
---- orpheus-1.6/src/uitext.cc
-+++ orpheus-1.6/src/uitext.cc
+--- a/src/uitext.cc
++++ b/src/uitext.cc
 @@ -22,6 +22,8 @@
  *
  */

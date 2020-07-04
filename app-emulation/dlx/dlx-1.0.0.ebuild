@@ -7,7 +7,7 @@ S=${WORKDIR}/dlx
 
 DESCRIPTION="DLX Simulator"
 HOMEPAGE="https://www.davidviner.com/dlx"
-SRC_URI="mirror://gentoo/dlx.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

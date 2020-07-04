@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/696220
+--- a/cryptonite.cabal
++++ b/cryptonite.cabal
+@@ -276,6 +276,7 @@ Library
+                    , cbits/cryptonite_aes.c
+ 
+   if arch(x86_64) || flag(support_blake2_sse)
++    CC-options:     -msse2
+     C-sources:      cbits/blake2/sse/blake2s.c
+                   , cbits/blake2/sse/blake2sp.c
+                   , cbits/blake2/sse/blake2b.c

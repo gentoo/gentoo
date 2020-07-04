@@ -11,4 +11,7 @@
 		configuration files and the like. Provides functional operations
 		on tables and sequences.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">Tieske/Penlight</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ IUSE="tools"
 
 DEPEND="
 	>=sys-apps/util-linux-2.30.2
-	>=sys-fs/btrfs-progs-4.1
+	>=sys-fs/btrfs-progs-4.20.2
 "
 RDEPEND="${DEPEND}"
 
@@ -48,7 +48,27 @@ pkg_pretend() {
 			ewarn "# WARNING: CPU: 3 PID: 18172 at fs/btrfs/backref.c:1391 find_parent_nodes+0xc41/0x14e0"
 			ewarn
 		fi
-		elog "Bees recommends to run the latest current kernel for performance and"
+
+		if kernel_is -lt 5 3 4; then
+			ewarn "With kernel versions below 5.3.4, bees may trigger a btrfs bug when running"
+			ewarn "btrfs-balance in parallel. This may lead to meta-data corruption in the worst"
+			ewarn "case. Especially, kernels 5.1.21 and 5.2.21 should be avoided. Kernels 5.0.x"
+			ewarn "after 5.0.21 should be safe. In the best case, affected kernels may force"
+			ewarn "the device RO without writing corrupted meta-data. More details:"
+			ewarn "https://github.com/Zygo/bees/blob/master/docs/btrfs-kernel.md"
+			ewarn
+		fi
+
+		if kernel_is -lt 5 0 4; then
+			ewarn "IMPORTANT: With kernel versions below 5.0.4, you may experience data corruption"
+			ewarn "due to bees using compression in btrfs. You are adviced to use a chronologically"
+			ewarn "later kernel, that includes older LTS versions released after 5.0.4:"
+			ewarn "Fixed in: 5.1+, 5.0.4+, 4.19.31+, 4.14.108+, 4.9.165+, 4.4.177+, 3.18.137+"
+			ewarn "# commit 8e92821 btrfs: fix corruption reading shared and compressed extents after hole punching"
+			ewarn
+		fi
+
+		elog "Bees recommends running the latest current kernel for performance and"
 		elog "reliability reasons, see README.md."
 	fi
 }

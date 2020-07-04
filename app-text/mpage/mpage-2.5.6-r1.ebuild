@@ -1,39 +1,44 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Many to one page printing utility"
 HOMEPAGE="http://www.mesa.nl/"
-SRC_URI="http://www.mesa.nl/pub/${PN}/${P}.tgz
+SRC_URI="
+	http://www.mesa.nl/pub/${PN}/${P}.tgz
 	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 
-KEYWORDS="amd64 ppc x86"
 LICENSE="freedist"
 SLOT="0"
-IUSE=""
+KEYWORDS="amd64 ppc x86"
 
-src_prepare() {
-	sed -i Makefile \
-		-e '/^CFLAGS/s|=.*| += $(DEFS)|g' \
-		-e 's|$(CFLAGS) -o|$(LDFLAGS) &|g' \
-		|| die "sed Makefile"
-	EPATCH_SOURCE="${WORKDIR}/${P}-gentoo-patchset" epatch \
-		01_previous_changes.patch 10_bts354935_fix_fontdefs.patch \
-		20_bts416573_manpage_fixes.patch 30_bts443280_libdir_manpage.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-buildsystem.patch
+	"${WORKDIR}"/${P}-gentoo-patchset/01_previous_changes.patch
+	"${WORKDIR}"/${P}-gentoo-patchset/10_bts354935_fix_fontdefs.patch
+	"${WORKDIR}"/${P}-gentoo-patchset/20_bts416573_manpage_fixes.patch
+	"${WORKDIR}"/${P}-gentoo-patchset/30_bts443280_libdir_manpage.patch
+)
+
+src_configure() {
+	tc-export CC
 }
 
 src_compile() {
 	emake \
-		CC="$(tc-getCC)" \
-		PREFIX=/usr \
-		MANDIR=/usr/share/man/man1
+		PREFIX="${EPREFIX}"/usr \
+		MANDIR="${EPREFIX}"/usr/share/man/man1
 }
 
-src_install () {
+src_install() {
 	emake \
-		PREFIX="${D}/usr" \
-		MANDIR="${D}/usr/share/man/man1" install
-	dodoc CHANGES Encoding.format FAQ NEWS README TODO
+		PREFIX="${ED}"/usr \
+		MANDIR="${ED}"/usr/share/man/man1 install
+
+	rm README.{amiga,OS2} || die
+	einstalldocs
+	dodoc Encoding.format
 }

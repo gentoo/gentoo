@@ -5,14 +5,14 @@ EAPI=5
 inherit eutils games
 
 DESCRIPTION="Enemy Territory: Quake Wars"
-HOMEPAGE="http://zerowing.idsoftware.com/linux/etqw/"
-SRC_URI="ftp://ftp.i3d.net/Games/Enemy%20Territory%20Quake%20Wars/Patches/ETQW-client-${PV}-full.x86.run"
+HOMEPAGE="http://zerowing.idsoftware.com/linux/etqw/ETQWFrontPage/"
+SRC_URI="http://ftp.jeuxlinux.fr/files/ETQW-client-${PV}-full.x86.run"
 
 LICENSE="ETQW"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="cdinstall"
-RESTRICT="strip"
+RESTRICT="bindist mirror strip"
 
 DEPEND="app-arch/unzip"
 RDEPEND="sys-libs/glibc

@@ -1,5 +1,5 @@
---- libnih-1.0.1/configure.ac
-+++ libnih-1.0.1/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -23,12 +23,21 @@
  PKG_PROG_PKG_CONFIG([0.22])
  
@@ -25,8 +25,8 @@
  
  # Checks for header files.
  AC_CHECK_HEADERS([valgrind/valgrind.h])
---- libnih-1.0.1.orig/Makefile.am
-+++ libnih-1.0.1/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -1,6 +1,9 @@
  ## Process this file with automake to produce Makefile.in
  

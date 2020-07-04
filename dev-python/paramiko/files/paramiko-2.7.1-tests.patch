@@ -1,0 +1,134 @@
+From e91cac80d679dfe16897988b0c14c1293a93c805 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 16 Apr 2020 09:22:59 +0200
+Subject: [PATCH 1/2] Replace pytest-relaxed with plain pytest.raises
+
+There is really no technical reason to bring pytest-relaxed to call
+@raises as a decorator while plain pytest works just fine.  Plus,
+pytest.raises() is used in test_sftp already.
+
+pytest-relaxed causes humongous breakage to other packages
+on the system.  It has been banned from Gentoo for this reason.
+---
+ dev-requirements.txt |  1 -
+ setup.cfg            |  3 ---
+ tests/test_client.py | 20 ++++++++++----------
+ 3 files changed, 10 insertions(+), 14 deletions(-)
+
+diff --git a/dev-requirements.txt b/dev-requirements.txt
+index f4f84748..b1b0cdf5 100644
+--- a/dev-requirements.txt
++++ b/dev-requirements.txt
+@@ -2,7 +2,6 @@
+ invoke>=1.0,<2.0
+ invocations>=1.2.0,<2.0
+ pytest==4.4.2
+-pytest-relaxed==1.1.5
+ # pytest-xdist for test dir watching and the inv guard task
+ pytest-xdist==1.28.0
+ mock==2.0.0
+diff --git a/setup.cfg b/setup.cfg
+index 44d029c4..99159096 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -17,9 +17,6 @@ ignore = E124,E125,E128,E261,E301,E302,E303,E402,E721,W503,E203,E722
+ max-line-length = 79
+ 
+ [tool:pytest]
+-# We use pytest-relaxed just for its utils at the moment, so disable it at the
+-# plugin level until we adapt test organization to really use it.
+-addopts = -p no:relaxed
+ # Loop on failure
+ looponfailroots = tests paramiko
+ # Ignore some warnings we cannot easily handle.
+diff --git a/tests/test_client.py b/tests/test_client.py
+index 60ad310c..88fd1d53 100644
+--- a/tests/test_client.py
++++ b/tests/test_client.py
+@@ -33,7 +33,7 @@ import warnings
+ import weakref
+ from tempfile import mkstemp
+ 
+-from pytest_relaxed import raises
++import pytest
+ from mock import patch, Mock
+ 
+ import paramiko
+@@ -684,10 +684,10 @@ class PasswordPassphraseTests(ClientTest):
+ 
+     # TODO: more granular exception pending #387; should be signaling "no auth
+     # methods available" because no key and no password
+-    @raises(SSHException)
+     def test_passphrase_kwarg_not_used_for_password_auth(self):
+-        # Using the "right" password in the "wrong" field shouldn't work.
+-        self._test_connection(passphrase="pygmalion")
++        with pytest.raises(SSHException):
++            # Using the "right" password in the "wrong" field shouldn't work.
++            self._test_connection(passphrase="pygmalion")
+ 
+     def test_passphrase_kwarg_used_for_key_passphrase(self):
+         # Straightforward again, with new passphrase kwarg.
+@@ -705,14 +705,14 @@ class PasswordPassphraseTests(ClientTest):
+             password="television",
+         )
+ 
+-    @raises(AuthenticationException)  # TODO: more granular
+     def test_password_kwarg_not_used_for_passphrase_when_passphrase_kwarg_given(  # noqa
+         self
+     ):
+         # Sanity: if we're given both fields, the password field is NOT used as
+         # a passphrase.
+-        self._test_connection(
+-            key_filename=_support("test_rsa_password.key"),
+-            password="television",
+-            passphrase="wat? lol no",
+-        )
++        with pytest.raises(AuthenticationException):
++            self._test_connection(
++                key_filename=_support("test_rsa_password.key"),
++                password="television",
++                passphrase="wat? lol no",
++            )
+-- 
+2.26.1
+
+From af228a2d950654ccdd4a5d665da0018bd976c108 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 16 Apr 2020 09:46:39 +0200
+Subject: [PATCH 2/2] Skip tests requiring invoke if it's not installed
+
+Since invoke is an optional dependency and only one group of tests
+require it, skip them gracefully rather than failing if it's not
+present.
+---
+ tests/test_config.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_config.py b/tests/test_config.py
+index 5e9aa059..5eeaeac3 100644
+--- a/tests/test_config.py
++++ b/tests/test_config.py
+@@ -6,7 +6,11 @@ from socket import gaierror
+ 
+ from paramiko.py3compat import string_types
+ 
+-from invoke import Result
++try:
++    from invoke import Result
++except ImportError:
++    Result = None
++
+ from mock import patch
+ from pytest import raises, mark, fixture
+ 
+@@ -705,6 +709,7 @@ def _expect(success_on):
+     return inner
+ 
+ 
++@mark.skipif(Result is None, reason='requires invoke package')
+ class TestMatchExec(object):
+     @patch("paramiko.config.invoke", new=None)
+     @patch("paramiko.config.invoke_import_error", new=ImportError("meh"))
+-- 
+2.26.1
+

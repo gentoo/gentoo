@@ -1,0 +1,25 @@
+From 1e8ce6e98d7ca0088624778964b9aed4696ce030 Mon Sep 17 00:00:00 2001
+From: Christoph Feck <cfeck@kde.org>
+Date: Thu, 14 Nov 2019 14:19:42 +0100
+Subject: Fix build with XFS
+
+BUG: 414050
+---
+ src/util/fileops.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/util/fileops.cpp b/src/util/fileops.cpp
+index c76b0e3..cfe4d5e 100644
+--- a/src/util/fileops.cpp
++++ b/src/util/fileops.cpp
+@@ -366,7 +366,7 @@ namespace bt
+ 
+ 	bool XfsPreallocate(const QString & path, Uint64 size)
+ 	{
+-		int fd = ::open(QFile::encodeName(path), O_RDWR | O_LARGEFILE);
++		int fd = ::open(QFile::encodeName(path).constData(), O_RDWR | O_LARGEFILE);
+ 		if (fd < 0)
+ 			throw Error(i18n("Cannot open %1: %2",path,strerror(errno)));
+ 
+-- 
+cgit v1.1

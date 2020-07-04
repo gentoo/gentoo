@@ -1,0 +1,13 @@
+--- a/Makefile	2019-10-03 23:02:15.000000000 +0200
++++ b/Makefile	2019-10-15 08:31:49.541999473 +0200
+@@ -14,8 +14,8 @@
+ #CFLAGS = -O2 -Wall -std=gnu89 -pedantic -Wextra -Wformat-security -D_FORTIFY_SOURCE=1 -Weverything -Wno-padded
+ 
+ # production
+-CC = gcc
+-CFLAGS = -O2 -std=gnu89
++CC ?= gcc
++CFLAGS ?= -O2 -std=gnu89
+ 
+ all: ethflopd
+ 

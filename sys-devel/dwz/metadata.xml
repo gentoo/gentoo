@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>dev-zero@gentoo.org</email>
-		<name>Tiziano Müller</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		The dwz package contains a program that attempts to optimize DWARF
 		debugging information contained in ELF shared libraries and ELF executables

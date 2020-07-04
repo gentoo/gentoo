@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -22,7 +22,7 @@ SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~ia64 ~mips ppc ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 ~sparc ~x86"
 #IUSE="java lua mono perl php python ruby tcl"
 #REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )"
 IUSE="java lua perl php python ruby tcl"
@@ -156,7 +156,7 @@ src_test() {
 	fi
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	if use java; then

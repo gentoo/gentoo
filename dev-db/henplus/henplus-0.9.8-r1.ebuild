@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,14 +29,14 @@ java_prepare() {
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_GENTOO_CLASSPATH="commons-cli-1,libreadline-java"
 
-src_install () {
+src_install() {
 	java-pkg_dojar "build/${PN}.jar"
 
 	java-pkg_dolauncher ${PN} -pre "${FILESDIR}/${PN}.pre" \
 		--main henplus.HenPlus
 
-	dodoc README || die
-	dohtml doc/HenPlus.html || die
+	dodoc README
+	dohtml doc/HenPlus.html
 
 	use doc && java-pkg_dojavadoc javadoc/api
 	use source && java-pkg_dosrc "src/${PN}"

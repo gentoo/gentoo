@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,12 +26,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-underlink.patch
 )
 
-src_prepare(){
+src_prepare() {
 	default
 	cp makefile.lin Makefile || die
 }
 
-src_install(){
+src_install() {
 	local datadir="/usr/share/games/${PN}"
 
 	dobin ${PN}

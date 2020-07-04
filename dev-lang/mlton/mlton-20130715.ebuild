@@ -79,15 +79,15 @@ src_compile() {
 		sed -i 's@^MAN_PREFIX_EXTRA :=.*@MAN_PREFIX_EXTRA := /share@' \
 			Makefile || die 'sed Makefile failed'
 
-		emake -j1 dirs runtime compiler CFLAGS="${CFLAGS}" || die
+		emake -j1 dirs runtime compiler CFLAGS="${CFLAGS}"
 		pax-mark m "${S}/mlton/mlton-compile"
 		pax-mark m "${S}/build/lib/mlton-compile"
 
 		# Does not support parallel make
-		emake -j1 all-no-docs CFLAGS="${CFLAGS}" || die
+		emake -j1 all-no-docs CFLAGS="${CFLAGS}"
 		if use doc; then
 			export VARTEXFONTS="${T}/fonts"
-			emake docs || die "failed to create documentation"
+			emake docs
 		fi
 	fi
 }
@@ -101,8 +101,8 @@ src_install() {
 		pax-mark m "${S}/usr/bin/mlyacc"
 		mv "${S}/usr" "${D}" || die "mv failed"
 	else
-		emake DESTDIR="${D}" install-no-docs || die
-		if use doc; then emake DESTDIR="${D}" TDOC="${D}"/usr/share/doc/${P} install-docs || die; fi
+		emake DESTDIR="${D}" install-no-docs
+		use doc && emake DESTDIR="${D}" TDOC="${D}"/usr/share/doc/${P} install-docs
 	fi
 }
 

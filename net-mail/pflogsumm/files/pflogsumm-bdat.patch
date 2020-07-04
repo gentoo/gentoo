@@ -1,0 +1,13 @@
+diff --git a/pflogsumm.pl b/pflogsumm.pl
+index 31de5bd..b3bedf9 100755
+--- a/pflogsumm.pl
++++ b/pflogsumm.pl
+@@ -1650,7 +1650,7 @@ sub proc_smtpd_reject {
+     # Next: get the reject "reason"
+     $rejReas = $rejRmdr;
+     unless(defined($opts{'verbMsgDetail'})) {
+-	if($rejTyp eq "RCPT" || $rejTyp eq "DATA" || $rejTyp eq "CONNECT") {	# special treatment :-(
++	if($rejTyp eq "RCPT" || $rejTyp eq "DATA" || $rejTyp eq "BDAT" || $rejTyp eq "CONNECT") {	# special treatment :-(
+ 	    # If there are "<>"s immediately following the reject code, that's
+ 	    # an email address or HELO string.  There can be *anything* in
+ 	    # those--incl. stuff that'll screw up subsequent parsing.  So just

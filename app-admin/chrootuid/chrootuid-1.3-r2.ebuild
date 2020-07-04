@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.porcupine.org/pub/security/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ia64 ppc x86"
+KEYWORDS="amd64 arm ~ia64 ppc x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"

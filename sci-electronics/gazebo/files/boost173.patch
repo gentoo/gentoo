@@ -1,0 +1,135 @@
+Index: gazebo-11.0.0/gazebo/gui/model/ModelTreeWidget.cc
+===================================================================
+--- gazebo-11.0.0.orig/gazebo/gui/model/ModelTreeWidget.cc
++++ gazebo-11.0.0/gazebo/gui/model/ModelTreeWidget.cc
+@@ -162,7 +162,7 @@ ModelTreeWidget::ModelTreeWidget(QWidget
+   // Connections
+   this->connections.push_back(
+       gui::model::Events::ConnectSaveModel(
+-      boost::bind(&ModelTreeWidget::OnSaveModel, this, _1)));
++      boost::bind(&ModelTreeWidget::OnSaveModel, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectNewModel(
+@@ -170,11 +170,11 @@ ModelTreeWidget::ModelTreeWidget(QWidget
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectModelPropertiesChanged(
+-      boost::bind(&ModelTreeWidget::OnModelPropertiesChanged, this, _1, _2)));
++      boost::bind(&ModelTreeWidget::OnModelPropertiesChanged, this, boost::placeholders::_1, boost::placeholders::_2)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectModelNameChanged(
+-      boost::bind(&ModelTreeWidget::OnModelNameChanged, this, _1)));
++      boost::bind(&ModelTreeWidget::OnModelNameChanged, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectNestedModelInserted(
+@@ -183,51 +183,51 @@ ModelTreeWidget::ModelTreeWidget(QWidget
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectLinkInserted(
+-      boost::bind(&ModelTreeWidget::OnLinkInserted, this, _1)));
++      boost::bind(&ModelTreeWidget::OnLinkInserted, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectJointInserted(
+-      boost::bind(&ModelTreeWidget::OnJointInserted, this, _1, _2, _3, _4)));
++      boost::bind(&ModelTreeWidget::OnJointInserted, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectModelPluginInserted(
+-      boost::bind(&ModelTreeWidget::OnModelPluginInserted, this, _1)));
++      boost::bind(&ModelTreeWidget::OnModelPluginInserted, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectNestedModelRemoved(
+-      boost::bind(&ModelTreeWidget::OnNestedModelRemoved, this, _1)));
++      boost::bind(&ModelTreeWidget::OnNestedModelRemoved, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectLinkRemoved(
+-      boost::bind(&ModelTreeWidget::OnLinkRemoved, this, _1)));
++      boost::bind(&ModelTreeWidget::OnLinkRemoved, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectJointRemoved(
+-      boost::bind(&ModelTreeWidget::OnJointRemoved, this, _1)));
++      boost::bind(&ModelTreeWidget::OnJointRemoved, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectModelPluginRemoved(
+-      boost::bind(&ModelTreeWidget::OnModelPluginRemoved, this, _1)));
++      boost::bind(&ModelTreeWidget::OnModelPluginRemoved, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(
+       gui::model::Events::ConnectJointNameChanged(
+-      boost::bind(&ModelTreeWidget::OnJointNameChanged, this, _1, _2)));
++      boost::bind(&ModelTreeWidget::OnJointNameChanged, this, boost::placeholders::_1, boost::placeholders::_2)));
+ 
+   this->connections.push_back(
+      event::Events::ConnectSetSelectedEntity(
+-       boost::bind(&ModelTreeWidget::OnDeselectAll, this, _1, _2)));
++       boost::bind(&ModelTreeWidget::OnDeselectAll, this, boost::placeholders::_1, boost::placeholders::_2)));
+ 
+   this->connections.push_back(
+      gui::model::Events::ConnectSetSelectedEntity(
+-       boost::bind(&ModelTreeWidget::OnSetSelectedEntity, this, _1, _2)));
++       boost::bind(&ModelTreeWidget::OnSetSelectedEntity, this, boost::placeholders::_1, boost::placeholders::_2)));
+ 
+   this->connections.push_back(
+      gui::model::Events::ConnectSetSelectedJoint(
+-       boost::bind(&ModelTreeWidget::OnSetSelectedJoint, this, _1, _2)));
++       boost::bind(&ModelTreeWidget::OnSetSelectedJoint, this, boost::placeholders::_1, boost::placeholders::_2)));
+ 
+   this->connections.push_back(
+      gui::model::Events::ConnectSetSelectedModelPlugin(
+-     boost::bind(&ModelTreeWidget::OnSetSelectedModelPlugin, this, _1, _2)));
++     boost::bind(&ModelTreeWidget::OnSetSelectedModelPlugin, this, boost::placeholders::_1, boost::placeholders::_2)));
+ 
+   this->ClearModelTree();
+ }
+Index: gazebo-11.0.0/gazebo/gui/model/SchematicViewWidget.cc
+===================================================================
+--- gazebo-11.0.0.orig/gazebo/gui/model/SchematicViewWidget.cc
++++ gazebo-11.0.0/gazebo/gui/model/SchematicViewWidget.cc
+@@ -83,31 +83,31 @@ void SchematicViewWidget::Reset()
+ void SchematicViewWidget::Init()
+ {
+   this->connections.push_back(gui::model::Events::ConnectLinkInserted(
+-      boost::bind(&SchematicViewWidget::AddNode, this, _1)));
++      boost::bind(&SchematicViewWidget::AddNode, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(gui::model::Events::ConnectLinkRemoved(
+-      boost::bind(&SchematicViewWidget::RemoveNode, this, _1)));
++      boost::bind(&SchematicViewWidget::RemoveNode, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(gui::model::Events::ConnectJointInserted(
+-      boost::bind(&SchematicViewWidget::AddEdge, this, _1, _2, _3, _4, _5)));
++      boost::bind(&SchematicViewWidget::AddEdge, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4, boost::placeholders::_5)));
+ 
+   this->connections.push_back(gui::model::Events::ConnectJointRemoved(
+-      boost::bind(&SchematicViewWidget::RemoveEdge, this, _1)));
++      boost::bind(&SchematicViewWidget::RemoveEdge, this, boost::placeholders::_1)));
+ 
+   this->connections.push_back(gui::model::Events::ConnectJointChanged(
+-      boost::bind(&SchematicViewWidget::UpdateEdge, this, _1, _2, _3, _4, _5)));
++      boost::bind(&SchematicViewWidget::UpdateEdge, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4, boost::placeholders::_5)));
+ 
+   this->connections.push_back(
+      event::Events::ConnectSetSelectedEntity(
+-       boost::bind(&SchematicViewWidget::OnDeselectAll, this, _1, _2)));
++       boost::bind(&SchematicViewWidget::OnDeselectAll, this, boost::placeholders::_1, boost::placeholders::_2)));
+ 
+   this->connections.push_back(
+      gui::model::Events::ConnectSetSelectedEntity(
+-       boost::bind(&SchematicViewWidget::OnSetSelectedEntity, this, _1, _2)));
++       boost::bind(&SchematicViewWidget::OnSetSelectedEntity, this, boost::placeholders::_1, boost::placeholders::_2)));
+ 
+   this->connections.push_back(
+      gui::model::Events::ConnectSetSelectedJoint(
+-       boost::bind(&SchematicViewWidget::OnSetSelectedJoint, this, _1, _2)));
++       boost::bind(&SchematicViewWidget::OnSetSelectedJoint, this, boost::placeholders::_1, boost::placeholders::_2)));
+ }
+ 
+ /////////////////////////////////////////////////

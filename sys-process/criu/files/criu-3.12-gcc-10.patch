@@ -1,0 +1,76 @@
+https://bugs.gentoo.org/707942
+
+From 10d9dcdb6e2fbe4646ff3f27cd35376ebaeeb0f9 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sun, 2 Feb 2020 18:45:59 +0000
+Subject: [PATCH] criu: fix build failure against gcc-10
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On gcc-10 (and gcc-9 -fno-common) build fails as:
+
+```
+ld: criu/arch/x86/crtools.o:criu/include/cr_options.h:159:
+  multiple definition of `rpc_cfg_file'; criu/arch/x86/cpu.o:criu/include/cr_options.h:159: first defined here
+make[2]: *** [scripts/nmk/scripts/build.mk:164: criu/arch/x86/crtools.built-in.o] Error 1
+```
+
+gcc-10 will change the default from -fcommon to fno-common:
+https://gcc.gnu.org/PR85678.
+
+The error also happens if CFLAGS=-fno-common passed explicitly.
+
+Reported-by: Toralf Förster
+Bug: https://bugs.gentoo.org/707942
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ criu/config.c             | 1 +
+ criu/include/cr_options.h | 2 +-
+ criu/include/pstree.h     | 2 +-
+ criu/include/tun.h        | 2 +-
+ 4 files changed, 4 insertions(+), 3 deletions(-)
+
+--- a/criu/config.c
++++ b/criu/config.c
+@@ -30,6 +30,7 @@
+ #include "common/xmalloc.h"
+ 
+ struct cr_options opts;
++char *rpc_cfg_file;
+ 
+ static int count_elements(char **to_count)
+ {
+--- a/criu/include/cr_options.h
++++ b/criu/include/cr_options.h
+@@ -156,7 +156,7 @@ struct cr_options {
+ };
+ 
+ extern struct cr_options opts;
+-char *rpc_cfg_file;
++extern char *rpc_cfg_file;
+ 
+ extern int parse_options(int argc, char **argv, bool *usage_error, bool *has_exec_cmd, int state);
+ extern int check_options(void);
+--- a/criu/include/pstree.h
++++ b/criu/include/pstree.h
+@@ -42,7 +42,7 @@ enum {
+ };
+ #define FDS_EVENT (1 << FDS_EVENT_BIT)
+ 
+-struct pstree_item *current;
++extern struct pstree_item *current;
+ 
+ struct rst_info;
+ /* See alloc_pstree_item() for details */
+--- a/criu/include/tun.h
++++ b/criu/include/tun.h
+@@ -5,7 +5,7 @@
+ #define TUN_MINOR	200
+ #endif
+ 
+-struct ns_id *ns;
++extern struct ns_id *ns;
+ 
+ #include <linux/netlink.h>
+ 

@@ -1,0 +1,27 @@
+From 9ddb289ca9611281a45734d92fdfd2d5fb83f050 Mon Sep 17 00:00:00 2001
+From: William Hubbs <w.d.hubbs@gmail.com>
+Date: Sat, 15 Feb 2020 12:28:35 -0600
+Subject: [PATCH 2/2] remove asan
+
+ASAN is unsupported on some targets
+https://bugs.gentoo.org/692822
+---
+ run_unittests.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/run_unittests.py b/run_unittests.py
+index 1c9aaf0c..171ee0f0 100755
+--- a/run_unittests.py
++++ b/run_unittests.py
+@@ -5475,7 +5475,7 @@ class LinuxlikeTests(BasePlatformTests):
+         self.assertEqual(install_rpath, 'baz')
+ 
+     @skip_if_not_base_option('b_sanitize')
+-    def test_pch_with_address_sanitizer(self):
++    def _test_pch_with_address_sanitizer(self):
+         if is_cygwin():
+             raise unittest.SkipTest('asan not available on Cygwin')
+         if is_openbsd():
+-- 
+2.24.1
+

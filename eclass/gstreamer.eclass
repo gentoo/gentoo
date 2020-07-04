@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gstreamer.eclass
@@ -23,7 +23,7 @@
 # plugin, consider adding media-plugins/gst-plugins-meta dependency, but
 # also list any packages that provide explicitly requested plugins.
 
-inherit eutils multilib multilib-minimal toolchain-funcs versionator xdg-utils
+inherit eutils ltprune multilib multilib-minimal toolchain-funcs versionator xdg-utils
 
 case "${EAPI:-0}" in
 	5|6)
@@ -95,7 +95,7 @@ RDEPEND="
 "
 DEPEND="
 	>=sys-apps/sed-4
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # Export common multilib phases.
@@ -139,7 +139,7 @@ gstreamer_get_plugins() {
 }
 
 # @FUNCTION: gstreamer_get_plugin_dir
-# @USAGE: gstreamer_get_plugin_dir [<build_dir>]
+# @USAGE: [build_dir]
 # @INTERNAL
 # @DESCRIPTION:
 # Finds plugin build directory and output it.
@@ -161,7 +161,7 @@ gstreamer_get_plugin_dir() {
 }
 
 # @FUNCTION: gstreamer_system_link
-# @USAGE: gstreamer_system_link gst-libs/gst/audio:gstreamer-audio [...]
+# @USAGE: <gst-libs/gst/audio:gstreamer-audio> [...]
 # @DESCRIPTION:
 # Walks through makefiles in order to make sure build will link against system
 # libraries.

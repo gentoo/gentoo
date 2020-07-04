@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,7 +12,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-nettool/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.25.10:2
@@ -26,8 +26,7 @@ RDEPEND="${COMMON_DEPEND}
 	|| (
 		net-misc/iputils
 		net-analyzer/tcptraceroute
-		net-analyzer/traceroute
-		sys-freebsd/freebsd-usbin )
+		net-analyzer/traceroute )
 	net-analyzer/nmap
 	net-dns/bind-tools
 	userland_GNU? ( net-misc/netkit-fingerd net-misc/whois )

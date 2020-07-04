@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ DEPEND="!!app-emulation/wine:0"
 
 S="${WORKDIR}"
 
-src_install(){
+src_install() {
 	insinto /usr/share/wine/gecko
 	use abi_x86_32 && doins "${DISTDIR}/${MY_PN}-${PV}-x86.msi"
 	use abi_x86_64 && doins "${DISTDIR}/${MY_PN}-${PV}-x86_64.msi"

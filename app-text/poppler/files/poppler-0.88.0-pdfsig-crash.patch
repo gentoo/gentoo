@@ -1,0 +1,30 @@
+From 5cdb78fde50e3dc16006070b0884dfb6b23d964c Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Thu, 14 May 2020 00:22:33 +0200
+Subject: [PATCH] Fix crash in PDFDoc::getSignatureFields when there's no Forms
+ at all
+
+---
+ poppler/PDFDoc.cc | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/poppler/PDFDoc.cc b/poppler/PDFDoc.cc
+index 572c77be..4b5621fc 100644
+--- a/poppler/PDFDoc.cc
++++ b/poppler/PDFDoc.cc
+@@ -613,10 +613,12 @@ static void addSignatureFieldsToVector(FormField *ff, std::vector<FormFieldSigna
+ 
+ std::vector<FormFieldSignature*> PDFDoc::getSignatureFields()
+ {
+-//   const int num_pages = getNumPages();
+   std::vector<FormFieldSignature*> res;
+ 
+   const Form *f = catalog->getForm();
++  if (!f)
++      return res;
++
+   const int nRootFields = f->getNumFields();
+   for (int i = 0; i < nRootFields; ++i) {
+     FormField *ff = f->getRootField(i);
+-- 
+2.26.2

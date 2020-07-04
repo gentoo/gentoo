@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ EAPI=4
 inherit toolchain-funcs
 
 DESCRIPTION="RFC1413-compliant identd server supporting masqueraded connections"
-HOMEPAGE="https://gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="http://cats.meow.at/~peter/pimpd_${PV}.tar.gz"
 
 LICENSE="GPL-2"

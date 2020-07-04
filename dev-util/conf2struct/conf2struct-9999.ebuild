@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -23,10 +23,10 @@ RDEPEND="dev-libs/libconfig
 	dev-perl/Conf-Libconfig"
 DEPEND="${RDEPEND}"
 
-src_compile(){
+src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
-src_install(){
-	emake DESTDIR="${D}" prefix="${EPREFIX%/}/usr" install
+src_install() {
+	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" install
 }

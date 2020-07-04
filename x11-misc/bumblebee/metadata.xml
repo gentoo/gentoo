@@ -6,6 +6,10 @@
 		<name>NP-Hardass</name>
 	</maintainer>
 	<maintainer type="person">
+		<email>pacho@gentoo.org</email>
+		<name>Pacho Ramos</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>rei4dan@gmail.com</email>
 		<name>My Th</name>
 	</maintainer>
@@ -18,7 +22,7 @@
 	means of managing Optimus hybrid graphics chipsets. A primary goal of this
 	project is to not only enable use of the discrete GPU for rendering, but
 	also to enable smart power management of the dGPU when it's not in use.
-</longdescription>
+	</longdescription>
 	<use>
 		<flag name="bbswitch">Add dependency on <pkg>sys-power/bbswitch</pkg> for
 			PM feature</flag>

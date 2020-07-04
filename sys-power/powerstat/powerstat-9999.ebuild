@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,14 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-# Don't compress manpages
-PATCHES=( "${FILESDIR}"/"${PN}"-0.02.17-makefile.patch )
+src_prepare() {
+	default
+
+	# Don't compress manpages
+	sed -i  -e '/install:/s/ powerstat.8.gz//' \
+		-e '/cp powerstat.8/s/.gz//' \
+		Makefile || die "sed failed"
+}
 
 src_compile() {
 	emake CC="$(tc-getCC)"

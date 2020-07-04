@@ -17,7 +17,6 @@
   </longdescription>
   <use>
     <flag name="cuda">Enable NVIDIA CUDA toolkit support</flag>
-    <flag name="mkl">Enable a plugin for Intel Math Kernel Library <pkg>sci-libs/mkl</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">libdynd/libdynd</remote-id>

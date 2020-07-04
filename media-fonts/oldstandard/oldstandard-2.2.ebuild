@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit font
 
@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="app-arch/unzip"
 RDEPEND=""
 
-S="${WORKDIR}"
-FONT_S="${S}"
+S=${WORKDIR}
+FONT_S=${WORKDIR}
 FONT_SUFFIX="otf ttf"
-DOCS="OFL.txt OFL-FAQ.txt FONTLOG.txt"
+DOCS=( OFL.txt OFL-FAQ.txt FONTLOG.txt )

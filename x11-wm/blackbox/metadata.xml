@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
+	</maintainer>
 	<longdescription>
 		Blackbox is that fast, light window manager you have been looking for
 		without all those annoying library dependencies. If you have a C++
 		compiler and the X Window System you can compile and use it.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">blackboxwm</remote-id>
+		<remote-id type="github">bbidulock/blackboxwm</remote-id>
 	</upstream>
 </pkgmetadata>

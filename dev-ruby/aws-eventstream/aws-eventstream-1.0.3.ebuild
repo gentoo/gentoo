@@ -1,13 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 USE_RUBY="ruby24 ruby25 ruby26"
 
 # Not packaged and upstream not tagged.
 RUBY_FAKEGEM_RECIPE_TEST="none"
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 inherit ruby-fakegem
 

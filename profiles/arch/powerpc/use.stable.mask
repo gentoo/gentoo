@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
-# sys-auth/elogind not stable yet. bug #682158
-elogind
-
 # Matt Turner <mattst88@gentoo.org> (2018-04-25)
 # Dropped stable keywords
 octave

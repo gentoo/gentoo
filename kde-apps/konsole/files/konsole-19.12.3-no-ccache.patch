@@ -1,0 +1,45 @@
+From 3529286a0a4885ad3626a4081407fb56a8a568f9 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 24 Mar 2020 00:24:05 +0100
+Subject: [PATCH] Revert "CMakeLists.txt: use ccache if present"
+
+This was added for feature-parity with Meson-based projects; but an individual
+package is the wrong place for that. To avoid the proliferation of auto-
+detected ccache support in kde.org packages please submit such a proposal to
+kde-frameworks-devel instead, where it could be added for the benefit of all
+the projects using ECM. And more importantly, with a standard switch to disable
+it for packaging environments.
+
+This reverts commit 007c2a08523887cf9c0445a288ad82994bd02a57.
+
+Differential Revision: https://phabricator.kde.org/D24805
+---
+ CMakeLists.txt | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 17c82b0d..45ab9f62 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,18 +17,6 @@ set (KF5_MIN_VERSION "5.6.0")
+ # Release script will create bugzilla versions
+ project(konsole VERSION ${RELEASE_SERVICE_VERSION})
+ 
+-find_program(CCACHE_FOUND "ccache")
+-set(CCACHE_SUPPORT ON CACHE BOOL "Enable ccache support")
+-if (CCACHE_FOUND AND CCACHE_SUPPORT)
+-  if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" # GNU is GNU GCC
+-      OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+-    # without this compiler messages in `make` backend would be uncolored
+-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -fdiagnostics-color=auto")
+-  endif()
+-  set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "ccache")
+-  set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK "ccache")
+-endif()
+-
+ find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
+ 
+-- 
+2.25.1
+

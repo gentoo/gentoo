@@ -7,9 +7,10 @@
 	</maintainer>
 	<use>
 		<flag name="ethernet">Enable ethernet emulation</flag>
-		<flag name="fullscreen">Enable the ability to run fullscreen</flag>
-		<flag name="sdlsound">Use <pkg>media-libs/libsdl</pkg> for sound support</flag>
-		<flag name="vte">Enable support for <pkg>x11-libs/vte</pkg> in the GTK+ interface</flag>
+		<flag name="headless">Include the headless variant of the emulator</flag>
+		<flag name="mpg123">Enable mp3@64 cartridge support</flag>
+		<flag name="parport">Enable parallel port SID support</flag>
+		<flag name="pci">Enable PCI device discovery using <pkg>sys-apps/pciutils</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">vice-emu</remote-id>

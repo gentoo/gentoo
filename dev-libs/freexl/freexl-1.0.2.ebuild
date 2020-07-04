@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="Simple XLS data extraction library"
-HOMEPAGE="http://www.gaia-gis.it/gaia-sins/"
-SRC_URI="http://www.gaia-gis.it/gaia-sins/${PN}-sources/${P}.tar.gz"
+HOMEPAGE="https://www.gaia-gis.it/fossil/freexl/index"
+SRC_URI="https://www.gaia-gis.it/gaia-sins/${PN}-sources/${P}.tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"

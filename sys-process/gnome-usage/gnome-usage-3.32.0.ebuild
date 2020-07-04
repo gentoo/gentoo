@@ -1,25 +1,25 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-VALA_MIN_API_VERSION="0.26"
+VALA_MIN_API_VERSION="0.36"
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="A nice way to view information about use of system resources."
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-usage"
+HOMEPAGE="https://wiki.gnome.org/Apps/Usage"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
-	>=dev-libs/glib-2.38.0:2
+	>=dev-libs/glib-2.38:2
 	>=x11-libs/gtk+-3.20.10:3
-	>=gnome-base/libgtop-2.34.0:2
 	>=dev-libs/libdazzle-3.30
+	>=gnome-base/libgtop-2.34.0:2
 "
 
 DEPEND="${RDEPEND}

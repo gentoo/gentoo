@@ -12,6 +12,7 @@ DESCRIPTION="Utilities for handling Byte Order Marks"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Encode-1.990.0

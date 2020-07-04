@@ -1,0 +1,15 @@
+diff --git a/contrib/tig-completion.bash b/contrib/tig-completion.bash
+index 5aef3fd..cec0632 100755
+--- a/contrib/tig-completion.bash
++++ b/contrib/tig-completion.bash
+@@ -29,6 +29,10 @@
+ #       at source time then all lookups will be done on demand,
+ #       which may be slightly slower.
+ 
++if ! type -f __git_complete &>/dev/null; then
++	__git_complete() { complete "${1}"; }
++fi
++
+ __tig_options="
+ 	-v --version
+ 	-h --help

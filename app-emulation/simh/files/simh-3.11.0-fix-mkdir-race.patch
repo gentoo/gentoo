@@ -1,0 +1,11 @@
+--- simh-3.9.0/makefile
++++ simh-3.9.0/makefile
+@@ -249,7 +249,7 @@
+     NETWORK_OPT = $(NETWORK_CCDEFS)
+   endif
+   ifneq (binexists,$(shell if $(TEST) -e BIN; then echo binexists; fi))
+-    MKDIRBIN = if $(TEST) ! -e BIN; then mkdir BIN; fi
++    MKDIRBIN = mkdir -p BIN
+   endif
+ else
+   #Win32 Environments (via MinGW32)

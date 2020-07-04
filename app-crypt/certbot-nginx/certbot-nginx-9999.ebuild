@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python{2_7,3_5,3_6,3_7})
+PYTHON_COMPAT=(python{3_6,3_7})
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/certbot/certbot.git"
@@ -25,9 +25,8 @@ IUSE=""
 
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
-	>=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
-	>=app-crypt/certbot-0.35.0[${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]
+	>=app-crypt/acme-1.4.0[${PYTHON_USEDEP}]
+	>=app-crypt/certbot-1.4.0[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"

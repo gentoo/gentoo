@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>chainsaw@gentoo.org</email>
-    <name>Tony Vroon</name>
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
   </maintainer>
   <upstream>
     <remote-id type="github">Exa-Networks/exabgp</remote-id>

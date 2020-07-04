@@ -1,0 +1,43 @@
+--- a/Makefile	2020-05-21 20:46:14.961927486 +0200
++++ b/Makefile	2020-05-21 20:49:16.203121793 +0200
+@@ -6,7 +6,7 @@
+ 
+ SOURCE = pdfsandwich.ml
+ TARGET = pdfsandwich
+-MANUAL =	$(TARGET).1.gz
++MANUAL =	$(TARGET).1
+ 
+ VERSION :=	$(shell cat pdfsandwich_version)
+ 
+@@ -24,7 +24,7 @@
+ 
+ $(MANUAL):	manual.txt
+ 	# you need gawk for this:
+-	./txt2man -t PDFSANDWICH manual.txt | gzip -9 > $(MANUAL)
++	./txt2man -t PDFSANDWICH manual.txt > $(MANUAL)
+ 
+ # Canceling pathological implicit rule:
+ %: %.o
+@@ -40,7 +40,7 @@
+ include makefile.installprefix
+ 
+ PREF = $(DESTDIR)$(PREFIX)
+-INSTALL = 	install -s
++INSTALL = 	install
+ CP = 		cp
+ INSTALLBINDIR =	$(PREF)/bin
+ INSTALLMANDIR = $(PREF)/share/man/man1
+@@ -47,12 +47,8 @@
+ INSTALLDOCDIR = $(PREF)/share/doc/$(TARGET)
+ 
+ install: $(DOCFILES) $(ADDITIONAL)
+-	(umask 0022; mkdir -p $(INSTALLBINDIR) $(INSTALLDOCDIR) $(INSTALLMANDIR))
++	(umask 0022; mkdir -p $(INSTALLBINDIR))
+ 	$(INSTALL) $(TARGET) $(INSTALLBINDIR)
+-	$(CP) $(DOCFILES) $(INSTALLDOCDIR)
+-	gzip -9 $(INSTALLDOCDIR)/changelog
+-	$(CP) $(MANUAL) $(INSTALLMANDIR)
+-	chmod 644 $(INSTALLDOCDIR)/* $(INSTALLMANDIR)/*
+ 
+ uninstall:
+ 	rm -rf $(INSTALLBINDIR)/$(TARGET) $(INSTALLDOCDIR) $(INSTALLMANDIR)/$(MANUAL)

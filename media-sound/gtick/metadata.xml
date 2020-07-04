@@ -5,4 +5,12 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>alexander@tsoy.me</email>
+		<name>Alexander Tsoy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>

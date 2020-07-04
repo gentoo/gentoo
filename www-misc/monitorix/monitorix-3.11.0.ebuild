@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit systemd user
+inherit systemd
 
 DESCRIPTION="A lightweight system monitoring tool"
 HOMEPAGE="https://www.monitorix.org/"
@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="dev-perl/Config-General
+RDEPEND="
+	acct-user/monitorix
+	acct-group/monitorix
+	dev-perl/Config-General
 	dev-perl/DBI
 	dev-perl/HTTP-Server-Simple
 	dev-perl/IO-Socket-SSL
@@ -23,11 +26,6 @@ RDEPEND="dev-perl/Config-General
 	dev-perl/XML-Simple
 	net-analyzer/rrdtool[graph,perl]
 	dev-perl/CGI"
-
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
-}
 
 src_prepare() {
 	# Put better Gentoo defaults in the configuration file.
@@ -45,7 +43,7 @@ src_compile() { :; }
 src_install() {
 	dosbin ${PN}
 
-	newinitd ${FILESDIR}/monitorix ${PN}
+	newinitd "${FILESDIR}/monitorix" ${PN}
 
 	insinto /etc/monitorix
 	doins ${PN}.conf
@@ -99,7 +97,7 @@ pkg_postinst() {
 	elog "  sys-power/nut       (Network UPS Tools statistics)"
 	elog
 	elog "If you wish to use your own web server:"
-	elog "  Web data can be found at: ${EROOT%/}/var/lib/${PN}/www/"
+	elog "  Web data can be found at: ${EROOT}/var/lib/${PN}/www/"
 	elog "  Also please check the correct user and group ownership"
-	elog "  of ${EROOT%/}/var/lib/${PN}/www/imgs/"
+	elog "  of ${EROOT}/var/lib/${PN}/www/imgs/"
 }

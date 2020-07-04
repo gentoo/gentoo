@@ -6,6 +6,10 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">kode54/dumb</remote-id>
 		<remote-id type="sourceforge">dumb</remote-id>
 	</upstream>
+	<use>
+		<flag name="allegro">Add support for Allegro 4</flag>
+	</use>
 </pkgmetadata>

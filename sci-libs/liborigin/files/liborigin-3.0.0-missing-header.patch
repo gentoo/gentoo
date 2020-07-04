@@ -1,0 +1,38 @@
+From 78da3c4456cef15c91b5e5fcc1e82ca2364ea654 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 20 May 2020 22:28:21 +0200
+Subject: [PATCH] Add missing header
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ OriginAnyParser.cpp | 1 +
+ opj2dat.cpp         | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/OriginAnyParser.cpp b/OriginAnyParser.cpp
+index 07a619e..c90f6e4 100644
+--- a/OriginAnyParser.cpp
++++ b/OriginAnyParser.cpp
+@@ -22,6 +22,7 @@
+ #include "OriginAnyParser.h"
+ #include <sstream>
+ #include <cinttypes>
++#include <iostream>
+ 
+ /* define a macro to get an int (or uint) from a istringstream in binary mode */
+ #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+diff --git a/opj2dat.cpp b/opj2dat.cpp
+index 230ac84..67b0815 100644
+--- a/opj2dat.cpp
++++ b/opj2dat.cpp
+@@ -31,6 +31,7 @@
+ #include <cmath>
+ #include <fstream>
+ #include <sstream>
++#include <iostream>
+ #include <string>
+ 
+ using namespace std;
+-- 
+2.26.2
+

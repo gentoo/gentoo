@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>Kangie@footclan.ninja</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="github">aidecoe/plymouth-openrc-plugin</remote-id>
+		<maintainer status="active">
+			<email>Kagnie@footclan.ninja</email>
+			<name>Matt Jolly</name>
+		</maintainer>
+		<remote-id type="github">Kangie/plymouth-openrc-plugin</remote-id>
 	</upstream>
 </pkgmetadata>

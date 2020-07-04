@@ -15,6 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc +introspection libcanberra static-libs +vala +xtest"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="app-accessibility/at-spi2-core
