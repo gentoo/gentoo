@@ -4800,7 +4800,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.1 5.30.2 5.30.2-r1 5.30.2-r2 5.30.3 5.30.3-r1 5.30.3-r2: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.31 7.3.18 7.3.19 7.4.6 7.4.7: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.17-r2 2.7.18 3.6.10-r1 3.6.10-r2 3.7.7-r1 3.7.7-r2 3.7.8 3.8.2-r1 3.8.2-r2 3.8.3 3.9.0_alpha6 3.9.0_beta1 3.9.0_beta2 3.9.0_beta3: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18 3.6.10-r2 3.6.11 3.7.7-r2 3.7.8 3.8.2-r2 3.8.3 3.9.0_beta3 3.9.0_beta4: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1 10.2 10.3 10.4 10.5: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 2020.05.1 9999: A compiler for the Perl 6 programming language
@@ -8674,7 +8674,7 @@ dev-python/serpent 1.30: A simple serialization library based on ast.literal_eva
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 44.0.0 44.1.0 46.4.0-r1 47.1.1 47.3.1: Collection of extensions to Distutils
+dev-python/setuptools 44.0.0 44.1.0 46.4.0-r1 47.1.1 47.3.1 49.1.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 3.5.0 4.1.0 4.1.1 4.1.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.0 1.1: A setuptools_scm plugin for git archives
