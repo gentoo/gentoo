@@ -10,7 +10,7 @@ inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n multili
 
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
-
+STAGING_COMMIT="3f3a05f91c85cb5ccdc4c8185bcc862c6e96cd52"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
 	EGIT_BRANCH="master"
@@ -24,9 +24,9 @@ else
 fi
 S="${WORKDIR}/${MY_P}"
 
-STAGING_P="wine-staging-${PV}"
+STAGING_P="wine-staging-${STAGING_COMMIT}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
-GWP_V="20191222"
+GWP_V="20200523"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
@@ -39,7 +39,7 @@ if [[ ${PV} == "9999" ]] ; then
 	STAGING_EGIT_REPO_URI="https://github.com/wine-staging/wine-staging.git"
 else
 	SRC_URI="${SRC_URI}
-	staging? ( https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${STAGING_P}.tar.gz )"
+	staging? ( https://github.com/wine-staging/wine-staging/archive/${STAGING_COMMIT}.tar.gz -> ${STAGING_P}.tar.gz )"
 fi
 
 LICENSE="LGPL-2.1"
@@ -130,7 +130,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47.1[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:5.0.0 )
+	mono? ( app-emulation/wine-mono:5.1.0 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -167,6 +167,7 @@ PATCHES=(
 	"${PATCHDIR}/patches/${MY_PN}-5.0-winegcc.patch" #260726
 	"${PATCHDIR}/patches/${MY_PN}-4.7-multilib-portage.patch" #395615
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
+	"${PATCHDIR}/patches/${MY_PN}-5.9-Revert-makedep-Install-also-generated-typelib-for-in.patch"
 )
 PATCHES_BIN=()
 
