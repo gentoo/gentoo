@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2020-07-04)
+# Last rite, dead upstream, several open bugs.
+# Removal after 2020-09-01
+# Bug #730640
+net-misc/termpkg
+
 # Michał Górny <mgorny@gentoo.org> (2020-07-04)
 # Unmaintained.  Python 2 only.  Effectively depends on vulnerable
 # version of dev-python/pillow.  No revdeps.  Multiple bugs open.
