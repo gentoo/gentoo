@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools bash-completion-r1 flag-o-matic linux-info distutils-r1 systemd toolchain-funcs udev usr-ldscript
+inherit autotools bash-completion-r1 distutils-r1 flag-o-matic linux-info pam systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -21,7 +21,7 @@ fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
-IUSE="custom-cflags debug kernel-builtin libressl python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin libressl pam python +rootfs test-suite static-libs"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -32,6 +32,7 @@ DEPEND="
 	virtual/libudev[static-libs(-)?]
 	libressl? ( dev-libs/libressl:0=[static-libs?] )
 	!libressl? ( dev-libs/openssl:0=[static-libs?] )
+	pam? ( sys-libs/pam[static-libs?] )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
 	)
@@ -129,10 +130,13 @@ src_configure() {
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
+		--with-pamconfigsdir=/dev/null # debian configs
+		--with-pammoduledir="$(getpam_mod_dir)"
 		--with-python="${EPYTHON}"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
+		$(use_enable pam)
 		$(use_enable python pyzfs)
 		$(use_enable static-libs static)
 	)
