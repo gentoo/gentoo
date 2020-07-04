@@ -23,7 +23,9 @@ RDEPEND="
 		dev-python/singledispatch[${PYTHON_USEDEP}]
 		dev-python/typing[${PYTHON_USEDEP}]
 	' -2)
-	$(python_gen_cond_dep 'dev-python/zipp[${PYTHON_USEDEP}]' pypy3 python3_{6,7})
+	$(python_gen_cond_dep '
+		dev-python/zipp[${PYTHON_USEDEP}]
+	' -2 pypy3 python3_{6,7})
 "
 BDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]
