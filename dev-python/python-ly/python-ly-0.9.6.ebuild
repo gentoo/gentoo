@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Tool and library for manipulating LilyPond files"
-HOMEPAGE="https://github.com/wbsoft/python-ly https://pypi.org/project/python-ly/"
+HOMEPAGE="https://github.com/frescobaldi/python-ly https://pypi.org/project/python-ly/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
