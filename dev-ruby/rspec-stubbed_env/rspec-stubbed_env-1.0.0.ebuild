@@ -18,6 +18,6 @@ IUSE=""
 SLOT="1"
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 ruby_add_rdepend ">=dev-ruby/rspec-3.0"
