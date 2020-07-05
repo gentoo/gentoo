@@ -22,7 +22,7 @@ HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
 SLOT="0/4"
-IUSE="cxx ftdi java parport python ruby serial static-libs test +udev usb"
+IUSE="+cxx ftdi java parport python ruby serial static-libs test +udev usb"
 REQUIRED_USE="java? ( cxx )
 	python? ( cxx ${PYTHON_REQUIRED_USE} )
 	ruby? ( cxx || ( $(ruby_get_use_targets) ) )"
