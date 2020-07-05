@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils multilib
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="provide a uniform API and user configuration for joysticks and game controllers"
 HOMEPAGE="http://freshmeat.net/projects/libjsw/"
@@ -11,34 +12,37 @@ SRC_URI="http://wolfsinger.com/~wolfpack/packages/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86"
-IUSE=""
 
-DEPEND=""
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch # 724664
+)
 
 src_prepare() {
-	cp include/jsw.h libjsw/
-	epatch "${FILESDIR}"/${P}-build.patch
+	default
+
+	cp include/jsw.h libjsw/ || die
 	bunzip2 libjsw/man/* || die
 }
 
+src_configure() {
+	tc-export CC CXX
+}
+
 src_compile() {
-	LDFLAGS+=" -Wl,-soname,libjsw.so.1"
-	cd libjsw
-	emake
-	ln -s libjsw.so.${PV} libjsw.so
+	emake -C libjsw
 }
 
 src_install() {
-	insinto /usr/include
-	doins include/jsw.h
+	doheader include/jsw.h
 
 	dodoc README
-	docinto jswdemos
-	dodoc jswdemos/*
+	dodoc -r jswdemos
+	docompress -x /usr/share/doc/${PF}/jswdemos
 
-	cd "${S}"/libjsw
+	cd libjsw || die
 	dolib.so libjsw.so.${PV}
 	dosym libjsw.so.${PV} /usr/$(get_libdir)/libjsw.so
 	dosym libjsw.so.${PV} /usr/$(get_libdir)/libjsw.so.1
+
 	doman man/*
 }
