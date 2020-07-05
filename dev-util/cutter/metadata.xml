@@ -12,8 +12,4 @@
     <upstream>
         <remote-id type="github">radareorg/cutter</remote-id>
     </upstream>
-    <use>
-        <flag name="jupyter">Add support for jupyter notebook</flag>
-        <flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for in-app jupyter browser</flag>
-    </use>
 </pkgmetadata>
