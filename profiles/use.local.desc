@@ -2144,6 +2144,7 @@ dev-libs/jemalloc:lazy-lock - Enable lazy locking (only lock when multi-threaded
 dev-libs/jemalloc:prof - Enable allocation profiling
 dev-libs/jemalloc:stats - Enable statistics calculation/reporting
 dev-libs/jemalloc:xmalloc - Add support for xmalloc (abort-on-out-of-memory)
+dev-libs/json-c:cpu-flags-x86-rdrand - Enable RDRAND Hardware RNG Hash Seed
 dev-libs/kreport:marble - Enable displaying of maps using kde-apps/marble
 dev-libs/kreport:scripting - Support Qml scripting using dev-qt/qtdeclarative
 dev-libs/libbase58:tools - Build command line base58 tool
@@ -4153,6 +4154,7 @@ media-gfx/povray:mkl - Enable support for Intel Vector Math Library, part of sci
 media-gfx/pqiv:archive - Enable support for images in archives and cbX comic book files
 media-gfx/pstoedit:emf - Enable media-libs/libemf support
 media-gfx/pstoedit:pptx - Enable support for generating PowerPoint pptx files
+media-gfx/qimgv:opencv - Enable HQ scaling via media-libs/opencv
 media-gfx/qimgv:video - Add support for gif/webm playback via libmpv
 media-gfx/shotwell:opencv - Enable face detection via media-libs/opencv
 media-gfx/sigal:s3 - Enables support for the Amazon S3 service.
