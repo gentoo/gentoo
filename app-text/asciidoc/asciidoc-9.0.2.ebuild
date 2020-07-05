@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit autotools eutils python-single-r1 readme.gentoo-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}-py3/archive/${PV/_/}.tar.gz -> ${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="examples test"
+IUSE="doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="!test? ( test )"
@@ -54,6 +54,9 @@ src_prepare() {
 	sed -i -e "s:^CONF_DIR=.*:CONF_DIR='${EPREFIX}/etc/asciidoc':" \
 		asciidoc.py || die
 
+	# enforce usage of the configured version of Python
+	sed -i -e "s:python3:${EPYTHON}:" Makefile.in || die
+
 	eautoreconf
 }
 
@@ -61,25 +64,16 @@ src_configure() {
 	econf --sysconfdir="${EPREFIX}"/usr/share
 }
 
-src_test() {
-	local -x ASCIIDOC_PY=asciidoc.py
-	"${EPYTHON}" tests/test${PN}.py run || die
-}
-
 src_install() {
 	default
+
+	if use doc; then
+		emake DESTDIR="${D}" docs
+	fi
+
 	python_fix_shebang "${ED}"/usr/bin/*.py
 
 	readme.gentoo_create_doc
-
-	# Below results in some files being installed twice in different locations, but they are
-	# in the right place, uncompressed, and there won't be any broken links. See bug #483336
-	if use examples; then
-		# examples/website is full of relative symlinks,
-		# deref them for copying, which dodoc doesn't do
-		cp -rL examples/website "${ED}"/usr/share/doc/${PF}/examples || die
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
 }
 
 pkg_postinst() {
