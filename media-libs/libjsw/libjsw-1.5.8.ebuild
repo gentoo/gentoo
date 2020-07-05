@@ -15,6 +15,7 @@ KEYWORDS="amd64 ppc ~ppc64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-build.patch # 724664
+	"${FILESDIR}"/${P}-musl.patch # 713792
 )
 
 src_prepare() {
