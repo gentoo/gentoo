@@ -30,6 +30,8 @@ REQUIRED_USE="|| ( alsa pulseaudio )"
 
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
+PATCHES=( "${FILESDIR}/configure-bashisms.patch" )
+
 src_prepare() {
 	default
 	sed -i 's/-std=gnu++0x/-std=gnu++17/' Makefile.am || die
