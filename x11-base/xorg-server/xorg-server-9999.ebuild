@@ -5,7 +5,7 @@ EAPI=7
 
 XORG_DOC=doc
 XORG_EAUTORECONF="yes"
-inherit xorg-3 multilib flag-o-matic
+inherit xorg-3 multilib flag-o-matic toolchain-funcs
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
@@ -173,6 +173,7 @@ pkg_setup() {
 		--without-dtrace
 		--without-fop
 		--with-sha1=libcrypto
+		CPP="$(tc-getPROG CPP cpp)"
 	)
 
 	if use systemd || use elogind; then
