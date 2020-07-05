@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-05)
+# No upstream activity in past few years.
+# Needs porting to gtk3/fxce4panel-4.15: bug #729492.
+# Removal in 30 days.
+x11-misc/xmonad-log-applet
+
 # Hans de Graaff <graaff@gentoo.org> (2020-07-05)
 # Obsolete slot with known security issues. Please
 # update to slot "5" instead.
