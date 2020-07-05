@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
 DEPEND=sys-libs/zlib:=[minizip] x11-libs/libX11 x11-libs/libXext png? ( media-libs/libpng:0= ) gtk? ( dev-libs/glib:2 media-libs/libsdl2[joystick] >=x11-libs/gtk+-3.22:3[wayland?] x11-libs/libXrandr x11-misc/xdg-utils alsa? ( media-libs/alsa-lib ) opengl? ( media-libs/libepoxy virtual/opengl ) portaudio? ( >=media-libs/portaudio-19_pre ) pulseaudio? ( media-sound/pulseaudio ) xv? ( x11-libs/libXv ) wayland? ( dev-libs/wayland ) ) xinerama? ( x11-libs/libXinerama ) x11-base/xorg-proto dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Super Nintendo Entertainment System (SNES) emulator
@@ -11,5 +11,5 @@ RDEPEND=sys-libs/zlib:=[minizip] x11-libs/libX11 x11-libs/libXext png? ( media-l
 RESTRICT=bindist
 SLOT=0
 SRC_URI=https://github.com/snes9xgit/snes9x/archive/1.60.tar.gz -> snes9x-1.60.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	meson	8f7dc8ed2d76af0b33328789c017e677	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	meson	71d293a701d6362387e1214da368c848	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=d0e7993538f3b274357f8c92ee0ef180
