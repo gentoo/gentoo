@@ -2,14 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3
+
+MY_PTV=0.4
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
 HOMEPAGE="https://github.com/martanne/vis"
-EGIT_REPO_URI="https://github.com/martanne/vis.git"
+SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/${P}.tar.gz
+	test? ( https://github.com/martanne/vis-test/releases/download/v${MY_PTV}/vis-test-${MY_PTV}.tar.gz )"
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+ncurses selinux test tre"
 RESTRICT="!test? ( test )"
 
@@ -23,6 +25,14 @@ RDEPEND="${DEPEND}
 	app-eselect/eselect-vi"
 
 src_prepare() {
+	if use test; then
+		rm -r test || die
+		mv "${WORKDIR}/vis-test-${MY_PTV}" test || die
+
+		# https://bugs.gentoo.org/722014 https://github.com/martanne/vis-test/pull/22
+		sed -i 's;./ccan-config > config.h;./ccan-config "${CC}" ${CFLAGS} > config.h;' test/core/Makefile || die
+	fi
+
 	sed -i 's|STRIP?=.*|STRIP=true|' Makefile || die
 	sed -i 's|${DOCPREFIX}/vis|${DOCPREFIX}|' Makefile || die
 	sed -i 's|DOCUMENTATION = LICENSE|DOCUMENTATION =|' Makefile || die
