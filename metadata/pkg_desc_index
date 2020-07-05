@@ -5035,7 +5035,7 @@ dev-libs/liberasurecode 1.6.1: Erasure Code API library written in C with plugga
 dev-libs/libestr 0.1.11: Library for some string essentials
 dev-libs/libev 4.31 4.33: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.9.0 9999: Handler library for evdev events
-dev-libs/libevent 2.1.8 2.1.11 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
+dev-libs/libevent 2.1.8 2.1.11 2.1.12 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
