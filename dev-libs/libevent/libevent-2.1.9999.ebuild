@@ -17,7 +17,7 @@ LICENSE="BSD"
 SLOT="0/2.1-7"
 KEYWORDS=""
 IUSE="
-	clock-gettime debug libressl malloc-replacement +ssl static-libs test
+	+clock-gettime debug libressl malloc-replacement +ssl static-libs test
 	+threads verbose-debug
 "
 RESTRICT="test"
