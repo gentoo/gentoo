@@ -13,11 +13,6 @@ gimp
 appindicator
 ayatana
 
-# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
-# dev-lang/python:3.8 is not stable.
-python_targets_python3_8
-python_single_target_python3_8
-
 # Andrey Grozin <grozin@gentoo.org> (2014-05-16)
 # No stable gcl
 gcl
