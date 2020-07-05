@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="OpenSSL/LibreSSL pseudo-random number generator access"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="libressl"
 
 RDEPEND="
