@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Guess OpenSSL include path"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
 IUSE="libressl test"
 RESTRICT="!test? ( test )"
 
