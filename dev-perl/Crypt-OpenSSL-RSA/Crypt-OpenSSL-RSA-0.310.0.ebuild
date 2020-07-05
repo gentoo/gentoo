@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="RSA encoding and decoding using the OpenSSL libraries"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
 IUSE="libressl test"
 RESTRICT="!test? ( test )"
 
