@@ -1,25 +1,25 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils
+EAPI=7
 
-MY_P=Maelstrom-${PV}
+inherit autotools desktop
+
 DESCRIPTION="An asteroids battle game"
 HOMEPAGE="http://www.libsdl.org/projects/Maelstrom/"
-SRC_URI="http://www.libsdl.org/projects/Maelstrom/src/${MY_P}.tar.gz"
+SRC_URI="http://www.libsdl.org/projects/Maelstrom/src/${P^}.tar.gz"
 
-KEYWORDS="~alpha ~amd64 ~x86"
-SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~x86"
 
-DEPEND="acct-group/gamestat
+DEPEND="
+	acct-group/gamestat
 	media-libs/libsdl[sound,joystick,video]
 	media-libs/sdl-net"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${P^}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-security.patch
@@ -27,21 +27,17 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc34.patch
 	"${FILESDIR}"/${P}-warnings.patch
 	"${FILESDIR}"/${P}-gcc53.patch
+	"${FILESDIR}"/${P}-autotools.patch
 )
 
 src_prepare() {
 	default
 
-	# Install the data into $(datadir)/..., not $(prefix)/games/...
-	sed -i \
-		-e "s:(prefix)/games/:(datadir)/:" configure.in || die
-	sed -i \
-		-e '/make install_gamedata/ { s:=:=$(DESTDIR)/:; s/make/$(MAKE)/; s/install_gamedata/install-binPROGRAMS install_gamedata/; }' Makefile.am || die
 	# Install the high scores file in ${GAMES_STATEDIR}
 	sed -i \
 		-e "s:path.Path(MAELSTROM_SCORES):\"/var/games/\"MAELSTROM_SCORES:" scores.cpp || die
-	mv configure.{in,ac}
-	rm aclocal.m4 acinclude.m4
+	mv configure.{in,ac} || die
+	rm aclocal.m4 acinclude.m4 || die
 	eautoreconf
 }
 
@@ -49,17 +45,17 @@ src_install() {
 	default
 	dodoc Changelog Docs/{Maelstrom-Announce,*FAQ,MaelstromGPL_press_release,*.Paper,Technical_Notes*}
 
-	newicon "${D}/usr/share/Maelstrom/icon.xpm" maelstrom.xpm
+	newicon "${ED}"/usr/share/Maelstrom/icon.xpm maelstrom.xpm
 	make_desktop_entry Maelstrom "Maelstrom" maelstrom
 
 	# Put the high scores file in the right place
 	insinto /var/games
-	doins "${D}/usr/share/Maelstrom/Maelstrom-Scores"
+	doins "${ED}"/usr/share/Maelstrom/Maelstrom-Scores
 
 	# clean up some cruft
-	rm -f \
-		"${D}/usr/share/Maelstrom/Maelstrom-Scores" \
-		"${D}/usr/share/Maelstrom/Images/Makefile*"
+	rm \
+		"${ED}"/usr/share/Maelstrom/Maelstrom-Scores \
+		"${ED}"/usr/share/Maelstrom/Images/Makefile* || die
 
 	# make sure we can update the high scores
 	fowners root:gamestat /var/games/Maelstrom-Scores /usr/bin/Maelstrom{,-netd}
