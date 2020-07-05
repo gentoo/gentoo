@@ -1,5 +1,5 @@
---- a/configure.ac.original	2008-03-17 13:07:48.000000000 -0400
-+++ b/configure.ac	2008-03-17 13:08:03.000000000 -0400
+--- a/configure.ac
++++ b/configure.ac
 @@ -28,15 +28,12 @@
    AC_ARG_WITH(tcltk,
                AS_HELP_STRING(--with-tcltk,Create tcltk version),
@@ -68,7 +68,15 @@
    AC_CHECK_LIB(jpeg, jpeg_start_compress, 
      [ MY_LIBS="-ljpeg $MY_LIBS"; AC_DEFINE(JPEG, 1, [JPEG features]) ])
  
-@@ -272,14 +225,7 @@
+@@ -259,6 +212,7 @@
+   AC_PROG_CC
+   AC_PROG_CPP
+   AC_PROG_RANLIB
++  AM_PROG_AR
+   AC_PROG_MAKE_SET
+   AC_ISC_POSIX
+   AC_PROG_INSTALL
+@@ -272,14 +226,7 @@
  
    AC_PATH_XTRA
  
@@ -84,7 +92,7 @@
      MY_SUBDIRS="gtkopts $MY_SUBDIRS"
      AM_PATH_SDL(1.2.6,,AC_MSG_ERROR(Generator needs sdk 1.2.6 or later))
  
-@@ -305,6 +251,7 @@
+@@ -305,6 +252,7 @@
    AC_CHECK_SIZEOF(unsigned long, 4)
    AC_CHECK_SIZEOF(unsigned long long, 8)
    AC_CHECK_HEADERS(sys/param.h)
