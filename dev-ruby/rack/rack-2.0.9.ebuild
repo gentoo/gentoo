@@ -21,7 +21,11 @@ IUSE=""
 
 ruby_add_rdepend "virtual/ruby-ssl"
 
-ruby_add_bdepend "test? ( dev-ruby/minitest:5 dev-ruby/concurrent-ruby )"
+ruby_add_bdepend "test? (
+	dev-ruby/minitest:5
+	dev-ruby/minitest-global_expectations
+	dev-ruby/concurrent-ruby
+)"
 
 # The gem has automagic dependencies over mongrel, ruby-openid,
 # memcache-client, thin, mongrel and camping; not sure if we should
