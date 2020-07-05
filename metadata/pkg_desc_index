@@ -12868,7 +12868,7 @@ media-libs/libsoundio 2.0.0: C library for cross-platform real-time audio input 
 media-libs/libsoundtouch 2.1.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsvgtiny 0.1.7-r1: framebuffer abstraction library, written in C
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
-media-libs/libtgvoip 2.4.4_p20200430 2.4.4_p20200525 2.4.4_p20200701: VoIP library for Telegram clients
+media-libs/libtgvoip 2.4.4_p20200430 2.4.4_p20200525 2.4.4_p20200701-r1: VoIP library for Telegram clients
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.2.4: MIDI to WAVE converter library

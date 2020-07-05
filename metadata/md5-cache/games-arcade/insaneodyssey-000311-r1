@@ -1,12 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install prepare
 DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer media-libs/sdl-image
 DESCRIPTION=Help West Muldune escape from a futuristic mental hospital
-EAPI=6
+EAPI=7
 HOMEPAGE=http://members.fortunecity.com/rivalentertainment/iox.html
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer media-libs/sdl-image
 SLOT=0
 SRC_URI=mirror://gentoo/io000311.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
-_md5_=4a66e348891eb0ae3e0eb5f7c6389398
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=7b9dc7cba327b50ec4b621d8261c521a
