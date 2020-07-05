@@ -67,8 +67,12 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 
 S="${WORKDIR}"/${P}
 
-# https://sigrok.org/bugzilla/show_bug.cgi?id=1527
-PATCHES=( "${FILESDIR}/${P}-swig-4.patch" )
+PATCHES=(
+	# https://sigrok.org/bugzilla/show_bug.cgi?id=1527
+	"${FILESDIR}/${P}-swig-4.patch"
+	# https://sigrok.org/bugzilla/show_bug.cgi?id=1526
+	"${FILESDIR}/${P}-ruby-swig-docs.patch" # bug 705074
+)
 
 pkg_setup() {
 	use python && python_setup
