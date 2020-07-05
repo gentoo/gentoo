@@ -25,7 +25,7 @@ else
 	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	#S="${WORKDIR}/${PN}-${COMMIT}"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
 fi
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
