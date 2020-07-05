@@ -4,7 +4,7 @@
 EAPI=7
 
 XORG_DOC=doc
-inherit xorg-3 multilib flag-o-matic
+inherit xorg-3 multilib flag-o-matic toolchain-funcs
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
@@ -176,6 +176,7 @@ pkg_setup() {
 		--without-fop
 		--with-os-vendor=Gentoo
 		--with-sha1=libcrypto
+		CPP="$(tc-getPROG CPP cpp)"
 	)
 }
 
