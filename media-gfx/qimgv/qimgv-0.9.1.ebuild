@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/easymodo/qimgv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="exif kde video"
+IUSE="exif kde opencv video"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -24,6 +24,7 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	exif? ( media-gfx/exiv2:= )
 	kde? ( kde-frameworks/kwindowsystem:5 )
+	opencv? ( media-libs/opencv:= )
 	video? ( media-video/mpv[libmpv] )
 "
 RDEPEND="
@@ -40,6 +41,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DEXIV2=$(usex exif)
 		-DKDE_SUPPORT=$(usex kde)
+		-DOPENCV_SUPPORT=$(usex opencv)
 		-DVIDEO_SUPPORT=$(usex video)
 	)
 	cmake_src_configure
