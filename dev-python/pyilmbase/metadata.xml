@@ -11,6 +11,14 @@
 </maintainer>
 <longdescription>Provides python bindings for <pkg>media-libs/ilmbase</pkg></longdescription>
 <use>
-	<flag name="numpy">Add bindings for <pkg>dev-python/numpy</pkg> use.</flag>
+	<flag name="exceptions">
+		Enable runtime floating point exceptions in PyIMath.
+	</flag>
+	<flag name="numpy">
+		Add bindings for <pkg>dev-python/numpy</pkg> use.
+	</flag>
 </use>
+<upstream>
+	<remote-id type="github">AcademySoftwareFoundation/openexr</remote-id>
+</upstream>
 </pkgmetadata>
