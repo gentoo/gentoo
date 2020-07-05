@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake-utils udev
 
 DESCRIPTION="Libraries for supporing the BladeRF hardware from Nuand"
-HOMEPAGE="http://nuand.com/"
+HOMEPAGE="https://nuand.com/"
 
 #lib is LGPL and cli tools are GPL
 LICENSE="GPL-2+ LGPL-2.1+"
