@@ -34,14 +34,13 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/${PN}-2.0.1-pass-NM.patch )
 DOCS=( AUTHORS ChangeLog NEWS.md README.md THANKS )
 
 src_prepare() {
 	default
 	#sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #466410
 	eautoreconf
-
-	[[ ${CC} == *clang* ]] && append-flags -std=gnu89
 }
 
 multilib_src_configure() {
