@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator"
 HOMEPAGE="http://dgen.sourceforge.net/"
@@ -15,13 +17,19 @@ IUSE="joystick opengl"
 RDEPEND="
 	media-libs/libsdl[joystick?,opengl?]
 	app-arch/libarchive
-	opengl? ( virtual/opengl )
-"
-DEPEND="${RDEPEND}
-	x86? ( dev-lang/nasm )
-"
+	opengl? ( virtual/opengl )"
+DEPEND="${RDEPEND}"
+BDEPEND="x86? ( dev-lang/nasm )"
 
-PATCHES=( "${FILESDIR}"/${P}-joystick.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-joystick.patch
+	"${FILESDIR}"/${P}-AM_PROG_AR.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
@@ -36,5 +44,6 @@ src_compile() {
 }
 
 src_install() {
-	DOCS="AUTHORS ChangeLog README sample.dgenrc" default
+	default
+	dodoc sample.dgenrc
 }
