@@ -20,10 +20,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ggi nls sdl"
+REQUIRED_USE="^^ ( ggi sdl )"
 RESTRICT="test"
 
-REQUIRED_USE="^^ ( ggi sdl )"
-RDEPEND="ggi? (
+RDEPEND="
+	ggi? (
 		media-libs/libggi
 		media-libs/libgii
 		media-libs/libmikmod
@@ -33,49 +34,41 @@ RDEPEND="ggi? (
 		media-libs/libsdl
 		media-libs/sdl-mixer
 	)"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
-	#56118
 PATCHES=(
-	"${FILESDIR}/${P}"-automake-1.12.patch
-	"${FILESDIR}/${P}"-gcc4.patch
-	"${FILESDIR}/${P}"-underlink.patch
-	"${FILESDIR}/${P}"-cvs-segfault-fix.patch
-	"${FILESDIR}/${P}"-compilation.patch
-	"${FILESDIR}/${P}"-gcc10.patch
+	"${FILESDIR}"/${P}-autotools.patch
+	"${FILESDIR}"/${P}-gcc4.patch
+	"${FILESDIR}"/${P}-cvs-segfault-fix.patch
+	"${FILESDIR}"/${P}-compilation.patch
+	"${FILESDIR}"/${P}-gcc10.patch
 )
 
 src_prepare() {
 	default
-	sed -i 's:$(localedir):/usr/share/locale:' \
-		$(find . -name 'Makefile.in*') || die
 	eautoreconf
 }
 
 src_configure() {
-	local myconf=(
-		$(use_with sdl)
-		$(use_with sdl sdl-mixer)
-		$(use_with ggi)
-		$(use_with ggi mikmod)
-		$(use_enable nls)
-	)
-
 	local pkg
-	for pkg in ${A//.tar.bz2} ; do
-		cd "${WORKDIR}"/${pkg}
+	for pkg in ${A//.tar.bz2}; do
+		cd "${WORKDIR}"/${pkg} || die
 		econf \
 			--disable-heroes-debug \
 			--disable-optimizations \
-			"${myconf[@]}"
+			$(use_with sdl) \
+			$(use_with sdl sdl-mixer) \
+			$(use_with ggi) \
+			$(use_with ggi mikmod) \
+			$(use_enable nls)
 	done
 }
 
 src_install() {
 	local pkg
 	for pkg in ${A//.tar.bz2} ; do
-		cd "${WORKDIR}"/${pkg}
+		cd "${WORKDIR}"/${pkg} || die
 		emake DESTDIR="${D}" install
 	done
 }
