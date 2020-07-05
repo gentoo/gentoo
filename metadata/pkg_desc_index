@@ -5876,7 +5876,7 @@ dev-perl/Data-Buffer 0.40.0-r1: Read/write buffer class
 dev-perl/Data-Compare 1.250.0: Compare perl data structures
 dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
-dev-perl/Data-Dump-Streamer 2.400.0: Accurately serialize a data structure as Perl code
+dev-perl/Data-Dump-Streamer 2.400.0 2.400.0-r1: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.23.0: Less indentation and newlines plus sub deparsing
 dev-perl/Data-Float 0.13.0: details of the floating point data type
