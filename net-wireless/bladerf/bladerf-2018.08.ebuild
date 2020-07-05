@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils udev
 
 DESCRIPTION="Libraries for supporing the BladeRF hardware from Nuand"
-HOMEPAGE="http://nuand.com/"
+HOMEPAGE="https://nuand.com/"
 
 #lib is LGPL and cli tools are GPL
 LICENSE="GPL-2+ LGPL-2.1+"
