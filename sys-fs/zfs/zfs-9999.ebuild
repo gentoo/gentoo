@@ -130,7 +130,7 @@ src_configure() {
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
-		--with-pamconfigsdir=/dev/null # debian configs
+		--with-pamconfigsdir="${EPREFIX}/unwanted_debian_files"
 		--with-pammoduledir="$(getpam_mod_dir)"
 		--with-python="${EPYTHON}"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
@@ -158,7 +158,9 @@ src_install() {
 
 	gen_usr_ldscript -a uutil nvpair zpool zfs zfs_core
 
-	use test-suite || rm -rf "${ED}/usr/share/zfs"
+	use pam && { rm -rv "${ED}/unwanted_debian_files" || die ; }
+
+	use test-suite || { rm -r "${ED}/usr/share/zfs" || die ; }
 
 	if ! use static-libs; then
 		find "${ED}/" -name '*.la' -delete || die
