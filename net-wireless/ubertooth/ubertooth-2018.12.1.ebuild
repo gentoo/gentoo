@@ -27,7 +27,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	S="${WORKDIR}/${PN}-${MY_PV}/host"
 	SRC_URI="https://github.com/greatscottgadgets/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.xz"
-	KEYWORDS="amd64 arm ~x86"
+	KEYWORDS="amd64 arm x86"
 fi
 DESCRIPTION="open source wireless development platform suitable for Bluetooth experimentation"
 
