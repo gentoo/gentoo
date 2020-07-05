@@ -69,10 +69,8 @@ src_compile() {
 	# To work around this, we append -fno-inline-functions to CFLAGS
 	# Since GCC 4.7 we also need -fno-ipa-cp-clone (bug #466552)
 	# If it's clang, ignore -fno-ipa-cp-clone, as clang doesn't support this
-	case "$(tc-getCC)" in
-		"clang") append-flags -fno-inline-functions ;;
-		"gcc"|*) append-flags -fno-inline-functions -fno-ipa-cp-clone ;;
-	esac
+	append-flags -fno-inline-functions
+	tc-is-clang || append-flags -fno-ipa-cp-clone
 
 	sed -e "s|CFLAGS0 = -O|CFLAGS0 = ${CFLAGS}|" \
 		-e "s|LDFLAGS0= -s|LDFLAGS0 = ${LDFLAGS}|" \
