@@ -7,7 +7,9 @@ inherit desktop eutils xdg-utils
 
 DESCRIPTION="Feature-rich screenshot program"
 HOMEPAGE="https://shutter-project.org/"
-SRC_URI="https://launchpad.net/shutter/0.9x/${PV}/+download/${P}.tar.gz"
+MY_COMMIT="af237e7f415a5fa20402703490c6190dc1af9b20"
+SRC_URI="https://github.com/shutter-project/shutter/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -15,10 +17,11 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-lang/perl
-	dev-perl/libxml-perl
 	dev-perl/gnome2-canvas
-	dev-perl/gnome2-perl
 	dev-perl/gnome2-wnck
+	dev-perl/libxml-perl
+	dev-perl/libwww-perl
+	dev-perl/Glib-Object-Introspection
 	dev-perl/Gtk2-Unique
 	dev-perl/Gtk2-ImageView
 	dev-perl/File-DesktopEntry
@@ -29,13 +32,13 @@ RDEPEND="
 	dev-perl/File-MimeInfo
 	dev-perl/Locale-gettext
 	dev-perl/Net-DBus
+	dev-perl/Number-Bytes-Human
 	dev-perl/Proc-Simple
 	dev-perl/Proc-ProcessTable
 	dev-perl/Sort-Naturally
 	dev-perl/WWW-Mechanize
 	dev-perl/X11-Protocol
 	dev-perl/XML-Simple
-	dev-perl/libwww-perl
 	virtual/imagemagick-tools[perl]
 "
 
@@ -56,6 +59,9 @@ src_install() {
 
 	insinto /usr/share/metainfo
 	doins share/appdata/shutter.appdata.xml
+
+	# .po doesn't belong to installed system, only .mo
+	rm -r "${ED}"/usr/share/shutter/resources/po || die
 
 	find "${ED}"/usr/share/shutter/resources/system/plugins/ -type f ! -name '*.*' -exec chmod 755 {} \; \
 		|| die "failed to make plugins executables"
