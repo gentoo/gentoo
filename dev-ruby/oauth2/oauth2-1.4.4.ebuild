@@ -20,7 +20,7 @@ SRC_URI="https://github.com/intridea/oauth2/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/faraday-0.8 <dev-ruby/faraday-2.0
