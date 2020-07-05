@@ -20,11 +20,6 @@ musepack
 # x11-libs/fltk not stable yet
 fltk
 
-# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
-# dev-lang/python:3.8 is not stable.
-python_targets_python3_8
-python_single_target_python3_8
-
 # Mart Raudsepp <leio@gentoo.org> (2017-01-28)
 # sys-auth/skey not marked stable yet
 skey
