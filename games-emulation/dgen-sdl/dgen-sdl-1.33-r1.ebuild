@@ -24,6 +24,7 @@ BDEPEND="x86? ( dev-lang/nasm )"
 PATCHES=(
 	"${FILESDIR}"/${P}-joystick.patch
 	"${FILESDIR}"/${P}-AM_PROG_AR.patch
+	"${FILESDIR}"/${P}-clang-c++11.patch
 )
 
 src_prepare() {
