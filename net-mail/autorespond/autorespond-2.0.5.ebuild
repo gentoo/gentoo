@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Autoresponder add on package for qmailadmin"
-HOMEPAGE="http://www.inter7.com/software/"
+HOMEPAGE="https://www.inter7.com/software/"
 SRC_URI="http://qmail.ixip.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
