@@ -84,7 +84,7 @@ RDEPEND="
 
 pkg_postinst() {
 	has_version sys-auth/consolekit || return
-	use elogind || use systemd && return
+	use elogind || use systemd || return
 	ewarn "An existing installation of sys-auth/consolekit was detected even though"
 	ewarn "${PN} was configured with USE $(usex elogind elogind systemd)."
 	ewarn "There can only be one session manager at runtime, otherwise random issues"
