@@ -11,6 +11,9 @@
 		<remote-id type="github">libevent/libevent</remote-id>
 	</upstream>
 	<use>
-		<flag name="debug">Support runtime debug mode and malloc hooks (for programmers)</flag>
+		<flag name="clock-gettime">Disable use of clock_gettime even if it is available</flag>
+		<flag name="debug">Support for running in debug mode</flag>
+		<flag name="malloc-replacement">Support for replacing the memory management functions</flag>
+		<flag name="verbose-debug">Support for verbose debug logging</flag>
 	</use>
 </pkgmetadata>
