@@ -30,6 +30,7 @@ all_ruby_prepare() {
 	# The precomputed implementation only works on amd64
 	if ! use amd64 ; then
 		sed -i -e '/\(x25519_precomputed\|X25519::Provider::Precomputed\)/ s:^:#:' lib/x25519.rb || die
+		rm -f spec/x25519/provider/precomputed_spec.rb || die
 	fi
 }
 
