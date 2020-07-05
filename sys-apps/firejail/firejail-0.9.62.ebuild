@@ -4,7 +4,7 @@
 EAPI=7
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	SRC_URI="https://github.com/netblue30/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 else
 	inherit git-r3
