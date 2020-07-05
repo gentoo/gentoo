@@ -1683,7 +1683,7 @@ app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and 
 app-emulation/protontricks 1.4.1 1.4.1-r1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 4.2.0-r6 5.0.0 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 5.0.0 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -4790,7 +4790,7 @@ dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 1.4.0-r3 1.4.0-r4 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r2 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7: An embeddable Javascript interpreter in C.
-dev-lang/nasm 2.14.02 2.15 2.15.01 2.15.02: groovy little assembler
+dev-lang/nasm 2.14.02 2.15.02: groovy little assembler
 dev-lang/nim 1.2.4: compiled, garbage-collected systems programming language
 dev-lang/nqp 2019.03-r1 2019.07.1 2019.11 2020.05 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
@@ -4869,7 +4869,7 @@ dev-libs/c-blosc 1.11.2 1.19.0: Blocking, shuffling and lossless compression lib
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.6.0 0.6.1 0.7.0: RPC/Serialization system with capabilities support
-dev-libs/capstone 4.0.2-r1 4.0.2-r2: disassembly/disassembler framework + bindings
+dev-libs/capstone 4.0.2-r2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.3.0: Header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
@@ -10074,7 +10074,7 @@ dev-tcltk/tktray 1.3.9: System Tray Icon Support for Tk on X11
 dev-tcltk/tktreectrl 2.4.1: A flexible listbox widget for Tk
 dev-tcltk/tkzinc 3.3.6: A Tk widget library
 dev-tcltk/tls 1.7.16: TLS OpenSSL extension to Tcl
-dev-tcltk/togl 2.0-r2 2.0-r3: A Tk widget for OpenGL rendering
+dev-tcltk/togl 2.0-r3: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r2: Visual Tcl is a high-quality application development environment
 dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
@@ -10249,7 +10249,7 @@ dev-util/catalyst 3.0.9 3.0.12 9999: Release metatool used for creating releases
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 0.8.3-r1 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.14.2 0.14.3: A tool for generating C bindings to Rust code
-dev-util/ccache 3.7.7-r1 3.7.9 3.7.10: fast compiler cache
+dev-util/ccache 3.7.9 3.7.10: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 0.20190823.6 9999: C/C++/ObjC language server
 dev-util/cdiff 1.0 1.1 9999: Colored, side-by-side diff terminal viewer
@@ -10320,7 +10320,7 @@ dev-util/devhelp 3.34.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 149 150: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 150: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -17346,7 +17346,7 @@ sys-libs/libstatgrab 0.91: A tool to provide access to statistics about the syst
 sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
-sys-libs/libunwind 1.2.1-r3 1.4.0: Portable and efficient API to determine the call-chain of a program
+sys-libs/libunwind 1.4.0: Portable and efficient API to determine the call-chain of a program
 sys-libs/liburing 0.6: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3 1.2.0: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
