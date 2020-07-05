@@ -6563,7 +6563,7 @@ dev-perl/Net-Kismet 0.04-r1: Module for writing perl Kismet clients
 dev-perl/Net-LDAP-Server 0.430.0-r1: LDAP server side protocol handling
 dev-perl/Net-LDAPapi 3.0.5: Perl5 Module Supporting LDAP API
 dev-perl/Net-LibIDN 0.120.0-r2: Perl bindings for GNU Libidn
-dev-perl/Net-LibIDN2 1.0.0-r1: Perl bindings for GNU Libidn2
+dev-perl/Net-LibIDN2 1.0.0-r1 1.0.0-r2: Perl bindings for GNU Libidn2
 dev-perl/Net-Netmask 1.902.200: Parse, manipulate and lookup IP network blocks
 dev-perl/Net-OAuth 0.280.0-r1: OAuth protocol support
 dev-perl/Net-OpenID-Common 1.200.0: Libraries shared between Net::OpenID::Consumer and Net::OpenID::Server
