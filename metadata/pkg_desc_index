@@ -1396,7 +1396,7 @@ app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhance
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: Vim, an improved vi-style text editor
 app-editors/vim-core 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: vim and gvim shared files
-app-editors/vis 0.5 9999: modern, legacy free, simple yet efficient vim-like editor
+app-editors/vis 0.5 0.6 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
 app-editors/xemacs 21.4.24 21.4.24-r1 21.4.24-r2 21.5.34-r4 21.5.34-r5: highly customizable open source text editor and application development system
@@ -9677,7 +9677,7 @@ dev-ruby/net-http-digest_auth 1.4.1: An implementation of RFC 2617 - Digest Acce
 dev-ruby/net-http-persistent 3.0.0 3.0.1 3.1.0 4.0.0: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
 dev-ruby/net-scp 1.2.1-r1 2.0.0 3.0.0: A pure Ruby implementation of the SCP client protocol
-dev-ruby/net-sftp 2.1.2-r4 3.0.0: SFTP in pure Ruby
+dev-ruby/net-sftp 3.0.0: SFTP in pure Ruby
 dev-ruby/net-ssh 4.2.0 5.2.0 6.0.0 6.0.2 6.1.0 6.1.0-r1: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 2.0.0: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-telnet 0.1.1-r1 0.2.0: Provides telnet client functionality
@@ -9872,7 +9872,7 @@ dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubyte
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.3.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
-dev-ruby/sanitize 4.6.6 5.0.0 5.1.0 5.2.0 5.2.1: Sanitize is a whitelist-based HTML sanitizer
+dev-ruby/sanitize 4.6.6 5.2.1: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.7 5.0.8 5.1.0: Official Ruby-on-Rails Integration with Sass
