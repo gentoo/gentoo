@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit user
+EAPI=7
 
 DESCRIPTION="Enhanced C version of Carbon relay, aggregator and rewriter"
 HOMEPAGE="https://github.com/grobian/carbon-c-relay"
@@ -26,13 +24,10 @@ RDEPEND="lz4? ( app-arch/lz4 )
 	ssl? ( dev-libs/openssl:0 )
 	!oniguruma? ( !pcre2? ( pcre? ( dev-libs/libpcre ) ) )
 	pcre2? ( dev-libs/libpcre2 )
-	oniguruma? ( dev-libs/oniguruma )"
+	oniguruma? ( dev-libs/oniguruma )
+	acct-group/carbon
+	acct-user/carbon"
 DEPEND="${RDEPEND}"
-
-pkg_preinst() {
-	enewgroup carbon
-	enewuser carbon -1 -1 -1 carbon
-}
 
 src_configure() {
 	local pcrecfg
@@ -49,8 +44,13 @@ src_configure() {
 
 src_install() {
 	default
+
 	# rename too generic name
 	mv "${ED}"/usr/bin/{relay,${PN}} || die
+
+	# remove libfaketime, necessary for testing only
+	rm -f "${ED}"/usr/$(get_libdir)/libfaketime.*
+
 	dodoc ChangeLog.md
 
 	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
