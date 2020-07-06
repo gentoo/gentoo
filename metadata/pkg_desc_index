@@ -17347,7 +17347,7 @@ sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked agains
 sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.4.0: Portable and efficient API to determine the call-chain of a program
-sys-libs/liburing 0.6: Efficient I/O with io_uring
+sys-libs/liburing 0.6 9999: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3 1.2.0: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds
