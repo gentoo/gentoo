@@ -35,6 +35,8 @@ CMAKE_USE_DIR="${WORKDIR}/${P}/src"
 
 DOCS=( Changelog README.txt )
 
+PATCHES=( "${FILESDIR}/${PN}-1.7.1-fix-LV2_Descriptor.patch" )
+
 src_prepare() {
 	cmake_src_prepare
 	append-cxxflags -lpthread
