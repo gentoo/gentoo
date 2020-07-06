@@ -33,9 +33,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Optional dependencies:"
-	elog "  dev-python/pyliblzma (for xz compressed elog files)"
-	elog
 	elog "In order to use this software, you need to activate"
 	elog "Portage's elog features.  Required is"
 	elog "		 PORTAGE_ELOG_SYSTEM=\"save\" "
