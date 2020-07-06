@@ -32,14 +32,13 @@ BDEPEND="
 
 src_prepare() {
 	default
+	[[ ${PV} == *9999* ]] && eautoreconf
 
 	# Only a test program (not installed, and not used by src_test)
 	# is used by libsigrok, so disable it to avoid the compile.
 	sed -i \
 		-e '/build_runtc=/s:yes:no:' \
 		configure || die
-
-	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
 src_configure() {
