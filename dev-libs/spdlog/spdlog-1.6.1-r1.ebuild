@@ -29,6 +29,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-libfmt-7.0.0.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 	rm -r include/spdlog/fmt/bundled || die "Failed to delete bundled libfmt"
