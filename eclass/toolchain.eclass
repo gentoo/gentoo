@@ -200,6 +200,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 9.0 && IUSE+=" d"
 	tc_version_is_at_least 9.1 && IUSE+=" lto"
 	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=(zstd)
+	tc_version_is_at_least 11 && IUSE+=" valgrind" TC_FEATURES+=(valgrind)
 fi
 
 if tc_version_is_at_least 10; then
@@ -270,6 +271,10 @@ fi
 
 if tc_has_feature zstd ; then
 	DEPEND+=" zstd? ( app-arch/zstd )"
+fi
+
+if tc_has_feature valgrind; then
+	BDEPEND+=" valgrind? ( dev-util/valgrind )"
 fi
 
 case ${EAPI:-0} in
@@ -1276,6 +1281,10 @@ toolchain_src_configure() {
 
 	if in_iuse systemtap ; then
 		confgcc+=( $(use_enable systemtap) )
+	fi
+
+	if in_iuse valgrind ; then
+		confgcc+=( $(use_enable valgrind valgrind-annotations) )
 	fi
 
 	if in_iuse vtv ; then

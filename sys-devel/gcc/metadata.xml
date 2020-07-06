@@ -34,6 +34,7 @@
     <flag name="sanitize">Build support for various sanitizer functions (ASAN/TSAN/etc...)</flag>
     <flag name="ssp">Build packages with stack smashing protector on by default</flag>
     <flag name="systemtap">enable systemtap static probe points</flag>
+    <flag name="valgrind">Enable valgrind annotations for gcc internals (useful for gcc debugging).</flag>
     <flag name="vtv">Build support for virtual table verification (a C++ hardening feature)</flag>
   </use>
   <upstream>
