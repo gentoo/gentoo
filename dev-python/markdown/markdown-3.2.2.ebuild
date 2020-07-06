@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -21,6 +21,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc"
 
+# importlib_metadata is only necessary for <python:3.8 according to setup.py
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/importlib_metadata[${PYTHON_USEDEP}]
