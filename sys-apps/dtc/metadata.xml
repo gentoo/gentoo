@@ -8,6 +8,9 @@
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>
 	</maintainer>
+	<use>
+		<flag name="yaml">support .yaml-encoded device trees</flag>
+	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:dtc_project:dtc</remote-id>
 	</upstream>

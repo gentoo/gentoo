@@ -35,6 +35,8 @@ DOCS="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.4-posix-shell.patch
+	"${FILESDIR}"/${PN}-1.5.0-fdt_check_full-visibility.patch
+	"${FILESDIR}"/${PN}-1.5.0-gcc-10.patch
 )
 
 src_prepare() {
