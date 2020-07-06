@@ -8309,6 +8309,7 @@ sys-devel/gcc:pgo - Build GCC using Profile Guided Optimization (PGO)
 sys-devel/gcc:sanitize - Build support for various sanitizer functions (ASAN/TSAN/etc...)
 sys-devel/gcc:ssp - Build packages with stack smashing protector on by default
 sys-devel/gcc:systemtap - enable systemtap static probe points
+sys-devel/gcc:valgrind - Enable valgrind annotations for gcc internals (useful for gcc debugging).
 sys-devel/gcc:vtv - Build support for virtual table verification (a C++ hardening feature)
 sys-devel/gcc-apple:bootstrap - !DO NOT SET THIS FLAG YOURSELF! avoids need for autoconf during bootstrap stage2
 sys-devel/gcc-apple:objc - Build support for the Objective C code language
