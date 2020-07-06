@@ -1,0 +1,11 @@
+--- cups-filters-1.27.5/configure.ac
++++ cups-filters-1.27.5/configure.ac
+@@ -791,7 +791,7 @@
+ 
+ AS_IF([test -f "$with_test_font_path"],
+ 	[AC_DEFINE_UNQUOTED([TESTFONT], ["$with_test_font_path"], [Path to font used in tests])],
+-	[AC_MSG_ERROR(DejaVuSans.ttf font file is missing. Please install a package providing it.)]
++	[AC_MSG_WARN(DejaVuSans.ttf font file is missing. Expect test failures!)]
+ )
+ 
+ # ================
