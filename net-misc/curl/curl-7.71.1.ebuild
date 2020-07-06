@@ -20,7 +20,7 @@ IUSE+=" elibc_Winnt"
 #lead to lots of false negatives, bug #285669
 RESTRICT="test"
 
-RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
+RDEPEND="ldap? ( net-nds/openldap[static-libs?,${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	ssl? (
 		curl_ssl_gnutls? (
