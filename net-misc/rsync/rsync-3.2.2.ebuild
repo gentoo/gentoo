@@ -81,8 +81,9 @@ src_configure() {
 		$(use_enable zstd)
 	)
 
-	if [[ "${ARCH}" == "amd64" ]] ; then
-		# SIMD is only available for x86_64 right now (#728868)
+	if use elibc_glibc && [[ "${ARCH}" == "amd64" ]] ; then
+		# SIMD is only available for x86_64 right now
+		# and only on glibc (#728868)
 		myeconfargs+=( $(use_enable cpu_flags_x86_sse2 simd) )
 	else
 		myeconfargs+=( --disable-simd )
