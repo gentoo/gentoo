@@ -14,8 +14,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
@@ -24,12 +22,13 @@ RDEPEND="
 
 BDEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+"
+
+distutils_enable_tests pytest
 
 distutils_enable_sphinx docs
 
 python_test() {
 	distutils_install_for_testing
-	${PYTHON} -m pytest tests || die "tests failed under ${EPYTHON}"
+	${EPYTHON} -m pytest tests || die "tests failed under ${EPYTHON}"
 }
