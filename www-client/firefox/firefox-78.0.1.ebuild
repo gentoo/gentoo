@@ -284,6 +284,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	# bug 730986 -- causing more harm than it helps
+	rm "${WORKDIR}"/firefox/0027-bmo-1618914-Wayland-Fall-back-to-ftruncate-if-posix_.patch
 	eapply "${WORKDIR}/firefox"
 
 	# Make LTO respect MAKEOPTS
