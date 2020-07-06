@@ -216,7 +216,7 @@ sys-block/open-isns slp
 # Mask USE until they are fixed
 =dev-libs/xapian-bindings-1.2.25 php
 media-gfx/exact-image php
-sci-geosciences/mapserver php
+<sci-geosciences/mapserver-7.6.0 php
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-28)
 # media-fonts/hkscs-ming is slated for removal.
