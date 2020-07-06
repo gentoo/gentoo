@@ -33,3 +33,8 @@ PATCHES=(
 )
 
 distutils_enable_tests nose
+
+python_prepare_all() {
+	sed -i "s/^release.*/release := ${PV}/" Makefile || die
+	distutils-r1_python_prepare_all
+}
