@@ -16,9 +16,6 @@ LICENSE="MIT"
 SLOT="2.6"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
-# Old dev-ruby/psych is removed from the tree, but must be uninstalled before
-# did_you_mean will build.
-DEPEND="${DEPEND} !!dev-ruby/psych"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile || die
