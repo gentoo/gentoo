@@ -17,10 +17,6 @@ KEYWORDS=""
 IUSE="ccache emacs"
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2019.05-0001-Fix-build-with-boost-1.73.patch"
-)
-
 RDEPEND="
 	dev-cpp/eigen:3
 	dev-libs/boost:=
