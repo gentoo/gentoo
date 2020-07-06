@@ -10271,7 +10271,7 @@ dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/coccigrep 1.13: A semantic grep for the C language
 dev-util/coccinelle 1.0.5 1.0.6 1.0.8: Program matching and transformation engine
-dev-util/codeblocks 17.12-r302 17.12-r303 20.03 9999: The open source, cross platform, free C, C++ and Fortran IDE
+dev-util/codeblocks 17.12-r302 17.12-r303 20.03 20.03-r1 9999: The open source, cross platform, free C, C++ and Fortran IDE
 dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10 2.12: ESR's utility for making fast comparisons among large source trees
@@ -17278,7 +17278,7 @@ sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloa
 sys-kernel/gentoo-kernel 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.40 5.4.46 5.4.47 5.4.48 5.4.49 5.4.50 5.6.18 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.221 4.4.228 4.4.229 4.9.221 4.9.228 4.9.229 4.14.178 4.14.185 4.14.186 4.14.187 4.19.120 4.19.129 4.19.130 4.19.131 5.4.38 5.4.48 5.4.49 5.4.50 5.6.19 5.7.4 5.7.5 5.7.6 5.7.7: Full sources including the Gentoo patchset for the 5.7 kernel tree
-sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.8_rc1 5.8_rc2 5.8_rc3 5.8_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.4: Kernel config generator
