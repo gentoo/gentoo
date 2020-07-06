@@ -3,11 +3,12 @@
 
 EAPI=7
 
-# no pypy{,3} support as PyQt5 does not support it at 2019-05-15
+# no pypy{,3} support as PyQt5 does not support it at 2020-07-05 (towelday)
 # https://bitbucket.org/pypy/compatibility/wiki/Home#!gui-library-bindings
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1 virtualx xdg-utils
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 MY_PN="ReText"
 MY_P="${MY_PN}-${PV/_/~}"
@@ -28,6 +29,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+spell"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
@@ -37,10 +39,7 @@ RDEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
 	dev-python/PyQt5[gui,network,printsupport,widgets,${PYTHON_USEDEP}]
-	|| (
-		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-		<dev-python/PyQt5-5.12[webengine]
-		)
+	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 	spell? ( dev-python/pyenchant[${PYTHON_USEDEP}] )
 "
 DEPEND="
