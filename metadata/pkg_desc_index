@@ -2639,7 +2639,7 @@ app-text/gtkspell 2.0.16-r1 3.0.10: Spell checking widget for GTK
 app-text/gtranslator 3.32.0: GNOME Translation Editor
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
-app-text/highlight 3.57: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
+app-text/highlight 3.57 3.57-r1: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 7.7 7.8: A number of simple utilities for manipulating HTML and XML files
@@ -12902,6 +12902,7 @@ media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based 
 media-libs/mutagen 1.43.0 1.44.0: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
+media-libs/noise-suppression-for-voice 0.9_p20200705 9999: A real-time noise suppression plugin for voice
 media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1: FFmpeg version of headers required to interface with Nvidias codec APIs
 media-libs/openal 1.20.0 1.20.1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
