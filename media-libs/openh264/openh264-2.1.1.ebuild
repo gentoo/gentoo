@@ -28,6 +28,10 @@ PATCHES=( "${FILESDIR}/${PN}-2.1.0-pkgconfig-pathfix.patch" )
 src_prepare() {
 	default
 
+	sed -i -e 's/ | generate-version//g' Makefile || die
+	sed -e 's|$FULL_VERSION|""|g' codec/common/inc/version_gen.h.template > \
+		codec/common/inc/version_gen.h
+
 	multilib_copy_sources
 }
 
