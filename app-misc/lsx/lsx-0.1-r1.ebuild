@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="list executables"
 HOMEPAGE="https://web.archive.org/web/20160104002819/http://tools.suckless.org:80/lsx"
@@ -13,30 +13,25 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DOCS=( README )
-
 src_prepare() {
 	default
 
-	sed -i \
-		-e "s/.*strip.*//" \
-		Makefile || die "sed failed"
+	# overengineered build system
+	rm Makefile config.mk || die
+}
 
-	sed -i \
-		-e "s/CFLAGS = -Os/CFLAGS +=/" \
-		-e "s/LDFLAGS =/LDFLAGS +=/" \
-		config.mk || die "sed failed"
+src_configure() {
+	tc-export CC
+	append-cppflags -DVERSION='\"0.1\"'
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake lsx
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" install
-
 	# collision with net-dialup/lrzsz
-	mv "${D}/usr/bin/${PN}" "${D}/usr/bin/${PN}-suckless" || die
+	newbin ${PN} ${PN}-suckless
 
 	einstalldocs
 }
