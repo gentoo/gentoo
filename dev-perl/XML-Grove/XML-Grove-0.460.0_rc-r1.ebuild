@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="A Perl module providing a simple API to parsed XML instances"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND="
