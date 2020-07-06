@@ -201,6 +201,7 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}/245-libmicrohttpd-0.9.71.patch"
 	)
 
 	if ! use vanilla; then
