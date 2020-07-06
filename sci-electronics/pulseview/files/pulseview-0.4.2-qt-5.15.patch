@@ -1,0 +1,142 @@
+From ae726b70a7ada9a4be5808e00f0c951318479684 Mon Sep 17 00:00:00 2001
+From: Valentin Ochs <a@0au.de>
+Date: Sat, 20 Jun 2020 16:01:27 +0200
+Subject: [PATCH] Replace obsolete/deprecated Qt methods
+
+---
+ pv/subwindows/decoder_selector/subwindow.cpp |  2 +-
+ pv/util.cpp                                  | 21 ++++++++++++++++++--
+ pv/util.hpp                                  | 10 ++++++++++
+ pv/views/trace/decodetrace.cpp               |  3 ++-
+ pv/views/trace/ruler.cpp                     |  2 +-
+ pv/widgets/timestampspinbox.cpp              |  2 +-
+ 6 files changed, 34 insertions(+), 6 deletions(-)
+
+diff --git a/pv/subwindows/decoder_selector/subwindow.cpp b/pv/subwindows/decoder_selector/subwindow.cpp
+index 94ed6f4b..2c65dcf2 100644
+--- a/pv/subwindows/decoder_selector/subwindow.cpp
++++ b/pv/subwindows/decoder_selector/subwindow.cpp
+@@ -185,7 +185,7 @@ QToolBar* SubWindow::create_toolbar(QWidget *parent) const
+ int SubWindow::minimum_width() const
+ {
+ 	QFontMetrics m(info_label_body_->font());
+-	const int label_width = m.width(QString(tr(initial_notice)));
++	const int label_width = util::text_width(m, tr(initial_notice));
+ 
+ 	return label_width + min_width_margin;
+ }
+diff --git a/pv/util.cpp b/pv/util.cpp
+index 897254e1..dfb8c72b 100644
+--- a/pv/util.cpp
++++ b/pv/util.cpp
+@@ -143,7 +143,7 @@ QString format_time_si(const Timestamp& v, SIPrefix prefix,
+ 	QString s;
+ 	QTextStream ts(&s);
+ 	if (sign && !v.is_zero())
+-		ts << forcesign;
++		ts.setNumberFlags(ts.numberFlags() | QTextStream::ForceSign);
+ 	ts << qSetRealNumberPrecision(precision) << (v * multiplier);
+ 	ts << ' ' << prefix << unit;
+ 
+@@ -169,7 +169,7 @@ QString format_value_si(double v, SIPrefix prefix, unsigned precision,
+ 	QString s;
+ 	QTextStream ts(&s);
+ 	if (sign && (v != 0))
+-		ts << forcesign;
++		ts.setNumberFlags(ts.numberFlags() | QTextStream::ForceSign);
+ 	ts.setRealNumberNotation(QTextStream::FixedNotation);
+ 	ts.setRealNumberPrecision(precision);
+ 	ts << (v * multiplier) << ' ' << prefix << unit;
+@@ -279,5 +279,22 @@ vector<string> split_string(string text, string separator)
+ 	return result;
+ }
+ 
++/**
++ * Return the width of a string in a given font.
++ *
++ * @param[in] metric metrics of the font
++ * @param[in] string the string whose width should be determined
++ *
++ * @return width of the string in pixels
++ */
++std::streamsize text_width(const QFontMetrics &metric, const QString &string)
++{
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++	return metric.horizontalAdvance(string);
++#else
++	return metric.width(string);
++#endif
++}
++
+ } // namespace util
+ } // namespace pv
+diff --git a/pv/util.hpp b/pv/util.hpp
+index fab29a14..49ae04b2 100644
+--- a/pv/util.hpp
++++ b/pv/util.hpp
+@@ -30,6 +30,7 @@
+ 
+ #include <QMetaType>
+ #include <QString>
++#include <QFontMetrics>
+ 
+ using std::string;
+ using std::vector;
+@@ -143,6 +144,15 @@ QString format_time_minutes(const Timestamp& t, signed precision = 0,
+ 
+ vector<string> split_string(string text, string separator);
+ 
++/**
++ * Return the width of a string in a given font.
++ * @param[in] metric metrics of the font
++ * @param[in] string the string whose width should be determined
++ *
++ * @return width of the string in pixels
++ */
++std::streamsize text_width(const QFontMetrics &metric, const QString &string);
++
+ } // namespace util
+ } // namespace pv
+ 
+diff --git a/pv/views/trace/decodetrace.cpp b/pv/views/trace/decodetrace.cpp
+index 67c9b1c4..93c7c5a9 100644
+--- a/pv/views/trace/decodetrace.cpp
++++ b/pv/views/trace/decodetrace.cpp
+@@ -161,7 +161,8 @@ DecodeTrace::DecodeTrace(pv::Session &session,
+ 
+ 	// Determine shortest string we want to see displayed in full
+ 	QFontMetrics m(QApplication::font());
+-	min_useful_label_width_ = m.width("XX"); // e.g. two hex characters
++	// e.g. two hex characters
++	min_useful_label_width_ = util::text_width(m, "XX");
+ 
+ 	default_row_height_ = (ViewItemPaintParams::text_height() * 6) / 4;
+ 	annotation_height_ = (ViewItemPaintParams::text_height() * 5) / 4;
+diff --git a/pv/views/trace/ruler.cpp b/pv/views/trace/ruler.cpp
+index 555794fc..83ffed28 100644
+--- a/pv/views/trace/ruler.cpp
++++ b/pv/views/trace/ruler.cpp
+@@ -283,7 +283,7 @@ void Ruler::paintEvent(QPaintEvent*)
+ 		const int rightedge = width();
+ 		const int x_tick = tick.first;
+ 		if ((x_tick > leftedge) && (x_tick < rightedge)) {
+-			const int x_left_bound = QFontMetrics(font()).width(tick.second) / 2;
++			const int x_left_bound = util::text_width(QFontMetrics(font()), tick.second) / 2;
+ 			const int x_right_bound = rightedge - x_left_bound;
+ 			const int x_legend = min(max(x_tick, x_left_bound), x_right_bound);
+ 			p.drawText(x_legend, ValueMargin, 0, text_height,
+diff --git a/pv/widgets/timestampspinbox.cpp b/pv/widgets/timestampspinbox.cpp
+index fea8175e..01424a5b 100644
+--- a/pv/widgets/timestampspinbox.cpp
++++ b/pv/widgets/timestampspinbox.cpp
+@@ -76,7 +76,7 @@ QSize TimestampSpinBox::minimumSizeHint() const
+ {
+ 	const QFontMetrics fm(fontMetrics());
+ 	const int l = round(value_).str().size() + precision_ + 10;
+-	const int w = fm.width(QString(l, '0'));
++	const int w = util::text_width(fm, QString(l, '0'));
+ 	const int h = lineEdit()->minimumSizeHint().height();
+ 	return QSize(w, h);
+ }
+-- 
+2.24.0.rc2
