@@ -1,4 +1,4 @@
-From 16bca4a0f45a712867992dbe30aa51558c78d424 Mon Sep 17 00:00:00 2001
+From 33c8c4ebf725aa9950689d4dc72d2f5da30beab5 Mon Sep 17 00:00:00 2001
 From: Mike Frysinger <vapier@gentoo.org>
 Date: Tue, 5 May 2020 09:52:40 +0200
 Subject: [PATCH] build system fixes
@@ -19,6 +19,7 @@ Forward ported from libcap-2.25 to libcap-2.28
 Forward ported from libcap-2.28 to libcap-2.29
 Forward ported from libcap-2.29 to libcap-2.33
 Forward ported from libcap-2.33 to libcap-2.34
+Forward ported from libcap-2.34 to libcap-2.37
 
 Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 ---
