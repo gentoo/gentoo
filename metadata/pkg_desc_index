@@ -8416,7 +8416,7 @@ dev-python/pyquery 1.4.1-r1: A jQuery-like library for python
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
 dev-python/pyro 4.79 4.80: Distributed object middleware for Python (RPC)
-dev-python/pyroute2 0.5.5-r1 0.5.12: A pure Python netlink and Linux network configuration library.
+dev-python/pyroute2 0.5.5-r1 0.5.12-r1: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
 dev-python/pyrsistent 0.15.6 0.16.0: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 4.6.5-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
