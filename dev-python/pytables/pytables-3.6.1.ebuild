@@ -56,7 +56,7 @@ python_compile() {
 		local -x CFLAGS="${CFLAGS}"
 		append-cflags -fno-strict-aliasing
 	fi
-	distutils-r1_python_compile
+	distutils-r1_python_compile -j1
 }
 
 python_test() {
