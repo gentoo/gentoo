@@ -7,10 +7,10 @@
 	</maintainer>
 	<use>
 		<flag name="apache">Enable mapserver to run under apache</flag>
-		<flag name="gdal">Enable <pkg>sci-libs/gdal</pkg> library support</flag>
+		<flag name="gdal" restrict="&lt;=sci-geosciences/mapserver-7.6.0">Enable <pkg>sci-libs/gdal</pkg> library support; deprecated</flag>
 		<flag name="geos">Enable <pkg>sci-libs/geos</pkg> library support</flag>
 		<flag name="postgis">Enable <pkg>dev-db/postgis</pkg> support</flag>
-		<flag name="proj">Enable <pkg>sci-libs/proj</pkg> library support (geographic projections)</flag>
-		<flag name="xslt">Enable xslt and exslt support xml-mapfile support</flag>
+		<flag name="proj" restrict="&lt;=sci-geosciences/mapserver-7.6.0">Enable <pkg>sci-libs/proj</pkg> library support (geographic projections); deprecated</flag>
+		<flag name="xslt" restrict="&lt;=sci-geosciences/mapserver-7.6.0">Enable xslt and exslt support xml-mapfile support; deprecated</flag>
 	</use>
 </pkgmetadata>
