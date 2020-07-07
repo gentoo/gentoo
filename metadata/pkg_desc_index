@@ -8492,7 +8492,7 @@ dev-python/python-debian 0.1.36: Python modules to work with Debian-related data
 dev-python/python-designateclient 2.11.0 4.0.0: Python bindings to the Designate API.
 dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.44-r1 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
-dev-python/python-docs 2.7.17 3.6.10 3.7.6 3.7.7 3.8.2: HTML documentation for Python
+dev-python/python-docs 2.7.17 2.7.18 3.6.10 3.6.11 3.7.7 3.7.8 3.8.2 3.8.3: HTML documentation for Python
 dev-python/python-dotenv 0.13.0: Manage .env files
 dev-python/python-editor 1.0.4: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.23.0 1.24.0: Python bindings for Enlightenment Foundation Libraries
