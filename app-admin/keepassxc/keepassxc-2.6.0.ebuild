@@ -15,7 +15,7 @@ if [[ "${PV}" != 9999 ]] ; then
 	else
 		#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 		SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
-		KEYWORDS="~amd64 ~x86"
+		KEYWORDS="~amd64 ~arm64 ~x86"
 	fi
 else
 	inherit git-r3
@@ -78,6 +78,7 @@ src_configure() {
 		-DWITH_GUI_TESTS=OFF
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
+		-DWITH_XC_DOCS=OFF
 		-DWITH_XC_BROWSER="$(usex browser)"
 		-DWITH_XC_FDOSECRETS=ON
 		-DWITH_XC_KEESHARE="$(usex keeshare)"
