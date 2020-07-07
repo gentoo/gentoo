@@ -28,6 +28,8 @@ RDEPEND="${DEPEND}"
 # Comment this for a normal release.
 S="${WORKDIR}/${PN}-${MY_PV}"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.12.1-skip-tests.patch )
+
 src_prepare() {
 	default
 
