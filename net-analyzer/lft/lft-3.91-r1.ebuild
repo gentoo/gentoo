@@ -18,9 +18,11 @@ RDEPEND="
 	${DEPEND}
 "
 DOCS=( CHANGELOG README TODO )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.91-strip.patch
+)
 
 src_prepare() {
-	sed -i -e 's:strip:true:g' Makefile.in || die
 	sed -i \
 		-e 's|_BSD_SOURCE|_DEFAULT_SOURCE|g' \
 		configure config/acconfig.h.in || die
