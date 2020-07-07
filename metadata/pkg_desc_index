@@ -11604,6 +11604,7 @@ gui-libs/tepl 4.2.1: GtkSourceView-based text editors and IDE helper library
 gui-libs/wf-config 0.4.1 9999: library for managing wayfire configuration files
 gui-libs/wlroots 0.10.0 0.10.1 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
+gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 1.2.0 2.0.2: wayland compositor inspired by CWM
 gui-wm/sway 1.4-r2 1.5_rc1 9999: i3-compatible Wayland window manager
 gui-wm/wayfire 0.4.0-r2 9999: compiz like 3D wayland compositor
