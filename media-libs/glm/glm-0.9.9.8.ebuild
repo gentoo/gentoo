@@ -19,6 +19,7 @@ RDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.9.6-simd.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {
