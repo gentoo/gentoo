@@ -20,11 +20,11 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 
-distutils_enable_tests pytest
-
 BDEPEND="
 	dev-python/versioneer[${PYTHON_USEDEP}]
 	test? ( dev-vcs/git )"
+
+distutils_enable_tests pytest
 
 src_test() {
 	git config --global user.email "you@example.com" || die
