@@ -17,12 +17,12 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 	test? (
+		$(python_gen_impl_dep sqlite)
 		dev-python/django[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}]
