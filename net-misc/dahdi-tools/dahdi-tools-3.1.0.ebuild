@@ -26,7 +26,11 @@ DEPEND="dev-libs/newt
 	sys-kernel/linux-headers
 	virtual/libusb:0
 	ppp? ( net-dialup/ppp )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-lang/perl:=
+	dev-perl/CGI"
+BDEPEND="dev-lang/perl
+	sys-apps/file"
 
 src_prepare() {
 	default
