@@ -18,6 +18,7 @@
   <use>
     <flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
     <flag name="gui">Build bindings for the QtGui module</flag>
+    <flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
     <flag name="svg">Build bindings for the QtSvg module</flag>
     <flag name="testlib">Build bindings for the QtTest module</flag>
     <flag name="webengine">Build bindings for the QtWebEngine module</flag>
