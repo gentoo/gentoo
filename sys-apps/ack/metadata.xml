@@ -9,6 +9,7 @@
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="cpan">ack</remote-id>
 		<remote-id type="cpan-module">App::Ack</remote-id>
