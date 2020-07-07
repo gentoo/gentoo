@@ -63,7 +63,7 @@ src_install() {
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
-		elog "Create \"${EROOT%/}/var/lib/mysqld_exporter/.my.cnf\" to read MySQL credentials from file."
+		elog "Create \"${EROOT}/var/lib/mysqld_exporter/.my.cnf\" to read MySQL credentials from file."
 	else
 		local _replacing_version=
 		for _replacing_version in ${REPLACING_VERSIONS}; do
