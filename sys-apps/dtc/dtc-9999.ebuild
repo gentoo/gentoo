@@ -40,8 +40,9 @@ PATCHES=(
 _emake() {
 	# valgrind is used only in 'make checkm'
 	emake \
-		NO_YAML=$(usex !yaml 1 0) \
+		NO_PYTHON=1 \
 		NO_VALGRIND=1 \
+		NO_YAML=$(usex !yaml 1 0) \
 		\
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
