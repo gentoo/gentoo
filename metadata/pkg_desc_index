@@ -105,6 +105,7 @@ acct-group/msmtpd 0: System group: msmtpd
 acct-group/munin 0: System group: munin
 acct-group/murmur 0: System group: murmur
 acct-group/mysql 0: MySQL program group
+acct-group/mysqld_exporter 0: System group: mysqld_exporter
 acct-group/mythtv 0: Mythtv mythbackend server/deamon group
 acct-group/nagios 0: System group: nagios
 acct-group/netbox 0: System group: netbox
@@ -302,6 +303,7 @@ acct-user/munin 0: user for munin
 acct-user/munin-async 0: user for munin async proxy node
 acct-user/murmur 0: user for murmur daemon
 acct-user/mysql 0: MySQL program user
+acct-user/mysqld_exporter 0: mysqld_exporter User
 acct-user/mythtv 0: Mythtv mythbackend server/daemon user
 acct-user/nagios 0: System user: nagios
 acct-user/netbox 0: user for netbox
@@ -2029,7 +2031,7 @@ app-metrics/github-exporter 04 04-r1 1.0.1: Github statistics exporter for prome
 app-metrics/grok_exporter 0.2.6: Unstructured log data exporter for Prometheus
 app-metrics/memcached_exporter 0.5.0 0.6.0: Prometheus exporter for memcached
 app-metrics/mongodb_exporter 0.6.2-r1 0.11.0: Prometheus exporter for MongoDB
-app-metrics/mysqld_exporter 0.10.0-r1 0.11.0: Prometheus exporter for MySQL server metrics
+app-metrics/mysqld_exporter 0.10.0-r1 0.11.0 0.12.1_p20200622: Prometheus exporter for MySQL server metrics
 app-metrics/nginx-lua-prometheus 0.1_pre20170610: Library that exports Nginx metrics to Prometheus
 app-metrics/nginx-vts-exporter 0.10.3: Nginx virtual host traffic stats exporter for Prometheus
 app-metrics/node_exporter 0.18.1 1.0.0_rc0 1.0.0_rc0-r1: Prometheus exporter for machine metrics
