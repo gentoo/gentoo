@@ -22,7 +22,10 @@ KEYWORDS="amd64 ~x86"
 
 BDEPEND="
 	dev-python/versioneer[${PYTHON_USEDEP}]
-	test? ( dev-vcs/git )"
+	test? (
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-vcs/git
+	)"
 
 distutils_enable_tests pytest
 
