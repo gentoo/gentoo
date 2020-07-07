@@ -509,7 +509,7 @@ app-admin/helm 2.16.1 2.16.7 3.2.4: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.44 2.45: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.5.3 2.5.4 2.6.0_beta1 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.5.4 2.6.0 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.4: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
@@ -5053,7 +5053,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.8.5: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.8.5 1.8.6: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.11 0.17.12: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.3: GObject-based interfaces and classes for commonly used data structures
@@ -16757,7 +16757,7 @@ sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 244.3 245.5 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
-sys-apps/sysvinit 2.93 2.95-r1 2.96: /sbin/init - parent of all processes
+sys-apps/sysvinit 2.93 2.96 2.97: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
 sys-apps/tcp-wrappers 7.6.28: TCP Wrappers
 sys-apps/texinfo 6.6-r1 6.7: The GNU info program and utilities
@@ -17351,7 +17351,7 @@ sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.4.0: Portable and efficient API to determine the call-chain of a program
 sys-libs/liburing 0.6 9999: Efficient I/O with io_uring
-sys-libs/libutempter 1.1.6-r3 1.2.0: Library that allows non-privileged apps to write utmp (login) info
+sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds
 sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.12-r3 4.4.16: Extended crypt library for descrypt, md5crypt, bcrypt, and others
@@ -17804,7 +17804,7 @@ www-client/opera-developer 71.0.3735.0 71.0.3742.0: A fast and secure web browse
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.11.1-r1 1.12.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
-www-client/seamonkey 2.53.2 2.53.3_beta1: Seamonkey Web Browser
+www-client/seamonkey 2.53.2 2.53.3: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
