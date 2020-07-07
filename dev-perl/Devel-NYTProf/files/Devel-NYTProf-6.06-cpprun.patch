@@ -1,0 +1,36 @@
+From aaa04b28c99e0d2bf244dbcb274b4df6fe6fa50d Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 7 Jul 2020 23:08:00 +1200
+Subject: Allow CPP override in ENV
+
+When Perl is built with -Dcpp="$(gc-getCPP)", the end result is:
+
+- $Config{cpp} = "${CHOST}-gcc"
+- $Config{cpprun} = "${CHOST}-gcc -E"
+
+And of course, Devel-NYTProf uses the former, and so it tries to compile
+the damn header instead of just preprocessing it.
+
+This provides a correction, and an override.
+
+Bug: https://github.com/timbunce/devel-nytprof/issues/139
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 60025de..6786e29 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -59,7 +59,7 @@ utime time(), time(), "t/test40pmc.pmc"
+ 
+ # --- Discover how much of stdio is implemented
+ 
+-my $cpp = $Config{cpp} || do {
++my $cpp = $ENV{CPP} || $Config{cpprun} || do {
+     warn "Warning: cpp not found in your perl config.  Falling back to 'cat'\n";
+     'cat';
+ };
+-- 
+2.27.0
+
