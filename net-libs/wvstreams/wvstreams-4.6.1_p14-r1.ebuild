@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.1-parallel-make.patch
 	"${FILESDIR}"/${PN}-4.6.1-_DEFAULT_SOURCE.patch
 	"${FILESDIR}"/${PN}-4.6.1_p14-xplc-module.patch
+	"${FILESDIR}"/${PN}-4.6.1_p14-llvm.patch
 )
 S=${WORKDIR}/${P/_p*}
 
