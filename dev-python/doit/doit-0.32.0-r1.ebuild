@@ -23,6 +23,7 @@ RDEPEND="
 DEPEND="
 	test? (
 		${RDEPEND}
+		$(python_gen_impl_dep sqlite)
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 		>=dev-python/pytest-5.4[${PYTHON_USEDEP}]
