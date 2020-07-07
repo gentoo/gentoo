@@ -14,10 +14,10 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="designer gui opengl svg testlib webengine"
+IUSE="designer gui opengl printsupport svg testlib webengine"
 
 RDEPEND="
-	dev-python/PyQt5[${PYTHON_USEDEP},designer?,opengl?,svg?]
+	dev-python/PyQt5[${PYTHON_USEDEP},designer?,opengl?,printsupport?,svg?]
 	gui? ( dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets] )
 	testlib? ( dev-python/PyQt5[${PYTHON_USEDEP},testlib] )
 	webengine? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )"
