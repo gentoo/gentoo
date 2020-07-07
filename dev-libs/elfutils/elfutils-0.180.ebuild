@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib-minimal
+inherit flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"
 HOMEPAGE="http://elfutils.org/"
@@ -71,7 +71,7 @@ multilib_src_test() {
 	# CC is a workaround for tests using ${CC-gcc}
 	env	LD_LIBRARY_PATH="${BUILD_DIR}/libelf:${BUILD_DIR}/libebl:${BUILD_DIR}/libdw:${BUILD_DIR}/libasm" \
 		LC_ALL="C" \
-		CC="$(gc-getCC)" \
+		CC="$(tc-getCC)" \
 		emake check VERBOSE=1
 }
 
