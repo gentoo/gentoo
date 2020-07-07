@@ -440,7 +440,6 @@ sys-boot/grub:2 test
 
 # Ian Stakenvicius (2017-01-25)
 # rust on mozilla packages is experimental
-www-client/firefox rust
 mail-client/thunderbird rust
 
 # Lars Wendler <polynomial-c@gentoo.org> (2017-01-19)
@@ -504,7 +503,6 @@ dev-lang/moarvm asan
 # Ian Stakenvicius <axs@gentoo.org> (2016-04-28)
 # system-cairo support causes lots of crashing in mozilla pkgs
 # (see bug #556378 and others)
-www-client/firefox system-cairo
 mail-client/thunderbird system-cairo
 
 # James Le Cuirot <chewi@gentoo.org> (2016-04-10)

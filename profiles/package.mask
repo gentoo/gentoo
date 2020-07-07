@@ -654,7 +654,6 @@ dev-java/eclipse-ecj:4.10
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # EOL and has known vulnerabilities. Please move to
 # Firefox 60 or newer if you can.
-<www-client/firefox-60
 <www-client/firefox-bin-60
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
