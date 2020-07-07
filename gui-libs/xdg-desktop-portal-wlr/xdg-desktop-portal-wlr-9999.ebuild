@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit fcaps meson
+inherit meson
 
 DESCRIPTION="xdg-desktop-portal backend for wlroots"
 HOMEPAGE="https://github.com/emersion/xdg-desktop-portal-wlr"
