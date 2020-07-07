@@ -6,16 +6,15 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_SETUPTOOLS=rdepend
-EGIT_REPO_URI="https://github.com/dbcli/mycli.git"
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="CLI for MySQL Database with auto-completion and syntax highlighting"
 
 HOMEPAGE="https://www.mycli.net"
-SRC_URI=""
+SRC_URI="https://github.com/dbcli/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="ssh test"
 RESTRICT="!test? ( test )"
 RDEPEND="$(python_gen_cond_dep '
