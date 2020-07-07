@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit autotools
 
 DESCRIPTION="network scanner that gathers info on SSH protocols and versions"
 HOMEPAGE="https://monkey.org/~provos/scanssh/"
@@ -21,11 +22,22 @@ RDEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0-fix-warnings.diff
+	"${FILESDIR}"/${PN}-2.0-libdir.diff
 )
 
 src_prepare() {
 	default
-	touch configure
+	eautoreconf
+}
+
+src_configure() {
+	econf \
+		DNETINC='' \
+		DNETLIB=-ldnet \
+		EVENTINC='' \
+		EVENTLIB=-levent \
+		PCAPINC='' \
+		PCAPLIB=-lpcap
 }
 
 src_compile() {
