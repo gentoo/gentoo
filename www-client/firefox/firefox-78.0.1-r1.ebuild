@@ -28,7 +28,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-PATCH="${PN}-78.0-patches-01"
+PATCH="${PN}-78.0-patches-02"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/${PN}-${MOZ_PV}.source.tar.xz"
@@ -284,14 +284,18 @@ src_unpack() {
 }
 
 src_prepare() {
-	# bug 730986 -- causing more harm than it helps
-	rm "${WORKDIR}"/firefox/0027-bmo-1618914-Wayland-Fall-back-to-ftruncate-if-posix_.patch
 	eapply "${WORKDIR}/firefox"
 
 	# Make LTO respect MAKEOPTS
 	sed -i \
 		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
 		"${S}"/build/moz.configure/lto-pgo.configure \
+		|| die "sed failed to set num_cores"
+
+	# Make ICU respect MAKEOPTS
+	sed -i \
+		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
+		"${S}"/intl/icu_sources_data.py \
 		|| die "sed failed to set num_cores"
 
 	# Allow user to apply any additional patches without modifing ebuild
