@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7} )
+
 inherit distutils-r1
 
 DESCRIPTION="Mock library for boto"
@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/aws-xray-sdk-python-0.93[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/backports-tempfile[${PYTHON_USEDEP}]' python3_{6,7})
+	dev-python/backports-tempfile[${PYTHON_USEDEP}]
 	dev-python/cfn-python-lint[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.3.0[${PYTHON_USEDEP}]
 	dev-python/cookies[${PYTHON_USEDEP}]
@@ -29,44 +29,32 @@ RDEPEND="
 	>=dev-python/jinja-2.10.1[${PYTHON_USEDEP}]
 	>=dev-python/jsondiff-1.1.2[${PYTHON_USEDEP}]
 	>=dev-python/boto-2.36.0[${PYTHON_USEDEP}]
-	>=dev-python/boto3-1.9.201[${PYTHON_USEDEP}]
-	>=dev-python/botocore-1.12.201[${PYTHON_USEDEP}]
+	>=dev-python/boto3-1.9.86[${PYTHON_USEDEP}]
+	>=dev-python/botocore-1.12.86[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
+	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/pretty-yaml[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/python-jose[${PYTHON_USEDEP}]
-	dev-python/python-sshpubkeys[${PYTHON_USEDEP}]
 	>=dev-python/responses-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 "
-BDEPEND="
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
-		dev-python/freezegun[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/parameterized[${PYTHON_USEDEP}]
-		dev-python/responses[${PYTHON_USEDEP}]
-		>=dev-python/sure-1.4.11[${PYTHON_USEDEP}]
-	)
+			dev-python/freezegun[${PYTHON_USEDEP}]
+			dev-python/nose[${PYTHON_USEDEP}]
+			dev-python/responses[${PYTHON_USEDEP}]
+			>=dev-python/sure-1.4.11[${PYTHON_USEDEP}]
+		  )
 "
-
-PATCHES=(
-	"${FILESDIR}/moto-1.3.14-newer-botocore.patch"
-	"${FILESDIR}/moto-1.3.14-tests.patch"
-	"${FILESDIR}/moto-1.3.14-py39.patch"
-)
-
-distutils_enable_tests nose
 
 python_prepare_all() {
 	sed -e 's|==|>=|' \
-		-e '/cfn-lint/ d' \
 		-i setup.py moto.egg-info/requires.txt || die
 
 	# Disable tests that fail with network-sandbox.
@@ -79,8 +67,10 @@ python_prepare_all() {
 		-e 's|^\(def \)\(test_invoke_requestresponse_function()\)|\1_\2|' \
 		-i tests/test_awslambda/test_lambda.py || die
 
-	# these tests crash nose
-	rm tests/test_xray/test_xray_client.py || die
-
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	PYTHONPATH=${BUILDDIR}/lib \
+		nosetests -sv ./tests || die
 }
