@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,32 +16,41 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
+	>=dev-libs/libdnet-1.12[ipv6]
 	dev-libs/libevent:=
 	net-libs/libpcap
-	>=dev-libs/libdnet-1.12[ipv6]
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
 	virtual/awk
 "
 DOCS=( INSTALL README TODO )
 PATCHES=(
+	"${FILESDIR}"/${P}-libdir.patch
 	"${FILESDIR}"/${P}-pcap_open.patch
 )
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
+
 	# Remove broken and old files, autotools will regen needed files
 	rm *.m4 acconfig.h missing Makefile.in || die
+
 	# Add missing includes
 	sed -i -e "/#define IPUTIL_H/a#include <stdio.h>\n#include <stdint.h>" iputil.h || die
+
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--with-libdnet="${EPREFIX}"/usr \
-		--with-libevent="${EPREFIX}"/usr \
-		--with-libpcap="${EPREFIX}"/usr
+		DNETINC='' \
+		DNETLIB=-ldnet \
+		EVENTINC='' \
+		EVENTLIB=-levent \
+		PCAPINC='' \
+		PCAPLIB=-lpcap
 }
