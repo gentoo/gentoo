@@ -33,11 +33,25 @@ DOCS="
 	Documentation/manual.txt
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.4-posix-shell.patch
-	"${FILESDIR}"/${PN}-1.5.0-fdt_check_full-visibility.patch
-	"${FILESDIR}"/${PN}-1.5.0-gcc-10.patch
-)
+_emake() {
+	# valgrind is used only in 'make checkm'
+	emake \
+		NO_PYTHON=1 \
+		NO_VALGRIND=1 \
+		NO_YAML=$(usex !yaml 1 0) \
+		\
+		AR="$(tc-getAR)" \
+		CC="$(tc-getCC)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
+		\
+		V=1 \
+		\
+		PREFIX="${EPREFIX}/usr" \
+		\
+		LIBDIR="\$(PREFIX)/$(get_libdir)" \
+		\
+		"$@"
+}
 
 src_prepare() {
 	default
@@ -47,18 +61,21 @@ src_prepare() {
 		-e '/^CPPFLAGS =/s:=:+=:' \
 		-e 's:-Werror::' \
 		-e 's:-g -Os::' \
-		-e "/^PREFIX =/s:=.*:= ${EPREFIX}/usr:" \
-		-e "/^LIBDIR =/s:=.*:= \$(PREFIX)/$(get_libdir):" \
 		Makefile || die
 
 	tc-export AR CC PKG_CONFIG
-	export V=1
-	export NO_YAML=$(usex !yaml 1 0)
-	export NO_VALGRIND=1 # used only in 'make checkm'
+}
+
+src_compile() {
+	_emake
+}
+
+src_test() {
+	_emake check
 }
 
 src_install() {
-	default
+	_emake DESTDIR="${D}" install
 
 	use static-libs || find "${ED}" -name '*.a' -delete
 }

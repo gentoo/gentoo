@@ -33,10 +33,6 @@ DOCS="
 	Documentation/manual.txt
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.4-posix-shell.patch
-)
-
 _emake() {
 	# valgrind is used only in 'make checkm'
 	emake \
