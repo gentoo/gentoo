@@ -115,6 +115,10 @@ src_install() {
 	newinitd "${FILESDIR}"/bootlogd.initd bootlogd
 	into /
 	dosbin "${FILESDIR}"/halt.sh
+
+	keepdir /etc/inittab.d
+
+	find "${ED}" -type d -empty -delete || die
 }
 
 pkg_postinst() {
@@ -122,8 +126,9 @@ pkg_postinst() {
 	# This is really needed, as without the new version of init cause init
 	# not to quit properly on reboot, and causes a fsck of / on next reboot.
 	if [[ ${ROOT} == / ]] ; then
-		if [[ -e /dev/initctl && ! -e /run/initctl ]]; then
-			ln -s /dev/initctl /run/initctl
+		if [[ -e /dev/initctl ]] && [[ ! -e /run/initctl ]] ; then
+			ln -s /dev/initctl /run/initctl \
+				|| ewarn "Failed to set /run/initctl symlink!"
 		fi
 		# Do not return an error if this fails
 		/sbin/telinit U &>/dev/null
