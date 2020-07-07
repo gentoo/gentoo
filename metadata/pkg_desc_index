@@ -7606,7 +7606,7 @@ dev-python/cfn-python-lint 0.21.6 0.30.1: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.1 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
-dev-python/chameleon 3.7.0 3.7.1 3.7.2 3.7.4 3.8.0: Fast HTML/XML template compiler for Python
+dev-python/chameleon 3.7.0 3.7.1 3.7.2 3.7.4 3.8.0 3.8.1: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.3.0-r3: Python attributes without the boilerplate
 dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
@@ -7927,7 +7927,7 @@ dev-python/ipaddr 2.2.0: Python IP address manipulation library
 dev-python/ipaddress 1.0.23: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 5.1.4 5.3.0: IPython Kernel for Jupyter
+dev-python/ipykernel 5.1.4 5.3.0 5.3.1: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.2.3 6.3.0: Interactive Parallel Computing with IPython
 dev-python/ipython 7.5.0 7.15.0 7.16.1: Advanced interactive shell for Python
@@ -8068,7 +8068,7 @@ dev-python/mongoengine 0.10.6 0.20.0: A Python Object-Document-Mapper for workin
 dev-python/mongomock 3.19.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/more-itertools 5.0.0 7.0.0 8.3.0 8.4.0: More routines for operating on iterables, beyond itertools
-dev-python/moto 1.3.8-r1 1.3.14-r1: Mock library for boto
+dev-python/moto 1.3.8-r2 1.3.14-r2: Mock library for boto
 dev-python/moviepy 1.0.1-r1: Video editing with Python
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.24.0: Mock object framework for Python
@@ -8719,7 +8719,7 @@ dev-python/soupsieve 1.9.5 1.9.6 2.0.1: A modern CSS selector implementation for
 dev-python/sparql-wrapper 1.8.4 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
-dev-python/sphinx 1.7.5-r2 2.0.1-r1 2.4.4 3.0.3 3.0.4 3.1.0 3.1.1: Python documentation generator
+dev-python/sphinx 1.7.5-r2 2.0.1-r1 2.4.4 3.0.3 3.0.4 3.1.0 3.1.1 3.1.2: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.5 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -14646,7 +14646,7 @@ net-mail/mlmmj 1.2.19.0-r1 1.3.0: Mailing list managing made joyful
 net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.4.4 1.4.7: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
-net-mail/mu 0.9.18-r3 1.0-r1 1.3.5-r1 1.3.6-r1 1.3.6-r2 1.4.1 1.4.4 1.4.10: Set of tools to deal with Maildirs, in particular, searching and indexing
+net-mail/mu 1.4.1 1.4.4 1.4.10: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3 0.29.3-r1 0.29.3-r2: Thread-based e-mail indexer, supporting quick search and tagging
@@ -16550,7 +16550,7 @@ sys-apps/dmidecode 3.1 3.2: DMI (Desktop Management Interface) table related uti
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
 sys-apps/dog 1.7-r6: Dog is better than cat
 sys-apps/dstat 0.7.3 0.7.4 0.7.4-r1: Versatile replacement for vmstat, iostat and ifstat
-sys-apps/dtc 1.5.0 1.5.0-r1 9999: Open Firmware device tree compiler
+sys-apps/dtc 1.5.0 1.5.0-r1 1.5.0-r2 9999: Open Firmware device tree compiler
 sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting disk usage
 sys-apps/earlyoom 1.3 9999: Early OOM Daemon for Linux
 sys-apps/ed 1.15-r1 1.16: Your basic line editor
@@ -18841,7 +18841,7 @@ xfce-extra/xfce4-smartbookmark-plugin 0.5.1: Smart bookmark plug-in for the Xfce
 xfce-extra/xfce4-statusnotifier-plugin 0.2.2: A panel area for fd.o Status Notifiers (systray replacement)
 xfce-extra/xfce4-systemload-plugin 1.2.3: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.2.2 1.2.3: Easy to use task manager
-xfce-extra/xfce4-time-out-plugin 1.1.0: A panel plug-in to take periodical breaks from the computer
+xfce-extra/xfce4-time-out-plugin 1.1.0 1.1.1: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop environment
 xfce-extra/xfce4-vala 4.10.3-r7: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
