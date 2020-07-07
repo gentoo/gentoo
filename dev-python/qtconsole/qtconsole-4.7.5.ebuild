@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/jupyter_client-4.1.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
-	dev-python/QtPy[${PYTHON_USEDEP},svg]
+	dev-python/QtPy[${PYTHON_USEDEP},gui,printsupport,svg]
 "
 BDEPEND="
 	test? (
