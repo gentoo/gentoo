@@ -5047,7 +5047,7 @@ dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to
 dev-libs/libfido2 1.3.1 1.4.0: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
-dev-libs/libfmt 6.1.2 6.2.0-r1 6.2.1 7.0.0 9999: Small, safe and fast formatting library
+dev-libs/libfmt 6.1.2 6.2.0-r1 6.2.1 7.0.0 7.0.1 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7 0.7-r1: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
@@ -11291,11 +11291,11 @@ games-rpg/wastesedge 0.3.5-r2: role playing game to showcase the adonthell engin
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.14.60.5: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.14.60.5 1.16.1.02: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
-games-server/minecraft-server 1.15.2: The official server for the sandbox video game
+games-server/minecraft-server 1.15.2 1.16.1: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r2: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
