@@ -9,7 +9,7 @@ inherit autotools multilib-minimal
 COMMIT="e4e8d191e8dd74cbdbeaef3232c16a7ef517e68d"
 
 DESCRIPTION="Hybrid lossless audio compression tools"
-HOMEPAGE="http://www.wavpack.com/"
+HOMEPAGE="https://www.wavpack.com/"
 SRC_URI="https://github.com/dbry/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

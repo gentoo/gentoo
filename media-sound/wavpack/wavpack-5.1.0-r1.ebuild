@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools multilib-minimal
 
 DESCRIPTION="Hybrid lossless audio compression tools"
-HOMEPAGE="http://www.wavpack.com/"
-SRC_URI="http://www.wavpack.com/${P}.tar.bz2"
+HOMEPAGE="https://www.wavpack.com/"
+SRC_URI="https://www.wavpack.com/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
