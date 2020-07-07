@@ -15,7 +15,7 @@ SRC_URI="https://github.com/igordejanovic/${MY_PN}/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
