@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"

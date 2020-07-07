@@ -6,39 +6,43 @@ EAPI=7
 KFMIN=5.71.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.14.2
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
-DESCRIPTION="Bluetooth stack for KDE Plasma"
-HOMEPAGE="https://invent.kde.org/plasma/bluedevil"
+DESCRIPTION="Qt Platform Theme integration plugins for the Plasma workspaces"
 
-LICENSE="GPL-2" # TODO: CHECK
+LICENSE="LGPL-2+"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=kde-frameworks/bluez-qt-${KFMIN}:5
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5=[dbus]
+	>=dev-qt/qtquickcontrols2-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
+	>=kde-frameworks/kcompletion-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
-	>=kde-frameworks/kded-${KFMIN}:5
-	>=kde-frameworks/kdbusaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kiconthemes-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kjobwidgets-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
+	>=kde-frameworks/kwayland-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	>=kde-plasma/breeze-${PVCUT}:5
+	x11-libs/libXcursor
+	x11-libs/libxcb
 "
 RDEPEND="${DEPEND}
-	>=kde-plasma/kde-cli-tools-${PVCUT}:5
+	media-fonts/hack
+	media-fonts/noto
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-5.19.2-use-PlasmaExtras.PlaceholderMessage.patch" # KDE-Bug #422684
-)
+# requires running kde environment
+RESTRICT+=" test"

@@ -15,8 +15,8 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=kde-frameworks/kwallet-${KFMIN}:5
 	dev-libs/libgcrypt:0=
+	>=kde-frameworks/kwallet-${KFMIN}:5
 	sys-libs/pam
 "
 RDEPEND="${DEPEND}
