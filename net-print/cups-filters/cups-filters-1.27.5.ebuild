@@ -59,7 +59,7 @@ src_prepare() {
 	default
 
 	if ! use test ; then
-		eapply "${FILESDIR}"/${PN}-1.27.5-make-missing-testfont-non-fatal.patch
+		eapply "${FILESDIR}"/${PN}-1.27.5-make-missing-testfont-non-fatal-r1.patch
 		need_eautoreconf=yes
 	elif [[ "${PV}" == "9999" ]] ; then
 		need_eautoreconf=yes
