@@ -145,9 +145,9 @@ src_install() {
 
 	einfo "Adding env.d entry for ${PN}"
 	newenvd - 99hylafaxplus <<-EOF
-	PATH="/var/spool/fax/bin"
-	CONFIG_PROTECT="/var/spool/fax/etc /usr/$(get_libdir)/fax"
-	CONFIG_PROTECT_MASK="/var/spool/fax/etc/xferfaxlog"
+		PATH="/var/spool/fax/bin"
+		CONFIG_PROTECT="/var/spool/fax/etc /usr/$(get_libdir)/fax"
+		CONFIG_PROTECT_MASK="/var/spool/fax/etc/xferfaxlog"
 	EOF
 
 	newconfd "${FILESDIR}/${PN}-conf" ${PN}
