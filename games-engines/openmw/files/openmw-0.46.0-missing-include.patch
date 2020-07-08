@@ -1,0 +1,19 @@
+Fixes build on ~arch system, patch from upstream, to be dropped for 0.47
+
+From 10daadefbea1f62a818c339dc7f3d69a858bc8a6 Mon Sep 17 00:00:00 2001
+From: elsid <elsid.mail@gmail.com>
+Date: Thu, 30 Apr 2020 21:57:22 +0200
+Subject: [PATCH] Add missing include
+
+diff --git a/components/detournavigator/offmeshconnectionsmanager.hpp b/components/detournavigator/offmeshconnectionsmanager.hpp
+index 30d7976aec..155ce32963 100644
+--- a/components/detournavigator/offmeshconnectionsmanager.hpp
++++ b/components/detournavigator/offmeshconnectionsmanager.hpp
+@@ -13,6 +13,7 @@
+ 
+ #include <boost/optional.hpp>
+ 
++#include <algorithm>
+ #include <map>
+ #include <mutex>
+ #include <unordered_map>
