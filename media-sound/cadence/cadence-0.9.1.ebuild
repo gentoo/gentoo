@@ -40,6 +40,10 @@ CDEPEND="
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-qt5.15.patch
+)
+
 src_prepare() {
 	sed -i -e "s/python3/${EPYTHON}/" \
 		data/cadence \
