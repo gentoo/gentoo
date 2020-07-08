@@ -11,7 +11,13 @@ BASE_URI="http://download-cdn.resilio.com/${PV}/Debian/${PN}_${PV}-1_@arch@.deb"
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
 HOMEPAGE="https://resilio.com/"
 SRC_URI="amd64? ( ${BASE_URI/@arch@/amd64} )
-	x86? ( ${BASE_URI/@arch@/i386} )"
+	x86? ( ${BASE_URI/@arch@/i386} )
+	arm64? ( ${BASE_URI/@arch@/arm64} )
+	arm? ( ${BASE_URI/@arch@/armhf} )
+	"
+# https://download-cdn.resilio.com/2.7.1.1370/Debian/resilio-sync_2.7.1.1370-1_arm64.deb
+# https://download-cdn.resilio.com/2.7.1.1370/Debian/resilio-sync_2.7.1.1370-1_armel.deb 
+# https://download-cdn.resilio.com/2.7.1.1370/Debian/resilio-sync_2.7.1.1370-1_armhf.deb 
 
 LICENSE="all-rights-reserved"
 SLOT="0"
