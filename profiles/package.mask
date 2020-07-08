@@ -644,12 +644,6 @@ dev-java/eclipse-ecj:4.10
 # Keeping it masked while users have unsolved issues with >0.15.0.
 <x11-misc/sddm-0.18.0
 
-# Ian Stakenvicius <axs@gentoo.org> (2018-11-07)
-# on behalf of Mozilla Project <mozilla@gentoo.org>
-# Mask old/vuln thunderbird for removal by 2019,
-# see security bug 670102
-<mail-client/thunderbird-bin-60.0
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
 # Masked for more testing especially of reverse-deps.
 >=dev-games/ogre-1.11.2
