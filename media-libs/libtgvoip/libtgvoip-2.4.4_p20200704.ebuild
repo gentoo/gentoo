@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools
 
-EGIT_COMMIT="ad55e7403ab7f268304ae9045eddef479a574ae5"
+EGIT_COMMIT="b98a01ea44916444cb1b9192f80b46f974d296a6"
 
 DESCRIPTION="VoIP library for Telegram clients"
 HOMEPAGE="https://github.com/telegramdesktop/libtgvoip"
@@ -29,8 +29,6 @@ BDEPEND="virtual/pkgconfig"
 REQUIRED_USE="|| ( alsa pulseaudio )"
 
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
-
-PATCHES=( "${FILESDIR}/configure-bashisms.patch" )
 
 src_prepare() {
 	default
