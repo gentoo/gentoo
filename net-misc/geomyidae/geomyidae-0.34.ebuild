@@ -23,9 +23,11 @@ pkg_setup() {
 src_prepare() {
 	# enable verbose build
 	# respect CFLAGS
+	# remove /usr/lib from LDFLAGS, bug #731672
 	sed -i \
 		-e 's/@${CC}/${CC}/g' \
 		-e '/CFLAGS/s/=/?=/' \
+		-e '/GEOM_LDFLAGS/s:-L/usr/lib ::' \
 		Makefile || die 'sed on Makefile failed'
 	# fix path for pid file
 	sed -i \
