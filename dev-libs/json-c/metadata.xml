@@ -17,11 +17,11 @@
     <flag name="cpu-flags-x86-rdrand">Enable RDRAND Hardware RNG Hash Seed</flag>
   </use>
   <longdescription lang="en">
-"A JSON implementation in C" is probably the better description, and then
-"JSON-C implements a reference counting object model that allows you to 
-easily construct JSON objects in C, output them as JSON formatted 
-strings and parse JSON formatted strings back into the C 
-representation of JSON objects.
+    JSON-C is a JSON implementation written in C. It implements a
+    reference counting object model that allows you to easily
+    construct JSON objects in C, output them as JSON formatted strings
+    and parse JSON formatted strings back into the C representation of
+    JSON objects.
   </longdescription>
   <upstream>
     <remote-id type="github">json-c/json-c</remote-id>
