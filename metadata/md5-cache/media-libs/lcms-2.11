@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=2
 SRC_URI=mirror://sourceforge/lcms/lcms2-2.11.tar.gz
 _eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multilib-build	8ad5b5535b73a8971881f09277b939f4	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=ccfd334a52f74454853c8ac163803df2
+_md5_=506b0b55fdf854ea1bfb846264269af4
