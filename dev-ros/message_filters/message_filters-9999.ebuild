@@ -1,16 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 ROS_REPO_URI="https://github.com/ros/ros_comm"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=utilities/${PN}
-PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Set of message filters which take in messages and may output those messages at a later time"
+DESCRIPTION="Set of message filters which take in messages and outputs those at a later time"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
