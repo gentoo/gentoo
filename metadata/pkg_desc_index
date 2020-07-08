@@ -4804,7 +4804,7 @@ dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time c
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.1 5.30.2 5.30.2-r1 5.30.2-r2 5.30.3 5.30.3-r1 5.30.3-r2: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 7.2.31 7.3.18 7.3.19 7.4.6 7.4.7: The PHP language runtime engine
+dev-lang/php 7.2.31 7.2.32 7.3.18 7.3.19 7.3.20 7.4.6 7.4.7 7.4.8: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18 3.6.10-r2 3.6.11-r1 3.7.7-r2 3.7.8-r1 3.8.2-r2 3.8.3-r1 3.9.0_beta3 3.9.0_beta4: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
@@ -16636,7 +16636,7 @@ sys-apps/iucode_tool 2.3.1-r1: tool to manipulate Intel X86 and X86-64 processor
 sys-apps/kbd 2.0.4 2.0.4-r1 2.2.0-r2 2.2.90 9999: Keyboard and console utilities
 sys-apps/kcheck 0.0.2 9999: Record and check required kernel symbols are set
 sys-apps/kexec-tools 2.0.20-r1 9999: Load another kernel from the currently executing Linux kernel
-sys-apps/keyutils 1.6.1 1.6.2: Linux Key Management Utilities
+sys-apps/keyutils 1.6.1 1.6.3: Linux Key Management Utilities
 sys-apps/kmod 26-r5 27-r1 9999: library and tools for managing linux kernel modules
 sys-apps/kmscon 8-r1 8_p20180906: KMS/DRM based virtual Console Emulator
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
