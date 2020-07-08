@@ -25,7 +25,7 @@ then
 else
 	# upstream stable
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IC-${MY_PV}-no-jbr.tar.gz -> ${MY_PN}IC-${PV_STRING}_20200507.tar.gz
+	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IC-${MY_PV}-no-jbr.tar.gz -> ${MY_PN}IC-${PV_STRING}.tar.gz
 		jbr8? ( x86? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbrx-${JRE_BASE}-linux-i586-b${JRE_VER}.tar.gz -> jbrx-${JRE_BASE}-linux-i586-b${JRE_VER}.tar.gz )
 		amd64? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbrx-${JRE_BASE}-linux-x64-b${JRE_VER}.tar.gz -> jbrx-${JRE_BASE}-linux-x64-b${JRE_VER}.tar.gz ) )
 		jbr11? ( amd64? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz -> jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz ) )"
@@ -52,7 +52,7 @@ RDEPEND="${DEPEND}
 	>=virtual/jdk-1.7:*
 	dev-java/jansi-native
 	dev-libs/libdbusmenu
-	dev-util/lldb"
+	=dev-util/lldb-9*"
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
 S="${WORKDIR}/${MY_PN}-IC-$(ver_cut 4-6)"
@@ -95,7 +95,7 @@ src_prepare() {
 		done
 	fi
 
-	patchelf --set-rpath '$ORIGIN' "${S}"/plugins/Kotlin/bin/linux/LLDBFrontend || die
+	patchelf --replace-needed liblldb.so liblldb.so.9 "${S}"/plugins/Kotlin/bin/linux/LLDBFrontend || die "Unable to patch LLDBFrontend for lldb"
 
 	sed -i \
 		-e "\$a\\\\" \
