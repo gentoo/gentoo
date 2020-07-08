@@ -42,6 +42,7 @@ COMMON_X_DEPEND="
 	x11-libs/libXrandr:=
 	x11-libs/libXrender:=
 	x11-libs/libXtst:=
+	x11-libs/libXScrnSaver:=
 	x11-libs/libxcb:=
 "
 
@@ -96,7 +97,6 @@ COMMON_DEPEND="
 		>=app-accessibility/at-spi2-core-2.26:2
 		>=dev-libs/atk-2.26
 		x11-libs/gtk+:3[X]
-		x11-libs/libXScrnSaver:=
 		${COMMON_X_DEPEND}
 	)
 "
