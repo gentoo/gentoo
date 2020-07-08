@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	!<x11-apps/radeon-profile-20200504-r1
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 "
@@ -28,7 +29,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${P}/${PN}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-20190603-secure_socket.patch"
+	"${FILESDIR}/${PN}-20190603-run_subdir.patch"
 )
 
 src_prepare() {
@@ -51,7 +52,7 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 
-	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r2 ${PN}
 }
 
 pkg_postinst() {
