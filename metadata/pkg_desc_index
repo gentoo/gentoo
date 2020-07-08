@@ -7376,11 +7376,11 @@ dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
 dev-php/pecl-http 3.2.1 3.2.3: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-lzf 1.6.7 1.6.8: This package handles LZF de/compression
-dev-php/pecl-mailparse 3.0.4: PHP extension for parsing and working with RFC822 and MIME compliant messages
+dev-php/pecl-mailparse 3.0.4 3.1.0: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 4.0.5.2: PHP extension for using memcached
 dev-php/pecl-memcached 3.1.3-r1 3.1.5-r1: Interface PHP with memcached via libmemcached library
-dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0 1.7.4: MongoDB database driver for PHP
+dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0 1.7.4 1.7.5: MongoDB database driver for PHP
 dev-php/pecl-ncurses 1.0.2-r5: Terminal screen handling and optimization package
 dev-php/pecl-oauth 2.0.5: OAuth is an authorization protocol built on top of HTTP
 dev-php/pecl-pam 1.0.3-r3: This extension provides PAM (Pluggable Authentication Modules) integration
@@ -7388,7 +7388,7 @@ dev-php/pecl-propro 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r2: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 2.0.0-r2 2.0.1: A reusable, persistent handle and resource factory API
-dev-php/pecl-redis 5.1.1 5.2.1 5.2.2: PHP extension for interfacing with Redis
+dev-php/pecl-redis 5.1.1 5.2.1 5.2.2 5.3.1: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 2.0.1-r3: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers
@@ -7398,7 +7398,7 @@ dev-php/pecl-translit 0.6.3: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.1.3-r1: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.1.0: A wrapper around libuuid
 dev-php/pecl-xdiff 2.0.1-r2: PHP extension for generating diff files
-dev-php/pecl-yaml 2.0.4: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
+dev-php/pecl-yaml 2.0.4 2.1.0: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.2.3: This extension implements a Z39.50 client for PHP using the YAZ toolkit
 dev-php/pecl-zmq 1.1.3-r2 9999: PHP Bindings for ZeroMQ messaging
 dev-php/phar-io-manifest 1.0.3: Reading phar.io manifest information from a PHP Archive (PHAR)
@@ -14254,7 +14254,7 @@ net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1 4.18: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
-net-firewall/shorewall 5.2.5.2: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.5.2 5.2.6: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.36: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13 3.7 3.8 3.9: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
@@ -14598,7 +14598,7 @@ net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.24.4 2.26.4-r1 2.28.2: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 4.12.0 4.12.3: Extended ROOT remote file server
+net-libs/xrootd 4.12.0 4.12.3 5.0.0: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.0 4.12.3: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
@@ -14781,7 +14781,7 @@ net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming route
 net-misc/freerdp 2.1.1-r1 2.1.2-r1 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
-net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol
+net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
 net-misc/gerbera 1.4.0-r1 1.5.0-r1 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
