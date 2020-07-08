@@ -181,13 +181,6 @@ src_prepare() {
 	# Update config.guess to support more systems
 	cp "${BROOT}/usr/share/gnuconfig/config.guess" cmake/ || die
 
-	# manpages don't use markdown
-	if ! use doc; then
-		sed -e '/import sphinx/,/source_parsers/d' \
-			-e '/markdown/d' \
-			-i docs/conf.py || die
-	fi
-
 	# Verify that the live ebuild is up-to-date
 	check_live_ebuild
 
