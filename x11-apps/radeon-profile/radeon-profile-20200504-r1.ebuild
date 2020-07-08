@@ -22,6 +22,7 @@ IUSE=""
 S="${WORKDIR}/${P}/${PN}"
 
 RDEPEND="
+	!<x11-apps/radeon-profile-daemon-20190603-r1
 	dev-qt/qtcharts:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -38,8 +39,13 @@ DEPEND="
 	x11-libs/libdrm
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-20200504-run_subdir.patch"
+)
+
 src_prepare() {
-	default
+	eapply -p2 "${PATCHES[@]}"
+	eapply_user
 	sed 's@TrayIcon;@@' -i extra/${PN}.desktop || die
 }
 
