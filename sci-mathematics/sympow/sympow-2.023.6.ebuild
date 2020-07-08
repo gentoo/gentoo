@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="Sympow-BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 # Pari is used at build time to generate data.
