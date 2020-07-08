@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools fdo-mime toolchain-funcs
+inherit autotools toolchain-funcs xdg-utils
 MY_P=${P/_}
 
 DESCRIPTION="An amateur radio logging program"
@@ -12,7 +12,7 @@ SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/hamlib
@@ -67,11 +67,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
