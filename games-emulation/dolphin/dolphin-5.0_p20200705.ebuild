@@ -61,9 +61,8 @@ RDEPEND="
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc )
 "
-DEPEND="${RDEPEND}
-	app-arch/zip
-	media-libs/freetype
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
