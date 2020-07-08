@@ -31,10 +31,9 @@ RDEPEND="$(python_gen_cond_dep '
 	ssh? ( dev-python/paramiko[${PYTHON_MULTI_USEDEP}] )')
 "
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_MULTI_USEDEP}]') )"
 
 distutils_enable_tests pytest
-
-BDEPEND="test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_MULTI_USEDEP}]') )"
 
 PATCHES=( "${FILESDIR}/mycli-1.21.1-fix-test-install.patch" )
 
