@@ -438,10 +438,6 @@ sys-devel/gcc pie
 # Multiple test failures.
 sys-boot/grub:2 test
 
-# Ian Stakenvicius (2017-01-25)
-# rust on mozilla packages is experimental
-mail-client/thunderbird rust
-
 # Lars Wendler <polynomial-c@gentoo.org> (2017-01-19)
 # Masked until system heimdal can finally be used with AD DC
 net-fs/samba system-heimdal
@@ -499,11 +495,6 @@ sys-devel/gcc vtv
 # Upstream supports using Clang's address sanitizer, but apparently
 # invokes it wrong.
 dev-lang/moarvm asan
-
-# Ian Stakenvicius <axs@gentoo.org> (2016-04-28)
-# system-cairo support causes lots of crashing in mozilla pkgs
-# (see bug #556378 and others)
-mail-client/thunderbird system-cairo
 
 # James Le Cuirot <chewi@gentoo.org> (2016-04-10)
 # Slower and less reliable than HotSpot and we don't support Java on

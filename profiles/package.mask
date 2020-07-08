@@ -648,7 +648,6 @@ dev-java/eclipse-ecj:4.10
 # on behalf of Mozilla Project <mozilla@gentoo.org>
 # Mask old/vuln thunderbird for removal by 2019,
 # see security bug 670102
-<mail-client/thunderbird-60.0
 <mail-client/thunderbird-bin-60.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
