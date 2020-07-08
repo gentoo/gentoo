@@ -30,7 +30,6 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-ros/test_rosmaster
 	)"
-PATCHES=( "${FILESDIR}/timeout.patch" )
 
 src_test() {
 	rosdep update
