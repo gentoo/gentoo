@@ -58,10 +58,6 @@ DEPEND="
 BDEPEND="
 	ccache? ( dev-util/ccache )
 "
-# Not a runtime dependency but still needed (see bug #667092)
-PDEPEND="
-	x11-misc/xsel
-"
 
 RESTRICT="!test? ( test )"
 
