@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic toolchain-funcs user xdg
+inherit cmake flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
 HOMEPAGE="http://www.wesnoth.org
@@ -19,6 +19,8 @@ fi
 IUSE="dbus dedicated doc fribidi libressl nls server"
 
 RDEPEND="
+	acct-group/wesnoth
+	acct-user/wesnoth
 	>=dev-libs/boost-1.50:=[nls,threads,icu]
 	>=media-libs/libsdl2-2.0.4:0[joystick,video,X]
 	!dedicated? (
@@ -43,11 +45,6 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 /bin/bash -1 ${PN}
-}
 
 src_prepare() {
 	cmake_src_prepare
