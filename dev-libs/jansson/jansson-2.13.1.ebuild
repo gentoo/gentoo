@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="doc static-libs"
 
+# dev-libs/jansson-2.13.1[doc]: fails to build with >=sphinx-3.0, #731668
 BDEPEND="doc? ( <dev-python/sphinx-3.0.0 )"
 
 multilib_src_configure() {
