@@ -15206,7 +15206,7 @@ net-vpn/openconnect 8.09-r1 9999: Free client for Cisco AnyConnect SSL VPN softw
 net-vpn/openfortivpn 1.13.2 1.13.3: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.9 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r5: P2P mesh VPN
-net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
+net-vpn/pptpd 1.4.0-r2 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.8.1 5.8.2 5.8.4: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 0.98 0.98_p0: Tailscale vpn client
