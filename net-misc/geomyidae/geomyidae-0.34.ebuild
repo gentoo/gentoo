@@ -22,10 +22,10 @@ pkg_setup() {
 
 src_prepare() {
 	# enable verbose build
-	# drop -O. from CFLAGS
+	# respect CFLAGS
 	sed -i \
 		-e 's/@${CC}/${CC}/g' \
-		-e '/CFLAGS/s/-O. //' \
+		-e '/CFLAGS/s/=/?=/' \
 		Makefile || die 'sed on Makefile failed'
 	# fix path for pid file
 	sed -i \
