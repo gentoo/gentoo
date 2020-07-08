@@ -1293,7 +1293,7 @@ app-doc/cantera-docs 2.4.0: Documentation API reference for Cantera package libr
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.4-r1: Clsync and libclsync API documentation
 app-doc/cppman 0.4.8-r2 0.4.9: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
-app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
+app-doc/csound-manual 6.14: The Csound reference manual
 app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.15 1.8.16-r1 1.8.17 9999: Documentation system for most programming languages
@@ -13323,7 +13323,7 @@ media-sound/a2jmidid 9 9999: Daemon for exposing legacy ALSA sequencer applicati
 media-sound/abcde 2.9.3-r1: Command line CD encoder
 media-sound/abcm2ps 8.14.4 8.14.6: Program to convert abc files to Postscript files
 media-sound/abcmidi 2020.01.22: Programs for processing ABC music notation files
-media-sound/aeolus 0.9.7: A synthesised pipe organ emulator
+media-sound/aeolus 0.9.7 0.9.9: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.2.2-r1: Advanced Linux Sound Architecture tools
 media-sound/alsa-utils 1.2.2 1.2.3: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
@@ -13577,7 +13577,7 @@ media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.2 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.13: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.13 0.9.15: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 4.2.1 4.3.0: audio library tagger, manager, and player for GTK+
