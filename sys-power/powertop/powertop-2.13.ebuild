@@ -38,6 +38,10 @@ RDEPEND="
 	virtual/libintl
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.8-ncurses_tinfo.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="
 		~X86_MSR
@@ -101,6 +105,9 @@ src_prepare() {
 
 	# Bug 599114
 	sed -i '1s|^|AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX])|' configure.ac || die
+
+	echo "\"${PV}\"" > version-short
+	echo "${PV}" > version-long
 
 	eautoreconf
 }
