@@ -3,11 +3,11 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="Public client interface for NIS(YP) and NIS+ in a IPv6 ready version"
 HOMEPAGE="https://github.com/thkukuk/libnsl"
-SRC_URI="https://github.com/thkukuk/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/thkukuk/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 SLOT="0/2"
 LICENSE="LGPL-2.1+"
@@ -23,11 +23,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!<sys-libs/glibc-2.26
 "
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 multilib_src_configure() {
 	local myconf=(
