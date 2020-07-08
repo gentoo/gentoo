@@ -1,0 +1,33 @@
+From 8aad288652cb7dc9c60eadd85d945ac43a712663 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 8 Jul 2020 16:08:24 +0200
+Subject: [PATCH] Move radeon-profile-daemon-server socket file into its own
+ subdir under /run
+
+The rationale here is that QT has no methods to run chown on some
+files but we do not want the socket being world readable. So instead of
+writing lenghty C++-code using chown, we simply move the socket file into a
+subdir which we can put our preferred permissions on during startup of the
+daemon.
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ radeon-profile-daemon/rpdthread.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/radeon-profile-daemon/rpdthread.h b/radeon-profile-daemon/rpdthread.h
+index 280fada..f05d031 100644
+--- a/radeon-profile-daemon/rpdthread.h
++++ b/radeon-profile-daemon/rpdthread.h
+@@ -31,7 +31,7 @@
+ #define SIGNAL_ALIVE '7'
+ 
+ const QString appVersion = "20190603";
+-const QString serverSocketPath = "/run/radeon-profile-daemon-server";
++const QString serverSocketPath = "/run/radeon-profile-daemon/radeon-profile-daemon-server";
+ 
+ class rpdThread : public QThread
+ {
+-- 
+2.27.0
+
