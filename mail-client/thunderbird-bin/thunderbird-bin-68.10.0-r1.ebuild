@@ -163,6 +163,10 @@ src_install() {
 	insinto ${MOZILLA_FIVE_HOME}/defaults/pref/
 	newins "${FILESDIR}"/thunderbird-gentoo-default-prefs-r1.js all-gentoo.js
 
+	# Disable built-in auto-update because we update firefox-bin through package manager
+	insinto ${MOZILLA_FIVE_HOME}/distribution/
+	newins "${FILESDIR}"/disable-auto-update.policy.json policies.json
+
 	# Plugins dir
 	share_plugins_dir
 
