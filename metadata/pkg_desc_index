@@ -15017,7 +15017,7 @@ net-misc/wput 0.6.1-r1 0.6.2: Tiny program like wget, to upload files/whole dire
 net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
-net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
+net-misc/yandex-disk 0.1.5.978_p1 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
 net-misc/youtube-dl 2020.06.16.1 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
