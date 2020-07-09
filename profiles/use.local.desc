@@ -7283,11 +7283,11 @@ sci-geosciences/liblas:gdal - Add support for the sci-libs/gdal geospatial raste
 sci-geosciences/mapnik:gdal - Enable sci-libs/gdal library support
 sci-geosciences/mapnik:osmfonts - Enable openstreetmaps font styles
 sci-geosciences/mapserver:apache - Enable mapserver to run under apache
-sci-geosciences/mapserver:gdal - Enable sci-libs/gdal library support
+sci-geosciences/mapserver:gdal - Enable sci-libs/gdal library support; deprecated
 sci-geosciences/mapserver:geos - Enable sci-libs/geos library support
 sci-geosciences/mapserver:postgis - Enable dev-db/postgis support
-sci-geosciences/mapserver:proj - Enable sci-libs/proj library support (geographic projections)
-sci-geosciences/mapserver:xslt - Enable xslt and exslt support xml-mapfile support
+sci-geosciences/mapserver:proj - Enable sci-libs/proj library support (geographic projections); deprecated
+sci-geosciences/mapserver:xslt - Enable xslt and exslt support xml-mapfile support; deprecated
 sci-geosciences/merkaartor:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration
 sci-geosciences/merkaartor:webengine - Enable dev-qt/qtwebengine in some plugins
 sci-geosciences/qgis:3d - Build QGIS 3D library using dev-qt/qt3d
