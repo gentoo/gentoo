@@ -11,7 +11,8 @@ inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 xdg-utils
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
 SRC_URI="https://download.calibre-ebook.com/${PV}/${P}.tar.xz
-	https://github.com/kovidgoyal/calibre/commit/db7007a25faefb0cc90e64dda1c0793393b9512d.patch -> calibre-4.17.0-qt-5.15-fontconfig-bug-725020.patch"
+	https://github.com/kovidgoyal/calibre/commit/db7007a25faefb0cc90e64dda1c0793393b9512d.patch -> calibre-4.17.0-qt-5.15-fontconfig-bug-725020.patch
+	https://github.com/kovidgoyal/calibre/commit/7b6416ac6522fc40f24f6baf3ca552b17a8b91d6.patch -> calibre-4.9.1-bug-731786.patch"
 
 LICENSE="
 	GPL-3+
@@ -124,7 +125,8 @@ src_prepare() {
 		"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch" \
 		"${FILESDIR}/${PN}-disable_plugins.patch" \
 		"${FILESDIR}/${PN}-4.9.1-py3-Ignore-TypeError-sorting-collections-kobo.patch" \
-		"${DISTDIR}/calibre-4.17.0-qt-5.15-fontconfig-bug-725020.patch"
+		"${DISTDIR}/calibre-4.17.0-qt-5.15-fontconfig-bug-725020.patch" \
+		"${DISTDIR}/calibre-4.9.1-bug-731786.patch"
 
 	eapply_user
 
