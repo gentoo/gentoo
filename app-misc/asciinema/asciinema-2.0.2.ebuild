@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 inherit distutils-r1
 
 DESCRIPTION="Command line recorder for asciinema.org service"
@@ -17,7 +18,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
 
