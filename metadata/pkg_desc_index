@@ -9030,14 +9030,14 @@ dev-ros/audio_capture 0.3.1 0.3.2 0.3.3 9999: Transports audio from a source to 
 dev-ros/audio_common_msgs 0.3.1 0.3.2 0.3.3 9999: Messages for transmitting audio via ROS
 dev-ros/audio_play 0.3.1 0.3.2 0.3.3 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.16.1 1.16.2 1.16.3 1.16.6 9999: Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane
-dev-ros/bond 1.7.19 1.8.0 1.8.1 1.8.2 1.8.3 9999: A bond allows two processes, A and B, to know when the other has terminated
-dev-ros/bondcpp 1.8.1 1.8.2 1.8.3 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
-dev-ros/bondpy 1.7.16 1.7.17 1.7.18 1.7.19 1.8.0 1.8.1 1.8.2 1.8.3 9999: Python implementation of bond, a mechanism for checking when another process has terminated
+dev-ros/bond 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
+dev-ros/bondcpp 1.8.5 9999: C++ implementation of bond, for checking when another process has terminated
+dev-ros/bondpy 1.8.5 9999: Python implementation of bond, for checking when another process has terminated
 dev-ros/calibration_estimation 0.10.13 0.10.14 9999: Runs an optimization to estimate the a robot's kinematic parameters
 dev-ros/calibration_launch 0.10.13 0.10.14 9999: Launch files that can be helpful in configuring the calibration stack to run on your robot
 dev-ros/calibration_msgs 0.10.14 9999: Messages for storing calibration samples to be used in full robot calibration procedures
 dev-ros/calibration_setup_helper 0.10.13 0.10.14 9999: Script to generate calibration launch and configurationfiles for your robot
-dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 1.12.20 1.12.21 1.12.22 1.12.23 1.13.0 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
+dev-ros/camera_calibration 1.15.2 9999: Calibration of monocular or stereo cameras
 dev-ros/camera_calibration_parsers 1.11.13-r1 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.11.13 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.16.1 1.16.2 1.16.3 1.16.6 9999: Attempts to find a legal place to put a carrot for the robot to follow
@@ -9061,13 +9061,13 @@ dev-ros/convex_decomposition 0.1.10 0.1.11 0.1.12 9999: Convex Decomposition Too
 dev-ros/costmap_2d 1.16.1 1.16.2 1.16.3 1.16.6 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.6.7-r1 0.6.8 0.6.9 0.6.10 0.6.11 0.6.12 0.6.13 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.13.0 9999: Converts between ROS Image messages and OpenCV images
-dev-ros/depth_image_proc 1.12.22-r1 1.12.23 1.13.0 9999: Nodelets for processing depth images such as those produced by OpenNI camera
+dev-ros/depth_image_proc 1.15.2 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r2 9999: Converts a depth image to a laser scan for use with navigation and localization
-dev-ros/diagnostic_aggregator 1.9.2-r1 1.9.3 9999: Aggregates ROS diagnostics
-dev-ros/diagnostic_analysis 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 9999: Converts diagnostics data into a series of CSV files
-dev-ros/diagnostic_common_diagnostics 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 9999: Generic nodes for monitoring a linux host
+dev-ros/diagnostic_aggregator 1.9.4 9999: Aggregates ROS diagnostics
+dev-ros/diagnostic_analysis 1.9.4 9999: Converts diagnostics data into a series of CSV files
+dev-ros/diagnostic_common_diagnostics 1.9.4 9999: Generic nodes for monitoring a linux host
 dev-ros/diagnostic_msgs 1.13.0 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
-dev-ros/diagnostic_updater 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 9999: Tools for updating diagnostics
+dev-ros/diagnostic_updater 1.9.4 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
 dev-ros/dwa_local_planner 1.16.1 1.16.2 1.16.3 1.16.6 9999: Dynamic Window Approach to local robot navigation on a plane
 dev-ros/dynamic_reconfigure 1.5.48 1.5.49 1.6.0 9999: Provides a means to change node parameters at any time without having to restart the node
@@ -9109,11 +9109,11 @@ dev-ros/hector_slam_launch 0.3.3 0.3.4 0.3.5 0.4.0 9999: Launch files for launch
 dev-ros/hector_trajectory_server 0.3.5 0.4.0 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
 dev-ros/image_cb_detector 0.10.14-r1 9999: Extracts checkerboard corners from ROS images
 dev-ros/image_geometry 1.12.3 1.12.4 1.12.5 1.12.7 1.12.8 1.13.0 9999: C++ and Python libraries for interpreting images geometrically
-dev-ros/image_proc 1.12.22-r1 1.12.23 1.13.0 9999: Single image rectification and color processing
-dev-ros/image_publisher 1.12.22-r1 1.12.23 1.13.0 9999: Publish an image stream from single image file or avi file.
-dev-ros/image_rotate 1.12.22-r1 1.12.23 1.13.0 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
+dev-ros/image_proc 1.15.2 9999: Single image rectification and color processing
+dev-ros/image_publisher 1.15.2 9999: Publish an image stream from single image file or avi file.
+dev-ros/image_rotate 1.15.2 9999: Rotates an image minimizing the angle between a vector and the camera frame
 dev-ros/image_transport 1.11.13-r2 9999: Transparent support for transporting images in low-bandwidth compressed formats
-dev-ros/image_view 1.12.23 1.13.0 9999: Simple viewer for ROS image topics
+dev-ros/image_view 1.15.2 9999: Simple viewer for ROS image topics
 dev-ros/imu_complementary_filter 1.1.5 1.2.0 1.2.1 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
 dev-ros/imu_filter_madgwick 1.2.1 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
 dev-ros/imu_processors 0.2.1 0.2.2 0.2.3 9999: Processors for sensor_msgs::Imu data
@@ -9157,8 +9157,8 @@ dev-ros/nav_core 1.15.2 1.16.0 1.16.1 1.16.2 1.16.3 1.16.6 9999: Common interfac
 dev-ros/nav_msgs 1.13.0 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.16.3 1.16.6 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
 dev-ros/nmea_msgs 1.0.0 9999: Messages related to data in the NMEA format
-dev-ros/nodelet 1.9.16-r1 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
-dev-ros/nodelet_topic_tools 1.9.16 9999: Common nodelet tools such as a mux, demux and throttle
+dev-ros/nodelet 1.10.0 9999: Runs multiple algorithms in the same process with zero copy transport
+dev-ros/nodelet_topic_tools 1.10.0 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.12 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
@@ -9213,9 +9213,9 @@ dev-ros/roscpp_serialization 0.6.11 0.6.12 0.6.13 9999: Code for serialization
 dev-ros/roscpp_traits 0.5.6 0.5.7 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 0.6.7 0.6.8 0.6.9 0.6.10 0.6.11 0.6.12 0.6.13 9999: Message traits code
 dev-ros/roscpp_tutorials 0.6.1 0.7.0 0.7.1 0.8.0 0.8.1 0.9.0 0.9.1 0.10.0 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/roscreate 1.14.7 9999: Tool that assists in the creation of ROS filesystem resources
-dev-ros/rosdiagnostic 1.9.0 1.9.2 1.9.3 9999: Command to print aggregated diagnostic contents to the command line
+dev-ros/rosdiagnostic 1.9.4 9999: Command to print aggregated diagnostic contents to the command line
 dev-ros/rosgraph 1.15.7 9999: Prints information about the ROS Computation Graph
-dev-ros/rosgraph_msgs 1.11.2 9999: Messages relating to ROS comm
+dev-ros/rosgraph_msgs 1.11.3 9999: Messages relating to ROS comm
 dev-ros/roslang 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 1.13.5 1.14.0 1.14.1 1.14.2 1.14.3 1.14.4 1.14.6 1.14.7 9999: Common package for all ROS client libraries
 dev-ros/roslaunch 1.15.7 9999: Tool for easily launching multiple ROS nodes
 dev-ros/roslib 1.14.0-r1 1.14.1 1.14.2 1.14.3 1.14.4 1.14.6 1.14.7 9999: Base dependencies and support libraries for ROS
@@ -9285,7 +9285,7 @@ dev-ros/rviz 1.13.6-r1 1.14.0 9999: 3D visualization tool for ROS
 dev-ros/rviz_imu_plugin 1.1.5-r1 1.2.0 1.2.1 9999: RVIZ plugin for IMU visualization
 dev-ros/rviz_plugin_tutorials 0.10.1-r4 0.10.2 0.10.3 0.11.0 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.9.2 0.10.1 0.10.2 0.10.3 0.11.0 9999: Tutorials showing how to call into rviz internals from python scripts
-dev-ros/self_test 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 9999: Robot self-test node
+dev-ros/self_test 1.9.4 9999: Robot self-test node
 dev-ros/sensor_msgs 1.13.0 9999: Messages for commonly used sensors: cameras and scanning laser rangefinders
 dev-ros/settlerlib 0.10.14 9999: Helper functions and routines to help creating a settler for a specific sensor channel
 dev-ros/shape_msgs 1.13.0 9999: Messages for defining shapes: simple solid object primitives, planes, and meshes
@@ -9293,16 +9293,16 @@ dev-ros/shape_tools 0.2.1 9999: Tools for operating on shape messages
 dev-ros/smach 2.0.1 9999: Task-level architecture for rapidly creating complex robot behavior
 dev-ros/smach_msgs 2.0.1 9999: Set of messages that are used by the introspection interfaces for smach
 dev-ros/smach_ros 2.0.0 2.0.1 9999: Extensions for the SMACH library to integrate it tightly with ROS
-dev-ros/smclib 1.7.19 1.8.0 1.8.1 1.8.2 1.8.3 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
+dev-ros/smclib 1.8.5 9999: The SMC converts the description of a state machine into source code
 dev-ros/stage_ros 1.7.5 1.8.0 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.11 0.5.12 9999: Standard ROS Messages
-dev-ros/std_srvs 1.11.2 9999: Messages relating to ROS comm
-dev-ros/stereo_image_proc 1.12.22-r1 1.12.23 1.13.0 9999: Stereo and single image rectification and disparity processing
+dev-ros/std_srvs 1.11.3 9999: Messages relating to ROS comm
+dev-ros/stereo_image_proc 1.15.2 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.13.0 9999: Messages specific to stereo processing, such as disparity images
-dev-ros/test_bond 1.7.19 1.8.0 1.8.1 1.8.2 1.8.3 9999: Tests for bond, bondpy and bondcpp
-dev-ros/test_diagnostic_aggregator 1.9.3 9999: diagnostic_aggregator tests
-dev-ros/test_nodelet 1.9.16 9999: Nodelet unit tests
-dev-ros/test_nodelet_topic_tools 1.9.16 9999: Nodelet topic tools unit tests
+dev-ros/test_bond 1.8.5 9999: Tests for bond, bondpy and bondcpp
+dev-ros/test_diagnostic_aggregator 1.9.4 9999: diagnostic_aggregator tests
+dev-ros/test_nodelet 1.10.0 9999: Nodelet unit tests
+dev-ros/test_nodelet_topic_tools 1.10.0 9999: Nodelet topic tools unit tests
 dev-ros/test_rosbag 1.15.7 9999: Unit tests for rosbag
 dev-ros/test_rosbag_storage 1.15.7 9999: Unit tests for rosbag_storage
 dev-ros/test_roscpp 1.15.7 9999: Unit tests for roscpp
@@ -15376,13 +15376,13 @@ perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/ament_cmake 0.8.1 9999: The entry point package for the ament buildsystem
 ros-meta/audio_common 0.3.1 0.3.2 0.3.3 9999: Common code for working with audio in ROS
-ros-meta/bond_core 1.8.2 1.8.3 9999: A bond allows two processes, A and B, to know when the other has terminated
+ros-meta/bond_core 1.8.2 1.8.3 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.13 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.12.3 1.12.4 1.12.5 1.12.6 1.12.7 1.13.0 9999: Messages that are widely used by other ROS packages
 ros-meta/common_tutorials 0.1.8 0.1.10 0.1.11 0.1.12 9999: Metapackage that contains common tutorials
 ros-meta/desktop 1.4.0 1.4.1 9999: Metapackage for a basic ROS desktop install
 ros-meta/desktop_full 1.4.0 1.4.1 9999: Metapackage for ROS complete desktop install
-ros-meta/diagnostics 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 9999: Packages related to gathering, viewing, and analyzing diagnostics data from robots
+ros-meta/diagnostics 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 1.9.4 9999: Packages related to gathering, viewing, and analyzing diagnostics data from robots
 ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout the driver stacks
 ros-meta/executive_smach 2.0.0 2.0.1 9999: SMACH library and ROS SMACH integration packages
 ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: Interface for using ROS with the gazebo simulator
@@ -15393,14 +15393,14 @@ ros-meta/geometry_tutorials 0.2.2 0.2.3 9999: Metapackage of geometry tutorials 
 ros-meta/hector_localization 0.2.0 0.2.1 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 0.3.5 0.4.0 9999: hector_mapping and related packages
 ros-meta/image_common 1.11.12 1.11.13 9999: Common code for working with images in ROS
-ros-meta/image_pipeline 1.12.19 1.12.20 1.12.21 1.12.22 1.12.23 1.13.0 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
+ros-meta/image_pipeline 1.12.19 1.12.20 1.12.21 1.12.22 1.12.23 1.13.0 1.15.2 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
 ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 1.14.0 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 0.2.2 0.2.3 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
 ros-meta/imu_tools 1.1.5 1.2.0 1.2.1 9999: Various tools for IMU devices
 ros-meta/laser_pipeline 1.6.3 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/mavros 0.18.7 0.19.0 9999: Metapackage for mavros packages
 ros-meta/navigation 1.15.1 1.15.2 1.16.0 1.16.1 1.16.2 1.16.3 1.16.6 9999: 2D navigation stack
-ros-meta/nodelet_core 1.9.15 1.9.16 9999: Nodelet Core Metapackage
+ros-meta/nodelet_core 1.9.15 1.9.16 1.10.0 9999: Nodelet Core Metapackage
 ros-meta/perception 1.4.0 1.4.1 9999: Metapackage for ROS perception stack
 ros-meta/perception_pcl 1.5.4 1.6.1 1.6.2 1.7.0 1.7.1 9999: PCL (Point Cloud Library) ROS interface stack
 ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: URDF description and 3D models of robot components of the PR2 robot
