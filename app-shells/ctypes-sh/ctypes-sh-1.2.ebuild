@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools toolchain-funcs
 
@@ -13,17 +13,16 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="virtual/libffi
-	virtual/libelf
-	app-arch/xz-utils
+RDEPEND="
 	app-arch/bzip2
-	app-shells/bash[plugins]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/${P}-makefile-fix.patch"
-)
+	app-arch/xz-utils
+	app-shells/bash[plugins(-)]
+	dev-libs/libffi
+	virtual/libelf
+"
+BDEPEND="${RDEPEND}
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
@@ -31,9 +30,9 @@ src_prepare() {
 }
 
 src_test() {
-	pushd test
+	pushd test >/dev/null || die
 	PATH="${S}:${PATH}" \
 		LD_LIBRARY_PATH="${S}/src/.libs" \
 		make CC="$(tc-getCC)" || die "make check failed"
-	popd
+	popd > /dev/null || die
 }
