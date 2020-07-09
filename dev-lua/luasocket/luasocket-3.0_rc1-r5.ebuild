@@ -12,7 +12,7 @@ SRC_URI="https://github.com/diegonehab/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug"
 
 RDEPEND=">=dev-lang/lua-5.1.5-r2:0[${MULTILIB_USEDEP}]"
@@ -47,6 +47,8 @@ multilib_src_install() {
 		LUAV=${luav} \
 		CDIR_linux=$(get_libdir)/lua/${luav} \
 		install-unix
+	insinto /usr/include/lua${luav}/luasocket
+	doins src/*.h
 }
 
 multilib_src_install_all() {
