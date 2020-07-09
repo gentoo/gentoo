@@ -151,7 +151,7 @@ pkg_preinst() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	echo
-	elog "Visit http://mumble.sourceforge.net/ for futher configuration instructions."
+	elog "Visit https://wiki.mumble.info/ for futher configuration instructions."
 	elog "Run mumble-overlay to start the OpenGL overlay (after starting mumble)."
 	echo
 }
