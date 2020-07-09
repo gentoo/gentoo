@@ -637,7 +637,7 @@ app-arch/cksfv 1.3.14-r1: SFV checksum utility (simple file verification)
 app-arch/cpio 2.12-r1 2.13: A file archival tool which can also read and write tar files
 app-arch/deb2targz 1-r3: Convert a .deb file to a .tar.gz archive
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
-app-arch/dpkg 1.19.0.5 1.19.6 1.19.7 1.20.0 1.20.2 1.20.3: Package maintenance system for Debian
+app-arch/dpkg 1.19.0.5 1.19.6 1.19.7 1.20.0 1.20.2 1.20.3 1.20.5: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.46 0.4.46-r1: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.22.3-r1 1.24.0: Engrampa archive manager for MATE
@@ -10317,7 +10317,7 @@ dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to suppo
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 13 13.1 13.2: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 13.1 13.2: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.115 1.0.116 1.0.117 1.0.123: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.15.0 4.15.1: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
