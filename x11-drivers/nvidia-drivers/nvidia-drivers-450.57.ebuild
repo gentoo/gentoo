@@ -428,6 +428,8 @@ src_install() {
 
 	readme.gentoo_create_doc
 
+	dodoc supported-gpus.json
+
 	docinto html
 	dodoc -r ${NV_DOC}/html/*
 }
