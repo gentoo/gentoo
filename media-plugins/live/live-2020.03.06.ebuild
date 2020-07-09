@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "live-shared/README" )
 
-# Alexis Ballier <aballier@gentoo.org>, Sam James <sam@cmpct.info>
+# Alexis Ballier <aballier@gentoo.org>, Sam James <sam@gentoo.org>
 # Be careful, bump this everytime you bump the package and the ABI has changed.
 # If you don't know, ask someone.
 # You may wish to use a site like https://abi-laboratory.pro/index.php?view=timeline&l=live555
