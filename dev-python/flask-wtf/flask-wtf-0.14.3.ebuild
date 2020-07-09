@@ -21,7 +21,7 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/Babel[${PYTHON_USEDEP}]
+	>=dev-python/Babel-1[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/flask-babel[${PYTHON_USEDEP}]
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
