@@ -5,7 +5,7 @@
 # Mask io-uring & zbc pending keywording
 sys-block/fio io-uring zbc
 
-# Sam James <sam@cmpct.info> (2020-06-27)
+# Sam James <sam@gentoo.org> (2020-06-27)
 # Tests require Valgrind, not available on <armv7a
 dev-libs/rapidjson test
 
@@ -39,10 +39,6 @@ net-misc/whois xcrypt
 # Dependency has no stable keyword
 # and as for now we have only stable mate versions
 mate-base/mate bluetooth
-
-# Adam Feldman <NP-Hardass@gentoo.org> (2020-04-06)
-# Mask until gui-libs/gtk-layer-shell is keyworded
-mate-base/mate-panel wayland
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
@@ -401,7 +397,7 @@ sci-libs/linux-gpib firmware
 media-gfx/povray mkl
 
 # Benda Xu <heroxbd@gentoo.org> (2013-04-01)
-# Sam James <sam@cmpct.info> (2020-06-29)
+# Sam James <sam@gentoo.org> (2020-06-29)
 # net-misc/x11-ssh-askpass nor
 # net-misc/ssh-askpass-fullscreen keyworded
 net-misc/unison gtk
