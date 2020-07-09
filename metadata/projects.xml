@@ -159,6 +159,11 @@
       <role>Minion</role>
     </member>
     <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>Despicable minion</role>
+    </member>
+    <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
       <role>Minor Minion</role>
@@ -3399,6 +3404,11 @@
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
       <role>Member</role>
+    </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+      <role>GLSA Coordinator</role>
     </member>
     <member is-lead="1">
       <email>whissi@gentoo.org</email>
