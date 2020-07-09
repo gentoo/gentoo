@@ -1732,9 +1732,9 @@ app-emulation/winetricks 20190912 20191224 20200412 99999999: Easy way to instal
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.12.3-r1 4.13.1-r1 4.14.0_rc3: The Xen virtual machine monitor
+app-emulation/xen 4.12.3-r1 4.12.3-r2 4.13.1-r2 4.14.0_rc3: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.12.2 4.12.3 4.13.1 4.14.0_rc3: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.12.2-r1 4.12.3-r1 4.13.1-r1 4.14.0_rc3: Xen tools including QEMU and xl
+app-emulation/xen-tools 4.12.3-r1 4.12.3-r2 4.13.1-r2 4.14.0_rc3: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2 0.3: Manages the {,/usr}/bin/awk symlink
@@ -10634,7 +10634,7 @@ dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 1.26 1.27 2.4 2.5: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6 0.6-r1: Dump a remote Subversion repository
-dev-vcs/stgit 0.21 0.22: Manage a stack of patches using GIT as a backend
+dev-vcs/stgit 0.21 0.22 0.23: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.13.0-r1 1.14.0: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
