@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-09)
+# Dead upstream, no reverse dependencies.
+# Removal in 30 days.
+kde-apps/kblog
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-05)
 # No upstream activity in past few years.
 # Needs porting to gtk3/fxce4panel-4.15: bug #729492.
