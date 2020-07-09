@@ -5,7 +5,7 @@
 # Mask io-uring & zbc pending keywording
 sys-block/fio io-uring zbc
 
-# Sam James <sam@cmpct.info> (2020-06-27)
+# Sam James <sam@gentoo.org> (2020-06-27)
 # Tests require Valgrind, not available on <armv7a
 dev-libs/rapidjson test
 
@@ -401,7 +401,7 @@ sci-libs/linux-gpib firmware
 media-gfx/povray mkl
 
 # Benda Xu <heroxbd@gentoo.org> (2013-04-01)
-# Sam James <sam@cmpct.info> (2020-06-29)
+# Sam James <sam@gentoo.org> (2020-06-29)
 # net-misc/x11-ssh-askpass nor
 # net-misc/ssh-askpass-fullscreen keyworded
 net-misc/unison gtk
