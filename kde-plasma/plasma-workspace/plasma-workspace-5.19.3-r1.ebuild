@@ -126,6 +126,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
 	"${FILESDIR}/${PN}-5.19.2-use-PlasmaExtras.PlaceholderMessage.patch" # KDE-Bug #422684
+	"${FILESDIR}/${P}-revert-fix-broken-env-vars-for-detailed-settings.patch" # KDE-Bug #423995
 )
 
 RESTRICT+=" test"
