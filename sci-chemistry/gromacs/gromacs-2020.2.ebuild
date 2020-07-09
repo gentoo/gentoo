@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 DISTUTILS_SINGLE_IMPL=1
 
-inherit bash-completion-r1 cmake-utils cuda distutils-r1 eutils flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake cuda distutils-r1 eutils flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
@@ -116,7 +116,7 @@ src_prepare() {
 
 	xdg_environment_reset #591952
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	use cuda && cuda_src_prepare
 
@@ -244,7 +244,7 @@ src_configure() {
 			-DGMX_LIBS_SUFFIX="${suffix}"
 			-DGMX_PYTHON_PACKAGE=$(usex python)
 			)
-		BUILD_DIR="${WORKDIR}/${P}_${x}" cmake-utils_src_configure
+		BUILD_DIR="${WORKDIR}/${P}_${x}" cmake_src_configure
 		[[ ${CHOST} != *-darwin* ]] || \
 		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}/gentoo_rules.cmake" || die
 		use mpi || continue
@@ -263,7 +263,7 @@ src_configure() {
 			-DGMX_BINARY_SUFFIX="_mpi${suffix}"
 			-DGMX_LIBS_SUFFIX="_mpi${suffix}"
 			)
-		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" CC="mpicc" cmake-utils_src_configure
+		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" CC="mpicc" cmake_src_configure
 		[[ ${CHOST} != *-darwin* ]] || \
 		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}_mpi/gentoo_rules.cmake" || die
 	done
@@ -273,46 +273,46 @@ src_compile() {
 	for x in ${GMX_DIRS}; do
 		einfo "Compiling for ${x} precision"
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
-			cmake-utils_src_compile
+			cmake_src_compile
 		if use python; then
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
-				cmake-utils_src_compile	python_packaging/all
+				cmake_src_compile	python_packaging/all
 			BUILD_DIR="${WORKDIR}/${P}" \
 				distutils-r1_src_compile
 		fi
 		# not 100% necessary for rel ebuilds as available from website
 		if use doc; then
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
-				cmake-utils_src_compile manual
+				cmake_src_compile manual
 		fi
 		use mpi || continue
 		einfo "Compiling for ${x} precision with mpi"
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi"\
-			cmake-utils_src_compile
+			cmake_src_compile
 	done
 }
 
 src_test() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
-			cmake-utils_src_make check
+			cmake_src_make check
 	done
 }
 
 src_install() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}" \
-			cmake-utils_src_install
+			cmake_src_install
 		if use python; then
 			BUILD_DIR="${WORKDIR}/${P}_${x}" \
-				cmake-utils_src_install	python_packaging/install
+				cmake_src_install	python_packaging/install
 		fi
 		if use doc; then
 			newdoc "${WORKDIR}/${P}_${x}"/docs/manual/gromacs.pdf "${PN}-manual-${PV}.pdf"
 		fi
 		use mpi || continue
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" \
-			cmake-utils_src_install
+			cmake_src_install
 	done
 
 	if use tng; then
