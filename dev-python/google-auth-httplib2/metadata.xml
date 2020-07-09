@@ -5,6 +5,7 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">google-auth-httplib2</remote-id>
 		<remote-id type="github">GoogleCloudPlatform/google-auth-library-python-httplib2</remote-id>
