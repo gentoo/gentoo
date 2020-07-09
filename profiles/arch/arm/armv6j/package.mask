@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@cmpct.info> (2020-07-02)
+# Sam James <sam@gentoo.org> (2020-07-02)
 # Needs Rust, which is available here
 -net-news/newsboat
 -dev-util/cbindgen

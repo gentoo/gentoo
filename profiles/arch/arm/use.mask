@@ -8,7 +8,7 @@
 -cpu_flags_arm_iwmmxt
 -cpu_flags_arm_iwmmxt2
 
-# Sam James <sam@cmpct.info> (2020-06-24)
+# Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind lacks support for < ARMv7
 # https://valgrind.org/info/platforms.html
 valgrind
