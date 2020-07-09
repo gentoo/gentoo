@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake cuda eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
 SRC_URI="ftp://ftp.gromacs.org/pub/${PN}/${PN}-${PV/_/-}.tar.gz
 		doc? ( ftp://ftp.gromacs.org/pub/manual/manual-${PV/_/-}.pdf )
@@ -68,7 +68,7 @@ src_prepare() {
 
 	xdg_environment_reset #591952
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	use cuda && cuda_src_prepare
 
@@ -158,7 +158,7 @@ src_configure() {
 			-DGMX_BINARY_SUFFIX="${suffix}"
 			-DGMX_LIBS_SUFFIX="${suffix}"
 			)
-		BUILD_DIR="${WORKDIR}/${P}_${x}" cmake-utils_src_configure
+		BUILD_DIR="${WORKDIR}/${P}_${x}" cmake_src_configure
 		[[ ${CHOST} != *-darwin* ]] || \
 		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}/gentoo_rules.cmake" || die
 		use mpi || continue
@@ -176,7 +176,7 @@ src_configure() {
 			-DGMX_BINARY_SUFFIX="_mpi${suffix}"
 			-DGMX_LIBS_SUFFIX="_mpi${suffix}"
 			)
-		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" CC="mpicc" cmake-utils_src_configure
+		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" CC="mpicc" cmake_src_configure
 		[[ ${CHOST} != *-darwin* ]] || \
 		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}_mpi/gentoo_rules.cmake" || die
 	done
@@ -186,31 +186,31 @@ src_compile() {
 	for x in ${GMX_DIRS}; do
 		einfo "Compiling for ${x} precision"
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
-			cmake-utils_src_compile
+			cmake_src_compile
 		use mpi || continue
 		einfo "Compiling for ${x} precision with mpi"
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi"\
-			cmake-utils_src_compile
+			cmake_src_compile
 	done
 }
 
 src_test() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
-			cmake-utils_src_make check
+			cmake_src_make check
 	done
 }
 
 src_install() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}" \
-			cmake-utils_src_install
+			cmake_src_install
 		if use doc; then
 			newdoc "${DISTDIR}/manual-${PV/_/-}.pdf" "${PN}-manual-${PV}.pdf"
 		fi
 		use mpi || continue
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" \
-			cmake-utils_src_install
+			cmake_src_install
 	done
 
 	if use tng; then
