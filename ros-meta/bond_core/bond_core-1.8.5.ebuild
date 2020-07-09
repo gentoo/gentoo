@@ -1,12 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-CATKIN_HAS_MESSAGES=yes
+EAPI=5
 ROS_REPO_URI="https://github.com/ros/bond_core"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
-CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 
 inherit ros-catkin
 
@@ -15,5 +13,11 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="
+	dev-ros/bond
+	dev-ros/bondcpp
+	dev-ros/bondpy
+	dev-ros/smclib
+	dev-ros/test_bond
+"
 DEPEND="${RDEPEND}"
