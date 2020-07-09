@@ -1,0 +1,62 @@
+From 76028ecdbd9a060b375c1cc53c6ae9ab9276cb28 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 9 Jul 2020 19:46:02 +0200
+Subject: [PATCH] Revert "Fix broken ENV variables for detailed settings"
+
+This reverts commit edc64d04a1e569d7032c41e6ee0ebf59833c26f2.
+---
+ startkde/startplasma.cpp | 31 ++++++++++---------------------
+ 1 file changed, 10 insertions(+), 21 deletions(-)
+
+diff --git a/startkde/startplasma.cpp b/startkde/startplasma.cpp
+index b2dba900d..a055d5635 100644
+--- a/startkde/startplasma.cpp
++++ b/startkde/startplasma.cpp
+@@ -128,27 +128,11 @@ void runStartupConfig()
+     KConfig config(QStringLiteral("plasma-localerc"));
+     KConfigGroup formatsConfig = KConfigGroup(&config, "Formats");
+ 
+-    // In case we don't have a value in the config file, but in the ENV variables, write it
+-    if (!formatsConfig.hasKey("LANG") && !qEnvironmentVariableIsEmpty("LANG")) {
+-        formatsConfig.writeEntry("LANG", qgetenv("LANG"));
+-        formatsConfig.sync();
+-    }
+-
+-    const auto explicitLCValues = { "LANG", "LC_COLLATE", "LC_CTYPE" };
+-    const auto detailedLCValues = { "LC_NUMERIC", "LC_TIME", "LC_MONETARY", "LC_MEASUREMENT" };
+-    const QString lcLang =  formatsConfig.readEntry("LANG");
+-    const bool useDetailed = formatsConfig.readEntry("useDetailed", false);
+-
+-    // These values have to explicitly set
+-    for (auto lc : explicitLCValues) {
+-        const QString value = formatsConfig.readEntry(lc);
+-        if (!value.isEmpty()) {
+-            qputenv(lc, value.toUtf8());
+-        }
+-    }
+-    // If we have the "Detailed Settings" checkbox unchecked we want to use the value from the LANG entry
+-    for (auto lc : detailedLCValues) {
+-        const QString value = useDetailed ? formatsConfig.readEntry(lc) : lcLang;
++    const auto lcValues = {
++        "LANG", "LC_NUMERIC", "LC_TIME", "LC_MONETARY", "LC_MEASUREMENT", "LC_COLLATE", "LC_CTYPE"
++    };
++    for (auto lc : lcValues) {
++        const QString value = formatsConfig.readEntry(lc, QString());
+         if (!value.isEmpty()) {
+             qputenv(lc, value.toUtf8());
+         }
+@@ -159,6 +143,11 @@ void runStartupConfig()
+     if (!value.isEmpty()) {
+         qputenv("LANGUAGE", value.toUtf8());
+     }
++
++    if (!formatsConfig.hasKey("LANG") && !qEnvironmentVariableIsEmpty("LANG")) {
++        formatsConfig.writeEntry("LANG", qgetenv("LANG"));
++        formatsConfig.sync();
++    }
+ }
+ 
+ void setupCursor(bool wayland)
+-- 
+2.27.0
+
