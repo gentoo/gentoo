@@ -15169,7 +15169,7 @@ net-proxy/sshuttle 0.78.5: Transparent proxy server that works as a poor man's V
 net-proxy/tayga 0.9.2-r1 0.9.2-r2 0.9.2-r3: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.10.0-r1: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 2.2.0 2.3.0: Use most socks-friendly applications with Tor
-net-proxy/trojan 1.15.1 9999: An unidentifiable mechanism that helps you bypass GFW
+net-proxy/trojan 1.15.1 1.16.0 9999: An unidentifiable mechanism that helps you bypass GFW
 net-proxy/tsocks 1.8_beta5-r8 1.8_beta5-r9: Transparent SOCKS v4 proxying library
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
@@ -17783,7 +17783,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.4.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 83.0.4103.116 84.0.4147.68 85.0.4181.8: Open-source version of Google Chrome web browser
+www-client/chromium 83.0.4103.116 84.0.4147.85 85.0.4181.8: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4: GNOME webbrowser based on Webkit
@@ -17803,7 +17803,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r1: a free, open source web browser
 www-client/opera 69.0.3686.57: A fast and secure web browser
-www-client/opera-beta 70.0.3728.8: A fast and secure web browser
+www-client/opera-beta 70.0.3728.8 70.0.3728.21: A fast and secure web browser
 www-client/opera-developer 71.0.3735.0 71.0.3742.0: A fast and secure web browser
 www-client/otter 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
