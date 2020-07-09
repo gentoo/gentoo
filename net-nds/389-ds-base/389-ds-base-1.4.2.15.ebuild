@@ -5,16 +5,14 @@ EAPI=7
 
 WANT_AUTOMAKE="1.16"
 
-inherit eutils multilib flag-o-matic autotools systemd db-use
+inherit multilib flag-o-matic autotools systemd db-use
 
 DESCRIPTION="389 Directory Server (core librares and daemons)"
 HOMEPAGE="https://directory.fedoraproject.org/"
-MY_P="${PN}-${PN}-${PV}"
-SRC_URI="https://pagure.io/389-ds-base/archive/${PN}-${PV}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.bz2"
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise presence selinux systemd"
 
 COMMON_DEPEND="
@@ -34,6 +32,7 @@ COMMON_DEPEND="
 	systemd? ( >=sys-apps/systemd-244 )
 	acct-user/dirsrv
 	acct-group/dirsrv
+	!dev-libs/svrcore
 	"
 
 DEPEND="${COMMON_DEPEND}
@@ -87,7 +86,7 @@ src_compile() {
 
 src_install() {
 	# -j1 is a temporary workaround for bug #605432
-	emake DESTDIR="${D}" install
+	emake -j1 DESTDIR="${D}" install
 
 	# Install gentoo style init script
 	# Get these merged upstream
@@ -103,7 +102,6 @@ src_install() {
 		docinto html/
 		dodoc -r docs/html/.
 	fi
-	6
 }
 
 pkg_postinst() {
