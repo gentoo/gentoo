@@ -11,4 +11,4 @@ RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:
 SLOT=0/8
 SRC_URI=https://cmpct.info/~sam/gentoo/distfiles/media-plugins/live/live.2020.03.06.tar.gz
 _eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=381e475ab11cfa40d2d263e0a47d9f88
+_md5_=28d48c5174c4a423d6a9d22a0ac69131

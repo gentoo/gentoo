@@ -9033,10 +9033,10 @@ dev-ros/base_local_planner 1.16.1 1.16.2 1.16.3 1.16.6 9999: Trajectory Rollout 
 dev-ros/bond 1.8.5 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.8.5 9999: C++ implementation of bond, for checking when another process has terminated
 dev-ros/bondpy 1.8.5 9999: Python implementation of bond, for checking when another process has terminated
-dev-ros/calibration_estimation 0.10.13 0.10.14 9999: Runs an optimization to estimate the a robot's kinematic parameters
-dev-ros/calibration_launch 0.10.13 0.10.14 9999: Launch files that can be helpful in configuring the calibration stack to run on your robot
-dev-ros/calibration_msgs 0.10.14 9999: Messages for storing calibration samples to be used in full robot calibration procedures
-dev-ros/calibration_setup_helper 0.10.13 0.10.14 9999: Script to generate calibration launch and configurationfiles for your robot
+dev-ros/calibration_estimation 0.10.14 9999: Runs an optimization to estimate the a robot's kinematic parameters
+dev-ros/calibration_launch 0.10.14 9999: Launch files for configuring the calibration stack to run on your robot
+dev-ros/calibration_msgs 0.10.14 9999: Messages for storing calibration samples to be used in calibration procedures
+dev-ros/calibration_setup_helper 0.10.14 9999: Script to generate calibration launch and configurationfiles for your robot
 dev-ros/camera_calibration 1.15.2 9999: Calibration of monocular or stereo cameras
 dev-ros/camera_calibration_parsers 1.11.13-r1 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.11.13 9999: C++ interface for camera calibration information
@@ -9114,13 +9114,13 @@ dev-ros/image_publisher 1.15.2 9999: Publish an image stream from single image f
 dev-ros/image_rotate 1.15.2 9999: Rotates an image minimizing the angle between a vector and the camera frame
 dev-ros/image_transport 1.11.13-r2 9999: Transparent support for transporting images in low-bandwidth compressed formats
 dev-ros/image_view 1.15.2 9999: Simple viewer for ROS image topics
-dev-ros/imu_complementary_filter 1.1.5 1.2.0 1.2.1 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
-dev-ros/imu_filter_madgwick 1.2.1 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
+dev-ros/imu_complementary_filter 1.2.2 9999: Fuses angular velocities, accelerations, and magnetic readings from an IMU
+dev-ros/imu_filter_madgwick 1.2.2 9999: Fuses angular velocities, accelerations, and magnetic readings from an IMU
 dev-ros/imu_processors 0.2.1 0.2.2 0.2.3 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.2-r1 0.2.3 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
-dev-ros/interactive_marker_tutorials 0.10.3-r1 0.11.0 9999: Interactive marker tutorials
+dev-ros/interactive_marker_tutorials 0.11.0 9999: Interactive marker tutorials
 dev-ros/interactive_markers 1.11.3 1.11.4 9999: 3D interactive marker communication library for RViz and similar tools
-dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
+dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages
 dev-ros/ivcon 0.1.5 0.1.6 0.1.7 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.19.1 9999: Interface for enforcing joint limits
 dev-ros/joint_state_publisher 1.15.0 9999: Tool for setting and publishing joint state values for a given URDF
@@ -9135,7 +9135,7 @@ dev-ros/laser_filters 1.8.6 1.8.7 9999: Assorted filters designed to operate on 
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.5 9999: Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
 dev-ros/libmavconn 0.19.0-r1 9999: MAVLink communication library
-dev-ros/librviz_tutorial 0.10.1 0.10.2 0.10.3 0.11.0 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
+dev-ros/librviz_tutorial 0.11.0 9999: Tutorial showing how to build a C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.15.2-r1 1.16.0 1.16.1 1.16.2 1.16.3 1.16.6 9999: Offers map data as a ROS service
 dev-ros/mavlink-gbp-release 2017.2.7-r1 2017.5.5 2019.11.11: MAVLink message marshaling library
@@ -9148,7 +9148,7 @@ dev-ros/message_generation 0.3.0 0.4.0 9999: Build-time dependencies for generat
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
 dev-ros/message_to_tf 0.3.0 9999: Translates pose information from different kind of common_msgs message types to tf
 dev-ros/mk 1.14.4 1.14.6 1.14.7 9999: A collection of .mk include files for building ROS architectural elements
-dev-ros/monocam_settler 0.10.13 0.10.14 9999: Listens on a ImageFeatures topic, and waits for the data to settle
+dev-ros/monocam_settler 0.10.14 9999: Listens on a ImageFeatures topic, and waits for the data to settle
 dev-ros/move_base 1.15.1-r2 1.15.2 1.16.0 1.16.1 1.16.2 1.16.3 1.16.6 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/move_slow_and_clear 1.16.1 1.16.2 1.16.3 1.16.6 9999: Move slow and clear
@@ -9282,20 +9282,19 @@ dev-ros/rqt_top 0.4.7 0.4.8 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.4.9 0.4.10 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.4.7 0.4.8 9999: Simple web content viewer for rqt
 dev-ros/rviz 1.13.6-r1 1.14.0 9999: 3D visualization tool for ROS
-dev-ros/rviz_imu_plugin 1.1.5-r1 1.2.0 1.2.1 9999: RVIZ plugin for IMU visualization
-dev-ros/rviz_plugin_tutorials 0.10.1-r4 0.10.2 0.10.3 0.11.0 9999: Tutorials showing how to write plugins for RViz
-dev-ros/rviz_python_tutorial 0.9.2 0.10.1 0.10.2 0.10.3 0.11.0 9999: Tutorials showing how to call into rviz internals from python scripts
+dev-ros/rviz_imu_plugin 1.2.2 9999: RVIZ plugin for IMU visualization
+dev-ros/rviz_plugin_tutorials 0.11.0 9999: Tutorials showing how to write plugins for RViz
+dev-ros/rviz_python_tutorial 0.11.0 9999: Tutorials showing how to call into rviz internals from python scripts
 dev-ros/self_test 1.9.4 9999: Robot self-test node
 dev-ros/sensor_msgs 1.13.0 9999: Messages for commonly used sensors: cameras and scanning laser rangefinders
-dev-ros/settlerlib 0.10.14 9999: Helper functions and routines to help creating a settler for a specific sensor channel
+dev-ros/settlerlib 0.10.14 9999: Helper functions for creating a settler for a specific sensor channel
 dev-ros/shape_msgs 1.13.0 9999: Messages for defining shapes: simple solid object primitives, planes, and meshes
-dev-ros/shape_tools 0.2.1 9999: Tools for operating on shape messages
-dev-ros/smach 2.0.1 9999: Task-level architecture for rapidly creating complex robot behavior
-dev-ros/smach_msgs 2.0.1 9999: Set of messages that are used by the introspection interfaces for smach
-dev-ros/smach_ros 2.0.0 2.0.1 9999: Extensions for the SMACH library to integrate it tightly with ROS
+dev-ros/smach 2.5.0 9999: Task-level architecture for rapidly creating complex robot behavior
+dev-ros/smach_msgs 2.5.0 9999: Set of messages that are used by the introspection interfaces for smach
+dev-ros/smach_ros 2.5.0 9999: Extensions for the SMACH library to integrate it tightly with ROS
 dev-ros/smclib 1.8.5 9999: The SMC converts the description of a state machine into source code
-dev-ros/stage_ros 1.7.5 1.8.0 9999: ROS specific hooks and tools for the Stage simulator
-dev-ros/std_msgs 0.5.11 0.5.12 9999: Standard ROS Messages
+dev-ros/stage_ros 1.8.0 9999: ROS specific hooks and tools for the Stage simulator
+dev-ros/std_msgs 0.5.13 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.3 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.15.2 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.13.0 9999: Messages specific to stereo processing, such as disparity images
@@ -13750,7 +13749,7 @@ media-video/dvdstyler 3.0.4: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.2_pre20140701-r2: Movie creator from photos and video clips
-media-video/ffmpeg 3.4.6-r1 4.2.3 4.3 4.3-r1 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
+media-video/ffmpeg 3.4.6-r1 4.2.3 4.2.4 4.3 4.3-r1 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
@@ -15384,7 +15383,7 @@ ros-meta/desktop 1.4.0 1.4.1 9999: Metapackage for a basic ROS desktop install
 ros-meta/desktop_full 1.4.0 1.4.1 9999: Metapackage for ROS complete desktop install
 ros-meta/diagnostics 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 1.9.4 9999: Packages related to gathering, viewing, and analyzing diagnostics data from robots
 ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout the driver stacks
-ros-meta/executive_smach 2.0.0 2.0.1 9999: SMACH library and ROS SMACH integration packages
+ros-meta/executive_smach 2.0.0 2.0.1 2.5.0 9999: SMACH library and ROS SMACH integration packages
 ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 2.8.7 9999: Interface for using ROS with the gazebo simulator
 ros-meta/geographic_info 0.4.0 0.5.0 0.5.2 0.5.3 9999: Geographic information metapackage
 ros-meta/geometry 1.11.7 1.11.8 1.11.9 1.12.0 1.13.2 9999: Common geometric calculations
@@ -15396,7 +15395,7 @@ ros-meta/image_common 1.11.12 1.11.13 9999: Common code for working with images 
 ros-meta/image_pipeline 1.12.19 1.12.20 1.12.21 1.12.22 1.12.23 1.13.0 1.15.2 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
 ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 1.14.0 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 0.2.2 0.2.3 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
-ros-meta/imu_tools 1.1.5 1.2.0 1.2.1 9999: Various tools for IMU devices
+ros-meta/imu_tools 1.1.5 1.2.0 1.2.1 1.2.2 9999: Various tools for IMU devices
 ros-meta/laser_pipeline 1.6.3 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/mavros 0.18.7 0.19.0 9999: Metapackage for mavros packages
 ros-meta/navigation 1.15.1 1.15.2 1.16.0 1.16.1 1.16.2 1.16.3 1.16.6 9999: 2D navigation stack
@@ -17761,7 +17760,6 @@ www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8 2.6.12 2.7.2 2
 www-apps/nextcloud 17.0.5 17.0.6 17.0.7 18.0.3 18.0.4 18.0.6 19.0.0: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies
-www-apps/otrs 5.0.25 6.0.3 6.0.4 6.0.5 6.0.7: An Open source Ticket Request System
 www-apps/owncloud 10.4.0 10.4.1: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.2.8: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
