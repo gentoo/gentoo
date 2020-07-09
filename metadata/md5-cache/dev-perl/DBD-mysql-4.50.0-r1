@@ -1,0 +1,16 @@
+BDEPEND=dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/DBI-1.609.0 >=dev-perl/Devel-CheckLib-1.109.0 mysql? ( dev-db/mysql-connector-c:= ) mariadb? ( dev-db/mariadb-connector-c:=[ssl(+)?] ) virtual/perl-ExtUtils-MakeMaker virtual/perl-Data-Dumper test? ( dev-perl/Test-Deep >=virtual/perl-Test-Simple-0.900.0 virtual/perl-Time-HiRes ) dev-lang/perl
+DESCRIPTION=MySQL driver for the Perl5 Database Interface (DBI)
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/DBD-mysql
+IUSE=mariadb +mysql test +ssl
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/DBI-1.609.0 >=dev-perl/Devel-CheckLib-1.109.0 mysql? ( dev-db/mysql-connector-c:= ) mariadb? ( dev-db/mariadb-connector-c:=[ssl(+)?] ) dev-lang/perl:=
+REQUIRED_USE=^^ ( mysql mariadb )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DV/DVEEDEN/DBD-mysql-4.050.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=2110987970cf588525a1dea68f50cc21
