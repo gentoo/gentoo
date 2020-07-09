@@ -6,7 +6,7 @@ EAPI=7
 inherit qmake-utils xdg
 
 DESCRIPTION="Notepad++-like editor for Linux"
-HOMEPAGE="http://notepadqq.altervista.org"
+HOMEPAGE="https://notepadqq.com/s/"
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/notepadqq/notepadqq.git"
