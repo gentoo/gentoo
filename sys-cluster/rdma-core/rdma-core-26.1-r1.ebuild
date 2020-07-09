@@ -66,7 +66,7 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc
-		-DCMAKE_INSTALL_FULL_RUNDIR=/run
+		-DCMAKE_INSTALL_RUNDIR=/run
 		-DCMAKE_INSTALL_SHAREDSTATEDIR=/var/lib
 		-DCMAKE_INSTALL_UDEV_RULESDIR="$(get_udevdir)"/rules.d
 		-DCMAKE_INSTALL_SYSTEMD_SERVICEDIR="$(systemd_get_systemunitdir)"
