@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rhinstaller/pyparted/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ppc ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ppc ppc64 sparc ~x86"
 
 RDEPEND="
 	>=sys-block/parted-3.2
