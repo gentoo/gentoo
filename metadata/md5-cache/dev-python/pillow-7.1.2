@@ -5,7 +5,7 @@ DESCRIPTION=Python Imaging Library (fork)
 EAPI=7
 HOMEPAGE=https://python-pillow.org/
 IUSE=examples imagequant jpeg jpeg2k lcms test tiff tk truetype webp xcb zlib doc python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 test
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=HPND
 RDEPEND=dev-python/olefile[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] imagequant? ( media-gfx/libimagequant:0 ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/openjpeg:2= ) lcms? ( media-libs/lcms:2= ) tiff? ( media-libs/tiff:0=[jpeg,zlib] ) truetype? ( media-libs/freetype:2= ) webp? ( media-libs/libwebp:0= ) xcb? ( x11-libs/libxcb ) zlib? ( sys-libs/zlib:0= ) python_targets_python3_6? ( dev-lang/python:3.6[tk?,threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[tk?,threads(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[tk?,threads(+)] ) python_targets_python3_9? ( dev-lang/python:3.9[tk?,threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=test? ( jpeg tiff ) || ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/python-pillow/Pillow/archive/7.1.2.tar.gz -> pillow-7.1.2.tar.gz
 _eclasses_=distutils-r1	0dda1d9008ac0b2530588115a772d99d	multibuild	b2c915190b051f55a23b9354b9849847	multilib	2477ebe553d3e4d2c606191fe6c33602	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	79e26ce8f853c9daebe9a4956e37cc1b	python-utils-r1	cae3d65c47270c9a8c4880076996c09c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307
-_md5_=a461a1883316d45ce1304b9818bec9fd
+_md5_=f338bb8d2bdda57d375da29183319dc6
